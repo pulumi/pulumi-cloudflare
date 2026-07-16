@@ -28,6 +28,7 @@ export function getMagicTransitConnectors(args?: GetMagicTransitConnectorsArgs, 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getMagicTransitConnectors:getMagicTransitConnectors", {
         "accountId": args.accountId,
+        "deviceType": args.deviceType,
         "maxItems": args.maxItems,
     }, opts);
 }
@@ -40,6 +41,11 @@ export interface GetMagicTransitConnectorsArgs {
      * Account identifier
      */
     accountId?: string;
+    /**
+     * Filter connectors by device type.
+     * Available values: "MANAGED", "LICENSED".
+     */
+    deviceType?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -54,6 +60,11 @@ export interface GetMagicTransitConnectorsResult {
      * Account identifier
      */
     readonly accountId?: string;
+    /**
+     * Filter connectors by device type.
+     * Available values: "MANAGED", "LICENSED".
+     */
+    readonly deviceType?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -89,6 +100,7 @@ export function getMagicTransitConnectorsOutput(args?: GetMagicTransitConnectors
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getMagicTransitConnectors:getMagicTransitConnectors", {
         "accountId": args.accountId,
+        "deviceType": args.deviceType,
         "maxItems": args.maxItems,
     }, opts);
 }
@@ -101,6 +113,11 @@ export interface GetMagicTransitConnectorsOutputArgs {
      * Account identifier
      */
     accountId?: pulumi.Input<string | undefined>;
+    /**
+     * Filter connectors by device type.
+     * Available values: "MANAGED", "LICENSED".
+     */
+    deviceType?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */

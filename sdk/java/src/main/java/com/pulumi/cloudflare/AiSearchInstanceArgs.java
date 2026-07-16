@@ -93,6 +93,23 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.cacheThreshold);
     }
 
+    /**
+     * Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+     * Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+     * 
+     */
+    @Import(name="cacheTtl")
+    private @Nullable Output<Double> cacheTtl;
+
+    /**
+     * @return Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+     * Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+     * 
+     */
+    public Optional<Output<Double>> cacheTtl() {
+        return Optional.ofNullable(this.cacheTtl);
+    }
+
     @Import(name="chunk")
     private @Nullable Output<Boolean> chunk;
 
@@ -122,14 +139,14 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;google-ai-studio/gemini-embedding-2-preview&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
+     * Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;google-ai-studio/gemini-embedding-2-preview&#34;, &#34;google-ai-studio/gemini-embedding-2&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
      * 
      */
     @Import(name="embeddingModel")
     private @Nullable Output<String> embeddingModel;
 
     /**
-     * @return Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;google-ai-studio/gemini-embedding-2-preview&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
+     * @return Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;google-ai-studio/gemini-embedding-2-preview&#34;, &#34;google-ai-studio/gemini-embedding-2&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
      * 
      */
     public Optional<Output<String>> embeddingModel() {
@@ -387,6 +404,7 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
         this.aisearchModel = $.aisearchModel;
         this.cache = $.cache;
         this.cacheThreshold = $.cacheThreshold;
+        this.cacheTtl = $.cacheTtl;
         this.chunk = $.chunk;
         this.chunkOverlap = $.chunkOverlap;
         this.chunkSize = $.chunkSize;
@@ -526,6 +544,29 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
             return cacheThreshold(Output.of(cacheThreshold));
         }
 
+        /**
+         * @param cacheTtl Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+         * Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacheTtl(@Nullable Output<Double> cacheTtl) {
+            $.cacheTtl = cacheTtl;
+            return this;
+        }
+
+        /**
+         * @param cacheTtl Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+         * Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacheTtl(Double cacheTtl) {
+            return cacheTtl(Output.of(cacheTtl));
+        }
+
         public Builder chunk(@Nullable Output<Boolean> chunk) {
             $.chunk = chunk;
             return this;
@@ -567,7 +608,7 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param embeddingModel Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;google-ai-studio/gemini-embedding-2-preview&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
+         * @param embeddingModel Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;google-ai-studio/gemini-embedding-2-preview&#34;, &#34;google-ai-studio/gemini-embedding-2&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
          * 
          * @return builder
          * 
@@ -578,7 +619,7 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param embeddingModel Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;google-ai-studio/gemini-embedding-2-preview&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
+         * @param embeddingModel Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;google-ai-studio/gemini-embedding-2-preview&#34;, &#34;google-ai-studio/gemini-embedding-2&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
          * 
          * @return builder
          * 

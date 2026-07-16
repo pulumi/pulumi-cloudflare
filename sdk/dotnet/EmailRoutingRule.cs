@@ -50,7 +50,9 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         Enabled = true,
     ///         Name = "Send to user@example.net rule.",
+    ///         OwnerWorkerTag = "a7e6fb77503c41d8a7f3113c6918f10c",
     ///         Priority = 0,
+    ///         Source = "api",
     ///     });
     /// 
     /// });
@@ -90,10 +92,26 @@ namespace Pulumi.Cloudflare
         public Output<string?> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Public tag (script_tag) of the Worker that owns this rule. Required when
+        /// `Source` is `Wrangler`.
+        /// </summary>
+        [Output("ownerWorkerTag")]
+        public Output<string?> OwnerWorkerTag { get; private set; } = null!;
+
+        /// <summary>
         /// Priority of the routing rule.
         /// </summary>
         [Output("priority")]
         public Output<double> Priority { get; private set; } = null!;
+
+        /// <summary>
+        /// Who manages the rule. `Api` covers dashboard, generic API, and Terraform;
+        /// `Wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+        /// to `Api` when omitted on write.
+        /// Available values: "api", "wrangler".
+        /// </summary>
+        [Output("source")]
+        public Output<string> Source { get; private set; } = null!;
 
         /// <summary>
         /// Routing rule tag. (Deprecated, replaced by routing rule identifier)
@@ -105,7 +123,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("zoneId")]
-        public Output<string?> ZoneId { get; private set; } = null!;
+        public Output<string> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -190,16 +208,32 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Public tag (script_tag) of the Worker that owns this rule. Required when
+        /// `Source` is `Wrangler`.
+        /// </summary>
+        [Input("ownerWorkerTag")]
+        public Input<string>? OwnerWorkerTag { get; set; }
+
+        /// <summary>
         /// Priority of the routing rule.
         /// </summary>
         [Input("priority")]
         public Input<double>? Priority { get; set; }
 
         /// <summary>
+        /// Who manages the rule. `Api` covers dashboard, generic API, and Terraform;
+        /// `Wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+        /// to `Api` when omitted on write.
+        /// Available values: "api", "wrangler".
+        /// </summary>
+        [Input("source")]
+        public Input<string>? Source { get; set; }
+
+        /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId")]
-        public Input<string>? ZoneId { get; set; }
+        [Input("zoneId", required: true)]
+        public Input<string> ZoneId { get; set; } = null!;
 
         public EmailRoutingRuleArgs()
         {
@@ -246,10 +280,26 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Public tag (script_tag) of the Worker that owns this rule. Required when
+        /// `Source` is `Wrangler`.
+        /// </summary>
+        [Input("ownerWorkerTag")]
+        public Input<string>? OwnerWorkerTag { get; set; }
+
+        /// <summary>
         /// Priority of the routing rule.
         /// </summary>
         [Input("priority")]
         public Input<double>? Priority { get; set; }
+
+        /// <summary>
+        /// Who manages the rule. `Api` covers dashboard, generic API, and Terraform;
+        /// `Wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+        /// to `Api` when omitted on write.
+        /// Available values: "api", "wrangler".
+        /// </summary>
+        [Input("source")]
+        public Input<string>? Source { get; set; }
 
         /// <summary>
         /// Routing rule tag. (Deprecated, replaced by routing rule identifier)

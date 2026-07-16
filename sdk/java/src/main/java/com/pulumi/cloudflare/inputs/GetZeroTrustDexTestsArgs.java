@@ -16,15 +16,23 @@ public final class GetZeroTrustDexTestsArgs extends com.pulumi.resources.InvokeA
 
     public static final GetZeroTrustDexTestsArgs Empty = new GetZeroTrustDexTestsArgs();
 
+    /**
+     * Unique identifier linked to an account.
+     * 
+     */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
+    /**
+     * @return Unique identifier linked to an account.
+     * 
+     */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
     /**
-     * Filter by test type
+     * Filter by test type.
      * Available values: &#34;http&#34;, &#34;traceroute&#34;.
      * 
      */
@@ -32,7 +40,7 @@ public final class GetZeroTrustDexTestsArgs extends com.pulumi.resources.InvokeA
     private @Nullable Output<String> kind;
 
     /**
-     * @return Filter by test type
+     * @return Filter by test type.
      * Available values: &#34;http&#34;, &#34;traceroute&#34;.
      * 
      */
@@ -56,14 +64,14 @@ public final class GetZeroTrustDexTestsArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Filter by test name
+     * Filter by test name.
      * 
      */
     @Import(name="testName")
     private @Nullable Output<String> testName;
 
     /**
-     * @return Filter by test name
+     * @return Filter by test name.
      * 
      */
     public Optional<Output<String>> testName() {
@@ -97,17 +105,29 @@ public final class GetZeroTrustDexTestsArgs extends com.pulumi.resources.InvokeA
             $ = new GetZeroTrustDexTestsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId Unique identifier linked to an account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param accountId Unique identifier linked to an account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
         /**
-         * @param kind Filter by test type
+         * @param kind Filter by test type.
          * Available values: &#34;http&#34;, &#34;traceroute&#34;.
          * 
          * @return builder
@@ -119,7 +139,7 @@ public final class GetZeroTrustDexTestsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param kind Filter by test type
+         * @param kind Filter by test type.
          * Available values: &#34;http&#34;, &#34;traceroute&#34;.
          * 
          * @return builder
@@ -151,7 +171,7 @@ public final class GetZeroTrustDexTestsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param testName Filter by test name
+         * @param testName Filter by test name.
          * 
          * @return builder
          * 
@@ -162,7 +182,7 @@ public final class GetZeroTrustDexTestsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param testName Filter by test name
+         * @param testName Filter by test name.
          * 
          * @return builder
          * 

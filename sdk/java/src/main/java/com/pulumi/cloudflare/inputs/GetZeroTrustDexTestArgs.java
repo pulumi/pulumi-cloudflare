@@ -18,9 +18,17 @@ public final class GetZeroTrustDexTestArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetZeroTrustDexTestArgs Empty = new GetZeroTrustDexTestArgs();
 
+    /**
+     * Unique identifier linked to an account.
+     * 
+     */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
+    /**
+     * @return Unique identifier linked to an account.
+     * 
+     */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -89,11 +97,23 @@ public final class GetZeroTrustDexTestArgs extends com.pulumi.resources.InvokeAr
             $ = new GetZeroTrustDexTestArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId Unique identifier linked to an account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param accountId Unique identifier linked to an account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }

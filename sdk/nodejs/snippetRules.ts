@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
 /**
  * Accepted Permissions
  *
+ * - `Snippets Read`
  * - `Snippets Write`
  *
  * ## Example Usage
@@ -30,7 +31,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * > This resource does not currently support `pulumi import`.
+ * ```sh
+ * $ pulumi import cloudflare:index/snippetRules:SnippetRules example '<zone_id>'
+ * ```
  */
 export class SnippetRules extends pulumi.CustomResource {
     /**
@@ -67,7 +70,7 @@ export class SnippetRules extends pulumi.CustomResource {
     /**
      * Use this field to specify the unique ID of the zone.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a SnippetRules resource with the given unique name, arguments, and options.
@@ -88,6 +91,9 @@ export class SnippetRules extends pulumi.CustomResource {
             const args = argsOrState as SnippetRulesArgs | undefined;
             if (args?.rules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rules'");
+            }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["rules"] = args?.rules;
             resourceInputs["zoneId"] = args?.zoneId;
@@ -122,5 +128,5 @@ export interface SnippetRulesArgs {
     /**
      * Use this field to specify the unique ID of the zone.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

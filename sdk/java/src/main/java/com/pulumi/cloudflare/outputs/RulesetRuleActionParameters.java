@@ -37,6 +37,7 @@ import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersStaleIfError;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersStaleWhileRevalidate;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersTransformedRequestField;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersUri;
+import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersVary;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -449,6 +450,11 @@ public final class RulesetRuleActionParameters {
      * 
      */
     private @Nullable List<String> values;
+    /**
+     * @return Controls how cached responses vary based on request headers. `default` is required and applies to any Vary response header that does not have a per-header override.
+     * 
+     */
+    private @Nullable RulesetRuleActionParametersVary vary;
 
     private RulesetRuleActionParameters() {}
     /**
@@ -1007,6 +1013,13 @@ public final class RulesetRuleActionParameters {
     public List<String> values() {
         return this.values == null ? List.of() : this.values;
     }
+    /**
+     * @return Controls how cached responses vary based on request headers. `default` is required and applies to any Vary response header that does not have a per-header override.
+     * 
+     */
+    public Optional<RulesetRuleActionParametersVary> vary() {
+        return Optional.ofNullable(this.vary);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -1095,6 +1108,7 @@ public final class RulesetRuleActionParameters {
         private @Nullable List<RulesetRuleActionParametersTransformedRequestField> transformedRequestFields;
         private @Nullable RulesetRuleActionParametersUri uri;
         private @Nullable List<String> values;
+        private @Nullable RulesetRuleActionParametersVary vary;
         public Builder() {}
         public Builder(RulesetRuleActionParameters defaults) {
     	      Objects.requireNonNull(defaults);
@@ -1176,6 +1190,7 @@ public final class RulesetRuleActionParameters {
     	      this.transformedRequestFields = defaults.transformedRequestFields;
     	      this.uri = defaults.uri;
     	      this.values = defaults.values;
+    	      this.vary = defaults.vary;
         }
 
         @CustomType.Setter
@@ -1679,6 +1694,12 @@ public final class RulesetRuleActionParameters {
         public Builder values(String... values) {
             return values(List.of(values));
         }
+        @CustomType.Setter
+        public Builder vary(@Nullable RulesetRuleActionParametersVary vary) {
+
+            this.vary = vary;
+            return this;
+        }
         public RulesetRuleActionParameters build() {
             final var _resultValue = new RulesetRuleActionParameters();
             _resultValue.additionalCacheablePorts = additionalCacheablePorts;
@@ -1759,6 +1780,7 @@ public final class RulesetRuleActionParameters {
             _resultValue.transformedRequestFields = transformedRequestFields;
             _resultValue.uri = uri;
             _resultValue.values = values;
+            _resultValue.vary = vary;
             return _resultValue;
         }
     }

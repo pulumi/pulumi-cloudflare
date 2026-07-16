@@ -105,6 +105,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDexTestArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Unique identifier linked to an account.
+        /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
 
@@ -137,6 +140,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDexTestInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Unique identifier linked to an account.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
@@ -171,6 +177,9 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustDexTestResult
     {
+        /// <summary>
+        /// Unique identifier linked to an account.
+        /// </summary>
         public readonly string? AccountId;
         /// <summary>
         /// The configuration object which contains the details for the WARP client to conduct the test.

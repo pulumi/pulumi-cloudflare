@@ -63,7 +63,7 @@ export class CloudforceOneRequest extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     declare public /*out*/ readonly completed: pulumi.Output<string>;
     /**
      * Request content.
@@ -117,7 +117,7 @@ export class CloudforceOneRequest extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: CloudforceOneRequestArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: CloudforceOneRequestArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CloudforceOneRequestArgs | CloudforceOneRequestState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -139,6 +139,9 @@ export class CloudforceOneRequest extends pulumi.CustomResource {
             resourceInputs["updated"] = state?.updated;
         } else {
             const args = argsOrState as CloudforceOneRequestArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["content"] = args?.content;
             resourceInputs["priority"] = args?.priority;
@@ -221,7 +224,7 @@ export interface CloudforceOneRequestArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Request content.
      */

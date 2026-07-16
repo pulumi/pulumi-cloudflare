@@ -91,6 +91,7 @@ namespace Pulumi.Cloudflare
     ///             {
     ///                 Mode = "static",
     ///             },
+    ///             MaxTtlSecs = 3600,
     ///             ProtocolDetection = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs
     ///             {
     ///                 Enabled = true,

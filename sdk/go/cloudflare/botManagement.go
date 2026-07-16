@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Bot Management Read`
+// - `Bot Management Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -53,7 +58,7 @@ import (
 type BotManagement struct {
 	pulumi.CustomResourceState
 
-	// Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
+	// Enable rule to block AI Scrapers and Crawlers.
 	// Available values: "block", "disabled", "only*on*ad_pages".
 	AiBotsProtection pulumi.StringOutput `pulumi:"aiBotsProtection"`
 	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
@@ -133,7 +138,7 @@ func GetBotManagement(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BotManagement resources.
 type botManagementState struct {
-	// Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
+	// Enable rule to block AI Scrapers and Crawlers.
 	// Available values: "block", "disabled", "only*on*ad_pages".
 	AiBotsProtection *string `pulumi:"aiBotsProtection"`
 	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
@@ -181,7 +186,7 @@ type botManagementState struct {
 }
 
 type BotManagementState struct {
-	// Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
+	// Enable rule to block AI Scrapers and Crawlers.
 	// Available values: "block", "disabled", "only*on*ad_pages".
 	AiBotsProtection pulumi.StringPtrInput
 	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
@@ -233,7 +238,7 @@ func (BotManagementState) ElementType() reflect.Type {
 }
 
 type botManagementArgs struct {
-	// Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
+	// Enable rule to block AI Scrapers and Crawlers.
 	// Available values: "block", "disabled", "only*on*ad_pages".
 	AiBotsProtection *string `pulumi:"aiBotsProtection"`
 	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
@@ -278,7 +283,7 @@ type botManagementArgs struct {
 
 // The set of arguments for constructing a BotManagement resource.
 type BotManagementArgs struct {
-	// Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
+	// Enable rule to block AI Scrapers and Crawlers.
 	// Available values: "block", "disabled", "only*on*ad_pages".
 	AiBotsProtection pulumi.StringPtrInput
 	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
@@ -408,7 +413,7 @@ func (o BotManagementOutput) ToBotManagementOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
+// Enable rule to block AI Scrapers and Crawlers.
 // Available values: "block", "disabled", "only*on*ad_pages".
 func (o BotManagementOutput) AiBotsProtection() pulumi.StringOutput {
 	return o.ApplyT(func(v *BotManagement) pulumi.StringOutput { return v.AiBotsProtection }).(pulumi.StringOutput)

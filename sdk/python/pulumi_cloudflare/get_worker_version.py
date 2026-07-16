@@ -27,7 +27,7 @@ class GetWorkerVersionResult:
     """
     A collection of values returned by getWorkerVersion.
     """
-    def __init__(__self__, account_id=None, annotations=None, assets=None, bindings=None, compatibility_date=None, compatibility_flags=None, containers=None, created_on=None, id=None, include=None, limits=None, main_module=None, main_script_base64=None, migration_tag=None, migrations=None, modules=None, number=None, placement=None, source=None, startup_time_ms=None, urls=None, usage_model=None, version_id=None, worker_id=None):
+    def __init__(__self__, account_id=None, annotations=None, assets=None, bindings=None, cache_options=None, compatibility_date=None, compatibility_flags=None, containers=None, created_on=None, id=None, include=None, limits=None, main_module=None, main_script_base64=None, migration_tag=None, migrations=None, modules=None, number=None, package_dependencies=None, placement=None, source=None, startup_time_ms=None, urls=None, usage_model=None, version_id=None, worker_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -40,6 +40,9 @@ class GetWorkerVersionResult:
         if bindings and not isinstance(bindings, list):
             raise TypeError("Expected argument 'bindings' to be a list")
         pulumi.set(__self__, "bindings", bindings)
+        if cache_options and not isinstance(cache_options, dict):
+            raise TypeError("Expected argument 'cache_options' to be a dict")
+        pulumi.set(__self__, "cache_options", cache_options)
         if compatibility_date and not isinstance(compatibility_date, str):
             raise TypeError("Expected argument 'compatibility_date' to be a str")
         pulumi.set(__self__, "compatibility_date", compatibility_date)
@@ -79,6 +82,9 @@ class GetWorkerVersionResult:
         if number and not isinstance(number, int):
             raise TypeError("Expected argument 'number' to be a int")
         pulumi.set(__self__, "number", number)
+        if package_dependencies and not isinstance(package_dependencies, list):
+            raise TypeError("Expected argument 'package_dependencies' to be a list")
+        pulumi.set(__self__, "package_dependencies", package_dependencies)
         if placement and not isinstance(placement, dict):
             raise TypeError("Expected argument 'placement' to be a dict")
         pulumi.set(__self__, "placement", placement)
@@ -103,7 +109,7 @@ class GetWorkerVersionResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[_builtins.str]:
+    def account_id(self) -> _builtins.str:
         """
         Identifier.
         """
@@ -129,6 +135,11 @@ class GetWorkerVersionResult:
     @pulumi.getter
     def bindings(self) -> Sequence['outputs.GetWorkerVersionBindingResult']:
         return pulumi.get(self, "bindings")
+
+    @_builtins.property
+    @pulumi.getter(name="cacheOptions")
+    def cache_options(self) -> 'outputs.GetWorkerVersionCacheOptionsResult':
+        return pulumi.get(self, "cache_options")
 
     @_builtins.property
     @pulumi.getter(name="compatibilityDate")
@@ -200,6 +211,11 @@ class GetWorkerVersionResult:
         return pulumi.get(self, "number")
 
     @_builtins.property
+    @pulumi.getter(name="packageDependencies")
+    def package_dependencies(self) -> Sequence['outputs.GetWorkerVersionPackageDependencyResult']:
+        return pulumi.get(self, "package_dependencies")
+
+    @_builtins.property
     @pulumi.getter
     def placement(self) -> 'outputs.GetWorkerVersionPlacementResult':
         return pulumi.get(self, "placement")
@@ -252,6 +268,7 @@ class AwaitableGetWorkerVersionResult(GetWorkerVersionResult):
             annotations=self.annotations,
             assets=self.assets,
             bindings=self.bindings,
+            cache_options=self.cache_options,
             compatibility_date=self.compatibility_date,
             compatibility_flags=self.compatibility_flags,
             containers=self.containers,
@@ -265,6 +282,7 @@ class AwaitableGetWorkerVersionResult(GetWorkerVersionResult):
             migrations=self.migrations,
             modules=self.modules,
             number=self.number,
+            package_dependencies=self.package_dependencies,
             placement=self.placement,
             source=self.source,
             startup_time_ms=self.startup_time_ms,
@@ -318,6 +336,7 @@ def get_worker_version(account_id: Optional[_builtins.str] = None,
         annotations=pulumi.get(__ret__, 'annotations'),
         assets=pulumi.get(__ret__, 'assets'),
         bindings=pulumi.get(__ret__, 'bindings'),
+        cache_options=pulumi.get(__ret__, 'cache_options'),
         compatibility_date=pulumi.get(__ret__, 'compatibility_date'),
         compatibility_flags=pulumi.get(__ret__, 'compatibility_flags'),
         containers=pulumi.get(__ret__, 'containers'),
@@ -331,6 +350,7 @@ def get_worker_version(account_id: Optional[_builtins.str] = None,
         migrations=pulumi.get(__ret__, 'migrations'),
         modules=pulumi.get(__ret__, 'modules'),
         number=pulumi.get(__ret__, 'number'),
+        package_dependencies=pulumi.get(__ret__, 'package_dependencies'),
         placement=pulumi.get(__ret__, 'placement'),
         source=pulumi.get(__ret__, 'source'),
         startup_time_ms=pulumi.get(__ret__, 'startup_time_ms'),
@@ -338,7 +358,7 @@ def get_worker_version(account_id: Optional[_builtins.str] = None,
         usage_model=pulumi.get(__ret__, 'usage_model'),
         version_id=pulumi.get(__ret__, 'version_id'),
         worker_id=pulumi.get(__ret__, 'worker_id'))
-def get_worker_version_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_worker_version_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                               include: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               version_id: pulumi.Input[Optional[_builtins.str]] = None,
                               worker_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -381,6 +401,7 @@ def get_worker_version_output(account_id: pulumi.Input[Optional[Optional[_builti
         annotations=pulumi.get(__response__, 'annotations'),
         assets=pulumi.get(__response__, 'assets'),
         bindings=pulumi.get(__response__, 'bindings'),
+        cache_options=pulumi.get(__response__, 'cache_options'),
         compatibility_date=pulumi.get(__response__, 'compatibility_date'),
         compatibility_flags=pulumi.get(__response__, 'compatibility_flags'),
         containers=pulumi.get(__response__, 'containers'),
@@ -394,6 +415,7 @@ def get_worker_version_output(account_id: pulumi.Input[Optional[Optional[_builti
         migrations=pulumi.get(__response__, 'migrations'),
         modules=pulumi.get(__response__, 'modules'),
         number=pulumi.get(__response__, 'number'),
+        package_dependencies=pulumi.get(__response__, 'package_dependencies'),
         placement=pulumi.get(__response__, 'placement'),
         source=pulumi.get(__response__, 'source'),
         startup_time_ms=pulumi.get(__response__, 'startup_time_ms'),

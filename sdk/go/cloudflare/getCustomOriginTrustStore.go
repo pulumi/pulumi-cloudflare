@@ -63,7 +63,7 @@ type LookupCustomOriginTrustStoreArgs struct {
 
 // A collection of values returned by getCustomOriginTrustStore.
 type LookupCustomOriginTrustStoreResult struct {
-	// The zone's SSL certificate or certificate and the intermediate(s).
+	// The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
 	Certificate string `pulumi:"certificate"`
 	// Identifier.
 	CustomOriginTrustStoreId *string `pulumi:"customOriginTrustStoreId"`
@@ -124,7 +124,7 @@ func (o LookupCustomOriginTrustStoreResultOutput) ToLookupCustomOriginTrustStore
 	return o
 }
 
-// The zone's SSL certificate or certificate and the intermediate(s).
+// The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
 func (o LookupCustomOriginTrustStoreResultOutput) Certificate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomOriginTrustStoreResult) string { return v.Certificate }).(pulumi.StringOutput)
 }

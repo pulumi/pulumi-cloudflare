@@ -16,8 +16,6 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetStreamLiveInputResult {
@@ -25,7 +23,7 @@ public final class GetStreamLiveInputResult {
      * @return Identifier.
      * 
      */
-    private @Nullable String accountId;
+    private String accountId;
     /**
      * @return The date and time the live input was created.
      * 
@@ -47,6 +45,11 @@ public final class GetStreamLiveInputResult {
      */
     private String id;
     /**
+     * @return The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
+     * 
+     */
+    private String keysRotatedAt;
+    /**
      * @return A unique identifier for a live input.
      * 
      */
@@ -61,6 +64,11 @@ public final class GetStreamLiveInputResult {
      * 
      */
     private String modified;
+    /**
+     * @return When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
+     * 
+     */
+    private Boolean preferLowLatency;
     /**
      * @return Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
      * 
@@ -113,8 +121,8 @@ public final class GetStreamLiveInputResult {
      * @return Identifier.
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
     /**
      * @return The date and time the live input was created.
@@ -145,6 +153,13 @@ public final class GetStreamLiveInputResult {
         return this.id;
     }
     /**
+     * @return The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
+     * 
+     */
+    public String keysRotatedAt() {
+        return this.keysRotatedAt;
+    }
+    /**
      * @return A unique identifier for a live input.
      * 
      */
@@ -164,6 +179,13 @@ public final class GetStreamLiveInputResult {
      */
     public String modified() {
         return this.modified;
+    }
+    /**
+     * @return When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
+     * 
+     */
+    public Boolean preferLowLatency() {
+        return this.preferLowLatency;
     }
     /**
      * @return Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
@@ -239,14 +261,16 @@ public final class GetStreamLiveInputResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
+        private String accountId;
         private String created;
         private Double deleteRecordingAfterDays;
         private Boolean enabled;
         private String id;
+        private String keysRotatedAt;
         private String liveInputIdentifier;
         private String meta;
         private String modified;
+        private Boolean preferLowLatency;
         private GetStreamLiveInputRecording recording;
         private GetStreamLiveInputRtmps rtmps;
         private GetStreamLiveInputRtmpsPlayback rtmpsPlayback;
@@ -264,9 +288,11 @@ public final class GetStreamLiveInputResult {
     	      this.deleteRecordingAfterDays = defaults.deleteRecordingAfterDays;
     	      this.enabled = defaults.enabled;
     	      this.id = defaults.id;
+    	      this.keysRotatedAt = defaults.keysRotatedAt;
     	      this.liveInputIdentifier = defaults.liveInputIdentifier;
     	      this.meta = defaults.meta;
     	      this.modified = defaults.modified;
+    	      this.preferLowLatency = defaults.preferLowLatency;
     	      this.recording = defaults.recording;
     	      this.rtmps = defaults.rtmps;
     	      this.rtmpsPlayback = defaults.rtmpsPlayback;
@@ -279,8 +305,10 @@ public final class GetStreamLiveInputResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetStreamLiveInputResult", "accountId");
+            }
             this.accountId = accountId;
             return this;
         }
@@ -317,6 +345,14 @@ public final class GetStreamLiveInputResult {
             return this;
         }
         @CustomType.Setter
+        public Builder keysRotatedAt(String keysRotatedAt) {
+            if (keysRotatedAt == null) {
+              throw new MissingRequiredPropertyException("GetStreamLiveInputResult", "keysRotatedAt");
+            }
+            this.keysRotatedAt = keysRotatedAt;
+            return this;
+        }
+        @CustomType.Setter
         public Builder liveInputIdentifier(String liveInputIdentifier) {
             if (liveInputIdentifier == null) {
               throw new MissingRequiredPropertyException("GetStreamLiveInputResult", "liveInputIdentifier");
@@ -338,6 +374,14 @@ public final class GetStreamLiveInputResult {
               throw new MissingRequiredPropertyException("GetStreamLiveInputResult", "modified");
             }
             this.modified = modified;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder preferLowLatency(Boolean preferLowLatency) {
+            if (preferLowLatency == null) {
+              throw new MissingRequiredPropertyException("GetStreamLiveInputResult", "preferLowLatency");
+            }
+            this.preferLowLatency = preferLowLatency;
             return this;
         }
         @CustomType.Setter
@@ -419,9 +463,11 @@ public final class GetStreamLiveInputResult {
             _resultValue.deleteRecordingAfterDays = deleteRecordingAfterDays;
             _resultValue.enabled = enabled;
             _resultValue.id = id;
+            _resultValue.keysRotatedAt = keysRotatedAt;
             _resultValue.liveInputIdentifier = liveInputIdentifier;
             _resultValue.meta = meta;
             _resultValue.modified = modified;
+            _resultValue.preferLowLatency = preferLowLatency;
             _resultValue.recording = recording;
             _resultValue.rtmps = rtmps;
             _resultValue.rtmpsPlayback = rtmpsPlayback;

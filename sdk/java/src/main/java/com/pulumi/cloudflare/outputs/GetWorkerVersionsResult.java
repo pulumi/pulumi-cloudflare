@@ -6,10 +6,12 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultAnnotations;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultAssets;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultBinding;
+import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultCacheOptions;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultContainer;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultLimits;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultMigrations;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultModule;
+import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultPackageDependency;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultPlacement;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -35,6 +37,14 @@ public final class GetWorkerVersionsResult {
      * 
      */
     private List<GetWorkerVersionsResultBinding> bindings;
+    /**
+     * @return Global CacheW configuration for the Worker. When caching is on,
+     * the platform provisions a `cloudflare.app` zone for the Worker.
+     * A `type: worker` entry in the `exports` map can override this
+     * value for a single entrypoint.
+     * 
+     */
+    private GetWorkerVersionsResultCacheOptions cacheOptions;
     /**
      * @return Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      * 
@@ -101,6 +111,12 @@ public final class GetWorkerVersionsResult {
      */
     private Integer number;
     /**
+     * @return The list of npm packages that were installed and used when this Worker
+     * version was built.
+     * 
+     */
+    private List<GetWorkerVersionsResultPackageDependency> packageDependencies;
+    /**
      * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.
      * 
      */
@@ -152,6 +168,16 @@ public final class GetWorkerVersionsResult {
      */
     public List<GetWorkerVersionsResultBinding> bindings() {
         return this.bindings;
+    }
+    /**
+     * @return Global CacheW configuration for the Worker. When caching is on,
+     * the platform provisions a `cloudflare.app` zone for the Worker.
+     * A `type: worker` entry in the `exports` map can override this
+     * value for a single entrypoint.
+     * 
+     */
+    public GetWorkerVersionsResultCacheOptions cacheOptions() {
+        return this.cacheOptions;
     }
     /**
      * @return Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -243,6 +269,14 @@ public final class GetWorkerVersionsResult {
         return this.number;
     }
     /**
+     * @return The list of npm packages that were installed and used when this Worker
+     * version was built.
+     * 
+     */
+    public List<GetWorkerVersionsResultPackageDependency> packageDependencies() {
+        return this.packageDependencies;
+    }
+    /**
      * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.
      * 
      */
@@ -295,6 +329,7 @@ public final class GetWorkerVersionsResult {
         private GetWorkerVersionsResultAnnotations annotations;
         private GetWorkerVersionsResultAssets assets;
         private List<GetWorkerVersionsResultBinding> bindings;
+        private GetWorkerVersionsResultCacheOptions cacheOptions;
         private String compatibilityDate;
         private List<String> compatibilityFlags;
         private List<GetWorkerVersionsResultContainer> containers;
@@ -307,6 +342,7 @@ public final class GetWorkerVersionsResult {
         private GetWorkerVersionsResultMigrations migrations;
         private List<GetWorkerVersionsResultModule> modules;
         private Integer number;
+        private List<GetWorkerVersionsResultPackageDependency> packageDependencies;
         private GetWorkerVersionsResultPlacement placement;
         private String source;
         private Integer startupTimeMs;
@@ -318,6 +354,7 @@ public final class GetWorkerVersionsResult {
     	      this.annotations = defaults.annotations;
     	      this.assets = defaults.assets;
     	      this.bindings = defaults.bindings;
+    	      this.cacheOptions = defaults.cacheOptions;
     	      this.compatibilityDate = defaults.compatibilityDate;
     	      this.compatibilityFlags = defaults.compatibilityFlags;
     	      this.containers = defaults.containers;
@@ -330,6 +367,7 @@ public final class GetWorkerVersionsResult {
     	      this.migrations = defaults.migrations;
     	      this.modules = defaults.modules;
     	      this.number = defaults.number;
+    	      this.packageDependencies = defaults.packageDependencies;
     	      this.placement = defaults.placement;
     	      this.source = defaults.source;
     	      this.startupTimeMs = defaults.startupTimeMs;
@@ -363,6 +401,14 @@ public final class GetWorkerVersionsResult {
         }
         public Builder bindings(GetWorkerVersionsResultBinding... bindings) {
             return bindings(List.of(bindings));
+        }
+        @CustomType.Setter
+        public Builder cacheOptions(GetWorkerVersionsResultCacheOptions cacheOptions) {
+            if (cacheOptions == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionsResult", "cacheOptions");
+            }
+            this.cacheOptions = cacheOptions;
+            return this;
         }
         @CustomType.Setter
         public Builder compatibilityDate(String compatibilityDate) {
@@ -470,6 +516,17 @@ public final class GetWorkerVersionsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder packageDependencies(List<GetWorkerVersionsResultPackageDependency> packageDependencies) {
+            if (packageDependencies == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionsResult", "packageDependencies");
+            }
+            this.packageDependencies = packageDependencies;
+            return this;
+        }
+        public Builder packageDependencies(GetWorkerVersionsResultPackageDependency... packageDependencies) {
+            return packageDependencies(List.of(packageDependencies));
+        }
+        @CustomType.Setter
         public Builder placement(GetWorkerVersionsResultPlacement placement) {
             if (placement == null) {
               throw new MissingRequiredPropertyException("GetWorkerVersionsResult", "placement");
@@ -517,6 +574,7 @@ public final class GetWorkerVersionsResult {
             _resultValue.annotations = annotations;
             _resultValue.assets = assets;
             _resultValue.bindings = bindings;
+            _resultValue.cacheOptions = cacheOptions;
             _resultValue.compatibilityDate = compatibilityDate;
             _resultValue.compatibilityFlags = compatibilityFlags;
             _resultValue.containers = containers;
@@ -529,6 +587,7 @@ public final class GetWorkerVersionsResult {
             _resultValue.migrations = migrations;
             _resultValue.modules = modules;
             _resultValue.number = number;
+            _resultValue.packageDependencies = packageDependencies;
             _resultValue.placement = placement;
             _resultValue.source = source;
             _resultValue.startupTimeMs = startupTimeMs;

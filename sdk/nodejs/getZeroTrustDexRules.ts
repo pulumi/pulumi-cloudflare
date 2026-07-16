@@ -42,22 +42,25 @@ export function getZeroTrustDexRules(args?: GetZeroTrustDexRulesArgs, opts?: pul
  * A collection of arguments for invoking getZeroTrustDexRules.
  */
 export interface GetZeroTrustDexRulesArgs {
+    /**
+     * Unique identifier linked to an account.
+     */
     accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
     /**
-     * Filter results by rule name
+     * Filter results by rule name.
      */
     name?: string;
     /**
-     * Which property to sort results by
+     * Which property to sort results by.
      * Available values: "name", "created*at", "updated*at".
      */
     sortBy?: string;
     /**
-     * Sort direction for sortBy property
+     * Sort direction for sortBy property.
      * Available values: "ASC", "DESC".
      */
     sortOrder?: string;
@@ -67,6 +70,9 @@ export interface GetZeroTrustDexRulesArgs {
  * A collection of values returned by getZeroTrustDexRules.
  */
 export interface GetZeroTrustDexRulesResult {
+    /**
+     * Unique identifier linked to an account.
+     */
     readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -77,7 +83,7 @@ export interface GetZeroTrustDexRulesResult {
      */
     readonly maxItems?: number;
     /**
-     * Filter results by rule name
+     * Filter results by rule name.
      */
     readonly name?: string;
     /**
@@ -85,12 +91,12 @@ export interface GetZeroTrustDexRulesResult {
      */
     readonly results: outputs.GetZeroTrustDexRulesResult[];
     /**
-     * Which property to sort results by
+     * Which property to sort results by.
      * Available values: "name", "created*at", "updated*at".
      */
     readonly sortBy: string;
     /**
-     * Sort direction for sortBy property
+     * Sort direction for sortBy property.
      * Available values: "ASC", "DESC".
      */
     readonly sortOrder: string;
@@ -131,22 +137,25 @@ export function getZeroTrustDexRulesOutput(args?: GetZeroTrustDexRulesOutputArgs
  * A collection of arguments for invoking getZeroTrustDexRules.
  */
 export interface GetZeroTrustDexRulesOutputArgs {
+    /**
+     * Unique identifier linked to an account.
+     */
     accountId?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number | undefined>;
     /**
-     * Filter results by rule name
+     * Filter results by rule name.
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Which property to sort results by
+     * Which property to sort results by.
      * Available values: "name", "created*at", "updated*at".
      */
     sortBy?: pulumi.Input<string | undefined>;
     /**
-     * Sort direction for sortBy property
+     * Sort direction for sortBy property.
      * Available values: "ASC", "DESC".
      */
     sortOrder?: pulumi.Input<string | undefined>;

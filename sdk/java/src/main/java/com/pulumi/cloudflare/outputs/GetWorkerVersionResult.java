@@ -6,10 +6,12 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionAnnotations;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionAssets;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionBinding;
+import com.pulumi.cloudflare.outputs.GetWorkerVersionCacheOptions;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionContainer;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionLimits;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionMigrations;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionModule;
+import com.pulumi.cloudflare.outputs.GetWorkerVersionPackageDependency;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionPlacement;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -26,7 +28,7 @@ public final class GetWorkerVersionResult {
      * @return Identifier.
      * 
      */
-    private @Nullable String accountId;
+    private String accountId;
     /**
      * @return Metadata about the version.
      * 
@@ -38,6 +40,7 @@ public final class GetWorkerVersionResult {
      */
     private GetWorkerVersionAssets assets;
     private List<GetWorkerVersionBinding> bindings;
+    private GetWorkerVersionCacheOptions cacheOptions;
     private String compatibilityDate;
     private List<String> compatibilityFlags;
     private List<GetWorkerVersionContainer> containers;
@@ -56,6 +59,7 @@ public final class GetWorkerVersionResult {
     private GetWorkerVersionMigrations migrations;
     private List<GetWorkerVersionModule> modules;
     private Integer number;
+    private List<GetWorkerVersionPackageDependency> packageDependencies;
     private GetWorkerVersionPlacement placement;
     private String source;
     private Integer startupTimeMs;
@@ -83,8 +87,8 @@ public final class GetWorkerVersionResult {
      * @return Identifier.
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
     /**
      * @return Metadata about the version.
@@ -102,6 +106,9 @@ public final class GetWorkerVersionResult {
     }
     public List<GetWorkerVersionBinding> bindings() {
         return this.bindings;
+    }
+    public GetWorkerVersionCacheOptions cacheOptions() {
+        return this.cacheOptions;
     }
     public String compatibilityDate() {
         return this.compatibilityDate;
@@ -146,6 +153,9 @@ public final class GetWorkerVersionResult {
     }
     public Integer number() {
         return this.number;
+    }
+    public List<GetWorkerVersionPackageDependency> packageDependencies() {
+        return this.packageDependencies;
     }
     public GetWorkerVersionPlacement placement() {
         return this.placement;
@@ -192,10 +202,11 @@ public final class GetWorkerVersionResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
+        private String accountId;
         private GetWorkerVersionAnnotations annotations;
         private GetWorkerVersionAssets assets;
         private List<GetWorkerVersionBinding> bindings;
+        private GetWorkerVersionCacheOptions cacheOptions;
         private String compatibilityDate;
         private List<String> compatibilityFlags;
         private List<GetWorkerVersionContainer> containers;
@@ -209,6 +220,7 @@ public final class GetWorkerVersionResult {
         private GetWorkerVersionMigrations migrations;
         private List<GetWorkerVersionModule> modules;
         private Integer number;
+        private List<GetWorkerVersionPackageDependency> packageDependencies;
         private GetWorkerVersionPlacement placement;
         private String source;
         private Integer startupTimeMs;
@@ -223,6 +235,7 @@ public final class GetWorkerVersionResult {
     	      this.annotations = defaults.annotations;
     	      this.assets = defaults.assets;
     	      this.bindings = defaults.bindings;
+    	      this.cacheOptions = defaults.cacheOptions;
     	      this.compatibilityDate = defaults.compatibilityDate;
     	      this.compatibilityFlags = defaults.compatibilityFlags;
     	      this.containers = defaults.containers;
@@ -236,6 +249,7 @@ public final class GetWorkerVersionResult {
     	      this.migrations = defaults.migrations;
     	      this.modules = defaults.modules;
     	      this.number = defaults.number;
+    	      this.packageDependencies = defaults.packageDependencies;
     	      this.placement = defaults.placement;
     	      this.source = defaults.source;
     	      this.startupTimeMs = defaults.startupTimeMs;
@@ -246,8 +260,10 @@ public final class GetWorkerVersionResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionResult", "accountId");
+            }
             this.accountId = accountId;
             return this;
         }
@@ -277,6 +293,14 @@ public final class GetWorkerVersionResult {
         }
         public Builder bindings(GetWorkerVersionBinding... bindings) {
             return bindings(List.of(bindings));
+        }
+        @CustomType.Setter
+        public Builder cacheOptions(GetWorkerVersionCacheOptions cacheOptions) {
+            if (cacheOptions == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionResult", "cacheOptions");
+            }
+            this.cacheOptions = cacheOptions;
+            return this;
         }
         @CustomType.Setter
         public Builder compatibilityDate(String compatibilityDate) {
@@ -390,6 +414,17 @@ public final class GetWorkerVersionResult {
             return this;
         }
         @CustomType.Setter
+        public Builder packageDependencies(List<GetWorkerVersionPackageDependency> packageDependencies) {
+            if (packageDependencies == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionResult", "packageDependencies");
+            }
+            this.packageDependencies = packageDependencies;
+            return this;
+        }
+        public Builder packageDependencies(GetWorkerVersionPackageDependency... packageDependencies) {
+            return packageDependencies(List.of(packageDependencies));
+        }
+        @CustomType.Setter
         public Builder placement(GetWorkerVersionPlacement placement) {
             if (placement == null) {
               throw new MissingRequiredPropertyException("GetWorkerVersionResult", "placement");
@@ -454,6 +489,7 @@ public final class GetWorkerVersionResult {
             _resultValue.annotations = annotations;
             _resultValue.assets = assets;
             _resultValue.bindings = bindings;
+            _resultValue.cacheOptions = cacheOptions;
             _resultValue.compatibilityDate = compatibilityDate;
             _resultValue.compatibilityFlags = compatibilityFlags;
             _resultValue.containers = containers;
@@ -467,6 +503,7 @@ public final class GetWorkerVersionResult {
             _resultValue.migrations = migrations;
             _resultValue.modules = modules;
             _resultValue.number = number;
+            _resultValue.packageDependencies = packageDependencies;
             _resultValue.placement = placement;
             _resultValue.source = source;
             _resultValue.startupTimeMs = startupTimeMs;

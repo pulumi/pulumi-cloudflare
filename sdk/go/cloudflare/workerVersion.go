@@ -54,6 +54,10 @@ import (
 //						Type: pulumi.String("plain_text"),
 //					},
 //				},
+//				CacheOptions: &cloudflare.WorkerVersionCacheOptionsArgs{
+//					Enabled:           pulumi.Bool(true),
+//					CrossVersionCache: pulumi.Bool(true),
+//				},
 //				CompatibilityDate: pulumi.String("2021-01-01"),
 //				CompatibilityFlags: pulumi.StringArray{
 //					pulumi.String("nodejs_compat"),
@@ -101,6 +105,13 @@ import (
 //						Name:        pulumi.String("index.js"),
 //					},
 //				},
+//				PackageDependencies: cloudflare.WorkerVersionPackageDependencyArray{
+//					&cloudflare.WorkerVersionPackageDependencyArgs{
+//						InstalledVersion:   pulumi.String("4.17.22"),
+//						Name:               pulumi.String("lodash"),
+//						PackageJsonVersion: pulumi.String("^4.17.21"),
+//					},
+//				},
 //				Placement: &cloudflare.WorkerVersionPlacementArgs{
 //					Mode: pulumi.String("smart"),
 //				},
@@ -123,13 +134,18 @@ type WorkerVersion struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Metadata about the version.
 	Annotations WorkerVersionAnnotationsOutput `pulumi:"annotations"`
 	// Configuration for assets within a Worker.
 	Assets WorkerVersionAssetsPtrOutput `pulumi:"assets"`
 	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 	Bindings WorkerVersionBindingArrayOutput `pulumi:"bindings"`
+	// Global CacheW configuration for the Worker. When caching is on,
+	// the platform provisions a `cloudflare.app` zone for the Worker.
+	// A `type: worker` entry in the `exports` map can override this
+	// value for a single entrypoint.
+	CacheOptions WorkerVersionCacheOptionsOutput `pulumi:"cacheOptions"`
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate pulumi.StringPtrOutput `pulumi:"compatibilityDate"`
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
@@ -157,6 +173,9 @@ type WorkerVersion struct {
 	Modules WorkerVersionModuleArrayOutput `pulumi:"modules"`
 	// The integer version number, starting from one.
 	Number pulumi.IntOutput `pulumi:"number"`
+	// The list of npm packages that were installed and used when this Worker
+	// version was built.
+	PackageDependencies WorkerVersionPackageDependencyArrayOutput `pulumi:"packageDependencies"`
 	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
 	Placement WorkerVersionPlacementPtrOutput `pulumi:"placement"`
 	// The client used to create the version.
@@ -181,6 +200,9 @@ func NewWorkerVersion(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.WorkerId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkerId'")
 	}
@@ -215,6 +237,11 @@ type workerVersionState struct {
 	Assets *WorkerVersionAssets `pulumi:"assets"`
 	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 	Bindings []WorkerVersionBinding `pulumi:"bindings"`
+	// Global CacheW configuration for the Worker. When caching is on,
+	// the platform provisions a `cloudflare.app` zone for the Worker.
+	// A `type: worker` entry in the `exports` map can override this
+	// value for a single entrypoint.
+	CacheOptions *WorkerVersionCacheOptions `pulumi:"cacheOptions"`
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate *string `pulumi:"compatibilityDate"`
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
@@ -242,6 +269,9 @@ type workerVersionState struct {
 	Modules []WorkerVersionModule `pulumi:"modules"`
 	// The integer version number, starting from one.
 	Number *int `pulumi:"number"`
+	// The list of npm packages that were installed and used when this Worker
+	// version was built.
+	PackageDependencies []WorkerVersionPackageDependency `pulumi:"packageDependencies"`
 	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
 	Placement *WorkerVersionPlacement `pulumi:"placement"`
 	// The client used to create the version.
@@ -268,6 +298,11 @@ type WorkerVersionState struct {
 	Assets WorkerVersionAssetsPtrInput
 	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 	Bindings WorkerVersionBindingArrayInput
+	// Global CacheW configuration for the Worker. When caching is on,
+	// the platform provisions a `cloudflare.app` zone for the Worker.
+	// A `type: worker` entry in the `exports` map can override this
+	// value for a single entrypoint.
+	CacheOptions WorkerVersionCacheOptionsPtrInput
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate pulumi.StringPtrInput
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
@@ -295,6 +330,9 @@ type WorkerVersionState struct {
 	Modules WorkerVersionModuleArrayInput
 	// The integer version number, starting from one.
 	Number pulumi.IntPtrInput
+	// The list of npm packages that were installed and used when this Worker
+	// version was built.
+	PackageDependencies WorkerVersionPackageDependencyArrayInput
 	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
 	Placement WorkerVersionPlacementPtrInput
 	// The client used to create the version.
@@ -318,13 +356,18 @@ func (WorkerVersionState) ElementType() reflect.Type {
 
 type workerVersionArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Metadata about the version.
 	Annotations *WorkerVersionAnnotations `pulumi:"annotations"`
 	// Configuration for assets within a Worker.
 	Assets *WorkerVersionAssets `pulumi:"assets"`
 	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 	Bindings []WorkerVersionBinding `pulumi:"bindings"`
+	// Global CacheW configuration for the Worker. When caching is on,
+	// the platform provisions a `cloudflare.app` zone for the Worker.
+	// A `type: worker` entry in the `exports` map can override this
+	// value for a single entrypoint.
+	CacheOptions *WorkerVersionCacheOptions `pulumi:"cacheOptions"`
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate *string `pulumi:"compatibilityDate"`
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
@@ -344,6 +387,9 @@ type workerVersionArgs struct {
 	// [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
 	// included as modules named `_headers` and `_redirects` with content type `text/plain`.
 	Modules []WorkerVersionModule `pulumi:"modules"`
+	// The list of npm packages that were installed and used when this Worker
+	// version was built.
+	PackageDependencies []WorkerVersionPackageDependency `pulumi:"packageDependencies"`
 	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
 	Placement *WorkerVersionPlacement `pulumi:"placement"`
 	// Usage model for the version.
@@ -358,13 +404,18 @@ type workerVersionArgs struct {
 // The set of arguments for constructing a WorkerVersion resource.
 type WorkerVersionArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Metadata about the version.
 	Annotations WorkerVersionAnnotationsPtrInput
 	// Configuration for assets within a Worker.
 	Assets WorkerVersionAssetsPtrInput
 	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 	Bindings WorkerVersionBindingArrayInput
+	// Global CacheW configuration for the Worker. When caching is on,
+	// the platform provisions a `cloudflare.app` zone for the Worker.
+	// A `type: worker` entry in the `exports` map can override this
+	// value for a single entrypoint.
+	CacheOptions WorkerVersionCacheOptionsPtrInput
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate pulumi.StringPtrInput
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
@@ -384,6 +435,9 @@ type WorkerVersionArgs struct {
 	// [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
 	// included as modules named `_headers` and `_redirects` with content type `text/plain`.
 	Modules WorkerVersionModuleArrayInput
+	// The list of npm packages that were installed and used when this Worker
+	// version was built.
+	PackageDependencies WorkerVersionPackageDependencyArrayInput
 	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
 	Placement WorkerVersionPlacementPtrInput
 	// Usage model for the version.
@@ -483,8 +537,8 @@ func (o WorkerVersionOutput) ToWorkerVersionOutputWithContext(ctx context.Contex
 }
 
 // Identifier.
-func (o WorkerVersionOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkerVersion) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o WorkerVersionOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerVersion) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Metadata about the version.
@@ -500,6 +554,14 @@ func (o WorkerVersionOutput) Assets() WorkerVersionAssetsPtrOutput {
 // List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 func (o WorkerVersionOutput) Bindings() WorkerVersionBindingArrayOutput {
 	return o.ApplyT(func(v *WorkerVersion) WorkerVersionBindingArrayOutput { return v.Bindings }).(WorkerVersionBindingArrayOutput)
+}
+
+// Global CacheW configuration for the Worker. When caching is on,
+// the platform provisions a `cloudflare.app` zone for the Worker.
+// A `type: worker` entry in the `exports` map can override this
+// value for a single entrypoint.
+func (o WorkerVersionOutput) CacheOptions() WorkerVersionCacheOptionsOutput {
+	return o.ApplyT(func(v *WorkerVersion) WorkerVersionCacheOptionsOutput { return v.CacheOptions }).(WorkerVersionCacheOptionsOutput)
 }
 
 // Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -560,6 +622,12 @@ func (o WorkerVersionOutput) Modules() WorkerVersionModuleArrayOutput {
 // The integer version number, starting from one.
 func (o WorkerVersionOutput) Number() pulumi.IntOutput {
 	return o.ApplyT(func(v *WorkerVersion) pulumi.IntOutput { return v.Number }).(pulumi.IntOutput)
+}
+
+// The list of npm packages that were installed and used when this Worker
+// version was built.
+func (o WorkerVersionOutput) PackageDependencies() WorkerVersionPackageDependencyArrayOutput {
+	return o.ApplyT(func(v *WorkerVersion) WorkerVersionPackageDependencyArrayOutput { return v.PackageDependencies }).(WorkerVersionPackageDependencyArrayOutput)
 }
 
 // Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.

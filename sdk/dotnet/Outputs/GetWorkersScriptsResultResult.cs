@@ -14,6 +14,13 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetWorkersScriptsResultResult
     {
         /// <summary>
+        /// Global CacheW configuration for the Worker. When caching is on,
+        /// the platform provisions a `cloudflare.app` zone for the Worker.
+        /// A `type: worker` entry in the `Exports` map can override this
+        /// value for a single entrypoint.
+        /// </summary>
+        public readonly Outputs.GetWorkersScriptsResultCacheOptionsResult CacheOptions;
+        /// <summary>
         /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         /// </summary>
         public readonly string CompatibilityDate;
@@ -105,6 +112,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private GetWorkersScriptsResultResult(
+            Outputs.GetWorkersScriptsResultCacheOptionsResult cacheOptions,
+
             string compatibilityDate,
 
             ImmutableArray<string> compatibilityFlags,
@@ -149,6 +158,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string usageModel)
         {
+            CacheOptions = cacheOptions;
             CompatibilityDate = compatibilityDate;
             CompatibilityFlags = compatibilityFlags;
             CreatedOn = createdOn;

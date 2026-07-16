@@ -63,7 +63,7 @@ export class LeakedCredentialCheck extends pulumi.CustomResource {
     /**
      * Defines an identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a LeakedCredentialCheck resource with the given unique name, arguments, and options.
@@ -72,7 +72,7 @@ export class LeakedCredentialCheck extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: LeakedCredentialCheckArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: LeakedCredentialCheckArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LeakedCredentialCheckArgs | LeakedCredentialCheckState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -82,6 +82,9 @@ export class LeakedCredentialCheck extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as LeakedCredentialCheckArgs | undefined;
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
+            }
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["zoneId"] = args?.zoneId;
         }
@@ -115,5 +118,5 @@ export interface LeakedCredentialCheckArgs {
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

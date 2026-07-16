@@ -16,11 +16,19 @@ public final class ZeroTrustDexRuleArgs extends com.pulumi.resources.ResourceArg
 
     public static final ZeroTrustDexRuleArgs Empty = new ZeroTrustDexRuleArgs();
 
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    /**
+     * Unique identifier linked to an account.
+     * 
+     */
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    /**
+     * @return Unique identifier linked to an account.
+     * 
+     */
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     @Import(name="description")
@@ -87,11 +95,23 @@ public final class ZeroTrustDexRuleArgs extends com.pulumi.resources.ResourceArg
             $ = new ZeroTrustDexRuleArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(@Nullable Output<String> accountId) {
+        /**
+         * @param accountId Unique identifier linked to an account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param accountId Unique identifier linked to an account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
@@ -148,6 +168,9 @@ public final class ZeroTrustDexRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ZeroTrustDexRuleArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustDexRuleArgs", "accountId");
+            }
             if ($.match == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustDexRuleArgs", "match");
             }

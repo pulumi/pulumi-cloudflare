@@ -7,7 +7,7 @@ import com.pulumi.cloudflare.outputs.GetCustomHostnameFilterHostname;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -40,7 +40,7 @@ public final class GetCustomHostnameFilter {
      */
     private @Nullable String hostnameStatus;
     /**
-     * @return Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the &#39;hostname&#39; parameter.
+     * @return Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the &#39;hostname&#39;, &#39;hostname.exact&#39;, &#39;hostname.contain&#39;, or &#39;hostname.startsWith&#39; parameters.
      * 
      */
     private @Nullable String id;
@@ -55,7 +55,7 @@ public final class GetCustomHostnameFilter {
      * Available values: 0, 1.
      * 
      */
-    private @Nullable Double ssl;
+    private Integer ssl;
     /**
      * @return Filter by SSL certificate status.
      * Available values: &#34;initializing&#34;, &#34;pending*validation&#34;, &#34;deleted&#34;, &#34;pending*issuance&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;pending*expiration&#34;, &#34;expired&#34;, &#34;active&#34;, &#34;initializing*timed*out&#34;, &#34;validation*timed*out&#34;, &#34;issuance*timed*out&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;, &#34;pending*cleanup&#34;, &#34;staging*deployment&#34;, &#34;staging*active&#34;, &#34;deactivating&#34;, &#34;inactive&#34;, &#34;backup*issued&#34;, &#34;holding*deployment&#34;.
@@ -104,7 +104,7 @@ public final class GetCustomHostnameFilter {
         return Optional.ofNullable(this.hostnameStatus);
     }
     /**
-     * @return Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the &#39;hostname&#39; parameter.
+     * @return Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the &#39;hostname&#39;, &#39;hostname.exact&#39;, &#39;hostname.contain&#39;, or &#39;hostname.startsWith&#39; parameters.
      * 
      */
     public Optional<String> id() {
@@ -123,8 +123,8 @@ public final class GetCustomHostnameFilter {
      * Available values: 0, 1.
      * 
      */
-    public Optional<Double> ssl() {
-        return Optional.ofNullable(this.ssl);
+    public Integer ssl() {
+        return this.ssl;
     }
     /**
      * @return Filter by SSL certificate status.
@@ -158,7 +158,7 @@ public final class GetCustomHostnameFilter {
         private @Nullable String hostnameStatus;
         private @Nullable String id;
         private String order;
-        private @Nullable Double ssl;
+        private Integer ssl;
         private @Nullable String sslStatus;
         private @Nullable Boolean wildcard;
         public Builder() {}
@@ -221,8 +221,10 @@ public final class GetCustomHostnameFilter {
             return this;
         }
         @CustomType.Setter
-        public Builder ssl(@Nullable Double ssl) {
-
+        public Builder ssl(Integer ssl) {
+            if (ssl == null) {
+              throw new MissingRequiredPropertyException("GetCustomHostnameFilter", "ssl");
+            }
             this.ssl = ssl;
             return this;
         }

@@ -3,9 +3,9 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetMagicTransitConnectorFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -31,11 +31,18 @@ public final class GetMagicTransitConnectorArgs extends com.pulumi.resources.Inv
         return Optional.ofNullable(this.accountId);
     }
 
-    @Import(name="connectorId", required=true)
-    private Output<String> connectorId;
+    @Import(name="connectorId")
+    private @Nullable Output<String> connectorId;
 
-    public Output<String> connectorId() {
-        return this.connectorId;
+    public Optional<Output<String>> connectorId() {
+        return Optional.ofNullable(this.connectorId);
+    }
+
+    @Import(name="filter")
+    private @Nullable Output<GetMagicTransitConnectorFilterArgs> filter;
+
+    public Optional<Output<GetMagicTransitConnectorFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     private GetMagicTransitConnectorArgs() {}
@@ -43,6 +50,7 @@ public final class GetMagicTransitConnectorArgs extends com.pulumi.resources.Inv
     private GetMagicTransitConnectorArgs(GetMagicTransitConnectorArgs $) {
         this.accountId = $.accountId;
         this.connectorId = $.connectorId;
+        this.filter = $.filter;
     }
 
     public static Builder builder() {
@@ -84,7 +92,7 @@ public final class GetMagicTransitConnectorArgs extends com.pulumi.resources.Inv
             return accountId(Output.of(accountId));
         }
 
-        public Builder connectorId(Output<String> connectorId) {
+        public Builder connectorId(@Nullable Output<String> connectorId) {
             $.connectorId = connectorId;
             return this;
         }
@@ -93,10 +101,16 @@ public final class GetMagicTransitConnectorArgs extends com.pulumi.resources.Inv
             return connectorId(Output.of(connectorId));
         }
 
+        public Builder filter(@Nullable Output<GetMagicTransitConnectorFilterArgs> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        public Builder filter(GetMagicTransitConnectorFilterArgs filter) {
+            return filter(Output.of(filter));
+        }
+
         public GetMagicTransitConnectorArgs build() {
-            if ($.connectorId == null) {
-                throw new MissingRequiredPropertyException("GetMagicTransitConnectorArgs", "connectorId");
-            }
             return $;
         }
     }

@@ -209,14 +209,14 @@ public class ZoneDnsSettings extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> zoneId;
+    private Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<Optional<String>> zoneId() {
-        return Codegen.optional(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
     /**
      * Whether the zone mode is a regular or CDN/DNS only zone.
@@ -247,7 +247,7 @@ public class ZoneDnsSettings extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ZoneDnsSettings(java.lang.String name, @Nullable ZoneDnsSettingsArgs args) {
+    public ZoneDnsSettings(java.lang.String name, ZoneDnsSettingsArgs args) {
         this(name, args, null);
     }
     /**
@@ -256,7 +256,7 @@ public class ZoneDnsSettings extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ZoneDnsSettings(java.lang.String name, @Nullable ZoneDnsSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public ZoneDnsSettings(java.lang.String name, ZoneDnsSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/zoneDnsSettings:ZoneDnsSettings", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -264,7 +264,7 @@ public class ZoneDnsSettings extends com.pulumi.resources.CustomResource {
         super("cloudflare:index/zoneDnsSettings:ZoneDnsSettings", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static ZoneDnsSettingsArgs makeArgs(@Nullable ZoneDnsSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static ZoneDnsSettingsArgs makeArgs(ZoneDnsSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

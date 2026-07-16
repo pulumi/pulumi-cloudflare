@@ -101,7 +101,7 @@ type PipelineSink struct {
 	pulumi.CustomResourceState
 
 	// Specifies the public ID of the account.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Defines the configuration of the R2 Sink.
 	Config     PipelineSinkConfigPtrOutput `pulumi:"config"`
 	CreatedAt  pulumi.StringOutput         `pulumi:"createdAt"`
@@ -122,6 +122,9 @@ func NewPipelineSink(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -188,7 +191,7 @@ func (PipelineSinkState) ElementType() reflect.Type {
 
 type pipelineSinkArgs struct {
 	// Specifies the public ID of the account.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Defines the configuration of the R2 Sink.
 	Config *PipelineSinkConfig `pulumi:"config"`
 	Format *PipelineSinkFormat `pulumi:"format"`
@@ -203,7 +206,7 @@ type pipelineSinkArgs struct {
 // The set of arguments for constructing a PipelineSink resource.
 type PipelineSinkArgs struct {
 	// Specifies the public ID of the account.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Defines the configuration of the R2 Sink.
 	Config PipelineSinkConfigPtrInput
 	Format PipelineSinkFormatPtrInput
@@ -303,8 +306,8 @@ func (o PipelineSinkOutput) ToPipelineSinkOutputWithContext(ctx context.Context)
 }
 
 // Specifies the public ID of the account.
-func (o PipelineSinkOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PipelineSink) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o PipelineSinkOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PipelineSink) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Defines the configuration of the R2 Sink.

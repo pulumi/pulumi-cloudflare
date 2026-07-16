@@ -20,7 +20,7 @@ __all__ = ['ContentScanningArgs', 'ContentScanning']
 class ContentScanningArgs:
     def __init__(__self__, *,
                  value: pulumi.Input[_builtins.str],
-                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ContentScanning resource.
 
@@ -29,8 +29,7 @@ class ContentScanningArgs:
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
         """
         pulumi.set(__self__, "value", value)
-        if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -47,14 +46,14 @@ class ContentScanningArgs:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[_builtins.str]:
         """
         Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -215,6 +214,8 @@ class ContentScanning(pulumi.CustomResource):
             if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
             __props__.__dict__["value"] = value
+            if zone_id is None and not opts.urn:
+                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["modified"] = None
         super(ContentScanning, __self__).__init__(
@@ -270,7 +271,7 @@ class ContentScanning(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
         Defines an identifier.
         """

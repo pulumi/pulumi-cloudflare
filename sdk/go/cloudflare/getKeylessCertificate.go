@@ -117,7 +117,7 @@ type LookupKeylessCertificateResult struct {
 	// Status of the Keyless SSL.
 	// Available values: "active", "deleted".
 	Status string `pulumi:"status"`
-	// Configuration for using Keyless SSL through a Cloudflare Tunnel
+	// Configuration for using Keyless SSL through a Cloudflare Tunnel.
 	Tunnel GetKeylessCertificateTunnel `pulumi:"tunnel"`
 	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
@@ -210,7 +210,7 @@ func (o LookupKeylessCertificateResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeylessCertificateResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Configuration for using Keyless SSL through a Cloudflare Tunnel
+// Configuration for using Keyless SSL through a Cloudflare Tunnel.
 func (o LookupKeylessCertificateResultOutput) Tunnel() GetKeylessCertificateTunnelOutput {
 	return o.ApplyT(func(v LookupKeylessCertificateResult) GetKeylessCertificateTunnel { return v.Tunnel }).(GetKeylessCertificateTunnelOutput)
 }

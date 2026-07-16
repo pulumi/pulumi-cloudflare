@@ -78,6 +78,11 @@ type LookupEmailRoutingRuleResult struct {
 	Priority float64 `pulumi:"priority"`
 	// Routing rule identifier.
 	RuleIdentifier *string `pulumi:"ruleIdentifier"`
+	// Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+	// `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+	// to `api` when omitted on write.
+	// Available values: "api", "wrangler".
+	Source string `pulumi:"source"`
 	// Routing rule tag. (Deprecated, replaced by routing rule identifier)
 	//
 	// Deprecated: This attribute is deprecated.
@@ -160,6 +165,14 @@ func (o LookupEmailRoutingRuleResultOutput) Priority() pulumi.Float64Output {
 // Routing rule identifier.
 func (o LookupEmailRoutingRuleResultOutput) RuleIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailRoutingRuleResult) *string { return v.RuleIdentifier }).(pulumi.StringPtrOutput)
+}
+
+// Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+// `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+// to `api` when omitted on write.
+// Available values: "api", "wrangler".
+func (o LookupEmailRoutingRuleResultOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEmailRoutingRuleResult) string { return v.Source }).(pulumi.StringOutput)
 }
 
 // Routing rule tag. (Deprecated, replaced by routing rule identifier)

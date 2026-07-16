@@ -5,7 +5,9 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetAiGatewayDlp;
 import com.pulumi.cloudflare.outputs.GetAiGatewayFilter;
+import com.pulumi.cloudflare.outputs.GetAiGatewayGuardrails;
 import com.pulumi.cloudflare.outputs.GetAiGatewayOtel;
+import com.pulumi.cloudflare.outputs.GetAiGatewaySpendLimits;
 import com.pulumi.cloudflare.outputs.GetAiGatewayStripe;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -27,6 +29,7 @@ public final class GetAiGatewayResult {
     private String createdAt;
     private GetAiGatewayDlp dlp;
     private @Nullable GetAiGatewayFilter filter;
+    private GetAiGatewayGuardrails guardrails;
     /**
      * @return gateway id
      * 
@@ -66,6 +69,7 @@ public final class GetAiGatewayResult {
      * 
      */
     private Integer retryMaxAttempts;
+    private GetAiGatewaySpendLimits spendLimits;
     private String storeId;
     private GetAiGatewayStripe stripe;
     /**
@@ -100,6 +104,9 @@ public final class GetAiGatewayResult {
     }
     public Optional<GetAiGatewayFilter> filter() {
         return Optional.ofNullable(this.filter);
+    }
+    public GetAiGatewayGuardrails guardrails() {
+        return this.guardrails;
     }
     /**
      * @return gateway id
@@ -168,6 +175,9 @@ public final class GetAiGatewayResult {
     public Integer retryMaxAttempts() {
         return this.retryMaxAttempts;
     }
+    public GetAiGatewaySpendLimits spendLimits() {
+        return this.spendLimits;
+    }
     public String storeId() {
         return this.storeId;
     }
@@ -203,6 +213,7 @@ public final class GetAiGatewayResult {
         private String createdAt;
         private GetAiGatewayDlp dlp;
         private @Nullable GetAiGatewayFilter filter;
+        private GetAiGatewayGuardrails guardrails;
         private String id;
         private Boolean isDefault;
         private Integer logManagement;
@@ -217,6 +228,7 @@ public final class GetAiGatewayResult {
         private String retryBackoff;
         private Integer retryDelay;
         private Integer retryMaxAttempts;
+        private GetAiGatewaySpendLimits spendLimits;
         private String storeId;
         private GetAiGatewayStripe stripe;
         private String workersAiBillingMode;
@@ -232,6 +244,7 @@ public final class GetAiGatewayResult {
     	      this.createdAt = defaults.createdAt;
     	      this.dlp = defaults.dlp;
     	      this.filter = defaults.filter;
+    	      this.guardrails = defaults.guardrails;
     	      this.id = defaults.id;
     	      this.isDefault = defaults.isDefault;
     	      this.logManagement = defaults.logManagement;
@@ -246,6 +259,7 @@ public final class GetAiGatewayResult {
     	      this.retryBackoff = defaults.retryBackoff;
     	      this.retryDelay = defaults.retryDelay;
     	      this.retryMaxAttempts = defaults.retryMaxAttempts;
+    	      this.spendLimits = defaults.spendLimits;
     	      this.storeId = defaults.storeId;
     	      this.stripe = defaults.stripe;
     	      this.workersAiBillingMode = defaults.workersAiBillingMode;
@@ -310,6 +324,14 @@ public final class GetAiGatewayResult {
         public Builder filter(@Nullable GetAiGatewayFilter filter) {
 
             this.filter = filter;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder guardrails(GetAiGatewayGuardrails guardrails) {
+            if (guardrails == null) {
+              throw new MissingRequiredPropertyException("GetAiGatewayResult", "guardrails");
+            }
+            this.guardrails = guardrails;
             return this;
         }
         @CustomType.Setter
@@ -428,6 +450,14 @@ public final class GetAiGatewayResult {
             return this;
         }
         @CustomType.Setter
+        public Builder spendLimits(GetAiGatewaySpendLimits spendLimits) {
+            if (spendLimits == null) {
+              throw new MissingRequiredPropertyException("GetAiGatewayResult", "spendLimits");
+            }
+            this.spendLimits = spendLimits;
+            return this;
+        }
+        @CustomType.Setter
         public Builder storeId(String storeId) {
             if (storeId == null) {
               throw new MissingRequiredPropertyException("GetAiGatewayResult", "storeId");
@@ -469,6 +499,7 @@ public final class GetAiGatewayResult {
             _resultValue.createdAt = createdAt;
             _resultValue.dlp = dlp;
             _resultValue.filter = filter;
+            _resultValue.guardrails = guardrails;
             _resultValue.id = id;
             _resultValue.isDefault = isDefault;
             _resultValue.logManagement = logManagement;
@@ -483,6 +514,7 @@ public final class GetAiGatewayResult {
             _resultValue.retryBackoff = retryBackoff;
             _resultValue.retryDelay = retryDelay;
             _resultValue.retryMaxAttempts = retryMaxAttempts;
+            _resultValue.spendLimits = spendLimits;
             _resultValue.storeId = storeId;
             _resultValue.stripe = stripe;
             _resultValue.workersAiBillingMode = workersAiBillingMode;

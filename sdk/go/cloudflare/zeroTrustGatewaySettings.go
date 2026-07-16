@@ -83,6 +83,7 @@ import (
 //					Inspection: &cloudflare.ZeroTrustGatewaySettingsSettingsInspectionArgs{
 //						Mode: pulumi.String("static"),
 //					},
+//					MaxTtlSecs: pulumi.Int(3600),
 //					ProtocolDetection: &cloudflare.ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs{
 //						Enabled: pulumi.Bool(true),
 //					},

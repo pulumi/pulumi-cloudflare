@@ -40,6 +40,10 @@ export interface GetUserResult {
      */
     readonly country: string;
     /**
+     * Current email address of the user.
+     */
+    readonly email: string;
+    /**
      * User's first name
      */
     readonly firstName: string;

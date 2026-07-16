@@ -16,6 +16,11 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Bot Management Read`
+ * - `Bot Management Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -66,7 +71,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/botManagement:BotManagement")
 public class BotManagement extends com.pulumi.resources.CustomResource {
     /**
-     * Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
+     * Enable rule to block AI Scrapers and Crawlers.
      * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
      * 
      */
@@ -74,7 +79,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
     private Output<String> aiBotsProtection;
 
     /**
-     * @return Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
+     * @return Enable rule to block AI Scrapers and Crawlers.
      * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
      * 
      */

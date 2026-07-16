@@ -32,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetWorkerVersion(ctx, &cloudflare.LookupWorkerVersionArgs{
-//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				WorkerId:  "worker_id",
 //				VersionId: "version_id",
 //				Include:   pulumi.StringRef("modules"),
@@ -58,7 +58,7 @@ func LookupWorkerVersion(ctx *pulumi.Context, args *LookupWorkerVersionArgs, opt
 // A collection of arguments for invoking getWorkerVersion.
 type LookupWorkerVersionArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
 	// Available values: "modules".
 	Include *string `pulumi:"include"`
@@ -71,31 +71,33 @@ type LookupWorkerVersionArgs struct {
 // A collection of values returned by getWorkerVersion.
 type LookupWorkerVersionResult struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Metadata about the version.
 	Annotations GetWorkerVersionAnnotations `pulumi:"annotations"`
 	// Configuration for assets within a Worker.
-	Assets             GetWorkerVersionAssets      `pulumi:"assets"`
-	Bindings           []GetWorkerVersionBinding   `pulumi:"bindings"`
-	CompatibilityDate  string                      `pulumi:"compatibilityDate"`
-	CompatibilityFlags []string                    `pulumi:"compatibilityFlags"`
-	Containers         []GetWorkerVersionContainer `pulumi:"containers"`
-	CreatedOn          string                      `pulumi:"createdOn"`
-	Id                 string                      `pulumi:"id"`
+	Assets             GetWorkerVersionAssets       `pulumi:"assets"`
+	Bindings           []GetWorkerVersionBinding    `pulumi:"bindings"`
+	CacheOptions       GetWorkerVersionCacheOptions `pulumi:"cacheOptions"`
+	CompatibilityDate  string                       `pulumi:"compatibilityDate"`
+	CompatibilityFlags []string                     `pulumi:"compatibilityFlags"`
+	Containers         []GetWorkerVersionContainer  `pulumi:"containers"`
+	CreatedOn          string                       `pulumi:"createdOn"`
+	Id                 string                       `pulumi:"id"`
 	// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
 	// Available values: "modules".
-	Include          *string                    `pulumi:"include"`
-	Limits           GetWorkerVersionLimits     `pulumi:"limits"`
-	MainModule       string                     `pulumi:"mainModule"`
-	MainScriptBase64 string                     `pulumi:"mainScriptBase64"`
-	MigrationTag     string                     `pulumi:"migrationTag"`
-	Migrations       GetWorkerVersionMigrations `pulumi:"migrations"`
-	Modules          []GetWorkerVersionModule   `pulumi:"modules"`
-	Number           int                        `pulumi:"number"`
-	Placement        GetWorkerVersionPlacement  `pulumi:"placement"`
-	Source           string                     `pulumi:"source"`
-	StartupTimeMs    int                        `pulumi:"startupTimeMs"`
-	Urls             []string                   `pulumi:"urls"`
+	Include             *string                             `pulumi:"include"`
+	Limits              GetWorkerVersionLimits              `pulumi:"limits"`
+	MainModule          string                              `pulumi:"mainModule"`
+	MainScriptBase64    string                              `pulumi:"mainScriptBase64"`
+	MigrationTag        string                              `pulumi:"migrationTag"`
+	Migrations          GetWorkerVersionMigrations          `pulumi:"migrations"`
+	Modules             []GetWorkerVersionModule            `pulumi:"modules"`
+	Number              int                                 `pulumi:"number"`
+	PackageDependencies []GetWorkerVersionPackageDependency `pulumi:"packageDependencies"`
+	Placement           GetWorkerVersionPlacement           `pulumi:"placement"`
+	Source              string                              `pulumi:"source"`
+	StartupTimeMs       int                                 `pulumi:"startupTimeMs"`
+	Urls                []string                            `pulumi:"urls"`
 	// Deprecated: This attribute is deprecated.
 	UsageModel string `pulumi:"usageModel"`
 	// Identifier for the version, which can be a UUID, a UUID prefix (minimum length 8), or the literal "latest" to operate on the most recently created version.
@@ -116,7 +118,7 @@ func LookupWorkerVersionOutput(ctx *pulumi.Context, args LookupWorkerVersionOutp
 // A collection of arguments for invoking getWorkerVersion.
 type LookupWorkerVersionOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
 	// Available values: "modules".
 	Include pulumi.StringPtrInput `pulumi:"include"`
@@ -146,8 +148,8 @@ func (o LookupWorkerVersionResultOutput) ToLookupWorkerVersionResultOutputWithCo
 }
 
 // Identifier.
-func (o LookupWorkerVersionResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWorkerVersionResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o LookupWorkerVersionResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkerVersionResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Metadata about the version.
@@ -162,6 +164,10 @@ func (o LookupWorkerVersionResultOutput) Assets() GetWorkerVersionAssetsOutput {
 
 func (o LookupWorkerVersionResultOutput) Bindings() GetWorkerVersionBindingArrayOutput {
 	return o.ApplyT(func(v LookupWorkerVersionResult) []GetWorkerVersionBinding { return v.Bindings }).(GetWorkerVersionBindingArrayOutput)
+}
+
+func (o LookupWorkerVersionResultOutput) CacheOptions() GetWorkerVersionCacheOptionsOutput {
+	return o.ApplyT(func(v LookupWorkerVersionResult) GetWorkerVersionCacheOptions { return v.CacheOptions }).(GetWorkerVersionCacheOptionsOutput)
 }
 
 func (o LookupWorkerVersionResultOutput) CompatibilityDate() pulumi.StringOutput {
@@ -216,6 +222,10 @@ func (o LookupWorkerVersionResultOutput) Modules() GetWorkerVersionModuleArrayOu
 
 func (o LookupWorkerVersionResultOutput) Number() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupWorkerVersionResult) int { return v.Number }).(pulumi.IntOutput)
+}
+
+func (o LookupWorkerVersionResultOutput) PackageDependencies() GetWorkerVersionPackageDependencyArrayOutput {
+	return o.ApplyT(func(v LookupWorkerVersionResult) []GetWorkerVersionPackageDependency { return v.PackageDependencies }).(GetWorkerVersionPackageDependencyArrayOutput)
 }
 
 func (o LookupWorkerVersionResultOutput) Placement() GetWorkerVersionPlacementOutput {

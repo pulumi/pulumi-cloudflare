@@ -19,10 +19,20 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly int DirectoryNodeId;
         public readonly string Email;
         public readonly string ExternalDirectoryNodeId;
-        public readonly int Id;
+        /// <summary>
+        /// Impersonation registry entry identifier
+        /// </summary>
+        public readonly string Id;
         public readonly bool IsEmailRegex;
+        /// <summary>
+        /// Deprecated, use `ModifiedAt` instead. End of life: November 1, 2026.
+        /// </summary>
         public readonly string LastModified;
+        public readonly string ModifiedAt;
         public readonly string Name;
+        /// <summary>
+        /// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+        /// </summary>
         public readonly string Provenance;
 
         [OutputConstructor]
@@ -39,11 +49,13 @@ namespace Pulumi.Cloudflare.Outputs
 
             string externalDirectoryNodeId,
 
-            int id,
+            string id,
 
             bool isEmailRegex,
 
             string lastModified,
+
+            string modifiedAt,
 
             string name,
 
@@ -58,6 +70,7 @@ namespace Pulumi.Cloudflare.Outputs
             Id = id;
             IsEmailRegex = isEmailRegex;
             LastModified = lastModified;
+            ModifiedAt = modifiedAt;
             Name = name;
             Provenance = provenance;
         }

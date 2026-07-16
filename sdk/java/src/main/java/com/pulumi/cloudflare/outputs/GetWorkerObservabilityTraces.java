@@ -33,6 +33,12 @@ public final class GetWorkerObservabilityTraces {
      * 
      */
     private Boolean persist;
+    /**
+     * @return Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. &#34;authenticated&#34; (default) honors inbound trace context only when accompanied by a valid trace auth token. &#34;accept&#34; unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+     * Available values: &#34;authenticated&#34;, &#34;accept&#34;.
+     * 
+     */
+    private String propagationPolicy;
 
     private GetWorkerObservabilityTraces() {}
     /**
@@ -63,6 +69,14 @@ public final class GetWorkerObservabilityTraces {
     public Boolean persist() {
         return this.persist;
     }
+    /**
+     * @return Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. &#34;authenticated&#34; (default) honors inbound trace context only when accompanied by a valid trace auth token. &#34;accept&#34; unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+     * Available values: &#34;authenticated&#34;, &#34;accept&#34;.
+     * 
+     */
+    public String propagationPolicy() {
+        return this.propagationPolicy;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -77,6 +91,7 @@ public final class GetWorkerObservabilityTraces {
         private Boolean enabled;
         private Double headSamplingRate;
         private Boolean persist;
+        private String propagationPolicy;
         public Builder() {}
         public Builder(GetWorkerObservabilityTraces defaults) {
     	      Objects.requireNonNull(defaults);
@@ -84,6 +99,7 @@ public final class GetWorkerObservabilityTraces {
     	      this.enabled = defaults.enabled;
     	      this.headSamplingRate = defaults.headSamplingRate;
     	      this.persist = defaults.persist;
+    	      this.propagationPolicy = defaults.propagationPolicy;
         }
 
         @CustomType.Setter
@@ -121,12 +137,21 @@ public final class GetWorkerObservabilityTraces {
             this.persist = persist;
             return this;
         }
+        @CustomType.Setter
+        public Builder propagationPolicy(String propagationPolicy) {
+            if (propagationPolicy == null) {
+              throw new MissingRequiredPropertyException("GetWorkerObservabilityTraces", "propagationPolicy");
+            }
+            this.propagationPolicy = propagationPolicy;
+            return this;
+        }
         public GetWorkerObservabilityTraces build() {
             final var _resultValue = new GetWorkerObservabilityTraces();
             _resultValue.destinations = destinations;
             _resultValue.enabled = enabled;
             _resultValue.headSamplingRate = headSamplingRate;
             _resultValue.persist = persist;
+            _resultValue.propagationPolicy = propagationPolicy;
             return _resultValue;
         }
     }

@@ -10,19 +10,17 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ZeroTrustRiskBehaviorArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ZeroTrustRiskBehaviorArgs Empty = new ZeroTrustRiskBehaviorArgs();
 
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     @Import(name="behaviors", required=true)
@@ -57,7 +55,7 @@ public final class ZeroTrustRiskBehaviorArgs extends com.pulumi.resources.Resour
             $ = new ZeroTrustRiskBehaviorArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -76,6 +74,9 @@ public final class ZeroTrustRiskBehaviorArgs extends com.pulumi.resources.Resour
         }
 
         public ZeroTrustRiskBehaviorArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustRiskBehaviorArgs", "accountId");
+            }
             if ($.behaviors == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustRiskBehaviorArgs", "behaviors");
             }

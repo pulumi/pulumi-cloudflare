@@ -147,6 +147,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Who manages the rule. `Api` covers dashboard, generic API, and Terraform;
+        /// `Wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+        /// to `Api` when omitted on write.
+        /// Available values: "api", "wrangler".
+        /// </summary>
+        public readonly string Source;
+        /// <summary>
         /// Routing rule tag. (Deprecated, replaced by routing rule identifier)
         /// </summary>
         public readonly string Tag;
@@ -167,6 +174,8 @@ namespace Pulumi.Cloudflare
 
             string name,
 
+            string source,
+
             string tag,
 
             string? zoneId)
@@ -176,6 +185,7 @@ namespace Pulumi.Cloudflare
             Id = id;
             Matchers = matchers;
             Name = name;
+            Source = source;
             Tag = tag;
             ZoneId = zoneId;
         }

@@ -81,6 +81,23 @@ public final class EmailRoutingRuleState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Public tag (script_tag) of the Worker that owns this rule. Required when
+     * `source` is `wrangler`.
+     * 
+     */
+    @Import(name="ownerWorkerTag")
+    private @Nullable Output<String> ownerWorkerTag;
+
+    /**
+     * @return Public tag (script_tag) of the Worker that owns this rule. Required when
+     * `source` is `wrangler`.
+     * 
+     */
+    public Optional<Output<String>> ownerWorkerTag() {
+        return Optional.ofNullable(this.ownerWorkerTag);
+    }
+
+    /**
      * Priority of the routing rule.
      * 
      */
@@ -93,6 +110,27 @@ public final class EmailRoutingRuleState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<Double>> priority() {
         return Optional.ofNullable(this.priority);
+    }
+
+    /**
+     * Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+     * `wrangler` means the rule is managed by a Worker&#39;s wrangler.jsonc. Defaults
+     * to `api` when omitted on write.
+     * Available values: &#34;api&#34;, &#34;wrangler&#34;.
+     * 
+     */
+    @Import(name="source")
+    private @Nullable Output<String> source;
+
+    /**
+     * @return Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+     * `wrangler` means the rule is managed by a Worker&#39;s wrangler.jsonc. Defaults
+     * to `api` when omitted on write.
+     * Available values: &#34;api&#34;, &#34;wrangler&#34;.
+     * 
+     */
+    public Optional<Output<String>> source() {
+        return Optional.ofNullable(this.source);
     }
 
     /**
@@ -140,7 +178,9 @@ public final class EmailRoutingRuleState extends com.pulumi.resources.ResourceAr
         this.enabled = $.enabled;
         this.matchers = $.matchers;
         this.name = $.name;
+        this.ownerWorkerTag = $.ownerWorkerTag;
         this.priority = $.priority;
+        this.source = $.source;
         this.tag = $.tag;
         this.zoneId = $.zoneId;
     }
@@ -268,6 +308,29 @@ public final class EmailRoutingRuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param ownerWorkerTag Public tag (script_tag) of the Worker that owns this rule. Required when
+         * `source` is `wrangler`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ownerWorkerTag(@Nullable Output<String> ownerWorkerTag) {
+            $.ownerWorkerTag = ownerWorkerTag;
+            return this;
+        }
+
+        /**
+         * @param ownerWorkerTag Public tag (script_tag) of the Worker that owns this rule. Required when
+         * `source` is `wrangler`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ownerWorkerTag(String ownerWorkerTag) {
+            return ownerWorkerTag(Output.of(ownerWorkerTag));
+        }
+
+        /**
          * @param priority Priority of the routing rule.
          * 
          * @return builder
@@ -286,6 +349,33 @@ public final class EmailRoutingRuleState extends com.pulumi.resources.ResourceAr
          */
         public Builder priority(Double priority) {
             return priority(Output.of(priority));
+        }
+
+        /**
+         * @param source Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+         * `wrangler` means the rule is managed by a Worker&#39;s wrangler.jsonc. Defaults
+         * to `api` when omitted on write.
+         * Available values: &#34;api&#34;, &#34;wrangler&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder source(@Nullable Output<String> source) {
+            $.source = source;
+            return this;
+        }
+
+        /**
+         * @param source Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+         * `wrangler` means the rule is managed by a Worker&#39;s wrangler.jsonc. Defaults
+         * to `api` when omitted on write.
+         * Available values: &#34;api&#34;, &#34;wrangler&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder source(String source) {
+            return source(Output.of(source));
         }
 
         /**

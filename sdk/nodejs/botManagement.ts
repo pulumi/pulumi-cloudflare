@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Bot Management Read`
+ * - `Bot Management Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -60,7 +65,7 @@ export class BotManagement extends pulumi.CustomResource {
     }
 
     /**
-     * Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
+     * Enable rule to block AI Scrapers and Crawlers.
      * Available values: "block", "disabled", "only*on*ad_pages".
      */
     declare public readonly aiBotsProtection: pulumi.Output<string>;
@@ -206,7 +211,7 @@ export class BotManagement extends pulumi.CustomResource {
  */
 export interface BotManagementState {
     /**
-     * Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
+     * Enable rule to block AI Scrapers and Crawlers.
      * Available values: "block", "disabled", "only*on*ad_pages".
      */
     aiBotsProtection?: pulumi.Input<string | undefined>;
@@ -293,7 +298,7 @@ export interface BotManagementState {
  */
 export interface BotManagementArgs {
     /**
-     * Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
+     * Enable rule to block AI Scrapers and Crawlers.
      * Available values: "block", "disabled", "only*on*ad_pages".
      */
     aiBotsProtection?: pulumi.Input<string | undefined>;

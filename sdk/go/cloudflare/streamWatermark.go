@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -55,7 +56,7 @@ type StreamWatermark struct {
 	pulumi.CustomResourceState
 
 	// The account identifier tag.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The date and a time a watermark profile was created.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.
@@ -88,9 +89,12 @@ type StreamWatermark struct {
 func NewStreamWatermark(ctx *pulumi.Context,
 	name string, args *StreamWatermarkArgs, opts ...pulumi.ResourceOption) (*StreamWatermark, error) {
 	if args == nil {
-		args = &StreamWatermarkArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource StreamWatermark
 	err := ctx.RegisterResource("cloudflare:index/streamWatermark:StreamWatermark", name, args, &resource, opts...)
@@ -181,7 +185,7 @@ func (StreamWatermarkState) ElementType() reflect.Type {
 
 type streamWatermarkArgs struct {
 	// The account identifier tag.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// The unique identifier for a watermark profile.
 	Identifier *string `pulumi:"identifier"`
 	// A short description of the watermark profile.
@@ -201,7 +205,7 @@ type streamWatermarkArgs struct {
 // The set of arguments for constructing a StreamWatermark resource.
 type StreamWatermarkArgs struct {
 	// The account identifier tag.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// The unique identifier for a watermark profile.
 	Identifier pulumi.StringPtrInput
 	// A short description of the watermark profile.
@@ -306,8 +310,8 @@ func (o StreamWatermarkOutput) ToStreamWatermarkOutputWithContext(ctx context.Co
 }
 
 // The account identifier tag.
-func (o StreamWatermarkOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StreamWatermark) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o StreamWatermarkOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *StreamWatermark) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The date and a time a watermark profile was created.

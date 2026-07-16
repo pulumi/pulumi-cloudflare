@@ -61,7 +61,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         [Output("annotations")]
         public Output<Outputs.WorkersDeploymentAnnotations> Annotations { get; private set; } = null!;
@@ -139,8 +139,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         [Input("annotations")]
         public Input<Inputs.WorkersDeploymentAnnotationsArgs>? Annotations { get; set; }

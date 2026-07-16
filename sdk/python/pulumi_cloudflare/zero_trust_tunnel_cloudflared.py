@@ -21,26 +21,37 @@ __all__ = ['ZeroTrustTunnelCloudflaredArgs', 'ZeroTrustTunnelCloudflared']
 @pulumi.input_type
 class ZeroTrustTunnelCloudflaredArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  config_src: pulumi.Input[Optional[_builtins.str]] = None,
                  tunnel_secret: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustTunnelCloudflared resource.
 
-        :param pulumi.Input[_builtins.str] name: A user-friendly name for a tunnel.
         :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
+        :param pulumi.Input[_builtins.str] name: A user-friendly name for a tunnel.
         :param pulumi.Input[_builtins.str] config_src: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
                Available values: "local", "cloudflare".
         :param pulumi.Input[_builtins.str] tunnel_secret: Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if config_src is not None:
             pulumi.set(__self__, "config_src", config_src)
         if tunnel_secret is not None:
             pulumi.set(__self__, "tunnel_secret", tunnel_secret)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Cloudflare account ID
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -53,18 +64,6 @@ class ZeroTrustTunnelCloudflaredArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Cloudflare account ID
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="configSrc")
@@ -452,6 +451,8 @@ class ZeroTrustTunnelCloudflared(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZeroTrustTunnelCloudflaredArgs.__new__(ZeroTrustTunnelCloudflaredArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["config_src"] = config_src
             if name is None and not opts.urn:
@@ -543,7 +544,7 @@ class ZeroTrustTunnelCloudflared(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Cloudflare account ID
         """

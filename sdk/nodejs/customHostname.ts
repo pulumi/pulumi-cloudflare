@@ -172,7 +172,7 @@ export class CustomHostname extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a CustomHostname resource with the given unique name, arguments, and options.
@@ -202,6 +202,9 @@ export class CustomHostname extends pulumi.CustomResource {
             const args = argsOrState as CustomHostnameArgs | undefined;
             if (args?.hostname === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostname'");
+            }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["customMetadata"] = args?.customMetadata;
             resourceInputs["customOriginServer"] = args?.customOriginServer;
@@ -298,5 +301,5 @@ export interface CustomHostnameArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

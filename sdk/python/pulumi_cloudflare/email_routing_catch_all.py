@@ -25,7 +25,9 @@ class EmailRoutingCatchAllArgs:
                  matchers: pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllMatcherArgs']]],
                  zone_id: pulumi.Input[_builtins.str],
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 name: pulumi.Input[Optional[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner_worker_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EmailRoutingCatchAll resource.
 
@@ -34,6 +36,12 @@ class EmailRoutingCatchAllArgs:
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.bool] enabled: Routing rule status.
         :param pulumi.Input[_builtins.str] name: Routing rule name.
+        :param pulumi.Input[_builtins.str] owner_worker_tag: Public tag (script_tag) of the Worker that owns this rule. Required when
+               `source` is `wrangler`.
+        :param pulumi.Input[_builtins.str] source: Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+               `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+               to `api` when omitted on write.
+               Available values: "api", "wrangler".
         """
         pulumi.set(__self__, "actions", actions)
         pulumi.set(__self__, "matchers", matchers)
@@ -42,6 +50,10 @@ class EmailRoutingCatchAllArgs:
             pulumi.set(__self__, "enabled", enabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if owner_worker_tag is not None:
+            pulumi.set(__self__, "owner_worker_tag", owner_worker_tag)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
 
     @_builtins.property
     @pulumi.getter
@@ -103,6 +115,34 @@ class EmailRoutingCatchAllArgs:
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
+    @_builtins.property
+    @pulumi.getter(name="ownerWorkerTag")
+    def owner_worker_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Public tag (script_tag) of the Worker that owns this rule. Required when
+        `source` is `wrangler`.
+        """
+        return pulumi.get(self, "owner_worker_tag")
+
+    @owner_worker_tag.setter
+    def owner_worker_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "owner_worker_tag", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+        `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+        to `api` when omitted on write.
+        Available values: "api", "wrangler".
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "source", value)
+
 
 @pulumi.input_type
 class _EmailRoutingCatchAllState:
@@ -111,6 +151,8 @@ class _EmailRoutingCatchAllState:
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  matchers: pulumi.Input[Optional[Sequence[pulumi.Input['EmailRoutingCatchAllMatcherArgs']]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner_worker_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
                  tag: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -120,6 +162,12 @@ class _EmailRoutingCatchAllState:
         :param pulumi.Input[_builtins.bool] enabled: Routing rule status.
         :param pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllMatcherArgs']]] matchers: List of matchers for the catch-all routing rule.
         :param pulumi.Input[_builtins.str] name: Routing rule name.
+        :param pulumi.Input[_builtins.str] owner_worker_tag: Public tag (script_tag) of the Worker that owns this rule. Required when
+               `source` is `wrangler`.
+        :param pulumi.Input[_builtins.str] source: Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+               `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+               to `api` when omitted on write.
+               Available values: "api", "wrangler".
         :param pulumi.Input[_builtins.str] tag: Routing rule tag. (Deprecated, replaced by routing rule identifier)
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -131,6 +179,10 @@ class _EmailRoutingCatchAllState:
             pulumi.set(__self__, "matchers", matchers)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if owner_worker_tag is not None:
+            pulumi.set(__self__, "owner_worker_tag", owner_worker_tag)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
         if tag is not None:
             warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
             pulumi.log.warn("""tag is deprecated: This attribute is deprecated.""")
@@ -188,6 +240,34 @@ class _EmailRoutingCatchAllState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="ownerWorkerTag")
+    def owner_worker_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Public tag (script_tag) of the Worker that owns this rule. Required when
+        `source` is `wrangler`.
+        """
+        return pulumi.get(self, "owner_worker_tag")
+
+    @owner_worker_tag.setter
+    def owner_worker_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "owner_worker_tag", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+        `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+        to `api` when omitted on write.
+        Available values: "api", "wrangler".
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "source", value)
+
+    @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This attribute is deprecated.""")
     def tag(self) -> pulumi.Input[Optional[_builtins.str]]:
@@ -223,6 +303,8 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingCatchAllMatcherArgs', 'EmailRoutingCatchAllMatcherArgsDict']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner_worker_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -247,7 +329,9 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
                 "type": "all",
             }],
             enabled=True,
-            name="Send to user@example.net rule.")
+            name="Send to user@example.net rule.",
+            owner_worker_tag="a7e6fb77503c41d8a7f3113c6918f10c",
+            source="api")
         ```
 
         ## Import
@@ -263,6 +347,12 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enabled: Routing rule status.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllMatcherArgs', 'EmailRoutingCatchAllMatcherArgsDict']]]] matchers: List of matchers for the catch-all routing rule.
         :param pulumi.Input[_builtins.str] name: Routing rule name.
+        :param pulumi.Input[_builtins.str] owner_worker_tag: Public tag (script_tag) of the Worker that owns this rule. Required when
+               `source` is `wrangler`.
+        :param pulumi.Input[_builtins.str] source: Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+               `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+               to `api` when omitted on write.
+               Available values: "api", "wrangler".
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         ...
@@ -293,7 +383,9 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
                 "type": "all",
             }],
             enabled=True,
-            name="Send to user@example.net rule.")
+            name="Send to user@example.net rule.",
+            owner_worker_tag="a7e6fb77503c41d8a7f3113c6918f10c",
+            source="api")
         ```
 
         ## Import
@@ -322,6 +414,8 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingCatchAllMatcherArgs', 'EmailRoutingCatchAllMatcherArgsDict']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner_worker_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -340,6 +434,8 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
                 raise TypeError("Missing required property 'matchers'")
             __props__.__dict__["matchers"] = matchers
             __props__.__dict__["name"] = name
+            __props__.__dict__["owner_worker_tag"] = owner_worker_tag
+            __props__.__dict__["source"] = source
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
@@ -358,6 +454,8 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingCatchAllMatcherArgs', 'EmailRoutingCatchAllMatcherArgsDict']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner_worker_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
             tag: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'EmailRoutingCatchAll':
         """
@@ -371,6 +469,12 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enabled: Routing rule status.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllMatcherArgs', 'EmailRoutingCatchAllMatcherArgsDict']]]] matchers: List of matchers for the catch-all routing rule.
         :param pulumi.Input[_builtins.str] name: Routing rule name.
+        :param pulumi.Input[_builtins.str] owner_worker_tag: Public tag (script_tag) of the Worker that owns this rule. Required when
+               `source` is `wrangler`.
+        :param pulumi.Input[_builtins.str] source: Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+               `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+               to `api` when omitted on write.
+               Available values: "api", "wrangler".
         :param pulumi.Input[_builtins.str] tag: Routing rule tag. (Deprecated, replaced by routing rule identifier)
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -382,6 +486,8 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["matchers"] = matchers
         __props__.__dict__["name"] = name
+        __props__.__dict__["owner_worker_tag"] = owner_worker_tag
+        __props__.__dict__["source"] = source
         __props__.__dict__["tag"] = tag
         __props__.__dict__["zone_id"] = zone_id
         return EmailRoutingCatchAll(resource_name, opts=opts, __props__=__props__)
@@ -417,6 +523,26 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
         Routing rule name.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="ownerWorkerTag")
+    def owner_worker_tag(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Public tag (script_tag) of the Worker that owns this rule. Required when
+        `source` is `wrangler`.
+        """
+        return pulumi.get(self, "owner_worker_tag")
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> pulumi.Output[_builtins.str]:
+        """
+        Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+        `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+        to `api` when omitted on write.
+        Available values: "api", "wrangler".
+        """
+        return pulumi.get(self, "source")
 
     @_builtins.property
     @pulumi.getter

@@ -89,7 +89,7 @@ type Worker struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// When the Worker was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
@@ -119,6 +119,9 @@ func NewWorker(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -200,7 +203,7 @@ func (WorkerState) ElementType() reflect.Type {
 
 type workerArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Whether logpush is enabled for the Worker.
 	Logpush *bool `pulumi:"logpush"`
 	// Name of the Worker.
@@ -218,7 +221,7 @@ type workerArgs struct {
 // The set of arguments for constructing a Worker resource.
 type WorkerArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Whether logpush is enabled for the Worker.
 	Logpush pulumi.BoolPtrInput
 	// Name of the Worker.
@@ -321,8 +324,8 @@ func (o WorkerOutput) ToWorkerOutputWithContext(ctx context.Context) WorkerOutpu
 }
 
 // Identifier.
-func (o WorkerOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Worker) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o WorkerOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Worker) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // When the Worker was created.

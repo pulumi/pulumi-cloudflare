@@ -111,8 +111,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public string? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public string AccountId { get; set; } = null!;
 
         /// <summary>
         /// Whether to include the `Modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
@@ -144,8 +144,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Whether to include the `Modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
@@ -179,7 +179,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string? AccountId;
+        public readonly string AccountId;
         /// <summary>
         /// Metadata about the version.
         /// </summary>
@@ -189,6 +189,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly Outputs.GetWorkerVersionAssetsResult Assets;
         public readonly ImmutableArray<Outputs.GetWorkerVersionBindingResult> Bindings;
+        public readonly Outputs.GetWorkerVersionCacheOptionsResult CacheOptions;
         public readonly string CompatibilityDate;
         public readonly ImmutableArray<string> CompatibilityFlags;
         public readonly ImmutableArray<Outputs.GetWorkerVersionContainerResult> Containers;
@@ -206,6 +207,7 @@ namespace Pulumi.Cloudflare
         public readonly Outputs.GetWorkerVersionMigrationsResult Migrations;
         public readonly ImmutableArray<Outputs.GetWorkerVersionModuleResult> Modules;
         public readonly int Number;
+        public readonly ImmutableArray<Outputs.GetWorkerVersionPackageDependencyResult> PackageDependencies;
         public readonly Outputs.GetWorkerVersionPlacementResult Placement;
         public readonly string Source;
         public readonly int StartupTimeMs;
@@ -222,13 +224,15 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetWorkerVersionResult(
-            string? accountId,
+            string accountId,
 
             Outputs.GetWorkerVersionAnnotationsResult annotations,
 
             Outputs.GetWorkerVersionAssetsResult assets,
 
             ImmutableArray<Outputs.GetWorkerVersionBindingResult> bindings,
+
+            Outputs.GetWorkerVersionCacheOptionsResult cacheOptions,
 
             string compatibilityDate,
 
@@ -256,6 +260,8 @@ namespace Pulumi.Cloudflare
 
             int number,
 
+            ImmutableArray<Outputs.GetWorkerVersionPackageDependencyResult> packageDependencies,
+
             Outputs.GetWorkerVersionPlacementResult placement,
 
             string source,
@@ -274,6 +280,7 @@ namespace Pulumi.Cloudflare
             Annotations = annotations;
             Assets = assets;
             Bindings = bindings;
+            CacheOptions = cacheOptions;
             CompatibilityDate = compatibilityDate;
             CompatibilityFlags = compatibilityFlags;
             Containers = containers;
@@ -287,6 +294,7 @@ namespace Pulumi.Cloudflare
             Migrations = migrations;
             Modules = modules;
             Number = number;
+            PackageDependencies = packageDependencies;
             Placement = placement;
             Source = source;
             StartupTimeMs = startupTimeMs;

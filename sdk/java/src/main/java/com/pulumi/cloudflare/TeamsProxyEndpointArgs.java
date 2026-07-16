@@ -17,11 +17,11 @@ public final class TeamsProxyEndpointArgs extends com.pulumi.resources.ResourceA
 
     public static final TeamsProxyEndpointArgs Empty = new TeamsProxyEndpointArgs();
 
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -98,7 +98,7 @@ public final class TeamsProxyEndpointArgs extends com.pulumi.resources.ResourceA
             $ = new TeamsProxyEndpointArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -183,6 +183,9 @@ public final class TeamsProxyEndpointArgs extends com.pulumi.resources.ResourceA
         }
 
         public TeamsProxyEndpointArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("TeamsProxyEndpointArgs", "accountId");
+            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("TeamsProxyEndpointArgs", "name");
             }

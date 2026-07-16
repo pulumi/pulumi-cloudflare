@@ -15,6 +15,21 @@ public final class GetPipelineSinkFilterArgs extends com.pulumi.resources.Resour
 
     public static final GetPipelineSinkFilterArgs Empty = new GetPipelineSinkFilterArgs();
 
+    /**
+     * Filters sinks by name (case-insensitive substring).
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return Filters sinks by name (case-insensitive substring).
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
     @Import(name="pipelineId")
     private @Nullable Output<String> pipelineId;
 
@@ -25,6 +40,7 @@ public final class GetPipelineSinkFilterArgs extends com.pulumi.resources.Resour
     private GetPipelineSinkFilterArgs() {}
 
     private GetPipelineSinkFilterArgs(GetPipelineSinkFilterArgs $) {
+        this.name = $.name;
         this.pipelineId = $.pipelineId;
     }
 
@@ -44,6 +60,27 @@ public final class GetPipelineSinkFilterArgs extends com.pulumi.resources.Resour
 
         public Builder(GetPipelineSinkFilterArgs defaults) {
             $ = new GetPipelineSinkFilterArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param name Filters sinks by name (case-insensitive substring).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name Filters sinks by name (case-insensitive substring).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         public Builder pipelineId(@Nullable Output<String> pipelineId) {

@@ -70,6 +70,7 @@ import * as utilities from "./utilities";
  *         inspection: {
  *             mode: "static",
  *         },
+ *         maxTtlSecs: 3600,
  *         protocolDetection: {
  *             enabled: true,
  *         },

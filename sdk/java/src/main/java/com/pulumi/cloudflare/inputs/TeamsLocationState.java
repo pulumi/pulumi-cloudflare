@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.TeamsLocationEndpointsArgs;
+import com.pulumi.cloudflare.inputs.TeamsLocationMaxTtlArgs;
 import com.pulumi.cloudflare.inputs.TeamsLocationNetworkArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -169,6 +170,21 @@ public final class TeamsLocationState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+     * 
+     */
+    @Import(name="maxTtl")
+    private @Nullable Output<TeamsLocationMaxTtlArgs> maxTtl;
+
+    /**
+     * @return Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+     * 
+     */
+    public Optional<Output<TeamsLocationMaxTtlArgs>> maxTtl() {
+        return Optional.ofNullable(this.maxTtl);
+    }
+
+    /**
      * Specify the location name.
      * 
      */
@@ -219,6 +235,7 @@ public final class TeamsLocationState extends com.pulumi.resources.ResourceArgs 
         this.ip = $.ip;
         this.ipv4Destination = $.ipv4Destination;
         this.ipv4DestinationBackup = $.ipv4DestinationBackup;
+        this.maxTtl = $.maxTtl;
         this.name = $.name;
         this.networks = $.networks;
         this.updatedAt = $.updatedAt;
@@ -447,6 +464,27 @@ public final class TeamsLocationState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder ipv4DestinationBackup(String ipv4DestinationBackup) {
             return ipv4DestinationBackup(Output.of(ipv4DestinationBackup));
+        }
+
+        /**
+         * @param maxTtl Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxTtl(@Nullable Output<TeamsLocationMaxTtlArgs> maxTtl) {
+            $.maxTtl = maxTtl;
+            return this;
+        }
+
+        /**
+         * @param maxTtl Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxTtl(TeamsLocationMaxTtlArgs maxTtl) {
+            return maxTtl(Output.of(maxTtl));
         }
 
         /**

@@ -70,7 +70,7 @@ import (
 type DlpPredefinedProfile struct {
 	pulumi.CustomResourceState
 
-	AccountId           pulumi.StringPtrOutput   `pulumi:"accountId"`
+	AccountId           pulumi.StringOutput      `pulumi:"accountId"`
 	AiContextEnabled    pulumi.BoolOutput        `pulumi:"aiContextEnabled"`
 	AllowedMatchCount   pulumi.IntOutput         `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold pulumi.StringOutput      `pulumi:"confidenceThreshold"`
@@ -92,6 +92,9 @@ func NewDlpPredefinedProfile(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.ProfileId == nil {
 		return nil, errors.New("invalid value for required argument 'ProfileId'")
 	}
@@ -160,7 +163,7 @@ func (DlpPredefinedProfileState) ElementType() reflect.Type {
 }
 
 type dlpPredefinedProfileArgs struct {
-	AccountId           *string  `pulumi:"accountId"`
+	AccountId           string   `pulumi:"accountId"`
 	AiContextEnabled    *bool    `pulumi:"aiContextEnabled"`
 	AllowedMatchCount   *int     `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold *string  `pulumi:"confidenceThreshold"`
@@ -173,7 +176,7 @@ type dlpPredefinedProfileArgs struct {
 
 // The set of arguments for constructing a DlpPredefinedProfile resource.
 type DlpPredefinedProfileArgs struct {
-	AccountId           pulumi.StringPtrInput
+	AccountId           pulumi.StringInput
 	AiContextEnabled    pulumi.BoolPtrInput
 	AllowedMatchCount   pulumi.IntPtrInput
 	ConfidenceThreshold pulumi.StringPtrInput
@@ -271,8 +274,8 @@ func (o DlpPredefinedProfileOutput) ToDlpPredefinedProfileOutputWithContext(ctx 
 	return o
 }
 
-func (o DlpPredefinedProfileOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DlpPredefinedProfile) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o DlpPredefinedProfileOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DlpPredefinedProfile) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 func (o DlpPredefinedProfileOutput) AiContextEnabled() pulumi.BoolOutput {

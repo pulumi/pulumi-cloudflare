@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `MCP Portals Read`
+    /// - `MCP Portals Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -73,7 +78,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustAccessAiControlsMcpPortal : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Allow remote code execution in Dynamic Workers (beta)
@@ -163,8 +168,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustAccessAiControlsMcpPortalArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Allow remote code execution in Dynamic Workers (beta)

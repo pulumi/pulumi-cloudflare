@@ -74,7 +74,7 @@ export class ZeroTrustDlpCustomProfile extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDlpCustomProfile.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     declare public readonly aiContextEnabled: pulumi.Output<boolean>;
     /**
      * Related DLP policies will trigger when the match count exceeds the number set.
@@ -165,6 +165,9 @@ export class ZeroTrustDlpCustomProfile extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as ZeroTrustDlpCustomProfileArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -261,7 +264,7 @@ export interface ZeroTrustDlpCustomProfileState {
  * The set of arguments for constructing a ZeroTrustDlpCustomProfile resource.
  */
 export interface ZeroTrustDlpCustomProfileArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     aiContextEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Related DLP policies will trigger when the match count exceeds the number set.

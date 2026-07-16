@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.outputs.GetOrganizationsResultMetaFlags;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -16,6 +17,16 @@ public final class GetOrganizationsResultMeta {
      * 
      */
     private GetOrganizationsResultMetaFlags flags;
+    /**
+     * @return Ordered chain of organization tags from the root organization down to
+     * (and including) this organization itself. Root organizations return a
+     * single-element array containing their own tag; sub-organizations return
+     * `[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for
+     * constructing authorization scopes that need to cover every ancestor
+     * in the hierarchy.
+     * 
+     */
+    private List<String> hierarchyTags;
     private String managedBy;
 
     private GetOrganizationsResultMeta() {}
@@ -25,6 +36,18 @@ public final class GetOrganizationsResultMeta {
      */
     public GetOrganizationsResultMetaFlags flags() {
         return this.flags;
+    }
+    /**
+     * @return Ordered chain of organization tags from the root organization down to
+     * (and including) this organization itself. Root organizations return a
+     * single-element array containing their own tag; sub-organizations return
+     * `[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for
+     * constructing authorization scopes that need to cover every ancestor
+     * in the hierarchy.
+     * 
+     */
+    public List<String> hierarchyTags() {
+        return this.hierarchyTags;
     }
     public String managedBy() {
         return this.managedBy;
@@ -40,11 +63,13 @@ public final class GetOrganizationsResultMeta {
     @CustomType.Builder
     public static final class Builder {
         private GetOrganizationsResultMetaFlags flags;
+        private List<String> hierarchyTags;
         private String managedBy;
         public Builder() {}
         public Builder(GetOrganizationsResultMeta defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.flags = defaults.flags;
+    	      this.hierarchyTags = defaults.hierarchyTags;
     	      this.managedBy = defaults.managedBy;
         }
 
@@ -57,6 +82,17 @@ public final class GetOrganizationsResultMeta {
             return this;
         }
         @CustomType.Setter
+        public Builder hierarchyTags(List<String> hierarchyTags) {
+            if (hierarchyTags == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationsResultMeta", "hierarchyTags");
+            }
+            this.hierarchyTags = hierarchyTags;
+            return this;
+        }
+        public Builder hierarchyTags(String... hierarchyTags) {
+            return hierarchyTags(List.of(hierarchyTags));
+        }
+        @CustomType.Setter
         public Builder managedBy(String managedBy) {
             if (managedBy == null) {
               throw new MissingRequiredPropertyException("GetOrganizationsResultMeta", "managedBy");
@@ -67,6 +103,7 @@ public final class GetOrganizationsResultMeta {
         public GetOrganizationsResultMeta build() {
             final var _resultValue = new GetOrganizationsResultMeta();
             _resultValue.flags = flags;
+            _resultValue.hierarchyTags = hierarchyTags;
             _resultValue.managedBy = managedBy;
             return _resultValue;
         }

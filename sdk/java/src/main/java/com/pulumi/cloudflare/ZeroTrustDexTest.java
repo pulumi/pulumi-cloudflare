@@ -84,11 +84,19 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest")
 public class ZeroTrustDexTest extends com.pulumi.resources.CustomResource {
+    /**
+     * Unique identifier linked to an account.
+     * 
+     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    /**
+     * @return Unique identifier linked to an account.
+     * 
+     */
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * The configuration object which contains the details for the WARP client to conduct the test.

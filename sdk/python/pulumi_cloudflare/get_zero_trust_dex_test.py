@@ -69,6 +69,9 @@ class GetZeroTrustDexTestResult:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier linked to an account.
+        """
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -198,6 +201,7 @@ def get_zero_trust_dex_test(account_id: Optional[_builtins.str] = None,
     ```
 
 
+    :param _builtins.str account_id: Unique identifier linked to an account.
     :param _builtins.str dex_test_id: The unique identifier for the test.
     :param Sequence[Union['GetZeroTrustDexTestTargetPolicyArgs', 'GetZeroTrustDexTestTargetPolicyArgsDict']] target_policies: DEX rules targeted by this test
     """
@@ -246,6 +250,7 @@ def get_zero_trust_dex_test_output(account_id: pulumi.Input[Optional[Optional[_b
     ```
 
 
+    :param _builtins.str account_id: Unique identifier linked to an account.
     :param _builtins.str dex_test_id: The unique identifier for the test.
     :param Sequence[Union['GetZeroTrustDexTestTargetPolicyArgs', 'GetZeroTrustDexTestTargetPolicyArgsDict']] target_policies: DEX rules targeted by this test
     """

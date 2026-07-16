@@ -31,7 +31,9 @@ import * as utilities from "./utilities";
  *     }],
  *     enabled: true,
  *     name: "Send to user@example.net rule.",
+ *     ownerWorkerTag: "a7e6fb77503c41d8a7f3113c6918f10c",
  *     priority: 0,
+ *     source: "api",
  * });
  * ```
  *
@@ -86,9 +88,21 @@ export class EmailRoutingRule extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string | undefined>;
     /**
+     * Public tag (script_tag) of the Worker that owns this rule. Required when
+     * `source` is `wrangler`.
+     */
+    declare public readonly ownerWorkerTag: pulumi.Output<string | undefined>;
+    /**
      * Priority of the routing rule.
      */
     declare public readonly priority: pulumi.Output<number>;
+    /**
+     * Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+     * `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+     * to `api` when omitted on write.
+     * Available values: "api", "wrangler".
+     */
+    declare public readonly source: pulumi.Output<string>;
     /**
      * Routing rule tag. (Deprecated, replaced by routing rule identifier)
      *
@@ -98,7 +112,7 @@ export class EmailRoutingRule extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a EmailRoutingRule resource with the given unique name, arguments, and options.
@@ -117,7 +131,9 @@ export class EmailRoutingRule extends pulumi.CustomResource {
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["matchers"] = state?.matchers;
             resourceInputs["name"] = state?.name;
+            resourceInputs["ownerWorkerTag"] = state?.ownerWorkerTag;
             resourceInputs["priority"] = state?.priority;
+            resourceInputs["source"] = state?.source;
             resourceInputs["tag"] = state?.tag;
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
@@ -128,11 +144,16 @@ export class EmailRoutingRule extends pulumi.CustomResource {
             if (args?.matchers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'matchers'");
             }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
+            }
             resourceInputs["actions"] = args?.actions;
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["matchers"] = args?.matchers;
             resourceInputs["name"] = args?.name;
+            resourceInputs["ownerWorkerTag"] = args?.ownerWorkerTag;
             resourceInputs["priority"] = args?.priority;
+            resourceInputs["source"] = args?.source;
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["tag"] = undefined /*out*/;
         }
@@ -162,9 +183,21 @@ export interface EmailRoutingRuleState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * Public tag (script_tag) of the Worker that owns this rule. Required when
+     * `source` is `wrangler`.
+     */
+    ownerWorkerTag?: pulumi.Input<string | undefined>;
+    /**
      * Priority of the routing rule.
      */
     priority?: pulumi.Input<number | undefined>;
+    /**
+     * Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+     * `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+     * to `api` when omitted on write.
+     * Available values: "api", "wrangler".
+     */
+    source?: pulumi.Input<string | undefined>;
     /**
      * Routing rule tag. (Deprecated, replaced by routing rule identifier)
      *
@@ -198,11 +231,23 @@ export interface EmailRoutingRuleArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * Public tag (script_tag) of the Worker that owns this rule. Required when
+     * `source` is `wrangler`.
+     */
+    ownerWorkerTag?: pulumi.Input<string | undefined>;
+    /**
      * Priority of the routing rule.
      */
     priority?: pulumi.Input<number | undefined>;
     /**
+     * Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+     * `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+     * to `api` when omitted on write.
+     * Available values: "api", "wrangler".
+     */
+    source?: pulumi.Input<string | undefined>;
+    /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

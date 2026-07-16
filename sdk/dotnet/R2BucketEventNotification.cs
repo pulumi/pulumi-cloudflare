@@ -60,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// Account ID.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Name of the bucket.
@@ -141,8 +141,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account ID.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Name of the bucket.

@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetDnsRecordData;
 import com.pulumi.cloudflare.outputs.GetDnsRecordFilter;
+import com.pulumi.cloudflare.outputs.GetDnsRecordMeta;
 import com.pulumi.cloudflare.outputs.GetDnsRecordSettings;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -55,10 +56,15 @@ public final class GetDnsRecordResult {
      */
     private String id;
     /**
-     * @return Extra Cloudflare-specific information about the record.
+     * @return Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
      * 
      */
-    private String meta;
+    private Boolean includeShadowMetadata;
+    /**
+     * @return Extra Cloudflare-specific metadata about the record.
+     * 
+     */
+    private GetDnsRecordMeta meta;
     /**
      * @return When the record was last modified.
      * 
@@ -175,10 +181,17 @@ public final class GetDnsRecordResult {
         return this.id;
     }
     /**
-     * @return Extra Cloudflare-specific information about the record.
+     * @return Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
      * 
      */
-    public String meta() {
+    public Boolean includeShadowMetadata() {
+        return this.includeShadowMetadata;
+    }
+    /**
+     * @return Extra Cloudflare-specific metadata about the record.
+     * 
+     */
+    public GetDnsRecordMeta meta() {
         return this.meta;
     }
     /**
@@ -284,7 +297,8 @@ public final class GetDnsRecordResult {
         private @Nullable String dnsRecordId;
         private @Nullable GetDnsRecordFilter filter;
         private String id;
-        private String meta;
+        private Boolean includeShadowMetadata;
+        private GetDnsRecordMeta meta;
         private String modifiedOn;
         private String name;
         private Double priority;
@@ -308,6 +322,7 @@ public final class GetDnsRecordResult {
     	      this.dnsRecordId = defaults.dnsRecordId;
     	      this.filter = defaults.filter;
     	      this.id = defaults.id;
+    	      this.includeShadowMetadata = defaults.includeShadowMetadata;
     	      this.meta = defaults.meta;
     	      this.modifiedOn = defaults.modifiedOn;
     	      this.name = defaults.name;
@@ -384,7 +399,15 @@ public final class GetDnsRecordResult {
             return this;
         }
         @CustomType.Setter
-        public Builder meta(String meta) {
+        public Builder includeShadowMetadata(Boolean includeShadowMetadata) {
+            if (includeShadowMetadata == null) {
+              throw new MissingRequiredPropertyException("GetDnsRecordResult", "includeShadowMetadata");
+            }
+            this.includeShadowMetadata = includeShadowMetadata;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder meta(GetDnsRecordMeta meta) {
             if (meta == null) {
               throw new MissingRequiredPropertyException("GetDnsRecordResult", "meta");
             }
@@ -498,6 +521,7 @@ public final class GetDnsRecordResult {
             _resultValue.dnsRecordId = dnsRecordId;
             _resultValue.filter = filter;
             _resultValue.id = id;
+            _resultValue.includeShadowMetadata = includeShadowMetadata;
             _resultValue.meta = meta;
             _resultValue.modifiedOn = modifiedOn;
             _resultValue.name = name;

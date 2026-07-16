@@ -51,8 +51,8 @@ type ZeroTrustDeviceDefaultProfileCertificates struct {
 	pulumi.CustomResourceState
 
 	// The current status of the device policy certificate provisioning feature for WARP clients.
-	Enabled pulumi.BoolOutput      `pulumi:"enabled"`
-	ZoneId  pulumi.StringPtrOutput `pulumi:"zoneId"`
+	Enabled pulumi.BoolOutput   `pulumi:"enabled"`
+	ZoneId  pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewZeroTrustDeviceDefaultProfileCertificates registers a new resource with the given unique name, arguments, and options.
@@ -64,6 +64,9 @@ func NewZeroTrustDeviceDefaultProfileCertificates(ctx *pulumi.Context,
 
 	if args.Enabled == nil {
 		return nil, errors.New("invalid value for required argument 'Enabled'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustDeviceDefaultProfileCertificates
@@ -105,15 +108,15 @@ func (ZeroTrustDeviceDefaultProfileCertificatesState) ElementType() reflect.Type
 
 type zeroTrustDeviceDefaultProfileCertificatesArgs struct {
 	// The current status of the device policy certificate provisioning feature for WARP clients.
-	Enabled bool    `pulumi:"enabled"`
-	ZoneId  *string `pulumi:"zoneId"`
+	Enabled bool   `pulumi:"enabled"`
+	ZoneId  string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ZeroTrustDeviceDefaultProfileCertificates resource.
 type ZeroTrustDeviceDefaultProfileCertificatesArgs struct {
 	// The current status of the device policy certificate provisioning feature for WARP clients.
 	Enabled pulumi.BoolInput
-	ZoneId  pulumi.StringPtrInput
+	ZoneId  pulumi.StringInput
 }
 
 func (ZeroTrustDeviceDefaultProfileCertificatesArgs) ElementType() reflect.Type {
@@ -208,8 +211,8 @@ func (o ZeroTrustDeviceDefaultProfileCertificatesOutput) Enabled() pulumi.BoolOu
 	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfileCertificates) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-func (o ZeroTrustDeviceDefaultProfileCertificatesOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfileCertificates) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustDeviceDefaultProfileCertificatesOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfileCertificates) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type ZeroTrustDeviceDefaultProfileCertificatesArrayOutput struct{ *pulumi.OutputState }

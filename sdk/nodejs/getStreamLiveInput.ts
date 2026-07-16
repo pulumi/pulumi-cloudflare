@@ -39,7 +39,7 @@ export interface GetStreamLiveInputArgs {
     /**
      * Identifier.
      */
-    accountId?: string;
+    accountId: string;
     /**
      * A unique identifier for a live input.
      */
@@ -53,7 +53,7 @@ export interface GetStreamLiveInputResult {
     /**
      * Identifier.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * The date and time the live input was created.
      */
@@ -71,6 +71,10 @@ export interface GetStreamLiveInputResult {
      */
     readonly id: string;
     /**
+     * The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
+     */
+    readonly keysRotatedAt: string;
+    /**
      * A unique identifier for a live input.
      */
     readonly liveInputIdentifier: string;
@@ -82,6 +86,10 @@ export interface GetStreamLiveInputResult {
      * The date and time the live input was last modified.
      */
     readonly modified: string;
+    /**
+     * When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
+     */
+    readonly preferLowLatency: boolean;
     /**
      * Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
      */
@@ -153,7 +161,7 @@ export interface GetStreamLiveInputOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * A unique identifier for a live input.
      */

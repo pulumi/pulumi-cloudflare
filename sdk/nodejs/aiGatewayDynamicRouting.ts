@@ -68,7 +68,7 @@ export class AiGatewayDynamicRouting extends pulumi.CustomResource {
         return obj['__pulumiType'] === AiGatewayDynamicRouting.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     declare public /*out*/ readonly deployment: pulumi.Output<outputs.AiGatewayDynamicRoutingDeployment>;
     declare public readonly elements: pulumi.Output<outputs.AiGatewayDynamicRoutingElement[]>;
@@ -104,6 +104,9 @@ export class AiGatewayDynamicRouting extends pulumi.CustomResource {
             resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as AiGatewayDynamicRoutingArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.elements === undefined && !opts.urn) {
                 throw new Error("Missing required property 'elements'");
             }
@@ -149,7 +152,7 @@ export interface AiGatewayDynamicRoutingState {
  * The set of arguments for constructing a AiGatewayDynamicRouting resource.
  */
 export interface AiGatewayDynamicRoutingArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     elements: pulumi.Input<pulumi.Input<inputs.AiGatewayDynamicRoutingElement>[]>;
     gatewayId: pulumi.Input<string>;
     name: pulumi.Input<string>;

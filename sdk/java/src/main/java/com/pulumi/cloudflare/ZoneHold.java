@@ -107,7 +107,7 @@ public class ZoneHold extends com.pulumi.resources.CustomResource {
      * then automatically re-enabled by the system at the time specified
      * in this RFC3339-formatted timestamp. A past-dated `holdAfter` value will have
      * no effect on an existing, enabled hold. Providing an empty string will set its value
-     * to the current time.
+     * to the current time. Providing `null` will disable the hold indefinitely.
      * 
      */
     @Export(name="holdAfter", refs={String.class}, tree="[0]")
@@ -118,7 +118,7 @@ public class ZoneHold extends com.pulumi.resources.CustomResource {
      * then automatically re-enabled by the system at the time specified
      * in this RFC3339-formatted timestamp. A past-dated `holdAfter` value will have
      * no effect on an existing, enabled hold. Providing an empty string will set its value
-     * to the current time.
+     * to the current time. Providing `null` will disable the hold indefinitely.
      * 
      */
     public Output<String> holdAfter() {

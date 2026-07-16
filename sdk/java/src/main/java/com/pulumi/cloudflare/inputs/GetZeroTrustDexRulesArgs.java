@@ -16,9 +16,17 @@ public final class GetZeroTrustDexRulesArgs extends com.pulumi.resources.InvokeA
 
     public static final GetZeroTrustDexRulesArgs Empty = new GetZeroTrustDexRulesArgs();
 
+    /**
+     * Unique identifier linked to an account.
+     * 
+     */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
+    /**
+     * @return Unique identifier linked to an account.
+     * 
+     */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -39,14 +47,14 @@ public final class GetZeroTrustDexRulesArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Filter results by rule name
+     * Filter results by rule name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Filter results by rule name
+     * @return Filter results by rule name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -54,7 +62,7 @@ public final class GetZeroTrustDexRulesArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Which property to sort results by
+     * Which property to sort results by.
      * Available values: &#34;name&#34;, &#34;created*at&#34;, &#34;updated*at&#34;.
      * 
      */
@@ -62,7 +70,7 @@ public final class GetZeroTrustDexRulesArgs extends com.pulumi.resources.InvokeA
     private @Nullable Output<String> sortBy;
 
     /**
-     * @return Which property to sort results by
+     * @return Which property to sort results by.
      * Available values: &#34;name&#34;, &#34;created*at&#34;, &#34;updated*at&#34;.
      * 
      */
@@ -71,7 +79,7 @@ public final class GetZeroTrustDexRulesArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Sort direction for sortBy property
+     * Sort direction for sortBy property.
      * Available values: &#34;ASC&#34;, &#34;DESC&#34;.
      * 
      */
@@ -79,7 +87,7 @@ public final class GetZeroTrustDexRulesArgs extends com.pulumi.resources.InvokeA
     private @Nullable Output<String> sortOrder;
 
     /**
-     * @return Sort direction for sortBy property
+     * @return Sort direction for sortBy property.
      * Available values: &#34;ASC&#34;, &#34;DESC&#34;.
      * 
      */
@@ -115,11 +123,23 @@ public final class GetZeroTrustDexRulesArgs extends com.pulumi.resources.InvokeA
             $ = new GetZeroTrustDexRulesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId Unique identifier linked to an account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param accountId Unique identifier linked to an account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
@@ -146,7 +166,7 @@ public final class GetZeroTrustDexRulesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param name Filter results by rule name
+         * @param name Filter results by rule name.
          * 
          * @return builder
          * 
@@ -157,7 +177,7 @@ public final class GetZeroTrustDexRulesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param name Filter results by rule name
+         * @param name Filter results by rule name.
          * 
          * @return builder
          * 
@@ -167,7 +187,7 @@ public final class GetZeroTrustDexRulesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param sortBy Which property to sort results by
+         * @param sortBy Which property to sort results by.
          * Available values: &#34;name&#34;, &#34;created*at&#34;, &#34;updated*at&#34;.
          * 
          * @return builder
@@ -179,7 +199,7 @@ public final class GetZeroTrustDexRulesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param sortBy Which property to sort results by
+         * @param sortBy Which property to sort results by.
          * Available values: &#34;name&#34;, &#34;created*at&#34;, &#34;updated*at&#34;.
          * 
          * @return builder
@@ -190,7 +210,7 @@ public final class GetZeroTrustDexRulesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param sortOrder Sort direction for sortBy property
+         * @param sortOrder Sort direction for sortBy property.
          * Available values: &#34;ASC&#34;, &#34;DESC&#34;.
          * 
          * @return builder
@@ -202,7 +222,7 @@ public final class GetZeroTrustDexRulesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param sortOrder Sort direction for sortBy property
+         * @param sortOrder Sort direction for sortBy property.
          * Available values: &#34;ASC&#34;, &#34;DESC&#34;.
          * 
          * @return builder

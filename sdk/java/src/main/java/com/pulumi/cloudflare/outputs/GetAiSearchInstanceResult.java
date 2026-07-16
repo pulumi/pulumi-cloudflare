@@ -37,13 +37,19 @@ public final class GetAiSearchInstanceResult {
      * 
      */
     private String cacheThreshold;
+    /**
+     * @return Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+     * Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+     * 
+     */
+    private Double cacheTtl;
     private Integer chunkOverlap;
     private Integer chunkSize;
     private String createdAt;
     private String createdBy;
     private List<GetAiSearchInstanceCustomMetadata> customMetadatas;
     /**
-     * @return Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;google-ai-studio/gemini-embedding-2-preview&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
+     * @return Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;google-ai-studio/gemini-embedding-2-preview&#34;, &#34;google-ai-studio/gemini-embedding-2&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
      * 
      */
     private String embeddingModel;
@@ -65,7 +71,7 @@ public final class GetAiSearchInstanceResult {
     @Deprecated /* This attribute is deprecated. */
     private Boolean hybridSearchEnabled;
     /**
-     * @return AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
+     * @return The ID of this resource.
      * 
      */
     private String id;
@@ -138,6 +144,14 @@ public final class GetAiSearchInstanceResult {
     public String cacheThreshold() {
         return this.cacheThreshold;
     }
+    /**
+     * @return Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+     * Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+     * 
+     */
+    public Double cacheTtl() {
+        return this.cacheTtl;
+    }
     public Integer chunkOverlap() {
         return this.chunkOverlap;
     }
@@ -154,7 +168,7 @@ public final class GetAiSearchInstanceResult {
         return this.customMetadatas;
     }
     /**
-     * @return Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;google-ai-studio/gemini-embedding-2-preview&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
+     * @return Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;google-ai-studio/gemini-embedding-2-preview&#34;, &#34;google-ai-studio/gemini-embedding-2&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
      * 
      */
     public String embeddingModel() {
@@ -188,7 +202,7 @@ public final class GetAiSearchInstanceResult {
         return this.hybridSearchEnabled;
     }
     /**
-     * @return AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
+     * @return The ID of this resource.
      * 
      */
     public String id() {
@@ -299,6 +313,7 @@ public final class GetAiSearchInstanceResult {
         private String aisearchModel;
         private Boolean cache;
         private String cacheThreshold;
+        private Double cacheTtl;
         private Integer chunkOverlap;
         private Integer chunkSize;
         private String createdAt;
@@ -342,6 +357,7 @@ public final class GetAiSearchInstanceResult {
     	      this.aisearchModel = defaults.aisearchModel;
     	      this.cache = defaults.cache;
     	      this.cacheThreshold = defaults.cacheThreshold;
+    	      this.cacheTtl = defaults.cacheTtl;
     	      this.chunkOverlap = defaults.chunkOverlap;
     	      this.chunkSize = defaults.chunkSize;
     	      this.createdAt = defaults.createdAt;
@@ -415,6 +431,14 @@ public final class GetAiSearchInstanceResult {
               throw new MissingRequiredPropertyException("GetAiSearchInstanceResult", "cacheThreshold");
             }
             this.cacheThreshold = cacheThreshold;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cacheTtl(Double cacheTtl) {
+            if (cacheTtl == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchInstanceResult", "cacheTtl");
+            }
+            this.cacheTtl = cacheTtl;
             return this;
         }
         @CustomType.Setter
@@ -705,6 +729,7 @@ public final class GetAiSearchInstanceResult {
             _resultValue.aisearchModel = aisearchModel;
             _resultValue.cache = cache;
             _resultValue.cacheThreshold = cacheThreshold;
+            _resultValue.cacheTtl = cacheTtl;
             _resultValue.chunkOverlap = chunkOverlap;
             _resultValue.chunkSize = chunkSize;
             _resultValue.createdAt = createdAt;

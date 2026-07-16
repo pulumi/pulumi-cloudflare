@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.GetEmailSecurityBlockSenderFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,14 +17,14 @@ public final class GetEmailSecurityBlockSenderArgs extends com.pulumi.resources.
     public static final GetEmailSecurityBlockSenderArgs Empty = new GetEmailSecurityBlockSenderArgs();
 
     /**
-     * Account Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -40,17 +39,17 @@ public final class GetEmailSecurityBlockSenderArgs extends com.pulumi.resources.
     }
 
     /**
-     * The unique identifier for the allow policy.
+     * Blocked sender pattern identifier
      * 
      */
     @Import(name="patternId")
-    private @Nullable Output<Integer> patternId;
+    private @Nullable Output<String> patternId;
 
     /**
-     * @return The unique identifier for the allow policy.
+     * @return Blocked sender pattern identifier
      * 
      */
-    public Optional<Output<Integer>> patternId() {
+    public Optional<Output<String>> patternId() {
         return Optional.ofNullable(this.patternId);
     }
 
@@ -81,7 +80,7 @@ public final class GetEmailSecurityBlockSenderArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -92,7 +91,7 @@ public final class GetEmailSecurityBlockSenderArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -111,23 +110,23 @@ public final class GetEmailSecurityBlockSenderArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param patternId The unique identifier for the allow policy.
+         * @param patternId Blocked sender pattern identifier
          * 
          * @return builder
          * 
          */
-        public Builder patternId(@Nullable Output<Integer> patternId) {
+        public Builder patternId(@Nullable Output<String> patternId) {
             $.patternId = patternId;
             return this;
         }
 
         /**
-         * @param patternId The unique identifier for the allow policy.
+         * @param patternId Blocked sender pattern identifier
          * 
          * @return builder
          * 
          */
-        public Builder patternId(Integer patternId) {
+        public Builder patternId(String patternId) {
             return patternId(Output.of(patternId));
         }
 

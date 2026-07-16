@@ -101,7 +101,7 @@ type DnsRecord struct {
 	// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Identifier.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewDnsRecord registers a new resource with the given unique name, arguments, and options.
@@ -119,6 +119,9 @@ func NewDnsRecord(ctx *pulumi.Context,
 	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -257,7 +260,7 @@ type dnsRecordArgs struct {
 	// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 	Type string `pulumi:"type"`
 	// Identifier.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a DnsRecord resource.
@@ -286,7 +289,7 @@ type DnsRecordArgs struct {
 	// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 	Type pulumi.StringInput
 	// Identifier.
-	ZoneId pulumi.StringPtrInput
+	ZoneId pulumi.StringInput
 }
 
 func (DnsRecordArgs) ElementType() reflect.Type {
@@ -463,8 +466,8 @@ func (o DnsRecordOutput) Type() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o DnsRecordOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DnsRecord) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o DnsRecordOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnsRecord) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type DnsRecordArrayOutput struct{ *pulumi.OutputState }

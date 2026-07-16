@@ -37,6 +37,7 @@ import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersStaleIfError;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersStaleWhileRevalidate;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersTransformedRequestField;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersUri;
+import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersVary;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -448,6 +449,11 @@ public final class GetRulesetRuleActionParameters {
      * 
      */
     private List<String> values;
+    /**
+     * @return Controls how cached responses vary based on request headers. At least one of `default` or `headers` must be set, and `default` is required when `headers` is set.
+     * 
+     */
+    private GetRulesetRuleActionParametersVary vary;
 
     private GetRulesetRuleActionParameters() {}
     /**
@@ -1006,6 +1012,13 @@ public final class GetRulesetRuleActionParameters {
     public List<String> values() {
         return this.values;
     }
+    /**
+     * @return Controls how cached responses vary based on request headers. At least one of `default` or `headers` must be set, and `default` is required when `headers` is set.
+     * 
+     */
+    public GetRulesetRuleActionParametersVary vary() {
+        return this.vary;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -1094,6 +1107,7 @@ public final class GetRulesetRuleActionParameters {
         private List<GetRulesetRuleActionParametersTransformedRequestField> transformedRequestFields;
         private GetRulesetRuleActionParametersUri uri;
         private List<String> values;
+        private GetRulesetRuleActionParametersVary vary;
         public Builder() {}
         public Builder(GetRulesetRuleActionParameters defaults) {
     	      Objects.requireNonNull(defaults);
@@ -1175,6 +1189,7 @@ public final class GetRulesetRuleActionParameters {
     	      this.transformedRequestFields = defaults.transformedRequestFields;
     	      this.uri = defaults.uri;
     	      this.values = defaults.values;
+    	      this.vary = defaults.vary;
         }
 
         @CustomType.Setter
@@ -1834,6 +1849,14 @@ public final class GetRulesetRuleActionParameters {
         public Builder values(String... values) {
             return values(List.of(values));
         }
+        @CustomType.Setter
+        public Builder vary(GetRulesetRuleActionParametersVary vary) {
+            if (vary == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "vary");
+            }
+            this.vary = vary;
+            return this;
+        }
         public GetRulesetRuleActionParameters build() {
             final var _resultValue = new GetRulesetRuleActionParameters();
             _resultValue.additionalCacheablePorts = additionalCacheablePorts;
@@ -1914,6 +1937,7 @@ public final class GetRulesetRuleActionParameters {
             _resultValue.transformedRequestFields = transformedRequestFields;
             _resultValue.uri = uri;
             _resultValue.values = values;
+            _resultValue.vary = vary;
             return _resultValue;
         }
     }

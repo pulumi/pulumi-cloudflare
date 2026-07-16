@@ -54,6 +54,11 @@ namespace Pulumi.Cloudflare
     ///                 Type = "plain_text",
     ///             },
     ///         },
+    ///         CacheOptions = new Cloudflare.Inputs.WorkerVersionCacheOptionsArgs
+    ///         {
+    ///             Enabled = true,
+    ///             CrossVersionCache = true,
+    ///         },
     ///         CompatibilityDate = "2021-01-01",
     ///         CompatibilityFlags = new[]
     ///         {
@@ -115,6 +120,15 @@ namespace Pulumi.Cloudflare
     ///                 Name = "index.js",
     ///             },
     ///         },
+    ///         PackageDependencies = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WorkerVersionPackageDependencyArgs
+    ///             {
+    ///                 InstalledVersion = "4.17.22",
+    ///                 Name = "lodash",
+    ///                 PackageJsonVersion = "^4.17.21",
+    ///             },
+    ///         },
     ///         Placement = new Cloudflare.Inputs.WorkerVersionPlacementArgs
     ///         {
     ///             Mode = "smart",
@@ -137,7 +151,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Metadata about the version.
@@ -156,6 +170,15 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("bindings")]
         public Output<ImmutableArray<Outputs.WorkerVersionBinding>> Bindings { get; private set; } = null!;
+
+        /// <summary>
+        /// Global CacheW configuration for the Worker. When caching is on,
+        /// the platform provisions a `cloudflare.app` zone for the Worker.
+        /// A `type: worker` entry in the `Exports` map can override this
+        /// value for a single entrypoint.
+        /// </summary>
+        [Output("cacheOptions")]
+        public Output<Outputs.WorkerVersionCacheOptions> CacheOptions { get; private set; } = null!;
 
         /// <summary>
         /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -227,6 +250,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("number")]
         public Output<int> Number { get; private set; } = null!;
+
+        /// <summary>
+        /// The list of npm packages that were installed and used when this Worker
+        /// version was built.
+        /// </summary>
+        [Output("packageDependencies")]
+        public Output<ImmutableArray<Outputs.WorkerVersionPackageDependency>> PackageDependencies { get; private set; } = null!;
 
         /// <summary>
         /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
@@ -314,8 +344,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Metadata about the version.
@@ -340,6 +370,15 @@ namespace Pulumi.Cloudflare
             get => _bindings ?? (_bindings = new InputList<Inputs.WorkerVersionBindingArgs>());
             set => _bindings = value;
         }
+
+        /// <summary>
+        /// Global CacheW configuration for the Worker. When caching is on,
+        /// the platform provisions a `cloudflare.app` zone for the Worker.
+        /// A `type: worker` entry in the `Exports` map can override this
+        /// value for a single entrypoint.
+        /// </summary>
+        [Input("cacheOptions")]
+        public Input<Inputs.WorkerVersionCacheOptionsArgs>? CacheOptions { get; set; }
 
         /// <summary>
         /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -406,6 +445,19 @@ namespace Pulumi.Cloudflare
             set => _modules = value;
         }
 
+        [Input("packageDependencies")]
+        private InputList<Inputs.WorkerVersionPackageDependencyArgs>? _packageDependencies;
+
+        /// <summary>
+        /// The list of npm packages that were installed and used when this Worker
+        /// version was built.
+        /// </summary>
+        public InputList<Inputs.WorkerVersionPackageDependencyArgs> PackageDependencies
+        {
+            get => _packageDependencies ?? (_packageDependencies = new InputList<Inputs.WorkerVersionPackageDependencyArgs>());
+            set => _packageDependencies = value;
+        }
+
         /// <summary>
         /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         /// </summary>
@@ -462,6 +514,15 @@ namespace Pulumi.Cloudflare
             get => _bindings ?? (_bindings = new InputList<Inputs.WorkerVersionBindingGetArgs>());
             set => _bindings = value;
         }
+
+        /// <summary>
+        /// Global CacheW configuration for the Worker. When caching is on,
+        /// the platform provisions a `cloudflare.app` zone for the Worker.
+        /// A `type: worker` entry in the `Exports` map can override this
+        /// value for a single entrypoint.
+        /// </summary>
+        [Input("cacheOptions")]
+        public Input<Inputs.WorkerVersionCacheOptionsGetArgs>? CacheOptions { get; set; }
 
         /// <summary>
         /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -551,6 +612,19 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("number")]
         public Input<int>? Number { get; set; }
+
+        [Input("packageDependencies")]
+        private InputList<Inputs.WorkerVersionPackageDependencyGetArgs>? _packageDependencies;
+
+        /// <summary>
+        /// The list of npm packages that were installed and used when this Worker
+        /// version was built.
+        /// </summary>
+        public InputList<Inputs.WorkerVersionPackageDependencyGetArgs> PackageDependencies
+        {
+            get => _packageDependencies ?? (_packageDependencies = new InputList<Inputs.WorkerVersionPackageDependencyGetArgs>());
+            set => _packageDependencies = value;
+        }
 
         /// <summary>
         /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.

@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string> Path { get; set; } = null!;
 
         /// <summary>
-        /// CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.
+        /// CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.
         /// </summary>
         [Input("selector", required: true)]
         public Input<string> Selector { get; set; } = null!;

@@ -31,6 +31,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DnsRecordId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         IncludeShadowMetadata = true,
         ///     });
         /// 
         /// });
@@ -59,6 +60,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DnsRecordId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         IncludeShadowMetadata = true,
         ///     });
         /// 
         /// });
@@ -87,6 +89,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DnsRecordId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         IncludeShadowMetadata = true,
         ///     });
         /// 
         /// });
@@ -107,6 +110,12 @@ namespace Pulumi.Cloudflare
 
         [Input("filter")]
         public Inputs.GetDnsRecordFilterArgs? Filter { get; set; }
+
+        /// <summary>
+        /// Whether to include shadow metadata in the `Meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+        /// </summary>
+        [Input("includeShadowMetadata")]
+        public bool? IncludeShadowMetadata { get; set; }
 
         /// <summary>
         /// Identifier.
@@ -130,6 +139,12 @@ namespace Pulumi.Cloudflare
 
         [Input("filter")]
         public Input<Inputs.GetDnsRecordFilterInputArgs>? Filter { get; set; }
+
+        /// <summary>
+        /// Whether to include shadow metadata in the `Meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+        /// </summary>
+        [Input("includeShadowMetadata")]
+        public Input<bool>? IncludeShadowMetadata { get; set; }
 
         /// <summary>
         /// Identifier.
@@ -177,9 +192,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Extra Cloudflare-specific information about the record.
+        /// Whether to include shadow metadata in the `Meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
         /// </summary>
-        public readonly string Meta;
+        public readonly bool IncludeShadowMetadata;
+        /// <summary>
+        /// Extra Cloudflare-specific metadata about the record.
+        /// </summary>
+        public readonly Outputs.GetDnsRecordMetaResult Meta;
         /// <summary>
         /// When the record was last modified.
         /// </summary>
@@ -248,7 +267,9 @@ namespace Pulumi.Cloudflare
 
             string id,
 
-            string meta,
+            bool includeShadowMetadata,
+
+            Outputs.GetDnsRecordMetaResult meta,
 
             string modifiedOn,
 
@@ -282,6 +303,7 @@ namespace Pulumi.Cloudflare
             DnsRecordId = dnsRecordId;
             Filter = filter;
             Id = id;
+            IncludeShadowMetadata = includeShadowMetadata;
             Meta = meta;
             ModifiedOn = modifiedOn;
             Name = name;

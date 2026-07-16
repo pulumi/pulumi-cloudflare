@@ -41,7 +41,7 @@ class BotManagementArgs:
         The set of arguments for constructing a BotManagement resource.
 
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
-        :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+        :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers.
                Available values: "block", "disabled", "only*on*ad_pages".
         :param pulumi.Input[_builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         :param pulumi.Input[_builtins.bool] bm_cookie_enabled: Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
@@ -114,7 +114,7 @@ class BotManagementArgs:
     @pulumi.getter(name="aiBotsProtection")
     def ai_bots_protection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+        Enable rule to block AI Scrapers and Crawlers.
         Available values: "block", "disabled", "only*on*ad_pages".
         """
         return pulumi.get(self, "ai_bots_protection")
@@ -324,7 +324,7 @@ class _BotManagementState:
         """
         Input properties used for looking up and filtering BotManagement resources.
 
-        :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+        :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers.
                Available values: "block", "disabled", "only*on*ad_pages".
         :param pulumi.Input[_builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         :param pulumi.Input[_builtins.bool] bm_cookie_enabled: Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
@@ -393,7 +393,7 @@ class _BotManagementState:
     @pulumi.getter(name="aiBotsProtection")
     def ai_bots_protection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+        Enable rule to block AI Scrapers and Crawlers.
         Available values: "block", "disabled", "only*on*ad_pages".
         """
         return pulumi.get(self, "ai_bots_protection")
@@ -639,6 +639,11 @@ class BotManagement(pulumi.CustomResource):
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Bot Management Read`
+        - `Bot Management Write`
+
         ## Example Usage
 
         ```python
@@ -665,7 +670,7 @@ class BotManagement(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+        :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers.
                Available values: "block", "disabled", "only*on*ad_pages".
         :param pulumi.Input[_builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         :param pulumi.Input[_builtins.bool] bm_cookie_enabled: Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
@@ -698,6 +703,11 @@ class BotManagement(pulumi.CustomResource):
                  args: BotManagementArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Bot Management Read`
+        - `Bot Management Write`
+
         ## Example Usage
 
         ```python
@@ -817,7 +827,7 @@ class BotManagement(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+        :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers.
                Available values: "block", "disabled", "only*on*ad_pages".
         :param pulumi.Input[_builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         :param pulumi.Input[_builtins.bool] bm_cookie_enabled: Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
@@ -873,7 +883,7 @@ class BotManagement(pulumi.CustomResource):
     @pulumi.getter(name="aiBotsProtection")
     def ai_bots_protection(self) -> pulumi.Output[_builtins.str]:
         """
-        Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+        Enable rule to block AI Scrapers and Crawlers.
         Available values: "block", "disabled", "only*on*ad_pages".
         """
         return pulumi.get(self, "ai_bots_protection")

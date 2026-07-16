@@ -115,6 +115,7 @@ import javax.annotation.Nullable;
  *                 .inspection(ZeroTrustGatewaySettingsSettingsInspectionArgs.builder()
  *                     .mode("static")
  *                     .build())
+ *                 .maxTtlSecs(3600)
  *                 .protocolDetection(ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs.builder()
  *                     .enabled(true)
  *                     .build())

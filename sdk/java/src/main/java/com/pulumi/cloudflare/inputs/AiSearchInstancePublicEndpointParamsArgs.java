@@ -35,6 +35,21 @@ public final class AiSearchInstancePublicEndpointParamsArgs extends com.pulumi.r
         return Optional.ofNullable(this.chatCompletionsEndpoint);
     }
 
+    /**
+     * Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
+     * 
+     */
+    @Import(name="customDomains")
+    private @Nullable Output<List<String>> customDomains;
+
+    /**
+     * @return Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
+     * 
+     */
+    public Optional<Output<List<String>>> customDomains() {
+        return Optional.ofNullable(this.customDomains);
+    }
+
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
@@ -68,6 +83,7 @@ public final class AiSearchInstancePublicEndpointParamsArgs extends com.pulumi.r
     private AiSearchInstancePublicEndpointParamsArgs(AiSearchInstancePublicEndpointParamsArgs $) {
         this.authorizedHosts = $.authorizedHosts;
         this.chatCompletionsEndpoint = $.chatCompletionsEndpoint;
+        this.customDomains = $.customDomains;
         this.enabled = $.enabled;
         this.mcp = $.mcp;
         this.rateLimit = $.rateLimit;
@@ -112,6 +128,37 @@ public final class AiSearchInstancePublicEndpointParamsArgs extends com.pulumi.r
 
         public Builder chatCompletionsEndpoint(AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs chatCompletionsEndpoint) {
             return chatCompletionsEndpoint(Output.of(chatCompletionsEndpoint));
+        }
+
+        /**
+         * @param customDomains Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customDomains(@Nullable Output<List<String>> customDomains) {
+            $.customDomains = customDomains;
+            return this;
+        }
+
+        /**
+         * @param customDomains Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customDomains(List<String> customDomains) {
+            return customDomains(Output.of(customDomains));
+        }
+
+        /**
+         * @param customDomains Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customDomains(String... customDomains) {
+            return customDomains(List.of(customDomains));
         }
 
         public Builder enabled(@Nullable Output<Boolean> enabled) {

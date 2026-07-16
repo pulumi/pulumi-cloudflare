@@ -48,9 +48,11 @@ import (
 //						Value: pulumi.String("test@example.com"),
 //					},
 //				},
-//				Enabled:  pulumi.Bool(true),
-//				Name:     pulumi.String("Send to user@example.net rule."),
-//				Priority: pulumi.Float64(0),
+//				Enabled:        pulumi.Bool(true),
+//				Name:           pulumi.String("Send to user@example.net rule."),
+//				OwnerWorkerTag: pulumi.String("a7e6fb77503c41d8a7f3113c6918f10c"),
+//				Priority:       pulumi.Float64(0),
+//				Source:         pulumi.String("api"),
 //			})
 //			if err != nil {
 //				return err
@@ -77,14 +79,22 @@ type EmailRoutingRule struct {
 	Matchers EmailRoutingRuleMatcherArrayOutput `pulumi:"matchers"`
 	// Routing rule name.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
+	// Public tag (script_tag) of the Worker that owns this rule. Required when
+	// `source` is `wrangler`.
+	OwnerWorkerTag pulumi.StringPtrOutput `pulumi:"ownerWorkerTag"`
 	// Priority of the routing rule.
 	Priority pulumi.Float64Output `pulumi:"priority"`
+	// Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+	// `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+	// to `api` when omitted on write.
+	// Available values: "api", "wrangler".
+	Source pulumi.StringOutput `pulumi:"source"`
 	// Routing rule tag. (Deprecated, replaced by routing rule identifier)
 	//
 	// Deprecated: This attribute is deprecated.
 	Tag pulumi.StringOutput `pulumi:"tag"`
 	// Identifier.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewEmailRoutingRule registers a new resource with the given unique name, arguments, and options.
@@ -99,6 +109,9 @@ func NewEmailRoutingRule(ctx *pulumi.Context,
 	}
 	if args.Matchers == nil {
 		return nil, errors.New("invalid value for required argument 'Matchers'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EmailRoutingRule
@@ -131,8 +144,16 @@ type emailRoutingRuleState struct {
 	Matchers []EmailRoutingRuleMatcher `pulumi:"matchers"`
 	// Routing rule name.
 	Name *string `pulumi:"name"`
+	// Public tag (script_tag) of the Worker that owns this rule. Required when
+	// `source` is `wrangler`.
+	OwnerWorkerTag *string `pulumi:"ownerWorkerTag"`
 	// Priority of the routing rule.
 	Priority *float64 `pulumi:"priority"`
+	// Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+	// `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+	// to `api` when omitted on write.
+	// Available values: "api", "wrangler".
+	Source *string `pulumi:"source"`
 	// Routing rule tag. (Deprecated, replaced by routing rule identifier)
 	//
 	// Deprecated: This attribute is deprecated.
@@ -150,8 +171,16 @@ type EmailRoutingRuleState struct {
 	Matchers EmailRoutingRuleMatcherArrayInput
 	// Routing rule name.
 	Name pulumi.StringPtrInput
+	// Public tag (script_tag) of the Worker that owns this rule. Required when
+	// `source` is `wrangler`.
+	OwnerWorkerTag pulumi.StringPtrInput
 	// Priority of the routing rule.
 	Priority pulumi.Float64PtrInput
+	// Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+	// `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+	// to `api` when omitted on write.
+	// Available values: "api", "wrangler".
+	Source pulumi.StringPtrInput
 	// Routing rule tag. (Deprecated, replaced by routing rule identifier)
 	//
 	// Deprecated: This attribute is deprecated.
@@ -173,10 +202,18 @@ type emailRoutingRuleArgs struct {
 	Matchers []EmailRoutingRuleMatcher `pulumi:"matchers"`
 	// Routing rule name.
 	Name *string `pulumi:"name"`
+	// Public tag (script_tag) of the Worker that owns this rule. Required when
+	// `source` is `wrangler`.
+	OwnerWorkerTag *string `pulumi:"ownerWorkerTag"`
 	// Priority of the routing rule.
 	Priority *float64 `pulumi:"priority"`
+	// Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+	// `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+	// to `api` when omitted on write.
+	// Available values: "api", "wrangler".
+	Source *string `pulumi:"source"`
 	// Identifier.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a EmailRoutingRule resource.
@@ -189,10 +226,18 @@ type EmailRoutingRuleArgs struct {
 	Matchers EmailRoutingRuleMatcherArrayInput
 	// Routing rule name.
 	Name pulumi.StringPtrInput
+	// Public tag (script_tag) of the Worker that owns this rule. Required when
+	// `source` is `wrangler`.
+	OwnerWorkerTag pulumi.StringPtrInput
 	// Priority of the routing rule.
 	Priority pulumi.Float64PtrInput
+	// Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+	// `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+	// to `api` when omitted on write.
+	// Available values: "api", "wrangler".
+	Source pulumi.StringPtrInput
 	// Identifier.
-	ZoneId pulumi.StringPtrInput
+	ZoneId pulumi.StringInput
 }
 
 func (EmailRoutingRuleArgs) ElementType() reflect.Type {
@@ -302,9 +347,23 @@ func (o EmailRoutingRuleOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EmailRoutingRule) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Public tag (script_tag) of the Worker that owns this rule. Required when
+// `source` is `wrangler`.
+func (o EmailRoutingRuleOutput) OwnerWorkerTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailRoutingRule) pulumi.StringPtrOutput { return v.OwnerWorkerTag }).(pulumi.StringPtrOutput)
+}
+
 // Priority of the routing rule.
 func (o EmailRoutingRuleOutput) Priority() pulumi.Float64Output {
 	return o.ApplyT(func(v *EmailRoutingRule) pulumi.Float64Output { return v.Priority }).(pulumi.Float64Output)
+}
+
+// Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+// `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+// to `api` when omitted on write.
+// Available values: "api", "wrangler".
+func (o EmailRoutingRuleOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v *EmailRoutingRule) pulumi.StringOutput { return v.Source }).(pulumi.StringOutput)
 }
 
 // Routing rule tag. (Deprecated, replaced by routing rule identifier)
@@ -315,8 +374,8 @@ func (o EmailRoutingRuleOutput) Tag() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o EmailRoutingRuleOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EmailRoutingRule) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o EmailRoutingRuleOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EmailRoutingRule) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type EmailRoutingRuleArrayOutput struct{ *pulumi.OutputState }

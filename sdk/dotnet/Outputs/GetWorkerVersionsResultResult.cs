@@ -26,6 +26,13 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetWorkerVersionsResultBindingResult> Bindings;
         /// <summary>
+        /// Global CacheW configuration for the Worker. When caching is on,
+        /// the platform provisions a `cloudflare.app` zone for the Worker.
+        /// A `type: worker` entry in the `Exports` map can override this
+        /// value for a single entrypoint.
+        /// </summary>
+        public readonly Outputs.GetWorkerVersionsResultCacheOptionsResult CacheOptions;
+        /// <summary>
         /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         /// </summary>
         public readonly string CompatibilityDate;
@@ -79,6 +86,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly int Number;
         /// <summary>
+        /// The list of npm packages that were installed and used when this Worker
+        /// version was built.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetWorkerVersionsResultPackageDependencyResult> PackageDependencies;
+        /// <summary>
         /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         /// </summary>
         public readonly Outputs.GetWorkerVersionsResultPlacementResult Placement;
@@ -108,6 +120,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<Outputs.GetWorkerVersionsResultBindingResult> bindings,
 
+            Outputs.GetWorkerVersionsResultCacheOptionsResult cacheOptions,
+
             string compatibilityDate,
 
             ImmutableArray<string> compatibilityFlags,
@@ -132,6 +146,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             int number,
 
+            ImmutableArray<Outputs.GetWorkerVersionsResultPackageDependencyResult> packageDependencies,
+
             Outputs.GetWorkerVersionsResultPlacementResult placement,
 
             string source,
@@ -145,6 +161,7 @@ namespace Pulumi.Cloudflare.Outputs
             Annotations = annotations;
             Assets = assets;
             Bindings = bindings;
+            CacheOptions = cacheOptions;
             CompatibilityDate = compatibilityDate;
             CompatibilityFlags = compatibilityFlags;
             Containers = containers;
@@ -157,6 +174,7 @@ namespace Pulumi.Cloudflare.Outputs
             Migrations = migrations;
             Modules = modules;
             Number = number;
+            PackageDependencies = packageDependencies;
             Placement = placement;
             Source = source;
             StartupTimeMs = startupTimeMs;

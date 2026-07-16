@@ -18,7 +18,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
     public static final BotManagementArgs Empty = new BotManagementArgs();
 
     /**
-     * Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
+     * Enable rule to block AI Scrapers and Crawlers.
      * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
      * 
      */
@@ -26,7 +26,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> aiBotsProtection;
 
     /**
-     * @return Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
+     * @return Enable rule to block AI Scrapers and Crawlers.
      * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
      * 
      */
@@ -315,7 +315,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aiBotsProtection Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
+         * @param aiBotsProtection Enable rule to block AI Scrapers and Crawlers.
          * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
          * 
          * @return builder
@@ -327,7 +327,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aiBotsProtection Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
+         * @param aiBotsProtection Enable rule to block AI Scrapers and Crawlers.
          * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
          * 
          * @return builder

@@ -18,6 +18,11 @@ import java.util.Objects;
 public final class GetAiSearchInstancePublicEndpointParams {
     private List<String> authorizedHosts;
     private GetAiSearchInstancePublicEndpointParamsChatCompletionsEndpoint chatCompletionsEndpoint;
+    /**
+     * @return Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
+     * 
+     */
+    private List<String> customDomains;
     private Boolean enabled;
     private GetAiSearchInstancePublicEndpointParamsMcp mcp;
     private GetAiSearchInstancePublicEndpointParamsRateLimit rateLimit;
@@ -29,6 +34,13 @@ public final class GetAiSearchInstancePublicEndpointParams {
     }
     public GetAiSearchInstancePublicEndpointParamsChatCompletionsEndpoint chatCompletionsEndpoint() {
         return this.chatCompletionsEndpoint;
+    }
+    /**
+     * @return Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
+     * 
+     */
+    public List<String> customDomains() {
+        return this.customDomains;
     }
     public Boolean enabled() {
         return this.enabled;
@@ -54,6 +66,7 @@ public final class GetAiSearchInstancePublicEndpointParams {
     public static final class Builder {
         private List<String> authorizedHosts;
         private GetAiSearchInstancePublicEndpointParamsChatCompletionsEndpoint chatCompletionsEndpoint;
+        private List<String> customDomains;
         private Boolean enabled;
         private GetAiSearchInstancePublicEndpointParamsMcp mcp;
         private GetAiSearchInstancePublicEndpointParamsRateLimit rateLimit;
@@ -63,6 +76,7 @@ public final class GetAiSearchInstancePublicEndpointParams {
     	      Objects.requireNonNull(defaults);
     	      this.authorizedHosts = defaults.authorizedHosts;
     	      this.chatCompletionsEndpoint = defaults.chatCompletionsEndpoint;
+    	      this.customDomains = defaults.customDomains;
     	      this.enabled = defaults.enabled;
     	      this.mcp = defaults.mcp;
     	      this.rateLimit = defaults.rateLimit;
@@ -87,6 +101,17 @@ public final class GetAiSearchInstancePublicEndpointParams {
             }
             this.chatCompletionsEndpoint = chatCompletionsEndpoint;
             return this;
+        }
+        @CustomType.Setter
+        public Builder customDomains(List<String> customDomains) {
+            if (customDomains == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchInstancePublicEndpointParams", "customDomains");
+            }
+            this.customDomains = customDomains;
+            return this;
+        }
+        public Builder customDomains(String... customDomains) {
+            return customDomains(List.of(customDomains));
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
@@ -124,6 +149,7 @@ public final class GetAiSearchInstancePublicEndpointParams {
             final var _resultValue = new GetAiSearchInstancePublicEndpointParams();
             _resultValue.authorizedHosts = authorizedHosts;
             _resultValue.chatCompletionsEndpoint = chatCompletionsEndpoint;
+            _resultValue.customDomains = customDomains;
             _resultValue.enabled = enabled;
             _resultValue.mcp = mcp;
             _resultValue.rateLimit = rateLimit;

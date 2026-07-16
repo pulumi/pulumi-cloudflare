@@ -15,7 +15,7 @@ public final class GetZeroTrustDexTestFilter extends com.pulumi.resources.Invoke
     public static final GetZeroTrustDexTestFilter Empty = new GetZeroTrustDexTestFilter();
 
     /**
-     * Filter by test type
+     * Filter by test type.
      * Available values: &#34;http&#34;, &#34;traceroute&#34;.
      * 
      */
@@ -23,7 +23,7 @@ public final class GetZeroTrustDexTestFilter extends com.pulumi.resources.Invoke
     private @Nullable String kind;
 
     /**
-     * @return Filter by test type
+     * @return Filter by test type.
      * Available values: &#34;http&#34;, &#34;traceroute&#34;.
      * 
      */
@@ -32,14 +32,14 @@ public final class GetZeroTrustDexTestFilter extends com.pulumi.resources.Invoke
     }
 
     /**
-     * Filter by test name
+     * Filter by test name.
      * 
      */
     @Import(name="testName")
     private @Nullable String testName;
 
     /**
-     * @return Filter by test name
+     * @return Filter by test name.
      * 
      */
     public Optional<String> testName() {
@@ -72,7 +72,7 @@ public final class GetZeroTrustDexTestFilter extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param kind Filter by test type
+         * @param kind Filter by test type.
          * Available values: &#34;http&#34;, &#34;traceroute&#34;.
          * 
          * @return builder
@@ -84,7 +84,7 @@ public final class GetZeroTrustDexTestFilter extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param testName Filter by test name
+         * @param testName Filter by test name.
          * 
          * @return builder
          * 

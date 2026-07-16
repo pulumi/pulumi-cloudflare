@@ -64,6 +64,7 @@ import * as utilities from "./utilities";
  * | `replaceInsecureJs` | `"on"` / `"off"` | Automatically replace insecure JavaScript libraries with safer and faster alt... |
  * | `responseBuffering` | `"on"` / `"off"` | Enables or disables buffering of responses from the proxied server. Cloudflar... |
  * | `rocketLoader` | `"on"` / `"off"` | Rocket Loader is a general-purpose asynchronous JavaScript optimisation that ... |
+ * | `searchForAgents` | `"on"` / `"off"` | When enabled, Cloudflare provisions an AI Search instance for the zone and ex... |
  * | `securityHeader` | Object | Cloudflare security header for a zone. |
  * | `securityLevel` | `"off"`, `"essentiallyOff"`, `"low"`, `"medium"`, `"high"`, `"underAttack"` | Choose the appropriate security profile for your website, which will automati... |
  * | `serverSideExclude` | `"on"` / `"off"` | If there is sensitive content on your website that you want visible to real v... |
@@ -216,6 +217,7 @@ export interface GetZoneSettingResult {
  * | `replaceInsecureJs` | `"on"` / `"off"` | Automatically replace insecure JavaScript libraries with safer and faster alt... |
  * | `responseBuffering` | `"on"` / `"off"` | Enables or disables buffering of responses from the proxied server. Cloudflar... |
  * | `rocketLoader` | `"on"` / `"off"` | Rocket Loader is a general-purpose asynchronous JavaScript optimisation that ... |
+ * | `searchForAgents` | `"on"` / `"off"` | When enabled, Cloudflare provisions an AI Search instance for the zone and ex... |
  * | `securityHeader` | Object | Cloudflare security header for a zone. |
  * | `securityLevel` | `"off"`, `"essentiallyOff"`, `"low"`, `"medium"`, `"high"`, `"underAttack"` | Choose the appropriate security profile for your website, which will automati... |
  * | `serverSideExclude` | `"on"` / `"off"` | If there is sensitive content on your website that you want visible to real v... |

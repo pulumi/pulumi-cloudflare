@@ -89,6 +89,10 @@ export interface GetZeroTrustDnsLocationResult {
     readonly ipv4DestinationBackup: string;
     readonly locationId: string;
     /**
+     * Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+     */
+    readonly maxTtl: outputs.GetZeroTrustDnsLocationMaxTtl;
+    /**
      * Specify the location name.
      */
     readonly name: string;

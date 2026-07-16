@@ -13,19 +13,19 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class GetZeroTrustDexTestTargetPolicyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether the DEX rule is the account default
+        /// Whether the DEX rule is the account default.
         /// </summary>
         [Input("default", required: true)]
         public bool Default { get; set; }
 
         /// <summary>
-        /// API Resource UUID tag.
+        /// The id of the DEX rule.
         /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
         /// <summary>
-        /// The name of the DEX rule
+        /// The name of the DEX rule.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;

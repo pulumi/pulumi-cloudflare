@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.GetEmailSecurityImpersonationRegistryFilter;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,25 +16,18 @@ public final class GetEmailSecurityImpersonationRegistryPlainArgs extends com.pu
     public static final GetEmailSecurityImpersonationRegistryPlainArgs Empty = new GetEmailSecurityImpersonationRegistryPlainArgs();
 
     /**
-     * Account Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable String accountId;
 
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
-    }
-
-    @Import(name="displayNameId")
-    private @Nullable Integer displayNameId;
-
-    public Optional<Integer> displayNameId() {
-        return Optional.ofNullable(this.displayNameId);
     }
 
     @Import(name="filter")
@@ -45,12 +37,27 @@ public final class GetEmailSecurityImpersonationRegistryPlainArgs extends com.pu
         return Optional.ofNullable(this.filter);
     }
 
+    /**
+     * Impersonation registry entry identifier
+     * 
+     */
+    @Import(name="impersonationRegistryId")
+    private @Nullable String impersonationRegistryId;
+
+    /**
+     * @return Impersonation registry entry identifier
+     * 
+     */
+    public Optional<String> impersonationRegistryId() {
+        return Optional.ofNullable(this.impersonationRegistryId);
+    }
+
     private GetEmailSecurityImpersonationRegistryPlainArgs() {}
 
     private GetEmailSecurityImpersonationRegistryPlainArgs(GetEmailSecurityImpersonationRegistryPlainArgs $) {
         this.accountId = $.accountId;
-        this.displayNameId = $.displayNameId;
         this.filter = $.filter;
+        this.impersonationRegistryId = $.impersonationRegistryId;
     }
 
     public static Builder builder() {
@@ -72,7 +79,7 @@ public final class GetEmailSecurityImpersonationRegistryPlainArgs extends com.pu
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -82,13 +89,19 @@ public final class GetEmailSecurityImpersonationRegistryPlainArgs extends com.pu
             return this;
         }
 
-        public Builder displayNameId(@Nullable Integer displayNameId) {
-            $.displayNameId = displayNameId;
+        public Builder filter(@Nullable GetEmailSecurityImpersonationRegistryFilter filter) {
+            $.filter = filter;
             return this;
         }
 
-        public Builder filter(@Nullable GetEmailSecurityImpersonationRegistryFilter filter) {
-            $.filter = filter;
+        /**
+         * @param impersonationRegistryId Impersonation registry entry identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder impersonationRegistryId(@Nullable String impersonationRegistryId) {
+            $.impersonationRegistryId = impersonationRegistryId;
             return this;
         }
 

@@ -19,14 +19,14 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
     public static final ClientCertificateState Empty = new ClientCertificateState();
 
     /**
-     * The Client Certificate PEM
+     * The Client Certificate PEM.
      * 
      */
     @Import(name="certificate")
     private @Nullable Output<String> certificate;
 
     /**
-     * @return The Client Certificate PEM
+     * @return The Client Certificate PEM.
      * 
      */
     public Optional<Output<String>> certificate() {
@@ -34,14 +34,14 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Certificate Authority used to issue the Client Certificate
+     * Certificate Authority used to issue the Client Certificate.
      * 
      */
     @Import(name="certificateAuthority")
     private @Nullable Output<ClientCertificateCertificateAuthorityArgs> certificateAuthority;
 
     /**
-     * @return Certificate Authority used to issue the Client Certificate
+     * @return Certificate Authority used to issue the Client Certificate.
      * 
      */
     public Optional<Output<ClientCertificateCertificateAuthorityArgs>> certificateAuthority() {
@@ -49,14 +49,14 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Common Name of the Client Certificate
+     * Common Name of the Client Certificate.
      * 
      */
     @Import(name="commonName")
     private @Nullable Output<String> commonName;
 
     /**
-     * @return Common Name of the Client Certificate
+     * @return Common Name of the Client Certificate.
      * 
      */
     public Optional<Output<String>> commonName() {
@@ -64,14 +64,14 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Country, provided by the CSR
+     * Country, provided by the CSR.
      * 
      */
     @Import(name="country")
     private @Nullable Output<String> country;
 
     /**
-     * @return Country, provided by the CSR
+     * @return Country, provided by the CSR.
      * 
      */
     public Optional<Output<String>> country() {
@@ -94,14 +94,14 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Date that the Client Certificate expires
+     * Date that the Client Certificate expires.
      * 
      */
     @Import(name="expiresOn")
     private @Nullable Output<String> expiresOn;
 
     /**
-     * @return Date that the Client Certificate expires
+     * @return Date that the Client Certificate expires.
      * 
      */
     public Optional<Output<String>> expiresOn() {
@@ -109,14 +109,14 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Unique identifier of the Client Certificate
+     * Unique identifier of the Client Certificate.
      * 
      */
     @Import(name="fingerprintSha256")
     private @Nullable Output<String> fingerprintSha256;
 
     /**
-     * @return Unique identifier of the Client Certificate
+     * @return Unique identifier of the Client Certificate.
      * 
      */
     public Optional<Output<String>> fingerprintSha256() {
@@ -124,14 +124,14 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Date that the Client Certificate was issued by the Certificate Authority
+     * Date that the Client Certificate was issued by the Certificate Authority.
      * 
      */
     @Import(name="issuedOn")
     private @Nullable Output<String> issuedOn;
 
     /**
-     * @return Date that the Client Certificate was issued by the Certificate Authority
+     * @return Date that the Client Certificate was issued by the Certificate Authority.
      * 
      */
     public Optional<Output<String>> issuedOn() {
@@ -139,14 +139,14 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Location, provided by the CSR
+     * Location, provided by the CSR.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return Location, provided by the CSR
+     * @return Location, provided by the CSR.
      * 
      */
     public Optional<Output<String>> location() {
@@ -154,14 +154,14 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Organization, provided by the CSR
+     * Organization, provided by the CSR.
      * 
      */
     @Import(name="organization")
     private @Nullable Output<String> organization;
 
     /**
-     * @return Organization, provided by the CSR
+     * @return Organization, provided by the CSR.
      * 
      */
     public Optional<Output<String>> organization() {
@@ -169,14 +169,14 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Organizational Unit, provided by the CSR
+     * Organizational Unit, provided by the CSR.
      * 
      */
     @Import(name="organizationalUnit")
     private @Nullable Output<String> organizationalUnit;
 
     /**
-     * @return Organizational Unit, provided by the CSR
+     * @return Organizational Unit, provided by the CSR.
      * 
      */
     public Optional<Output<String>> organizationalUnit() {
@@ -221,14 +221,14 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Subject Key Identifier
+     * Subject Key Identifier.
      * 
      */
     @Import(name="ski")
     private @Nullable Output<String> ski;
 
     /**
-     * @return Subject Key Identifier
+     * @return Subject Key Identifier.
      * 
      */
     public Optional<Output<String>> ski() {
@@ -236,14 +236,14 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * State, provided by the CSR
+     * State, provided by the CSR.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return State, provided by the CSR
+     * @return State, provided by the CSR.
      * 
      */
     public Optional<Output<String>> state() {
@@ -251,7 +251,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions
+     * Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions.
      * Available values: &#34;active&#34;, &#34;pending*reactivation&#34;, &#34;pending*revocation&#34;, &#34;revoked&#34;.
      * 
      */
@@ -259,7 +259,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> status;
 
     /**
-     * @return Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions
+     * @return Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions.
      * Available values: &#34;active&#34;, &#34;pending*reactivation&#34;, &#34;pending*revocation&#34;, &#34;revoked&#34;.
      * 
      */
@@ -268,14 +268,14 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The number of days the Client Certificate will be valid after the issuedOn date
+     * The number of days the Client Certificate will be valid after the issuedOn date.
      * 
      */
     @Import(name="validityDays")
     private @Nullable Output<Integer> validityDays;
 
     /**
-     * @return The number of days the Client Certificate will be valid after the issuedOn date
+     * @return The number of days the Client Certificate will be valid after the issuedOn date.
      * 
      */
     public Optional<Output<Integer>> validityDays() {
@@ -340,7 +340,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param certificate The Client Certificate PEM
+         * @param certificate The Client Certificate PEM.
          * 
          * @return builder
          * 
@@ -351,7 +351,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param certificate The Client Certificate PEM
+         * @param certificate The Client Certificate PEM.
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param certificateAuthority Certificate Authority used to issue the Client Certificate
+         * @param certificateAuthority Certificate Authority used to issue the Client Certificate.
          * 
          * @return builder
          * 
@@ -372,7 +372,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param certificateAuthority Certificate Authority used to issue the Client Certificate
+         * @param certificateAuthority Certificate Authority used to issue the Client Certificate.
          * 
          * @return builder
          * 
@@ -382,7 +382,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param commonName Common Name of the Client Certificate
+         * @param commonName Common Name of the Client Certificate.
          * 
          * @return builder
          * 
@@ -393,7 +393,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param commonName Common Name of the Client Certificate
+         * @param commonName Common Name of the Client Certificate.
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param country Country, provided by the CSR
+         * @param country Country, provided by the CSR.
          * 
          * @return builder
          * 
@@ -414,7 +414,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param country Country, provided by the CSR
+         * @param country Country, provided by the CSR.
          * 
          * @return builder
          * 
@@ -445,7 +445,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param expiresOn Date that the Client Certificate expires
+         * @param expiresOn Date that the Client Certificate expires.
          * 
          * @return builder
          * 
@@ -456,7 +456,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param expiresOn Date that the Client Certificate expires
+         * @param expiresOn Date that the Client Certificate expires.
          * 
          * @return builder
          * 
@@ -466,7 +466,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param fingerprintSha256 Unique identifier of the Client Certificate
+         * @param fingerprintSha256 Unique identifier of the Client Certificate.
          * 
          * @return builder
          * 
@@ -477,7 +477,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param fingerprintSha256 Unique identifier of the Client Certificate
+         * @param fingerprintSha256 Unique identifier of the Client Certificate.
          * 
          * @return builder
          * 
@@ -487,7 +487,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param issuedOn Date that the Client Certificate was issued by the Certificate Authority
+         * @param issuedOn Date that the Client Certificate was issued by the Certificate Authority.
          * 
          * @return builder
          * 
@@ -498,7 +498,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param issuedOn Date that the Client Certificate was issued by the Certificate Authority
+         * @param issuedOn Date that the Client Certificate was issued by the Certificate Authority.
          * 
          * @return builder
          * 
@@ -508,7 +508,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param location Location, provided by the CSR
+         * @param location Location, provided by the CSR.
          * 
          * @return builder
          * 
@@ -519,7 +519,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param location Location, provided by the CSR
+         * @param location Location, provided by the CSR.
          * 
          * @return builder
          * 
@@ -529,7 +529,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param organization Organization, provided by the CSR
+         * @param organization Organization, provided by the CSR.
          * 
          * @return builder
          * 
@@ -540,7 +540,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param organization Organization, provided by the CSR
+         * @param organization Organization, provided by the CSR.
          * 
          * @return builder
          * 
@@ -550,7 +550,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param organizationalUnit Organizational Unit, provided by the CSR
+         * @param organizationalUnit Organizational Unit, provided by the CSR.
          * 
          * @return builder
          * 
@@ -561,7 +561,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param organizationalUnit Organizational Unit, provided by the CSR
+         * @param organizationalUnit Organizational Unit, provided by the CSR.
          * 
          * @return builder
          * 
@@ -622,7 +622,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ski Subject Key Identifier
+         * @param ski Subject Key Identifier.
          * 
          * @return builder
          * 
@@ -633,7 +633,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ski Subject Key Identifier
+         * @param ski Subject Key Identifier.
          * 
          * @return builder
          * 
@@ -643,7 +643,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param state State, provided by the CSR
+         * @param state State, provided by the CSR.
          * 
          * @return builder
          * 
@@ -654,7 +654,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param state State, provided by the CSR
+         * @param state State, provided by the CSR.
          * 
          * @return builder
          * 
@@ -664,7 +664,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param status Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions
+         * @param status Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions.
          * Available values: &#34;active&#34;, &#34;pending*reactivation&#34;, &#34;pending*revocation&#34;, &#34;revoked&#34;.
          * 
          * @return builder
@@ -676,7 +676,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param status Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions
+         * @param status Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions.
          * Available values: &#34;active&#34;, &#34;pending*reactivation&#34;, &#34;pending*revocation&#34;, &#34;revoked&#34;.
          * 
          * @return builder
@@ -687,7 +687,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param validityDays The number of days the Client Certificate will be valid after the issuedOn date
+         * @param validityDays The number of days the Client Certificate will be valid after the issuedOn date.
          * 
          * @return builder
          * 
@@ -698,7 +698,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param validityDays The number of days the Client Certificate will be valid after the issuedOn date
+         * @param validityDays The number of days the Client Certificate will be valid after the issuedOn date.
          * 
          * @return builder
          * 

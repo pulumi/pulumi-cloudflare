@@ -28,6 +28,53 @@ import javax.annotation.Nullable;
  *   _and_ `cloudflare.getListItems` on the same list is not supported and will cause
  *   Terraform into an irreconcilable state.
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.List;
+ * import com.pulumi.cloudflare.ListArgs;
+ * import com.pulumi.cloudflare.inputs.ListItemArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleList = new List("exampleList", ListArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .kind("ip")
+ *             .name("list1")
+ *             .description("This is a note")
+ *             .items(            
+ *                 ListItemArgs.builder()
+ *                     .ip("1.1.1.1")
+ *                     .build(),
+ *                 ListItemArgs.builder()
+ *                     .ip("1.1.1.2")
+ *                     .build(),
+ *                 ListItemArgs.builder()
+ *                     .ip("1.1.1.3")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh
@@ -42,14 +89,14 @@ public class List extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
      * @return The Account ID for this resource.
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * The RFC 3339 timestamp of when the list was created.

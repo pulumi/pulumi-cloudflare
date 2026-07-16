@@ -54,6 +54,18 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("search")]
         public Input<string>? Search { get; set; }
 
+        /// <summary>
+        /// Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+        /// </summary>
+        [Input("shadowedByName")]
+        public Input<string>? ShadowedByName { get; set; }
+
+        /// <summary>
+        /// Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+        /// </summary>
+        [Input("shadowingName")]
+        public Input<string>? ShadowingName { get; set; }
+
         [Input("tag")]
         public Input<Inputs.GetDnsRecordFilterTagInputArgs>? Tag { get; set; }
 

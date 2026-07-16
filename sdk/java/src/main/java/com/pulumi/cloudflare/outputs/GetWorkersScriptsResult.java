@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetWorkersScriptsResultCacheOptions;
 import com.pulumi.cloudflare.outputs.GetWorkersScriptsResultNamedHandler;
 import com.pulumi.cloudflare.outputs.GetWorkersScriptsResultObservability;
 import com.pulumi.cloudflare.outputs.GetWorkersScriptsResultPlacement;
@@ -17,6 +18,14 @@ import java.util.Objects;
 
 @CustomType
 public final class GetWorkersScriptsResult {
+    /**
+     * @return Global CacheW configuration for the Worker. When caching is on,
+     * the platform provisions a `cloudflare.app` zone for the Worker.
+     * A `type: worker` entry in the `exports` map can override this
+     * value for a single entrypoint.
+     * 
+     */
+    private GetWorkersScriptsResultCacheOptions cacheOptions;
     /**
      * @return Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      * 
@@ -138,6 +147,16 @@ public final class GetWorkersScriptsResult {
     private String usageModel;
 
     private GetWorkersScriptsResult() {}
+    /**
+     * @return Global CacheW configuration for the Worker. When caching is on,
+     * the platform provisions a `cloudflare.app` zone for the Worker.
+     * A `type: worker` entry in the `exports` map can override this
+     * value for a single entrypoint.
+     * 
+     */
+    public GetWorkersScriptsResultCacheOptions cacheOptions() {
+        return this.cacheOptions;
+    }
     /**
      * @return Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      * 
@@ -311,6 +330,7 @@ public final class GetWorkersScriptsResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private GetWorkersScriptsResultCacheOptions cacheOptions;
         private String compatibilityDate;
         private List<String> compatibilityFlags;
         private String createdOn;
@@ -336,6 +356,7 @@ public final class GetWorkersScriptsResult {
         public Builder() {}
         public Builder(GetWorkersScriptsResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.cacheOptions = defaults.cacheOptions;
     	      this.compatibilityDate = defaults.compatibilityDate;
     	      this.compatibilityFlags = defaults.compatibilityFlags;
     	      this.createdOn = defaults.createdOn;
@@ -360,6 +381,14 @@ public final class GetWorkersScriptsResult {
     	      this.usageModel = defaults.usageModel;
         }
 
+        @CustomType.Setter
+        public Builder cacheOptions(GetWorkersScriptsResultCacheOptions cacheOptions) {
+            if (cacheOptions == null) {
+              throw new MissingRequiredPropertyException("GetWorkersScriptsResult", "cacheOptions");
+            }
+            this.cacheOptions = cacheOptions;
+            return this;
+        }
         @CustomType.Setter
         public Builder compatibilityDate(String compatibilityDate) {
             if (compatibilityDate == null) {
@@ -556,6 +585,7 @@ public final class GetWorkersScriptsResult {
         }
         public GetWorkersScriptsResult build() {
             final var _resultValue = new GetWorkersScriptsResult();
+            _resultValue.cacheOptions = cacheOptions;
             _resultValue.compatibilityDate = compatibilityDate;
             _resultValue.compatibilityFlags = compatibilityFlags;
             _resultValue.createdOn = createdOn;

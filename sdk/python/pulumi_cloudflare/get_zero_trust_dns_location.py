@@ -27,7 +27,7 @@ class GetZeroTrustDnsLocationResult:
     """
     A collection of values returned by getZeroTrustDnsLocation.
     """
-    def __init__(__self__, account_id=None, client_default=None, created_at=None, dns_destination_ips_id=None, dns_destination_ipv6_block_id=None, doh_subdomain=None, ecs_support=None, endpoints=None, id=None, ip=None, ipv4_destination=None, ipv4_destination_backup=None, location_id=None, name=None, networks=None, updated_at=None):
+    def __init__(__self__, account_id=None, client_default=None, created_at=None, dns_destination_ips_id=None, dns_destination_ipv6_block_id=None, doh_subdomain=None, ecs_support=None, endpoints=None, id=None, ip=None, ipv4_destination=None, ipv4_destination_backup=None, location_id=None, max_ttl=None, name=None, networks=None, updated_at=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -67,6 +67,9 @@ class GetZeroTrustDnsLocationResult:
         if location_id and not isinstance(location_id, str):
             raise TypeError("Expected argument 'location_id' to be a str")
         pulumi.set(__self__, "location_id", location_id)
+        if max_ttl and not isinstance(max_ttl, dict):
+            raise TypeError("Expected argument 'max_ttl' to be a dict")
+        pulumi.set(__self__, "max_ttl", max_ttl)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -173,6 +176,14 @@ class GetZeroTrustDnsLocationResult:
         return pulumi.get(self, "location_id")
 
     @_builtins.property
+    @pulumi.getter(name="maxTtl")
+    def max_ttl(self) -> 'outputs.GetZeroTrustDnsLocationMaxTtlResult':
+        """
+        Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.
+        """
+        return pulumi.get(self, "max_ttl")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
@@ -213,6 +224,7 @@ class AwaitableGetZeroTrustDnsLocationResult(GetZeroTrustDnsLocationResult):
             ipv4_destination=self.ipv4_destination,
             ipv4_destination_backup=self.ipv4_destination_backup,
             location_id=self.location_id,
+            max_ttl=self.max_ttl,
             name=self.name,
             networks=self.networks,
             updated_at=self.updated_at)
@@ -258,6 +270,7 @@ def get_zero_trust_dns_location(account_id: Optional[_builtins.str] = None,
         ipv4_destination=pulumi.get(__ret__, 'ipv4_destination'),
         ipv4_destination_backup=pulumi.get(__ret__, 'ipv4_destination_backup'),
         location_id=pulumi.get(__ret__, 'location_id'),
+        max_ttl=pulumi.get(__ret__, 'max_ttl'),
         name=pulumi.get(__ret__, 'name'),
         networks=pulumi.get(__ret__, 'networks'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
@@ -300,6 +313,7 @@ def get_zero_trust_dns_location_output(account_id: pulumi.Input[Optional[Optiona
         ipv4_destination=pulumi.get(__response__, 'ipv4_destination'),
         ipv4_destination_backup=pulumi.get(__response__, 'ipv4_destination_backup'),
         location_id=pulumi.get(__response__, 'location_id'),
+        max_ttl=pulumi.get(__response__, 'max_ttl'),
         name=pulumi.get(__response__, 'name'),
         networks=pulumi.get(__response__, 'networks'),
         updated_at=pulumi.get(__response__, 'updated_at')))

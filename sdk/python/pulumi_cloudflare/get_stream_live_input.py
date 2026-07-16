@@ -27,7 +27,7 @@ class GetStreamLiveInputResult:
     """
     A collection of values returned by getStreamLiveInput.
     """
-    def __init__(__self__, account_id=None, created=None, delete_recording_after_days=None, enabled=None, id=None, live_input_identifier=None, meta=None, modified=None, recording=None, rtmps=None, rtmps_playback=None, srt=None, srt_playback=None, status=None, uid=None, web_rtc=None, web_rtc_playback=None):
+    def __init__(__self__, account_id=None, created=None, delete_recording_after_days=None, enabled=None, id=None, keys_rotated_at=None, live_input_identifier=None, meta=None, modified=None, prefer_low_latency=None, recording=None, rtmps=None, rtmps_playback=None, srt=None, srt_playback=None, status=None, uid=None, web_rtc=None, web_rtc_playback=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -43,6 +43,9 @@ class GetStreamLiveInputResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if keys_rotated_at and not isinstance(keys_rotated_at, str):
+            raise TypeError("Expected argument 'keys_rotated_at' to be a str")
+        pulumi.set(__self__, "keys_rotated_at", keys_rotated_at)
         if live_input_identifier and not isinstance(live_input_identifier, str):
             raise TypeError("Expected argument 'live_input_identifier' to be a str")
         pulumi.set(__self__, "live_input_identifier", live_input_identifier)
@@ -52,6 +55,9 @@ class GetStreamLiveInputResult:
         if modified and not isinstance(modified, str):
             raise TypeError("Expected argument 'modified' to be a str")
         pulumi.set(__self__, "modified", modified)
+        if prefer_low_latency and not isinstance(prefer_low_latency, bool):
+            raise TypeError("Expected argument 'prefer_low_latency' to be a bool")
+        pulumi.set(__self__, "prefer_low_latency", prefer_low_latency)
         if recording and not isinstance(recording, dict):
             raise TypeError("Expected argument 'recording' to be a dict")
         pulumi.set(__self__, "recording", recording)
@@ -82,7 +88,7 @@ class GetStreamLiveInputResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[_builtins.str]:
+    def account_id(self) -> _builtins.str:
         """
         Identifier.
         """
@@ -121,6 +127,14 @@ class GetStreamLiveInputResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="keysRotatedAt")
+    def keys_rotated_at(self) -> _builtins.str:
+        """
+        The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
+        """
+        return pulumi.get(self, "keys_rotated_at")
+
+    @_builtins.property
     @pulumi.getter(name="liveInputIdentifier")
     def live_input_identifier(self) -> _builtins.str:
         """
@@ -143,6 +157,14 @@ class GetStreamLiveInputResult:
         The date and time the live input was last modified.
         """
         return pulumi.get(self, "modified")
+
+    @_builtins.property
+    @pulumi.getter(name="preferLowLatency")
+    def prefer_low_latency(self) -> _builtins.bool:
+        """
+        When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
+        """
+        return pulumi.get(self, "prefer_low_latency")
 
     @_builtins.property
     @pulumi.getter
@@ -229,9 +251,11 @@ class AwaitableGetStreamLiveInputResult(GetStreamLiveInputResult):
             delete_recording_after_days=self.delete_recording_after_days,
             enabled=self.enabled,
             id=self.id,
+            keys_rotated_at=self.keys_rotated_at,
             live_input_identifier=self.live_input_identifier,
             meta=self.meta,
             modified=self.modified,
+            prefer_low_latency=self.prefer_low_latency,
             recording=self.recording,
             rtmps=self.rtmps,
             rtmps_playback=self.rtmps_playback,
@@ -278,9 +302,11 @@ def get_stream_live_input(account_id: Optional[_builtins.str] = None,
         delete_recording_after_days=pulumi.get(__ret__, 'delete_recording_after_days'),
         enabled=pulumi.get(__ret__, 'enabled'),
         id=pulumi.get(__ret__, 'id'),
+        keys_rotated_at=pulumi.get(__ret__, 'keys_rotated_at'),
         live_input_identifier=pulumi.get(__ret__, 'live_input_identifier'),
         meta=pulumi.get(__ret__, 'meta'),
         modified=pulumi.get(__ret__, 'modified'),
+        prefer_low_latency=pulumi.get(__ret__, 'prefer_low_latency'),
         recording=pulumi.get(__ret__, 'recording'),
         rtmps=pulumi.get(__ret__, 'rtmps'),
         rtmps_playback=pulumi.get(__ret__, 'rtmps_playback'),
@@ -290,7 +316,7 @@ def get_stream_live_input(account_id: Optional[_builtins.str] = None,
         uid=pulumi.get(__ret__, 'uid'),
         web_rtc=pulumi.get(__ret__, 'web_rtc'),
         web_rtc_playback=pulumi.get(__ret__, 'web_rtc_playback'))
-def get_stream_live_input_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_stream_live_input_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                  live_input_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStreamLiveInputResult]:
     """
@@ -324,9 +350,11 @@ def get_stream_live_input_output(account_id: pulumi.Input[Optional[Optional[_bui
         delete_recording_after_days=pulumi.get(__response__, 'delete_recording_after_days'),
         enabled=pulumi.get(__response__, 'enabled'),
         id=pulumi.get(__response__, 'id'),
+        keys_rotated_at=pulumi.get(__response__, 'keys_rotated_at'),
         live_input_identifier=pulumi.get(__response__, 'live_input_identifier'),
         meta=pulumi.get(__response__, 'meta'),
         modified=pulumi.get(__response__, 'modified'),
+        prefer_low_latency=pulumi.get(__response__, 'prefer_low_latency'),
         recording=pulumi.get(__response__, 'recording'),
         rtmps=pulumi.get(__response__, 'rtmps'),
         rtmps_playback=pulumi.get(__response__, 'rtmps_playback'),

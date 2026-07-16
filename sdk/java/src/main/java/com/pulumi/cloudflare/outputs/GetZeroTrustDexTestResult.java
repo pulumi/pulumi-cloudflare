@@ -17,6 +17,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustDexTestResult {
+    /**
+     * @return Unique identifier linked to an account.
+     * 
+     */
     private @Nullable String accountId;
     /**
      * @return The configuration object which contains the details for the WARP client to conduct the test.
@@ -67,6 +71,10 @@ public final class GetZeroTrustDexTestResult {
     private String testId;
 
     private GetZeroTrustDexTestResult() {}
+    /**
+     * @return Unique identifier linked to an account.
+     * 
+     */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }

@@ -17,7 +17,7 @@ public final class AiSearchInstanceRetrievalOptionsBoostByArgs extends com.pulum
     public static final AiSearchInstanceRetrievalOptionsBoostByArgs Empty = new AiSearchInstanceRetrievalOptionsBoostByArgs();
 
     /**
-     * Boost direction. &#39;desc&#39; = higher values rank higher (e.g. newer timestamps). &#39;asc&#39; = lower values rank higher. &#39;exists&#39; = boost chunks that have the field. &#39;not*exists&#39; = boost chunks that lack the field. Optional - defaults to &#39;asc&#39; for numeric/datetime fields, &#39;exists&#39; for text/boolean fields.
+     * Boost direction. &#39;desc&#39; = higher values rank higher (e.g. newer timestamps). &#39;asc&#39; = lower values rank higher. &#39;exists&#39; = boost chunks that have the field. &#39;not*exists&#39; = boost chunks that lack the field. Optional — defaults to &#39;asc&#39; for numeric/datetime fields, &#39;exists&#39; for text/boolean fields.
      * Available values: &#34;asc&#34;, &#34;desc&#34;, &#34;exists&#34;, &#34;not*exists&#34;.
      * 
      */
@@ -25,7 +25,7 @@ public final class AiSearchInstanceRetrievalOptionsBoostByArgs extends com.pulum
     private @Nullable Output<String> direction;
 
     /**
-     * @return Boost direction. &#39;desc&#39; = higher values rank higher (e.g. newer timestamps). &#39;asc&#39; = lower values rank higher. &#39;exists&#39; = boost chunks that have the field. &#39;not*exists&#39; = boost chunks that lack the field. Optional - defaults to &#39;asc&#39; for numeric/datetime fields, &#39;exists&#39; for text/boolean fields.
+     * @return Boost direction. &#39;desc&#39; = higher values rank higher (e.g. newer timestamps). &#39;asc&#39; = lower values rank higher. &#39;exists&#39; = boost chunks that have the field. &#39;not*exists&#39; = boost chunks that lack the field. Optional — defaults to &#39;asc&#39; for numeric/datetime fields, &#39;exists&#39; for text/boolean fields.
      * Available values: &#34;asc&#34;, &#34;desc&#34;, &#34;exists&#34;, &#34;not*exists&#34;.
      * 
      */
@@ -34,14 +34,14 @@ public final class AiSearchInstanceRetrievalOptionsBoostByArgs extends com.pulum
     }
 
     /**
-     * Metadata field name to boost by. Use &#39;timestamp&#39; for document freshness, or any custom*metadata field. Numeric and datetime fields support asc/desc directions; text/boolean fields support exists/not*exists.
+     * Metadata field name to boost by. Use &#39;timestamp&#39; for document freshness, or any custom*metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not*exists); text/boolean fields only support exists/not_exists.
      * 
      */
     @Import(name="field", required=true)
     private Output<String> field;
 
     /**
-     * @return Metadata field name to boost by. Use &#39;timestamp&#39; for document freshness, or any custom*metadata field. Numeric and datetime fields support asc/desc directions; text/boolean fields support exists/not*exists.
+     * @return Metadata field name to boost by. Use &#39;timestamp&#39; for document freshness, or any custom*metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not*exists); text/boolean fields only support exists/not_exists.
      * 
      */
     public Output<String> field() {
@@ -74,7 +74,7 @@ public final class AiSearchInstanceRetrievalOptionsBoostByArgs extends com.pulum
         }
 
         /**
-         * @param direction Boost direction. &#39;desc&#39; = higher values rank higher (e.g. newer timestamps). &#39;asc&#39; = lower values rank higher. &#39;exists&#39; = boost chunks that have the field. &#39;not*exists&#39; = boost chunks that lack the field. Optional - defaults to &#39;asc&#39; for numeric/datetime fields, &#39;exists&#39; for text/boolean fields.
+         * @param direction Boost direction. &#39;desc&#39; = higher values rank higher (e.g. newer timestamps). &#39;asc&#39; = lower values rank higher. &#39;exists&#39; = boost chunks that have the field. &#39;not*exists&#39; = boost chunks that lack the field. Optional — defaults to &#39;asc&#39; for numeric/datetime fields, &#39;exists&#39; for text/boolean fields.
          * Available values: &#34;asc&#34;, &#34;desc&#34;, &#34;exists&#34;, &#34;not*exists&#34;.
          * 
          * @return builder
@@ -86,7 +86,7 @@ public final class AiSearchInstanceRetrievalOptionsBoostByArgs extends com.pulum
         }
 
         /**
-         * @param direction Boost direction. &#39;desc&#39; = higher values rank higher (e.g. newer timestamps). &#39;asc&#39; = lower values rank higher. &#39;exists&#39; = boost chunks that have the field. &#39;not*exists&#39; = boost chunks that lack the field. Optional - defaults to &#39;asc&#39; for numeric/datetime fields, &#39;exists&#39; for text/boolean fields.
+         * @param direction Boost direction. &#39;desc&#39; = higher values rank higher (e.g. newer timestamps). &#39;asc&#39; = lower values rank higher. &#39;exists&#39; = boost chunks that have the field. &#39;not*exists&#39; = boost chunks that lack the field. Optional — defaults to &#39;asc&#39; for numeric/datetime fields, &#39;exists&#39; for text/boolean fields.
          * Available values: &#34;asc&#34;, &#34;desc&#34;, &#34;exists&#34;, &#34;not*exists&#34;.
          * 
          * @return builder
@@ -97,7 +97,7 @@ public final class AiSearchInstanceRetrievalOptionsBoostByArgs extends com.pulum
         }
 
         /**
-         * @param field Metadata field name to boost by. Use &#39;timestamp&#39; for document freshness, or any custom*metadata field. Numeric and datetime fields support asc/desc directions; text/boolean fields support exists/not*exists.
+         * @param field Metadata field name to boost by. Use &#39;timestamp&#39; for document freshness, or any custom*metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not*exists); text/boolean fields only support exists/not_exists.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class AiSearchInstanceRetrievalOptionsBoostByArgs extends com.pulum
         }
 
         /**
-         * @param field Metadata field name to boost by. Use &#39;timestamp&#39; for document freshness, or any custom*metadata field. Numeric and datetime fields support asc/desc directions; text/boolean fields support exists/not*exists.
+         * @param field Metadata field name to boost by. Use &#39;timestamp&#39; for document freshness, or any custom*metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not*exists); text/boolean fields only support exists/not_exists.
          * 
          * @return builder
          * 

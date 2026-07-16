@@ -22,20 +22,21 @@ class HostnameTlsSettingArgs:
                  hostname: pulumi.Input[_builtins.str],
                  setting_id: pulumi.Input[_builtins.str],
                  value: Any,
-                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a HostnameTlsSetting resource.
 
         :param pulumi.Input[_builtins.str] hostname: The hostname for which the tls settings are set.
-        :param pulumi.Input[_builtins.str] setting_id: The TLS Setting name. The value type depends on the setting:
-        :param Any value: The TLS setting value. The type depends on the `setting_id` used in the request path:
+        :param pulumi.Input[_builtins.str] setting_id: The TLS Setting name.
+               The value type depends on the setting:
+        :param Any value: The TLS setting value.
+               The type depends on the `setting_id` used in the request path:
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "setting_id", setting_id)
         pulumi.set(__self__, "value", value)
-        if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -53,7 +54,8 @@ class HostnameTlsSettingArgs:
     @pulumi.getter(name="settingId")
     def setting_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The TLS Setting name. The value type depends on the setting:
+        The TLS Setting name.
+        The value type depends on the setting:
         """
         return pulumi.get(self, "setting_id")
 
@@ -65,7 +67,8 @@ class HostnameTlsSettingArgs:
     @pulumi.getter
     def value(self) -> Any:
         """
-        The TLS setting value. The type depends on the `setting_id` used in the request path:
+        The TLS setting value.
+        The type depends on the `setting_id` used in the request path:
         """
         return pulumi.get(self, "value")
 
@@ -75,14 +78,14 @@ class HostnameTlsSettingArgs:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[_builtins.str]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -101,10 +104,12 @@ class _HostnameTlsSettingState:
 
         :param pulumi.Input[_builtins.str] created_at: This is the time the tls setting was originally created for this hostname.
         :param pulumi.Input[_builtins.str] hostname: The hostname for which the tls settings are set.
-        :param pulumi.Input[_builtins.str] setting_id: The TLS Setting name. The value type depends on the setting:
+        :param pulumi.Input[_builtins.str] setting_id: The TLS Setting name.
+               The value type depends on the setting:
         :param pulumi.Input[_builtins.str] status: Deployment status for the given tls setting.
         :param pulumi.Input[_builtins.str] updated_at: This is the time the tls setting was updated.
-        :param Any value: The TLS setting value. The type depends on the `setting_id` used in the request path:
+        :param Any value: The TLS setting value.
+               The type depends on the `setting_id` used in the request path:
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         if created_at is not None:
@@ -150,7 +155,8 @@ class _HostnameTlsSettingState:
     @pulumi.getter(name="settingId")
     def setting_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The TLS Setting name. The value type depends on the setting:
+        The TLS Setting name.
+        The value type depends on the setting:
         """
         return pulumi.get(self, "setting_id")
 
@@ -186,7 +192,8 @@ class _HostnameTlsSettingState:
     @pulumi.getter
     def value(self) -> Optional[Any]:
         """
-        The TLS setting value. The type depends on the `setting_id` used in the request path:
+        The TLS setting value.
+        The type depends on the `setting_id` used in the request path:
         """
         return pulumi.get(self, "value")
 
@@ -250,8 +257,10 @@ class HostnameTlsSetting(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] hostname: The hostname for which the tls settings are set.
-        :param pulumi.Input[_builtins.str] setting_id: The TLS Setting name. The value type depends on the setting:
-        :param Any value: The TLS setting value. The type depends on the `setting_id` used in the request path:
+        :param pulumi.Input[_builtins.str] setting_id: The TLS Setting name.
+               The value type depends on the setting:
+        :param Any value: The TLS setting value.
+               The type depends on the `setting_id` used in the request path:
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         ...
@@ -326,6 +335,8 @@ class HostnameTlsSetting(pulumi.CustomResource):
             if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
             __props__.__dict__["value"] = value
+            if zone_id is None and not opts.urn:
+                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["created_at"] = None
             __props__.__dict__["status"] = None
@@ -356,10 +367,12 @@ class HostnameTlsSetting(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created_at: This is the time the tls setting was originally created for this hostname.
         :param pulumi.Input[_builtins.str] hostname: The hostname for which the tls settings are set.
-        :param pulumi.Input[_builtins.str] setting_id: The TLS Setting name. The value type depends on the setting:
+        :param pulumi.Input[_builtins.str] setting_id: The TLS Setting name.
+               The value type depends on the setting:
         :param pulumi.Input[_builtins.str] status: Deployment status for the given tls setting.
         :param pulumi.Input[_builtins.str] updated_at: This is the time the tls setting was updated.
-        :param Any value: The TLS setting value. The type depends on the `setting_id` used in the request path:
+        :param Any value: The TLS setting value.
+               The type depends on the `setting_id` used in the request path:
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -395,7 +408,8 @@ class HostnameTlsSetting(pulumi.CustomResource):
     @pulumi.getter(name="settingId")
     def setting_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The TLS Setting name. The value type depends on the setting:
+        The TLS Setting name.
+        The value type depends on the setting:
         """
         return pulumi.get(self, "setting_id")
 
@@ -419,13 +433,14 @@ class HostnameTlsSetting(pulumi.CustomResource):
     @pulumi.getter
     def value(self) -> pulumi.Output[Any]:
         """
-        The TLS setting value. The type depends on the `setting_id` used in the request path:
+        The TLS setting value.
+        The type depends on the `setting_id` used in the request path:
         """
         return pulumi.get(self, "value")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """

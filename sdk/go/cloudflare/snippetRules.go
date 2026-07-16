@@ -14,6 +14,7 @@ import (
 
 // Accepted Permissions
 //
+// - `Snippets Read`
 // - `Snippets Write`
 //
 // ## Example Usage
@@ -52,14 +53,16 @@ import (
 //
 // ## Import
 //
-// > This resource does not currently support `pulumi import`.
+// ```sh
+// $ pulumi import cloudflare:index/snippetRules:SnippetRules example '<zone_id>'
+// ```
 type SnippetRules struct {
 	pulumi.CustomResourceState
 
 	// Lists snippet rules.
 	Rules SnippetRulesRuleArrayOutput `pulumi:"rules"`
 	// Use this field to specify the unique ID of the zone.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewSnippetRules registers a new resource with the given unique name, arguments, and options.
@@ -71,6 +74,9 @@ func NewSnippetRules(ctx *pulumi.Context,
 
 	if args.Rules == nil {
 		return nil, errors.New("invalid value for required argument 'Rules'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SnippetRules
@@ -116,7 +122,7 @@ type snippetRulesArgs struct {
 	// Lists snippet rules.
 	Rules []SnippetRulesRule `pulumi:"rules"`
 	// Use this field to specify the unique ID of the zone.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a SnippetRules resource.
@@ -124,7 +130,7 @@ type SnippetRulesArgs struct {
 	// Lists snippet rules.
 	Rules SnippetRulesRuleArrayInput
 	// Use this field to specify the unique ID of the zone.
-	ZoneId pulumi.StringPtrInput
+	ZoneId pulumi.StringInput
 }
 
 func (SnippetRulesArgs) ElementType() reflect.Type {
@@ -220,8 +226,8 @@ func (o SnippetRulesOutput) Rules() SnippetRulesRuleArrayOutput {
 }
 
 // Use this field to specify the unique ID of the zone.
-func (o SnippetRulesOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SnippetRules) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o SnippetRulesOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnippetRules) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type SnippetRulesArrayOutput struct{ *pulumi.OutputState }

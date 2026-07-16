@@ -68,6 +68,10 @@ import (
 //						},
 //					},
 //				},
+//				MaxTtl: &cloudflare.ZeroTrustDnsLocationMaxTtlArgs{
+//					Mode:    pulumi.String("override"),
+//					TtlSecs: pulumi.Int(3600),
+//				},
 //				Networks: cloudflare.ZeroTrustDnsLocationNetworkArray{
 //					&cloudflare.ZeroTrustDnsLocationNetworkArgs{
 //						Network: pulumi.String("192.0.2.1/32"),
@@ -93,7 +97,7 @@ import (
 type TeamsLocation struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Indicate whether this location is the default location.
 	ClientDefault pulumi.BoolOutput   `pulumi:"clientDefault"`
 	CreatedAt     pulumi.StringOutput `pulumi:"createdAt"`
@@ -113,6 +117,8 @@ type TeamsLocation struct {
 	Ipv4Destination pulumi.StringOutput `pulumi:"ipv4Destination"`
 	// Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
 	Ipv4DestinationBackup pulumi.StringOutput `pulumi:"ipv4DestinationBackup"`
+	// Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+	MaxTtl TeamsLocationMaxTtlOutput `pulumi:"maxTtl"`
 	// Specify the location name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
@@ -127,6 +133,9 @@ func NewTeamsLocation(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -179,6 +188,8 @@ type teamsLocationState struct {
 	Ipv4Destination *string `pulumi:"ipv4Destination"`
 	// Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
 	Ipv4DestinationBackup *string `pulumi:"ipv4DestinationBackup"`
+	// Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+	MaxTtl *TeamsLocationMaxTtl `pulumi:"maxTtl"`
 	// Specify the location name.
 	Name *string `pulumi:"name"`
 	// Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
@@ -207,6 +218,8 @@ type TeamsLocationState struct {
 	Ipv4Destination pulumi.StringPtrInput
 	// Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
 	Ipv4DestinationBackup pulumi.StringPtrInput
+	// Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+	MaxTtl TeamsLocationMaxTtlPtrInput
 	// Specify the location name.
 	Name pulumi.StringPtrInput
 	// Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
@@ -219,7 +232,7 @@ func (TeamsLocationState) ElementType() reflect.Type {
 }
 
 type teamsLocationArgs struct {
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Indicate whether this location is the default location.
 	ClientDefault *bool `pulumi:"clientDefault"`
 	// Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
@@ -228,6 +241,8 @@ type teamsLocationArgs struct {
 	EcsSupport *bool `pulumi:"ecsSupport"`
 	// Configure the destination endpoints for this location.
 	Endpoints *TeamsLocationEndpoints `pulumi:"endpoints"`
+	// Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+	MaxTtl *TeamsLocationMaxTtl `pulumi:"maxTtl"`
 	// Specify the location name.
 	Name string `pulumi:"name"`
 	// Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
@@ -236,7 +251,7 @@ type teamsLocationArgs struct {
 
 // The set of arguments for constructing a TeamsLocation resource.
 type TeamsLocationArgs struct {
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Indicate whether this location is the default location.
 	ClientDefault pulumi.BoolPtrInput
 	// Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
@@ -245,6 +260,8 @@ type TeamsLocationArgs struct {
 	EcsSupport pulumi.BoolPtrInput
 	// Configure the destination endpoints for this location.
 	Endpoints TeamsLocationEndpointsPtrInput
+	// Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+	MaxTtl TeamsLocationMaxTtlPtrInput
 	// Specify the location name.
 	Name pulumi.StringInput
 	// Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
@@ -338,8 +355,8 @@ func (o TeamsLocationOutput) ToTeamsLocationOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o TeamsLocationOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TeamsLocation) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o TeamsLocationOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsLocation) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Indicate whether this location is the default location.
@@ -389,6 +406,11 @@ func (o TeamsLocationOutput) Ipv4Destination() pulumi.StringOutput {
 // Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
 func (o TeamsLocationOutput) Ipv4DestinationBackup() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsLocation) pulumi.StringOutput { return v.Ipv4DestinationBackup }).(pulumi.StringOutput)
+}
+
+// Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+func (o TeamsLocationOutput) MaxTtl() TeamsLocationMaxTtlOutput {
+	return o.ApplyT(func(v *TeamsLocation) TeamsLocationMaxTtlOutput { return v.MaxTtl }).(TeamsLocationMaxTtlOutput)
 }
 
 // Specify the location name.

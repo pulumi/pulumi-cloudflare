@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `MCP Portals Read`
+    /// - `MCP Portals Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -29,6 +34,8 @@ namespace Pulumi.Cloudflare
     ///         Name = "My MCP Server",
     ///         AuthCredentials = "auth_credentials",
     ///         Description = "This is one remote mcp server",
+    ///         IsSharedOauthCallbackEnabled = true,
+    ///         SecureWebGateway = false,
     ///         UpdatedPrompts = new[]
     ///         {
     ///             new Cloudflare.Inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs
@@ -64,7 +71,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustAccessAiControlsMcpServer : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         [Output("authCredentials")]
         public Output<string?> AuthCredentials { get; private set; } = null!;
@@ -87,8 +94,17 @@ namespace Pulumi.Cloudflare
         [Output("error")]
         public Output<string> Error { get; private set; } = null!;
 
+        [Output("errorDetails")]
+        public Output<Outputs.ZeroTrustAccessAiControlsMcpServerErrorDetails> ErrorDetails { get; private set; } = null!;
+
         [Output("hostname")]
         public Output<string> Hostname { get; private set; } = null!;
+
+        /// <summary>
+        /// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the RedirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+        /// </summary>
+        [Output("isSharedOauthCallbackEnabled")]
+        public Output<bool?> IsSharedOauthCallbackEnabled { get; private set; } = null!;
 
         [Output("lastSuccessfulSync")]
         public Output<string> LastSuccessfulSync { get; private set; } = null!;
@@ -107,6 +123,12 @@ namespace Pulumi.Cloudflare
 
         [Output("prompts")]
         public Output<ImmutableArray<ImmutableDictionary<string, string>>> Prompts { get; private set; } = null!;
+
+        /// <summary>
+        /// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+        /// </summary>
+        [Output("secureWebGateway")]
+        public Output<bool> SecureWebGateway { get; private set; } = null!;
 
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -176,8 +198,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustAccessAiControlsMcpServerArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         [Input("authCredentials")]
         private Input<string>? _authCredentials;
@@ -203,8 +225,20 @@ namespace Pulumi.Cloudflare
         [Input("hostname", required: true)]
         public Input<string> Hostname { get; set; } = null!;
 
+        /// <summary>
+        /// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the RedirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+        /// </summary>
+        [Input("isSharedOauthCallbackEnabled")]
+        public Input<bool>? IsSharedOauthCallbackEnabled { get; set; }
+
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+        /// </summary>
+        [Input("secureWebGateway")]
+        public Input<bool>? SecureWebGateway { get; set; }
 
         [Input("updatedPrompts")]
         private InputList<Inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs>? _updatedPrompts;
@@ -269,8 +303,17 @@ namespace Pulumi.Cloudflare
         [Input("error")]
         public Input<string>? Error { get; set; }
 
+        [Input("errorDetails")]
+        public Input<Inputs.ZeroTrustAccessAiControlsMcpServerErrorDetailsGetArgs>? ErrorDetails { get; set; }
+
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
+
+        /// <summary>
+        /// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the RedirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+        /// </summary>
+        [Input("isSharedOauthCallbackEnabled")]
+        public Input<bool>? IsSharedOauthCallbackEnabled { get; set; }
 
         [Input("lastSuccessfulSync")]
         public Input<string>? LastSuccessfulSync { get; set; }
@@ -294,6 +337,12 @@ namespace Pulumi.Cloudflare
             get => _prompts ?? (_prompts = new InputList<ImmutableDictionary<string, string>>());
             set => _prompts = value;
         }
+
+        /// <summary>
+        /// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+        /// </summary>
+        [Input("secureWebGateway")]
+        public Input<bool>? SecureWebGateway { get; set; }
 
         [Input("status")]
         public Input<string>? Status { get; set; }

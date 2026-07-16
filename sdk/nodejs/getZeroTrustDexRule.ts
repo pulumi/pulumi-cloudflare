@@ -38,6 +38,9 @@ export function getZeroTrustDexRule(args: GetZeroTrustDexRuleArgs, opts?: pulumi
  * A collection of arguments for invoking getZeroTrustDexRule.
  */
 export interface GetZeroTrustDexRuleArgs {
+    /**
+     * Unique identifier linked to an account.
+     */
     accountId?: string;
     /**
      * API Resource UUID tag.
@@ -49,6 +52,9 @@ export interface GetZeroTrustDexRuleArgs {
  * A collection of values returned by getZeroTrustDexRule.
  */
 export interface GetZeroTrustDexRuleResult {
+    /**
+     * Unique identifier linked to an account.
+     */
     readonly accountId?: string;
     readonly createdAt: string;
     readonly description: string;
@@ -97,6 +103,9 @@ export function getZeroTrustDexRuleOutput(args: GetZeroTrustDexRuleOutputArgs, o
  * A collection of arguments for invoking getZeroTrustDexRule.
  */
 export interface GetZeroTrustDexRuleOutputArgs {
+    /**
+     * Unique identifier linked to an account.
+     */
     accountId?: pulumi.Input<string | undefined>;
     /**
      * API Resource UUID tag.

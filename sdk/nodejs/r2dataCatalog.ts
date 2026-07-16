@@ -61,7 +61,7 @@ export class R2DataCatalog extends pulumi.CustomResource {
     /**
      * Use this to identify the account.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Specifies the associated R2 bucket name.
      */
@@ -111,6 +111,9 @@ export class R2DataCatalog extends pulumi.CustomResource {
             resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as R2DataCatalogArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.bucketName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucketName'");
             }
@@ -170,7 +173,7 @@ export interface R2DataCatalogArgs {
     /**
      * Use this to identify the account.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Specifies the R2 bucket name.
      */

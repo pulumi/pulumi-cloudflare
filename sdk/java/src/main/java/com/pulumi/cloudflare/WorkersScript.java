@@ -9,10 +9,13 @@ import com.pulumi.cloudflare.inputs.WorkersScriptState;
 import com.pulumi.cloudflare.outputs.WorkersScriptAnnotations;
 import com.pulumi.cloudflare.outputs.WorkersScriptAssets;
 import com.pulumi.cloudflare.outputs.WorkersScriptBinding;
+import com.pulumi.cloudflare.outputs.WorkersScriptCacheOptions;
+import com.pulumi.cloudflare.outputs.WorkersScriptExports;
 import com.pulumi.cloudflare.outputs.WorkersScriptLimits;
 import com.pulumi.cloudflare.outputs.WorkersScriptMigrations;
 import com.pulumi.cloudflare.outputs.WorkersScriptNamedHandler;
 import com.pulumi.cloudflare.outputs.WorkersScriptObservability;
+import com.pulumi.cloudflare.outputs.WorkersScriptPackageDependency;
 import com.pulumi.cloudflare.outputs.WorkersScriptPlacement;
 import com.pulumi.cloudflare.outputs.WorkersScriptTailConsumer;
 import com.pulumi.core.Alias;
@@ -24,6 +27,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -50,14 +54,14 @@ public class WorkersScript extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * Annotations for the version created by this upload.
@@ -114,6 +118,26 @@ public class WorkersScript extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> bodyPart() {
         return Codegen.optional(this.bodyPart);
+    }
+    /**
+     * Global CacheW configuration for the Worker. When caching is on,
+     * the platform provisions a `cloudflare.app` zone for the Worker.
+     * A `type: worker` entry in the `exports` map can override this
+     * value for a single entrypoint.
+     * 
+     */
+    @Export(name="cacheOptions", refs={WorkersScriptCacheOptions.class}, tree="[0]")
+    private Output</* @Nullable */ WorkersScriptCacheOptions> cacheOptions;
+
+    /**
+     * @return Global CacheW configuration for the Worker. When caching is on,
+     * the platform provisions a `cloudflare.app` zone for the Worker.
+     * A `type: worker` entry in the `exports` map can override this
+     * value for a single entrypoint.
+     * 
+     */
+    public Output<Optional<WorkersScriptCacheOptions>> cacheOptions() {
+        return Codegen.optional(this.cacheOptions);
     }
     /**
      * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -228,6 +252,20 @@ public class WorkersScript extends com.pulumi.resources.CustomResource {
         return this.etag;
     }
     /**
+     * Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint&#39;s kind and per-entrypoint cache behavior.
+     * 
+     */
+    @Export(name="exports", refs={Map.class,String.class,WorkersScriptExports.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,WorkersScriptExports>> exports;
+
+    /**
+     * @return Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint&#39;s kind and per-entrypoint cache behavior.
+     * 
+     */
+    public Output<Optional<Map<String,WorkersScriptExports>>> exports() {
+        return Codegen.optional(this.exports);
+    }
+    /**
      * The names of handlers exported as part of the default export.
      * 
      */
@@ -270,14 +308,14 @@ public class WorkersScript extends com.pulumi.resources.CustomResource {
         return this.hasModules;
     }
     /**
-     * Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+     * Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
      * 
      */
     @Export(name="keepAssets", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> keepAssets;
 
     /**
-     * @return Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+     * @return Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
      * 
      */
     public Output<Optional<Boolean>> keepAssets() {
@@ -422,6 +460,20 @@ public class WorkersScript extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<WorkersScriptObservability>> observability() {
         return Codegen.optional(this.observability);
+    }
+    /**
+     * The list of npm packages that were installed and used when this Worker was built.
+     * 
+     */
+    @Export(name="packageDependencies", refs={List.class,WorkersScriptPackageDependency.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<WorkersScriptPackageDependency>> packageDependencies;
+
+    /**
+     * @return The list of npm packages that were installed and used when this Worker was built.
+     * 
+     */
+    public Output<Optional<List<WorkersScriptPackageDependency>>> packageDependencies() {
+        return Codegen.optional(this.packageDependencies);
     }
     /**
      * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.

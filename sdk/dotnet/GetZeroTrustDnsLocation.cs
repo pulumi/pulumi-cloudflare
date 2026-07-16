@@ -176,6 +176,10 @@ namespace Pulumi.Cloudflare
         public readonly string Ipv4DestinationBackup;
         public readonly string LocationId;
         /// <summary>
+        /// Controls how DNS response TTLs are capped for this location relative to the account `MaxTtlSecs` setting. Omitting `MaxTtl` on update resets it to `Inherit`.
+        /// </summary>
+        public readonly Outputs.GetZeroTrustDnsLocationMaxTtlResult MaxTtl;
+        /// <summary>
         /// Specify the location name.
         /// </summary>
         public readonly string Name;
@@ -213,6 +217,8 @@ namespace Pulumi.Cloudflare
 
             string locationId,
 
+            Outputs.GetZeroTrustDnsLocationMaxTtlResult maxTtl,
+
             string name,
 
             ImmutableArray<Outputs.GetZeroTrustDnsLocationNetworkResult> networks,
@@ -232,6 +238,7 @@ namespace Pulumi.Cloudflare
             Ipv4Destination = ipv4Destination;
             Ipv4DestinationBackup = ipv4DestinationBackup;
             LocationId = locationId;
+            MaxTtl = maxTtl;
             Name = name;
             Networks = networks;
             UpdatedAt = updatedAt;

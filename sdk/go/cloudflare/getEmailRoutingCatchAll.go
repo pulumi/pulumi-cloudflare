@@ -69,6 +69,11 @@ type LookupEmailRoutingCatchAllResult struct {
 	Matchers []GetEmailRoutingCatchAllMatcher `pulumi:"matchers"`
 	// Routing rule name.
 	Name string `pulumi:"name"`
+	// Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+	// `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+	// to `api` when omitted on write.
+	// Available values: "api", "wrangler".
+	Source string `pulumi:"source"`
 	// Routing rule tag. (Deprecated, replaced by routing rule identifier)
 	//
 	// Deprecated: This attribute is deprecated.
@@ -134,6 +139,14 @@ func (o LookupEmailRoutingCatchAllResultOutput) Matchers() GetEmailRoutingCatchA
 // Routing rule name.
 func (o LookupEmailRoutingCatchAllResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailRoutingCatchAllResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+// `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+// to `api` when omitted on write.
+// Available values: "api", "wrangler".
+func (o LookupEmailRoutingCatchAllResultOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEmailRoutingCatchAllResult) string { return v.Source }).(pulumi.StringOutput)
 }
 
 // Routing rule tag. (Deprecated, replaced by routing rule identifier)

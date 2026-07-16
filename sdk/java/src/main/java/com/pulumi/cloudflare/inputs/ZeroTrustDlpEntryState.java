@@ -147,9 +147,17 @@ public final class ZeroTrustDlpEntryState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.uploadStatus);
     }
 
+    /**
+     * A Predefined AI prompt classification topic entry.
+     * 
+     */
     @Import(name="variant")
     private @Nullable Output<ZeroTrustDlpEntryVariantArgs> variant;
 
+    /**
+     * @return A Predefined AI prompt classification topic entry.
+     * 
+     */
     public Optional<Output<ZeroTrustDlpEntryVariantArgs>> variant() {
         return Optional.ofNullable(this.variant);
     }
@@ -370,11 +378,23 @@ public final class ZeroTrustDlpEntryState extends com.pulumi.resources.ResourceA
             return uploadStatus(Output.of(uploadStatus));
         }
 
+        /**
+         * @param variant A Predefined AI prompt classification topic entry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder variant(@Nullable Output<ZeroTrustDlpEntryVariantArgs> variant) {
             $.variant = variant;
             return this;
         }
 
+        /**
+         * @param variant A Predefined AI prompt classification topic entry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder variant(ZeroTrustDlpEntryVariantArgs variant) {
             return variant(Output.of(variant));
         }

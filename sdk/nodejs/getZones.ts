@@ -40,6 +40,7 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
         "name": args.name,
         "order": args.order,
         "status": args.status,
+        "types": args.types,
     }, opts);
 }
 
@@ -54,6 +55,7 @@ export interface GetZonesArgs {
     name?: string;
     order?: string;
     status?: string;
+    types?: string[];
 }
 
 /**
@@ -72,6 +74,7 @@ export interface GetZonesResult {
     readonly order?: string;
     readonly results: outputs.GetZonesResult[];
     readonly status?: string;
+    readonly types?: string[];
 }
 /**
  * Accepted Permissions
@@ -107,6 +110,7 @@ export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOu
         "name": args.name,
         "order": args.order,
         "status": args.status,
+        "types": args.types,
     }, opts);
 }
 
@@ -121,4 +125,5 @@ export interface GetZonesOutputArgs {
     name?: pulumi.Input<string | undefined>;
     order?: pulumi.Input<string | undefined>;
     status?: pulumi.Input<string | undefined>;
+    types?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

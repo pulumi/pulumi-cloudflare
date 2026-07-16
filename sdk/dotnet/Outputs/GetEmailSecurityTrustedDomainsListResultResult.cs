@@ -16,22 +16,23 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Comments;
         public readonly string CreatedAt;
         /// <summary>
-        /// The unique identifier for the trusted domain.
+        /// Trusted domain identifier
         /// </summary>
-        public readonly int Id;
+        public readonly string Id;
         /// <summary>
-        /// Select to prevent recently registered domains from triggering a
-        /// Suspicious or Malicious disposition.
+        /// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
         /// </summary>
         public readonly bool IsRecent;
         public readonly bool IsRegex;
         /// <summary>
-        /// Select for partner or other approved domains that have similar
-        /// spelling to your connected domains. Prevents listed domains from
-        /// triggering a Spoof disposition.
+        /// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
         /// </summary>
         public readonly bool IsSimilarity;
+        /// <summary>
+        /// Deprecated, use `ModifiedAt` instead. End of life: November 1, 2026.
+        /// </summary>
         public readonly string LastModified;
+        public readonly string ModifiedAt;
         public readonly string Pattern;
 
         [OutputConstructor]
@@ -40,7 +41,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string createdAt,
 
-            int id,
+            string id,
 
             bool isRecent,
 
@@ -49,6 +50,8 @@ namespace Pulumi.Cloudflare.Outputs
             bool isSimilarity,
 
             string lastModified,
+
+            string modifiedAt,
 
             string pattern)
         {
@@ -59,6 +62,7 @@ namespace Pulumi.Cloudflare.Outputs
             IsRegex = isRegex;
             IsSimilarity = isSimilarity;
             LastModified = lastModified;
+            ModifiedAt = modifiedAt;
             Pattern = pattern;
         }
     }

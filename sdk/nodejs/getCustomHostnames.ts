@@ -26,6 +26,8 @@ import * as utilities from "./utilities";
  *     direction: "desc",
  *     hostname: {
  *         contain: "example.com",
+ *         exact: "app.example.com",
+ *         startsWith: "app",
  *     },
  *     hostnameStatus: "provisioned",
  *     ssl: 0,
@@ -78,7 +80,7 @@ export interface GetCustomHostnamesArgs {
      */
     hostnameStatus?: string;
     /**
-     * Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the 'hostname' parameter.
+     * Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the 'hostname', 'hostname.exact', 'hostname.contain', or 'hostname.startsWith' parameters.
      */
     id?: string;
     /**
@@ -135,7 +137,7 @@ export interface GetCustomHostnamesResult {
      */
     readonly hostnameStatus?: string;
     /**
-     * Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the 'hostname' parameter.
+     * Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the 'hostname', 'hostname.exact', 'hostname.contain', or 'hostname.startsWith' parameters.
      */
     readonly id?: string;
     /**
@@ -155,7 +157,7 @@ export interface GetCustomHostnamesResult {
      * Whether to filter hostnames based on if they have SSL enabled.
      * Available values: 0, 1.
      */
-    readonly ssl?: number;
+    readonly ssl: number;
     /**
      * Filter by SSL certificate status.
      * Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
@@ -190,6 +192,8 @@ export interface GetCustomHostnamesResult {
  *     direction: "desc",
  *     hostname: {
  *         contain: "example.com",
+ *         exact: "app.example.com",
+ *         startsWith: "app",
  *     },
  *     hostnameStatus: "provisioned",
  *     ssl: 0,
@@ -242,7 +246,7 @@ export interface GetCustomHostnamesOutputArgs {
      */
     hostnameStatus?: pulumi.Input<string | undefined>;
     /**
-     * Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the 'hostname' parameter.
+     * Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the 'hostname', 'hostname.exact', 'hostname.contain', or 'hostname.startsWith' parameters.
      */
     id?: pulumi.Input<string | undefined>;
     /**

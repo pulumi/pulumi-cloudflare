@@ -41,6 +41,8 @@ import * as utilities from "./utilities";
  *         startswith: "www.example",
  *     },
  *     search: "www.cloudflare.com",
+ *     shadowedByName: "sub.example.com",
+ *     shadowingName: "www.sub.example.com",
  *     tag: {
  *         absent: "important",
  *         contains: "greeting:ello, worl",
@@ -60,12 +62,15 @@ export function getDnsRecords(args?: GetDnsRecordsArgs, opts?: pulumi.InvokeOpti
         "comment": args.comment,
         "content": args.content,
         "direction": args.direction,
+        "includeShadowMetadata": args.includeShadowMetadata,
         "match": args.match,
         "maxItems": args.maxItems,
         "name": args.name,
         "order": args.order,
         "proxied": args.proxied,
         "search": args.search,
+        "shadowedByName": args.shadowedByName,
+        "shadowingName": args.shadowingName,
         "tag": args.tag,
         "tagMatch": args.tagMatch,
         "type": args.type,
@@ -84,6 +89,10 @@ export interface GetDnsRecordsArgs {
      * Available values: "asc", "desc".
      */
     direction?: string;
+    /**
+     * Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     */
+    includeShadowMetadata?: boolean;
     /**
      * Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
      * Available values: "any", "all".
@@ -107,6 +116,14 @@ export interface GetDnsRecordsArgs {
      * Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `match` setting. For automated searches, please use the other available parameters.
      */
     search?: string;
+    /**
+     * Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     */
+    shadowedByName?: string;
+    /**
+     * Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     */
+    shadowingName?: string;
     tag?: inputs.GetDnsRecordsTag;
     /**
      * Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
@@ -140,6 +157,10 @@ export interface GetDnsRecordsResult {
      */
     readonly id: string;
     /**
+     * Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     */
+    readonly includeShadowMetadata: boolean;
+    /**
      * Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
      * Available values: "any", "all".
      */
@@ -166,6 +187,14 @@ export interface GetDnsRecordsResult {
      * Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `match` setting. For automated searches, please use the other available parameters.
      */
     readonly search?: string;
+    /**
+     * Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     */
+    readonly shadowedByName?: string;
+    /**
+     * Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     */
+    readonly shadowingName?: string;
     readonly tag?: outputs.GetDnsRecordsTag;
     /**
      * Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
@@ -217,6 +246,8 @@ export interface GetDnsRecordsResult {
  *         startswith: "www.example",
  *     },
  *     search: "www.cloudflare.com",
+ *     shadowedByName: "sub.example.com",
+ *     shadowingName: "www.sub.example.com",
  *     tag: {
  *         absent: "important",
  *         contains: "greeting:ello, worl",
@@ -236,12 +267,15 @@ export function getDnsRecordsOutput(args?: GetDnsRecordsOutputArgs, opts?: pulum
         "comment": args.comment,
         "content": args.content,
         "direction": args.direction,
+        "includeShadowMetadata": args.includeShadowMetadata,
         "match": args.match,
         "maxItems": args.maxItems,
         "name": args.name,
         "order": args.order,
         "proxied": args.proxied,
         "search": args.search,
+        "shadowedByName": args.shadowedByName,
+        "shadowingName": args.shadowingName,
         "tag": args.tag,
         "tagMatch": args.tagMatch,
         "type": args.type,
@@ -260,6 +294,10 @@ export interface GetDnsRecordsOutputArgs {
      * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     */
+    includeShadowMetadata?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
      * Available values: "any", "all".
@@ -283,6 +321,14 @@ export interface GetDnsRecordsOutputArgs {
      * Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `match` setting. For automated searches, please use the other available parameters.
      */
     search?: pulumi.Input<string | undefined>;
+    /**
+     * Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     */
+    shadowedByName?: pulumi.Input<string | undefined>;
+    /**
+     * Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     */
+    shadowingName?: pulumi.Input<string | undefined>;
     tag?: pulumi.Input<inputs.GetDnsRecordsTagArgs | undefined>;
     /**
      * Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.

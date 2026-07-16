@@ -19,6 +19,11 @@ import javax.annotation.Nullable;
 public final class AiSearchInstancePublicEndpointParams {
     private @Nullable List<String> authorizedHosts;
     private @Nullable AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint chatCompletionsEndpoint;
+    /**
+     * @return Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
+     * 
+     */
+    private @Nullable List<String> customDomains;
     private @Nullable Boolean enabled;
     private @Nullable AiSearchInstancePublicEndpointParamsMcp mcp;
     private @Nullable AiSearchInstancePublicEndpointParamsRateLimit rateLimit;
@@ -30,6 +35,13 @@ public final class AiSearchInstancePublicEndpointParams {
     }
     public Optional<AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint> chatCompletionsEndpoint() {
         return Optional.ofNullable(this.chatCompletionsEndpoint);
+    }
+    /**
+     * @return Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
+     * 
+     */
+    public List<String> customDomains() {
+        return this.customDomains == null ? List.of() : this.customDomains;
     }
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
@@ -55,6 +67,7 @@ public final class AiSearchInstancePublicEndpointParams {
     public static final class Builder {
         private @Nullable List<String> authorizedHosts;
         private @Nullable AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint chatCompletionsEndpoint;
+        private @Nullable List<String> customDomains;
         private @Nullable Boolean enabled;
         private @Nullable AiSearchInstancePublicEndpointParamsMcp mcp;
         private @Nullable AiSearchInstancePublicEndpointParamsRateLimit rateLimit;
@@ -64,6 +77,7 @@ public final class AiSearchInstancePublicEndpointParams {
     	      Objects.requireNonNull(defaults);
     	      this.authorizedHosts = defaults.authorizedHosts;
     	      this.chatCompletionsEndpoint = defaults.chatCompletionsEndpoint;
+    	      this.customDomains = defaults.customDomains;
     	      this.enabled = defaults.enabled;
     	      this.mcp = defaults.mcp;
     	      this.rateLimit = defaults.rateLimit;
@@ -84,6 +98,15 @@ public final class AiSearchInstancePublicEndpointParams {
 
             this.chatCompletionsEndpoint = chatCompletionsEndpoint;
             return this;
+        }
+        @CustomType.Setter
+        public Builder customDomains(@Nullable List<String> customDomains) {
+
+            this.customDomains = customDomains;
+            return this;
+        }
+        public Builder customDomains(String... customDomains) {
+            return customDomains(List.of(customDomains));
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
@@ -113,6 +136,7 @@ public final class AiSearchInstancePublicEndpointParams {
             final var _resultValue = new AiSearchInstancePublicEndpointParams();
             _resultValue.authorizedHosts = authorizedHosts;
             _resultValue.chatCompletionsEndpoint = chatCompletionsEndpoint;
+            _resultValue.customDomains = customDomains;
             _resultValue.enabled = enabled;
             _resultValue.mcp = mcp;
             _resultValue.rateLimit = rateLimit;

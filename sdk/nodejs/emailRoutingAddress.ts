@@ -59,7 +59,7 @@ export class EmailRoutingAddress extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The date and time the destination address has been created.
      */
@@ -72,6 +72,11 @@ export class EmailRoutingAddress extends pulumi.CustomResource {
      * The date and time the destination address was last modified.
      */
     declare public /*out*/ readonly modified: pulumi.Output<string>;
+    /**
+     * Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+     * Available values: "unverified", "verified".
+     */
+    declare public readonly status: pulumi.Output<string | undefined>;
     /**
      * Destination address tag. (Deprecated, replaced by destination address identifier)
      *
@@ -100,15 +105,20 @@ export class EmailRoutingAddress extends pulumi.CustomResource {
             resourceInputs["created"] = state?.created;
             resourceInputs["email"] = state?.email;
             resourceInputs["modified"] = state?.modified;
+            resourceInputs["status"] = state?.status;
             resourceInputs["tag"] = state?.tag;
             resourceInputs["verified"] = state?.verified;
         } else {
             const args = argsOrState as EmailRoutingAddressArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.email === undefined && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["email"] = args?.email;
+            resourceInputs["status"] = args?.status;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["modified"] = undefined /*out*/;
             resourceInputs["tag"] = undefined /*out*/;
@@ -140,6 +150,11 @@ export interface EmailRoutingAddressState {
      */
     modified?: pulumi.Input<string | undefined>;
     /**
+     * Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+     * Available values: "unverified", "verified".
+     */
+    status?: pulumi.Input<string | undefined>;
+    /**
      * Destination address tag. (Deprecated, replaced by destination address identifier)
      *
      * @deprecated This attribute is deprecated.
@@ -158,9 +173,14 @@ export interface EmailRoutingAddressArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * The contact email address of the user.
      */
     email: pulumi.Input<string>;
+    /**
+     * Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+     * Available values: "unverified", "verified".
+     */
+    status?: pulumi.Input<string | undefined>;
 }

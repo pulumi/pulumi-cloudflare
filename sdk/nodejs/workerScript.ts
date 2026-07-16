@@ -55,7 +55,7 @@ export class WorkerScript extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Annotations for the version created by this upload.
      */
@@ -72,6 +72,13 @@ export class WorkerScript extends pulumi.CustomResource {
      * Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
      */
     declare public readonly bodyPart: pulumi.Output<string | undefined>;
+    /**
+     * Global CacheW configuration for the Worker. When caching is on,
+     * the platform provisions a `cloudflare.app` zone for the Worker.
+     * A `type: worker` entry in the `exports` map can override this
+     * value for a single entrypoint.
+     */
+    declare public readonly cacheOptions: pulumi.Output<outputs.WorkerScriptCacheOptions | undefined>;
     /**
      * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      */
@@ -105,6 +112,10 @@ export class WorkerScript extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
+     * Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+     */
+    declare public readonly exports: pulumi.Output<{[key: string]: outputs.WorkerScriptExports} | undefined>;
+    /**
      * The names of handlers exported as part of the default export.
      */
     declare public /*out*/ readonly handlers: pulumi.Output<string[]>;
@@ -117,7 +128,7 @@ export class WorkerScript extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly hasModules: pulumi.Output<boolean>;
     /**
-     * Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+     * Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
      */
     declare public readonly keepAssets: pulumi.Output<boolean | undefined>;
     /**
@@ -160,6 +171,10 @@ export class WorkerScript extends pulumi.CustomResource {
      * Observability settings for the Worker.
      */
     declare public readonly observability: pulumi.Output<outputs.WorkerScriptObservability | undefined>;
+    /**
+     * The list of npm packages that were installed and used when this Worker was built.
+     */
+    declare public readonly packageDependencies: pulumi.Output<outputs.WorkerScriptPackageDependency[] | undefined>;
     /**
      * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
      */
@@ -212,6 +227,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["assets"] = state?.assets;
             resourceInputs["bindings"] = state?.bindings;
             resourceInputs["bodyPart"] = state?.bodyPart;
+            resourceInputs["cacheOptions"] = state?.cacheOptions;
             resourceInputs["compatibilityDate"] = state?.compatibilityDate;
             resourceInputs["compatibilityFlags"] = state?.compatibilityFlags;
             resourceInputs["content"] = state?.content;
@@ -220,6 +236,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["contentType"] = state?.contentType;
             resourceInputs["createdOn"] = state?.createdOn;
             resourceInputs["etag"] = state?.etag;
+            resourceInputs["exports"] = state?.exports;
             resourceInputs["handlers"] = state?.handlers;
             resourceInputs["hasAssets"] = state?.hasAssets;
             resourceInputs["hasModules"] = state?.hasModules;
@@ -234,6 +251,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["modifiedOn"] = state?.modifiedOn;
             resourceInputs["namedHandlers"] = state?.namedHandlers;
             resourceInputs["observability"] = state?.observability;
+            resourceInputs["packageDependencies"] = state?.packageDependencies;
             resourceInputs["placement"] = state?.placement;
             resourceInputs["placementMode"] = state?.placementMode;
             resourceInputs["placementStatus"] = state?.placementStatus;
@@ -243,6 +261,9 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["usageModel"] = state?.usageModel;
         } else {
             const args = argsOrState as WorkerScriptArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.scriptName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scriptName'");
             }
@@ -251,12 +272,14 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["assets"] = args?.assets;
             resourceInputs["bindings"] = args?.bindings;
             resourceInputs["bodyPart"] = args?.bodyPart;
+            resourceInputs["cacheOptions"] = args?.cacheOptions;
             resourceInputs["compatibilityDate"] = args?.compatibilityDate;
             resourceInputs["compatibilityFlags"] = args?.compatibilityFlags;
             resourceInputs["content"] = args?.content;
             resourceInputs["contentFile"] = args?.contentFile;
             resourceInputs["contentSha256"] = args?.contentSha256;
             resourceInputs["contentType"] = args?.contentType;
+            resourceInputs["exports"] = args?.exports;
             resourceInputs["keepAssets"] = args?.keepAssets;
             resourceInputs["keepBindings"] = args?.keepBindings;
             resourceInputs["limits"] = args?.limits;
@@ -264,6 +287,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["mainModule"] = args?.mainModule;
             resourceInputs["migrations"] = args?.migrations;
             resourceInputs["observability"] = args?.observability;
+            resourceInputs["packageDependencies"] = args?.packageDependencies;
             resourceInputs["placement"] = args?.placement;
             resourceInputs["scriptName"] = args?.scriptName;
             resourceInputs["tailConsumers"] = args?.tailConsumers;
@@ -313,6 +337,13 @@ export interface WorkerScriptState {
      */
     bodyPart?: pulumi.Input<string | undefined>;
     /**
+     * Global CacheW configuration for the Worker. When caching is on,
+     * the platform provisions a `cloudflare.app` zone for the Worker.
+     * A `type: worker` entry in the `exports` map can override this
+     * value for a single entrypoint.
+     */
+    cacheOptions?: pulumi.Input<inputs.WorkerScriptCacheOptions | undefined>;
+    /**
      * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      */
     compatibilityDate?: pulumi.Input<string | undefined>;
@@ -345,6 +376,10 @@ export interface WorkerScriptState {
      */
     etag?: pulumi.Input<string | undefined>;
     /**
+     * Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+     */
+    exports?: pulumi.Input<{[key: string]: pulumi.Input<inputs.WorkerScriptExports>} | undefined>;
+    /**
      * The names of handlers exported as part of the default export.
      */
     handlers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -357,7 +392,7 @@ export interface WorkerScriptState {
      */
     hasModules?: pulumi.Input<boolean | undefined>;
     /**
-     * Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+     * Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
      */
     keepAssets?: pulumi.Input<boolean | undefined>;
     /**
@@ -401,6 +436,10 @@ export interface WorkerScriptState {
      */
     observability?: pulumi.Input<inputs.WorkerScriptObservability | undefined>;
     /**
+     * The list of npm packages that were installed and used when this Worker was built.
+     */
+    packageDependencies?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPackageDependency>[] | undefined>;
+    /**
      * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
      */
     placement?: pulumi.Input<inputs.WorkerScriptPlacement | undefined>;
@@ -439,7 +478,7 @@ export interface WorkerScriptArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Annotations for the version created by this upload.
      */
@@ -456,6 +495,13 @@ export interface WorkerScriptArgs {
      * Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
      */
     bodyPart?: pulumi.Input<string | undefined>;
+    /**
+     * Global CacheW configuration for the Worker. When caching is on,
+     * the platform provisions a `cloudflare.app` zone for the Worker.
+     * A `type: worker` entry in the `exports` map can override this
+     * value for a single entrypoint.
+     */
+    cacheOptions?: pulumi.Input<inputs.WorkerScriptCacheOptions | undefined>;
     /**
      * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      */
@@ -481,7 +527,11 @@ export interface WorkerScriptArgs {
      */
     contentType?: pulumi.Input<string | undefined>;
     /**
-     * Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+     * Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+     */
+    exports?: pulumi.Input<{[key: string]: pulumi.Input<inputs.WorkerScriptExports>} | undefined>;
+    /**
+     * Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
      */
     keepAssets?: pulumi.Input<boolean | undefined>;
     /**
@@ -508,6 +558,10 @@ export interface WorkerScriptArgs {
      * Observability settings for the Worker.
      */
     observability?: pulumi.Input<inputs.WorkerScriptObservability | undefined>;
+    /**
+     * The list of npm packages that were installed and used when this Worker was built.
+     */
+    packageDependencies?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPackageDependency>[] | undefined>;
     /**
      * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
      */

@@ -18,6 +18,31 @@ import * as utilities from "./utilities";
  *   _and_ `cloudflare.getListItems` on the same list is not supported and will cause
  *   Terraform into an irreconcilable state.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleList = new cloudflare.List("example_list", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     kind: "ip",
+ *     name: "list1",
+ *     description: "This is a note",
+ *     items: [
+ *         {
+ *             ip: "1.1.1.1",
+ *         },
+ *         {
+ *             ip: "1.1.1.2",
+ *         },
+ *         {
+ *             ip: "1.1.1.3",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh
@@ -55,7 +80,7 @@ export class List extends pulumi.CustomResource {
     /**
      * The Account ID for this resource.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The RFC 3339 timestamp of when the list was created.
      */
@@ -114,6 +139,9 @@ export class List extends pulumi.CustomResource {
             resourceInputs["numReferencingFilters"] = state?.numReferencingFilters;
         } else {
             const args = argsOrState as ListArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.kind === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
@@ -185,7 +213,7 @@ export interface ListArgs {
     /**
      * The Account ID for this resource.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * An informative summary of the list.
      */

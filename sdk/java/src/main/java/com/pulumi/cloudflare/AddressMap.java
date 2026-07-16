@@ -78,14 +78,14 @@ public class AddressMap extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
      * @return Identifier of a Cloudflare account.
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
@@ -202,7 +202,7 @@ public class AddressMap extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AddressMap(java.lang.String name, @Nullable AddressMapArgs args) {
+    public AddressMap(java.lang.String name, AddressMapArgs args) {
         this(name, args, null);
     }
     /**
@@ -211,7 +211,7 @@ public class AddressMap extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AddressMap(java.lang.String name, @Nullable AddressMapArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public AddressMap(java.lang.String name, AddressMapArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/addressMap:AddressMap", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -219,7 +219,7 @@ public class AddressMap extends com.pulumi.resources.CustomResource {
         super("cloudflare:index/addressMap:AddressMap", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static AddressMapArgs makeArgs(@Nullable AddressMapArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static AddressMapArgs makeArgs(AddressMapArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

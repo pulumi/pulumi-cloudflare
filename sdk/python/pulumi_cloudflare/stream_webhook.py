@@ -19,7 +19,7 @@ __all__ = ['StreamWebhookArgs', 'StreamWebhook']
 @pulumi.input_type
 class StreamWebhookArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_id: pulumi.Input[_builtins.str],
                  notification_url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a StreamWebhook resource.
@@ -27,21 +27,20 @@ class StreamWebhookArgs:
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
         :param pulumi.Input[_builtins.str] notification_url: The URL where webhooks will be sent.
         """
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "account_id", account_id)
         if notification_url is not None:
             pulumi.set(__self__, "notification_url", notification_url)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[_builtins.str]:
         """
         The account identifier tag.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
@@ -170,7 +169,7 @@ class StreamWebhook(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[StreamWebhookArgs] = None,
+                 args: StreamWebhookArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Accepted Permissions
@@ -220,6 +219,8 @@ class StreamWebhook(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = StreamWebhookArgs.__new__(StreamWebhookArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["notification_url"] = notification_url
             __props__.__dict__["modified"] = None
@@ -264,7 +265,7 @@ class StreamWebhook(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         The account identifier tag.
         """

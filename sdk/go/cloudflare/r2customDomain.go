@@ -58,7 +58,7 @@ type R2CustomDomain struct {
 	pulumi.CustomResourceState
 
 	// Account ID.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName pulumi.StringOutput `pulumi:"bucketName"`
 	// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
@@ -86,6 +86,9 @@ func NewR2CustomDomain(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.BucketName == nil {
 		return nil, errors.New("invalid value for required argument 'BucketName'")
 	}
@@ -172,7 +175,7 @@ func (R2CustomDomainState) ElementType() reflect.Type {
 
 type r2customDomainArgs struct {
 	// Account ID.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 	// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
@@ -193,7 +196,7 @@ type r2customDomainArgs struct {
 // The set of arguments for constructing a R2CustomDomain resource.
 type R2CustomDomainArgs struct {
 	// Account ID.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Name of the bucket.
 	BucketName pulumi.StringInput
 	// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
@@ -299,8 +302,8 @@ func (o R2CustomDomainOutput) ToR2CustomDomainOutputWithContext(ctx context.Cont
 }
 
 // Account ID.
-func (o R2CustomDomainOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *R2CustomDomain) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o R2CustomDomainOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *R2CustomDomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Name of the bucket.

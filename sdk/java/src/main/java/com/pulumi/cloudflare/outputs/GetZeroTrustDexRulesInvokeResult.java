@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustDexRulesInvokeResult {
+    /**
+     * @return Unique identifier linked to an account.
+     * 
+     */
     private @Nullable String accountId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -27,7 +31,7 @@ public final class GetZeroTrustDexRulesInvokeResult {
      */
     private @Nullable Integer maxItems;
     /**
-     * @return Filter results by rule name
+     * @return Filter results by rule name.
      * 
      */
     private @Nullable String name;
@@ -37,19 +41,23 @@ public final class GetZeroTrustDexRulesInvokeResult {
      */
     private List<GetZeroTrustDexRulesResult> results;
     /**
-     * @return Which property to sort results by
+     * @return Which property to sort results by.
      * Available values: &#34;name&#34;, &#34;created*at&#34;, &#34;updated*at&#34;.
      * 
      */
     private String sortBy;
     /**
-     * @return Sort direction for sortBy property
+     * @return Sort direction for sortBy property.
      * Available values: &#34;ASC&#34;, &#34;DESC&#34;.
      * 
      */
     private String sortOrder;
 
     private GetZeroTrustDexRulesInvokeResult() {}
+    /**
+     * @return Unique identifier linked to an account.
+     * 
+     */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -68,7 +76,7 @@ public final class GetZeroTrustDexRulesInvokeResult {
         return Optional.ofNullable(this.maxItems);
     }
     /**
-     * @return Filter results by rule name
+     * @return Filter results by rule name.
      * 
      */
     public Optional<String> name() {
@@ -82,7 +90,7 @@ public final class GetZeroTrustDexRulesInvokeResult {
         return this.results;
     }
     /**
-     * @return Which property to sort results by
+     * @return Which property to sort results by.
      * Available values: &#34;name&#34;, &#34;created*at&#34;, &#34;updated*at&#34;.
      * 
      */
@@ -90,7 +98,7 @@ public final class GetZeroTrustDexRulesInvokeResult {
         return this.sortBy;
     }
     /**
-     * @return Sort direction for sortBy property
+     * @return Sort direction for sortBy property.
      * Available values: &#34;ASC&#34;, &#34;DESC&#34;.
      * 
      */

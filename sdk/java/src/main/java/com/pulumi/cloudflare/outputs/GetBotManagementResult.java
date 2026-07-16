@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetBotManagementResult {
     /**
-     * @return Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
+     * @return Enable rule to block AI Scrapers and Crawlers.
      * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
      * 
      */
@@ -121,7 +121,7 @@ public final class GetBotManagementResult {
 
     private GetBotManagementResult() {}
     /**
-     * @return Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
+     * @return Enable rule to block AI Scrapers and Crawlers.
      * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
      * 
      */

@@ -57,29 +57,31 @@ func LookupZeroTrustDexTests(ctx *pulumi.Context, args *LookupZeroTrustDexTestsA
 
 // A collection of arguments for invoking getZeroTrustDexTests.
 type LookupZeroTrustDexTestsArgs struct {
+	// Unique identifier linked to an account.
 	AccountId *string `pulumi:"accountId"`
-	// Filter by test type
+	// Filter by test type.
 	// Available values: "http", "traceroute".
 	Kind *string `pulumi:"kind"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Filter by test name
+	// Filter by test name.
 	TestName *string `pulumi:"testName"`
 }
 
 // A collection of values returned by getZeroTrustDexTests.
 type LookupZeroTrustDexTestsResult struct {
+	// Unique identifier linked to an account.
 	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Filter by test type
+	// Filter by test type.
 	// Available values: "http", "traceroute".
 	Kind *string `pulumi:"kind"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
 	Results []GetZeroTrustDexTestsResult `pulumi:"results"`
-	// Filter by test name
+	// Filter by test name.
 	TestName *string `pulumi:"testName"`
 }
 
@@ -94,13 +96,14 @@ func LookupZeroTrustDexTestsOutput(ctx *pulumi.Context, args LookupZeroTrustDexT
 
 // A collection of arguments for invoking getZeroTrustDexTests.
 type LookupZeroTrustDexTestsOutputArgs struct {
+	// Unique identifier linked to an account.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// Filter by test type
+	// Filter by test type.
 	// Available values: "http", "traceroute".
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Filter by test name
+	// Filter by test name.
 	TestName pulumi.StringPtrInput `pulumi:"testName"`
 }
 
@@ -123,6 +126,7 @@ func (o LookupZeroTrustDexTestsResultOutput) ToLookupZeroTrustDexTestsResultOutp
 	return o
 }
 
+// Unique identifier linked to an account.
 func (o LookupZeroTrustDexTestsResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustDexTestsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -132,7 +136,7 @@ func (o LookupZeroTrustDexTestsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDexTestsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Filter by test type
+// Filter by test type.
 // Available values: "http", "traceroute".
 func (o LookupZeroTrustDexTestsResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustDexTestsResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
@@ -148,7 +152,7 @@ func (o LookupZeroTrustDexTestsResultOutput) Results() GetZeroTrustDexTestsResul
 	return o.ApplyT(func(v LookupZeroTrustDexTestsResult) []GetZeroTrustDexTestsResult { return v.Results }).(GetZeroTrustDexTestsResultArrayOutput)
 }
 
-// Filter by test name
+// Filter by test name.
 func (o LookupZeroTrustDexTestsResultOutput) TestName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustDexTestsResult) *string { return v.TestName }).(pulumi.StringPtrOutput)
 }

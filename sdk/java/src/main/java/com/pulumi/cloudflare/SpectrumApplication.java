@@ -287,18 +287,32 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
         return this.trafficType;
     }
     /**
+     * Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+     * 
+     */
+    @Export(name="virtualNetworkId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> virtualNetworkId;
+
+    /**
+     * @return Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+     * 
+     */
+    public Output<Optional<String>> virtualNetworkId() {
+        return Codegen.optional(this.virtualNetworkId);
+    }
+    /**
      * Zone identifier.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> zoneId;
+    private Output<String> zoneId;
 
     /**
      * @return Zone identifier.
      * 
      */
-    public Output<Optional<String>> zoneId() {
-        return Codegen.optional(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     /**

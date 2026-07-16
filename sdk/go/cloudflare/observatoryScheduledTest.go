@@ -63,7 +63,7 @@ type ObservatoryScheduledTest struct {
 	// A URL.
 	Url pulumi.StringOutput `pulumi:"url"`
 	// Identifier.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewObservatoryScheduledTest registers a new resource with the given unique name, arguments, and options.
@@ -75,6 +75,9 @@ func NewObservatoryScheduledTest(ctx *pulumi.Context,
 
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ObservatoryScheduledTest
@@ -141,7 +144,7 @@ type observatoryScheduledTestArgs struct {
 	// A URL.
 	Url string `pulumi:"url"`
 	// Identifier.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ObservatoryScheduledTest resource.
@@ -154,7 +157,7 @@ type ObservatoryScheduledTestArgs struct {
 	// A URL.
 	Url pulumi.StringInput
 	// Identifier.
-	ZoneId pulumi.StringPtrInput
+	ZoneId pulumi.StringInput
 }
 
 func (ObservatoryScheduledTestArgs) ElementType() reflect.Type {
@@ -270,8 +273,8 @@ func (o ObservatoryScheduledTestOutput) Url() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o ObservatoryScheduledTestOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObservatoryScheduledTest) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o ObservatoryScheduledTestOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ObservatoryScheduledTest) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type ObservatoryScheduledTestArrayOutput struct{ *pulumi.OutputState }

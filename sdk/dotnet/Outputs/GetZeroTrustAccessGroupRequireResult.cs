@@ -21,6 +21,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.GetZeroTrustAccessGroupRequireAuthMethodResult AuthMethod;
         public readonly Outputs.GetZeroTrustAccessGroupRequireAzureAdResult AzureAd;
         public readonly Outputs.GetZeroTrustAccessGroupRequireCertificateResult Certificate;
+        public readonly Outputs.GetZeroTrustAccessGroupRequireCloudflareAccountMemberResult CloudflareAccountMember;
         public readonly Outputs.GetZeroTrustAccessGroupRequireCommonNameResult CommonName;
         public readonly Outputs.GetZeroTrustAccessGroupRequireDevicePostureResult DevicePosture;
         public readonly Outputs.GetZeroTrustAccessGroupRequireEmailResult Email;
@@ -56,6 +57,8 @@ namespace Pulumi.Cloudflare.Outputs
             Outputs.GetZeroTrustAccessGroupRequireAzureAdResult azureAd,
 
             Outputs.GetZeroTrustAccessGroupRequireCertificateResult certificate,
+
+            Outputs.GetZeroTrustAccessGroupRequireCloudflareAccountMemberResult cloudflareAccountMember,
 
             Outputs.GetZeroTrustAccessGroupRequireCommonNameResult commonName,
 
@@ -102,6 +105,7 @@ namespace Pulumi.Cloudflare.Outputs
             AuthMethod = authMethod;
             AzureAd = azureAd;
             Certificate = certificate;
+            CloudflareAccountMember = cloudflareAccountMember;
             CommonName = commonName;
             DevicePosture = devicePosture;
             Email = email;

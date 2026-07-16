@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.GetDnsRecordFilter;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -38,6 +39,21 @@ public final class GetDnsRecordPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
+     * Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    @Import(name="includeShadowMetadata")
+    private @Nullable Boolean includeShadowMetadata;
+
+    /**
+     * @return Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    public Optional<Boolean> includeShadowMetadata() {
+        return Optional.ofNullable(this.includeShadowMetadata);
+    }
+
+    /**
      * Identifier.
      * 
      */
@@ -57,6 +73,7 @@ public final class GetDnsRecordPlainArgs extends com.pulumi.resources.InvokeArgs
     private GetDnsRecordPlainArgs(GetDnsRecordPlainArgs $) {
         this.dnsRecordId = $.dnsRecordId;
         this.filter = $.filter;
+        this.includeShadowMetadata = $.includeShadowMetadata;
         this.zoneId = $.zoneId;
     }
 
@@ -91,6 +108,17 @@ public final class GetDnsRecordPlainArgs extends com.pulumi.resources.InvokeArgs
 
         public Builder filter(@Nullable GetDnsRecordFilter filter) {
             $.filter = filter;
+            return this;
+        }
+
+        /**
+         * @param includeShadowMetadata Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeShadowMetadata(@Nullable Boolean includeShadowMetadata) {
+            $.includeShadowMetadata = includeShadowMetadata;
             return this;
         }
 

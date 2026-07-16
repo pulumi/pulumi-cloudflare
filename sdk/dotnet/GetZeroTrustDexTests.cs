@@ -108,11 +108,14 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDexTestsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Unique identifier linked to an account.
+        /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
 
         /// <summary>
-        /// Filter by test type
+        /// Filter by test type.
         /// Available values: "http", "traceroute".
         /// </summary>
         [Input("kind")]
@@ -125,7 +128,7 @@ namespace Pulumi.Cloudflare
         public int? MaxItems { get; set; }
 
         /// <summary>
-        /// Filter by test name
+        /// Filter by test name.
         /// </summary>
         [Input("testName")]
         public string? TestName { get; set; }
@@ -138,11 +141,14 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDexTestsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Unique identifier linked to an account.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Filter by test type
+        /// Filter by test type.
         /// Available values: "http", "traceroute".
         /// </summary>
         [Input("kind")]
@@ -155,7 +161,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? MaxItems { get; set; }
 
         /// <summary>
-        /// Filter by test name
+        /// Filter by test name.
         /// </summary>
         [Input("testName")]
         public Input<string>? TestName { get; set; }
@@ -170,13 +176,16 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustDexTestsResult
     {
+        /// <summary>
+        /// Unique identifier linked to an account.
+        /// </summary>
         public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Filter by test type
+        /// Filter by test type.
         /// Available values: "http", "traceroute".
         /// </summary>
         public readonly string? Kind;
@@ -189,7 +198,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustDexTestsResultResult> Results;
         /// <summary>
-        /// Filter by test name
+        /// Filter by test name.
         /// </summary>
         public readonly string? TestName;
 

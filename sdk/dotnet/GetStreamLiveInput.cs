@@ -102,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public string? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public string AccountId { get; set; } = null!;
 
         /// <summary>
         /// A unique identifier for a live input.
@@ -122,8 +122,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// A unique identifier for a live input.
@@ -144,7 +144,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string? AccountId;
+        public readonly string AccountId;
         /// <summary>
         /// The date and time the live input was created.
         /// </summary>
@@ -162,6 +162,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
+        /// </summary>
+        public readonly string KeysRotatedAt;
+        /// <summary>
         /// A unique identifier for a live input.
         /// </summary>
         public readonly string LiveInputIdentifier;
@@ -173,6 +177,10 @@ namespace Pulumi.Cloudflare
         /// The date and time the live input was last modified.
         /// </summary>
         public readonly string Modified;
+        /// <summary>
+        /// When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
+        /// </summary>
+        public readonly bool PreferLowLatency;
         /// <summary>
         /// Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
         /// </summary>
@@ -213,7 +221,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetStreamLiveInputResult(
-            string? accountId,
+            string accountId,
 
             string created,
 
@@ -223,11 +231,15 @@ namespace Pulumi.Cloudflare
 
             string id,
 
+            string keysRotatedAt,
+
             string liveInputIdentifier,
 
             string meta,
 
             string modified,
+
+            bool preferLowLatency,
 
             Outputs.GetStreamLiveInputRecordingResult recording,
 
@@ -252,9 +264,11 @@ namespace Pulumi.Cloudflare
             DeleteRecordingAfterDays = deleteRecordingAfterDays;
             Enabled = enabled;
             Id = id;
+            KeysRotatedAt = keysRotatedAt;
             LiveInputIdentifier = liveInputIdentifier;
             Meta = meta;
             Modified = modified;
+            PreferLowLatency = preferLowLatency;
             Recording = recording;
             Rtmps = rtmps;
             RtmpsPlayback = rtmpsPlayback;

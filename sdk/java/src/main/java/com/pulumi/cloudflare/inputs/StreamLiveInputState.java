@@ -100,6 +100,21 @@ public final class StreamLiveInputState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
+     * 
+     */
+    @Import(name="keysRotatedAt")
+    private @Nullable Output<String> keysRotatedAt;
+
+    /**
+     * @return The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
+     * 
+     */
+    public Optional<Output<String>> keysRotatedAt() {
+        return Optional.ofNullable(this.keysRotatedAt);
+    }
+
+    /**
      * A unique identifier for a live input.
      * 
      */
@@ -142,6 +157,21 @@ public final class StreamLiveInputState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> modified() {
         return Optional.ofNullable(this.modified);
+    }
+
+    /**
+     * When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
+     * 
+     */
+    @Import(name="preferLowLatency")
+    private @Nullable Output<Boolean> preferLowLatency;
+
+    /**
+     * @return When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
+     * 
+     */
+    public Optional<Output<Boolean>> preferLowLatency() {
+        return Optional.ofNullable(this.preferLowLatency);
     }
 
     /**
@@ -289,9 +319,11 @@ public final class StreamLiveInputState extends com.pulumi.resources.ResourceArg
         this.defaultCreator = $.defaultCreator;
         this.deleteRecordingAfterDays = $.deleteRecordingAfterDays;
         this.enabled = $.enabled;
+        this.keysRotatedAt = $.keysRotatedAt;
         this.liveInputIdentifier = $.liveInputIdentifier;
         this.meta = $.meta;
         this.modified = $.modified;
+        this.preferLowLatency = $.preferLowLatency;
         this.recording = $.recording;
         this.rtmps = $.rtmps;
         this.rtmpsPlayback = $.rtmpsPlayback;
@@ -427,6 +459,27 @@ public final class StreamLiveInputState extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param keysRotatedAt The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keysRotatedAt(@Nullable Output<String> keysRotatedAt) {
+            $.keysRotatedAt = keysRotatedAt;
+            return this;
+        }
+
+        /**
+         * @param keysRotatedAt The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keysRotatedAt(String keysRotatedAt) {
+            return keysRotatedAt(Output.of(keysRotatedAt));
+        }
+
+        /**
          * @param liveInputIdentifier A unique identifier for a live input.
          * 
          * @return builder
@@ -487,6 +540,27 @@ public final class StreamLiveInputState extends com.pulumi.resources.ResourceArg
          */
         public Builder modified(String modified) {
             return modified(Output.of(modified));
+        }
+
+        /**
+         * @param preferLowLatency When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferLowLatency(@Nullable Output<Boolean> preferLowLatency) {
+            $.preferLowLatency = preferLowLatency;
+            return this;
+        }
+
+        /**
+         * @param preferLowLatency When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferLowLatency(Boolean preferLowLatency) {
+            return preferLowLatency(Output.of(preferLowLatency));
         }
 
         /**

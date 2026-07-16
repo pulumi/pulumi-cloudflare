@@ -84,6 +84,8 @@ type LookupZeroTrustDnsLocationResult struct {
 	// Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
 	Ipv4DestinationBackup string `pulumi:"ipv4DestinationBackup"`
 	LocationId            string `pulumi:"locationId"`
+	// Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+	MaxTtl GetZeroTrustDnsLocationMaxTtl `pulumi:"maxTtl"`
 	// Specify the location name.
 	Name string `pulumi:"name"`
 	// Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
@@ -185,6 +187,11 @@ func (o LookupZeroTrustDnsLocationResultOutput) Ipv4DestinationBackup() pulumi.S
 
 func (o LookupZeroTrustDnsLocationResultOutput) LocationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) string { return v.LocationId }).(pulumi.StringOutput)
+}
+
+// Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+func (o LookupZeroTrustDnsLocationResultOutput) MaxTtl() GetZeroTrustDnsLocationMaxTtlOutput {
+	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) GetZeroTrustDnsLocationMaxTtl { return v.MaxTtl }).(GetZeroTrustDnsLocationMaxTtlOutput)
 }
 
 // Specify the location name.

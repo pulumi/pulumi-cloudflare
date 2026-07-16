@@ -193,6 +193,7 @@ class TeamsAccount(pulumi.CustomResource):
                 "inspection": {
                     "mode": "static",
                 },
+                "max_ttl_secs": 3600,
                 "protocol_detection": {
                     "enabled": True,
                 },
@@ -287,6 +288,7 @@ class TeamsAccount(pulumi.CustomResource):
                 "inspection": {
                     "mode": "static",
                 },
+                "max_ttl_secs": 3600,
                 "protocol_detection": {
                     "enabled": True,
                 },

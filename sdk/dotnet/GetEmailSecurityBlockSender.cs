@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleEmailSecurityBlockSender = Cloudflare.GetEmailSecurityBlockSender.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         PatternId = 2402,
+        ///         PatternId = "2402",
         ///     });
         /// 
         /// });
@@ -58,7 +58,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleEmailSecurityBlockSender = Cloudflare.GetEmailSecurityBlockSender.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         PatternId = 2402,
+        ///         PatternId = "2402",
         ///     });
         /// 
         /// });
@@ -86,7 +86,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleEmailSecurityBlockSender = Cloudflare.GetEmailSecurityBlockSender.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         PatternId = 2402,
+        ///         PatternId = "2402",
         ///     });
         /// 
         /// });
@@ -100,7 +100,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetEmailSecurityBlockSenderArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Account Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
@@ -109,10 +109,10 @@ namespace Pulumi.Cloudflare
         public Inputs.GetEmailSecurityBlockSenderFilterArgs? Filter { get; set; }
 
         /// <summary>
-        /// The unique identifier for the allow policy.
+        /// Blocked sender pattern identifier
         /// </summary>
         [Input("patternId")]
-        public int? PatternId { get; set; }
+        public string? PatternId { get; set; }
 
         public GetEmailSecurityBlockSenderArgs()
         {
@@ -123,7 +123,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetEmailSecurityBlockSenderInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Account Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -132,10 +132,10 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.GetEmailSecurityBlockSenderFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
-        /// The unique identifier for the allow policy.
+        /// Blocked sender pattern identifier
         /// </summary>
         [Input("patternId")]
-        public Input<int>? PatternId { get; set; }
+        public Input<string>? PatternId { get; set; }
 
         public GetEmailSecurityBlockSenderInvokeArgs()
         {
@@ -148,24 +148,30 @@ namespace Pulumi.Cloudflare
     public sealed class GetEmailSecurityBlockSenderResult
     {
         /// <summary>
-        /// Account Identifier
+        /// Identifier.
         /// </summary>
         public readonly string? AccountId;
         public readonly string Comments;
         public readonly string CreatedAt;
         public readonly Outputs.GetEmailSecurityBlockSenderFilterResult? Filter;
         /// <summary>
-        /// The unique identifier for the allow policy.
+        /// Blocked sender pattern identifier
         /// </summary>
-        public readonly int Id;
+        public readonly string Id;
         public readonly bool IsRegex;
+        /// <summary>
+        /// Deprecated, use `ModifiedAt` instead. End of life: November 1, 2026.
+        /// </summary>
         public readonly string LastModified;
+        public readonly string ModifiedAt;
         public readonly string Pattern;
         /// <summary>
-        /// The unique identifier for the allow policy.
+        /// Blocked sender pattern identifier
         /// </summary>
-        public readonly int? PatternId;
+        public readonly string? PatternId;
         /// <summary>
+        /// Type of pattern matching.
+        /// Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
         /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         /// </summary>
         public readonly string PatternType;
@@ -180,15 +186,17 @@ namespace Pulumi.Cloudflare
 
             Outputs.GetEmailSecurityBlockSenderFilterResult? filter,
 
-            int id,
+            string id,
 
             bool isRegex,
 
             string lastModified,
 
+            string modifiedAt,
+
             string pattern,
 
-            int? patternId,
+            string? patternId,
 
             string patternType)
         {
@@ -199,6 +207,7 @@ namespace Pulumi.Cloudflare
             Id = id;
             IsRegex = isRegex;
             LastModified = lastModified;
+            ModifiedAt = modifiedAt;
             Pattern = pattern;
             PatternId = patternId;
             PatternType = patternType;

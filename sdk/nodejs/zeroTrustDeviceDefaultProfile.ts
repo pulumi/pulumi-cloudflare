@@ -112,6 +112,10 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
      */
     declare public readonly disableAutoFallback: pulumi.Output<boolean>;
     /**
+     * List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+     */
+    declare public readonly dnsSearchSuffixes: pulumi.Output<outputs.ZeroTrustDeviceDefaultProfileDnsSearchSuffix[]>;
+    /**
      * Whether the policy will be applied to matching devices.
      */
     declare public /*out*/ readonly enabled: pulumi.Output<boolean>;
@@ -159,6 +163,10 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
      * Determines which tunnel protocol to use.
      */
     declare public readonly tunnelProtocol: pulumi.Output<string>;
+    /**
+     * Virtual network access settings for the device.
+     */
+    declare public readonly virtualNetworks: pulumi.Output<outputs.ZeroTrustDeviceDefaultProfileVirtualNetworks | undefined>;
 
     /**
      * Create a ZeroTrustDeviceDefaultProfile resource with the given unique name, arguments, and options.
@@ -181,6 +189,7 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
             resourceInputs["captivePortal"] = state?.captivePortal;
             resourceInputs["default"] = state?.default;
             resourceInputs["disableAutoFallback"] = state?.disableAutoFallback;
+            resourceInputs["dnsSearchSuffixes"] = state?.dnsSearchSuffixes;
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["excludeOfficeIps"] = state?.excludeOfficeIps;
             resourceInputs["excludes"] = state?.excludes;
@@ -196,6 +205,7 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
             resourceInputs["supportUrl"] = state?.supportUrl;
             resourceInputs["switchLocked"] = state?.switchLocked;
             resourceInputs["tunnelProtocol"] = state?.tunnelProtocol;
+            resourceInputs["virtualNetworks"] = state?.virtualNetworks;
         } else {
             const args = argsOrState as ZeroTrustDeviceDefaultProfileArgs | undefined;
             if (args?.accountId === undefined && !opts.urn) {
@@ -208,6 +218,7 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
             resourceInputs["autoConnect"] = args?.autoConnect;
             resourceInputs["captivePortal"] = args?.captivePortal;
             resourceInputs["disableAutoFallback"] = args?.disableAutoFallback;
+            resourceInputs["dnsSearchSuffixes"] = args?.dnsSearchSuffixes;
             resourceInputs["excludeOfficeIps"] = args?.excludeOfficeIps;
             resourceInputs["excludes"] = args?.excludes;
             resourceInputs["includes"] = args?.includes;
@@ -219,6 +230,7 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
             resourceInputs["supportUrl"] = args?.supportUrl;
             resourceInputs["switchLocked"] = args?.switchLocked;
             resourceInputs["tunnelProtocol"] = args?.tunnelProtocol;
+            resourceInputs["virtualNetworks"] = args?.virtualNetworks;
             resourceInputs["default"] = undefined /*out*/;
             resourceInputs["enabled"] = undefined /*out*/;
             resourceInputs["fallbackDomains"] = undefined /*out*/;
@@ -265,6 +277,10 @@ export interface ZeroTrustDeviceDefaultProfileState {
      * If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
      */
     disableAutoFallback?: pulumi.Input<boolean | undefined>;
+    /**
+     * List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+     */
+    dnsSearchSuffixes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileDnsSearchSuffix>[] | undefined>;
     /**
      * Whether the policy will be applied to matching devices.
      */
@@ -313,6 +329,10 @@ export interface ZeroTrustDeviceDefaultProfileState {
      * Determines which tunnel protocol to use.
      */
     tunnelProtocol?: pulumi.Input<string | undefined>;
+    /**
+     * Virtual network access settings for the device.
+     */
+    virtualNetworks?: pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileVirtualNetworks | undefined>;
 }
 
 /**
@@ -344,6 +364,10 @@ export interface ZeroTrustDeviceDefaultProfileArgs {
      * If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
      */
     disableAutoFallback?: pulumi.Input<boolean | undefined>;
+    /**
+     * List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+     */
+    dnsSearchSuffixes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileDnsSearchSuffix>[] | undefined>;
     /**
      * Whether to add Microsoft IPs to Split Tunnel exclusions.
      */
@@ -385,4 +409,8 @@ export interface ZeroTrustDeviceDefaultProfileArgs {
      * Determines which tunnel protocol to use.
      */
     tunnelProtocol?: pulumi.Input<string | undefined>;
+    /**
+     * Virtual network access settings for the device.
+     */
+    virtualNetworks?: pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileVirtualNetworks | undefined>;
 }

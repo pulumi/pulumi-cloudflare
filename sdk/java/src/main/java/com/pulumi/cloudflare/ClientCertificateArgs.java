@@ -41,14 +41,14 @@ public final class ClientCertificateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The number of days the Client Certificate will be valid after the issuedOn date
+     * The number of days the Client Certificate will be valid after the issuedOn date.
      * 
      */
     @Import(name="validityDays", required=true)
     private Output<Integer> validityDays;
 
     /**
-     * @return The number of days the Client Certificate will be valid after the issuedOn date
+     * @return The number of days the Client Certificate will be valid after the issuedOn date.
      * 
      */
     public Output<Integer> validityDays() {
@@ -59,15 +59,15 @@ public final class ClientCertificateArgs extends com.pulumi.resources.ResourceAr
      * Identifier.
      * 
      */
-    @Import(name="zoneId")
-    private @Nullable Output<String> zoneId;
+    @Import(name="zoneId", required=true)
+    private Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<Output<String>> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     private ClientCertificateArgs() {}
@@ -128,7 +128,7 @@ public final class ClientCertificateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param validityDays The number of days the Client Certificate will be valid after the issuedOn date
+         * @param validityDays The number of days the Client Certificate will be valid after the issuedOn date.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class ClientCertificateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param validityDays The number of days the Client Certificate will be valid after the issuedOn date
+         * @param validityDays The number of days the Client Certificate will be valid after the issuedOn date.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class ClientCertificateArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder zoneId(@Nullable Output<String> zoneId) {
+        public Builder zoneId(Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -175,6 +175,9 @@ public final class ClientCertificateArgs extends com.pulumi.resources.ResourceAr
             }
             if ($.validityDays == null) {
                 throw new MissingRequiredPropertyException("ClientCertificateArgs", "validityDays");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("ClientCertificateArgs", "zoneId");
             }
             return $;
         }

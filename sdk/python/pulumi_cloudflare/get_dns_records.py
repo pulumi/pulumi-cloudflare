@@ -28,7 +28,7 @@ class GetDnsRecordsResult:
     """
     A collection of values returned by getDnsRecords.
     """
-    def __init__(__self__, comment=None, content=None, direction=None, id=None, match=None, max_items=None, name=None, order=None, proxied=None, results=None, search=None, tag=None, tag_match=None, type=None, zone_id=None):
+    def __init__(__self__, comment=None, content=None, direction=None, id=None, include_shadow_metadata=None, match=None, max_items=None, name=None, order=None, proxied=None, results=None, search=None, shadowed_by_name=None, shadowing_name=None, tag=None, tag_match=None, type=None, zone_id=None):
         if comment and not isinstance(comment, dict):
             raise TypeError("Expected argument 'comment' to be a dict")
         pulumi.set(__self__, "comment", comment)
@@ -41,6 +41,9 @@ class GetDnsRecordsResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if include_shadow_metadata and not isinstance(include_shadow_metadata, bool):
+            raise TypeError("Expected argument 'include_shadow_metadata' to be a bool")
+        pulumi.set(__self__, "include_shadow_metadata", include_shadow_metadata)
         if match and not isinstance(match, str):
             raise TypeError("Expected argument 'match' to be a str")
         pulumi.set(__self__, "match", match)
@@ -62,6 +65,12 @@ class GetDnsRecordsResult:
         if search and not isinstance(search, str):
             raise TypeError("Expected argument 'search' to be a str")
         pulumi.set(__self__, "search", search)
+        if shadowed_by_name and not isinstance(shadowed_by_name, str):
+            raise TypeError("Expected argument 'shadowed_by_name' to be a str")
+        pulumi.set(__self__, "shadowed_by_name", shadowed_by_name)
+        if shadowing_name and not isinstance(shadowing_name, str):
+            raise TypeError("Expected argument 'shadowing_name' to be a str")
+        pulumi.set(__self__, "shadowing_name", shadowing_name)
         if tag and not isinstance(tag, dict):
             raise TypeError("Expected argument 'tag' to be a dict")
         pulumi.set(__self__, "tag", tag)
@@ -101,6 +110,14 @@ class GetDnsRecordsResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="includeShadowMetadata")
+    def include_shadow_metadata(self) -> _builtins.bool:
+        """
+        Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+        """
+        return pulumi.get(self, "include_shadow_metadata")
 
     @_builtins.property
     @pulumi.getter
@@ -158,6 +175,22 @@ class GetDnsRecordsResult:
         return pulumi.get(self, "search")
 
     @_builtins.property
+    @pulumi.getter(name="shadowedByName")
+    def shadowed_by_name(self) -> Optional[_builtins.str]:
+        """
+        Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+        """
+        return pulumi.get(self, "shadowed_by_name")
+
+    @_builtins.property
+    @pulumi.getter(name="shadowingName")
+    def shadowing_name(self) -> Optional[_builtins.str]:
+        """
+        Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+        """
+        return pulumi.get(self, "shadowing_name")
+
+    @_builtins.property
     @pulumi.getter
     def tag(self) -> Optional['outputs.GetDnsRecordsTagResult']:
         return pulumi.get(self, "tag")
@@ -199,6 +232,7 @@ class AwaitableGetDnsRecordsResult(GetDnsRecordsResult):
             content=self.content,
             direction=self.direction,
             id=self.id,
+            include_shadow_metadata=self.include_shadow_metadata,
             match=self.match,
             max_items=self.max_items,
             name=self.name,
@@ -206,6 +240,8 @@ class AwaitableGetDnsRecordsResult(GetDnsRecordsResult):
             proxied=self.proxied,
             results=self.results,
             search=self.search,
+            shadowed_by_name=self.shadowed_by_name,
+            shadowing_name=self.shadowing_name,
             tag=self.tag,
             tag_match=self.tag_match,
             type=self.type,
@@ -215,12 +251,15 @@ class AwaitableGetDnsRecordsResult(GetDnsRecordsResult):
 def get_dns_records(comment: Optional[Union['GetDnsRecordsCommentArgs', 'GetDnsRecordsCommentArgsDict']] = None,
                     content: Optional[Union['GetDnsRecordsContentArgs', 'GetDnsRecordsContentArgsDict']] = None,
                     direction: Optional[_builtins.str] = None,
+                    include_shadow_metadata: Optional[_builtins.bool] = None,
                     match: Optional[_builtins.str] = None,
                     max_items: Optional[_builtins.int] = None,
                     name: Optional[Union['GetDnsRecordsNameArgs', 'GetDnsRecordsNameArgsDict']] = None,
                     order: Optional[_builtins.str] = None,
                     proxied: Optional[_builtins.bool] = None,
                     search: Optional[_builtins.str] = None,
+                    shadowed_by_name: Optional[_builtins.str] = None,
+                    shadowing_name: Optional[_builtins.str] = None,
                     tag: Optional[Union['GetDnsRecordsTagArgs', 'GetDnsRecordsTagArgsDict']] = None,
                     tag_match: Optional[_builtins.str] = None,
                     type: Optional[_builtins.str] = None,
@@ -260,6 +299,8 @@ def get_dns_records(comment: Optional[Union['GetDnsRecordsCommentArgs', 'GetDnsR
             "startswith": "www.example",
         },
         search="www.cloudflare.com",
+        shadowed_by_name="sub.example.com",
+        shadowing_name="www.sub.example.com",
         tag={
             "absent": "important",
             "contains": "greeting:ello, worl",
@@ -274,6 +315,7 @@ def get_dns_records(comment: Optional[Union['GetDnsRecordsCommentArgs', 'GetDnsR
 
     :param _builtins.str direction: Direction to order DNS records in.
            Available values: "asc", "desc".
+    :param _builtins.bool include_shadow_metadata: Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
     :param _builtins.str match: Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
            Available values: "any", "all".
     :param _builtins.int max_items: Max items to fetch, default: 1000
@@ -281,6 +323,8 @@ def get_dns_records(comment: Optional[Union['GetDnsRecordsCommentArgs', 'GetDnsR
            Available values: "type", "name", "content", "ttl", "proxied".
     :param _builtins.bool proxied: Whether the record is receiving the performance and security benefits of Cloudflare.
     :param _builtins.str search: Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `match` setting. For automated searches, please use the other available parameters.
+    :param _builtins.str shadowed_by_name: Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+    :param _builtins.str shadowing_name: Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
     :param _builtins.str tag_match: Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
            Available values: "any", "all".
     :param _builtins.str type: Record type.
@@ -291,12 +335,15 @@ def get_dns_records(comment: Optional[Union['GetDnsRecordsCommentArgs', 'GetDnsR
     __args__['comment'] = comment
     __args__['content'] = content
     __args__['direction'] = direction
+    __args__['includeShadowMetadata'] = include_shadow_metadata
     __args__['match'] = match
     __args__['maxItems'] = max_items
     __args__['name'] = name
     __args__['order'] = order
     __args__['proxied'] = proxied
     __args__['search'] = search
+    __args__['shadowedByName'] = shadowed_by_name
+    __args__['shadowingName'] = shadowing_name
     __args__['tag'] = tag
     __args__['tagMatch'] = tag_match
     __args__['type'] = type
@@ -309,6 +356,7 @@ def get_dns_records(comment: Optional[Union['GetDnsRecordsCommentArgs', 'GetDnsR
         content=pulumi.get(__ret__, 'content'),
         direction=pulumi.get(__ret__, 'direction'),
         id=pulumi.get(__ret__, 'id'),
+        include_shadow_metadata=pulumi.get(__ret__, 'include_shadow_metadata'),
         match=pulumi.get(__ret__, 'match'),
         max_items=pulumi.get(__ret__, 'max_items'),
         name=pulumi.get(__ret__, 'name'),
@@ -316,6 +364,8 @@ def get_dns_records(comment: Optional[Union['GetDnsRecordsCommentArgs', 'GetDnsR
         proxied=pulumi.get(__ret__, 'proxied'),
         results=pulumi.get(__ret__, 'results'),
         search=pulumi.get(__ret__, 'search'),
+        shadowed_by_name=pulumi.get(__ret__, 'shadowed_by_name'),
+        shadowing_name=pulumi.get(__ret__, 'shadowing_name'),
         tag=pulumi.get(__ret__, 'tag'),
         tag_match=pulumi.get(__ret__, 'tag_match'),
         type=pulumi.get(__ret__, 'type'),
@@ -323,12 +373,15 @@ def get_dns_records(comment: Optional[Union['GetDnsRecordsCommentArgs', 'GetDnsR
 def get_dns_records_output(comment: pulumi.Input[Optional[Optional[Union['GetDnsRecordsCommentArgs', 'GetDnsRecordsCommentArgsDict']]]] = None,
                            content: pulumi.Input[Optional[Optional[Union['GetDnsRecordsContentArgs', 'GetDnsRecordsContentArgsDict']]]] = None,
                            direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           include_shadow_metadata: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                            match: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                            name: pulumi.Input[Optional[Optional[Union['GetDnsRecordsNameArgs', 'GetDnsRecordsNameArgsDict']]]] = None,
                            order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            proxied: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                            search: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           shadowed_by_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           shadowing_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            tag: pulumi.Input[Optional[Optional[Union['GetDnsRecordsTagArgs', 'GetDnsRecordsTagArgsDict']]]] = None,
                            tag_match: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -368,6 +421,8 @@ def get_dns_records_output(comment: pulumi.Input[Optional[Optional[Union['GetDns
             "startswith": "www.example",
         },
         search="www.cloudflare.com",
+        shadowed_by_name="sub.example.com",
+        shadowing_name="www.sub.example.com",
         tag={
             "absent": "important",
             "contains": "greeting:ello, worl",
@@ -382,6 +437,7 @@ def get_dns_records_output(comment: pulumi.Input[Optional[Optional[Union['GetDns
 
     :param _builtins.str direction: Direction to order DNS records in.
            Available values: "asc", "desc".
+    :param _builtins.bool include_shadow_metadata: Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
     :param _builtins.str match: Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
            Available values: "any", "all".
     :param _builtins.int max_items: Max items to fetch, default: 1000
@@ -389,6 +445,8 @@ def get_dns_records_output(comment: pulumi.Input[Optional[Optional[Union['GetDns
            Available values: "type", "name", "content", "ttl", "proxied".
     :param _builtins.bool proxied: Whether the record is receiving the performance and security benefits of Cloudflare.
     :param _builtins.str search: Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `match` setting. For automated searches, please use the other available parameters.
+    :param _builtins.str shadowed_by_name: Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+    :param _builtins.str shadowing_name: Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
     :param _builtins.str tag_match: Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
            Available values: "any", "all".
     :param _builtins.str type: Record type.
@@ -399,12 +457,15 @@ def get_dns_records_output(comment: pulumi.Input[Optional[Optional[Union['GetDns
     __args__['comment'] = comment
     __args__['content'] = content
     __args__['direction'] = direction
+    __args__['includeShadowMetadata'] = include_shadow_metadata
     __args__['match'] = match
     __args__['maxItems'] = max_items
     __args__['name'] = name
     __args__['order'] = order
     __args__['proxied'] = proxied
     __args__['search'] = search
+    __args__['shadowedByName'] = shadowed_by_name
+    __args__['shadowingName'] = shadowing_name
     __args__['tag'] = tag
     __args__['tagMatch'] = tag_match
     __args__['type'] = type
@@ -416,6 +477,7 @@ def get_dns_records_output(comment: pulumi.Input[Optional[Optional[Union['GetDns
         content=pulumi.get(__response__, 'content'),
         direction=pulumi.get(__response__, 'direction'),
         id=pulumi.get(__response__, 'id'),
+        include_shadow_metadata=pulumi.get(__response__, 'include_shadow_metadata'),
         match=pulumi.get(__response__, 'match'),
         max_items=pulumi.get(__response__, 'max_items'),
         name=pulumi.get(__response__, 'name'),
@@ -423,6 +485,8 @@ def get_dns_records_output(comment: pulumi.Input[Optional[Optional[Union['GetDns
         proxied=pulumi.get(__response__, 'proxied'),
         results=pulumi.get(__response__, 'results'),
         search=pulumi.get(__response__, 'search'),
+        shadowed_by_name=pulumi.get(__response__, 'shadowed_by_name'),
+        shadowing_name=pulumi.get(__response__, 'shadowing_name'),
         tag=pulumi.get(__response__, 'tag'),
         tag_match=pulumi.get(__response__, 'tag_match'),
         type=pulumi.get(__response__, 'type'),

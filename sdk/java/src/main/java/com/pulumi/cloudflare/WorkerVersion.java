@@ -9,10 +9,12 @@ import com.pulumi.cloudflare.inputs.WorkerVersionState;
 import com.pulumi.cloudflare.outputs.WorkerVersionAnnotations;
 import com.pulumi.cloudflare.outputs.WorkerVersionAssets;
 import com.pulumi.cloudflare.outputs.WorkerVersionBinding;
+import com.pulumi.cloudflare.outputs.WorkerVersionCacheOptions;
 import com.pulumi.cloudflare.outputs.WorkerVersionContainer;
 import com.pulumi.cloudflare.outputs.WorkerVersionLimits;
 import com.pulumi.cloudflare.outputs.WorkerVersionMigrations;
 import com.pulumi.cloudflare.outputs.WorkerVersionModule;
+import com.pulumi.cloudflare.outputs.WorkerVersionPackageDependency;
 import com.pulumi.cloudflare.outputs.WorkerVersionPlacement;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -46,12 +48,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.WorkerVersionAssetsArgs;
  * import com.pulumi.cloudflare.inputs.WorkerVersionAssetsConfigArgs;
  * import com.pulumi.cloudflare.inputs.WorkerVersionBindingArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerVersionCacheOptionsArgs;
  * import com.pulumi.cloudflare.inputs.WorkerVersionContainerArgs;
  * import com.pulumi.cloudflare.inputs.WorkerVersionLimitsArgs;
  * import com.pulumi.cloudflare.inputs.WorkerVersionMigrationsArgs;
  * import com.pulumi.cloudflare.inputs.WorkerVersionMigrationsRenamedClassArgs;
  * import com.pulumi.cloudflare.inputs.WorkerVersionMigrationsTransferredClassArgs;
  * import com.pulumi.cloudflare.inputs.WorkerVersionModuleArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerVersionPackageDependencyArgs;
  * import com.pulumi.cloudflare.inputs.WorkerVersionPlacementArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -86,6 +90,10 @@ import javax.annotation.Nullable;
  *                 .text("my_data")
  *                 .type("plain_text")
  *                 .build())
+ *             .cacheOptions(WorkerVersionCacheOptionsArgs.builder()
+ *                 .enabled(true)
+ *                 .crossVersionCache(true)
+ *                 .build())
  *             .compatibilityDate("2021-01-01")
  *             .compatibilityFlags("nodejs_compat")
  *             .containers(WorkerVersionContainerArgs.builder()
@@ -117,6 +125,11 @@ import javax.annotation.Nullable;
  *                 .contentType("application/javascript+module")
  *                 .name("index.js")
  *                 .build())
+ *             .packageDependencies(WorkerVersionPackageDependencyArgs.builder()
+ *                 .installedVersion("4.17.22")
+ *                 .name("lodash")
+ *                 .packageJsonVersion("^4.17.21")
+ *                 .build())
  *             .placement(WorkerVersionPlacementArgs.builder()
  *                 .mode("smart")
  *                 .build())
@@ -141,14 +154,14 @@ public class WorkerVersion extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * Metadata about the version.
@@ -191,6 +204,26 @@ public class WorkerVersion extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<WorkerVersionBinding>>> bindings() {
         return Codegen.optional(this.bindings);
+    }
+    /**
+     * Global CacheW configuration for the Worker. When caching is on,
+     * the platform provisions a `cloudflare.app` zone for the Worker.
+     * A `type: worker` entry in the `exports` map can override this
+     * value for a single entrypoint.
+     * 
+     */
+    @Export(name="cacheOptions", refs={WorkerVersionCacheOptions.class}, tree="[0]")
+    private Output<WorkerVersionCacheOptions> cacheOptions;
+
+    /**
+     * @return Global CacheW configuration for the Worker. When caching is on,
+     * the platform provisions a `cloudflare.app` zone for the Worker.
+     * A `type: worker` entry in the `exports` map can override this
+     * value for a single entrypoint.
+     * 
+     */
+    public Output<WorkerVersionCacheOptions> cacheOptions() {
+        return this.cacheOptions;
     }
     /**
      * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -355,6 +388,22 @@ public class WorkerVersion extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> number() {
         return this.number;
+    }
+    /**
+     * The list of npm packages that were installed and used when this Worker
+     * version was built.
+     * 
+     */
+    @Export(name="packageDependencies", refs={List.class,WorkerVersionPackageDependency.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<WorkerVersionPackageDependency>> packageDependencies;
+
+    /**
+     * @return The list of npm packages that were installed and used when this Worker
+     * version was built.
+     * 
+     */
+    public Output<Optional<List<WorkerVersionPackageDependency>>> packageDependencies() {
+        return Codegen.optional(this.packageDependencies);
     }
     /**
      * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.

@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.inputs.AccessGroupExcludeAuthContextArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupExcludeAuthMethodArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupExcludeAzureAdArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupExcludeCertificateArgs;
+import com.pulumi.cloudflare.inputs.AccessGroupExcludeCloudflareAccountMemberArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupExcludeCommonNameArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupExcludeDevicePostureArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupExcludeEmailArgs;
@@ -80,6 +81,13 @@ public final class AccessGroupExcludeArgs extends com.pulumi.resources.ResourceA
 
     public Optional<Output<AccessGroupExcludeCertificateArgs>> certificate() {
         return Optional.ofNullable(this.certificate);
+    }
+
+    @Import(name="cloudflareAccountMember")
+    private @Nullable Output<AccessGroupExcludeCloudflareAccountMemberArgs> cloudflareAccountMember;
+
+    public Optional<Output<AccessGroupExcludeCloudflareAccountMemberArgs>> cloudflareAccountMember() {
+        return Optional.ofNullable(this.cloudflareAccountMember);
     }
 
     @Import(name="commonName")
@@ -238,6 +246,7 @@ public final class AccessGroupExcludeArgs extends com.pulumi.resources.ResourceA
         this.authMethod = $.authMethod;
         this.azureAd = $.azureAd;
         this.certificate = $.certificate;
+        this.cloudflareAccountMember = $.cloudflareAccountMember;
         this.commonName = $.commonName;
         this.devicePosture = $.devicePosture;
         this.email = $.email;
@@ -333,6 +342,15 @@ public final class AccessGroupExcludeArgs extends com.pulumi.resources.ResourceA
 
         public Builder certificate(AccessGroupExcludeCertificateArgs certificate) {
             return certificate(Output.of(certificate));
+        }
+
+        public Builder cloudflareAccountMember(@Nullable Output<AccessGroupExcludeCloudflareAccountMemberArgs> cloudflareAccountMember) {
+            $.cloudflareAccountMember = cloudflareAccountMember;
+            return this;
+        }
+
+        public Builder cloudflareAccountMember(AccessGroupExcludeCloudflareAccountMemberArgs cloudflareAccountMember) {
+            return cloudflareAccountMember(Output.of(cloudflareAccountMember));
         }
 
         public Builder commonName(@Nullable Output<AccessGroupExcludeCommonNameArgs> commonName) {

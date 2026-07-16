@@ -25,15 +25,16 @@ func LookupAiSearchInstances(ctx *pulumi.Context, args *LookupAiSearchInstancesA
 type LookupAiSearchInstancesArgs struct {
 	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
-	MaxItems  *int    `pulumi:"maxItems"`
+	MaxItems *int `pulumi:"maxItems"`
+	// Filter by namespace.
 	Namespace *string `pulumi:"namespace"`
-	// Order By Column Name
+	// Field to order results by.
 	// Available values: "createdAt".
 	OrderBy *string `pulumi:"orderBy"`
-	// Order By Direction
+	// Order direction.
 	// Available values: "asc", "desc".
 	OrderByDirection *string `pulumi:"orderByDirection"`
-	// Search by id
+	// Filter instances whose id contains this string (case-insensitive).
 	Search *string `pulumi:"search"`
 }
 
@@ -43,17 +44,18 @@ type LookupAiSearchInstancesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
-	MaxItems  *int    `pulumi:"maxItems"`
+	MaxItems *int `pulumi:"maxItems"`
+	// Filter by namespace.
 	Namespace *string `pulumi:"namespace"`
-	// Order By Column Name
+	// Field to order results by.
 	// Available values: "createdAt".
 	OrderBy string `pulumi:"orderBy"`
-	// Order By Direction
+	// Order direction.
 	// Available values: "asc", "desc".
 	OrderByDirection string `pulumi:"orderByDirection"`
 	// The items returned by the data source
 	Results []GetAiSearchInstancesResult `pulumi:"results"`
-	// Search by id
+	// Filter instances whose id contains this string (case-insensitive).
 	Search *string `pulumi:"search"`
 }
 
@@ -70,15 +72,16 @@ func LookupAiSearchInstancesOutput(ctx *pulumi.Context, args LookupAiSearchInsta
 type LookupAiSearchInstancesOutputArgs struct {
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
-	MaxItems  pulumi.IntPtrInput    `pulumi:"maxItems"`
+	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
+	// Filter by namespace.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
-	// Order By Column Name
+	// Field to order results by.
 	// Available values: "createdAt".
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
-	// Order By Direction
+	// Order direction.
 	// Available values: "asc", "desc".
 	OrderByDirection pulumi.StringPtrInput `pulumi:"orderByDirection"`
-	// Search by id
+	// Filter instances whose id contains this string (case-insensitive).
 	Search pulumi.StringPtrInput `pulumi:"search"`
 }
 
@@ -115,17 +118,18 @@ func (o LookupAiSearchInstancesResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupAiSearchInstancesResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
+// Filter by namespace.
 func (o LookupAiSearchInstancesResultOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAiSearchInstancesResult) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
-// Order By Column Name
+// Field to order results by.
 // Available values: "createdAt".
 func (o LookupAiSearchInstancesResultOutput) OrderBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstancesResult) string { return v.OrderBy }).(pulumi.StringOutput)
 }
 
-// Order By Direction
+// Order direction.
 // Available values: "asc", "desc".
 func (o LookupAiSearchInstancesResultOutput) OrderByDirection() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstancesResult) string { return v.OrderByDirection }).(pulumi.StringOutput)
@@ -136,7 +140,7 @@ func (o LookupAiSearchInstancesResultOutput) Results() GetAiSearchInstancesResul
 	return o.ApplyT(func(v LookupAiSearchInstancesResult) []GetAiSearchInstancesResult { return v.Results }).(GetAiSearchInstancesResultArrayOutput)
 }
 
-// Search by id
+// Filter instances whose id contains this string (case-insensitive).
 func (o LookupAiSearchInstancesResultOutput) Search() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAiSearchInstancesResult) *string { return v.Search }).(pulumi.StringPtrOutput)
 }

@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.StreamLiveInputRecordingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
@@ -22,15 +23,15 @@ public final class StreamLiveInputArgs extends com.pulumi.resources.ResourceArgs
      * Identifier.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -109,6 +110,21 @@ public final class StreamLiveInputArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
+     * 
+     */
+    @Import(name="preferLowLatency")
+    private @Nullable Output<Boolean> preferLowLatency;
+
+    /**
+     * @return When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
+     * 
+     */
+    public Optional<Output<Boolean>> preferLowLatency() {
+        return Optional.ofNullable(this.preferLowLatency);
+    }
+
+    /**
      * Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
      * 
      */
@@ -132,6 +148,7 @@ public final class StreamLiveInputArgs extends com.pulumi.resources.ResourceArgs
         this.enabled = $.enabled;
         this.liveInputIdentifier = $.liveInputIdentifier;
         this.meta = $.meta;
+        this.preferLowLatency = $.preferLowLatency;
         this.recording = $.recording;
     }
 
@@ -159,7 +176,7 @@ public final class StreamLiveInputArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -280,6 +297,27 @@ public final class StreamLiveInputArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param preferLowLatency When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferLowLatency(@Nullable Output<Boolean> preferLowLatency) {
+            $.preferLowLatency = preferLowLatency;
+            return this;
+        }
+
+        /**
+         * @param preferLowLatency When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferLowLatency(Boolean preferLowLatency) {
+            return preferLowLatency(Output.of(preferLowLatency));
+        }
+
+        /**
          * @param recording Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
          * 
          * @return builder
@@ -301,6 +339,9 @@ public final class StreamLiveInputArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public StreamLiveInputArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("StreamLiveInputArgs", "accountId");
+            }
             return $;
         }
     }

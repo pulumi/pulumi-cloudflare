@@ -21,29 +21,40 @@ __all__ = ['ListArgs', 'List']
 @pulumi.input_type
 class ListArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  kind: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  items: pulumi.Input[Optional[Sequence[pulumi.Input['ListItemArgs']]]] = None):
         """
         The set of arguments for constructing a List resource.
 
+        :param pulumi.Input[_builtins.str] account_id: The Account ID for this resource.
         :param pulumi.Input[_builtins.str] kind: The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
                Available values: "ip", "redirect", "hostname", "asn".
         :param pulumi.Input[_builtins.str] name: An informative name for the list. Use this name in filter and rule expressions.
-        :param pulumi.Input[_builtins.str] account_id: The Account ID for this resource.
         :param pulumi.Input[_builtins.str] description: An informative summary of the list.
         :param pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]] items: The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "name", name)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if items is not None:
             pulumi.set(__self__, "items", items)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The Account ID for this resource.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -69,18 +80,6 @@ class ListArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The Account ID for this resource.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -286,6 +285,30 @@ class List(pulumi.CustomResource):
           _and_ `get_list_items` on the same list is not supported and will cause
           Terraform into an irreconcilable state.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_list = cloudflare.List("example_list",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            kind="ip",
+            name="list1",
+            description="This is a note",
+            items=[
+                {
+                    "ip": "1.1.1.1",
+                },
+                {
+                    "ip": "1.1.1.2",
+                },
+                {
+                    "ip": "1.1.1.3",
+                },
+            ])
+        ```
+
         ## Import
 
         ```sh
@@ -319,6 +342,30 @@ class List(pulumi.CustomResource):
           managing items as independent resources. Using both in line `items` definitions
           _and_ `get_list_items` on the same list is not supported and will cause
           Terraform into an irreconcilable state.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_list = cloudflare.List("example_list",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            kind="ip",
+            name="list1",
+            description="This is a note",
+            items=[
+                {
+                    "ip": "1.1.1.1",
+                },
+                {
+                    "ip": "1.1.1.2",
+                },
+                {
+                    "ip": "1.1.1.3",
+                },
+            ])
+        ```
 
         ## Import
 
@@ -356,6 +403,8 @@ class List(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ListArgs.__new__(ListArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["description"] = description
             __props__.__dict__["items"] = items
@@ -423,7 +472,7 @@ class List(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         The Account ID for this resource.
         """

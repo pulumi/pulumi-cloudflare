@@ -47,7 +47,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The date and time the destination address has been created.
@@ -66,6 +66,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("modified")]
         public Output<string> Modified { get; private set; } = null!;
+
+        /// <summary>
+        /// Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+        /// Available values: "unverified", "verified".
+        /// </summary>
+        [Output("status")]
+        public Output<string?> Status { get; private set; } = null!;
 
         /// <summary>
         /// Destination address tag. (Deprecated, replaced by destination address identifier)
@@ -128,14 +135,21 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// The contact email address of the user.
         /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
+
+        /// <summary>
+        /// Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+        /// Available values: "unverified", "verified".
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public EmailRoutingAddressArgs()
         {
@@ -168,6 +182,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("modified")]
         public Input<string>? Modified { get; set; }
+
+        /// <summary>
+        /// Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+        /// Available values: "unverified", "verified".
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         /// <summary>
         /// Destination address tag. (Deprecated, replaced by destination address identifier)

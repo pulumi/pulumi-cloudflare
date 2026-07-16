@@ -28,6 +28,7 @@ class ZeroTrustDeviceDefaultProfileArgs:
                  auto_connect: pulumi.Input[Optional[_builtins.float]] = None,
                  captive_portal: pulumi.Input[Optional[_builtins.float]] = None,
                  disable_auto_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_search_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs']]]] = None,
                  exclude_office_ips: pulumi.Input[Optional[_builtins.bool]] = None,
                  excludes: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]]] = None,
                  includes: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileIncludeArgs']]]] = None,
@@ -38,7 +39,8 @@ class ZeroTrustDeviceDefaultProfileArgs:
                  service_mode_v2: pulumi.Input[Optional['ZeroTrustDeviceDefaultProfileServiceModeV2Args']] = None,
                  support_url: pulumi.Input[Optional[_builtins.str]] = None,
                  switch_locked: pulumi.Input[Optional[_builtins.bool]] = None,
-                 tunnel_protocol: pulumi.Input[Optional[_builtins.str]] = None):
+                 tunnel_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_networks: pulumi.Input[Optional['ZeroTrustDeviceDefaultProfileVirtualNetworksArgs']] = None):
         """
         The set of arguments for constructing a ZeroTrustDeviceDefaultProfile resource.
 
@@ -48,6 +50,7 @@ class ZeroTrustDeviceDefaultProfileArgs:
         :param pulumi.Input[_builtins.float] auto_connect: The amount of time in seconds to reconnect after having been disabled.
         :param pulumi.Input[_builtins.float] captive_portal: Turn on the captive portal after the specified amount of time.
         :param pulumi.Input[_builtins.bool] disable_auto_fallback: If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs']]] dns_search_suffixes: List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
         :param pulumi.Input[_builtins.bool] exclude_office_ips: Whether to add Microsoft IPs to Split Tunnel exclusions.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]] excludes: List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileIncludeArgs']]] includes: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
@@ -58,6 +61,7 @@ class ZeroTrustDeviceDefaultProfileArgs:
         :param pulumi.Input[_builtins.str] support_url: The URL to launch when the Send Feedback button is clicked.
         :param pulumi.Input[_builtins.bool] switch_locked: Whether to allow the user to turn off the WARP switch and disconnect the client.
         :param pulumi.Input[_builtins.str] tunnel_protocol: Determines which tunnel protocol to use.
+        :param pulumi.Input['ZeroTrustDeviceDefaultProfileVirtualNetworksArgs'] virtual_networks: Virtual network access settings for the device.
         """
         pulumi.set(__self__, "account_id", account_id)
         if allow_mode_switch is not None:
@@ -72,6 +76,8 @@ class ZeroTrustDeviceDefaultProfileArgs:
             pulumi.set(__self__, "captive_portal", captive_portal)
         if disable_auto_fallback is not None:
             pulumi.set(__self__, "disable_auto_fallback", disable_auto_fallback)
+        if dns_search_suffixes is not None:
+            pulumi.set(__self__, "dns_search_suffixes", dns_search_suffixes)
         if exclude_office_ips is not None:
             pulumi.set(__self__, "exclude_office_ips", exclude_office_ips)
         if excludes is not None:
@@ -94,6 +100,8 @@ class ZeroTrustDeviceDefaultProfileArgs:
             pulumi.set(__self__, "switch_locked", switch_locked)
         if tunnel_protocol is not None:
             pulumi.set(__self__, "tunnel_protocol", tunnel_protocol)
+        if virtual_networks is not None:
+            pulumi.set(__self__, "virtual_networks", virtual_networks)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -175,6 +183,18 @@ class ZeroTrustDeviceDefaultProfileArgs:
     @disable_auto_fallback.setter
     def disable_auto_fallback(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_auto_fallback", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsSearchSuffixes")
+    def dns_search_suffixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs']]]]:
+        """
+        List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+        """
+        return pulumi.get(self, "dns_search_suffixes")
+
+    @dns_search_suffixes.setter
+    def dns_search_suffixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs']]]]):
+        pulumi.set(self, "dns_search_suffixes", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeOfficeIps")
@@ -305,6 +325,18 @@ class ZeroTrustDeviceDefaultProfileArgs:
     def tunnel_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tunnel_protocol", value)
 
+    @_builtins.property
+    @pulumi.getter(name="virtualNetworks")
+    def virtual_networks(self) -> pulumi.Input[Optional['ZeroTrustDeviceDefaultProfileVirtualNetworksArgs']]:
+        """
+        Virtual network access settings for the device.
+        """
+        return pulumi.get(self, "virtual_networks")
+
+    @virtual_networks.setter
+    def virtual_networks(self, value: pulumi.Input[Optional['ZeroTrustDeviceDefaultProfileVirtualNetworksArgs']]):
+        pulumi.set(self, "virtual_networks", value)
+
 
 @pulumi.input_type
 class _ZeroTrustDeviceDefaultProfileState:
@@ -317,6 +349,7 @@ class _ZeroTrustDeviceDefaultProfileState:
                  captive_portal: pulumi.Input[Optional[_builtins.float]] = None,
                  default: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_auto_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_search_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs']]]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  exclude_office_ips: pulumi.Input[Optional[_builtins.bool]] = None,
                  excludes: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]]] = None,
@@ -331,7 +364,8 @@ class _ZeroTrustDeviceDefaultProfileState:
                  service_mode_v2: pulumi.Input[Optional['ZeroTrustDeviceDefaultProfileServiceModeV2Args']] = None,
                  support_url: pulumi.Input[Optional[_builtins.str]] = None,
                  switch_locked: pulumi.Input[Optional[_builtins.bool]] = None,
-                 tunnel_protocol: pulumi.Input[Optional[_builtins.str]] = None):
+                 tunnel_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_networks: pulumi.Input[Optional['ZeroTrustDeviceDefaultProfileVirtualNetworksArgs']] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDeviceDefaultProfile resources.
 
@@ -342,6 +376,7 @@ class _ZeroTrustDeviceDefaultProfileState:
         :param pulumi.Input[_builtins.float] captive_portal: Turn on the captive portal after the specified amount of time.
         :param pulumi.Input[_builtins.bool] default: Whether the policy will be applied to matching devices.
         :param pulumi.Input[_builtins.bool] disable_auto_fallback: If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs']]] dns_search_suffixes: List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
         :param pulumi.Input[_builtins.bool] enabled: Whether the policy will be applied to matching devices.
         :param pulumi.Input[_builtins.bool] exclude_office_ips: Whether to add Microsoft IPs to Split Tunnel exclusions.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]] excludes: List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
@@ -353,6 +388,7 @@ class _ZeroTrustDeviceDefaultProfileState:
         :param pulumi.Input[_builtins.str] support_url: The URL to launch when the Send Feedback button is clicked.
         :param pulumi.Input[_builtins.bool] switch_locked: Whether to allow the user to turn off the WARP switch and disconnect the client.
         :param pulumi.Input[_builtins.str] tunnel_protocol: Determines which tunnel protocol to use.
+        :param pulumi.Input['ZeroTrustDeviceDefaultProfileVirtualNetworksArgs'] virtual_networks: Virtual network access settings for the device.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -370,6 +406,8 @@ class _ZeroTrustDeviceDefaultProfileState:
             pulumi.set(__self__, "default", default)
         if disable_auto_fallback is not None:
             pulumi.set(__self__, "disable_auto_fallback", disable_auto_fallback)
+        if dns_search_suffixes is not None:
+            pulumi.set(__self__, "dns_search_suffixes", dns_search_suffixes)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if exclude_office_ips is not None:
@@ -400,6 +438,8 @@ class _ZeroTrustDeviceDefaultProfileState:
             pulumi.set(__self__, "switch_locked", switch_locked)
         if tunnel_protocol is not None:
             pulumi.set(__self__, "tunnel_protocol", tunnel_protocol)
+        if virtual_networks is not None:
+            pulumi.set(__self__, "virtual_networks", virtual_networks)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -493,6 +533,18 @@ class _ZeroTrustDeviceDefaultProfileState:
     @disable_auto_fallback.setter
     def disable_auto_fallback(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_auto_fallback", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsSearchSuffixes")
+    def dns_search_suffixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs']]]]:
+        """
+        List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+        """
+        return pulumi.get(self, "dns_search_suffixes")
+
+    @dns_search_suffixes.setter
+    def dns_search_suffixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs']]]]):
+        pulumi.set(self, "dns_search_suffixes", value)
 
     @_builtins.property
     @pulumi.getter
@@ -662,6 +714,18 @@ class _ZeroTrustDeviceDefaultProfileState:
     def tunnel_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tunnel_protocol", value)
 
+    @_builtins.property
+    @pulumi.getter(name="virtualNetworks")
+    def virtual_networks(self) -> pulumi.Input[Optional['ZeroTrustDeviceDefaultProfileVirtualNetworksArgs']]:
+        """
+        Virtual network access settings for the device.
+        """
+        return pulumi.get(self, "virtual_networks")
+
+    @virtual_networks.setter
+    def virtual_networks(self, value: pulumi.Input[Optional['ZeroTrustDeviceDefaultProfileVirtualNetworksArgs']]):
+        pulumi.set(self, "virtual_networks", value)
+
 
 @pulumi.type_token("cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile")
 class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
@@ -676,6 +740,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
                  auto_connect: pulumi.Input[Optional[_builtins.float]] = None,
                  captive_portal: pulumi.Input[Optional[_builtins.float]] = None,
                  disable_auto_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_search_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs', 'ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgsDict']]]]] = None,
                  exclude_office_ips: pulumi.Input[Optional[_builtins.bool]] = None,
                  excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileExcludeArgs', 'ZeroTrustDeviceDefaultProfileExcludeArgsDict']]]]] = None,
                  includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileIncludeArgs', 'ZeroTrustDeviceDefaultProfileIncludeArgsDict']]]]] = None,
@@ -687,6 +752,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
                  support_url: pulumi.Input[Optional[_builtins.str]] = None,
                  switch_locked: pulumi.Input[Optional[_builtins.bool]] = None,
                  tunnel_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_networks: pulumi.Input[Optional[Union['ZeroTrustDeviceDefaultProfileVirtualNetworksArgs', 'ZeroTrustDeviceDefaultProfileVirtualNetworksArgsDict']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -744,6 +810,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.float] auto_connect: The amount of time in seconds to reconnect after having been disabled.
         :param pulumi.Input[_builtins.float] captive_portal: Turn on the captive portal after the specified amount of time.
         :param pulumi.Input[_builtins.bool] disable_auto_fallback: If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs', 'ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgsDict']]]] dns_search_suffixes: List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
         :param pulumi.Input[_builtins.bool] exclude_office_ips: Whether to add Microsoft IPs to Split Tunnel exclusions.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileExcludeArgs', 'ZeroTrustDeviceDefaultProfileExcludeArgsDict']]]] excludes: List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileIncludeArgs', 'ZeroTrustDeviceDefaultProfileIncludeArgsDict']]]] includes: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
@@ -754,6 +821,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] support_url: The URL to launch when the Send Feedback button is clicked.
         :param pulumi.Input[_builtins.bool] switch_locked: Whether to allow the user to turn off the WARP switch and disconnect the client.
         :param pulumi.Input[_builtins.str] tunnel_protocol: Determines which tunnel protocol to use.
+        :param pulumi.Input[Union['ZeroTrustDeviceDefaultProfileVirtualNetworksArgs', 'ZeroTrustDeviceDefaultProfileVirtualNetworksArgsDict']] virtual_networks: Virtual network access settings for the device.
         """
         ...
     @overload
@@ -831,6 +899,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
                  auto_connect: pulumi.Input[Optional[_builtins.float]] = None,
                  captive_portal: pulumi.Input[Optional[_builtins.float]] = None,
                  disable_auto_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_search_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs', 'ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgsDict']]]]] = None,
                  exclude_office_ips: pulumi.Input[Optional[_builtins.bool]] = None,
                  excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileExcludeArgs', 'ZeroTrustDeviceDefaultProfileExcludeArgsDict']]]]] = None,
                  includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileIncludeArgs', 'ZeroTrustDeviceDefaultProfileIncludeArgsDict']]]]] = None,
@@ -842,6 +911,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
                  support_url: pulumi.Input[Optional[_builtins.str]] = None,
                  switch_locked: pulumi.Input[Optional[_builtins.bool]] = None,
                  tunnel_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_networks: pulumi.Input[Optional[Union['ZeroTrustDeviceDefaultProfileVirtualNetworksArgs', 'ZeroTrustDeviceDefaultProfileVirtualNetworksArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -860,6 +930,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             __props__.__dict__["auto_connect"] = auto_connect
             __props__.__dict__["captive_portal"] = captive_portal
             __props__.__dict__["disable_auto_fallback"] = disable_auto_fallback
+            __props__.__dict__["dns_search_suffixes"] = dns_search_suffixes
             __props__.__dict__["exclude_office_ips"] = exclude_office_ips
             __props__.__dict__["excludes"] = excludes
             __props__.__dict__["includes"] = includes
@@ -871,6 +942,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             __props__.__dict__["support_url"] = support_url
             __props__.__dict__["switch_locked"] = switch_locked
             __props__.__dict__["tunnel_protocol"] = tunnel_protocol
+            __props__.__dict__["virtual_networks"] = virtual_networks
             __props__.__dict__["default"] = None
             __props__.__dict__["enabled"] = None
             __props__.__dict__["fallback_domains"] = None
@@ -896,6 +968,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             captive_portal: pulumi.Input[Optional[_builtins.float]] = None,
             default: pulumi.Input[Optional[_builtins.bool]] = None,
             disable_auto_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+            dns_search_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs', 'ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgsDict']]]]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             exclude_office_ips: pulumi.Input[Optional[_builtins.bool]] = None,
             excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileExcludeArgs', 'ZeroTrustDeviceDefaultProfileExcludeArgsDict']]]]] = None,
@@ -910,7 +983,8 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             service_mode_v2: pulumi.Input[Optional[Union['ZeroTrustDeviceDefaultProfileServiceModeV2Args', 'ZeroTrustDeviceDefaultProfileServiceModeV2ArgsDict']]] = None,
             support_url: pulumi.Input[Optional[_builtins.str]] = None,
             switch_locked: pulumi.Input[Optional[_builtins.bool]] = None,
-            tunnel_protocol: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustDeviceDefaultProfile':
+            tunnel_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_networks: pulumi.Input[Optional[Union['ZeroTrustDeviceDefaultProfileVirtualNetworksArgs', 'ZeroTrustDeviceDefaultProfileVirtualNetworksArgsDict']]] = None) -> 'ZeroTrustDeviceDefaultProfile':
         """
         Get an existing ZeroTrustDeviceDefaultProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -925,6 +999,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.float] captive_portal: Turn on the captive portal after the specified amount of time.
         :param pulumi.Input[_builtins.bool] default: Whether the policy will be applied to matching devices.
         :param pulumi.Input[_builtins.bool] disable_auto_fallback: If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs', 'ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgsDict']]]] dns_search_suffixes: List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
         :param pulumi.Input[_builtins.bool] enabled: Whether the policy will be applied to matching devices.
         :param pulumi.Input[_builtins.bool] exclude_office_ips: Whether to add Microsoft IPs to Split Tunnel exclusions.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileExcludeArgs', 'ZeroTrustDeviceDefaultProfileExcludeArgsDict']]]] excludes: List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
@@ -936,6 +1011,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] support_url: The URL to launch when the Send Feedback button is clicked.
         :param pulumi.Input[_builtins.bool] switch_locked: Whether to allow the user to turn off the WARP switch and disconnect the client.
         :param pulumi.Input[_builtins.str] tunnel_protocol: Determines which tunnel protocol to use.
+        :param pulumi.Input[Union['ZeroTrustDeviceDefaultProfileVirtualNetworksArgs', 'ZeroTrustDeviceDefaultProfileVirtualNetworksArgsDict']] virtual_networks: Virtual network access settings for the device.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -949,6 +1025,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         __props__.__dict__["captive_portal"] = captive_portal
         __props__.__dict__["default"] = default
         __props__.__dict__["disable_auto_fallback"] = disable_auto_fallback
+        __props__.__dict__["dns_search_suffixes"] = dns_search_suffixes
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["exclude_office_ips"] = exclude_office_ips
         __props__.__dict__["excludes"] = excludes
@@ -964,6 +1041,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         __props__.__dict__["support_url"] = support_url
         __props__.__dict__["switch_locked"] = switch_locked
         __props__.__dict__["tunnel_protocol"] = tunnel_protocol
+        __props__.__dict__["virtual_networks"] = virtual_networks
         return ZeroTrustDeviceDefaultProfile(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -1026,6 +1104,14 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
         """
         return pulumi.get(self, "disable_auto_fallback")
+
+    @_builtins.property
+    @pulumi.getter(name="dnsSearchSuffixes")
+    def dns_search_suffixes(self) -> pulumi.Output[Sequence['outputs.ZeroTrustDeviceDefaultProfileDnsSearchSuffix']]:
+        """
+        List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+        """
+        return pulumi.get(self, "dns_search_suffixes")
 
     @_builtins.property
     @pulumi.getter
@@ -1134,4 +1220,12 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         Determines which tunnel protocol to use.
         """
         return pulumi.get(self, "tunnel_protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="virtualNetworks")
+    def virtual_networks(self) -> pulumi.Output[Optional['outputs.ZeroTrustDeviceDefaultProfileVirtualNetworks']]:
+        """
+        Virtual network access settings for the device.
+        """
+        return pulumi.get(self, "virtual_networks")
 

@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.ApiShieldOperationFeaturesArgs;
+import com.pulumi.cloudflare.inputs.ApiShieldOperationSchemasArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -93,6 +94,21 @@ public final class ApiShieldOperationState extends com.pulumi.resources.Resource
     }
 
     /**
+     * OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+     * 
+     */
+    @Import(name="schemas")
+    private @Nullable Output<ApiShieldOperationSchemasArgs> schemas;
+
+    /**
+     * @return OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+     * 
+     */
+    public Optional<Output<ApiShieldOperationSchemasArgs>> schemas() {
+        return Optional.ofNullable(this.schemas);
+    }
+
+    /**
      * Identifier.
      * 
      */
@@ -116,6 +132,7 @@ public final class ApiShieldOperationState extends com.pulumi.resources.Resource
         this.lastUpdated = $.lastUpdated;
         this.method = $.method;
         this.operationId = $.operationId;
+        this.schemas = $.schemas;
         this.zoneId = $.zoneId;
     }
 
@@ -239,6 +256,27 @@ public final class ApiShieldOperationState extends com.pulumi.resources.Resource
          */
         public Builder operationId(String operationId) {
             return operationId(Output.of(operationId));
+        }
+
+        /**
+         * @param schemas OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schemas(@Nullable Output<ApiShieldOperationSchemasArgs> schemas) {
+            $.schemas = schemas;
+            return this;
+        }
+
+        /**
+         * @param schemas OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schemas(ApiShieldOperationSchemasArgs schemas) {
+            return schemas(Output.of(schemas));
         }
 
         /**

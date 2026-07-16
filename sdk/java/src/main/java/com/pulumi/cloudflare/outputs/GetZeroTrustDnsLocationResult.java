@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetZeroTrustDnsLocationEndpoints;
+import com.pulumi.cloudflare.outputs.GetZeroTrustDnsLocationMaxTtl;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDnsLocationNetwork;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -69,6 +70,11 @@ public final class GetZeroTrustDnsLocationResult {
      */
     private String ipv4DestinationBackup;
     private String locationId;
+    /**
+     * @return Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+     * 
+     */
+    private GetZeroTrustDnsLocationMaxTtl maxTtl;
     /**
      * @return Specify the location name.
      * 
@@ -162,6 +168,13 @@ public final class GetZeroTrustDnsLocationResult {
         return this.locationId;
     }
     /**
+     * @return Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+     * 
+     */
+    public GetZeroTrustDnsLocationMaxTtl maxTtl() {
+        return this.maxTtl;
+    }
+    /**
      * @return Specify the location name.
      * 
      */
@@ -201,6 +214,7 @@ public final class GetZeroTrustDnsLocationResult {
         private String ipv4Destination;
         private String ipv4DestinationBackup;
         private String locationId;
+        private GetZeroTrustDnsLocationMaxTtl maxTtl;
         private String name;
         private List<GetZeroTrustDnsLocationNetwork> networks;
         private String updatedAt;
@@ -220,6 +234,7 @@ public final class GetZeroTrustDnsLocationResult {
     	      this.ipv4Destination = defaults.ipv4Destination;
     	      this.ipv4DestinationBackup = defaults.ipv4DestinationBackup;
     	      this.locationId = defaults.locationId;
+    	      this.maxTtl = defaults.maxTtl;
     	      this.name = defaults.name;
     	      this.networks = defaults.networks;
     	      this.updatedAt = defaults.updatedAt;
@@ -328,6 +343,14 @@ public final class GetZeroTrustDnsLocationResult {
             return this;
         }
         @CustomType.Setter
+        public Builder maxTtl(GetZeroTrustDnsLocationMaxTtl maxTtl) {
+            if (maxTtl == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDnsLocationResult", "maxTtl");
+            }
+            this.maxTtl = maxTtl;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDnsLocationResult", "name");
@@ -369,6 +392,7 @@ public final class GetZeroTrustDnsLocationResult {
             _resultValue.ipv4Destination = ipv4Destination;
             _resultValue.ipv4DestinationBackup = ipv4DestinationBackup;
             _resultValue.locationId = locationId;
+            _resultValue.maxTtl = maxTtl;
             _resultValue.name = name;
             _resultValue.networks = networks;
             _resultValue.updatedAt = updatedAt;

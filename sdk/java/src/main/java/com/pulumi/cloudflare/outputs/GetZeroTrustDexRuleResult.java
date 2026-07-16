@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustDexRuleResult {
+    /**
+     * @return Unique identifier linked to an account.
+     * 
+     */
     private @Nullable String accountId;
     private String createdAt;
     private String description;
@@ -33,6 +37,10 @@ public final class GetZeroTrustDexRuleResult {
     private String updatedAt;
 
     private GetZeroTrustDexRuleResult() {}
+    /**
+     * @return Unique identifier linked to an account.
+     * 
+     */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }

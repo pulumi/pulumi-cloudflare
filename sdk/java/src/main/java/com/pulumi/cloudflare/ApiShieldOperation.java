@@ -7,12 +7,12 @@ import com.pulumi.cloudflare.ApiShieldOperationArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.ApiShieldOperationState;
 import com.pulumi.cloudflare.outputs.ApiShieldOperationFeatures;
+import com.pulumi.cloudflare.outputs.ApiShieldOperationSchemas;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -139,18 +139,32 @@ public class ApiShieldOperation extends com.pulumi.resources.CustomResource {
         return this.operationId;
     }
     /**
+     * OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+     * 
+     */
+    @Export(name="schemas", refs={ApiShieldOperationSchemas.class}, tree="[0]")
+    private Output<ApiShieldOperationSchemas> schemas;
+
+    /**
+     * @return OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+     * 
+     */
+    public Output<ApiShieldOperationSchemas> schemas() {
+        return this.schemas;
+    }
+    /**
      * Identifier.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> zoneId;
+    private Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<Optional<String>> zoneId() {
-        return Codegen.optional(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     /**

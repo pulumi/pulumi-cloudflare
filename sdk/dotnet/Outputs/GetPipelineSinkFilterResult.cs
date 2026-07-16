@@ -13,11 +13,19 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetPipelineSinkFilterResult
     {
+        /// <summary>
+        /// Filters sinks by name (case-insensitive substring).
+        /// </summary>
+        public readonly string? Name;
         public readonly string? PipelineId;
 
         [OutputConstructor]
-        private GetPipelineSinkFilterResult(string? pipelineId)
+        private GetPipelineSinkFilterResult(
+            string? name,
+
+            string? pipelineId)
         {
+            Name = name;
             PipelineId = pipelineId;
         }
     }

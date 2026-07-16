@@ -16,7 +16,7 @@ public final class GetUserGroupMembersMember {
      */
     private String email;
     /**
-     * @return User Group identifier tag.
+     * @return Account member identifier.
      * 
      */
     private String id;
@@ -36,7 +36,7 @@ public final class GetUserGroupMembersMember {
         return this.email;
     }
     /**
-     * @return User Group identifier tag.
+     * @return Account member identifier.
      * 
      */
     public String id() {

@@ -42,6 +42,14 @@ public final class GetEmailRoutingCatchAllResult {
      */
     private String name;
     /**
+     * @return Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+     * `wrangler` means the rule is managed by a Worker&#39;s wrangler.jsonc. Defaults
+     * to `api` when omitted on write.
+     * Available values: &#34;api&#34;, &#34;wrangler&#34;.
+     * 
+     */
+    private String source;
+    /**
      * @return Routing rule tag. (Deprecated, replaced by routing rule identifier)
      * 
      * @deprecated
@@ -93,6 +101,16 @@ public final class GetEmailRoutingCatchAllResult {
         return this.name;
     }
     /**
+     * @return Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+     * `wrangler` means the rule is managed by a Worker&#39;s wrangler.jsonc. Defaults
+     * to `api` when omitted on write.
+     * Available values: &#34;api&#34;, &#34;wrangler&#34;.
+     * 
+     */
+    public String source() {
+        return this.source;
+    }
+    /**
      * @return Routing rule tag. (Deprecated, replaced by routing rule identifier)
      * 
      * @deprecated
@@ -125,6 +143,7 @@ public final class GetEmailRoutingCatchAllResult {
         private String id;
         private List<GetEmailRoutingCatchAllMatcher> matchers;
         private String name;
+        private String source;
         private String tag;
         private @Nullable String zoneId;
         public Builder() {}
@@ -135,6 +154,7 @@ public final class GetEmailRoutingCatchAllResult {
     	      this.id = defaults.id;
     	      this.matchers = defaults.matchers;
     	      this.name = defaults.name;
+    	      this.source = defaults.source;
     	      this.tag = defaults.tag;
     	      this.zoneId = defaults.zoneId;
         }
@@ -186,6 +206,14 @@ public final class GetEmailRoutingCatchAllResult {
             return this;
         }
         @CustomType.Setter
+        public Builder source(String source) {
+            if (source == null) {
+              throw new MissingRequiredPropertyException("GetEmailRoutingCatchAllResult", "source");
+            }
+            this.source = source;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tag(String tag) {
             if (tag == null) {
               throw new MissingRequiredPropertyException("GetEmailRoutingCatchAllResult", "tag");
@@ -206,6 +234,7 @@ public final class GetEmailRoutingCatchAllResult {
             _resultValue.id = id;
             _resultValue.matchers = matchers;
             _resultValue.name = name;
+            _resultValue.source = source;
             _resultValue.tag = tag;
             _resultValue.zoneId = zoneId;
             return _resultValue;

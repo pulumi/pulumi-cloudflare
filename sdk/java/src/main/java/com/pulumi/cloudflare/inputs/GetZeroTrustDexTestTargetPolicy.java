@@ -15,14 +15,14 @@ public final class GetZeroTrustDexTestTargetPolicy extends com.pulumi.resources.
     public static final GetZeroTrustDexTestTargetPolicy Empty = new GetZeroTrustDexTestTargetPolicy();
 
     /**
-     * Whether the DEX rule is the account default
+     * Whether the DEX rule is the account default.
      * 
      */
     @Import(name="default", required=true)
     private Boolean default_;
 
     /**
-     * @return Whether the DEX rule is the account default
+     * @return Whether the DEX rule is the account default.
      * 
      */
     public Boolean default_() {
@@ -30,14 +30,14 @@ public final class GetZeroTrustDexTestTargetPolicy extends com.pulumi.resources.
     }
 
     /**
-     * API Resource UUID tag.
+     * The id of the DEX rule.
      * 
      */
     @Import(name="id", required=true)
     private String id;
 
     /**
-     * @return API Resource UUID tag.
+     * @return The id of the DEX rule.
      * 
      */
     public String id() {
@@ -45,14 +45,14 @@ public final class GetZeroTrustDexTestTargetPolicy extends com.pulumi.resources.
     }
 
     /**
-     * The name of the DEX rule
+     * The name of the DEX rule.
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return The name of the DEX rule
+     * @return The name of the DEX rule.
      * 
      */
     public String name() {
@@ -86,7 +86,7 @@ public final class GetZeroTrustDexTestTargetPolicy extends com.pulumi.resources.
         }
 
         /**
-         * @param default_ Whether the DEX rule is the account default
+         * @param default_ Whether the DEX rule is the account default.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class GetZeroTrustDexTestTargetPolicy extends com.pulumi.resources.
         }
 
         /**
-         * @param id API Resource UUID tag.
+         * @param id The id of the DEX rule.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class GetZeroTrustDexTestTargetPolicy extends com.pulumi.resources.
         }
 
         /**
-         * @param name The name of the DEX rule
+         * @param name The name of the DEX rule.
          * 
          * @return builder
          * 

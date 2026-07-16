@@ -21,31 +21,42 @@ __all__ = ['D1DatabaseArgs', 'D1Database']
 @pulumi.input_type
 class D1DatabaseArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_location_hint: pulumi.Input[Optional[_builtins.str]] = None,
                  read_replication: pulumi.Input[Optional['D1DatabaseReadReplicationArgs']] = None):
         """
         The set of arguments for constructing a D1Database resource.
 
-        :param pulumi.Input[_builtins.str] name: D1 database name.
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
+        :param pulumi.Input[_builtins.str] name: D1 database name.
         :param pulumi.Input[_builtins.str] jurisdiction: Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
                Available values: "eu", "fedramp".
         :param pulumi.Input[_builtins.str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
                Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
         :param pulumi.Input['D1DatabaseReadReplicationArgs'] read_replication: Configuration for D1 read replication.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if jurisdiction is not None:
             pulumi.set(__self__, "jurisdiction", jurisdiction)
         if primary_location_hint is not None:
             pulumi.set(__self__, "primary_location_hint", primary_location_hint)
         if read_replication is not None:
             pulumi.set(__self__, "read_replication", read_replication)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Account identifier tag.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -58,18 +69,6 @@ class D1DatabaseArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Account identifier tag.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -390,6 +389,8 @@ class D1Database(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = D1DatabaseArgs.__new__(D1DatabaseArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["jurisdiction"] = jurisdiction
             if name is None and not opts.urn:
@@ -458,7 +459,7 @@ class D1Database(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Account identifier tag.
         """

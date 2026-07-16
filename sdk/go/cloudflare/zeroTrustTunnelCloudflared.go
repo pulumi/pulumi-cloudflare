@@ -59,7 +59,7 @@ type ZeroTrustTunnelCloudflared struct {
 	pulumi.CustomResourceState
 
 	// Cloudflare account ID
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Cloudflare account ID
 	AccountTag pulumi.StringOutput `pulumi:"accountTag"`
 	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
@@ -102,6 +102,9 @@ func NewZeroTrustTunnelCloudflared(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -222,7 +225,7 @@ func (ZeroTrustTunnelCloudflaredState) ElementType() reflect.Type {
 
 type zeroTrustTunnelCloudflaredArgs struct {
 	// Cloudflare account ID
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
 	// Available values: "local", "cloudflare".
 	ConfigSrc *string `pulumi:"configSrc"`
@@ -235,7 +238,7 @@ type zeroTrustTunnelCloudflaredArgs struct {
 // The set of arguments for constructing a ZeroTrustTunnelCloudflared resource.
 type ZeroTrustTunnelCloudflaredArgs struct {
 	// Cloudflare account ID
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
 	// Available values: "local", "cloudflare".
 	ConfigSrc pulumi.StringPtrInput
@@ -333,8 +336,8 @@ func (o ZeroTrustTunnelCloudflaredOutput) ToZeroTrustTunnelCloudflaredOutputWith
 }
 
 // Cloudflare account ID
-func (o ZeroTrustTunnelCloudflaredOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustTunnelCloudflared) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustTunnelCloudflaredOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustTunnelCloudflared) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Cloudflare account ID

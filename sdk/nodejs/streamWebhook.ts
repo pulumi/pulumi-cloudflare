@@ -57,7 +57,7 @@ export class StreamWebhook extends pulumi.CustomResource {
     /**
      * The account identifier tag.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The date and time the webhook was last modified.
      */
@@ -78,7 +78,7 @@ export class StreamWebhook extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: StreamWebhookArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: StreamWebhookArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StreamWebhookArgs | StreamWebhookState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -90,6 +90,9 @@ export class StreamWebhook extends pulumi.CustomResource {
             resourceInputs["secret"] = state?.secret;
         } else {
             const args = argsOrState as StreamWebhookArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["notificationUrl"] = args?.notificationUrl;
             resourceInputs["modified"] = undefined /*out*/;
@@ -131,7 +134,7 @@ export interface StreamWebhookArgs {
     /**
      * The account identifier tag.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * The URL where webhooks will be sent.
      */

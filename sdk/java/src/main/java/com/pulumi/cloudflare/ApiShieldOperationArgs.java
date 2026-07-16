@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ApiShieldOperationArgs extends com.pulumi.resources.ResourceArgs {
@@ -67,15 +65,15 @@ public final class ApiShieldOperationArgs extends com.pulumi.resources.ResourceA
      * Identifier.
      * 
      */
-    @Import(name="zoneId")
-    private @Nullable Output<String> zoneId;
+    @Import(name="zoneId", required=true)
+    private Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<Output<String>> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     private ApiShieldOperationArgs() {}
@@ -176,7 +174,7 @@ public final class ApiShieldOperationArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder zoneId(@Nullable Output<String> zoneId) {
+        public Builder zoneId(Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -200,6 +198,9 @@ public final class ApiShieldOperationArgs extends com.pulumi.resources.ResourceA
             }
             if ($.method == null) {
                 throw new MissingRequiredPropertyException("ApiShieldOperationArgs", "method");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("ApiShieldOperationArgs", "zoneId");
             }
             return $;
         }

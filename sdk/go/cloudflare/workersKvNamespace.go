@@ -53,7 +53,7 @@ type WorkersKvNamespace struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
 	SupportsUrlEncoding pulumi.BoolOutput `pulumi:"supportsUrlEncoding"`
 	// A human-readable string name for a Namespace.
@@ -67,6 +67,9 @@ func NewWorkersKvNamespace(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Title == nil {
 		return nil, errors.New("invalid value for required argument 'Title'")
 	}
@@ -116,7 +119,7 @@ func (WorkersKvNamespaceState) ElementType() reflect.Type {
 
 type workersKvNamespaceArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// A human-readable string name for a Namespace.
 	Title string `pulumi:"title"`
 }
@@ -124,7 +127,7 @@ type workersKvNamespaceArgs struct {
 // The set of arguments for constructing a WorkersKvNamespace resource.
 type WorkersKvNamespaceArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// A human-readable string name for a Namespace.
 	Title pulumi.StringInput
 }
@@ -217,8 +220,8 @@ func (o WorkersKvNamespaceOutput) ToWorkersKvNamespaceOutputWithContext(ctx cont
 }
 
 // Identifier.
-func (o WorkersKvNamespaceOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkersKvNamespace) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o WorkersKvNamespaceOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkersKvNamespace) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".

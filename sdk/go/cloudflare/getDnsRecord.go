@@ -31,8 +31,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetDnsRecord(ctx, &cloudflare.LookupDnsRecordArgs{
-//				ZoneId:      pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
-//				DnsRecordId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				ZoneId:                pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				DnsRecordId:           pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				IncludeShadowMetadata: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -57,6 +58,8 @@ type LookupDnsRecordArgs struct {
 	// Identifier.
 	DnsRecordId *string             `pulumi:"dnsRecordId"`
 	Filter      *GetDnsRecordFilter `pulumi:"filter"`
+	// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+	IncludeShadowMetadata *bool `pulumi:"includeShadowMetadata"`
 	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -78,8 +81,10 @@ type LookupDnsRecordResult struct {
 	Filter      *GetDnsRecordFilter `pulumi:"filter"`
 	// Identifier.
 	Id string `pulumi:"id"`
-	// Extra Cloudflare-specific information about the record.
-	Meta string `pulumi:"meta"`
+	// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+	IncludeShadowMetadata bool `pulumi:"includeShadowMetadata"`
+	// Extra Cloudflare-specific metadata about the record.
+	Meta GetDnsRecordMeta `pulumi:"meta"`
 	// When the record was last modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
 	// Complete DNS record name, including the zone name, in Punycode.
@@ -121,6 +126,8 @@ type LookupDnsRecordOutputArgs struct {
 	// Identifier.
 	DnsRecordId pulumi.StringPtrInput      `pulumi:"dnsRecordId"`
 	Filter      GetDnsRecordFilterPtrInput `pulumi:"filter"`
+	// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+	IncludeShadowMetadata pulumi.BoolPtrInput `pulumi:"includeShadowMetadata"`
 	// Identifier.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
@@ -183,9 +190,14 @@ func (o LookupDnsRecordResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Extra Cloudflare-specific information about the record.
-func (o LookupDnsRecordResultOutput) Meta() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDnsRecordResult) string { return v.Meta }).(pulumi.StringOutput)
+// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+func (o LookupDnsRecordResultOutput) IncludeShadowMetadata() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDnsRecordResult) bool { return v.IncludeShadowMetadata }).(pulumi.BoolOutput)
+}
+
+// Extra Cloudflare-specific metadata about the record.
+func (o LookupDnsRecordResultOutput) Meta() GetDnsRecordMetaOutput {
+	return o.ApplyT(func(v LookupDnsRecordResult) GetDnsRecordMeta { return v.Meta }).(GetDnsRecordMetaOutput)
 }
 
 // When the record was last modified.

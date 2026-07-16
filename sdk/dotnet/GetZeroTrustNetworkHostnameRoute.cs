@@ -183,6 +183,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// The type of tunnel.
+        /// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "IpSec", "gre", "cni".
+        /// </summary>
+        public readonly string TunType;
+        /// <summary>
         /// UUID of the tunnel.
         /// </summary>
         public readonly string TunnelId;
@@ -209,6 +214,8 @@ namespace Pulumi.Cloudflare
 
             string id,
 
+            string tunType,
+
             string tunnelId,
 
             string tunnelName)
@@ -221,6 +228,7 @@ namespace Pulumi.Cloudflare
             Hostname = hostname;
             HostnameRouteId = hostnameRouteId;
             Id = id;
+            TunType = tunType;
             TunnelId = tunnelId;
             TunnelName = tunnelName;
         }

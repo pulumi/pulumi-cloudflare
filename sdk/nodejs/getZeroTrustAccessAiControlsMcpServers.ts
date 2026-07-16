@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `MCP Portals Read`
+ * - `MCP Portals Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -67,6 +72,11 @@ export interface GetZeroTrustAccessAiControlsMcpServersResult {
     readonly search?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `MCP Portals Read`
+ * - `MCP Portals Write`
+ *
  * ## Example Usage
  *
  * ```typescript

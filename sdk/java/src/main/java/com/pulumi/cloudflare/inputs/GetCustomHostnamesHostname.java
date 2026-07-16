@@ -15,24 +15,56 @@ public final class GetCustomHostnamesHostname extends com.pulumi.resources.Invok
     public static final GetCustomHostnamesHostname Empty = new GetCustomHostnamesHostname();
 
     /**
-     * Filters hostnames by a substring match on the hostname value. This parameter cannot be used with the &#39;id&#39; parameter.
+     * Filters hostnames by a substring match on the hostname value. This parameter cannot be used with the &#39;id&#39;, &#39;hostname&#39;, &#39;hostname.exact&#39;, or &#39;hostname.startsWith&#39; parameters.
      * 
      */
     @Import(name="contain")
     private @Nullable String contain;
 
     /**
-     * @return Filters hostnames by a substring match on the hostname value. This parameter cannot be used with the &#39;id&#39; parameter.
+     * @return Filters hostnames by a substring match on the hostname value. This parameter cannot be used with the &#39;id&#39;, &#39;hostname&#39;, &#39;hostname.exact&#39;, or &#39;hostname.startsWith&#39; parameters.
      * 
      */
     public Optional<String> contain() {
         return Optional.ofNullable(this.contain);
     }
 
+    /**
+     * Fully qualified domain name to match against. This parameter cannot be used with the &#39;id&#39;, &#39;hostname&#39;, &#39;hostname.contain&#39;, or &#39;hostname.startsWith&#39; parameters.
+     * 
+     */
+    @Import(name="exact")
+    private @Nullable String exact;
+
+    /**
+     * @return Fully qualified domain name to match against. This parameter cannot be used with the &#39;id&#39;, &#39;hostname&#39;, &#39;hostname.contain&#39;, or &#39;hostname.startsWith&#39; parameters.
+     * 
+     */
+    public Optional<String> exact() {
+        return Optional.ofNullable(this.exact);
+    }
+
+    /**
+     * Filters hostnames by a prefix match on the hostname value. This parameter cannot be used with the &#39;id&#39;, &#39;hostname&#39;, &#39;hostname.exact&#39;, or &#39;hostname.contain&#39; parameters.
+     * 
+     */
+    @Import(name="startsWith")
+    private @Nullable String startsWith;
+
+    /**
+     * @return Filters hostnames by a prefix match on the hostname value. This parameter cannot be used with the &#39;id&#39;, &#39;hostname&#39;, &#39;hostname.exact&#39;, or &#39;hostname.contain&#39; parameters.
+     * 
+     */
+    public Optional<String> startsWith() {
+        return Optional.ofNullable(this.startsWith);
+    }
+
     private GetCustomHostnamesHostname() {}
 
     private GetCustomHostnamesHostname(GetCustomHostnamesHostname $) {
         this.contain = $.contain;
+        this.exact = $.exact;
+        this.startsWith = $.startsWith;
     }
 
     public static Builder builder() {
@@ -54,13 +86,35 @@ public final class GetCustomHostnamesHostname extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param contain Filters hostnames by a substring match on the hostname value. This parameter cannot be used with the &#39;id&#39; parameter.
+         * @param contain Filters hostnames by a substring match on the hostname value. This parameter cannot be used with the &#39;id&#39;, &#39;hostname&#39;, &#39;hostname.exact&#39;, or &#39;hostname.startsWith&#39; parameters.
          * 
          * @return builder
          * 
          */
         public Builder contain(@Nullable String contain) {
             $.contain = contain;
+            return this;
+        }
+
+        /**
+         * @param exact Fully qualified domain name to match against. This parameter cannot be used with the &#39;id&#39;, &#39;hostname&#39;, &#39;hostname.contain&#39;, or &#39;hostname.startsWith&#39; parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exact(@Nullable String exact) {
+            $.exact = exact;
+            return this;
+        }
+
+        /**
+         * @param startsWith Filters hostnames by a prefix match on the hostname value. This parameter cannot be used with the &#39;id&#39;, &#39;hostname&#39;, &#39;hostname.exact&#39;, or &#39;hostname.contain&#39; parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startsWith(@Nullable String startsWith) {
+            $.startsWith = startsWith;
             return this;
         }
 

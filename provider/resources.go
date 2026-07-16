@@ -753,9 +753,7 @@ var skipGettingStartedSection = info.DocsEdit{
 	},
 }
 
-var resourcesWhichNeedSchemaVersionReset = []string{
-	"cloudflare_cloud_connector_rules",
-}
+var resourcesWhichNeedSchemaVersionReset []string
 
 // resetMigratedResourcesSchemaVersion resets the schema version of resources that were migrated
 // from the legacy provider. Note that we currently have no facility to detect the migration itself,

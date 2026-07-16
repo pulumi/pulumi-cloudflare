@@ -19,24 +19,35 @@ __all__ = ['NotificationPolicyWebhooksArgs', 'NotificationPolicyWebhooks']
 @pulumi.input_type
 class NotificationPolicyWebhooksArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
                  url: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  secret: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NotificationPolicyWebhooks resource.
 
+        :param pulumi.Input[_builtins.str] account_id: The account id
         :param pulumi.Input[_builtins.str] name: The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
         :param pulumi.Input[_builtins.str] url: The POST endpoint to call when dispatching a notification.
-        :param pulumi.Input[_builtins.str] account_id: The account id
         :param pulumi.Input[_builtins.str] secret: Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "url", url)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The account id
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -61,18 +72,6 @@ class NotificationPolicyWebhooksArgs:
     @url.setter
     def url(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "url", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The account id
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -336,6 +335,8 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NotificationPolicyWebhooksArgs.__new__(NotificationPolicyWebhooksArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
@@ -401,7 +402,7 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         The account id
         """

@@ -67,7 +67,7 @@ namespace Pulumi.Cloudflare
         /// Define configurations using a unique string identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         [Output("caching")]
         public Output<Outputs.HyperdriveConfigCaching?> Caching { get; private set; } = null!;
@@ -154,8 +154,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Define configurations using a unique string identifier.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         [Input("caching")]
         public Input<Inputs.HyperdriveConfigCachingArgs>? Caching { get; set; }

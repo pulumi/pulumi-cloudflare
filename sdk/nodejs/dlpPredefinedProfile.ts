@@ -77,7 +77,7 @@ export class DlpPredefinedProfile extends pulumi.CustomResource {
         return obj['__pulumiType'] === DlpPredefinedProfile.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     declare public readonly aiContextEnabled: pulumi.Output<boolean>;
     declare public readonly allowedMatchCount: pulumi.Output<number>;
     declare public readonly confidenceThreshold: pulumi.Output<string>;
@@ -125,6 +125,9 @@ export class DlpPredefinedProfile extends pulumi.CustomResource {
             resourceInputs["profileId"] = state?.profileId;
         } else {
             const args = argsOrState as DlpPredefinedProfileArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.profileId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'profileId'");
             }
@@ -175,7 +178,7 @@ export interface DlpPredefinedProfileState {
  * The set of arguments for constructing a DlpPredefinedProfile resource.
  */
 export interface DlpPredefinedProfileArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     aiContextEnabled?: pulumi.Input<boolean | undefined>;
     allowedMatchCount?: pulumi.Input<number | undefined>;
     confidenceThreshold?: pulumi.Input<string | undefined>;

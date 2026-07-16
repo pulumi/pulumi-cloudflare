@@ -26,14 +26,17 @@ type AiSearchInstance struct {
 	AisearchModel pulumi.StringOutput `pulumi:"aisearchModel"`
 	Cache         pulumi.BoolOutput   `pulumi:"cache"`
 	// Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
-	CacheThreshold  pulumi.StringOutput                       `pulumi:"cacheThreshold"`
+	CacheThreshold pulumi.StringOutput `pulumi:"cacheThreshold"`
+	// Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+	// Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+	CacheTtl        pulumi.Float64Output                      `pulumi:"cacheTtl"`
 	Chunk           pulumi.BoolOutput                         `pulumi:"chunk"`
 	ChunkOverlap    pulumi.IntOutput                          `pulumi:"chunkOverlap"`
 	ChunkSize       pulumi.IntOutput                          `pulumi:"chunkSize"`
 	CreatedAt       pulumi.StringOutput                       `pulumi:"createdAt"`
 	CreatedBy       pulumi.StringOutput                       `pulumi:"createdBy"`
 	CustomMetadatas AiSearchInstanceCustomMetadataArrayOutput `pulumi:"customMetadatas"`
-	// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+	// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
 	EmbeddingModel pulumi.StringOutput  `pulumi:"embeddingModel"`
 	Enable         pulumi.BoolOutput    `pulumi:"enable"`
 	EngineVersion  pulumi.Float64Output `pulumi:"engineVersion"`
@@ -125,14 +128,17 @@ type aiSearchInstanceState struct {
 	AisearchModel *string `pulumi:"aisearchModel"`
 	Cache         *bool   `pulumi:"cache"`
 	// Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
-	CacheThreshold  *string                          `pulumi:"cacheThreshold"`
+	CacheThreshold *string `pulumi:"cacheThreshold"`
+	// Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+	// Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+	CacheTtl        *float64                         `pulumi:"cacheTtl"`
 	Chunk           *bool                            `pulumi:"chunk"`
 	ChunkOverlap    *int                             `pulumi:"chunkOverlap"`
 	ChunkSize       *int                             `pulumi:"chunkSize"`
 	CreatedAt       *string                          `pulumi:"createdAt"`
 	CreatedBy       *string                          `pulumi:"createdBy"`
 	CustomMetadatas []AiSearchInstanceCustomMetadata `pulumi:"customMetadatas"`
-	// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+	// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
 	EmbeddingModel *string  `pulumi:"embeddingModel"`
 	Enable         *bool    `pulumi:"enable"`
 	EngineVersion  *float64 `pulumi:"engineVersion"`
@@ -189,14 +195,17 @@ type AiSearchInstanceState struct {
 	AisearchModel pulumi.StringPtrInput
 	Cache         pulumi.BoolPtrInput
 	// Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
-	CacheThreshold  pulumi.StringPtrInput
+	CacheThreshold pulumi.StringPtrInput
+	// Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+	// Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+	CacheTtl        pulumi.Float64PtrInput
 	Chunk           pulumi.BoolPtrInput
 	ChunkOverlap    pulumi.IntPtrInput
 	ChunkSize       pulumi.IntPtrInput
 	CreatedAt       pulumi.StringPtrInput
 	CreatedBy       pulumi.StringPtrInput
 	CustomMetadatas AiSearchInstanceCustomMetadataArrayInput
-	// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+	// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
 	EmbeddingModel pulumi.StringPtrInput
 	Enable         pulumi.BoolPtrInput
 	EngineVersion  pulumi.Float64PtrInput
@@ -257,12 +266,15 @@ type aiSearchInstanceArgs struct {
 	AisearchModel *string `pulumi:"aisearchModel"`
 	Cache         *bool   `pulumi:"cache"`
 	// Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
-	CacheThreshold  *string                          `pulumi:"cacheThreshold"`
+	CacheThreshold *string `pulumi:"cacheThreshold"`
+	// Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+	// Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+	CacheTtl        *float64                         `pulumi:"cacheTtl"`
 	Chunk           *bool                            `pulumi:"chunk"`
 	ChunkOverlap    *int                             `pulumi:"chunkOverlap"`
 	ChunkSize       *int                             `pulumi:"chunkSize"`
 	CustomMetadatas []AiSearchInstanceCustomMetadata `pulumi:"customMetadatas"`
-	// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+	// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
 	EmbeddingModel *string `pulumi:"embeddingModel"`
 	// Available values: "max", "rrf".
 	FusionMethod *string `pulumi:"fusionMethod"`
@@ -311,12 +323,15 @@ type AiSearchInstanceArgs struct {
 	AisearchModel pulumi.StringPtrInput
 	Cache         pulumi.BoolPtrInput
 	// Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
-	CacheThreshold  pulumi.StringPtrInput
+	CacheThreshold pulumi.StringPtrInput
+	// Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+	// Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+	CacheTtl        pulumi.Float64PtrInput
 	Chunk           pulumi.BoolPtrInput
 	ChunkOverlap    pulumi.IntPtrInput
 	ChunkSize       pulumi.IntPtrInput
 	CustomMetadatas AiSearchInstanceCustomMetadataArrayInput
-	// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+	// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
 	EmbeddingModel pulumi.StringPtrInput
 	// Available values: "max", "rrf".
 	FusionMethod pulumi.StringPtrInput
@@ -469,6 +484,12 @@ func (o AiSearchInstanceOutput) CacheThreshold() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiSearchInstance) pulumi.StringOutput { return v.CacheThreshold }).(pulumi.StringOutput)
 }
 
+// Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+// Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+func (o AiSearchInstanceOutput) CacheTtl() pulumi.Float64Output {
+	return o.ApplyT(func(v *AiSearchInstance) pulumi.Float64Output { return v.CacheTtl }).(pulumi.Float64Output)
+}
+
 func (o AiSearchInstanceOutput) Chunk() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AiSearchInstance) pulumi.BoolOutput { return v.Chunk }).(pulumi.BoolOutput)
 }
@@ -493,7 +514,7 @@ func (o AiSearchInstanceOutput) CustomMetadatas() AiSearchInstanceCustomMetadata
 	return o.ApplyT(func(v *AiSearchInstance) AiSearchInstanceCustomMetadataArrayOutput { return v.CustomMetadatas }).(AiSearchInstanceCustomMetadataArrayOutput)
 }
 
-// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
 func (o AiSearchInstanceOutput) EmbeddingModel() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiSearchInstance) pulumi.StringOutput { return v.EmbeddingModel }).(pulumi.StringOutput)
 }

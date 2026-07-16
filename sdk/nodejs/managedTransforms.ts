@@ -106,11 +106,11 @@ export class ManagedTransforms extends pulumi.CustomResource {
     /**
      * The list of Managed Request Transforms.
      */
-    declare public readonly managedRequestHeaders: pulumi.Output<outputs.ManagedTransformsManagedRequestHeader[]>;
+    declare public readonly managedRequestHeaders: pulumi.Output<outputs.ManagedTransformsManagedRequestHeader[] | undefined>;
     /**
      * The list of Managed Response Transforms.
      */
-    declare public readonly managedResponseHeaders: pulumi.Output<outputs.ManagedTransformsManagedResponseHeader[]>;
+    declare public readonly managedResponseHeaders: pulumi.Output<outputs.ManagedTransformsManagedResponseHeader[] | undefined>;
     /**
      * The unique ID of the zone.
      */
@@ -134,12 +134,6 @@ export class ManagedTransforms extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ManagedTransformsArgs | undefined;
-            if (args?.managedRequestHeaders === undefined && !opts.urn) {
-                throw new Error("Missing required property 'managedRequestHeaders'");
-            }
-            if (args?.managedResponseHeaders === undefined && !opts.urn) {
-                throw new Error("Missing required property 'managedResponseHeaders'");
-            }
             if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
@@ -179,11 +173,11 @@ export interface ManagedTransformsArgs {
     /**
      * The list of Managed Request Transforms.
      */
-    managedRequestHeaders: pulumi.Input<pulumi.Input<inputs.ManagedTransformsManagedRequestHeader>[]>;
+    managedRequestHeaders?: pulumi.Input<pulumi.Input<inputs.ManagedTransformsManagedRequestHeader>[] | undefined>;
     /**
      * The list of Managed Response Transforms.
      */
-    managedResponseHeaders: pulumi.Input<pulumi.Input<inputs.ManagedTransformsManagedResponseHeader>[]>;
+    managedResponseHeaders?: pulumi.Input<pulumi.Input<inputs.ManagedTransformsManagedResponseHeader>[] | undefined>;
     /**
      * The unique ID of the zone.
      */

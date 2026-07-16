@@ -62,7 +62,7 @@ export class ListItem extends pulumi.CustomResource {
     /**
      * The Account ID for this resource.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * A non-negative 32 bit integer
      */
@@ -125,6 +125,9 @@ export class ListItem extends pulumi.CustomResource {
             resourceInputs["redirect"] = state?.redirect;
         } else {
             const args = argsOrState as ListItemArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.listId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listId'");
             }
@@ -197,7 +200,7 @@ export interface ListItemArgs {
     /**
      * The Account ID for this resource.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * A non-negative 32 bit integer
      */

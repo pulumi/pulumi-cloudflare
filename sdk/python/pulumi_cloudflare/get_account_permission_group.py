@@ -46,7 +46,7 @@ class GetAccountPermissionGroupResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[_builtins.str]:
+    def account_id(self) -> _builtins.str:
         """
         Account identifier tag.
         """
@@ -160,7 +160,7 @@ def get_account_permission_group(account_id: Optional[_builtins.str] = None,
         meta=pulumi.get(__ret__, 'meta'),
         name=pulumi.get(__ret__, 'name'),
         permission_group_id=pulumi.get(__ret__, 'permission_group_id'))
-def get_account_permission_group_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_account_permission_group_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                         permission_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountPermissionGroupResult]:
     """

@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetStreamLiveInput(ctx, &cloudflare.LookupStreamLiveInputArgs{
-//				AccountId:           pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AccountId:           "023e105f4ecef8ad9ca31a8372d0c353",
 //				LiveInputIdentifier: "66be4bf738797e01e1fca35a7bdecdcd",
 //			}, nil)
 //			if err != nil {
@@ -55,7 +55,7 @@ func LookupStreamLiveInput(ctx *pulumi.Context, args *LookupStreamLiveInputArgs,
 // A collection of arguments for invoking getStreamLiveInput.
 type LookupStreamLiveInputArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// A unique identifier for a live input.
 	LiveInputIdentifier string `pulumi:"liveInputIdentifier"`
 }
@@ -63,7 +63,7 @@ type LookupStreamLiveInputArgs struct {
 // A collection of values returned by getStreamLiveInput.
 type LookupStreamLiveInputResult struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// The date and time the live input was created.
 	Created string `pulumi:"created"`
 	// Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
@@ -72,12 +72,16 @@ type LookupStreamLiveInputResult struct {
 	Enabled bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
+	KeysRotatedAt string `pulumi:"keysRotatedAt"`
 	// A unique identifier for a live input.
 	LiveInputIdentifier string `pulumi:"liveInputIdentifier"`
 	// A user modifiable key-value store used to reference other systems of record for managing live inputs.
 	Meta string `pulumi:"meta"`
 	// The date and time the live input was last modified.
 	Modified string `pulumi:"modified"`
+	// When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
+	PreferLowLatency bool `pulumi:"preferLowLatency"`
 	// Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
 	Recording GetStreamLiveInputRecording `pulumi:"recording"`
 	// Details for streaming to an live input using RTMPS.
@@ -111,7 +115,7 @@ func LookupStreamLiveInputOutput(ctx *pulumi.Context, args LookupStreamLiveInput
 // A collection of arguments for invoking getStreamLiveInput.
 type LookupStreamLiveInputOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// A unique identifier for a live input.
 	LiveInputIdentifier pulumi.StringInput `pulumi:"liveInputIdentifier"`
 }
@@ -136,8 +140,8 @@ func (o LookupStreamLiveInputResultOutput) ToLookupStreamLiveInputResultOutputWi
 }
 
 // Identifier.
-func (o LookupStreamLiveInputResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupStreamLiveInputResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o LookupStreamLiveInputResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamLiveInputResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The date and time the live input was created.
@@ -160,6 +164,11 @@ func (o LookupStreamLiveInputResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamLiveInputResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
+func (o LookupStreamLiveInputResultOutput) KeysRotatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamLiveInputResult) string { return v.KeysRotatedAt }).(pulumi.StringOutput)
+}
+
 // A unique identifier for a live input.
 func (o LookupStreamLiveInputResultOutput) LiveInputIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamLiveInputResult) string { return v.LiveInputIdentifier }).(pulumi.StringOutput)
@@ -173,6 +182,11 @@ func (o LookupStreamLiveInputResultOutput) Meta() pulumi.StringOutput {
 // The date and time the live input was last modified.
 func (o LookupStreamLiveInputResultOutput) Modified() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamLiveInputResult) string { return v.Modified }).(pulumi.StringOutput)
+}
+
+// When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
+func (o LookupStreamLiveInputResultOutput) PreferLowLatency() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupStreamLiveInputResult) bool { return v.PreferLowLatency }).(pulumi.BoolOutput)
 }
 
 // Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.

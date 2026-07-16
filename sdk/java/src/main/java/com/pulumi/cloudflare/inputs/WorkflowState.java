@@ -5,10 +5,12 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.WorkflowInstancesArgs;
 import com.pulumi.cloudflare.inputs.WorkflowLimitsArgs;
+import com.pulumi.cloudflare.inputs.WorkflowScheduleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -74,6 +76,13 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    @Import(name="schedules")
+    private @Nullable Output<List<WorkflowScheduleArgs>> schedules;
+
+    public Optional<Output<List<WorkflowScheduleArgs>>> schedules() {
+        return Optional.ofNullable(this.schedules);
+    }
+
     @Import(name="scriptName")
     private @Nullable Output<String> scriptName;
 
@@ -120,6 +129,7 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
         this.limits = $.limits;
         this.modifiedOn = $.modifiedOn;
         this.name = $.name;
+        this.schedules = $.schedules;
         this.scriptName = $.scriptName;
         this.terminatorRunning = $.terminatorRunning;
         this.triggeredOn = $.triggeredOn;
@@ -215,6 +225,19 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
 
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder schedules(@Nullable Output<List<WorkflowScheduleArgs>> schedules) {
+            $.schedules = schedules;
+            return this;
+        }
+
+        public Builder schedules(List<WorkflowScheduleArgs> schedules) {
+            return schedules(Output.of(schedules));
+        }
+
+        public Builder schedules(WorkflowScheduleArgs... schedules) {
+            return schedules(List.of(schedules));
         }
 
         public Builder scriptName(@Nullable Output<String> scriptName) {

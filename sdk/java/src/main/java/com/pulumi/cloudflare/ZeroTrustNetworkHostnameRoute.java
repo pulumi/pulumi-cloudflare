@@ -72,14 +72,14 @@ public class ZeroTrustNetworkHostnameRoute extends com.pulumi.resources.CustomRe
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
      * @return Cloudflare account ID
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * An optional description of the hostname route.
@@ -138,6 +138,22 @@ public class ZeroTrustNetworkHostnameRoute extends com.pulumi.resources.CustomRe
         return Codegen.optional(this.hostname);
     }
     /**
+     * The type of tunnel.
+     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ipSec&#34;, &#34;gre&#34;, &#34;cni&#34;.
+     * 
+     */
+    @Export(name="tunType", refs={String.class}, tree="[0]")
+    private Output<String> tunType;
+
+    /**
+     * @return The type of tunnel.
+     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ipSec&#34;, &#34;gre&#34;, &#34;cni&#34;.
+     * 
+     */
+    public Output<String> tunType() {
+        return this.tunType;
+    }
+    /**
      * UUID of the tunnel.
      * 
      */
@@ -178,7 +194,7 @@ public class ZeroTrustNetworkHostnameRoute extends com.pulumi.resources.CustomRe
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ZeroTrustNetworkHostnameRoute(java.lang.String name, @Nullable ZeroTrustNetworkHostnameRouteArgs args) {
+    public ZeroTrustNetworkHostnameRoute(java.lang.String name, ZeroTrustNetworkHostnameRouteArgs args) {
         this(name, args, null);
     }
     /**
@@ -187,7 +203,7 @@ public class ZeroTrustNetworkHostnameRoute extends com.pulumi.resources.CustomRe
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ZeroTrustNetworkHostnameRoute(java.lang.String name, @Nullable ZeroTrustNetworkHostnameRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public ZeroTrustNetworkHostnameRoute(java.lang.String name, ZeroTrustNetworkHostnameRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -195,7 +211,7 @@ public class ZeroTrustNetworkHostnameRoute extends com.pulumi.resources.CustomRe
         super("cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static ZeroTrustNetworkHostnameRouteArgs makeArgs(@Nullable ZeroTrustNetworkHostnameRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static ZeroTrustNetworkHostnameRouteArgs makeArgs(ZeroTrustNetworkHostnameRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

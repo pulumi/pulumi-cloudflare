@@ -30,6 +30,7 @@ export function getPipelineSinks(args?: GetPipelineSinksArgs, opts?: pulumi.Invo
     return pulumi.runtime.invoke("cloudflare:index/getPipelineSinks:getPipelineSinks", {
         "accountId": args.accountId,
         "maxItems": args.maxItems,
+        "name": args.name,
         "pipelineId": args.pipelineId,
     }, opts);
 }
@@ -46,6 +47,10 @@ export interface GetPipelineSinksArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
+    /**
+     * Filters sinks by name (case-insensitive substring).
+     */
+    name?: string;
     pipelineId?: string;
 }
 
@@ -65,6 +70,10 @@ export interface GetPipelineSinksResult {
      * Max items to fetch, default: 1000
      */
     readonly maxItems?: number;
+    /**
+     * Filters sinks by name (case-insensitive substring).
+     */
+    readonly name?: string;
     readonly pipelineId?: string;
     /**
      * The items returned by the data source
@@ -95,6 +104,7 @@ export function getPipelineSinksOutput(args?: GetPipelineSinksOutputArgs, opts?:
     return pulumi.runtime.invokeOutput("cloudflare:index/getPipelineSinks:getPipelineSinks", {
         "accountId": args.accountId,
         "maxItems": args.maxItems,
+        "name": args.name,
         "pipelineId": args.pipelineId,
     }, opts);
 }
@@ -111,5 +121,9 @@ export interface GetPipelineSinksOutputArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number | undefined>;
+    /**
+     * Filters sinks by name (case-insensitive substring).
+     */
+    name?: pulumi.Input<string | undefined>;
     pipelineId?: pulumi.Input<string | undefined>;
 }

@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetMagicTransitConnectorResult',
@@ -27,7 +28,7 @@ class GetMagicTransitConnectorResult:
     """
     A collection of values returned by getMagicTransitConnector.
     """
-    def __init__(__self__, account_id=None, activated=None, connector_id=None, device=None, id=None, interrupt_window_days_of_weeks=None, interrupt_window_duration_hours=None, interrupt_window_embargo_dates=None, interrupt_window_hour_of_day=None, last_heartbeat=None, last_seen_version=None, last_updated=None, license_key=None, notes=None, timezone=None):
+    def __init__(__self__, account_id=None, activated=None, connector_id=None, device=None, filter=None, id=None, interrupt_window_days_of_weeks=None, interrupt_window_duration_hours=None, interrupt_window_embargo_dates=None, interrupt_window_hour_of_day=None, last_heartbeat=None, last_seen_version=None, last_updated=None, license_key=None, notes=None, timezone=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -40,6 +41,9 @@ class GetMagicTransitConnectorResult:
         if device and not isinstance(device, dict):
             raise TypeError("Expected argument 'device' to be a dict")
         pulumi.set(__self__, "device", device)
+        if filter and not isinstance(filter, dict):
+            raise TypeError("Expected argument 'filter' to be a dict")
+        pulumi.set(__self__, "filter", filter)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -89,13 +93,18 @@ class GetMagicTransitConnectorResult:
 
     @_builtins.property
     @pulumi.getter(name="connectorId")
-    def connector_id(self) -> _builtins.str:
+    def connector_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "connector_id")
 
     @_builtins.property
     @pulumi.getter
     def device(self) -> 'outputs.GetMagicTransitConnectorDeviceResult':
         return pulumi.get(self, "device")
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> Optional['outputs.GetMagicTransitConnectorFilterResult']:
+        return pulumi.get(self, "filter")
 
     @_builtins.property
     @pulumi.getter
@@ -172,6 +181,7 @@ class AwaitableGetMagicTransitConnectorResult(GetMagicTransitConnectorResult):
             activated=self.activated,
             connector_id=self.connector_id,
             device=self.device,
+            filter=self.filter,
             id=self.id,
             interrupt_window_days_of_weeks=self.interrupt_window_days_of_weeks,
             interrupt_window_duration_hours=self.interrupt_window_duration_hours,
@@ -187,6 +197,7 @@ class AwaitableGetMagicTransitConnectorResult(GetMagicTransitConnectorResult):
 
 def get_magic_transit_connector(account_id: Optional[_builtins.str] = None,
                                 connector_id: Optional[_builtins.str] = None,
+                                filter: Optional[Union['GetMagicTransitConnectorFilterArgs', 'GetMagicTransitConnectorFilterArgsDict']] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMagicTransitConnectorResult:
     """
     Accepted Permissions
@@ -210,6 +221,7 @@ def get_magic_transit_connector(account_id: Optional[_builtins.str] = None,
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['connectorId'] = connector_id
+    __args__['filter'] = filter
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getMagicTransitConnector:getMagicTransitConnector', __args__, opts=opts, typ=GetMagicTransitConnectorResult).value
 
@@ -218,6 +230,7 @@ def get_magic_transit_connector(account_id: Optional[_builtins.str] = None,
         activated=pulumi.get(__ret__, 'activated'),
         connector_id=pulumi.get(__ret__, 'connector_id'),
         device=pulumi.get(__ret__, 'device'),
+        filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
         interrupt_window_days_of_weeks=pulumi.get(__ret__, 'interrupt_window_days_of_weeks'),
         interrupt_window_duration_hours=pulumi.get(__ret__, 'interrupt_window_duration_hours'),
@@ -230,7 +243,8 @@ def get_magic_transit_connector(account_id: Optional[_builtins.str] = None,
         notes=pulumi.get(__ret__, 'notes'),
         timezone=pulumi.get(__ret__, 'timezone'))
 def get_magic_transit_connector_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                       connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                       connector_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       filter: pulumi.Input[Optional[Optional[Union['GetMagicTransitConnectorFilterArgs', 'GetMagicTransitConnectorFilterArgsDict']]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMagicTransitConnectorResult]:
     """
     Accepted Permissions
@@ -254,6 +268,7 @@ def get_magic_transit_connector_output(account_id: pulumi.Input[Optional[Optiona
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['connectorId'] = connector_id
+    __args__['filter'] = filter
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getMagicTransitConnector:getMagicTransitConnector', __args__, opts=opts, typ=GetMagicTransitConnectorResult)
     return __ret__.apply(lambda __response__: GetMagicTransitConnectorResult(
@@ -261,6 +276,7 @@ def get_magic_transit_connector_output(account_id: pulumi.Input[Optional[Optiona
         activated=pulumi.get(__response__, 'activated'),
         connector_id=pulumi.get(__response__, 'connector_id'),
         device=pulumi.get(__response__, 'device'),
+        filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
         interrupt_window_days_of_weeks=pulumi.get(__response__, 'interrupt_window_days_of_weeks'),
         interrupt_window_duration_hours=pulumi.get(__response__, 'interrupt_window_duration_hours'),

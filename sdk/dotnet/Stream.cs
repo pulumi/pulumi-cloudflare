@@ -44,7 +44,7 @@ namespace Pulumi.Cloudflare
         /// The account identifier tag.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
@@ -207,7 +207,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Stream(string name, StreamArgs? args = null, CustomResourceOptions? options = null)
+        public Stream(string name, StreamArgs args, CustomResourceOptions? options = null)
             : base("cloudflare:index/stream:Stream", name, args ?? new StreamArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -248,8 +248,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         [Input("allowedOrigins")]
         private InputList<string>? _allowedOrigins;

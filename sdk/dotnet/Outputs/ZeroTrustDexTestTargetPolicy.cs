@@ -14,15 +14,15 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustDexTestTargetPolicy
     {
         /// <summary>
-        /// Whether the DEX rule is the account default
+        /// Whether the DEX rule is the account default.
         /// </summary>
         public readonly bool? Default;
         /// <summary>
-        /// The id of the DEX rule
+        /// The id of the DEX rule.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The name of the DEX rule
+        /// The name of the DEX rule.
         /// </summary>
         public readonly string? Name;
 

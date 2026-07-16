@@ -89,7 +89,7 @@ export class Filter extends pulumi.CustomResource {
     /**
      * Defines an identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a Filter resource with the given unique name, arguments, and options.
@@ -114,6 +114,9 @@ export class Filter extends pulumi.CustomResource {
             const args = argsOrState as FilterArgs | undefined;
             if (args?.bodies === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bodies'");
+            }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["bodies"] = args?.bodies;
             resourceInputs["description"] = args?.description;
@@ -178,5 +181,5 @@ export interface FilterArgs {
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

@@ -41,7 +41,7 @@ export interface GetPagesDomainArgs {
     /**
      * Identifier.
      */
-    accountId?: string;
+    accountId: string;
     /**
      * The domain name.
      */
@@ -59,7 +59,7 @@ export interface GetPagesDomainResult {
     /**
      * Identifier.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * Available values: "google", "letsEncrypt".
      */
@@ -125,7 +125,7 @@ export interface GetPagesDomainOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * The domain name.
      */
