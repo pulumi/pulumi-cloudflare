@@ -59,6 +59,9 @@ class GetZeroTrustDexRuleResult:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier linked to an account.
+        """
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -147,6 +150,7 @@ def get_zero_trust_dex_rule(account_id: Optional[_builtins.str] = None,
     ```
 
 
+    :param _builtins.str account_id: Unique identifier linked to an account.
     :param _builtins.str rule_id: API Resource UUID tag.
     """
     __args__ = dict()
@@ -187,6 +191,7 @@ def get_zero_trust_dex_rule_output(account_id: pulumi.Input[Optional[Optional[_b
     ```
 
 
+    :param _builtins.str account_id: Unique identifier linked to an account.
     :param _builtins.str rule_id: API Resource UUID tag.
     """
     __args__ = dict()

@@ -37,10 +37,12 @@ import (
 //				CustomOriginServer:   pulumi.StringRef("origin2.example.com"),
 //				Direction:            pulumi.StringRef("desc"),
 //				Hostname: cloudflare.GetCustomHostnamesHostname{
-//					Contain: pulumi.StringRef("example.com"),
+//					Contain:    pulumi.StringRef("example.com"),
+//					Exact:      pulumi.StringRef("app.example.com"),
+//					StartsWith: pulumi.StringRef("app"),
 //				},
 //				HostnameStatus: pulumi.StringRef("provisioned"),
-//				Ssl:            pulumi.Float64Ref(0),
+//				Ssl:            pulumi.IntRef(0),
 //				SslStatus:      pulumi.StringRef("active"),
 //				Wildcard:       pulumi.BoolRef(false),
 //			}, nil)
@@ -76,7 +78,7 @@ type LookupCustomHostnamesArgs struct {
 	// Filter by the hostname's activation status.
 	// Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
 	HostnameStatus *string `pulumi:"hostnameStatus"`
-	// Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the 'hostname' parameter.
+	// Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the 'hostname', 'hostname.exact', 'hostname.contain', or 'hostname.startsWith' parameters.
 	Id *string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
@@ -85,7 +87,7 @@ type LookupCustomHostnamesArgs struct {
 	Order *string `pulumi:"order"`
 	// Whether to filter hostnames based on if they have SSL enabled.
 	// Available values: 0, 1.
-	Ssl *float64 `pulumi:"ssl"`
+	Ssl *int `pulumi:"ssl"`
 	// Filter by SSL certificate status.
 	// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
 	SslStatus *string `pulumi:"sslStatus"`
@@ -109,7 +111,7 @@ type LookupCustomHostnamesResult struct {
 	// Filter by the hostname's activation status.
 	// Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
 	HostnameStatus *string `pulumi:"hostnameStatus"`
-	// Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the 'hostname' parameter.
+	// Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the 'hostname', 'hostname.exact', 'hostname.contain', or 'hostname.startsWith' parameters.
 	Id *string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
@@ -120,7 +122,7 @@ type LookupCustomHostnamesResult struct {
 	Results []GetCustomHostnamesResult `pulumi:"results"`
 	// Whether to filter hostnames based on if they have SSL enabled.
 	// Available values: 0, 1.
-	Ssl *float64 `pulumi:"ssl"`
+	Ssl int `pulumi:"ssl"`
 	// Filter by SSL certificate status.
 	// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
 	SslStatus *string `pulumi:"sslStatus"`
@@ -153,7 +155,7 @@ type LookupCustomHostnamesOutputArgs struct {
 	// Filter by the hostname's activation status.
 	// Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
 	HostnameStatus pulumi.StringPtrInput `pulumi:"hostnameStatus"`
-	// Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the 'hostname' parameter.
+	// Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the 'hostname', 'hostname.exact', 'hostname.contain', or 'hostname.startsWith' parameters.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
@@ -162,7 +164,7 @@ type LookupCustomHostnamesOutputArgs struct {
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// Whether to filter hostnames based on if they have SSL enabled.
 	// Available values: 0, 1.
-	Ssl pulumi.Float64PtrInput `pulumi:"ssl"`
+	Ssl pulumi.IntPtrInput `pulumi:"ssl"`
 	// Filter by SSL certificate status.
 	// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
 	SslStatus pulumi.StringPtrInput `pulumi:"sslStatus"`
@@ -218,7 +220,7 @@ func (o LookupCustomHostnamesResultOutput) HostnameStatus() pulumi.StringPtrOutp
 	return o.ApplyT(func(v LookupCustomHostnamesResult) *string { return v.HostnameStatus }).(pulumi.StringPtrOutput)
 }
 
-// Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the 'hostname' parameter.
+// Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the 'hostname', 'hostname.exact', 'hostname.contain', or 'hostname.startsWith' parameters.
 func (o LookupCustomHostnamesResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCustomHostnamesResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -241,8 +243,8 @@ func (o LookupCustomHostnamesResultOutput) Results() GetCustomHostnamesResultArr
 
 // Whether to filter hostnames based on if they have SSL enabled.
 // Available values: 0, 1.
-func (o LookupCustomHostnamesResultOutput) Ssl() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v LookupCustomHostnamesResult) *float64 { return v.Ssl }).(pulumi.Float64PtrOutput)
+func (o LookupCustomHostnamesResultOutput) Ssl() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupCustomHostnamesResult) int { return v.Ssl }).(pulumi.IntOutput)
 }
 
 // Filter by SSL certificate status.

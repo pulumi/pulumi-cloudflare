@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustDexTestsInvokeResult {
+    /**
+     * @return Unique identifier linked to an account.
+     * 
+     */
     private @Nullable String accountId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,7 +26,7 @@ public final class GetZeroTrustDexTestsInvokeResult {
      */
     private String id;
     /**
-     * @return Filter by test type
+     * @return Filter by test type.
      * Available values: &#34;http&#34;, &#34;traceroute&#34;.
      * 
      */
@@ -38,12 +42,16 @@ public final class GetZeroTrustDexTestsInvokeResult {
      */
     private List<GetZeroTrustDexTestsResult> results;
     /**
-     * @return Filter by test name
+     * @return Filter by test name.
      * 
      */
     private @Nullable String testName;
 
     private GetZeroTrustDexTestsInvokeResult() {}
+    /**
+     * @return Unique identifier linked to an account.
+     * 
+     */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -55,7 +63,7 @@ public final class GetZeroTrustDexTestsInvokeResult {
         return this.id;
     }
     /**
-     * @return Filter by test type
+     * @return Filter by test type.
      * Available values: &#34;http&#34;, &#34;traceroute&#34;.
      * 
      */
@@ -77,7 +85,7 @@ public final class GetZeroTrustDexTestsInvokeResult {
         return this.results;
     }
     /**
-     * @return Filter by test name
+     * @return Filter by test name.
      * 
      */
     public Optional<String> testName() {

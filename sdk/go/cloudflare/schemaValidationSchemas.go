@@ -70,7 +70,7 @@ type SchemaValidationSchemas struct {
 	// An indicator if this schema is enabled
 	ValidationEnabled pulumi.BoolOutput `pulumi:"validationEnabled"`
 	// Identifier.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewSchemaValidationSchemas registers a new resource with the given unique name, arguments, and options.
@@ -91,6 +91,9 @@ func NewSchemaValidationSchemas(ctx *pulumi.Context,
 	}
 	if args.ValidationEnabled == nil {
 		return nil, errors.New("invalid value for required argument 'ValidationEnabled'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SchemaValidationSchemas
@@ -163,7 +166,7 @@ type schemaValidationSchemasArgs struct {
 	// An indicator if this schema is enabled
 	ValidationEnabled bool `pulumi:"validationEnabled"`
 	// Identifier.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a SchemaValidationSchemas resource.
@@ -178,7 +181,7 @@ type SchemaValidationSchemasArgs struct {
 	// An indicator if this schema is enabled
 	ValidationEnabled pulumi.BoolInput
 	// Identifier.
-	ZoneId pulumi.StringPtrInput
+	ZoneId pulumi.StringInput
 }
 
 func (SchemaValidationSchemasArgs) ElementType() reflect.Type {
@@ -299,8 +302,8 @@ func (o SchemaValidationSchemasOutput) ValidationEnabled() pulumi.BoolOutput {
 }
 
 // Identifier.
-func (o SchemaValidationSchemasOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SchemaValidationSchemas) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o SchemaValidationSchemasOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SchemaValidationSchemas) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type SchemaValidationSchemasArrayOutput struct{ *pulumi.OutputState }

@@ -13,14 +13,14 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class GetZeroTrustDexTestFilterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Filter by test type
+        /// Filter by test type.
         /// Available values: "http", "traceroute".
         /// </summary>
         [Input("kind")]
         public string? Kind { get; set; }
 
         /// <summary>
-        /// Filter by test name
+        /// Filter by test name.
         /// </summary>
         [Input("testName")]
         public string? TestName { get; set; }

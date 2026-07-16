@@ -56,34 +56,36 @@ func LookupZeroTrustDexRules(ctx *pulumi.Context, args *LookupZeroTrustDexRulesA
 
 // A collection of arguments for invoking getZeroTrustDexRules.
 type LookupZeroTrustDexRulesArgs struct {
+	// Unique identifier linked to an account.
 	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Filter results by rule name
+	// Filter results by rule name.
 	Name *string `pulumi:"name"`
-	// Which property to sort results by
+	// Which property to sort results by.
 	// Available values: "name", "created*at", "updated*at".
 	SortBy *string `pulumi:"sortBy"`
-	// Sort direction for sortBy property
+	// Sort direction for sortBy property.
 	// Available values: "ASC", "DESC".
 	SortOrder *string `pulumi:"sortOrder"`
 }
 
 // A collection of values returned by getZeroTrustDexRules.
 type LookupZeroTrustDexRulesResult struct {
+	// Unique identifier linked to an account.
 	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Filter results by rule name
+	// Filter results by rule name.
 	Name *string `pulumi:"name"`
 	// The items returned by the data source
 	Results []GetZeroTrustDexRulesResult `pulumi:"results"`
-	// Which property to sort results by
+	// Which property to sort results by.
 	// Available values: "name", "created*at", "updated*at".
 	SortBy string `pulumi:"sortBy"`
-	// Sort direction for sortBy property
+	// Sort direction for sortBy property.
 	// Available values: "ASC", "DESC".
 	SortOrder string `pulumi:"sortOrder"`
 }
@@ -99,15 +101,16 @@ func LookupZeroTrustDexRulesOutput(ctx *pulumi.Context, args LookupZeroTrustDexR
 
 // A collection of arguments for invoking getZeroTrustDexRules.
 type LookupZeroTrustDexRulesOutputArgs struct {
+	// Unique identifier linked to an account.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Filter results by rule name
+	// Filter results by rule name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Which property to sort results by
+	// Which property to sort results by.
 	// Available values: "name", "created*at", "updated*at".
 	SortBy pulumi.StringPtrInput `pulumi:"sortBy"`
-	// Sort direction for sortBy property
+	// Sort direction for sortBy property.
 	// Available values: "ASC", "DESC".
 	SortOrder pulumi.StringPtrInput `pulumi:"sortOrder"`
 }
@@ -131,6 +134,7 @@ func (o LookupZeroTrustDexRulesResultOutput) ToLookupZeroTrustDexRulesResultOutp
 	return o
 }
 
+// Unique identifier linked to an account.
 func (o LookupZeroTrustDexRulesResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustDexRulesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -145,7 +149,7 @@ func (o LookupZeroTrustDexRulesResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustDexRulesResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
-// Filter results by rule name
+// Filter results by rule name.
 func (o LookupZeroTrustDexRulesResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustDexRulesResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -155,13 +159,13 @@ func (o LookupZeroTrustDexRulesResultOutput) Results() GetZeroTrustDexRulesResul
 	return o.ApplyT(func(v LookupZeroTrustDexRulesResult) []GetZeroTrustDexRulesResult { return v.Results }).(GetZeroTrustDexRulesResultArrayOutput)
 }
 
-// Which property to sort results by
+// Which property to sort results by.
 // Available values: "name", "created*at", "updated*at".
 func (o LookupZeroTrustDexRulesResultOutput) SortBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDexRulesResult) string { return v.SortBy }).(pulumi.StringOutput)
 }
 
-// Sort direction for sortBy property
+// Sort direction for sortBy property.
 // Available values: "ASC", "DESC".
 func (o LookupZeroTrustDexRulesResultOutput) SortOrder() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDexRulesResult) string { return v.SortOrder }).(pulumi.StringOutput)

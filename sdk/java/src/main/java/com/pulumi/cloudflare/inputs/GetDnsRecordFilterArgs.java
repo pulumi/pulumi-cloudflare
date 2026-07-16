@@ -123,6 +123,36 @@ public final class GetDnsRecordFilterArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.search);
     }
 
+    /**
+     * Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    @Import(name="shadowedByName")
+    private @Nullable Output<String> shadowedByName;
+
+    /**
+     * @return Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    public Optional<Output<String>> shadowedByName() {
+        return Optional.ofNullable(this.shadowedByName);
+    }
+
+    /**
+     * Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    @Import(name="shadowingName")
+    private @Nullable Output<String> shadowingName;
+
+    /**
+     * @return Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    public Optional<Output<String>> shadowingName() {
+        return Optional.ofNullable(this.shadowingName);
+    }
+
     @Import(name="tag")
     private @Nullable Output<GetDnsRecordFilterTagArgs> tag;
 
@@ -175,6 +205,8 @@ public final class GetDnsRecordFilterArgs extends com.pulumi.resources.ResourceA
         this.order = $.order;
         this.proxied = $.proxied;
         this.search = $.search;
+        this.shadowedByName = $.shadowedByName;
+        this.shadowingName = $.shadowingName;
         this.tag = $.tag;
         this.tagMatch = $.tagMatch;
         this.type = $.type;
@@ -334,6 +366,48 @@ public final class GetDnsRecordFilterArgs extends com.pulumi.resources.ResourceA
          */
         public Builder search(String search) {
             return search(Output.of(search));
+        }
+
+        /**
+         * @param shadowedByName Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shadowedByName(@Nullable Output<String> shadowedByName) {
+            $.shadowedByName = shadowedByName;
+            return this;
+        }
+
+        /**
+         * @param shadowedByName Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shadowedByName(String shadowedByName) {
+            return shadowedByName(Output.of(shadowedByName));
+        }
+
+        /**
+         * @param shadowingName Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shadowingName(@Nullable Output<String> shadowingName) {
+            $.shadowingName = shadowingName;
+            return this;
+        }
+
+        /**
+         * @param shadowingName Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shadowingName(String shadowingName) {
+            return shadowingName(Output.of(shadowingName));
         }
 
         public Builder tag(@Nullable Output<GetDnsRecordFilterTagArgs> tag) {

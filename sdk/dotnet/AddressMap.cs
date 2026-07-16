@@ -60,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// Identifier of a Cloudflare account.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
@@ -115,7 +115,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public AddressMap(string name, AddressMapArgs? args = null, CustomResourceOptions? options = null)
+        public AddressMap(string name, AddressMapArgs args, CustomResourceOptions? options = null)
             : base("cloudflare:index/addressMap:AddressMap", name, args ?? new AddressMapArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -156,8 +156,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier of a Cloudflare account.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.

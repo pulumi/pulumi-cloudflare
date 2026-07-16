@@ -15,15 +15,23 @@ public final class GetZeroTrustDexTestsPlainArgs extends com.pulumi.resources.In
 
     public static final GetZeroTrustDexTestsPlainArgs Empty = new GetZeroTrustDexTestsPlainArgs();
 
+    /**
+     * Unique identifier linked to an account.
+     * 
+     */
     @Import(name="accountId")
     private @Nullable String accountId;
 
+    /**
+     * @return Unique identifier linked to an account.
+     * 
+     */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
     /**
-     * Filter by test type
+     * Filter by test type.
      * Available values: &#34;http&#34;, &#34;traceroute&#34;.
      * 
      */
@@ -31,7 +39,7 @@ public final class GetZeroTrustDexTestsPlainArgs extends com.pulumi.resources.In
     private @Nullable String kind;
 
     /**
-     * @return Filter by test type
+     * @return Filter by test type.
      * Available values: &#34;http&#34;, &#34;traceroute&#34;.
      * 
      */
@@ -55,14 +63,14 @@ public final class GetZeroTrustDexTestsPlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * Filter by test name
+     * Filter by test name.
      * 
      */
     @Import(name="testName")
     private @Nullable String testName;
 
     /**
-     * @return Filter by test name
+     * @return Filter by test name.
      * 
      */
     public Optional<String> testName() {
@@ -96,13 +104,19 @@ public final class GetZeroTrustDexTestsPlainArgs extends com.pulumi.resources.In
             $ = new GetZeroTrustDexTestsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId Unique identifier linked to an account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param kind Filter by test type
+         * @param kind Filter by test type.
          * Available values: &#34;http&#34;, &#34;traceroute&#34;.
          * 
          * @return builder
@@ -125,7 +139,7 @@ public final class GetZeroTrustDexTestsPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param testName Filter by test name
+         * @param testName Filter by test name.
          * 
          * @return builder
          * 

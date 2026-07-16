@@ -19,16 +19,16 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? BundleMethod;
         /// <summary>
-        /// The Certificate Authority that will issue the certificate
+        /// The Certificate Authority that will issue the certificate.
         /// Available values: "digicert", "google", "lets*encrypt", "ssl*com".
         /// </summary>
         public readonly string? CertificateAuthority;
         /// <summary>
-        /// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true
+        /// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
         /// </summary>
         public readonly bool? CloudflareBranding;
         /// <summary>
-        /// Array of custom certificate and key pairs (1 or 2 pairs allowed)
+        /// Array of custom certificate and key pairs (1 or 2 pairs allowed).
         /// </summary>
         public readonly ImmutableArray<Outputs.CustomHostnameSslCustomCertBundle> CustomCertBundles;
         /// <summary>

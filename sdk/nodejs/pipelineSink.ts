@@ -107,7 +107,7 @@ export class PipelineSink extends pulumi.CustomResource {
     /**
      * Specifies the public ID of the account.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Defines the configuration of the R2 Sink.
      */
@@ -149,6 +149,9 @@ export class PipelineSink extends pulumi.CustomResource {
             resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as PipelineSinkArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -203,7 +206,7 @@ export interface PipelineSinkArgs {
     /**
      * Specifies the public ID of the account.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Defines the configuration of the R2 Sink.
      */

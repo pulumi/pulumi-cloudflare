@@ -23,6 +23,7 @@ export function getApiShieldOperation(args?: GetApiShieldOperationArgs, opts?: p
         "feature": args.feature,
         "filter": args.filter,
         "operationId": args.operationId,
+        "withSchemas": args.withSchemas,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -40,6 +41,10 @@ export interface GetApiShieldOperationArgs {
      * UUID.
      */
     operationId?: string;
+    /**
+     * When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval.
+     */
+    withSchemas?: boolean;
     /**
      * Identifier.
      */
@@ -79,6 +84,14 @@ export interface GetApiShieldOperationResult {
      */
     readonly operationId: string;
     /**
+     * OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+     */
+    readonly schemas: outputs.GetApiShieldOperationSchemas;
+    /**
+     * When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval.
+     */
+    readonly withSchemas: boolean;
+    /**
      * Identifier.
      */
     readonly zoneId?: string;
@@ -100,6 +113,7 @@ export function getApiShieldOperationOutput(args?: GetApiShieldOperationOutputAr
         "feature": args.feature,
         "filter": args.filter,
         "operationId": args.operationId,
+        "withSchemas": args.withSchemas,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -117,6 +131,10 @@ export interface GetApiShieldOperationOutputArgs {
      * UUID.
      */
     operationId?: pulumi.Input<string | undefined>;
+    /**
+     * When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval.
+     */
+    withSchemas?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier.
      */

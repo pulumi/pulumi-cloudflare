@@ -49,7 +49,7 @@ export class StreamLiveInput extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The date and time the live input was created.
      */
@@ -67,6 +67,10 @@ export class StreamLiveInput extends pulumi.CustomResource {
      */
     declare public readonly enabled: pulumi.Output<boolean>;
     /**
+     * The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
+     */
+    declare public /*out*/ readonly keysRotatedAt: pulumi.Output<string>;
+    /**
      * A unique identifier for a live input.
      */
     declare public readonly liveInputIdentifier: pulumi.Output<string | undefined>;
@@ -78,6 +82,10 @@ export class StreamLiveInput extends pulumi.CustomResource {
      * The date and time the live input was last modified.
      */
     declare public /*out*/ readonly modified: pulumi.Output<string>;
+    /**
+     * When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
+     */
+    declare public readonly preferLowLatency: pulumi.Output<boolean>;
     /**
      * Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
      */
@@ -123,7 +131,7 @@ export class StreamLiveInput extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: StreamLiveInputArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: StreamLiveInputArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StreamLiveInputArgs | StreamLiveInputState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -134,9 +142,11 @@ export class StreamLiveInput extends pulumi.CustomResource {
             resourceInputs["defaultCreator"] = state?.defaultCreator;
             resourceInputs["deleteRecordingAfterDays"] = state?.deleteRecordingAfterDays;
             resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["keysRotatedAt"] = state?.keysRotatedAt;
             resourceInputs["liveInputIdentifier"] = state?.liveInputIdentifier;
             resourceInputs["meta"] = state?.meta;
             resourceInputs["modified"] = state?.modified;
+            resourceInputs["preferLowLatency"] = state?.preferLowLatency;
             resourceInputs["recording"] = state?.recording;
             resourceInputs["rtmps"] = state?.rtmps;
             resourceInputs["rtmpsPlayback"] = state?.rtmpsPlayback;
@@ -148,14 +158,19 @@ export class StreamLiveInput extends pulumi.CustomResource {
             resourceInputs["webRtcPlayback"] = state?.webRtcPlayback;
         } else {
             const args = argsOrState as StreamLiveInputArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["defaultCreator"] = args?.defaultCreator;
             resourceInputs["deleteRecordingAfterDays"] = args?.deleteRecordingAfterDays;
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["liveInputIdentifier"] = args?.liveInputIdentifier;
             resourceInputs["meta"] = args?.meta;
+            resourceInputs["preferLowLatency"] = args?.preferLowLatency;
             resourceInputs["recording"] = args?.recording;
             resourceInputs["created"] = undefined /*out*/;
+            resourceInputs["keysRotatedAt"] = undefined /*out*/;
             resourceInputs["modified"] = undefined /*out*/;
             resourceInputs["rtmps"] = undefined /*out*/;
             resourceInputs["rtmpsPlayback"] = undefined /*out*/;
@@ -196,6 +211,10 @@ export interface StreamLiveInputState {
      */
     enabled?: pulumi.Input<boolean | undefined>;
     /**
+     * The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
+     */
+    keysRotatedAt?: pulumi.Input<string | undefined>;
+    /**
      * A unique identifier for a live input.
      */
     liveInputIdentifier?: pulumi.Input<string | undefined>;
@@ -207,6 +226,10 @@ export interface StreamLiveInputState {
      * The date and time the live input was last modified.
      */
     modified?: pulumi.Input<string | undefined>;
+    /**
+     * When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
+     */
+    preferLowLatency?: pulumi.Input<boolean | undefined>;
     /**
      * Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
      */
@@ -253,7 +276,7 @@ export interface StreamLiveInputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Sets the creator ID asssociated with this live input.
      */
@@ -274,6 +297,10 @@ export interface StreamLiveInputArgs {
      * A user modifiable key-value store used to reference other systems of record for managing live inputs.
      */
     meta?: pulumi.Input<string | undefined>;
+    /**
+     * When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
+     */
+    preferLowLatency?: pulumi.Input<boolean | undefined>;
     /**
      * Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
      */

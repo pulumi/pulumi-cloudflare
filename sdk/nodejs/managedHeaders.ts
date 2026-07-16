@@ -109,11 +109,11 @@ export class ManagedHeaders extends pulumi.CustomResource {
     /**
      * The list of Managed Request Transforms.
      */
-    declare public readonly managedRequestHeaders: pulumi.Output<outputs.ManagedHeadersManagedRequestHeader[]>;
+    declare public readonly managedRequestHeaders: pulumi.Output<outputs.ManagedHeadersManagedRequestHeader[] | undefined>;
     /**
      * The list of Managed Response Transforms.
      */
-    declare public readonly managedResponseHeaders: pulumi.Output<outputs.ManagedHeadersManagedResponseHeader[]>;
+    declare public readonly managedResponseHeaders: pulumi.Output<outputs.ManagedHeadersManagedResponseHeader[] | undefined>;
     /**
      * The unique ID of the zone.
      */
@@ -140,12 +140,6 @@ export class ManagedHeaders extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ManagedHeadersArgs | undefined;
-            if (args?.managedRequestHeaders === undefined && !opts.urn) {
-                throw new Error("Missing required property 'managedRequestHeaders'");
-            }
-            if (args?.managedResponseHeaders === undefined && !opts.urn) {
-                throw new Error("Missing required property 'managedResponseHeaders'");
-            }
             if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
@@ -185,11 +179,11 @@ export interface ManagedHeadersArgs {
     /**
      * The list of Managed Request Transforms.
      */
-    managedRequestHeaders: pulumi.Input<pulumi.Input<inputs.ManagedHeadersManagedRequestHeader>[]>;
+    managedRequestHeaders?: pulumi.Input<pulumi.Input<inputs.ManagedHeadersManagedRequestHeader>[] | undefined>;
     /**
      * The list of Managed Response Transforms.
      */
-    managedResponseHeaders: pulumi.Input<pulumi.Input<inputs.ManagedHeadersManagedResponseHeader>[]>;
+    managedResponseHeaders?: pulumi.Input<pulumi.Input<inputs.ManagedHeadersManagedResponseHeader>[] | undefined>;
     /**
      * The unique ID of the zone.
      */

@@ -32,7 +32,7 @@ public final class GetEmailSecurityImpersonationRegistryFilter extends com.pulum
     }
 
     /**
-     * The field to sort by.
+     * Field to sort by.
      * Available values: &#34;name&#34;, &#34;email&#34;, &#34;createdAt&#34;.
      * 
      */
@@ -40,7 +40,7 @@ public final class GetEmailSecurityImpersonationRegistryFilter extends com.pulum
     private @Nullable String order;
 
     /**
-     * @return The field to sort by.
+     * @return Field to sort by.
      * Available values: &#34;name&#34;, &#34;email&#34;, &#34;createdAt&#34;.
      * 
      */
@@ -64,20 +64,14 @@ public final class GetEmailSecurityImpersonationRegistryFilter extends com.pulum
     }
 
     /**
-     * Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * Search term for filtering records. Behavior may change.
      * 
      */
     @Import(name="search")
     private @Nullable String search;
 
     /**
-     * @return Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * @return Search term for filtering records. Behavior may change.
      * 
      */
     public Optional<String> search() {
@@ -124,7 +118,7 @@ public final class GetEmailSecurityImpersonationRegistryFilter extends com.pulum
         }
 
         /**
-         * @param order The field to sort by.
+         * @param order Field to sort by.
          * Available values: &#34;name&#34;, &#34;email&#34;, &#34;createdAt&#34;.
          * 
          * @return builder
@@ -147,10 +141,7 @@ public final class GetEmailSecurityImpersonationRegistryFilter extends com.pulum
         }
 
         /**
-         * @param search Allows searching in multiple properties of a record simultaneously.
-         * This parameter is intended for human users, not automation. Its exact
-         * behavior is intentionally left unspecified and is subject to change
-         * in the future.
+         * @param search Search term for filtering records. Behavior may change.
          * 
          * @return builder
          * 

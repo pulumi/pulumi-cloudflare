@@ -56,7 +56,7 @@ type ZeroTrustDeviceSubnet struct {
 	pulumi.CustomResourceState
 
 	// Cloudflare account ID
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// An optional description of the subnet.
 	Comment pulumi.StringOutput `pulumi:"comment"`
 	// Timestamp of when the resource was created.
@@ -81,6 +81,9 @@ func NewZeroTrustDeviceSubnet(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -155,7 +158,7 @@ func (ZeroTrustDeviceSubnetState) ElementType() reflect.Type {
 
 type zeroTrustDeviceSubnetArgs struct {
 	// Cloudflare account ID
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// An optional description of the subnet.
 	Comment *string `pulumi:"comment"`
 	// If `true`, this is the default subnet for the account. There can only be one default subnet per account.
@@ -169,7 +172,7 @@ type zeroTrustDeviceSubnetArgs struct {
 // The set of arguments for constructing a ZeroTrustDeviceSubnet resource.
 type ZeroTrustDeviceSubnetArgs struct {
 	// Cloudflare account ID
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// An optional description of the subnet.
 	Comment pulumi.StringPtrInput
 	// If `true`, this is the default subnet for the account. There can only be one default subnet per account.
@@ -268,8 +271,8 @@ func (o ZeroTrustDeviceSubnetOutput) ToZeroTrustDeviceSubnetOutputWithContext(ct
 }
 
 // Cloudflare account ID
-func (o ZeroTrustDeviceSubnetOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceSubnet) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustDeviceSubnetOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceSubnet) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // An optional description of the subnet.

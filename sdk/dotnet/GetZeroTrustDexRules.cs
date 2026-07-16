@@ -105,6 +105,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDexRulesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Unique identifier linked to an account.
+        /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
 
@@ -115,20 +118,20 @@ namespace Pulumi.Cloudflare
         public int? MaxItems { get; set; }
 
         /// <summary>
-        /// Filter results by rule name
+        /// Filter results by rule name.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// Which property to sort results by
+        /// Which property to sort results by.
         /// Available values: "name", "created*at", "updated*at".
         /// </summary>
         [Input("sortBy")]
         public string? SortBy { get; set; }
 
         /// <summary>
-        /// Sort direction for SortBy property
+        /// Sort direction for SortBy property.
         /// Available values: "ASC", "DESC".
         /// </summary>
         [Input("sortOrder")]
@@ -142,6 +145,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDexRulesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Unique identifier linked to an account.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
@@ -152,20 +158,20 @@ namespace Pulumi.Cloudflare
         public Input<int>? MaxItems { get; set; }
 
         /// <summary>
-        /// Filter results by rule name
+        /// Filter results by rule name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Which property to sort results by
+        /// Which property to sort results by.
         /// Available values: "name", "created*at", "updated*at".
         /// </summary>
         [Input("sortBy")]
         public Input<string>? SortBy { get; set; }
 
         /// <summary>
-        /// Sort direction for SortBy property
+        /// Sort direction for SortBy property.
         /// Available values: "ASC", "DESC".
         /// </summary>
         [Input("sortOrder")]
@@ -181,6 +187,9 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustDexRulesResult
     {
+        /// <summary>
+        /// Unique identifier linked to an account.
+        /// </summary>
         public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -191,7 +200,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly int? MaxItems;
         /// <summary>
-        /// Filter results by rule name
+        /// Filter results by rule name.
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -199,12 +208,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustDexRulesResultResult> Results;
         /// <summary>
-        /// Which property to sort results by
+        /// Which property to sort results by.
         /// Available values: "name", "created*at", "updated*at".
         /// </summary>
         public readonly string SortBy;
         /// <summary>
-        /// Sort direction for SortBy property
+        /// Sort direction for SortBy property.
         /// Available values: "ASC", "DESC".
         /// </summary>
         public readonly string SortOrder;

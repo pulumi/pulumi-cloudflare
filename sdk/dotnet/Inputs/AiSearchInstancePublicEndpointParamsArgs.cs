@@ -23,6 +23,18 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("chatCompletionsEndpoint")]
         public Input<Inputs.AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs>? ChatCompletionsEndpoint { get; set; }
 
+        [Input("customDomains")]
+        private InputList<string>? _customDomains;
+
+        /// <summary>
+        /// Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
+        /// </summary>
+        public InputList<string> CustomDomains
+        {
+            get => _customDomains ?? (_customDomains = new InputList<string>());
+            set => _customDomains = value;
+        }
+
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

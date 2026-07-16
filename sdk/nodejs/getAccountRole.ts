@@ -40,7 +40,7 @@ export interface GetAccountRoleArgs {
     /**
      * Account identifier tag.
      */
-    accountId?: string;
+    accountId: string;
     /**
      * Role identifier tag.
      */
@@ -54,7 +54,7 @@ export interface GetAccountRoleResult {
     /**
      * Account identifier tag.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * Description of role's permissions.
      */
@@ -107,7 +107,7 @@ export interface GetAccountRoleOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Role identifier tag.
      */

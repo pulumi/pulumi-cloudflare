@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustDexTestTargetPolicy {
     /**
-     * @return Whether the DEX rule is the account default
+     * @return Whether the DEX rule is the account default.
      * 
      */
     private @Nullable Boolean default_;
     /**
-     * @return The id of the DEX rule
+     * @return The id of the DEX rule.
      * 
      */
     private String id;
     /**
-     * @return The name of the DEX rule
+     * @return The name of the DEX rule.
      * 
      */
     private @Nullable String name;
 
     private ZeroTrustDexTestTargetPolicy() {}
     /**
-     * @return Whether the DEX rule is the account default
+     * @return Whether the DEX rule is the account default.
      * 
      */
     public Optional<Boolean> default_() {
         return Optional.ofNullable(this.default_);
     }
     /**
-     * @return The id of the DEX rule
+     * @return The id of the DEX rule.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The name of the DEX rule
+     * @return The name of the DEX rule.
      * 
      */
     public Optional<String> name() {

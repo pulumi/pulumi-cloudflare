@@ -39,6 +39,10 @@ import * as utilities from "./utilities";
  *         text: "my_data",
  *         type: "plain_text",
  *     }],
+ *     cacheOptions: {
+ *         enabled: true,
+ *         crossVersionCache: true,
+ *     },
  *     compatibilityDate: "2021-01-01",
  *     compatibilityFlags: ["nodejs_compat"],
  *     containers: [{
@@ -69,6 +73,11 @@ import * as utilities from "./utilities";
  *         contentFile: "dist/index.js",
  *         contentType: "application/javascript+module",
  *         name: "index.js",
+ *     }],
+ *     packageDependencies: [{
+ *         installedVersion: "4.17.22",
+ *         name: "lodash",
+ *         packageJsonVersion: "^4.17.21",
  *     }],
  *     placement: {
  *         mode: "smart",
@@ -113,7 +122,7 @@ export class WorkerVersion extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Metadata about the version.
      */
@@ -126,6 +135,13 @@ export class WorkerVersion extends pulumi.CustomResource {
      * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
      */
     declare public readonly bindings: pulumi.Output<outputs.WorkerVersionBinding[] | undefined>;
+    /**
+     * Global CacheW configuration for the Worker. When caching is on,
+     * the platform provisions a `cloudflare.app` zone for the Worker.
+     * A `type: worker` entry in the `exports` map can override this
+     * value for a single entrypoint.
+     */
+    declare public readonly cacheOptions: pulumi.Output<outputs.WorkerVersionCacheOptions>;
     /**
      * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      */
@@ -176,6 +192,11 @@ export class WorkerVersion extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly number: pulumi.Output<number>;
     /**
+     * The list of npm packages that were installed and used when this Worker
+     * version was built.
+     */
+    declare public readonly packageDependencies: pulumi.Output<outputs.WorkerVersionPackageDependency[] | undefined>;
+    /**
      * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
      */
     declare public readonly placement: pulumi.Output<outputs.WorkerVersionPlacement | undefined>;
@@ -220,6 +241,7 @@ export class WorkerVersion extends pulumi.CustomResource {
             resourceInputs["annotations"] = state?.annotations;
             resourceInputs["assets"] = state?.assets;
             resourceInputs["bindings"] = state?.bindings;
+            resourceInputs["cacheOptions"] = state?.cacheOptions;
             resourceInputs["compatibilityDate"] = state?.compatibilityDate;
             resourceInputs["compatibilityFlags"] = state?.compatibilityFlags;
             resourceInputs["containers"] = state?.containers;
@@ -231,6 +253,7 @@ export class WorkerVersion extends pulumi.CustomResource {
             resourceInputs["migrations"] = state?.migrations;
             resourceInputs["modules"] = state?.modules;
             resourceInputs["number"] = state?.number;
+            resourceInputs["packageDependencies"] = state?.packageDependencies;
             resourceInputs["placement"] = state?.placement;
             resourceInputs["source"] = state?.source;
             resourceInputs["startupTimeMs"] = state?.startupTimeMs;
@@ -239,6 +262,9 @@ export class WorkerVersion extends pulumi.CustomResource {
             resourceInputs["workerId"] = state?.workerId;
         } else {
             const args = argsOrState as WorkerVersionArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.workerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workerId'");
             }
@@ -246,6 +272,7 @@ export class WorkerVersion extends pulumi.CustomResource {
             resourceInputs["annotations"] = args?.annotations;
             resourceInputs["assets"] = args?.assets;
             resourceInputs["bindings"] = args?.bindings;
+            resourceInputs["cacheOptions"] = args?.cacheOptions;
             resourceInputs["compatibilityDate"] = args?.compatibilityDate;
             resourceInputs["compatibilityFlags"] = args?.compatibilityFlags;
             resourceInputs["containers"] = args?.containers;
@@ -253,6 +280,7 @@ export class WorkerVersion extends pulumi.CustomResource {
             resourceInputs["mainModule"] = args?.mainModule;
             resourceInputs["migrations"] = args?.migrations;
             resourceInputs["modules"] = args?.modules;
+            resourceInputs["packageDependencies"] = args?.packageDependencies;
             resourceInputs["placement"] = args?.placement;
             resourceInputs["usageModel"] = args?.usageModel;
             resourceInputs["workerId"] = args?.workerId;
@@ -289,6 +317,13 @@ export interface WorkerVersionState {
      * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
      */
     bindings?: pulumi.Input<pulumi.Input<inputs.WorkerVersionBinding>[] | undefined>;
+    /**
+     * Global CacheW configuration for the Worker. When caching is on,
+     * the platform provisions a `cloudflare.app` zone for the Worker.
+     * A `type: worker` entry in the `exports` map can override this
+     * value for a single entrypoint.
+     */
+    cacheOptions?: pulumi.Input<inputs.WorkerVersionCacheOptions | undefined>;
     /**
      * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      */
@@ -339,6 +374,11 @@ export interface WorkerVersionState {
      */
     number?: pulumi.Input<number | undefined>;
     /**
+     * The list of npm packages that were installed and used when this Worker
+     * version was built.
+     */
+    packageDependencies?: pulumi.Input<pulumi.Input<inputs.WorkerVersionPackageDependency>[] | undefined>;
+    /**
      * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
      */
     placement?: pulumi.Input<inputs.WorkerVersionPlacement | undefined>;
@@ -374,7 +414,7 @@ export interface WorkerVersionArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Metadata about the version.
      */
@@ -387,6 +427,13 @@ export interface WorkerVersionArgs {
      * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
      */
     bindings?: pulumi.Input<pulumi.Input<inputs.WorkerVersionBinding>[] | undefined>;
+    /**
+     * Global CacheW configuration for the Worker. When caching is on,
+     * the platform provisions a `cloudflare.app` zone for the Worker.
+     * A `type: worker` entry in the `exports` map can override this
+     * value for a single entrypoint.
+     */
+    cacheOptions?: pulumi.Input<inputs.WorkerVersionCacheOptions | undefined>;
     /**
      * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      */
@@ -420,6 +467,11 @@ export interface WorkerVersionArgs {
      * included as modules named `_headers` and `_redirects` with content type `text/plain`.
      */
     modules?: pulumi.Input<pulumi.Input<inputs.WorkerVersionModule>[] | undefined>;
+    /**
+     * The list of npm packages that were installed and used when this Worker
+     * version was built.
+     */
+    packageDependencies?: pulumi.Input<pulumi.Input<inputs.WorkerVersionPackageDependency>[] | undefined>;
     /**
      * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
      */

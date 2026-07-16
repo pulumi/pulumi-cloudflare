@@ -164,7 +164,7 @@ namespace Pulumi.Cloudflare
 
     public sealed class ManagedTransformsArgs : global::Pulumi.ResourceArgs
     {
-        [Input("managedRequestHeaders", required: true)]
+        [Input("managedRequestHeaders")]
         private InputList<Inputs.ManagedTransformsManagedRequestHeaderArgs>? _managedRequestHeaders;
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace Pulumi.Cloudflare
             set => _managedRequestHeaders = value;
         }
 
-        [Input("managedResponseHeaders", required: true)]
+        [Input("managedResponseHeaders")]
         private InputList<Inputs.ManagedTransformsManagedResponseHeaderArgs>? _managedResponseHeaders;
 
         /// <summary>

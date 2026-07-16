@@ -62,7 +62,7 @@ export class StreamAudioTrack extends pulumi.CustomResource {
     /**
      * The account identifier tag.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The unique identifier for an additional audio track.
      */
@@ -116,6 +116,9 @@ export class StreamAudioTrack extends pulumi.CustomResource {
             resourceInputs["uid"] = state?.uid;
         } else {
             const args = argsOrState as StreamAudioTrackArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
@@ -179,7 +182,7 @@ export interface StreamAudioTrackArgs {
     /**
      * The account identifier tag.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * The unique identifier for an additional audio track.
      */

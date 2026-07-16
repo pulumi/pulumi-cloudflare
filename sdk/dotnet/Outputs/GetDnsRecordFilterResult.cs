@@ -39,6 +39,14 @@ namespace Pulumi.Cloudflare.Outputs
         /// Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `Match` setting. For automated searches, please use the other available parameters.
         /// </summary>
         public readonly string? Search;
+        /// <summary>
+        /// Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+        /// </summary>
+        public readonly string? ShadowedByName;
+        /// <summary>
+        /// Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+        /// </summary>
+        public readonly string? ShadowingName;
         public readonly Outputs.GetDnsRecordFilterTagResult? Tag;
         /// <summary>
         /// Whether to match all tag search requirements or at least one (any). If set to `All`, acts like a logical AND between tag filters. If set to `Any`, acts like a logical OR instead. Note that the regular `Match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
@@ -69,6 +77,10 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? search,
 
+            string? shadowedByName,
+
+            string? shadowingName,
+
             Outputs.GetDnsRecordFilterTagResult? tag,
 
             string tagMatch,
@@ -83,6 +95,8 @@ namespace Pulumi.Cloudflare.Outputs
             Order = order;
             Proxied = proxied;
             Search = search;
+            ShadowedByName = shadowedByName;
+            ShadowingName = shadowingName;
             Tag = tag;
             TagMatch = tagMatch;
             Type = type;

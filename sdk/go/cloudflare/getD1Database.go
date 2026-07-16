@@ -33,6 +33,9 @@ import (
 //			_, err := cloudflare.GetD1Database(ctx, &cloudflare.LookupD1DatabaseArgs{
 //				AccountId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				DatabaseId: pulumi.StringRef("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
+//				Fields: []string{
+//					"uuid",
+//				},
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -57,8 +60,11 @@ type LookupD1DatabaseArgs struct {
 	// Account identifier tag.
 	AccountId *string `pulumi:"accountId"`
 	// D1 database identifier (UUID).
-	DatabaseId *string              `pulumi:"databaseId"`
-	Filter     *GetD1DatabaseFilter `pulumi:"filter"`
+	DatabaseId *string `pulumi:"databaseId"`
+	// Comma-separated list of fields to include in the response. When omitted,
+	// all fields are returned.
+	Fields []string             `pulumi:"fields"`
+	Filter *GetD1DatabaseFilter `pulumi:"filter"`
 }
 
 // A collection of values returned by getD1Database.
@@ -69,6 +75,9 @@ type LookupD1DatabaseResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// D1 database identifier (UUID).
 	DatabaseId *string `pulumi:"databaseId"`
+	// Comma-separated list of fields to include in the response. When omitted,
+	// all fields are returned.
+	Fields []string `pulumi:"fields"`
 	// The D1 database's size, in bytes.
 	FileSize float64              `pulumi:"fileSize"`
 	Filter   *GetD1DatabaseFilter `pulumi:"filter"`
@@ -101,8 +110,11 @@ type LookupD1DatabaseOutputArgs struct {
 	// Account identifier tag.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// D1 database identifier (UUID).
-	DatabaseId pulumi.StringPtrInput       `pulumi:"databaseId"`
-	Filter     GetD1DatabaseFilterPtrInput `pulumi:"filter"`
+	DatabaseId pulumi.StringPtrInput `pulumi:"databaseId"`
+	// Comma-separated list of fields to include in the response. When omitted,
+	// all fields are returned.
+	Fields pulumi.StringArrayInput     `pulumi:"fields"`
+	Filter GetD1DatabaseFilterPtrInput `pulumi:"filter"`
 }
 
 func (LookupD1DatabaseOutputArgs) ElementType() reflect.Type {
@@ -137,6 +149,12 @@ func (o LookupD1DatabaseResultOutput) CreatedAt() pulumi.StringOutput {
 // D1 database identifier (UUID).
 func (o LookupD1DatabaseResultOutput) DatabaseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupD1DatabaseResult) *string { return v.DatabaseId }).(pulumi.StringPtrOutput)
+}
+
+// Comma-separated list of fields to include in the response. When omitted,
+// all fields are returned.
+func (o LookupD1DatabaseResultOutput) Fields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupD1DatabaseResult) []string { return v.Fields }).(pulumi.StringArrayOutput)
 }
 
 // The D1 database's size, in bytes.

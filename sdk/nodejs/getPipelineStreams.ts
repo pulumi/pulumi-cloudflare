@@ -30,6 +30,7 @@ export function getPipelineStreams(args?: GetPipelineStreamsArgs, opts?: pulumi.
     return pulumi.runtime.invoke("cloudflare:index/getPipelineStreams:getPipelineStreams", {
         "accountId": args.accountId,
         "maxItems": args.maxItems,
+        "name": args.name,
         "pipelineId": args.pipelineId,
     }, opts);
 }
@@ -46,6 +47,10 @@ export interface GetPipelineStreamsArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
+    /**
+     * Filters streams by name (case-insensitive substring).
+     */
+    name?: string;
     /**
      * Specifies the public ID of the pipeline.
      */
@@ -68,6 +73,10 @@ export interface GetPipelineStreamsResult {
      * Max items to fetch, default: 1000
      */
     readonly maxItems?: number;
+    /**
+     * Filters streams by name (case-insensitive substring).
+     */
+    readonly name?: string;
     /**
      * Specifies the public ID of the pipeline.
      */
@@ -101,6 +110,7 @@ export function getPipelineStreamsOutput(args?: GetPipelineStreamsOutputArgs, op
     return pulumi.runtime.invokeOutput("cloudflare:index/getPipelineStreams:getPipelineStreams", {
         "accountId": args.accountId,
         "maxItems": args.maxItems,
+        "name": args.name,
         "pipelineId": args.pipelineId,
     }, opts);
 }
@@ -117,6 +127,10 @@ export interface GetPipelineStreamsOutputArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number | undefined>;
+    /**
+     * Filters streams by name (case-insensitive substring).
+     */
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies the public ID of the pipeline.
      */

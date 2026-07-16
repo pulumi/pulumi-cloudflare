@@ -66,6 +66,13 @@ export interface GetEmailRoutingCatchAllResult {
      */
     readonly name: string;
     /**
+     * Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+     * `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+     * to `api` when omitted on write.
+     * Available values: "api", "wrangler".
+     */
+    readonly source: string;
+    /**
      * Routing rule tag. (Deprecated, replaced by routing rule identifier)
      *
      * @deprecated This attribute is deprecated.

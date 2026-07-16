@@ -110,7 +110,7 @@ type PageRule struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	Target pulumi.StringOutput `pulumi:"target"`
 	// Identifier.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewPageRule registers a new resource with the given unique name, arguments, and options.
@@ -125,6 +125,9 @@ func NewPageRule(ctx *pulumi.Context,
 	}
 	if args.Target == nil {
 		return nil, errors.New("invalid value for required argument 'Target'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PageRule
@@ -205,7 +208,7 @@ type pageRuleArgs struct {
 	Status *string `pulumi:"status"`
 	Target string  `pulumi:"target"`
 	// Identifier.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a PageRule resource.
@@ -222,7 +225,7 @@ type PageRuleArgs struct {
 	Status pulumi.StringPtrInput
 	Target pulumi.StringInput
 	// Identifier.
-	ZoneId pulumi.StringPtrInput
+	ZoneId pulumi.StringInput
 }
 
 func (PageRuleArgs) ElementType() reflect.Type {
@@ -346,8 +349,8 @@ func (o PageRuleOutput) Target() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o PageRuleOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PageRule) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o PageRuleOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PageRule) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type PageRuleArrayOutput struct{ *pulumi.OutputState }

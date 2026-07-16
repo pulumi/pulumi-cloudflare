@@ -72,7 +72,7 @@ type ApiShieldSchema struct {
 	// Available values: "true", "false".
 	ValidationEnabled pulumi.StringPtrOutput `pulumi:"validationEnabled"`
 	// Identifier.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewApiShieldSchema registers a new resource with the given unique name, arguments, and options.
@@ -87,6 +87,9 @@ func NewApiShieldSchema(ctx *pulumi.Context,
 	}
 	if args.Kind == nil {
 		return nil, errors.New("invalid value for required argument 'Kind'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApiShieldSchema
@@ -169,7 +172,7 @@ type apiShieldSchemaArgs struct {
 	// Available values: "true", "false".
 	ValidationEnabled *string `pulumi:"validationEnabled"`
 	// Identifier.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ApiShieldSchema resource.
@@ -186,7 +189,7 @@ type ApiShieldSchemaArgs struct {
 	// Available values: "true", "false".
 	ValidationEnabled pulumi.StringPtrInput
 	// Identifier.
-	ZoneId pulumi.StringPtrInput
+	ZoneId pulumi.StringInput
 }
 
 func (ApiShieldSchemaArgs) ElementType() reflect.Type {
@@ -320,8 +323,8 @@ func (o ApiShieldSchemaOutput) ValidationEnabled() pulumi.StringPtrOutput {
 }
 
 // Identifier.
-func (o ApiShieldSchemaOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ApiShieldSchema) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o ApiShieldSchemaOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiShieldSchema) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type ApiShieldSchemaArrayOutput struct{ *pulumi.OutputState }

@@ -68,14 +68,14 @@ public class EmailRoutingAddress extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * The date and time the destination address has been created.
@@ -118,6 +118,22 @@ public class EmailRoutingAddress extends com.pulumi.resources.CustomResource {
      */
     public Output<String> modified() {
         return this.modified;
+    }
+    /**
+     * Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+     * Available values: &#34;unverified&#34;, &#34;verified&#34;.
+     * 
+     */
+    @Export(name="status", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> status;
+
+    /**
+     * @return Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+     * Available values: &#34;unverified&#34;, &#34;verified&#34;.
+     * 
+     */
+    public Output<Optional<String>> status() {
+        return Codegen.optional(this.status);
     }
     /**
      * Destination address tag. (Deprecated, replaced by destination address identifier)

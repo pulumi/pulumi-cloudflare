@@ -81,6 +81,44 @@ public final class EmailRoutingCatchAllArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Public tag (script_tag) of the Worker that owns this rule. Required when
+     * `source` is `wrangler`.
+     * 
+     */
+    @Import(name="ownerWorkerTag")
+    private @Nullable Output<String> ownerWorkerTag;
+
+    /**
+     * @return Public tag (script_tag) of the Worker that owns this rule. Required when
+     * `source` is `wrangler`.
+     * 
+     */
+    public Optional<Output<String>> ownerWorkerTag() {
+        return Optional.ofNullable(this.ownerWorkerTag);
+    }
+
+    /**
+     * Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+     * `wrangler` means the rule is managed by a Worker&#39;s wrangler.jsonc. Defaults
+     * to `api` when omitted on write.
+     * Available values: &#34;api&#34;, &#34;wrangler&#34;.
+     * 
+     */
+    @Import(name="source")
+    private @Nullable Output<String> source;
+
+    /**
+     * @return Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+     * `wrangler` means the rule is managed by a Worker&#39;s wrangler.jsonc. Defaults
+     * to `api` when omitted on write.
+     * Available values: &#34;api&#34;, &#34;wrangler&#34;.
+     * 
+     */
+    public Optional<Output<String>> source() {
+        return Optional.ofNullable(this.source);
+    }
+
+    /**
      * Identifier.
      * 
      */
@@ -102,6 +140,8 @@ public final class EmailRoutingCatchAllArgs extends com.pulumi.resources.Resourc
         this.enabled = $.enabled;
         this.matchers = $.matchers;
         this.name = $.name;
+        this.ownerWorkerTag = $.ownerWorkerTag;
+        this.source = $.source;
         this.zoneId = $.zoneId;
     }
 
@@ -225,6 +265,56 @@ public final class EmailRoutingCatchAllArgs extends com.pulumi.resources.Resourc
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param ownerWorkerTag Public tag (script_tag) of the Worker that owns this rule. Required when
+         * `source` is `wrangler`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ownerWorkerTag(@Nullable Output<String> ownerWorkerTag) {
+            $.ownerWorkerTag = ownerWorkerTag;
+            return this;
+        }
+
+        /**
+         * @param ownerWorkerTag Public tag (script_tag) of the Worker that owns this rule. Required when
+         * `source` is `wrangler`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ownerWorkerTag(String ownerWorkerTag) {
+            return ownerWorkerTag(Output.of(ownerWorkerTag));
+        }
+
+        /**
+         * @param source Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+         * `wrangler` means the rule is managed by a Worker&#39;s wrangler.jsonc. Defaults
+         * to `api` when omitted on write.
+         * Available values: &#34;api&#34;, &#34;wrangler&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder source(@Nullable Output<String> source) {
+            $.source = source;
+            return this;
+        }
+
+        /**
+         * @param source Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+         * `wrangler` means the rule is managed by a Worker&#39;s wrangler.jsonc. Defaults
+         * to `api` when omitted on write.
+         * Available values: &#34;api&#34;, &#34;wrangler&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder source(String source) {
+            return source(Output.of(source));
         }
 
         /**

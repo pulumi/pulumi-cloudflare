@@ -78,6 +78,23 @@ public final class WorkerScriptObservabilityTracesArgs extends com.pulumi.resour
         return Optional.ofNullable(this.persist);
     }
 
+    /**
+     * Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. &#34;authenticated&#34; (default) honors inbound trace context only when accompanied by a valid trace auth token. &#34;accept&#34; unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+     * Available values: &#34;authenticated&#34;, &#34;accept&#34;.
+     * 
+     */
+    @Import(name="propagationPolicy")
+    private @Nullable Output<String> propagationPolicy;
+
+    /**
+     * @return Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. &#34;authenticated&#34; (default) honors inbound trace context only when accompanied by a valid trace auth token. &#34;accept&#34; unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+     * Available values: &#34;authenticated&#34;, &#34;accept&#34;.
+     * 
+     */
+    public Optional<Output<String>> propagationPolicy() {
+        return Optional.ofNullable(this.propagationPolicy);
+    }
+
     private WorkerScriptObservabilityTracesArgs() {}
 
     private WorkerScriptObservabilityTracesArgs(WorkerScriptObservabilityTracesArgs $) {
@@ -85,6 +102,7 @@ public final class WorkerScriptObservabilityTracesArgs extends com.pulumi.resour
         this.enabled = $.enabled;
         this.headSamplingRate = $.headSamplingRate;
         this.persist = $.persist;
+        this.propagationPolicy = $.propagationPolicy;
     }
 
     public static Builder builder() {
@@ -197,6 +215,29 @@ public final class WorkerScriptObservabilityTracesArgs extends com.pulumi.resour
          */
         public Builder persist(Boolean persist) {
             return persist(Output.of(persist));
+        }
+
+        /**
+         * @param propagationPolicy Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. &#34;authenticated&#34; (default) honors inbound trace context only when accompanied by a valid trace auth token. &#34;accept&#34; unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+         * Available values: &#34;authenticated&#34;, &#34;accept&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder propagationPolicy(@Nullable Output<String> propagationPolicy) {
+            $.propagationPolicy = propagationPolicy;
+            return this;
+        }
+
+        /**
+         * @param propagationPolicy Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. &#34;authenticated&#34; (default) honors inbound trace context only when accompanied by a valid trace auth token. &#34;accept&#34; unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+         * Available values: &#34;authenticated&#34;, &#34;accept&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder propagationPolicy(String propagationPolicy) {
+            return propagationPolicy(Output.of(propagationPolicy));
         }
 
         public WorkerScriptObservabilityTracesArgs build() {

@@ -15,6 +15,10 @@ namespace Pulumi.Cloudflare.Outputs
     {
         public readonly ImmutableArray<string> AuthorizedHosts;
         public readonly Outputs.GetAiSearchInstancesResultPublicEndpointParamsChatCompletionsEndpointResult ChatCompletionsEndpoint;
+        /// <summary>
+        /// Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
+        /// </summary>
+        public readonly ImmutableArray<string> CustomDomains;
         public readonly bool Enabled;
         public readonly Outputs.GetAiSearchInstancesResultPublicEndpointParamsMcpResult Mcp;
         public readonly Outputs.GetAiSearchInstancesResultPublicEndpointParamsRateLimitResult RateLimit;
@@ -26,6 +30,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.GetAiSearchInstancesResultPublicEndpointParamsChatCompletionsEndpointResult chatCompletionsEndpoint,
 
+            ImmutableArray<string> customDomains,
+
             bool enabled,
 
             Outputs.GetAiSearchInstancesResultPublicEndpointParamsMcpResult mcp,
@@ -36,6 +42,7 @@ namespace Pulumi.Cloudflare.Outputs
         {
             AuthorizedHosts = authorizedHosts;
             ChatCompletionsEndpoint = chatCompletionsEndpoint;
+            CustomDomains = customDomains;
             Enabled = enabled;
             Mcp = mcp;
             RateLimit = rateLimit;

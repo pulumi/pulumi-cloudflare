@@ -85,6 +85,11 @@ export interface GetZeroTrustNetworkHostnameRouteResult {
      */
     readonly id: string;
     /**
+     * The type of tunnel.
+     * Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ipSec", "gre", "cni".
+     */
+    readonly tunType: string;
+    /**
      * UUID of the tunnel.
      */
     readonly tunnelId: string;

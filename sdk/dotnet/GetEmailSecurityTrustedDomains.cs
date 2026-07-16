@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleEmailSecurityTrustedDomains = Cloudflare.GetEmailSecurityTrustedDomains.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         TrustedDomainId = 2401,
+        ///         TrustedDomainId = "2401",
         ///     });
         /// 
         /// });
@@ -58,7 +58,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleEmailSecurityTrustedDomains = Cloudflare.GetEmailSecurityTrustedDomains.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         TrustedDomainId = 2401,
+        ///         TrustedDomainId = "2401",
         ///     });
         /// 
         /// });
@@ -86,7 +86,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleEmailSecurityTrustedDomains = Cloudflare.GetEmailSecurityTrustedDomains.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         TrustedDomainId = 2401,
+        ///         TrustedDomainId = "2401",
         ///     });
         /// 
         /// });
@@ -100,7 +100,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetEmailSecurityTrustedDomainsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Account Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
@@ -109,10 +109,10 @@ namespace Pulumi.Cloudflare
         public Inputs.GetEmailSecurityTrustedDomainsFilterArgs? Filter { get; set; }
 
         /// <summary>
-        /// The unique identifier for the trusted domain.
+        /// Trusted domain identifier
         /// </summary>
         [Input("trustedDomainId")]
-        public int? TrustedDomainId { get; set; }
+        public string? TrustedDomainId { get; set; }
 
         public GetEmailSecurityTrustedDomainsArgs()
         {
@@ -123,7 +123,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetEmailSecurityTrustedDomainsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Account Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -132,10 +132,10 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.GetEmailSecurityTrustedDomainsFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
-        /// The unique identifier for the trusted domain.
+        /// Trusted domain identifier
         /// </summary>
         [Input("trustedDomainId")]
-        public Input<int>? TrustedDomainId { get; set; }
+        public Input<string>? TrustedDomainId { get; set; }
 
         public GetEmailSecurityTrustedDomainsInvokeArgs()
         {
@@ -148,34 +148,35 @@ namespace Pulumi.Cloudflare
     public sealed class GetEmailSecurityTrustedDomainsResult
     {
         /// <summary>
-        /// Account Identifier
+        /// Identifier.
         /// </summary>
         public readonly string? AccountId;
         public readonly string Comments;
         public readonly string CreatedAt;
         public readonly Outputs.GetEmailSecurityTrustedDomainsFilterResult? Filter;
         /// <summary>
-        /// The unique identifier for the trusted domain.
+        /// Trusted domain identifier
         /// </summary>
-        public readonly int Id;
+        public readonly string Id;
         /// <summary>
-        /// Select to prevent recently registered domains from triggering a
-        /// Suspicious or Malicious disposition.
+        /// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
         /// </summary>
         public readonly bool IsRecent;
         public readonly bool IsRegex;
         /// <summary>
-        /// Select for partner or other approved domains that have similar
-        /// spelling to your connected domains. Prevents listed domains from
-        /// triggering a Spoof disposition.
+        /// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
         /// </summary>
         public readonly bool IsSimilarity;
+        /// <summary>
+        /// Deprecated, use `ModifiedAt` instead. End of life: November 1, 2026.
+        /// </summary>
         public readonly string LastModified;
+        public readonly string ModifiedAt;
         public readonly string Pattern;
         /// <summary>
-        /// The unique identifier for the trusted domain.
+        /// Trusted domain identifier
         /// </summary>
-        public readonly int? TrustedDomainId;
+        public readonly string? TrustedDomainId;
 
         [OutputConstructor]
         private GetEmailSecurityTrustedDomainsResult(
@@ -187,7 +188,7 @@ namespace Pulumi.Cloudflare
 
             Outputs.GetEmailSecurityTrustedDomainsFilterResult? filter,
 
-            int id,
+            string id,
 
             bool isRecent,
 
@@ -197,9 +198,11 @@ namespace Pulumi.Cloudflare
 
             string lastModified,
 
+            string modifiedAt,
+
             string pattern,
 
-            int? trustedDomainId)
+            string? trustedDomainId)
         {
             AccountId = accountId;
             Comments = comments;
@@ -210,6 +213,7 @@ namespace Pulumi.Cloudflare
             IsRegex = isRegex;
             IsSimilarity = isSimilarity;
             LastModified = lastModified;
+            ModifiedAt = modifiedAt;
             Pattern = pattern;
             TrustedDomainId = trustedDomainId;
         }

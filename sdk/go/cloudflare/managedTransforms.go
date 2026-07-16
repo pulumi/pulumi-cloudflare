@@ -116,12 +116,6 @@ func NewManagedTransforms(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ManagedRequestHeaders == nil {
-		return nil, errors.New("invalid value for required argument 'ManagedRequestHeaders'")
-	}
-	if args.ManagedResponseHeaders == nil {
-		return nil, errors.New("invalid value for required argument 'ManagedResponseHeaders'")
-	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}

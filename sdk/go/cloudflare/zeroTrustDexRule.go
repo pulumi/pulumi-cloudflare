@@ -56,7 +56,8 @@ import (
 type ZeroTrustDexRule struct {
 	pulumi.CustomResourceState
 
-	AccountId   pulumi.StringPtrOutput `pulumi:"accountId"`
+	// Unique identifier linked to an account.
+	AccountId   pulumi.StringOutput    `pulumi:"accountId"`
 	CreatedAt   pulumi.StringOutput    `pulumi:"createdAt"`
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The wirefilter expression to match.
@@ -74,6 +75,9 @@ func NewZeroTrustDexRule(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Match == nil {
 		return nil, errors.New("invalid value for required argument 'Match'")
 	}
@@ -103,6 +107,7 @@ func GetZeroTrustDexRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustDexRule resources.
 type zeroTrustDexRuleState struct {
+	// Unique identifier linked to an account.
 	AccountId   *string `pulumi:"accountId"`
 	CreatedAt   *string `pulumi:"createdAt"`
 	Description *string `pulumi:"description"`
@@ -115,6 +120,7 @@ type zeroTrustDexRuleState struct {
 }
 
 type ZeroTrustDexRuleState struct {
+	// Unique identifier linked to an account.
 	AccountId   pulumi.StringPtrInput
 	CreatedAt   pulumi.StringPtrInput
 	Description pulumi.StringPtrInput
@@ -131,7 +137,8 @@ func (ZeroTrustDexRuleState) ElementType() reflect.Type {
 }
 
 type zeroTrustDexRuleArgs struct {
-	AccountId   *string `pulumi:"accountId"`
+	// Unique identifier linked to an account.
+	AccountId   string  `pulumi:"accountId"`
 	Description *string `pulumi:"description"`
 	// The wirefilter expression to match.
 	Match string `pulumi:"match"`
@@ -141,7 +148,8 @@ type zeroTrustDexRuleArgs struct {
 
 // The set of arguments for constructing a ZeroTrustDexRule resource.
 type ZeroTrustDexRuleArgs struct {
-	AccountId   pulumi.StringPtrInput
+	// Unique identifier linked to an account.
+	AccountId   pulumi.StringInput
 	Description pulumi.StringPtrInput
 	// The wirefilter expression to match.
 	Match pulumi.StringInput
@@ -236,8 +244,9 @@ func (o ZeroTrustDexRuleOutput) ToZeroTrustDexRuleOutputWithContext(ctx context.
 	return o
 }
 
-func (o ZeroTrustDexRuleOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDexRule) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+// Unique identifier linked to an account.
+func (o ZeroTrustDexRuleOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDexRule) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 func (o ZeroTrustDexRuleOutput) CreatedAt() pulumi.StringOutput {

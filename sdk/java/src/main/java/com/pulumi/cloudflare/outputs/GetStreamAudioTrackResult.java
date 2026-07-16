@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetStreamAudioTrackResult {
@@ -18,7 +16,7 @@ public final class GetStreamAudioTrackResult {
      * @return The account identifier tag.
      * 
      */
-    private @Nullable String accountId;
+    private String accountId;
     /**
      * @return Array of audio tracks for the video.
      * 
@@ -40,8 +38,8 @@ public final class GetStreamAudioTrackResult {
      * @return The account identifier tag.
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
     /**
      * @return Array of audio tracks for the video.
@@ -74,7 +72,7 @@ public final class GetStreamAudioTrackResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
+        private String accountId;
         private List<GetStreamAudioTrackAudio> audios;
         private String id;
         private String identifier;
@@ -88,8 +86,10 @@ public final class GetStreamAudioTrackResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetStreamAudioTrackResult", "accountId");
+            }
             this.accountId = accountId;
             return this;
         }

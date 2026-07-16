@@ -14,12 +14,12 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustDexTestFilterResult
     {
         /// <summary>
-        /// Filter by test type
+        /// Filter by test type.
         /// Available values: "http", "traceroute".
         /// </summary>
         public readonly string? Kind;
         /// <summary>
-        /// Filter by test name
+        /// Filter by test name.
         /// </summary>
         public readonly string? TestName;
 

@@ -12,6 +12,18 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class MagicTransitSiteLanStaticAddressingDhcpServerArgs : global::Pulumi.ResourceArgs
     {
+        [Input("dhcpOptions")]
+        private InputList<Inputs.MagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionArgs>? _dhcpOptions;
+
+        /// <summary>
+        /// Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled.
+        /// </summary>
+        public InputList<Inputs.MagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionArgs> DhcpOptions
+        {
+            get => _dhcpOptions ?? (_dhcpOptions = new InputList<Inputs.MagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionArgs>());
+            set => _dhcpOptions = value;
+        }
+
         /// <summary>
         /// A valid IPv4 address.
         /// </summary>

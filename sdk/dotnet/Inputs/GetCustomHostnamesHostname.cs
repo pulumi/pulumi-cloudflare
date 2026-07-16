@@ -13,10 +13,22 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class GetCustomHostnamesHostnameArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Filters hostnames by a substring match on the hostname value. This parameter cannot be used with the 'id' parameter.
+        /// Filters hostnames by a substring match on the hostname value. This parameter cannot be used with the 'id', 'hostname', 'hostname.exact', or 'hostname.startsWith' parameters.
         /// </summary>
         [Input("contain")]
         public string? Contain { get; set; }
+
+        /// <summary>
+        /// Fully qualified domain name to match against. This parameter cannot be used with the 'id', 'hostname', 'hostname.contain', or 'hostname.startsWith' parameters.
+        /// </summary>
+        [Input("exact")]
+        public string? Exact { get; set; }
+
+        /// <summary>
+        /// Filters hostnames by a prefix match on the hostname value. This parameter cannot be used with the 'id', 'hostname', 'hostname.exact', or 'hostname.contain' parameters.
+        /// </summary>
+        [Input("startsWith")]
+        public string? StartsWith { get; set; }
 
         public GetCustomHostnamesHostnameArgs()
         {

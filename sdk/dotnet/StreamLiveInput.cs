@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The date and time the live input was created.
@@ -55,6 +55,12 @@ namespace Pulumi.Cloudflare
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
+        /// The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
+        /// </summary>
+        [Output("keysRotatedAt")]
+        public Output<string> KeysRotatedAt { get; private set; } = null!;
+
+        /// <summary>
         /// A unique identifier for a live input.
         /// </summary>
         [Output("liveInputIdentifier")]
@@ -71,6 +77,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("modified")]
         public Output<string> Modified { get; private set; } = null!;
+
+        /// <summary>
+        /// When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
+        /// </summary>
+        [Output("preferLowLatency")]
+        public Output<bool> PreferLowLatency { get; private set; } = null!;
 
         /// <summary>
         /// Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
@@ -135,7 +147,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public StreamLiveInput(string name, StreamLiveInputArgs? args = null, CustomResourceOptions? options = null)
+        public StreamLiveInput(string name, StreamLiveInputArgs args, CustomResourceOptions? options = null)
             : base("cloudflare:index/streamLiveInput:StreamLiveInput", name, args ?? new StreamLiveInputArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -176,8 +188,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Sets the creator ID asssociated with this live input.
@@ -208,6 +220,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("meta")]
         public Input<string>? Meta { get; set; }
+
+        /// <summary>
+        /// When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
+        /// </summary>
+        [Input("preferLowLatency")]
+        public Input<bool>? PreferLowLatency { get; set; }
 
         /// <summary>
         /// Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
@@ -254,6 +272,12 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
+        /// </summary>
+        [Input("keysRotatedAt")]
+        public Input<string>? KeysRotatedAt { get; set; }
+
+        /// <summary>
         /// A unique identifier for a live input.
         /// </summary>
         [Input("liveInputIdentifier")]
@@ -270,6 +294,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("modified")]
         public Input<string>? Modified { get; set; }
+
+        /// <summary>
+        /// When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
+        /// </summary>
+        [Input("preferLowLatency")]
+        public Input<bool>? PreferLowLatency { get; set; }
 
         /// <summary>
         /// Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.

@@ -21,6 +21,7 @@ import * as utilities from "./utilities";
  * const exampleDnsRecord = cloudflare.getDnsRecord({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     dnsRecordId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     includeShadowMetadata: true,
  * });
  * ```
  */
@@ -30,6 +31,7 @@ export function getDnsRecord(args?: GetDnsRecordArgs, opts?: pulumi.InvokeOption
     return pulumi.runtime.invoke("cloudflare:index/getDnsRecord:getDnsRecord", {
         "dnsRecordId": args.dnsRecordId,
         "filter": args.filter,
+        "includeShadowMetadata": args.includeShadowMetadata,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -43,6 +45,10 @@ export interface GetDnsRecordArgs {
      */
     dnsRecordId?: string;
     filter?: inputs.GetDnsRecordFilter;
+    /**
+     * Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     */
+    includeShadowMetadata?: boolean;
     /**
      * Identifier.
      */
@@ -83,9 +89,13 @@ export interface GetDnsRecordResult {
      */
     readonly id: string;
     /**
-     * Extra Cloudflare-specific information about the record.
+     * Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
      */
-    readonly meta: string;
+    readonly includeShadowMetadata: boolean;
+    /**
+     * Extra Cloudflare-specific metadata about the record.
+     */
+    readonly meta: outputs.GetDnsRecordMeta;
     /**
      * When the record was last modified.
      */
@@ -151,6 +161,7 @@ export interface GetDnsRecordResult {
  * const exampleDnsRecord = cloudflare.getDnsRecord({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     dnsRecordId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     includeShadowMetadata: true,
  * });
  * ```
  */
@@ -160,6 +171,7 @@ export function getDnsRecordOutput(args?: GetDnsRecordOutputArgs, opts?: pulumi.
     return pulumi.runtime.invokeOutput("cloudflare:index/getDnsRecord:getDnsRecord", {
         "dnsRecordId": args.dnsRecordId,
         "filter": args.filter,
+        "includeShadowMetadata": args.includeShadowMetadata,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -173,6 +185,10 @@ export interface GetDnsRecordOutputArgs {
      */
     dnsRecordId?: pulumi.Input<string | undefined>;
     filter?: pulumi.Input<inputs.GetDnsRecordFilterArgs | undefined>;
+    /**
+     * Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     */
+    includeShadowMetadata?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier.
      */

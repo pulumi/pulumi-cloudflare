@@ -89,8 +89,8 @@ type PipelineStream struct {
 	pulumi.CustomResourceState
 
 	// Specifies the public ID of the account.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	CreatedAt pulumi.StringOutput    `pulumi:"createdAt"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Indicates the endpoint URL of this stream.
 	Endpoint   pulumi.StringOutput           `pulumi:"endpoint"`
 	Format     PipelineStreamFormatPtrOutput `pulumi:"format"`
@@ -111,6 +111,9 @@ func NewPipelineStream(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -176,7 +179,7 @@ func (PipelineStreamState) ElementType() reflect.Type {
 
 type pipelineStreamArgs struct {
 	// Specifies the public ID of the account.
-	AccountId *string               `pulumi:"accountId"`
+	AccountId string                `pulumi:"accountId"`
 	Format    *PipelineStreamFormat `pulumi:"format"`
 	Http      *PipelineStreamHttp   `pulumi:"http"`
 	// Specifies the name of the Stream.
@@ -188,7 +191,7 @@ type pipelineStreamArgs struct {
 // The set of arguments for constructing a PipelineStream resource.
 type PipelineStreamArgs struct {
 	// Specifies the public ID of the account.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	Format    PipelineStreamFormatPtrInput
 	Http      PipelineStreamHttpPtrInput
 	// Specifies the name of the Stream.
@@ -285,8 +288,8 @@ func (o PipelineStreamOutput) ToPipelineStreamOutputWithContext(ctx context.Cont
 }
 
 // Specifies the public ID of the account.
-func (o PipelineStreamOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PipelineStream) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o PipelineStreamOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PipelineStream) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 func (o PipelineStreamOutput) CreatedAt() pulumi.StringOutput {

@@ -41,6 +41,9 @@ export function getZeroTrustDexTest(args?: GetZeroTrustDexTestArgs, opts?: pulum
  * A collection of arguments for invoking getZeroTrustDexTest.
  */
 export interface GetZeroTrustDexTestArgs {
+    /**
+     * Unique identifier linked to an account.
+     */
     accountId?: string;
     /**
      * The unique identifier for the test.
@@ -57,6 +60,9 @@ export interface GetZeroTrustDexTestArgs {
  * A collection of values returned by getZeroTrustDexTest.
  */
 export interface GetZeroTrustDexTestResult {
+    /**
+     * Unique identifier linked to an account.
+     */
     readonly accountId?: string;
     /**
      * The configuration object which contains the details for the WARP client to conduct the test.
@@ -132,6 +138,9 @@ export function getZeroTrustDexTestOutput(args?: GetZeroTrustDexTestOutputArgs, 
  * A collection of arguments for invoking getZeroTrustDexTest.
  */
 export interface GetZeroTrustDexTestOutputArgs {
+    /**
+     * Unique identifier linked to an account.
+     */
     accountId?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the test.

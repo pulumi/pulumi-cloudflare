@@ -11,6 +11,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ManagedTransformsArgs extends com.pulumi.resources.ResourceArgs {
@@ -21,30 +23,30 @@ public final class ManagedTransformsArgs extends com.pulumi.resources.ResourceAr
      * The list of Managed Request Transforms.
      * 
      */
-    @Import(name="managedRequestHeaders", required=true)
-    private Output<List<ManagedTransformsManagedRequestHeaderArgs>> managedRequestHeaders;
+    @Import(name="managedRequestHeaders")
+    private @Nullable Output<List<ManagedTransformsManagedRequestHeaderArgs>> managedRequestHeaders;
 
     /**
      * @return The list of Managed Request Transforms.
      * 
      */
-    public Output<List<ManagedTransformsManagedRequestHeaderArgs>> managedRequestHeaders() {
-        return this.managedRequestHeaders;
+    public Optional<Output<List<ManagedTransformsManagedRequestHeaderArgs>>> managedRequestHeaders() {
+        return Optional.ofNullable(this.managedRequestHeaders);
     }
 
     /**
      * The list of Managed Response Transforms.
      * 
      */
-    @Import(name="managedResponseHeaders", required=true)
-    private Output<List<ManagedTransformsManagedResponseHeaderArgs>> managedResponseHeaders;
+    @Import(name="managedResponseHeaders")
+    private @Nullable Output<List<ManagedTransformsManagedResponseHeaderArgs>> managedResponseHeaders;
 
     /**
      * @return The list of Managed Response Transforms.
      * 
      */
-    public Output<List<ManagedTransformsManagedResponseHeaderArgs>> managedResponseHeaders() {
-        return this.managedResponseHeaders;
+    public Optional<Output<List<ManagedTransformsManagedResponseHeaderArgs>>> managedResponseHeaders() {
+        return Optional.ofNullable(this.managedResponseHeaders);
     }
 
     /**
@@ -94,7 +96,7 @@ public final class ManagedTransformsArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder managedRequestHeaders(Output<List<ManagedTransformsManagedRequestHeaderArgs>> managedRequestHeaders) {
+        public Builder managedRequestHeaders(@Nullable Output<List<ManagedTransformsManagedRequestHeaderArgs>> managedRequestHeaders) {
             $.managedRequestHeaders = managedRequestHeaders;
             return this;
         }
@@ -125,7 +127,7 @@ public final class ManagedTransformsArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder managedResponseHeaders(Output<List<ManagedTransformsManagedResponseHeaderArgs>> managedResponseHeaders) {
+        public Builder managedResponseHeaders(@Nullable Output<List<ManagedTransformsManagedResponseHeaderArgs>> managedResponseHeaders) {
             $.managedResponseHeaders = managedResponseHeaders;
             return this;
         }
@@ -172,12 +174,6 @@ public final class ManagedTransformsArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ManagedTransformsArgs build() {
-            if ($.managedRequestHeaders == null) {
-                throw new MissingRequiredPropertyException("ManagedTransformsArgs", "managedRequestHeaders");
-            }
-            if ($.managedResponseHeaders == null) {
-                throw new MissingRequiredPropertyException("ManagedTransformsArgs", "managedResponseHeaders");
-            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("ManagedTransformsArgs", "zoneId");
             }

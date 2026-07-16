@@ -108,8 +108,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public string? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public string AccountId { get; set; } = null!;
 
         [Input("deploymentId", required: true)]
         public string DeploymentId { get; set; } = null!;
@@ -131,8 +131,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         [Input("deploymentId", required: true)]
         public Input<string> DeploymentId { get; set; } = null!;
@@ -156,7 +156,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string? AccountId;
+        public readonly string AccountId;
         public readonly Outputs.GetWorkersDeploymentAnnotationsResult Annotations;
         public readonly string AuthorEmail;
         public readonly string CreatedOn;
@@ -178,7 +178,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetWorkersDeploymentResult(
-            string? accountId,
+            string accountId,
 
             Outputs.GetWorkersDeploymentAnnotationsResult annotations,
 

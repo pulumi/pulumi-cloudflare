@@ -59,7 +59,7 @@ type WorkerDomain struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// ID of the TLS certificate issued for the domain.
 	CertId pulumi.StringOutput `pulumi:"certId"`
 	// Worker environment associated with the domain.
@@ -83,6 +83,9 @@ func NewWorkerDomain(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Hostname == nil {
 		return nil, errors.New("invalid value for required argument 'Hostname'")
 	}
@@ -161,7 +164,7 @@ func (WorkerDomainState) ElementType() reflect.Type {
 
 type workerDomainArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Worker environment associated with the domain.
 	//
 	// Deprecated: This attribute is deprecated.
@@ -179,7 +182,7 @@ type workerDomainArgs struct {
 // The set of arguments for constructing a WorkerDomain resource.
 type WorkerDomainArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Worker environment associated with the domain.
 	//
 	// Deprecated: This attribute is deprecated.
@@ -282,8 +285,8 @@ func (o WorkerDomainOutput) ToWorkerDomainOutputWithContext(ctx context.Context)
 }
 
 // Identifier.
-func (o WorkerDomainOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkerDomain) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o WorkerDomainOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerDomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // ID of the TLS certificate issued for the domain.

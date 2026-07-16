@@ -9,6 +9,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,6 +31,12 @@ public final class GetD1DatabaseResult {
      * 
      */
     private @Nullable String databaseId;
+    /**
+     * @return Comma-separated list of fields to include in the response. When omitted,
+     * all fields are returned.
+     * 
+     */
+    private @Nullable List<String> fields;
     /**
      * @return The D1 database&#39;s size, in bytes.
      * 
@@ -86,6 +93,14 @@ public final class GetD1DatabaseResult {
      */
     public Optional<String> databaseId() {
         return Optional.ofNullable(this.databaseId);
+    }
+    /**
+     * @return Comma-separated list of fields to include in the response. When omitted,
+     * all fields are returned.
+     * 
+     */
+    public List<String> fields() {
+        return this.fields == null ? List.of() : this.fields;
     }
     /**
      * @return The D1 database&#39;s size, in bytes.
@@ -152,6 +167,7 @@ public final class GetD1DatabaseResult {
         private @Nullable String accountId;
         private String createdAt;
         private @Nullable String databaseId;
+        private @Nullable List<String> fields;
         private Double fileSize;
         private @Nullable GetD1DatabaseFilter filter;
         private String id;
@@ -167,6 +183,7 @@ public final class GetD1DatabaseResult {
     	      this.accountId = defaults.accountId;
     	      this.createdAt = defaults.createdAt;
     	      this.databaseId = defaults.databaseId;
+    	      this.fields = defaults.fields;
     	      this.fileSize = defaults.fileSize;
     	      this.filter = defaults.filter;
     	      this.id = defaults.id;
@@ -197,6 +214,15 @@ public final class GetD1DatabaseResult {
 
             this.databaseId = databaseId;
             return this;
+        }
+        @CustomType.Setter
+        public Builder fields(@Nullable List<String> fields) {
+
+            this.fields = fields;
+            return this;
+        }
+        public Builder fields(String... fields) {
+            return fields(List.of(fields));
         }
         @CustomType.Setter
         public Builder fileSize(Double fileSize) {
@@ -273,6 +299,7 @@ public final class GetD1DatabaseResult {
             _resultValue.accountId = accountId;
             _resultValue.createdAt = createdAt;
             _resultValue.databaseId = databaseId;
+            _resultValue.fields = fields;
             _resultValue.fileSize = fileSize;
             _resultValue.filter = filter;
             _resultValue.id = id;

@@ -23,7 +23,7 @@ public final class GetCustomHostnamesResultSsl {
      */
     private String bundleMethod;
     /**
-     * @return The Certificate Authority that will issue the certificate
+     * @return The Certificate Authority that will issue the certificate.
      * Available values: &#34;digicert&#34;, &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
@@ -124,7 +124,7 @@ public final class GetCustomHostnamesResultSsl {
         return this.bundleMethod;
     }
     /**
-     * @return The Certificate Authority that will issue the certificate
+     * @return The Certificate Authority that will issue the certificate.
      * Available values: &#34;digicert&#34;, &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */

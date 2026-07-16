@@ -53,13 +53,16 @@ type EmailRoutingAddress struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The date and time the destination address has been created.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// The contact email address of the user.
 	Email pulumi.StringOutput `pulumi:"email"`
 	// The date and time the destination address was last modified.
 	Modified pulumi.StringOutput `pulumi:"modified"`
+	// Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+	// Available values: "unverified", "verified".
+	Status pulumi.StringPtrOutput `pulumi:"status"`
 	// Destination address tag. (Deprecated, replaced by destination address identifier)
 	//
 	// Deprecated: This attribute is deprecated.
@@ -75,6 +78,9 @@ func NewEmailRoutingAddress(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Email == nil {
 		return nil, errors.New("invalid value for required argument 'Email'")
 	}
@@ -109,6 +115,9 @@ type emailRoutingAddressState struct {
 	Email *string `pulumi:"email"`
 	// The date and time the destination address was last modified.
 	Modified *string `pulumi:"modified"`
+	// Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+	// Available values: "unverified", "verified".
+	Status *string `pulumi:"status"`
 	// Destination address tag. (Deprecated, replaced by destination address identifier)
 	//
 	// Deprecated: This attribute is deprecated.
@@ -126,6 +135,9 @@ type EmailRoutingAddressState struct {
 	Email pulumi.StringPtrInput
 	// The date and time the destination address was last modified.
 	Modified pulumi.StringPtrInput
+	// Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+	// Available values: "unverified", "verified".
+	Status pulumi.StringPtrInput
 	// Destination address tag. (Deprecated, replaced by destination address identifier)
 	//
 	// Deprecated: This attribute is deprecated.
@@ -140,17 +152,23 @@ func (EmailRoutingAddressState) ElementType() reflect.Type {
 
 type emailRoutingAddressArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// The contact email address of the user.
 	Email string `pulumi:"email"`
+	// Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+	// Available values: "unverified", "verified".
+	Status *string `pulumi:"status"`
 }
 
 // The set of arguments for constructing a EmailRoutingAddress resource.
 type EmailRoutingAddressArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// The contact email address of the user.
 	Email pulumi.StringInput
+	// Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+	// Available values: "unverified", "verified".
+	Status pulumi.StringPtrInput
 }
 
 func (EmailRoutingAddressArgs) ElementType() reflect.Type {
@@ -241,8 +259,8 @@ func (o EmailRoutingAddressOutput) ToEmailRoutingAddressOutputWithContext(ctx co
 }
 
 // Identifier.
-func (o EmailRoutingAddressOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EmailRoutingAddress) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o EmailRoutingAddressOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EmailRoutingAddress) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The date and time the destination address has been created.
@@ -258,6 +276,12 @@ func (o EmailRoutingAddressOutput) Email() pulumi.StringOutput {
 // The date and time the destination address was last modified.
 func (o EmailRoutingAddressOutput) Modified() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingAddress) pulumi.StringOutput { return v.Modified }).(pulumi.StringOutput)
+}
+
+// Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+// Available values: "unverified", "verified".
+func (o EmailRoutingAddressOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailRoutingAddress) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 // Destination address tag. (Deprecated, replaced by destination address identifier)

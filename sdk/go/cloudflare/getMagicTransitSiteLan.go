@@ -33,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetMagicTransitSiteLan(ctx, &cloudflare.LookupMagicTransitSiteLanArgs{
-//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				SiteId:    "023e105f4ecef8ad9ca31a8372d0c353",
 //				LanId:     "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
@@ -58,7 +58,7 @@ func LookupMagicTransitSiteLan(ctx *pulumi.Context, args *LookupMagicTransitSite
 // A collection of arguments for invoking getMagicTransitSiteLan.
 type LookupMagicTransitSiteLanArgs struct {
 	// Identifier
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Identifier
 	LanId string `pulumi:"lanId"`
 	// Identifier
@@ -68,8 +68,8 @@ type LookupMagicTransitSiteLanArgs struct {
 // A collection of values returned by getMagicTransitSiteLan.
 type LookupMagicTransitSiteLanResult struct {
 	// Identifier
-	AccountId *string `pulumi:"accountId"`
-	BondId    int     `pulumi:"bondId"`
+	AccountId string `pulumi:"accountId"`
+	BondId    int    `pulumi:"bondId"`
 	// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
 	HaLink bool `pulumi:"haLink"`
 	// Identifier
@@ -104,7 +104,7 @@ func LookupMagicTransitSiteLanOutput(ctx *pulumi.Context, args LookupMagicTransi
 // A collection of arguments for invoking getMagicTransitSiteLan.
 type LookupMagicTransitSiteLanOutputArgs struct {
 	// Identifier
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Identifier
 	LanId pulumi.StringInput `pulumi:"lanId"`
 	// Identifier
@@ -131,8 +131,8 @@ func (o LookupMagicTransitSiteLanResultOutput) ToLookupMagicTransitSiteLanResult
 }
 
 // Identifier
-func (o LookupMagicTransitSiteLanResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMagicTransitSiteLanResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o LookupMagicTransitSiteLanResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMagicTransitSiteLanResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 func (o LookupMagicTransitSiteLanResultOutput) BondId() pulumi.IntOutput {

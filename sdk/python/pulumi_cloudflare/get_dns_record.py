@@ -28,7 +28,7 @@ class GetDnsRecordResult:
     """
     A collection of values returned by getDnsRecord.
     """
-    def __init__(__self__, comment=None, comment_modified_on=None, content=None, created_on=None, data=None, dns_record_id=None, filter=None, id=None, meta=None, modified_on=None, name=None, priority=None, private_routing=None, proxiable=None, proxied=None, settings=None, tags=None, tags_modified_on=None, ttl=None, type=None, zone_id=None):
+    def __init__(__self__, comment=None, comment_modified_on=None, content=None, created_on=None, data=None, dns_record_id=None, filter=None, id=None, include_shadow_metadata=None, meta=None, modified_on=None, name=None, priority=None, private_routing=None, proxiable=None, proxied=None, settings=None, tags=None, tags_modified_on=None, ttl=None, type=None, zone_id=None):
         if comment and not isinstance(comment, str):
             raise TypeError("Expected argument 'comment' to be a str")
         pulumi.set(__self__, "comment", comment)
@@ -53,8 +53,11 @@ class GetDnsRecordResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if meta and not isinstance(meta, str):
-            raise TypeError("Expected argument 'meta' to be a str")
+        if include_shadow_metadata and not isinstance(include_shadow_metadata, bool):
+            raise TypeError("Expected argument 'include_shadow_metadata' to be a bool")
+        pulumi.set(__self__, "include_shadow_metadata", include_shadow_metadata)
+        if meta and not isinstance(meta, dict):
+            raise TypeError("Expected argument 'meta' to be a dict")
         pulumi.set(__self__, "meta", meta)
         if modified_on and not isinstance(modified_on, str):
             raise TypeError("Expected argument 'modified_on' to be a str")
@@ -155,10 +158,18 @@ class GetDnsRecordResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
-    @pulumi.getter
-    def meta(self) -> _builtins.str:
+    @pulumi.getter(name="includeShadowMetadata")
+    def include_shadow_metadata(self) -> _builtins.bool:
         """
-        Extra Cloudflare-specific information about the record.
+        Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+        """
+        return pulumi.get(self, "include_shadow_metadata")
+
+    @_builtins.property
+    @pulumi.getter
+    def meta(self) -> 'outputs.GetDnsRecordMetaResult':
+        """
+        Extra Cloudflare-specific metadata about the record.
         """
         return pulumi.get(self, "meta")
 
@@ -274,6 +285,7 @@ class AwaitableGetDnsRecordResult(GetDnsRecordResult):
             dns_record_id=self.dns_record_id,
             filter=self.filter,
             id=self.id,
+            include_shadow_metadata=self.include_shadow_metadata,
             meta=self.meta,
             modified_on=self.modified_on,
             name=self.name,
@@ -291,6 +303,7 @@ class AwaitableGetDnsRecordResult(GetDnsRecordResult):
 
 def get_dns_record(dns_record_id: Optional[_builtins.str] = None,
                    filter: Optional[Union['GetDnsRecordFilterArgs', 'GetDnsRecordFilterArgsDict']] = None,
+                   include_shadow_metadata: Optional[_builtins.bool] = None,
                    zone_id: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDnsRecordResult:
     """
@@ -306,16 +319,19 @@ def get_dns_record(dns_record_id: Optional[_builtins.str] = None,
     import pulumi_cloudflare as cloudflare
 
     example_dns_record = cloudflare.get_dns_record(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-        dns_record_id="023e105f4ecef8ad9ca31a8372d0c353")
+        dns_record_id="023e105f4ecef8ad9ca31a8372d0c353",
+        include_shadow_metadata=True)
     ```
 
 
     :param _builtins.str dns_record_id: Identifier.
+    :param _builtins.bool include_shadow_metadata: Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
     :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['dnsRecordId'] = dns_record_id
     __args__['filter'] = filter
+    __args__['includeShadowMetadata'] = include_shadow_metadata
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getDnsRecord:getDnsRecord', __args__, opts=opts, typ=GetDnsRecordResult).value
@@ -329,6 +345,7 @@ def get_dns_record(dns_record_id: Optional[_builtins.str] = None,
         dns_record_id=pulumi.get(__ret__, 'dns_record_id'),
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
+        include_shadow_metadata=pulumi.get(__ret__, 'include_shadow_metadata'),
         meta=pulumi.get(__ret__, 'meta'),
         modified_on=pulumi.get(__ret__, 'modified_on'),
         name=pulumi.get(__ret__, 'name'),
@@ -344,6 +361,7 @@ def get_dns_record(dns_record_id: Optional[_builtins.str] = None,
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_dns_record_output(dns_record_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           filter: pulumi.Input[Optional[Optional[Union['GetDnsRecordFilterArgs', 'GetDnsRecordFilterArgsDict']]]] = None,
+                          include_shadow_metadata: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                           zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDnsRecordResult]:
     """
@@ -359,16 +377,19 @@ def get_dns_record_output(dns_record_id: pulumi.Input[Optional[Optional[_builtin
     import pulumi_cloudflare as cloudflare
 
     example_dns_record = cloudflare.get_dns_record(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-        dns_record_id="023e105f4ecef8ad9ca31a8372d0c353")
+        dns_record_id="023e105f4ecef8ad9ca31a8372d0c353",
+        include_shadow_metadata=True)
     ```
 
 
     :param _builtins.str dns_record_id: Identifier.
+    :param _builtins.bool include_shadow_metadata: Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
     :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['dnsRecordId'] = dns_record_id
     __args__['filter'] = filter
+    __args__['includeShadowMetadata'] = include_shadow_metadata
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getDnsRecord:getDnsRecord', __args__, opts=opts, typ=GetDnsRecordResult)
@@ -381,6 +402,7 @@ def get_dns_record_output(dns_record_id: pulumi.Input[Optional[Optional[_builtin
         dns_record_id=pulumi.get(__response__, 'dns_record_id'),
         filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
+        include_shadow_metadata=pulumi.get(__response__, 'include_shadow_metadata'),
         meta=pulumi.get(__response__, 'meta'),
         modified_on=pulumi.get(__response__, 'modified_on'),
         name=pulumi.get(__response__, 'name'),

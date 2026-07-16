@@ -41,7 +41,7 @@ export class MagicNetworkMonitoringConfiguration extends pulumi.CustomResource {
         return obj['__pulumiType'] === MagicNetworkMonitoringConfiguration.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
      */
@@ -73,6 +73,9 @@ export class MagicNetworkMonitoringConfiguration extends pulumi.CustomResource {
             resourceInputs["warpDevices"] = state?.warpDevices;
         } else {
             const args = argsOrState as MagicNetworkMonitoringConfigurationArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -108,7 +111,7 @@ export interface MagicNetworkMonitoringConfigurationState {
  * The set of arguments for constructing a MagicNetworkMonitoringConfiguration resource.
  */
 export interface MagicNetworkMonitoringConfigurationArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
      */

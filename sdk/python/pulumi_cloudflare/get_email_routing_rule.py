@@ -28,7 +28,7 @@ class GetEmailRoutingRuleResult:
     """
     A collection of values returned by getEmailRoutingRule.
     """
-    def __init__(__self__, actions=None, enabled=None, filter=None, id=None, matchers=None, name=None, priority=None, rule_identifier=None, tag=None, zone_id=None):
+    def __init__(__self__, actions=None, enabled=None, filter=None, id=None, matchers=None, name=None, priority=None, rule_identifier=None, source=None, tag=None, zone_id=None):
         if actions and not isinstance(actions, list):
             raise TypeError("Expected argument 'actions' to be a list")
         pulumi.set(__self__, "actions", actions)
@@ -53,6 +53,9 @@ class GetEmailRoutingRuleResult:
         if rule_identifier and not isinstance(rule_identifier, str):
             raise TypeError("Expected argument 'rule_identifier' to be a str")
         pulumi.set(__self__, "rule_identifier", rule_identifier)
+        if source and not isinstance(source, str):
+            raise TypeError("Expected argument 'source' to be a str")
+        pulumi.set(__self__, "source", source)
         if tag and not isinstance(tag, str):
             raise TypeError("Expected argument 'tag' to be a str")
         pulumi.set(__self__, "tag", tag)
@@ -123,6 +126,17 @@ class GetEmailRoutingRuleResult:
 
     @_builtins.property
     @pulumi.getter
+    def source(self) -> _builtins.str:
+        """
+        Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+        `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+        to `api` when omitted on write.
+        Available values: "api", "wrangler".
+        """
+        return pulumi.get(self, "source")
+
+    @_builtins.property
+    @pulumi.getter
     @_utilities.deprecated("""This attribute is deprecated.""")
     def tag(self) -> _builtins.str:
         """
@@ -153,6 +167,7 @@ class AwaitableGetEmailRoutingRuleResult(GetEmailRoutingRuleResult):
             name=self.name,
             priority=self.priority,
             rule_identifier=self.rule_identifier,
+            source=self.source,
             tag=self.tag,
             zone_id=self.zone_id)
 
@@ -197,6 +212,7 @@ def get_email_routing_rule(filter: Optional[Union['GetEmailRoutingRuleFilterArgs
         name=pulumi.get(__ret__, 'name'),
         priority=pulumi.get(__ret__, 'priority'),
         rule_identifier=pulumi.get(__ret__, 'rule_identifier'),
+        source=pulumi.get(__ret__, 'source'),
         tag=pulumi.get(__ret__, 'tag'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_email_routing_rule_output(filter: pulumi.Input[Optional[Optional[Union['GetEmailRoutingRuleFilterArgs', 'GetEmailRoutingRuleFilterArgsDict']]]] = None,
@@ -238,5 +254,6 @@ def get_email_routing_rule_output(filter: pulumi.Input[Optional[Optional[Union['
         name=pulumi.get(__response__, 'name'),
         priority=pulumi.get(__response__, 'priority'),
         rule_identifier=pulumi.get(__response__, 'rule_identifier'),
+        source=pulumi.get(__response__, 'source'),
         tag=pulumi.get(__response__, 'tag'),
         zone_id=pulumi.get(__response__, 'zone_id')))

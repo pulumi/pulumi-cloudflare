@@ -25,7 +25,7 @@ func LookupAiSearchInstance(ctx *pulumi.Context, args *LookupAiSearchInstanceArg
 type LookupAiSearchInstanceArgs struct {
 	AccountId *string                    `pulumi:"accountId"`
 	Filter    *GetAiSearchInstanceFilter `pulumi:"filter"`
-	// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
+	// The ID of this resource.
 	Id *string `pulumi:"id"`
 }
 
@@ -37,13 +37,16 @@ type LookupAiSearchInstanceResult struct {
 	AisearchModel string `pulumi:"aisearchModel"`
 	Cache         bool   `pulumi:"cache"`
 	// Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
-	CacheThreshold  string                              `pulumi:"cacheThreshold"`
+	CacheThreshold string `pulumi:"cacheThreshold"`
+	// Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+	// Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+	CacheTtl        float64                             `pulumi:"cacheTtl"`
 	ChunkOverlap    int                                 `pulumi:"chunkOverlap"`
 	ChunkSize       int                                 `pulumi:"chunkSize"`
 	CreatedAt       string                              `pulumi:"createdAt"`
 	CreatedBy       string                              `pulumi:"createdBy"`
 	CustomMetadatas []GetAiSearchInstanceCustomMetadata `pulumi:"customMetadatas"`
-	// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+	// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
 	EmbeddingModel string                     `pulumi:"embeddingModel"`
 	Enable         bool                       `pulumi:"enable"`
 	EngineVersion  float64                    `pulumi:"engineVersion"`
@@ -54,7 +57,7 @@ type LookupAiSearchInstanceResult struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	HybridSearchEnabled bool `pulumi:"hybridSearchEnabled"`
-	// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
+	// The ID of this resource.
 	Id string `pulumi:"id"`
 	// Controls which storage backends are used during indexing. Defaults to vector-only.
 	IndexMethod          GetAiSearchInstanceIndexMethod          `pulumi:"indexMethod"`
@@ -100,7 +103,7 @@ func LookupAiSearchInstanceOutput(ctx *pulumi.Context, args LookupAiSearchInstan
 type LookupAiSearchInstanceOutputArgs struct {
 	AccountId pulumi.StringPtrInput             `pulumi:"accountId"`
 	Filter    GetAiSearchInstanceFilterPtrInput `pulumi:"filter"`
-	// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
+	// The ID of this resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
@@ -145,6 +148,12 @@ func (o LookupAiSearchInstanceResultOutput) CacheThreshold() pulumi.StringOutput
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.CacheThreshold }).(pulumi.StringOutput)
 }
 
+// Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+// Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+func (o LookupAiSearchInstanceResultOutput) CacheTtl() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupAiSearchInstanceResult) float64 { return v.CacheTtl }).(pulumi.Float64Output)
+}
+
 func (o LookupAiSearchInstanceResultOutput) ChunkOverlap() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) int { return v.ChunkOverlap }).(pulumi.IntOutput)
 }
@@ -165,7 +174,7 @@ func (o LookupAiSearchInstanceResultOutput) CustomMetadatas() GetAiSearchInstanc
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) []GetAiSearchInstanceCustomMetadata { return v.CustomMetadatas }).(GetAiSearchInstanceCustomMetadataArrayOutput)
 }
 
-// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
 func (o LookupAiSearchInstanceResultOutput) EmbeddingModel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.EmbeddingModel }).(pulumi.StringOutput)
 }
@@ -194,7 +203,7 @@ func (o LookupAiSearchInstanceResultOutput) HybridSearchEnabled() pulumi.BoolOut
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) bool { return v.HybridSearchEnabled }).(pulumi.BoolOutput)
 }
 
-// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
+// The ID of this resource.
 func (o LookupAiSearchInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }

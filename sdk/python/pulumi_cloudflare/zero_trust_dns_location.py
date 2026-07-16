@@ -21,12 +21,13 @@ __all__ = ['ZeroTrustDnsLocationArgs', 'ZeroTrustDnsLocation']
 @pulumi.input_type
 class ZeroTrustDnsLocationArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  client_default: pulumi.Input[Optional[_builtins.bool]] = None,
                  dns_destination_ips_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ecs_support: pulumi.Input[Optional[_builtins.bool]] = None,
                  endpoints: pulumi.Input[Optional['ZeroTrustDnsLocationEndpointsArgs']] = None,
+                 max_ttl: pulumi.Input[Optional['ZeroTrustDnsLocationMaxTtlArgs']] = None,
                  networks: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]]] = None):
         """
         The set of arguments for constructing a ZeroTrustDnsLocation resource.
@@ -36,11 +37,11 @@ class ZeroTrustDnsLocationArgs:
         :param pulumi.Input[_builtins.str] dns_destination_ips_id: Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
         :param pulumi.Input[_builtins.bool] ecs_support: Indicate whether the location must resolve EDNS queries.
         :param pulumi.Input['ZeroTrustDnsLocationEndpointsArgs'] endpoints: Configure the destination endpoints for this location.
+        :param pulumi.Input['ZeroTrustDnsLocationMaxTtlArgs'] max_ttl: Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]] networks: Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if client_default is not None:
             pulumi.set(__self__, "client_default", client_default)
         if dns_destination_ips_id is not None:
@@ -49,8 +50,19 @@ class ZeroTrustDnsLocationArgs:
             pulumi.set(__self__, "ecs_support", ecs_support)
         if endpoints is not None:
             pulumi.set(__self__, "endpoints", endpoints)
+        if max_ttl is not None:
+            pulumi.set(__self__, "max_ttl", max_ttl)
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -63,15 +75,6 @@ class ZeroTrustDnsLocationArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientDefault")
@@ -122,6 +125,18 @@ class ZeroTrustDnsLocationArgs:
         pulumi.set(self, "endpoints", value)
 
     @_builtins.property
+    @pulumi.getter(name="maxTtl")
+    def max_ttl(self) -> pulumi.Input[Optional['ZeroTrustDnsLocationMaxTtlArgs']]:
+        """
+        Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.
+        """
+        return pulumi.get(self, "max_ttl")
+
+    @max_ttl.setter
+    def max_ttl(self, value: pulumi.Input[Optional['ZeroTrustDnsLocationMaxTtlArgs']]):
+        pulumi.set(self, "max_ttl", value)
+
+    @_builtins.property
     @pulumi.getter
     def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]]]:
         """
@@ -148,6 +163,7 @@ class _ZeroTrustDnsLocationState:
                  ip: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv4_destination: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv4_destination_backup: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_ttl: pulumi.Input[Optional['ZeroTrustDnsLocationMaxTtlArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networks: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]]] = None,
                  updated_at: pulumi.Input[Optional[_builtins.str]] = None):
@@ -163,6 +179,7 @@ class _ZeroTrustDnsLocationState:
         :param pulumi.Input[_builtins.str] ip: Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.
         :param pulumi.Input[_builtins.str] ipv4_destination: Show the primary destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
         :param pulumi.Input[_builtins.str] ipv4_destination_backup: Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
+        :param pulumi.Input['ZeroTrustDnsLocationMaxTtlArgs'] max_ttl: Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.
         :param pulumi.Input[_builtins.str] name: Specify the location name.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]] networks: Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
         """
@@ -188,6 +205,8 @@ class _ZeroTrustDnsLocationState:
             pulumi.set(__self__, "ipv4_destination", ipv4_destination)
         if ipv4_destination_backup is not None:
             pulumi.set(__self__, "ipv4_destination_backup", ipv4_destination_backup)
+        if max_ttl is not None:
+            pulumi.set(__self__, "max_ttl", max_ttl)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if networks is not None:
@@ -322,6 +341,18 @@ class _ZeroTrustDnsLocationState:
         pulumi.set(self, "ipv4_destination_backup", value)
 
     @_builtins.property
+    @pulumi.getter(name="maxTtl")
+    def max_ttl(self) -> pulumi.Input[Optional['ZeroTrustDnsLocationMaxTtlArgs']]:
+        """
+        Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.
+        """
+        return pulumi.get(self, "max_ttl")
+
+    @max_ttl.setter
+    def max_ttl(self, value: pulumi.Input[Optional['ZeroTrustDnsLocationMaxTtlArgs']]):
+        pulumi.set(self, "max_ttl", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -366,6 +397,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
                  dns_destination_ips_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ecs_support: pulumi.Input[Optional[_builtins.bool]] = None,
                  endpoints: pulumi.Input[Optional[Union['ZeroTrustDnsLocationEndpointsArgs', 'ZeroTrustDnsLocationEndpointsArgsDict']]] = None,
+                 max_ttl: pulumi.Input[Optional[Union['ZeroTrustDnsLocationMaxTtlArgs', 'ZeroTrustDnsLocationMaxTtlArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDnsLocationNetworkArgs', 'ZeroTrustDnsLocationNetworkArgsDict']]]]] = None,
                  __props__=None):
@@ -412,6 +444,10 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
                     }],
                 },
             },
+            max_ttl={
+                "mode": "override",
+                "ttl_secs": 3600,
+            },
             networks=[{
                 "network": "192.0.2.1/32",
             }])
@@ -430,6 +466,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] dns_destination_ips_id: Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
         :param pulumi.Input[_builtins.bool] ecs_support: Indicate whether the location must resolve EDNS queries.
         :param pulumi.Input[Union['ZeroTrustDnsLocationEndpointsArgs', 'ZeroTrustDnsLocationEndpointsArgsDict']] endpoints: Configure the destination endpoints for this location.
+        :param pulumi.Input[Union['ZeroTrustDnsLocationMaxTtlArgs', 'ZeroTrustDnsLocationMaxTtlArgsDict']] max_ttl: Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.
         :param pulumi.Input[_builtins.str] name: Specify the location name.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDnsLocationNetworkArgs', 'ZeroTrustDnsLocationNetworkArgsDict']]]] networks: Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
         """
@@ -482,6 +519,10 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
                     }],
                 },
             },
+            max_ttl={
+                "mode": "override",
+                "ttl_secs": 3600,
+            },
             networks=[{
                 "network": "192.0.2.1/32",
             }])
@@ -514,6 +555,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
                  dns_destination_ips_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ecs_support: pulumi.Input[Optional[_builtins.bool]] = None,
                  endpoints: pulumi.Input[Optional[Union['ZeroTrustDnsLocationEndpointsArgs', 'ZeroTrustDnsLocationEndpointsArgsDict']]] = None,
+                 max_ttl: pulumi.Input[Optional[Union['ZeroTrustDnsLocationMaxTtlArgs', 'ZeroTrustDnsLocationMaxTtlArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDnsLocationNetworkArgs', 'ZeroTrustDnsLocationNetworkArgsDict']]]]] = None,
                  __props__=None):
@@ -525,11 +567,14 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZeroTrustDnsLocationArgs.__new__(ZeroTrustDnsLocationArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["client_default"] = client_default
             __props__.__dict__["dns_destination_ips_id"] = dns_destination_ips_id
             __props__.__dict__["ecs_support"] = ecs_support
             __props__.__dict__["endpoints"] = endpoints
+            __props__.__dict__["max_ttl"] = max_ttl
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
@@ -564,6 +609,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
             ip: pulumi.Input[Optional[_builtins.str]] = None,
             ipv4_destination: pulumi.Input[Optional[_builtins.str]] = None,
             ipv4_destination_backup: pulumi.Input[Optional[_builtins.str]] = None,
+            max_ttl: pulumi.Input[Optional[Union['ZeroTrustDnsLocationMaxTtlArgs', 'ZeroTrustDnsLocationMaxTtlArgsDict']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDnsLocationNetworkArgs', 'ZeroTrustDnsLocationNetworkArgsDict']]]]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustDnsLocation':
@@ -583,6 +629,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ip: Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.
         :param pulumi.Input[_builtins.str] ipv4_destination: Show the primary destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
         :param pulumi.Input[_builtins.str] ipv4_destination_backup: Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
+        :param pulumi.Input[Union['ZeroTrustDnsLocationMaxTtlArgs', 'ZeroTrustDnsLocationMaxTtlArgsDict']] max_ttl: Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.
         :param pulumi.Input[_builtins.str] name: Specify the location name.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDnsLocationNetworkArgs', 'ZeroTrustDnsLocationNetworkArgsDict']]]] networks: Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
         """
@@ -601,6 +648,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
         __props__.__dict__["ip"] = ip
         __props__.__dict__["ipv4_destination"] = ipv4_destination
         __props__.__dict__["ipv4_destination_backup"] = ipv4_destination_backup
+        __props__.__dict__["max_ttl"] = max_ttl
         __props__.__dict__["name"] = name
         __props__.__dict__["networks"] = networks
         __props__.__dict__["updated_at"] = updated_at
@@ -608,7 +656,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -687,6 +735,14 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
         Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
         """
         return pulumi.get(self, "ipv4_destination_backup")
+
+    @_builtins.property
+    @pulumi.getter(name="maxTtl")
+    def max_ttl(self) -> pulumi.Output['outputs.ZeroTrustDnsLocationMaxTtl']:
+        """
+        Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.
+        """
+        return pulumi.get(self, "max_ttl")
 
     @_builtins.property
     @pulumi.getter

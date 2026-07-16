@@ -10,8 +10,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class CloudforceOneRequestPriorityArgs extends com.pulumi.resources.ResourceArgs {
@@ -22,15 +20,15 @@ public final class CloudforceOneRequestPriorityArgs extends com.pulumi.resources
      * Identifier.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -129,7 +127,7 @@ public final class CloudforceOneRequestPriorityArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -241,6 +239,9 @@ public final class CloudforceOneRequestPriorityArgs extends com.pulumi.resources
         }
 
         public CloudforceOneRequestPriorityArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("CloudforceOneRequestPriorityArgs", "accountId");
+            }
             if ($.labels == null) {
                 throw new MissingRequiredPropertyException("CloudforceOneRequestPriorityArgs", "labels");
             }

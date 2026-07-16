@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustDevicePostureIntegration : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The configuration object containing third-party integration information.
@@ -129,8 +129,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustDevicePostureIntegrationArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// The configuration object containing third-party integration information.

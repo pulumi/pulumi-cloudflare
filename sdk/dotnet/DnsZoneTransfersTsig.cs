@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
     public partial class DnsZoneTransfersTsig : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// TSIG algorithm.
@@ -116,8 +116,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class DnsZoneTransfersTsigArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// TSIG algorithm.

@@ -21,11 +21,12 @@ __all__ = ['WorkerVersionArgs', 'WorkerVersion']
 @pulumi.input_type
 class WorkerVersionArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  worker_id: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  annotations: pulumi.Input[Optional['WorkerVersionAnnotationsArgs']] = None,
                  assets: pulumi.Input[Optional['WorkerVersionAssetsArgs']] = None,
                  bindings: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionBindingArgs']]]] = None,
+                 cache_options: pulumi.Input[Optional['WorkerVersionCacheOptionsArgs']] = None,
                  compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
                  compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  containers: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionContainerArgs']]]] = None,
@@ -33,16 +34,21 @@ class WorkerVersionArgs:
                  main_module: pulumi.Input[Optional[_builtins.str]] = None,
                  migrations: pulumi.Input[Optional['WorkerVersionMigrationsArgs']] = None,
                  modules: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionModuleArgs']]]] = None,
+                 package_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionPackageDependencyArgs']]]] = None,
                  placement: pulumi.Input[Optional['WorkerVersionPlacementArgs']] = None,
                  usage_model: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkerVersion resource.
 
-        :param pulumi.Input[_builtins.str] worker_id: Identifier for the Worker, which can be ID or name.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] worker_id: Identifier for the Worker, which can be ID or name.
         :param pulumi.Input['WorkerVersionAnnotationsArgs'] annotations: Metadata about the version.
         :param pulumi.Input['WorkerVersionAssetsArgs'] assets: Configuration for assets within a Worker.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerVersionBindingArgs']]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+        :param pulumi.Input['WorkerVersionCacheOptionsArgs'] cache_options: Global CacheW configuration for the Worker. When caching is on,
+               the platform provisions a `cloudflare.app` zone for the Worker.
+               A `type: worker` entry in the `exports` map can override this
+               value for a single entrypoint.
         :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerVersionContainerArgs']]] containers: List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
@@ -55,19 +61,22 @@ class WorkerVersionArgs:
                [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
                [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
                included as modules named `_headers` and `_redirects` with content type `text/plain`.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkerVersionPackageDependencyArgs']]] package_dependencies: The list of npm packages that were installed and used when this Worker
+               version was built.
         :param pulumi.Input['WorkerVersionPlacementArgs'] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the version.
                Available values: "standard", "bundled", "unbound".
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "worker_id", worker_id)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if assets is not None:
             pulumi.set(__self__, "assets", assets)
         if bindings is not None:
             pulumi.set(__self__, "bindings", bindings)
+        if cache_options is not None:
+            pulumi.set(__self__, "cache_options", cache_options)
         if compatibility_date is not None:
             pulumi.set(__self__, "compatibility_date", compatibility_date)
         if compatibility_flags is not None:
@@ -82,6 +91,8 @@ class WorkerVersionArgs:
             pulumi.set(__self__, "migrations", migrations)
         if modules is not None:
             pulumi.set(__self__, "modules", modules)
+        if package_dependencies is not None:
+            pulumi.set(__self__, "package_dependencies", package_dependencies)
         if placement is not None:
             pulumi.set(__self__, "placement", placement)
         if usage_model is not None:
@@ -89,6 +100,18 @@ class WorkerVersionArgs:
             pulumi.log.warn("""usage_model is deprecated: This attribute is deprecated.""")
         if usage_model is not None:
             pulumi.set(__self__, "usage_model", usage_model)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="workerId")
@@ -101,18 +124,6 @@ class WorkerVersionArgs:
     @worker_id.setter
     def worker_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "worker_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -149,6 +160,21 @@ class WorkerVersionArgs:
     @bindings.setter
     def bindings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionBindingArgs']]]]):
         pulumi.set(self, "bindings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cacheOptions")
+    def cache_options(self) -> pulumi.Input[Optional['WorkerVersionCacheOptionsArgs']]:
+        """
+        Global CacheW configuration for the Worker. When caching is on,
+        the platform provisions a `cloudflare.app` zone for the Worker.
+        A `type: worker` entry in the `exports` map can override this
+        value for a single entrypoint.
+        """
+        return pulumi.get(self, "cache_options")
+
+    @cache_options.setter
+    def cache_options(self, value: pulumi.Input[Optional['WorkerVersionCacheOptionsArgs']]):
+        pulumi.set(self, "cache_options", value)
 
     @_builtins.property
     @pulumi.getter(name="compatibilityDate")
@@ -240,6 +266,19 @@ class WorkerVersionArgs:
         pulumi.set(self, "modules", value)
 
     @_builtins.property
+    @pulumi.getter(name="packageDependencies")
+    def package_dependencies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionPackageDependencyArgs']]]]:
+        """
+        The list of npm packages that were installed and used when this Worker
+        version was built.
+        """
+        return pulumi.get(self, "package_dependencies")
+
+    @package_dependencies.setter
+    def package_dependencies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionPackageDependencyArgs']]]]):
+        pulumi.set(self, "package_dependencies", value)
+
+    @_builtins.property
     @pulumi.getter
     def placement(self) -> pulumi.Input[Optional['WorkerVersionPlacementArgs']]:
         """
@@ -273,6 +312,7 @@ class _WorkerVersionState:
                  annotations: pulumi.Input[Optional['WorkerVersionAnnotationsArgs']] = None,
                  assets: pulumi.Input[Optional['WorkerVersionAssetsArgs']] = None,
                  bindings: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionBindingArgs']]]] = None,
+                 cache_options: pulumi.Input[Optional['WorkerVersionCacheOptionsArgs']] = None,
                  compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
                  compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  containers: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionContainerArgs']]]] = None,
@@ -284,6 +324,7 @@ class _WorkerVersionState:
                  migrations: pulumi.Input[Optional['WorkerVersionMigrationsArgs']] = None,
                  modules: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionModuleArgs']]]] = None,
                  number: pulumi.Input[Optional[_builtins.int]] = None,
+                 package_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionPackageDependencyArgs']]]] = None,
                  placement: pulumi.Input[Optional['WorkerVersionPlacementArgs']] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
                  startup_time_ms: pulumi.Input[Optional[_builtins.int]] = None,
@@ -297,6 +338,10 @@ class _WorkerVersionState:
         :param pulumi.Input['WorkerVersionAnnotationsArgs'] annotations: Metadata about the version.
         :param pulumi.Input['WorkerVersionAssetsArgs'] assets: Configuration for assets within a Worker.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerVersionBindingArgs']]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+        :param pulumi.Input['WorkerVersionCacheOptionsArgs'] cache_options: Global CacheW configuration for the Worker. When caching is on,
+               the platform provisions a `cloudflare.app` zone for the Worker.
+               A `type: worker` entry in the `exports` map can override this
+               value for a single entrypoint.
         :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerVersionContainerArgs']]] containers: List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
@@ -313,6 +358,8 @@ class _WorkerVersionState:
                [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
                included as modules named `_headers` and `_redirects` with content type `text/plain`.
         :param pulumi.Input[_builtins.int] number: The integer version number, starting from one.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkerVersionPackageDependencyArgs']]] package_dependencies: The list of npm packages that were installed and used when this Worker
+               version was built.
         :param pulumi.Input['WorkerVersionPlacementArgs'] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         :param pulumi.Input[_builtins.str] source: The client used to create the version.
         :param pulumi.Input[_builtins.int] startup_time_ms: Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
@@ -329,6 +376,8 @@ class _WorkerVersionState:
             pulumi.set(__self__, "assets", assets)
         if bindings is not None:
             pulumi.set(__self__, "bindings", bindings)
+        if cache_options is not None:
+            pulumi.set(__self__, "cache_options", cache_options)
         if compatibility_date is not None:
             pulumi.set(__self__, "compatibility_date", compatibility_date)
         if compatibility_flags is not None:
@@ -351,6 +400,8 @@ class _WorkerVersionState:
             pulumi.set(__self__, "modules", modules)
         if number is not None:
             pulumi.set(__self__, "number", number)
+        if package_dependencies is not None:
+            pulumi.set(__self__, "package_dependencies", package_dependencies)
         if placement is not None:
             pulumi.set(__self__, "placement", placement)
         if source is not None:
@@ -414,6 +465,21 @@ class _WorkerVersionState:
     @bindings.setter
     def bindings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionBindingArgs']]]]):
         pulumi.set(self, "bindings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cacheOptions")
+    def cache_options(self) -> pulumi.Input[Optional['WorkerVersionCacheOptionsArgs']]:
+        """
+        Global CacheW configuration for the Worker. When caching is on,
+        the platform provisions a `cloudflare.app` zone for the Worker.
+        A `type: worker` entry in the `exports` map can override this
+        value for a single entrypoint.
+        """
+        return pulumi.get(self, "cache_options")
+
+    @cache_options.setter
+    def cache_options(self, value: pulumi.Input[Optional['WorkerVersionCacheOptionsArgs']]):
+        pulumi.set(self, "cache_options", value)
 
     @_builtins.property
     @pulumi.getter(name="compatibilityDate")
@@ -553,6 +619,19 @@ class _WorkerVersionState:
         pulumi.set(self, "number", value)
 
     @_builtins.property
+    @pulumi.getter(name="packageDependencies")
+    def package_dependencies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionPackageDependencyArgs']]]]:
+        """
+        The list of npm packages that were installed and used when this Worker
+        version was built.
+        """
+        return pulumi.get(self, "package_dependencies")
+
+    @package_dependencies.setter
+    def package_dependencies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionPackageDependencyArgs']]]]):
+        pulumi.set(self, "package_dependencies", value)
+
+    @_builtins.property
     @pulumi.getter
     def placement(self) -> pulumi.Input[Optional['WorkerVersionPlacementArgs']]:
         """
@@ -637,6 +716,7 @@ class WorkerVersion(pulumi.CustomResource):
                  annotations: pulumi.Input[Optional[Union['WorkerVersionAnnotationsArgs', 'WorkerVersionAnnotationsArgsDict']]] = None,
                  assets: pulumi.Input[Optional[Union['WorkerVersionAssetsArgs', 'WorkerVersionAssetsArgsDict']]] = None,
                  bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict']]]]] = None,
+                 cache_options: pulumi.Input[Optional[Union['WorkerVersionCacheOptionsArgs', 'WorkerVersionCacheOptionsArgsDict']]] = None,
                  compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
                  compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]]] = None,
@@ -644,6 +724,7 @@ class WorkerVersion(pulumi.CustomResource):
                  main_module: pulumi.Input[Optional[_builtins.str]] = None,
                  migrations: pulumi.Input[Optional[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']]] = None,
                  modules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict']]]]] = None,
+                 package_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionPackageDependencyArgs', 'WorkerVersionPackageDependencyArgsDict']]]]] = None,
                  placement: pulumi.Input[Optional[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']]] = None,
                  usage_model: pulumi.Input[Optional[_builtins.str]] = None,
                  worker_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -681,6 +762,10 @@ class WorkerVersion(pulumi.CustomResource):
                 "text": "my_data",
                 "type": "plain_text",
             }],
+            cache_options={
+                "enabled": True,
+                "cross_version_cache": True,
+            },
             compatibility_date="2021-01-01",
             compatibility_flags=["nodejs_compat"],
             containers=[{
@@ -712,6 +797,11 @@ class WorkerVersion(pulumi.CustomResource):
                 "content_type": "application/javascript+module",
                 "name": "index.js",
             }],
+            package_dependencies=[{
+                "installed_version": "4.17.22",
+                "name": "lodash",
+                "package_json_version": "^4.17.21",
+            }],
             placement={
                 "mode": "smart",
             })
@@ -730,6 +820,10 @@ class WorkerVersion(pulumi.CustomResource):
         :param pulumi.Input[Union['WorkerVersionAnnotationsArgs', 'WorkerVersionAnnotationsArgsDict']] annotations: Metadata about the version.
         :param pulumi.Input[Union['WorkerVersionAssetsArgs', 'WorkerVersionAssetsArgsDict']] assets: Configuration for assets within a Worker.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+        :param pulumi.Input[Union['WorkerVersionCacheOptionsArgs', 'WorkerVersionCacheOptionsArgsDict']] cache_options: Global CacheW configuration for the Worker. When caching is on,
+               the platform provisions a `cloudflare.app` zone for the Worker.
+               A `type: worker` entry in the `exports` map can override this
+               value for a single entrypoint.
         :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]] containers: List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
@@ -742,6 +836,8 @@ class WorkerVersion(pulumi.CustomResource):
                [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
                [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
                included as modules named `_headers` and `_redirects` with content type `text/plain`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionPackageDependencyArgs', 'WorkerVersionPackageDependencyArgsDict']]]] package_dependencies: The list of npm packages that were installed and used when this Worker
+               version was built.
         :param pulumi.Input[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the version.
                Available values: "standard", "bundled", "unbound".
@@ -786,6 +882,10 @@ class WorkerVersion(pulumi.CustomResource):
                 "text": "my_data",
                 "type": "plain_text",
             }],
+            cache_options={
+                "enabled": True,
+                "cross_version_cache": True,
+            },
             compatibility_date="2021-01-01",
             compatibility_flags=["nodejs_compat"],
             containers=[{
@@ -816,6 +916,11 @@ class WorkerVersion(pulumi.CustomResource):
                 "content_file": "dist/index.js",
                 "content_type": "application/javascript+module",
                 "name": "index.js",
+            }],
+            package_dependencies=[{
+                "installed_version": "4.17.22",
+                "name": "lodash",
+                "package_json_version": "^4.17.21",
             }],
             placement={
                 "mode": "smart",
@@ -848,6 +953,7 @@ class WorkerVersion(pulumi.CustomResource):
                  annotations: pulumi.Input[Optional[Union['WorkerVersionAnnotationsArgs', 'WorkerVersionAnnotationsArgsDict']]] = None,
                  assets: pulumi.Input[Optional[Union['WorkerVersionAssetsArgs', 'WorkerVersionAssetsArgsDict']]] = None,
                  bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict']]]]] = None,
+                 cache_options: pulumi.Input[Optional[Union['WorkerVersionCacheOptionsArgs', 'WorkerVersionCacheOptionsArgsDict']]] = None,
                  compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
                  compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]]] = None,
@@ -855,6 +961,7 @@ class WorkerVersion(pulumi.CustomResource):
                  main_module: pulumi.Input[Optional[_builtins.str]] = None,
                  migrations: pulumi.Input[Optional[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']]] = None,
                  modules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict']]]]] = None,
+                 package_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionPackageDependencyArgs', 'WorkerVersionPackageDependencyArgsDict']]]]] = None,
                  placement: pulumi.Input[Optional[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']]] = None,
                  usage_model: pulumi.Input[Optional[_builtins.str]] = None,
                  worker_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -867,10 +974,13 @@ class WorkerVersion(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkerVersionArgs.__new__(WorkerVersionArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["assets"] = assets
             __props__.__dict__["bindings"] = bindings
+            __props__.__dict__["cache_options"] = cache_options
             __props__.__dict__["compatibility_date"] = compatibility_date
             __props__.__dict__["compatibility_flags"] = compatibility_flags
             __props__.__dict__["containers"] = containers
@@ -878,6 +988,7 @@ class WorkerVersion(pulumi.CustomResource):
             __props__.__dict__["main_module"] = main_module
             __props__.__dict__["migrations"] = migrations
             __props__.__dict__["modules"] = modules
+            __props__.__dict__["package_dependencies"] = package_dependencies
             __props__.__dict__["placement"] = placement
             __props__.__dict__["usage_model"] = usage_model
             if worker_id is None and not opts.urn:
@@ -904,6 +1015,7 @@ class WorkerVersion(pulumi.CustomResource):
             annotations: pulumi.Input[Optional[Union['WorkerVersionAnnotationsArgs', 'WorkerVersionAnnotationsArgsDict']]] = None,
             assets: pulumi.Input[Optional[Union['WorkerVersionAssetsArgs', 'WorkerVersionAssetsArgsDict']]] = None,
             bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict']]]]] = None,
+            cache_options: pulumi.Input[Optional[Union['WorkerVersionCacheOptionsArgs', 'WorkerVersionCacheOptionsArgsDict']]] = None,
             compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
             compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]]] = None,
@@ -915,6 +1027,7 @@ class WorkerVersion(pulumi.CustomResource):
             migrations: pulumi.Input[Optional[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']]] = None,
             modules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict']]]]] = None,
             number: pulumi.Input[Optional[_builtins.int]] = None,
+            package_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionPackageDependencyArgs', 'WorkerVersionPackageDependencyArgsDict']]]]] = None,
             placement: pulumi.Input[Optional[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']]] = None,
             source: pulumi.Input[Optional[_builtins.str]] = None,
             startup_time_ms: pulumi.Input[Optional[_builtins.int]] = None,
@@ -932,6 +1045,10 @@ class WorkerVersion(pulumi.CustomResource):
         :param pulumi.Input[Union['WorkerVersionAnnotationsArgs', 'WorkerVersionAnnotationsArgsDict']] annotations: Metadata about the version.
         :param pulumi.Input[Union['WorkerVersionAssetsArgs', 'WorkerVersionAssetsArgsDict']] assets: Configuration for assets within a Worker.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+        :param pulumi.Input[Union['WorkerVersionCacheOptionsArgs', 'WorkerVersionCacheOptionsArgsDict']] cache_options: Global CacheW configuration for the Worker. When caching is on,
+               the platform provisions a `cloudflare.app` zone for the Worker.
+               A `type: worker` entry in the `exports` map can override this
+               value for a single entrypoint.
         :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]] containers: List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
@@ -948,6 +1065,8 @@ class WorkerVersion(pulumi.CustomResource):
                [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
                included as modules named `_headers` and `_redirects` with content type `text/plain`.
         :param pulumi.Input[_builtins.int] number: The integer version number, starting from one.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionPackageDependencyArgs', 'WorkerVersionPackageDependencyArgsDict']]]] package_dependencies: The list of npm packages that were installed and used when this Worker
+               version was built.
         :param pulumi.Input[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         :param pulumi.Input[_builtins.str] source: The client used to create the version.
         :param pulumi.Input[_builtins.int] startup_time_ms: Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
@@ -964,6 +1083,7 @@ class WorkerVersion(pulumi.CustomResource):
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["assets"] = assets
         __props__.__dict__["bindings"] = bindings
+        __props__.__dict__["cache_options"] = cache_options
         __props__.__dict__["compatibility_date"] = compatibility_date
         __props__.__dict__["compatibility_flags"] = compatibility_flags
         __props__.__dict__["containers"] = containers
@@ -975,6 +1095,7 @@ class WorkerVersion(pulumi.CustomResource):
         __props__.__dict__["migrations"] = migrations
         __props__.__dict__["modules"] = modules
         __props__.__dict__["number"] = number
+        __props__.__dict__["package_dependencies"] = package_dependencies
         __props__.__dict__["placement"] = placement
         __props__.__dict__["source"] = source
         __props__.__dict__["startup_time_ms"] = startup_time_ms
@@ -985,7 +1106,7 @@ class WorkerVersion(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """
@@ -1014,6 +1135,17 @@ class WorkerVersion(pulumi.CustomResource):
         List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         """
         return pulumi.get(self, "bindings")
+
+    @_builtins.property
+    @pulumi.getter(name="cacheOptions")
+    def cache_options(self) -> pulumi.Output['outputs.WorkerVersionCacheOptions']:
+        """
+        Global CacheW configuration for the Worker. When caching is on,
+        the platform provisions a `cloudflare.app` zone for the Worker.
+        A `type: worker` entry in the `exports` map can override this
+        value for a single entrypoint.
+        """
+        return pulumi.get(self, "cache_options")
 
     @_builtins.property
     @pulumi.getter(name="compatibilityDate")
@@ -1107,6 +1239,15 @@ class WorkerVersion(pulumi.CustomResource):
         The integer version number, starting from one.
         """
         return pulumi.get(self, "number")
+
+    @_builtins.property
+    @pulumi.getter(name="packageDependencies")
+    def package_dependencies(self) -> pulumi.Output[Optional[Sequence['outputs.WorkerVersionPackageDependency']]]:
+        """
+        The list of npm packages that were installed and used when this Worker
+        version was built.
+        """
+        return pulumi.get(self, "package_dependencies")
 
     @_builtins.property
     @pulumi.getter

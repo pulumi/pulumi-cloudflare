@@ -34,6 +34,11 @@ public final class GetDnsRecordsInvokeResult {
      */
     private String id;
     /**
+     * @return Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    private Boolean includeShadowMetadata;
+    /**
      * @return Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
      * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
@@ -66,6 +71,16 @@ public final class GetDnsRecordsInvokeResult {
      * 
      */
     private @Nullable String search;
+    /**
+     * @return Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    private @Nullable String shadowedByName;
+    /**
+     * @return Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    private @Nullable String shadowingName;
     private @Nullable GetDnsRecordsTag tag;
     /**
      * @return Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren&#39;t related to tags.
@@ -106,6 +121,13 @@ public final class GetDnsRecordsInvokeResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    public Boolean includeShadowMetadata() {
+        return this.includeShadowMetadata;
     }
     /**
      * @return Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
@@ -154,6 +176,20 @@ public final class GetDnsRecordsInvokeResult {
     public Optional<String> search() {
         return Optional.ofNullable(this.search);
     }
+    /**
+     * @return Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    public Optional<String> shadowedByName() {
+        return Optional.ofNullable(this.shadowedByName);
+    }
+    /**
+     * @return Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    public Optional<String> shadowingName() {
+        return Optional.ofNullable(this.shadowingName);
+    }
     public Optional<GetDnsRecordsTag> tag() {
         return Optional.ofNullable(this.tag);
     }
@@ -194,6 +230,7 @@ public final class GetDnsRecordsInvokeResult {
         private @Nullable GetDnsRecordsContent content;
         private String direction;
         private String id;
+        private Boolean includeShadowMetadata;
         private String match;
         private @Nullable Integer maxItems;
         private @Nullable GetDnsRecordsName name;
@@ -201,6 +238,8 @@ public final class GetDnsRecordsInvokeResult {
         private Boolean proxied;
         private List<GetDnsRecordsResult> results;
         private @Nullable String search;
+        private @Nullable String shadowedByName;
+        private @Nullable String shadowingName;
         private @Nullable GetDnsRecordsTag tag;
         private String tagMatch;
         private @Nullable String type;
@@ -212,6 +251,7 @@ public final class GetDnsRecordsInvokeResult {
     	      this.content = defaults.content;
     	      this.direction = defaults.direction;
     	      this.id = defaults.id;
+    	      this.includeShadowMetadata = defaults.includeShadowMetadata;
     	      this.match = defaults.match;
     	      this.maxItems = defaults.maxItems;
     	      this.name = defaults.name;
@@ -219,6 +259,8 @@ public final class GetDnsRecordsInvokeResult {
     	      this.proxied = defaults.proxied;
     	      this.results = defaults.results;
     	      this.search = defaults.search;
+    	      this.shadowedByName = defaults.shadowedByName;
+    	      this.shadowingName = defaults.shadowingName;
     	      this.tag = defaults.tag;
     	      this.tagMatch = defaults.tagMatch;
     	      this.type = defaults.type;
@@ -251,6 +293,14 @@ public final class GetDnsRecordsInvokeResult {
               throw new MissingRequiredPropertyException("GetDnsRecordsInvokeResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder includeShadowMetadata(Boolean includeShadowMetadata) {
+            if (includeShadowMetadata == null) {
+              throw new MissingRequiredPropertyException("GetDnsRecordsInvokeResult", "includeShadowMetadata");
+            }
+            this.includeShadowMetadata = includeShadowMetadata;
             return this;
         }
         @CustomType.Setter
@@ -307,6 +357,18 @@ public final class GetDnsRecordsInvokeResult {
             return this;
         }
         @CustomType.Setter
+        public Builder shadowedByName(@Nullable String shadowedByName) {
+
+            this.shadowedByName = shadowedByName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder shadowingName(@Nullable String shadowingName) {
+
+            this.shadowingName = shadowingName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tag(@Nullable GetDnsRecordsTag tag) {
 
             this.tag = tag;
@@ -338,6 +400,7 @@ public final class GetDnsRecordsInvokeResult {
             _resultValue.content = content;
             _resultValue.direction = direction;
             _resultValue.id = id;
+            _resultValue.includeShadowMetadata = includeShadowMetadata;
             _resultValue.match = match;
             _resultValue.maxItems = maxItems;
             _resultValue.name = name;
@@ -345,6 +408,8 @@ public final class GetDnsRecordsInvokeResult {
             _resultValue.proxied = proxied;
             _resultValue.results = results;
             _resultValue.search = search;
+            _resultValue.shadowedByName = shadowedByName;
+            _resultValue.shadowingName = shadowingName;
             _resultValue.tag = tag;
             _resultValue.tagMatch = tagMatch;
             _resultValue.type = type;

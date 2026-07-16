@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.GetDnsRecordFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -39,6 +40,21 @@ public final class GetDnsRecordArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    @Import(name="includeShadowMetadata")
+    private @Nullable Output<Boolean> includeShadowMetadata;
+
+    /**
+     * @return Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    public Optional<Output<Boolean>> includeShadowMetadata() {
+        return Optional.ofNullable(this.includeShadowMetadata);
+    }
+
+    /**
      * Identifier.
      * 
      */
@@ -58,6 +74,7 @@ public final class GetDnsRecordArgs extends com.pulumi.resources.InvokeArgs {
     private GetDnsRecordArgs(GetDnsRecordArgs $) {
         this.dnsRecordId = $.dnsRecordId;
         this.filter = $.filter;
+        this.includeShadowMetadata = $.includeShadowMetadata;
         this.zoneId = $.zoneId;
     }
 
@@ -107,6 +124,27 @@ public final class GetDnsRecordArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder filter(GetDnsRecordFilterArgs filter) {
             return filter(Output.of(filter));
+        }
+
+        /**
+         * @param includeShadowMetadata Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeShadowMetadata(@Nullable Output<Boolean> includeShadowMetadata) {
+            $.includeShadowMetadata = includeShadowMetadata;
+            return this;
+        }
+
+        /**
+         * @param includeShadowMetadata Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeShadowMetadata(Boolean includeShadowMetadata) {
+            return includeShadowMetadata(Output.of(includeShadowMetadata));
         }
 
         /**

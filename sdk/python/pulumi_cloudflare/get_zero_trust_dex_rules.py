@@ -53,6 +53,9 @@ class GetZeroTrustDexRulesResult:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier linked to an account.
+        """
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -75,7 +78,7 @@ class GetZeroTrustDexRulesResult:
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        Filter results by rule name
+        Filter results by rule name.
         """
         return pulumi.get(self, "name")
 
@@ -91,7 +94,7 @@ class GetZeroTrustDexRulesResult:
     @pulumi.getter(name="sortBy")
     def sort_by(self) -> _builtins.str:
         """
-        Which property to sort results by
+        Which property to sort results by.
         Available values: "name", "created*at", "updated*at".
         """
         return pulumi.get(self, "sort_by")
@@ -100,7 +103,7 @@ class GetZeroTrustDexRulesResult:
     @pulumi.getter(name="sortOrder")
     def sort_order(self) -> _builtins.str:
         """
-        Sort direction for sort_by property
+        Sort direction for sort_by property.
         Available values: "ASC", "DESC".
         """
         return pulumi.get(self, "sort_order")
@@ -146,11 +149,12 @@ def get_zero_trust_dex_rules(account_id: Optional[_builtins.str] = None,
     ```
 
 
+    :param _builtins.str account_id: Unique identifier linked to an account.
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str name: Filter results by rule name
-    :param _builtins.str sort_by: Which property to sort results by
+    :param _builtins.str name: Filter results by rule name.
+    :param _builtins.str sort_by: Which property to sort results by.
            Available values: "name", "created*at", "updated*at".
-    :param _builtins.str sort_order: Sort direction for sort_by property
+    :param _builtins.str sort_order: Sort direction for sort_by property.
            Available values: "ASC", "DESC".
     """
     __args__ = dict()
@@ -195,11 +199,12 @@ def get_zero_trust_dex_rules_output(account_id: pulumi.Input[Optional[Optional[_
     ```
 
 
+    :param _builtins.str account_id: Unique identifier linked to an account.
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str name: Filter results by rule name
-    :param _builtins.str sort_by: Which property to sort results by
+    :param _builtins.str name: Filter results by rule name.
+    :param _builtins.str sort_by: Which property to sort results by.
            Available values: "name", "created*at", "updated*at".
-    :param _builtins.str sort_order: Sort direction for sort_by property
+    :param _builtins.str sort_order: Sort direction for sort_by property.
            Available values: "ASC", "DESC".
     """
     __args__ = dict()

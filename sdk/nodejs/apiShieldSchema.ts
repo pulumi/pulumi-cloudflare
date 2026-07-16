@@ -89,7 +89,7 @@ export class ApiShieldSchema extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ApiShieldSchema resource with the given unique name, arguments, and options.
@@ -121,6 +121,9 @@ export class ApiShieldSchema extends pulumi.CustomResource {
             }
             if (args?.kind === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
+            }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["file"] = args?.file;
             resourceInputs["kind"] = args?.kind;
@@ -200,5 +203,5 @@ export interface ApiShieldSchemaArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

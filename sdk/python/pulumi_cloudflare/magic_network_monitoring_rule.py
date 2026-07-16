@@ -19,11 +19,11 @@ __all__ = ['MagicNetworkMonitoringRuleArgs', 'MagicNetworkMonitoringRule']
 @pulumi.input_type
 class MagicNetworkMonitoringRuleArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  automatic_advertisement: pulumi.Input[_builtins.bool],
                  name: pulumi.Input[_builtins.str],
                  prefixes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  type: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  bandwidth_threshold: pulumi.Input[Optional[_builtins.float]] = None,
                  duration: pulumi.Input[Optional[_builtins.str]] = None,
                  packet_threshold: pulumi.Input[Optional[_builtins.float]] = None,
@@ -48,12 +48,11 @@ class MagicNetworkMonitoringRuleArgs:
         :param pulumi.Input[_builtins.str] zscore_target: Target of the zscore rule analysis.
                Available values: "bits", "packets".
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "automatic_advertisement", automatic_advertisement)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "prefixes", prefixes)
         pulumi.set(__self__, "type", type)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if bandwidth_threshold is not None:
             pulumi.set(__self__, "bandwidth_threshold", bandwidth_threshold)
         if duration is not None:
@@ -66,6 +65,15 @@ class MagicNetworkMonitoringRuleArgs:
             pulumi.set(__self__, "zscore_sensitivity", zscore_sensitivity)
         if zscore_target is not None:
             pulumi.set(__self__, "zscore_target", zscore_target)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="automaticAdvertisement")
@@ -112,15 +120,6 @@ class MagicNetworkMonitoringRuleArgs:
     @type.setter
     def type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="bandwidthThreshold")
@@ -530,6 +529,8 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MagicNetworkMonitoringRuleArgs.__new__(MagicNetworkMonitoringRuleArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if automatic_advertisement is None and not opts.urn:
                 raise TypeError("Missing required property 'automatic_advertisement'")
@@ -611,7 +612,7 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property

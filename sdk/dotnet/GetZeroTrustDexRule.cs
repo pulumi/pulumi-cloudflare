@@ -105,6 +105,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDexRuleArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Unique identifier linked to an account.
+        /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
 
@@ -122,6 +125,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDexRuleInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Unique identifier linked to an account.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
@@ -141,6 +147,9 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustDexRuleResult
     {
+        /// <summary>
+        /// Unique identifier linked to an account.
+        /// </summary>
         public readonly string? AccountId;
         public readonly string CreatedAt;
         public readonly string Description;

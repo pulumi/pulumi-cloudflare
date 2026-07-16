@@ -78,7 +78,7 @@ export class SchemaValidationSettings extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a SchemaValidationSettings resource with the given unique name, arguments, and options.
@@ -100,6 +100,9 @@ export class SchemaValidationSettings extends pulumi.CustomResource {
             const args = argsOrState as SchemaValidationSettingsArgs | undefined;
             if (args?.validationDefaultMitigationAction === undefined && !opts.urn) {
                 throw new Error("Missing required property 'validationDefaultMitigationAction'");
+            }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["validationDefaultMitigationAction"] = args?.validationDefaultMitigationAction;
             resourceInputs["validationOverrideMitigationAction"] = args?.validationOverrideMitigationAction;
@@ -163,5 +166,5 @@ export interface SchemaValidationSettingsArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

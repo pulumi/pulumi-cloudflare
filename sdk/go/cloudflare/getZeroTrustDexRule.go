@@ -56,6 +56,7 @@ func LookupZeroTrustDexRule(ctx *pulumi.Context, args *LookupZeroTrustDexRuleArg
 
 // A collection of arguments for invoking getZeroTrustDexRule.
 type LookupZeroTrustDexRuleArgs struct {
+	// Unique identifier linked to an account.
 	AccountId *string `pulumi:"accountId"`
 	// API Resource UUID tag.
 	RuleId string `pulumi:"ruleId"`
@@ -63,6 +64,7 @@ type LookupZeroTrustDexRuleArgs struct {
 
 // A collection of values returned by getZeroTrustDexRule.
 type LookupZeroTrustDexRuleResult struct {
+	// Unique identifier linked to an account.
 	AccountId   *string `pulumi:"accountId"`
 	CreatedAt   string  `pulumi:"createdAt"`
 	Description string  `pulumi:"description"`
@@ -87,6 +89,7 @@ func LookupZeroTrustDexRuleOutput(ctx *pulumi.Context, args LookupZeroTrustDexRu
 
 // A collection of arguments for invoking getZeroTrustDexRule.
 type LookupZeroTrustDexRuleOutputArgs struct {
+	// Unique identifier linked to an account.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// API Resource UUID tag.
 	RuleId pulumi.StringInput `pulumi:"ruleId"`
@@ -111,6 +114,7 @@ func (o LookupZeroTrustDexRuleResultOutput) ToLookupZeroTrustDexRuleResultOutput
 	return o
 }
 
+// Unique identifier linked to an account.
 func (o LookupZeroTrustDexRuleResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustDexRuleResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }

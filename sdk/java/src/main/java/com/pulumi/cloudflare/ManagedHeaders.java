@@ -15,6 +15,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -122,28 +123,28 @@ public class ManagedHeaders extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="managedRequestHeaders", refs={List.class,ManagedHeadersManagedRequestHeader.class}, tree="[0,1]")
-    private Output<List<ManagedHeadersManagedRequestHeader>> managedRequestHeaders;
+    private Output</* @Nullable */ List<ManagedHeadersManagedRequestHeader>> managedRequestHeaders;
 
     /**
      * @return The list of Managed Request Transforms.
      * 
      */
-    public Output<List<ManagedHeadersManagedRequestHeader>> managedRequestHeaders() {
-        return this.managedRequestHeaders;
+    public Output<Optional<List<ManagedHeadersManagedRequestHeader>>> managedRequestHeaders() {
+        return Codegen.optional(this.managedRequestHeaders);
     }
     /**
      * The list of Managed Response Transforms.
      * 
      */
     @Export(name="managedResponseHeaders", refs={List.class,ManagedHeadersManagedResponseHeader.class}, tree="[0,1]")
-    private Output<List<ManagedHeadersManagedResponseHeader>> managedResponseHeaders;
+    private Output</* @Nullable */ List<ManagedHeadersManagedResponseHeader>> managedResponseHeaders;
 
     /**
      * @return The list of Managed Response Transforms.
      * 
      */
-    public Output<List<ManagedHeadersManagedResponseHeader>> managedResponseHeaders() {
-        return this.managedResponseHeaders;
+    public Output<Optional<List<ManagedHeadersManagedResponseHeader>>> managedResponseHeaders() {
+        return Codegen.optional(this.managedResponseHeaders);
     }
     /**
      * The unique ID of the zone.

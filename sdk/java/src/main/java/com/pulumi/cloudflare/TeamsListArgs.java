@@ -18,11 +18,11 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final TeamsListArgs Empty = new TeamsListArgs();
 
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -115,7 +115,7 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
             $ = new TeamsListArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -221,6 +221,9 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TeamsListArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("TeamsListArgs", "accountId");
+            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("TeamsListArgs", "name");
             }

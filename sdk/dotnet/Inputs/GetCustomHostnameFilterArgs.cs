@@ -43,7 +43,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? HostnameStatus { get; set; }
 
         /// <summary>
-        /// Hostname ID to match against. This ID was generated and returned during the initial CustomHostname creation. This parameter cannot be used with the 'hostname' parameter.
+        /// Hostname ID to match against. This ID was generated and returned during the initial CustomHostname creation. This parameter cannot be used with the 'hostname', 'hostname.exact', 'hostname.contain', or 'hostname.startsWith' parameters.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -59,8 +59,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// Whether to filter hostnames based on if they have SSL enabled.
         /// Available values: 0, 1.
         /// </summary>
-        [Input("ssl")]
-        public Input<double>? Ssl { get; set; }
+        [Input("ssl", required: true)]
+        public Input<int> Ssl { get; set; } = null!;
 
         /// <summary>
         /// Filter by SSL certificate status.

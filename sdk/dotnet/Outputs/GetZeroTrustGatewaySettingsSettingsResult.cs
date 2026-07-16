@@ -58,6 +58,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewaySettingsSettingsInspectionResult Inspection;
         /// <summary>
+        /// Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `MaxTtl` setting.
+        /// </summary>
+        public readonly int MaxTtlSecs;
+        /// <summary>
         /// Specify whether to detect protocols from the initial bytes of client traffic.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewaySettingsSettingsProtocolDetectionResult ProtocolDetection;
@@ -94,6 +98,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.GetZeroTrustGatewaySettingsSettingsInspectionResult inspection,
 
+            int maxTtlSecs,
+
             Outputs.GetZeroTrustGatewaySettingsSettingsProtocolDetectionResult protocolDetection,
 
             Outputs.GetZeroTrustGatewaySettingsSettingsSandboxResult sandbox,
@@ -111,6 +117,7 @@ namespace Pulumi.Cloudflare.Outputs
             Fips = fips;
             HostSelector = hostSelector;
             Inspection = inspection;
+            MaxTtlSecs = maxTtlSecs;
             ProtocolDetection = protocolDetection;
             Sandbox = sandbox;
             TlsDecrypt = tlsDecrypt;

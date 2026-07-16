@@ -70,7 +70,7 @@ export class AccountSubscription extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The monetary unit in which pricing information is displayed.
      */
@@ -109,7 +109,7 @@ export class AccountSubscription extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: AccountSubscriptionArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: AccountSubscriptionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountSubscriptionArgs | AccountSubscriptionState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -125,6 +125,9 @@ export class AccountSubscription extends pulumi.CustomResource {
             resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as AccountSubscriptionArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["frequency"] = args?.frequency;
             resourceInputs["ratePlan"] = args?.ratePlan;
@@ -186,7 +189,7 @@ export interface AccountSubscriptionArgs {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * How often the subscription is renewed automatically.
      * Available values: "weekly", "monthly", "quarterly", "yearly".

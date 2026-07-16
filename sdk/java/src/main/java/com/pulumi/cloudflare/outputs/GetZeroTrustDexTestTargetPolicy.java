@@ -12,38 +12,38 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustDexTestTargetPolicy {
     /**
-     * @return Whether the DEX rule is the account default
+     * @return Whether the DEX rule is the account default.
      * 
      */
     private Boolean default_;
     /**
-     * @return API Resource UUID tag.
+     * @return The id of the DEX rule.
      * 
      */
     private String id;
     /**
-     * @return The name of the DEX rule
+     * @return The name of the DEX rule.
      * 
      */
     private String name;
 
     private GetZeroTrustDexTestTargetPolicy() {}
     /**
-     * @return Whether the DEX rule is the account default
+     * @return Whether the DEX rule is the account default.
      * 
      */
     public Boolean default_() {
         return this.default_;
     }
     /**
-     * @return API Resource UUID tag.
+     * @return The id of the DEX rule.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The name of the DEX rule
+     * @return The name of the DEX rule.
      * 
      */
     public String name() {

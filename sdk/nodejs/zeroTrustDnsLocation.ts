@@ -49,6 +49,10 @@ import * as utilities from "./utilities";
  *             }],
  *         },
  *     },
+ *     maxTtl: {
+ *         mode: "override",
+ *         ttlSecs: 3600,
+ *     },
  *     networks: [{
  *         network: "192.0.2.1/32",
  *     }],
@@ -89,7 +93,7 @@ export class ZeroTrustDnsLocation extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDnsLocation.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Indicate whether this location is the default location.
      */
@@ -128,6 +132,10 @@ export class ZeroTrustDnsLocation extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly ipv4DestinationBackup: pulumi.Output<string>;
     /**
+     * Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+     */
+    declare public readonly maxTtl: pulumi.Output<outputs.ZeroTrustDnsLocationMaxTtl>;
+    /**
      * Specify the location name.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -161,11 +169,15 @@ export class ZeroTrustDnsLocation extends pulumi.CustomResource {
             resourceInputs["ip"] = state?.ip;
             resourceInputs["ipv4Destination"] = state?.ipv4Destination;
             resourceInputs["ipv4DestinationBackup"] = state?.ipv4DestinationBackup;
+            resourceInputs["maxTtl"] = state?.maxTtl;
             resourceInputs["name"] = state?.name;
             resourceInputs["networks"] = state?.networks;
             resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as ZeroTrustDnsLocationArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -174,6 +186,7 @@ export class ZeroTrustDnsLocation extends pulumi.CustomResource {
             resourceInputs["dnsDestinationIpsId"] = args?.dnsDestinationIpsId;
             resourceInputs["ecsSupport"] = args?.ecsSupport;
             resourceInputs["endpoints"] = args?.endpoints;
+            resourceInputs["maxTtl"] = args?.maxTtl;
             resourceInputs["name"] = args?.name;
             resourceInputs["networks"] = args?.networks;
             resourceInputs["createdAt"] = undefined /*out*/;
@@ -234,6 +247,10 @@ export interface ZeroTrustDnsLocationState {
      */
     ipv4DestinationBackup?: pulumi.Input<string | undefined>;
     /**
+     * Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+     */
+    maxTtl?: pulumi.Input<inputs.ZeroTrustDnsLocationMaxTtl | undefined>;
+    /**
      * Specify the location name.
      */
     name?: pulumi.Input<string | undefined>;
@@ -248,7 +265,7 @@ export interface ZeroTrustDnsLocationState {
  * The set of arguments for constructing a ZeroTrustDnsLocation resource.
  */
 export interface ZeroTrustDnsLocationArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Indicate whether this location is the default location.
      */
@@ -265,6 +282,10 @@ export interface ZeroTrustDnsLocationArgs {
      * Configure the destination endpoints for this location.
      */
     endpoints?: pulumi.Input<inputs.ZeroTrustDnsLocationEndpoints | undefined>;
+    /**
+     * Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+     */
+    maxTtl?: pulumi.Input<inputs.ZeroTrustDnsLocationMaxTtl | undefined>;
     /**
      * Specify the location name.
      */

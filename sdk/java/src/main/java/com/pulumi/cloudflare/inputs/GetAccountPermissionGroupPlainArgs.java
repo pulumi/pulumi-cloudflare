@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetAccountPermissionGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -19,15 +17,15 @@ public final class GetAccountPermissionGroupPlainArgs extends com.pulumi.resourc
      * Account identifier tag.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable String accountId;
+    @Import(name="accountId", required=true)
+    private String accountId;
 
     /**
      * @return Account identifier tag.
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
 
     /**
@@ -76,7 +74,7 @@ public final class GetAccountPermissionGroupPlainArgs extends com.pulumi.resourc
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable String accountId) {
+        public Builder accountId(String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -93,6 +91,9 @@ public final class GetAccountPermissionGroupPlainArgs extends com.pulumi.resourc
         }
 
         public GetAccountPermissionGroupPlainArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetAccountPermissionGroupPlainArgs", "accountId");
+            }
             if ($.permissionGroupId == null) {
                 throw new MissingRequiredPropertyException("GetAccountPermissionGroupPlainArgs", "permissionGroupId");
             }

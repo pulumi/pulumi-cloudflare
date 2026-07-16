@@ -21,43 +21,21 @@ __all__ = ['ManagedTransformsArgs', 'ManagedTransforms']
 @pulumi.input_type
 class ManagedTransformsArgs:
     def __init__(__self__, *,
-                 managed_request_headers: pulumi.Input[Sequence[pulumi.Input['ManagedTransformsManagedRequestHeaderArgs']]],
-                 managed_response_headers: pulumi.Input[Sequence[pulumi.Input['ManagedTransformsManagedResponseHeaderArgs']]],
-                 zone_id: pulumi.Input[_builtins.str]):
+                 zone_id: pulumi.Input[_builtins.str],
+                 managed_request_headers: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedTransformsManagedRequestHeaderArgs']]]] = None,
+                 managed_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedTransformsManagedResponseHeaderArgs']]]] = None):
         """
         The set of arguments for constructing a ManagedTransforms resource.
 
+        :param pulumi.Input[_builtins.str] zone_id: The unique ID of the zone.
         :param pulumi.Input[Sequence[pulumi.Input['ManagedTransformsManagedRequestHeaderArgs']]] managed_request_headers: The list of Managed Request Transforms.
         :param pulumi.Input[Sequence[pulumi.Input['ManagedTransformsManagedResponseHeaderArgs']]] managed_response_headers: The list of Managed Response Transforms.
-        :param pulumi.Input[_builtins.str] zone_id: The unique ID of the zone.
         """
-        pulumi.set(__self__, "managed_request_headers", managed_request_headers)
-        pulumi.set(__self__, "managed_response_headers", managed_response_headers)
         pulumi.set(__self__, "zone_id", zone_id)
-
-    @_builtins.property
-    @pulumi.getter(name="managedRequestHeaders")
-    def managed_request_headers(self) -> pulumi.Input[Sequence[pulumi.Input['ManagedTransformsManagedRequestHeaderArgs']]]:
-        """
-        The list of Managed Request Transforms.
-        """
-        return pulumi.get(self, "managed_request_headers")
-
-    @managed_request_headers.setter
-    def managed_request_headers(self, value: pulumi.Input[Sequence[pulumi.Input['ManagedTransformsManagedRequestHeaderArgs']]]):
-        pulumi.set(self, "managed_request_headers", value)
-
-    @_builtins.property
-    @pulumi.getter(name="managedResponseHeaders")
-    def managed_response_headers(self) -> pulumi.Input[Sequence[pulumi.Input['ManagedTransformsManagedResponseHeaderArgs']]]:
-        """
-        The list of Managed Response Transforms.
-        """
-        return pulumi.get(self, "managed_response_headers")
-
-    @managed_response_headers.setter
-    def managed_response_headers(self, value: pulumi.Input[Sequence[pulumi.Input['ManagedTransformsManagedResponseHeaderArgs']]]):
-        pulumi.set(self, "managed_response_headers", value)
+        if managed_request_headers is not None:
+            pulumi.set(__self__, "managed_request_headers", managed_request_headers)
+        if managed_response_headers is not None:
+            pulumi.set(__self__, "managed_response_headers", managed_response_headers)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -70,6 +48,30 @@ class ManagedTransformsArgs:
     @zone_id.setter
     def zone_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "zone_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="managedRequestHeaders")
+    def managed_request_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedTransformsManagedRequestHeaderArgs']]]]:
+        """
+        The list of Managed Request Transforms.
+        """
+        return pulumi.get(self, "managed_request_headers")
+
+    @managed_request_headers.setter
+    def managed_request_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedTransformsManagedRequestHeaderArgs']]]]):
+        pulumi.set(self, "managed_request_headers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="managedResponseHeaders")
+    def managed_response_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedTransformsManagedResponseHeaderArgs']]]]:
+        """
+        The list of Managed Response Transforms.
+        """
+        return pulumi.get(self, "managed_response_headers")
+
+    @managed_response_headers.setter
+    def managed_response_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedTransformsManagedResponseHeaderArgs']]]]):
+        pulumi.set(self, "managed_response_headers", value)
 
 
 @pulumi.input_type
@@ -316,11 +318,7 @@ class ManagedTransforms(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ManagedTransformsArgs.__new__(ManagedTransformsArgs)
 
-            if managed_request_headers is None and not opts.urn:
-                raise TypeError("Missing required property 'managed_request_headers'")
             __props__.__dict__["managed_request_headers"] = managed_request_headers
-            if managed_response_headers is None and not opts.urn:
-                raise TypeError("Missing required property 'managed_response_headers'")
             __props__.__dict__["managed_response_headers"] = managed_response_headers
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
@@ -362,7 +360,7 @@ class ManagedTransforms(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="managedRequestHeaders")
-    def managed_request_headers(self) -> pulumi.Output[Sequence['outputs.ManagedTransformsManagedRequestHeader']]:
+    def managed_request_headers(self) -> pulumi.Output[Optional[Sequence['outputs.ManagedTransformsManagedRequestHeader']]]:
         """
         The list of Managed Request Transforms.
         """
@@ -370,7 +368,7 @@ class ManagedTransforms(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="managedResponseHeaders")
-    def managed_response_headers(self) -> pulumi.Output[Sequence['outputs.ManagedTransformsManagedResponseHeader']]:
+    def managed_response_headers(self) -> pulumi.Output[Optional[Sequence['outputs.ManagedTransformsManagedResponseHeader']]]:
         """
         The list of Managed Response Transforms.
         """

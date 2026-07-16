@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -49,7 +50,7 @@ type Stream struct {
 	pulumi.CustomResourceState
 
 	// The account identifier tag.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
 	AllowedOrigins pulumi.StringArrayOutput `pulumi:"allowedOrigins"`
 	// The unique identifier of the source video this video was clipped from.
@@ -107,9 +108,12 @@ type Stream struct {
 func NewStream(ctx *pulumi.Context,
 	name string, args *StreamArgs, opts ...pulumi.ResourceOption) (*Stream, error) {
 	if args == nil {
-		args = &StreamArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Stream
 	err := ctx.RegisterResource("cloudflare:index/stream:Stream", name, args, &resource, opts...)
@@ -250,7 +254,7 @@ func (StreamState) ElementType() reflect.Type {
 
 type streamArgs struct {
 	// The account identifier tag.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
 	// A user-defined identifier for the media creator.
@@ -278,7 +282,7 @@ type streamArgs struct {
 // The set of arguments for constructing a Stream resource.
 type StreamArgs struct {
 	// The account identifier tag.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
 	AllowedOrigins pulumi.StringArrayInput
 	// A user-defined identifier for the media creator.
@@ -391,8 +395,8 @@ func (o StreamOutput) ToStreamOutputWithContext(ctx context.Context) StreamOutpu
 }
 
 // The account identifier tag.
-func (o StreamOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Stream) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o StreamOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.

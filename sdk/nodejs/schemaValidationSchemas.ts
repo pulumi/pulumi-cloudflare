@@ -86,7 +86,7 @@ export class SchemaValidationSchemas extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a SchemaValidationSchemas resource with the given unique name, arguments, and options.
@@ -121,6 +121,9 @@ export class SchemaValidationSchemas extends pulumi.CustomResource {
             }
             if (args?.validationEnabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'validationEnabled'");
+            }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["kind"] = args?.kind;
             resourceInputs["name"] = args?.name;
@@ -191,5 +194,5 @@ export interface SchemaValidationSchemasArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

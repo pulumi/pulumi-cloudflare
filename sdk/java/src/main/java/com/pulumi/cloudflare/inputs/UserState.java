@@ -49,6 +49,21 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Current email address of the user.
+     * 
+     */
+    @Import(name="email")
+    private @Nullable Output<String> email;
+
+    /**
+     * @return Current email address of the user.
+     * 
+     */
+    public Optional<Output<String>> email() {
+        return Optional.ofNullable(this.email);
+    }
+
+    /**
      * User&#39;s first name
      * 
      */
@@ -210,6 +225,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     private UserState(UserState $) {
         this.betas = $.betas;
         this.country = $.country;
+        this.email = $.email;
         this.firstName = $.firstName;
         this.hasBusinessZones = $.hasBusinessZones;
         this.hasEnterpriseZones = $.hasEnterpriseZones;
@@ -291,6 +307,27 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder country(String country) {
             return country(Output.of(country));
+        }
+
+        /**
+         * @param email Current email address of the user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder email(@Nullable Output<String> email) {
+            $.email = email;
+            return this;
+        }
+
+        /**
+         * @param email Current email address of the user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder email(String email) {
+            return email(Output.of(email));
         }
 
         /**

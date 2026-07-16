@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Bot Management Read`
+    /// - `Bot Management Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -45,7 +50,7 @@ namespace Pulumi.Cloudflare
     public partial class BotManagement : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Enable rule to block AI Scrapers and Crawlers. Please note the value `OnlyOnAdPages` is currently not available for Enterprise customers.
+        /// Enable rule to block AI Scrapers and Crawlers.
         /// Available values: "block", "disabled", "only*on*ad_pages".
         /// </summary>
         [Output("aiBotsProtection")]
@@ -208,7 +213,7 @@ namespace Pulumi.Cloudflare
     public sealed class BotManagementArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable rule to block AI Scrapers and Crawlers. Please note the value `OnlyOnAdPages` is currently not available for Enterprise customers.
+        /// Enable rule to block AI Scrapers and Crawlers.
         /// Available values: "block", "disabled", "only*on*ad_pages".
         /// </summary>
         [Input("aiBotsProtection")]
@@ -321,7 +326,7 @@ namespace Pulumi.Cloudflare
     public sealed class BotManagementState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable rule to block AI Scrapers and Crawlers. Please note the value `OnlyOnAdPages` is currently not available for Enterprise customers.
+        /// Enable rule to block AI Scrapers and Crawlers.
         /// Available values: "block", "disabled", "only*on*ad_pages".
         /// </summary>
         [Input("aiBotsProtection")]

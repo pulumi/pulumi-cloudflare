@@ -50,7 +50,7 @@ namespace Pulumi.Cloudflare
         /// The account identifier tag.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The date and a time a watermark profile was created.
@@ -138,7 +138,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public StreamWatermark(string name, StreamWatermarkArgs? args = null, CustomResourceOptions? options = null)
+        public StreamWatermark(string name, StreamWatermarkArgs args, CustomResourceOptions? options = null)
             : base("cloudflare:index/streamWatermark:StreamWatermark", name, args ?? new StreamWatermarkArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -179,8 +179,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// The unique identifier for a watermark profile.

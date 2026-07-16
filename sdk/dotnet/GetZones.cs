@@ -138,6 +138,14 @@ namespace Pulumi.Cloudflare
         [Input("status")]
         public string? Status { get; set; }
 
+        [Input("types")]
+        private List<string>? _types;
+        public List<string> Types
+        {
+            get => _types ?? (_types = new List<string>());
+            set => _types = value;
+        }
+
         public GetZonesArgs()
         {
         }
@@ -167,6 +175,14 @@ namespace Pulumi.Cloudflare
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("types")]
+        private InputList<string>? _types;
+        public InputList<string> Types
+        {
+            get => _types ?? (_types = new InputList<string>());
+            set => _types = value;
+        }
+
         public GetZonesInvokeArgs()
         {
         }
@@ -189,6 +205,7 @@ namespace Pulumi.Cloudflare
         public readonly string? Order;
         public readonly ImmutableArray<Outputs.GetZonesResultResult> Results;
         public readonly string? Status;
+        public readonly ImmutableArray<string> Types;
 
         [OutputConstructor]
         private GetZonesResult(
@@ -208,7 +225,9 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetZonesResultResult> results,
 
-            string? status)
+            string? status,
+
+            ImmutableArray<string> types)
         {
             Account = account;
             Direction = direction;
@@ -219,6 +238,7 @@ namespace Pulumi.Cloudflare
             Order = order;
             Results = results;
             Status = status;
+            Types = types;
         }
     }
 }

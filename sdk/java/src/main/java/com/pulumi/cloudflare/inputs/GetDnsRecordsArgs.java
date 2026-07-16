@@ -53,6 +53,21 @@ public final class GetDnsRecordsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    @Import(name="includeShadowMetadata")
+    private @Nullable Output<Boolean> includeShadowMetadata;
+
+    /**
+     * @return Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    public Optional<Output<Boolean>> includeShadowMetadata() {
+        return Optional.ofNullable(this.includeShadowMetadata);
+    }
+
+    /**
      * Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
      * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
@@ -138,6 +153,36 @@ public final class GetDnsRecordsArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.search);
     }
 
+    /**
+     * Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    @Import(name="shadowedByName")
+    private @Nullable Output<String> shadowedByName;
+
+    /**
+     * @return Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    public Optional<Output<String>> shadowedByName() {
+        return Optional.ofNullable(this.shadowedByName);
+    }
+
+    /**
+     * Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    @Import(name="shadowingName")
+    private @Nullable Output<String> shadowingName;
+
+    /**
+     * @return Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    public Optional<Output<String>> shadowingName() {
+        return Optional.ofNullable(this.shadowingName);
+    }
+
     @Import(name="tag")
     private @Nullable Output<GetDnsRecordsTagArgs> tag;
 
@@ -200,12 +245,15 @@ public final class GetDnsRecordsArgs extends com.pulumi.resources.InvokeArgs {
         this.comment = $.comment;
         this.content = $.content;
         this.direction = $.direction;
+        this.includeShadowMetadata = $.includeShadowMetadata;
         this.match = $.match;
         this.maxItems = $.maxItems;
         this.name = $.name;
         this.order = $.order;
         this.proxied = $.proxied;
         this.search = $.search;
+        this.shadowedByName = $.shadowedByName;
+        this.shadowingName = $.shadowingName;
         this.tag = $.tag;
         this.tagMatch = $.tagMatch;
         this.type = $.type;
@@ -269,6 +317,27 @@ public final class GetDnsRecordsArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder direction(String direction) {
             return direction(Output.of(direction));
+        }
+
+        /**
+         * @param includeShadowMetadata Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeShadowMetadata(@Nullable Output<Boolean> includeShadowMetadata) {
+            $.includeShadowMetadata = includeShadowMetadata;
+            return this;
+        }
+
+        /**
+         * @param includeShadowMetadata Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeShadowMetadata(Boolean includeShadowMetadata) {
+            return includeShadowMetadata(Output.of(includeShadowMetadata));
         }
 
         /**
@@ -387,6 +456,48 @@ public final class GetDnsRecordsArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder search(String search) {
             return search(Output.of(search));
+        }
+
+        /**
+         * @param shadowedByName Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shadowedByName(@Nullable Output<String> shadowedByName) {
+            $.shadowedByName = shadowedByName;
+            return this;
+        }
+
+        /**
+         * @param shadowedByName Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shadowedByName(String shadowedByName) {
+            return shadowedByName(Output.of(shadowedByName));
+        }
+
+        /**
+         * @param shadowingName Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shadowingName(@Nullable Output<String> shadowingName) {
+            $.shadowingName = shadowingName;
+            return this;
+        }
+
+        /**
+         * @param shadowingName Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shadowingName(String shadowingName) {
+            return shadowingName(Output.of(shadowingName));
         }
 
         public Builder tag(@Nullable Output<GetDnsRecordsTagArgs> tag) {

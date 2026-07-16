@@ -61,6 +61,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .enabled(true)
  *             .name("Send to user}{@literal @}{@code example.net rule.")
+ *             .ownerWorkerTag("a7e6fb77503c41d8a7f3113c6918f10c")
+ *             .source("api")
  *             .build());
  * 
  *     }}{@code
@@ -132,6 +134,42 @@ public class EmailRoutingCatchAll extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> name() {
         return Codegen.optional(this.name);
+    }
+    /**
+     * Public tag (script_tag) of the Worker that owns this rule. Required when
+     * `source` is `wrangler`.
+     * 
+     */
+    @Export(name="ownerWorkerTag", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> ownerWorkerTag;
+
+    /**
+     * @return Public tag (script_tag) of the Worker that owns this rule. Required when
+     * `source` is `wrangler`.
+     * 
+     */
+    public Output<Optional<String>> ownerWorkerTag() {
+        return Codegen.optional(this.ownerWorkerTag);
+    }
+    /**
+     * Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+     * `wrangler` means the rule is managed by a Worker&#39;s wrangler.jsonc. Defaults
+     * to `api` when omitted on write.
+     * Available values: &#34;api&#34;, &#34;wrangler&#34;.
+     * 
+     */
+    @Export(name="source", refs={String.class}, tree="[0]")
+    private Output<String> source;
+
+    /**
+     * @return Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+     * `wrangler` means the rule is managed by a Worker&#39;s wrangler.jsonc. Defaults
+     * to `api` when omitted on write.
+     * Available values: &#34;api&#34;, &#34;wrangler&#34;.
+     * 
+     */
+    public Output<String> source() {
+        return this.source;
     }
     /**
      * Routing rule tag. (Deprecated, replaced by routing rule identifier)

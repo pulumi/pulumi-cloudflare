@@ -24,6 +24,46 @@ import (
 //	_and_ `getListItems` on the same list is not supported and will cause
 //	Terraform into an irreconcilable state.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewList(ctx, "example_list", &cloudflare.ListArgs{
+//				AccountId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Kind:        pulumi.String("ip"),
+//				Name:        pulumi.String("list1"),
+//				Description: pulumi.String("This is a note"),
+//				Items: cloudflare.ListItemTypeArray{
+//					&cloudflare.ListItemTypeArgs{
+//						Ip: pulumi.String("1.1.1.1"),
+//					},
+//					&cloudflare.ListItemTypeArgs{
+//						Ip: pulumi.String("1.1.1.2"),
+//					},
+//					&cloudflare.ListItemTypeArgs{
+//						Ip: pulumi.String("1.1.1.3"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh
@@ -33,7 +73,7 @@ type List struct {
 	pulumi.CustomResourceState
 
 	// The Account ID for this resource.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The RFC 3339 timestamp of when the list was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// An informative summary of the list.
@@ -60,6 +100,9 @@ func NewList(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Kind == nil {
 		return nil, errors.New("invalid value for required argument 'Kind'")
 	}
@@ -138,7 +181,7 @@ func (ListState) ElementType() reflect.Type {
 
 type listArgs struct {
 	// The Account ID for this resource.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// An informative summary of the list.
 	Description *string `pulumi:"description"`
 	// The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
@@ -153,7 +196,7 @@ type listArgs struct {
 // The set of arguments for constructing a List resource.
 type ListArgs struct {
 	// The Account ID for this resource.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// An informative summary of the list.
 	Description pulumi.StringPtrInput
 	// The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
@@ -253,8 +296,8 @@ func (o ListOutput) ToListOutputWithContext(ctx context.Context) ListOutput {
 }
 
 // The Account ID for this resource.
-func (o ListOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *List) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ListOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *List) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The RFC 3339 timestamp of when the list was created.

@@ -42,9 +42,12 @@ export function getZeroTrustDexTests(args?: GetZeroTrustDexTestsArgs, opts?: pul
  * A collection of arguments for invoking getZeroTrustDexTests.
  */
 export interface GetZeroTrustDexTestsArgs {
+    /**
+     * Unique identifier linked to an account.
+     */
     accountId?: string;
     /**
-     * Filter by test type
+     * Filter by test type.
      * Available values: "http", "traceroute".
      */
     kind?: string;
@@ -53,7 +56,7 @@ export interface GetZeroTrustDexTestsArgs {
      */
     maxItems?: number;
     /**
-     * Filter by test name
+     * Filter by test name.
      */
     testName?: string;
 }
@@ -62,13 +65,16 @@ export interface GetZeroTrustDexTestsArgs {
  * A collection of values returned by getZeroTrustDexTests.
  */
 export interface GetZeroTrustDexTestsResult {
+    /**
+     * Unique identifier linked to an account.
+     */
     readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * Filter by test type
+     * Filter by test type.
      * Available values: "http", "traceroute".
      */
     readonly kind?: string;
@@ -81,7 +87,7 @@ export interface GetZeroTrustDexTestsResult {
      */
     readonly results: outputs.GetZeroTrustDexTestsResult[];
     /**
-     * Filter by test name
+     * Filter by test name.
      */
     readonly testName?: string;
 }
@@ -121,9 +127,12 @@ export function getZeroTrustDexTestsOutput(args?: GetZeroTrustDexTestsOutputArgs
  * A collection of arguments for invoking getZeroTrustDexTests.
  */
 export interface GetZeroTrustDexTestsOutputArgs {
+    /**
+     * Unique identifier linked to an account.
+     */
     accountId?: pulumi.Input<string | undefined>;
     /**
-     * Filter by test type
+     * Filter by test type.
      * Available values: "http", "traceroute".
      */
     kind?: pulumi.Input<string | undefined>;
@@ -132,7 +141,7 @@ export interface GetZeroTrustDexTestsOutputArgs {
      */
     maxItems?: pulumi.Input<number | undefined>;
     /**
-     * Filter by test name
+     * Filter by test name.
      */
     testName?: pulumi.Input<string | undefined>;
 }

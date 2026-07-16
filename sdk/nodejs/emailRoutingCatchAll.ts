@@ -29,6 +29,8 @@ import * as utilities from "./utilities";
  *     }],
  *     enabled: true,
  *     name: "Send to user@example.net rule.",
+ *     ownerWorkerTag: "a7e6fb77503c41d8a7f3113c6918f10c",
+ *     source: "api",
  * });
  * ```
  *
@@ -83,6 +85,18 @@ export class EmailRoutingCatchAll extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string | undefined>;
     /**
+     * Public tag (script_tag) of the Worker that owns this rule. Required when
+     * `source` is `wrangler`.
+     */
+    declare public readonly ownerWorkerTag: pulumi.Output<string | undefined>;
+    /**
+     * Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+     * `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+     * to `api` when omitted on write.
+     * Available values: "api", "wrangler".
+     */
+    declare public readonly source: pulumi.Output<string>;
+    /**
      * Routing rule tag. (Deprecated, replaced by routing rule identifier)
      *
      * @deprecated This attribute is deprecated.
@@ -110,6 +124,8 @@ export class EmailRoutingCatchAll extends pulumi.CustomResource {
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["matchers"] = state?.matchers;
             resourceInputs["name"] = state?.name;
+            resourceInputs["ownerWorkerTag"] = state?.ownerWorkerTag;
+            resourceInputs["source"] = state?.source;
             resourceInputs["tag"] = state?.tag;
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
@@ -127,6 +143,8 @@ export class EmailRoutingCatchAll extends pulumi.CustomResource {
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["matchers"] = args?.matchers;
             resourceInputs["name"] = args?.name;
+            resourceInputs["ownerWorkerTag"] = args?.ownerWorkerTag;
+            resourceInputs["source"] = args?.source;
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["tag"] = undefined /*out*/;
         }
@@ -155,6 +173,18 @@ export interface EmailRoutingCatchAllState {
      * Routing rule name.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Public tag (script_tag) of the Worker that owns this rule. Required when
+     * `source` is `wrangler`.
+     */
+    ownerWorkerTag?: pulumi.Input<string | undefined>;
+    /**
+     * Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+     * `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+     * to `api` when omitted on write.
+     * Available values: "api", "wrangler".
+     */
+    source?: pulumi.Input<string | undefined>;
     /**
      * Routing rule tag. (Deprecated, replaced by routing rule identifier)
      *
@@ -187,6 +217,18 @@ export interface EmailRoutingCatchAllArgs {
      * Routing rule name.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Public tag (script_tag) of the Worker that owns this rule. Required when
+     * `source` is `wrangler`.
+     */
+    ownerWorkerTag?: pulumi.Input<string | undefined>;
+    /**
+     * Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+     * `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+     * to `api` when omitted on write.
+     * Available values: "api", "wrangler".
+     */
+    source?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */

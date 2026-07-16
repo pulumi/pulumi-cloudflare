@@ -21,12 +21,13 @@ __all__ = ['StreamLiveInputArgs', 'StreamLiveInput']
 @pulumi.input_type
 class StreamLiveInputArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_id: pulumi.Input[_builtins.str],
                  default_creator: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_recording_after_days: pulumi.Input[Optional[_builtins.float]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  live_input_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  meta: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefer_low_latency: pulumi.Input[Optional[_builtins.bool]] = None,
                  recording: pulumi.Input[Optional['StreamLiveInputRecordingArgs']] = None):
         """
         The set of arguments for constructing a StreamLiveInput resource.
@@ -37,10 +38,10 @@ class StreamLiveInputArgs:
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the live input is enabled and can accept streams.
         :param pulumi.Input[_builtins.str] live_input_identifier: A unique identifier for a live input.
         :param pulumi.Input[_builtins.str] meta: A user modifiable key-value store used to reference other systems of record for managing live inputs.
+        :param pulumi.Input[_builtins.bool] prefer_low_latency: When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
         :param pulumi.Input['StreamLiveInputRecordingArgs'] recording: Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
         """
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "account_id", account_id)
         if default_creator is not None:
             pulumi.set(__self__, "default_creator", default_creator)
         if delete_recording_after_days is not None:
@@ -51,19 +52,21 @@ class StreamLiveInputArgs:
             pulumi.set(__self__, "live_input_identifier", live_input_identifier)
         if meta is not None:
             pulumi.set(__self__, "meta", meta)
+        if prefer_low_latency is not None:
+            pulumi.set(__self__, "prefer_low_latency", prefer_low_latency)
         if recording is not None:
             pulumi.set(__self__, "recording", recording)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[_builtins.str]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
@@ -127,6 +130,18 @@ class StreamLiveInputArgs:
         pulumi.set(self, "meta", value)
 
     @_builtins.property
+    @pulumi.getter(name="preferLowLatency")
+    def prefer_low_latency(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
+        """
+        return pulumi.get(self, "prefer_low_latency")
+
+    @prefer_low_latency.setter
+    def prefer_low_latency(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "prefer_low_latency", value)
+
+    @_builtins.property
     @pulumi.getter
     def recording(self) -> pulumi.Input[Optional['StreamLiveInputRecordingArgs']]:
         """
@@ -147,9 +162,11 @@ class _StreamLiveInputState:
                  default_creator: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_recording_after_days: pulumi.Input[Optional[_builtins.float]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keys_rotated_at: pulumi.Input[Optional[_builtins.str]] = None,
                  live_input_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  meta: pulumi.Input[Optional[_builtins.str]] = None,
                  modified: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefer_low_latency: pulumi.Input[Optional[_builtins.bool]] = None,
                  recording: pulumi.Input[Optional['StreamLiveInputRecordingArgs']] = None,
                  rtmps: pulumi.Input[Optional['StreamLiveInputRtmpsArgs']] = None,
                  rtmps_playback: pulumi.Input[Optional['StreamLiveInputRtmpsPlaybackArgs']] = None,
@@ -167,9 +184,11 @@ class _StreamLiveInputState:
         :param pulumi.Input[_builtins.str] default_creator: Sets the creator ID asssociated with this live input.
         :param pulumi.Input[_builtins.float] delete_recording_after_days: Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the live input is enabled and can accept streams.
+        :param pulumi.Input[_builtins.str] keys_rotated_at: The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
         :param pulumi.Input[_builtins.str] live_input_identifier: A unique identifier for a live input.
         :param pulumi.Input[_builtins.str] meta: A user modifiable key-value store used to reference other systems of record for managing live inputs.
         :param pulumi.Input[_builtins.str] modified: The date and time the live input was last modified.
+        :param pulumi.Input[_builtins.bool] prefer_low_latency: When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
         :param pulumi.Input['StreamLiveInputRecordingArgs'] recording: Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
         :param pulumi.Input['StreamLiveInputRtmpsArgs'] rtmps: Details for streaming to an live input using RTMPS.
         :param pulumi.Input['StreamLiveInputRtmpsPlaybackArgs'] rtmps_playback: Details for playback from an live input using RTMPS.
@@ -191,12 +210,16 @@ class _StreamLiveInputState:
             pulumi.set(__self__, "delete_recording_after_days", delete_recording_after_days)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if keys_rotated_at is not None:
+            pulumi.set(__self__, "keys_rotated_at", keys_rotated_at)
         if live_input_identifier is not None:
             pulumi.set(__self__, "live_input_identifier", live_input_identifier)
         if meta is not None:
             pulumi.set(__self__, "meta", meta)
         if modified is not None:
             pulumi.set(__self__, "modified", modified)
+        if prefer_low_latency is not None:
+            pulumi.set(__self__, "prefer_low_latency", prefer_low_latency)
         if recording is not None:
             pulumi.set(__self__, "recording", recording)
         if rtmps is not None:
@@ -277,6 +300,18 @@ class _StreamLiveInputState:
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="keysRotatedAt")
+    def keys_rotated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
+        """
+        return pulumi.get(self, "keys_rotated_at")
+
+    @keys_rotated_at.setter
+    def keys_rotated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "keys_rotated_at", value)
+
+    @_builtins.property
     @pulumi.getter(name="liveInputIdentifier")
     def live_input_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -311,6 +346,18 @@ class _StreamLiveInputState:
     @modified.setter
     def modified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preferLowLatency")
+    def prefer_low_latency(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
+        """
+        return pulumi.get(self, "prefer_low_latency")
+
+    @prefer_low_latency.setter
+    def prefer_low_latency(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "prefer_low_latency", value)
 
     @_builtins.property
     @pulumi.getter
@@ -434,6 +481,7 @@ class StreamLiveInput(pulumi.CustomResource):
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  live_input_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  meta: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefer_low_latency: pulumi.Input[Optional[_builtins.bool]] = None,
                  recording: pulumi.Input[Optional[Union['StreamLiveInputRecordingArgs', 'StreamLiveInputRecordingArgsDict']]] = None,
                  __props__=None):
         """
@@ -457,13 +505,14 @@ class StreamLiveInput(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the live input is enabled and can accept streams.
         :param pulumi.Input[_builtins.str] live_input_identifier: A unique identifier for a live input.
         :param pulumi.Input[_builtins.str] meta: A user modifiable key-value store used to reference other systems of record for managing live inputs.
+        :param pulumi.Input[_builtins.bool] prefer_low_latency: When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
         :param pulumi.Input[Union['StreamLiveInputRecordingArgs', 'StreamLiveInputRecordingArgsDict']] recording: Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[StreamLiveInputArgs] = None,
+                 args: StreamLiveInputArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Accepted Permissions
@@ -499,6 +548,7 @@ class StreamLiveInput(pulumi.CustomResource):
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  live_input_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  meta: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefer_low_latency: pulumi.Input[Optional[_builtins.bool]] = None,
                  recording: pulumi.Input[Optional[Union['StreamLiveInputRecordingArgs', 'StreamLiveInputRecordingArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -509,14 +559,18 @@ class StreamLiveInput(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = StreamLiveInputArgs.__new__(StreamLiveInputArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["default_creator"] = default_creator
             __props__.__dict__["delete_recording_after_days"] = delete_recording_after_days
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["live_input_identifier"] = live_input_identifier
             __props__.__dict__["meta"] = meta
+            __props__.__dict__["prefer_low_latency"] = prefer_low_latency
             __props__.__dict__["recording"] = recording
             __props__.__dict__["created"] = None
+            __props__.__dict__["keys_rotated_at"] = None
             __props__.__dict__["modified"] = None
             __props__.__dict__["rtmps"] = None
             __props__.__dict__["rtmps_playback"] = None
@@ -541,9 +595,11 @@ class StreamLiveInput(pulumi.CustomResource):
             default_creator: pulumi.Input[Optional[_builtins.str]] = None,
             delete_recording_after_days: pulumi.Input[Optional[_builtins.float]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            keys_rotated_at: pulumi.Input[Optional[_builtins.str]] = None,
             live_input_identifier: pulumi.Input[Optional[_builtins.str]] = None,
             meta: pulumi.Input[Optional[_builtins.str]] = None,
             modified: pulumi.Input[Optional[_builtins.str]] = None,
+            prefer_low_latency: pulumi.Input[Optional[_builtins.bool]] = None,
             recording: pulumi.Input[Optional[Union['StreamLiveInputRecordingArgs', 'StreamLiveInputRecordingArgsDict']]] = None,
             rtmps: pulumi.Input[Optional[Union['StreamLiveInputRtmpsArgs', 'StreamLiveInputRtmpsArgsDict']]] = None,
             rtmps_playback: pulumi.Input[Optional[Union['StreamLiveInputRtmpsPlaybackArgs', 'StreamLiveInputRtmpsPlaybackArgsDict']]] = None,
@@ -565,9 +621,11 @@ class StreamLiveInput(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] default_creator: Sets the creator ID asssociated with this live input.
         :param pulumi.Input[_builtins.float] delete_recording_after_days: Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the live input is enabled and can accept streams.
+        :param pulumi.Input[_builtins.str] keys_rotated_at: The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
         :param pulumi.Input[_builtins.str] live_input_identifier: A unique identifier for a live input.
         :param pulumi.Input[_builtins.str] meta: A user modifiable key-value store used to reference other systems of record for managing live inputs.
         :param pulumi.Input[_builtins.str] modified: The date and time the live input was last modified.
+        :param pulumi.Input[_builtins.bool] prefer_low_latency: When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
         :param pulumi.Input[Union['StreamLiveInputRecordingArgs', 'StreamLiveInputRecordingArgsDict']] recording: Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
         :param pulumi.Input[Union['StreamLiveInputRtmpsArgs', 'StreamLiveInputRtmpsArgsDict']] rtmps: Details for streaming to an live input using RTMPS.
         :param pulumi.Input[Union['StreamLiveInputRtmpsPlaybackArgs', 'StreamLiveInputRtmpsPlaybackArgsDict']] rtmps_playback: Details for playback from an live input using RTMPS.
@@ -588,9 +646,11 @@ class StreamLiveInput(pulumi.CustomResource):
         __props__.__dict__["default_creator"] = default_creator
         __props__.__dict__["delete_recording_after_days"] = delete_recording_after_days
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["keys_rotated_at"] = keys_rotated_at
         __props__.__dict__["live_input_identifier"] = live_input_identifier
         __props__.__dict__["meta"] = meta
         __props__.__dict__["modified"] = modified
+        __props__.__dict__["prefer_low_latency"] = prefer_low_latency
         __props__.__dict__["recording"] = recording
         __props__.__dict__["rtmps"] = rtmps
         __props__.__dict__["rtmps_playback"] = rtmps_playback
@@ -604,7 +664,7 @@ class StreamLiveInput(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """
@@ -643,6 +703,14 @@ class StreamLiveInput(pulumi.CustomResource):
         return pulumi.get(self, "enabled")
 
     @_builtins.property
+    @pulumi.getter(name="keysRotatedAt")
+    def keys_rotated_at(self) -> pulumi.Output[_builtins.str]:
+        """
+        The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
+        """
+        return pulumi.get(self, "keys_rotated_at")
+
+    @_builtins.property
     @pulumi.getter(name="liveInputIdentifier")
     def live_input_identifier(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -665,6 +733,14 @@ class StreamLiveInput(pulumi.CustomResource):
         The date and time the live input was last modified.
         """
         return pulumi.get(self, "modified")
+
+    @_builtins.property
+    @pulumi.getter(name="preferLowLatency")
+    def prefer_low_latency(self) -> pulumi.Output[_builtins.bool]:
+        """
+        When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
+        """
+        return pulumi.get(self, "prefer_low_latency")
 
     @_builtins.property
     @pulumi.getter

@@ -61,7 +61,7 @@ type ByoIpPrefix struct {
 	pulumi.CustomResourceState
 
 	// Identifier of a Cloudflare account.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
 	//
 	// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
@@ -109,6 +109,9 @@ func NewByoIpPrefix(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Asn == nil {
 		return nil, errors.New("invalid value for required argument 'Asn'")
 	}
@@ -229,7 +232,7 @@ func (ByoIpPrefixState) ElementType() reflect.Type {
 
 type byoIpPrefixArgs struct {
 	// Identifier of a Cloudflare account.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Autonomous System Number (ASN) the prefix will be advertised under.
 	Asn int `pulumi:"asn"`
 	// IP Prefix in Classless Inter-Domain Routing format.
@@ -245,7 +248,7 @@ type byoIpPrefixArgs struct {
 // The set of arguments for constructing a ByoIpPrefix resource.
 type ByoIpPrefixArgs struct {
 	// Identifier of a Cloudflare account.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Autonomous System Number (ASN) the prefix will be advertised under.
 	Asn pulumi.IntInput
 	// IP Prefix in Classless Inter-Domain Routing format.
@@ -346,8 +349,8 @@ func (o ByoIpPrefixOutput) ToByoIpPrefixOutputWithContext(ctx context.Context) B
 }
 
 // Identifier of a Cloudflare account.
-func (o ByoIpPrefixOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ByoIpPrefixOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.

@@ -79,6 +79,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.ZeroTrustGatewaySettingsSettingsInspectionGetArgs>? Inspection { get; set; }
 
         /// <summary>
+        /// Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `MaxTtl` setting.
+        /// </summary>
+        [Input("maxTtlSecs")]
+        public Input<int>? MaxTtlSecs { get; set; }
+
+        /// <summary>
         /// Specify whether to detect protocols from the initial bytes of client traffic.
         /// </summary>
         [Input("protocolDetection")]

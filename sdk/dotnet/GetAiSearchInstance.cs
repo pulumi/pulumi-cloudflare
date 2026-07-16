@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
         public Inputs.GetAiSearchInstanceFilterArgs? Filter { get; set; }
 
         /// <summary>
-        /// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
+        /// The ID of this resource.
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
@@ -51,7 +51,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.GetAiSearchInstanceFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
-        /// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
+        /// The ID of this resource.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -77,13 +77,18 @@ namespace Pulumi.Cloudflare
         /// Available values: "super*strict*match", "close*enough", "flexible*friend", "AnythingGoes".
         /// </summary>
         public readonly string CacheThreshold;
+        /// <summary>
+        /// Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+        /// Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+        /// </summary>
+        public readonly double CacheTtl;
         public readonly int ChunkOverlap;
         public readonly int ChunkSize;
         public readonly string CreatedAt;
         public readonly string CreatedBy;
         public readonly ImmutableArray<Outputs.GetAiSearchInstanceCustomMetadataResult> CustomMetadatas;
         /// <summary>
-        /// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+        /// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
         /// </summary>
         public readonly string EmbeddingModel;
         public readonly bool Enable;
@@ -98,7 +103,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool HybridSearchEnabled;
         /// <summary>
-        /// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
+        /// The ID of this resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -152,6 +157,8 @@ namespace Pulumi.Cloudflare
             bool cache,
 
             string cacheThreshold,
+
+            double cacheTtl,
 
             int chunkOverlap,
 
@@ -228,6 +235,7 @@ namespace Pulumi.Cloudflare
             AisearchModel = aisearchModel;
             Cache = cache;
             CacheThreshold = cacheThreshold;
+            CacheTtl = cacheTtl;
             ChunkOverlap = chunkOverlap;
             ChunkSize = chunkSize;
             CreatedAt = createdAt;

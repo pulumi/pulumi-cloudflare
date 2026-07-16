@@ -146,7 +146,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string CreatedOn;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Identify the snippet.
         /// </summary>
         public readonly string Id;
         /// <summary>

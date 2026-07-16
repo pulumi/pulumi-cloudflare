@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.GetApiShieldOperationFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -55,6 +56,21 @@ public final class GetApiShieldOperationArgs extends com.pulumi.resources.Invoke
     }
 
     /**
+     * When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval.
+     * 
+     */
+    @Import(name="withSchemas")
+    private @Nullable Output<Boolean> withSchemas;
+
+    /**
+     * @return When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval.
+     * 
+     */
+    public Optional<Output<Boolean>> withSchemas() {
+        return Optional.ofNullable(this.withSchemas);
+    }
+
+    /**
      * Identifier.
      * 
      */
@@ -75,6 +91,7 @@ public final class GetApiShieldOperationArgs extends com.pulumi.resources.Invoke
         this.feature = $.feature;
         this.filter = $.filter;
         this.operationId = $.operationId;
+        this.withSchemas = $.withSchemas;
         this.zoneId = $.zoneId;
     }
 
@@ -155,6 +172,27 @@ public final class GetApiShieldOperationArgs extends com.pulumi.resources.Invoke
          */
         public Builder operationId(String operationId) {
             return operationId(Output.of(operationId));
+        }
+
+        /**
+         * @param withSchemas When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder withSchemas(@Nullable Output<Boolean> withSchemas) {
+            $.withSchemas = withSchemas;
+            return this;
+        }
+
+        /**
+         * @param withSchemas When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder withSchemas(Boolean withSchemas) {
+            return withSchemas(Output.of(withSchemas));
         }
 
         /**

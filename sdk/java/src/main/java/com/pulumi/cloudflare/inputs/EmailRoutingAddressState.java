@@ -76,6 +76,23 @@ public final class EmailRoutingAddressState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+     * Available values: &#34;unverified&#34;, &#34;verified&#34;.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+     * Available values: &#34;unverified&#34;, &#34;verified&#34;.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
      * Destination address tag. (Deprecated, replaced by destination address identifier)
      * 
      * @deprecated
@@ -120,6 +137,7 @@ public final class EmailRoutingAddressState extends com.pulumi.resources.Resourc
         this.created = $.created;
         this.email = $.email;
         this.modified = $.modified;
+        this.status = $.status;
         this.tag = $.tag;
         this.verified = $.verified;
     }
@@ -224,6 +242,29 @@ public final class EmailRoutingAddressState extends com.pulumi.resources.Resourc
          */
         public Builder modified(String modified) {
             return modified(Output.of(modified));
+        }
+
+        /**
+         * @param status Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+         * Available values: &#34;unverified&#34;, &#34;verified&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+         * Available values: &#34;unverified&#34;, &#34;verified&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
         }
 
         /**

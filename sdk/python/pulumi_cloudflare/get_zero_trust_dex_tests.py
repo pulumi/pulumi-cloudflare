@@ -50,6 +50,9 @@ class GetZeroTrustDexTestsResult:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier linked to an account.
+        """
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -64,7 +67,7 @@ class GetZeroTrustDexTestsResult:
     @pulumi.getter
     def kind(self) -> Optional[_builtins.str]:
         """
-        Filter by test type
+        Filter by test type.
         Available values: "http", "traceroute".
         """
         return pulumi.get(self, "kind")
@@ -89,7 +92,7 @@ class GetZeroTrustDexTestsResult:
     @pulumi.getter(name="testName")
     def test_name(self) -> Optional[_builtins.str]:
         """
-        Filter by test name
+        Filter by test name.
         """
         return pulumi.get(self, "test_name")
 
@@ -133,10 +136,11 @@ def get_zero_trust_dex_tests(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str kind: Filter by test type
+    :param _builtins.str account_id: Unique identifier linked to an account.
+    :param _builtins.str kind: Filter by test type.
            Available values: "http", "traceroute".
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str test_name: Filter by test name
+    :param _builtins.str test_name: Filter by test name.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -178,10 +182,11 @@ def get_zero_trust_dex_tests_output(account_id: pulumi.Input[Optional[Optional[_
     ```
 
 
-    :param _builtins.str kind: Filter by test type
+    :param _builtins.str account_id: Unique identifier linked to an account.
+    :param _builtins.str kind: Filter by test type.
            Available values: "http", "traceroute".
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str test_name: Filter by test name
+    :param _builtins.str test_name: Filter by test name.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

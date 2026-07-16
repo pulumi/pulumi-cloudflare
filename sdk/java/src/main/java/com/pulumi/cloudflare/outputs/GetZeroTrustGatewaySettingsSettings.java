@@ -19,6 +19,7 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsSandbox;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsTlsDecrypt;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.util.Objects;
 
 @CustomType
@@ -82,6 +83,11 @@ public final class GetZeroTrustGatewaySettingsSettings {
      * 
      */
     private GetZeroTrustGatewaySettingsSettingsInspection inspection;
+    /**
+     * @return Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `maxTtl` setting.
+     * 
+     */
+    private Integer maxTtlSecs;
     /**
      * @return Specify whether to detect protocols from the initial bytes of client traffic.
      * 
@@ -181,6 +187,13 @@ public final class GetZeroTrustGatewaySettingsSettings {
         return this.inspection;
     }
     /**
+     * @return Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `maxTtl` setting.
+     * 
+     */
+    public Integer maxTtlSecs() {
+        return this.maxTtlSecs;
+    }
+    /**
      * @return Specify whether to detect protocols from the initial bytes of client traffic.
      * 
      */
@@ -222,6 +235,7 @@ public final class GetZeroTrustGatewaySettingsSettings {
         private GetZeroTrustGatewaySettingsSettingsFips fips;
         private GetZeroTrustGatewaySettingsSettingsHostSelector hostSelector;
         private GetZeroTrustGatewaySettingsSettingsInspection inspection;
+        private Integer maxTtlSecs;
         private GetZeroTrustGatewaySettingsSettingsProtocolDetection protocolDetection;
         private GetZeroTrustGatewaySettingsSettingsSandbox sandbox;
         private GetZeroTrustGatewaySettingsSettingsTlsDecrypt tlsDecrypt;
@@ -239,6 +253,7 @@ public final class GetZeroTrustGatewaySettingsSettings {
     	      this.fips = defaults.fips;
     	      this.hostSelector = defaults.hostSelector;
     	      this.inspection = defaults.inspection;
+    	      this.maxTtlSecs = defaults.maxTtlSecs;
     	      this.protocolDetection = defaults.protocolDetection;
     	      this.sandbox = defaults.sandbox;
     	      this.tlsDecrypt = defaults.tlsDecrypt;
@@ -333,6 +348,14 @@ public final class GetZeroTrustGatewaySettingsSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder maxTtlSecs(Integer maxTtlSecs) {
+            if (maxTtlSecs == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustGatewaySettingsSettings", "maxTtlSecs");
+            }
+            this.maxTtlSecs = maxTtlSecs;
+            return this;
+        }
+        @CustomType.Setter
         public Builder protocolDetection(GetZeroTrustGatewaySettingsSettingsProtocolDetection protocolDetection) {
             if (protocolDetection == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustGatewaySettingsSettings", "protocolDetection");
@@ -369,6 +392,7 @@ public final class GetZeroTrustGatewaySettingsSettings {
             _resultValue.fips = fips;
             _resultValue.hostSelector = hostSelector;
             _resultValue.inspection = inspection;
+            _resultValue.maxTtlSecs = maxTtlSecs;
             _resultValue.protocolDetection = protocolDetection;
             _resultValue.sandbox = sandbox;
             _resultValue.tlsDecrypt = tlsDecrypt;

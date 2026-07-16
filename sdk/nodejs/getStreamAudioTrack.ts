@@ -39,7 +39,7 @@ export interface GetStreamAudioTrackArgs {
     /**
      * The account identifier tag.
      */
-    accountId?: string;
+    accountId: string;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */
@@ -53,7 +53,7 @@ export interface GetStreamAudioTrackResult {
     /**
      * The account identifier tag.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * Array of audio tracks for the video.
      */
@@ -100,7 +100,7 @@ export interface GetStreamAudioTrackOutputArgs {
     /**
      * The account identifier tag.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */

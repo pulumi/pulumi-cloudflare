@@ -46,8 +46,10 @@ import (
 //						Type: pulumi.String("all"),
 //					},
 //				},
-//				Enabled: pulumi.Bool(true),
-//				Name:    pulumi.String("Send to user@example.net rule."),
+//				Enabled:        pulumi.Bool(true),
+//				Name:           pulumi.String("Send to user@example.net rule."),
+//				OwnerWorkerTag: pulumi.String("a7e6fb77503c41d8a7f3113c6918f10c"),
+//				Source:         pulumi.String("api"),
 //			})
 //			if err != nil {
 //				return err
@@ -74,6 +76,14 @@ type EmailRoutingCatchAll struct {
 	Matchers EmailRoutingCatchAllMatcherArrayOutput `pulumi:"matchers"`
 	// Routing rule name.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
+	// Public tag (script_tag) of the Worker that owns this rule. Required when
+	// `source` is `wrangler`.
+	OwnerWorkerTag pulumi.StringPtrOutput `pulumi:"ownerWorkerTag"`
+	// Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+	// `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+	// to `api` when omitted on write.
+	// Available values: "api", "wrangler".
+	Source pulumi.StringOutput `pulumi:"source"`
 	// Routing rule tag. (Deprecated, replaced by routing rule identifier)
 	//
 	// Deprecated: This attribute is deprecated.
@@ -129,6 +139,14 @@ type emailRoutingCatchAllState struct {
 	Matchers []EmailRoutingCatchAllMatcher `pulumi:"matchers"`
 	// Routing rule name.
 	Name *string `pulumi:"name"`
+	// Public tag (script_tag) of the Worker that owns this rule. Required when
+	// `source` is `wrangler`.
+	OwnerWorkerTag *string `pulumi:"ownerWorkerTag"`
+	// Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+	// `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+	// to `api` when omitted on write.
+	// Available values: "api", "wrangler".
+	Source *string `pulumi:"source"`
 	// Routing rule tag. (Deprecated, replaced by routing rule identifier)
 	//
 	// Deprecated: This attribute is deprecated.
@@ -146,6 +164,14 @@ type EmailRoutingCatchAllState struct {
 	Matchers EmailRoutingCatchAllMatcherArrayInput
 	// Routing rule name.
 	Name pulumi.StringPtrInput
+	// Public tag (script_tag) of the Worker that owns this rule. Required when
+	// `source` is `wrangler`.
+	OwnerWorkerTag pulumi.StringPtrInput
+	// Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+	// `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+	// to `api` when omitted on write.
+	// Available values: "api", "wrangler".
+	Source pulumi.StringPtrInput
 	// Routing rule tag. (Deprecated, replaced by routing rule identifier)
 	//
 	// Deprecated: This attribute is deprecated.
@@ -167,6 +193,14 @@ type emailRoutingCatchAllArgs struct {
 	Matchers []EmailRoutingCatchAllMatcher `pulumi:"matchers"`
 	// Routing rule name.
 	Name *string `pulumi:"name"`
+	// Public tag (script_tag) of the Worker that owns this rule. Required when
+	// `source` is `wrangler`.
+	OwnerWorkerTag *string `pulumi:"ownerWorkerTag"`
+	// Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+	// `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+	// to `api` when omitted on write.
+	// Available values: "api", "wrangler".
+	Source *string `pulumi:"source"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -181,6 +215,14 @@ type EmailRoutingCatchAllArgs struct {
 	Matchers EmailRoutingCatchAllMatcherArrayInput
 	// Routing rule name.
 	Name pulumi.StringPtrInput
+	// Public tag (script_tag) of the Worker that owns this rule. Required when
+	// `source` is `wrangler`.
+	OwnerWorkerTag pulumi.StringPtrInput
+	// Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+	// `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+	// to `api` when omitted on write.
+	// Available values: "api", "wrangler".
+	Source pulumi.StringPtrInput
 	// Identifier.
 	ZoneId pulumi.StringInput
 }
@@ -290,6 +332,20 @@ func (o EmailRoutingCatchAllOutput) Matchers() EmailRoutingCatchAllMatcherArrayO
 // Routing rule name.
 func (o EmailRoutingCatchAllOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EmailRoutingCatchAll) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Public tag (script_tag) of the Worker that owns this rule. Required when
+// `source` is `wrangler`.
+func (o EmailRoutingCatchAllOutput) OwnerWorkerTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailRoutingCatchAll) pulumi.StringPtrOutput { return v.OwnerWorkerTag }).(pulumi.StringPtrOutput)
+}
+
+// Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+// `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+// to `api` when omitted on write.
+// Available values: "api", "wrangler".
+func (o EmailRoutingCatchAllOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v *EmailRoutingCatchAll) pulumi.StringOutput { return v.Source }).(pulumi.StringOutput)
 }
 
 // Routing rule tag. (Deprecated, replaced by routing rule identifier)

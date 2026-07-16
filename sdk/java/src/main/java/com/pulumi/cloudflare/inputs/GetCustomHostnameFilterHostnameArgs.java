@@ -16,24 +16,56 @@ public final class GetCustomHostnameFilterHostnameArgs extends com.pulumi.resour
     public static final GetCustomHostnameFilterHostnameArgs Empty = new GetCustomHostnameFilterHostnameArgs();
 
     /**
-     * Filters hostnames by a substring match on the hostname value. This parameter cannot be used with the &#39;id&#39; parameter.
+     * Filters hostnames by a substring match on the hostname value. This parameter cannot be used with the &#39;id&#39;, &#39;hostname&#39;, &#39;hostname.exact&#39;, or &#39;hostname.startsWith&#39; parameters.
      * 
      */
     @Import(name="contain")
     private @Nullable Output<String> contain;
 
     /**
-     * @return Filters hostnames by a substring match on the hostname value. This parameter cannot be used with the &#39;id&#39; parameter.
+     * @return Filters hostnames by a substring match on the hostname value. This parameter cannot be used with the &#39;id&#39;, &#39;hostname&#39;, &#39;hostname.exact&#39;, or &#39;hostname.startsWith&#39; parameters.
      * 
      */
     public Optional<Output<String>> contain() {
         return Optional.ofNullable(this.contain);
     }
 
+    /**
+     * Fully qualified domain name to match against. This parameter cannot be used with the &#39;id&#39;, &#39;hostname&#39;, &#39;hostname.contain&#39;, or &#39;hostname.startsWith&#39; parameters.
+     * 
+     */
+    @Import(name="exact")
+    private @Nullable Output<String> exact;
+
+    /**
+     * @return Fully qualified domain name to match against. This parameter cannot be used with the &#39;id&#39;, &#39;hostname&#39;, &#39;hostname.contain&#39;, or &#39;hostname.startsWith&#39; parameters.
+     * 
+     */
+    public Optional<Output<String>> exact() {
+        return Optional.ofNullable(this.exact);
+    }
+
+    /**
+     * Filters hostnames by a prefix match on the hostname value. This parameter cannot be used with the &#39;id&#39;, &#39;hostname&#39;, &#39;hostname.exact&#39;, or &#39;hostname.contain&#39; parameters.
+     * 
+     */
+    @Import(name="startsWith")
+    private @Nullable Output<String> startsWith;
+
+    /**
+     * @return Filters hostnames by a prefix match on the hostname value. This parameter cannot be used with the &#39;id&#39;, &#39;hostname&#39;, &#39;hostname.exact&#39;, or &#39;hostname.contain&#39; parameters.
+     * 
+     */
+    public Optional<Output<String>> startsWith() {
+        return Optional.ofNullable(this.startsWith);
+    }
+
     private GetCustomHostnameFilterHostnameArgs() {}
 
     private GetCustomHostnameFilterHostnameArgs(GetCustomHostnameFilterHostnameArgs $) {
         this.contain = $.contain;
+        this.exact = $.exact;
+        this.startsWith = $.startsWith;
     }
 
     public static Builder builder() {
@@ -55,7 +87,7 @@ public final class GetCustomHostnameFilterHostnameArgs extends com.pulumi.resour
         }
 
         /**
-         * @param contain Filters hostnames by a substring match on the hostname value. This parameter cannot be used with the &#39;id&#39; parameter.
+         * @param contain Filters hostnames by a substring match on the hostname value. This parameter cannot be used with the &#39;id&#39;, &#39;hostname&#39;, &#39;hostname.exact&#39;, or &#39;hostname.startsWith&#39; parameters.
          * 
          * @return builder
          * 
@@ -66,13 +98,55 @@ public final class GetCustomHostnameFilterHostnameArgs extends com.pulumi.resour
         }
 
         /**
-         * @param contain Filters hostnames by a substring match on the hostname value. This parameter cannot be used with the &#39;id&#39; parameter.
+         * @param contain Filters hostnames by a substring match on the hostname value. This parameter cannot be used with the &#39;id&#39;, &#39;hostname&#39;, &#39;hostname.exact&#39;, or &#39;hostname.startsWith&#39; parameters.
          * 
          * @return builder
          * 
          */
         public Builder contain(String contain) {
             return contain(Output.of(contain));
+        }
+
+        /**
+         * @param exact Fully qualified domain name to match against. This parameter cannot be used with the &#39;id&#39;, &#39;hostname&#39;, &#39;hostname.contain&#39;, or &#39;hostname.startsWith&#39; parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exact(@Nullable Output<String> exact) {
+            $.exact = exact;
+            return this;
+        }
+
+        /**
+         * @param exact Fully qualified domain name to match against. This parameter cannot be used with the &#39;id&#39;, &#39;hostname&#39;, &#39;hostname.contain&#39;, or &#39;hostname.startsWith&#39; parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exact(String exact) {
+            return exact(Output.of(exact));
+        }
+
+        /**
+         * @param startsWith Filters hostnames by a prefix match on the hostname value. This parameter cannot be used with the &#39;id&#39;, &#39;hostname&#39;, &#39;hostname.exact&#39;, or &#39;hostname.contain&#39; parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startsWith(@Nullable Output<String> startsWith) {
+            $.startsWith = startsWith;
+            return this;
+        }
+
+        /**
+         * @param startsWith Filters hostnames by a prefix match on the hostname value. This parameter cannot be used with the &#39;id&#39;, &#39;hostname&#39;, &#39;hostname.exact&#39;, or &#39;hostname.contain&#39; parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startsWith(String startsWith) {
+            return startsWith(Output.of(startsWith));
         }
 
         public GetCustomHostnameFilterHostnameArgs build() {

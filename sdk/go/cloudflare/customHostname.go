@@ -140,7 +140,7 @@ type CustomHostname struct {
 	// These are errors that were encountered while trying to activate a hostname.
 	VerificationErrors pulumi.StringArrayOutput `pulumi:"verificationErrors"`
 	// Identifier.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewCustomHostname registers a new resource with the given unique name, arguments, and options.
@@ -152,6 +152,9 @@ func NewCustomHostname(ctx *pulumi.Context,
 
 	if args.Hostname == nil {
 		return nil, errors.New("invalid value for required argument 'Hostname'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CustomHostname
@@ -243,7 +246,7 @@ type customHostnameArgs struct {
 	// SSL properties used when creating the custom hostname.
 	Ssl *CustomHostnameSsl `pulumi:"ssl"`
 	// Identifier.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a CustomHostname resource.
@@ -259,7 +262,7 @@ type CustomHostnameArgs struct {
 	// SSL properties used when creating the custom hostname.
 	Ssl CustomHostnameSslPtrInput
 	// Identifier.
-	ZoneId pulumi.StringPtrInput
+	ZoneId pulumi.StringInput
 }
 
 func (CustomHostnameArgs) ElementType() reflect.Type {
@@ -403,8 +406,8 @@ func (o CustomHostnameOutput) VerificationErrors() pulumi.StringArrayOutput {
 }
 
 // Identifier.
-func (o CustomHostnameOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CustomHostname) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o CustomHostnameOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomHostname) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type CustomHostnameArrayOutput struct{ *pulumi.OutputState }

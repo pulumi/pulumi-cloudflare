@@ -17,14 +17,14 @@ public final class GetEmailSecurityBlockSendersArgs extends com.pulumi.resources
     public static final GetEmailSecurityBlockSendersArgs Empty = new GetEmailSecurityBlockSendersArgs();
 
     /**
-     * Account Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -64,7 +64,7 @@ public final class GetEmailSecurityBlockSendersArgs extends com.pulumi.resources
     }
 
     /**
-     * The field to sort by.
+     * Field to sort by.
      * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
@@ -72,7 +72,7 @@ public final class GetEmailSecurityBlockSendersArgs extends com.pulumi.resources
     private @Nullable Output<String> order;
 
     /**
-     * @return The field to sort by.
+     * @return Field to sort by.
      * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
@@ -80,14 +80,23 @@ public final class GetEmailSecurityBlockSendersArgs extends com.pulumi.resources
         return Optional.ofNullable(this.order);
     }
 
+    /**
+     * Filter by pattern value.
+     * 
+     */
     @Import(name="pattern")
     private @Nullable Output<String> pattern;
 
+    /**
+     * @return Filter by pattern value.
+     * 
+     */
     public Optional<Output<String>> pattern() {
         return Optional.ofNullable(this.pattern);
     }
 
     /**
+     * Filter by pattern type.
      * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
      */
@@ -95,7 +104,8 @@ public final class GetEmailSecurityBlockSendersArgs extends com.pulumi.resources
     private @Nullable Output<String> patternType;
 
     /**
-     * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * @return Filter by pattern type.
+     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
      */
     public Optional<Output<String>> patternType() {
@@ -103,20 +113,14 @@ public final class GetEmailSecurityBlockSendersArgs extends com.pulumi.resources
     }
 
     /**
-     * Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * Search term for filtering records. Behavior may change.
      * 
      */
     @Import(name="search")
     private @Nullable Output<String> search;
 
     /**
-     * @return Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * @return Search term for filtering records. Behavior may change.
      * 
      */
     public Optional<Output<String>> search() {
@@ -154,7 +158,7 @@ public final class GetEmailSecurityBlockSendersArgs extends com.pulumi.resources
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -165,7 +169,7 @@ public final class GetEmailSecurityBlockSendersArgs extends com.pulumi.resources
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -219,7 +223,7 @@ public final class GetEmailSecurityBlockSendersArgs extends com.pulumi.resources
         }
 
         /**
-         * @param order The field to sort by.
+         * @param order Field to sort by.
          * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
          * 
          * @return builder
@@ -231,7 +235,7 @@ public final class GetEmailSecurityBlockSendersArgs extends com.pulumi.resources
         }
 
         /**
-         * @param order The field to sort by.
+         * @param order Field to sort by.
          * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
          * 
          * @return builder
@@ -241,17 +245,30 @@ public final class GetEmailSecurityBlockSendersArgs extends com.pulumi.resources
             return order(Output.of(order));
         }
 
+        /**
+         * @param pattern Filter by pattern value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pattern(@Nullable Output<String> pattern) {
             $.pattern = pattern;
             return this;
         }
 
+        /**
+         * @param pattern Filter by pattern value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pattern(String pattern) {
             return pattern(Output.of(pattern));
         }
 
         /**
-         * @param patternType Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+         * @param patternType Filter by pattern type.
+         * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
          * 
          * @return builder
          * 
@@ -262,7 +279,8 @@ public final class GetEmailSecurityBlockSendersArgs extends com.pulumi.resources
         }
 
         /**
-         * @param patternType Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+         * @param patternType Filter by pattern type.
+         * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
          * 
          * @return builder
          * 
@@ -272,10 +290,7 @@ public final class GetEmailSecurityBlockSendersArgs extends com.pulumi.resources
         }
 
         /**
-         * @param search Allows searching in multiple properties of a record simultaneously.
-         * This parameter is intended for human users, not automation. Its exact
-         * behavior is intentionally left unspecified and is subject to change
-         * in the future.
+         * @param search Search term for filtering records. Behavior may change.
          * 
          * @return builder
          * 
@@ -286,10 +301,7 @@ public final class GetEmailSecurityBlockSendersArgs extends com.pulumi.resources
         }
 
         /**
-         * @param search Allows searching in multiple properties of a record simultaneously.
-         * This parameter is intended for human users, not automation. Its exact
-         * behavior is intentionally left unspecified and is subject to change
-         * in the future.
+         * @param search Search term for filtering records. Behavior may change.
          * 
          * @return builder
          * 

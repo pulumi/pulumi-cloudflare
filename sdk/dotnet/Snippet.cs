@@ -53,7 +53,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// &gt; This resource does not currently support `pulumi import`.
+    /// ```sh
+    /// $ pulumi import cloudflare:index/snippet:Snippet example '&lt;zone_id&gt;/&lt;snippet_name&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/snippet:Snippet")]
     public partial class Snippet : global::Pulumi.CustomResource
@@ -92,7 +94,7 @@ namespace Pulumi.Cloudflare
         /// Use this field to specify the unique ID of the zone.
         /// </summary>
         [Output("zoneId")]
-        public Output<string?> ZoneId { get; private set; } = null!;
+        public Output<string> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -167,8 +169,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Use this field to specify the unique ID of the zone.
         /// </summary>
-        [Input("zoneId")]
-        public Input<string>? ZoneId { get; set; }
+        [Input("zoneId", required: true)]
+        public Input<string> ZoneId { get; set; } = null!;
 
         public SnippetArgs()
         {

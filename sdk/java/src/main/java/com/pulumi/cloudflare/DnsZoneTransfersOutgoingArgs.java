@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class DnsZoneTransfersOutgoingArgs extends com.pulumi.resources.ResourceArgs {
@@ -47,11 +45,11 @@ public final class DnsZoneTransfersOutgoingArgs extends com.pulumi.resources.Res
         return this.peers;
     }
 
-    @Import(name="zoneId")
-    private @Nullable Output<String> zoneId;
+    @Import(name="zoneId", required=true)
+    private Output<String> zoneId;
 
-    public Optional<Output<String>> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     private DnsZoneTransfersOutgoingArgs() {}
@@ -132,7 +130,7 @@ public final class DnsZoneTransfersOutgoingArgs extends com.pulumi.resources.Res
             return peers(List.of(peers));
         }
 
-        public Builder zoneId(@Nullable Output<String> zoneId) {
+        public Builder zoneId(Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -147,6 +145,9 @@ public final class DnsZoneTransfersOutgoingArgs extends com.pulumi.resources.Res
             }
             if ($.peers == null) {
                 throw new MissingRequiredPropertyException("DnsZoneTransfersOutgoingArgs", "peers");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("DnsZoneTransfersOutgoingArgs", "zoneId");
             }
             return $;
         }

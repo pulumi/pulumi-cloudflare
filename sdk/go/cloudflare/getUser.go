@@ -55,6 +55,8 @@ type LookupUserResult struct {
 	Betas []string `pulumi:"betas"`
 	// The country in which the user lives.
 	Country string `pulumi:"country"`
+	// Current email address of the user.
+	Email string `pulumi:"email"`
 	// User's first name
 	FirstName string `pulumi:"firstName"`
 	// Indicates whether user has any business zones
@@ -110,6 +112,11 @@ func (o LookupUserResultOutput) Betas() pulumi.StringArrayOutput {
 // The country in which the user lives.
 func (o LookupUserResultOutput) Country() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Country }).(pulumi.StringOutput)
+}
+
+// Current email address of the user.
+func (o LookupUserResultOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Email }).(pulumi.StringOutput)
 }
 
 // User's first name

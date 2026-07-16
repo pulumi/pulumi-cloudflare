@@ -6,10 +6,13 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.WorkersScriptAnnotationsArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptAssetsArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptBindingArgs;
+import com.pulumi.cloudflare.inputs.WorkersScriptCacheOptionsArgs;
+import com.pulumi.cloudflare.inputs.WorkersScriptExportsArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptLimitsArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptMigrationsArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptNamedHandlerArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptObservabilityArgs;
+import com.pulumi.cloudflare.inputs.WorkersScriptPackageDependencyArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptPlacementArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptTailConsumerArgs;
 import com.pulumi.core.Output;
@@ -18,6 +21,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -100,6 +104,27 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> bodyPart() {
         return Optional.ofNullable(this.bodyPart);
+    }
+
+    /**
+     * Global CacheW configuration for the Worker. When caching is on,
+     * the platform provisions a `cloudflare.app` zone for the Worker.
+     * A `type: worker` entry in the `exports` map can override this
+     * value for a single entrypoint.
+     * 
+     */
+    @Import(name="cacheOptions")
+    private @Nullable Output<WorkersScriptCacheOptionsArgs> cacheOptions;
+
+    /**
+     * @return Global CacheW configuration for the Worker. When caching is on,
+     * the platform provisions a `cloudflare.app` zone for the Worker.
+     * A `type: worker` entry in the `exports` map can override this
+     * value for a single entrypoint.
+     * 
+     */
+    public Optional<Output<WorkersScriptCacheOptionsArgs>> cacheOptions() {
+        return Optional.ofNullable(this.cacheOptions);
     }
 
     /**
@@ -223,6 +248,21 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint&#39;s kind and per-entrypoint cache behavior.
+     * 
+     */
+    @Import(name="exports")
+    private @Nullable Output<Map<String,WorkersScriptExportsArgs>> exports;
+
+    /**
+     * @return Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint&#39;s kind and per-entrypoint cache behavior.
+     * 
+     */
+    public Optional<Output<Map<String,WorkersScriptExportsArgs>>> exports() {
+        return Optional.ofNullable(this.exports);
+    }
+
+    /**
      * The names of handlers exported as part of the default export.
      * 
      */
@@ -268,14 +308,14 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+     * Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
      * 
      */
     @Import(name="keepAssets")
     private @Nullable Output<Boolean> keepAssets;
 
     /**
-     * @return Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+     * @return Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
      * 
      */
     public Optional<Output<Boolean>> keepAssets() {
@@ -433,6 +473,21 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The list of npm packages that were installed and used when this Worker was built.
+     * 
+     */
+    @Import(name="packageDependencies")
+    private @Nullable Output<List<WorkersScriptPackageDependencyArgs>> packageDependencies;
+
+    /**
+     * @return The list of npm packages that were installed and used when this Worker was built.
+     * 
+     */
+    public Optional<Output<List<WorkersScriptPackageDependencyArgs>>> packageDependencies() {
+        return Optional.ofNullable(this.packageDependencies);
+    }
+
+    /**
      * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.
      * 
      */
@@ -555,6 +610,7 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
         this.assets = $.assets;
         this.bindings = $.bindings;
         this.bodyPart = $.bodyPart;
+        this.cacheOptions = $.cacheOptions;
         this.compatibilityDate = $.compatibilityDate;
         this.compatibilityFlags = $.compatibilityFlags;
         this.content = $.content;
@@ -563,6 +619,7 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
         this.contentType = $.contentType;
         this.createdOn = $.createdOn;
         this.etag = $.etag;
+        this.exports = $.exports;
         this.handlers = $.handlers;
         this.hasAssets = $.hasAssets;
         this.hasModules = $.hasModules;
@@ -577,6 +634,7 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
         this.modifiedOn = $.modifiedOn;
         this.namedHandlers = $.namedHandlers;
         this.observability = $.observability;
+        this.packageDependencies = $.packageDependencies;
         this.placement = $.placement;
         this.placementMode = $.placementMode;
         this.placementStatus = $.placementStatus;
@@ -717,6 +775,33 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder bodyPart(String bodyPart) {
             return bodyPart(Output.of(bodyPart));
+        }
+
+        /**
+         * @param cacheOptions Global CacheW configuration for the Worker. When caching is on,
+         * the platform provisions a `cloudflare.app` zone for the Worker.
+         * A `type: worker` entry in the `exports` map can override this
+         * value for a single entrypoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacheOptions(@Nullable Output<WorkersScriptCacheOptionsArgs> cacheOptions) {
+            $.cacheOptions = cacheOptions;
+            return this;
+        }
+
+        /**
+         * @param cacheOptions Global CacheW configuration for the Worker. When caching is on,
+         * the platform provisions a `cloudflare.app` zone for the Worker.
+         * A `type: worker` entry in the `exports` map can override this
+         * value for a single entrypoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacheOptions(WorkersScriptCacheOptionsArgs cacheOptions) {
+            return cacheOptions(Output.of(cacheOptions));
         }
 
         /**
@@ -898,6 +983,27 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param exports Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint&#39;s kind and per-entrypoint cache behavior.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exports(@Nullable Output<Map<String,WorkersScriptExportsArgs>> exports) {
+            $.exports = exports;
+            return this;
+        }
+
+        /**
+         * @param exports Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint&#39;s kind and per-entrypoint cache behavior.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exports(Map<String,WorkersScriptExportsArgs> exports) {
+            return exports(Output.of(exports));
+        }
+
+        /**
          * @param handlers The names of handlers exported as part of the default export.
          * 
          * @return builder
@@ -971,7 +1077,7 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param keepAssets Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+         * @param keepAssets Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
          * 
          * @return builder
          * 
@@ -982,7 +1088,7 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param keepAssets Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+         * @param keepAssets Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
          * 
          * @return builder
          * 
@@ -1219,6 +1325,37 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder observability(WorkersScriptObservabilityArgs observability) {
             return observability(Output.of(observability));
+        }
+
+        /**
+         * @param packageDependencies The list of npm packages that were installed and used when this Worker was built.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder packageDependencies(@Nullable Output<List<WorkersScriptPackageDependencyArgs>> packageDependencies) {
+            $.packageDependencies = packageDependencies;
+            return this;
+        }
+
+        /**
+         * @param packageDependencies The list of npm packages that were installed and used when this Worker was built.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder packageDependencies(List<WorkersScriptPackageDependencyArgs> packageDependencies) {
+            return packageDependencies(Output.of(packageDependencies));
+        }
+
+        /**
+         * @param packageDependencies The list of npm packages that were installed and used when this Worker was built.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder packageDependencies(WorkersScriptPackageDependencyArgs... packageDependencies) {
+            return packageDependencies(List.of(packageDependencies));
         }
 
         /**

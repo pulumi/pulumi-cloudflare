@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.TeamsLocationEndpointsArgs;
+import com.pulumi.cloudflare.inputs.TeamsLocationMaxTtlArgs;
 import com.pulumi.cloudflare.inputs.TeamsLocationNetworkArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -20,11 +21,11 @@ public final class TeamsLocationArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final TeamsLocationArgs Empty = new TeamsLocationArgs();
 
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -88,6 +89,21 @@ public final class TeamsLocationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+     * 
+     */
+    @Import(name="maxTtl")
+    private @Nullable Output<TeamsLocationMaxTtlArgs> maxTtl;
+
+    /**
+     * @return Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+     * 
+     */
+    public Optional<Output<TeamsLocationMaxTtlArgs>> maxTtl() {
+        return Optional.ofNullable(this.maxTtl);
+    }
+
+    /**
      * Specify the location name.
      * 
      */
@@ -125,6 +141,7 @@ public final class TeamsLocationArgs extends com.pulumi.resources.ResourceArgs {
         this.dnsDestinationIpsId = $.dnsDestinationIpsId;
         this.ecsSupport = $.ecsSupport;
         this.endpoints = $.endpoints;
+        this.maxTtl = $.maxTtl;
         this.name = $.name;
         this.networks = $.networks;
     }
@@ -147,7 +164,7 @@ public final class TeamsLocationArgs extends com.pulumi.resources.ResourceArgs {
             $ = new TeamsLocationArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -241,6 +258,27 @@ public final class TeamsLocationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param maxTtl Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxTtl(@Nullable Output<TeamsLocationMaxTtlArgs> maxTtl) {
+            $.maxTtl = maxTtl;
+            return this;
+        }
+
+        /**
+         * @param maxTtl Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxTtl(TeamsLocationMaxTtlArgs maxTtl) {
+            return maxTtl(Output.of(maxTtl));
+        }
+
+        /**
          * @param name Specify the location name.
          * 
          * @return builder
@@ -293,6 +331,9 @@ public final class TeamsLocationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TeamsLocationArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("TeamsLocationArgs", "accountId");
+            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("TeamsLocationArgs", "name");
             }

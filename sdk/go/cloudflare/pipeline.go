@@ -54,8 +54,8 @@ type Pipeline struct {
 	pulumi.CustomResourceState
 
 	// Specifies the public ID of the account.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	CreatedAt pulumi.StringOutput    `pulumi:"createdAt"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Indicates the reason for the failure of the Pipeline.
 	FailureReason pulumi.StringOutput `pulumi:"failureReason"`
 	ModifiedAt    pulumi.StringOutput `pulumi:"modifiedAt"`
@@ -76,6 +76,9 @@ func NewPipeline(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -144,7 +147,7 @@ func (PipelineState) ElementType() reflect.Type {
 
 type pipelineArgs struct {
 	// Specifies the public ID of the account.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Specifies the name of the Pipeline.
 	Name string `pulumi:"name"`
 	// Specifies SQL for the Pipeline processing flow.
@@ -154,7 +157,7 @@ type pipelineArgs struct {
 // The set of arguments for constructing a Pipeline resource.
 type PipelineArgs struct {
 	// Specifies the public ID of the account.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Specifies the name of the Pipeline.
 	Name pulumi.StringInput
 	// Specifies SQL for the Pipeline processing flow.
@@ -249,8 +252,8 @@ func (o PipelineOutput) ToPipelineOutputWithContext(ctx context.Context) Pipelin
 }
 
 // Specifies the public ID of the account.
-func (o PipelineOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o PipelineOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 func (o PipelineOutput) CreatedAt() pulumi.StringOutput {

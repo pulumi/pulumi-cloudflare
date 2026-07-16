@@ -21,6 +21,42 @@ namespace Pulumi.Cloudflare
     ///   _and_ `cloudflare.getListItems` on the same list is not supported and will cause
     ///   Terraform into an irreconcilable state.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleList = new Cloudflare.List("example_list", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Kind = "ip",
+    ///         Name = "list1",
+    ///         Description = "This is a note",
+    ///         Items = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ListItemArgs
+    ///             {
+    ///                 Ip = "1.1.1.1",
+    ///             },
+    ///             new Cloudflare.Inputs.ListItemArgs
+    ///             {
+    ///                 Ip = "1.1.1.2",
+    ///             },
+    ///             new Cloudflare.Inputs.ListItemArgs
+    ///             {
+    ///                 Ip = "1.1.1.3",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -34,7 +70,7 @@ namespace Pulumi.Cloudflare
         /// The Account ID for this resource.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The RFC 3339 timestamp of when the list was created.
@@ -134,8 +170,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The Account ID for this resource.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// An informative summary of the list.

@@ -6,10 +6,12 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.WorkerVersionAnnotationsArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionAssetsArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionBindingArgs;
+import com.pulumi.cloudflare.inputs.WorkerVersionCacheOptionsArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionContainerArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionLimitsArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionMigrationsArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionModuleArgs;
+import com.pulumi.cloudflare.inputs.WorkerVersionPackageDependencyArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionPlacementArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -83,6 +85,27 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<List<WorkerVersionBindingArgs>>> bindings() {
         return Optional.ofNullable(this.bindings);
+    }
+
+    /**
+     * Global CacheW configuration for the Worker. When caching is on,
+     * the platform provisions a `cloudflare.app` zone for the Worker.
+     * A `type: worker` entry in the `exports` map can override this
+     * value for a single entrypoint.
+     * 
+     */
+    @Import(name="cacheOptions")
+    private @Nullable Output<WorkerVersionCacheOptionsArgs> cacheOptions;
+
+    /**
+     * @return Global CacheW configuration for the Worker. When caching is on,
+     * the platform provisions a `cloudflare.app` zone for the Worker.
+     * A `type: worker` entry in the `exports` map can override this
+     * value for a single entrypoint.
+     * 
+     */
+    public Optional<Output<WorkerVersionCacheOptionsArgs>> cacheOptions() {
+        return Optional.ofNullable(this.cacheOptions);
     }
 
     /**
@@ -261,6 +284,23 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The list of npm packages that were installed and used when this Worker
+     * version was built.
+     * 
+     */
+    @Import(name="packageDependencies")
+    private @Nullable Output<List<WorkerVersionPackageDependencyArgs>> packageDependencies;
+
+    /**
+     * @return The list of npm packages that were installed and used when this Worker
+     * version was built.
+     * 
+     */
+    public Optional<Output<List<WorkerVersionPackageDependencyArgs>>> packageDependencies() {
+        return Optional.ofNullable(this.packageDependencies);
+    }
+
+    /**
      * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode=&#39;smart&#39; for Smart Placement, or one of region/hostname/host.
      * 
      */
@@ -367,6 +407,7 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
         this.annotations = $.annotations;
         this.assets = $.assets;
         this.bindings = $.bindings;
+        this.cacheOptions = $.cacheOptions;
         this.compatibilityDate = $.compatibilityDate;
         this.compatibilityFlags = $.compatibilityFlags;
         this.containers = $.containers;
@@ -378,6 +419,7 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
         this.migrations = $.migrations;
         this.modules = $.modules;
         this.number = $.number;
+        this.packageDependencies = $.packageDependencies;
         this.placement = $.placement;
         this.source = $.source;
         this.startupTimeMs = $.startupTimeMs;
@@ -496,6 +538,33 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder bindings(WorkerVersionBindingArgs... bindings) {
             return bindings(List.of(bindings));
+        }
+
+        /**
+         * @param cacheOptions Global CacheW configuration for the Worker. When caching is on,
+         * the platform provisions a `cloudflare.app` zone for the Worker.
+         * A `type: worker` entry in the `exports` map can override this
+         * value for a single entrypoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacheOptions(@Nullable Output<WorkerVersionCacheOptionsArgs> cacheOptions) {
+            $.cacheOptions = cacheOptions;
+            return this;
+        }
+
+        /**
+         * @param cacheOptions Global CacheW configuration for the Worker. When caching is on,
+         * the platform provisions a `cloudflare.app` zone for the Worker.
+         * A `type: worker` entry in the `exports` map can override this
+         * value for a single entrypoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacheOptions(WorkerVersionCacheOptionsArgs cacheOptions) {
+            return cacheOptions(Output.of(cacheOptions));
         }
 
         /**
@@ -772,6 +841,40 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder number(Integer number) {
             return number(Output.of(number));
+        }
+
+        /**
+         * @param packageDependencies The list of npm packages that were installed and used when this Worker
+         * version was built.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder packageDependencies(@Nullable Output<List<WorkerVersionPackageDependencyArgs>> packageDependencies) {
+            $.packageDependencies = packageDependencies;
+            return this;
+        }
+
+        /**
+         * @param packageDependencies The list of npm packages that were installed and used when this Worker
+         * version was built.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder packageDependencies(List<WorkerVersionPackageDependencyArgs> packageDependencies) {
+            return packageDependencies(Output.of(packageDependencies));
+        }
+
+        /**
+         * @param packageDependencies The list of npm packages that were installed and used when this Worker
+         * version was built.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder packageDependencies(WorkerVersionPackageDependencyArgs... packageDependencies) {
+            return packageDependencies(List.of(packageDependencies));
         }
 
         /**

@@ -74,6 +74,11 @@ namespace Pulumi.Cloudflare
     ///                 },
     ///             },
     ///         },
+    ///         MaxTtl = new Cloudflare.Inputs.ZeroTrustDnsLocationMaxTtlArgs
+    ///         {
+    ///             Mode = "override",
+    ///             TtlSecs = 3600,
+    ///         },
     ///         Networks = new[]
     ///         {
     ///             new Cloudflare.Inputs.ZeroTrustDnsLocationNetworkArgs
@@ -97,7 +102,7 @@ namespace Pulumi.Cloudflare
     public partial class TeamsLocation : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Indicate whether this location is the default location.
@@ -155,6 +160,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("ipv4DestinationBackup")]
         public Output<string> Ipv4DestinationBackup { get; private set; } = null!;
+
+        /// <summary>
+        /// Controls how DNS response TTLs are capped for this location relative to the account `MaxTtlSecs` setting. Omitting `MaxTtl` on update resets it to `Inherit`.
+        /// </summary>
+        [Output("maxTtl")]
+        public Output<Outputs.TeamsLocationMaxTtl> MaxTtl { get; private set; } = null!;
 
         /// <summary>
         /// Specify the location name.
@@ -221,8 +232,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class TeamsLocationArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Indicate whether this location is the default location.
@@ -247,6 +258,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("endpoints")]
         public Input<Inputs.TeamsLocationEndpointsArgs>? Endpoints { get; set; }
+
+        /// <summary>
+        /// Controls how DNS response TTLs are capped for this location relative to the account `MaxTtlSecs` setting. Omitting `MaxTtl` on update resets it to `Inherit`.
+        /// </summary>
+        [Input("maxTtl")]
+        public Input<Inputs.TeamsLocationMaxTtlArgs>? MaxTtl { get; set; }
 
         /// <summary>
         /// Specify the location name.
@@ -333,6 +350,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("ipv4DestinationBackup")]
         public Input<string>? Ipv4DestinationBackup { get; set; }
+
+        /// <summary>
+        /// Controls how DNS response TTLs are capped for this location relative to the account `MaxTtlSecs` setting. Omitting `MaxTtl` on update resets it to `Inherit`.
+        /// </summary>
+        [Input("maxTtl")]
+        public Input<Inputs.TeamsLocationMaxTtlGetArgs>? MaxTtl { get; set; }
 
         /// <summary>
         /// Specify the location name.

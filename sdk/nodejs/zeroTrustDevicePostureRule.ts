@@ -71,7 +71,7 @@ export class ZeroTrustDevicePostureRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDevicePostureRule.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The description of the device posture rule.
      */
@@ -125,6 +125,9 @@ export class ZeroTrustDevicePostureRule extends pulumi.CustomResource {
             resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as ZeroTrustDevicePostureRuleArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
@@ -184,7 +187,7 @@ export interface ZeroTrustDevicePostureRuleState {
  * The set of arguments for constructing a ZeroTrustDevicePostureRule resource.
  */
 export interface ZeroTrustDevicePostureRuleArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * The description of the device posture rule.
      */

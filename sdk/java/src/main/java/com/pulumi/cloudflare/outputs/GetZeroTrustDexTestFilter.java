@@ -12,20 +12,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetZeroTrustDexTestFilter {
     /**
-     * @return Filter by test type
+     * @return Filter by test type.
      * Available values: &#34;http&#34;, &#34;traceroute&#34;.
      * 
      */
     private @Nullable String kind;
     /**
-     * @return Filter by test name
+     * @return Filter by test name.
      * 
      */
     private @Nullable String testName;
 
     private GetZeroTrustDexTestFilter() {}
     /**
-     * @return Filter by test type
+     * @return Filter by test type.
      * Available values: &#34;http&#34;, &#34;traceroute&#34;.
      * 
      */
@@ -33,7 +33,7 @@ public final class GetZeroTrustDexTestFilter {
         return Optional.ofNullable(this.kind);
     }
     /**
-     * @return Filter by test name
+     * @return Filter by test name.
      * 
      */
     public Optional<String> testName() {

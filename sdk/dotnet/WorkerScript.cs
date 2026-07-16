@@ -32,7 +32,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Annotations for the version created by this upload.
@@ -57,6 +57,15 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("bodyPart")]
         public Output<string?> BodyPart { get; private set; } = null!;
+
+        /// <summary>
+        /// Global CacheW configuration for the Worker. When caching is on,
+        /// the platform provisions a `cloudflare.app` zone for the Worker.
+        /// A `type: worker` entry in the `Exports` map can override this
+        /// value for a single entrypoint.
+        /// </summary>
+        [Output("cacheOptions")]
+        public Output<Outputs.WorkerScriptCacheOptions?> CacheOptions { get; private set; } = null!;
 
         /// <summary>
         /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -107,6 +116,12 @@ namespace Pulumi.Cloudflare
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
+        /// Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+        /// </summary>
+        [Output("exports")]
+        public Output<ImmutableDictionary<string, Outputs.WorkerScriptExports>?> Exports { get; private set; } = null!;
+
+        /// <summary>
         /// The names of handlers exported as part of the default export.
         /// </summary>
         [Output("handlers")]
@@ -125,7 +140,7 @@ namespace Pulumi.Cloudflare
         public Output<bool> HasModules { get; private set; } = null!;
 
         /// <summary>
-        /// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+        /// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `Assets` upload takes precedence over `KeepAssets`.
         /// </summary>
         [Output("keepAssets")]
         public Output<bool?> KeepAssets { get; private set; } = null!;
@@ -189,6 +204,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("observability")]
         public Output<Outputs.WorkerScriptObservability?> Observability { get; private set; } = null!;
+
+        /// <summary>
+        /// The list of npm packages that were installed and used when this Worker was built.
+        /// </summary>
+        [Output("packageDependencies")]
+        public Output<ImmutableArray<Outputs.WorkerScriptPackageDependency>> PackageDependencies { get; private set; } = null!;
 
         /// <summary>
         /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
@@ -283,8 +304,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Annotations for the version created by this upload.
@@ -315,6 +336,15 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("bodyPart")]
         public Input<string>? BodyPart { get; set; }
+
+        /// <summary>
+        /// Global CacheW configuration for the Worker. When caching is on,
+        /// the platform provisions a `cloudflare.app` zone for the Worker.
+        /// A `type: worker` entry in the `Exports` map can override this
+        /// value for a single entrypoint.
+        /// </summary>
+        [Input("cacheOptions")]
+        public Input<Inputs.WorkerScriptCacheOptionsArgs>? CacheOptions { get; set; }
 
         /// <summary>
         /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -358,8 +388,20 @@ namespace Pulumi.Cloudflare
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
+        [Input("exports")]
+        private InputMap<Inputs.WorkerScriptExportsArgs>? _exports;
+
         /// <summary>
-        /// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+        /// Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+        /// </summary>
+        public InputMap<Inputs.WorkerScriptExportsArgs> Exports
+        {
+            get => _exports ?? (_exports = new InputMap<Inputs.WorkerScriptExportsArgs>());
+            set => _exports = value;
+        }
+
+        /// <summary>
+        /// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `Assets` upload takes precedence over `KeepAssets`.
         /// </summary>
         [Input("keepAssets")]
         public Input<bool>? KeepAssets { get; set; }
@@ -405,6 +447,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("observability")]
         public Input<Inputs.WorkerScriptObservabilityArgs>? Observability { get; set; }
+
+        [Input("packageDependencies")]
+        private InputList<Inputs.WorkerScriptPackageDependencyArgs>? _packageDependencies;
+
+        /// <summary>
+        /// The list of npm packages that were installed and used when this Worker was built.
+        /// </summary>
+        public InputList<Inputs.WorkerScriptPackageDependencyArgs> PackageDependencies
+        {
+            get => _packageDependencies ?? (_packageDependencies = new InputList<Inputs.WorkerScriptPackageDependencyArgs>());
+            set => _packageDependencies = value;
+        }
 
         /// <summary>
         /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
@@ -482,6 +536,15 @@ namespace Pulumi.Cloudflare
         public Input<string>? BodyPart { get; set; }
 
         /// <summary>
+        /// Global CacheW configuration for the Worker. When caching is on,
+        /// the platform provisions a `cloudflare.app` zone for the Worker.
+        /// A `type: worker` entry in the `Exports` map can override this
+        /// value for a single entrypoint.
+        /// </summary>
+        [Input("cacheOptions")]
+        public Input<Inputs.WorkerScriptCacheOptionsGetArgs>? CacheOptions { get; set; }
+
+        /// <summary>
         /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         /// </summary>
         [Input("compatibilityDate")]
@@ -535,6 +598,18 @@ namespace Pulumi.Cloudflare
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        [Input("exports")]
+        private InputMap<Inputs.WorkerScriptExportsGetArgs>? _exports;
+
+        /// <summary>
+        /// Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+        /// </summary>
+        public InputMap<Inputs.WorkerScriptExportsGetArgs> Exports
+        {
+            get => _exports ?? (_exports = new InputMap<Inputs.WorkerScriptExportsGetArgs>());
+            set => _exports = value;
+        }
+
         [Input("handlers")]
         private InputList<string>? _handlers;
 
@@ -560,7 +635,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? HasModules { get; set; }
 
         /// <summary>
-        /// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+        /// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `Assets` upload takes precedence over `KeepAssets`.
         /// </summary>
         [Input("keepAssets")]
         public Input<bool>? KeepAssets { get; set; }
@@ -636,6 +711,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("observability")]
         public Input<Inputs.WorkerScriptObservabilityGetArgs>? Observability { get; set; }
+
+        [Input("packageDependencies")]
+        private InputList<Inputs.WorkerScriptPackageDependencyGetArgs>? _packageDependencies;
+
+        /// <summary>
+        /// The list of npm packages that were installed and used when this Worker was built.
+        /// </summary>
+        public InputList<Inputs.WorkerScriptPackageDependencyGetArgs> PackageDependencies
+        {
+            get => _packageDependencies ?? (_packageDependencies = new InputList<Inputs.WorkerScriptPackageDependencyGetArgs>());
+            set => _packageDependencies = value;
+        }
 
         /// <summary>
         /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.

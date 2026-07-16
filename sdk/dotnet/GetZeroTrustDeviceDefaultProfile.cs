@@ -135,6 +135,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool DisableAutoFallback;
         /// <summary>
+        /// List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetZeroTrustDeviceDefaultProfileDnsSearchSuffixResult> DnsSearchSuffixes;
+        /// <summary>
         /// Whether the policy will be applied to matching devices.
         /// </summary>
         public readonly bool Enabled;
@@ -178,6 +182,10 @@ namespace Pulumi.Cloudflare
         /// Determines which tunnel protocol to use.
         /// </summary>
         public readonly string TunnelProtocol;
+        /// <summary>
+        /// Virtual network access settings for the device.
+        /// </summary>
+        public readonly Outputs.GetZeroTrustDeviceDefaultProfileVirtualNetworksResult VirtualNetworks;
 
         [OutputConstructor]
         private GetZeroTrustDeviceDefaultProfileResult(
@@ -196,6 +204,8 @@ namespace Pulumi.Cloudflare
             bool @default,
 
             bool disableAutoFallback,
+
+            ImmutableArray<Outputs.GetZeroTrustDeviceDefaultProfileDnsSearchSuffixResult> dnsSearchSuffixes,
 
             bool enabled,
 
@@ -223,7 +233,9 @@ namespace Pulumi.Cloudflare
 
             bool switchLocked,
 
-            string tunnelProtocol)
+            string tunnelProtocol,
+
+            Outputs.GetZeroTrustDeviceDefaultProfileVirtualNetworksResult virtualNetworks)
         {
             AccountId = accountId;
             AllowModeSwitch = allowModeSwitch;
@@ -233,6 +245,7 @@ namespace Pulumi.Cloudflare
             CaptivePortal = captivePortal;
             Default = @default;
             DisableAutoFallback = disableAutoFallback;
+            DnsSearchSuffixes = dnsSearchSuffixes;
             Enabled = enabled;
             ExcludeOfficeIps = excludeOfficeIps;
             Excludes = excludes;
@@ -247,6 +260,7 @@ namespace Pulumi.Cloudflare
             SupportUrl = supportUrl;
             SwitchLocked = switchLocked;
             TunnelProtocol = tunnelProtocol;
+            VirtualNetworks = virtualNetworks;
         }
     }
 }

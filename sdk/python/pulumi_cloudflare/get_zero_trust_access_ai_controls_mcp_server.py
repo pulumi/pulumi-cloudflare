@@ -28,7 +28,7 @@ class GetZeroTrustAccessAiControlsMcpServerResult:
     """
     A collection of values returned by getZeroTrustAccessAiControlsMcpServer.
     """
-    def __init__(__self__, account_id=None, auth_type=None, created_at=None, created_by=None, description=None, error=None, filter=None, hostname=None, id=None, last_successful_sync=None, last_synced=None, modified_at=None, modified_by=None, name=None, prompts=None, status=None, tools=None, updated_prompts=None, updated_tools=None):
+    def __init__(__self__, account_id=None, auth_type=None, created_at=None, created_by=None, description=None, error=None, error_details=None, filter=None, hostname=None, id=None, is_shared_oauth_callback_enabled=None, last_successful_sync=None, last_synced=None, modified_at=None, modified_by=None, name=None, prompts=None, secure_web_gateway=None, status=None, tools=None, updated_prompts=None, updated_tools=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -47,6 +47,9 @@ class GetZeroTrustAccessAiControlsMcpServerResult:
         if error and not isinstance(error, str):
             raise TypeError("Expected argument 'error' to be a str")
         pulumi.set(__self__, "error", error)
+        if error_details and not isinstance(error_details, dict):
+            raise TypeError("Expected argument 'error_details' to be a dict")
+        pulumi.set(__self__, "error_details", error_details)
         if filter and not isinstance(filter, dict):
             raise TypeError("Expected argument 'filter' to be a dict")
         pulumi.set(__self__, "filter", filter)
@@ -56,6 +59,9 @@ class GetZeroTrustAccessAiControlsMcpServerResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if is_shared_oauth_callback_enabled and not isinstance(is_shared_oauth_callback_enabled, bool):
+            raise TypeError("Expected argument 'is_shared_oauth_callback_enabled' to be a bool")
+        pulumi.set(__self__, "is_shared_oauth_callback_enabled", is_shared_oauth_callback_enabled)
         if last_successful_sync and not isinstance(last_successful_sync, str):
             raise TypeError("Expected argument 'last_successful_sync' to be a str")
         pulumi.set(__self__, "last_successful_sync", last_successful_sync)
@@ -74,6 +80,9 @@ class GetZeroTrustAccessAiControlsMcpServerResult:
         if prompts and not isinstance(prompts, list):
             raise TypeError("Expected argument 'prompts' to be a list")
         pulumi.set(__self__, "prompts", prompts)
+        if secure_web_gateway and not isinstance(secure_web_gateway, bool):
+            raise TypeError("Expected argument 'secure_web_gateway' to be a bool")
+        pulumi.set(__self__, "secure_web_gateway", secure_web_gateway)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
@@ -121,6 +130,11 @@ class GetZeroTrustAccessAiControlsMcpServerResult:
         return pulumi.get(self, "error")
 
     @_builtins.property
+    @pulumi.getter(name="errorDetails")
+    def error_details(self) -> 'outputs.GetZeroTrustAccessAiControlsMcpServerErrorDetailsResult':
+        return pulumi.get(self, "error_details")
+
+    @_builtins.property
     @pulumi.getter
     def filter(self) -> Optional['outputs.GetZeroTrustAccessAiControlsMcpServerFilterResult']:
         return pulumi.get(self, "filter")
@@ -137,6 +151,14 @@ class GetZeroTrustAccessAiControlsMcpServerResult:
         server id
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isSharedOauthCallbackEnabled")
+    def is_shared_oauth_callback_enabled(self) -> _builtins.bool:
+        """
+        When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+        """
+        return pulumi.get(self, "is_shared_oauth_callback_enabled")
 
     @_builtins.property
     @pulumi.getter(name="lastSuccessfulSync")
@@ -167,6 +189,14 @@ class GetZeroTrustAccessAiControlsMcpServerResult:
     @pulumi.getter
     def prompts(self) -> Sequence[Mapping[str, _builtins.str]]:
         return pulumi.get(self, "prompts")
+
+    @_builtins.property
+    @pulumi.getter(name="secureWebGateway")
+    def secure_web_gateway(self) -> _builtins.bool:
+        """
+        Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+        """
+        return pulumi.get(self, "secure_web_gateway")
 
     @_builtins.property
     @pulumi.getter
@@ -201,15 +231,18 @@ class AwaitableGetZeroTrustAccessAiControlsMcpServerResult(GetZeroTrustAccessAiC
             created_by=self.created_by,
             description=self.description,
             error=self.error,
+            error_details=self.error_details,
             filter=self.filter,
             hostname=self.hostname,
             id=self.id,
+            is_shared_oauth_callback_enabled=self.is_shared_oauth_callback_enabled,
             last_successful_sync=self.last_successful_sync,
             last_synced=self.last_synced,
             modified_at=self.modified_at,
             modified_by=self.modified_by,
             name=self.name,
             prompts=self.prompts,
+            secure_web_gateway=self.secure_web_gateway,
             status=self.status,
             tools=self.tools,
             updated_prompts=self.updated_prompts,
@@ -221,6 +254,11 @@ def get_zero_trust_access_ai_controls_mcp_server(account_id: Optional[_builtins.
                                                  id: Optional[_builtins.str] = None,
                                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustAccessAiControlsMcpServerResult:
     """
+    Accepted Permissions
+
+    - `MCP Portals Read`
+    - `MCP Portals Write`
+
     ## Example Usage
 
     ```python
@@ -248,15 +286,18 @@ def get_zero_trust_access_ai_controls_mcp_server(account_id: Optional[_builtins.
         created_by=pulumi.get(__ret__, 'created_by'),
         description=pulumi.get(__ret__, 'description'),
         error=pulumi.get(__ret__, 'error'),
+        error_details=pulumi.get(__ret__, 'error_details'),
         filter=pulumi.get(__ret__, 'filter'),
         hostname=pulumi.get(__ret__, 'hostname'),
         id=pulumi.get(__ret__, 'id'),
+        is_shared_oauth_callback_enabled=pulumi.get(__ret__, 'is_shared_oauth_callback_enabled'),
         last_successful_sync=pulumi.get(__ret__, 'last_successful_sync'),
         last_synced=pulumi.get(__ret__, 'last_synced'),
         modified_at=pulumi.get(__ret__, 'modified_at'),
         modified_by=pulumi.get(__ret__, 'modified_by'),
         name=pulumi.get(__ret__, 'name'),
         prompts=pulumi.get(__ret__, 'prompts'),
+        secure_web_gateway=pulumi.get(__ret__, 'secure_web_gateway'),
         status=pulumi.get(__ret__, 'status'),
         tools=pulumi.get(__ret__, 'tools'),
         updated_prompts=pulumi.get(__ret__, 'updated_prompts'),
@@ -266,6 +307,11 @@ def get_zero_trust_access_ai_controls_mcp_server_output(account_id: pulumi.Input
                                                         id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessAiControlsMcpServerResult]:
     """
+    Accepted Permissions
+
+    - `MCP Portals Read`
+    - `MCP Portals Write`
+
     ## Example Usage
 
     ```python
@@ -292,15 +338,18 @@ def get_zero_trust_access_ai_controls_mcp_server_output(account_id: pulumi.Input
         created_by=pulumi.get(__response__, 'created_by'),
         description=pulumi.get(__response__, 'description'),
         error=pulumi.get(__response__, 'error'),
+        error_details=pulumi.get(__response__, 'error_details'),
         filter=pulumi.get(__response__, 'filter'),
         hostname=pulumi.get(__response__, 'hostname'),
         id=pulumi.get(__response__, 'id'),
+        is_shared_oauth_callback_enabled=pulumi.get(__response__, 'is_shared_oauth_callback_enabled'),
         last_successful_sync=pulumi.get(__response__, 'last_successful_sync'),
         last_synced=pulumi.get(__response__, 'last_synced'),
         modified_at=pulumi.get(__response__, 'modified_at'),
         modified_by=pulumi.get(__response__, 'modified_by'),
         name=pulumi.get(__response__, 'name'),
         prompts=pulumi.get(__response__, 'prompts'),
+        secure_web_gateway=pulumi.get(__response__, 'secure_web_gateway'),
         status=pulumi.get(__response__, 'status'),
         tools=pulumi.get(__response__, 'tools'),
         updated_prompts=pulumi.get(__response__, 'updated_prompts'),

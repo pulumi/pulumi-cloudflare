@@ -6,10 +6,12 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustDeviceDefaultProfileArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileState;
+import com.pulumi.cloudflare.outputs.ZeroTrustDeviceDefaultProfileDnsSearchSuffix;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceDefaultProfileExclude;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceDefaultProfileFallbackDomain;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceDefaultProfileInclude;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceDefaultProfileServiceModeV2;
+import com.pulumi.cloudflare.outputs.ZeroTrustDeviceDefaultProfileVirtualNetworks;
 import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -203,6 +205,20 @@ public class ZeroTrustDeviceDefaultProfile extends com.pulumi.resources.CustomRe
         return this.disableAutoFallback;
     }
     /**
+     * List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+     * 
+     */
+    @Export(name="dnsSearchSuffixes", refs={List.class,ZeroTrustDeviceDefaultProfileDnsSearchSuffix.class}, tree="[0,1]")
+    private Output<List<ZeroTrustDeviceDefaultProfileDnsSearchSuffix>> dnsSearchSuffixes;
+
+    /**
+     * @return List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+     * 
+     */
+    public Output<List<ZeroTrustDeviceDefaultProfileDnsSearchSuffix>> dnsSearchSuffixes() {
+        return this.dnsSearchSuffixes;
+    }
+    /**
      * Whether the policy will be applied to matching devices.
      * 
      */
@@ -379,6 +395,20 @@ public class ZeroTrustDeviceDefaultProfile extends com.pulumi.resources.CustomRe
      */
     public Output<String> tunnelProtocol() {
         return this.tunnelProtocol;
+    }
+    /**
+     * Virtual network access settings for the device.
+     * 
+     */
+    @Export(name="virtualNetworks", refs={ZeroTrustDeviceDefaultProfileVirtualNetworks.class}, tree="[0]")
+    private Output</* @Nullable */ ZeroTrustDeviceDefaultProfileVirtualNetworks> virtualNetworks;
+
+    /**
+     * @return Virtual network access settings for the device.
+     * 
+     */
+    public Output<Optional<ZeroTrustDeviceDefaultProfileVirtualNetworks>> virtualNetworks() {
+        return Codegen.optional(this.virtualNetworks);
     }
 
     /**

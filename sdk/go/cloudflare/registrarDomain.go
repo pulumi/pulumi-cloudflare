@@ -49,7 +49,7 @@ type RegistrarDomain struct {
 	pulumi.CustomResourceState
 
 	// Identifier
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Auto-renew controls whether subscription is automatically renewed upon domain expiration.
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
 	// Fully qualified domain name (FQDN) including the extension
@@ -70,6 +70,9 @@ func NewRegistrarDomain(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.DomainName == nil {
 		return nil, errors.New("invalid value for required argument 'DomainName'")
 	}
@@ -133,7 +136,7 @@ func (RegistrarDomainState) ElementType() reflect.Type {
 
 type registrarDomainArgs struct {
 	// Identifier
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Auto-renew controls whether subscription is automatically renewed upon domain expiration.
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// Fully qualified domain name (FQDN) including the extension
@@ -150,7 +153,7 @@ type registrarDomainArgs struct {
 // The set of arguments for constructing a RegistrarDomain resource.
 type RegistrarDomainArgs struct {
 	// Identifier
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Auto-renew controls whether subscription is automatically renewed upon domain expiration.
 	AutoRenew pulumi.BoolPtrInput
 	// Fully qualified domain name (FQDN) including the extension
@@ -252,8 +255,8 @@ func (o RegistrarDomainOutput) ToRegistrarDomainOutputWithContext(ctx context.Co
 }
 
 // Identifier
-func (o RegistrarDomainOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegistrarDomain) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o RegistrarDomainOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistrarDomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Auto-renew controls whether subscription is automatically renewed upon domain expiration.

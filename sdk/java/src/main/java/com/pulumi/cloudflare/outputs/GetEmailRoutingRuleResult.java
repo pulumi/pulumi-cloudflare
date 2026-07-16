@@ -55,6 +55,14 @@ public final class GetEmailRoutingRuleResult {
      */
     private @Nullable String ruleIdentifier;
     /**
+     * @return Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+     * `wrangler` means the rule is managed by a Worker&#39;s wrangler.jsonc. Defaults
+     * to `api` when omitted on write.
+     * Available values: &#34;api&#34;, &#34;wrangler&#34;.
+     * 
+     */
+    private String source;
+    /**
      * @return Routing rule tag. (Deprecated, replaced by routing rule identifier)
      * 
      * @deprecated
@@ -123,6 +131,16 @@ public final class GetEmailRoutingRuleResult {
         return Optional.ofNullable(this.ruleIdentifier);
     }
     /**
+     * @return Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+     * `wrangler` means the rule is managed by a Worker&#39;s wrangler.jsonc. Defaults
+     * to `api` when omitted on write.
+     * Available values: &#34;api&#34;, &#34;wrangler&#34;.
+     * 
+     */
+    public String source() {
+        return this.source;
+    }
+    /**
      * @return Routing rule tag. (Deprecated, replaced by routing rule identifier)
      * 
      * @deprecated
@@ -158,6 +176,7 @@ public final class GetEmailRoutingRuleResult {
         private String name;
         private Double priority;
         private @Nullable String ruleIdentifier;
+        private String source;
         private String tag;
         private @Nullable String zoneId;
         public Builder() {}
@@ -171,6 +190,7 @@ public final class GetEmailRoutingRuleResult {
     	      this.name = defaults.name;
     	      this.priority = defaults.priority;
     	      this.ruleIdentifier = defaults.ruleIdentifier;
+    	      this.source = defaults.source;
     	      this.tag = defaults.tag;
     	      this.zoneId = defaults.zoneId;
         }
@@ -242,6 +262,14 @@ public final class GetEmailRoutingRuleResult {
             return this;
         }
         @CustomType.Setter
+        public Builder source(String source) {
+            if (source == null) {
+              throw new MissingRequiredPropertyException("GetEmailRoutingRuleResult", "source");
+            }
+            this.source = source;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tag(String tag) {
             if (tag == null) {
               throw new MissingRequiredPropertyException("GetEmailRoutingRuleResult", "tag");
@@ -265,6 +293,7 @@ public final class GetEmailRoutingRuleResult {
             _resultValue.name = name;
             _resultValue.priority = priority;
             _resultValue.ruleIdentifier = ruleIdentifier;
+            _resultValue.source = source;
             _resultValue.tag = tag;
             _resultValue.zoneId = zoneId;
             return _resultValue;

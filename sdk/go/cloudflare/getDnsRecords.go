@@ -52,7 +52,9 @@ import (
 //					Exact:      pulumi.StringRef("www.example.com"),
 //					Startswith: pulumi.StringRef("www.example"),
 //				},
-//				Search: pulumi.StringRef("www.cloudflare.com"),
+//				Search:         pulumi.StringRef("www.cloudflare.com"),
+//				ShadowedByName: pulumi.StringRef("sub.example.com"),
+//				ShadowingName:  pulumi.StringRef("www.sub.example.com"),
 //				Tag: cloudflare.GetDnsRecordsTag{
 //					Absent:     pulumi.StringRef("important"),
 //					Contains:   pulumi.StringRef("greeting:ello, worl"),
@@ -88,6 +90,8 @@ type LookupDnsRecordsArgs struct {
 	// Direction to order DNS records in.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
+	// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+	IncludeShadowMetadata *bool `pulumi:"includeShadowMetadata"`
 	// Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
 	// Available values: "any", "all".
 	Match *string `pulumi:"match"`
@@ -100,8 +104,12 @@ type LookupDnsRecordsArgs struct {
 	// Whether the record is receiving the performance and security benefits of Cloudflare.
 	Proxied *bool `pulumi:"proxied"`
 	// Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `match` setting. For automated searches, please use the other available parameters.
-	Search *string           `pulumi:"search"`
-	Tag    *GetDnsRecordsTag `pulumi:"tag"`
+	Search *string `pulumi:"search"`
+	// Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+	ShadowedByName *string `pulumi:"shadowedByName"`
+	// Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+	ShadowingName *string           `pulumi:"shadowingName"`
+	Tag           *GetDnsRecordsTag `pulumi:"tag"`
 	// Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
 	// Available values: "any", "all".
 	TagMatch *string `pulumi:"tagMatch"`
@@ -121,6 +129,8 @@ type LookupDnsRecordsResult struct {
 	Direction string `pulumi:"direction"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+	IncludeShadowMetadata bool `pulumi:"includeShadowMetadata"`
 	// Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
 	// Available values: "any", "all".
 	Match string `pulumi:"match"`
@@ -135,8 +145,12 @@ type LookupDnsRecordsResult struct {
 	// The items returned by the data source
 	Results []GetDnsRecordsResult `pulumi:"results"`
 	// Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `match` setting. For automated searches, please use the other available parameters.
-	Search *string           `pulumi:"search"`
-	Tag    *GetDnsRecordsTag `pulumi:"tag"`
+	Search *string `pulumi:"search"`
+	// Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+	ShadowedByName *string `pulumi:"shadowedByName"`
+	// Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+	ShadowingName *string           `pulumi:"shadowingName"`
+	Tag           *GetDnsRecordsTag `pulumi:"tag"`
 	// Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
 	// Available values: "any", "all".
 	TagMatch string `pulumi:"tagMatch"`
@@ -163,6 +177,8 @@ type LookupDnsRecordsOutputArgs struct {
 	// Direction to order DNS records in.
 	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+	IncludeShadowMetadata pulumi.BoolPtrInput `pulumi:"includeShadowMetadata"`
 	// Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
 	// Available values: "any", "all".
 	Match pulumi.StringPtrInput `pulumi:"match"`
@@ -175,8 +191,12 @@ type LookupDnsRecordsOutputArgs struct {
 	// Whether the record is receiving the performance and security benefits of Cloudflare.
 	Proxied pulumi.BoolPtrInput `pulumi:"proxied"`
 	// Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `match` setting. For automated searches, please use the other available parameters.
-	Search pulumi.StringPtrInput    `pulumi:"search"`
-	Tag    GetDnsRecordsTagPtrInput `pulumi:"tag"`
+	Search pulumi.StringPtrInput `pulumi:"search"`
+	// Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+	ShadowedByName pulumi.StringPtrInput `pulumi:"shadowedByName"`
+	// Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+	ShadowingName pulumi.StringPtrInput    `pulumi:"shadowingName"`
+	Tag           GetDnsRecordsTagPtrInput `pulumi:"tag"`
 	// Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
 	// Available values: "any", "all".
 	TagMatch pulumi.StringPtrInput `pulumi:"tagMatch"`
@@ -225,6 +245,11 @@ func (o LookupDnsRecordsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+func (o LookupDnsRecordsResultOutput) IncludeShadowMetadata() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDnsRecordsResult) bool { return v.IncludeShadowMetadata }).(pulumi.BoolOutput)
+}
+
 // Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
 // Available values: "any", "all".
 func (o LookupDnsRecordsResultOutput) Match() pulumi.StringOutput {
@@ -259,6 +284,16 @@ func (o LookupDnsRecordsResultOutput) Results() GetDnsRecordsResultArrayOutput {
 // Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `match` setting. For automated searches, please use the other available parameters.
 func (o LookupDnsRecordsResultOutput) Search() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDnsRecordsResult) *string { return v.Search }).(pulumi.StringPtrOutput)
+}
+
+// Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+func (o LookupDnsRecordsResultOutput) ShadowedByName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDnsRecordsResult) *string { return v.ShadowedByName }).(pulumi.StringPtrOutput)
+}
+
+// Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+func (o LookupDnsRecordsResultOutput) ShadowingName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDnsRecordsResult) *string { return v.ShadowingName }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupDnsRecordsResultOutput) Tag() GetDnsRecordsTagPtrOutput {

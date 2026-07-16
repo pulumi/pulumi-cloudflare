@@ -48,6 +48,16 @@ public final class GetDnsRecordFilter {
      * 
      */
     private @Nullable String search;
+    /**
+     * @return Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    private @Nullable String shadowedByName;
+    /**
+     * @return Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    private @Nullable String shadowingName;
     private @Nullable GetDnsRecordFilterTag tag;
     /**
      * @return Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren&#39;t related to tags.
@@ -110,6 +120,20 @@ public final class GetDnsRecordFilter {
     public Optional<String> search() {
         return Optional.ofNullable(this.search);
     }
+    /**
+     * @return Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    public Optional<String> shadowedByName() {
+        return Optional.ofNullable(this.shadowedByName);
+    }
+    /**
+     * @return Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    public Optional<String> shadowingName() {
+        return Optional.ofNullable(this.shadowingName);
+    }
     public Optional<GetDnsRecordFilterTag> tag() {
         return Optional.ofNullable(this.tag);
     }
@@ -147,6 +171,8 @@ public final class GetDnsRecordFilter {
         private String order;
         private Boolean proxied;
         private @Nullable String search;
+        private @Nullable String shadowedByName;
+        private @Nullable String shadowingName;
         private @Nullable GetDnsRecordFilterTag tag;
         private String tagMatch;
         private @Nullable String type;
@@ -161,6 +187,8 @@ public final class GetDnsRecordFilter {
     	      this.order = defaults.order;
     	      this.proxied = defaults.proxied;
     	      this.search = defaults.search;
+    	      this.shadowedByName = defaults.shadowedByName;
+    	      this.shadowingName = defaults.shadowingName;
     	      this.tag = defaults.tag;
     	      this.tagMatch = defaults.tagMatch;
     	      this.type = defaults.type;
@@ -223,6 +251,18 @@ public final class GetDnsRecordFilter {
             return this;
         }
         @CustomType.Setter
+        public Builder shadowedByName(@Nullable String shadowedByName) {
+
+            this.shadowedByName = shadowedByName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder shadowingName(@Nullable String shadowingName) {
+
+            this.shadowingName = shadowingName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tag(@Nullable GetDnsRecordFilterTag tag) {
 
             this.tag = tag;
@@ -252,6 +292,8 @@ public final class GetDnsRecordFilter {
             _resultValue.order = order;
             _resultValue.proxied = proxied;
             _resultValue.search = search;
+            _resultValue.shadowedByName = shadowedByName;
+            _resultValue.shadowingName = shadowingName;
             _resultValue.tag = tag;
             _resultValue.tagMatch = tagMatch;
             _resultValue.type = type;

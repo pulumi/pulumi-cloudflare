@@ -200,18 +200,33 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+     * 
+     */
+    @Import(name="virtualNetworkId")
+    private @Nullable Output<String> virtualNetworkId;
+
+    /**
+     * @return Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+     * 
+     */
+    public Optional<Output<String>> virtualNetworkId() {
+        return Optional.ofNullable(this.virtualNetworkId);
+    }
+
+    /**
      * Zone identifier.
      * 
      */
-    @Import(name="zoneId")
-    private @Nullable Output<String> zoneId;
+    @Import(name="zoneId", required=true)
+    private Output<String> zoneId;
 
     /**
      * @return Zone identifier.
      * 
      */
-    public Optional<Output<String>> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     private SpectrumApplicationArgs() {}
@@ -228,6 +243,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
         this.proxyProtocol = $.proxyProtocol;
         this.tls = $.tls;
         this.trafficType = $.trafficType;
+        this.virtualNetworkId = $.virtualNetworkId;
         this.zoneId = $.zoneId;
     }
 
@@ -503,12 +519,33 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param virtualNetworkId Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder virtualNetworkId(@Nullable Output<String> virtualNetworkId) {
+            $.virtualNetworkId = virtualNetworkId;
+            return this;
+        }
+
+        /**
+         * @param virtualNetworkId Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder virtualNetworkId(String virtualNetworkId) {
+            return virtualNetworkId(Output.of(virtualNetworkId));
+        }
+
+        /**
          * @param zoneId Zone identifier.
          * 
          * @return builder
          * 
          */
-        public Builder zoneId(@Nullable Output<String> zoneId) {
+        public Builder zoneId(Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -529,6 +566,9 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
             }
             if ($.protocol == null) {
                 throw new MissingRequiredPropertyException("SpectrumApplicationArgs", "protocol");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("SpectrumApplicationArgs", "zoneId");
             }
             return $;
         }

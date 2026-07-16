@@ -29,7 +29,7 @@ type WorkersScript struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Annotations for the version created by this upload.
 	Annotations WorkersScriptAnnotationsOutput `pulumi:"annotations"`
 	// Configuration for assets within a Worker.
@@ -38,6 +38,11 @@ type WorkersScript struct {
 	Bindings WorkersScriptBindingArrayOutput `pulumi:"bindings"`
 	// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
 	BodyPart pulumi.StringPtrOutput `pulumi:"bodyPart"`
+	// Global CacheW configuration for the Worker. When caching is on,
+	// the platform provisions a `cloudflare.app` zone for the Worker.
+	// A `type: worker` entry in the `exports` map can override this
+	// value for a single entrypoint.
+	CacheOptions WorkersScriptCacheOptionsPtrOutput `pulumi:"cacheOptions"`
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate pulumi.StringOutput `pulumi:"compatibilityDate"`
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
@@ -54,13 +59,15 @@ type WorkersScript struct {
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// Hashed script content, can be used in a If-None-Match header when updating.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+	Exports WorkersScriptExportsMapOutput `pulumi:"exports"`
 	// The names of handlers exported as part of the default export.
 	Handlers pulumi.StringArrayOutput `pulumi:"handlers"`
 	// Whether a Worker contains assets.
 	HasAssets pulumi.BoolOutput `pulumi:"hasAssets"`
 	// Whether a Worker contains modules.
 	HasModules pulumi.BoolOutput `pulumi:"hasModules"`
-	// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+	// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
 	KeepAssets pulumi.BoolPtrOutput `pulumi:"keepAssets"`
 	// List of binding types to keep from previous_upload.
 	KeepBindings pulumi.StringArrayOutput `pulumi:"keepBindings"`
@@ -82,6 +89,8 @@ type WorkersScript struct {
 	NamedHandlers WorkersScriptNamedHandlerArrayOutput `pulumi:"namedHandlers"`
 	// Observability settings for the Worker.
 	Observability WorkersScriptObservabilityPtrOutput `pulumi:"observability"`
+	// The list of npm packages that were installed and used when this Worker was built.
+	PackageDependencies WorkersScriptPackageDependencyArrayOutput `pulumi:"packageDependencies"`
 	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
 	Placement WorkersScriptPlacementOutput `pulumi:"placement"`
 	// Available values: "smart", "targeted".
@@ -109,6 +118,9 @@ func NewWorkersScript(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.ScriptName == nil {
 		return nil, errors.New("invalid value for required argument 'ScriptName'")
 	}
@@ -151,6 +163,11 @@ type workersScriptState struct {
 	Bindings []WorkersScriptBinding `pulumi:"bindings"`
 	// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
 	BodyPart *string `pulumi:"bodyPart"`
+	// Global CacheW configuration for the Worker. When caching is on,
+	// the platform provisions a `cloudflare.app` zone for the Worker.
+	// A `type: worker` entry in the `exports` map can override this
+	// value for a single entrypoint.
+	CacheOptions *WorkersScriptCacheOptions `pulumi:"cacheOptions"`
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate *string `pulumi:"compatibilityDate"`
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
@@ -167,13 +184,15 @@ type workersScriptState struct {
 	CreatedOn *string `pulumi:"createdOn"`
 	// Hashed script content, can be used in a If-None-Match header when updating.
 	Etag *string `pulumi:"etag"`
+	// Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+	Exports map[string]WorkersScriptExports `pulumi:"exports"`
 	// The names of handlers exported as part of the default export.
 	Handlers []string `pulumi:"handlers"`
 	// Whether a Worker contains assets.
 	HasAssets *bool `pulumi:"hasAssets"`
 	// Whether a Worker contains modules.
 	HasModules *bool `pulumi:"hasModules"`
-	// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+	// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
 	KeepAssets *bool `pulumi:"keepAssets"`
 	// List of binding types to keep from previous_upload.
 	KeepBindings []string `pulumi:"keepBindings"`
@@ -195,6 +214,8 @@ type workersScriptState struct {
 	NamedHandlers []WorkersScriptNamedHandler `pulumi:"namedHandlers"`
 	// Observability settings for the Worker.
 	Observability *WorkersScriptObservability `pulumi:"observability"`
+	// The list of npm packages that were installed and used when this Worker was built.
+	PackageDependencies []WorkersScriptPackageDependency `pulumi:"packageDependencies"`
 	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
 	Placement *WorkersScriptPlacement `pulumi:"placement"`
 	// Available values: "smart", "targeted".
@@ -226,6 +247,11 @@ type WorkersScriptState struct {
 	Bindings WorkersScriptBindingArrayInput
 	// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
 	BodyPart pulumi.StringPtrInput
+	// Global CacheW configuration for the Worker. When caching is on,
+	// the platform provisions a `cloudflare.app` zone for the Worker.
+	// A `type: worker` entry in the `exports` map can override this
+	// value for a single entrypoint.
+	CacheOptions WorkersScriptCacheOptionsPtrInput
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate pulumi.StringPtrInput
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
@@ -242,13 +268,15 @@ type WorkersScriptState struct {
 	CreatedOn pulumi.StringPtrInput
 	// Hashed script content, can be used in a If-None-Match header when updating.
 	Etag pulumi.StringPtrInput
+	// Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+	Exports WorkersScriptExportsMapInput
 	// The names of handlers exported as part of the default export.
 	Handlers pulumi.StringArrayInput
 	// Whether a Worker contains assets.
 	HasAssets pulumi.BoolPtrInput
 	// Whether a Worker contains modules.
 	HasModules pulumi.BoolPtrInput
-	// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+	// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
 	KeepAssets pulumi.BoolPtrInput
 	// List of binding types to keep from previous_upload.
 	KeepBindings pulumi.StringArrayInput
@@ -270,6 +298,8 @@ type WorkersScriptState struct {
 	NamedHandlers WorkersScriptNamedHandlerArrayInput
 	// Observability settings for the Worker.
 	Observability WorkersScriptObservabilityPtrInput
+	// The list of npm packages that were installed and used when this Worker was built.
+	PackageDependencies WorkersScriptPackageDependencyArrayInput
 	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
 	Placement WorkersScriptPlacementPtrInput
 	// Available values: "smart", "targeted".
@@ -296,7 +326,7 @@ func (WorkersScriptState) ElementType() reflect.Type {
 
 type workersScriptArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Annotations for the version created by this upload.
 	Annotations *WorkersScriptAnnotations `pulumi:"annotations"`
 	// Configuration for assets within a Worker.
@@ -305,6 +335,11 @@ type workersScriptArgs struct {
 	Bindings []WorkersScriptBinding `pulumi:"bindings"`
 	// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
 	BodyPart *string `pulumi:"bodyPart"`
+	// Global CacheW configuration for the Worker. When caching is on,
+	// the platform provisions a `cloudflare.app` zone for the Worker.
+	// A `type: worker` entry in the `exports` map can override this
+	// value for a single entrypoint.
+	CacheOptions *WorkersScriptCacheOptions `pulumi:"cacheOptions"`
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate *string `pulumi:"compatibilityDate"`
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
@@ -317,7 +352,9 @@ type workersScriptArgs struct {
 	ContentSha256 *string `pulumi:"contentSha256"`
 	// Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
 	ContentType *string `pulumi:"contentType"`
-	// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+	// Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+	Exports map[string]WorkersScriptExports `pulumi:"exports"`
+	// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
 	KeepAssets *bool `pulumi:"keepAssets"`
 	// List of binding types to keep from previous_upload.
 	KeepBindings []string `pulumi:"keepBindings"`
@@ -331,6 +368,8 @@ type workersScriptArgs struct {
 	Migrations *WorkersScriptMigrations `pulumi:"migrations"`
 	// Observability settings for the Worker.
 	Observability *WorkersScriptObservability `pulumi:"observability"`
+	// The list of npm packages that were installed and used when this Worker was built.
+	PackageDependencies []WorkersScriptPackageDependency `pulumi:"packageDependencies"`
 	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
 	Placement *WorkersScriptPlacement `pulumi:"placement"`
 	// Name of the script, used in URLs and route configuration.
@@ -345,7 +384,7 @@ type workersScriptArgs struct {
 // The set of arguments for constructing a WorkersScript resource.
 type WorkersScriptArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Annotations for the version created by this upload.
 	Annotations WorkersScriptAnnotationsPtrInput
 	// Configuration for assets within a Worker.
@@ -354,6 +393,11 @@ type WorkersScriptArgs struct {
 	Bindings WorkersScriptBindingArrayInput
 	// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
 	BodyPart pulumi.StringPtrInput
+	// Global CacheW configuration for the Worker. When caching is on,
+	// the platform provisions a `cloudflare.app` zone for the Worker.
+	// A `type: worker` entry in the `exports` map can override this
+	// value for a single entrypoint.
+	CacheOptions WorkersScriptCacheOptionsPtrInput
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate pulumi.StringPtrInput
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
@@ -366,7 +410,9 @@ type WorkersScriptArgs struct {
 	ContentSha256 pulumi.StringPtrInput
 	// Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
 	ContentType pulumi.StringPtrInput
-	// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+	// Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+	Exports WorkersScriptExportsMapInput
+	// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
 	KeepAssets pulumi.BoolPtrInput
 	// List of binding types to keep from previous_upload.
 	KeepBindings pulumi.StringArrayInput
@@ -380,6 +426,8 @@ type WorkersScriptArgs struct {
 	Migrations WorkersScriptMigrationsPtrInput
 	// Observability settings for the Worker.
 	Observability WorkersScriptObservabilityPtrInput
+	// The list of npm packages that were installed and used when this Worker was built.
+	PackageDependencies WorkersScriptPackageDependencyArrayInput
 	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
 	Placement WorkersScriptPlacementPtrInput
 	// Name of the script, used in URLs and route configuration.
@@ -479,8 +527,8 @@ func (o WorkersScriptOutput) ToWorkersScriptOutputWithContext(ctx context.Contex
 }
 
 // Identifier.
-func (o WorkersScriptOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkersScript) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o WorkersScriptOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkersScript) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Annotations for the version created by this upload.
@@ -501,6 +549,14 @@ func (o WorkersScriptOutput) Bindings() WorkersScriptBindingArrayOutput {
 // Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
 func (o WorkersScriptOutput) BodyPart() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkersScript) pulumi.StringPtrOutput { return v.BodyPart }).(pulumi.StringPtrOutput)
+}
+
+// Global CacheW configuration for the Worker. When caching is on,
+// the platform provisions a `cloudflare.app` zone for the Worker.
+// A `type: worker` entry in the `exports` map can override this
+// value for a single entrypoint.
+func (o WorkersScriptOutput) CacheOptions() WorkersScriptCacheOptionsPtrOutput {
+	return o.ApplyT(func(v *WorkersScript) WorkersScriptCacheOptionsPtrOutput { return v.CacheOptions }).(WorkersScriptCacheOptionsPtrOutput)
 }
 
 // Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -543,6 +599,11 @@ func (o WorkersScriptOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersScript) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+func (o WorkersScriptOutput) Exports() WorkersScriptExportsMapOutput {
+	return o.ApplyT(func(v *WorkersScript) WorkersScriptExportsMapOutput { return v.Exports }).(WorkersScriptExportsMapOutput)
+}
+
 // The names of handlers exported as part of the default export.
 func (o WorkersScriptOutput) Handlers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkersScript) pulumi.StringArrayOutput { return v.Handlers }).(pulumi.StringArrayOutput)
@@ -558,7 +619,7 @@ func (o WorkersScriptOutput) HasModules() pulumi.BoolOutput {
 	return o.ApplyT(func(v *WorkersScript) pulumi.BoolOutput { return v.HasModules }).(pulumi.BoolOutput)
 }
 
-// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
 func (o WorkersScriptOutput) KeepAssets() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WorkersScript) pulumi.BoolPtrOutput { return v.KeepAssets }).(pulumi.BoolPtrOutput)
 }
@@ -611,6 +672,11 @@ func (o WorkersScriptOutput) NamedHandlers() WorkersScriptNamedHandlerArrayOutpu
 // Observability settings for the Worker.
 func (o WorkersScriptOutput) Observability() WorkersScriptObservabilityPtrOutput {
 	return o.ApplyT(func(v *WorkersScript) WorkersScriptObservabilityPtrOutput { return v.Observability }).(WorkersScriptObservabilityPtrOutput)
+}
+
+// The list of npm packages that were installed and used when this Worker was built.
+func (o WorkersScriptOutput) PackageDependencies() WorkersScriptPackageDependencyArrayOutput {
+	return o.ApplyT(func(v *WorkersScript) WorkersScriptPackageDependencyArrayOutput { return v.PackageDependencies }).(WorkersScriptPackageDependencyArrayOutput)
 }
 
 // Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.

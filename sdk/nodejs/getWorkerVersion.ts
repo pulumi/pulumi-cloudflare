@@ -44,7 +44,7 @@ export interface GetWorkerVersionArgs {
     /**
      * Identifier.
      */
-    accountId?: string;
+    accountId: string;
     /**
      * Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
      * Available values: "modules".
@@ -67,7 +67,7 @@ export interface GetWorkerVersionResult {
     /**
      * Identifier.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * Metadata about the version.
      */
@@ -77,6 +77,7 @@ export interface GetWorkerVersionResult {
      */
     readonly assets: outputs.GetWorkerVersionAssets;
     readonly bindings: outputs.GetWorkerVersionBinding[];
+    readonly cacheOptions: outputs.GetWorkerVersionCacheOptions;
     readonly compatibilityDate: string;
     readonly compatibilityFlags: string[];
     readonly containers: outputs.GetWorkerVersionContainer[];
@@ -94,6 +95,7 @@ export interface GetWorkerVersionResult {
     readonly migrations: outputs.GetWorkerVersionMigrations;
     readonly modules: outputs.GetWorkerVersionModule[];
     readonly number: number;
+    readonly packageDependencies: outputs.GetWorkerVersionPackageDependency[];
     readonly placement: outputs.GetWorkerVersionPlacement;
     readonly source: string;
     readonly startupTimeMs: number;
@@ -149,7 +151,7 @@ export interface GetWorkerVersionOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
      * Available values: "modules".

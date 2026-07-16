@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.GetZoneFilterAccount;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -122,6 +123,21 @@ public final class GetZoneFilter extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * Zone types to filter by. Multiple types can be specified as a comma-separated list (e.g., ?type=full,partial,secondary). When this parameter is not provided, zones with type &#34;internal&#34; are excluded from the results.
+     * 
+     */
+    @Import(name="types")
+    private @Nullable List<String> types;
+
+    /**
+     * @return Zone types to filter by. Multiple types can be specified as a comma-separated list (e.g., ?type=full,partial,secondary). When this parameter is not provided, zones with type &#34;internal&#34; are excluded from the results.
+     * 
+     */
+    public Optional<List<String>> types() {
+        return Optional.ofNullable(this.types);
+    }
+
     private GetZoneFilter() {}
 
     private GetZoneFilter(GetZoneFilter $) {
@@ -131,6 +147,7 @@ public final class GetZoneFilter extends com.pulumi.resources.InvokeArgs {
         this.name = $.name;
         this.order = $.order;
         this.status = $.status;
+        this.types = $.types;
     }
 
     public static Builder builder() {
@@ -221,6 +238,27 @@ public final class GetZoneFilter extends com.pulumi.resources.InvokeArgs {
         public Builder status(@Nullable String status) {
             $.status = status;
             return this;
+        }
+
+        /**
+         * @param types Zone types to filter by. Multiple types can be specified as a comma-separated list (e.g., ?type=full,partial,secondary). When this parameter is not provided, zones with type &#34;internal&#34; are excluded from the results.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder types(@Nullable List<String> types) {
+            $.types = types;
+            return this;
+        }
+
+        /**
+         * @param types Zone types to filter by. Multiple types can be specified as a comma-separated list (e.g., ?type=full,partial,secondary). When this parameter is not provided, zones with type &#34;internal&#34; are excluded from the results.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder types(String... types) {
+            return types(List.of(types));
         }
 
         public GetZoneFilter build() {

@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetEmailSecurityImpersonationRegistriesInvokeResult {
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     private @Nullable String accountId;
@@ -37,7 +37,7 @@ public final class GetEmailSecurityImpersonationRegistriesInvokeResult {
      */
     private @Nullable Integer maxItems;
     /**
-     * @return The field to sort by.
+     * @return Field to sort by.
      * Available values: &#34;name&#34;, &#34;email&#34;, &#34;createdAt&#34;.
      * 
      */
@@ -53,17 +53,14 @@ public final class GetEmailSecurityImpersonationRegistriesInvokeResult {
      */
     private List<GetEmailSecurityImpersonationRegistriesResult> results;
     /**
-     * @return Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * @return Search term for filtering records. Behavior may change.
      * 
      */
     private @Nullable String search;
 
     private GetEmailSecurityImpersonationRegistriesInvokeResult() {}
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> accountId() {
@@ -92,7 +89,7 @@ public final class GetEmailSecurityImpersonationRegistriesInvokeResult {
         return Optional.ofNullable(this.maxItems);
     }
     /**
-     * @return The field to sort by.
+     * @return Field to sort by.
      * Available values: &#34;name&#34;, &#34;email&#34;, &#34;createdAt&#34;.
      * 
      */
@@ -114,10 +111,7 @@ public final class GetEmailSecurityImpersonationRegistriesInvokeResult {
         return this.results;
     }
     /**
-     * @return Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * @return Search term for filtering records. Behavior may change.
      * 
      */
     public Optional<String> search() {

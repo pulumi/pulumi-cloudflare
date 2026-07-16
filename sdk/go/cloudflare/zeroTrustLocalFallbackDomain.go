@@ -62,7 +62,7 @@ import (
 type ZeroTrustLocalFallbackDomain struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringPtrOutput                        `pulumi:"accountId"`
+	AccountId pulumi.StringOutput                           `pulumi:"accountId"`
 	Domains   ZeroTrustLocalFallbackDomainDomainArrayOutput `pulumi:"domains"`
 	PolicyId  pulumi.StringOutput                           `pulumi:"policyId"`
 }
@@ -74,6 +74,9 @@ func NewZeroTrustLocalFallbackDomain(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Domains == nil {
 		return nil, errors.New("invalid value for required argument 'Domains'")
 	}
@@ -128,14 +131,14 @@ func (ZeroTrustLocalFallbackDomainState) ElementType() reflect.Type {
 }
 
 type zeroTrustLocalFallbackDomainArgs struct {
-	AccountId *string                              `pulumi:"accountId"`
+	AccountId string                               `pulumi:"accountId"`
 	Domains   []ZeroTrustLocalFallbackDomainDomain `pulumi:"domains"`
 	PolicyId  string                               `pulumi:"policyId"`
 }
 
 // The set of arguments for constructing a ZeroTrustLocalFallbackDomain resource.
 type ZeroTrustLocalFallbackDomainArgs struct {
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	Domains   ZeroTrustLocalFallbackDomainDomainArrayInput
 	PolicyId  pulumi.StringInput
 }
@@ -227,8 +230,8 @@ func (o ZeroTrustLocalFallbackDomainOutput) ToZeroTrustLocalFallbackDomainOutput
 	return o
 }
 
-func (o ZeroTrustLocalFallbackDomainOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustLocalFallbackDomain) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustLocalFallbackDomainOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustLocalFallbackDomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 func (o ZeroTrustLocalFallbackDomainOutput) Domains() ZeroTrustLocalFallbackDomainDomainArrayOutput {

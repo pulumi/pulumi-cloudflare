@@ -18,14 +18,14 @@ public final class ZeroTrustDexTestTargetPolicyArgs extends com.pulumi.resources
     public static final ZeroTrustDexTestTargetPolicyArgs Empty = new ZeroTrustDexTestTargetPolicyArgs();
 
     /**
-     * Whether the DEX rule is the account default
+     * Whether the DEX rule is the account default.
      * 
      */
     @Import(name="default")
     private @Nullable Output<Boolean> default_;
 
     /**
-     * @return Whether the DEX rule is the account default
+     * @return Whether the DEX rule is the account default.
      * 
      */
     public Optional<Output<Boolean>> default_() {
@@ -33,14 +33,14 @@ public final class ZeroTrustDexTestTargetPolicyArgs extends com.pulumi.resources
     }
 
     /**
-     * The id of the DEX rule
+     * The id of the DEX rule.
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return The id of the DEX rule
+     * @return The id of the DEX rule.
      * 
      */
     public Output<String> id() {
@@ -48,14 +48,14 @@ public final class ZeroTrustDexTestTargetPolicyArgs extends com.pulumi.resources
     }
 
     /**
-     * The name of the DEX rule
+     * The name of the DEX rule.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the DEX rule
+     * @return The name of the DEX rule.
      * 
      */
     public Optional<Output<String>> name() {
@@ -89,7 +89,7 @@ public final class ZeroTrustDexTestTargetPolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param default_ Whether the DEX rule is the account default
+         * @param default_ Whether the DEX rule is the account default.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class ZeroTrustDexTestTargetPolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param default_ Whether the DEX rule is the account default
+         * @param default_ Whether the DEX rule is the account default.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class ZeroTrustDexTestTargetPolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param id The id of the DEX rule
+         * @param id The id of the DEX rule.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class ZeroTrustDexTestTargetPolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param id The id of the DEX rule
+         * @param id The id of the DEX rule.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class ZeroTrustDexTestTargetPolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param name The name of the DEX rule
+         * @param name The name of the DEX rule.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ZeroTrustDexTestTargetPolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param name The name of the DEX rule
+         * @param name The name of the DEX rule.
          * 
          * @return builder
          * 

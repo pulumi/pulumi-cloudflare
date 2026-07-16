@@ -44,6 +44,13 @@ namespace Pulumi.Cloudflare
         [Output("cacheThreshold")]
         public Output<string> CacheThreshold { get; private set; } = null!;
 
+        /// <summary>
+        /// Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+        /// Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+        /// </summary>
+        [Output("cacheTtl")]
+        public Output<double> CacheTtl { get; private set; } = null!;
+
         [Output("chunk")]
         public Output<bool> Chunk { get; private set; } = null!;
 
@@ -63,7 +70,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.AiSearchInstanceCustomMetadata>> CustomMetadatas { get; private set; } = null!;
 
         /// <summary>
-        /// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+        /// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
         /// </summary>
         [Output("embeddingModel")]
         public Output<string> EmbeddingModel { get; private set; } = null!;
@@ -265,6 +272,13 @@ namespace Pulumi.Cloudflare
         [Input("cacheThreshold")]
         public Input<string>? CacheThreshold { get; set; }
 
+        /// <summary>
+        /// Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+        /// Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+        /// </summary>
+        [Input("cacheTtl")]
+        public Input<double>? CacheTtl { get; set; }
+
         [Input("chunk")]
         public Input<bool>? Chunk { get; set; }
 
@@ -283,7 +297,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+        /// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
         /// </summary>
         [Input("embeddingModel")]
         public Input<string>? EmbeddingModel { get; set; }
@@ -420,6 +434,13 @@ namespace Pulumi.Cloudflare
         [Input("cacheThreshold")]
         public Input<string>? CacheThreshold { get; set; }
 
+        /// <summary>
+        /// Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+        /// Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+        /// </summary>
+        [Input("cacheTtl")]
+        public Input<double>? CacheTtl { get; set; }
+
         [Input("chunk")]
         public Input<bool>? Chunk { get; set; }
 
@@ -444,7 +465,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+        /// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
         /// </summary>
         [Input("embeddingModel")]
         public Input<string>? EmbeddingModel { get; set; }

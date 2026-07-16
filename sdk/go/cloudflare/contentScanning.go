@@ -58,7 +58,7 @@ type ContentScanning struct {
 	// Available values: "enabled", "disabled".
 	Value pulumi.StringOutput `pulumi:"value"`
 	// Defines an identifier.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewContentScanning registers a new resource with the given unique name, arguments, and options.
@@ -70,6 +70,9 @@ func NewContentScanning(ctx *pulumi.Context,
 
 	if args.Value == nil {
 		return nil, errors.New("invalid value for required argument 'Value'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ContentScanning
@@ -122,7 +125,7 @@ type contentScanningArgs struct {
 	// Available values: "enabled", "disabled".
 	Value string `pulumi:"value"`
 	// Defines an identifier.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ContentScanning resource.
@@ -131,7 +134,7 @@ type ContentScanningArgs struct {
 	// Available values: "enabled", "disabled".
 	Value pulumi.StringInput
 	// Defines an identifier.
-	ZoneId pulumi.StringPtrInput
+	ZoneId pulumi.StringInput
 }
 
 func (ContentScanningArgs) ElementType() reflect.Type {
@@ -233,8 +236,8 @@ func (o ContentScanningOutput) Value() pulumi.StringOutput {
 }
 
 // Defines an identifier.
-func (o ContentScanningOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ContentScanning) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o ContentScanningOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContentScanning) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type ContentScanningArrayOutput struct{ *pulumi.OutputState }

@@ -22,15 +22,15 @@ public final class R2BucketLifecycleArgs extends com.pulumi.resources.ResourceAr
      * Account ID.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
      * @return Account ID.
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -103,7 +103,7 @@ public final class R2BucketLifecycleArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -174,6 +174,9 @@ public final class R2BucketLifecycleArgs extends com.pulumi.resources.ResourceAr
         }
 
         public R2BucketLifecycleArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("R2BucketLifecycleArgs", "accountId");
+            }
             if ($.bucketName == null) {
                 throw new MissingRequiredPropertyException("R2BucketLifecycleArgs", "bucketName");
             }

@@ -38,7 +38,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * > This resource does not currently support `pulumi import`.
+ * ```sh
+ * $ pulumi import cloudflare:index/snippet:Snippet example '<zone_id>/<snippet_name>'
+ * ```
  */
 export class Snippet extends pulumi.CustomResource {
     /**
@@ -91,7 +93,7 @@ export class Snippet extends pulumi.CustomResource {
     /**
      * Use this field to specify the unique ID of the zone.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a Snippet resource with the given unique name, arguments, and options.
@@ -122,6 +124,9 @@ export class Snippet extends pulumi.CustomResource {
             }
             if (args?.snippetName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'snippetName'");
+            }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["files"] = args?.files;
             resourceInputs["metadata"] = args?.metadata;
@@ -184,5 +189,5 @@ export interface SnippetArgs {
     /**
      * Use this field to specify the unique ID of the zone.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

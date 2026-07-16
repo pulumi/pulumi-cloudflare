@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<Inputs.AiSearchInstanceRetrievalOptionsBoostByArgs>? _boostBies;
 
         /// <summary>
-        /// Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom*metadata field.
+        /// Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom*metadata field.
         /// </summary>
         public InputList<Inputs.AiSearchInstanceRetrievalOptionsBoostByArgs> BoostBies
         {

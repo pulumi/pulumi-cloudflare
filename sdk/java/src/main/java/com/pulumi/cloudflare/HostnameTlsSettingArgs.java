@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceArgs {
@@ -33,14 +31,16 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The TLS Setting name. The value type depends on the setting:
+     * The TLS Setting name.
+     * The value type depends on the setting:
      * 
      */
     @Import(name="settingId", required=true)
     private Output<String> settingId;
 
     /**
-     * @return The TLS Setting name. The value type depends on the setting:
+     * @return The TLS Setting name.
+     * The value type depends on the setting:
      * 
      */
     public Output<String> settingId() {
@@ -48,14 +48,16 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The TLS setting value. The type depends on the `settingId` used in the request path:
+     * The TLS setting value.
+     * The type depends on the `settingId` used in the request path:
      * 
      */
     @Import(name="value", required=true)
     private Output<Object> value;
 
     /**
-     * @return The TLS setting value. The type depends on the `settingId` used in the request path:
+     * @return The TLS setting value.
+     * The type depends on the `settingId` used in the request path:
      * 
      */
     public Output<Object> value() {
@@ -66,15 +68,15 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
      * Identifier.
      * 
      */
-    @Import(name="zoneId")
-    private @Nullable Output<String> zoneId;
+    @Import(name="zoneId", required=true)
+    private Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<Output<String>> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     private HostnameTlsSettingArgs() {}
@@ -126,7 +128,8 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param settingId The TLS Setting name. The value type depends on the setting:
+         * @param settingId The TLS Setting name.
+         * The value type depends on the setting:
          * 
          * @return builder
          * 
@@ -137,7 +140,8 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param settingId The TLS Setting name. The value type depends on the setting:
+         * @param settingId The TLS Setting name.
+         * The value type depends on the setting:
          * 
          * @return builder
          * 
@@ -147,7 +151,8 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param value The TLS setting value. The type depends on the `settingId` used in the request path:
+         * @param value The TLS setting value.
+         * The type depends on the `settingId` used in the request path:
          * 
          * @return builder
          * 
@@ -158,7 +163,8 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param value The TLS setting value. The type depends on the `settingId` used in the request path:
+         * @param value The TLS setting value.
+         * The type depends on the `settingId` used in the request path:
          * 
          * @return builder
          * 
@@ -173,7 +179,7 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder zoneId(@Nullable Output<String> zoneId) {
+        public Builder zoneId(Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -197,6 +203,9 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
             }
             if ($.value == null) {
                 throw new MissingRequiredPropertyException("HostnameTlsSettingArgs", "value");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("HostnameTlsSettingArgs", "zoneId");
             }
             return $;
         }

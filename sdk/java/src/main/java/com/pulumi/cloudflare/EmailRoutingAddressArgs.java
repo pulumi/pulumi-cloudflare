@@ -20,15 +20,15 @@ public final class EmailRoutingAddressArgs extends com.pulumi.resources.Resource
      * Identifier.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -46,11 +46,29 @@ public final class EmailRoutingAddressArgs extends com.pulumi.resources.Resource
         return this.email;
     }
 
+    /**
+     * Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+     * Available values: &#34;unverified&#34;, &#34;verified&#34;.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+     * Available values: &#34;unverified&#34;, &#34;verified&#34;.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
     private EmailRoutingAddressArgs() {}
 
     private EmailRoutingAddressArgs(EmailRoutingAddressArgs $) {
         this.accountId = $.accountId;
         this.email = $.email;
+        this.status = $.status;
     }
 
     public static Builder builder() {
@@ -77,7 +95,7 @@ public final class EmailRoutingAddressArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -113,7 +131,33 @@ public final class EmailRoutingAddressArgs extends com.pulumi.resources.Resource
             return email(Output.of(email));
         }
 
+        /**
+         * @param status Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+         * Available values: &#34;unverified&#34;, &#34;verified&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+         * Available values: &#34;unverified&#34;, &#34;verified&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
+        }
+
         public EmailRoutingAddressArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("EmailRoutingAddressArgs", "accountId");
+            }
             if ($.email == null) {
                 throw new MissingRequiredPropertyException("EmailRoutingAddressArgs", "email");
             }

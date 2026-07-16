@@ -3,7 +3,6 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.AiSearchInstanceSourceParamsWebCrawlerCrawlOptionsArgs;
 import com.pulumi.cloudflare.inputs.AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs;
 import com.pulumi.cloudflare.inputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs;
 import com.pulumi.core.Output;
@@ -17,13 +16,6 @@ import javax.annotation.Nullable;
 public final class AiSearchInstanceSourceParamsWebCrawlerArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AiSearchInstanceSourceParamsWebCrawlerArgs Empty = new AiSearchInstanceSourceParamsWebCrawlerArgs();
-
-    @Import(name="crawlOptions")
-    private @Nullable Output<AiSearchInstanceSourceParamsWebCrawlerCrawlOptionsArgs> crawlOptions;
-
-    public Optional<Output<AiSearchInstanceSourceParamsWebCrawlerCrawlOptionsArgs>> crawlOptions() {
-        return Optional.ofNullable(this.crawlOptions);
-    }
 
     @Import(name="parseOptions")
     private @Nullable Output<AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs> parseOptions;
@@ -57,7 +49,6 @@ public final class AiSearchInstanceSourceParamsWebCrawlerArgs extends com.pulumi
     private AiSearchInstanceSourceParamsWebCrawlerArgs() {}
 
     private AiSearchInstanceSourceParamsWebCrawlerArgs(AiSearchInstanceSourceParamsWebCrawlerArgs $) {
-        this.crawlOptions = $.crawlOptions;
         this.parseOptions = $.parseOptions;
         this.parseType = $.parseType;
         this.storeOptions = $.storeOptions;
@@ -79,15 +70,6 @@ public final class AiSearchInstanceSourceParamsWebCrawlerArgs extends com.pulumi
 
         public Builder(AiSearchInstanceSourceParamsWebCrawlerArgs defaults) {
             $ = new AiSearchInstanceSourceParamsWebCrawlerArgs(Objects.requireNonNull(defaults));
-        }
-
-        public Builder crawlOptions(@Nullable Output<AiSearchInstanceSourceParamsWebCrawlerCrawlOptionsArgs> crawlOptions) {
-            $.crawlOptions = crawlOptions;
-            return this;
-        }
-
-        public Builder crawlOptions(AiSearchInstanceSourceParamsWebCrawlerCrawlOptionsArgs crawlOptions) {
-            return crawlOptions(Output.of(crawlOptions));
         }
 
         public Builder parseOptions(@Nullable Output<AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs> parseOptions) {

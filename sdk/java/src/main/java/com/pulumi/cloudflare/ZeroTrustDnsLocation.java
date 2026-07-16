@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustDnsLocationArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationState;
 import com.pulumi.cloudflare.outputs.ZeroTrustDnsLocationEndpoints;
+import com.pulumi.cloudflare.outputs.ZeroTrustDnsLocationMaxTtl;
 import com.pulumi.cloudflare.outputs.ZeroTrustDnsLocationNetwork;
 import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
@@ -45,6 +46,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationEndpointsIpv4Args;
  * import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationEndpointsIpv6Args;
  * import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationEndpointsIpv6NetworkArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationMaxTtlArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationNetworkArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -89,6 +91,10 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
+ *             .maxTtl(ZeroTrustDnsLocationMaxTtlArgs.builder()
+ *                 .mode("override")
+ *                 .ttlSecs(3600)
+ *                 .build())
  *             .networks(ZeroTrustDnsLocationNetworkArgs.builder()
  *                 .network("192.0.2.1/32")
  *                 .build())
@@ -109,10 +115,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation")
 public class ZeroTrustDnsLocation extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * Indicate whether this location is the default location.
@@ -245,6 +251,20 @@ public class ZeroTrustDnsLocation extends com.pulumi.resources.CustomResource {
      */
     public Output<String> ipv4DestinationBackup() {
         return this.ipv4DestinationBackup;
+    }
+    /**
+     * Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+     * 
+     */
+    @Export(name="maxTtl", refs={ZeroTrustDnsLocationMaxTtl.class}, tree="[0]")
+    private Output<ZeroTrustDnsLocationMaxTtl> maxTtl;
+
+    /**
+     * @return Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+     * 
+     */
+    public Output<ZeroTrustDnsLocationMaxTtl> maxTtl() {
+        return this.maxTtl;
     }
     /**
      * Specify the location name.

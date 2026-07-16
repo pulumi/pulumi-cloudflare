@@ -19,17 +19,33 @@ __all__ = ['EmailRoutingAddressArgs', 'EmailRoutingAddress']
 @pulumi.input_type
 class EmailRoutingAddressArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  email: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EmailRoutingAddress resource.
 
-        :param pulumi.Input[_builtins.str] email: The contact email address of the user.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] email: The contact email address of the user.
+        :param pulumi.Input[_builtins.str] status: Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+               Available values: "unverified", "verified".
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "email", email)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -44,16 +60,17 @@ class EmailRoutingAddressArgs:
         pulumi.set(self, "email", value)
 
     @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+    @pulumi.getter
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Identifier.
+        Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+        Available values: "unverified", "verified".
         """
-        return pulumi.get(self, "account_id")
+        return pulumi.get(self, "status")
 
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
+    @status.setter
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
@@ -63,6 +80,7 @@ class _EmailRoutingAddressState:
                  created: pulumi.Input[Optional[_builtins.str]] = None,
                  email: pulumi.Input[Optional[_builtins.str]] = None,
                  modified: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  tag: pulumi.Input[Optional[_builtins.str]] = None,
                  verified: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -72,6 +90,8 @@ class _EmailRoutingAddressState:
         :param pulumi.Input[_builtins.str] created: The date and time the destination address has been created.
         :param pulumi.Input[_builtins.str] email: The contact email address of the user.
         :param pulumi.Input[_builtins.str] modified: The date and time the destination address was last modified.
+        :param pulumi.Input[_builtins.str] status: Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+               Available values: "unverified", "verified".
         :param pulumi.Input[_builtins.str] tag: Destination address tag. (Deprecated, replaced by destination address identifier)
         :param pulumi.Input[_builtins.str] verified: The date and time the destination address has been verified. Null means not verified yet.
         """
@@ -83,6 +103,8 @@ class _EmailRoutingAddressState:
             pulumi.set(__self__, "email", email)
         if modified is not None:
             pulumi.set(__self__, "modified", modified)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
         if tag is not None:
             warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
             pulumi.log.warn("""tag is deprecated: This attribute is deprecated.""")
@@ -141,6 +163,19 @@ class _EmailRoutingAddressState:
 
     @_builtins.property
     @pulumi.getter
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+        Available values: "unverified", "verified".
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter
     @_utilities.deprecated("""This attribute is deprecated.""")
     def tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -173,6 +208,7 @@ class EmailRoutingAddress(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  email: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -202,6 +238,8 @@ class EmailRoutingAddress(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] email: The contact email address of the user.
+        :param pulumi.Input[_builtins.str] status: Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+               Available values: "unverified", "verified".
         """
         ...
     @overload
@@ -250,6 +288,7 @@ class EmailRoutingAddress(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  email: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -259,10 +298,13 @@ class EmailRoutingAddress(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EmailRoutingAddressArgs.__new__(EmailRoutingAddressArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if email is None and not opts.urn:
                 raise TypeError("Missing required property 'email'")
             __props__.__dict__["email"] = email
+            __props__.__dict__["status"] = status
             __props__.__dict__["created"] = None
             __props__.__dict__["modified"] = None
             __props__.__dict__["tag"] = None
@@ -281,6 +323,7 @@ class EmailRoutingAddress(pulumi.CustomResource):
             created: pulumi.Input[Optional[_builtins.str]] = None,
             email: pulumi.Input[Optional[_builtins.str]] = None,
             modified: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
             tag: pulumi.Input[Optional[_builtins.str]] = None,
             verified: pulumi.Input[Optional[_builtins.str]] = None) -> 'EmailRoutingAddress':
         """
@@ -294,6 +337,8 @@ class EmailRoutingAddress(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created: The date and time the destination address has been created.
         :param pulumi.Input[_builtins.str] email: The contact email address of the user.
         :param pulumi.Input[_builtins.str] modified: The date and time the destination address was last modified.
+        :param pulumi.Input[_builtins.str] status: Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+               Available values: "unverified", "verified".
         :param pulumi.Input[_builtins.str] tag: Destination address tag. (Deprecated, replaced by destination address identifier)
         :param pulumi.Input[_builtins.str] verified: The date and time the destination address has been verified. Null means not verified yet.
         """
@@ -305,13 +350,14 @@ class EmailRoutingAddress(pulumi.CustomResource):
         __props__.__dict__["created"] = created
         __props__.__dict__["email"] = email
         __props__.__dict__["modified"] = modified
+        __props__.__dict__["status"] = status
         __props__.__dict__["tag"] = tag
         __props__.__dict__["verified"] = verified
         return EmailRoutingAddress(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """
@@ -340,6 +386,15 @@ class EmailRoutingAddress(pulumi.CustomResource):
         The date and time the destination address was last modified.
         """
         return pulumi.get(self, "modified")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges.
+        Available values: "unverified", "verified".
+        """
+        return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter

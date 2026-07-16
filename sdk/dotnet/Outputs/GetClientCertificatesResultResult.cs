@@ -14,19 +14,19 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetClientCertificatesResultResult
     {
         /// <summary>
-        /// The Client Certificate PEM
+        /// The Client Certificate PEM.
         /// </summary>
         public readonly string Certificate;
         /// <summary>
-        /// Certificate Authority used to issue the Client Certificate
+        /// Certificate Authority used to issue the Client Certificate.
         /// </summary>
         public readonly Outputs.GetClientCertificatesResultCertificateAuthorityResult CertificateAuthority;
         /// <summary>
-        /// Common Name of the Client Certificate
+        /// Common Name of the Client Certificate.
         /// </summary>
         public readonly string CommonName;
         /// <summary>
-        /// Country, provided by the CSR
+        /// Country, provided by the CSR.
         /// </summary>
         public readonly string Country;
         /// <summary>
@@ -34,11 +34,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Csr;
         /// <summary>
-        /// Date that the Client Certificate expires
+        /// Date that the Client Certificate expires.
         /// </summary>
         public readonly string ExpiresOn;
         /// <summary>
-        /// Unique identifier of the Client Certificate
+        /// Unique identifier of the Client Certificate.
         /// </summary>
         public readonly string FingerprintSha256;
         /// <summary>
@@ -46,19 +46,19 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Date that the Client Certificate was issued by the Certificate Authority
+        /// Date that the Client Certificate was issued by the Certificate Authority.
         /// </summary>
         public readonly string IssuedOn;
         /// <summary>
-        /// Location, provided by the CSR
+        /// Location, provided by the CSR.
         /// </summary>
         public readonly string Location;
         /// <summary>
-        /// Organization, provided by the CSR
+        /// Organization, provided by the CSR.
         /// </summary>
         public readonly string Organization;
         /// <summary>
-        /// Organizational Unit, provided by the CSR
+        /// Organizational Unit, provided by the CSR.
         /// </summary>
         public readonly string OrganizationalUnit;
         /// <summary>
@@ -70,20 +70,20 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Signature;
         /// <summary>
-        /// Subject Key Identifier
+        /// Subject Key Identifier.
         /// </summary>
         public readonly string Ski;
         /// <summary>
-        /// State, provided by the CSR
+        /// State, provided by the CSR.
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions
+        /// Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions.
         /// Available values: "active", "pending*reactivation", "pending*revocation", "revoked".
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The number of days the Client Certificate will be valid after the IssuedOn date
+        /// The number of days the Client Certificate will be valid after the IssuedOn date.
         /// </summary>
         public readonly int ValidityDays;
 

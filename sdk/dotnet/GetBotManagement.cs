@@ -127,7 +127,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetBotManagementResult
     {
         /// <summary>
-        /// Enable rule to block AI Scrapers and Crawlers. Please note the value `OnlyOnAdPages` is currently not available for Enterprise customers.
+        /// Enable rule to block AI Scrapers and Crawlers.
         /// Available values: "block", "disabled", "only*on*ad_pages".
         /// </summary>
         public readonly string AiBotsProtection;

@@ -56,6 +56,7 @@ func LookupZeroTrustDexTest(ctx *pulumi.Context, args *LookupZeroTrustDexTestArg
 
 // A collection of arguments for invoking getZeroTrustDexTest.
 type LookupZeroTrustDexTestArgs struct {
+	// Unique identifier linked to an account.
 	AccountId *string `pulumi:"accountId"`
 	// The unique identifier for the test.
 	DexTestId *string                    `pulumi:"dexTestId"`
@@ -66,6 +67,7 @@ type LookupZeroTrustDexTestArgs struct {
 
 // A collection of values returned by getZeroTrustDexTest.
 type LookupZeroTrustDexTestResult struct {
+	// Unique identifier linked to an account.
 	AccountId *string `pulumi:"accountId"`
 	// The configuration object which contains the details for the WARP client to conduct the test.
 	Data GetZeroTrustDexTestData `pulumi:"data"`
@@ -100,6 +102,7 @@ func LookupZeroTrustDexTestOutput(ctx *pulumi.Context, args LookupZeroTrustDexTe
 
 // A collection of arguments for invoking getZeroTrustDexTest.
 type LookupZeroTrustDexTestOutputArgs struct {
+	// Unique identifier linked to an account.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The unique identifier for the test.
 	DexTestId pulumi.StringPtrInput             `pulumi:"dexTestId"`
@@ -127,6 +130,7 @@ func (o LookupZeroTrustDexTestResultOutput) ToLookupZeroTrustDexTestResultOutput
 	return o
 }
 
+// Unique identifier linked to an account.
 func (o LookupZeroTrustDexTestResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustDexTestResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }

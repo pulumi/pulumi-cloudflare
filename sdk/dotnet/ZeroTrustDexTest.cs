@@ -63,8 +63,11 @@ namespace Pulumi.Cloudflare
     [CloudflareResourceType("cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest")]
     public partial class ZeroTrustDexTest : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Unique identifier linked to an account.
+        /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The configuration object which contains the details for the WARP client to conduct the test.
@@ -157,8 +160,11 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustDexTestArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        /// <summary>
+        /// Unique identifier linked to an account.
+        /// </summary>
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// The configuration object which contains the details for the WARP client to conduct the test.
@@ -210,6 +216,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustDexTestState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Unique identifier linked to an account.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 

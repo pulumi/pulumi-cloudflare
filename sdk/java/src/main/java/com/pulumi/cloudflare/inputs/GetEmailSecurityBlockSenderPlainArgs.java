@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.GetEmailSecurityBlockSenderFilter;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,14 +16,14 @@ public final class GetEmailSecurityBlockSenderPlainArgs extends com.pulumi.resou
     public static final GetEmailSecurityBlockSenderPlainArgs Empty = new GetEmailSecurityBlockSenderPlainArgs();
 
     /**
-     * Account Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable String accountId;
 
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> accountId() {
@@ -39,17 +38,17 @@ public final class GetEmailSecurityBlockSenderPlainArgs extends com.pulumi.resou
     }
 
     /**
-     * The unique identifier for the allow policy.
+     * Blocked sender pattern identifier
      * 
      */
     @Import(name="patternId")
-    private @Nullable Integer patternId;
+    private @Nullable String patternId;
 
     /**
-     * @return The unique identifier for the allow policy.
+     * @return Blocked sender pattern identifier
      * 
      */
-    public Optional<Integer> patternId() {
+    public Optional<String> patternId() {
         return Optional.ofNullable(this.patternId);
     }
 
@@ -80,7 +79,7 @@ public final class GetEmailSecurityBlockSenderPlainArgs extends com.pulumi.resou
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -96,12 +95,12 @@ public final class GetEmailSecurityBlockSenderPlainArgs extends com.pulumi.resou
         }
 
         /**
-         * @param patternId The unique identifier for the allow policy.
+         * @param patternId Blocked sender pattern identifier
          * 
          * @return builder
          * 
          */
-        public Builder patternId(@Nullable Integer patternId) {
+        public Builder patternId(@Nullable String patternId) {
             $.patternId = patternId;
             return this;
         }

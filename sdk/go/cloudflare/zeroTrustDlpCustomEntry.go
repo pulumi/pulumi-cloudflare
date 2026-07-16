@@ -59,7 +59,7 @@ import (
 type ZeroTrustDlpCustomEntry struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Only applies to custom word lists.
 	// Determines if the words should be matched in a case-sensitive manner
 	// Cannot be set to false if secret is true
@@ -73,13 +73,14 @@ type ZeroTrustDlpCustomEntry struct {
 	ProfileId     pulumi.StringPtrOutput                    `pulumi:"profileId"`
 	Profiles      ZeroTrustDlpCustomEntryProfileArrayOutput `pulumi:"profiles"`
 	Secret        pulumi.BoolOutput                         `pulumi:"secret"`
-	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+	// Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
 	Type      pulumi.StringOutput `pulumi:"type"`
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
-	UploadStatus pulumi.StringOutput                  `pulumi:"uploadStatus"`
-	Variant      ZeroTrustDlpCustomEntryVariantOutput `pulumi:"variant"`
-	WordList     pulumi.StringOutput                  `pulumi:"wordList"`
+	UploadStatus pulumi.StringOutput `pulumi:"uploadStatus"`
+	// A Predefined AI prompt classification topic entry.
+	Variant  ZeroTrustDlpCustomEntryVariantOutput `pulumi:"variant"`
+	WordList pulumi.StringOutput                  `pulumi:"wordList"`
 }
 
 // NewZeroTrustDlpCustomEntry registers a new resource with the given unique name, arguments, and options.
@@ -89,6 +90,9 @@ func NewZeroTrustDlpCustomEntry(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Enabled == nil {
 		return nil, errors.New("invalid value for required argument 'Enabled'")
 	}
@@ -135,13 +139,14 @@ type zeroTrustDlpCustomEntryState struct {
 	ProfileId     *string                            `pulumi:"profileId"`
 	Profiles      []ZeroTrustDlpCustomEntryProfile   `pulumi:"profiles"`
 	Secret        *bool                              `pulumi:"secret"`
-	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+	// Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
 	Type      *string `pulumi:"type"`
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
-	UploadStatus *string                         `pulumi:"uploadStatus"`
-	Variant      *ZeroTrustDlpCustomEntryVariant `pulumi:"variant"`
-	WordList     *string                         `pulumi:"wordList"`
+	UploadStatus *string `pulumi:"uploadStatus"`
+	// A Predefined AI prompt classification topic entry.
+	Variant  *ZeroTrustDlpCustomEntryVariant `pulumi:"variant"`
+	WordList *string                         `pulumi:"wordList"`
 }
 
 type ZeroTrustDlpCustomEntryState struct {
@@ -159,13 +164,14 @@ type ZeroTrustDlpCustomEntryState struct {
 	ProfileId     pulumi.StringPtrInput
 	Profiles      ZeroTrustDlpCustomEntryProfileArrayInput
 	Secret        pulumi.BoolPtrInput
-	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+	// Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
 	Type      pulumi.StringPtrInput
 	UpdatedAt pulumi.StringPtrInput
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	UploadStatus pulumi.StringPtrInput
-	Variant      ZeroTrustDlpCustomEntryVariantPtrInput
-	WordList     pulumi.StringPtrInput
+	// A Predefined AI prompt classification topic entry.
+	Variant  ZeroTrustDlpCustomEntryVariantPtrInput
+	WordList pulumi.StringPtrInput
 }
 
 func (ZeroTrustDlpCustomEntryState) ElementType() reflect.Type {
@@ -173,7 +179,7 @@ func (ZeroTrustDlpCustomEntryState) ElementType() reflect.Type {
 }
 
 type zeroTrustDlpCustomEntryArgs struct {
-	AccountId   *string                        `pulumi:"accountId"`
+	AccountId   string                         `pulumi:"accountId"`
 	Description *string                        `pulumi:"description"`
 	Enabled     bool                           `pulumi:"enabled"`
 	Name        string                         `pulumi:"name"`
@@ -183,7 +189,7 @@ type zeroTrustDlpCustomEntryArgs struct {
 
 // The set of arguments for constructing a ZeroTrustDlpCustomEntry resource.
 type ZeroTrustDlpCustomEntryArgs struct {
-	AccountId   pulumi.StringPtrInput
+	AccountId   pulumi.StringInput
 	Description pulumi.StringPtrInput
 	Enabled     pulumi.BoolInput
 	Name        pulumi.StringInput
@@ -278,8 +284,8 @@ func (o ZeroTrustDlpCustomEntryOutput) ToZeroTrustDlpCustomEntryOutputWithContex
 	return o
 }
 
-func (o ZeroTrustDlpCustomEntryOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDlpCustomEntry) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustDlpCustomEntryOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpCustomEntry) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Only applies to custom word lists.
@@ -325,7 +331,7 @@ func (o ZeroTrustDlpCustomEntryOutput) Secret() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomEntry) pulumi.BoolOutput { return v.Secret }).(pulumi.BoolOutput)
 }
 
-// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+// Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
 func (o ZeroTrustDlpCustomEntryOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomEntry) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
@@ -339,6 +345,7 @@ func (o ZeroTrustDlpCustomEntryOutput) UploadStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomEntry) pulumi.StringOutput { return v.UploadStatus }).(pulumi.StringOutput)
 }
 
+// A Predefined AI prompt classification topic entry.
 func (o ZeroTrustDlpCustomEntryOutput) Variant() ZeroTrustDlpCustomEntryVariantOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomEntry) ZeroTrustDlpCustomEntryVariantOutput { return v.Variant }).(ZeroTrustDlpCustomEntryVariantOutput)
 }

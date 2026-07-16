@@ -19,6 +19,7 @@ import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsSandboxArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsTlsDecryptArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -202,6 +203,21 @@ public final class ZeroTrustGatewaySettingsSettingsArgs extends com.pulumi.resou
     }
 
     /**
+     * Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `maxTtl` setting.
+     * 
+     */
+    @Import(name="maxTtlSecs")
+    private @Nullable Output<Integer> maxTtlSecs;
+
+    /**
+     * @return Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `maxTtl` setting.
+     * 
+     */
+    public Optional<Output<Integer>> maxTtlSecs() {
+        return Optional.ofNullable(this.maxTtlSecs);
+    }
+
+    /**
      * Specify whether to detect protocols from the initial bytes of client traffic.
      * 
      */
@@ -260,6 +276,7 @@ public final class ZeroTrustGatewaySettingsSettingsArgs extends com.pulumi.resou
         this.fips = $.fips;
         this.hostSelector = $.hostSelector;
         this.inspection = $.inspection;
+        this.maxTtlSecs = $.maxTtlSecs;
         this.protocolDetection = $.protocolDetection;
         this.sandbox = $.sandbox;
         this.tlsDecrypt = $.tlsDecrypt;
@@ -520,6 +537,27 @@ public final class ZeroTrustGatewaySettingsSettingsArgs extends com.pulumi.resou
          */
         public Builder inspection(ZeroTrustGatewaySettingsSettingsInspectionArgs inspection) {
             return inspection(Output.of(inspection));
+        }
+
+        /**
+         * @param maxTtlSecs Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `maxTtl` setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxTtlSecs(@Nullable Output<Integer> maxTtlSecs) {
+            $.maxTtlSecs = maxTtlSecs;
+            return this;
+        }
+
+        /**
+         * @param maxTtlSecs Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `maxTtl` setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxTtlSecs(Integer maxTtlSecs) {
+            return maxTtlSecs(Output.of(maxTtlSecs));
         }
 
         /**

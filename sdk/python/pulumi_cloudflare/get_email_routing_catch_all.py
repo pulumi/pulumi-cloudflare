@@ -27,7 +27,7 @@ class GetEmailRoutingCatchAllResult:
     """
     A collection of values returned by getEmailRoutingCatchAll.
     """
-    def __init__(__self__, actions=None, enabled=None, id=None, matchers=None, name=None, tag=None, zone_id=None):
+    def __init__(__self__, actions=None, enabled=None, id=None, matchers=None, name=None, source=None, tag=None, zone_id=None):
         if actions and not isinstance(actions, list):
             raise TypeError("Expected argument 'actions' to be a list")
         pulumi.set(__self__, "actions", actions)
@@ -43,6 +43,9 @@ class GetEmailRoutingCatchAllResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if source and not isinstance(source, str):
+            raise TypeError("Expected argument 'source' to be a str")
+        pulumi.set(__self__, "source", source)
         if tag and not isinstance(tag, str):
             raise TypeError("Expected argument 'tag' to be a str")
         pulumi.set(__self__, "tag", tag)
@@ -92,6 +95,17 @@ class GetEmailRoutingCatchAllResult:
 
     @_builtins.property
     @pulumi.getter
+    def source(self) -> _builtins.str:
+        """
+        Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+        `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+        to `api` when omitted on write.
+        Available values: "api", "wrangler".
+        """
+        return pulumi.get(self, "source")
+
+    @_builtins.property
+    @pulumi.getter
     @_utilities.deprecated("""This attribute is deprecated.""")
     def tag(self) -> _builtins.str:
         """
@@ -119,6 +133,7 @@ class AwaitableGetEmailRoutingCatchAllResult(GetEmailRoutingCatchAllResult):
             id=self.id,
             matchers=self.matchers,
             name=self.name,
+            source=self.source,
             tag=self.tag,
             zone_id=self.zone_id)
 
@@ -154,6 +169,7 @@ def get_email_routing_catch_all(zone_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         matchers=pulumi.get(__ret__, 'matchers'),
         name=pulumi.get(__ret__, 'name'),
+        source=pulumi.get(__ret__, 'source'),
         tag=pulumi.get(__ret__, 'tag'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_email_routing_catch_all_output(zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -186,5 +202,6 @@ def get_email_routing_catch_all_output(zone_id: pulumi.Input[Optional[Optional[_
         id=pulumi.get(__response__, 'id'),
         matchers=pulumi.get(__response__, 'matchers'),
         name=pulumi.get(__response__, 'name'),
+        source=pulumi.get(__response__, 'source'),
         tag=pulumi.get(__response__, 'tag'),
         zone_id=pulumi.get(__response__, 'zone_id')))

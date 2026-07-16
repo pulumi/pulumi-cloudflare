@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationEndpointsArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationMaxTtlArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationNetworkArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -169,6 +170,21 @@ public final class ZeroTrustDnsLocationState extends com.pulumi.resources.Resour
     }
 
     /**
+     * Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+     * 
+     */
+    @Import(name="maxTtl")
+    private @Nullable Output<ZeroTrustDnsLocationMaxTtlArgs> maxTtl;
+
+    /**
+     * @return Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+     * 
+     */
+    public Optional<Output<ZeroTrustDnsLocationMaxTtlArgs>> maxTtl() {
+        return Optional.ofNullable(this.maxTtl);
+    }
+
+    /**
      * Specify the location name.
      * 
      */
@@ -219,6 +235,7 @@ public final class ZeroTrustDnsLocationState extends com.pulumi.resources.Resour
         this.ip = $.ip;
         this.ipv4Destination = $.ipv4Destination;
         this.ipv4DestinationBackup = $.ipv4DestinationBackup;
+        this.maxTtl = $.maxTtl;
         this.name = $.name;
         this.networks = $.networks;
         this.updatedAt = $.updatedAt;
@@ -447,6 +464,27 @@ public final class ZeroTrustDnsLocationState extends com.pulumi.resources.Resour
          */
         public Builder ipv4DestinationBackup(String ipv4DestinationBackup) {
             return ipv4DestinationBackup(Output.of(ipv4DestinationBackup));
+        }
+
+        /**
+         * @param maxTtl Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxTtl(@Nullable Output<ZeroTrustDnsLocationMaxTtlArgs> maxTtl) {
+            $.maxTtl = maxTtl;
+            return this;
+        }
+
+        /**
+         * @param maxTtl Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxTtl(ZeroTrustDnsLocationMaxTtlArgs maxTtl) {
+            return maxTtl(Output.of(maxTtl));
         }
 
         /**

@@ -21,18 +21,20 @@ __all__ = ['WorkersScriptArgs', 'WorkersScript']
 @pulumi.input_type
 class WorkersScriptArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  script_name: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  annotations: pulumi.Input[Optional['WorkersScriptAnnotationsArgs']] = None,
                  assets: pulumi.Input[Optional['WorkersScriptAssetsArgs']] = None,
                  bindings: pulumi.Input[Optional[Sequence[pulumi.Input['WorkersScriptBindingArgs']]]] = None,
                  body_part: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_options: pulumi.Input[Optional['WorkersScriptCacheOptionsArgs']] = None,
                  compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
                  compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  content: pulumi.Input[Optional[_builtins.str]] = None,
                  content_file: pulumi.Input[Optional[_builtins.str]] = None,
                  content_sha256: pulumi.Input[Optional[_builtins.str]] = None,
                  content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 exports: pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkersScriptExportsArgs']]]] = None,
                  keep_assets: pulumi.Input[Optional[_builtins.bool]] = None,
                  keep_bindings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  limits: pulumi.Input[Optional['WorkersScriptLimitsArgs']] = None,
@@ -40,39 +42,45 @@ class WorkersScriptArgs:
                  main_module: pulumi.Input[Optional[_builtins.str]] = None,
                  migrations: pulumi.Input[Optional['WorkersScriptMigrationsArgs']] = None,
                  observability: pulumi.Input[Optional['WorkersScriptObservabilityArgs']] = None,
+                 package_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input['WorkersScriptPackageDependencyArgs']]]] = None,
                  placement: pulumi.Input[Optional['WorkersScriptPlacementArgs']] = None,
                  tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input['WorkersScriptTailConsumerArgs']]]] = None,
                  usage_model: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkersScript resource.
 
-        :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input['WorkersScriptAnnotationsArgs'] annotations: Annotations for the version created by this upload.
         :param pulumi.Input['WorkersScriptAssetsArgs'] assets: Configuration for assets within a Worker.
         :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptBindingArgs']]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         :param pulumi.Input[_builtins.str] body_part: Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+        :param pulumi.Input['WorkersScriptCacheOptionsArgs'] cache_options: Global CacheW configuration for the Worker. When caching is on,
+               the platform provisions a `cloudflare.app` zone for the Worker.
+               A `type: worker` entry in the `exports` map can override this
+               value for a single entrypoint.
         :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         :param pulumi.Input[_builtins.str] content: Module or Service Worker contents of the Worker. Conflicts with `content_file`.
         :param pulumi.Input[_builtins.str] content_file: Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `content_sha256`.
         :param pulumi.Input[_builtins.str] content_sha256: SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
         :param pulumi.Input[_builtins.str] content_type: Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
-        :param pulumi.Input[_builtins.bool] keep_assets: Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+        :param pulumi.Input[Mapping[str, pulumi.Input['WorkersScriptExportsArgs']]] exports: Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+        :param pulumi.Input[_builtins.bool] keep_assets: Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keep_assets`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] keep_bindings: List of binding types to keep from previous_upload.
         :param pulumi.Input['WorkersScriptLimitsArgs'] limits: Limits to apply for this Worker.
         :param pulumi.Input[_builtins.bool] logpush: Whether Logpush is turned on for the Worker.
         :param pulumi.Input[_builtins.str] main_module: Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
         :param pulumi.Input['WorkersScriptMigrationsArgs'] migrations: Migrations to apply for Durable Objects associated with this Worker.
         :param pulumi.Input['WorkersScriptObservabilityArgs'] observability: Observability settings for the Worker.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptPackageDependencyArgs']]] package_dependencies: The list of npm packages that were installed and used when this Worker was built.
         :param pulumi.Input['WorkersScriptPlacementArgs'] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptTailConsumerArgs']]] tail_consumers: List of Workers that will consume logs from the attached Worker.
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the Worker invocations.
                Available values: "standard", "bundled", "unbound".
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "script_name", script_name)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if assets is not None:
@@ -81,6 +89,8 @@ class WorkersScriptArgs:
             pulumi.set(__self__, "bindings", bindings)
         if body_part is not None:
             pulumi.set(__self__, "body_part", body_part)
+        if cache_options is not None:
+            pulumi.set(__self__, "cache_options", cache_options)
         if compatibility_date is not None:
             pulumi.set(__self__, "compatibility_date", compatibility_date)
         if compatibility_flags is not None:
@@ -93,6 +103,8 @@ class WorkersScriptArgs:
             pulumi.set(__self__, "content_sha256", content_sha256)
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
+        if exports is not None:
+            pulumi.set(__self__, "exports", exports)
         if keep_assets is not None:
             pulumi.set(__self__, "keep_assets", keep_assets)
         if keep_bindings is not None:
@@ -107,12 +119,26 @@ class WorkersScriptArgs:
             pulumi.set(__self__, "migrations", migrations)
         if observability is not None:
             pulumi.set(__self__, "observability", observability)
+        if package_dependencies is not None:
+            pulumi.set(__self__, "package_dependencies", package_dependencies)
         if placement is not None:
             pulumi.set(__self__, "placement", placement)
         if tail_consumers is not None:
             pulumi.set(__self__, "tail_consumers", tail_consumers)
         if usage_model is not None:
             pulumi.set(__self__, "usage_model", usage_model)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="scriptName")
@@ -125,18 +151,6 @@ class WorkersScriptArgs:
     @script_name.setter
     def script_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "script_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -185,6 +199,21 @@ class WorkersScriptArgs:
     @body_part.setter
     def body_part(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "body_part", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cacheOptions")
+    def cache_options(self) -> pulumi.Input[Optional['WorkersScriptCacheOptionsArgs']]:
+        """
+        Global CacheW configuration for the Worker. When caching is on,
+        the platform provisions a `cloudflare.app` zone for the Worker.
+        A `type: worker` entry in the `exports` map can override this
+        value for a single entrypoint.
+        """
+        return pulumi.get(self, "cache_options")
+
+    @cache_options.setter
+    def cache_options(self, value: pulumi.Input[Optional['WorkersScriptCacheOptionsArgs']]):
+        pulumi.set(self, "cache_options", value)
 
     @_builtins.property
     @pulumi.getter(name="compatibilityDate")
@@ -259,10 +288,22 @@ class WorkersScriptArgs:
         pulumi.set(self, "content_type", value)
 
     @_builtins.property
+    @pulumi.getter
+    def exports(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkersScriptExportsArgs']]]]:
+        """
+        Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+        """
+        return pulumi.get(self, "exports")
+
+    @exports.setter
+    def exports(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkersScriptExportsArgs']]]]):
+        pulumi.set(self, "exports", value)
+
+    @_builtins.property
     @pulumi.getter(name="keepAssets")
     def keep_assets(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+        Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keep_assets`.
         """
         return pulumi.get(self, "keep_assets")
 
@@ -343,6 +384,18 @@ class WorkersScriptArgs:
         pulumi.set(self, "observability", value)
 
     @_builtins.property
+    @pulumi.getter(name="packageDependencies")
+    def package_dependencies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkersScriptPackageDependencyArgs']]]]:
+        """
+        The list of npm packages that were installed and used when this Worker was built.
+        """
+        return pulumi.get(self, "package_dependencies")
+
+    @package_dependencies.setter
+    def package_dependencies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkersScriptPackageDependencyArgs']]]]):
+        pulumi.set(self, "package_dependencies", value)
+
+    @_builtins.property
     @pulumi.getter
     def placement(self) -> pulumi.Input[Optional['WorkersScriptPlacementArgs']]:
         """
@@ -388,6 +441,7 @@ class _WorkersScriptState:
                  assets: pulumi.Input[Optional['WorkersScriptAssetsArgs']] = None,
                  bindings: pulumi.Input[Optional[Sequence[pulumi.Input['WorkersScriptBindingArgs']]]] = None,
                  body_part: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_options: pulumi.Input[Optional['WorkersScriptCacheOptionsArgs']] = None,
                  compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
                  compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  content: pulumi.Input[Optional[_builtins.str]] = None,
@@ -396,6 +450,7 @@ class _WorkersScriptState:
                  content_type: pulumi.Input[Optional[_builtins.str]] = None,
                  created_on: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 exports: pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkersScriptExportsArgs']]]] = None,
                  handlers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  has_assets: pulumi.Input[Optional[_builtins.bool]] = None,
                  has_modules: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -410,6 +465,7 @@ class _WorkersScriptState:
                  modified_on: pulumi.Input[Optional[_builtins.str]] = None,
                  named_handlers: pulumi.Input[Optional[Sequence[pulumi.Input['WorkersScriptNamedHandlerArgs']]]] = None,
                  observability: pulumi.Input[Optional['WorkersScriptObservabilityArgs']] = None,
+                 package_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input['WorkersScriptPackageDependencyArgs']]]] = None,
                  placement: pulumi.Input[Optional['WorkersScriptPlacementArgs']] = None,
                  placement_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  placement_status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -425,6 +481,10 @@ class _WorkersScriptState:
         :param pulumi.Input['WorkersScriptAssetsArgs'] assets: Configuration for assets within a Worker.
         :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptBindingArgs']]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         :param pulumi.Input[_builtins.str] body_part: Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+        :param pulumi.Input['WorkersScriptCacheOptionsArgs'] cache_options: Global CacheW configuration for the Worker. When caching is on,
+               the platform provisions a `cloudflare.app` zone for the Worker.
+               A `type: worker` entry in the `exports` map can override this
+               value for a single entrypoint.
         :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         :param pulumi.Input[_builtins.str] content: Module or Service Worker contents of the Worker. Conflicts with `content_file`.
@@ -433,10 +493,11 @@ class _WorkersScriptState:
         :param pulumi.Input[_builtins.str] content_type: Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
         :param pulumi.Input[_builtins.str] created_on: When the script was created.
         :param pulumi.Input[_builtins.str] etag: Hashed script content, can be used in a If-None-Match header when updating.
+        :param pulumi.Input[Mapping[str, pulumi.Input['WorkersScriptExportsArgs']]] exports: Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] handlers: The names of handlers exported as part of the default export.
         :param pulumi.Input[_builtins.bool] has_assets: Whether a Worker contains assets.
         :param pulumi.Input[_builtins.bool] has_modules: Whether a Worker contains modules.
-        :param pulumi.Input[_builtins.bool] keep_assets: Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+        :param pulumi.Input[_builtins.bool] keep_assets: Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keep_assets`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] keep_bindings: List of binding types to keep from previous_upload.
         :param pulumi.Input[_builtins.str] last_deployed_from: The client most recently used to deploy this Worker.
         :param pulumi.Input['WorkersScriptLimitsArgs'] limits: Limits to apply for this Worker.
@@ -447,6 +508,7 @@ class _WorkersScriptState:
         :param pulumi.Input[_builtins.str] modified_on: When the script was last modified.
         :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptNamedHandlerArgs']]] named_handlers: Named exports, such as Durable Object class implementations and named entrypoints.
         :param pulumi.Input['WorkersScriptObservabilityArgs'] observability: Observability settings for the Worker.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptPackageDependencyArgs']]] package_dependencies: The list of npm packages that were installed and used when this Worker was built.
         :param pulumi.Input['WorkersScriptPlacementArgs'] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         :param pulumi.Input[_builtins.str] placement_mode: Available values: "smart", "targeted".
         :param pulumi.Input[_builtins.str] placement_status: Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
@@ -465,6 +527,8 @@ class _WorkersScriptState:
             pulumi.set(__self__, "bindings", bindings)
         if body_part is not None:
             pulumi.set(__self__, "body_part", body_part)
+        if cache_options is not None:
+            pulumi.set(__self__, "cache_options", cache_options)
         if compatibility_date is not None:
             pulumi.set(__self__, "compatibility_date", compatibility_date)
         if compatibility_flags is not None:
@@ -481,6 +545,8 @@ class _WorkersScriptState:
             pulumi.set(__self__, "created_on", created_on)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if exports is not None:
+            pulumi.set(__self__, "exports", exports)
         if handlers is not None:
             pulumi.set(__self__, "handlers", handlers)
         if has_assets is not None:
@@ -509,6 +575,8 @@ class _WorkersScriptState:
             pulumi.set(__self__, "named_handlers", named_handlers)
         if observability is not None:
             pulumi.set(__self__, "observability", observability)
+        if package_dependencies is not None:
+            pulumi.set(__self__, "package_dependencies", package_dependencies)
         if placement is not None:
             pulumi.set(__self__, "placement", placement)
         if placement_mode is not None:
@@ -589,6 +657,21 @@ class _WorkersScriptState:
     @body_part.setter
     def body_part(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "body_part", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cacheOptions")
+    def cache_options(self) -> pulumi.Input[Optional['WorkersScriptCacheOptionsArgs']]:
+        """
+        Global CacheW configuration for the Worker. When caching is on,
+        the platform provisions a `cloudflare.app` zone for the Worker.
+        A `type: worker` entry in the `exports` map can override this
+        value for a single entrypoint.
+        """
+        return pulumi.get(self, "cache_options")
+
+    @cache_options.setter
+    def cache_options(self, value: pulumi.Input[Optional['WorkersScriptCacheOptionsArgs']]):
+        pulumi.set(self, "cache_options", value)
 
     @_builtins.property
     @pulumi.getter(name="compatibilityDate")
@@ -688,6 +771,18 @@ class _WorkersScriptState:
 
     @_builtins.property
     @pulumi.getter
+    def exports(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkersScriptExportsArgs']]]]:
+        """
+        Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+        """
+        return pulumi.get(self, "exports")
+
+    @exports.setter
+    def exports(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkersScriptExportsArgs']]]]):
+        pulumi.set(self, "exports", value)
+
+    @_builtins.property
+    @pulumi.getter
     def handlers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The names of handlers exported as part of the default export.
@@ -726,7 +821,7 @@ class _WorkersScriptState:
     @pulumi.getter(name="keepAssets")
     def keep_assets(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+        Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keep_assets`.
         """
         return pulumi.get(self, "keep_assets")
 
@@ -855,6 +950,18 @@ class _WorkersScriptState:
         pulumi.set(self, "observability", value)
 
     @_builtins.property
+    @pulumi.getter(name="packageDependencies")
+    def package_dependencies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkersScriptPackageDependencyArgs']]]]:
+        """
+        The list of npm packages that were installed and used when this Worker was built.
+        """
+        return pulumi.get(self, "package_dependencies")
+
+    @package_dependencies.setter
+    def package_dependencies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkersScriptPackageDependencyArgs']]]]):
+        pulumi.set(self, "package_dependencies", value)
+
+    @_builtins.property
     @pulumi.getter
     def placement(self) -> pulumi.Input[Optional['WorkersScriptPlacementArgs']]:
         """
@@ -950,12 +1057,14 @@ class WorkersScript(pulumi.CustomResource):
                  assets: pulumi.Input[Optional[Union['WorkersScriptAssetsArgs', 'WorkersScriptAssetsArgsDict']]] = None,
                  bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersScriptBindingArgs', 'WorkersScriptBindingArgsDict']]]]] = None,
                  body_part: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_options: pulumi.Input[Optional[Union['WorkersScriptCacheOptionsArgs', 'WorkersScriptCacheOptionsArgsDict']]] = None,
                  compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
                  compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  content: pulumi.Input[Optional[_builtins.str]] = None,
                  content_file: pulumi.Input[Optional[_builtins.str]] = None,
                  content_sha256: pulumi.Input[Optional[_builtins.str]] = None,
                  content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkersScriptExportsArgs', 'WorkersScriptExportsArgsDict']]]]] = None,
                  keep_assets: pulumi.Input[Optional[_builtins.bool]] = None,
                  keep_bindings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  limits: pulumi.Input[Optional[Union['WorkersScriptLimitsArgs', 'WorkersScriptLimitsArgsDict']]] = None,
@@ -963,6 +1072,7 @@ class WorkersScript(pulumi.CustomResource):
                  main_module: pulumi.Input[Optional[_builtins.str]] = None,
                  migrations: pulumi.Input[Optional[Union['WorkersScriptMigrationsArgs', 'WorkersScriptMigrationsArgsDict']]] = None,
                  observability: pulumi.Input[Optional[Union['WorkersScriptObservabilityArgs', 'WorkersScriptObservabilityArgsDict']]] = None,
+                 package_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersScriptPackageDependencyArgs', 'WorkersScriptPackageDependencyArgsDict']]]]] = None,
                  placement: pulumi.Input[Optional[Union['WorkersScriptPlacementArgs', 'WorkersScriptPlacementArgsDict']]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersScriptTailConsumerArgs', 'WorkersScriptTailConsumerArgsDict']]]]] = None,
@@ -991,19 +1101,25 @@ class WorkersScript(pulumi.CustomResource):
         :param pulumi.Input[Union['WorkersScriptAssetsArgs', 'WorkersScriptAssetsArgsDict']] assets: Configuration for assets within a Worker.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptBindingArgs', 'WorkersScriptBindingArgsDict']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         :param pulumi.Input[_builtins.str] body_part: Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+        :param pulumi.Input[Union['WorkersScriptCacheOptionsArgs', 'WorkersScriptCacheOptionsArgsDict']] cache_options: Global CacheW configuration for the Worker. When caching is on,
+               the platform provisions a `cloudflare.app` zone for the Worker.
+               A `type: worker` entry in the `exports` map can override this
+               value for a single entrypoint.
         :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         :param pulumi.Input[_builtins.str] content: Module or Service Worker contents of the Worker. Conflicts with `content_file`.
         :param pulumi.Input[_builtins.str] content_file: Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `content_sha256`.
         :param pulumi.Input[_builtins.str] content_sha256: SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
         :param pulumi.Input[_builtins.str] content_type: Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
-        :param pulumi.Input[_builtins.bool] keep_assets: Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['WorkersScriptExportsArgs', 'WorkersScriptExportsArgsDict']]]] exports: Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+        :param pulumi.Input[_builtins.bool] keep_assets: Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keep_assets`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] keep_bindings: List of binding types to keep from previous_upload.
         :param pulumi.Input[Union['WorkersScriptLimitsArgs', 'WorkersScriptLimitsArgsDict']] limits: Limits to apply for this Worker.
         :param pulumi.Input[_builtins.bool] logpush: Whether Logpush is turned on for the Worker.
         :param pulumi.Input[_builtins.str] main_module: Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
         :param pulumi.Input[Union['WorkersScriptMigrationsArgs', 'WorkersScriptMigrationsArgsDict']] migrations: Migrations to apply for Durable Objects associated with this Worker.
         :param pulumi.Input[Union['WorkersScriptObservabilityArgs', 'WorkersScriptObservabilityArgsDict']] observability: Observability settings for the Worker.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptPackageDependencyArgs', 'WorkersScriptPackageDependencyArgsDict']]]] package_dependencies: The list of npm packages that were installed and used when this Worker was built.
         :param pulumi.Input[Union['WorkersScriptPlacementArgs', 'WorkersScriptPlacementArgsDict']] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptTailConsumerArgs', 'WorkersScriptTailConsumerArgsDict']]]] tail_consumers: List of Workers that will consume logs from the attached Worker.
@@ -1052,12 +1168,14 @@ class WorkersScript(pulumi.CustomResource):
                  assets: pulumi.Input[Optional[Union['WorkersScriptAssetsArgs', 'WorkersScriptAssetsArgsDict']]] = None,
                  bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersScriptBindingArgs', 'WorkersScriptBindingArgsDict']]]]] = None,
                  body_part: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_options: pulumi.Input[Optional[Union['WorkersScriptCacheOptionsArgs', 'WorkersScriptCacheOptionsArgsDict']]] = None,
                  compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
                  compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  content: pulumi.Input[Optional[_builtins.str]] = None,
                  content_file: pulumi.Input[Optional[_builtins.str]] = None,
                  content_sha256: pulumi.Input[Optional[_builtins.str]] = None,
                  content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkersScriptExportsArgs', 'WorkersScriptExportsArgsDict']]]]] = None,
                  keep_assets: pulumi.Input[Optional[_builtins.bool]] = None,
                  keep_bindings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  limits: pulumi.Input[Optional[Union['WorkersScriptLimitsArgs', 'WorkersScriptLimitsArgsDict']]] = None,
@@ -1065,6 +1183,7 @@ class WorkersScript(pulumi.CustomResource):
                  main_module: pulumi.Input[Optional[_builtins.str]] = None,
                  migrations: pulumi.Input[Optional[Union['WorkersScriptMigrationsArgs', 'WorkersScriptMigrationsArgsDict']]] = None,
                  observability: pulumi.Input[Optional[Union['WorkersScriptObservabilityArgs', 'WorkersScriptObservabilityArgsDict']]] = None,
+                 package_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersScriptPackageDependencyArgs', 'WorkersScriptPackageDependencyArgsDict']]]]] = None,
                  placement: pulumi.Input[Optional[Union['WorkersScriptPlacementArgs', 'WorkersScriptPlacementArgsDict']]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersScriptTailConsumerArgs', 'WorkersScriptTailConsumerArgsDict']]]]] = None,
@@ -1078,17 +1197,21 @@ class WorkersScript(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkersScriptArgs.__new__(WorkersScriptArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["assets"] = assets
             __props__.__dict__["bindings"] = bindings
             __props__.__dict__["body_part"] = body_part
+            __props__.__dict__["cache_options"] = cache_options
             __props__.__dict__["compatibility_date"] = compatibility_date
             __props__.__dict__["compatibility_flags"] = compatibility_flags
             __props__.__dict__["content"] = content
             __props__.__dict__["content_file"] = content_file
             __props__.__dict__["content_sha256"] = content_sha256
             __props__.__dict__["content_type"] = content_type
+            __props__.__dict__["exports"] = exports
             __props__.__dict__["keep_assets"] = keep_assets
             __props__.__dict__["keep_bindings"] = keep_bindings
             __props__.__dict__["limits"] = limits
@@ -1096,6 +1219,7 @@ class WorkersScript(pulumi.CustomResource):
             __props__.__dict__["main_module"] = main_module
             __props__.__dict__["migrations"] = migrations
             __props__.__dict__["observability"] = observability
+            __props__.__dict__["package_dependencies"] = package_dependencies
             __props__.__dict__["placement"] = placement
             if script_name is None and not opts.urn:
                 raise TypeError("Missing required property 'script_name'")
@@ -1131,6 +1255,7 @@ class WorkersScript(pulumi.CustomResource):
             assets: pulumi.Input[Optional[Union['WorkersScriptAssetsArgs', 'WorkersScriptAssetsArgsDict']]] = None,
             bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersScriptBindingArgs', 'WorkersScriptBindingArgsDict']]]]] = None,
             body_part: pulumi.Input[Optional[_builtins.str]] = None,
+            cache_options: pulumi.Input[Optional[Union['WorkersScriptCacheOptionsArgs', 'WorkersScriptCacheOptionsArgsDict']]] = None,
             compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
             compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             content: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1139,6 +1264,7 @@ class WorkersScript(pulumi.CustomResource):
             content_type: pulumi.Input[Optional[_builtins.str]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
+            exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkersScriptExportsArgs', 'WorkersScriptExportsArgsDict']]]]] = None,
             handlers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             has_assets: pulumi.Input[Optional[_builtins.bool]] = None,
             has_modules: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1153,6 +1279,7 @@ class WorkersScript(pulumi.CustomResource):
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             named_handlers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersScriptNamedHandlerArgs', 'WorkersScriptNamedHandlerArgsDict']]]]] = None,
             observability: pulumi.Input[Optional[Union['WorkersScriptObservabilityArgs', 'WorkersScriptObservabilityArgsDict']]] = None,
+            package_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersScriptPackageDependencyArgs', 'WorkersScriptPackageDependencyArgsDict']]]]] = None,
             placement: pulumi.Input[Optional[Union['WorkersScriptPlacementArgs', 'WorkersScriptPlacementArgsDict']]] = None,
             placement_mode: pulumi.Input[Optional[_builtins.str]] = None,
             placement_status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1172,6 +1299,10 @@ class WorkersScript(pulumi.CustomResource):
         :param pulumi.Input[Union['WorkersScriptAssetsArgs', 'WorkersScriptAssetsArgsDict']] assets: Configuration for assets within a Worker.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptBindingArgs', 'WorkersScriptBindingArgsDict']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         :param pulumi.Input[_builtins.str] body_part: Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+        :param pulumi.Input[Union['WorkersScriptCacheOptionsArgs', 'WorkersScriptCacheOptionsArgsDict']] cache_options: Global CacheW configuration for the Worker. When caching is on,
+               the platform provisions a `cloudflare.app` zone for the Worker.
+               A `type: worker` entry in the `exports` map can override this
+               value for a single entrypoint.
         :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         :param pulumi.Input[_builtins.str] content: Module or Service Worker contents of the Worker. Conflicts with `content_file`.
@@ -1180,10 +1311,11 @@ class WorkersScript(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] content_type: Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
         :param pulumi.Input[_builtins.str] created_on: When the script was created.
         :param pulumi.Input[_builtins.str] etag: Hashed script content, can be used in a If-None-Match header when updating.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['WorkersScriptExportsArgs', 'WorkersScriptExportsArgsDict']]]] exports: Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] handlers: The names of handlers exported as part of the default export.
         :param pulumi.Input[_builtins.bool] has_assets: Whether a Worker contains assets.
         :param pulumi.Input[_builtins.bool] has_modules: Whether a Worker contains modules.
-        :param pulumi.Input[_builtins.bool] keep_assets: Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+        :param pulumi.Input[_builtins.bool] keep_assets: Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keep_assets`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] keep_bindings: List of binding types to keep from previous_upload.
         :param pulumi.Input[_builtins.str] last_deployed_from: The client most recently used to deploy this Worker.
         :param pulumi.Input[Union['WorkersScriptLimitsArgs', 'WorkersScriptLimitsArgsDict']] limits: Limits to apply for this Worker.
@@ -1194,6 +1326,7 @@ class WorkersScript(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] modified_on: When the script was last modified.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptNamedHandlerArgs', 'WorkersScriptNamedHandlerArgsDict']]]] named_handlers: Named exports, such as Durable Object class implementations and named entrypoints.
         :param pulumi.Input[Union['WorkersScriptObservabilityArgs', 'WorkersScriptObservabilityArgsDict']] observability: Observability settings for the Worker.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptPackageDependencyArgs', 'WorkersScriptPackageDependencyArgsDict']]]] package_dependencies: The list of npm packages that were installed and used when this Worker was built.
         :param pulumi.Input[Union['WorkersScriptPlacementArgs', 'WorkersScriptPlacementArgsDict']] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         :param pulumi.Input[_builtins.str] placement_mode: Available values: "smart", "targeted".
         :param pulumi.Input[_builtins.str] placement_status: Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
@@ -1211,6 +1344,7 @@ class WorkersScript(pulumi.CustomResource):
         __props__.__dict__["assets"] = assets
         __props__.__dict__["bindings"] = bindings
         __props__.__dict__["body_part"] = body_part
+        __props__.__dict__["cache_options"] = cache_options
         __props__.__dict__["compatibility_date"] = compatibility_date
         __props__.__dict__["compatibility_flags"] = compatibility_flags
         __props__.__dict__["content"] = content
@@ -1219,6 +1353,7 @@ class WorkersScript(pulumi.CustomResource):
         __props__.__dict__["content_type"] = content_type
         __props__.__dict__["created_on"] = created_on
         __props__.__dict__["etag"] = etag
+        __props__.__dict__["exports"] = exports
         __props__.__dict__["handlers"] = handlers
         __props__.__dict__["has_assets"] = has_assets
         __props__.__dict__["has_modules"] = has_modules
@@ -1233,6 +1368,7 @@ class WorkersScript(pulumi.CustomResource):
         __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["named_handlers"] = named_handlers
         __props__.__dict__["observability"] = observability
+        __props__.__dict__["package_dependencies"] = package_dependencies
         __props__.__dict__["placement"] = placement
         __props__.__dict__["placement_mode"] = placement_mode
         __props__.__dict__["placement_status"] = placement_status
@@ -1244,7 +1380,7 @@ class WorkersScript(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """
@@ -1281,6 +1417,17 @@ class WorkersScript(pulumi.CustomResource):
         Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
         """
         return pulumi.get(self, "body_part")
+
+    @_builtins.property
+    @pulumi.getter(name="cacheOptions")
+    def cache_options(self) -> pulumi.Output[Optional['outputs.WorkersScriptCacheOptions']]:
+        """
+        Global CacheW configuration for the Worker. When caching is on,
+        the platform provisions a `cloudflare.app` zone for the Worker.
+        A `type: worker` entry in the `exports` map can override this
+        value for a single entrypoint.
+        """
+        return pulumi.get(self, "cache_options")
 
     @_builtins.property
     @pulumi.getter(name="compatibilityDate")
@@ -1348,6 +1495,14 @@ class WorkersScript(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    def exports(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.WorkersScriptExports']]]:
+        """
+        Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+        """
+        return pulumi.get(self, "exports")
+
+    @_builtins.property
+    @pulumi.getter
     def handlers(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         The names of handlers exported as part of the default export.
@@ -1374,7 +1529,7 @@ class WorkersScript(pulumi.CustomResource):
     @pulumi.getter(name="keepAssets")
     def keep_assets(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+        Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keep_assets`.
         """
         return pulumi.get(self, "keep_assets")
 
@@ -1457,6 +1612,14 @@ class WorkersScript(pulumi.CustomResource):
         Observability settings for the Worker.
         """
         return pulumi.get(self, "observability")
+
+    @_builtins.property
+    @pulumi.getter(name="packageDependencies")
+    def package_dependencies(self) -> pulumi.Output[Optional[Sequence['outputs.WorkersScriptPackageDependency']]]:
+        """
+        The list of npm packages that were installed and used when this Worker was built.
+        """
+        return pulumi.get(self, "package_dependencies")
 
     @_builtins.property
     @pulumi.getter

@@ -22,15 +22,15 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
      * Identifier of a Cloudflare account.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
      * @return Identifier of a Cloudflare account.
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -143,7 +143,7 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -264,6 +264,9 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ByoIpPrefixArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("ByoIpPrefixArgs", "accountId");
+            }
             if ($.asn == null) {
                 throw new MissingRequiredPropertyException("ByoIpPrefixArgs", "asn");
             }

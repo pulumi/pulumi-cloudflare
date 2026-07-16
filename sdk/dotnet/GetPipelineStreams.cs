@@ -112,6 +112,12 @@ namespace Pulumi.Cloudflare
         public int? MaxItems { get; set; }
 
         /// <summary>
+        /// Filters streams by name (case-insensitive substring).
+        /// </summary>
+        [Input("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
         /// Specifies the public ID of the pipeline.
         /// </summary>
         [Input("pipelineId")]
@@ -136,6 +142,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
+
+        /// <summary>
+        /// Filters streams by name (case-insensitive substring).
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Specifies the public ID of the pipeline.
@@ -166,6 +178,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly int? MaxItems;
         /// <summary>
+        /// Filters streams by name (case-insensitive substring).
+        /// </summary>
+        public readonly string? Name;
+        /// <summary>
         /// Specifies the public ID of the pipeline.
         /// </summary>
         public readonly string? PipelineId;
@@ -182,6 +198,8 @@ namespace Pulumi.Cloudflare
 
             int? maxItems,
 
+            string? name,
+
             string? pipelineId,
 
             ImmutableArray<Outputs.GetPipelineStreamsResultResult> results)
@@ -189,6 +207,7 @@ namespace Pulumi.Cloudflare
             AccountId = accountId;
             Id = id;
             MaxItems = maxItems;
+            Name = name;
             PipelineId = pipelineId;
             Results = results;
         }

@@ -47,8 +47,11 @@ namespace Pulumi.Cloudflare
     [CloudflareResourceType("cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule")]
     public partial class ZeroTrustDexRule : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Unique identifier linked to an account.
+        /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -120,8 +123,11 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustDexRuleArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        /// <summary>
+        /// Unique identifier linked to an account.
+        /// </summary>
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -146,6 +152,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustDexRuleState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Unique identifier linked to an account.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 

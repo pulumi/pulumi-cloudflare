@@ -18,6 +18,7 @@ import com.pulumi.cloudflare.outputs.TeamsAccountSettingsProtocolDetection;
 import com.pulumi.cloudflare.outputs.TeamsAccountSettingsSandbox;
 import com.pulumi.cloudflare.outputs.TeamsAccountSettingsTlsDecrypt;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -83,6 +84,11 @@ public final class TeamsAccountSettings {
      * 
      */
     private @Nullable TeamsAccountSettingsInspection inspection;
+    /**
+     * @return Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `maxTtl` setting.
+     * 
+     */
+    private @Nullable Integer maxTtlSecs;
     /**
      * @return Specify whether to detect protocols from the initial bytes of client traffic.
      * 
@@ -182,6 +188,13 @@ public final class TeamsAccountSettings {
         return Optional.ofNullable(this.inspection);
     }
     /**
+     * @return Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `maxTtl` setting.
+     * 
+     */
+    public Optional<Integer> maxTtlSecs() {
+        return Optional.ofNullable(this.maxTtlSecs);
+    }
+    /**
      * @return Specify whether to detect protocols from the initial bytes of client traffic.
      * 
      */
@@ -223,6 +236,7 @@ public final class TeamsAccountSettings {
         private @Nullable TeamsAccountSettingsFips fips;
         private @Nullable TeamsAccountSettingsHostSelector hostSelector;
         private @Nullable TeamsAccountSettingsInspection inspection;
+        private @Nullable Integer maxTtlSecs;
         private @Nullable TeamsAccountSettingsProtocolDetection protocolDetection;
         private @Nullable TeamsAccountSettingsSandbox sandbox;
         private @Nullable TeamsAccountSettingsTlsDecrypt tlsDecrypt;
@@ -240,6 +254,7 @@ public final class TeamsAccountSettings {
     	      this.fips = defaults.fips;
     	      this.hostSelector = defaults.hostSelector;
     	      this.inspection = defaults.inspection;
+    	      this.maxTtlSecs = defaults.maxTtlSecs;
     	      this.protocolDetection = defaults.protocolDetection;
     	      this.sandbox = defaults.sandbox;
     	      this.tlsDecrypt = defaults.tlsDecrypt;
@@ -312,6 +327,12 @@ public final class TeamsAccountSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder maxTtlSecs(@Nullable Integer maxTtlSecs) {
+
+            this.maxTtlSecs = maxTtlSecs;
+            return this;
+        }
+        @CustomType.Setter
         public Builder protocolDetection(@Nullable TeamsAccountSettingsProtocolDetection protocolDetection) {
 
             this.protocolDetection = protocolDetection;
@@ -342,6 +363,7 @@ public final class TeamsAccountSettings {
             _resultValue.fips = fips;
             _resultValue.hostSelector = hostSelector;
             _resultValue.inspection = inspection;
+            _resultValue.maxTtlSecs = maxTtlSecs;
             _resultValue.protocolDetection = protocolDetection;
             _resultValue.sandbox = sandbox;
             _resultValue.tlsDecrypt = tlsDecrypt;

@@ -18,6 +18,23 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("flags")]
         public Input<Inputs.OrganizationMetaFlagsGetArgs>? Flags { get; set; }
 
+        [Input("hierarchyTags")]
+        private InputList<string>? _hierarchyTags;
+
+        /// <summary>
+        /// Ordered chain of organization tags from the root organization down to
+        /// (and including) this organization itself. Root organizations return a
+        /// single-element array containing their own tag; sub-organizations return
+        /// `[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for
+        /// constructing authorization scopes that need to cover every ancestor
+        /// in the hierarchy.
+        /// </summary>
+        public InputList<string> HierarchyTags
+        {
+            get => _hierarchyTags ?? (_hierarchyTags = new InputList<string>());
+            set => _hierarchyTags = value;
+        }
+
         [Input("managedBy")]
         public Input<string>? ManagedBy { get; set; }
 
