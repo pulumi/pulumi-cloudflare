@@ -230,10 +230,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool? Exact;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
@@ -264,8 +260,6 @@ namespace Pulumi.Cloudflare
 
             bool? exact,
 
-            string id,
-
             int? maxItems,
 
             string? name,
@@ -280,7 +274,6 @@ namespace Pulumi.Cloudflare
             Aud = aud;
             Domain = domain;
             Exact = exact;
-            Id = id;
             MaxItems = maxItems;
             Name = name;
             Results = results;

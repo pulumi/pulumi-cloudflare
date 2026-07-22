@@ -141,10 +141,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool FoundationDns;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Settings for this internal zone.
         /// </summary>
         public readonly Outputs.GetZoneDnsSettingsInternalDnsResult InternalDns;
@@ -184,8 +180,6 @@ namespace Pulumi.Cloudflare
 
             bool foundationDns,
 
-            string id,
-
             Outputs.GetZoneDnsSettingsInternalDnsResult internalDns,
 
             bool multiProvider,
@@ -204,7 +198,6 @@ namespace Pulumi.Cloudflare
         {
             FlattenAllCnames = flattenAllCnames;
             FoundationDns = foundationDns;
-            Id = id;
             InternalDns = internalDns;
             MultiProvider = multiProvider;
             Nameservers = nameservers;

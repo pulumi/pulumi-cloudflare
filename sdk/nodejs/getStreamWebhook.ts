@@ -48,10 +48,6 @@ export interface GetStreamWebhookResult {
      */
     readonly accountId?: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * The date and time the webhook was last modified.
      */
     readonly modified: string;

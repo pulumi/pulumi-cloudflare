@@ -63,8 +63,6 @@ type LookupLeakedCredentialCheckRulesArgs struct {
 
 // A collection of values returned by getLeakedCredentialCheckRules.
 type LookupLeakedCredentialCheckRulesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -107,11 +105,6 @@ func (o LookupLeakedCredentialCheckRulesResultOutput) ToLookupLeakedCredentialCh
 
 func (o LookupLeakedCredentialCheckRulesResultOutput) ToLookupLeakedCredentialCheckRulesResultOutputWithContext(ctx context.Context) LookupLeakedCredentialCheckRulesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupLeakedCredentialCheckRulesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupLeakedCredentialCheckRulesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

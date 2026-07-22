@@ -81,10 +81,6 @@ export interface GetAuthenticatedOriginPullsResult {
      */
     readonly hostname: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * The certificate authority that issued the certificate.
      */
     readonly issuer: string;

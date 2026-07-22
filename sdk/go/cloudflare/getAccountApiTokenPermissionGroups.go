@@ -69,8 +69,6 @@ type GetAccountApiTokenPermissionGroupsArgs struct {
 type GetAccountApiTokenPermissionGroupsResult struct {
 	// Account identifier tag.
 	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Filter by the name of the permission group.
 	// The value must be URL-encoded.
 	Name             *string                                             `pulumi:"name"`
@@ -123,11 +121,6 @@ func (o GetAccountApiTokenPermissionGroupsResultOutput) ToGetAccountApiTokenPerm
 // Account identifier tag.
 func (o GetAccountApiTokenPermissionGroupsResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountApiTokenPermissionGroupsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetAccountApiTokenPermissionGroupsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAccountApiTokenPermissionGroupsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Filter by the name of the permission group.

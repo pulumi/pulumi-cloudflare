@@ -20,11 +20,6 @@ public final class GetApiShieldDiscoveryOperationsInvokeResult {
     private @Nullable String direction;
     private @Nullable String endpoint;
     private @Nullable List<String> hosts;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer maxItems;
     private @Nullable List<String> methods;
     private @Nullable String order;
@@ -45,13 +40,6 @@ public final class GetApiShieldDiscoveryOperationsInvokeResult {
     }
     public List<String> hosts() {
         return this.hosts == null ? List.of() : this.hosts;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
@@ -88,7 +76,6 @@ public final class GetApiShieldDiscoveryOperationsInvokeResult {
         private @Nullable String direction;
         private @Nullable String endpoint;
         private @Nullable List<String> hosts;
-        private String id;
         private @Nullable Integer maxItems;
         private @Nullable List<String> methods;
         private @Nullable String order;
@@ -103,7 +90,6 @@ public final class GetApiShieldDiscoveryOperationsInvokeResult {
     	      this.direction = defaults.direction;
     	      this.endpoint = defaults.endpoint;
     	      this.hosts = defaults.hosts;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.methods = defaults.methods;
     	      this.order = defaults.order;
@@ -139,14 +125,6 @@ public final class GetApiShieldDiscoveryOperationsInvokeResult {
         }
         public Builder hosts(String... hosts) {
             return hosts(List.of(hosts));
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetApiShieldDiscoveryOperationsInvokeResult", "id");
-            }
-            this.id = id;
-            return this;
         }
         @CustomType.Setter
         public Builder maxItems(@Nullable Integer maxItems) {
@@ -204,7 +182,6 @@ public final class GetApiShieldDiscoveryOperationsInvokeResult {
             _resultValue.direction = direction;
             _resultValue.endpoint = endpoint;
             _resultValue.hosts = hosts;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.methods = methods;
             _resultValue.order = order;

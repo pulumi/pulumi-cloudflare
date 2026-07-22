@@ -27,13 +27,10 @@ class GetEmailRoutingRulesResult:
     """
     A collection of values returned by getEmailRoutingRules.
     """
-    def __init__(__self__, enabled=None, id=None, max_items=None, results=None, zone_id=None):
+    def __init__(__self__, enabled=None, max_items=None, results=None, zone_id=None):
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
         pulumi.set(__self__, "enabled", enabled)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -51,14 +48,6 @@ class GetEmailRoutingRulesResult:
         Filter by enabled routing rules.
         """
         return pulumi.get(self, "enabled")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="maxItems")
@@ -92,7 +81,6 @@ class AwaitableGetEmailRoutingRulesResult(GetEmailRoutingRulesResult):
             yield self
         return GetEmailRoutingRulesResult(
             enabled=self.enabled,
-            id=self.id,
             max_items=self.max_items,
             results=self.results,
             zone_id=self.zone_id)
@@ -132,7 +120,6 @@ def get_email_routing_rules(enabled: Optional[_builtins.bool] = None,
 
     return AwaitableGetEmailRoutingRulesResult(
         enabled=pulumi.get(__ret__, 'enabled'),
-        id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
@@ -169,7 +156,6 @@ def get_email_routing_rules_output(enabled: pulumi.Input[Optional[Optional[_buil
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getEmailRoutingRules:getEmailRoutingRules', __args__, opts=opts, typ=GetEmailRoutingRulesResult)
     return __ret__.apply(lambda __response__: GetEmailRoutingRulesResult(
         enabled=pulumi.get(__response__, 'enabled'),
-        id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         results=pulumi.get(__response__, 'results'),
         zone_id=pulumi.get(__response__, 'zone_id')))

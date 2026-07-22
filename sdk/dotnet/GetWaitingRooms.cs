@@ -155,10 +155,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
@@ -175,8 +171,6 @@ namespace Pulumi.Cloudflare
         private GetWaitingRoomsResult(
             string? accountId,
 
-            string id,
-
             int? maxItems,
 
             ImmutableArray<Outputs.GetWaitingRoomsResultResult> results,
@@ -184,7 +178,6 @@ namespace Pulumi.Cloudflare
             string? zoneId)
         {
             AccountId = accountId;
-            Id = id;
             MaxItems = maxItems;
             Results = results;
             ZoneId = zoneId;

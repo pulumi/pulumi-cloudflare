@@ -26,13 +26,10 @@ class GetZeroTrustDeviceDefaultProfileCertificatesResult:
     """
     A collection of values returned by getZeroTrustDeviceDefaultProfileCertificates.
     """
-    def __init__(__self__, enabled=None, id=None, zone_id=None):
+    def __init__(__self__, enabled=None, zone_id=None):
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
         pulumi.set(__self__, "enabled", enabled)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
@@ -44,14 +41,6 @@ class GetZeroTrustDeviceDefaultProfileCertificatesResult:
         The current status of the device policy certificate provisioning feature for WARP clients.
         """
         return pulumi.get(self, "enabled")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -66,7 +55,6 @@ class AwaitableGetZeroTrustDeviceDefaultProfileCertificatesResult(GetZeroTrustDe
             yield self
         return GetZeroTrustDeviceDefaultProfileCertificatesResult(
             enabled=self.enabled,
-            id=self.id,
             zone_id=self.zone_id)
 
 
@@ -94,7 +82,6 @@ def get_zero_trust_device_default_profile_certificates(zone_id: Optional[_builti
 
     return AwaitableGetZeroTrustDeviceDefaultProfileCertificatesResult(
         enabled=pulumi.get(__ret__, 'enabled'),
-        id=pulumi.get(__ret__, 'id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_zero_trust_device_default_profile_certificates_output(zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDeviceDefaultProfileCertificatesResult]:
@@ -119,5 +106,4 @@ def get_zero_trust_device_default_profile_certificates_output(zone_id: pulumi.In
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustDeviceDefaultProfileCertificates:getZeroTrustDeviceDefaultProfileCertificates', __args__, opts=opts, typ=GetZeroTrustDeviceDefaultProfileCertificatesResult)
     return __ret__.apply(lambda __response__: GetZeroTrustDeviceDefaultProfileCertificatesResult(
         enabled=pulumi.get(__response__, 'enabled'),
-        id=pulumi.get(__response__, 'id'),
         zone_id=pulumi.get(__response__, 'zone_id')))

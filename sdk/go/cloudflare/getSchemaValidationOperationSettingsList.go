@@ -61,8 +61,6 @@ type LookupSchemaValidationOperationSettingsListArgs struct {
 
 // A collection of values returned by getSchemaValidationOperationSettingsList.
 type LookupSchemaValidationOperationSettingsListResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id       string                                           `pulumi:"id"`
 	MaxItems *int                                             `pulumi:"maxItems"`
 	Results  []GetSchemaValidationOperationSettingsListResult `pulumi:"results"`
 	ZoneId   *string                                          `pulumi:"zoneId"`
@@ -100,11 +98,6 @@ func (o LookupSchemaValidationOperationSettingsListResultOutput) ToLookupSchemaV
 
 func (o LookupSchemaValidationOperationSettingsListResultOutput) ToLookupSchemaValidationOperationSettingsListResultOutputWithContext(ctx context.Context) LookupSchemaValidationOperationSettingsListResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupSchemaValidationOperationSettingsListResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSchemaValidationOperationSettingsListResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o LookupSchemaValidationOperationSettingsListResultOutput) MaxItems() pulumi.IntPtrOutput {

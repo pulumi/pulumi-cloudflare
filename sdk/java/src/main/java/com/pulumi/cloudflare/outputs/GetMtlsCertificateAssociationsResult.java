@@ -16,11 +16,6 @@ public final class GetMtlsCertificateAssociationsResult {
      */
     private String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Identifier.
      * 
      */
@@ -43,13 +38,6 @@ public final class GetMtlsCertificateAssociationsResult {
      */
     public String accountId() {
         return this.accountId;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Identifier.
@@ -83,7 +71,6 @@ public final class GetMtlsCertificateAssociationsResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
-        private String id;
         private String mtlsCertificateId;
         private String service;
         private String status;
@@ -91,7 +78,6 @@ public final class GetMtlsCertificateAssociationsResult {
         public Builder(GetMtlsCertificateAssociationsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-    	      this.id = defaults.id;
     	      this.mtlsCertificateId = defaults.mtlsCertificateId;
     	      this.service = defaults.service;
     	      this.status = defaults.status;
@@ -103,14 +89,6 @@ public final class GetMtlsCertificateAssociationsResult {
               throw new MissingRequiredPropertyException("GetMtlsCertificateAssociationsResult", "accountId");
             }
             this.accountId = accountId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetMtlsCertificateAssociationsResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -140,7 +118,6 @@ public final class GetMtlsCertificateAssociationsResult {
         public GetMtlsCertificateAssociationsResult build() {
             final var _resultValue = new GetMtlsCertificateAssociationsResult();
             _resultValue.accountId = accountId;
-            _resultValue.id = id;
             _resultValue.mtlsCertificateId = mtlsCertificateId;
             _resultValue.service = service;
             _resultValue.status = status;

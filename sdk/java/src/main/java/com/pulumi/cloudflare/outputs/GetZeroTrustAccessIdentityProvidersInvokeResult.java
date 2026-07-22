@@ -21,11 +21,6 @@ public final class GetZeroTrustAccessIdentityProvidersInvokeResult {
      */
     private @Nullable String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -53,13 +48,6 @@ public final class GetZeroTrustAccessIdentityProvidersInvokeResult {
      */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Max items to fetch, default: 1000
@@ -100,7 +88,6 @@ public final class GetZeroTrustAccessIdentityProvidersInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
-        private String id;
         private @Nullable Integer maxItems;
         private List<GetZeroTrustAccessIdentityProvidersResult> results;
         private @Nullable String scimEnabled;
@@ -109,7 +96,6 @@ public final class GetZeroTrustAccessIdentityProvidersInvokeResult {
         public Builder(GetZeroTrustAccessIdentityProvidersInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
     	      this.scimEnabled = defaults.scimEnabled;
@@ -120,14 +106,6 @@ public final class GetZeroTrustAccessIdentityProvidersInvokeResult {
         public Builder accountId(@Nullable String accountId) {
 
             this.accountId = accountId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessIdentityProvidersInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -162,7 +140,6 @@ public final class GetZeroTrustAccessIdentityProvidersInvokeResult {
         public GetZeroTrustAccessIdentityProvidersInvokeResult build() {
             final var _resultValue = new GetZeroTrustAccessIdentityProvidersInvokeResult();
             _resultValue.accountId = accountId;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;
             _resultValue.scimEnabled = scimEnabled;

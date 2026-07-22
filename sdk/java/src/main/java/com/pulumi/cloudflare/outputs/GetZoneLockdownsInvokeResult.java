@@ -32,11 +32,6 @@ public final class GetZoneLockdownsInvokeResult {
      */
     private @Nullable String descriptionSearch;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return A single IP address to search for in existing rules.
      * 
      */
@@ -103,13 +98,6 @@ public final class GetZoneLockdownsInvokeResult {
      */
     public Optional<String> descriptionSearch() {
         return Optional.ofNullable(this.descriptionSearch);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return A single IP address to search for in existing rules.
@@ -187,7 +175,6 @@ public final class GetZoneLockdownsInvokeResult {
         private @Nullable String createdOn;
         private @Nullable String description;
         private @Nullable String descriptionSearch;
-        private String id;
         private @Nullable String ip;
         private @Nullable String ipRangeSearch;
         private @Nullable String ipSearch;
@@ -203,7 +190,6 @@ public final class GetZoneLockdownsInvokeResult {
     	      this.createdOn = defaults.createdOn;
     	      this.description = defaults.description;
     	      this.descriptionSearch = defaults.descriptionSearch;
-    	      this.id = defaults.id;
     	      this.ip = defaults.ip;
     	      this.ipRangeSearch = defaults.ipRangeSearch;
     	      this.ipSearch = defaults.ipSearch;
@@ -231,14 +217,6 @@ public final class GetZoneLockdownsInvokeResult {
         public Builder descriptionSearch(@Nullable String descriptionSearch) {
 
             this.descriptionSearch = descriptionSearch;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetZoneLockdownsInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -305,7 +283,6 @@ public final class GetZoneLockdownsInvokeResult {
             _resultValue.createdOn = createdOn;
             _resultValue.description = description;
             _resultValue.descriptionSearch = descriptionSearch;
-            _resultValue.id = id;
             _resultValue.ip = ip;
             _resultValue.ipRangeSearch = ipRangeSearch;
             _resultValue.ipSearch = ipSearch;

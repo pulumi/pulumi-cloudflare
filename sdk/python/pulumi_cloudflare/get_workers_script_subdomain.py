@@ -26,16 +26,13 @@ class GetWorkersScriptSubdomainResult:
     """
     A collection of values returned by getWorkersScriptSubdomain.
     """
-    def __init__(__self__, account_id=None, enabled=None, id=None, previews_enabled=None, script_name=None):
+    def __init__(__self__, account_id=None, enabled=None, previews_enabled=None, script_name=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
         pulumi.set(__self__, "enabled", enabled)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if previews_enabled and not isinstance(previews_enabled, bool):
             raise TypeError("Expected argument 'previews_enabled' to be a bool")
         pulumi.set(__self__, "previews_enabled", previews_enabled)
@@ -58,14 +55,6 @@ class GetWorkersScriptSubdomainResult:
         Whether the Worker is available on the workers.dev subdomain.
         """
         return pulumi.get(self, "enabled")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="previewsEnabled")
@@ -92,7 +81,6 @@ class AwaitableGetWorkersScriptSubdomainResult(GetWorkersScriptSubdomainResult):
         return GetWorkersScriptSubdomainResult(
             account_id=self.account_id,
             enabled=self.enabled,
-            id=self.id,
             previews_enabled=self.previews_enabled,
             script_name=self.script_name)
 
@@ -130,7 +118,6 @@ def get_workers_script_subdomain(account_id: Optional[_builtins.str] = None,
     return AwaitableGetWorkersScriptSubdomainResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         enabled=pulumi.get(__ret__, 'enabled'),
-        id=pulumi.get(__ret__, 'id'),
         previews_enabled=pulumi.get(__ret__, 'previews_enabled'),
         script_name=pulumi.get(__ret__, 'script_name'))
 def get_workers_script_subdomain_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -165,6 +152,5 @@ def get_workers_script_subdomain_output(account_id: pulumi.Input[Optional[_built
     return __ret__.apply(lambda __response__: GetWorkersScriptSubdomainResult(
         account_id=pulumi.get(__response__, 'account_id'),
         enabled=pulumi.get(__response__, 'enabled'),
-        id=pulumi.get(__response__, 'id'),
         previews_enabled=pulumi.get(__response__, 'previews_enabled'),
         script_name=pulumi.get(__response__, 'script_name')))

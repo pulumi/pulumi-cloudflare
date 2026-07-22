@@ -137,8 +137,6 @@ type LookupZeroTrustAccessInfrastructureTargetsResult struct {
 	Hostname *string `pulumi:"hostname"`
 	// Partial match to the hostname of a target
 	HostnameContains *string `pulumi:"hostnameContains"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Filters for targets whose IP addresses look like the specified string.
 	// Supports `*` as a wildcard character
 	IpLike *string `pulumi:"ipLike"`
@@ -291,11 +289,6 @@ func (o LookupZeroTrustAccessInfrastructureTargetsResultOutput) Hostname() pulum
 // Partial match to the hostname of a target
 func (o LookupZeroTrustAccessInfrastructureTargetsResultOutput) HostnameContains() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessInfrastructureTargetsResult) *string { return v.HostnameContains }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupZeroTrustAccessInfrastructureTargetsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessInfrastructureTargetsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Filters for targets whose IP addresses look like the specified string.

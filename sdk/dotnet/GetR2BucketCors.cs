@@ -134,10 +134,6 @@ namespace Pulumi.Cloudflare
         /// Name of the bucket.
         /// </summary>
         public readonly string BucketName;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly ImmutableArray<Outputs.GetR2BucketCorsRuleResult> Rules;
 
         [OutputConstructor]
@@ -146,13 +142,10 @@ namespace Pulumi.Cloudflare
 
             string bucketName,
 
-            string id,
-
             ImmutableArray<Outputs.GetR2BucketCorsRuleResult> rules)
         {
             AccountId = accountId;
             BucketName = bucketName;
-            Id = id;
             Rules = rules;
         }
     }

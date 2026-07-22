@@ -97,8 +97,6 @@ type LookupZeroTrustTunnelCloudflaredRoutesResult struct {
 	Comment string `pulumi:"comment"`
 	// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
 	ExistedAt *string `pulumi:"existedAt"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// If `true`, only include deleted routes. If `false`, exclude deleted routes. If empty, all routes will be included.
 	IsDeleted *bool `pulumi:"isDeleted"`
 	// Max items to fetch, default: 1000
@@ -186,11 +184,6 @@ func (o LookupZeroTrustTunnelCloudflaredRoutesResultOutput) Comment() pulumi.Str
 // If provided, include only resources that were created (and not deleted) before this time. URL encoded.
 func (o LookupZeroTrustTunnelCloudflaredRoutesResultOutput) ExistedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredRoutesResult) *string { return v.ExistedAt }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupZeroTrustTunnelCloudflaredRoutesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredRoutesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // If `true`, only include deleted routes. If `false`, exclude deleted routes. If empty, all routes will be included.

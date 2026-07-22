@@ -60,10 +60,8 @@ type LookupR2BucketLifecycleResult struct {
 	// Account ID.
 	AccountId string `pulumi:"accountId"`
 	// Name of the bucket.
-	BucketName string `pulumi:"bucketName"`
-	// The provider-assigned unique ID for this managed resource.
-	Id    string                     `pulumi:"id"`
-	Rules []GetR2BucketLifecycleRule `pulumi:"rules"`
+	BucketName string                     `pulumi:"bucketName"`
+	Rules      []GetR2BucketLifecycleRule `pulumi:"rules"`
 }
 
 func LookupR2BucketLifecycleOutput(ctx *pulumi.Context, args LookupR2BucketLifecycleOutputArgs, opts ...pulumi.InvokeOption) LookupR2BucketLifecycleResultOutput {
@@ -110,11 +108,6 @@ func (o LookupR2BucketLifecycleResultOutput) AccountId() pulumi.StringOutput {
 // Name of the bucket.
 func (o LookupR2BucketLifecycleResultOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketLifecycleResult) string { return v.BucketName }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupR2BucketLifecycleResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupR2BucketLifecycleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o LookupR2BucketLifecycleResultOutput) Rules() GetR2BucketLifecycleRuleArrayOutput {

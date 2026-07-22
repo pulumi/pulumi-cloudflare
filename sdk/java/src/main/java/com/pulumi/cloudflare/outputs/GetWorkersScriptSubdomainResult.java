@@ -22,11 +22,6 @@ public final class GetWorkersScriptSubdomainResult {
      */
     private Boolean enabled;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Whether the Worker&#39;s Preview URLs are available on the workers.dev subdomain.
      * 
      */
@@ -51,13 +46,6 @@ public final class GetWorkersScriptSubdomainResult {
      */
     public Boolean enabled() {
         return this.enabled;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Whether the Worker&#39;s Preview URLs are available on the workers.dev subdomain.
@@ -85,7 +73,6 @@ public final class GetWorkersScriptSubdomainResult {
     public static final class Builder {
         private String accountId;
         private Boolean enabled;
-        private String id;
         private Boolean previewsEnabled;
         private String scriptName;
         public Builder() {}
@@ -93,7 +80,6 @@ public final class GetWorkersScriptSubdomainResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.enabled = defaults.enabled;
-    	      this.id = defaults.id;
     	      this.previewsEnabled = defaults.previewsEnabled;
     	      this.scriptName = defaults.scriptName;
         }
@@ -112,14 +98,6 @@ public final class GetWorkersScriptSubdomainResult {
               throw new MissingRequiredPropertyException("GetWorkersScriptSubdomainResult", "enabled");
             }
             this.enabled = enabled;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetWorkersScriptSubdomainResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -142,7 +120,6 @@ public final class GetWorkersScriptSubdomainResult {
             final var _resultValue = new GetWorkersScriptSubdomainResult();
             _resultValue.accountId = accountId;
             _resultValue.enabled = enabled;
-            _resultValue.id = id;
             _resultValue.previewsEnabled = previewsEnabled;
             _resultValue.scriptName = scriptName;
             return _resultValue;

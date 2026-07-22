@@ -27,7 +27,7 @@ class GetZoneLockdownsResult:
     """
     A collection of values returned by getZoneLockdowns.
     """
-    def __init__(__self__, created_on=None, description=None, description_search=None, id=None, ip=None, ip_range_search=None, ip_search=None, max_items=None, modified_on=None, priority=None, results=None, uri_search=None, zone_id=None):
+    def __init__(__self__, created_on=None, description=None, description_search=None, ip=None, ip_range_search=None, ip_search=None, max_items=None, modified_on=None, priority=None, results=None, uri_search=None, zone_id=None):
         if created_on and not isinstance(created_on, str):
             raise TypeError("Expected argument 'created_on' to be a str")
         pulumi.set(__self__, "created_on", created_on)
@@ -37,9 +37,6 @@ class GetZoneLockdownsResult:
         if description_search and not isinstance(description_search, str):
             raise TypeError("Expected argument 'description_search' to be a str")
         pulumi.set(__self__, "description_search", description_search)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if ip and not isinstance(ip, str):
             raise TypeError("Expected argument 'ip' to be a str")
         pulumi.set(__self__, "ip", ip)
@@ -91,14 +88,6 @@ class GetZoneLockdownsResult:
         A string to search for in the description of existing rules.
         """
         return pulumi.get(self, "description_search")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -182,7 +171,6 @@ class AwaitableGetZoneLockdownsResult(GetZoneLockdownsResult):
             created_on=self.created_on,
             description=self.description,
             description_search=self.description_search,
-            id=self.id,
             ip=self.ip,
             ip_range_search=self.ip_range_search,
             ip_search=self.ip_search,
@@ -262,7 +250,6 @@ def get_zone_lockdowns(created_on: Optional[_builtins.str] = None,
         created_on=pulumi.get(__ret__, 'created_on'),
         description=pulumi.get(__ret__, 'description'),
         description_search=pulumi.get(__ret__, 'description_search'),
-        id=pulumi.get(__ret__, 'id'),
         ip=pulumi.get(__ret__, 'ip'),
         ip_range_search=pulumi.get(__ret__, 'ip_range_search'),
         ip_search=pulumi.get(__ret__, 'ip_search'),
@@ -339,7 +326,6 @@ def get_zone_lockdowns_output(created_on: pulumi.Input[Optional[Optional[_builti
         created_on=pulumi.get(__response__, 'created_on'),
         description=pulumi.get(__response__, 'description'),
         description_search=pulumi.get(__response__, 'description_search'),
-        id=pulumi.get(__response__, 'id'),
         ip=pulumi.get(__response__, 'ip'),
         ip_range_search=pulumi.get(__response__, 'ip_range_search'),
         ip_search=pulumi.get(__response__, 'ip_search'),

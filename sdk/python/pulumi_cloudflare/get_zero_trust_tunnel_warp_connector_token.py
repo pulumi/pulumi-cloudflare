@@ -26,13 +26,10 @@ class GetZeroTrustTunnelWarpConnectorTokenResult:
     """
     A collection of values returned by getZeroTrustTunnelWarpConnectorToken.
     """
-    def __init__(__self__, account_id=None, id=None, token=None, tunnel_id=None):
+    def __init__(__self__, account_id=None, token=None, tunnel_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if token and not isinstance(token, str):
             raise TypeError("Expected argument 'token' to be a str")
         pulumi.set(__self__, "token", token)
@@ -47,14 +44,6 @@ class GetZeroTrustTunnelWarpConnectorTokenResult:
         Cloudflare account ID
         """
         return pulumi.get(self, "account_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -80,7 +69,6 @@ class AwaitableGetZeroTrustTunnelWarpConnectorTokenResult(GetZeroTrustTunnelWarp
             yield self
         return GetZeroTrustTunnelWarpConnectorTokenResult(
             account_id=self.account_id,
-            id=self.id,
             token=self.token,
             tunnel_id=self.tunnel_id)
 
@@ -117,7 +105,6 @@ def get_zero_trust_tunnel_warp_connector_token(account_id: Optional[_builtins.st
 
     return AwaitableGetZeroTrustTunnelWarpConnectorTokenResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-        id=pulumi.get(__ret__, 'id'),
         token=pulumi.get(__ret__, 'token'),
         tunnel_id=pulumi.get(__ret__, 'tunnel_id'))
 def get_zero_trust_tunnel_warp_connector_token_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -151,6 +138,5 @@ def get_zero_trust_tunnel_warp_connector_token_output(account_id: pulumi.Input[O
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustTunnelWarpConnectorToken:getZeroTrustTunnelWarpConnectorToken', __args__, opts=opts, typ=GetZeroTrustTunnelWarpConnectorTokenResult)
     return __ret__.apply(lambda __response__: GetZeroTrustTunnelWarpConnectorTokenResult(
         account_id=pulumi.get(__response__, 'account_id'),
-        id=pulumi.get(__response__, 'id'),
         token=pulumi.get(__response__, 'token'),
         tunnel_id=pulumi.get(__response__, 'tunnel_id')))

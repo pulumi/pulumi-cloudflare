@@ -33,9 +33,7 @@ type LookupAiSearchNamespaceResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// Optional description for the namespace. Max 256 characters.
 	Description string `pulumi:"description"`
-	// The provider-assigned unique ID for this managed resource.
-	Id   string `pulumi:"id"`
-	Name string `pulumi:"name"`
+	Name        string `pulumi:"name"`
 }
 
 func LookupAiSearchNamespaceOutput(ctx *pulumi.Context, args LookupAiSearchNamespaceOutputArgs, opts ...pulumi.InvokeOption) LookupAiSearchNamespaceResultOutput {
@@ -83,11 +81,6 @@ func (o LookupAiSearchNamespaceResultOutput) CreatedAt() pulumi.StringOutput {
 // Optional description for the namespace. Max 256 characters.
 func (o LookupAiSearchNamespaceResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchNamespaceResult) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupAiSearchNamespaceResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAiSearchNamespaceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o LookupAiSearchNamespaceResultOutput) Name() pulumi.StringOutput {

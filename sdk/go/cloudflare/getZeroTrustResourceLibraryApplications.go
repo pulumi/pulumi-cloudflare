@@ -62,16 +62,14 @@ type LookupZeroTrustResourceLibraryApplicationsArgs struct {
 
 // A collection of values returned by getZeroTrustResourceLibraryApplications.
 type LookupZeroTrustResourceLibraryApplicationsResult struct {
-	AccountId string  `pulumi:"accountId"`
-	Filter    *string `pulumi:"filter"`
-	// The provider-assigned unique ID for this managed resource.
-	Id       string                                          `pulumi:"id"`
-	Limit    int                                             `pulumi:"limit"`
-	MaxItems *int                                            `pulumi:"maxItems"`
-	Offset   int                                             `pulumi:"offset"`
-	OrderBy  *string                                         `pulumi:"orderBy"`
-	Results  []GetZeroTrustResourceLibraryApplicationsResult `pulumi:"results"`
-	Search   *string                                         `pulumi:"search"`
+	AccountId string                                          `pulumi:"accountId"`
+	Filter    *string                                         `pulumi:"filter"`
+	Limit     int                                             `pulumi:"limit"`
+	MaxItems  *int                                            `pulumi:"maxItems"`
+	Offset    int                                             `pulumi:"offset"`
+	OrderBy   *string                                         `pulumi:"orderBy"`
+	Results   []GetZeroTrustResourceLibraryApplicationsResult `pulumi:"results"`
+	Search    *string                                         `pulumi:"search"`
 }
 
 func LookupZeroTrustResourceLibraryApplicationsOutput(ctx *pulumi.Context, args LookupZeroTrustResourceLibraryApplicationsOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustResourceLibraryApplicationsResultOutput {
@@ -119,11 +117,6 @@ func (o LookupZeroTrustResourceLibraryApplicationsResultOutput) AccountId() pulu
 
 func (o LookupZeroTrustResourceLibraryApplicationsResultOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationsResult) *string { return v.Filter }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupZeroTrustResourceLibraryApplicationsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o LookupZeroTrustResourceLibraryApplicationsResultOutput) Limit() pulumi.IntOutput {

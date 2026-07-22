@@ -13,11 +13,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetContentScanningResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Defines the last modification date (ISO 8601) of the Content Scanning status.
      * 
      */
@@ -34,13 +29,6 @@ public final class GetContentScanningResult {
     private @Nullable String zoneId;
 
     private GetContentScanningResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     /**
      * @return Defines the last modification date (ISO 8601) of the Content Scanning status.
      * 
@@ -72,27 +60,17 @@ public final class GetContentScanningResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private String modified;
         private String value;
         private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetContentScanningResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.modified = defaults.modified;
     	      this.value = defaults.value;
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetContentScanningResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder modified(String modified) {
             if (modified == null) {
@@ -117,7 +95,6 @@ public final class GetContentScanningResult {
         }
         public GetContentScanningResult build() {
             final var _resultValue = new GetContentScanningResult();
-            _resultValue.id = id;
             _resultValue.modified = modified;
             _resultValue.value = value;
             _resultValue.zoneId = zoneId;

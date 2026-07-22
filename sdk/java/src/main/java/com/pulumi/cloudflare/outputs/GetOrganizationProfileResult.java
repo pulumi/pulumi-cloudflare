@@ -15,11 +15,6 @@ public final class GetOrganizationProfileResult {
     private String businessName;
     private String businessPhone;
     private String externalMetadata;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private String organizationId;
 
     private GetOrganizationProfileResult() {}
@@ -37,13 +32,6 @@ public final class GetOrganizationProfileResult {
     }
     public String externalMetadata() {
         return this.externalMetadata;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public String organizationId() {
         return this.organizationId;
@@ -63,7 +51,6 @@ public final class GetOrganizationProfileResult {
         private String businessName;
         private String businessPhone;
         private String externalMetadata;
-        private String id;
         private String organizationId;
         public Builder() {}
         public Builder(GetOrganizationProfileResult defaults) {
@@ -73,7 +60,6 @@ public final class GetOrganizationProfileResult {
     	      this.businessName = defaults.businessName;
     	      this.businessPhone = defaults.businessPhone;
     	      this.externalMetadata = defaults.externalMetadata;
-    	      this.id = defaults.id;
     	      this.organizationId = defaults.organizationId;
         }
 
@@ -118,14 +104,6 @@ public final class GetOrganizationProfileResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetOrganizationProfileResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder organizationId(String organizationId) {
             if (organizationId == null) {
               throw new MissingRequiredPropertyException("GetOrganizationProfileResult", "organizationId");
@@ -140,7 +118,6 @@ public final class GetOrganizationProfileResult {
             _resultValue.businessName = businessName;
             _resultValue.businessPhone = businessPhone;
             _resultValue.externalMetadata = externalMetadata;
-            _resultValue.id = id;
             _resultValue.organizationId = organizationId;
             return _resultValue;
         }

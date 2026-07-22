@@ -28,11 +28,6 @@ public final class GetEmailRoutingAddressesInvokeResult {
      */
     private String direction;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -63,13 +58,6 @@ public final class GetEmailRoutingAddressesInvokeResult {
      */
     public String direction() {
         return this.direction;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Max items to fetch, default: 1000
@@ -104,7 +92,6 @@ public final class GetEmailRoutingAddressesInvokeResult {
     public static final class Builder {
         private @Nullable String accountId;
         private String direction;
-        private String id;
         private @Nullable Integer maxItems;
         private List<GetEmailRoutingAddressesResult> results;
         private Boolean verified;
@@ -113,7 +100,6 @@ public final class GetEmailRoutingAddressesInvokeResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.direction = defaults.direction;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
     	      this.verified = defaults.verified;
@@ -131,14 +117,6 @@ public final class GetEmailRoutingAddressesInvokeResult {
               throw new MissingRequiredPropertyException("GetEmailRoutingAddressesInvokeResult", "direction");
             }
             this.direction = direction;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetEmailRoutingAddressesInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -170,7 +148,6 @@ public final class GetEmailRoutingAddressesInvokeResult {
             final var _resultValue = new GetEmailRoutingAddressesInvokeResult();
             _resultValue.accountId = accountId;
             _resultValue.direction = direction;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;
             _resultValue.verified = verified;

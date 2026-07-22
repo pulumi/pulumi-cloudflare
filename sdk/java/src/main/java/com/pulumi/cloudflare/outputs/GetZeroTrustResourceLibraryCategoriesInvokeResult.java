@@ -17,11 +17,6 @@ import javax.annotation.Nullable;
 public final class GetZeroTrustResourceLibraryCategoriesInvokeResult {
     private String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Limit of number of results to return.
      * 
      */
@@ -45,13 +40,6 @@ public final class GetZeroTrustResourceLibraryCategoriesInvokeResult {
     private GetZeroTrustResourceLibraryCategoriesInvokeResult() {}
     public String accountId() {
         return this.accountId;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Limit of number of results to return.
@@ -92,7 +80,6 @@ public final class GetZeroTrustResourceLibraryCategoriesInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
-        private String id;
         private Integer limit;
         private @Nullable Integer maxItems;
         private Integer offset;
@@ -101,7 +88,6 @@ public final class GetZeroTrustResourceLibraryCategoriesInvokeResult {
         public Builder(GetZeroTrustResourceLibraryCategoriesInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-    	      this.id = defaults.id;
     	      this.limit = defaults.limit;
     	      this.maxItems = defaults.maxItems;
     	      this.offset = defaults.offset;
@@ -114,14 +100,6 @@ public final class GetZeroTrustResourceLibraryCategoriesInvokeResult {
               throw new MissingRequiredPropertyException("GetZeroTrustResourceLibraryCategoriesInvokeResult", "accountId");
             }
             this.accountId = accountId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustResourceLibraryCategoriesInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -160,7 +138,6 @@ public final class GetZeroTrustResourceLibraryCategoriesInvokeResult {
         public GetZeroTrustResourceLibraryCategoriesInvokeResult build() {
             final var _resultValue = new GetZeroTrustResourceLibraryCategoriesInvokeResult();
             _resultValue.accountId = accountId;
-            _resultValue.id = id;
             _resultValue.limit = limit;
             _resultValue.maxItems = maxItems;
             _resultValue.offset = offset;

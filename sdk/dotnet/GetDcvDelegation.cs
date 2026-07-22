@@ -127,10 +127,6 @@ namespace Pulumi.Cloudflare
     public sealed class GetDcvDelegationResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The DCV Delegation unique identifier.
         /// </summary>
         public readonly string Uuid;
@@ -141,13 +137,10 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetDcvDelegationResult(
-            string id,
-
             string uuid,
 
             string? zoneId)
         {
-            Id = id;
             Uuid = uuid;
             ZoneId = zoneId;
         }

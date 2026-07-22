@@ -27,16 +27,13 @@ class GetZeroTrustRiskBehaviorResult:
     """
     A collection of values returned by getZeroTrustRiskBehavior.
     """
-    def __init__(__self__, account_id=None, behaviors=None, id=None):
+    def __init__(__self__, account_id=None, behaviors=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if behaviors and not isinstance(behaviors, dict):
             raise TypeError("Expected argument 'behaviors' to be a dict")
         pulumi.set(__self__, "behaviors", behaviors)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -48,14 +45,6 @@ class GetZeroTrustRiskBehaviorResult:
     def behaviors(self) -> Mapping[str, 'outputs.GetZeroTrustRiskBehaviorBehaviorsResult']:
         return pulumi.get(self, "behaviors")
 
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
 
 class AwaitableGetZeroTrustRiskBehaviorResult(GetZeroTrustRiskBehaviorResult):
     # pylint: disable=using-constant-test
@@ -64,8 +53,7 @@ class AwaitableGetZeroTrustRiskBehaviorResult(GetZeroTrustRiskBehaviorResult):
             yield self
         return GetZeroTrustRiskBehaviorResult(
             account_id=self.account_id,
-            behaviors=self.behaviors,
-            id=self.id)
+            behaviors=self.behaviors)
 
 
 def get_zero_trust_risk_behavior(account_id: Optional[_builtins.str] = None,
@@ -92,8 +80,7 @@ def get_zero_trust_risk_behavior(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetZeroTrustRiskBehaviorResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-        behaviors=pulumi.get(__ret__, 'behaviors'),
-        id=pulumi.get(__ret__, 'id'))
+        behaviors=pulumi.get(__ret__, 'behaviors'))
 def get_zero_trust_risk_behavior_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustRiskBehaviorResult]:
     """
@@ -117,5 +104,4 @@ def get_zero_trust_risk_behavior_output(account_id: pulumi.Input[Optional[Option
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustRiskBehavior:getZeroTrustRiskBehavior', __args__, opts=opts, typ=GetZeroTrustRiskBehaviorResult)
     return __ret__.apply(lambda __response__: GetZeroTrustRiskBehaviorResult(
         account_id=pulumi.get(__response__, 'account_id'),
-        behaviors=pulumi.get(__response__, 'behaviors'),
-        id=pulumi.get(__response__, 'id')))
+        behaviors=pulumi.get(__response__, 'behaviors')))

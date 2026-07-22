@@ -82,8 +82,6 @@ type LookupZeroTrustAccessApplicationsResult struct {
 	Domain *string `pulumi:"domain"`
 	// True for only exact string matches against passed name/domain query parameters.
 	Exact *bool `pulumi:"exact"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The name of the app.
@@ -162,11 +160,6 @@ func (o LookupZeroTrustAccessApplicationsResultOutput) Domain() pulumi.StringPtr
 // True for only exact string matches against passed name/domain query parameters.
 func (o LookupZeroTrustAccessApplicationsResultOutput) Exact() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessApplicationsResult) *bool { return v.Exact }).(pulumi.BoolPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupZeroTrustAccessApplicationsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessApplicationsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

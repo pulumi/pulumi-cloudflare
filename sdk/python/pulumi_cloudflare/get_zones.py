@@ -28,16 +28,13 @@ class GetZonesResult:
     """
     A collection of values returned by getZones.
     """
-    def __init__(__self__, account=None, direction=None, id=None, match=None, max_items=None, name=None, order=None, results=None, status=None, types=None):
+    def __init__(__self__, account=None, direction=None, match=None, max_items=None, name=None, order=None, results=None, status=None, types=None):
         if account and not isinstance(account, dict):
             raise TypeError("Expected argument 'account' to be a dict")
         pulumi.set(__self__, "account", account)
         if direction and not isinstance(direction, str):
             raise TypeError("Expected argument 'direction' to be a str")
         pulumi.set(__self__, "direction", direction)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if match and not isinstance(match, str):
             raise TypeError("Expected argument 'match' to be a str")
         pulumi.set(__self__, "match", match)
@@ -69,14 +66,6 @@ class GetZonesResult:
     @pulumi.getter
     def direction(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "direction")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -122,7 +111,6 @@ class AwaitableGetZonesResult(GetZonesResult):
         return GetZonesResult(
             account=self.account,
             direction=self.direction,
-            id=self.id,
             match=self.match,
             max_items=self.max_items,
             name=self.name,
@@ -177,7 +165,6 @@ def get_zones(account: Optional[Union['GetZonesAccountArgs', 'GetZonesAccountArg
     return AwaitableGetZonesResult(
         account=pulumi.get(__ret__, 'account'),
         direction=pulumi.get(__ret__, 'direction'),
-        id=pulumi.get(__ret__, 'id'),
         match=pulumi.get(__ret__, 'match'),
         max_items=pulumi.get(__ret__, 'max_items'),
         name=pulumi.get(__ret__, 'name'),
@@ -229,7 +216,6 @@ def get_zones_output(account: pulumi.Input[Optional[Optional[Union['GetZonesAcco
     return __ret__.apply(lambda __response__: GetZonesResult(
         account=pulumi.get(__response__, 'account'),
         direction=pulumi.get(__response__, 'direction'),
-        id=pulumi.get(__response__, 'id'),
         match=pulumi.get(__response__, 'match'),
         max_items=pulumi.get(__response__, 'max_items'),
         name=pulumi.get(__response__, 'name'),

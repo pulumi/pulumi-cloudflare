@@ -133,10 +133,6 @@ namespace Pulumi.Cloudflare
     public sealed class GetLoadBalancersResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
@@ -148,15 +144,12 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetLoadBalancersResult(
-            string id,
-
             int? maxItems,
 
             ImmutableArray<Outputs.GetLoadBalancersResultResult> results,
 
             string? zoneId)
         {
-            Id = id;
             MaxItems = maxItems;
             Results = results;
             ZoneId = zoneId;

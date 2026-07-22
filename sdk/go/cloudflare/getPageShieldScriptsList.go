@@ -112,9 +112,7 @@ type LookupPageShieldScriptsListResult struct {
 	// Available values: "csv".
 	Export *string `pulumi:"export"`
 	// Includes scripts that match one or more URL-encoded hostnames separated by commas.
-	Hosts *string `pulumi:"hosts"`
-	// The provider-assigned unique ID for this managed resource.
-	Id                  string                           `pulumi:"id"`
+	Hosts               *string                          `pulumi:"hosts"`
 	MaxItems            *int                             `pulumi:"maxItems"`
 	OrderBy             *string                          `pulumi:"orderBy"`
 	Page                *string                          `pulumi:"page"`
@@ -216,11 +214,6 @@ func (o LookupPageShieldScriptsListResultOutput) Export() pulumi.StringPtrOutput
 // Includes scripts that match one or more URL-encoded hostnames separated by commas.
 func (o LookupPageShieldScriptsListResultOutput) Hosts() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPageShieldScriptsListResult) *string { return v.Hosts }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupPageShieldScriptsListResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPageShieldScriptsListResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o LookupPageShieldScriptsListResultOutput) MaxItems() pulumi.IntPtrOutput {

@@ -16,11 +16,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetRateLimitsInvokeResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -37,13 +32,6 @@ public final class GetRateLimitsInvokeResult {
     private @Nullable String zoneId;
 
     private GetRateLimitsInvokeResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     /**
      * @return Max items to fetch, default: 1000
      * 
@@ -75,27 +63,17 @@ public final class GetRateLimitsInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private @Nullable Integer maxItems;
         private List<GetRateLimitsResult> results;
         private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetRateLimitsInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetRateLimitsInvokeResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder maxItems(@Nullable Integer maxItems) {
 
@@ -121,7 +99,6 @@ public final class GetRateLimitsInvokeResult {
         }
         public GetRateLimitsInvokeResult build() {
             final var _resultValue = new GetRateLimitsInvokeResult();
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;
             _resultValue.zoneId = zoneId;

@@ -175,10 +175,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool HasRotatedSecret;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// URL of the client's logo.
         /// </summary>
         public readonly string LogoUri;
@@ -249,8 +245,6 @@ namespace Pulumi.Cloudflare
 
             bool hasRotatedSecret,
 
-            string id,
-
             string logoUri,
 
             string oauthClientId,
@@ -284,7 +278,6 @@ namespace Pulumi.Cloudflare
             CreatedAt = createdAt;
             GrantTypes = grantTypes;
             HasRotatedSecret = hasRotatedSecret;
-            Id = id;
             LogoUri = logoUri;
             OauthClientId = oauthClientId;
             PolicyUri = policyUri;

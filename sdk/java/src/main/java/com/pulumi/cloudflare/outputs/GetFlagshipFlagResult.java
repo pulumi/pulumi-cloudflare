@@ -41,11 +41,6 @@ public final class GetFlagshipFlagResult {
      */
     private String flagKey;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
      * 
      */
@@ -109,13 +104,6 @@ public final class GetFlagshipFlagResult {
         return this.flagKey;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
      * 
      */
@@ -166,7 +154,6 @@ public final class GetFlagshipFlagResult {
         private String description;
         private Boolean enabled;
         private String flagKey;
-        private String id;
         private String key;
         private List<GetFlagshipFlagRule> rules;
         private String type;
@@ -182,7 +169,6 @@ public final class GetFlagshipFlagResult {
     	      this.description = defaults.description;
     	      this.enabled = defaults.enabled;
     	      this.flagKey = defaults.flagKey;
-    	      this.id = defaults.id;
     	      this.key = defaults.key;
     	      this.rules = defaults.rules;
     	      this.type = defaults.type;
@@ -237,14 +223,6 @@ public final class GetFlagshipFlagResult {
               throw new MissingRequiredPropertyException("GetFlagshipFlagResult", "flagKey");
             }
             this.flagKey = flagKey;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetFlagshipFlagResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -306,7 +284,6 @@ public final class GetFlagshipFlagResult {
             _resultValue.description = description;
             _resultValue.enabled = enabled;
             _resultValue.flagKey = flagKey;
-            _resultValue.id = id;
             _resultValue.key = key;
             _resultValue.rules = rules;
             _resultValue.type = type;

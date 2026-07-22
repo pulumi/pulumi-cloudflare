@@ -27,16 +27,13 @@ class GetEmailSecurityTrustedDomainsListResult:
     """
     A collection of values returned by getEmailSecurityTrustedDomainsList.
     """
-    def __init__(__self__, account_id=None, direction=None, id=None, is_recent=None, is_similarity=None, max_items=None, order=None, pattern=None, results=None, search=None):
+    def __init__(__self__, account_id=None, direction=None, is_recent=None, is_similarity=None, max_items=None, order=None, pattern=None, results=None, search=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if direction and not isinstance(direction, str):
             raise TypeError("Expected argument 'direction' to be a str")
         pulumi.set(__self__, "direction", direction)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if is_recent and not isinstance(is_recent, bool):
             raise TypeError("Expected argument 'is_recent' to be a bool")
         pulumi.set(__self__, "is_recent", is_recent)
@@ -75,14 +72,6 @@ class GetEmailSecurityTrustedDomainsListResult:
         Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="isRecent")
@@ -147,7 +136,6 @@ class AwaitableGetEmailSecurityTrustedDomainsListResult(GetEmailSecurityTrustedD
         return GetEmailSecurityTrustedDomainsListResult(
             account_id=self.account_id,
             direction=self.direction,
-            id=self.id,
             is_recent=self.is_recent,
             is_similarity=self.is_similarity,
             max_items=self.max_items,
@@ -213,7 +201,6 @@ def get_email_security_trusted_domains_list(account_id: Optional[_builtins.str] 
     return AwaitableGetEmailSecurityTrustedDomainsListResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         direction=pulumi.get(__ret__, 'direction'),
-        id=pulumi.get(__ret__, 'id'),
         is_recent=pulumi.get(__ret__, 'is_recent'),
         is_similarity=pulumi.get(__ret__, 'is_similarity'),
         max_items=pulumi.get(__ret__, 'max_items'),
@@ -276,7 +263,6 @@ def get_email_security_trusted_domains_list_output(account_id: pulumi.Input[Opti
     return __ret__.apply(lambda __response__: GetEmailSecurityTrustedDomainsListResult(
         account_id=pulumi.get(__response__, 'account_id'),
         direction=pulumi.get(__response__, 'direction'),
-        id=pulumi.get(__response__, 'id'),
         is_recent=pulumi.get(__response__, 'is_recent'),
         is_similarity=pulumi.get(__response__, 'is_similarity'),
         max_items=pulumi.get(__response__, 'max_items'),

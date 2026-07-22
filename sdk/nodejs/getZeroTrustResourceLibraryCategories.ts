@@ -41,10 +41,6 @@ export interface GetZeroTrustResourceLibraryCategoriesArgs {
 export interface GetZeroTrustResourceLibraryCategoriesResult {
     readonly accountId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Limit of number of results to return.
      */
     readonly limit: number;

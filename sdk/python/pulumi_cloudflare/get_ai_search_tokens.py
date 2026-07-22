@@ -27,13 +27,10 @@ class GetAiSearchTokensResult:
     """
     A collection of values returned by getAiSearchTokens.
     """
-    def __init__(__self__, account_id=None, id=None, max_items=None, results=None, search=None):
+    def __init__(__self__, account_id=None, max_items=None, results=None, search=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -48,14 +45,6 @@ class GetAiSearchTokensResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "account_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="maxItems")
@@ -89,7 +78,6 @@ class AwaitableGetAiSearchTokensResult(GetAiSearchTokensResult):
             yield self
         return GetAiSearchTokensResult(
             account_id=self.account_id,
-            id=self.id,
             max_items=self.max_items,
             results=self.results,
             search=self.search)
@@ -114,7 +102,6 @@ def get_ai_search_tokens(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetAiSearchTokensResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-        id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'),
         search=pulumi.get(__ret__, 'search'))
@@ -136,7 +123,6 @@ def get_ai_search_tokens_output(account_id: pulumi.Input[Optional[Optional[_buil
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getAiSearchTokens:getAiSearchTokens', __args__, opts=opts, typ=GetAiSearchTokensResult)
     return __ret__.apply(lambda __response__: GetAiSearchTokensResult(
         account_id=pulumi.get(__response__, 'account_id'),
-        id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         results=pulumi.get(__response__, 'results'),
         search=pulumi.get(__response__, 'search')))

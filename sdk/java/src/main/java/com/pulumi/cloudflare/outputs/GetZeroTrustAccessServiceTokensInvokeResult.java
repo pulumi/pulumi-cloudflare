@@ -21,11 +21,6 @@ public final class GetZeroTrustAccessServiceTokensInvokeResult {
      */
     private @Nullable String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -58,13 +53,6 @@ public final class GetZeroTrustAccessServiceTokensInvokeResult {
      */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Max items to fetch, default: 1000
@@ -112,7 +100,6 @@ public final class GetZeroTrustAccessServiceTokensInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
-        private String id;
         private @Nullable Integer maxItems;
         private @Nullable String name;
         private List<GetZeroTrustAccessServiceTokensResult> results;
@@ -122,7 +109,6 @@ public final class GetZeroTrustAccessServiceTokensInvokeResult {
         public Builder(GetZeroTrustAccessServiceTokensInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.name = defaults.name;
     	      this.results = defaults.results;
@@ -134,14 +120,6 @@ public final class GetZeroTrustAccessServiceTokensInvokeResult {
         public Builder accountId(@Nullable String accountId) {
 
             this.accountId = accountId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessServiceTokensInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -182,7 +160,6 @@ public final class GetZeroTrustAccessServiceTokensInvokeResult {
         public GetZeroTrustAccessServiceTokensInvokeResult build() {
             final var _resultValue = new GetZeroTrustAccessServiceTokensInvokeResult();
             _resultValue.accountId = accountId;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.name = name;
             _resultValue.results = results;

@@ -61,8 +61,6 @@ type LookupRateLimitsArgs struct {
 
 // A collection of values returned by getRateLimits.
 type LookupRateLimitsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -105,11 +103,6 @@ func (o LookupRateLimitsResultOutput) ToLookupRateLimitsResultOutput() LookupRat
 
 func (o LookupRateLimitsResultOutput) ToLookupRateLimitsResultOutputWithContext(ctx context.Context) LookupRateLimitsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupRateLimitsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRateLimitsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

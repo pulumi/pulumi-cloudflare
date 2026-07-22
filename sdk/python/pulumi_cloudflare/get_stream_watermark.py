@@ -26,7 +26,7 @@ class GetStreamWatermarkResult:
     """
     A collection of values returned by getStreamWatermark.
     """
-    def __init__(__self__, account_id=None, created=None, downloaded_from=None, height=None, id=None, identifier=None, name=None, opacity=None, padding=None, position=None, scale=None, size=None, uid=None, width=None):
+    def __init__(__self__, account_id=None, created=None, downloaded_from=None, height=None, identifier=None, name=None, opacity=None, padding=None, position=None, scale=None, size=None, uid=None, width=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -39,9 +39,6 @@ class GetStreamWatermarkResult:
         if height and not isinstance(height, int):
             raise TypeError("Expected argument 'height' to be a int")
         pulumi.set(__self__, "height", height)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if identifier and not isinstance(identifier, str):
             raise TypeError("Expected argument 'identifier' to be a str")
         pulumi.set(__self__, "identifier", identifier)
@@ -101,14 +98,6 @@ class GetStreamWatermarkResult:
         The height of the image in pixels.
         """
         return pulumi.get(self, "height")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -193,7 +182,6 @@ class AwaitableGetStreamWatermarkResult(GetStreamWatermarkResult):
             created=self.created,
             downloaded_from=self.downloaded_from,
             height=self.height,
-            id=self.id,
             identifier=self.identifier,
             name=self.name,
             opacity=self.opacity,
@@ -239,7 +227,6 @@ def get_stream_watermark(account_id: Optional[_builtins.str] = None,
         created=pulumi.get(__ret__, 'created'),
         downloaded_from=pulumi.get(__ret__, 'downloaded_from'),
         height=pulumi.get(__ret__, 'height'),
-        id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         name=pulumi.get(__ret__, 'name'),
         opacity=pulumi.get(__ret__, 'opacity'),
@@ -282,7 +269,6 @@ def get_stream_watermark_output(account_id: pulumi.Input[Optional[_builtins.str]
         created=pulumi.get(__response__, 'created'),
         downloaded_from=pulumi.get(__response__, 'downloaded_from'),
         height=pulumi.get(__response__, 'height'),
-        id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
         name=pulumi.get(__response__, 'name'),
         opacity=pulumi.get(__response__, 'opacity'),

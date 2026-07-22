@@ -27,7 +27,7 @@ class GetFlagshipFlagResult:
     """
     A collection of values returned by getFlagshipFlag.
     """
-    def __init__(__self__, account_id=None, app_id=None, default_variation=None, description=None, enabled=None, flag_key=None, id=None, key=None, rules=None, type=None, updated_at=None, updated_by=None, variations=None):
+    def __init__(__self__, account_id=None, app_id=None, default_variation=None, description=None, enabled=None, flag_key=None, key=None, rules=None, type=None, updated_at=None, updated_by=None, variations=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -46,9 +46,6 @@ class GetFlagshipFlagResult:
         if flag_key and not isinstance(flag_key, str):
             raise TypeError("Expected argument 'flag_key' to be a str")
         pulumi.set(__self__, "flag_key", flag_key)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if key and not isinstance(key, str):
             raise TypeError("Expected argument 'key' to be a str")
         pulumi.set(__self__, "key", key)
@@ -115,14 +112,6 @@ class GetFlagshipFlagResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
     def key(self) -> _builtins.str:
         """
         Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
@@ -177,7 +166,6 @@ class AwaitableGetFlagshipFlagResult(GetFlagshipFlagResult):
             description=self.description,
             enabled=self.enabled,
             flag_key=self.flag_key,
-            id=self.id,
             key=self.key,
             rules=self.rules,
             type=self.type,
@@ -225,7 +213,6 @@ def get_flagship_flag(account_id: Optional[_builtins.str] = None,
         description=pulumi.get(__ret__, 'description'),
         enabled=pulumi.get(__ret__, 'enabled'),
         flag_key=pulumi.get(__ret__, 'flag_key'),
-        id=pulumi.get(__ret__, 'id'),
         key=pulumi.get(__ret__, 'key'),
         rules=pulumi.get(__ret__, 'rules'),
         type=pulumi.get(__ret__, 'type'),
@@ -270,7 +257,6 @@ def get_flagship_flag_output(account_id: pulumi.Input[Optional[_builtins.str]] =
         description=pulumi.get(__response__, 'description'),
         enabled=pulumi.get(__response__, 'enabled'),
         flag_key=pulumi.get(__response__, 'flag_key'),
-        id=pulumi.get(__response__, 'id'),
         key=pulumi.get(__response__, 'key'),
         rules=pulumi.get(__response__, 'rules'),
         type=pulumi.get(__response__, 'type'),

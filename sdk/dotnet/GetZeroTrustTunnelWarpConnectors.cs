@@ -266,10 +266,6 @@ namespace Pulumi.Cloudflare
         /// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
         /// </summary>
         public readonly string? ExistedAt;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string? IncludePrefix;
         /// <summary>
         /// If `True`, only include deleted tunnels. If `False`, exclude deleted tunnels. If empty, all tunnels will be included.
@@ -307,8 +303,6 @@ namespace Pulumi.Cloudflare
 
             string? existedAt,
 
-            string id,
-
             string? includePrefix,
 
             bool? isDeleted,
@@ -330,7 +324,6 @@ namespace Pulumi.Cloudflare
             AccountId = accountId;
             ExcludePrefix = excludePrefix;
             ExistedAt = existedAt;
-            Id = id;
             IncludePrefix = includePrefix;
             IsDeleted = isDeleted;
             MaxItems = maxItems;

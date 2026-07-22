@@ -62,8 +62,6 @@ type LookupFlagshipAppsArgs struct {
 type LookupFlagshipAppsResult struct {
 	// Cloudflare account ID.
 	AccountId string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -109,11 +107,6 @@ func (o LookupFlagshipAppsResultOutput) ToLookupFlagshipAppsResultOutputWithCont
 // Cloudflare account ID.
 func (o LookupFlagshipAppsResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlagshipAppsResult) string { return v.AccountId }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupFlagshipAppsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFlagshipAppsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

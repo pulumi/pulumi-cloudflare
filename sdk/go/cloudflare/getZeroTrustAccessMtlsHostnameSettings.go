@@ -70,8 +70,6 @@ type LookupZeroTrustAccessMtlsHostnameSettingsResult struct {
 	ClientCertificateForwarding bool `pulumi:"clientCertificateForwarding"`
 	// The hostname that these settings apply to.
 	Hostname string `pulumi:"hostname"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -130,11 +128,6 @@ func (o LookupZeroTrustAccessMtlsHostnameSettingsResultOutput) ClientCertificate
 // The hostname that these settings apply to.
 func (o LookupZeroTrustAccessMtlsHostnameSettingsResultOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessMtlsHostnameSettingsResult) string { return v.Hostname }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupZeroTrustAccessMtlsHostnameSettingsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessMtlsHostnameSettingsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

@@ -50,11 +50,6 @@ public final class GetZeroTrustOrganizationResult {
      */
     private List<String> denyUnmatchedRequestsExemptedZoneNames;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
      * 
      */
@@ -153,13 +148,6 @@ public final class GetZeroTrustOrganizationResult {
         return this.denyUnmatchedRequestsExemptedZoneNames;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
      * 
      */
@@ -249,7 +237,6 @@ public final class GetZeroTrustOrganizationResult {
         private GetZeroTrustOrganizationCustomPages customPages;
         private Boolean denyUnmatchedRequests;
         private List<String> denyUnmatchedRequestsExemptedZoneNames;
-        private String id;
         private Boolean isUiReadOnly;
         private GetZeroTrustOrganizationLoginDesign loginDesign;
         private GetZeroTrustOrganizationMfaConfig mfaConfig;
@@ -271,7 +258,6 @@ public final class GetZeroTrustOrganizationResult {
     	      this.customPages = defaults.customPages;
     	      this.denyUnmatchedRequests = defaults.denyUnmatchedRequests;
     	      this.denyUnmatchedRequestsExemptedZoneNames = defaults.denyUnmatchedRequestsExemptedZoneNames;
-    	      this.id = defaults.id;
     	      this.isUiReadOnly = defaults.isUiReadOnly;
     	      this.loginDesign = defaults.loginDesign;
     	      this.mfaConfig = defaults.mfaConfig;
@@ -341,14 +327,6 @@ public final class GetZeroTrustOrganizationResult {
         }
         public Builder denyUnmatchedRequestsExemptedZoneNames(String... denyUnmatchedRequestsExemptedZoneNames) {
             return denyUnmatchedRequestsExemptedZoneNames(List.of(denyUnmatchedRequestsExemptedZoneNames));
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "id");
-            }
-            this.id = id;
-            return this;
         }
         @CustomType.Setter
         public Builder isUiReadOnly(Boolean isUiReadOnly) {
@@ -445,7 +423,6 @@ public final class GetZeroTrustOrganizationResult {
             _resultValue.customPages = customPages;
             _resultValue.denyUnmatchedRequests = denyUnmatchedRequests;
             _resultValue.denyUnmatchedRequestsExemptedZoneNames = denyUnmatchedRequestsExemptedZoneNames;
-            _resultValue.id = id;
             _resultValue.isUiReadOnly = isUiReadOnly;
             _resultValue.loginDesign = loginDesign;
             _resultValue.mfaConfig = mfaConfig;

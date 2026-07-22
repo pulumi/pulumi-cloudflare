@@ -26,10 +26,7 @@ class GetContentScanningResult:
     """
     A collection of values returned by getContentScanning.
     """
-    def __init__(__self__, id=None, modified=None, value=None, zone_id=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, modified=None, value=None, zone_id=None):
         if modified and not isinstance(modified, str):
             raise TypeError("Expected argument 'modified' to be a str")
         pulumi.set(__self__, "modified", modified)
@@ -39,14 +36,6 @@ class GetContentScanningResult:
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -79,7 +68,6 @@ class AwaitableGetContentScanningResult(GetContentScanningResult):
         if False:
             yield self
         return GetContentScanningResult(
-            id=self.id,
             modified=self.modified,
             value=self.value,
             zone_id=self.zone_id)
@@ -113,7 +101,6 @@ def get_content_scanning(zone_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getContentScanning:getContentScanning', __args__, opts=opts, typ=GetContentScanningResult).value
 
     return AwaitableGetContentScanningResult(
-        id=pulumi.get(__ret__, 'id'),
         modified=pulumi.get(__ret__, 'modified'),
         value=pulumi.get(__ret__, 'value'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
@@ -144,7 +131,6 @@ def get_content_scanning_output(zone_id: pulumi.Input[Optional[Optional[_builtin
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getContentScanning:getContentScanning', __args__, opts=opts, typ=GetContentScanningResult)
     return __ret__.apply(lambda __response__: GetContentScanningResult(
-        id=pulumi.get(__response__, 'id'),
         modified=pulumi.get(__response__, 'modified'),
         value=pulumi.get(__response__, 'value'),
         zone_id=pulumi.get(__response__, 'zone_id')))

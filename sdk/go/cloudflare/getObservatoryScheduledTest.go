@@ -69,8 +69,6 @@ type LookupObservatoryScheduledTestResult struct {
 	// The frequency of the test.
 	// Available values: "DAILY", "WEEKLY".
 	Frequency string `pulumi:"frequency"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// A test region.
 	// Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
 	Region string `pulumi:"region"`
@@ -123,11 +121,6 @@ func (o LookupObservatoryScheduledTestResultOutput) ToLookupObservatoryScheduled
 // Available values: "DAILY", "WEEKLY".
 func (o LookupObservatoryScheduledTestResultOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupObservatoryScheduledTestResult) string { return v.Frequency }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupObservatoryScheduledTestResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupObservatoryScheduledTestResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A test region.

@@ -128900,10 +128900,6 @@
                         "description": "Defines the direction used to sort returned rules.\nAvailable values: \"asc\", \"desc\".\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "match": {
                         "description": "Defines the search requirements. When set to \u003cspan pulumi-lang-nodejs=\"`all`\" pulumi-lang-dotnet=\"`All`\" pulumi-lang-go=\"`all`\" pulumi-lang-python=\"`all`\" pulumi-lang-yaml=\"`all`\" pulumi-lang-java=\"`all`\" pulumi-lang-hcl=\"`all`\"\u003e`all`\u003c/span\u003e, all the search requirements must match. When set to \u003cspan pulumi-lang-nodejs=\"`any`\" pulumi-lang-dotnet=\"`Any`\" pulumi-lang-go=\"`any`\" pulumi-lang-python=\"`any`\" pulumi-lang-yaml=\"`any`\" pulumi-lang-java=\"`any`\" pulumi-lang-hcl=\"`any`\"\u003e`any`\u003c/span\u003e, only one of the search requirements has to match.\nAvailable values: \"any\", \"all\".\n",
                         "type": "string"
@@ -128938,8 +128934,7 @@
                 },
                 "required": [
                     "match",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -129032,10 +129027,6 @@
                         "description": "Account identifier tag.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "name": {
                         "description": "Filter by the name of the permission group.\nThe value must be URL-encoded.\n",
                         "type": "string"
@@ -129052,8 +129043,7 @@
                     }
                 },
                 "required": [
-                    "permissionGroups",
-                    "id"
+                    "permissionGroups"
                 ],
                 "type": "object"
             }
@@ -129089,10 +129079,6 @@
                         "description": "Account identifier tag.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -129114,8 +129100,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -129143,18 +129128,13 @@
                         "description": "When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).\n",
                         "type": "boolean"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "zoneDefaults": {
                         "$ref": "#/types/cloudflare:index/getAccountDnsSettingsZoneDefaults:getAccountDnsSettingsZoneDefaults"
                     }
                 },
                 "required": [
                     "enforceDnsOnly",
-                    "zoneDefaults",
-                    "id"
+                    "zoneDefaults"
                 ],
                 "type": "object"
             }
@@ -129276,10 +129256,6 @@
                         "description": "Direction to order DNS views in.\nAvailable values: \"asc\", \"desc\".\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "match": {
                         "description": "Whether to match all search requirements or at least one (any). If set to \u003cspan pulumi-lang-nodejs=\"`all`\" pulumi-lang-dotnet=\"`All`\" pulumi-lang-go=\"`all`\" pulumi-lang-python=\"`all`\" pulumi-lang-yaml=\"`all`\" pulumi-lang-java=\"`all`\" pulumi-lang-hcl=\"`all`\"\u003e`all`\u003c/span\u003e, acts like a logical AND between filters. If set to \u003cspan pulumi-lang-nodejs=\"`any`\" pulumi-lang-dotnet=\"`Any`\" pulumi-lang-go=\"`any`\" pulumi-lang-python=\"`any`\" pulumi-lang-yaml=\"`any`\" pulumi-lang-java=\"`any`\" pulumi-lang-hcl=\"`any`\"\u003e`any`\u003c/span\u003e, acts like a logical OR instead.\nAvailable values: \"any\", \"all\".\n",
                         "type": "string"
@@ -129314,8 +129290,7 @@
                 "required": [
                     "direction",
                     "match",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -129434,10 +129409,6 @@
                         "description": "Direction to order results.\nAvailable values: \"asc\", \"desc\".\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -129459,8 +129430,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -129665,10 +129635,6 @@
                         "description": "Account identifier tag.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -129682,8 +129648,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -129875,10 +129840,6 @@
                         "description": "Direction to order results.\nAvailable values: \"asc\", \"desc\".\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -129892,8 +129853,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -129925,10 +129885,6 @@
                         "description": "Direction to order results.\nAvailable values: \"asc\", \"desc\".\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -129946,8 +129902,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -130066,10 +130021,6 @@
                         "description": "Identifier of a Cloudflare account.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -130083,8 +130034,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -130331,10 +130281,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -130352,8 +130298,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -130598,10 +130543,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -130633,8 +130574,7 @@
                 "required": [
                     "orderBy",
                     "orderByDirection",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -130669,10 +130609,6 @@
                         "description": "Optional description for the namespace. Max 256 characters.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "name": {
                         "type": "string"
                     }
@@ -130681,8 +130617,7 @@
                     "accountId",
                     "createdAt",
                     "description",
-                    "name",
-                    "id"
+                    "name"
                 ],
                 "type": "object"
             }
@@ -130714,10 +130649,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -130736,8 +130667,7 @@
                 },
                 "required": [
                     "accountId",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -130835,10 +130765,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -130856,8 +130782,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -130969,10 +130894,6 @@
                         },
                         "type": "array"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "type": "integer"
                     },
@@ -131002,8 +130923,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -131124,10 +131044,6 @@
             "outputs": {
                 "description": "A collection of values returned by getApiShieldOperationSchemaValidationSettings.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "mitigationAction": {
                         "type": "string"
                     },
@@ -131140,8 +131056,7 @@
                 },
                 "required": [
                     "mitigationAction",
-                    "operationId",
-                    "id"
+                    "operationId"
                 ],
                 "type": "object"
             }
@@ -131220,10 +131135,6 @@
                         },
                         "type": "array"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -131252,8 +131163,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -131284,10 +131194,6 @@
                 "description": "A collection of values returned by getApiShieldSchema.\n",
                 "properties": {
                     "createdAt": {
-                        "type": "string"
-                    },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "kind": {
@@ -131325,8 +131231,7 @@
                     "omitSource",
                     "schemaId",
                     "source",
-                    "validationEnabled",
-                    "id"
+                    "validationEnabled"
                 ],
                 "type": "object"
             }
@@ -131397,10 +131302,6 @@
             "outputs": {
                 "description": "A collection of values returned by getApiShieldSchemas.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -131427,8 +131328,7 @@
                 },
                 "required": [
                     "omitSource",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -131539,10 +131439,6 @@
             "outputs": {
                 "description": "A collection of values returned by getApiTokenPermissionGroupsList.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -131564,8 +131460,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -131593,10 +131488,6 @@
                         "description": "Direction to order results.\nAvailable values: \"asc\", \"desc\".\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -131610,8 +131501,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -131765,10 +131655,6 @@
                         "description": "The hostname on the origin for which the client certificate uploaded will be used.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "issuer": {
                         "description": "The certificate authority that issued the certificate.\n",
                         "type": "string"
@@ -131809,8 +131695,7 @@
                     "signature",
                     "status",
                     "updatedAt",
-                    "zoneId",
-                    "id"
+                    "zoneId"
                 ],
                 "type": "object"
             }
@@ -131916,10 +131801,6 @@
             "outputs": {
                 "description": "A collection of values returned by getAuthenticatedOriginPullsCertificates.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -131938,8 +131819,7 @@
                 },
                 "required": [
                     "results",
-                    "zoneId",
-                    "id"
+                    "zoneId"
                 ],
                 "type": "object"
             }
@@ -132045,10 +131925,6 @@
             "outputs": {
                 "description": "A collection of values returned by getAuthenticatedOriginPullsHostnameCertificates.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -132067,8 +131943,7 @@
                 },
                 "required": [
                     "results",
-                    "zoneId",
-                    "id"
+                    "zoneId"
                 ],
                 "type": "object"
             }
@@ -132244,15 +132119,10 @@
                     },
                     "asn": {
                         "type": "integer"
-                    },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
                     }
                 },
                 "required": [
-                    "asn",
-                    "id"
+                    "asn"
                 ],
                 "type": "object"
             }
@@ -132404,10 +132274,6 @@
                         "description": "Identifier of a Cloudflare account.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -132421,8 +132287,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -132462,10 +132327,6 @@
                         "description": "The date and time the item was created.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "modified": {
                         "description": "The date and time the item was last modified.\n",
                         "type": "string"
@@ -132485,8 +132346,7 @@
                     "created",
                     "modified",
                     "name",
-                    "uid",
-                    "id"
+                    "uid"
                 ],
                 "type": "object"
             }
@@ -132514,10 +132374,6 @@
                         "description": "The account identifier tag.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -132531,8 +132387,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -132568,10 +132423,6 @@
                         "description": "The date and time the item was created.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "keyId": {
                         "description": "A Cloudflare-generated unique identifier for a item.\n",
                         "type": "string"
@@ -132595,8 +132446,7 @@
                     "keyId",
                     "modified",
                     "name",
-                    "uid",
-                    "id"
+                    "uid"
                 ],
                 "type": "object"
             }
@@ -132624,10 +132474,6 @@
                         "description": "The account identifier tag.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -132641,8 +132487,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -132842,10 +132687,6 @@
                         "description": "Specify the deployment environment for the certificate packs.\nAvailable values: \"staging\", \"production\".\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -132867,8 +132708,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -133033,10 +132873,6 @@
             "outputs": {
                 "description": "A collection of values returned by getClientCertificates.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "limit": {
                         "description": "Limit to the number of records returned.\n",
                         "type": "integer"
@@ -133066,8 +132902,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -133583,10 +133418,6 @@
                         "description": "Retrieve requests created before this time.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -133626,8 +133457,7 @@
                 "required": [
                     "page",
                     "perPage",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -133742,10 +133572,6 @@
                         "description": "Account identifier\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -133763,8 +133589,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -133784,10 +133609,6 @@
             "outputs": {
                 "description": "A collection of values returned by getContentScanning.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "modified": {
                         "description": "Defines the last modification date (ISO 8601) of the Content Scanning status.\n",
                         "type": "string"
@@ -133803,8 +133624,7 @@
                 },
                 "required": [
                     "modified",
-                    "value",
-                    "id"
+                    "value"
                 ],
                 "type": "object"
             }
@@ -133828,10 +133648,6 @@
             "outputs": {
                 "description": "A collection of values returned by getContentScanningExpressions.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -133849,8 +133665,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -134000,10 +133815,6 @@
                         "description": "The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -134021,8 +133832,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -134411,10 +134221,6 @@
             "outputs": {
                 "description": "A collection of values returned by getCustomOriginTrustStores.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "limit": {
                         "description": "Limit to the number of records returned.\n",
                         "type": "integer"
@@ -134440,8 +134246,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -134547,10 +134352,6 @@
                         "description": "The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -134568,8 +134369,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -134684,10 +134484,6 @@
                         "description": "The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -134705,8 +134501,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -134844,10 +134639,6 @@
             "outputs": {
                 "description": "A collection of values returned by getCustomSsls.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "match": {
                         "description": "Whether to match all search requirements or at least one (any).\nAvailable values: \"any\", \"all\".\n",
                         "type": "string"
@@ -134874,8 +134665,7 @@
                 },
                 "required": [
                     "match",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -135003,10 +134793,6 @@
                         "description": "Account identifier tag.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -135024,8 +134810,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -135045,10 +134830,6 @@
             "outputs": {
                 "description": "A collection of values returned by getDcvDelegation.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "uuid": {
                         "description": "The DCV Delegation unique identifier.\n",
                         "type": "string"
@@ -135059,8 +134840,7 @@
                     }
                 },
                 "required": [
-                    "uuid",
-                    "id"
+                    "uuid"
                 ],
                 "type": "object"
             }
@@ -135150,10 +134930,6 @@
                         "description": "Identifier of a Cloudflare account.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -135168,8 +134944,7 @@
                 },
                 "required": [
                     "accountId",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -135297,10 +135072,6 @@
                         "description": "Identifier.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -135314,8 +135085,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -135542,10 +135312,6 @@
                         "description": "Direction to order DNS records in.\nAvailable values: \"asc\", \"desc\".\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "includeShadowMetadata": {
                         "description": "Whether to include shadow metadata in the \u003cspan pulumi-lang-nodejs=\"`meta`\" pulumi-lang-dotnet=\"`Meta`\" pulumi-lang-go=\"`meta`\" pulumi-lang-python=\"`meta`\" pulumi-lang-yaml=\"`meta`\" pulumi-lang-java=\"`meta`\" pulumi-lang-hcl=\"`meta`\"\u003e`meta`\u003c/span\u003e field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).\n",
                         "type": "boolean"
@@ -135611,8 +135377,7 @@
                     "order",
                     "proxied",
                     "results",
-                    "tagMatch",
-                    "id"
+                    "tagMatch"
                 ],
                 "type": "object"
             }
@@ -135686,10 +135451,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -135703,8 +135464,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -135920,10 +135680,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -135937,8 +135693,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -136018,10 +135773,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -136035,8 +135786,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -136146,10 +135896,6 @@
                         "description": "Sorts results in an ascending or descending order.\nAvailable values: \"asc\", \"desc\".\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -136169,8 +135915,7 @@
                 "required": [
                     "direction",
                     "results",
-                    "verified",
-                    "id"
+                    "verified"
                 ],
                 "type": "object"
             }
@@ -136420,10 +136165,6 @@
                         "description": "Filter by enabled routing rules.\n",
                         "type": "boolean"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -136441,8 +136182,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -136635,10 +136375,6 @@
                         "description": "The sorting direction.\nAvailable values: \"asc\", \"desc\".\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -136668,8 +136404,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -136717,10 +136452,6 @@
                         "description": "The sorting direction.\nAvailable values: \"asc\", \"desc\".\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -136746,8 +136477,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -136974,10 +136704,6 @@
                         "description": "The sorting direction.\nAvailable values: \"asc\", \"desc\".\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "isRecent": {
                         "description": "Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.\n",
                         "type": "boolean"
@@ -137010,8 +136736,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -137391,10 +137116,6 @@
                         "description": "Cloudflare account ID.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -137409,8 +137130,7 @@
                 },
                 "required": [
                     "accountId",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -137466,10 +137186,6 @@
                         "description": "Flag key (slug).\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "key": {
                         "description": "Unique identifier for the flag within an app. Used in all evaluation and SDK calls.\n",
                         "type": "string"
@@ -137511,8 +137227,7 @@
                     "type",
                     "updatedAt",
                     "updatedBy",
-                    "variations",
-                    "id"
+                    "variations"
                 ],
                 "type": "object"
             }
@@ -137556,10 +137271,6 @@
                         "description": "App identifier.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "limit": {
                         "description": "Max items to return (1–200).\n",
                         "type": "string"
@@ -137579,8 +137290,7 @@
                 "required": [
                     "accountId",
                     "appId",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -137791,10 +137501,6 @@
             "outputs": {
                 "description": "A collection of values returned by getHealthchecks.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -137812,8 +137518,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -137983,10 +137688,6 @@
                         "description": "Define configurations using a unique string identifier.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -138000,8 +137701,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -138156,10 +137856,6 @@
                         "description": "Internal user ID set within the creator field. Setting to empty string \"\" will return images where creator field is not set\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -138173,8 +137869,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -138196,10 +137891,6 @@
                 "properties": {
                     "etag": {
                         "description": "A digest of the IP data. Useful for determining if the data has changed.\n",
-                        "type": "string"
-                    },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "ipv4Cidrs": {
@@ -138232,8 +137923,7 @@
                     "etag",
                     "ipv4Cidrs",
                     "ipv6Cidrs",
-                    "jdcloudCidrs",
-                    "id"
+                    "jdcloudCidrs"
                 ],
                 "type": "object"
             }
@@ -138347,10 +138037,6 @@
             "outputs": {
                 "description": "A collection of values returned by getKeylessCertificates.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -138368,8 +138054,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -138393,18 +138078,13 @@
                         "description": "Determines whether or not Leaked Credential Checks are enabled.\n",
                         "type": "boolean"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "zoneId": {
                         "description": "Defines an identifier.\n",
                         "type": "string"
                     }
                 },
                 "required": [
-                    "enabled",
-                    "id"
+                    "enabled"
                 ],
                 "type": "object"
             }
@@ -138480,10 +138160,6 @@
             "outputs": {
                 "description": "A collection of values returned by getLeakedCredentialCheckRules.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -138501,8 +138177,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -138725,10 +138400,6 @@
                         "description": "The Account ID for this resource.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "listId": {
                         "description": "The unique ID of the list.\n",
                         "type": "string"
@@ -138755,8 +138426,7 @@
                 },
                 "required": [
                     "listId",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -138784,10 +138454,6 @@
                         "description": "The Account ID for this resource.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -138801,8 +138467,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -139220,10 +138885,6 @@
                         "description": "Identifier.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -139238,8 +138899,7 @@
                 },
                 "required": [
                     "accountId",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -139267,10 +138927,6 @@
                         "description": "Identifier.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -139284,8 +138940,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -139456,10 +139111,6 @@
                         "description": "Identifier.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -139477,8 +139128,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -139501,10 +139151,6 @@
             "outputs": {
                 "description": "A collection of values returned by getLoadBalancers.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -139521,8 +139167,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -139593,18 +139238,13 @@
                         "description": "Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).\nAvailable values: \"access*requests\", \"audit*logs\", \"audit*logs*v2\", \"biso*user*actions\", \"casb*findings\", \"device*posture*results\", \"dex*application*tests\", \"dex*device*state*events\", \"dlp*forensic*copies\", \"dns*firewall*logs\", \"dns*logs\", \"email*security*alerts\", \"email*security*post*delivery*events\", \"firewall*events\", \"gateway*dns\", \"gateway*http\", \"gateway*network\", \"http*requests\", \"ipsec*logs\", \"magic*ids*detections\", \"mcp*portal*logs\", \"mnm*flow*logs\", \"nel*reports\", \"network*analytics*logs\", \"page*shield*events\", \"sinkhole*http*logs\", \"spectrum*events\", \"ssh*logs\", \"turnstile*events\", \"warp*config*changes\", \"warp*toggle*changes\", \"websocket*analytics\", \"workers*trace*events\", \"zaraz*events\", \"zero*trust*network*sessions\".\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "zoneId": {
                         "description": "The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.\n",
                         "type": "string"
                     }
                 },
                 "required": [
-                    "datasetId",
-                    "id"
+                    "datasetId"
                 ],
                 "type": "object"
             }
@@ -139879,10 +139519,6 @@
                         "description": "The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -139900,8 +139536,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -139927,10 +139562,6 @@
                         "description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.\n",
                         "type": "number"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "name": {
                         "description": "The account name.\n",
                         "type": "string"
@@ -139952,8 +139583,7 @@
                     "defaultSampling",
                     "name",
                     "routerIps",
-                    "warpDevices",
-                    "id"
+                    "warpDevices"
                 ],
                 "type": "object"
             }
@@ -140071,10 +139701,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -140088,8 +139714,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -140186,10 +139811,6 @@
                         "description": "Identifier\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -140204,8 +139825,7 @@
                 },
                 "required": [
                     "accountId",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -140339,10 +139959,6 @@
                         "description": "Filter connectors by device type.\nAvailable values: \"MANAGED\", \"LICENSED\".\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -140356,8 +139972,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -140554,10 +140169,6 @@
                         "description": "Identifier\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -140576,8 +140187,7 @@
                 },
                 "required": [
                     "results",
-                    "siteId",
-                    "id"
+                    "siteId"
                 ],
                 "type": "object"
             }
@@ -140714,10 +140324,6 @@
                         "description": "Identifier\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -140736,8 +140342,7 @@
                 },
                 "required": [
                     "results",
-                    "siteId",
-                    "id"
+                    "siteId"
                 ],
                 "type": "object"
             }
@@ -140854,10 +140459,6 @@
                         "description": "Identifier\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -140876,8 +140477,7 @@
                 },
                 "required": [
                     "results",
-                    "siteId",
-                    "id"
+                    "siteId"
                 ],
                 "type": "object"
             }
@@ -140913,10 +140513,6 @@
                         "description": "Identifier\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -140930,8 +140526,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -141244,10 +140839,6 @@
                         "description": "Cursor for pagination. Returns relays created strictly before this\nRFC 3339 timestamp (typically the \u003cspan pulumi-lang-nodejs=\"`created`\" pulumi-lang-dotnet=\"`Created`\" pulumi-lang-go=\"`created`\" pulumi-lang-python=\"`created`\" pulumi-lang-yaml=\"`created`\" pulumi-lang-java=\"`created`\" pulumi-lang-hcl=\"`created`\"\u003e`created`\u003c/span\u003e value of the first item\non the current page, to fetch the previous page).\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -141267,8 +140858,7 @@
                 "required": [
                     "accountId",
                     "asc",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -141384,10 +140974,6 @@
                         "description": "Identifier.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "mtlsCertificateId": {
                         "description": "Identifier.\n",
                         "type": "string"
@@ -141405,8 +140991,7 @@
                     "accountId",
                     "mtlsCertificateId",
                     "service",
-                    "status",
-                    "id"
+                    "status"
                 ],
                 "type": "object"
             }
@@ -141437,10 +141022,6 @@
                         "description": "Identifier.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -141455,8 +141036,7 @@
                 },
                 "required": [
                     "accountId",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -141484,10 +141064,6 @@
                         "description": "The account id\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -141501,8 +141077,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -141693,10 +141268,6 @@
                         "description": "The account id\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -141710,8 +141281,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -141780,10 +141350,6 @@
                     "hasRotatedSecret": {
                         "description": "Indicates whether the client has a rotated secret that has not yet been deleted.\n",
                         "type": "boolean"
-                    },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
                     },
                     "logoUri": {
                         "description": "URL of the client's logo.\n",
@@ -141867,8 +141433,7 @@
                     "tokenEndpointAuthMethod",
                     "tosUri",
                     "updatedAt",
-                    "visibility",
-                    "id"
+                    "visibility"
                 ],
                 "type": "object"
             }
@@ -141899,10 +141464,6 @@
                         "description": "Account identifier tag.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -141917,8 +141478,7 @@
                 },
                 "required": [
                     "accountId",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -141938,10 +141498,6 @@
             "outputs": {
                 "description": "A collection of values returned by getOauthScopes.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -141955,8 +141511,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -141991,10 +141546,6 @@
                         "description": "The frequency of the test.\nAvailable values: \"DAILY\", \"WEEKLY\".\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "region": {
                         "description": "A test region.\nAvailable values: \"asia-east1\", \"asia-northeast1\", \"asia-northeast2\", \"asia-south1\", \"asia-southeast1\", \"australia-southeast1\", \"europe-north1\", \"europe-southwest1\", \"europe-west1\", \"europe-west2\", \"europe-west3\", \"europe-west4\", \"europe-west8\", \"europe-west9\", \"me-west1\", \"southamerica-east1\", \"us-central1\", \"us-east1\", \"us-east4\", \"us-south1\", \"us-west1\".\n",
                         "type": "string"
@@ -142011,8 +141562,7 @@
                 "required": [
                     "frequency",
                     "region",
-                    "url",
-                    "id"
+                    "url"
                 ],
                 "type": "object"
             }
@@ -142103,10 +141653,6 @@
                     "externalMetadata": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "organizationId": {
                         "type": "string"
                     }
@@ -142117,8 +141663,7 @@
                     "businessName",
                     "businessPhone",
                     "externalMetadata",
-                    "organizationId",
-                    "id"
+                    "organizationId"
                 ],
                 "type": "object"
             }
@@ -142302,10 +141847,6 @@
             "outputs": {
                 "description": "A collection of values returned by getOriginCaCertificates.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "limit": {
                         "description": "Limit to the number of records returned.\n",
                         "type": "integer"
@@ -142332,8 +141873,7 @@
                 },
                 "required": [
                     "results",
-                    "zoneId",
-                    "id"
+                    "zoneId"
                 ],
                 "type": "object"
             }
@@ -142417,10 +141957,6 @@
             "outputs": {
                 "description": "A collection of values returned by getOriginCloudRegions.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -142439,8 +141975,7 @@
                 },
                 "required": [
                     "results",
-                    "zoneId",
-                    "id"
+                    "zoneId"
                 ],
                 "type": "object"
             }
@@ -142736,10 +142271,6 @@
                         "description": "Includes connections that match one or more URL-encoded hostnames separated by commas.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "type": "integer"
                     },
@@ -142775,8 +142306,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -142962,10 +142492,6 @@
                     "httpOnly": {
                         "type": "boolean"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "type": "integer"
                     },
@@ -143007,8 +142533,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -143032,10 +142557,6 @@
             "outputs": {
                 "description": "A collection of values returned by getPageShieldPolicies.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -143053,8 +142574,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -143360,10 +142880,6 @@
                         "description": "Includes scripts that match one or more URL-encoded hostnames separated by commas.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "type": "integer"
                     },
@@ -143401,8 +142917,7 @@
                 "required": [
                     "excludeCdnCgi",
                     "excludeDuplicates",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -143526,10 +143041,6 @@
                         "description": "Identifier.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -143548,8 +143059,7 @@
                 },
                 "required": [
                     "projectName",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -143697,10 +143207,6 @@
                         "description": "Identifier.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -143714,8 +143220,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -143903,10 +143408,6 @@
                         "description": "Specifies the public ID of the account.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -143927,8 +143428,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -144047,10 +143547,6 @@
                         "description": "Specifies the public ID of the account.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -144072,8 +143568,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -144196,10 +143691,6 @@
                         "description": "Name of the dead letter queue, or empty string if not configured\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "queueId": {
                         "description": "A Resource identifier.\n",
                         "type": "string"
@@ -144228,8 +143719,7 @@
                     "queueName",
                     "scriptName",
                     "settings",
-                    "type",
-                    "id"
+                    "type"
                 ],
                 "type": "object"
             }
@@ -144264,10 +143754,6 @@
                         "description": "A Resource identifier.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -144286,8 +143772,7 @@
                 },
                 "required": [
                     "queueId",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -144315,10 +143800,6 @@
                         "description": "A Resource identifier.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -144332,8 +143813,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -144436,10 +143916,6 @@
                         "description": "Name of the bucket.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "rules": {
                         "items": {
                             "$ref": "#/types/cloudflare:index/getR2BucketCorsRule:getR2BucketCorsRule"
@@ -144450,8 +143926,7 @@
                 "required": [
                     "accountId",
                     "bucketName",
-                    "rules",
-                    "id"
+                    "rules"
                 ],
                 "type": "object"
             }
@@ -144492,10 +143967,6 @@
                         "description": "Name of the bucket.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "queueId": {
                         "description": "Queue ID.\n",
                         "type": "string"
@@ -144516,8 +143987,7 @@
                     "bucketName",
                     "queueId",
                     "queueName",
-                    "rules",
-                    "id"
+                    "rules"
                 ],
                 "type": "object"
             }
@@ -144553,10 +144023,6 @@
                         "description": "Name of the bucket.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "rules": {
                         "items": {
                             "$ref": "#/types/cloudflare:index/getR2BucketLifecycleRule:getR2BucketLifecycleRule"
@@ -144567,8 +144033,7 @@
                 "required": [
                     "accountId",
                     "bucketName",
-                    "rules",
-                    "id"
+                    "rules"
                 ],
                 "type": "object"
             }
@@ -144604,10 +144069,6 @@
                         "description": "Name of the bucket.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "rules": {
                         "items": {
                             "$ref": "#/types/cloudflare:index/getR2BucketLockRule:getR2BucketLockRule"
@@ -144618,8 +144079,7 @@
                 "required": [
                     "accountId",
                     "bucketName",
-                    "rules",
-                    "id"
+                    "rules"
                 ],
                 "type": "object"
             }
@@ -144663,10 +144123,6 @@
                         "description": "State of Sippy for this bucket.\n",
                         "type": "boolean"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "source": {
                         "$ref": "#/types/cloudflare:index/getR2BucketSippySource:getR2BucketSippySource",
                         "description": "Details about the configured source bucket.\n"
@@ -144677,8 +144133,7 @@
                     "bucketName",
                     "destination",
                     "enabled",
-                    "source",
-                    "id"
+                    "source"
                 ],
                 "type": "object"
             }
@@ -144734,10 +144189,6 @@
                         "description": "Whether this bucket is publicly accessible at the specified custom domain.\n",
                         "type": "boolean"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "minTls": {
                         "description": "Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.\nAvailable values: \"1.0\", \"1.1\", \"1.2\", \"1.3\".\n",
                         "type": "string"
@@ -144763,8 +144214,7 @@
                     "minTls",
                     "status",
                     "zoneId",
-                    "zoneName",
-                    "id"
+                    "zoneName"
                 ],
                 "type": "object"
             }
@@ -144935,10 +144385,6 @@
             "outputs": {
                 "description": "A collection of values returned by getRateLimits.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -144956,8 +144402,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -145038,10 +144483,6 @@
             "outputs": {
                 "description": "A collection of values returned by getRegionalHostnames.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -145059,8 +144500,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -145140,16 +144580,11 @@
                     "domainName": {
                         "description": "Fully qualified domain name (FQDN) including the extension\n(e.g., `example.com`, `mybrand.app`). The domain name uniquely\nidentifies a registration — the same domain cannot be registered\ntwice, making it a natural idempotency key for registration requests.\n",
                         "type": "string"
-                    },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
                     }
                 },
                 "required": [
                     "accountId",
-                    "domainName",
-                    "id"
+                    "domainName"
                 ],
                 "type": "object"
             }
@@ -145177,10 +144612,6 @@
                         "description": "Identifier\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -145194,8 +144625,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -145435,10 +144865,6 @@
                         "description": "The unique ID of the account.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Maximum number of rulesets to fetch (defaults to 1000).\n",
                         "type": "integer"
@@ -145465,8 +144891,7 @@
                 },
                 "required": [
                     "results",
-                    "rulesets",
-                    "id"
+                    "rulesets"
                 ],
                 "type": "object"
             }
@@ -145491,10 +144916,6 @@
             "outputs": {
                 "description": "A collection of values returned by getSchemaValidationOperationSettings.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "mitigationAction": {
                         "type": "string"
                     },
@@ -145507,8 +144928,7 @@
                 },
                 "required": [
                     "mitigationAction",
-                    "operationId",
-                    "id"
+                    "operationId"
                 ],
                 "type": "object"
             }
@@ -145530,10 +144950,6 @@
             "outputs": {
                 "description": "A collection of values returned by getSchemaValidationOperationSettingsList.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "type": "integer"
                     },
@@ -145548,8 +144964,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -145659,10 +145074,6 @@
             "outputs": {
                 "description": "A collection of values returned by getSchemaValidationSchemasList.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -145689,8 +145100,7 @@
                 },
                 "required": [
                     "omitSource",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -145710,10 +145120,6 @@
             "outputs": {
                 "description": "A collection of values returned by getSchemaValidationSettings.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "validationDefaultMitigationAction": {
                         "description": "The default mitigation action used\n",
                         "type": "string"
@@ -145728,8 +145134,7 @@
                 },
                 "required": [
                     "validationDefaultMitigationAction",
-                    "validationOverrideMitigationAction",
-                    "id"
+                    "validationOverrideMitigationAction"
                 ],
                 "type": "object"
             }
@@ -145945,10 +145350,6 @@
                         "description": "Direction to sort objects\nAvailable values: \"asc\", \"desc\".\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -145988,8 +145389,7 @@
                     "direction",
                     "order",
                     "results",
-                    "storeId",
-                    "id"
+                    "storeId"
                 ],
                 "type": "object"
             }
@@ -146032,10 +145432,6 @@
                         "description": "Direction to sort objects\nAvailable values: \"asc\", \"desc\".\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -146056,8 +145452,7 @@
                     "accountId",
                     "direction",
                     "order",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -146313,10 +145708,6 @@
                         "description": "Account identifier.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "includeResources": {
                         "description": "Include resources in the response.\n",
                         "type": "boolean"
@@ -146340,8 +145731,7 @@
                 "required": [
                     "accountId",
                     "results",
-                    "shareId",
-                    "id"
+                    "shareId"
                 ],
                 "type": "object"
             }
@@ -146483,10 +145873,6 @@
                         "description": "Account identifier.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -146514,8 +145900,7 @@
                 "required": [
                     "accountId",
                     "results",
-                    "shareId",
-                    "id"
+                    "shareId"
                 ],
                 "type": "object"
             }
@@ -146592,10 +145977,6 @@
                         "description": "Direction to sort objects.\nAvailable values: \"asc\", \"desc\".\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "includeRecipientCounts": {
                         "description": "Include recipient counts in the response.\n",
                         "type": "boolean"
@@ -146650,8 +146031,7 @@
                     "accountId",
                     "direction",
                     "order",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -146727,10 +146107,6 @@
             "outputs": {
                 "description": "A collection of values returned by getSnippetList.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -146748,8 +146124,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -146775,10 +146150,6 @@
             "outputs": {
                 "description": "A collection of values returned by getSnippetRulesList.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -146797,8 +146168,7 @@
                 },
                 "required": [
                     "results",
-                    "zoneId",
-                    "id"
+                    "zoneId"
                 ],
                 "type": "object"
             }
@@ -146830,10 +146200,6 @@
                         "description": "The timestamp of when the snippet was created.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "modifiedOn": {
                         "description": "The timestamp of when the snippet was last modified.\n",
                         "type": "string"
@@ -146851,8 +146217,7 @@
                     "createdOn",
                     "modifiedOn",
                     "snippetName",
-                    "zoneId",
-                    "id"
+                    "zoneId"
                 ],
                 "type": "object"
             }
@@ -146878,10 +146243,6 @@
             "outputs": {
                 "description": "A collection of values returned by getSnippetsList.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -146900,8 +146261,7 @@
                 },
                 "required": [
                     "results",
-                    "zoneId",
-                    "id"
+                    "zoneId"
                 ],
                 "type": "object"
             }
@@ -147054,10 +146414,6 @@
                         "description": "Sets the direction by which results are ordered.\nAvailable values: \"asc\", \"desc\".\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -147081,8 +146437,7 @@
                 "required": [
                     "direction",
                     "order",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -147179,10 +146534,6 @@
                         "description": "Account identifier tag.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -147196,8 +146547,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -147251,10 +146601,6 @@
                     "duration": {
                         "description": "The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.\n",
                         "type": "number"
-                    },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
                     },
                     "identifier": {
                         "description": "A Cloudflare-generated unique identifier for a media item.\n",
@@ -147370,8 +146716,7 @@
                     "uid",
                     "uploadExpiry",
                     "uploaded",
-                    "watermark",
-                    "id"
+                    "watermark"
                 ],
                 "type": "object"
             }
@@ -147410,10 +146755,6 @@
                         },
                         "type": "array"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "identifier": {
                         "description": "A Cloudflare-generated unique identifier for a media item.\n",
                         "type": "string"
@@ -147422,8 +146763,7 @@
                 "required": [
                     "accountId",
                     "audios",
-                    "identifier",
-                    "id"
+                    "identifier"
                 ],
                 "type": "object"
             }
@@ -147464,10 +146804,6 @@
                         "description": "Whether the caption was generated via AI.\n",
                         "type": "boolean"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "identifier": {
                         "description": "A Cloudflare-generated unique identifier for a media item.\n",
                         "type": "string"
@@ -147491,8 +146827,7 @@
                     "identifier",
                     "label",
                     "language",
-                    "status",
-                    "id"
+                    "status"
                 ],
                 "type": "object"
             }
@@ -147524,10 +146859,6 @@
                         "description": "Identifier.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "identifier": {
                         "description": "A Cloudflare-generated unique identifier for a media item.\n",
                         "type": "string"
@@ -147535,8 +146866,7 @@
                 },
                 "required": [
                     "accountId",
-                    "identifier",
-                    "id"
+                    "identifier"
                 ],
                 "type": "object"
             }
@@ -147620,10 +146950,6 @@
                         "description": "Indicates whether the live input is enabled and can accept streams.\n",
                         "type": "boolean"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "keysRotatedAt": {
                         "description": "The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.\n",
                         "type": "string"
@@ -147699,8 +147025,7 @@
                     "status",
                     "uid",
                     "webRtc",
-                    "webRtcPlayback",
-                    "id"
+                    "webRtcPlayback"
                 ],
                 "type": "object"
             }
@@ -147743,10 +147068,6 @@
                     "height": {
                         "description": "The height of the image in pixels.\n",
                         "type": "integer"
-                    },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
                     },
                     "identifier": {
                         "description": "The unique identifier for a watermark profile.\n",
@@ -147798,8 +147119,7 @@
                     "scale",
                     "size",
                     "uid",
-                    "width",
-                    "id"
+                    "width"
                 ],
                 "type": "object"
             }
@@ -147827,10 +147147,6 @@
                         "description": "The account identifier tag.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -147844,8 +147160,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -147869,10 +147184,6 @@
                         "description": "The account identifier tag.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "modified": {
                         "description": "The date and time the webhook was last modified.\n",
                         "type": "string"
@@ -147890,8 +147201,7 @@
                 "required": [
                     "modified",
                     "notificationUrl",
-                    "secret",
-                    "id"
+                    "secret"
                 ],
                 "type": "object"
             }
@@ -148197,10 +147507,6 @@
             "outputs": {
                 "description": "A collection of values returned by getTokenValidationConfigs.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -148218,8 +147524,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -148595,10 +147900,6 @@
                         "description": "Filter widgets by field using case-insensitive substring matching.\nFormat: `field:value`\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "type": "integer"
                     },
@@ -148613,8 +147914,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -148883,10 +148183,6 @@
                         "description": "A string to search for in the description of existing rules.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -148912,8 +148208,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -149267,10 +148562,6 @@
                         "description": "Identifier.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -149284,8 +148575,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -149322,10 +148612,6 @@
                     "credentialSetId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -149340,8 +148626,7 @@
                 },
                 "required": [
                     "credentialSetId",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -149424,10 +148709,6 @@
                         "description": "Identifier.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -149441,8 +148722,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -149752,10 +149032,6 @@
             "outputs": {
                 "description": "A collection of values returned by getWaitingRoomEvents.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -149777,8 +149053,7 @@
                 },
                 "required": [
                     "results",
-                    "waitingRoomId",
-                    "id"
+                    "waitingRoomId"
                 ],
                 "type": "object"
             }
@@ -149914,10 +149189,6 @@
                         "description": "The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -149935,8 +149206,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -150035,10 +149305,6 @@
             "outputs": {
                 "description": "A collection of values returned by getWeb3Hostnames.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -150056,8 +149322,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -150169,10 +149434,6 @@
                         "description": "Identifier.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -150190,8 +149451,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -150492,10 +149752,6 @@
                         "description": "Identifier.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -150514,8 +149770,7 @@
                 },
                 "required": [
                     "results",
-                    "workerId",
-                    "id"
+                    "workerId"
                 ],
                 "type": "object"
             }
@@ -150551,10 +149806,6 @@
                         "description": "Identifier.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -150578,8 +149829,7 @@
                 "required": [
                     "order",
                     "orderBy",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -150759,10 +150009,6 @@
                         "description": "Hostname of the domain.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -150788,8 +150034,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -150979,10 +150224,6 @@
                         "description": "Identifier.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -150996,8 +150237,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -151149,10 +150389,6 @@
                         "description": "Direction to order namespaces.\nAvailable values: \"asc\", \"desc\".\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -151170,8 +150406,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -151247,10 +150482,6 @@
             "outputs": {
                 "description": "A collection of values returned by getWorkersRoutes.\n",
                 "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -151268,8 +150499,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -151353,10 +150583,6 @@
                         "description": "Whether the Worker is available on the workers.dev subdomain.\n",
                         "type": "boolean"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "previewsEnabled": {
                         "description": "Whether the Worker's Preview URLs are available on the workers.dev subdomain.\n",
                         "type": "boolean"
@@ -151370,8 +150596,7 @@
                     "accountId",
                     "enabled",
                     "previewsEnabled",
-                    "scriptName",
-                    "id"
+                    "scriptName"
                 ],
                 "type": "object"
             }
@@ -151403,10 +150628,6 @@
                         "description": "Identifier.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -151424,8 +150645,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -151530,10 +150750,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -151551,8 +150767,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -151665,10 +150880,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -151686,8 +150897,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -151852,10 +151062,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -151873,8 +151079,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -152201,10 +151406,6 @@
                         "description": "True for only exact string matches against passed name/domain query parameters.\n",
                         "type": "boolean"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -152230,8 +151431,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -152321,10 +151521,6 @@
                         "description": "Identifier.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -152338,8 +151534,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -152468,10 +151663,6 @@
                         "description": "The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -152497,8 +151688,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -152621,10 +151811,6 @@
                         "description": "The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -152646,8 +151832,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -152837,10 +152022,6 @@
                         "description": "Partial match to the hostname of a target\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "ipLike": {
                         "description": "Filters for targets whose IP addresses look like the specified string.\nSupports `*` as a wildcard character\n",
                         "type": "string"
@@ -152912,8 +152093,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -153062,10 +152242,6 @@
                         "description": "The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -153083,8 +152259,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -153124,10 +152299,6 @@
                         "description": "The hostname that these settings apply to.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "zoneId": {
                         "description": "The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.\n",
                         "type": "string"
@@ -153136,8 +152307,7 @@
                 "required": [
                     "chinaNetwork",
                     "clientCertificateForwarding",
-                    "hostname",
-                    "id"
+                    "hostname"
                 ],
                 "type": "object"
             }
@@ -153165,10 +152335,6 @@
                         "description": "Identifier.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -153182,8 +152348,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -153430,10 +152595,6 @@
                         "description": "The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -153459,8 +152620,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -153552,10 +152712,6 @@
                         "description": "The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -153573,8 +152729,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -153649,10 +152804,6 @@
                         "description": "Identifier.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -153666,8 +152817,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -153938,10 +153088,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -153955,8 +153101,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -154125,17 +153270,12 @@
                         "description": "The current status of the device policy certificate provisioning feature for WARP clients.\n",
                         "type": "boolean"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "zoneId": {
                         "type": "string"
                     }
                 },
                 "required": [
-                    "enabled",
-                    "id"
+                    "enabled"
                 ],
                 "type": "object"
             }
@@ -154280,10 +153420,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -154298,8 +153434,7 @@
                 },
                 "required": [
                     "accountId",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -154409,10 +153544,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -154431,8 +153562,7 @@
                 },
                 "required": [
                     "perPage",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -154513,10 +153643,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -154530,8 +153656,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -154617,10 +153742,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -154634,8 +153755,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -154739,10 +153859,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -154756,8 +153872,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -154807,10 +153922,6 @@
                         "description": "Enable gateway proxy filtering on UDP.\n",
                         "type": "boolean"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "rootCertificateInstallationEnabled": {
                         "description": "Enable installation of cloudflare managed root certificate.\n",
                         "type": "boolean"
@@ -154829,8 +153940,7 @@
                     "gatewayProxyEnabled",
                     "gatewayUdpProxyEnabled",
                     "rootCertificateInstallationEnabled",
-                    "useZtVirtualIp",
-                    "id"
+                    "useZtVirtualIp"
                 ],
                 "type": "object"
             }
@@ -155016,10 +154126,6 @@
                         "description": "Unique identifier linked to an account.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -155047,8 +154153,7 @@
                 "required": [
                     "results",
                     "sortBy",
-                    "sortOrder",
-                    "id"
+                    "sortOrder"
                 ],
                 "type": "object"
             }
@@ -155177,10 +154282,6 @@
                         "description": "Unique identifier linked to an account.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "kind": {
                         "description": "Filter by test type.\nAvailable values: \"http\", \"traceroute\".\n",
                         "type": "string"
@@ -155202,8 +154303,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -155229,10 +154329,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -155246,8 +154342,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -155586,10 +154681,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -155604,8 +154695,7 @@
                 },
                 "required": [
                     "accountId",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -155698,10 +154788,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -155716,8 +154802,7 @@
                 },
                 "required": [
                     "accountId",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -155820,10 +154905,6 @@
                     "categoryId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -155839,8 +154920,7 @@
                 "required": [
                     "accountId",
                     "categoryId",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -155957,10 +155037,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -155974,8 +155050,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -156001,10 +155076,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -156018,8 +155089,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -156150,10 +155220,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -156167,8 +155233,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -156299,10 +155364,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -156316,8 +155377,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -156599,10 +155659,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -156617,8 +155673,7 @@
                 },
                 "required": [
                     "accountId",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -156762,10 +155817,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -156784,8 +155835,7 @@
                 "required": [
                     "accountId",
                     "results",
-                    "sensitivityGroupId",
-                    "id"
+                    "sensitivityGroupId"
                 ],
                 "type": "object"
             }
@@ -156966,10 +156016,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -156983,8 +156029,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -157012,10 +156057,6 @@
                         "description": "Provide the identifier string.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -157029,8 +156070,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -157058,10 +156098,6 @@
                         "description": "Provide the identifier string.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -157075,8 +156111,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -157193,10 +156228,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -157210,8 +156241,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -157346,10 +156376,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -157363,8 +156389,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -157390,10 +156415,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -157407,8 +156428,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -157644,10 +156664,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -157661,8 +156677,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -157811,10 +156826,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -157832,8 +156843,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -158056,10 +157066,6 @@
                         },
                         "type": "array"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "isUiReadOnly": {
                         "description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.\n",
                         "type": "boolean"
@@ -158120,8 +157126,7 @@
                     "sessionDuration",
                     "uiReadOnlyToggleReason",
                     "userSeatExpirationInactiveTime",
-                    "warpAuthSessionDuration",
-                    "id"
+                    "warpAuthSessionDuration"
                 ],
                 "type": "object"
             }
@@ -158304,10 +157309,6 @@
                     "filter": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "limit": {
                         "type": "integer"
                     },
@@ -158334,8 +157335,7 @@
                     "accountId",
                     "limit",
                     "offset",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -158371,10 +157371,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "limit": {
                         "description": "Limit of number of results to return.\n",
                         "type": "integer"
@@ -158399,8 +157395,7 @@
                     "accountId",
                     "limit",
                     "offset",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -158479,15 +157474,10 @@
                             "$ref": "#/types/cloudflare:index/getZeroTrustRiskBehaviorBehaviors:getZeroTrustRiskBehaviorBehaviors"
                         },
                         "type": "object"
-                    },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
                     }
                 },
                 "required": [
-                    "behaviors",
-                    "id"
+                    "behaviors"
                 ],
                 "type": "object"
             }
@@ -158586,10 +157576,6 @@
                     "accountId": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
@@ -158603,8 +157589,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -158752,10 +157737,6 @@
                     "createdAt": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "source": {
                         "description": "Indicates if this is a locally or remotely configured tunnel. If \u003cspan pulumi-lang-nodejs=\"`local`\" pulumi-lang-dotnet=\"`Local`\" pulumi-lang-go=\"`local`\" pulumi-lang-python=\"`local`\" pulumi-lang-yaml=\"`local`\" pulumi-lang-java=\"`local`\" pulumi-lang-hcl=\"`local`\"\u003e`local`\u003c/span\u003e, manage the tunnel using a YAML file on the origin machine. If \u003cspan pulumi-lang-nodejs=\"`cloudflare`\" pulumi-lang-dotnet=\"`Cloudflare`\" pulumi-lang-go=\"`cloudflare`\" pulumi-lang-python=\"`cloudflare`\" pulumi-lang-yaml=\"`cloudflare`\" pulumi-lang-java=\"`cloudflare`\" pulumi-lang-hcl=\"`cloudflare`\"\u003e`cloudflare`\u003c/span\u003e, manage the tunnel's configuration on the Zero Trust dashboard.\nAvailable values: \"local\", \"cloudflare\".\n",
                         "type": "string"
@@ -158775,8 +157756,7 @@
                     "createdAt",
                     "source",
                     "tunnelId",
-                    "version",
-                    "id"
+                    "version"
                 ],
                 "type": "object"
             }
@@ -158925,10 +157905,6 @@
                         "description": "If provided, include only resources that were created (and not deleted) before this time. URL encoded.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "isDeleted": {
                         "description": "If \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e, only include deleted routes. If \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e, exclude deleted routes. If empty, all routes will be included.\n",
                         "type": "boolean"
@@ -158974,8 +157950,7 @@
                 },
                 "required": [
                     "comment",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -159007,10 +157982,6 @@
                         "description": "Cloudflare account ID\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "token": {
                         "description": "The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel.\n",
                         "secret": true,
@@ -159024,8 +157995,7 @@
                 "required": [
                     "accountId",
                     "token",
-                    "tunnelId",
-                    "id"
+                    "tunnelId"
                 ],
                 "type": "object"
             }
@@ -159242,10 +158212,6 @@
                         "description": "If provided, include only resources that were created (and not deleted) before this time. URL encoded.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "includePrefix": {
                         "type": "string"
                     },
@@ -159284,8 +158250,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -159431,10 +158396,6 @@
                         "description": "High-availability mode for the WARP Connector tunnel. \u003cspan pulumi-lang-nodejs=\"`none`\" pulumi-lang-dotnet=\"`None`\" pulumi-lang-go=\"`none`\" pulumi-lang-python=\"`none`\" pulumi-lang-yaml=\"`none`\" pulumi-lang-java=\"`none`\" pulumi-lang-hcl=\"`none`\"\u003e`none`\u003c/span\u003e means HA is enabled but no provider is configured yet (newly created tunnels default to this). \u003cspan pulumi-lang-nodejs=\"`disabled`\" pulumi-lang-dotnet=\"`Disabled`\" pulumi-lang-go=\"`disabled`\" pulumi-lang-python=\"`disabled`\" pulumi-lang-yaml=\"`disabled`\" pulumi-lang-java=\"`disabled`\" pulumi-lang-hcl=\"`disabled`\"\u003e`disabled`\u003c/span\u003e means HA is explicitly turned off. \u003cspan pulumi-lang-nodejs=\"`aws`\" pulumi-lang-dotnet=\"`Aws`\" pulumi-lang-go=\"`aws`\" pulumi-lang-python=\"`aws`\" pulumi-lang-yaml=\"`aws`\" pulumi-lang-java=\"`aws`\" pulumi-lang-hcl=\"`aws`\"\u003e`aws`\u003c/span\u003e uses AWS ENI move for failover. \u003cspan pulumi-lang-nodejs=\"`local`\" pulumi-lang-dotnet=\"`Local`\" pulumi-lang-go=\"`local`\" pulumi-lang-python=\"`local`\" pulumi-lang-yaml=\"`local`\" pulumi-lang-java=\"`local`\" pulumi-lang-hcl=\"`local`\"\u003e`local`\u003c/span\u003e uses virtual IPs (VIPs) on the local interface.\nAvailable values: \"none\", \"disabled\", \"aws\", \"local\".\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "tunnelId": {
                         "description": "UUID of the tunnel.\n",
                         "type": "string"
@@ -159451,8 +158412,7 @@
                     "createdAt",
                     "haMode",
                     "tunnelId",
-                    "updatedAt",
-                    "id"
+                    "updatedAt"
                 ],
                 "type": "object"
             }
@@ -159484,10 +158444,6 @@
                         "description": "Cloudflare account ID\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "token": {
                         "description": "The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel.\n",
                         "secret": true,
@@ -159501,8 +158457,7 @@
                 "required": [
                     "accountId",
                     "token",
-                    "tunnelId",
-                    "id"
+                    "tunnelId"
                 ],
                 "type": "object"
             }
@@ -159569,10 +158524,6 @@
                         "description": "If provided, include only resources that were created (and not deleted) before this time. URL encoded.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "includePrefix": {
                         "type": "string"
                     },
@@ -159611,8 +158562,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -159908,10 +158858,6 @@
                         "description": "Whether to enable Foundation DNS Advanced Nameservers on the zone.\n",
                         "type": "boolean"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "internalDns": {
                         "$ref": "#/types/cloudflare:index/getZoneDnsSettingsInternalDns:getZoneDnsSettingsInternalDns",
                         "description": "Settings for this internal zone.\n"
@@ -159954,8 +158900,7 @@
                     "nsTtl",
                     "secondaryOverrides",
                     "soa",
-                    "zoneMode",
-                    "id"
+                    "zoneMode"
                 ],
                 "type": "object"
             }
@@ -160239,10 +159184,6 @@
                         "description": "A string to search for in the description of existing rules.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "ip": {
                         "description": "A single IP address to search for in existing rules.\n",
                         "type": "string"
@@ -160284,8 +159225,7 @@
                     }
                 },
                 "required": [
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }
@@ -160466,10 +159406,6 @@
                     "direction": {
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "match": {
                         "type": "string"
                     },
@@ -160500,8 +159436,7 @@
                 },
                 "required": [
                     "match",
-                    "results",
-                    "id"
+                    "results"
                 ],
                 "type": "object"
             }

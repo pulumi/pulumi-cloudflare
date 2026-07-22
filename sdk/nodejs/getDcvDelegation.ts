@@ -44,10 +44,6 @@ export interface GetDcvDelegationArgs {
  */
 export interface GetDcvDelegationResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * The DCV Delegation unique identifier.
      */
     readonly uuid: string;

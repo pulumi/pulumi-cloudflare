@@ -59,8 +59,6 @@ type GetDcvDelegationArgs struct {
 
 // A collection of values returned by getDcvDelegation.
 type GetDcvDelegationResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// The DCV Delegation unique identifier.
 	Uuid string `pulumi:"uuid"`
 	// Identifier.
@@ -99,11 +97,6 @@ func (o GetDcvDelegationResultOutput) ToGetDcvDelegationResultOutput() GetDcvDel
 
 func (o GetDcvDelegationResultOutput) ToGetDcvDelegationResultOutputWithContext(ctx context.Context) GetDcvDelegationResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetDcvDelegationResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDcvDelegationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The DCV Delegation unique identifier.

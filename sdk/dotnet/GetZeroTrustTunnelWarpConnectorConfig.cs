@@ -169,10 +169,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string HaMode;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// UUID of the tunnel.
         /// </summary>
         public readonly string TunnelId;
@@ -193,8 +189,6 @@ namespace Pulumi.Cloudflare
 
             string haMode,
 
-            string id,
-
             string tunnelId,
 
             string updatedAt)
@@ -204,7 +198,6 @@ namespace Pulumi.Cloudflare
             ConfigurationVersion = configurationVersion;
             CreatedAt = createdAt;
             HaMode = haMode;
-            Id = id;
             TunnelId = tunnelId;
             UpdatedAt = updatedAt;
         }

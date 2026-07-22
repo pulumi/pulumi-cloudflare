@@ -19,11 +19,6 @@ public final class GetBotnetFeedConfigAsnResult {
      */
     private @Nullable String accountId;
     private Integer asn;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
 
     private GetBotnetFeedConfigAsnResult() {}
     /**
@@ -35,13 +30,6 @@ public final class GetBotnetFeedConfigAsnResult {
     }
     public Integer asn() {
         return this.asn;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
 
     public static Builder builder() {
@@ -55,13 +43,11 @@ public final class GetBotnetFeedConfigAsnResult {
     public static final class Builder {
         private @Nullable String accountId;
         private Integer asn;
-        private String id;
         public Builder() {}
         public Builder(GetBotnetFeedConfigAsnResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.asn = defaults.asn;
-    	      this.id = defaults.id;
         }
 
         @CustomType.Setter
@@ -78,19 +64,10 @@ public final class GetBotnetFeedConfigAsnResult {
             this.asn = asn;
             return this;
         }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetBotnetFeedConfigAsnResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         public GetBotnetFeedConfigAsnResult build() {
             final var _resultValue = new GetBotnetFeedConfigAsnResult();
             _resultValue.accountId = accountId;
             _resultValue.asn = asn;
-            _resultValue.id = id;
             return _resultValue;
         }
     }

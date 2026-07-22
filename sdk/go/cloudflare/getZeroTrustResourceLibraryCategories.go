@@ -35,8 +35,6 @@ type LookupZeroTrustResourceLibraryCategoriesArgs struct {
 // A collection of values returned by getZeroTrustResourceLibraryCategories.
 type LookupZeroTrustResourceLibraryCategoriesResult struct {
 	AccountId string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Limit of number of results to return.
 	Limit int `pulumi:"limit"`
 	// Max items to fetch, default: 1000
@@ -88,11 +86,6 @@ func (o LookupZeroTrustResourceLibraryCategoriesResultOutput) ToLookupZeroTrustR
 
 func (o LookupZeroTrustResourceLibraryCategoriesResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustResourceLibraryCategoriesResult) string { return v.AccountId }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupZeroTrustResourceLibraryCategoriesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustResourceLibraryCategoriesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Limit of number of results to return.

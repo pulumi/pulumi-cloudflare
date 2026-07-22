@@ -27,7 +27,7 @@ class GetApiShieldOperationsResult:
     """
     A collection of values returned by getApiShieldOperations.
     """
-    def __init__(__self__, direction=None, endpoint=None, features=None, hosts=None, id=None, max_items=None, methods=None, order=None, results=None, zone_id=None):
+    def __init__(__self__, direction=None, endpoint=None, features=None, hosts=None, max_items=None, methods=None, order=None, results=None, zone_id=None):
         if direction and not isinstance(direction, str):
             raise TypeError("Expected argument 'direction' to be a str")
         pulumi.set(__self__, "direction", direction)
@@ -40,9 +40,6 @@ class GetApiShieldOperationsResult:
         if hosts and not isinstance(hosts, list):
             raise TypeError("Expected argument 'hosts' to be a list")
         pulumi.set(__self__, "hosts", hosts)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -91,14 +88,6 @@ class GetApiShieldOperationsResult:
         Filter results to only include the specified hosts.
         """
         return pulumi.get(self, "hosts")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="maxItems")
@@ -152,7 +141,6 @@ class AwaitableGetApiShieldOperationsResult(GetApiShieldOperationsResult):
             endpoint=self.endpoint,
             features=self.features,
             hosts=self.hosts,
-            id=self.id,
             max_items=self.max_items,
             methods=self.methods,
             order=self.order,
@@ -221,7 +209,6 @@ def get_api_shield_operations(direction: Optional[_builtins.str] = None,
         endpoint=pulumi.get(__ret__, 'endpoint'),
         features=pulumi.get(__ret__, 'features'),
         hosts=pulumi.get(__ret__, 'hosts'),
-        id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         methods=pulumi.get(__ret__, 'methods'),
         order=pulumi.get(__ret__, 'order'),
@@ -287,7 +274,6 @@ def get_api_shield_operations_output(direction: pulumi.Input[Optional[Optional[_
         endpoint=pulumi.get(__response__, 'endpoint'),
         features=pulumi.get(__response__, 'features'),
         hosts=pulumi.get(__response__, 'hosts'),
-        id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         methods=pulumi.get(__response__, 'methods'),
         order=pulumi.get(__response__, 'order'),

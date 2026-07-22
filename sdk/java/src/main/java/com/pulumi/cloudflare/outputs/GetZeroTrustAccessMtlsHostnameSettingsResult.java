@@ -34,11 +34,6 @@ public final class GetZeroTrustAccessMtlsHostnameSettingsResult {
      */
     private String hostname;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
@@ -74,13 +69,6 @@ public final class GetZeroTrustAccessMtlsHostnameSettingsResult {
         return this.hostname;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
@@ -101,7 +89,6 @@ public final class GetZeroTrustAccessMtlsHostnameSettingsResult {
         private Boolean chinaNetwork;
         private Boolean clientCertificateForwarding;
         private String hostname;
-        private String id;
         private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetZeroTrustAccessMtlsHostnameSettingsResult defaults) {
@@ -110,7 +97,6 @@ public final class GetZeroTrustAccessMtlsHostnameSettingsResult {
     	      this.chinaNetwork = defaults.chinaNetwork;
     	      this.clientCertificateForwarding = defaults.clientCertificateForwarding;
     	      this.hostname = defaults.hostname;
-    	      this.id = defaults.id;
     	      this.zoneId = defaults.zoneId;
         }
 
@@ -145,14 +131,6 @@ public final class GetZeroTrustAccessMtlsHostnameSettingsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessMtlsHostnameSettingsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
 
             this.zoneId = zoneId;
@@ -164,7 +142,6 @@ public final class GetZeroTrustAccessMtlsHostnameSettingsResult {
             _resultValue.chinaNetwork = chinaNetwork;
             _resultValue.clientCertificateForwarding = clientCertificateForwarding;
             _resultValue.hostname = hostname;
-            _resultValue.id = id;
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

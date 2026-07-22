@@ -177,10 +177,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
         /// Available values: "1.0", "1.1", "1.2", "1.3".
         /// </summary>
@@ -207,8 +203,6 @@ namespace Pulumi.Cloudflare
 
             bool enabled,
 
-            string id,
-
             string minTls,
 
             Outputs.GetR2CustomDomainStatusResult status,
@@ -222,7 +216,6 @@ namespace Pulumi.Cloudflare
             Ciphers = ciphers;
             Domain = domain;
             Enabled = enabled;
-            Id = id;
             MinTls = minTls;
             Status = status;
             ZoneId = zoneId;

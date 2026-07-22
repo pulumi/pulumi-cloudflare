@@ -72,8 +72,6 @@ type LookupZeroTrustDexTestsArgs struct {
 type LookupZeroTrustDexTestsResult struct {
 	// Unique identifier linked to an account.
 	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Filter by test type.
 	// Available values: "http", "traceroute".
 	Kind *string `pulumi:"kind"`
@@ -129,11 +127,6 @@ func (o LookupZeroTrustDexTestsResultOutput) ToLookupZeroTrustDexTestsResultOutp
 // Unique identifier linked to an account.
 func (o LookupZeroTrustDexTestsResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustDexTestsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupZeroTrustDexTestsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDexTestsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Filter by test type.

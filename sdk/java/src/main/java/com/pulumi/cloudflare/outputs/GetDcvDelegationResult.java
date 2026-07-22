@@ -13,11 +13,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDcvDelegationResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return The DCV Delegation unique identifier.
      * 
      */
@@ -29,13 +24,6 @@ public final class GetDcvDelegationResult {
     private @Nullable String zoneId;
 
     private GetDcvDelegationResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     /**
      * @return The DCV Delegation unique identifier.
      * 
@@ -60,25 +48,15 @@ public final class GetDcvDelegationResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private String uuid;
         private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetDcvDelegationResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.uuid = defaults.uuid;
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetDcvDelegationResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder uuid(String uuid) {
             if (uuid == null) {
@@ -95,7 +73,6 @@ public final class GetDcvDelegationResult {
         }
         public GetDcvDelegationResult build() {
             final var _resultValue = new GetDcvDelegationResult();
-            _resultValue.id = id;
             _resultValue.uuid = uuid;
             _resultValue.zoneId = zoneId;
             return _resultValue;

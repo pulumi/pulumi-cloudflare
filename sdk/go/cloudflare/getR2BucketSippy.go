@@ -65,8 +65,6 @@ type LookupR2BucketSippyResult struct {
 	Destination GetR2BucketSippyDestination `pulumi:"destination"`
 	// State of Sippy for this bucket.
 	Enabled bool `pulumi:"enabled"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Details about the configured source bucket.
 	Source GetR2BucketSippySource `pulumi:"source"`
 }
@@ -125,11 +123,6 @@ func (o LookupR2BucketSippyResultOutput) Destination() GetR2BucketSippyDestinati
 // State of Sippy for this bucket.
 func (o LookupR2BucketSippyResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupR2BucketSippyResult) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupR2BucketSippyResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupR2BucketSippyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Details about the configured source bucket.

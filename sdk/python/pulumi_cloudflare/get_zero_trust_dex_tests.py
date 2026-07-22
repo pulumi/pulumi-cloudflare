@@ -27,13 +27,10 @@ class GetZeroTrustDexTestsResult:
     """
     A collection of values returned by getZeroTrustDexTests.
     """
-    def __init__(__self__, account_id=None, id=None, kind=None, max_items=None, results=None, test_name=None):
+    def __init__(__self__, account_id=None, kind=None, max_items=None, results=None, test_name=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -54,14 +51,6 @@ class GetZeroTrustDexTestsResult:
         Unique identifier linked to an account.
         """
         return pulumi.get(self, "account_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -104,7 +93,6 @@ class AwaitableGetZeroTrustDexTestsResult(GetZeroTrustDexTestsResult):
             yield self
         return GetZeroTrustDexTestsResult(
             account_id=self.account_id,
-            id=self.id,
             kind=self.kind,
             max_items=self.max_items,
             results=self.results,
@@ -152,7 +140,6 @@ def get_zero_trust_dex_tests(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetZeroTrustDexTestsResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-        id=pulumi.get(__ret__, 'id'),
         kind=pulumi.get(__ret__, 'kind'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'),
@@ -197,7 +184,6 @@ def get_zero_trust_dex_tests_output(account_id: pulumi.Input[Optional[Optional[_
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustDexTests:getZeroTrustDexTests', __args__, opts=opts, typ=GetZeroTrustDexTestsResult)
     return __ret__.apply(lambda __response__: GetZeroTrustDexTestsResult(
         account_id=pulumi.get(__response__, 'account_id'),
-        id=pulumi.get(__response__, 'id'),
         kind=pulumi.get(__response__, 'kind'),
         max_items=pulumi.get(__response__, 'max_items'),
         results=pulumi.get(__response__, 'results'),

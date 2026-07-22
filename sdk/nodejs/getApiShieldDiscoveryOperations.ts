@@ -74,10 +74,6 @@ export interface GetApiShieldDiscoveryOperationsResult {
     readonly direction?: string;
     readonly endpoint?: string;
     readonly hosts?: string[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly maxItems?: number;
     readonly methods?: string[];
     readonly order?: string;

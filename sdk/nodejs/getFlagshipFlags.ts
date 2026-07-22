@@ -69,10 +69,6 @@ export interface GetFlagshipFlagsResult {
      */
     readonly appId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Max items to return (1–200).
      */
     readonly limit?: string;

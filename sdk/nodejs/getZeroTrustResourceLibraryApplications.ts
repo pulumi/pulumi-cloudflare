@@ -53,10 +53,6 @@ export interface GetZeroTrustResourceLibraryApplicationsArgs {
 export interface GetZeroTrustResourceLibraryApplicationsResult {
     readonly accountId: string;
     readonly filter?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly limit: number;
     readonly maxItems?: number;
     readonly offset: number;

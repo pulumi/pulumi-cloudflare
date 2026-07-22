@@ -84,8 +84,6 @@ type LookupEmailSecurityBlockSendersResult struct {
 	// The sorting direction.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Field to sort by.
@@ -160,11 +158,6 @@ func (o LookupEmailSecurityBlockSendersResultOutput) AccountId() pulumi.StringPt
 // Available values: "asc", "desc".
 func (o LookupEmailSecurityBlockSendersResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityBlockSendersResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupEmailSecurityBlockSendersResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEmailSecurityBlockSendersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

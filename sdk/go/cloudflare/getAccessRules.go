@@ -94,8 +94,6 @@ type LookupAccessRulesResult struct {
 	// Defines the direction used to sort returned rules.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
 	// Available values: "any", "all".
 	Match string `pulumi:"match"`
@@ -183,11 +181,6 @@ func (o LookupAccessRulesResultOutput) Configuration() GetAccessRulesConfigurati
 // Available values: "asc", "desc".
 func (o LookupAccessRulesResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccessRulesResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupAccessRulesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAccessRulesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.

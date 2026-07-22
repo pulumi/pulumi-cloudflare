@@ -37,11 +37,6 @@ public final class GetZeroTrustAccessApplicationsInvokeResult {
      */
     private @Nullable Boolean exact;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -97,13 +92,6 @@ public final class GetZeroTrustAccessApplicationsInvokeResult {
         return Optional.ofNullable(this.exact);
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -152,7 +140,6 @@ public final class GetZeroTrustAccessApplicationsInvokeResult {
         private @Nullable String aud;
         private @Nullable String domain;
         private @Nullable Boolean exact;
-        private String id;
         private @Nullable Integer maxItems;
         private @Nullable String name;
         private List<GetZeroTrustAccessApplicationsResult> results;
@@ -165,7 +152,6 @@ public final class GetZeroTrustAccessApplicationsInvokeResult {
     	      this.aud = defaults.aud;
     	      this.domain = defaults.domain;
     	      this.exact = defaults.exact;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.name = defaults.name;
     	      this.results = defaults.results;
@@ -195,14 +181,6 @@ public final class GetZeroTrustAccessApplicationsInvokeResult {
         public Builder exact(@Nullable Boolean exact) {
 
             this.exact = exact;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationsInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -246,7 +224,6 @@ public final class GetZeroTrustAccessApplicationsInvokeResult {
             _resultValue.aud = aud;
             _resultValue.domain = domain;
             _resultValue.exact = exact;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.name = name;
             _resultValue.results = results;

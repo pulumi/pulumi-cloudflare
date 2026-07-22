@@ -139,10 +139,6 @@ namespace Pulumi.Cloudflare
     public sealed class GetWeb3HostnamesResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
@@ -157,15 +153,12 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetWeb3HostnamesResult(
-            string id,
-
             int? maxItems,
 
             ImmutableArray<Outputs.GetWeb3HostnamesResultResult> results,
 
             string? zoneId)
         {
-            Id = id;
             MaxItems = maxItems;
             Results = results;
             ZoneId = zoneId;

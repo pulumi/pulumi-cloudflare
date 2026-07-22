@@ -50,11 +50,6 @@ public final class GetStreamResult {
      */
     private Double duration;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return A Cloudflare-generated unique identifier for a media item.
      * 
      */
@@ -195,13 +190,6 @@ public final class GetStreamResult {
      */
     public Double duration() {
         return this.duration;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return A Cloudflare-generated unique identifier for a media item.
@@ -361,7 +349,6 @@ public final class GetStreamResult {
         private String created;
         private String creator;
         private Double duration;
-        private String id;
         private String identifier;
         private GetStreamInput input;
         private String liveInput;
@@ -393,7 +380,6 @@ public final class GetStreamResult {
     	      this.created = defaults.created;
     	      this.creator = defaults.creator;
     	      this.duration = defaults.duration;
-    	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.input = defaults.input;
     	      this.liveInput = defaults.liveInput;
@@ -467,14 +453,6 @@ public final class GetStreamResult {
               throw new MissingRequiredPropertyException("GetStreamResult", "duration");
             }
             this.duration = duration;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetStreamResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -661,7 +639,6 @@ public final class GetStreamResult {
             _resultValue.created = created;
             _resultValue.creator = creator;
             _resultValue.duration = duration;
-            _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.input = input;
             _resultValue.liveInput = liveInput;

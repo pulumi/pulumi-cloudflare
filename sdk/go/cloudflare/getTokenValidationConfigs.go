@@ -63,8 +63,6 @@ type LookupTokenValidationConfigsArgs struct {
 
 // A collection of values returned by getTokenValidationConfigs.
 type LookupTokenValidationConfigsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -107,11 +105,6 @@ func (o LookupTokenValidationConfigsResultOutput) ToLookupTokenValidationConfigs
 
 func (o LookupTokenValidationConfigsResultOutput) ToLookupTokenValidationConfigsResultOutputWithContext(ctx context.Context) LookupTokenValidationConfigsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupTokenValidationConfigsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTokenValidationConfigsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

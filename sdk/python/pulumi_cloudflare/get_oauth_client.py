@@ -27,7 +27,7 @@ class GetOauthClientResult:
     """
     A collection of values returned by getOauthClient.
     """
-    def __init__(__self__, account_id=None, allowed_cors_origins=None, client_id=None, client_name=None, client_uri=None, client_uri_verification=None, created_at=None, grant_types=None, has_rotated_secret=None, id=None, logo_uri=None, oauth_client_id=None, policy_uri=None, post_logout_redirect_uris=None, promoted_at=None, redirect_uris=None, response_types=None, scopes=None, token_endpoint_auth_method=None, tos_uri=None, updated_at=None, visibility=None):
+    def __init__(__self__, account_id=None, allowed_cors_origins=None, client_id=None, client_name=None, client_uri=None, client_uri_verification=None, created_at=None, grant_types=None, has_rotated_secret=None, logo_uri=None, oauth_client_id=None, policy_uri=None, post_logout_redirect_uris=None, promoted_at=None, redirect_uris=None, response_types=None, scopes=None, token_endpoint_auth_method=None, tos_uri=None, updated_at=None, visibility=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -55,9 +55,6 @@ class GetOauthClientResult:
         if has_rotated_secret and not isinstance(has_rotated_secret, bool):
             raise TypeError("Expected argument 'has_rotated_secret' to be a bool")
         pulumi.set(__self__, "has_rotated_secret", has_rotated_secret)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if logo_uri and not isinstance(logo_uri, str):
             raise TypeError("Expected argument 'logo_uri' to be a str")
         pulumi.set(__self__, "logo_uri", logo_uri)
@@ -166,14 +163,6 @@ class GetOauthClientResult:
         Indicates whether the client has a rotated secret that has not yet been deleted.
         """
         return pulumi.get(self, "has_rotated_secret")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="logoUri")
@@ -289,7 +278,6 @@ class AwaitableGetOauthClientResult(GetOauthClientResult):
             created_at=self.created_at,
             grant_types=self.grant_types,
             has_rotated_secret=self.has_rotated_secret,
-            id=self.id,
             logo_uri=self.logo_uri,
             oauth_client_id=self.oauth_client_id,
             policy_uri=self.policy_uri,
@@ -342,7 +330,6 @@ def get_oauth_client(account_id: Optional[_builtins.str] = None,
         created_at=pulumi.get(__ret__, 'created_at'),
         grant_types=pulumi.get(__ret__, 'grant_types'),
         has_rotated_secret=pulumi.get(__ret__, 'has_rotated_secret'),
-        id=pulumi.get(__ret__, 'id'),
         logo_uri=pulumi.get(__ret__, 'logo_uri'),
         oauth_client_id=pulumi.get(__ret__, 'oauth_client_id'),
         policy_uri=pulumi.get(__ret__, 'policy_uri'),
@@ -392,7 +379,6 @@ def get_oauth_client_output(account_id: pulumi.Input[Optional[_builtins.str]] = 
         created_at=pulumi.get(__response__, 'created_at'),
         grant_types=pulumi.get(__response__, 'grant_types'),
         has_rotated_secret=pulumi.get(__response__, 'has_rotated_secret'),
-        id=pulumi.get(__response__, 'id'),
         logo_uri=pulumi.get(__response__, 'logo_uri'),
         oauth_client_id=pulumi.get(__response__, 'oauth_client_id'),
         policy_uri=pulumi.get(__response__, 'policy_uri'),

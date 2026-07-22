@@ -27,13 +27,10 @@ class GetAccountApiTokenPermissionGroupsResult:
     """
     A collection of values returned by getAccountApiTokenPermissionGroups.
     """
-    def __init__(__self__, account_id=None, id=None, name=None, permission_groups=None, scope=None):
+    def __init__(__self__, account_id=None, name=None, permission_groups=None, scope=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -51,14 +48,6 @@ class GetAccountApiTokenPermissionGroupsResult:
         Account identifier tag.
         """
         return pulumi.get(self, "account_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -91,7 +80,6 @@ class AwaitableGetAccountApiTokenPermissionGroupsResult(GetAccountApiTokenPermis
             yield self
         return GetAccountApiTokenPermissionGroupsResult(
             account_id=self.account_id,
-            id=self.id,
             name=self.name,
             permission_groups=self.permission_groups,
             scope=self.scope)
@@ -134,7 +122,6 @@ def get_account_api_token_permission_groups(account_id: Optional[_builtins.str] 
 
     return AwaitableGetAccountApiTokenPermissionGroupsResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-        id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         permission_groups=pulumi.get(__ret__, 'permission_groups'),
         scope=pulumi.get(__ret__, 'scope'))
@@ -174,7 +161,6 @@ def get_account_api_token_permission_groups_output(account_id: pulumi.Input[Opti
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getAccountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups', __args__, opts=opts, typ=GetAccountApiTokenPermissionGroupsResult)
     return __ret__.apply(lambda __response__: GetAccountApiTokenPermissionGroupsResult(
         account_id=pulumi.get(__response__, 'account_id'),
-        id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         permission_groups=pulumi.get(__response__, 'permission_groups'),
         scope=pulumi.get(__response__, 'scope')))

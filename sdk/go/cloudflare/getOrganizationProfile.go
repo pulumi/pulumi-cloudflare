@@ -58,9 +58,7 @@ type LookupOrganizationProfileResult struct {
 	BusinessName     string `pulumi:"businessName"`
 	BusinessPhone    string `pulumi:"businessPhone"`
 	ExternalMetadata string `pulumi:"externalMetadata"`
-	// The provider-assigned unique ID for this managed resource.
-	Id             string `pulumi:"id"`
-	OrganizationId string `pulumi:"organizationId"`
+	OrganizationId   string `pulumi:"organizationId"`
 }
 
 func LookupOrganizationProfileOutput(ctx *pulumi.Context, args LookupOrganizationProfileOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationProfileResultOutput {
@@ -114,11 +112,6 @@ func (o LookupOrganizationProfileResultOutput) BusinessPhone() pulumi.StringOutp
 
 func (o LookupOrganizationProfileResultOutput) ExternalMetadata() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationProfileResult) string { return v.ExternalMetadata }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupOrganizationProfileResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOrganizationProfileResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o LookupOrganizationProfileResultOutput) OrganizationId() pulumi.StringOutput {

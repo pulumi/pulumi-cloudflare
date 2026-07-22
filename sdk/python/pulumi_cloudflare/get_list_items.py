@@ -27,13 +27,10 @@ class GetListItemsResult:
     """
     A collection of values returned by getListItems.
     """
-    def __init__(__self__, account_id=None, id=None, list_id=None, max_items=None, per_page=None, results=None, search=None):
+    def __init__(__self__, account_id=None, list_id=None, max_items=None, per_page=None, results=None, search=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if list_id and not isinstance(list_id, str):
             raise TypeError("Expected argument 'list_id' to be a str")
         pulumi.set(__self__, "list_id", list_id)
@@ -57,14 +54,6 @@ class GetListItemsResult:
         The Account ID for this resource.
         """
         return pulumi.get(self, "account_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="listId")
@@ -114,7 +103,6 @@ class AwaitableGetListItemsResult(GetListItemsResult):
             yield self
         return GetListItemsResult(
             account_id=self.account_id,
-            id=self.id,
             list_id=self.list_id,
             max_items=self.max_items,
             per_page=self.per_page,
@@ -164,7 +152,6 @@ def get_list_items(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetListItemsResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-        id=pulumi.get(__ret__, 'id'),
         list_id=pulumi.get(__ret__, 'list_id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         per_page=pulumi.get(__ret__, 'per_page'),
@@ -211,7 +198,6 @@ def get_list_items_output(account_id: pulumi.Input[Optional[Optional[_builtins.s
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getListItems:getListItems', __args__, opts=opts, typ=GetListItemsResult)
     return __ret__.apply(lambda __response__: GetListItemsResult(
         account_id=pulumi.get(__response__, 'account_id'),
-        id=pulumi.get(__response__, 'id'),
         list_id=pulumi.get(__response__, 'list_id'),
         max_items=pulumi.get(__response__, 'max_items'),
         per_page=pulumi.get(__response__, 'per_page'),

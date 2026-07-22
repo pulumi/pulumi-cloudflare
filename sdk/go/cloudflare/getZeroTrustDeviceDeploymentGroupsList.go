@@ -31,8 +31,6 @@ type LookupZeroTrustDeviceDeploymentGroupsListArgs struct {
 // A collection of values returned by getZeroTrustDeviceDeploymentGroupsList.
 type LookupZeroTrustDeviceDeploymentGroupsListResult struct {
 	AccountId string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -76,11 +74,6 @@ func (o LookupZeroTrustDeviceDeploymentGroupsListResultOutput) ToLookupZeroTrust
 
 func (o LookupZeroTrustDeviceDeploymentGroupsListResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDeviceDeploymentGroupsListResult) string { return v.AccountId }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupZeroTrustDeviceDeploymentGroupsListResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDeviceDeploymentGroupsListResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

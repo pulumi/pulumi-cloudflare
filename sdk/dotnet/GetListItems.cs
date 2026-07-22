@@ -188,10 +188,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The unique ID of the list.
         /// </summary>
         public readonly string ListId;
@@ -216,8 +212,6 @@ namespace Pulumi.Cloudflare
         private GetListItemsResult(
             string? accountId,
 
-            string id,
-
             string listId,
 
             int? maxItems,
@@ -229,7 +223,6 @@ namespace Pulumi.Cloudflare
             string? search)
         {
             AccountId = accountId;
-            Id = id;
             ListId = listId;
             MaxItems = maxItems;
             PerPage = perPage;

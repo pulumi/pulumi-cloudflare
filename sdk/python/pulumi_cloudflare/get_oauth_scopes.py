@@ -27,24 +27,13 @@ class GetOauthScopesResult:
     """
     A collection of values returned by getOauthScopes.
     """
-    def __init__(__self__, id=None, max_items=None, results=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, max_items=None, results=None):
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
         if results and not isinstance(results, list):
             raise TypeError("Expected argument 'results' to be a list")
         pulumi.set(__self__, "results", results)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="maxItems")
@@ -69,7 +58,6 @@ class AwaitableGetOauthScopesResult(GetOauthScopesResult):
         if False:
             yield self
         return GetOauthScopesResult(
-            id=self.id,
             max_items=self.max_items,
             results=self.results)
 
@@ -95,7 +83,6 @@ def get_oauth_scopes(max_items: Optional[_builtins.int] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getOauthScopes:getOauthScopes', __args__, opts=opts, typ=GetOauthScopesResult).value
 
     return AwaitableGetOauthScopesResult(
-        id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'))
 def get_oauth_scopes_output(max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
@@ -118,6 +105,5 @@ def get_oauth_scopes_output(max_items: pulumi.Input[Optional[Optional[_builtins.
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getOauthScopes:getOauthScopes', __args__, opts=opts, typ=GetOauthScopesResult)
     return __ret__.apply(lambda __response__: GetOauthScopesResult(
-        id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         results=pulumi.get(__response__, 'results')))

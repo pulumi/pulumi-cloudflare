@@ -65,8 +65,6 @@ type LookupZoneDnsSettingsResult struct {
 	FlattenAllCnames bool `pulumi:"flattenAllCnames"`
 	// Whether to enable Foundation DNS Advanced Nameservers on the zone.
 	FoundationDns bool `pulumi:"foundationDns"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Settings for this internal zone.
 	InternalDns GetZoneDnsSettingsInternalDns `pulumi:"internalDns"`
 	// Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
@@ -128,11 +126,6 @@ func (o LookupZoneDnsSettingsResultOutput) FlattenAllCnames() pulumi.BoolOutput 
 // Whether to enable Foundation DNS Advanced Nameservers on the zone.
 func (o LookupZoneDnsSettingsResultOutput) FoundationDns() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZoneDnsSettingsResult) bool { return v.FoundationDns }).(pulumi.BoolOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupZoneDnsSettingsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZoneDnsSettingsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Settings for this internal zone.

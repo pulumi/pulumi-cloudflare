@@ -67,8 +67,6 @@ type LookupPipelineSinksArgs struct {
 type LookupPipelineSinksResult struct {
 	// Specifies the public ID of the account.
 	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Filters sinks by name (case-insensitive substring).
@@ -120,11 +118,6 @@ func (o LookupPipelineSinksResultOutput) ToLookupPipelineSinksResultOutputWithCo
 // Specifies the public ID of the account.
 func (o LookupPipelineSinksResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPipelineSinksResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupPipelineSinksResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPipelineSinksResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

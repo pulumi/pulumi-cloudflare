@@ -128,10 +128,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string CreatedOn;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The timestamp of when the snippet was last modified.
         /// </summary>
         public readonly string ModifiedOn;
@@ -148,8 +144,6 @@ namespace Pulumi.Cloudflare
         private GetSnippetsResult(
             string createdOn,
 
-            string id,
-
             string modifiedOn,
 
             string snippetName,
@@ -157,7 +151,6 @@ namespace Pulumi.Cloudflare
             string zoneId)
         {
             CreatedOn = createdOn;
-            Id = id;
             ModifiedOn = modifiedOn;
             SnippetName = snippetName;
             ZoneId = zoneId;

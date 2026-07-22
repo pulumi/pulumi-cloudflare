@@ -165,10 +165,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? Direction;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
@@ -183,15 +179,12 @@ namespace Pulumi.Cloudflare
 
             string? direction,
 
-            string id,
-
             int? maxItems,
 
             ImmutableArray<Outputs.GetAccountTokensResultResult> results)
         {
             AccountId = accountId;
             Direction = direction;
-            Id = id;
             MaxItems = maxItems;
             Results = results;
         }

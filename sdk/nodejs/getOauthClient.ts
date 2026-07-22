@@ -86,10 +86,6 @@ export interface GetOauthClientResult {
      */
     readonly hasRotatedSecret: boolean;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * URL of the client's logo.
      */
     readonly logoUri: string;

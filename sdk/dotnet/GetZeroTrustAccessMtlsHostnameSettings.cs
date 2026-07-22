@@ -158,10 +158,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Hostname;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         public readonly string? ZoneId;
@@ -176,15 +172,12 @@ namespace Pulumi.Cloudflare
 
             string hostname,
 
-            string id,
-
             string? zoneId)
         {
             AccountId = accountId;
             ChinaNetwork = chinaNetwork;
             ClientCertificateForwarding = clientCertificateForwarding;
             Hostname = hostname;
-            Id = id;
             ZoneId = zoneId;
         }
     }

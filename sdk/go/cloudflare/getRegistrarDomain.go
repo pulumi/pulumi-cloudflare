@@ -67,8 +67,6 @@ type LookupRegistrarDomainResult struct {
 	// identifies a registration — the same domain cannot be registered
 	// twice, making it a natural idempotency key for registration requests.
 	DomainName string `pulumi:"domainName"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 }
 
 func LookupRegistrarDomainOutput(ctx *pulumi.Context, args LookupRegistrarDomainOutputArgs, opts ...pulumi.InvokeOption) LookupRegistrarDomainResultOutput {
@@ -121,11 +119,6 @@ func (o LookupRegistrarDomainResultOutput) AccountId() pulumi.StringOutput {
 // twice, making it a natural idempotency key for registration requests.
 func (o LookupRegistrarDomainResultOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistrarDomainResult) string { return v.DomainName }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupRegistrarDomainResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRegistrarDomainResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func init() {

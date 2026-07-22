@@ -70,8 +70,6 @@ type LookupStreamWatermarkResult struct {
 	DownloadedFrom string `pulumi:"downloadedFrom"`
 	// The height of the image in pixels.
 	Height int `pulumi:"height"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// The unique identifier for a watermark profile.
 	Identifier string `pulumi:"identifier"`
 	// A short description of the watermark profile.
@@ -146,11 +144,6 @@ func (o LookupStreamWatermarkResultOutput) DownloadedFrom() pulumi.StringOutput 
 // The height of the image in pixels.
 func (o LookupStreamWatermarkResultOutput) Height() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupStreamWatermarkResult) int { return v.Height }).(pulumi.IntOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupStreamWatermarkResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupStreamWatermarkResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The unique identifier for a watermark profile.

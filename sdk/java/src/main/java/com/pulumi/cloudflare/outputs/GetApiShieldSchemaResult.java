@@ -15,11 +15,6 @@ import javax.annotation.Nullable;
 public final class GetApiShieldSchemaResult {
     private String createdAt;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Kind of schema
      * Available values: &#34;openapiV3&#34;.
      * 
@@ -55,13 +50,6 @@ public final class GetApiShieldSchemaResult {
     private GetApiShieldSchemaResult() {}
     public String createdAt() {
         return this.createdAt;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Kind of schema
@@ -120,7 +108,6 @@ public final class GetApiShieldSchemaResult {
     @CustomType.Builder
     public static final class Builder {
         private String createdAt;
-        private String id;
         private String kind;
         private String name;
         private Boolean omitSource;
@@ -132,7 +119,6 @@ public final class GetApiShieldSchemaResult {
         public Builder(GetApiShieldSchemaResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdAt = defaults.createdAt;
-    	      this.id = defaults.id;
     	      this.kind = defaults.kind;
     	      this.name = defaults.name;
     	      this.omitSource = defaults.omitSource;
@@ -148,14 +134,6 @@ public final class GetApiShieldSchemaResult {
               throw new MissingRequiredPropertyException("GetApiShieldSchemaResult", "createdAt");
             }
             this.createdAt = createdAt;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetApiShieldSchemaResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -215,7 +193,6 @@ public final class GetApiShieldSchemaResult {
         public GetApiShieldSchemaResult build() {
             final var _resultValue = new GetApiShieldSchemaResult();
             _resultValue.createdAt = createdAt;
-            _resultValue.id = id;
             _resultValue.kind = kind;
             _resultValue.name = name;
             _resultValue.omitSource = omitSource;

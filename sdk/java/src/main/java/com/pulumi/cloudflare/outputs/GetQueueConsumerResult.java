@@ -28,11 +28,6 @@ public final class GetQueueConsumerResult {
      */
     private String deadLetterQueue;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return A Resource identifier.
      * 
      */
@@ -76,13 +71,6 @@ public final class GetQueueConsumerResult {
         return this.deadLetterQueue;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return A Resource identifier.
      * 
      */
@@ -123,7 +111,6 @@ public final class GetQueueConsumerResult {
         private String consumerId;
         private String createdOn;
         private String deadLetterQueue;
-        private String id;
         private String queueId;
         private String queueName;
         private String scriptName;
@@ -136,7 +123,6 @@ public final class GetQueueConsumerResult {
     	      this.consumerId = defaults.consumerId;
     	      this.createdOn = defaults.createdOn;
     	      this.deadLetterQueue = defaults.deadLetterQueue;
-    	      this.id = defaults.id;
     	      this.queueId = defaults.queueId;
     	      this.queueName = defaults.queueName;
     	      this.scriptName = defaults.scriptName;
@@ -174,14 +160,6 @@ public final class GetQueueConsumerResult {
               throw new MissingRequiredPropertyException("GetQueueConsumerResult", "deadLetterQueue");
             }
             this.deadLetterQueue = deadLetterQueue;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetQueueConsumerResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -230,7 +208,6 @@ public final class GetQueueConsumerResult {
             _resultValue.consumerId = consumerId;
             _resultValue.createdOn = createdOn;
             _resultValue.deadLetterQueue = deadLetterQueue;
-            _resultValue.id = id;
             _resultValue.queueId = queueId;
             _resultValue.queueName = queueName;
             _resultValue.scriptName = scriptName;

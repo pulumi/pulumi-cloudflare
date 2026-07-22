@@ -70,8 +70,6 @@ type LookupWorkersArgs struct {
 type LookupWorkersResult struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Sort direction.
@@ -129,11 +127,6 @@ func (o LookupWorkersResultOutput) ToLookupWorkersResultOutputWithContext(ctx co
 // Identifier.
 func (o LookupWorkersResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkersResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupWorkersResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

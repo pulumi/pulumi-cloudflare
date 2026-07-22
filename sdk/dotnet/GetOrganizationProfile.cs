@@ -110,10 +110,6 @@ namespace Pulumi.Cloudflare
         public readonly string BusinessName;
         public readonly string BusinessPhone;
         public readonly string ExternalMetadata;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string OrganizationId;
 
         [OutputConstructor]
@@ -128,8 +124,6 @@ namespace Pulumi.Cloudflare
 
             string externalMetadata,
 
-            string id,
-
             string organizationId)
         {
             BusinessAddress = businessAddress;
@@ -137,7 +131,6 @@ namespace Pulumi.Cloudflare
             BusinessName = businessName;
             BusinessPhone = businessPhone;
             ExternalMetadata = externalMetadata;
-            Id = id;
             OrganizationId = organizationId;
         }
     }

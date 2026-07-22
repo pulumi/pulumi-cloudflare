@@ -89,8 +89,6 @@ type LookupAccountDnsSettingsInternalViewsResult struct {
 	// Direction to order DNS views in.
 	// Available values: "asc", "desc".
 	Direction string `pulumi:"direction"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead.
 	// Available values: "any", "all".
 	Match string `pulumi:"match"`
@@ -167,11 +165,6 @@ func (o LookupAccountDnsSettingsInternalViewsResultOutput) AccountId() pulumi.St
 // Available values: "asc", "desc".
 func (o LookupAccountDnsSettingsInternalViewsResultOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountDnsSettingsInternalViewsResult) string { return v.Direction }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupAccountDnsSettingsInternalViewsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAccountDnsSettingsInternalViewsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead.

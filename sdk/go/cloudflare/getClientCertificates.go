@@ -71,8 +71,6 @@ type LookupClientCertificatesArgs struct {
 
 // A collection of values returned by getClientCertificates.
 type LookupClientCertificatesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Limit to the number of records returned.
 	Limit *int `pulumi:"limit"`
 	// Max items to fetch, default: 1000
@@ -129,11 +127,6 @@ func (o LookupClientCertificatesResultOutput) ToLookupClientCertificatesResultOu
 
 func (o LookupClientCertificatesResultOutput) ToLookupClientCertificatesResultOutputWithContext(ctx context.Context) LookupClientCertificatesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupClientCertificatesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupClientCertificatesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Limit to the number of records returned.

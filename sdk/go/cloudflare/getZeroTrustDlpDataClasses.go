@@ -61,8 +61,6 @@ type LookupZeroTrustDlpDataClassesArgs struct {
 // A collection of values returned by getZeroTrustDlpDataClasses.
 type LookupZeroTrustDlpDataClassesResult struct {
 	AccountId string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -106,11 +104,6 @@ func (o LookupZeroTrustDlpDataClassesResultOutput) ToLookupZeroTrustDlpDataClass
 
 func (o LookupZeroTrustDlpDataClassesResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpDataClassesResult) string { return v.AccountId }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupZeroTrustDlpDataClassesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDlpDataClassesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

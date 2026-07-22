@@ -64,8 +64,6 @@ type LookupAccountRolesArgs struct {
 type LookupAccountRolesResult struct {
 	// Account identifier tag.
 	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -111,11 +109,6 @@ func (o LookupAccountRolesResultOutput) ToLookupAccountRolesResultOutputWithCont
 // Account identifier tag.
 func (o LookupAccountRolesResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccountRolesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupAccountRolesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAccountRolesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

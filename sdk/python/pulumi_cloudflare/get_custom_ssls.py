@@ -27,10 +27,7 @@ class GetCustomSslsResult:
     """
     A collection of values returned by getCustomSsls.
     """
-    def __init__(__self__, id=None, match=None, max_items=None, results=None, status=None, zone_id=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, match=None, max_items=None, results=None, status=None, zone_id=None):
         if match and not isinstance(match, str):
             raise TypeError("Expected argument 'match' to be a str")
         pulumi.set(__self__, "match", match)
@@ -46,14 +43,6 @@ class GetCustomSslsResult:
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -104,7 +93,6 @@ class AwaitableGetCustomSslsResult(GetCustomSslsResult):
         if False:
             yield self
         return GetCustomSslsResult(
-            id=self.id,
             match=self.match,
             max_items=self.max_items,
             results=self.results,
@@ -152,7 +140,6 @@ def get_custom_ssls(match: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getCustomSsls:getCustomSsls', __args__, opts=opts, typ=GetCustomSslsResult).value
 
     return AwaitableGetCustomSslsResult(
-        id=pulumi.get(__ret__, 'id'),
         match=pulumi.get(__ret__, 'match'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'),
@@ -197,7 +184,6 @@ def get_custom_ssls_output(match: pulumi.Input[Optional[Optional[_builtins.str]]
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getCustomSsls:getCustomSsls', __args__, opts=opts, typ=GetCustomSslsResult)
     return __ret__.apply(lambda __response__: GetCustomSslsResult(
-        id=pulumi.get(__response__, 'id'),
         match=pulumi.get(__response__, 'match'),
         max_items=pulumi.get(__response__, 'max_items'),
         results=pulumi.get(__response__, 'results'),

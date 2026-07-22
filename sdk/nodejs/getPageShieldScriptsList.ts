@@ -135,10 +135,6 @@ export interface GetPageShieldScriptsListResult {
      * Includes scripts that match one or more URL-encoded hostnames separated by commas.
      */
     readonly hosts?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly maxItems?: number;
     readonly orderBy?: string;
     readonly page?: string;

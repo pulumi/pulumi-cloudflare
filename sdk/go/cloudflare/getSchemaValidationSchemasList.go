@@ -68,8 +68,6 @@ type LookupSchemaValidationSchemasListArgs struct {
 
 // A collection of values returned by getSchemaValidationSchemasList.
 type LookupSchemaValidationSchemasListResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Omit the source-files of schemas and only retrieve their meta-data.
@@ -120,11 +118,6 @@ func (o LookupSchemaValidationSchemasListResultOutput) ToLookupSchemaValidationS
 
 func (o LookupSchemaValidationSchemasListResultOutput) ToLookupSchemaValidationSchemasListResultOutputWithContext(ctx context.Context) LookupSchemaValidationSchemasListResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupSchemaValidationSchemasListResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSchemaValidationSchemasListResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

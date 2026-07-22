@@ -66,8 +66,6 @@ type LookupStreamAudioTrackResult struct {
 	AccountId string `pulumi:"accountId"`
 	// Array of audio tracks for the video.
 	Audios []GetStreamAudioTrackAudio `pulumi:"audios"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier string `pulumi:"identifier"`
 }
@@ -116,11 +114,6 @@ func (o LookupStreamAudioTrackResultOutput) AccountId() pulumi.StringOutput {
 // Array of audio tracks for the video.
 func (o LookupStreamAudioTrackResultOutput) Audios() GetStreamAudioTrackAudioArrayOutput {
 	return o.ApplyT(func(v LookupStreamAudioTrackResult) []GetStreamAudioTrackAudio { return v.Audios }).(GetStreamAudioTrackAudioArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupStreamAudioTrackResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupStreamAudioTrackResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A Cloudflare-generated unique identifier for a media item.

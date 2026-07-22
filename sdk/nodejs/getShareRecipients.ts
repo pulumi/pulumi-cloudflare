@@ -61,10 +61,6 @@ export interface GetShareRecipientsResult {
      */
     readonly accountId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Include resources in the response.
      */
     readonly includeResources?: boolean;

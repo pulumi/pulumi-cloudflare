@@ -28,7 +28,7 @@ class GetAccessRulesResult:
     """
     A collection of values returned by getAccessRules.
     """
-    def __init__(__self__, account_id=None, configuration=None, direction=None, id=None, match=None, max_items=None, mode=None, notes=None, order=None, results=None, zone_id=None):
+    def __init__(__self__, account_id=None, configuration=None, direction=None, match=None, max_items=None, mode=None, notes=None, order=None, results=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -38,9 +38,6 @@ class GetAccessRulesResult:
         if direction and not isinstance(direction, str):
             raise TypeError("Expected argument 'direction' to be a str")
         pulumi.set(__self__, "direction", direction)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if match and not isinstance(match, str):
             raise TypeError("Expected argument 'match' to be a str")
         pulumi.set(__self__, "match", match)
@@ -84,14 +81,6 @@ class GetAccessRulesResult:
         Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -163,7 +152,6 @@ class AwaitableGetAccessRulesResult(GetAccessRulesResult):
             account_id=self.account_id,
             configuration=self.configuration,
             direction=self.direction,
-            id=self.id,
             match=self.match,
             max_items=self.max_items,
             mode=self.mode,
@@ -239,7 +227,6 @@ def get_access_rules(account_id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         configuration=pulumi.get(__ret__, 'configuration'),
         direction=pulumi.get(__ret__, 'direction'),
-        id=pulumi.get(__ret__, 'id'),
         match=pulumi.get(__ret__, 'match'),
         max_items=pulumi.get(__ret__, 'max_items'),
         mode=pulumi.get(__ret__, 'mode'),
@@ -312,7 +299,6 @@ def get_access_rules_output(account_id: pulumi.Input[Optional[Optional[_builtins
         account_id=pulumi.get(__response__, 'account_id'),
         configuration=pulumi.get(__response__, 'configuration'),
         direction=pulumi.get(__response__, 'direction'),
-        id=pulumi.get(__response__, 'id'),
         match=pulumi.get(__response__, 'match'),
         max_items=pulumi.get(__response__, 'max_items'),
         mode=pulumi.get(__response__, 'mode'),

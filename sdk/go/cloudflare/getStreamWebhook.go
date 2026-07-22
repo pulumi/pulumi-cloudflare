@@ -61,8 +61,6 @@ type LookupStreamWebhookArgs struct {
 type LookupStreamWebhookResult struct {
 	// The account identifier tag.
 	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// The date and time the webhook was last modified.
 	Modified string `pulumi:"modified"`
 	// The URL where webhooks will be sent.
@@ -108,11 +106,6 @@ func (o LookupStreamWebhookResultOutput) ToLookupStreamWebhookResultOutputWithCo
 // The account identifier tag.
 func (o LookupStreamWebhookResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStreamWebhookResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupStreamWebhookResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupStreamWebhookResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The date and time the webhook was last modified.

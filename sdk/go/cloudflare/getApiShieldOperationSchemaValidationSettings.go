@@ -62,8 +62,6 @@ type LookupApiShieldOperationSchemaValidationSettingsArgs struct {
 
 // A collection of values returned by getApiShieldOperationSchemaValidationSettings.
 type LookupApiShieldOperationSchemaValidationSettingsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id               string  `pulumi:"id"`
 	MitigationAction string  `pulumi:"mitigationAction"`
 	OperationId      string  `pulumi:"operationId"`
 	ZoneId           *string `pulumi:"zoneId"`
@@ -101,11 +99,6 @@ func (o LookupApiShieldOperationSchemaValidationSettingsResultOutput) ToLookupAp
 
 func (o LookupApiShieldOperationSchemaValidationSettingsResultOutput) ToLookupApiShieldOperationSchemaValidationSettingsResultOutputWithContext(ctx context.Context) LookupApiShieldOperationSchemaValidationSettingsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupApiShieldOperationSchemaValidationSettingsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupApiShieldOperationSchemaValidationSettingsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o LookupApiShieldOperationSchemaValidationSettingsResultOutput) MitigationAction() pulumi.StringOutput {

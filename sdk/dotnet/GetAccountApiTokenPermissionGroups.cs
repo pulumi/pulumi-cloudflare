@@ -165,10 +165,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Filter by the name of the permission group.
         /// The value must be URL-encoded.
         /// </summary>
@@ -184,8 +180,6 @@ namespace Pulumi.Cloudflare
         private GetAccountApiTokenPermissionGroupsResult(
             string? accountId,
 
-            string id,
-
             string? name,
 
             ImmutableArray<Outputs.GetAccountApiTokenPermissionGroupsPermissionGroupResult> permissionGroups,
@@ -193,7 +187,6 @@ namespace Pulumi.Cloudflare
             string? scope)
         {
             AccountId = accountId;
-            Id = id;
             Name = name;
             PermissionGroups = permissionGroups;
             Scope = scope;

@@ -163,10 +163,6 @@ namespace Pulumi.Cloudflare
         public readonly Outputs.GetZeroTrustTunnelCloudflaredConfigConfigResult Config;
         public readonly string CreatedAt;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Indicates if this is a locally or remotely configured tunnel. If `Local`, manage the tunnel using a YAML file on the origin machine. If `Cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
         /// Available values: "local", "cloudflare".
         /// </summary>
@@ -188,8 +184,6 @@ namespace Pulumi.Cloudflare
 
             string createdAt,
 
-            string id,
-
             string source,
 
             string tunnelId,
@@ -199,7 +193,6 @@ namespace Pulumi.Cloudflare
             AccountId = accountId;
             Config = config;
             CreatedAt = createdAt;
-            Id = id;
             Source = source;
             TunnelId = tunnelId;
             Version = version;

@@ -153,10 +153,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Whether the Worker's Preview URLs are available on the workers.dev subdomain.
         /// </summary>
         public readonly bool PreviewsEnabled;
@@ -171,15 +167,12 @@ namespace Pulumi.Cloudflare
 
             bool enabled,
 
-            string id,
-
             bool previewsEnabled,
 
             string scriptName)
         {
             AccountId = accountId;
             Enabled = enabled;
-            Id = id;
             PreviewsEnabled = previewsEnabled;
             ScriptName = scriptName;
         }

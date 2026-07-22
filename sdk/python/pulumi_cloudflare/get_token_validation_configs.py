@@ -27,10 +27,7 @@ class GetTokenValidationConfigsResult:
     """
     A collection of values returned by getTokenValidationConfigs.
     """
-    def __init__(__self__, id=None, max_items=None, results=None, zone_id=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, max_items=None, results=None, zone_id=None):
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -40,14 +37,6 @@ class GetTokenValidationConfigsResult:
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="maxItems")
@@ -80,7 +69,6 @@ class AwaitableGetTokenValidationConfigsResult(GetTokenValidationConfigsResult):
         if False:
             yield self
         return GetTokenValidationConfigsResult(
-            id=self.id,
             max_items=self.max_items,
             results=self.results,
             zone_id=self.zone_id)
@@ -117,7 +105,6 @@ def get_token_validation_configs(max_items: Optional[_builtins.int] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getTokenValidationConfigs:getTokenValidationConfigs', __args__, opts=opts, typ=GetTokenValidationConfigsResult).value
 
     return AwaitableGetTokenValidationConfigsResult(
-        id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
@@ -151,7 +138,6 @@ def get_token_validation_configs_output(max_items: pulumi.Input[Optional[Optiona
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getTokenValidationConfigs:getTokenValidationConfigs', __args__, opts=opts, typ=GetTokenValidationConfigsResult)
     return __ret__.apply(lambda __response__: GetTokenValidationConfigsResult(
-        id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         results=pulumi.get(__response__, 'results'),
         zone_id=pulumi.get(__response__, 'zone_id')))

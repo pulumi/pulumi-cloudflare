@@ -70,8 +70,6 @@ type LookupAccountTokensResult struct {
 	// Direction to order results.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -126,11 +124,6 @@ func (o LookupAccountTokensResultOutput) AccountId() pulumi.StringPtrOutput {
 // Available values: "asc", "desc".
 func (o LookupAccountTokensResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccountTokensResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupAccountTokensResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAccountTokensResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

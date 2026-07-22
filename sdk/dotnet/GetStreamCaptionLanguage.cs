@@ -165,10 +165,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool Generated;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// A Cloudflare-generated unique identifier for a media item.
         /// </summary>
         public readonly string Identifier;
@@ -192,8 +188,6 @@ namespace Pulumi.Cloudflare
 
             bool generated,
 
-            string id,
-
             string identifier,
 
             string label,
@@ -204,7 +198,6 @@ namespace Pulumi.Cloudflare
         {
             AccountId = accountId;
             Generated = generated;
-            Id = id;
             Identifier = identifier;
             Label = label;
             Language = language;

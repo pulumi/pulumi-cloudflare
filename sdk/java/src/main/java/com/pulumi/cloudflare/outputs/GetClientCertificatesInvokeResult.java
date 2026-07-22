@@ -16,11 +16,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetClientCertificatesInvokeResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Limit to the number of records returned.
      * 
      */
@@ -53,13 +48,6 @@ public final class GetClientCertificatesInvokeResult {
     private @Nullable String zoneId;
 
     private GetClientCertificatesInvokeResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     /**
      * @return Limit to the number of records returned.
      * 
@@ -113,7 +101,6 @@ public final class GetClientCertificatesInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private @Nullable Integer limit;
         private @Nullable Integer maxItems;
         private @Nullable Integer offset;
@@ -123,7 +110,6 @@ public final class GetClientCertificatesInvokeResult {
         public Builder() {}
         public Builder(GetClientCertificatesInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.limit = defaults.limit;
     	      this.maxItems = defaults.maxItems;
     	      this.offset = defaults.offset;
@@ -132,14 +118,6 @@ public final class GetClientCertificatesInvokeResult {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetClientCertificatesInvokeResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder limit(@Nullable Integer limit) {
 
@@ -183,7 +161,6 @@ public final class GetClientCertificatesInvokeResult {
         }
         public GetClientCertificatesInvokeResult build() {
             final var _resultValue = new GetClientCertificatesInvokeResult();
-            _resultValue.id = id;
             _resultValue.limit = limit;
             _resultValue.maxItems = maxItems;
             _resultValue.offset = offset;

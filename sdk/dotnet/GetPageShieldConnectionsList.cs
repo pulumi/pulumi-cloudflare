@@ -302,10 +302,6 @@ namespace Pulumi.Cloudflare
         /// Includes connections that match one or more URL-encoded hostnames separated by commas.
         /// </summary>
         public readonly string? Hosts;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? MaxItems;
         public readonly string? OrderBy;
         public readonly string? Page;
@@ -328,8 +324,6 @@ namespace Pulumi.Cloudflare
             string? export,
 
             string? hosts,
-
-            string id,
 
             int? maxItems,
 
@@ -356,7 +350,6 @@ namespace Pulumi.Cloudflare
             ExcludeUrls = excludeUrls;
             Export = export;
             Hosts = hosts;
-            Id = id;
             MaxItems = maxItems;
             OrderBy = orderBy;
             Page = page;

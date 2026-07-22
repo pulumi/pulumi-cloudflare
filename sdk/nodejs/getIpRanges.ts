@@ -43,10 +43,6 @@ export interface GetIpRangesResult {
      */
     readonly etag: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * List of Cloudflare IPv4 CIDR addresses.
      */
     readonly ipv4Cidrs: string[];

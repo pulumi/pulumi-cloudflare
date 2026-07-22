@@ -176,10 +176,6 @@ namespace Pulumi.Cloudflare
     public sealed class GetCustomSslsResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Whether to match all search requirements or at least one (any).
         /// Available values: "any", "all".
         /// </summary>
@@ -204,8 +200,6 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetCustomSslsResult(
-            string id,
-
             string match,
 
             int? maxItems,
@@ -216,7 +210,6 @@ namespace Pulumi.Cloudflare
 
             string? zoneId)
         {
-            Id = id;
             Match = match;
             MaxItems = maxItems;
             Results = results;

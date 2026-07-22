@@ -27,16 +27,13 @@ class GetEmailRoutingAddressesResult:
     """
     A collection of values returned by getEmailRoutingAddresses.
     """
-    def __init__(__self__, account_id=None, direction=None, id=None, max_items=None, results=None, verified=None):
+    def __init__(__self__, account_id=None, direction=None, max_items=None, results=None, verified=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if direction and not isinstance(direction, str):
             raise TypeError("Expected argument 'direction' to be a str")
         pulumi.set(__self__, "direction", direction)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -63,14 +60,6 @@ class GetEmailRoutingAddressesResult:
         Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="maxItems")
@@ -105,7 +94,6 @@ class AwaitableGetEmailRoutingAddressesResult(GetEmailRoutingAddressesResult):
         return GetEmailRoutingAddressesResult(
             account_id=self.account_id,
             direction=self.direction,
-            id=self.id,
             max_items=self.max_items,
             results=self.results,
             verified=self.verified)
@@ -149,7 +137,6 @@ def get_email_routing_addresses(account_id: Optional[_builtins.str] = None,
     return AwaitableGetEmailRoutingAddressesResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         direction=pulumi.get(__ret__, 'direction'),
-        id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'),
         verified=pulumi.get(__ret__, 'verified'))
@@ -190,7 +177,6 @@ def get_email_routing_addresses_output(account_id: pulumi.Input[Optional[Optiona
     return __ret__.apply(lambda __response__: GetEmailRoutingAddressesResult(
         account_id=pulumi.get(__response__, 'account_id'),
         direction=pulumi.get(__response__, 'direction'),
-        id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         results=pulumi.get(__response__, 'results'),
         verified=pulumi.get(__response__, 'verified')))

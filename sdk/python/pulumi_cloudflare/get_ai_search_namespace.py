@@ -26,7 +26,7 @@ class GetAiSearchNamespaceResult:
     """
     A collection of values returned by getAiSearchNamespace.
     """
-    def __init__(__self__, account_id=None, created_at=None, description=None, id=None, name=None):
+    def __init__(__self__, account_id=None, created_at=None, description=None, name=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -36,9 +36,6 @@ class GetAiSearchNamespaceResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -63,14 +60,6 @@ class GetAiSearchNamespaceResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
     def name(self) -> _builtins.str:
         return pulumi.get(self, "name")
 
@@ -84,7 +73,6 @@ class AwaitableGetAiSearchNamespaceResult(GetAiSearchNamespaceResult):
             account_id=self.account_id,
             created_at=self.created_at,
             description=self.description,
-            id=self.id,
             name=self.name)
 
 
@@ -104,7 +92,6 @@ def get_ai_search_namespace(account_id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         created_at=pulumi.get(__ret__, 'created_at'),
         description=pulumi.get(__ret__, 'description'),
-        id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
 def get_ai_search_namespace_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                    name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -121,5 +108,4 @@ def get_ai_search_namespace_output(account_id: pulumi.Input[Optional[_builtins.s
         account_id=pulumi.get(__response__, 'account_id'),
         created_at=pulumi.get(__response__, 'created_at'),
         description=pulumi.get(__response__, 'description'),
-        id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name')))

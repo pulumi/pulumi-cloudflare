@@ -53,10 +53,6 @@ export interface GetMtlsCertificateAssociationsResult {
      */
     readonly accountId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Identifier.
      */
     readonly mtlsCertificateId: string;

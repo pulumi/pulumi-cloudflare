@@ -21,11 +21,6 @@ public final class GetCustomPagesListInvokeResult {
      */
     private @Nullable String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -48,13 +43,6 @@ public final class GetCustomPagesListInvokeResult {
      */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Max items to fetch, default: 1000
@@ -88,7 +76,6 @@ public final class GetCustomPagesListInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
-        private String id;
         private @Nullable Integer maxItems;
         private List<GetCustomPagesListResult> results;
         private @Nullable String zoneId;
@@ -96,7 +83,6 @@ public final class GetCustomPagesListInvokeResult {
         public Builder(GetCustomPagesListInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
     	      this.zoneId = defaults.zoneId;
@@ -106,14 +92,6 @@ public final class GetCustomPagesListInvokeResult {
         public Builder accountId(@Nullable String accountId) {
 
             this.accountId = accountId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetCustomPagesListInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -142,7 +120,6 @@ public final class GetCustomPagesListInvokeResult {
         public GetCustomPagesListInvokeResult build() {
             final var _resultValue = new GetCustomPagesListInvokeResult();
             _resultValue.accountId = accountId;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;
             _resultValue.zoneId = zoneId;

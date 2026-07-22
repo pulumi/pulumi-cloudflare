@@ -67,8 +67,6 @@ type LookupApiShieldSchemaArgs struct {
 // A collection of values returned by getApiShieldSchema.
 type LookupApiShieldSchemaResult struct {
 	CreatedAt string `pulumi:"createdAt"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Kind of schema
 	// Available values: "openapiV3".
 	Kind string `pulumi:"kind"`
@@ -124,11 +122,6 @@ func (o LookupApiShieldSchemaResultOutput) ToLookupApiShieldSchemaResultOutputWi
 
 func (o LookupApiShieldSchemaResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiShieldSchemaResult) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupApiShieldSchemaResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupApiShieldSchemaResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Kind of schema

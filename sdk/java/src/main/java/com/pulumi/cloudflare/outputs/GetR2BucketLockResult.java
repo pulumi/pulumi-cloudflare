@@ -22,11 +22,6 @@ public final class GetR2BucketLockResult {
      * 
      */
     private String bucketName;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private List<GetR2BucketLockRule> rules;
 
     private GetR2BucketLockResult() {}
@@ -44,13 +39,6 @@ public final class GetR2BucketLockResult {
     public String bucketName() {
         return this.bucketName;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public List<GetR2BucketLockRule> rules() {
         return this.rules;
     }
@@ -66,14 +54,12 @@ public final class GetR2BucketLockResult {
     public static final class Builder {
         private String accountId;
         private String bucketName;
-        private String id;
         private List<GetR2BucketLockRule> rules;
         public Builder() {}
         public Builder(GetR2BucketLockResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.bucketName = defaults.bucketName;
-    	      this.id = defaults.id;
     	      this.rules = defaults.rules;
         }
 
@@ -94,14 +80,6 @@ public final class GetR2BucketLockResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetR2BucketLockResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder rules(List<GetR2BucketLockRule> rules) {
             if (rules == null) {
               throw new MissingRequiredPropertyException("GetR2BucketLockResult", "rules");
@@ -116,7 +94,6 @@ public final class GetR2BucketLockResult {
             final var _resultValue = new GetR2BucketLockResult();
             _resultValue.accountId = accountId;
             _resultValue.bucketName = bucketName;
-            _resultValue.id = id;
             _resultValue.rules = rules;
             return _resultValue;
         }

@@ -27,7 +27,7 @@ class GetTurnstileWidgetsResult:
     """
     A collection of values returned by getTurnstileWidgets.
     """
-    def __init__(__self__, account_id=None, direction=None, filter=None, id=None, max_items=None, order=None, results=None):
+    def __init__(__self__, account_id=None, direction=None, filter=None, max_items=None, order=None, results=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -37,9 +37,6 @@ class GetTurnstileWidgetsResult:
         if filter and not isinstance(filter, str):
             raise TypeError("Expected argument 'filter' to be a str")
         pulumi.set(__self__, "filter", filter)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -77,14 +74,6 @@ class GetTurnstileWidgetsResult:
         return pulumi.get(self, "filter")
 
     @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
     @pulumi.getter(name="maxItems")
     def max_items(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "max_items")
@@ -109,7 +98,6 @@ class AwaitableGetTurnstileWidgetsResult(GetTurnstileWidgetsResult):
             account_id=self.account_id,
             direction=self.direction,
             filter=self.filter,
-            id=self.id,
             max_items=self.max_items,
             order=self.order,
             results=self.results)
@@ -161,7 +149,6 @@ def get_turnstile_widgets(account_id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         direction=pulumi.get(__ret__, 'direction'),
         filter=pulumi.get(__ret__, 'filter'),
-        id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         order=pulumi.get(__ret__, 'order'),
         results=pulumi.get(__ret__, 'results'))
@@ -210,7 +197,6 @@ def get_turnstile_widgets_output(account_id: pulumi.Input[Optional[Optional[_bui
         account_id=pulumi.get(__response__, 'account_id'),
         direction=pulumi.get(__response__, 'direction'),
         filter=pulumi.get(__response__, 'filter'),
-        id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         order=pulumi.get(__response__, 'order'),
         results=pulumi.get(__response__, 'results')))

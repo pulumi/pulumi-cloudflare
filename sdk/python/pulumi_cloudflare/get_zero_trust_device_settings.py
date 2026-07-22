@@ -26,7 +26,7 @@ class GetZeroTrustDeviceSettingsResult:
     """
     A collection of values returned by getZeroTrustDeviceSettings.
     """
-    def __init__(__self__, account_id=None, disable_for_time=None, external_emergency_signal_enabled=None, external_emergency_signal_fingerprint=None, external_emergency_signal_interval=None, external_emergency_signal_url=None, gateway_proxy_enabled=None, gateway_udp_proxy_enabled=None, id=None, root_certificate_installation_enabled=None, use_zt_virtual_ip=None):
+    def __init__(__self__, account_id=None, disable_for_time=None, external_emergency_signal_enabled=None, external_emergency_signal_fingerprint=None, external_emergency_signal_interval=None, external_emergency_signal_url=None, gateway_proxy_enabled=None, gateway_udp_proxy_enabled=None, root_certificate_installation_enabled=None, use_zt_virtual_ip=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -51,9 +51,6 @@ class GetZeroTrustDeviceSettingsResult:
         if gateway_udp_proxy_enabled and not isinstance(gateway_udp_proxy_enabled, bool):
             raise TypeError("Expected argument 'gateway_udp_proxy_enabled' to be a bool")
         pulumi.set(__self__, "gateway_udp_proxy_enabled", gateway_udp_proxy_enabled)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if root_certificate_installation_enabled and not isinstance(root_certificate_installation_enabled, bool):
             raise TypeError("Expected argument 'root_certificate_installation_enabled' to be a bool")
         pulumi.set(__self__, "root_certificate_installation_enabled", root_certificate_installation_enabled)
@@ -123,14 +120,6 @@ class GetZeroTrustDeviceSettingsResult:
         return pulumi.get(self, "gateway_udp_proxy_enabled")
 
     @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
     @pulumi.getter(name="rootCertificateInstallationEnabled")
     def root_certificate_installation_enabled(self) -> _builtins.bool:
         """
@@ -161,7 +150,6 @@ class AwaitableGetZeroTrustDeviceSettingsResult(GetZeroTrustDeviceSettingsResult
             external_emergency_signal_url=self.external_emergency_signal_url,
             gateway_proxy_enabled=self.gateway_proxy_enabled,
             gateway_udp_proxy_enabled=self.gateway_udp_proxy_enabled,
-            id=self.id,
             root_certificate_installation_enabled=self.root_certificate_installation_enabled,
             use_zt_virtual_ip=self.use_zt_virtual_ip)
 
@@ -192,7 +180,6 @@ def get_zero_trust_device_settings(account_id: Optional[_builtins.str] = None,
         external_emergency_signal_url=pulumi.get(__ret__, 'external_emergency_signal_url'),
         gateway_proxy_enabled=pulumi.get(__ret__, 'gateway_proxy_enabled'),
         gateway_udp_proxy_enabled=pulumi.get(__ret__, 'gateway_udp_proxy_enabled'),
-        id=pulumi.get(__ret__, 'id'),
         root_certificate_installation_enabled=pulumi.get(__ret__, 'root_certificate_installation_enabled'),
         use_zt_virtual_ip=pulumi.get(__ret__, 'use_zt_virtual_ip'))
 def get_zero_trust_device_settings_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -220,6 +207,5 @@ def get_zero_trust_device_settings_output(account_id: pulumi.Input[Optional[Opti
         external_emergency_signal_url=pulumi.get(__response__, 'external_emergency_signal_url'),
         gateway_proxy_enabled=pulumi.get(__response__, 'gateway_proxy_enabled'),
         gateway_udp_proxy_enabled=pulumi.get(__response__, 'gateway_udp_proxy_enabled'),
-        id=pulumi.get(__response__, 'id'),
         root_certificate_installation_enabled=pulumi.get(__response__, 'root_certificate_installation_enabled'),
         use_zt_virtual_ip=pulumi.get(__response__, 'use_zt_virtual_ip')))

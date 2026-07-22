@@ -94,8 +94,6 @@ type LookupZoneLockdownsResult struct {
 	Description *string `pulumi:"description"`
 	// A string to search for in the description of existing rules.
 	DescriptionSearch *string `pulumi:"descriptionSearch"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// A single IP address to search for in existing rules.
 	Ip *string `pulumi:"ip"`
 	// A single IP address range to search for in existing rules.
@@ -183,11 +181,6 @@ func (o LookupZoneLockdownsResultOutput) Description() pulumi.StringPtrOutput {
 // A string to search for in the description of existing rules.
 func (o LookupZoneLockdownsResultOutput) DescriptionSearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZoneLockdownsResult) *string { return v.DescriptionSearch }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupZoneLockdownsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZoneLockdownsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A single IP address to search for in existing rules.

@@ -63,8 +63,6 @@ type LookupContentScanningExpressionsArgs struct {
 
 // A collection of values returned by getContentScanningExpressions.
 type LookupContentScanningExpressionsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -107,11 +105,6 @@ func (o LookupContentScanningExpressionsResultOutput) ToLookupContentScanningExp
 
 func (o LookupContentScanningExpressionsResultOutput) ToLookupContentScanningExpressionsResultOutputWithContext(ctx context.Context) LookupContentScanningExpressionsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupContentScanningExpressionsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupContentScanningExpressionsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

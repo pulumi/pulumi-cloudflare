@@ -22,11 +22,6 @@ public final class GetR2BucketLifecycleResult {
      * 
      */
     private String bucketName;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private List<GetR2BucketLifecycleRule> rules;
 
     private GetR2BucketLifecycleResult() {}
@@ -44,13 +39,6 @@ public final class GetR2BucketLifecycleResult {
     public String bucketName() {
         return this.bucketName;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public List<GetR2BucketLifecycleRule> rules() {
         return this.rules;
     }
@@ -66,14 +54,12 @@ public final class GetR2BucketLifecycleResult {
     public static final class Builder {
         private String accountId;
         private String bucketName;
-        private String id;
         private List<GetR2BucketLifecycleRule> rules;
         public Builder() {}
         public Builder(GetR2BucketLifecycleResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.bucketName = defaults.bucketName;
-    	      this.id = defaults.id;
     	      this.rules = defaults.rules;
         }
 
@@ -94,14 +80,6 @@ public final class GetR2BucketLifecycleResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetR2BucketLifecycleResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder rules(List<GetR2BucketLifecycleRule> rules) {
             if (rules == null) {
               throw new MissingRequiredPropertyException("GetR2BucketLifecycleResult", "rules");
@@ -116,7 +94,6 @@ public final class GetR2BucketLifecycleResult {
             final var _resultValue = new GetR2BucketLifecycleResult();
             _resultValue.accountId = accountId;
             _resultValue.bucketName = bucketName;
-            _resultValue.id = id;
             _resultValue.rules = rules;
             return _resultValue;
         }

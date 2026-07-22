@@ -27,7 +27,7 @@ class GetPageShieldConnectionsListResult:
     """
     A collection of values returned by getPageShieldConnectionsList.
     """
-    def __init__(__self__, direction=None, exclude_cdn_cgi=None, exclude_urls=None, export=None, hosts=None, id=None, max_items=None, order_by=None, page=None, page_url=None, per_page=None, prioritize_malicious=None, results=None, status=None, urls=None, zone_id=None):
+    def __init__(__self__, direction=None, exclude_cdn_cgi=None, exclude_urls=None, export=None, hosts=None, max_items=None, order_by=None, page=None, page_url=None, per_page=None, prioritize_malicious=None, results=None, status=None, urls=None, zone_id=None):
         if direction and not isinstance(direction, str):
             raise TypeError("Expected argument 'direction' to be a str")
         pulumi.set(__self__, "direction", direction)
@@ -43,9 +43,6 @@ class GetPageShieldConnectionsListResult:
         if hosts and not isinstance(hosts, str):
             raise TypeError("Expected argument 'hosts' to be a str")
         pulumi.set(__self__, "hosts", hosts)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -120,14 +117,6 @@ class GetPageShieldConnectionsListResult:
         return pulumi.get(self, "hosts")
 
     @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
     @pulumi.getter(name="maxItems")
     def max_items(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "max_items")
@@ -189,7 +178,6 @@ class AwaitableGetPageShieldConnectionsListResult(GetPageShieldConnectionsListRe
             exclude_urls=self.exclude_urls,
             export=self.export,
             hosts=self.hosts,
-            id=self.id,
             max_items=self.max_items,
             order_by=self.order_by,
             page=self.page,
@@ -281,7 +269,6 @@ def get_page_shield_connections_list(direction: Optional[_builtins.str] = None,
         exclude_urls=pulumi.get(__ret__, 'exclude_urls'),
         export=pulumi.get(__ret__, 'export'),
         hosts=pulumi.get(__ret__, 'hosts'),
-        id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         order_by=pulumi.get(__ret__, 'order_by'),
         page=pulumi.get(__ret__, 'page'),
@@ -370,7 +357,6 @@ def get_page_shield_connections_list_output(direction: pulumi.Input[Optional[Opt
         exclude_urls=pulumi.get(__response__, 'exclude_urls'),
         export=pulumi.get(__response__, 'export'),
         hosts=pulumi.get(__response__, 'hosts'),
-        id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         order_by=pulumi.get(__response__, 'order_by'),
         page=pulumi.get(__response__, 'page'),

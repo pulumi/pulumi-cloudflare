@@ -67,8 +67,6 @@ type LookupByoIpPrefixesArgs struct {
 type LookupByoIpPrefixesResult struct {
 	// Identifier of a Cloudflare account.
 	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -114,11 +112,6 @@ func (o LookupByoIpPrefixesResultOutput) ToLookupByoIpPrefixesResultOutputWithCo
 // Identifier of a Cloudflare account.
 func (o LookupByoIpPrefixesResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupByoIpPrefixesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupByoIpPrefixesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupByoIpPrefixesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

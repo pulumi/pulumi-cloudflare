@@ -27,16 +27,13 @@ class GetMagicNetworkMonitoringConfigurationResult:
     """
     A collection of values returned by getMagicNetworkMonitoringConfiguration.
     """
-    def __init__(__self__, account_id=None, default_sampling=None, id=None, name=None, router_ips=None, warp_devices=None):
+    def __init__(__self__, account_id=None, default_sampling=None, name=None, router_ips=None, warp_devices=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if default_sampling and not isinstance(default_sampling, float):
             raise TypeError("Expected argument 'default_sampling' to be a float")
         pulumi.set(__self__, "default_sampling", default_sampling)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -59,14 +56,6 @@ class GetMagicNetworkMonitoringConfigurationResult:
         Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
         """
         return pulumi.get(self, "default_sampling")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -95,7 +84,6 @@ class AwaitableGetMagicNetworkMonitoringConfigurationResult(GetMagicNetworkMonit
         return GetMagicNetworkMonitoringConfigurationResult(
             account_id=self.account_id,
             default_sampling=self.default_sampling,
-            id=self.id,
             name=self.name,
             router_ips=self.router_ips,
             warp_devices=self.warp_devices)
@@ -127,7 +115,6 @@ def get_magic_network_monitoring_configuration(account_id: Optional[_builtins.st
     return AwaitableGetMagicNetworkMonitoringConfigurationResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         default_sampling=pulumi.get(__ret__, 'default_sampling'),
-        id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         router_ips=pulumi.get(__ret__, 'router_ips'),
         warp_devices=pulumi.get(__ret__, 'warp_devices'))
@@ -156,7 +143,6 @@ def get_magic_network_monitoring_configuration_output(account_id: pulumi.Input[O
     return __ret__.apply(lambda __response__: GetMagicNetworkMonitoringConfigurationResult(
         account_id=pulumi.get(__response__, 'account_id'),
         default_sampling=pulumi.get(__response__, 'default_sampling'),
-        id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         router_ips=pulumi.get(__response__, 'router_ips'),
         warp_devices=pulumi.get(__response__, 'warp_devices')))

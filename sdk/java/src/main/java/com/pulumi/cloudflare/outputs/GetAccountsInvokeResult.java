@@ -22,11 +22,6 @@ public final class GetAccountsInvokeResult {
      */
     private @Nullable String direction;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -50,13 +45,6 @@ public final class GetAccountsInvokeResult {
      */
     public Optional<String> direction() {
         return Optional.ofNullable(this.direction);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Max items to fetch, default: 1000
@@ -90,7 +78,6 @@ public final class GetAccountsInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String direction;
-        private String id;
         private @Nullable Integer maxItems;
         private @Nullable String name;
         private List<GetAccountsResult> results;
@@ -98,7 +85,6 @@ public final class GetAccountsInvokeResult {
         public Builder(GetAccountsInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.direction = defaults.direction;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.name = defaults.name;
     	      this.results = defaults.results;
@@ -108,14 +94,6 @@ public final class GetAccountsInvokeResult {
         public Builder direction(@Nullable String direction) {
 
             this.direction = direction;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAccountsInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -144,7 +122,6 @@ public final class GetAccountsInvokeResult {
         public GetAccountsInvokeResult build() {
             final var _resultValue = new GetAccountsInvokeResult();
             _resultValue.direction = direction;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.name = name;
             _resultValue.results = results;

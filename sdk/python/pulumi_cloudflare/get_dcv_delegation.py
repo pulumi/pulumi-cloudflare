@@ -26,24 +26,13 @@ class GetDcvDelegationResult:
     """
     A collection of values returned by getDcvDelegation.
     """
-    def __init__(__self__, id=None, uuid=None, zone_id=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, uuid=None, zone_id=None):
         if uuid and not isinstance(uuid, str):
             raise TypeError("Expected argument 'uuid' to be a str")
         pulumi.set(__self__, "uuid", uuid)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -68,7 +57,6 @@ class AwaitableGetDcvDelegationResult(GetDcvDelegationResult):
         if False:
             yield self
         return GetDcvDelegationResult(
-            id=self.id,
             uuid=self.uuid,
             zone_id=self.zone_id)
 
@@ -99,7 +87,6 @@ def get_dcv_delegation(zone_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getDcvDelegation:getDcvDelegation', __args__, opts=opts, typ=GetDcvDelegationResult).value
 
     return AwaitableGetDcvDelegationResult(
-        id=pulumi.get(__ret__, 'id'),
         uuid=pulumi.get(__ret__, 'uuid'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_dcv_delegation_output(zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -127,6 +114,5 @@ def get_dcv_delegation_output(zone_id: pulumi.Input[Optional[Optional[_builtins.
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getDcvDelegation:getDcvDelegation', __args__, opts=opts, typ=GetDcvDelegationResult)
     return __ret__.apply(lambda __response__: GetDcvDelegationResult(
-        id=pulumi.get(__response__, 'id'),
         uuid=pulumi.get(__response__, 'uuid'),
         zone_id=pulumi.get(__response__, 'zone_id')))

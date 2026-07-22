@@ -153,10 +153,6 @@ export interface GetDnsRecordsResult {
      */
     readonly direction: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
      */
     readonly includeShadowMetadata: boolean;

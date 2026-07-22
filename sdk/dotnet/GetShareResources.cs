@@ -177,10 +177,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
@@ -207,8 +203,6 @@ namespace Pulumi.Cloudflare
         private GetShareResourcesResult(
             string accountId,
 
-            string id,
-
             int? maxItems,
 
             string? resourceType,
@@ -220,7 +214,6 @@ namespace Pulumi.Cloudflare
             string? status)
         {
             AccountId = accountId;
-            Id = id;
             MaxItems = maxItems;
             ResourceType = resourceType;
             Results = results;

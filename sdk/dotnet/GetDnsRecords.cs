@@ -408,10 +408,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Direction;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Whether to include shadow metadata in the `Meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
         /// </summary>
         public readonly bool IncludeShadowMetadata;
@@ -474,8 +470,6 @@ namespace Pulumi.Cloudflare
 
             string direction,
 
-            string id,
-
             bool includeShadowMetadata,
 
             string match,
@@ -507,7 +501,6 @@ namespace Pulumi.Cloudflare
             Comment = comment;
             Content = content;
             Direction = direction;
-            Id = id;
             IncludeShadowMetadata = includeShadowMetadata;
             Match = match;
             MaxItems = maxItems;

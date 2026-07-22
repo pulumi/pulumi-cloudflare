@@ -143,22 +143,15 @@ namespace Pulumi.Cloudflare
         /// twice, making it a natural idempotency key for registration requests.
         /// </summary>
         public readonly string DomainName;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetRegistrarDomainResult(
             string accountId,
 
-            string domainName,
-
-            string id)
+            string domainName)
         {
             AccountId = accountId;
             DomainName = domainName;
-            Id = id;
         }
     }
 }

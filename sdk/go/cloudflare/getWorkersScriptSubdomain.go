@@ -67,8 +67,6 @@ type LookupWorkersScriptSubdomainResult struct {
 	AccountId string `pulumi:"accountId"`
 	// Whether the Worker is available on the workers.dev subdomain.
 	Enabled bool `pulumi:"enabled"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Whether the Worker's Preview URLs are available on the workers.dev subdomain.
 	PreviewsEnabled bool `pulumi:"previewsEnabled"`
 	// Name of the script, used in URLs and route configuration.
@@ -119,11 +117,6 @@ func (o LookupWorkersScriptSubdomainResultOutput) AccountId() pulumi.StringOutpu
 // Whether the Worker is available on the workers.dev subdomain.
 func (o LookupWorkersScriptSubdomainResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupWorkersScriptSubdomainResult) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupWorkersScriptSubdomainResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkersScriptSubdomainResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Whether the Worker's Preview URLs are available on the workers.dev subdomain.

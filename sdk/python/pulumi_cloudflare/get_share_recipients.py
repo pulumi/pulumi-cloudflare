@@ -27,13 +27,10 @@ class GetShareRecipientsResult:
     """
     A collection of values returned by getShareRecipients.
     """
-    def __init__(__self__, account_id=None, id=None, include_resources=None, max_items=None, results=None, share_id=None):
+    def __init__(__self__, account_id=None, include_resources=None, max_items=None, results=None, share_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if include_resources and not isinstance(include_resources, bool):
             raise TypeError("Expected argument 'include_resources' to be a bool")
         pulumi.set(__self__, "include_resources", include_resources)
@@ -54,14 +51,6 @@ class GetShareRecipientsResult:
         Account identifier.
         """
         return pulumi.get(self, "account_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="includeResources")
@@ -103,7 +92,6 @@ class AwaitableGetShareRecipientsResult(GetShareRecipientsResult):
             yield self
         return GetShareRecipientsResult(
             account_id=self.account_id,
-            id=self.id,
             include_resources=self.include_resources,
             max_items=self.max_items,
             results=self.results,
@@ -143,7 +131,6 @@ def get_share_recipients(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetShareRecipientsResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-        id=pulumi.get(__ret__, 'id'),
         include_resources=pulumi.get(__ret__, 'include_resources'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'),
@@ -180,7 +167,6 @@ def get_share_recipients_output(account_id: pulumi.Input[Optional[_builtins.str]
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getShareRecipients:getShareRecipients', __args__, opts=opts, typ=GetShareRecipientsResult)
     return __ret__.apply(lambda __response__: GetShareRecipientsResult(
         account_id=pulumi.get(__response__, 'account_id'),
-        id=pulumi.get(__response__, 'id'),
         include_resources=pulumi.get(__response__, 'include_resources'),
         max_items=pulumi.get(__response__, 'max_items'),
         results=pulumi.get(__response__, 'results'),

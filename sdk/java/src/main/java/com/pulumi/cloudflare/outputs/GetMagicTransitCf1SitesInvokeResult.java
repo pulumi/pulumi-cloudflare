@@ -21,11 +21,6 @@ public final class GetMagicTransitCf1SitesInvokeResult {
      */
     private String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -43,13 +38,6 @@ public final class GetMagicTransitCf1SitesInvokeResult {
      */
     public String accountId() {
         return this.accountId;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Max items to fetch, default: 1000
@@ -76,14 +64,12 @@ public final class GetMagicTransitCf1SitesInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
-        private String id;
         private @Nullable Integer maxItems;
         private List<GetMagicTransitCf1SitesResult> results;
         public Builder() {}
         public Builder(GetMagicTransitCf1SitesInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
         }
@@ -94,14 +80,6 @@ public final class GetMagicTransitCf1SitesInvokeResult {
               throw new MissingRequiredPropertyException("GetMagicTransitCf1SitesInvokeResult", "accountId");
             }
             this.accountId = accountId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetMagicTransitCf1SitesInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -124,7 +102,6 @@ public final class GetMagicTransitCf1SitesInvokeResult {
         public GetMagicTransitCf1SitesInvokeResult build() {
             final var _resultValue = new GetMagicTransitCf1SitesInvokeResult();
             _resultValue.accountId = accountId;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;
             return _resultValue;

@@ -28,7 +28,7 @@ class GetDnsRecordsResult:
     """
     A collection of values returned by getDnsRecords.
     """
-    def __init__(__self__, comment=None, content=None, direction=None, id=None, include_shadow_metadata=None, match=None, max_items=None, name=None, order=None, proxied=None, results=None, search=None, shadowed_by_name=None, shadowing_name=None, tag=None, tag_match=None, type=None, zone_id=None):
+    def __init__(__self__, comment=None, content=None, direction=None, include_shadow_metadata=None, match=None, max_items=None, name=None, order=None, proxied=None, results=None, search=None, shadowed_by_name=None, shadowing_name=None, tag=None, tag_match=None, type=None, zone_id=None):
         if comment and not isinstance(comment, dict):
             raise TypeError("Expected argument 'comment' to be a dict")
         pulumi.set(__self__, "comment", comment)
@@ -38,9 +38,6 @@ class GetDnsRecordsResult:
         if direction and not isinstance(direction, str):
             raise TypeError("Expected argument 'direction' to be a str")
         pulumi.set(__self__, "direction", direction)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if include_shadow_metadata and not isinstance(include_shadow_metadata, bool):
             raise TypeError("Expected argument 'include_shadow_metadata' to be a bool")
         pulumi.set(__self__, "include_shadow_metadata", include_shadow_metadata)
@@ -102,14 +99,6 @@ class GetDnsRecordsResult:
         Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="includeShadowMetadata")
@@ -231,7 +220,6 @@ class AwaitableGetDnsRecordsResult(GetDnsRecordsResult):
             comment=self.comment,
             content=self.content,
             direction=self.direction,
-            id=self.id,
             include_shadow_metadata=self.include_shadow_metadata,
             match=self.match,
             max_items=self.max_items,
@@ -355,7 +343,6 @@ def get_dns_records(comment: Optional[Union['GetDnsRecordsCommentArgs', 'GetDnsR
         comment=pulumi.get(__ret__, 'comment'),
         content=pulumi.get(__ret__, 'content'),
         direction=pulumi.get(__ret__, 'direction'),
-        id=pulumi.get(__ret__, 'id'),
         include_shadow_metadata=pulumi.get(__ret__, 'include_shadow_metadata'),
         match=pulumi.get(__ret__, 'match'),
         max_items=pulumi.get(__ret__, 'max_items'),
@@ -476,7 +463,6 @@ def get_dns_records_output(comment: pulumi.Input[Optional[Optional[Union['GetDns
         comment=pulumi.get(__response__, 'comment'),
         content=pulumi.get(__response__, 'content'),
         direction=pulumi.get(__response__, 'direction'),
-        id=pulumi.get(__response__, 'id'),
         include_shadow_metadata=pulumi.get(__response__, 'include_shadow_metadata'),
         match=pulumi.get(__response__, 'match'),
         max_items=pulumi.get(__response__, 'max_items'),

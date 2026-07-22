@@ -63,8 +63,6 @@ type LookupHyperdriveConfigsArgs struct {
 type LookupHyperdriveConfigsResult struct {
 	// Define configurations using a unique string identifier.
 	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -110,11 +108,6 @@ func (o LookupHyperdriveConfigsResultOutput) ToLookupHyperdriveConfigsResultOutp
 // Define configurations using a unique string identifier.
 func (o LookupHyperdriveConfigsResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHyperdriveConfigsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupHyperdriveConfigsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupHyperdriveConfigsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

@@ -75,8 +75,6 @@ type LookupR2CustomDomainResult struct {
 	Domain string `pulumi:"domain"`
 	// Whether this bucket is publicly accessible at the specified custom domain.
 	Enabled bool `pulumi:"enabled"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
 	// Available values: "1.0", "1.1", "1.2", "1.3".
 	MinTls string                  `pulumi:"minTls"`
@@ -148,11 +146,6 @@ func (o LookupR2CustomDomainResultOutput) Domain() pulumi.StringOutput {
 // Whether this bucket is publicly accessible at the specified custom domain.
 func (o LookupR2CustomDomainResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupR2CustomDomainResult) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupR2CustomDomainResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupR2CustomDomainResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.

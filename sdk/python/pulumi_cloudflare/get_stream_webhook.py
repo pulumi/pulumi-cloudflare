@@ -26,13 +26,10 @@ class GetStreamWebhookResult:
     """
     A collection of values returned by getStreamWebhook.
     """
-    def __init__(__self__, account_id=None, id=None, modified=None, notification_url=None, secret=None):
+    def __init__(__self__, account_id=None, modified=None, notification_url=None, secret=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if modified and not isinstance(modified, str):
             raise TypeError("Expected argument 'modified' to be a str")
         pulumi.set(__self__, "modified", modified)
@@ -50,14 +47,6 @@ class GetStreamWebhookResult:
         The account identifier tag.
         """
         return pulumi.get(self, "account_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -91,7 +80,6 @@ class AwaitableGetStreamWebhookResult(GetStreamWebhookResult):
             yield self
         return GetStreamWebhookResult(
             account_id=self.account_id,
-            id=self.id,
             modified=self.modified,
             notification_url=self.notification_url,
             secret=self.secret)
@@ -124,7 +112,6 @@ def get_stream_webhook(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetStreamWebhookResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-        id=pulumi.get(__ret__, 'id'),
         modified=pulumi.get(__ret__, 'modified'),
         notification_url=pulumi.get(__ret__, 'notification_url'),
         secret=pulumi.get(__ret__, 'secret'))
@@ -154,7 +141,6 @@ def get_stream_webhook_output(account_id: pulumi.Input[Optional[Optional[_builti
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getStreamWebhook:getStreamWebhook', __args__, opts=opts, typ=GetStreamWebhookResult)
     return __ret__.apply(lambda __response__: GetStreamWebhookResult(
         account_id=pulumi.get(__response__, 'account_id'),
-        id=pulumi.get(__response__, 'id'),
         modified=pulumi.get(__response__, 'modified'),
         notification_url=pulumi.get(__response__, 'notification_url'),
         secret=pulumi.get(__response__, 'secret')))

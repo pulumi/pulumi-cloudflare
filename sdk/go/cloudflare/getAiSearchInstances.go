@@ -41,8 +41,6 @@ type LookupAiSearchInstancesArgs struct {
 // A collection of values returned by getAiSearchInstances.
 type LookupAiSearchInstancesResult struct {
 	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Filter by namespace.
@@ -106,11 +104,6 @@ func (o LookupAiSearchInstancesResultOutput) ToLookupAiSearchInstancesResultOutp
 
 func (o LookupAiSearchInstancesResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAiSearchInstancesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupAiSearchInstancesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAiSearchInstancesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

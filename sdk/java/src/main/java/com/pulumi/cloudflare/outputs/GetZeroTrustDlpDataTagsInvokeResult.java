@@ -18,11 +18,6 @@ public final class GetZeroTrustDlpDataTagsInvokeResult {
     private String accountId;
     private String categoryId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -39,13 +34,6 @@ public final class GetZeroTrustDlpDataTagsInvokeResult {
     }
     public String categoryId() {
         return this.categoryId;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Max items to fetch, default: 1000
@@ -73,7 +61,6 @@ public final class GetZeroTrustDlpDataTagsInvokeResult {
     public static final class Builder {
         private String accountId;
         private String categoryId;
-        private String id;
         private @Nullable Integer maxItems;
         private List<GetZeroTrustDlpDataTagsResult> results;
         public Builder() {}
@@ -81,7 +68,6 @@ public final class GetZeroTrustDlpDataTagsInvokeResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.categoryId = defaults.categoryId;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
         }
@@ -100,14 +86,6 @@ public final class GetZeroTrustDlpDataTagsInvokeResult {
               throw new MissingRequiredPropertyException("GetZeroTrustDlpDataTagsInvokeResult", "categoryId");
             }
             this.categoryId = categoryId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDlpDataTagsInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -131,7 +109,6 @@ public final class GetZeroTrustDlpDataTagsInvokeResult {
             final var _resultValue = new GetZeroTrustDlpDataTagsInvokeResult();
             _resultValue.accountId = accountId;
             _resultValue.categoryId = categoryId;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;
             return _resultValue;

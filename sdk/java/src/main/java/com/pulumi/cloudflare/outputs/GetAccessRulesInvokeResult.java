@@ -29,11 +29,6 @@ public final class GetAccessRulesInvokeResult {
      */
     private @Nullable String direction;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
      * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
@@ -91,13 +86,6 @@ public final class GetAccessRulesInvokeResult {
      */
     public Optional<String> direction() {
         return Optional.ofNullable(this.direction);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
@@ -165,7 +153,6 @@ public final class GetAccessRulesInvokeResult {
         private @Nullable String accountId;
         private @Nullable GetAccessRulesConfiguration configuration;
         private @Nullable String direction;
-        private String id;
         private String match;
         private @Nullable Integer maxItems;
         private @Nullable String mode;
@@ -179,7 +166,6 @@ public final class GetAccessRulesInvokeResult {
     	      this.accountId = defaults.accountId;
     	      this.configuration = defaults.configuration;
     	      this.direction = defaults.direction;
-    	      this.id = defaults.id;
     	      this.match = defaults.match;
     	      this.maxItems = defaults.maxItems;
     	      this.mode = defaults.mode;
@@ -205,14 +191,6 @@ public final class GetAccessRulesInvokeResult {
         public Builder direction(@Nullable String direction) {
 
             this.direction = direction;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAccessRulesInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -269,7 +247,6 @@ public final class GetAccessRulesInvokeResult {
             _resultValue.accountId = accountId;
             _resultValue.configuration = configuration;
             _resultValue.direction = direction;
-            _resultValue.id = id;
             _resultValue.match = match;
             _resultValue.maxItems = maxItems;
             _resultValue.mode = mode;

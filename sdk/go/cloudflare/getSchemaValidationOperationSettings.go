@@ -62,8 +62,6 @@ type LookupSchemaValidationOperationSettingsArgs struct {
 
 // A collection of values returned by getSchemaValidationOperationSettings.
 type LookupSchemaValidationOperationSettingsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id               string  `pulumi:"id"`
 	MitigationAction string  `pulumi:"mitigationAction"`
 	OperationId      string  `pulumi:"operationId"`
 	ZoneId           *string `pulumi:"zoneId"`
@@ -101,11 +99,6 @@ func (o LookupSchemaValidationOperationSettingsResultOutput) ToLookupSchemaValid
 
 func (o LookupSchemaValidationOperationSettingsResultOutput) ToLookupSchemaValidationOperationSettingsResultOutputWithContext(ctx context.Context) LookupSchemaValidationOperationSettingsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupSchemaValidationOperationSettingsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSchemaValidationOperationSettingsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o LookupSchemaValidationOperationSettingsResultOutput) MitigationAction() pulumi.StringOutput {

@@ -75,8 +75,6 @@ type LookupZeroTrustTunnelWarpConnectorConfigResult struct {
 	// High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
 	// Available values: "none", "disabled", "aws", "local".
 	HaMode string `pulumi:"haMode"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// UUID of the tunnel.
 	TunnelId string `pulumi:"tunnelId"`
 	// Timestamp of the last update. Null if never updated.
@@ -145,11 +143,6 @@ func (o LookupZeroTrustTunnelWarpConnectorConfigResultOutput) CreatedAt() pulumi
 // Available values: "none", "disabled", "aws", "local".
 func (o LookupZeroTrustTunnelWarpConnectorConfigResultOutput) HaMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustTunnelWarpConnectorConfigResult) string { return v.HaMode }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupZeroTrustTunnelWarpConnectorConfigResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustTunnelWarpConnectorConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // UUID of the tunnel.

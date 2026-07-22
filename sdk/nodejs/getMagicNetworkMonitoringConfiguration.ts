@@ -49,10 +49,6 @@ export interface GetMagicNetworkMonitoringConfigurationResult {
      */
     readonly defaultSampling: number;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * The account name.
      */
     readonly name: string;

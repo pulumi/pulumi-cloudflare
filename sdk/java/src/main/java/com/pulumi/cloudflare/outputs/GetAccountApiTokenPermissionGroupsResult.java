@@ -20,11 +20,6 @@ public final class GetAccountApiTokenPermissionGroupsResult {
      */
     private @Nullable String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Filter by the name of the permission group.
      * The value must be URL-encoded.
      * 
@@ -45,13 +40,6 @@ public final class GetAccountApiTokenPermissionGroupsResult {
      */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Filter by the name of the permission group.
@@ -83,7 +71,6 @@ public final class GetAccountApiTokenPermissionGroupsResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
-        private String id;
         private @Nullable String name;
         private List<GetAccountApiTokenPermissionGroupsPermissionGroup> permissionGroups;
         private @Nullable String scope;
@@ -91,7 +78,6 @@ public final class GetAccountApiTokenPermissionGroupsResult {
         public Builder(GetAccountApiTokenPermissionGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.permissionGroups = defaults.permissionGroups;
     	      this.scope = defaults.scope;
@@ -101,14 +87,6 @@ public final class GetAccountApiTokenPermissionGroupsResult {
         public Builder accountId(@Nullable String accountId) {
 
             this.accountId = accountId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAccountApiTokenPermissionGroupsResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -137,7 +115,6 @@ public final class GetAccountApiTokenPermissionGroupsResult {
         public GetAccountApiTokenPermissionGroupsResult build() {
             final var _resultValue = new GetAccountApiTokenPermissionGroupsResult();
             _resultValue.accountId = accountId;
-            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.permissionGroups = permissionGroups;
             _resultValue.scope = scope;

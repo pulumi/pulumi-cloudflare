@@ -106,10 +106,8 @@ type LookupPageShieldCookiesListResult struct {
 	// Available values: "csv".
 	Export *string `pulumi:"export"`
 	// Includes cookies that match one or more URL-encoded hostnames separated by commas.
-	Hosts    *string `pulumi:"hosts"`
-	HttpOnly *bool   `pulumi:"httpOnly"`
-	// The provider-assigned unique ID for this managed resource.
-	Id       string                           `pulumi:"id"`
+	Hosts    *string                          `pulumi:"hosts"`
+	HttpOnly *bool                            `pulumi:"httpOnly"`
 	MaxItems *int                             `pulumi:"maxItems"`
 	Name     *string                          `pulumi:"name"`
 	OrderBy  *string                          `pulumi:"orderBy"`
@@ -202,11 +200,6 @@ func (o LookupPageShieldCookiesListResultOutput) Hosts() pulumi.StringPtrOutput 
 
 func (o LookupPageShieldCookiesListResultOutput) HttpOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupPageShieldCookiesListResult) *bool { return v.HttpOnly }).(pulumi.BoolPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupPageShieldCookiesListResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPageShieldCookiesListResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o LookupPageShieldCookiesListResultOutput) MaxItems() pulumi.IntPtrOutput {

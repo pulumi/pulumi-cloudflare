@@ -150,10 +150,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Created;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// A Cloudflare-generated unique identifier for a item.
         /// </summary>
         public readonly string KeyId;
@@ -176,8 +172,6 @@ namespace Pulumi.Cloudflare
 
             string created,
 
-            string id,
-
             string keyId,
 
             string modified,
@@ -188,7 +182,6 @@ namespace Pulumi.Cloudflare
         {
             AccountId = accountId;
             Created = created;
-            Id = id;
             KeyId = keyId;
             Modified = modified;
             Name = name;

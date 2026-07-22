@@ -62,8 +62,6 @@ type LookupOriginCaCertificatesArgs struct {
 
 // A collection of values returned by getOriginCaCertificates.
 type LookupOriginCaCertificatesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Limit to the number of records returned.
 	Limit *int `pulumi:"limit"`
 	// Max items to fetch, default: 1000
@@ -114,11 +112,6 @@ func (o LookupOriginCaCertificatesResultOutput) ToLookupOriginCaCertificatesResu
 
 func (o LookupOriginCaCertificatesResultOutput) ToLookupOriginCaCertificatesResultOutputWithContext(ctx context.Context) LookupOriginCaCertificatesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupOriginCaCertificatesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOriginCaCertificatesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Limit to the number of records returned.

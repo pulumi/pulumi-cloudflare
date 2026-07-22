@@ -74,8 +74,6 @@ type LookupZeroTrustDexRulesArgs struct {
 type LookupZeroTrustDexRulesResult struct {
 	// Unique identifier linked to an account.
 	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Filter results by rule name.
@@ -137,11 +135,6 @@ func (o LookupZeroTrustDexRulesResultOutput) ToLookupZeroTrustDexRulesResultOutp
 // Unique identifier linked to an account.
 func (o LookupZeroTrustDexRulesResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustDexRulesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupZeroTrustDexRulesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDexRulesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

@@ -16,11 +16,6 @@ public final class GetSnippetsResult {
      */
     private String createdOn;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return The timestamp of when the snippet was last modified.
      * 
      */
@@ -43,13 +38,6 @@ public final class GetSnippetsResult {
      */
     public String createdOn() {
         return this.createdOn;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return The timestamp of when the snippet was last modified.
@@ -83,7 +71,6 @@ public final class GetSnippetsResult {
     @CustomType.Builder
     public static final class Builder {
         private String createdOn;
-        private String id;
         private String modifiedOn;
         private String snippetName;
         private String zoneId;
@@ -91,7 +78,6 @@ public final class GetSnippetsResult {
         public Builder(GetSnippetsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdOn = defaults.createdOn;
-    	      this.id = defaults.id;
     	      this.modifiedOn = defaults.modifiedOn;
     	      this.snippetName = defaults.snippetName;
     	      this.zoneId = defaults.zoneId;
@@ -103,14 +89,6 @@ public final class GetSnippetsResult {
               throw new MissingRequiredPropertyException("GetSnippetsResult", "createdOn");
             }
             this.createdOn = createdOn;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetSnippetsResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -140,7 +118,6 @@ public final class GetSnippetsResult {
         public GetSnippetsResult build() {
             final var _resultValue = new GetSnippetsResult();
             _resultValue.createdOn = createdOn;
-            _resultValue.id = id;
             _resultValue.modifiedOn = modifiedOn;
             _resultValue.snippetName = snippetName;
             _resultValue.zoneId = zoneId;

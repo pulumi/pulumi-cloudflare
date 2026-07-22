@@ -71,8 +71,6 @@ type LookupZeroTrustTunnelCloudflaredConfigResult struct {
 	// The tunnel configuration and ingress rules.
 	Config    GetZeroTrustTunnelCloudflaredConfigConfig `pulumi:"config"`
 	CreatedAt string                                    `pulumi:"createdAt"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
 	// Available values: "local", "cloudflare".
 	Source string `pulumi:"source"`
@@ -132,11 +130,6 @@ func (o LookupZeroTrustTunnelCloudflaredConfigResultOutput) Config() GetZeroTrus
 
 func (o LookupZeroTrustTunnelCloudflaredConfigResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredConfigResult) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupZeroTrustTunnelCloudflaredConfigResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.

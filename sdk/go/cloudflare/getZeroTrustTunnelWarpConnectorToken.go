@@ -65,8 +65,6 @@ type GetZeroTrustTunnelWarpConnectorTokenArgs struct {
 type GetZeroTrustTunnelWarpConnectorTokenResult struct {
 	// Cloudflare account ID
 	AccountId string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel.
 	Token string `pulumi:"token"`
 	// UUID of the tunnel.
@@ -112,11 +110,6 @@ func (o GetZeroTrustTunnelWarpConnectorTokenResultOutput) ToGetZeroTrustTunnelWa
 // Cloudflare account ID
 func (o GetZeroTrustTunnelWarpConnectorTokenResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustTunnelWarpConnectorTokenResult) string { return v.AccountId }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetZeroTrustTunnelWarpConnectorTokenResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustTunnelWarpConnectorTokenResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel.

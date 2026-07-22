@@ -79,9 +79,7 @@ type LookupTurnstileWidgetsResult struct {
 	Direction *string `pulumi:"direction"`
 	// Filter widgets by field using case-insensitive substring matching.
 	// Format: `field:value`
-	Filter *string `pulumi:"filter"`
-	// The provider-assigned unique ID for this managed resource.
-	Id       string                      `pulumi:"id"`
+	Filter   *string                     `pulumi:"filter"`
 	MaxItems *int                        `pulumi:"maxItems"`
 	Order    *string                     `pulumi:"order"`
 	Results  []GetTurnstileWidgetsResult `pulumi:"results"`
@@ -144,11 +142,6 @@ func (o LookupTurnstileWidgetsResultOutput) Direction() pulumi.StringPtrOutput {
 // Format: `field:value`
 func (o LookupTurnstileWidgetsResultOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTurnstileWidgetsResult) *string { return v.Filter }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupTurnstileWidgetsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTurnstileWidgetsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o LookupTurnstileWidgetsResultOutput) MaxItems() pulumi.IntPtrOutput {

@@ -76,8 +76,6 @@ type LookupAuthenticatedOriginPullsResult struct {
 	ExpiresOn string `pulumi:"expiresOn"`
 	// The hostname on the origin for which the client certificate uploaded will be used.
 	Hostname string `pulumi:"hostname"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// The certificate authority that issued the certificate.
 	Issuer string `pulumi:"issuer"`
 	// The serial number on the uploaded certificate.
@@ -173,11 +171,6 @@ func (o LookupAuthenticatedOriginPullsResultOutput) ExpiresOn() pulumi.StringOut
 // The hostname on the origin for which the client certificate uploaded will be used.
 func (o LookupAuthenticatedOriginPullsResultOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthenticatedOriginPullsResult) string { return v.Hostname }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupAuthenticatedOriginPullsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAuthenticatedOriginPullsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The certificate authority that issued the certificate.

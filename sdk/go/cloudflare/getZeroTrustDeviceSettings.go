@@ -68,8 +68,6 @@ type LookupZeroTrustDeviceSettingsResult struct {
 	GatewayProxyEnabled bool `pulumi:"gatewayProxyEnabled"`
 	// Enable gateway proxy filtering on UDP.
 	GatewayUdpProxyEnabled bool `pulumi:"gatewayUdpProxyEnabled"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Enable installation of cloudflare managed root certificate.
 	RootCertificateInstallationEnabled bool `pulumi:"rootCertificateInstallationEnabled"`
 	// Enable using CGNAT virtual IPv4.
@@ -146,11 +144,6 @@ func (o LookupZeroTrustDeviceSettingsResultOutput) GatewayProxyEnabled() pulumi.
 // Enable gateway proxy filtering on UDP.
 func (o LookupZeroTrustDeviceSettingsResultOutput) GatewayUdpProxyEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustDeviceSettingsResult) bool { return v.GatewayUdpProxyEnabled }).(pulumi.BoolOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupZeroTrustDeviceSettingsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDeviceSettingsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Enable installation of cloudflare managed root certificate.

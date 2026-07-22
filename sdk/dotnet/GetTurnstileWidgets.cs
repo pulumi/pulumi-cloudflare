@@ -195,10 +195,6 @@ namespace Pulumi.Cloudflare
         /// Format: `field:value`
         /// </summary>
         public readonly string? Filter;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? MaxItems;
         public readonly string? Order;
         public readonly ImmutableArray<Outputs.GetTurnstileWidgetsResultResult> Results;
@@ -211,8 +207,6 @@ namespace Pulumi.Cloudflare
 
             string? filter,
 
-            string id,
-
             int? maxItems,
 
             string? order,
@@ -222,7 +216,6 @@ namespace Pulumi.Cloudflare
             AccountId = accountId;
             Direction = direction;
             Filter = filter;
-            Id = id;
             MaxItems = maxItems;
             Order = order;
             Results = results;

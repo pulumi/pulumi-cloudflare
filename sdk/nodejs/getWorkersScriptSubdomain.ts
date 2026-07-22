@@ -58,10 +58,6 @@ export interface GetWorkersScriptSubdomainResult {
      */
     readonly enabled: boolean;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Whether the Worker's Preview URLs are available on the workers.dev subdomain.
      */
     readonly previewsEnabled: boolean;

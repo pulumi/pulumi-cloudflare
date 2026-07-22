@@ -22,11 +22,6 @@ public final class GetStreamCaptionLanguageResult {
      */
     private Boolean generated;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return A Cloudflare-generated unique identifier for a media item.
      * 
      */
@@ -62,13 +57,6 @@ public final class GetStreamCaptionLanguageResult {
      */
     public Boolean generated() {
         return this.generated;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return A Cloudflare-generated unique identifier for a media item.
@@ -111,7 +99,6 @@ public final class GetStreamCaptionLanguageResult {
     public static final class Builder {
         private String accountId;
         private Boolean generated;
-        private String id;
         private String identifier;
         private String label;
         private String language;
@@ -121,7 +108,6 @@ public final class GetStreamCaptionLanguageResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.generated = defaults.generated;
-    	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.label = defaults.label;
     	      this.language = defaults.language;
@@ -142,14 +128,6 @@ public final class GetStreamCaptionLanguageResult {
               throw new MissingRequiredPropertyException("GetStreamCaptionLanguageResult", "generated");
             }
             this.generated = generated;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetStreamCaptionLanguageResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -188,7 +166,6 @@ public final class GetStreamCaptionLanguageResult {
             final var _resultValue = new GetStreamCaptionLanguageResult();
             _resultValue.accountId = accountId;
             _resultValue.generated = generated;
-            _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.label = label;
             _resultValue.language = language;

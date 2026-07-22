@@ -165,10 +165,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string DatasetId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         public readonly string? ZoneId;
@@ -179,13 +175,10 @@ namespace Pulumi.Cloudflare
 
             string datasetId,
 
-            string id,
-
             string? zoneId)
         {
             AccountId = accountId;
             DatasetId = datasetId;
-            Id = id;
             ZoneId = zoneId;
         }
     }

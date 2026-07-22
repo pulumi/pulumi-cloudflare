@@ -169,10 +169,6 @@ namespace Pulumi.Cloudflare
     public sealed class GetCustomOriginTrustStoresResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Limit to the number of records returned.
         /// </summary>
         public readonly int? Limit;
@@ -195,8 +191,6 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetCustomOriginTrustStoresResult(
-            string id,
-
             int? limit,
 
             int? maxItems,
@@ -207,7 +201,6 @@ namespace Pulumi.Cloudflare
 
             string? zoneId)
         {
-            Id = id;
             Limit = limit;
             MaxItems = maxItems;
             Offset = offset;

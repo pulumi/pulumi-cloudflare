@@ -60,8 +60,6 @@ type LookupRulesetsArgs struct {
 type LookupRulesetsResult struct {
 	// The unique ID of the account.
 	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Maximum number of rulesets to fetch (defaults to 1000).
 	MaxItems *int `pulumi:"maxItems"`
 	// A list of rulesets. The returned information will not include the rules in each ruleset.
@@ -115,11 +113,6 @@ func (o LookupRulesetsResultOutput) ToLookupRulesetsResultOutputWithContext(ctx 
 // The unique ID of the account.
 func (o LookupRulesetsResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRulesetsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupRulesetsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRulesetsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Maximum number of rulesets to fetch (defaults to 1000).

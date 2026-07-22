@@ -82,8 +82,6 @@ type LookupWorkersCustomDomainsResult struct {
 	Environment *string `pulumi:"environment"`
 	// Hostname of the domain.
 	Hostname *string `pulumi:"hostname"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -155,11 +153,6 @@ func (o LookupWorkersCustomDomainsResultOutput) Environment() pulumi.StringPtrOu
 // Hostname of the domain.
 func (o LookupWorkersCustomDomainsResultOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkersCustomDomainsResult) *string { return v.Hostname }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupWorkersCustomDomainsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkersCustomDomainsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

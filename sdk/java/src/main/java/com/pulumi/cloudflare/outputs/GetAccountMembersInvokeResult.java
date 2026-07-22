@@ -27,11 +27,6 @@ public final class GetAccountMembersInvokeResult {
      */
     private @Nullable String direction;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -69,13 +64,6 @@ public final class GetAccountMembersInvokeResult {
      */
     public Optional<String> direction() {
         return Optional.ofNullable(this.direction);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Max items to fetch, default: 1000
@@ -119,7 +107,6 @@ public final class GetAccountMembersInvokeResult {
     public static final class Builder {
         private @Nullable String accountId;
         private @Nullable String direction;
-        private String id;
         private @Nullable Integer maxItems;
         private @Nullable String order;
         private List<GetAccountMembersResult> results;
@@ -129,7 +116,6 @@ public final class GetAccountMembersInvokeResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.direction = defaults.direction;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.order = defaults.order;
     	      this.results = defaults.results;
@@ -146,14 +132,6 @@ public final class GetAccountMembersInvokeResult {
         public Builder direction(@Nullable String direction) {
 
             this.direction = direction;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAccountMembersInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -189,7 +167,6 @@ public final class GetAccountMembersInvokeResult {
             final var _resultValue = new GetAccountMembersInvokeResult();
             _resultValue.accountId = accountId;
             _resultValue.direction = direction;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.order = order;
             _resultValue.results = results;

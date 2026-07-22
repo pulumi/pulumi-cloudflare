@@ -63,8 +63,6 @@ type LookupAddressMapsArgs struct {
 type LookupAddressMapsResult struct {
 	// Identifier of a Cloudflare account.
 	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -110,11 +108,6 @@ func (o LookupAddressMapsResultOutput) ToLookupAddressMapsResultOutputWithContex
 // Identifier of a Cloudflare account.
 func (o LookupAddressMapsResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAddressMapsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupAddressMapsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAddressMapsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

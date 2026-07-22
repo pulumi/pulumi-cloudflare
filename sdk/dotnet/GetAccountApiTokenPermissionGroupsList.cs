@@ -177,10 +177,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
@@ -203,8 +199,6 @@ namespace Pulumi.Cloudflare
         private GetAccountApiTokenPermissionGroupsListResult(
             string? accountId,
 
-            string id,
-
             int? maxItems,
 
             string? name,
@@ -214,7 +208,6 @@ namespace Pulumi.Cloudflare
             string? scope)
         {
             AccountId = accountId;
-            Id = id;
             MaxItems = maxItems;
             Name = name;
             Results = results;

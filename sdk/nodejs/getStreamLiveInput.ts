@@ -67,10 +67,6 @@ export interface GetStreamLiveInputResult {
      */
     readonly enabled: boolean;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
      */
     readonly keysRotatedAt: string;

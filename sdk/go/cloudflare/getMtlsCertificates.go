@@ -58,8 +58,6 @@ type LookupMtlsCertificatesArgs struct {
 type LookupMtlsCertificatesResult struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -105,11 +103,6 @@ func (o LookupMtlsCertificatesResultOutput) ToLookupMtlsCertificatesResultOutput
 // Identifier.
 func (o LookupMtlsCertificatesResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMtlsCertificatesResult) string { return v.AccountId }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupMtlsCertificatesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMtlsCertificatesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

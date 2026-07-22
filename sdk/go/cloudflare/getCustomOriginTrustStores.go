@@ -67,8 +67,6 @@ type LookupCustomOriginTrustStoresArgs struct {
 
 // A collection of values returned by getCustomOriginTrustStores.
 type LookupCustomOriginTrustStoresResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Limit to the number of records returned.
 	Limit *int `pulumi:"limit"`
 	// Max items to fetch, default: 1000
@@ -119,11 +117,6 @@ func (o LookupCustomOriginTrustStoresResultOutput) ToLookupCustomOriginTrustStor
 
 func (o LookupCustomOriginTrustStoresResultOutput) ToLookupCustomOriginTrustStoresResultOutputWithContext(ctx context.Context) LookupCustomOriginTrustStoresResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupCustomOriginTrustStoresResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCustomOriginTrustStoresResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Limit to the number of records returned.

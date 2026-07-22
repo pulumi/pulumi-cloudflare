@@ -60,10 +60,8 @@ type LookupR2BucketLockResult struct {
 	// Account ID.
 	AccountId string `pulumi:"accountId"`
 	// Name of the bucket.
-	BucketName string `pulumi:"bucketName"`
-	// The provider-assigned unique ID for this managed resource.
-	Id    string                `pulumi:"id"`
-	Rules []GetR2BucketLockRule `pulumi:"rules"`
+	BucketName string                `pulumi:"bucketName"`
+	Rules      []GetR2BucketLockRule `pulumi:"rules"`
 }
 
 func LookupR2BucketLockOutput(ctx *pulumi.Context, args LookupR2BucketLockOutputArgs, opts ...pulumi.InvokeOption) LookupR2BucketLockResultOutput {
@@ -110,11 +108,6 @@ func (o LookupR2BucketLockResultOutput) AccountId() pulumi.StringOutput {
 // Name of the bucket.
 func (o LookupR2BucketLockResultOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketLockResult) string { return v.BucketName }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupR2BucketLockResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupR2BucketLockResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o LookupR2BucketLockResultOutput) Rules() GetR2BucketLockRuleArrayOutput {

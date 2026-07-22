@@ -7,7 +7,6 @@ import com.pulumi.cloudflare.outputs.GetOauthScopesResult;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,11 +14,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOauthScopesInvokeResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     /**
      * @return Max items to fetch, default: 1000
      * 
@@ -32,13 +26,6 @@ public final class GetOauthScopesInvokeResult {
     private List<GetOauthScopesResult> results;
 
     private GetOauthScopesInvokeResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     /**
      * @return Max items to fetch, default: 1000
      * 
@@ -63,25 +50,15 @@ public final class GetOauthScopesInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private @Nullable Integer maxItems;
         private List<GetOauthScopesResult> results;
         public Builder() {}
         public Builder(GetOauthScopesInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetOauthScopesInvokeResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder maxItems(@Nullable Integer maxItems) {
 
@@ -101,7 +78,6 @@ public final class GetOauthScopesInvokeResult {
         }
         public GetOauthScopesInvokeResult build() {
             final var _resultValue = new GetOauthScopesInvokeResult();
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;
             return _resultValue;

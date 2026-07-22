@@ -26,11 +26,6 @@ public final class GetMagicTransitSitesInvokeResult {
      */
     private @Nullable String connectorid;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -55,13 +50,6 @@ public final class GetMagicTransitSitesInvokeResult {
      */
     public Optional<String> connectorid() {
         return Optional.ofNullable(this.connectorid);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Max items to fetch, default: 1000
@@ -89,7 +77,6 @@ public final class GetMagicTransitSitesInvokeResult {
     public static final class Builder {
         private @Nullable String accountId;
         private @Nullable String connectorid;
-        private String id;
         private @Nullable Integer maxItems;
         private List<GetMagicTransitSitesResult> results;
         public Builder() {}
@@ -97,7 +84,6 @@ public final class GetMagicTransitSitesInvokeResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.connectorid = defaults.connectorid;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
         }
@@ -112,14 +98,6 @@ public final class GetMagicTransitSitesInvokeResult {
         public Builder connectorid(@Nullable String connectorid) {
 
             this.connectorid = connectorid;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetMagicTransitSitesInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -143,7 +121,6 @@ public final class GetMagicTransitSitesInvokeResult {
             final var _resultValue = new GetMagicTransitSitesInvokeResult();
             _resultValue.accountId = accountId;
             _resultValue.connectorid = connectorid;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;
             return _resultValue;

@@ -72,8 +72,6 @@ type LookupUserAgentBlockingRulesArgs struct {
 type LookupUserAgentBlockingRulesResult struct {
 	// A string to search for in the description of existing rules.
 	Description *string `pulumi:"description"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// When true, indicates that the rule is currently paused.
@@ -131,11 +129,6 @@ func (o LookupUserAgentBlockingRulesResultOutput) ToLookupUserAgentBlockingRules
 // A string to search for in the description of existing rules.
 func (o LookupUserAgentBlockingRulesResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupUserAgentBlockingRulesResult) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupUserAgentBlockingRulesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupUserAgentBlockingRulesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

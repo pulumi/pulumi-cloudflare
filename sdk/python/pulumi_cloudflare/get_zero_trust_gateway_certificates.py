@@ -27,13 +27,10 @@ class GetZeroTrustGatewayCertificatesResult:
     """
     A collection of values returned by getZeroTrustGatewayCertificates.
     """
-    def __init__(__self__, account_id=None, id=None, max_items=None, results=None):
+    def __init__(__self__, account_id=None, max_items=None, results=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -45,14 +42,6 @@ class GetZeroTrustGatewayCertificatesResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "account_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="maxItems")
@@ -78,7 +67,6 @@ class AwaitableGetZeroTrustGatewayCertificatesResult(GetZeroTrustGatewayCertific
             yield self
         return GetZeroTrustGatewayCertificatesResult(
             account_id=self.account_id,
-            id=self.id,
             max_items=self.max_items,
             results=self.results)
 
@@ -107,7 +95,6 @@ def get_zero_trust_gateway_certificates(account_id: Optional[_builtins.str] = No
 
     return AwaitableGetZeroTrustGatewayCertificatesResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-        id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'))
 def get_zero_trust_gateway_certificates_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -133,6 +120,5 @@ def get_zero_trust_gateway_certificates_output(account_id: pulumi.Input[Optional
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustGatewayCertificates:getZeroTrustGatewayCertificates', __args__, opts=opts, typ=GetZeroTrustGatewayCertificatesResult)
     return __ret__.apply(lambda __response__: GetZeroTrustGatewayCertificatesResult(
         account_id=pulumi.get(__response__, 'account_id'),
-        id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         results=pulumi.get(__response__, 'results')))

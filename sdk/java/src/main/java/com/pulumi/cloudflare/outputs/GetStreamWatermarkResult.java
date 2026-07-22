@@ -33,11 +33,6 @@ public final class GetStreamWatermarkResult {
      */
     private Integer height;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return The unique identifier for a watermark profile.
      * 
      */
@@ -111,13 +106,6 @@ public final class GetStreamWatermarkResult {
      */
     public Integer height() {
         return this.height;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return The unique identifier for a watermark profile.
@@ -196,7 +184,6 @@ public final class GetStreamWatermarkResult {
         private String created;
         private String downloadedFrom;
         private Integer height;
-        private String id;
         private String identifier;
         private String name;
         private Double opacity;
@@ -213,7 +200,6 @@ public final class GetStreamWatermarkResult {
     	      this.created = defaults.created;
     	      this.downloadedFrom = defaults.downloadedFrom;
     	      this.height = defaults.height;
-    	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.name = defaults.name;
     	      this.opacity = defaults.opacity;
@@ -255,14 +241,6 @@ public final class GetStreamWatermarkResult {
               throw new MissingRequiredPropertyException("GetStreamWatermarkResult", "height");
             }
             this.height = height;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetStreamWatermarkResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -343,7 +321,6 @@ public final class GetStreamWatermarkResult {
             _resultValue.created = created;
             _resultValue.downloadedFrom = downloadedFrom;
             _resultValue.height = height;
-            _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.name = name;
             _resultValue.opacity = opacity;

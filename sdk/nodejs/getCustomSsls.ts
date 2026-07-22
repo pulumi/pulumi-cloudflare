@@ -66,10 +66,6 @@ export interface GetCustomSslsArgs {
  */
 export interface GetCustomSslsResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Whether to match all search requirements or at least one (any).
      * Available values: "any", "all".
      */

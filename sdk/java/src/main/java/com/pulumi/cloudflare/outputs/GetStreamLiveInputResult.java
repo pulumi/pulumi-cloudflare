@@ -40,11 +40,6 @@ public final class GetStreamLiveInputResult {
      */
     private Boolean enabled;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
      * 
      */
@@ -144,13 +139,6 @@ public final class GetStreamLiveInputResult {
      */
     public Boolean enabled() {
         return this.enabled;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
@@ -265,7 +253,6 @@ public final class GetStreamLiveInputResult {
         private String created;
         private Double deleteRecordingAfterDays;
         private Boolean enabled;
-        private String id;
         private String keysRotatedAt;
         private String liveInputIdentifier;
         private String meta;
@@ -287,7 +274,6 @@ public final class GetStreamLiveInputResult {
     	      this.created = defaults.created;
     	      this.deleteRecordingAfterDays = defaults.deleteRecordingAfterDays;
     	      this.enabled = defaults.enabled;
-    	      this.id = defaults.id;
     	      this.keysRotatedAt = defaults.keysRotatedAt;
     	      this.liveInputIdentifier = defaults.liveInputIdentifier;
     	      this.meta = defaults.meta;
@@ -334,14 +320,6 @@ public final class GetStreamLiveInputResult {
               throw new MissingRequiredPropertyException("GetStreamLiveInputResult", "enabled");
             }
             this.enabled = enabled;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetStreamLiveInputResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -462,7 +440,6 @@ public final class GetStreamLiveInputResult {
             _resultValue.created = created;
             _resultValue.deleteRecordingAfterDays = deleteRecordingAfterDays;
             _resultValue.enabled = enabled;
-            _resultValue.id = id;
             _resultValue.keysRotatedAt = keysRotatedAt;
             _resultValue.liveInputIdentifier = liveInputIdentifier;
             _resultValue.meta = meta;

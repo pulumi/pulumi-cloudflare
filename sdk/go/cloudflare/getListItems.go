@@ -72,8 +72,6 @@ type LookupListItemsArgs struct {
 type LookupListItemsResult struct {
 	// The Account ID for this resource.
 	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// The unique ID of the list.
 	ListId string `pulumi:"listId"`
 	// Max items to fetch, default: 1000
@@ -131,11 +129,6 @@ func (o LookupListItemsResultOutput) ToLookupListItemsResultOutputWithContext(ct
 // The Account ID for this resource.
 func (o LookupListItemsResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupListItemsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupListItemsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupListItemsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The unique ID of the list.

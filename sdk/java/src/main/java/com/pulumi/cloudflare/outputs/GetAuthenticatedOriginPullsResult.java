@@ -58,11 +58,6 @@ public final class GetAuthenticatedOriginPullsResult {
      */
     private String hostname;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return The certificate authority that issued the certificate.
      * 
      */
@@ -160,13 +155,6 @@ public final class GetAuthenticatedOriginPullsResult {
         return this.hostname;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return The certificate authority that issued the certificate.
      * 
      */
@@ -228,7 +216,6 @@ public final class GetAuthenticatedOriginPullsResult {
         private Boolean enabled;
         private String expiresOn;
         private String hostname;
-        private String id;
         private String issuer;
         private String serialNumber;
         private String signature;
@@ -247,7 +234,6 @@ public final class GetAuthenticatedOriginPullsResult {
     	      this.enabled = defaults.enabled;
     	      this.expiresOn = defaults.expiresOn;
     	      this.hostname = defaults.hostname;
-    	      this.id = defaults.id;
     	      this.issuer = defaults.issuer;
     	      this.serialNumber = defaults.serialNumber;
     	      this.signature = defaults.signature;
@@ -329,14 +315,6 @@ public final class GetAuthenticatedOriginPullsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAuthenticatedOriginPullsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder issuer(String issuer) {
             if (issuer == null) {
               throw new MissingRequiredPropertyException("GetAuthenticatedOriginPullsResult", "issuer");
@@ -395,7 +373,6 @@ public final class GetAuthenticatedOriginPullsResult {
             _resultValue.enabled = enabled;
             _resultValue.expiresOn = expiresOn;
             _resultValue.hostname = hostname;
-            _resultValue.id = id;
             _resultValue.issuer = issuer;
             _resultValue.serialNumber = serialNumber;
             _resultValue.signature = signature;

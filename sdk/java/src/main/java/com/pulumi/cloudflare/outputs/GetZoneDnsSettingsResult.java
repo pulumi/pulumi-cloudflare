@@ -28,11 +28,6 @@ public final class GetZoneDnsSettingsResult {
      */
     private Boolean foundationDns;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Settings for this internal zone.
      * 
      */
@@ -88,13 +83,6 @@ public final class GetZoneDnsSettingsResult {
      */
     public Boolean foundationDns() {
         return this.foundationDns;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Settings for this internal zone.
@@ -165,7 +153,6 @@ public final class GetZoneDnsSettingsResult {
     public static final class Builder {
         private Boolean flattenAllCnames;
         private Boolean foundationDns;
-        private String id;
         private GetZoneDnsSettingsInternalDns internalDns;
         private Boolean multiProvider;
         private GetZoneDnsSettingsNameservers nameservers;
@@ -179,7 +166,6 @@ public final class GetZoneDnsSettingsResult {
     	      Objects.requireNonNull(defaults);
     	      this.flattenAllCnames = defaults.flattenAllCnames;
     	      this.foundationDns = defaults.foundationDns;
-    	      this.id = defaults.id;
     	      this.internalDns = defaults.internalDns;
     	      this.multiProvider = defaults.multiProvider;
     	      this.nameservers = defaults.nameservers;
@@ -204,14 +190,6 @@ public final class GetZoneDnsSettingsResult {
               throw new MissingRequiredPropertyException("GetZoneDnsSettingsResult", "foundationDns");
             }
             this.foundationDns = foundationDns;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetZoneDnsSettingsResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -280,7 +258,6 @@ public final class GetZoneDnsSettingsResult {
             final var _resultValue = new GetZoneDnsSettingsResult();
             _resultValue.flattenAllCnames = flattenAllCnames;
             _resultValue.foundationDns = foundationDns;
-            _resultValue.id = id;
             _resultValue.internalDns = internalDns;
             _resultValue.multiProvider = multiProvider;
             _resultValue.nameservers = nameservers;

@@ -104,10 +104,6 @@ export interface GetZeroTrustTunnelWarpConnectorsResult {
      * If provided, include only resources that were created (and not deleted) before this time. URL encoded.
      */
     readonly existedAt?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly includePrefix?: string;
     /**
      * If `true`, only include deleted tunnels. If `false`, exclude deleted tunnels. If empty, all tunnels will be included.

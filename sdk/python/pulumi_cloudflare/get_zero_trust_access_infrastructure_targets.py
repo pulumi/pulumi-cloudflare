@@ -27,7 +27,7 @@ class GetZeroTrustAccessInfrastructureTargetsResult:
     """
     A collection of values returned by getZeroTrustAccessInfrastructureTargets.
     """
-    def __init__(__self__, account_id=None, created_after=None, created_before=None, direction=None, hostname=None, hostname_contains=None, id=None, ip_like=None, ip_v4=None, ip_v6=None, ips=None, ipv4_end=None, ipv4_start=None, ipv6_end=None, ipv6_start=None, max_items=None, modified_after=None, modified_before=None, order=None, results=None, target_ids=None, virtual_network_id=None):
+    def __init__(__self__, account_id=None, created_after=None, created_before=None, direction=None, hostname=None, hostname_contains=None, ip_like=None, ip_v4=None, ip_v6=None, ips=None, ipv4_end=None, ipv4_start=None, ipv6_end=None, ipv6_start=None, max_items=None, modified_after=None, modified_before=None, order=None, results=None, target_ids=None, virtual_network_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -46,9 +46,6 @@ class GetZeroTrustAccessInfrastructureTargetsResult:
         if hostname_contains and not isinstance(hostname_contains, str):
             raise TypeError("Expected argument 'hostname_contains' to be a str")
         pulumi.set(__self__, "hostname_contains", hostname_contains)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if ip_like and not isinstance(ip_like, str):
             raise TypeError("Expected argument 'ip_like' to be a str")
         pulumi.set(__self__, "ip_like", ip_like)
@@ -143,14 +140,6 @@ class GetZeroTrustAccessInfrastructureTargetsResult:
         Partial match to the hostname of a target
         """
         return pulumi.get(self, "hostname_contains")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="ipLike")
@@ -294,7 +283,6 @@ class AwaitableGetZeroTrustAccessInfrastructureTargetsResult(GetZeroTrustAccessI
             direction=self.direction,
             hostname=self.hostname,
             hostname_contains=self.hostname_contains,
-            id=self.id,
             ip_like=self.ip_like,
             ip_v4=self.ip_v4,
             ip_v6=self.ip_v6,
@@ -424,7 +412,6 @@ def get_zero_trust_access_infrastructure_targets(account_id: Optional[_builtins.
         direction=pulumi.get(__ret__, 'direction'),
         hostname=pulumi.get(__ret__, 'hostname'),
         hostname_contains=pulumi.get(__ret__, 'hostname_contains'),
-        id=pulumi.get(__ret__, 'id'),
         ip_like=pulumi.get(__ret__, 'ip_like'),
         ip_v4=pulumi.get(__ret__, 'ip_v4'),
         ip_v6=pulumi.get(__ret__, 'ip_v6'),
@@ -551,7 +538,6 @@ def get_zero_trust_access_infrastructure_targets_output(account_id: pulumi.Input
         direction=pulumi.get(__response__, 'direction'),
         hostname=pulumi.get(__response__, 'hostname'),
         hostname_contains=pulumi.get(__response__, 'hostname_contains'),
-        id=pulumi.get(__response__, 'id'),
         ip_like=pulumi.get(__response__, 'ip_like'),
         ip_v4=pulumi.get(__response__, 'ip_v4'),
         ip_v6=pulumi.get(__response__, 'ip_v6'),

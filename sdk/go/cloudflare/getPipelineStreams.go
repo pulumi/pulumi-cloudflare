@@ -68,8 +68,6 @@ type LookupPipelineStreamsArgs struct {
 type LookupPipelineStreamsResult struct {
 	// Specifies the public ID of the account.
 	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Filters streams by name (case-insensitive substring).
@@ -123,11 +121,6 @@ func (o LookupPipelineStreamsResultOutput) ToLookupPipelineStreamsResultOutputWi
 // Specifies the public ID of the account.
 func (o LookupPipelineStreamsResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPipelineStreamsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupPipelineStreamsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPipelineStreamsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

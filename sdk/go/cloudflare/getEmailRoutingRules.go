@@ -66,8 +66,6 @@ type LookupEmailRoutingRulesArgs struct {
 type LookupEmailRoutingRulesResult struct {
 	// Filter by enabled routing rules.
 	Enabled *bool `pulumi:"enabled"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -117,11 +115,6 @@ func (o LookupEmailRoutingRulesResultOutput) ToLookupEmailRoutingRulesResultOutp
 // Filter by enabled routing rules.
 func (o LookupEmailRoutingRulesResultOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupEmailRoutingRulesResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupEmailRoutingRulesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEmailRoutingRulesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

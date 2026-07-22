@@ -60,8 +60,6 @@ type LookupLoadBalancersArgs struct {
 
 // A collection of values returned by getLoadBalancers.
 type LookupLoadBalancersResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -102,11 +100,6 @@ func (o LookupLoadBalancersResultOutput) ToLookupLoadBalancersResultOutput() Loo
 
 func (o LookupLoadBalancersResultOutput) ToLookupLoadBalancersResultOutputWithContext(ctx context.Context) LookupLoadBalancersResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupLoadBalancersResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupLoadBalancersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

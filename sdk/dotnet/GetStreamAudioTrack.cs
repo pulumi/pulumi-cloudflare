@@ -150,10 +150,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<Outputs.GetStreamAudioTrackAudioResult> Audios;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// A Cloudflare-generated unique identifier for a media item.
         /// </summary>
         public readonly string Identifier;
@@ -164,13 +160,10 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetStreamAudioTrackAudioResult> audios,
 
-            string id,
-
             string identifier)
         {
             AccountId = accountId;
             Audios = audios;
-            Id = id;
             Identifier = identifier;
         }
     }

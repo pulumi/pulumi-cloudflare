@@ -69,8 +69,6 @@ type LookupR2BucketEventNotificationResult struct {
 	AccountId string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Queue ID.
 	QueueId string `pulumi:"queueId"`
 	// Name of the queue.
@@ -124,11 +122,6 @@ func (o LookupR2BucketEventNotificationResultOutput) AccountId() pulumi.StringOu
 // Name of the bucket.
 func (o LookupR2BucketEventNotificationResultOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketEventNotificationResult) string { return v.BucketName }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupR2BucketEventNotificationResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupR2BucketEventNotificationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Queue ID.

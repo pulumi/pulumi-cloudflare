@@ -23,11 +23,6 @@ public final class GetR2BucketEventNotificationResult {
      */
     private String bucketName;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Queue ID.
      * 
      */
@@ -53,13 +48,6 @@ public final class GetR2BucketEventNotificationResult {
      */
     public String bucketName() {
         return this.bucketName;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Queue ID.
@@ -90,7 +78,6 @@ public final class GetR2BucketEventNotificationResult {
     public static final class Builder {
         private String accountId;
         private String bucketName;
-        private String id;
         private String queueId;
         private String queueName;
         private List<GetR2BucketEventNotificationRule> rules;
@@ -99,7 +86,6 @@ public final class GetR2BucketEventNotificationResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.bucketName = defaults.bucketName;
-    	      this.id = defaults.id;
     	      this.queueId = defaults.queueId;
     	      this.queueName = defaults.queueName;
     	      this.rules = defaults.rules;
@@ -119,14 +105,6 @@ public final class GetR2BucketEventNotificationResult {
               throw new MissingRequiredPropertyException("GetR2BucketEventNotificationResult", "bucketName");
             }
             this.bucketName = bucketName;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetR2BucketEventNotificationResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -160,7 +138,6 @@ public final class GetR2BucketEventNotificationResult {
             final var _resultValue = new GetR2BucketEventNotificationResult();
             _resultValue.accountId = accountId;
             _resultValue.bucketName = bucketName;
-            _resultValue.id = id;
             _resultValue.queueId = queueId;
             _resultValue.queueName = queueName;
             _resultValue.rules = rules;

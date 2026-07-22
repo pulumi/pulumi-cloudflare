@@ -165,10 +165,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string BucketName;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Queue ID.
         /// </summary>
         public readonly string QueueId;
@@ -184,8 +180,6 @@ namespace Pulumi.Cloudflare
 
             string bucketName,
 
-            string id,
-
             string queueId,
 
             string queueName,
@@ -194,7 +188,6 @@ namespace Pulumi.Cloudflare
         {
             AccountId = accountId;
             BucketName = bucketName;
-            Id = id;
             QueueId = queueId;
             QueueName = queueName;
             Rules = rules;

@@ -54,10 +54,6 @@ export interface GetZeroTrustTunnelCloudflaredTokenResult {
      */
     readonly accountId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel.
      */
     readonly token: string;

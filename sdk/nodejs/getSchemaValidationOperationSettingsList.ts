@@ -46,10 +46,6 @@ export interface GetSchemaValidationOperationSettingsListArgs {
  * A collection of values returned by getSchemaValidationOperationSettingsList.
  */
 export interface GetSchemaValidationOperationSettingsListResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly maxItems?: number;
     readonly results: outputs.GetSchemaValidationOperationSettingsListResult[];
     readonly zoneId?: string;

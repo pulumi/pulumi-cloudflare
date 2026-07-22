@@ -62,8 +62,6 @@ type LookupMagicNetworkMonitoringConfigurationResult struct {
 	AccountId *string `pulumi:"accountId"`
 	// Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
 	DefaultSampling float64 `pulumi:"defaultSampling"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// The account name.
 	Name        string                                             `pulumi:"name"`
 	RouterIps   []string                                           `pulumi:"routerIps"`
@@ -110,11 +108,6 @@ func (o LookupMagicNetworkMonitoringConfigurationResultOutput) AccountId() pulum
 // Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
 func (o LookupMagicNetworkMonitoringConfigurationResultOutput) DefaultSampling() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupMagicNetworkMonitoringConfigurationResult) float64 { return v.DefaultSampling }).(pulumi.Float64Output)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupMagicNetworkMonitoringConfigurationResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMagicNetworkMonitoringConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The account name.

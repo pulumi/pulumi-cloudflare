@@ -27,13 +27,10 @@ class GetZeroTrustResourceLibraryCategoriesResult:
     """
     A collection of values returned by getZeroTrustResourceLibraryCategories.
     """
-    def __init__(__self__, account_id=None, id=None, limit=None, max_items=None, offset=None, results=None):
+    def __init__(__self__, account_id=None, limit=None, max_items=None, offset=None, results=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if limit and not isinstance(limit, int):
             raise TypeError("Expected argument 'limit' to be a int")
         pulumi.set(__self__, "limit", limit)
@@ -51,14 +48,6 @@ class GetZeroTrustResourceLibraryCategoriesResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         return pulumi.get(self, "account_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -100,7 +89,6 @@ class AwaitableGetZeroTrustResourceLibraryCategoriesResult(GetZeroTrustResourceL
             yield self
         return GetZeroTrustResourceLibraryCategoriesResult(
             account_id=self.account_id,
-            id=self.id,
             limit=self.limit,
             max_items=self.max_items,
             offset=self.offset,
@@ -129,7 +117,6 @@ def get_zero_trust_resource_library_categories(account_id: Optional[_builtins.st
 
     return AwaitableGetZeroTrustResourceLibraryCategoriesResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-        id=pulumi.get(__ret__, 'id'),
         limit=pulumi.get(__ret__, 'limit'),
         max_items=pulumi.get(__ret__, 'max_items'),
         offset=pulumi.get(__ret__, 'offset'),
@@ -155,7 +142,6 @@ def get_zero_trust_resource_library_categories_output(account_id: pulumi.Input[O
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustResourceLibraryCategories:getZeroTrustResourceLibraryCategories', __args__, opts=opts, typ=GetZeroTrustResourceLibraryCategoriesResult)
     return __ret__.apply(lambda __response__: GetZeroTrustResourceLibraryCategoriesResult(
         account_id=pulumi.get(__response__, 'account_id'),
-        id=pulumi.get(__response__, 'id'),
         limit=pulumi.get(__response__, 'limit'),
         max_items=pulumi.get(__response__, 'max_items'),
         offset=pulumi.get(__response__, 'offset'),

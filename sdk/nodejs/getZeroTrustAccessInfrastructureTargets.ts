@@ -189,10 +189,6 @@ export interface GetZeroTrustAccessInfrastructureTargetsResult {
      */
     readonly hostnameContains?: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Filters for targets whose IP addresses look like the specified string.
      * Supports `*` as a wildcard character
      */

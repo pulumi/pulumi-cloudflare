@@ -27,16 +27,13 @@ class GetEmailSecurityBlockSendersResult:
     """
     A collection of values returned by getEmailSecurityBlockSenders.
     """
-    def __init__(__self__, account_id=None, direction=None, id=None, max_items=None, order=None, pattern=None, pattern_type=None, results=None, search=None):
+    def __init__(__self__, account_id=None, direction=None, max_items=None, order=None, pattern=None, pattern_type=None, results=None, search=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if direction and not isinstance(direction, str):
             raise TypeError("Expected argument 'direction' to be a str")
         pulumi.set(__self__, "direction", direction)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -72,14 +69,6 @@ class GetEmailSecurityBlockSendersResult:
         Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="maxItems")
@@ -140,7 +129,6 @@ class AwaitableGetEmailSecurityBlockSendersResult(GetEmailSecurityBlockSendersRe
         return GetEmailSecurityBlockSendersResult(
             account_id=self.account_id,
             direction=self.direction,
-            id=self.id,
             max_items=self.max_items,
             order=self.order,
             pattern=self.pattern,
@@ -203,7 +191,6 @@ def get_email_security_block_senders(account_id: Optional[_builtins.str] = None,
     return AwaitableGetEmailSecurityBlockSendersResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         direction=pulumi.get(__ret__, 'direction'),
-        id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         order=pulumi.get(__ret__, 'order'),
         pattern=pulumi.get(__ret__, 'pattern'),
@@ -263,7 +250,6 @@ def get_email_security_block_senders_output(account_id: pulumi.Input[Optional[Op
     return __ret__.apply(lambda __response__: GetEmailSecurityBlockSendersResult(
         account_id=pulumi.get(__response__, 'account_id'),
         direction=pulumi.get(__response__, 'direction'),
-        id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         order=pulumi.get(__response__, 'order'),
         pattern=pulumi.get(__response__, 'pattern'),

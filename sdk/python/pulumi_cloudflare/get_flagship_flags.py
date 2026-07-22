@@ -27,16 +27,13 @@ class GetFlagshipFlagsResult:
     """
     A collection of values returned by getFlagshipFlags.
     """
-    def __init__(__self__, account_id=None, app_id=None, id=None, limit=None, max_items=None, results=None):
+    def __init__(__self__, account_id=None, app_id=None, limit=None, max_items=None, results=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if app_id and not isinstance(app_id, str):
             raise TypeError("Expected argument 'app_id' to be a str")
         pulumi.set(__self__, "app_id", app_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if limit and not isinstance(limit, str):
             raise TypeError("Expected argument 'limit' to be a str")
         pulumi.set(__self__, "limit", limit)
@@ -62,14 +59,6 @@ class GetFlagshipFlagsResult:
         App identifier.
         """
         return pulumi.get(self, "app_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -104,7 +93,6 @@ class AwaitableGetFlagshipFlagsResult(GetFlagshipFlagsResult):
         return GetFlagshipFlagsResult(
             account_id=self.account_id,
             app_id=self.app_id,
-            id=self.id,
             limit=self.limit,
             max_items=self.max_items,
             results=self.results)
@@ -148,7 +136,6 @@ def get_flagship_flags(account_id: Optional[_builtins.str] = None,
     return AwaitableGetFlagshipFlagsResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         app_id=pulumi.get(__ret__, 'app_id'),
-        id=pulumi.get(__ret__, 'id'),
         limit=pulumi.get(__ret__, 'limit'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'))
@@ -189,7 +176,6 @@ def get_flagship_flags_output(account_id: pulumi.Input[Optional[_builtins.str]] 
     return __ret__.apply(lambda __response__: GetFlagshipFlagsResult(
         account_id=pulumi.get(__response__, 'account_id'),
         app_id=pulumi.get(__response__, 'app_id'),
-        id=pulumi.get(__response__, 'id'),
         limit=pulumi.get(__response__, 'limit'),
         max_items=pulumi.get(__response__, 'max_items'),
         results=pulumi.get(__response__, 'results')))

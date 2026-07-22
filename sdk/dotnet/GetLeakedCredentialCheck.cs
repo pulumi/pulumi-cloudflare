@@ -137,10 +137,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Defines an identifier.
         /// </summary>
         public readonly string? ZoneId;
@@ -149,12 +145,9 @@ namespace Pulumi.Cloudflare
         private GetLeakedCredentialCheckResult(
             bool enabled,
 
-            string id,
-
             string? zoneId)
         {
             Enabled = enabled;
-            Id = id;
             ZoneId = zoneId;
         }
     }

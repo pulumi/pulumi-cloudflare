@@ -66,8 +66,6 @@ type LookupApiTokenPermissionGroupsListArgs struct {
 
 // A collection of values returned by getApiTokenPermissionGroupsList.
 type LookupApiTokenPermissionGroupsListResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Filter by the name of the permission group.
@@ -118,11 +116,6 @@ func (o LookupApiTokenPermissionGroupsListResultOutput) ToLookupApiTokenPermissi
 
 func (o LookupApiTokenPermissionGroupsListResultOutput) ToLookupApiTokenPermissionGroupsListResultOutputWithContext(ctx context.Context) LookupApiTokenPermissionGroupsListResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupApiTokenPermissionGroupsListResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupApiTokenPermissionGroupsListResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

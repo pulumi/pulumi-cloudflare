@@ -74,10 +74,6 @@ export interface GetZeroTrustTunnelWarpConnectorConfigResult {
      */
     readonly haMode: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * UUID of the tunnel.
      */
     readonly tunnelId: string;

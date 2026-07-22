@@ -17,11 +17,6 @@ import javax.annotation.Nullable;
 public final class GetZeroTrustGatewayCertificatesInvokeResult {
     private @Nullable String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -35,13 +30,6 @@ public final class GetZeroTrustGatewayCertificatesInvokeResult {
     private GetZeroTrustGatewayCertificatesInvokeResult() {}
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Max items to fetch, default: 1000
@@ -68,14 +56,12 @@ public final class GetZeroTrustGatewayCertificatesInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
-        private String id;
         private @Nullable Integer maxItems;
         private List<GetZeroTrustGatewayCertificatesResult> results;
         public Builder() {}
         public Builder(GetZeroTrustGatewayCertificatesInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
         }
@@ -84,14 +70,6 @@ public final class GetZeroTrustGatewayCertificatesInvokeResult {
         public Builder accountId(@Nullable String accountId) {
 
             this.accountId = accountId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustGatewayCertificatesInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -114,7 +92,6 @@ public final class GetZeroTrustGatewayCertificatesInvokeResult {
         public GetZeroTrustGatewayCertificatesInvokeResult build() {
             final var _resultValue = new GetZeroTrustGatewayCertificatesInvokeResult();
             _resultValue.accountId = accountId;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;
             return _resultValue;

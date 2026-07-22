@@ -27,7 +27,7 @@ class GetZeroTrustTunnelCloudflaredRoutesResult:
     """
     A collection of values returned by getZeroTrustTunnelCloudflaredRoutes.
     """
-    def __init__(__self__, account_id=None, comment=None, existed_at=None, id=None, is_deleted=None, max_items=None, network_subset=None, network_superset=None, results=None, route_id=None, tun_types=None, tunnel_id=None, virtual_network_id=None):
+    def __init__(__self__, account_id=None, comment=None, existed_at=None, is_deleted=None, max_items=None, network_subset=None, network_superset=None, results=None, route_id=None, tun_types=None, tunnel_id=None, virtual_network_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -37,9 +37,6 @@ class GetZeroTrustTunnelCloudflaredRoutesResult:
         if existed_at and not isinstance(existed_at, str):
             raise TypeError("Expected argument 'existed_at' to be a str")
         pulumi.set(__self__, "existed_at", existed_at)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if is_deleted and not isinstance(is_deleted, bool):
             raise TypeError("Expected argument 'is_deleted' to be a bool")
         pulumi.set(__self__, "is_deleted", is_deleted)
@@ -91,14 +88,6 @@ class GetZeroTrustTunnelCloudflaredRoutesResult:
         If provided, include only resources that were created (and not deleted) before this time. URL encoded.
         """
         return pulumi.get(self, "existed_at")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="isDeleted")
@@ -182,7 +171,6 @@ class AwaitableGetZeroTrustTunnelCloudflaredRoutesResult(GetZeroTrustTunnelCloud
             account_id=self.account_id,
             comment=self.comment,
             existed_at=self.existed_at,
-            id=self.id,
             is_deleted=self.is_deleted,
             max_items=self.max_items,
             network_subset=self.network_subset,
@@ -263,7 +251,6 @@ def get_zero_trust_tunnel_cloudflared_routes(account_id: Optional[_builtins.str]
         account_id=pulumi.get(__ret__, 'account_id'),
         comment=pulumi.get(__ret__, 'comment'),
         existed_at=pulumi.get(__ret__, 'existed_at'),
-        id=pulumi.get(__ret__, 'id'),
         is_deleted=pulumi.get(__ret__, 'is_deleted'),
         max_items=pulumi.get(__ret__, 'max_items'),
         network_subset=pulumi.get(__ret__, 'network_subset'),
@@ -341,7 +328,6 @@ def get_zero_trust_tunnel_cloudflared_routes_output(account_id: pulumi.Input[Opt
         account_id=pulumi.get(__response__, 'account_id'),
         comment=pulumi.get(__response__, 'comment'),
         existed_at=pulumi.get(__response__, 'existed_at'),
-        id=pulumi.get(__response__, 'id'),
         is_deleted=pulumi.get(__response__, 'is_deleted'),
         max_items=pulumi.get(__response__, 'max_items'),
         network_subset=pulumi.get(__response__, 'network_subset'),

@@ -27,16 +27,13 @@ class GetStreamAudioTrackResult:
     """
     A collection of values returned by getStreamAudioTrack.
     """
-    def __init__(__self__, account_id=None, audios=None, id=None, identifier=None):
+    def __init__(__self__, account_id=None, audios=None, identifier=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if audios and not isinstance(audios, list):
             raise TypeError("Expected argument 'audios' to be a list")
         pulumi.set(__self__, "audios", audios)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if identifier and not isinstance(identifier, str):
             raise TypeError("Expected argument 'identifier' to be a str")
         pulumi.set(__self__, "identifier", identifier)
@@ -59,14 +56,6 @@ class GetStreamAudioTrackResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
     def identifier(self) -> _builtins.str:
         """
         A Cloudflare-generated unique identifier for a media item.
@@ -82,7 +71,6 @@ class AwaitableGetStreamAudioTrackResult(GetStreamAudioTrackResult):
         return GetStreamAudioTrackResult(
             account_id=self.account_id,
             audios=self.audios,
-            id=self.id,
             identifier=self.identifier)
 
 
@@ -118,7 +106,6 @@ def get_stream_audio_track(account_id: Optional[_builtins.str] = None,
     return AwaitableGetStreamAudioTrackResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         audios=pulumi.get(__ret__, 'audios'),
-        id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'))
 def get_stream_audio_track_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                   identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -151,5 +138,4 @@ def get_stream_audio_track_output(account_id: pulumi.Input[Optional[_builtins.st
     return __ret__.apply(lambda __response__: GetStreamAudioTrackResult(
         account_id=pulumi.get(__response__, 'account_id'),
         audios=pulumi.get(__response__, 'audios'),
-        id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier')))

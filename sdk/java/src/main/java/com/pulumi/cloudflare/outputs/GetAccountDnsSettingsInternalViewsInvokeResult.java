@@ -28,11 +28,6 @@ public final class GetAccountDnsSettingsInternalViewsInvokeResult {
      */
     private String direction;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead.
      * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
@@ -81,13 +76,6 @@ public final class GetAccountDnsSettingsInternalViewsInvokeResult {
      */
     public String direction() {
         return this.direction;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead.
@@ -148,7 +136,6 @@ public final class GetAccountDnsSettingsInternalViewsInvokeResult {
     public static final class Builder {
         private @Nullable String accountId;
         private String direction;
-        private String id;
         private String match;
         private @Nullable Integer maxItems;
         private @Nullable GetAccountDnsSettingsInternalViewsName name;
@@ -161,7 +148,6 @@ public final class GetAccountDnsSettingsInternalViewsInvokeResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.direction = defaults.direction;
-    	      this.id = defaults.id;
     	      this.match = defaults.match;
     	      this.maxItems = defaults.maxItems;
     	      this.name = defaults.name;
@@ -183,14 +169,6 @@ public final class GetAccountDnsSettingsInternalViewsInvokeResult {
               throw new MissingRequiredPropertyException("GetAccountDnsSettingsInternalViewsInvokeResult", "direction");
             }
             this.direction = direction;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAccountDnsSettingsInternalViewsInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -246,7 +224,6 @@ public final class GetAccountDnsSettingsInternalViewsInvokeResult {
             final var _resultValue = new GetAccountDnsSettingsInternalViewsInvokeResult();
             _resultValue.accountId = accountId;
             _resultValue.direction = direction;
-            _resultValue.id = id;
             _resultValue.match = match;
             _resultValue.maxItems = maxItems;
             _resultValue.name = name;

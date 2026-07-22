@@ -68,8 +68,6 @@ type LookupQueueConsumersArgs struct {
 type LookupQueueConsumersResult struct {
 	// A Resource identifier.
 	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// A Resource identifier.
@@ -119,11 +117,6 @@ func (o LookupQueueConsumersResultOutput) ToLookupQueueConsumersResultOutputWith
 // A Resource identifier.
 func (o LookupQueueConsumersResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupQueueConsumersResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupQueueConsumersResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupQueueConsumersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

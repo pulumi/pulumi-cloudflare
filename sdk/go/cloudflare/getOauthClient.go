@@ -79,8 +79,6 @@ type LookupOauthClientResult struct {
 	GrantTypes []string `pulumi:"grantTypes"`
 	// Indicates whether the client has a rotated secret that has not yet been deleted.
 	HasRotatedSecret bool `pulumi:"hasRotatedSecret"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// URL of the client's logo.
 	LogoUri string `pulumi:"logoUri"`
 	// The unique identifier for an OAuth client.
@@ -188,11 +186,6 @@ func (o LookupOauthClientResultOutput) GrantTypes() pulumi.StringArrayOutput {
 // Indicates whether the client has a rotated secret that has not yet been deleted.
 func (o LookupOauthClientResultOutput) HasRotatedSecret() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupOauthClientResult) bool { return v.HasRotatedSecret }).(pulumi.BoolOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupOauthClientResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOauthClientResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // URL of the client's logo.

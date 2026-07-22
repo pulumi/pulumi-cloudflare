@@ -117,10 +117,6 @@ export interface GetZoneLockdownsResult {
      */
     readonly descriptionSearch?: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * A single IP address to search for in existing rules.
      */
     readonly ip?: string;

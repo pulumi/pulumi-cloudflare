@@ -93,9 +93,7 @@ type LookupZeroTrustTunnelCloudflaredsResult struct {
 	AccountId     *string `pulumi:"accountId"`
 	ExcludePrefix *string `pulumi:"excludePrefix"`
 	// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
-	ExistedAt *string `pulumi:"existedAt"`
-	// The provider-assigned unique ID for this managed resource.
-	Id            string  `pulumi:"id"`
+	ExistedAt     *string `pulumi:"existedAt"`
 	IncludePrefix *string `pulumi:"includePrefix"`
 	// If `true`, only include deleted tunnels. If `false`, exclude deleted tunnels. If empty, all tunnels will be included.
 	IsDeleted *bool `pulumi:"isDeleted"`
@@ -177,11 +175,6 @@ func (o LookupZeroTrustTunnelCloudflaredsResultOutput) ExcludePrefix() pulumi.St
 // If provided, include only resources that were created (and not deleted) before this time. URL encoded.
 func (o LookupZeroTrustTunnelCloudflaredsResultOutput) ExistedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredsResult) *string { return v.ExistedAt }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupZeroTrustTunnelCloudflaredsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o LookupZeroTrustTunnelCloudflaredsResultOutput) IncludePrefix() pulumi.StringPtrOutput {

@@ -86,10 +86,6 @@ namespace Pulumi.Cloudflare
     {
         public readonly string AccountId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Limit of number of results to return.
         /// </summary>
         public readonly int Limit;
@@ -110,8 +106,6 @@ namespace Pulumi.Cloudflare
         private GetZeroTrustResourceLibraryCategoriesResult(
             string accountId,
 
-            string id,
-
             int limit,
 
             int? maxItems,
@@ -121,7 +115,6 @@ namespace Pulumi.Cloudflare
             ImmutableArray<Outputs.GetZeroTrustResourceLibraryCategoriesResultResult> results)
         {
             AccountId = accountId;
-            Id = id;
             Limit = limit;
             MaxItems = maxItems;
             Offset = offset;

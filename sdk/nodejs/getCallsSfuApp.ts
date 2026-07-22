@@ -61,10 +61,6 @@ export interface GetCallsSfuAppResult {
      */
     readonly created: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * The date and time the item was last modified.
      */
     readonly modified: string;

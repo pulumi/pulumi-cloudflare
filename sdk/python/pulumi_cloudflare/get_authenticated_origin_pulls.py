@@ -26,7 +26,7 @@ class GetAuthenticatedOriginPullsResult:
     """
     A collection of values returned by getAuthenticatedOriginPulls.
     """
-    def __init__(__self__, cert_id=None, cert_status=None, cert_updated_at=None, cert_uploaded_on=None, certificate=None, created_at=None, enabled=None, expires_on=None, hostname=None, id=None, issuer=None, serial_number=None, signature=None, status=None, updated_at=None, zone_id=None):
+    def __init__(__self__, cert_id=None, cert_status=None, cert_updated_at=None, cert_uploaded_on=None, certificate=None, created_at=None, enabled=None, expires_on=None, hostname=None, issuer=None, serial_number=None, signature=None, status=None, updated_at=None, zone_id=None):
         if cert_id and not isinstance(cert_id, str):
             raise TypeError("Expected argument 'cert_id' to be a str")
         pulumi.set(__self__, "cert_id", cert_id)
@@ -54,9 +54,6 @@ class GetAuthenticatedOriginPullsResult:
         if hostname and not isinstance(hostname, str):
             raise TypeError("Expected argument 'hostname' to be a str")
         pulumi.set(__self__, "hostname", hostname)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if issuer and not isinstance(issuer, str):
             raise TypeError("Expected argument 'issuer' to be a str")
         pulumi.set(__self__, "issuer", issuer)
@@ -151,14 +148,6 @@ class GetAuthenticatedOriginPullsResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
     def issuer(self) -> _builtins.str:
         """
         The certificate authority that issued the certificate.
@@ -222,7 +211,6 @@ class AwaitableGetAuthenticatedOriginPullsResult(GetAuthenticatedOriginPullsResu
             enabled=self.enabled,
             expires_on=self.expires_on,
             hostname=self.hostname,
-            id=self.id,
             issuer=self.issuer,
             serial_number=self.serial_number,
             signature=self.signature,
@@ -265,7 +253,6 @@ def get_authenticated_origin_pulls(hostname: Optional[_builtins.str] = None,
         enabled=pulumi.get(__ret__, 'enabled'),
         expires_on=pulumi.get(__ret__, 'expires_on'),
         hostname=pulumi.get(__ret__, 'hostname'),
-        id=pulumi.get(__ret__, 'id'),
         issuer=pulumi.get(__ret__, 'issuer'),
         serial_number=pulumi.get(__ret__, 'serial_number'),
         signature=pulumi.get(__ret__, 'signature'),
@@ -305,7 +292,6 @@ def get_authenticated_origin_pulls_output(hostname: pulumi.Input[Optional[_built
         enabled=pulumi.get(__response__, 'enabled'),
         expires_on=pulumi.get(__response__, 'expires_on'),
         hostname=pulumi.get(__response__, 'hostname'),
-        id=pulumi.get(__response__, 'id'),
         issuer=pulumi.get(__response__, 'issuer'),
         serial_number=pulumi.get(__response__, 'serial_number'),
         signature=pulumi.get(__response__, 'signature'),

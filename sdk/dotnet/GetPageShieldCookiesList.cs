@@ -311,10 +311,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? Hosts;
         public readonly bool? HttpOnly;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? MaxItems;
         public readonly string? Name;
         public readonly string? OrderBy;
@@ -339,8 +335,6 @@ namespace Pulumi.Cloudflare
             string? hosts,
 
             bool? httpOnly,
-
-            string id,
 
             int? maxItems,
 
@@ -371,7 +365,6 @@ namespace Pulumi.Cloudflare
             Export = export;
             Hosts = hosts;
             HttpOnly = httpOnly;
-            Id = id;
             MaxItems = maxItems;
             Name = name;
             OrderBy = orderBy;

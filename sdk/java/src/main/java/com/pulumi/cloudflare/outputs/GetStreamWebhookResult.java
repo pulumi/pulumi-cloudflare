@@ -18,11 +18,6 @@ public final class GetStreamWebhookResult {
      */
     private @Nullable String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return The date and time the webhook was last modified.
      * 
      */
@@ -45,13 +40,6 @@ public final class GetStreamWebhookResult {
      */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return The date and time the webhook was last modified.
@@ -85,7 +73,6 @@ public final class GetStreamWebhookResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
-        private String id;
         private String modified;
         private String notificationUrl;
         private String secret;
@@ -93,7 +80,6 @@ public final class GetStreamWebhookResult {
         public Builder(GetStreamWebhookResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-    	      this.id = defaults.id;
     	      this.modified = defaults.modified;
     	      this.notificationUrl = defaults.notificationUrl;
     	      this.secret = defaults.secret;
@@ -103,14 +89,6 @@ public final class GetStreamWebhookResult {
         public Builder accountId(@Nullable String accountId) {
 
             this.accountId = accountId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetStreamWebhookResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -140,7 +118,6 @@ public final class GetStreamWebhookResult {
         public GetStreamWebhookResult build() {
             final var _resultValue = new GetStreamWebhookResult();
             _resultValue.accountId = accountId;
-            _resultValue.id = id;
             _resultValue.modified = modified;
             _resultValue.notificationUrl = notificationUrl;
             _resultValue.secret = secret;

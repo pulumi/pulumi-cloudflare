@@ -181,10 +181,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Filter by test type.
         /// Available values: "http", "traceroute".
         /// </summary>
@@ -206,8 +202,6 @@ namespace Pulumi.Cloudflare
         private GetZeroTrustDexTestsResult(
             string? accountId,
 
-            string id,
-
             string? kind,
 
             int? maxItems,
@@ -217,7 +211,6 @@ namespace Pulumi.Cloudflare
             string? testName)
         {
             AccountId = accountId;
-            Id = id;
             Kind = kind;
             MaxItems = maxItems;
             Results = results;

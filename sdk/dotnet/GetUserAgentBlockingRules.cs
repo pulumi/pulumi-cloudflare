@@ -188,10 +188,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
@@ -216,8 +212,6 @@ namespace Pulumi.Cloudflare
         private GetUserAgentBlockingRulesResult(
             string? description,
 
-            string id,
-
             int? maxItems,
 
             bool? paused,
@@ -229,7 +223,6 @@ namespace Pulumi.Cloudflare
             string? zoneId)
         {
             Description = description;
-            Id = id;
             MaxItems = maxItems;
             Paused = paused;
             Results = results;

@@ -44,10 +44,6 @@ export interface GetZeroTrustRiskBehaviorArgs {
 export interface GetZeroTrustRiskBehaviorResult {
     readonly accountId?: string;
     readonly behaviors: {[key: string]: outputs.GetZeroTrustRiskBehaviorBehaviors};
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
 /**
  * Accepted Permissions

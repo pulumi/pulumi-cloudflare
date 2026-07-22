@@ -70,8 +70,6 @@ type LookupMagicTransitSitesResult struct {
 	AccountId *string `pulumi:"accountId"`
 	// Identifier
 	Connectorid *string `pulumi:"connectorid"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -124,11 +122,6 @@ func (o LookupMagicTransitSitesResultOutput) AccountId() pulumi.StringPtrOutput 
 // Identifier
 func (o LookupMagicTransitSitesResultOutput) Connectorid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMagicTransitSitesResult) *string { return v.Connectorid }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupMagicTransitSitesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMagicTransitSitesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

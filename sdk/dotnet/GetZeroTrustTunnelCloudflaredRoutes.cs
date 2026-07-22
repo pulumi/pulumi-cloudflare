@@ -310,10 +310,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? ExistedAt;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// If `True`, only include deleted routes. If `False`, exclude deleted routes. If empty, all routes will be included.
         /// </summary>
         public readonly bool? IsDeleted;
@@ -358,8 +354,6 @@ namespace Pulumi.Cloudflare
 
             string? existedAt,
 
-            string id,
-
             bool? isDeleted,
 
             int? maxItems,
@@ -381,7 +375,6 @@ namespace Pulumi.Cloudflare
             AccountId = accountId;
             Comment = comment;
             ExistedAt = existedAt;
-            Id = id;
             IsDeleted = isDeleted;
             MaxItems = maxItems;
             NetworkSubset = networkSubset;

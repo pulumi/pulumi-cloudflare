@@ -53,10 +53,6 @@ export interface GetR2BucketLockResult {
      * Name of the bucket.
      */
     readonly bucketName: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly rules: outputs.GetR2BucketLockRule[];
 }
 /**
