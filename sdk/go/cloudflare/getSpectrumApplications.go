@@ -70,8 +70,6 @@ type LookupSpectrumApplicationsResult struct {
 	// Sets the direction by which results are ordered.
 	// Available values: "asc", "desc".
 	Direction string `pulumi:"direction"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Application field by which results are ordered.
@@ -129,11 +127,6 @@ func (o LookupSpectrumApplicationsResultOutput) ToLookupSpectrumApplicationsResu
 // Available values: "asc", "desc".
 func (o LookupSpectrumApplicationsResultOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpectrumApplicationsResult) string { return v.Direction }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupSpectrumApplicationsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSpectrumApplicationsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

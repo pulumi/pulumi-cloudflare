@@ -124,22 +124,15 @@ namespace Pulumi.Cloudflare
         /// The current status of the device policy certificate provisioning feature for WARP clients.
         /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetZeroTrustDeviceDefaultProfileCertificatesResult(
             bool enabled,
 
-            string id,
-
             string? zoneId)
         {
             Enabled = enabled;
-            Id = id;
             ZoneId = zoneId;
         }
     }

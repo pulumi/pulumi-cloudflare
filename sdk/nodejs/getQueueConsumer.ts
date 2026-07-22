@@ -56,10 +56,6 @@ export interface GetQueueConsumerResult {
      */
     readonly deadLetterQueue: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * A Resource identifier.
      */
     readonly queueId: string;

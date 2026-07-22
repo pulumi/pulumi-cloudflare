@@ -26,7 +26,7 @@ class GetZeroTrustAccessMtlsHostnameSettingsResult:
     """
     A collection of values returned by getZeroTrustAccessMtlsHostnameSettings.
     """
-    def __init__(__self__, account_id=None, china_network=None, client_certificate_forwarding=None, hostname=None, id=None, zone_id=None):
+    def __init__(__self__, account_id=None, china_network=None, client_certificate_forwarding=None, hostname=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -39,9 +39,6 @@ class GetZeroTrustAccessMtlsHostnameSettingsResult:
         if hostname and not isinstance(hostname, str):
             raise TypeError("Expected argument 'hostname' to be a str")
         pulumi.set(__self__, "hostname", hostname)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
@@ -79,14 +76,6 @@ class GetZeroTrustAccessMtlsHostnameSettingsResult:
         return pulumi.get(self, "hostname")
 
     @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[_builtins.str]:
         """
@@ -105,7 +94,6 @@ class AwaitableGetZeroTrustAccessMtlsHostnameSettingsResult(GetZeroTrustAccessMt
             china_network=self.china_network,
             client_certificate_forwarding=self.client_certificate_forwarding,
             hostname=self.hostname,
-            id=self.id,
             zone_id=self.zone_id)
 
 
@@ -143,7 +131,6 @@ def get_zero_trust_access_mtls_hostname_settings(account_id: Optional[_builtins.
         china_network=pulumi.get(__ret__, 'china_network'),
         client_certificate_forwarding=pulumi.get(__ret__, 'client_certificate_forwarding'),
         hostname=pulumi.get(__ret__, 'hostname'),
-        id=pulumi.get(__ret__, 'id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_zero_trust_access_mtls_hostname_settings_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                         zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -178,5 +165,4 @@ def get_zero_trust_access_mtls_hostname_settings_output(account_id: pulumi.Input
         china_network=pulumi.get(__response__, 'china_network'),
         client_certificate_forwarding=pulumi.get(__response__, 'client_certificate_forwarding'),
         hostname=pulumi.get(__response__, 'hostname'),
-        id=pulumi.get(__response__, 'id'),
         zone_id=pulumi.get(__response__, 'zone_id')))

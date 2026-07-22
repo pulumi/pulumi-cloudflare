@@ -27,7 +27,7 @@ class GetApiShieldDiscoveryOperationsResult:
     """
     A collection of values returned by getApiShieldDiscoveryOperations.
     """
-    def __init__(__self__, diff=None, direction=None, endpoint=None, hosts=None, id=None, max_items=None, methods=None, order=None, origin=None, results=None, state=None, zone_id=None):
+    def __init__(__self__, diff=None, direction=None, endpoint=None, hosts=None, max_items=None, methods=None, order=None, origin=None, results=None, state=None, zone_id=None):
         if diff and not isinstance(diff, bool):
             raise TypeError("Expected argument 'diff' to be a bool")
         pulumi.set(__self__, "diff", diff)
@@ -40,9 +40,6 @@ class GetApiShieldDiscoveryOperationsResult:
         if hosts and not isinstance(hosts, list):
             raise TypeError("Expected argument 'hosts' to be a list")
         pulumi.set(__self__, "hosts", hosts)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -84,14 +81,6 @@ class GetApiShieldDiscoveryOperationsResult:
     @pulumi.getter
     def hosts(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "hosts")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="maxItems")
@@ -139,7 +128,6 @@ class AwaitableGetApiShieldDiscoveryOperationsResult(GetApiShieldDiscoveryOperat
             direction=self.direction,
             endpoint=self.endpoint,
             hosts=self.hosts,
-            id=self.id,
             max_items=self.max_items,
             methods=self.methods,
             order=self.order,
@@ -204,7 +192,6 @@ def get_api_shield_discovery_operations(diff: Optional[_builtins.bool] = None,
         direction=pulumi.get(__ret__, 'direction'),
         endpoint=pulumi.get(__ret__, 'endpoint'),
         hosts=pulumi.get(__ret__, 'hosts'),
-        id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         methods=pulumi.get(__ret__, 'methods'),
         order=pulumi.get(__ret__, 'order'),
@@ -266,7 +253,6 @@ def get_api_shield_discovery_operations_output(diff: pulumi.Input[Optional[Optio
         direction=pulumi.get(__response__, 'direction'),
         endpoint=pulumi.get(__response__, 'endpoint'),
         hosts=pulumi.get(__response__, 'hosts'),
-        id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         methods=pulumi.get(__response__, 'methods'),
         order=pulumi.get(__response__, 'order'),

@@ -64,8 +64,6 @@ type LookupShareRecipientsArgs struct {
 type LookupShareRecipientsResult struct {
 	// Account identifier.
 	AccountId string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Include resources in the response.
 	IncludeResources *bool `pulumi:"includeResources"`
 	// Max items to fetch, default: 1000
@@ -119,11 +117,6 @@ func (o LookupShareRecipientsResultOutput) ToLookupShareRecipientsResultOutputWi
 // Account identifier.
 func (o LookupShareRecipientsResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareRecipientsResult) string { return v.AccountId }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupShareRecipientsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupShareRecipientsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Include resources in the response.

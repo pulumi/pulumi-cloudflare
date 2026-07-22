@@ -26,11 +26,6 @@ public final class GetCallsSfuAppResult {
      */
     private String created;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return The date and time the item was last modified.
      * 
      */
@@ -69,13 +64,6 @@ public final class GetCallsSfuAppResult {
         return this.created;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return The date and time the item was last modified.
      * 
      */
@@ -109,7 +97,6 @@ public final class GetCallsSfuAppResult {
         private String accountId;
         private String appId;
         private String created;
-        private String id;
         private String modified;
         private String name;
         private String uid;
@@ -119,7 +106,6 @@ public final class GetCallsSfuAppResult {
     	      this.accountId = defaults.accountId;
     	      this.appId = defaults.appId;
     	      this.created = defaults.created;
-    	      this.id = defaults.id;
     	      this.modified = defaults.modified;
     	      this.name = defaults.name;
     	      this.uid = defaults.uid;
@@ -147,14 +133,6 @@ public final class GetCallsSfuAppResult {
               throw new MissingRequiredPropertyException("GetCallsSfuAppResult", "created");
             }
             this.created = created;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetCallsSfuAppResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -186,7 +164,6 @@ public final class GetCallsSfuAppResult {
             _resultValue.accountId = accountId;
             _resultValue.appId = appId;
             _resultValue.created = created;
-            _resultValue.id = id;
             _resultValue.modified = modified;
             _resultValue.name = name;
             _resultValue.uid = uid;

@@ -27,7 +27,7 @@ class GetCloudforceOneRequestsResult:
     """
     A collection of values returned by getCloudforceOneRequests.
     """
-    def __init__(__self__, account_id=None, completed_after=None, completed_before=None, created_after=None, created_before=None, id=None, max_items=None, page=None, per_page=None, request_type=None, results=None, sort_by=None, sort_order=None, status=None):
+    def __init__(__self__, account_id=None, completed_after=None, completed_before=None, created_after=None, created_before=None, max_items=None, page=None, per_page=None, request_type=None, results=None, sort_by=None, sort_order=None, status=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -43,9 +43,6 @@ class GetCloudforceOneRequestsResult:
         if created_before and not isinstance(created_before, str):
             raise TypeError("Expected argument 'created_before' to be a str")
         pulumi.set(__self__, "created_before", created_before)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -110,14 +107,6 @@ class GetCloudforceOneRequestsResult:
         Retrieve requests created before this time.
         """
         return pulumi.get(self, "created_before")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="maxItems")
@@ -197,7 +186,6 @@ class AwaitableGetCloudforceOneRequestsResult(GetCloudforceOneRequestsResult):
             completed_before=self.completed_before,
             created_after=self.created_after,
             created_before=self.created_before,
-            id=self.id,
             max_items=self.max_items,
             page=self.page,
             per_page=self.per_page,
@@ -283,7 +271,6 @@ def get_cloudforce_one_requests(account_id: Optional[_builtins.str] = None,
         completed_before=pulumi.get(__ret__, 'completed_before'),
         created_after=pulumi.get(__ret__, 'created_after'),
         created_before=pulumi.get(__ret__, 'created_before'),
-        id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         page=pulumi.get(__ret__, 'page'),
         per_page=pulumi.get(__ret__, 'per_page'),
@@ -366,7 +353,6 @@ def get_cloudforce_one_requests_output(account_id: pulumi.Input[Optional[Optiona
         completed_before=pulumi.get(__response__, 'completed_before'),
         created_after=pulumi.get(__response__, 'created_after'),
         created_before=pulumi.get(__response__, 'created_before'),
-        id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         page=pulumi.get(__response__, 'page'),
         per_page=pulumi.get(__response__, 'per_page'),

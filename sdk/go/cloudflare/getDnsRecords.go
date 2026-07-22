@@ -127,8 +127,6 @@ type LookupDnsRecordsResult struct {
 	// Direction to order DNS records in.
 	// Available values: "asc", "desc".
 	Direction string `pulumi:"direction"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 	IncludeShadowMetadata bool `pulumi:"includeShadowMetadata"`
 	// Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
@@ -238,11 +236,6 @@ func (o LookupDnsRecordsResultOutput) Content() GetDnsRecordsContentPtrOutput {
 // Available values: "asc", "desc".
 func (o LookupDnsRecordsResultOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordsResult) string { return v.Direction }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupDnsRecordsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDnsRecordsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).

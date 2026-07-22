@@ -27,13 +27,10 @@ class GetMagicTransitSiteLansResult:
     """
     A collection of values returned by getMagicTransitSiteLans.
     """
-    def __init__(__self__, account_id=None, id=None, max_items=None, results=None, site_id=None):
+    def __init__(__self__, account_id=None, max_items=None, results=None, site_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -51,14 +48,6 @@ class GetMagicTransitSiteLansResult:
         Identifier
         """
         return pulumi.get(self, "account_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="maxItems")
@@ -92,7 +81,6 @@ class AwaitableGetMagicTransitSiteLansResult(GetMagicTransitSiteLansResult):
             yield self
         return GetMagicTransitSiteLansResult(
             account_id=self.account_id,
-            id=self.id,
             max_items=self.max_items,
             results=self.results,
             site_id=self.site_id)
@@ -134,7 +122,6 @@ def get_magic_transit_site_lans(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetMagicTransitSiteLansResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-        id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'),
         site_id=pulumi.get(__ret__, 'site_id'))
@@ -173,7 +160,6 @@ def get_magic_transit_site_lans_output(account_id: pulumi.Input[Optional[Optiona
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getMagicTransitSiteLans:getMagicTransitSiteLans', __args__, opts=opts, typ=GetMagicTransitSiteLansResult)
     return __ret__.apply(lambda __response__: GetMagicTransitSiteLansResult(
         account_id=pulumi.get(__response__, 'account_id'),
-        id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         results=pulumi.get(__response__, 'results'),
         site_id=pulumi.get(__response__, 'site_id')))

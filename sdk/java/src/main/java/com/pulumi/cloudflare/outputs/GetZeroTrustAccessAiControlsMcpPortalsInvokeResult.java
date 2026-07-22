@@ -17,11 +17,6 @@ import javax.annotation.Nullable;
 public final class GetZeroTrustAccessAiControlsMcpPortalsInvokeResult {
     private @Nullable String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -40,13 +35,6 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsInvokeResult {
     private GetZeroTrustAccessAiControlsMcpPortalsInvokeResult() {}
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Max items to fetch, default: 1000
@@ -80,7 +68,6 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
-        private String id;
         private @Nullable Integer maxItems;
         private List<GetZeroTrustAccessAiControlsMcpPortalsResult> results;
         private @Nullable String search;
@@ -88,7 +75,6 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsInvokeResult {
         public Builder(GetZeroTrustAccessAiControlsMcpPortalsInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
     	      this.search = defaults.search;
@@ -98,14 +84,6 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsInvokeResult {
         public Builder accountId(@Nullable String accountId) {
 
             this.accountId = accountId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpPortalsInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -134,7 +112,6 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsInvokeResult {
         public GetZeroTrustAccessAiControlsMcpPortalsInvokeResult build() {
             final var _resultValue = new GetZeroTrustAccessAiControlsMcpPortalsInvokeResult();
             _resultValue.accountId = accountId;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;
             _resultValue.search = search;

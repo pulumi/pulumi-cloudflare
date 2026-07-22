@@ -85,8 +85,6 @@ type LookupEmailSecurityTrustedDomainsListResult struct {
 	// The sorting direction.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
 	IsRecent *bool `pulumi:"isRecent"`
 	// Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
@@ -161,11 +159,6 @@ func (o LookupEmailSecurityTrustedDomainsListResultOutput) AccountId() pulumi.St
 // Available values: "asc", "desc".
 func (o LookupEmailSecurityTrustedDomainsListResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsListResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupEmailSecurityTrustedDomainsListResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsListResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.

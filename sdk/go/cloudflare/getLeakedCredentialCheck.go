@@ -63,8 +63,6 @@ type LookupLeakedCredentialCheckArgs struct {
 type LookupLeakedCredentialCheckResult struct {
 	// Determines whether or not Leaked Credential Checks are enabled.
 	Enabled bool `pulumi:"enabled"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Defines an identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -106,11 +104,6 @@ func (o LookupLeakedCredentialCheckResultOutput) ToLookupLeakedCredentialCheckRe
 // Determines whether or not Leaked Credential Checks are enabled.
 func (o LookupLeakedCredentialCheckResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupLeakedCredentialCheckResult) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupLeakedCredentialCheckResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupLeakedCredentialCheckResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Defines an identifier.

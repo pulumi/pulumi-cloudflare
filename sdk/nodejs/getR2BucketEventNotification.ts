@@ -65,10 +65,6 @@ export interface GetR2BucketEventNotificationResult {
      */
     readonly bucketName: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Queue ID.
      */
     readonly queueId: string;

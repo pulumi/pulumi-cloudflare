@@ -26,11 +26,6 @@ public final class GetFlagshipFlagsInvokeResult {
      */
     private String appId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to return (1–200).
      * 
      */
@@ -60,13 +55,6 @@ public final class GetFlagshipFlagsInvokeResult {
      */
     public String appId() {
         return this.appId;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Max items to return (1–200).
@@ -101,7 +89,6 @@ public final class GetFlagshipFlagsInvokeResult {
     public static final class Builder {
         private String accountId;
         private String appId;
-        private String id;
         private @Nullable String limit;
         private @Nullable Integer maxItems;
         private List<GetFlagshipFlagsResult> results;
@@ -110,7 +97,6 @@ public final class GetFlagshipFlagsInvokeResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.appId = defaults.appId;
-    	      this.id = defaults.id;
     	      this.limit = defaults.limit;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
@@ -130,14 +116,6 @@ public final class GetFlagshipFlagsInvokeResult {
               throw new MissingRequiredPropertyException("GetFlagshipFlagsInvokeResult", "appId");
             }
             this.appId = appId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetFlagshipFlagsInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -167,7 +145,6 @@ public final class GetFlagshipFlagsInvokeResult {
             final var _resultValue = new GetFlagshipFlagsInvokeResult();
             _resultValue.accountId = accountId;
             _resultValue.appId = appId;
-            _resultValue.id = id;
             _resultValue.limit = limit;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;

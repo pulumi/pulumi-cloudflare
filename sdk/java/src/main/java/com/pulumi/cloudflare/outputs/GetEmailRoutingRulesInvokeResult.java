@@ -22,11 +22,6 @@ public final class GetEmailRoutingRulesInvokeResult {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -49,13 +44,6 @@ public final class GetEmailRoutingRulesInvokeResult {
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Max items to fetch, default: 1000
@@ -89,7 +77,6 @@ public final class GetEmailRoutingRulesInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
-        private String id;
         private @Nullable Integer maxItems;
         private List<GetEmailRoutingRulesResult> results;
         private @Nullable String zoneId;
@@ -97,7 +84,6 @@ public final class GetEmailRoutingRulesInvokeResult {
         public Builder(GetEmailRoutingRulesInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
     	      this.zoneId = defaults.zoneId;
@@ -107,14 +93,6 @@ public final class GetEmailRoutingRulesInvokeResult {
         public Builder enabled(@Nullable Boolean enabled) {
 
             this.enabled = enabled;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetEmailRoutingRulesInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -143,7 +121,6 @@ public final class GetEmailRoutingRulesInvokeResult {
         public GetEmailRoutingRulesInvokeResult build() {
             final var _resultValue = new GetEmailRoutingRulesInvokeResult();
             _resultValue.enabled = enabled;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;
             _resultValue.zoneId = zoneId;

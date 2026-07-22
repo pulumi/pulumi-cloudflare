@@ -27,13 +27,10 @@ class GetPipelineStreamsResult:
     """
     A collection of values returned by getPipelineStreams.
     """
-    def __init__(__self__, account_id=None, id=None, max_items=None, name=None, pipeline_id=None, results=None):
+    def __init__(__self__, account_id=None, max_items=None, name=None, pipeline_id=None, results=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -54,14 +51,6 @@ class GetPipelineStreamsResult:
         Specifies the public ID of the account.
         """
         return pulumi.get(self, "account_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="maxItems")
@@ -103,7 +92,6 @@ class AwaitableGetPipelineStreamsResult(GetPipelineStreamsResult):
             yield self
         return GetPipelineStreamsResult(
             account_id=self.account_id,
-            id=self.id,
             max_items=self.max_items,
             name=self.name,
             pipeline_id=self.pipeline_id,
@@ -147,7 +135,6 @@ def get_pipeline_streams(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetPipelineStreamsResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-        id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         name=pulumi.get(__ret__, 'name'),
         pipeline_id=pulumi.get(__ret__, 'pipeline_id'),
@@ -188,7 +175,6 @@ def get_pipeline_streams_output(account_id: pulumi.Input[Optional[Optional[_buil
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getPipelineStreams:getPipelineStreams', __args__, opts=opts, typ=GetPipelineStreamsResult)
     return __ret__.apply(lambda __response__: GetPipelineStreamsResult(
         account_id=pulumi.get(__response__, 'account_id'),
-        id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         name=pulumi.get(__response__, 'name'),
         pipeline_id=pulumi.get(__response__, 'pipeline_id'),

@@ -82,10 +82,6 @@ export interface GetAccountMembersResult {
      */
     readonly direction?: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Max items to fetch, default: 1000
      */
     readonly maxItems?: number;

@@ -27,16 +27,13 @@ class GetR2BucketEventNotificationResult:
     """
     A collection of values returned by getR2BucketEventNotification.
     """
-    def __init__(__self__, account_id=None, bucket_name=None, id=None, queue_id=None, queue_name=None, rules=None):
+    def __init__(__self__, account_id=None, bucket_name=None, queue_id=None, queue_name=None, rules=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if bucket_name and not isinstance(bucket_name, str):
             raise TypeError("Expected argument 'bucket_name' to be a str")
         pulumi.set(__self__, "bucket_name", bucket_name)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if queue_id and not isinstance(queue_id, str):
             raise TypeError("Expected argument 'queue_id' to be a str")
         pulumi.set(__self__, "queue_id", queue_id)
@@ -62,14 +59,6 @@ class GetR2BucketEventNotificationResult:
         Name of the bucket.
         """
         return pulumi.get(self, "bucket_name")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="queueId")
@@ -101,7 +90,6 @@ class AwaitableGetR2BucketEventNotificationResult(GetR2BucketEventNotificationRe
         return GetR2BucketEventNotificationResult(
             account_id=self.account_id,
             bucket_name=self.bucket_name,
-            id=self.id,
             queue_id=self.queue_id,
             queue_name=self.queue_name,
             rules=self.rules)
@@ -143,7 +131,6 @@ def get_r2_bucket_event_notification(account_id: Optional[_builtins.str] = None,
     return AwaitableGetR2BucketEventNotificationResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         bucket_name=pulumi.get(__ret__, 'bucket_name'),
-        id=pulumi.get(__ret__, 'id'),
         queue_id=pulumi.get(__ret__, 'queue_id'),
         queue_name=pulumi.get(__ret__, 'queue_name'),
         rules=pulumi.get(__ret__, 'rules'))
@@ -182,7 +169,6 @@ def get_r2_bucket_event_notification_output(account_id: pulumi.Input[Optional[_b
     return __ret__.apply(lambda __response__: GetR2BucketEventNotificationResult(
         account_id=pulumi.get(__response__, 'account_id'),
         bucket_name=pulumi.get(__response__, 'bucket_name'),
-        id=pulumi.get(__response__, 'id'),
         queue_id=pulumi.get(__response__, 'queue_id'),
         queue_name=pulumi.get(__response__, 'queue_name'),
         rules=pulumi.get(__response__, 'rules')))

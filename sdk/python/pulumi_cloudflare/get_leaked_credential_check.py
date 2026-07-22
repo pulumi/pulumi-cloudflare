@@ -26,13 +26,10 @@ class GetLeakedCredentialCheckResult:
     """
     A collection of values returned by getLeakedCredentialCheck.
     """
-    def __init__(__self__, enabled=None, id=None, zone_id=None):
+    def __init__(__self__, enabled=None, zone_id=None):
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
         pulumi.set(__self__, "enabled", enabled)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
@@ -44,14 +41,6 @@ class GetLeakedCredentialCheckResult:
         Determines whether or not Leaked Credential Checks are enabled.
         """
         return pulumi.get(self, "enabled")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -69,7 +58,6 @@ class AwaitableGetLeakedCredentialCheckResult(GetLeakedCredentialCheckResult):
             yield self
         return GetLeakedCredentialCheckResult(
             enabled=self.enabled,
-            id=self.id,
             zone_id=self.zone_id)
 
 
@@ -102,7 +90,6 @@ def get_leaked_credential_check(zone_id: Optional[_builtins.str] = None,
 
     return AwaitableGetLeakedCredentialCheckResult(
         enabled=pulumi.get(__ret__, 'enabled'),
-        id=pulumi.get(__ret__, 'id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_leaked_credential_check_output(zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLeakedCredentialCheckResult]:
@@ -132,5 +119,4 @@ def get_leaked_credential_check_output(zone_id: pulumi.Input[Optional[Optional[_
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getLeakedCredentialCheck:getLeakedCredentialCheck', __args__, opts=opts, typ=GetLeakedCredentialCheckResult)
     return __ret__.apply(lambda __response__: GetLeakedCredentialCheckResult(
         enabled=pulumi.get(__response__, 'enabled'),
-        id=pulumi.get(__response__, 'id'),
         zone_id=pulumi.get(__response__, 'zone_id')))

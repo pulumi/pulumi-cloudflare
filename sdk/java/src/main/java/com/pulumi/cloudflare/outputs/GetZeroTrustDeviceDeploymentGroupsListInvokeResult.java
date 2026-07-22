@@ -17,11 +17,6 @@ import javax.annotation.Nullable;
 public final class GetZeroTrustDeviceDeploymentGroupsListInvokeResult {
     private String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -35,13 +30,6 @@ public final class GetZeroTrustDeviceDeploymentGroupsListInvokeResult {
     private GetZeroTrustDeviceDeploymentGroupsListInvokeResult() {}
     public String accountId() {
         return this.accountId;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Max items to fetch, default: 1000
@@ -68,14 +56,12 @@ public final class GetZeroTrustDeviceDeploymentGroupsListInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
-        private String id;
         private @Nullable Integer maxItems;
         private List<GetZeroTrustDeviceDeploymentGroupsListResult> results;
         public Builder() {}
         public Builder(GetZeroTrustDeviceDeploymentGroupsListInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
         }
@@ -86,14 +72,6 @@ public final class GetZeroTrustDeviceDeploymentGroupsListInvokeResult {
               throw new MissingRequiredPropertyException("GetZeroTrustDeviceDeploymentGroupsListInvokeResult", "accountId");
             }
             this.accountId = accountId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDeviceDeploymentGroupsListInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -116,7 +94,6 @@ public final class GetZeroTrustDeviceDeploymentGroupsListInvokeResult {
         public GetZeroTrustDeviceDeploymentGroupsListInvokeResult build() {
             final var _resultValue = new GetZeroTrustDeviceDeploymentGroupsListInvokeResult();
             _resultValue.accountId = accountId;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;
             return _resultValue;

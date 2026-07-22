@@ -64,10 +64,6 @@ export interface GetZeroTrustTunnelCloudflaredConfigResult {
     readonly config: outputs.GetZeroTrustTunnelCloudflaredConfigConfig;
     readonly createdAt: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
      * Available values: "local", "cloudflare".
      */

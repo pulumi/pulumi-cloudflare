@@ -80,8 +80,6 @@ type LookupEmailSecurityImpersonationRegistriesResult struct {
 	// The sorting direction.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Field to sort by.
@@ -150,11 +148,6 @@ func (o LookupEmailSecurityImpersonationRegistriesResultOutput) AccountId() pulu
 // Available values: "asc", "desc".
 func (o LookupEmailSecurityImpersonationRegistriesResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistriesResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupEmailSecurityImpersonationRegistriesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistriesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

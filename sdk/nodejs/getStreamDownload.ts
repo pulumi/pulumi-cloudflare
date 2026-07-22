@@ -53,10 +53,6 @@ export interface GetStreamDownloadResult {
      */
     readonly accountId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * A Cloudflare-generated unique identifier for a media item.
      */
     readonly identifier: string;

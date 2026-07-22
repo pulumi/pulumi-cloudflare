@@ -67,8 +67,6 @@ type LookupWorkerVersionsArgs struct {
 type LookupWorkerVersionsResult struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -118,11 +116,6 @@ func (o LookupWorkerVersionsResultOutput) ToLookupWorkerVersionsResultOutputWith
 // Identifier.
 func (o LookupWorkerVersionsResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkerVersionsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupWorkerVersionsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkerVersionsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

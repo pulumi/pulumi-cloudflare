@@ -164,10 +164,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Frequency;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// A test region.
         /// Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
         /// </summary>
@@ -185,8 +181,6 @@ namespace Pulumi.Cloudflare
         private GetObservatoryScheduledTestResult(
             string frequency,
 
-            string id,
-
             string region,
 
             string url,
@@ -194,7 +188,6 @@ namespace Pulumi.Cloudflare
             string? zoneId)
         {
             Frequency = frequency;
-            Id = id;
             Region = region;
             Url = url;
             ZoneId = zoneId;

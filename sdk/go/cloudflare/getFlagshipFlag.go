@@ -75,8 +75,6 @@ type LookupFlagshipFlagResult struct {
 	Enabled bool `pulumi:"enabled"`
 	// Flag key (slug).
 	FlagKey string `pulumi:"flagKey"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
 	Key string `pulumi:"key"`
 	// Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
@@ -155,11 +153,6 @@ func (o LookupFlagshipFlagResultOutput) Enabled() pulumi.BoolOutput {
 // Flag key (slug).
 func (o LookupFlagshipFlagResultOutput) FlagKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlagshipFlagResult) string { return v.FlagKey }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupFlagshipFlagResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFlagshipFlagResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Unique identifier for the flag within an app. Used in all evaluation and SDK calls.

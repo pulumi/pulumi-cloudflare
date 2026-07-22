@@ -26,16 +26,13 @@ class GetCallsTurnAppResult:
     """
     A collection of values returned by getCallsTurnApp.
     """
-    def __init__(__self__, account_id=None, created=None, id=None, key_id=None, modified=None, name=None, uid=None):
+    def __init__(__self__, account_id=None, created=None, key_id=None, modified=None, name=None, uid=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if key_id and not isinstance(key_id, str):
             raise TypeError("Expected argument 'key_id' to be a str")
         pulumi.set(__self__, "key_id", key_id)
@@ -64,14 +61,6 @@ class GetCallsTurnAppResult:
         The date and time the item was created.
         """
         return pulumi.get(self, "created")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="keyId")
@@ -114,7 +103,6 @@ class AwaitableGetCallsTurnAppResult(GetCallsTurnAppResult):
         return GetCallsTurnAppResult(
             account_id=self.account_id,
             created=self.created,
-            id=self.id,
             key_id=self.key_id,
             modified=self.modified,
             name=self.name,
@@ -153,7 +141,6 @@ def get_calls_turn_app(account_id: Optional[_builtins.str] = None,
     return AwaitableGetCallsTurnAppResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         created=pulumi.get(__ret__, 'created'),
-        id=pulumi.get(__ret__, 'id'),
         key_id=pulumi.get(__ret__, 'key_id'),
         modified=pulumi.get(__ret__, 'modified'),
         name=pulumi.get(__ret__, 'name'),
@@ -189,7 +176,6 @@ def get_calls_turn_app_output(account_id: pulumi.Input[Optional[_builtins.str]] 
     return __ret__.apply(lambda __response__: GetCallsTurnAppResult(
         account_id=pulumi.get(__response__, 'account_id'),
         created=pulumi.get(__response__, 'created'),
-        id=pulumi.get(__response__, 'id'),
         key_id=pulumi.get(__response__, 'key_id'),
         modified=pulumi.get(__response__, 'modified'),
         name=pulumi.get(__response__, 'name'),

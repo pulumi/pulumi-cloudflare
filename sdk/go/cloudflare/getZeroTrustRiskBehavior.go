@@ -60,8 +60,6 @@ type LookupZeroTrustRiskBehaviorArgs struct {
 type LookupZeroTrustRiskBehaviorResult struct {
 	AccountId *string                                      `pulumi:"accountId"`
 	Behaviors map[string]GetZeroTrustRiskBehaviorBehaviors `pulumi:"behaviors"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 }
 
 func LookupZeroTrustRiskBehaviorOutput(ctx *pulumi.Context, args LookupZeroTrustRiskBehaviorOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustRiskBehaviorResultOutput {
@@ -105,11 +103,6 @@ func (o LookupZeroTrustRiskBehaviorResultOutput) Behaviors() GetZeroTrustRiskBeh
 	return o.ApplyT(func(v LookupZeroTrustRiskBehaviorResult) map[string]GetZeroTrustRiskBehaviorBehaviors {
 		return v.Behaviors
 	}).(GetZeroTrustRiskBehaviorBehaviorsMapOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupZeroTrustRiskBehaviorResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustRiskBehaviorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func init() {

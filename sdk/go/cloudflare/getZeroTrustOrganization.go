@@ -76,8 +76,6 @@ type LookupZeroTrustOrganizationResult struct {
 	DenyUnmatchedRequests bool `pulumi:"denyUnmatchedRequests"`
 	// Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
 	DenyUnmatchedRequestsExemptedZoneNames []string `pulumi:"denyUnmatchedRequestsExemptedZoneNames"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
 	IsUiReadOnly bool                                `pulumi:"isUiReadOnly"`
 	LoginDesign  GetZeroTrustOrganizationLoginDesign `pulumi:"loginDesign"`
@@ -169,11 +167,6 @@ func (o LookupZeroTrustOrganizationResultOutput) DenyUnmatchedRequests() pulumi.
 // Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
 func (o LookupZeroTrustOrganizationResultOutput) DenyUnmatchedRequestsExemptedZoneNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) []string { return v.DenyUnmatchedRequestsExemptedZoneNames }).(pulumi.StringArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupZeroTrustOrganizationResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.

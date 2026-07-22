@@ -56,8 +56,6 @@ type GetIpRangesArgs struct {
 type GetIpRangesResult struct {
 	// A digest of the IP data. Useful for determining if the data has changed.
 	Etag string `pulumi:"etag"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// List of Cloudflare IPv4 CIDR addresses.
 	Ipv4Cidrs []string `pulumi:"ipv4Cidrs"`
 	// List of Cloudflare IPv6 CIDR addresses.
@@ -105,11 +103,6 @@ func (o GetIpRangesResultOutput) ToGetIpRangesResultOutputWithContext(ctx contex
 // A digest of the IP data. Useful for determining if the data has changed.
 func (o GetIpRangesResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpRangesResult) string { return v.Etag }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetIpRangesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIpRangesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // List of Cloudflare IPv4 CIDR addresses.

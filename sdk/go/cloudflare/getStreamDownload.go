@@ -64,8 +64,6 @@ type LookupStreamDownloadArgs struct {
 type LookupStreamDownloadResult struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier string `pulumi:"identifier"`
 }
@@ -109,11 +107,6 @@ func (o LookupStreamDownloadResultOutput) ToLookupStreamDownloadResultOutputWith
 // Identifier.
 func (o LookupStreamDownloadResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamDownloadResult) string { return v.AccountId }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupStreamDownloadResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupStreamDownloadResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A Cloudflare-generated unique identifier for a media item.

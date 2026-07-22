@@ -110,10 +110,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string DeadLetterQueue;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// A Resource identifier.
         /// </summary>
         public readonly string QueueId;
@@ -138,8 +134,6 @@ namespace Pulumi.Cloudflare
 
             string deadLetterQueue,
 
-            string id,
-
             string queueId,
 
             string queueName,
@@ -154,7 +148,6 @@ namespace Pulumi.Cloudflare
             ConsumerId = consumerId;
             CreatedOn = createdOn;
             DeadLetterQueue = deadLetterQueue;
-            Id = id;
             QueueId = queueId;
             QueueName = queueName;
             ScriptName = scriptName;

@@ -21,11 +21,6 @@ public final class GetListItemsInvokeResult {
      */
     private @Nullable String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return The unique ID of the list.
      * 
      */
@@ -58,13 +53,6 @@ public final class GetListItemsInvokeResult {
      */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return The unique ID of the list.
@@ -112,7 +100,6 @@ public final class GetListItemsInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
-        private String id;
         private String listId;
         private @Nullable Integer maxItems;
         private @Nullable Integer perPage;
@@ -122,7 +109,6 @@ public final class GetListItemsInvokeResult {
         public Builder(GetListItemsInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-    	      this.id = defaults.id;
     	      this.listId = defaults.listId;
     	      this.maxItems = defaults.maxItems;
     	      this.perPage = defaults.perPage;
@@ -134,14 +120,6 @@ public final class GetListItemsInvokeResult {
         public Builder accountId(@Nullable String accountId) {
 
             this.accountId = accountId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetListItemsInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -184,7 +162,6 @@ public final class GetListItemsInvokeResult {
         public GetListItemsInvokeResult build() {
             final var _resultValue = new GetListItemsInvokeResult();
             _resultValue.accountId = accountId;
-            _resultValue.id = id;
             _resultValue.listId = listId;
             _resultValue.maxItems = maxItems;
             _resultValue.perPage = perPage;

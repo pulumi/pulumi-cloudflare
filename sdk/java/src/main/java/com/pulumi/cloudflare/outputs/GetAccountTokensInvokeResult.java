@@ -27,11 +27,6 @@ public final class GetAccountTokensInvokeResult {
      */
     private @Nullable String direction;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -59,13 +54,6 @@ public final class GetAccountTokensInvokeResult {
         return Optional.ofNullable(this.direction);
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -91,7 +79,6 @@ public final class GetAccountTokensInvokeResult {
     public static final class Builder {
         private @Nullable String accountId;
         private @Nullable String direction;
-        private String id;
         private @Nullable Integer maxItems;
         private List<GetAccountTokensResult> results;
         public Builder() {}
@@ -99,7 +86,6 @@ public final class GetAccountTokensInvokeResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.direction = defaults.direction;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
         }
@@ -114,14 +100,6 @@ public final class GetAccountTokensInvokeResult {
         public Builder direction(@Nullable String direction) {
 
             this.direction = direction;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAccountTokensInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -145,7 +123,6 @@ public final class GetAccountTokensInvokeResult {
             final var _resultValue = new GetAccountTokensInvokeResult();
             _resultValue.accountId = accountId;
             _resultValue.direction = direction;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;
             return _resultValue;

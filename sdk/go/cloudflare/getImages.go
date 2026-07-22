@@ -68,8 +68,6 @@ type LookupImagesResult struct {
 	AccountId *string `pulumi:"accountId"`
 	// Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set
 	Creator *string `pulumi:"creator"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -122,11 +120,6 @@ func (o LookupImagesResultOutput) AccountId() pulumi.StringPtrOutput {
 // Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set
 func (o LookupImagesResultOutput) Creator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupImagesResult) *string { return v.Creator }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupImagesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupImagesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

@@ -151,10 +151,6 @@ namespace Pulumi.Cloudflare
     public sealed class GetPageShieldPoliciesResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
@@ -169,15 +165,12 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetPageShieldPoliciesResult(
-            string id,
-
             int? maxItems,
 
             ImmutableArray<Outputs.GetPageShieldPoliciesResultResult> results,
 
             string? zoneId)
         {
-            Id = id;
             MaxItems = maxItems;
             Results = results;
             ZoneId = zoneId;

@@ -195,10 +195,6 @@ namespace Pulumi.Cloudflare
     {
         public readonly Outputs.GetZonesAccountResult? Account;
         public readonly string? Direction;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string Match;
         public readonly int? MaxItems;
         public readonly string? Name;
@@ -212,8 +208,6 @@ namespace Pulumi.Cloudflare
             Outputs.GetZonesAccountResult? account,
 
             string? direction,
-
-            string id,
 
             string match,
 
@@ -231,7 +225,6 @@ namespace Pulumi.Cloudflare
         {
             Account = account;
             Direction = direction;
-            Id = id;
             Match = match;
             MaxItems = maxItems;
             Name = name;

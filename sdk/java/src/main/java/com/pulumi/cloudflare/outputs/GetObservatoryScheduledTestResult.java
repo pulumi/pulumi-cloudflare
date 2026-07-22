@@ -19,11 +19,6 @@ public final class GetObservatoryScheduledTestResult {
      */
     private String frequency;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return A test region.
      * Available values: &#34;asia-east1&#34;, &#34;asia-northeast1&#34;, &#34;asia-northeast2&#34;, &#34;asia-south1&#34;, &#34;asia-southeast1&#34;, &#34;australia-southeast1&#34;, &#34;europe-north1&#34;, &#34;europe-southwest1&#34;, &#34;europe-west1&#34;, &#34;europe-west2&#34;, &#34;europe-west3&#34;, &#34;europe-west4&#34;, &#34;europe-west8&#34;, &#34;europe-west9&#34;, &#34;me-west1&#34;, &#34;southamerica-east1&#34;, &#34;us-central1&#34;, &#34;us-east1&#34;, &#34;us-east4&#34;, &#34;us-south1&#34;, &#34;us-west1&#34;.
      * 
@@ -48,13 +43,6 @@ public final class GetObservatoryScheduledTestResult {
      */
     public String frequency() {
         return this.frequency;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return A test region.
@@ -89,7 +77,6 @@ public final class GetObservatoryScheduledTestResult {
     @CustomType.Builder
     public static final class Builder {
         private String frequency;
-        private String id;
         private String region;
         private String url;
         private @Nullable String zoneId;
@@ -97,7 +84,6 @@ public final class GetObservatoryScheduledTestResult {
         public Builder(GetObservatoryScheduledTestResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.frequency = defaults.frequency;
-    	      this.id = defaults.id;
     	      this.region = defaults.region;
     	      this.url = defaults.url;
     	      this.zoneId = defaults.zoneId;
@@ -109,14 +95,6 @@ public final class GetObservatoryScheduledTestResult {
               throw new MissingRequiredPropertyException("GetObservatoryScheduledTestResult", "frequency");
             }
             this.frequency = frequency;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetObservatoryScheduledTestResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -144,7 +122,6 @@ public final class GetObservatoryScheduledTestResult {
         public GetObservatoryScheduledTestResult build() {
             final var _resultValue = new GetObservatoryScheduledTestResult();
             _resultValue.frequency = frequency;
-            _resultValue.id = id;
             _resultValue.region = region;
             _resultValue.url = url;
             _resultValue.zoneId = zoneId;

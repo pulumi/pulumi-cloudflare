@@ -63,8 +63,6 @@ type LookupDnsFirewallsArgs struct {
 type LookupDnsFirewallsResult struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -110,11 +108,6 @@ func (o LookupDnsFirewallsResultOutput) ToLookupDnsFirewallsResultOutputWithCont
 // Identifier.
 func (o LookupDnsFirewallsResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDnsFirewallsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupDnsFirewallsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDnsFirewallsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

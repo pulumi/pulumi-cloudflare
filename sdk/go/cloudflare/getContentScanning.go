@@ -61,8 +61,6 @@ type LookupContentScanningArgs struct {
 
 // A collection of values returned by getContentScanning.
 type LookupContentScanningResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Defines the last modification date (ISO 8601) of the Content Scanning status.
 	Modified string `pulumi:"modified"`
 	// Defines the status of Content Scanning.
@@ -103,11 +101,6 @@ func (o LookupContentScanningResultOutput) ToLookupContentScanningResultOutput()
 
 func (o LookupContentScanningResultOutput) ToLookupContentScanningResultOutputWithContext(ctx context.Context) LookupContentScanningResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupContentScanningResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupContentScanningResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Defines the last modification date (ISO 8601) of the Content Scanning status.

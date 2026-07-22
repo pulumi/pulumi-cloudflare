@@ -27,13 +27,10 @@ class GetMagicTransitCf1SitesResult:
     """
     A collection of values returned by getMagicTransitCf1Sites.
     """
-    def __init__(__self__, account_id=None, id=None, max_items=None, results=None):
+    def __init__(__self__, account_id=None, max_items=None, results=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -48,14 +45,6 @@ class GetMagicTransitCf1SitesResult:
         Identifier
         """
         return pulumi.get(self, "account_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="maxItems")
@@ -81,7 +70,6 @@ class AwaitableGetMagicTransitCf1SitesResult(GetMagicTransitCf1SitesResult):
             yield self
         return GetMagicTransitCf1SitesResult(
             account_id=self.account_id,
-            id=self.id,
             max_items=self.max_items,
             results=self.results)
 
@@ -118,7 +106,6 @@ def get_magic_transit_cf1_sites(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetMagicTransitCf1SitesResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-        id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'))
 def get_magic_transit_cf1_sites_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -152,6 +139,5 @@ def get_magic_transit_cf1_sites_output(account_id: pulumi.Input[Optional[_builti
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getMagicTransitCf1Sites:getMagicTransitCf1Sites', __args__, opts=opts, typ=GetMagicTransitCf1SitesResult)
     return __ret__.apply(lambda __response__: GetMagicTransitCf1SitesResult(
         account_id=pulumi.get(__response__, 'account_id'),
-        id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         results=pulumi.get(__response__, 'results')))

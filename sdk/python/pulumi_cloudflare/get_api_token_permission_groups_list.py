@@ -27,10 +27,7 @@ class GetApiTokenPermissionGroupsListResult:
     """
     A collection of values returned by getApiTokenPermissionGroupsList.
     """
-    def __init__(__self__, id=None, max_items=None, name=None, results=None, scope=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, max_items=None, name=None, results=None, scope=None):
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -43,14 +40,6 @@ class GetApiTokenPermissionGroupsListResult:
         if scope and not isinstance(scope, str):
             raise TypeError("Expected argument 'scope' to be a str")
         pulumi.set(__self__, "scope", scope)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="maxItems")
@@ -93,7 +82,6 @@ class AwaitableGetApiTokenPermissionGroupsListResult(GetApiTokenPermissionGroups
         if False:
             yield self
         return GetApiTokenPermissionGroupsListResult(
-            id=self.id,
             max_items=self.max_items,
             name=self.name,
             results=self.results,
@@ -135,7 +123,6 @@ def get_api_token_permission_groups_list(max_items: Optional[_builtins.int] = No
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getApiTokenPermissionGroupsList:getApiTokenPermissionGroupsList', __args__, opts=opts, typ=GetApiTokenPermissionGroupsListResult).value
 
     return AwaitableGetApiTokenPermissionGroupsListResult(
-        id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         name=pulumi.get(__ret__, 'name'),
         results=pulumi.get(__ret__, 'results'),
@@ -174,7 +161,6 @@ def get_api_token_permission_groups_list_output(max_items: pulumi.Input[Optional
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getApiTokenPermissionGroupsList:getApiTokenPermissionGroupsList', __args__, opts=opts, typ=GetApiTokenPermissionGroupsListResult)
     return __ret__.apply(lambda __response__: GetApiTokenPermissionGroupsListResult(
-        id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         name=pulumi.get(__response__, 'name'),
         results=pulumi.get(__response__, 'results'),

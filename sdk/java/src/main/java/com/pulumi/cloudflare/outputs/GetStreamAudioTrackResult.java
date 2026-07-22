@@ -23,11 +23,6 @@ public final class GetStreamAudioTrackResult {
      */
     private List<GetStreamAudioTrackAudio> audios;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return A Cloudflare-generated unique identifier for a media item.
      * 
      */
@@ -49,13 +44,6 @@ public final class GetStreamAudioTrackResult {
         return this.audios;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return A Cloudflare-generated unique identifier for a media item.
      * 
      */
@@ -74,14 +62,12 @@ public final class GetStreamAudioTrackResult {
     public static final class Builder {
         private String accountId;
         private List<GetStreamAudioTrackAudio> audios;
-        private String id;
         private String identifier;
         public Builder() {}
         public Builder(GetStreamAudioTrackResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.audios = defaults.audios;
-    	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
         }
 
@@ -105,14 +91,6 @@ public final class GetStreamAudioTrackResult {
             return audios(List.of(audios));
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetStreamAudioTrackResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder identifier(String identifier) {
             if (identifier == null) {
               throw new MissingRequiredPropertyException("GetStreamAudioTrackResult", "identifier");
@@ -124,7 +102,6 @@ public final class GetStreamAudioTrackResult {
             final var _resultValue = new GetStreamAudioTrackResult();
             _resultValue.accountId = accountId;
             _resultValue.audios = audios;
-            _resultValue.id = id;
             _resultValue.identifier = identifier;
             return _resultValue;
         }

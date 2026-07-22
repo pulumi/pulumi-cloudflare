@@ -158,10 +158,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Include resources in the response.
         /// </summary>
         public readonly bool? IncludeResources;
@@ -182,8 +178,6 @@ namespace Pulumi.Cloudflare
         private GetShareRecipientsResult(
             string accountId,
 
-            string id,
-
             bool? includeResources,
 
             int? maxItems,
@@ -193,7 +187,6 @@ namespace Pulumi.Cloudflare
             string shareId)
         {
             AccountId = accountId;
-            Id = id;
             IncludeResources = includeResources;
             MaxItems = maxItems;
             Results = results;

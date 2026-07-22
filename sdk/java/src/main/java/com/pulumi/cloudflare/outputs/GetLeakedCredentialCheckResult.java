@@ -19,11 +19,6 @@ public final class GetLeakedCredentialCheckResult {
      */
     private Boolean enabled;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Defines an identifier.
      * 
      */
@@ -36,13 +31,6 @@ public final class GetLeakedCredentialCheckResult {
      */
     public Boolean enabled() {
         return this.enabled;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Defines an identifier.
@@ -62,13 +50,11 @@ public final class GetLeakedCredentialCheckResult {
     @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
-        private String id;
         private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetLeakedCredentialCheckResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
-    	      this.id = defaults.id;
     	      this.zoneId = defaults.zoneId;
         }
 
@@ -81,14 +67,6 @@ public final class GetLeakedCredentialCheckResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetLeakedCredentialCheckResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
 
             this.zoneId = zoneId;
@@ -97,7 +75,6 @@ public final class GetLeakedCredentialCheckResult {
         public GetLeakedCredentialCheckResult build() {
             final var _resultValue = new GetLeakedCredentialCheckResult();
             _resultValue.enabled = enabled;
-            _resultValue.id = id;
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

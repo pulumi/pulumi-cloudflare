@@ -23,11 +23,6 @@ public final class GetRegistrarDomainResult {
      * 
      */
     private String domainName;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
 
     private GetRegistrarDomainResult() {}
     /**
@@ -47,13 +42,6 @@ public final class GetRegistrarDomainResult {
     public String domainName() {
         return this.domainName;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -66,13 +54,11 @@ public final class GetRegistrarDomainResult {
     public static final class Builder {
         private String accountId;
         private String domainName;
-        private String id;
         public Builder() {}
         public Builder(GetRegistrarDomainResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.domainName = defaults.domainName;
-    	      this.id = defaults.id;
         }
 
         @CustomType.Setter
@@ -91,19 +77,10 @@ public final class GetRegistrarDomainResult {
             this.domainName = domainName;
             return this;
         }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetRegistrarDomainResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         public GetRegistrarDomainResult build() {
             final var _resultValue = new GetRegistrarDomainResult();
             _resultValue.accountId = accountId;
             _resultValue.domainName = domainName;
-            _resultValue.id = id;
             return _resultValue;
         }
     }

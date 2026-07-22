@@ -158,10 +158,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
         /// </summary>
         public readonly string KeysRotatedAt;
@@ -229,8 +225,6 @@ namespace Pulumi.Cloudflare
 
             bool enabled,
 
-            string id,
-
             string keysRotatedAt,
 
             string liveInputIdentifier,
@@ -263,7 +257,6 @@ namespace Pulumi.Cloudflare
             Created = created;
             DeleteRecordingAfterDays = deleteRecordingAfterDays;
             Enabled = enabled;
-            Id = id;
             KeysRotatedAt = keysRotatedAt;
             LiveInputIdentifier = liveInputIdentifier;
             Meta = meta;

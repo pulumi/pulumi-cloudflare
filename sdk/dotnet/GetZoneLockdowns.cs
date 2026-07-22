@@ -286,10 +286,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? DescriptionSearch;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// A single IP address to search for in existing rules.
         /// </summary>
         public readonly string? Ip;
@@ -334,8 +330,6 @@ namespace Pulumi.Cloudflare
 
             string? descriptionSearch,
 
-            string id,
-
             string? ip,
 
             string? ipRangeSearch,
@@ -357,7 +351,6 @@ namespace Pulumi.Cloudflare
             CreatedOn = createdOn;
             Description = description;
             DescriptionSearch = descriptionSearch;
-            Id = id;
             Ip = ip;
             IpRangeSearch = ipRangeSearch;
             IpSearch = ipSearch;

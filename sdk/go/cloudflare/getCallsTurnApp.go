@@ -66,8 +66,6 @@ type LookupCallsTurnAppResult struct {
 	AccountId string `pulumi:"accountId"`
 	// The date and time the item was created.
 	Created string `pulumi:"created"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// A Cloudflare-generated unique identifier for a item.
 	KeyId string `pulumi:"keyId"`
 	// The date and time the item was last modified.
@@ -122,11 +120,6 @@ func (o LookupCallsTurnAppResultOutput) AccountId() pulumi.StringOutput {
 // The date and time the item was created.
 func (o LookupCallsTurnAppResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCallsTurnAppResult) string { return v.Created }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupCallsTurnAppResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCallsTurnAppResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A Cloudflare-generated unique identifier for a item.

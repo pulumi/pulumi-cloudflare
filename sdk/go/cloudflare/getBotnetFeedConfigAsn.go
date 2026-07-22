@@ -62,8 +62,6 @@ type GetBotnetFeedConfigAsnResult struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	Asn       int     `pulumi:"asn"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 }
 
 func GetBotnetFeedConfigAsnOutput(ctx *pulumi.Context, args GetBotnetFeedConfigAsnOutputArgs, opts ...pulumi.InvokeOption) GetBotnetFeedConfigAsnResultOutput {
@@ -107,11 +105,6 @@ func (o GetBotnetFeedConfigAsnResultOutput) AccountId() pulumi.StringPtrOutput {
 
 func (o GetBotnetFeedConfigAsnResultOutput) Asn() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBotnetFeedConfigAsnResult) int { return v.Asn }).(pulumi.IntOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetBotnetFeedConfigAsnResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBotnetFeedConfigAsnResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func init() {

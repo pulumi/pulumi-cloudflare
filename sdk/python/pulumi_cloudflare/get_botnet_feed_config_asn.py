@@ -26,16 +26,13 @@ class GetBotnetFeedConfigAsnResult:
     """
     A collection of values returned by getBotnetFeedConfigAsn.
     """
-    def __init__(__self__, account_id=None, asn=None, id=None):
+    def __init__(__self__, account_id=None, asn=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if asn and not isinstance(asn, int):
             raise TypeError("Expected argument 'asn' to be a int")
         pulumi.set(__self__, "asn", asn)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -50,14 +47,6 @@ class GetBotnetFeedConfigAsnResult:
     def asn(self) -> _builtins.int:
         return pulumi.get(self, "asn")
 
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
 
 class AwaitableGetBotnetFeedConfigAsnResult(GetBotnetFeedConfigAsnResult):
     # pylint: disable=using-constant-test
@@ -66,8 +55,7 @@ class AwaitableGetBotnetFeedConfigAsnResult(GetBotnetFeedConfigAsnResult):
             yield self
         return GetBotnetFeedConfigAsnResult(
             account_id=self.account_id,
-            asn=self.asn,
-            id=self.id)
+            asn=self.asn)
 
 
 def get_botnet_feed_config_asn(account_id: Optional[_builtins.str] = None,
@@ -97,8 +85,7 @@ def get_botnet_feed_config_asn(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetBotnetFeedConfigAsnResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-        asn=pulumi.get(__ret__, 'asn'),
-        id=pulumi.get(__ret__, 'id'))
+        asn=pulumi.get(__ret__, 'asn'))
 def get_botnet_feed_config_asn_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBotnetFeedConfigAsnResult]:
     """
@@ -125,5 +112,4 @@ def get_botnet_feed_config_asn_output(account_id: pulumi.Input[Optional[Optional
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getBotnetFeedConfigAsn:getBotnetFeedConfigAsn', __args__, opts=opts, typ=GetBotnetFeedConfigAsnResult)
     return __ret__.apply(lambda __response__: GetBotnetFeedConfigAsnResult(
         account_id=pulumi.get(__response__, 'account_id'),
-        asn=pulumi.get(__response__, 'asn'),
-        id=pulumi.get(__response__, 'id')))
+        asn=pulumi.get(__response__, 'asn')))

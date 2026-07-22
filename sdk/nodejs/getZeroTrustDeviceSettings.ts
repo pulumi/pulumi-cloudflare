@@ -65,10 +65,6 @@ export interface GetZeroTrustDeviceSettingsResult {
      */
     readonly gatewayUdpProxyEnabled: boolean;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Enable installation of cloudflare managed root certificate.
      */
     readonly rootCertificateInstallationEnabled: boolean;

@@ -26,13 +26,10 @@ class GetApiShieldSchemaResult:
     """
     A collection of values returned by getApiShieldSchema.
     """
-    def __init__(__self__, created_at=None, id=None, kind=None, name=None, omit_source=None, schema_id=None, source=None, validation_enabled=None, zone_id=None):
+    def __init__(__self__, created_at=None, kind=None, name=None, omit_source=None, schema_id=None, source=None, validation_enabled=None, zone_id=None):
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -59,14 +56,6 @@ class GetApiShieldSchemaResult:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
         return pulumi.get(self, "created_at")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -130,7 +119,6 @@ class AwaitableGetApiShieldSchemaResult(GetApiShieldSchemaResult):
             yield self
         return GetApiShieldSchemaResult(
             created_at=self.created_at,
-            id=self.id,
             kind=self.kind,
             name=self.name,
             omit_source=self.omit_source,
@@ -176,7 +164,6 @@ def get_api_shield_schema(omit_source: Optional[_builtins.bool] = None,
 
     return AwaitableGetApiShieldSchemaResult(
         created_at=pulumi.get(__ret__, 'created_at'),
-        id=pulumi.get(__ret__, 'id'),
         kind=pulumi.get(__ret__, 'kind'),
         name=pulumi.get(__ret__, 'name'),
         omit_source=pulumi.get(__ret__, 'omit_source'),
@@ -219,7 +206,6 @@ def get_api_shield_schema_output(omit_source: pulumi.Input[Optional[Optional[_bu
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getApiShieldSchema:getApiShieldSchema', __args__, opts=opts, typ=GetApiShieldSchemaResult)
     return __ret__.apply(lambda __response__: GetApiShieldSchemaResult(
         created_at=pulumi.get(__response__, 'created_at'),
-        id=pulumi.get(__response__, 'id'),
         kind=pulumi.get(__response__, 'kind'),
         name=pulumi.get(__response__, 'name'),
         omit_source=pulumi.get(__response__, 'omit_source'),

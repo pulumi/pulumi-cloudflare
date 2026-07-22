@@ -70,10 +70,6 @@ export interface GetClientCertificatesArgs {
  */
 export interface GetClientCertificatesResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Limit to the number of records returned.
      */
     readonly limit?: number;

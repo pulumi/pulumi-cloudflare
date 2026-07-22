@@ -72,8 +72,6 @@ type LookupZeroTrustAccessServiceTokensArgs struct {
 type LookupZeroTrustAccessServiceTokensResult struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The name of the service token.
@@ -131,11 +129,6 @@ func (o LookupZeroTrustAccessServiceTokensResultOutput) ToLookupZeroTrustAccessS
 // The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 func (o LookupZeroTrustAccessServiceTokensResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessServiceTokensResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupZeroTrustAccessServiceTokensResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessServiceTokensResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

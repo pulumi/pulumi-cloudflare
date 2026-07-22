@@ -21,11 +21,6 @@ public final class GetLoadBalancerMonitorGroupsInvokeResult {
      */
     private String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -43,13 +38,6 @@ public final class GetLoadBalancerMonitorGroupsInvokeResult {
      */
     public String accountId() {
         return this.accountId;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Max items to fetch, default: 1000
@@ -76,14 +64,12 @@ public final class GetLoadBalancerMonitorGroupsInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
-        private String id;
         private @Nullable Integer maxItems;
         private List<GetLoadBalancerMonitorGroupsResult> results;
         public Builder() {}
         public Builder(GetLoadBalancerMonitorGroupsInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
         }
@@ -94,14 +80,6 @@ public final class GetLoadBalancerMonitorGroupsInvokeResult {
               throw new MissingRequiredPropertyException("GetLoadBalancerMonitorGroupsInvokeResult", "accountId");
             }
             this.accountId = accountId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetLoadBalancerMonitorGroupsInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -124,7 +102,6 @@ public final class GetLoadBalancerMonitorGroupsInvokeResult {
         public GetLoadBalancerMonitorGroupsInvokeResult build() {
             final var _resultValue = new GetLoadBalancerMonitorGroupsInvokeResult();
             _resultValue.accountId = accountId;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;
             return _resultValue;

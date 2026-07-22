@@ -88,8 +88,6 @@ type LookupSecretsStoreSecretsResult struct {
 	// Direction to sort objects
 	// Available values: "asc", "desc".
 	Direction string `pulumi:"direction"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Order secrets by values in the given field
@@ -162,11 +160,6 @@ func (o LookupSecretsStoreSecretsResultOutput) AccountId() pulumi.StringOutput {
 // Available values: "asc", "desc".
 func (o LookupSecretsStoreSecretsResultOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretsStoreSecretsResult) string { return v.Direction }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupSecretsStoreSecretsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSecretsStoreSecretsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

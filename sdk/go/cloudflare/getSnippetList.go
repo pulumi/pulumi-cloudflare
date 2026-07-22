@@ -35,8 +35,6 @@ type LookupSnippetListArgs struct {
 
 // A collection of values returned by getSnippetList.
 type LookupSnippetListResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -79,11 +77,6 @@ func (o LookupSnippetListResultOutput) ToLookupSnippetListResultOutput() LookupS
 
 func (o LookupSnippetListResultOutput) ToLookupSnippetListResultOutputWithContext(ctx context.Context) LookupSnippetListResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupSnippetListResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSnippetListResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

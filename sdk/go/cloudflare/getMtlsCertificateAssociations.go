@@ -64,8 +64,6 @@ type GetMtlsCertificateAssociationsArgs struct {
 type GetMtlsCertificateAssociationsResult struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Identifier.
 	MtlsCertificateId string `pulumi:"mtlsCertificateId"`
 	// The service using the certificate.
@@ -113,11 +111,6 @@ func (o GetMtlsCertificateAssociationsResultOutput) ToGetMtlsCertificateAssociat
 // Identifier.
 func (o GetMtlsCertificateAssociationsResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMtlsCertificateAssociationsResult) string { return v.AccountId }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetMtlsCertificateAssociationsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMtlsCertificateAssociationsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Identifier.

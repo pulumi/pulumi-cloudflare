@@ -481,10 +481,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? HostnameContains;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Filters for targets whose IP addresses look like the specified string.
         /// Supports `*` as a wildcard character
         /// </summary>
@@ -568,8 +564,6 @@ namespace Pulumi.Cloudflare
 
             string? hostnameContains,
 
-            string id,
-
             string? ipLike,
 
             string? ipV4,
@@ -606,7 +600,6 @@ namespace Pulumi.Cloudflare
             Direction = direction;
             Hostname = hostname;
             HostnameContains = hostnameContains;
-            Id = id;
             IpLike = ipLike;
             IpV4 = ipV4;
             IpV6 = ipV6;

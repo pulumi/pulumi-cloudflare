@@ -66,8 +66,6 @@ type LookupD1DatabasesArgs struct {
 type LookupD1DatabasesResult struct {
 	// Account identifier tag.
 	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// a database name to search for.
@@ -117,11 +115,6 @@ func (o LookupD1DatabasesResultOutput) ToLookupD1DatabasesResultOutputWithContex
 // Account identifier tag.
 func (o LookupD1DatabasesResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupD1DatabasesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupD1DatabasesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupD1DatabasesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

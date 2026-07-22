@@ -129,10 +129,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly double DefaultSampling;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The account name.
         /// </summary>
         public readonly string Name;
@@ -145,8 +141,6 @@ namespace Pulumi.Cloudflare
 
             double defaultSampling,
 
-            string id,
-
             string name,
 
             ImmutableArray<string> routerIps,
@@ -155,7 +149,6 @@ namespace Pulumi.Cloudflare
         {
             AccountId = accountId;
             DefaultSampling = defaultSampling;
-            Id = id;
             Name = name;
             RouterIps = routerIps;
             WarpDevices = warpDevices;

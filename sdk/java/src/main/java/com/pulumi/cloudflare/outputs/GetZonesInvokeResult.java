@@ -18,11 +18,6 @@ import javax.annotation.Nullable;
 public final class GetZonesInvokeResult {
     private @Nullable GetZonesAccount account;
     private @Nullable String direction;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private String match;
     private @Nullable Integer maxItems;
     private @Nullable String name;
@@ -37,13 +32,6 @@ public final class GetZonesInvokeResult {
     }
     public Optional<String> direction() {
         return Optional.ofNullable(this.direction);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public String match() {
         return this.match;
@@ -78,7 +66,6 @@ public final class GetZonesInvokeResult {
     public static final class Builder {
         private @Nullable GetZonesAccount account;
         private @Nullable String direction;
-        private String id;
         private String match;
         private @Nullable Integer maxItems;
         private @Nullable String name;
@@ -91,7 +78,6 @@ public final class GetZonesInvokeResult {
     	      Objects.requireNonNull(defaults);
     	      this.account = defaults.account;
     	      this.direction = defaults.direction;
-    	      this.id = defaults.id;
     	      this.match = defaults.match;
     	      this.maxItems = defaults.maxItems;
     	      this.name = defaults.name;
@@ -111,14 +97,6 @@ public final class GetZonesInvokeResult {
         public Builder direction(@Nullable String direction) {
 
             this.direction = direction;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetZonesInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -177,7 +155,6 @@ public final class GetZonesInvokeResult {
             final var _resultValue = new GetZonesInvokeResult();
             _resultValue.account = account;
             _resultValue.direction = direction;
-            _resultValue.id = id;
             _resultValue.match = match;
             _resultValue.maxItems = maxItems;
             _resultValue.name = name;

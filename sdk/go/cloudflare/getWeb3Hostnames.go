@@ -61,8 +61,6 @@ type LookupWeb3HostnamesArgs struct {
 
 // A collection of values returned by getWeb3Hostnames.
 type LookupWeb3HostnamesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -105,11 +103,6 @@ func (o LookupWeb3HostnamesResultOutput) ToLookupWeb3HostnamesResultOutput() Loo
 
 func (o LookupWeb3HostnamesResultOutput) ToLookupWeb3HostnamesResultOutputWithContext(ctx context.Context) LookupWeb3HostnamesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupWeb3HostnamesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWeb3HostnamesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

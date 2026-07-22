@@ -62,10 +62,8 @@ type LookupAccountDnsSettingsResult struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
-	EnforceDnsOnly bool `pulumi:"enforceDnsOnly"`
-	// The provider-assigned unique ID for this managed resource.
-	Id           string                            `pulumi:"id"`
-	ZoneDefaults GetAccountDnsSettingsZoneDefaults `pulumi:"zoneDefaults"`
+	EnforceDnsOnly bool                              `pulumi:"enforceDnsOnly"`
+	ZoneDefaults   GetAccountDnsSettingsZoneDefaults `pulumi:"zoneDefaults"`
 }
 
 func LookupAccountDnsSettingsOutput(ctx *pulumi.Context, args LookupAccountDnsSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupAccountDnsSettingsResultOutput {
@@ -110,11 +108,6 @@ func (o LookupAccountDnsSettingsResultOutput) AccountId() pulumi.StringPtrOutput
 // When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
 func (o LookupAccountDnsSettingsResultOutput) EnforceDnsOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAccountDnsSettingsResult) bool { return v.EnforceDnsOnly }).(pulumi.BoolOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupAccountDnsSettingsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAccountDnsSettingsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o LookupAccountDnsSettingsResultOutput) ZoneDefaults() GetAccountDnsSettingsZoneDefaultsOutput {

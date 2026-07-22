@@ -65,8 +65,6 @@ type LookupWaitingRoomsArgs struct {
 type LookupWaitingRoomsResult struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -116,11 +114,6 @@ func (o LookupWaitingRoomsResultOutput) ToLookupWaitingRoomsResultOutputWithCont
 // The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 func (o LookupWaitingRoomsResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWaitingRoomsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupWaitingRoomsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWaitingRoomsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

@@ -118,10 +118,6 @@ export interface GetZeroTrustTunnelCloudflaredRoutesResult {
      */
     readonly existedAt?: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * If `true`, only include deleted routes. If `false`, exclude deleted routes. If empty, all routes will be included.
      */
     readonly isDeleted?: boolean;

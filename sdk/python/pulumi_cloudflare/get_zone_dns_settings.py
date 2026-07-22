@@ -27,16 +27,13 @@ class GetZoneDnsSettingsResult:
     """
     A collection of values returned by getZoneDnsSettings.
     """
-    def __init__(__self__, flatten_all_cnames=None, foundation_dns=None, id=None, internal_dns=None, multi_provider=None, nameservers=None, ns_ttl=None, secondary_overrides=None, soa=None, zone_id=None, zone_mode=None):
+    def __init__(__self__, flatten_all_cnames=None, foundation_dns=None, internal_dns=None, multi_provider=None, nameservers=None, ns_ttl=None, secondary_overrides=None, soa=None, zone_id=None, zone_mode=None):
         if flatten_all_cnames and not isinstance(flatten_all_cnames, bool):
             raise TypeError("Expected argument 'flatten_all_cnames' to be a bool")
         pulumi.set(__self__, "flatten_all_cnames", flatten_all_cnames)
         if foundation_dns and not isinstance(foundation_dns, bool):
             raise TypeError("Expected argument 'foundation_dns' to be a bool")
         pulumi.set(__self__, "foundation_dns", foundation_dns)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if internal_dns and not isinstance(internal_dns, dict):
             raise TypeError("Expected argument 'internal_dns' to be a dict")
         pulumi.set(__self__, "internal_dns", internal_dns)
@@ -77,14 +74,6 @@ class GetZoneDnsSettingsResult:
         Whether to enable Foundation DNS Advanced Nameservers on the zone.
         """
         return pulumi.get(self, "foundation_dns")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="internalDns")
@@ -160,7 +149,6 @@ class AwaitableGetZoneDnsSettingsResult(GetZoneDnsSettingsResult):
         return GetZoneDnsSettingsResult(
             flatten_all_cnames=self.flatten_all_cnames,
             foundation_dns=self.foundation_dns,
-            id=self.id,
             internal_dns=self.internal_dns,
             multi_provider=self.multi_provider,
             nameservers=self.nameservers,
@@ -201,7 +189,6 @@ def get_zone_dns_settings(zone_id: Optional[_builtins.str] = None,
     return AwaitableGetZoneDnsSettingsResult(
         flatten_all_cnames=pulumi.get(__ret__, 'flatten_all_cnames'),
         foundation_dns=pulumi.get(__ret__, 'foundation_dns'),
-        id=pulumi.get(__ret__, 'id'),
         internal_dns=pulumi.get(__ret__, 'internal_dns'),
         multi_provider=pulumi.get(__ret__, 'multi_provider'),
         nameservers=pulumi.get(__ret__, 'nameservers'),
@@ -239,7 +226,6 @@ def get_zone_dns_settings_output(zone_id: pulumi.Input[Optional[Optional[_builti
     return __ret__.apply(lambda __response__: GetZoneDnsSettingsResult(
         flatten_all_cnames=pulumi.get(__response__, 'flatten_all_cnames'),
         foundation_dns=pulumi.get(__response__, 'foundation_dns'),
-        id=pulumi.get(__response__, 'id'),
         internal_dns=pulumi.get(__response__, 'internal_dns'),
         multi_provider=pulumi.get(__response__, 'multi_provider'),
         nameservers=pulumi.get(__response__, 'nameservers'),

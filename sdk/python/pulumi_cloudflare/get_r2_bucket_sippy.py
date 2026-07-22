@@ -27,7 +27,7 @@ class GetR2BucketSippyResult:
     """
     A collection of values returned by getR2BucketSippy.
     """
-    def __init__(__self__, account_id=None, bucket_name=None, destination=None, enabled=None, id=None, source=None):
+    def __init__(__self__, account_id=None, bucket_name=None, destination=None, enabled=None, source=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -40,9 +40,6 @@ class GetR2BucketSippyResult:
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
         pulumi.set(__self__, "enabled", enabled)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if source and not isinstance(source, dict):
             raise TypeError("Expected argument 'source' to be a dict")
         pulumi.set(__self__, "source", source)
@@ -81,14 +78,6 @@ class GetR2BucketSippyResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
     def source(self) -> 'outputs.GetR2BucketSippySourceResult':
         """
         Details about the configured source bucket.
@@ -106,7 +95,6 @@ class AwaitableGetR2BucketSippyResult(GetR2BucketSippyResult):
             bucket_name=self.bucket_name,
             destination=self.destination,
             enabled=self.enabled,
-            id=self.id,
             source=self.source)
 
 
@@ -139,7 +127,6 @@ def get_r2_bucket_sippy(account_id: Optional[_builtins.str] = None,
         bucket_name=pulumi.get(__ret__, 'bucket_name'),
         destination=pulumi.get(__ret__, 'destination'),
         enabled=pulumi.get(__ret__, 'enabled'),
-        id=pulumi.get(__ret__, 'id'),
         source=pulumi.get(__ret__, 'source'))
 def get_r2_bucket_sippy_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -169,5 +156,4 @@ def get_r2_bucket_sippy_output(account_id: pulumi.Input[Optional[_builtins.str]]
         bucket_name=pulumi.get(__response__, 'bucket_name'),
         destination=pulumi.get(__response__, 'destination'),
         enabled=pulumi.get(__response__, 'enabled'),
-        id=pulumi.get(__response__, 'id'),
         source=pulumi.get(__response__, 'source')))

@@ -60,10 +60,6 @@ namespace Pulumi.Cloudflare
         /// Optional description for the namespace. Max 256 characters.
         /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string Name;
 
         [OutputConstructor]
@@ -74,14 +70,11 @@ namespace Pulumi.Cloudflare
 
             string description,
 
-            string id,
-
             string name)
         {
             AccountId = accountId;
             CreatedAt = createdAt;
             Description = description;
-            Id = id;
             Name = name;
         }
     }

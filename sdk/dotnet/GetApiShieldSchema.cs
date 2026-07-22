@@ -158,10 +158,6 @@ namespace Pulumi.Cloudflare
     {
         public readonly string CreatedAt;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Kind of schema
         /// Available values: "OpenapiV3".
         /// </summary>
@@ -192,8 +188,6 @@ namespace Pulumi.Cloudflare
         private GetApiShieldSchemaResult(
             string createdAt,
 
-            string id,
-
             string kind,
 
             string name,
@@ -209,7 +203,6 @@ namespace Pulumi.Cloudflare
             string? zoneId)
         {
             CreatedAt = createdAt;
-            Id = id;
             Kind = kind;
             Name = name;
             OmitSource = omitSource;

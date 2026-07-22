@@ -77,10 +77,6 @@ export interface GetR2CustomDomainResult {
      */
     readonly enabled: boolean;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
      * Available values: "1.0", "1.1", "1.2", "1.3".
      */

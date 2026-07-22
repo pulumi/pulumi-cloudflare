@@ -133,10 +133,6 @@ namespace Pulumi.Cloudflare
     public sealed class GetSchemaValidationSettingsResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The default mitigation action used
         /// </summary>
         public readonly string ValidationDefaultMitigationAction;
@@ -148,15 +144,12 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetSchemaValidationSettingsResult(
-            string id,
-
             string validationDefaultMitigationAction,
 
             string validationOverrideMitigationAction,
 
             string? zoneId)
         {
-            Id = id;
             ValidationDefaultMitigationAction = validationDefaultMitigationAction;
             ValidationOverrideMitigationAction = validationOverrideMitigationAction;
             ZoneId = zoneId;

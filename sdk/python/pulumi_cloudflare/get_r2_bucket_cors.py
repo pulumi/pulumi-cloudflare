@@ -27,16 +27,13 @@ class GetR2BucketCorsResult:
     """
     A collection of values returned by getR2BucketCors.
     """
-    def __init__(__self__, account_id=None, bucket_name=None, id=None, rules=None):
+    def __init__(__self__, account_id=None, bucket_name=None, rules=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if bucket_name and not isinstance(bucket_name, str):
             raise TypeError("Expected argument 'bucket_name' to be a str")
         pulumi.set(__self__, "bucket_name", bucket_name)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if rules and not isinstance(rules, list):
             raise TypeError("Expected argument 'rules' to be a list")
         pulumi.set(__self__, "rules", rules)
@@ -59,14 +56,6 @@ class GetR2BucketCorsResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
     def rules(self) -> Sequence['outputs.GetR2BucketCorsRuleResult']:
         return pulumi.get(self, "rules")
 
@@ -79,7 +68,6 @@ class AwaitableGetR2BucketCorsResult(GetR2BucketCorsResult):
         return GetR2BucketCorsResult(
             account_id=self.account_id,
             bucket_name=self.bucket_name,
-            id=self.id,
             rules=self.rules)
 
 
@@ -110,7 +98,6 @@ def get_r2_bucket_cors(account_id: Optional[_builtins.str] = None,
     return AwaitableGetR2BucketCorsResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         bucket_name=pulumi.get(__ret__, 'bucket_name'),
-        id=pulumi.get(__ret__, 'id'),
         rules=pulumi.get(__ret__, 'rules'))
 def get_r2_bucket_cors_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                               bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -138,5 +125,4 @@ def get_r2_bucket_cors_output(account_id: pulumi.Input[Optional[_builtins.str]] 
     return __ret__.apply(lambda __response__: GetR2BucketCorsResult(
         account_id=pulumi.get(__response__, 'account_id'),
         bucket_name=pulumi.get(__response__, 'bucket_name'),
-        id=pulumi.get(__response__, 'id'),
         rules=pulumi.get(__response__, 'rules')))

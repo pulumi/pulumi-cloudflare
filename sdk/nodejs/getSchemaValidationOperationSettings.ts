@@ -44,10 +44,6 @@ export interface GetSchemaValidationOperationSettingsArgs {
  * A collection of values returned by getSchemaValidationOperationSettings.
  */
 export interface GetSchemaValidationOperationSettingsResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly mitigationAction: string;
     readonly operationId: string;
     readonly zoneId?: string;

@@ -37,11 +37,6 @@ public final class GetApiShieldOperationsInvokeResult {
      */
     private @Nullable List<String> hosts;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -99,13 +94,6 @@ public final class GetApiShieldOperationsInvokeResult {
         return this.hosts == null ? List.of() : this.hosts;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -155,7 +143,6 @@ public final class GetApiShieldOperationsInvokeResult {
         private @Nullable String endpoint;
         private @Nullable List<String> features;
         private @Nullable List<String> hosts;
-        private String id;
         private @Nullable Integer maxItems;
         private @Nullable List<String> methods;
         private @Nullable String order;
@@ -168,7 +155,6 @@ public final class GetApiShieldOperationsInvokeResult {
     	      this.endpoint = defaults.endpoint;
     	      this.features = defaults.features;
     	      this.hosts = defaults.hosts;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.methods = defaults.methods;
     	      this.order = defaults.order;
@@ -205,14 +191,6 @@ public final class GetApiShieldOperationsInvokeResult {
         }
         public Builder hosts(String... hosts) {
             return hosts(List.of(hosts));
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetApiShieldOperationsInvokeResult", "id");
-            }
-            this.id = id;
-            return this;
         }
         @CustomType.Setter
         public Builder maxItems(@Nullable Integer maxItems) {
@@ -258,7 +236,6 @@ public final class GetApiShieldOperationsInvokeResult {
             _resultValue.endpoint = endpoint;
             _resultValue.features = features;
             _resultValue.hosts = hosts;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.methods = methods;
             _resultValue.order = order;

@@ -178,10 +178,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? Deploy;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
@@ -203,8 +199,6 @@ namespace Pulumi.Cloudflare
         private GetCertificatePacksResult(
             string? deploy,
 
-            string id,
-
             int? maxItems,
 
             ImmutableArray<Outputs.GetCertificatePacksResultResult> results,
@@ -214,7 +208,6 @@ namespace Pulumi.Cloudflare
             string? zoneId)
         {
             Deploy = deploy;
-            Id = id;
             MaxItems = maxItems;
             Results = results;
             Status = status;

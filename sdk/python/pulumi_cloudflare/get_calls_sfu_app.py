@@ -26,7 +26,7 @@ class GetCallsSfuAppResult:
     """
     A collection of values returned by getCallsSfuApp.
     """
-    def __init__(__self__, account_id=None, app_id=None, created=None, id=None, modified=None, name=None, uid=None):
+    def __init__(__self__, account_id=None, app_id=None, created=None, modified=None, name=None, uid=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -36,9 +36,6 @@ class GetCallsSfuAppResult:
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if modified and not isinstance(modified, str):
             raise TypeError("Expected argument 'modified' to be a str")
         pulumi.set(__self__, "modified", modified)
@@ -75,14 +72,6 @@ class GetCallsSfuAppResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
     def modified(self) -> _builtins.str:
         """
         The date and time the item was last modified.
@@ -115,7 +104,6 @@ class AwaitableGetCallsSfuAppResult(GetCallsSfuAppResult):
             account_id=self.account_id,
             app_id=self.app_id,
             created=self.created,
-            id=self.id,
             modified=self.modified,
             name=self.name,
             uid=self.uid)
@@ -154,7 +142,6 @@ def get_calls_sfu_app(account_id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         app_id=pulumi.get(__ret__, 'app_id'),
         created=pulumi.get(__ret__, 'created'),
-        id=pulumi.get(__ret__, 'id'),
         modified=pulumi.get(__ret__, 'modified'),
         name=pulumi.get(__ret__, 'name'),
         uid=pulumi.get(__ret__, 'uid'))
@@ -190,7 +177,6 @@ def get_calls_sfu_app_output(account_id: pulumi.Input[Optional[_builtins.str]] =
         account_id=pulumi.get(__response__, 'account_id'),
         app_id=pulumi.get(__response__, 'app_id'),
         created=pulumi.get(__response__, 'created'),
-        id=pulumi.get(__response__, 'id'),
         modified=pulumi.get(__response__, 'modified'),
         name=pulumi.get(__response__, 'name'),
         uid=pulumi.get(__response__, 'uid')))

@@ -27,11 +27,6 @@ public final class GetZeroTrustTunnelWarpConnectorsInvokeResult {
      * 
      */
     private @Nullable String existedAt;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable String includePrefix;
     /**
      * @return If `true`, only include deleted tunnels. If `false`, exclude deleted tunnels. If empty, all tunnels will be included.
@@ -84,13 +79,6 @@ public final class GetZeroTrustTunnelWarpConnectorsInvokeResult {
      */
     public Optional<String> existedAt() {
         return Optional.ofNullable(this.existedAt);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<String> includePrefix() {
         return Optional.ofNullable(this.includePrefix);
@@ -157,7 +145,6 @@ public final class GetZeroTrustTunnelWarpConnectorsInvokeResult {
         private @Nullable String accountId;
         private @Nullable String excludePrefix;
         private @Nullable String existedAt;
-        private String id;
         private @Nullable String includePrefix;
         private @Nullable Boolean isDeleted;
         private @Nullable Integer maxItems;
@@ -173,7 +160,6 @@ public final class GetZeroTrustTunnelWarpConnectorsInvokeResult {
     	      this.accountId = defaults.accountId;
     	      this.excludePrefix = defaults.excludePrefix;
     	      this.existedAt = defaults.existedAt;
-    	      this.id = defaults.id;
     	      this.includePrefix = defaults.includePrefix;
     	      this.isDeleted = defaults.isDeleted;
     	      this.maxItems = defaults.maxItems;
@@ -201,14 +187,6 @@ public final class GetZeroTrustTunnelWarpConnectorsInvokeResult {
         public Builder existedAt(@Nullable String existedAt) {
 
             this.existedAt = existedAt;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustTunnelWarpConnectorsInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -275,7 +253,6 @@ public final class GetZeroTrustTunnelWarpConnectorsInvokeResult {
             _resultValue.accountId = accountId;
             _resultValue.excludePrefix = excludePrefix;
             _resultValue.existedAt = existedAt;
-            _resultValue.id = id;
             _resultValue.includePrefix = includePrefix;
             _resultValue.isDeleted = isDeleted;
             _resultValue.maxItems = maxItems;

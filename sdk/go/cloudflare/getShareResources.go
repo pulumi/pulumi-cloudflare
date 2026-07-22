@@ -69,8 +69,6 @@ type LookupShareResourcesArgs struct {
 type LookupShareResourcesResult struct {
 	// Account identifier.
 	AccountId string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Filter share resources by resource_type.
@@ -132,11 +130,6 @@ func (o LookupShareResourcesResultOutput) ToLookupShareResourcesResultOutputWith
 // Account identifier.
 func (o LookupShareResourcesResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareResourcesResult) string { return v.AccountId }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupShareResourcesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupShareResourcesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

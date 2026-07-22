@@ -146,10 +146,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Identifier.
         /// </summary>
         public readonly string MtlsCertificateId;
@@ -166,8 +162,6 @@ namespace Pulumi.Cloudflare
         private GetMtlsCertificateAssociationsResult(
             string accountId,
 
-            string id,
-
             string mtlsCertificateId,
 
             string service,
@@ -175,7 +169,6 @@ namespace Pulumi.Cloudflare
             string status)
         {
             AccountId = accountId;
-            Id = id;
             MtlsCertificateId = mtlsCertificateId;
             Service = service;
             Status = status;

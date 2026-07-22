@@ -65,10 +65,6 @@ export interface GetStreamWatermarkResult {
      */
     readonly height: number;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * The unique identifier for a watermark profile.
      */
     readonly identifier: string;

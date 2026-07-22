@@ -57,10 +57,6 @@ export interface GetRegistrarDomainResult {
      * twice, making it a natural idempotency key for registration requests.
      */
     readonly domainName: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
 /**
  * ## Example Usage

@@ -55,10 +55,6 @@ export interface GetRulesetsResult {
      */
     readonly accountId?: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Maximum number of rulesets to fetch (defaults to 1000).
      */
     readonly maxItems?: number;

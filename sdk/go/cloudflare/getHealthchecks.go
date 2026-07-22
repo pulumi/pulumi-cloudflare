@@ -61,8 +61,6 @@ type LookupHealthchecksArgs struct {
 
 // A collection of values returned by getHealthchecks.
 type LookupHealthchecksResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -105,11 +103,6 @@ func (o LookupHealthchecksResultOutput) ToLookupHealthchecksResultOutput() Looku
 
 func (o LookupHealthchecksResultOutput) ToLookupHealthchecksResultOutputWithContext(ctx context.Context) LookupHealthchecksResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupHealthchecksResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupHealthchecksResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

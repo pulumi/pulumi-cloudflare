@@ -135,10 +135,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool GatewayUdpProxyEnabled;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Enable installation of cloudflare managed root certificate.
         /// </summary>
         public readonly bool RootCertificateInstallationEnabled;
@@ -165,8 +161,6 @@ namespace Pulumi.Cloudflare
 
             bool gatewayUdpProxyEnabled,
 
-            string id,
-
             bool rootCertificateInstallationEnabled,
 
             bool useZtVirtualIp)
@@ -179,7 +173,6 @@ namespace Pulumi.Cloudflare
             ExternalEmergencySignalUrl = externalEmergencySignalUrl;
             GatewayProxyEnabled = gatewayProxyEnabled;
             GatewayUdpProxyEnabled = gatewayUdpProxyEnabled;
-            Id = id;
             RootCertificateInstallationEnabled = rootCertificateInstallationEnabled;
             UseZtVirtualIp = useZtVirtualIp;
         }

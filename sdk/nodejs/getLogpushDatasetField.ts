@@ -65,10 +65,6 @@ export interface GetLogpushDatasetFieldResult {
      */
     readonly datasetId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     readonly zoneId?: string;

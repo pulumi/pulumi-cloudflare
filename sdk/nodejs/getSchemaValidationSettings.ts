@@ -46,10 +46,6 @@ export interface GetSchemaValidationSettingsArgs {
  */
 export interface GetSchemaValidationSettingsResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * The default mitigation action used
      */
     readonly validationDefaultMitigationAction: string;

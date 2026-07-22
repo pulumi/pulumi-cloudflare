@@ -70,8 +70,6 @@ type LookupFlagshipFlagsResult struct {
 	AccountId string `pulumi:"accountId"`
 	// App identifier.
 	AppId string `pulumi:"appId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to return (1–200).
 	Limit *string `pulumi:"limit"`
 	// Max items to fetch, default: 1000
@@ -128,11 +126,6 @@ func (o LookupFlagshipFlagsResultOutput) AccountId() pulumi.StringOutput {
 // App identifier.
 func (o LookupFlagshipFlagsResultOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlagshipFlagsResult) string { return v.AppId }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupFlagshipFlagsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFlagshipFlagsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to return (1–200).

@@ -64,8 +64,6 @@ type LookupZeroTrustDlpDataTagsArgs struct {
 type LookupZeroTrustDlpDataTagsResult struct {
 	AccountId  string `pulumi:"accountId"`
 	CategoryId string `pulumi:"categoryId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -114,11 +112,6 @@ func (o LookupZeroTrustDlpDataTagsResultOutput) AccountId() pulumi.StringOutput 
 
 func (o LookupZeroTrustDlpDataTagsResultOutput) CategoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpDataTagsResult) string { return v.CategoryId }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupZeroTrustDlpDataTagsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDlpDataTagsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

@@ -27,16 +27,13 @@ class GetAccountDnsSettingsResult:
     """
     A collection of values returned by getAccountDnsSettings.
     """
-    def __init__(__self__, account_id=None, enforce_dns_only=None, id=None, zone_defaults=None):
+    def __init__(__self__, account_id=None, enforce_dns_only=None, zone_defaults=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if enforce_dns_only and not isinstance(enforce_dns_only, bool):
             raise TypeError("Expected argument 'enforce_dns_only' to be a bool")
         pulumi.set(__self__, "enforce_dns_only", enforce_dns_only)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if zone_defaults and not isinstance(zone_defaults, dict):
             raise TypeError("Expected argument 'zone_defaults' to be a dict")
         pulumi.set(__self__, "zone_defaults", zone_defaults)
@@ -58,14 +55,6 @@ class GetAccountDnsSettingsResult:
         return pulumi.get(self, "enforce_dns_only")
 
     @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
     @pulumi.getter(name="zoneDefaults")
     def zone_defaults(self) -> 'outputs.GetAccountDnsSettingsZoneDefaultsResult':
         return pulumi.get(self, "zone_defaults")
@@ -79,7 +68,6 @@ class AwaitableGetAccountDnsSettingsResult(GetAccountDnsSettingsResult):
         return GetAccountDnsSettingsResult(
             account_id=self.account_id,
             enforce_dns_only=self.enforce_dns_only,
-            id=self.id,
             zone_defaults=self.zone_defaults)
 
 
@@ -111,7 +99,6 @@ def get_account_dns_settings(account_id: Optional[_builtins.str] = None,
     return AwaitableGetAccountDnsSettingsResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         enforce_dns_only=pulumi.get(__ret__, 'enforce_dns_only'),
-        id=pulumi.get(__ret__, 'id'),
         zone_defaults=pulumi.get(__ret__, 'zone_defaults'))
 def get_account_dns_settings_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountDnsSettingsResult]:
@@ -140,5 +127,4 @@ def get_account_dns_settings_output(account_id: pulumi.Input[Optional[Optional[_
     return __ret__.apply(lambda __response__: GetAccountDnsSettingsResult(
         account_id=pulumi.get(__response__, 'account_id'),
         enforce_dns_only=pulumi.get(__response__, 'enforce_dns_only'),
-        id=pulumi.get(__response__, 'id'),
         zone_defaults=pulumi.get(__response__, 'zone_defaults')))

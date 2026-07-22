@@ -39,11 +39,6 @@ public final class GetZeroTrustTunnelWarpConnectorConfigResult {
      */
     private String haMode;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return UUID of the tunnel.
      * 
      */
@@ -92,13 +87,6 @@ public final class GetZeroTrustTunnelWarpConnectorConfigResult {
         return this.haMode;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return UUID of the tunnel.
      * 
      */
@@ -127,7 +115,6 @@ public final class GetZeroTrustTunnelWarpConnectorConfigResult {
         private Integer configurationVersion;
         private String createdAt;
         private String haMode;
-        private String id;
         private String tunnelId;
         private String updatedAt;
         public Builder() {}
@@ -138,7 +125,6 @@ public final class GetZeroTrustTunnelWarpConnectorConfigResult {
     	      this.configurationVersion = defaults.configurationVersion;
     	      this.createdAt = defaults.createdAt;
     	      this.haMode = defaults.haMode;
-    	      this.id = defaults.id;
     	      this.tunnelId = defaults.tunnelId;
     	      this.updatedAt = defaults.updatedAt;
         }
@@ -184,14 +170,6 @@ public final class GetZeroTrustTunnelWarpConnectorConfigResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustTunnelWarpConnectorConfigResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder tunnelId(String tunnelId) {
             if (tunnelId == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustTunnelWarpConnectorConfigResult", "tunnelId");
@@ -214,7 +192,6 @@ public final class GetZeroTrustTunnelWarpConnectorConfigResult {
             _resultValue.configurationVersion = configurationVersion;
             _resultValue.createdAt = createdAt;
             _resultValue.haMode = haMode;
-            _resultValue.id = id;
             _resultValue.tunnelId = tunnelId;
             _resultValue.updatedAt = updatedAt;
             return _resultValue;

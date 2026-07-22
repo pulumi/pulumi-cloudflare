@@ -27,7 +27,7 @@ class GetStreamResult:
     """
     A collection of values returned by getStream.
     """
-    def __init__(__self__, account_id=None, allowed_origins=None, clipped_from=None, created=None, creator=None, duration=None, id=None, identifier=None, input=None, live_input=None, max_duration_seconds=None, max_size_bytes=None, meta=None, modified=None, playback=None, preview=None, public_details=None, ready_to_stream=None, ready_to_stream_at=None, require_signed_urls=None, scheduled_deletion=None, size=None, status=None, thumbnail=None, thumbnail_timestamp_pct=None, uid=None, upload_expiry=None, uploaded=None, watermark=None):
+    def __init__(__self__, account_id=None, allowed_origins=None, clipped_from=None, created=None, creator=None, duration=None, identifier=None, input=None, live_input=None, max_duration_seconds=None, max_size_bytes=None, meta=None, modified=None, playback=None, preview=None, public_details=None, ready_to_stream=None, ready_to_stream_at=None, require_signed_urls=None, scheduled_deletion=None, size=None, status=None, thumbnail=None, thumbnail_timestamp_pct=None, uid=None, upload_expiry=None, uploaded=None, watermark=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -46,9 +46,6 @@ class GetStreamResult:
         if duration and not isinstance(duration, float):
             raise TypeError("Expected argument 'duration' to be a float")
         pulumi.set(__self__, "duration", duration)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if identifier and not isinstance(identifier, str):
             raise TypeError("Expected argument 'identifier' to be a str")
         pulumi.set(__self__, "identifier", identifier)
@@ -163,14 +160,6 @@ class GetStreamResult:
         The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.
         """
         return pulumi.get(self, "duration")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -352,7 +341,6 @@ class AwaitableGetStreamResult(GetStreamResult):
             created=self.created,
             creator=self.creator,
             duration=self.duration,
-            id=self.id,
             identifier=self.identifier,
             input=self.input,
             live_input=self.live_input,
@@ -413,7 +401,6 @@ def get_stream(account_id: Optional[_builtins.str] = None,
         created=pulumi.get(__ret__, 'created'),
         creator=pulumi.get(__ret__, 'creator'),
         duration=pulumi.get(__ret__, 'duration'),
-        id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         input=pulumi.get(__ret__, 'input'),
         live_input=pulumi.get(__ret__, 'live_input'),
@@ -471,7 +458,6 @@ def get_stream_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
         created=pulumi.get(__response__, 'created'),
         creator=pulumi.get(__response__, 'creator'),
         duration=pulumi.get(__response__, 'duration'),
-        id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
         input=pulumi.get(__response__, 'input'),
         live_input=pulumi.get(__response__, 'live_input'),

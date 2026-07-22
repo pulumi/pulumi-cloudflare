@@ -72,10 +72,6 @@ export interface GetListItemsResult {
      */
     readonly accountId?: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * The unique ID of the list.
      */
     readonly listId: string;

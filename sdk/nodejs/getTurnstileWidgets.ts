@@ -80,10 +80,6 @@ export interface GetTurnstileWidgetsResult {
      * Format: `field:value`
      */
     readonly filter?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly maxItems?: number;
     readonly order?: string;
     readonly results: outputs.GetTurnstileWidgetsResult[];

@@ -26,16 +26,13 @@ class GetRegistrarDomainResult:
     """
     A collection of values returned by getRegistrarDomain.
     """
-    def __init__(__self__, account_id=None, domain_name=None, id=None):
+    def __init__(__self__, account_id=None, domain_name=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if domain_name and not isinstance(domain_name, str):
             raise TypeError("Expected argument 'domain_name' to be a str")
         pulumi.set(__self__, "domain_name", domain_name)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -56,14 +53,6 @@ class GetRegistrarDomainResult:
         """
         return pulumi.get(self, "domain_name")
 
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
 
 class AwaitableGetRegistrarDomainResult(GetRegistrarDomainResult):
     # pylint: disable=using-constant-test
@@ -72,8 +61,7 @@ class AwaitableGetRegistrarDomainResult(GetRegistrarDomainResult):
             yield self
         return GetRegistrarDomainResult(
             account_id=self.account_id,
-            domain_name=self.domain_name,
-            id=self.id)
+            domain_name=self.domain_name)
 
 
 def get_registrar_domain(account_id: Optional[_builtins.str] = None,
@@ -105,8 +93,7 @@ def get_registrar_domain(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetRegistrarDomainResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-        domain_name=pulumi.get(__ret__, 'domain_name'),
-        id=pulumi.get(__ret__, 'id'))
+        domain_name=pulumi.get(__ret__, 'domain_name'))
 def get_registrar_domain_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegistrarDomainResult]:
@@ -135,5 +122,4 @@ def get_registrar_domain_output(account_id: pulumi.Input[Optional[_builtins.str]
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getRegistrarDomain:getRegistrarDomain', __args__, opts=opts, typ=GetRegistrarDomainResult)
     return __ret__.apply(lambda __response__: GetRegistrarDomainResult(
         account_id=pulumi.get(__response__, 'account_id'),
-        domain_name=pulumi.get(__response__, 'domain_name'),
-        id=pulumi.get(__response__, 'id')))
+        domain_name=pulumi.get(__response__, 'domain_name')))

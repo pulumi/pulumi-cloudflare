@@ -52,8 +52,6 @@ type LookupOauthScopesArgs struct {
 
 // A collection of values returned by getOauthScopes.
 type LookupOauthScopesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -92,11 +90,6 @@ func (o LookupOauthScopesResultOutput) ToLookupOauthScopesResultOutput() LookupO
 
 func (o LookupOauthScopesResultOutput) ToLookupOauthScopesResultOutputWithContext(ctx context.Context) LookupOauthScopesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupOauthScopesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOauthScopesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

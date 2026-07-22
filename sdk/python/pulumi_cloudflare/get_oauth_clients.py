@@ -27,13 +27,10 @@ class GetOauthClientsResult:
     """
     A collection of values returned by getOauthClients.
     """
-    def __init__(__self__, account_id=None, id=None, max_items=None, results=None):
+    def __init__(__self__, account_id=None, max_items=None, results=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -48,14 +45,6 @@ class GetOauthClientsResult:
         Account identifier tag.
         """
         return pulumi.get(self, "account_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="maxItems")
@@ -81,7 +70,6 @@ class AwaitableGetOauthClientsResult(GetOauthClientsResult):
             yield self
         return GetOauthClientsResult(
             account_id=self.account_id,
-            id=self.id,
             max_items=self.max_items,
             results=self.results)
 
@@ -115,7 +103,6 @@ def get_oauth_clients(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetOauthClientsResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-        id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'))
 def get_oauth_clients_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -146,6 +133,5 @@ def get_oauth_clients_output(account_id: pulumi.Input[Optional[_builtins.str]] =
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getOauthClients:getOauthClients', __args__, opts=opts, typ=GetOauthClientsResult)
     return __ret__.apply(lambda __response__: GetOauthClientsResult(
         account_id=pulumi.get(__response__, 'account_id'),
-        id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         results=pulumi.get(__response__, 'results')))

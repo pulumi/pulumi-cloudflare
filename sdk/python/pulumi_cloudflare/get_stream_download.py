@@ -26,13 +26,10 @@ class GetStreamDownloadResult:
     """
     A collection of values returned by getStreamDownload.
     """
-    def __init__(__self__, account_id=None, id=None, identifier=None):
+    def __init__(__self__, account_id=None, identifier=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if identifier and not isinstance(identifier, str):
             raise TypeError("Expected argument 'identifier' to be a str")
         pulumi.set(__self__, "identifier", identifier)
@@ -44,14 +41,6 @@ class GetStreamDownloadResult:
         Identifier.
         """
         return pulumi.get(self, "account_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -69,7 +58,6 @@ class AwaitableGetStreamDownloadResult(GetStreamDownloadResult):
             yield self
         return GetStreamDownloadResult(
             account_id=self.account_id,
-            id=self.id,
             identifier=self.identifier)
 
 
@@ -104,7 +92,6 @@ def get_stream_download(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetStreamDownloadResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-        id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'))
 def get_stream_download_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -136,5 +123,4 @@ def get_stream_download_output(account_id: pulumi.Input[Optional[_builtins.str]]
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getStreamDownload:getStreamDownload', __args__, opts=opts, typ=GetStreamDownloadResult)
     return __ret__.apply(lambda __response__: GetStreamDownloadResult(
         account_id=pulumi.get(__response__, 'account_id'),
-        id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier')))

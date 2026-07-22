@@ -146,10 +146,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? CreatedBefore;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
@@ -172,8 +168,6 @@ namespace Pulumi.Cloudflare
 
             string? createdBefore,
 
-            string id,
-
             int? maxItems,
 
             int? perPage,
@@ -184,7 +178,6 @@ namespace Pulumi.Cloudflare
             Asc = asc;
             CreatedAfter = createdAfter;
             CreatedBefore = createdBefore;
-            Id = id;
             MaxItems = maxItems;
             PerPage = perPage;
             Results = results;

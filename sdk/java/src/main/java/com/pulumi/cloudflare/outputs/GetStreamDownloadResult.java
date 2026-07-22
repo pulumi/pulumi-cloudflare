@@ -16,11 +16,6 @@ public final class GetStreamDownloadResult {
      */
     private String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return A Cloudflare-generated unique identifier for a media item.
      * 
      */
@@ -33,13 +28,6 @@ public final class GetStreamDownloadResult {
      */
     public String accountId() {
         return this.accountId;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return A Cloudflare-generated unique identifier for a media item.
@@ -59,13 +47,11 @@ public final class GetStreamDownloadResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
-        private String id;
         private String identifier;
         public Builder() {}
         public Builder(GetStreamDownloadResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-    	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
         }
 
@@ -75,14 +61,6 @@ public final class GetStreamDownloadResult {
               throw new MissingRequiredPropertyException("GetStreamDownloadResult", "accountId");
             }
             this.accountId = accountId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetStreamDownloadResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -96,7 +74,6 @@ public final class GetStreamDownloadResult {
         public GetStreamDownloadResult build() {
             final var _resultValue = new GetStreamDownloadResult();
             _resultValue.accountId = accountId;
-            _resultValue.id = id;
             _resultValue.identifier = identifier;
             return _resultValue;
         }

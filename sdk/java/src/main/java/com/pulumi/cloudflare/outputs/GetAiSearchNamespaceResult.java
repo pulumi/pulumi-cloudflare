@@ -17,11 +17,6 @@ public final class GetAiSearchNamespaceResult {
      * 
      */
     private String description;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private String name;
 
     private GetAiSearchNamespaceResult() {}
@@ -37,13 +32,6 @@ public final class GetAiSearchNamespaceResult {
      */
     public String description() {
         return this.description;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public String name() {
         return this.name;
@@ -61,7 +49,6 @@ public final class GetAiSearchNamespaceResult {
         private String accountId;
         private String createdAt;
         private String description;
-        private String id;
         private String name;
         public Builder() {}
         public Builder(GetAiSearchNamespaceResult defaults) {
@@ -69,7 +56,6 @@ public final class GetAiSearchNamespaceResult {
     	      this.accountId = defaults.accountId;
     	      this.createdAt = defaults.createdAt;
     	      this.description = defaults.description;
-    	      this.id = defaults.id;
     	      this.name = defaults.name;
         }
 
@@ -98,14 +84,6 @@ public final class GetAiSearchNamespaceResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAiSearchNamespaceResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetAiSearchNamespaceResult", "name");
@@ -118,7 +96,6 @@ public final class GetAiSearchNamespaceResult {
             _resultValue.accountId = accountId;
             _resultValue.createdAt = createdAt;
             _resultValue.description = description;
-            _resultValue.id = id;
             _resultValue.name = name;
             return _resultValue;
         }

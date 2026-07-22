@@ -69,8 +69,6 @@ type LookupMagicTransitConnectorsResult struct {
 	// Filter connectors by device type.
 	// Available values: "MANAGED", "LICENSED".
 	DeviceType *string `pulumi:"deviceType"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -125,11 +123,6 @@ func (o LookupMagicTransitConnectorsResultOutput) AccountId() pulumi.StringPtrOu
 // Available values: "MANAGED", "LICENSED".
 func (o LookupMagicTransitConnectorsResultOutput) DeviceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMagicTransitConnectorsResult) *string { return v.DeviceType }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupMagicTransitConnectorsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMagicTransitConnectorsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

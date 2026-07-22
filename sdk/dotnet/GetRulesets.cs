@@ -140,10 +140,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Maximum number of rulesets to fetch (defaults to 1000).
         /// </summary>
         public readonly int? MaxItems;
@@ -164,8 +160,6 @@ namespace Pulumi.Cloudflare
         private GetRulesetsResult(
             string? accountId,
 
-            string id,
-
             int? maxItems,
 
             ImmutableArray<Outputs.GetRulesetsResultResult> results,
@@ -175,7 +169,6 @@ namespace Pulumi.Cloudflare
             string? zoneId)
         {
             AccountId = accountId;
-            Id = id;
             MaxItems = maxItems;
             Results = results;
             Rulesets = rulesets;

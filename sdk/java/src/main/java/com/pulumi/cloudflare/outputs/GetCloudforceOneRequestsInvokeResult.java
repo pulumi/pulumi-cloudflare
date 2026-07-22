@@ -41,11 +41,6 @@ public final class GetCloudforceOneRequestsInvokeResult {
      */
     private @Nullable String createdBefore;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -125,13 +120,6 @@ public final class GetCloudforceOneRequestsInvokeResult {
         return Optional.ofNullable(this.createdBefore);
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -204,7 +192,6 @@ public final class GetCloudforceOneRequestsInvokeResult {
         private @Nullable String completedBefore;
         private @Nullable String createdAfter;
         private @Nullable String createdBefore;
-        private String id;
         private @Nullable Integer maxItems;
         private Integer page;
         private Integer perPage;
@@ -221,7 +208,6 @@ public final class GetCloudforceOneRequestsInvokeResult {
     	      this.completedBefore = defaults.completedBefore;
     	      this.createdAfter = defaults.createdAfter;
     	      this.createdBefore = defaults.createdBefore;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.page = defaults.page;
     	      this.perPage = defaults.perPage;
@@ -260,14 +246,6 @@ public final class GetCloudforceOneRequestsInvokeResult {
         public Builder createdBefore(@Nullable String createdBefore) {
 
             this.createdBefore = createdBefore;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetCloudforceOneRequestsInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -334,7 +312,6 @@ public final class GetCloudforceOneRequestsInvokeResult {
             _resultValue.completedBefore = completedBefore;
             _resultValue.createdAfter = createdAfter;
             _resultValue.createdBefore = createdBefore;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.page = page;
             _resultValue.perPage = perPage;

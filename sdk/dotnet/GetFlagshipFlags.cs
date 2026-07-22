@@ -174,10 +174,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AppId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Max items to return (1–200).
         /// </summary>
         public readonly string? Limit;
@@ -196,8 +192,6 @@ namespace Pulumi.Cloudflare
 
             string appId,
 
-            string id,
-
             string? limit,
 
             int? maxItems,
@@ -206,7 +200,6 @@ namespace Pulumi.Cloudflare
         {
             AccountId = accountId;
             AppId = appId;
-            Id = id;
             Limit = limit;
             MaxItems = maxItems;
             Results = results;

@@ -19,11 +19,6 @@ public final class GetIpRangesResult {
      */
     private String etag;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return List of Cloudflare IPv4 CIDR addresses.
      * 
      */
@@ -51,13 +46,6 @@ public final class GetIpRangesResult {
      */
     public String etag() {
         return this.etag;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return List of Cloudflare IPv4 CIDR addresses.
@@ -98,7 +86,6 @@ public final class GetIpRangesResult {
     @CustomType.Builder
     public static final class Builder {
         private String etag;
-        private String id;
         private List<String> ipv4Cidrs;
         private List<String> ipv6Cidrs;
         private List<String> jdcloudCidrs;
@@ -107,7 +94,6 @@ public final class GetIpRangesResult {
         public Builder(GetIpRangesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.etag = defaults.etag;
-    	      this.id = defaults.id;
     	      this.ipv4Cidrs = defaults.ipv4Cidrs;
     	      this.ipv6Cidrs = defaults.ipv6Cidrs;
     	      this.jdcloudCidrs = defaults.jdcloudCidrs;
@@ -120,14 +106,6 @@ public final class GetIpRangesResult {
               throw new MissingRequiredPropertyException("GetIpRangesResult", "etag");
             }
             this.etag = etag;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetIpRangesResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -172,7 +150,6 @@ public final class GetIpRangesResult {
         public GetIpRangesResult build() {
             final var _resultValue = new GetIpRangesResult();
             _resultValue.etag = etag;
-            _resultValue.id = id;
             _resultValue.ipv4Cidrs = ipv4Cidrs;
             _resultValue.ipv6Cidrs = ipv6Cidrs;
             _resultValue.jdcloudCidrs = jdcloudCidrs;

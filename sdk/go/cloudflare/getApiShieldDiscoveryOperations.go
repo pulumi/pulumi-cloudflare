@@ -81,19 +81,17 @@ type LookupApiShieldDiscoveryOperationsArgs struct {
 
 // A collection of values returned by getApiShieldDiscoveryOperations.
 type LookupApiShieldDiscoveryOperationsResult struct {
-	Diff      *bool    `pulumi:"diff"`
-	Direction *string  `pulumi:"direction"`
-	Endpoint  *string  `pulumi:"endpoint"`
-	Hosts     []string `pulumi:"hosts"`
-	// The provider-assigned unique ID for this managed resource.
-	Id       string                                  `pulumi:"id"`
-	MaxItems *int                                    `pulumi:"maxItems"`
-	Methods  []string                                `pulumi:"methods"`
-	Order    *string                                 `pulumi:"order"`
-	Origin   *string                                 `pulumi:"origin"`
-	Results  []GetApiShieldDiscoveryOperationsResult `pulumi:"results"`
-	State    *string                                 `pulumi:"state"`
-	ZoneId   *string                                 `pulumi:"zoneId"`
+	Diff      *bool                                   `pulumi:"diff"`
+	Direction *string                                 `pulumi:"direction"`
+	Endpoint  *string                                 `pulumi:"endpoint"`
+	Hosts     []string                                `pulumi:"hosts"`
+	MaxItems  *int                                    `pulumi:"maxItems"`
+	Methods   []string                                `pulumi:"methods"`
+	Order     *string                                 `pulumi:"order"`
+	Origin    *string                                 `pulumi:"origin"`
+	Results   []GetApiShieldDiscoveryOperationsResult `pulumi:"results"`
+	State     *string                                 `pulumi:"state"`
+	ZoneId    *string                                 `pulumi:"zoneId"`
 }
 
 func LookupApiShieldDiscoveryOperationsOutput(ctx *pulumi.Context, args LookupApiShieldDiscoveryOperationsOutputArgs, opts ...pulumi.InvokeOption) LookupApiShieldDiscoveryOperationsResultOutput {
@@ -152,11 +150,6 @@ func (o LookupApiShieldDiscoveryOperationsResultOutput) Endpoint() pulumi.String
 
 func (o LookupApiShieldDiscoveryOperationsResultOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupApiShieldDiscoveryOperationsResult) []string { return v.Hosts }).(pulumi.StringArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupApiShieldDiscoveryOperationsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupApiShieldDiscoveryOperationsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o LookupApiShieldDiscoveryOperationsResultOutput) MaxItems() pulumi.IntPtrOutput {

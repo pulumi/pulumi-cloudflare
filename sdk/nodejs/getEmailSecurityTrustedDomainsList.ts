@@ -95,10 +95,6 @@ export interface GetEmailSecurityTrustedDomainsListResult {
      */
     readonly direction?: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
      */
     readonly isRecent?: boolean;

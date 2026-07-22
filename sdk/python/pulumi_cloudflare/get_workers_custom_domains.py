@@ -27,7 +27,7 @@ class GetWorkersCustomDomainsResult:
     """
     A collection of values returned by getWorkersCustomDomains.
     """
-    def __init__(__self__, account_id=None, environment=None, hostname=None, id=None, max_items=None, results=None, service=None, zone_id=None, zone_name=None):
+    def __init__(__self__, account_id=None, environment=None, hostname=None, max_items=None, results=None, service=None, zone_id=None, zone_name=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -37,9 +37,6 @@ class GetWorkersCustomDomainsResult:
         if hostname and not isinstance(hostname, str):
             raise TypeError("Expected argument 'hostname' to be a str")
         pulumi.set(__self__, "hostname", hostname)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -79,14 +76,6 @@ class GetWorkersCustomDomainsResult:
         Hostname of the domain.
         """
         return pulumi.get(self, "hostname")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="maxItems")
@@ -138,7 +127,6 @@ class AwaitableGetWorkersCustomDomainsResult(GetWorkersCustomDomainsResult):
             account_id=self.account_id,
             environment=self.environment,
             hostname=self.hostname,
-            id=self.id,
             max_items=self.max_items,
             results=self.results,
             service=self.service,
@@ -198,7 +186,6 @@ def get_workers_custom_domains(account_id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         environment=pulumi.get(__ret__, 'environment'),
         hostname=pulumi.get(__ret__, 'hostname'),
-        id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'),
         service=pulumi.get(__ret__, 'service'),
@@ -255,7 +242,6 @@ def get_workers_custom_domains_output(account_id: pulumi.Input[Optional[Optional
         account_id=pulumi.get(__response__, 'account_id'),
         environment=pulumi.get(__response__, 'environment'),
         hostname=pulumi.get(__response__, 'hostname'),
-        id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         results=pulumi.get(__response__, 'results'),
         service=pulumi.get(__response__, 'service'),

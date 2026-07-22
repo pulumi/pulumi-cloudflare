@@ -31,11 +31,6 @@ public final class GetWorkersCustomDomainsInvokeResult {
      */
     private @Nullable String hostname;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -82,13 +77,6 @@ public final class GetWorkersCustomDomainsInvokeResult {
      */
     public Optional<String> hostname() {
         return Optional.ofNullable(this.hostname);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Max items to fetch, default: 1000
@@ -138,7 +126,6 @@ public final class GetWorkersCustomDomainsInvokeResult {
         private @Nullable String accountId;
         private @Nullable String environment;
         private @Nullable String hostname;
-        private String id;
         private @Nullable Integer maxItems;
         private List<GetWorkersCustomDomainsResult> results;
         private @Nullable String service;
@@ -150,7 +137,6 @@ public final class GetWorkersCustomDomainsInvokeResult {
     	      this.accountId = defaults.accountId;
     	      this.environment = defaults.environment;
     	      this.hostname = defaults.hostname;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
     	      this.service = defaults.service;
@@ -174,14 +160,6 @@ public final class GetWorkersCustomDomainsInvokeResult {
         public Builder hostname(@Nullable String hostname) {
 
             this.hostname = hostname;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetWorkersCustomDomainsInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -224,7 +202,6 @@ public final class GetWorkersCustomDomainsInvokeResult {
             _resultValue.accountId = accountId;
             _resultValue.environment = environment;
             _resultValue.hostname = hostname;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;
             _resultValue.service = service;

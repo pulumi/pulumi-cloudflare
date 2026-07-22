@@ -57,8 +57,6 @@ type LookupMoqRelaysResult struct {
 	// RFC 3339 timestamp (typically the `created` value of the first item
 	// on the current page, to fetch the previous page).
 	CreatedBefore *string `pulumi:"createdBefore"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Maximum number of relays to return per page.
@@ -139,11 +137,6 @@ func (o LookupMoqRelaysResultOutput) CreatedAfter() pulumi.StringPtrOutput {
 // on the current page, to fetch the previous page).
 func (o LookupMoqRelaysResultOutput) CreatedBefore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMoqRelaysResult) *string { return v.CreatedBefore }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupMoqRelaysResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMoqRelaysResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

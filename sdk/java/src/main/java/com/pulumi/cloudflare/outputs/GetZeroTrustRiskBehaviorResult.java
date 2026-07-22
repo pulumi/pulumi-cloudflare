@@ -16,11 +16,6 @@ import javax.annotation.Nullable;
 public final class GetZeroTrustRiskBehaviorResult {
     private @Nullable String accountId;
     private Map<String,GetZeroTrustRiskBehaviorBehaviors> behaviors;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
 
     private GetZeroTrustRiskBehaviorResult() {}
     public Optional<String> accountId() {
@@ -28,13 +23,6 @@ public final class GetZeroTrustRiskBehaviorResult {
     }
     public Map<String,GetZeroTrustRiskBehaviorBehaviors> behaviors() {
         return this.behaviors;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
 
     public static Builder builder() {
@@ -48,13 +36,11 @@ public final class GetZeroTrustRiskBehaviorResult {
     public static final class Builder {
         private @Nullable String accountId;
         private Map<String,GetZeroTrustRiskBehaviorBehaviors> behaviors;
-        private String id;
         public Builder() {}
         public Builder(GetZeroTrustRiskBehaviorResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.behaviors = defaults.behaviors;
-    	      this.id = defaults.id;
         }
 
         @CustomType.Setter
@@ -71,19 +57,10 @@ public final class GetZeroTrustRiskBehaviorResult {
             this.behaviors = behaviors;
             return this;
         }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustRiskBehaviorResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         public GetZeroTrustRiskBehaviorResult build() {
             final var _resultValue = new GetZeroTrustRiskBehaviorResult();
             _resultValue.accountId = accountId;
             _resultValue.behaviors = behaviors;
-            _resultValue.id = id;
             return _resultValue;
         }
     }

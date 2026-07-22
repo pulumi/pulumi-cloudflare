@@ -59,11 +59,6 @@ public final class GetOauthClientResult {
      */
     private Boolean hasRotatedSecret;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return URL of the client&#39;s logo.
      * 
      */
@@ -191,13 +186,6 @@ public final class GetOauthClientResult {
         return this.hasRotatedSecret;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return URL of the client&#39;s logo.
      * 
      */
@@ -302,7 +290,6 @@ public final class GetOauthClientResult {
         private String createdAt;
         private List<String> grantTypes;
         private Boolean hasRotatedSecret;
-        private String id;
         private String logoUri;
         private String oauthClientId;
         private String policyUri;
@@ -327,7 +314,6 @@ public final class GetOauthClientResult {
     	      this.createdAt = defaults.createdAt;
     	      this.grantTypes = defaults.grantTypes;
     	      this.hasRotatedSecret = defaults.hasRotatedSecret;
-    	      this.id = defaults.id;
     	      this.logoUri = defaults.logoUri;
     	      this.oauthClientId = defaults.oauthClientId;
     	      this.policyUri = defaults.policyUri;
@@ -418,14 +404,6 @@ public final class GetOauthClientResult {
               throw new MissingRequiredPropertyException("GetOauthClientResult", "hasRotatedSecret");
             }
             this.hasRotatedSecret = hasRotatedSecret;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetOauthClientResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -547,7 +525,6 @@ public final class GetOauthClientResult {
             _resultValue.createdAt = createdAt;
             _resultValue.grantTypes = grantTypes;
             _resultValue.hasRotatedSecret = hasRotatedSecret;
-            _resultValue.id = id;
             _resultValue.logoUri = logoUri;
             _resultValue.oauthClientId = oauthClientId;
             _resultValue.policyUri = policyUri;

@@ -57,10 +57,6 @@ export interface GetCallsTurnAppResult {
      */
     readonly created: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * A Cloudflare-generated unique identifier for a item.
      */
     readonly keyId: string;

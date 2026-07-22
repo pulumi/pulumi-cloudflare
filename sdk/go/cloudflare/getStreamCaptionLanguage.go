@@ -69,8 +69,6 @@ type LookupStreamCaptionLanguageResult struct {
 	AccountId string `pulumi:"accountId"`
 	// Whether the caption was generated via AI.
 	Generated bool `pulumi:"generated"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier string `pulumi:"identifier"`
 	// The language label displayed in the native language to users.
@@ -128,11 +126,6 @@ func (o LookupStreamCaptionLanguageResultOutput) AccountId() pulumi.StringOutput
 // Whether the caption was generated via AI.
 func (o LookupStreamCaptionLanguageResultOutput) Generated() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupStreamCaptionLanguageResult) bool { return v.Generated }).(pulumi.BoolOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupStreamCaptionLanguageResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupStreamCaptionLanguageResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A Cloudflare-generated unique identifier for a media item.

@@ -98,8 +98,6 @@ type LookupApiShieldOperationsResult struct {
 	Features []string `pulumi:"features"`
 	// Filter results to only include the specified hosts.
 	Hosts []string `pulumi:"hosts"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Filter results to only include the specified HTTP methods.
@@ -182,11 +180,6 @@ func (o LookupApiShieldOperationsResultOutput) Features() pulumi.StringArrayOutp
 // Filter results to only include the specified hosts.
 func (o LookupApiShieldOperationsResultOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupApiShieldOperationsResult) []string { return v.Hosts }).(pulumi.StringArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupApiShieldOperationsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupApiShieldOperationsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

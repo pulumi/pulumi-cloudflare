@@ -21,11 +21,6 @@ public final class GetZeroTrustDexTestsInvokeResult {
      */
     private @Nullable String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Filter by test type.
      * Available values: &#34;http&#34;, &#34;traceroute&#34;.
      * 
@@ -54,13 +49,6 @@ public final class GetZeroTrustDexTestsInvokeResult {
      */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Filter by test type.
@@ -102,7 +90,6 @@ public final class GetZeroTrustDexTestsInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
-        private String id;
         private @Nullable String kind;
         private @Nullable Integer maxItems;
         private List<GetZeroTrustDexTestsResult> results;
@@ -111,7 +98,6 @@ public final class GetZeroTrustDexTestsInvokeResult {
         public Builder(GetZeroTrustDexTestsInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-    	      this.id = defaults.id;
     	      this.kind = defaults.kind;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
@@ -122,14 +108,6 @@ public final class GetZeroTrustDexTestsInvokeResult {
         public Builder accountId(@Nullable String accountId) {
 
             this.accountId = accountId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDexTestsInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -164,7 +142,6 @@ public final class GetZeroTrustDexTestsInvokeResult {
         public GetZeroTrustDexTestsInvokeResult build() {
             final var _resultValue = new GetZeroTrustDexTestsInvokeResult();
             _resultValue.accountId = accountId;
-            _resultValue.id = id;
             _resultValue.kind = kind;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;

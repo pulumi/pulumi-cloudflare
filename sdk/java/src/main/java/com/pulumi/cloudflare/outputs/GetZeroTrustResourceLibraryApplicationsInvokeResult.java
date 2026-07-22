@@ -17,11 +17,6 @@ import javax.annotation.Nullable;
 public final class GetZeroTrustResourceLibraryApplicationsInvokeResult {
     private String accountId;
     private @Nullable String filter;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private Integer limit;
     private @Nullable Integer maxItems;
     private Integer offset;
@@ -35,13 +30,6 @@ public final class GetZeroTrustResourceLibraryApplicationsInvokeResult {
     }
     public Optional<String> filter() {
         return Optional.ofNullable(this.filter);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Integer limit() {
         return this.limit;
@@ -73,7 +61,6 @@ public final class GetZeroTrustResourceLibraryApplicationsInvokeResult {
     public static final class Builder {
         private String accountId;
         private @Nullable String filter;
-        private String id;
         private Integer limit;
         private @Nullable Integer maxItems;
         private Integer offset;
@@ -85,7 +72,6 @@ public final class GetZeroTrustResourceLibraryApplicationsInvokeResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.filter = defaults.filter;
-    	      this.id = defaults.id;
     	      this.limit = defaults.limit;
     	      this.maxItems = defaults.maxItems;
     	      this.offset = defaults.offset;
@@ -106,14 +92,6 @@ public final class GetZeroTrustResourceLibraryApplicationsInvokeResult {
         public Builder filter(@Nullable String filter) {
 
             this.filter = filter;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustResourceLibraryApplicationsInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -165,7 +143,6 @@ public final class GetZeroTrustResourceLibraryApplicationsInvokeResult {
             final var _resultValue = new GetZeroTrustResourceLibraryApplicationsInvokeResult();
             _resultValue.accountId = accountId;
             _resultValue.filter = filter;
-            _resultValue.id = id;
             _resultValue.limit = limit;
             _resultValue.maxItems = maxItems;
             _resultValue.offset = offset;

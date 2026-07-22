@@ -149,10 +149,6 @@ namespace Pulumi.Cloudflare
     {
         public readonly string? AccountId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
@@ -169,8 +165,6 @@ namespace Pulumi.Cloudflare
         private GetZeroTrustAccessAiControlsMcpServersResult(
             string? accountId,
 
-            string id,
-
             int? maxItems,
 
             ImmutableArray<Outputs.GetZeroTrustAccessAiControlsMcpServersResultResult> results,
@@ -178,7 +172,6 @@ namespace Pulumi.Cloudflare
             string? search)
         {
             AccountId = accountId;
-            Id = id;
             MaxItems = maxItems;
             Results = results;
             Search = search;

@@ -164,10 +164,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Hostname;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The certificate authority that issued the certificate.
         /// </summary>
         public readonly string Issuer;
@@ -213,8 +209,6 @@ namespace Pulumi.Cloudflare
 
             string hostname,
 
-            string id,
-
             string issuer,
 
             string serialNumber,
@@ -236,7 +230,6 @@ namespace Pulumi.Cloudflare
             Enabled = enabled;
             ExpiresOn = expiresOn;
             Hostname = hostname;
-            Id = id;
             Issuer = issuer;
             SerialNumber = serialNumber;
             Signature = signature;

@@ -111,10 +111,6 @@ export interface GetSharesResult {
      */
     readonly direction: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Include recipient counts in the response.
      */
     readonly includeRecipientCounts?: boolean;

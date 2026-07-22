@@ -22,11 +22,6 @@ public final class GetUserAgentBlockingRulesInvokeResult {
      */
     private @Nullable String description;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -59,13 +54,6 @@ public final class GetUserAgentBlockingRulesInvokeResult {
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Max items to fetch, default: 1000
@@ -113,7 +101,6 @@ public final class GetUserAgentBlockingRulesInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
-        private String id;
         private @Nullable Integer maxItems;
         private @Nullable Boolean paused;
         private List<GetUserAgentBlockingRulesResult> results;
@@ -123,7 +110,6 @@ public final class GetUserAgentBlockingRulesInvokeResult {
         public Builder(GetUserAgentBlockingRulesInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.paused = defaults.paused;
     	      this.results = defaults.results;
@@ -135,14 +121,6 @@ public final class GetUserAgentBlockingRulesInvokeResult {
         public Builder description(@Nullable String description) {
 
             this.description = description;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetUserAgentBlockingRulesInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -183,7 +161,6 @@ public final class GetUserAgentBlockingRulesInvokeResult {
         public GetUserAgentBlockingRulesInvokeResult build() {
             final var _resultValue = new GetUserAgentBlockingRulesInvokeResult();
             _resultValue.description = description;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.paused = paused;
             _resultValue.results = results;

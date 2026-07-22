@@ -28,16 +28,13 @@ class GetAccountDnsSettingsInternalViewsResult:
     """
     A collection of values returned by getAccountDnsSettingsInternalViews.
     """
-    def __init__(__self__, account_id=None, direction=None, id=None, match=None, max_items=None, name=None, order=None, results=None, zone_id=None, zone_name=None):
+    def __init__(__self__, account_id=None, direction=None, match=None, max_items=None, name=None, order=None, results=None, zone_id=None, zone_name=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if direction and not isinstance(direction, str):
             raise TypeError("Expected argument 'direction' to be a str")
         pulumi.set(__self__, "direction", direction)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if match and not isinstance(match, str):
             raise TypeError("Expected argument 'match' to be a str")
         pulumi.set(__self__, "match", match)
@@ -76,14 +73,6 @@ class GetAccountDnsSettingsInternalViewsResult:
         Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -149,7 +138,6 @@ class AwaitableGetAccountDnsSettingsInternalViewsResult(GetAccountDnsSettingsInt
         return GetAccountDnsSettingsInternalViewsResult(
             account_id=self.account_id,
             direction=self.direction,
-            id=self.id,
             match=self.match,
             max_items=self.max_items,
             name=self.name,
@@ -219,7 +207,6 @@ def get_account_dns_settings_internal_views(account_id: Optional[_builtins.str] 
     return AwaitableGetAccountDnsSettingsInternalViewsResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         direction=pulumi.get(__ret__, 'direction'),
-        id=pulumi.get(__ret__, 'id'),
         match=pulumi.get(__ret__, 'match'),
         max_items=pulumi.get(__ret__, 'max_items'),
         name=pulumi.get(__ret__, 'name'),
@@ -286,7 +273,6 @@ def get_account_dns_settings_internal_views_output(account_id: pulumi.Input[Opti
     return __ret__.apply(lambda __response__: GetAccountDnsSettingsInternalViewsResult(
         account_id=pulumi.get(__response__, 'account_id'),
         direction=pulumi.get(__response__, 'direction'),
-        id=pulumi.get(__response__, 'id'),
         match=pulumi.get(__response__, 'match'),
         max_items=pulumi.get(__response__, 'max_items'),
         name=pulumi.get(__response__, 'name'),

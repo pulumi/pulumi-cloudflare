@@ -71,8 +71,6 @@ type LookupEmailRoutingAddressesResult struct {
 	// Sorts results in an ascending or descending order.
 	// Available values: "asc", "desc".
 	Direction string `pulumi:"direction"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -131,11 +129,6 @@ func (o LookupEmailRoutingAddressesResultOutput) AccountId() pulumi.StringPtrOut
 // Available values: "asc", "desc".
 func (o LookupEmailRoutingAddressesResultOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailRoutingAddressesResult) string { return v.Direction }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupEmailRoutingAddressesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEmailRoutingAddressesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

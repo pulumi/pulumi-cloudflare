@@ -39,10 +39,6 @@ export interface GetOrganizationProfileResult {
     readonly businessName: string;
     readonly businessPhone: string;
     readonly externalMetadata: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly organizationId: string;
 }
 /**

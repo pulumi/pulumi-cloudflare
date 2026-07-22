@@ -149,10 +149,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel.
         /// </summary>
         public readonly string Token;
@@ -165,14 +161,11 @@ namespace Pulumi.Cloudflare
         private GetZeroTrustTunnelWarpConnectorTokenResult(
             string accountId,
 
-            string id,
-
             string token,
 
             string tunnelId)
         {
             AccountId = accountId;
-            Id = id;
             Token = token;
             TunnelId = tunnelId;
         }

@@ -22,11 +22,6 @@ public final class GetShareRecipientsInvokeResult {
      */
     private String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Include resources in the response.
      * 
      */
@@ -54,13 +49,6 @@ public final class GetShareRecipientsInvokeResult {
      */
     public String accountId() {
         return this.accountId;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Include resources in the response.
@@ -101,7 +89,6 @@ public final class GetShareRecipientsInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
-        private String id;
         private @Nullable Boolean includeResources;
         private @Nullable Integer maxItems;
         private List<GetShareRecipientsResult> results;
@@ -110,7 +97,6 @@ public final class GetShareRecipientsInvokeResult {
         public Builder(GetShareRecipientsInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-    	      this.id = defaults.id;
     	      this.includeResources = defaults.includeResources;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
@@ -123,14 +109,6 @@ public final class GetShareRecipientsInvokeResult {
               throw new MissingRequiredPropertyException("GetShareRecipientsInvokeResult", "accountId");
             }
             this.accountId = accountId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetShareRecipientsInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -167,7 +145,6 @@ public final class GetShareRecipientsInvokeResult {
         public GetShareRecipientsInvokeResult build() {
             final var _resultValue = new GetShareRecipientsInvokeResult();
             _resultValue.accountId = accountId;
-            _resultValue.id = id;
             _resultValue.includeResources = includeResources;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;

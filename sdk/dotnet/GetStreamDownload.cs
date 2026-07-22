@@ -146,10 +146,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// A Cloudflare-generated unique identifier for a media item.
         /// </summary>
         public readonly string Identifier;
@@ -158,12 +154,9 @@ namespace Pulumi.Cloudflare
         private GetStreamDownloadResult(
             string accountId,
 
-            string id,
-
             string identifier)
         {
             AccountId = accountId;
-            Id = id;
             Identifier = identifier;
         }
     }

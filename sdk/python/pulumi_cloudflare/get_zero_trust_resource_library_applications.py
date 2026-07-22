@@ -27,16 +27,13 @@ class GetZeroTrustResourceLibraryApplicationsResult:
     """
     A collection of values returned by getZeroTrustResourceLibraryApplications.
     """
-    def __init__(__self__, account_id=None, filter=None, id=None, limit=None, max_items=None, offset=None, order_by=None, results=None, search=None):
+    def __init__(__self__, account_id=None, filter=None, limit=None, max_items=None, offset=None, order_by=None, results=None, search=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if filter and not isinstance(filter, str):
             raise TypeError("Expected argument 'filter' to be a str")
         pulumi.set(__self__, "filter", filter)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if limit and not isinstance(limit, int):
             raise TypeError("Expected argument 'limit' to be a int")
         pulumi.set(__self__, "limit", limit)
@@ -65,14 +62,6 @@ class GetZeroTrustResourceLibraryApplicationsResult:
     @pulumi.getter
     def filter(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "filter")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -113,7 +102,6 @@ class AwaitableGetZeroTrustResourceLibraryApplicationsResult(GetZeroTrustResourc
         return GetZeroTrustResourceLibraryApplicationsResult(
             account_id=self.account_id,
             filter=self.filter,
-            id=self.id,
             limit=self.limit,
             max_items=self.max_items,
             offset=self.offset,
@@ -157,7 +145,6 @@ def get_zero_trust_resource_library_applications(account_id: Optional[_builtins.
     return AwaitableGetZeroTrustResourceLibraryApplicationsResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         filter=pulumi.get(__ret__, 'filter'),
-        id=pulumi.get(__ret__, 'id'),
         limit=pulumi.get(__ret__, 'limit'),
         max_items=pulumi.get(__ret__, 'max_items'),
         offset=pulumi.get(__ret__, 'offset'),
@@ -198,7 +185,6 @@ def get_zero_trust_resource_library_applications_output(account_id: pulumi.Input
     return __ret__.apply(lambda __response__: GetZeroTrustResourceLibraryApplicationsResult(
         account_id=pulumi.get(__response__, 'account_id'),
         filter=pulumi.get(__response__, 'filter'),
-        id=pulumi.get(__response__, 'id'),
         limit=pulumi.get(__response__, 'limit'),
         max_items=pulumi.get(__response__, 'max_items'),
         offset=pulumi.get(__response__, 'offset'),

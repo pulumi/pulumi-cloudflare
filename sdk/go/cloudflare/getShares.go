@@ -95,8 +95,6 @@ type LookupSharesResult struct {
 	// Direction to sort objects.
 	// Available values: "asc", "desc".
 	Direction string `pulumi:"direction"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Include recipient counts in the response.
 	IncludeRecipientCounts *bool `pulumi:"includeRecipientCounts"`
 	// Include resources in the response.
@@ -191,11 +189,6 @@ func (o LookupSharesResultOutput) AccountId() pulumi.StringOutput {
 // Available values: "asc", "desc".
 func (o LookupSharesResultOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSharesResult) string { return v.Direction }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupSharesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSharesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Include recipient counts in the response.

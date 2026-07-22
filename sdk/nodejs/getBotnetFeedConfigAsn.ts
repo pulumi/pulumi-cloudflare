@@ -48,10 +48,6 @@ export interface GetBotnetFeedConfigAsnResult {
      */
     readonly accountId?: string;
     readonly asn: number;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
 /**
  * Accepted Permissions

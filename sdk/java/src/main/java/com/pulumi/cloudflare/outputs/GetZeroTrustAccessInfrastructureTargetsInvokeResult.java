@@ -47,11 +47,6 @@ public final class GetZeroTrustAccessInfrastructureTargetsInvokeResult {
      */
     private @Nullable String hostnameContains;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Filters for targets whose IP addresses look like the specified string.
      * Supports `*` as a wildcard character
      * 
@@ -179,13 +174,6 @@ public final class GetZeroTrustAccessInfrastructureTargetsInvokeResult {
      */
     public Optional<String> hostnameContains() {
         return Optional.ofNullable(this.hostnameContains);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Filters for targets whose IP addresses look like the specified string.
@@ -317,7 +305,6 @@ public final class GetZeroTrustAccessInfrastructureTargetsInvokeResult {
         private @Nullable String direction;
         private @Nullable String hostname;
         private @Nullable String hostnameContains;
-        private String id;
         private @Nullable String ipLike;
         private @Nullable String ipV4;
         private @Nullable String ipV6;
@@ -342,7 +329,6 @@ public final class GetZeroTrustAccessInfrastructureTargetsInvokeResult {
     	      this.direction = defaults.direction;
     	      this.hostname = defaults.hostname;
     	      this.hostnameContains = defaults.hostnameContains;
-    	      this.id = defaults.id;
     	      this.ipLike = defaults.ipLike;
     	      this.ipV4 = defaults.ipV4;
     	      this.ipV6 = defaults.ipV6;
@@ -394,14 +380,6 @@ public final class GetZeroTrustAccessInfrastructureTargetsInvokeResult {
         public Builder hostnameContains(@Nullable String hostnameContains) {
 
             this.hostnameContains = hostnameContains;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessInfrastructureTargetsInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -513,7 +491,6 @@ public final class GetZeroTrustAccessInfrastructureTargetsInvokeResult {
             _resultValue.direction = direction;
             _resultValue.hostname = hostname;
             _resultValue.hostnameContains = hostnameContains;
-            _resultValue.id = id;
             _resultValue.ipLike = ipLike;
             _resultValue.ipV4 = ipV4;
             _resultValue.ipV6 = ipV6;

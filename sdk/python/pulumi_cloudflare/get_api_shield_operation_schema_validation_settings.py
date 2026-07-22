@@ -26,10 +26,7 @@ class GetApiShieldOperationSchemaValidationSettingsResult:
     """
     A collection of values returned by getApiShieldOperationSchemaValidationSettings.
     """
-    def __init__(__self__, id=None, mitigation_action=None, operation_id=None, zone_id=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, mitigation_action=None, operation_id=None, zone_id=None):
         if mitigation_action and not isinstance(mitigation_action, str):
             raise TypeError("Expected argument 'mitigation_action' to be a str")
         pulumi.set(__self__, "mitigation_action", mitigation_action)
@@ -39,14 +36,6 @@ class GetApiShieldOperationSchemaValidationSettingsResult:
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="mitigationAction")
@@ -70,7 +59,6 @@ class AwaitableGetApiShieldOperationSchemaValidationSettingsResult(GetApiShieldO
         if False:
             yield self
         return GetApiShieldOperationSchemaValidationSettingsResult(
-            id=self.id,
             mitigation_action=self.mitigation_action,
             operation_id=self.operation_id,
             zone_id=self.zone_id)
@@ -104,7 +92,6 @@ def get_api_shield_operation_schema_validation_settings(operation_id: Optional[_
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getApiShieldOperationSchemaValidationSettings:getApiShieldOperationSchemaValidationSettings', __args__, opts=opts, typ=GetApiShieldOperationSchemaValidationSettingsResult).value
 
     return AwaitableGetApiShieldOperationSchemaValidationSettingsResult(
-        id=pulumi.get(__ret__, 'id'),
         mitigation_action=pulumi.get(__ret__, 'mitigation_action'),
         operation_id=pulumi.get(__ret__, 'operation_id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
@@ -135,7 +122,6 @@ def get_api_shield_operation_schema_validation_settings_output(operation_id: pul
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getApiShieldOperationSchemaValidationSettings:getApiShieldOperationSchemaValidationSettings', __args__, opts=opts, typ=GetApiShieldOperationSchemaValidationSettingsResult)
     return __ret__.apply(lambda __response__: GetApiShieldOperationSchemaValidationSettingsResult(
-        id=pulumi.get(__response__, 'id'),
         mitigation_action=pulumi.get(__response__, 'mitigation_action'),
         operation_id=pulumi.get(__response__, 'operation_id'),
         zone_id=pulumi.get(__response__, 'zone_id')))

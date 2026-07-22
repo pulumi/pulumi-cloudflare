@@ -64,10 +64,6 @@ export interface GetAccountApiTokenPermissionGroupsResult {
      */
     readonly accountId?: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Filter by the name of the permission group.
      * The value must be URL-encoded.
      */

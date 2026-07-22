@@ -172,10 +172,6 @@ namespace Pulumi.Cloudflare
     public sealed class GetSchemaValidationSchemasListResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
@@ -198,8 +194,6 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetSchemaValidationSchemasListResult(
-            string id,
-
             int? maxItems,
 
             bool omitSource,
@@ -210,7 +204,6 @@ namespace Pulumi.Cloudflare
 
             string? zoneId)
         {
-            Id = id;
             MaxItems = maxItems;
             OmitSource = omitSource;
             Results = results;

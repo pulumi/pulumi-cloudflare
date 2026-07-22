@@ -27,11 +27,6 @@ public final class GetSecretsStoresInvokeResult {
      */
     private String direction;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -63,13 +58,6 @@ public final class GetSecretsStoresInvokeResult {
      */
     public String direction() {
         return this.direction;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Max items to fetch, default: 1000
@@ -105,7 +93,6 @@ public final class GetSecretsStoresInvokeResult {
     public static final class Builder {
         private String accountId;
         private String direction;
-        private String id;
         private @Nullable Integer maxItems;
         private String order;
         private List<GetSecretsStoresResult> results;
@@ -114,7 +101,6 @@ public final class GetSecretsStoresInvokeResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.direction = defaults.direction;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.order = defaults.order;
     	      this.results = defaults.results;
@@ -134,14 +120,6 @@ public final class GetSecretsStoresInvokeResult {
               throw new MissingRequiredPropertyException("GetSecretsStoresInvokeResult", "direction");
             }
             this.direction = direction;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetSecretsStoresInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -173,7 +151,6 @@ public final class GetSecretsStoresInvokeResult {
             final var _resultValue = new GetSecretsStoresInvokeResult();
             _resultValue.accountId = accountId;
             _resultValue.direction = direction;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.order = order;
             _resultValue.results = results;

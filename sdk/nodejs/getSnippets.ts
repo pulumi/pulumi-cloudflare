@@ -47,10 +47,6 @@ export interface GetSnippetsResult {
      */
     readonly createdOn: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * The timestamp of when the snippet was last modified.
      */
     readonly modifiedOn: string;

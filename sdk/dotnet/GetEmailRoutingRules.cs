@@ -158,10 +158,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
@@ -178,8 +174,6 @@ namespace Pulumi.Cloudflare
         private GetEmailRoutingRulesResult(
             bool? enabled,
 
-            string id,
-
             int? maxItems,
 
             ImmutableArray<Outputs.GetEmailRoutingRulesResultResult> results,
@@ -187,7 +181,6 @@ namespace Pulumi.Cloudflare
             string? zoneId)
         {
             Enabled = enabled;
-            Id = id;
             MaxItems = maxItems;
             Results = results;
             ZoneId = zoneId;

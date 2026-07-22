@@ -27,10 +27,7 @@ class GetCustomOriginTrustStoresResult:
     """
     A collection of values returned by getCustomOriginTrustStores.
     """
-    def __init__(__self__, id=None, limit=None, max_items=None, offset=None, results=None, zone_id=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, limit=None, max_items=None, offset=None, results=None, zone_id=None):
         if limit and not isinstance(limit, int):
             raise TypeError("Expected argument 'limit' to be a int")
         pulumi.set(__self__, "limit", limit)
@@ -46,14 +43,6 @@ class GetCustomOriginTrustStoresResult:
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -102,7 +91,6 @@ class AwaitableGetCustomOriginTrustStoresResult(GetCustomOriginTrustStoresResult
         if False:
             yield self
         return GetCustomOriginTrustStoresResult(
-            id=self.id,
             limit=self.limit,
             max_items=self.max_items,
             offset=self.offset,
@@ -147,7 +135,6 @@ def get_custom_origin_trust_stores(limit: Optional[_builtins.int] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getCustomOriginTrustStores:getCustomOriginTrustStores', __args__, opts=opts, typ=GetCustomOriginTrustStoresResult).value
 
     return AwaitableGetCustomOriginTrustStoresResult(
-        id=pulumi.get(__ret__, 'id'),
         limit=pulumi.get(__ret__, 'limit'),
         max_items=pulumi.get(__ret__, 'max_items'),
         offset=pulumi.get(__ret__, 'offset'),
@@ -189,7 +176,6 @@ def get_custom_origin_trust_stores_output(limit: pulumi.Input[Optional[Optional[
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getCustomOriginTrustStores:getCustomOriginTrustStores', __args__, opts=opts, typ=GetCustomOriginTrustStoresResult)
     return __ret__.apply(lambda __response__: GetCustomOriginTrustStoresResult(
-        id=pulumi.get(__response__, 'id'),
         limit=pulumi.get(__response__, 'limit'),
         max_items=pulumi.get(__response__, 'max_items'),
         offset=pulumi.get(__response__, 'offset'),

@@ -27,13 +27,10 @@ class GetCertificatePacksResult:
     """
     A collection of values returned by getCertificatePacks.
     """
-    def __init__(__self__, deploy=None, id=None, max_items=None, results=None, status=None, zone_id=None):
+    def __init__(__self__, deploy=None, max_items=None, results=None, status=None, zone_id=None):
         if deploy and not isinstance(deploy, str):
             raise TypeError("Expected argument 'deploy' to be a str")
         pulumi.set(__self__, "deploy", deploy)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -55,14 +52,6 @@ class GetCertificatePacksResult:
         Available values: "staging", "production".
         """
         return pulumi.get(self, "deploy")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="maxItems")
@@ -105,7 +94,6 @@ class AwaitableGetCertificatePacksResult(GetCertificatePacksResult):
             yield self
         return GetCertificatePacksResult(
             deploy=self.deploy,
-            id=self.id,
             max_items=self.max_items,
             results=self.results,
             status=self.status,
@@ -152,7 +140,6 @@ def get_certificate_packs(deploy: Optional[_builtins.str] = None,
 
     return AwaitableGetCertificatePacksResult(
         deploy=pulumi.get(__ret__, 'deploy'),
-        id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'),
         status=pulumi.get(__ret__, 'status'),
@@ -196,7 +183,6 @@ def get_certificate_packs_output(deploy: pulumi.Input[Optional[Optional[_builtin
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getCertificatePacks:getCertificatePacks', __args__, opts=opts, typ=GetCertificatePacksResult)
     return __ret__.apply(lambda __response__: GetCertificatePacksResult(
         deploy=pulumi.get(__response__, 'deploy'),
-        id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         results=pulumi.get(__response__, 'results'),
         status=pulumi.get(__response__, 'status'),

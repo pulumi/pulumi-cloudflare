@@ -26,13 +26,10 @@ class GetIpRangesResult:
     """
     A collection of values returned by getIpRanges.
     """
-    def __init__(__self__, etag=None, id=None, ipv4_cidrs=None, ipv6_cidrs=None, jdcloud_cidrs=None, networks=None):
+    def __init__(__self__, etag=None, ipv4_cidrs=None, ipv6_cidrs=None, jdcloud_cidrs=None, networks=None):
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if ipv4_cidrs and not isinstance(ipv4_cidrs, list):
             raise TypeError("Expected argument 'ipv4_cidrs' to be a list")
         pulumi.set(__self__, "ipv4_cidrs", ipv4_cidrs)
@@ -53,14 +50,6 @@ class GetIpRangesResult:
         A digest of the IP data. Useful for determining if the data has changed.
         """
         return pulumi.get(self, "etag")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="ipv4Cidrs")
@@ -102,7 +91,6 @@ class AwaitableGetIpRangesResult(GetIpRangesResult):
             yield self
         return GetIpRangesResult(
             etag=self.etag,
-            id=self.id,
             ipv4_cidrs=self.ipv4_cidrs,
             ipv6_cidrs=self.ipv6_cidrs,
             jdcloud_cidrs=self.jdcloud_cidrs,
@@ -131,7 +119,6 @@ def get_ip_ranges(networks: Optional[_builtins.str] = None,
 
     return AwaitableGetIpRangesResult(
         etag=pulumi.get(__ret__, 'etag'),
-        id=pulumi.get(__ret__, 'id'),
         ipv4_cidrs=pulumi.get(__ret__, 'ipv4_cidrs'),
         ipv6_cidrs=pulumi.get(__ret__, 'ipv6_cidrs'),
         jdcloud_cidrs=pulumi.get(__ret__, 'jdcloud_cidrs'),
@@ -157,7 +144,6 @@ def get_ip_ranges_output(networks: pulumi.Input[Optional[Optional[_builtins.str]
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getIpRanges:getIpRanges', __args__, opts=opts, typ=GetIpRangesResult)
     return __ret__.apply(lambda __response__: GetIpRangesResult(
         etag=pulumi.get(__response__, 'etag'),
-        id=pulumi.get(__response__, 'id'),
         ipv4_cidrs=pulumi.get(__response__, 'ipv4_cidrs'),
         ipv6_cidrs=pulumi.get(__response__, 'ipv6_cidrs'),
         jdcloud_cidrs=pulumi.get(__response__, 'jdcloud_cidrs'),

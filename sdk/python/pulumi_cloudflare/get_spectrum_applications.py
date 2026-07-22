@@ -27,13 +27,10 @@ class GetSpectrumApplicationsResult:
     """
     A collection of values returned by getSpectrumApplications.
     """
-    def __init__(__self__, direction=None, id=None, max_items=None, order=None, results=None, zone_id=None):
+    def __init__(__self__, direction=None, max_items=None, order=None, results=None, zone_id=None):
         if direction and not isinstance(direction, str):
             raise TypeError("Expected argument 'direction' to be a str")
         pulumi.set(__self__, "direction", direction)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -55,14 +52,6 @@ class GetSpectrumApplicationsResult:
         Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="maxItems")
@@ -105,7 +94,6 @@ class AwaitableGetSpectrumApplicationsResult(GetSpectrumApplicationsResult):
             yield self
         return GetSpectrumApplicationsResult(
             direction=self.direction,
-            id=self.id,
             max_items=self.max_items,
             order=self.order,
             results=self.results,
@@ -150,7 +138,6 @@ def get_spectrum_applications(direction: Optional[_builtins.str] = None,
 
     return AwaitableGetSpectrumApplicationsResult(
         direction=pulumi.get(__ret__, 'direction'),
-        id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         order=pulumi.get(__ret__, 'order'),
         results=pulumi.get(__ret__, 'results'),
@@ -192,7 +179,6 @@ def get_spectrum_applications_output(direction: pulumi.Input[Optional[Optional[_
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getSpectrumApplications:getSpectrumApplications', __args__, opts=opts, typ=GetSpectrumApplicationsResult)
     return __ret__.apply(lambda __response__: GetSpectrumApplicationsResult(
         direction=pulumi.get(__response__, 'direction'),
-        id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         order=pulumi.get(__response__, 'order'),
         results=pulumi.get(__response__, 'results'),

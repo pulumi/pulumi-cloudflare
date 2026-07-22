@@ -158,10 +158,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly int Height;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The unique identifier for a watermark profile.
         /// </summary>
         public readonly string Identifier;
@@ -208,8 +204,6 @@ namespace Pulumi.Cloudflare
 
             int height,
 
-            string id,
-
             string identifier,
 
             string name,
@@ -232,7 +226,6 @@ namespace Pulumi.Cloudflare
             Created = created;
             DownloadedFrom = downloadedFrom;
             Height = height;
-            Id = id;
             Identifier = identifier;
             Name = name;
             Opacity = opacity;

@@ -56,10 +56,6 @@ export interface GetZoneDnsSettingsResult {
      */
     readonly foundationDns: boolean;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Settings for this internal zone.
      */
     readonly internalDns: outputs.GetZoneDnsSettingsInternalDns;

@@ -44,11 +44,6 @@ public final class GetPageShieldConnectionsListInvokeResult {
      * 
      */
     private @Nullable String hosts;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer maxItems;
     private @Nullable String orderBy;
     private @Nullable String page;
@@ -98,13 +93,6 @@ public final class GetPageShieldConnectionsListInvokeResult {
     public Optional<String> hosts() {
         return Optional.ofNullable(this.hosts);
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
     }
@@ -150,7 +138,6 @@ public final class GetPageShieldConnectionsListInvokeResult {
         private @Nullable String excludeUrls;
         private @Nullable String export;
         private @Nullable String hosts;
-        private String id;
         private @Nullable Integer maxItems;
         private @Nullable String orderBy;
         private @Nullable String page;
@@ -169,7 +156,6 @@ public final class GetPageShieldConnectionsListInvokeResult {
     	      this.excludeUrls = defaults.excludeUrls;
     	      this.export = defaults.export;
     	      this.hosts = defaults.hosts;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.orderBy = defaults.orderBy;
     	      this.page = defaults.page;
@@ -210,14 +196,6 @@ public final class GetPageShieldConnectionsListInvokeResult {
         public Builder hosts(@Nullable String hosts) {
 
             this.hosts = hosts;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetPageShieldConnectionsListInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -292,7 +270,6 @@ public final class GetPageShieldConnectionsListInvokeResult {
             _resultValue.excludeUrls = excludeUrls;
             _resultValue.export = export;
             _resultValue.hosts = hosts;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.orderBy = orderBy;
             _resultValue.page = page;

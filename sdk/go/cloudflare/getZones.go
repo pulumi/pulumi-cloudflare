@@ -73,15 +73,13 @@ type LookupZonesArgs struct {
 type LookupZonesResult struct {
 	Account   *GetZonesAccount `pulumi:"account"`
 	Direction *string          `pulumi:"direction"`
-	// The provider-assigned unique ID for this managed resource.
-	Id       string           `pulumi:"id"`
-	Match    string           `pulumi:"match"`
-	MaxItems *int             `pulumi:"maxItems"`
-	Name     *string          `pulumi:"name"`
-	Order    *string          `pulumi:"order"`
-	Results  []GetZonesResult `pulumi:"results"`
-	Status   *string          `pulumi:"status"`
-	Types    []string         `pulumi:"types"`
+	Match     string           `pulumi:"match"`
+	MaxItems  *int             `pulumi:"maxItems"`
+	Name      *string          `pulumi:"name"`
+	Order     *string          `pulumi:"order"`
+	Results   []GetZonesResult `pulumi:"results"`
+	Status    *string          `pulumi:"status"`
+	Types     []string         `pulumi:"types"`
 }
 
 func LookupZonesOutput(ctx *pulumi.Context, args LookupZonesOutputArgs, opts ...pulumi.InvokeOption) LookupZonesResultOutput {
@@ -130,11 +128,6 @@ func (o LookupZonesResultOutput) Account() GetZonesAccountPtrOutput {
 
 func (o LookupZonesResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZonesResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupZonesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZonesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o LookupZonesResultOutput) Match() pulumi.StringOutput {

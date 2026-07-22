@@ -21,11 +21,6 @@ public final class GetCallsTurnAppResult {
      */
     private String created;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return A Cloudflare-generated unique identifier for a item.
      * 
      */
@@ -60,13 +55,6 @@ public final class GetCallsTurnAppResult {
      */
     public String created() {
         return this.created;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return A Cloudflare-generated unique identifier for a item.
@@ -108,7 +96,6 @@ public final class GetCallsTurnAppResult {
     public static final class Builder {
         private String accountId;
         private String created;
-        private String id;
         private String keyId;
         private String modified;
         private String name;
@@ -118,7 +105,6 @@ public final class GetCallsTurnAppResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.created = defaults.created;
-    	      this.id = defaults.id;
     	      this.keyId = defaults.keyId;
     	      this.modified = defaults.modified;
     	      this.name = defaults.name;
@@ -139,14 +125,6 @@ public final class GetCallsTurnAppResult {
               throw new MissingRequiredPropertyException("GetCallsTurnAppResult", "created");
             }
             this.created = created;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetCallsTurnAppResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -185,7 +163,6 @@ public final class GetCallsTurnAppResult {
             final var _resultValue = new GetCallsTurnAppResult();
             _resultValue.accountId = accountId;
             _resultValue.created = created;
-            _resultValue.id = id;
             _resultValue.keyId = keyId;
             _resultValue.modified = modified;
             _resultValue.name = name;

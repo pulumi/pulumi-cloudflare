@@ -105,9 +105,7 @@ type LookupPageShieldConnectionsListResult struct {
 	// Available values: "csv".
 	Export *string `pulumi:"export"`
 	// Includes connections that match one or more URL-encoded hostnames separated by commas.
-	Hosts *string `pulumi:"hosts"`
-	// The provider-assigned unique ID for this managed resource.
-	Id                  string                               `pulumi:"id"`
+	Hosts               *string                              `pulumi:"hosts"`
 	MaxItems            *int                                 `pulumi:"maxItems"`
 	OrderBy             *string                              `pulumi:"orderBy"`
 	Page                *string                              `pulumi:"page"`
@@ -198,11 +196,6 @@ func (o LookupPageShieldConnectionsListResultOutput) Export() pulumi.StringPtrOu
 // Includes connections that match one or more URL-encoded hostnames separated by commas.
 func (o LookupPageShieldConnectionsListResultOutput) Hosts() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPageShieldConnectionsListResult) *string { return v.Hosts }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupPageShieldConnectionsListResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPageShieldConnectionsListResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o LookupPageShieldConnectionsListResultOutput) MaxItems() pulumi.IntPtrOutput {

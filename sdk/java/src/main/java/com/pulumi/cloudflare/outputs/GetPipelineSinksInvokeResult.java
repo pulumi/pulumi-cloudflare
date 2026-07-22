@@ -21,11 +21,6 @@ public final class GetPipelineSinksInvokeResult {
      */
     private @Nullable String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -49,13 +44,6 @@ public final class GetPipelineSinksInvokeResult {
      */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Max items to fetch, default: 1000
@@ -92,7 +80,6 @@ public final class GetPipelineSinksInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
-        private String id;
         private @Nullable Integer maxItems;
         private @Nullable String name;
         private @Nullable String pipelineId;
@@ -101,7 +88,6 @@ public final class GetPipelineSinksInvokeResult {
         public Builder(GetPipelineSinksInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.name = defaults.name;
     	      this.pipelineId = defaults.pipelineId;
@@ -112,14 +98,6 @@ public final class GetPipelineSinksInvokeResult {
         public Builder accountId(@Nullable String accountId) {
 
             this.accountId = accountId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetPipelineSinksInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -154,7 +132,6 @@ public final class GetPipelineSinksInvokeResult {
         public GetPipelineSinksInvokeResult build() {
             final var _resultValue = new GetPipelineSinksInvokeResult();
             _resultValue.accountId = accountId;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.name = name;
             _resultValue.pipelineId = pipelineId;

@@ -68,8 +68,6 @@ type LookupCallsSfuAppResult struct {
 	AppId string `pulumi:"appId"`
 	// The date and time the item was created.
 	Created string `pulumi:"created"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// The date and time the item was last modified.
 	Modified string `pulumi:"modified"`
 	// A short description of Calls app, not shown to end users.
@@ -127,11 +125,6 @@ func (o LookupCallsSfuAppResultOutput) AppId() pulumi.StringOutput {
 // The date and time the item was created.
 func (o LookupCallsSfuAppResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCallsSfuAppResult) string { return v.Created }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupCallsSfuAppResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCallsSfuAppResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The date and time the item was last modified.

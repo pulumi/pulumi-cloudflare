@@ -26,13 +26,10 @@ class GetSnippetsResult:
     """
     A collection of values returned by getSnippets.
     """
-    def __init__(__self__, created_on=None, id=None, modified_on=None, snippet_name=None, zone_id=None):
+    def __init__(__self__, created_on=None, modified_on=None, snippet_name=None, zone_id=None):
         if created_on and not isinstance(created_on, str):
             raise TypeError("Expected argument 'created_on' to be a str")
         pulumi.set(__self__, "created_on", created_on)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if modified_on and not isinstance(modified_on, str):
             raise TypeError("Expected argument 'modified_on' to be a str")
         pulumi.set(__self__, "modified_on", modified_on)
@@ -50,14 +47,6 @@ class GetSnippetsResult:
         The timestamp of when the snippet was created.
         """
         return pulumi.get(self, "created_on")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")
@@ -91,7 +80,6 @@ class AwaitableGetSnippetsResult(GetSnippetsResult):
             yield self
         return GetSnippetsResult(
             created_on=self.created_on,
-            id=self.id,
             modified_on=self.modified_on,
             snippet_name=self.snippet_name,
             zone_id=self.zone_id)
@@ -122,7 +110,6 @@ def get_snippets(snippet_name: Optional[_builtins.str] = None,
 
     return AwaitableGetSnippetsResult(
         created_on=pulumi.get(__ret__, 'created_on'),
-        id=pulumi.get(__ret__, 'id'),
         modified_on=pulumi.get(__ret__, 'modified_on'),
         snippet_name=pulumi.get(__ret__, 'snippet_name'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
@@ -150,7 +137,6 @@ def get_snippets_output(snippet_name: pulumi.Input[Optional[_builtins.str]] = No
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getSnippets:getSnippets', __args__, opts=opts, typ=GetSnippetsResult)
     return __ret__.apply(lambda __response__: GetSnippetsResult(
         created_on=pulumi.get(__response__, 'created_on'),
-        id=pulumi.get(__response__, 'id'),
         modified_on=pulumi.get(__response__, 'modified_on'),
         snippet_name=pulumi.get(__response__, 'snippet_name'),
         zone_id=pulumi.get(__response__, 'zone_id')))

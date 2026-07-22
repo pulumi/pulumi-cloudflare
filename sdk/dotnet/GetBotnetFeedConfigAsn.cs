@@ -131,22 +131,15 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? AccountId;
         public readonly int Asn;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetBotnetFeedConfigAsnResult(
             string? accountId,
 
-            int asn,
-
-            string id)
+            int asn)
         {
             AccountId = accountId;
             Asn = asn;
-            Id = id;
         }
     }
 }

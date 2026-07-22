@@ -17,11 +17,6 @@ import javax.annotation.Nullable;
 public final class GetAiSearchInstancesInvokeResult {
     private @Nullable String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -57,13 +52,6 @@ public final class GetAiSearchInstancesInvokeResult {
     private GetAiSearchInstancesInvokeResult() {}
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Max items to fetch, default: 1000
@@ -120,7 +108,6 @@ public final class GetAiSearchInstancesInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
-        private String id;
         private @Nullable Integer maxItems;
         private @Nullable String namespace;
         private String orderBy;
@@ -131,7 +118,6 @@ public final class GetAiSearchInstancesInvokeResult {
         public Builder(GetAiSearchInstancesInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.namespace = defaults.namespace;
     	      this.orderBy = defaults.orderBy;
@@ -144,14 +130,6 @@ public final class GetAiSearchInstancesInvokeResult {
         public Builder accountId(@Nullable String accountId) {
 
             this.accountId = accountId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAiSearchInstancesInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -202,7 +180,6 @@ public final class GetAiSearchInstancesInvokeResult {
         public GetAiSearchInstancesInvokeResult build() {
             final var _resultValue = new GetAiSearchInstancesInvokeResult();
             _resultValue.accountId = accountId;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.namespace = namespace;
             _resultValue.orderBy = orderBy;

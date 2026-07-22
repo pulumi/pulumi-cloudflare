@@ -66,8 +66,6 @@ type LookupPagesDomainsArgs struct {
 type LookupPagesDomainsResult struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Name of the project.
@@ -117,11 +115,6 @@ func (o LookupPagesDomainsResultOutput) ToLookupPagesDomainsResultOutputWithCont
 // Identifier.
 func (o LookupPagesDomainsResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPagesDomainsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupPagesDomainsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPagesDomainsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

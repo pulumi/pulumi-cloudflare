@@ -131,10 +131,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The date and time the webhook was last modified.
         /// </summary>
         public readonly string Modified;
@@ -151,8 +147,6 @@ namespace Pulumi.Cloudflare
         private GetStreamWebhookResult(
             string? accountId,
 
-            string id,
-
             string modified,
 
             string notificationUrl,
@@ -160,7 +154,6 @@ namespace Pulumi.Cloudflare
             string secret)
         {
             AccountId = accountId;
-            Id = id;
             Modified = modified;
             NotificationUrl = notificationUrl;
             Secret = secret;

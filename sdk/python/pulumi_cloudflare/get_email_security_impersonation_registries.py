@@ -27,16 +27,13 @@ class GetEmailSecurityImpersonationRegistriesResult:
     """
     A collection of values returned by getEmailSecurityImpersonationRegistries.
     """
-    def __init__(__self__, account_id=None, direction=None, id=None, max_items=None, order=None, provenance=None, results=None, search=None):
+    def __init__(__self__, account_id=None, direction=None, max_items=None, order=None, provenance=None, results=None, search=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if direction and not isinstance(direction, str):
             raise TypeError("Expected argument 'direction' to be a str")
         pulumi.set(__self__, "direction", direction)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -69,14 +66,6 @@ class GetEmailSecurityImpersonationRegistriesResult:
         Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="maxItems")
@@ -128,7 +117,6 @@ class AwaitableGetEmailSecurityImpersonationRegistriesResult(GetEmailSecurityImp
         return GetEmailSecurityImpersonationRegistriesResult(
             account_id=self.account_id,
             direction=self.direction,
-            id=self.id,
             max_items=self.max_items,
             order=self.order,
             provenance=self.provenance,
@@ -185,7 +173,6 @@ def get_email_security_impersonation_registries(account_id: Optional[_builtins.s
     return AwaitableGetEmailSecurityImpersonationRegistriesResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         direction=pulumi.get(__ret__, 'direction'),
-        id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         order=pulumi.get(__ret__, 'order'),
         provenance=pulumi.get(__ret__, 'provenance'),
@@ -239,7 +226,6 @@ def get_email_security_impersonation_registries_output(account_id: pulumi.Input[
     return __ret__.apply(lambda __response__: GetEmailSecurityImpersonationRegistriesResult(
         account_id=pulumi.get(__response__, 'account_id'),
         direction=pulumi.get(__response__, 'direction'),
-        id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         order=pulumi.get(__response__, 'order'),
         provenance=pulumi.get(__response__, 'provenance'),

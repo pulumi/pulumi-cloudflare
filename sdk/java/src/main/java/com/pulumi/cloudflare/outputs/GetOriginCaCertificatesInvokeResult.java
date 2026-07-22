@@ -16,11 +16,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetOriginCaCertificatesInvokeResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Limit to the number of records returned.
      * 
      */
@@ -47,13 +42,6 @@ public final class GetOriginCaCertificatesInvokeResult {
     private String zoneId;
 
     private GetOriginCaCertificatesInvokeResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     /**
      * @return Limit to the number of records returned.
      * 
@@ -99,7 +87,6 @@ public final class GetOriginCaCertificatesInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private @Nullable Integer limit;
         private @Nullable Integer maxItems;
         private @Nullable Integer offset;
@@ -108,7 +95,6 @@ public final class GetOriginCaCertificatesInvokeResult {
         public Builder() {}
         public Builder(GetOriginCaCertificatesInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.limit = defaults.limit;
     	      this.maxItems = defaults.maxItems;
     	      this.offset = defaults.offset;
@@ -116,14 +102,6 @@ public final class GetOriginCaCertificatesInvokeResult {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetOriginCaCertificatesInvokeResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder limit(@Nullable Integer limit) {
 
@@ -163,7 +141,6 @@ public final class GetOriginCaCertificatesInvokeResult {
         }
         public GetOriginCaCertificatesInvokeResult build() {
             final var _resultValue = new GetOriginCaCertificatesInvokeResult();
-            _resultValue.id = id;
             _resultValue.limit = limit;
             _resultValue.maxItems = maxItems;
             _resultValue.offset = offset;

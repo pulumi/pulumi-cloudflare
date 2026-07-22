@@ -122,22 +122,15 @@ namespace Pulumi.Cloudflare
     {
         public readonly string? AccountId;
         public readonly ImmutableDictionary<string, Outputs.GetZeroTrustRiskBehaviorBehaviorsResult> Behaviors;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetZeroTrustRiskBehaviorResult(
             string? accountId,
 
-            ImmutableDictionary<string, Outputs.GetZeroTrustRiskBehaviorBehaviorsResult> behaviors,
-
-            string id)
+            ImmutableDictionary<string, Outputs.GetZeroTrustRiskBehaviorBehaviorsResult> behaviors)
         {
             AccountId = accountId;
             Behaviors = behaviors;
-            Id = id;
         }
     }
 }

@@ -250,10 +250,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Direction;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Whether to match all search requirements or at least one (any). If set to `All`, acts like a logical AND between filters. If set to `Any`, acts like a logical OR instead.
         /// Available values: "any", "all".
         /// </summary>
@@ -287,8 +283,6 @@ namespace Pulumi.Cloudflare
 
             string direction,
 
-            string id,
-
             string match,
 
             int? maxItems,
@@ -305,7 +299,6 @@ namespace Pulumi.Cloudflare
         {
             AccountId = accountId;
             Direction = direction;
-            Id = id;
             Match = match;
             MaxItems = maxItems;
             Name = name;

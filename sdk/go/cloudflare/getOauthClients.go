@@ -62,8 +62,6 @@ type LookupOauthClientsArgs struct {
 type LookupOauthClientsResult struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -109,11 +107,6 @@ func (o LookupOauthClientsResultOutput) ToLookupOauthClientsResultOutputWithCont
 // Account identifier tag.
 func (o LookupOauthClientsResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOauthClientsResult) string { return v.AccountId }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupOauthClientsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOauthClientsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

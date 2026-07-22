@@ -30,10 +30,6 @@ export interface GetAiSearchNamespaceResult {
      * Optional description for the namespace. Max 256 characters.
      */
     readonly description: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly name: string;
 }
 export function getAiSearchNamespaceOutput(args: GetAiSearchNamespaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAiSearchNamespaceResult> {

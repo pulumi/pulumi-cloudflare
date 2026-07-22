@@ -46,8 +46,6 @@ type LookupQueueConsumerResult struct {
 	CreatedOn  string `pulumi:"createdOn"`
 	// Name of the dead letter queue, or empty string if not configured
 	DeadLetterQueue string `pulumi:"deadLetterQueue"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// A Resource identifier.
 	QueueId   string `pulumi:"queueId"`
 	QueueName string `pulumi:"queueName"`
@@ -111,11 +109,6 @@ func (o LookupQueueConsumerResultOutput) CreatedOn() pulumi.StringOutput {
 // Name of the dead letter queue, or empty string if not configured
 func (o LookupQueueConsumerResultOutput) DeadLetterQueue() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueueConsumerResult) string { return v.DeadLetterQueue }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupQueueConsumerResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupQueueConsumerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A Resource identifier.

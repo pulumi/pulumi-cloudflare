@@ -26,13 +26,10 @@ class GetObservatoryScheduledTestResult:
     """
     A collection of values returned by getObservatoryScheduledTest.
     """
-    def __init__(__self__, frequency=None, id=None, region=None, url=None, zone_id=None):
+    def __init__(__self__, frequency=None, region=None, url=None, zone_id=None):
         if frequency and not isinstance(frequency, str):
             raise TypeError("Expected argument 'frequency' to be a str")
         pulumi.set(__self__, "frequency", frequency)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -51,14 +48,6 @@ class GetObservatoryScheduledTestResult:
         Available values: "DAILY", "WEEKLY".
         """
         return pulumi.get(self, "frequency")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -93,7 +82,6 @@ class AwaitableGetObservatoryScheduledTestResult(GetObservatoryScheduledTestResu
             yield self
         return GetObservatoryScheduledTestResult(
             frequency=self.frequency,
-            id=self.id,
             region=self.region,
             url=self.url,
             zone_id=self.zone_id)
@@ -135,7 +123,6 @@ def get_observatory_scheduled_test(region: Optional[_builtins.str] = None,
 
     return AwaitableGetObservatoryScheduledTestResult(
         frequency=pulumi.get(__ret__, 'frequency'),
-        id=pulumi.get(__ret__, 'id'),
         region=pulumi.get(__ret__, 'region'),
         url=pulumi.get(__ret__, 'url'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
@@ -174,7 +161,6 @@ def get_observatory_scheduled_test_output(region: pulumi.Input[Optional[Optional
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getObservatoryScheduledTest:getObservatoryScheduledTest', __args__, opts=opts, typ=GetObservatoryScheduledTestResult)
     return __ret__.apply(lambda __response__: GetObservatoryScheduledTestResult(
         frequency=pulumi.get(__response__, 'frequency'),
-        id=pulumi.get(__response__, 'id'),
         region=pulumi.get(__response__, 'region'),
         url=pulumi.get(__response__, 'url'),
         zone_id=pulumi.get(__response__, 'zone_id')))

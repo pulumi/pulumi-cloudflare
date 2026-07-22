@@ -72,8 +72,6 @@ type LookupCertificatePacksResult struct {
 	// Specify the deployment environment for the certificate packs.
 	// Available values: "staging", "production".
 	Deploy *string `pulumi:"deploy"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -131,11 +129,6 @@ func (o LookupCertificatePacksResultOutput) ToLookupCertificatePacksResultOutput
 // Available values: "staging", "production".
 func (o LookupCertificatePacksResultOutput) Deploy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCertificatePacksResult) *string { return v.Deploy }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupCertificatePacksResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCertificatePacksResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

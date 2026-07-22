@@ -17,11 +17,6 @@ import javax.annotation.Nullable;
 public final class GetZeroTrustDlpDataTagCategoriesInvokeResult {
     private String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -35,13 +30,6 @@ public final class GetZeroTrustDlpDataTagCategoriesInvokeResult {
     private GetZeroTrustDlpDataTagCategoriesInvokeResult() {}
     public String accountId() {
         return this.accountId;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Max items to fetch, default: 1000
@@ -68,14 +56,12 @@ public final class GetZeroTrustDlpDataTagCategoriesInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
-        private String id;
         private @Nullable Integer maxItems;
         private List<GetZeroTrustDlpDataTagCategoriesResult> results;
         public Builder() {}
         public Builder(GetZeroTrustDlpDataTagCategoriesInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
         }
@@ -86,14 +72,6 @@ public final class GetZeroTrustDlpDataTagCategoriesInvokeResult {
               throw new MissingRequiredPropertyException("GetZeroTrustDlpDataTagCategoriesInvokeResult", "accountId");
             }
             this.accountId = accountId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDlpDataTagCategoriesInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -116,7 +94,6 @@ public final class GetZeroTrustDlpDataTagCategoriesInvokeResult {
         public GetZeroTrustDlpDataTagCategoriesInvokeResult build() {
             final var _resultValue = new GetZeroTrustDlpDataTagCategoriesInvokeResult();
             _resultValue.accountId = accountId;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;
             return _resultValue;

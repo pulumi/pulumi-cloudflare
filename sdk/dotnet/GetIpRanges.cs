@@ -116,10 +116,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Etag;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// List of Cloudflare IPv4 CIDR addresses.
         /// </summary>
         public readonly ImmutableArray<string> Ipv4Cidrs;
@@ -140,8 +136,6 @@ namespace Pulumi.Cloudflare
         private GetIpRangesResult(
             string etag,
 
-            string id,
-
             ImmutableArray<string> ipv4Cidrs,
 
             ImmutableArray<string> ipv6Cidrs,
@@ -151,7 +145,6 @@ namespace Pulumi.Cloudflare
             string? networks)
         {
             Etag = etag;
-            Id = id;
             Ipv4Cidrs = ipv4Cidrs;
             Ipv6Cidrs = ipv6Cidrs;
             JdcloudCidrs = jdcloudCidrs;

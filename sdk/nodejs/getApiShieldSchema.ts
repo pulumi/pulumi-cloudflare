@@ -55,10 +55,6 @@ export interface GetApiShieldSchemaArgs {
 export interface GetApiShieldSchemaResult {
     readonly createdAt: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Kind of schema
      * Available values: "openapiV3".
      */

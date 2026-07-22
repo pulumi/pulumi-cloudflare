@@ -102,8 +102,6 @@ type LookupCloudforceOneRequestsResult struct {
 	CreatedAfter *string `pulumi:"createdAfter"`
 	// Retrieve requests created before this time.
 	CreatedBefore *string `pulumi:"createdBefore"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Page number of results.
@@ -205,11 +203,6 @@ func (o LookupCloudforceOneRequestsResultOutput) CreatedAfter() pulumi.StringPtr
 // Retrieve requests created before this time.
 func (o LookupCloudforceOneRequestsResultOutput) CreatedBefore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestsResult) *string { return v.CreatedBefore }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupCloudforceOneRequestsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCloudforceOneRequestsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

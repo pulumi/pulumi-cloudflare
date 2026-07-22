@@ -13,11 +13,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetSchemaValidationSettingsResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return The default mitigation action used
      * 
      */
@@ -30,13 +25,6 @@ public final class GetSchemaValidationSettingsResult {
     private @Nullable String zoneId;
 
     private GetSchemaValidationSettingsResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     /**
      * @return The default mitigation action used
      * 
@@ -64,27 +52,17 @@ public final class GetSchemaValidationSettingsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private String validationDefaultMitigationAction;
         private String validationOverrideMitigationAction;
         private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetSchemaValidationSettingsResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.validationDefaultMitigationAction = defaults.validationDefaultMitigationAction;
     	      this.validationOverrideMitigationAction = defaults.validationOverrideMitigationAction;
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetSchemaValidationSettingsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder validationDefaultMitigationAction(String validationDefaultMitigationAction) {
             if (validationDefaultMitigationAction == null) {
@@ -109,7 +87,6 @@ public final class GetSchemaValidationSettingsResult {
         }
         public GetSchemaValidationSettingsResult build() {
             final var _resultValue = new GetSchemaValidationSettingsResult();
-            _resultValue.id = id;
             _resultValue.validationDefaultMitigationAction = validationDefaultMitigationAction;
             _resultValue.validationOverrideMitigationAction = validationOverrideMitigationAction;
             _resultValue.zoneId = zoneId;

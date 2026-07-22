@@ -26,11 +26,6 @@ public final class GetImagesInvokeResult {
      */
     private @Nullable String creator;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -55,13 +50,6 @@ public final class GetImagesInvokeResult {
      */
     public Optional<String> creator() {
         return Optional.ofNullable(this.creator);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Max items to fetch, default: 1000
@@ -89,7 +77,6 @@ public final class GetImagesInvokeResult {
     public static final class Builder {
         private @Nullable String accountId;
         private @Nullable String creator;
-        private String id;
         private @Nullable Integer maxItems;
         private List<GetImagesResult> results;
         public Builder() {}
@@ -97,7 +84,6 @@ public final class GetImagesInvokeResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.creator = defaults.creator;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
         }
@@ -112,14 +98,6 @@ public final class GetImagesInvokeResult {
         public Builder creator(@Nullable String creator) {
 
             this.creator = creator;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetImagesInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -143,7 +121,6 @@ public final class GetImagesInvokeResult {
             final var _resultValue = new GetImagesInvokeResult();
             _resultValue.accountId = accountId;
             _resultValue.creator = creator;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;
             return _resultValue;

@@ -63,8 +63,6 @@ type LookupWaitingRoomEventsArgs struct {
 
 // A collection of values returned by getWaitingRoomEvents.
 type LookupWaitingRoomEventsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -109,11 +107,6 @@ func (o LookupWaitingRoomEventsResultOutput) ToLookupWaitingRoomEventsResultOutp
 
 func (o LookupWaitingRoomEventsResultOutput) ToLookupWaitingRoomEventsResultOutputWithContext(ctx context.Context) LookupWaitingRoomEventsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupWaitingRoomEventsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWaitingRoomEventsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

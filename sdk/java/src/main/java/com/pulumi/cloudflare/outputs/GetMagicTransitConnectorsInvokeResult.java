@@ -27,11 +27,6 @@ public final class GetMagicTransitConnectorsInvokeResult {
      */
     private @Nullable String deviceType;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -59,13 +54,6 @@ public final class GetMagicTransitConnectorsInvokeResult {
         return Optional.ofNullable(this.deviceType);
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -91,7 +79,6 @@ public final class GetMagicTransitConnectorsInvokeResult {
     public static final class Builder {
         private @Nullable String accountId;
         private @Nullable String deviceType;
-        private String id;
         private @Nullable Integer maxItems;
         private List<GetMagicTransitConnectorsResult> results;
         public Builder() {}
@@ -99,7 +86,6 @@ public final class GetMagicTransitConnectorsInvokeResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.deviceType = defaults.deviceType;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
         }
@@ -114,14 +100,6 @@ public final class GetMagicTransitConnectorsInvokeResult {
         public Builder deviceType(@Nullable String deviceType) {
 
             this.deviceType = deviceType;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetMagicTransitConnectorsInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -145,7 +123,6 @@ public final class GetMagicTransitConnectorsInvokeResult {
             final var _resultValue = new GetMagicTransitConnectorsInvokeResult();
             _resultValue.accountId = accountId;
             _resultValue.deviceType = deviceType;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;
             return _resultValue;

@@ -26,7 +26,7 @@ class GetOrganizationProfileResult:
     """
     A collection of values returned by getOrganizationProfile.
     """
-    def __init__(__self__, business_address=None, business_email=None, business_name=None, business_phone=None, external_metadata=None, id=None, organization_id=None):
+    def __init__(__self__, business_address=None, business_email=None, business_name=None, business_phone=None, external_metadata=None, organization_id=None):
         if business_address and not isinstance(business_address, str):
             raise TypeError("Expected argument 'business_address' to be a str")
         pulumi.set(__self__, "business_address", business_address)
@@ -42,9 +42,6 @@ class GetOrganizationProfileResult:
         if external_metadata and not isinstance(external_metadata, str):
             raise TypeError("Expected argument 'external_metadata' to be a str")
         pulumi.set(__self__, "external_metadata", external_metadata)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if organization_id and not isinstance(organization_id, str):
             raise TypeError("Expected argument 'organization_id' to be a str")
         pulumi.set(__self__, "organization_id", organization_id)
@@ -75,14 +72,6 @@ class GetOrganizationProfileResult:
         return pulumi.get(self, "external_metadata")
 
     @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> _builtins.str:
         return pulumi.get(self, "organization_id")
@@ -99,7 +88,6 @@ class AwaitableGetOrganizationProfileResult(GetOrganizationProfileResult):
             business_name=self.business_name,
             business_phone=self.business_phone,
             external_metadata=self.external_metadata,
-            id=self.id,
             organization_id=self.organization_id)
 
 
@@ -126,7 +114,6 @@ def get_organization_profile(organization_id: Optional[_builtins.str] = None,
         business_name=pulumi.get(__ret__, 'business_name'),
         business_phone=pulumi.get(__ret__, 'business_phone'),
         external_metadata=pulumi.get(__ret__, 'external_metadata'),
-        id=pulumi.get(__ret__, 'id'),
         organization_id=pulumi.get(__ret__, 'organization_id'))
 def get_organization_profile_output(organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationProfileResult]:
@@ -150,5 +137,4 @@ def get_organization_profile_output(organization_id: pulumi.Input[Optional[_buil
         business_name=pulumi.get(__response__, 'business_name'),
         business_phone=pulumi.get(__response__, 'business_phone'),
         external_metadata=pulumi.get(__response__, 'external_metadata'),
-        id=pulumi.get(__response__, 'id'),
         organization_id=pulumi.get(__response__, 'organization_id')))

@@ -166,10 +166,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly double Duration;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// A Cloudflare-generated unique identifier for a media item.
         /// </summary>
         public readonly string Identifier;
@@ -263,8 +259,6 @@ namespace Pulumi.Cloudflare
 
             double duration,
 
-            string id,
-
             string identifier,
 
             Outputs.GetStreamInputResult input,
@@ -315,7 +309,6 @@ namespace Pulumi.Cloudflare
             Created = created;
             Creator = creator;
             Duration = duration;
-            Id = id;
             Identifier = identifier;
             Input = input;
             LiveInput = liveInput;

@@ -27,7 +27,7 @@ class GetR2CustomDomainResult:
     """
     A collection of values returned by getR2CustomDomain.
     """
-    def __init__(__self__, account_id=None, bucket_name=None, ciphers=None, domain=None, enabled=None, id=None, min_tls=None, status=None, zone_id=None, zone_name=None):
+    def __init__(__self__, account_id=None, bucket_name=None, ciphers=None, domain=None, enabled=None, min_tls=None, status=None, zone_id=None, zone_name=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -43,9 +43,6 @@ class GetR2CustomDomainResult:
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
         pulumi.set(__self__, "enabled", enabled)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if min_tls and not isinstance(min_tls, str):
             raise TypeError("Expected argument 'min_tls' to be a str")
         pulumi.set(__self__, "min_tls", min_tls)
@@ -100,14 +97,6 @@ class GetR2CustomDomainResult:
         return pulumi.get(self, "enabled")
 
     @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
     @pulumi.getter(name="minTls")
     def min_tls(self) -> _builtins.str:
         """
@@ -149,7 +138,6 @@ class AwaitableGetR2CustomDomainResult(GetR2CustomDomainResult):
             ciphers=self.ciphers,
             domain=self.domain,
             enabled=self.enabled,
-            id=self.id,
             min_tls=self.min_tls,
             status=self.status,
             zone_id=self.zone_id,
@@ -195,7 +183,6 @@ def get_r2_custom_domain(account_id: Optional[_builtins.str] = None,
         ciphers=pulumi.get(__ret__, 'ciphers'),
         domain=pulumi.get(__ret__, 'domain'),
         enabled=pulumi.get(__ret__, 'enabled'),
-        id=pulumi.get(__ret__, 'id'),
         min_tls=pulumi.get(__ret__, 'min_tls'),
         status=pulumi.get(__ret__, 'status'),
         zone_id=pulumi.get(__ret__, 'zone_id'),
@@ -238,7 +225,6 @@ def get_r2_custom_domain_output(account_id: pulumi.Input[Optional[_builtins.str]
         ciphers=pulumi.get(__response__, 'ciphers'),
         domain=pulumi.get(__response__, 'domain'),
         enabled=pulumi.get(__response__, 'enabled'),
-        id=pulumi.get(__response__, 'id'),
         min_tls=pulumi.get(__response__, 'min_tls'),
         status=pulumi.get(__response__, 'status'),
         zone_id=pulumi.get(__response__, 'zone_id'),

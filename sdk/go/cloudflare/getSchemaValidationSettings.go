@@ -61,8 +61,6 @@ type LookupSchemaValidationSettingsArgs struct {
 
 // A collection of values returned by getSchemaValidationSettings.
 type LookupSchemaValidationSettingsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// The default mitigation action used
 	ValidationDefaultMitigationAction  string `pulumi:"validationDefaultMitigationAction"`
 	ValidationOverrideMitigationAction string `pulumi:"validationOverrideMitigationAction"`
@@ -102,11 +100,6 @@ func (o LookupSchemaValidationSettingsResultOutput) ToLookupSchemaValidationSett
 
 func (o LookupSchemaValidationSettingsResultOutput) ToLookupSchemaValidationSettingsResultOutputWithContext(ctx context.Context) LookupSchemaValidationSettingsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupSchemaValidationSettingsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSchemaValidationSettingsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The default mitigation action used

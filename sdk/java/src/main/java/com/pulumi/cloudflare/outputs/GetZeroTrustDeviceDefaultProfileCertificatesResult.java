@@ -18,11 +18,6 @@ public final class GetZeroTrustDeviceDefaultProfileCertificatesResult {
      * 
      */
     private Boolean enabled;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable String zoneId;
 
     private GetZeroTrustDeviceDefaultProfileCertificatesResult() {}
@@ -32,13 +27,6 @@ public final class GetZeroTrustDeviceDefaultProfileCertificatesResult {
      */
     public Boolean enabled() {
         return this.enabled;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<String> zoneId() {
         return Optional.ofNullable(this.zoneId);
@@ -54,13 +42,11 @@ public final class GetZeroTrustDeviceDefaultProfileCertificatesResult {
     @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
-        private String id;
         private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetZeroTrustDeviceDefaultProfileCertificatesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
-    	      this.id = defaults.id;
     	      this.zoneId = defaults.zoneId;
         }
 
@@ -73,14 +59,6 @@ public final class GetZeroTrustDeviceDefaultProfileCertificatesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDeviceDefaultProfileCertificatesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
 
             this.zoneId = zoneId;
@@ -89,7 +67,6 @@ public final class GetZeroTrustDeviceDefaultProfileCertificatesResult {
         public GetZeroTrustDeviceDefaultProfileCertificatesResult build() {
             final var _resultValue = new GetZeroTrustDeviceDefaultProfileCertificatesResult();
             _resultValue.enabled = enabled;
-            _resultValue.id = id;
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

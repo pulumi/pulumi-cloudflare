@@ -26,16 +26,13 @@ class GetStreamCaptionLanguageResult:
     """
     A collection of values returned by getStreamCaptionLanguage.
     """
-    def __init__(__self__, account_id=None, generated=None, id=None, identifier=None, label=None, language=None, status=None):
+    def __init__(__self__, account_id=None, generated=None, identifier=None, label=None, language=None, status=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if generated and not isinstance(generated, bool):
             raise TypeError("Expected argument 'generated' to be a bool")
         pulumi.set(__self__, "generated", generated)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if identifier and not isinstance(identifier, str):
             raise TypeError("Expected argument 'identifier' to be a str")
         pulumi.set(__self__, "identifier", identifier)
@@ -64,14 +61,6 @@ class GetStreamCaptionLanguageResult:
         Whether the caption was generated via AI.
         """
         return pulumi.get(self, "generated")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -115,7 +104,6 @@ class AwaitableGetStreamCaptionLanguageResult(GetStreamCaptionLanguageResult):
         return GetStreamCaptionLanguageResult(
             account_id=self.account_id,
             generated=self.generated,
-            id=self.id,
             identifier=self.identifier,
             label=self.label,
             language=self.language,
@@ -158,7 +146,6 @@ def get_stream_caption_language(account_id: Optional[_builtins.str] = None,
     return AwaitableGetStreamCaptionLanguageResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         generated=pulumi.get(__ret__, 'generated'),
-        id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         label=pulumi.get(__ret__, 'label'),
         language=pulumi.get(__ret__, 'language'),
@@ -198,7 +185,6 @@ def get_stream_caption_language_output(account_id: pulumi.Input[Optional[_builti
     return __ret__.apply(lambda __response__: GetStreamCaptionLanguageResult(
         account_id=pulumi.get(__response__, 'account_id'),
         generated=pulumi.get(__response__, 'generated'),
-        id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
         label=pulumi.get(__response__, 'label'),
         language=pulumi.get(__response__, 'language'),

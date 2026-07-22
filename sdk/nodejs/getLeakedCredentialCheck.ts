@@ -50,10 +50,6 @@ export interface GetLeakedCredentialCheckResult {
      */
     readonly enabled: boolean;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Defines an identifier.
      */
     readonly zoneId?: string;

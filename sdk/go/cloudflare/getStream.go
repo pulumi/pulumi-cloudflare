@@ -74,8 +74,6 @@ type LookupStreamResult struct {
 	Creator string `pulumi:"creator"`
 	// The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.
 	Duration float64 `pulumi:"duration"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier string         `pulumi:"identifier"`
 	Input      GetStreamInput `pulumi:"input"`
@@ -183,11 +181,6 @@ func (o LookupStreamResultOutput) Creator() pulumi.StringOutput {
 // The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.
 func (o LookupStreamResultOutput) Duration() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupStreamResult) float64 { return v.Duration }).(pulumi.Float64Output)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupStreamResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupStreamResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A Cloudflare-generated unique identifier for a media item.

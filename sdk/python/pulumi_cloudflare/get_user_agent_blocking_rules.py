@@ -27,13 +27,10 @@ class GetUserAgentBlockingRulesResult:
     """
     A collection of values returned by getUserAgentBlockingRules.
     """
-    def __init__(__self__, description=None, id=None, max_items=None, paused=None, results=None, user_agent=None, zone_id=None):
+    def __init__(__self__, description=None, max_items=None, paused=None, results=None, user_agent=None, zone_id=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -57,14 +54,6 @@ class GetUserAgentBlockingRulesResult:
         A string to search for in the description of existing rules.
         """
         return pulumi.get(self, "description")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="maxItems")
@@ -114,7 +103,6 @@ class AwaitableGetUserAgentBlockingRulesResult(GetUserAgentBlockingRulesResult):
             yield self
         return GetUserAgentBlockingRulesResult(
             description=self.description,
-            id=self.id,
             max_items=self.max_items,
             paused=self.paused,
             results=self.results,
@@ -164,7 +152,6 @@ def get_user_agent_blocking_rules(description: Optional[_builtins.str] = None,
 
     return AwaitableGetUserAgentBlockingRulesResult(
         description=pulumi.get(__ret__, 'description'),
-        id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         paused=pulumi.get(__ret__, 'paused'),
         results=pulumi.get(__ret__, 'results'),
@@ -211,7 +198,6 @@ def get_user_agent_blocking_rules_output(description: pulumi.Input[Optional[Opti
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getUserAgentBlockingRules:getUserAgentBlockingRules', __args__, opts=opts, typ=GetUserAgentBlockingRulesResult)
     return __ret__.apply(lambda __response__: GetUserAgentBlockingRulesResult(
         description=pulumi.get(__response__, 'description'),
-        id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         paused=pulumi.get(__response__, 'paused'),
         results=pulumi.get(__response__, 'results'),

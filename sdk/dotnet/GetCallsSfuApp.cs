@@ -154,10 +154,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Created;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The date and time the item was last modified.
         /// </summary>
         public readonly string Modified;
@@ -178,8 +174,6 @@ namespace Pulumi.Cloudflare
 
             string created,
 
-            string id,
-
             string modified,
 
             string name,
@@ -189,7 +183,6 @@ namespace Pulumi.Cloudflare
             AccountId = accountId;
             AppId = appId;
             Created = created;
-            Id = id;
             Modified = modified;
             Name = name;
             Uid = uid;

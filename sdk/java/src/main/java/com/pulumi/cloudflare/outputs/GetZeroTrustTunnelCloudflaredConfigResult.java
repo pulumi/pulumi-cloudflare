@@ -24,11 +24,6 @@ public final class GetZeroTrustTunnelCloudflaredConfigResult {
     private GetZeroTrustTunnelCloudflaredConfigConfig config;
     private String createdAt;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel&#39;s configuration on the Zero Trust dashboard.
      * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
      * 
@@ -62,13 +57,6 @@ public final class GetZeroTrustTunnelCloudflaredConfigResult {
     }
     public String createdAt() {
         return this.createdAt;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel&#39;s configuration on the Zero Trust dashboard.
@@ -105,7 +93,6 @@ public final class GetZeroTrustTunnelCloudflaredConfigResult {
         private String accountId;
         private GetZeroTrustTunnelCloudflaredConfigConfig config;
         private String createdAt;
-        private String id;
         private String source;
         private String tunnelId;
         private Integer version;
@@ -115,7 +102,6 @@ public final class GetZeroTrustTunnelCloudflaredConfigResult {
     	      this.accountId = defaults.accountId;
     	      this.config = defaults.config;
     	      this.createdAt = defaults.createdAt;
-    	      this.id = defaults.id;
     	      this.source = defaults.source;
     	      this.tunnelId = defaults.tunnelId;
     	      this.version = defaults.version;
@@ -143,14 +129,6 @@ public final class GetZeroTrustTunnelCloudflaredConfigResult {
               throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredConfigResult", "createdAt");
             }
             this.createdAt = createdAt;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredConfigResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -182,7 +160,6 @@ public final class GetZeroTrustTunnelCloudflaredConfigResult {
             _resultValue.accountId = accountId;
             _resultValue.config = config;
             _resultValue.createdAt = createdAt;
-            _resultValue.id = id;
             _resultValue.source = source;
             _resultValue.tunnelId = tunnelId;
             _resultValue.version = version;

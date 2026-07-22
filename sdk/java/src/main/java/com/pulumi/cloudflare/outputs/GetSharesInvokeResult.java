@@ -28,11 +28,6 @@ public final class GetSharesInvokeResult {
      */
     private String direction;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Include recipient counts in the response.
      * 
      */
@@ -102,13 +97,6 @@ public final class GetSharesInvokeResult {
      */
     public String direction() {
         return this.direction;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Include recipient counts in the response.
@@ -196,7 +184,6 @@ public final class GetSharesInvokeResult {
     public static final class Builder {
         private String accountId;
         private String direction;
-        private String id;
         private @Nullable Boolean includeRecipientCounts;
         private @Nullable Boolean includeResources;
         private @Nullable String kind;
@@ -212,7 +199,6 @@ public final class GetSharesInvokeResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.direction = defaults.direction;
-    	      this.id = defaults.id;
     	      this.includeRecipientCounts = defaults.includeRecipientCounts;
     	      this.includeResources = defaults.includeResources;
     	      this.kind = defaults.kind;
@@ -239,14 +225,6 @@ public final class GetSharesInvokeResult {
               throw new MissingRequiredPropertyException("GetSharesInvokeResult", "direction");
             }
             this.direction = direction;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetSharesInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -326,7 +304,6 @@ public final class GetSharesInvokeResult {
             final var _resultValue = new GetSharesInvokeResult();
             _resultValue.accountId = accountId;
             _resultValue.direction = direction;
-            _resultValue.id = id;
             _resultValue.includeRecipientCounts = includeRecipientCounts;
             _resultValue.includeResources = includeResources;
             _resultValue.kind = kind;

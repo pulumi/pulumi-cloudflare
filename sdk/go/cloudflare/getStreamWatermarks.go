@@ -63,8 +63,6 @@ type LookupStreamWatermarksArgs struct {
 type LookupStreamWatermarksResult struct {
 	// The account identifier tag.
 	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -110,11 +108,6 @@ func (o LookupStreamWatermarksResultOutput) ToLookupStreamWatermarksResultOutput
 // The account identifier tag.
 func (o LookupStreamWatermarksResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStreamWatermarksResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupStreamWatermarksResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupStreamWatermarksResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

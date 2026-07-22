@@ -24,11 +24,6 @@ public final class GetAccountDnsSettingsResult {
      * 
      */
     private Boolean enforceDnsOnly;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private GetAccountDnsSettingsZoneDefaults zoneDefaults;
 
     private GetAccountDnsSettingsResult() {}
@@ -46,13 +41,6 @@ public final class GetAccountDnsSettingsResult {
     public Boolean enforceDnsOnly() {
         return this.enforceDnsOnly;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public GetAccountDnsSettingsZoneDefaults zoneDefaults() {
         return this.zoneDefaults;
     }
@@ -68,14 +56,12 @@ public final class GetAccountDnsSettingsResult {
     public static final class Builder {
         private @Nullable String accountId;
         private Boolean enforceDnsOnly;
-        private String id;
         private GetAccountDnsSettingsZoneDefaults zoneDefaults;
         public Builder() {}
         public Builder(GetAccountDnsSettingsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.enforceDnsOnly = defaults.enforceDnsOnly;
-    	      this.id = defaults.id;
     	      this.zoneDefaults = defaults.zoneDefaults;
         }
 
@@ -94,14 +80,6 @@ public final class GetAccountDnsSettingsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAccountDnsSettingsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder zoneDefaults(GetAccountDnsSettingsZoneDefaults zoneDefaults) {
             if (zoneDefaults == null) {
               throw new MissingRequiredPropertyException("GetAccountDnsSettingsResult", "zoneDefaults");
@@ -113,7 +91,6 @@ public final class GetAccountDnsSettingsResult {
             final var _resultValue = new GetAccountDnsSettingsResult();
             _resultValue.accountId = accountId;
             _resultValue.enforceDnsOnly = enforceDnsOnly;
-            _resultValue.id = id;
             _resultValue.zoneDefaults = zoneDefaults;
             return _resultValue;
         }

@@ -40,11 +40,6 @@ public final class GetPageShieldCookiesListInvokeResult {
      */
     private @Nullable String hosts;
     private @Nullable Boolean httpOnly;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private @Nullable Integer maxItems;
     private @Nullable String name;
     private @Nullable String orderBy;
@@ -91,13 +86,6 @@ public final class GetPageShieldCookiesListInvokeResult {
     }
     public Optional<Boolean> httpOnly() {
         return Optional.ofNullable(this.httpOnly);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
@@ -150,7 +138,6 @@ public final class GetPageShieldCookiesListInvokeResult {
         private @Nullable String export;
         private @Nullable String hosts;
         private @Nullable Boolean httpOnly;
-        private String id;
         private @Nullable Integer maxItems;
         private @Nullable String name;
         private @Nullable String orderBy;
@@ -171,7 +158,6 @@ public final class GetPageShieldCookiesListInvokeResult {
     	      this.export = defaults.export;
     	      this.hosts = defaults.hosts;
     	      this.httpOnly = defaults.httpOnly;
-    	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.name = defaults.name;
     	      this.orderBy = defaults.orderBy;
@@ -214,14 +200,6 @@ public final class GetPageShieldCookiesListInvokeResult {
         public Builder httpOnly(@Nullable Boolean httpOnly) {
 
             this.httpOnly = httpOnly;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetPageShieldCookiesListInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -308,7 +286,6 @@ public final class GetPageShieldCookiesListInvokeResult {
             _resultValue.export = export;
             _resultValue.hosts = hosts;
             _resultValue.httpOnly = httpOnly;
-            _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.name = name;
             _resultValue.orderBy = orderBy;

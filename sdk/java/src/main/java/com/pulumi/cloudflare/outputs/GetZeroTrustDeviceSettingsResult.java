@@ -51,11 +51,6 @@ public final class GetZeroTrustDeviceSettingsResult {
      */
     private Boolean gatewayUdpProxyEnabled;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Enable installation of cloudflare managed root certificate.
      * 
      */
@@ -120,13 +115,6 @@ public final class GetZeroTrustDeviceSettingsResult {
         return this.gatewayUdpProxyEnabled;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return Enable installation of cloudflare managed root certificate.
      * 
      */
@@ -158,7 +146,6 @@ public final class GetZeroTrustDeviceSettingsResult {
         private String externalEmergencySignalUrl;
         private Boolean gatewayProxyEnabled;
         private Boolean gatewayUdpProxyEnabled;
-        private String id;
         private Boolean rootCertificateInstallationEnabled;
         private Boolean useZtVirtualIp;
         public Builder() {}
@@ -172,7 +159,6 @@ public final class GetZeroTrustDeviceSettingsResult {
     	      this.externalEmergencySignalUrl = defaults.externalEmergencySignalUrl;
     	      this.gatewayProxyEnabled = defaults.gatewayProxyEnabled;
     	      this.gatewayUdpProxyEnabled = defaults.gatewayUdpProxyEnabled;
-    	      this.id = defaults.id;
     	      this.rootCertificateInstallationEnabled = defaults.rootCertificateInstallationEnabled;
     	      this.useZtVirtualIp = defaults.useZtVirtualIp;
         }
@@ -240,14 +226,6 @@ public final class GetZeroTrustDeviceSettingsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDeviceSettingsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder rootCertificateInstallationEnabled(Boolean rootCertificateInstallationEnabled) {
             if (rootCertificateInstallationEnabled == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDeviceSettingsResult", "rootCertificateInstallationEnabled");
@@ -273,7 +251,6 @@ public final class GetZeroTrustDeviceSettingsResult {
             _resultValue.externalEmergencySignalUrl = externalEmergencySignalUrl;
             _resultValue.gatewayProxyEnabled = gatewayProxyEnabled;
             _resultValue.gatewayUdpProxyEnabled = gatewayUdpProxyEnabled;
-            _resultValue.id = id;
             _resultValue.rootCertificateInstallationEnabled = rootCertificateInstallationEnabled;
             _resultValue.useZtVirtualIp = useZtVirtualIp;
             return _resultValue;

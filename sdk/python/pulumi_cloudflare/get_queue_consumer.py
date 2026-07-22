@@ -27,7 +27,7 @@ class GetQueueConsumerResult:
     """
     A collection of values returned by getQueueConsumer.
     """
-    def __init__(__self__, account_id=None, consumer_id=None, created_on=None, dead_letter_queue=None, id=None, queue_id=None, queue_name=None, script_name=None, settings=None, type=None):
+    def __init__(__self__, account_id=None, consumer_id=None, created_on=None, dead_letter_queue=None, queue_id=None, queue_name=None, script_name=None, settings=None, type=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -40,9 +40,6 @@ class GetQueueConsumerResult:
         if dead_letter_queue and not isinstance(dead_letter_queue, str):
             raise TypeError("Expected argument 'dead_letter_queue' to be a str")
         pulumi.set(__self__, "dead_letter_queue", dead_letter_queue)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if queue_id and not isinstance(queue_id, str):
             raise TypeError("Expected argument 'queue_id' to be a str")
         pulumi.set(__self__, "queue_id", queue_id)
@@ -89,14 +86,6 @@ class GetQueueConsumerResult:
         return pulumi.get(self, "dead_letter_queue")
 
     @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
     @pulumi.getter(name="queueId")
     def queue_id(self) -> _builtins.str:
         """
@@ -141,7 +130,6 @@ class AwaitableGetQueueConsumerResult(GetQueueConsumerResult):
             consumer_id=self.consumer_id,
             created_on=self.created_on,
             dead_letter_queue=self.dead_letter_queue,
-            id=self.id,
             queue_id=self.queue_id,
             queue_name=self.queue_name,
             script_name=self.script_name,
@@ -177,7 +165,6 @@ def get_queue_consumer(account_id: Optional[_builtins.str] = None,
         consumer_id=pulumi.get(__ret__, 'consumer_id'),
         created_on=pulumi.get(__ret__, 'created_on'),
         dead_letter_queue=pulumi.get(__ret__, 'dead_letter_queue'),
-        id=pulumi.get(__ret__, 'id'),
         queue_id=pulumi.get(__ret__, 'queue_id'),
         queue_name=pulumi.get(__ret__, 'queue_name'),
         script_name=pulumi.get(__ret__, 'script_name'),
@@ -210,7 +197,6 @@ def get_queue_consumer_output(account_id: pulumi.Input[Optional[_builtins.str]] 
         consumer_id=pulumi.get(__response__, 'consumer_id'),
         created_on=pulumi.get(__response__, 'created_on'),
         dead_letter_queue=pulumi.get(__response__, 'dead_letter_queue'),
-        id=pulumi.get(__response__, 'id'),
         queue_id=pulumi.get(__response__, 'queue_id'),
         queue_name=pulumi.get(__response__, 'queue_name'),
         script_name=pulumi.get(__response__, 'script_name'),

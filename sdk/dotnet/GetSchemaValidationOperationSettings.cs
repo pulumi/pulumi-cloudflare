@@ -135,25 +135,18 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetSchemaValidationOperationSettingsResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly string MitigationAction;
         public readonly string OperationId;
         public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetSchemaValidationOperationSettingsResult(
-            string id,
-
             string mitigationAction,
 
             string operationId,
 
             string? zoneId)
         {
-            Id = id;
             MitigationAction = mitigationAction;
             OperationId = operationId;
             ZoneId = zoneId;

@@ -314,10 +314,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Direction;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Include recipient counts in the response.
         /// </summary>
         public readonly bool? IncludeRecipientCounts;
@@ -368,8 +364,6 @@ namespace Pulumi.Cloudflare
 
             string direction,
 
-            string id,
-
             bool? includeRecipientCounts,
 
             bool? includeResources,
@@ -392,7 +386,6 @@ namespace Pulumi.Cloudflare
         {
             AccountId = accountId;
             Direction = direction;
-            Id = id;
             IncludeRecipientCounts = includeRecipientCounts;
             IncludeResources = includeResources;
             Kind = kind;

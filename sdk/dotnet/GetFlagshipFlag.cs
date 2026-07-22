@@ -175,10 +175,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string FlagKey;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
         /// </summary>
         public readonly string Key;
@@ -212,8 +208,6 @@ namespace Pulumi.Cloudflare
 
             string flagKey,
 
-            string id,
-
             string key,
 
             ImmutableArray<Outputs.GetFlagshipFlagRuleResult> rules,
@@ -232,7 +226,6 @@ namespace Pulumi.Cloudflare
             Description = description;
             Enabled = enabled;
             FlagKey = flagKey;
-            Id = id;
             Key = key;
             Rules = rules;
             Type = type;

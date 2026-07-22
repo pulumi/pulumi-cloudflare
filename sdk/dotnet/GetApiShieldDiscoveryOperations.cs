@@ -246,10 +246,6 @@ namespace Pulumi.Cloudflare
         public readonly string? Direction;
         public readonly string? Endpoint;
         public readonly ImmutableArray<string> Hosts;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int? MaxItems;
         public readonly ImmutableArray<string> Methods;
         public readonly string? Order;
@@ -267,8 +263,6 @@ namespace Pulumi.Cloudflare
             string? endpoint,
 
             ImmutableArray<string> hosts,
-
-            string id,
 
             int? maxItems,
 
@@ -288,7 +282,6 @@ namespace Pulumi.Cloudflare
             Direction = direction;
             Endpoint = endpoint;
             Hosts = hosts;
-            Id = id;
             MaxItems = maxItems;
             Methods = methods;
             Order = order;

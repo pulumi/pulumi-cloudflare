@@ -236,10 +236,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? Direction;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
         /// </summary>
         public readonly bool? IsRecent;
@@ -272,8 +268,6 @@ namespace Pulumi.Cloudflare
 
             string? direction,
 
-            string id,
-
             bool? isRecent,
 
             bool? isSimilarity,
@@ -290,7 +284,6 @@ namespace Pulumi.Cloudflare
         {
             AccountId = accountId;
             Direction = direction;
-            Id = id;
             IsRecent = isRecent;
             IsSimilarity = isSimilarity;
             MaxItems = maxItems;

@@ -26,10 +26,7 @@ class GetSchemaValidationSettingsResult:
     """
     A collection of values returned by getSchemaValidationSettings.
     """
-    def __init__(__self__, id=None, validation_default_mitigation_action=None, validation_override_mitigation_action=None, zone_id=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, validation_default_mitigation_action=None, validation_override_mitigation_action=None, zone_id=None):
         if validation_default_mitigation_action and not isinstance(validation_default_mitigation_action, str):
             raise TypeError("Expected argument 'validation_default_mitigation_action' to be a str")
         pulumi.set(__self__, "validation_default_mitigation_action", validation_default_mitigation_action)
@@ -39,14 +36,6 @@ class GetSchemaValidationSettingsResult:
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="validationDefaultMitigationAction")
@@ -76,7 +65,6 @@ class AwaitableGetSchemaValidationSettingsResult(GetSchemaValidationSettingsResu
         if False:
             yield self
         return GetSchemaValidationSettingsResult(
-            id=self.id,
             validation_default_mitigation_action=self.validation_default_mitigation_action,
             validation_override_mitigation_action=self.validation_override_mitigation_action,
             zone_id=self.zone_id)
@@ -110,7 +98,6 @@ def get_schema_validation_settings(zone_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getSchemaValidationSettings:getSchemaValidationSettings', __args__, opts=opts, typ=GetSchemaValidationSettingsResult).value
 
     return AwaitableGetSchemaValidationSettingsResult(
-        id=pulumi.get(__ret__, 'id'),
         validation_default_mitigation_action=pulumi.get(__ret__, 'validation_default_mitigation_action'),
         validation_override_mitigation_action=pulumi.get(__ret__, 'validation_override_mitigation_action'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
@@ -141,7 +128,6 @@ def get_schema_validation_settings_output(zone_id: pulumi.Input[Optional[Optiona
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getSchemaValidationSettings:getSchemaValidationSettings', __args__, opts=opts, typ=GetSchemaValidationSettingsResult)
     return __ret__.apply(lambda __response__: GetSchemaValidationSettingsResult(
-        id=pulumi.get(__response__, 'id'),
         validation_default_mitigation_action=pulumi.get(__response__, 'validation_default_mitigation_action'),
         validation_override_mitigation_action=pulumi.get(__response__, 'validation_override_mitigation_action'),
         zone_id=pulumi.get(__response__, 'zone_id')))

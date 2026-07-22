@@ -77,10 +77,6 @@ export interface GetFlagshipFlagResult {
      */
     readonly flagKey: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
      */
     readonly key: string;

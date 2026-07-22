@@ -12,23 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSchemaValidationOperationSettingsResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     private String mitigationAction;
     private String operationId;
     private @Nullable String zoneId;
 
     private GetSchemaValidationOperationSettingsResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     public String mitigationAction() {
         return this.mitigationAction;
     }
@@ -48,27 +36,17 @@ public final class GetSchemaValidationOperationSettingsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private String mitigationAction;
         private String operationId;
         private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetSchemaValidationOperationSettingsResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.mitigationAction = defaults.mitigationAction;
     	      this.operationId = defaults.operationId;
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetSchemaValidationOperationSettingsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder mitigationAction(String mitigationAction) {
             if (mitigationAction == null) {
@@ -93,7 +71,6 @@ public final class GetSchemaValidationOperationSettingsResult {
         }
         public GetSchemaValidationOperationSettingsResult build() {
             final var _resultValue = new GetSchemaValidationOperationSettingsResult();
-            _resultValue.id = id;
             _resultValue.mitigationAction = mitigationAction;
             _resultValue.operationId = operationId;
             _resultValue.zoneId = zoneId;

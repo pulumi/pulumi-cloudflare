@@ -27,7 +27,7 @@ class GetPageShieldCookiesListResult:
     """
     A collection of values returned by getPageShieldCookiesList.
     """
-    def __init__(__self__, direction=None, domain=None, export=None, hosts=None, http_only=None, id=None, max_items=None, name=None, order_by=None, page=None, page_url=None, path=None, per_page=None, results=None, same_site=None, secure=None, type=None, zone_id=None):
+    def __init__(__self__, direction=None, domain=None, export=None, hosts=None, http_only=None, max_items=None, name=None, order_by=None, page=None, page_url=None, path=None, per_page=None, results=None, same_site=None, secure=None, type=None, zone_id=None):
         if direction and not isinstance(direction, str):
             raise TypeError("Expected argument 'direction' to be a str")
         pulumi.set(__self__, "direction", direction)
@@ -43,9 +43,6 @@ class GetPageShieldCookiesListResult:
         if http_only and not isinstance(http_only, bool):
             raise TypeError("Expected argument 'http_only' to be a bool")
         pulumi.set(__self__, "http_only", http_only)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -123,14 +120,6 @@ class GetPageShieldCookiesListResult:
         return pulumi.get(self, "http_only")
 
     @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
     @pulumi.getter(name="maxItems")
     def max_items(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "max_items")
@@ -202,7 +191,6 @@ class AwaitableGetPageShieldCookiesListResult(GetPageShieldCookiesListResult):
             export=self.export,
             hosts=self.hosts,
             http_only=self.http_only,
-            id=self.id,
             max_items=self.max_items,
             name=self.name,
             order_by=self.order_by,
@@ -301,7 +289,6 @@ def get_page_shield_cookies_list(direction: Optional[_builtins.str] = None,
         export=pulumi.get(__ret__, 'export'),
         hosts=pulumi.get(__ret__, 'hosts'),
         http_only=pulumi.get(__ret__, 'http_only'),
-        id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         name=pulumi.get(__ret__, 'name'),
         order_by=pulumi.get(__ret__, 'order_by'),
@@ -397,7 +384,6 @@ def get_page_shield_cookies_list_output(direction: pulumi.Input[Optional[Optiona
         export=pulumi.get(__response__, 'export'),
         hosts=pulumi.get(__response__, 'hosts'),
         http_only=pulumi.get(__response__, 'http_only'),
-        id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         name=pulumi.get(__response__, 'name'),
         order_by=pulumi.get(__response__, 'order_by'),

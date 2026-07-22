@@ -46,10 +46,6 @@ export interface GetContentScanningArgs {
  */
 export interface GetContentScanningResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Defines the last modification date (ISO 8601) of the Content Scanning status.
      */
     readonly modified: string;

@@ -146,10 +146,6 @@ namespace Pulumi.Cloudflare
     {
         public readonly string? AccountId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
@@ -166,8 +162,6 @@ namespace Pulumi.Cloudflare
         private GetZeroTrustDeviceIpProfilesResult(
             string? accountId,
 
-            string id,
-
             int? maxItems,
 
             int perPage,
@@ -175,7 +169,6 @@ namespace Pulumi.Cloudflare
             ImmutableArray<Outputs.GetZeroTrustDeviceIpProfilesResultResult> results)
         {
             AccountId = accountId;
-            Id = id;
             MaxItems = maxItems;
             PerPage = perPage;
             Results = results;

@@ -29,11 +29,6 @@ public final class GetDnsRecordsInvokeResult {
      */
     private String direction;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
      * 
      */
@@ -114,13 +109,6 @@ public final class GetDnsRecordsInvokeResult {
      */
     public String direction() {
         return this.direction;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
@@ -229,7 +217,6 @@ public final class GetDnsRecordsInvokeResult {
         private @Nullable GetDnsRecordsComment comment;
         private @Nullable GetDnsRecordsContent content;
         private String direction;
-        private String id;
         private Boolean includeShadowMetadata;
         private String match;
         private @Nullable Integer maxItems;
@@ -250,7 +237,6 @@ public final class GetDnsRecordsInvokeResult {
     	      this.comment = defaults.comment;
     	      this.content = defaults.content;
     	      this.direction = defaults.direction;
-    	      this.id = defaults.id;
     	      this.includeShadowMetadata = defaults.includeShadowMetadata;
     	      this.match = defaults.match;
     	      this.maxItems = defaults.maxItems;
@@ -285,14 +271,6 @@ public final class GetDnsRecordsInvokeResult {
               throw new MissingRequiredPropertyException("GetDnsRecordsInvokeResult", "direction");
             }
             this.direction = direction;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetDnsRecordsInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -399,7 +377,6 @@ public final class GetDnsRecordsInvokeResult {
             _resultValue.comment = comment;
             _resultValue.content = content;
             _resultValue.direction = direction;
-            _resultValue.id = id;
             _resultValue.includeShadowMetadata = includeShadowMetadata;
             _resultValue.match = match;
             _resultValue.maxItems = maxItems;

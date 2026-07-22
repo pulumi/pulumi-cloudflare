@@ -22,11 +22,6 @@ public final class GetMagicNetworkMonitoringConfigurationResult {
      */
     private Double defaultSampling;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return The account name.
      * 
      */
@@ -44,13 +39,6 @@ public final class GetMagicNetworkMonitoringConfigurationResult {
      */
     public Double defaultSampling() {
         return this.defaultSampling;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return The account name.
@@ -77,7 +65,6 @@ public final class GetMagicNetworkMonitoringConfigurationResult {
     public static final class Builder {
         private @Nullable String accountId;
         private Double defaultSampling;
-        private String id;
         private String name;
         private List<String> routerIps;
         private List<GetMagicNetworkMonitoringConfigurationWarpDevice> warpDevices;
@@ -86,7 +73,6 @@ public final class GetMagicNetworkMonitoringConfigurationResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.defaultSampling = defaults.defaultSampling;
-    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.routerIps = defaults.routerIps;
     	      this.warpDevices = defaults.warpDevices;
@@ -104,14 +90,6 @@ public final class GetMagicNetworkMonitoringConfigurationResult {
               throw new MissingRequiredPropertyException("GetMagicNetworkMonitoringConfigurationResult", "defaultSampling");
             }
             this.defaultSampling = defaultSampling;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetMagicNetworkMonitoringConfigurationResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -148,7 +126,6 @@ public final class GetMagicNetworkMonitoringConfigurationResult {
             final var _resultValue = new GetMagicNetworkMonitoringConfigurationResult();
             _resultValue.accountId = accountId;
             _resultValue.defaultSampling = defaultSampling;
-            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.routerIps = routerIps;
             _resultValue.warpDevices = warpDevices;

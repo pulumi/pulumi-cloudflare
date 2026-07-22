@@ -70,10 +70,6 @@ export interface GetZeroTrustDexTestsResult {
      */
     readonly accountId?: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Filter by test type.
      * Available values: "http", "traceroute".
      */

@@ -27,7 +27,7 @@ class GetStreamLiveInputResult:
     """
     A collection of values returned by getStreamLiveInput.
     """
-    def __init__(__self__, account_id=None, created=None, delete_recording_after_days=None, enabled=None, id=None, keys_rotated_at=None, live_input_identifier=None, meta=None, modified=None, prefer_low_latency=None, recording=None, rtmps=None, rtmps_playback=None, srt=None, srt_playback=None, status=None, uid=None, web_rtc=None, web_rtc_playback=None):
+    def __init__(__self__, account_id=None, created=None, delete_recording_after_days=None, enabled=None, keys_rotated_at=None, live_input_identifier=None, meta=None, modified=None, prefer_low_latency=None, recording=None, rtmps=None, rtmps_playback=None, srt=None, srt_playback=None, status=None, uid=None, web_rtc=None, web_rtc_playback=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -40,9 +40,6 @@ class GetStreamLiveInputResult:
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
         pulumi.set(__self__, "enabled", enabled)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if keys_rotated_at and not isinstance(keys_rotated_at, str):
             raise TypeError("Expected argument 'keys_rotated_at' to be a str")
         pulumi.set(__self__, "keys_rotated_at", keys_rotated_at)
@@ -117,14 +114,6 @@ class GetStreamLiveInputResult:
         Indicates whether the live input is enabled and can accept streams.
         """
         return pulumi.get(self, "enabled")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="keysRotatedAt")
@@ -250,7 +239,6 @@ class AwaitableGetStreamLiveInputResult(GetStreamLiveInputResult):
             created=self.created,
             delete_recording_after_days=self.delete_recording_after_days,
             enabled=self.enabled,
-            id=self.id,
             keys_rotated_at=self.keys_rotated_at,
             live_input_identifier=self.live_input_identifier,
             meta=self.meta,
@@ -301,7 +289,6 @@ def get_stream_live_input(account_id: Optional[_builtins.str] = None,
         created=pulumi.get(__ret__, 'created'),
         delete_recording_after_days=pulumi.get(__ret__, 'delete_recording_after_days'),
         enabled=pulumi.get(__ret__, 'enabled'),
-        id=pulumi.get(__ret__, 'id'),
         keys_rotated_at=pulumi.get(__ret__, 'keys_rotated_at'),
         live_input_identifier=pulumi.get(__ret__, 'live_input_identifier'),
         meta=pulumi.get(__ret__, 'meta'),
@@ -349,7 +336,6 @@ def get_stream_live_input_output(account_id: pulumi.Input[Optional[_builtins.str
         created=pulumi.get(__response__, 'created'),
         delete_recording_after_days=pulumi.get(__response__, 'delete_recording_after_days'),
         enabled=pulumi.get(__response__, 'enabled'),
-        id=pulumi.get(__response__, 'id'),
         keys_rotated_at=pulumi.get(__response__, 'keys_rotated_at'),
         live_input_identifier=pulumi.get(__response__, 'live_input_identifier'),
         meta=pulumi.get(__response__, 'meta'),

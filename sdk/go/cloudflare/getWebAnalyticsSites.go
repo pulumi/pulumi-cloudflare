@@ -66,8 +66,6 @@ type LookupWebAnalyticsSitesArgs struct {
 type LookupWebAnalyticsSitesResult struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The property used to sort the list of results.
@@ -119,11 +117,6 @@ func (o LookupWebAnalyticsSitesResultOutput) ToLookupWebAnalyticsSitesResultOutp
 // Identifier.
 func (o LookupWebAnalyticsSitesResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAnalyticsSitesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupWebAnalyticsSitesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWebAnalyticsSitesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

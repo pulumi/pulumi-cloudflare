@@ -74,8 +74,6 @@ type LookupWorkersKvNamespacesResult struct {
 	// Direction to order namespaces.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Field to order results by.
@@ -136,11 +134,6 @@ func (o LookupWorkersKvNamespacesResultOutput) AccountId() pulumi.StringPtrOutpu
 // Available values: "asc", "desc".
 func (o LookupWorkersKvNamespacesResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkersKvNamespacesResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupWorkersKvNamespacesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkersKvNamespacesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

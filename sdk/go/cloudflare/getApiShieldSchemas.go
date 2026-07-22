@@ -68,8 +68,6 @@ type LookupApiShieldSchemasArgs struct {
 
 // A collection of values returned by getApiShieldSchemas.
 type LookupApiShieldSchemasResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Omit the source-files of schemas and only retrieve their meta-data.
@@ -120,11 +118,6 @@ func (o LookupApiShieldSchemasResultOutput) ToLookupApiShieldSchemasResultOutput
 
 func (o LookupApiShieldSchemasResultOutput) ToLookupApiShieldSchemasResultOutputWithContext(ctx context.Context) LookupApiShieldSchemasResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupApiShieldSchemasResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupApiShieldSchemasResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

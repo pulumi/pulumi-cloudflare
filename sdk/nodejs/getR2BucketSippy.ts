@@ -62,10 +62,6 @@ export interface GetR2BucketSippyResult {
      */
     readonly enabled: boolean;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Details about the configured source bucket.
      */
     readonly source: outputs.GetR2BucketSippySource;

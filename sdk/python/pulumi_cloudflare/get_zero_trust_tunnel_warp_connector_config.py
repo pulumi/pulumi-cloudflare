@@ -27,7 +27,7 @@ class GetZeroTrustTunnelWarpConnectorConfigResult:
     """
     A collection of values returned by getZeroTrustTunnelWarpConnectorConfig.
     """
-    def __init__(__self__, account_id=None, config=None, configuration_version=None, created_at=None, ha_mode=None, id=None, tunnel_id=None, updated_at=None):
+    def __init__(__self__, account_id=None, config=None, configuration_version=None, created_at=None, ha_mode=None, tunnel_id=None, updated_at=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -43,9 +43,6 @@ class GetZeroTrustTunnelWarpConnectorConfigResult:
         if ha_mode and not isinstance(ha_mode, str):
             raise TypeError("Expected argument 'ha_mode' to be a str")
         pulumi.set(__self__, "ha_mode", ha_mode)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if tunnel_id and not isinstance(tunnel_id, str):
             raise TypeError("Expected argument 'tunnel_id' to be a str")
         pulumi.set(__self__, "tunnel_id", tunnel_id)
@@ -95,14 +92,6 @@ class GetZeroTrustTunnelWarpConnectorConfigResult:
         return pulumi.get(self, "ha_mode")
 
     @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
     @pulumi.getter(name="tunnelId")
     def tunnel_id(self) -> _builtins.str:
         """
@@ -130,7 +119,6 @@ class AwaitableGetZeroTrustTunnelWarpConnectorConfigResult(GetZeroTrustTunnelWar
             configuration_version=self.configuration_version,
             created_at=self.created_at,
             ha_mode=self.ha_mode,
-            id=self.id,
             tunnel_id=self.tunnel_id,
             updated_at=self.updated_at)
 
@@ -172,7 +160,6 @@ def get_zero_trust_tunnel_warp_connector_config(account_id: Optional[_builtins.s
         configuration_version=pulumi.get(__ret__, 'configuration_version'),
         created_at=pulumi.get(__ret__, 'created_at'),
         ha_mode=pulumi.get(__ret__, 'ha_mode'),
-        id=pulumi.get(__ret__, 'id'),
         tunnel_id=pulumi.get(__ret__, 'tunnel_id'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
 def get_zero_trust_tunnel_warp_connector_config_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -211,6 +198,5 @@ def get_zero_trust_tunnel_warp_connector_config_output(account_id: pulumi.Input[
         configuration_version=pulumi.get(__response__, 'configuration_version'),
         created_at=pulumi.get(__response__, 'created_at'),
         ha_mode=pulumi.get(__response__, 'ha_mode'),
-        id=pulumi.get(__response__, 'id'),
         tunnel_id=pulumi.get(__response__, 'tunnel_id'),
         updated_at=pulumi.get(__response__, 'updated_at')))

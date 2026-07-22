@@ -134,10 +134,6 @@ namespace Pulumi.Cloudflare
         /// When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
         /// </summary>
         public readonly bool EnforceDnsOnly;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly Outputs.GetAccountDnsSettingsZoneDefaultsResult ZoneDefaults;
 
         [OutputConstructor]
@@ -146,13 +142,10 @@ namespace Pulumi.Cloudflare
 
             bool enforceDnsOnly,
 
-            string id,
-
             Outputs.GetAccountDnsSettingsZoneDefaultsResult zoneDefaults)
         {
             AccountId = accountId;
             EnforceDnsOnly = enforceDnsOnly;
-            Id = id;
             ZoneDefaults = zoneDefaults;
         }
     }

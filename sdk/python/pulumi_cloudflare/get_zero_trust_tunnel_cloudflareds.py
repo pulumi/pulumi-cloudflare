@@ -27,7 +27,7 @@ class GetZeroTrustTunnelCloudflaredsResult:
     """
     A collection of values returned by getZeroTrustTunnelCloudflareds.
     """
-    def __init__(__self__, account_id=None, exclude_prefix=None, existed_at=None, id=None, include_prefix=None, is_deleted=None, max_items=None, name=None, results=None, status=None, uuid=None, was_active_at=None, was_inactive_at=None):
+    def __init__(__self__, account_id=None, exclude_prefix=None, existed_at=None, include_prefix=None, is_deleted=None, max_items=None, name=None, results=None, status=None, uuid=None, was_active_at=None, was_inactive_at=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -37,9 +37,6 @@ class GetZeroTrustTunnelCloudflaredsResult:
         if existed_at and not isinstance(existed_at, str):
             raise TypeError("Expected argument 'existed_at' to be a str")
         pulumi.set(__self__, "existed_at", existed_at)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if include_prefix and not isinstance(include_prefix, str):
             raise TypeError("Expected argument 'include_prefix' to be a str")
         pulumi.set(__self__, "include_prefix", include_prefix)
@@ -88,14 +85,6 @@ class GetZeroTrustTunnelCloudflaredsResult:
         If provided, include only resources that were created (and not deleted) before this time. URL encoded.
         """
         return pulumi.get(self, "existed_at")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="includePrefix")
@@ -171,7 +160,6 @@ class AwaitableGetZeroTrustTunnelCloudflaredsResult(GetZeroTrustTunnelCloudflare
             account_id=self.account_id,
             exclude_prefix=self.exclude_prefix,
             existed_at=self.existed_at,
-            id=self.id,
             include_prefix=self.include_prefix,
             is_deleted=self.is_deleted,
             max_items=self.max_items,
@@ -252,7 +240,6 @@ def get_zero_trust_tunnel_cloudflareds(account_id: Optional[_builtins.str] = Non
         account_id=pulumi.get(__ret__, 'account_id'),
         exclude_prefix=pulumi.get(__ret__, 'exclude_prefix'),
         existed_at=pulumi.get(__ret__, 'existed_at'),
-        id=pulumi.get(__ret__, 'id'),
         include_prefix=pulumi.get(__ret__, 'include_prefix'),
         is_deleted=pulumi.get(__ret__, 'is_deleted'),
         max_items=pulumi.get(__ret__, 'max_items'),
@@ -330,7 +317,6 @@ def get_zero_trust_tunnel_cloudflareds_output(account_id: pulumi.Input[Optional[
         account_id=pulumi.get(__response__, 'account_id'),
         exclude_prefix=pulumi.get(__response__, 'exclude_prefix'),
         existed_at=pulumi.get(__response__, 'existed_at'),
-        id=pulumi.get(__response__, 'id'),
         include_prefix=pulumi.get(__response__, 'include_prefix'),
         is_deleted=pulumi.get(__response__, 'is_deleted'),
         max_items=pulumi.get(__response__, 'max_items'),

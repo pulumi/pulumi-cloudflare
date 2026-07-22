@@ -27,7 +27,7 @@ class GetMoqRelaysResult:
     """
     A collection of values returned by getMoqRelays.
     """
-    def __init__(__self__, account_id=None, asc=None, created_after=None, created_before=None, id=None, max_items=None, per_page=None, results=None):
+    def __init__(__self__, account_id=None, asc=None, created_after=None, created_before=None, max_items=None, per_page=None, results=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -40,9 +40,6 @@ class GetMoqRelaysResult:
         if created_before and not isinstance(created_before, str):
             raise TypeError("Expected argument 'created_before' to be a str")
         pulumi.set(__self__, "created_before", created_before)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -91,14 +88,6 @@ class GetMoqRelaysResult:
         return pulumi.get(self, "created_before")
 
     @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
     @pulumi.getter(name="maxItems")
     def max_items(self) -> Optional[_builtins.int]:
         """
@@ -133,7 +122,6 @@ class AwaitableGetMoqRelaysResult(GetMoqRelaysResult):
             asc=self.asc,
             created_after=self.created_after,
             created_before=self.created_before,
-            id=self.id,
             max_items=self.max_items,
             per_page=self.per_page,
             results=self.results)
@@ -176,7 +164,6 @@ def get_moq_relays(account_id: Optional[_builtins.str] = None,
         asc=pulumi.get(__ret__, 'asc'),
         created_after=pulumi.get(__ret__, 'created_after'),
         created_before=pulumi.get(__ret__, 'created_before'),
-        id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         per_page=pulumi.get(__ret__, 'per_page'),
         results=pulumi.get(__ret__, 'results'))
@@ -216,7 +203,6 @@ def get_moq_relays_output(account_id: pulumi.Input[Optional[_builtins.str]] = No
         asc=pulumi.get(__response__, 'asc'),
         created_after=pulumi.get(__response__, 'created_after'),
         created_before=pulumi.get(__response__, 'created_before'),
-        id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         per_page=pulumi.get(__response__, 'per_page'),
         results=pulumi.get(__response__, 'results')))

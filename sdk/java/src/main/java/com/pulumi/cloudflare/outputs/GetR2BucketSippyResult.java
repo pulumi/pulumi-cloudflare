@@ -34,11 +34,6 @@ public final class GetR2BucketSippyResult {
      */
     private Boolean enabled;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Details about the configured source bucket.
      * 
      */
@@ -74,13 +69,6 @@ public final class GetR2BucketSippyResult {
         return this.enabled;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return Details about the configured source bucket.
      * 
      */
@@ -101,7 +89,6 @@ public final class GetR2BucketSippyResult {
         private String bucketName;
         private GetR2BucketSippyDestination destination;
         private Boolean enabled;
-        private String id;
         private GetR2BucketSippySource source;
         public Builder() {}
         public Builder(GetR2BucketSippyResult defaults) {
@@ -110,7 +97,6 @@ public final class GetR2BucketSippyResult {
     	      this.bucketName = defaults.bucketName;
     	      this.destination = defaults.destination;
     	      this.enabled = defaults.enabled;
-    	      this.id = defaults.id;
     	      this.source = defaults.source;
         }
 
@@ -147,14 +133,6 @@ public final class GetR2BucketSippyResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetR2BucketSippyResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder source(GetR2BucketSippySource source) {
             if (source == null) {
               throw new MissingRequiredPropertyException("GetR2BucketSippyResult", "source");
@@ -168,7 +146,6 @@ public final class GetR2BucketSippyResult {
             _resultValue.bucketName = bucketName;
             _resultValue.destination = destination;
             _resultValue.enabled = enabled;
-            _resultValue.id = id;
             _resultValue.source = source;
             return _resultValue;
         }

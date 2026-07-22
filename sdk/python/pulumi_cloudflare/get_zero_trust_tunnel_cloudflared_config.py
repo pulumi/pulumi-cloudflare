@@ -27,7 +27,7 @@ class GetZeroTrustTunnelCloudflaredConfigResult:
     """
     A collection of values returned by getZeroTrustTunnelCloudflaredConfig.
     """
-    def __init__(__self__, account_id=None, config=None, created_at=None, id=None, source=None, tunnel_id=None, version=None):
+    def __init__(__self__, account_id=None, config=None, created_at=None, source=None, tunnel_id=None, version=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -37,9 +37,6 @@ class GetZeroTrustTunnelCloudflaredConfigResult:
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if source and not isinstance(source, str):
             raise TypeError("Expected argument 'source' to be a str")
         pulumi.set(__self__, "source", source)
@@ -70,14 +67,6 @@ class GetZeroTrustTunnelCloudflaredConfigResult:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
         return pulumi.get(self, "created_at")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -114,7 +103,6 @@ class AwaitableGetZeroTrustTunnelCloudflaredConfigResult(GetZeroTrustTunnelCloud
             account_id=self.account_id,
             config=self.config,
             created_at=self.created_at,
-            id=self.id,
             source=self.source,
             tunnel_id=self.tunnel_id,
             version=self.version)
@@ -157,7 +145,6 @@ def get_zero_trust_tunnel_cloudflared_config(account_id: Optional[_builtins.str]
         account_id=pulumi.get(__ret__, 'account_id'),
         config=pulumi.get(__ret__, 'config'),
         created_at=pulumi.get(__ret__, 'created_at'),
-        id=pulumi.get(__ret__, 'id'),
         source=pulumi.get(__ret__, 'source'),
         tunnel_id=pulumi.get(__ret__, 'tunnel_id'),
         version=pulumi.get(__ret__, 'version'))
@@ -197,7 +184,6 @@ def get_zero_trust_tunnel_cloudflared_config_output(account_id: pulumi.Input[Opt
         account_id=pulumi.get(__response__, 'account_id'),
         config=pulumi.get(__response__, 'config'),
         created_at=pulumi.get(__response__, 'created_at'),
-        id=pulumi.get(__response__, 'id'),
         source=pulumi.get(__response__, 'source'),
         tunnel_id=pulumi.get(__response__, 'tunnel_id'),
         version=pulumi.get(__response__, 'version')))

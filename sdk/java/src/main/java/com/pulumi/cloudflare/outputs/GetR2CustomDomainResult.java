@@ -39,11 +39,6 @@ public final class GetR2CustomDomainResult {
      */
     private Boolean enabled;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
      * Available values: &#34;1.0&#34;, &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
      * 
@@ -98,13 +93,6 @@ public final class GetR2CustomDomainResult {
         return this.enabled;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
      * Available values: &#34;1.0&#34;, &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
      * 
@@ -144,7 +132,6 @@ public final class GetR2CustomDomainResult {
         private List<String> ciphers;
         private String domain;
         private Boolean enabled;
-        private String id;
         private String minTls;
         private GetR2CustomDomainStatus status;
         private String zoneId;
@@ -157,7 +144,6 @@ public final class GetR2CustomDomainResult {
     	      this.ciphers = defaults.ciphers;
     	      this.domain = defaults.domain;
     	      this.enabled = defaults.enabled;
-    	      this.id = defaults.id;
     	      this.minTls = defaults.minTls;
     	      this.status = defaults.status;
     	      this.zoneId = defaults.zoneId;
@@ -208,14 +194,6 @@ public final class GetR2CustomDomainResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetR2CustomDomainResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder minTls(String minTls) {
             if (minTls == null) {
               throw new MissingRequiredPropertyException("GetR2CustomDomainResult", "minTls");
@@ -254,7 +232,6 @@ public final class GetR2CustomDomainResult {
             _resultValue.ciphers = ciphers;
             _resultValue.domain = domain;
             _resultValue.enabled = enabled;
-            _resultValue.id = id;
             _resultValue.minTls = minTls;
             _resultValue.status = status;
             _resultValue.zoneId = zoneId;

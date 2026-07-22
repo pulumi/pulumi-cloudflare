@@ -61,8 +61,6 @@ type LookupRegionalHostnamesArgs struct {
 
 // A collection of values returned by getRegionalHostnames.
 type LookupRegionalHostnamesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -105,11 +103,6 @@ func (o LookupRegionalHostnamesResultOutput) ToLookupRegionalHostnamesResultOutp
 
 func (o LookupRegionalHostnamesResultOutput) ToLookupRegionalHostnamesResultOutputWithContext(ctx context.Context) LookupRegionalHostnamesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupRegionalHostnamesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRegionalHostnamesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

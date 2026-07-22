@@ -143,10 +143,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Details about the configured source bucket.
         /// </summary>
         public readonly Outputs.GetR2BucketSippySourceResult Source;
@@ -161,15 +157,12 @@ namespace Pulumi.Cloudflare
 
             bool enabled,
 
-            string id,
-
             Outputs.GetR2BucketSippySourceResult source)
         {
             AccountId = accountId;
             BucketName = bucketName;
             Destination = destination;
             Enabled = enabled;
-            Id = id;
             Source = source;
         }
     }

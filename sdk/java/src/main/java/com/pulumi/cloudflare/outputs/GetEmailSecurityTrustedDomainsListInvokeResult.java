@@ -28,11 +28,6 @@ public final class GetEmailSecurityTrustedDomainsListInvokeResult {
      */
     private @Nullable String direction;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
      * 
      */
@@ -80,13 +75,6 @@ public final class GetEmailSecurityTrustedDomainsListInvokeResult {
      */
     public Optional<String> direction() {
         return Optional.ofNullable(this.direction);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
@@ -146,7 +134,6 @@ public final class GetEmailSecurityTrustedDomainsListInvokeResult {
     public static final class Builder {
         private @Nullable String accountId;
         private @Nullable String direction;
-        private String id;
         private @Nullable Boolean isRecent;
         private @Nullable Boolean isSimilarity;
         private @Nullable Integer maxItems;
@@ -159,7 +146,6 @@ public final class GetEmailSecurityTrustedDomainsListInvokeResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.direction = defaults.direction;
-    	      this.id = defaults.id;
     	      this.isRecent = defaults.isRecent;
     	      this.isSimilarity = defaults.isSimilarity;
     	      this.maxItems = defaults.maxItems;
@@ -179,14 +165,6 @@ public final class GetEmailSecurityTrustedDomainsListInvokeResult {
         public Builder direction(@Nullable String direction) {
 
             this.direction = direction;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetEmailSecurityTrustedDomainsListInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -240,7 +218,6 @@ public final class GetEmailSecurityTrustedDomainsListInvokeResult {
             final var _resultValue = new GetEmailSecurityTrustedDomainsListInvokeResult();
             _resultValue.accountId = accountId;
             _resultValue.direction = direction;
-            _resultValue.id = id;
             _resultValue.isRecent = isRecent;
             _resultValue.isSimilarity = isSimilarity;
             _resultValue.maxItems = maxItems;

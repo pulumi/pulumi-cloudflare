@@ -27,16 +27,13 @@ class GetSharesResult:
     """
     A collection of values returned by getShares.
     """
-    def __init__(__self__, account_id=None, direction=None, id=None, include_recipient_counts=None, include_resources=None, kind=None, max_items=None, order=None, resource_types=None, results=None, status=None, tags=None, target_type=None):
+    def __init__(__self__, account_id=None, direction=None, include_recipient_counts=None, include_resources=None, kind=None, max_items=None, order=None, resource_types=None, results=None, status=None, tags=None, target_type=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if direction and not isinstance(direction, str):
             raise TypeError("Expected argument 'direction' to be a str")
         pulumi.set(__self__, "direction", direction)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if include_recipient_counts and not isinstance(include_recipient_counts, bool):
             raise TypeError("Expected argument 'include_recipient_counts' to be a bool")
         pulumi.set(__self__, "include_recipient_counts", include_recipient_counts)
@@ -84,14 +81,6 @@ class GetSharesResult:
         Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="includeRecipientCounts")
@@ -186,7 +175,6 @@ class AwaitableGetSharesResult(GetSharesResult):
         return GetSharesResult(
             account_id=self.account_id,
             direction=self.direction,
-            id=self.id,
             include_recipient_counts=self.include_recipient_counts,
             include_resources=self.include_resources,
             kind=self.kind,
@@ -264,7 +252,6 @@ def get_shares(account_id: Optional[_builtins.str] = None,
     return AwaitableGetSharesResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         direction=pulumi.get(__ret__, 'direction'),
-        id=pulumi.get(__ret__, 'id'),
         include_recipient_counts=pulumi.get(__ret__, 'include_recipient_counts'),
         include_resources=pulumi.get(__ret__, 'include_resources'),
         kind=pulumi.get(__ret__, 'kind'),
@@ -339,7 +326,6 @@ def get_shares_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
     return __ret__.apply(lambda __response__: GetSharesResult(
         account_id=pulumi.get(__response__, 'account_id'),
         direction=pulumi.get(__response__, 'direction'),
-        id=pulumi.get(__response__, 'id'),
         include_recipient_counts=pulumi.get(__response__, 'include_recipient_counts'),
         include_resources=pulumi.get(__response__, 'include_resources'),
         kind=pulumi.get(__response__, 'kind'),

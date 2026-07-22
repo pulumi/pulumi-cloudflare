@@ -32,11 +32,6 @@ public final class GetZeroTrustTunnelCloudflaredRoutesInvokeResult {
      */
     private @Nullable String existedAt;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return If `true`, only include deleted routes. If `false`, exclude deleted routes. If empty, all routes will be included.
      * 
      */
@@ -103,13 +98,6 @@ public final class GetZeroTrustTunnelCloudflaredRoutesInvokeResult {
      */
     public Optional<String> existedAt() {
         return Optional.ofNullable(this.existedAt);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return If `true`, only include deleted routes. If `false`, exclude deleted routes. If empty, all routes will be included.
@@ -187,7 +175,6 @@ public final class GetZeroTrustTunnelCloudflaredRoutesInvokeResult {
         private @Nullable String accountId;
         private String comment;
         private @Nullable String existedAt;
-        private String id;
         private @Nullable Boolean isDeleted;
         private @Nullable Integer maxItems;
         private @Nullable String networkSubset;
@@ -203,7 +190,6 @@ public final class GetZeroTrustTunnelCloudflaredRoutesInvokeResult {
     	      this.accountId = defaults.accountId;
     	      this.comment = defaults.comment;
     	      this.existedAt = defaults.existedAt;
-    	      this.id = defaults.id;
     	      this.isDeleted = defaults.isDeleted;
     	      this.maxItems = defaults.maxItems;
     	      this.networkSubset = defaults.networkSubset;
@@ -233,14 +219,6 @@ public final class GetZeroTrustTunnelCloudflaredRoutesInvokeResult {
         public Builder existedAt(@Nullable String existedAt) {
 
             this.existedAt = existedAt;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredRoutesInvokeResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -310,7 +288,6 @@ public final class GetZeroTrustTunnelCloudflaredRoutesInvokeResult {
             _resultValue.accountId = accountId;
             _resultValue.comment = comment;
             _resultValue.existedAt = existedAt;
-            _resultValue.id = id;
             _resultValue.isDeleted = isDeleted;
             _resultValue.maxItems = maxItems;
             _resultValue.networkSubset = networkSubset;

@@ -26,13 +26,10 @@ class GetMtlsCertificateAssociationsResult:
     """
     A collection of values returned by getMtlsCertificateAssociations.
     """
-    def __init__(__self__, account_id=None, id=None, mtls_certificate_id=None, service=None, status=None):
+    def __init__(__self__, account_id=None, mtls_certificate_id=None, service=None, status=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if mtls_certificate_id and not isinstance(mtls_certificate_id, str):
             raise TypeError("Expected argument 'mtls_certificate_id' to be a str")
         pulumi.set(__self__, "mtls_certificate_id", mtls_certificate_id)
@@ -50,14 +47,6 @@ class GetMtlsCertificateAssociationsResult:
         Identifier.
         """
         return pulumi.get(self, "account_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="mtlsCertificateId")
@@ -91,7 +80,6 @@ class AwaitableGetMtlsCertificateAssociationsResult(GetMtlsCertificateAssociatio
             yield self
         return GetMtlsCertificateAssociationsResult(
             account_id=self.account_id,
-            id=self.id,
             mtls_certificate_id=self.mtls_certificate_id,
             service=self.service,
             status=self.status)
@@ -128,7 +116,6 @@ def get_mtls_certificate_associations(account_id: Optional[_builtins.str] = None
 
     return AwaitableGetMtlsCertificateAssociationsResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-        id=pulumi.get(__ret__, 'id'),
         mtls_certificate_id=pulumi.get(__ret__, 'mtls_certificate_id'),
         service=pulumi.get(__ret__, 'service'),
         status=pulumi.get(__ret__, 'status'))
@@ -162,7 +149,6 @@ def get_mtls_certificate_associations_output(account_id: pulumi.Input[Optional[_
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getMtlsCertificateAssociations:getMtlsCertificateAssociations', __args__, opts=opts, typ=GetMtlsCertificateAssociationsResult)
     return __ret__.apply(lambda __response__: GetMtlsCertificateAssociationsResult(
         account_id=pulumi.get(__response__, 'account_id'),
-        id=pulumi.get(__response__, 'id'),
         mtls_certificate_id=pulumi.get(__response__, 'mtls_certificate_id'),
         service=pulumi.get(__response__, 'service'),
         status=pulumi.get(__response__, 'status')))

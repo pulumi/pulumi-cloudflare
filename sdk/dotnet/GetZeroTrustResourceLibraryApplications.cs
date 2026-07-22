@@ -152,10 +152,6 @@ namespace Pulumi.Cloudflare
     {
         public readonly string AccountId;
         public readonly string? Filter;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly int Limit;
         public readonly int? MaxItems;
         public readonly int Offset;
@@ -168,8 +164,6 @@ namespace Pulumi.Cloudflare
             string accountId,
 
             string? filter,
-
-            string id,
 
             int limit,
 
@@ -185,7 +179,6 @@ namespace Pulumi.Cloudflare
         {
             AccountId = accountId;
             Filter = filter;
-            Id = id;
             Limit = limit;
             MaxItems = maxItems;
             Offset = offset;

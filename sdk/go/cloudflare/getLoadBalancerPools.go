@@ -66,8 +66,6 @@ type LookupLoadBalancerPoolsArgs struct {
 type LookupLoadBalancerPoolsResult struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The ID of the Monitor to use for checking the health of origins within this pool.
@@ -117,11 +115,6 @@ func (o LookupLoadBalancerPoolsResultOutput) ToLookupLoadBalancerPoolsResultOutp
 // Identifier.
 func (o LookupLoadBalancerPoolsResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLoadBalancerPoolsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupLoadBalancerPoolsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupLoadBalancerPoolsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

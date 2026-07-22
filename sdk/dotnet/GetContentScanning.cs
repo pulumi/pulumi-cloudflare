@@ -133,10 +133,6 @@ namespace Pulumi.Cloudflare
     public sealed class GetContentScanningResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Defines the last modification date (ISO 8601) of the Content Scanning status.
         /// </summary>
         public readonly string Modified;
@@ -151,15 +147,12 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetContentScanningResult(
-            string id,
-
             string modified,
 
             string value,
 
             string? zoneId)
         {
-            Id = id;
             Modified = modified;
             Value = value;
             ZoneId = zoneId;

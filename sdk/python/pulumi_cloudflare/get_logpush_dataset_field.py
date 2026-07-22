@@ -26,16 +26,13 @@ class GetLogpushDatasetFieldResult:
     """
     A collection of values returned by getLogpushDatasetField.
     """
-    def __init__(__self__, account_id=None, dataset_id=None, id=None, zone_id=None):
+    def __init__(__self__, account_id=None, dataset_id=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if dataset_id and not isinstance(dataset_id, str):
             raise TypeError("Expected argument 'dataset_id' to be a str")
         pulumi.set(__self__, "dataset_id", dataset_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
@@ -58,14 +55,6 @@ class GetLogpushDatasetFieldResult:
         return pulumi.get(self, "dataset_id")
 
     @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[_builtins.str]:
         """
@@ -82,7 +71,6 @@ class AwaitableGetLogpushDatasetFieldResult(GetLogpushDatasetFieldResult):
         return GetLogpushDatasetFieldResult(
             account_id=self.account_id,
             dataset_id=self.dataset_id,
-            id=self.id,
             zone_id=self.zone_id)
 
 
@@ -122,7 +110,6 @@ def get_logpush_dataset_field(account_id: Optional[_builtins.str] = None,
     return AwaitableGetLogpushDatasetFieldResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         dataset_id=pulumi.get(__ret__, 'dataset_id'),
-        id=pulumi.get(__ret__, 'id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_logpush_dataset_field_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      dataset_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -159,5 +146,4 @@ def get_logpush_dataset_field_output(account_id: pulumi.Input[Optional[Optional[
     return __ret__.apply(lambda __response__: GetLogpushDatasetFieldResult(
         account_id=pulumi.get(__response__, 'account_id'),
         dataset_id=pulumi.get(__response__, 'dataset_id'),
-        id=pulumi.get(__response__, 'id'),
         zone_id=pulumi.get(__response__, 'zone_id')))

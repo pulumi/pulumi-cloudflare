@@ -70,8 +70,6 @@ type LookupCustomSslsArgs struct {
 
 // A collection of values returned by getCustomSsls.
 type LookupCustomSslsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Whether to match all search requirements or at least one (any).
 	// Available values: "any", "all".
 	Match string `pulumi:"match"`
@@ -126,11 +124,6 @@ func (o LookupCustomSslsResultOutput) ToLookupCustomSslsResultOutput() LookupCus
 
 func (o LookupCustomSslsResultOutput) ToLookupCustomSslsResultOutputWithContext(ctx context.Context) LookupCustomSslsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupCustomSslsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCustomSslsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Whether to match all search requirements or at least one (any).

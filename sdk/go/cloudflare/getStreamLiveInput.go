@@ -70,8 +70,6 @@ type LookupStreamLiveInputResult struct {
 	DeleteRecordingAfterDays float64 `pulumi:"deleteRecordingAfterDays"`
 	// Indicates whether the live input is enabled and can accept streams.
 	Enabled bool `pulumi:"enabled"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
 	KeysRotatedAt string `pulumi:"keysRotatedAt"`
 	// A unique identifier for a live input.
@@ -157,11 +155,6 @@ func (o LookupStreamLiveInputResultOutput) DeleteRecordingAfterDays() pulumi.Flo
 // Indicates whether the live input is enabled and can accept streams.
 func (o LookupStreamLiveInputResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupStreamLiveInputResult) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupStreamLiveInputResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupStreamLiveInputResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.

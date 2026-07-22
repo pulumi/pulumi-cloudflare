@@ -63,10 +63,6 @@ export interface GetCustomOriginTrustStoresArgs {
  */
 export interface GetCustomOriginTrustStoresResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Limit to the number of records returned.
      */
     readonly limit?: number;

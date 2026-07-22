@@ -123,10 +123,6 @@ export interface GetPageShieldCookiesListResult {
      */
     readonly hosts?: string;
     readonly httpOnly?: boolean;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly maxItems?: number;
     readonly name?: string;
     readonly orderBy?: string;
