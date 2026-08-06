@@ -18,14 +18,14 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
     public static final AccountSubscriptionState Empty = new AccountSubscriptionState();
 
     /**
-     * Identifier
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -173,7 +173,7 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 

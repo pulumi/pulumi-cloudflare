@@ -649,6 +649,10 @@ class TeamsRule(pulumi.CustomResource):
                     "duration": "300s",
                     "enforce": True,
                 },
+                "delete_headers": [
+                    "X-Old-Header",
+                    "X-Remove-Me",
+                ],
                 "dns_resolvers": {
                     "ipv4s": [{
                         "ip": "2.2.2.2",
@@ -706,6 +710,9 @@ class TeamsRule(pulumi.CustomResource):
                     "view_id": "view_id",
                 },
                 "resolve_dns_through_cloudflare": True,
+                "set_headers": {
+                    "X-User-Identity": ["user=@{identity.name}"],
+                },
                 "untrusted_cert": {
                     "action": "error",
                 },
@@ -811,6 +818,10 @@ class TeamsRule(pulumi.CustomResource):
                     "duration": "300s",
                     "enforce": True,
                 },
+                "delete_headers": [
+                    "X-Old-Header",
+                    "X-Remove-Me",
+                ],
                 "dns_resolvers": {
                     "ipv4s": [{
                         "ip": "2.2.2.2",
@@ -868,6 +879,9 @@ class TeamsRule(pulumi.CustomResource):
                     "view_id": "view_id",
                 },
                 "resolve_dns_through_cloudflare": True,
+                "set_headers": {
+                    "X-User-Identity": ["user=@{identity.name}"],
+                },
                 "untrusted_cert": {
                     "action": "error",
                 },

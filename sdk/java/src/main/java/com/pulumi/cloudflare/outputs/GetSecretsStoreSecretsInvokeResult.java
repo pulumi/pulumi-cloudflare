@@ -15,13 +15,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSecretsStoreSecretsInvokeResult {
-    /**
-     * @return Account Identifier
-     * 
-     */
     private String accountId;
     /**
-     * @return Direction to sort objects
+     * @return Direction to sort objects.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
@@ -32,7 +28,7 @@ public final class GetSecretsStoreSecretsInvokeResult {
      */
     private @Nullable Integer maxItems;
     /**
-     * @return Order secrets by values in the given field
+     * @return Order secrets by values in the given field.
      * Available values: &#34;name&#34;, &#34;comment&#34;, &#34;created&#34;, &#34;modified&#34;, &#34;status&#34;.
      * 
      */
@@ -43,31 +39,23 @@ public final class GetSecretsStoreSecretsInvokeResult {
      */
     private List<GetSecretsStoreSecretsResult> results;
     /**
-     * @return Only secrets with the given scopes will be returned
+     * @return Only secrets with the given scopes will be returned.
      * 
      */
-    private @Nullable List<List<String>> scopes;
+    private @Nullable List<String> scopes;
     /**
-     * @return Search secrets using a filter string, filtering across name and comment
+     * @return Search secrets using a filter string, filtering across name and comment.
      * 
      */
     private @Nullable String search;
-    /**
-     * @return Store Identifier
-     * 
-     */
     private String storeId;
 
     private GetSecretsStoreSecretsInvokeResult() {}
-    /**
-     * @return Account Identifier
-     * 
-     */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return Direction to sort objects
+     * @return Direction to sort objects.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
@@ -82,7 +70,7 @@ public final class GetSecretsStoreSecretsInvokeResult {
         return Optional.ofNullable(this.maxItems);
     }
     /**
-     * @return Order secrets by values in the given field
+     * @return Order secrets by values in the given field.
      * Available values: &#34;name&#34;, &#34;comment&#34;, &#34;created&#34;, &#34;modified&#34;, &#34;status&#34;.
      * 
      */
@@ -97,23 +85,19 @@ public final class GetSecretsStoreSecretsInvokeResult {
         return this.results;
     }
     /**
-     * @return Only secrets with the given scopes will be returned
+     * @return Only secrets with the given scopes will be returned.
      * 
      */
-    public List<List<String>> scopes() {
+    public List<String> scopes() {
         return this.scopes == null ? List.of() : this.scopes;
     }
     /**
-     * @return Search secrets using a filter string, filtering across name and comment
+     * @return Search secrets using a filter string, filtering across name and comment.
      * 
      */
     public Optional<String> search() {
         return Optional.ofNullable(this.search);
     }
-    /**
-     * @return Store Identifier
-     * 
-     */
     public String storeId() {
         return this.storeId;
     }
@@ -132,7 +116,7 @@ public final class GetSecretsStoreSecretsInvokeResult {
         private @Nullable Integer maxItems;
         private String order;
         private List<GetSecretsStoreSecretsResult> results;
-        private @Nullable List<List<String>> scopes;
+        private @Nullable List<String> scopes;
         private @Nullable String search;
         private String storeId;
         public Builder() {}
@@ -190,10 +174,13 @@ public final class GetSecretsStoreSecretsInvokeResult {
             return results(List.of(results));
         }
         @CustomType.Setter
-        public Builder scopes(@Nullable List<List<String>> scopes) {
+        public Builder scopes(@Nullable List<String> scopes) {
 
             this.scopes = scopes;
             return this;
+        }
+        public Builder scopes(String... scopes) {
+            return scopes(List.of(scopes));
         }
         @CustomType.Setter
         public Builder search(@Nullable String search) {

@@ -12,12 +12,12 @@ import java.util.Objects;
 @CustomType
 public final class GetSecretsStoreSecretsResult {
     /**
-     * @return Freeform text describing the secret
+     * @return Freeform text describing the secret.
      * 
      */
     private String comment;
     /**
-     * @return Whenthe secret was created.
+     * @return When the secret was created.
      * 
      */
     private String created;
@@ -32,7 +32,7 @@ public final class GetSecretsStoreSecretsResult {
      */
     private String modified;
     /**
-     * @return The name of the secret
+     * @return The name of the secret.
      * 
      */
     private String name;
@@ -47,21 +47,21 @@ public final class GetSecretsStoreSecretsResult {
      */
     private String status;
     /**
-     * @return Store Identifier
+     * @return Store Identifier.
      * 
      */
     private String storeId;
 
     private GetSecretsStoreSecretsResult() {}
     /**
-     * @return Freeform text describing the secret
+     * @return Freeform text describing the secret.
      * 
      */
     public String comment() {
         return this.comment;
     }
     /**
-     * @return Whenthe secret was created.
+     * @return When the secret was created.
      * 
      */
     public String created() {
@@ -82,7 +82,7 @@ public final class GetSecretsStoreSecretsResult {
         return this.modified;
     }
     /**
-     * @return The name of the secret
+     * @return The name of the secret.
      * 
      */
     public String name() {
@@ -103,7 +103,7 @@ public final class GetSecretsStoreSecretsResult {
         return this.status;
     }
     /**
-     * @return Store Identifier
+     * @return Store Identifier.
      * 
      */
     public String storeId() {

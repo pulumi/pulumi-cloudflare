@@ -34,6 +34,11 @@ import (
 //			_, err := cloudflare.NewCustomHostname(ctx, "example_custom_hostname", &cloudflare.CustomHostnameArgs{
 //				ZoneId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Hostname: pulumi.String("app.example.com"),
+//				CustomMetadata: pulumi.StringMap{
+//					"foo": pulumi.String("string"),
+//				},
+//				CustomOriginServer: pulumi.String("origin2.example.com"),
+//				CustomOriginSni:    pulumi.String("sni.example.com"),
 //				Ssl: &cloudflare.CustomHostnameSslArgs{
 //					BundleMethod:         pulumi.String("ubiquitous"),
 //					CertificateAuthority: pulumi.String("google"),
@@ -96,9 +101,6 @@ import (
 //					},
 //					Type:     pulumi.String("dv"),
 //					Wildcard: pulumi.Bool(false),
-//				},
-//				CustomMetadata: pulumi.StringMap{
-//					"foo": pulumi.String("string"),
 //				},
 //			})
 //			if err != nil {

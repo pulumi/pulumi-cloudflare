@@ -89,7 +89,7 @@ class GetR2BucketResult:
     def jurisdiction(self) -> _builtins.str:
         """
         Jurisdiction where objects in this bucket are guaranteed to be stored.
-        Available values: "default", "eu", "fedramp".
+        Available values: "default", "eu", "fedramp", "us".
         """
         return pulumi.get(self, "jurisdiction")
 

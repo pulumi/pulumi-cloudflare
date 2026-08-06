@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var exampleAccountSubscription = new Cloudflare.AccountSubscription("example_account_subscription", new()
     ///     {
-    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         AccountId = "account_id",
     ///         Frequency = "monthly",
     ///         RatePlan = new Cloudflare.Inputs.AccountSubscriptionRatePlanArgs
     ///         {
@@ -57,10 +57,10 @@ namespace Pulumi.Cloudflare
     public partial class AccountSubscription : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifier
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The monetary unit in which pricing information is displayed.
@@ -114,7 +114,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public AccountSubscription(string name, AccountSubscriptionArgs args, CustomResourceOptions? options = null)
+        public AccountSubscription(string name, AccountSubscriptionArgs? args = null, CustomResourceOptions? options = null)
             : base("cloudflare:index/accountSubscription:AccountSubscription", name, args ?? new AccountSubscriptionArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -153,10 +153,10 @@ namespace Pulumi.Cloudflare
     public sealed class AccountSubscriptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// How often the subscription is renewed automatically.
@@ -180,7 +180,7 @@ namespace Pulumi.Cloudflare
     public sealed class AccountSubscriptionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }

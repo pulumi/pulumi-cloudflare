@@ -66,7 +66,7 @@ type LookupR2BucketResult struct {
 	// Name of the bucket.
 	Id string `pulumi:"id"`
 	// Jurisdiction where objects in this bucket are guaranteed to be stored.
-	// Available values: "default", "eu", "fedramp".
+	// Available values: "default", "eu", "fedramp", "us".
 	Jurisdiction string `pulumi:"jurisdiction"`
 	// Location of the bucket.
 	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
@@ -135,7 +135,7 @@ func (o LookupR2BucketResultOutput) Id() pulumi.StringOutput {
 }
 
 // Jurisdiction where objects in this bucket are guaranteed to be stored.
-// Available values: "default", "eu", "fedramp".
+// Available values: "default", "eu", "fedramp", "us".
 func (o LookupR2BucketResultOutput) Jurisdiction() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketResult) string { return v.Jurisdiction }).(pulumi.StringOutput)
 }

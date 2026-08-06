@@ -21,6 +21,11 @@ import * as utilities from "./utilities";
  * const exampleCustomHostname = new cloudflare.CustomHostname("example_custom_hostname", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     hostname: "app.example.com",
+ *     customMetadata: {
+ *         foo: "string",
+ *     },
+ *     customOriginServer: "origin2.example.com",
+ *     customOriginSni: "sni.example.com",
  *     ssl: {
  *         bundleMethod: "ubiquitous",
  *         certificateAuthority: "google",
@@ -87,9 +92,6 @@ import * as utilities from "./utilities";
  *         },
  *         type: "dv",
  *         wildcard: false,
- *     },
- *     customMetadata: {
- *         foo: "string",
  *     },
  * });
  * ```

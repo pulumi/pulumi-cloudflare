@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.ZeroTrustDeviceSubnetCapacityArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -29,6 +30,21 @@ public final class ZeroTrustDeviceSubnetState extends com.pulumi.resources.Resou
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
+    }
+
+    /**
+     * IP capacity information for the subnet.
+     * 
+     */
+    @Import(name="capacity")
+    private @Nullable Output<ZeroTrustDeviceSubnetCapacityArgs> capacity;
+
+    /**
+     * @return IP capacity information for the subnet.
+     * 
+     */
+    public Optional<Output<ZeroTrustDeviceSubnetCapacityArgs>> capacity() {
+        return Optional.ofNullable(this.capacity);
     }
 
     /**
@@ -123,7 +139,7 @@ public final class ZeroTrustDeviceSubnetState extends com.pulumi.resources.Resou
 
     /**
      * The type of subnet.
-     * Available values: &#34;cloudflareSource&#34;, &#34;warp&#34;.
+     * Available values: &#34;cloudflare*source&#34;, &#34;initial*resolved_ip&#34;, &#34;warp&#34;.
      * 
      */
     @Import(name="subnetType")
@@ -131,7 +147,7 @@ public final class ZeroTrustDeviceSubnetState extends com.pulumi.resources.Resou
 
     /**
      * @return The type of subnet.
-     * Available values: &#34;cloudflareSource&#34;, &#34;warp&#34;.
+     * Available values: &#34;cloudflare*source&#34;, &#34;initial*resolved_ip&#34;, &#34;warp&#34;.
      * 
      */
     public Optional<Output<String>> subnetType() {
@@ -142,6 +158,7 @@ public final class ZeroTrustDeviceSubnetState extends com.pulumi.resources.Resou
 
     private ZeroTrustDeviceSubnetState(ZeroTrustDeviceSubnetState $) {
         this.accountId = $.accountId;
+        this.capacity = $.capacity;
         this.comment = $.comment;
         this.createdAt = $.createdAt;
         this.deletedAt = $.deletedAt;
@@ -188,6 +205,27 @@ public final class ZeroTrustDeviceSubnetState extends com.pulumi.resources.Resou
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param capacity IP capacity information for the subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder capacity(@Nullable Output<ZeroTrustDeviceSubnetCapacityArgs> capacity) {
+            $.capacity = capacity;
+            return this;
+        }
+
+        /**
+         * @param capacity IP capacity information for the subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder capacity(ZeroTrustDeviceSubnetCapacityArgs capacity) {
+            return capacity(Output.of(capacity));
         }
 
         /**
@@ -318,7 +356,7 @@ public final class ZeroTrustDeviceSubnetState extends com.pulumi.resources.Resou
 
         /**
          * @param subnetType The type of subnet.
-         * Available values: &#34;cloudflareSource&#34;, &#34;warp&#34;.
+         * Available values: &#34;cloudflare*source&#34;, &#34;initial*resolved_ip&#34;, &#34;warp&#34;.
          * 
          * @return builder
          * 
@@ -330,7 +368,7 @@ public final class ZeroTrustDeviceSubnetState extends com.pulumi.resources.Resou
 
         /**
          * @param subnetType The type of subnet.
-         * Available values: &#34;cloudflareSource&#34;, &#34;warp&#34;.
+         * Available values: &#34;cloudflare*source&#34;, &#34;initial*resolved_ip&#34;, &#34;warp&#34;.
          * 
          * @return builder
          * 

@@ -30,6 +30,7 @@ export function getAccountTokens(args?: GetAccountTokensArgs, opts?: pulumi.Invo
     return pulumi.runtime.invoke("cloudflare:index/getAccountTokens:getAccountTokens", {
         "accountId": args.accountId,
         "direction": args.direction,
+        "includeExpired": args.includeExpired,
         "maxItems": args.maxItems,
     }, opts);
 }
@@ -47,6 +48,10 @@ export interface GetAccountTokensArgs {
      * Available values: "asc", "desc".
      */
     direction?: string;
+    /**
+     * When true, includes recently-expired tokens in the response.
+     */
+    includeExpired?: boolean;
     /**
      * Max items to fetch, default: 1000
      */
@@ -66,6 +71,10 @@ export interface GetAccountTokensResult {
      * Available values: "asc", "desc".
      */
     readonly direction?: string;
+    /**
+     * When true, includes recently-expired tokens in the response.
+     */
+    readonly includeExpired: boolean;
     /**
      * Max items to fetch, default: 1000
      */
@@ -99,6 +108,7 @@ export function getAccountTokensOutput(args?: GetAccountTokensOutputArgs, opts?:
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountTokens:getAccountTokens", {
         "accountId": args.accountId,
         "direction": args.direction,
+        "includeExpired": args.includeExpired,
         "maxItems": args.maxItems,
     }, opts);
 }
@@ -116,6 +126,10 @@ export interface GetAccountTokensOutputArgs {
      * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string | undefined>;
+    /**
+     * When true, includes recently-expired tokens in the response.
+     */
+    includeExpired?: pulumi.Input<boolean | undefined>;
     /**
      * Max items to fetch, default: 1000
      */

@@ -37,6 +37,14 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Etag;
         /// <summary>
+        /// Declarative exports for the Worker's most recent version,
+        /// including Durable Object classes (with their `Storage`
+        /// backend) and named Worker entrypoints. Tombstoned lifecycle
+        /// entries are omitted, so only live exports (`Created` and
+        /// `expecting-transfer`) are returned.
+        /// </summary>
+        public readonly ImmutableDictionary<string, Outputs.GetWorkersScriptsResultExportsResult> Exports;
+        /// <summary>
         /// The names of handlers exported as part of the default export.
         /// </summary>
         public readonly ImmutableArray<string> Handlers;
@@ -122,6 +130,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string etag,
 
+            ImmutableDictionary<string, Outputs.GetWorkersScriptsResultExportsResult> exports,
+
             ImmutableArray<string> handlers,
 
             bool hasAssets,
@@ -163,6 +173,7 @@ namespace Pulumi.Cloudflare.Outputs
             CompatibilityFlags = compatibilityFlags;
             CreatedOn = createdOn;
             Etag = etag;
+            Exports = exports;
             Handlers = handlers;
             HasAssets = hasAssets;
             HasModules = hasModules;

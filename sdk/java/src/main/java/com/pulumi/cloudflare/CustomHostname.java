@@ -55,6 +55,9 @@ import javax.annotation.Nullable;
  *         var exampleCustomHostname = new CustomHostname("exampleCustomHostname", CustomHostnameArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .hostname("app.example.com")
+ *             .customMetadata(Map.of("foo", "string"))
+ *             .customOriginServer("origin2.example.com")
+ *             .customOriginSni("sni.example.com")
  *             .ssl(CustomHostnameSslArgs.builder()
  *                 .bundleMethod("ubiquitous")
  *                 .certificateAuthority("google")
@@ -125,7 +128,6 @@ import javax.annotation.Nullable;
  *                 .type("dv")
  *                 .wildcard(false)
  *                 .build())
- *             .customMetadata(Map.of("foo", "string"))
  *             .build());
  * 
  *     }

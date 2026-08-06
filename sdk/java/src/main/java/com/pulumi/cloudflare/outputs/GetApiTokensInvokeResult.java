@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetApiTokensResult;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -21,6 +22,11 @@ public final class GetApiTokensInvokeResult {
      * 
      */
     private @Nullable String direction;
+    /**
+     * @return When true, includes recently-expired tokens in the response.
+     * 
+     */
+    private Boolean includeExpired;
     /**
      * @return Max items to fetch, default: 1000
      * 
@@ -40,6 +46,13 @@ public final class GetApiTokensInvokeResult {
      */
     public Optional<String> direction() {
         return Optional.ofNullable(this.direction);
+    }
+    /**
+     * @return When true, includes recently-expired tokens in the response.
+     * 
+     */
+    public Boolean includeExpired() {
+        return this.includeExpired;
     }
     /**
      * @return Max items to fetch, default: 1000
@@ -66,12 +79,14 @@ public final class GetApiTokensInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String direction;
+        private Boolean includeExpired;
         private @Nullable Integer maxItems;
         private List<GetApiTokensResult> results;
         public Builder() {}
         public Builder(GetApiTokensInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.direction = defaults.direction;
+    	      this.includeExpired = defaults.includeExpired;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
         }
@@ -80,6 +95,14 @@ public final class GetApiTokensInvokeResult {
         public Builder direction(@Nullable String direction) {
 
             this.direction = direction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder includeExpired(Boolean includeExpired) {
+            if (includeExpired == null) {
+              throw new MissingRequiredPropertyException("GetApiTokensInvokeResult", "includeExpired");
+            }
+            this.includeExpired = includeExpired;
             return this;
         }
         @CustomType.Setter
@@ -102,6 +125,7 @@ public final class GetApiTokensInvokeResult {
         public GetApiTokensInvokeResult build() {
             final var _resultValue = new GetApiTokensInvokeResult();
             _resultValue.direction = direction;
+            _resultValue.includeExpired = includeExpired;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;
             return _resultValue;

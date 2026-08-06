@@ -125,7 +125,7 @@ public final class GetDnsRecordData {
      */
     private Double preference;
     /**
-     * @return Priority.
+     * @return Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
      * 
      */
     private Double priority;
@@ -170,7 +170,7 @@ public final class GetDnsRecordData {
      */
     private String tag;
     /**
-     * @return Target.
+     * @return A valid mail server hostname, or &#34;.&#34; for a NULL MX record.
      * 
      */
     private String target;
@@ -353,7 +353,7 @@ public final class GetDnsRecordData {
         return this.preference;
     }
     /**
-     * @return Priority.
+     * @return Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
      * 
      */
     public Double priority() {
@@ -416,7 +416,7 @@ public final class GetDnsRecordData {
         return this.tag;
     }
     /**
-     * @return Target.
+     * @return A valid mail server hostname, or &#34;.&#34; for a NULL MX record.
      * 
      */
     public String target() {

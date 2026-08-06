@@ -15,17 +15,9 @@ public final class GetEmailSecurityBlockSenderPlainArgs extends com.pulumi.resou
 
     public static final GetEmailSecurityBlockSenderPlainArgs Empty = new GetEmailSecurityBlockSenderPlainArgs();
 
-    /**
-     * Identifier.
-     * 
-     */
     @Import(name="accountId")
     private @Nullable String accountId;
 
-    /**
-     * @return Identifier.
-     * 
-     */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -37,17 +29,9 @@ public final class GetEmailSecurityBlockSenderPlainArgs extends com.pulumi.resou
         return Optional.ofNullable(this.filter);
     }
 
-    /**
-     * Blocked sender pattern identifier
-     * 
-     */
     @Import(name="patternId")
     private @Nullable String patternId;
 
-    /**
-     * @return Blocked sender pattern identifier
-     * 
-     */
     public Optional<String> patternId() {
         return Optional.ofNullable(this.patternId);
     }
@@ -78,12 +62,6 @@ public final class GetEmailSecurityBlockSenderPlainArgs extends com.pulumi.resou
             $ = new GetEmailSecurityBlockSenderPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId Identifier.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
@@ -94,12 +72,6 @@ public final class GetEmailSecurityBlockSenderPlainArgs extends com.pulumi.resou
             return this;
         }
 
-        /**
-         * @param patternId Blocked sender pattern identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder patternId(@Nullable String patternId) {
             $.patternId = patternId;
             return this;

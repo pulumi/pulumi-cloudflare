@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessAiControlsMcpServersResultAuthConfigSummary;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessAiControlsMcpServersResultErrorDetails;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessAiControlsMcpServersResultUpdatedPrompt;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessAiControlsMcpServersResultUpdatedTool;
@@ -16,6 +17,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetZeroTrustAccessAiControlsMcpServersResult {
+    /**
+     * @return Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
+     * 
+     */
+    private GetZeroTrustAccessAiControlsMcpServersResultAuthConfigSummary authConfigSummary;
     /**
      * @return Available values: &#34;oauth&#34;, &#34;bearer&#34;, &#34;unauthenticated&#34;.
      * 
@@ -48,12 +54,24 @@ public final class GetZeroTrustAccessAiControlsMcpServersResult {
      * 
      */
     private Boolean secureWebGateway;
+    /**
+     * @return Current sync state of the server
+     * Available values: &#34;waiting&#34;, &#34;ready&#34;, &#34;stale&#34;, &#34;error&#34;.
+     * 
+     */
     private String status;
     private List<Map<String,String>> tools;
     private List<GetZeroTrustAccessAiControlsMcpServersResultUpdatedPrompt> updatedPrompts;
     private List<GetZeroTrustAccessAiControlsMcpServersResultUpdatedTool> updatedTools;
 
     private GetZeroTrustAccessAiControlsMcpServersResult() {}
+    /**
+     * @return Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
+     * 
+     */
+    public GetZeroTrustAccessAiControlsMcpServersResultAuthConfigSummary authConfigSummary() {
+        return this.authConfigSummary;
+    }
     /**
      * @return Available values: &#34;oauth&#34;, &#34;bearer&#34;, &#34;unauthenticated&#34;.
      * 
@@ -118,6 +136,11 @@ public final class GetZeroTrustAccessAiControlsMcpServersResult {
     public Boolean secureWebGateway() {
         return this.secureWebGateway;
     }
+    /**
+     * @return Current sync state of the server
+     * Available values: &#34;waiting&#34;, &#34;ready&#34;, &#34;stale&#34;, &#34;error&#34;.
+     * 
+     */
     public String status() {
         return this.status;
     }
@@ -140,6 +163,7 @@ public final class GetZeroTrustAccessAiControlsMcpServersResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private GetZeroTrustAccessAiControlsMcpServersResultAuthConfigSummary authConfigSummary;
         private String authType;
         private String createdAt;
         private String createdBy;
@@ -163,6 +187,7 @@ public final class GetZeroTrustAccessAiControlsMcpServersResult {
         public Builder() {}
         public Builder(GetZeroTrustAccessAiControlsMcpServersResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.authConfigSummary = defaults.authConfigSummary;
     	      this.authType = defaults.authType;
     	      this.createdAt = defaults.createdAt;
     	      this.createdBy = defaults.createdBy;
@@ -185,6 +210,14 @@ public final class GetZeroTrustAccessAiControlsMcpServersResult {
     	      this.updatedTools = defaults.updatedTools;
         }
 
+        @CustomType.Setter
+        public Builder authConfigSummary(GetZeroTrustAccessAiControlsMcpServersResultAuthConfigSummary authConfigSummary) {
+            if (authConfigSummary == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpServersResult", "authConfigSummary");
+            }
+            this.authConfigSummary = authConfigSummary;
+            return this;
+        }
         @CustomType.Setter
         public Builder authType(String authType) {
             if (authType == null) {
@@ -353,6 +386,7 @@ public final class GetZeroTrustAccessAiControlsMcpServersResult {
         }
         public GetZeroTrustAccessAiControlsMcpServersResult build() {
             final var _resultValue = new GetZeroTrustAccessAiControlsMcpServersResult();
+            _resultValue.authConfigSummary = authConfigSummary;
             _resultValue.authType = authType;
             _resultValue.createdAt = createdAt;
             _resultValue.createdBy = createdBy;

@@ -152,6 +152,12 @@ namespace Pulumi.Cloudflare
         public Output<string> GatewayUniqueId { get; private set; } = null!;
 
         /// <summary>
+        /// Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+        /// </summary>
+        [Output("globalAcceleration")]
+        public Output<Outputs.ZeroTrustDeviceDefaultProfileGlobalAcceleration?> GlobalAcceleration { get; private set; } = null!;
+
+        /// <summary>
         /// List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         /// </summary>
         [Output("includes")]
@@ -331,6 +337,12 @@ namespace Pulumi.Cloudflare
             set => _excludes = value;
         }
 
+        /// <summary>
+        /// Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+        /// </summary>
+        [Input("globalAcceleration")]
+        public Input<Inputs.ZeroTrustDeviceDefaultProfileGlobalAccelerationArgs>? GlobalAcceleration { get; set; }
+
         [Input("includes")]
         private InputList<Inputs.ZeroTrustDeviceDefaultProfileIncludeArgs>? _includes;
 
@@ -493,6 +505,12 @@ namespace Pulumi.Cloudflare
 
         [Input("gatewayUniqueId")]
         public Input<string>? GatewayUniqueId { get; set; }
+
+        /// <summary>
+        /// Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+        /// </summary>
+        [Input("globalAcceleration")]
+        public Input<Inputs.ZeroTrustDeviceDefaultProfileGlobalAccelerationGetArgs>? GlobalAcceleration { get; set; }
 
         [Input("includes")]
         private InputList<Inputs.ZeroTrustDeviceDefaultProfileIncludeGetArgs>? _includes;

@@ -17,6 +17,16 @@ public final class R2BucketSippySource {
      */
     private @Nullable String accessKeyId;
     /**
+     * @return Access key for the Azure Storage account. Mutually exclusive with `sasToken`.
+     * 
+     */
+    private @Nullable String accountKey;
+    /**
+     * @return Name of the Azure Storage account.
+     * 
+     */
+    private @Nullable String accountName;
+    /**
      * @return Name of the AWS S3 bucket.
      * 
      */
@@ -32,10 +42,15 @@ public final class R2BucketSippySource {
      */
     private @Nullable String clientEmail;
     /**
-     * @return Available values: &#34;aws&#34;, &#34;gcs&#34;, &#34;s3&#34;.
+     * @return Available values: &#34;aws&#34;, &#34;gcs&#34;, &#34;s3&#34;, &#34;azure&#34;.
      * 
      */
     private @Nullable String cloudProvider;
+    /**
+     * @return Name of the Azure Blob Storage container.
+     * 
+     */
+    private @Nullable String container;
     /**
      * @return Private Key of an IAM credential (ideally scoped to a single GCS bucket).
      * 
@@ -46,6 +61,11 @@ public final class R2BucketSippySource {
      * 
      */
     private @Nullable String region;
+    /**
+     * @return Shared Access Signature token for the Azure Storage account. Mutually exclusive with `accountKey`.
+     * 
+     */
+    private @Nullable String sasToken;
     /**
      * @return Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
      * 
@@ -59,6 +79,20 @@ public final class R2BucketSippySource {
      */
     public Optional<String> accessKeyId() {
         return Optional.ofNullable(this.accessKeyId);
+    }
+    /**
+     * @return Access key for the Azure Storage account. Mutually exclusive with `sasToken`.
+     * 
+     */
+    public Optional<String> accountKey() {
+        return Optional.ofNullable(this.accountKey);
+    }
+    /**
+     * @return Name of the Azure Storage account.
+     * 
+     */
+    public Optional<String> accountName() {
+        return Optional.ofNullable(this.accountName);
     }
     /**
      * @return Name of the AWS S3 bucket.
@@ -82,11 +116,18 @@ public final class R2BucketSippySource {
         return Optional.ofNullable(this.clientEmail);
     }
     /**
-     * @return Available values: &#34;aws&#34;, &#34;gcs&#34;, &#34;s3&#34;.
+     * @return Available values: &#34;aws&#34;, &#34;gcs&#34;, &#34;s3&#34;, &#34;azure&#34;.
      * 
      */
     public Optional<String> cloudProvider() {
         return Optional.ofNullable(this.cloudProvider);
+    }
+    /**
+     * @return Name of the Azure Blob Storage container.
+     * 
+     */
+    public Optional<String> container() {
+        return Optional.ofNullable(this.container);
     }
     /**
      * @return Private Key of an IAM credential (ideally scoped to a single GCS bucket).
@@ -101,6 +142,13 @@ public final class R2BucketSippySource {
      */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
+    }
+    /**
+     * @return Shared Access Signature token for the Azure Storage account. Mutually exclusive with `accountKey`.
+     * 
+     */
+    public Optional<String> sasToken() {
+        return Optional.ofNullable(this.sasToken);
     }
     /**
      * @return Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
@@ -120,23 +168,31 @@ public final class R2BucketSippySource {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accessKeyId;
+        private @Nullable String accountKey;
+        private @Nullable String accountName;
         private @Nullable String bucket;
         private @Nullable String bucketUrl;
         private @Nullable String clientEmail;
         private @Nullable String cloudProvider;
+        private @Nullable String container;
         private @Nullable String privateKey;
         private @Nullable String region;
+        private @Nullable String sasToken;
         private @Nullable String secretAccessKey;
         public Builder() {}
         public Builder(R2BucketSippySource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessKeyId = defaults.accessKeyId;
+    	      this.accountKey = defaults.accountKey;
+    	      this.accountName = defaults.accountName;
     	      this.bucket = defaults.bucket;
     	      this.bucketUrl = defaults.bucketUrl;
     	      this.clientEmail = defaults.clientEmail;
     	      this.cloudProvider = defaults.cloudProvider;
+    	      this.container = defaults.container;
     	      this.privateKey = defaults.privateKey;
     	      this.region = defaults.region;
+    	      this.sasToken = defaults.sasToken;
     	      this.secretAccessKey = defaults.secretAccessKey;
         }
 
@@ -144,6 +200,18 @@ public final class R2BucketSippySource {
         public Builder accessKeyId(@Nullable String accessKeyId) {
 
             this.accessKeyId = accessKeyId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder accountKey(@Nullable String accountKey) {
+
+            this.accountKey = accountKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder accountName(@Nullable String accountName) {
+
+            this.accountName = accountName;
             return this;
         }
         @CustomType.Setter
@@ -171,6 +239,12 @@ public final class R2BucketSippySource {
             return this;
         }
         @CustomType.Setter
+        public Builder container(@Nullable String container) {
+
+            this.container = container;
+            return this;
+        }
+        @CustomType.Setter
         public Builder privateKey(@Nullable String privateKey) {
 
             this.privateKey = privateKey;
@@ -183,6 +257,12 @@ public final class R2BucketSippySource {
             return this;
         }
         @CustomType.Setter
+        public Builder sasToken(@Nullable String sasToken) {
+
+            this.sasToken = sasToken;
+            return this;
+        }
+        @CustomType.Setter
         public Builder secretAccessKey(@Nullable String secretAccessKey) {
 
             this.secretAccessKey = secretAccessKey;
@@ -191,12 +271,16 @@ public final class R2BucketSippySource {
         public R2BucketSippySource build() {
             final var _resultValue = new R2BucketSippySource();
             _resultValue.accessKeyId = accessKeyId;
+            _resultValue.accountKey = accountKey;
+            _resultValue.accountName = accountName;
             _resultValue.bucket = bucket;
             _resultValue.bucketUrl = bucketUrl;
             _resultValue.clientEmail = clientEmail;
             _resultValue.cloudProvider = cloudProvider;
+            _resultValue.container = container;
             _resultValue.privateKey = privateKey;
             _resultValue.region = region;
+            _resultValue.sasToken = sasToken;
             _resultValue.secretAccessKey = secretAccessKey;
             return _resultValue;
         }

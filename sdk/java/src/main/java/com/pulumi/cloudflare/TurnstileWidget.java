@@ -138,6 +138,28 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
     public Output<String> createdOn() {
         return this.createdOn;
     }
+    /**
+     * Origin that created this widget, recorded at creation time and
+     * immutable afterward. Server-derived from the create request; not
+     * client-settable. Omitted from the response for widgets created
+     * before this field existed.
+     * Available values: &#34;wrangler&#34;, &#34;dashboard&#34;, &#34;spin&#34;, &#34;api&#34;, &#34;unknown&#34;.
+     * 
+     */
+    @Export(name="deployedVia", refs={String.class}, tree="[0]")
+    private Output<String> deployedVia;
+
+    /**
+     * @return Origin that created this widget, recorded at creation time and
+     * immutable afterward. Server-derived from the create request; not
+     * client-settable. Omitted from the response for widgets created
+     * before this field existed.
+     * Available values: &#34;wrangler&#34;, &#34;dashboard&#34;, &#34;spin&#34;, &#34;api&#34;, &#34;unknown&#34;.
+     * 
+     */
+    public Output<String> deployedVia() {
+        return this.deployedVia;
+    }
     @Export(name="domains", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> domains;
 
@@ -157,6 +179,26 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> ephemeralId() {
         return this.ephemeralId;
+    }
+    /**
+     * Origin of the most recent mutation (create, update, delete, or
+     * secret rotation). Server-derived; not client-settable. Omitted for
+     * widgets last mutated before this field existed.
+     * Available values: &#34;wrangler&#34;, &#34;dashboard&#34;, &#34;spin&#34;, &#34;api&#34;, &#34;unknown&#34;.
+     * 
+     */
+    @Export(name="lastModifiedVia", refs={String.class}, tree="[0]")
+    private Output<String> lastModifiedVia;
+
+    /**
+     * @return Origin of the most recent mutation (create, update, delete, or
+     * secret rotation). Server-derived; not client-settable. Omitted for
+     * widgets last mutated before this field existed.
+     * Available values: &#34;wrangler&#34;, &#34;dashboard&#34;, &#34;spin&#34;, &#34;api&#34;, &#34;unknown&#34;.
+     * 
+     */
+    public Output<String> lastModifiedVia() {
+        return this.lastModifiedVia;
     }
     /**
      * Widget Mode

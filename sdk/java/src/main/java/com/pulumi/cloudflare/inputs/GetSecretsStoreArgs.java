@@ -17,17 +17,9 @@ public final class GetSecretsStoreArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetSecretsStoreArgs Empty = new GetSecretsStoreArgs();
 
-    /**
-     * Account Identifier
-     * 
-     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
-    /**
-     * @return Account Identifier
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
@@ -39,17 +31,9 @@ public final class GetSecretsStoreArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.filter);
     }
 
-    /**
-     * Store Identifier
-     * 
-     */
     @Import(name="storeId")
     private @Nullable Output<String> storeId;
 
-    /**
-     * @return Store Identifier
-     * 
-     */
     public Optional<Output<String>> storeId() {
         return Optional.ofNullable(this.storeId);
     }
@@ -80,23 +64,11 @@ public final class GetSecretsStoreArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetSecretsStoreArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId Account Identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId Account Identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
@@ -110,23 +82,11 @@ public final class GetSecretsStoreArgs extends com.pulumi.resources.InvokeArgs {
             return filter(Output.of(filter));
         }
 
-        /**
-         * @param storeId Store Identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder storeId(@Nullable Output<String> storeId) {
             $.storeId = storeId;
             return this;
         }
 
-        /**
-         * @param storeId Store Identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder storeId(String storeId) {
             return storeId(Output.of(storeId));
         }

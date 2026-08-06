@@ -58,7 +58,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Jurisdiction where objects in this bucket are guaranteed to be stored.
-        /// Available values: "default", "eu", "fedramp".
+        /// Available values: "default", "eu", "fedramp", "us".
         /// </summary>
         [Output("jurisdiction")]
         public Output<string> Jurisdiction { get; private set; } = null!;
@@ -137,7 +137,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Jurisdiction where objects in this bucket are guaranteed to be stored.
-        /// Available values: "default", "eu", "fedramp".
+        /// Available values: "default", "eu", "fedramp", "us".
         /// </summary>
         [Input("jurisdiction")]
         public Input<string>? Jurisdiction { get; set; }
@@ -184,7 +184,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Jurisdiction where objects in this bucket are guaranteed to be stored.
-        /// Available values: "default", "eu", "fedramp".
+        /// Available values: "default", "eu", "fedramp", "us".
         /// </summary>
         [Input("jurisdiction")]
         public Input<string>? Jurisdiction { get; set; }

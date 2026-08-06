@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.WorkflowDefaultRetentionArgs;
 import com.pulumi.cloudflare.inputs.WorkflowInstancesArgs;
 import com.pulumi.cloudflare.inputs.WorkflowLimitsArgs;
 import com.pulumi.cloudflare.inputs.WorkflowScheduleArgs;
@@ -39,6 +40,21 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> createdOn() {
         return Optional.ofNullable(this.createdOn);
+    }
+
+    /**
+     * Default retention applied to instances of this version when they do not set their own retention.
+     * 
+     */
+    @Import(name="defaultRetention")
+    private @Nullable Output<WorkflowDefaultRetentionArgs> defaultRetention;
+
+    /**
+     * @return Default retention applied to instances of this version when they do not set their own retention.
+     * 
+     */
+    public Optional<Output<WorkflowDefaultRetentionArgs>> defaultRetention() {
+        return Optional.ofNullable(this.defaultRetention);
     }
 
     @Import(name="instances")
@@ -124,6 +140,7 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
         this.accountId = $.accountId;
         this.className = $.className;
         this.createdOn = $.createdOn;
+        this.defaultRetention = $.defaultRetention;
         this.instances = $.instances;
         this.isDeleted = $.isDeleted;
         this.limits = $.limits;
@@ -180,6 +197,27 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
 
         public Builder createdOn(String createdOn) {
             return createdOn(Output.of(createdOn));
+        }
+
+        /**
+         * @param defaultRetention Default retention applied to instances of this version when they do not set their own retention.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultRetention(@Nullable Output<WorkflowDefaultRetentionArgs> defaultRetention) {
+            $.defaultRetention = defaultRetention;
+            return this;
+        }
+
+        /**
+         * @param defaultRetention Default retention applied to instances of this version when they do not set their own retention.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultRetention(WorkflowDefaultRetentionArgs defaultRetention) {
+            return defaultRetention(Output.of(defaultRetention));
         }
 
         public Builder instances(@Nullable Output<WorkflowInstancesArgs> instances) {

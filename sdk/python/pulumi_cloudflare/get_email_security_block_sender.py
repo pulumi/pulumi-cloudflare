@@ -66,9 +66,6 @@ class GetEmailSecurityBlockSenderResult:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
-        """
-        Identifier.
-        """
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -89,9 +86,6 @@ class GetEmailSecurityBlockSenderResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        Blocked sender pattern identifier
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -103,9 +97,6 @@ class GetEmailSecurityBlockSenderResult:
     @pulumi.getter(name="lastModified")
     @_utilities.deprecated("""Use `modified_at` instead.""")
     def last_modified(self) -> _builtins.str:
-        """
-        Deprecated, use `modified_at` instead. End of life: November 1, 2026.
-        """
         return pulumi.get(self, "last_modified")
 
     @_builtins.property
@@ -121,19 +112,11 @@ class GetEmailSecurityBlockSenderResult:
     @_builtins.property
     @pulumi.getter(name="patternId")
     def pattern_id(self) -> Optional[_builtins.str]:
-        """
-        Blocked sender pattern identifier
-        """
         return pulumi.get(self, "pattern_id")
 
     @_builtins.property
     @pulumi.getter(name="patternType")
     def pattern_type(self) -> _builtins.str:
-        """
-        Type of pattern matching.
-        Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
-        Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
-        """
         return pulumi.get(self, "pattern_type")
 
 
@@ -175,10 +158,6 @@ def get_email_security_block_sender(account_id: Optional[_builtins.str] = None,
     example_email_security_block_sender = cloudflare.get_email_security_block_sender(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         pattern_id="2402")
     ```
-
-
-    :param _builtins.str account_id: Identifier.
-    :param _builtins.str pattern_id: Blocked sender pattern identifier
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -218,10 +197,6 @@ def get_email_security_block_sender_output(account_id: pulumi.Input[Optional[Opt
     example_email_security_block_sender = cloudflare.get_email_security_block_sender(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         pattern_id="2402")
     ```
-
-
-    :param _builtins.str account_id: Identifier.
-    :param _builtins.str pattern_id: Blocked sender pattern identifier
     """
     __args__ = dict()
     __args__['accountId'] = account_id

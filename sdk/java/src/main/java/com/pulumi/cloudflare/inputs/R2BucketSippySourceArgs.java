@@ -31,6 +31,36 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Access key for the Azure Storage account. Mutually exclusive with `sasToken`.
+     * 
+     */
+    @Import(name="accountKey")
+    private @Nullable Output<String> accountKey;
+
+    /**
+     * @return Access key for the Azure Storage account. Mutually exclusive with `sasToken`.
+     * 
+     */
+    public Optional<Output<String>> accountKey() {
+        return Optional.ofNullable(this.accountKey);
+    }
+
+    /**
+     * Name of the Azure Storage account.
+     * 
+     */
+    @Import(name="accountName")
+    private @Nullable Output<String> accountName;
+
+    /**
+     * @return Name of the Azure Storage account.
+     * 
+     */
+    public Optional<Output<String>> accountName() {
+        return Optional.ofNullable(this.accountName);
+    }
+
+    /**
      * Name of the AWS S3 bucket.
      * 
      */
@@ -76,18 +106,33 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Available values: &#34;aws&#34;, &#34;gcs&#34;, &#34;s3&#34;.
+     * Available values: &#34;aws&#34;, &#34;gcs&#34;, &#34;s3&#34;, &#34;azure&#34;.
      * 
      */
     @Import(name="cloudProvider")
     private @Nullable Output<String> cloudProvider;
 
     /**
-     * @return Available values: &#34;aws&#34;, &#34;gcs&#34;, &#34;s3&#34;.
+     * @return Available values: &#34;aws&#34;, &#34;gcs&#34;, &#34;s3&#34;, &#34;azure&#34;.
      * 
      */
     public Optional<Output<String>> cloudProvider() {
         return Optional.ofNullable(this.cloudProvider);
+    }
+
+    /**
+     * Name of the Azure Blob Storage container.
+     * 
+     */
+    @Import(name="container")
+    private @Nullable Output<String> container;
+
+    /**
+     * @return Name of the Azure Blob Storage container.
+     * 
+     */
+    public Optional<Output<String>> container() {
+        return Optional.ofNullable(this.container);
     }
 
     /**
@@ -121,6 +166,21 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Shared Access Signature token for the Azure Storage account. Mutually exclusive with `accountKey`.
+     * 
+     */
+    @Import(name="sasToken")
+    private @Nullable Output<String> sasToken;
+
+    /**
+     * @return Shared Access Signature token for the Azure Storage account. Mutually exclusive with `accountKey`.
+     * 
+     */
+    public Optional<Output<String>> sasToken() {
+        return Optional.ofNullable(this.sasToken);
+    }
+
+    /**
      * Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
      * 
      */
@@ -139,12 +199,16 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
 
     private R2BucketSippySourceArgs(R2BucketSippySourceArgs $) {
         this.accessKeyId = $.accessKeyId;
+        this.accountKey = $.accountKey;
+        this.accountName = $.accountName;
         this.bucket = $.bucket;
         this.bucketUrl = $.bucketUrl;
         this.clientEmail = $.clientEmail;
         this.cloudProvider = $.cloudProvider;
+        this.container = $.container;
         this.privateKey = $.privateKey;
         this.region = $.region;
+        this.sasToken = $.sasToken;
         this.secretAccessKey = $.secretAccessKey;
     }
 
@@ -185,6 +249,48 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
          */
         public Builder accessKeyId(String accessKeyId) {
             return accessKeyId(Output.of(accessKeyId));
+        }
+
+        /**
+         * @param accountKey Access key for the Azure Storage account. Mutually exclusive with `sasToken`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountKey(@Nullable Output<String> accountKey) {
+            $.accountKey = accountKey;
+            return this;
+        }
+
+        /**
+         * @param accountKey Access key for the Azure Storage account. Mutually exclusive with `sasToken`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountKey(String accountKey) {
+            return accountKey(Output.of(accountKey));
+        }
+
+        /**
+         * @param accountName Name of the Azure Storage account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountName(@Nullable Output<String> accountName) {
+            $.accountName = accountName;
+            return this;
+        }
+
+        /**
+         * @param accountName Name of the Azure Storage account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountName(String accountName) {
+            return accountName(Output.of(accountName));
         }
 
         /**
@@ -251,7 +357,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param cloudProvider Available values: &#34;aws&#34;, &#34;gcs&#34;, &#34;s3&#34;.
+         * @param cloudProvider Available values: &#34;aws&#34;, &#34;gcs&#34;, &#34;s3&#34;, &#34;azure&#34;.
          * 
          * @return builder
          * 
@@ -262,13 +368,34 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param cloudProvider Available values: &#34;aws&#34;, &#34;gcs&#34;, &#34;s3&#34;.
+         * @param cloudProvider Available values: &#34;aws&#34;, &#34;gcs&#34;, &#34;s3&#34;, &#34;azure&#34;.
          * 
          * @return builder
          * 
          */
         public Builder cloudProvider(String cloudProvider) {
             return cloudProvider(Output.of(cloudProvider));
+        }
+
+        /**
+         * @param container Name of the Azure Blob Storage container.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder container(@Nullable Output<String> container) {
+            $.container = container;
+            return this;
+        }
+
+        /**
+         * @param container Name of the Azure Blob Storage container.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder container(String container) {
+            return container(Output.of(container));
         }
 
         /**
@@ -311,6 +438,27 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param sasToken Shared Access Signature token for the Azure Storage account. Mutually exclusive with `accountKey`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sasToken(@Nullable Output<String> sasToken) {
+            $.sasToken = sasToken;
+            return this;
+        }
+
+        /**
+         * @param sasToken Shared Access Signature token for the Azure Storage account. Mutually exclusive with `accountKey`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sasToken(String sasToken) {
+            return sasToken(Output.of(sasToken));
         }
 
         /**

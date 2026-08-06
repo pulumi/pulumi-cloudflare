@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustDevicePostureRulesResultInput;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDevicePostureRulesResultMatch;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,6 +19,11 @@ public final class GetZeroTrustDevicePostureRulesResult {
      * 
      */
     private String description;
+    /**
+     * @return Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issueCount input, and true otherwise.
+     * 
+     */
+    private Boolean enabled;
     /**
      * @return Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
      * 
@@ -62,6 +68,13 @@ public final class GetZeroTrustDevicePostureRulesResult {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issueCount input, and true otherwise.
+     * 
+     */
+    public Boolean enabled() {
+        return this.enabled;
     }
     /**
      * @return Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
@@ -124,6 +137,7 @@ public final class GetZeroTrustDevicePostureRulesResult {
     @CustomType.Builder
     public static final class Builder {
         private String description;
+        private Boolean enabled;
         private String expiration;
         private String id;
         private GetZeroTrustDevicePostureRulesResultInput input;
@@ -135,6 +149,7 @@ public final class GetZeroTrustDevicePostureRulesResult {
         public Builder(GetZeroTrustDevicePostureRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
+    	      this.enabled = defaults.enabled;
     	      this.expiration = defaults.expiration;
     	      this.id = defaults.id;
     	      this.input = defaults.input;
@@ -150,6 +165,14 @@ public final class GetZeroTrustDevicePostureRulesResult {
               throw new MissingRequiredPropertyException("GetZeroTrustDevicePostureRulesResult", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enabled(Boolean enabled) {
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDevicePostureRulesResult", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
@@ -214,6 +237,7 @@ public final class GetZeroTrustDevicePostureRulesResult {
         public GetZeroTrustDevicePostureRulesResult build() {
             final var _resultValue = new GetZeroTrustDevicePostureRulesResult();
             _resultValue.description = description;
+            _resultValue.enabled = enabled;
             _resultValue.expiration = expiration;
             _resultValue.id = id;
             _resultValue.input = input;

@@ -19,7 +19,7 @@ public final class ApiShieldOperationFeaturesSchemaInfo {
      */
     private @Nullable ApiShieldOperationFeaturesSchemaInfoActiveSchema activeSchema;
     /**
-     * @return True if a Cloudflare-provided learned schema is available for this endpoint.
+     * @return Deprecated. Always false.
      * 
      */
     private @Nullable Boolean learnedAvailable;
@@ -39,7 +39,7 @@ public final class ApiShieldOperationFeaturesSchemaInfo {
         return Optional.ofNullable(this.activeSchema);
     }
     /**
-     * @return True if a Cloudflare-provided learned schema is available for this endpoint.
+     * @return Deprecated. Always false.
      * 
      */
     public Optional<Boolean> learnedAvailable() {

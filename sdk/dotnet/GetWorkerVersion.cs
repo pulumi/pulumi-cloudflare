@@ -194,6 +194,7 @@ namespace Pulumi.Cloudflare
         public readonly ImmutableArray<string> CompatibilityFlags;
         public readonly ImmutableArray<Outputs.GetWorkerVersionContainerResult> Containers;
         public readonly string CreatedOn;
+        public readonly ImmutableDictionary<string, Outputs.GetWorkerVersionExportsResult> Exports;
         public readonly string Id;
         /// <summary>
         /// Whether to include the `Modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
@@ -242,6 +243,8 @@ namespace Pulumi.Cloudflare
 
             string createdOn,
 
+            ImmutableDictionary<string, Outputs.GetWorkerVersionExportsResult> exports,
+
             string id,
 
             string? include,
@@ -285,6 +288,7 @@ namespace Pulumi.Cloudflare
             CompatibilityFlags = compatibilityFlags;
             Containers = containers;
             CreatedOn = createdOn;
+            Exports = exports;
             Id = id;
             Include = include;
             Limits = limits;

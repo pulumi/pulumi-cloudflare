@@ -24,9 +24,17 @@ public final class TokenValidationConfigState extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.createdAt);
     }
 
+    /**
+     * Request payload for create and PUT credentials operations. Provided keys define the complete stored key set. Key identities (`{alg,kid}`) must be unique.
+     * 
+     */
     @Import(name="credentials")
     private @Nullable Output<TokenValidationConfigCredentialsArgs> credentials;
 
+    /**
+     * @return Request payload for create and PUT credentials operations. Provided keys define the complete stored key set. Key identities (`{alg,kid}`) must be unique.
+     * 
+     */
     public Optional<Output<TokenValidationConfigCredentialsArgs>> credentials() {
         return Optional.ofNullable(this.credentials);
     }
@@ -129,11 +137,23 @@ public final class TokenValidationConfigState extends com.pulumi.resources.Resou
             return createdAt(Output.of(createdAt));
         }
 
+        /**
+         * @param credentials Request payload for create and PUT credentials operations. Provided keys define the complete stored key set. Key identities (`{alg,kid}`) must be unique.
+         * 
+         * @return builder
+         * 
+         */
         public Builder credentials(@Nullable Output<TokenValidationConfigCredentialsArgs> credentials) {
             $.credentials = credentials;
             return this;
         }
 
+        /**
+         * @param credentials Request payload for create and PUT credentials operations. Provided keys define the complete stored key set. Key identities (`{alg,kid}`) must be unique.
+         * 
+         * @return builder
+         * 
+         */
         public Builder credentials(TokenValidationConfigCredentialsArgs credentials) {
             return credentials(Output.of(credentials));
         }

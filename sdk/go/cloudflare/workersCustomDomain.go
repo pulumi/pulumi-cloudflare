@@ -32,12 +32,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewWorkersCustomDomain(ctx, "example_workers_custom_domain", &cloudflare.WorkersCustomDomainArgs{
-//				AccountId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Hostname:    pulumi.String("app.example.com"),
-//				Service:     pulumi.String("my-worker"),
-//				Environment: pulumi.String("production"),
-//				ZoneId:      pulumi.String("593c9c94de529bbbfaac7c53ced0447d"),
-//				ZoneName:    pulumi.String("example.com"),
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Hostname:  pulumi.String("app.example.com"),
+//				Service:   pulumi.String("my-worker"),
+//				ZoneId:    pulumi.String("593c9c94de529bbbfaac7c53ced0447d"),
+//				ZoneName:  pulumi.String("example.com"),
 //			})
 //			if err != nil {
 //				return err

@@ -1659,7 +1659,7 @@ class AiSearchInstance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="retrievalOptions")
-    def retrieval_options(self) -> pulumi.Output['outputs.AiSearchInstanceRetrievalOptions']:
+    def retrieval_options(self) -> pulumi.Output[Optional['outputs.AiSearchInstanceRetrievalOptions']]:
         return pulumi.get(self, "retrieval_options")
 
     @_builtins.property

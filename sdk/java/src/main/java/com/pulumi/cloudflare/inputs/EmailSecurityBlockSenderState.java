@@ -82,17 +82,34 @@ public final class EmailSecurityBlockSenderState extends com.pulumi.resources.Re
         return Optional.ofNullable(this.modifiedAt);
     }
 
+    /**
+     * The pattern value to match against. Format depends on `patternType`:
+     * - EMAIL: a valid email address, e.g. `user{@literal @}example.com`
+     * - DOMAIN: a valid domain name, e.g. `example.com`
+     * - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+     * 
+     */
     @Import(name="pattern")
     private @Nullable Output<String> pattern;
 
+    /**
+     * @return The pattern value to match against. Format depends on `patternType`:
+     * - EMAIL: a valid email address, e.g. `user{@literal @}example.com`
+     * - DOMAIN: a valid domain name, e.g. `example.com`
+     * - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+     * 
+     */
     public Optional<Output<String>> pattern() {
         return Optional.ofNullable(this.pattern);
     }
 
     /**
      * Type of pattern matching.
-     * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
-     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * - EMAIL: matches a full email address (e.g. `user{@literal @}example.com`)
+     * - DOMAIN: matches a domain name (e.g. `example.com`)
+     * - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
+     * - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+     *   Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
      */
     @Import(name="patternType")
@@ -100,8 +117,11 @@ public final class EmailSecurityBlockSenderState extends com.pulumi.resources.Re
 
     /**
      * @return Type of pattern matching.
-     * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
-     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * - EMAIL: matches a full email address (e.g. `user{@literal @}example.com`)
+     * - DOMAIN: matches a domain name (e.g. `example.com`)
+     * - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
+     * - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+     *   Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
      */
     public Optional<Output<String>> patternType() {
@@ -225,19 +245,40 @@ public final class EmailSecurityBlockSenderState extends com.pulumi.resources.Re
             return modifiedAt(Output.of(modifiedAt));
         }
 
+        /**
+         * @param pattern The pattern value to match against. Format depends on `patternType`:
+         * - EMAIL: a valid email address, e.g. `user{@literal @}example.com`
+         * - DOMAIN: a valid domain name, e.g. `example.com`
+         * - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pattern(@Nullable Output<String> pattern) {
             $.pattern = pattern;
             return this;
         }
 
+        /**
+         * @param pattern The pattern value to match against. Format depends on `patternType`:
+         * - EMAIL: a valid email address, e.g. `user{@literal @}example.com`
+         * - DOMAIN: a valid domain name, e.g. `example.com`
+         * - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pattern(String pattern) {
             return pattern(Output.of(pattern));
         }
 
         /**
          * @param patternType Type of pattern matching.
-         * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
-         * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+         * - EMAIL: matches a full email address (e.g. `user{@literal @}example.com`)
+         * - DOMAIN: matches a domain name (e.g. `example.com`)
+         * - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
+         * - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+         *   Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
          * 
          * @return builder
          * 
@@ -249,8 +290,11 @@ public final class EmailSecurityBlockSenderState extends com.pulumi.resources.Re
 
         /**
          * @param patternType Type of pattern matching.
-         * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
-         * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+         * - EMAIL: matches a full email address (e.g. `user{@literal @}example.com`)
+         * - DOMAIN: matches a domain name (e.g. `example.com`)
+         * - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
+         * - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+         *   Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
          * 
          * @return builder
          * 

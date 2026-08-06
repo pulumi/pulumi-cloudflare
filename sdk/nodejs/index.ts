@@ -1695,6 +1695,11 @@ export const getSnippetList: typeof import("./getSnippetList").getSnippetList = 
 export const getSnippetListOutput: typeof import("./getSnippetList").getSnippetListOutput = null as any;
 utilities.lazyLoad(exports, ["getSnippetList","getSnippetListOutput"], () => require("./getSnippetList"));
 
+export { GetSnippetRulesArgs, GetSnippetRulesResult, GetSnippetRulesOutputArgs } from "./getSnippetRules";
+export const getSnippetRules: typeof import("./getSnippetRules").getSnippetRules = null as any;
+export const getSnippetRulesOutput: typeof import("./getSnippetRules").getSnippetRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getSnippetRules","getSnippetRulesOutput"], () => require("./getSnippetRules"));
+
 export { GetSnippetRulesListArgs, GetSnippetRulesListResult, GetSnippetRulesListOutputArgs } from "./getSnippetRulesList";
 export const getSnippetRulesList: typeof import("./getSnippetRulesList").getSnippetRulesList = null as any;
 export const getSnippetRulesListOutput: typeof import("./getSnippetRulesList").getSnippetRulesListOutput = null as any;
@@ -2294,6 +2299,16 @@ export { GetZeroTrustDlpCustomProfileArgs, GetZeroTrustDlpCustomProfileResult, G
 export const getZeroTrustDlpCustomProfile: typeof import("./getZeroTrustDlpCustomProfile").getZeroTrustDlpCustomProfile = null as any;
 export const getZeroTrustDlpCustomProfileOutput: typeof import("./getZeroTrustDlpCustomProfile").getZeroTrustDlpCustomProfileOutput = null as any;
 utilities.lazyLoad(exports, ["getZeroTrustDlpCustomProfile","getZeroTrustDlpCustomProfileOutput"], () => require("./getZeroTrustDlpCustomProfile"));
+
+export { GetZeroTrustDlpCustomPromptTopicArgs, GetZeroTrustDlpCustomPromptTopicResult, GetZeroTrustDlpCustomPromptTopicOutputArgs } from "./getZeroTrustDlpCustomPromptTopic";
+export const getZeroTrustDlpCustomPromptTopic: typeof import("./getZeroTrustDlpCustomPromptTopic").getZeroTrustDlpCustomPromptTopic = null as any;
+export const getZeroTrustDlpCustomPromptTopicOutput: typeof import("./getZeroTrustDlpCustomPromptTopic").getZeroTrustDlpCustomPromptTopicOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustDlpCustomPromptTopic","getZeroTrustDlpCustomPromptTopicOutput"], () => require("./getZeroTrustDlpCustomPromptTopic"));
+
+export { GetZeroTrustDlpCustomPromptTopicsArgs, GetZeroTrustDlpCustomPromptTopicsResult, GetZeroTrustDlpCustomPromptTopicsOutputArgs } from "./getZeroTrustDlpCustomPromptTopics";
+export const getZeroTrustDlpCustomPromptTopics: typeof import("./getZeroTrustDlpCustomPromptTopics").getZeroTrustDlpCustomPromptTopics = null as any;
+export const getZeroTrustDlpCustomPromptTopicsOutput: typeof import("./getZeroTrustDlpCustomPromptTopics").getZeroTrustDlpCustomPromptTopicsOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustDlpCustomPromptTopics","getZeroTrustDlpCustomPromptTopicsOutput"], () => require("./getZeroTrustDlpCustomPromptTopics"));
 
 export { GetZeroTrustDlpDataClassArgs, GetZeroTrustDlpDataClassResult, GetZeroTrustDlpDataClassOutputArgs } from "./getZeroTrustDlpDataClass";
 export const getZeroTrustDlpDataClass: typeof import("./getZeroTrustDlpDataClass").getZeroTrustDlpDataClass = null as any;

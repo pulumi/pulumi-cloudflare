@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -34,6 +35,21 @@ public final class GetApiTokensArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * When true, includes recently-expired tokens in the response.
+     * 
+     */
+    @Import(name="includeExpired")
+    private @Nullable Output<Boolean> includeExpired;
+
+    /**
+     * @return When true, includes recently-expired tokens in the response.
+     * 
+     */
+    public Optional<Output<Boolean>> includeExpired() {
+        return Optional.ofNullable(this.includeExpired);
+    }
+
+    /**
      * Max items to fetch, default: 1000
      * 
      */
@@ -52,6 +68,7 @@ public final class GetApiTokensArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetApiTokensArgs(GetApiTokensArgs $) {
         this.direction = $.direction;
+        this.includeExpired = $.includeExpired;
         this.maxItems = $.maxItems;
     }
 
@@ -94,6 +111,27 @@ public final class GetApiTokensArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder direction(String direction) {
             return direction(Output.of(direction));
+        }
+
+        /**
+         * @param includeExpired When true, includes recently-expired tokens in the response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeExpired(@Nullable Output<Boolean> includeExpired) {
+            $.includeExpired = includeExpired;
+            return this;
+        }
+
+        /**
+         * @param includeExpired When true, includes recently-expired tokens in the response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeExpired(Boolean includeExpired) {
+            return includeExpired(Output.of(includeExpired));
         }
 
         /**

@@ -82,6 +82,10 @@ import (
 //						Duration: pulumi.String("300s"),
 //						Enforce:  pulumi.Bool(true),
 //					},
+//					DeleteHeaders: pulumi.StringArray{
+//						pulumi.String("X-Old-Header"),
+//						pulumi.String("X-Remove-Me"),
+//					},
 //					DnsResolvers: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs{
 //						Ipv4s: cloudflare.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Array{
 //							&cloudflare.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args{
@@ -145,6 +149,11 @@ import (
 //						ViewId:   pulumi.String("view_id"),
 //					},
 //					ResolveDnsThroughCloudflare: pulumi.Bool(true),
+//					SetHeaders: pulumi.StringArrayMap{
+//						"X-User-Identity": pulumi.StringArray{
+//							pulumi.String("user=@{identity.name}"),
+//						},
+//					},
 //					UntrustedCert: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs{
 //						Action: pulumi.String("error"),
 //					},

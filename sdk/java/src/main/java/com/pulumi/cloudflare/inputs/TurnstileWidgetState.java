@@ -83,6 +83,29 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.createdOn);
     }
 
+    /**
+     * Origin that created this widget, recorded at creation time and
+     * immutable afterward. Server-derived from the create request; not
+     * client-settable. Omitted from the response for widgets created
+     * before this field existed.
+     * Available values: &#34;wrangler&#34;, &#34;dashboard&#34;, &#34;spin&#34;, &#34;api&#34;, &#34;unknown&#34;.
+     * 
+     */
+    @Import(name="deployedVia")
+    private @Nullable Output<String> deployedVia;
+
+    /**
+     * @return Origin that created this widget, recorded at creation time and
+     * immutable afterward. Server-derived from the create request; not
+     * client-settable. Omitted from the response for widgets created
+     * before this field existed.
+     * Available values: &#34;wrangler&#34;, &#34;dashboard&#34;, &#34;spin&#34;, &#34;api&#34;, &#34;unknown&#34;.
+     * 
+     */
+    public Optional<Output<String>> deployedVia() {
+        return Optional.ofNullable(this.deployedVia);
+    }
+
     @Import(name="domains")
     private @Nullable Output<List<String>> domains;
 
@@ -103,6 +126,27 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<Boolean>> ephemeralId() {
         return Optional.ofNullable(this.ephemeralId);
+    }
+
+    /**
+     * Origin of the most recent mutation (create, update, delete, or
+     * secret rotation). Server-derived; not client-settable. Omitted for
+     * widgets last mutated before this field existed.
+     * Available values: &#34;wrangler&#34;, &#34;dashboard&#34;, &#34;spin&#34;, &#34;api&#34;, &#34;unknown&#34;.
+     * 
+     */
+    @Import(name="lastModifiedVia")
+    private @Nullable Output<String> lastModifiedVia;
+
+    /**
+     * @return Origin of the most recent mutation (create, update, delete, or
+     * secret rotation). Server-derived; not client-settable. Omitted for
+     * widgets last mutated before this field existed.
+     * Available values: &#34;wrangler&#34;, &#34;dashboard&#34;, &#34;spin&#34;, &#34;api&#34;, &#34;unknown&#34;.
+     * 
+     */
+    public Optional<Output<String>> lastModifiedVia() {
+        return Optional.ofNullable(this.lastModifiedVia);
     }
 
     /**
@@ -225,8 +269,10 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
         this.botFightMode = $.botFightMode;
         this.clearanceLevel = $.clearanceLevel;
         this.createdOn = $.createdOn;
+        this.deployedVia = $.deployedVia;
         this.domains = $.domains;
         this.ephemeralId = $.ephemeralId;
+        this.lastModifiedVia = $.lastModifiedVia;
         this.mode = $.mode;
         this.modifiedOn = $.modifiedOn;
         this.name = $.name;
@@ -344,6 +390,35 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
             return createdOn(Output.of(createdOn));
         }
 
+        /**
+         * @param deployedVia Origin that created this widget, recorded at creation time and
+         * immutable afterward. Server-derived from the create request; not
+         * client-settable. Omitted from the response for widgets created
+         * before this field existed.
+         * Available values: &#34;wrangler&#34;, &#34;dashboard&#34;, &#34;spin&#34;, &#34;api&#34;, &#34;unknown&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deployedVia(@Nullable Output<String> deployedVia) {
+            $.deployedVia = deployedVia;
+            return this;
+        }
+
+        /**
+         * @param deployedVia Origin that created this widget, recorded at creation time and
+         * immutable afterward. Server-derived from the create request; not
+         * client-settable. Omitted from the response for widgets created
+         * before this field existed.
+         * Available values: &#34;wrangler&#34;, &#34;dashboard&#34;, &#34;spin&#34;, &#34;api&#34;, &#34;unknown&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deployedVia(String deployedVia) {
+            return deployedVia(Output.of(deployedVia));
+        }
+
         public Builder domains(@Nullable Output<List<String>> domains) {
             $.domains = domains;
             return this;
@@ -376,6 +451,33 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
          */
         public Builder ephemeralId(Boolean ephemeralId) {
             return ephemeralId(Output.of(ephemeralId));
+        }
+
+        /**
+         * @param lastModifiedVia Origin of the most recent mutation (create, update, delete, or
+         * secret rotation). Server-derived; not client-settable. Omitted for
+         * widgets last mutated before this field existed.
+         * Available values: &#34;wrangler&#34;, &#34;dashboard&#34;, &#34;spin&#34;, &#34;api&#34;, &#34;unknown&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastModifiedVia(@Nullable Output<String> lastModifiedVia) {
+            $.lastModifiedVia = lastModifiedVia;
+            return this;
+        }
+
+        /**
+         * @param lastModifiedVia Origin of the most recent mutation (create, update, delete, or
+         * secret rotation). Server-derived; not client-settable. Omitted for
+         * widgets last mutated before this field existed.
+         * Available values: &#34;wrangler&#34;, &#34;dashboard&#34;, &#34;spin&#34;, &#34;api&#34;, &#34;unknown&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastModifiedVia(String lastModifiedVia) {
+            return lastModifiedVia(Output.of(lastModifiedVia));
         }
 
         /**

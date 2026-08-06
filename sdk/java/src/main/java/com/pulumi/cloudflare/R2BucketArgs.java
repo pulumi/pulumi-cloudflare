@@ -33,7 +33,7 @@ public final class R2BucketArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Jurisdiction where objects in this bucket are guaranteed to be stored.
-     * Available values: &#34;default&#34;, &#34;eu&#34;, &#34;fedramp&#34;.
+     * Available values: &#34;default&#34;, &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
      * 
      */
     @Import(name="jurisdiction")
@@ -41,7 +41,7 @@ public final class R2BucketArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Jurisdiction where objects in this bucket are guaranteed to be stored.
-     * Available values: &#34;default&#34;, &#34;eu&#34;, &#34;fedramp&#34;.
+     * Available values: &#34;default&#34;, &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
      * 
      */
     public Optional<Output<String>> jurisdiction() {
@@ -148,7 +148,7 @@ public final class R2BucketArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param jurisdiction Jurisdiction where objects in this bucket are guaranteed to be stored.
-         * Available values: &#34;default&#34;, &#34;eu&#34;, &#34;fedramp&#34;.
+         * Available values: &#34;default&#34;, &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
          * 
          * @return builder
          * 
@@ -160,7 +160,7 @@ public final class R2BucketArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param jurisdiction Jurisdiction where objects in this bucket are guaranteed to be stored.
-         * Available values: &#34;default&#34;, &#34;eu&#34;, &#34;fedramp&#34;.
+         * Available values: &#34;default&#34;, &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
          * 
          * @return builder
          * 

@@ -75,13 +75,24 @@ type LookupTurnstileWidgetResult struct {
 	// Available values: "noClearance", "jschallenge", "managed", "interactive".
 	ClearanceLevel string `pulumi:"clearanceLevel"`
 	// When the widget was created.
-	CreatedOn string   `pulumi:"createdOn"`
-	Domains   []string `pulumi:"domains"`
+	CreatedOn string `pulumi:"createdOn"`
+	// Origin that created this widget, recorded at creation time and
+	// immutable afterward. Server-derived from the create request; not
+	// client-settable. Omitted from the response for widgets created
+	// before this field existed.
+	// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+	DeployedVia string   `pulumi:"deployedVia"`
+	Domains     []string `pulumi:"domains"`
 	// Return the Ephemeral ID in /siteverify (ENT only).
 	EphemeralId bool                      `pulumi:"ephemeralId"`
 	Filter      *GetTurnstileWidgetFilter `pulumi:"filter"`
 	// Widget item identifier tag.
 	Id string `pulumi:"id"`
+	// Origin of the most recent mutation (create, update, delete, or
+	// secret rotation). Server-derived; not client-settable. Omitted for
+	// widgets last mutated before this field existed.
+	// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+	LastModifiedVia string `pulumi:"lastModifiedVia"`
 	// Widget Mode
 	// Available values: "non-interactive", "invisible", "managed".
 	Mode string `pulumi:"mode"`
@@ -162,6 +173,15 @@ func (o LookupTurnstileWidgetResultOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTurnstileWidgetResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
+// Origin that created this widget, recorded at creation time and
+// immutable afterward. Server-derived from the create request; not
+// client-settable. Omitted from the response for widgets created
+// before this field existed.
+// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+func (o LookupTurnstileWidgetResultOutput) DeployedVia() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTurnstileWidgetResult) string { return v.DeployedVia }).(pulumi.StringOutput)
+}
+
 func (o LookupTurnstileWidgetResultOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupTurnstileWidgetResult) []string { return v.Domains }).(pulumi.StringArrayOutput)
 }
@@ -178,6 +198,14 @@ func (o LookupTurnstileWidgetResultOutput) Filter() GetTurnstileWidgetFilterPtrO
 // Widget item identifier tag.
 func (o LookupTurnstileWidgetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTurnstileWidgetResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Origin of the most recent mutation (create, update, delete, or
+// secret rotation). Server-derived; not client-settable. Omitted for
+// widgets last mutated before this field existed.
+// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+func (o LookupTurnstileWidgetResultOutput) LastModifiedVia() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTurnstileWidgetResult) string { return v.LastModifiedVia }).(pulumi.StringOutput)
 }
 
 // Widget Mode

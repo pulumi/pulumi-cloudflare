@@ -59,7 +59,7 @@ export interface GetSpectrumApplicationResult {
     readonly appId?: string;
     /**
      * Enables Argo Smart Routing for this application.
-     * Notes: Only available for TCP applications with trafficType set to "direct".
+     * Notes: Only available for TCP or UDP applications with trafficType set to "direct".
      */
     readonly argoSmartRouting: boolean;
     /**

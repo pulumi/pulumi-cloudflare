@@ -49,6 +49,15 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string CreatedOn;
         /// <summary>
+        /// Declarative exports for the version, including Durable Object
+        /// classes (with their `Storage` backend) and named Worker
+        /// entrypoints. On reads, tombstoned lifecycle entries are
+        /// omitted, so only live exports (`Created` and
+        /// `expecting-transfer`) are returned. `Exports` and `Migrations`
+        /// are mutually exclusive on upload.
+        /// </summary>
+        public readonly ImmutableDictionary<string, Outputs.GetWorkerVersionsResultExportsResult> Exports;
+        /// <summary>
         /// Version identifier.
         /// </summary>
         public readonly string Id;
@@ -130,6 +139,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string createdOn,
 
+            ImmutableDictionary<string, Outputs.GetWorkerVersionsResultExportsResult> exports,
+
             string id,
 
             Outputs.GetWorkerVersionsResultLimitsResult limits,
@@ -166,6 +177,7 @@ namespace Pulumi.Cloudflare.Outputs
             CompatibilityFlags = compatibilityFlags;
             Containers = containers;
             CreatedOn = createdOn;
+            Exports = exports;
             Id = id;
             Limits = limits;
             MainModule = mainModule;

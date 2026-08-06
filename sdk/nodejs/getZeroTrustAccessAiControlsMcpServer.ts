@@ -52,6 +52,10 @@ export interface GetZeroTrustAccessAiControlsMcpServerArgs {
 export interface GetZeroTrustAccessAiControlsMcpServerResult {
     readonly accountId?: string;
     /**
+     * Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
+     */
+    readonly authConfigSummary: outputs.GetZeroTrustAccessAiControlsMcpServerAuthConfigSummary;
+    /**
      * Available values: "oauth", "bearer", "unauthenticated".
      */
     readonly authType: string;
@@ -80,6 +84,10 @@ export interface GetZeroTrustAccessAiControlsMcpServerResult {
      * Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
      */
     readonly secureWebGateway: boolean;
+    /**
+     * Current sync state of the server
+     * Available values: "waiting", "ready", "stale", "error".
+     */
     readonly status: string;
     readonly tools: {[key: string]: string}[];
     readonly updatedPrompts: outputs.GetZeroTrustAccessAiControlsMcpServerUpdatedPrompt[];

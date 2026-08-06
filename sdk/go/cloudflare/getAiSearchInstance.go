@@ -46,7 +46,7 @@ type LookupAiSearchInstanceResult struct {
 	CreatedAt       string                              `pulumi:"createdAt"`
 	CreatedBy       string                              `pulumi:"createdBy"`
 	CustomMetadatas []GetAiSearchInstanceCustomMetadata `pulumi:"customMetadatas"`
-	// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+	// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/qwen/qwen3-vl-embedding-2b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
 	EmbeddingModel string                     `pulumi:"embeddingModel"`
 	Enable         bool                       `pulumi:"enable"`
 	EngineVersion  float64                    `pulumi:"engineVersion"`
@@ -174,7 +174,7 @@ func (o LookupAiSearchInstanceResultOutput) CustomMetadatas() GetAiSearchInstanc
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) []GetAiSearchInstanceCustomMetadata { return v.CustomMetadatas }).(GetAiSearchInstanceCustomMetadataArrayOutput)
 }
 
-// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/qwen/qwen3-vl-embedding-2b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
 func (o LookupAiSearchInstanceResultOutput) EmbeddingModel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.EmbeddingModel }).(pulumi.StringOutput)
 }

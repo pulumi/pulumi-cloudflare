@@ -56,12 +56,9 @@ export class SecretsStore extends pulumi.CustomResource {
         return obj['__pulumiType'] === SecretsStore.__pulumiType;
     }
 
-    /**
-     * Account Identifier
-     */
     declare public readonly accountId: pulumi.Output<string>;
     /**
-     * Whenthe secret was created.
+     * When the secret was created.
      */
     declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
@@ -69,7 +66,7 @@ export class SecretsStore extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly modified: pulumi.Output<string>;
     /**
-     * The name of the store
+     * The name of the store.
      */
     declare public readonly name: pulumi.Output<string>;
 
@@ -112,12 +109,9 @@ export class SecretsStore extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SecretsStore resources.
  */
 export interface SecretsStoreState {
-    /**
-     * Account Identifier
-     */
     accountId?: pulumi.Input<string | undefined>;
     /**
-     * Whenthe secret was created.
+     * When the secret was created.
      */
     created?: pulumi.Input<string | undefined>;
     /**
@@ -125,7 +119,7 @@ export interface SecretsStoreState {
      */
     modified?: pulumi.Input<string | undefined>;
     /**
-     * The name of the store
+     * The name of the store.
      */
     name?: pulumi.Input<string | undefined>;
 }
@@ -134,12 +128,9 @@ export interface SecretsStoreState {
  * The set of arguments for constructing a SecretsStore resource.
  */
 export interface SecretsStoreArgs {
-    /**
-     * Account Identifier
-     */
     accountId: pulumi.Input<string>;
     /**
-     * The name of the store
+     * The name of the store.
      */
     name: pulumi.Input<string>;
 }

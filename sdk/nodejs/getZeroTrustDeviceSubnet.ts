@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -53,6 +55,10 @@ export interface GetZeroTrustDeviceSubnetResult {
      */
     readonly accountId?: string;
     /**
+     * IP capacity information for the subnet.
+     */
+    readonly capacity: outputs.GetZeroTrustDeviceSubnetCapacity;
+    /**
      * An optional description of the subnet.
      */
     readonly comment: string;
@@ -86,7 +92,7 @@ export interface GetZeroTrustDeviceSubnetResult {
     readonly subnetId: string;
     /**
      * The type of subnet.
-     * Available values: "cloudflareSource", "warp".
+     * Available values: "cloudflare*source", "initial*resolved_ip", "warp".
      */
     readonly subnetType: string;
 }

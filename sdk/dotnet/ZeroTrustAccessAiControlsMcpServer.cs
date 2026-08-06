@@ -33,6 +33,7 @@ namespace Pulumi.Cloudflare
     ///         Hostname = "https://example.com/mcp",
     ///         Name = "My MCP Server",
     ///         AuthCredentials = "auth_credentials",
+    ///         ClientSecret = "client_secret",
     ///         Description = "This is one remote mcp server",
     ///         IsSharedOauthCallbackEnabled = true,
     ///         SecureWebGateway = false,
@@ -73,6 +74,12 @@ namespace Pulumi.Cloudflare
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
+        /// <summary>
+        /// Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
+        /// </summary>
+        [Output("authConfigSummary")]
+        public Output<Outputs.ZeroTrustAccessAiControlsMcpServerAuthConfigSummary> AuthConfigSummary { get; private set; } = null!;
+
         [Output("authCredentials")]
         public Output<string?> AuthCredentials { get; private set; } = null!;
 
@@ -81,6 +88,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("authType")]
         public Output<string> AuthType { get; private set; } = null!;
+
+        /// <summary>
+        /// Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+        /// </summary>
+        [Output("clientSecret")]
+        public Output<string?> ClientSecret { get; private set; } = null!;
 
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -101,10 +114,10 @@ namespace Pulumi.Cloudflare
         public Output<string> Hostname { get; private set; } = null!;
 
         /// <summary>
-        /// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the RedirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+        /// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the RedirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
         /// </summary>
         [Output("isSharedOauthCallbackEnabled")]
-        public Output<bool?> IsSharedOauthCallbackEnabled { get; private set; } = null!;
+        public Output<bool> IsSharedOauthCallbackEnabled { get; private set; } = null!;
 
         [Output("lastSuccessfulSync")]
         public Output<string> LastSuccessfulSync { get; private set; } = null!;
@@ -174,6 +187,7 @@ namespace Pulumi.Cloudflare
                 AdditionalSecretOutputs =
                 {
                     "authCredentials",
+                    "clientSecret",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -219,6 +233,22 @@ namespace Pulumi.Cloudflare
         [Input("authType", required: true)]
         public Input<string> AuthType { get; set; } = null!;
 
+        [Input("clientSecret")]
+        private Input<string>? _clientSecret;
+
+        /// <summary>
+        /// Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+        /// </summary>
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -226,7 +256,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Hostname { get; set; } = null!;
 
         /// <summary>
-        /// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the RedirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+        /// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the RedirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
         /// </summary>
         [Input("isSharedOauthCallbackEnabled")]
         public Input<bool>? IsSharedOauthCallbackEnabled { get; set; }
@@ -273,6 +303,12 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        /// <summary>
+        /// Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
+        /// </summary>
+        [Input("authConfigSummary")]
+        public Input<Inputs.ZeroTrustAccessAiControlsMcpServerAuthConfigSummaryGetArgs>? AuthConfigSummary { get; set; }
+
         [Input("authCredentials")]
         private Input<string>? _authCredentials;
         public Input<string>? AuthCredentials
@@ -290,6 +326,22 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("authType")]
         public Input<string>? AuthType { get; set; }
+
+        [Input("clientSecret")]
+        private Input<string>? _clientSecret;
+
+        /// <summary>
+        /// Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+        /// </summary>
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
@@ -310,7 +362,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
-        /// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the RedirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+        /// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the RedirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
         /// </summary>
         [Input("isSharedOauthCallbackEnabled")]
         public Input<bool>? IsSharedOauthCallbackEnabled { get; set; }

@@ -50,6 +50,21 @@ public final class AiSearchInstancePublicEndpointParamsArgs extends com.pulumi.r
         return Optional.ofNullable(this.customDomains);
     }
 
+    /**
+     * When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+     * 
+     */
+    @Import(name="defaultDomainEnabled")
+    private @Nullable Output<Boolean> defaultDomainEnabled;
+
+    /**
+     * @return When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+     * 
+     */
+    public Optional<Output<Boolean>> defaultDomainEnabled() {
+        return Optional.ofNullable(this.defaultDomainEnabled);
+    }
+
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
@@ -84,6 +99,7 @@ public final class AiSearchInstancePublicEndpointParamsArgs extends com.pulumi.r
         this.authorizedHosts = $.authorizedHosts;
         this.chatCompletionsEndpoint = $.chatCompletionsEndpoint;
         this.customDomains = $.customDomains;
+        this.defaultDomainEnabled = $.defaultDomainEnabled;
         this.enabled = $.enabled;
         this.mcp = $.mcp;
         this.rateLimit = $.rateLimit;
@@ -159,6 +175,27 @@ public final class AiSearchInstancePublicEndpointParamsArgs extends com.pulumi.r
          */
         public Builder customDomains(String... customDomains) {
             return customDomains(List.of(customDomains));
+        }
+
+        /**
+         * @param defaultDomainEnabled When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultDomainEnabled(@Nullable Output<Boolean> defaultDomainEnabled) {
+            $.defaultDomainEnabled = defaultDomainEnabled;
+            return this;
+        }
+
+        /**
+         * @param defaultDomainEnabled When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultDomainEnabled(Boolean defaultDomainEnabled) {
+            return defaultDomainEnabled(Output.of(defaultDomainEnabled));
         }
 
         public Builder enabled(@Nullable Output<Boolean> enabled) {

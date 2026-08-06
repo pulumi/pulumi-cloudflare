@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessAiControlsMcpServerAuthConfigSummary;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessAiControlsMcpServerErrorDetails;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessAiControlsMcpServerFilter;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessAiControlsMcpServerUpdatedPrompt;
@@ -20,6 +21,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetZeroTrustAccessAiControlsMcpServerResult {
     private @Nullable String accountId;
+    /**
+     * @return Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
+     * 
+     */
+    private GetZeroTrustAccessAiControlsMcpServerAuthConfigSummary authConfigSummary;
     /**
      * @return Available values: &#34;oauth&#34;, &#34;bearer&#34;, &#34;unauthenticated&#34;.
      * 
@@ -53,6 +59,11 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
      * 
      */
     private Boolean secureWebGateway;
+    /**
+     * @return Current sync state of the server
+     * Available values: &#34;waiting&#34;, &#34;ready&#34;, &#34;stale&#34;, &#34;error&#34;.
+     * 
+     */
     private String status;
     private List<Map<String,String>> tools;
     private List<GetZeroTrustAccessAiControlsMcpServerUpdatedPrompt> updatedPrompts;
@@ -61,6 +72,13 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
     private GetZeroTrustAccessAiControlsMcpServerResult() {}
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
+    }
+    /**
+     * @return Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
+     * 
+     */
+    public GetZeroTrustAccessAiControlsMcpServerAuthConfigSummary authConfigSummary() {
+        return this.authConfigSummary;
     }
     /**
      * @return Available values: &#34;oauth&#34;, &#34;bearer&#34;, &#34;unauthenticated&#34;.
@@ -129,6 +147,11 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
     public Boolean secureWebGateway() {
         return this.secureWebGateway;
     }
+    /**
+     * @return Current sync state of the server
+     * Available values: &#34;waiting&#34;, &#34;ready&#34;, &#34;stale&#34;, &#34;error&#34;.
+     * 
+     */
     public String status() {
         return this.status;
     }
@@ -152,6 +175,7 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
+        private GetZeroTrustAccessAiControlsMcpServerAuthConfigSummary authConfigSummary;
         private String authType;
         private String createdAt;
         private String createdBy;
@@ -177,6 +201,7 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
         public Builder(GetZeroTrustAccessAiControlsMcpServerResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.authConfigSummary = defaults.authConfigSummary;
     	      this.authType = defaults.authType;
     	      this.createdAt = defaults.createdAt;
     	      this.createdBy = defaults.createdBy;
@@ -204,6 +229,14 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
         public Builder accountId(@Nullable String accountId) {
 
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder authConfigSummary(GetZeroTrustAccessAiControlsMcpServerAuthConfigSummary authConfigSummary) {
+            if (authConfigSummary == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpServerResult", "authConfigSummary");
+            }
+            this.authConfigSummary = authConfigSummary;
             return this;
         }
         @CustomType.Setter
@@ -381,6 +414,7 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
         public GetZeroTrustAccessAiControlsMcpServerResult build() {
             final var _resultValue = new GetZeroTrustAccessAiControlsMcpServerResult();
             _resultValue.accountId = accountId;
+            _resultValue.authConfigSummary = authConfigSummary;
             _resultValue.authType = authType;
             _resultValue.createdAt = createdAt;
             _resultValue.createdBy = createdBy;

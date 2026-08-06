@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleLoadBalancers = cloudflare.getLoadBalancers({
- *     zoneId: "699d98642c564d2e855e9661899b7252",
+ *     zoneId: "zone_id",
  * });
  * ```
  */
@@ -70,7 +70,7 @@ export interface GetLoadBalancersResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleLoadBalancers = cloudflare.getLoadBalancers({
- *     zoneId: "699d98642c564d2e855e9661899b7252",
+ *     zoneId: "zone_id",
  * });
  * ```
  */

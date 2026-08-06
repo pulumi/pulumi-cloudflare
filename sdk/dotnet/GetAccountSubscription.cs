@@ -29,7 +29,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleAccountSubscription = Cloudflare.GetAccountSubscription.Invoke(new()
         ///     {
-        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         AccountId = "account_id",
         ///     });
         /// 
         /// });
@@ -56,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleAccountSubscription = Cloudflare.GetAccountSubscription.Invoke(new()
         ///     {
-        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         AccountId = "account_id",
         ///     });
         /// 
         /// });
@@ -83,7 +83,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleAccountSubscription = Cloudflare.GetAccountSubscription.Invoke(new()
         ///     {
-        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         AccountId = "account_id",
         ///     });
         /// 
         /// });
@@ -97,10 +97,16 @@ namespace Pulumi.Cloudflare
     public sealed class GetAccountSubscriptionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
+
+        /// <summary>
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+        /// </summary>
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetAccountSubscriptionArgs()
         {
@@ -111,10 +117,16 @@ namespace Pulumi.Cloudflare
     public sealed class GetAccountSubscriptionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetAccountSubscriptionInvokeArgs()
         {
@@ -127,7 +139,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetAccountSubscriptionResult
     {
         /// <summary>
-        /// Identifier
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
@@ -148,7 +160,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Frequency;
         /// <summary>
-        /// Identifier
+        /// Subscription identifier tag.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -164,6 +176,10 @@ namespace Pulumi.Cloudflare
         /// Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
         /// </summary>
         public readonly string State;
+        /// <summary>
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+        /// </summary>
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetAccountSubscriptionResult(
@@ -183,7 +199,9 @@ namespace Pulumi.Cloudflare
 
             Outputs.GetAccountSubscriptionRatePlanResult ratePlan,
 
-            string state)
+            string state,
+
+            string? zoneId)
         {
             AccountId = accountId;
             Currency = currency;
@@ -194,6 +212,7 @@ namespace Pulumi.Cloudflare
             Price = price;
             RatePlan = ratePlan;
             State = state;
+            ZoneId = zoneId;
         }
     }
 }

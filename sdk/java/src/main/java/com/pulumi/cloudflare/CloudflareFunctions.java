@@ -508,8 +508,10 @@ import com.pulumi.cloudflare.inputs.GetSnippetArgs;
 import com.pulumi.cloudflare.inputs.GetSnippetListArgs;
 import com.pulumi.cloudflare.inputs.GetSnippetListPlainArgs;
 import com.pulumi.cloudflare.inputs.GetSnippetPlainArgs;
+import com.pulumi.cloudflare.inputs.GetSnippetRulesArgs;
 import com.pulumi.cloudflare.inputs.GetSnippetRulesListArgs;
 import com.pulumi.cloudflare.inputs.GetSnippetRulesListPlainArgs;
+import com.pulumi.cloudflare.inputs.GetSnippetRulesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetSnippetsArgs;
 import com.pulumi.cloudflare.inputs.GetSnippetsListArgs;
 import com.pulumi.cloudflare.inputs.GetSnippetsListPlainArgs;
@@ -746,6 +748,10 @@ import com.pulumi.cloudflare.inputs.GetZeroTrustDlpCustomEntryArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDlpCustomEntryPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDlpCustomProfileArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDlpCustomProfilePlainArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustDlpCustomPromptTopicArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustDlpCustomPromptTopicPlainArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustDlpCustomPromptTopicsArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustDlpCustomPromptTopicsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDlpDataClassArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDlpDataClassPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDlpDataClassesArgs;
@@ -1141,6 +1147,7 @@ import com.pulumi.cloudflare.outputs.GetSharesInvokeResult;
 import com.pulumi.cloudflare.outputs.GetSnippetListInvokeResult;
 import com.pulumi.cloudflare.outputs.GetSnippetResult;
 import com.pulumi.cloudflare.outputs.GetSnippetRulesListInvokeResult;
+import com.pulumi.cloudflare.outputs.GetSnippetRulesResult;
 import com.pulumi.cloudflare.outputs.GetSnippetsListInvokeResult;
 import com.pulumi.cloudflare.outputs.GetSnippetsResult;
 import com.pulumi.cloudflare.outputs.GetSpectrumApplicationResult;
@@ -1260,6 +1267,8 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustDexTestsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDlpCustomEntriesInvokeResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDlpCustomEntryResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDlpCustomProfileResult;
+import com.pulumi.cloudflare.outputs.GetZeroTrustDlpCustomPromptTopicResult;
+import com.pulumi.cloudflare.outputs.GetZeroTrustDlpCustomPromptTopicsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDlpDataClassResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDlpDataClassesInvokeResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDlpDataTagCategoriesInvokeResult;
@@ -6200,7 +6209,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountSubscription = CloudflareFunctions.getAccountSubscription(GetAccountSubscriptionArgs.builder()
-     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .accountId("account_id")
      *             .build());
      * 
      *     }
@@ -6243,7 +6252,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountSubscription = CloudflareFunctions.getAccountSubscription(GetAccountSubscriptionArgs.builder()
-     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .accountId("account_id")
      *             .build());
      * 
      *     }
@@ -6286,7 +6295,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountSubscription = CloudflareFunctions.getAccountSubscription(GetAccountSubscriptionArgs.builder()
-     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .accountId("account_id")
      *             .build());
      * 
      *     }
@@ -6329,7 +6338,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountSubscription = CloudflareFunctions.getAccountSubscription(GetAccountSubscriptionArgs.builder()
-     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .accountId("account_id")
      *             .build());
      * 
      *     }
@@ -6372,7 +6381,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountSubscription = CloudflareFunctions.getAccountSubscription(GetAccountSubscriptionArgs.builder()
-     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .accountId("account_id")
      *             .build());
      * 
      *     }
@@ -6415,7 +6424,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountSubscription = CloudflareFunctions.getAccountSubscription(GetAccountSubscriptionArgs.builder()
-     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .accountId("account_id")
      *             .build());
      * 
      *     }
@@ -6458,7 +6467,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountSubscription = CloudflareFunctions.getAccountSubscription(GetAccountSubscriptionArgs.builder()
-     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .accountId("account_id")
      *             .build());
      * 
      *     }
@@ -20379,6 +20388,96 @@ public final class CloudflareFunctions {
      * </pre>
      * 
      */
+    public static Output<GetCustomCsrResult> getCustomCsr() {
+        return getCustomCsr(GetCustomCsrArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Account: SSL and Certificates Read`
+     * - `Account: SSL and Certificates Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetCustomCsrArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleCustomCsr = CloudflareFunctions.getCustomCsr(GetCustomCsrArgs.builder()
+     *             .customCsrId("7b163417-1d2b-4c84-a38a-2fb7a0cd7752")
+     *             .accountId("account_id")
+     *             .zoneId("zone_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCustomCsrResult> getCustomCsrPlain() {
+        return getCustomCsrPlain(GetCustomCsrPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Account: SSL and Certificates Read`
+     * - `Account: SSL and Certificates Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetCustomCsrArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleCustomCsr = CloudflareFunctions.getCustomCsr(GetCustomCsrArgs.builder()
+     *             .customCsrId("7b163417-1d2b-4c84-a38a-2fb7a0cd7752")
+     *             .accountId("account_id")
+     *             .zoneId("zone_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetCustomCsrResult> getCustomCsr(GetCustomCsrArgs args) {
         return getCustomCsr(args, InvokeOptions.Empty);
     }
@@ -25112,6 +25211,11 @@ public final class CloudflareFunctions {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getDcvDelegation:getDcvDelegation", TypeShape.of(GetDcvDelegationResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Accepted Permissions
+     * 
+     * - `DLS: Read`
+     * - `DLS: Write`
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -25151,6 +25255,11 @@ public final class CloudflareFunctions {
         return getDlsPrefixBinding(args, InvokeOptions.Empty);
     }
     /**
+     * Accepted Permissions
+     * 
+     * - `DLS: Read`
+     * - `DLS: Write`
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -25190,6 +25299,11 @@ public final class CloudflareFunctions {
         return getDlsPrefixBindingPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Accepted Permissions
+     * 
+     * - `DLS: Read`
+     * - `DLS: Write`
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -25229,6 +25343,11 @@ public final class CloudflareFunctions {
         return Deployment.getInstance().invoke("cloudflare:index/getDlsPrefixBinding:getDlsPrefixBinding", TypeShape.of(GetDlsPrefixBindingResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Accepted Permissions
+     * 
+     * - `DLS: Read`
+     * - `DLS: Write`
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -25268,6 +25387,11 @@ public final class CloudflareFunctions {
         return Deployment.getInstance().invoke("cloudflare:index/getDlsPrefixBinding:getDlsPrefixBinding", TypeShape.of(GetDlsPrefixBindingResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Accepted Permissions
+     * 
+     * - `DLS: Read`
+     * - `DLS: Write`
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -25307,6 +25431,11 @@ public final class CloudflareFunctions {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getDlsPrefixBinding:getDlsPrefixBinding", TypeShape.of(GetDlsPrefixBindingResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Accepted Permissions
+     * 
+     * - `DLS: Read`
+     * - `DLS: Write`
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -25345,6 +25474,11 @@ public final class CloudflareFunctions {
         return getDlsPrefixBindings(args, InvokeOptions.Empty);
     }
     /**
+     * Accepted Permissions
+     * 
+     * - `DLS: Read`
+     * - `DLS: Write`
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -25383,6 +25517,11 @@ public final class CloudflareFunctions {
         return getDlsPrefixBindingsPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Accepted Permissions
+     * 
+     * - `DLS: Read`
+     * - `DLS: Write`
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -25421,6 +25560,11 @@ public final class CloudflareFunctions {
         return Deployment.getInstance().invoke("cloudflare:index/getDlsPrefixBindings:getDlsPrefixBindings", TypeShape.of(GetDlsPrefixBindingsInvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Accepted Permissions
+     * 
+     * - `DLS: Read`
+     * - `DLS: Write`
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -25459,6 +25603,11 @@ public final class CloudflareFunctions {
         return Deployment.getInstance().invoke("cloudflare:index/getDlsPrefixBindings:getDlsPrefixBindings", TypeShape.of(GetDlsPrefixBindingsInvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Accepted Permissions
+     * 
+     * - `DLS: Read`
+     * - `DLS: Write`
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -35084,8 +35233,9 @@ public final class CloudflareFunctions {
     /**
      * Accepted Permissions
      * 
-     * - `Zone Settings Read`
-     * - `Zone Settings Write`
+     * - `Zaraz Admin`
+     * - `Zaraz Edit`
+     * - `Zaraz Read`
      * 
      * ## Example Usage
      * 
@@ -35127,8 +35277,9 @@ public final class CloudflareFunctions {
     /**
      * Accepted Permissions
      * 
-     * - `Zone Settings Read`
-     * - `Zone Settings Write`
+     * - `Zaraz Admin`
+     * - `Zaraz Edit`
+     * - `Zaraz Read`
      * 
      * ## Example Usage
      * 
@@ -35170,8 +35321,9 @@ public final class CloudflareFunctions {
     /**
      * Accepted Permissions
      * 
-     * - `Zone Settings Read`
-     * - `Zone Settings Write`
+     * - `Zaraz Admin`
+     * - `Zaraz Edit`
+     * - `Zaraz Read`
      * 
      * ## Example Usage
      * 
@@ -35213,8 +35365,9 @@ public final class CloudflareFunctions {
     /**
      * Accepted Permissions
      * 
-     * - `Zone Settings Read`
-     * - `Zone Settings Write`
+     * - `Zaraz Admin`
+     * - `Zaraz Edit`
+     * - `Zaraz Read`
      * 
      * ## Example Usage
      * 
@@ -35256,8 +35409,9 @@ public final class CloudflareFunctions {
     /**
      * Accepted Permissions
      * 
-     * - `Zone Settings Read`
-     * - `Zone Settings Write`
+     * - `Zaraz Admin`
+     * - `Zaraz Edit`
+     * - `Zaraz Read`
      * 
      * ## Example Usage
      * 
@@ -40130,8 +40284,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleLoadBalancer = CloudflareFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
-     *             .zoneId("699d98642c564d2e855e9661899b7252")
      *             .loadBalancerId("699d98642c564d2e855e9661899b7252")
+     *             .zoneId("zone_id")
      *             .build());
      * 
      *     }
@@ -40174,8 +40328,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleLoadBalancer = CloudflareFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
-     *             .zoneId("699d98642c564d2e855e9661899b7252")
      *             .loadBalancerId("699d98642c564d2e855e9661899b7252")
+     *             .zoneId("zone_id")
      *             .build());
      * 
      *     }
@@ -40218,8 +40372,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleLoadBalancer = CloudflareFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
-     *             .zoneId("699d98642c564d2e855e9661899b7252")
      *             .loadBalancerId("699d98642c564d2e855e9661899b7252")
+     *             .zoneId("zone_id")
      *             .build());
      * 
      *     }
@@ -40262,8 +40416,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleLoadBalancer = CloudflareFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
-     *             .zoneId("699d98642c564d2e855e9661899b7252")
      *             .loadBalancerId("699d98642c564d2e855e9661899b7252")
+     *             .zoneId("zone_id")
      *             .build());
      * 
      *     }
@@ -40306,8 +40460,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleLoadBalancer = CloudflareFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
-     *             .zoneId("699d98642c564d2e855e9661899b7252")
      *             .loadBalancerId("699d98642c564d2e855e9661899b7252")
+     *             .zoneId("zone_id")
      *             .build());
      * 
      *     }
@@ -41872,7 +42026,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleLoadBalancers = CloudflareFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .zoneId("699d98642c564d2e855e9661899b7252")
+     *             .zoneId("zone_id")
      *             .build());
      * 
      *     }
@@ -41915,7 +42069,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleLoadBalancers = CloudflareFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .zoneId("699d98642c564d2e855e9661899b7252")
+     *             .zoneId("zone_id")
      *             .build());
      * 
      *     }
@@ -41958,7 +42112,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleLoadBalancers = CloudflareFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .zoneId("699d98642c564d2e855e9661899b7252")
+     *             .zoneId("zone_id")
      *             .build());
      * 
      *     }
@@ -42001,7 +42155,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleLoadBalancers = CloudflareFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .zoneId("699d98642c564d2e855e9661899b7252")
+     *             .zoneId("zone_id")
      *             .build());
      * 
      *     }
@@ -42044,7 +42198,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleLoadBalancers = CloudflareFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .zoneId("699d98642c564d2e855e9661899b7252")
+     *             .zoneId("zone_id")
      *             .build());
      * 
      *     }
@@ -42087,7 +42241,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleLoadBalancers = CloudflareFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .zoneId("699d98642c564d2e855e9661899b7252")
+     *             .zoneId("zone_id")
      *             .build());
      * 
      *     }
@@ -42130,7 +42284,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleLoadBalancers = CloudflareFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .zoneId("699d98642c564d2e855e9661899b7252")
+     *             .zoneId("zone_id")
      *             .build());
      * 
      *     }
@@ -66124,11 +66278,7 @@ public final class CloudflareFunctions {
      *         final var exampleSecretsStoreSecrets = CloudflareFunctions.getSecretsStoreSecrets(GetSecretsStoreSecretsArgs.builder()
      *             .accountId("985e105f4ecef8ad9ca31a8372d0c353")
      *             .storeId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .scopes(            
-     *                 "workers",
-     *                 "ai_gateway",
-     *                 "dex",
-     *                 "access")
+     *             .scopes("workers")
      *             .search("search")
      *             .build());
      * 
@@ -66174,11 +66324,7 @@ public final class CloudflareFunctions {
      *         final var exampleSecretsStoreSecrets = CloudflareFunctions.getSecretsStoreSecrets(GetSecretsStoreSecretsArgs.builder()
      *             .accountId("985e105f4ecef8ad9ca31a8372d0c353")
      *             .storeId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .scopes(            
-     *                 "workers",
-     *                 "ai_gateway",
-     *                 "dex",
-     *                 "access")
+     *             .scopes("workers")
      *             .search("search")
      *             .build());
      * 
@@ -66224,11 +66370,7 @@ public final class CloudflareFunctions {
      *         final var exampleSecretsStoreSecrets = CloudflareFunctions.getSecretsStoreSecrets(GetSecretsStoreSecretsArgs.builder()
      *             .accountId("985e105f4ecef8ad9ca31a8372d0c353")
      *             .storeId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .scopes(            
-     *                 "workers",
-     *                 "ai_gateway",
-     *                 "dex",
-     *                 "access")
+     *             .scopes("workers")
      *             .search("search")
      *             .build());
      * 
@@ -66274,11 +66416,7 @@ public final class CloudflareFunctions {
      *         final var exampleSecretsStoreSecrets = CloudflareFunctions.getSecretsStoreSecrets(GetSecretsStoreSecretsArgs.builder()
      *             .accountId("985e105f4ecef8ad9ca31a8372d0c353")
      *             .storeId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .scopes(            
-     *                 "workers",
-     *                 "ai_gateway",
-     *                 "dex",
-     *                 "access")
+     *             .scopes("workers")
      *             .search("search")
      *             .build());
      * 
@@ -66324,11 +66462,7 @@ public final class CloudflareFunctions {
      *         final var exampleSecretsStoreSecrets = CloudflareFunctions.getSecretsStoreSecrets(GetSecretsStoreSecretsArgs.builder()
      *             .accountId("985e105f4ecef8ad9ca31a8372d0c353")
      *             .storeId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .scopes(            
-     *                 "workers",
-     *                 "ai_gateway",
-     *                 "dex",
-     *                 "access")
+     *             .scopes("workers")
      *             .search("search")
      *             .build());
      * 
@@ -68085,6 +68219,56 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetSnippetListInvokeResult> getSnippetListPlain(GetSnippetListPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getSnippetList:getSnippetList", TypeShape.of(GetSnippetListInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Snippets Read`
+     * - `Snippets Write`
+     * 
+     */
+    public static Output<GetSnippetRulesResult> getSnippetRules(GetSnippetRulesArgs args) {
+        return getSnippetRules(args, InvokeOptions.Empty);
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Snippets Read`
+     * - `Snippets Write`
+     * 
+     */
+    public static CompletableFuture<GetSnippetRulesResult> getSnippetRulesPlain(GetSnippetRulesPlainArgs args) {
+        return getSnippetRulesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Snippets Read`
+     * - `Snippets Write`
+     * 
+     */
+    public static Output<GetSnippetRulesResult> getSnippetRules(GetSnippetRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getSnippetRules:getSnippetRules", TypeShape.of(GetSnippetRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Snippets Read`
+     * - `Snippets Write`
+     * 
+     */
+    public static Output<GetSnippetRulesResult> getSnippetRules(GetSnippetRulesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getSnippetRules:getSnippetRules", TypeShape.of(GetSnippetRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Snippets Read`
+     * - `Snippets Write`
+     * 
+     */
+    public static CompletableFuture<GetSnippetRulesResult> getSnippetRulesPlain(GetSnippetRulesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getSnippetRules:getSnippetRules", TypeShape.of(GetSnippetRulesResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetSnippetRulesListInvokeResult> getSnippetRulesList(GetSnippetRulesListArgs args) {
         return getSnippetRulesList(args, InvokeOptions.Empty);
@@ -100200,6 +100384,106 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetZeroTrustDlpCustomProfileResult> getZeroTrustDlpCustomProfilePlain(GetZeroTrustDlpCustomProfilePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustDlpCustomProfile:getZeroTrustDlpCustomProfile", TypeShape.of(GetZeroTrustDlpCustomProfileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Zero Trust Read`
+     * - `Zero Trust Write`
+     * 
+     */
+    public static Output<GetZeroTrustDlpCustomPromptTopicResult> getZeroTrustDlpCustomPromptTopic(GetZeroTrustDlpCustomPromptTopicArgs args) {
+        return getZeroTrustDlpCustomPromptTopic(args, InvokeOptions.Empty);
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Zero Trust Read`
+     * - `Zero Trust Write`
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustDlpCustomPromptTopicResult> getZeroTrustDlpCustomPromptTopicPlain(GetZeroTrustDlpCustomPromptTopicPlainArgs args) {
+        return getZeroTrustDlpCustomPromptTopicPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Zero Trust Read`
+     * - `Zero Trust Write`
+     * 
+     */
+    public static Output<GetZeroTrustDlpCustomPromptTopicResult> getZeroTrustDlpCustomPromptTopic(GetZeroTrustDlpCustomPromptTopicArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustDlpCustomPromptTopic:getZeroTrustDlpCustomPromptTopic", TypeShape.of(GetZeroTrustDlpCustomPromptTopicResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Zero Trust Read`
+     * - `Zero Trust Write`
+     * 
+     */
+    public static Output<GetZeroTrustDlpCustomPromptTopicResult> getZeroTrustDlpCustomPromptTopic(GetZeroTrustDlpCustomPromptTopicArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustDlpCustomPromptTopic:getZeroTrustDlpCustomPromptTopic", TypeShape.of(GetZeroTrustDlpCustomPromptTopicResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Zero Trust Read`
+     * - `Zero Trust Write`
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustDlpCustomPromptTopicResult> getZeroTrustDlpCustomPromptTopicPlain(GetZeroTrustDlpCustomPromptTopicPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustDlpCustomPromptTopic:getZeroTrustDlpCustomPromptTopic", TypeShape.of(GetZeroTrustDlpCustomPromptTopicResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Zero Trust Read`
+     * - `Zero Trust Write`
+     * 
+     */
+    public static Output<GetZeroTrustDlpCustomPromptTopicsInvokeResult> getZeroTrustDlpCustomPromptTopics(GetZeroTrustDlpCustomPromptTopicsArgs args) {
+        return getZeroTrustDlpCustomPromptTopics(args, InvokeOptions.Empty);
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Zero Trust Read`
+     * - `Zero Trust Write`
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustDlpCustomPromptTopicsInvokeResult> getZeroTrustDlpCustomPromptTopicsPlain(GetZeroTrustDlpCustomPromptTopicsPlainArgs args) {
+        return getZeroTrustDlpCustomPromptTopicsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Zero Trust Read`
+     * - `Zero Trust Write`
+     * 
+     */
+    public static Output<GetZeroTrustDlpCustomPromptTopicsInvokeResult> getZeroTrustDlpCustomPromptTopics(GetZeroTrustDlpCustomPromptTopicsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustDlpCustomPromptTopics:getZeroTrustDlpCustomPromptTopics", TypeShape.of(GetZeroTrustDlpCustomPromptTopicsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Zero Trust Read`
+     * - `Zero Trust Write`
+     * 
+     */
+    public static Output<GetZeroTrustDlpCustomPromptTopicsInvokeResult> getZeroTrustDlpCustomPromptTopics(GetZeroTrustDlpCustomPromptTopicsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustDlpCustomPromptTopics:getZeroTrustDlpCustomPromptTopics", TypeShape.of(GetZeroTrustDlpCustomPromptTopicsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Zero Trust Read`
+     * - `Zero Trust Write`
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustDlpCustomPromptTopicsInvokeResult> getZeroTrustDlpCustomPromptTopicsPlain(GetZeroTrustDlpCustomPromptTopicsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustDlpCustomPromptTopics:getZeroTrustDlpCustomPromptTopics", TypeShape.of(GetZeroTrustDlpCustomPromptTopicsInvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Accepted Permissions

@@ -179,7 +179,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string CreatedOn;
         /// <summary>
-        /// Components of a CAA record.
+        /// Components of a MX record.
         /// </summary>
         public readonly Outputs.GetDnsRecordDataResult Data;
         /// <summary>

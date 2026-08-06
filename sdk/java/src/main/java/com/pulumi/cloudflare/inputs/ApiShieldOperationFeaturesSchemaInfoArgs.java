@@ -33,14 +33,14 @@ public final class ApiShieldOperationFeaturesSchemaInfoArgs extends com.pulumi.r
     }
 
     /**
-     * True if a Cloudflare-provided learned schema is available for this endpoint.
+     * Deprecated. Always false.
      * 
      */
     @Import(name="learnedAvailable")
     private @Nullable Output<Boolean> learnedAvailable;
 
     /**
-     * @return True if a Cloudflare-provided learned schema is available for this endpoint.
+     * @return Deprecated. Always false.
      * 
      */
     public Optional<Output<Boolean>> learnedAvailable() {
@@ -112,7 +112,7 @@ public final class ApiShieldOperationFeaturesSchemaInfoArgs extends com.pulumi.r
         }
 
         /**
-         * @param learnedAvailable True if a Cloudflare-provided learned schema is available for this endpoint.
+         * @param learnedAvailable Deprecated. Always false.
          * 
          * @return builder
          * 
@@ -123,7 +123,7 @@ public final class ApiShieldOperationFeaturesSchemaInfoArgs extends com.pulumi.r
         }
 
         /**
-         * @param learnedAvailable True if a Cloudflare-provided learned schema is available for this endpoint.
+         * @param learnedAvailable Deprecated. Always false.
          * 
          * @return builder
          * 

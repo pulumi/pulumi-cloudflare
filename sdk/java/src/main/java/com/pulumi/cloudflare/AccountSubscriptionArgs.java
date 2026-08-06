@@ -6,7 +6,6 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.AccountSubscriptionRatePlanArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,18 +17,18 @@ public final class AccountSubscriptionArgs extends com.pulumi.resources.Resource
     public static final AccountSubscriptionArgs Empty = new AccountSubscriptionArgs();
 
     /**
-     * Identifier
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -91,18 +90,18 @@ public final class AccountSubscriptionArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -156,9 +155,6 @@ public final class AccountSubscriptionArgs extends com.pulumi.resources.Resource
         }
 
         public AccountSubscriptionArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("AccountSubscriptionArgs", "accountId");
-            }
             return $;
         }
     }

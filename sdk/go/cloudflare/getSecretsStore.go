@@ -54,27 +54,23 @@ func LookupSecretsStore(ctx *pulumi.Context, args *LookupSecretsStoreArgs, opts 
 
 // A collection of arguments for invoking getSecretsStore.
 type LookupSecretsStoreArgs struct {
-	// Account Identifier
 	AccountId string                 `pulumi:"accountId"`
 	Filter    *GetSecretsStoreFilter `pulumi:"filter"`
-	// Store Identifier
-	StoreId *string `pulumi:"storeId"`
+	StoreId   *string                `pulumi:"storeId"`
 }
 
 // A collection of values returned by getSecretsStore.
 type LookupSecretsStoreResult struct {
-	// Account Identifier
 	AccountId string `pulumi:"accountId"`
-	// Whenthe secret was created.
+	// When the secret was created.
 	Created string                 `pulumi:"created"`
 	Filter  *GetSecretsStoreFilter `pulumi:"filter"`
-	// Store Identifier
+	// The ID of this resource.
 	Id string `pulumi:"id"`
 	// When the secret was modified.
 	Modified string `pulumi:"modified"`
-	// The name of the store
-	Name string `pulumi:"name"`
-	// Store Identifier
+	// The name of the store.
+	Name    string  `pulumi:"name"`
 	StoreId *string `pulumi:"storeId"`
 }
 
@@ -89,11 +85,9 @@ func LookupSecretsStoreOutput(ctx *pulumi.Context, args LookupSecretsStoreOutput
 
 // A collection of arguments for invoking getSecretsStore.
 type LookupSecretsStoreOutputArgs struct {
-	// Account Identifier
 	AccountId pulumi.StringInput            `pulumi:"accountId"`
 	Filter    GetSecretsStoreFilterPtrInput `pulumi:"filter"`
-	// Store Identifier
-	StoreId pulumi.StringPtrInput `pulumi:"storeId"`
+	StoreId   pulumi.StringPtrInput         `pulumi:"storeId"`
 }
 
 func (LookupSecretsStoreOutputArgs) ElementType() reflect.Type {
@@ -115,12 +109,11 @@ func (o LookupSecretsStoreResultOutput) ToLookupSecretsStoreResultOutputWithCont
 	return o
 }
 
-// Account Identifier
 func (o LookupSecretsStoreResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretsStoreResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Whenthe secret was created.
+// When the secret was created.
 func (o LookupSecretsStoreResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretsStoreResult) string { return v.Created }).(pulumi.StringOutput)
 }
@@ -129,7 +122,7 @@ func (o LookupSecretsStoreResultOutput) Filter() GetSecretsStoreFilterPtrOutput 
 	return o.ApplyT(func(v LookupSecretsStoreResult) *GetSecretsStoreFilter { return v.Filter }).(GetSecretsStoreFilterPtrOutput)
 }
 
-// Store Identifier
+// The ID of this resource.
 func (o LookupSecretsStoreResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretsStoreResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -139,12 +132,11 @@ func (o LookupSecretsStoreResultOutput) Modified() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretsStoreResult) string { return v.Modified }).(pulumi.StringOutput)
 }
 
-// The name of the store
+// The name of the store.
 func (o LookupSecretsStoreResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretsStoreResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Store Identifier
 func (o LookupSecretsStoreResultOutput) StoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretsStoreResult) *string { return v.StoreId }).(pulumi.StringPtrOutput)
 }

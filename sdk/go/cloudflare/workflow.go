@@ -37,6 +37,10 @@ import (
 //				WorkflowName: pulumi.String("x"),
 //				ClassName:    pulumi.String("x"),
 //				ScriptName:   pulumi.String("x"),
+//				DefaultRetention: &cloudflare.WorkflowDefaultRetentionArgs{
+//					ErrorRetention:   pulumi.Any("5 minutes"),
+//					SuccessRetention: pulumi.Any("5 minutes"),
+//				},
 //				Limits: &cloudflare.WorkflowLimitsArgs{
 //					Steps: pulumi.Int(1),
 //				},
@@ -63,20 +67,22 @@ import (
 type Workflow struct {
 	pulumi.CustomResourceState
 
-	AccountId         pulumi.StringOutput         `pulumi:"accountId"`
-	ClassName         pulumi.StringOutput         `pulumi:"className"`
-	CreatedOn         pulumi.StringOutput         `pulumi:"createdOn"`
-	Instances         WorkflowInstancesOutput     `pulumi:"instances"`
-	IsDeleted         pulumi.Float64Output        `pulumi:"isDeleted"`
-	Limits            WorkflowLimitsPtrOutput     `pulumi:"limits"`
-	ModifiedOn        pulumi.StringOutput         `pulumi:"modifiedOn"`
-	Name              pulumi.StringOutput         `pulumi:"name"`
-	Schedules         WorkflowScheduleArrayOutput `pulumi:"schedules"`
-	ScriptName        pulumi.StringOutput         `pulumi:"scriptName"`
-	TerminatorRunning pulumi.Float64Output        `pulumi:"terminatorRunning"`
-	TriggeredOn       pulumi.StringOutput         `pulumi:"triggeredOn"`
-	VersionId         pulumi.StringOutput         `pulumi:"versionId"`
-	WorkflowName      pulumi.StringOutput         `pulumi:"workflowName"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	ClassName pulumi.StringOutput `pulumi:"className"`
+	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
+	// Default retention applied to instances of this version when they do not set their own retention.
+	DefaultRetention  WorkflowDefaultRetentionPtrOutput `pulumi:"defaultRetention"`
+	Instances         WorkflowInstancesOutput           `pulumi:"instances"`
+	IsDeleted         pulumi.Float64Output              `pulumi:"isDeleted"`
+	Limits            WorkflowLimitsPtrOutput           `pulumi:"limits"`
+	ModifiedOn        pulumi.StringOutput               `pulumi:"modifiedOn"`
+	Name              pulumi.StringOutput               `pulumi:"name"`
+	Schedules         WorkflowScheduleArrayOutput       `pulumi:"schedules"`
+	ScriptName        pulumi.StringOutput               `pulumi:"scriptName"`
+	TerminatorRunning pulumi.Float64Output              `pulumi:"terminatorRunning"`
+	TriggeredOn       pulumi.StringOutput               `pulumi:"triggeredOn"`
+	VersionId         pulumi.StringOutput               `pulumi:"versionId"`
+	WorkflowName      pulumi.StringOutput               `pulumi:"workflowName"`
 }
 
 // NewWorkflow registers a new resource with the given unique name, arguments, and options.
@@ -121,26 +127,30 @@ func GetWorkflow(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Workflow resources.
 type workflowState struct {
-	AccountId         *string            `pulumi:"accountId"`
-	ClassName         *string            `pulumi:"className"`
-	CreatedOn         *string            `pulumi:"createdOn"`
-	Instances         *WorkflowInstances `pulumi:"instances"`
-	IsDeleted         *float64           `pulumi:"isDeleted"`
-	Limits            *WorkflowLimits    `pulumi:"limits"`
-	ModifiedOn        *string            `pulumi:"modifiedOn"`
-	Name              *string            `pulumi:"name"`
-	Schedules         []WorkflowSchedule `pulumi:"schedules"`
-	ScriptName        *string            `pulumi:"scriptName"`
-	TerminatorRunning *float64           `pulumi:"terminatorRunning"`
-	TriggeredOn       *string            `pulumi:"triggeredOn"`
-	VersionId         *string            `pulumi:"versionId"`
-	WorkflowName      *string            `pulumi:"workflowName"`
+	AccountId *string `pulumi:"accountId"`
+	ClassName *string `pulumi:"className"`
+	CreatedOn *string `pulumi:"createdOn"`
+	// Default retention applied to instances of this version when they do not set their own retention.
+	DefaultRetention  *WorkflowDefaultRetention `pulumi:"defaultRetention"`
+	Instances         *WorkflowInstances        `pulumi:"instances"`
+	IsDeleted         *float64                  `pulumi:"isDeleted"`
+	Limits            *WorkflowLimits           `pulumi:"limits"`
+	ModifiedOn        *string                   `pulumi:"modifiedOn"`
+	Name              *string                   `pulumi:"name"`
+	Schedules         []WorkflowSchedule        `pulumi:"schedules"`
+	ScriptName        *string                   `pulumi:"scriptName"`
+	TerminatorRunning *float64                  `pulumi:"terminatorRunning"`
+	TriggeredOn       *string                   `pulumi:"triggeredOn"`
+	VersionId         *string                   `pulumi:"versionId"`
+	WorkflowName      *string                   `pulumi:"workflowName"`
 }
 
 type WorkflowState struct {
-	AccountId         pulumi.StringPtrInput
-	ClassName         pulumi.StringPtrInput
-	CreatedOn         pulumi.StringPtrInput
+	AccountId pulumi.StringPtrInput
+	ClassName pulumi.StringPtrInput
+	CreatedOn pulumi.StringPtrInput
+	// Default retention applied to instances of this version when they do not set their own retention.
+	DefaultRetention  WorkflowDefaultRetentionPtrInput
 	Instances         WorkflowInstancesPtrInput
 	IsDeleted         pulumi.Float64PtrInput
 	Limits            WorkflowLimitsPtrInput
@@ -159,22 +169,26 @@ func (WorkflowState) ElementType() reflect.Type {
 }
 
 type workflowArgs struct {
-	AccountId    string             `pulumi:"accountId"`
-	ClassName    string             `pulumi:"className"`
-	Limits       *WorkflowLimits    `pulumi:"limits"`
-	Schedules    []WorkflowSchedule `pulumi:"schedules"`
-	ScriptName   string             `pulumi:"scriptName"`
-	WorkflowName string             `pulumi:"workflowName"`
+	AccountId string `pulumi:"accountId"`
+	ClassName string `pulumi:"className"`
+	// Default retention applied to instances of this version when they do not set their own retention.
+	DefaultRetention *WorkflowDefaultRetention `pulumi:"defaultRetention"`
+	Limits           *WorkflowLimits           `pulumi:"limits"`
+	Schedules        []WorkflowSchedule        `pulumi:"schedules"`
+	ScriptName       string                    `pulumi:"scriptName"`
+	WorkflowName     string                    `pulumi:"workflowName"`
 }
 
 // The set of arguments for constructing a Workflow resource.
 type WorkflowArgs struct {
-	AccountId    pulumi.StringInput
-	ClassName    pulumi.StringInput
-	Limits       WorkflowLimitsPtrInput
-	Schedules    WorkflowScheduleArrayInput
-	ScriptName   pulumi.StringInput
-	WorkflowName pulumi.StringInput
+	AccountId pulumi.StringInput
+	ClassName pulumi.StringInput
+	// Default retention applied to instances of this version when they do not set their own retention.
+	DefaultRetention WorkflowDefaultRetentionPtrInput
+	Limits           WorkflowLimitsPtrInput
+	Schedules        WorkflowScheduleArrayInput
+	ScriptName       pulumi.StringInput
+	WorkflowName     pulumi.StringInput
 }
 
 func (WorkflowArgs) ElementType() reflect.Type {
@@ -274,6 +288,11 @@ func (o WorkflowOutput) ClassName() pulumi.StringOutput {
 
 func (o WorkflowOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// Default retention applied to instances of this version when they do not set their own retention.
+func (o WorkflowOutput) DefaultRetention() WorkflowDefaultRetentionPtrOutput {
+	return o.ApplyT(func(v *Workflow) WorkflowDefaultRetentionPtrOutput { return v.DefaultRetention }).(WorkflowDefaultRetentionPtrOutput)
 }
 
 func (o WorkflowOutput) Instances() WorkflowInstancesOutput {

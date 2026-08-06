@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// Algorithm
-        /// Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384".
+        /// Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384", "HS256", "HS384", "HS512".
         /// </summary>
         [Input("alg", required: true)]
         public Input<string> Alg { get; set; } = null!;
@@ -33,6 +33,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? E { get; set; }
 
         /// <summary>
+        /// Symmetric key material. Required for create and PUT update requests.
+        /// </summary>
+        [Input("k")]
+        public Input<string>? K { get; set; }
+
+        /// <summary>
         /// Key ID
         /// </summary>
         [Input("kid", required: true)]
@@ -40,7 +46,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Key Type
-        /// Available values: "RSA", "EC".
+        /// Available values: "RSA", "EC", "oct".
         /// </summary>
         [Input("kty", required: true)]
         public Input<string> Kty { get; set; } = null!;

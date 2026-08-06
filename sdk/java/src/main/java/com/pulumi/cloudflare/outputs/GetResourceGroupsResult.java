@@ -29,7 +29,7 @@ public final class GetResourceGroupsResult {
      */
     private String name;
     /**
-     * @return The scope associated to the resource group
+     * @return A scope is a combination of scope objects which provides additional context.
      * 
      */
     private List<GetResourceGroupsResultScope> scopes;
@@ -57,7 +57,7 @@ public final class GetResourceGroupsResult {
         return this.name;
     }
     /**
-     * @return The scope associated to the resource group
+     * @return A scope is a combination of scope objects which provides additional context.
      * 
      */
     public List<GetResourceGroupsResultScope> scopes() {

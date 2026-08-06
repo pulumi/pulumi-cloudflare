@@ -69,6 +69,8 @@ type LookupZeroTrustDexTestArgs struct {
 type LookupZeroTrustDexTestResult struct {
 	// Unique identifier linked to an account.
 	AccountId *string `pulumi:"accountId"`
+	// Date the test was created, in RFC 3339 format.
+	Created string `pulumi:"created"`
 	// The configuration object which contains the details for the WARP client to conduct the test.
 	Data GetZeroTrustDexTestData `pulumi:"data"`
 	// Additional details about the test.
@@ -89,6 +91,8 @@ type LookupZeroTrustDexTestResult struct {
 	Targeted       bool                              `pulumi:"targeted"`
 	// The unique identifier for the test.
 	TestId string `pulumi:"testId"`
+	// Date the test was last updated, in RFC 3339 format.
+	Updated string `pulumi:"updated"`
 }
 
 func LookupZeroTrustDexTestOutput(ctx *pulumi.Context, args LookupZeroTrustDexTestOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDexTestResultOutput {
@@ -133,6 +137,11 @@ func (o LookupZeroTrustDexTestResultOutput) ToLookupZeroTrustDexTestResultOutput
 // Unique identifier linked to an account.
 func (o LookupZeroTrustDexTestResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustDexTestResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// Date the test was created, in RFC 3339 format.
+func (o LookupZeroTrustDexTestResultOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustDexTestResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
 // The configuration object which contains the details for the WARP client to conduct the test.
@@ -186,6 +195,11 @@ func (o LookupZeroTrustDexTestResultOutput) Targeted() pulumi.BoolOutput {
 // The unique identifier for the test.
 func (o LookupZeroTrustDexTestResultOutput) TestId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDexTestResult) string { return v.TestId }).(pulumi.StringOutput)
+}
+
+// Date the test was last updated, in RFC 3339 format.
+func (o LookupZeroTrustDexTestResultOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustDexTestResult) string { return v.Updated }).(pulumi.StringOutput)
 }
 
 func init() {

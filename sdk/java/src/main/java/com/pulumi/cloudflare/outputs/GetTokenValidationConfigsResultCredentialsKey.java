@@ -12,7 +12,7 @@ import java.util.Objects;
 public final class GetTokenValidationConfigsResultCredentialsKey {
     /**
      * @return Algorithm
-     * Available values: &#34;RS256&#34;, &#34;RS384&#34;, &#34;RS512&#34;, &#34;PS256&#34;, &#34;PS384&#34;, &#34;PS512&#34;, &#34;ES256&#34;, &#34;ES384&#34;.
+     * Available values: &#34;RS256&#34;, &#34;RS384&#34;, &#34;RS512&#34;, &#34;PS256&#34;, &#34;PS384&#34;, &#34;PS512&#34;, &#34;ES256&#34;, &#34;ES384&#34;, &#34;HS256&#34;, &#34;HS384&#34;, &#34;HS512&#34;.
      * 
      */
     private String alg;
@@ -34,7 +34,7 @@ public final class GetTokenValidationConfigsResultCredentialsKey {
     private String kid;
     /**
      * @return Key Type
-     * Available values: &#34;RSA&#34;, &#34;EC&#34;.
+     * Available values: &#34;RSA&#34;, &#34;EC&#34;, &#34;oct&#34;.
      * 
      */
     private String kty;
@@ -57,7 +57,7 @@ public final class GetTokenValidationConfigsResultCredentialsKey {
     private GetTokenValidationConfigsResultCredentialsKey() {}
     /**
      * @return Algorithm
-     * Available values: &#34;RS256&#34;, &#34;RS384&#34;, &#34;RS512&#34;, &#34;PS256&#34;, &#34;PS384&#34;, &#34;PS512&#34;, &#34;ES256&#34;, &#34;ES384&#34;.
+     * Available values: &#34;RS256&#34;, &#34;RS384&#34;, &#34;RS512&#34;, &#34;PS256&#34;, &#34;PS384&#34;, &#34;PS512&#34;, &#34;ES256&#34;, &#34;ES384&#34;, &#34;HS256&#34;, &#34;HS384&#34;, &#34;HS512&#34;.
      * 
      */
     public String alg() {
@@ -87,7 +87,7 @@ public final class GetTokenValidationConfigsResultCredentialsKey {
     }
     /**
      * @return Key Type
-     * Available values: &#34;RSA&#34;, &#34;EC&#34;.
+     * Available values: &#34;RSA&#34;, &#34;EC&#34;, &#34;oct&#34;.
      * 
      */
     public String kty() {

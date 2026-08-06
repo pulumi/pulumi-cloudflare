@@ -67,7 +67,7 @@ export class R2Bucket extends pulumi.CustomResource {
     declare public /*out*/ readonly creationDate: pulumi.Output<string>;
     /**
      * Jurisdiction where objects in this bucket are guaranteed to be stored.
-     * Available values: "default", "eu", "fedramp".
+     * Available values: "default", "eu", "fedramp", "us".
      */
     declare public readonly jurisdiction: pulumi.Output<string>;
     /**
@@ -138,7 +138,7 @@ export interface R2BucketState {
     creationDate?: pulumi.Input<string | undefined>;
     /**
      * Jurisdiction where objects in this bucket are guaranteed to be stored.
-     * Available values: "default", "eu", "fedramp".
+     * Available values: "default", "eu", "fedramp", "us".
      */
     jurisdiction?: pulumi.Input<string | undefined>;
     /**
@@ -167,7 +167,7 @@ export interface R2BucketArgs {
     accountId: pulumi.Input<string>;
     /**
      * Jurisdiction where objects in this bucket are guaranteed to be stored.
-     * Available values: "default", "eu", "fedramp".
+     * Available values: "default", "eu", "fedramp", "us".
      */
     jurisdiction?: pulumi.Input<string | undefined>;
     /**

@@ -105,6 +105,12 @@ namespace Pulumi.Cloudflare
         [Output("originConnectionLimit")]
         public Output<int?> OriginConnectionLimit { get; private set; } = null!;
 
+        /// <summary>
+        /// Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
+        /// </summary>
+        [Output("restartedOn")]
+        public Output<string> RestartedOn { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a HyperdriveConfig resource with the given unique name, arguments, and options.
@@ -230,6 +236,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("originConnectionLimit")]
         public Input<int>? OriginConnectionLimit { get; set; }
+
+        /// <summary>
+        /// Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
+        /// </summary>
+        [Input("restartedOn")]
+        public Input<string>? RestartedOn { get; set; }
 
         public HyperdriveConfigState()
         {

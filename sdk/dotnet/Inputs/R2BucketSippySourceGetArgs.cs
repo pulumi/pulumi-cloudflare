@@ -18,6 +18,28 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("accessKeyId")]
         public Input<string>? AccessKeyId { get; set; }
 
+        [Input("accountKey")]
+        private Input<string>? _accountKey;
+
+        /// <summary>
+        /// Access key for the Azure Storage account. Mutually exclusive with `SasToken`.
+        /// </summary>
+        public Input<string>? AccountKey
+        {
+            get => _accountKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Name of the Azure Storage account.
+        /// </summary>
+        [Input("accountName")]
+        public Input<string>? AccountName { get; set; }
+
         /// <summary>
         /// Name of the AWS S3 bucket.
         /// </summary>
@@ -37,10 +59,16 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? ClientEmail { get; set; }
 
         /// <summary>
-        /// Available values: "aws", "gcs", "s3".
+        /// Available values: "aws", "gcs", "s3", "azure".
         /// </summary>
         [Input("cloudProvider")]
         public Input<string>? CloudProvider { get; set; }
+
+        /// <summary>
+        /// Name of the Azure Blob Storage container.
+        /// </summary>
+        [Input("container")]
+        public Input<string>? Container { get; set; }
 
         [Input("privateKey")]
         private Input<string>? _privateKey;
@@ -63,6 +91,22 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("sasToken")]
+        private Input<string>? _sasToken;
+
+        /// <summary>
+        /// Shared Access Signature token for the Azure Storage account. Mutually exclusive with `AccountKey`.
+        /// </summary>
+        public Input<string>? SasToken
+        {
+            get => _sasToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sasToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("secretAccessKey")]
         private Input<string>? _secretAccessKey;

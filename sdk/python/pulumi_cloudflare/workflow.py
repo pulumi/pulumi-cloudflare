@@ -25,15 +25,20 @@ class WorkflowArgs:
                  class_name: pulumi.Input[_builtins.str],
                  script_name: pulumi.Input[_builtins.str],
                  workflow_name: pulumi.Input[_builtins.str],
+                 default_retention: pulumi.Input[Optional['WorkflowDefaultRetentionArgs']] = None,
                  limits: pulumi.Input[Optional['WorkflowLimitsArgs']] = None,
                  schedules: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowScheduleArgs']]]] = None):
         """
         The set of arguments for constructing a Workflow resource.
+
+        :param pulumi.Input['WorkflowDefaultRetentionArgs'] default_retention: Default retention applied to instances of this version when they do not set their own retention.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "class_name", class_name)
         pulumi.set(__self__, "script_name", script_name)
         pulumi.set(__self__, "workflow_name", workflow_name)
+        if default_retention is not None:
+            pulumi.set(__self__, "default_retention", default_retention)
         if limits is not None:
             pulumi.set(__self__, "limits", limits)
         if schedules is not None:
@@ -76,6 +81,18 @@ class WorkflowArgs:
         pulumi.set(self, "workflow_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="defaultRetention")
+    def default_retention(self) -> pulumi.Input[Optional['WorkflowDefaultRetentionArgs']]:
+        """
+        Default retention applied to instances of this version when they do not set their own retention.
+        """
+        return pulumi.get(self, "default_retention")
+
+    @default_retention.setter
+    def default_retention(self, value: pulumi.Input[Optional['WorkflowDefaultRetentionArgs']]):
+        pulumi.set(self, "default_retention", value)
+
+    @_builtins.property
     @pulumi.getter
     def limits(self) -> pulumi.Input[Optional['WorkflowLimitsArgs']]:
         return pulumi.get(self, "limits")
@@ -100,6 +117,7 @@ class _WorkflowState:
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  class_name: pulumi.Input[Optional[_builtins.str]] = None,
                  created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_retention: pulumi.Input[Optional['WorkflowDefaultRetentionArgs']] = None,
                  instances: pulumi.Input[Optional['WorkflowInstancesArgs']] = None,
                  is_deleted: pulumi.Input[Optional[_builtins.float]] = None,
                  limits: pulumi.Input[Optional['WorkflowLimitsArgs']] = None,
@@ -113,6 +131,8 @@ class _WorkflowState:
                  workflow_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Workflow resources.
+
+        :param pulumi.Input['WorkflowDefaultRetentionArgs'] default_retention: Default retention applied to instances of this version when they do not set their own retention.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -120,6 +140,8 @@ class _WorkflowState:
             pulumi.set(__self__, "class_name", class_name)
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
+        if default_retention is not None:
+            pulumi.set(__self__, "default_retention", default_retention)
         if instances is not None:
             pulumi.set(__self__, "instances", instances)
         if is_deleted is not None:
@@ -169,6 +191,18 @@ class _WorkflowState:
     @created_on.setter
     def created_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_on", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultRetention")
+    def default_retention(self) -> pulumi.Input[Optional['WorkflowDefaultRetentionArgs']]:
+        """
+        Default retention applied to instances of this version when they do not set their own retention.
+        """
+        return pulumi.get(self, "default_retention")
+
+    @default_retention.setter
+    def default_retention(self, value: pulumi.Input[Optional['WorkflowDefaultRetentionArgs']]):
+        pulumi.set(self, "default_retention", value)
 
     @_builtins.property
     @pulumi.getter
@@ -278,6 +312,7 @@ class Workflow(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  class_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_retention: pulumi.Input[Optional[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict']]] = None,
                  limits: pulumi.Input[Optional[Union['WorkflowLimitsArgs', 'WorkflowLimitsArgsDict']]] = None,
                  schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowScheduleArgs', 'WorkflowScheduleArgsDict']]]]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -301,6 +336,10 @@ class Workflow(pulumi.CustomResource):
             workflow_name="x",
             class_name="x",
             script_name="x",
+            default_retention={
+                "error_retention": "5 minutes",
+                "success_retention": "5 minutes",
+            },
             limits={
                 "steps": 1,
             },
@@ -318,6 +357,7 @@ class Workflow(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict']] default_retention: Default retention applied to instances of this version when they do not set their own retention.
         """
         ...
     @overload
@@ -343,6 +383,10 @@ class Workflow(pulumi.CustomResource):
             workflow_name="x",
             class_name="x",
             script_name="x",
+            default_retention={
+                "error_retention": "5 minutes",
+                "success_retention": "5 minutes",
+            },
             limits={
                 "steps": 1,
             },
@@ -375,6 +419,7 @@ class Workflow(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  class_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_retention: pulumi.Input[Optional[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict']]] = None,
                  limits: pulumi.Input[Optional[Union['WorkflowLimitsArgs', 'WorkflowLimitsArgsDict']]] = None,
                  schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowScheduleArgs', 'WorkflowScheduleArgsDict']]]]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -394,6 +439,7 @@ class Workflow(pulumi.CustomResource):
             if class_name is None and not opts.urn:
                 raise TypeError("Missing required property 'class_name'")
             __props__.__dict__["class_name"] = class_name
+            __props__.__dict__["default_retention"] = default_retention
             __props__.__dict__["limits"] = limits
             __props__.__dict__["schedules"] = schedules
             if script_name is None and not opts.urn:
@@ -423,6 +469,7 @@ class Workflow(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             class_name: pulumi.Input[Optional[_builtins.str]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            default_retention: pulumi.Input[Optional[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict']]] = None,
             instances: pulumi.Input[Optional[Union['WorkflowInstancesArgs', 'WorkflowInstancesArgsDict']]] = None,
             is_deleted: pulumi.Input[Optional[_builtins.float]] = None,
             limits: pulumi.Input[Optional[Union['WorkflowLimitsArgs', 'WorkflowLimitsArgsDict']]] = None,
@@ -441,6 +488,7 @@ class Workflow(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict']] default_retention: Default retention applied to instances of this version when they do not set their own retention.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -449,6 +497,7 @@ class Workflow(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["class_name"] = class_name
         __props__.__dict__["created_on"] = created_on
+        __props__.__dict__["default_retention"] = default_retention
         __props__.__dict__["instances"] = instances
         __props__.__dict__["is_deleted"] = is_deleted
         __props__.__dict__["limits"] = limits
@@ -476,6 +525,14 @@ class Workflow(pulumi.CustomResource):
     @pulumi.getter(name="createdOn")
     def created_on(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "created_on")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultRetention")
+    def default_retention(self) -> pulumi.Output[Optional['outputs.WorkflowDefaultRetention']]:
+        """
+        Default retention applied to instances of this version when they do not set their own retention.
+        """
+        return pulumi.get(self, "default_retention")
 
     @_builtins.property
     @pulumi.getter

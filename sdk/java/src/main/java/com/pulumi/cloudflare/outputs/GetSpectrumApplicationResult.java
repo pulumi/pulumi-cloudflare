@@ -26,7 +26,7 @@ public final class GetSpectrumApplicationResult {
     private @Nullable String appId;
     /**
      * @return Enables Argo Smart Routing for this application.
-     * Notes: Only available for TCP applications with trafficType set to &#34;direct&#34;.
+     * Notes: Only available for TCP or UDP applications with trafficType set to &#34;direct&#34;.
      * 
      */
     private Boolean argoSmartRouting;
@@ -122,7 +122,7 @@ public final class GetSpectrumApplicationResult {
     }
     /**
      * @return Enables Argo Smart Routing for this application.
-     * Notes: Only available for TCP applications with trafficType set to &#34;direct&#34;.
+     * Notes: Only available for TCP or UDP applications with trafficType set to &#34;direct&#34;.
      * 
      */
     public Boolean argoSmartRouting() {

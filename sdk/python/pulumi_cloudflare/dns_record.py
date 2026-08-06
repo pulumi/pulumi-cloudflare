@@ -43,7 +43,7 @@ class DnsRecordArgs:
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
         :param pulumi.Input[_builtins.str] content: A valid IPv4 address.
-        :param pulumi.Input['DnsRecordDataArgs'] data: Components of a CAA record.
+        :param pulumi.Input['DnsRecordDataArgs'] data: Components of a MX record.
         :param pulumi.Input[_builtins.float] priority: Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
         :param pulumi.Input[_builtins.bool] private_routing: Enables private network routing to the origin.
         :param pulumi.Input[_builtins.bool] proxied: Whether the record is receiving the performance and security benefits of Cloudflare.
@@ -148,7 +148,7 @@ class DnsRecordArgs:
     @pulumi.getter
     def data(self) -> pulumi.Input[Optional['DnsRecordDataArgs']]:
         """
-        Components of a CAA record.
+        Components of a MX record.
         """
         return pulumi.get(self, "data")
 
@@ -245,7 +245,7 @@ class _DnsRecordState:
         :param pulumi.Input[_builtins.str] comment_modified_on: When the record comment was last modified. Omitted if there is no comment.
         :param pulumi.Input[_builtins.str] content: A valid IPv4 address.
         :param pulumi.Input[_builtins.str] created_on: When the record was created.
-        :param pulumi.Input['DnsRecordDataArgs'] data: Components of a CAA record.
+        :param pulumi.Input['DnsRecordDataArgs'] data: Components of a MX record.
         :param pulumi.Input[_builtins.str] meta: Extra Cloudflare-specific information about the record.
         :param pulumi.Input[_builtins.str] modified_on: When the record was last modified.
         :param pulumi.Input[_builtins.str] name: DNS record name (or @ for the zone apex) in Punycode.
@@ -350,7 +350,7 @@ class _DnsRecordState:
     @pulumi.getter
     def data(self) -> pulumi.Input[Optional['DnsRecordDataArgs']]:
         """
-        Components of a CAA record.
+        Components of a MX record.
         """
         return pulumi.get(self, "data")
 
@@ -574,7 +574,7 @@ class DnsRecord(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
         :param pulumi.Input[_builtins.str] content: A valid IPv4 address.
-        :param pulumi.Input[Union['DnsRecordDataArgs', 'DnsRecordDataArgsDict']] data: Components of a CAA record.
+        :param pulumi.Input[Union['DnsRecordDataArgs', 'DnsRecordDataArgsDict']] data: Components of a MX record.
         :param pulumi.Input[_builtins.str] name: DNS record name (or @ for the zone apex) in Punycode.
         :param pulumi.Input[_builtins.float] priority: Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
         :param pulumi.Input[_builtins.bool] private_routing: Enables private network routing to the origin.
@@ -730,7 +730,7 @@ class DnsRecord(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] comment_modified_on: When the record comment was last modified. Omitted if there is no comment.
         :param pulumi.Input[_builtins.str] content: A valid IPv4 address.
         :param pulumi.Input[_builtins.str] created_on: When the record was created.
-        :param pulumi.Input[Union['DnsRecordDataArgs', 'DnsRecordDataArgsDict']] data: Components of a CAA record.
+        :param pulumi.Input[Union['DnsRecordDataArgs', 'DnsRecordDataArgsDict']] data: Components of a MX record.
         :param pulumi.Input[_builtins.str] meta: Extra Cloudflare-specific information about the record.
         :param pulumi.Input[_builtins.str] modified_on: When the record was last modified.
         :param pulumi.Input[_builtins.str] name: DNS record name (or @ for the zone apex) in Punycode.
@@ -806,7 +806,7 @@ class DnsRecord(pulumi.CustomResource):
     @pulumi.getter
     def data(self) -> pulumi.Output[Optional['outputs.DnsRecordData']]:
         """
-        Components of a CAA record.
+        Components of a MX record.
         """
         return pulumi.get(self, "data")
 

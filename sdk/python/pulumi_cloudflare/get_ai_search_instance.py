@@ -222,7 +222,7 @@ class GetAiSearchInstanceResult:
     @pulumi.getter(name="embeddingModel")
     def embedding_model(self) -> _builtins.str:
         """
-        Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+        Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/qwen/qwen3-vl-embedding-2b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
         """
         return pulumi.get(self, "embedding_model")
 

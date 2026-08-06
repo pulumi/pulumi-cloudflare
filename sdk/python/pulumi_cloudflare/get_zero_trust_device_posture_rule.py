@@ -27,13 +27,16 @@ class GetZeroTrustDevicePostureRuleResult:
     """
     A collection of values returned by getZeroTrustDevicePostureRule.
     """
-    def __init__(__self__, account_id=None, description=None, expiration=None, id=None, input=None, matches=None, name=None, rule_id=None, schedule=None, type=None):
+    def __init__(__self__, account_id=None, description=None, enabled=None, expiration=None, id=None, input=None, matches=None, name=None, rule_id=None, schedule=None, type=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if enabled and not isinstance(enabled, bool):
+            raise TypeError("Expected argument 'enabled' to be a bool")
+        pulumi.set(__self__, "enabled", enabled)
         if expiration and not isinstance(expiration, str):
             raise TypeError("Expected argument 'expiration' to be a str")
         pulumi.set(__self__, "expiration", expiration)
@@ -71,6 +74,14 @@ class GetZeroTrustDevicePostureRuleResult:
         The description of the device posture rule.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issue_count input, and true otherwise.
+        """
+        return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter
@@ -146,6 +157,7 @@ class AwaitableGetZeroTrustDevicePostureRuleResult(GetZeroTrustDevicePostureRule
         return GetZeroTrustDevicePostureRuleResult(
             account_id=self.account_id,
             description=self.description,
+            enabled=self.enabled,
             expiration=self.expiration,
             id=self.id,
             input=self.input,
@@ -182,6 +194,7 @@ def get_zero_trust_device_posture_rule(account_id: Optional[_builtins.str] = Non
     return AwaitableGetZeroTrustDevicePostureRuleResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         description=pulumi.get(__ret__, 'description'),
+        enabled=pulumi.get(__ret__, 'enabled'),
         expiration=pulumi.get(__ret__, 'expiration'),
         id=pulumi.get(__ret__, 'id'),
         input=pulumi.get(__ret__, 'input'),
@@ -215,6 +228,7 @@ def get_zero_trust_device_posture_rule_output(account_id: pulumi.Input[Optional[
     return __ret__.apply(lambda __response__: GetZeroTrustDevicePostureRuleResult(
         account_id=pulumi.get(__response__, 'account_id'),
         description=pulumi.get(__response__, 'description'),
+        enabled=pulumi.get(__response__, 'enabled'),
         expiration=pulumi.get(__response__, 'expiration'),
         id=pulumi.get(__response__, 'id'),
         input=pulumi.get(__response__, 'input'),

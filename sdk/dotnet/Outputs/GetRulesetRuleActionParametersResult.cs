@@ -336,7 +336,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Values;
         /// <summary>
-        /// Controls how cached responses vary based on request headers. At least one of `Default` or `Headers` must be set, and `Default` is required when `Headers` is set.
+        /// Controls how cached responses vary based on request headers. `Default` is required and applies to any Vary response header that does not have a per-header override.
         /// </summary>
         public readonly Outputs.GetRulesetRuleActionParametersVaryResult Vary;
 

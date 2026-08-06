@@ -75,14 +75,15 @@ type LookupWorkerVersionResult struct {
 	// Metadata about the version.
 	Annotations GetWorkerVersionAnnotations `pulumi:"annotations"`
 	// Configuration for assets within a Worker.
-	Assets             GetWorkerVersionAssets       `pulumi:"assets"`
-	Bindings           []GetWorkerVersionBinding    `pulumi:"bindings"`
-	CacheOptions       GetWorkerVersionCacheOptions `pulumi:"cacheOptions"`
-	CompatibilityDate  string                       `pulumi:"compatibilityDate"`
-	CompatibilityFlags []string                     `pulumi:"compatibilityFlags"`
-	Containers         []GetWorkerVersionContainer  `pulumi:"containers"`
-	CreatedOn          string                       `pulumi:"createdOn"`
-	Id                 string                       `pulumi:"id"`
+	Assets             GetWorkerVersionAssets             `pulumi:"assets"`
+	Bindings           []GetWorkerVersionBinding          `pulumi:"bindings"`
+	CacheOptions       GetWorkerVersionCacheOptions       `pulumi:"cacheOptions"`
+	CompatibilityDate  string                             `pulumi:"compatibilityDate"`
+	CompatibilityFlags []string                           `pulumi:"compatibilityFlags"`
+	Containers         []GetWorkerVersionContainer        `pulumi:"containers"`
+	CreatedOn          string                             `pulumi:"createdOn"`
+	Exports            map[string]GetWorkerVersionExports `pulumi:"exports"`
+	Id                 string                             `pulumi:"id"`
 	// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
 	// Available values: "modules".
 	Include             *string                             `pulumi:"include"`
@@ -184,6 +185,10 @@ func (o LookupWorkerVersionResultOutput) Containers() GetWorkerVersionContainerA
 
 func (o LookupWorkerVersionResultOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkerVersionResult) string { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkerVersionResultOutput) Exports() GetWorkerVersionExportsMapOutput {
+	return o.ApplyT(func(v LookupWorkerVersionResult) map[string]GetWorkerVersionExports { return v.Exports }).(GetWorkerVersionExportsMapOutput)
 }
 
 func (o LookupWorkerVersionResultOutput) Id() pulumi.StringOutput {

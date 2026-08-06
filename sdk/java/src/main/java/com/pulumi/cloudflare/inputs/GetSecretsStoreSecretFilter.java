@@ -17,7 +17,7 @@ public final class GetSecretsStoreSecretFilter extends com.pulumi.resources.Invo
     public static final GetSecretsStoreSecretFilter Empty = new GetSecretsStoreSecretFilter();
 
     /**
-     * Direction to sort objects
+     * Direction to sort objects.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
@@ -25,7 +25,7 @@ public final class GetSecretsStoreSecretFilter extends com.pulumi.resources.Invo
     private String direction;
 
     /**
-     * @return Direction to sort objects
+     * @return Direction to sort objects.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
@@ -34,7 +34,7 @@ public final class GetSecretsStoreSecretFilter extends com.pulumi.resources.Invo
     }
 
     /**
-     * Order secrets by values in the given field
+     * Order secrets by values in the given field.
      * Available values: &#34;name&#34;, &#34;comment&#34;, &#34;created&#34;, &#34;modified&#34;, &#34;status&#34;.
      * 
      */
@@ -42,7 +42,7 @@ public final class GetSecretsStoreSecretFilter extends com.pulumi.resources.Invo
     private String order;
 
     /**
-     * @return Order secrets by values in the given field
+     * @return Order secrets by values in the given field.
      * Available values: &#34;name&#34;, &#34;comment&#34;, &#34;created&#34;, &#34;modified&#34;, &#34;status&#34;.
      * 
      */
@@ -51,29 +51,29 @@ public final class GetSecretsStoreSecretFilter extends com.pulumi.resources.Invo
     }
 
     /**
-     * Only secrets with the given scopes will be returned
+     * Only secrets with the given scopes will be returned.
      * 
      */
     @Import(name="scopes")
-    private @Nullable List<List<String>> scopes;
+    private @Nullable List<String> scopes;
 
     /**
-     * @return Only secrets with the given scopes will be returned
+     * @return Only secrets with the given scopes will be returned.
      * 
      */
-    public Optional<List<List<String>>> scopes() {
+    public Optional<List<String>> scopes() {
         return Optional.ofNullable(this.scopes);
     }
 
     /**
-     * Search secrets using a filter string, filtering across name and comment
+     * Search secrets using a filter string, filtering across name and comment.
      * 
      */
     @Import(name="search")
     private @Nullable String search;
 
     /**
-     * @return Search secrets using a filter string, filtering across name and comment
+     * @return Search secrets using a filter string, filtering across name and comment.
      * 
      */
     public Optional<String> search() {
@@ -108,7 +108,7 @@ public final class GetSecretsStoreSecretFilter extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param direction Direction to sort objects
+         * @param direction Direction to sort objects.
          * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
@@ -120,7 +120,7 @@ public final class GetSecretsStoreSecretFilter extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param order Order secrets by values in the given field
+         * @param order Order secrets by values in the given field.
          * Available values: &#34;name&#34;, &#34;comment&#34;, &#34;created&#34;, &#34;modified&#34;, &#34;status&#34;.
          * 
          * @return builder
@@ -132,28 +132,28 @@ public final class GetSecretsStoreSecretFilter extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param scopes Only secrets with the given scopes will be returned
+         * @param scopes Only secrets with the given scopes will be returned.
          * 
          * @return builder
          * 
          */
-        public Builder scopes(@Nullable List<List<String>> scopes) {
+        public Builder scopes(@Nullable List<String> scopes) {
             $.scopes = scopes;
             return this;
         }
 
         /**
-         * @param scopes Only secrets with the given scopes will be returned
+         * @param scopes Only secrets with the given scopes will be returned.
          * 
          * @return builder
          * 
          */
-        public Builder scopes(List<String>... scopes) {
+        public Builder scopes(String... scopes) {
             return scopes(List.of(scopes));
         }
 
         /**
-         * @param search Search secrets using a filter string, filtering across name and comment
+         * @param search Search secrets using a filter string, filtering across name and comment.
          * 
          * @return builder
          * 

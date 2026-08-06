@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetWorkersScriptsResultCacheOptions;
+import com.pulumi.cloudflare.outputs.GetWorkersScriptsResultExports;
 import com.pulumi.cloudflare.outputs.GetWorkersScriptsResultNamedHandler;
 import com.pulumi.cloudflare.outputs.GetWorkersScriptsResultObservability;
 import com.pulumi.cloudflare.outputs.GetWorkersScriptsResultPlacement;
@@ -14,6 +15,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @CustomType
@@ -46,6 +48,15 @@ public final class GetWorkersScriptsResult {
      * 
      */
     private String etag;
+    /**
+     * @return Declarative exports for the Worker&#39;s most recent version,
+     * including Durable Object classes (with their `storage`
+     * backend) and named Worker entrypoints. Tombstoned lifecycle
+     * entries are omitted, so only live exports (`created` and
+     * `expecting-transfer`) are returned.
+     * 
+     */
+    private Map<String,GetWorkersScriptsResultExports> exports;
     /**
      * @return The names of handlers exported as part of the default export.
      * 
@@ -184,6 +195,17 @@ public final class GetWorkersScriptsResult {
      */
     public String etag() {
         return this.etag;
+    }
+    /**
+     * @return Declarative exports for the Worker&#39;s most recent version,
+     * including Durable Object classes (with their `storage`
+     * backend) and named Worker entrypoints. Tombstoned lifecycle
+     * entries are omitted, so only live exports (`created` and
+     * `expecting-transfer`) are returned.
+     * 
+     */
+    public Map<String,GetWorkersScriptsResultExports> exports() {
+        return this.exports;
     }
     /**
      * @return The names of handlers exported as part of the default export.
@@ -335,6 +357,7 @@ public final class GetWorkersScriptsResult {
         private List<String> compatibilityFlags;
         private String createdOn;
         private String etag;
+        private Map<String,GetWorkersScriptsResultExports> exports;
         private List<String> handlers;
         private Boolean hasAssets;
         private Boolean hasModules;
@@ -361,6 +384,7 @@ public final class GetWorkersScriptsResult {
     	      this.compatibilityFlags = defaults.compatibilityFlags;
     	      this.createdOn = defaults.createdOn;
     	      this.etag = defaults.etag;
+    	      this.exports = defaults.exports;
     	      this.handlers = defaults.handlers;
     	      this.hasAssets = defaults.hasAssets;
     	      this.hasModules = defaults.hasModules;
@@ -422,6 +446,14 @@ public final class GetWorkersScriptsResult {
               throw new MissingRequiredPropertyException("GetWorkersScriptsResult", "etag");
             }
             this.etag = etag;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder exports(Map<String,GetWorkersScriptsResultExports> exports) {
+            if (exports == null) {
+              throw new MissingRequiredPropertyException("GetWorkersScriptsResult", "exports");
+            }
+            this.exports = exports;
             return this;
         }
         @CustomType.Setter
@@ -590,6 +622,7 @@ public final class GetWorkersScriptsResult {
             _resultValue.compatibilityFlags = compatibilityFlags;
             _resultValue.createdOn = createdOn;
             _resultValue.etag = etag;
+            _resultValue.exports = exports;
             _resultValue.handlers = handlers;
             _resultValue.hasAssets = hasAssets;
             _resultValue.hasModules = hasModules;

@@ -47,16 +47,13 @@ class GetSecretsStoresResult:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
-        """
-        Account Identifier
-        """
         return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter
     def direction(self) -> _builtins.str:
         """
-        Direction to sort objects
+        Direction to sort objects.
         Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
@@ -73,8 +70,8 @@ class GetSecretsStoresResult:
     @pulumi.getter
     def order(self) -> _builtins.str:
         """
-        Order secrets by values in the given field
-        Available values: "name", "comment", "created", "modified", "status".
+        Order stores by values in the given field.
+        Available values: "name", "created", "modified".
         """
         return pulumi.get(self, "order")
 
@@ -121,12 +118,11 @@ def get_secrets_stores(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str account_id: Account Identifier
-    :param _builtins.str direction: Direction to sort objects
+    :param _builtins.str direction: Direction to sort objects.
            Available values: "asc", "desc".
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str order: Order secrets by values in the given field
-           Available values: "name", "comment", "created", "modified", "status".
+    :param _builtins.str order: Order stores by values in the given field.
+           Available values: "name", "created", "modified".
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -163,12 +159,11 @@ def get_secrets_stores_output(account_id: pulumi.Input[Optional[_builtins.str]] 
     ```
 
 
-    :param _builtins.str account_id: Account Identifier
-    :param _builtins.str direction: Direction to sort objects
+    :param _builtins.str direction: Direction to sort objects.
            Available values: "asc", "desc".
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str order: Order secrets by values in the given field
-           Available values: "name", "comment", "created", "modified", "status".
+    :param _builtins.str order: Order stores by values in the given field.
+           Available values: "name", "created", "modified".
     """
     __args__ = dict()
     __args__['accountId'] = account_id

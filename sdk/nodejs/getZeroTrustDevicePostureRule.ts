@@ -48,6 +48,10 @@ export interface GetZeroTrustDevicePostureRuleResult {
      */
     readonly description: string;
     /**
+     * Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issueCount input, and true otherwise.
+     */
+    readonly enabled: boolean;
+    /**
      * Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
      */
     readonly expiration: string;

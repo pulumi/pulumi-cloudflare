@@ -16,17 +16,9 @@ public final class GetEmailSecurityBlockSenderArgs extends com.pulumi.resources.
 
     public static final GetEmailSecurityBlockSenderArgs Empty = new GetEmailSecurityBlockSenderArgs();
 
-    /**
-     * Identifier.
-     * 
-     */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
-    /**
-     * @return Identifier.
-     * 
-     */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -38,17 +30,9 @@ public final class GetEmailSecurityBlockSenderArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.filter);
     }
 
-    /**
-     * Blocked sender pattern identifier
-     * 
-     */
     @Import(name="patternId")
     private @Nullable Output<String> patternId;
 
-    /**
-     * @return Blocked sender pattern identifier
-     * 
-     */
     public Optional<Output<String>> patternId() {
         return Optional.ofNullable(this.patternId);
     }
@@ -79,23 +63,11 @@ public final class GetEmailSecurityBlockSenderArgs extends com.pulumi.resources.
             $ = new GetEmailSecurityBlockSenderArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId Identifier.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId Identifier.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
@@ -109,23 +81,11 @@ public final class GetEmailSecurityBlockSenderArgs extends com.pulumi.resources.
             return filter(Output.of(filter));
         }
 
-        /**
-         * @param patternId Blocked sender pattern identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder patternId(@Nullable Output<String> patternId) {
             $.patternId = patternId;
             return this;
         }
 
-        /**
-         * @param patternId Blocked sender pattern identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder patternId(String patternId) {
             return patternId(Output.of(patternId));
         }

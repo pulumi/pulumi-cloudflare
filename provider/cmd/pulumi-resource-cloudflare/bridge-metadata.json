@@ -2673,6 +2673,17 @@
                 "current": "cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer",
                 "majorVersion": 6,
                 "fields": {
+                    "auth_config_summary": {
+                        "fields": {
+                            "registration_info": {
+                                "fields": {
+                                    "redirect_uris": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "prompts": {
                         "maxItemsOne": false
                     },
@@ -3133,6 +3144,19 @@
                             }
                         }
                     },
+                    "global_acceleration": {
+                        "fields": {
+                            "api_endpoints": {
+                                "maxItemsOne": false
+                            },
+                            "masque_endpoints": {
+                                "maxItemsOne": false
+                            },
+                            "wireguard_endpoints": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
                     "include": {
                         "maxItemsOne": false
                     },
@@ -3193,6 +3217,19 @@
                                 "dns_server": {
                                     "maxItemsOne": false
                                 }
+                            }
+                        }
+                    },
+                    "global_acceleration": {
+                        "fields": {
+                            "api_endpoints": {
+                                "maxItemsOne": false
+                            },
+                            "masque_endpoints": {
+                                "maxItemsOne": false
+                            },
+                            "wireguard_endpoints": {
+                                "maxItemsOne": false
                             }
                         }
                     },
@@ -3564,6 +3601,9 @@
                                     "maxItemsOne": false
                                 }
                             },
+                            "delete_headers": {
+                                "maxItemsOne": false
+                            },
                             "dns_resolvers": {
                                 "fields": {
                                     "ipv4": {
@@ -3582,6 +3622,11 @@
                                     "file_types": {
                                         "maxItemsOne": false
                                     }
+                                }
+                            },
+                            "set_headers": {
+                                "elem": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -7999,10 +8044,7 @@
                     "filter": {
                         "fields": {
                             "scopes": {
-                                "maxItemsOne": false,
-                                "elem": {
-                                    "maxItemsOne": false
-                                }
+                                "maxItemsOne": false
                             }
                         }
                     },
@@ -8026,10 +8068,7 @@
                         }
                     },
                     "scopes": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "maxItemsOne": false
-                        }
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -8133,6 +8172,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "cloudflare_snippet_rules": {
+                "current": "cloudflare:index/getSnippetRules:getSnippetRules",
+                "majorVersion": 6
             },
             "cloudflare_snippet_rules_list": {
                 "current": "cloudflare:index/getSnippetRulesList:getSnippetRulesList",
@@ -9197,6 +9240,17 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "auth_config_summary": {
+                                    "fields": {
+                                        "registration_info": {
+                                            "fields": {
+                                                "redirect_uris": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "prompts": {
                                     "maxItemsOne": false
                                 },
@@ -9226,6 +9280,17 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "auth_config_summary": {
+                                                "fields": {
+                                                    "registration_info": {
+                                                        "fields": {
+                                                            "redirect_uris": {
+                                                                "maxItemsOne": false
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "prompts": {
                                                 "maxItemsOne": false
                                             },
@@ -9250,6 +9315,17 @@
                 "current": "cloudflare:index/getZeroTrustAccessAiControlsMcpServer:getZeroTrustAccessAiControlsMcpServer",
                 "majorVersion": 6,
                 "fields": {
+                    "auth_config_summary": {
+                        "fields": {
+                            "registration_info": {
+                                "fields": {
+                                    "redirect_uris": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "prompts": {
                         "maxItemsOne": false
                     },
@@ -9272,6 +9348,17 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "auth_config_summary": {
+                                    "fields": {
+                                        "registration_info": {
+                                            "fields": {
+                                                "redirect_uris": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "prompts": {
                                     "maxItemsOne": false
                                 },
@@ -10435,6 +10522,19 @@
                     }
                 }
             },
+            "cloudflare_zero_trust_dlp_custom_prompt_topic": {
+                "current": "cloudflare:index/getZeroTrustDlpCustomPromptTopic:getZeroTrustDlpCustomPromptTopic",
+                "majorVersion": 6
+            },
+            "cloudflare_zero_trust_dlp_custom_prompt_topics": {
+                "current": "cloudflare:index/getZeroTrustDlpCustomPromptTopics:getZeroTrustDlpCustomPromptTopics",
+                "majorVersion": 6,
+                "fields": {
+                    "result": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "cloudflare_zero_trust_dlp_data_class": {
                 "current": "cloudflare:index/getZeroTrustDlpDataClass:getZeroTrustDlpDataClass",
                 "majorVersion": 6,
@@ -10800,6 +10900,9 @@
                                                 "maxItemsOne": false
                                             }
                                         },
+                                        "delete_headers": {
+                                            "maxItemsOne": false
+                                        },
                                         "dns_resolvers": {
                                             "fields": {
                                                 "ipv4": {
@@ -10818,6 +10921,11 @@
                                                 "file_types": {
                                                     "maxItemsOne": false
                                                 }
+                                            }
+                                        },
+                                        "set_headers": {
+                                            "elem": {
+                                                "maxItemsOne": false
                                             }
                                         }
                                     }
@@ -10841,6 +10949,9 @@
                                     "maxItemsOne": false
                                 }
                             },
+                            "delete_headers": {
+                                "maxItemsOne": false
+                            },
                             "dns_resolvers": {
                                 "fields": {
                                     "ipv4": {
@@ -10859,6 +10970,11 @@
                                     "file_types": {
                                         "maxItemsOne": false
                                     }
+                                }
+                            },
+                            "set_headers": {
+                                "elem": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }

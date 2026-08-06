@@ -40,7 +40,7 @@ public final class GetDnsRecordResult {
      */
     private String createdOn;
     /**
-     * @return Components of a CAA record.
+     * @return Components of a MX record.
      * 
      */
     private GetDnsRecordData data;
@@ -157,7 +157,7 @@ public final class GetDnsRecordResult {
         return this.createdOn;
     }
     /**
-     * @return Components of a CAA record.
+     * @return Components of a MX record.
      * 
      */
     public GetDnsRecordData data() {

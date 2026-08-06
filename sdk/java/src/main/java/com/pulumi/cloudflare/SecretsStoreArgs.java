@@ -14,30 +14,22 @@ public final class SecretsStoreArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SecretsStoreArgs Empty = new SecretsStoreArgs();
 
-    /**
-     * Account Identifier
-     * 
-     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
-    /**
-     * @return Account Identifier
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
 
     /**
-     * The name of the store
+     * The name of the store.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the store
+     * @return The name of the store.
      * 
      */
     public Output<String> name() {
@@ -69,29 +61,17 @@ public final class SecretsStoreArgs extends com.pulumi.resources.ResourceArgs {
             $ = new SecretsStoreArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId Account Identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId Account Identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
         /**
-         * @param name The name of the store
+         * @param name The name of the store.
          * 
          * @return builder
          * 
@@ -102,7 +82,7 @@ public final class SecretsStoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the store
+         * @param name The name of the store.
          * 
          * @return builder
          * 

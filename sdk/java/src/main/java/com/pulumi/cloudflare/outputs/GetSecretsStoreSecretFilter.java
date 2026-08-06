@@ -14,31 +14,31 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetSecretsStoreSecretFilter {
     /**
-     * @return Direction to sort objects
+     * @return Direction to sort objects.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private String direction;
     /**
-     * @return Order secrets by values in the given field
+     * @return Order secrets by values in the given field.
      * Available values: &#34;name&#34;, &#34;comment&#34;, &#34;created&#34;, &#34;modified&#34;, &#34;status&#34;.
      * 
      */
     private String order;
     /**
-     * @return Only secrets with the given scopes will be returned
+     * @return Only secrets with the given scopes will be returned.
      * 
      */
-    private @Nullable List<List<String>> scopes;
+    private @Nullable List<String> scopes;
     /**
-     * @return Search secrets using a filter string, filtering across name and comment
+     * @return Search secrets using a filter string, filtering across name and comment.
      * 
      */
     private @Nullable String search;
 
     private GetSecretsStoreSecretFilter() {}
     /**
-     * @return Direction to sort objects
+     * @return Direction to sort objects.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
@@ -46,7 +46,7 @@ public final class GetSecretsStoreSecretFilter {
         return this.direction;
     }
     /**
-     * @return Order secrets by values in the given field
+     * @return Order secrets by values in the given field.
      * Available values: &#34;name&#34;, &#34;comment&#34;, &#34;created&#34;, &#34;modified&#34;, &#34;status&#34;.
      * 
      */
@@ -54,14 +54,14 @@ public final class GetSecretsStoreSecretFilter {
         return this.order;
     }
     /**
-     * @return Only secrets with the given scopes will be returned
+     * @return Only secrets with the given scopes will be returned.
      * 
      */
-    public List<List<String>> scopes() {
+    public List<String> scopes() {
         return this.scopes == null ? List.of() : this.scopes;
     }
     /**
-     * @return Search secrets using a filter string, filtering across name and comment
+     * @return Search secrets using a filter string, filtering across name and comment.
      * 
      */
     public Optional<String> search() {
@@ -79,7 +79,7 @@ public final class GetSecretsStoreSecretFilter {
     public static final class Builder {
         private String direction;
         private String order;
-        private @Nullable List<List<String>> scopes;
+        private @Nullable List<String> scopes;
         private @Nullable String search;
         public Builder() {}
         public Builder(GetSecretsStoreSecretFilter defaults) {
@@ -107,10 +107,13 @@ public final class GetSecretsStoreSecretFilter {
             return this;
         }
         @CustomType.Setter
-        public Builder scopes(@Nullable List<List<String>> scopes) {
+        public Builder scopes(@Nullable List<String> scopes) {
 
             this.scopes = scopes;
             return this;
+        }
+        public Builder scopes(String... scopes) {
+            return scopes(List.of(scopes));
         }
         @CustomType.Setter
         public Builder search(@Nullable String search) {

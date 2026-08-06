@@ -80,6 +80,10 @@ export class DevicePostureRule extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string>;
     /**
+     * Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issueCount input, and true otherwise.
+     */
+    declare public /*out*/ readonly enabled: pulumi.Output<boolean>;
+    /**
      * Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
      */
     declare public readonly expiration: pulumi.Output<string | undefined>;
@@ -123,6 +127,7 @@ export class DevicePostureRule extends pulumi.CustomResource {
             const state = argsOrState as DevicePostureRuleState | undefined;
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["description"] = state?.description;
+            resourceInputs["enabled"] = state?.enabled;
             resourceInputs["expiration"] = state?.expiration;
             resourceInputs["input"] = state?.input;
             resourceInputs["matches"] = state?.matches;
@@ -145,6 +150,7 @@ export class DevicePostureRule extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["schedule"] = args?.schedule;
             resourceInputs["type"] = args?.type;
+            resourceInputs["enabled"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/devicePostureRule:DevicePostureRule" }] };
@@ -162,6 +168,10 @@ export interface DevicePostureRuleState {
      * The description of the device posture rule.
      */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issueCount input, and true otherwise.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
      */

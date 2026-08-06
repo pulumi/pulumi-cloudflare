@@ -57,6 +57,8 @@ type ZeroTrustDeviceSubnet struct {
 
 	// Cloudflare account ID
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// IP capacity information for the subnet.
+	Capacity ZeroTrustDeviceSubnetCapacityOutput `pulumi:"capacity"`
 	// An optional description of the subnet.
 	Comment pulumi.StringOutput `pulumi:"comment"`
 	// Timestamp of when the resource was created.
@@ -70,7 +72,7 @@ type ZeroTrustDeviceSubnet struct {
 	// The private IPv4 or IPv6 range defining the subnet, in CIDR notation.
 	Network pulumi.StringOutput `pulumi:"network"`
 	// The type of subnet.
-	// Available values: "cloudflareSource", "warp".
+	// Available values: "cloudflare*source", "initial*resolved_ip", "warp".
 	SubnetType pulumi.StringOutput `pulumi:"subnetType"`
 }
 
@@ -115,6 +117,8 @@ func GetZeroTrustDeviceSubnet(ctx *pulumi.Context,
 type zeroTrustDeviceSubnetState struct {
 	// Cloudflare account ID
 	AccountId *string `pulumi:"accountId"`
+	// IP capacity information for the subnet.
+	Capacity *ZeroTrustDeviceSubnetCapacity `pulumi:"capacity"`
 	// An optional description of the subnet.
 	Comment *string `pulumi:"comment"`
 	// Timestamp of when the resource was created.
@@ -128,13 +132,15 @@ type zeroTrustDeviceSubnetState struct {
 	// The private IPv4 or IPv6 range defining the subnet, in CIDR notation.
 	Network *string `pulumi:"network"`
 	// The type of subnet.
-	// Available values: "cloudflareSource", "warp".
+	// Available values: "cloudflare*source", "initial*resolved_ip", "warp".
 	SubnetType *string `pulumi:"subnetType"`
 }
 
 type ZeroTrustDeviceSubnetState struct {
 	// Cloudflare account ID
 	AccountId pulumi.StringPtrInput
+	// IP capacity information for the subnet.
+	Capacity ZeroTrustDeviceSubnetCapacityPtrInput
 	// An optional description of the subnet.
 	Comment pulumi.StringPtrInput
 	// Timestamp of when the resource was created.
@@ -148,7 +154,7 @@ type ZeroTrustDeviceSubnetState struct {
 	// The private IPv4 or IPv6 range defining the subnet, in CIDR notation.
 	Network pulumi.StringPtrInput
 	// The type of subnet.
-	// Available values: "cloudflareSource", "warp".
+	// Available values: "cloudflare*source", "initial*resolved_ip", "warp".
 	SubnetType pulumi.StringPtrInput
 }
 
@@ -275,6 +281,11 @@ func (o ZeroTrustDeviceSubnetOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceSubnet) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// IP capacity information for the subnet.
+func (o ZeroTrustDeviceSubnetOutput) Capacity() ZeroTrustDeviceSubnetCapacityOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceSubnet) ZeroTrustDeviceSubnetCapacityOutput { return v.Capacity }).(ZeroTrustDeviceSubnetCapacityOutput)
+}
+
 // An optional description of the subnet.
 func (o ZeroTrustDeviceSubnetOutput) Comment() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceSubnet) pulumi.StringOutput { return v.Comment }).(pulumi.StringOutput)
@@ -306,7 +317,7 @@ func (o ZeroTrustDeviceSubnetOutput) Network() pulumi.StringOutput {
 }
 
 // The type of subnet.
-// Available values: "cloudflareSource", "warp".
+// Available values: "cloudflare*source", "initial*resolved_ip", "warp".
 func (o ZeroTrustDeviceSubnetOutput) SubnetType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceSubnet) pulumi.StringOutput { return v.SubnetType }).(pulumi.StringOutput)
 }

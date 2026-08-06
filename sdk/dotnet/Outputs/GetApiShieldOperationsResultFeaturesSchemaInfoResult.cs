@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchemaResult ActiveSchema;
         /// <summary>
-        /// True if a Cloudflare-provided learned schema is available for this endpoint.
+        /// Deprecated. Always false.
         /// </summary>
         public readonly bool LearnedAvailable;
         /// <summary>

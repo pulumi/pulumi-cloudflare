@@ -30,6 +30,7 @@ class WorkerVersionArgs:
                  compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
                  compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  containers: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionContainerArgs']]]] = None,
+                 exports: pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkerVersionExportsArgs']]]] = None,
                  limits: pulumi.Input[Optional['WorkerVersionLimitsArgs']] = None,
                  main_module: pulumi.Input[Optional[_builtins.str]] = None,
                  migrations: pulumi.Input[Optional['WorkerVersionMigrationsArgs']] = None,
@@ -52,6 +53,12 @@ class WorkerVersionArgs:
         :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerVersionContainerArgs']]] containers: List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+        :param pulumi.Input[Mapping[str, pulumi.Input['WorkerVersionExportsArgs']]] exports: Declarative exports for the version, including Durable Object
+               classes (with their `storage` backend) and named Worker
+               entrypoints. On reads, tombstoned lifecycle entries are
+               omitted, so only live exports (`created` and
+               `expecting-transfer`) are returned. `exports` and `migrations`
+               are mutually exclusive on upload.
         :param pulumi.Input['WorkerVersionLimitsArgs'] limits: Resource limits enforced at runtime.
         :param pulumi.Input[_builtins.str] main_module: The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
         :param pulumi.Input['WorkerVersionMigrationsArgs'] migrations: Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
@@ -83,6 +90,8 @@ class WorkerVersionArgs:
             pulumi.set(__self__, "compatibility_flags", compatibility_flags)
         if containers is not None:
             pulumi.set(__self__, "containers", containers)
+        if exports is not None:
+            pulumi.set(__self__, "exports", exports)
         if limits is not None:
             pulumi.set(__self__, "limits", limits)
         if main_module is not None:
@@ -214,6 +223,23 @@ class WorkerVersionArgs:
 
     @_builtins.property
     @pulumi.getter
+    def exports(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkerVersionExportsArgs']]]]:
+        """
+        Declarative exports for the version, including Durable Object
+        classes (with their `storage` backend) and named Worker
+        entrypoints. On reads, tombstoned lifecycle entries are
+        omitted, so only live exports (`created` and
+        `expecting-transfer`) are returned. `exports` and `migrations`
+        are mutually exclusive on upload.
+        """
+        return pulumi.get(self, "exports")
+
+    @exports.setter
+    def exports(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkerVersionExportsArgs']]]]):
+        pulumi.set(self, "exports", value)
+
+    @_builtins.property
+    @pulumi.getter
     def limits(self) -> pulumi.Input[Optional['WorkerVersionLimitsArgs']]:
         """
         Resource limits enforced at runtime.
@@ -317,6 +343,7 @@ class _WorkerVersionState:
                  compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  containers: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionContainerArgs']]]] = None,
                  created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 exports: pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkerVersionExportsArgs']]]] = None,
                  limits: pulumi.Input[Optional['WorkerVersionLimitsArgs']] = None,
                  main_module: pulumi.Input[Optional[_builtins.str]] = None,
                  main_script_base64: pulumi.Input[Optional[_builtins.str]] = None,
@@ -346,6 +373,12 @@ class _WorkerVersionState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerVersionContainerArgs']]] containers: List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
         :param pulumi.Input[_builtins.str] created_on: When the version was created.
+        :param pulumi.Input[Mapping[str, pulumi.Input['WorkerVersionExportsArgs']]] exports: Declarative exports for the version, including Durable Object
+               classes (with their `storage` backend) and named Worker
+               entrypoints. On reads, tombstoned lifecycle entries are
+               omitted, so only live exports (`created` and
+               `expecting-transfer`) are returned. `exports` and `migrations`
+               are mutually exclusive on upload.
         :param pulumi.Input['WorkerVersionLimitsArgs'] limits: Resource limits enforced at runtime.
         :param pulumi.Input[_builtins.str] main_module: The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
         :param pulumi.Input[_builtins.str] main_script_base64: The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
@@ -386,6 +419,8 @@ class _WorkerVersionState:
             pulumi.set(__self__, "containers", containers)
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
+        if exports is not None:
+            pulumi.set(__self__, "exports", exports)
         if limits is not None:
             pulumi.set(__self__, "limits", limits)
         if main_module is not None:
@@ -528,6 +563,23 @@ class _WorkerVersionState:
     @created_on.setter
     def created_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_on", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def exports(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkerVersionExportsArgs']]]]:
+        """
+        Declarative exports for the version, including Durable Object
+        classes (with their `storage` backend) and named Worker
+        entrypoints. On reads, tombstoned lifecycle entries are
+        omitted, so only live exports (`created` and
+        `expecting-transfer`) are returned. `exports` and `migrations`
+        are mutually exclusive on upload.
+        """
+        return pulumi.get(self, "exports")
+
+    @exports.setter
+    def exports(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkerVersionExportsArgs']]]]):
+        pulumi.set(self, "exports", value)
 
     @_builtins.property
     @pulumi.getter
@@ -720,6 +772,7 @@ class WorkerVersion(pulumi.CustomResource):
                  compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
                  compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]]] = None,
+                 exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerVersionExportsArgs', 'WorkerVersionExportsArgsDict']]]]] = None,
                  limits: pulumi.Input[Optional[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict']]] = None,
                  main_module: pulumi.Input[Optional[_builtins.str]] = None,
                  migrations: pulumi.Input[Optional[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']]] = None,
@@ -827,6 +880,12 @@ class WorkerVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]] containers: List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['WorkerVersionExportsArgs', 'WorkerVersionExportsArgsDict']]]] exports: Declarative exports for the version, including Durable Object
+               classes (with their `storage` backend) and named Worker
+               entrypoints. On reads, tombstoned lifecycle entries are
+               omitted, so only live exports (`created` and
+               `expecting-transfer`) are returned. `exports` and `migrations`
+               are mutually exclusive on upload.
         :param pulumi.Input[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict']] limits: Resource limits enforced at runtime.
         :param pulumi.Input[_builtins.str] main_module: The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
         :param pulumi.Input[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']] migrations: Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
@@ -957,6 +1016,7 @@ class WorkerVersion(pulumi.CustomResource):
                  compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
                  compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]]] = None,
+                 exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerVersionExportsArgs', 'WorkerVersionExportsArgsDict']]]]] = None,
                  limits: pulumi.Input[Optional[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict']]] = None,
                  main_module: pulumi.Input[Optional[_builtins.str]] = None,
                  migrations: pulumi.Input[Optional[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']]] = None,
@@ -984,6 +1044,7 @@ class WorkerVersion(pulumi.CustomResource):
             __props__.__dict__["compatibility_date"] = compatibility_date
             __props__.__dict__["compatibility_flags"] = compatibility_flags
             __props__.__dict__["containers"] = containers
+            __props__.__dict__["exports"] = exports
             __props__.__dict__["limits"] = limits
             __props__.__dict__["main_module"] = main_module
             __props__.__dict__["migrations"] = migrations
@@ -1020,6 +1081,7 @@ class WorkerVersion(pulumi.CustomResource):
             compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerVersionExportsArgs', 'WorkerVersionExportsArgsDict']]]]] = None,
             limits: pulumi.Input[Optional[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict']]] = None,
             main_module: pulumi.Input[Optional[_builtins.str]] = None,
             main_script_base64: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1053,6 +1115,12 @@ class WorkerVersion(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]] containers: List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
         :param pulumi.Input[_builtins.str] created_on: When the version was created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['WorkerVersionExportsArgs', 'WorkerVersionExportsArgsDict']]]] exports: Declarative exports for the version, including Durable Object
+               classes (with their `storage` backend) and named Worker
+               entrypoints. On reads, tombstoned lifecycle entries are
+               omitted, so only live exports (`created` and
+               `expecting-transfer`) are returned. `exports` and `migrations`
+               are mutually exclusive on upload.
         :param pulumi.Input[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict']] limits: Resource limits enforced at runtime.
         :param pulumi.Input[_builtins.str] main_module: The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
         :param pulumi.Input[_builtins.str] main_script_base64: The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
@@ -1088,6 +1156,7 @@ class WorkerVersion(pulumi.CustomResource):
         __props__.__dict__["compatibility_flags"] = compatibility_flags
         __props__.__dict__["containers"] = containers
         __props__.__dict__["created_on"] = created_on
+        __props__.__dict__["exports"] = exports
         __props__.__dict__["limits"] = limits
         __props__.__dict__["main_module"] = main_module
         __props__.__dict__["main_script_base64"] = main_script_base64
@@ -1178,6 +1247,19 @@ class WorkerVersion(pulumi.CustomResource):
         When the version was created.
         """
         return pulumi.get(self, "created_on")
+
+    @_builtins.property
+    @pulumi.getter
+    def exports(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.WorkerVersionExports']]]:
+        """
+        Declarative exports for the version, including Durable Object
+        classes (with their `storage` backend) and named Worker
+        entrypoints. On reads, tombstoned lifecycle entries are
+        omitted, so only live exports (`created` and
+        `expecting-transfer`) are returned. `exports` and `migrations`
+        are mutually exclusive on upload.
+        """
+        return pulumi.get(self, "exports")
 
     @_builtins.property
     @pulumi.getter

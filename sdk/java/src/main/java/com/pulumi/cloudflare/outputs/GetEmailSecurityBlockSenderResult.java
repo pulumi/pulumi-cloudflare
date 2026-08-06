@@ -14,23 +14,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEmailSecurityBlockSenderResult {
-    /**
-     * @return Identifier.
-     * 
-     */
     private @Nullable String accountId;
     private String comments;
     private String createdAt;
     private @Nullable GetEmailSecurityBlockSenderFilter filter;
-    /**
-     * @return Blocked sender pattern identifier
-     * 
-     */
     private String id;
     private Boolean isRegex;
     /**
-     * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
-     * 
      * @deprecated
      * Use `modifiedAt` instead.
      * 
@@ -39,24 +29,10 @@ public final class GetEmailSecurityBlockSenderResult {
     private String lastModified;
     private String modifiedAt;
     private String pattern;
-    /**
-     * @return Blocked sender pattern identifier
-     * 
-     */
     private @Nullable String patternId;
-    /**
-     * @return Type of pattern matching.
-     * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
-     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
-     * 
-     */
     private String patternType;
 
     private GetEmailSecurityBlockSenderResult() {}
-    /**
-     * @return Identifier.
-     * 
-     */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -69,10 +45,6 @@ public final class GetEmailSecurityBlockSenderResult {
     public Optional<GetEmailSecurityBlockSenderFilter> filter() {
         return Optional.ofNullable(this.filter);
     }
-    /**
-     * @return Blocked sender pattern identifier
-     * 
-     */
     public String id() {
         return this.id;
     }
@@ -80,8 +52,6 @@ public final class GetEmailSecurityBlockSenderResult {
         return this.isRegex;
     }
     /**
-     * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
-     * 
      * @deprecated
      * Use `modifiedAt` instead.
      * 
@@ -96,19 +66,9 @@ public final class GetEmailSecurityBlockSenderResult {
     public String pattern() {
         return this.pattern;
     }
-    /**
-     * @return Blocked sender pattern identifier
-     * 
-     */
     public Optional<String> patternId() {
         return Optional.ofNullable(this.patternId);
     }
-    /**
-     * @return Type of pattern matching.
-     * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
-     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
-     * 
-     */
     public String patternType() {
         return this.patternType;
     }

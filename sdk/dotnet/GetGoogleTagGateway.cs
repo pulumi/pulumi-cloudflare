@@ -14,8 +14,9 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Accepted Permissions
         /// 
-        /// - `Zone Settings Read`
-        /// - `Zone Settings Write`
+        /// - `Zaraz Admin`
+        /// - `Zaraz Edit`
+        /// - `Zaraz Read`
         /// 
         /// ## Example Usage
         /// 
@@ -41,8 +42,9 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Accepted Permissions
         /// 
-        /// - `Zone Settings Read`
-        /// - `Zone Settings Write`
+        /// - `Zaraz Admin`
+        /// - `Zaraz Edit`
+        /// - `Zaraz Read`
         /// 
         /// ## Example Usage
         /// 
@@ -68,8 +70,9 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Accepted Permissions
         /// 
-        /// - `Zone Settings Read`
-        /// - `Zone Settings Write`
+        /// - `Zaraz Admin`
+        /// - `Zaraz Edit`
+        /// - `Zaraz Read`
         /// 
         /// ## Example Usage
         /// 

@@ -59,6 +59,8 @@ type LookupAccountTokensArgs struct {
 	// Direction to order results.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
+	// When true, includes recently-expired tokens in the response.
+	IncludeExpired *bool `pulumi:"includeExpired"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
@@ -70,6 +72,8 @@ type LookupAccountTokensResult struct {
 	// Direction to order results.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
+	// When true, includes recently-expired tokens in the response.
+	IncludeExpired bool `pulumi:"includeExpired"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -92,6 +96,8 @@ type LookupAccountTokensOutputArgs struct {
 	// Direction to order results.
 	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// When true, includes recently-expired tokens in the response.
+	IncludeExpired pulumi.BoolPtrInput `pulumi:"includeExpired"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -124,6 +130,11 @@ func (o LookupAccountTokensResultOutput) AccountId() pulumi.StringPtrOutput {
 // Available values: "asc", "desc".
 func (o LookupAccountTokensResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccountTokensResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// When true, includes recently-expired tokens in the response.
+func (o LookupAccountTokensResultOutput) IncludeExpired() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupAccountTokensResult) bool { return v.IncludeExpired }).(pulumi.BoolOutput)
 }
 
 // Max items to fetch, default: 1000

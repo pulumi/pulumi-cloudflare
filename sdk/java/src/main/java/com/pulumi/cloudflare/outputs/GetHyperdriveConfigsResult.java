@@ -46,6 +46,11 @@ public final class GetHyperdriveConfigsResult {
      * 
      */
     private Integer originConnectionLimit;
+    /**
+     * @return Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
+     * 
+     */
+    private String restartedOn;
 
     private GetHyperdriveConfigsResult() {}
     public GetHyperdriveConfigsResultCaching caching() {
@@ -96,6 +101,13 @@ public final class GetHyperdriveConfigsResult {
     public Integer originConnectionLimit() {
         return this.originConnectionLimit;
     }
+    /**
+     * @return Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
+     * 
+     */
+    public String restartedOn() {
+        return this.restartedOn;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -114,6 +126,7 @@ public final class GetHyperdriveConfigsResult {
         private String name;
         private GetHyperdriveConfigsResultOrigin origin;
         private Integer originConnectionLimit;
+        private String restartedOn;
         public Builder() {}
         public Builder(GetHyperdriveConfigsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -125,6 +138,7 @@ public final class GetHyperdriveConfigsResult {
     	      this.name = defaults.name;
     	      this.origin = defaults.origin;
     	      this.originConnectionLimit = defaults.originConnectionLimit;
+    	      this.restartedOn = defaults.restartedOn;
         }
 
         @CustomType.Setter
@@ -191,6 +205,14 @@ public final class GetHyperdriveConfigsResult {
             this.originConnectionLimit = originConnectionLimit;
             return this;
         }
+        @CustomType.Setter
+        public Builder restartedOn(String restartedOn) {
+            if (restartedOn == null) {
+              throw new MissingRequiredPropertyException("GetHyperdriveConfigsResult", "restartedOn");
+            }
+            this.restartedOn = restartedOn;
+            return this;
+        }
         public GetHyperdriveConfigsResult build() {
             final var _resultValue = new GetHyperdriveConfigsResult();
             _resultValue.caching = caching;
@@ -201,6 +223,7 @@ public final class GetHyperdriveConfigsResult {
             _resultValue.name = name;
             _resultValue.origin = origin;
             _resultValue.originConnectionLimit = originConnectionLimit;
+            _resultValue.restartedOn = restartedOn;
             return _resultValue;
         }
     }

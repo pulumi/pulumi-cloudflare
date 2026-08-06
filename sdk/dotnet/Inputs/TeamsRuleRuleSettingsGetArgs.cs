@@ -72,6 +72,18 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("checkSession")]
         public Input<Inputs.TeamsRuleRuleSettingsCheckSessionGetArgs>? CheckSession { get; set; }
 
+        [Input("deleteHeaders")]
+        private InputList<string>? _deleteHeaders;
+
+        /// <summary>
+        /// Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `Http` rules with the action set to `Allow`.
+        /// </summary>
+        public InputList<string> DeleteHeaders
+        {
+            get => _deleteHeaders ?? (_deleteHeaders = new InputList<string>());
+            set => _deleteHeaders = value;
+        }
+
         /// <summary>
         /// Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `DnsResolver` rules.
         /// </summary>
@@ -173,6 +185,18 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("resolveDnsThroughCloudflare")]
         public Input<bool>? ResolveDnsThroughCloudflare { get; set; }
+
+        [Input("setHeaders")]
+        private InputMap<ImmutableArray<string>>? _setHeaders;
+
+        /// <summary>
+        /// Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `Http` rules with the action set to `Allow`.
+        /// </summary>
+        public InputMap<ImmutableArray<string>> SetHeaders
+        {
+            get => _setHeaders ?? (_setHeaders = new InputMap<ImmutableArray<string>>());
+            set => _setHeaders = value;
+        }
 
         /// <summary>
         /// Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `Http` rules with the action set to `Allow`.

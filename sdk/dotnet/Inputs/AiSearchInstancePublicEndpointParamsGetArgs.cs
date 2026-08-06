@@ -35,6 +35,12 @@ namespace Pulumi.Cloudflare.Inputs
             set => _customDomains = value;
         }
 
+        /// <summary>
+        /// When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+        /// </summary>
+        [Input("defaultDomainEnabled")]
+        public Input<bool>? DefaultDomainEnabled { get; set; }
+
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

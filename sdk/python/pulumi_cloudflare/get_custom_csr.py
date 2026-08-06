@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetCustomCsrResult',
@@ -26,7 +28,7 @@ class GetCustomCsrResult:
     """
     A collection of values returned by getCustomCsr.
     """
-    def __init__(__self__, account_id=None, account_tag=None, common_name=None, country=None, created_at=None, csr=None, custom_csr_id=None, description=None, id=None, key_type=None, locality=None, name=None, organization=None, organizational_unit=None, sans=None, state=None, zone_id=None):
+    def __init__(__self__, account_id=None, account_tag=None, common_name=None, country=None, created_at=None, csr=None, custom_csr_id=None, description=None, filter=None, id=None, key_type=None, locality=None, name=None, organization=None, organizational_unit=None, sans=None, state=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -51,6 +53,9 @@ class GetCustomCsrResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if filter and not isinstance(filter, dict):
+            raise TypeError("Expected argument 'filter' to be a dict")
+        pulumi.set(__self__, "filter", filter)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -129,7 +134,7 @@ class GetCustomCsrResult:
 
     @_builtins.property
     @pulumi.getter(name="customCsrId")
-    def custom_csr_id(self) -> _builtins.str:
+    def custom_csr_id(self) -> Optional[_builtins.str]:
         """
         Custom CSR identifier tag.
         """
@@ -142,6 +147,11 @@ class GetCustomCsrResult:
         Optional description for the CSR.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> Optional['outputs.GetCustomCsrFilterResult']:
+        return pulumi.get(self, "filter")
 
     @_builtins.property
     @pulumi.getter
@@ -231,6 +241,7 @@ class AwaitableGetCustomCsrResult(GetCustomCsrResult):
             csr=self.csr,
             custom_csr_id=self.custom_csr_id,
             description=self.description,
+            filter=self.filter,
             id=self.id,
             key_type=self.key_type,
             locality=self.locality,
@@ -244,6 +255,7 @@ class AwaitableGetCustomCsrResult(GetCustomCsrResult):
 
 def get_custom_csr(account_id: Optional[_builtins.str] = None,
                    custom_csr_id: Optional[_builtins.str] = None,
+                   filter: Optional[Union['GetCustomCsrFilterArgs', 'GetCustomCsrFilterArgsDict']] = None,
                    zone_id: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCustomCsrResult:
     """
@@ -271,6 +283,7 @@ def get_custom_csr(account_id: Optional[_builtins.str] = None,
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['customCsrId'] = custom_csr_id
+    __args__['filter'] = filter
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getCustomCsr:getCustomCsr', __args__, opts=opts, typ=GetCustomCsrResult).value
@@ -284,6 +297,7 @@ def get_custom_csr(account_id: Optional[_builtins.str] = None,
         csr=pulumi.get(__ret__, 'csr'),
         custom_csr_id=pulumi.get(__ret__, 'custom_csr_id'),
         description=pulumi.get(__ret__, 'description'),
+        filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
         key_type=pulumi.get(__ret__, 'key_type'),
         locality=pulumi.get(__ret__, 'locality'),
@@ -294,7 +308,8 @@ def get_custom_csr(account_id: Optional[_builtins.str] = None,
         state=pulumi.get(__ret__, 'state'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_custom_csr_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                          custom_csr_id: pulumi.Input[Optional[_builtins.str]] = None,
+                          custom_csr_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          filter: pulumi.Input[Optional[Optional[Union['GetCustomCsrFilterArgs', 'GetCustomCsrFilterArgsDict']]]] = None,
                           zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomCsrResult]:
     """
@@ -322,6 +337,7 @@ def get_custom_csr_output(account_id: pulumi.Input[Optional[Optional[_builtins.s
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['customCsrId'] = custom_csr_id
+    __args__['filter'] = filter
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getCustomCsr:getCustomCsr', __args__, opts=opts, typ=GetCustomCsrResult)
@@ -334,6 +350,7 @@ def get_custom_csr_output(account_id: pulumi.Input[Optional[Optional[_builtins.s
         csr=pulumi.get(__response__, 'csr'),
         custom_csr_id=pulumi.get(__response__, 'custom_csr_id'),
         description=pulumi.get(__response__, 'description'),
+        filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
         key_type=pulumi.get(__response__, 'key_type'),
         locality=pulumi.get(__response__, 'locality'),

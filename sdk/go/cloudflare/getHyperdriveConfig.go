@@ -79,7 +79,8 @@ type LookupHyperdriveConfigResult struct {
 	Name   string                    `pulumi:"name"`
 	Origin GetHyperdriveConfigOrigin `pulumi:"origin"`
 	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
-	OriginConnectionLimit int `pulumi:"originConnectionLimit"`
+	OriginConnectionLimit int    `pulumi:"originConnectionLimit"`
+	RestartedOn           string `pulumi:"restartedOn"`
 }
 
 func LookupHyperdriveConfigOutput(ctx *pulumi.Context, args LookupHyperdriveConfigOutputArgs, opts ...pulumi.InvokeOption) LookupHyperdriveConfigResultOutput {
@@ -164,6 +165,10 @@ func (o LookupHyperdriveConfigResultOutput) Origin() GetHyperdriveConfigOriginOu
 // The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 func (o LookupHyperdriveConfigResultOutput) OriginConnectionLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupHyperdriveConfigResult) int { return v.OriginConnectionLimit }).(pulumi.IntOutput)
+}
+
+func (o LookupHyperdriveConfigResultOutput) RestartedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHyperdriveConfigResult) string { return v.RestartedOn }).(pulumi.StringOutput)
 }
 
 func init() {

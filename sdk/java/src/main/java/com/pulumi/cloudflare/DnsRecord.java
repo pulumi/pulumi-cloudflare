@@ -138,14 +138,14 @@ public class DnsRecord extends com.pulumi.resources.CustomResource {
         return this.createdOn;
     }
     /**
-     * Components of a CAA record.
+     * Components of a MX record.
      * 
      */
     @Export(name="data", refs={DnsRecordData.class}, tree="[0]")
     private Output</* @Nullable */ DnsRecordData> data;
 
     /**
-     * @return Components of a CAA record.
+     * @return Components of a MX record.
      * 
      */
     public Output<Optional<DnsRecordData>> data() {

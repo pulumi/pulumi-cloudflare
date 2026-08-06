@@ -11,17 +11,17 @@ import java.util.Objects;
 @CustomType
 public final class GetSecretsStoresResult {
     /**
-     * @return Account Identifier
+     * @return Account Identifier.
      * 
      */
     private String accountId;
     /**
-     * @return Whenthe secret was created.
+     * @return When the secret was created.
      * 
      */
     private String created;
     /**
-     * @return Store Identifier
+     * @return Store Identifier.
      * 
      */
     private String id;
@@ -31,28 +31,28 @@ public final class GetSecretsStoresResult {
      */
     private String modified;
     /**
-     * @return The name of the store
+     * @return The name of the store.
      * 
      */
     private String name;
 
     private GetSecretsStoresResult() {}
     /**
-     * @return Account Identifier
+     * @return Account Identifier.
      * 
      */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return Whenthe secret was created.
+     * @return When the secret was created.
      * 
      */
     public String created() {
         return this.created;
     }
     /**
-     * @return Store Identifier
+     * @return Store Identifier.
      * 
      */
     public String id() {
@@ -66,7 +66,7 @@ public final class GetSecretsStoresResult {
         return this.modified;
     }
     /**
-     * @return The name of the store
+     * @return The name of the store.
      * 
      */
     public String name() {

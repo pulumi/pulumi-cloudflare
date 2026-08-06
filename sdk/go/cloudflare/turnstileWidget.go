@@ -75,10 +75,21 @@ type TurnstileWidget struct {
 	// Available values: "noClearance", "jschallenge", "managed", "interactive".
 	ClearanceLevel pulumi.StringOutput `pulumi:"clearanceLevel"`
 	// When the widget was created.
-	CreatedOn pulumi.StringOutput      `pulumi:"createdOn"`
-	Domains   pulumi.StringArrayOutput `pulumi:"domains"`
+	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
+	// Origin that created this widget, recorded at creation time and
+	// immutable afterward. Server-derived from the create request; not
+	// client-settable. Omitted from the response for widgets created
+	// before this field existed.
+	// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+	DeployedVia pulumi.StringOutput      `pulumi:"deployedVia"`
+	Domains     pulumi.StringArrayOutput `pulumi:"domains"`
 	// Return the Ephemeral ID in /siteverify (ENT only).
 	EphemeralId pulumi.BoolOutput `pulumi:"ephemeralId"`
+	// Origin of the most recent mutation (create, update, delete, or
+	// secret rotation). Server-derived; not client-settable. Omitted for
+	// widgets last mutated before this field existed.
+	// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+	LastModifiedVia pulumi.StringOutput `pulumi:"lastModifiedVia"`
 	// Widget Mode
 	// Available values: "non-interactive", "invisible", "managed".
 	Mode pulumi.StringOutput `pulumi:"mode"`
@@ -155,10 +166,21 @@ type turnstileWidgetState struct {
 	// Available values: "noClearance", "jschallenge", "managed", "interactive".
 	ClearanceLevel *string `pulumi:"clearanceLevel"`
 	// When the widget was created.
-	CreatedOn *string  `pulumi:"createdOn"`
-	Domains   []string `pulumi:"domains"`
+	CreatedOn *string `pulumi:"createdOn"`
+	// Origin that created this widget, recorded at creation time and
+	// immutable afterward. Server-derived from the create request; not
+	// client-settable. Omitted from the response for widgets created
+	// before this field existed.
+	// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+	DeployedVia *string  `pulumi:"deployedVia"`
+	Domains     []string `pulumi:"domains"`
 	// Return the Ephemeral ID in /siteverify (ENT only).
 	EphemeralId *bool `pulumi:"ephemeralId"`
+	// Origin of the most recent mutation (create, update, delete, or
+	// secret rotation). Server-derived; not client-settable. Omitted for
+	// widgets last mutated before this field existed.
+	// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+	LastModifiedVia *string `pulumi:"lastModifiedVia"`
 	// Widget Mode
 	// Available values: "non-interactive", "invisible", "managed".
 	Mode *string `pulumi:"mode"`
@@ -191,9 +213,20 @@ type TurnstileWidgetState struct {
 	ClearanceLevel pulumi.StringPtrInput
 	// When the widget was created.
 	CreatedOn pulumi.StringPtrInput
-	Domains   pulumi.StringArrayInput
+	// Origin that created this widget, recorded at creation time and
+	// immutable afterward. Server-derived from the create request; not
+	// client-settable. Omitted from the response for widgets created
+	// before this field existed.
+	// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+	DeployedVia pulumi.StringPtrInput
+	Domains     pulumi.StringArrayInput
 	// Return the Ephemeral ID in /siteverify (ENT only).
 	EphemeralId pulumi.BoolPtrInput
+	// Origin of the most recent mutation (create, update, delete, or
+	// secret rotation). Server-derived; not client-settable. Omitted for
+	// widgets last mutated before this field existed.
+	// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+	LastModifiedVia pulumi.StringPtrInput
 	// Widget Mode
 	// Available values: "non-interactive", "invisible", "managed".
 	Mode pulumi.StringPtrInput
@@ -383,6 +416,15 @@ func (o TurnstileWidgetOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
+// Origin that created this widget, recorded at creation time and
+// immutable afterward. Server-derived from the create request; not
+// client-settable. Omitted from the response for widgets created
+// before this field existed.
+// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+func (o TurnstileWidgetOutput) DeployedVia() pulumi.StringOutput {
+	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringOutput { return v.DeployedVia }).(pulumi.StringOutput)
+}
+
 func (o TurnstileWidgetOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringArrayOutput { return v.Domains }).(pulumi.StringArrayOutput)
 }
@@ -390,6 +432,14 @@ func (o TurnstileWidgetOutput) Domains() pulumi.StringArrayOutput {
 // Return the Ephemeral ID in /siteverify (ENT only).
 func (o TurnstileWidgetOutput) EphemeralId() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TurnstileWidget) pulumi.BoolOutput { return v.EphemeralId }).(pulumi.BoolOutput)
+}
+
+// Origin of the most recent mutation (create, update, delete, or
+// secret rotation). Server-derived; not client-settable. Omitted for
+// widgets last mutated before this field existed.
+// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+func (o TurnstileWidgetOutput) LastModifiedVia() pulumi.StringOutput {
+	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringOutput { return v.LastModifiedVia }).(pulumi.StringOutput)
 }
 
 // Widget Mode

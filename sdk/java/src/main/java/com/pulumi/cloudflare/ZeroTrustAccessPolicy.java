@@ -18,6 +18,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -89,8 +90,12 @@ import javax.annotation.Nullable;
  *             .approvalRequired(true)
  *             .connectionRules(ZeroTrustAccessPolicyConnectionRulesArgs.builder()
  *                 .rdp(ZeroTrustAccessPolicyConnectionRulesRdpArgs.builder()
- *                     .allowedClipboardLocalToRemoteFormats("text")
- *                     .allowedClipboardRemoteToLocalFormats("text")
+ *                     .allowedClipboardLocalToRemoteFormats(                    
+ *                         "text",
+ *                         "file")
+ *                     .allowedClipboardRemoteToLocalFormats(                    
+ *                         "text",
+ *                         "file")
  *                     .build())
  *                 .build())
  *             .excludes(ZeroTrustAccessPolicyExcludeArgs.builder()
@@ -144,6 +149,20 @@ public class ZeroTrustAccessPolicy extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
+     * Number of access applications currently using this policy.
+     * 
+     */
+    @Export(name="appCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> appCount;
+
+    /**
+     * @return Number of access applications currently using this policy.
+     * 
+     */
+    public Output<Integer> appCount() {
+        return this.appCount;
+    }
+    /**
      * Administrators who can approve a temporary authentication request.
      * 
      */
@@ -185,6 +204,12 @@ public class ZeroTrustAccessPolicy extends com.pulumi.resources.CustomResource {
     public Output<Optional<ZeroTrustAccessPolicyConnectionRules>> connectionRules() {
         return Codegen.optional(this.connectionRules);
     }
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    public Output<String> createdAt() {
+        return this.createdAt;
+    }
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
      * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;nonIdentity&#34;, &#34;bypass&#34;.
@@ -206,14 +231,14 @@ public class ZeroTrustAccessPolicy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="excludes", refs={List.class,ZeroTrustAccessPolicyExclude.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ZeroTrustAccessPolicyExclude>> excludes;
+    private Output<List<ZeroTrustAccessPolicyExclude>> excludes;
 
     /**
      * @return Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      * 
      */
-    public Output<Optional<List<ZeroTrustAccessPolicyExclude>>> excludes() {
-        return Codegen.optional(this.excludes);
+    public Output<List<ZeroTrustAccessPolicyExclude>> excludes() {
+        return this.excludes;
     }
     /**
      * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
@@ -304,14 +329,20 @@ public class ZeroTrustAccessPolicy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="requires", refs={List.class,ZeroTrustAccessPolicyRequire.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ZeroTrustAccessPolicyRequire>> requires;
+    private Output<List<ZeroTrustAccessPolicyRequire>> requires;
 
     /**
      * @return Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      * 
      */
-    public Output<Optional<List<ZeroTrustAccessPolicyRequire>>> requires() {
-        return Codegen.optional(this.requires);
+    public Output<List<ZeroTrustAccessPolicyRequire>> requires() {
+        return this.requires;
+    }
+    @Export(name="reusable", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> reusable;
+
+    public Output<Boolean> reusable() {
+        return this.reusable;
     }
     /**
      * The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
@@ -326,6 +357,12 @@ public class ZeroTrustAccessPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<String> sessionDuration() {
         return this.sessionDuration;
+    }
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    private Output<String> updatedAt;
+
+    public Output<String> updatedAt() {
+        return this.updatedAt;
     }
 
     /**

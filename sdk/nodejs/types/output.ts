@@ -3818,6 +3818,10 @@ export interface AiSearchInstancePublicEndpointParams {
      * Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
      */
     customDomains?: string[];
+    /**
+     * When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+     */
+    defaultDomainEnabled: boolean;
     enabled: boolean;
     mcp: outputs.AiSearchInstancePublicEndpointParamsMcp;
     rateLimit?: outputs.AiSearchInstancePublicEndpointParamsRateLimit;
@@ -3861,10 +3865,10 @@ export interface AiSearchInstanceRetrievalOptions {
      */
     boostBies?: outputs.AiSearchInstanceRetrievalOptionsBoostBy[];
     /**
-     * Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.
+     * Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.
      * Available values: "and", "or".
      */
-    keywordMatchMode: string;
+    keywordMatchMode?: string;
 }
 
 export interface AiSearchInstanceRetrievalOptionsBoostBy {
@@ -3941,7 +3945,7 @@ export interface AiSearchInstanceSourceParamsWebCrawlerStoreOptions {
 
 export interface ApiShieldAuthIdCharacteristic {
     /**
-     * The name of the characteristic field, i.e., the header or cookie name. When using type "jwt", this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `tokenConfigId` is the ID of the token configuration used in validating the JWT, and `jsonPath` is a RFC 9535 JSONPath expression.
+     * The name of the characteristic field, i.e., the header or cookie name.
      */
     name: string;
     /**
@@ -4056,7 +4060,7 @@ export interface ApiShieldOperationFeaturesSchemaInfo {
      */
     activeSchema: outputs.ApiShieldOperationFeaturesSchemaInfoActiveSchema;
     /**
-     * True if a Cloudflare-provided learned schema is available for this endpoint.
+     * Deprecated. Always false.
      */
     learnedAvailable: boolean;
     /**
@@ -5069,7 +5073,7 @@ export interface DnsRecordData {
      */
     preference?: number;
     /**
-     * Priority.
+     * Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
      */
     priority?: number;
     /**
@@ -5105,7 +5109,7 @@ export interface DnsRecordData {
      */
     tag?: string;
     /**
-     * Target.
+     * A valid mail server hostname, or "." for a NULL MX record.
      */
     target?: string;
     /**
@@ -5961,7 +5965,7 @@ export interface GetAccountMemberPolicyResourceGroup {
      */
     name: string;
     /**
-     * The scope associated to the resource group
+     * A scope is a combination of scope objects which provides additional context.
      */
     scopes: outputs.GetAccountMemberPolicyResourceGroupScope[];
 }
@@ -6185,7 +6189,7 @@ export interface GetAccountMembersResultPolicyResourceGroup {
      */
     name: string;
     /**
-     * The scope associated to the resource group
+     * A scope is a combination of scope objects which provides additional context.
      */
     scopes: outputs.GetAccountMembersResultPolicyResourceGroupScope[];
 }
@@ -6541,7 +6545,7 @@ export interface GetAccountSubscriptionRatePlan {
     externallyManaged: boolean;
     /**
      * The ID of the rate plan.
-     * Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnt".
+     * Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnterprise".
      */
     id: string;
     /**
@@ -6586,6 +6590,10 @@ export interface GetAccountTokenFilter {
      * Available values: "asc", "desc".
      */
     direction?: string;
+    /**
+     * When true, includes recently-expired tokens in the response.
+     */
+    includeExpired: boolean;
 }
 
 export interface GetAccountTokenPolicy {
@@ -7441,6 +7449,10 @@ export interface GetAiSearchInstancePublicEndpointParams {
      * Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
      */
     customDomains: string[];
+    /**
+     * When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+     */
+    defaultDomainEnabled: boolean;
     enabled: boolean;
     mcp: outputs.GetAiSearchInstancePublicEndpointParamsMcp;
     rateLimit: outputs.GetAiSearchInstancePublicEndpointParamsRateLimit;
@@ -7519,7 +7531,7 @@ export interface GetAiSearchInstanceSourceParams {
 export interface GetAiSearchInstanceSourceParamsWebCrawler {
     parseOptions: outputs.GetAiSearchInstanceSourceParamsWebCrawlerParseOptions;
     /**
-     * Available values: "sitemap", "feed-rss", "crawl".
+     * Available values: "sitemap", "discover".
      */
     parseType: string;
     storeOptions: outputs.GetAiSearchInstanceSourceParamsWebCrawlerStoreOptions;
@@ -7683,6 +7695,10 @@ export interface GetAiSearchInstancesResultPublicEndpointParams {
      * Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
      */
     customDomains: string[];
+    /**
+     * When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+     */
+    defaultDomainEnabled: boolean;
     enabled: boolean;
     mcp: outputs.GetAiSearchInstancesResultPublicEndpointParamsMcp;
     rateLimit: outputs.GetAiSearchInstancesResultPublicEndpointParamsRateLimit;
@@ -7999,7 +8015,7 @@ export interface GetApiShieldOperationFeaturesSchemaInfo {
      */
     activeSchema: outputs.GetApiShieldOperationFeaturesSchemaInfoActiveSchema;
     /**
-     * True if a Cloudflare-provided learned schema is available for this endpoint.
+     * Deprecated. Always false.
      */
     learnedAvailable: boolean;
     /**
@@ -8254,7 +8270,7 @@ export interface GetApiShieldOperationsResultFeaturesSchemaInfo {
      */
     activeSchema: outputs.GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchema;
     /**
-     * True if a Cloudflare-provided learned schema is available for this endpoint.
+     * Deprecated. Always false.
      */
     learnedAvailable: boolean;
     /**
@@ -8365,6 +8381,10 @@ export interface GetApiTokenFilter {
      * Available values: "asc", "desc".
      */
     direction?: string;
+    /**
+     * When true, includes recently-expired tokens in the response.
+     */
+    includeExpired: boolean;
 }
 
 export interface GetApiTokenPermissionGroupsListResult {
@@ -9392,6 +9412,9 @@ export interface GetContentScanningExpressionsResult {
      * Defines the ruleset expression to use in matching content objects.
      */
     payload: string;
+}
+
+export interface GetCustomCsrFilter {
 }
 
 export interface GetCustomCsrsResult {
@@ -10530,7 +10553,7 @@ export interface GetDnsRecordData {
      */
     preference: number;
     /**
-     * Priority.
+     * Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
      */
     priority: number;
     /**
@@ -10566,7 +10589,7 @@ export interface GetDnsRecordData {
      */
     tag: string;
     /**
-     * Target.
+     * A valid mail server hostname, or "." for a NULL MX record.
      */
     target: string;
     /**
@@ -11463,11 +11486,20 @@ export interface GetEmailSecurityBlockSendersResult {
      */
     lastModified: string;
     modifiedAt: string;
+    /**
+     * The pattern value to match against. Format depends on `patternType`:
+     * - EMAIL: a valid email address, e.g. `user@example.com`
+     * - DOMAIN: a valid domain name, e.g. `example.com`
+     * - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+     */
     pattern: string;
     /**
      * Type of pattern matching.
-     * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
-     * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+     * - EMAIL: matches a full email address (e.g. `user@example.com`)
+     * - DOMAIN: matches a domain name (e.g. `example.com`)
+     * - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
+     * - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+     *   Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
      */
     patternType: string;
 }
@@ -12240,6 +12272,10 @@ export interface GetHyperdriveConfigsResult {
      * The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
      */
     originConnectionLimit: number;
+    /**
+     * Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
+     */
+    restartedOn: string;
 }
 
 export interface GetHyperdriveConfigsResultCaching {
@@ -16039,6 +16075,11 @@ export interface GetPagesProjectCanonicalDeployment {
      */
     shortId: string;
     /**
+     * Why the deployment was skipped.
+     * Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+     */
+    skipReason: string;
+    /**
      * Configs for the project source control.
      */
     source: outputs.GetPagesProjectCanonicalDeploymentSource;
@@ -16699,6 +16740,11 @@ export interface GetPagesProjectLatestDeployment {
      */
     shortId: string;
     /**
+     * Why the deployment was skipped.
+     * Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+     */
+    skipReason: string;
+    /**
      * Configs for the project source control.
      */
     source: outputs.GetPagesProjectLatestDeploymentSource;
@@ -17111,6 +17157,11 @@ export interface GetPagesProjectsResultCanonicalDeployment {
      * Short Id (8 character) of the deployment.
      */
     shortId: string;
+    /**
+     * Why the deployment was skipped.
+     * Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+     */
+    skipReason: string;
     /**
      * Configs for the project source control.
      */
@@ -17771,6 +17822,11 @@ export interface GetPagesProjectsResultLatestDeployment {
      * Short Id (8 character) of the deployment.
      */
     shortId: string;
+    /**
+     * Why the deployment was skipped.
+     * Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+     */
+    skipReason: string;
     /**
      * Configs for the project source control.
      */
@@ -18995,7 +19051,11 @@ export interface GetR2BucketSippySource {
      */
     bucketUrl: string;
     /**
-     * Available values: "aws", "gcs", "s3".
+     * Name of the Azure Blob Storage container (Azure only).
+     */
+    container: string;
+    /**
+     * Available values: "aws", "gcs", "s3", "azure".
      */
     r2BucketSippyProvider: string;
     /**
@@ -19463,7 +19523,7 @@ export interface GetResourceGroupsResult {
      */
     name: string;
     /**
-     * The scope associated to the resource group
+     * A scope is a combination of scope objects which provides additional context.
      */
     scopes: outputs.GetResourceGroupsResultScope[];
 }
@@ -19863,7 +19923,7 @@ export interface GetRulesetRuleActionParameters {
      */
     values: string[];
     /**
-     * Controls how cached responses vary based on request headers. At least one of `default` or `headers` must be set, and `default` is required when `headers` is set.
+     * Controls how cached responses vary based on request headers. `default` is required and applies to any Vary response header that does not have a per-header override.
      */
     vary: outputs.GetRulesetRuleActionParametersVary;
 }
@@ -20513,7 +20573,7 @@ export interface GetRulesetRuleActionParametersUriQuery {
 
 export interface GetRulesetRuleActionParametersVary {
     /**
-     * Controls how a single request header (or the default for all headers) contributes to the cache key.
+     * Controls how response Vary headers without a per-header override contribute to the cache key.
      */
     default: outputs.GetRulesetRuleActionParametersVaryDefault;
     /**
@@ -20729,45 +20789,45 @@ export interface GetSchemaValidationSchemasListResult {
 
 export interface GetSecretsStoreFilter {
     /**
-     * Direction to sort objects
+     * Direction to sort objects.
      * Available values: "asc", "desc".
      */
     direction: string;
     /**
-     * Order secrets by values in the given field
-     * Available values: "name", "comment", "created", "modified", "status".
+     * Order stores by values in the given field.
+     * Available values: "name", "created", "modified".
      */
     order: string;
 }
 
 export interface GetSecretsStoreSecretFilter {
     /**
-     * Direction to sort objects
+     * Direction to sort objects.
      * Available values: "asc", "desc".
      */
     direction: string;
     /**
-     * Order secrets by values in the given field
+     * Order secrets by values in the given field.
      * Available values: "name", "comment", "created", "modified", "status".
      */
     order: string;
     /**
-     * Only secrets with the given scopes will be returned
+     * Only secrets with the given scopes will be returned.
      */
-    scopes?: string[][];
+    scopes?: string[];
     /**
-     * Search secrets using a filter string, filtering across name and comment
+     * Search secrets using a filter string, filtering across name and comment.
      */
     search?: string;
 }
 
 export interface GetSecretsStoreSecretsResult {
     /**
-     * Freeform text describing the secret
+     * Freeform text describing the secret.
      */
     comment: string;
     /**
-     * Whenthe secret was created.
+     * When the secret was created.
      */
     created: string;
     /**
@@ -20779,7 +20839,7 @@ export interface GetSecretsStoreSecretsResult {
      */
     modified: string;
     /**
-     * The name of the secret
+     * The name of the secret.
      */
     name: string;
     /**
@@ -20791,22 +20851,22 @@ export interface GetSecretsStoreSecretsResult {
      */
     status: string;
     /**
-     * Store Identifier
+     * Store Identifier.
      */
     storeId: string;
 }
 
 export interface GetSecretsStoresResult {
     /**
-     * Account Identifier
+     * Account Identifier.
      */
     accountId: string;
     /**
-     * Whenthe secret was created.
+     * When the secret was created.
      */
     created: string;
     /**
-     * Store Identifier
+     * Store Identifier.
      */
     id: string;
     /**
@@ -20814,7 +20874,7 @@ export interface GetSecretsStoresResult {
      */
     modified: string;
     /**
-     * The name of the store
+     * The name of the store.
      */
     name: string;
 }
@@ -21848,7 +21908,7 @@ export interface GetTokenValidationConfigCredentials {
 export interface GetTokenValidationConfigCredentialsKey {
     /**
      * Algorithm
-     * Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384".
+     * Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384", "HS256", "HS384", "HS512".
      */
     alg: string;
     /**
@@ -21866,7 +21926,7 @@ export interface GetTokenValidationConfigCredentialsKey {
     kid: string;
     /**
      * Key Type
-     * Available values: "RSA", "EC".
+     * Available values: "RSA", "EC", "oct".
      */
     kty: string;
     /**
@@ -21907,7 +21967,7 @@ export interface GetTokenValidationConfigsResultCredentials {
 export interface GetTokenValidationConfigsResultCredentialsKey {
     /**
      * Algorithm
-     * Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384".
+     * Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384", "HS256", "HS384", "HS512".
      */
     alg: string;
     /**
@@ -21925,7 +21985,7 @@ export interface GetTokenValidationConfigsResultCredentialsKey {
     kid: string;
     /**
      * Key Type
-     * Available values: "RSA", "EC".
+     * Available values: "RSA", "EC", "oct".
      */
     kty: string;
     /**
@@ -22090,6 +22150,14 @@ export interface GetTurnstileWidgetsResult {
      * When the widget was created.
      */
     createdOn: string;
+    /**
+     * Origin that created this widget, recorded at creation time and
+     * immutable afterward. Server-derived from the create request; not
+     * client-settable. Omitted from the response for widgets created
+     * before this field existed.
+     * Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+     */
+    deployedVia: string;
     domains: string[];
     /**
      * Return the Ephemeral ID in /siteverify (ENT only).
@@ -22099,6 +22167,13 @@ export interface GetTurnstileWidgetsResult {
      * Widget item identifier tag.
      */
     id: string;
+    /**
+     * Origin of the most recent mutation (create, update, delete, or
+     * secret rotation). Server-derived; not client-settable. Omitted for
+     * widgets last mutated before this field existed.
+     * Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+     */
+    lastModifiedVia: string;
     /**
      * Widget Mode
      * Available values: "non-interactive", "invisible", "managed".
@@ -22280,7 +22355,7 @@ export interface GetUserGroupPolicyResourceGroup {
      */
     name: string;
     /**
-     * The scope associated to the resource group
+     * A scope is a combination of scope objects which provides additional context.
      */
     scopes: outputs.GetUserGroupPolicyResourceGroupScope[];
 }
@@ -22385,7 +22460,7 @@ export interface GetUserGroupsResultPolicyResourceGroup {
      */
     name: string;
     /**
-     * The scope associated to the resource group
+     * A scope is a combination of scope objects which provides additional context.
      */
     scopes: outputs.GetUserGroupsResultPolicyResourceGroupScope[];
 }
@@ -23478,6 +23553,60 @@ export interface GetWorkerVersionContainer {
     className: string;
 }
 
+export interface GetWorkerVersionExports {
+    /**
+     * Cache override for this entrypoint. It applies only to
+     * `type: worker` entries and overrides the Worker's global
+     * `cache_options.enabled` for that entrypoint.
+     */
+    cache: outputs.GetWorkerVersionExportsCache;
+    /**
+     * Destination class name for a `state: renamed` tombstone. The
+     * target must appear as a live (`created`) entry in the same
+     * `exports` map. Write-only: never present in GET responses.
+     */
+    renamedTo: string;
+    /**
+     * Lifecycle state of the export entry. Defaults to `created`
+     * (a normal, live export) when omitted.
+     */
+    state: string;
+    /**
+     * Storage backend for a `type: durable-object` export. Required
+     * for live Durable Object entries (`created` and
+     * `expecting-transfer`). `sqlite` selects SQLite-backed storage;
+     * `legacy-kv` selects the legacy key-value storage.
+     * Available values: "sqlite", "legacy-kv".
+     */
+    storage: string;
+    /**
+     * Source script for a `state: expecting-transfer` entry. The
+     * namespace on this script is materialised from the source
+     * script's data via the pending-transfer flow. Present on reads
+     * for `expecting-transfer` entries.
+     */
+    transferFrom: string;
+    /**
+     * Destination script for a `state: transferred` tombstone. Must
+     * reference a script in the same account; cross-dispatch-namespace
+     * transfers are rejected. Write-only: never present in GET
+     * responses.
+     */
+    transferredTo: string;
+    /**
+     * The kind of export.
+     * Available values: "worker", "durable-object".
+     */
+    type: string;
+}
+
+export interface GetWorkerVersionExportsCache {
+    /**
+     * Whether caching is enabled for this entrypoint.
+     */
+    enabled: boolean;
+}
+
 export interface GetWorkerVersionLimits {
     /**
      * CPU time limit in milliseconds.
@@ -23674,6 +23803,15 @@ export interface GetWorkerVersionsResult {
      * When the version was created.
      */
     createdOn: string;
+    /**
+     * Declarative exports for the version, including Durable Object
+     * classes (with their `storage` backend) and named Worker
+     * entrypoints. On reads, tombstoned lifecycle entries are
+     * omitted, so only live exports (`created` and
+     * `expecting-transfer`) are returned. `exports` and `migrations`
+     * are mutually exclusive on upload.
+     */
+    exports: {[key: string]: outputs.GetWorkerVersionsResultExports};
     /**
      * Version identifier.
      */
@@ -24025,6 +24163,60 @@ export interface GetWorkerVersionsResultContainer {
      * Select which Durable Object class should get this container attached.
      */
     className: string;
+}
+
+export interface GetWorkerVersionsResultExports {
+    /**
+     * Cache override for this entrypoint. It applies only to
+     * `type: worker` entries and overrides the Worker's global
+     * `cache_options.enabled` for that entrypoint.
+     */
+    cache: outputs.GetWorkerVersionsResultExportsCache;
+    /**
+     * Destination class name for a `state: renamed` tombstone. The
+     * target must appear as a live (`created`) entry in the same
+     * `exports` map. Write-only: never present in GET responses.
+     */
+    renamedTo: string;
+    /**
+     * Lifecycle state of the export entry. Defaults to `created`
+     * (a normal, live export) when omitted.
+     */
+    state: string;
+    /**
+     * Storage backend for a `type: durable-object` export. Required
+     * for live Durable Object entries (`created` and
+     * `expecting-transfer`). `sqlite` selects SQLite-backed storage;
+     * `legacy-kv` selects the legacy key-value storage.
+     * Available values: "sqlite", "legacy-kv".
+     */
+    storage: string;
+    /**
+     * Source script for a `state: expecting-transfer` entry. The
+     * namespace on this script is materialised from the source
+     * script's data via the pending-transfer flow. Present on reads
+     * for `expecting-transfer` entries.
+     */
+    transferFrom: string;
+    /**
+     * Destination script for a `state: transferred` tombstone. Must
+     * reference a script in the same account; cross-dispatch-namespace
+     * transfers are rejected. Write-only: never present in GET
+     * responses.
+     */
+    transferredTo: string;
+    /**
+     * The kind of export.
+     * Available values: "worker", "durable-object".
+     */
+    type: string;
+}
+
+export interface GetWorkerVersionsResultExportsCache {
+    /**
+     * Whether caching is enabled for this entrypoint.
+     */
+    enabled: boolean;
 }
 
 export interface GetWorkerVersionsResultLimits {
@@ -24616,6 +24808,14 @@ export interface GetWorkersScriptsResult {
      */
     etag: string;
     /**
+     * Declarative exports for the Worker's most recent version,
+     * including Durable Object classes (with their `storage`
+     * backend) and named Worker entrypoints. Tombstoned lifecycle
+     * entries are omitted, so only live exports (`created` and
+     * `expecting-transfer`) are returned.
+     */
+    exports: {[key: string]: outputs.GetWorkersScriptsResultExports};
+    /**
      * The names of handlers exported as part of the default export.
      */
     handlers: string[];
@@ -24704,6 +24904,60 @@ export interface GetWorkersScriptsResultCacheOptions {
     crossVersionCache: boolean;
     /**
      * Whether caching is enabled for this Worker.
+     */
+    enabled: boolean;
+}
+
+export interface GetWorkersScriptsResultExports {
+    /**
+     * Cache override for this entrypoint. It applies only to
+     * `type: worker` entries and overrides the Worker's global
+     * `cache_options.enabled` for that entrypoint.
+     */
+    cache: outputs.GetWorkersScriptsResultExportsCache;
+    /**
+     * Destination class name for a `state: renamed` tombstone. The
+     * target must appear as a live (`created`) entry in the same
+     * `exports` map. Write-only: never present in GET responses.
+     */
+    renamedTo: string;
+    /**
+     * Lifecycle state of the export entry. Defaults to `created`
+     * (a normal, live export) when omitted.
+     */
+    state: string;
+    /**
+     * Storage backend for a `type: durable-object` export. Required
+     * for live Durable Object entries (`created` and
+     * `expecting-transfer`). `sqlite` selects SQLite-backed storage;
+     * `legacy-kv` selects the legacy key-value storage.
+     * Available values: "sqlite", "legacy-kv".
+     */
+    storage: string;
+    /**
+     * Source script for a `state: expecting-transfer` entry. The
+     * namespace on this script is materialised from the source
+     * script's data via the pending-transfer flow. Present on reads
+     * for `expecting-transfer` entries.
+     */
+    transferFrom: string;
+    /**
+     * Destination script for a `state: transferred` tombstone. Must
+     * reference a script in the same account; cross-dispatch-namespace
+     * transfers are rejected. Write-only: never present in GET
+     * responses.
+     */
+    transferredTo: string;
+    /**
+     * The kind of export.
+     * Available values: "worker", "durable-object".
+     */
+    type: string;
+}
+
+export interface GetWorkersScriptsResultExportsCache {
+    /**
+     * Whether caching is enabled for this entrypoint.
      */
     enabled: boolean;
 }
@@ -24925,6 +25179,10 @@ export interface GetZeroTrustAccessAiControlsMcpPortalFilter {
 
 export interface GetZeroTrustAccessAiControlsMcpPortalServer {
     /**
+     * Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
+     */
+    authConfigSummary: outputs.GetZeroTrustAccessAiControlsMcpPortalServerAuthConfigSummary;
+    /**
      * Available values: "oauth", "bearer", "unauthenticated".
      */
     authType: string;
@@ -24958,10 +25216,40 @@ export interface GetZeroTrustAccessAiControlsMcpPortalServer {
      * server id
      */
     serverId: string;
+    /**
+     * Current sync state of the server
+     * Available values: "waiting", "ready", "stale", "error".
+     */
     status: string;
     tools: {[key: string]: string}[];
     updatedPrompts: outputs.GetZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt[];
     updatedTools: outputs.GetZeroTrustAccessAiControlsMcpPortalServerUpdatedTool[];
+}
+
+export interface GetZeroTrustAccessAiControlsMcpPortalServerAuthConfigSummary {
+    /**
+     * Available values: "dcr", "manual".
+     */
+    authMode: string;
+    clientSecretVersion: number;
+    config: outputs.GetZeroTrustAccessAiControlsMcpPortalServerAuthConfigSummaryConfig;
+    hasClientSecret: boolean;
+    registrationInfo: outputs.GetZeroTrustAccessAiControlsMcpPortalServerAuthConfigSummaryRegistrationInfo;
+}
+
+export interface GetZeroTrustAccessAiControlsMcpPortalServerAuthConfigSummaryConfig {
+    authorizationEndpoint: string;
+    issuer: string;
+    resource: string;
+    revocationEndpoint: string;
+    tokenEndpoint: string;
+}
+
+export interface GetZeroTrustAccessAiControlsMcpPortalServerAuthConfigSummaryRegistrationInfo {
+    clientId: string;
+    redirectUris: string[];
+    scope: string;
+    tokenEndpointAuthMethod: string;
 }
 
 export interface GetZeroTrustAccessAiControlsMcpPortalServerErrorDetails {
@@ -25030,6 +25318,10 @@ export interface GetZeroTrustAccessAiControlsMcpPortalsResult {
 
 export interface GetZeroTrustAccessAiControlsMcpPortalsResultServer {
     /**
+     * Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
+     */
+    authConfigSummary: outputs.GetZeroTrustAccessAiControlsMcpPortalsResultServerAuthConfigSummary;
+    /**
      * Available values: "oauth", "bearer", "unauthenticated".
      */
     authType: string;
@@ -25063,10 +25355,40 @@ export interface GetZeroTrustAccessAiControlsMcpPortalsResultServer {
      * server id
      */
     serverId: string;
+    /**
+     * Current sync state of the server
+     * Available values: "waiting", "ready", "stale", "error".
+     */
     status: string;
     tools: {[key: string]: string}[];
     updatedPrompts: outputs.GetZeroTrustAccessAiControlsMcpPortalsResultServerUpdatedPrompt[];
     updatedTools: outputs.GetZeroTrustAccessAiControlsMcpPortalsResultServerUpdatedTool[];
+}
+
+export interface GetZeroTrustAccessAiControlsMcpPortalsResultServerAuthConfigSummary {
+    /**
+     * Available values: "dcr", "manual".
+     */
+    authMode: string;
+    clientSecretVersion: number;
+    config: outputs.GetZeroTrustAccessAiControlsMcpPortalsResultServerAuthConfigSummaryConfig;
+    hasClientSecret: boolean;
+    registrationInfo: outputs.GetZeroTrustAccessAiControlsMcpPortalsResultServerAuthConfigSummaryRegistrationInfo;
+}
+
+export interface GetZeroTrustAccessAiControlsMcpPortalsResultServerAuthConfigSummaryConfig {
+    authorizationEndpoint: string;
+    issuer: string;
+    resource: string;
+    revocationEndpoint: string;
+    tokenEndpoint: string;
+}
+
+export interface GetZeroTrustAccessAiControlsMcpPortalsResultServerAuthConfigSummaryRegistrationInfo {
+    clientId: string;
+    redirectUris: string[];
+    scope: string;
+    tokenEndpointAuthMethod: string;
 }
 
 export interface GetZeroTrustAccessAiControlsMcpPortalsResultServerErrorDetails {
@@ -25108,6 +25430,32 @@ export interface GetZeroTrustAccessAiControlsMcpPortalsResultServerUpdatedTool {
     portalDescription: string;
     serverAlias: string;
     serverDescription: string;
+}
+
+export interface GetZeroTrustAccessAiControlsMcpServerAuthConfigSummary {
+    /**
+     * Available values: "dcr", "manual".
+     */
+    authMode: string;
+    clientSecretVersion: number;
+    config: outputs.GetZeroTrustAccessAiControlsMcpServerAuthConfigSummaryConfig;
+    hasClientSecret: boolean;
+    registrationInfo: outputs.GetZeroTrustAccessAiControlsMcpServerAuthConfigSummaryRegistrationInfo;
+}
+
+export interface GetZeroTrustAccessAiControlsMcpServerAuthConfigSummaryConfig {
+    authorizationEndpoint: string;
+    issuer: string;
+    resource: string;
+    revocationEndpoint: string;
+    tokenEndpoint: string;
+}
+
+export interface GetZeroTrustAccessAiControlsMcpServerAuthConfigSummaryRegistrationInfo {
+    clientId: string;
+    redirectUris: string[];
+    scope: string;
+    tokenEndpointAuthMethod: string;
 }
 
 export interface GetZeroTrustAccessAiControlsMcpServerErrorDetails {
@@ -25156,6 +25504,10 @@ export interface GetZeroTrustAccessAiControlsMcpServerUpdatedTool {
 
 export interface GetZeroTrustAccessAiControlsMcpServersResult {
     /**
+     * Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
+     */
+    authConfigSummary: outputs.GetZeroTrustAccessAiControlsMcpServersResultAuthConfigSummary;
+    /**
      * Available values: "oauth", "bearer", "unauthenticated".
      */
     authType: string;
@@ -25183,10 +25535,40 @@ export interface GetZeroTrustAccessAiControlsMcpServersResult {
      * Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
      */
     secureWebGateway: boolean;
+    /**
+     * Current sync state of the server
+     * Available values: "waiting", "ready", "stale", "error".
+     */
     status: string;
     tools: {[key: string]: string}[];
     updatedPrompts: outputs.GetZeroTrustAccessAiControlsMcpServersResultUpdatedPrompt[];
     updatedTools: outputs.GetZeroTrustAccessAiControlsMcpServersResultUpdatedTool[];
+}
+
+export interface GetZeroTrustAccessAiControlsMcpServersResultAuthConfigSummary {
+    /**
+     * Available values: "dcr", "manual".
+     */
+    authMode: string;
+    clientSecretVersion: number;
+    config: outputs.GetZeroTrustAccessAiControlsMcpServersResultAuthConfigSummaryConfig;
+    hasClientSecret: boolean;
+    registrationInfo: outputs.GetZeroTrustAccessAiControlsMcpServersResultAuthConfigSummaryRegistrationInfo;
+}
+
+export interface GetZeroTrustAccessAiControlsMcpServersResultAuthConfigSummaryConfig {
+    authorizationEndpoint: string;
+    issuer: string;
+    resource: string;
+    revocationEndpoint: string;
+    tokenEndpoint: string;
+}
+
+export interface GetZeroTrustAccessAiControlsMcpServersResultAuthConfigSummaryRegistrationInfo {
+    clientId: string;
+    redirectUris: string[];
+    scope: string;
+    tokenEndpointAuthMethod: string;
 }
 
 export interface GetZeroTrustAccessAiControlsMcpServersResultErrorDetails {
@@ -32327,7 +32709,7 @@ export interface GetZeroTrustAccessServiceTokensResult {
      */
     clientId: string;
     /**
-     * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+     * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      */
     duration: string;
     expiresAt: string;
@@ -33129,6 +33511,10 @@ export interface GetZeroTrustDevicePostureRulesResult {
      */
     description: string;
     /**
+     * Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issueCount input, and true otherwise.
+     */
+    enabled: boolean;
+    /**
      * Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
      */
     expiration: string;
@@ -33359,6 +33745,17 @@ export interface GetZeroTrustDevicePostureRulesResultMatch {
     platform: string;
 }
 
+export interface GetZeroTrustDeviceSubnetCapacity {
+    /**
+     * Total number of assignable IPs in the subnet.
+     */
+    total: number;
+    /**
+     * Number of assigned IPs in the subnet.
+     */
+    used: number;
+}
+
 export interface GetZeroTrustDexRuleTargetedTest {
     /**
      * The configuration object which contains the details for the WARP client to conduct the test.
@@ -33476,6 +33873,10 @@ export interface GetZeroTrustDexTestTargetPolicy {
 
 export interface GetZeroTrustDexTestsResult {
     /**
+     * Date the test was created, in RFC 3339 format.
+     */
+    created: string;
+    /**
      * The configuration object which contains the details for the WARP client to conduct the test.
      */
     data: outputs.GetZeroTrustDexTestsResultData;
@@ -33508,6 +33909,10 @@ export interface GetZeroTrustDexTestsResult {
      * The unique identifier for the test.
      */
     testId: string;
+    /**
+     * Date the test was last updated, in RFC 3339 format.
+     */
+    updated: string;
 }
 
 export interface GetZeroTrustDexTestsResultData {
@@ -33800,6 +34205,23 @@ export interface GetZeroTrustDlpCustomProfileSharedEntryVariant {
      * Available values: "PromptTopic", "General".
      */
     type: string;
+}
+
+export interface GetZeroTrustDlpCustomPromptTopicsResult {
+    createdAt: string;
+    description: string;
+    /**
+     * @deprecated This attribute is deprecated.
+     */
+    enabled: boolean;
+    id: string;
+    name: string;
+    /**
+     * @deprecated This attribute is deprecated.
+     */
+    profileId: string;
+    topic: string;
+    updatedAt: string;
 }
 
 export interface GetZeroTrustDlpDataClassSensitivityLevel {
@@ -34874,7 +35296,7 @@ export interface GetZeroTrustGatewayPoliciesResultExpiration {
 
 export interface GetZeroTrustGatewayPoliciesResultRuleSettings {
     /**
-     * Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.
+     * Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.
      */
     addHeaders: {[key: string]: string[]};
     /**
@@ -34909,6 +35331,10 @@ export interface GetZeroTrustGatewayPoliciesResultRuleSettings {
      * Configure session check behavior. Settable only for `l4` and `http` rules with the action set to `allow`.
      */
     checkSession: outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsCheckSession;
+    /**
+     * Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.
+     */
+    deleteHeaders: string[];
     /**
      * Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
      */
@@ -34973,6 +35399,10 @@ export interface GetZeroTrustGatewayPoliciesResultRuleSettings {
      * Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot set when 'dns*resolvers' specified or 'resolve*dns_internally' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
      */
     resolveDnsThroughCloudflare: boolean;
+    /**
+     * Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.
+     */
+    setHeaders: {[key: string]: string[]};
     /**
      * Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.
      */
@@ -35266,7 +35696,7 @@ export interface GetZeroTrustGatewayPolicyExpiration {
 
 export interface GetZeroTrustGatewayPolicyRuleSettings {
     /**
-     * Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.
+     * Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.
      */
     addHeaders: {[key: string]: string[]};
     /**
@@ -35301,6 +35731,10 @@ export interface GetZeroTrustGatewayPolicyRuleSettings {
      * Configure session check behavior. Settable only for `l4` and `http` rules with the action set to `allow`.
      */
     checkSession: outputs.GetZeroTrustGatewayPolicyRuleSettingsCheckSession;
+    /**
+     * Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.
+     */
+    deleteHeaders: string[];
     /**
      * Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
      */
@@ -35365,6 +35799,10 @@ export interface GetZeroTrustGatewayPolicyRuleSettings {
      * Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot set when 'dns*resolvers' specified or 'resolve*dns_internally' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
      */
     resolveDnsThroughCloudflare: boolean;
+    /**
+     * Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.
+     */
+    setHeaders: {[key: string]: string[]};
     /**
      * Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.
      */
@@ -40771,6 +41209,14 @@ export interface R2BucketSippySource {
      */
     accessKeyId?: string;
     /**
+     * Access key for the Azure Storage account. Mutually exclusive with `sasToken`.
+     */
+    accountKey?: string;
+    /**
+     * Name of the Azure Storage account.
+     */
+    accountName?: string;
+    /**
      * Name of the AWS S3 bucket.
      */
     bucket?: string;
@@ -40783,9 +41229,13 @@ export interface R2BucketSippySource {
      */
     clientEmail?: string;
     /**
-     * Available values: "aws", "gcs", "s3".
+     * Available values: "aws", "gcs", "s3", "azure".
      */
     cloudProvider?: string;
+    /**
+     * Name of the Azure Blob Storage container.
+     */
+    container?: string;
     /**
      * Private Key of an IAM credential (ideally scoped to a single GCS bucket).
      */
@@ -40794,6 +41244,10 @@ export interface R2BucketSippySource {
      * Name of the AWS availability zone.
      */
     region?: string;
+    /**
+     * Shared Access Signature token for the Azure Storage account. Mutually exclusive with `accountKey`.
+     */
+    sasToken?: string;
     /**
      * Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
      */
@@ -41033,7 +41487,7 @@ export interface RecordData {
      */
     preference?: number;
     /**
-     * Priority.
+     * Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
      */
     priority?: number;
     /**
@@ -41069,7 +41523,7 @@ export interface RecordData {
      */
     tag?: string;
     /**
-     * Target.
+     * A valid mail server hostname, or "." for a NULL MX record.
      */
     target?: string;
     /**
@@ -43053,6 +43507,10 @@ export interface TeamsRuleRuleSettings {
      */
     checkSession?: outputs.TeamsRuleRuleSettingsCheckSession;
     /**
+     * Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.
+     */
+    deleteHeaders?: string[];
+    /**
      * Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
      */
     dnsResolvers?: outputs.TeamsRuleRuleSettingsDnsResolvers;
@@ -43116,6 +43574,10 @@ export interface TeamsRuleRuleSettings {
      * Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot set when 'dns*resolvers' specified or 'resolve*dns_internally' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
      */
     resolveDnsThroughCloudflare?: boolean;
+    /**
+     * Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.
+     */
+    setHeaders?: {[key: string]: string[]};
     /**
      * Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.
      */
@@ -43399,7 +43861,7 @@ export interface TokenValidationConfigCredentials {
 export interface TokenValidationConfigCredentialsKey {
     /**
      * Algorithm
-     * Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384".
+     * Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384", "HS256", "HS384", "HS512".
      */
     alg: string;
     /**
@@ -43412,12 +43874,16 @@ export interface TokenValidationConfigCredentialsKey {
      */
     e?: string;
     /**
+     * Symmetric key material. Required for create and PUT update requests.
+     */
+    k?: string;
+    /**
      * Key ID
      */
     kid: string;
     /**
      * Key Type
-     * Available values: "RSA", "EC".
+     * Available values: "RSA", "EC", "oct".
      */
     kty: string;
     /**
@@ -44906,6 +45372,60 @@ export interface WorkerVersionContainer {
     className: string;
 }
 
+export interface WorkerVersionExports {
+    /**
+     * Cache override for this entrypoint. It applies only to
+     * `type: worker` entries and overrides the Worker's global
+     * `cache_options.enabled` for that entrypoint.
+     */
+    cache?: outputs.WorkerVersionExportsCache;
+    /**
+     * Destination class name for a `state: renamed` tombstone. The
+     * target must appear as a live (`created`) entry in the same
+     * `exports` map. Write-only: never present in GET responses.
+     */
+    renamedTo?: string;
+    /**
+     * Lifecycle state of the export entry. Defaults to `created`
+     * (a normal, live export) when omitted.
+     */
+    state?: string;
+    /**
+     * Storage backend for a `type: durable-object` export. Required
+     * for live Durable Object entries (`created` and
+     * `expecting-transfer`). `sqlite` selects SQLite-backed storage;
+     * `legacy-kv` selects the legacy key-value storage.
+     * Available values: "sqlite", "legacy-kv".
+     */
+    storage?: string;
+    /**
+     * Source script for a `state: expecting-transfer` entry. The
+     * namespace on this script is materialised from the source
+     * script's data via the pending-transfer flow. Present on reads
+     * for `expecting-transfer` entries.
+     */
+    transferFrom?: string;
+    /**
+     * Destination script for a `state: transferred` tombstone. Must
+     * reference a script in the same account; cross-dispatch-namespace
+     * transfers are rejected. Write-only: never present in GET
+     * responses.
+     */
+    transferredTo?: string;
+    /**
+     * The kind of export.
+     * Available values: "worker", "durable-object".
+     */
+    type: string;
+}
+
+export interface WorkerVersionExportsCache {
+    /**
+     * Whether caching is enabled for this entrypoint.
+     */
+    enabled: boolean;
+}
+
 export interface WorkerVersionLimits {
     /**
      * CPU time limit in milliseconds.
@@ -45650,6 +46170,17 @@ export interface WorkersScriptTailConsumer {
     service: string;
 }
 
+export interface WorkflowDefaultRetention {
+    /**
+     * Specifies the duration in milliseconds or as a string like '5 minutes'.
+     */
+    errorRetention?: any;
+    /**
+     * Specifies the duration in milliseconds or as a string like '5 minutes'.
+     */
+    successRetention?: any;
+}
+
 export interface WorkflowInstances {
     complete: number;
     errored: number;
@@ -45693,6 +46224,32 @@ export interface ZeroTrustAccessAiControlsMcpPortalServerUpdatedTool {
     description?: string;
     enabled?: boolean;
     name: string;
+}
+
+export interface ZeroTrustAccessAiControlsMcpServerAuthConfigSummary {
+    /**
+     * Available values: "dcr", "manual".
+     */
+    authMode: string;
+    clientSecretVersion: number;
+    config: outputs.ZeroTrustAccessAiControlsMcpServerAuthConfigSummaryConfig;
+    hasClientSecret: boolean;
+    registrationInfo: outputs.ZeroTrustAccessAiControlsMcpServerAuthConfigSummaryRegistrationInfo;
+}
+
+export interface ZeroTrustAccessAiControlsMcpServerAuthConfigSummaryConfig {
+    authorizationEndpoint: string;
+    issuer: string;
+    resource: string;
+    revocationEndpoint: string;
+    tokenEndpoint: string;
+}
+
+export interface ZeroTrustAccessAiControlsMcpServerAuthConfigSummaryRegistrationInfo {
+    clientId: string;
+    redirectUris: string[];
+    scope: string;
+    tokenEndpointAuthMethod: string;
 }
 
 export interface ZeroTrustAccessAiControlsMcpServerErrorDetails {
@@ -48857,6 +49414,25 @@ export interface ZeroTrustDeviceCustomProfileFallbackDomain {
     suffix: string;
 }
 
+export interface ZeroTrustDeviceCustomProfileGlobalAcceleration {
+    /**
+     * IP:port entries for the API endpoints.
+     */
+    apiEndpoints: string[];
+    /**
+     * Global acceleration settings are used only when "enabled".
+     */
+    enabled: boolean;
+    /**
+     * IP:port entries for the MASQUE tunnel endpoints. Either wireguard*endpoints or masque*endpoints must be provided.
+     */
+    masqueEndpoints: string[];
+    /**
+     * IP:port entries for the WireGuard tunnel endpoints. Either wireguard*endpoints or masque*endpoints must be provided.
+     */
+    wireguardEndpoints: string[];
+}
+
 export interface ZeroTrustDeviceCustomProfileInclude {
     /**
      * The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
@@ -48959,6 +49535,25 @@ export interface ZeroTrustDeviceDefaultProfileFallbackDomain {
      * The domain suffix to match when resolving locally.
      */
     suffix: string;
+}
+
+export interface ZeroTrustDeviceDefaultProfileGlobalAcceleration {
+    /**
+     * IP:port entries for the API endpoints.
+     */
+    apiEndpoints: string[];
+    /**
+     * Global acceleration settings are used only when "enabled".
+     */
+    enabled: boolean;
+    /**
+     * IP:port entries for the MASQUE tunnel endpoints. Either wireguard*endpoints or masque*endpoints must be provided.
+     */
+    masqueEndpoints: string[];
+    /**
+     * IP:port entries for the WireGuard tunnel endpoints. Either wireguard*endpoints or masque*endpoints must be provided.
+     */
+    wireguardEndpoints: string[];
 }
 
 export interface ZeroTrustDeviceDefaultProfileInclude {
@@ -49268,6 +49863,17 @@ export interface ZeroTrustDevicePostureRuleMatch {
      * Available values: "windows", "mac", "linux", "android", "ios", "chromeos".
      */
     platform?: string;
+}
+
+export interface ZeroTrustDeviceSubnetCapacity {
+    /**
+     * Total number of assignable IPs in the subnet.
+     */
+    total: number;
+    /**
+     * Number of assigned IPs in the subnet.
+     */
+    used: number;
 }
 
 export interface ZeroTrustDexRuleTargetedTest {
@@ -49842,6 +50448,10 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
      */
     checkSession?: outputs.ZeroTrustGatewayPolicyRuleSettingsCheckSession;
     /**
+     * Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.
+     */
+    deleteHeaders?: string[];
+    /**
      * Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
      */
     dnsResolvers?: outputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolvers;
@@ -49905,6 +50515,10 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
      * Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot set when 'dns*resolvers' specified or 'resolve*dns_internally' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
      */
     resolveDnsThroughCloudflare?: boolean;
+    /**
+     * Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.
+     */
+    setHeaders?: {[key: string]: string[]};
     /**
      * Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.
      */

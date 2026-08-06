@@ -29,7 +29,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleLoadBalancers = Cloudflare.GetLoadBalancers.Invoke(new()
         ///     {
-        ///         ZoneId = "699d98642c564d2e855e9661899b7252",
+        ///         ZoneId = "zone_id",
         ///     });
         /// 
         /// });
@@ -56,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleLoadBalancers = Cloudflare.GetLoadBalancers.Invoke(new()
         ///     {
-        ///         ZoneId = "699d98642c564d2e855e9661899b7252",
+        ///         ZoneId = "zone_id",
         ///     });
         /// 
         /// });
@@ -83,7 +83,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleLoadBalancers = Cloudflare.GetLoadBalancers.Invoke(new()
         ///     {
-        ///         ZoneId = "699d98642c564d2e855e9661899b7252",
+        ///         ZoneId = "zone_id",
         ///     });
         /// 
         /// });

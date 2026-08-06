@@ -65,6 +65,10 @@ import * as utilities from "./utilities";
  *             duration: "300s",
  *             enforce: true,
  *         },
+ *         deleteHeaders: [
+ *             "X-Old-Header",
+ *             "X-Remove-Me",
+ *         ],
  *         dnsResolvers: {
  *             ipv4s: [{
  *                 ip: "2.2.2.2",
@@ -122,6 +126,9 @@ import * as utilities from "./utilities";
  *             viewId: "view_id",
  *         },
  *         resolveDnsThroughCloudflare: true,
+ *         setHeaders: {
+ *             "X-User-Identity": ["user=@{identity.name}"],
+ *         },
  *         untrustedCert: {
  *             action: "error",
  *         },

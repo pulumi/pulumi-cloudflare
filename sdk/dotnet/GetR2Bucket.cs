@@ -144,7 +144,7 @@ namespace Pulumi.Cloudflare
         public readonly string Id;
         /// <summary>
         /// Jurisdiction where objects in this bucket are guaranteed to be stored.
-        /// Available values: "default", "eu", "fedramp".
+        /// Available values: "default", "eu", "fedramp", "us".
         /// </summary>
         public readonly string Jurisdiction;
         /// <summary>

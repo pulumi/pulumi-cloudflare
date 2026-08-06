@@ -132,7 +132,7 @@ class GetDnsRecordResult:
     @pulumi.getter
     def data(self) -> 'outputs.GetDnsRecordDataResult':
         """
-        Components of a CAA record.
+        Components of a MX record.
         """
         return pulumi.get(self, "data")
 

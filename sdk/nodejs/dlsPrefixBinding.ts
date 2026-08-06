@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `DLS: Read`
+ * - `DLS: Write`
+ * - `IP Prefixes: Write`
+ *
  * ## Example Usage
  *
  * ```typescript

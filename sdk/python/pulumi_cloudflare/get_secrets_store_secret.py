@@ -66,16 +66,13 @@ class GetSecretsStoreSecretResult:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
-        """
-        Account Identifier
-        """
         return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter
     def comment(self) -> _builtins.str:
         """
-        Freeform text describing the secret
+        Freeform text describing the secret.
         """
         return pulumi.get(self, "comment")
 
@@ -83,7 +80,7 @@ class GetSecretsStoreSecretResult:
     @pulumi.getter
     def created(self) -> _builtins.str:
         """
-        Whenthe secret was created.
+        When the secret was created.
         """
         return pulumi.get(self, "created")
 
@@ -96,7 +93,7 @@ class GetSecretsStoreSecretResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Secret identifier tag.
+        The ID of this resource.
         """
         return pulumi.get(self, "id")
 
@@ -112,7 +109,7 @@ class GetSecretsStoreSecretResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the secret
+        The name of the secret.
         """
         return pulumi.get(self, "name")
 
@@ -127,9 +124,6 @@ class GetSecretsStoreSecretResult:
     @_builtins.property
     @pulumi.getter(name="secretId")
     def secret_id(self) -> Optional[_builtins.str]:
-        """
-        Secret identifier tag.
-        """
         return pulumi.get(self, "secret_id")
 
     @_builtins.property
@@ -143,9 +137,6 @@ class GetSecretsStoreSecretResult:
     @_builtins.property
     @pulumi.getter(name="storeId")
     def store_id(self) -> _builtins.str:
-        """
-        Store Identifier
-        """
         return pulumi.get(self, "store_id")
 
 
@@ -189,11 +180,6 @@ def get_secrets_store_secret(account_id: Optional[_builtins.str] = None,
         store_id="023e105f4ecef8ad9ca31a8372d0c353",
         secret_id="3fd85f74b32742f1bff64a85009dda07")
     ```
-
-
-    :param _builtins.str account_id: Account Identifier
-    :param _builtins.str secret_id: Secret identifier tag.
-    :param _builtins.str store_id: Store Identifier
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -236,11 +222,6 @@ def get_secrets_store_secret_output(account_id: pulumi.Input[Optional[_builtins.
         store_id="023e105f4ecef8ad9ca31a8372d0c353",
         secret_id="3fd85f74b32742f1bff64a85009dda07")
     ```
-
-
-    :param _builtins.str account_id: Account Identifier
-    :param _builtins.str secret_id: Secret identifier tag.
-    :param _builtins.str store_id: Store Identifier
     """
     __args__ = dict()
     __args__['accountId'] = account_id

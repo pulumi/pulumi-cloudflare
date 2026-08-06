@@ -56,6 +56,8 @@ type LookupApiTokensArgs struct {
 	// Direction to order results.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
+	// When true, includes recently-expired tokens in the response.
+	IncludeExpired *bool `pulumi:"includeExpired"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
@@ -65,6 +67,8 @@ type LookupApiTokensResult struct {
 	// Direction to order results.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
+	// When true, includes recently-expired tokens in the response.
+	IncludeExpired bool `pulumi:"includeExpired"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -85,6 +89,8 @@ type LookupApiTokensOutputArgs struct {
 	// Direction to order results.
 	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// When true, includes recently-expired tokens in the response.
+	IncludeExpired pulumi.BoolPtrInput `pulumi:"includeExpired"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -112,6 +118,11 @@ func (o LookupApiTokensResultOutput) ToLookupApiTokensResultOutputWithContext(ct
 // Available values: "asc", "desc".
 func (o LookupApiTokensResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApiTokensResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// When true, includes recently-expired tokens in the response.
+func (o LookupApiTokensResultOutput) IncludeExpired() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupApiTokensResult) bool { return v.IncludeExpired }).(pulumi.BoolOutput)
 }
 
 // Max items to fetch, default: 1000

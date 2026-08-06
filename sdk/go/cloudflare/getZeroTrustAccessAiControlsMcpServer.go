@@ -63,6 +63,8 @@ type LookupZeroTrustAccessAiControlsMcpServerArgs struct {
 // A collection of values returned by getZeroTrustAccessAiControlsMcpServer.
 type LookupZeroTrustAccessAiControlsMcpServerResult struct {
 	AccountId *string `pulumi:"accountId"`
+	// Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
+	AuthConfigSummary GetZeroTrustAccessAiControlsMcpServerAuthConfigSummary `pulumi:"authConfigSummary"`
 	// Available values: "oauth", "bearer", "unauthenticated".
 	AuthType     string                                            `pulumi:"authType"`
 	CreatedAt    string                                            `pulumi:"createdAt"`
@@ -83,11 +85,13 @@ type LookupZeroTrustAccessAiControlsMcpServerResult struct {
 	Name                         string              `pulumi:"name"`
 	Prompts                      []map[string]string `pulumi:"prompts"`
 	// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
-	SecureWebGateway bool                                                 `pulumi:"secureWebGateway"`
-	Status           string                                               `pulumi:"status"`
-	Tools            []map[string]string                                  `pulumi:"tools"`
-	UpdatedPrompts   []GetZeroTrustAccessAiControlsMcpServerUpdatedPrompt `pulumi:"updatedPrompts"`
-	UpdatedTools     []GetZeroTrustAccessAiControlsMcpServerUpdatedTool   `pulumi:"updatedTools"`
+	SecureWebGateway bool `pulumi:"secureWebGateway"`
+	// Current sync state of the server
+	// Available values: "waiting", "ready", "stale", "error".
+	Status         string                                               `pulumi:"status"`
+	Tools          []map[string]string                                  `pulumi:"tools"`
+	UpdatedPrompts []GetZeroTrustAccessAiControlsMcpServerUpdatedPrompt `pulumi:"updatedPrompts"`
+	UpdatedTools   []GetZeroTrustAccessAiControlsMcpServerUpdatedTool   `pulumi:"updatedTools"`
 }
 
 func LookupZeroTrustAccessAiControlsMcpServerOutput(ctx *pulumi.Context, args LookupZeroTrustAccessAiControlsMcpServerOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustAccessAiControlsMcpServerResultOutput {
@@ -128,6 +132,13 @@ func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) ToLookupZeroTrustA
 
 func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
+func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) AuthConfigSummary() GetZeroTrustAccessAiControlsMcpServerAuthConfigSummaryOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) GetZeroTrustAccessAiControlsMcpServerAuthConfigSummary {
+		return v.AuthConfigSummary
+	}).(GetZeroTrustAccessAiControlsMcpServerAuthConfigSummaryOutput)
 }
 
 // Available values: "oauth", "bearer", "unauthenticated".
@@ -206,6 +217,8 @@ func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) SecureWebGateway()
 	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) bool { return v.SecureWebGateway }).(pulumi.BoolOutput)
 }
 
+// Current sync state of the server
+// Available values: "waiting", "ready", "stale", "error".
 func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) string { return v.Status }).(pulumi.StringOutput)
 }

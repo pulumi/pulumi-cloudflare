@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesetRuleActionParametersVary {
     /**
-     * @return Controls how a single request header (or the default for all headers) contributes to the cache key.
+     * @return Controls how response Vary headers without a per-header override contribute to the cache key.
      * 
      */
     private GetRulesetRuleActionParametersVaryDefault default_;
@@ -26,7 +26,7 @@ public final class GetRulesetRuleActionParametersVary {
 
     private GetRulesetRuleActionParametersVary() {}
     /**
-     * @return Controls how a single request header (or the default for all headers) contributes to the cache key.
+     * @return Controls how response Vary headers without a per-header override contribute to the cache key.
      * 
      */
     public GetRulesetRuleActionParametersVaryDefault default_() {

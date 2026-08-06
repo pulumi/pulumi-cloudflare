@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
 
 __all__ = [
     'GetZeroTrustDeviceSubnetResult',
@@ -26,10 +27,13 @@ class GetZeroTrustDeviceSubnetResult:
     """
     A collection of values returned by getZeroTrustDeviceSubnet.
     """
-    def __init__(__self__, account_id=None, comment=None, created_at=None, deleted_at=None, id=None, is_default_network=None, name=None, network=None, subnet_id=None, subnet_type=None):
+    def __init__(__self__, account_id=None, capacity=None, comment=None, created_at=None, deleted_at=None, id=None, is_default_network=None, name=None, network=None, subnet_id=None, subnet_type=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if capacity and not isinstance(capacity, dict):
+            raise TypeError("Expected argument 'capacity' to be a dict")
+        pulumi.set(__self__, "capacity", capacity)
         if comment and not isinstance(comment, str):
             raise TypeError("Expected argument 'comment' to be a str")
         pulumi.set(__self__, "comment", comment)
@@ -65,6 +69,14 @@ class GetZeroTrustDeviceSubnetResult:
         Cloudflare account ID
         """
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def capacity(self) -> 'outputs.GetZeroTrustDeviceSubnetCapacityResult':
+        """
+        IP capacity information for the subnet.
+        """
+        return pulumi.get(self, "capacity")
 
     @_builtins.property
     @pulumi.getter
@@ -135,7 +147,7 @@ class GetZeroTrustDeviceSubnetResult:
     def subnet_type(self) -> _builtins.str:
         """
         The type of subnet.
-        Available values: "cloudflare_source", "warp".
+        Available values: "cloudflare*source", "initial*resolved_ip", "warp".
         """
         return pulumi.get(self, "subnet_type")
 
@@ -147,6 +159,7 @@ class AwaitableGetZeroTrustDeviceSubnetResult(GetZeroTrustDeviceSubnetResult):
             yield self
         return GetZeroTrustDeviceSubnetResult(
             account_id=self.account_id,
+            capacity=self.capacity,
             comment=self.comment,
             created_at=self.created_at,
             deleted_at=self.deleted_at,
@@ -189,6 +202,7 @@ def get_zero_trust_device_subnet(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetZeroTrustDeviceSubnetResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        capacity=pulumi.get(__ret__, 'capacity'),
         comment=pulumi.get(__ret__, 'comment'),
         created_at=pulumi.get(__ret__, 'created_at'),
         deleted_at=pulumi.get(__ret__, 'deleted_at'),
@@ -228,6 +242,7 @@ def get_zero_trust_device_subnet_output(account_id: pulumi.Input[Optional[Option
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustDeviceSubnet:getZeroTrustDeviceSubnet', __args__, opts=opts, typ=GetZeroTrustDeviceSubnetResult)
     return __ret__.apply(lambda __response__: GetZeroTrustDeviceSubnetResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        capacity=pulumi.get(__response__, 'capacity'),
         comment=pulumi.get(__response__, 'comment'),
         created_at=pulumi.get(__response__, 'created_at'),
         deleted_at=pulumi.get(__response__, 'deleted_at'),

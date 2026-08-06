@@ -66,7 +66,7 @@ type LookupSpectrumApplicationResult struct {
 	// App identifier.
 	AppId *string `pulumi:"appId"`
 	// Enables Argo Smart Routing for this application.
-	// Notes: Only available for TCP applications with trafficType set to "direct".
+	// Notes: Only available for TCP or UDP applications with trafficType set to "direct".
 	ArgoSmartRouting bool `pulumi:"argoSmartRouting"`
 	// When the Application was created.
 	CreatedOn string `pulumi:"createdOn"`
@@ -149,7 +149,7 @@ func (o LookupSpectrumApplicationResultOutput) AppId() pulumi.StringPtrOutput {
 }
 
 // Enables Argo Smart Routing for this application.
-// Notes: Only available for TCP applications with trafficType set to "direct".
+// Notes: Only available for TCP or UDP applications with trafficType set to "direct".
 func (o LookupSpectrumApplicationResultOutput) ArgoSmartRouting() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupSpectrumApplicationResult) bool { return v.ArgoSmartRouting }).(pulumi.BoolOutput)
 }

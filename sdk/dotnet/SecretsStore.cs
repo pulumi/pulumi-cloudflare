@@ -43,14 +43,11 @@ namespace Pulumi.Cloudflare
     [CloudflareResourceType("cloudflare:index/secretsStore:SecretsStore")]
     public partial class SecretsStore : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Account Identifier
-        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Whenthe secret was created.
+        /// When the secret was created.
         /// </summary>
         [Output("created")]
         public Output<string> Created { get; private set; } = null!;
@@ -62,7 +59,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Modified { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the store
+        /// The name of the store.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -113,14 +110,11 @@ namespace Pulumi.Cloudflare
 
     public sealed class SecretsStoreArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Account Identifier
-        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the store
+        /// The name of the store.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -133,14 +127,11 @@ namespace Pulumi.Cloudflare
 
     public sealed class SecretsStoreState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Account Identifier
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Whenthe secret was created.
+        /// When the secret was created.
         /// </summary>
         [Input("created")]
         public Input<string>? Created { get; set; }
@@ -152,7 +143,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Modified { get; set; }
 
         /// <summary>
-        /// The name of the store
+        /// The name of the store.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

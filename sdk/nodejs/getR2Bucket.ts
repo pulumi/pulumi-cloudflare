@@ -61,7 +61,7 @@ export interface GetR2BucketResult {
     readonly id: string;
     /**
      * Jurisdiction where objects in this bucket are guaranteed to be stored.
-     * Available values: "default", "eu", "fedramp".
+     * Available values: "default", "eu", "fedramp", "us".
      */
     readonly jurisdiction: string;
     /**

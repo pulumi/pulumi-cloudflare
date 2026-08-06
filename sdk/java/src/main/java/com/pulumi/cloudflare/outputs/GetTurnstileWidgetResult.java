@@ -38,6 +38,15 @@ public final class GetTurnstileWidgetResult {
      * 
      */
     private String createdOn;
+    /**
+     * @return Origin that created this widget, recorded at creation time and
+     * immutable afterward. Server-derived from the create request; not
+     * client-settable. Omitted from the response for widgets created
+     * before this field existed.
+     * Available values: &#34;wrangler&#34;, &#34;dashboard&#34;, &#34;spin&#34;, &#34;api&#34;, &#34;unknown&#34;.
+     * 
+     */
+    private String deployedVia;
     private List<String> domains;
     /**
      * @return Return the Ephemeral ID in /siteverify (ENT only).
@@ -50,6 +59,14 @@ public final class GetTurnstileWidgetResult {
      * 
      */
     private String id;
+    /**
+     * @return Origin of the most recent mutation (create, update, delete, or
+     * secret rotation). Server-derived; not client-settable. Omitted for
+     * widgets last mutated before this field existed.
+     * Available values: &#34;wrangler&#34;, &#34;dashboard&#34;, &#34;spin&#34;, &#34;api&#34;, &#34;unknown&#34;.
+     * 
+     */
+    private String lastModifiedVia;
     /**
      * @return Widget Mode
      * Available values: &#34;non-interactive&#34;, &#34;invisible&#34;, &#34;managed&#34;.
@@ -122,6 +139,17 @@ public final class GetTurnstileWidgetResult {
     public String createdOn() {
         return this.createdOn;
     }
+    /**
+     * @return Origin that created this widget, recorded at creation time and
+     * immutable afterward. Server-derived from the create request; not
+     * client-settable. Omitted from the response for widgets created
+     * before this field existed.
+     * Available values: &#34;wrangler&#34;, &#34;dashboard&#34;, &#34;spin&#34;, &#34;api&#34;, &#34;unknown&#34;.
+     * 
+     */
+    public String deployedVia() {
+        return this.deployedVia;
+    }
     public List<String> domains() {
         return this.domains;
     }
@@ -141,6 +169,16 @@ public final class GetTurnstileWidgetResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Origin of the most recent mutation (create, update, delete, or
+     * secret rotation). Server-derived; not client-settable. Omitted for
+     * widgets last mutated before this field existed.
+     * Available values: &#34;wrangler&#34;, &#34;dashboard&#34;, &#34;spin&#34;, &#34;api&#34;, &#34;unknown&#34;.
+     * 
+     */
+    public String lastModifiedVia() {
+        return this.lastModifiedVia;
     }
     /**
      * @return Widget Mode
@@ -209,10 +247,12 @@ public final class GetTurnstileWidgetResult {
         private Boolean botFightMode;
         private String clearanceLevel;
         private String createdOn;
+        private String deployedVia;
         private List<String> domains;
         private Boolean ephemeralId;
         private @Nullable GetTurnstileWidgetFilter filter;
         private String id;
+        private String lastModifiedVia;
         private String mode;
         private String modifiedOn;
         private String name;
@@ -227,10 +267,12 @@ public final class GetTurnstileWidgetResult {
     	      this.botFightMode = defaults.botFightMode;
     	      this.clearanceLevel = defaults.clearanceLevel;
     	      this.createdOn = defaults.createdOn;
+    	      this.deployedVia = defaults.deployedVia;
     	      this.domains = defaults.domains;
     	      this.ephemeralId = defaults.ephemeralId;
     	      this.filter = defaults.filter;
     	      this.id = defaults.id;
+    	      this.lastModifiedVia = defaults.lastModifiedVia;
     	      this.mode = defaults.mode;
     	      this.modifiedOn = defaults.modifiedOn;
     	      this.name = defaults.name;
@@ -271,6 +313,14 @@ public final class GetTurnstileWidgetResult {
             return this;
         }
         @CustomType.Setter
+        public Builder deployedVia(String deployedVia) {
+            if (deployedVia == null) {
+              throw new MissingRequiredPropertyException("GetTurnstileWidgetResult", "deployedVia");
+            }
+            this.deployedVia = deployedVia;
+            return this;
+        }
+        @CustomType.Setter
         public Builder domains(List<String> domains) {
             if (domains == null) {
               throw new MissingRequiredPropertyException("GetTurnstileWidgetResult", "domains");
@@ -301,6 +351,14 @@ public final class GetTurnstileWidgetResult {
               throw new MissingRequiredPropertyException("GetTurnstileWidgetResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder lastModifiedVia(String lastModifiedVia) {
+            if (lastModifiedVia == null) {
+              throw new MissingRequiredPropertyException("GetTurnstileWidgetResult", "lastModifiedVia");
+            }
+            this.lastModifiedVia = lastModifiedVia;
             return this;
         }
         @CustomType.Setter
@@ -365,10 +423,12 @@ public final class GetTurnstileWidgetResult {
             _resultValue.botFightMode = botFightMode;
             _resultValue.clearanceLevel = clearanceLevel;
             _resultValue.createdOn = createdOn;
+            _resultValue.deployedVia = deployedVia;
             _resultValue.domains = domains;
             _resultValue.ephemeralId = ephemeralId;
             _resultValue.filter = filter;
             _resultValue.id = id;
+            _resultValue.lastModifiedVia = lastModifiedVia;
             _resultValue.mode = mode;
             _resultValue.modifiedOn = modifiedOn;
             _resultValue.name = name;

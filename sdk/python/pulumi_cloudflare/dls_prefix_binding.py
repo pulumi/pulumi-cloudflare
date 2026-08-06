@@ -170,6 +170,12 @@ class DlsPrefixBinding(pulumi.CustomResource):
                  region_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `DLS: Read`
+        - `DLS: Write`
+        - `IP Prefixes: Write`
+
         ## Example Usage
 
         ```python
@@ -204,6 +210,12 @@ class DlsPrefixBinding(pulumi.CustomResource):
                  args: DlsPrefixBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `DLS: Read`
+        - `DLS: Write`
+        - `IP Prefixes: Write`
+
         ## Example Usage
 
         ```python

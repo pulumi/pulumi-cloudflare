@@ -205,6 +205,17 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
+        /// Declarative exports for the version, including Durable Object
+        /// classes (with their `Storage` backend) and named Worker
+        /// entrypoints. On reads, tombstoned lifecycle entries are
+        /// omitted, so only live exports (`Created` and
+        /// `expecting-transfer`) are returned. `Exports` and `Migrations`
+        /// are mutually exclusive on upload.
+        /// </summary>
+        [Output("exports")]
+        public Output<ImmutableDictionary<string, Outputs.WorkerVersionExports>?> Exports { get; private set; } = null!;
+
+        /// <summary>
         /// Resource limits enforced at runtime.
         /// </summary>
         [Output("limits")]
@@ -410,6 +421,23 @@ namespace Pulumi.Cloudflare
             set => _containers = value;
         }
 
+        [Input("exports")]
+        private InputMap<Inputs.WorkerVersionExportsArgs>? _exports;
+
+        /// <summary>
+        /// Declarative exports for the version, including Durable Object
+        /// classes (with their `Storage` backend) and named Worker
+        /// entrypoints. On reads, tombstoned lifecycle entries are
+        /// omitted, so only live exports (`Created` and
+        /// `expecting-transfer`) are returned. `Exports` and `Migrations`
+        /// are mutually exclusive on upload.
+        /// </summary>
+        public InputMap<Inputs.WorkerVersionExportsArgs> Exports
+        {
+            get => _exports ?? (_exports = new InputMap<Inputs.WorkerVersionExportsArgs>());
+            set => _exports = value;
+        }
+
         /// <summary>
         /// Resource limits enforced at runtime.
         /// </summary>
@@ -559,6 +587,23 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("createdOn")]
         public Input<string>? CreatedOn { get; set; }
+
+        [Input("exports")]
+        private InputMap<Inputs.WorkerVersionExportsGetArgs>? _exports;
+
+        /// <summary>
+        /// Declarative exports for the version, including Durable Object
+        /// classes (with their `Storage` backend) and named Worker
+        /// entrypoints. On reads, tombstoned lifecycle entries are
+        /// omitted, so only live exports (`Created` and
+        /// `expecting-transfer`) are returned. `Exports` and `Migrations`
+        /// are mutually exclusive on upload.
+        /// </summary>
+        public InputMap<Inputs.WorkerVersionExportsGetArgs> Exports
+        {
+            get => _exports ?? (_exports = new InputMap<Inputs.WorkerVersionExportsGetArgs>());
+            set => _exports = value;
+        }
 
         /// <summary>
         /// Resource limits enforced at runtime.

@@ -28,7 +28,7 @@ class GetTurnstileWidgetResult:
     """
     A collection of values returned by getTurnstileWidget.
     """
-    def __init__(__self__, account_id=None, bot_fight_mode=None, clearance_level=None, created_on=None, domains=None, ephemeral_id=None, filter=None, id=None, mode=None, modified_on=None, name=None, offlabel=None, region=None, secret=None, sitekey=None):
+    def __init__(__self__, account_id=None, bot_fight_mode=None, clearance_level=None, created_on=None, deployed_via=None, domains=None, ephemeral_id=None, filter=None, id=None, last_modified_via=None, mode=None, modified_on=None, name=None, offlabel=None, region=None, secret=None, sitekey=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -41,6 +41,9 @@ class GetTurnstileWidgetResult:
         if created_on and not isinstance(created_on, str):
             raise TypeError("Expected argument 'created_on' to be a str")
         pulumi.set(__self__, "created_on", created_on)
+        if deployed_via and not isinstance(deployed_via, str):
+            raise TypeError("Expected argument 'deployed_via' to be a str")
+        pulumi.set(__self__, "deployed_via", deployed_via)
         if domains and not isinstance(domains, list):
             raise TypeError("Expected argument 'domains' to be a list")
         pulumi.set(__self__, "domains", domains)
@@ -53,6 +56,9 @@ class GetTurnstileWidgetResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if last_modified_via and not isinstance(last_modified_via, str):
+            raise TypeError("Expected argument 'last_modified_via' to be a str")
+        pulumi.set(__self__, "last_modified_via", last_modified_via)
         if mode and not isinstance(mode, str):
             raise TypeError("Expected argument 'mode' to be a str")
         pulumi.set(__self__, "mode", mode)
@@ -111,6 +117,18 @@ class GetTurnstileWidgetResult:
         return pulumi.get(self, "created_on")
 
     @_builtins.property
+    @pulumi.getter(name="deployedVia")
+    def deployed_via(self) -> _builtins.str:
+        """
+        Origin that created this widget, recorded at creation time and
+        immutable afterward. Server-derived from the create request; not
+        client-settable. Omitted from the response for widgets created
+        before this field existed.
+        Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+        """
+        return pulumi.get(self, "deployed_via")
+
+    @_builtins.property
     @pulumi.getter
     def domains(self) -> Sequence[_builtins.str]:
         return pulumi.get(self, "domains")
@@ -135,6 +153,17 @@ class GetTurnstileWidgetResult:
         Widget item identifier tag.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="lastModifiedVia")
+    def last_modified_via(self) -> _builtins.str:
+        """
+        Origin of the most recent mutation (create, update, delete, or
+        secret rotation). Server-derived; not client-settable. Omitted for
+        widgets last mutated before this field existed.
+        Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+        """
+        return pulumi.get(self, "last_modified_via")
 
     @_builtins.property
     @pulumi.getter
@@ -207,10 +236,12 @@ class AwaitableGetTurnstileWidgetResult(GetTurnstileWidgetResult):
             bot_fight_mode=self.bot_fight_mode,
             clearance_level=self.clearance_level,
             created_on=self.created_on,
+            deployed_via=self.deployed_via,
             domains=self.domains,
             ephemeral_id=self.ephemeral_id,
             filter=self.filter,
             id=self.id,
+            last_modified_via=self.last_modified_via,
             mode=self.mode,
             modified_on=self.modified_on,
             name=self.name,
@@ -258,10 +289,12 @@ def get_turnstile_widget(account_id: Optional[_builtins.str] = None,
         bot_fight_mode=pulumi.get(__ret__, 'bot_fight_mode'),
         clearance_level=pulumi.get(__ret__, 'clearance_level'),
         created_on=pulumi.get(__ret__, 'created_on'),
+        deployed_via=pulumi.get(__ret__, 'deployed_via'),
         domains=pulumi.get(__ret__, 'domains'),
         ephemeral_id=pulumi.get(__ret__, 'ephemeral_id'),
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
+        last_modified_via=pulumi.get(__ret__, 'last_modified_via'),
         mode=pulumi.get(__ret__, 'mode'),
         modified_on=pulumi.get(__ret__, 'modified_on'),
         name=pulumi.get(__ret__, 'name'),
@@ -306,10 +339,12 @@ def get_turnstile_widget_output(account_id: pulumi.Input[Optional[Optional[_buil
         bot_fight_mode=pulumi.get(__response__, 'bot_fight_mode'),
         clearance_level=pulumi.get(__response__, 'clearance_level'),
         created_on=pulumi.get(__response__, 'created_on'),
+        deployed_via=pulumi.get(__response__, 'deployed_via'),
         domains=pulumi.get(__response__, 'domains'),
         ephemeral_id=pulumi.get(__response__, 'ephemeral_id'),
         filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
+        last_modified_via=pulumi.get(__response__, 'last_modified_via'),
         mode=pulumi.get(__response__, 'mode'),
         modified_on=pulumi.get(__response__, 'modified_on'),
         name=pulumi.get(__response__, 'name'),

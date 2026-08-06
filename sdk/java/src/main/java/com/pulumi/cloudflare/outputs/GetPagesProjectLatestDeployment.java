@@ -86,6 +86,12 @@ public final class GetPagesProjectLatestDeployment {
      */
     private String shortId;
     /**
+     * @return Why the deployment was skipped.
+     * Available values: &#34;commit*message&#34;, &#34;preview*deployments*disabled&#34;, &#34;production*deployments*disabled&#34;, &#34;path*config&#34;, &#34;branch*config&#34;, &#34;pages*to*workers*conversion&#34;.
+     * 
+     */
+    private String skipReason;
+    /**
      * @return Configs for the project source control.
      * 
      */
@@ -200,6 +206,14 @@ public final class GetPagesProjectLatestDeployment {
         return this.shortId;
     }
     /**
+     * @return Why the deployment was skipped.
+     * Available values: &#34;commit*message&#34;, &#34;preview*deployments*disabled&#34;, &#34;production*deployments*disabled&#34;, &#34;path*config&#34;, &#34;branch*config&#34;, &#34;pages*to*workers*conversion&#34;.
+     * 
+     */
+    public String skipReason() {
+        return this.skipReason;
+    }
+    /**
      * @return Configs for the project source control.
      * 
      */
@@ -250,6 +264,7 @@ public final class GetPagesProjectLatestDeployment {
         private String projectId;
         private String projectName;
         private String shortId;
+        private String skipReason;
         private GetPagesProjectLatestDeploymentSource source;
         private List<GetPagesProjectLatestDeploymentStage> stages;
         private String url;
@@ -270,6 +285,7 @@ public final class GetPagesProjectLatestDeployment {
     	      this.projectId = defaults.projectId;
     	      this.projectName = defaults.projectName;
     	      this.shortId = defaults.shortId;
+    	      this.skipReason = defaults.skipReason;
     	      this.source = defaults.source;
     	      this.stages = defaults.stages;
     	      this.url = defaults.url;
@@ -384,6 +400,14 @@ public final class GetPagesProjectLatestDeployment {
             return this;
         }
         @CustomType.Setter
+        public Builder skipReason(String skipReason) {
+            if (skipReason == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectLatestDeployment", "skipReason");
+            }
+            this.skipReason = skipReason;
+            return this;
+        }
+        @CustomType.Setter
         public Builder source(GetPagesProjectLatestDeploymentSource source) {
             if (source == null) {
               throw new MissingRequiredPropertyException("GetPagesProjectLatestDeployment", "source");
@@ -433,6 +457,7 @@ public final class GetPagesProjectLatestDeployment {
             _resultValue.projectId = projectId;
             _resultValue.projectName = projectName;
             _resultValue.shortId = shortId;
+            _resultValue.skipReason = skipReason;
             _resultValue.source = source;
             _resultValue.stages = stages;
             _resultValue.url = url;

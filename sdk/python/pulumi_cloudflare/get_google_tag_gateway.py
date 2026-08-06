@@ -126,8 +126,9 @@ def get_google_tag_gateway(zone_id: Optional[_builtins.str] = None,
     """
     Accepted Permissions
 
-    - `Zone Settings Read`
-    - `Zone Settings Write`
+    - `Zaraz Admin`
+    - `Zaraz Edit`
+    - `Zaraz Read`
 
     ## Example Usage
 
@@ -159,8 +160,9 @@ def get_google_tag_gateway_output(zone_id: pulumi.Input[Optional[_builtins.str]]
     """
     Accepted Permissions
 
-    - `Zone Settings Read`
-    - `Zone Settings Write`
+    - `Zaraz Admin`
+    - `Zaraz Edit`
+    - `Zaraz Read`
 
     ## Example Usage
 

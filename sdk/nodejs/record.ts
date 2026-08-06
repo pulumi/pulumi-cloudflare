@@ -89,7 +89,7 @@ export class Record extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
-     * Components of a CAA record.
+     * Components of a MX record.
      */
     declare public readonly data: pulumi.Output<outputs.RecordData | undefined>;
     /**
@@ -241,7 +241,7 @@ export interface RecordState {
      */
     createdOn?: pulumi.Input<string | undefined>;
     /**
-     * Components of a CAA record.
+     * Components of a MX record.
      */
     data?: pulumi.Input<inputs.RecordData | undefined>;
     /**
@@ -312,7 +312,7 @@ export interface RecordArgs {
      */
     content?: pulumi.Input<string | undefined>;
     /**
-     * Components of a CAA record.
+     * Components of a MX record.
      */
     data?: pulumi.Input<inputs.RecordData | undefined>;
     /**

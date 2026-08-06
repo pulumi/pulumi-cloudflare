@@ -15,7 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// Algorithm
-        /// Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384".
+        /// Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384", "HS256", "HS384", "HS512".
         /// </summary>
         public readonly string Alg;
         /// <summary>
@@ -28,12 +28,16 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? E;
         /// <summary>
+        /// Symmetric key material. Required for create and PUT update requests.
+        /// </summary>
+        public readonly string? K;
+        /// <summary>
         /// Key ID
         /// </summary>
         public readonly string Kid;
         /// <summary>
         /// Key Type
-        /// Available values: "RSA", "EC".
+        /// Available values: "RSA", "EC", "oct".
         /// </summary>
         public readonly string Kty;
         /// <summary>
@@ -57,6 +61,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? e,
 
+            string? k,
+
             string kid,
 
             string kty,
@@ -70,6 +76,7 @@ namespace Pulumi.Cloudflare.Outputs
             Alg = alg;
             Crv = crv;
             E = e;
+            K = k;
             Kid = kid;
             Kty = kty;
             N = n;

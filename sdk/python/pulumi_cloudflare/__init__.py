@@ -344,6 +344,7 @@ from .get_share_resources import *
 from .get_shares import *
 from .get_snippet import *
 from .get_snippet_list import *
+from .get_snippet_rules import *
 from .get_snippet_rules_list import *
 from .get_snippets import *
 from .get_snippets_list import *
@@ -464,6 +465,8 @@ from .get_zero_trust_dex_tests import *
 from .get_zero_trust_dlp_custom_entries import *
 from .get_zero_trust_dlp_custom_entry import *
 from .get_zero_trust_dlp_custom_profile import *
+from .get_zero_trust_dlp_custom_prompt_topic import *
+from .get_zero_trust_dlp_custom_prompt_topics import *
 from .get_zero_trust_dlp_data_class import *
 from .get_zero_trust_dlp_data_classes import *
 from .get_zero_trust_dlp_data_tag import *

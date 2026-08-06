@@ -21,7 +21,12 @@ public final class GetR2BucketSippySource {
      */
     private String bucketUrl;
     /**
-     * @return Available values: &#34;aws&#34;, &#34;gcs&#34;, &#34;s3&#34;.
+     * @return Name of the Azure Blob Storage container (Azure only).
+     * 
+     */
+    private String container;
+    /**
+     * @return Available values: &#34;aws&#34;, &#34;gcs&#34;, &#34;s3&#34;, &#34;azure&#34;.
      * 
      */
     private String r2BucketSippyProvider;
@@ -47,7 +52,14 @@ public final class GetR2BucketSippySource {
         return this.bucketUrl;
     }
     /**
-     * @return Available values: &#34;aws&#34;, &#34;gcs&#34;, &#34;s3&#34;.
+     * @return Name of the Azure Blob Storage container (Azure only).
+     * 
+     */
+    public String container() {
+        return this.container;
+    }
+    /**
+     * @return Available values: &#34;aws&#34;, &#34;gcs&#34;, &#34;s3&#34;, &#34;azure&#34;.
      * 
      */
     public String r2BucketSippyProvider() {
@@ -72,6 +84,7 @@ public final class GetR2BucketSippySource {
     public static final class Builder {
         private String bucket;
         private String bucketUrl;
+        private String container;
         private String r2BucketSippyProvider;
         private String region;
         public Builder() {}
@@ -79,6 +92,7 @@ public final class GetR2BucketSippySource {
     	      Objects.requireNonNull(defaults);
     	      this.bucket = defaults.bucket;
     	      this.bucketUrl = defaults.bucketUrl;
+    	      this.container = defaults.container;
     	      this.r2BucketSippyProvider = defaults.r2BucketSippyProvider;
     	      this.region = defaults.region;
         }
@@ -97,6 +111,14 @@ public final class GetR2BucketSippySource {
               throw new MissingRequiredPropertyException("GetR2BucketSippySource", "bucketUrl");
             }
             this.bucketUrl = bucketUrl;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder container(String container) {
+            if (container == null) {
+              throw new MissingRequiredPropertyException("GetR2BucketSippySource", "container");
+            }
+            this.container = container;
             return this;
         }
         @CustomType.Setter
@@ -119,6 +141,7 @@ public final class GetR2BucketSippySource {
             final var _resultValue = new GetR2BucketSippySource();
             _resultValue.bucket = bucket;
             _resultValue.bucketUrl = bucketUrl;
+            _resultValue.container = container;
             _resultValue.r2BucketSippyProvider = r2BucketSippyProvider;
             _resultValue.region = region;
             return _resultValue;

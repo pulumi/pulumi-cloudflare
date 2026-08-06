@@ -38,12 +38,11 @@ import (
 //				Credentials: &cloudflare.TokenValidationConfigCredentialsArgs{
 //					Keys: cloudflare.TokenValidationConfigCredentialsKeyArray{
 //						&cloudflare.TokenValidationConfigCredentialsKeyArgs{
-//							Alg: pulumi.String("ES256"),
-//							Crv: pulumi.String("P-256"),
-//							Kid: pulumi.String("38013f13-c266-4eec-a72a-92ec92779f21"),
-//							Kty: pulumi.String("EC"),
-//							X:   pulumi.String("KN53JRwN3wCjm2o39bvZUX2VdrsHzS8pxOAGjm8m7EQ"),
-//							Y:   pulumi.String("lnkkzIxaveggz-HFhcMWW15nxvOj0Z_uQsXbpK0GFcY"),
+//							Alg: pulumi.String("RS256"),
+//							E:   pulumi.String("e"),
+//							Kid: pulumi.String("kid"),
+//							Kty: pulumi.String("RSA"),
+//							N:   pulumi.String("n"),
 //						},
 //					},
 //				},
@@ -72,7 +71,8 @@ import (
 type TokenValidationConfig struct {
 	pulumi.CustomResourceState
 
-	CreatedAt    pulumi.StringOutput                    `pulumi:"createdAt"`
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Request payload for create and PUT credentials operations. Provided keys define the complete stored key set. Key identities (`{alg,kid}`) must be unique.
 	Credentials  TokenValidationConfigCredentialsOutput `pulumi:"credentials"`
 	Description  pulumi.StringOutput                    `pulumi:"description"`
 	LastUpdated  pulumi.StringOutput                    `pulumi:"lastUpdated"`
@@ -132,7 +132,8 @@ func GetTokenValidationConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TokenValidationConfig resources.
 type tokenValidationConfigState struct {
-	CreatedAt    *string                           `pulumi:"createdAt"`
+	CreatedAt *string `pulumi:"createdAt"`
+	// Request payload for create and PUT credentials operations. Provided keys define the complete stored key set. Key identities (`{alg,kid}`) must be unique.
 	Credentials  *TokenValidationConfigCredentials `pulumi:"credentials"`
 	Description  *string                           `pulumi:"description"`
 	LastUpdated  *string                           `pulumi:"lastUpdated"`
@@ -145,7 +146,8 @@ type tokenValidationConfigState struct {
 }
 
 type TokenValidationConfigState struct {
-	CreatedAt    pulumi.StringPtrInput
+	CreatedAt pulumi.StringPtrInput
+	// Request payload for create and PUT credentials operations. Provided keys define the complete stored key set. Key identities (`{alg,kid}`) must be unique.
 	Credentials  TokenValidationConfigCredentialsPtrInput
 	Description  pulumi.StringPtrInput
 	LastUpdated  pulumi.StringPtrInput
@@ -162,6 +164,7 @@ func (TokenValidationConfigState) ElementType() reflect.Type {
 }
 
 type tokenValidationConfigArgs struct {
+	// Request payload for create and PUT credentials operations. Provided keys define the complete stored key set. Key identities (`{alg,kid}`) must be unique.
 	Credentials  TokenValidationConfigCredentials `pulumi:"credentials"`
 	Description  string                           `pulumi:"description"`
 	Title        string                           `pulumi:"title"`
@@ -174,6 +177,7 @@ type tokenValidationConfigArgs struct {
 
 // The set of arguments for constructing a TokenValidationConfig resource.
 type TokenValidationConfigArgs struct {
+	// Request payload for create and PUT credentials operations. Provided keys define the complete stored key set. Key identities (`{alg,kid}`) must be unique.
 	Credentials  TokenValidationConfigCredentialsInput
 	Description  pulumi.StringInput
 	Title        pulumi.StringInput
@@ -275,6 +279,7 @@ func (o TokenValidationConfigOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *TokenValidationConfig) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Request payload for create and PUT credentials operations. Provided keys define the complete stored key set. Key identities (`{alg,kid}`) must be unique.
 func (o TokenValidationConfigOutput) Credentials() TokenValidationConfigCredentialsOutput {
 	return o.ApplyT(func(v *TokenValidationConfig) TokenValidationConfigCredentialsOutput { return v.Credentials }).(TokenValidationConfigCredentialsOutput)
 }

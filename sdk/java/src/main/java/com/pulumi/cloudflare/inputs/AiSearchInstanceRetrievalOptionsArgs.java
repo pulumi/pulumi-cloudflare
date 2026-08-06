@@ -33,7 +33,7 @@ public final class AiSearchInstanceRetrievalOptionsArgs extends com.pulumi.resou
     }
 
     /**
-     * Controls which documents are candidates for BM25 scoring. &#39;and&#39; restricts candidates to documents containing all query terms; &#39;or&#39; includes any document containing at least one term, ranked by BM25 relevance. Defaults to &#39;and&#39;.
+     * Controls which documents are candidates for BM25 scoring. &#39;and&#39; restricts candidates to documents containing all query terms; &#39;or&#39; includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to &#39;and&#39;.
      * Available values: &#34;and&#34;, &#34;or&#34;.
      * 
      */
@@ -41,7 +41,7 @@ public final class AiSearchInstanceRetrievalOptionsArgs extends com.pulumi.resou
     private @Nullable Output<String> keywordMatchMode;
 
     /**
-     * @return Controls which documents are candidates for BM25 scoring. &#39;and&#39; restricts candidates to documents containing all query terms; &#39;or&#39; includes any document containing at least one term, ranked by BM25 relevance. Defaults to &#39;and&#39;.
+     * @return Controls which documents are candidates for BM25 scoring. &#39;and&#39; restricts candidates to documents containing all query terms; &#39;or&#39; includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to &#39;and&#39;.
      * Available values: &#34;and&#34;, &#34;or&#34;.
      * 
      */
@@ -106,7 +106,7 @@ public final class AiSearchInstanceRetrievalOptionsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param keywordMatchMode Controls which documents are candidates for BM25 scoring. &#39;and&#39; restricts candidates to documents containing all query terms; &#39;or&#39; includes any document containing at least one term, ranked by BM25 relevance. Defaults to &#39;and&#39;.
+         * @param keywordMatchMode Controls which documents are candidates for BM25 scoring. &#39;and&#39; restricts candidates to documents containing all query terms; &#39;or&#39; includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to &#39;and&#39;.
          * Available values: &#34;and&#34;, &#34;or&#34;.
          * 
          * @return builder
@@ -118,7 +118,7 @@ public final class AiSearchInstanceRetrievalOptionsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param keywordMatchMode Controls which documents are candidates for BM25 scoring. &#39;and&#39; restricts candidates to documents containing all query terms; &#39;or&#39; includes any document containing at least one term, ranked by BM25 relevance. Defaults to &#39;and&#39;.
+         * @param keywordMatchMode Controls which documents are candidates for BM25 scoring. &#39;and&#39; restricts candidates to documents containing all query terms; &#39;or&#39; includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to &#39;and&#39;.
          * Available values: &#34;and&#34;, &#34;or&#34;.
          * 
          * @return builder

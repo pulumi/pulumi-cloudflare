@@ -22,7 +22,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string BucketUrl;
         /// <summary>
-        /// Available values: "aws", "gcs", "s3".
+        /// Name of the Azure Blob Storage container (Azure only).
+        /// </summary>
+        public readonly string Container;
+        /// <summary>
+        /// Available values: "aws", "gcs", "s3", "azure".
         /// </summary>
         public readonly string R2BucketSippyProvider;
         /// <summary>
@@ -36,12 +40,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             string bucketUrl,
 
+            string container,
+
             string r2BucketSippyProvider,
 
             string region)
         {
             Bucket = bucket;
             BucketUrl = bucketUrl;
+            Container = container;
             R2BucketSippyProvider = r2BucketSippyProvider;
             Region = region;
         }

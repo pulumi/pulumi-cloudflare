@@ -53,29 +53,27 @@ func LookupSecretsStores(ctx *pulumi.Context, args *LookupSecretsStoresArgs, opt
 
 // A collection of arguments for invoking getSecretsStores.
 type LookupSecretsStoresArgs struct {
-	// Account Identifier
 	AccountId string `pulumi:"accountId"`
-	// Direction to sort objects
+	// Direction to sort objects.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Order secrets by values in the given field
-	// Available values: "name", "comment", "created", "modified", "status".
+	// Order stores by values in the given field.
+	// Available values: "name", "created", "modified".
 	Order *string `pulumi:"order"`
 }
 
 // A collection of values returned by getSecretsStores.
 type LookupSecretsStoresResult struct {
-	// Account Identifier
 	AccountId string `pulumi:"accountId"`
-	// Direction to sort objects
+	// Direction to sort objects.
 	// Available values: "asc", "desc".
 	Direction string `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Order secrets by values in the given field
-	// Available values: "name", "comment", "created", "modified", "status".
+	// Order stores by values in the given field.
+	// Available values: "name", "created", "modified".
 	Order string `pulumi:"order"`
 	// The items returned by the data source
 	Results []GetSecretsStoresResult `pulumi:"results"`
@@ -92,15 +90,14 @@ func LookupSecretsStoresOutput(ctx *pulumi.Context, args LookupSecretsStoresOutp
 
 // A collection of arguments for invoking getSecretsStores.
 type LookupSecretsStoresOutputArgs struct {
-	// Account Identifier
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Direction to sort objects
+	// Direction to sort objects.
 	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Order secrets by values in the given field
-	// Available values: "name", "comment", "created", "modified", "status".
+	// Order stores by values in the given field.
+	// Available values: "name", "created", "modified".
 	Order pulumi.StringPtrInput `pulumi:"order"`
 }
 
@@ -123,12 +120,11 @@ func (o LookupSecretsStoresResultOutput) ToLookupSecretsStoresResultOutputWithCo
 	return o
 }
 
-// Account Identifier
 func (o LookupSecretsStoresResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretsStoresResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Direction to sort objects
+// Direction to sort objects.
 // Available values: "asc", "desc".
 func (o LookupSecretsStoresResultOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretsStoresResult) string { return v.Direction }).(pulumi.StringOutput)
@@ -139,8 +135,8 @@ func (o LookupSecretsStoresResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupSecretsStoresResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
-// Order secrets by values in the given field
-// Available values: "name", "comment", "created", "modified", "status".
+// Order stores by values in the given field.
+// Available values: "name", "created", "modified".
 func (o LookupSecretsStoresResultOutput) Order() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretsStoresResult) string { return v.Order }).(pulumi.StringOutput)
 }

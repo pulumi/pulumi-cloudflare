@@ -33,13 +33,8 @@ import (
 //			_, err := cloudflare.GetSecretsStoreSecrets(ctx, &cloudflare.LookupSecretsStoreSecretsArgs{
 //				AccountId: "985e105f4ecef8ad9ca31a8372d0c353",
 //				StoreId:   "023e105f4ecef8ad9ca31a8372d0c353",
-//				Scopes: [][]string{
-//					[]string{
-//						"workers",
-//						"ai_gateway",
-//						"dex",
-//						"access",
-//					},
+//				Scopes: []string{
+//					"workers",
 //				},
 //				Search: pulumi.StringRef("search"),
 //			}, nil)
@@ -63,44 +58,40 @@ func LookupSecretsStoreSecrets(ctx *pulumi.Context, args *LookupSecretsStoreSecr
 
 // A collection of arguments for invoking getSecretsStoreSecrets.
 type LookupSecretsStoreSecretsArgs struct {
-	// Account Identifier
 	AccountId string `pulumi:"accountId"`
-	// Direction to sort objects
+	// Direction to sort objects.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Order secrets by values in the given field
+	// Order secrets by values in the given field.
 	// Available values: "name", "comment", "created", "modified", "status".
 	Order *string `pulumi:"order"`
-	// Only secrets with the given scopes will be returned
-	Scopes [][]string `pulumi:"scopes"`
-	// Search secrets using a filter string, filtering across name and comment
-	Search *string `pulumi:"search"`
-	// Store Identifier
-	StoreId string `pulumi:"storeId"`
+	// Only secrets with the given scopes will be returned.
+	Scopes []string `pulumi:"scopes"`
+	// Search secrets using a filter string, filtering across name and comment.
+	Search  *string `pulumi:"search"`
+	StoreId string  `pulumi:"storeId"`
 }
 
 // A collection of values returned by getSecretsStoreSecrets.
 type LookupSecretsStoreSecretsResult struct {
-	// Account Identifier
 	AccountId string `pulumi:"accountId"`
-	// Direction to sort objects
+	// Direction to sort objects.
 	// Available values: "asc", "desc".
 	Direction string `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Order secrets by values in the given field
+	// Order secrets by values in the given field.
 	// Available values: "name", "comment", "created", "modified", "status".
 	Order string `pulumi:"order"`
 	// The items returned by the data source
 	Results []GetSecretsStoreSecretsResult `pulumi:"results"`
-	// Only secrets with the given scopes will be returned
-	Scopes [][]string `pulumi:"scopes"`
-	// Search secrets using a filter string, filtering across name and comment
-	Search *string `pulumi:"search"`
-	// Store Identifier
-	StoreId string `pulumi:"storeId"`
+	// Only secrets with the given scopes will be returned.
+	Scopes []string `pulumi:"scopes"`
+	// Search secrets using a filter string, filtering across name and comment.
+	Search  *string `pulumi:"search"`
+	StoreId string  `pulumi:"storeId"`
 }
 
 func LookupSecretsStoreSecretsOutput(ctx *pulumi.Context, args LookupSecretsStoreSecretsOutputArgs, opts ...pulumi.InvokeOption) LookupSecretsStoreSecretsResultOutput {
@@ -114,22 +105,20 @@ func LookupSecretsStoreSecretsOutput(ctx *pulumi.Context, args LookupSecretsStor
 
 // A collection of arguments for invoking getSecretsStoreSecrets.
 type LookupSecretsStoreSecretsOutputArgs struct {
-	// Account Identifier
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Direction to sort objects
+	// Direction to sort objects.
 	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Order secrets by values in the given field
+	// Order secrets by values in the given field.
 	// Available values: "name", "comment", "created", "modified", "status".
 	Order pulumi.StringPtrInput `pulumi:"order"`
-	// Only secrets with the given scopes will be returned
-	Scopes pulumi.StringArrayArrayInput `pulumi:"scopes"`
-	// Search secrets using a filter string, filtering across name and comment
-	Search pulumi.StringPtrInput `pulumi:"search"`
-	// Store Identifier
-	StoreId pulumi.StringInput `pulumi:"storeId"`
+	// Only secrets with the given scopes will be returned.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// Search secrets using a filter string, filtering across name and comment.
+	Search  pulumi.StringPtrInput `pulumi:"search"`
+	StoreId pulumi.StringInput    `pulumi:"storeId"`
 }
 
 func (LookupSecretsStoreSecretsOutputArgs) ElementType() reflect.Type {
@@ -151,12 +140,11 @@ func (o LookupSecretsStoreSecretsResultOutput) ToLookupSecretsStoreSecretsResult
 	return o
 }
 
-// Account Identifier
 func (o LookupSecretsStoreSecretsResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretsStoreSecretsResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Direction to sort objects
+// Direction to sort objects.
 // Available values: "asc", "desc".
 func (o LookupSecretsStoreSecretsResultOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretsStoreSecretsResult) string { return v.Direction }).(pulumi.StringOutput)
@@ -167,7 +155,7 @@ func (o LookupSecretsStoreSecretsResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupSecretsStoreSecretsResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
-// Order secrets by values in the given field
+// Order secrets by values in the given field.
 // Available values: "name", "comment", "created", "modified", "status".
 func (o LookupSecretsStoreSecretsResultOutput) Order() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretsStoreSecretsResult) string { return v.Order }).(pulumi.StringOutput)
@@ -178,17 +166,16 @@ func (o LookupSecretsStoreSecretsResultOutput) Results() GetSecretsStoreSecretsR
 	return o.ApplyT(func(v LookupSecretsStoreSecretsResult) []GetSecretsStoreSecretsResult { return v.Results }).(GetSecretsStoreSecretsResultArrayOutput)
 }
 
-// Only secrets with the given scopes will be returned
-func (o LookupSecretsStoreSecretsResultOutput) Scopes() pulumi.StringArrayArrayOutput {
-	return o.ApplyT(func(v LookupSecretsStoreSecretsResult) [][]string { return v.Scopes }).(pulumi.StringArrayArrayOutput)
+// Only secrets with the given scopes will be returned.
+func (o LookupSecretsStoreSecretsResultOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupSecretsStoreSecretsResult) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
-// Search secrets using a filter string, filtering across name and comment
+// Search secrets using a filter string, filtering across name and comment.
 func (o LookupSecretsStoreSecretsResultOutput) Search() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretsStoreSecretsResult) *string { return v.Search }).(pulumi.StringPtrOutput)
 }
 
-// Store Identifier
 func (o LookupSecretsStoreSecretsResultOutput) StoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretsStoreSecretsResult) string { return v.StoreId }).(pulumi.StringOutput)
 }

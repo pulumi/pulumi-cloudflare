@@ -21,12 +21,7 @@ import * as utilities from "./utilities";
  * const exampleSecretsStoreSecrets = cloudflare.getSecretsStoreSecrets({
  *     accountId: "985e105f4ecef8ad9ca31a8372d0c353",
  *     storeId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     scopes: [[
- *         "workers",
- *         "ai_gateway",
- *         "dex",
- *         "access",
- *     ]],
+ *     scopes: ["workers"],
  *     search: "search",
  * });
  * ```
@@ -48,12 +43,9 @@ export function getSecretsStoreSecrets(args: GetSecretsStoreSecretsArgs, opts?: 
  * A collection of arguments for invoking getSecretsStoreSecrets.
  */
 export interface GetSecretsStoreSecretsArgs {
-    /**
-     * Account Identifier
-     */
     accountId: string;
     /**
-     * Direction to sort objects
+     * Direction to sort objects.
      * Available values: "asc", "desc".
      */
     direction?: string;
@@ -62,21 +54,18 @@ export interface GetSecretsStoreSecretsArgs {
      */
     maxItems?: number;
     /**
-     * Order secrets by values in the given field
+     * Order secrets by values in the given field.
      * Available values: "name", "comment", "created", "modified", "status".
      */
     order?: string;
     /**
-     * Only secrets with the given scopes will be returned
+     * Only secrets with the given scopes will be returned.
      */
-    scopes?: string[][];
+    scopes?: string[];
     /**
-     * Search secrets using a filter string, filtering across name and comment
+     * Search secrets using a filter string, filtering across name and comment.
      */
     search?: string;
-    /**
-     * Store Identifier
-     */
     storeId: string;
 }
 
@@ -84,12 +73,9 @@ export interface GetSecretsStoreSecretsArgs {
  * A collection of values returned by getSecretsStoreSecrets.
  */
 export interface GetSecretsStoreSecretsResult {
-    /**
-     * Account Identifier
-     */
     readonly accountId: string;
     /**
-     * Direction to sort objects
+     * Direction to sort objects.
      * Available values: "asc", "desc".
      */
     readonly direction: string;
@@ -98,7 +84,7 @@ export interface GetSecretsStoreSecretsResult {
      */
     readonly maxItems?: number;
     /**
-     * Order secrets by values in the given field
+     * Order secrets by values in the given field.
      * Available values: "name", "comment", "created", "modified", "status".
      */
     readonly order: string;
@@ -107,16 +93,13 @@ export interface GetSecretsStoreSecretsResult {
      */
     readonly results: outputs.GetSecretsStoreSecretsResult[];
     /**
-     * Only secrets with the given scopes will be returned
+     * Only secrets with the given scopes will be returned.
      */
-    readonly scopes?: string[][];
+    readonly scopes?: string[];
     /**
-     * Search secrets using a filter string, filtering across name and comment
+     * Search secrets using a filter string, filtering across name and comment.
      */
     readonly search?: string;
-    /**
-     * Store Identifier
-     */
     readonly storeId: string;
 }
 /**
@@ -134,12 +117,7 @@ export interface GetSecretsStoreSecretsResult {
  * const exampleSecretsStoreSecrets = cloudflare.getSecretsStoreSecrets({
  *     accountId: "985e105f4ecef8ad9ca31a8372d0c353",
  *     storeId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     scopes: [[
- *         "workers",
- *         "ai_gateway",
- *         "dex",
- *         "access",
- *     ]],
+ *     scopes: ["workers"],
  *     search: "search",
  * });
  * ```
@@ -161,12 +139,9 @@ export function getSecretsStoreSecretsOutput(args: GetSecretsStoreSecretsOutputA
  * A collection of arguments for invoking getSecretsStoreSecrets.
  */
 export interface GetSecretsStoreSecretsOutputArgs {
-    /**
-     * Account Identifier
-     */
     accountId: pulumi.Input<string>;
     /**
-     * Direction to sort objects
+     * Direction to sort objects.
      * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string | undefined>;
@@ -175,20 +150,17 @@ export interface GetSecretsStoreSecretsOutputArgs {
      */
     maxItems?: pulumi.Input<number | undefined>;
     /**
-     * Order secrets by values in the given field
+     * Order secrets by values in the given field.
      * Available values: "name", "comment", "created", "modified", "status".
      */
     order?: pulumi.Input<string | undefined>;
     /**
-     * Only secrets with the given scopes will be returned
+     * Only secrets with the given scopes will be returned.
      */
-    scopes?: pulumi.Input<pulumi.Input<pulumi.Input<string>[]>[] | undefined>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Search secrets using a filter string, filtering across name and comment
+     * Search secrets using a filter string, filtering across name and comment.
      */
     search?: pulumi.Input<string | undefined>;
-    /**
-     * Store Identifier
-     */
     storeId: pulumi.Input<string>;
 }

@@ -9,6 +9,7 @@ import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileState;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceCustomProfileDnsSearchSuffix;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceCustomProfileExclude;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceCustomProfileFallbackDomain;
+import com.pulumi.cloudflare.outputs.ZeroTrustDeviceCustomProfileGlobalAcceleration;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceCustomProfileInclude;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceCustomProfileServiceModeV2;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceCustomProfileTargetTest;
@@ -291,6 +292,20 @@ public class ZeroTrustDeviceCustomProfile extends com.pulumi.resources.CustomRes
 
     public Output<String> gatewayUniqueId() {
         return this.gatewayUniqueId;
+    }
+    /**
+     * Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+     * 
+     */
+    @Export(name="globalAcceleration", refs={ZeroTrustDeviceCustomProfileGlobalAcceleration.class}, tree="[0]")
+    private Output</* @Nullable */ ZeroTrustDeviceCustomProfileGlobalAcceleration> globalAcceleration;
+
+    /**
+     * @return Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+     * 
+     */
+    public Output<Optional<ZeroTrustDeviceCustomProfileGlobalAcceleration>> globalAcceleration() {
+        return Codegen.optional(this.globalAcceleration);
     }
     /**
      * List of routes included in the WARP client&#39;s tunnel. Both &#39;exclude&#39; and &#39;include&#39; cannot be set in the same request.

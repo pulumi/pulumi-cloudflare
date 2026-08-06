@@ -19,8 +19,8 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleLoadBalancer = cloudflare.getLoadBalancer({
- *     zoneId: "699d98642c564d2e855e9661899b7252",
  *     loadBalancerId: "699d98642c564d2e855e9661899b7252",
+ *     zoneId: "zone_id",
  * });
  * ```
  */
@@ -153,8 +153,8 @@ export interface GetLoadBalancerResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleLoadBalancer = cloudflare.getLoadBalancer({
- *     zoneId: "699d98642c564d2e855e9661899b7252",
  *     loadBalancerId: "699d98642c564d2e855e9661899b7252",
+ *     zoneId: "zone_id",
  * });
  * ```
  */

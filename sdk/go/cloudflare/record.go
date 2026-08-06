@@ -75,7 +75,7 @@ type Record struct {
 	Content pulumi.StringOutput `pulumi:"content"`
 	// When the record was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
-	// Components of a CAA record.
+	// Components of a MX record.
 	Data RecordDataPtrOutput `pulumi:"data"`
 	// Extra Cloudflare-specific information about the record.
 	Meta pulumi.StringOutput `pulumi:"meta"`
@@ -162,7 +162,7 @@ type recordState struct {
 	Content *string `pulumi:"content"`
 	// When the record was created.
 	CreatedOn *string `pulumi:"createdOn"`
-	// Components of a CAA record.
+	// Components of a MX record.
 	Data *RecordData `pulumi:"data"`
 	// Extra Cloudflare-specific information about the record.
 	Meta *string `pulumi:"meta"`
@@ -202,7 +202,7 @@ type RecordState struct {
 	Content pulumi.StringPtrInput
 	// When the record was created.
 	CreatedOn pulumi.StringPtrInput
-	// Components of a CAA record.
+	// Components of a MX record.
 	Data RecordDataPtrInput
 	// Extra Cloudflare-specific information about the record.
 	Meta pulumi.StringPtrInput
@@ -242,7 +242,7 @@ type recordArgs struct {
 	Comment *string `pulumi:"comment"`
 	// A valid IPv4 address.
 	Content *string `pulumi:"content"`
-	// Components of a CAA record.
+	// Components of a MX record.
 	Data *RecordData `pulumi:"data"`
 	// DNS record name (or @ for the zone apex) in Punycode.
 	Name string `pulumi:"name"`
@@ -271,7 +271,7 @@ type RecordArgs struct {
 	Comment pulumi.StringPtrInput
 	// A valid IPv4 address.
 	Content pulumi.StringPtrInput
-	// Components of a CAA record.
+	// Components of a MX record.
 	Data RecordDataPtrInput
 	// DNS record name (or @ for the zone apex) in Punycode.
 	Name pulumi.StringInput
@@ -401,7 +401,7 @@ func (o RecordOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// Components of a CAA record.
+// Components of a MX record.
 func (o RecordOutput) Data() RecordDataPtrOutput {
 	return o.ApplyT(func(v *Record) RecordDataPtrOutput { return v.Data }).(RecordDataPtrOutput)
 }

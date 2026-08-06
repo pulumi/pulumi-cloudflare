@@ -87,6 +87,11 @@ namespace Pulumi.Cloudflare
     ///                 Duration = "300s",
     ///                 Enforce = true,
     ///             },
+    ///             DeleteHeaders = new[]
+    ///             {
+    ///                 "X-Old-Header",
+    ///                 "X-Remove-Me",
+    ///             },
     ///             DnsResolvers = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs
     ///             {
     ///                 Ipv4s = new[]
@@ -165,6 +170,13 @@ namespace Pulumi.Cloudflare
     ///                 ViewId = "view_id",
     ///             },
     ///             ResolveDnsThroughCloudflare = true,
+    ///             SetHeaders = 
+    ///             {
+    ///                 { "X-User-Identity", new[]
+    ///                 {
+    ///                     "user=@{identity.name}",
+    ///                 } },
+    ///             },
     ///             UntrustedCert = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs
     ///             {
     ///                 Action = "error",

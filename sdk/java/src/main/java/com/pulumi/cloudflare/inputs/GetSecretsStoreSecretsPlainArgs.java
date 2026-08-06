@@ -17,23 +17,15 @@ public final class GetSecretsStoreSecretsPlainArgs extends com.pulumi.resources.
 
     public static final GetSecretsStoreSecretsPlainArgs Empty = new GetSecretsStoreSecretsPlainArgs();
 
-    /**
-     * Account Identifier
-     * 
-     */
     @Import(name="accountId", required=true)
     private String accountId;
 
-    /**
-     * @return Account Identifier
-     * 
-     */
     public String accountId() {
         return this.accountId;
     }
 
     /**
-     * Direction to sort objects
+     * Direction to sort objects.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
@@ -41,7 +33,7 @@ public final class GetSecretsStoreSecretsPlainArgs extends com.pulumi.resources.
     private @Nullable String direction;
 
     /**
-     * @return Direction to sort objects
+     * @return Direction to sort objects.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
@@ -65,7 +57,7 @@ public final class GetSecretsStoreSecretsPlainArgs extends com.pulumi.resources.
     }
 
     /**
-     * Order secrets by values in the given field
+     * Order secrets by values in the given field.
      * Available values: &#34;name&#34;, &#34;comment&#34;, &#34;created&#34;, &#34;modified&#34;, &#34;status&#34;.
      * 
      */
@@ -73,7 +65,7 @@ public final class GetSecretsStoreSecretsPlainArgs extends com.pulumi.resources.
     private @Nullable String order;
 
     /**
-     * @return Order secrets by values in the given field
+     * @return Order secrets by values in the given field.
      * Available values: &#34;name&#34;, &#34;comment&#34;, &#34;created&#34;, &#34;modified&#34;, &#34;status&#34;.
      * 
      */
@@ -82,46 +74,38 @@ public final class GetSecretsStoreSecretsPlainArgs extends com.pulumi.resources.
     }
 
     /**
-     * Only secrets with the given scopes will be returned
+     * Only secrets with the given scopes will be returned.
      * 
      */
     @Import(name="scopes")
-    private @Nullable List<List<String>> scopes;
+    private @Nullable List<String> scopes;
 
     /**
-     * @return Only secrets with the given scopes will be returned
+     * @return Only secrets with the given scopes will be returned.
      * 
      */
-    public Optional<List<List<String>>> scopes() {
+    public Optional<List<String>> scopes() {
         return Optional.ofNullable(this.scopes);
     }
 
     /**
-     * Search secrets using a filter string, filtering across name and comment
+     * Search secrets using a filter string, filtering across name and comment.
      * 
      */
     @Import(name="search")
     private @Nullable String search;
 
     /**
-     * @return Search secrets using a filter string, filtering across name and comment
+     * @return Search secrets using a filter string, filtering across name and comment.
      * 
      */
     public Optional<String> search() {
         return Optional.ofNullable(this.search);
     }
 
-    /**
-     * Store Identifier
-     * 
-     */
     @Import(name="storeId", required=true)
     private String storeId;
 
-    /**
-     * @return Store Identifier
-     * 
-     */
     public String storeId() {
         return this.storeId;
     }
@@ -156,19 +140,13 @@ public final class GetSecretsStoreSecretsPlainArgs extends com.pulumi.resources.
             $ = new GetSecretsStoreSecretsPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId Account Identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param direction Direction to sort objects
+         * @param direction Direction to sort objects.
          * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
@@ -191,7 +169,7 @@ public final class GetSecretsStoreSecretsPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param order Order secrets by values in the given field
+         * @param order Order secrets by values in the given field.
          * Available values: &#34;name&#34;, &#34;comment&#34;, &#34;created&#34;, &#34;modified&#34;, &#34;status&#34;.
          * 
          * @return builder
@@ -203,28 +181,28 @@ public final class GetSecretsStoreSecretsPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param scopes Only secrets with the given scopes will be returned
+         * @param scopes Only secrets with the given scopes will be returned.
          * 
          * @return builder
          * 
          */
-        public Builder scopes(@Nullable List<List<String>> scopes) {
+        public Builder scopes(@Nullable List<String> scopes) {
             $.scopes = scopes;
             return this;
         }
 
         /**
-         * @param scopes Only secrets with the given scopes will be returned
+         * @param scopes Only secrets with the given scopes will be returned.
          * 
          * @return builder
          * 
          */
-        public Builder scopes(List<String>... scopes) {
+        public Builder scopes(String... scopes) {
             return scopes(List.of(scopes));
         }
 
         /**
-         * @param search Search secrets using a filter string, filtering across name and comment
+         * @param search Search secrets using a filter string, filtering across name and comment.
          * 
          * @return builder
          * 
@@ -234,12 +212,6 @@ public final class GetSecretsStoreSecretsPlainArgs extends com.pulumi.resources.
             return this;
         }
 
-        /**
-         * @param storeId Store Identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder storeId(String storeId) {
             $.storeId = storeId;
             return this;
