@@ -50,7 +50,7 @@ import (
 //			_, err = cloudflare.NewZeroTrustDlpCustomEntry(ctx, "example_custom_entry", &cloudflare.ZeroTrustDlpCustomEntryArgs{
 //				Name:      pulumi.String("custom"),
 //				AccountId: pulumi.String("account_id"),
-//				ProfileId: exampleZeroTrustDlpCustomProfile.ID(),
+//				ProfileId: exampleZeroTrustDlpCustomProfile.ID().ToIDOutput().ToStringOutput(),
 //				Pattern: &cloudflare.ZeroTrustDlpCustomEntryPatternArgs{
 //					Regex: pulumi.String("customentryregex"),
 //				},

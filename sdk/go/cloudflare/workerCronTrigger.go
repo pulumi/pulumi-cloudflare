@@ -34,8 +34,8 @@ import (
 //			_, err := cloudflare.NewWorkersCronTrigger(ctx, "example_workers_cron_trigger", &cloudflare.WorkersCronTriggerArgs{
 //				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ScriptName: pulumi.String("this-is_my_script-01"),
-//				Body: []map[string]interface{}{
-//					map[string]interface{}{
+//				Body: []map[string]string{
+//					{
 //						"cron": "*/30 * * * *",
 //					},
 //				},
