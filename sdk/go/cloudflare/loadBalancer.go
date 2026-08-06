@@ -32,7 +32,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewLoadBalancer(ctx, "example_load_balancer", &cloudflare.LoadBalancerArgs{
-//				ZoneId: pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				DefaultPools: pulumi.StringArray{
 //					pulumi.String("17b5962d775c646f3f9725cbc7a53df4"),
 //					pulumi.String("9290f38c5d07c2e2f4df57b1f61d4196"),
@@ -40,6 +39,7 @@ import (
 //				},
 //				FallbackPool: pulumi.String("fallback_pool"),
 //				Name:         pulumi.String("www.example.com"),
+//				ZoneId:       pulumi.String("zone_id"),
 //				AdaptiveRouting: &cloudflare.LoadBalancerAdaptiveRoutingArgs{
 //					FailoverAcrossPools: pulumi.Bool(true),
 //				},
@@ -53,6 +53,7 @@ import (
 //					},
 //				},
 //				Description: pulumi.String("Load Balancer for www.example.com"),
+//				Enabled:     pulumi.Bool(true),
 //				LocationStrategy: &cloudflare.LoadBalancerLocationStrategyArgs{
 //					Mode:      pulumi.String("resolver_ip"),
 //					PreferEcs: pulumi.String("always"),
@@ -123,6 +124,14 @@ import (
 //							LocationStrategy: &cloudflare.LoadBalancerRuleOverridesLocationStrategyArgs{
 //								Mode:      pulumi.String("resolver_ip"),
 //								PreferEcs: pulumi.String("always"),
+//							},
+//							PoolDefaultWeight: 0.2,
+//							PoolWeights: map[string]interface{}{
+//								"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
+//								"de90f38ced07c2e2f4df50b1f61d4194": 0.3,
+//							},
+//							Pools: []string{
+//								"17b5962d775c646f3f9725cbc7a53df4",
 //							},
 //							PopPools: pulumi.StringArrayMap{
 //								"LAX": pulumi.StringArray{
@@ -199,7 +208,7 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '<zone_id>/<load_balancer_id>'
+// $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '<{accounts|zones}/{account_id|zone_id}>/<load_balancer_id>'
 // ```
 type LoadBalancer struct {
 	pulumi.CustomResourceState

@@ -74,7 +74,7 @@ type LookupDnsRecordResult struct {
 	Content string `pulumi:"content"`
 	// When the record was created.
 	CreatedOn string `pulumi:"createdOn"`
-	// Components of a CAA record.
+	// Components of a MX record.
 	Data GetDnsRecordData `pulumi:"data"`
 	// Identifier.
 	DnsRecordId *string             `pulumi:"dnsRecordId"`
@@ -171,7 +171,7 @@ func (o LookupDnsRecordResultOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// Components of a CAA record.
+// Components of a MX record.
 func (o LookupDnsRecordResultOutput) Data() GetDnsRecordDataOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) GetDnsRecordData { return v.Data }).(GetDnsRecordDataOutput)
 }

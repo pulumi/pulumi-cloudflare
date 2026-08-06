@@ -50,13 +50,13 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Freeform text describing the secret
+        /// Freeform text describing the secret.
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// Whenthe secret was created.
+        /// When the secret was created.
         /// </summary>
         [Output("created")]
         public Output<string> Created { get; private set; } = null!;
@@ -74,7 +74,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The list of services that can use this secret. Valid values are `Workers`, `AiGateway`, `Dex`, and `Access`. Must be listed in alphabetical order.
+        /// The list of services that can use this secret.
         /// </summary>
         [Output("scopes")]
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Freeform text describing the secret
+        /// Freeform text describing the secret.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
@@ -169,7 +169,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// The list of services that can use this secret. Valid values are `Workers`, `AiGateway`, `Dex`, and `Access`. Must be listed in alphabetical order.
+        /// The list of services that can use this secret.
         /// </summary>
         public InputList<string> Scopes
         {
@@ -214,13 +214,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Freeform text describing the secret
+        /// Freeform text describing the secret.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Whenthe secret was created.
+        /// When the secret was created.
         /// </summary>
         [Input("created")]
         public Input<string>? Created { get; set; }
@@ -241,7 +241,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// The list of services that can use this secret. Valid values are `Workers`, `AiGateway`, `Dex`, and `Access`. Must be listed in alphabetical order.
+        /// The list of services that can use this secret.
         /// </summary>
         public InputList<string> Scopes
         {

@@ -54,16 +54,13 @@ class GetSecretsStoreResult:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
-        """
-        Account Identifier
-        """
         return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter
     def created(self) -> _builtins.str:
         """
-        Whenthe secret was created.
+        When the secret was created.
         """
         return pulumi.get(self, "created")
 
@@ -76,7 +73,7 @@ class GetSecretsStoreResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Store Identifier
+        The ID of this resource.
         """
         return pulumi.get(self, "id")
 
@@ -92,16 +89,13 @@ class GetSecretsStoreResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the store
+        The name of the store.
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="storeId")
     def store_id(self) -> Optional[_builtins.str]:
-        """
-        Store Identifier
-        """
         return pulumi.get(self, "store_id")
 
 
@@ -139,10 +133,6 @@ def get_secrets_store(account_id: Optional[_builtins.str] = None,
     example_secrets_store = cloudflare.get_secrets_store(account_id="985e105f4ecef8ad9ca31a8372d0c353",
         store_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
-
-
-    :param _builtins.str account_id: Account Identifier
-    :param _builtins.str store_id: Store Identifier
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -178,10 +168,6 @@ def get_secrets_store_output(account_id: pulumi.Input[Optional[_builtins.str]] =
     example_secrets_store = cloudflare.get_secrets_store(account_id="985e105f4ecef8ad9ca31a8372d0c353",
         store_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
-
-
-    :param _builtins.str account_id: Account Identifier
-    :param _builtins.str store_id: Store Identifier
     """
     __args__ = dict()
     __args__['accountId'] = account_id

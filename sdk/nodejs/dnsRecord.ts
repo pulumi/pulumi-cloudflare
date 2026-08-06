@@ -86,7 +86,7 @@ export class DnsRecord extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
-     * Components of a CAA record.
+     * Components of a MX record.
      */
     declare public readonly data: pulumi.Output<outputs.DnsRecordData | undefined>;
     /**
@@ -235,7 +235,7 @@ export interface DnsRecordState {
      */
     createdOn?: pulumi.Input<string | undefined>;
     /**
-     * Components of a CAA record.
+     * Components of a MX record.
      */
     data?: pulumi.Input<inputs.DnsRecordData | undefined>;
     /**
@@ -306,7 +306,7 @@ export interface DnsRecordArgs {
      */
     content?: pulumi.Input<string | undefined>;
     /**
-     * Components of a CAA record.
+     * Components of a MX record.
      */
     data?: pulumi.Input<inputs.DnsRecordData | undefined>;
     /**

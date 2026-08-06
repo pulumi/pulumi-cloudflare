@@ -14,15 +14,15 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetSecretsStoresResultResult
     {
         /// <summary>
-        /// Account Identifier
+        /// Account Identifier.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// Whenthe secret was created.
+        /// When the secret was created.
         /// </summary>
         public readonly string Created;
         /// <summary>
-        /// Store Identifier
+        /// Store Identifier.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Modified;
         /// <summary>
-        /// The name of the store
+        /// The name of the store.
         /// </summary>
         public readonly string Name;
 

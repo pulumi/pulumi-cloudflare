@@ -13,6 +13,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Double;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -47,7 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleAccountSubscription = new AccountSubscription("exampleAccountSubscription", AccountSubscriptionArgs.builder()
- *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .accountId("account_id")
  *             .frequency("monthly")
  *             .ratePlan(AccountSubscriptionRatePlanArgs.builder()
  *                 .id("free")
@@ -75,18 +76,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/accountSubscription:AccountSubscription")
 public class AccountSubscription extends com.pulumi.resources.CustomResource {
     /**
-     * Identifier
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return Identifier
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * The monetary unit in which pricing information is displayed.
@@ -203,7 +204,7 @@ public class AccountSubscription extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccountSubscription(java.lang.String name, AccountSubscriptionArgs args) {
+    public AccountSubscription(java.lang.String name, @Nullable AccountSubscriptionArgs args) {
         this(name, args, null);
     }
     /**
@@ -212,7 +213,7 @@ public class AccountSubscription extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccountSubscription(java.lang.String name, AccountSubscriptionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public AccountSubscription(java.lang.String name, @Nullable AccountSubscriptionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/accountSubscription:AccountSubscription", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -220,7 +221,7 @@ public class AccountSubscription extends com.pulumi.resources.CustomResource {
         super("cloudflare:index/accountSubscription:AccountSubscription", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static AccountSubscriptionArgs makeArgs(AccountSubscriptionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static AccountSubscriptionArgs makeArgs(@Nullable AccountSubscriptionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

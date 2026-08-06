@@ -4,6 +4,8 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -31,10 +33,26 @@ public final class GetApiTokenFilter extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.direction);
     }
 
+    /**
+     * When true, includes recently-expired tokens in the response.
+     * 
+     */
+    @Import(name="includeExpired", required=true)
+    private Boolean includeExpired;
+
+    /**
+     * @return When true, includes recently-expired tokens in the response.
+     * 
+     */
+    public Boolean includeExpired() {
+        return this.includeExpired;
+    }
+
     private GetApiTokenFilter() {}
 
     private GetApiTokenFilter(GetApiTokenFilter $) {
         this.direction = $.direction;
+        this.includeExpired = $.includeExpired;
     }
 
     public static Builder builder() {
@@ -67,7 +85,21 @@ public final class GetApiTokenFilter extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param includeExpired When true, includes recently-expired tokens in the response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeExpired(Boolean includeExpired) {
+            $.includeExpired = includeExpired;
+            return this;
+        }
+
         public GetApiTokenFilter build() {
+            if ($.includeExpired == null) {
+                throw new MissingRequiredPropertyException("GetApiTokenFilter", "includeExpired");
+            }
             return $;
         }
     }

@@ -3,8 +3,8 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetCustomCsrFilter;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -34,15 +34,22 @@ public final class GetCustomCsrPlainArgs extends com.pulumi.resources.InvokeArgs
      * Custom CSR identifier tag.
      * 
      */
-    @Import(name="customCsrId", required=true)
-    private String customCsrId;
+    @Import(name="customCsrId")
+    private @Nullable String customCsrId;
 
     /**
      * @return Custom CSR identifier tag.
      * 
      */
-    public String customCsrId() {
-        return this.customCsrId;
+    public Optional<String> customCsrId() {
+        return Optional.ofNullable(this.customCsrId);
+    }
+
+    @Import(name="filter")
+    private @Nullable GetCustomCsrFilter filter;
+
+    public Optional<GetCustomCsrFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
@@ -65,6 +72,7 @@ public final class GetCustomCsrPlainArgs extends com.pulumi.resources.InvokeArgs
     private GetCustomCsrPlainArgs(GetCustomCsrPlainArgs $) {
         this.accountId = $.accountId;
         this.customCsrId = $.customCsrId;
+        this.filter = $.filter;
         this.zoneId = $.zoneId;
     }
 
@@ -103,8 +111,13 @@ public final class GetCustomCsrPlainArgs extends com.pulumi.resources.InvokeArgs
          * @return builder
          * 
          */
-        public Builder customCsrId(String customCsrId) {
+        public Builder customCsrId(@Nullable String customCsrId) {
             $.customCsrId = customCsrId;
+            return this;
+        }
+
+        public Builder filter(@Nullable GetCustomCsrFilter filter) {
+            $.filter = filter;
             return this;
         }
 
@@ -120,9 +133,6 @@ public final class GetCustomCsrPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         public GetCustomCsrPlainArgs build() {
-            if ($.customCsrId == null) {
-                throw new MissingRequiredPropertyException("GetCustomCsrPlainArgs", "customCsrId");
-            }
             return $;
         }
     }

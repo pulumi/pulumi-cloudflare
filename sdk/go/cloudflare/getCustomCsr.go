@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetCustomCsr(ctx, &cloudflare.LookupCustomCsrArgs{
-//				CustomCsrId: "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
+//				CustomCsrId: pulumi.StringRef("7b163417-1d2b-4c84-a38a-2fb7a0cd7752"),
 //				AccountId:   pulumi.StringRef("account_id"),
 //				ZoneId:      pulumi.StringRef("zone_id"),
 //			}, nil)
@@ -58,7 +58,8 @@ type LookupCustomCsrArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
 	// Custom CSR identifier tag.
-	CustomCsrId string `pulumi:"customCsrId"`
+	CustomCsrId *string             `pulumi:"customCsrId"`
+	Filter      *GetCustomCsrFilter `pulumi:"filter"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -78,9 +79,10 @@ type LookupCustomCsrResult struct {
 	// The PEM-encoded Certificate Signing Request.
 	Csr string `pulumi:"csr"`
 	// Custom CSR identifier tag.
-	CustomCsrId string `pulumi:"customCsrId"`
+	CustomCsrId *string `pulumi:"customCsrId"`
 	// Optional description for the CSR.
-	Description string `pulumi:"description"`
+	Description string              `pulumi:"description"`
+	Filter      *GetCustomCsrFilter `pulumi:"filter"`
 	// Custom CSR identifier tag.
 	Id string `pulumi:"id"`
 	// The key algorithm used to generate the CSR.
@@ -116,7 +118,8 @@ type LookupCustomCsrOutputArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Custom CSR identifier tag.
-	CustomCsrId pulumi.StringInput `pulumi:"customCsrId"`
+	CustomCsrId pulumi.StringPtrInput      `pulumi:"customCsrId"`
+	Filter      GetCustomCsrFilterPtrInput `pulumi:"filter"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
@@ -171,13 +174,17 @@ func (o LookupCustomCsrResultOutput) Csr() pulumi.StringOutput {
 }
 
 // Custom CSR identifier tag.
-func (o LookupCustomCsrResultOutput) CustomCsrId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCustomCsrResult) string { return v.CustomCsrId }).(pulumi.StringOutput)
+func (o LookupCustomCsrResultOutput) CustomCsrId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCustomCsrResult) *string { return v.CustomCsrId }).(pulumi.StringPtrOutput)
 }
 
 // Optional description for the CSR.
 func (o LookupCustomCsrResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomCsrResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupCustomCsrResultOutput) Filter() GetCustomCsrFilterPtrOutput {
+	return o.ApplyT(func(v LookupCustomCsrResult) *GetCustomCsrFilter { return v.Filter }).(GetCustomCsrFilterPtrOutput)
 }
 
 // Custom CSR identifier tag.

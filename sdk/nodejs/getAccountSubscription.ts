@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleAccountSubscription = cloudflare.getAccountSubscription({
- *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     accountId: "account_id",
  * });
  * ```
  */
@@ -28,6 +28,7 @@ export function getAccountSubscription(args?: GetAccountSubscriptionArgs, opts?:
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountSubscription:getAccountSubscription", {
         "accountId": args.accountId,
+        "zoneId": args.zoneId,
     }, opts);
 }
 
@@ -36,9 +37,13 @@ export function getAccountSubscription(args?: GetAccountSubscriptionArgs, opts?:
  */
 export interface GetAccountSubscriptionArgs {
     /**
-     * Identifier
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: string;
+    /**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     */
+    zoneId?: string;
 }
 
 /**
@@ -46,7 +51,7 @@ export interface GetAccountSubscriptionArgs {
  */
 export interface GetAccountSubscriptionResult {
     /**
-     * Identifier
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     readonly accountId?: string;
     /**
@@ -67,7 +72,7 @@ export interface GetAccountSubscriptionResult {
      */
     readonly frequency: string;
     /**
-     * Identifier
+     * Subscription identifier tag.
      */
     readonly id: string;
     /**
@@ -83,6 +88,10 @@ export interface GetAccountSubscriptionResult {
      * Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
      */
     readonly state: string;
+    /**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     */
+    readonly zoneId?: string;
 }
 /**
  * Accepted Permissions
@@ -97,7 +106,7 @@ export interface GetAccountSubscriptionResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleAccountSubscription = cloudflare.getAccountSubscription({
- *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     accountId: "account_id",
  * });
  * ```
  */
@@ -106,6 +115,7 @@ export function getAccountSubscriptionOutput(args?: GetAccountSubscriptionOutput
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountSubscription:getAccountSubscription", {
         "accountId": args.accountId,
+        "zoneId": args.zoneId,
     }, opts);
 }
 
@@ -114,7 +124,11 @@ export function getAccountSubscriptionOutput(args?: GetAccountSubscriptionOutput
  */
 export interface GetAccountSubscriptionOutputArgs {
     /**
-     * Identifier
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string | undefined>;
+    /**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     */
+    zoneId?: pulumi.Input<string | undefined>;
 }

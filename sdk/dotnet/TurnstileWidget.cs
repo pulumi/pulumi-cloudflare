@@ -84,6 +84,16 @@ namespace Pulumi.Cloudflare
         [Output("createdOn")]
         public Output<string> CreatedOn { get; private set; } = null!;
 
+        /// <summary>
+        /// Origin that created this widget, recorded at creation time and
+        /// immutable afterward. Server-derived from the create request; not
+        /// client-settable. Omitted from the response for widgets created
+        /// before this field existed.
+        /// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+        /// </summary>
+        [Output("deployedVia")]
+        public Output<string> DeployedVia { get; private set; } = null!;
+
         [Output("domains")]
         public Output<ImmutableArray<string>> Domains { get; private set; } = null!;
 
@@ -92,6 +102,15 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("ephemeralId")]
         public Output<bool> EphemeralId { get; private set; } = null!;
+
+        /// <summary>
+        /// Origin of the most recent mutation (create, update, delete, or
+        /// secret rotation). Server-derived; not client-settable. Omitted for
+        /// widgets last mutated before this field existed.
+        /// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+        /// </summary>
+        [Output("lastModifiedVia")]
+        public Output<string> LastModifiedVia { get; private set; } = null!;
 
         /// <summary>
         /// Widget Mode
@@ -287,6 +306,16 @@ namespace Pulumi.Cloudflare
         [Input("createdOn")]
         public Input<string>? CreatedOn { get; set; }
 
+        /// <summary>
+        /// Origin that created this widget, recorded at creation time and
+        /// immutable afterward. Server-derived from the create request; not
+        /// client-settable. Omitted from the response for widgets created
+        /// before this field existed.
+        /// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+        /// </summary>
+        [Input("deployedVia")]
+        public Input<string>? DeployedVia { get; set; }
+
         [Input("domains")]
         private InputList<string>? _domains;
         public InputList<string> Domains
@@ -300,6 +329,15 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("ephemeralId")]
         public Input<bool>? EphemeralId { get; set; }
+
+        /// <summary>
+        /// Origin of the most recent mutation (create, update, delete, or
+        /// secret rotation). Server-derived; not client-settable. Omitted for
+        /// widgets last mutated before this field existed.
+        /// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+        /// </summary>
+        [Input("lastModifiedVia")]
+        public Input<string>? LastModifiedVia { get; set; }
 
         /// <summary>
         /// Widget Mode

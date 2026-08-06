@@ -59,6 +59,8 @@ type LookupZeroTrustDevicePostureRuleResult struct {
 	AccountId *string `pulumi:"accountId"`
 	// The description of the device posture rule.
 	Description string `pulumi:"description"`
+	// Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issueCount input, and true otherwise.
+	Enabled bool `pulumi:"enabled"`
 	// Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
 	Expiration string `pulumi:"expiration"`
 	// API UUID.
@@ -120,6 +122,11 @@ func (o LookupZeroTrustDevicePostureRuleResultOutput) AccountId() pulumi.StringP
 // The description of the device posture rule.
 func (o LookupZeroTrustDevicePostureRuleResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDevicePostureRuleResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issueCount input, and true otherwise.
+func (o LookupZeroTrustDevicePostureRuleResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustDevicePostureRuleResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.

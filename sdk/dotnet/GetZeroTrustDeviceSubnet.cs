@@ -146,6 +146,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
+        /// IP capacity information for the subnet.
+        /// </summary>
+        public readonly Outputs.GetZeroTrustDeviceSubnetCapacityResult Capacity;
+        /// <summary>
         /// An optional description of the subnet.
         /// </summary>
         public readonly string Comment;
@@ -179,13 +183,15 @@ namespace Pulumi.Cloudflare
         public readonly string SubnetId;
         /// <summary>
         /// The type of subnet.
-        /// Available values: "CloudflareSource", "warp".
+        /// Available values: "cloudflare*source", "initial*resolved_ip", "warp".
         /// </summary>
         public readonly string SubnetType;
 
         [OutputConstructor]
         private GetZeroTrustDeviceSubnetResult(
             string? accountId,
+
+            Outputs.GetZeroTrustDeviceSubnetCapacityResult capacity,
 
             string comment,
 
@@ -206,6 +212,7 @@ namespace Pulumi.Cloudflare
             string subnetType)
         {
             AccountId = accountId;
+            Capacity = capacity;
             Comment = comment;
             CreatedAt = createdAt;
             DeletedAt = deletedAt;

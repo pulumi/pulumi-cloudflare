@@ -51994,11 +51994,13 @@ type AiSearchInstancePublicEndpointParams struct {
 	AuthorizedHosts         []string                                                     `pulumi:"authorizedHosts"`
 	ChatCompletionsEndpoint *AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint `pulumi:"chatCompletionsEndpoint"`
 	// Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
-	CustomDomains  []string                                            `pulumi:"customDomains"`
-	Enabled        *bool                                               `pulumi:"enabled"`
-	Mcp            *AiSearchInstancePublicEndpointParamsMcp            `pulumi:"mcp"`
-	RateLimit      *AiSearchInstancePublicEndpointParamsRateLimit      `pulumi:"rateLimit"`
-	SearchEndpoint *AiSearchInstancePublicEndpointParamsSearchEndpoint `pulumi:"searchEndpoint"`
+	CustomDomains []string `pulumi:"customDomains"`
+	// When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+	DefaultDomainEnabled *bool                                               `pulumi:"defaultDomainEnabled"`
+	Enabled              *bool                                               `pulumi:"enabled"`
+	Mcp                  *AiSearchInstancePublicEndpointParamsMcp            `pulumi:"mcp"`
+	RateLimit            *AiSearchInstancePublicEndpointParamsRateLimit      `pulumi:"rateLimit"`
+	SearchEndpoint       *AiSearchInstancePublicEndpointParamsSearchEndpoint `pulumi:"searchEndpoint"`
 }
 
 // AiSearchInstancePublicEndpointParamsInput is an input type that accepts AiSearchInstancePublicEndpointParamsArgs and AiSearchInstancePublicEndpointParamsOutput values.
@@ -52016,11 +52018,13 @@ type AiSearchInstancePublicEndpointParamsArgs struct {
 	AuthorizedHosts         pulumi.StringArrayInput                                             `pulumi:"authorizedHosts"`
 	ChatCompletionsEndpoint AiSearchInstancePublicEndpointParamsChatCompletionsEndpointPtrInput `pulumi:"chatCompletionsEndpoint"`
 	// Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
-	CustomDomains  pulumi.StringArrayInput                                    `pulumi:"customDomains"`
-	Enabled        pulumi.BoolPtrInput                                        `pulumi:"enabled"`
-	Mcp            AiSearchInstancePublicEndpointParamsMcpPtrInput            `pulumi:"mcp"`
-	RateLimit      AiSearchInstancePublicEndpointParamsRateLimitPtrInput      `pulumi:"rateLimit"`
-	SearchEndpoint AiSearchInstancePublicEndpointParamsSearchEndpointPtrInput `pulumi:"searchEndpoint"`
+	CustomDomains pulumi.StringArrayInput `pulumi:"customDomains"`
+	// When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+	DefaultDomainEnabled pulumi.BoolPtrInput                                        `pulumi:"defaultDomainEnabled"`
+	Enabled              pulumi.BoolPtrInput                                        `pulumi:"enabled"`
+	Mcp                  AiSearchInstancePublicEndpointParamsMcpPtrInput            `pulumi:"mcp"`
+	RateLimit            AiSearchInstancePublicEndpointParamsRateLimitPtrInput      `pulumi:"rateLimit"`
+	SearchEndpoint       AiSearchInstancePublicEndpointParamsSearchEndpointPtrInput `pulumi:"searchEndpoint"`
 }
 
 func (AiSearchInstancePublicEndpointParamsArgs) ElementType() reflect.Type {
@@ -52115,6 +52119,11 @@ func (o AiSearchInstancePublicEndpointParamsOutput) CustomDomains() pulumi.Strin
 	return o.ApplyT(func(v AiSearchInstancePublicEndpointParams) []string { return v.CustomDomains }).(pulumi.StringArrayOutput)
 }
 
+// When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+func (o AiSearchInstancePublicEndpointParamsOutput) DefaultDomainEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiSearchInstancePublicEndpointParams) *bool { return v.DefaultDomainEnabled }).(pulumi.BoolPtrOutput)
+}
+
 func (o AiSearchInstancePublicEndpointParamsOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AiSearchInstancePublicEndpointParams) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -52185,6 +52194,16 @@ func (o AiSearchInstancePublicEndpointParamsPtrOutput) CustomDomains() pulumi.St
 		}
 		return v.CustomDomains
 	}).(pulumi.StringArrayOutput)
+}
+
+// When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+func (o AiSearchInstancePublicEndpointParamsPtrOutput) DefaultDomainEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstancePublicEndpointParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultDomainEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o AiSearchInstancePublicEndpointParamsPtrOutput) Enabled() pulumi.BoolPtrOutput {
@@ -52819,7 +52838,7 @@ func (o AiSearchInstancePublicEndpointParamsSearchEndpointPtrOutput) Disabled() 
 type AiSearchInstanceRetrievalOptions struct {
 	// Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom*metadata field.
 	BoostBies []AiSearchInstanceRetrievalOptionsBoostBy `pulumi:"boostBies"`
-	// Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.
+	// Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.
 	// Available values: "and", "or".
 	KeywordMatchMode *string `pulumi:"keywordMatchMode"`
 }
@@ -52838,7 +52857,7 @@ type AiSearchInstanceRetrievalOptionsInput interface {
 type AiSearchInstanceRetrievalOptionsArgs struct {
 	// Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom*metadata field.
 	BoostBies AiSearchInstanceRetrievalOptionsBoostByArrayInput `pulumi:"boostBies"`
-	// Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.
+	// Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.
 	// Available values: "and", "or".
 	KeywordMatchMode pulumi.StringPtrInput `pulumi:"keywordMatchMode"`
 }
@@ -52925,7 +52944,7 @@ func (o AiSearchInstanceRetrievalOptionsOutput) BoostBies() AiSearchInstanceRetr
 	return o.ApplyT(func(v AiSearchInstanceRetrievalOptions) []AiSearchInstanceRetrievalOptionsBoostBy { return v.BoostBies }).(AiSearchInstanceRetrievalOptionsBoostByArrayOutput)
 }
 
-// Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.
+// Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.
 // Available values: "and", "or".
 func (o AiSearchInstanceRetrievalOptionsOutput) KeywordMatchMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiSearchInstanceRetrievalOptions) *string { return v.KeywordMatchMode }).(pulumi.StringPtrOutput)
@@ -52965,7 +52984,7 @@ func (o AiSearchInstanceRetrievalOptionsPtrOutput) BoostBies() AiSearchInstanceR
 	}).(AiSearchInstanceRetrievalOptionsBoostByArrayOutput)
 }
 
-// Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.
+// Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.
 // Available values: "and", "or".
 func (o AiSearchInstanceRetrievalOptionsPtrOutput) KeywordMatchMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiSearchInstanceRetrievalOptions) *string {
@@ -53938,7 +53957,7 @@ func (o AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput) StorageType
 }
 
 type ApiShieldAuthIdCharacteristic struct {
-	// The name of the characteristic field, i.e., the header or cookie name. When using type "jwt", this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `tokenConfigId` is the ID of the token configuration used in validating the JWT, and `jsonPath` is a RFC 9535 JSONPath expression.
+	// The name of the characteristic field, i.e., the header or cookie name.
 	Name string `pulumi:"name"`
 	// The type of characteristic.
 	// Available values: "header", "cookie", "jwt".
@@ -53957,7 +53976,7 @@ type ApiShieldAuthIdCharacteristicInput interface {
 }
 
 type ApiShieldAuthIdCharacteristicArgs struct {
-	// The name of the characteristic field, i.e., the header or cookie name. When using type "jwt", this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `tokenConfigId` is the ID of the token configuration used in validating the JWT, and `jsonPath` is a RFC 9535 JSONPath expression.
+	// The name of the characteristic field, i.e., the header or cookie name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The type of characteristic.
 	// Available values: "header", "cookie", "jwt".
@@ -54015,7 +54034,7 @@ func (o ApiShieldAuthIdCharacteristicOutput) ToApiShieldAuthIdCharacteristicOutp
 	return o
 }
 
-// The name of the characteristic field, i.e., the header or cookie name. When using type "jwt", this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `tokenConfigId` is the ID of the token configuration used in validating the JWT, and `jsonPath` is a RFC 9535 JSONPath expression.
+// The name of the characteristic field, i.e., the header or cookie name.
 func (o ApiShieldAuthIdCharacteristicOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiShieldAuthIdCharacteristic) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -55677,7 +55696,7 @@ func (o ApiShieldOperationFeaturesParameterSchemasParameterSchemasPtrOutput) Res
 type ApiShieldOperationFeaturesSchemaInfo struct {
 	// Schema active on endpoint.
 	ActiveSchema *ApiShieldOperationFeaturesSchemaInfoActiveSchema `pulumi:"activeSchema"`
-	// True if a Cloudflare-provided learned schema is available for this endpoint.
+	// Deprecated. Always false.
 	LearnedAvailable *bool `pulumi:"learnedAvailable"`
 	// Action taken on requests failing validation.
 	// Available values: "none", "log", "block".
@@ -55698,7 +55717,7 @@ type ApiShieldOperationFeaturesSchemaInfoInput interface {
 type ApiShieldOperationFeaturesSchemaInfoArgs struct {
 	// Schema active on endpoint.
 	ActiveSchema ApiShieldOperationFeaturesSchemaInfoActiveSchemaPtrInput `pulumi:"activeSchema"`
-	// True if a Cloudflare-provided learned schema is available for this endpoint.
+	// Deprecated. Always false.
 	LearnedAvailable pulumi.BoolPtrInput `pulumi:"learnedAvailable"`
 	// Action taken on requests failing validation.
 	// Available values: "none", "log", "block".
@@ -55789,7 +55808,7 @@ func (o ApiShieldOperationFeaturesSchemaInfoOutput) ActiveSchema() ApiShieldOper
 	}).(ApiShieldOperationFeaturesSchemaInfoActiveSchemaPtrOutput)
 }
 
-// True if a Cloudflare-provided learned schema is available for this endpoint.
+// Deprecated. Always false.
 func (o ApiShieldOperationFeaturesSchemaInfoOutput) LearnedAvailable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApiShieldOperationFeaturesSchemaInfo) *bool { return v.LearnedAvailable }).(pulumi.BoolPtrOutput)
 }
@@ -55834,7 +55853,7 @@ func (o ApiShieldOperationFeaturesSchemaInfoPtrOutput) ActiveSchema() ApiShieldO
 	}).(ApiShieldOperationFeaturesSchemaInfoActiveSchemaPtrOutput)
 }
 
-// True if a Cloudflare-provided learned schema is available for this endpoint.
+// Deprecated. Always false.
 func (o ApiShieldOperationFeaturesSchemaInfoPtrOutput) LearnedAvailable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApiShieldOperationFeaturesSchemaInfo) *bool {
 		if v == nil {
@@ -64432,7 +64451,7 @@ type DnsRecordData struct {
 	PrecisionVert *float64 `pulumi:"precisionVert"`
 	// Preference.
 	Preference *float64 `pulumi:"preference"`
-	// Priority.
+	// Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
 	Priority *float64 `pulumi:"priority"`
 	// Protocol.
 	Protocol *float64 `pulumi:"protocol"`
@@ -64450,7 +64469,7 @@ type DnsRecordData struct {
 	Size *float64 `pulumi:"size"`
 	// Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
 	Tag *string `pulumi:"tag"`
-	// Target.
+	// A valid mail server hostname, or "." for a NULL MX record.
 	Target *string `pulumi:"target"`
 	// Type.
 	Type *float64 `pulumi:"type"`
@@ -64520,7 +64539,7 @@ type DnsRecordDataArgs struct {
 	PrecisionVert pulumi.Float64PtrInput `pulumi:"precisionVert"`
 	// Preference.
 	Preference pulumi.Float64PtrInput `pulumi:"preference"`
-	// Priority.
+	// Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
 	Priority pulumi.Float64PtrInput `pulumi:"priority"`
 	// Protocol.
 	Protocol pulumi.Float64PtrInput `pulumi:"protocol"`
@@ -64538,7 +64557,7 @@ type DnsRecordDataArgs struct {
 	Size pulumi.Float64PtrInput `pulumi:"size"`
 	// Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
-	// Target.
+	// A valid mail server hostname, or "." for a NULL MX record.
 	Target pulumi.StringPtrInput `pulumi:"target"`
 	// Type.
 	Type pulumi.Float64PtrInput `pulumi:"type"`
@@ -64739,7 +64758,7 @@ func (o DnsRecordDataOutput) Preference() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v DnsRecordData) *float64 { return v.Preference }).(pulumi.Float64PtrOutput)
 }
 
-// Priority.
+// Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
 func (o DnsRecordDataOutput) Priority() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v DnsRecordData) *float64 { return v.Priority }).(pulumi.Float64PtrOutput)
 }
@@ -64784,7 +64803,7 @@ func (o DnsRecordDataOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DnsRecordData) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }
 
-// Target.
+// A valid mail server hostname, or "." for a NULL MX record.
 func (o DnsRecordDataOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DnsRecordData) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -65055,7 +65074,7 @@ func (o DnsRecordDataPtrOutput) Preference() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Priority.
+// Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
 func (o DnsRecordDataPtrOutput) Priority() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *DnsRecordData) *float64 {
 		if v == nil {
@@ -65145,7 +65164,7 @@ func (o DnsRecordDataPtrOutput) Tag() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Target.
+// A valid mail server hostname, or "." for a NULL MX record.
 func (o DnsRecordDataPtrOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DnsRecordData) *string {
 		if v == nil {

@@ -18,7 +18,7 @@ public final class GetApiShieldOperationFeaturesSchemaInfo {
      */
     private GetApiShieldOperationFeaturesSchemaInfoActiveSchema activeSchema;
     /**
-     * @return True if a Cloudflare-provided learned schema is available for this endpoint.
+     * @return Deprecated. Always false.
      * 
      */
     private Boolean learnedAvailable;
@@ -38,7 +38,7 @@ public final class GetApiShieldOperationFeaturesSchemaInfo {
         return this.activeSchema;
     }
     /**
-     * @return True if a Cloudflare-provided learned schema is available for this endpoint.
+     * @return Deprecated. Always false.
      * 
      */
     public Boolean learnedAvailable() {

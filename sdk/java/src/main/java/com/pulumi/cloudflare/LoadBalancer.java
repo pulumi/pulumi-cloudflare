@@ -64,13 +64,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleLoadBalancer = new LoadBalancer("exampleLoadBalancer", LoadBalancerArgs.builder()
- *             .zoneId("699d98642c564d2e855e9661899b7252")
  *             .defaultPools(            
  *                 "17b5962d775c646f3f9725cbc7a53df4",
  *                 "9290f38c5d07c2e2f4df57b1f61d4196",
  *                 "00920f38ce07c2e2f4df50b1f61d4194")
  *             .fallbackPool("fallback_pool")
  *             .name("www.example.com")
+ *             .zoneId("zone_id")
  *             .adaptiveRouting(LoadBalancerAdaptiveRoutingArgs.builder()
  *                 .failoverAcrossPools(true)
  *                 .build())
@@ -81,6 +81,7 @@ import javax.annotation.Nullable;
  *                     "00920f38ce07c2e2f4df50b1f61d4194"))
  *             ))
  *             .description("Load Balancer for www.example.com")
+ *             .enabled(true)
  *             .locationStrategy(LoadBalancerLocationStrategyArgs.builder()
  *                 .mode("resolver_ip")
  *                 .preferEcs("always")
@@ -138,6 +139,12 @@ import javax.annotation.Nullable;
  *                         .mode("resolver_ip")
  *                         .preferEcs("always")
  *                         .build())
+ *                     .poolDefaultWeight(0.2)
+ *                     .poolWeights(Map.ofEntries(
+ *                         Map.entry("9290f38c5d07c2e2f4df57b1f61d4196", 0.5),
+ *                         Map.entry("de90f38ced07c2e2f4df50b1f61d4194", 0.3)
+ *                     ))
+ *                     .pools(Arrays.asList("17b5962d775c646f3f9725cbc7a53df4"))
  *                     .popPools(Map.ofEntries(
  *                         Map.entry("LAX", Arrays.asList(                        
  *                             "de90f38ced07c2e2f4df50b1f61d4194",
@@ -198,7 +205,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example &#39;&lt;zone_id&gt;/&lt;load_balancer_id&gt;&#39;
+ * $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;load_balancer_id&gt;&#39;
  * ```
  * 
  */

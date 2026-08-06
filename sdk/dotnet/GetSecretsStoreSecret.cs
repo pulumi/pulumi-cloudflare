@@ -102,24 +102,15 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetSecretsStoreSecretArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Account Identifier
-        /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
         [Input("filter")]
         public Inputs.GetSecretsStoreSecretFilterArgs? Filter { get; set; }
 
-        /// <summary>
-        /// Secret identifier tag.
-        /// </summary>
         [Input("secretId")]
         public string? SecretId { get; set; }
 
-        /// <summary>
-        /// Store Identifier
-        /// </summary>
         [Input("storeId", required: true)]
         public string StoreId { get; set; } = null!;
 
@@ -131,24 +122,15 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetSecretsStoreSecretInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Account Identifier
-        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         [Input("filter")]
         public Input<Inputs.GetSecretsStoreSecretFilterInputArgs>? Filter { get; set; }
 
-        /// <summary>
-        /// Secret identifier tag.
-        /// </summary>
         [Input("secretId")]
         public Input<string>? SecretId { get; set; }
 
-        /// <summary>
-        /// Store Identifier
-        /// </summary>
         [Input("storeId", required: true)]
         public Input<string> StoreId { get; set; } = null!;
 
@@ -162,21 +144,18 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetSecretsStoreSecretResult
     {
-        /// <summary>
-        /// Account Identifier
-        /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// Freeform text describing the secret
+        /// Freeform text describing the secret.
         /// </summary>
         public readonly string Comment;
         /// <summary>
-        /// Whenthe secret was created.
+        /// When the secret was created.
         /// </summary>
         public readonly string Created;
         public readonly Outputs.GetSecretsStoreSecretFilterResult? Filter;
         /// <summary>
-        /// Secret identifier tag.
+        /// The ID of this resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -184,24 +163,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Modified;
         /// <summary>
-        /// The name of the secret
+        /// The name of the secret.
         /// </summary>
         public readonly string Name;
         /// <summary>
         /// The list of services that can use this secret.
         /// </summary>
         public readonly ImmutableArray<string> Scopes;
-        /// <summary>
-        /// Secret identifier tag.
-        /// </summary>
         public readonly string? SecretId;
         /// <summary>
         /// Available values: "pending", "active", "deleted".
         /// </summary>
         public readonly string Status;
-        /// <summary>
-        /// Store Identifier
-        /// </summary>
         public readonly string StoreId;
 
         [OutputConstructor]

@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetRulesetRuleActionParametersVaryResult
     {
         /// <summary>
-        /// Controls how a single request header (or the default for all headers) contributes to the cache key.
+        /// Controls how response Vary headers without a per-header override contribute to the cache key.
         /// </summary>
         public readonly Outputs.GetRulesetRuleActionParametersVaryDefaultResult Default;
         /// <summary>

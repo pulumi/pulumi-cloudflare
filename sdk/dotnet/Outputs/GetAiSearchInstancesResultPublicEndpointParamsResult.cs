@@ -19,6 +19,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
         /// </summary>
         public readonly ImmutableArray<string> CustomDomains;
+        /// <summary>
+        /// When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+        /// </summary>
+        public readonly bool DefaultDomainEnabled;
         public readonly bool Enabled;
         public readonly Outputs.GetAiSearchInstancesResultPublicEndpointParamsMcpResult Mcp;
         public readonly Outputs.GetAiSearchInstancesResultPublicEndpointParamsRateLimitResult RateLimit;
@@ -32,6 +36,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> customDomains,
 
+            bool defaultDomainEnabled,
+
             bool enabled,
 
             Outputs.GetAiSearchInstancesResultPublicEndpointParamsMcpResult mcp,
@@ -43,6 +49,7 @@ namespace Pulumi.Cloudflare.Outputs
             AuthorizedHosts = authorizedHosts;
             ChatCompletionsEndpoint = chatCompletionsEndpoint;
             CustomDomains = customDomains;
+            DefaultDomainEnabled = defaultDomainEnabled;
             Enabled = enabled;
             Mcp = mcp;
             RateLimit = rateLimit;

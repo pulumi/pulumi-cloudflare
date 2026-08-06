@@ -70,12 +70,21 @@ namespace Pulumi.Cloudflare
         [Output("modifiedAt")]
         public Output<string> ModifiedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// The pattern value to match against. Format depends on `PatternType`:
+        /// - EMAIL: a valid email address, e.g. `user@example.com`
+        /// - DOMAIN: a valid domain name, e.g. `example.com`
+        /// - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+        /// </summary>
         [Output("pattern")]
         public Output<string> Pattern { get; private set; } = null!;
 
         /// <summary>
         /// Type of pattern matching.
-        /// Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
+        /// - EMAIL: matches a full email address (e.g. `user@example.com`)
+        /// - DOMAIN: matches a domain name (e.g. `example.com`)
+        /// - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
+        /// - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
         /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         /// </summary>
         [Output("patternType")]
@@ -139,12 +148,21 @@ namespace Pulumi.Cloudflare
         [Input("isRegex", required: true)]
         public Input<bool> IsRegex { get; set; } = null!;
 
+        /// <summary>
+        /// The pattern value to match against. Format depends on `PatternType`:
+        /// - EMAIL: a valid email address, e.g. `user@example.com`
+        /// - DOMAIN: a valid domain name, e.g. `example.com`
+        /// - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+        /// </summary>
         [Input("pattern", required: true)]
         public Input<string> Pattern { get; set; } = null!;
 
         /// <summary>
         /// Type of pattern matching.
-        /// Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
+        /// - EMAIL: matches a full email address (e.g. `user@example.com`)
+        /// - DOMAIN: matches a domain name (e.g. `example.com`)
+        /// - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
+        /// - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
         /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         /// </summary>
         [Input("patternType", required: true)]
@@ -182,12 +200,21 @@ namespace Pulumi.Cloudflare
         [Input("modifiedAt")]
         public Input<string>? ModifiedAt { get; set; }
 
+        /// <summary>
+        /// The pattern value to match against. Format depends on `PatternType`:
+        /// - EMAIL: a valid email address, e.g. `user@example.com`
+        /// - DOMAIN: a valid domain name, e.g. `example.com`
+        /// - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+        /// </summary>
         [Input("pattern")]
         public Input<string>? Pattern { get; set; }
 
         /// <summary>
         /// Type of pattern matching.
-        /// Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
+        /// - EMAIL: matches a full email address (e.g. `user@example.com`)
+        /// - DOMAIN: matches a domain name (e.g. `example.com`)
+        /// - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
+        /// - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
         /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         /// </summary>
         [Input("patternType")]

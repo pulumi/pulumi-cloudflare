@@ -39,18 +39,9 @@ export function getSecretsStoreSecret(args: GetSecretsStoreSecretArgs, opts?: pu
  * A collection of arguments for invoking getSecretsStoreSecret.
  */
 export interface GetSecretsStoreSecretArgs {
-    /**
-     * Account Identifier
-     */
     accountId: string;
     filter?: inputs.GetSecretsStoreSecretFilter;
-    /**
-     * Secret identifier tag.
-     */
     secretId?: string;
-    /**
-     * Store Identifier
-     */
     storeId: string;
 }
 
@@ -58,21 +49,18 @@ export interface GetSecretsStoreSecretArgs {
  * A collection of values returned by getSecretsStoreSecret.
  */
 export interface GetSecretsStoreSecretResult {
-    /**
-     * Account Identifier
-     */
     readonly accountId: string;
     /**
-     * Freeform text describing the secret
+     * Freeform text describing the secret.
      */
     readonly comment: string;
     /**
-     * Whenthe secret was created.
+     * When the secret was created.
      */
     readonly created: string;
     readonly filter?: outputs.GetSecretsStoreSecretFilter;
     /**
-     * Secret identifier tag.
+     * The ID of this resource.
      */
     readonly id: string;
     /**
@@ -80,24 +68,18 @@ export interface GetSecretsStoreSecretResult {
      */
     readonly modified: string;
     /**
-     * The name of the secret
+     * The name of the secret.
      */
     readonly name: string;
     /**
      * The list of services that can use this secret.
      */
     readonly scopes: string[];
-    /**
-     * Secret identifier tag.
-     */
     readonly secretId?: string;
     /**
      * Available values: "pending", "active", "deleted".
      */
     readonly status: string;
-    /**
-     * Store Identifier
-     */
     readonly storeId: string;
 }
 /**
@@ -133,17 +115,8 @@ export function getSecretsStoreSecretOutput(args: GetSecretsStoreSecretOutputArg
  * A collection of arguments for invoking getSecretsStoreSecret.
  */
 export interface GetSecretsStoreSecretOutputArgs {
-    /**
-     * Account Identifier
-     */
     accountId: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetSecretsStoreSecretFilterArgs | undefined>;
-    /**
-     * Secret identifier tag.
-     */
     secretId?: pulumi.Input<string | undefined>;
-    /**
-     * Store Identifier
-     */
     storeId: pulumi.Input<string>;
 }

@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ZeroTrustDeviceSubnetArgs', 'ZeroTrustDeviceSubnet']
 
@@ -106,6 +108,7 @@ class ZeroTrustDeviceSubnetArgs:
 class _ZeroTrustDeviceSubnetState:
     def __init__(__self__, *,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 capacity: pulumi.Input[Optional['ZeroTrustDeviceSubnetCapacityArgs']] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
                  deleted_at: pulumi.Input[Optional[_builtins.str]] = None,
@@ -117,6 +120,7 @@ class _ZeroTrustDeviceSubnetState:
         Input properties used for looking up and filtering ZeroTrustDeviceSubnet resources.
 
         :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
+        :param pulumi.Input['ZeroTrustDeviceSubnetCapacityArgs'] capacity: IP capacity information for the subnet.
         :param pulumi.Input[_builtins.str] comment: An optional description of the subnet.
         :param pulumi.Input[_builtins.str] created_at: Timestamp of when the resource was created.
         :param pulumi.Input[_builtins.str] deleted_at: Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
@@ -124,10 +128,12 @@ class _ZeroTrustDeviceSubnetState:
         :param pulumi.Input[_builtins.str] name: A user-friendly name for the subnet.
         :param pulumi.Input[_builtins.str] network: The private IPv4 or IPv6 range defining the subnet, in CIDR notation.
         :param pulumi.Input[_builtins.str] subnet_type: The type of subnet.
-               Available values: "cloudflare_source", "warp".
+               Available values: "cloudflare*source", "initial*resolved_ip", "warp".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if capacity is not None:
+            pulumi.set(__self__, "capacity", capacity)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if created_at is not None:
@@ -154,6 +160,18 @@ class _ZeroTrustDeviceSubnetState:
     @account_id.setter
     def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def capacity(self) -> pulumi.Input[Optional['ZeroTrustDeviceSubnetCapacityArgs']]:
+        """
+        IP capacity information for the subnet.
+        """
+        return pulumi.get(self, "capacity")
+
+    @capacity.setter
+    def capacity(self, value: pulumi.Input[Optional['ZeroTrustDeviceSubnetCapacityArgs']]):
+        pulumi.set(self, "capacity", value)
 
     @_builtins.property
     @pulumi.getter
@@ -232,7 +250,7 @@ class _ZeroTrustDeviceSubnetState:
     def subnet_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of subnet.
-        Available values: "cloudflare_source", "warp".
+        Available values: "cloudflare*source", "initial*resolved_ip", "warp".
         """
         return pulumi.get(self, "subnet_type")
 
@@ -361,6 +379,7 @@ class ZeroTrustDeviceSubnet(pulumi.CustomResource):
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network
+            __props__.__dict__["capacity"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["deleted_at"] = None
             __props__.__dict__["subnet_type"] = None
@@ -375,6 +394,7 @@ class ZeroTrustDeviceSubnet(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            capacity: pulumi.Input[Optional[Union['ZeroTrustDeviceSubnetCapacityArgs', 'ZeroTrustDeviceSubnetCapacityArgsDict']]] = None,
             comment: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             deleted_at: pulumi.Input[Optional[_builtins.str]] = None,
@@ -390,6 +410,7 @@ class ZeroTrustDeviceSubnet(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
+        :param pulumi.Input[Union['ZeroTrustDeviceSubnetCapacityArgs', 'ZeroTrustDeviceSubnetCapacityArgsDict']] capacity: IP capacity information for the subnet.
         :param pulumi.Input[_builtins.str] comment: An optional description of the subnet.
         :param pulumi.Input[_builtins.str] created_at: Timestamp of when the resource was created.
         :param pulumi.Input[_builtins.str] deleted_at: Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
@@ -397,13 +418,14 @@ class ZeroTrustDeviceSubnet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: A user-friendly name for the subnet.
         :param pulumi.Input[_builtins.str] network: The private IPv4 or IPv6 range defining the subnet, in CIDR notation.
         :param pulumi.Input[_builtins.str] subnet_type: The type of subnet.
-               Available values: "cloudflare_source", "warp".
+               Available values: "cloudflare*source", "initial*resolved_ip", "warp".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ZeroTrustDeviceSubnetState.__new__(_ZeroTrustDeviceSubnetState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["capacity"] = capacity
         __props__.__dict__["comment"] = comment
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["deleted_at"] = deleted_at
@@ -420,6 +442,14 @@ class ZeroTrustDeviceSubnet(pulumi.CustomResource):
         Cloudflare account ID
         """
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def capacity(self) -> pulumi.Output['outputs.ZeroTrustDeviceSubnetCapacity']:
+        """
+        IP capacity information for the subnet.
+        """
+        return pulumi.get(self, "capacity")
 
     @_builtins.property
     @pulumi.getter
@@ -474,7 +504,7 @@ class ZeroTrustDeviceSubnet(pulumi.CustomResource):
     def subnet_type(self) -> pulumi.Output[_builtins.str]:
         """
         The type of subnet.
-        Available values: "cloudflare_source", "warp".
+        Available values: "cloudflare*source", "initial*resolved_ip", "warp".
         """
         return pulumi.get(self, "subnet_type")
 

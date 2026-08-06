@@ -28,10 +28,13 @@ class GetZeroTrustAccessAiControlsMcpServerResult:
     """
     A collection of values returned by getZeroTrustAccessAiControlsMcpServer.
     """
-    def __init__(__self__, account_id=None, auth_type=None, created_at=None, created_by=None, description=None, error=None, error_details=None, filter=None, hostname=None, id=None, is_shared_oauth_callback_enabled=None, last_successful_sync=None, last_synced=None, modified_at=None, modified_by=None, name=None, prompts=None, secure_web_gateway=None, status=None, tools=None, updated_prompts=None, updated_tools=None):
+    def __init__(__self__, account_id=None, auth_config_summary=None, auth_type=None, created_at=None, created_by=None, description=None, error=None, error_details=None, filter=None, hostname=None, id=None, is_shared_oauth_callback_enabled=None, last_successful_sync=None, last_synced=None, modified_at=None, modified_by=None, name=None, prompts=None, secure_web_gateway=None, status=None, tools=None, updated_prompts=None, updated_tools=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if auth_config_summary and not isinstance(auth_config_summary, dict):
+            raise TypeError("Expected argument 'auth_config_summary' to be a dict")
+        pulumi.set(__self__, "auth_config_summary", auth_config_summary)
         if auth_type and not isinstance(auth_type, str):
             raise TypeError("Expected argument 'auth_type' to be a str")
         pulumi.set(__self__, "auth_type", auth_type)
@@ -100,6 +103,14 @@ class GetZeroTrustAccessAiControlsMcpServerResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter(name="authConfigSummary")
+    def auth_config_summary(self) -> 'outputs.GetZeroTrustAccessAiControlsMcpServerAuthConfigSummaryResult':
+        """
+        Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
+        """
+        return pulumi.get(self, "auth_config_summary")
 
     @_builtins.property
     @pulumi.getter(name="authType")
@@ -201,6 +212,10 @@ class GetZeroTrustAccessAiControlsMcpServerResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
+        """
+        Current sync state of the server
+        Available values: "waiting", "ready", "stale", "error".
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
@@ -226,6 +241,7 @@ class AwaitableGetZeroTrustAccessAiControlsMcpServerResult(GetZeroTrustAccessAiC
             yield self
         return GetZeroTrustAccessAiControlsMcpServerResult(
             account_id=self.account_id,
+            auth_config_summary=self.auth_config_summary,
             auth_type=self.auth_type,
             created_at=self.created_at,
             created_by=self.created_by,
@@ -281,6 +297,7 @@ def get_zero_trust_access_ai_controls_mcp_server(account_id: Optional[_builtins.
 
     return AwaitableGetZeroTrustAccessAiControlsMcpServerResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        auth_config_summary=pulumi.get(__ret__, 'auth_config_summary'),
         auth_type=pulumi.get(__ret__, 'auth_type'),
         created_at=pulumi.get(__ret__, 'created_at'),
         created_by=pulumi.get(__ret__, 'created_by'),
@@ -333,6 +350,7 @@ def get_zero_trust_access_ai_controls_mcp_server_output(account_id: pulumi.Input
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustAccessAiControlsMcpServer:getZeroTrustAccessAiControlsMcpServer', __args__, opts=opts, typ=GetZeroTrustAccessAiControlsMcpServerResult)
     return __ret__.apply(lambda __response__: GetZeroTrustAccessAiControlsMcpServerResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        auth_config_summary=pulumi.get(__response__, 'auth_config_summary'),
         auth_type=pulumi.get(__response__, 'auth_type'),
         created_at=pulumi.get(__response__, 'created_at'),
         created_by=pulumi.get(__response__, 'created_by'),

@@ -15,30 +15,22 @@ public final class SecretsStoreState extends com.pulumi.resources.ResourceArgs {
 
     public static final SecretsStoreState Empty = new SecretsStoreState();
 
-    /**
-     * Account Identifier
-     * 
-     */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
-    /**
-     * @return Account Identifier
-     * 
-     */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
     /**
-     * Whenthe secret was created.
+     * When the secret was created.
      * 
      */
     @Import(name="created")
     private @Nullable Output<String> created;
 
     /**
-     * @return Whenthe secret was created.
+     * @return When the secret was created.
      * 
      */
     public Optional<Output<String>> created() {
@@ -61,14 +53,14 @@ public final class SecretsStoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the store
+     * The name of the store.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the store
+     * @return The name of the store.
      * 
      */
     public Optional<Output<String>> name() {
@@ -102,29 +94,17 @@ public final class SecretsStoreState extends com.pulumi.resources.ResourceArgs {
             $ = new SecretsStoreState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId Account Identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId Account Identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
         /**
-         * @param created Whenthe secret was created.
+         * @param created When the secret was created.
          * 
          * @return builder
          * 
@@ -135,7 +115,7 @@ public final class SecretsStoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param created Whenthe secret was created.
+         * @param created When the secret was created.
          * 
          * @return builder
          * 
@@ -166,7 +146,7 @@ public final class SecretsStoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the store
+         * @param name The name of the store.
          * 
          * @return builder
          * 
@@ -177,7 +157,7 @@ public final class SecretsStoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the store
+         * @param name The name of the store.
          * 
          * @return builder
          * 

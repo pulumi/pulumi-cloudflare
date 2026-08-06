@@ -126,6 +126,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the IssueCount input, and true otherwise.
+        /// </summary>
+        public readonly bool Enabled;
+        /// <summary>
         /// Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
         /// </summary>
         public readonly string Expiration;
@@ -165,6 +169,8 @@ namespace Pulumi.Cloudflare
 
             string description,
 
+            bool enabled,
+
             string expiration,
 
             string id,
@@ -183,6 +189,7 @@ namespace Pulumi.Cloudflare
         {
             AccountId = accountId;
             Description = description;
+            Enabled = enabled;
             Expiration = expiration;
             Id = id;
             Input = input;

@@ -83,6 +83,8 @@ type HyperdriveConfig struct {
 	Origin HyperdriveConfigOriginOutput `pulumi:"origin"`
 	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 	OriginConnectionLimit pulumi.IntPtrOutput `pulumi:"originConnectionLimit"`
+	// Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
+	RestartedOn pulumi.StringOutput `pulumi:"restartedOn"`
 }
 
 // NewHyperdriveConfig registers a new resource with the given unique name, arguments, and options.
@@ -138,6 +140,8 @@ type hyperdriveConfigState struct {
 	Origin *HyperdriveConfigOrigin `pulumi:"origin"`
 	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 	OriginConnectionLimit *int `pulumi:"originConnectionLimit"`
+	// Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
+	RestartedOn *string `pulumi:"restartedOn"`
 }
 
 type HyperdriveConfigState struct {
@@ -155,6 +159,8 @@ type HyperdriveConfigState struct {
 	Origin HyperdriveConfigOriginPtrInput
 	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 	OriginConnectionLimit pulumi.IntPtrInput
+	// Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
+	RestartedOn pulumi.StringPtrInput
 }
 
 func (HyperdriveConfigState) ElementType() reflect.Type {
@@ -311,6 +317,11 @@ func (o HyperdriveConfigOutput) Origin() HyperdriveConfigOriginOutput {
 // The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 func (o HyperdriveConfigOutput) OriginConnectionLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfig) pulumi.IntPtrOutput { return v.OriginConnectionLimit }).(pulumi.IntPtrOutput)
+}
+
+// Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
+func (o HyperdriveConfigOutput) RestartedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *HyperdriveConfig) pulumi.StringOutput { return v.RestartedOn }).(pulumi.StringOutput)
 }
 
 type HyperdriveConfigArrayOutput struct{ *pulumi.OutputState }

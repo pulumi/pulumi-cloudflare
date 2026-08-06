@@ -16,17 +16,9 @@ public final class GetSecretsStoreSecretPlainArgs extends com.pulumi.resources.I
 
     public static final GetSecretsStoreSecretPlainArgs Empty = new GetSecretsStoreSecretPlainArgs();
 
-    /**
-     * Account Identifier
-     * 
-     */
     @Import(name="accountId", required=true)
     private String accountId;
 
-    /**
-     * @return Account Identifier
-     * 
-     */
     public String accountId() {
         return this.accountId;
     }
@@ -38,32 +30,16 @@ public final class GetSecretsStoreSecretPlainArgs extends com.pulumi.resources.I
         return Optional.ofNullable(this.filter);
     }
 
-    /**
-     * Secret identifier tag.
-     * 
-     */
     @Import(name="secretId")
     private @Nullable String secretId;
 
-    /**
-     * @return Secret identifier tag.
-     * 
-     */
     public Optional<String> secretId() {
         return Optional.ofNullable(this.secretId);
     }
 
-    /**
-     * Store Identifier
-     * 
-     */
     @Import(name="storeId", required=true)
     private String storeId;
 
-    /**
-     * @return Store Identifier
-     * 
-     */
     public String storeId() {
         return this.storeId;
     }
@@ -95,12 +71,6 @@ public final class GetSecretsStoreSecretPlainArgs extends com.pulumi.resources.I
             $ = new GetSecretsStoreSecretPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId Account Identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             $.accountId = accountId;
             return this;
@@ -111,23 +81,11 @@ public final class GetSecretsStoreSecretPlainArgs extends com.pulumi.resources.I
             return this;
         }
 
-        /**
-         * @param secretId Secret identifier tag.
-         * 
-         * @return builder
-         * 
-         */
         public Builder secretId(@Nullable String secretId) {
             $.secretId = secretId;
             return this;
         }
 
-        /**
-         * @param storeId Store Identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder storeId(String storeId) {
             $.storeId = storeId;
             return this;

@@ -52,13 +52,12 @@ import (
 type SecretsStore struct {
 	pulumi.CustomResourceState
 
-	// Account Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Whenthe secret was created.
+	// When the secret was created.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// When the secret was modified.
 	Modified pulumi.StringOutput `pulumi:"modified"`
-	// The name of the store
+	// The name of the store.
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -98,24 +97,22 @@ func GetSecretsStore(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecretsStore resources.
 type secretsStoreState struct {
-	// Account Identifier
 	AccountId *string `pulumi:"accountId"`
-	// Whenthe secret was created.
+	// When the secret was created.
 	Created *string `pulumi:"created"`
 	// When the secret was modified.
 	Modified *string `pulumi:"modified"`
-	// The name of the store
+	// The name of the store.
 	Name *string `pulumi:"name"`
 }
 
 type SecretsStoreState struct {
-	// Account Identifier
 	AccountId pulumi.StringPtrInput
-	// Whenthe secret was created.
+	// When the secret was created.
 	Created pulumi.StringPtrInput
 	// When the secret was modified.
 	Modified pulumi.StringPtrInput
-	// The name of the store
+	// The name of the store.
 	Name pulumi.StringPtrInput
 }
 
@@ -124,17 +121,15 @@ func (SecretsStoreState) ElementType() reflect.Type {
 }
 
 type secretsStoreArgs struct {
-	// Account Identifier
 	AccountId string `pulumi:"accountId"`
-	// The name of the store
+	// The name of the store.
 	Name string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a SecretsStore resource.
 type SecretsStoreArgs struct {
-	// Account Identifier
 	AccountId pulumi.StringInput
-	// The name of the store
+	// The name of the store.
 	Name pulumi.StringInput
 }
 
@@ -225,12 +220,11 @@ func (o SecretsStoreOutput) ToSecretsStoreOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Account Identifier
 func (o SecretsStoreOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretsStore) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Whenthe secret was created.
+// When the secret was created.
 func (o SecretsStoreOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretsStore) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }
@@ -240,7 +234,7 @@ func (o SecretsStoreOutput) Modified() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretsStore) pulumi.StringOutput { return v.Modified }).(pulumi.StringOutput)
 }
 
-// The name of the store
+// The name of the store.
 func (o SecretsStoreOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretsStore) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

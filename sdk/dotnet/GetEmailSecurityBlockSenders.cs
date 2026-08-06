@@ -111,48 +111,24 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetEmailSecurityBlockSendersArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Identifier.
-        /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
 
-        /// <summary>
-        /// The sorting direction.
-        /// Available values: "asc", "desc".
-        /// </summary>
         [Input("direction")]
         public string? Direction { get; set; }
 
-        /// <summary>
-        /// Max items to fetch, default: 1000
-        /// </summary>
         [Input("maxItems")]
         public int? MaxItems { get; set; }
 
-        /// <summary>
-        /// Field to sort by.
-        /// Available values: "pattern", "CreatedAt".
-        /// </summary>
         [Input("order")]
         public string? Order { get; set; }
 
-        /// <summary>
-        /// Filter by pattern value.
-        /// </summary>
         [Input("pattern")]
         public string? Pattern { get; set; }
 
-        /// <summary>
-        /// Filter by pattern type.
-        /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
-        /// </summary>
         [Input("patternType")]
         public string? PatternType { get; set; }
 
-        /// <summary>
-        /// Search term for filtering records. Behavior may change.
-        /// </summary>
         [Input("search")]
         public string? Search { get; set; }
 
@@ -164,48 +140,24 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetEmailSecurityBlockSendersInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Identifier.
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        /// <summary>
-        /// The sorting direction.
-        /// Available values: "asc", "desc".
-        /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
-        /// <summary>
-        /// Max items to fetch, default: 1000
-        /// </summary>
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
 
-        /// <summary>
-        /// Field to sort by.
-        /// Available values: "pattern", "CreatedAt".
-        /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }
 
-        /// <summary>
-        /// Filter by pattern value.
-        /// </summary>
         [Input("pattern")]
         public Input<string>? Pattern { get; set; }
 
-        /// <summary>
-        /// Filter by pattern type.
-        /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
-        /// </summary>
         [Input("patternType")]
         public Input<string>? PatternType { get; set; }
 
-        /// <summary>
-        /// Search term for filtering records. Behavior may change.
-        /// </summary>
         [Input("search")]
         public Input<string>? Search { get; set; }
 
@@ -219,40 +171,13 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetEmailSecurityBlockSendersResult
     {
-        /// <summary>
-        /// Identifier.
-        /// </summary>
         public readonly string? AccountId;
-        /// <summary>
-        /// The sorting direction.
-        /// Available values: "asc", "desc".
-        /// </summary>
         public readonly string? Direction;
-        /// <summary>
-        /// Max items to fetch, default: 1000
-        /// </summary>
         public readonly int? MaxItems;
-        /// <summary>
-        /// Field to sort by.
-        /// Available values: "pattern", "CreatedAt".
-        /// </summary>
         public readonly string? Order;
-        /// <summary>
-        /// Filter by pattern value.
-        /// </summary>
         public readonly string? Pattern;
-        /// <summary>
-        /// Filter by pattern type.
-        /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
-        /// </summary>
         public readonly string? PatternType;
-        /// <summary>
-        /// The items returned by the data source
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetEmailSecurityBlockSendersResultResult> Results;
-        /// <summary>
-        /// Search term for filtering records. Behavior may change.
-        /// </summary>
         public readonly string? Search;
 
         [OutputConstructor]

@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustAccessAiControlsMcpServerArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpServerState;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessAiControlsMcpServerAuthConfigSummary;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessAiControlsMcpServerErrorDetails;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessAiControlsMcpServerUpdatedPrompt;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessAiControlsMcpServerUpdatedTool;
@@ -59,6 +60,7 @@ import javax.annotation.Nullable;
  *             .hostname("https://example.com/mcp")
  *             .name("My MCP Server")
  *             .authCredentials("auth_credentials")
+ *             .clientSecret("client_secret")
  *             .description("This is one remote mcp server")
  *             .isSharedOauthCallbackEnabled(true)
  *             .secureWebGateway(false)
@@ -96,6 +98,20 @@ public class ZeroTrustAccessAiControlsMcpServer extends com.pulumi.resources.Cus
     public Output<String> accountId() {
         return this.accountId;
     }
+    /**
+     * Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
+     * 
+     */
+    @Export(name="authConfigSummary", refs={ZeroTrustAccessAiControlsMcpServerAuthConfigSummary.class}, tree="[0]")
+    private Output<ZeroTrustAccessAiControlsMcpServerAuthConfigSummary> authConfigSummary;
+
+    /**
+     * @return Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
+     * 
+     */
+    public Output<ZeroTrustAccessAiControlsMcpServerAuthConfigSummary> authConfigSummary() {
+        return this.authConfigSummary;
+    }
     @Export(name="authCredentials", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authCredentials;
 
@@ -115,6 +131,20 @@ public class ZeroTrustAccessAiControlsMcpServer extends com.pulumi.resources.Cus
      */
     public Output<String> authType() {
         return this.authType;
+    }
+    /**
+     * Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is &#39;manual&#39;. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+     * 
+     */
+    @Export(name="clientSecret", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> clientSecret;
+
+    /**
+     * @return Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is &#39;manual&#39;. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+     * 
+     */
+    public Output<Optional<String>> clientSecret() {
+        return Codegen.optional(this.clientSecret);
     }
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
@@ -153,18 +183,18 @@ public class ZeroTrustAccessAiControlsMcpServer extends com.pulumi.resources.Cus
         return this.hostname;
     }
     /**
-     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
+     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
      * 
      */
     @Export(name="isSharedOauthCallbackEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> isSharedOauthCallbackEnabled;
+    private Output<Boolean> isSharedOauthCallbackEnabled;
 
     /**
-     * @return When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
+     * @return When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
      * 
      */
-    public Output<Optional<Boolean>> isSharedOauthCallbackEnabled() {
-        return Codegen.optional(this.isSharedOauthCallbackEnabled);
+    public Output<Boolean> isSharedOauthCallbackEnabled() {
+        return this.isSharedOauthCallbackEnabled;
     }
     @Export(name="lastSuccessfulSync", refs={String.class}, tree="[0]")
     private Output<String> lastSuccessfulSync;
@@ -295,7 +325,8 @@ public class ZeroTrustAccessAiControlsMcpServer extends com.pulumi.resources.Cus
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
-                "authCredentials"
+                "authCredentials",
+                "clientSecret"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);

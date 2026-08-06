@@ -15,6 +15,11 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustDexTestsResult {
     /**
+     * @return Date the test was created, in RFC 3339 format.
+     * 
+     */
+    private String created;
+    /**
      * @return The configuration object which contains the details for the WARP client to conduct the test.
      * 
      */
@@ -55,8 +60,20 @@ public final class GetZeroTrustDexTestsResult {
      * 
      */
     private String testId;
+    /**
+     * @return Date the test was last updated, in RFC 3339 format.
+     * 
+     */
+    private String updated;
 
     private GetZeroTrustDexTestsResult() {}
+    /**
+     * @return Date the test was created, in RFC 3339 format.
+     * 
+     */
+    public String created() {
+        return this.created;
+    }
     /**
      * @return The configuration object which contains the details for the WARP client to conduct the test.
      * 
@@ -116,6 +133,13 @@ public final class GetZeroTrustDexTestsResult {
     public String testId() {
         return this.testId;
     }
+    /**
+     * @return Date the test was last updated, in RFC 3339 format.
+     * 
+     */
+    public String updated() {
+        return this.updated;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -126,6 +150,7 @@ public final class GetZeroTrustDexTestsResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String created;
         private GetZeroTrustDexTestsResultData data;
         private String description;
         private Boolean enabled;
@@ -135,9 +160,11 @@ public final class GetZeroTrustDexTestsResult {
         private List<GetZeroTrustDexTestsResultTargetPolicy> targetPolicies;
         private Boolean targeted;
         private String testId;
+        private String updated;
         public Builder() {}
         public Builder(GetZeroTrustDexTestsResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.created = defaults.created;
     	      this.data = defaults.data;
     	      this.description = defaults.description;
     	      this.enabled = defaults.enabled;
@@ -147,8 +174,17 @@ public final class GetZeroTrustDexTestsResult {
     	      this.targetPolicies = defaults.targetPolicies;
     	      this.targeted = defaults.targeted;
     	      this.testId = defaults.testId;
+    	      this.updated = defaults.updated;
         }
 
+        @CustomType.Setter
+        public Builder created(String created) {
+            if (created == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDexTestsResult", "created");
+            }
+            this.created = created;
+            return this;
+        }
         @CustomType.Setter
         public Builder data(GetZeroTrustDexTestsResultData data) {
             if (data == null) {
@@ -224,8 +260,17 @@ public final class GetZeroTrustDexTestsResult {
             this.testId = testId;
             return this;
         }
+        @CustomType.Setter
+        public Builder updated(String updated) {
+            if (updated == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDexTestsResult", "updated");
+            }
+            this.updated = updated;
+            return this;
+        }
         public GetZeroTrustDexTestsResult build() {
             final var _resultValue = new GetZeroTrustDexTestsResult();
+            _resultValue.created = created;
             _resultValue.data = data;
             _resultValue.description = description;
             _resultValue.enabled = enabled;
@@ -235,6 +280,7 @@ public final class GetZeroTrustDexTestsResult {
             _resultValue.targetPolicies = targetPolicies;
             _resultValue.targeted = targeted;
             _resultValue.testId = testId;
+            _resultValue.updated = updated;
             return _resultValue;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -48,6 +49,21 @@ public final class GetAccountTokensPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
+     * When true, includes recently-expired tokens in the response.
+     * 
+     */
+    @Import(name="includeExpired")
+    private @Nullable Boolean includeExpired;
+
+    /**
+     * @return When true, includes recently-expired tokens in the response.
+     * 
+     */
+    public Optional<Boolean> includeExpired() {
+        return Optional.ofNullable(this.includeExpired);
+    }
+
+    /**
      * Max items to fetch, default: 1000
      * 
      */
@@ -67,6 +83,7 @@ public final class GetAccountTokensPlainArgs extends com.pulumi.resources.Invoke
     private GetAccountTokensPlainArgs(GetAccountTokensPlainArgs $) {
         this.accountId = $.accountId;
         this.direction = $.direction;
+        this.includeExpired = $.includeExpired;
         this.maxItems = $.maxItems;
     }
 
@@ -108,6 +125,17 @@ public final class GetAccountTokensPlainArgs extends com.pulumi.resources.Invoke
          */
         public Builder direction(@Nullable String direction) {
             $.direction = direction;
+            return this;
+        }
+
+        /**
+         * @param includeExpired When true, includes recently-expired tokens in the response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeExpired(@Nullable Boolean includeExpired) {
+            $.includeExpired = includeExpired;
             return this;
         }
 

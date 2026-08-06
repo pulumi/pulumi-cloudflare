@@ -15,107 +15,37 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEmailSecurityBlockSendersInvokeResult {
-    /**
-     * @return Identifier.
-     * 
-     */
     private @Nullable String accountId;
-    /**
-     * @return The sorting direction.
-     * Available values: &#34;asc&#34;, &#34;desc&#34;.
-     * 
-     */
     private @Nullable String direction;
-    /**
-     * @return Max items to fetch, default: 1000
-     * 
-     */
     private @Nullable Integer maxItems;
-    /**
-     * @return Field to sort by.
-     * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
-     * 
-     */
     private @Nullable String order;
-    /**
-     * @return Filter by pattern value.
-     * 
-     */
     private @Nullable String pattern;
-    /**
-     * @return Filter by pattern type.
-     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
-     * 
-     */
     private @Nullable String patternType;
-    /**
-     * @return The items returned by the data source
-     * 
-     */
     private List<GetEmailSecurityBlockSendersResult> results;
-    /**
-     * @return Search term for filtering records. Behavior may change.
-     * 
-     */
     private @Nullable String search;
 
     private GetEmailSecurityBlockSendersInvokeResult() {}
-    /**
-     * @return Identifier.
-     * 
-     */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
-    /**
-     * @return The sorting direction.
-     * Available values: &#34;asc&#34;, &#34;desc&#34;.
-     * 
-     */
     public Optional<String> direction() {
         return Optional.ofNullable(this.direction);
     }
-    /**
-     * @return Max items to fetch, default: 1000
-     * 
-     */
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
     }
-    /**
-     * @return Field to sort by.
-     * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
-     * 
-     */
     public Optional<String> order() {
         return Optional.ofNullable(this.order);
     }
-    /**
-     * @return Filter by pattern value.
-     * 
-     */
     public Optional<String> pattern() {
         return Optional.ofNullable(this.pattern);
     }
-    /**
-     * @return Filter by pattern type.
-     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
-     * 
-     */
     public Optional<String> patternType() {
         return Optional.ofNullable(this.patternType);
     }
-    /**
-     * @return The items returned by the data source
-     * 
-     */
     public List<GetEmailSecurityBlockSendersResult> results() {
         return this.results;
     }
-    /**
-     * @return Search term for filtering records. Behavior may change.
-     * 
-     */
     public Optional<String> search() {
         return Optional.ofNullable(this.search);
     }

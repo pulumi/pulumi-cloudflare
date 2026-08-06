@@ -29,6 +29,12 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Hostname = "app.example.com",
+    ///         CustomMetadata = 
+    ///         {
+    ///             { "foo", "string" },
+    ///         },
+    ///         CustomOriginServer = "origin2.example.com",
+    ///         CustomOriginSni = "sni.example.com",
     ///         Ssl = new Cloudflare.Inputs.CustomHostnameSslArgs
     ///         {
     ///             BundleMethod = "ubiquitous",
@@ -102,10 +108,6 @@ namespace Pulumi.Cloudflare
     ///             },
     ///             Type = "dv",
     ///             Wildcard = false,
-    ///         },
-    ///         CustomMetadata = 
-    ///         {
-    ///             { "foo", "string" },
     ///         },
     ///     });
     /// 

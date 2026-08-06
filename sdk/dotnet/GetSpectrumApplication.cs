@@ -153,7 +153,7 @@ namespace Pulumi.Cloudflare
         public readonly string? AppId;
         /// <summary>
         /// Enables Argo Smart Routing for this application.
-        /// Notes: Only available for TCP applications with TrafficType set to "direct".
+        /// Notes: Only available for TCP or UDP applications with TrafficType set to "direct".
         /// </summary>
         public readonly bool ArgoSmartRouting;
         /// <summary>

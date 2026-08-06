@@ -3818,6 +3818,10 @@ export interface AiSearchInstancePublicEndpointParams {
      * Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
      */
     customDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+     */
+    defaultDomainEnabled?: pulumi.Input<boolean | undefined>;
     enabled?: pulumi.Input<boolean | undefined>;
     mcp?: pulumi.Input<inputs.AiSearchInstancePublicEndpointParamsMcp | undefined>;
     rateLimit?: pulumi.Input<inputs.AiSearchInstancePublicEndpointParamsRateLimit | undefined>;
@@ -3861,7 +3865,7 @@ export interface AiSearchInstanceRetrievalOptions {
      */
     boostBies?: pulumi.Input<pulumi.Input<inputs.AiSearchInstanceRetrievalOptionsBoostBy>[] | undefined>;
     /**
-     * Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.
+     * Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.
      * Available values: "and", "or".
      */
     keywordMatchMode?: pulumi.Input<string | undefined>;
@@ -3941,7 +3945,7 @@ export interface AiSearchInstanceSourceParamsWebCrawlerStoreOptions {
 
 export interface ApiShieldAuthIdCharacteristic {
     /**
-     * The name of the characteristic field, i.e., the header or cookie name. When using type "jwt", this must be a claim location expressed as `$(token_config_id):$(json_path)`, where `tokenConfigId` is the ID of the token configuration used in validating the JWT, and `jsonPath` is a RFC 9535 JSONPath expression.
+     * The name of the characteristic field, i.e., the header or cookie name.
      */
     name: pulumi.Input<string>;
     /**
@@ -4056,7 +4060,7 @@ export interface ApiShieldOperationFeaturesSchemaInfo {
      */
     activeSchema?: pulumi.Input<inputs.ApiShieldOperationFeaturesSchemaInfoActiveSchema | undefined>;
     /**
-     * True if a Cloudflare-provided learned schema is available for this endpoint.
+     * Deprecated. Always false.
      */
     learnedAvailable?: pulumi.Input<boolean | undefined>;
     /**
@@ -5069,7 +5073,7 @@ export interface DnsRecordData {
      */
     preference?: pulumi.Input<number | undefined>;
     /**
-     * Priority.
+     * Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
      */
     priority?: pulumi.Input<number | undefined>;
     /**
@@ -5105,7 +5109,7 @@ export interface DnsRecordData {
      */
     tag?: pulumi.Input<string | undefined>;
     /**
-     * Target.
+     * A valid mail server hostname, or "." for a NULL MX record.
      */
     target?: pulumi.Input<string | undefined>;
     /**
@@ -5821,6 +5825,10 @@ export interface GetAccountTokenFilter {
      * Available values: "asc", "desc".
      */
     direction?: string;
+    /**
+     * When true, includes recently-expired tokens in the response.
+     */
+    includeExpired?: boolean;
 }
 
 export interface GetAccountTokenFilterArgs {
@@ -5829,6 +5837,10 @@ export interface GetAccountTokenFilterArgs {
      * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string | undefined>;
+    /**
+     * When true, includes recently-expired tokens in the response.
+     */
+    includeExpired?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetAiGatewayFilter {
@@ -5965,6 +5977,10 @@ export interface GetApiTokenFilter {
      * Available values: "asc", "desc".
      */
     direction?: string;
+    /**
+     * When true, includes recently-expired tokens in the response.
+     */
+    includeExpired?: boolean;
 }
 
 export interface GetApiTokenFilterArgs {
@@ -5973,6 +5989,10 @@ export interface GetApiTokenFilterArgs {
      * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string | undefined>;
+    /**
+     * When true, includes recently-expired tokens in the response.
+     */
+    includeExpired?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetCertificatePackFilter {
@@ -6135,6 +6155,12 @@ export interface GetConnectivityDirectoryServiceFilterArgs {
      * Available values: "tcp", "http".
      */
     type?: pulumi.Input<string | undefined>;
+}
+
+export interface GetCustomCsrFilter {
+}
+
+export interface GetCustomCsrFilterArgs {
 }
 
 export interface GetCustomHostnameFilter {
@@ -7437,68 +7463,68 @@ export interface GetSchemaValidationSchemasFilterArgs {
 
 export interface GetSecretsStoreFilter {
     /**
-     * Direction to sort objects
+     * Direction to sort objects.
      * Available values: "asc", "desc".
      */
     direction?: string;
     /**
-     * Order secrets by values in the given field
-     * Available values: "name", "comment", "created", "modified", "status".
+     * Order stores by values in the given field.
+     * Available values: "name", "created", "modified".
      */
     order?: string;
 }
 
 export interface GetSecretsStoreFilterArgs {
     /**
-     * Direction to sort objects
+     * Direction to sort objects.
      * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string | undefined>;
     /**
-     * Order secrets by values in the given field
-     * Available values: "name", "comment", "created", "modified", "status".
+     * Order stores by values in the given field.
+     * Available values: "name", "created", "modified".
      */
     order?: pulumi.Input<string | undefined>;
 }
 
 export interface GetSecretsStoreSecretFilter {
     /**
-     * Direction to sort objects
+     * Direction to sort objects.
      * Available values: "asc", "desc".
      */
     direction?: string;
     /**
-     * Order secrets by values in the given field
+     * Order secrets by values in the given field.
      * Available values: "name", "comment", "created", "modified", "status".
      */
     order?: string;
     /**
-     * Only secrets with the given scopes will be returned
+     * Only secrets with the given scopes will be returned.
      */
-    scopes?: string[][];
+    scopes?: string[];
     /**
-     * Search secrets using a filter string, filtering across name and comment
+     * Search secrets using a filter string, filtering across name and comment.
      */
     search?: string;
 }
 
 export interface GetSecretsStoreSecretFilterArgs {
     /**
-     * Direction to sort objects
+     * Direction to sort objects.
      * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string | undefined>;
     /**
-     * Order secrets by values in the given field
+     * Order secrets by values in the given field.
      * Available values: "name", "comment", "created", "modified", "status".
      */
     order?: pulumi.Input<string | undefined>;
     /**
-     * Only secrets with the given scopes will be returned
+     * Only secrets with the given scopes will be returned.
      */
-    scopes?: pulumi.Input<pulumi.Input<pulumi.Input<string>[]>[] | undefined>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Search secrets using a filter string, filtering across name and comment
+     * Search secrets using a filter string, filtering across name and comment.
      */
     search?: pulumi.Input<string | undefined>;
 }
@@ -12024,6 +12050,14 @@ export interface R2BucketSippySource {
      */
     accessKeyId?: pulumi.Input<string | undefined>;
     /**
+     * Access key for the Azure Storage account. Mutually exclusive with `sasToken`.
+     */
+    accountKey?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the Azure Storage account.
+     */
+    accountName?: pulumi.Input<string | undefined>;
+    /**
      * Name of the AWS S3 bucket.
      */
     bucket?: pulumi.Input<string | undefined>;
@@ -12036,9 +12070,13 @@ export interface R2BucketSippySource {
      */
     clientEmail?: pulumi.Input<string | undefined>;
     /**
-     * Available values: "aws", "gcs", "s3".
+     * Available values: "aws", "gcs", "s3", "azure".
      */
     cloudProvider?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the Azure Blob Storage container.
+     */
+    container?: pulumi.Input<string | undefined>;
     /**
      * Private Key of an IAM credential (ideally scoped to a single GCS bucket).
      */
@@ -12047,6 +12085,10 @@ export interface R2BucketSippySource {
      * Name of the AWS availability zone.
      */
     region?: pulumi.Input<string | undefined>;
+    /**
+     * Shared Access Signature token for the Azure Storage account. Mutually exclusive with `accountKey`.
+     */
+    sasToken?: pulumi.Input<string | undefined>;
     /**
      * Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
      */
@@ -12286,7 +12328,7 @@ export interface RecordData {
      */
     preference?: pulumi.Input<number | undefined>;
     /**
-     * Priority.
+     * Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
      */
     priority?: pulumi.Input<number | undefined>;
     /**
@@ -12322,7 +12364,7 @@ export interface RecordData {
      */
     tag?: pulumi.Input<string | undefined>;
     /**
-     * Target.
+     * A valid mail server hostname, or "." for a NULL MX record.
      */
     target?: pulumi.Input<string | undefined>;
     /**
@@ -14306,6 +14348,10 @@ export interface TeamsRuleRuleSettings {
      */
     checkSession?: pulumi.Input<inputs.TeamsRuleRuleSettingsCheckSession | undefined>;
     /**
+     * Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.
+     */
+    deleteHeaders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
      */
     dnsResolvers?: pulumi.Input<inputs.TeamsRuleRuleSettingsDnsResolvers | undefined>;
@@ -14369,6 +14415,10 @@ export interface TeamsRuleRuleSettings {
      * Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot set when 'dns*resolvers' specified or 'resolve*dns_internally' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
      */
     resolveDnsThroughCloudflare?: pulumi.Input<boolean | undefined>;
+    /**
+     * Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.
+     */
+    setHeaders?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
     /**
      * Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.
      */
@@ -14652,7 +14702,7 @@ export interface TokenValidationConfigCredentials {
 export interface TokenValidationConfigCredentialsKey {
     /**
      * Algorithm
-     * Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384".
+     * Available values: "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384", "HS256", "HS384", "HS512".
      */
     alg: pulumi.Input<string>;
     /**
@@ -14665,12 +14715,16 @@ export interface TokenValidationConfigCredentialsKey {
      */
     e?: pulumi.Input<string | undefined>;
     /**
+     * Symmetric key material. Required for create and PUT update requests.
+     */
+    k?: pulumi.Input<string | undefined>;
+    /**
      * Key ID
      */
     kid: pulumi.Input<string>;
     /**
      * Key Type
-     * Available values: "RSA", "EC".
+     * Available values: "RSA", "EC", "oct".
      */
     kty: pulumi.Input<string>;
     /**
@@ -16159,6 +16213,60 @@ export interface WorkerVersionContainer {
     className: pulumi.Input<string>;
 }
 
+export interface WorkerVersionExports {
+    /**
+     * Cache override for this entrypoint. It applies only to
+     * `type: worker` entries and overrides the Worker's global
+     * `cache_options.enabled` for that entrypoint.
+     */
+    cache?: pulumi.Input<inputs.WorkerVersionExportsCache | undefined>;
+    /**
+     * Destination class name for a `state: renamed` tombstone. The
+     * target must appear as a live (`created`) entry in the same
+     * `exports` map. Write-only: never present in GET responses.
+     */
+    renamedTo?: pulumi.Input<string | undefined>;
+    /**
+     * Lifecycle state of the export entry. Defaults to `created`
+     * (a normal, live export) when omitted.
+     */
+    state?: pulumi.Input<string | undefined>;
+    /**
+     * Storage backend for a `type: durable-object` export. Required
+     * for live Durable Object entries (`created` and
+     * `expecting-transfer`). `sqlite` selects SQLite-backed storage;
+     * `legacy-kv` selects the legacy key-value storage.
+     * Available values: "sqlite", "legacy-kv".
+     */
+    storage?: pulumi.Input<string | undefined>;
+    /**
+     * Source script for a `state: expecting-transfer` entry. The
+     * namespace on this script is materialised from the source
+     * script's data via the pending-transfer flow. Present on reads
+     * for `expecting-transfer` entries.
+     */
+    transferFrom?: pulumi.Input<string | undefined>;
+    /**
+     * Destination script for a `state: transferred` tombstone. Must
+     * reference a script in the same account; cross-dispatch-namespace
+     * transfers are rejected. Write-only: never present in GET
+     * responses.
+     */
+    transferredTo?: pulumi.Input<string | undefined>;
+    /**
+     * The kind of export.
+     * Available values: "worker", "durable-object".
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface WorkerVersionExportsCache {
+    /**
+     * Whether caching is enabled for this entrypoint.
+     */
+    enabled: pulumi.Input<boolean>;
+}
+
 export interface WorkerVersionLimits {
     /**
      * CPU time limit in milliseconds.
@@ -16903,6 +17011,17 @@ export interface WorkersScriptTailConsumer {
     service: pulumi.Input<string>;
 }
 
+export interface WorkflowDefaultRetention {
+    /**
+     * Specifies the duration in milliseconds or as a string like '5 minutes'.
+     */
+    errorRetention?: any | undefined;
+    /**
+     * Specifies the duration in milliseconds or as a string like '5 minutes'.
+     */
+    successRetention?: any | undefined;
+}
+
 export interface WorkflowInstances {
     complete?: pulumi.Input<number | undefined>;
     errored?: pulumi.Input<number | undefined>;
@@ -16946,6 +17065,32 @@ export interface ZeroTrustAccessAiControlsMcpPortalServerUpdatedTool {
     description?: pulumi.Input<string | undefined>;
     enabled?: pulumi.Input<boolean | undefined>;
     name: pulumi.Input<string>;
+}
+
+export interface ZeroTrustAccessAiControlsMcpServerAuthConfigSummary {
+    /**
+     * Available values: "dcr", "manual".
+     */
+    authMode?: pulumi.Input<string | undefined>;
+    clientSecretVersion?: pulumi.Input<number | undefined>;
+    config?: pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpServerAuthConfigSummaryConfig | undefined>;
+    hasClientSecret?: pulumi.Input<boolean | undefined>;
+    registrationInfo?: pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpServerAuthConfigSummaryRegistrationInfo | undefined>;
+}
+
+export interface ZeroTrustAccessAiControlsMcpServerAuthConfigSummaryConfig {
+    authorizationEndpoint?: pulumi.Input<string | undefined>;
+    issuer?: pulumi.Input<string | undefined>;
+    resource?: pulumi.Input<string | undefined>;
+    revocationEndpoint?: pulumi.Input<string | undefined>;
+    tokenEndpoint?: pulumi.Input<string | undefined>;
+}
+
+export interface ZeroTrustAccessAiControlsMcpServerAuthConfigSummaryRegistrationInfo {
+    clientId?: pulumi.Input<string | undefined>;
+    redirectUris?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    scope?: pulumi.Input<string | undefined>;
+    tokenEndpointAuthMethod?: pulumi.Input<string | undefined>;
 }
 
 export interface ZeroTrustAccessAiControlsMcpServerErrorDetails {
@@ -20110,6 +20255,25 @@ export interface ZeroTrustDeviceCustomProfileFallbackDomain {
     suffix?: pulumi.Input<string | undefined>;
 }
 
+export interface ZeroTrustDeviceCustomProfileGlobalAcceleration {
+    /**
+     * IP:port entries for the API endpoints.
+     */
+    apiEndpoints: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Global acceleration settings are used only when "enabled".
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * IP:port entries for the MASQUE tunnel endpoints. Either wireguard*endpoints or masque*endpoints must be provided.
+     */
+    masqueEndpoints: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * IP:port entries for the WireGuard tunnel endpoints. Either wireguard*endpoints or masque*endpoints must be provided.
+     */
+    wireguardEndpoints: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface ZeroTrustDeviceCustomProfileInclude {
     /**
      * The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
@@ -20212,6 +20376,25 @@ export interface ZeroTrustDeviceDefaultProfileFallbackDomain {
      * The domain suffix to match when resolving locally.
      */
     suffix?: pulumi.Input<string | undefined>;
+}
+
+export interface ZeroTrustDeviceDefaultProfileGlobalAcceleration {
+    /**
+     * IP:port entries for the API endpoints.
+     */
+    apiEndpoints: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Global acceleration settings are used only when "enabled".
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * IP:port entries for the MASQUE tunnel endpoints. Either wireguard*endpoints or masque*endpoints must be provided.
+     */
+    masqueEndpoints: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * IP:port entries for the WireGuard tunnel endpoints. Either wireguard*endpoints or masque*endpoints must be provided.
+     */
+    wireguardEndpoints: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ZeroTrustDeviceDefaultProfileInclude {
@@ -20521,6 +20704,17 @@ export interface ZeroTrustDevicePostureRuleMatch {
      * Available values: "windows", "mac", "linux", "android", "ios", "chromeos".
      */
     platform?: pulumi.Input<string | undefined>;
+}
+
+export interface ZeroTrustDeviceSubnetCapacity {
+    /**
+     * Total number of assignable IPs in the subnet.
+     */
+    total?: pulumi.Input<number | undefined>;
+    /**
+     * Number of assigned IPs in the subnet.
+     */
+    used?: pulumi.Input<number | undefined>;
 }
 
 export interface ZeroTrustDexRuleTargetedTest {
@@ -21095,6 +21289,10 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
      */
     checkSession?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettingsCheckSession | undefined>;
     /**
+     * Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.
+     */
+    deleteHeaders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
      */
     dnsResolvers?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolvers | undefined>;
@@ -21158,6 +21356,10 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
      * Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot set when 'dns*resolvers' specified or 'resolve*dns_internally' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
      */
     resolveDnsThroughCloudflare?: pulumi.Input<boolean | undefined>;
+    /**
+     * Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.
+     */
+    setHeaders?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
     /**
      * Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.
      */

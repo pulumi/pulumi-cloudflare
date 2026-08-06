@@ -71,6 +71,12 @@ namespace Pulumi.Cloudflare
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the IssueCount input, and true otherwise.
+        /// </summary>
+        [Output("enabled")]
+        public Output<bool> Enabled { get; private set; } = null!;
+
+        /// <summary>
         /// Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
         /// </summary>
         [Output("expiration")]
@@ -225,6 +231,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the IssueCount input, and true otherwise.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
 
         /// <summary>
         /// Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.

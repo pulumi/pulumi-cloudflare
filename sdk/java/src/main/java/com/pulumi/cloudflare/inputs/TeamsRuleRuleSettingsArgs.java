@@ -168,6 +168,21 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.
+     * 
+     */
+    @Import(name="deleteHeaders")
+    private @Nullable Output<List<String>> deleteHeaders;
+
+    /**
+     * @return Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.
+     * 
+     */
+    public Optional<Output<List<String>>> deleteHeaders() {
+        return Optional.ofNullable(this.deleteHeaders);
+    }
+
+    /**
      * Configure custom resolvers to route queries that match the resolver policy. Unused with &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; settings. DNS queries get routed to the address closest to their origin. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dnsResolver` rules.
      * 
      */
@@ -408,6 +423,21 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `{@literal @}{selector.name}` variable references that are interpolated at the edge. Use `{@literal @@}{` to escape a literal `{@literal @}{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.
+     * 
+     */
+    @Import(name="setHeaders")
+    private @Nullable Output<Map<String,List<String>>> setHeaders;
+
+    /**
+     * @return Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `{@literal @}{selector.name}` variable references that are interpolated at the edge. Use `{@literal @@}{` to escape a literal `{@literal @}{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.
+     * 
+     */
+    public Optional<Output<Map<String,List<String>>>> setHeaders() {
+        return Optional.ofNullable(this.setHeaders);
+    }
+
+    /**
      * Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.
      * 
      */
@@ -434,6 +464,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         this.blockReason = $.blockReason;
         this.bypassParentRule = $.bypassParentRule;
         this.checkSession = $.checkSession;
+        this.deleteHeaders = $.deleteHeaders;
         this.dnsResolvers = $.dnsResolvers;
         this.egress = $.egress;
         this.forensicCopy = $.forensicCopy;
@@ -450,6 +481,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         this.redirect = $.redirect;
         this.resolveDnsInternally = $.resolveDnsInternally;
         this.resolveDnsThroughCloudflare = $.resolveDnsThroughCloudflare;
+        this.setHeaders = $.setHeaders;
         this.untrustedCert = $.untrustedCert;
     }
 
@@ -658,6 +690,37 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
          */
         public Builder checkSession(TeamsRuleRuleSettingsCheckSessionArgs checkSession) {
             return checkSession(Output.of(checkSession));
+        }
+
+        /**
+         * @param deleteHeaders Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteHeaders(@Nullable Output<List<String>> deleteHeaders) {
+            $.deleteHeaders = deleteHeaders;
+            return this;
+        }
+
+        /**
+         * @param deleteHeaders Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteHeaders(List<String> deleteHeaders) {
+            return deleteHeaders(Output.of(deleteHeaders));
+        }
+
+        /**
+         * @param deleteHeaders Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteHeaders(String... deleteHeaders) {
+            return deleteHeaders(List.of(deleteHeaders));
         }
 
         /**
@@ -1004,6 +1067,27 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
          */
         public Builder resolveDnsThroughCloudflare(Boolean resolveDnsThroughCloudflare) {
             return resolveDnsThroughCloudflare(Output.of(resolveDnsThroughCloudflare));
+        }
+
+        /**
+         * @param setHeaders Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `{@literal @}{selector.name}` variable references that are interpolated at the edge. Use `{@literal @@}{` to escape a literal `{@literal @}{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder setHeaders(@Nullable Output<Map<String,List<String>>> setHeaders) {
+            $.setHeaders = setHeaders;
+            return this;
+        }
+
+        /**
+         * @param setHeaders Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `{@literal @}{selector.name}` variable references that are interpolated at the edge. Use `{@literal @@}{` to escape a literal `{@literal @}{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder setHeaders(Map<String,List<String>> setHeaders) {
+            return setHeaders(Output.of(setHeaders));
         }
 
         /**

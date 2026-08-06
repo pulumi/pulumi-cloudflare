@@ -143,6 +143,10 @@ namespace Pulumi.Cloudflare
     {
         public readonly string? AccountId;
         /// <summary>
+        /// Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
+        /// </summary>
+        public readonly Outputs.GetZeroTrustAccessAiControlsMcpServerAuthConfigSummaryResult AuthConfigSummary;
+        /// <summary>
         /// Available values: "oauth", "bearer", "unauthenticated".
         /// </summary>
         public readonly string AuthType;
@@ -171,6 +175,10 @@ namespace Pulumi.Cloudflare
         /// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
         /// </summary>
         public readonly bool SecureWebGateway;
+        /// <summary>
+        /// Current sync state of the server
+        /// Available values: "waiting", "ready", "stale", "error".
+        /// </summary>
         public readonly string Status;
         public readonly ImmutableArray<ImmutableDictionary<string, string>> Tools;
         public readonly ImmutableArray<Outputs.GetZeroTrustAccessAiControlsMcpServerUpdatedPromptResult> UpdatedPrompts;
@@ -179,6 +187,8 @@ namespace Pulumi.Cloudflare
         [OutputConstructor]
         private GetZeroTrustAccessAiControlsMcpServerResult(
             string? accountId,
+
+            Outputs.GetZeroTrustAccessAiControlsMcpServerAuthConfigSummaryResult authConfigSummary,
 
             string authType,
 
@@ -223,6 +233,7 @@ namespace Pulumi.Cloudflare
             ImmutableArray<Outputs.GetZeroTrustAccessAiControlsMcpServerUpdatedToolResult> updatedTools)
         {
             AccountId = accountId;
+            AuthConfigSummary = authConfigSummary;
             AuthType = authType;
             CreatedAt = createdAt;
             CreatedBy = createdBy;

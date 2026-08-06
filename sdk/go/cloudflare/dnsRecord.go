@@ -73,7 +73,7 @@ type DnsRecord struct {
 	Content pulumi.StringOutput `pulumi:"content"`
 	// When the record was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
-	// Components of a CAA record.
+	// Components of a MX record.
 	Data DnsRecordDataPtrOutput `pulumi:"data"`
 	// Extra Cloudflare-specific information about the record.
 	Meta pulumi.StringOutput `pulumi:"meta"`
@@ -160,7 +160,7 @@ type dnsRecordState struct {
 	Content *string `pulumi:"content"`
 	// When the record was created.
 	CreatedOn *string `pulumi:"createdOn"`
-	// Components of a CAA record.
+	// Components of a MX record.
 	Data *DnsRecordData `pulumi:"data"`
 	// Extra Cloudflare-specific information about the record.
 	Meta *string `pulumi:"meta"`
@@ -200,7 +200,7 @@ type DnsRecordState struct {
 	Content pulumi.StringPtrInput
 	// When the record was created.
 	CreatedOn pulumi.StringPtrInput
-	// Components of a CAA record.
+	// Components of a MX record.
 	Data DnsRecordDataPtrInput
 	// Extra Cloudflare-specific information about the record.
 	Meta pulumi.StringPtrInput
@@ -240,7 +240,7 @@ type dnsRecordArgs struct {
 	Comment *string `pulumi:"comment"`
 	// A valid IPv4 address.
 	Content *string `pulumi:"content"`
-	// Components of a CAA record.
+	// Components of a MX record.
 	Data *DnsRecordData `pulumi:"data"`
 	// DNS record name (or @ for the zone apex) in Punycode.
 	Name string `pulumi:"name"`
@@ -269,7 +269,7 @@ type DnsRecordArgs struct {
 	Comment pulumi.StringPtrInput
 	// A valid IPv4 address.
 	Content pulumi.StringPtrInput
-	// Components of a CAA record.
+	// Components of a MX record.
 	Data DnsRecordDataPtrInput
 	// DNS record name (or @ for the zone apex) in Punycode.
 	Name pulumi.StringInput
@@ -399,7 +399,7 @@ func (o DnsRecordOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *DnsRecord) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// Components of a CAA record.
+// Components of a MX record.
 func (o DnsRecordOutput) Data() DnsRecordDataPtrOutput {
 	return o.ApplyT(func(v *DnsRecord) DnsRecordDataPtrOutput { return v.Data }).(DnsRecordDataPtrOutput)
 }

@@ -13,33 +13,33 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class GetSecretsStoreSecretFilterInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Direction to sort objects
+        /// Direction to sort objects.
         /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction", required: true)]
         public Input<string> Direction { get; set; } = null!;
 
         /// <summary>
-        /// Order secrets by values in the given field
+        /// Order secrets by values in the given field.
         /// Available values: "name", "comment", "created", "modified", "status".
         /// </summary>
         [Input("order", required: true)]
         public Input<string> Order { get; set; } = null!;
 
         [Input("scopes")]
-        private InputList<ImmutableArray<string>>? _scopes;
+        private InputList<string>? _scopes;
 
         /// <summary>
-        /// Only secrets with the given scopes will be returned
+        /// Only secrets with the given scopes will be returned.
         /// </summary>
-        public InputList<ImmutableArray<string>> Scopes
+        public InputList<string> Scopes
         {
-            get => _scopes ?? (_scopes = new InputList<ImmutableArray<string>>());
+            get => _scopes ?? (_scopes = new InputList<string>());
             set => _scopes = value;
         }
 
         /// <summary>
-        /// Search secrets using a filter string, filtering across name and comment
+        /// Search secrets using a filter string, filtering across name and comment.
         /// </summary>
         [Input("search")]
         public Input<string>? Search { get; set; }

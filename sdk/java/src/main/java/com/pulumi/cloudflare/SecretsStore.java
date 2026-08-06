@@ -62,29 +62,21 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="cloudflare:index/secretsStore:SecretsStore")
 public class SecretsStore extends com.pulumi.resources.CustomResource {
-    /**
-     * Account Identifier
-     * 
-     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
-    /**
-     * @return Account Identifier
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Whenthe secret was created.
+     * When the secret was created.
      * 
      */
     @Export(name="created", refs={String.class}, tree="[0]")
     private Output<String> created;
 
     /**
-     * @return Whenthe secret was created.
+     * @return When the secret was created.
      * 
      */
     public Output<String> created() {
@@ -105,14 +97,14 @@ public class SecretsStore extends com.pulumi.resources.CustomResource {
         return this.modified;
     }
     /**
-     * The name of the store
+     * The name of the store.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the store
+     * @return The name of the store.
      * 
      */
     public Output<String> name() {

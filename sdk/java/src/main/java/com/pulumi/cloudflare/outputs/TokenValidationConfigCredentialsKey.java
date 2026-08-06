@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 public final class TokenValidationConfigCredentialsKey {
     /**
      * @return Algorithm
-     * Available values: &#34;RS256&#34;, &#34;RS384&#34;, &#34;RS512&#34;, &#34;PS256&#34;, &#34;PS384&#34;, &#34;PS512&#34;, &#34;ES256&#34;, &#34;ES384&#34;.
+     * Available values: &#34;RS256&#34;, &#34;RS384&#34;, &#34;RS512&#34;, &#34;PS256&#34;, &#34;PS384&#34;, &#34;PS512&#34;, &#34;ES256&#34;, &#34;ES384&#34;, &#34;HS256&#34;, &#34;HS384&#34;, &#34;HS512&#34;.
      * 
      */
     private String alg;
@@ -30,13 +30,18 @@ public final class TokenValidationConfigCredentialsKey {
      */
     private @Nullable String e;
     /**
+     * @return Symmetric key material. Required for create and PUT update requests.
+     * 
+     */
+    private @Nullable String k;
+    /**
      * @return Key ID
      * 
      */
     private String kid;
     /**
      * @return Key Type
-     * Available values: &#34;RSA&#34;, &#34;EC&#34;.
+     * Available values: &#34;RSA&#34;, &#34;EC&#34;, &#34;oct&#34;.
      * 
      */
     private String kty;
@@ -59,7 +64,7 @@ public final class TokenValidationConfigCredentialsKey {
     private TokenValidationConfigCredentialsKey() {}
     /**
      * @return Algorithm
-     * Available values: &#34;RS256&#34;, &#34;RS384&#34;, &#34;RS512&#34;, &#34;PS256&#34;, &#34;PS384&#34;, &#34;PS512&#34;, &#34;ES256&#34;, &#34;ES384&#34;.
+     * Available values: &#34;RS256&#34;, &#34;RS384&#34;, &#34;RS512&#34;, &#34;PS256&#34;, &#34;PS384&#34;, &#34;PS512&#34;, &#34;ES256&#34;, &#34;ES384&#34;, &#34;HS256&#34;, &#34;HS384&#34;, &#34;HS512&#34;.
      * 
      */
     public String alg() {
@@ -81,6 +86,13 @@ public final class TokenValidationConfigCredentialsKey {
         return Optional.ofNullable(this.e);
     }
     /**
+     * @return Symmetric key material. Required for create and PUT update requests.
+     * 
+     */
+    public Optional<String> k() {
+        return Optional.ofNullable(this.k);
+    }
+    /**
      * @return Key ID
      * 
      */
@@ -89,7 +101,7 @@ public final class TokenValidationConfigCredentialsKey {
     }
     /**
      * @return Key Type
-     * Available values: &#34;RSA&#34;, &#34;EC&#34;.
+     * Available values: &#34;RSA&#34;, &#34;EC&#34;, &#34;oct&#34;.
      * 
      */
     public String kty() {
@@ -129,6 +141,7 @@ public final class TokenValidationConfigCredentialsKey {
         private String alg;
         private @Nullable String crv;
         private @Nullable String e;
+        private @Nullable String k;
         private String kid;
         private String kty;
         private @Nullable String n;
@@ -140,6 +153,7 @@ public final class TokenValidationConfigCredentialsKey {
     	      this.alg = defaults.alg;
     	      this.crv = defaults.crv;
     	      this.e = defaults.e;
+    	      this.k = defaults.k;
     	      this.kid = defaults.kid;
     	      this.kty = defaults.kty;
     	      this.n = defaults.n;
@@ -165,6 +179,12 @@ public final class TokenValidationConfigCredentialsKey {
         public Builder e(@Nullable String e) {
 
             this.e = e;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder k(@Nullable String k) {
+
+            this.k = k;
             return this;
         }
         @CustomType.Setter
@@ -206,6 +226,7 @@ public final class TokenValidationConfigCredentialsKey {
             _resultValue.alg = alg;
             _resultValue.crv = crv;
             _resultValue.e = e;
+            _resultValue.k = k;
             _resultValue.kid = kid;
             _resultValue.kty = kty;
             _resultValue.n = n;

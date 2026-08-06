@@ -11,6 +11,7 @@ import com.pulumi.cloudflare.outputs.WorkerVersionAssets;
 import com.pulumi.cloudflare.outputs.WorkerVersionBinding;
 import com.pulumi.cloudflare.outputs.WorkerVersionCacheOptions;
 import com.pulumi.cloudflare.outputs.WorkerVersionContainer;
+import com.pulumi.cloudflare.outputs.WorkerVersionExports;
 import com.pulumi.cloudflare.outputs.WorkerVersionLimits;
 import com.pulumi.cloudflare.outputs.WorkerVersionMigrations;
 import com.pulumi.cloudflare.outputs.WorkerVersionModule;
@@ -23,6 +24,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -280,6 +282,30 @@ public class WorkerVersion extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createdOn() {
         return this.createdOn;
+    }
+    /**
+     * Declarative exports for the version, including Durable Object
+     * classes (with their `storage` backend) and named Worker
+     * entrypoints. On reads, tombstoned lifecycle entries are
+     * omitted, so only live exports (`created` and
+     * `expecting-transfer`) are returned. `exports` and `migrations`
+     * are mutually exclusive on upload.
+     * 
+     */
+    @Export(name="exports", refs={Map.class,String.class,WorkerVersionExports.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,WorkerVersionExports>> exports;
+
+    /**
+     * @return Declarative exports for the version, including Durable Object
+     * classes (with their `storage` backend) and named Worker
+     * entrypoints. On reads, tombstoned lifecycle entries are
+     * omitted, so only live exports (`created` and
+     * `expecting-transfer`) are returned. `exports` and `migrations`
+     * are mutually exclusive on upload.
+     * 
+     */
+    public Output<Optional<Map<String,WorkerVersionExports>>> exports() {
+        return Codegen.optional(this.exports);
     }
     /**
      * Resource limits enforced at runtime.

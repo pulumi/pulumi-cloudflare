@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleAccountSubscription = new cloudflare.AccountSubscription("example_account_subscription", {
- *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     accountId: "account_id",
  *     frequency: "monthly",
  *     ratePlan: {
  *         id: "free",
@@ -68,9 +68,9 @@ export class AccountSubscription extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * The monetary unit in which pricing information is displayed.
      */
@@ -109,7 +109,7 @@ export class AccountSubscription extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: AccountSubscriptionArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: AccountSubscriptionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountSubscriptionArgs | AccountSubscriptionState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -125,9 +125,6 @@ export class AccountSubscription extends pulumi.CustomResource {
             resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as AccountSubscriptionArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["frequency"] = args?.frequency;
             resourceInputs["ratePlan"] = args?.ratePlan;
@@ -147,7 +144,7 @@ export class AccountSubscription extends pulumi.CustomResource {
  */
 export interface AccountSubscriptionState {
     /**
-     * Identifier
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string | undefined>;
     /**
@@ -187,9 +184,9 @@ export interface AccountSubscriptionState {
  */
 export interface AccountSubscriptionArgs {
     /**
-     * Identifier
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * How often the subscription is renewed automatically.
      * Available values: "weekly", "monthly", "quarterly", "yearly".

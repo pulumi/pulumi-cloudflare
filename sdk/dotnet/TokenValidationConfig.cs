@@ -36,12 +36,11 @@ namespace Pulumi.Cloudflare
     ///             {
     ///                 new Cloudflare.Inputs.TokenValidationConfigCredentialsKeyArgs
     ///                 {
-    ///                     Alg = "ES256",
-    ///                     Crv = "P-256",
-    ///                     Kid = "38013f13-c266-4eec-a72a-92ec92779f21",
-    ///                     Kty = "EC",
-    ///                     X = "KN53JRwN3wCjm2o39bvZUX2VdrsHzS8pxOAGjm8m7EQ",
-    ///                     Y = "lnkkzIxaveggz-HFhcMWW15nxvOj0Z_uQsXbpK0GFcY",
+    ///                     Alg = "RS256",
+    ///                     E = "e",
+    ///                     Kid = "kid",
+    ///                     Kty = "RSA",
+    ///                     N = "n",
     ///                 },
     ///             },
     ///         },
@@ -70,6 +69,9 @@ namespace Pulumi.Cloudflare
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// Request payload for create and PUT credentials operations. Provided keys define the complete stored key set. Key identities (`{alg,kid}`) must be unique.
+        /// </summary>
         [Output("credentials")]
         public Output<Outputs.TokenValidationConfigCredentials> Credentials { get; private set; } = null!;
 
@@ -143,6 +145,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class TokenValidationConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Request payload for create and PUT credentials operations. Provided keys define the complete stored key set. Key identities (`{alg,kid}`) must be unique.
+        /// </summary>
         [Input("credentials", required: true)]
         public Input<Inputs.TokenValidationConfigCredentialsArgs> Credentials { get; set; } = null!;
 
@@ -183,6 +188,9 @@ namespace Pulumi.Cloudflare
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Request payload for create and PUT credentials operations. Provided keys define the complete stored key set. Key identities (`{alg,kid}`) must be unique.
+        /// </summary>
         [Input("credentials")]
         public Input<Inputs.TokenValidationConfigCredentialsGetArgs>? Credentials { get; set; }
 

@@ -19,6 +19,12 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("direction")]
         public string? Direction { get; set; }
 
+        /// <summary>
+        /// When true, includes recently-expired tokens in the response.
+        /// </summary>
+        [Input("includeExpired", required: true)]
+        public bool IncludeExpired { get; set; }
+
         public GetApiTokenFilterArgs()
         {
         }

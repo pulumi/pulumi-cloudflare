@@ -24,8 +24,7 @@ class SecretsStoreArgs:
         """
         The set of arguments for constructing a SecretsStore resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Account Identifier
-        :param pulumi.Input[_builtins.str] name: The name of the store
+        :param pulumi.Input[_builtins.str] name: The name of the store.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
@@ -33,9 +32,6 @@ class SecretsStoreArgs:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Account Identifier
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -46,7 +42,7 @@ class SecretsStoreArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the store
+        The name of the store.
         """
         return pulumi.get(self, "name")
 
@@ -65,10 +61,9 @@ class _SecretsStoreState:
         """
         Input properties used for looking up and filtering SecretsStore resources.
 
-        :param pulumi.Input[_builtins.str] account_id: Account Identifier
-        :param pulumi.Input[_builtins.str] created: Whenthe secret was created.
+        :param pulumi.Input[_builtins.str] created: When the secret was created.
         :param pulumi.Input[_builtins.str] modified: When the secret was modified.
-        :param pulumi.Input[_builtins.str] name: The name of the store
+        :param pulumi.Input[_builtins.str] name: The name of the store.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -82,9 +77,6 @@ class _SecretsStoreState:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Account Identifier
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -95,7 +87,7 @@ class _SecretsStoreState:
     @pulumi.getter
     def created(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Whenthe secret was created.
+        When the secret was created.
         """
         return pulumi.get(self, "created")
 
@@ -119,7 +111,7 @@ class _SecretsStoreState:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the store
+        The name of the store.
         """
         return pulumi.get(self, "name")
 
@@ -163,8 +155,7 @@ class SecretsStore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Account Identifier
-        :param pulumi.Input[_builtins.str] name: The name of the store
+        :param pulumi.Input[_builtins.str] name: The name of the store.
         """
         ...
     @overload
@@ -251,10 +242,9 @@ class SecretsStore(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Account Identifier
-        :param pulumi.Input[_builtins.str] created: Whenthe secret was created.
+        :param pulumi.Input[_builtins.str] created: When the secret was created.
         :param pulumi.Input[_builtins.str] modified: When the secret was modified.
-        :param pulumi.Input[_builtins.str] name: The name of the store
+        :param pulumi.Input[_builtins.str] name: The name of the store.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -269,16 +259,13 @@ class SecretsStore(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Account Identifier
-        """
         return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter
     def created(self) -> pulumi.Output[_builtins.str]:
         """
-        Whenthe secret was created.
+        When the secret was created.
         """
         return pulumi.get(self, "created")
 
@@ -294,7 +281,7 @@ class SecretsStore(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the store
+        The name of the store.
         """
         return pulumi.get(self, "name")
 

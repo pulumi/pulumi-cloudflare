@@ -86,7 +86,7 @@ def get_load_balancers(max_items: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_load_balancers = cloudflare.get_load_balancers(zone_id="699d98642c564d2e855e9661899b7252")
+    example_load_balancers = cloudflare.get_load_balancers(zone_id="zone_id")
     ```
 
 
@@ -117,7 +117,7 @@ def get_load_balancers_output(max_items: pulumi.Input[Optional[Optional[_builtin
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_load_balancers = cloudflare.get_load_balancers(zone_id="699d98642c564d2e855e9661899b7252")
+    example_load_balancers = cloudflare.get_load_balancers(zone_id="zone_id")
     ```
 
 

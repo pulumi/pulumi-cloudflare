@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustGatewayPolicyRuleSettingsResult
     {
         /// <summary>
-        /// Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `Http` rules with the action set to `Allow`.
+        /// Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `Http` rules with the action set to `Allow`.
         /// </summary>
         public readonly ImmutableDictionary<string, ImmutableArray<string>> AddHeaders;
         /// <summary>
@@ -49,6 +49,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Configure session check behavior. Settable only for `L4` and `Http` rules with the action set to `Allow`.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPolicyRuleSettingsCheckSessionResult CheckSession;
+        /// <summary>
+        /// Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `Http` rules with the action set to `Allow`.
+        /// </summary>
+        public readonly ImmutableArray<string> DeleteHeaders;
         /// <summary>
         /// Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `DnsResolver` rules.
         /// </summary>
@@ -114,6 +118,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool ResolveDnsThroughCloudflare;
         /// <summary>
+        /// Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `Http` rules with the action set to `Allow`.
+        /// </summary>
+        public readonly ImmutableDictionary<string, ImmutableArray<string>> SetHeaders;
+        /// <summary>
         /// Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `Http` rules with the action set to `Allow`.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPolicyRuleSettingsUntrustedCertResult UntrustedCert;
@@ -137,6 +145,8 @@ namespace Pulumi.Cloudflare.Outputs
             bool bypassParentRule,
 
             Outputs.GetZeroTrustGatewayPolicyRuleSettingsCheckSessionResult checkSession,
+
+            ImmutableArray<string> deleteHeaders,
 
             Outputs.GetZeroTrustGatewayPolicyRuleSettingsDnsResolversResult dnsResolvers,
 
@@ -170,6 +180,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool resolveDnsThroughCloudflare,
 
+            ImmutableDictionary<string, ImmutableArray<string>> setHeaders,
+
             Outputs.GetZeroTrustGatewayPolicyRuleSettingsUntrustedCertResult untrustedCert)
         {
             AddHeaders = addHeaders;
@@ -181,6 +193,7 @@ namespace Pulumi.Cloudflare.Outputs
             BlockReason = blockReason;
             BypassParentRule = bypassParentRule;
             CheckSession = checkSession;
+            DeleteHeaders = deleteHeaders;
             DnsResolvers = dnsResolvers;
             Egress = egress;
             ForensicCopy = forensicCopy;
@@ -197,6 +210,7 @@ namespace Pulumi.Cloudflare.Outputs
             Redirect = redirect;
             ResolveDnsInternally = resolveDnsInternally;
             ResolveDnsThroughCloudflare = resolveDnsThroughCloudflare;
+            SetHeaders = setHeaders;
             UntrustedCert = untrustedCert;
         }
     }

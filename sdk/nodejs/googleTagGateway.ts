@@ -7,8 +7,9 @@ import * as utilities from "./utilities";
 /**
  * Accepted Permissions
  *
- * - `Zone Settings Read`
- * - `Zone Settings Write`
+ * - `Zaraz Admin`
+ * - `Zaraz Edit`
+ * - `Zaraz Read`
  *
  * ## Example Usage
  *

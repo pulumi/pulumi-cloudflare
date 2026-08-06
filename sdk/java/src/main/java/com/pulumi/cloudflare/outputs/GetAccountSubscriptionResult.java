@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAccountSubscriptionResult {
     /**
-     * @return Identifier
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     private @Nullable String accountId;
@@ -41,7 +41,7 @@ public final class GetAccountSubscriptionResult {
      */
     private String frequency;
     /**
-     * @return Identifier
+     * @return Subscription identifier tag.
      * 
      */
     private String id;
@@ -61,10 +61,15 @@ public final class GetAccountSubscriptionResult {
      * 
      */
     private String state;
+    /**
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * 
+     */
+    private @Nullable String zoneId;
 
     private GetAccountSubscriptionResult() {}
     /**
-     * @return Identifier
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Optional<String> accountId() {
@@ -100,7 +105,7 @@ public final class GetAccountSubscriptionResult {
         return this.frequency;
     }
     /**
-     * @return Identifier
+     * @return Subscription identifier tag.
      * 
      */
     public String id() {
@@ -128,6 +133,13 @@ public final class GetAccountSubscriptionResult {
     public String state() {
         return this.state;
     }
+    /**
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * 
+     */
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -147,6 +159,7 @@ public final class GetAccountSubscriptionResult {
         private Double price;
         private GetAccountSubscriptionRatePlan ratePlan;
         private String state;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetAccountSubscriptionResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -159,6 +172,7 @@ public final class GetAccountSubscriptionResult {
     	      this.price = defaults.price;
     	      this.ratePlan = defaults.ratePlan;
     	      this.state = defaults.state;
+    	      this.zoneId = defaults.zoneId;
         }
 
         @CustomType.Setter
@@ -231,6 +245,12 @@ public final class GetAccountSubscriptionResult {
             this.state = state;
             return this;
         }
+        @CustomType.Setter
+        public Builder zoneId(@Nullable String zoneId) {
+
+            this.zoneId = zoneId;
+            return this;
+        }
         public GetAccountSubscriptionResult build() {
             final var _resultValue = new GetAccountSubscriptionResult();
             _resultValue.accountId = accountId;
@@ -242,6 +262,7 @@ public final class GetAccountSubscriptionResult {
             _resultValue.price = price;
             _resultValue.ratePlan = ratePlan;
             _resultValue.state = state;
+            _resultValue.zoneId = zoneId;
             return _resultValue;
         }
     }

@@ -122,7 +122,8 @@ class _HyperdriveConfigState:
                  mtls: pulumi.Input[Optional['HyperdriveConfigMtlsArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  origin: pulumi.Input[Optional['HyperdriveConfigOriginArgs']] = None,
-                 origin_connection_limit: pulumi.Input[Optional[_builtins.int]] = None):
+                 origin_connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 restarted_on: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HyperdriveConfig resources.
 
@@ -132,6 +133,7 @@ class _HyperdriveConfigState:
         :param pulumi.Input['HyperdriveConfigMtlsArgs'] mtls: mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
         :param pulumi.Input[_builtins.str] name: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
         :param pulumi.Input[_builtins.int] origin_connection_limit: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+        :param pulumi.Input[_builtins.str] restarted_on: Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -149,6 +151,8 @@ class _HyperdriveConfigState:
             pulumi.set(__self__, "origin", origin)
         if origin_connection_limit is not None:
             pulumi.set(__self__, "origin_connection_limit", origin_connection_limit)
+        if restarted_on is not None:
+            pulumi.set(__self__, "restarted_on", restarted_on)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -239,6 +243,18 @@ class _HyperdriveConfigState:
     @origin_connection_limit.setter
     def origin_connection_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "origin_connection_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="restartedOn")
+    def restarted_on(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
+        """
+        return pulumi.get(self, "restarted_on")
+
+    @restarted_on.setter
+    def restarted_on(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "restarted_on", value)
 
 
 @pulumi.type_token("cloudflare:index/hyperdriveConfig:HyperdriveConfig")
@@ -393,6 +409,7 @@ class HyperdriveConfig(pulumi.CustomResource):
             __props__.__dict__["origin_connection_limit"] = origin_connection_limit
             __props__.__dict__["created_on"] = None
             __props__.__dict__["modified_on"] = None
+            __props__.__dict__["restarted_on"] = None
         super(HyperdriveConfig, __self__).__init__(
             'cloudflare:index/hyperdriveConfig:HyperdriveConfig',
             resource_name,
@@ -410,7 +427,8 @@ class HyperdriveConfig(pulumi.CustomResource):
             mtls: pulumi.Input[Optional[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             origin: pulumi.Input[Optional[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict']]] = None,
-            origin_connection_limit: pulumi.Input[Optional[_builtins.int]] = None) -> 'HyperdriveConfig':
+            origin_connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            restarted_on: pulumi.Input[Optional[_builtins.str]] = None) -> 'HyperdriveConfig':
         """
         Get an existing HyperdriveConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -424,6 +442,7 @@ class HyperdriveConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict']] mtls: mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
         :param pulumi.Input[_builtins.str] name: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
         :param pulumi.Input[_builtins.int] origin_connection_limit: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+        :param pulumi.Input[_builtins.str] restarted_on: Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -437,6 +456,7 @@ class HyperdriveConfig(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["origin"] = origin
         __props__.__dict__["origin_connection_limit"] = origin_connection_limit
+        __props__.__dict__["restarted_on"] = restarted_on
         return HyperdriveConfig(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -496,4 +516,12 @@ class HyperdriveConfig(pulumi.CustomResource):
         The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
         """
         return pulumi.get(self, "origin_connection_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="restartedOn")
+    def restarted_on(self) -> pulumi.Output[_builtins.str]:
+        """
+        Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
+        """
+        return pulumi.get(self, "restarted_on")
 

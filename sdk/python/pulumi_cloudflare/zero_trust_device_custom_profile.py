@@ -35,6 +35,7 @@ class ZeroTrustDeviceCustomProfileArgs:
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  exclude_office_ips: pulumi.Input[Optional[_builtins.bool]] = None,
                  excludes: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceCustomProfileExcludeArgs']]]] = None,
+                 global_acceleration: pulumi.Input[Optional['ZeroTrustDeviceCustomProfileGlobalAccelerationArgs']] = None,
                  includes: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceCustomProfileIncludeArgs']]]] = None,
                  lan_allow_minutes: pulumi.Input[Optional[_builtins.float]] = None,
                  lan_allow_subnet_size: pulumi.Input[Optional[_builtins.float]] = None,
@@ -62,6 +63,7 @@ class ZeroTrustDeviceCustomProfileArgs:
         :param pulumi.Input[_builtins.bool] enabled: Whether the policy will be applied to matching devices.
         :param pulumi.Input[_builtins.bool] exclude_office_ips: Whether to add Microsoft IPs to Split Tunnel exclusions.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceCustomProfileExcludeArgs']]] excludes: List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        :param pulumi.Input['ZeroTrustDeviceCustomProfileGlobalAccelerationArgs'] global_acceleration: Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceCustomProfileIncludeArgs']]] includes: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         :param pulumi.Input[_builtins.float] lan_allow_minutes: The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[_builtins.float] lan_allow_subnet_size: The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
@@ -98,6 +100,8 @@ class ZeroTrustDeviceCustomProfileArgs:
             pulumi.set(__self__, "exclude_office_ips", exclude_office_ips)
         if excludes is not None:
             pulumi.set(__self__, "excludes", excludes)
+        if global_acceleration is not None:
+            pulumi.set(__self__, "global_acceleration", global_acceleration)
         if includes is not None:
             pulumi.set(__self__, "includes", includes)
         if lan_allow_minutes is not None:
@@ -287,6 +291,18 @@ class ZeroTrustDeviceCustomProfileArgs:
         pulumi.set(self, "excludes", value)
 
     @_builtins.property
+    @pulumi.getter(name="globalAcceleration")
+    def global_acceleration(self) -> pulumi.Input[Optional['ZeroTrustDeviceCustomProfileGlobalAccelerationArgs']]:
+        """
+        Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+        """
+        return pulumi.get(self, "global_acceleration")
+
+    @global_acceleration.setter
+    def global_acceleration(self, value: pulumi.Input[Optional['ZeroTrustDeviceCustomProfileGlobalAccelerationArgs']]):
+        pulumi.set(self, "global_acceleration", value)
+
+    @_builtins.property
     @pulumi.getter
     def includes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceCustomProfileIncludeArgs']]]]:
         """
@@ -434,6 +450,7 @@ class _ZeroTrustDeviceCustomProfileState:
                  excludes: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceCustomProfileExcludeArgs']]]] = None,
                  fallback_domains: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceCustomProfileFallbackDomainArgs']]]] = None,
                  gateway_unique_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_acceleration: pulumi.Input[Optional['ZeroTrustDeviceCustomProfileGlobalAccelerationArgs']] = None,
                  includes: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceCustomProfileIncludeArgs']]]] = None,
                  lan_allow_minutes: pulumi.Input[Optional[_builtins.float]] = None,
                  lan_allow_subnet_size: pulumi.Input[Optional[_builtins.float]] = None,
@@ -464,6 +481,7 @@ class _ZeroTrustDeviceCustomProfileState:
         :param pulumi.Input[_builtins.bool] enabled: Whether the policy will be applied to matching devices.
         :param pulumi.Input[_builtins.bool] exclude_office_ips: Whether to add Microsoft IPs to Split Tunnel exclusions.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceCustomProfileExcludeArgs']]] excludes: List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        :param pulumi.Input['ZeroTrustDeviceCustomProfileGlobalAccelerationArgs'] global_acceleration: Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceCustomProfileIncludeArgs']]] includes: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         :param pulumi.Input[_builtins.float] lan_allow_minutes: The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[_builtins.float] lan_allow_subnet_size: The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
@@ -507,6 +525,8 @@ class _ZeroTrustDeviceCustomProfileState:
             pulumi.set(__self__, "fallback_domains", fallback_domains)
         if gateway_unique_id is not None:
             pulumi.set(__self__, "gateway_unique_id", gateway_unique_id)
+        if global_acceleration is not None:
+            pulumi.set(__self__, "global_acceleration", global_acceleration)
         if includes is not None:
             pulumi.set(__self__, "includes", includes)
         if lan_allow_minutes is not None:
@@ -710,6 +730,18 @@ class _ZeroTrustDeviceCustomProfileState:
         pulumi.set(self, "gateway_unique_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="globalAcceleration")
+    def global_acceleration(self) -> pulumi.Input[Optional['ZeroTrustDeviceCustomProfileGlobalAccelerationArgs']]:
+        """
+        Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+        """
+        return pulumi.get(self, "global_acceleration")
+
+    @global_acceleration.setter
+    def global_acceleration(self, value: pulumi.Input[Optional['ZeroTrustDeviceCustomProfileGlobalAccelerationArgs']]):
+        pulumi.set(self, "global_acceleration", value)
+
+    @_builtins.property
     @pulumi.getter
     def includes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceCustomProfileIncludeArgs']]]]:
         """
@@ -899,6 +931,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  exclude_office_ips: pulumi.Input[Optional[_builtins.bool]] = None,
                  excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileExcludeArgs', 'ZeroTrustDeviceCustomProfileExcludeArgsDict']]]]] = None,
+                 global_acceleration: pulumi.Input[Optional[Union['ZeroTrustDeviceCustomProfileGlobalAccelerationArgs', 'ZeroTrustDeviceCustomProfileGlobalAccelerationArgsDict']]] = None,
                  includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileIncludeArgs', 'ZeroTrustDeviceCustomProfileIncludeArgsDict']]]]] = None,
                  lan_allow_minutes: pulumi.Input[Optional[_builtins.float]] = None,
                  lan_allow_subnet_size: pulumi.Input[Optional[_builtins.float]] = None,
@@ -979,6 +1012,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enabled: Whether the policy will be applied to matching devices.
         :param pulumi.Input[_builtins.bool] exclude_office_ips: Whether to add Microsoft IPs to Split Tunnel exclusions.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileExcludeArgs', 'ZeroTrustDeviceCustomProfileExcludeArgsDict']]]] excludes: List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        :param pulumi.Input[Union['ZeroTrustDeviceCustomProfileGlobalAccelerationArgs', 'ZeroTrustDeviceCustomProfileGlobalAccelerationArgsDict']] global_acceleration: Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileIncludeArgs', 'ZeroTrustDeviceCustomProfileIncludeArgsDict']]]] includes: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         :param pulumi.Input[_builtins.float] lan_allow_minutes: The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[_builtins.float] lan_allow_subnet_size: The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
@@ -1078,6 +1112,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  exclude_office_ips: pulumi.Input[Optional[_builtins.bool]] = None,
                  excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileExcludeArgs', 'ZeroTrustDeviceCustomProfileExcludeArgsDict']]]]] = None,
+                 global_acceleration: pulumi.Input[Optional[Union['ZeroTrustDeviceCustomProfileGlobalAccelerationArgs', 'ZeroTrustDeviceCustomProfileGlobalAccelerationArgsDict']]] = None,
                  includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileIncludeArgs', 'ZeroTrustDeviceCustomProfileIncludeArgsDict']]]]] = None,
                  lan_allow_minutes: pulumi.Input[Optional[_builtins.float]] = None,
                  lan_allow_subnet_size: pulumi.Input[Optional[_builtins.float]] = None,
@@ -1114,6 +1149,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["exclude_office_ips"] = exclude_office_ips
             __props__.__dict__["excludes"] = excludes
+            __props__.__dict__["global_acceleration"] = global_acceleration
             __props__.__dict__["includes"] = includes
             __props__.__dict__["lan_allow_minutes"] = lan_allow_minutes
             __props__.__dict__["lan_allow_subnet_size"] = lan_allow_subnet_size
@@ -1163,6 +1199,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
             excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileExcludeArgs', 'ZeroTrustDeviceCustomProfileExcludeArgsDict']]]]] = None,
             fallback_domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileFallbackDomainArgs', 'ZeroTrustDeviceCustomProfileFallbackDomainArgsDict']]]]] = None,
             gateway_unique_id: pulumi.Input[Optional[_builtins.str]] = None,
+            global_acceleration: pulumi.Input[Optional[Union['ZeroTrustDeviceCustomProfileGlobalAccelerationArgs', 'ZeroTrustDeviceCustomProfileGlobalAccelerationArgsDict']]] = None,
             includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileIncludeArgs', 'ZeroTrustDeviceCustomProfileIncludeArgsDict']]]]] = None,
             lan_allow_minutes: pulumi.Input[Optional[_builtins.float]] = None,
             lan_allow_subnet_size: pulumi.Input[Optional[_builtins.float]] = None,
@@ -1197,6 +1234,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enabled: Whether the policy will be applied to matching devices.
         :param pulumi.Input[_builtins.bool] exclude_office_ips: Whether to add Microsoft IPs to Split Tunnel exclusions.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileExcludeArgs', 'ZeroTrustDeviceCustomProfileExcludeArgsDict']]]] excludes: List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        :param pulumi.Input[Union['ZeroTrustDeviceCustomProfileGlobalAccelerationArgs', 'ZeroTrustDeviceCustomProfileGlobalAccelerationArgsDict']] global_acceleration: Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileIncludeArgs', 'ZeroTrustDeviceCustomProfileIncludeArgsDict']]]] includes: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         :param pulumi.Input[_builtins.float] lan_allow_minutes: The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[_builtins.float] lan_allow_subnet_size: The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
@@ -1229,6 +1267,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
         __props__.__dict__["excludes"] = excludes
         __props__.__dict__["fallback_domains"] = fallback_domains
         __props__.__dict__["gateway_unique_id"] = gateway_unique_id
+        __props__.__dict__["global_acceleration"] = global_acceleration
         __props__.__dict__["includes"] = includes
         __props__.__dict__["lan_allow_minutes"] = lan_allow_minutes
         __props__.__dict__["lan_allow_subnet_size"] = lan_allow_subnet_size
@@ -1356,6 +1395,14 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
     @pulumi.getter(name="gatewayUniqueId")
     def gateway_unique_id(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "gateway_unique_id")
+
+    @_builtins.property
+    @pulumi.getter(name="globalAcceleration")
+    def global_acceleration(self) -> pulumi.Output[Optional['outputs.ZeroTrustDeviceCustomProfileGlobalAcceleration']]:
+        """
+        Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+        """
+        return pulumi.get(self, "global_acceleration")
 
     @_builtins.property
     @pulumi.getter

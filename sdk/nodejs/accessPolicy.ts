@@ -46,8 +46,14 @@ import * as utilities from "./utilities";
  *     approvalRequired: true,
  *     connectionRules: {
  *         rdp: {
- *             allowedClipboardLocalToRemoteFormats: ["text"],
- *             allowedClipboardRemoteToLocalFormats: ["text"],
+ *             allowedClipboardLocalToRemoteFormats: [
+ *                 "text",
+ *                 "file",
+ *             ],
+ *             allowedClipboardRemoteToLocalFormats: [
+ *                 "text",
+ *                 "file",
+ *             ],
  *         },
  *     },
  *     excludes: [{
@@ -114,6 +120,10 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     declare public readonly accountId: pulumi.Output<string>;
     /**
+     * Number of access applications currently using this policy.
+     */
+    declare public /*out*/ readonly appCount: pulumi.Output<number>;
+    /**
      * Administrators who can approve a temporary authentication request.
      */
     declare public readonly approvalGroups: pulumi.Output<outputs.AccessPolicyApprovalGroup[] | undefined>;
@@ -125,6 +135,7 @@ export class AccessPolicy extends pulumi.CustomResource {
      * The rules that define how users may connect to targets secured by your application.
      */
     declare public readonly connectionRules: pulumi.Output<outputs.AccessPolicyConnectionRules | undefined>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
      * Available values: "allow", "deny", "nonIdentity", "bypass".
@@ -133,7 +144,7 @@ export class AccessPolicy extends pulumi.CustomResource {
     /**
      * Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      */
-    declare public readonly excludes: pulumi.Output<outputs.AccessPolicyExclude[] | undefined>;
+    declare public readonly excludes: pulumi.Output<outputs.AccessPolicyExclude[]>;
     /**
      * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      */
@@ -161,11 +172,13 @@ export class AccessPolicy extends pulumi.CustomResource {
     /**
      * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      */
-    declare public readonly requires: pulumi.Output<outputs.AccessPolicyRequire[] | undefined>;
+    declare public readonly requires: pulumi.Output<outputs.AccessPolicyRequire[]>;
+    declare public /*out*/ readonly reusable: pulumi.Output<boolean>;
     /**
      * The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      */
     declare public readonly sessionDuration: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a AccessPolicy resource with the given unique name, arguments, and options.
@@ -184,9 +197,11 @@ export class AccessPolicy extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AccessPolicyState | undefined;
             resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["appCount"] = state?.appCount;
             resourceInputs["approvalGroups"] = state?.approvalGroups;
             resourceInputs["approvalRequired"] = state?.approvalRequired;
             resourceInputs["connectionRules"] = state?.connectionRules;
+            resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["decision"] = state?.decision;
             resourceInputs["excludes"] = state?.excludes;
             resourceInputs["includes"] = state?.includes;
@@ -196,7 +211,9 @@ export class AccessPolicy extends pulumi.CustomResource {
             resourceInputs["purposeJustificationPrompt"] = state?.purposeJustificationPrompt;
             resourceInputs["purposeJustificationRequired"] = state?.purposeJustificationRequired;
             resourceInputs["requires"] = state?.requires;
+            resourceInputs["reusable"] = state?.reusable;
             resourceInputs["sessionDuration"] = state?.sessionDuration;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as AccessPolicyArgs | undefined;
             if (args?.accountId === undefined && !opts.urn) {
@@ -222,6 +239,10 @@ export class AccessPolicy extends pulumi.CustomResource {
             resourceInputs["purposeJustificationRequired"] = args?.purposeJustificationRequired;
             resourceInputs["requires"] = args?.requires;
             resourceInputs["sessionDuration"] = args?.sessionDuration;
+            resourceInputs["appCount"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["reusable"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/accessPolicy:AccessPolicy" }] };
@@ -239,6 +260,10 @@ export interface AccessPolicyState {
      */
     accountId?: pulumi.Input<string | undefined>;
     /**
+     * Number of access applications currently using this policy.
+     */
+    appCount?: pulumi.Input<number | undefined>;
+    /**
      * Administrators who can approve a temporary authentication request.
      */
     approvalGroups?: pulumi.Input<pulumi.Input<inputs.AccessPolicyApprovalGroup>[] | undefined>;
@@ -250,6 +275,7 @@ export interface AccessPolicyState {
      * The rules that define how users may connect to targets secured by your application.
      */
     connectionRules?: pulumi.Input<inputs.AccessPolicyConnectionRules | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
      * Available values: "allow", "deny", "nonIdentity", "bypass".
@@ -287,10 +313,12 @@ export interface AccessPolicyState {
      * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      */
     requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[] | undefined>;
+    reusable?: pulumi.Input<boolean | undefined>;
     /**
      * The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      */
     sessionDuration?: pulumi.Input<string | undefined>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**

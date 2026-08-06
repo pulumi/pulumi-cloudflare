@@ -105,6 +105,8 @@ type ZeroTrustDeviceDefaultProfile struct {
 	Excludes        ZeroTrustDeviceDefaultProfileExcludeArrayOutput        `pulumi:"excludes"`
 	FallbackDomains ZeroTrustDeviceDefaultProfileFallbackDomainArrayOutput `pulumi:"fallbackDomains"`
 	GatewayUniqueId pulumi.StringOutput                                    `pulumi:"gatewayUniqueId"`
+	// Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+	GlobalAcceleration ZeroTrustDeviceDefaultProfileGlobalAccelerationPtrOutput `pulumi:"globalAcceleration"`
 	// List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
 	Includes ZeroTrustDeviceDefaultProfileIncludeArrayOutput `pulumi:"includes"`
 	// The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
@@ -194,6 +196,8 @@ type zeroTrustDeviceDefaultProfileState struct {
 	Excludes        []ZeroTrustDeviceDefaultProfileExclude        `pulumi:"excludes"`
 	FallbackDomains []ZeroTrustDeviceDefaultProfileFallbackDomain `pulumi:"fallbackDomains"`
 	GatewayUniqueId *string                                       `pulumi:"gatewayUniqueId"`
+	// Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+	GlobalAcceleration *ZeroTrustDeviceDefaultProfileGlobalAcceleration `pulumi:"globalAcceleration"`
 	// List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
 	Includes []ZeroTrustDeviceDefaultProfileInclude `pulumi:"includes"`
 	// The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
@@ -242,6 +246,8 @@ type ZeroTrustDeviceDefaultProfileState struct {
 	Excludes        ZeroTrustDeviceDefaultProfileExcludeArrayInput
 	FallbackDomains ZeroTrustDeviceDefaultProfileFallbackDomainArrayInput
 	GatewayUniqueId pulumi.StringPtrInput
+	// Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+	GlobalAcceleration ZeroTrustDeviceDefaultProfileGlobalAccelerationPtrInput
 	// List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
 	Includes ZeroTrustDeviceDefaultProfileIncludeArrayInput
 	// The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
@@ -288,6 +294,8 @@ type zeroTrustDeviceDefaultProfileArgs struct {
 	ExcludeOfficeIps *bool `pulumi:"excludeOfficeIps"`
 	// List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
 	Excludes []ZeroTrustDeviceDefaultProfileExclude `pulumi:"excludes"`
+	// Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+	GlobalAcceleration *ZeroTrustDeviceDefaultProfileGlobalAcceleration `pulumi:"globalAcceleration"`
 	// List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
 	Includes []ZeroTrustDeviceDefaultProfileInclude `pulumi:"includes"`
 	// The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
@@ -330,6 +338,8 @@ type ZeroTrustDeviceDefaultProfileArgs struct {
 	ExcludeOfficeIps pulumi.BoolPtrInput
 	// List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
 	Excludes ZeroTrustDeviceDefaultProfileExcludeArrayInput
+	// Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+	GlobalAcceleration ZeroTrustDeviceDefaultProfileGlobalAccelerationPtrInput
 	// List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
 	Includes ZeroTrustDeviceDefaultProfileIncludeArrayInput
 	// The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
@@ -509,6 +519,13 @@ func (o ZeroTrustDeviceDefaultProfileOutput) FallbackDomains() ZeroTrustDeviceDe
 
 func (o ZeroTrustDeviceDefaultProfileOutput) GatewayUniqueId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfile) pulumi.StringOutput { return v.GatewayUniqueId }).(pulumi.StringOutput)
+}
+
+// Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+func (o ZeroTrustDeviceDefaultProfileOutput) GlobalAcceleration() ZeroTrustDeviceDefaultProfileGlobalAccelerationPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfile) ZeroTrustDeviceDefaultProfileGlobalAccelerationPtrOutput {
+		return v.GlobalAcceleration
+	}).(ZeroTrustDeviceDefaultProfileGlobalAccelerationPtrOutput)
 }
 
 // List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.

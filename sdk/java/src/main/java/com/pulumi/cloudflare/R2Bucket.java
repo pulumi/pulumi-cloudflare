@@ -93,7 +93,7 @@ public class R2Bucket extends com.pulumi.resources.CustomResource {
     }
     /**
      * Jurisdiction where objects in this bucket are guaranteed to be stored.
-     * Available values: &#34;default&#34;, &#34;eu&#34;, &#34;fedramp&#34;.
+     * Available values: &#34;default&#34;, &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
      * 
      */
     @Export(name="jurisdiction", refs={String.class}, tree="[0]")
@@ -101,7 +101,7 @@ public class R2Bucket extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Jurisdiction where objects in this bucket are guaranteed to be stored.
-     * Available values: &#34;default&#34;, &#34;eu&#34;, &#34;fedramp&#34;.
+     * Available values: &#34;default&#34;, &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
      * 
      */
     public Output<String> jurisdiction() {

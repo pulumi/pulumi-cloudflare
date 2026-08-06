@@ -154,6 +154,13 @@ type WorkerVersion struct {
 	Containers WorkerVersionContainerArrayOutput `pulumi:"containers"`
 	// When the version was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
+	// Declarative exports for the version, including Durable Object
+	// classes (with their `storage` backend) and named Worker
+	// entrypoints. On reads, tombstoned lifecycle entries are
+	// omitted, so only live exports (`created` and
+	// `expecting-transfer`) are returned. `exports` and `migrations`
+	// are mutually exclusive on upload.
+	Exports WorkerVersionExportsMapOutput `pulumi:"exports"`
 	// Resource limits enforced at runtime.
 	Limits WorkerVersionLimitsOutput `pulumi:"limits"`
 	// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
@@ -250,6 +257,13 @@ type workerVersionState struct {
 	Containers []WorkerVersionContainer `pulumi:"containers"`
 	// When the version was created.
 	CreatedOn *string `pulumi:"createdOn"`
+	// Declarative exports for the version, including Durable Object
+	// classes (with their `storage` backend) and named Worker
+	// entrypoints. On reads, tombstoned lifecycle entries are
+	// omitted, so only live exports (`created` and
+	// `expecting-transfer`) are returned. `exports` and `migrations`
+	// are mutually exclusive on upload.
+	Exports map[string]WorkerVersionExports `pulumi:"exports"`
 	// Resource limits enforced at runtime.
 	Limits *WorkerVersionLimits `pulumi:"limits"`
 	// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
@@ -311,6 +325,13 @@ type WorkerVersionState struct {
 	Containers WorkerVersionContainerArrayInput
 	// When the version was created.
 	CreatedOn pulumi.StringPtrInput
+	// Declarative exports for the version, including Durable Object
+	// classes (with their `storage` backend) and named Worker
+	// entrypoints. On reads, tombstoned lifecycle entries are
+	// omitted, so only live exports (`created` and
+	// `expecting-transfer`) are returned. `exports` and `migrations`
+	// are mutually exclusive on upload.
+	Exports WorkerVersionExportsMapInput
 	// Resource limits enforced at runtime.
 	Limits WorkerVersionLimitsPtrInput
 	// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
@@ -374,6 +395,13 @@ type workerVersionArgs struct {
 	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
 	// List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
 	Containers []WorkerVersionContainer `pulumi:"containers"`
+	// Declarative exports for the version, including Durable Object
+	// classes (with their `storage` backend) and named Worker
+	// entrypoints. On reads, tombstoned lifecycle entries are
+	// omitted, so only live exports (`created` and
+	// `expecting-transfer`) are returned. `exports` and `migrations`
+	// are mutually exclusive on upload.
+	Exports map[string]WorkerVersionExports `pulumi:"exports"`
 	// Resource limits enforced at runtime.
 	Limits *WorkerVersionLimits `pulumi:"limits"`
 	// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
@@ -422,6 +450,13 @@ type WorkerVersionArgs struct {
 	CompatibilityFlags pulumi.StringArrayInput
 	// List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
 	Containers WorkerVersionContainerArrayInput
+	// Declarative exports for the version, including Durable Object
+	// classes (with their `storage` backend) and named Worker
+	// entrypoints. On reads, tombstoned lifecycle entries are
+	// omitted, so only live exports (`created` and
+	// `expecting-transfer`) are returned. `exports` and `migrations`
+	// are mutually exclusive on upload.
+	Exports WorkerVersionExportsMapInput
 	// Resource limits enforced at runtime.
 	Limits WorkerVersionLimitsPtrInput
 	// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
@@ -582,6 +617,16 @@ func (o WorkerVersionOutput) Containers() WorkerVersionContainerArrayOutput {
 // When the version was created.
 func (o WorkerVersionOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerVersion) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// Declarative exports for the version, including Durable Object
+// classes (with their `storage` backend) and named Worker
+// entrypoints. On reads, tombstoned lifecycle entries are
+// omitted, so only live exports (`created` and
+// `expecting-transfer`) are returned. `exports` and `migrations`
+// are mutually exclusive on upload.
+func (o WorkerVersionOutput) Exports() WorkerVersionExportsMapOutput {
+	return o.ApplyT(func(v *WorkerVersion) WorkerVersionExportsMapOutput { return v.Exports }).(WorkerVersionExportsMapOutput)
 }
 
 // Resource limits enforced at runtime.

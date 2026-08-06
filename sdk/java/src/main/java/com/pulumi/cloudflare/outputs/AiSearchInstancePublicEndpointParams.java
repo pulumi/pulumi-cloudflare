@@ -24,6 +24,11 @@ public final class AiSearchInstancePublicEndpointParams {
      * 
      */
     private @Nullable List<String> customDomains;
+    /**
+     * @return When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+     * 
+     */
+    private @Nullable Boolean defaultDomainEnabled;
     private @Nullable Boolean enabled;
     private @Nullable AiSearchInstancePublicEndpointParamsMcp mcp;
     private @Nullable AiSearchInstancePublicEndpointParamsRateLimit rateLimit;
@@ -42,6 +47,13 @@ public final class AiSearchInstancePublicEndpointParams {
      */
     public List<String> customDomains() {
         return this.customDomains == null ? List.of() : this.customDomains;
+    }
+    /**
+     * @return When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+     * 
+     */
+    public Optional<Boolean> defaultDomainEnabled() {
+        return Optional.ofNullable(this.defaultDomainEnabled);
     }
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
@@ -68,6 +80,7 @@ public final class AiSearchInstancePublicEndpointParams {
         private @Nullable List<String> authorizedHosts;
         private @Nullable AiSearchInstancePublicEndpointParamsChatCompletionsEndpoint chatCompletionsEndpoint;
         private @Nullable List<String> customDomains;
+        private @Nullable Boolean defaultDomainEnabled;
         private @Nullable Boolean enabled;
         private @Nullable AiSearchInstancePublicEndpointParamsMcp mcp;
         private @Nullable AiSearchInstancePublicEndpointParamsRateLimit rateLimit;
@@ -78,6 +91,7 @@ public final class AiSearchInstancePublicEndpointParams {
     	      this.authorizedHosts = defaults.authorizedHosts;
     	      this.chatCompletionsEndpoint = defaults.chatCompletionsEndpoint;
     	      this.customDomains = defaults.customDomains;
+    	      this.defaultDomainEnabled = defaults.defaultDomainEnabled;
     	      this.enabled = defaults.enabled;
     	      this.mcp = defaults.mcp;
     	      this.rateLimit = defaults.rateLimit;
@@ -109,6 +123,12 @@ public final class AiSearchInstancePublicEndpointParams {
             return customDomains(List.of(customDomains));
         }
         @CustomType.Setter
+        public Builder defaultDomainEnabled(@Nullable Boolean defaultDomainEnabled) {
+
+            this.defaultDomainEnabled = defaultDomainEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
 
             this.enabled = enabled;
@@ -137,6 +157,7 @@ public final class AiSearchInstancePublicEndpointParams {
             _resultValue.authorizedHosts = authorizedHosts;
             _resultValue.chatCompletionsEndpoint = chatCompletionsEndpoint;
             _resultValue.customDomains = customDomains;
+            _resultValue.defaultDomainEnabled = defaultDomainEnabled;
             _resultValue.enabled = enabled;
             _resultValue.mcp = mcp;
             _resultValue.rateLimit = rateLimit;

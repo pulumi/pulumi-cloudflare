@@ -28,6 +28,7 @@ export function getApiTokens(args?: GetApiTokensArgs, opts?: pulumi.InvokeOption
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getApiTokens:getApiTokens", {
         "direction": args.direction,
+        "includeExpired": args.includeExpired,
         "maxItems": args.maxItems,
     }, opts);
 }
@@ -41,6 +42,10 @@ export interface GetApiTokensArgs {
      * Available values: "asc", "desc".
      */
     direction?: string;
+    /**
+     * When true, includes recently-expired tokens in the response.
+     */
+    includeExpired?: boolean;
     /**
      * Max items to fetch, default: 1000
      */
@@ -56,6 +61,10 @@ export interface GetApiTokensResult {
      * Available values: "asc", "desc".
      */
     readonly direction?: string;
+    /**
+     * When true, includes recently-expired tokens in the response.
+     */
+    readonly includeExpired: boolean;
     /**
      * Max items to fetch, default: 1000
      */
@@ -87,6 +96,7 @@ export function getApiTokensOutput(args?: GetApiTokensOutputArgs, opts?: pulumi.
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getApiTokens:getApiTokens", {
         "direction": args.direction,
+        "includeExpired": args.includeExpired,
         "maxItems": args.maxItems,
     }, opts);
 }
@@ -100,6 +110,10 @@ export interface GetApiTokensOutputArgs {
      * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string | undefined>;
+    /**
+     * When true, includes recently-expired tokens in the response.
+     */
+    includeExpired?: pulumi.Input<boolean | undefined>;
     /**
      * Max items to fetch, default: 1000
      */

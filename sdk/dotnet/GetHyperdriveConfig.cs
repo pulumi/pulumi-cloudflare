@@ -175,6 +175,7 @@ namespace Pulumi.Cloudflare
         /// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
         /// </summary>
         public readonly int OriginConnectionLimit;
+        public readonly string RestartedOn;
 
         [OutputConstructor]
         private GetHyperdriveConfigResult(
@@ -196,7 +197,9 @@ namespace Pulumi.Cloudflare
 
             Outputs.GetHyperdriveConfigOriginResult origin,
 
-            int originConnectionLimit)
+            int originConnectionLimit,
+
+            string restartedOn)
         {
             AccountId = accountId;
             Caching = caching;
@@ -208,6 +211,7 @@ namespace Pulumi.Cloudflare
             Name = name;
             Origin = origin;
             OriginConnectionLimit = originConnectionLimit;
+            RestartedOn = restartedOn;
         }
     }
 }

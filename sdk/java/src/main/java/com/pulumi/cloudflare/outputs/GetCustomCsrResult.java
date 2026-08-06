@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetCustomCsrFilter;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -47,12 +48,13 @@ public final class GetCustomCsrResult {
      * @return Custom CSR identifier tag.
      * 
      */
-    private String customCsrId;
+    private @Nullable String customCsrId;
     /**
      * @return Optional description for the CSR.
      * 
      */
     private String description;
+    private @Nullable GetCustomCsrFilter filter;
     /**
      * @return Custom CSR identifier tag.
      * 
@@ -147,8 +149,8 @@ public final class GetCustomCsrResult {
      * @return Custom CSR identifier tag.
      * 
      */
-    public String customCsrId() {
-        return this.customCsrId;
+    public Optional<String> customCsrId() {
+        return Optional.ofNullable(this.customCsrId);
     }
     /**
      * @return Optional description for the CSR.
@@ -156,6 +158,9 @@ public final class GetCustomCsrResult {
      */
     public String description() {
         return this.description;
+    }
+    public Optional<GetCustomCsrFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
     /**
      * @return Custom CSR identifier tag.
@@ -237,8 +242,9 @@ public final class GetCustomCsrResult {
         private String country;
         private String createdAt;
         private String csr;
-        private String customCsrId;
+        private @Nullable String customCsrId;
         private String description;
+        private @Nullable GetCustomCsrFilter filter;
         private String id;
         private String keyType;
         private String locality;
@@ -259,6 +265,7 @@ public final class GetCustomCsrResult {
     	      this.csr = defaults.csr;
     	      this.customCsrId = defaults.customCsrId;
     	      this.description = defaults.description;
+    	      this.filter = defaults.filter;
     	      this.id = defaults.id;
     	      this.keyType = defaults.keyType;
     	      this.locality = defaults.locality;
@@ -317,10 +324,8 @@ public final class GetCustomCsrResult {
             return this;
         }
         @CustomType.Setter
-        public Builder customCsrId(String customCsrId) {
-            if (customCsrId == null) {
-              throw new MissingRequiredPropertyException("GetCustomCsrResult", "customCsrId");
-            }
+        public Builder customCsrId(@Nullable String customCsrId) {
+
             this.customCsrId = customCsrId;
             return this;
         }
@@ -330,6 +335,12 @@ public final class GetCustomCsrResult {
               throw new MissingRequiredPropertyException("GetCustomCsrResult", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filter(@Nullable GetCustomCsrFilter filter) {
+
+            this.filter = filter;
             return this;
         }
         @CustomType.Setter
@@ -415,6 +426,7 @@ public final class GetCustomCsrResult {
             _resultValue.csr = csr;
             _resultValue.customCsrId = customCsrId;
             _resultValue.description = description;
+            _resultValue.filter = filter;
             _resultValue.id = id;
             _resultValue.keyType = keyType;
             _resultValue.locality = locality;

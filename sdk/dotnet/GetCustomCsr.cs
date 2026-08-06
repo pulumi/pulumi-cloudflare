@@ -37,7 +37,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetCustomCsrResult> InvokeAsync(GetCustomCsrArgs args, InvokeOptions? options = null)
+        public static Task<GetCustomCsrResult> InvokeAsync(GetCustomCsrArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomCsrResult>("cloudflare:index/getCustomCsr:getCustomCsr", args ?? new GetCustomCsrArgs(), options.WithDefaults());
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetCustomCsrResult> Invoke(GetCustomCsrInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetCustomCsrResult> Invoke(GetCustomCsrInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomCsrResult>("cloudflare:index/getCustomCsr:getCustomCsr", args ?? new GetCustomCsrInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -111,8 +111,11 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Custom CSR identifier tag.
         /// </summary>
-        [Input("customCsrId", required: true)]
-        public string CustomCsrId { get; set; } = null!;
+        [Input("customCsrId")]
+        public string? CustomCsrId { get; set; }
+
+        [Input("filter")]
+        public Inputs.GetCustomCsrFilterArgs? Filter { get; set; }
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -137,8 +140,11 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Custom CSR identifier tag.
         /// </summary>
-        [Input("customCsrId", required: true)]
-        public Input<string> CustomCsrId { get; set; } = null!;
+        [Input("customCsrId")]
+        public Input<string>? CustomCsrId { get; set; }
+
+        [Input("filter")]
+        public Input<Inputs.GetCustomCsrFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -183,11 +189,12 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Custom CSR identifier tag.
         /// </summary>
-        public readonly string CustomCsrId;
+        public readonly string? CustomCsrId;
         /// <summary>
         /// Optional description for the CSR.
         /// </summary>
         public readonly string Description;
+        public readonly Outputs.GetCustomCsrFilterResult? Filter;
         /// <summary>
         /// Custom CSR identifier tag.
         /// </summary>
@@ -240,9 +247,11 @@ namespace Pulumi.Cloudflare
 
             string csr,
 
-            string customCsrId,
+            string? customCsrId,
 
             string description,
+
+            Outputs.GetCustomCsrFilterResult? filter,
 
             string id,
 
@@ -270,6 +279,7 @@ namespace Pulumi.Cloudflare
             Csr = csr;
             CustomCsrId = customCsrId;
             Description = description;
+            Filter = filter;
             Id = id;
             KeyType = keyType;
             Locality = locality;

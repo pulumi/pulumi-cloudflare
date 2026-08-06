@@ -79,7 +79,7 @@ export class AccessServiceToken extends pulumi.CustomResource {
      */
     declare public readonly clientSecretVersion: pulumi.Output<number>;
     /**
-     * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+     * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      */
     declare public readonly duration: pulumi.Output<string>;
     declare public /*out*/ readonly expiresAt: pulumi.Output<string>;
@@ -166,7 +166,7 @@ export interface AccessServiceTokenState {
      */
     clientSecretVersion?: pulumi.Input<number | undefined>;
     /**
-     * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+     * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      */
     duration?: pulumi.Input<string | undefined>;
     expiresAt?: pulumi.Input<string | undefined>;
@@ -197,7 +197,7 @@ export interface AccessServiceTokenArgs {
      */
     clientSecretVersion?: pulumi.Input<number | undefined>;
     /**
-     * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+     * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      */
     duration?: pulumi.Input<string | undefined>;
     /**

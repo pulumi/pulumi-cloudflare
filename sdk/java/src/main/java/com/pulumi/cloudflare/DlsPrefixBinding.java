@@ -14,6 +14,12 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `DLS: Read`
+ * - `DLS: Write`
+ * - `IP Prefixes: Write`
+ * 
  * ## Example Usage
  * 
  * <pre>

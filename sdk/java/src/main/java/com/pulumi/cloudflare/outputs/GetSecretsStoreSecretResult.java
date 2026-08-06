@@ -14,24 +14,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSecretsStoreSecretResult {
-    /**
-     * @return Account Identifier
-     * 
-     */
     private String accountId;
     /**
-     * @return Freeform text describing the secret
+     * @return Freeform text describing the secret.
      * 
      */
     private String comment;
     /**
-     * @return Whenthe secret was created.
+     * @return When the secret was created.
      * 
      */
     private String created;
     private @Nullable GetSecretsStoreSecretFilter filter;
     /**
-     * @return Secret identifier tag.
+     * @return The ID of this resource.
      * 
      */
     private String id;
@@ -41,7 +37,7 @@ public final class GetSecretsStoreSecretResult {
      */
     private String modified;
     /**
-     * @return The name of the secret
+     * @return The name of the secret.
      * 
      */
     private String name;
@@ -50,39 +46,27 @@ public final class GetSecretsStoreSecretResult {
      * 
      */
     private List<String> scopes;
-    /**
-     * @return Secret identifier tag.
-     * 
-     */
     private @Nullable String secretId;
     /**
      * @return Available values: &#34;pending&#34;, &#34;active&#34;, &#34;deleted&#34;.
      * 
      */
     private String status;
-    /**
-     * @return Store Identifier
-     * 
-     */
     private String storeId;
 
     private GetSecretsStoreSecretResult() {}
-    /**
-     * @return Account Identifier
-     * 
-     */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return Freeform text describing the secret
+     * @return Freeform text describing the secret.
      * 
      */
     public String comment() {
         return this.comment;
     }
     /**
-     * @return Whenthe secret was created.
+     * @return When the secret was created.
      * 
      */
     public String created() {
@@ -92,7 +76,7 @@ public final class GetSecretsStoreSecretResult {
         return Optional.ofNullable(this.filter);
     }
     /**
-     * @return Secret identifier tag.
+     * @return The ID of this resource.
      * 
      */
     public String id() {
@@ -106,7 +90,7 @@ public final class GetSecretsStoreSecretResult {
         return this.modified;
     }
     /**
-     * @return The name of the secret
+     * @return The name of the secret.
      * 
      */
     public String name() {
@@ -119,10 +103,6 @@ public final class GetSecretsStoreSecretResult {
     public List<String> scopes() {
         return this.scopes;
     }
-    /**
-     * @return Secret identifier tag.
-     * 
-     */
     public Optional<String> secretId() {
         return Optional.ofNullable(this.secretId);
     }
@@ -133,10 +113,6 @@ public final class GetSecretsStoreSecretResult {
     public String status() {
         return this.status;
     }
-    /**
-     * @return Store Identifier
-     * 
-     */
     public String storeId() {
         return this.storeId;
     }

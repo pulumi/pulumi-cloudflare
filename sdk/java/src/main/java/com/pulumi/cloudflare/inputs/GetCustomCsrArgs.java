@@ -3,9 +3,9 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetCustomCsrFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -35,15 +35,22 @@ public final class GetCustomCsrArgs extends com.pulumi.resources.InvokeArgs {
      * Custom CSR identifier tag.
      * 
      */
-    @Import(name="customCsrId", required=true)
-    private Output<String> customCsrId;
+    @Import(name="customCsrId")
+    private @Nullable Output<String> customCsrId;
 
     /**
      * @return Custom CSR identifier tag.
      * 
      */
-    public Output<String> customCsrId() {
-        return this.customCsrId;
+    public Optional<Output<String>> customCsrId() {
+        return Optional.ofNullable(this.customCsrId);
+    }
+
+    @Import(name="filter")
+    private @Nullable Output<GetCustomCsrFilterArgs> filter;
+
+    public Optional<Output<GetCustomCsrFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
@@ -66,6 +73,7 @@ public final class GetCustomCsrArgs extends com.pulumi.resources.InvokeArgs {
     private GetCustomCsrArgs(GetCustomCsrArgs $) {
         this.accountId = $.accountId;
         this.customCsrId = $.customCsrId;
+        this.filter = $.filter;
         this.zoneId = $.zoneId;
     }
 
@@ -114,7 +122,7 @@ public final class GetCustomCsrArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder customCsrId(Output<String> customCsrId) {
+        public Builder customCsrId(@Nullable Output<String> customCsrId) {
             $.customCsrId = customCsrId;
             return this;
         }
@@ -127,6 +135,15 @@ public final class GetCustomCsrArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder customCsrId(String customCsrId) {
             return customCsrId(Output.of(customCsrId));
+        }
+
+        public Builder filter(@Nullable Output<GetCustomCsrFilterArgs> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        public Builder filter(GetCustomCsrFilterArgs filter) {
+            return filter(Output.of(filter));
         }
 
         /**
@@ -151,9 +168,6 @@ public final class GetCustomCsrArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetCustomCsrArgs build() {
-            if ($.customCsrId == null) {
-                throw new MissingRequiredPropertyException("GetCustomCsrArgs", "customCsrId");
-            }
             return $;
         }
     }

@@ -53,12 +53,11 @@ import javax.annotation.Nullable;
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .credentials(TokenValidationConfigCredentialsArgs.builder()
  *                 .keys(TokenValidationConfigCredentialsKeyArgs.builder()
- *                     .alg("ES256")
- *                     .crv("P-256")
- *                     .kid("38013f13-c266-4eec-a72a-92ec92779f21")
- *                     .kty("EC")
- *                     .x("KN53JRwN3wCjm2o39bvZUX2VdrsHzS8pxOAGjm8m7EQ")
- *                     .y("lnkkzIxaveggz-HFhcMWW15nxvOj0Z_uQsXbpK0GFcY")
+ *                     .alg("RS256")
+ *                     .e("e")
+ *                     .kid("kid")
+ *                     .kty("RSA")
+ *                     .n("n")
  *                     .build())
  *                 .build())
  *             .description("Long description for Token Validation Configuration")
@@ -89,9 +88,17 @@ public class TokenValidationConfig extends com.pulumi.resources.CustomResource {
     public Output<String> createdAt() {
         return this.createdAt;
     }
+    /**
+     * Request payload for create and PUT credentials operations. Provided keys define the complete stored key set. Key identities (`{alg,kid}`) must be unique.
+     * 
+     */
     @Export(name="credentials", refs={TokenValidationConfigCredentials.class}, tree="[0]")
     private Output<TokenValidationConfigCredentials> credentials;
 
+    /**
+     * @return Request payload for create and PUT credentials operations. Provided keys define the complete stored key set. Key identities (`{alg,kid}`) must be unique.
+     * 
+     */
     public Output<TokenValidationConfigCredentials> credentials() {
         return this.credentials;
     }

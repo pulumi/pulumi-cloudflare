@@ -74,6 +74,11 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsCheckSession checkSession;
     /**
+     * @return Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.
+     * 
+     */
+    private @Nullable List<String> deleteHeaders;
+    /**
      * @return Configure custom resolvers to route queries that match the resolver policy. Unused with &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; settings. DNS queries get routed to the address closest to their origin. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dnsResolver` rules.
      * 
      */
@@ -154,6 +159,11 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
      */
     private @Nullable Boolean resolveDnsThroughCloudflare;
     /**
+     * @return Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `{@literal @}{selector.name}` variable references that are interpolated at the edge. Use `{@literal @@}{` to escape a literal `{@literal @}{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.
+     * 
+     */
+    private @Nullable Map<String,List<String>> setHeaders;
+    /**
      * @return Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.
      * 
      */
@@ -222,6 +232,13 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
      */
     public Optional<ZeroTrustGatewayPolicyRuleSettingsCheckSession> checkSession() {
         return Optional.ofNullable(this.checkSession);
+    }
+    /**
+     * @return Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.
+     * 
+     */
+    public List<String> deleteHeaders() {
+        return this.deleteHeaders == null ? List.of() : this.deleteHeaders;
     }
     /**
      * @return Configure custom resolvers to route queries that match the resolver policy. Unused with &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; settings. DNS queries get routed to the address closest to their origin. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dnsResolver` rules.
@@ -336,6 +353,13 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         return Optional.ofNullable(this.resolveDnsThroughCloudflare);
     }
     /**
+     * @return Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `{@literal @}{selector.name}` variable references that are interpolated at the edge. Use `{@literal @@}{` to escape a literal `{@literal @}{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.
+     * 
+     */
+    public Map<String,List<String>> setHeaders() {
+        return this.setHeaders == null ? Map.of() : this.setHeaders;
+    }
+    /**
      * @return Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.
      * 
      */
@@ -361,6 +385,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         private @Nullable String blockReason;
         private @Nullable Boolean bypassParentRule;
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsCheckSession checkSession;
+        private @Nullable List<String> deleteHeaders;
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsDnsResolvers dnsResolvers;
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsEgress egress;
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsForensicCopy forensicCopy;
@@ -377,6 +402,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsRedirect redirect;
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally resolveDnsInternally;
         private @Nullable Boolean resolveDnsThroughCloudflare;
+        private @Nullable Map<String,List<String>> setHeaders;
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsUntrustedCert untrustedCert;
         public Builder() {}
         public Builder(ZeroTrustGatewayPolicyRuleSettings defaults) {
@@ -390,6 +416,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
     	      this.blockReason = defaults.blockReason;
     	      this.bypassParentRule = defaults.bypassParentRule;
     	      this.checkSession = defaults.checkSession;
+    	      this.deleteHeaders = defaults.deleteHeaders;
     	      this.dnsResolvers = defaults.dnsResolvers;
     	      this.egress = defaults.egress;
     	      this.forensicCopy = defaults.forensicCopy;
@@ -406,6 +433,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
     	      this.redirect = defaults.redirect;
     	      this.resolveDnsInternally = defaults.resolveDnsInternally;
     	      this.resolveDnsThroughCloudflare = defaults.resolveDnsThroughCloudflare;
+    	      this.setHeaders = defaults.setHeaders;
     	      this.untrustedCert = defaults.untrustedCert;
         }
 
@@ -462,6 +490,15 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
 
             this.checkSession = checkSession;
             return this;
+        }
+        @CustomType.Setter
+        public Builder deleteHeaders(@Nullable List<String> deleteHeaders) {
+
+            this.deleteHeaders = deleteHeaders;
+            return this;
+        }
+        public Builder deleteHeaders(String... deleteHeaders) {
+            return deleteHeaders(List.of(deleteHeaders));
         }
         @CustomType.Setter
         public Builder dnsResolvers(@Nullable ZeroTrustGatewayPolicyRuleSettingsDnsResolvers dnsResolvers) {
@@ -563,6 +600,12 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder setHeaders(@Nullable Map<String,List<String>> setHeaders) {
+
+            this.setHeaders = setHeaders;
+            return this;
+        }
+        @CustomType.Setter
         public Builder untrustedCert(@Nullable ZeroTrustGatewayPolicyRuleSettingsUntrustedCert untrustedCert) {
 
             this.untrustedCert = untrustedCert;
@@ -579,6 +622,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
             _resultValue.blockReason = blockReason;
             _resultValue.bypassParentRule = bypassParentRule;
             _resultValue.checkSession = checkSession;
+            _resultValue.deleteHeaders = deleteHeaders;
             _resultValue.dnsResolvers = dnsResolvers;
             _resultValue.egress = egress;
             _resultValue.forensicCopy = forensicCopy;
@@ -595,6 +639,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
             _resultValue.redirect = redirect;
             _resultValue.resolveDnsInternally = resolveDnsInternally;
             _resultValue.resolveDnsThroughCloudflare = resolveDnsThroughCloudflare;
+            _resultValue.setHeaders = setHeaders;
             _resultValue.untrustedCert = untrustedCert;
             return _resultValue;
         }

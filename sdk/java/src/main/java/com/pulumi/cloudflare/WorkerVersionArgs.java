@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.inputs.WorkerVersionAssetsArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionBindingArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionCacheOptionsArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionContainerArgs;
+import com.pulumi.cloudflare.inputs.WorkerVersionExportsArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionLimitsArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionMigrationsArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionModuleArgs;
@@ -18,6 +19,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -151,6 +153,31 @@ public final class WorkerVersionArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<WorkerVersionContainerArgs>>> containers() {
         return Optional.ofNullable(this.containers);
+    }
+
+    /**
+     * Declarative exports for the version, including Durable Object
+     * classes (with their `storage` backend) and named Worker
+     * entrypoints. On reads, tombstoned lifecycle entries are
+     * omitted, so only live exports (`created` and
+     * `expecting-transfer`) are returned. `exports` and `migrations`
+     * are mutually exclusive on upload.
+     * 
+     */
+    @Import(name="exports")
+    private @Nullable Output<Map<String,WorkerVersionExportsArgs>> exports;
+
+    /**
+     * @return Declarative exports for the version, including Durable Object
+     * classes (with their `storage` backend) and named Worker
+     * entrypoints. On reads, tombstoned lifecycle entries are
+     * omitted, so only live exports (`created` and
+     * `expecting-transfer`) are returned. `exports` and `migrations`
+     * are mutually exclusive on upload.
+     * 
+     */
+    public Optional<Output<Map<String,WorkerVersionExportsArgs>>> exports() {
+        return Optional.ofNullable(this.exports);
     }
 
     /**
@@ -306,6 +333,7 @@ public final class WorkerVersionArgs extends com.pulumi.resources.ResourceArgs {
         this.compatibilityDate = $.compatibilityDate;
         this.compatibilityFlags = $.compatibilityFlags;
         this.containers = $.containers;
+        this.exports = $.exports;
         this.limits = $.limits;
         this.mainModule = $.mainModule;
         this.migrations = $.migrations;
@@ -536,6 +564,37 @@ public final class WorkerVersionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder containers(WorkerVersionContainerArgs... containers) {
             return containers(List.of(containers));
+        }
+
+        /**
+         * @param exports Declarative exports for the version, including Durable Object
+         * classes (with their `storage` backend) and named Worker
+         * entrypoints. On reads, tombstoned lifecycle entries are
+         * omitted, so only live exports (`created` and
+         * `expecting-transfer`) are returned. `exports` and `migrations`
+         * are mutually exclusive on upload.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exports(@Nullable Output<Map<String,WorkerVersionExportsArgs>> exports) {
+            $.exports = exports;
+            return this;
+        }
+
+        /**
+         * @param exports Declarative exports for the version, including Durable Object
+         * classes (with their `storage` backend) and named Worker
+         * entrypoints. On reads, tombstoned lifecycle entries are
+         * omitted, so only live exports (`created` and
+         * `expecting-transfer`) are returned. `exports` and `migrations`
+         * are mutually exclusive on upload.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exports(Map<String,WorkerVersionExportsArgs> exports) {
+            return exports(Output.of(exports));
         }
 
         /**

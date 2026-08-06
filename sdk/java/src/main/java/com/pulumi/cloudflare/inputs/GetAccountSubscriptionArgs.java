@@ -16,24 +16,40 @@ public final class GetAccountSubscriptionArgs extends com.pulumi.resources.Invok
     public static final GetAccountSubscriptionArgs Empty = new GetAccountSubscriptionArgs();
 
     /**
-     * Identifier
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
+    /**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * 
+     */
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
+
+    /**
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * 
+     */
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
+    }
+
     private GetAccountSubscriptionArgs() {}
 
     private GetAccountSubscriptionArgs(GetAccountSubscriptionArgs $) {
         this.accountId = $.accountId;
+        this.zoneId = $.zoneId;
     }
 
     public static Builder builder() {
@@ -55,7 +71,7 @@ public final class GetAccountSubscriptionArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -66,13 +82,34 @@ public final class GetAccountSubscriptionArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(@Nullable Output<String> zoneId) {
+            $.zoneId = zoneId;
+            return this;
+        }
+
+        /**
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(String zoneId) {
+            return zoneId(Output.of(zoneId));
         }
 
         public GetAccountSubscriptionArgs build() {

@@ -14,13 +14,13 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetSecretsStoreFilterResult
     {
         /// <summary>
-        /// Direction to sort objects
+        /// Direction to sort objects.
         /// Available values: "asc", "desc".
         /// </summary>
         public readonly string Direction;
         /// <summary>
-        /// Order secrets by values in the given field
-        /// Available values: "name", "comment", "created", "modified", "status".
+        /// Order stores by values in the given field.
+        /// Available values: "name", "created", "modified".
         /// </summary>
         public readonly string Order;
 

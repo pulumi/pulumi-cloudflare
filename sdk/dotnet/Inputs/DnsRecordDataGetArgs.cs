@@ -147,7 +147,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<double>? Preference { get; set; }
 
         /// <summary>
-        /// Priority.
+        /// Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
         /// </summary>
         [Input("priority")]
         public Input<double>? Priority { get; set; }
@@ -201,7 +201,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Tag { get; set; }
 
         /// <summary>
-        /// Target.
+        /// A valid mail server hostname, or "." for a NULL MX record.
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }

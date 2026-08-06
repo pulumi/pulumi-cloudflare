@@ -72,7 +72,7 @@ export interface GetResourceGroupResult {
      */
     readonly resourceGroupId: string;
     /**
-     * The scope associated to the resource group
+     * A scope is a combination of scope objects which provides additional context.
      */
     readonly scopes: outputs.GetResourceGroupScope[];
 }

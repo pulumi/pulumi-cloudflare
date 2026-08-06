@@ -18,7 +18,7 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
 
     /**
      * Algorithm
-     * Available values: &#34;RS256&#34;, &#34;RS384&#34;, &#34;RS512&#34;, &#34;PS256&#34;, &#34;PS384&#34;, &#34;PS512&#34;, &#34;ES256&#34;, &#34;ES384&#34;.
+     * Available values: &#34;RS256&#34;, &#34;RS384&#34;, &#34;RS512&#34;, &#34;PS256&#34;, &#34;PS384&#34;, &#34;PS512&#34;, &#34;ES256&#34;, &#34;ES384&#34;, &#34;HS256&#34;, &#34;HS384&#34;, &#34;HS512&#34;.
      * 
      */
     @Import(name="alg", required=true)
@@ -26,7 +26,7 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
 
     /**
      * @return Algorithm
-     * Available values: &#34;RS256&#34;, &#34;RS384&#34;, &#34;RS512&#34;, &#34;PS256&#34;, &#34;PS384&#34;, &#34;PS512&#34;, &#34;ES256&#34;, &#34;ES384&#34;.
+     * Available values: &#34;RS256&#34;, &#34;RS384&#34;, &#34;RS512&#34;, &#34;PS256&#34;, &#34;PS384&#34;, &#34;PS512&#34;, &#34;ES256&#34;, &#34;ES384&#34;, &#34;HS256&#34;, &#34;HS384&#34;, &#34;HS512&#34;.
      * 
      */
     public Output<String> alg() {
@@ -66,6 +66,21 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
     }
 
     /**
+     * Symmetric key material. Required for create and PUT update requests.
+     * 
+     */
+    @Import(name="k")
+    private @Nullable Output<String> k;
+
+    /**
+     * @return Symmetric key material. Required for create and PUT update requests.
+     * 
+     */
+    public Optional<Output<String>> k() {
+        return Optional.ofNullable(this.k);
+    }
+
+    /**
      * Key ID
      * 
      */
@@ -82,7 +97,7 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
 
     /**
      * Key Type
-     * Available values: &#34;RSA&#34;, &#34;EC&#34;.
+     * Available values: &#34;RSA&#34;, &#34;EC&#34;, &#34;oct&#34;.
      * 
      */
     @Import(name="kty", required=true)
@@ -90,7 +105,7 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
 
     /**
      * @return Key Type
-     * Available values: &#34;RSA&#34;, &#34;EC&#34;.
+     * Available values: &#34;RSA&#34;, &#34;EC&#34;, &#34;oct&#34;.
      * 
      */
     public Output<String> kty() {
@@ -148,6 +163,7 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
         this.alg = $.alg;
         this.crv = $.crv;
         this.e = $.e;
+        this.k = $.k;
         this.kid = $.kid;
         this.kty = $.kty;
         this.n = $.n;
@@ -175,7 +191,7 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
 
         /**
          * @param alg Algorithm
-         * Available values: &#34;RS256&#34;, &#34;RS384&#34;, &#34;RS512&#34;, &#34;PS256&#34;, &#34;PS384&#34;, &#34;PS512&#34;, &#34;ES256&#34;, &#34;ES384&#34;.
+         * Available values: &#34;RS256&#34;, &#34;RS384&#34;, &#34;RS512&#34;, &#34;PS256&#34;, &#34;PS384&#34;, &#34;PS512&#34;, &#34;ES256&#34;, &#34;ES384&#34;, &#34;HS256&#34;, &#34;HS384&#34;, &#34;HS512&#34;.
          * 
          * @return builder
          * 
@@ -187,7 +203,7 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
 
         /**
          * @param alg Algorithm
-         * Available values: &#34;RS256&#34;, &#34;RS384&#34;, &#34;RS512&#34;, &#34;PS256&#34;, &#34;PS384&#34;, &#34;PS512&#34;, &#34;ES256&#34;, &#34;ES384&#34;.
+         * Available values: &#34;RS256&#34;, &#34;RS384&#34;, &#34;RS512&#34;, &#34;PS256&#34;, &#34;PS384&#34;, &#34;PS512&#34;, &#34;ES256&#34;, &#34;ES384&#34;, &#34;HS256&#34;, &#34;HS384&#34;, &#34;HS512&#34;.
          * 
          * @return builder
          * 
@@ -241,6 +257,27 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
         }
 
         /**
+         * @param k Symmetric key material. Required for create and PUT update requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder k(@Nullable Output<String> k) {
+            $.k = k;
+            return this;
+        }
+
+        /**
+         * @param k Symmetric key material. Required for create and PUT update requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder k(String k) {
+            return k(Output.of(k));
+        }
+
+        /**
          * @param kid Key ID
          * 
          * @return builder
@@ -263,7 +300,7 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
 
         /**
          * @param kty Key Type
-         * Available values: &#34;RSA&#34;, &#34;EC&#34;.
+         * Available values: &#34;RSA&#34;, &#34;EC&#34;, &#34;oct&#34;.
          * 
          * @return builder
          * 
@@ -275,7 +312,7 @@ public final class TokenValidationConfigCredentialsKeyArgs extends com.pulumi.re
 
         /**
          * @param kty Key Type
-         * Available values: &#34;RSA&#34;, &#34;EC&#34;.
+         * Available values: &#34;RSA&#34;, &#34;EC&#34;, &#34;oct&#34;.
          * 
          * @return builder
          * 

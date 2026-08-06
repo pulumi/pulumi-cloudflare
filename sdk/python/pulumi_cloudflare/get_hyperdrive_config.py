@@ -27,7 +27,7 @@ class GetHyperdriveConfigResult:
     """
     A collection of values returned by getHyperdriveConfig.
     """
-    def __init__(__self__, account_id=None, caching=None, created_on=None, hyperdrive_id=None, id=None, modified_on=None, mtls=None, name=None, origin=None, origin_connection_limit=None):
+    def __init__(__self__, account_id=None, caching=None, created_on=None, hyperdrive_id=None, id=None, modified_on=None, mtls=None, name=None, origin=None, origin_connection_limit=None, restarted_on=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -58,6 +58,9 @@ class GetHyperdriveConfigResult:
         if origin_connection_limit and not isinstance(origin_connection_limit, int):
             raise TypeError("Expected argument 'origin_connection_limit' to be a int")
         pulumi.set(__self__, "origin_connection_limit", origin_connection_limit)
+        if restarted_on and not isinstance(restarted_on, str):
+            raise TypeError("Expected argument 'restarted_on' to be a str")
+        pulumi.set(__self__, "restarted_on", restarted_on)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -133,6 +136,11 @@ class GetHyperdriveConfigResult:
         """
         return pulumi.get(self, "origin_connection_limit")
 
+    @_builtins.property
+    @pulumi.getter(name="restartedOn")
+    def restarted_on(self) -> _builtins.str:
+        return pulumi.get(self, "restarted_on")
+
 
 class AwaitableGetHyperdriveConfigResult(GetHyperdriveConfigResult):
     # pylint: disable=using-constant-test
@@ -149,7 +157,8 @@ class AwaitableGetHyperdriveConfigResult(GetHyperdriveConfigResult):
             mtls=self.mtls,
             name=self.name,
             origin=self.origin,
-            origin_connection_limit=self.origin_connection_limit)
+            origin_connection_limit=self.origin_connection_limit,
+            restarted_on=self.restarted_on)
 
 
 def get_hyperdrive_config(account_id: Optional[_builtins.str] = None,
@@ -191,7 +200,8 @@ def get_hyperdrive_config(account_id: Optional[_builtins.str] = None,
         mtls=pulumi.get(__ret__, 'mtls'),
         name=pulumi.get(__ret__, 'name'),
         origin=pulumi.get(__ret__, 'origin'),
-        origin_connection_limit=pulumi.get(__ret__, 'origin_connection_limit'))
+        origin_connection_limit=pulumi.get(__ret__, 'origin_connection_limit'),
+        restarted_on=pulumi.get(__ret__, 'restarted_on'))
 def get_hyperdrive_config_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  hyperdrive_id: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHyperdriveConfigResult]:
@@ -230,4 +240,5 @@ def get_hyperdrive_config_output(account_id: pulumi.Input[Optional[Optional[_bui
         mtls=pulumi.get(__response__, 'mtls'),
         name=pulumi.get(__response__, 'name'),
         origin=pulumi.get(__response__, 'origin'),
-        origin_connection_limit=pulumi.get(__response__, 'origin_connection_limit')))
+        origin_connection_limit=pulumi.get(__response__, 'origin_connection_limit'),
+        restarted_on=pulumi.get(__response__, 'restarted_on')))

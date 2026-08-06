@@ -49,7 +49,6 @@ import javax.annotation.Nullable;
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .hostname("app.example.com")
  *             .service("my-worker")
- *             .environment("production")
  *             .zoneId("593c9c94de529bbbfaac7c53ced0447d")
  *             .zoneName("example.com")
  *             .build());

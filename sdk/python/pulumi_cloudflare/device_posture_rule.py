@@ -156,6 +156,7 @@ class _DevicePostureRuleState:
     def __init__(__self__, *,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  expiration: pulumi.Input[Optional[_builtins.str]] = None,
                  input: pulumi.Input[Optional['DevicePostureRuleInputArgs']] = None,
                  matches: pulumi.Input[Optional[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]]] = None,
@@ -166,6 +167,7 @@ class _DevicePostureRuleState:
         Input properties used for looking up and filtering DevicePostureRule resources.
 
         :param pulumi.Input[_builtins.str] description: The description of the device posture rule.
+        :param pulumi.Input[_builtins.bool] enabled: Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issue_count input, and true otherwise.
         :param pulumi.Input[_builtins.str] expiration: Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
         :param pulumi.Input['DevicePostureRuleInputArgs'] input: The value to be checked against.
         :param pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]] matches: The conditions that the client must match to run the rule.
@@ -178,6 +180,8 @@ class _DevicePostureRuleState:
             pulumi.set(__self__, "account_id", account_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if expiration is not None:
             pulumi.set(__self__, "expiration", expiration)
         if input is not None:
@@ -211,6 +215,18 @@ class _DevicePostureRuleState:
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issue_count input, and true otherwise.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
@@ -442,6 +458,7 @@ class DevicePostureRule(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
+            __props__.__dict__["enabled"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/devicePostureRule:DevicePostureRule")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(DevicePostureRule, __self__).__init__(
@@ -456,6 +473,7 @@ class DevicePostureRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             expiration: pulumi.Input[Optional[_builtins.str]] = None,
             input: pulumi.Input[Optional[Union['DevicePostureRuleInputArgs', 'DevicePostureRuleInputArgsDict']]] = None,
             matches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DevicePostureRuleMatchArgs', 'DevicePostureRuleMatchArgsDict']]]]] = None,
@@ -470,6 +488,7 @@ class DevicePostureRule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the device posture rule.
+        :param pulumi.Input[_builtins.bool] enabled: Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issue_count input, and true otherwise.
         :param pulumi.Input[_builtins.str] expiration: Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
         :param pulumi.Input[Union['DevicePostureRuleInputArgs', 'DevicePostureRuleInputArgsDict']] input: The value to be checked against.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureRuleMatchArgs', 'DevicePostureRuleMatchArgsDict']]]] matches: The conditions that the client must match to run the rule.
@@ -484,6 +503,7 @@ class DevicePostureRule(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["description"] = description
+        __props__.__dict__["enabled"] = enabled
         __props__.__dict__["expiration"] = expiration
         __props__.__dict__["input"] = input
         __props__.__dict__["matches"] = matches
@@ -504,6 +524,14 @@ class DevicePostureRule(pulumi.CustomResource):
         The description of the device posture rule.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issue_count input, and true otherwise.
+        """
+        return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter

@@ -67,6 +67,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string ShortId;
         /// <summary>
+        /// Why the deployment was skipped.
+        /// Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+        /// </summary>
+        public readonly string SkipReason;
+        /// <summary>
         /// Configs for the project source control.
         /// </summary>
         public readonly Outputs.GetPagesProjectsResultCanonicalDeploymentSourceResult Source;
@@ -111,6 +116,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string shortId,
 
+            string skipReason,
+
             Outputs.GetPagesProjectsResultCanonicalDeploymentSourceResult source,
 
             ImmutableArray<Outputs.GetPagesProjectsResultCanonicalDeploymentStageResult> stages,
@@ -132,6 +139,7 @@ namespace Pulumi.Cloudflare.Outputs
             ProjectId = projectId;
             ProjectName = projectName;
             ShortId = shortId;
+            SkipReason = skipReason;
             Source = source;
             Stages = stages;
             Url = url;

@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultAssets;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultBinding;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultCacheOptions;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultContainer;
+import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultExports;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultLimits;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultMigrations;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultModule;
@@ -18,6 +19,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @CustomType
@@ -65,6 +67,16 @@ public final class GetWorkerVersionsResult {
      * 
      */
     private String createdOn;
+    /**
+     * @return Declarative exports for the version, including Durable Object
+     * classes (with their `storage` backend) and named Worker
+     * entrypoints. On reads, tombstoned lifecycle entries are
+     * omitted, so only live exports (`created` and
+     * `expecting-transfer`) are returned. `exports` and `migrations`
+     * are mutually exclusive on upload.
+     * 
+     */
+    private Map<String,GetWorkerVersionsResultExports> exports;
     /**
      * @return Version identifier.
      * 
@@ -208,6 +220,18 @@ public final class GetWorkerVersionsResult {
         return this.createdOn;
     }
     /**
+     * @return Declarative exports for the version, including Durable Object
+     * classes (with their `storage` backend) and named Worker
+     * entrypoints. On reads, tombstoned lifecycle entries are
+     * omitted, so only live exports (`created` and
+     * `expecting-transfer`) are returned. `exports` and `migrations`
+     * are mutually exclusive on upload.
+     * 
+     */
+    public Map<String,GetWorkerVersionsResultExports> exports() {
+        return this.exports;
+    }
+    /**
      * @return Version identifier.
      * 
      */
@@ -334,6 +358,7 @@ public final class GetWorkerVersionsResult {
         private List<String> compatibilityFlags;
         private List<GetWorkerVersionsResultContainer> containers;
         private String createdOn;
+        private Map<String,GetWorkerVersionsResultExports> exports;
         private String id;
         private GetWorkerVersionsResultLimits limits;
         private String mainModule;
@@ -359,6 +384,7 @@ public final class GetWorkerVersionsResult {
     	      this.compatibilityFlags = defaults.compatibilityFlags;
     	      this.containers = defaults.containers;
     	      this.createdOn = defaults.createdOn;
+    	      this.exports = defaults.exports;
     	      this.id = defaults.id;
     	      this.limits = defaults.limits;
     	      this.mainModule = defaults.mainModule;
@@ -446,6 +472,14 @@ public final class GetWorkerVersionsResult {
               throw new MissingRequiredPropertyException("GetWorkerVersionsResult", "createdOn");
             }
             this.createdOn = createdOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder exports(Map<String,GetWorkerVersionsResultExports> exports) {
+            if (exports == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionsResult", "exports");
+            }
+            this.exports = exports;
             return this;
         }
         @CustomType.Setter
@@ -579,6 +613,7 @@ public final class GetWorkerVersionsResult {
             _resultValue.compatibilityFlags = compatibilityFlags;
             _resultValue.containers = containers;
             _resultValue.createdOn = createdOn;
+            _resultValue.exports = exports;
             _resultValue.id = id;
             _resultValue.limits = limits;
             _resultValue.mainModule = mainModule;

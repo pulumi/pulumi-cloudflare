@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustDexTestsResultResult
     {
         /// <summary>
+        /// Date the test was created, in RFC 3339 format.
+        /// </summary>
+        public readonly string Created;
+        /// <summary>
         /// The configuration object which contains the details for the WARP client to conduct the test.
         /// </summary>
         public readonly Outputs.GetZeroTrustDexTestsResultDataResult Data;
@@ -46,9 +50,15 @@ namespace Pulumi.Cloudflare.Outputs
         /// The unique identifier for the test.
         /// </summary>
         public readonly string TestId;
+        /// <summary>
+        /// Date the test was last updated, in RFC 3339 format.
+        /// </summary>
+        public readonly string Updated;
 
         [OutputConstructor]
         private GetZeroTrustDexTestsResultResult(
+            string created,
+
             Outputs.GetZeroTrustDexTestsResultDataResult data,
 
             string description,
@@ -65,8 +75,11 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool targeted,
 
-            string testId)
+            string testId,
+
+            string updated)
         {
+            Created = created;
             Data = data;
             Description = description;
             Enabled = enabled;
@@ -76,6 +89,7 @@ namespace Pulumi.Cloudflare.Outputs
             TargetPolicies = targetPolicies;
             Targeted = targeted;
             TestId = testId;
+            Updated = updated;
         }
     }
 }

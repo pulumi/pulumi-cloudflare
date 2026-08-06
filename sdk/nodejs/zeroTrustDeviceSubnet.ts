@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -64,6 +66,10 @@ export class ZeroTrustDeviceSubnet extends pulumi.CustomResource {
      */
     declare public readonly accountId: pulumi.Output<string>;
     /**
+     * IP capacity information for the subnet.
+     */
+    declare public /*out*/ readonly capacity: pulumi.Output<outputs.ZeroTrustDeviceSubnetCapacity>;
+    /**
      * An optional description of the subnet.
      */
     declare public readonly comment: pulumi.Output<string>;
@@ -89,7 +95,7 @@ export class ZeroTrustDeviceSubnet extends pulumi.CustomResource {
     declare public readonly network: pulumi.Output<string>;
     /**
      * The type of subnet.
-     * Available values: "cloudflareSource", "warp".
+     * Available values: "cloudflare*source", "initial*resolved_ip", "warp".
      */
     declare public /*out*/ readonly subnetType: pulumi.Output<string>;
 
@@ -107,6 +113,7 @@ export class ZeroTrustDeviceSubnet extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ZeroTrustDeviceSubnetState | undefined;
             resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["capacity"] = state?.capacity;
             resourceInputs["comment"] = state?.comment;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["deletedAt"] = state?.deletedAt;
@@ -130,6 +137,7 @@ export class ZeroTrustDeviceSubnet extends pulumi.CustomResource {
             resourceInputs["isDefaultNetwork"] = args?.isDefaultNetwork;
             resourceInputs["name"] = args?.name;
             resourceInputs["network"] = args?.network;
+            resourceInputs["capacity"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["deletedAt"] = undefined /*out*/;
             resourceInputs["subnetType"] = undefined /*out*/;
@@ -147,6 +155,10 @@ export interface ZeroTrustDeviceSubnetState {
      * Cloudflare account ID
      */
     accountId?: pulumi.Input<string | undefined>;
+    /**
+     * IP capacity information for the subnet.
+     */
+    capacity?: pulumi.Input<inputs.ZeroTrustDeviceSubnetCapacity | undefined>;
     /**
      * An optional description of the subnet.
      */
@@ -173,7 +185,7 @@ export interface ZeroTrustDeviceSubnetState {
     network?: pulumi.Input<string | undefined>;
     /**
      * The type of subnet.
-     * Available values: "cloudflareSource", "warp".
+     * Available values: "cloudflare*source", "initial*resolved_ip", "warp".
      */
     subnetType?: pulumi.Input<string | undefined>;
 }

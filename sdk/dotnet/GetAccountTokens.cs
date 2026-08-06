@@ -113,6 +113,12 @@ namespace Pulumi.Cloudflare
         public string? Direction { get; set; }
 
         /// <summary>
+        /// When true, includes recently-expired tokens in the response.
+        /// </summary>
+        [Input("includeExpired")]
+        public bool? IncludeExpired { get; set; }
+
+        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
@@ -140,6 +146,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? Direction { get; set; }
 
         /// <summary>
+        /// When true, includes recently-expired tokens in the response.
+        /// </summary>
+        [Input("includeExpired")]
+        public Input<bool>? IncludeExpired { get; set; }
+
+        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
@@ -165,6 +177,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? Direction;
         /// <summary>
+        /// When true, includes recently-expired tokens in the response.
+        /// </summary>
+        public readonly bool IncludeExpired;
+        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
@@ -179,12 +195,15 @@ namespace Pulumi.Cloudflare
 
             string? direction,
 
+            bool includeExpired,
+
             int? maxItems,
 
             ImmutableArray<Outputs.GetAccountTokensResultResult> results)
         {
             AccountId = accountId;
             Direction = direction;
+            IncludeExpired = includeExpired;
             MaxItems = maxItems;
             Results = results;
         }

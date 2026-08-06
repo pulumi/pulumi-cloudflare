@@ -37,12 +37,9 @@ export function getSecretsStores(args: GetSecretsStoresArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getSecretsStores.
  */
 export interface GetSecretsStoresArgs {
-    /**
-     * Account Identifier
-     */
     accountId: string;
     /**
-     * Direction to sort objects
+     * Direction to sort objects.
      * Available values: "asc", "desc".
      */
     direction?: string;
@@ -51,8 +48,8 @@ export interface GetSecretsStoresArgs {
      */
     maxItems?: number;
     /**
-     * Order secrets by values in the given field
-     * Available values: "name", "comment", "created", "modified", "status".
+     * Order stores by values in the given field.
+     * Available values: "name", "created", "modified".
      */
     order?: string;
 }
@@ -61,12 +58,9 @@ export interface GetSecretsStoresArgs {
  * A collection of values returned by getSecretsStores.
  */
 export interface GetSecretsStoresResult {
-    /**
-     * Account Identifier
-     */
     readonly accountId: string;
     /**
-     * Direction to sort objects
+     * Direction to sort objects.
      * Available values: "asc", "desc".
      */
     readonly direction: string;
@@ -75,8 +69,8 @@ export interface GetSecretsStoresResult {
      */
     readonly maxItems?: number;
     /**
-     * Order secrets by values in the given field
-     * Available values: "name", "comment", "created", "modified", "status".
+     * Order stores by values in the given field.
+     * Available values: "name", "created", "modified".
      */
     readonly order: string;
     /**
@@ -115,12 +109,9 @@ export function getSecretsStoresOutput(args: GetSecretsStoresOutputArgs, opts?: 
  * A collection of arguments for invoking getSecretsStores.
  */
 export interface GetSecretsStoresOutputArgs {
-    /**
-     * Account Identifier
-     */
     accountId: pulumi.Input<string>;
     /**
-     * Direction to sort objects
+     * Direction to sort objects.
      * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string | undefined>;
@@ -129,8 +120,8 @@ export interface GetSecretsStoresOutputArgs {
      */
     maxItems?: pulumi.Input<number | undefined>;
     /**
-     * Order secrets by values in the given field
-     * Available values: "name", "comment", "created", "modified", "status".
+     * Order stores by values in the given field.
+     * Available values: "name", "created", "modified".
      */
     order?: pulumi.Input<string | undefined>;
 }

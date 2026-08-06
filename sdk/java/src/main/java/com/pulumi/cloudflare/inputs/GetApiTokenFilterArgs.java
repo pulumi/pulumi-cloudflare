@@ -5,6 +5,8 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -32,10 +34,26 @@ public final class GetApiTokenFilterArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.direction);
     }
 
+    /**
+     * When true, includes recently-expired tokens in the response.
+     * 
+     */
+    @Import(name="includeExpired", required=true)
+    private Output<Boolean> includeExpired;
+
+    /**
+     * @return When true, includes recently-expired tokens in the response.
+     * 
+     */
+    public Output<Boolean> includeExpired() {
+        return this.includeExpired;
+    }
+
     private GetApiTokenFilterArgs() {}
 
     private GetApiTokenFilterArgs(GetApiTokenFilterArgs $) {
         this.direction = $.direction;
+        this.includeExpired = $.includeExpired;
     }
 
     public static Builder builder() {
@@ -79,7 +97,31 @@ public final class GetApiTokenFilterArgs extends com.pulumi.resources.ResourceAr
             return direction(Output.of(direction));
         }
 
+        /**
+         * @param includeExpired When true, includes recently-expired tokens in the response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeExpired(Output<Boolean> includeExpired) {
+            $.includeExpired = includeExpired;
+            return this;
+        }
+
+        /**
+         * @param includeExpired When true, includes recently-expired tokens in the response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeExpired(Boolean includeExpired) {
+            return includeExpired(Output.of(includeExpired));
+        }
+
         public GetApiTokenFilterArgs build() {
+            if ($.includeExpired == null) {
+                throw new MissingRequiredPropertyException("GetApiTokenFilterArgs", "includeExpired");
+            }
             return $;
         }
     }

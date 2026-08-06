@@ -72,7 +72,7 @@ namespace Pulumi.Cloudflare
         public Output<double> ClientSecretVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+        /// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `Forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         /// </summary>
         [Output("duration")]
         public Output<string> Duration { get; private set; } = null!;
@@ -165,7 +165,7 @@ namespace Pulumi.Cloudflare
         public Input<double>? ClientSecretVersion { get; set; }
 
         /// <summary>
-        /// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+        /// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `Forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
@@ -231,7 +231,7 @@ namespace Pulumi.Cloudflare
         public Input<double>? ClientSecretVersion { get; set; }
 
         /// <summary>
-        /// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+        /// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `Forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }

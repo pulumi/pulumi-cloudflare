@@ -237,8 +237,9 @@ class GoogleTagGateway(pulumi.CustomResource):
         """
         Accepted Permissions
 
-        - `Zone Settings Read`
-        - `Zone Settings Write`
+        - `Zaraz Admin`
+        - `Zaraz Edit`
+        - `Zaraz Read`
 
         ## Example Usage
 
@@ -280,8 +281,9 @@ class GoogleTagGateway(pulumi.CustomResource):
         """
         Accepted Permissions
 
-        - `Zone Settings Read`
-        - `Zone Settings Write`
+        - `Zaraz Admin`
+        - `Zaraz Edit`
+        - `Zaraz Read`
 
         ## Example Usage
 

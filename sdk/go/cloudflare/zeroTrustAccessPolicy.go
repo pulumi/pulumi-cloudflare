@@ -63,9 +63,11 @@ import (
 //					Rdp: &cloudflare.ZeroTrustAccessPolicyConnectionRulesRdpArgs{
 //						AllowedClipboardLocalToRemoteFormats: pulumi.StringArray{
 //							pulumi.String("text"),
+//							pulumi.String("file"),
 //						},
 //						AllowedClipboardRemoteToLocalFormats: pulumi.StringArray{
 //							pulumi.String("text"),
+//							pulumi.String("file"),
 //						},
 //					},
 //				},
@@ -112,12 +114,15 @@ type ZeroTrustAccessPolicy struct {
 
 	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Number of access applications currently using this policy.
+	AppCount pulumi.IntOutput `pulumi:"appCount"`
 	// Administrators who can approve a temporary authentication request.
 	ApprovalGroups ZeroTrustAccessPolicyApprovalGroupArrayOutput `pulumi:"approvalGroups"`
 	// Requires the user to request access from an administrator at the start of each session.
 	ApprovalRequired pulumi.BoolPtrOutput `pulumi:"approvalRequired"`
 	// The rules that define how users may connect to targets secured by your application.
 	ConnectionRules ZeroTrustAccessPolicyConnectionRulesPtrOutput `pulumi:"connectionRules"`
+	CreatedAt       pulumi.StringOutput                           `pulumi:"createdAt"`
 	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
 	// Available values: "allow", "deny", "nonIdentity", "bypass".
 	Decision pulumi.StringOutput `pulumi:"decision"`
@@ -137,8 +142,10 @@ type ZeroTrustAccessPolicy struct {
 	PurposeJustificationRequired pulumi.BoolPtrOutput `pulumi:"purposeJustificationRequired"`
 	// Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
 	Requires ZeroTrustAccessPolicyRequireArrayOutput `pulumi:"requires"`
+	Reusable pulumi.BoolOutput                       `pulumi:"reusable"`
 	// The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	SessionDuration pulumi.StringOutput `pulumi:"sessionDuration"`
+	UpdatedAt       pulumi.StringOutput `pulumi:"updatedAt"`
 }
 
 // NewZeroTrustAccessPolicy registers a new resource with the given unique name, arguments, and options.
@@ -188,12 +195,15 @@ func GetZeroTrustAccessPolicy(ctx *pulumi.Context,
 type zeroTrustAccessPolicyState struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
+	// Number of access applications currently using this policy.
+	AppCount *int `pulumi:"appCount"`
 	// Administrators who can approve a temporary authentication request.
 	ApprovalGroups []ZeroTrustAccessPolicyApprovalGroup `pulumi:"approvalGroups"`
 	// Requires the user to request access from an administrator at the start of each session.
 	ApprovalRequired *bool `pulumi:"approvalRequired"`
 	// The rules that define how users may connect to targets secured by your application.
 	ConnectionRules *ZeroTrustAccessPolicyConnectionRules `pulumi:"connectionRules"`
+	CreatedAt       *string                               `pulumi:"createdAt"`
 	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
 	// Available values: "allow", "deny", "nonIdentity", "bypass".
 	Decision *string `pulumi:"decision"`
@@ -213,19 +223,24 @@ type zeroTrustAccessPolicyState struct {
 	PurposeJustificationRequired *bool `pulumi:"purposeJustificationRequired"`
 	// Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
 	Requires []ZeroTrustAccessPolicyRequire `pulumi:"requires"`
+	Reusable *bool                          `pulumi:"reusable"`
 	// The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	SessionDuration *string `pulumi:"sessionDuration"`
+	UpdatedAt       *string `pulumi:"updatedAt"`
 }
 
 type ZeroTrustAccessPolicyState struct {
 	// Identifier.
 	AccountId pulumi.StringPtrInput
+	// Number of access applications currently using this policy.
+	AppCount pulumi.IntPtrInput
 	// Administrators who can approve a temporary authentication request.
 	ApprovalGroups ZeroTrustAccessPolicyApprovalGroupArrayInput
 	// Requires the user to request access from an administrator at the start of each session.
 	ApprovalRequired pulumi.BoolPtrInput
 	// The rules that define how users may connect to targets secured by your application.
 	ConnectionRules ZeroTrustAccessPolicyConnectionRulesPtrInput
+	CreatedAt       pulumi.StringPtrInput
 	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
 	// Available values: "allow", "deny", "nonIdentity", "bypass".
 	Decision pulumi.StringPtrInput
@@ -245,8 +260,10 @@ type ZeroTrustAccessPolicyState struct {
 	PurposeJustificationRequired pulumi.BoolPtrInput
 	// Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
 	Requires ZeroTrustAccessPolicyRequireArrayInput
+	Reusable pulumi.BoolPtrInput
 	// The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	SessionDuration pulumi.StringPtrInput
+	UpdatedAt       pulumi.StringPtrInput
 }
 
 func (ZeroTrustAccessPolicyState) ElementType() reflect.Type {
@@ -410,6 +427,11 @@ func (o ZeroTrustAccessPolicyOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Number of access applications currently using this policy.
+func (o ZeroTrustAccessPolicyOutput) AppCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.IntOutput { return v.AppCount }).(pulumi.IntOutput)
+}
+
 // Administrators who can approve a temporary authentication request.
 func (o ZeroTrustAccessPolicyOutput) ApprovalGroups() ZeroTrustAccessPolicyApprovalGroupArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessPolicy) ZeroTrustAccessPolicyApprovalGroupArrayOutput { return v.ApprovalGroups }).(ZeroTrustAccessPolicyApprovalGroupArrayOutput)
@@ -423,6 +445,10 @@ func (o ZeroTrustAccessPolicyOutput) ApprovalRequired() pulumi.BoolPtrOutput {
 // The rules that define how users may connect to targets secured by your application.
 func (o ZeroTrustAccessPolicyOutput) ConnectionRules() ZeroTrustAccessPolicyConnectionRulesPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessPolicy) ZeroTrustAccessPolicyConnectionRulesPtrOutput { return v.ConnectionRules }).(ZeroTrustAccessPolicyConnectionRulesPtrOutput)
+}
+
+func (o ZeroTrustAccessPolicyOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 // The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
@@ -471,9 +497,17 @@ func (o ZeroTrustAccessPolicyOutput) Requires() ZeroTrustAccessPolicyRequireArra
 	return o.ApplyT(func(v *ZeroTrustAccessPolicy) ZeroTrustAccessPolicyRequireArrayOutput { return v.Requires }).(ZeroTrustAccessPolicyRequireArrayOutput)
 }
 
+func (o ZeroTrustAccessPolicyOutput) Reusable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.BoolOutput { return v.Reusable }).(pulumi.BoolOutput)
+}
+
 // The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 func (o ZeroTrustAccessPolicyOutput) SessionDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringOutput { return v.SessionDuration }).(pulumi.StringOutput)
+}
+
+func (o ZeroTrustAccessPolicyOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 type ZeroTrustAccessPolicyArrayOutput struct{ *pulumi.OutputState }

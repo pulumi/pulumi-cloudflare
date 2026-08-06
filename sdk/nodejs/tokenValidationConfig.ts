@@ -24,12 +24,11 @@ import * as utilities from "./utilities";
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     credentials: {
  *         keys: [{
- *             alg: "ES256",
- *             crv: "P-256",
- *             kid: "38013f13-c266-4eec-a72a-92ec92779f21",
- *             kty: "EC",
- *             x: "KN53JRwN3wCjm2o39bvZUX2VdrsHzS8pxOAGjm8m7EQ",
- *             y: "lnkkzIxaveggz-HFhcMWW15nxvOj0Z_uQsXbpK0GFcY",
+ *             alg: "RS256",
+ *             e: "e",
+ *             kid: "kid",
+ *             kty: "RSA",
+ *             n: "n",
  *         }],
  *     },
  *     description: "Long description for Token Validation Configuration",
@@ -77,6 +76,9 @@ export class TokenValidationConfig extends pulumi.CustomResource {
     }
 
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    /**
+     * Request payload for create and PUT credentials operations. Provided keys define the complete stored key set. Key identities (`{alg,kid}`) must be unique.
+     */
     declare public readonly credentials: pulumi.Output<outputs.TokenValidationConfigCredentials>;
     declare public readonly description: pulumi.Output<string>;
     declare public /*out*/ readonly lastUpdated: pulumi.Output<string>;
@@ -151,6 +153,9 @@ export class TokenValidationConfig extends pulumi.CustomResource {
  */
 export interface TokenValidationConfigState {
     createdAt?: pulumi.Input<string | undefined>;
+    /**
+     * Request payload for create and PUT credentials operations. Provided keys define the complete stored key set. Key identities (`{alg,kid}`) must be unique.
+     */
     credentials?: pulumi.Input<inputs.TokenValidationConfigCredentials | undefined>;
     description?: pulumi.Input<string | undefined>;
     lastUpdated?: pulumi.Input<string | undefined>;
@@ -170,6 +175,9 @@ export interface TokenValidationConfigState {
  * The set of arguments for constructing a TokenValidationConfig resource.
  */
 export interface TokenValidationConfigArgs {
+    /**
+     * Request payload for create and PUT credentials operations. Provided keys define the complete stored key set. Key identities (`{alg,kid}`) must be unique.
+     */
     credentials: pulumi.Input<inputs.TokenValidationConfigCredentials>;
     description: pulumi.Input<string>;
     title: pulumi.Input<string>;

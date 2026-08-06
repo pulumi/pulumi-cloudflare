@@ -27,7 +27,7 @@ class GetAccountSubscriptionResult:
     """
     A collection of values returned by getAccountSubscription.
     """
-    def __init__(__self__, account_id=None, currency=None, current_period_end=None, current_period_start=None, frequency=None, id=None, price=None, rate_plan=None, state=None):
+    def __init__(__self__, account_id=None, currency=None, current_period_end=None, current_period_start=None, frequency=None, id=None, price=None, rate_plan=None, state=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -55,12 +55,15 @@ class GetAccountSubscriptionResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if zone_id and not isinstance(zone_id, str):
+            raise TypeError("Expected argument 'zone_id' to be a str")
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
         """
-        Identifier
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -101,7 +104,7 @@ class GetAccountSubscriptionResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Identifier
+        Subscription identifier tag.
         """
         return pulumi.get(self, "id")
 
@@ -130,6 +133,14 @@ class GetAccountSubscriptionResult:
         """
         return pulumi.get(self, "state")
 
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[_builtins.str]:
+        """
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+        """
+        return pulumi.get(self, "zone_id")
+
 
 class AwaitableGetAccountSubscriptionResult(GetAccountSubscriptionResult):
     # pylint: disable=using-constant-test
@@ -145,10 +156,12 @@ class AwaitableGetAccountSubscriptionResult(GetAccountSubscriptionResult):
             id=self.id,
             price=self.price,
             rate_plan=self.rate_plan,
-            state=self.state)
+            state=self.state,
+            zone_id=self.zone_id)
 
 
 def get_account_subscription(account_id: Optional[_builtins.str] = None,
+                             zone_id: Optional[_builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountSubscriptionResult:
     """
     Accepted Permissions
@@ -162,14 +175,16 @@ def get_account_subscription(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_subscription = cloudflare.get_account_subscription(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_account_subscription = cloudflare.get_account_subscription(account_id="account_id")
     ```
 
 
-    :param _builtins.str account_id: Identifier
+    :param _builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+    :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getAccountSubscription:getAccountSubscription', __args__, opts=opts, typ=GetAccountSubscriptionResult).value
 
@@ -182,8 +197,10 @@ def get_account_subscription(account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         price=pulumi.get(__ret__, 'price'),
         rate_plan=pulumi.get(__ret__, 'rate_plan'),
-        state=pulumi.get(__ret__, 'state'))
+        state=pulumi.get(__ret__, 'state'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_account_subscription_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountSubscriptionResult]:
     """
     Accepted Permissions
@@ -197,14 +214,16 @@ def get_account_subscription_output(account_id: pulumi.Input[Optional[Optional[_
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_subscription = cloudflare.get_account_subscription(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_account_subscription = cloudflare.get_account_subscription(account_id="account_id")
     ```
 
 
-    :param _builtins.str account_id: Identifier
+    :param _builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+    :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getAccountSubscription:getAccountSubscription', __args__, opts=opts, typ=GetAccountSubscriptionResult)
     return __ret__.apply(lambda __response__: GetAccountSubscriptionResult(
@@ -216,4 +235,5 @@ def get_account_subscription_output(account_id: pulumi.Input[Optional[Optional[_
         id=pulumi.get(__response__, 'id'),
         price=pulumi.get(__response__, 'price'),
         rate_plan=pulumi.get(__response__, 'rate_plan'),
-        state=pulumi.get(__response__, 'state')))
+        state=pulumi.get(__response__, 'state'),
+        zone_id=pulumi.get(__response__, 'zone_id')))

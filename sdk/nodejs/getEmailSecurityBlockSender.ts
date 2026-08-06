@@ -38,14 +38,8 @@ export function getEmailSecurityBlockSender(args?: GetEmailSecurityBlockSenderAr
  * A collection of arguments for invoking getEmailSecurityBlockSender.
  */
 export interface GetEmailSecurityBlockSenderArgs {
-    /**
-     * Identifier.
-     */
     accountId?: string;
     filter?: inputs.GetEmailSecurityBlockSenderFilter;
-    /**
-     * Blocked sender pattern identifier
-     */
     patternId?: string;
 }
 
@@ -53,35 +47,19 @@ export interface GetEmailSecurityBlockSenderArgs {
  * A collection of values returned by getEmailSecurityBlockSender.
  */
 export interface GetEmailSecurityBlockSenderResult {
-    /**
-     * Identifier.
-     */
     readonly accountId?: string;
     readonly comments: string;
     readonly createdAt: string;
     readonly filter?: outputs.GetEmailSecurityBlockSenderFilter;
-    /**
-     * Blocked sender pattern identifier
-     */
     readonly id: string;
     readonly isRegex: boolean;
     /**
-     * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
-     *
      * @deprecated Use `modifiedAt` instead.
      */
     readonly lastModified: string;
     readonly modifiedAt: string;
     readonly pattern: string;
-    /**
-     * Blocked sender pattern identifier
-     */
     readonly patternId?: string;
-    /**
-     * Type of pattern matching.
-     * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
-     * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
-     */
     readonly patternType: string;
 }
 /**
@@ -116,13 +94,7 @@ export function getEmailSecurityBlockSenderOutput(args?: GetEmailSecurityBlockSe
  * A collection of arguments for invoking getEmailSecurityBlockSender.
  */
 export interface GetEmailSecurityBlockSenderOutputArgs {
-    /**
-     * Identifier.
-     */
     accountId?: pulumi.Input<string | undefined>;
     filter?: pulumi.Input<inputs.GetEmailSecurityBlockSenderFilterArgs | undefined>;
-    /**
-     * Blocked sender pattern identifier
-     */
     patternId?: pulumi.Input<string | undefined>;
 }

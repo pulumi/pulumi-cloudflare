@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetZeroTrustDeviceSubnetCapacity;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -18,6 +19,11 @@ public final class GetZeroTrustDeviceSubnetResult {
      * 
      */
     private @Nullable String accountId;
+    /**
+     * @return IP capacity information for the subnet.
+     * 
+     */
+    private GetZeroTrustDeviceSubnetCapacity capacity;
     /**
      * @return An optional description of the subnet.
      * 
@@ -60,7 +66,7 @@ public final class GetZeroTrustDeviceSubnetResult {
     private String subnetId;
     /**
      * @return The type of subnet.
-     * Available values: &#34;cloudflareSource&#34;, &#34;warp&#34;.
+     * Available values: &#34;cloudflare*source&#34;, &#34;initial*resolved_ip&#34;, &#34;warp&#34;.
      * 
      */
     private String subnetType;
@@ -72,6 +78,13 @@ public final class GetZeroTrustDeviceSubnetResult {
      */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
+    }
+    /**
+     * @return IP capacity information for the subnet.
+     * 
+     */
+    public GetZeroTrustDeviceSubnetCapacity capacity() {
+        return this.capacity;
     }
     /**
      * @return An optional description of the subnet.
@@ -131,7 +144,7 @@ public final class GetZeroTrustDeviceSubnetResult {
     }
     /**
      * @return The type of subnet.
-     * Available values: &#34;cloudflareSource&#34;, &#34;warp&#34;.
+     * Available values: &#34;cloudflare*source&#34;, &#34;initial*resolved_ip&#34;, &#34;warp&#34;.
      * 
      */
     public String subnetType() {
@@ -148,6 +161,7 @@ public final class GetZeroTrustDeviceSubnetResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
+        private GetZeroTrustDeviceSubnetCapacity capacity;
         private String comment;
         private String createdAt;
         private String deletedAt;
@@ -161,6 +175,7 @@ public final class GetZeroTrustDeviceSubnetResult {
         public Builder(GetZeroTrustDeviceSubnetResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.capacity = defaults.capacity;
     	      this.comment = defaults.comment;
     	      this.createdAt = defaults.createdAt;
     	      this.deletedAt = defaults.deletedAt;
@@ -176,6 +191,14 @@ public final class GetZeroTrustDeviceSubnetResult {
         public Builder accountId(@Nullable String accountId) {
 
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder capacity(GetZeroTrustDeviceSubnetCapacity capacity) {
+            if (capacity == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDeviceSubnetResult", "capacity");
+            }
+            this.capacity = capacity;
             return this;
         }
         @CustomType.Setter
@@ -253,6 +276,7 @@ public final class GetZeroTrustDeviceSubnetResult {
         public GetZeroTrustDeviceSubnetResult build() {
             final var _resultValue = new GetZeroTrustDeviceSubnetResult();
             _resultValue.accountId = accountId;
+            _resultValue.capacity = capacity;
             _resultValue.comment = comment;
             _resultValue.createdAt = createdAt;
             _resultValue.deletedAt = deletedAt;

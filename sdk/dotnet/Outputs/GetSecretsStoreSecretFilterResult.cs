@@ -14,21 +14,21 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetSecretsStoreSecretFilterResult
     {
         /// <summary>
-        /// Direction to sort objects
+        /// Direction to sort objects.
         /// Available values: "asc", "desc".
         /// </summary>
         public readonly string Direction;
         /// <summary>
-        /// Order secrets by values in the given field
+        /// Order secrets by values in the given field.
         /// Available values: "name", "comment", "created", "modified", "status".
         /// </summary>
         public readonly string Order;
         /// <summary>
-        /// Only secrets with the given scopes will be returned
+        /// Only secrets with the given scopes will be returned.
         /// </summary>
-        public readonly ImmutableArray<ImmutableArray<string>> Scopes;
+        public readonly ImmutableArray<string> Scopes;
         /// <summary>
-        /// Search secrets using a filter string, filtering across name and comment
+        /// Search secrets using a filter string, filtering across name and comment.
         /// </summary>
         public readonly string? Search;
 
@@ -38,7 +38,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string order,
 
-            ImmutableArray<ImmutableArray<string>> scopes,
+            ImmutableArray<string> scopes,
 
             string? search)
         {

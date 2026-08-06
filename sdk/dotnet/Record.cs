@@ -84,7 +84,7 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
-        /// Components of a CAA record.
+        /// Components of a MX record.
         /// </summary>
         [Output("data")]
         public Output<Outputs.RecordData?> Data { get; private set; } = null!;
@@ -231,7 +231,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// Components of a CAA record.
+        /// Components of a MX record.
         /// </summary>
         [Input("data")]
         public Input<Inputs.RecordDataArgs>? Data { get; set; }
@@ -330,7 +330,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedOn { get; set; }
 
         /// <summary>
-        /// Components of a CAA record.
+        /// Components of a MX record.
         /// </summary>
         [Input("data")]
         public Input<Inputs.RecordDataGetArgs>? Data { get; set; }

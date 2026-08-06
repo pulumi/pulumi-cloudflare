@@ -23,6 +23,11 @@ public final class GetZeroTrustDexTestResult {
      */
     private @Nullable String accountId;
     /**
+     * @return Date the test was created, in RFC 3339 format.
+     * 
+     */
+    private String created;
+    /**
      * @return The configuration object which contains the details for the WARP client to conduct the test.
      * 
      */
@@ -69,6 +74,11 @@ public final class GetZeroTrustDexTestResult {
      * 
      */
     private String testId;
+    /**
+     * @return Date the test was last updated, in RFC 3339 format.
+     * 
+     */
+    private String updated;
 
     private GetZeroTrustDexTestResult() {}
     /**
@@ -77,6 +87,13 @@ public final class GetZeroTrustDexTestResult {
      */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
+    }
+    /**
+     * @return Date the test was created, in RFC 3339 format.
+     * 
+     */
+    public String created() {
+        return this.created;
     }
     /**
      * @return The configuration object which contains the details for the WARP client to conduct the test.
@@ -147,6 +164,13 @@ public final class GetZeroTrustDexTestResult {
     public String testId() {
         return this.testId;
     }
+    /**
+     * @return Date the test was last updated, in RFC 3339 format.
+     * 
+     */
+    public String updated() {
+        return this.updated;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -158,6 +182,7 @@ public final class GetZeroTrustDexTestResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
+        private String created;
         private GetZeroTrustDexTestData data;
         private String description;
         private @Nullable String dexTestId;
@@ -169,10 +194,12 @@ public final class GetZeroTrustDexTestResult {
         private List<GetZeroTrustDexTestTargetPolicy> targetPolicies;
         private Boolean targeted;
         private String testId;
+        private String updated;
         public Builder() {}
         public Builder(GetZeroTrustDexTestResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.created = defaults.created;
     	      this.data = defaults.data;
     	      this.description = defaults.description;
     	      this.dexTestId = defaults.dexTestId;
@@ -184,12 +211,21 @@ public final class GetZeroTrustDexTestResult {
     	      this.targetPolicies = defaults.targetPolicies;
     	      this.targeted = defaults.targeted;
     	      this.testId = defaults.testId;
+    	      this.updated = defaults.updated;
         }
 
         @CustomType.Setter
         public Builder accountId(@Nullable String accountId) {
 
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder created(String created) {
+            if (created == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDexTestResult", "created");
+            }
+            this.created = created;
             return this;
         }
         @CustomType.Setter
@@ -279,9 +315,18 @@ public final class GetZeroTrustDexTestResult {
             this.testId = testId;
             return this;
         }
+        @CustomType.Setter
+        public Builder updated(String updated) {
+            if (updated == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDexTestResult", "updated");
+            }
+            this.updated = updated;
+            return this;
+        }
         public GetZeroTrustDexTestResult build() {
             final var _resultValue = new GetZeroTrustDexTestResult();
             _resultValue.accountId = accountId;
+            _resultValue.created = created;
             _resultValue.data = data;
             _resultValue.description = description;
             _resultValue.dexTestId = dexTestId;
@@ -293,6 +338,7 @@ public final class GetZeroTrustDexTestResult {
             _resultValue.targetPolicies = targetPolicies;
             _resultValue.targeted = targeted;
             _resultValue.testId = testId;
+            _resultValue.updated = updated;
             return _resultValue;
         }
     }

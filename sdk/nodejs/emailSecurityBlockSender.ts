@@ -73,11 +73,20 @@ export class EmailSecurityBlockSender extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly lastModified: pulumi.Output<string>;
     declare public /*out*/ readonly modifiedAt: pulumi.Output<string>;
+    /**
+     * The pattern value to match against. Format depends on `patternType`:
+     * - EMAIL: a valid email address, e.g. `user@example.com`
+     * - DOMAIN: a valid domain name, e.g. `example.com`
+     * - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+     */
     declare public readonly pattern: pulumi.Output<string>;
     /**
      * Type of pattern matching.
-     * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
-     * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+     * - EMAIL: matches a full email address (e.g. `user@example.com`)
+     * - DOMAIN: matches a domain name (e.g. `example.com`)
+     * - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
+     * - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+     *   Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
      */
     declare public readonly patternType: pulumi.Output<string>;
 
@@ -148,11 +157,20 @@ export interface EmailSecurityBlockSenderState {
      */
     lastModified?: pulumi.Input<string | undefined>;
     modifiedAt?: pulumi.Input<string | undefined>;
+    /**
+     * The pattern value to match against. Format depends on `patternType`:
+     * - EMAIL: a valid email address, e.g. `user@example.com`
+     * - DOMAIN: a valid domain name, e.g. `example.com`
+     * - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+     */
     pattern?: pulumi.Input<string | undefined>;
     /**
      * Type of pattern matching.
-     * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
-     * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+     * - EMAIL: matches a full email address (e.g. `user@example.com`)
+     * - DOMAIN: matches a domain name (e.g. `example.com`)
+     * - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
+     * - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+     *   Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
      */
     patternType?: pulumi.Input<string | undefined>;
 }
@@ -167,11 +185,20 @@ export interface EmailSecurityBlockSenderArgs {
     accountId: pulumi.Input<string>;
     comments?: pulumi.Input<string | undefined>;
     isRegex: pulumi.Input<boolean>;
+    /**
+     * The pattern value to match against. Format depends on `patternType`:
+     * - EMAIL: a valid email address, e.g. `user@example.com`
+     * - DOMAIN: a valid domain name, e.g. `example.com`
+     * - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+     */
     pattern: pulumi.Input<string>;
     /**
      * Type of pattern matching.
-     * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
-     * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+     * - EMAIL: matches a full email address (e.g. `user@example.com`)
+     * - DOMAIN: matches a domain name (e.g. `example.com`)
+     * - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
+     * - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+     *   Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
      */
     patternType: pulumi.Input<string>;
 }

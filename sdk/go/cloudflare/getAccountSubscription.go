@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetAccountSubscription(ctx, &cloudflare.LookupAccountSubscriptionArgs{
-//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AccountId: pulumi.StringRef("account_id"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -53,13 +53,15 @@ func LookupAccountSubscription(ctx *pulumi.Context, args *LookupAccountSubscript
 
 // A collection of arguments for invoking getAccountSubscription.
 type LookupAccountSubscriptionArgs struct {
-	// Identifier
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getAccountSubscription.
 type LookupAccountSubscriptionResult struct {
-	// Identifier
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
 	// The monetary unit in which pricing information is displayed.
 	Currency string `pulumi:"currency"`
@@ -70,7 +72,7 @@ type LookupAccountSubscriptionResult struct {
 	// How often the subscription is renewed automatically.
 	// Available values: "weekly", "monthly", "quarterly", "yearly".
 	Frequency string `pulumi:"frequency"`
-	// Identifier
+	// Subscription identifier tag.
 	Id string `pulumi:"id"`
 	// The price of the subscription that will be billed, in US dollars.
 	Price float64 `pulumi:"price"`
@@ -79,6 +81,8 @@ type LookupAccountSubscriptionResult struct {
 	// The state that the subscription is in.
 	// Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
 	State string `pulumi:"state"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupAccountSubscriptionOutput(ctx *pulumi.Context, args LookupAccountSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupAccountSubscriptionResultOutput {
@@ -92,8 +96,10 @@ func LookupAccountSubscriptionOutput(ctx *pulumi.Context, args LookupAccountSubs
 
 // A collection of arguments for invoking getAccountSubscription.
 type LookupAccountSubscriptionOutputArgs struct {
-	// Identifier
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupAccountSubscriptionOutputArgs) ElementType() reflect.Type {
@@ -115,7 +121,7 @@ func (o LookupAccountSubscriptionResultOutput) ToLookupAccountSubscriptionResult
 	return o
 }
 
-// Identifier
+// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 func (o LookupAccountSubscriptionResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccountSubscriptionResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -141,7 +147,7 @@ func (o LookupAccountSubscriptionResultOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountSubscriptionResult) string { return v.Frequency }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Subscription identifier tag.
 func (o LookupAccountSubscriptionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountSubscriptionResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -160,6 +166,11 @@ func (o LookupAccountSubscriptionResultOutput) RatePlan() GetAccountSubscription
 // Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
 func (o LookupAccountSubscriptionResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountSubscriptionResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+func (o LookupAccountSubscriptionResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountSubscriptionResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

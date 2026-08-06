@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustDevicePostureRuleInput;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDevicePostureRuleMatch;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -21,6 +22,11 @@ public final class GetZeroTrustDevicePostureRuleResult {
      * 
      */
     private String description;
+    /**
+     * @return Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issueCount input, and true otherwise.
+     * 
+     */
+    private Boolean enabled;
     /**
      * @return Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
      * 
@@ -73,6 +79,13 @@ public final class GetZeroTrustDevicePostureRuleResult {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issueCount input, and true otherwise.
+     * 
+     */
+    public Boolean enabled() {
+        return this.enabled;
     }
     /**
      * @return Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
@@ -143,6 +156,7 @@ public final class GetZeroTrustDevicePostureRuleResult {
     public static final class Builder {
         private @Nullable String accountId;
         private String description;
+        private Boolean enabled;
         private String expiration;
         private String id;
         private GetZeroTrustDevicePostureRuleInput input;
@@ -156,6 +170,7 @@ public final class GetZeroTrustDevicePostureRuleResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.description = defaults.description;
+    	      this.enabled = defaults.enabled;
     	      this.expiration = defaults.expiration;
     	      this.id = defaults.id;
     	      this.input = defaults.input;
@@ -178,6 +193,14 @@ public final class GetZeroTrustDevicePostureRuleResult {
               throw new MissingRequiredPropertyException("GetZeroTrustDevicePostureRuleResult", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enabled(Boolean enabled) {
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDevicePostureRuleResult", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
@@ -251,6 +274,7 @@ public final class GetZeroTrustDevicePostureRuleResult {
             final var _resultValue = new GetZeroTrustDevicePostureRuleResult();
             _resultValue.accountId = accountId;
             _resultValue.description = description;
+            _resultValue.enabled = enabled;
             _resultValue.expiration = expiration;
             _resultValue.id = id;
             _resultValue.input = input;

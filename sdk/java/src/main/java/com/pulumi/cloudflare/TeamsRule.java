@@ -59,25 +59,25 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var exampleZeroTrustGatewayPolicy = new ZeroTrustGatewayPolicy("exampleZeroTrustGatewayPolicy", ZeroTrustGatewayPolicyArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
  *             .action("allow")
  *             .name("block bad websites")
  *             .description("Block bad websites based on their host name.")
- *             .devicePosture("any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})")
+ *             .devicePosture("any(device_posture.checks.passed[*] in }{{@code \"1308749e-fcfb-4ebc-b051-fe022b632644\"}}{@code )")
  *             .enabled(true)
  *             .expiration(ZeroTrustGatewayPolicyExpirationArgs.builder()
  *                 .expiresAt("2014-01-01T05:20:20Z")
  *                 .duration(10)
  *                 .build())
  *             .filters("http")
- *             .identity("any(identity.groups.name[*] in {\"finance\"})")
+ *             .identity("any(identity.groups.name[*] in }{{@code \"finance\"}}{@code )")
  *             .precedence(0)
  *             .ruleSettings(ZeroTrustGatewayPolicyRuleSettingsArgs.builder()
  *                 .addHeaders(Map.ofEntries(
@@ -116,6 +116,9 @@ import javax.annotation.Nullable;
  *                     .duration("300s")
  *                     .enforce(true)
  *                     .build())
+ *                 .deleteHeaders(                
+ *                     "X-Old-Header",
+ *                     "X-Remove-Me")
  *                 .dnsResolvers(ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs.builder()
  *                     .ipv4s(ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args.builder()
  *                         .ip("2.2.2.2")
@@ -172,6 +175,7 @@ import javax.annotation.Nullable;
  *                     .viewId("view_id")
  *                     .build())
  *                 .resolveDnsThroughCloudflare(true)
+ *                 .setHeaders(Map.of("X-User-Identity", Arrays.asList("user=}{@literal @}{{@code identity.name}}{@code ")))
  *                 .untrustedCert(ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs.builder()
  *                     .action("error")
  *                     .build())
@@ -189,8 +193,8 @@ import javax.annotation.Nullable;
  *             .traffic("http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

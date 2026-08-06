@@ -182,6 +182,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
+        /// Date the test was created, in RFC 3339 format.
+        /// </summary>
+        public readonly string Created;
+        /// <summary>
         /// The configuration object which contains the details for the WARP client to conduct the test.
         /// </summary>
         public readonly Outputs.GetZeroTrustDexTestDataResult Data;
@@ -219,10 +223,16 @@ namespace Pulumi.Cloudflare
         /// The unique identifier for the test.
         /// </summary>
         public readonly string TestId;
+        /// <summary>
+        /// Date the test was last updated, in RFC 3339 format.
+        /// </summary>
+        public readonly string Updated;
 
         [OutputConstructor]
         private GetZeroTrustDexTestResult(
             string? accountId,
+
+            string created,
 
             Outputs.GetZeroTrustDexTestDataResult data,
 
@@ -244,9 +254,12 @@ namespace Pulumi.Cloudflare
 
             bool targeted,
 
-            string testId)
+            string testId,
+
+            string updated)
         {
             AccountId = accountId;
+            Created = created;
             Data = data;
             Description = description;
             DexTestId = dexTestId;
@@ -258,6 +271,7 @@ namespace Pulumi.Cloudflare
             TargetPolicies = targetPolicies;
             Targeted = targeted;
             TestId = testId;
+            Updated = updated;
         }
     }
 }

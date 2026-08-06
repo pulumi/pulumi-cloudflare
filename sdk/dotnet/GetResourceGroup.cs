@@ -165,7 +165,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string ResourceGroupId;
         /// <summary>
-        /// The scope associated to the resource group
+        /// A scope is a combination of scope objects which provides additional context.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetResourceGroupScopeResult> Scopes;
 

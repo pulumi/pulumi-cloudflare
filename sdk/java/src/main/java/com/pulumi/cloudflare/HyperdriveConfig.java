@@ -183,6 +183,20 @@ public class HyperdriveConfig extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> originConnectionLimit() {
         return Codegen.optional(this.originConnectionLimit);
     }
+    /**
+     * Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
+     * 
+     */
+    @Export(name="restartedOn", refs={String.class}, tree="[0]")
+    private Output<String> restartedOn;
+
+    /**
+     * @return Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
+     * 
+     */
+    public Output<String> restartedOn() {
+        return this.restartedOn;
+    }
 
     /**
      *

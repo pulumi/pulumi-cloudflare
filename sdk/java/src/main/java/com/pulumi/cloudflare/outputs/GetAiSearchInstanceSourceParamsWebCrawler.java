@@ -14,7 +14,7 @@ import java.util.Objects;
 public final class GetAiSearchInstanceSourceParamsWebCrawler {
     private GetAiSearchInstanceSourceParamsWebCrawlerParseOptions parseOptions;
     /**
-     * @return Available values: &#34;sitemap&#34;, &#34;feed-rss&#34;, &#34;crawl&#34;.
+     * @return Available values: &#34;sitemap&#34;, &#34;discover&#34;.
      * 
      */
     private String parseType;
@@ -25,7 +25,7 @@ public final class GetAiSearchInstanceSourceParamsWebCrawler {
         return this.parseOptions;
     }
     /**
-     * @return Available values: &#34;sitemap&#34;, &#34;feed-rss&#34;, &#34;crawl&#34;.
+     * @return Available values: &#34;sitemap&#34;, &#34;discover&#34;.
      * 
      */
     public String parseType() {

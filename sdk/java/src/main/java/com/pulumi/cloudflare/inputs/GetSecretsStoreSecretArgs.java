@@ -17,17 +17,9 @@ public final class GetSecretsStoreSecretArgs extends com.pulumi.resources.Invoke
 
     public static final GetSecretsStoreSecretArgs Empty = new GetSecretsStoreSecretArgs();
 
-    /**
-     * Account Identifier
-     * 
-     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
-    /**
-     * @return Account Identifier
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
@@ -39,32 +31,16 @@ public final class GetSecretsStoreSecretArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.filter);
     }
 
-    /**
-     * Secret identifier tag.
-     * 
-     */
     @Import(name="secretId")
     private @Nullable Output<String> secretId;
 
-    /**
-     * @return Secret identifier tag.
-     * 
-     */
     public Optional<Output<String>> secretId() {
         return Optional.ofNullable(this.secretId);
     }
 
-    /**
-     * Store Identifier
-     * 
-     */
     @Import(name="storeId", required=true)
     private Output<String> storeId;
 
-    /**
-     * @return Store Identifier
-     * 
-     */
     public Output<String> storeId() {
         return this.storeId;
     }
@@ -96,23 +72,11 @@ public final class GetSecretsStoreSecretArgs extends com.pulumi.resources.Invoke
             $ = new GetSecretsStoreSecretArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId Account Identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId Account Identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
@@ -126,44 +90,20 @@ public final class GetSecretsStoreSecretArgs extends com.pulumi.resources.Invoke
             return filter(Output.of(filter));
         }
 
-        /**
-         * @param secretId Secret identifier tag.
-         * 
-         * @return builder
-         * 
-         */
         public Builder secretId(@Nullable Output<String> secretId) {
             $.secretId = secretId;
             return this;
         }
 
-        /**
-         * @param secretId Secret identifier tag.
-         * 
-         * @return builder
-         * 
-         */
         public Builder secretId(String secretId) {
             return secretId(Output.of(secretId));
         }
 
-        /**
-         * @param storeId Store Identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder storeId(Output<String> storeId) {
             $.storeId = storeId;
             return this;
         }
 
-        /**
-         * @param storeId Store Identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder storeId(String storeId) {
             return storeId(Output.of(storeId));
         }

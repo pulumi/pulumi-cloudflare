@@ -88,11 +88,26 @@ export class TurnstileWidget extends pulumi.CustomResource {
      * When the widget was created.
      */
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
+    /**
+     * Origin that created this widget, recorded at creation time and
+     * immutable afterward. Server-derived from the create request; not
+     * client-settable. Omitted from the response for widgets created
+     * before this field existed.
+     * Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+     */
+    declare public /*out*/ readonly deployedVia: pulumi.Output<string>;
     declare public readonly domains: pulumi.Output<string[]>;
     /**
      * Return the Ephemeral ID in /siteverify (ENT only).
      */
     declare public readonly ephemeralId: pulumi.Output<boolean>;
+    /**
+     * Origin of the most recent mutation (create, update, delete, or
+     * secret rotation). Server-derived; not client-settable. Omitted for
+     * widgets last mutated before this field existed.
+     * Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+     */
+    declare public /*out*/ readonly lastModifiedVia: pulumi.Output<string>;
     /**
      * Widget Mode
      * Available values: "non-interactive", "invisible", "managed".
@@ -143,8 +158,10 @@ export class TurnstileWidget extends pulumi.CustomResource {
             resourceInputs["botFightMode"] = state?.botFightMode;
             resourceInputs["clearanceLevel"] = state?.clearanceLevel;
             resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["deployedVia"] = state?.deployedVia;
             resourceInputs["domains"] = state?.domains;
             resourceInputs["ephemeralId"] = state?.ephemeralId;
+            resourceInputs["lastModifiedVia"] = state?.lastModifiedVia;
             resourceInputs["mode"] = state?.mode;
             resourceInputs["modifiedOn"] = state?.modifiedOn;
             resourceInputs["name"] = state?.name;
@@ -176,6 +193,8 @@ export class TurnstileWidget extends pulumi.CustomResource {
             resourceInputs["offlabel"] = args?.offlabel;
             resourceInputs["region"] = args?.region;
             resourceInputs["createdOn"] = undefined /*out*/;
+            resourceInputs["deployedVia"] = undefined /*out*/;
+            resourceInputs["lastModifiedVia"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
             resourceInputs["secret"] = undefined /*out*/;
             resourceInputs["sitekey"] = undefined /*out*/;
@@ -210,11 +229,26 @@ export interface TurnstileWidgetState {
      * When the widget was created.
      */
     createdOn?: pulumi.Input<string | undefined>;
+    /**
+     * Origin that created this widget, recorded at creation time and
+     * immutable afterward. Server-derived from the create request; not
+     * client-settable. Omitted from the response for widgets created
+     * before this field existed.
+     * Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+     */
+    deployedVia?: pulumi.Input<string | undefined>;
     domains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Return the Ephemeral ID in /siteverify (ENT only).
      */
     ephemeralId?: pulumi.Input<boolean | undefined>;
+    /**
+     * Origin of the most recent mutation (create, update, delete, or
+     * secret rotation). Server-derived; not client-settable. Omitted for
+     * widgets last mutated before this field existed.
+     * Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+     */
+    lastModifiedVia?: pulumi.Input<string | undefined>;
     /**
      * Widget Mode
      * Available values: "non-interactive", "invisible", "managed".

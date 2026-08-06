@@ -159,6 +159,15 @@ export class WorkerVersion extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
+     * Declarative exports for the version, including Durable Object
+     * classes (with their `storage` backend) and named Worker
+     * entrypoints. On reads, tombstoned lifecycle entries are
+     * omitted, so only live exports (`created` and
+     * `expecting-transfer`) are returned. `exports` and `migrations`
+     * are mutually exclusive on upload.
+     */
+    declare public readonly exports: pulumi.Output<{[key: string]: outputs.WorkerVersionExports} | undefined>;
+    /**
      * Resource limits enforced at runtime.
      */
     declare public readonly limits: pulumi.Output<outputs.WorkerVersionLimits>;
@@ -246,6 +255,7 @@ export class WorkerVersion extends pulumi.CustomResource {
             resourceInputs["compatibilityFlags"] = state?.compatibilityFlags;
             resourceInputs["containers"] = state?.containers;
             resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["exports"] = state?.exports;
             resourceInputs["limits"] = state?.limits;
             resourceInputs["mainModule"] = state?.mainModule;
             resourceInputs["mainScriptBase64"] = state?.mainScriptBase64;
@@ -276,6 +286,7 @@ export class WorkerVersion extends pulumi.CustomResource {
             resourceInputs["compatibilityDate"] = args?.compatibilityDate;
             resourceInputs["compatibilityFlags"] = args?.compatibilityFlags;
             resourceInputs["containers"] = args?.containers;
+            resourceInputs["exports"] = args?.exports;
             resourceInputs["limits"] = args?.limits;
             resourceInputs["mainModule"] = args?.mainModule;
             resourceInputs["migrations"] = args?.migrations;
@@ -340,6 +351,15 @@ export interface WorkerVersionState {
      * When the version was created.
      */
     createdOn?: pulumi.Input<string | undefined>;
+    /**
+     * Declarative exports for the version, including Durable Object
+     * classes (with their `storage` backend) and named Worker
+     * entrypoints. On reads, tombstoned lifecycle entries are
+     * omitted, so only live exports (`created` and
+     * `expecting-transfer`) are returned. `exports` and `migrations`
+     * are mutually exclusive on upload.
+     */
+    exports?: pulumi.Input<{[key: string]: pulumi.Input<inputs.WorkerVersionExports>} | undefined>;
     /**
      * Resource limits enforced at runtime.
      */
@@ -446,6 +466,15 @@ export interface WorkerVersionArgs {
      * List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
      */
     containers?: pulumi.Input<pulumi.Input<inputs.WorkerVersionContainer>[] | undefined>;
+    /**
+     * Declarative exports for the version, including Durable Object
+     * classes (with their `storage` backend) and named Worker
+     * entrypoints. On reads, tombstoned lifecycle entries are
+     * omitted, so only live exports (`created` and
+     * `expecting-transfer`) are returned. `exports` and `migrations`
+     * are mutually exclusive on upload.
+     */
+    exports?: pulumi.Input<{[key: string]: pulumi.Input<inputs.WorkerVersionExports>} | undefined>;
     /**
      * Resource limits enforced at runtime.
      */

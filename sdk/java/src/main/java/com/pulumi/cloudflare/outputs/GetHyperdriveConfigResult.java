@@ -58,6 +58,7 @@ public final class GetHyperdriveConfigResult {
      * 
      */
     private Integer originConnectionLimit;
+    private String restartedOn;
 
     private GetHyperdriveConfigResult() {}
     /**
@@ -122,6 +123,9 @@ public final class GetHyperdriveConfigResult {
     public Integer originConnectionLimit() {
         return this.originConnectionLimit;
     }
+    public String restartedOn() {
+        return this.restartedOn;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -142,6 +146,7 @@ public final class GetHyperdriveConfigResult {
         private String name;
         private GetHyperdriveConfigOrigin origin;
         private Integer originConnectionLimit;
+        private String restartedOn;
         public Builder() {}
         public Builder(GetHyperdriveConfigResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -155,6 +160,7 @@ public final class GetHyperdriveConfigResult {
     	      this.name = defaults.name;
     	      this.origin = defaults.origin;
     	      this.originConnectionLimit = defaults.originConnectionLimit;
+    	      this.restartedOn = defaults.restartedOn;
         }
 
         @CustomType.Setter
@@ -235,6 +241,14 @@ public final class GetHyperdriveConfigResult {
             this.originConnectionLimit = originConnectionLimit;
             return this;
         }
+        @CustomType.Setter
+        public Builder restartedOn(String restartedOn) {
+            if (restartedOn == null) {
+              throw new MissingRequiredPropertyException("GetHyperdriveConfigResult", "restartedOn");
+            }
+            this.restartedOn = restartedOn;
+            return this;
+        }
         public GetHyperdriveConfigResult build() {
             final var _resultValue = new GetHyperdriveConfigResult();
             _resultValue.accountId = accountId;
@@ -247,6 +261,7 @@ public final class GetHyperdriveConfigResult {
             _resultValue.name = name;
             _resultValue.origin = origin;
             _resultValue.originConnectionLimit = originConnectionLimit;
+            _resultValue.restartedOn = restartedOn;
             return _resultValue;
         }
     }

@@ -81,14 +81,14 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Components of a CAA record.
+     * Components of a MX record.
      * 
      */
     @Import(name="data")
     private @Nullable Output<RecordDataArgs> data;
 
     /**
-     * @return Components of a CAA record.
+     * @return Components of a MX record.
      * 
      */
     public Optional<Output<RecordDataArgs>> data() {
@@ -418,7 +418,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param data Components of a CAA record.
+         * @param data Components of a MX record.
          * 
          * @return builder
          * 
@@ -429,7 +429,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param data Components of a CAA record.
+         * @param data Components of a MX record.
          * 
          * @return builder
          * 

@@ -18,6 +18,14 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? AccessKeyId;
         /// <summary>
+        /// Access key for the Azure Storage account. Mutually exclusive with `SasToken`.
+        /// </summary>
+        public readonly string? AccountKey;
+        /// <summary>
+        /// Name of the Azure Storage account.
+        /// </summary>
+        public readonly string? AccountName;
+        /// <summary>
         /// Name of the AWS S3 bucket.
         /// </summary>
         public readonly string? Bucket;
@@ -30,9 +38,13 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? ClientEmail;
         /// <summary>
-        /// Available values: "aws", "gcs", "s3".
+        /// Available values: "aws", "gcs", "s3", "azure".
         /// </summary>
         public readonly string? CloudProvider;
+        /// <summary>
+        /// Name of the Azure Blob Storage container.
+        /// </summary>
+        public readonly string? Container;
         /// <summary>
         /// Private Key of an IAM credential (ideally scoped to a single GCS bucket).
         /// </summary>
@@ -42,6 +54,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Region;
         /// <summary>
+        /// Shared Access Signature token for the Azure Storage account. Mutually exclusive with `AccountKey`.
+        /// </summary>
+        public readonly string? SasToken;
+        /// <summary>
         /// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
         /// </summary>
         public readonly string? SecretAccessKey;
@@ -49,6 +65,10 @@ namespace Pulumi.Cloudflare.Outputs
         [OutputConstructor]
         private R2BucketSippySource(
             string? accessKeyId,
+
+            string? accountKey,
+
+            string? accountName,
 
             string? bucket,
 
@@ -58,19 +78,27 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? cloudProvider,
 
+            string? container,
+
             string? privateKey,
 
             string? region,
 
+            string? sasToken,
+
             string? secretAccessKey)
         {
             AccessKeyId = accessKeyId;
+            AccountKey = accountKey;
+            AccountName = accountName;
             Bucket = bucket;
             BucketUrl = bucketUrl;
             ClientEmail = clientEmail;
             CloudProvider = cloudProvider;
+            Container = container;
             PrivateKey = privateKey;
             Region = region;
+            SasToken = sasToken;
             SecretAccessKey = secretAccessKey;
         }
     }

@@ -81,14 +81,14 @@ public final class DnsRecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Components of a CAA record.
+     * Components of a MX record.
      * 
      */
     @Import(name="data")
     private @Nullable Output<DnsRecordDataArgs> data;
 
     /**
-     * @return Components of a CAA record.
+     * @return Components of a MX record.
      * 
      */
     public Optional<Output<DnsRecordDataArgs>> data() {
@@ -418,7 +418,7 @@ public final class DnsRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param data Components of a CAA record.
+         * @param data Components of a MX record.
          * 
          * @return builder
          * 
@@ -429,7 +429,7 @@ public final class DnsRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param data Components of a CAA record.
+         * @param data Components of a MX record.
          * 
          * @return builder
          * 

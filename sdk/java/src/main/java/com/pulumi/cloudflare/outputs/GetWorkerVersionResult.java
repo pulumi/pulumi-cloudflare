@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.outputs.GetWorkerVersionAssets;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionBinding;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionCacheOptions;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionContainer;
+import com.pulumi.cloudflare.outputs.GetWorkerVersionExports;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionLimits;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionMigrations;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionModule;
@@ -18,6 +19,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -45,6 +47,7 @@ public final class GetWorkerVersionResult {
     private List<String> compatibilityFlags;
     private List<GetWorkerVersionContainer> containers;
     private String createdOn;
+    private Map<String,GetWorkerVersionExports> exports;
     private String id;
     /**
      * @return Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
@@ -121,6 +124,9 @@ public final class GetWorkerVersionResult {
     }
     public String createdOn() {
         return this.createdOn;
+    }
+    public Map<String,GetWorkerVersionExports> exports() {
+        return this.exports;
     }
     public String id() {
         return this.id;
@@ -211,6 +217,7 @@ public final class GetWorkerVersionResult {
         private List<String> compatibilityFlags;
         private List<GetWorkerVersionContainer> containers;
         private String createdOn;
+        private Map<String,GetWorkerVersionExports> exports;
         private String id;
         private @Nullable String include;
         private GetWorkerVersionLimits limits;
@@ -240,6 +247,7 @@ public final class GetWorkerVersionResult {
     	      this.compatibilityFlags = defaults.compatibilityFlags;
     	      this.containers = defaults.containers;
     	      this.createdOn = defaults.createdOn;
+    	      this.exports = defaults.exports;
     	      this.id = defaults.id;
     	      this.include = defaults.include;
     	      this.limits = defaults.limits;
@@ -338,6 +346,14 @@ public final class GetWorkerVersionResult {
               throw new MissingRequiredPropertyException("GetWorkerVersionResult", "createdOn");
             }
             this.createdOn = createdOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder exports(Map<String,GetWorkerVersionExports> exports) {
+            if (exports == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionResult", "exports");
+            }
+            this.exports = exports;
             return this;
         }
         @CustomType.Setter
@@ -494,6 +510,7 @@ public final class GetWorkerVersionResult {
             _resultValue.compatibilityFlags = compatibilityFlags;
             _resultValue.containers = containers;
             _resultValue.createdOn = createdOn;
+            _resultValue.exports = exports;
             _resultValue.id = id;
             _resultValue.include = include;
             _resultValue.limits = limits;

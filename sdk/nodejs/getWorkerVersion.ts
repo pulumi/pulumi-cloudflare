@@ -82,6 +82,7 @@ export interface GetWorkerVersionResult {
     readonly compatibilityFlags: string[];
     readonly containers: outputs.GetWorkerVersionContainer[];
     readonly createdOn: string;
+    readonly exports: {[key: string]: outputs.GetWorkerVersionExports};
     readonly id: string;
     /**
      * Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.

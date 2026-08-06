@@ -17,23 +17,15 @@ public final class GetSecretsStoresArgs extends com.pulumi.resources.InvokeArgs 
 
     public static final GetSecretsStoresArgs Empty = new GetSecretsStoresArgs();
 
-    /**
-     * Account Identifier
-     * 
-     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
-    /**
-     * @return Account Identifier
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
 
     /**
-     * Direction to sort objects
+     * Direction to sort objects.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
@@ -41,7 +33,7 @@ public final class GetSecretsStoresArgs extends com.pulumi.resources.InvokeArgs 
     private @Nullable Output<String> direction;
 
     /**
-     * @return Direction to sort objects
+     * @return Direction to sort objects.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
@@ -65,16 +57,16 @@ public final class GetSecretsStoresArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Order secrets by values in the given field
-     * Available values: &#34;name&#34;, &#34;comment&#34;, &#34;created&#34;, &#34;modified&#34;, &#34;status&#34;.
+     * Order stores by values in the given field.
+     * Available values: &#34;name&#34;, &#34;created&#34;, &#34;modified&#34;.
      * 
      */
     @Import(name="order")
     private @Nullable Output<String> order;
 
     /**
-     * @return Order secrets by values in the given field
-     * Available values: &#34;name&#34;, &#34;comment&#34;, &#34;created&#34;, &#34;modified&#34;, &#34;status&#34;.
+     * @return Order stores by values in the given field.
+     * Available values: &#34;name&#34;, &#34;created&#34;, &#34;modified&#34;.
      * 
      */
     public Optional<Output<String>> order() {
@@ -108,29 +100,17 @@ public final class GetSecretsStoresArgs extends com.pulumi.resources.InvokeArgs 
             $ = new GetSecretsStoresArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId Account Identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId Account Identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
         /**
-         * @param direction Direction to sort objects
+         * @param direction Direction to sort objects.
          * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
@@ -142,7 +122,7 @@ public final class GetSecretsStoresArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param direction Direction to sort objects
+         * @param direction Direction to sort objects.
          * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
@@ -174,8 +154,8 @@ public final class GetSecretsStoresArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param order Order secrets by values in the given field
-         * Available values: &#34;name&#34;, &#34;comment&#34;, &#34;created&#34;, &#34;modified&#34;, &#34;status&#34;.
+         * @param order Order stores by values in the given field.
+         * Available values: &#34;name&#34;, &#34;created&#34;, &#34;modified&#34;.
          * 
          * @return builder
          * 
@@ -186,8 +166,8 @@ public final class GetSecretsStoresArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param order Order secrets by values in the given field
-         * Available values: &#34;name&#34;, &#34;comment&#34;, &#34;created&#34;, &#34;modified&#34;, &#34;status&#34;.
+         * @param order Order stores by values in the given field.
+         * Available values: &#34;name&#34;, &#34;created&#34;, &#34;modified&#34;.
          * 
          * @return builder
          * 

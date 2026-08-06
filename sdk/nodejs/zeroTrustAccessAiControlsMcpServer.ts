@@ -25,6 +25,7 @@ import * as utilities from "./utilities";
  *     hostname: "https://example.com/mcp",
  *     name: "My MCP Server",
  *     authCredentials: "auth_credentials",
+ *     clientSecret: "client_secret",
  *     description: "This is one remote mcp server",
  *     isSharedOauthCallbackEnabled: true,
  *     secureWebGateway: false,
@@ -78,11 +79,19 @@ export class ZeroTrustAccessAiControlsMcpServer extends pulumi.CustomResource {
     }
 
     declare public readonly accountId: pulumi.Output<string>;
+    /**
+     * Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
+     */
+    declare public /*out*/ readonly authConfigSummary: pulumi.Output<outputs.ZeroTrustAccessAiControlsMcpServerAuthConfigSummary>;
     declare public readonly authCredentials: pulumi.Output<string | undefined>;
     /**
      * Available values: "oauth", "bearer", "unauthenticated".
      */
     declare public readonly authType: pulumi.Output<string>;
+    /**
+     * Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+     */
+    declare public readonly clientSecret: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -90,9 +99,9 @@ export class ZeroTrustAccessAiControlsMcpServer extends pulumi.CustomResource {
     declare public /*out*/ readonly errorDetails: pulumi.Output<outputs.ZeroTrustAccessAiControlsMcpServerErrorDetails>;
     declare public readonly hostname: pulumi.Output<string>;
     /**
-     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
      */
-    declare public readonly isSharedOauthCallbackEnabled: pulumi.Output<boolean | undefined>;
+    declare public readonly isSharedOauthCallbackEnabled: pulumi.Output<boolean>;
     declare public /*out*/ readonly lastSuccessfulSync: pulumi.Output<string>;
     declare public /*out*/ readonly lastSynced: pulumi.Output<string>;
     declare public /*out*/ readonly modifiedAt: pulumi.Output<string>;
@@ -126,8 +135,10 @@ export class ZeroTrustAccessAiControlsMcpServer extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ZeroTrustAccessAiControlsMcpServerState | undefined;
             resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["authConfigSummary"] = state?.authConfigSummary;
             resourceInputs["authCredentials"] = state?.authCredentials;
             resourceInputs["authType"] = state?.authType;
+            resourceInputs["clientSecret"] = state?.clientSecret;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["createdBy"] = state?.createdBy;
             resourceInputs["description"] = state?.description;
@@ -167,6 +178,7 @@ export class ZeroTrustAccessAiControlsMcpServer extends pulumi.CustomResource {
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["authCredentials"] = args?.authCredentials ? pulumi.secret(args.authCredentials) : undefined;
             resourceInputs["authType"] = args?.authType;
+            resourceInputs["clientSecret"] = args?.clientSecret ? pulumi.secret(args.clientSecret) : undefined;
             resourceInputs["description"] = args?.description;
             resourceInputs["hostname"] = args?.hostname;
             resourceInputs["isSharedOauthCallbackEnabled"] = args?.isSharedOauthCallbackEnabled;
@@ -175,6 +187,7 @@ export class ZeroTrustAccessAiControlsMcpServer extends pulumi.CustomResource {
             resourceInputs["updatedPrompts"] = args?.updatedPrompts;
             resourceInputs["updatedTools"] = args?.updatedTools;
             resourceInputs["zeroTrustAccessAiControlsMcpServerId"] = args?.zeroTrustAccessAiControlsMcpServerId;
+            resourceInputs["authConfigSummary"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
@@ -188,7 +201,7 @@ export class ZeroTrustAccessAiControlsMcpServer extends pulumi.CustomResource {
             resourceInputs["tools"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["authCredentials"] };
+        const secretOpts = { additionalSecretOutputs: ["authCredentials", "clientSecret"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(ZeroTrustAccessAiControlsMcpServer.__pulumiType, name, resourceInputs, opts);
     }
@@ -199,11 +212,19 @@ export class ZeroTrustAccessAiControlsMcpServer extends pulumi.CustomResource {
  */
 export interface ZeroTrustAccessAiControlsMcpServerState {
     accountId?: pulumi.Input<string | undefined>;
+    /**
+     * Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
+     */
+    authConfigSummary?: pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpServerAuthConfigSummary | undefined>;
     authCredentials?: pulumi.Input<string | undefined>;
     /**
      * Available values: "oauth", "bearer", "unauthenticated".
      */
     authType?: pulumi.Input<string | undefined>;
+    /**
+     * Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+     */
+    clientSecret?: pulumi.Input<string | undefined>;
     createdAt?: pulumi.Input<string | undefined>;
     createdBy?: pulumi.Input<string | undefined>;
     description?: pulumi.Input<string | undefined>;
@@ -211,7 +232,7 @@ export interface ZeroTrustAccessAiControlsMcpServerState {
     errorDetails?: pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpServerErrorDetails | undefined>;
     hostname?: pulumi.Input<string | undefined>;
     /**
-     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
      */
     isSharedOauthCallbackEnabled?: pulumi.Input<boolean | undefined>;
     lastSuccessfulSync?: pulumi.Input<string | undefined>;
@@ -244,10 +265,14 @@ export interface ZeroTrustAccessAiControlsMcpServerArgs {
      * Available values: "oauth", "bearer", "unauthenticated".
      */
     authType: pulumi.Input<string>;
+    /**
+     * Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+     */
+    clientSecret?: pulumi.Input<string | undefined>;
     description?: pulumi.Input<string | undefined>;
     hostname: pulumi.Input<string>;
     /**
-     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
      */
     isSharedOauthCallbackEnabled?: pulumi.Input<boolean | undefined>;
     name: pulumi.Input<string>;

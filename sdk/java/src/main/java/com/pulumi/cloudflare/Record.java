@@ -142,14 +142,14 @@ public class Record extends com.pulumi.resources.CustomResource {
         return this.createdOn;
     }
     /**
-     * Components of a CAA record.
+     * Components of a MX record.
      * 
      */
     @Export(name="data", refs={RecordData.class}, tree="[0]")
     private Output</* @Nullable */ RecordData> data;
 
     /**
-     * @return Components of a CAA record.
+     * @return Components of a MX record.
      * 
      */
     public Output<Optional<RecordData>> data() {

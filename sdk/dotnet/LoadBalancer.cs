@@ -27,7 +27,6 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var exampleLoadBalancer = new Cloudflare.LoadBalancer("example_load_balancer", new()
     ///     {
-    ///         ZoneId = "699d98642c564d2e855e9661899b7252",
     ///         DefaultPools = new[]
     ///         {
     ///             "17b5962d775c646f3f9725cbc7a53df4",
@@ -36,6 +35,7 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         FallbackPool = "fallback_pool",
     ///         Name = "www.example.com",
+    ///         ZoneId = "zone_id",
     ///         AdaptiveRouting = new Cloudflare.Inputs.LoadBalancerAdaptiveRoutingArgs
     ///         {
     ///             FailoverAcrossPools = true,
@@ -53,6 +53,7 @@ namespace Pulumi.Cloudflare
     ///             } },
     ///         },
     ///         Description = "Load Balancer for www.example.com",
+    ///         Enabled = true,
     ///         LocationStrategy = new Cloudflare.Inputs.LoadBalancerLocationStrategyArgs
     ///         {
     ///             Mode = "resolver_ip",
@@ -145,6 +146,16 @@ namespace Pulumi.Cloudflare
     ///                         Mode = "resolver_ip",
     ///                         PreferEcs = "always",
     ///                     },
+    ///                     PoolDefaultWeight = 0.2,
+    ///                     PoolWeights = 
+    ///                     {
+    ///                         { "9290f38c5d07c2e2f4df57b1f61d4196", 0.5 },
+    ///                         { "de90f38ced07c2e2f4df50b1f61d4194", 0.3 },
+    ///                     },
+    ///                     Pools = new[]
+    ///                     {
+    ///                         "17b5962d775c646f3f9725cbc7a53df4",
+    ///                     },
     ///                     PopPools = 
     ///                     {
     ///                         { "LAX", new[]
@@ -228,7 +239,7 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '&lt;zone_id&gt;/&lt;load_balancer_id&gt;'
+    /// $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;load_balancer_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/loadBalancer:LoadBalancer")]

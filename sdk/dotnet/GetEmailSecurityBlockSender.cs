@@ -99,18 +99,12 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetEmailSecurityBlockSenderArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Identifier.
-        /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
 
         [Input("filter")]
         public Inputs.GetEmailSecurityBlockSenderFilterArgs? Filter { get; set; }
 
-        /// <summary>
-        /// Blocked sender pattern identifier
-        /// </summary>
         [Input("patternId")]
         public string? PatternId { get; set; }
 
@@ -122,18 +116,12 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetEmailSecurityBlockSenderInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Identifier.
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         [Input("filter")]
         public Input<Inputs.GetEmailSecurityBlockSenderFilterInputArgs>? Filter { get; set; }
 
-        /// <summary>
-        /// Blocked sender pattern identifier
-        /// </summary>
         [Input("patternId")]
         public Input<string>? PatternId { get; set; }
 
@@ -147,33 +135,16 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetEmailSecurityBlockSenderResult
     {
-        /// <summary>
-        /// Identifier.
-        /// </summary>
         public readonly string? AccountId;
         public readonly string Comments;
         public readonly string CreatedAt;
         public readonly Outputs.GetEmailSecurityBlockSenderFilterResult? Filter;
-        /// <summary>
-        /// Blocked sender pattern identifier
-        /// </summary>
         public readonly string Id;
         public readonly bool IsRegex;
-        /// <summary>
-        /// Deprecated, use `ModifiedAt` instead. End of life: November 1, 2026.
-        /// </summary>
         public readonly string LastModified;
         public readonly string ModifiedAt;
         public readonly string Pattern;
-        /// <summary>
-        /// Blocked sender pattern identifier
-        /// </summary>
         public readonly string? PatternId;
-        /// <summary>
-        /// Type of pattern matching.
-        /// Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
-        /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
-        /// </summary>
         public readonly string PatternType;
 
         [OutputConstructor]

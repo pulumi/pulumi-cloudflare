@@ -13,6 +13,590 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetApiShieldOperationFeaturesConfidenceIntervals struct {
+	LastUpdated        string                                                             `pulumi:"lastUpdated"`
+	SuggestedThreshold GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThreshold `pulumi:"suggestedThreshold"`
+}
+
+// GetApiShieldOperationFeaturesConfidenceIntervalsInput is an input type that accepts GetApiShieldOperationFeaturesConfidenceIntervalsArgs and GetApiShieldOperationFeaturesConfidenceIntervalsOutput values.
+// You can construct a concrete instance of `GetApiShieldOperationFeaturesConfidenceIntervalsInput` via:
+//
+//	GetApiShieldOperationFeaturesConfidenceIntervalsArgs{...}
+type GetApiShieldOperationFeaturesConfidenceIntervalsInput interface {
+	pulumi.Input
+
+	ToGetApiShieldOperationFeaturesConfidenceIntervalsOutput() GetApiShieldOperationFeaturesConfidenceIntervalsOutput
+	ToGetApiShieldOperationFeaturesConfidenceIntervalsOutputWithContext(context.Context) GetApiShieldOperationFeaturesConfidenceIntervalsOutput
+}
+
+type GetApiShieldOperationFeaturesConfidenceIntervalsArgs struct {
+	LastUpdated        pulumi.StringInput                                                      `pulumi:"lastUpdated"`
+	SuggestedThreshold GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdInput `pulumi:"suggestedThreshold"`
+}
+
+func (GetApiShieldOperationFeaturesConfidenceIntervalsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApiShieldOperationFeaturesConfidenceIntervals)(nil)).Elem()
+}
+
+func (i GetApiShieldOperationFeaturesConfidenceIntervalsArgs) ToGetApiShieldOperationFeaturesConfidenceIntervalsOutput() GetApiShieldOperationFeaturesConfidenceIntervalsOutput {
+	return i.ToGetApiShieldOperationFeaturesConfidenceIntervalsOutputWithContext(context.Background())
+}
+
+func (i GetApiShieldOperationFeaturesConfidenceIntervalsArgs) ToGetApiShieldOperationFeaturesConfidenceIntervalsOutputWithContext(ctx context.Context) GetApiShieldOperationFeaturesConfidenceIntervalsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApiShieldOperationFeaturesConfidenceIntervalsOutput)
+}
+
+type GetApiShieldOperationFeaturesConfidenceIntervalsOutput struct{ *pulumi.OutputState }
+
+func (GetApiShieldOperationFeaturesConfidenceIntervalsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApiShieldOperationFeaturesConfidenceIntervals)(nil)).Elem()
+}
+
+func (o GetApiShieldOperationFeaturesConfidenceIntervalsOutput) ToGetApiShieldOperationFeaturesConfidenceIntervalsOutput() GetApiShieldOperationFeaturesConfidenceIntervalsOutput {
+	return o
+}
+
+func (o GetApiShieldOperationFeaturesConfidenceIntervalsOutput) ToGetApiShieldOperationFeaturesConfidenceIntervalsOutputWithContext(ctx context.Context) GetApiShieldOperationFeaturesConfidenceIntervalsOutput {
+	return o
+}
+
+func (o GetApiShieldOperationFeaturesConfidenceIntervalsOutput) LastUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApiShieldOperationFeaturesConfidenceIntervals) string { return v.LastUpdated }).(pulumi.StringOutput)
+}
+
+func (o GetApiShieldOperationFeaturesConfidenceIntervalsOutput) SuggestedThreshold() GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdOutput {
+	return o.ApplyT(func(v GetApiShieldOperationFeaturesConfidenceIntervals) GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThreshold {
+		return v.SuggestedThreshold
+	}).(GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdOutput)
+}
+
+type GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThreshold struct {
+	ConfidenceIntervals GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals `pulumi:"confidenceIntervals"`
+	// Suggested threshold.
+	Mean float64 `pulumi:"mean"`
+}
+
+// GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdInput is an input type that accepts GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdArgs and GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdOutput values.
+// You can construct a concrete instance of `GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdInput` via:
+//
+//	GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdArgs{...}
+type GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdInput interface {
+	pulumi.Input
+
+	ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdOutput() GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdOutput
+	ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdOutputWithContext(context.Context) GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdOutput
+}
+
+type GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdArgs struct {
+	ConfidenceIntervals GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsInput `pulumi:"confidenceIntervals"`
+	// Suggested threshold.
+	Mean pulumi.Float64Input `pulumi:"mean"`
+}
+
+func (GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThreshold)(nil)).Elem()
+}
+
+func (i GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdArgs) ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdOutput() GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdOutput {
+	return i.ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdOutputWithContext(context.Background())
+}
+
+func (i GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdArgs) ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdOutputWithContext(ctx context.Context) GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdOutput)
+}
+
+type GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdOutput struct{ *pulumi.OutputState }
+
+func (GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThreshold)(nil)).Elem()
+}
+
+func (o GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdOutput) ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdOutput() GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdOutput {
+	return o
+}
+
+func (o GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdOutput) ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdOutputWithContext(ctx context.Context) GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdOutput {
+	return o
+}
+
+func (o GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdOutput) ConfidenceIntervals() GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsOutput {
+	return o.ApplyT(func(v GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThreshold) GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals {
+		return v.ConfidenceIntervals
+	}).(GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsOutput)
+}
+
+// Suggested threshold.
+func (o GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdOutput) Mean() pulumi.Float64Output {
+	return o.ApplyT(func(v GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThreshold) float64 { return v.Mean }).(pulumi.Float64Output)
+}
+
+type GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals struct {
+	// Upper and lower bound for percentile estimate
+	P90 GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 `pulumi:"p90"`
+	// Upper and lower bound for percentile estimate
+	P95 GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 `pulumi:"p95"`
+	// Upper and lower bound for percentile estimate
+	P99 GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 `pulumi:"p99"`
+}
+
+// GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsInput is an input type that accepts GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsArgs and GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsOutput values.
+// You can construct a concrete instance of `GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsInput` via:
+//
+//	GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsArgs{...}
+type GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsInput interface {
+	pulumi.Input
+
+	ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsOutput() GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsOutput
+	ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsOutputWithContext(context.Context) GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsOutput
+}
+
+type GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsArgs struct {
+	// Upper and lower bound for percentile estimate
+	P90 GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Input `pulumi:"p90"`
+	// Upper and lower bound for percentile estimate
+	P95 GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Input `pulumi:"p95"`
+	// Upper and lower bound for percentile estimate
+	P99 GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Input `pulumi:"p99"`
+}
+
+func (GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals)(nil)).Elem()
+}
+
+func (i GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsArgs) ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsOutput() GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsOutput {
+	return i.ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsOutputWithContext(context.Background())
+}
+
+func (i GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsArgs) ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsOutputWithContext(ctx context.Context) GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsOutput)
+}
+
+type GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsOutput struct{ *pulumi.OutputState }
+
+func (GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals)(nil)).Elem()
+}
+
+func (o GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsOutput) ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsOutput() GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsOutput {
+	return o
+}
+
+func (o GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsOutput) ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsOutputWithContext(ctx context.Context) GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsOutput {
+	return o
+}
+
+// Upper and lower bound for percentile estimate
+func (o GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsOutput) P90() GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Output {
+	return o.ApplyT(func(v GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals) GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 {
+		return v.P90
+	}).(GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Output)
+}
+
+// Upper and lower bound for percentile estimate
+func (o GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsOutput) P95() GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Output {
+	return o.ApplyT(func(v GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals) GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 {
+		return v.P95
+	}).(GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Output)
+}
+
+// Upper and lower bound for percentile estimate
+func (o GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsOutput) P99() GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Output {
+	return o.ApplyT(func(v GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervals) GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 {
+		return v.P99
+	}).(GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Output)
+}
+
+type GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 struct {
+	// Lower bound for percentile estimate
+	Lower float64 `pulumi:"lower"`
+	// Upper bound for percentile estimate
+	Upper float64 `pulumi:"upper"`
+}
+
+// GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Input is an input type that accepts GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Args and GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Output values.
+// You can construct a concrete instance of `GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Input` via:
+//
+//	GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Args{...}
+type GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Input interface {
+	pulumi.Input
+
+	ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Output() GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Output
+	ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90OutputWithContext(context.Context) GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Output
+}
+
+type GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Args struct {
+	// Lower bound for percentile estimate
+	Lower pulumi.Float64Input `pulumi:"lower"`
+	// Upper bound for percentile estimate
+	Upper pulumi.Float64Input `pulumi:"upper"`
+}
+
+func (GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90)(nil)).Elem()
+}
+
+func (i GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Args) ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Output() GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Output {
+	return i.ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90OutputWithContext(context.Background())
+}
+
+func (i GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Args) ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90OutputWithContext(ctx context.Context) GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Output)
+}
+
+type GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Output struct{ *pulumi.OutputState }
+
+func (GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90)(nil)).Elem()
+}
+
+func (o GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Output) ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Output() GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Output {
+	return o
+}
+
+func (o GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Output) ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90OutputWithContext(ctx context.Context) GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Output {
+	return o
+}
+
+// Lower bound for percentile estimate
+func (o GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Output) Lower() pulumi.Float64Output {
+	return o.ApplyT(func(v GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90) float64 {
+		return v.Lower
+	}).(pulumi.Float64Output)
+}
+
+// Upper bound for percentile estimate
+func (o GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Output) Upper() pulumi.Float64Output {
+	return o.ApplyT(func(v GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90) float64 {
+		return v.Upper
+	}).(pulumi.Float64Output)
+}
+
+type GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 struct {
+	// Lower bound for percentile estimate
+	Lower float64 `pulumi:"lower"`
+	// Upper bound for percentile estimate
+	Upper float64 `pulumi:"upper"`
+}
+
+// GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Input is an input type that accepts GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Args and GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Output values.
+// You can construct a concrete instance of `GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Input` via:
+//
+//	GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Args{...}
+type GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Input interface {
+	pulumi.Input
+
+	ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Output() GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Output
+	ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95OutputWithContext(context.Context) GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Output
+}
+
+type GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Args struct {
+	// Lower bound for percentile estimate
+	Lower pulumi.Float64Input `pulumi:"lower"`
+	// Upper bound for percentile estimate
+	Upper pulumi.Float64Input `pulumi:"upper"`
+}
+
+func (GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95)(nil)).Elem()
+}
+
+func (i GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Args) ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Output() GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Output {
+	return i.ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95OutputWithContext(context.Background())
+}
+
+func (i GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Args) ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95OutputWithContext(ctx context.Context) GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Output)
+}
+
+type GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Output struct{ *pulumi.OutputState }
+
+func (GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95)(nil)).Elem()
+}
+
+func (o GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Output) ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Output() GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Output {
+	return o
+}
+
+func (o GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Output) ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95OutputWithContext(ctx context.Context) GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Output {
+	return o
+}
+
+// Lower bound for percentile estimate
+func (o GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Output) Lower() pulumi.Float64Output {
+	return o.ApplyT(func(v GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95) float64 {
+		return v.Lower
+	}).(pulumi.Float64Output)
+}
+
+// Upper bound for percentile estimate
+func (o GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Output) Upper() pulumi.Float64Output {
+	return o.ApplyT(func(v GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95) float64 {
+		return v.Upper
+	}).(pulumi.Float64Output)
+}
+
+type GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 struct {
+	// Lower bound for percentile estimate
+	Lower float64 `pulumi:"lower"`
+	// Upper bound for percentile estimate
+	Upper float64 `pulumi:"upper"`
+}
+
+// GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Input is an input type that accepts GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Args and GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Output values.
+// You can construct a concrete instance of `GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Input` via:
+//
+//	GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Args{...}
+type GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Input interface {
+	pulumi.Input
+
+	ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Output() GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Output
+	ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99OutputWithContext(context.Context) GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Output
+}
+
+type GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Args struct {
+	// Lower bound for percentile estimate
+	Lower pulumi.Float64Input `pulumi:"lower"`
+	// Upper bound for percentile estimate
+	Upper pulumi.Float64Input `pulumi:"upper"`
+}
+
+func (GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99)(nil)).Elem()
+}
+
+func (i GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Args) ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Output() GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Output {
+	return i.ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99OutputWithContext(context.Background())
+}
+
+func (i GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Args) ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99OutputWithContext(ctx context.Context) GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Output)
+}
+
+type GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Output struct{ *pulumi.OutputState }
+
+func (GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99)(nil)).Elem()
+}
+
+func (o GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Output) ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Output() GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Output {
+	return o
+}
+
+func (o GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Output) ToGetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99OutputWithContext(ctx context.Context) GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Output {
+	return o
+}
+
+// Lower bound for percentile estimate
+func (o GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Output) Lower() pulumi.Float64Output {
+	return o.ApplyT(func(v GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99) float64 {
+		return v.Lower
+	}).(pulumi.Float64Output)
+}
+
+// Upper bound for percentile estimate
+func (o GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Output) Upper() pulumi.Float64Output {
+	return o.ApplyT(func(v GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99) float64 {
+		return v.Upper
+	}).(pulumi.Float64Output)
+}
+
+type GetApiShieldOperationFeaturesParameterSchemas struct {
+	LastUpdated string `pulumi:"lastUpdated"`
+	// An operation schema object containing a response.
+	ParameterSchemas GetApiShieldOperationFeaturesParameterSchemasParameterSchemas `pulumi:"parameterSchemas"`
+}
+
+// GetApiShieldOperationFeaturesParameterSchemasInput is an input type that accepts GetApiShieldOperationFeaturesParameterSchemasArgs and GetApiShieldOperationFeaturesParameterSchemasOutput values.
+// You can construct a concrete instance of `GetApiShieldOperationFeaturesParameterSchemasInput` via:
+//
+//	GetApiShieldOperationFeaturesParameterSchemasArgs{...}
+type GetApiShieldOperationFeaturesParameterSchemasInput interface {
+	pulumi.Input
+
+	ToGetApiShieldOperationFeaturesParameterSchemasOutput() GetApiShieldOperationFeaturesParameterSchemasOutput
+	ToGetApiShieldOperationFeaturesParameterSchemasOutputWithContext(context.Context) GetApiShieldOperationFeaturesParameterSchemasOutput
+}
+
+type GetApiShieldOperationFeaturesParameterSchemasArgs struct {
+	LastUpdated pulumi.StringInput `pulumi:"lastUpdated"`
+	// An operation schema object containing a response.
+	ParameterSchemas GetApiShieldOperationFeaturesParameterSchemasParameterSchemasInput `pulumi:"parameterSchemas"`
+}
+
+func (GetApiShieldOperationFeaturesParameterSchemasArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApiShieldOperationFeaturesParameterSchemas)(nil)).Elem()
+}
+
+func (i GetApiShieldOperationFeaturesParameterSchemasArgs) ToGetApiShieldOperationFeaturesParameterSchemasOutput() GetApiShieldOperationFeaturesParameterSchemasOutput {
+	return i.ToGetApiShieldOperationFeaturesParameterSchemasOutputWithContext(context.Background())
+}
+
+func (i GetApiShieldOperationFeaturesParameterSchemasArgs) ToGetApiShieldOperationFeaturesParameterSchemasOutputWithContext(ctx context.Context) GetApiShieldOperationFeaturesParameterSchemasOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApiShieldOperationFeaturesParameterSchemasOutput)
+}
+
+type GetApiShieldOperationFeaturesParameterSchemasOutput struct{ *pulumi.OutputState }
+
+func (GetApiShieldOperationFeaturesParameterSchemasOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApiShieldOperationFeaturesParameterSchemas)(nil)).Elem()
+}
+
+func (o GetApiShieldOperationFeaturesParameterSchemasOutput) ToGetApiShieldOperationFeaturesParameterSchemasOutput() GetApiShieldOperationFeaturesParameterSchemasOutput {
+	return o
+}
+
+func (o GetApiShieldOperationFeaturesParameterSchemasOutput) ToGetApiShieldOperationFeaturesParameterSchemasOutputWithContext(ctx context.Context) GetApiShieldOperationFeaturesParameterSchemasOutput {
+	return o
+}
+
+func (o GetApiShieldOperationFeaturesParameterSchemasOutput) LastUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApiShieldOperationFeaturesParameterSchemas) string { return v.LastUpdated }).(pulumi.StringOutput)
+}
+
+// An operation schema object containing a response.
+func (o GetApiShieldOperationFeaturesParameterSchemasOutput) ParameterSchemas() GetApiShieldOperationFeaturesParameterSchemasParameterSchemasOutput {
+	return o.ApplyT(func(v GetApiShieldOperationFeaturesParameterSchemas) GetApiShieldOperationFeaturesParameterSchemasParameterSchemas {
+		return v.ParameterSchemas
+	}).(GetApiShieldOperationFeaturesParameterSchemasParameterSchemasOutput)
+}
+
+type GetApiShieldOperationFeaturesParameterSchemasParameterSchemas struct {
+	// An array containing the learned parameter schemas.
+	Parameters []string `pulumi:"parameters"`
+	// An empty response object. This field is required to yield a valid operation schema.
+	Responses string `pulumi:"responses"`
+}
+
+// GetApiShieldOperationFeaturesParameterSchemasParameterSchemasInput is an input type that accepts GetApiShieldOperationFeaturesParameterSchemasParameterSchemasArgs and GetApiShieldOperationFeaturesParameterSchemasParameterSchemasOutput values.
+// You can construct a concrete instance of `GetApiShieldOperationFeaturesParameterSchemasParameterSchemasInput` via:
+//
+//	GetApiShieldOperationFeaturesParameterSchemasParameterSchemasArgs{...}
+type GetApiShieldOperationFeaturesParameterSchemasParameterSchemasInput interface {
+	pulumi.Input
+
+	ToGetApiShieldOperationFeaturesParameterSchemasParameterSchemasOutput() GetApiShieldOperationFeaturesParameterSchemasParameterSchemasOutput
+	ToGetApiShieldOperationFeaturesParameterSchemasParameterSchemasOutputWithContext(context.Context) GetApiShieldOperationFeaturesParameterSchemasParameterSchemasOutput
+}
+
+type GetApiShieldOperationFeaturesParameterSchemasParameterSchemasArgs struct {
+	// An array containing the learned parameter schemas.
+	Parameters pulumi.StringArrayInput `pulumi:"parameters"`
+	// An empty response object. This field is required to yield a valid operation schema.
+	Responses pulumi.StringInput `pulumi:"responses"`
+}
+
+func (GetApiShieldOperationFeaturesParameterSchemasParameterSchemasArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApiShieldOperationFeaturesParameterSchemasParameterSchemas)(nil)).Elem()
+}
+
+func (i GetApiShieldOperationFeaturesParameterSchemasParameterSchemasArgs) ToGetApiShieldOperationFeaturesParameterSchemasParameterSchemasOutput() GetApiShieldOperationFeaturesParameterSchemasParameterSchemasOutput {
+	return i.ToGetApiShieldOperationFeaturesParameterSchemasParameterSchemasOutputWithContext(context.Background())
+}
+
+func (i GetApiShieldOperationFeaturesParameterSchemasParameterSchemasArgs) ToGetApiShieldOperationFeaturesParameterSchemasParameterSchemasOutputWithContext(ctx context.Context) GetApiShieldOperationFeaturesParameterSchemasParameterSchemasOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApiShieldOperationFeaturesParameterSchemasParameterSchemasOutput)
+}
+
+type GetApiShieldOperationFeaturesParameterSchemasParameterSchemasOutput struct{ *pulumi.OutputState }
+
+func (GetApiShieldOperationFeaturesParameterSchemasParameterSchemasOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApiShieldOperationFeaturesParameterSchemasParameterSchemas)(nil)).Elem()
+}
+
+func (o GetApiShieldOperationFeaturesParameterSchemasParameterSchemasOutput) ToGetApiShieldOperationFeaturesParameterSchemasParameterSchemasOutput() GetApiShieldOperationFeaturesParameterSchemasParameterSchemasOutput {
+	return o
+}
+
+func (o GetApiShieldOperationFeaturesParameterSchemasParameterSchemasOutput) ToGetApiShieldOperationFeaturesParameterSchemasParameterSchemasOutputWithContext(ctx context.Context) GetApiShieldOperationFeaturesParameterSchemasParameterSchemasOutput {
+	return o
+}
+
+// An array containing the learned parameter schemas.
+func (o GetApiShieldOperationFeaturesParameterSchemasParameterSchemasOutput) Parameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApiShieldOperationFeaturesParameterSchemasParameterSchemas) []string { return v.Parameters }).(pulumi.StringArrayOutput)
+}
+
+// An empty response object. This field is required to yield a valid operation schema.
+func (o GetApiShieldOperationFeaturesParameterSchemasParameterSchemasOutput) Responses() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApiShieldOperationFeaturesParameterSchemasParameterSchemas) string { return v.Responses }).(pulumi.StringOutput)
+}
+
+type GetApiShieldOperationFeaturesSchemaInfo struct {
+	// Schema active on endpoint.
+	ActiveSchema GetApiShieldOperationFeaturesSchemaInfoActiveSchema `pulumi:"activeSchema"`
+	// Deprecated. Always false.
+	LearnedAvailable bool `pulumi:"learnedAvailable"`
+	// Action taken on requests failing validation.
+	// Available values: "none", "log", "block".
+	MitigationAction string `pulumi:"mitigationAction"`
+}
+
+// GetApiShieldOperationFeaturesSchemaInfoInput is an input type that accepts GetApiShieldOperationFeaturesSchemaInfoArgs and GetApiShieldOperationFeaturesSchemaInfoOutput values.
+// You can construct a concrete instance of `GetApiShieldOperationFeaturesSchemaInfoInput` via:
+//
+//	GetApiShieldOperationFeaturesSchemaInfoArgs{...}
+type GetApiShieldOperationFeaturesSchemaInfoInput interface {
+	pulumi.Input
+
+	ToGetApiShieldOperationFeaturesSchemaInfoOutput() GetApiShieldOperationFeaturesSchemaInfoOutput
+	ToGetApiShieldOperationFeaturesSchemaInfoOutputWithContext(context.Context) GetApiShieldOperationFeaturesSchemaInfoOutput
+}
+
+type GetApiShieldOperationFeaturesSchemaInfoArgs struct {
+	// Schema active on endpoint.
+	ActiveSchema GetApiShieldOperationFeaturesSchemaInfoActiveSchemaInput `pulumi:"activeSchema"`
+	// Deprecated. Always false.
+	LearnedAvailable pulumi.BoolInput `pulumi:"learnedAvailable"`
+	// Action taken on requests failing validation.
+	// Available values: "none", "log", "block".
+	MitigationAction pulumi.StringInput `pulumi:"mitigationAction"`
+}
+
+func (GetApiShieldOperationFeaturesSchemaInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApiShieldOperationFeaturesSchemaInfo)(nil)).Elem()
+}
+
+func (i GetApiShieldOperationFeaturesSchemaInfoArgs) ToGetApiShieldOperationFeaturesSchemaInfoOutput() GetApiShieldOperationFeaturesSchemaInfoOutput {
+	return i.ToGetApiShieldOperationFeaturesSchemaInfoOutputWithContext(context.Background())
+}
+
+func (i GetApiShieldOperationFeaturesSchemaInfoArgs) ToGetApiShieldOperationFeaturesSchemaInfoOutputWithContext(ctx context.Context) GetApiShieldOperationFeaturesSchemaInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApiShieldOperationFeaturesSchemaInfoOutput)
+}
+
+type GetApiShieldOperationFeaturesSchemaInfoOutput struct{ *pulumi.OutputState }
+
+func (GetApiShieldOperationFeaturesSchemaInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApiShieldOperationFeaturesSchemaInfo)(nil)).Elem()
+}
+
+func (o GetApiShieldOperationFeaturesSchemaInfoOutput) ToGetApiShieldOperationFeaturesSchemaInfoOutput() GetApiShieldOperationFeaturesSchemaInfoOutput {
+	return o
+}
+
+func (o GetApiShieldOperationFeaturesSchemaInfoOutput) ToGetApiShieldOperationFeaturesSchemaInfoOutputWithContext(ctx context.Context) GetApiShieldOperationFeaturesSchemaInfoOutput {
+	return o
+}
+
+// Schema active on endpoint.
+func (o GetApiShieldOperationFeaturesSchemaInfoOutput) ActiveSchema() GetApiShieldOperationFeaturesSchemaInfoActiveSchemaOutput {
+	return o.ApplyT(func(v GetApiShieldOperationFeaturesSchemaInfo) GetApiShieldOperationFeaturesSchemaInfoActiveSchema {
+		return v.ActiveSchema
+	}).(GetApiShieldOperationFeaturesSchemaInfoActiveSchemaOutput)
+}
+
+// Deprecated. Always false.
+func (o GetApiShieldOperationFeaturesSchemaInfoOutput) LearnedAvailable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetApiShieldOperationFeaturesSchemaInfo) bool { return v.LearnedAvailable }).(pulumi.BoolOutput)
+}
+
+// Action taken on requests failing validation.
+// Available values: "none", "log", "block".
+func (o GetApiShieldOperationFeaturesSchemaInfoOutput) MitigationAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApiShieldOperationFeaturesSchemaInfo) string { return v.MitigationAction }).(pulumi.StringOutput)
+}
+
 type GetApiShieldOperationFeaturesSchemaInfoActiveSchema struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// UUID.
@@ -1443,7 +2027,7 @@ func (o GetApiShieldOperationsResultFeaturesParameterSchemasParameterSchemasOutp
 type GetApiShieldOperationsResultFeaturesSchemaInfo struct {
 	// Schema active on endpoint.
 	ActiveSchema GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchema `pulumi:"activeSchema"`
-	// True if a Cloudflare-provided learned schema is available for this endpoint.
+	// Deprecated. Always false.
 	LearnedAvailable bool `pulumi:"learnedAvailable"`
 	// Action taken on requests failing validation.
 	// Available values: "none", "log", "block".
@@ -1464,7 +2048,7 @@ type GetApiShieldOperationsResultFeaturesSchemaInfoInput interface {
 type GetApiShieldOperationsResultFeaturesSchemaInfoArgs struct {
 	// Schema active on endpoint.
 	ActiveSchema GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchemaInput `pulumi:"activeSchema"`
-	// True if a Cloudflare-provided learned schema is available for this endpoint.
+	// Deprecated. Always false.
 	LearnedAvailable pulumi.BoolInput `pulumi:"learnedAvailable"`
 	// Action taken on requests failing validation.
 	// Available values: "none", "log", "block".
@@ -1504,7 +2088,7 @@ func (o GetApiShieldOperationsResultFeaturesSchemaInfoOutput) ActiveSchema() Get
 	}).(GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchemaOutput)
 }
 
-// True if a Cloudflare-provided learned schema is available for this endpoint.
+// Deprecated. Always false.
 func (o GetApiShieldOperationsResultFeaturesSchemaInfoOutput) LearnedAvailable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetApiShieldOperationsResultFeaturesSchemaInfo) bool { return v.LearnedAvailable }).(pulumi.BoolOutput)
 }
@@ -1971,6 +2555,8 @@ type GetApiTokenFilter struct {
 	// Direction to order results.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
+	// When true, includes recently-expired tokens in the response.
+	IncludeExpired bool `pulumi:"includeExpired"`
 }
 
 // GetApiTokenFilterInput is an input type that accepts GetApiTokenFilterArgs and GetApiTokenFilterOutput values.
@@ -1988,6 +2574,8 @@ type GetApiTokenFilterArgs struct {
 	// Direction to order results.
 	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// When true, includes recently-expired tokens in the response.
+	IncludeExpired pulumi.BoolInput `pulumi:"includeExpired"`
 }
 
 func (GetApiTokenFilterArgs) ElementType() reflect.Type {
@@ -2073,6 +2661,11 @@ func (o GetApiTokenFilterOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApiTokenFilter) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
 
+// When true, includes recently-expired tokens in the response.
+func (o GetApiTokenFilterOutput) IncludeExpired() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetApiTokenFilter) bool { return v.IncludeExpired }).(pulumi.BoolOutput)
+}
+
 type GetApiTokenFilterPtrOutput struct{ *pulumi.OutputState }
 
 func (GetApiTokenFilterPtrOutput) ElementType() reflect.Type {
@@ -2106,6 +2699,16 @@ func (o GetApiTokenFilterPtrOutput) Direction() pulumi.StringPtrOutput {
 		}
 		return v.Direction
 	}).(pulumi.StringPtrOutput)
+}
+
+// When true, includes recently-expired tokens in the response.
+func (o GetApiTokenFilterPtrOutput) IncludeExpired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetApiTokenFilter) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.IncludeExpired
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GetApiTokenPermissionGroupsListResult struct {
@@ -7905,6 +8508,124 @@ func (o GetContentScanningExpressionsResultArrayOutput) Index(i pulumi.IntInput)
 	}).(GetContentScanningExpressionsResultOutput)
 }
 
+type GetCustomCsrFilter struct {
+}
+
+// GetCustomCsrFilterInput is an input type that accepts GetCustomCsrFilterArgs and GetCustomCsrFilterOutput values.
+// You can construct a concrete instance of `GetCustomCsrFilterInput` via:
+//
+//	GetCustomCsrFilterArgs{...}
+type GetCustomCsrFilterInput interface {
+	pulumi.Input
+
+	ToGetCustomCsrFilterOutput() GetCustomCsrFilterOutput
+	ToGetCustomCsrFilterOutputWithContext(context.Context) GetCustomCsrFilterOutput
+}
+
+type GetCustomCsrFilterArgs struct {
+}
+
+func (GetCustomCsrFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomCsrFilter)(nil)).Elem()
+}
+
+func (i GetCustomCsrFilterArgs) ToGetCustomCsrFilterOutput() GetCustomCsrFilterOutput {
+	return i.ToGetCustomCsrFilterOutputWithContext(context.Background())
+}
+
+func (i GetCustomCsrFilterArgs) ToGetCustomCsrFilterOutputWithContext(ctx context.Context) GetCustomCsrFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomCsrFilterOutput)
+}
+
+func (i GetCustomCsrFilterArgs) ToGetCustomCsrFilterPtrOutput() GetCustomCsrFilterPtrOutput {
+	return i.ToGetCustomCsrFilterPtrOutputWithContext(context.Background())
+}
+
+func (i GetCustomCsrFilterArgs) ToGetCustomCsrFilterPtrOutputWithContext(ctx context.Context) GetCustomCsrFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomCsrFilterOutput).ToGetCustomCsrFilterPtrOutputWithContext(ctx)
+}
+
+// GetCustomCsrFilterPtrInput is an input type that accepts GetCustomCsrFilterArgs, GetCustomCsrFilterPtr and GetCustomCsrFilterPtrOutput values.
+// You can construct a concrete instance of `GetCustomCsrFilterPtrInput` via:
+//
+//	        GetCustomCsrFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetCustomCsrFilterPtrInput interface {
+	pulumi.Input
+
+	ToGetCustomCsrFilterPtrOutput() GetCustomCsrFilterPtrOutput
+	ToGetCustomCsrFilterPtrOutputWithContext(context.Context) GetCustomCsrFilterPtrOutput
+}
+
+type getCustomCsrFilterPtrType GetCustomCsrFilterArgs
+
+func GetCustomCsrFilterPtr(v *GetCustomCsrFilterArgs) GetCustomCsrFilterPtrInput {
+	return (*getCustomCsrFilterPtrType)(v)
+}
+
+func (*getCustomCsrFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetCustomCsrFilter)(nil)).Elem()
+}
+
+func (i *getCustomCsrFilterPtrType) ToGetCustomCsrFilterPtrOutput() GetCustomCsrFilterPtrOutput {
+	return i.ToGetCustomCsrFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *getCustomCsrFilterPtrType) ToGetCustomCsrFilterPtrOutputWithContext(ctx context.Context) GetCustomCsrFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomCsrFilterPtrOutput)
+}
+
+type GetCustomCsrFilterOutput struct{ *pulumi.OutputState }
+
+func (GetCustomCsrFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomCsrFilter)(nil)).Elem()
+}
+
+func (o GetCustomCsrFilterOutput) ToGetCustomCsrFilterOutput() GetCustomCsrFilterOutput {
+	return o
+}
+
+func (o GetCustomCsrFilterOutput) ToGetCustomCsrFilterOutputWithContext(ctx context.Context) GetCustomCsrFilterOutput {
+	return o
+}
+
+func (o GetCustomCsrFilterOutput) ToGetCustomCsrFilterPtrOutput() GetCustomCsrFilterPtrOutput {
+	return o.ToGetCustomCsrFilterPtrOutputWithContext(context.Background())
+}
+
+func (o GetCustomCsrFilterOutput) ToGetCustomCsrFilterPtrOutputWithContext(ctx context.Context) GetCustomCsrFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetCustomCsrFilter) *GetCustomCsrFilter {
+		return &v
+	}).(GetCustomCsrFilterPtrOutput)
+}
+
+type GetCustomCsrFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (GetCustomCsrFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetCustomCsrFilter)(nil)).Elem()
+}
+
+func (o GetCustomCsrFilterPtrOutput) ToGetCustomCsrFilterPtrOutput() GetCustomCsrFilterPtrOutput {
+	return o
+}
+
+func (o GetCustomCsrFilterPtrOutput) ToGetCustomCsrFilterPtrOutputWithContext(ctx context.Context) GetCustomCsrFilterPtrOutput {
+	return o
+}
+
+func (o GetCustomCsrFilterPtrOutput) Elem() GetCustomCsrFilterOutput {
+	return o.ApplyT(func(v *GetCustomCsrFilter) GetCustomCsrFilter {
+		if v != nil {
+			return *v
+		}
+		var ret GetCustomCsrFilter
+		return ret
+	}).(GetCustomCsrFilterOutput)
+}
+
 type GetCustomCsrsResult struct {
 	// Account identifier associated with this CSR.
 	AccountTag string `pulumi:"accountTag"`
@@ -13143,7 +13864,7 @@ type GetDnsRecordData struct {
 	PrecisionVert float64 `pulumi:"precisionVert"`
 	// Preference.
 	Preference float64 `pulumi:"preference"`
-	// Priority.
+	// Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
 	Priority float64 `pulumi:"priority"`
 	// Protocol.
 	Protocol float64 `pulumi:"protocol"`
@@ -13161,7 +13882,7 @@ type GetDnsRecordData struct {
 	Size float64 `pulumi:"size"`
 	// Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
 	Tag string `pulumi:"tag"`
-	// Target.
+	// A valid mail server hostname, or "." for a NULL MX record.
 	Target string `pulumi:"target"`
 	// Type.
 	Type float64 `pulumi:"type"`
@@ -13231,7 +13952,7 @@ type GetDnsRecordDataArgs struct {
 	PrecisionVert pulumi.Float64Input `pulumi:"precisionVert"`
 	// Preference.
 	Preference pulumi.Float64Input `pulumi:"preference"`
-	// Priority.
+	// Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
 	Priority pulumi.Float64Input `pulumi:"priority"`
 	// Protocol.
 	Protocol pulumi.Float64Input `pulumi:"protocol"`
@@ -13249,7 +13970,7 @@ type GetDnsRecordDataArgs struct {
 	Size pulumi.Float64Input `pulumi:"size"`
 	// Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
 	Tag pulumi.StringInput `pulumi:"tag"`
-	// Target.
+	// A valid mail server hostname, or "." for a NULL MX record.
 	Target pulumi.StringInput `pulumi:"target"`
 	// Type.
 	Type pulumi.Float64Input `pulumi:"type"`
@@ -13399,7 +14120,7 @@ func (o GetDnsRecordDataOutput) Preference() pulumi.Float64Output {
 	return o.ApplyT(func(v GetDnsRecordData) float64 { return v.Preference }).(pulumi.Float64Output)
 }
 
-// Priority.
+// Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
 func (o GetDnsRecordDataOutput) Priority() pulumi.Float64Output {
 	return o.ApplyT(func(v GetDnsRecordData) float64 { return v.Priority }).(pulumi.Float64Output)
 }
@@ -13444,7 +14165,7 @@ func (o GetDnsRecordDataOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDnsRecordData) string { return v.Tag }).(pulumi.StringOutput)
 }
 
-// Target.
+// A valid mail server hostname, or "." for a NULL MX record.
 func (o GetDnsRecordDataOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDnsRecordData) string { return v.Target }).(pulumi.StringOutput)
 }
@@ -19100,10 +19821,17 @@ type GetEmailSecurityBlockSendersResult struct {
 	// Deprecated: Use `modifiedAt` instead.
 	LastModified string `pulumi:"lastModified"`
 	ModifiedAt   string `pulumi:"modifiedAt"`
-	Pattern      string `pulumi:"pattern"`
+	// The pattern value to match against. Format depends on `patternType`:
+	// - EMAIL: a valid email address, e.g. `user@example.com`
+	// - DOMAIN: a valid domain name, e.g. `example.com`
+	// - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+	Pattern string `pulumi:"pattern"`
 	// Type of pattern matching.
-	// Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
-	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+	// - EMAIL: matches a full email address (e.g. `user@example.com`)
+	// - DOMAIN: matches a domain name (e.g. `example.com`)
+	// - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
+	// - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+	//   Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType string `pulumi:"patternType"`
 }
 
@@ -19129,10 +19857,17 @@ type GetEmailSecurityBlockSendersResultArgs struct {
 	// Deprecated: Use `modifiedAt` instead.
 	LastModified pulumi.StringInput `pulumi:"lastModified"`
 	ModifiedAt   pulumi.StringInput `pulumi:"modifiedAt"`
-	Pattern      pulumi.StringInput `pulumi:"pattern"`
+	// The pattern value to match against. Format depends on `patternType`:
+	// - EMAIL: a valid email address, e.g. `user@example.com`
+	// - DOMAIN: a valid domain name, e.g. `example.com`
+	// - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+	Pattern pulumi.StringInput `pulumi:"pattern"`
 	// Type of pattern matching.
-	// Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
-	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+	// - EMAIL: matches a full email address (e.g. `user@example.com`)
+	// - DOMAIN: matches a domain name (e.g. `example.com`)
+	// - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
+	// - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+	//   Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType pulumi.StringInput `pulumi:"patternType"`
 }
 
@@ -19215,13 +19950,20 @@ func (o GetEmailSecurityBlockSendersResultOutput) ModifiedAt() pulumi.StringOutp
 	return o.ApplyT(func(v GetEmailSecurityBlockSendersResult) string { return v.ModifiedAt }).(pulumi.StringOutput)
 }
 
+// The pattern value to match against. Format depends on `patternType`:
+// - EMAIL: a valid email address, e.g. `user@example.com`
+// - DOMAIN: a valid domain name, e.g. `example.com`
+// - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
 func (o GetEmailSecurityBlockSendersResultOutput) Pattern() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEmailSecurityBlockSendersResult) string { return v.Pattern }).(pulumi.StringOutput)
 }
 
 // Type of pattern matching.
-// Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
-// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+//   - EMAIL: matches a full email address (e.g. `user@example.com`)
+//   - DOMAIN: matches a domain name (e.g. `example.com`)
+//   - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
+//   - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+//     Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 func (o GetEmailSecurityBlockSendersResultOutput) PatternType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEmailSecurityBlockSendersResult) string { return v.PatternType }).(pulumi.StringOutput)
 }
@@ -23707,6 +24449,8 @@ type GetHyperdriveConfigsResult struct {
 	Origin GetHyperdriveConfigsResultOrigin `pulumi:"origin"`
 	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 	OriginConnectionLimit int `pulumi:"originConnectionLimit"`
+	// Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
+	RestartedOn string `pulumi:"restartedOn"`
 }
 
 // GetHyperdriveConfigsResultInput is an input type that accepts GetHyperdriveConfigsResultArgs and GetHyperdriveConfigsResultOutput values.
@@ -23735,6 +24479,8 @@ type GetHyperdriveConfigsResultArgs struct {
 	Origin GetHyperdriveConfigsResultOriginInput `pulumi:"origin"`
 	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 	OriginConnectionLimit pulumi.IntInput `pulumi:"originConnectionLimit"`
+	// Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
+	RestartedOn pulumi.StringInput `pulumi:"restartedOn"`
 }
 
 func (GetHyperdriveConfigsResultArgs) ElementType() reflect.Type {
@@ -23824,6 +24570,11 @@ func (o GetHyperdriveConfigsResultOutput) Origin() GetHyperdriveConfigsResultOri
 // The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 func (o GetHyperdriveConfigsResultOutput) OriginConnectionLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v GetHyperdriveConfigsResult) int { return v.OriginConnectionLimit }).(pulumi.IntOutput)
+}
+
+// Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
+func (o GetHyperdriveConfigsResultOutput) RestartedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHyperdriveConfigsResult) string { return v.RestartedOn }).(pulumi.StringOutput)
 }
 
 type GetHyperdriveConfigsResultArrayOutput struct{ *pulumi.OutputState }
@@ -42953,6 +43704,9 @@ type GetPagesProjectCanonicalDeployment struct {
 	ProjectName string `pulumi:"projectName"`
 	// Short Id (8 character) of the deployment.
 	ShortId string `pulumi:"shortId"`
+	// Why the deployment was skipped.
+	// Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+	SkipReason string `pulumi:"skipReason"`
 	// Configs for the project source control.
 	Source GetPagesProjectCanonicalDeploymentSource `pulumi:"source"`
 	// List of past stages.
@@ -43002,6 +43756,9 @@ type GetPagesProjectCanonicalDeploymentArgs struct {
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
 	// Short Id (8 character) of the deployment.
 	ShortId pulumi.StringInput `pulumi:"shortId"`
+	// Why the deployment was skipped.
+	// Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+	SkipReason pulumi.StringInput `pulumi:"skipReason"`
 	// Configs for the project source control.
 	Source GetPagesProjectCanonicalDeploymentSourceInput `pulumi:"source"`
 	// List of past stages.
@@ -43110,6 +43867,12 @@ func (o GetPagesProjectCanonicalDeploymentOutput) ProjectName() pulumi.StringOut
 // Short Id (8 character) of the deployment.
 func (o GetPagesProjectCanonicalDeploymentOutput) ShortId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPagesProjectCanonicalDeployment) string { return v.ShortId }).(pulumi.StringOutput)
+}
+
+// Why the deployment was skipped.
+// Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+func (o GetPagesProjectCanonicalDeploymentOutput) SkipReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectCanonicalDeployment) string { return v.SkipReason }).(pulumi.StringOutput)
 }
 
 // Configs for the project source control.
@@ -47341,6 +48104,9 @@ type GetPagesProjectLatestDeployment struct {
 	ProjectName string `pulumi:"projectName"`
 	// Short Id (8 character) of the deployment.
 	ShortId string `pulumi:"shortId"`
+	// Why the deployment was skipped.
+	// Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+	SkipReason string `pulumi:"skipReason"`
 	// Configs for the project source control.
 	Source GetPagesProjectLatestDeploymentSource `pulumi:"source"`
 	// List of past stages.
@@ -47390,6 +48156,9 @@ type GetPagesProjectLatestDeploymentArgs struct {
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
 	// Short Id (8 character) of the deployment.
 	ShortId pulumi.StringInput `pulumi:"shortId"`
+	// Why the deployment was skipped.
+	// Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+	SkipReason pulumi.StringInput `pulumi:"skipReason"`
 	// Configs for the project source control.
 	Source GetPagesProjectLatestDeploymentSourceInput `pulumi:"source"`
 	// List of past stages.
@@ -47498,6 +48267,12 @@ func (o GetPagesProjectLatestDeploymentOutput) ProjectName() pulumi.StringOutput
 // Short Id (8 character) of the deployment.
 func (o GetPagesProjectLatestDeploymentOutput) ShortId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPagesProjectLatestDeployment) string { return v.ShortId }).(pulumi.StringOutput)
+}
+
+// Why the deployment was skipped.
+// Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+func (o GetPagesProjectLatestDeploymentOutput) SkipReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeployment) string { return v.SkipReason }).(pulumi.StringOutput)
 }
 
 // Configs for the project source control.
@@ -48908,6 +49683,9 @@ type GetPagesProjectsResultCanonicalDeployment struct {
 	ProjectName string `pulumi:"projectName"`
 	// Short Id (8 character) of the deployment.
 	ShortId string `pulumi:"shortId"`
+	// Why the deployment was skipped.
+	// Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+	SkipReason string `pulumi:"skipReason"`
 	// Configs for the project source control.
 	Source GetPagesProjectsResultCanonicalDeploymentSource `pulumi:"source"`
 	// List of past stages.
@@ -48957,6 +49735,9 @@ type GetPagesProjectsResultCanonicalDeploymentArgs struct {
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
 	// Short Id (8 character) of the deployment.
 	ShortId pulumi.StringInput `pulumi:"shortId"`
+	// Why the deployment was skipped.
+	// Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+	SkipReason pulumi.StringInput `pulumi:"skipReason"`
 	// Configs for the project source control.
 	Source GetPagesProjectsResultCanonicalDeploymentSourceInput `pulumi:"source"`
 	// List of past stages.
@@ -49065,6 +49846,12 @@ func (o GetPagesProjectsResultCanonicalDeploymentOutput) ProjectName() pulumi.St
 // Short Id (8 character) of the deployment.
 func (o GetPagesProjectsResultCanonicalDeploymentOutput) ShortId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) string { return v.ShortId }).(pulumi.StringOutput)
+}
+
+// Why the deployment was skipped.
+// Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+func (o GetPagesProjectsResultCanonicalDeploymentOutput) SkipReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) string { return v.SkipReason }).(pulumi.StringOutput)
 }
 
 // Configs for the project source control.
@@ -53318,6 +54105,9 @@ type GetPagesProjectsResultLatestDeployment struct {
 	ProjectName string `pulumi:"projectName"`
 	// Short Id (8 character) of the deployment.
 	ShortId string `pulumi:"shortId"`
+	// Why the deployment was skipped.
+	// Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+	SkipReason string `pulumi:"skipReason"`
 	// Configs for the project source control.
 	Source GetPagesProjectsResultLatestDeploymentSource `pulumi:"source"`
 	// List of past stages.
@@ -53367,6 +54157,9 @@ type GetPagesProjectsResultLatestDeploymentArgs struct {
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
 	// Short Id (8 character) of the deployment.
 	ShortId pulumi.StringInput `pulumi:"shortId"`
+	// Why the deployment was skipped.
+	// Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+	SkipReason pulumi.StringInput `pulumi:"skipReason"`
 	// Configs for the project source control.
 	Source GetPagesProjectsResultLatestDeploymentSourceInput `pulumi:"source"`
 	// List of past stages.
@@ -53475,6 +54268,12 @@ func (o GetPagesProjectsResultLatestDeploymentOutput) ProjectName() pulumi.Strin
 // Short Id (8 character) of the deployment.
 func (o GetPagesProjectsResultLatestDeploymentOutput) ShortId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPagesProjectsResultLatestDeployment) string { return v.ShortId }).(pulumi.StringOutput)
+}
+
+// Why the deployment was skipped.
+// Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+func (o GetPagesProjectsResultLatestDeploymentOutput) SkipReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultLatestDeployment) string { return v.SkipReason }).(pulumi.StringOutput)
 }
 
 // Configs for the project source control.
@@ -57240,1004 +58039,16 @@ func (o GetPipelineStreamsResultHttpOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetPipelineStreamsResultHttp) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-type GetPipelineStreamsResultHttpCors struct {
-	Origins []string `pulumi:"origins"`
-}
-
-// GetPipelineStreamsResultHttpCorsInput is an input type that accepts GetPipelineStreamsResultHttpCorsArgs and GetPipelineStreamsResultHttpCorsOutput values.
-// You can construct a concrete instance of `GetPipelineStreamsResultHttpCorsInput` via:
-//
-//	GetPipelineStreamsResultHttpCorsArgs{...}
-type GetPipelineStreamsResultHttpCorsInput interface {
-	pulumi.Input
-
-	ToGetPipelineStreamsResultHttpCorsOutput() GetPipelineStreamsResultHttpCorsOutput
-	ToGetPipelineStreamsResultHttpCorsOutputWithContext(context.Context) GetPipelineStreamsResultHttpCorsOutput
-}
-
-type GetPipelineStreamsResultHttpCorsArgs struct {
-	Origins pulumi.StringArrayInput `pulumi:"origins"`
-}
-
-func (GetPipelineStreamsResultHttpCorsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineStreamsResultHttpCors)(nil)).Elem()
-}
-
-func (i GetPipelineStreamsResultHttpCorsArgs) ToGetPipelineStreamsResultHttpCorsOutput() GetPipelineStreamsResultHttpCorsOutput {
-	return i.ToGetPipelineStreamsResultHttpCorsOutputWithContext(context.Background())
-}
-
-func (i GetPipelineStreamsResultHttpCorsArgs) ToGetPipelineStreamsResultHttpCorsOutputWithContext(ctx context.Context) GetPipelineStreamsResultHttpCorsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineStreamsResultHttpCorsOutput)
-}
-
-type GetPipelineStreamsResultHttpCorsOutput struct{ *pulumi.OutputState }
-
-func (GetPipelineStreamsResultHttpCorsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineStreamsResultHttpCors)(nil)).Elem()
-}
-
-func (o GetPipelineStreamsResultHttpCorsOutput) ToGetPipelineStreamsResultHttpCorsOutput() GetPipelineStreamsResultHttpCorsOutput {
-	return o
-}
-
-func (o GetPipelineStreamsResultHttpCorsOutput) ToGetPipelineStreamsResultHttpCorsOutputWithContext(ctx context.Context) GetPipelineStreamsResultHttpCorsOutput {
-	return o
-}
-
-func (o GetPipelineStreamsResultHttpCorsOutput) Origins() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPipelineStreamsResultHttpCors) []string { return v.Origins }).(pulumi.StringArrayOutput)
-}
-
-type GetPipelineStreamsResultSchema struct {
-	Fields   []GetPipelineStreamsResultSchemaField `pulumi:"fields"`
-	Format   GetPipelineStreamsResultSchemaFormat  `pulumi:"format"`
-	Inferred bool                                  `pulumi:"inferred"`
-}
-
-// GetPipelineStreamsResultSchemaInput is an input type that accepts GetPipelineStreamsResultSchemaArgs and GetPipelineStreamsResultSchemaOutput values.
-// You can construct a concrete instance of `GetPipelineStreamsResultSchemaInput` via:
-//
-//	GetPipelineStreamsResultSchemaArgs{...}
-type GetPipelineStreamsResultSchemaInput interface {
-	pulumi.Input
-
-	ToGetPipelineStreamsResultSchemaOutput() GetPipelineStreamsResultSchemaOutput
-	ToGetPipelineStreamsResultSchemaOutputWithContext(context.Context) GetPipelineStreamsResultSchemaOutput
-}
-
-type GetPipelineStreamsResultSchemaArgs struct {
-	Fields   GetPipelineStreamsResultSchemaFieldArrayInput `pulumi:"fields"`
-	Format   GetPipelineStreamsResultSchemaFormatInput     `pulumi:"format"`
-	Inferred pulumi.BoolInput                              `pulumi:"inferred"`
-}
-
-func (GetPipelineStreamsResultSchemaArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineStreamsResultSchema)(nil)).Elem()
-}
-
-func (i GetPipelineStreamsResultSchemaArgs) ToGetPipelineStreamsResultSchemaOutput() GetPipelineStreamsResultSchemaOutput {
-	return i.ToGetPipelineStreamsResultSchemaOutputWithContext(context.Background())
-}
-
-func (i GetPipelineStreamsResultSchemaArgs) ToGetPipelineStreamsResultSchemaOutputWithContext(ctx context.Context) GetPipelineStreamsResultSchemaOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineStreamsResultSchemaOutput)
-}
-
-type GetPipelineStreamsResultSchemaOutput struct{ *pulumi.OutputState }
-
-func (GetPipelineStreamsResultSchemaOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineStreamsResultSchema)(nil)).Elem()
-}
-
-func (o GetPipelineStreamsResultSchemaOutput) ToGetPipelineStreamsResultSchemaOutput() GetPipelineStreamsResultSchemaOutput {
-	return o
-}
-
-func (o GetPipelineStreamsResultSchemaOutput) ToGetPipelineStreamsResultSchemaOutputWithContext(ctx context.Context) GetPipelineStreamsResultSchemaOutput {
-	return o
-}
-
-func (o GetPipelineStreamsResultSchemaOutput) Fields() GetPipelineStreamsResultSchemaFieldArrayOutput {
-	return o.ApplyT(func(v GetPipelineStreamsResultSchema) []GetPipelineStreamsResultSchemaField { return v.Fields }).(GetPipelineStreamsResultSchemaFieldArrayOutput)
-}
-
-func (o GetPipelineStreamsResultSchemaOutput) Format() GetPipelineStreamsResultSchemaFormatOutput {
-	return o.ApplyT(func(v GetPipelineStreamsResultSchema) GetPipelineStreamsResultSchemaFormat { return v.Format }).(GetPipelineStreamsResultSchemaFormatOutput)
-}
-
-func (o GetPipelineStreamsResultSchemaOutput) Inferred() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPipelineStreamsResultSchema) bool { return v.Inferred }).(pulumi.BoolOutput)
-}
-
-type GetPipelineStreamsResultSchemaField struct {
-	MetadataKey string `pulumi:"metadataKey"`
-	Name        string `pulumi:"name"`
-	Required    bool   `pulumi:"required"`
-	SqlName     string `pulumi:"sqlName"`
-	// Available values: "int32", "int64", "float32", "float64", "bool", "string", "binary", "timestamp", "json".
-	Type string `pulumi:"type"`
-	// Available values: "second", "millisecond", "microsecond", "nanosecond".
-	Unit string `pulumi:"unit"`
-}
-
-// GetPipelineStreamsResultSchemaFieldInput is an input type that accepts GetPipelineStreamsResultSchemaFieldArgs and GetPipelineStreamsResultSchemaFieldOutput values.
-// You can construct a concrete instance of `GetPipelineStreamsResultSchemaFieldInput` via:
-//
-//	GetPipelineStreamsResultSchemaFieldArgs{...}
-type GetPipelineStreamsResultSchemaFieldInput interface {
-	pulumi.Input
-
-	ToGetPipelineStreamsResultSchemaFieldOutput() GetPipelineStreamsResultSchemaFieldOutput
-	ToGetPipelineStreamsResultSchemaFieldOutputWithContext(context.Context) GetPipelineStreamsResultSchemaFieldOutput
-}
-
-type GetPipelineStreamsResultSchemaFieldArgs struct {
-	MetadataKey pulumi.StringInput `pulumi:"metadataKey"`
-	Name        pulumi.StringInput `pulumi:"name"`
-	Required    pulumi.BoolInput   `pulumi:"required"`
-	SqlName     pulumi.StringInput `pulumi:"sqlName"`
-	// Available values: "int32", "int64", "float32", "float64", "bool", "string", "binary", "timestamp", "json".
-	Type pulumi.StringInput `pulumi:"type"`
-	// Available values: "second", "millisecond", "microsecond", "nanosecond".
-	Unit pulumi.StringInput `pulumi:"unit"`
-}
-
-func (GetPipelineStreamsResultSchemaFieldArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineStreamsResultSchemaField)(nil)).Elem()
-}
-
-func (i GetPipelineStreamsResultSchemaFieldArgs) ToGetPipelineStreamsResultSchemaFieldOutput() GetPipelineStreamsResultSchemaFieldOutput {
-	return i.ToGetPipelineStreamsResultSchemaFieldOutputWithContext(context.Background())
-}
-
-func (i GetPipelineStreamsResultSchemaFieldArgs) ToGetPipelineStreamsResultSchemaFieldOutputWithContext(ctx context.Context) GetPipelineStreamsResultSchemaFieldOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineStreamsResultSchemaFieldOutput)
-}
-
-// GetPipelineStreamsResultSchemaFieldArrayInput is an input type that accepts GetPipelineStreamsResultSchemaFieldArray and GetPipelineStreamsResultSchemaFieldArrayOutput values.
-// You can construct a concrete instance of `GetPipelineStreamsResultSchemaFieldArrayInput` via:
-//
-//	GetPipelineStreamsResultSchemaFieldArray{ GetPipelineStreamsResultSchemaFieldArgs{...} }
-type GetPipelineStreamsResultSchemaFieldArrayInput interface {
-	pulumi.Input
-
-	ToGetPipelineStreamsResultSchemaFieldArrayOutput() GetPipelineStreamsResultSchemaFieldArrayOutput
-	ToGetPipelineStreamsResultSchemaFieldArrayOutputWithContext(context.Context) GetPipelineStreamsResultSchemaFieldArrayOutput
-}
-
-type GetPipelineStreamsResultSchemaFieldArray []GetPipelineStreamsResultSchemaFieldInput
-
-func (GetPipelineStreamsResultSchemaFieldArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPipelineStreamsResultSchemaField)(nil)).Elem()
-}
-
-func (i GetPipelineStreamsResultSchemaFieldArray) ToGetPipelineStreamsResultSchemaFieldArrayOutput() GetPipelineStreamsResultSchemaFieldArrayOutput {
-	return i.ToGetPipelineStreamsResultSchemaFieldArrayOutputWithContext(context.Background())
-}
-
-func (i GetPipelineStreamsResultSchemaFieldArray) ToGetPipelineStreamsResultSchemaFieldArrayOutputWithContext(ctx context.Context) GetPipelineStreamsResultSchemaFieldArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineStreamsResultSchemaFieldArrayOutput)
-}
-
-type GetPipelineStreamsResultSchemaFieldOutput struct{ *pulumi.OutputState }
-
-func (GetPipelineStreamsResultSchemaFieldOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineStreamsResultSchemaField)(nil)).Elem()
-}
-
-func (o GetPipelineStreamsResultSchemaFieldOutput) ToGetPipelineStreamsResultSchemaFieldOutput() GetPipelineStreamsResultSchemaFieldOutput {
-	return o
-}
-
-func (o GetPipelineStreamsResultSchemaFieldOutput) ToGetPipelineStreamsResultSchemaFieldOutputWithContext(ctx context.Context) GetPipelineStreamsResultSchemaFieldOutput {
-	return o
-}
-
-func (o GetPipelineStreamsResultSchemaFieldOutput) MetadataKey() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineStreamsResultSchemaField) string { return v.MetadataKey }).(pulumi.StringOutput)
-}
-
-func (o GetPipelineStreamsResultSchemaFieldOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineStreamsResultSchemaField) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o GetPipelineStreamsResultSchemaFieldOutput) Required() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPipelineStreamsResultSchemaField) bool { return v.Required }).(pulumi.BoolOutput)
-}
-
-func (o GetPipelineStreamsResultSchemaFieldOutput) SqlName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineStreamsResultSchemaField) string { return v.SqlName }).(pulumi.StringOutput)
-}
-
-// Available values: "int32", "int64", "float32", "float64", "bool", "string", "binary", "timestamp", "json".
-func (o GetPipelineStreamsResultSchemaFieldOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineStreamsResultSchemaField) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Available values: "second", "millisecond", "microsecond", "nanosecond".
-func (o GetPipelineStreamsResultSchemaFieldOutput) Unit() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineStreamsResultSchemaField) string { return v.Unit }).(pulumi.StringOutput)
-}
-
-type GetPipelineStreamsResultSchemaFieldArrayOutput struct{ *pulumi.OutputState }
-
-func (GetPipelineStreamsResultSchemaFieldArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPipelineStreamsResultSchemaField)(nil)).Elem()
-}
-
-func (o GetPipelineStreamsResultSchemaFieldArrayOutput) ToGetPipelineStreamsResultSchemaFieldArrayOutput() GetPipelineStreamsResultSchemaFieldArrayOutput {
-	return o
-}
-
-func (o GetPipelineStreamsResultSchemaFieldArrayOutput) ToGetPipelineStreamsResultSchemaFieldArrayOutputWithContext(ctx context.Context) GetPipelineStreamsResultSchemaFieldArrayOutput {
-	return o
-}
-
-func (o GetPipelineStreamsResultSchemaFieldArrayOutput) Index(i pulumi.IntInput) GetPipelineStreamsResultSchemaFieldOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPipelineStreamsResultSchemaField {
-		return vs[0].([]GetPipelineStreamsResultSchemaField)[vs[1].(int)]
-	}).(GetPipelineStreamsResultSchemaFieldOutput)
-}
-
-type GetPipelineStreamsResultSchemaFormat struct {
-	// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-	Compression string `pulumi:"compression"`
-	// Available values: "number", "string", "bytes".
-	DecimalEncoding string `pulumi:"decimalEncoding"`
-	RowGroupBytes   int    `pulumi:"rowGroupBytes"`
-	// Available values: "rfc3339", "unixMillis".
-	TimestampFormat string `pulumi:"timestampFormat"`
-	// Available values: "json", "parquet".
-	Type         string `pulumi:"type"`
-	Unstructured bool   `pulumi:"unstructured"`
-}
-
-// GetPipelineStreamsResultSchemaFormatInput is an input type that accepts GetPipelineStreamsResultSchemaFormatArgs and GetPipelineStreamsResultSchemaFormatOutput values.
-// You can construct a concrete instance of `GetPipelineStreamsResultSchemaFormatInput` via:
-//
-//	GetPipelineStreamsResultSchemaFormatArgs{...}
-type GetPipelineStreamsResultSchemaFormatInput interface {
-	pulumi.Input
-
-	ToGetPipelineStreamsResultSchemaFormatOutput() GetPipelineStreamsResultSchemaFormatOutput
-	ToGetPipelineStreamsResultSchemaFormatOutputWithContext(context.Context) GetPipelineStreamsResultSchemaFormatOutput
-}
-
-type GetPipelineStreamsResultSchemaFormatArgs struct {
-	// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-	Compression pulumi.StringInput `pulumi:"compression"`
-	// Available values: "number", "string", "bytes".
-	DecimalEncoding pulumi.StringInput `pulumi:"decimalEncoding"`
-	RowGroupBytes   pulumi.IntInput    `pulumi:"rowGroupBytes"`
-	// Available values: "rfc3339", "unixMillis".
-	TimestampFormat pulumi.StringInput `pulumi:"timestampFormat"`
-	// Available values: "json", "parquet".
-	Type         pulumi.StringInput `pulumi:"type"`
-	Unstructured pulumi.BoolInput   `pulumi:"unstructured"`
-}
-
-func (GetPipelineStreamsResultSchemaFormatArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineStreamsResultSchemaFormat)(nil)).Elem()
-}
-
-func (i GetPipelineStreamsResultSchemaFormatArgs) ToGetPipelineStreamsResultSchemaFormatOutput() GetPipelineStreamsResultSchemaFormatOutput {
-	return i.ToGetPipelineStreamsResultSchemaFormatOutputWithContext(context.Background())
-}
-
-func (i GetPipelineStreamsResultSchemaFormatArgs) ToGetPipelineStreamsResultSchemaFormatOutputWithContext(ctx context.Context) GetPipelineStreamsResultSchemaFormatOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineStreamsResultSchemaFormatOutput)
-}
-
-type GetPipelineStreamsResultSchemaFormatOutput struct{ *pulumi.OutputState }
-
-func (GetPipelineStreamsResultSchemaFormatOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineStreamsResultSchemaFormat)(nil)).Elem()
-}
-
-func (o GetPipelineStreamsResultSchemaFormatOutput) ToGetPipelineStreamsResultSchemaFormatOutput() GetPipelineStreamsResultSchemaFormatOutput {
-	return o
-}
-
-func (o GetPipelineStreamsResultSchemaFormatOutput) ToGetPipelineStreamsResultSchemaFormatOutputWithContext(ctx context.Context) GetPipelineStreamsResultSchemaFormatOutput {
-	return o
-}
-
-// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-func (o GetPipelineStreamsResultSchemaFormatOutput) Compression() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineStreamsResultSchemaFormat) string { return v.Compression }).(pulumi.StringOutput)
-}
-
-// Available values: "number", "string", "bytes".
-func (o GetPipelineStreamsResultSchemaFormatOutput) DecimalEncoding() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineStreamsResultSchemaFormat) string { return v.DecimalEncoding }).(pulumi.StringOutput)
-}
-
-func (o GetPipelineStreamsResultSchemaFormatOutput) RowGroupBytes() pulumi.IntOutput {
-	return o.ApplyT(func(v GetPipelineStreamsResultSchemaFormat) int { return v.RowGroupBytes }).(pulumi.IntOutput)
-}
-
-// Available values: "rfc3339", "unixMillis".
-func (o GetPipelineStreamsResultSchemaFormatOutput) TimestampFormat() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineStreamsResultSchemaFormat) string { return v.TimestampFormat }).(pulumi.StringOutput)
-}
-
-// Available values: "json", "parquet".
-func (o GetPipelineStreamsResultSchemaFormatOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineStreamsResultSchemaFormat) string { return v.Type }).(pulumi.StringOutput)
-}
-
-func (o GetPipelineStreamsResultSchemaFormatOutput) Unstructured() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPipelineStreamsResultSchemaFormat) bool { return v.Unstructured }).(pulumi.BoolOutput)
-}
-
-type GetPipelineStreamsResultWorkerBinding struct {
-	// Indicates that the worker binding is enabled.
-	Enabled bool `pulumi:"enabled"`
-}
-
-// GetPipelineStreamsResultWorkerBindingInput is an input type that accepts GetPipelineStreamsResultWorkerBindingArgs and GetPipelineStreamsResultWorkerBindingOutput values.
-// You can construct a concrete instance of `GetPipelineStreamsResultWorkerBindingInput` via:
-//
-//	GetPipelineStreamsResultWorkerBindingArgs{...}
-type GetPipelineStreamsResultWorkerBindingInput interface {
-	pulumi.Input
-
-	ToGetPipelineStreamsResultWorkerBindingOutput() GetPipelineStreamsResultWorkerBindingOutput
-	ToGetPipelineStreamsResultWorkerBindingOutputWithContext(context.Context) GetPipelineStreamsResultWorkerBindingOutput
-}
-
-type GetPipelineStreamsResultWorkerBindingArgs struct {
-	// Indicates that the worker binding is enabled.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-}
-
-func (GetPipelineStreamsResultWorkerBindingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineStreamsResultWorkerBinding)(nil)).Elem()
-}
-
-func (i GetPipelineStreamsResultWorkerBindingArgs) ToGetPipelineStreamsResultWorkerBindingOutput() GetPipelineStreamsResultWorkerBindingOutput {
-	return i.ToGetPipelineStreamsResultWorkerBindingOutputWithContext(context.Background())
-}
-
-func (i GetPipelineStreamsResultWorkerBindingArgs) ToGetPipelineStreamsResultWorkerBindingOutputWithContext(ctx context.Context) GetPipelineStreamsResultWorkerBindingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineStreamsResultWorkerBindingOutput)
-}
-
-type GetPipelineStreamsResultWorkerBindingOutput struct{ *pulumi.OutputState }
-
-func (GetPipelineStreamsResultWorkerBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineStreamsResultWorkerBinding)(nil)).Elem()
-}
-
-func (o GetPipelineStreamsResultWorkerBindingOutput) ToGetPipelineStreamsResultWorkerBindingOutput() GetPipelineStreamsResultWorkerBindingOutput {
-	return o
-}
-
-func (o GetPipelineStreamsResultWorkerBindingOutput) ToGetPipelineStreamsResultWorkerBindingOutputWithContext(ctx context.Context) GetPipelineStreamsResultWorkerBindingOutput {
-	return o
-}
-
-// Indicates that the worker binding is enabled.
-func (o GetPipelineStreamsResultWorkerBindingOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPipelineStreamsResultWorkerBinding) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-type GetPipelineTable struct {
-	// Unique identifier for the connection (stream or sink).
-	Id string `pulumi:"id"`
-	// Latest available version of the connection.
-	Latest int `pulumi:"latest"`
-	// Name of the connection.
-	Name string `pulumi:"name"`
-	// Type of the connection.
-	// Available values: "stream", "sink".
-	Type string `pulumi:"type"`
-	// Current version of the connection used by this pipeline.
-	Version int `pulumi:"version"`
-}
-
-// GetPipelineTableInput is an input type that accepts GetPipelineTableArgs and GetPipelineTableOutput values.
-// You can construct a concrete instance of `GetPipelineTableInput` via:
-//
-//	GetPipelineTableArgs{...}
-type GetPipelineTableInput interface {
-	pulumi.Input
-
-	ToGetPipelineTableOutput() GetPipelineTableOutput
-	ToGetPipelineTableOutputWithContext(context.Context) GetPipelineTableOutput
-}
-
-type GetPipelineTableArgs struct {
-	// Unique identifier for the connection (stream or sink).
-	Id pulumi.StringInput `pulumi:"id"`
-	// Latest available version of the connection.
-	Latest pulumi.IntInput `pulumi:"latest"`
-	// Name of the connection.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Type of the connection.
-	// Available values: "stream", "sink".
-	Type pulumi.StringInput `pulumi:"type"`
-	// Current version of the connection used by this pipeline.
-	Version pulumi.IntInput `pulumi:"version"`
-}
-
-func (GetPipelineTableArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineTable)(nil)).Elem()
-}
-
-func (i GetPipelineTableArgs) ToGetPipelineTableOutput() GetPipelineTableOutput {
-	return i.ToGetPipelineTableOutputWithContext(context.Background())
-}
-
-func (i GetPipelineTableArgs) ToGetPipelineTableOutputWithContext(ctx context.Context) GetPipelineTableOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineTableOutput)
-}
-
-// GetPipelineTableArrayInput is an input type that accepts GetPipelineTableArray and GetPipelineTableArrayOutput values.
-// You can construct a concrete instance of `GetPipelineTableArrayInput` via:
-//
-//	GetPipelineTableArray{ GetPipelineTableArgs{...} }
-type GetPipelineTableArrayInput interface {
-	pulumi.Input
-
-	ToGetPipelineTableArrayOutput() GetPipelineTableArrayOutput
-	ToGetPipelineTableArrayOutputWithContext(context.Context) GetPipelineTableArrayOutput
-}
-
-type GetPipelineTableArray []GetPipelineTableInput
-
-func (GetPipelineTableArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPipelineTable)(nil)).Elem()
-}
-
-func (i GetPipelineTableArray) ToGetPipelineTableArrayOutput() GetPipelineTableArrayOutput {
-	return i.ToGetPipelineTableArrayOutputWithContext(context.Background())
-}
-
-func (i GetPipelineTableArray) ToGetPipelineTableArrayOutputWithContext(ctx context.Context) GetPipelineTableArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineTableArrayOutput)
-}
-
-type GetPipelineTableOutput struct{ *pulumi.OutputState }
-
-func (GetPipelineTableOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineTable)(nil)).Elem()
-}
-
-func (o GetPipelineTableOutput) ToGetPipelineTableOutput() GetPipelineTableOutput {
-	return o
-}
-
-func (o GetPipelineTableOutput) ToGetPipelineTableOutputWithContext(ctx context.Context) GetPipelineTableOutput {
-	return o
-}
-
-// Unique identifier for the connection (stream or sink).
-func (o GetPipelineTableOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineTable) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Latest available version of the connection.
-func (o GetPipelineTableOutput) Latest() pulumi.IntOutput {
-	return o.ApplyT(func(v GetPipelineTable) int { return v.Latest }).(pulumi.IntOutput)
-}
-
-// Name of the connection.
-func (o GetPipelineTableOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineTable) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Type of the connection.
-// Available values: "stream", "sink".
-func (o GetPipelineTableOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineTable) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Current version of the connection used by this pipeline.
-func (o GetPipelineTableOutput) Version() pulumi.IntOutput {
-	return o.ApplyT(func(v GetPipelineTable) int { return v.Version }).(pulumi.IntOutput)
-}
-
-type GetPipelineTableArrayOutput struct{ *pulumi.OutputState }
-
-func (GetPipelineTableArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPipelineTable)(nil)).Elem()
-}
-
-func (o GetPipelineTableArrayOutput) ToGetPipelineTableArrayOutput() GetPipelineTableArrayOutput {
-	return o
-}
-
-func (o GetPipelineTableArrayOutput) ToGetPipelineTableArrayOutputWithContext(ctx context.Context) GetPipelineTableArrayOutput {
-	return o
-}
-
-func (o GetPipelineTableArrayOutput) Index(i pulumi.IntInput) GetPipelineTableOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPipelineTable {
-		return vs[0].([]GetPipelineTable)[vs[1].(int)]
-	}).(GetPipelineTableOutput)
-}
-
-type GetQueueConsumerType struct {
-	// A Resource identifier.
-	ConsumerId string `pulumi:"consumerId"`
-	CreatedOn  string `pulumi:"createdOn"`
-	// Name of the dead letter queue, or empty string if not configured
-	DeadLetterQueue string `pulumi:"deadLetterQueue"`
-	QueueName       string `pulumi:"queueName"`
-	// Name of a Worker
-	ScriptName string                   `pulumi:"scriptName"`
-	Settings   GetQueueConsumerSettings `pulumi:"settings"`
-	// Available values: "worker", "httpPull".
-	Type string `pulumi:"type"`
-}
-
-// GetQueueConsumerTypeInput is an input type that accepts GetQueueConsumerTypeArgs and GetQueueConsumerTypeOutput values.
-// You can construct a concrete instance of `GetQueueConsumerTypeInput` via:
-//
-//	GetQueueConsumerTypeArgs{...}
-type GetQueueConsumerTypeInput interface {
-	pulumi.Input
-
-	ToGetQueueConsumerTypeOutput() GetQueueConsumerTypeOutput
-	ToGetQueueConsumerTypeOutputWithContext(context.Context) GetQueueConsumerTypeOutput
-}
-
-type GetQueueConsumerTypeArgs struct {
-	// A Resource identifier.
-	ConsumerId pulumi.StringInput `pulumi:"consumerId"`
-	CreatedOn  pulumi.StringInput `pulumi:"createdOn"`
-	// Name of the dead letter queue, or empty string if not configured
-	DeadLetterQueue pulumi.StringInput `pulumi:"deadLetterQueue"`
-	QueueName       pulumi.StringInput `pulumi:"queueName"`
-	// Name of a Worker
-	ScriptName pulumi.StringInput            `pulumi:"scriptName"`
-	Settings   GetQueueConsumerSettingsInput `pulumi:"settings"`
-	// Available values: "worker", "httpPull".
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetQueueConsumerTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetQueueConsumerType)(nil)).Elem()
-}
-
-func (i GetQueueConsumerTypeArgs) ToGetQueueConsumerTypeOutput() GetQueueConsumerTypeOutput {
-	return i.ToGetQueueConsumerTypeOutputWithContext(context.Background())
-}
-
-func (i GetQueueConsumerTypeArgs) ToGetQueueConsumerTypeOutputWithContext(ctx context.Context) GetQueueConsumerTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetQueueConsumerTypeOutput)
-}
-
-// GetQueueConsumerTypeArrayInput is an input type that accepts GetQueueConsumerTypeArray and GetQueueConsumerTypeArrayOutput values.
-// You can construct a concrete instance of `GetQueueConsumerTypeArrayInput` via:
-//
-//	GetQueueConsumerTypeArray{ GetQueueConsumerTypeArgs{...} }
-type GetQueueConsumerTypeArrayInput interface {
-	pulumi.Input
-
-	ToGetQueueConsumerTypeArrayOutput() GetQueueConsumerTypeArrayOutput
-	ToGetQueueConsumerTypeArrayOutputWithContext(context.Context) GetQueueConsumerTypeArrayOutput
-}
-
-type GetQueueConsumerTypeArray []GetQueueConsumerTypeInput
-
-func (GetQueueConsumerTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetQueueConsumerType)(nil)).Elem()
-}
-
-func (i GetQueueConsumerTypeArray) ToGetQueueConsumerTypeArrayOutput() GetQueueConsumerTypeArrayOutput {
-	return i.ToGetQueueConsumerTypeArrayOutputWithContext(context.Background())
-}
-
-func (i GetQueueConsumerTypeArray) ToGetQueueConsumerTypeArrayOutputWithContext(ctx context.Context) GetQueueConsumerTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetQueueConsumerTypeArrayOutput)
-}
-
-type GetQueueConsumerTypeOutput struct{ *pulumi.OutputState }
-
-func (GetQueueConsumerTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetQueueConsumerType)(nil)).Elem()
-}
-
-func (o GetQueueConsumerTypeOutput) ToGetQueueConsumerTypeOutput() GetQueueConsumerTypeOutput {
-	return o
-}
-
-func (o GetQueueConsumerTypeOutput) ToGetQueueConsumerTypeOutputWithContext(ctx context.Context) GetQueueConsumerTypeOutput {
-	return o
-}
-
-// A Resource identifier.
-func (o GetQueueConsumerTypeOutput) ConsumerId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetQueueConsumerType) string { return v.ConsumerId }).(pulumi.StringOutput)
-}
-
-func (o GetQueueConsumerTypeOutput) CreatedOn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetQueueConsumerType) string { return v.CreatedOn }).(pulumi.StringOutput)
-}
-
-// Name of the dead letter queue, or empty string if not configured
-func (o GetQueueConsumerTypeOutput) DeadLetterQueue() pulumi.StringOutput {
-	return o.ApplyT(func(v GetQueueConsumerType) string { return v.DeadLetterQueue }).(pulumi.StringOutput)
-}
-
-func (o GetQueueConsumerTypeOutput) QueueName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetQueueConsumerType) string { return v.QueueName }).(pulumi.StringOutput)
-}
-
-// Name of a Worker
-func (o GetQueueConsumerTypeOutput) ScriptName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetQueueConsumerType) string { return v.ScriptName }).(pulumi.StringOutput)
-}
-
-func (o GetQueueConsumerTypeOutput) Settings() GetQueueConsumerSettingsOutput {
-	return o.ApplyT(func(v GetQueueConsumerType) GetQueueConsumerSettings { return v.Settings }).(GetQueueConsumerSettingsOutput)
-}
-
-// Available values: "worker", "httpPull".
-func (o GetQueueConsumerTypeOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetQueueConsumerType) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetQueueConsumerTypeArrayOutput struct{ *pulumi.OutputState }
-
-func (GetQueueConsumerTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetQueueConsumerType)(nil)).Elem()
-}
-
-func (o GetQueueConsumerTypeArrayOutput) ToGetQueueConsumerTypeArrayOutput() GetQueueConsumerTypeArrayOutput {
-	return o
-}
-
-func (o GetQueueConsumerTypeArrayOutput) ToGetQueueConsumerTypeArrayOutputWithContext(ctx context.Context) GetQueueConsumerTypeArrayOutput {
-	return o
-}
-
-func (o GetQueueConsumerTypeArrayOutput) Index(i pulumi.IntInput) GetQueueConsumerTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetQueueConsumerType {
-		return vs[0].([]GetQueueConsumerType)[vs[1].(int)]
-	}).(GetQueueConsumerTypeOutput)
-}
-
-type GetQueueConsumerSettings struct {
-	// The maximum number of messages to include in a batch.
-	BatchSize float64 `pulumi:"batchSize"`
-	// Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).
-	MaxConcurrency float64 `pulumi:"maxConcurrency"`
-	// The maximum number of retries
-	MaxRetries float64 `pulumi:"maxRetries"`
-	// The number of milliseconds to wait for a batch to fill up before attempting to deliver it
-	MaxWaitTimeMs float64 `pulumi:"maxWaitTimeMs"`
-	// The number of seconds to delay before making the message available for another attempt.
-	RetryDelay float64 `pulumi:"retryDelay"`
-	// The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
-	VisibilityTimeoutMs float64 `pulumi:"visibilityTimeoutMs"`
-}
-
-// GetQueueConsumerSettingsInput is an input type that accepts GetQueueConsumerSettingsArgs and GetQueueConsumerSettingsOutput values.
-// You can construct a concrete instance of `GetQueueConsumerSettingsInput` via:
-//
-//	GetQueueConsumerSettingsArgs{...}
-type GetQueueConsumerSettingsInput interface {
-	pulumi.Input
-
-	ToGetQueueConsumerSettingsOutput() GetQueueConsumerSettingsOutput
-	ToGetQueueConsumerSettingsOutputWithContext(context.Context) GetQueueConsumerSettingsOutput
-}
-
-type GetQueueConsumerSettingsArgs struct {
-	// The maximum number of messages to include in a batch.
-	BatchSize pulumi.Float64Input `pulumi:"batchSize"`
-	// Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).
-	MaxConcurrency pulumi.Float64Input `pulumi:"maxConcurrency"`
-	// The maximum number of retries
-	MaxRetries pulumi.Float64Input `pulumi:"maxRetries"`
-	// The number of milliseconds to wait for a batch to fill up before attempting to deliver it
-	MaxWaitTimeMs pulumi.Float64Input `pulumi:"maxWaitTimeMs"`
-	// The number of seconds to delay before making the message available for another attempt.
-	RetryDelay pulumi.Float64Input `pulumi:"retryDelay"`
-	// The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
-	VisibilityTimeoutMs pulumi.Float64Input `pulumi:"visibilityTimeoutMs"`
-}
-
-func (GetQueueConsumerSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetQueueConsumerSettings)(nil)).Elem()
-}
-
-func (i GetQueueConsumerSettingsArgs) ToGetQueueConsumerSettingsOutput() GetQueueConsumerSettingsOutput {
-	return i.ToGetQueueConsumerSettingsOutputWithContext(context.Background())
-}
-
-func (i GetQueueConsumerSettingsArgs) ToGetQueueConsumerSettingsOutputWithContext(ctx context.Context) GetQueueConsumerSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetQueueConsumerSettingsOutput)
-}
-
-type GetQueueConsumerSettingsOutput struct{ *pulumi.OutputState }
-
-func (GetQueueConsumerSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetQueueConsumerSettings)(nil)).Elem()
-}
-
-func (o GetQueueConsumerSettingsOutput) ToGetQueueConsumerSettingsOutput() GetQueueConsumerSettingsOutput {
-	return o
-}
-
-func (o GetQueueConsumerSettingsOutput) ToGetQueueConsumerSettingsOutputWithContext(ctx context.Context) GetQueueConsumerSettingsOutput {
-	return o
-}
-
-// The maximum number of messages to include in a batch.
-func (o GetQueueConsumerSettingsOutput) BatchSize() pulumi.Float64Output {
-	return o.ApplyT(func(v GetQueueConsumerSettings) float64 { return v.BatchSize }).(pulumi.Float64Output)
-}
-
-// Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).
-func (o GetQueueConsumerSettingsOutput) MaxConcurrency() pulumi.Float64Output {
-	return o.ApplyT(func(v GetQueueConsumerSettings) float64 { return v.MaxConcurrency }).(pulumi.Float64Output)
-}
-
-// The maximum number of retries
-func (o GetQueueConsumerSettingsOutput) MaxRetries() pulumi.Float64Output {
-	return o.ApplyT(func(v GetQueueConsumerSettings) float64 { return v.MaxRetries }).(pulumi.Float64Output)
-}
-
-// The number of milliseconds to wait for a batch to fill up before attempting to deliver it
-func (o GetQueueConsumerSettingsOutput) MaxWaitTimeMs() pulumi.Float64Output {
-	return o.ApplyT(func(v GetQueueConsumerSettings) float64 { return v.MaxWaitTimeMs }).(pulumi.Float64Output)
-}
-
-// The number of seconds to delay before making the message available for another attempt.
-func (o GetQueueConsumerSettingsOutput) RetryDelay() pulumi.Float64Output {
-	return o.ApplyT(func(v GetQueueConsumerSettings) float64 { return v.RetryDelay }).(pulumi.Float64Output)
-}
-
-// The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
-func (o GetQueueConsumerSettingsOutput) VisibilityTimeoutMs() pulumi.Float64Output {
-	return o.ApplyT(func(v GetQueueConsumerSettings) float64 { return v.VisibilityTimeoutMs }).(pulumi.Float64Output)
-}
-
-type GetQueueConsumersResult struct {
-	// A Resource identifier.
-	ConsumerId string `pulumi:"consumerId"`
-	CreatedOn  string `pulumi:"createdOn"`
-	// Name of the dead letter queue, or empty string if not configured
-	DeadLetterQueue string `pulumi:"deadLetterQueue"`
-	QueueName       string `pulumi:"queueName"`
-	// Name of a Worker
-	ScriptName string                          `pulumi:"scriptName"`
-	Settings   GetQueueConsumersResultSettings `pulumi:"settings"`
-	// Available values: "worker", "httpPull".
-	Type string `pulumi:"type"`
-}
-
-// GetQueueConsumersResultInput is an input type that accepts GetQueueConsumersResultArgs and GetQueueConsumersResultOutput values.
-// You can construct a concrete instance of `GetQueueConsumersResultInput` via:
-//
-//	GetQueueConsumersResultArgs{...}
-type GetQueueConsumersResultInput interface {
-	pulumi.Input
-
-	ToGetQueueConsumersResultOutput() GetQueueConsumersResultOutput
-	ToGetQueueConsumersResultOutputWithContext(context.Context) GetQueueConsumersResultOutput
-}
-
-type GetQueueConsumersResultArgs struct {
-	// A Resource identifier.
-	ConsumerId pulumi.StringInput `pulumi:"consumerId"`
-	CreatedOn  pulumi.StringInput `pulumi:"createdOn"`
-	// Name of the dead letter queue, or empty string if not configured
-	DeadLetterQueue pulumi.StringInput `pulumi:"deadLetterQueue"`
-	QueueName       pulumi.StringInput `pulumi:"queueName"`
-	// Name of a Worker
-	ScriptName pulumi.StringInput                   `pulumi:"scriptName"`
-	Settings   GetQueueConsumersResultSettingsInput `pulumi:"settings"`
-	// Available values: "worker", "httpPull".
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetQueueConsumersResultArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetQueueConsumersResult)(nil)).Elem()
-}
-
-func (i GetQueueConsumersResultArgs) ToGetQueueConsumersResultOutput() GetQueueConsumersResultOutput {
-	return i.ToGetQueueConsumersResultOutputWithContext(context.Background())
-}
-
-func (i GetQueueConsumersResultArgs) ToGetQueueConsumersResultOutputWithContext(ctx context.Context) GetQueueConsumersResultOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetQueueConsumersResultOutput)
-}
-
-// GetQueueConsumersResultArrayInput is an input type that accepts GetQueueConsumersResultArray and GetQueueConsumersResultArrayOutput values.
-// You can construct a concrete instance of `GetQueueConsumersResultArrayInput` via:
-//
-//	GetQueueConsumersResultArray{ GetQueueConsumersResultArgs{...} }
-type GetQueueConsumersResultArrayInput interface {
-	pulumi.Input
-
-	ToGetQueueConsumersResultArrayOutput() GetQueueConsumersResultArrayOutput
-	ToGetQueueConsumersResultArrayOutputWithContext(context.Context) GetQueueConsumersResultArrayOutput
-}
-
-type GetQueueConsumersResultArray []GetQueueConsumersResultInput
-
-func (GetQueueConsumersResultArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetQueueConsumersResult)(nil)).Elem()
-}
-
-func (i GetQueueConsumersResultArray) ToGetQueueConsumersResultArrayOutput() GetQueueConsumersResultArrayOutput {
-	return i.ToGetQueueConsumersResultArrayOutputWithContext(context.Background())
-}
-
-func (i GetQueueConsumersResultArray) ToGetQueueConsumersResultArrayOutputWithContext(ctx context.Context) GetQueueConsumersResultArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetQueueConsumersResultArrayOutput)
-}
-
-type GetQueueConsumersResultOutput struct{ *pulumi.OutputState }
-
-func (GetQueueConsumersResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetQueueConsumersResult)(nil)).Elem()
-}
-
-func (o GetQueueConsumersResultOutput) ToGetQueueConsumersResultOutput() GetQueueConsumersResultOutput {
-	return o
-}
-
-func (o GetQueueConsumersResultOutput) ToGetQueueConsumersResultOutputWithContext(ctx context.Context) GetQueueConsumersResultOutput {
-	return o
-}
-
-// A Resource identifier.
-func (o GetQueueConsumersResultOutput) ConsumerId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetQueueConsumersResult) string { return v.ConsumerId }).(pulumi.StringOutput)
-}
-
-func (o GetQueueConsumersResultOutput) CreatedOn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetQueueConsumersResult) string { return v.CreatedOn }).(pulumi.StringOutput)
-}
-
-// Name of the dead letter queue, or empty string if not configured
-func (o GetQueueConsumersResultOutput) DeadLetterQueue() pulumi.StringOutput {
-	return o.ApplyT(func(v GetQueueConsumersResult) string { return v.DeadLetterQueue }).(pulumi.StringOutput)
-}
-
-func (o GetQueueConsumersResultOutput) QueueName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetQueueConsumersResult) string { return v.QueueName }).(pulumi.StringOutput)
-}
-
-// Name of a Worker
-func (o GetQueueConsumersResultOutput) ScriptName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetQueueConsumersResult) string { return v.ScriptName }).(pulumi.StringOutput)
-}
-
-func (o GetQueueConsumersResultOutput) Settings() GetQueueConsumersResultSettingsOutput {
-	return o.ApplyT(func(v GetQueueConsumersResult) GetQueueConsumersResultSettings { return v.Settings }).(GetQueueConsumersResultSettingsOutput)
-}
-
-// Available values: "worker", "httpPull".
-func (o GetQueueConsumersResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetQueueConsumersResult) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetQueueConsumersResultArrayOutput struct{ *pulumi.OutputState }
-
-func (GetQueueConsumersResultArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetQueueConsumersResult)(nil)).Elem()
-}
-
-func (o GetQueueConsumersResultArrayOutput) ToGetQueueConsumersResultArrayOutput() GetQueueConsumersResultArrayOutput {
-	return o
-}
-
-func (o GetQueueConsumersResultArrayOutput) ToGetQueueConsumersResultArrayOutputWithContext(ctx context.Context) GetQueueConsumersResultArrayOutput {
-	return o
-}
-
-func (o GetQueueConsumersResultArrayOutput) Index(i pulumi.IntInput) GetQueueConsumersResultOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetQueueConsumersResult {
-		return vs[0].([]GetQueueConsumersResult)[vs[1].(int)]
-	}).(GetQueueConsumersResultOutput)
-}
-
-type GetQueueConsumersResultSettings struct {
-	// The maximum number of messages to include in a batch.
-	BatchSize float64 `pulumi:"batchSize"`
-	// Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).
-	MaxConcurrency float64 `pulumi:"maxConcurrency"`
-	// The maximum number of retries
-	MaxRetries float64 `pulumi:"maxRetries"`
-	// The number of milliseconds to wait for a batch to fill up before attempting to deliver it
-	MaxWaitTimeMs float64 `pulumi:"maxWaitTimeMs"`
-	// The number of seconds to delay before making the message available for another attempt.
-	RetryDelay float64 `pulumi:"retryDelay"`
-	// The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
-	VisibilityTimeoutMs float64 `pulumi:"visibilityTimeoutMs"`
-}
-
-// GetQueueConsumersResultSettingsInput is an input type that accepts GetQueueConsumersResultSettingsArgs and GetQueueConsumersResultSettingsOutput values.
-// You can construct a concrete instance of `GetQueueConsumersResultSettingsInput` via:
-//
-//	GetQueueConsumersResultSettingsArgs{...}
-type GetQueueConsumersResultSettingsInput interface {
-	pulumi.Input
-
-	ToGetQueueConsumersResultSettingsOutput() GetQueueConsumersResultSettingsOutput
-	ToGetQueueConsumersResultSettingsOutputWithContext(context.Context) GetQueueConsumersResultSettingsOutput
-}
-
-type GetQueueConsumersResultSettingsArgs struct {
-	// The maximum number of messages to include in a batch.
-	BatchSize pulumi.Float64Input `pulumi:"batchSize"`
-	// Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).
-	MaxConcurrency pulumi.Float64Input `pulumi:"maxConcurrency"`
-	// The maximum number of retries
-	MaxRetries pulumi.Float64Input `pulumi:"maxRetries"`
-	// The number of milliseconds to wait for a batch to fill up before attempting to deliver it
-	MaxWaitTimeMs pulumi.Float64Input `pulumi:"maxWaitTimeMs"`
-	// The number of seconds to delay before making the message available for another attempt.
-	RetryDelay pulumi.Float64Input `pulumi:"retryDelay"`
-	// The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
-	VisibilityTimeoutMs pulumi.Float64Input `pulumi:"visibilityTimeoutMs"`
-}
-
-func (GetQueueConsumersResultSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetQueueConsumersResultSettings)(nil)).Elem()
-}
-
-func (i GetQueueConsumersResultSettingsArgs) ToGetQueueConsumersResultSettingsOutput() GetQueueConsumersResultSettingsOutput {
-	return i.ToGetQueueConsumersResultSettingsOutputWithContext(context.Background())
-}
-
-func (i GetQueueConsumersResultSettingsArgs) ToGetQueueConsumersResultSettingsOutputWithContext(ctx context.Context) GetQueueConsumersResultSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetQueueConsumersResultSettingsOutput)
-}
-
-type GetQueueConsumersResultSettingsOutput struct{ *pulumi.OutputState }
-
-func (GetQueueConsumersResultSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetQueueConsumersResultSettings)(nil)).Elem()
-}
-
-func (o GetQueueConsumersResultSettingsOutput) ToGetQueueConsumersResultSettingsOutput() GetQueueConsumersResultSettingsOutput {
-	return o
-}
-
-func (o GetQueueConsumersResultSettingsOutput) ToGetQueueConsumersResultSettingsOutputWithContext(ctx context.Context) GetQueueConsumersResultSettingsOutput {
-	return o
-}
-
-// The maximum number of messages to include in a batch.
-func (o GetQueueConsumersResultSettingsOutput) BatchSize() pulumi.Float64Output {
-	return o.ApplyT(func(v GetQueueConsumersResultSettings) float64 { return v.BatchSize }).(pulumi.Float64Output)
-}
-
-// Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).
-func (o GetQueueConsumersResultSettingsOutput) MaxConcurrency() pulumi.Float64Output {
-	return o.ApplyT(func(v GetQueueConsumersResultSettings) float64 { return v.MaxConcurrency }).(pulumi.Float64Output)
-}
-
-// The maximum number of retries
-func (o GetQueueConsumersResultSettingsOutput) MaxRetries() pulumi.Float64Output {
-	return o.ApplyT(func(v GetQueueConsumersResultSettings) float64 { return v.MaxRetries }).(pulumi.Float64Output)
-}
-
-// The number of milliseconds to wait for a batch to fill up before attempting to deliver it
-func (o GetQueueConsumersResultSettingsOutput) MaxWaitTimeMs() pulumi.Float64Output {
-	return o.ApplyT(func(v GetQueueConsumersResultSettings) float64 { return v.MaxWaitTimeMs }).(pulumi.Float64Output)
-}
-
-// The number of seconds to delay before making the message available for another attempt.
-func (o GetQueueConsumersResultSettingsOutput) RetryDelay() pulumi.Float64Output {
-	return o.ApplyT(func(v GetQueueConsumersResultSettings) float64 { return v.RetryDelay }).(pulumi.Float64Output)
-}
-
-// The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
-func (o GetQueueConsumersResultSettingsOutput) VisibilityTimeoutMs() pulumi.Float64Output {
-	return o.ApplyT(func(v GetQueueConsumersResultSettings) float64 { return v.VisibilityTimeoutMs }).(pulumi.Float64Output)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApiShieldOperationFeaturesConfidenceIntervalsInput)(nil)).Elem(), GetApiShieldOperationFeaturesConfidenceIntervalsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdInput)(nil)).Elem(), GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsInput)(nil)).Elem(), GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Input)(nil)).Elem(), GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Input)(nil)).Elem(), GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Input)(nil)).Elem(), GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApiShieldOperationFeaturesParameterSchemasInput)(nil)).Elem(), GetApiShieldOperationFeaturesParameterSchemasArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApiShieldOperationFeaturesParameterSchemasParameterSchemasInput)(nil)).Elem(), GetApiShieldOperationFeaturesParameterSchemasParameterSchemasArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApiShieldOperationFeaturesSchemaInfoInput)(nil)).Elem(), GetApiShieldOperationFeaturesSchemaInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApiShieldOperationFeaturesSchemaInfoActiveSchemaInput)(nil)).Elem(), GetApiShieldOperationFeaturesSchemaInfoActiveSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApiShieldOperationFeaturesThresholdsInput)(nil)).Elem(), GetApiShieldOperationFeaturesThresholdsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApiShieldOperationFilterInput)(nil)).Elem(), GetApiShieldOperationFilterArgs{})
@@ -58342,6 +58153,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityDirectoryServicesResultTlsSettingsInput)(nil)).Elem(), GetConnectivityDirectoryServicesResultTlsSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContentScanningExpressionsResultInput)(nil)).Elem(), GetContentScanningExpressionsResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContentScanningExpressionsResultArrayInput)(nil)).Elem(), GetContentScanningExpressionsResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomCsrFilterInput)(nil)).Elem(), GetCustomCsrFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomCsrFilterPtrInput)(nil)).Elem(), GetCustomCsrFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomCsrsResultInput)(nil)).Elem(), GetCustomCsrsResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomCsrsResultArrayInput)(nil)).Elem(), GetCustomCsrsResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomHostnameFilterInput)(nil)).Elem(), GetCustomHostnameFilterArgs{})
@@ -58970,20 +58783,15 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineStreamsResultArrayInput)(nil)).Elem(), GetPipelineStreamsResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineStreamsResultFormatInput)(nil)).Elem(), GetPipelineStreamsResultFormatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineStreamsResultHttpInput)(nil)).Elem(), GetPipelineStreamsResultHttpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineStreamsResultHttpCorsInput)(nil)).Elem(), GetPipelineStreamsResultHttpCorsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineStreamsResultSchemaInput)(nil)).Elem(), GetPipelineStreamsResultSchemaArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineStreamsResultSchemaFieldInput)(nil)).Elem(), GetPipelineStreamsResultSchemaFieldArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineStreamsResultSchemaFieldArrayInput)(nil)).Elem(), GetPipelineStreamsResultSchemaFieldArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineStreamsResultSchemaFormatInput)(nil)).Elem(), GetPipelineStreamsResultSchemaFormatArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineStreamsResultWorkerBindingInput)(nil)).Elem(), GetPipelineStreamsResultWorkerBindingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineTableInput)(nil)).Elem(), GetPipelineTableArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineTableArrayInput)(nil)).Elem(), GetPipelineTableArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetQueueConsumerTypeInput)(nil)).Elem(), GetQueueConsumerTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetQueueConsumerTypeArrayInput)(nil)).Elem(), GetQueueConsumerTypeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetQueueConsumerSettingsInput)(nil)).Elem(), GetQueueConsumerSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetQueueConsumersResultInput)(nil)).Elem(), GetQueueConsumersResultArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetQueueConsumersResultArrayInput)(nil)).Elem(), GetQueueConsumersResultArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetQueueConsumersResultSettingsInput)(nil)).Elem(), GetQueueConsumersResultSettingsArgs{})
+	pulumi.RegisterOutputType(GetApiShieldOperationFeaturesConfidenceIntervalsOutput{})
+	pulumi.RegisterOutputType(GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdOutput{})
+	pulumi.RegisterOutputType(GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsOutput{})
+	pulumi.RegisterOutputType(GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Output{})
+	pulumi.RegisterOutputType(GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Output{})
+	pulumi.RegisterOutputType(GetApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Output{})
+	pulumi.RegisterOutputType(GetApiShieldOperationFeaturesParameterSchemasOutput{})
+	pulumi.RegisterOutputType(GetApiShieldOperationFeaturesParameterSchemasParameterSchemasOutput{})
+	pulumi.RegisterOutputType(GetApiShieldOperationFeaturesSchemaInfoOutput{})
 	pulumi.RegisterOutputType(GetApiShieldOperationFeaturesSchemaInfoActiveSchemaOutput{})
 	pulumi.RegisterOutputType(GetApiShieldOperationFeaturesThresholdsOutput{})
 	pulumi.RegisterOutputType(GetApiShieldOperationFilterOutput{})
@@ -59088,6 +58896,8 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectivityDirectoryServicesResultTlsSettingsOutput{})
 	pulumi.RegisterOutputType(GetContentScanningExpressionsResultOutput{})
 	pulumi.RegisterOutputType(GetContentScanningExpressionsResultArrayOutput{})
+	pulumi.RegisterOutputType(GetCustomCsrFilterOutput{})
+	pulumi.RegisterOutputType(GetCustomCsrFilterPtrOutput{})
 	pulumi.RegisterOutputType(GetCustomCsrsResultOutput{})
 	pulumi.RegisterOutputType(GetCustomCsrsResultArrayOutput{})
 	pulumi.RegisterOutputType(GetCustomHostnameFilterOutput{})
@@ -59716,18 +59526,4 @@ func init() {
 	pulumi.RegisterOutputType(GetPipelineStreamsResultArrayOutput{})
 	pulumi.RegisterOutputType(GetPipelineStreamsResultFormatOutput{})
 	pulumi.RegisterOutputType(GetPipelineStreamsResultHttpOutput{})
-	pulumi.RegisterOutputType(GetPipelineStreamsResultHttpCorsOutput{})
-	pulumi.RegisterOutputType(GetPipelineStreamsResultSchemaOutput{})
-	pulumi.RegisterOutputType(GetPipelineStreamsResultSchemaFieldOutput{})
-	pulumi.RegisterOutputType(GetPipelineStreamsResultSchemaFieldArrayOutput{})
-	pulumi.RegisterOutputType(GetPipelineStreamsResultSchemaFormatOutput{})
-	pulumi.RegisterOutputType(GetPipelineStreamsResultWorkerBindingOutput{})
-	pulumi.RegisterOutputType(GetPipelineTableOutput{})
-	pulumi.RegisterOutputType(GetPipelineTableArrayOutput{})
-	pulumi.RegisterOutputType(GetQueueConsumerTypeOutput{})
-	pulumi.RegisterOutputType(GetQueueConsumerTypeArrayOutput{})
-	pulumi.RegisterOutputType(GetQueueConsumerSettingsOutput{})
-	pulumi.RegisterOutputType(GetQueueConsumersResultOutput{})
-	pulumi.RegisterOutputType(GetQueueConsumersResultArrayOutput{})
-	pulumi.RegisterOutputType(GetQueueConsumersResultSettingsOutput{})
 }

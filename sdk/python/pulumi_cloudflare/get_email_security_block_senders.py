@@ -56,68 +56,41 @@ class GetEmailSecurityBlockSendersResult:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
-        """
-        Identifier.
-        """
         return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter
     def direction(self) -> Optional[_builtins.str]:
-        """
-        The sorting direction.
-        Available values: "asc", "desc".
-        """
         return pulumi.get(self, "direction")
 
     @_builtins.property
     @pulumi.getter(name="maxItems")
     def max_items(self) -> Optional[_builtins.int]:
-        """
-        Max items to fetch, default: 1000
-        """
         return pulumi.get(self, "max_items")
 
     @_builtins.property
     @pulumi.getter
     def order(self) -> Optional[_builtins.str]:
-        """
-        Field to sort by.
-        Available values: "pattern", "created_at".
-        """
         return pulumi.get(self, "order")
 
     @_builtins.property
     @pulumi.getter
     def pattern(self) -> Optional[_builtins.str]:
-        """
-        Filter by pattern value.
-        """
         return pulumi.get(self, "pattern")
 
     @_builtins.property
     @pulumi.getter(name="patternType")
     def pattern_type(self) -> Optional[_builtins.str]:
-        """
-        Filter by pattern type.
-        Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
-        """
         return pulumi.get(self, "pattern_type")
 
     @_builtins.property
     @pulumi.getter
     def results(self) -> Sequence['outputs.GetEmailSecurityBlockSendersResultResult']:
-        """
-        The items returned by the data source
-        """
         return pulumi.get(self, "results")
 
     @_builtins.property
     @pulumi.getter
     def search(self) -> Optional[_builtins.str]:
-        """
-        Search term for filtering records. Behavior may change.
-        """
         return pulumi.get(self, "search")
 
 
@@ -164,18 +137,6 @@ def get_email_security_block_senders(account_id: Optional[_builtins.str] = None,
         pattern_type="EMAIL",
         search="search")
     ```
-
-
-    :param _builtins.str account_id: Identifier.
-    :param _builtins.str direction: The sorting direction.
-           Available values: "asc", "desc".
-    :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str order: Field to sort by.
-           Available values: "pattern", "created_at".
-    :param _builtins.str pattern: Filter by pattern value.
-    :param _builtins.str pattern_type: Filter by pattern type.
-           Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
-    :param _builtins.str search: Search term for filtering records. Behavior may change.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -224,18 +185,6 @@ def get_email_security_block_senders_output(account_id: pulumi.Input[Optional[Op
         pattern_type="EMAIL",
         search="search")
     ```
-
-
-    :param _builtins.str account_id: Identifier.
-    :param _builtins.str direction: The sorting direction.
-           Available values: "asc", "desc".
-    :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str order: Field to sort by.
-           Available values: "pattern", "created_at".
-    :param _builtins.str pattern: Filter by pattern value.
-    :param _builtins.str pattern_type: Filter by pattern type.
-           Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
-    :param _builtins.str search: Search term for filtering records. Behavior may change.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

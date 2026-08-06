@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpServerAuthConfigSummaryArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpServerErrorDetailsArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs;
@@ -28,6 +29,21 @@ public final class ZeroTrustAccessAiControlsMcpServerState extends com.pulumi.re
         return Optional.ofNullable(this.accountId);
     }
 
+    /**
+     * Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
+     * 
+     */
+    @Import(name="authConfigSummary")
+    private @Nullable Output<ZeroTrustAccessAiControlsMcpServerAuthConfigSummaryArgs> authConfigSummary;
+
+    /**
+     * @return Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
+     * 
+     */
+    public Optional<Output<ZeroTrustAccessAiControlsMcpServerAuthConfigSummaryArgs>> authConfigSummary() {
+        return Optional.ofNullable(this.authConfigSummary);
+    }
+
     @Import(name="authCredentials")
     private @Nullable Output<String> authCredentials;
 
@@ -48,6 +64,21 @@ public final class ZeroTrustAccessAiControlsMcpServerState extends com.pulumi.re
      */
     public Optional<Output<String>> authType() {
         return Optional.ofNullable(this.authType);
+    }
+
+    /**
+     * Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is &#39;manual&#39;. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+     * 
+     */
+    @Import(name="clientSecret")
+    private @Nullable Output<String> clientSecret;
+
+    /**
+     * @return Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is &#39;manual&#39;. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+     * 
+     */
+    public Optional<Output<String>> clientSecret() {
+        return Optional.ofNullable(this.clientSecret);
     }
 
     @Import(name="createdAt")
@@ -93,14 +124,14 @@ public final class ZeroTrustAccessAiControlsMcpServerState extends com.pulumi.re
     }
 
     /**
-     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
+     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
      * 
      */
     @Import(name="isSharedOauthCallbackEnabled")
     private @Nullable Output<Boolean> isSharedOauthCallbackEnabled;
 
     /**
-     * @return When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
+     * @return When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
      * 
      */
     public Optional<Output<Boolean>> isSharedOauthCallbackEnabled() {
@@ -211,8 +242,10 @@ public final class ZeroTrustAccessAiControlsMcpServerState extends com.pulumi.re
 
     private ZeroTrustAccessAiControlsMcpServerState(ZeroTrustAccessAiControlsMcpServerState $) {
         this.accountId = $.accountId;
+        this.authConfigSummary = $.authConfigSummary;
         this.authCredentials = $.authCredentials;
         this.authType = $.authType;
+        this.clientSecret = $.clientSecret;
         this.createdAt = $.createdAt;
         this.createdBy = $.createdBy;
         this.description = $.description;
@@ -261,6 +294,27 @@ public final class ZeroTrustAccessAiControlsMcpServerState extends com.pulumi.re
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param authConfigSummary Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authConfigSummary(@Nullable Output<ZeroTrustAccessAiControlsMcpServerAuthConfigSummaryArgs> authConfigSummary) {
+            $.authConfigSummary = authConfigSummary;
+            return this;
+        }
+
+        /**
+         * @param authConfigSummary Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authConfigSummary(ZeroTrustAccessAiControlsMcpServerAuthConfigSummaryArgs authConfigSummary) {
+            return authConfigSummary(Output.of(authConfigSummary));
+        }
+
         public Builder authCredentials(@Nullable Output<String> authCredentials) {
             $.authCredentials = authCredentials;
             return this;
@@ -289,6 +343,27 @@ public final class ZeroTrustAccessAiControlsMcpServerState extends com.pulumi.re
          */
         public Builder authType(String authType) {
             return authType(Output.of(authType));
+        }
+
+        /**
+         * @param clientSecret Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is &#39;manual&#39;. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSecret(@Nullable Output<String> clientSecret) {
+            $.clientSecret = clientSecret;
+            return this;
+        }
+
+        /**
+         * @param clientSecret Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is &#39;manual&#39;. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSecret(String clientSecret) {
+            return clientSecret(Output.of(clientSecret));
         }
 
         public Builder createdAt(@Nullable Output<String> createdAt) {
@@ -346,7 +421,7 @@ public final class ZeroTrustAccessAiControlsMcpServerState extends com.pulumi.re
         }
 
         /**
-         * @param isSharedOauthCallbackEnabled When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
+         * @param isSharedOauthCallbackEnabled When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
          * 
          * @return builder
          * 
@@ -357,7 +432,7 @@ public final class ZeroTrustAccessAiControlsMcpServerState extends com.pulumi.re
         }
 
         /**
-         * @param isSharedOauthCallbackEnabled When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
+         * @param isSharedOauthCallbackEnabled When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
          * 
          * @return builder
          * 

@@ -18,11 +18,19 @@ namespace Pulumi.Cloudflare.Outputs
         /// Available values: "asc", "desc".
         /// </summary>
         public readonly string? Direction;
+        /// <summary>
+        /// When true, includes recently-expired tokens in the response.
+        /// </summary>
+        public readonly bool IncludeExpired;
 
         [OutputConstructor]
-        private GetAccountTokenFilterResult(string? direction)
+        private GetAccountTokenFilterResult(
+            string? direction,
+
+            bool includeExpired)
         {
             Direction = direction;
+            IncludeExpired = includeExpired;
         }
     }
 }

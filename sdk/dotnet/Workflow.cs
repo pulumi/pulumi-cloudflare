@@ -32,6 +32,11 @@ namespace Pulumi.Cloudflare
     ///         WorkflowName = "x",
     ///         ClassName = "x",
     ///         ScriptName = "x",
+    ///         DefaultRetention = new Cloudflare.Inputs.WorkflowDefaultRetentionArgs
+    ///         {
+    ///             ErrorRetention = "5 minutes",
+    ///             SuccessRetention = "5 minutes",
+    ///         },
     ///         Limits = new Cloudflare.Inputs.WorkflowLimitsArgs
     ///         {
     ///             Steps = 1,
@@ -65,6 +70,12 @@ namespace Pulumi.Cloudflare
 
         [Output("createdOn")]
         public Output<string> CreatedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// Default retention applied to instances of this version when they do not set their own retention.
+        /// </summary>
+        [Output("defaultRetention")]
+        public Output<Outputs.WorkflowDefaultRetention?> DefaultRetention { get; private set; } = null!;
 
         [Output("instances")]
         public Output<Outputs.WorkflowInstances> Instances { get; private set; } = null!;
@@ -151,6 +162,12 @@ namespace Pulumi.Cloudflare
         [Input("className", required: true)]
         public Input<string> ClassName { get; set; } = null!;
 
+        /// <summary>
+        /// Default retention applied to instances of this version when they do not set their own retention.
+        /// </summary>
+        [Input("defaultRetention")]
+        public Input<Inputs.WorkflowDefaultRetentionArgs>? DefaultRetention { get; set; }
+
         [Input("limits")]
         public Input<Inputs.WorkflowLimitsArgs>? Limits { get; set; }
 
@@ -184,6 +201,12 @@ namespace Pulumi.Cloudflare
 
         [Input("createdOn")]
         public Input<string>? CreatedOn { get; set; }
+
+        /// <summary>
+        /// Default retention applied to instances of this version when they do not set their own retention.
+        /// </summary>
+        [Input("defaultRetention")]
+        public Input<Inputs.WorkflowDefaultRetentionGetArgs>? DefaultRetention { get; set; }
 
         [Input("instances")]
         public Input<Inputs.WorkflowInstancesGetArgs>? Instances { get; set; }

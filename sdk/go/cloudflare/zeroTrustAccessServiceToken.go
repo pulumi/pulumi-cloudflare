@@ -63,7 +63,7 @@ type ZeroTrustAccessServiceToken struct {
 	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
 	// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
 	ClientSecretVersion pulumi.Float64Output `pulumi:"clientSecretVersion"`
-	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 	Duration  pulumi.StringOutput `pulumi:"duration"`
 	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
 	// The name of the service token.
@@ -125,7 +125,7 @@ type zeroTrustAccessServiceTokenState struct {
 	ClientSecret *string `pulumi:"clientSecret"`
 	// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
 	ClientSecretVersion *float64 `pulumi:"clientSecretVersion"`
-	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 	Duration  *string `pulumi:"duration"`
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The name of the service token.
@@ -145,7 +145,7 @@ type ZeroTrustAccessServiceTokenState struct {
 	ClientSecret pulumi.StringPtrInput
 	// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
 	ClientSecretVersion pulumi.Float64PtrInput
-	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 	Duration  pulumi.StringPtrInput
 	ExpiresAt pulumi.StringPtrInput
 	// The name of the service token.
@@ -165,7 +165,7 @@ type zeroTrustAccessServiceTokenArgs struct {
 	AccountId *string `pulumi:"accountId"`
 	// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
 	ClientSecretVersion *float64 `pulumi:"clientSecretVersion"`
-	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 	Duration *string `pulumi:"duration"`
 	// The name of the service token.
 	Name string `pulumi:"name"`
@@ -181,7 +181,7 @@ type ZeroTrustAccessServiceTokenArgs struct {
 	AccountId pulumi.StringPtrInput
 	// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
 	ClientSecretVersion pulumi.Float64PtrInput
-	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 	Duration pulumi.StringPtrInput
 	// The name of the service token.
 	Name pulumi.StringInput
@@ -298,7 +298,7 @@ func (o ZeroTrustAccessServiceTokenOutput) ClientSecretVersion() pulumi.Float64O
 	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.Float64Output { return v.ClientSecretVersion }).(pulumi.Float64Output)
 }
 
-// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 func (o ZeroTrustAccessServiceTokenOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.StringOutput { return v.Duration }).(pulumi.StringOutput)
 }

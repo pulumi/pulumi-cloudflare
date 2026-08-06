@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -23,11 +25,13 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getCustomCsr(args: GetCustomCsrArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomCsrResult> {
+export function getCustomCsr(args?: GetCustomCsrArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomCsrResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCustomCsr:getCustomCsr", {
         "accountId": args.accountId,
         "customCsrId": args.customCsrId,
+        "filter": args.filter,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -43,7 +47,8 @@ export interface GetCustomCsrArgs {
     /**
      * Custom CSR identifier tag.
      */
-    customCsrId: string;
+    customCsrId?: string;
+    filter?: inputs.GetCustomCsrFilter;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
@@ -81,11 +86,12 @@ export interface GetCustomCsrResult {
     /**
      * Custom CSR identifier tag.
      */
-    readonly customCsrId: string;
+    readonly customCsrId?: string;
     /**
      * Optional description for the CSR.
      */
     readonly description: string;
+    readonly filter?: outputs.GetCustomCsrFilter;
     /**
      * Custom CSR identifier tag.
      */
@@ -143,11 +149,13 @@ export interface GetCustomCsrResult {
  * });
  * ```
  */
-export function getCustomCsrOutput(args: GetCustomCsrOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomCsrResult> {
+export function getCustomCsrOutput(args?: GetCustomCsrOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomCsrResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCustomCsr:getCustomCsr", {
         "accountId": args.accountId,
         "customCsrId": args.customCsrId,
+        "filter": args.filter,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -163,7 +171,8 @@ export interface GetCustomCsrOutputArgs {
     /**
      * Custom CSR identifier tag.
      */
-    customCsrId: pulumi.Input<string>;
+    customCsrId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetCustomCsrFilterArgs | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */

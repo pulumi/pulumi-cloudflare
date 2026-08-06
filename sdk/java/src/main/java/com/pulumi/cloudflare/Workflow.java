@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.WorkflowArgs;
 import com.pulumi.cloudflare.inputs.WorkflowState;
+import com.pulumi.cloudflare.outputs.WorkflowDefaultRetention;
 import com.pulumi.cloudflare.outputs.WorkflowInstances;
 import com.pulumi.cloudflare.outputs.WorkflowLimits;
 import com.pulumi.cloudflare.outputs.WorkflowSchedule;
@@ -37,6 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.Workflow;
  * import com.pulumi.cloudflare.WorkflowArgs;
+ * import com.pulumi.cloudflare.inputs.WorkflowDefaultRetentionArgs;
  * import com.pulumi.cloudflare.inputs.WorkflowLimitsArgs;
  * import com.pulumi.cloudflare.inputs.WorkflowScheduleArgs;
  * import java.util.ArrayList;
@@ -57,6 +59,10 @@ import javax.annotation.Nullable;
  *             .workflowName("x")
  *             .className("x")
  *             .scriptName("x")
+ *             .defaultRetention(WorkflowDefaultRetentionArgs.builder()
+ *                 .errorRetention("5 minutes")
+ *                 .successRetention("5 minutes")
+ *                 .build())
  *             .limits(WorkflowLimitsArgs.builder()
  *                 .steps(1)
  *                 .build())
@@ -96,6 +102,20 @@ public class Workflow extends com.pulumi.resources.CustomResource {
 
     public Output<String> createdOn() {
         return this.createdOn;
+    }
+    /**
+     * Default retention applied to instances of this version when they do not set their own retention.
+     * 
+     */
+    @Export(name="defaultRetention", refs={WorkflowDefaultRetention.class}, tree="[0]")
+    private Output</* @Nullable */ WorkflowDefaultRetention> defaultRetention;
+
+    /**
+     * @return Default retention applied to instances of this version when they do not set their own retention.
+     * 
+     */
+    public Output<Optional<WorkflowDefaultRetention>> defaultRetention() {
+        return Codegen.optional(this.defaultRetention);
     }
     @Export(name="instances", refs={WorkflowInstances.class}, tree="[0]")
     private Output<WorkflowInstances> instances;

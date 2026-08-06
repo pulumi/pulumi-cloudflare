@@ -68,10 +68,12 @@ namespace Pulumi.Cloudflare
     ///                 AllowedClipboardLocalToRemoteFormats = new[]
     ///                 {
     ///                     "text",
+    ///                     "file",
     ///                 },
     ///                 AllowedClipboardRemoteToLocalFormats = new[]
     ///                 {
     ///                     "text",
+    ///                     "file",
     ///                 },
     ///             },
     ///         },
@@ -126,6 +128,12 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
+        /// Number of access applications currently using this policy.
+        /// </summary>
+        [Output("appCount")]
+        public Output<int> AppCount { get; private set; } = null!;
+
+        /// <summary>
         /// Administrators who can approve a temporary authentication request.
         /// </summary>
         [Output("approvalGroups")]
@@ -142,6 +150,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("connectionRules")]
         public Output<Outputs.AccessPolicyConnectionRules?> ConnectionRules { get; private set; } = null!;
+
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
         /// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
@@ -198,11 +209,17 @@ namespace Pulumi.Cloudflare
         [Output("requires")]
         public Output<ImmutableArray<Outputs.AccessPolicyRequire>> Requires { get; private set; } = null!;
 
+        [Output("reusable")]
+        public Output<bool> Reusable { get; private set; } = null!;
+
         /// <summary>
         /// The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         /// </summary>
         [Output("sessionDuration")]
         public Output<string> SessionDuration { get; private set; } = null!;
+
+        [Output("updatedAt")]
+        public Output<string> UpdatedAt { get; private set; } = null!;
 
 
         /// <summary>
@@ -377,6 +394,12 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        /// <summary>
+        /// Number of access applications currently using this policy.
+        /// </summary>
+        [Input("appCount")]
+        public Input<int>? AppCount { get; set; }
+
         [Input("approvalGroups")]
         private InputList<Inputs.AccessPolicyApprovalGroupGetArgs>? _approvalGroups;
 
@@ -400,6 +423,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("connectionRules")]
         public Input<Inputs.AccessPolicyConnectionRulesGetArgs>? ConnectionRules { get; set; }
+
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
         /// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
@@ -474,11 +500,17 @@ namespace Pulumi.Cloudflare
             set => _requires = value;
         }
 
+        [Input("reusable")]
+        public Input<bool>? Reusable { get; set; }
+
         /// <summary>
         /// The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }
+
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
 
         public AccessPolicyState()
         {

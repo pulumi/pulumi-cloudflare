@@ -4,6 +4,8 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,6 +19,11 @@ public final class GetAccountTokenFilter {
      * 
      */
     private @Nullable String direction;
+    /**
+     * @return When true, includes recently-expired tokens in the response.
+     * 
+     */
+    private Boolean includeExpired;
 
     private GetAccountTokenFilter() {}
     /**
@@ -26,6 +33,13 @@ public final class GetAccountTokenFilter {
      */
     public Optional<String> direction() {
         return Optional.ofNullable(this.direction);
+    }
+    /**
+     * @return When true, includes recently-expired tokens in the response.
+     * 
+     */
+    public Boolean includeExpired() {
+        return this.includeExpired;
     }
 
     public static Builder builder() {
@@ -38,10 +52,12 @@ public final class GetAccountTokenFilter {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String direction;
+        private Boolean includeExpired;
         public Builder() {}
         public Builder(GetAccountTokenFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.direction = defaults.direction;
+    	      this.includeExpired = defaults.includeExpired;
         }
 
         @CustomType.Setter
@@ -50,9 +66,18 @@ public final class GetAccountTokenFilter {
             this.direction = direction;
             return this;
         }
+        @CustomType.Setter
+        public Builder includeExpired(Boolean includeExpired) {
+            if (includeExpired == null) {
+              throw new MissingRequiredPropertyException("GetAccountTokenFilter", "includeExpired");
+            }
+            this.includeExpired = includeExpired;
+            return this;
+        }
         public GetAccountTokenFilter build() {
             final var _resultValue = new GetAccountTokenFilter();
             _resultValue.direction = direction;
+            _resultValue.includeExpired = includeExpired;
             return _resultValue;
         }
     }

@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.ApiShieldOperationFeaturesSchemaInfoActiveSchemaArgs>? ActiveSchema { get; set; }
 
         /// <summary>
-        /// True if a Cloudflare-provided learned schema is available for this endpoint.
+        /// Deprecated. Always false.
         /// </summary>
         [Input("learnedAvailable")]
         public Input<bool>? LearnedAvailable { get; set; }

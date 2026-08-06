@@ -49,6 +49,21 @@ public final class ZeroTrustAccessAiControlsMcpServerArgs extends com.pulumi.res
         return this.authType;
     }
 
+    /**
+     * Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is &#39;manual&#39;. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+     * 
+     */
+    @Import(name="clientSecret")
+    private @Nullable Output<String> clientSecret;
+
+    /**
+     * @return Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is &#39;manual&#39;. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+     * 
+     */
+    public Optional<Output<String>> clientSecret() {
+        return Optional.ofNullable(this.clientSecret);
+    }
+
     @Import(name="description")
     private @Nullable Output<String> description;
 
@@ -64,14 +79,14 @@ public final class ZeroTrustAccessAiControlsMcpServerArgs extends com.pulumi.res
     }
 
     /**
-     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
+     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
      * 
      */
     @Import(name="isSharedOauthCallbackEnabled")
     private @Nullable Output<Boolean> isSharedOauthCallbackEnabled;
 
     /**
-     * @return When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
+     * @return When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
      * 
      */
     public Optional<Output<Boolean>> isSharedOauthCallbackEnabled() {
@@ -135,6 +150,7 @@ public final class ZeroTrustAccessAiControlsMcpServerArgs extends com.pulumi.res
         this.accountId = $.accountId;
         this.authCredentials = $.authCredentials;
         this.authType = $.authType;
+        this.clientSecret = $.clientSecret;
         this.description = $.description;
         this.hostname = $.hostname;
         this.isSharedOauthCallbackEnabled = $.isSharedOauthCallbackEnabled;
@@ -202,6 +218,27 @@ public final class ZeroTrustAccessAiControlsMcpServerArgs extends com.pulumi.res
             return authType(Output.of(authType));
         }
 
+        /**
+         * @param clientSecret Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is &#39;manual&#39;. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSecret(@Nullable Output<String> clientSecret) {
+            $.clientSecret = clientSecret;
+            return this;
+        }
+
+        /**
+         * @param clientSecret Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is &#39;manual&#39;. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSecret(String clientSecret) {
+            return clientSecret(Output.of(clientSecret));
+        }
+
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
@@ -221,7 +258,7 @@ public final class ZeroTrustAccessAiControlsMcpServerArgs extends com.pulumi.res
         }
 
         /**
-         * @param isSharedOauthCallbackEnabled When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
+         * @param isSharedOauthCallbackEnabled When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
          * 
          * @return builder
          * 
@@ -232,7 +269,7 @@ public final class ZeroTrustAccessAiControlsMcpServerArgs extends com.pulumi.res
         }
 
         /**
-         * @param isSharedOauthCallbackEnabled When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
+         * @param isSharedOauthCallbackEnabled When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
          * 
          * @return builder
          * 

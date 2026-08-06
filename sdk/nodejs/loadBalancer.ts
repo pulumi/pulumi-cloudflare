@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleLoadBalancer = new cloudflare.LoadBalancer("example_load_balancer", {
- *     zoneId: "699d98642c564d2e855e9661899b7252",
  *     defaultPools: [
  *         "17b5962d775c646f3f9725cbc7a53df4",
  *         "9290f38c5d07c2e2f4df57b1f61d4196",
@@ -27,6 +26,7 @@ import * as utilities from "./utilities";
  *     ],
  *     fallbackPool: "fallback_pool",
  *     name: "www.example.com",
+ *     zoneId: "zone_id",
  *     adaptiveRouting: {
  *         failoverAcrossPools: true,
  *     },
@@ -38,6 +38,7 @@ import * as utilities from "./utilities";
  *         ],
  *     },
  *     description: "Load Balancer for www.example.com",
+ *     enabled: true,
  *     locationStrategy: {
  *         mode: "resolver_ip",
  *         preferEcs: "always",
@@ -100,6 +101,12 @@ import * as utilities from "./utilities";
  *                 mode: "resolver_ip",
  *                 preferEcs: "always",
  *             },
+ *             poolDefaultWeight: 0.2,
+ *             poolWeights: {
+ *                 "9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
+ *                 de90f38ced07c2e2f4df50b1f61d4194: 0.3,
+ *             },
+ *             pools: ["17b5962d775c646f3f9725cbc7a53df4"],
  *             popPools: {
  *                 LAX: [
  *                     "de90f38ced07c2e2f4df50b1f61d4194",
@@ -159,7 +166,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '<zone_id>/<load_balancer_id>'
+ * $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '<{accounts|zones}/{account_id|zone_id}>/<load_balancer_id>'
  * ```
  */
 export class LoadBalancer extends pulumi.CustomResource {

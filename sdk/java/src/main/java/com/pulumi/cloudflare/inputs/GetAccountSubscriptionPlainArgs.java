@@ -15,24 +15,40 @@ public final class GetAccountSubscriptionPlainArgs extends com.pulumi.resources.
     public static final GetAccountSubscriptionPlainArgs Empty = new GetAccountSubscriptionPlainArgs();
 
     /**
-     * Identifier
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable String accountId;
 
     /**
-     * @return Identifier
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
+    /**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * 
+     */
+    @Import(name="zoneId")
+    private @Nullable String zoneId;
+
+    /**
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * 
+     */
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
+    }
+
     private GetAccountSubscriptionPlainArgs() {}
 
     private GetAccountSubscriptionPlainArgs(GetAccountSubscriptionPlainArgs $) {
         this.accountId = $.accountId;
+        this.zoneId = $.zoneId;
     }
 
     public static Builder builder() {
@@ -54,13 +70,24 @@ public final class GetAccountSubscriptionPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
          */
         public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
+            return this;
+        }
+
+        /**
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(@Nullable String zoneId) {
+            $.zoneId = zoneId;
             return this;
         }
 

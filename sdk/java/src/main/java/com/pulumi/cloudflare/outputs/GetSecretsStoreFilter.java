@@ -11,21 +11,21 @@ import java.util.Objects;
 @CustomType
 public final class GetSecretsStoreFilter {
     /**
-     * @return Direction to sort objects
+     * @return Direction to sort objects.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private String direction;
     /**
-     * @return Order secrets by values in the given field
-     * Available values: &#34;name&#34;, &#34;comment&#34;, &#34;created&#34;, &#34;modified&#34;, &#34;status&#34;.
+     * @return Order stores by values in the given field.
+     * Available values: &#34;name&#34;, &#34;created&#34;, &#34;modified&#34;.
      * 
      */
     private String order;
 
     private GetSecretsStoreFilter() {}
     /**
-     * @return Direction to sort objects
+     * @return Direction to sort objects.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
@@ -33,8 +33,8 @@ public final class GetSecretsStoreFilter {
         return this.direction;
     }
     /**
-     * @return Order secrets by values in the given field
-     * Available values: &#34;name&#34;, &#34;comment&#34;, &#34;created&#34;, &#34;modified&#34;, &#34;status&#34;.
+     * @return Order stores by values in the given field.
+     * Available values: &#34;name&#34;, &#34;created&#34;, &#34;modified&#34;.
      * 
      */
     public String order() {

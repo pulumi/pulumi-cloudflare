@@ -123,6 +123,21 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.originConnectionLimit);
     }
 
+    /**
+     * Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
+     * 
+     */
+    @Import(name="restartedOn")
+    private @Nullable Output<String> restartedOn;
+
+    /**
+     * @return Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
+     * 
+     */
+    public Optional<Output<String>> restartedOn() {
+        return Optional.ofNullable(this.restartedOn);
+    }
+
     private HyperdriveConfigState() {}
 
     private HyperdriveConfigState(HyperdriveConfigState $) {
@@ -134,6 +149,7 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
         this.name = $.name;
         this.origin = $.origin;
         this.originConnectionLimit = $.originConnectionLimit;
+        this.restartedOn = $.restartedOn;
     }
 
     public static Builder builder() {
@@ -296,6 +312,27 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
          */
         public Builder originConnectionLimit(Integer originConnectionLimit) {
             return originConnectionLimit(Output.of(originConnectionLimit));
+        }
+
+        /**
+         * @param restartedOn Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restartedOn(@Nullable Output<String> restartedOn) {
+            $.restartedOn = restartedOn;
+            return this;
+        }
+
+        /**
+         * @param restartedOn Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restartedOn(String restartedOn) {
+            return restartedOn(Output.of(restartedOn));
         }
 
         public HyperdriveConfigState build() {

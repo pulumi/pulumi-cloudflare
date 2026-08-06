@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustDeviceSubnetArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDeviceSubnetState;
+import com.pulumi.cloudflare.outputs.ZeroTrustDeviceSubnetCapacity;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -79,6 +80,20 @@ public class ZeroTrustDeviceSubnet extends com.pulumi.resources.CustomResource {
      */
     public Output<String> accountId() {
         return this.accountId;
+    }
+    /**
+     * IP capacity information for the subnet.
+     * 
+     */
+    @Export(name="capacity", refs={ZeroTrustDeviceSubnetCapacity.class}, tree="[0]")
+    private Output<ZeroTrustDeviceSubnetCapacity> capacity;
+
+    /**
+     * @return IP capacity information for the subnet.
+     * 
+     */
+    public Output<ZeroTrustDeviceSubnetCapacity> capacity() {
+        return this.capacity;
     }
     /**
      * An optional description of the subnet.
@@ -166,7 +181,7 @@ public class ZeroTrustDeviceSubnet extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of subnet.
-     * Available values: &#34;cloudflareSource&#34;, &#34;warp&#34;.
+     * Available values: &#34;cloudflare*source&#34;, &#34;initial*resolved_ip&#34;, &#34;warp&#34;.
      * 
      */
     @Export(name="subnetType", refs={String.class}, tree="[0]")
@@ -174,7 +189,7 @@ public class ZeroTrustDeviceSubnet extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of subnet.
-     * Available values: &#34;cloudflareSource&#34;, &#34;warp&#34;.
+     * Available values: &#34;cloudflare*source&#34;, &#34;initial*resolved_ip&#34;, &#34;warp&#34;.
      * 
      */
     public Output<String> subnetType() {

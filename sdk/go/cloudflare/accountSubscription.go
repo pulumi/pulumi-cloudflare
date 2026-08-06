@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -32,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewAccountSubscription(ctx, "example_account_subscription", &cloudflare.AccountSubscriptionArgs{
-//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AccountId: pulumi.String("account_id"),
 //				Frequency: pulumi.String("monthly"),
 //				RatePlan: &cloudflare.AccountSubscriptionRatePlanArgs{
 //					Id:                pulumi.String("free"),
@@ -63,8 +62,8 @@ import (
 type AccountSubscription struct {
 	pulumi.CustomResourceState
 
-	// Identifier
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// The monetary unit in which pricing information is displayed.
 	Currency pulumi.StringOutput `pulumi:"currency"`
 	// The end of the current period and also when the next billing is due.
@@ -87,12 +86,9 @@ type AccountSubscription struct {
 func NewAccountSubscription(ctx *pulumi.Context,
 	name string, args *AccountSubscriptionArgs, opts ...pulumi.ResourceOption) (*AccountSubscription, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &AccountSubscriptionArgs{}
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccountSubscription
 	err := ctx.RegisterResource("cloudflare:index/accountSubscription:AccountSubscription", name, args, &resource, opts...)
@@ -116,7 +112,7 @@ func GetAccountSubscription(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccountSubscription resources.
 type accountSubscriptionState struct {
-	// Identifier
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
 	// The monetary unit in which pricing information is displayed.
 	Currency *string `pulumi:"currency"`
@@ -137,7 +133,7 @@ type accountSubscriptionState struct {
 }
 
 type AccountSubscriptionState struct {
-	// Identifier
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
 	// The monetary unit in which pricing information is displayed.
 	Currency pulumi.StringPtrInput
@@ -162,8 +158,8 @@ func (AccountSubscriptionState) ElementType() reflect.Type {
 }
 
 type accountSubscriptionArgs struct {
-	// Identifier
-	AccountId string `pulumi:"accountId"`
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	AccountId *string `pulumi:"accountId"`
 	// How often the subscription is renewed automatically.
 	// Available values: "weekly", "monthly", "quarterly", "yearly".
 	Frequency *string `pulumi:"frequency"`
@@ -173,8 +169,8 @@ type accountSubscriptionArgs struct {
 
 // The set of arguments for constructing a AccountSubscription resource.
 type AccountSubscriptionArgs struct {
-	// Identifier
-	AccountId pulumi.StringInput
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	AccountId pulumi.StringPtrInput
 	// How often the subscription is renewed automatically.
 	// Available values: "weekly", "monthly", "quarterly", "yearly".
 	Frequency pulumi.StringPtrInput
@@ -269,9 +265,9 @@ func (o AccountSubscriptionOutput) ToAccountSubscriptionOutputWithContext(ctx co
 	return o
 }
 
-// Identifier
-func (o AccountSubscriptionOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccountSubscription) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+func (o AccountSubscriptionOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountSubscription) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The monetary unit in which pricing information is displayed.

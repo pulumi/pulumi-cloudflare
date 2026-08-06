@@ -182,8 +182,10 @@ class _TurnstileWidgetState:
                  bot_fight_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  clearance_level: pulumi.Input[Optional[_builtins.str]] = None,
                  created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployed_via: pulumi.Input[Optional[_builtins.str]] = None,
                  domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ephemeral_id: pulumi.Input[Optional[_builtins.bool]] = None,
+                 last_modified_via: pulumi.Input[Optional[_builtins.str]] = None,
                  mode: pulumi.Input[Optional[_builtins.str]] = None,
                  modified_on: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -201,7 +203,16 @@ class _TurnstileWidgetState:
                this setting can determine the clearance level to be set
                Available values: "no_clearance", "jschallenge", "managed", "interactive".
         :param pulumi.Input[_builtins.str] created_on: When the widget was created.
+        :param pulumi.Input[_builtins.str] deployed_via: Origin that created this widget, recorded at creation time and
+               immutable afterward. Server-derived from the create request; not
+               client-settable. Omitted from the response for widgets created
+               before this field existed.
+               Available values: "wrangler", "dashboard", "spin", "api", "unknown".
         :param pulumi.Input[_builtins.bool] ephemeral_id: Return the Ephemeral ID in /siteverify (ENT only).
+        :param pulumi.Input[_builtins.str] last_modified_via: Origin of the most recent mutation (create, update, delete, or
+               secret rotation). Server-derived; not client-settable. Omitted for
+               widgets last mutated before this field existed.
+               Available values: "wrangler", "dashboard", "spin", "api", "unknown".
         :param pulumi.Input[_builtins.str] mode: Widget Mode
                Available values: "non-interactive", "invisible", "managed".
         :param pulumi.Input[_builtins.str] modified_on: When the widget was modified.
@@ -222,10 +233,14 @@ class _TurnstileWidgetState:
             pulumi.set(__self__, "clearance_level", clearance_level)
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
+        if deployed_via is not None:
+            pulumi.set(__self__, "deployed_via", deployed_via)
         if domains is not None:
             pulumi.set(__self__, "domains", domains)
         if ephemeral_id is not None:
             pulumi.set(__self__, "ephemeral_id", ephemeral_id)
+        if last_modified_via is not None:
+            pulumi.set(__self__, "last_modified_via", last_modified_via)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if modified_on is not None:
@@ -293,6 +308,22 @@ class _TurnstileWidgetState:
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
+    @pulumi.getter(name="deployedVia")
+    def deployed_via(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Origin that created this widget, recorded at creation time and
+        immutable afterward. Server-derived from the create request; not
+        client-settable. Omitted from the response for widgets created
+        before this field existed.
+        Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+        """
+        return pulumi.get(self, "deployed_via")
+
+    @deployed_via.setter
+    def deployed_via(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deployed_via", value)
+
+    @_builtins.property
     @pulumi.getter
     def domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "domains")
@@ -312,6 +343,21 @@ class _TurnstileWidgetState:
     @ephemeral_id.setter
     def ephemeral_id(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ephemeral_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lastModifiedVia")
+    def last_modified_via(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Origin of the most recent mutation (create, update, delete, or
+        secret rotation). Server-derived; not client-settable. Omitted for
+        widgets last mutated before this field existed.
+        Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+        """
+        return pulumi.get(self, "last_modified_via")
+
+    @last_modified_via.setter
+    def last_modified_via(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "last_modified_via", value)
 
     @_builtins.property
     @pulumi.getter
@@ -567,6 +613,8 @@ class TurnstileWidget(pulumi.CustomResource):
             __props__.__dict__["offlabel"] = offlabel
             __props__.__dict__["region"] = region
             __props__.__dict__["created_on"] = None
+            __props__.__dict__["deployed_via"] = None
+            __props__.__dict__["last_modified_via"] = None
             __props__.__dict__["modified_on"] = None
             __props__.__dict__["secret"] = None
             __props__.__dict__["sitekey"] = None
@@ -586,8 +634,10 @@ class TurnstileWidget(pulumi.CustomResource):
             bot_fight_mode: pulumi.Input[Optional[_builtins.bool]] = None,
             clearance_level: pulumi.Input[Optional[_builtins.str]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            deployed_via: pulumi.Input[Optional[_builtins.str]] = None,
             domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             ephemeral_id: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_modified_via: pulumi.Input[Optional[_builtins.str]] = None,
             mode: pulumi.Input[Optional[_builtins.str]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -609,7 +659,16 @@ class TurnstileWidget(pulumi.CustomResource):
                this setting can determine the clearance level to be set
                Available values: "no_clearance", "jschallenge", "managed", "interactive".
         :param pulumi.Input[_builtins.str] created_on: When the widget was created.
+        :param pulumi.Input[_builtins.str] deployed_via: Origin that created this widget, recorded at creation time and
+               immutable afterward. Server-derived from the create request; not
+               client-settable. Omitted from the response for widgets created
+               before this field existed.
+               Available values: "wrangler", "dashboard", "spin", "api", "unknown".
         :param pulumi.Input[_builtins.bool] ephemeral_id: Return the Ephemeral ID in /siteverify (ENT only).
+        :param pulumi.Input[_builtins.str] last_modified_via: Origin of the most recent mutation (create, update, delete, or
+               secret rotation). Server-derived; not client-settable. Omitted for
+               widgets last mutated before this field existed.
+               Available values: "wrangler", "dashboard", "spin", "api", "unknown".
         :param pulumi.Input[_builtins.str] mode: Widget Mode
                Available values: "non-interactive", "invisible", "managed".
         :param pulumi.Input[_builtins.str] modified_on: When the widget was modified.
@@ -630,8 +689,10 @@ class TurnstileWidget(pulumi.CustomResource):
         __props__.__dict__["bot_fight_mode"] = bot_fight_mode
         __props__.__dict__["clearance_level"] = clearance_level
         __props__.__dict__["created_on"] = created_on
+        __props__.__dict__["deployed_via"] = deployed_via
         __props__.__dict__["domains"] = domains
         __props__.__dict__["ephemeral_id"] = ephemeral_id
+        __props__.__dict__["last_modified_via"] = last_modified_via
         __props__.__dict__["mode"] = mode
         __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["name"] = name
@@ -677,6 +738,18 @@ class TurnstileWidget(pulumi.CustomResource):
         return pulumi.get(self, "created_on")
 
     @_builtins.property
+    @pulumi.getter(name="deployedVia")
+    def deployed_via(self) -> pulumi.Output[_builtins.str]:
+        """
+        Origin that created this widget, recorded at creation time and
+        immutable afterward. Server-derived from the create request; not
+        client-settable. Omitted from the response for widgets created
+        before this field existed.
+        Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+        """
+        return pulumi.get(self, "deployed_via")
+
+    @_builtins.property
     @pulumi.getter
     def domains(self) -> pulumi.Output[Sequence[_builtins.str]]:
         return pulumi.get(self, "domains")
@@ -688,6 +761,17 @@ class TurnstileWidget(pulumi.CustomResource):
         Return the Ephemeral ID in /siteverify (ENT only).
         """
         return pulumi.get(self, "ephemeral_id")
+
+    @_builtins.property
+    @pulumi.getter(name="lastModifiedVia")
+    def last_modified_via(self) -> pulumi.Output[_builtins.str]:
+        """
+        Origin of the most recent mutation (create, update, delete, or
+        secret rotation). Server-derived; not client-settable. Omitted for
+        widgets last mutated before this field existed.
+        Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+        """
+        return pulumi.get(self, "last_modified_via")
 
     @_builtins.property
     @pulumi.getter

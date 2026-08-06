@@ -97,7 +97,7 @@ class GetSpectrumApplicationResult:
     def argo_smart_routing(self) -> _builtins.bool:
         """
         Enables Argo Smart Routing for this application.
-        Notes: Only available for TCP applications with traffic_type set to "direct".
+        Notes: Only available for TCP or UDP applications with traffic_type set to "direct".
         """
         return pulumi.get(self, "argo_smart_routing")
 

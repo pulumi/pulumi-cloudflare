@@ -101,6 +101,10 @@ export class HyperdriveConfig extends pulumi.CustomResource {
      * The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
      */
     declare public readonly originConnectionLimit: pulumi.Output<number | undefined>;
+    /**
+     * Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
+     */
+    declare public /*out*/ readonly restartedOn: pulumi.Output<string>;
 
     /**
      * Create a HyperdriveConfig resource with the given unique name, arguments, and options.
@@ -123,6 +127,7 @@ export class HyperdriveConfig extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["origin"] = state?.origin;
             resourceInputs["originConnectionLimit"] = state?.originConnectionLimit;
+            resourceInputs["restartedOn"] = state?.restartedOn;
         } else {
             const args = argsOrState as HyperdriveConfigArgs | undefined;
             if (args?.accountId === undefined && !opts.urn) {
@@ -142,6 +147,7 @@ export class HyperdriveConfig extends pulumi.CustomResource {
             resourceInputs["originConnectionLimit"] = args?.originConnectionLimit;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
+            resourceInputs["restartedOn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(HyperdriveConfig.__pulumiType, name, resourceInputs, opts);
@@ -178,6 +184,10 @@ export interface HyperdriveConfigState {
      * The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
      */
     originConnectionLimit?: pulumi.Input<number | undefined>;
+    /**
+     * Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
+     */
+    restartedOn?: pulumi.Input<string | undefined>;
 }
 
 /**

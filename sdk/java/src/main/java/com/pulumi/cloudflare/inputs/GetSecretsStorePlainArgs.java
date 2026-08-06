@@ -16,17 +16,9 @@ public final class GetSecretsStorePlainArgs extends com.pulumi.resources.InvokeA
 
     public static final GetSecretsStorePlainArgs Empty = new GetSecretsStorePlainArgs();
 
-    /**
-     * Account Identifier
-     * 
-     */
     @Import(name="accountId", required=true)
     private String accountId;
 
-    /**
-     * @return Account Identifier
-     * 
-     */
     public String accountId() {
         return this.accountId;
     }
@@ -38,17 +30,9 @@ public final class GetSecretsStorePlainArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.filter);
     }
 
-    /**
-     * Store Identifier
-     * 
-     */
     @Import(name="storeId")
     private @Nullable String storeId;
 
-    /**
-     * @return Store Identifier
-     * 
-     */
     public Optional<String> storeId() {
         return Optional.ofNullable(this.storeId);
     }
@@ -79,12 +63,6 @@ public final class GetSecretsStorePlainArgs extends com.pulumi.resources.InvokeA
             $ = new GetSecretsStorePlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId Account Identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             $.accountId = accountId;
             return this;
@@ -95,12 +73,6 @@ public final class GetSecretsStorePlainArgs extends com.pulumi.resources.InvokeA
             return this;
         }
 
-        /**
-         * @param storeId Store Identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder storeId(@Nullable String storeId) {
             $.storeId = storeId;
             return this;

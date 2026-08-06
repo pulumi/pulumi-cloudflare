@@ -65,6 +65,10 @@ export interface GetZeroTrustDexTestResult {
      */
     readonly accountId?: string;
     /**
+     * Date the test was created, in RFC 3339 format.
+     */
+    readonly created: string;
+    /**
      * The configuration object which contains the details for the WARP client to conduct the test.
      */
     readonly data: outputs.GetZeroTrustDexTestData;
@@ -102,6 +106,10 @@ export interface GetZeroTrustDexTestResult {
      * The unique identifier for the test.
      */
     readonly testId: string;
+    /**
+     * Date the test was last updated, in RFC 3339 format.
+     */
+    readonly updated: string;
 }
 /**
  * Accepted Permissions

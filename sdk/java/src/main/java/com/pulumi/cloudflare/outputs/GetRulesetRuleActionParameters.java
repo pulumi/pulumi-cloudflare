@@ -450,7 +450,7 @@ public final class GetRulesetRuleActionParameters {
      */
     private List<String> values;
     /**
-     * @return Controls how cached responses vary based on request headers. At least one of `default` or `headers` must be set, and `default` is required when `headers` is set.
+     * @return Controls how cached responses vary based on request headers. `default` is required and applies to any Vary response header that does not have a per-header override.
      * 
      */
     private GetRulesetRuleActionParametersVary vary;
@@ -1013,7 +1013,7 @@ public final class GetRulesetRuleActionParameters {
         return this.values;
     }
     /**
-     * @return Controls how cached responses vary based on request headers. At least one of `default` or `headers` must be set, and `default` is required when `headers` is set.
+     * @return Controls how cached responses vary based on request headers. `default` is required and applies to any Vary response header that does not have a per-header override.
      * 
      */
     public GetRulesetRuleActionParametersVary vary() {

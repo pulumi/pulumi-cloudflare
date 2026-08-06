@@ -15,113 +15,51 @@ public final class GetEmailSecurityBlockSendersPlainArgs extends com.pulumi.reso
 
     public static final GetEmailSecurityBlockSendersPlainArgs Empty = new GetEmailSecurityBlockSendersPlainArgs();
 
-    /**
-     * Identifier.
-     * 
-     */
     @Import(name="accountId")
     private @Nullable String accountId;
 
-    /**
-     * @return Identifier.
-     * 
-     */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
-    /**
-     * The sorting direction.
-     * Available values: &#34;asc&#34;, &#34;desc&#34;.
-     * 
-     */
     @Import(name="direction")
     private @Nullable String direction;
 
-    /**
-     * @return The sorting direction.
-     * Available values: &#34;asc&#34;, &#34;desc&#34;.
-     * 
-     */
     public Optional<String> direction() {
         return Optional.ofNullable(this.direction);
     }
 
-    /**
-     * Max items to fetch, default: 1000
-     * 
-     */
     @Import(name="maxItems")
     private @Nullable Integer maxItems;
 
-    /**
-     * @return Max items to fetch, default: 1000
-     * 
-     */
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
     }
 
-    /**
-     * Field to sort by.
-     * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
-     * 
-     */
     @Import(name="order")
     private @Nullable String order;
 
-    /**
-     * @return Field to sort by.
-     * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
-     * 
-     */
     public Optional<String> order() {
         return Optional.ofNullable(this.order);
     }
 
-    /**
-     * Filter by pattern value.
-     * 
-     */
     @Import(name="pattern")
     private @Nullable String pattern;
 
-    /**
-     * @return Filter by pattern value.
-     * 
-     */
     public Optional<String> pattern() {
         return Optional.ofNullable(this.pattern);
     }
 
-    /**
-     * Filter by pattern type.
-     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
-     * 
-     */
     @Import(name="patternType")
     private @Nullable String patternType;
 
-    /**
-     * @return Filter by pattern type.
-     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
-     * 
-     */
     public Optional<String> patternType() {
         return Optional.ofNullable(this.patternType);
     }
 
-    /**
-     * Search term for filtering records. Behavior may change.
-     * 
-     */
     @Import(name="search")
     private @Nullable String search;
 
-    /**
-     * @return Search term for filtering records. Behavior may change.
-     * 
-     */
     public Optional<String> search() {
         return Optional.ofNullable(this.search);
     }
@@ -156,81 +94,36 @@ public final class GetEmailSecurityBlockSendersPlainArgs extends com.pulumi.reso
             $ = new GetEmailSecurityBlockSendersPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId Identifier.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param direction The sorting direction.
-         * Available values: &#34;asc&#34;, &#34;desc&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder direction(@Nullable String direction) {
             $.direction = direction;
             return this;
         }
 
-        /**
-         * @param maxItems Max items to fetch, default: 1000
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxItems(@Nullable Integer maxItems) {
             $.maxItems = maxItems;
             return this;
         }
 
-        /**
-         * @param order Field to sort by.
-         * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder order(@Nullable String order) {
             $.order = order;
             return this;
         }
 
-        /**
-         * @param pattern Filter by pattern value.
-         * 
-         * @return builder
-         * 
-         */
         public Builder pattern(@Nullable String pattern) {
             $.pattern = pattern;
             return this;
         }
 
-        /**
-         * @param patternType Filter by pattern type.
-         * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder patternType(@Nullable String patternType) {
             $.patternType = patternType;
             return this;
         }
 
-        /**
-         * @param search Search term for filtering records. Behavior may change.
-         * 
-         * @return builder
-         * 
-         */
         public Builder search(@Nullable String search) {
             $.search = search;
             return this;

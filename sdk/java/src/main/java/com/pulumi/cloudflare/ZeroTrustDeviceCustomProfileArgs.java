@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileDnsSearchSuffixArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileExcludeArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileGlobalAccelerationArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileIncludeArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileServiceModeV2Args;
 import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileVirtualNetworksArgs;
@@ -194,6 +195,21 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
      */
     public Optional<Output<List<ZeroTrustDeviceCustomProfileExcludeArgs>>> excludes() {
         return Optional.ofNullable(this.excludes);
+    }
+
+    /**
+     * Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+     * 
+     */
+    @Import(name="globalAcceleration")
+    private @Nullable Output<ZeroTrustDeviceCustomProfileGlobalAccelerationArgs> globalAcceleration;
+
+    /**
+     * @return Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+     * 
+     */
+    public Optional<Output<ZeroTrustDeviceCustomProfileGlobalAccelerationArgs>> globalAcceleration() {
+        return Optional.ofNullable(this.globalAcceleration);
     }
 
     /**
@@ -398,6 +414,7 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
         this.enabled = $.enabled;
         this.excludeOfficeIps = $.excludeOfficeIps;
         this.excludes = $.excludes;
+        this.globalAcceleration = $.globalAcceleration;
         this.includes = $.includes;
         this.lanAllowMinutes = $.lanAllowMinutes;
         this.lanAllowSubnetSize = $.lanAllowSubnetSize;
@@ -689,6 +706,27 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
          */
         public Builder excludes(ZeroTrustDeviceCustomProfileExcludeArgs... excludes) {
             return excludes(List.of(excludes));
+        }
+
+        /**
+         * @param globalAcceleration Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalAcceleration(@Nullable Output<ZeroTrustDeviceCustomProfileGlobalAccelerationArgs> globalAcceleration) {
+            $.globalAcceleration = globalAcceleration;
+            return this;
+        }
+
+        /**
+         * @param globalAcceleration Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalAcceleration(ZeroTrustDeviceCustomProfileGlobalAccelerationArgs globalAcceleration) {
+            return globalAcceleration(Output.of(globalAcceleration));
         }
 
         /**

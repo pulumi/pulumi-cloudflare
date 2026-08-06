@@ -76,7 +76,7 @@ export interface GetDnsRecordResult {
      */
     readonly createdOn: string;
     /**
-     * Components of a CAA record.
+     * Components of a MX record.
      */
     readonly data: outputs.GetDnsRecordData;
     /**

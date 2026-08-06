@@ -27,7 +27,7 @@ class GetWorkerVersionResult:
     """
     A collection of values returned by getWorkerVersion.
     """
-    def __init__(__self__, account_id=None, annotations=None, assets=None, bindings=None, cache_options=None, compatibility_date=None, compatibility_flags=None, containers=None, created_on=None, id=None, include=None, limits=None, main_module=None, main_script_base64=None, migration_tag=None, migrations=None, modules=None, number=None, package_dependencies=None, placement=None, source=None, startup_time_ms=None, urls=None, usage_model=None, version_id=None, worker_id=None):
+    def __init__(__self__, account_id=None, annotations=None, assets=None, bindings=None, cache_options=None, compatibility_date=None, compatibility_flags=None, containers=None, created_on=None, exports=None, id=None, include=None, limits=None, main_module=None, main_script_base64=None, migration_tag=None, migrations=None, modules=None, number=None, package_dependencies=None, placement=None, source=None, startup_time_ms=None, urls=None, usage_model=None, version_id=None, worker_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -55,6 +55,9 @@ class GetWorkerVersionResult:
         if created_on and not isinstance(created_on, str):
             raise TypeError("Expected argument 'created_on' to be a str")
         pulumi.set(__self__, "created_on", created_on)
+        if exports and not isinstance(exports, dict):
+            raise TypeError("Expected argument 'exports' to be a dict")
+        pulumi.set(__self__, "exports", exports)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -160,6 +163,11 @@ class GetWorkerVersionResult:
     @pulumi.getter(name="createdOn")
     def created_on(self) -> _builtins.str:
         return pulumi.get(self, "created_on")
+
+    @_builtins.property
+    @pulumi.getter
+    def exports(self) -> Mapping[str, 'outputs.GetWorkerVersionExportsResult']:
+        return pulumi.get(self, "exports")
 
     @_builtins.property
     @pulumi.getter
@@ -273,6 +281,7 @@ class AwaitableGetWorkerVersionResult(GetWorkerVersionResult):
             compatibility_flags=self.compatibility_flags,
             containers=self.containers,
             created_on=self.created_on,
+            exports=self.exports,
             id=self.id,
             include=self.include,
             limits=self.limits,
@@ -341,6 +350,7 @@ def get_worker_version(account_id: Optional[_builtins.str] = None,
         compatibility_flags=pulumi.get(__ret__, 'compatibility_flags'),
         containers=pulumi.get(__ret__, 'containers'),
         created_on=pulumi.get(__ret__, 'created_on'),
+        exports=pulumi.get(__ret__, 'exports'),
         id=pulumi.get(__ret__, 'id'),
         include=pulumi.get(__ret__, 'include'),
         limits=pulumi.get(__ret__, 'limits'),
@@ -406,6 +416,7 @@ def get_worker_version_output(account_id: pulumi.Input[Optional[_builtins.str]] 
         compatibility_flags=pulumi.get(__response__, 'compatibility_flags'),
         containers=pulumi.get(__response__, 'containers'),
         created_on=pulumi.get(__response__, 'created_on'),
+        exports=pulumi.get(__response__, 'exports'),
         id=pulumi.get(__response__, 'id'),
         include=pulumi.get(__response__, 'include'),
         limits=pulumi.get(__response__, 'limits'),

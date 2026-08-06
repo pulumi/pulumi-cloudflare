@@ -46,36 +46,12 @@ export function getEmailSecurityBlockSenders(args?: GetEmailSecurityBlockSenders
  * A collection of arguments for invoking getEmailSecurityBlockSenders.
  */
 export interface GetEmailSecurityBlockSendersArgs {
-    /**
-     * Identifier.
-     */
     accountId?: string;
-    /**
-     * The sorting direction.
-     * Available values: "asc", "desc".
-     */
     direction?: string;
-    /**
-     * Max items to fetch, default: 1000
-     */
     maxItems?: number;
-    /**
-     * Field to sort by.
-     * Available values: "pattern", "createdAt".
-     */
     order?: string;
-    /**
-     * Filter by pattern value.
-     */
     pattern?: string;
-    /**
-     * Filter by pattern type.
-     * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
-     */
     patternType?: string;
-    /**
-     * Search term for filtering records. Behavior may change.
-     */
     search?: string;
 }
 
@@ -83,40 +59,13 @@ export interface GetEmailSecurityBlockSendersArgs {
  * A collection of values returned by getEmailSecurityBlockSenders.
  */
 export interface GetEmailSecurityBlockSendersResult {
-    /**
-     * Identifier.
-     */
     readonly accountId?: string;
-    /**
-     * The sorting direction.
-     * Available values: "asc", "desc".
-     */
     readonly direction?: string;
-    /**
-     * Max items to fetch, default: 1000
-     */
     readonly maxItems?: number;
-    /**
-     * Field to sort by.
-     * Available values: "pattern", "createdAt".
-     */
     readonly order?: string;
-    /**
-     * Filter by pattern value.
-     */
     readonly pattern?: string;
-    /**
-     * Filter by pattern type.
-     * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
-     */
     readonly patternType?: string;
-    /**
-     * The items returned by the data source
-     */
     readonly results: outputs.GetEmailSecurityBlockSendersResult[];
-    /**
-     * Search term for filtering records. Behavior may change.
-     */
     readonly search?: string;
 }
 /**
@@ -159,35 +108,11 @@ export function getEmailSecurityBlockSendersOutput(args?: GetEmailSecurityBlockS
  * A collection of arguments for invoking getEmailSecurityBlockSenders.
  */
 export interface GetEmailSecurityBlockSendersOutputArgs {
-    /**
-     * Identifier.
-     */
     accountId?: pulumi.Input<string | undefined>;
-    /**
-     * The sorting direction.
-     * Available values: "asc", "desc".
-     */
     direction?: pulumi.Input<string | undefined>;
-    /**
-     * Max items to fetch, default: 1000
-     */
     maxItems?: pulumi.Input<number | undefined>;
-    /**
-     * Field to sort by.
-     * Available values: "pattern", "createdAt".
-     */
     order?: pulumi.Input<string | undefined>;
-    /**
-     * Filter by pattern value.
-     */
     pattern?: pulumi.Input<string | undefined>;
-    /**
-     * Filter by pattern type.
-     * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
-     */
     patternType?: pulumi.Input<string | undefined>;
-    /**
-     * Search term for filtering records. Behavior may change.
-     */
     search?: pulumi.Input<string | undefined>;
 }

@@ -24,6 +24,10 @@ import * as utilities from "./utilities";
  *     workflowName: "x",
  *     className: "x",
  *     scriptName: "x",
+ *     defaultRetention: {
+ *         errorRetention: "5 minutes",
+ *         successRetention: "5 minutes",
+ *     },
  *     limits: {
  *         steps: 1,
  *     },
@@ -70,6 +74,10 @@ export class Workflow extends pulumi.CustomResource {
     declare public readonly accountId: pulumi.Output<string>;
     declare public readonly className: pulumi.Output<string>;
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
+    /**
+     * Default retention applied to instances of this version when they do not set their own retention.
+     */
+    declare public readonly defaultRetention: pulumi.Output<outputs.WorkflowDefaultRetention | undefined>;
     declare public /*out*/ readonly instances: pulumi.Output<outputs.WorkflowInstances>;
     declare public /*out*/ readonly isDeleted: pulumi.Output<number>;
     declare public readonly limits: pulumi.Output<outputs.WorkflowLimits | undefined>;
@@ -98,6 +106,7 @@ export class Workflow extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["className"] = state?.className;
             resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["defaultRetention"] = state?.defaultRetention;
             resourceInputs["instances"] = state?.instances;
             resourceInputs["isDeleted"] = state?.isDeleted;
             resourceInputs["limits"] = state?.limits;
@@ -125,6 +134,7 @@ export class Workflow extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["className"] = args?.className;
+            resourceInputs["defaultRetention"] = args?.defaultRetention;
             resourceInputs["limits"] = args?.limits;
             resourceInputs["schedules"] = args?.schedules;
             resourceInputs["scriptName"] = args?.scriptName;
@@ -150,6 +160,10 @@ export interface WorkflowState {
     accountId?: pulumi.Input<string | undefined>;
     className?: pulumi.Input<string | undefined>;
     createdOn?: pulumi.Input<string | undefined>;
+    /**
+     * Default retention applied to instances of this version when they do not set their own retention.
+     */
+    defaultRetention?: pulumi.Input<inputs.WorkflowDefaultRetention | undefined>;
     instances?: pulumi.Input<inputs.WorkflowInstances | undefined>;
     isDeleted?: pulumi.Input<number | undefined>;
     limits?: pulumi.Input<inputs.WorkflowLimits | undefined>;
@@ -169,6 +183,10 @@ export interface WorkflowState {
 export interface WorkflowArgs {
     accountId: pulumi.Input<string>;
     className: pulumi.Input<string>;
+    /**
+     * Default retention applied to instances of this version when they do not set their own retention.
+     */
+    defaultRetention?: pulumi.Input<inputs.WorkflowDefaultRetention | undefined>;
     limits?: pulumi.Input<inputs.WorkflowLimits | undefined>;
     schedules?: pulumi.Input<pulumi.Input<inputs.WorkflowSchedule>[] | undefined>;
     scriptName: pulumi.Input<string>;

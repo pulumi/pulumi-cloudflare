@@ -332,8 +332,8 @@ def get_load_balancer(load_balancer_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_load_balancer = cloudflare.get_load_balancer(zone_id="699d98642c564d2e855e9661899b7252",
-        load_balancer_id="699d98642c564d2e855e9661899b7252")
+    example_load_balancer = cloudflare.get_load_balancer(load_balancer_id="699d98642c564d2e855e9661899b7252",
+        zone_id="zone_id")
     ```
 
 
@@ -390,8 +390,8 @@ def get_load_balancer_output(load_balancer_id: pulumi.Input[Optional[_builtins.s
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_load_balancer = cloudflare.get_load_balancer(zone_id="699d98642c564d2e855e9661899b7252",
-        load_balancer_id="699d98642c564d2e855e9661899b7252")
+    example_load_balancer = cloudflare.get_load_balancer(load_balancer_id="699d98642c564d2e855e9661899b7252",
+        zone_id="zone_id")
     ```
 
 

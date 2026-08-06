@@ -9,6 +9,7 @@ import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileState;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceDefaultProfileDnsSearchSuffix;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceDefaultProfileExclude;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceDefaultProfileFallbackDomain;
+import com.pulumi.cloudflare.outputs.ZeroTrustDeviceDefaultProfileGlobalAcceleration;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceDefaultProfileInclude;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceDefaultProfileServiceModeV2;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceDefaultProfileVirtualNetworks;
@@ -271,6 +272,20 @@ public class ZeroTrustDeviceDefaultProfile extends com.pulumi.resources.CustomRe
 
     public Output<String> gatewayUniqueId() {
         return this.gatewayUniqueId;
+    }
+    /**
+     * Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+     * 
+     */
+    @Export(name="globalAcceleration", refs={ZeroTrustDeviceDefaultProfileGlobalAcceleration.class}, tree="[0]")
+    private Output</* @Nullable */ ZeroTrustDeviceDefaultProfileGlobalAcceleration> globalAcceleration;
+
+    /**
+     * @return Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+     * 
+     */
+    public Output<Optional<ZeroTrustDeviceDefaultProfileGlobalAcceleration>> globalAcceleration() {
+        return Codegen.optional(this.globalAcceleration);
     }
     /**
      * List of routes included in the WARP client&#39;s tunnel. Both &#39;exclude&#39; and &#39;include&#39; cannot be set in the same request.

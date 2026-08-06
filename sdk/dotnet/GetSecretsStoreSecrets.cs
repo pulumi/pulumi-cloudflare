@@ -33,13 +33,7 @@ namespace Pulumi.Cloudflare
         ///         StoreId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Scopes = new[]
         ///         {
-        ///             new[]
-        ///             {
-        ///                 "workers",
-        ///                 "ai_gateway",
-        ///                 "dex",
-        ///                 "access",
-        ///             },
+        ///             "workers",
         ///         },
         ///         Search = "search",
         ///     });
@@ -72,13 +66,7 @@ namespace Pulumi.Cloudflare
         ///         StoreId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Scopes = new[]
         ///         {
-        ///             new[]
-        ///             {
-        ///                 "workers",
-        ///                 "ai_gateway",
-        ///                 "dex",
-        ///                 "access",
-        ///             },
+        ///             "workers",
         ///         },
         ///         Search = "search",
         ///     });
@@ -111,13 +99,7 @@ namespace Pulumi.Cloudflare
         ///         StoreId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Scopes = new[]
         ///         {
-        ///             new[]
-        ///             {
-        ///                 "workers",
-        ///                 "ai_gateway",
-        ///                 "dex",
-        ///                 "access",
-        ///             },
+        ///             "workers",
         ///         },
         ///         Search = "search",
         ///     });
@@ -132,14 +114,11 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetSecretsStoreSecretsArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Account Identifier
-        /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Direction to sort objects
+        /// Direction to sort objects.
         /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
@@ -152,33 +131,30 @@ namespace Pulumi.Cloudflare
         public int? MaxItems { get; set; }
 
         /// <summary>
-        /// Order secrets by values in the given field
+        /// Order secrets by values in the given field.
         /// Available values: "name", "comment", "created", "modified", "status".
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
 
         [Input("scopes")]
-        private List<ImmutableArray<string>>? _scopes;
+        private List<string>? _scopes;
 
         /// <summary>
-        /// Only secrets with the given scopes will be returned
+        /// Only secrets with the given scopes will be returned.
         /// </summary>
-        public List<ImmutableArray<string>> Scopes
+        public List<string> Scopes
         {
-            get => _scopes ?? (_scopes = new List<ImmutableArray<string>>());
+            get => _scopes ?? (_scopes = new List<string>());
             set => _scopes = value;
         }
 
         /// <summary>
-        /// Search secrets using a filter string, filtering across name and comment
+        /// Search secrets using a filter string, filtering across name and comment.
         /// </summary>
         [Input("search")]
         public string? Search { get; set; }
 
-        /// <summary>
-        /// Store Identifier
-        /// </summary>
         [Input("storeId", required: true)]
         public string StoreId { get; set; } = null!;
 
@@ -190,14 +166,11 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetSecretsStoreSecretsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Account Identifier
-        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Direction to sort objects
+        /// Direction to sort objects.
         /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
@@ -210,33 +183,30 @@ namespace Pulumi.Cloudflare
         public Input<int>? MaxItems { get; set; }
 
         /// <summary>
-        /// Order secrets by values in the given field
+        /// Order secrets by values in the given field.
         /// Available values: "name", "comment", "created", "modified", "status".
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }
 
         [Input("scopes")]
-        private InputList<ImmutableArray<string>>? _scopes;
+        private InputList<string>? _scopes;
 
         /// <summary>
-        /// Only secrets with the given scopes will be returned
+        /// Only secrets with the given scopes will be returned.
         /// </summary>
-        public InputList<ImmutableArray<string>> Scopes
+        public InputList<string> Scopes
         {
-            get => _scopes ?? (_scopes = new InputList<ImmutableArray<string>>());
+            get => _scopes ?? (_scopes = new InputList<string>());
             set => _scopes = value;
         }
 
         /// <summary>
-        /// Search secrets using a filter string, filtering across name and comment
+        /// Search secrets using a filter string, filtering across name and comment.
         /// </summary>
         [Input("search")]
         public Input<string>? Search { get; set; }
 
-        /// <summary>
-        /// Store Identifier
-        /// </summary>
         [Input("storeId", required: true)]
         public Input<string> StoreId { get; set; } = null!;
 
@@ -250,12 +220,9 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetSecretsStoreSecretsResult
     {
-        /// <summary>
-        /// Account Identifier
-        /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// Direction to sort objects
+        /// Direction to sort objects.
         /// Available values: "asc", "desc".
         /// </summary>
         public readonly string Direction;
@@ -264,7 +231,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly int? MaxItems;
         /// <summary>
-        /// Order secrets by values in the given field
+        /// Order secrets by values in the given field.
         /// Available values: "name", "comment", "created", "modified", "status".
         /// </summary>
         public readonly string Order;
@@ -273,16 +240,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSecretsStoreSecretsResultResult> Results;
         /// <summary>
-        /// Only secrets with the given scopes will be returned
+        /// Only secrets with the given scopes will be returned.
         /// </summary>
-        public readonly ImmutableArray<ImmutableArray<string>> Scopes;
+        public readonly ImmutableArray<string> Scopes;
         /// <summary>
-        /// Search secrets using a filter string, filtering across name and comment
+        /// Search secrets using a filter string, filtering across name and comment.
         /// </summary>
         public readonly string? Search;
-        /// <summary>
-        /// Store Identifier
-        /// </summary>
         public readonly string StoreId;
 
         [OutputConstructor]
@@ -297,7 +261,7 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetSecretsStoreSecretsResultResult> results,
 
-            ImmutableArray<ImmutableArray<string>> scopes,
+            ImmutableArray<string> scopes,
 
             string? search,
 

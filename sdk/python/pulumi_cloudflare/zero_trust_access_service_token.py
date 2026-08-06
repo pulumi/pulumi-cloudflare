@@ -31,7 +31,7 @@ class ZeroTrustAccessServiceTokenArgs:
         :param pulumi.Input[_builtins.str] name: The name of the service token.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.float] client_secret_version: A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
-        :param pulumi.Input[_builtins.str] duration: The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+        :param pulumi.Input[_builtins.str] duration: The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         :param pulumi.Input[_builtins.str] previous_client_secret_expires_at: The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
@@ -87,7 +87,7 @@ class ZeroTrustAccessServiceTokenArgs:
     @pulumi.getter
     def duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+        The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         """
         return pulumi.get(self, "duration")
 
@@ -139,7 +139,7 @@ class _ZeroTrustAccessServiceTokenState:
         :param pulumi.Input[_builtins.str] client_id: The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
         :param pulumi.Input[_builtins.str] client_secret: The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
         :param pulumi.Input[_builtins.float] client_secret_version: A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
-        :param pulumi.Input[_builtins.str] duration: The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+        :param pulumi.Input[_builtins.str] duration: The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         :param pulumi.Input[_builtins.str] name: The name of the service token.
         :param pulumi.Input[_builtins.str] previous_client_secret_expires_at: The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -215,7 +215,7 @@ class _ZeroTrustAccessServiceTokenState:
     @pulumi.getter
     def duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+        The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         """
         return pulumi.get(self, "duration")
 
@@ -313,7 +313,7 @@ class ZeroTrustAccessServiceToken(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.float] client_secret_version: A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
-        :param pulumi.Input[_builtins.str] duration: The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+        :param pulumi.Input[_builtins.str] duration: The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         :param pulumi.Input[_builtins.str] name: The name of the service token.
         :param pulumi.Input[_builtins.str] previous_client_secret_expires_at: The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -426,7 +426,7 @@ class ZeroTrustAccessServiceToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] client_id: The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
         :param pulumi.Input[_builtins.str] client_secret: The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
         :param pulumi.Input[_builtins.float] client_secret_version: A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
-        :param pulumi.Input[_builtins.str] duration: The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+        :param pulumi.Input[_builtins.str] duration: The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         :param pulumi.Input[_builtins.str] name: The name of the service token.
         :param pulumi.Input[_builtins.str] previous_client_secret_expires_at: The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -482,7 +482,7 @@ class ZeroTrustAccessServiceToken(pulumi.CustomResource):
     @pulumi.getter
     def duration(self) -> pulumi.Output[_builtins.str]:
         """
-        The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+        The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         """
         return pulumi.get(self, "duration")
 
