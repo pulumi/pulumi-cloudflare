@@ -126,7 +126,7 @@ import (
 //								PreferEcs: pulumi.String("always"),
 //							},
 //							PoolDefaultWeight: 0.2,
-//							PoolWeights: map[string]interface{}{
+//							PoolWeights: map[string]float64{
 //								"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
 //								"de90f38ced07c2e2f4df50b1f61d4194": 0.3,
 //							},
