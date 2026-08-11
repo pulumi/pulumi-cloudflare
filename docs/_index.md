@@ -39,7 +39,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as cloudflare from "@pulumi/cloudflare";
 
 // Create a DNS record
-const www = new cloudflare.DnsRecord("www", {});
+const www = new cloudflare.dns.Record("www", {});
 ```
 
 {{% /choosable %}}
@@ -59,7 +59,7 @@ import pulumi
 import pulumi_cloudflare as cloudflare
 
 # Create a DNS record
-www = cloudflare.DnsRecord("www")
+www = cloudflare.dns.Record("www")
 ```
 
 {{% /choosable %}}
@@ -83,7 +83,7 @@ using Cloudflare = Pulumi.Cloudflare;
 return await Deployment.RunAsync(() =>
 {
     // Create a DNS record
-    var www = new Cloudflare.DnsRecord("www");
+    var www = new Cloudflare.Dns.Record("www");
 
 });
 
@@ -105,14 +105,14 @@ config:
 package main
 
 import (
-	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/dns"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		// Create a DNS record
-		_, err := cloudflare.NewDnsRecord(ctx, "www", nil)
+		_, err := dns.NewRecord(ctx, "www", nil)
 		if err != nil {
 			return err
 		}
@@ -137,7 +137,7 @@ config:
 resources:
   # Create a DNS record
   www:
-    type: cloudflare:DnsRecord
+    type: cloudflare:dns:Record
 ```
 
 {{% /choosable %}}
@@ -158,7 +158,7 @@ package generated_program;
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
-import com.pulumi.cloudflare.DnsRecord;
+import com.pulumi.cloudflare.dns.Record;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
@@ -173,7 +173,7 @@ public class App {
 
     public static void stack(Context ctx) {
         // Create a DNS record
-        var www = new DnsRecord("www");
+        var www = new Record("www");
 
     }
 }
@@ -191,7 +191,7 @@ pulumi {
 }
 
 # Create a DNS record
-resource "cloudflare_dnsrecord" "www" {
+resource "cloudflare_dns_record" "www" {
 }
 ```
 
