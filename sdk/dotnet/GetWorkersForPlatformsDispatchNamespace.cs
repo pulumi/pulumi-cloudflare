@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getWorkersForPlatformsDispatchNamespace:getWorkersForPlatformsDispatchNamespace has been deprecated in favor of cloudflare:workersForPlatformsDispatch/namespace:getNamespace")]
     public static class GetWorkersForPlatformsDispatchNamespace
     {
         /// <summary>
@@ -28,7 +29,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersForPlatformsDispatchNamespace = Cloudflare.GetWorkersForPlatformsDispatchNamespace.Invoke(new()
+        ///     var exampleWorkersForPlatformsDispatchNamespace = Cloudflare.Modules.WorkersForPlatformsDispatch.GetNamespace.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DispatchNamespace = "my-dispatch-namespace",
@@ -57,7 +58,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersForPlatformsDispatchNamespace = Cloudflare.GetWorkersForPlatformsDispatchNamespace.Invoke(new()
+        ///     var exampleWorkersForPlatformsDispatchNamespace = Cloudflare.Modules.WorkersForPlatformsDispatch.GetNamespace.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DispatchNamespace = "my-dispatch-namespace",
@@ -86,7 +87,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersForPlatformsDispatchNamespace = Cloudflare.GetWorkersForPlatformsDispatchNamespace.Invoke(new()
+        ///     var exampleWorkersForPlatformsDispatchNamespace = Cloudflare.Modules.WorkersForPlatformsDispatch.GetNamespace.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DispatchNamespace = "my-dispatch-namespace",

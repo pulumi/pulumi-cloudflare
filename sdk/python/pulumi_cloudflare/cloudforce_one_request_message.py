@@ -192,8 +192,13 @@ class _CloudforceOneRequestMessageState:
         pulumi.set(self, "updated", value)
 
 
+warnings.warn("""cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage has been deprecated in favor of cloudflare:cloudforceOneRequest/message:Message""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage")
 class CloudforceOneRequestMessage(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage has been deprecated in favor of cloudflare:cloudforceOneRequest/message:Message""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -213,7 +218,7 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_cloudforce_one_request_message = cloudflare.CloudforceOneRequestMessage("example_cloudforce_one_request_message",
+        example_cloudforce_one_request_message = cloudflare.cloudforceonerequest.Message("example_cloudforce_one_request_message",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             request_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
             content="Can you elaborate on the type of DoS that occurred?")
@@ -249,7 +254,7 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_cloudforce_one_request_message = cloudflare.CloudforceOneRequestMessage("example_cloudforce_one_request_message",
+        example_cloudforce_one_request_message = cloudflare.cloudforceonerequest.Message("example_cloudforce_one_request_message",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             request_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
             content="Can you elaborate on the type of DoS that occurred?")
@@ -281,6 +286,7 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
                  content: pulumi.Input[Optional[_builtins.str]] = None,
                  request_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""CloudforceOneRequestMessage is deprecated: cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage has been deprecated in favor of cloudflare:cloudforceOneRequest/message:Message""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

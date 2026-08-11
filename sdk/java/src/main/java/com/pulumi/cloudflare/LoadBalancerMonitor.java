@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.LoadBalancerMonitor;
- * import com.pulumi.cloudflare.LoadBalancerMonitorArgs;
+ * import com.pulumi.cloudflare.loadBalancerMonitor.LoadBalancerMonitor;
+ * import com.pulumi.cloudflare.loadBalancerMonitor.LoadBalancerMonitorArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -82,7 +82,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor example &#39;&lt;account_id&gt;/&lt;monitor_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor has been deprecated in favor of cloudflare:loadBalancerMonitor/loadBalancerMonitor:LoadBalancerMonitor
+ * 
  */
+@Deprecated /* cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor has been deprecated in favor of cloudflare:loadBalancerMonitor/loadBalancerMonitor:LoadBalancerMonitor */
 @ResourceType(type="cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor")
 public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
     /**

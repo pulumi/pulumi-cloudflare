@@ -199,7 +199,7 @@ class DeviceManagedNetworks(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_device_managed_networks = cloudflare.ZeroTrustDeviceManagedNetworks("example_zero_trust_device_managed_networks",
+        example_zero_trust_device_managed_networks = cloudflare.zerotrustdevicemanagednetworks.ZeroTrustDeviceManagedNetworks("example_zero_trust_device_managed_networks",
             account_id="699d98642c564d2e855e9661899b7252",
             config={
                 "tls_sockaddr": "foo.bar:1234",
@@ -240,7 +240,7 @@ class DeviceManagedNetworks(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_device_managed_networks = cloudflare.ZeroTrustDeviceManagedNetworks("example_zero_trust_device_managed_networks",
+        example_zero_trust_device_managed_networks = cloudflare.zerotrustdevicemanagednetworks.ZeroTrustDeviceManagedNetworks("example_zero_trust_device_managed_networks",
             account_id="699d98642c564d2e855e9661899b7252",
             config={
                 "tls_sockaddr": "foo.bar:1234",
@@ -299,8 +299,6 @@ class DeviceManagedNetworks(pulumi.CustomResource):
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
             __props__.__dict__["network_id"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(DeviceManagedNetworks, __self__).__init__(
             'cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks',
             resource_name,

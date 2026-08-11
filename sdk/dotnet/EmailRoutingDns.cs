@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleEmailRoutingDns = new Cloudflare.EmailRoutingDns("example_email_routing_dns", new()
+    ///     var exampleEmailRoutingDns = new Cloudflare.Modules.EmailRouting.EmailRoutingDns("example_email_routing_dns", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "example.net",
@@ -40,6 +40,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/emailRoutingDns:EmailRoutingDns example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/emailRoutingDns:EmailRoutingDns has been deprecated in favor of cloudflare:emailRouting/dns:Dns")]
     [CloudflareResourceType("cloudflare:index/emailRoutingDns:EmailRoutingDns")]
     public partial class EmailRoutingDns : global::Pulumi.CustomResource
     {

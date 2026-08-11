@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/r2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewR2DataCatalog(ctx, "example_r2_data_catalog", &cloudflare.R2DataCatalogArgs{
+//			_, err := r2.NewDataCatalog(ctx, "example_r2_data_catalog", &r2.DataCatalogArgs{
 //				AccountId:  pulumi.String("0123456789abcdef0123456789abcdef"),
 //				BucketName: pulumi.String("my-data-bucket"),
 //			})
@@ -49,6 +49,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/r2DataCatalog:R2DataCatalog example '<account_id>/<bucket_name>'
 // ```
+//
+// Deprecated: cloudflare:index/r2DataCatalog:R2DataCatalog has been deprecated in favor of cloudflare:r2/dataCatalog:DataCatalog
 type R2DataCatalog struct {
 	pulumi.CustomResourceState
 

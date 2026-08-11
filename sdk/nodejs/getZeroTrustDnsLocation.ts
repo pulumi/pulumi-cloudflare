@@ -19,13 +19,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDnsLocation = cloudflare.getZeroTrustDnsLocation({
+ * const exampleZeroTrustDnsLocation = cloudflare.zerotrustdns.getLocation({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     locationId: "ed35569b41ce4d1facfe683550f54086",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDnsLocation:getZeroTrustDnsLocation has been deprecated in favor of cloudflare:zeroTrustDns/location:getLocation */
 export function getZeroTrustDnsLocation(args: GetZeroTrustDnsLocationArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDnsLocationResult> {
+    pulumi.log.warn("getZeroTrustDnsLocation is deprecated: cloudflare:index/getZeroTrustDnsLocation:getZeroTrustDnsLocation has been deprecated in favor of cloudflare:zeroTrustDns/location:getLocation")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDnsLocation:getZeroTrustDnsLocation", {
         "accountId": args.accountId,
@@ -115,13 +117,15 @@ export interface GetZeroTrustDnsLocationResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDnsLocation = cloudflare.getZeroTrustDnsLocation({
+ * const exampleZeroTrustDnsLocation = cloudflare.zerotrustdns.getLocation({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     locationId: "ed35569b41ce4d1facfe683550f54086",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDnsLocation:getZeroTrustDnsLocation has been deprecated in favor of cloudflare:zeroTrustDns/location:getLocation */
 export function getZeroTrustDnsLocationOutput(args: GetZeroTrustDnsLocationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDnsLocationResult> {
+    pulumi.log.warn("getZeroTrustDnsLocation is deprecated: cloudflare:index/getZeroTrustDnsLocation:getZeroTrustDnsLocation has been deprecated in favor of cloudflare:zeroTrustDns/location:getLocation")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDnsLocation:getZeroTrustDnsLocation", {
         "accountId": args.accountId,

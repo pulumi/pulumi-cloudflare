@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustRiskBehavior = new cloudflare.ZeroTrustRiskBehavior("example_zero_trust_risk_behavior", {
+ * const exampleZeroTrustRiskBehavior = new cloudflare.zerotrust.RiskBehavior("example_zero_trust_risk_behavior", {
  *     accountId: "account_id",
  *     behaviors: {
  *         foo: {
@@ -32,6 +32,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior has been deprecated in favor of cloudflare:zeroTrust/riskBehavior:RiskBehavior
  */
 export class ZeroTrustRiskBehavior extends pulumi.CustomResource {
     /**
@@ -44,6 +46,7 @@ export class ZeroTrustRiskBehavior extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustRiskBehaviorState, opts?: pulumi.CustomResourceOptions): ZeroTrustRiskBehavior {
+        pulumi.log.warn("ZeroTrustRiskBehavior is deprecated: cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior has been deprecated in favor of cloudflare:zeroTrust/riskBehavior:RiskBehavior")
         return new ZeroTrustRiskBehavior(name, <any>state, { ...opts, id: id });
     }
 
@@ -71,8 +74,11 @@ export class ZeroTrustRiskBehavior extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior has been deprecated in favor of cloudflare:zeroTrust/riskBehavior:RiskBehavior */
     constructor(name: string, args: ZeroTrustRiskBehaviorArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior has been deprecated in favor of cloudflare:zeroTrust/riskBehavior:RiskBehavior */
     constructor(name: string, argsOrState?: ZeroTrustRiskBehaviorArgs | ZeroTrustRiskBehaviorState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustRiskBehavior is deprecated: cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior has been deprecated in favor of cloudflare:zeroTrust/riskBehavior:RiskBehavior")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

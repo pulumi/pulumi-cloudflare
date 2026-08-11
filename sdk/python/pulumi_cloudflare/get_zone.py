@@ -23,6 +23,8 @@ __all__ = [
     'get_zone_output',
 ]
 
+warnings.warn("""cloudflare:index/getZone:getZone has been deprecated in favor of cloudflare:zone/zone:getZone""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZoneResult:
     """
@@ -319,9 +321,10 @@ def get_zone(filter: Optional[Union['GetZoneFilterArgs', 'GetZoneFilterArgsDict'
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zone = cloudflare.get_zone(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_zone = cloudflare.zone.get_zone(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
     """
+    pulumi.log.warn("""get_zone is deprecated: cloudflare:index/getZone:getZone has been deprecated in favor of cloudflare:zone/zone:getZone""")
     __args__ = dict()
     __args__['filter'] = filter
     __args__['zoneId'] = zone_id
@@ -404,9 +407,10 @@ def get_zone_output(filter: pulumi.Input[Optional[Optional[Union['GetZoneFilterA
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zone = cloudflare.get_zone(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_zone = cloudflare.zone.get_zone(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
     """
+    pulumi.log.warn("""get_zone is deprecated: cloudflare:index/getZone:getZone has been deprecated in favor of cloudflare:zone/zone:getZone""")
     __args__ = dict()
     __args__['filter'] = filter
     __args__['zoneId'] = zone_id

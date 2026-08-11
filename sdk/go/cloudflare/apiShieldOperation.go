@@ -26,14 +26,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/apishieldoperation"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewApiShieldOperation(ctx, "example_api_shield_operation", &cloudflare.ApiShieldOperationArgs{
+//			_, err := apishieldoperation.NewApiShieldOperation(ctx, "example_api_shield_operation", &apishieldoperation.ApiShieldOperationArgs{
 //				ZoneId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Endpoint: pulumi.String("/api/v1/users/{var1}"),
 //				Host:     pulumi.String("www.example.com"),
@@ -53,6 +53,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/apiShieldOperation:ApiShieldOperation example '<zone_id>/<operation_id>'
 // ```
+//
+// Deprecated: cloudflare:index/apiShieldOperation:ApiShieldOperation has been deprecated in favor of cloudflare:apiShieldOperation/apiShieldOperation:ApiShieldOperation
 type ApiShieldOperation struct {
 	pulumi.CustomResourceState
 

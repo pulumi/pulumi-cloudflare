@@ -21,6 +21,8 @@ __all__ = [
     'get_stream_key_output',
 ]
 
+warnings.warn("""cloudflare:index/getStreamKey:getStreamKey has been deprecated in favor of cloudflare:stream/key:getKey""", DeprecationWarning)
+
 @pulumi.output_type
 class GetStreamKeyResult:
     """
@@ -99,12 +101,13 @@ def get_stream_key(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_stream_key = cloudflare.get_stream_key(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_stream_key = cloudflare.stream.get_key(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Identifier.
     """
+    pulumi.log.warn("""get_stream_key is deprecated: cloudflare:index/getStreamKey:getStreamKey has been deprecated in favor of cloudflare:stream/key:getKey""")
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -129,12 +132,13 @@ def get_stream_key_output(account_id: pulumi.Input[Optional[Optional[_builtins.s
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_stream_key = cloudflare.get_stream_key(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_stream_key = cloudflare.stream.get_key(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Identifier.
     """
+    pulumi.log.warn("""get_stream_key is deprecated: cloudflare:index/getStreamKey:getStreamKey has been deprecated in favor of cloudflare:stream/key:getKey""")
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

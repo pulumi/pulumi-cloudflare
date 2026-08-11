@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.MagicNetworkMonitoringRule;
- * import com.pulumi.cloudflare.MagicNetworkMonitoringRuleArgs;
+ * import com.pulumi.cloudflare.magicNetworkMonitoring.Rule;
+ * import com.pulumi.cloudflare.magicNetworkMonitoring.RuleArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleMagicNetworkMonitoringRule = new MagicNetworkMonitoringRule("exampleMagicNetworkMonitoringRule", MagicNetworkMonitoringRuleArgs.builder()
+ *         var exampleMagicNetworkMonitoringRule = new Rule("exampleMagicNetworkMonitoringRule", RuleArgs.builder()
  *             .accountId("6f91088a406011ed95aed352566e8d4c")
  *             .automaticAdvertisement(true)
  *             .name("my_rule_1")
@@ -73,7 +73,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule example &#39;&lt;account_id&gt;/&lt;rule_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule has been deprecated in favor of cloudflare:magicNetworkMonitoring/rule:Rule
+ * 
  */
+@Deprecated /* cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule has been deprecated in favor of cloudflare:magicNetworkMonitoring/rule:Rule */
 @ResourceType(type="cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule")
 public class MagicNetworkMonitoringRule extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getList:getList has been deprecated in favor of cloudflare:list/list:getList")]
     public static class GetList
     {
         /// <summary>
@@ -26,7 +27,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleList = Cloudflare.GetList.Invoke(new()
+        ///     var exampleList = Cloudflare.Modules.List.GetList.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ListId = "2c0fc9fa937b11eaa1b71c4d701ab86e",
@@ -54,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleList = Cloudflare.GetList.Invoke(new()
+        ///     var exampleList = Cloudflare.Modules.List.GetList.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ListId = "2c0fc9fa937b11eaa1b71c4d701ab86e",
@@ -82,7 +83,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleList = Cloudflare.GetList.Invoke(new()
+        ///     var exampleList = Cloudflare.Modules.List.GetList.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ListId = "2c0fc9fa937b11eaa1b71c4d701ab86e",
@@ -170,7 +171,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+        /// The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.list.Item`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetListItemResult> Items;
         /// <summary>

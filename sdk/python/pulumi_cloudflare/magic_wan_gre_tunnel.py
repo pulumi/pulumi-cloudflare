@@ -443,8 +443,13 @@ class _MagicWanGreTunnelState:
         pulumi.set(self, "ttl", value)
 
 
+warnings.warn("""cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel has been deprecated in favor of cloudflare:magicWan/greTunnel:GreTunnel""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel")
 class MagicWanGreTunnel(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel has been deprecated in favor of cloudflare:magicWan/greTunnel:GreTunnel""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -469,7 +474,7 @@ class MagicWanGreTunnel(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_magic_wan_gre_tunnel = cloudflare.MagicWanGreTunnel("example_magic_wan_gre_tunnel",
+        example_magic_wan_gre_tunnel = cloudflare.magicwan.GreTunnel("example_magic_wan_gre_tunnel",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             cloudflare_gre_endpoint="203.0.113.1",
             customer_gre_endpoint="203.0.113.1",
@@ -529,7 +534,7 @@ class MagicWanGreTunnel(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_magic_wan_gre_tunnel = cloudflare.MagicWanGreTunnel("example_magic_wan_gre_tunnel",
+        example_magic_wan_gre_tunnel = cloudflare.magicwan.GreTunnel("example_magic_wan_gre_tunnel",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             cloudflare_gre_endpoint="203.0.113.1",
             customer_gre_endpoint="203.0.113.1",
@@ -591,6 +596,7 @@ class MagicWanGreTunnel(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
+        pulumi.log.warn("""MagicWanGreTunnel is deprecated: cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel has been deprecated in favor of cloudflare:magicWan/greTunnel:GreTunnel""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

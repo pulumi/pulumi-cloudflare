@@ -26,8 +26,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.MtlsCertificate;
- * import com.pulumi.cloudflare.MtlsCertificateArgs;
+ * import com.pulumi.cloudflare.mtlsCertificate.MtlsCertificate;
+ * import com.pulumi.cloudflare.mtlsCertificate.MtlsCertificateArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -68,7 +68,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/mtlsCertificate:MtlsCertificate example &#39;&lt;account_id&gt;/&lt;mtls_certificate_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/mtlsCertificate:MtlsCertificate has been deprecated in favor of cloudflare:mtlsCertificate/mtlsCertificate:MtlsCertificate
+ * 
  */
+@Deprecated /* cloudflare:index/mtlsCertificate:MtlsCertificate has been deprecated in favor of cloudflare:mtlsCertificate/mtlsCertificate:MtlsCertificate */
 @ResourceType(type="cloudflare:index/mtlsCertificate:MtlsCertificate")
 public class MtlsCertificate extends com.pulumi.resources.CustomResource {
     /**

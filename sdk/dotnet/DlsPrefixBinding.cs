@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleDlsPrefixBinding = new Cloudflare.DlsPrefixBinding("example_dls_prefix_binding", new()
+    ///     var exampleDlsPrefixBinding = new Cloudflare.Modules.DlsPrefix.DlsPrefixBinding("example_dls_prefix_binding", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Cidr = "10.0.1.0/24",
@@ -43,6 +43,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/dlsPrefixBinding:DlsPrefixBinding example '&lt;account_id&gt;/&lt;binding_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/dlsPrefixBinding:DlsPrefixBinding has been deprecated in favor of cloudflare:dlsPrefix/binding:Binding")]
     [CloudflareResourceType("cloudflare:index/dlsPrefixBinding:DlsPrefixBinding")]
     public partial class DlsPrefixBinding : global::Pulumi.CustomResource
     {

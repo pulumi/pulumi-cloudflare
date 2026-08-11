@@ -23,6 +23,8 @@ __all__ = [
     'get_load_balancer_pool_output',
 ]
 
+warnings.warn("""cloudflare:index/getLoadBalancerPool:getLoadBalancerPool has been deprecated in favor of cloudflare:loadBalancer/pool:getPool""", DeprecationWarning)
+
 @pulumi.output_type
 class GetLoadBalancerPoolResult:
     """
@@ -307,13 +309,14 @@ def get_load_balancer_pool(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_load_balancer_pool = cloudflare.get_load_balancer_pool(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_load_balancer_pool = cloudflare.loadbalancer.get_pool(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         pool_id="17b5962d775c646f3f9725cbc7a53df4")
     ```
 
 
     :param _builtins.str account_id: Identifier.
     """
+    pulumi.log.warn("""get_load_balancer_pool is deprecated: cloudflare:index/getLoadBalancerPool:getLoadBalancerPool has been deprecated in favor of cloudflare:loadBalancer/pool:getPool""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -360,13 +363,14 @@ def get_load_balancer_pool_output(account_id: pulumi.Input[Optional[Optional[_bu
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_load_balancer_pool = cloudflare.get_load_balancer_pool(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_load_balancer_pool = cloudflare.loadbalancer.get_pool(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         pool_id="17b5962d775c646f3f9725cbc7a53df4")
     ```
 
 
     :param _builtins.str account_id: Identifier.
     """
+    pulumi.log.warn("""get_load_balancer_pool is deprecated: cloudflare:index/getLoadBalancerPool:getLoadBalancerPool has been deprecated in favor of cloudflare:loadBalancer/pool:getPool""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicTransitConnectors = cloudflare.getMagicTransitConnectors({
+ * const exampleMagicTransitConnectors = cloudflare.magictransit.getConnectors({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getMagicTransitConnectors:getMagicTransitConnectors has been deprecated in favor of cloudflare:magicTransit/connectors:getConnectors */
 export function getMagicTransitConnectors(args?: GetMagicTransitConnectorsArgs, opts?: pulumi.InvokeOptions): Promise<GetMagicTransitConnectorsResult> {
+    pulumi.log.warn("getMagicTransitConnectors is deprecated: cloudflare:index/getMagicTransitConnectors:getMagicTransitConnectors has been deprecated in favor of cloudflare:magicTransit/connectors:getConnectors")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getMagicTransitConnectors:getMagicTransitConnectors", {
@@ -86,12 +88,14 @@ export interface GetMagicTransitConnectorsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicTransitConnectors = cloudflare.getMagicTransitConnectors({
+ * const exampleMagicTransitConnectors = cloudflare.magictransit.getConnectors({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getMagicTransitConnectors:getMagicTransitConnectors has been deprecated in favor of cloudflare:magicTransit/connectors:getConnectors */
 export function getMagicTransitConnectorsOutput(args?: GetMagicTransitConnectorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMagicTransitConnectorsResult> {
+    pulumi.log.warn("getMagicTransitConnectors is deprecated: cloudflare:index/getMagicTransitConnectors:getMagicTransitConnectors has been deprecated in favor of cloudflare:magicTransit/connectors:getConnectors")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getMagicTransitConnectors:getMagicTransitConnectors", {

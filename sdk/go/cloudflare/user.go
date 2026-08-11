@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/user"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewUser(ctx, "example_user", &cloudflare.UserArgs{
+//			_, err := user.NewUser(ctx, "example_user", &user.UserArgs{
 //				Country:   pulumi.String("US"),
 //				FirstName: pulumi.String("John"),
 //				LastName:  pulumi.String("Appleseed"),
@@ -49,6 +49,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/user:User has been deprecated in favor of cloudflare:user/user:User
 type User struct {
 	pulumi.CustomResourceState
 

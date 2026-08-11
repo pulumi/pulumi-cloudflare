@@ -317,8 +317,13 @@ class _ZeroTrustDlpIntegrationEntryState:
         pulumi.set(self, "word_list", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustDlpIntegrationEntry:ZeroTrustDlpIntegrationEntry has been deprecated in favor of cloudflare:zeroTrustDlpIntegration/entry:Entry""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustDlpIntegrationEntry:ZeroTrustDlpIntegrationEntry")
 class ZeroTrustDlpIntegrationEntry(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustDlpIntegrationEntry:ZeroTrustDlpIntegrationEntry has been deprecated in favor of cloudflare:zeroTrustDlpIntegration/entry:Entry""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -340,7 +345,7 @@ class ZeroTrustDlpIntegrationEntry(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_integration_entry = cloudflare.ZeroTrustDlpIntegrationEntry("example_zero_trust_dlp_integration_entry",
+        example_zero_trust_dlp_integration_entry = cloudflare.zerotrustdlpintegration.Entry("example_zero_trust_dlp_integration_entry",
             account_id="account_id",
             enabled=True,
             entry_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -377,7 +382,7 @@ class ZeroTrustDlpIntegrationEntry(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_integration_entry = cloudflare.ZeroTrustDlpIntegrationEntry("example_zero_trust_dlp_integration_entry",
+        example_zero_trust_dlp_integration_entry = cloudflare.zerotrustdlpintegration.Entry("example_zero_trust_dlp_integration_entry",
             account_id="account_id",
             enabled=True,
             entry_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -411,6 +416,7 @@ class ZeroTrustDlpIntegrationEntry(pulumi.CustomResource):
                  entry_id: pulumi.Input[Optional[_builtins.str]] = None,
                  profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustDlpIntegrationEntry is deprecated: cloudflare:index/zeroTrustDlpIntegrationEntry:ZeroTrustDlpIntegrationEntry has been deprecated in favor of cloudflare:zeroTrustDlpIntegration/entry:Entry""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

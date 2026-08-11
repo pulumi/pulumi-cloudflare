@@ -22,6 +22,8 @@ __all__ = [
     'get_api_token_permission_groups_list_output',
 ]
 
+warnings.warn("""cloudflare:index/getApiTokenPermissionGroupsList:getApiTokenPermissionGroupsList has been deprecated in favor of cloudflare:apiToken/permissionGroupsList:getPermissionGroupsList""", DeprecationWarning)
+
 @pulumi.output_type
 class GetApiTokenPermissionGroupsListResult:
     """
@@ -104,7 +106,7 @@ def get_api_token_permission_groups_list(max_items: Optional[_builtins.int] = No
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_api_token_permission_groups_list = cloudflare.get_api_token_permission_groups_list(name="Account%20Settings%20Write",
+    example_api_token_permission_groups_list = cloudflare.apitoken.get_permission_groups_list(name="Account%20Settings%20Write",
         scope="com.cloudflare.api.account.zone")
     ```
 
@@ -115,6 +117,7 @@ def get_api_token_permission_groups_list(max_items: Optional[_builtins.int] = No
     :param _builtins.str scope: Filter by the scope of the permission group.
            The value must be URL-encoded.
     """
+    pulumi.log.warn("""get_api_token_permission_groups_list is deprecated: cloudflare:index/getApiTokenPermissionGroupsList:getApiTokenPermissionGroupsList has been deprecated in favor of cloudflare:apiToken/permissionGroupsList:getPermissionGroupsList""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['name'] = name
@@ -143,7 +146,7 @@ def get_api_token_permission_groups_list_output(max_items: pulumi.Input[Optional
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_api_token_permission_groups_list = cloudflare.get_api_token_permission_groups_list(name="Account%20Settings%20Write",
+    example_api_token_permission_groups_list = cloudflare.apitoken.get_permission_groups_list(name="Account%20Settings%20Write",
         scope="com.cloudflare.api.account.zone")
     ```
 
@@ -154,6 +157,7 @@ def get_api_token_permission_groups_list_output(max_items: pulumi.Input[Optional
     :param _builtins.str scope: Filter by the scope of the permission group.
            The value must be URL-encoded.
     """
+    pulumi.log.warn("""get_api_token_permission_groups_list is deprecated: cloudflare:index/getApiTokenPermissionGroupsList:getApiTokenPermissionGroupsList has been deprecated in favor of cloudflare:apiToken/permissionGroupsList:getPermissionGroupsList""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['name'] = name

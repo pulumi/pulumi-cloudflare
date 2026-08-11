@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ArgoSmartRouting;
- * import com.pulumi.cloudflare.ArgoSmartRoutingArgs;
+ * import com.pulumi.cloudflare.argo.SmartRouting;
+ * import com.pulumi.cloudflare.argo.SmartRoutingArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleArgoSmartRouting = new ArgoSmartRouting("exampleArgoSmartRouting", ArgoSmartRoutingArgs.builder()
+ *         var exampleArgoSmartRouting = new SmartRouting("exampleArgoSmartRouting", SmartRoutingArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .value("on")
  *             .build());
@@ -60,7 +60,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/argoSmartRouting:ArgoSmartRouting example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/argoSmartRouting:ArgoSmartRouting has been deprecated in favor of cloudflare:argo/smartRouting:SmartRouting
+ * 
  */
+@Deprecated /* cloudflare:index/argoSmartRouting:ArgoSmartRouting has been deprecated in favor of cloudflare:argo/smartRouting:SmartRouting */
 @ResourceType(type="cloudflare:index/argoSmartRouting:ArgoSmartRouting")
 public class ArgoSmartRouting extends com.pulumi.resources.CustomResource {
     /**

@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWorkersKv = new Cloudflare.WorkersKv("example_workers_kv", new()
+    ///     var exampleWorkersKv = new Cloudflare.Modules.WorkersKv.WorkersKv("example_workers_kv", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         NamespaceId = "0f2ac74b498b48028cb68387c421e279",
@@ -43,6 +43,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/workersKv:WorkersKv example '&lt;account_id&gt;/&lt;namespace_id&gt;/&lt;key_name&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/workersKv:WorkersKv has been deprecated in favor of cloudflare:workersKv/workersKv:WorkersKv")]
     [CloudflareResourceType("cloudflare:index/workersKv:WorkersKv")]
     public partial class WorkersKv : global::Pulumi.CustomResource
     {

@@ -23,6 +23,8 @@ __all__ = [
     'get_dns_record_output',
 ]
 
+warnings.warn("""cloudflare:index/getDnsRecord:getDnsRecord has been deprecated in favor of cloudflare:dns/record:getRecord""", DeprecationWarning)
+
 @pulumi.output_type
 class GetDnsRecordResult:
     """
@@ -318,7 +320,7 @@ def get_dns_record(dns_record_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_dns_record = cloudflare.get_dns_record(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_dns_record = cloudflare.dns.get_record(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         dns_record_id="023e105f4ecef8ad9ca31a8372d0c353",
         include_shadow_metadata=True)
     ```
@@ -328,6 +330,7 @@ def get_dns_record(dns_record_id: Optional[_builtins.str] = None,
     :param _builtins.bool include_shadow_metadata: Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_dns_record is deprecated: cloudflare:index/getDnsRecord:getDnsRecord has been deprecated in favor of cloudflare:dns/record:getRecord""")
     __args__ = dict()
     __args__['dnsRecordId'] = dns_record_id
     __args__['filter'] = filter
@@ -376,7 +379,7 @@ def get_dns_record_output(dns_record_id: pulumi.Input[Optional[Optional[_builtin
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_dns_record = cloudflare.get_dns_record(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_dns_record = cloudflare.dns.get_record(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         dns_record_id="023e105f4ecef8ad9ca31a8372d0c353",
         include_shadow_metadata=True)
     ```
@@ -386,6 +389,7 @@ def get_dns_record_output(dns_record_id: pulumi.Input[Optional[Optional[_builtin
     :param _builtins.bool include_shadow_metadata: Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_dns_record is deprecated: cloudflare:index/getDnsRecord:getDnsRecord has been deprecated in favor of cloudflare:dns/record:getRecord""")
     __args__ = dict()
     __args__['dnsRecordId'] = dns_record_id
     __args__['filter'] = filter

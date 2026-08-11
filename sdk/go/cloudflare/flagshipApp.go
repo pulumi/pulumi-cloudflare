@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/flagship"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewFlagshipApp(ctx, "example_flagship_app", &cloudflare.FlagshipAppArgs{
+//			_, err := flagship.NewApp(ctx, "example_flagship_app", &flagship.AppArgs{
 //				AccountId: pulumi.String("account_id"),
 //				Name:      pulumi.String("x"),
 //			})
@@ -49,6 +49,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/flagshipApp:FlagshipApp example '<account_id>/<app_id>'
 // ```
+//
+// Deprecated: cloudflare:index/flagshipApp:FlagshipApp has been deprecated in favor of cloudflare:flagship/app:App
 type FlagshipApp struct {
 	pulumi.CustomResourceState
 

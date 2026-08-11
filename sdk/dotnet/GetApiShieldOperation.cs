@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getApiShieldOperation:getApiShieldOperation has been deprecated in favor of cloudflare:apiShieldOperation/apiShieldOperation:getApiShieldOperation")]
     public static class GetApiShieldOperation
     {
         /// <summary>

@@ -21,6 +21,8 @@ __all__ = [
     'get_image_output',
 ]
 
+warnings.warn("""cloudflare:index/getImage:getImage has been deprecated in favor of cloudflare:image/image:getImage""", DeprecationWarning)
+
 @pulumi.output_type
 class GetImageResult:
     """
@@ -160,7 +162,7 @@ def get_image(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_image = cloudflare.get_image(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_image = cloudflare.image.get_image(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         image_id="image_id")
     ```
 
@@ -168,6 +170,7 @@ def get_image(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.str image_id: Image unique identifier.
     """
+    pulumi.log.warn("""get_image is deprecated: cloudflare:index/getImage:getImage has been deprecated in favor of cloudflare:image/image:getImage""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['imageId'] = image_id
@@ -199,7 +202,7 @@ def get_image_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_image = cloudflare.get_image(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_image = cloudflare.image.get_image(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         image_id="image_id")
     ```
 
@@ -207,6 +210,7 @@ def get_image_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]]
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.str image_id: Image unique identifier.
     """
+    pulumi.log.warn("""get_image is deprecated: cloudflare:index/getImage:getImage has been deprecated in favor of cloudflare:image/image:getImage""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['imageId'] = image_id

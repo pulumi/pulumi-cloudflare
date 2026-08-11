@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdlppredefined"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustDlpPredefinedEntries(ctx, &cloudflare.LookupZeroTrustDlpPredefinedEntriesArgs{
+//			_, err := zerotrustdlppredefined.GetEntries(ctx, &zerotrustdlppredefined.GetEntriesArgs{
 //				AccountId: pulumi.StringRef("account_id"),
 //			}, nil)
 //			if err != nil {
@@ -41,6 +41,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustDlpPredefinedEntries:getZeroTrustDlpPredefinedEntries has been deprecated in favor of cloudflare:zeroTrustDlpPredefined/entries:getEntries
 func LookupZeroTrustDlpPredefinedEntries(ctx *pulumi.Context, args *LookupZeroTrustDlpPredefinedEntriesArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustDlpPredefinedEntriesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustDlpPredefinedEntriesResult

@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_dlp_settings_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDlpSettings:getZeroTrustDlpSettings has been deprecated in favor of cloudflare:zeroTrustDlp/settings:getSettings""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDlpSettingsResult:
     """
@@ -106,9 +108,10 @@ def get_zero_trust_dlp_settings(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_settings = cloudflare.get_zero_trust_dlp_settings(account_id="account_id")
+    example_zero_trust_dlp_settings = cloudflare.zerotrustdlp.get_settings(account_id="account_id")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_dlp_settings is deprecated: cloudflare:index/getZeroTrustDlpSettings:getZeroTrustDlpSettings has been deprecated in favor of cloudflare:zeroTrustDlp/settings:getSettings""")
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -134,9 +137,10 @@ def get_zero_trust_dlp_settings_output(account_id: pulumi.Input[Optional[_builti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_settings = cloudflare.get_zero_trust_dlp_settings(account_id="account_id")
+    example_zero_trust_dlp_settings = cloudflare.zerotrustdlp.get_settings(account_id="account_id")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_dlp_settings is deprecated: cloudflare:index/getZeroTrustDlpSettings:getZeroTrustDlpSettings has been deprecated in favor of cloudflare:zeroTrustDlp/settings:getSettings""")
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

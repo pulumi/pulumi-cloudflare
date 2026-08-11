@@ -13,12 +13,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustGatewayCertificates = cloudflare.getZeroTrustGatewayCertificates({
+ * const exampleZeroTrustGatewayCertificates = cloudflare.zerotrustgateway.getCertificates({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustGatewayCertificates:getZeroTrustGatewayCertificates has been deprecated in favor of cloudflare:zeroTrustGateway/certificates:getCertificates */
 export function getZeroTrustGatewayCertificates(args?: GetZeroTrustGatewayCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewayCertificatesResult> {
+    pulumi.log.warn("getZeroTrustGatewayCertificates is deprecated: cloudflare:index/getZeroTrustGatewayCertificates:getZeroTrustGatewayCertificates has been deprecated in favor of cloudflare:zeroTrustGateway/certificates:getCertificates")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustGatewayCertificates:getZeroTrustGatewayCertificates", {
@@ -59,12 +61,14 @@ export interface GetZeroTrustGatewayCertificatesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustGatewayCertificates = cloudflare.getZeroTrustGatewayCertificates({
+ * const exampleZeroTrustGatewayCertificates = cloudflare.zerotrustgateway.getCertificates({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustGatewayCertificates:getZeroTrustGatewayCertificates has been deprecated in favor of cloudflare:zeroTrustGateway/certificates:getCertificates */
 export function getZeroTrustGatewayCertificatesOutput(args?: GetZeroTrustGatewayCertificatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewayCertificatesResult> {
+    pulumi.log.warn("getZeroTrustGatewayCertificates is deprecated: cloudflare:index/getZeroTrustGatewayCertificates:getZeroTrustGatewayCertificates has been deprecated in favor of cloudflare:zeroTrustGateway/certificates:getCertificates")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustGatewayCertificates:getZeroTrustGatewayCertificates", {

@@ -22,6 +22,8 @@ __all__ = [
     'get_account_dns_settings_output',
 ]
 
+warnings.warn("""cloudflare:index/getAccountDnsSettings:getAccountDnsSettings has been deprecated in favor of cloudflare:account/dnsSettings:getDnsSettings""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAccountDnsSettingsResult:
     """
@@ -85,12 +87,13 @@ def get_account_dns_settings(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_dns_settings = cloudflare.get_account_dns_settings(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_account_dns_settings = cloudflare.account.get_dns_settings(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Identifier.
     """
+    pulumi.log.warn("""get_account_dns_settings is deprecated: cloudflare:index/getAccountDnsSettings:getAccountDnsSettings has been deprecated in favor of cloudflare:account/dnsSettings:getDnsSettings""")
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -114,12 +117,13 @@ def get_account_dns_settings_output(account_id: pulumi.Input[Optional[Optional[_
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_dns_settings = cloudflare.get_account_dns_settings(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_account_dns_settings = cloudflare.account.get_dns_settings(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Identifier.
     """
+    pulumi.log.warn("""get_account_dns_settings is deprecated: cloudflare:index/getAccountDnsSettings:getAccountDnsSettings has been deprecated in favor of cloudflare:account/dnsSettings:getDnsSettings""")
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

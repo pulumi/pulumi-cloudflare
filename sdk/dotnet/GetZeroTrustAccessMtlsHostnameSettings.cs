@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustAccessMtlsHostnameSettings:getZeroTrustAccessMtlsHostnameSettings has been deprecated in favor of cloudflare:zeroTrustAccessMtls/hostnameSettings:getHostnameSettings")]
     public static class GetZeroTrustAccessMtlsHostnameSettings
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessMtlsHostnameSettings = Cloudflare.GetZeroTrustAccessMtlsHostnameSettings.Invoke(new()
+        ///     var exampleZeroTrustAccessMtlsHostnameSettings = Cloudflare.Modules.ZeroTrustAccessMtls.GetHostnameSettings.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessMtlsHostnameSettings = Cloudflare.GetZeroTrustAccessMtlsHostnameSettings.Invoke(new()
+        ///     var exampleZeroTrustAccessMtlsHostnameSettings = Cloudflare.Modules.ZeroTrustAccessMtls.GetHostnameSettings.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessMtlsHostnameSettings = Cloudflare.GetZeroTrustAccessMtlsHostnameSettings.Invoke(new()
+        ///     var exampleZeroTrustAccessMtlsHostnameSettings = Cloudflare.Modules.ZeroTrustAccessMtls.GetHostnameSettings.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",

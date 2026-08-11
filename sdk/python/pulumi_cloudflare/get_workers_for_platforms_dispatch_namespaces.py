@@ -22,6 +22,8 @@ __all__ = [
     'get_workers_for_platforms_dispatch_namespaces_output',
 ]
 
+warnings.warn("""cloudflare:index/getWorkersForPlatformsDispatchNamespaces:getWorkersForPlatformsDispatchNamespaces has been deprecated in favor of cloudflare:workersForPlatformsDispatch/namespaces:getNamespaces""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWorkersForPlatformsDispatchNamespacesResult:
     """
@@ -90,13 +92,14 @@ def get_workers_for_platforms_dispatch_namespaces(account_id: Optional[_builtins
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_for_platforms_dispatch_namespaces = cloudflare.get_workers_for_platforms_dispatch_namespaces(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_workers_for_platforms_dispatch_namespaces = cloudflare.workersforplatformsdispatch.get_namespaces(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_workers_for_platforms_dispatch_namespaces is deprecated: cloudflare:index/getWorkersForPlatformsDispatchNamespaces:getWorkersForPlatformsDispatchNamespaces has been deprecated in favor of cloudflare:workersForPlatformsDispatch/namespaces:getNamespaces""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -123,13 +126,14 @@ def get_workers_for_platforms_dispatch_namespaces_output(account_id: pulumi.Inpu
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_for_platforms_dispatch_namespaces = cloudflare.get_workers_for_platforms_dispatch_namespaces(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_workers_for_platforms_dispatch_namespaces = cloudflare.workersforplatformsdispatch.get_namespaces(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_workers_for_platforms_dispatch_namespaces is deprecated: cloudflare:index/getWorkersForPlatformsDispatchNamespaces:getWorkersForPlatformsDispatchNamespaces has been deprecated in favor of cloudflare:workersForPlatformsDispatch/namespaces:getNamespaces""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

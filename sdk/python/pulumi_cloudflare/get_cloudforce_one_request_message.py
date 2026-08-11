@@ -21,6 +21,8 @@ __all__ = [
     'get_cloudforce_one_request_message_output',
 ]
 
+warnings.warn("""cloudflare:index/getCloudforceOneRequestMessage:getCloudforceOneRequestMessage has been deprecated in favor of cloudflare:cloudforceOneRequest/message:getMessage""", DeprecationWarning)
+
 @pulumi.output_type
 class GetCloudforceOneRequestMessageResult:
     """
@@ -226,7 +228,7 @@ def get_cloudforce_one_request_message(account_id: Optional[_builtins.str] = Non
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_cloudforce_one_request_message = cloudflare.get_cloudforce_one_request_message(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_cloudforce_one_request_message = cloudflare.cloudforceonerequest.get_message(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         request_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         page=0,
         per_page=10,
@@ -247,6 +249,7 @@ def get_cloudforce_one_request_message(account_id: Optional[_builtins.str] = Non
     :param _builtins.str sort_order: Sort order (asc or desc).
            Available values: "asc", "desc".
     """
+    pulumi.log.warn("""get_cloudforce_one_request_message is deprecated: cloudflare:index/getCloudforceOneRequestMessage:getCloudforceOneRequestMessage has been deprecated in favor of cloudflare:cloudforceOneRequest/message:getMessage""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['after'] = after
@@ -294,7 +297,7 @@ def get_cloudforce_one_request_message_output(account_id: pulumi.Input[Optional[
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_cloudforce_one_request_message = cloudflare.get_cloudforce_one_request_message(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_cloudforce_one_request_message = cloudflare.cloudforceonerequest.get_message(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         request_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         page=0,
         per_page=10,
@@ -315,6 +318,7 @@ def get_cloudforce_one_request_message_output(account_id: pulumi.Input[Optional[
     :param _builtins.str sort_order: Sort order (asc or desc).
            Available values: "asc", "desc".
     """
+    pulumi.log.warn("""get_cloudforce_one_request_message is deprecated: cloudflare:index/getCloudforceOneRequestMessage:getCloudforceOneRequestMessage has been deprecated in favor of cloudflare:cloudforceOneRequest/message:getMessage""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['after'] = after

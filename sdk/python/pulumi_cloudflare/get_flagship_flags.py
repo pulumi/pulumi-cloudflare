@@ -22,6 +22,8 @@ __all__ = [
     'get_flagship_flags_output',
 ]
 
+warnings.warn("""cloudflare:index/getFlagshipFlags:getFlagshipFlags has been deprecated in favor of cloudflare:flagship/flags:getFlags""", DeprecationWarning)
+
 @pulumi.output_type
 class GetFlagshipFlagsResult:
     """
@@ -114,7 +116,7 @@ def get_flagship_flags(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_flagship_flags = cloudflare.get_flagship_flags(account_id="account_id",
+    example_flagship_flags = cloudflare.flagship.get_flags(account_id="account_id",
         app_id="app_id",
         limit="limit")
     ```
@@ -125,6 +127,7 @@ def get_flagship_flags(account_id: Optional[_builtins.str] = None,
     :param _builtins.str limit: Max items to return (1–200).
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_flagship_flags is deprecated: cloudflare:index/getFlagshipFlags:getFlagshipFlags has been deprecated in favor of cloudflare:flagship/flags:getFlags""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['appId'] = app_id
@@ -155,7 +158,7 @@ def get_flagship_flags_output(account_id: pulumi.Input[Optional[_builtins.str]] 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_flagship_flags = cloudflare.get_flagship_flags(account_id="account_id",
+    example_flagship_flags = cloudflare.flagship.get_flags(account_id="account_id",
         app_id="app_id",
         limit="limit")
     ```
@@ -166,6 +169,7 @@ def get_flagship_flags_output(account_id: pulumi.Input[Optional[_builtins.str]] 
     :param _builtins.str limit: Max items to return (1–200).
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_flagship_flags is deprecated: cloudflare:index/getFlagshipFlags:getFlagshipFlags has been deprecated in favor of cloudflare:flagship/flags:getFlags""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['appId'] = app_id

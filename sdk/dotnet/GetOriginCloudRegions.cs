@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getOriginCloudRegions:getOriginCloudRegions has been deprecated in favor of cloudflare:originCloud/regions:getRegions")]
     public static class GetOriginCloudRegions
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOriginCloudRegions = Cloudflare.GetOriginCloudRegions.Invoke(new()
+        ///     var exampleOriginCloudRegions = Cloudflare.Modules.OriginCloud.GetRegions.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -44,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOriginCloudRegions = Cloudflare.GetOriginCloudRegions.Invoke(new()
+        ///     var exampleOriginCloudRegions = Cloudflare.Modules.OriginCloud.GetRegions.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -66,7 +67,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOriginCloudRegions = Cloudflare.GetOriginCloudRegions.Invoke(new()
+        ///     var exampleOriginCloudRegions = Cloudflare.Modules.OriginCloud.GetRegions.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

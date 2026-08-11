@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getByoIpPrefix:getByoIpPrefix has been deprecated in favor of cloudflare:byoIp/prefix:getPrefix")]
     public static class GetByoIpPrefix
     {
         /// <summary>
@@ -31,7 +32,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleByoIpPrefix = Cloudflare.GetByoIpPrefix.Invoke(new()
+        ///     var exampleByoIpPrefix = Cloudflare.Modules.ByoIp.GetPrefix.Invoke(new()
         ///     {
         ///         AccountId = "258def64c72dae45f3e4c8516e2111f2",
         ///         PrefixId = "2af39739cc4e3b5910c918468bb89828",
@@ -63,7 +64,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleByoIpPrefix = Cloudflare.GetByoIpPrefix.Invoke(new()
+        ///     var exampleByoIpPrefix = Cloudflare.Modules.ByoIp.GetPrefix.Invoke(new()
         ///     {
         ///         AccountId = "258def64c72dae45f3e4c8516e2111f2",
         ///         PrefixId = "2af39739cc4e3b5910c918468bb89828",
@@ -95,7 +96,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleByoIpPrefix = Cloudflare.GetByoIpPrefix.Invoke(new()
+        ///     var exampleByoIpPrefix = Cloudflare.Modules.ByoIp.GetPrefix.Invoke(new()
         ///     {
         ///         AccountId = "258def64c72dae45f3e4c8516e2111f2",
         ///         PrefixId = "2af39739cc4e3b5910c918468bb89828",

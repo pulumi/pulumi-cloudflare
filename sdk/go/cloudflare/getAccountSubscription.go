@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/account"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetAccountSubscription(ctx, &cloudflare.LookupAccountSubscriptionArgs{
+//			_, err := account.LookupSubscription(ctx, &account.LookupSubscriptionArgs{
 //				AccountId: pulumi.StringRef("account_id"),
 //			}, nil)
 //			if err != nil {
@@ -41,6 +41,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getAccountSubscription:getAccountSubscription has been deprecated in favor of cloudflare:account/subscription:getSubscription
 func LookupAccountSubscription(ctx *pulumi.Context, args *LookupAccountSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupAccountSubscriptionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountSubscriptionResult

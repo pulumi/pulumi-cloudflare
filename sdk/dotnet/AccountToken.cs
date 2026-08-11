@@ -26,22 +26,22 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAccountToken = new Cloudflare.AccountToken("example_account_token", new()
+    ///     var exampleAccountToken = new Cloudflare.Modules.Account.AccountToken("example_account_token", new()
     ///     {
     ///         AccountId = "b67e14daa5f8dceeb91fe5449ba496eb",
     ///         Name = "workers read-only token",
     ///         Policies = new[]
     ///         {
-    ///             new Cloudflare.Inputs.AccountTokenPolicyArgs
+    ///             new Cloudflare.Modules.Account.Inputs.TokenPolicyArgs
     ///             {
     ///                 Effect = "allow",
     ///                 PermissionGroups = new[]
     ///                 {
-    ///                     new Cloudflare.Inputs.AccountTokenPolicyPermissionGroupArgs
+    ///                     new Cloudflare.Modules.Account.Inputs.TokenPolicyPermissionGroupArgs
     ///                     {
     ///                         Id = "1a71c399035b4950a1bd1466bbe4f420",
     ///                     },
-    ///                     new Cloudflare.Inputs.AccountTokenPolicyPermissionGroupArgs
+    ///                     new Cloudflare.Modules.Account.Inputs.TokenPolicyPermissionGroupArgs
     ///                     {
     ///                         Id = "8b47d2786a534c08a1f94ee8f9f599ef",
     ///                     },
@@ -52,9 +52,9 @@ namespace Pulumi.Cloudflare
     ///                 }),
     ///             },
     ///         },
-    ///         Condition = new Cloudflare.Inputs.AccountTokenConditionArgs
+    ///         Condition = new Cloudflare.Modules.Account.Inputs.TokenConditionArgs
     ///         {
-    ///             RequestIp = new Cloudflare.Inputs.AccountTokenConditionRequestIpArgs
+    ///             RequestIp = new Cloudflare.Modules.Account.Inputs.TokenConditionRequestIpArgs
     ///             {
     ///                 Ins = new[]
     ///                 {
@@ -81,6 +81,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/accountToken:AccountToken example '&lt;account_id&gt;/&lt;token_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/accountToken:AccountToken has been deprecated in favor of cloudflare:account/token:Token")]
     [CloudflareResourceType("cloudflare:index/accountToken:AccountToken")]
     public partial class AccountToken : global::Pulumi.CustomResource
     {

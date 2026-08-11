@@ -28,9 +28,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustList;
- * import com.pulumi.cloudflare.ZeroTrustListArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustListItemArgs;
+ * import com.pulumi.cloudflare.zeroTrust.List;
+ * import com.pulumi.cloudflare.zeroTrust.ListArgs;
+ * import com.pulumi.cloudflare.zeroTrust.inputs.ListItemArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -44,12 +44,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustList = new ZeroTrustList("exampleZeroTrustList", ZeroTrustListArgs.builder()
+ *         var exampleZeroTrustList = new List("exampleZeroTrustList", ListArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
  *             .name("Admin Serial Numbers")
  *             .type("SERIAL")
  *             .description("The serial numbers for administrators")
- *             .items(ZeroTrustListItemArgs.builder()
+ *             .items(ListItemArgs.builder()
  *                 .description("Austin office IP")
  *                 .value("8GE8721REF")
  *                 .build())
@@ -66,7 +66,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustList:ZeroTrustList example &#39;&lt;account_id&gt;/&lt;list_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustList:ZeroTrustList has been deprecated in favor of cloudflare:zeroTrust/list:List
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustList:ZeroTrustList has been deprecated in favor of cloudflare:zeroTrust/list:List */
 @ResourceType(type="cloudflare:index/zeroTrustList:ZeroTrustList")
 public class ZeroTrustList extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

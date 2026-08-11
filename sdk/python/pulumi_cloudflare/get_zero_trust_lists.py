@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_lists_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustLists:getZeroTrustLists has been deprecated in favor of cloudflare:zeroTrust/lists:getLists""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustListsResult:
     """
@@ -95,7 +97,7 @@ def get_zero_trust_lists(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_lists = cloudflare.get_zero_trust_lists(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_lists = cloudflare.zerotrust.get_lists(account_id="699d98642c564d2e855e9661899b7252",
         type="SERIAL")
     ```
 
@@ -104,6 +106,7 @@ def get_zero_trust_lists(account_id: Optional[_builtins.str] = None,
     :param _builtins.str type: Specify the list type.
            Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
     """
+    pulumi.log.warn("""get_zero_trust_lists is deprecated: cloudflare:index/getZeroTrustLists:getZeroTrustLists has been deprecated in favor of cloudflare:zeroTrust/lists:getLists""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -127,7 +130,7 @@ def get_zero_trust_lists_output(account_id: pulumi.Input[Optional[Optional[_buil
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_lists = cloudflare.get_zero_trust_lists(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_lists = cloudflare.zerotrust.get_lists(account_id="699d98642c564d2e855e9661899b7252",
         type="SERIAL")
     ```
 
@@ -136,6 +139,7 @@ def get_zero_trust_lists_output(account_id: pulumi.Input[Optional[Optional[_buil
     :param _builtins.str type: Specify the list type.
            Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
     """
+    pulumi.log.warn("""get_zero_trust_lists is deprecated: cloudflare:index/getZeroTrustLists:getZeroTrustLists has been deprecated in favor of cloudflare:zeroTrust/lists:getLists""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

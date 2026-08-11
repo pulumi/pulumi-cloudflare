@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleArgoTieredCaching = new cloudflare.ArgoTieredCaching("example_argo_tiered_caching", {
+ * const exampleArgoTieredCaching = new cloudflare.argo.TieredCaching("example_argo_tiered_caching", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     value: "on",
  * });
@@ -22,6 +22,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/argoTieredCaching:ArgoTieredCaching example '<zone_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/argoTieredCaching:ArgoTieredCaching has been deprecated in favor of cloudflare:argo/tieredCaching:TieredCaching
  */
 export class ArgoTieredCaching extends pulumi.CustomResource {
     /**
@@ -34,6 +36,7 @@ export class ArgoTieredCaching extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ArgoTieredCachingState, opts?: pulumi.CustomResourceOptions): ArgoTieredCaching {
+        pulumi.log.warn("ArgoTieredCaching is deprecated: cloudflare:index/argoTieredCaching:ArgoTieredCaching has been deprecated in favor of cloudflare:argo/tieredCaching:TieredCaching")
         return new ArgoTieredCaching(name, <any>state, { ...opts, id: id });
     }
 
@@ -76,8 +79,11 @@ export class ArgoTieredCaching extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/argoTieredCaching:ArgoTieredCaching has been deprecated in favor of cloudflare:argo/tieredCaching:TieredCaching */
     constructor(name: string, args: ArgoTieredCachingArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/argoTieredCaching:ArgoTieredCaching has been deprecated in favor of cloudflare:argo/tieredCaching:TieredCaching */
     constructor(name: string, argsOrState?: ArgoTieredCachingArgs | ArgoTieredCachingState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ArgoTieredCaching is deprecated: cloudflare:index/argoTieredCaching:ArgoTieredCaching has been deprecated in favor of cloudflare:argo/tieredCaching:TieredCaching")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -385,8 +385,13 @@ class _MagicNetworkMonitoringRuleState:
         pulumi.set(self, "zscore_target", value)
 
 
+warnings.warn("""cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule has been deprecated in favor of cloudflare:magicNetworkMonitoring/rule:Rule""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule")
 class MagicNetworkMonitoringRule(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule has been deprecated in favor of cloudflare:magicNetworkMonitoring/rule:Rule""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -416,7 +421,7 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_magic_network_monitoring_rule = cloudflare.MagicNetworkMonitoringRule("example_magic_network_monitoring_rule",
+        example_magic_network_monitoring_rule = cloudflare.magicnetworkmonitoring.Rule("example_magic_network_monitoring_rule",
             account_id="6f91088a406011ed95aed352566e8d4c",
             automatic_advertisement=True,
             name="my_rule_1",
@@ -473,7 +478,7 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_magic_network_monitoring_rule = cloudflare.MagicNetworkMonitoringRule("example_magic_network_monitoring_rule",
+        example_magic_network_monitoring_rule = cloudflare.magicnetworkmonitoring.Rule("example_magic_network_monitoring_rule",
             account_id="6f91088a406011ed95aed352566e8d4c",
             automatic_advertisement=True,
             name="my_rule_1",
@@ -521,6 +526,7 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
                  zscore_sensitivity: pulumi.Input[Optional[_builtins.str]] = None,
                  zscore_target: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""MagicNetworkMonitoringRule is deprecated: cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule has been deprecated in favor of cloudflare:magicNetworkMonitoring/rule:Rule""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

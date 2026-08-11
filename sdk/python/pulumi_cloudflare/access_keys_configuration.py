@@ -154,7 +154,7 @@ class AccessKeysConfiguration(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_key_configuration = cloudflare.ZeroTrustAccessKeyConfiguration("example_zero_trust_access_key_configuration",
+        example_zero_trust_access_key_configuration = cloudflare.zerotrustaccess.KeyConfiguration("example_zero_trust_access_key_configuration",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             key_rotation_interval_days=float(30))
         ```
@@ -189,7 +189,7 @@ class AccessKeysConfiguration(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_key_configuration = cloudflare.ZeroTrustAccessKeyConfiguration("example_zero_trust_access_key_configuration",
+        example_zero_trust_access_key_configuration = cloudflare.zerotrustaccess.KeyConfiguration("example_zero_trust_access_key_configuration",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             key_rotation_interval_days=float(30))
         ```
@@ -236,8 +236,6 @@ class AccessKeysConfiguration(pulumi.CustomResource):
             __props__.__dict__["key_rotation_interval_days"] = key_rotation_interval_days
             __props__.__dict__["days_until_next_rotation"] = None
             __props__.__dict__["last_key_rotation_at"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AccessKeysConfiguration, __self__).__init__(
             'cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration',
             resource_name,

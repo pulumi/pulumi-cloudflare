@@ -25,8 +25,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.AuthenticatedOriginPullsCertificate;
- * import com.pulumi.cloudflare.AuthenticatedOriginPullsCertificateArgs;
+ * import com.pulumi.cloudflare.authenticatedOriginPulls.Certificate;
+ * import com.pulumi.cloudflare.authenticatedOriginPulls.CertificateArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -40,7 +40,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleAuthenticatedOriginPullsCertificate = new AuthenticatedOriginPullsCertificate("exampleAuthenticatedOriginPullsCertificate", AuthenticatedOriginPullsCertificateArgs.builder()
+ *         var exampleAuthenticatedOriginPullsCertificate = new Certificate("exampleAuthenticatedOriginPullsCertificate", CertificateArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .certificate("""
  *   -----BEGIN CERTIFICATE-----
@@ -110,7 +110,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate example &#39;&lt;zone_id&gt;/&lt;certificate_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate has been deprecated in favor of cloudflare:authenticatedOriginPulls/certificate:Certificate
+ * 
  */
+@Deprecated /* cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate has been deprecated in favor of cloudflare:authenticatedOriginPulls/certificate:Certificate */
 @ResourceType(type="cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate")
 public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.CustomResource {
     /**

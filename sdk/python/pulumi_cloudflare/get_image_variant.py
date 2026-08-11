@@ -22,6 +22,8 @@ __all__ = [
     'get_image_variant_output',
 ]
 
+warnings.warn("""cloudflare:index/getImageVariant:getImageVariant has been deprecated in favor of cloudflare:image/variant:getVariant""", DeprecationWarning)
+
 @pulumi.output_type
 class GetImageVariantResult:
     """
@@ -95,13 +97,14 @@ def get_image_variant(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_image_variant = cloudflare.get_image_variant(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_image_variant = cloudflare.image.get_variant(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         variant_id="hero")
     ```
 
 
     :param _builtins.str account_id: Account identifier tag.
     """
+    pulumi.log.warn("""get_image_variant is deprecated: cloudflare:index/getImageVariant:getImageVariant has been deprecated in favor of cloudflare:image/variant:getVariant""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['variantId'] = variant_id
@@ -128,13 +131,14 @@ def get_image_variant_output(account_id: pulumi.Input[Optional[Optional[_builtin
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_image_variant = cloudflare.get_image_variant(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_image_variant = cloudflare.image.get_variant(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         variant_id="hero")
     ```
 
 
     :param _builtins.str account_id: Account identifier tag.
     """
+    pulumi.log.warn("""get_image_variant is deprecated: cloudflare:index/getImageVariant:getImageVariant has been deprecated in favor of cloudflare:image/variant:getVariant""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['variantId'] = variant_id

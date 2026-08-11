@@ -20,13 +20,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleTurnstileWidget = cloudflare.getTurnstileWidget({
+ * const exampleTurnstileWidget = cloudflare.turnstile.getWidget({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     sitekey: "0x4AAF00AAAABn0R22HWm-YUc",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getTurnstileWidget:getTurnstileWidget has been deprecated in favor of cloudflare:turnstile/widget:getWidget */
 export function getTurnstileWidget(args?: GetTurnstileWidgetArgs, opts?: pulumi.InvokeOptions): Promise<GetTurnstileWidgetResult> {
+    pulumi.log.warn("getTurnstileWidget is deprecated: cloudflare:index/getTurnstileWidget:getTurnstileWidget has been deprecated in favor of cloudflare:turnstile/widget:getWidget")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getTurnstileWidget:getTurnstileWidget", {
@@ -146,13 +148,15 @@ export interface GetTurnstileWidgetResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleTurnstileWidget = cloudflare.getTurnstileWidget({
+ * const exampleTurnstileWidget = cloudflare.turnstile.getWidget({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     sitekey: "0x4AAF00AAAABn0R22HWm-YUc",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getTurnstileWidget:getTurnstileWidget has been deprecated in favor of cloudflare:turnstile/widget:getWidget */
 export function getTurnstileWidgetOutput(args?: GetTurnstileWidgetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTurnstileWidgetResult> {
+    pulumi.log.warn("getTurnstileWidget is deprecated: cloudflare:index/getTurnstileWidget:getTurnstileWidget has been deprecated in favor of cloudflare:turnstile/widget:getWidget")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getTurnstileWidget:getTurnstileWidget", {

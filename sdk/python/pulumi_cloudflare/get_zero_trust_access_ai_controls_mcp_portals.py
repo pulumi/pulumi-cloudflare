@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_access_ai_controls_mcp_portals_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustAccessAiControlsMcpPortals:getZeroTrustAccessAiControlsMcpPortals has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/portals:getPortals""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustAccessAiControlsMcpPortalsResult:
     """
@@ -99,7 +101,7 @@ def get_zero_trust_access_ai_controls_mcp_portals(account_id: Optional[_builtins
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_ai_controls_mcp_portals = cloudflare.get_zero_trust_access_ai_controls_mcp_portals(account_id="a86a8f5c339544d7bdc89926de14fb8c",
+    example_zero_trust_access_ai_controls_mcp_portals = cloudflare.zerotrustaccessaicontrolsmcp.get_portals(account_id="a86a8f5c339544d7bdc89926de14fb8c",
         search="search")
     ```
 
@@ -107,6 +109,7 @@ def get_zero_trust_access_ai_controls_mcp_portals(account_id: Optional[_builtins
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str search: Search by id, name, hostname
     """
+    pulumi.log.warn("""get_zero_trust_access_ai_controls_mcp_portals is deprecated: cloudflare:index/getZeroTrustAccessAiControlsMcpPortals:getZeroTrustAccessAiControlsMcpPortals has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/portals:getPortals""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -135,7 +138,7 @@ def get_zero_trust_access_ai_controls_mcp_portals_output(account_id: pulumi.Inpu
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_ai_controls_mcp_portals = cloudflare.get_zero_trust_access_ai_controls_mcp_portals(account_id="a86a8f5c339544d7bdc89926de14fb8c",
+    example_zero_trust_access_ai_controls_mcp_portals = cloudflare.zerotrustaccessaicontrolsmcp.get_portals(account_id="a86a8f5c339544d7bdc89926de14fb8c",
         search="search")
     ```
 
@@ -143,6 +146,7 @@ def get_zero_trust_access_ai_controls_mcp_portals_output(account_id: pulumi.Inpu
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str search: Search by id, name, hostname
     """
+    pulumi.log.warn("""get_zero_trust_access_ai_controls_mcp_portals is deprecated: cloudflare:index/getZeroTrustAccessAiControlsMcpPortals:getZeroTrustAccessAiControlsMcpPortals has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/portals:getPortals""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

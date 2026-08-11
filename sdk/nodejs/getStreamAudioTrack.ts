@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleStreamAudioTrack = cloudflare.getStreamAudioTrack({
+ * const exampleStreamAudioTrack = cloudflare.stream.getAudioTrack({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     identifier: "ea95132c15732412d22c1476fa83f27a",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getStreamAudioTrack:getStreamAudioTrack has been deprecated in favor of cloudflare:stream/audioTrack:getAudioTrack */
 export function getStreamAudioTrack(args: GetStreamAudioTrackArgs, opts?: pulumi.InvokeOptions): Promise<GetStreamAudioTrackResult> {
+    pulumi.log.warn("getStreamAudioTrack is deprecated: cloudflare:index/getStreamAudioTrack:getStreamAudioTrack has been deprecated in favor of cloudflare:stream/audioTrack:getAudioTrack")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getStreamAudioTrack:getStreamAudioTrack", {
         "accountId": args.accountId,
@@ -75,13 +77,15 @@ export interface GetStreamAudioTrackResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleStreamAudioTrack = cloudflare.getStreamAudioTrack({
+ * const exampleStreamAudioTrack = cloudflare.stream.getAudioTrack({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     identifier: "ea95132c15732412d22c1476fa83f27a",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getStreamAudioTrack:getStreamAudioTrack has been deprecated in favor of cloudflare:stream/audioTrack:getAudioTrack */
 export function getStreamAudioTrackOutput(args: GetStreamAudioTrackOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStreamAudioTrackResult> {
+    pulumi.log.warn("getStreamAudioTrack is deprecated: cloudflare:index/getStreamAudioTrack:getStreamAudioTrack has been deprecated in favor of cloudflare:stream/audioTrack:getAudioTrack")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getStreamAudioTrack:getStreamAudioTrack", {
         "accountId": args.accountId,

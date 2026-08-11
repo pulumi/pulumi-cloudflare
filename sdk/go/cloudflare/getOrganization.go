@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/organization"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetOrganization(ctx, &cloudflare.LookupOrganizationArgs{
+//			_, err := organization.LookupOrganization(ctx, &organization.LookupOrganizationArgs{
 //				OrganizationId: pulumi.StringRef("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8"),
 //			}, nil)
 //			if err != nil {
@@ -41,6 +41,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getOrganization:getOrganization has been deprecated in favor of cloudflare:organization/organization:getOrganization
 func LookupOrganization(ctx *pulumi.Context, args *LookupOrganizationArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationResult

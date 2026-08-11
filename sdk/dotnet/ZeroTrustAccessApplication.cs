@@ -18,6 +18,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication example '&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;app_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication has been deprecated in favor of cloudflare:zeroTrustAccess/application:Application")]
     [CloudflareResourceType("cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication")]
     public partial class ZeroTrustAccessApplication : global::Pulumi.CustomResource
     {

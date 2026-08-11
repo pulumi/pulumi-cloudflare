@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleStreamWebhook = new Cloudflare.StreamWebhook("example_stream_webhook", new()
+    ///     var exampleStreamWebhook = new Cloudflare.Modules.Stream.StreamWebhook("example_stream_webhook", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         NotificationUrl = "https://example.com",
@@ -38,6 +38,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/streamWebhook:StreamWebhook has been deprecated in favor of cloudflare:stream/webhook:Webhook")]
     [CloudflareResourceType("cloudflare:index/streamWebhook:StreamWebhook")]
     public partial class StreamWebhook : global::Pulumi.CustomResource
     {

@@ -1046,8 +1046,13 @@ class _WorkersScriptState:
         pulumi.set(self, "usage_model", value)
 
 
+warnings.warn("""cloudflare:index/workersScript:WorkersScript has been deprecated in favor of cloudflare:workersScript/workersScript:WorkersScript""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/workersScript:WorkersScript")
 class WorkersScript(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/workersScript:WorkersScript has been deprecated in favor of cloudflare:workersScript/workersScript:WorkersScript""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -1085,7 +1090,7 @@ class WorkersScript(pulumi.CustomResource):
         - `Workers Scripts Write`
         - `Workers Tail Read`
 
-        > For more direct control over Workers resources, we recommend the beta `Worker`, `WorkerVersion`, and `WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
+        > For more direct control over Workers resources, we recommend the beta `worker.Worker`, `worker.Version`, and `workers.Deployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
 
         ## Import
 
@@ -1139,7 +1144,7 @@ class WorkersScript(pulumi.CustomResource):
         - `Workers Scripts Write`
         - `Workers Tail Read`
 
-        > For more direct control over Workers resources, we recommend the beta `Worker`, `WorkerVersion`, and `WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
+        > For more direct control over Workers resources, we recommend the beta `worker.Worker`, `worker.Version`, and `workers.Deployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
 
         ## Import
 
@@ -1189,6 +1194,7 @@ class WorkersScript(pulumi.CustomResource):
                  tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersScriptTailConsumerArgs', 'WorkersScriptTailConsumerArgsDict']]]]] = None,
                  usage_model: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""WorkersScript is deprecated: cloudflare:index/workersScript:WorkersScript has been deprecated in favor of cloudflare:workersScript/workersScript:WorkersScript""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -20,13 +20,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicWanGreTunnel = cloudflare.getMagicWanGreTunnel({
+ * const exampleMagicWanGreTunnel = cloudflare.magicwan.getGreTunnel({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     greTunnelId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getMagicWanGreTunnel:getMagicWanGreTunnel has been deprecated in favor of cloudflare:magicWan/greTunnel:getGreTunnel */
 export function getMagicWanGreTunnel(args: GetMagicWanGreTunnelArgs, opts?: pulumi.InvokeOptions): Promise<GetMagicWanGreTunnelResult> {
+    pulumi.log.warn("getMagicWanGreTunnel is deprecated: cloudflare:index/getMagicWanGreTunnel:getMagicWanGreTunnel has been deprecated in favor of cloudflare:magicWan/greTunnel:getGreTunnel")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getMagicWanGreTunnel:getMagicWanGreTunnel", {
         "accountId": args.accountId,
@@ -80,13 +82,15 @@ export interface GetMagicWanGreTunnelResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicWanGreTunnel = cloudflare.getMagicWanGreTunnel({
+ * const exampleMagicWanGreTunnel = cloudflare.magicwan.getGreTunnel({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     greTunnelId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getMagicWanGreTunnel:getMagicWanGreTunnel has been deprecated in favor of cloudflare:magicWan/greTunnel:getGreTunnel */
 export function getMagicWanGreTunnelOutput(args: GetMagicWanGreTunnelOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMagicWanGreTunnelResult> {
+    pulumi.log.warn("getMagicWanGreTunnel is deprecated: cloudflare:index/getMagicWanGreTunnel:getMagicWanGreTunnel has been deprecated in favor of cloudflare:magicWan/greTunnel:getGreTunnel")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getMagicWanGreTunnel:getMagicWanGreTunnel", {
         "accountId": args.accountId,

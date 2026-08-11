@@ -30,9 +30,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZoneSubscription;
- * import com.pulumi.cloudflare.ZoneSubscriptionArgs;
- * import com.pulumi.cloudflare.inputs.ZoneSubscriptionRatePlanArgs;
+ * import com.pulumi.cloudflare.zone.Subscription;
+ * import com.pulumi.cloudflare.zone.SubscriptionArgs;
+ * import com.pulumi.cloudflare.zone.inputs.SubscriptionRatePlanArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,10 +46,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZoneSubscription = new ZoneSubscription("exampleZoneSubscription", ZoneSubscriptionArgs.builder()
+ *         var exampleZoneSubscription = new Subscription("exampleZoneSubscription", SubscriptionArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .frequency("monthly")
- *             .ratePlan(ZoneSubscriptionRatePlanArgs.builder()
+ *             .ratePlan(SubscriptionRatePlanArgs.builder()
  *                 .id("free")
  *                 .currency("USD")
  *                 .externallyManaged(false)
@@ -71,7 +71,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zoneSubscription:ZoneSubscription example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zoneSubscription:ZoneSubscription has been deprecated in favor of cloudflare:zone/subscription:Subscription
+ * 
  */
+@Deprecated /* cloudflare:index/zoneSubscription:ZoneSubscription has been deprecated in favor of cloudflare:zone/subscription:Subscription */
 @ResourceType(type="cloudflare:index/zoneSubscription:ZoneSubscription")
 public class ZoneSubscription extends com.pulumi.resources.CustomResource {
     /**

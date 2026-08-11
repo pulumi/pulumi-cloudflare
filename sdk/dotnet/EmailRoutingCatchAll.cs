@@ -25,12 +25,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleEmailRoutingCatchAll = new Cloudflare.EmailRoutingCatchAll("example_email_routing_catch_all", new()
+    ///     var exampleEmailRoutingCatchAll = new Cloudflare.Modules.EmailRouting.EmailRoutingCatchAll("example_email_routing_catch_all", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Actions = new[]
     ///         {
-    ///             new Cloudflare.Inputs.EmailRoutingCatchAllActionArgs
+    ///             new Cloudflare.Modules.EmailRouting.Inputs.CatchAllActionArgs
     ///             {
     ///                 Type = "forward",
     ///                 Value = new[]
@@ -41,7 +41,7 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         Matchers = new[]
     ///         {
-    ///             new Cloudflare.Inputs.EmailRoutingCatchAllMatcherArgs
+    ///             new Cloudflare.Modules.EmailRouting.Inputs.CatchAllMatcherArgs
     ///             {
     ///                 Type = "all",
     ///             },
@@ -61,6 +61,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll has been deprecated in favor of cloudflare:emailRouting/catchAll:CatchAll")]
     [CloudflareResourceType("cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll")]
     public partial class EmailRoutingCatchAll : global::Pulumi.CustomResource
     {

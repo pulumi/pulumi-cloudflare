@@ -216,8 +216,13 @@ class _DnsZoneTransfersPeerState:
         pulumi.set(self, "tsig_id", value)
 
 
+warnings.warn("""cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer has been deprecated in favor of cloudflare:dnsZoneTransfers/peer:Peer""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer")
 class DnsZoneTransfersPeer(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer has been deprecated in favor of cloudflare:dnsZoneTransfers/peer:Peer""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -241,7 +246,7 @@ class DnsZoneTransfersPeer(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_dns_zone_transfers_peer = cloudflare.DnsZoneTransfersPeer("example_dns_zone_transfers_peer",
+        example_dns_zone_transfers_peer = cloudflare.dnszonetransfers.Peer("example_dns_zone_transfers_peer",
             account_id="01a7362d577a6c3019a474fd6f485823",
             name="my-peer-1")
         ```
@@ -279,7 +284,7 @@ class DnsZoneTransfersPeer(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_dns_zone_transfers_peer = cloudflare.DnsZoneTransfersPeer("example_dns_zone_transfers_peer",
+        example_dns_zone_transfers_peer = cloudflare.dnszonetransfers.Peer("example_dns_zone_transfers_peer",
             account_id="01a7362d577a6c3019a474fd6f485823",
             name="my-peer-1")
         ```
@@ -313,6 +318,7 @@ class DnsZoneTransfersPeer(pulumi.CustomResource):
                  port: pulumi.Input[Optional[_builtins.float]] = None,
                  tsig_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""DnsZoneTransfersPeer is deprecated: cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer has been deprecated in favor of cloudflare:dnsZoneTransfers/peer:Peer""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

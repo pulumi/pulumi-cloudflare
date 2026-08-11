@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/dns"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetDnsRecord(ctx, &cloudflare.LookupDnsRecordArgs{
+//			_, err := dns.LookupRecord(ctx, &dns.LookupRecordArgs{
 //				ZoneId:                pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				DnsRecordId:           pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				IncludeShadowMetadata: pulumi.BoolRef(true),
@@ -43,6 +43,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getDnsRecord:getDnsRecord has been deprecated in favor of cloudflare:dns/record:getRecord
 func LookupDnsRecord(ctx *pulumi.Context, args *LookupDnsRecordArgs, opts ...pulumi.InvokeOption) (*LookupDnsRecordResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDnsRecordResult

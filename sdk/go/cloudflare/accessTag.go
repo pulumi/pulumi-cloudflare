@@ -19,14 +19,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustaccess"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustAccessTag(ctx, "example_zero_trust_access_tag", &cloudflare.ZeroTrustAccessTagArgs{
+//			_, err := zerotrustaccess.NewTag(ctx, "example_zero_trust_access_tag", &zerotrustaccess.TagArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:      pulumi.String("engineers"),
 //			})
@@ -68,12 +68,6 @@ func NewAccessTag(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("cloudflare:index/accessTag:AccessTag"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessTag
 	err := ctx.RegisterResource("cloudflare:index/accessTag:AccessTag", name, args, &resource, opts...)

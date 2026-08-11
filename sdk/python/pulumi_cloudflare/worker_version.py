@@ -758,8 +758,13 @@ class _WorkerVersionState:
         pulumi.set(self, "worker_id", value)
 
 
+warnings.warn("""cloudflare:index/workerVersion:WorkerVersion has been deprecated in favor of cloudflare:worker/version:Version""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/workerVersion:WorkerVersion")
 class WorkerVersion(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/workerVersion:WorkerVersion has been deprecated in favor of cloudflare:worker/version:Version""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -795,7 +800,7 @@ class WorkerVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_worker_version = cloudflare.WorkerVersion("example_worker_version",
+        example_worker_version = cloudflare.worker.Version("example_worker_version",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             worker_id="worker_id",
             annotations={
@@ -921,7 +926,7 @@ class WorkerVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_worker_version = cloudflare.WorkerVersion("example_worker_version",
+        example_worker_version = cloudflare.worker.Version("example_worker_version",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             worker_id="worker_id",
             annotations={
@@ -1026,6 +1031,7 @@ class WorkerVersion(pulumi.CustomResource):
                  usage_model: pulumi.Input[Optional[_builtins.str]] = None,
                  worker_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""WorkerVersion is deprecated: cloudflare:index/workerVersion:WorkerVersion has been deprecated in favor of cloudflare:worker/version:Version""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

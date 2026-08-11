@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleStreamKey = new cloudflare.StreamKey("example_stream_key", {accountId: "023e105f4ecef8ad9ca31a8372d0c353"});
+ * const exampleStreamKey = new cloudflare.stream.Key("example_stream_key", {accountId: "023e105f4ecef8ad9ca31a8372d0c353"});
  * ```
  *
  * ## Import
@@ -24,6 +24,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/streamKey:StreamKey example '<account_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/streamKey:StreamKey has been deprecated in favor of cloudflare:stream/key:Key
  */
 export class StreamKey extends pulumi.CustomResource {
     /**
@@ -36,6 +38,7 @@ export class StreamKey extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: StreamKeyState, opts?: pulumi.CustomResourceOptions): StreamKey {
+        pulumi.log.warn("StreamKey is deprecated: cloudflare:index/streamKey:StreamKey has been deprecated in favor of cloudflare:stream/key:Key")
         return new StreamKey(name, <any>state, { ...opts, id: id });
     }
 
@@ -81,8 +84,11 @@ export class StreamKey extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/streamKey:StreamKey has been deprecated in favor of cloudflare:stream/key:Key */
     constructor(name: string, args: StreamKeyArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/streamKey:StreamKey has been deprecated in favor of cloudflare:stream/key:Key */
     constructor(name: string, argsOrState?: StreamKeyArgs | StreamKeyState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("StreamKey is deprecated: cloudflare:index/streamKey:StreamKey has been deprecated in favor of cloudflare:stream/key:Key")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

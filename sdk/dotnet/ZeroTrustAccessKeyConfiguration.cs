@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessKeyConfiguration = new Cloudflare.ZeroTrustAccessKeyConfiguration("example_zero_trust_access_key_configuration", new()
+    ///     var exampleZeroTrustAccessKeyConfiguration = new Cloudflare.Modules.ZeroTrustAccess.ZeroTrustAccessKeyConfiguration("example_zero_trust_access_key_configuration", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         KeyRotationIntervalDays = 30,
@@ -40,6 +40,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration example '&lt;account_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration has been deprecated in favor of cloudflare:zeroTrustAccess/keyConfiguration:KeyConfiguration")]
     [CloudflareResourceType("cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration")]
     public partial class ZeroTrustAccessKeyConfiguration : global::Pulumi.CustomResource
     {

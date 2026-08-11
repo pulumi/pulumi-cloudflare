@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.DlsPrefixBinding;
- * import com.pulumi.cloudflare.DlsPrefixBindingArgs;
+ * import com.pulumi.cloudflare.dlsPrefix.Binding;
+ * import com.pulumi.cloudflare.dlsPrefix.BindingArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleDlsPrefixBinding = new DlsPrefixBinding("exampleDlsPrefixBinding", DlsPrefixBindingArgs.builder()
+ *         var exampleDlsPrefixBinding = new Binding("exampleDlsPrefixBinding", BindingArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .cidr("10.0.1.0/24")
  *             .prefixId("a1b2c3d4-e5f6-7890-abcd-ef1234567890")
@@ -62,7 +62,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/dlsPrefixBinding:DlsPrefixBinding example &#39;&lt;account_id&gt;/&lt;binding_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/dlsPrefixBinding:DlsPrefixBinding has been deprecated in favor of cloudflare:dlsPrefix/binding:Binding
+ * 
  */
+@Deprecated /* cloudflare:index/dlsPrefixBinding:DlsPrefixBinding has been deprecated in favor of cloudflare:dlsPrefix/binding:Binding */
 @ResourceType(type="cloudflare:index/dlsPrefixBinding:DlsPrefixBinding")
 public class DlsPrefixBinding extends com.pulumi.resources.CustomResource {
     /**

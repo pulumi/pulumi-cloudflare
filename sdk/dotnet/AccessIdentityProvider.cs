@@ -25,9 +25,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessIdentityProvider = new Cloudflare.ZeroTrustAccessIdentityProvider("example_zero_trust_access_identity_provider", new()
+    ///     var exampleZeroTrustAccessIdentityProvider = new Cloudflare.Modules.ZeroTrustAccessIdentity.ZeroTrustAccessIdentityProvider("example_zero_trust_access_identity_provider", new()
     ///     {
-    ///         Config = new Cloudflare.Inputs.ZeroTrustAccessIdentityProviderConfigArgs
+    ///         Config = new Cloudflare.Modules.ZeroTrustAccessIdentity.Inputs.ProviderConfigArgs
     ///         {
     ///             Claims = new[]
     ///             {
@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
     ///         Name = "Widget Corps IDP",
     ///         Type = "onetimepin",
     ///         ZoneId = "zone_id",
-    ///         ScimConfig = new Cloudflare.Inputs.ZeroTrustAccessIdentityProviderScimConfigArgs
+    ///         ScimConfig = new Cloudflare.Modules.ZeroTrustAccessIdentity.Inputs.ProviderScimConfigArgs
     ///         {
     ///             Enabled = true,
     ///             IdentityUpdateBehavior = "automatic",
@@ -149,10 +149,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/accessIdentityProvider:AccessIdentityProvider" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

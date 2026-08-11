@@ -178,8 +178,13 @@ class _OriginCloudRegionState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/originCloudRegion:OriginCloudRegion has been deprecated in favor of cloudflare:originCloud/region:Region""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/originCloudRegion:OriginCloudRegion")
 class OriginCloudRegion(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/originCloudRegion:OriginCloudRegion has been deprecated in favor of cloudflare:originCloud/region:Region""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -196,7 +201,7 @@ class OriginCloudRegion(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_origin_cloud_region = cloudflare.OriginCloudRegion("example_origin_cloud_region",
+        example_origin_cloud_region = cloudflare.origincloud.Region("example_origin_cloud_region",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             origin_ip="192.0.2.1",
             region="us-east-1",
@@ -231,7 +236,7 @@ class OriginCloudRegion(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_origin_cloud_region = cloudflare.OriginCloudRegion("example_origin_cloud_region",
+        example_origin_cloud_region = cloudflare.origincloud.Region("example_origin_cloud_region",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             origin_ip="192.0.2.1",
             region="us-east-1",
@@ -265,6 +270,7 @@ class OriginCloudRegion(pulumi.CustomResource):
                  vendor: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""OriginCloudRegion is deprecated: cloudflare:index/originCloudRegion:OriginCloudRegion has been deprecated in favor of cloudflare:originCloud/region:Region""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

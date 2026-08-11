@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccessRules = cloudflare.getAccessRules({
+ * const exampleAccessRules = cloudflare.access.getRules({
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  *     configuration: {
@@ -32,7 +32,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccessRules:getAccessRules has been deprecated in favor of cloudflare:access/rules:getRules */
 export function getAccessRules(args?: GetAccessRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessRulesResult> {
+    pulumi.log.warn("getAccessRules is deprecated: cloudflare:index/getAccessRules:getAccessRules has been deprecated in favor of cloudflare:access/rules:getRules")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccessRules:getAccessRules", {
@@ -151,7 +153,7 @@ export interface GetAccessRulesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccessRules = cloudflare.getAccessRules({
+ * const exampleAccessRules = cloudflare.access.getRules({
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  *     configuration: {
@@ -165,7 +167,9 @@ export interface GetAccessRulesResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccessRules:getAccessRules has been deprecated in favor of cloudflare:access/rules:getRules */
 export function getAccessRulesOutput(args?: GetAccessRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccessRulesResult> {
+    pulumi.log.warn("getAccessRules is deprecated: cloudflare:index/getAccessRules:getAccessRules has been deprecated in favor of cloudflare:access/rules:getRules")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccessRules:getAccessRules", {

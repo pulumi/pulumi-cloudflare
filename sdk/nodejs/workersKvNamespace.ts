@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersKvNamespace = new cloudflare.WorkersKvNamespace("example_workers_kv_namespace", {
+ * const exampleWorkersKvNamespace = new cloudflare.workerskv.Namespace("example_workers_kv_namespace", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     title: "My Own Namespace",
  * });
@@ -27,6 +27,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example '<account_id>/<namespace_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/workersKvNamespace:WorkersKvNamespace has been deprecated in favor of cloudflare:workersKv/namespace:Namespace
  */
 export class WorkersKvNamespace extends pulumi.CustomResource {
     /**
@@ -39,6 +41,7 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WorkersKvNamespaceState, opts?: pulumi.CustomResourceOptions): WorkersKvNamespace {
+        pulumi.log.warn("WorkersKvNamespace is deprecated: cloudflare:index/workersKvNamespace:WorkersKvNamespace has been deprecated in favor of cloudflare:workersKv/namespace:Namespace")
         return new WorkersKvNamespace(name, <any>state, { ...opts, id: id });
     }
 
@@ -76,8 +79,11 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/workersKvNamespace:WorkersKvNamespace has been deprecated in favor of cloudflare:workersKv/namespace:Namespace */
     constructor(name: string, args: WorkersKvNamespaceArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/workersKvNamespace:WorkersKvNamespace has been deprecated in favor of cloudflare:workersKv/namespace:Namespace */
     constructor(name: string, argsOrState?: WorkersKvNamespaceArgs | WorkersKvNamespaceState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("WorkersKvNamespace is deprecated: cloudflare:index/workersKvNamespace:WorkersKvNamespace has been deprecated in favor of cloudflare:workersKv/namespace:Namespace")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

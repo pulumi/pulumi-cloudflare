@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustaccessaicontrolsmcp"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustAccessAiControlsMcpServer(ctx, &cloudflare.LookupZeroTrustAccessAiControlsMcpServerArgs{
+//			_, err := zerotrustaccessaicontrolsmcp.GetServer(ctx, &zerotrustaccessaicontrolsmcp.GetServerArgs{
 //				AccountId: pulumi.StringRef("a86a8f5c339544d7bdc89926de14fb8c"),
 //				Id:        pulumi.StringRef("my-mcp-server"),
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustAccessAiControlsMcpServer:getZeroTrustAccessAiControlsMcpServer has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/server:getServer
 func LookupZeroTrustAccessAiControlsMcpServer(ctx *pulumi.Context, args *LookupZeroTrustAccessAiControlsMcpServerArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustAccessAiControlsMcpServerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustAccessAiControlsMcpServerResult

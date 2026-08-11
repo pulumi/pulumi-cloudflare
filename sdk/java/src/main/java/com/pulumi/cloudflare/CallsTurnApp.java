@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.CallsTurnApp;
- * import com.pulumi.cloudflare.CallsTurnAppArgs;
+ * import com.pulumi.cloudflare.callsTurn.App;
+ * import com.pulumi.cloudflare.callsTurn.AppArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleCallsTurnApp = new CallsTurnApp("exampleCallsTurnApp", CallsTurnAppArgs.builder()
+ *         var exampleCallsTurnApp = new App("exampleCallsTurnApp", AppArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .name("my-turn-key")
  *             .build());
@@ -59,7 +59,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/callsTurnApp:CallsTurnApp has been deprecated in favor of cloudflare:callsTurn/app:App
+ * 
  */
+@Deprecated /* cloudflare:index/callsTurnApp:CallsTurnApp has been deprecated in favor of cloudflare:callsTurn/app:App */
 @ResourceType(type="cloudflare:index/callsTurnApp:CallsTurnApp")
 public class CallsTurnApp extends com.pulumi.resources.CustomResource {
     /**

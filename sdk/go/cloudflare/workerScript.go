@@ -18,7 +18,7 @@ import (
 // - `Workers Scripts Write`
 // - `Workers Tail Read`
 //
-// > For more direct control over Workers resources, we recommend the beta `Worker`, `WorkerVersion`, and `WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
+// > For more direct control over Workers resources, we recommend the beta `worker.Worker`, `worker.Version`, and `workers.Deployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
 //
 // ## Import
 //
@@ -126,12 +126,6 @@ func NewWorkerScript(ctx *pulumi.Context,
 	if args.ScriptName == nil {
 		return nil, errors.New("invalid value for required argument 'ScriptName'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("cloudflare:index/workerScript:WorkerScript"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkerScript
 	err := ctx.RegisterResource("cloudflare:index/workerScript:WorkerScript", name, args, &resource, opts...)

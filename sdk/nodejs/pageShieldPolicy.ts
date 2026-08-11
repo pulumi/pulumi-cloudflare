@@ -19,6 +19,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/pageShieldPolicy:PageShieldPolicy example '<zone_id>/<policy_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/pageShieldPolicy:PageShieldPolicy has been deprecated in favor of cloudflare:pageShield/policy:Policy
  */
 export class PageShieldPolicy extends pulumi.CustomResource {
     /**
@@ -31,6 +33,7 @@ export class PageShieldPolicy extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: PageShieldPolicyState, opts?: pulumi.CustomResourceOptions): PageShieldPolicy {
+        pulumi.log.warn("PageShieldPolicy is deprecated: cloudflare:index/pageShieldPolicy:PageShieldPolicy has been deprecated in favor of cloudflare:pageShield/policy:Policy")
         return new PageShieldPolicy(name, <any>state, { ...opts, id: id });
     }
 
@@ -81,8 +84,11 @@ export class PageShieldPolicy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/pageShieldPolicy:PageShieldPolicy has been deprecated in favor of cloudflare:pageShield/policy:Policy */
     constructor(name: string, args: PageShieldPolicyArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/pageShieldPolicy:PageShieldPolicy has been deprecated in favor of cloudflare:pageShield/policy:Policy */
     constructor(name: string, argsOrState?: PageShieldPolicyArgs | PageShieldPolicyState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("PageShieldPolicy is deprecated: cloudflare:index/pageShieldPolicy:PageShieldPolicy has been deprecated in favor of cloudflare:pageShield/policy:Policy")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

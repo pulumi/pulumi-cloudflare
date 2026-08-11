@@ -507,8 +507,13 @@ class _ZeroTrustAccessAiControlsMcpServerState:
         pulumi.set(self, "zero_trust_access_ai_controls_mcp_server_id", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/server:Server""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer")
 class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/server:Server""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -538,7 +543,7 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_ai_controls_mcp_server = cloudflare.ZeroTrustAccessAiControlsMcpServer("example_zero_trust_access_ai_controls_mcp_server",
+        example_zero_trust_access_ai_controls_mcp_server = cloudflare.zerotrustaccessaicontrolsmcp.Server("example_zero_trust_access_ai_controls_mcp_server",
             account_id="a86a8f5c339544d7bdc89926de14fb8c",
             zero_trust_access_ai_controls_mcp_server_id="my-mcp-server",
             auth_type="unauthenticated",
@@ -596,7 +601,7 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_ai_controls_mcp_server = cloudflare.ZeroTrustAccessAiControlsMcpServer("example_zero_trust_access_ai_controls_mcp_server",
+        example_zero_trust_access_ai_controls_mcp_server = cloudflare.zerotrustaccessaicontrolsmcp.Server("example_zero_trust_access_ai_controls_mcp_server",
             account_id="a86a8f5c339544d7bdc89926de14fb8c",
             zero_trust_access_ai_controls_mcp_server_id="my-mcp-server",
             auth_type="unauthenticated",
@@ -656,6 +661,7 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
                  updated_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedToolArgsDict']]]]] = None,
                  zero_trust_access_ai_controls_mcp_server_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustAccessAiControlsMcpServer is deprecated: cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/server:Server""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

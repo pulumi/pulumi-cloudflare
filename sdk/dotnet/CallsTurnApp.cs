@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCallsTurnApp = new Cloudflare.CallsTurnApp("example_calls_turn_app", new()
+    ///     var exampleCallsTurnApp = new Cloudflare.Modules.CallsTurn.CallsTurnApp("example_calls_turn_app", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "my-turn-key",
@@ -38,6 +38,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/callsTurnApp:CallsTurnApp has been deprecated in favor of cloudflare:callsTurn/app:App")]
     [CloudflareResourceType("cloudflare:index/callsTurnApp:CallsTurnApp")]
     public partial class CallsTurnApp : global::Pulumi.CustomResource
     {

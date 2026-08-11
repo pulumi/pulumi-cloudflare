@@ -30,9 +30,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.SnippetRules;
- * import com.pulumi.cloudflare.SnippetRulesArgs;
- * import com.pulumi.cloudflare.inputs.SnippetRulesRuleArgs;
+ * import com.pulumi.cloudflare.snippetRules.SnippetRules;
+ * import com.pulumi.cloudflare.snippetRules.SnippetRulesArgs;
+ * import com.pulumi.cloudflare.snippetRules.inputs.SnippetRulesRuleArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -67,7 +67,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/snippetRules:SnippetRules example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/snippetRules:SnippetRules has been deprecated in favor of cloudflare:snippetRules/snippetRules:SnippetRules
+ * 
  */
+@Deprecated /* cloudflare:index/snippetRules:SnippetRules has been deprecated in favor of cloudflare:snippetRules/snippetRules:SnippetRules */
 @ResourceType(type="cloudflare:index/snippetRules:SnippetRules")
 public class SnippetRules extends com.pulumi.resources.CustomResource {
     /**

@@ -22,6 +22,8 @@ __all__ = [
     'get_schema_validation_operation_settings_list_output',
 ]
 
+warnings.warn("""cloudflare:index/getSchemaValidationOperationSettingsList:getSchemaValidationOperationSettingsList has been deprecated in favor of cloudflare:schemaValidationOperationSettings/list:getList""", DeprecationWarning)
+
 @pulumi.output_type
 class GetSchemaValidationOperationSettingsListResult:
     """
@@ -82,9 +84,10 @@ def get_schema_validation_operation_settings_list(max_items: Optional[_builtins.
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_schema_validation_operation_settings_list = cloudflare.get_schema_validation_operation_settings_list(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_schema_validation_operation_settings_list = cloudflare.schemavalidationoperationsettings.get_list(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
     """
+    pulumi.log.warn("""get_schema_validation_operation_settings_list is deprecated: cloudflare:index/getSchemaValidationOperationSettingsList:getSchemaValidationOperationSettingsList has been deprecated in favor of cloudflare:schemaValidationOperationSettings/list:getList""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id
@@ -112,9 +115,10 @@ def get_schema_validation_operation_settings_list_output(max_items: pulumi.Input
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_schema_validation_operation_settings_list = cloudflare.get_schema_validation_operation_settings_list(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_schema_validation_operation_settings_list = cloudflare.schemavalidationoperationsettings.get_list(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
     """
+    pulumi.log.warn("""get_schema_validation_operation_settings_list is deprecated: cloudflare:index/getSchemaValidationOperationSettingsList:getSchemaValidationOperationSettingsList has been deprecated in favor of cloudflare:schemaValidationOperationSettings/list:getList""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id

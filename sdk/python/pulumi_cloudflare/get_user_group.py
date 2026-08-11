@@ -23,6 +23,8 @@ __all__ = [
     'get_user_group_output',
 ]
 
+warnings.warn("""cloudflare:index/getUserGroup:getUserGroup has been deprecated in favor of cloudflare:userGroup/userGroup:getUserGroup""", DeprecationWarning)
+
 @pulumi.output_type
 class GetUserGroupResult:
     """
@@ -149,7 +151,7 @@ def get_user_group(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_user_group = cloudflare.get_user_group(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_user_group = cloudflare.usergroup.get_user_group(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         user_group_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -157,6 +159,7 @@ def get_user_group(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.str user_group_id: User Group identifier tag.
     """
+    pulumi.log.warn("""get_user_group is deprecated: cloudflare:index/getUserGroup:getUserGroup has been deprecated in favor of cloudflare:userGroup/userGroup:getUserGroup""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -190,7 +193,7 @@ def get_user_group_output(account_id: pulumi.Input[Optional[_builtins.str]] = No
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_user_group = cloudflare.get_user_group(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_user_group = cloudflare.usergroup.get_user_group(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         user_group_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -198,6 +201,7 @@ def get_user_group_output(account_id: pulumi.Input[Optional[_builtins.str]] = No
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.str user_group_id: User Group identifier tag.
     """
+    pulumi.log.warn("""get_user_group is deprecated: cloudflare:index/getUserGroup:getUserGroup has been deprecated in favor of cloudflare:userGroup/userGroup:getUserGroup""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

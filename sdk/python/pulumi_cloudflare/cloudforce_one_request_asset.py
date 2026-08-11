@@ -254,8 +254,13 @@ class _CloudforceOneRequestAssetState:
         pulumi.set(self, "source", value)
 
 
+warnings.warn("""cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset has been deprecated in favor of cloudflare:cloudforceOneRequest/asset:Asset""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset")
 class CloudforceOneRequestAsset(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset has been deprecated in favor of cloudflare:cloudforceOneRequest/asset:Asset""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -278,7 +283,7 @@ class CloudforceOneRequestAsset(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_cloudforce_one_request_asset = cloudflare.CloudforceOneRequestAsset("example_cloudforce_one_request_asset",
+        example_cloudforce_one_request_asset = cloudflare.cloudforceonerequest.Asset("example_cloudforce_one_request_asset",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             request_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
             page=0,
@@ -318,7 +323,7 @@ class CloudforceOneRequestAsset(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_cloudforce_one_request_asset = cloudflare.CloudforceOneRequestAsset("example_cloudforce_one_request_asset",
+        example_cloudforce_one_request_asset = cloudflare.cloudforceonerequest.Asset("example_cloudforce_one_request_asset",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             request_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
             page=0,
@@ -353,6 +358,7 @@ class CloudforceOneRequestAsset(pulumi.CustomResource):
                  request_id: pulumi.Input[Optional[_builtins.str]] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""CloudforceOneRequestAsset is deprecated: cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset has been deprecated in favor of cloudflare:cloudforceOneRequest/asset:Asset""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

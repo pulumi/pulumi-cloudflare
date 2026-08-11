@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getOauthClient:getOauthClient has been deprecated in favor of cloudflare:oauth/client:getClient")]
     public static class GetOauthClient
     {
         /// <summary>
@@ -26,7 +27,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOauthClient = Cloudflare.GetOauthClient.Invoke(new()
+        ///     var exampleOauthClient = Cloudflare.Modules.Oauth.GetClient.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         OauthClientId = "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
@@ -53,7 +54,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOauthClient = Cloudflare.GetOauthClient.Invoke(new()
+        ///     var exampleOauthClient = Cloudflare.Modules.Oauth.GetClient.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         OauthClientId = "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
@@ -80,7 +81,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOauthClient = Cloudflare.GetOauthClient.Invoke(new()
+        ///     var exampleOauthClient = Cloudflare.Modules.Oauth.GetClient.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         OauthClientId = "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",

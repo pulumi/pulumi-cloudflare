@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleListItem = new Cloudflare.ListItem("example_list_item", new()
+    ///     var exampleListItem = new Cloudflare.Modules.List.ListItem("example_list_item", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         ListId = "2c0fc9fa937b11eaa1b71c4d701ab86e",
@@ -41,6 +41,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/listItem:ListItem example '&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/listItem:ListItem has been deprecated in favor of cloudflare:list/item:Item")]
     [CloudflareResourceType("cloudflare:index/listItem:ListItem")]
     public partial class ListItem : global::Pulumi.CustomResource
     {

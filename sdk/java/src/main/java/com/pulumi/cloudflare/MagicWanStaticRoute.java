@@ -28,9 +28,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.MagicWanStaticRoute;
- * import com.pulumi.cloudflare.MagicWanStaticRouteArgs;
- * import com.pulumi.cloudflare.inputs.MagicWanStaticRouteScopeArgs;
+ * import com.pulumi.cloudflare.magicWan.StaticRoute;
+ * import com.pulumi.cloudflare.magicWan.StaticRouteArgs;
+ * import com.pulumi.cloudflare.magicWan.inputs.StaticRouteScopeArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -44,13 +44,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleMagicWanStaticRoute = new MagicWanStaticRoute("exampleMagicWanStaticRoute", MagicWanStaticRouteArgs.builder()
+ *         var exampleMagicWanStaticRoute = new StaticRoute("exampleMagicWanStaticRoute", StaticRouteArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .nexthop("203.0.113.1")
  *             .prefix("192.0.2.0/24")
  *             .priority(0)
  *             .description("New route for new prefix 203.0.113.1")
- *             .scope(MagicWanStaticRouteScopeArgs.builder()
+ *             .scope(StaticRouteScopeArgs.builder()
  *                 .coloNames("den01")
  *                 .coloRegions("APAC")
  *                 .build())
@@ -68,7 +68,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute example &#39;&lt;account_id&gt;/&lt;route_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute has been deprecated in favor of cloudflare:magicWan/staticRoute:StaticRoute
+ * 
  */
+@Deprecated /* cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute has been deprecated in favor of cloudflare:magicWan/staticRoute:StaticRoute */
 @ResourceType(type="cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute")
 public class MagicWanStaticRoute extends com.pulumi.resources.CustomResource {
     /**

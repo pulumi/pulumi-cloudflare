@@ -22,6 +22,8 @@ __all__ = [
     'get_page_shield_scripts_list_output',
 ]
 
+warnings.warn("""cloudflare:index/getPageShieldScriptsList:getPageShieldScriptsList has been deprecated in favor of cloudflare:pageShieldScripts/list:getList""", DeprecationWarning)
+
 @pulumi.output_type
 class GetPageShieldScriptsListResult:
     """
@@ -236,7 +238,7 @@ def get_page_shield_scripts_list(direction: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_page_shield_scripts_list = cloudflare.get_page_shield_scripts_list(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_page_shield_scripts_list = cloudflare.pageshieldscripts.get_list(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="asc",
         exclude_urls="blog.cloudflare.com,www.example",
         export="csv",
@@ -262,6 +264,7 @@ def get_page_shield_scripts_list(direction: Optional[_builtins.str] = None,
            Available values: "csv".
     :param _builtins.str hosts: Includes scripts that match one or more URL-encoded hostnames separated by commas.
     """
+    pulumi.log.warn("""get_page_shield_scripts_list is deprecated: cloudflare:index/getPageShieldScriptsList:getPageShieldScriptsList has been deprecated in favor of cloudflare:pageShieldScripts/list:getList""")
     __args__ = dict()
     __args__['direction'] = direction
     __args__['excludeCdnCgi'] = exclude_cdn_cgi
@@ -330,7 +333,7 @@ def get_page_shield_scripts_list_output(direction: pulumi.Input[Optional[Optiona
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_page_shield_scripts_list = cloudflare.get_page_shield_scripts_list(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_page_shield_scripts_list = cloudflare.pageshieldscripts.get_list(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="asc",
         exclude_urls="blog.cloudflare.com,www.example",
         export="csv",
@@ -356,6 +359,7 @@ def get_page_shield_scripts_list_output(direction: pulumi.Input[Optional[Optiona
            Available values: "csv".
     :param _builtins.str hosts: Includes scripts that match one or more URL-encoded hostnames separated by commas.
     """
+    pulumi.log.warn("""get_page_shield_scripts_list is deprecated: cloudflare:index/getPageShieldScriptsList:getPageShieldScriptsList has been deprecated in favor of cloudflare:pageShieldScripts/list:getList""")
     __args__ = dict()
     __args__['direction'] = direction
     __args__['excludeCdnCgi'] = exclude_cdn_cgi

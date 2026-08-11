@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_tunnel_cloudflareds_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustTunnelCloudflareds:getZeroTrustTunnelCloudflareds has been deprecated in favor of cloudflare:zeroTrustTunnel/cloudflareds:getCloudflareds""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustTunnelCloudflaredsResult:
     """
@@ -199,7 +201,7 @@ def get_zero_trust_tunnel_cloudflareds(account_id: Optional[_builtins.str] = Non
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_tunnel_cloudflareds = cloudflare.get_zero_trust_tunnel_cloudflareds(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_tunnel_cloudflareds = cloudflare.zerotrusttunnel.get_cloudflareds(account_id="699d98642c564d2e855e9661899b7252",
         exclude_prefix="vpc1-",
         existed_at="2019-10-12T07%3A20%3A50.52Z",
         include_prefix="vpc1-",
@@ -221,6 +223,7 @@ def get_zero_trust_tunnel_cloudflareds(account_id: Optional[_builtins.str] = Non
            Available values: "inactive", "degraded", "healthy", "down".
     :param _builtins.str uuid: UUID of the tunnel.
     """
+    pulumi.log.warn("""get_zero_trust_tunnel_cloudflareds is deprecated: cloudflare:index/getZeroTrustTunnelCloudflareds:getZeroTrustTunnelCloudflareds has been deprecated in favor of cloudflare:zeroTrustTunnel/cloudflareds:getCloudflareds""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['excludePrefix'] = exclude_prefix
@@ -277,7 +280,7 @@ def get_zero_trust_tunnel_cloudflareds_output(account_id: pulumi.Input[Optional[
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_tunnel_cloudflareds = cloudflare.get_zero_trust_tunnel_cloudflareds(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_tunnel_cloudflareds = cloudflare.zerotrusttunnel.get_cloudflareds(account_id="699d98642c564d2e855e9661899b7252",
         exclude_prefix="vpc1-",
         existed_at="2019-10-12T07%3A20%3A50.52Z",
         include_prefix="vpc1-",
@@ -299,6 +302,7 @@ def get_zero_trust_tunnel_cloudflareds_output(account_id: pulumi.Input[Optional[
            Available values: "inactive", "degraded", "healthy", "down".
     :param _builtins.str uuid: UUID of the tunnel.
     """
+    pulumi.log.warn("""get_zero_trust_tunnel_cloudflareds is deprecated: cloudflare:index/getZeroTrustTunnelCloudflareds:getZeroTrustTunnelCloudflareds has been deprecated in favor of cloudflare:zeroTrustTunnel/cloudflareds:getCloudflareds""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['excludePrefix'] = exclude_prefix

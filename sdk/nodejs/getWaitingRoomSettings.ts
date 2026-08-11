@@ -16,12 +16,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWaitingRoomSettings = cloudflare.getWaitingRoomSettings({
+ * const exampleWaitingRoomSettings = cloudflare.waitingroom.getSettings({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWaitingRoomSettings:getWaitingRoomSettings has been deprecated in favor of cloudflare:waitingRoom/settings:getSettings */
 export function getWaitingRoomSettings(args?: GetWaitingRoomSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetWaitingRoomSettingsResult> {
+    pulumi.log.warn("getWaitingRoomSettings is deprecated: cloudflare:index/getWaitingRoomSettings:getWaitingRoomSettings has been deprecated in favor of cloudflare:waitingRoom/settings:getSettings")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWaitingRoomSettings:getWaitingRoomSettings", {
@@ -70,12 +72,14 @@ export interface GetWaitingRoomSettingsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWaitingRoomSettings = cloudflare.getWaitingRoomSettings({
+ * const exampleWaitingRoomSettings = cloudflare.waitingroom.getSettings({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWaitingRoomSettings:getWaitingRoomSettings has been deprecated in favor of cloudflare:waitingRoom/settings:getSettings */
 export function getWaitingRoomSettingsOutput(args?: GetWaitingRoomSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWaitingRoomSettingsResult> {
+    pulumi.log.warn("getWaitingRoomSettings is deprecated: cloudflare:index/getWaitingRoomSettings:getWaitingRoomSettings has been deprecated in favor of cloudflare:waitingRoom/settings:getSettings")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWaitingRoomSettings:getWaitingRoomSettings", {

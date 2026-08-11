@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustGatewayPolicy = new cloudflare.ZeroTrustGatewayPolicy("example_zero_trust_gateway_policy", {
+ * const exampleZeroTrustGatewayPolicy = new cloudflare.zerotrustgateway.Policy("example_zero_trust_gateway_policy", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     action: "allow",
  *     name: "block bad websites",
@@ -152,6 +152,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy example '<account_id>/<rule_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy has been deprecated in favor of cloudflare:zeroTrustGateway/policy:Policy
  */
 export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
     /**
@@ -164,6 +166,7 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustGatewayPolicyState, opts?: pulumi.CustomResourceOptions): ZeroTrustGatewayPolicy {
+        pulumi.log.warn("ZeroTrustGatewayPolicy is deprecated: cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy has been deprecated in favor of cloudflare:zeroTrustGateway/policy:Policy")
         return new ZeroTrustGatewayPolicy(name, <any>state, { ...opts, id: id });
     }
 
@@ -265,8 +268,11 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy has been deprecated in favor of cloudflare:zeroTrustGateway/policy:Policy */
     constructor(name: string, args: ZeroTrustGatewayPolicyArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy has been deprecated in favor of cloudflare:zeroTrustGateway/policy:Policy */
     constructor(name: string, argsOrState?: ZeroTrustGatewayPolicyArgs | ZeroTrustGatewayPolicyState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustGatewayPolicy is deprecated: cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy has been deprecated in favor of cloudflare:zeroTrustGateway/policy:Policy")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

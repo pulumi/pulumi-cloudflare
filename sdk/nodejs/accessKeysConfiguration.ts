@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessKeyConfiguration = new cloudflare.ZeroTrustAccessKeyConfiguration("example_zero_trust_access_key_configuration", {
+ * const exampleZeroTrustAccessKeyConfiguration = new cloudflare.zerotrustaccess.KeyConfiguration("example_zero_trust_access_key_configuration", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     keyRotationIntervalDays: 30,
  * });
@@ -110,8 +110,6 @@ export class AccessKeysConfiguration extends pulumi.CustomResource {
             resourceInputs["lastKeyRotationAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AccessKeysConfiguration.__pulumiType, name, resourceInputs, opts);
     }
 }

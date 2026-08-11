@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWaitingRoomEvent = new Cloudflare.WaitingRoomEvent("example_waiting_room_event", new()
+    ///     var exampleWaitingRoomEvent = new Cloudflare.Modules.WaitingRoom.WaitingRoomEvent("example_waiting_room_event", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         WaitingRoomId = "699d98642c564d2e855e9661899b7252",
@@ -55,6 +55,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent example '&lt;zone_id&gt;/&lt;waiting_room_id&gt;/&lt;event_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/waitingRoomEvent:WaitingRoomEvent has been deprecated in favor of cloudflare:waitingRoom/event:Event")]
     [CloudflareResourceType("cloudflare:index/waitingRoomEvent:WaitingRoomEvent")]
     public partial class WaitingRoomEvent : global::Pulumi.CustomResource
     {

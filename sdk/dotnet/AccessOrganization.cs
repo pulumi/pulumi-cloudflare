@@ -26,13 +26,13 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustOrganization = new Cloudflare.ZeroTrustOrganization("example_zero_trust_organization", new()
+    ///     var exampleZeroTrustOrganization = new Cloudflare.Modules.ZeroTrust.ZeroTrustOrganization("example_zero_trust_organization", new()
     ///     {
     ///         ZoneId = "zone_id",
     ///         AllowAuthenticateViaWarp = true,
     ///         AuthDomain = "test.cloudflareaccess.com",
     ///         AutoRedirectToIdentity = true,
-    ///         CustomPages = new Cloudflare.Inputs.ZeroTrustOrganizationCustomPagesArgs
+    ///         CustomPages = new Cloudflare.Modules.ZeroTrust.Inputs.OrganizationCustomPagesArgs
     ///         {
     ///             Forbidden = "699d98642c564d2e855e9661899b7252",
     ///             IdentityDenied = "699d98642c564d2e855e9661899b7252",
@@ -43,7 +43,7 @@ namespace Pulumi.Cloudflare
     ///             "example.com",
     ///         },
     ///         IsUiReadOnly = true,
-    ///         LoginDesign = new Cloudflare.Inputs.ZeroTrustOrganizationLoginDesignArgs
+    ///         LoginDesign = new Cloudflare.Modules.ZeroTrust.Inputs.OrganizationLoginDesignArgs
     ///         {
     ///             BackgroundColor = "#c5ed1b",
     ///             FooterText = "This is an example description.",
@@ -51,7 +51,7 @@ namespace Pulumi.Cloudflare
     ///             LogoPath = "https://example.com/logo.png",
     ///             TextColor = "#c5ed1b",
     ///         },
-    ///         MfaConfig = new Cloudflare.Inputs.ZeroTrustOrganizationMfaConfigArgs
+    ///         MfaConfig = new Cloudflare.Modules.ZeroTrust.Inputs.OrganizationMfaConfigArgs
     ///         {
     ///             AllowedAuthenticators = new[]
     ///             {
@@ -64,7 +64,7 @@ namespace Pulumi.Cloudflare
     ///             SessionDuration = "24h",
     ///         },
     ///         MfaRequiredForAllApps = false,
-    ///         MfaSshPivKeyRequirements = new Cloudflare.Inputs.ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs
+    ///         MfaSshPivKeyRequirements = new Cloudflare.Modules.ZeroTrust.Inputs.OrganizationMfaSshPivKeyRequirementsArgs
     ///         {
     ///             PinPolicy = "always",
     ///             RequireFipsDevice = true,
@@ -229,10 +229,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/accessOrganization:AccessOrganization" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

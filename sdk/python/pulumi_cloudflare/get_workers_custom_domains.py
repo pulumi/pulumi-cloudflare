@@ -22,6 +22,8 @@ __all__ = [
     'get_workers_custom_domains_output',
 ]
 
+warnings.warn("""cloudflare:index/getWorkersCustomDomains:getWorkersCustomDomains has been deprecated in favor of cloudflare:workersCustom/domains:getDomains""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWorkersCustomDomainsResult:
     """
@@ -154,7 +156,7 @@ def get_workers_custom_domains(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_custom_domains = cloudflare.get_workers_custom_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_custom_domains = cloudflare.workerscustom.get_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         environment="production",
         hostname="app.example.com",
         service="my-worker",
@@ -171,6 +173,7 @@ def get_workers_custom_domains(account_id: Optional[_builtins.str] = None,
     :param _builtins.str zone_id: ID of the zone containing the domain hostname.
     :param _builtins.str zone_name: Name of the zone containing the domain hostname.
     """
+    pulumi.log.warn("""get_workers_custom_domains is deprecated: cloudflare:index/getWorkersCustomDomains:getWorkersCustomDomains has been deprecated in favor of cloudflare:workersCustom/domains:getDomains""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['environment'] = environment
@@ -211,7 +214,7 @@ def get_workers_custom_domains_output(account_id: pulumi.Input[Optional[Optional
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_custom_domains = cloudflare.get_workers_custom_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_custom_domains = cloudflare.workerscustom.get_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         environment="production",
         hostname="app.example.com",
         service="my-worker",
@@ -228,6 +231,7 @@ def get_workers_custom_domains_output(account_id: pulumi.Input[Optional[Optional
     :param _builtins.str zone_id: ID of the zone containing the domain hostname.
     :param _builtins.str zone_name: Name of the zone containing the domain hostname.
     """
+    pulumi.log.warn("""get_workers_custom_domains is deprecated: cloudflare:index/getWorkersCustomDomains:getWorkersCustomDomains has been deprecated in favor of cloudflare:workersCustom/domains:getDomains""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['environment'] = environment

@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/sso"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewSsoConnector(ctx, "example_sso_connector", &cloudflare.SsoConnectorArgs{
+//			_, err := sso.NewConnector(ctx, "example_sso_connector", &sso.ConnectorArgs{
 //				AccountId:          pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				EmailDomain:        pulumi.String("example.com"),
 //				BeginVerification:  pulumi.Bool(true),
@@ -51,6 +51,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/ssoConnector:SsoConnector example '<account_id>/<sso_connector_id>'
 // ```
+//
+// Deprecated: cloudflare:index/ssoConnector:SsoConnector has been deprecated in favor of cloudflare:sso/connector:Connector
 type SsoConnector struct {
 	pulumi.CustomResourceState
 

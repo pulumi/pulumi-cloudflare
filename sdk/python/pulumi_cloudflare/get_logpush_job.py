@@ -22,6 +22,8 @@ __all__ = [
     'get_logpush_job_output',
 ]
 
+warnings.warn("""cloudflare:index/getLogpushJob:getLogpushJob has been deprecated in favor of cloudflare:logpush/job:getJob""", DeprecationWarning)
+
 @pulumi.output_type
 class GetLogpushJobResult:
     """
@@ -274,7 +276,7 @@ def get_logpush_job(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_logpush_job = cloudflare.get_logpush_job(job_id=1,
+    example_logpush_job = cloudflare.logpush.get_job(job_id=1,
         account_id="account_id",
         zone_id="zone_id")
     ```
@@ -284,6 +286,7 @@ def get_logpush_job(account_id: Optional[_builtins.str] = None,
     :param _builtins.int job_id: Unique id of the job.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_logpush_job is deprecated: cloudflare:index/getLogpushJob:getLogpushJob has been deprecated in favor of cloudflare:logpush/job:getJob""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['jobId'] = job_id
@@ -325,7 +328,7 @@ def get_logpush_job_output(account_id: pulumi.Input[Optional[Optional[_builtins.
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_logpush_job = cloudflare.get_logpush_job(job_id=1,
+    example_logpush_job = cloudflare.logpush.get_job(job_id=1,
         account_id="account_id",
         zone_id="zone_id")
     ```
@@ -335,6 +338,7 @@ def get_logpush_job_output(account_id: pulumi.Input[Optional[Optional[_builtins.
     :param _builtins.int job_id: Unique id of the job.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_logpush_job is deprecated: cloudflare:index/getLogpushJob:getLogpushJob has been deprecated in favor of cloudflare:logpush/job:getJob""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['jobId'] = job_id

@@ -18,14 +18,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSecretsStoreSecret = cloudflare.getSecretsStoreSecret({
+ * const exampleSecretsStoreSecret = cloudflare.secretsstore.getSecret({
  *     accountId: "985e105f4ecef8ad9ca31a8372d0c353",
  *     storeId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     secretId: "3fd85f74b32742f1bff64a85009dda07",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getSecretsStoreSecret:getSecretsStoreSecret has been deprecated in favor of cloudflare:secretsStore/secret:getSecret */
 export function getSecretsStoreSecret(args: GetSecretsStoreSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretsStoreSecretResult> {
+    pulumi.log.warn("getSecretsStoreSecret is deprecated: cloudflare:index/getSecretsStoreSecret:getSecretsStoreSecret has been deprecated in favor of cloudflare:secretsStore/secret:getSecret")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getSecretsStoreSecret:getSecretsStoreSecret", {
         "accountId": args.accountId,
@@ -94,14 +96,16 @@ export interface GetSecretsStoreSecretResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSecretsStoreSecret = cloudflare.getSecretsStoreSecret({
+ * const exampleSecretsStoreSecret = cloudflare.secretsstore.getSecret({
  *     accountId: "985e105f4ecef8ad9ca31a8372d0c353",
  *     storeId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     secretId: "3fd85f74b32742f1bff64a85009dda07",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getSecretsStoreSecret:getSecretsStoreSecret has been deprecated in favor of cloudflare:secretsStore/secret:getSecret */
 export function getSecretsStoreSecretOutput(args: GetSecretsStoreSecretOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecretsStoreSecretResult> {
+    pulumi.log.warn("getSecretsStoreSecret is deprecated: cloudflare:index/getSecretsStoreSecret:getSecretsStoreSecret has been deprecated in favor of cloudflare:secretsStore/secret:getSecret")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getSecretsStoreSecret:getSecretsStoreSecret", {
         "accountId": args.accountId,

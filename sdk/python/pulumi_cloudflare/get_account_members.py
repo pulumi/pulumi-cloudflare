@@ -22,6 +22,8 @@ __all__ = [
     'get_account_members_output',
 ]
 
+warnings.warn("""cloudflare:index/getAccountMembers:getAccountMembers has been deprecated in favor of cloudflare:account/members:getMembers""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAccountMembersResult:
     """
@@ -132,7 +134,7 @@ def get_account_members(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_members = cloudflare.get_account_members(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_account_members = cloudflare.account.get_members(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="desc",
         order="status",
         status="accepted")
@@ -148,6 +150,7 @@ def get_account_members(account_id: Optional[_builtins.str] = None,
     :param _builtins.str status: A member's status in the account.
            Available values: "accepted", "pending", "rejected".
     """
+    pulumi.log.warn("""get_account_members is deprecated: cloudflare:index/getAccountMembers:getAccountMembers has been deprecated in favor of cloudflare:account/members:getMembers""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction
@@ -183,7 +186,7 @@ def get_account_members_output(account_id: pulumi.Input[Optional[Optional[_built
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_members = cloudflare.get_account_members(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_account_members = cloudflare.account.get_members(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="desc",
         order="status",
         status="accepted")
@@ -199,6 +202,7 @@ def get_account_members_output(account_id: pulumi.Input[Optional[Optional[_built
     :param _builtins.str status: A member's status in the account.
            Available values: "accepted", "pending", "rejected".
     """
+    pulumi.log.warn("""get_account_members is deprecated: cloudflare:index/getAccountMembers:getAccountMembers has been deprecated in favor of cloudflare:account/members:getMembers""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction

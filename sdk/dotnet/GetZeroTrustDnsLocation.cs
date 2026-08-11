@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustDnsLocation:getZeroTrustDnsLocation has been deprecated in favor of cloudflare:zeroTrustDns/location:getLocation")]
     public static class GetZeroTrustDnsLocation
     {
         /// <summary>
@@ -28,7 +29,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDnsLocation = Cloudflare.GetZeroTrustDnsLocation.Invoke(new()
+        ///     var exampleZeroTrustDnsLocation = Cloudflare.Modules.ZeroTrustDns.GetLocation.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         LocationId = "ed35569b41ce4d1facfe683550f54086",
@@ -57,7 +58,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDnsLocation = Cloudflare.GetZeroTrustDnsLocation.Invoke(new()
+        ///     var exampleZeroTrustDnsLocation = Cloudflare.Modules.ZeroTrustDns.GetLocation.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         LocationId = "ed35569b41ce4d1facfe683550f54086",
@@ -86,7 +87,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDnsLocation = Cloudflare.GetZeroTrustDnsLocation.Invoke(new()
+        ///     var exampleZeroTrustDnsLocation = Cloudflare.Modules.ZeroTrustDns.GetLocation.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         LocationId = "ed35569b41ce4d1facfe683550f54086",

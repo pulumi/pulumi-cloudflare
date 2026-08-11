@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/spectrum"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetSpectrumApplications(ctx, &cloudflare.LookupSpectrumApplicationsArgs{
+//			_, err := spectrum.LookupApplications(ctx, &spectrum.LookupApplicationsArgs{
 //				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
@@ -41,6 +41,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getSpectrumApplications:getSpectrumApplications has been deprecated in favor of cloudflare:spectrum/applications:getApplications
 func LookupSpectrumApplications(ctx *pulumi.Context, args *LookupSpectrumApplicationsArgs, opts ...pulumi.InvokeOption) (*LookupSpectrumApplicationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSpectrumApplicationsResult

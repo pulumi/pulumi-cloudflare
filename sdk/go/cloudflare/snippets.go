@@ -15,6 +15,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/snippets:Snippets has been deprecated in favor of cloudflare:snippets/snippets:Snippets
 type Snippets struct {
 	pulumi.CustomResourceState
 

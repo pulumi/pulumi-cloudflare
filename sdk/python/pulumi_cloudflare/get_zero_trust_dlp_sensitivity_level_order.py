@@ -21,6 +21,8 @@ __all__ = [
     'get_zero_trust_dlp_sensitivity_level_order_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDlpSensitivityLevelOrder:getZeroTrustDlpSensitivityLevelOrder has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/order:getOrder""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDlpSensitivityLevelOrderResult:
     """
@@ -91,10 +93,11 @@ def get_zero_trust_dlp_sensitivity_level_order(account_id: Optional[_builtins.st
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_sensitivity_level_order = cloudflare.get_zero_trust_dlp_sensitivity_level_order(account_id="account_id",
+    example_zero_trust_dlp_sensitivity_level_order = cloudflare.zerotrustdlpsensitivitylevel.get_order(account_id="account_id",
         sensitivity_group_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_dlp_sensitivity_level_order is deprecated: cloudflare:index/getZeroTrustDlpSensitivityLevelOrder:getZeroTrustDlpSensitivityLevelOrder has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/order:getOrder""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['sensitivityGroupId'] = sensitivity_group_id
@@ -121,10 +124,11 @@ def get_zero_trust_dlp_sensitivity_level_order_output(account_id: pulumi.Input[O
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_sensitivity_level_order = cloudflare.get_zero_trust_dlp_sensitivity_level_order(account_id="account_id",
+    example_zero_trust_dlp_sensitivity_level_order = cloudflare.zerotrustdlpsensitivitylevel.get_order(account_id="account_id",
         sensitivity_group_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_dlp_sensitivity_level_order is deprecated: cloudflare:index/getZeroTrustDlpSensitivityLevelOrder:getZeroTrustDlpSensitivityLevelOrder has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/order:getOrder""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['sensitivityGroupId'] = sensitivity_group_id

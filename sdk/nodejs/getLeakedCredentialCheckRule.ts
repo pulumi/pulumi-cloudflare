@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleLeakedCredentialCheckRule = cloudflare.getLeakedCredentialCheckRule({
+ * const exampleLeakedCredentialCheckRule = cloudflare.leakedcredentialcheck.getRule({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     detectionId: "18a14bafaa8eb1df04ce683ec18c765e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getLeakedCredentialCheckRule:getLeakedCredentialCheckRule has been deprecated in favor of cloudflare:leakedCredentialCheck/rule:getRule */
 export function getLeakedCredentialCheckRule(args: GetLeakedCredentialCheckRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetLeakedCredentialCheckRuleResult> {
+    pulumi.log.warn("getLeakedCredentialCheckRule is deprecated: cloudflare:index/getLeakedCredentialCheckRule:getLeakedCredentialCheckRule has been deprecated in favor of cloudflare:leakedCredentialCheck/rule:getRule")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getLeakedCredentialCheckRule:getLeakedCredentialCheckRule", {
         "detectionId": args.detectionId,
@@ -85,13 +87,15 @@ export interface GetLeakedCredentialCheckRuleResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleLeakedCredentialCheckRule = cloudflare.getLeakedCredentialCheckRule({
+ * const exampleLeakedCredentialCheckRule = cloudflare.leakedcredentialcheck.getRule({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     detectionId: "18a14bafaa8eb1df04ce683ec18c765e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getLeakedCredentialCheckRule:getLeakedCredentialCheckRule has been deprecated in favor of cloudflare:leakedCredentialCheck/rule:getRule */
 export function getLeakedCredentialCheckRuleOutput(args: GetLeakedCredentialCheckRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLeakedCredentialCheckRuleResult> {
+    pulumi.log.warn("getLeakedCredentialCheckRule is deprecated: cloudflare:index/getLeakedCredentialCheckRule:getLeakedCredentialCheckRule has been deprecated in favor of cloudflare:leakedCredentialCheck/rule:getRule")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getLeakedCredentialCheckRule:getLeakedCredentialCheckRule", {
         "detectionId": args.detectionId,

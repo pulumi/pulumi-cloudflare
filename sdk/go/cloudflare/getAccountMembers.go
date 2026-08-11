@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/account"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetAccountMembers(ctx, &cloudflare.LookupAccountMembersArgs{
+//			_, err := account.LookupMembers(ctx, &account.LookupMembersArgs{
 //				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Direction: pulumi.StringRef("desc"),
 //				Order:     pulumi.StringRef("status"),
@@ -45,6 +45,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getAccountMembers:getAccountMembers has been deprecated in favor of cloudflare:account/members:getMembers
 func LookupAccountMembers(ctx *pulumi.Context, args *LookupAccountMembersArgs, opts ...pulumi.InvokeOption) (*LookupAccountMembersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountMembersResult

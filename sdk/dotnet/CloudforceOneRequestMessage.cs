@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCloudforceOneRequestMessage = new Cloudflare.CloudforceOneRequestMessage("example_cloudforce_one_request_message", new()
+    ///     var exampleCloudforceOneRequestMessage = new Cloudflare.Modules.CloudforceOneRequest.CloudforceOneRequestMessage("example_cloudforce_one_request_message", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         RequestId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
@@ -40,6 +40,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example '&lt;account_id&gt;/&lt;request_id&gt;/&lt;page&gt;/&lt;per_page&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage has been deprecated in favor of cloudflare:cloudforceOneRequest/message:Message")]
     [CloudflareResourceType("cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage")]
     public partial class CloudforceOneRequestMessage : global::Pulumi.CustomResource
     {

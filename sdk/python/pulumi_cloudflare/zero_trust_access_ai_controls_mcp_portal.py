@@ -296,8 +296,13 @@ class _ZeroTrustAccessAiControlsMcpPortalState:
         pulumi.set(self, "zero_trust_access_ai_controls_mcp_portal_id", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/portal:Portal""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal")
 class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/portal:Portal""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -323,7 +328,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_ai_controls_mcp_portal = cloudflare.ZeroTrustAccessAiControlsMcpPortal("example_zero_trust_access_ai_controls_mcp_portal",
+        example_zero_trust_access_ai_controls_mcp_portal = cloudflare.zerotrustaccessaicontrolsmcp.Portal("example_zero_trust_access_ai_controls_mcp_portal",
             account_id="a86a8f5c339544d7bdc89926de14fb8c",
             zero_trust_access_ai_controls_mcp_portal_id="my-mcp-portal",
             hostname="exmaple.com",
@@ -381,7 +386,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_ai_controls_mcp_portal = cloudflare.ZeroTrustAccessAiControlsMcpPortal("example_zero_trust_access_ai_controls_mcp_portal",
+        example_zero_trust_access_ai_controls_mcp_portal = cloudflare.zerotrustaccessaicontrolsmcp.Portal("example_zero_trust_access_ai_controls_mcp_portal",
             account_id="a86a8f5c339544d7bdc89926de14fb8c",
             zero_trust_access_ai_controls_mcp_portal_id="my-mcp-portal",
             hostname="exmaple.com",
@@ -439,6 +444,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
                  servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpPortalServerArgs', 'ZeroTrustAccessAiControlsMcpPortalServerArgsDict']]]]] = None,
                  zero_trust_access_ai_controls_mcp_portal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustAccessAiControlsMcpPortal is deprecated: cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/portal:Portal""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

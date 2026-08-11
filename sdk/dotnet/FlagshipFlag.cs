@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleFlagshipFlag = new Cloudflare.FlagshipFlag("example_flagship_flag", new()
+    ///     var exampleFlagshipFlag = new Cloudflare.Modules.Flagship.FlagshipFlag("example_flagship_flag", new()
     ///     {
     ///         AccountId = "account_id",
     ///         AppId = "app_id",
@@ -34,11 +34,11 @@ namespace Pulumi.Cloudflare
     ///         Key = "x",
     ///         Rules = new[]
     ///         {
-    ///             new Cloudflare.Inputs.FlagshipFlagRuleArgs
+    ///             new Cloudflare.Modules.Flagship.Inputs.FlagRuleArgs
     ///             {
     ///                 Conditions = new[]
     ///                 {
-    ///                     new Cloudflare.Inputs.FlagshipFlagRuleConditionArgs
+    ///                     new Cloudflare.Modules.Flagship.Inputs.FlagRuleConditionArgs
     ///                     {
     ///                         Attribute = "x",
     ///                         Operator = "equals",
@@ -47,7 +47,7 @@ namespace Pulumi.Cloudflare
     ///                 },
     ///                 Priority = 1,
     ///                 ServeVariation = "x",
-    ///                 Rollout = new Cloudflare.Inputs.FlagshipFlagRuleRolloutArgs
+    ///                 Rollout = new Cloudflare.Modules.Flagship.Inputs.FlagRuleRolloutArgs
     ///                 {
     ///                     Percentage = 0,
     ///                     Attribute = "x",
@@ -69,6 +69,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/flagshipFlag:FlagshipFlag has been deprecated in favor of cloudflare:flagship/flag:Flag")]
     [CloudflareResourceType("cloudflare:index/flagshipFlag:FlagshipFlag")]
     public partial class FlagshipFlag : global::Pulumi.CustomResource
     {

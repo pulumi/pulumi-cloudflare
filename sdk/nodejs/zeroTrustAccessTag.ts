@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessTag = new cloudflare.ZeroTrustAccessTag("example_zero_trust_access_tag", {
+ * const exampleZeroTrustAccessTag = new cloudflare.zerotrustaccess.Tag("example_zero_trust_access_tag", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "engineers",
  * });
@@ -22,6 +22,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag example '<account_id>/<tag_name>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag has been deprecated in favor of cloudflare:zeroTrustAccess/tag:Tag
  */
 export class ZeroTrustAccessTag extends pulumi.CustomResource {
     /**
@@ -34,6 +36,7 @@ export class ZeroTrustAccessTag extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustAccessTagState, opts?: pulumi.CustomResourceOptions): ZeroTrustAccessTag {
+        pulumi.log.warn("ZeroTrustAccessTag is deprecated: cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag has been deprecated in favor of cloudflare:zeroTrustAccess/tag:Tag")
         return new ZeroTrustAccessTag(name, <any>state, { ...opts, id: id });
     }
 
@@ -67,8 +70,11 @@ export class ZeroTrustAccessTag extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag has been deprecated in favor of cloudflare:zeroTrustAccess/tag:Tag */
     constructor(name: string, args: ZeroTrustAccessTagArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag has been deprecated in favor of cloudflare:zeroTrustAccess/tag:Tag */
     constructor(name: string, argsOrState?: ZeroTrustAccessTagArgs | ZeroTrustAccessTagState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustAccessTag is deprecated: cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag has been deprecated in favor of cloudflare:zeroTrustAccess/tag:Tag")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -6,7 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/** @deprecated cloudflare:index/getZeroTrustDeviceDeploymentGroupsList:getZeroTrustDeviceDeploymentGroupsList has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/list:getList */
 export function getZeroTrustDeviceDeploymentGroupsList(args: GetZeroTrustDeviceDeploymentGroupsListArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDeviceDeploymentGroupsListResult> {
+    pulumi.log.warn("getZeroTrustDeviceDeploymentGroupsList is deprecated: cloudflare:index/getZeroTrustDeviceDeploymentGroupsList:getZeroTrustDeviceDeploymentGroupsList has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/list:getList")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDeviceDeploymentGroupsList:getZeroTrustDeviceDeploymentGroupsList", {
         "accountId": args.accountId,
@@ -39,7 +41,9 @@ export interface GetZeroTrustDeviceDeploymentGroupsListResult {
      */
     readonly results: outputs.GetZeroTrustDeviceDeploymentGroupsListResult[];
 }
+/** @deprecated cloudflare:index/getZeroTrustDeviceDeploymentGroupsList:getZeroTrustDeviceDeploymentGroupsList has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/list:getList */
 export function getZeroTrustDeviceDeploymentGroupsListOutput(args: GetZeroTrustDeviceDeploymentGroupsListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDeviceDeploymentGroupsListResult> {
+    pulumi.log.warn("getZeroTrustDeviceDeploymentGroupsList is deprecated: cloudflare:index/getZeroTrustDeviceDeploymentGroupsList:getZeroTrustDeviceDeploymentGroupsList has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/list:getList")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDeviceDeploymentGroupsList:getZeroTrustDeviceDeploymentGroupsList", {
         "accountId": args.accountId,

@@ -20,13 +20,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDexRules = cloudflare.getZeroTrustDexRules({
+ * const exampleZeroTrustDexRules = cloudflare.zerotrustdex.getRules({
  *     accountId: "01a7362d577a6c3019a474fd6f485823",
  *     name: "name",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDexRules:getZeroTrustDexRules has been deprecated in favor of cloudflare:zeroTrustDex/rules:getRules */
 export function getZeroTrustDexRules(args?: GetZeroTrustDexRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDexRulesResult> {
+    pulumi.log.warn("getZeroTrustDexRules is deprecated: cloudflare:index/getZeroTrustDexRules:getZeroTrustDexRules has been deprecated in favor of cloudflare:zeroTrustDex/rules:getRules")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDexRules:getZeroTrustDexRules", {
@@ -111,13 +113,15 @@ export interface GetZeroTrustDexRulesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDexRules = cloudflare.getZeroTrustDexRules({
+ * const exampleZeroTrustDexRules = cloudflare.zerotrustdex.getRules({
  *     accountId: "01a7362d577a6c3019a474fd6f485823",
  *     name: "name",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDexRules:getZeroTrustDexRules has been deprecated in favor of cloudflare:zeroTrustDex/rules:getRules */
 export function getZeroTrustDexRulesOutput(args?: GetZeroTrustDexRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDexRulesResult> {
+    pulumi.log.warn("getZeroTrustDexRules is deprecated: cloudflare:index/getZeroTrustDexRules:getZeroTrustDexRules has been deprecated in favor of cloudflare:zeroTrustDex/rules:getRules")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDexRules:getZeroTrustDexRules", {

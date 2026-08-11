@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsRecord = new cloudflare.DnsRecord("example_dns_record", {
+ * const exampleDnsRecord = new cloudflare.dns.Record("example_dns_record", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "example.com",
  *     ttl: 3600,
@@ -214,8 +214,6 @@ export class Record extends pulumi.CustomResource {
             resourceInputs["tagsModifiedOn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/record:Record" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Record.__pulumiType, name, resourceInputs, opts);
     }
 }

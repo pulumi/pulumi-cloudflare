@@ -23,6 +23,8 @@ __all__ = [
     'get_zero_trust_list_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustList:getZeroTrustList has been deprecated in favor of cloudflare:zeroTrust/list:getList""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustListResult:
     """
@@ -171,13 +173,14 @@ def get_zero_trust_list(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_list = cloudflare.get_zero_trust_list(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_list = cloudflare.zerotrust.get_list(account_id="699d98642c564d2e855e9661899b7252",
         list_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
 
 
     :param _builtins.str list_id: Identify the API resource with a UUID.
     """
+    pulumi.log.warn("""get_zero_trust_list is deprecated: cloudflare:index/getZeroTrustList:getZeroTrustList has been deprecated in favor of cloudflare:zeroTrust/list:getList""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -208,13 +211,14 @@ def get_zero_trust_list_output(account_id: pulumi.Input[Optional[Optional[_built
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_list = cloudflare.get_zero_trust_list(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_list = cloudflare.zerotrust.get_list(account_id="699d98642c564d2e855e9661899b7252",
         list_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
 
 
     :param _builtins.str list_id: Identify the API resource with a UUID.
     """
+    pulumi.log.warn("""get_zero_trust_list is deprecated: cloudflare:index/getZeroTrustList:getZeroTrustList has been deprecated in favor of cloudflare:zeroTrust/list:getList""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

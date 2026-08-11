@@ -35,8 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.Queue;
- * import com.pulumi.cloudflare.QueueArgs;
+ * import com.pulumi.cloudflare.queue.Queue;
+ * import com.pulumi.cloudflare.queue.QueueArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -66,7 +66,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/queue:Queue example &#39;&lt;account_id&gt;/&lt;queue_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/queue:Queue has been deprecated in favor of cloudflare:queue/queue:Queue
+ * 
  */
+@Deprecated /* cloudflare:index/queue:Queue has been deprecated in favor of cloudflare:queue/queue:Queue */
 @ResourceType(type="cloudflare:index/queue:Queue")
 public class Queue extends com.pulumi.resources.CustomResource {
     /**

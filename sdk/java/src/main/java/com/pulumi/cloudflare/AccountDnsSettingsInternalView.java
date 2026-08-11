@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.AccountDnsSettingsInternalView;
- * import com.pulumi.cloudflare.AccountDnsSettingsInternalViewArgs;
+ * import com.pulumi.cloudflare.accountDnsSettingsInternal.View;
+ * import com.pulumi.cloudflare.accountDnsSettingsInternal.ViewArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleAccountDnsSettingsInternalView = new AccountDnsSettingsInternalView("exampleAccountDnsSettingsInternalView", AccountDnsSettingsInternalViewArgs.builder()
+ *         var exampleAccountDnsSettingsInternalView = new View("exampleAccountDnsSettingsInternalView", ViewArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .name("my view")
  *             .zones("372e67954025e0ba6aaa6d586b9e0b59")
@@ -61,7 +61,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView example &#39;&lt;account_id&gt;/&lt;view_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView has been deprecated in favor of cloudflare:accountDnsSettingsInternal/view:View
+ * 
  */
+@Deprecated /* cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView has been deprecated in favor of cloudflare:accountDnsSettingsInternal/view:View */
 @ResourceType(type="cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView")
 public class AccountDnsSettingsInternalView extends com.pulumi.resources.CustomResource {
     /**

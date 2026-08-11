@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ApiShieldDiscoveryOperation;
- * import com.pulumi.cloudflare.ApiShieldDiscoveryOperationArgs;
+ * import com.pulumi.cloudflare.apiShieldDiscovery.Operation;
+ * import com.pulumi.cloudflare.apiShieldDiscovery.OperationArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleApiShieldDiscoveryOperation = new ApiShieldDiscoveryOperation("exampleApiShieldDiscoveryOperation", ApiShieldDiscoveryOperationArgs.builder()
+ *         var exampleApiShieldDiscoveryOperation = new Operation("exampleApiShieldDiscoveryOperation", OperationArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .operationId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
  *             .state("review")
@@ -59,7 +59,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/apiShieldDiscoveryOperation:ApiShieldDiscoveryOperation has been deprecated in favor of cloudflare:apiShieldDiscovery/operation:Operation
+ * 
  */
+@Deprecated /* cloudflare:index/apiShieldDiscoveryOperation:ApiShieldDiscoveryOperation has been deprecated in favor of cloudflare:apiShieldDiscovery/operation:Operation */
 @ResourceType(type="cloudflare:index/apiShieldDiscoveryOperation:ApiShieldDiscoveryOperation")
 public class ApiShieldDiscoveryOperation extends com.pulumi.resources.CustomResource {
     /**

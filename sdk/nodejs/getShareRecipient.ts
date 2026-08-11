@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleShareRecipient = cloudflare.getShareRecipient({
+ * const exampleShareRecipient = cloudflare.share.getRecipient({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     shareId: "3fd85f74b32742f1bff64a85009dda07",
  *     recipientId: "3fd85f74b32742f1bff64a85009dda07",
@@ -21,7 +21,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getShareRecipient:getShareRecipient has been deprecated in favor of cloudflare:share/recipient:getRecipient */
 export function getShareRecipient(args: GetShareRecipientArgs, opts?: pulumi.InvokeOptions): Promise<GetShareRecipientResult> {
+    pulumi.log.warn("getShareRecipient is deprecated: cloudflare:index/getShareRecipient:getShareRecipient has been deprecated in favor of cloudflare:share/recipient:getRecipient")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getShareRecipient:getShareRecipient", {
         "accountId": args.accountId,
@@ -99,7 +101,7 @@ export interface GetShareRecipientResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleShareRecipient = cloudflare.getShareRecipient({
+ * const exampleShareRecipient = cloudflare.share.getRecipient({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     shareId: "3fd85f74b32742f1bff64a85009dda07",
  *     recipientId: "3fd85f74b32742f1bff64a85009dda07",
@@ -107,7 +109,9 @@ export interface GetShareRecipientResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getShareRecipient:getShareRecipient has been deprecated in favor of cloudflare:share/recipient:getRecipient */
 export function getShareRecipientOutput(args: GetShareRecipientOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetShareRecipientResult> {
+    pulumi.log.warn("getShareRecipient is deprecated: cloudflare:index/getShareRecipient:getShareRecipient has been deprecated in favor of cloudflare:share/recipient:getRecipient")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getShareRecipient:getShareRecipient", {
         "accountId": args.accountId,

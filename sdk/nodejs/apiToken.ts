@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleApiToken = new cloudflare.ApiToken("example_api_token", {
+ * const exampleApiToken = new cloudflare.apitoken.ApiToken("example_api_token", {
  *     name: "workers read-only token",
  *     policies: [{
  *         effect: "allow",
@@ -56,6 +56,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/apiToken:ApiToken example '<token_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/apiToken:ApiToken has been deprecated in favor of cloudflare:apiToken/apiToken:ApiToken
  */
 export class ApiToken extends pulumi.CustomResource {
     /**
@@ -68,6 +70,7 @@ export class ApiToken extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ApiTokenState, opts?: pulumi.CustomResourceOptions): ApiToken {
+        pulumi.log.warn("ApiToken is deprecated: cloudflare:index/apiToken:ApiToken has been deprecated in favor of cloudflare:apiToken/apiToken:ApiToken")
         return new ApiToken(name, <any>state, { ...opts, id: id });
     }
 
@@ -131,8 +134,11 @@ export class ApiToken extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/apiToken:ApiToken has been deprecated in favor of cloudflare:apiToken/apiToken:ApiToken */
     constructor(name: string, args: ApiTokenArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/apiToken:ApiToken has been deprecated in favor of cloudflare:apiToken/apiToken:ApiToken */
     constructor(name: string, argsOrState?: ApiTokenArgs | ApiTokenState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ApiToken is deprecated: cloudflare:index/apiToken:ApiToken has been deprecated in favor of cloudflare:apiToken/apiToken:ApiToken")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

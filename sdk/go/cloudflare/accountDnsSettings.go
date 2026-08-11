@@ -24,29 +24,29 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/account"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAccountDnsSettings(ctx, "example_account_dns_settings", &cloudflare.AccountDnsSettingsArgs{
+//			_, err := account.NewDnsSettings(ctx, "example_account_dns_settings", &account.DnsSettingsArgs{
 //				AccountId:      pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				EnforceDnsOnly: pulumi.Bool(false),
-//				ZoneDefaults: &cloudflare.AccountDnsSettingsZoneDefaultsArgs{
+//				ZoneDefaults: &account.DnsSettingsZoneDefaultsArgs{
 //					FlattenAllCnames: pulumi.Bool(false),
 //					FoundationDns:    pulumi.Bool(false),
-//					InternalDns: &cloudflare.AccountDnsSettingsZoneDefaultsInternalDnsArgs{
+//					InternalDns: &account.DnsSettingsZoneDefaultsInternalDnsArgs{
 //						ReferenceZoneId: pulumi.String("reference_zone_id"),
 //					},
 //					MultiProvider: pulumi.Bool(false),
-//					Nameservers: &cloudflare.AccountDnsSettingsZoneDefaultsNameserversArgs{
+//					Nameservers: &account.DnsSettingsZoneDefaultsNameserversArgs{
 //						Type: pulumi.String("cloudflare.standard"),
 //					},
 //					NsTtl:              pulumi.Float64(86400),
 //					SecondaryOverrides: pulumi.Bool(false),
-//					Soa: &cloudflare.AccountDnsSettingsZoneDefaultsSoaArgs{
+//					Soa: &account.DnsSettingsZoneDefaultsSoaArgs{
 //						Expire:  pulumi.Float64(604800),
 //						MinTtl:  pulumi.Float64(1800),
 //						Mname:   pulumi.String("kristina.ns.cloudflare.com"),
@@ -70,6 +70,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/accountDnsSettings:AccountDnsSettings has been deprecated in favor of cloudflare:account/dnsSettings:DnsSettings
 type AccountDnsSettings struct {
 	pulumi.CustomResourceState
 

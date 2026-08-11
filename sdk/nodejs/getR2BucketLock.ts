@@ -13,13 +13,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleR2BucketLock = cloudflare.getR2BucketLock({
+ * const exampleR2BucketLock = cloudflare.r2bucket.getLock({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getR2BucketLock:getR2BucketLock has been deprecated in favor of cloudflare:r2Bucket/lock:getLock */
 export function getR2BucketLock(args: GetR2BucketLockArgs, opts?: pulumi.InvokeOptions): Promise<GetR2BucketLockResult> {
+    pulumi.log.warn("getR2BucketLock is deprecated: cloudflare:index/getR2BucketLock:getR2BucketLock has been deprecated in favor of cloudflare:r2Bucket/lock:getLock")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getR2BucketLock:getR2BucketLock", {
         "accountId": args.accountId,
@@ -62,13 +64,15 @@ export interface GetR2BucketLockResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleR2BucketLock = cloudflare.getR2BucketLock({
+ * const exampleR2BucketLock = cloudflare.r2bucket.getLock({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getR2BucketLock:getR2BucketLock has been deprecated in favor of cloudflare:r2Bucket/lock:getLock */
 export function getR2BucketLockOutput(args: GetR2BucketLockOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetR2BucketLockResult> {
+    pulumi.log.warn("getR2BucketLock is deprecated: cloudflare:index/getR2BucketLock:getR2BucketLock has been deprecated in favor of cloudflare:r2Bucket/lock:getLock")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getR2BucketLock:getR2BucketLock", {
         "accountId": args.accountId,

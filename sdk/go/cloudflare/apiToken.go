@@ -26,7 +26,7 @@ import (
 //
 //	"encoding/json"
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/apitoken"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -40,24 +40,24 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			_, err = cloudflare.NewApiToken(ctx, "example_api_token", &cloudflare.ApiTokenArgs{
+//			_, err = apitoken.NewApiToken(ctx, "example_api_token", &apitoken.ApiTokenArgs{
 //				Name: pulumi.String("workers read-only token"),
-//				Policies: cloudflare.ApiTokenPolicyArray{
-//					&cloudflare.ApiTokenPolicyArgs{
+//				Policies: apitoken.ApiTokenPolicyArray{
+//					&apitoken.ApiTokenPolicyArgs{
 //						Effect: pulumi.String("allow"),
-//						PermissionGroups: cloudflare.ApiTokenPolicyPermissionGroupArray{
-//							&cloudflare.ApiTokenPolicyPermissionGroupArgs{
+//						PermissionGroups: apitoken.ApiTokenPolicyPermissionGroupArray{
+//							&apitoken.ApiTokenPolicyPermissionGroupArgs{
 //								Id: pulumi.String("1a71c399035b4950a1bd1466bbe4f420"),
 //							},
-//							&cloudflare.ApiTokenPolicyPermissionGroupArgs{
+//							&apitoken.ApiTokenPolicyPermissionGroupArgs{
 //								Id: pulumi.String("8b47d2786a534c08a1f94ee8f9f599ef"),
 //							},
 //						},
 //						Resources: pulumi.String(json0),
 //					},
 //				},
-//				Condition: &cloudflare.ApiTokenConditionArgs{
-//					RequestIp: &cloudflare.ApiTokenConditionRequestIpArgs{
+//				Condition: &apitoken.ApiTokenConditionArgs{
+//					RequestIp: &apitoken.ApiTokenConditionRequestIpArgs{
 //						Ins: pulumi.StringArray{
 //							pulumi.String("123.123.123.0/24"),
 //							pulumi.String("2606:4700::/32"),
@@ -85,6 +85,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/apiToken:ApiToken example '<token_id>'
 // ```
+//
+// Deprecated: cloudflare:index/apiToken:ApiToken has been deprecated in favor of cloudflare:apiToken/apiToken:ApiToken
 type ApiToken struct {
 	pulumi.CustomResourceState
 

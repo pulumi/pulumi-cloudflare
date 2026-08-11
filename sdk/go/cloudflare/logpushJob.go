@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/logpush"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewLogpushJob(ctx, "example_logpush_job", &cloudflare.LogpushJobArgs{
+//			_, err := logpush.NewJob(ctx, "example_logpush_job", &logpush.JobArgs{
 //				DestinationConf:          pulumi.String("s3://mybucket/logs?region=us-west-2"),
 //				ZoneId:                   pulumi.String("zone_id"),
 //				Dataset:                  pulumi.String("gateway_dns"),
@@ -43,7 +43,7 @@ import (
 //				MaxUploadIntervalSeconds: pulumi.Int(30),
 //				MaxUploadRecords:         pulumi.Int(1000),
 //				Name:                     pulumi.String("example.com"),
-//				OutputOptions: &cloudflare.LogpushJobOutputOptionsArgs{
+//				OutputOptions: &logpush.JobOutputOptionsArgs{
 //					BatchPrefix:    pulumi.String(""),
 //					BatchSuffix:    pulumi.String(""),
 //					Cve202144228:   pulumi.Bool(false),
@@ -78,6 +78,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/logpushJob:LogpushJob example '<{accounts|zones}/{account_id|zone_id}>/<job_id>'
 // ```
+//
+// Deprecated: cloudflare:index/logpushJob:LogpushJob has been deprecated in favor of cloudflare:logpush/job:Job
 type LogpushJob struct {
 	pulumi.CustomResourceState
 

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getRegistrarDomains:getRegistrarDomains has been deprecated in favor of cloudflare:registrar/domains:getDomains")]
     public static class GetRegistrarDomains
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleRegistrarDomains = Cloudflare.GetRegistrarDomains.Invoke(new()
+        ///     var exampleRegistrarDomains = Cloudflare.Modules.Registrar.GetDomains.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -44,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleRegistrarDomains = Cloudflare.GetRegistrarDomains.Invoke(new()
+        ///     var exampleRegistrarDomains = Cloudflare.Modules.Registrar.GetDomains.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -66,7 +67,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleRegistrarDomains = Cloudflare.GetRegistrarDomains.Invoke(new()
+        ///     var exampleRegistrarDomains = Cloudflare.Modules.Registrar.GetDomains.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

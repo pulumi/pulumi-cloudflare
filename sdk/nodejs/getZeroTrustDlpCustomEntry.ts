@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpCustomEntry = cloudflare.getZeroTrustDlpCustomEntry({
+ * const exampleZeroTrustDlpCustomEntry = cloudflare.zerotrustdlpcustom.getEntry({
  *     accountId: "account_id",
  *     entryId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpCustomEntry:getZeroTrustDlpCustomEntry has been deprecated in favor of cloudflare:zeroTrustDlpCustom/entry:getEntry */
 export function getZeroTrustDlpCustomEntry(args: GetZeroTrustDlpCustomEntryArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDlpCustomEntryResult> {
+    pulumi.log.warn("getZeroTrustDlpCustomEntry is deprecated: cloudflare:index/getZeroTrustDlpCustomEntry:getZeroTrustDlpCustomEntry has been deprecated in favor of cloudflare:zeroTrustDlpCustom/entry:getEntry")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDlpCustomEntry:getZeroTrustDlpCustomEntry", {
         "accountId": args.accountId,
@@ -92,13 +94,15 @@ export interface GetZeroTrustDlpCustomEntryResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpCustomEntry = cloudflare.getZeroTrustDlpCustomEntry({
+ * const exampleZeroTrustDlpCustomEntry = cloudflare.zerotrustdlpcustom.getEntry({
  *     accountId: "account_id",
  *     entryId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpCustomEntry:getZeroTrustDlpCustomEntry has been deprecated in favor of cloudflare:zeroTrustDlpCustom/entry:getEntry */
 export function getZeroTrustDlpCustomEntryOutput(args: GetZeroTrustDlpCustomEntryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDlpCustomEntryResult> {
+    pulumi.log.warn("getZeroTrustDlpCustomEntry is deprecated: cloudflare:index/getZeroTrustDlpCustomEntry:getZeroTrustDlpCustomEntry has been deprecated in favor of cloudflare:zeroTrustDlpCustom/entry:getEntry")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDlpCustomEntry:getZeroTrustDlpCustomEntry", {
         "accountId": args.accountId,

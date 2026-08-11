@@ -149,8 +149,13 @@ class _ZeroTrustDlpSensitivityLevelState:
         pulumi.set(self, "updated_at", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel")
 class ZeroTrustDlpSensitivityLevel(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -172,7 +177,7 @@ class ZeroTrustDlpSensitivityLevel(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_sensitivity_level = cloudflare.ZeroTrustDlpSensitivityLevel("example_zero_trust_dlp_sensitivity_level",
+        example_zero_trust_dlp_sensitivity_level = cloudflare.zerotrustdlpsensitivitylevel.ZeroTrustDlpSensitivityLevel("example_zero_trust_dlp_sensitivity_level",
             account_id="account_id",
             sensitivity_group_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             name="name",
@@ -207,7 +212,7 @@ class ZeroTrustDlpSensitivityLevel(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_sensitivity_level = cloudflare.ZeroTrustDlpSensitivityLevel("example_zero_trust_dlp_sensitivity_level",
+        example_zero_trust_dlp_sensitivity_level = cloudflare.zerotrustdlpsensitivitylevel.ZeroTrustDlpSensitivityLevel("example_zero_trust_dlp_sensitivity_level",
             account_id="account_id",
             sensitivity_group_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             name="name",
@@ -241,6 +246,7 @@ class ZeroTrustDlpSensitivityLevel(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  sensitivity_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustDlpSensitivityLevel is deprecated: cloudflare:index/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

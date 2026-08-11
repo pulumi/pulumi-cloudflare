@@ -24,12 +24,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDeviceDefaultProfileLocalDomainFallback = new Cloudflare.ZeroTrustDeviceDefaultProfileLocalDomainFallback("example_zero_trust_device_default_profile_local_domain_fallback", new()
+    ///     var exampleZeroTrustDeviceDefaultProfileLocalDomainFallback = new Cloudflare.Modules.ZeroTrustDeviceDefaultProfile.ZeroTrustDeviceDefaultProfileLocalDomainFallback("example_zero_trust_device_default_profile_local_domain_fallback", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Domains = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs
+    ///             new Cloudflare.Modules.ZeroTrustDeviceDefaultProfile.Inputs.LocalDomainFallbackDomainArgs
     ///             {
     ///                 Suffix = "example.com",
     ///                 Description = "Domain bypass for local development",
@@ -50,6 +50,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustDeviceDefaultProfileLocalDomainFallback:ZeroTrustDeviceDefaultProfileLocalDomainFallback example '&lt;account_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustDeviceDefaultProfileLocalDomainFallback:ZeroTrustDeviceDefaultProfileLocalDomainFallback has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/localDomainFallback:LocalDomainFallback")]
     [CloudflareResourceType("cloudflare:index/zeroTrustDeviceDefaultProfileLocalDomainFallback:ZeroTrustDeviceDefaultProfileLocalDomainFallback")]
     public partial class ZeroTrustDeviceDefaultProfileLocalDomainFallback : global::Pulumi.CustomResource
     {

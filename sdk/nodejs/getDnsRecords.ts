@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsRecords = cloudflare.getDnsRecords({
+ * const exampleDnsRecords = cloudflare.dns.getRecords({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     comment: {
  *         absent: "absent",
@@ -55,7 +55,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getDnsRecords:getDnsRecords has been deprecated in favor of cloudflare:dns/records:getRecords */
 export function getDnsRecords(args?: GetDnsRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsRecordsResult> {
+    pulumi.log.warn("getDnsRecords is deprecated: cloudflare:index/getDnsRecords:getDnsRecords has been deprecated in favor of cloudflare:dns/records:getRecords")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getDnsRecords:getDnsRecords", {
@@ -219,7 +221,7 @@ export interface GetDnsRecordsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsRecords = cloudflare.getDnsRecords({
+ * const exampleDnsRecords = cloudflare.dns.getRecords({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     comment: {
  *         absent: "absent",
@@ -256,7 +258,9 @@ export interface GetDnsRecordsResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getDnsRecords:getDnsRecords has been deprecated in favor of cloudflare:dns/records:getRecords */
 export function getDnsRecordsOutput(args?: GetDnsRecordsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsRecordsResult> {
+    pulumi.log.warn("getDnsRecords is deprecated: cloudflare:index/getDnsRecords:getDnsRecords has been deprecated in favor of cloudflare:dns/records:getRecords")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getDnsRecords:getDnsRecords", {

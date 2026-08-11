@@ -124,8 +124,13 @@ class _AiSearchNamespaceState:
         pulumi.set(self, "name", value)
 
 
+warnings.warn("""cloudflare:index/aiSearchNamespace:AiSearchNamespace has been deprecated in favor of cloudflare:aiSearch/namespace:Namespace""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/aiSearchNamespace:AiSearchNamespace")
 class AiSearchNamespace(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/aiSearchNamespace:AiSearchNamespace has been deprecated in favor of cloudflare:aiSearch/namespace:Namespace""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -175,6 +180,7 @@ class AiSearchNamespace(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""AiSearchNamespace is deprecated: cloudflare:index/aiSearchNamespace:AiSearchNamespace has been deprecated in favor of cloudflare:aiSearch/namespace:Namespace""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

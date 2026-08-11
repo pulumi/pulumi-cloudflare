@@ -1344,8 +1344,13 @@ class _ZeroTrustAccessApplicationState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication has been deprecated in favor of cloudflare:zeroTrustAccess/application:Application""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication")
 class ZeroTrustAccessApplication(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication has been deprecated in favor of cloudflare:zeroTrustAccess/application:Application""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -1520,6 +1525,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustAccessApplication is deprecated: cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication has been deprecated in favor of cloudflare:zeroTrustAccess/application:Application""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

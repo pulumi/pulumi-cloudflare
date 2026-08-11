@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountMember = new cloudflare.AccountMember("example_account_member", {
+ * const exampleAccountMember = new cloudflare.account.Member("example_account_member", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     email: "user@example.com",
  *     roles: ["3536bcfad5faccb999b47003c79917fb"],
@@ -32,6 +32,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/accountMember:AccountMember example '<account_id>/<member_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/accountMember:AccountMember has been deprecated in favor of cloudflare:account/member:Member
  */
 export class AccountMember extends pulumi.CustomResource {
     /**
@@ -44,6 +46,7 @@ export class AccountMember extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AccountMemberState, opts?: pulumi.CustomResourceOptions): AccountMember {
+        pulumi.log.warn("AccountMember is deprecated: cloudflare:index/accountMember:AccountMember has been deprecated in favor of cloudflare:account/member:Member")
         return new AccountMember(name, <any>state, { ...opts, id: id });
     }
 
@@ -95,8 +98,11 @@ export class AccountMember extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/accountMember:AccountMember has been deprecated in favor of cloudflare:account/member:Member */
     constructor(name: string, args: AccountMemberArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/accountMember:AccountMember has been deprecated in favor of cloudflare:account/member:Member */
     constructor(name: string, argsOrState?: AccountMemberArgs | AccountMemberState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("AccountMember is deprecated: cloudflare:index/accountMember:AccountMember has been deprecated in favor of cloudflare:account/member:Member")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

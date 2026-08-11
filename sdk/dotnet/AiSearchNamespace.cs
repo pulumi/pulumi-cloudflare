@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/aiSearchNamespace:AiSearchNamespace has been deprecated in favor of cloudflare:aiSearch/namespace:Namespace")]
     [CloudflareResourceType("cloudflare:index/aiSearchNamespace:AiSearchNamespace")]
     public partial class AiSearchNamespace : global::Pulumi.CustomResource
     {

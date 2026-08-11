@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getCustomSsls:getCustomSsls has been deprecated in favor of cloudflare:custom/ssls:getSsls")]
     public static class GetCustomSsls
     {
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomSsls = Cloudflare.GetCustomSsls.Invoke(new()
+        ///     var exampleCustomSsls = Cloudflare.Modules.Custom.GetSsls.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Status = "active",
@@ -59,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomSsls = Cloudflare.GetCustomSsls.Invoke(new()
+        ///     var exampleCustomSsls = Cloudflare.Modules.Custom.GetSsls.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Status = "active",
@@ -89,7 +90,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomSsls = Cloudflare.GetCustomSsls.Invoke(new()
+        ///     var exampleCustomSsls = Cloudflare.Modules.Custom.GetSsls.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Status = "active",

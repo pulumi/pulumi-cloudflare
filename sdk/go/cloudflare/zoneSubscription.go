@@ -24,17 +24,17 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zone"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZoneSubscription(ctx, "example_zone_subscription", &cloudflare.ZoneSubscriptionArgs{
+//			_, err := zone.NewSubscription(ctx, "example_zone_subscription", &zone.SubscriptionArgs{
 //				ZoneId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Frequency: pulumi.String("monthly"),
-//				RatePlan: &cloudflare.ZoneSubscriptionRatePlanArgs{
+//				RatePlan: &zone.SubscriptionRatePlanArgs{
 //					Id:                pulumi.String("free"),
 //					Currency:          pulumi.String("USD"),
 //					ExternallyManaged: pulumi.Bool(false),
@@ -60,6 +60,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zoneSubscription:ZoneSubscription example '<zone_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zoneSubscription:ZoneSubscription has been deprecated in favor of cloudflare:zone/subscription:Subscription
 type ZoneSubscription struct {
 	pulumi.CustomResourceState
 

@@ -23,6 +23,8 @@ __all__ = [
     'get_zero_trust_dex_test_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest has been deprecated in favor of cloudflare:zeroTrustDex/test:getTest""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDexTestResult:
     """
@@ -220,7 +222,7 @@ def get_zero_trust_dex_test(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dex_test = cloudflare.get_zero_trust_dex_test(account_id="01a7362d577a6c3019a474fd6f485823",
+    example_zero_trust_dex_test = cloudflare.zerotrustdex.get_test(account_id="01a7362d577a6c3019a474fd6f485823",
         dex_test_id="372e67954025e0ba6aaa6d586b9e0b59")
     ```
 
@@ -229,6 +231,7 @@ def get_zero_trust_dex_test(account_id: Optional[_builtins.str] = None,
     :param _builtins.str dex_test_id: The unique identifier for the test.
     :param Sequence[Union['GetZeroTrustDexTestTargetPolicyArgs', 'GetZeroTrustDexTestTargetPolicyArgsDict']] target_policies: DEX rules targeted by this test
     """
+    pulumi.log.warn("""get_zero_trust_dex_test is deprecated: cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest has been deprecated in favor of cloudflare:zeroTrustDex/test:getTest""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['dexTestId'] = dex_test_id
@@ -271,7 +274,7 @@ def get_zero_trust_dex_test_output(account_id: pulumi.Input[Optional[Optional[_b
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dex_test = cloudflare.get_zero_trust_dex_test(account_id="01a7362d577a6c3019a474fd6f485823",
+    example_zero_trust_dex_test = cloudflare.zerotrustdex.get_test(account_id="01a7362d577a6c3019a474fd6f485823",
         dex_test_id="372e67954025e0ba6aaa6d586b9e0b59")
     ```
 
@@ -280,6 +283,7 @@ def get_zero_trust_dex_test_output(account_id: pulumi.Input[Optional[Optional[_b
     :param _builtins.str dex_test_id: The unique identifier for the test.
     :param Sequence[Union['GetZeroTrustDexTestTargetPolicyArgs', 'GetZeroTrustDexTestTargetPolicyArgsDict']] target_policies: DEX rules targeted by this test
     """
+    pulumi.log.warn("""get_zero_trust_dex_test is deprecated: cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest has been deprecated in favor of cloudflare:zeroTrustDex/test:getTest""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['dexTestId'] = dex_test_id

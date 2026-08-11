@@ -21,6 +21,8 @@ __all__ = [
     'get_api_shield_schema_validation_settings_output',
 ]
 
+warnings.warn("""cloudflare:index/getApiShieldSchemaValidationSettings:getApiShieldSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldSchema/validationSettings:getValidationSettings""", DeprecationWarning)
+
 @pulumi.output_type
 class GetApiShieldSchemaValidationSettingsResult:
     """
@@ -98,12 +100,13 @@ def get_api_shield_schema_validation_settings(zone_id: Optional[_builtins.str] =
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_api_shield_schema_validation_settings = cloudflare.get_api_shield_schema_validation_settings(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_api_shield_schema_validation_settings = cloudflare.apishieldschema.get_validation_settings(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_api_shield_schema_validation_settings is deprecated: cloudflare:index/getApiShieldSchemaValidationSettings:getApiShieldSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldSchema/validationSettings:getValidationSettings""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -130,12 +133,13 @@ def get_api_shield_schema_validation_settings_output(zone_id: pulumi.Input[Optio
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_api_shield_schema_validation_settings = cloudflare.get_api_shield_schema_validation_settings(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_api_shield_schema_validation_settings = cloudflare.apishieldschema.get_validation_settings(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_api_shield_schema_validation_settings is deprecated: cloudflare:index/getApiShieldSchemaValidationSettings:getApiShieldSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldSchema/validationSettings:getValidationSettings""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

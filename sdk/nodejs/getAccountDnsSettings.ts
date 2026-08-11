@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountDnsSettings = cloudflare.getAccountDnsSettings({
+ * const exampleAccountDnsSettings = cloudflare.account.getDnsSettings({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccountDnsSettings:getAccountDnsSettings has been deprecated in favor of cloudflare:account/dnsSettings:getDnsSettings */
 export function getAccountDnsSettings(args?: GetAccountDnsSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountDnsSettingsResult> {
+    pulumi.log.warn("getAccountDnsSettings is deprecated: cloudflare:index/getAccountDnsSettings:getAccountDnsSettings has been deprecated in favor of cloudflare:account/dnsSettings:getDnsSettings")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountDnsSettings:getAccountDnsSettings", {
@@ -67,12 +69,14 @@ export interface GetAccountDnsSettingsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountDnsSettings = cloudflare.getAccountDnsSettings({
+ * const exampleAccountDnsSettings = cloudflare.account.getDnsSettings({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccountDnsSettings:getAccountDnsSettings has been deprecated in favor of cloudflare:account/dnsSettings:getDnsSettings */
 export function getAccountDnsSettingsOutput(args?: GetAccountDnsSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountDnsSettingsResult> {
+    pulumi.log.warn("getAccountDnsSettings is deprecated: cloudflare:index/getAccountDnsSettings:getAccountDnsSettings has been deprecated in favor of cloudflare:account/dnsSettings:getDnsSettings")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountDnsSettings:getAccountDnsSettings", {

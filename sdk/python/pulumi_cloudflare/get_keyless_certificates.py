@@ -22,6 +22,8 @@ __all__ = [
     'get_keyless_certificates_output',
 ]
 
+warnings.warn("""cloudflare:index/getKeylessCertificates:getKeylessCertificates has been deprecated in favor of cloudflare:keyless/certificates:getCertificates""", DeprecationWarning)
+
 @pulumi.output_type
 class GetKeylessCertificatesResult:
     """
@@ -89,13 +91,14 @@ def get_keyless_certificates(max_items: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_keyless_certificates = cloudflare.get_keyless_certificates(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_keyless_certificates = cloudflare.keyless.get_certificates(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_keyless_certificates is deprecated: cloudflare:index/getKeylessCertificates:getKeylessCertificates has been deprecated in favor of cloudflare:keyless/certificates:getCertificates""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id
@@ -121,13 +124,14 @@ def get_keyless_certificates_output(max_items: pulumi.Input[Optional[Optional[_b
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_keyless_certificates = cloudflare.get_keyless_certificates(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_keyless_certificates = cloudflare.keyless.get_certificates(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_keyless_certificates is deprecated: cloudflare:index/getKeylessCertificates:getKeylessCertificates has been deprecated in favor of cloudflare:keyless/certificates:getCertificates""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id

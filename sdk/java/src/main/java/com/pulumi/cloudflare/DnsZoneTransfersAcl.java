@@ -28,8 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.DnsZoneTransfersAcl;
- * import com.pulumi.cloudflare.DnsZoneTransfersAclArgs;
+ * import com.pulumi.cloudflare.dnsZoneTransfers.Acl;
+ * import com.pulumi.cloudflare.dnsZoneTransfers.AclArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleDnsZoneTransfersAcl = new DnsZoneTransfersAcl("exampleDnsZoneTransfersAcl", DnsZoneTransfersAclArgs.builder()
+ *         var exampleDnsZoneTransfersAcl = new Acl("exampleDnsZoneTransfersAcl", AclArgs.builder()
  *             .accountId("01a7362d577a6c3019a474fd6f485823")
  *             .ipRange("192.0.2.53/28")
  *             .name("my-acl-1")
@@ -60,7 +60,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/dnsZoneTransfersAcl:DnsZoneTransfersAcl example &#39;&lt;account_id&gt;/&lt;acl_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/dnsZoneTransfersAcl:DnsZoneTransfersAcl has been deprecated in favor of cloudflare:dnsZoneTransfers/acl:Acl
+ * 
  */
+@Deprecated /* cloudflare:index/dnsZoneTransfersAcl:DnsZoneTransfersAcl has been deprecated in favor of cloudflare:dnsZoneTransfers/acl:Acl */
 @ResourceType(type="cloudflare:index/dnsZoneTransfersAcl:DnsZoneTransfersAcl")
 public class DnsZoneTransfersAcl extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

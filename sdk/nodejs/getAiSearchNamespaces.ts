@@ -6,7 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/** @deprecated cloudflare:index/getAiSearchNamespaces:getAiSearchNamespaces has been deprecated in favor of cloudflare:aiSearch/namespaces:getNamespaces */
 export function getAiSearchNamespaces(args: GetAiSearchNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetAiSearchNamespacesResult> {
+    pulumi.log.warn("getAiSearchNamespaces is deprecated: cloudflare:index/getAiSearchNamespaces:getAiSearchNamespaces has been deprecated in favor of cloudflare:aiSearch/namespaces:getNamespaces")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAiSearchNamespaces:getAiSearchNamespaces", {
         "accountId": args.accountId,
@@ -48,7 +50,9 @@ export interface GetAiSearchNamespacesResult {
      */
     readonly search?: string;
 }
+/** @deprecated cloudflare:index/getAiSearchNamespaces:getAiSearchNamespaces has been deprecated in favor of cloudflare:aiSearch/namespaces:getNamespaces */
 export function getAiSearchNamespacesOutput(args: GetAiSearchNamespacesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAiSearchNamespacesResult> {
+    pulumi.log.warn("getAiSearchNamespaces is deprecated: cloudflare:index/getAiSearchNamespaces:getAiSearchNamespaces has been deprecated in favor of cloudflare:aiSearch/namespaces:getNamespaces")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAiSearchNamespaces:getAiSearchNamespaces", {
         "accountId": args.accountId,

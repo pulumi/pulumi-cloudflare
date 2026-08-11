@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomHostnames = cloudflare.getCustomHostnames({
+ * const exampleCustomHostnames = cloudflare.custom.getHostnames({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     id: "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
  *     certificateAuthority: "google",
@@ -36,7 +36,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCustomHostnames:getCustomHostnames has been deprecated in favor of cloudflare:custom/hostnames:getHostnames */
 export function getCustomHostnames(args?: GetCustomHostnamesArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomHostnamesResult> {
+    pulumi.log.warn("getCustomHostnames is deprecated: cloudflare:index/getCustomHostnames:getCustomHostnames has been deprecated in favor of cloudflare:custom/hostnames:getHostnames")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCustomHostnames:getCustomHostnames", {
@@ -184,7 +186,7 @@ export interface GetCustomHostnamesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomHostnames = cloudflare.getCustomHostnames({
+ * const exampleCustomHostnames = cloudflare.custom.getHostnames({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     id: "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
  *     certificateAuthority: "google",
@@ -202,7 +204,9 @@ export interface GetCustomHostnamesResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCustomHostnames:getCustomHostnames has been deprecated in favor of cloudflare:custom/hostnames:getHostnames */
 export function getCustomHostnamesOutput(args?: GetCustomHostnamesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomHostnamesResult> {
+    pulumi.log.warn("getCustomHostnames is deprecated: cloudflare:index/getCustomHostnames:getCustomHostnames has been deprecated in favor of cloudflare:custom/hostnames:getHostnames")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCustomHostnames:getCustomHostnames", {

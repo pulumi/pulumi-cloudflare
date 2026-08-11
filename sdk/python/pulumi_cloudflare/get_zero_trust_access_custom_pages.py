@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_access_custom_pages_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustAccessCustomPages:getZeroTrustAccessCustomPages has been deprecated in favor of cloudflare:zeroTrustAccessCustom/pages:getPages""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustAccessCustomPagesResult:
     """
@@ -89,13 +91,14 @@ def get_zero_trust_access_custom_pages(account_id: Optional[_builtins.str] = Non
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_custom_pages = cloudflare.get_zero_trust_access_custom_pages(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_zero_trust_access_custom_pages = cloudflare.zerotrustaccesscustom.get_pages(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_access_custom_pages is deprecated: cloudflare:index/getZeroTrustAccessCustomPages:getZeroTrustAccessCustomPages has been deprecated in favor of cloudflare:zeroTrustAccessCustom/pages:getPages""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -121,13 +124,14 @@ def get_zero_trust_access_custom_pages_output(account_id: pulumi.Input[Optional[
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_custom_pages = cloudflare.get_zero_trust_access_custom_pages(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_zero_trust_access_custom_pages = cloudflare.zerotrustaccesscustom.get_pages(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_access_custom_pages is deprecated: cloudflare:index/getZeroTrustAccessCustomPages:getZeroTrustAccessCustomPages has been deprecated in favor of cloudflare:zeroTrustAccessCustom/pages:getPages""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

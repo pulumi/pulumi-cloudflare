@@ -19,12 +19,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountRoles = cloudflare.getAccountRoles({
+ * const exampleAccountRoles = cloudflare.account.getRoles({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccountRoles:getAccountRoles has been deprecated in favor of cloudflare:account/roles:getRoles */
 export function getAccountRoles(args?: GetAccountRolesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountRolesResult> {
+    pulumi.log.warn("getAccountRoles is deprecated: cloudflare:index/getAccountRoles:getAccountRoles has been deprecated in favor of cloudflare:account/roles:getRoles")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountRoles:getAccountRoles", {
@@ -77,12 +79,14 @@ export interface GetAccountRolesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountRoles = cloudflare.getAccountRoles({
+ * const exampleAccountRoles = cloudflare.account.getRoles({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccountRoles:getAccountRoles has been deprecated in favor of cloudflare:account/roles:getRoles */
 export function getAccountRolesOutput(args?: GetAccountRolesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountRolesResult> {
+    pulumi.log.warn("getAccountRoles is deprecated: cloudflare:index/getAccountRoles:getAccountRoles has been deprecated in favor of cloudflare:account/roles:getRoles")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountRoles:getAccountRoles", {

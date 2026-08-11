@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustDexRule:getZeroTrustDexRule has been deprecated in favor of cloudflare:zeroTrustDex/rule:getRule")]
     public static class GetZeroTrustDexRule
     {
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDexRule = Cloudflare.GetZeroTrustDexRule.Invoke(new()
+        ///     var exampleZeroTrustDexRule = Cloudflare.Modules.ZeroTrustDex.GetRule.Invoke(new()
         ///     {
         ///         AccountId = "01a7362d577a6c3019a474fd6f485823",
         ///         RuleId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
@@ -59,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDexRule = Cloudflare.GetZeroTrustDexRule.Invoke(new()
+        ///     var exampleZeroTrustDexRule = Cloudflare.Modules.ZeroTrustDex.GetRule.Invoke(new()
         ///     {
         ///         AccountId = "01a7362d577a6c3019a474fd6f485823",
         ///         RuleId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
@@ -89,7 +90,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDexRule = Cloudflare.GetZeroTrustDexRule.Invoke(new()
+        ///     var exampleZeroTrustDexRule = Cloudflare.Modules.ZeroTrustDex.GetRule.Invoke(new()
         ///     {
         ///         AccountId = "01a7362d577a6c3019a474fd6f485823",
         ///         RuleId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",

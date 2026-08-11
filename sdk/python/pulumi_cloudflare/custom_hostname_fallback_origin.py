@@ -162,8 +162,13 @@ class _CustomHostnameFallbackOriginState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin has been deprecated in favor of cloudflare:customHostname/fallbackOrigin:FallbackOrigin""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin")
 class CustomHostnameFallbackOrigin(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin has been deprecated in favor of cloudflare:customHostname/fallbackOrigin:FallbackOrigin""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -183,7 +188,7 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_custom_hostname_fallback_origin = cloudflare.CustomHostnameFallbackOrigin("example_custom_hostname_fallback_origin",
+        example_custom_hostname_fallback_origin = cloudflare.customhostname.FallbackOrigin("example_custom_hostname_fallback_origin",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             origin="fallback.example.com")
         ```
@@ -218,7 +223,7 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_custom_hostname_fallback_origin = cloudflare.CustomHostnameFallbackOrigin("example_custom_hostname_fallback_origin",
+        example_custom_hostname_fallback_origin = cloudflare.customhostname.FallbackOrigin("example_custom_hostname_fallback_origin",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             origin="fallback.example.com")
         ```
@@ -248,6 +253,7 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
                  origin: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""CustomHostnameFallbackOrigin is deprecated: cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin has been deprecated in favor of cloudflare:customHostname/fallbackOrigin:FallbackOrigin""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

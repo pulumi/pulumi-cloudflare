@@ -23,6 +23,8 @@ __all__ = [
     'get_connectivity_directory_service_output',
 ]
 
+warnings.warn("""cloudflare:index/getConnectivityDirectoryService:getConnectivityDirectoryService has been deprecated in favor of cloudflare:connectivityDirectory/service:getService""", DeprecationWarning)
+
 @pulumi.output_type
 class GetConnectivityDirectoryServiceResult:
     """
@@ -185,10 +187,11 @@ def get_connectivity_directory_service(account_id: Optional[_builtins.str] = Non
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_connectivity_directory_service = cloudflare.get_connectivity_directory_service(account_id="account_id",
+    example_connectivity_directory_service = cloudflare.connectivitydirectory.get_service(account_id="account_id",
         service_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
     """
+    pulumi.log.warn("""get_connectivity_directory_service is deprecated: cloudflare:index/getConnectivityDirectoryService:getConnectivityDirectoryService has been deprecated in favor of cloudflare:connectivityDirectory/service:getService""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -222,10 +225,11 @@ def get_connectivity_directory_service_output(account_id: pulumi.Input[Optional[
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_connectivity_directory_service = cloudflare.get_connectivity_directory_service(account_id="account_id",
+    example_connectivity_directory_service = cloudflare.connectivitydirectory.get_service(account_id="account_id",
         service_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
     """
+    pulumi.log.warn("""get_connectivity_directory_service is deprecated: cloudflare:index/getConnectivityDirectoryService:getConnectivityDirectoryService has been deprecated in favor of cloudflare:connectivityDirectory/service:getService""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

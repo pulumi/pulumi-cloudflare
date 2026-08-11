@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWeb3Hostname = new cloudflare.Web3Hostname("example_web3_hostname", {
+ * const exampleWeb3Hostname = new cloudflare.web3.Hostname("example_web3_hostname", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "gateway.example.com",
  *     target: "ipfs",
@@ -30,6 +30,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/web3Hostname:Web3Hostname example '<zone_id>/<identifier>'
  * ```
+ *
+ * @deprecated cloudflare:index/web3Hostname:Web3Hostname has been deprecated in favor of cloudflare:web3/hostname:Hostname
  */
 export class Web3Hostname extends pulumi.CustomResource {
     /**
@@ -42,6 +44,7 @@ export class Web3Hostname extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: Web3HostnameState, opts?: pulumi.CustomResourceOptions): Web3Hostname {
+        pulumi.log.warn("Web3Hostname is deprecated: cloudflare:index/web3Hostname:Web3Hostname has been deprecated in favor of cloudflare:web3/hostname:Hostname")
         return new Web3Hostname(name, <any>state, { ...opts, id: id });
     }
 
@@ -95,8 +98,11 @@ export class Web3Hostname extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/web3Hostname:Web3Hostname has been deprecated in favor of cloudflare:web3/hostname:Hostname */
     constructor(name: string, args: Web3HostnameArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/web3Hostname:Web3Hostname has been deprecated in favor of cloudflare:web3/hostname:Hostname */
     constructor(name: string, argsOrState?: Web3HostnameArgs | Web3HostnameState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("Web3Hostname is deprecated: cloudflare:index/web3Hostname:Web3Hostname has been deprecated in favor of cloudflare:web3/hostname:Hostname")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

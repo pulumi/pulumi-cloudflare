@@ -22,6 +22,8 @@ __all__ = [
     'get_email_security_block_senders_output',
 ]
 
+warnings.warn("""cloudflare:index/getEmailSecurityBlockSenders:getEmailSecurityBlockSenders has been deprecated in favor of cloudflare:emailSecurityBlock/senders:getSenders""", DeprecationWarning)
+
 @pulumi.output_type
 class GetEmailSecurityBlockSendersResult:
     """
@@ -130,7 +132,7 @@ def get_email_security_block_senders(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_email_security_block_senders = cloudflare.get_email_security_block_senders(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_email_security_block_senders = cloudflare.emailsecurityblock.get_senders(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="asc",
         order="pattern",
         pattern="pattern",
@@ -138,6 +140,7 @@ def get_email_security_block_senders(account_id: Optional[_builtins.str] = None,
         search="search")
     ```
     """
+    pulumi.log.warn("""get_email_security_block_senders is deprecated: cloudflare:index/getEmailSecurityBlockSenders:getEmailSecurityBlockSenders has been deprecated in favor of cloudflare:emailSecurityBlock/senders:getSenders""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction
@@ -178,7 +181,7 @@ def get_email_security_block_senders_output(account_id: pulumi.Input[Optional[Op
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_email_security_block_senders = cloudflare.get_email_security_block_senders(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_email_security_block_senders = cloudflare.emailsecurityblock.get_senders(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="asc",
         order="pattern",
         pattern="pattern",
@@ -186,6 +189,7 @@ def get_email_security_block_senders_output(account_id: pulumi.Input[Optional[Op
         search="search")
     ```
     """
+    pulumi.log.warn("""get_email_security_block_senders is deprecated: cloudflare:index/getEmailSecurityBlockSenders:getEmailSecurityBlockSenders has been deprecated in favor of cloudflare:emailSecurityBlock/senders:getSenders""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction

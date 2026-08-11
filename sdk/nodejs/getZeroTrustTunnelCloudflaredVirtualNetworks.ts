@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustTunnelCloudflaredVirtualNetworks = cloudflare.getZeroTrustTunnelCloudflaredVirtualNetworks({
+ * const exampleZeroTrustTunnelCloudflaredVirtualNetworks = cloudflare.zerotrusttunnelcloudflaredvirtual.getNetworks({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     id: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
  *     isDefault: true,
@@ -30,7 +30,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustTunnelCloudflaredVirtualNetworks:getZeroTrustTunnelCloudflaredVirtualNetworks has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflaredVirtual/networks:getNetworks */
 export function getZeroTrustTunnelCloudflaredVirtualNetworks(args?: GetZeroTrustTunnelCloudflaredVirtualNetworksArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustTunnelCloudflaredVirtualNetworksResult> {
+    pulumi.log.warn("getZeroTrustTunnelCloudflaredVirtualNetworks is deprecated: cloudflare:index/getZeroTrustTunnelCloudflaredVirtualNetworks:getZeroTrustTunnelCloudflaredVirtualNetworks has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflaredVirtual/networks:getNetworks")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustTunnelCloudflaredVirtualNetworks:getZeroTrustTunnelCloudflaredVirtualNetworks", {
@@ -129,7 +131,7 @@ export interface GetZeroTrustTunnelCloudflaredVirtualNetworksResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustTunnelCloudflaredVirtualNetworks = cloudflare.getZeroTrustTunnelCloudflaredVirtualNetworks({
+ * const exampleZeroTrustTunnelCloudflaredVirtualNetworks = cloudflare.zerotrusttunnelcloudflaredvirtual.getNetworks({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     id: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
  *     isDefault: true,
@@ -139,7 +141,9 @@ export interface GetZeroTrustTunnelCloudflaredVirtualNetworksResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustTunnelCloudflaredVirtualNetworks:getZeroTrustTunnelCloudflaredVirtualNetworks has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflaredVirtual/networks:getNetworks */
 export function getZeroTrustTunnelCloudflaredVirtualNetworksOutput(args?: GetZeroTrustTunnelCloudflaredVirtualNetworksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustTunnelCloudflaredVirtualNetworksResult> {
+    pulumi.log.warn("getZeroTrustTunnelCloudflaredVirtualNetworks is deprecated: cloudflare:index/getZeroTrustTunnelCloudflaredVirtualNetworks:getZeroTrustTunnelCloudflaredVirtualNetworks has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflaredVirtual/networks:getNetworks")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustTunnelCloudflaredVirtualNetworks:getZeroTrustTunnelCloudflaredVirtualNetworks", {

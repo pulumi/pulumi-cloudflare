@@ -26,10 +26,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.R2BucketCors;
- * import com.pulumi.cloudflare.R2BucketCorsArgs;
- * import com.pulumi.cloudflare.inputs.R2BucketCorsRuleArgs;
- * import com.pulumi.cloudflare.inputs.R2BucketCorsRuleAllowedArgs;
+ * import com.pulumi.cloudflare.r2Bucket.Cors;
+ * import com.pulumi.cloudflare.r2Bucket.CorsArgs;
+ * import com.pulumi.cloudflare.r2Bucket.inputs.CorsRuleArgs;
+ * import com.pulumi.cloudflare.r2Bucket.inputs.CorsRuleAllowedArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -43,11 +43,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleR2BucketCors = new R2BucketCors("exampleR2BucketCors", R2BucketCorsArgs.builder()
+ *         var exampleR2BucketCors = new Cors("exampleR2BucketCors", CorsArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .bucketName("example-bucket")
- *             .rules(R2BucketCorsRuleArgs.builder()
- *                 .allowed(R2BucketCorsRuleAllowedArgs.builder()
+ *             .rules(CorsRuleArgs.builder()
+ *                 .allowed(CorsRuleAllowedArgs.builder()
  *                     .methods("GET")
  *                     .origins("http://localhost:3000")
  *                     .headers("x-requested-by")
@@ -67,7 +67,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/r2BucketCors:R2BucketCors has been deprecated in favor of cloudflare:r2Bucket/cors:Cors
+ * 
  */
+@Deprecated /* cloudflare:index/r2BucketCors:R2BucketCors has been deprecated in favor of cloudflare:r2Bucket/cors:Cors */
 @ResourceType(type="cloudflare:index/r2BucketCors:R2BucketCors")
 public class R2BucketCors extends com.pulumi.resources.CustomResource {
     /**

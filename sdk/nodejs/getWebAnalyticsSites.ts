@@ -17,13 +17,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWebAnalyticsSites = cloudflare.getWebAnalyticsSites({
+ * const exampleWebAnalyticsSites = cloudflare.webanalytics.getSites({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     orderBy: "host",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWebAnalyticsSites:getWebAnalyticsSites has been deprecated in favor of cloudflare:webAnalytics/sites:getSites */
 export function getWebAnalyticsSites(args?: GetWebAnalyticsSitesArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAnalyticsSitesResult> {
+    pulumi.log.warn("getWebAnalyticsSites is deprecated: cloudflare:index/getWebAnalyticsSites:getWebAnalyticsSites has been deprecated in favor of cloudflare:webAnalytics/sites:getSites")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWebAnalyticsSites:getWebAnalyticsSites", {
@@ -85,13 +87,15 @@ export interface GetWebAnalyticsSitesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWebAnalyticsSites = cloudflare.getWebAnalyticsSites({
+ * const exampleWebAnalyticsSites = cloudflare.webanalytics.getSites({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     orderBy: "host",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWebAnalyticsSites:getWebAnalyticsSites has been deprecated in favor of cloudflare:webAnalytics/sites:getSites */
 export function getWebAnalyticsSitesOutput(args?: GetWebAnalyticsSitesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWebAnalyticsSitesResult> {
+    pulumi.log.warn("getWebAnalyticsSites is deprecated: cloudflare:index/getWebAnalyticsSites:getWebAnalyticsSites has been deprecated in favor of cloudflare:webAnalytics/sites:getSites")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWebAnalyticsSites:getWebAnalyticsSites", {

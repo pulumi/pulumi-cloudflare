@@ -25,14 +25,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/dlsprefix"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewDlsPrefixBinding(ctx, "example_dls_prefix_binding", &cloudflare.DlsPrefixBindingArgs{
+//			_, err := dlsprefix.NewBinding(ctx, "example_dls_prefix_binding", &dlsprefix.BindingArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Cidr:      pulumi.String("10.0.1.0/24"),
 //				PrefixId:  pulumi.String("a1b2c3d4-e5f6-7890-abcd-ef1234567890"),
@@ -52,6 +52,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/dlsPrefixBinding:DlsPrefixBinding example '<account_id>/<binding_id>'
 // ```
+//
+// Deprecated: cloudflare:index/dlsPrefixBinding:DlsPrefixBinding has been deprecated in favor of cloudflare:dlsPrefix/binding:Binding
 type DlsPrefixBinding struct {
 	pulumi.CustomResourceState
 

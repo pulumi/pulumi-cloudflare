@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_dex_rule_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDexRule:getZeroTrustDexRule has been deprecated in favor of cloudflare:zeroTrustDex/rule:getRule""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDexRuleResult:
     """
@@ -145,7 +147,7 @@ def get_zero_trust_dex_rule(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dex_rule = cloudflare.get_zero_trust_dex_rule(account_id="01a7362d577a6c3019a474fd6f485823",
+    example_zero_trust_dex_rule = cloudflare.zerotrustdex.get_rule(account_id="01a7362d577a6c3019a474fd6f485823",
         rule_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
 
@@ -153,6 +155,7 @@ def get_zero_trust_dex_rule(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Unique identifier linked to an account.
     :param _builtins.str rule_id: API Resource UUID tag.
     """
+    pulumi.log.warn("""get_zero_trust_dex_rule is deprecated: cloudflare:index/getZeroTrustDexRule:getZeroTrustDexRule has been deprecated in favor of cloudflare:zeroTrustDex/rule:getRule""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['ruleId'] = rule_id
@@ -186,7 +189,7 @@ def get_zero_trust_dex_rule_output(account_id: pulumi.Input[Optional[Optional[_b
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dex_rule = cloudflare.get_zero_trust_dex_rule(account_id="01a7362d577a6c3019a474fd6f485823",
+    example_zero_trust_dex_rule = cloudflare.zerotrustdex.get_rule(account_id="01a7362d577a6c3019a474fd6f485823",
         rule_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
 
@@ -194,6 +197,7 @@ def get_zero_trust_dex_rule_output(account_id: pulumi.Input[Optional[Optional[_b
     :param _builtins.str account_id: Unique identifier linked to an account.
     :param _builtins.str rule_id: API Resource UUID tag.
     """
+    pulumi.log.warn("""get_zero_trust_dex_rule is deprecated: cloudflare:index/getZeroTrustDexRule:getZeroTrustDexRule has been deprecated in favor of cloudflare:zeroTrustDex/rule:getRule""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['ruleId'] = rule_id

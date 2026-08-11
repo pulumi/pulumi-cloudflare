@@ -13,13 +13,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleR2BucketSippy = cloudflare.getR2BucketSippy({
+ * const exampleR2BucketSippy = cloudflare.r2bucket.getSippy({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getR2BucketSippy:getR2BucketSippy has been deprecated in favor of cloudflare:r2Bucket/sippy:getSippy */
 export function getR2BucketSippy(args: GetR2BucketSippyArgs, opts?: pulumi.InvokeOptions): Promise<GetR2BucketSippyResult> {
+    pulumi.log.warn("getR2BucketSippy is deprecated: cloudflare:index/getR2BucketSippy:getR2BucketSippy has been deprecated in favor of cloudflare:r2Bucket/sippy:getSippy")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getR2BucketSippy:getR2BucketSippy", {
         "accountId": args.accountId,
@@ -73,13 +75,15 @@ export interface GetR2BucketSippyResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleR2BucketSippy = cloudflare.getR2BucketSippy({
+ * const exampleR2BucketSippy = cloudflare.r2bucket.getSippy({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getR2BucketSippy:getR2BucketSippy has been deprecated in favor of cloudflare:r2Bucket/sippy:getSippy */
 export function getR2BucketSippyOutput(args: GetR2BucketSippyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetR2BucketSippyResult> {
+    pulumi.log.warn("getR2BucketSippy is deprecated: cloudflare:index/getR2BucketSippy:getR2BucketSippy has been deprecated in favor of cloudflare:r2Bucket/sippy:getSippy")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getR2BucketSippy:getR2BucketSippy", {
         "accountId": args.accountId,

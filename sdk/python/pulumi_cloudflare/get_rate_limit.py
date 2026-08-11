@@ -22,6 +22,8 @@ __all__ = [
     'get_rate_limit_output',
 ]
 
+warnings.warn("""cloudflare:index/getRateLimit:getRateLimit has been deprecated in favor of cloudflare:rate/limit:getLimit""", DeprecationWarning)
+
 @pulumi.output_type
 class GetRateLimitResult:
     """
@@ -173,7 +175,7 @@ def get_rate_limit(rate_limit_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_rate_limit = cloudflare.get_rate_limit(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_rate_limit = cloudflare.rate.get_limit(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         rate_limit_id="372e67954025e0ba6aaa6d586b9e0b59")
     ```
 
@@ -181,6 +183,7 @@ def get_rate_limit(rate_limit_id: Optional[_builtins.str] = None,
     :param _builtins.str rate_limit_id: Defines the unique identifier of the rate limit.
     :param _builtins.str zone_id: Defines an identifier.
     """
+    pulumi.log.warn("""get_rate_limit is deprecated: cloudflare:index/getRateLimit:getRateLimit has been deprecated in favor of cloudflare:rate/limit:getLimit""")
     __args__ = dict()
     __args__['rateLimitId'] = rate_limit_id
     __args__['zoneId'] = zone_id
@@ -213,7 +216,7 @@ def get_rate_limit_output(rate_limit_id: pulumi.Input[Optional[_builtins.str]] =
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_rate_limit = cloudflare.get_rate_limit(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_rate_limit = cloudflare.rate.get_limit(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         rate_limit_id="372e67954025e0ba6aaa6d586b9e0b59")
     ```
 
@@ -221,6 +224,7 @@ def get_rate_limit_output(rate_limit_id: pulumi.Input[Optional[_builtins.str]] =
     :param _builtins.str rate_limit_id: Defines the unique identifier of the rate limit.
     :param _builtins.str zone_id: Defines an identifier.
     """
+    pulumi.log.warn("""get_rate_limit is deprecated: cloudflare:index/getRateLimit:getRateLimit has been deprecated in favor of cloudflare:rate/limit:getLimit""")
     __args__ = dict()
     __args__['rateLimitId'] = rate_limit_id
     __args__['zoneId'] = zone_id

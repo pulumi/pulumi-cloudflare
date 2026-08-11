@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleEmailRoutingAddress = new cloudflare.EmailRoutingAddress("example_email_routing_address", {
+ * const exampleEmailRoutingAddress = new cloudflare.emailrouting.Address("example_email_routing_address", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     email: "user@example.com",
  * });
@@ -27,6 +27,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/emailRoutingAddress:EmailRoutingAddress example '<account_id>/<destination_address_identifier>'
  * ```
+ *
+ * @deprecated cloudflare:index/emailRoutingAddress:EmailRoutingAddress has been deprecated in favor of cloudflare:emailRouting/address:Address
  */
 export class EmailRoutingAddress extends pulumi.CustomResource {
     /**
@@ -39,6 +41,7 @@ export class EmailRoutingAddress extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: EmailRoutingAddressState, opts?: pulumi.CustomResourceOptions): EmailRoutingAddress {
+        pulumi.log.warn("EmailRoutingAddress is deprecated: cloudflare:index/emailRoutingAddress:EmailRoutingAddress has been deprecated in favor of cloudflare:emailRouting/address:Address")
         return new EmailRoutingAddress(name, <any>state, { ...opts, id: id });
     }
 
@@ -95,8 +98,11 @@ export class EmailRoutingAddress extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/emailRoutingAddress:EmailRoutingAddress has been deprecated in favor of cloudflare:emailRouting/address:Address */
     constructor(name: string, args: EmailRoutingAddressArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/emailRoutingAddress:EmailRoutingAddress has been deprecated in favor of cloudflare:emailRouting/address:Address */
     constructor(name: string, argsOrState?: EmailRoutingAddressArgs | EmailRoutingAddressState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("EmailRoutingAddress is deprecated: cloudflare:index/emailRoutingAddress:EmailRoutingAddress has been deprecated in favor of cloudflare:emailRouting/address:Address")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

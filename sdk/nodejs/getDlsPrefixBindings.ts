@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDlsPrefixBindings = cloudflare.getDlsPrefixBindings({
+ * const exampleDlsPrefixBindings = cloudflare.dlsprefix.getBindings({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getDlsPrefixBindings:getDlsPrefixBindings has been deprecated in favor of cloudflare:dlsPrefix/bindings:getBindings */
 export function getDlsPrefixBindings(args: GetDlsPrefixBindingsArgs, opts?: pulumi.InvokeOptions): Promise<GetDlsPrefixBindingsResult> {
+    pulumi.log.warn("getDlsPrefixBindings is deprecated: cloudflare:index/getDlsPrefixBindings:getDlsPrefixBindings has been deprecated in favor of cloudflare:dlsPrefix/bindings:getBindings")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getDlsPrefixBindings:getDlsPrefixBindings", {
         "accountId": args.accountId,
@@ -74,12 +76,14 @@ export interface GetDlsPrefixBindingsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDlsPrefixBindings = cloudflare.getDlsPrefixBindings({
+ * const exampleDlsPrefixBindings = cloudflare.dlsprefix.getBindings({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getDlsPrefixBindings:getDlsPrefixBindings has been deprecated in favor of cloudflare:dlsPrefix/bindings:getBindings */
 export function getDlsPrefixBindingsOutput(args: GetDlsPrefixBindingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDlsPrefixBindingsResult> {
+    pulumi.log.warn("getDlsPrefixBindings is deprecated: cloudflare:index/getDlsPrefixBindings:getDlsPrefixBindings has been deprecated in favor of cloudflare:dlsPrefix/bindings:getBindings")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getDlsPrefixBindings:getDlsPrefixBindings", {
         "accountId": args.accountId,

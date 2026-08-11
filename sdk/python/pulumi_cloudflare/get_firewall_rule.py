@@ -21,6 +21,8 @@ __all__ = [
     'get_firewall_rule_output',
 ]
 
+warnings.warn("""cloudflare:index/getFirewallRule:getFirewallRule has been deprecated in favor of cloudflare:firewall/rule:getRule""", DeprecationWarning)
+
 @pulumi.output_type
 class GetFirewallRuleResult:
     """
@@ -158,7 +160,7 @@ def get_firewall_rule(rule_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_firewall_rule = cloudflare.get_firewall_rule(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_firewall_rule = cloudflare.firewall.get_rule(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         rule_id="372e67954025e0ba6aaa6d586b9e0b60")
     ```
 
@@ -166,6 +168,7 @@ def get_firewall_rule(rule_id: Optional[_builtins.str] = None,
     :param _builtins.str rule_id: The unique identifier of the firewall rule.
     :param _builtins.str zone_id: Defines an identifier.
     """
+    pulumi.log.warn("""get_firewall_rule is deprecated: cloudflare:index/getFirewallRule:getFirewallRule has been deprecated in favor of cloudflare:firewall/rule:getRule""")
     __args__ = dict()
     __args__['ruleId'] = rule_id
     __args__['zoneId'] = zone_id
@@ -197,7 +200,7 @@ def get_firewall_rule_output(rule_id: pulumi.Input[Optional[Optional[_builtins.s
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_firewall_rule = cloudflare.get_firewall_rule(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_firewall_rule = cloudflare.firewall.get_rule(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         rule_id="372e67954025e0ba6aaa6d586b9e0b60")
     ```
 
@@ -205,6 +208,7 @@ def get_firewall_rule_output(rule_id: pulumi.Input[Optional[Optional[_builtins.s
     :param _builtins.str rule_id: The unique identifier of the firewall rule.
     :param _builtins.str zone_id: Defines an identifier.
     """
+    pulumi.log.warn("""get_firewall_rule is deprecated: cloudflare:index/getFirewallRule:getFirewallRule has been deprecated in favor of cloudflare:firewall/rule:getRule""")
     __args__ = dict()
     __args__['ruleId'] = rule_id
     __args__['zoneId'] = zone_id

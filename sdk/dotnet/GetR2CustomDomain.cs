@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getR2CustomDomain:getR2CustomDomain has been deprecated in favor of cloudflare:r2/customDomain:getCustomDomain")]
     public static class GetR2CustomDomain
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleR2CustomDomain = Cloudflare.GetR2CustomDomain.Invoke(new()
+        ///     var exampleR2CustomDomain = Cloudflare.Modules.R2.GetCustomDomain.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         BucketName = "example-bucket",
@@ -56,7 +57,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleR2CustomDomain = Cloudflare.GetR2CustomDomain.Invoke(new()
+        ///     var exampleR2CustomDomain = Cloudflare.Modules.R2.GetCustomDomain.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         BucketName = "example-bucket",
@@ -85,7 +86,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleR2CustomDomain = Cloudflare.GetR2CustomDomain.Invoke(new()
+        ///     var exampleR2CustomDomain = Cloudflare.Modules.R2.GetCustomDomain.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         BucketName = "example-bucket",

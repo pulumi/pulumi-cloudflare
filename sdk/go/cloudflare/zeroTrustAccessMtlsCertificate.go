@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustaccessmtls"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustAccessMtlsCertificate(ctx, "example_zero_trust_access_mtls_certificate", &cloudflare.ZeroTrustAccessMtlsCertificateArgs{
+//			_, err := zerotrustaccessmtls.NewCertificate(ctx, "example_zero_trust_access_mtls_certificate", &zerotrustaccessmtls.CertificateArgs{
 //				Certificate: pulumi.String("  -----BEGIN CERTIFICATE-----\n  MIIGAjCCA+qgAwIBAgIJAI7kymlF7CWT...N4RI7KKB7nikiuUf8vhULKy5IX10\n  DrUtmu/B\n  -----END CERTIFICATE-----\n"),
 //				Name:        pulumi.String("Allow devs"),
 //				ZoneId:      pulumi.String("zone_id"),
@@ -55,6 +55,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate example '<{accounts|zones}/{account_id|zone_id}>/<certificate_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate has been deprecated in favor of cloudflare:zeroTrustAccessMtls/certificate:Certificate
 type ZeroTrustAccessMtlsCertificate struct {
 	pulumi.CustomResourceState
 

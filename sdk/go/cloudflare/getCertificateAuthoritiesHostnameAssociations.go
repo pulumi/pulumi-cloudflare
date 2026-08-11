@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/certificate"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetCertificateAuthoritiesHostnameAssociations(ctx, &cloudflare.LookupCertificateAuthoritiesHostnameAssociationsArgs{
+//			_, err := certificate.LookupAuthoritiesHostnameAssociations(ctx, &certificate.LookupAuthoritiesHostnameAssociationsArgs{
 //				ZoneId:            pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				MtlsCertificateId: pulumi.StringRef("b2134436-2555-4acf-be5b-26c48136575e"),
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getCertificateAuthoritiesHostnameAssociations:getCertificateAuthoritiesHostnameAssociations has been deprecated in favor of cloudflare:certificate/authoritiesHostnameAssociations:getAuthoritiesHostnameAssociations
 func LookupCertificateAuthoritiesHostnameAssociations(ctx *pulumi.Context, args *LookupCertificateAuthoritiesHostnameAssociationsArgs, opts ...pulumi.InvokeOption) (*LookupCertificateAuthoritiesHostnameAssociationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCertificateAuthoritiesHostnameAssociationsResult

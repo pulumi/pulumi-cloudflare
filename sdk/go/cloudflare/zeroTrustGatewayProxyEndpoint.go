@@ -19,14 +19,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustgatewayproxy"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustGatewayProxyEndpoint(ctx, "example_zero_trust_gateway_proxy_endpoint", &cloudflare.ZeroTrustGatewayProxyEndpointArgs{
+//			_, err := zerotrustgatewayproxy.NewEndpoint(ctx, "example_zero_trust_gateway_proxy_endpoint", &zerotrustgatewayproxy.EndpointArgs{
 //				AccountId: pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				Name:      pulumi.String("Devops team"),
 //				Kind:      pulumi.String("ip"),
@@ -45,6 +45,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint example '<account_id>/<proxy_endpoint_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint has been deprecated in favor of cloudflare:zeroTrustGatewayProxy/endpoint:Endpoint
 type ZeroTrustGatewayProxyEndpoint struct {
 	pulumi.CustomResourceState
 

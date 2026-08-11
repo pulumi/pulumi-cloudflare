@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/d1"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetD1Database(ctx, &cloudflare.LookupD1DatabaseArgs{
+//			_, err := d1.LookupDatabase(ctx, &d1.LookupDatabaseArgs{
 //				AccountId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				DatabaseId: pulumi.StringRef("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 //				Fields: []string{
@@ -45,6 +45,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getD1Database:getD1Database has been deprecated in favor of cloudflare:d1/database:getDatabase
 func LookupD1Database(ctx *pulumi.Context, args *LookupD1DatabaseArgs, opts ...pulumi.InvokeOption) (*LookupD1DatabaseResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupD1DatabaseResult

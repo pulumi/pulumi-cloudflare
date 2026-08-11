@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getOauthClients:getOauthClients has been deprecated in favor of cloudflare:oauth/clients:getClients")]
     public static class GetOauthClients
     {
         /// <summary>
@@ -26,7 +27,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOauthClients = Cloudflare.GetOauthClients.Invoke(new()
+        ///     var exampleOauthClients = Cloudflare.Modules.Oauth.GetClients.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -52,7 +53,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOauthClients = Cloudflare.GetOauthClients.Invoke(new()
+        ///     var exampleOauthClients = Cloudflare.Modules.Oauth.GetClients.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -78,7 +79,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOauthClients = Cloudflare.GetOauthClients.Invoke(new()
+        ///     var exampleOauthClients = Cloudflare.Modules.Oauth.GetClients.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

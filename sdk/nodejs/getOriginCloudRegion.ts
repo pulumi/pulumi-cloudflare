@@ -11,13 +11,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleOriginCloudRegion = cloudflare.getOriginCloudRegion({
+ * const exampleOriginCloudRegion = cloudflare.origincloud.getRegion({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     originIp: "192.0.2.1",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getOriginCloudRegion:getOriginCloudRegion has been deprecated in favor of cloudflare:originCloud/region:getRegion */
 export function getOriginCloudRegion(args: GetOriginCloudRegionArgs, opts?: pulumi.InvokeOptions): Promise<GetOriginCloudRegionResult> {
+    pulumi.log.warn("getOriginCloudRegion is deprecated: cloudflare:index/getOriginCloudRegion:getOriginCloudRegion has been deprecated in favor of cloudflare:originCloud/region:getRegion")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getOriginCloudRegion:getOriginCloudRegion", {
         "originIp": args.originIp,
@@ -70,13 +72,15 @@ export interface GetOriginCloudRegionResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleOriginCloudRegion = cloudflare.getOriginCloudRegion({
+ * const exampleOriginCloudRegion = cloudflare.origincloud.getRegion({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     originIp: "192.0.2.1",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getOriginCloudRegion:getOriginCloudRegion has been deprecated in favor of cloudflare:originCloud/region:getRegion */
 export function getOriginCloudRegionOutput(args: GetOriginCloudRegionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOriginCloudRegionResult> {
+    pulumi.log.warn("getOriginCloudRegion is deprecated: cloudflare:index/getOriginCloudRegion:getOriginCloudRegion has been deprecated in favor of cloudflare:originCloud/region:getRegion")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getOriginCloudRegion:getOriginCloudRegion", {
         "originIp": args.originIp,

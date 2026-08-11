@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.StreamWebhook;
- * import com.pulumi.cloudflare.StreamWebhookArgs;
+ * import com.pulumi.cloudflare.stream.Webhook;
+ * import com.pulumi.cloudflare.stream.WebhookArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleStreamWebhook = new StreamWebhook("exampleStreamWebhook", StreamWebhookArgs.builder()
+ *         var exampleStreamWebhook = new Webhook("exampleStreamWebhook", WebhookArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .notificationUrl("https://example.com")
  *             .build());
@@ -59,7 +59,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/streamWebhook:StreamWebhook has been deprecated in favor of cloudflare:stream/webhook:Webhook
+ * 
  */
+@Deprecated /* cloudflare:index/streamWebhook:StreamWebhook has been deprecated in favor of cloudflare:stream/webhook:Webhook */
 @ResourceType(type="cloudflare:index/streamWebhook:StreamWebhook")
 public class StreamWebhook extends com.pulumi.resources.CustomResource {
     /**

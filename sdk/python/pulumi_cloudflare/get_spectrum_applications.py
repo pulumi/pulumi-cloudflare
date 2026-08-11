@@ -22,6 +22,8 @@ __all__ = [
     'get_spectrum_applications_output',
 ]
 
+warnings.warn("""cloudflare:index/getSpectrumApplications:getSpectrumApplications has been deprecated in favor of cloudflare:spectrum/applications:getApplications""", DeprecationWarning)
+
 @pulumi.output_type
 class GetSpectrumApplicationsResult:
     """
@@ -117,7 +119,7 @@ def get_spectrum_applications(direction: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_spectrum_applications = cloudflare.get_spectrum_applications(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_spectrum_applications = cloudflare.spectrum.get_applications(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
@@ -128,6 +130,7 @@ def get_spectrum_applications(direction: Optional[_builtins.str] = None,
            Available values: "protocol", "app*id", "created*on", "modified_on", "dns".
     :param _builtins.str zone_id: Zone identifier.
     """
+    pulumi.log.warn("""get_spectrum_applications is deprecated: cloudflare:index/getSpectrumApplications:getSpectrumApplications has been deprecated in favor of cloudflare:spectrum/applications:getApplications""")
     __args__ = dict()
     __args__['direction'] = direction
     __args__['maxItems'] = max_items
@@ -159,7 +162,7 @@ def get_spectrum_applications_output(direction: pulumi.Input[Optional[Optional[_
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_spectrum_applications = cloudflare.get_spectrum_applications(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_spectrum_applications = cloudflare.spectrum.get_applications(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
@@ -170,6 +173,7 @@ def get_spectrum_applications_output(direction: pulumi.Input[Optional[Optional[_
            Available values: "protocol", "app*id", "created*on", "modified_on", "dns".
     :param _builtins.str zone_id: Zone identifier.
     """
+    pulumi.log.warn("""get_spectrum_applications is deprecated: cloudflare:index/getSpectrumApplications:getSpectrumApplications has been deprecated in favor of cloudflare:spectrum/applications:getApplications""")
     __args__ = dict()
     __args__['direction'] = direction
     __args__['maxItems'] = max_items

@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsRecord = new cloudflare.DnsRecord("example_dns_record", {
+ * const exampleDnsRecord = new cloudflare.dns.Record("example_dns_record", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "example.com",
  *     ttl: 3600,
@@ -40,6 +40,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/dnsRecord:DnsRecord example '<zone_id>/<dns_record_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/dnsRecord:DnsRecord has been deprecated in favor of cloudflare:dns/record:Record
  */
 export class DnsRecord extends pulumi.CustomResource {
     /**
@@ -52,6 +54,7 @@ export class DnsRecord extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DnsRecordState, opts?: pulumi.CustomResourceOptions): DnsRecord {
+        pulumi.log.warn("DnsRecord is deprecated: cloudflare:index/dnsRecord:DnsRecord has been deprecated in favor of cloudflare:dns/record:Record")
         return new DnsRecord(name, <any>state, { ...opts, id: id });
     }
 
@@ -150,8 +153,11 @@ export class DnsRecord extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/dnsRecord:DnsRecord has been deprecated in favor of cloudflare:dns/record:Record */
     constructor(name: string, args: DnsRecordArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/dnsRecord:DnsRecord has been deprecated in favor of cloudflare:dns/record:Record */
     constructor(name: string, argsOrState?: DnsRecordArgs | DnsRecordState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("DnsRecord is deprecated: cloudflare:index/dnsRecord:DnsRecord has been deprecated in favor of cloudflare:dns/record:Record")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

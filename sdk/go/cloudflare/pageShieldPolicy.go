@@ -26,6 +26,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/pageShieldPolicy:PageShieldPolicy example '<zone_id>/<policy_id>'
 // ```
+//
+// Deprecated: cloudflare:index/pageShieldPolicy:PageShieldPolicy has been deprecated in favor of cloudflare:pageShield/policy:Policy
 type PageShieldPolicy struct {
 	pulumi.CustomResourceState
 

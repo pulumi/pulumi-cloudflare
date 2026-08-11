@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustGatewayProxyEndpoint = new cloudflare.ZeroTrustGatewayProxyEndpoint("example_zero_trust_gateway_proxy_endpoint", {
+ * const exampleZeroTrustGatewayProxyEndpoint = new cloudflare.zerotrustgatewayproxy.Endpoint("example_zero_trust_gateway_proxy_endpoint", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     name: "Devops team",
  *     kind: "ip",
@@ -116,8 +116,6 @@ export class TeamsProxyEndpoint extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(TeamsProxyEndpoint.__pulumiType, name, resourceInputs, opts);
     }
 }

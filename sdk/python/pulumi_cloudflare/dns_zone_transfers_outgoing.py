@@ -183,8 +183,13 @@ class _DnsZoneTransfersOutgoingState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/dnsZoneTransfersOutgoing:DnsZoneTransfersOutgoing has been deprecated in favor of cloudflare:dnsZoneTransfers/outgoing:Outgoing""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/dnsZoneTransfersOutgoing:DnsZoneTransfersOutgoing")
 class DnsZoneTransfersOutgoing(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/dnsZoneTransfersOutgoing:DnsZoneTransfersOutgoing has been deprecated in favor of cloudflare:dnsZoneTransfers/outgoing:Outgoing""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -208,7 +213,7 @@ class DnsZoneTransfersOutgoing(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_dns_zone_transfers_outgoing = cloudflare.DnsZoneTransfersOutgoing("example_dns_zone_transfers_outgoing",
+        example_dns_zone_transfers_outgoing = cloudflare.dnszonetransfers.Outgoing("example_dns_zone_transfers_outgoing",
             zone_id="269d8f4853475ca241c4e730be286b20",
             name="www.example.com.",
             peers=[
@@ -250,7 +255,7 @@ class DnsZoneTransfersOutgoing(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_dns_zone_transfers_outgoing = cloudflare.DnsZoneTransfersOutgoing("example_dns_zone_transfers_outgoing",
+        example_dns_zone_transfers_outgoing = cloudflare.dnszonetransfers.Outgoing("example_dns_zone_transfers_outgoing",
             zone_id="269d8f4853475ca241c4e730be286b20",
             name="www.example.com.",
             peers=[
@@ -285,6 +290,7 @@ class DnsZoneTransfersOutgoing(pulumi.CustomResource):
                  peers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""DnsZoneTransfersOutgoing is deprecated: cloudflare:index/dnsZoneTransfersOutgoing:DnsZoneTransfersOutgoing has been deprecated in favor of cloudflare:dnsZoneTransfers/outgoing:Outgoing""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -19,12 +19,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersForPlatformsDispatchNamespaces = cloudflare.getWorkersForPlatformsDispatchNamespaces({
+ * const exampleWorkersForPlatformsDispatchNamespaces = cloudflare.workersforplatformsdispatch.getNamespaces({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkersForPlatformsDispatchNamespaces:getWorkersForPlatformsDispatchNamespaces has been deprecated in favor of cloudflare:workersForPlatformsDispatch/namespaces:getNamespaces */
 export function getWorkersForPlatformsDispatchNamespaces(args?: GetWorkersForPlatformsDispatchNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersForPlatformsDispatchNamespacesResult> {
+    pulumi.log.warn("getWorkersForPlatformsDispatchNamespaces is deprecated: cloudflare:index/getWorkersForPlatformsDispatchNamespaces:getWorkersForPlatformsDispatchNamespaces has been deprecated in favor of cloudflare:workersForPlatformsDispatch/namespaces:getNamespaces")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkersForPlatformsDispatchNamespaces:getWorkersForPlatformsDispatchNamespaces", {
@@ -77,12 +79,14 @@ export interface GetWorkersForPlatformsDispatchNamespacesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersForPlatformsDispatchNamespaces = cloudflare.getWorkersForPlatformsDispatchNamespaces({
+ * const exampleWorkersForPlatformsDispatchNamespaces = cloudflare.workersforplatformsdispatch.getNamespaces({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkersForPlatformsDispatchNamespaces:getWorkersForPlatformsDispatchNamespaces has been deprecated in favor of cloudflare:workersForPlatformsDispatch/namespaces:getNamespaces */
 export function getWorkersForPlatformsDispatchNamespacesOutput(args?: GetWorkersForPlatformsDispatchNamespacesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersForPlatformsDispatchNamespacesResult> {
+    pulumi.log.warn("getWorkersForPlatformsDispatchNamespaces is deprecated: cloudflare:index/getWorkersForPlatformsDispatchNamespaces:getWorkersForPlatformsDispatchNamespaces has been deprecated in favor of cloudflare:workersForPlatformsDispatch/namespaces:getNamespaces")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkersForPlatformsDispatchNamespaces:getWorkersForPlatformsDispatchNamespaces", {

@@ -22,6 +22,8 @@ __all__ = [
     'get_notification_policy_output',
 ]
 
+warnings.warn("""cloudflare:index/getNotificationPolicy:getNotificationPolicy has been deprecated in favor of cloudflare:notification/policy:getPolicy""", DeprecationWarning)
+
 @pulumi.output_type
 class GetNotificationPolicyResult:
     """
@@ -195,7 +197,7 @@ def get_notification_policy(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_notification_policy = cloudflare.get_notification_policy(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_notification_policy = cloudflare.notification.get_policy(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         policy_id="0da2b59ef118439d8097bdfb215203c9")
     ```
 
@@ -203,6 +205,7 @@ def get_notification_policy(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: The account id
     :param _builtins.str policy_id: The unique identifier of a notification policy
     """
+    pulumi.log.warn("""get_notification_policy is deprecated: cloudflare:index/getNotificationPolicy:getNotificationPolicy has been deprecated in favor of cloudflare:notification/policy:getPolicy""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['policyId'] = policy_id
@@ -240,7 +243,7 @@ def get_notification_policy_output(account_id: pulumi.Input[Optional[Optional[_b
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_notification_policy = cloudflare.get_notification_policy(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_notification_policy = cloudflare.notification.get_policy(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         policy_id="0da2b59ef118439d8097bdfb215203c9")
     ```
 
@@ -248,6 +251,7 @@ def get_notification_policy_output(account_id: pulumi.Input[Optional[Optional[_b
     :param _builtins.str account_id: The account id
     :param _builtins.str policy_id: The unique identifier of a notification policy
     """
+    pulumi.log.warn("""get_notification_policy is deprecated: cloudflare:index/getNotificationPolicy:getNotificationPolicy has been deprecated in favor of cloudflare:notification/policy:getPolicy""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['policyId'] = policy_id

@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessGroup = new cloudflare.ZeroTrustAccessGroup("example_zero_trust_access_group", {
+ * const exampleZeroTrustAccessGroup = new cloudflare.zerotrustaccess.Group("example_zero_trust_access_group", {
  *     includes: [{
  *         certificate: {},
  *     }],
@@ -140,8 +140,6 @@ export class AccessGroup extends pulumi.CustomResource {
             resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessGroup:AccessGroup" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AccessGroup.__pulumiType, name, resourceInputs, opts);
     }
 }

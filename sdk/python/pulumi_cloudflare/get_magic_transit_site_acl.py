@@ -22,6 +22,8 @@ __all__ = [
     'get_magic_transit_site_acl_output',
 ]
 
+warnings.warn("""cloudflare:index/getMagicTransitSiteAcl:getMagicTransitSiteAcl has been deprecated in favor of cloudflare:magicTransitSite/acl:getAcl""", DeprecationWarning)
+
 @pulumi.output_type
 class GetMagicTransitSiteAclResult:
     """
@@ -179,7 +181,7 @@ def get_magic_transit_site_acl(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_transit_site_acl = cloudflare.get_magic_transit_site_acl(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_magic_transit_site_acl = cloudflare.magictransitsite.get_acl(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         site_id="023e105f4ecef8ad9ca31a8372d0c353",
         acl_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
@@ -189,6 +191,7 @@ def get_magic_transit_site_acl(account_id: Optional[_builtins.str] = None,
     :param _builtins.str acl_id: Identifier
     :param _builtins.str site_id: Identifier
     """
+    pulumi.log.warn("""get_magic_transit_site_acl is deprecated: cloudflare:index/getMagicTransitSiteAcl:getMagicTransitSiteAcl has been deprecated in favor of cloudflare:magicTransitSite/acl:getAcl""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['aclId'] = acl_id
@@ -226,7 +229,7 @@ def get_magic_transit_site_acl_output(account_id: pulumi.Input[Optional[_builtin
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_transit_site_acl = cloudflare.get_magic_transit_site_acl(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_magic_transit_site_acl = cloudflare.magictransitsite.get_acl(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         site_id="023e105f4ecef8ad9ca31a8372d0c353",
         acl_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
@@ -236,6 +239,7 @@ def get_magic_transit_site_acl_output(account_id: pulumi.Input[Optional[_builtin
     :param _builtins.str acl_id: Identifier
     :param _builtins.str site_id: Identifier
     """
+    pulumi.log.warn("""get_magic_transit_site_acl is deprecated: cloudflare:index/getMagicTransitSiteAcl:getMagicTransitSiteAcl has been deprecated in favor of cloudflare:magicTransitSite/acl:getAcl""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['aclId'] = acl_id

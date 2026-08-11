@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleRegionalTieredCache = new Cloudflare.RegionalTieredCache("example_regional_tiered_cache", new()
+    ///     var exampleRegionalTieredCache = new Cloudflare.Modules.Regional.RegionalTieredCache("example_regional_tiered_cache", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Value = "on",
@@ -42,6 +42,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/regionalTieredCache:RegionalTieredCache example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/regionalTieredCache:RegionalTieredCache has been deprecated in favor of cloudflare:regional/tieredCache:TieredCache")]
     [CloudflareResourceType("cloudflare:index/regionalTieredCache:RegionalTieredCache")]
     public partial class RegionalTieredCache : global::Pulumi.CustomResource
     {

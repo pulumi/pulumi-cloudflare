@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_network_hostname_routes_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustNetworkHostnameRoutes:getZeroTrustNetworkHostnameRoutes has been deprecated in favor of cloudflare:zeroTrustNetworkHostname/routes:getRoutes""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustNetworkHostnameRoutesResult:
     """
@@ -169,7 +171,7 @@ def get_zero_trust_network_hostname_routes(account_id: Optional[_builtins.str] =
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_network_hostname_routes = cloudflare.get_zero_trust_network_hostname_routes(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_network_hostname_routes = cloudflare.zerotrustnetworkhostname.get_routes(account_id="699d98642c564d2e855e9661899b7252",
         id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
         comment="example%20comment",
         existed_at="2019-10-12T07%3A20%3A50.52Z",
@@ -187,6 +189,7 @@ def get_zero_trust_network_hostname_routes(account_id: Optional[_builtins.str] =
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str tunnel_id: If set, only list hostname routes that point to a specific tunnel.
     """
+    pulumi.log.warn("""get_zero_trust_network_hostname_routes is deprecated: cloudflare:index/getZeroTrustNetworkHostnameRoutes:getZeroTrustNetworkHostnameRoutes has been deprecated in favor of cloudflare:zeroTrustNetworkHostname/routes:getRoutes""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['comment'] = comment
@@ -232,7 +235,7 @@ def get_zero_trust_network_hostname_routes_output(account_id: pulumi.Input[Optio
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_network_hostname_routes = cloudflare.get_zero_trust_network_hostname_routes(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_network_hostname_routes = cloudflare.zerotrustnetworkhostname.get_routes(account_id="699d98642c564d2e855e9661899b7252",
         id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
         comment="example%20comment",
         existed_at="2019-10-12T07%3A20%3A50.52Z",
@@ -250,6 +253,7 @@ def get_zero_trust_network_hostname_routes_output(account_id: pulumi.Input[Optio
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str tunnel_id: If set, only list hostname routes that point to a specific tunnel.
     """
+    pulumi.log.warn("""get_zero_trust_network_hostname_routes is deprecated: cloudflare:index/getZeroTrustNetworkHostnameRoutes:getZeroTrustNetworkHostnameRoutes has been deprecated in favor of cloudflare:zeroTrustNetworkHostname/routes:getRoutes""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['comment'] = comment

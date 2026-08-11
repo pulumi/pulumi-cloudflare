@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * - `Domain API Gateway`
  * - `Domain API Gateway Read`
  *
- * > `cloudflare.ApiShieldSchemaValidationSettings` is in a deprecation phase and will be removed in the future.
+ * > `cloudflare.apiShieldSchema.ValidationSettings` is in a deprecation phase and will be removed in the future.
  *   Instead, please utilize the cloudflare.SchemaValidationSettings resource instead.
  *
  * ## Example Usage
@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleApiShieldSchemaValidationSettings = new cloudflare.ApiShieldSchemaValidationSettings("example_api_shield_schema_validation_settings", {
+ * const exampleApiShieldSchemaValidationSettings = new cloudflare.apishieldschema.ValidationSettings("example_api_shield_schema_validation_settings", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     validationDefaultMitigationAction: "block",
  *     validationOverrideMitigationAction: "none",
@@ -33,6 +33,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings example '<zone_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldSchema/validationSettings:ValidationSettings
  */
 export class ApiShieldSchemaValidationSettings extends pulumi.CustomResource {
     /**
@@ -45,6 +47,7 @@ export class ApiShieldSchemaValidationSettings extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ApiShieldSchemaValidationSettingsState, opts?: pulumi.CustomResourceOptions): ApiShieldSchemaValidationSettings {
+        pulumi.log.warn("ApiShieldSchemaValidationSettings is deprecated: cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldSchema/validationSettings:ValidationSettings")
         return new ApiShieldSchemaValidationSettings(name, <any>state, { ...opts, id: id });
     }
 
@@ -88,8 +91,11 @@ export class ApiShieldSchemaValidationSettings extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldSchema/validationSettings:ValidationSettings */
     constructor(name: string, args: ApiShieldSchemaValidationSettingsArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldSchema/validationSettings:ValidationSettings */
     constructor(name: string, argsOrState?: ApiShieldSchemaValidationSettingsArgs | ApiShieldSchemaValidationSettingsState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ApiShieldSchemaValidationSettings is deprecated: cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldSchema/validationSettings:ValidationSettings")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

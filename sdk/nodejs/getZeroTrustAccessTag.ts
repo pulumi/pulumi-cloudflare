@@ -11,13 +11,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessTag = cloudflare.getZeroTrustAccessTag({
+ * const exampleZeroTrustAccessTag = cloudflare.zerotrustaccess.getTag({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     tagName: "engineers",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessTag:getZeroTrustAccessTag has been deprecated in favor of cloudflare:zeroTrustAccess/tag:getTag */
 export function getZeroTrustAccessTag(args: GetZeroTrustAccessTagArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessTagResult> {
+    pulumi.log.warn("getZeroTrustAccessTag is deprecated: cloudflare:index/getZeroTrustAccessTag:getZeroTrustAccessTag has been deprecated in favor of cloudflare:zeroTrustAccess/tag:getTag")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessTag:getZeroTrustAccessTag", {
         "accountId": args.accountId,
@@ -67,13 +69,15 @@ export interface GetZeroTrustAccessTagResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessTag = cloudflare.getZeroTrustAccessTag({
+ * const exampleZeroTrustAccessTag = cloudflare.zerotrustaccess.getTag({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     tagName: "engineers",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessTag:getZeroTrustAccessTag has been deprecated in favor of cloudflare:zeroTrustAccess/tag:getTag */
 export function getZeroTrustAccessTagOutput(args: GetZeroTrustAccessTagOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessTagResult> {
+    pulumi.log.warn("getZeroTrustAccessTag is deprecated: cloudflare:index/getZeroTrustAccessTag:getZeroTrustAccessTag has been deprecated in favor of cloudflare:zeroTrustAccess/tag:getTag")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessTag:getZeroTrustAccessTag", {
         "accountId": args.accountId,

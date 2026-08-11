@@ -18,7 +18,7 @@ import (
 // - `Workers Scripts Write`
 // - `Workers Tail Read`
 //
-// > This resource is redundant with `Worker` and should not be used together. When using the `Worker` resource, use the nested `subdomain` attribute to control subdomain settings instead.
+// > This resource is redundant with `worker.Worker` and should not be used together. When using the `worker.Worker` resource, use the nested `subdomain` attribute to control subdomain settings instead.
 //
 // ## Example Usage
 //
@@ -27,14 +27,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/workersscript"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWorkersScriptSubdomain(ctx, "example_workers_script_subdomain", &cloudflare.WorkersScriptSubdomainArgs{
+//			_, err := workersscript.NewSubdomain(ctx, "example_workers_script_subdomain", &workersscript.SubdomainArgs{
 //				AccountId:       pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ScriptName:      pulumi.String("this-is_my_script-01"),
 //				Enabled:         pulumi.Bool(true),
@@ -54,6 +54,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain example '<account_id>/<script_name>'
 // ```
+//
+// Deprecated: cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain has been deprecated in favor of cloudflare:workersScript/subdomain:Subdomain
 type WorkersScriptSubdomain struct {
 	pulumi.CustomResourceState
 

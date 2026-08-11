@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessTag = new Cloudflare.ZeroTrustAccessTag("example_zero_trust_access_tag", new()
+    ///     var exampleZeroTrustAccessTag = new Cloudflare.Modules.ZeroTrustAccess.ZeroTrustAccessTag("example_zero_trust_access_tag", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "engineers",
@@ -35,6 +35,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag example '&lt;account_id&gt;/&lt;tag_name&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag has been deprecated in favor of cloudflare:zeroTrustAccess/tag:Tag")]
     [CloudflareResourceType("cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag")]
     public partial class ZeroTrustAccessTag : global::Pulumi.CustomResource
     {

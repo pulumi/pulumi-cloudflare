@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.SchemaValidationOperationSettings;
- * import com.pulumi.cloudflare.SchemaValidationOperationSettingsArgs;
+ * import com.pulumi.cloudflare.schemaValidationOperationSettings.SchemaValidationOperationSettings;
+ * import com.pulumi.cloudflare.schemaValidationOperationSettings.SchemaValidationOperationSettingsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -60,7 +60,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/schemaValidationOperationSettings:SchemaValidationOperationSettings has been deprecated in favor of cloudflare:schemaValidationOperationSettings/schemaValidationOperationSettings:SchemaValidationOperationSettings
+ * 
  */
+@Deprecated /* cloudflare:index/schemaValidationOperationSettings:SchemaValidationOperationSettings has been deprecated in favor of cloudflare:schemaValidationOperationSettings/schemaValidationOperationSettings:SchemaValidationOperationSettings */
 @ResourceType(type="cloudflare:index/schemaValidationOperationSettings:SchemaValidationOperationSettings")
 public class SchemaValidationOperationSettings extends com.pulumi.resources.CustomResource {
     /**

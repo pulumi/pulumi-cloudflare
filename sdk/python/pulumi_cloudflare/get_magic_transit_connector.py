@@ -23,6 +23,8 @@ __all__ = [
     'get_magic_transit_connector_output',
 ]
 
+warnings.warn("""cloudflare:index/getMagicTransitConnector:getMagicTransitConnector has been deprecated in favor of cloudflare:magicTransit/connector:getConnector""", DeprecationWarning)
+
 @pulumi.output_type
 class GetMagicTransitConnectorResult:
     """
@@ -211,13 +213,14 @@ def get_magic_transit_connector(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_transit_connector = cloudflare.get_magic_transit_connector(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_magic_transit_connector = cloudflare.magictransit.get_connector(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         connector_id="connector_id")
     ```
 
 
     :param _builtins.str account_id: Account identifier
     """
+    pulumi.log.warn("""get_magic_transit_connector is deprecated: cloudflare:index/getMagicTransitConnector:getMagicTransitConnector has been deprecated in favor of cloudflare:magicTransit/connector:getConnector""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['connectorId'] = connector_id
@@ -258,13 +261,14 @@ def get_magic_transit_connector_output(account_id: pulumi.Input[Optional[Optiona
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_transit_connector = cloudflare.get_magic_transit_connector(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_magic_transit_connector = cloudflare.magictransit.get_connector(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         connector_id="connector_id")
     ```
 
 
     :param _builtins.str account_id: Account identifier
     """
+    pulumi.log.warn("""get_magic_transit_connector is deprecated: cloudflare:index/getMagicTransitConnector:getMagicTransitConnector has been deprecated in favor of cloudflare:magicTransit/connector:getConnector""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['connectorId'] = connector_id

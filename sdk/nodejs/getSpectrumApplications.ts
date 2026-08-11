@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSpectrumApplications = cloudflare.getSpectrumApplications({
+ * const exampleSpectrumApplications = cloudflare.spectrum.getApplications({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getSpectrumApplications:getSpectrumApplications has been deprecated in favor of cloudflare:spectrum/applications:getApplications */
 export function getSpectrumApplications(args?: GetSpectrumApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetSpectrumApplicationsResult> {
+    pulumi.log.warn("getSpectrumApplications is deprecated: cloudflare:index/getSpectrumApplications:getSpectrumApplications has been deprecated in favor of cloudflare:spectrum/applications:getApplications")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getSpectrumApplications:getSpectrumApplications", {
@@ -97,12 +99,14 @@ export interface GetSpectrumApplicationsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSpectrumApplications = cloudflare.getSpectrumApplications({
+ * const exampleSpectrumApplications = cloudflare.spectrum.getApplications({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getSpectrumApplications:getSpectrumApplications has been deprecated in favor of cloudflare:spectrum/applications:getApplications */
 export function getSpectrumApplicationsOutput(args?: GetSpectrumApplicationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSpectrumApplicationsResult> {
+    pulumi.log.warn("getSpectrumApplications is deprecated: cloudflare:index/getSpectrumApplications:getSpectrumApplications has been deprecated in favor of cloudflare:spectrum/applications:getApplications")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getSpectrumApplications:getSpectrumApplications", {

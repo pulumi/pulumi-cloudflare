@@ -24,7 +24,11 @@ import javax.annotation.Nullable;
  * - `Magic Network Monitoring Config Read`
  * - `Magic Network Monitoring Config Write`
  * 
+ * @deprecated
+ * cloudflare:index/magicNetworkMonitoringConfiguration:MagicNetworkMonitoringConfiguration has been deprecated in favor of cloudflare:magicNetworkMonitoring/configuration:Configuration
+ * 
  */
+@Deprecated /* cloudflare:index/magicNetworkMonitoringConfiguration:MagicNetworkMonitoringConfiguration has been deprecated in favor of cloudflare:magicNetworkMonitoring/configuration:Configuration */
 @ResourceType(type="cloudflare:index/magicNetworkMonitoringConfiguration:MagicNetworkMonitoringConfiguration")
 public class MagicNetworkMonitoringConfiguration extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

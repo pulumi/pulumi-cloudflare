@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpDataset = new cloudflare.ZeroTrustDlpDataset("example_zero_trust_dlp_dataset", {
+ * const exampleZeroTrustDlpDataset = new cloudflare.zerotrustdlp.Dataset("example_zero_trust_dlp_dataset", {
  *     accountId: "account_id",
  *     name: "name",
  *     caseSensitive: true,
@@ -31,6 +31,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset has been deprecated in favor of cloudflare:zeroTrustDlp/dataset:Dataset
  */
 export class ZeroTrustDlpDataset extends pulumi.CustomResource {
     /**
@@ -43,6 +45,7 @@ export class ZeroTrustDlpDataset extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustDlpDatasetState, opts?: pulumi.CustomResourceOptions): ZeroTrustDlpDataset {
+        pulumi.log.warn("ZeroTrustDlpDataset is deprecated: cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset has been deprecated in favor of cloudflare:zeroTrustDlp/dataset:Dataset")
         return new ZeroTrustDlpDataset(name, <any>state, { ...opts, id: id });
     }
 
@@ -112,8 +115,11 @@ export class ZeroTrustDlpDataset extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset has been deprecated in favor of cloudflare:zeroTrustDlp/dataset:Dataset */
     constructor(name: string, args: ZeroTrustDlpDatasetArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset has been deprecated in favor of cloudflare:zeroTrustDlp/dataset:Dataset */
     constructor(name: string, argsOrState?: ZeroTrustDlpDatasetArgs | ZeroTrustDlpDatasetState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustDlpDataset is deprecated: cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset has been deprecated in favor of cloudflare:zeroTrustDlp/dataset:Dataset")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

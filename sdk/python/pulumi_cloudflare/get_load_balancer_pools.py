@@ -22,6 +22,8 @@ __all__ = [
     'get_load_balancer_pools_output',
 ]
 
+warnings.warn("""cloudflare:index/getLoadBalancerPools:getLoadBalancerPools has been deprecated in favor of cloudflare:loadBalancer/pools:getPools""", DeprecationWarning)
+
 @pulumi.output_type
 class GetLoadBalancerPoolsResult:
     """
@@ -102,7 +104,7 @@ def get_load_balancer_pools(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_load_balancer_pools = cloudflare.get_load_balancer_pools(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_load_balancer_pools = cloudflare.loadbalancer.get_pools(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         monitor="monitor")
     ```
 
@@ -111,6 +113,7 @@ def get_load_balancer_pools(account_id: Optional[_builtins.str] = None,
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str monitor: The ID of the Monitor to use for checking the health of origins within this pool.
     """
+    pulumi.log.warn("""get_load_balancer_pools is deprecated: cloudflare:index/getLoadBalancerPools:getLoadBalancerPools has been deprecated in favor of cloudflare:loadBalancer/pools:getPools""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -139,7 +142,7 @@ def get_load_balancer_pools_output(account_id: pulumi.Input[Optional[Optional[_b
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_load_balancer_pools = cloudflare.get_load_balancer_pools(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_load_balancer_pools = cloudflare.loadbalancer.get_pools(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         monitor="monitor")
     ```
 
@@ -148,6 +151,7 @@ def get_load_balancer_pools_output(account_id: pulumi.Input[Optional[Optional[_b
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str monitor: The ID of the Monitor to use for checking the health of origins within this pool.
     """
+    pulumi.log.warn("""get_load_balancer_pools is deprecated: cloudflare:index/getLoadBalancerPools:getLoadBalancerPools has been deprecated in favor of cloudflare:loadBalancer/pools:getPools""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

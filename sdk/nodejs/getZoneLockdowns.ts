@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneLockdowns = cloudflare.getZoneLockdowns({
+ * const exampleZoneLockdowns = cloudflare.zone.getLockdowns({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     createdOn: "2014-01-01T05:20:00.12345Z",
  *     description: "endpoints",
@@ -32,7 +32,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZoneLockdowns:getZoneLockdowns has been deprecated in favor of cloudflare:zone/lockdowns:getLockdowns */
 export function getZoneLockdowns(args?: GetZoneLockdownsArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneLockdownsResult> {
+    pulumi.log.warn("getZoneLockdowns is deprecated: cloudflare:index/getZoneLockdowns:getZoneLockdowns has been deprecated in favor of cloudflare:zone/lockdowns:getLockdowns")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZoneLockdowns:getZoneLockdowns", {
@@ -165,7 +167,7 @@ export interface GetZoneLockdownsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneLockdowns = cloudflare.getZoneLockdowns({
+ * const exampleZoneLockdowns = cloudflare.zone.getLockdowns({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     createdOn: "2014-01-01T05:20:00.12345Z",
  *     description: "endpoints",
@@ -179,7 +181,9 @@ export interface GetZoneLockdownsResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZoneLockdowns:getZoneLockdowns has been deprecated in favor of cloudflare:zone/lockdowns:getLockdowns */
 export function getZoneLockdownsOutput(args?: GetZoneLockdownsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneLockdownsResult> {
+    pulumi.log.warn("getZoneLockdowns is deprecated: cloudflare:index/getZoneLockdowns:getZoneLockdowns has been deprecated in favor of cloudflare:zone/lockdowns:getLockdowns")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZoneLockdowns:getZoneLockdowns", {

@@ -24,30 +24,30 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustaccess"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustAccessGroup(ctx, "example_zero_trust_access_group", &cloudflare.ZeroTrustAccessGroupArgs{
-//				Includes: cloudflare.ZeroTrustAccessGroupIncludeArray{
-//					&cloudflare.ZeroTrustAccessGroupIncludeArgs{
-//						Certificate: &cloudflare.ZeroTrustAccessGroupIncludeCertificateArgs{},
+//			_, err := zerotrustaccess.NewGroup(ctx, "example_zero_trust_access_group", &zerotrustaccess.GroupArgs{
+//				Includes: zerotrustaccess.GroupIncludeArray{
+//					&zerotrustaccess.GroupIncludeArgs{
+//						Certificate: &zerotrustaccess.GroupIncludeCertificateArgs{},
 //					},
 //				},
 //				Name:   pulumi.String("Allow devs"),
 //				ZoneId: pulumi.String("zone_id"),
-//				Excludes: cloudflare.ZeroTrustAccessGroupExcludeArray{
-//					&cloudflare.ZeroTrustAccessGroupExcludeArgs{
-//						Certificate: &cloudflare.ZeroTrustAccessGroupExcludeCertificateArgs{},
+//				Excludes: zerotrustaccess.GroupExcludeArray{
+//					&zerotrustaccess.GroupExcludeArgs{
+//						Certificate: &zerotrustaccess.GroupExcludeCertificateArgs{},
 //					},
 //				},
 //				IsDefault: pulumi.Bool(true),
-//				Requires: cloudflare.ZeroTrustAccessGroupRequireArray{
-//					&cloudflare.ZeroTrustAccessGroupRequireArgs{
-//						Certificate: &cloudflare.ZeroTrustAccessGroupRequireCertificateArgs{},
+//				Requires: zerotrustaccess.GroupRequireArray{
+//					&zerotrustaccess.GroupRequireArgs{
+//						Certificate: &zerotrustaccess.GroupRequireCertificateArgs{},
 //					},
 //				},
 //			})
@@ -99,12 +99,6 @@ func NewAccessGroup(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("cloudflare:index/accessGroup:AccessGroup"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessGroup
 	err := ctx.RegisterResource("cloudflare:index/accessGroup:AccessGroup", name, args, &resource, opts...)

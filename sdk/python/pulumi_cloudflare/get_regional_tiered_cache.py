@@ -21,6 +21,8 @@ __all__ = [
     'get_regional_tiered_cache_output',
 ]
 
+warnings.warn("""cloudflare:index/getRegionalTieredCache:getRegionalTieredCache has been deprecated in favor of cloudflare:regional/tieredCache:getTieredCache""", DeprecationWarning)
+
 @pulumi.output_type
 class GetRegionalTieredCacheResult:
     """
@@ -114,12 +116,13 @@ def get_regional_tiered_cache(zone_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_regional_tiered_cache = cloudflare.get_regional_tiered_cache(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_regional_tiered_cache = cloudflare.regional.get_tiered_cache(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_regional_tiered_cache is deprecated: cloudflare:index/getRegionalTieredCache:getRegionalTieredCache has been deprecated in favor of cloudflare:regional/tieredCache:getTieredCache""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -147,12 +150,13 @@ def get_regional_tiered_cache_output(zone_id: pulumi.Input[Optional[Optional[_bu
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_regional_tiered_cache = cloudflare.get_regional_tiered_cache(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_regional_tiered_cache = cloudflare.regional.get_tiered_cache(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_regional_tiered_cache is deprecated: cloudflare:index/getRegionalTieredCache:getRegionalTieredCache has been deprecated in favor of cloudflare:regional/tieredCache:getTieredCache""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

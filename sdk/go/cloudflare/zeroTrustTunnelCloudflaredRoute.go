@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrusttunnelcloudflared"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustTunnelCloudflaredRoute(ctx, "example_zero_trust_tunnel_cloudflared_route", &cloudflare.ZeroTrustTunnelCloudflaredRouteArgs{
+//			_, err := zerotrusttunnelcloudflared.NewRoute(ctx, "example_zero_trust_tunnel_cloudflared_route", &zerotrusttunnelcloudflared.RouteArgs{
 //				AccountId:        pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				Network:          pulumi.String("172.16.0.0/16"),
 //				TunnelId:         pulumi.String("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
@@ -52,6 +52,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustTunnelCloudflaredRoute:ZeroTrustTunnelCloudflaredRoute example '<account_id>/<route_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustTunnelCloudflaredRoute:ZeroTrustTunnelCloudflaredRoute has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/route:Route
 type ZeroTrustTunnelCloudflaredRoute struct {
 	pulumi.CustomResourceState
 

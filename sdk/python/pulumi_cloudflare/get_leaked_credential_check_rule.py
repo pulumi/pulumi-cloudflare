@@ -21,6 +21,8 @@ __all__ = [
     'get_leaked_credential_check_rule_output',
 ]
 
+warnings.warn("""cloudflare:index/getLeakedCredentialCheckRule:getLeakedCredentialCheckRule has been deprecated in favor of cloudflare:leakedCredentialCheck/rule:getRule""", DeprecationWarning)
+
 @pulumi.output_type
 class GetLeakedCredentialCheckRuleResult:
     """
@@ -114,7 +116,7 @@ def get_leaked_credential_check_rule(detection_id: Optional[_builtins.str] = Non
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_leaked_credential_check_rule = cloudflare.get_leaked_credential_check_rule(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_leaked_credential_check_rule = cloudflare.leakedcredentialcheck.get_rule(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         detection_id="18a14bafaa8eb1df04ce683ec18c765e")
     ```
 
@@ -122,6 +124,7 @@ def get_leaked_credential_check_rule(detection_id: Optional[_builtins.str] = Non
     :param _builtins.str detection_id: Defines the unique ID for this custom detection.
     :param _builtins.str zone_id: Defines an identifier.
     """
+    pulumi.log.warn("""get_leaked_credential_check_rule is deprecated: cloudflare:index/getLeakedCredentialCheckRule:getLeakedCredentialCheckRule has been deprecated in favor of cloudflare:leakedCredentialCheck/rule:getRule""")
     __args__ = dict()
     __args__['detectionId'] = detection_id
     __args__['zoneId'] = zone_id
@@ -151,7 +154,7 @@ def get_leaked_credential_check_rule_output(detection_id: pulumi.Input[Optional[
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_leaked_credential_check_rule = cloudflare.get_leaked_credential_check_rule(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_leaked_credential_check_rule = cloudflare.leakedcredentialcheck.get_rule(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         detection_id="18a14bafaa8eb1df04ce683ec18c765e")
     ```
 
@@ -159,6 +162,7 @@ def get_leaked_credential_check_rule_output(detection_id: pulumi.Input[Optional[
     :param _builtins.str detection_id: Defines the unique ID for this custom detection.
     :param _builtins.str zone_id: Defines an identifier.
     """
+    pulumi.log.warn("""get_leaked_credential_check_rule is deprecated: cloudflare:index/getLeakedCredentialCheckRule:getLeakedCredentialCheckRule has been deprecated in favor of cloudflare:leakedCredentialCheck/rule:getRule""")
     __args__ = dict()
     __args__['detectionId'] = detection_id
     __args__['zoneId'] = zone_id

@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/cloudforceonerequest"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetCloudforceOneRequestAsset(ctx, &cloudflare.LookupCloudforceOneRequestAssetArgs{
+//			_, err := cloudforceonerequest.GetAsset(ctx, &cloudforceonerequest.GetAssetArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				RequestId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //				AssetId:   "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
@@ -43,6 +43,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getCloudforceOneRequestAsset:getCloudforceOneRequestAsset has been deprecated in favor of cloudflare:cloudforceOneRequest/asset:getAsset
 func LookupCloudforceOneRequestAsset(ctx *pulumi.Context, args *LookupCloudforceOneRequestAssetArgs, opts ...pulumi.InvokeOption) (*LookupCloudforceOneRequestAssetResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudforceOneRequestAssetResult

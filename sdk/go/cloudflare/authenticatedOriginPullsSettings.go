@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/authenticatedoriginpulls"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAuthenticatedOriginPullsSettings(ctx, "example_authenticated_origin_pulls_settings", &cloudflare.AuthenticatedOriginPullsSettingsArgs{
+//			_, err := authenticatedoriginpulls.NewSettings(ctx, "example_authenticated_origin_pulls_settings", &authenticatedoriginpulls.SettingsArgs{
 //				ZoneId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Enabled: pulumi.Bool(true),
 //			})
@@ -49,6 +49,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/authenticatedOriginPullsSettings:AuthenticatedOriginPullsSettings example '<zone_id>'
 // ```
+//
+// Deprecated: cloudflare:index/authenticatedOriginPullsSettings:AuthenticatedOriginPullsSettings has been deprecated in favor of cloudflare:authenticatedOriginPulls/settings:Settings
 type AuthenticatedOriginPullsSettings struct {
 	pulumi.CustomResourceState
 

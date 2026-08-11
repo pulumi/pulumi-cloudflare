@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * - `Workers Scripts Write`
  * - `Workers Tail Read`
  *
- * > For more direct control over Workers resources, we recommend the beta `cloudflare.Worker`, `cloudflare.WorkerVersion`, and `cloudflare.WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
+ * > For more direct control over Workers resources, we recommend the beta `cloudflare.worker.Worker`, `cloudflare.worker.Version`, and `cloudflare.workers.Deployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
  *
  * ## Import
  *
@@ -306,8 +306,6 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["startupTimeMs"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/workerScript:WorkerScript" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkerScript.__pulumiType, name, resourceInputs, opts);
     }
 }

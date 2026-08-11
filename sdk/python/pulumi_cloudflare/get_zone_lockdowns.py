@@ -22,6 +22,8 @@ __all__ = [
     'get_zone_lockdowns_output',
 ]
 
+warnings.warn("""cloudflare:index/getZoneLockdowns:getZoneLockdowns has been deprecated in favor of cloudflare:zone/lockdowns:getLockdowns""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZoneLockdownsResult:
     """
@@ -206,7 +208,7 @@ def get_zone_lockdowns(created_on: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zone_lockdowns = cloudflare.get_zone_lockdowns(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_zone_lockdowns = cloudflare.zone.get_lockdowns(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         created_on="2014-01-01T05:20:00.12345Z",
         description="endpoints",
         description_search="endpoints",
@@ -231,6 +233,7 @@ def get_zone_lockdowns(created_on: Optional[_builtins.str] = None,
     :param _builtins.str uri_search: A single URI to search for in the list of URLs of existing rules.
     :param _builtins.str zone_id: Defines an identifier.
     """
+    pulumi.log.warn("""get_zone_lockdowns is deprecated: cloudflare:index/getZoneLockdowns:getZoneLockdowns has been deprecated in favor of cloudflare:zone/lockdowns:getLockdowns""")
     __args__ = dict()
     __args__['createdOn'] = created_on
     __args__['description'] = description
@@ -283,7 +286,7 @@ def get_zone_lockdowns_output(created_on: pulumi.Input[Optional[Optional[_builti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zone_lockdowns = cloudflare.get_zone_lockdowns(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_zone_lockdowns = cloudflare.zone.get_lockdowns(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         created_on="2014-01-01T05:20:00.12345Z",
         description="endpoints",
         description_search="endpoints",
@@ -308,6 +311,7 @@ def get_zone_lockdowns_output(created_on: pulumi.Input[Optional[Optional[_builti
     :param _builtins.str uri_search: A single URI to search for in the list of URLs of existing rules.
     :param _builtins.str zone_id: Defines an identifier.
     """
+    pulumi.log.warn("""get_zone_lockdowns is deprecated: cloudflare:index/getZoneLockdowns:getZoneLockdowns has been deprecated in favor of cloudflare:zone/lockdowns:getLockdowns""")
     __args__ = dict()
     __args__['createdOn'] = created_on
     __args__['description'] = description

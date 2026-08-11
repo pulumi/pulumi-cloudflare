@@ -25,14 +25,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zonecache"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZoneCacheVariants(ctx, &cloudflare.LookupZoneCacheVariantsArgs{
+//			_, err := zonecache.GetVariants(ctx, &zonecache.GetVariantsArgs{
 //				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
@@ -43,6 +43,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZoneCacheVariants:getZoneCacheVariants has been deprecated in favor of cloudflare:zoneCache/variants:getVariants
 func LookupZoneCacheVariants(ctx *pulumi.Context, args *LookupZoneCacheVariantsArgs, opts ...pulumi.InvokeOption) (*LookupZoneCacheVariantsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZoneCacheVariantsResult

@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDlpPredefinedProfile = new Cloudflare.ZeroTrustDlpPredefinedProfile("example_zero_trust_dlp_predefined_profile", new()
+    ///     var exampleZeroTrustDlpPredefinedProfile = new Cloudflare.Modules.ZeroTrustDlpPredefined.ZeroTrustDlpPredefinedProfile("example_zero_trust_dlp_predefined_profile", new()
     ///     {
     ///         ProfileId = "e91a2360-da51-4fdf-9711-bcdecd462614",
     ///         AccountId = "account_id",
@@ -57,6 +57,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile example '&lt;account_id&gt;/&lt;profile_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile has been deprecated in favor of cloudflare:zeroTrustDlpPredefined/profile:Profile")]
     [CloudflareResourceType("cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile")]
     public partial class ZeroTrustDlpPredefinedProfile : global::Pulumi.CustomResource
     {

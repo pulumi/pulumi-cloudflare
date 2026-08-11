@@ -23,6 +23,8 @@ __all__ = [
     'get_zero_trust_tunnel_cloudflared_route_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustTunnelCloudflaredRoute:getZeroTrustTunnelCloudflaredRoute has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/route:getRoute""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustTunnelCloudflaredRouteResult:
     """
@@ -174,7 +176,7 @@ def get_zero_trust_tunnel_cloudflared_route(account_id: Optional[_builtins.str] 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_tunnel_cloudflared_route = cloudflare.get_zero_trust_tunnel_cloudflared_route(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_tunnel_cloudflared_route = cloudflare.zerotrusttunnelcloudflared.get_route(account_id="699d98642c564d2e855e9661899b7252",
         route_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
     ```
 
@@ -182,6 +184,7 @@ def get_zero_trust_tunnel_cloudflared_route(account_id: Optional[_builtins.str] 
     :param _builtins.str account_id: Cloudflare account ID
     :param _builtins.str route_id: UUID of the route.
     """
+    pulumi.log.warn("""get_zero_trust_tunnel_cloudflared_route is deprecated: cloudflare:index/getZeroTrustTunnelCloudflaredRoute:getZeroTrustTunnelCloudflaredRoute has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/route:getRoute""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -218,7 +221,7 @@ def get_zero_trust_tunnel_cloudflared_route_output(account_id: pulumi.Input[Opti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_tunnel_cloudflared_route = cloudflare.get_zero_trust_tunnel_cloudflared_route(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_tunnel_cloudflared_route = cloudflare.zerotrusttunnelcloudflared.get_route(account_id="699d98642c564d2e855e9661899b7252",
         route_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
     ```
 
@@ -226,6 +229,7 @@ def get_zero_trust_tunnel_cloudflared_route_output(account_id: pulumi.Input[Opti
     :param _builtins.str account_id: Cloudflare account ID
     :param _builtins.str route_id: UUID of the route.
     """
+    pulumi.log.warn("""get_zero_trust_tunnel_cloudflared_route is deprecated: cloudflare:index/getZeroTrustTunnelCloudflaredRoute:getZeroTrustTunnelCloudflaredRoute has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/route:getRoute""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

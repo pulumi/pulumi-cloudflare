@@ -22,6 +22,8 @@ __all__ = [
     'get_api_shield_discovery_operations_output',
 ]
 
+warnings.warn("""cloudflare:index/getApiShieldDiscoveryOperations:getApiShieldDiscoveryOperations has been deprecated in favor of cloudflare:apiShieldDiscovery/operations:getOperations""", DeprecationWarning)
+
 @pulumi.output_type
 class GetApiShieldDiscoveryOperationsResult:
     """
@@ -162,7 +164,7 @@ def get_api_shield_discovery_operations(diff: Optional[_builtins.bool] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_api_shield_discovery_operations = cloudflare.get_api_shield_discovery_operations(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_api_shield_discovery_operations = cloudflare.apishielddiscovery.get_operations(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         diff=True,
         direction="desc",
         endpoint="/api/v1",
@@ -173,6 +175,7 @@ def get_api_shield_discovery_operations(diff: Optional[_builtins.bool] = None,
         state="review")
     ```
     """
+    pulumi.log.warn("""get_api_shield_discovery_operations is deprecated: cloudflare:index/getApiShieldDiscoveryOperations:getApiShieldDiscoveryOperations has been deprecated in favor of cloudflare:apiShieldDiscovery/operations:getOperations""")
     __args__ = dict()
     __args__['diff'] = diff
     __args__['direction'] = direction
@@ -224,7 +227,7 @@ def get_api_shield_discovery_operations_output(diff: pulumi.Input[Optional[Optio
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_api_shield_discovery_operations = cloudflare.get_api_shield_discovery_operations(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_api_shield_discovery_operations = cloudflare.apishielddiscovery.get_operations(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         diff=True,
         direction="desc",
         endpoint="/api/v1",
@@ -235,6 +238,7 @@ def get_api_shield_discovery_operations_output(diff: pulumi.Input[Optional[Optio
         state="review")
     ```
     """
+    pulumi.log.warn("""get_api_shield_discovery_operations is deprecated: cloudflare:index/getApiShieldDiscoveryOperations:getApiShieldDiscoveryOperations has been deprecated in favor of cloudflare:apiShieldDiscovery/operations:getOperations""")
     __args__ = dict()
     __args__['diff'] = diff
     __args__['direction'] = direction

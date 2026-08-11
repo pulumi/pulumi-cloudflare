@@ -21,6 +21,8 @@ __all__ = [
     'get_zero_trust_gateway_proxy_endpoint_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustGatewayProxyEndpoint:getZeroTrustGatewayProxyEndpoint has been deprecated in favor of cloudflare:zeroTrustGatewayProxy/endpoint:getEndpoint""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustGatewayProxyEndpointResult:
     """
@@ -144,10 +146,11 @@ def get_zero_trust_gateway_proxy_endpoint(account_id: Optional[_builtins.str] = 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_gateway_proxy_endpoint = cloudflare.get_zero_trust_gateway_proxy_endpoint(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_gateway_proxy_endpoint = cloudflare.zerotrustgatewayproxy.get_endpoint(account_id="699d98642c564d2e855e9661899b7252",
         proxy_endpoint_id="ed35569b41ce4d1facfe683550f54086")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_gateway_proxy_endpoint is deprecated: cloudflare:index/getZeroTrustGatewayProxyEndpoint:getZeroTrustGatewayProxyEndpoint has been deprecated in favor of cloudflare:zeroTrustGatewayProxy/endpoint:getEndpoint""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['proxyEndpointId'] = proxy_endpoint_id
@@ -174,10 +177,11 @@ def get_zero_trust_gateway_proxy_endpoint_output(account_id: pulumi.Input[Option
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_gateway_proxy_endpoint = cloudflare.get_zero_trust_gateway_proxy_endpoint(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_gateway_proxy_endpoint = cloudflare.zerotrustgatewayproxy.get_endpoint(account_id="699d98642c564d2e855e9661899b7252",
         proxy_endpoint_id="ed35569b41ce4d1facfe683550f54086")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_gateway_proxy_endpoint is deprecated: cloudflare:index/getZeroTrustGatewayProxyEndpoint:getZeroTrustGatewayProxyEndpoint has been deprecated in favor of cloudflare:zeroTrustGatewayProxy/endpoint:getEndpoint""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['proxyEndpointId'] = proxy_endpoint_id

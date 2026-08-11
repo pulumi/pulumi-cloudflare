@@ -27,11 +27,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ConnectivityDirectoryService;
- * import com.pulumi.cloudflare.ConnectivityDirectoryServiceArgs;
- * import com.pulumi.cloudflare.inputs.ConnectivityDirectoryServiceHostArgs;
- * import com.pulumi.cloudflare.inputs.ConnectivityDirectoryServiceHostNetworkArgs;
- * import com.pulumi.cloudflare.inputs.ConnectivityDirectoryServiceTlsSettingsArgs;
+ * import com.pulumi.cloudflare.connectivityDirectory.Service;
+ * import com.pulumi.cloudflare.connectivityDirectory.ServiceArgs;
+ * import com.pulumi.cloudflare.connectivityDirectory.inputs.ServiceHostArgs;
+ * import com.pulumi.cloudflare.connectivityDirectory.inputs.ServiceHostNetworkArgs;
+ * import com.pulumi.cloudflare.connectivityDirectory.inputs.ServiceTlsSettingsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -45,11 +45,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleConnectivityDirectoryService = new ConnectivityDirectoryService("exampleConnectivityDirectoryService", ConnectivityDirectoryServiceArgs.builder()
+ *         var exampleConnectivityDirectoryService = new Service("exampleConnectivityDirectoryService", ServiceArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .host(ConnectivityDirectoryServiceHostArgs.builder()
+ *             .host(ServiceHostArgs.builder()
  *                 .ipv4("10.0.0.1")
- *                 .network(ConnectivityDirectoryServiceHostNetworkArgs.builder()
+ *                 .network(ServiceHostNetworkArgs.builder()
  *                     .tunnelId("0191dce4-9ab4-7fce-b660-8e5dec5172da")
  *                     .build())
  *                 .build())
@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .type("http")
  *             .httpPort(8080)
  *             .httpsPort(8443)
- *             .tlsSettings(ConnectivityDirectoryServiceTlsSettingsArgs.builder()
+ *             .tlsSettings(ServiceTlsSettingsArgs.builder()
  *                 .certVerificationMode("verify_full")
  *                 .build())
  *             .build());
@@ -73,7 +73,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService example &#39;&lt;account_id&gt;/&lt;service_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService has been deprecated in favor of cloudflare:connectivityDirectory/service:Service
+ * 
  */
+@Deprecated /* cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService has been deprecated in favor of cloudflare:connectivityDirectory/service:Service */
 @ResourceType(type="cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService")
 public class ConnectivityDirectoryService extends com.pulumi.resources.CustomResource {
     /**

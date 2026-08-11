@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleLogpushJob = new Cloudflare.LogpushJob("example_logpush_job", new()
+    ///     var exampleLogpushJob = new Cloudflare.Modules.Logpush.LogpushJob("example_logpush_job", new()
     ///     {
     ///         DestinationConf = "s3://mybucket/logs?region=us-west-2",
     ///         ZoneId = "zone_id",
@@ -38,7 +38,7 @@ namespace Pulumi.Cloudflare
     ///         MaxUploadIntervalSeconds = 30,
     ///         MaxUploadRecords = 1000,
     ///         Name = "example.com",
-    ///         OutputOptions = new Cloudflare.Inputs.LogpushJobOutputOptionsArgs
+    ///         OutputOptions = new Cloudflare.Modules.Logpush.Inputs.JobOutputOptionsArgs
     ///         {
     ///             BatchPrefix = "",
     ///             BatchSuffix = "",
@@ -73,6 +73,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/logpushJob:LogpushJob example '&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;job_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/logpushJob:LogpushJob has been deprecated in favor of cloudflare:logpush/job:Job")]
     [CloudflareResourceType("cloudflare:index/logpushJob:LogpushJob")]
     public partial class LogpushJob : global::Pulumi.CustomResource
     {

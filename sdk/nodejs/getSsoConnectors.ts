@@ -17,12 +17,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSsoConnectors = cloudflare.getSsoConnectors({
+ * const exampleSsoConnectors = cloudflare.sso.getConnectors({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getSsoConnectors:getSsoConnectors has been deprecated in favor of cloudflare:sso/connectors:getConnectors */
 export function getSsoConnectors(args?: GetSsoConnectorsArgs, opts?: pulumi.InvokeOptions): Promise<GetSsoConnectorsResult> {
+    pulumi.log.warn("getSsoConnectors is deprecated: cloudflare:index/getSsoConnectors:getSsoConnectors has been deprecated in favor of cloudflare:sso/connectors:getConnectors")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getSsoConnectors:getSsoConnectors", {
@@ -73,12 +75,14 @@ export interface GetSsoConnectorsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSsoConnectors = cloudflare.getSsoConnectors({
+ * const exampleSsoConnectors = cloudflare.sso.getConnectors({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getSsoConnectors:getSsoConnectors has been deprecated in favor of cloudflare:sso/connectors:getConnectors */
 export function getSsoConnectorsOutput(args?: GetSsoConnectorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSsoConnectorsResult> {
+    pulumi.log.warn("getSsoConnectors is deprecated: cloudflare:index/getSsoConnectors:getSsoConnectors has been deprecated in favor of cloudflare:sso/connectors:getConnectors")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getSsoConnectors:getSsoConnectors", {

@@ -10,7 +10,9 @@ import * as utilities from "./utilities";
  * - `Snippets Read`
  * - `Snippets Write`
  */
+/** @deprecated cloudflare:index/getSnippetRules:getSnippetRules has been deprecated in favor of cloudflare:snippetRules/snippetRules:getSnippetRules */
 export function getSnippetRules(args: GetSnippetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetSnippetRulesResult> {
+    pulumi.log.warn("getSnippetRules is deprecated: cloudflare:index/getSnippetRules:getSnippetRules has been deprecated in favor of cloudflare:snippetRules/snippetRules:getSnippetRules")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getSnippetRules:getSnippetRules", {
         "zoneId": args.zoneId,
@@ -46,7 +48,9 @@ export interface GetSnippetRulesResult {
  * - `Snippets Read`
  * - `Snippets Write`
  */
+/** @deprecated cloudflare:index/getSnippetRules:getSnippetRules has been deprecated in favor of cloudflare:snippetRules/snippetRules:getSnippetRules */
 export function getSnippetRulesOutput(args: GetSnippetRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSnippetRulesResult> {
+    pulumi.log.warn("getSnippetRules is deprecated: cloudflare:index/getSnippetRules:getSnippetRules has been deprecated in favor of cloudflare:snippetRules/snippetRules:getSnippetRules")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getSnippetRules:getSnippetRules", {
         "zoneId": args.zoneId,

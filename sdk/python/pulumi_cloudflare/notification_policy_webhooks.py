@@ -225,8 +225,13 @@ class _NotificationPolicyWebhooksState:
         pulumi.set(self, "url", value)
 
 
+warnings.warn("""cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks has been deprecated in favor of cloudflare:notificationPolicyWebhooks/notificationPolicyWebhooks:NotificationPolicyWebhooks""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks")
 class NotificationPolicyWebhooks(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks has been deprecated in favor of cloudflare:notificationPolicyWebhooks/notificationPolicyWebhooks:NotificationPolicyWebhooks""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -251,7 +256,7 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_notification_policy_webhooks = cloudflare.NotificationPolicyWebhooks("example_notification_policy_webhooks",
+        example_notification_policy_webhooks = cloudflare.notificationpolicywebhooks.NotificationPolicyWebhooks("example_notification_policy_webhooks",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="Slack Webhook",
             url="https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd",
@@ -293,7 +298,7 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_notification_policy_webhooks = cloudflare.NotificationPolicyWebhooks("example_notification_policy_webhooks",
+        example_notification_policy_webhooks = cloudflare.notificationpolicywebhooks.NotificationPolicyWebhooks("example_notification_policy_webhooks",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="Slack Webhook",
             url="https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd",
@@ -327,6 +332,7 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
                  secret: pulumi.Input[Optional[_builtins.str]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""NotificationPolicyWebhooks is deprecated: cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks has been deprecated in favor of cloudflare:notificationPolicyWebhooks/notificationPolicyWebhooks:NotificationPolicyWebhooks""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

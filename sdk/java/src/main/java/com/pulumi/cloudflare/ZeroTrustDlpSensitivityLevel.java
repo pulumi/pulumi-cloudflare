@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDlpSensitivityLevel;
- * import com.pulumi.cloudflare.ZeroTrustDlpSensitivityLevelArgs;
+ * import com.pulumi.cloudflare.zeroTrustDlpSensitivityLevel.ZeroTrustDlpSensitivityLevel;
+ * import com.pulumi.cloudflare.zeroTrustDlpSensitivityLevel.ZeroTrustDlpSensitivityLevelArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -62,7 +62,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel example &#39;&lt;account_id&gt;/&lt;sensitivity_group_id&gt;/&lt;sensitivity_level_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel */
 @ResourceType(type="cloudflare:index/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel")
 public class ZeroTrustDlpSensitivityLevel extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

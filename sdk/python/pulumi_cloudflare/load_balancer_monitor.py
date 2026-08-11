@@ -605,8 +605,13 @@ class _LoadBalancerMonitorState:
         pulumi.set(self, "type", value)
 
 
+warnings.warn("""cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor has been deprecated in favor of cloudflare:loadBalancerMonitor/loadBalancerMonitor:LoadBalancerMonitor""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor")
 class LoadBalancerMonitor(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor has been deprecated in favor of cloudflare:loadBalancerMonitor/loadBalancerMonitor:LoadBalancerMonitor""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -641,7 +646,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_load_balancer_monitor = cloudflare.LoadBalancerMonitor("example_load_balancer_monitor",
+        example_load_balancer_monitor = cloudflare.loadbalancermonitor.LoadBalancerMonitor("example_load_balancer_monitor",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             allow_insecure=True,
             consecutive_down=0,
@@ -710,7 +715,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_load_balancer_monitor = cloudflare.LoadBalancerMonitor("example_load_balancer_monitor",
+        example_load_balancer_monitor = cloudflare.loadbalancermonitor.LoadBalancerMonitor("example_load_balancer_monitor",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             allow_insecure=True,
             consecutive_down=0,
@@ -773,6 +778,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
                  timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""LoadBalancerMonitor is deprecated: cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor has been deprecated in favor of cloudflare:loadBalancerMonitor/loadBalancerMonitor:LoadBalancerMonitor""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneSubscription = new cloudflare.ZoneSubscription("example_zone_subscription", {
+ * const exampleZoneSubscription = new cloudflare.zone.Subscription("example_zone_subscription", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     frequency: "monthly",
  *     ratePlan: {
@@ -38,6 +38,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zoneSubscription:ZoneSubscription example '<zone_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zoneSubscription:ZoneSubscription has been deprecated in favor of cloudflare:zone/subscription:Subscription
  */
 export class ZoneSubscription extends pulumi.CustomResource {
     /**
@@ -50,6 +52,7 @@ export class ZoneSubscription extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZoneSubscriptionState, opts?: pulumi.CustomResourceOptions): ZoneSubscription {
+        pulumi.log.warn("ZoneSubscription is deprecated: cloudflare:index/zoneSubscription:ZoneSubscription has been deprecated in favor of cloudflare:zone/subscription:Subscription")
         return new ZoneSubscription(name, <any>state, { ...opts, id: id });
     }
 
@@ -110,8 +113,11 @@ export class ZoneSubscription extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zoneSubscription:ZoneSubscription has been deprecated in favor of cloudflare:zone/subscription:Subscription */
     constructor(name: string, args: ZoneSubscriptionArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zoneSubscription:ZoneSubscription has been deprecated in favor of cloudflare:zone/subscription:Subscription */
     constructor(name: string, argsOrState?: ZoneSubscriptionArgs | ZoneSubscriptionState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZoneSubscription is deprecated: cloudflare:index/zoneSubscription:ZoneSubscription has been deprecated in favor of cloudflare:zone/subscription:Subscription")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

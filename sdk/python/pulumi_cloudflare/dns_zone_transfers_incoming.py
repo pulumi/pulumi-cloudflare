@@ -219,8 +219,13 @@ class _DnsZoneTransfersIncomingState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/dnsZoneTransfersIncoming:DnsZoneTransfersIncoming has been deprecated in favor of cloudflare:dnsZoneTransfers/incoming:Incoming""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/dnsZoneTransfersIncoming:DnsZoneTransfersIncoming")
 class DnsZoneTransfersIncoming(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/dnsZoneTransfersIncoming:DnsZoneTransfersIncoming has been deprecated in favor of cloudflare:dnsZoneTransfers/incoming:Incoming""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -245,7 +250,7 @@ class DnsZoneTransfersIncoming(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_dns_zone_transfers_incoming = cloudflare.DnsZoneTransfersIncoming("example_dns_zone_transfers_incoming",
+        example_dns_zone_transfers_incoming = cloudflare.dnszonetransfers.Incoming("example_dns_zone_transfers_incoming",
             zone_id="269d8f4853475ca241c4e730be286b20",
             auto_refresh_seconds=float(86400),
             name="www.example.com.",
@@ -290,7 +295,7 @@ class DnsZoneTransfersIncoming(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_dns_zone_transfers_incoming = cloudflare.DnsZoneTransfersIncoming("example_dns_zone_transfers_incoming",
+        example_dns_zone_transfers_incoming = cloudflare.dnszonetransfers.Incoming("example_dns_zone_transfers_incoming",
             zone_id="269d8f4853475ca241c4e730be286b20",
             auto_refresh_seconds=float(86400),
             name="www.example.com.",
@@ -327,6 +332,7 @@ class DnsZoneTransfersIncoming(pulumi.CustomResource):
                  peers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""DnsZoneTransfersIncoming is deprecated: cloudflare:index/dnsZoneTransfersIncoming:DnsZoneTransfersIncoming has been deprecated in favor of cloudflare:dnsZoneTransfers/incoming:Incoming""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

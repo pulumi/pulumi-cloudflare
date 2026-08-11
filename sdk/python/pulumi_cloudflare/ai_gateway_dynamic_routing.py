@@ -198,8 +198,13 @@ class _AiGatewayDynamicRoutingState:
         pulumi.set(self, "version", value)
 
 
+warnings.warn("""cloudflare:index/aiGatewayDynamicRouting:AiGatewayDynamicRouting has been deprecated in favor of cloudflare:aiGateway/dynamicRouting:DynamicRouting""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/aiGatewayDynamicRouting:AiGatewayDynamicRouting")
 class AiGatewayDynamicRouting(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/aiGatewayDynamicRouting:AiGatewayDynamicRouting has been deprecated in favor of cloudflare:aiGateway/dynamicRouting:DynamicRouting""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -221,7 +226,7 @@ class AiGatewayDynamicRouting(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_ai_gateway_dynamic_routing = cloudflare.AiGatewayDynamicRouting("example_ai_gateway_dynamic_routing",
+        example_ai_gateway_dynamic_routing = cloudflare.aigateway.DynamicRouting("example_ai_gateway_dynamic_routing",
             account_id="0d37909e38d3e99c29fa2cd343ac421a",
             gateway_id="54442216",
             elements=[{
@@ -264,7 +269,7 @@ class AiGatewayDynamicRouting(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_ai_gateway_dynamic_routing = cloudflare.AiGatewayDynamicRouting("example_ai_gateway_dynamic_routing",
+        example_ai_gateway_dynamic_routing = cloudflare.aigateway.DynamicRouting("example_ai_gateway_dynamic_routing",
             account_id="0d37909e38d3e99c29fa2cd343ac421a",
             gateway_id="54442216",
             elements=[{
@@ -306,6 +311,7 @@ class AiGatewayDynamicRouting(pulumi.CustomResource):
                  gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""AiGatewayDynamicRouting is deprecated: cloudflare:index/aiGatewayDynamicRouting:AiGatewayDynamicRouting has been deprecated in favor of cloudflare:aiGateway/dynamicRouting:DynamicRouting""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

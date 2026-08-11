@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleLoadBalancerPool = cloudflare.getLoadBalancerPool({
+ * const exampleLoadBalancerPool = cloudflare.loadbalancer.getPool({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     poolId: "17b5962d775c646f3f9725cbc7a53df4",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getLoadBalancerPool:getLoadBalancerPool has been deprecated in favor of cloudflare:loadBalancer/pool:getPool */
 export function getLoadBalancerPool(args?: GetLoadBalancerPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerPoolResult> {
+    pulumi.log.warn("getLoadBalancerPool is deprecated: cloudflare:index/getLoadBalancerPool:getLoadBalancerPool has been deprecated in favor of cloudflare:loadBalancer/pool:getPool")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getLoadBalancerPool:getLoadBalancerPool", {
@@ -139,13 +141,15 @@ export interface GetLoadBalancerPoolResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleLoadBalancerPool = cloudflare.getLoadBalancerPool({
+ * const exampleLoadBalancerPool = cloudflare.loadbalancer.getPool({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     poolId: "17b5962d775c646f3f9725cbc7a53df4",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getLoadBalancerPool:getLoadBalancerPool has been deprecated in favor of cloudflare:loadBalancer/pool:getPool */
 export function getLoadBalancerPoolOutput(args?: GetLoadBalancerPoolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadBalancerPoolResult> {
+    pulumi.log.warn("getLoadBalancerPool is deprecated: cloudflare:index/getLoadBalancerPool:getLoadBalancerPool has been deprecated in favor of cloudflare:loadBalancer/pool:getPool")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getLoadBalancerPool:getLoadBalancerPool", {

@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZoneCacheReserve;
- * import com.pulumi.cloudflare.ZoneCacheReserveArgs;
+ * import com.pulumi.cloudflare.zoneCache.Reserve;
+ * import com.pulumi.cloudflare.zoneCache.ReserveArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZoneCacheReserve = new ZoneCacheReserve("exampleZoneCacheReserve", ZoneCacheReserveArgs.builder()
+ *         var exampleZoneCacheReserve = new Reserve("exampleZoneCacheReserve", ReserveArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .value("on")
  *             .build());
@@ -62,7 +62,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zoneCacheReserve:ZoneCacheReserve example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zoneCacheReserve:ZoneCacheReserve has been deprecated in favor of cloudflare:zoneCache/reserve:Reserve
+ * 
  */
+@Deprecated /* cloudflare:index/zoneCacheReserve:ZoneCacheReserve has been deprecated in favor of cloudflare:zoneCache/reserve:Reserve */
 @ResourceType(type="cloudflare:index/zoneCacheReserve:ZoneCacheReserve")
 public class ZoneCacheReserve extends com.pulumi.resources.CustomResource {
     /**

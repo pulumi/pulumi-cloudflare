@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessShortLivedCertificate = new cloudflare.ZeroTrustAccessShortLivedCertificate("example_zero_trust_access_short_lived_certificate", {
+ * const exampleZeroTrustAccessShortLivedCertificate = new cloudflare.zerotrustaccessshortlived.Certificate("example_zero_trust_access_short_lived_certificate", {
  *     appId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     zoneId: "zone_id",
  * });
@@ -113,8 +113,6 @@ export class AccessCaCertificate extends pulumi.CustomResource {
             resourceInputs["publicKey"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessCaCertificate:AccessCaCertificate" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AccessCaCertificate.__pulumiType, name, resourceInputs, opts);
     }
 }

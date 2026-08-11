@@ -13,12 +13,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleOriginCloudRegions = cloudflare.getOriginCloudRegions({
+ * const exampleOriginCloudRegions = cloudflare.origincloud.getRegions({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getOriginCloudRegions:getOriginCloudRegions has been deprecated in favor of cloudflare:originCloud/regions:getRegions */
 export function getOriginCloudRegions(args: GetOriginCloudRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetOriginCloudRegionsResult> {
+    pulumi.log.warn("getOriginCloudRegions is deprecated: cloudflare:index/getOriginCloudRegions:getOriginCloudRegions has been deprecated in favor of cloudflare:originCloud/regions:getRegions")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getOriginCloudRegions:getOriginCloudRegions", {
         "maxItems": args.maxItems,
@@ -64,12 +66,14 @@ export interface GetOriginCloudRegionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleOriginCloudRegions = cloudflare.getOriginCloudRegions({
+ * const exampleOriginCloudRegions = cloudflare.origincloud.getRegions({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getOriginCloudRegions:getOriginCloudRegions has been deprecated in favor of cloudflare:originCloud/regions:getRegions */
 export function getOriginCloudRegionsOutput(args: GetOriginCloudRegionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOriginCloudRegionsResult> {
+    pulumi.log.warn("getOriginCloudRegions is deprecated: cloudflare:index/getOriginCloudRegions:getOriginCloudRegions has been deprecated in favor of cloudflare:originCloud/regions:getRegions")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getOriginCloudRegions:getOriginCloudRegions", {
         "maxItems": args.maxItems,

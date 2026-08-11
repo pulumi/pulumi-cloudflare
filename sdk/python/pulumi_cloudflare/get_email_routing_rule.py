@@ -23,6 +23,8 @@ __all__ = [
     'get_email_routing_rule_output',
 ]
 
+warnings.warn("""cloudflare:index/getEmailRoutingRule:getEmailRoutingRule has been deprecated in favor of cloudflare:emailRouting/rule:getRule""", DeprecationWarning)
+
 @pulumi.output_type
 class GetEmailRoutingRuleResult:
     """
@@ -188,7 +190,7 @@ def get_email_routing_rule(filter: Optional[Union['GetEmailRoutingRuleFilterArgs
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_email_routing_rule = cloudflare.get_email_routing_rule(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_email_routing_rule = cloudflare.emailrouting.get_rule(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         rule_identifier="a7e6fb77503c41d8a7f3113c6918f10c")
     ```
 
@@ -196,6 +198,7 @@ def get_email_routing_rule(filter: Optional[Union['GetEmailRoutingRuleFilterArgs
     :param _builtins.str rule_identifier: Routing rule identifier.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_email_routing_rule is deprecated: cloudflare:index/getEmailRoutingRule:getEmailRoutingRule has been deprecated in favor of cloudflare:emailRouting/rule:getRule""")
     __args__ = dict()
     __args__['filter'] = filter
     __args__['ruleIdentifier'] = rule_identifier
@@ -231,7 +234,7 @@ def get_email_routing_rule_output(filter: pulumi.Input[Optional[Optional[Union['
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_email_routing_rule = cloudflare.get_email_routing_rule(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_email_routing_rule = cloudflare.emailrouting.get_rule(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         rule_identifier="a7e6fb77503c41d8a7f3113c6918f10c")
     ```
 
@@ -239,6 +242,7 @@ def get_email_routing_rule_output(filter: pulumi.Input[Optional[Optional[Union['
     :param _builtins.str rule_identifier: Routing rule identifier.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_email_routing_rule is deprecated: cloudflare:index/getEmailRoutingRule:getEmailRoutingRule has been deprecated in favor of cloudflare:emailRouting/rule:getRule""")
     __args__ = dict()
     __args__['filter'] = filter
     __args__['ruleIdentifier'] = rule_identifier

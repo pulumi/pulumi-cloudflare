@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneDnssec = new cloudflare.ZoneDnssec("example_zone_dnssec", {
+ * const exampleZoneDnssec = new cloudflare.zone.Dnssec("example_zone_dnssec", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     dnssecMultiSigner: false,
  *     dnssecPresigned: true,
@@ -30,6 +30,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example '<zone_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zoneDnssec:ZoneDnssec has been deprecated in favor of cloudflare:zone/dnssec:Dnssec
  */
 export class ZoneDnssec extends pulumi.CustomResource {
     /**
@@ -42,6 +44,7 @@ export class ZoneDnssec extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZoneDnssecState, opts?: pulumi.CustomResourceOptions): ZoneDnssec {
+        pulumi.log.warn("ZoneDnssec is deprecated: cloudflare:index/zoneDnssec:ZoneDnssec has been deprecated in favor of cloudflare:zone/dnssec:Dnssec")
         return new ZoneDnssec(name, <any>state, { ...opts, id: id });
     }
 
@@ -142,8 +145,11 @@ export class ZoneDnssec extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zoneDnssec:ZoneDnssec has been deprecated in favor of cloudflare:zone/dnssec:Dnssec */
     constructor(name: string, args: ZoneDnssecArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zoneDnssec:ZoneDnssec has been deprecated in favor of cloudflare:zone/dnssec:Dnssec */
     constructor(name: string, argsOrState?: ZoneDnssecArgs | ZoneDnssecState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZoneDnssec is deprecated: cloudflare:index/zoneDnssec:ZoneDnssec has been deprecated in favor of cloudflare:zone/dnssec:Dnssec")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

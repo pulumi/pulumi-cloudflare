@@ -469,8 +469,13 @@ class _StreamLiveInputState:
         pulumi.set(self, "web_rtc_playback", value)
 
 
+warnings.warn("""cloudflare:index/streamLiveInput:StreamLiveInput has been deprecated in favor of cloudflare:stream/liveInput:LiveInput""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/streamLiveInput:StreamLiveInput")
 class StreamLiveInput(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/streamLiveInput:StreamLiveInput has been deprecated in favor of cloudflare:stream/liveInput:LiveInput""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -551,6 +556,7 @@ class StreamLiveInput(pulumi.CustomResource):
                  prefer_low_latency: pulumi.Input[Optional[_builtins.bool]] = None,
                  recording: pulumi.Input[Optional[Union['StreamLiveInputRecordingArgs', 'StreamLiveInputRecordingArgsDict']]] = None,
                  __props__=None):
+        pulumi.log.warn("""StreamLiveInput is deprecated: cloudflare:index/streamLiveInput:StreamLiveInput has been deprecated in favor of cloudflare:stream/liveInput:LiveInput""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

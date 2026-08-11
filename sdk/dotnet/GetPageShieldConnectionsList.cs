@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getPageShieldConnectionsList:getPageShieldConnectionsList has been deprecated in favor of cloudflare:pageShieldConnections/list:getList")]
     public static class GetPageShieldConnectionsList
     {
         /// <summary>
@@ -31,7 +32,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var examplePageShieldConnectionsList = Cloudflare.GetPageShieldConnectionsList.Invoke(new()
+        ///     var examplePageShieldConnectionsList = Cloudflare.Modules.PageShieldConnections.GetList.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
@@ -74,7 +75,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var examplePageShieldConnectionsList = Cloudflare.GetPageShieldConnectionsList.Invoke(new()
+        ///     var examplePageShieldConnectionsList = Cloudflare.Modules.PageShieldConnections.GetList.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
@@ -117,7 +118,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var examplePageShieldConnectionsList = Cloudflare.GetPageShieldConnectionsList.Invoke(new()
+        ///     var examplePageShieldConnectionsList = Cloudflare.Modules.PageShieldConnections.GetList.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",

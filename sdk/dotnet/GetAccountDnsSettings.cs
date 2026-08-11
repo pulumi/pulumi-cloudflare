@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getAccountDnsSettings:getAccountDnsSettings has been deprecated in favor of cloudflare:account/dnsSettings:getDnsSettings")]
     public static class GetAccountDnsSettings
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountDnsSettings = Cloudflare.GetAccountDnsSettings.Invoke(new()
+        ///     var exampleAccountDnsSettings = Cloudflare.Modules.Account.GetDnsSettings.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -54,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountDnsSettings = Cloudflare.GetAccountDnsSettings.Invoke(new()
+        ///     var exampleAccountDnsSettings = Cloudflare.Modules.Account.GetDnsSettings.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -81,7 +82,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountDnsSettings = Cloudflare.GetAccountDnsSettings.Invoke(new()
+        ///     var exampleAccountDnsSettings = Cloudflare.Modules.Account.GetDnsSettings.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

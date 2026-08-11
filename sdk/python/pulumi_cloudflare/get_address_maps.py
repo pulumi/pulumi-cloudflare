@@ -22,6 +22,8 @@ __all__ = [
     'get_address_maps_output',
 ]
 
+warnings.warn("""cloudflare:index/getAddressMaps:getAddressMaps has been deprecated in favor of cloudflare:address/maps:getMaps""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAddressMapsResult:
     """
@@ -89,13 +91,14 @@ def get_address_maps(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_address_maps = cloudflare.get_address_maps(account_id="258def64c72dae45f3e4c8516e2111f2")
+    example_address_maps = cloudflare.address.get_maps(account_id="258def64c72dae45f3e4c8516e2111f2")
     ```
 
 
     :param _builtins.str account_id: Identifier of a Cloudflare account.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_address_maps is deprecated: cloudflare:index/getAddressMaps:getAddressMaps has been deprecated in favor of cloudflare:address/maps:getMaps""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -121,13 +124,14 @@ def get_address_maps_output(account_id: pulumi.Input[Optional[Optional[_builtins
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_address_maps = cloudflare.get_address_maps(account_id="258def64c72dae45f3e4c8516e2111f2")
+    example_address_maps = cloudflare.address.get_maps(account_id="258def64c72dae45f3e4c8516e2111f2")
     ```
 
 
     :param _builtins.str account_id: Identifier of a Cloudflare account.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_address_maps is deprecated: cloudflare:index/getAddressMaps:getAddressMaps has been deprecated in favor of cloudflare:address/maps:getMaps""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

@@ -27,30 +27,30 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/notification"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewNotificationPolicy(ctx, "example_notification_policy", &cloudflare.NotificationPolicyArgs{
+//			_, err := notification.NewPolicy(ctx, "example_notification_policy", &notification.PolicyArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				AlertType: pulumi.String("universal_ssl_event_type"),
 //				Enabled:   pulumi.Bool(true),
-//				Mechanisms: &cloudflare.NotificationPolicyMechanismsArgs{
-//					Emails: cloudflare.NotificationPolicyMechanismsEmailArray{
-//						&cloudflare.NotificationPolicyMechanismsEmailArgs{
+//				Mechanisms: &notification.PolicyMechanismsArgs{
+//					Emails: notification.PolicyMechanismsEmailArray{
+//						&notification.PolicyMechanismsEmailArgs{
 //							Id: pulumi.String("id"),
 //						},
 //					},
-//					Pagerduties: cloudflare.NotificationPolicyMechanismsPagerdutyArray{
-//						&cloudflare.NotificationPolicyMechanismsPagerdutyArgs{
+//					Pagerduties: notification.PolicyMechanismsPagerdutyArray{
+//						&notification.PolicyMechanismsPagerdutyArgs{
 //							Id: pulumi.String("f174e90afafe4643bbbc4a0ed4fc8415"),
 //						},
 //					},
-//					Webhooks: cloudflare.NotificationPolicyMechanismsWebhookArray{
-//						&cloudflare.NotificationPolicyMechanismsWebhookArgs{
+//					Webhooks: notification.PolicyMechanismsWebhookArray{
+//						&notification.PolicyMechanismsWebhookArgs{
 //							Id: pulumi.String("f174e90afafe4643bbbc4a0ed4fc8415"),
 //						},
 //					},
@@ -58,7 +58,7 @@ import (
 //				Name:          pulumi.String("SSL Notification Event Policy"),
 //				AlertInterval: pulumi.String("30m"),
 //				Description:   pulumi.String("Something describing the policy."),
-//				Filters: &cloudflare.NotificationPolicyFiltersArgs{
+//				Filters: &notification.PolicyFiltersArgs{
 //					Actions: pulumi.StringArray{
 //						pulumi.String("string"),
 //					},
@@ -204,6 +204,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example '<account_id>/<policy_id>'
 // ```
+//
+// Deprecated: cloudflare:index/notificationPolicy:NotificationPolicy has been deprecated in favor of cloudflare:notification/policy:Policy
 type NotificationPolicy struct {
 	pulumi.CustomResourceState
 

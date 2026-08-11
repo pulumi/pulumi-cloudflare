@@ -23,6 +23,8 @@ __all__ = [
     'get_zone_lockdown_output',
 ]
 
+warnings.warn("""cloudflare:index/getZoneLockdown:getZoneLockdown has been deprecated in favor of cloudflare:zone/lockdown:getLockdown""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZoneLockdownResult:
     """
@@ -172,7 +174,7 @@ def get_zone_lockdown(filter: Optional[Union['GetZoneLockdownFilterArgs', 'GetZo
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zone_lockdown = cloudflare.get_zone_lockdown(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_zone_lockdown = cloudflare.zone.get_lockdown(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         lock_downs_id="372e67954025e0ba6aaa6d586b9e0b59")
     ```
 
@@ -180,6 +182,7 @@ def get_zone_lockdown(filter: Optional[Union['GetZoneLockdownFilterArgs', 'GetZo
     :param _builtins.str lock_downs_id: The unique identifier of the Zone Lockdown rule.
     :param _builtins.str zone_id: Defines an identifier.
     """
+    pulumi.log.warn("""get_zone_lockdown is deprecated: cloudflare:index/getZoneLockdown:getZoneLockdown has been deprecated in favor of cloudflare:zone/lockdown:getLockdown""")
     __args__ = dict()
     __args__['filter'] = filter
     __args__['lockDownsId'] = lock_downs_id
@@ -214,7 +217,7 @@ def get_zone_lockdown_output(filter: pulumi.Input[Optional[Optional[Union['GetZo
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zone_lockdown = cloudflare.get_zone_lockdown(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_zone_lockdown = cloudflare.zone.get_lockdown(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         lock_downs_id="372e67954025e0ba6aaa6d586b9e0b59")
     ```
 
@@ -222,6 +225,7 @@ def get_zone_lockdown_output(filter: pulumi.Input[Optional[Optional[Union['GetZo
     :param _builtins.str lock_downs_id: The unique identifier of the Zone Lockdown rule.
     :param _builtins.str zone_id: Defines an identifier.
     """
+    pulumi.log.warn("""get_zone_lockdown is deprecated: cloudflare:index/getZoneLockdown:getZoneLockdown has been deprecated in favor of cloudflare:zone/lockdown:getLockdown""")
     __args__ = dict()
     __args__['filter'] = filter
     __args__['lockDownsId'] = lock_downs_id

@@ -23,6 +23,8 @@ __all__ = [
     'get_certificate_pack_output',
 ]
 
+warnings.warn("""cloudflare:index/getCertificatePack:getCertificatePack has been deprecated in favor of cloudflare:certificate/pack:getPack""", DeprecationWarning)
+
 @pulumi.output_type
 class GetCertificatePackResult:
     """
@@ -249,7 +251,7 @@ def get_certificate_pack(certificate_pack_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_certificate_pack = cloudflare.get_certificate_pack(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_certificate_pack = cloudflare.certificate.get_pack(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         certificate_pack_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -257,6 +259,7 @@ def get_certificate_pack(certificate_pack_id: Optional[_builtins.str] = None,
     :param _builtins.str certificate_pack_id: Identifier.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_certificate_pack is deprecated: cloudflare:index/getCertificatePack:getCertificatePack has been deprecated in favor of cloudflare:certificate/pack:getPack""")
     __args__ = dict()
     __args__['certificatePackId'] = certificate_pack_id
     __args__['filter'] = filter
@@ -297,7 +300,7 @@ def get_certificate_pack_output(certificate_pack_id: pulumi.Input[Optional[Optio
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_certificate_pack = cloudflare.get_certificate_pack(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_certificate_pack = cloudflare.certificate.get_pack(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         certificate_pack_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -305,6 +308,7 @@ def get_certificate_pack_output(certificate_pack_id: pulumi.Input[Optional[Optio
     :param _builtins.str certificate_pack_id: Identifier.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_certificate_pack is deprecated: cloudflare:index/getCertificatePack:getCertificatePack has been deprecated in favor of cloudflare:certificate/pack:getPack""")
     __args__ = dict()
     __args__['certificatePackId'] = certificate_pack_id
     __args__['filter'] = filter

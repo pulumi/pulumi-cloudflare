@@ -6,7 +6,6 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.WorkersForPlatformsNamespaceArgs;
 import com.pulumi.cloudflare.inputs.WorkersForPlatformsNamespaceState;
-import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -14,7 +13,6 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -34,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WorkersForPlatformsDispatchNamespace;
- * import com.pulumi.cloudflare.WorkersForPlatformsDispatchNamespaceArgs;
+ * import com.pulumi.cloudflare.workersForPlatformsDispatch.Namespace;
+ * import com.pulumi.cloudflare.workersForPlatformsDispatch.NamespaceArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -49,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleWorkersForPlatformsDispatchNamespace = new WorkersForPlatformsDispatchNamespace("exampleWorkersForPlatformsDispatchNamespace", WorkersForPlatformsDispatchNamespaceArgs.builder()
+ *         var exampleWorkersForPlatformsDispatchNamespace = new Namespace("exampleWorkersForPlatformsDispatchNamespace", NamespaceArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .name("my-dispatch-namespace")
  *             .build());
@@ -252,9 +250,6 @@ public class WorkersForPlatformsNamespace extends com.pulumi.resources.CustomRes
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .aliases(List.of(
-                Output.of(Alias.builder().type("cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace").build())
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

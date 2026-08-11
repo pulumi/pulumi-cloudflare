@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustAccessKeyConfiguration:getZeroTrustAccessKeyConfiguration has been deprecated in favor of cloudflare:zeroTrustAccess/keyConfiguration:getKeyConfiguration")]
     public static class GetZeroTrustAccessKeyConfiguration
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessKeyConfiguration = Cloudflare.GetZeroTrustAccessKeyConfiguration.Invoke(new()
+        ///     var exampleZeroTrustAccessKeyConfiguration = Cloudflare.Modules.ZeroTrustAccess.GetKeyConfiguration.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -54,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessKeyConfiguration = Cloudflare.GetZeroTrustAccessKeyConfiguration.Invoke(new()
+        ///     var exampleZeroTrustAccessKeyConfiguration = Cloudflare.Modules.ZeroTrustAccess.GetKeyConfiguration.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -81,7 +82,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessKeyConfiguration = Cloudflare.GetZeroTrustAccessKeyConfiguration.Invoke(new()
+        ///     var exampleZeroTrustAccessKeyConfiguration = Cloudflare.Modules.ZeroTrustAccess.GetKeyConfiguration.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

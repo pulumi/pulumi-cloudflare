@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZoneCacheReserve:getZoneCacheReserve has been deprecated in favor of cloudflare:zoneCache/reserve:getReserve")]
     public static class GetZoneCacheReserve
     {
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZoneCacheReserve = Cloudflare.GetZoneCacheReserve.Invoke(new()
+        ///     var exampleZoneCacheReserve = Cloudflare.Modules.ZoneCache.GetReserve.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -58,7 +59,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZoneCacheReserve = Cloudflare.GetZoneCacheReserve.Invoke(new()
+        ///     var exampleZoneCacheReserve = Cloudflare.Modules.ZoneCache.GetReserve.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -87,7 +88,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZoneCacheReserve = Cloudflare.GetZoneCacheReserve.Invoke(new()
+        ///     var exampleZoneCacheReserve = Cloudflare.Modules.ZoneCache.GetReserve.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

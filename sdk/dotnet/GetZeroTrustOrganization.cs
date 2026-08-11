@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustOrganization:getZeroTrustOrganization has been deprecated in favor of cloudflare:zeroTrust/organization:getOrganization")]
     public static class GetZeroTrustOrganization
     {
         /// <summary>
@@ -28,7 +29,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustOrganization = Cloudflare.GetZeroTrustOrganization.Invoke(new()
+        ///     var exampleZeroTrustOrganization = Cloudflare.Modules.ZeroTrust.GetOrganization.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",
@@ -57,7 +58,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustOrganization = Cloudflare.GetZeroTrustOrganization.Invoke(new()
+        ///     var exampleZeroTrustOrganization = Cloudflare.Modules.ZeroTrust.GetOrganization.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",
@@ -86,7 +87,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustOrganization = Cloudflare.GetZeroTrustOrganization.Invoke(new()
+        ///     var exampleZeroTrustOrganization = Cloudflare.Modules.ZeroTrust.GetOrganization.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",

@@ -22,6 +22,8 @@ __all__ = [
     'get_pages_domain_output',
 ]
 
+warnings.warn("""cloudflare:index/getPagesDomain:getPagesDomain has been deprecated in favor of cloudflare:pages/domain:getDomain""", DeprecationWarning)
+
 @pulumi.output_type
 class GetPagesDomainResult:
     """
@@ -183,7 +185,7 @@ def get_pages_domain(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_pages_domain = cloudflare.get_pages_domain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_pages_domain = cloudflare.pages.get_domain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         project_name="this-is-my-project-01",
         domain_name="this-is-my-domain-01.com")
     ```
@@ -193,6 +195,7 @@ def get_pages_domain(account_id: Optional[_builtins.str] = None,
     :param _builtins.str domain_name: The domain name.
     :param _builtins.str project_name: Name of the project.
     """
+    pulumi.log.warn("""get_pages_domain is deprecated: cloudflare:index/getPagesDomain:getPagesDomain has been deprecated in favor of cloudflare:pages/domain:getDomain""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['domainName'] = domain_name
@@ -229,7 +232,7 @@ def get_pages_domain_output(account_id: pulumi.Input[Optional[_builtins.str]] = 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_pages_domain = cloudflare.get_pages_domain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_pages_domain = cloudflare.pages.get_domain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         project_name="this-is-my-project-01",
         domain_name="this-is-my-domain-01.com")
     ```
@@ -239,6 +242,7 @@ def get_pages_domain_output(account_id: pulumi.Input[Optional[_builtins.str]] = 
     :param _builtins.str domain_name: The domain name.
     :param _builtins.str project_name: Name of the project.
     """
+    pulumi.log.warn("""get_pages_domain is deprecated: cloudflare:index/getPagesDomain:getPagesDomain has been deprecated in favor of cloudflare:pages/domain:getDomain""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['domainName'] = domain_name

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getWaitingRoomSettings:getWaitingRoomSettings has been deprecated in favor of cloudflare:waitingRoom/settings:getSettings")]
     public static class GetWaitingRoomSettings
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWaitingRoomSettings = Cloudflare.GetWaitingRoomSettings.Invoke(new()
+        ///     var exampleWaitingRoomSettings = Cloudflare.Modules.WaitingRoom.GetSettings.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -54,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWaitingRoomSettings = Cloudflare.GetWaitingRoomSettings.Invoke(new()
+        ///     var exampleWaitingRoomSettings = Cloudflare.Modules.WaitingRoom.GetSettings.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -81,7 +82,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWaitingRoomSettings = Cloudflare.GetWaitingRoomSettings.Invoke(new()
+        ///     var exampleWaitingRoomSettings = Cloudflare.Modules.WaitingRoom.GetSettings.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

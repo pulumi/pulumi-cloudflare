@@ -22,6 +22,8 @@ __all__ = [
     'get_logpush_jobs_output',
 ]
 
+warnings.warn("""cloudflare:index/getLogpushJobs:getLogpushJobs has been deprecated in favor of cloudflare:logpush/jobs:getJobs""", DeprecationWarning)
+
 @pulumi.output_type
 class GetLogpushJobsResult:
     """
@@ -101,7 +103,7 @@ def get_logpush_jobs(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_logpush_jobs = cloudflare.get_logpush_jobs(account_id="account_id",
+    example_logpush_jobs = cloudflare.logpush.get_jobs(account_id="account_id",
         zone_id="zone_id")
     ```
 
@@ -110,6 +112,7 @@ def get_logpush_jobs(account_id: Optional[_builtins.str] = None,
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_logpush_jobs is deprecated: cloudflare:index/getLogpushJobs:getLogpushJobs has been deprecated in favor of cloudflare:logpush/jobs:getJobs""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -137,7 +140,7 @@ def get_logpush_jobs_output(account_id: pulumi.Input[Optional[Optional[_builtins
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_logpush_jobs = cloudflare.get_logpush_jobs(account_id="account_id",
+    example_logpush_jobs = cloudflare.logpush.get_jobs(account_id="account_id",
         zone_id="zone_id")
     ```
 
@@ -146,6 +149,7 @@ def get_logpush_jobs_output(account_id: pulumi.Input[Optional[Optional[_builtins
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_logpush_jobs is deprecated: cloudflare:index/getLogpushJobs:getLogpushJobs has been deprecated in favor of cloudflare:logpush/jobs:getJobs""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.CloudforceOneRequestAsset;
- * import com.pulumi.cloudflare.CloudforceOneRequestAssetArgs;
+ * import com.pulumi.cloudflare.cloudforceOneRequest.Asset;
+ * import com.pulumi.cloudflare.cloudforceOneRequest.AssetArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleCloudforceOneRequestAsset = new CloudforceOneRequestAsset("exampleCloudforceOneRequestAsset", CloudforceOneRequestAssetArgs.builder()
+ *         var exampleCloudforceOneRequestAsset = new Asset("exampleCloudforceOneRequestAsset", AssetArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
  *             .page(0)
@@ -63,7 +63,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset example &#39;&lt;account_id&gt;/&lt;request_id&gt;/&lt;asset_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset has been deprecated in favor of cloudflare:cloudforceOneRequest/asset:Asset
+ * 
  */
+@Deprecated /* cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset has been deprecated in favor of cloudflare:cloudforceOneRequest/asset:Asset */
 @ResourceType(type="cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset")
 public class CloudforceOneRequestAsset extends com.pulumi.resources.CustomResource {
     /**

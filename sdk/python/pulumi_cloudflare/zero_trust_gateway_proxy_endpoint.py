@@ -196,8 +196,13 @@ class _ZeroTrustGatewayProxyEndpointState:
         pulumi.set(self, "updated_at", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint has been deprecated in favor of cloudflare:zeroTrustGatewayProxy/endpoint:Endpoint""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint")
 class ZeroTrustGatewayProxyEndpoint(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint has been deprecated in favor of cloudflare:zeroTrustGatewayProxy/endpoint:Endpoint""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -214,7 +219,7 @@ class ZeroTrustGatewayProxyEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_gateway_proxy_endpoint = cloudflare.ZeroTrustGatewayProxyEndpoint("example_zero_trust_gateway_proxy_endpoint",
+        example_zero_trust_gateway_proxy_endpoint = cloudflare.zerotrustgatewayproxy.Endpoint("example_zero_trust_gateway_proxy_endpoint",
             account_id="699d98642c564d2e855e9661899b7252",
             name="Devops team",
             kind="ip")
@@ -247,7 +252,7 @@ class ZeroTrustGatewayProxyEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_gateway_proxy_endpoint = cloudflare.ZeroTrustGatewayProxyEndpoint("example_zero_trust_gateway_proxy_endpoint",
+        example_zero_trust_gateway_proxy_endpoint = cloudflare.zerotrustgatewayproxy.Endpoint("example_zero_trust_gateway_proxy_endpoint",
             account_id="699d98642c564d2e855e9661899b7252",
             name="Devops team",
             kind="ip")
@@ -280,6 +285,7 @@ class ZeroTrustGatewayProxyEndpoint(pulumi.CustomResource):
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustGatewayProxyEndpoint is deprecated: cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint has been deprecated in favor of cloudflare:zeroTrustGatewayProxy/endpoint:Endpoint""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

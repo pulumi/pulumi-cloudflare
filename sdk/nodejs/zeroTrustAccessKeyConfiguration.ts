@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessKeyConfiguration = new cloudflare.ZeroTrustAccessKeyConfiguration("example_zero_trust_access_key_configuration", {
+ * const exampleZeroTrustAccessKeyConfiguration = new cloudflare.zerotrustaccess.KeyConfiguration("example_zero_trust_access_key_configuration", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     keyRotationIntervalDays: 30,
  * });
@@ -27,6 +27,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration example '<account_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration has been deprecated in favor of cloudflare:zeroTrustAccess/keyConfiguration:KeyConfiguration
  */
 export class ZeroTrustAccessKeyConfiguration extends pulumi.CustomResource {
     /**
@@ -39,6 +41,7 @@ export class ZeroTrustAccessKeyConfiguration extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustAccessKeyConfigurationState, opts?: pulumi.CustomResourceOptions): ZeroTrustAccessKeyConfiguration {
+        pulumi.log.warn("ZeroTrustAccessKeyConfiguration is deprecated: cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration has been deprecated in favor of cloudflare:zeroTrustAccess/keyConfiguration:KeyConfiguration")
         return new ZeroTrustAccessKeyConfiguration(name, <any>state, { ...opts, id: id });
     }
 
@@ -80,8 +83,11 @@ export class ZeroTrustAccessKeyConfiguration extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration has been deprecated in favor of cloudflare:zeroTrustAccess/keyConfiguration:KeyConfiguration */
     constructor(name: string, args: ZeroTrustAccessKeyConfigurationArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration has been deprecated in favor of cloudflare:zeroTrustAccess/keyConfiguration:KeyConfiguration */
     constructor(name: string, argsOrState?: ZeroTrustAccessKeyConfigurationArgs | ZeroTrustAccessKeyConfigurationState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustAccessKeyConfiguration is deprecated: cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration has been deprecated in favor of cloudflare:zeroTrustAccess/keyConfiguration:KeyConfiguration")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

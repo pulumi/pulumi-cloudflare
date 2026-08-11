@@ -190,8 +190,13 @@ class _WorkersKvState:
         pulumi.set(self, "value", value)
 
 
+warnings.warn("""cloudflare:index/workersKv:WorkersKv has been deprecated in favor of cloudflare:workersKv/workersKv:WorkersKv""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/workersKv:WorkersKv")
 class WorkersKv(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/workersKv:WorkersKv has been deprecated in favor of cloudflare:workersKv/workersKv:WorkersKv""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -214,7 +219,7 @@ class WorkersKv(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_workers_kv = cloudflare.WorkersKv("example_workers_kv",
+        example_workers_kv = cloudflare.workerskv.WorkersKv("example_workers_kv",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             namespace_id="0f2ac74b498b48028cb68387c421e279",
             key_name="My-Key",
@@ -255,7 +260,7 @@ class WorkersKv(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_workers_kv = cloudflare.WorkersKv("example_workers_kv",
+        example_workers_kv = cloudflare.workerskv.WorkersKv("example_workers_kv",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             namespace_id="0f2ac74b498b48028cb68387c421e279",
             key_name="My-Key",
@@ -291,6 +296,7 @@ class WorkersKv(pulumi.CustomResource):
                  namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""WorkersKv is deprecated: cloudflare:index/workersKv:WorkersKv has been deprecated in favor of cloudflare:workersKv/workersKv:WorkersKv""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

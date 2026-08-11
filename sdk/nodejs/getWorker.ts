@@ -19,13 +19,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorker = cloudflare.getWorker({
+ * const exampleWorker = cloudflare.worker.getWorker({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     workerId: "worker_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorker:getWorker has been deprecated in favor of cloudflare:worker/worker:getWorker */
 export function getWorker(args?: GetWorkerArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkerResult> {
+    pulumi.log.warn("getWorker is deprecated: cloudflare:index/getWorker:getWorker has been deprecated in favor of cloudflare:worker/worker:getWorker")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorker:getWorker", {
@@ -121,13 +123,15 @@ export interface GetWorkerResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorker = cloudflare.getWorker({
+ * const exampleWorker = cloudflare.worker.getWorker({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     workerId: "worker_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorker:getWorker has been deprecated in favor of cloudflare:worker/worker:getWorker */
 export function getWorkerOutput(args?: GetWorkerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkerResult> {
+    pulumi.log.warn("getWorker is deprecated: cloudflare:index/getWorker:getWorker has been deprecated in favor of cloudflare:worker/worker:getWorker")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorker:getWorker", {

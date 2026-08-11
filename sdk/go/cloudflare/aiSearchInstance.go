@@ -15,6 +15,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/aiSearchInstance:AiSearchInstance has been deprecated in favor of cloudflare:aiSearch/instance:Instance
 type AiSearchInstance struct {
 	pulumi.CustomResourceState
 

@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDeviceSettings = new cloudflare.ZeroTrustDeviceSettings("example_zero_trust_device_settings", {
+ * const exampleZeroTrustDeviceSettings = new cloudflare.zerotrustdevice.Settings("example_zero_trust_device_settings", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     disableForTime: 0,
  *     externalEmergencySignalEnabled: true,
@@ -32,6 +32,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings has been deprecated in favor of cloudflare:zeroTrustDevice/settings:Settings
  */
 export class ZeroTrustDeviceSettings extends pulumi.CustomResource {
     /**
@@ -44,6 +46,7 @@ export class ZeroTrustDeviceSettings extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustDeviceSettingsState, opts?: pulumi.CustomResourceOptions): ZeroTrustDeviceSettings {
+        pulumi.log.warn("ZeroTrustDeviceSettings is deprecated: cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings has been deprecated in favor of cloudflare:zeroTrustDevice/settings:Settings")
         return new ZeroTrustDeviceSettings(name, <any>state, { ...opts, id: id });
     }
 
@@ -106,8 +109,11 @@ export class ZeroTrustDeviceSettings extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings has been deprecated in favor of cloudflare:zeroTrustDevice/settings:Settings */
     constructor(name: string, args: ZeroTrustDeviceSettingsArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings has been deprecated in favor of cloudflare:zeroTrustDevice/settings:Settings */
     constructor(name: string, argsOrState?: ZeroTrustDeviceSettingsArgs | ZeroTrustDeviceSettingsState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustDeviceSettings is deprecated: cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings has been deprecated in favor of cloudflare:zeroTrustDevice/settings:Settings")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

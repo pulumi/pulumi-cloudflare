@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDeviceManagedNetworks = new cloudflare.ZeroTrustDeviceManagedNetworks("example_zero_trust_device_managed_networks", {
+ * const exampleZeroTrustDeviceManagedNetworks = new cloudflare.zerotrustdevicemanagednetworks.ZeroTrustDeviceManagedNetworks("example_zero_trust_device_managed_networks", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     config: {
  *         tlsSockaddr: "foo.bar:1234",
@@ -126,8 +126,6 @@ export class DeviceManagedNetworks extends pulumi.CustomResource {
             resourceInputs["networkId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DeviceManagedNetworks.__pulumiType, name, resourceInputs, opts);
     }
 }

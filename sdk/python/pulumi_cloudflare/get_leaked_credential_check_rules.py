@@ -22,6 +22,8 @@ __all__ = [
     'get_leaked_credential_check_rules_output',
 ]
 
+warnings.warn("""cloudflare:index/getLeakedCredentialCheckRules:getLeakedCredentialCheckRules has been deprecated in favor of cloudflare:leakedCredentialCheck/rules:getRules""", DeprecationWarning)
+
 @pulumi.output_type
 class GetLeakedCredentialCheckRulesResult:
     """
@@ -91,13 +93,14 @@ def get_leaked_credential_check_rules(max_items: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_leaked_credential_check_rules = cloudflare.get_leaked_credential_check_rules(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_leaked_credential_check_rules = cloudflare.leakedcredentialcheck.get_rules(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: Defines an identifier.
     """
+    pulumi.log.warn("""get_leaked_credential_check_rules is deprecated: cloudflare:index/getLeakedCredentialCheckRules:getLeakedCredentialCheckRules has been deprecated in favor of cloudflare:leakedCredentialCheck/rules:getRules""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id
@@ -125,13 +128,14 @@ def get_leaked_credential_check_rules_output(max_items: pulumi.Input[Optional[Op
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_leaked_credential_check_rules = cloudflare.get_leaked_credential_check_rules(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_leaked_credential_check_rules = cloudflare.leakedcredentialcheck.get_rules(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: Defines an identifier.
     """
+    pulumi.log.warn("""get_leaked_credential_check_rules is deprecated: cloudflare:index/getLeakedCredentialCheckRules:getLeakedCredentialCheckRules has been deprecated in favor of cloudflare:leakedCredentialCheck/rules:getRules""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id

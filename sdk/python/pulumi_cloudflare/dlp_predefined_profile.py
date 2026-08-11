@@ -297,7 +297,7 @@ class DlpPredefinedProfile(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_predefined_profile = cloudflare.ZeroTrustDlpPredefinedProfile("example_zero_trust_dlp_predefined_profile",
+        example_zero_trust_dlp_predefined_profile = cloudflare.zerotrustdlppredefined.Profile("example_zero_trust_dlp_predefined_profile",
             profile_id="e91a2360-da51-4fdf-9711-bcdecd462614",
             account_id="account_id",
             ocr_enabled=True,
@@ -346,7 +346,7 @@ class DlpPredefinedProfile(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_predefined_profile = cloudflare.ZeroTrustDlpPredefinedProfile("example_zero_trust_dlp_predefined_profile",
+        example_zero_trust_dlp_predefined_profile = cloudflare.zerotrustdlppredefined.Profile("example_zero_trust_dlp_predefined_profile",
             profile_id="e91a2360-da51-4fdf-9711-bcdecd462614",
             account_id="account_id",
             ocr_enabled=True,
@@ -421,8 +421,6 @@ class DlpPredefinedProfile(pulumi.CustomResource):
             __props__.__dict__["profile_id"] = profile_id
             __props__.__dict__["name"] = None
             __props__.__dict__["open_access"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/dlpPredefinedProfile:DlpPredefinedProfile")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(DlpPredefinedProfile, __self__).__init__(
             'cloudflare:index/dlpPredefinedProfile:DlpPredefinedProfile',
             resource_name,

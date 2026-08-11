@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/dns"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewDnsRecord(ctx, "example_dns_record", &cloudflare.DnsRecordArgs{
+//			_, err := dns.NewRecord(ctx, "example_dns_record", &dns.RecordArgs{
 //				ZoneId:         pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:           pulumi.String("example.com"),
 //				Ttl:            pulumi.Float64(3600),
@@ -40,7 +40,7 @@ import (
 //				Content:        pulumi.String("198.51.100.4"),
 //				PrivateRouting: pulumi.Bool(true),
 //				Proxied:        pulumi.Bool(true),
-//				Settings: &cloudflare.DnsRecordSettingsArgs{
+//				Settings: &dns.RecordSettingsArgs{
 //					Ipv4Only: pulumi.Bool(true),
 //					Ipv6Only: pulumi.Bool(true),
 //				},
@@ -125,12 +125,6 @@ func NewRecord(ctx *pulumi.Context,
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("cloudflare:index/record:Record"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Record
 	err := ctx.RegisterResource("cloudflare:index/record:Record", name, args, &resource, opts...)

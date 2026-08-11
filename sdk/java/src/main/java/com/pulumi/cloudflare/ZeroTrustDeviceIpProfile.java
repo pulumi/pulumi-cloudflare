@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDeviceIpProfile;
- * import com.pulumi.cloudflare.ZeroTrustDeviceIpProfileArgs;
+ * import com.pulumi.cloudflare.zeroTrustDeviceIp.Profile;
+ * import com.pulumi.cloudflare.zeroTrustDeviceIp.ProfileArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var exampleZeroTrustDeviceIpProfile = new ZeroTrustDeviceIpProfile("exampleZeroTrustDeviceIpProfile", ZeroTrustDeviceIpProfileArgs.builder()
+ *         var exampleZeroTrustDeviceIpProfile = new Profile("exampleZeroTrustDeviceIpProfile", ProfileArgs.builder()
  *             .accountId("account_id")
  *             .match("identity.email == \"test}{@literal @}{@code cloudflare.com\"")
  *             .name("IPv4 Cloudflare Source IPs")
@@ -67,7 +67,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustDeviceIpProfile:ZeroTrustDeviceIpProfile example &#39;&lt;account_id&gt;/&lt;profile_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustDeviceIpProfile:ZeroTrustDeviceIpProfile has been deprecated in favor of cloudflare:zeroTrustDeviceIp/profile:Profile
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustDeviceIpProfile:ZeroTrustDeviceIpProfile has been deprecated in favor of cloudflare:zeroTrustDeviceIp/profile:Profile */
 @ResourceType(type="cloudflare:index/zeroTrustDeviceIpProfile:ZeroTrustDeviceIpProfile")
 public class ZeroTrustDeviceIpProfile extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

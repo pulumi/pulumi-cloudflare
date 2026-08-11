@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpSensitivityGroup = cloudflare.getZeroTrustDlpSensitivityGroup({
+ * const exampleZeroTrustDlpSensitivityGroup = cloudflare.zerotrustdlpsensitivity.getGroup({
  *     accountId: "account_id",
  *     sensitivityGroupId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpSensitivityGroup:getZeroTrustDlpSensitivityGroup has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/group:getGroup */
 export function getZeroTrustDlpSensitivityGroup(args: GetZeroTrustDlpSensitivityGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDlpSensitivityGroupResult> {
+    pulumi.log.warn("getZeroTrustDlpSensitivityGroup is deprecated: cloudflare:index/getZeroTrustDlpSensitivityGroup:getZeroTrustDlpSensitivityGroup has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/group:getGroup")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDlpSensitivityGroup:getZeroTrustDlpSensitivityGroup", {
         "accountId": args.accountId,
@@ -69,13 +71,15 @@ export interface GetZeroTrustDlpSensitivityGroupResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpSensitivityGroup = cloudflare.getZeroTrustDlpSensitivityGroup({
+ * const exampleZeroTrustDlpSensitivityGroup = cloudflare.zerotrustdlpsensitivity.getGroup({
  *     accountId: "account_id",
  *     sensitivityGroupId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpSensitivityGroup:getZeroTrustDlpSensitivityGroup has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/group:getGroup */
 export function getZeroTrustDlpSensitivityGroupOutput(args: GetZeroTrustDlpSensitivityGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDlpSensitivityGroupResult> {
+    pulumi.log.warn("getZeroTrustDlpSensitivityGroup is deprecated: cloudflare:index/getZeroTrustDlpSensitivityGroup:getZeroTrustDlpSensitivityGroup has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/group:getGroup")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDlpSensitivityGroup:getZeroTrustDlpSensitivityGroup", {
         "accountId": args.accountId,

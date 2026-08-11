@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/r2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetR2DataCatalog(ctx, &cloudflare.LookupR2DataCatalogArgs{
+//			_, err := r2.LookupDataCatalog(ctx, &r2.LookupDataCatalogArgs{
 //				AccountId:  pulumi.StringRef("0123456789abcdef0123456789abcdef"),
 //				BucketName: "my-data-bucket",
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getR2DataCatalog:getR2DataCatalog has been deprecated in favor of cloudflare:r2/dataCatalog:getDataCatalog
 func LookupR2DataCatalog(ctx *pulumi.Context, args *LookupR2DataCatalogArgs, opts ...pulumi.InvokeOption) (*LookupR2DataCatalogResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupR2DataCatalogResult

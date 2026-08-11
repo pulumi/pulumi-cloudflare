@@ -210,8 +210,13 @@ class _R2BucketSippyState:
         pulumi.set(self, "source", value)
 
 
+warnings.warn("""cloudflare:index/r2BucketSippy:R2BucketSippy has been deprecated in favor of cloudflare:r2Bucket/sippy:Sippy""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/r2BucketSippy:R2BucketSippy")
 class R2BucketSippy(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/r2BucketSippy:R2BucketSippy has been deprecated in favor of cloudflare:r2Bucket/sippy:Sippy""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -233,7 +238,7 @@ class R2BucketSippy(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_r2_bucket_sippy = cloudflare.R2BucketSippy("example_r2_bucket_sippy",
+        example_r2_bucket_sippy = cloudflare.r2bucket.Sippy("example_r2_bucket_sippy",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             bucket_name="example-bucket",
             destination={
@@ -280,7 +285,7 @@ class R2BucketSippy(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_r2_bucket_sippy = cloudflare.R2BucketSippy("example_r2_bucket_sippy",
+        example_r2_bucket_sippy = cloudflare.r2bucket.Sippy("example_r2_bucket_sippy",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             bucket_name="example-bucket",
             destination={
@@ -323,6 +328,7 @@ class R2BucketSippy(pulumi.CustomResource):
                  jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
                  source: pulumi.Input[Optional[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict']]] = None,
                  __props__=None):
+        pulumi.log.warn("""R2BucketSippy is deprecated: cloudflare:index/r2BucketSippy:R2BucketSippy has been deprecated in favor of cloudflare:r2Bucket/sippy:Sippy""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

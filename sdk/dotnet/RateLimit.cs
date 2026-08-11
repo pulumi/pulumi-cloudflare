@@ -15,7 +15,7 @@ namespace Pulumi.Cloudflare
     /// - `Firewall Services Read`
     /// - `Firewall Services Write`
     /// 
-    /// &gt; `cloudflare.RateLimit` is in a deprecation phase until June 15th, 2025.
+    /// &gt; `cloudflare.rate.Limit` is in a deprecation phase until June 15th, 2025.
     ///   During this time period, this resource is still
     ///   fully supported but you are strongly advised to move to the
     ///   `cloudflare.Ruleset` resource. Full details can be found in the
@@ -31,31 +31,31 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleRateLimit = new Cloudflare.RateLimit("example_rate_limit", new()
+    ///     var exampleRateLimit = new Cloudflare.Modules.Rate.RateLimit("example_rate_limit", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         Action = new Cloudflare.Inputs.RateLimitActionArgs
+    ///         Action = new Cloudflare.Modules.Rate.Inputs.LimitActionArgs
     ///         {
     ///             Mode = "challenge",
-    ///             Response = new Cloudflare.Inputs.RateLimitActionResponseArgs
+    ///             Response = new Cloudflare.Modules.Rate.Inputs.LimitActionResponseArgs
     ///             {
     ///                 Body = "&lt;error&gt;This request has been rate-limited.&lt;/error&gt;",
     ///                 ContentType = "text/xml",
     ///             },
     ///             Timeout = 86400,
     ///         },
-    ///         Match = new Cloudflare.Inputs.RateLimitMatchArgs
+    ///         Match = new Cloudflare.Modules.Rate.Inputs.LimitMatchArgs
     ///         {
     ///             Headers = new[]
     ///             {
-    ///                 new Cloudflare.Inputs.RateLimitMatchHeaderArgs
+    ///                 new Cloudflare.Modules.Rate.Inputs.LimitMatchHeaderArgs
     ///                 {
     ///                     Name = "Cf-Cache-Status",
     ///                     Op = "ne",
     ///                     Value = "HIT",
     ///                 },
     ///             },
-    ///             Request = new Cloudflare.Inputs.RateLimitMatchRequestArgs
+    ///             Request = new Cloudflare.Modules.Rate.Inputs.LimitMatchRequestArgs
     ///             {
     ///                 Methods = new[]
     ///                 {
@@ -69,7 +69,7 @@ namespace Pulumi.Cloudflare
     ///                 },
     ///                 Url = "*.example.org/path*",
     ///             },
-    ///             Response = new Cloudflare.Inputs.RateLimitMatchResponseArgs
+    ///             Response = new Cloudflare.Modules.Rate.Inputs.LimitMatchResponseArgs
     ///             {
     ///                 OriginTraffic = true,
     ///             },
@@ -87,6 +87,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/rateLimit:RateLimit example '&lt;zone_id&gt;/&lt;rate_limit_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/rateLimit:RateLimit has been deprecated in favor of cloudflare:rate/limit:Limit")]
     [CloudflareResourceType("cloudflare:index/rateLimit:RateLimit")]
     public partial class RateLimit : global::Pulumi.CustomResource
     {

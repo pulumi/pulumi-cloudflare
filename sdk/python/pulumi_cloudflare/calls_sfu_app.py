@@ -193,8 +193,13 @@ class _CallsSfuAppState:
         pulumi.set(self, "uid", value)
 
 
+warnings.warn("""cloudflare:index/callsSfuApp:CallsSfuApp has been deprecated in favor of cloudflare:callsSfu/app:App""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/callsSfuApp:CallsSfuApp")
 class CallsSfuApp(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/callsSfuApp:CallsSfuApp has been deprecated in favor of cloudflare:callsSfu/app:App""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -215,7 +220,7 @@ class CallsSfuApp(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_calls_sfu_app = cloudflare.CallsSfuApp("example_calls_sfu_app",
+        example_calls_sfu_app = cloudflare.callssfu.App("example_calls_sfu_app",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="production-realtime-app")
         ```
@@ -249,7 +254,7 @@ class CallsSfuApp(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_calls_sfu_app = cloudflare.CallsSfuApp("example_calls_sfu_app",
+        example_calls_sfu_app = cloudflare.callssfu.App("example_calls_sfu_app",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="production-realtime-app")
         ```
@@ -278,6 +283,7 @@ class CallsSfuApp(pulumi.CustomResource):
                  app_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""CallsSfuApp is deprecated: cloudflare:index/callsSfuApp:CallsSfuApp has been deprecated in favor of cloudflare:callsSfu/app:App""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

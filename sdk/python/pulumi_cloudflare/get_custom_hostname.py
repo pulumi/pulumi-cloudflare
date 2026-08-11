@@ -23,6 +23,8 @@ __all__ = [
     'get_custom_hostname_output',
 ]
 
+warnings.warn("""cloudflare:index/getCustomHostname:getCustomHostname has been deprecated in favor of cloudflare:customHostname/customHostname:getCustomHostname""", DeprecationWarning)
+
 @pulumi.output_type
 class GetCustomHostnameResult:
     """
@@ -218,7 +220,7 @@ def get_custom_hostname(custom_hostname_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_custom_hostname = cloudflare.get_custom_hostname(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_custom_hostname = cloudflare.customhostname.get_custom_hostname(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         custom_hostname_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -226,6 +228,7 @@ def get_custom_hostname(custom_hostname_id: Optional[_builtins.str] = None,
     :param _builtins.str custom_hostname_id: Identifier.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_custom_hostname is deprecated: cloudflare:index/getCustomHostname:getCustomHostname has been deprecated in favor of cloudflare:customHostname/customHostname:getCustomHostname""")
     __args__ = dict()
     __args__['customHostnameId'] = custom_hostname_id
     __args__['filter'] = filter
@@ -264,7 +267,7 @@ def get_custom_hostname_output(custom_hostname_id: pulumi.Input[Optional[Optiona
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_custom_hostname = cloudflare.get_custom_hostname(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_custom_hostname = cloudflare.customhostname.get_custom_hostname(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         custom_hostname_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -272,6 +275,7 @@ def get_custom_hostname_output(custom_hostname_id: pulumi.Input[Optional[Optiona
     :param _builtins.str custom_hostname_id: Identifier.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_custom_hostname is deprecated: cloudflare:index/getCustomHostname:getCustomHostname has been deprecated in favor of cloudflare:customHostname/customHostname:getCustomHostname""")
     __args__ = dict()
     __args__['customHostnameId'] = custom_hostname_id
     __args__['filter'] = filter

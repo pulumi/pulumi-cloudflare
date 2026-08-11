@@ -24,19 +24,19 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/r2bucket"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewR2BucketEventNotification(ctx, "example_r2_bucket_event_notification", &cloudflare.R2BucketEventNotificationArgs{
+//			_, err := r2bucket.NewEventNotification(ctx, "example_r2_bucket_event_notification", &r2bucket.EventNotificationArgs{
 //				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				BucketName: pulumi.String("example-bucket"),
 //				QueueId:    pulumi.String("queue_id"),
-//				Rules: cloudflare.R2BucketEventNotificationRuleArray{
-//					&cloudflare.R2BucketEventNotificationRuleArgs{
+//				Rules: r2bucket.EventNotificationRuleArray{
+//					&r2bucket.EventNotificationRuleArgs{
 //						Actions: pulumi.StringArray{
 //							pulumi.String("PutObject"),
 //							pulumi.String("CopyObject"),
@@ -59,6 +59,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/r2BucketEventNotification:R2BucketEventNotification has been deprecated in favor of cloudflare:r2Bucket/eventNotification:EventNotification
 type R2BucketEventNotification struct {
 	pulumi.CustomResourceState
 

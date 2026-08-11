@@ -20,10 +20,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleMagicTransitConnector = new Cloudflare.MagicTransitConnector("example_magic_transit_connector", new()
+    ///     var exampleMagicTransitConnector = new Cloudflare.Modules.MagicTransit.MagicTransitConnector("example_magic_transit_connector", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         Device = new Cloudflare.Inputs.MagicTransitConnectorDeviceArgs
+    ///         Device = new Cloudflare.Modules.MagicTransit.Inputs.ConnectorDeviceArgs
     ///         {
     ///             Id = "id",
     ///             ProvisionLicense = true,
@@ -53,6 +53,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/magicTransitConnector:MagicTransitConnector example '&lt;account_id&gt;/&lt;connector_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/magicTransitConnector:MagicTransitConnector has been deprecated in favor of cloudflare:magicTransit/connector:Connector")]
     [CloudflareResourceType("cloudflare:index/magicTransitConnector:MagicTransitConnector")]
     public partial class MagicTransitConnector : global::Pulumi.CustomResource
     {

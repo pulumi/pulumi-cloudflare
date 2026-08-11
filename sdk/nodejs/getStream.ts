@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleStream = cloudflare.getStream({
+ * const exampleStream = cloudflare.stream.getStream({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     identifier: "ea95132c15732412d22c1476fa83f27a",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getStream:getStream has been deprecated in favor of cloudflare:stream/stream:getStream */
 export function getStream(args: GetStreamArgs, opts?: pulumi.InvokeOptions): Promise<GetStreamResult> {
+    pulumi.log.warn("getStream is deprecated: cloudflare:index/getStream:getStream has been deprecated in favor of cloudflare:stream/stream:getStream")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getStream:getStream", {
         "accountId": args.accountId,
@@ -166,13 +168,15 @@ export interface GetStreamResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleStream = cloudflare.getStream({
+ * const exampleStream = cloudflare.stream.getStream({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     identifier: "ea95132c15732412d22c1476fa83f27a",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getStream:getStream has been deprecated in favor of cloudflare:stream/stream:getStream */
 export function getStreamOutput(args: GetStreamOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStreamResult> {
+    pulumi.log.warn("getStream is deprecated: cloudflare:index/getStream:getStream has been deprecated in favor of cloudflare:stream/stream:getStream")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getStream:getStream", {
         "accountId": args.accountId,

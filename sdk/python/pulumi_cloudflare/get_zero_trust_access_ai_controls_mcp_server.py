@@ -23,6 +23,8 @@ __all__ = [
     'get_zero_trust_access_ai_controls_mcp_server_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustAccessAiControlsMcpServer:getZeroTrustAccessAiControlsMcpServer has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/server:getServer""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustAccessAiControlsMcpServerResult:
     """
@@ -281,13 +283,14 @@ def get_zero_trust_access_ai_controls_mcp_server(account_id: Optional[_builtins.
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_ai_controls_mcp_server = cloudflare.get_zero_trust_access_ai_controls_mcp_server(account_id="a86a8f5c339544d7bdc89926de14fb8c",
+    example_zero_trust_access_ai_controls_mcp_server = cloudflare.zerotrustaccessaicontrolsmcp.get_server(account_id="a86a8f5c339544d7bdc89926de14fb8c",
         id="my-mcp-server")
     ```
 
 
     :param _builtins.str id: server id
     """
+    pulumi.log.warn("""get_zero_trust_access_ai_controls_mcp_server is deprecated: cloudflare:index/getZeroTrustAccessAiControlsMcpServer:getZeroTrustAccessAiControlsMcpServer has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/server:getServer""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -335,13 +338,14 @@ def get_zero_trust_access_ai_controls_mcp_server_output(account_id: pulumi.Input
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_ai_controls_mcp_server = cloudflare.get_zero_trust_access_ai_controls_mcp_server(account_id="a86a8f5c339544d7bdc89926de14fb8c",
+    example_zero_trust_access_ai_controls_mcp_server = cloudflare.zerotrustaccessaicontrolsmcp.get_server(account_id="a86a8f5c339544d7bdc89926de14fb8c",
         id="my-mcp-server")
     ```
 
 
     :param _builtins.str id: server id
     """
+    pulumi.log.warn("""get_zero_trust_access_ai_controls_mcp_server is deprecated: cloudflare:index/getZeroTrustAccessAiControlsMcpServer:getZeroTrustAccessAiControlsMcpServer has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/server:getServer""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

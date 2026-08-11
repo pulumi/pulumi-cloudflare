@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustNetworkHostnameRoutes = cloudflare.getZeroTrustNetworkHostnameRoutes({
+ * const exampleZeroTrustNetworkHostnameRoutes = cloudflare.zerotrustnetworkhostname.getRoutes({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     id: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
  *     comment: "example%20comment",
@@ -30,7 +30,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustNetworkHostnameRoutes:getZeroTrustNetworkHostnameRoutes has been deprecated in favor of cloudflare:zeroTrustNetworkHostname/routes:getRoutes */
 export function getZeroTrustNetworkHostnameRoutes(args?: GetZeroTrustNetworkHostnameRoutesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustNetworkHostnameRoutesResult> {
+    pulumi.log.warn("getZeroTrustNetworkHostnameRoutes is deprecated: cloudflare:index/getZeroTrustNetworkHostnameRoutes:getZeroTrustNetworkHostnameRoutes has been deprecated in favor of cloudflare:zeroTrustNetworkHostname/routes:getRoutes")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustNetworkHostnameRoutes:getZeroTrustNetworkHostnameRoutes", {
@@ -138,7 +140,7 @@ export interface GetZeroTrustNetworkHostnameRoutesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustNetworkHostnameRoutes = cloudflare.getZeroTrustNetworkHostnameRoutes({
+ * const exampleZeroTrustNetworkHostnameRoutes = cloudflare.zerotrustnetworkhostname.getRoutes({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     id: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
  *     comment: "example%20comment",
@@ -148,7 +150,9 @@ export interface GetZeroTrustNetworkHostnameRoutesResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustNetworkHostnameRoutes:getZeroTrustNetworkHostnameRoutes has been deprecated in favor of cloudflare:zeroTrustNetworkHostname/routes:getRoutes */
 export function getZeroTrustNetworkHostnameRoutesOutput(args?: GetZeroTrustNetworkHostnameRoutesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustNetworkHostnameRoutesResult> {
+    pulumi.log.warn("getZeroTrustNetworkHostnameRoutes is deprecated: cloudflare:index/getZeroTrustNetworkHostnameRoutes:getZeroTrustNetworkHostnameRoutes has been deprecated in favor of cloudflare:zeroTrustNetworkHostname/routes:getRoutes")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustNetworkHostnameRoutes:getZeroTrustNetworkHostnameRoutes", {

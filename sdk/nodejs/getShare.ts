@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleShare = cloudflare.getShare({
+ * const exampleShare = cloudflare.share.getShare({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     shareId: "3fd85f74b32742f1bff64a85009dda07",
  *     includeRecipientCounts: true,
@@ -21,7 +21,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getShare:getShare has been deprecated in favor of cloudflare:share/share:getShare */
 export function getShare(args: GetShareArgs, opts?: pulumi.InvokeOptions): Promise<GetShareResult> {
+    pulumi.log.warn("getShare is deprecated: cloudflare:index/getShare:getShare has been deprecated in favor of cloudflare:share/share:getShare")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getShare:getShare", {
         "accountId": args.accountId,
@@ -140,7 +142,7 @@ export interface GetShareResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleShare = cloudflare.getShare({
+ * const exampleShare = cloudflare.share.getShare({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     shareId: "3fd85f74b32742f1bff64a85009dda07",
  *     includeRecipientCounts: true,
@@ -148,7 +150,9 @@ export interface GetShareResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getShare:getShare has been deprecated in favor of cloudflare:share/share:getShare */
 export function getShareOutput(args: GetShareOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetShareResult> {
+    pulumi.log.warn("getShare is deprecated: cloudflare:index/getShare:getShare has been deprecated in favor of cloudflare:share/share:getShare")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getShare:getShare", {
         "accountId": args.accountId,

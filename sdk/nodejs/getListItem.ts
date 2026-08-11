@@ -18,14 +18,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleListItem = cloudflare.getListItem({
+ * const exampleListItem = cloudflare.list.getItem({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     listId: "2c0fc9fa937b11eaa1b71c4d701ab86e",
  *     itemId: "34b12448945f11eaa1b71c4d701ab86e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getListItem:getListItem has been deprecated in favor of cloudflare:list/item:getItem */
 export function getListItem(args: GetListItemArgs, opts?: pulumi.InvokeOptions): Promise<GetListItemResult> {
+    pulumi.log.warn("getListItem is deprecated: cloudflare:index/getListItem:getListItem has been deprecated in favor of cloudflare:list/item:getItem")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getListItem:getListItem", {
         "accountId": args.accountId,
@@ -113,14 +115,16 @@ export interface GetListItemResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleListItem = cloudflare.getListItem({
+ * const exampleListItem = cloudflare.list.getItem({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     listId: "2c0fc9fa937b11eaa1b71c4d701ab86e",
  *     itemId: "34b12448945f11eaa1b71c4d701ab86e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getListItem:getListItem has been deprecated in favor of cloudflare:list/item:getItem */
 export function getListItemOutput(args: GetListItemOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetListItemResult> {
+    pulumi.log.warn("getListItem is deprecated: cloudflare:index/getListItem:getListItem has been deprecated in favor of cloudflare:list/item:getItem")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getListItem:getListItem", {
         "accountId": args.accountId,

@@ -16,12 +16,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleStreamKey = cloudflare.getStreamKey({
+ * const exampleStreamKey = cloudflare.stream.getKey({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getStreamKey:getStreamKey has been deprecated in favor of cloudflare:stream/key:getKey */
 export function getStreamKey(args?: GetStreamKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetStreamKeyResult> {
+    pulumi.log.warn("getStreamKey is deprecated: cloudflare:index/getStreamKey:getStreamKey has been deprecated in favor of cloudflare:stream/key:getKey")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getStreamKey:getStreamKey", {
@@ -72,12 +74,14 @@ export interface GetStreamKeyResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleStreamKey = cloudflare.getStreamKey({
+ * const exampleStreamKey = cloudflare.stream.getKey({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getStreamKey:getStreamKey has been deprecated in favor of cloudflare:stream/key:getKey */
 export function getStreamKeyOutput(args?: GetStreamKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStreamKeyResult> {
+    pulumi.log.warn("getStreamKey is deprecated: cloudflare:index/getStreamKey:getStreamKey has been deprecated in favor of cloudflare:stream/key:getKey")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getStreamKey:getStreamKey", {

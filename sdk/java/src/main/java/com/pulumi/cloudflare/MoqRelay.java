@@ -22,7 +22,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/moqRelay:MoqRelay example &#39;&lt;account_id&gt;/&lt;relay_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/moqRelay:MoqRelay has been deprecated in favor of cloudflare:moq/relay:Relay
+ * 
  */
+@Deprecated /* cloudflare:index/moqRelay:MoqRelay has been deprecated in favor of cloudflare:moq/relay:Relay */
 @ResourceType(type="cloudflare:index/moqRelay:MoqRelay")
 public class MoqRelay extends com.pulumi.resources.CustomResource {
     /**

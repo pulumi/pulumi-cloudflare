@@ -23,6 +23,8 @@ __all__ = [
     'get_ai_search_token_output',
 ]
 
+warnings.warn("""cloudflare:index/getAiSearchToken:getAiSearchToken has been deprecated in favor of cloudflare:aiSearch/token:getToken""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAiSearchTokenResult:
     """
@@ -150,6 +152,7 @@ def get_ai_search_token(account_id: Optional[_builtins.str] = None,
 
     :param _builtins.str id: The ID of this resource.
     """
+    pulumi.log.warn("""get_ai_search_token is deprecated: cloudflare:index/getAiSearchToken:getAiSearchToken has been deprecated in favor of cloudflare:aiSearch/token:getToken""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -178,6 +181,7 @@ def get_ai_search_token_output(account_id: pulumi.Input[Optional[Optional[_built
 
     :param _builtins.str id: The ID of this resource.
     """
+    pulumi.log.warn("""get_ai_search_token is deprecated: cloudflare:index/getAiSearchToken:getAiSearchToken has been deprecated in favor of cloudflare:aiSearch/token:getToken""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

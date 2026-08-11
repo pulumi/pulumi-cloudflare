@@ -19,14 +19,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomPages = cloudflare.getCustomPages({
+ * const exampleCustomPages = cloudflare.custompages.getCustomPages({
  *     identifier: "ratelimit_block",
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCustomPages:getCustomPages has been deprecated in favor of cloudflare:customPages/customPages:getCustomPages */
 export function getCustomPages(args: GetCustomPagesArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomPagesResult> {
+    pulumi.log.warn("getCustomPages is deprecated: cloudflare:index/getCustomPages:getCustomPages has been deprecated in favor of cloudflare:customPages/customPages:getCustomPages")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCustomPages:getCustomPages", {
         "accountId": args.accountId,
@@ -106,14 +108,16 @@ export interface GetCustomPagesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomPages = cloudflare.getCustomPages({
+ * const exampleCustomPages = cloudflare.custompages.getCustomPages({
  *     identifier: "ratelimit_block",
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCustomPages:getCustomPages has been deprecated in favor of cloudflare:customPages/customPages:getCustomPages */
 export function getCustomPagesOutput(args: GetCustomPagesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomPagesResult> {
+    pulumi.log.warn("getCustomPages is deprecated: cloudflare:index/getCustomPages:getCustomPages has been deprecated in favor of cloudflare:customPages/customPages:getCustomPages")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCustomPages:getCustomPages", {
         "accountId": args.accountId,

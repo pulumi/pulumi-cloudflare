@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleDnsRecord = new Cloudflare.DnsRecord("example_dns_record", new()
+    ///     var exampleDnsRecord = new Cloudflare.Modules.Dns.DnsRecord("example_dns_record", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "example.com",
@@ -35,7 +35,7 @@ namespace Pulumi.Cloudflare
     ///         Content = "198.51.100.4",
     ///         PrivateRouting = true,
     ///         Proxied = true,
-    ///         Settings = new Cloudflare.Inputs.DnsRecordSettingsArgs
+    ///         Settings = new Cloudflare.Modules.Dns.Inputs.RecordSettingsArgs
     ///         {
     ///             Ipv4Only = true,
     ///             Ipv6Only = true,
@@ -55,6 +55,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/dnsRecord:DnsRecord example '&lt;zone_id&gt;/&lt;dns_record_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/dnsRecord:DnsRecord has been deprecated in favor of cloudflare:dns/record:Record")]
     [CloudflareResourceType("cloudflare:index/dnsRecord:DnsRecord")]
     public partial class DnsRecord : global::Pulumi.CustomResource
     {

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustAccessMtlsCertificates:getZeroTrustAccessMtlsCertificates has been deprecated in favor of cloudflare:zeroTrustAccessMtls/certificates:getCertificates")]
     public static class GetZeroTrustAccessMtlsCertificates
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessMtlsCertificates = Cloudflare.GetZeroTrustAccessMtlsCertificates.Invoke(new()
+        ///     var exampleZeroTrustAccessMtlsCertificates = Cloudflare.Modules.ZeroTrustAccessMtls.GetCertificates.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessMtlsCertificates = Cloudflare.GetZeroTrustAccessMtlsCertificates.Invoke(new()
+        ///     var exampleZeroTrustAccessMtlsCertificates = Cloudflare.Modules.ZeroTrustAccessMtls.GetCertificates.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessMtlsCertificates = Cloudflare.GetZeroTrustAccessMtlsCertificates.Invoke(new()
+        ///     var exampleZeroTrustAccessMtlsCertificates = Cloudflare.Modules.ZeroTrustAccessMtls.GetCertificates.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",

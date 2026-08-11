@@ -121,8 +121,13 @@ class _WorkersCronTriggerState:
         pulumi.set(self, "script_name", value)
 
 
+warnings.warn("""cloudflare:index/workersCronTrigger:WorkersCronTrigger has been deprecated in favor of cloudflare:workers/cronTrigger:CronTrigger""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/workersCronTrigger:WorkersCronTrigger")
 class WorkersCronTrigger(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/workersCronTrigger:WorkersCronTrigger has been deprecated in favor of cloudflare:workers/cronTrigger:CronTrigger""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -143,7 +148,7 @@ class WorkersCronTrigger(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_workers_cron_trigger = cloudflare.WorkersCronTrigger("example_workers_cron_trigger",
+        example_workers_cron_trigger = cloudflare.workers.CronTrigger("example_workers_cron_trigger",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             script_name="this-is_my_script-01",
             body=[{
@@ -181,7 +186,7 @@ class WorkersCronTrigger(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_workers_cron_trigger = cloudflare.WorkersCronTrigger("example_workers_cron_trigger",
+        example_workers_cron_trigger = cloudflare.workers.CronTrigger("example_workers_cron_trigger",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             script_name="this-is_my_script-01",
             body=[{
@@ -215,6 +220,7 @@ class WorkersCronTrigger(pulumi.CustomResource):
                  schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersCronTriggerScheduleArgs', 'WorkersCronTriggerScheduleArgsDict']]]]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""WorkersCronTrigger is deprecated: cloudflare:index/workersCronTrigger:WorkersCronTrigger has been deprecated in favor of cloudflare:workers/cronTrigger:CronTrigger""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

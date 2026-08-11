@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleListItem = new cloudflare.ListItem("example_list_item", {
+ * const exampleListItem = new cloudflare.list.Item("example_list_item", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     listId: "2c0fc9fa937b11eaa1b71c4d701ab86e",
  *     ip: "10.0.0.1",
@@ -30,6 +30,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/listItem:ListItem has been deprecated in favor of cloudflare:list/item:Item
  */
 export class ListItem extends pulumi.CustomResource {
     /**
@@ -42,6 +44,7 @@ export class ListItem extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ListItemState, opts?: pulumi.CustomResourceOptions): ListItem {
+        pulumi.log.warn("ListItem is deprecated: cloudflare:index/listItem:ListItem has been deprecated in favor of cloudflare:list/item:Item")
         return new ListItem(name, <any>state, { ...opts, id: id });
     }
 
@@ -107,8 +110,11 @@ export class ListItem extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/listItem:ListItem has been deprecated in favor of cloudflare:list/item:Item */
     constructor(name: string, args: ListItemArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/listItem:ListItem has been deprecated in favor of cloudflare:list/item:Item */
     constructor(name: string, argsOrState?: ListItemArgs | ListItemState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ListItem is deprecated: cloudflare:index/listItem:ListItem has been deprecated in favor of cloudflare:list/item:Item")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

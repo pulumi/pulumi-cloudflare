@@ -21,6 +21,8 @@ __all__ = [
     'get_ai_search_namespace_output',
 ]
 
+warnings.warn("""cloudflare:index/getAiSearchNamespace:getAiSearchNamespace has been deprecated in favor of cloudflare:aiSearch/namespace:getNamespace""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAiSearchNamespaceResult:
     """
@@ -82,6 +84,7 @@ def get_ai_search_namespace(account_id: Optional[_builtins.str] = None,
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_ai_search_namespace is deprecated: cloudflare:index/getAiSearchNamespace:getAiSearchNamespace has been deprecated in favor of cloudflare:aiSearch/namespace:getNamespace""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['name'] = name
@@ -99,6 +102,7 @@ def get_ai_search_namespace_output(account_id: pulumi.Input[Optional[_builtins.s
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_ai_search_namespace is deprecated: cloudflare:index/getAiSearchNamespace:getAiSearchNamespace has been deprecated in favor of cloudflare:aiSearch/namespace:getNamespace""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['name'] = name

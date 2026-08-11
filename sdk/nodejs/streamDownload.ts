@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleStreamDownload = new cloudflare.StreamDownload("example_stream_download", {
+ * const exampleStreamDownload = new cloudflare.stream.Download("example_stream_download", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     identifier: "ea95132c15732412d22c1476fa83f27a",
  * });
@@ -27,6 +27,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/streamDownload:StreamDownload has been deprecated in favor of cloudflare:stream/download:Download
  */
 export class StreamDownload extends pulumi.CustomResource {
     /**
@@ -39,6 +41,7 @@ export class StreamDownload extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: StreamDownloadState, opts?: pulumi.CustomResourceOptions): StreamDownload {
+        pulumi.log.warn("StreamDownload is deprecated: cloudflare:index/streamDownload:StreamDownload has been deprecated in favor of cloudflare:stream/download:Download")
         return new StreamDownload(name, <any>state, { ...opts, id: id });
     }
 
@@ -80,8 +83,11 @@ export class StreamDownload extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/streamDownload:StreamDownload has been deprecated in favor of cloudflare:stream/download:Download */
     constructor(name: string, args: StreamDownloadArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/streamDownload:StreamDownload has been deprecated in favor of cloudflare:stream/download:Download */
     constructor(name: string, argsOrState?: StreamDownloadArgs | StreamDownloadState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("StreamDownload is deprecated: cloudflare:index/streamDownload:StreamDownload has been deprecated in favor of cloudflare:stream/download:Download")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

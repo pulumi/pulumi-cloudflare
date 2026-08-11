@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWaitingRoomSettings = new Cloudflare.WaitingRoomSettings("example_waiting_room_settings", new()
+    ///     var exampleWaitingRoomSettings = new Cloudflare.Modules.WaitingRoom.WaitingRoomSettings("example_waiting_room_settings", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SearchEngineCrawlerBypass = true,
@@ -40,6 +40,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/waitingRoomSettings:WaitingRoomSettings example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/waitingRoomSettings:WaitingRoomSettings has been deprecated in favor of cloudflare:waitingRoom/settings:Settings")]
     [CloudflareResourceType("cloudflare:index/waitingRoomSettings:WaitingRoomSettings")]
     public partial class WaitingRoomSettings : global::Pulumi.CustomResource
     {

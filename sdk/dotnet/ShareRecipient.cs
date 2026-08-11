@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleShareRecipient = new Cloudflare.ShareRecipient("example_share_recipient", new()
+    ///     var exampleShareRecipient = new Cloudflare.Modules.Share.ShareRecipient("example_share_recipient", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         ShareId = "3fd85f74b32742f1bff64a85009dda07",
@@ -37,6 +37,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/shareRecipient:ShareRecipient example '&lt;account_id&gt;/&lt;share_id&gt;/&lt;recipient_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/shareRecipient:ShareRecipient has been deprecated in favor of cloudflare:share/recipient:Recipient")]
     [CloudflareResourceType("cloudflare:index/shareRecipient:ShareRecipient")]
     public partial class ShareRecipient : global::Pulumi.CustomResource
     {

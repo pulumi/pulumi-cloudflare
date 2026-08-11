@@ -22,12 +22,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleByoIpPrefixes = cloudflare.getByoIpPrefixes({
+ * const exampleByoIpPrefixes = cloudflare.byoip.getPrefixes({
  *     accountId: "258def64c72dae45f3e4c8516e2111f2",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getByoIpPrefixes:getByoIpPrefixes has been deprecated in favor of cloudflare:byoIp/prefixes:getPrefixes */
 export function getByoIpPrefixes(args?: GetByoIpPrefixesArgs, opts?: pulumi.InvokeOptions): Promise<GetByoIpPrefixesResult> {
+    pulumi.log.warn("getByoIpPrefixes is deprecated: cloudflare:index/getByoIpPrefixes:getByoIpPrefixes has been deprecated in favor of cloudflare:byoIp/prefixes:getPrefixes")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getByoIpPrefixes:getByoIpPrefixes", {
@@ -83,12 +85,14 @@ export interface GetByoIpPrefixesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleByoIpPrefixes = cloudflare.getByoIpPrefixes({
+ * const exampleByoIpPrefixes = cloudflare.byoip.getPrefixes({
  *     accountId: "258def64c72dae45f3e4c8516e2111f2",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getByoIpPrefixes:getByoIpPrefixes has been deprecated in favor of cloudflare:byoIp/prefixes:getPrefixes */
 export function getByoIpPrefixesOutput(args?: GetByoIpPrefixesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetByoIpPrefixesResult> {
+    pulumi.log.warn("getByoIpPrefixes is deprecated: cloudflare:index/getByoIpPrefixes:getByoIpPrefixes has been deprecated in favor of cloudflare:byoIp/prefixes:getPrefixes")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getByoIpPrefixes:getByoIpPrefixes", {

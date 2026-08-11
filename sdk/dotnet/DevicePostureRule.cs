@@ -24,14 +24,14 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDevicePostureRule = new Cloudflare.ZeroTrustDevicePostureRule("example_zero_trust_device_posture_rule", new()
+    ///     var exampleZeroTrustDevicePostureRule = new Cloudflare.Modules.ZeroTrustDevicePosture.ZeroTrustDevicePostureRule("example_zero_trust_device_posture_rule", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Name = "Admin Serial Numbers",
     ///         Type = "file",
     ///         Description = "The rule for admin serial numbers",
     ///         Expiration = "1h",
-    ///         Input = new Cloudflare.Inputs.ZeroTrustDevicePostureRuleInputArgs
+    ///         Input = new Cloudflare.Modules.ZeroTrustDevicePosture.Inputs.RuleInputArgs
     ///         {
     ///             OperatingSystem = "linux",
     ///             Path = "/bin/cat",
@@ -41,7 +41,7 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         Matches = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustDevicePostureRuleMatchArgs
+    ///             new Cloudflare.Modules.ZeroTrustDevicePosture.Inputs.RuleMatchArgs
     ///             {
     ///                 Platform = "windows",
     ///             },
@@ -137,10 +137,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/devicePostureRule:DevicePostureRule" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

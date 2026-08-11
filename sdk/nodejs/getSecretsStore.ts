@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSecretsStore = cloudflare.getSecretsStore({
+ * const exampleSecretsStore = cloudflare.secretsstore.getSecretsStore({
  *     accountId: "985e105f4ecef8ad9ca31a8372d0c353",
  *     storeId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getSecretsStore:getSecretsStore has been deprecated in favor of cloudflare:secretsStore/secretsStore:getSecretsStore */
 export function getSecretsStore(args: GetSecretsStoreArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretsStoreResult> {
+    pulumi.log.warn("getSecretsStore is deprecated: cloudflare:index/getSecretsStore:getSecretsStore has been deprecated in favor of cloudflare:secretsStore/secretsStore:getSecretsStore")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getSecretsStore:getSecretsStore", {
         "accountId": args.accountId,
@@ -78,13 +80,15 @@ export interface GetSecretsStoreResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSecretsStore = cloudflare.getSecretsStore({
+ * const exampleSecretsStore = cloudflare.secretsstore.getSecretsStore({
  *     accountId: "985e105f4ecef8ad9ca31a8372d0c353",
  *     storeId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getSecretsStore:getSecretsStore has been deprecated in favor of cloudflare:secretsStore/secretsStore:getSecretsStore */
 export function getSecretsStoreOutput(args: GetSecretsStoreOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecretsStoreResult> {
+    pulumi.log.warn("getSecretsStore is deprecated: cloudflare:index/getSecretsStore:getSecretsStore has been deprecated in favor of cloudflare:secretsStore/secretsStore:getSecretsStore")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getSecretsStore:getSecretsStore", {
         "accountId": args.accountId,

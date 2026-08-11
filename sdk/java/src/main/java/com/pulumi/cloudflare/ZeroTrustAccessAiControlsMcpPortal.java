@@ -32,11 +32,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustAccessAiControlsMcpPortal;
- * import com.pulumi.cloudflare.ZeroTrustAccessAiControlsMcpPortalArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpPortalServerArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpPortalServerUpdatedPromptArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccessAiControlsMcp.Portal;
+ * import com.pulumi.cloudflare.zeroTrustAccessAiControlsMcp.PortalArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccessAiControlsMcp.inputs.PortalServerArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccessAiControlsMcp.inputs.PortalServerUpdatedPromptArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccessAiControlsMcp.inputs.PortalServerUpdatedToolArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustAccessAiControlsMcpPortal = new ZeroTrustAccessAiControlsMcpPortal("exampleZeroTrustAccessAiControlsMcpPortal", ZeroTrustAccessAiControlsMcpPortalArgs.builder()
+ *         var exampleZeroTrustAccessAiControlsMcpPortal = new Portal("exampleZeroTrustAccessAiControlsMcpPortal", PortalArgs.builder()
  *             .accountId("a86a8f5c339544d7bdc89926de14fb8c")
  *             .zeroTrustAccessAiControlsMcpPortalId("my-mcp-portal")
  *             .hostname("exmaple.com")
@@ -58,17 +58,17 @@ import javax.annotation.Nullable;
  *             .allowCodeMode(true)
  *             .description("This is my custom MCP Portal")
  *             .secureWebGateway(false)
- *             .servers(ZeroTrustAccessAiControlsMcpPortalServerArgs.builder()
+ *             .servers(PortalServerArgs.builder()
  *                 .serverId("my-mcp-server")
  *                 .defaultDisabled(true)
  *                 .onBehalf(true)
- *                 .updatedPrompts(ZeroTrustAccessAiControlsMcpPortalServerUpdatedPromptArgs.builder()
+ *                 .updatedPrompts(PortalServerUpdatedPromptArgs.builder()
  *                     .name("name")
  *                     .alias("my-custom-alias")
  *                     .description("description")
  *                     .enabled(true)
  *                     .build())
- *                 .updatedTools(ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs.builder()
+ *                 .updatedTools(PortalServerUpdatedToolArgs.builder()
  *                     .name("name")
  *                     .alias("my-custom-alias")
  *                     .description("description")
@@ -88,7 +88,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal example &#39;&lt;account_id&gt;/&lt;id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/portal:Portal
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/portal:Portal */
 @ResourceType(type="cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal")
 public class ZeroTrustAccessAiControlsMcpPortal extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

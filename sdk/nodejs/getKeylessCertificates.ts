@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleKeylessCertificates = cloudflare.getKeylessCertificates({
+ * const exampleKeylessCertificates = cloudflare.keyless.getCertificates({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getKeylessCertificates:getKeylessCertificates has been deprecated in favor of cloudflare:keyless/certificates:getCertificates */
 export function getKeylessCertificates(args?: GetKeylessCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetKeylessCertificatesResult> {
+    pulumi.log.warn("getKeylessCertificates is deprecated: cloudflare:index/getKeylessCertificates:getKeylessCertificates has been deprecated in favor of cloudflare:keyless/certificates:getCertificates")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getKeylessCertificates:getKeylessCertificates", {
@@ -75,12 +77,14 @@ export interface GetKeylessCertificatesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleKeylessCertificates = cloudflare.getKeylessCertificates({
+ * const exampleKeylessCertificates = cloudflare.keyless.getCertificates({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getKeylessCertificates:getKeylessCertificates has been deprecated in favor of cloudflare:keyless/certificates:getCertificates */
 export function getKeylessCertificatesOutput(args?: GetKeylessCertificatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKeylessCertificatesResult> {
+    pulumi.log.warn("getKeylessCertificates is deprecated: cloudflare:index/getKeylessCertificates:getKeylessCertificates has been deprecated in favor of cloudflare:keyless/certificates:getCertificates")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getKeylessCertificates:getKeylessCertificates", {

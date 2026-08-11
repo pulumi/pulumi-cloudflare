@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getApiShieldSchemas:getApiShieldSchemas has been deprecated in favor of cloudflare:apiShield/schemas:getSchemas")]
     public static class GetApiShieldSchemas
     {
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiShieldSchemas = Cloudflare.GetApiShieldSchemas.Invoke(new()
+        ///     var exampleApiShieldSchemas = Cloudflare.Modules.ApiShield.GetSchemas.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ValidationEnabled = true,
@@ -59,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiShieldSchemas = Cloudflare.GetApiShieldSchemas.Invoke(new()
+        ///     var exampleApiShieldSchemas = Cloudflare.Modules.ApiShield.GetSchemas.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ValidationEnabled = true,
@@ -89,7 +90,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiShieldSchemas = Cloudflare.GetApiShieldSchemas.Invoke(new()
+        ///     var exampleApiShieldSchemas = Cloudflare.Modules.ApiShield.GetSchemas.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ValidationEnabled = true,

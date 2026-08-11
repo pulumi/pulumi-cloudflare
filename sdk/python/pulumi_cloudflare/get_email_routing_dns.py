@@ -22,6 +22,8 @@ __all__ = [
     'get_email_routing_dns_output',
 ]
 
+warnings.warn("""cloudflare:index/getEmailRoutingDns:getEmailRoutingDns has been deprecated in favor of cloudflare:emailRouting/dns:getDns""", DeprecationWarning)
+
 @pulumi.output_type
 class GetEmailRoutingDnsResult:
     """
@@ -137,7 +139,7 @@ def get_email_routing_dns(subdomain: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_email_routing_dns = cloudflare.get_email_routing_dns(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_email_routing_dns = cloudflare.emailrouting.get_dns(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         subdomain="example.net")
     ```
 
@@ -145,6 +147,7 @@ def get_email_routing_dns(subdomain: Optional[_builtins.str] = None,
     :param _builtins.str subdomain: Domain of your zone.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_email_routing_dns is deprecated: cloudflare:index/getEmailRoutingDns:getEmailRoutingDns has been deprecated in favor of cloudflare:emailRouting/dns:getDns""")
     __args__ = dict()
     __args__['subdomain'] = subdomain
     __args__['zoneId'] = zone_id
@@ -175,7 +178,7 @@ def get_email_routing_dns_output(subdomain: pulumi.Input[Optional[Optional[_buil
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_email_routing_dns = cloudflare.get_email_routing_dns(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_email_routing_dns = cloudflare.emailrouting.get_dns(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         subdomain="example.net")
     ```
 
@@ -183,6 +186,7 @@ def get_email_routing_dns_output(subdomain: pulumi.Input[Optional[Optional[_buil
     :param _builtins.str subdomain: Domain of your zone.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_email_routing_dns is deprecated: cloudflare:index/getEmailRoutingDns:getEmailRoutingDns has been deprecated in favor of cloudflare:emailRouting/dns:getDns""")
     __args__ = dict()
     __args__['subdomain'] = subdomain
     __args__['zoneId'] = zone_id

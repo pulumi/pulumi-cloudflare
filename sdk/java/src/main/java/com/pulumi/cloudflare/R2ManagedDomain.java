@@ -24,8 +24,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.R2ManagedDomain;
- * import com.pulumi.cloudflare.R2ManagedDomainArgs;
+ * import com.pulumi.cloudflare.r2.ManagedDomain;
+ * import com.pulumi.cloudflare.r2.ManagedDomainArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -39,7 +39,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleR2ManagedDomain = new R2ManagedDomain("exampleR2ManagedDomain", R2ManagedDomainArgs.builder()
+ *         var exampleR2ManagedDomain = new ManagedDomain("exampleR2ManagedDomain", ManagedDomainArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .bucketName("example-bucket")
  *             .enabled(true)
@@ -54,7 +54,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/r2ManagedDomain:R2ManagedDomain has been deprecated in favor of cloudflare:r2/managedDomain:ManagedDomain
+ * 
  */
+@Deprecated /* cloudflare:index/r2ManagedDomain:R2ManagedDomain has been deprecated in favor of cloudflare:r2/managedDomain:ManagedDomain */
 @ResourceType(type="cloudflare:index/r2ManagedDomain:R2ManagedDomain")
 public class R2ManagedDomain extends com.pulumi.resources.CustomResource {
     /**

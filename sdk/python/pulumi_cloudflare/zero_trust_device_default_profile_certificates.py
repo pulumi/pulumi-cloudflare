@@ -88,8 +88,13 @@ class _ZeroTrustDeviceDefaultProfileCertificatesState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustDeviceDefaultProfileCertificates:ZeroTrustDeviceDefaultProfileCertificates has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/certificates:Certificates""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustDeviceDefaultProfileCertificates:ZeroTrustDeviceDefaultProfileCertificates")
 class ZeroTrustDeviceDefaultProfileCertificates(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustDeviceDefaultProfileCertificates:ZeroTrustDeviceDefaultProfileCertificates has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/certificates:Certificates""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -109,7 +114,7 @@ class ZeroTrustDeviceDefaultProfileCertificates(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_device_default_profile_certificates = cloudflare.ZeroTrustDeviceDefaultProfileCertificates("example_zero_trust_device_default_profile_certificates",
+        example_zero_trust_device_default_profile_certificates = cloudflare.zerotrustdevicedefaultprofile.Certificates("example_zero_trust_device_default_profile_certificates",
             zone_id="699d98642c564d2e855e9661899b7252",
             enabled=True)
         ```
@@ -141,7 +146,7 @@ class ZeroTrustDeviceDefaultProfileCertificates(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_device_default_profile_certificates = cloudflare.ZeroTrustDeviceDefaultProfileCertificates("example_zero_trust_device_default_profile_certificates",
+        example_zero_trust_device_default_profile_certificates = cloudflare.zerotrustdevicedefaultprofile.Certificates("example_zero_trust_device_default_profile_certificates",
             zone_id="699d98642c564d2e855e9661899b7252",
             enabled=True)
         ```
@@ -169,6 +174,7 @@ class ZeroTrustDeviceDefaultProfileCertificates(pulumi.CustomResource):
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustDeviceDefaultProfileCertificates is deprecated: cloudflare:index/zeroTrustDeviceDefaultProfileCertificates:ZeroTrustDeviceDefaultProfileCertificates has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/certificates:Certificates""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -26,14 +26,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/schemavalidationschemas"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewSchemaValidationSchemas(ctx, "example_schema_validation_schemas", &cloudflare.SchemaValidationSchemasArgs{
+//			_, err := schemavalidationschemas.NewSchemaValidationSchemas(ctx, "example_schema_validation_schemas", &schemavalidationschemas.SchemaValidationSchemasArgs{
 //				ZoneId:            pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Kind:              pulumi.String("openapi_v3"),
 //				Name:              pulumi.String("petstore schema"),
@@ -54,6 +54,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas example '<zone_id>/<schema_id>'
 // ```
+//
+// Deprecated: cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas has been deprecated in favor of cloudflare:schemaValidationSchemas/schemaValidationSchemas:SchemaValidationSchemas
 type SchemaValidationSchemas struct {
 	pulumi.CustomResourceState
 

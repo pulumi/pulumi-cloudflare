@@ -26,62 +26,62 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDnsLocation = new Cloudflare.ZeroTrustDnsLocation("example_zero_trust_dns_location", new()
+    ///     var exampleZeroTrustDnsLocation = new Cloudflare.Modules.ZeroTrustDns.ZeroTrustDnsLocation("example_zero_trust_dns_location", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Name = "Austin Office Location",
     ///         ClientDefault = false,
     ///         DnsDestinationIpsId = "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
     ///         EcsSupport = false,
-    ///         Endpoints = new Cloudflare.Inputs.ZeroTrustDnsLocationEndpointsArgs
+    ///         Endpoints = new Cloudflare.Modules.ZeroTrustDns.Inputs.LocationEndpointsArgs
     ///         {
-    ///             Doh = new Cloudflare.Inputs.ZeroTrustDnsLocationEndpointsDohArgs
+    ///             Doh = new Cloudflare.Modules.ZeroTrustDns.Inputs.LocationEndpointsDohArgs
     ///             {
     ///                 Enabled = true,
     ///                 Networks = new[]
     ///                 {
-    ///                     new Cloudflare.Inputs.ZeroTrustDnsLocationEndpointsDohNetworkArgs
+    ///                     new Cloudflare.Modules.ZeroTrustDns.Inputs.LocationEndpointsDohNetworkArgs
     ///                     {
     ///                         Network = "2001:85a3::/64",
     ///                     },
     ///                 },
     ///                 RequireToken = true,
     ///             },
-    ///             Dot = new Cloudflare.Inputs.ZeroTrustDnsLocationEndpointsDotArgs
+    ///             Dot = new Cloudflare.Modules.ZeroTrustDns.Inputs.LocationEndpointsDotArgs
     ///             {
     ///                 Enabled = true,
     ///                 Networks = new[]
     ///                 {
-    ///                     new Cloudflare.Inputs.ZeroTrustDnsLocationEndpointsDotNetworkArgs
+    ///                     new Cloudflare.Modules.ZeroTrustDns.Inputs.LocationEndpointsDotNetworkArgs
     ///                     {
     ///                         Network = "2001:85a3::/64",
     ///                     },
     ///                 },
     ///             },
-    ///             Ipv4 = new Cloudflare.Inputs.ZeroTrustDnsLocationEndpointsIpv4Args
+    ///             Ipv4 = new Cloudflare.Modules.ZeroTrustDns.Inputs.LocationEndpointsIpv4Args
     ///             {
     ///                 Enabled = true,
     ///             },
-    ///             Ipv6 = new Cloudflare.Inputs.ZeroTrustDnsLocationEndpointsIpv6Args
+    ///             Ipv6 = new Cloudflare.Modules.ZeroTrustDns.Inputs.LocationEndpointsIpv6Args
     ///             {
     ///                 Enabled = true,
     ///                 Networks = new[]
     ///                 {
-    ///                     new Cloudflare.Inputs.ZeroTrustDnsLocationEndpointsIpv6NetworkArgs
+    ///                     new Cloudflare.Modules.ZeroTrustDns.Inputs.LocationEndpointsIpv6NetworkArgs
     ///                     {
     ///                         Network = "2001:85a3::/64",
     ///                     },
     ///                 },
     ///             },
     ///         },
-    ///         MaxTtl = new Cloudflare.Inputs.ZeroTrustDnsLocationMaxTtlArgs
+    ///         MaxTtl = new Cloudflare.Modules.ZeroTrustDns.Inputs.LocationMaxTtlArgs
     ///         {
     ///             Mode = "override",
     ///             TtlSecs = 3600,
     ///         },
     ///         Networks = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustDnsLocationNetworkArgs
+    ///             new Cloudflare.Modules.ZeroTrustDns.Inputs.LocationNetworkArgs
     ///             {
     ///                 Network = "192.0.2.1/32",
     ///             },
@@ -97,6 +97,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation example '&lt;account_id&gt;/&lt;location_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation has been deprecated in favor of cloudflare:zeroTrustDns/location:Location")]
     [CloudflareResourceType("cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation")]
     public partial class ZeroTrustDnsLocation : global::Pulumi.CustomResource
     {

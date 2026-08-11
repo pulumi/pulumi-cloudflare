@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_gateway_categories_list_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustGatewayCategoriesList:getZeroTrustGatewayCategoriesList has been deprecated in favor of cloudflare:zeroTrustGateway/categoriesList:getCategoriesList""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustGatewayCategoriesListResult:
     """
@@ -89,13 +91,14 @@ def get_zero_trust_gateway_categories_list(account_id: Optional[_builtins.str] =
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_gateway_categories_list = cloudflare.get_zero_trust_gateway_categories_list(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_zero_trust_gateway_categories_list = cloudflare.zerotrustgateway.get_categories_list(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Provide the identifier string.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_gateway_categories_list is deprecated: cloudflare:index/getZeroTrustGatewayCategoriesList:getZeroTrustGatewayCategoriesList has been deprecated in favor of cloudflare:zeroTrustGateway/categoriesList:getCategoriesList""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -121,13 +124,14 @@ def get_zero_trust_gateway_categories_list_output(account_id: pulumi.Input[Optio
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_gateway_categories_list = cloudflare.get_zero_trust_gateway_categories_list(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_zero_trust_gateway_categories_list = cloudflare.zerotrustgateway.get_categories_list(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Provide the identifier string.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_gateway_categories_list is deprecated: cloudflare:index/getZeroTrustGatewayCategoriesList:getZeroTrustGatewayCategoriesList has been deprecated in favor of cloudflare:zeroTrustGateway/categoriesList:getCategoriesList""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

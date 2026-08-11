@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getCustomSsl:getCustomSsl has been deprecated in favor of cloudflare:custom/ssl:getSsl")]
     public static class GetCustomSsl
     {
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomSsl = Cloudflare.GetCustomSsl.Invoke(new()
+        ///     var exampleCustomSsl = Cloudflare.Modules.Custom.GetSsl.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         CustomCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -59,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomSsl = Cloudflare.GetCustomSsl.Invoke(new()
+        ///     var exampleCustomSsl = Cloudflare.Modules.Custom.GetSsl.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         CustomCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -89,7 +90,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomSsl = Cloudflare.GetCustomSsl.Invoke(new()
+        ///     var exampleCustomSsl = Cloudflare.Modules.Custom.GetSsl.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         CustomCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",

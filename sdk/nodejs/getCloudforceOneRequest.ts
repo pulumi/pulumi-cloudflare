@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCloudforceOneRequest = cloudflare.getCloudforceOneRequest({
+ * const exampleCloudforceOneRequest = cloudflare.cloudforceonerequest.getCloudforceOneRequest({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     requestId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCloudforceOneRequest:getCloudforceOneRequest has been deprecated in favor of cloudflare:cloudforceOneRequest/cloudforceOneRequest:getCloudforceOneRequest */
 export function getCloudforceOneRequest(args?: GetCloudforceOneRequestArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudforceOneRequestResult> {
+    pulumi.log.warn("getCloudforceOneRequest is deprecated: cloudflare:index/getCloudforceOneRequest:getCloudforceOneRequest has been deprecated in favor of cloudflare:cloudforceOneRequest/cloudforceOneRequest:getCloudforceOneRequest")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCloudforceOneRequest:getCloudforceOneRequest", {
@@ -117,13 +119,15 @@ export interface GetCloudforceOneRequestResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCloudforceOneRequest = cloudflare.getCloudforceOneRequest({
+ * const exampleCloudforceOneRequest = cloudflare.cloudforceonerequest.getCloudforceOneRequest({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     requestId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCloudforceOneRequest:getCloudforceOneRequest has been deprecated in favor of cloudflare:cloudforceOneRequest/cloudforceOneRequest:getCloudforceOneRequest */
 export function getCloudforceOneRequestOutput(args?: GetCloudforceOneRequestOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudforceOneRequestResult> {
+    pulumi.log.warn("getCloudforceOneRequest is deprecated: cloudflare:index/getCloudforceOneRequest:getCloudforceOneRequest has been deprecated in favor of cloudflare:cloudforceOneRequest/cloudforceOneRequest:getCloudforceOneRequest")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCloudforceOneRequest:getCloudforceOneRequest", {

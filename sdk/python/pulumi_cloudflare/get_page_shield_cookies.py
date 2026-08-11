@@ -21,6 +21,8 @@ __all__ = [
     'get_page_shield_cookies_output',
 ]
 
+warnings.warn("""cloudflare:index/getPageShieldCookies:getPageShieldCookies has been deprecated in favor of cloudflare:pageShieldCookies/pageShieldCookies:getPageShieldCookies""", DeprecationWarning)
+
 @pulumi.output_type
 class GetPageShieldCookiesResult:
     """
@@ -215,7 +217,7 @@ def get_page_shield_cookies(cookie_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_page_shield_cookies = cloudflare.get_page_shield_cookies(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_page_shield_cookies = cloudflare.pageshieldcookies.get_page_shield_cookies(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         cookie_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -223,6 +225,7 @@ def get_page_shield_cookies(cookie_id: Optional[_builtins.str] = None,
     :param _builtins.str cookie_id: Identifier
     :param _builtins.str zone_id: Identifier
     """
+    pulumi.log.warn("""get_page_shield_cookies is deprecated: cloudflare:index/getPageShieldCookies:getPageShieldCookies has been deprecated in favor of cloudflare:pageShieldCookies/pageShieldCookies:getPageShieldCookies""")
     __args__ = dict()
     __args__['cookieId'] = cookie_id
     __args__['zoneId'] = zone_id
@@ -265,7 +268,7 @@ def get_page_shield_cookies_output(cookie_id: pulumi.Input[Optional[_builtins.st
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_page_shield_cookies = cloudflare.get_page_shield_cookies(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_page_shield_cookies = cloudflare.pageshieldcookies.get_page_shield_cookies(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         cookie_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -273,6 +276,7 @@ def get_page_shield_cookies_output(cookie_id: pulumi.Input[Optional[_builtins.st
     :param _builtins.str cookie_id: Identifier
     :param _builtins.str zone_id: Identifier
     """
+    pulumi.log.warn("""get_page_shield_cookies is deprecated: cloudflare:index/getPageShieldCookies:getPageShieldCookies has been deprecated in favor of cloudflare:pageShieldCookies/pageShieldCookies:getPageShieldCookies""")
     __args__ = dict()
     __args__['cookieId'] = cookie_id
     __args__['zoneId'] = zone_id

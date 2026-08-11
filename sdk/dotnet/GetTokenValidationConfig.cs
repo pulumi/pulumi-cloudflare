@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getTokenValidationConfig:getTokenValidationConfig has been deprecated in favor of cloudflare:tokenValidation/config:getConfig")]
     public static class GetTokenValidationConfig
     {
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleTokenValidationConfig = Cloudflare.GetTokenValidationConfig.Invoke(new()
+        ///     var exampleTokenValidationConfig = Cloudflare.Modules.TokenValidation.GetConfig.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ConfigId = "4a7ee8d3-dd63-4ceb-9d5f-c27831854ce7",
@@ -59,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleTokenValidationConfig = Cloudflare.GetTokenValidationConfig.Invoke(new()
+        ///     var exampleTokenValidationConfig = Cloudflare.Modules.TokenValidation.GetConfig.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ConfigId = "4a7ee8d3-dd63-4ceb-9d5f-c27831854ce7",
@@ -89,7 +90,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleTokenValidationConfig = Cloudflare.GetTokenValidationConfig.Invoke(new()
+        ///     var exampleTokenValidationConfig = Cloudflare.Modules.TokenValidation.GetConfig.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ConfigId = "4a7ee8d3-dd63-4ceb-9d5f-c27831854ce7",

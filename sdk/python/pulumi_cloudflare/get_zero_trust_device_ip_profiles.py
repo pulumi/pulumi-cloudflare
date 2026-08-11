@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_device_ip_profiles_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDeviceIpProfiles:getZeroTrustDeviceIpProfiles has been deprecated in favor of cloudflare:zeroTrustDeviceIp/profiles:getProfiles""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDeviceIpProfilesResult:
     """
@@ -99,13 +101,14 @@ def get_zero_trust_device_ip_profiles(account_id: Optional[_builtins.str] = None
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_device_ip_profiles = cloudflare.get_zero_trust_device_ip_profiles(account_id="account_id")
+    example_zero_trust_device_ip_profiles = cloudflare.zerotrustdeviceip.get_profiles(account_id="account_id")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.int per_page: The number of IP profiles to return per page.
     """
+    pulumi.log.warn("""get_zero_trust_device_ip_profiles is deprecated: cloudflare:index/getZeroTrustDeviceIpProfiles:getZeroTrustDeviceIpProfiles has been deprecated in favor of cloudflare:zeroTrustDeviceIp/profiles:getProfiles""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -134,13 +137,14 @@ def get_zero_trust_device_ip_profiles_output(account_id: pulumi.Input[Optional[O
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_device_ip_profiles = cloudflare.get_zero_trust_device_ip_profiles(account_id="account_id")
+    example_zero_trust_device_ip_profiles = cloudflare.zerotrustdeviceip.get_profiles(account_id="account_id")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.int per_page: The number of IP profiles to return per page.
     """
+    pulumi.log.warn("""get_zero_trust_device_ip_profiles is deprecated: cloudflare:index/getZeroTrustDeviceIpProfiles:getZeroTrustDeviceIpProfiles has been deprecated in favor of cloudflare:zeroTrustDeviceIp/profiles:getProfiles""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

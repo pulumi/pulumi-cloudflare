@@ -1150,8 +1150,13 @@ class _AiSearchInstanceState:
         pulumi.set(self, "vectorize_name", value)
 
 
+warnings.warn("""cloudflare:index/aiSearchInstance:AiSearchInstance has been deprecated in favor of cloudflare:aiSearch/instance:Instance""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/aiSearchInstance:AiSearchInstance")
 class AiSearchInstance(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/aiSearchInstance:AiSearchInstance has been deprecated in favor of cloudflare:aiSearch/instance:Instance""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -1281,6 +1286,7 @@ class AiSearchInstance(pulumi.CustomResource):
                  token_id: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""AiSearchInstance is deprecated: cloudflare:index/aiSearchInstance:AiSearchInstance has been deprecated in favor of cloudflare:aiSearch/instance:Instance""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

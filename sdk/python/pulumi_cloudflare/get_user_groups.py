@@ -22,6 +22,8 @@ __all__ = [
     'get_user_groups_output',
 ]
 
+warnings.warn("""cloudflare:index/getUserGroups:getUserGroups has been deprecated in favor of cloudflare:user/groups:getGroups""", DeprecationWarning)
+
 @pulumi.output_type
 class GetUserGroupsResult:
     """
@@ -143,7 +145,7 @@ def get_user_groups(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_user_groups = cloudflare.get_user_groups(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_user_groups = cloudflare.user.get_groups(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         id="023e105f4ecef8ad9ca31a8372d0c353",
         fuzzy_name="Foo",
         name="NameOfTheUserGroup")
@@ -158,6 +160,7 @@ def get_user_groups(account_id: Optional[_builtins.str] = None,
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str name: Name of the user group to be fetched.
     """
+    pulumi.log.warn("""get_user_groups is deprecated: cloudflare:index/getUserGroups:getUserGroups has been deprecated in favor of cloudflare:user/groups:getGroups""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction
@@ -196,7 +199,7 @@ def get_user_groups_output(account_id: pulumi.Input[Optional[_builtins.str]] = N
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_user_groups = cloudflare.get_user_groups(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_user_groups = cloudflare.user.get_groups(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         id="023e105f4ecef8ad9ca31a8372d0c353",
         fuzzy_name="Foo",
         name="NameOfTheUserGroup")
@@ -211,6 +214,7 @@ def get_user_groups_output(account_id: pulumi.Input[Optional[_builtins.str]] = N
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str name: Name of the user group to be fetched.
     """
+    pulumi.log.warn("""get_user_groups is deprecated: cloudflare:index/getUserGroups:getUserGroups has been deprecated in favor of cloudflare:user/groups:getGroups""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction

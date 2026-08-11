@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdlppredefined"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDlpPredefinedProfile(ctx, "example_zero_trust_dlp_predefined_profile", &cloudflare.ZeroTrustDlpPredefinedProfileArgs{
+//			_, err := zerotrustdlppredefined.NewProfile(ctx, "example_zero_trust_dlp_predefined_profile", &zerotrustdlppredefined.ProfileArgs{
 //				ProfileId:  pulumi.String("e91a2360-da51-4fdf-9711-bcdecd462614"),
 //				AccountId:  pulumi.String("account_id"),
 //				OcrEnabled: pulumi.Bool(true),
@@ -65,6 +65,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile example '<account_id>/<profile_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile has been deprecated in favor of cloudflare:zeroTrustDlpPredefined/profile:Profile
 type ZeroTrustDlpPredefinedProfile struct {
 	pulumi.CustomResourceState
 

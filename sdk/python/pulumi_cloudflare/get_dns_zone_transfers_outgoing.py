@@ -21,6 +21,8 @@ __all__ = [
     'get_dns_zone_transfers_outgoing_output',
 ]
 
+warnings.warn("""cloudflare:index/getDnsZoneTransfersOutgoing:getDnsZoneTransfersOutgoing has been deprecated in favor of cloudflare:dnsZoneTransfers/outgoing:getOutgoing""", DeprecationWarning)
+
 @pulumi.output_type
 class GetDnsZoneTransfersOutgoingResult:
     """
@@ -147,9 +149,10 @@ def get_dns_zone_transfers_outgoing(zone_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_dns_zone_transfers_outgoing = cloudflare.get_dns_zone_transfers_outgoing(zone_id="269d8f4853475ca241c4e730be286b20")
+    example_dns_zone_transfers_outgoing = cloudflare.dnszonetransfers.get_outgoing(zone_id="269d8f4853475ca241c4e730be286b20")
     ```
     """
+    pulumi.log.warn("""get_dns_zone_transfers_outgoing is deprecated: cloudflare:index/getDnsZoneTransfersOutgoing:getDnsZoneTransfersOutgoing has been deprecated in favor of cloudflare:dnsZoneTransfers/outgoing:getOutgoing""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -181,9 +184,10 @@ def get_dns_zone_transfers_outgoing_output(zone_id: pulumi.Input[Optional[Option
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_dns_zone_transfers_outgoing = cloudflare.get_dns_zone_transfers_outgoing(zone_id="269d8f4853475ca241c4e730be286b20")
+    example_dns_zone_transfers_outgoing = cloudflare.dnszonetransfers.get_outgoing(zone_id="269d8f4853475ca241c4e730be286b20")
     ```
     """
+    pulumi.log.warn("""get_dns_zone_transfers_outgoing is deprecated: cloudflare:index/getDnsZoneTransfersOutgoing:getDnsZoneTransfersOutgoing has been deprecated in favor of cloudflare:dnsZoneTransfers/outgoing:getOutgoing""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

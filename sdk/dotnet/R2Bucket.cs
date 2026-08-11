@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleR2Bucket = new Cloudflare.R2Bucket("example_r2_bucket", new()
+    ///     var exampleR2Bucket = new Cloudflare.Modules.R2Bucket.R2Bucket("example_r2_bucket", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "example-bucket",
@@ -41,6 +41,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/r2Bucket:R2Bucket example '&lt;account_id&gt;/&lt;bucket_name&gt;/&lt;jurisdiction&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/r2Bucket:R2Bucket has been deprecated in favor of cloudflare:r2Bucket/r2Bucket:R2Bucket")]
     [CloudflareResourceType("cloudflare:index/r2Bucket:R2Bucket")]
     public partial class R2Bucket : global::Pulumi.CustomResource
     {

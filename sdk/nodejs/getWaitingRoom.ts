@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWaitingRoom = cloudflare.getWaitingRoom({
+ * const exampleWaitingRoom = cloudflare.waitingroom.getWaitingRoom({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     waitingRoomId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWaitingRoom:getWaitingRoom has been deprecated in favor of cloudflare:waitingRoom/waitingRoom:getWaitingRoom */
 export function getWaitingRoom(args: GetWaitingRoomArgs, opts?: pulumi.InvokeOptions): Promise<GetWaitingRoomResult> {
+    pulumi.log.warn("getWaitingRoom is deprecated: cloudflare:index/getWaitingRoom:getWaitingRoom has been deprecated in favor of cloudflare:waitingRoom/waitingRoom:getWaitingRoom")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWaitingRoom:getWaitingRoom", {
         "waitingRoomId": args.waitingRoomId,
@@ -103,13 +105,15 @@ export interface GetWaitingRoomResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWaitingRoom = cloudflare.getWaitingRoom({
+ * const exampleWaitingRoom = cloudflare.waitingroom.getWaitingRoom({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     waitingRoomId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWaitingRoom:getWaitingRoom has been deprecated in favor of cloudflare:waitingRoom/waitingRoom:getWaitingRoom */
 export function getWaitingRoomOutput(args: GetWaitingRoomOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWaitingRoomResult> {
+    pulumi.log.warn("getWaitingRoom is deprecated: cloudflare:index/getWaitingRoom:getWaitingRoom has been deprecated in favor of cloudflare:waitingRoom/waitingRoom:getWaitingRoom")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWaitingRoom:getWaitingRoom", {
         "waitingRoomId": args.waitingRoomId,

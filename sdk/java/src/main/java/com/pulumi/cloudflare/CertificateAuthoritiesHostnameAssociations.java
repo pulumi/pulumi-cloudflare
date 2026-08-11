@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.CertificateAuthoritiesHostnameAssociations;
- * import com.pulumi.cloudflare.CertificateAuthoritiesHostnameAssociationsArgs;
+ * import com.pulumi.cloudflare.certificate.AuthoritiesHostnameAssociations;
+ * import com.pulumi.cloudflare.certificate.AuthoritiesHostnameAssociationsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleCertificateAuthoritiesHostnameAssociations = new CertificateAuthoritiesHostnameAssociations("exampleCertificateAuthoritiesHostnameAssociations", CertificateAuthoritiesHostnameAssociationsArgs.builder()
+ *         var exampleCertificateAuthoritiesHostnameAssociations = new AuthoritiesHostnameAssociations("exampleCertificateAuthoritiesHostnameAssociations", AuthoritiesHostnameAssociationsArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .hostnames("api.example.com")
  *             .mtlsCertificateId("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
@@ -62,7 +62,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/certificateAuthoritiesHostnameAssociations:CertificateAuthoritiesHostnameAssociations example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/certificateAuthoritiesHostnameAssociations:CertificateAuthoritiesHostnameAssociations has been deprecated in favor of cloudflare:certificate/authoritiesHostnameAssociations:AuthoritiesHostnameAssociations
+ * 
  */
+@Deprecated /* cloudflare:index/certificateAuthoritiesHostnameAssociations:CertificateAuthoritiesHostnameAssociations has been deprecated in favor of cloudflare:certificate/authoritiesHostnameAssociations:AuthoritiesHostnameAssociations */
 @ResourceType(type="cloudflare:index/certificateAuthoritiesHostnameAssociations:CertificateAuthoritiesHostnameAssociations")
 public class CertificateAuthoritiesHostnameAssociations extends com.pulumi.resources.CustomResource {
     @Export(name="hostnames", refs={List.class,String.class}, tree="[0,1]")

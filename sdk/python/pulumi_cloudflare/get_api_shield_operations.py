@@ -22,6 +22,8 @@ __all__ = [
     'get_api_shield_operations_output',
 ]
 
+warnings.warn("""cloudflare:index/getApiShieldOperations:getApiShieldOperations has been deprecated in favor of cloudflare:apiShield/operations:getOperations""", DeprecationWarning)
+
 @pulumi.output_type
 class GetApiShieldOperationsResult:
     """
@@ -171,7 +173,7 @@ def get_api_shield_operations(direction: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_api_shield_operations = cloudflare.get_api_shield_operations(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_api_shield_operations = cloudflare.apishield.get_operations(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="desc",
         endpoint="/api/v1",
         features=["thresholds"],
@@ -192,6 +194,7 @@ def get_api_shield_operations(direction: Optional[_builtins.str] = None,
            Available values: "method", "host", "endpoint", "thresholds.$key".
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_api_shield_operations is deprecated: cloudflare:index/getApiShieldOperations:getApiShieldOperations has been deprecated in favor of cloudflare:apiShield/operations:getOperations""")
     __args__ = dict()
     __args__['direction'] = direction
     __args__['endpoint'] = endpoint
@@ -237,7 +240,7 @@ def get_api_shield_operations_output(direction: pulumi.Input[Optional[Optional[_
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_api_shield_operations = cloudflare.get_api_shield_operations(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_api_shield_operations = cloudflare.apishield.get_operations(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="desc",
         endpoint="/api/v1",
         features=["thresholds"],
@@ -258,6 +261,7 @@ def get_api_shield_operations_output(direction: pulumi.Input[Optional[Optional[_
            Available values: "method", "host", "endpoint", "thresholds.$key".
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_api_shield_operations is deprecated: cloudflare:index/getApiShieldOperations:getApiShieldOperations has been deprecated in favor of cloudflare:apiShield/operations:getOperations""")
     __args__ = dict()
     __args__['direction'] = direction
     __args__['endpoint'] = endpoint

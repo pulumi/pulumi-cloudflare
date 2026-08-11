@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomCsr = new cloudflare.CustomCsr("example_custom_csr", {
+ * const exampleCustomCsr = new cloudflare.custom.Csr("example_custom_csr", {
  *     commonName: "example.com",
  *     country: "US",
  *     locality: "San Francisco",
@@ -39,6 +39,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/customCsr:CustomCsr example '<{accounts|zones}/{account_id|zone_id}>/<custom_csr_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/customCsr:CustomCsr has been deprecated in favor of cloudflare:custom/csr:Csr
  */
 export class CustomCsr extends pulumi.CustomResource {
     /**
@@ -51,6 +53,7 @@ export class CustomCsr extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CustomCsrState, opts?: pulumi.CustomResourceOptions): CustomCsr {
+        pulumi.log.warn("CustomCsr is deprecated: cloudflare:index/customCsr:CustomCsr has been deprecated in favor of cloudflare:custom/csr:Csr")
         return new CustomCsr(name, <any>state, { ...opts, id: id });
     }
 
@@ -137,8 +140,11 @@ export class CustomCsr extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/customCsr:CustomCsr has been deprecated in favor of cloudflare:custom/csr:Csr */
     constructor(name: string, args: CustomCsrArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/customCsr:CustomCsr has been deprecated in favor of cloudflare:custom/csr:Csr */
     constructor(name: string, argsOrState?: CustomCsrArgs | CustomCsrState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("CustomCsr is deprecated: cloudflare:index/customCsr:CustomCsr has been deprecated in favor of cloudflare:custom/csr:Csr")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

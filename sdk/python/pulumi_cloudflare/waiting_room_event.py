@@ -597,8 +597,13 @@ class _WaitingRoomEventState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/waitingRoomEvent:WaitingRoomEvent has been deprecated in favor of cloudflare:waitingRoom/event:Event""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/waitingRoomEvent:WaitingRoomEvent")
 class WaitingRoomEvent(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/waitingRoomEvent:WaitingRoomEvent has been deprecated in favor of cloudflare:waitingRoom/event:Event""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -633,7 +638,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_waiting_room_event = cloudflare.WaitingRoomEvent("example_waiting_room_event",
+        example_waiting_room_event = cloudflare.waitingroom.Event("example_waiting_room_event",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             waiting_room_id="699d98642c564d2e855e9661899b7252",
             event_end_time="2021-09-28T17:00:00.000Z",
@@ -699,7 +704,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_waiting_room_event = cloudflare.WaitingRoomEvent("example_waiting_room_event",
+        example_waiting_room_event = cloudflare.waitingroom.Event("example_waiting_room_event",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             waiting_room_id="699d98642c564d2e855e9661899b7252",
             event_end_time="2021-09-28T17:00:00.000Z",
@@ -759,6 +764,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
                  waiting_room_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""WaitingRoomEvent is deprecated: cloudflare:index/waitingRoomEvent:WaitingRoomEvent has been deprecated in favor of cloudflare:waitingRoom/event:Event""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

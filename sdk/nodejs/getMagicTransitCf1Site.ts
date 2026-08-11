@@ -20,13 +20,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicTransitCf1Site = cloudflare.getMagicTransitCf1Site({
+ * const exampleMagicTransitCf1Site = cloudflare.magictransitcf1.getSite({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     cf1SiteId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getMagicTransitCf1Site:getMagicTransitCf1Site has been deprecated in favor of cloudflare:magicTransitCf1/site:getSite */
 export function getMagicTransitCf1Site(args: GetMagicTransitCf1SiteArgs, opts?: pulumi.InvokeOptions): Promise<GetMagicTransitCf1SiteResult> {
+    pulumi.log.warn("getMagicTransitCf1Site is deprecated: cloudflare:index/getMagicTransitCf1Site:getMagicTransitCf1Site has been deprecated in favor of cloudflare:magicTransitCf1/site:getSite")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getMagicTransitCf1Site:getMagicTransitCf1Site", {
         "accountId": args.accountId,
@@ -90,13 +92,15 @@ export interface GetMagicTransitCf1SiteResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicTransitCf1Site = cloudflare.getMagicTransitCf1Site({
+ * const exampleMagicTransitCf1Site = cloudflare.magictransitcf1.getSite({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     cf1SiteId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getMagicTransitCf1Site:getMagicTransitCf1Site has been deprecated in favor of cloudflare:magicTransitCf1/site:getSite */
 export function getMagicTransitCf1SiteOutput(args: GetMagicTransitCf1SiteOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMagicTransitCf1SiteResult> {
+    pulumi.log.warn("getMagicTransitCf1Site is deprecated: cloudflare:index/getMagicTransitCf1Site:getMagicTransitCf1Site has been deprecated in favor of cloudflare:magicTransitCf1/site:getSite")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getMagicTransitCf1Site:getMagicTransitCf1Site", {
         "accountId": args.accountId,

@@ -22,6 +22,8 @@ __all__ = [
     'get_magic_transit_site_lan_output',
 ]
 
+warnings.warn("""cloudflare:index/getMagicTransitSiteLan:getMagicTransitSiteLan has been deprecated in favor of cloudflare:magicTransitSite/lan:getLan""", DeprecationWarning)
+
 @pulumi.output_type
 class GetMagicTransitSiteLanResult:
     """
@@ -209,7 +211,7 @@ def get_magic_transit_site_lan(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_transit_site_lan = cloudflare.get_magic_transit_site_lan(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_magic_transit_site_lan = cloudflare.magictransitsite.get_lan(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         site_id="023e105f4ecef8ad9ca31a8372d0c353",
         lan_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
@@ -219,6 +221,7 @@ def get_magic_transit_site_lan(account_id: Optional[_builtins.str] = None,
     :param _builtins.str lan_id: Identifier
     :param _builtins.str site_id: Identifier
     """
+    pulumi.log.warn("""get_magic_transit_site_lan is deprecated: cloudflare:index/getMagicTransitSiteLan:getMagicTransitSiteLan has been deprecated in favor of cloudflare:magicTransitSite/lan:getLan""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['lanId'] = lan_id
@@ -259,7 +262,7 @@ def get_magic_transit_site_lan_output(account_id: pulumi.Input[Optional[_builtin
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_transit_site_lan = cloudflare.get_magic_transit_site_lan(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_magic_transit_site_lan = cloudflare.magictransitsite.get_lan(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         site_id="023e105f4ecef8ad9ca31a8372d0c353",
         lan_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
@@ -269,6 +272,7 @@ def get_magic_transit_site_lan_output(account_id: pulumi.Input[Optional[_builtin
     :param _builtins.str lan_id: Identifier
     :param _builtins.str site_id: Identifier
     """
+    pulumi.log.warn("""get_magic_transit_site_lan is deprecated: cloudflare:index/getMagicTransitSiteLan:getMagicTransitSiteLan has been deprecated in favor of cloudflare:magicTransitSite/lan:getLan""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['lanId'] = lan_id

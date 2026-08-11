@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/snippet"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetSnippet(ctx, &cloudflare.LookupSnippetArgs{
+//			_, err := snippet.LookupSnippet(ctx, &snippet.LookupSnippetArgs{
 //				ZoneId:      pulumi.StringRef("9f1839b6152d298aca64c4e906b6d074"),
 //				SnippetName: "my_snippet",
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getSnippet:getSnippet has been deprecated in favor of cloudflare:snippet/snippet:getSnippet
 func LookupSnippet(ctx *pulumi.Context, args *LookupSnippetArgs, opts ...pulumi.InvokeOption) (*LookupSnippetResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSnippetResult

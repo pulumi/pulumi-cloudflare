@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWebAnalyticsRule = new cloudflare.WebAnalyticsRule("example_web_analytics_rule", {
+ * const exampleWebAnalyticsRule = new cloudflare.webanalytics.Rule("example_web_analytics_rule", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     rulesetId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     host: "example.com",
@@ -24,6 +24,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/webAnalyticsRule:WebAnalyticsRule has been deprecated in favor of cloudflare:webAnalytics/rule:Rule
  */
 export class WebAnalyticsRule extends pulumi.CustomResource {
     /**
@@ -36,6 +38,7 @@ export class WebAnalyticsRule extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WebAnalyticsRuleState, opts?: pulumi.CustomResourceOptions): WebAnalyticsRule {
+        pulumi.log.warn("WebAnalyticsRule is deprecated: cloudflare:index/webAnalyticsRule:WebAnalyticsRule has been deprecated in favor of cloudflare:webAnalytics/rule:Rule")
         return new WebAnalyticsRule(name, <any>state, { ...opts, id: id });
     }
 
@@ -81,8 +84,11 @@ export class WebAnalyticsRule extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/webAnalyticsRule:WebAnalyticsRule has been deprecated in favor of cloudflare:webAnalytics/rule:Rule */
     constructor(name: string, args: WebAnalyticsRuleArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/webAnalyticsRule:WebAnalyticsRule has been deprecated in favor of cloudflare:webAnalytics/rule:Rule */
     constructor(name: string, argsOrState?: WebAnalyticsRuleArgs | WebAnalyticsRuleState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("WebAnalyticsRule is deprecated: cloudflare:index/webAnalyticsRule:WebAnalyticsRule has been deprecated in favor of cloudflare:webAnalytics/rule:Rule")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -197,8 +197,13 @@ class _FirewallRuleState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/firewallRule:FirewallRule has been deprecated in favor of cloudflare:firewall/rule:Rule""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/firewallRule:FirewallRule")
 class FirewallRule(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/firewallRule:FirewallRule has been deprecated in favor of cloudflare:firewall/rule:Rule""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -213,7 +218,7 @@ class FirewallRule(pulumi.CustomResource):
         - `Firewall Services Read`
         - `Firewall Services Write`
 
-        > `FirewallRule` is in a deprecation phase until June 15th, 2025.
+        > `firewall.Rule` is in a deprecation phase until June 15th, 2025.
           During this time period, this resource is still
           fully supported but you are strongly advised  to move to the
           `Ruleset` resource. Full details can be found in the
@@ -225,7 +230,7 @@ class FirewallRule(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_firewall_rule = cloudflare.FirewallRule("example_firewall_rule",
+        example_firewall_rule = cloudflare.firewall.Rule("example_firewall_rule",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             action={
                 "mode": "challenge",
@@ -267,7 +272,7 @@ class FirewallRule(pulumi.CustomResource):
         - `Firewall Services Read`
         - `Firewall Services Write`
 
-        > `FirewallRule` is in a deprecation phase until June 15th, 2025.
+        > `firewall.Rule` is in a deprecation phase until June 15th, 2025.
           During this time period, this resource is still
           fully supported but you are strongly advised  to move to the
           `Ruleset` resource. Full details can be found in the
@@ -279,7 +284,7 @@ class FirewallRule(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_firewall_rule = cloudflare.FirewallRule("example_firewall_rule",
+        example_firewall_rule = cloudflare.firewall.Rule("example_firewall_rule",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             action={
                 "mode": "challenge",
@@ -323,6 +328,7 @@ class FirewallRule(pulumi.CustomResource):
                  filter: pulumi.Input[Optional[Union['FirewallRuleFilterArgs', 'FirewallRuleFilterArgsDict']]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""FirewallRule is deprecated: cloudflare:index/firewallRule:FirewallRule has been deprecated in favor of cloudflare:firewall/rule:Rule""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

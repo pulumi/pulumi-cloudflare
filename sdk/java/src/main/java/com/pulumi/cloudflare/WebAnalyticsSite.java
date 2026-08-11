@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WebAnalyticsSite;
- * import com.pulumi.cloudflare.WebAnalyticsSiteArgs;
+ * import com.pulumi.cloudflare.webAnalytics.Site;
+ * import com.pulumi.cloudflare.webAnalytics.SiteArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleWebAnalyticsSite = new WebAnalyticsSite("exampleWebAnalyticsSite", WebAnalyticsSiteArgs.builder()
+ *         var exampleWebAnalyticsSite = new Site("exampleWebAnalyticsSite", SiteArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .autoInstall(true)
  *             .host("example.com")
@@ -66,7 +66,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example &#39;&lt;account_id&gt;/&lt;site_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/webAnalyticsSite:WebAnalyticsSite has been deprecated in favor of cloudflare:webAnalytics/site:Site
+ * 
  */
+@Deprecated /* cloudflare:index/webAnalyticsSite:WebAnalyticsSite has been deprecated in favor of cloudflare:webAnalytics/site:Site */
 @ResourceType(type="cloudflare:index/webAnalyticsSite:WebAnalyticsSite")
 public class WebAnalyticsSite extends com.pulumi.resources.CustomResource {
     /**

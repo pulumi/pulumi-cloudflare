@@ -25,14 +25,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrusttunnelwarpconnector"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustTunnelWarpConnectorConfig(ctx, &cloudflare.LookupZeroTrustTunnelWarpConnectorConfigArgs{
+//			_, err := zerotrusttunnelwarpconnector.GetConfig(ctx, &zerotrusttunnelwarpconnector.GetConfigArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				TunnelId:  "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 //			}, nil)
@@ -44,6 +44,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustTunnelWarpConnectorConfig:getZeroTrustTunnelWarpConnectorConfig has been deprecated in favor of cloudflare:zeroTrustTunnelWarpConnector/config:getConfig
 func LookupZeroTrustTunnelWarpConnectorConfig(ctx *pulumi.Context, args *LookupZeroTrustTunnelWarpConnectorConfigArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustTunnelWarpConnectorConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustTunnelWarpConnectorConfigResult

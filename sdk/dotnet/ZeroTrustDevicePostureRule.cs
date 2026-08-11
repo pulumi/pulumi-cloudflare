@@ -24,14 +24,14 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDevicePostureRule = new Cloudflare.ZeroTrustDevicePostureRule("example_zero_trust_device_posture_rule", new()
+    ///     var exampleZeroTrustDevicePostureRule = new Cloudflare.Modules.ZeroTrustDevicePosture.ZeroTrustDevicePostureRule("example_zero_trust_device_posture_rule", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Name = "Admin Serial Numbers",
     ///         Type = "file",
     ///         Description = "The rule for admin serial numbers",
     ///         Expiration = "1h",
-    ///         Input = new Cloudflare.Inputs.ZeroTrustDevicePostureRuleInputArgs
+    ///         Input = new Cloudflare.Modules.ZeroTrustDevicePosture.Inputs.RuleInputArgs
     ///         {
     ///             OperatingSystem = "linux",
     ///             Path = "/bin/cat",
@@ -41,7 +41,7 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         Matches = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustDevicePostureRuleMatchArgs
+    ///             new Cloudflare.Modules.ZeroTrustDevicePosture.Inputs.RuleMatchArgs
     ///             {
     ///                 Platform = "windows",
     ///             },
@@ -58,6 +58,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule example '&lt;account_id&gt;/&lt;rule_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule has been deprecated in favor of cloudflare:zeroTrustDevicePosture/rule:Rule")]
     [CloudflareResourceType("cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule")]
     public partial class ZeroTrustDevicePostureRule : global::Pulumi.CustomResource
     {

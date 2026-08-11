@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCustomPageAsset = new Cloudflare.CustomPageAsset("example_custom_page_asset", new()
+    ///     var exampleCustomPageAsset = new Cloudflare.Modules.CustomPage.CustomPageAsset("example_custom_page_asset", new()
     ///     {
     ///         Description = "Custom 500 error page",
     ///         Name = "my_custom_error_page",
@@ -37,6 +37,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/customPageAsset:CustomPageAsset example '&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;asset_name&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/customPageAsset:CustomPageAsset has been deprecated in favor of cloudflare:customPage/asset:Asset")]
     [CloudflareResourceType("cloudflare:index/customPageAsset:CustomPageAsset")]
     public partial class CustomPageAsset : global::Pulumi.CustomResource
     {

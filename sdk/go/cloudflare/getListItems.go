@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/list"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetListItems(ctx, &cloudflare.LookupListItemsArgs{
+//			_, err := list.LookupItems(ctx, &list.LookupItemsArgs{
 //				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ListId:    "2c0fc9fa937b11eaa1b71c4d701ab86e",
 //				PerPage:   pulumi.IntRef(1),
@@ -44,6 +44,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getListItems:getListItems has been deprecated in favor of cloudflare:list/items:getItems
 func LookupListItems(ctx *pulumi.Context, args *LookupListItemsArgs, opts ...pulumi.InvokeOption) (*LookupListItemsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupListItemsResult

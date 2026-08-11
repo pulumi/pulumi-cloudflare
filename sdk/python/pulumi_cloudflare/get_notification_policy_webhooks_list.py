@@ -22,6 +22,8 @@ __all__ = [
     'get_notification_policy_webhooks_list_output',
 ]
 
+warnings.warn("""cloudflare:index/getNotificationPolicyWebhooksList:getNotificationPolicyWebhooksList has been deprecated in favor of cloudflare:notificationPolicyWebhooks/list:getList""", DeprecationWarning)
+
 @pulumi.output_type
 class GetNotificationPolicyWebhooksListResult:
     """
@@ -92,13 +94,14 @@ def get_notification_policy_webhooks_list(account_id: Optional[_builtins.str] = 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_notification_policy_webhooks_list = cloudflare.get_notification_policy_webhooks_list(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_notification_policy_webhooks_list = cloudflare.notificationpolicywebhooks.get_list(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: The account id
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_notification_policy_webhooks_list is deprecated: cloudflare:index/getNotificationPolicyWebhooksList:getNotificationPolicyWebhooksList has been deprecated in favor of cloudflare:notificationPolicyWebhooks/list:getList""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -127,13 +130,14 @@ def get_notification_policy_webhooks_list_output(account_id: pulumi.Input[Option
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_notification_policy_webhooks_list = cloudflare.get_notification_policy_webhooks_list(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_notification_policy_webhooks_list = cloudflare.notificationpolicywebhooks.get_list(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: The account id
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_notification_policy_webhooks_list is deprecated: cloudflare:index/getNotificationPolicyWebhooksList:getNotificationPolicyWebhooksList has been deprecated in favor of cloudflare:notificationPolicyWebhooks/list:getList""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

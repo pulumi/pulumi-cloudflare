@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCertificateAuthoritiesHostnameAssociations = new cloudflare.CertificateAuthoritiesHostnameAssociations("example_certificate_authorities_hostname_associations", {
+ * const exampleCertificateAuthoritiesHostnameAssociations = new cloudflare.certificate.AuthoritiesHostnameAssociations("example_certificate_authorities_hostname_associations", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     hostnames: ["api.example.com"],
  *     mtlsCertificateId: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -28,6 +28,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/certificateAuthoritiesHostnameAssociations:CertificateAuthoritiesHostnameAssociations example '<zone_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/certificateAuthoritiesHostnameAssociations:CertificateAuthoritiesHostnameAssociations has been deprecated in favor of cloudflare:certificate/authoritiesHostnameAssociations:AuthoritiesHostnameAssociations
  */
 export class CertificateAuthoritiesHostnameAssociations extends pulumi.CustomResource {
     /**
@@ -40,6 +42,7 @@ export class CertificateAuthoritiesHostnameAssociations extends pulumi.CustomRes
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CertificateAuthoritiesHostnameAssociationsState, opts?: pulumi.CustomResourceOptions): CertificateAuthoritiesHostnameAssociations {
+        pulumi.log.warn("CertificateAuthoritiesHostnameAssociations is deprecated: cloudflare:index/certificateAuthoritiesHostnameAssociations:CertificateAuthoritiesHostnameAssociations has been deprecated in favor of cloudflare:certificate/authoritiesHostnameAssociations:AuthoritiesHostnameAssociations")
         return new CertificateAuthoritiesHostnameAssociations(name, <any>state, { ...opts, id: id });
     }
 
@@ -74,8 +77,11 @@ export class CertificateAuthoritiesHostnameAssociations extends pulumi.CustomRes
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/certificateAuthoritiesHostnameAssociations:CertificateAuthoritiesHostnameAssociations has been deprecated in favor of cloudflare:certificate/authoritiesHostnameAssociations:AuthoritiesHostnameAssociations */
     constructor(name: string, args: CertificateAuthoritiesHostnameAssociationsArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/certificateAuthoritiesHostnameAssociations:CertificateAuthoritiesHostnameAssociations has been deprecated in favor of cloudflare:certificate/authoritiesHostnameAssociations:AuthoritiesHostnameAssociations */
     constructor(name: string, argsOrState?: CertificateAuthoritiesHostnameAssociationsArgs | CertificateAuthoritiesHostnameAssociationsState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("CertificateAuthoritiesHostnameAssociations is deprecated: cloudflare:index/certificateAuthoritiesHostnameAssociations:CertificateAuthoritiesHostnameAssociations has been deprecated in favor of cloudflare:certificate/authoritiesHostnameAssociations:AuthoritiesHostnameAssociations")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

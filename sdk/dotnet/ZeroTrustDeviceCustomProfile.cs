@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDeviceCustomProfile = new Cloudflare.ZeroTrustDeviceCustomProfile("example_zero_trust_device_custom_profile", new()
+    ///     var exampleZeroTrustDeviceCustomProfile = new Cloudflare.Modules.ZeroTrustDeviceCustomProfile.ZeroTrustDeviceCustomProfile("example_zero_trust_device_custom_profile", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Match = "identity.email == \"test@cloudflare.com\"",
@@ -40,7 +40,7 @@ namespace Pulumi.Cloudflare
     ///         Enabled = true,
     ///         Excludes = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustDeviceCustomProfileExcludeArgs
+    ///             new Cloudflare.Modules.ZeroTrustDeviceCustomProfile.Inputs.ZeroTrustDeviceCustomProfileExcludeArgs
     ///             {
     ///                 Address = "192.0.2.0/24",
     ///                 Description = "Exclude testing domains from the tunnel",
@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare
     ///         ExcludeOfficeIps = true,
     ///         Includes = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustDeviceCustomProfileIncludeArgs
+    ///             new Cloudflare.Modules.ZeroTrustDeviceCustomProfile.Inputs.ZeroTrustDeviceCustomProfileIncludeArgs
     ///             {
     ///                 Address = "192.0.2.0/24",
     ///                 Description = "Include testing domains in the tunnel",
@@ -59,7 +59,7 @@ namespace Pulumi.Cloudflare
     ///         LanAllowSubnetSize = 24,
     ///         RegisterInterfaceIpWithDns = true,
     ///         SccmVpnBoundarySupport = false,
-    ///         ServiceModeV2 = new Cloudflare.Inputs.ZeroTrustDeviceCustomProfileServiceModeV2Args
+    ///         ServiceModeV2 = new Cloudflare.Modules.ZeroTrustDeviceCustomProfile.Inputs.ZeroTrustDeviceCustomProfileServiceModeV2Args
     ///         {
     ///             Mode = "proxy",
     ///             Port = 3000,
@@ -78,6 +78,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustDeviceCustomProfile:ZeroTrustDeviceCustomProfile example '&lt;account_id&gt;/&lt;policy_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustDeviceCustomProfile:ZeroTrustDeviceCustomProfile has been deprecated in favor of cloudflare:zeroTrustDeviceCustomProfile/zeroTrustDeviceCustomProfile:ZeroTrustDeviceCustomProfile")]
     [CloudflareResourceType("cloudflare:index/zeroTrustDeviceCustomProfile:ZeroTrustDeviceCustomProfile")]
     public partial class ZeroTrustDeviceCustomProfile : global::Pulumi.CustomResource
     {

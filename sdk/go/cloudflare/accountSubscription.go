@@ -23,17 +23,17 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/account"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAccountSubscription(ctx, "example_account_subscription", &cloudflare.AccountSubscriptionArgs{
+//			_, err := account.NewSubscription(ctx, "example_account_subscription", &account.SubscriptionArgs{
 //				AccountId: pulumi.String("account_id"),
 //				Frequency: pulumi.String("monthly"),
-//				RatePlan: &cloudflare.AccountSubscriptionRatePlanArgs{
+//				RatePlan: &account.SubscriptionRatePlanArgs{
 //					Id:                pulumi.String("free"),
 //					Currency:          pulumi.String("USD"),
 //					ExternallyManaged: pulumi.Bool(false),
@@ -59,6 +59,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example '<account_id>'
 // ```
+//
+// Deprecated: cloudflare:index/accountSubscription:AccountSubscription has been deprecated in favor of cloudflare:account/subscription:Subscription
 type AccountSubscription struct {
 	pulumi.CustomResourceState
 

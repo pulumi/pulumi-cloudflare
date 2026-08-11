@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessTag = new Cloudflare.ZeroTrustAccessTag("example_zero_trust_access_tag", new()
+    ///     var exampleZeroTrustAccessTag = new Cloudflare.Modules.ZeroTrustAccess.ZeroTrustAccessTag("example_zero_trust_access_tag", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "engineers",
@@ -74,10 +74,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/accessTag:AccessTag" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

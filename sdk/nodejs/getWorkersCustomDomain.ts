@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersCustomDomain = cloudflare.getWorkersCustomDomain({
+ * const exampleWorkersCustomDomain = cloudflare.workerscustom.getDomain({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     domainId: "dbe10b4bc17c295377eabd600e1787fd",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkersCustomDomain:getWorkersCustomDomain has been deprecated in favor of cloudflare:workersCustom/domain:getDomain */
 export function getWorkersCustomDomain(args?: GetWorkersCustomDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersCustomDomainResult> {
+    pulumi.log.warn("getWorkersCustomDomain is deprecated: cloudflare:index/getWorkersCustomDomain:getWorkersCustomDomain has been deprecated in favor of cloudflare:workersCustom/domain:getDomain")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkersCustomDomain:getWorkersCustomDomain", {
@@ -105,13 +107,15 @@ export interface GetWorkersCustomDomainResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersCustomDomain = cloudflare.getWorkersCustomDomain({
+ * const exampleWorkersCustomDomain = cloudflare.workerscustom.getDomain({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     domainId: "dbe10b4bc17c295377eabd600e1787fd",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkersCustomDomain:getWorkersCustomDomain has been deprecated in favor of cloudflare:workersCustom/domain:getDomain */
 export function getWorkersCustomDomainOutput(args?: GetWorkersCustomDomainOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersCustomDomainResult> {
+    pulumi.log.warn("getWorkersCustomDomain is deprecated: cloudflare:index/getWorkersCustomDomain:getWorkersCustomDomain has been deprecated in favor of cloudflare:workersCustom/domain:getDomain")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkersCustomDomain:getWorkersCustomDomain", {

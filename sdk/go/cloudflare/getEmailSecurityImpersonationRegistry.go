@@ -17,6 +17,8 @@ import (
 // - `Cloud Email Security: Write`
 //
 // ## Example Usage
+//
+// Deprecated: cloudflare:index/getEmailSecurityImpersonationRegistry:getEmailSecurityImpersonationRegistry has been deprecated in favor of cloudflare:emailSecurityImpersonation/registry:getRegistry
 func LookupEmailSecurityImpersonationRegistry(ctx *pulumi.Context, args *LookupEmailSecurityImpersonationRegistryArgs, opts ...pulumi.InvokeOption) (*LookupEmailSecurityImpersonationRegistryResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEmailSecurityImpersonationRegistryResult

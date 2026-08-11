@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustRiskScoringIntegration = new cloudflare.ZeroTrustRiskScoringIntegration("example_zero_trust_risk_scoring_integration", {
+ * const exampleZeroTrustRiskScoringIntegration = new cloudflare.zerotrustriskscoring.Integration("example_zero_trust_risk_scoring_integration", {
  *     accountId: "account_id",
  *     integrationType: "Okta",
  *     tenantUrl: "https://example.com",
@@ -29,6 +29,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration example '<account_id>/<integration_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integration:Integration
  */
 export class ZeroTrustRiskScoringIntegration extends pulumi.CustomResource {
     /**
@@ -41,6 +43,7 @@ export class ZeroTrustRiskScoringIntegration extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustRiskScoringIntegrationState, opts?: pulumi.CustomResourceOptions): ZeroTrustRiskScoringIntegration {
+        pulumi.log.warn("ZeroTrustRiskScoringIntegration is deprecated: cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integration:Integration")
         return new ZeroTrustRiskScoringIntegration(name, <any>state, { ...opts, id: id });
     }
 
@@ -96,8 +99,11 @@ export class ZeroTrustRiskScoringIntegration extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integration:Integration */
     constructor(name: string, args: ZeroTrustRiskScoringIntegrationArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integration:Integration */
     constructor(name: string, argsOrState?: ZeroTrustRiskScoringIntegrationArgs | ZeroTrustRiskScoringIntegrationState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustRiskScoringIntegration is deprecated: cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integration:Integration")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

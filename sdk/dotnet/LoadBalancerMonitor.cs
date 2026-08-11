@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleLoadBalancerMonitor = new Cloudflare.LoadBalancerMonitor("example_load_balancer_monitor", new()
+    ///     var exampleLoadBalancerMonitor = new Cloudflare.Modules.LoadBalancerMonitor.LoadBalancerMonitor("example_load_balancer_monitor", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         AllowInsecure = true,
@@ -65,6 +65,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor example '&lt;account_id&gt;/&lt;monitor_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor has been deprecated in favor of cloudflare:loadBalancerMonitor/loadBalancerMonitor:LoadBalancerMonitor")]
     [CloudflareResourceType("cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor")]
     public partial class LoadBalancerMonitor : global::Pulumi.CustomResource
     {

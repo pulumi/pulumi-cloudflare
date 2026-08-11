@@ -18,14 +18,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrust"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustLists(ctx, &cloudflare.LookupZeroTrustListsArgs{
+//			_, err := zerotrust.GetLists(ctx, &zerotrust.GetListsArgs{
 //				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //				Type:      pulumi.StringRef("SERIAL"),
 //			}, nil)
@@ -37,6 +37,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustLists:getZeroTrustLists has been deprecated in favor of cloudflare:zeroTrust/lists:getLists
 func LookupZeroTrustLists(ctx *pulumi.Context, args *LookupZeroTrustListsArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustListsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustListsResult

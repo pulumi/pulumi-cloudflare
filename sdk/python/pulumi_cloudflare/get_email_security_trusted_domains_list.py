@@ -22,6 +22,8 @@ __all__ = [
     'get_email_security_trusted_domains_list_output',
 ]
 
+warnings.warn("""cloudflare:index/getEmailSecurityTrustedDomainsList:getEmailSecurityTrustedDomainsList has been deprecated in favor of cloudflare:emailSecurityTrustedDomains/list:getList""", DeprecationWarning)
+
 @pulumi.output_type
 class GetEmailSecurityTrustedDomainsListResult:
     """
@@ -166,7 +168,7 @@ def get_email_security_trusted_domains_list(account_id: Optional[_builtins.str] 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_email_security_trusted_domains_list = cloudflare.get_email_security_trusted_domains_list(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_email_security_trusted_domains_list = cloudflare.emailsecuritytrusteddomains.get_list(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="asc",
         is_recent=True,
         is_similarity=True,
@@ -186,6 +188,7 @@ def get_email_security_trusted_domains_list(account_id: Optional[_builtins.str] 
            Available values: "pattern", "created_at".
     :param _builtins.str search: Search term for filtering records. Behavior may change.
     """
+    pulumi.log.warn("""get_email_security_trusted_domains_list is deprecated: cloudflare:index/getEmailSecurityTrustedDomainsList:getEmailSecurityTrustedDomainsList has been deprecated in favor of cloudflare:emailSecurityTrustedDomains/list:getList""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction
@@ -229,7 +232,7 @@ def get_email_security_trusted_domains_list_output(account_id: pulumi.Input[Opti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_email_security_trusted_domains_list = cloudflare.get_email_security_trusted_domains_list(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_email_security_trusted_domains_list = cloudflare.emailsecuritytrusteddomains.get_list(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="asc",
         is_recent=True,
         is_similarity=True,
@@ -249,6 +252,7 @@ def get_email_security_trusted_domains_list_output(account_id: pulumi.Input[Opti
            Available values: "pattern", "created_at".
     :param _builtins.str search: Search term for filtering records. Behavior may change.
     """
+    pulumi.log.warn("""get_email_security_trusted_domains_list is deprecated: cloudflare:index/getEmailSecurityTrustedDomainsList:getEmailSecurityTrustedDomainsList has been deprecated in favor of cloudflare:emailSecurityTrustedDomains/list:getList""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction

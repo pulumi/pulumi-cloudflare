@@ -35,10 +35,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDexTest;
- * import com.pulumi.cloudflare.ZeroTrustDexTestArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDexTestDataArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDexTestTargetPolicyArgs;
+ * import com.pulumi.cloudflare.zeroTrustDex.Test;
+ * import com.pulumi.cloudflare.zeroTrustDex.TestArgs;
+ * import com.pulumi.cloudflare.zeroTrustDex.inputs.TestDataArgs;
+ * import com.pulumi.cloudflare.zeroTrustDex.inputs.TestTargetPolicyArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -52,9 +52,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustDexTest = new ZeroTrustDexTest("exampleZeroTrustDexTest", ZeroTrustDexTestArgs.builder()
+ *         var exampleZeroTrustDexTest = new Test("exampleZeroTrustDexTest", TestArgs.builder()
  *             .accountId("01a7362d577a6c3019a474fd6f485823")
- *             .data(ZeroTrustDexTestDataArgs.builder()
+ *             .data(TestDataArgs.builder()
  *                 .host("https://dash.cloudflare.com")
  *                 .kind("http")
  *                 .method("GET")
@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .interval("30m")
  *             .name("HTTP dash health check")
  *             .description("Checks the dash endpoint every 30 minutes")
- *             .targetPolicies(ZeroTrustDexTestTargetPolicyArgs.builder()
+ *             .targetPolicies(TestTargetPolicyArgs.builder()
  *                 .id("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
  *                 .default_(true)
  *                 .name("name")
@@ -81,7 +81,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest example &#39;&lt;account_id&gt;/&lt;dex_test_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest has been deprecated in favor of cloudflare:zeroTrustDex/test:Test
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest has been deprecated in favor of cloudflare:zeroTrustDex/test:Test */
 @ResourceType(type="cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest")
 public class ZeroTrustDexTest extends com.pulumi.resources.CustomResource {
     /**

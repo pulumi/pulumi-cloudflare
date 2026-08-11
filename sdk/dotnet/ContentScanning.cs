@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleContentScanning = new Cloudflare.ContentScanning("example_content_scanning", new()
+    ///     var exampleContentScanning = new Cloudflare.Modules.ContentScanning.ContentScanning("example_content_scanning", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Value = "enabled",
@@ -40,6 +40,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/contentScanning:ContentScanning has been deprecated in favor of cloudflare:contentScanning/contentScanning:ContentScanning")]
     [CloudflareResourceType("cloudflare:index/contentScanning:ContentScanning")]
     public partial class ContentScanning : global::Pulumi.CustomResource
     {

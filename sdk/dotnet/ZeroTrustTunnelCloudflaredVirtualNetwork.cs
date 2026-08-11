@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustTunnelCloudflaredVirtualNetwork = new Cloudflare.ZeroTrustTunnelCloudflaredVirtualNetwork("example_zero_trust_tunnel_cloudflared_virtual_network", new()
+    ///     var exampleZeroTrustTunnelCloudflaredVirtualNetwork = new Cloudflare.Modules.ZeroTrustTunnelCloudflaredVirtual.ZeroTrustTunnelCloudflaredVirtualNetwork("example_zero_trust_tunnel_cloudflared_virtual_network", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Name = "us-east-1-vpc",
@@ -43,6 +43,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustTunnelCloudflaredVirtualNetwork:ZeroTrustTunnelCloudflaredVirtualNetwork example '&lt;account_id&gt;/&lt;virtual_network_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustTunnelCloudflaredVirtualNetwork:ZeroTrustTunnelCloudflaredVirtualNetwork has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflaredVirtual/network:Network")]
     [CloudflareResourceType("cloudflare:index/zeroTrustTunnelCloudflaredVirtualNetwork:ZeroTrustTunnelCloudflaredVirtualNetwork")]
     public partial class ZeroTrustTunnelCloudflaredVirtualNetwork : global::Pulumi.CustomResource
     {

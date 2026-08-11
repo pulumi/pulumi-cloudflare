@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_resource_library_categories_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustResourceLibraryCategories:getZeroTrustResourceLibraryCategories has been deprecated in favor of cloudflare:zeroTrustResourceLibrary/categories:getCategories""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustResourceLibraryCategoriesResult:
     """
@@ -107,6 +109,7 @@ def get_zero_trust_resource_library_categories(account_id: Optional[_builtins.st
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.int offset: Offset of results to return.
     """
+    pulumi.log.warn("""get_zero_trust_resource_library_categories is deprecated: cloudflare:index/getZeroTrustResourceLibraryCategories:getZeroTrustResourceLibraryCategories has been deprecated in favor of cloudflare:zeroTrustResourceLibrary/categories:getCategories""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['limit'] = limit
@@ -133,6 +136,7 @@ def get_zero_trust_resource_library_categories_output(account_id: pulumi.Input[O
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.int offset: Offset of results to return.
     """
+    pulumi.log.warn("""get_zero_trust_resource_library_categories is deprecated: cloudflare:index/getZeroTrustResourceLibraryCategories:getZeroTrustResourceLibraryCategories has been deprecated in favor of cloudflare:zeroTrustResourceLibrary/categories:getCategories""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['limit'] = limit

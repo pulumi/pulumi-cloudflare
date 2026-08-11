@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessCustomPages = cloudflare.getZeroTrustAccessCustomPages({
+ * const exampleZeroTrustAccessCustomPages = cloudflare.zerotrustaccesscustom.getPages({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessCustomPages:getZeroTrustAccessCustomPages has been deprecated in favor of cloudflare:zeroTrustAccessCustom/pages:getPages */
 export function getZeroTrustAccessCustomPages(args?: GetZeroTrustAccessCustomPagesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessCustomPagesResult> {
+    pulumi.log.warn("getZeroTrustAccessCustomPages is deprecated: cloudflare:index/getZeroTrustAccessCustomPages:getZeroTrustAccessCustomPages has been deprecated in favor of cloudflare:zeroTrustAccessCustom/pages:getPages")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessCustomPages:getZeroTrustAccessCustomPages", {
@@ -75,12 +77,14 @@ export interface GetZeroTrustAccessCustomPagesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessCustomPages = cloudflare.getZeroTrustAccessCustomPages({
+ * const exampleZeroTrustAccessCustomPages = cloudflare.zerotrustaccesscustom.getPages({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessCustomPages:getZeroTrustAccessCustomPages has been deprecated in favor of cloudflare:zeroTrustAccessCustom/pages:getPages */
 export function getZeroTrustAccessCustomPagesOutput(args?: GetZeroTrustAccessCustomPagesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessCustomPagesResult> {
+    pulumi.log.warn("getZeroTrustAccessCustomPages is deprecated: cloudflare:index/getZeroTrustAccessCustomPages:getZeroTrustAccessCustomPages has been deprecated in favor of cloudflare:zeroTrustAccessCustom/pages:getPages")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessCustomPages:getZeroTrustAccessCustomPages", {

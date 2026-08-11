@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAiGateway = cloudflare.getAiGateway({
+ * const exampleAiGateway = cloudflare.aigateway.getAiGateway({
  *     accountId: "3ebbcb006d4d46d7bb6a8c7f14676cb0",
  *     id: "my-gateway",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAiGateway:getAiGateway has been deprecated in favor of cloudflare:aiGateway/aiGateway:getAiGateway */
 export function getAiGateway(args?: GetAiGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetAiGatewayResult> {
+    pulumi.log.warn("getAiGateway is deprecated: cloudflare:index/getAiGateway:getAiGateway has been deprecated in favor of cloudflare:aiGateway/aiGateway:getAiGateway")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAiGateway:getAiGateway", {
@@ -114,13 +116,15 @@ export interface GetAiGatewayResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAiGateway = cloudflare.getAiGateway({
+ * const exampleAiGateway = cloudflare.aigateway.getAiGateway({
  *     accountId: "3ebbcb006d4d46d7bb6a8c7f14676cb0",
  *     id: "my-gateway",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAiGateway:getAiGateway has been deprecated in favor of cloudflare:aiGateway/aiGateway:getAiGateway */
 export function getAiGatewayOutput(args?: GetAiGatewayOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAiGatewayResult> {
+    pulumi.log.warn("getAiGateway is deprecated: cloudflare:index/getAiGateway:getAiGateway has been deprecated in favor of cloudflare:aiGateway/aiGateway:getAiGateway")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAiGateway:getAiGateway", {

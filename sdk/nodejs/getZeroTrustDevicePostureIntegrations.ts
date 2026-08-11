@@ -13,12 +13,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDevicePostureIntegrations = cloudflare.getZeroTrustDevicePostureIntegrations({
+ * const exampleZeroTrustDevicePostureIntegrations = cloudflare.zerotrustdeviceposture.getIntegrations({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDevicePostureIntegrations:getZeroTrustDevicePostureIntegrations has been deprecated in favor of cloudflare:zeroTrustDevicePosture/integrations:getIntegrations */
 export function getZeroTrustDevicePostureIntegrations(args?: GetZeroTrustDevicePostureIntegrationsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDevicePostureIntegrationsResult> {
+    pulumi.log.warn("getZeroTrustDevicePostureIntegrations is deprecated: cloudflare:index/getZeroTrustDevicePostureIntegrations:getZeroTrustDevicePostureIntegrations has been deprecated in favor of cloudflare:zeroTrustDevicePosture/integrations:getIntegrations")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDevicePostureIntegrations:getZeroTrustDevicePostureIntegrations", {
@@ -59,12 +61,14 @@ export interface GetZeroTrustDevicePostureIntegrationsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDevicePostureIntegrations = cloudflare.getZeroTrustDevicePostureIntegrations({
+ * const exampleZeroTrustDevicePostureIntegrations = cloudflare.zerotrustdeviceposture.getIntegrations({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDevicePostureIntegrations:getZeroTrustDevicePostureIntegrations has been deprecated in favor of cloudflare:zeroTrustDevicePosture/integrations:getIntegrations */
 export function getZeroTrustDevicePostureIntegrationsOutput(args?: GetZeroTrustDevicePostureIntegrationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDevicePostureIntegrationsResult> {
+    pulumi.log.warn("getZeroTrustDevicePostureIntegrations is deprecated: cloudflare:index/getZeroTrustDevicePostureIntegrations:getZeroTrustDevicePostureIntegrations has been deprecated in favor of cloudflare:zeroTrustDevicePosture/integrations:getIntegrations")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDevicePostureIntegrations:getZeroTrustDevicePostureIntegrations", {

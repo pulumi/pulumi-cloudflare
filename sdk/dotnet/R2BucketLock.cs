@@ -20,16 +20,16 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleR2BucketLock = new Cloudflare.R2BucketLock("example_r2_bucket_lock", new()
+    ///     var exampleR2BucketLock = new Cloudflare.Modules.R2Bucket.R2BucketLock("example_r2_bucket_lock", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         BucketName = "example-bucket",
     ///         Rules = new[]
     ///         {
-    ///             new Cloudflare.Inputs.R2BucketLockRuleArgs
+    ///             new Cloudflare.Modules.R2Bucket.Inputs.LockRuleArgs
     ///             {
     ///                 Id = "Lock all objects for 24 hours",
-    ///                 Condition = new Cloudflare.Inputs.R2BucketLockRuleConditionArgs
+    ///                 Condition = new Cloudflare.Modules.R2Bucket.Inputs.LockRuleConditionArgs
     ///                 {
     ///                     MaxAgeSeconds = 100,
     ///                     Type = "Age",
@@ -47,6 +47,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/r2BucketLock:R2BucketLock has been deprecated in favor of cloudflare:r2Bucket/lock:Lock")]
     [CloudflareResourceType("cloudflare:index/r2BucketLock:R2BucketLock")]
     public partial class R2BucketLock : global::Pulumi.CustomResource
     {

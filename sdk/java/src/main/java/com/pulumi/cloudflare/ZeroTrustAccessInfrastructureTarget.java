@@ -24,11 +24,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustAccessInfrastructureTarget;
- * import com.pulumi.cloudflare.ZeroTrustAccessInfrastructureTargetArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessInfrastructureTargetIpArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessInfrastructureTargetIpIpv4Args;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessInfrastructureTargetIpIpv6Args;
+ * import com.pulumi.cloudflare.zeroTrustAccessInfrastructure.Target;
+ * import com.pulumi.cloudflare.zeroTrustAccessInfrastructure.TargetArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccessInfrastructure.inputs.TargetIpArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccessInfrastructure.inputs.TargetIpIpv4Args;
+ * import com.pulumi.cloudflare.zeroTrustAccessInfrastructure.inputs.TargetIpIpv6Args;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -42,15 +42,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustAccessInfrastructureTarget = new ZeroTrustAccessInfrastructureTarget("exampleZeroTrustAccessInfrastructureTarget", ZeroTrustAccessInfrastructureTargetArgs.builder()
+ *         var exampleZeroTrustAccessInfrastructureTarget = new Target("exampleZeroTrustAccessInfrastructureTarget", TargetArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .hostname("infra-access-target")
- *             .ip(ZeroTrustAccessInfrastructureTargetIpArgs.builder()
- *                 .ipv4(ZeroTrustAccessInfrastructureTargetIpIpv4Args.builder()
+ *             .ip(TargetIpArgs.builder()
+ *                 .ipv4(TargetIpIpv4Args.builder()
  *                     .ipAddr("187.26.29.249")
  *                     .virtualNetworkId("c77b744e-acc8-428f-9257-6878c046ed55")
  *                     .build())
- *                 .ipv6(ZeroTrustAccessInfrastructureTargetIpIpv6Args.builder()
+ *                 .ipv6(TargetIpIpv6Args.builder()
  *                     .ipAddr("64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0")
  *                     .virtualNetworkId("c77b744e-acc8-428f-9257-6878c046ed55")
  *                     .build())
@@ -68,7 +68,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustAccessInfrastructureTarget:ZeroTrustAccessInfrastructureTarget example &#39;&lt;account_id&gt;/&lt;target_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustAccessInfrastructureTarget:ZeroTrustAccessInfrastructureTarget has been deprecated in favor of cloudflare:zeroTrustAccessInfrastructure/target:Target
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustAccessInfrastructureTarget:ZeroTrustAccessInfrastructureTarget has been deprecated in favor of cloudflare:zeroTrustAccessInfrastructure/target:Target */
 @ResourceType(type="cloudflare:index/zeroTrustAccessInfrastructureTarget:ZeroTrustAccessInfrastructureTarget")
 public class ZeroTrustAccessInfrastructureTarget extends com.pulumi.resources.CustomResource {
     /**

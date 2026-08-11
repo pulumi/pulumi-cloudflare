@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_risk_behavior_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustRiskBehavior:getZeroTrustRiskBehavior has been deprecated in favor of cloudflare:zeroTrust/riskBehavior:getRiskBehavior""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustRiskBehaviorResult:
     """
@@ -70,9 +72,10 @@ def get_zero_trust_risk_behavior(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_risk_behavior = cloudflare.get_zero_trust_risk_behavior(account_id="account_id")
+    example_zero_trust_risk_behavior = cloudflare.zerotrust.get_risk_behavior(account_id="account_id")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_risk_behavior is deprecated: cloudflare:index/getZeroTrustRiskBehavior:getZeroTrustRiskBehavior has been deprecated in favor of cloudflare:zeroTrust/riskBehavior:getRiskBehavior""")
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -95,9 +98,10 @@ def get_zero_trust_risk_behavior_output(account_id: pulumi.Input[Optional[Option
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_risk_behavior = cloudflare.get_zero_trust_risk_behavior(account_id="account_id")
+    example_zero_trust_risk_behavior = cloudflare.zerotrust.get_risk_behavior(account_id="account_id")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_risk_behavior is deprecated: cloudflare:index/getZeroTrustRiskBehavior:getZeroTrustRiskBehavior has been deprecated in favor of cloudflare:zeroTrust/riskBehavior:getRiskBehavior""")
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

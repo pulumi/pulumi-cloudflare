@@ -17,14 +17,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleFlagshipFlags = cloudflare.getFlagshipFlags({
+ * const exampleFlagshipFlags = cloudflare.flagship.getFlags({
  *     accountId: "account_id",
  *     appId: "app_id",
  *     limit: "limit",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getFlagshipFlags:getFlagshipFlags has been deprecated in favor of cloudflare:flagship/flags:getFlags */
 export function getFlagshipFlags(args: GetFlagshipFlagsArgs, opts?: pulumi.InvokeOptions): Promise<GetFlagshipFlagsResult> {
+    pulumi.log.warn("getFlagshipFlags is deprecated: cloudflare:index/getFlagshipFlags:getFlagshipFlags has been deprecated in favor of cloudflare:flagship/flags:getFlags")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getFlagshipFlags:getFlagshipFlags", {
         "accountId": args.accountId,
@@ -92,14 +94,16 @@ export interface GetFlagshipFlagsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleFlagshipFlags = cloudflare.getFlagshipFlags({
+ * const exampleFlagshipFlags = cloudflare.flagship.getFlags({
  *     accountId: "account_id",
  *     appId: "app_id",
  *     limit: "limit",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getFlagshipFlags:getFlagshipFlags has been deprecated in favor of cloudflare:flagship/flags:getFlags */
 export function getFlagshipFlagsOutput(args: GetFlagshipFlagsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFlagshipFlagsResult> {
+    pulumi.log.warn("getFlagshipFlags is deprecated: cloudflare:index/getFlagshipFlags:getFlagshipFlags has been deprecated in favor of cloudflare:flagship/flags:getFlags")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getFlagshipFlags:getFlagshipFlags", {
         "accountId": args.accountId,

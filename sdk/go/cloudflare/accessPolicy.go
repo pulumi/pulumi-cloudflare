@@ -24,24 +24,24 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustaccess"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustAccessPolicy(ctx, "example_zero_trust_access_policy", &cloudflare.ZeroTrustAccessPolicyArgs{
+//			_, err := zerotrustaccess.NewPolicy(ctx, "example_zero_trust_access_policy", &zerotrustaccess.PolicyArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Decision:  pulumi.String("allow"),
-//				Includes: cloudflare.ZeroTrustAccessPolicyIncludeArray{
-//					&cloudflare.ZeroTrustAccessPolicyIncludeArgs{
-//						Certificate: &cloudflare.ZeroTrustAccessPolicyIncludeCertificateArgs{},
+//				Includes: zerotrustaccess.PolicyIncludeArray{
+//					&zerotrustaccess.PolicyIncludeArgs{
+//						Certificate: &zerotrustaccess.PolicyIncludeCertificateArgs{},
 //					},
 //				},
 //				Name: pulumi.String("Allow devs"),
-//				ApprovalGroups: cloudflare.ZeroTrustAccessPolicyApprovalGroupArray{
-//					&cloudflare.ZeroTrustAccessPolicyApprovalGroupArgs{
+//				ApprovalGroups: zerotrustaccess.PolicyApprovalGroupArray{
+//					&zerotrustaccess.PolicyApprovalGroupArgs{
 //						ApprovalsNeeded: pulumi.Float64(1),
 //						EmailAddresses: pulumi.StringArray{
 //							pulumi.String("test1@cloudflare.com"),
@@ -49,7 +49,7 @@ import (
 //						},
 //						EmailListUuid: pulumi.String("email_list_uuid"),
 //					},
-//					&cloudflare.ZeroTrustAccessPolicyApprovalGroupArgs{
+//					&zerotrustaccess.PolicyApprovalGroupArgs{
 //						ApprovalsNeeded: pulumi.Float64(3),
 //						EmailAddresses: pulumi.StringArray{
 //							pulumi.String("test@cloudflare.com"),
@@ -59,8 +59,8 @@ import (
 //					},
 //				},
 //				ApprovalRequired: pulumi.Bool(true),
-//				ConnectionRules: &cloudflare.ZeroTrustAccessPolicyConnectionRulesArgs{
-//					Rdp: &cloudflare.ZeroTrustAccessPolicyConnectionRulesRdpArgs{
+//				ConnectionRules: &zerotrustaccess.PolicyConnectionRulesArgs{
+//					Rdp: &zerotrustaccess.PolicyConnectionRulesRdpArgs{
 //						AllowedClipboardLocalToRemoteFormats: pulumi.StringArray{
 //							pulumi.String("text"),
 //							pulumi.String("file"),
@@ -71,13 +71,13 @@ import (
 //						},
 //					},
 //				},
-//				Excludes: cloudflare.ZeroTrustAccessPolicyExcludeArray{
-//					&cloudflare.ZeroTrustAccessPolicyExcludeArgs{
-//						Certificate: &cloudflare.ZeroTrustAccessPolicyExcludeCertificateArgs{},
+//				Excludes: zerotrustaccess.PolicyExcludeArray{
+//					&zerotrustaccess.PolicyExcludeArgs{
+//						Certificate: &zerotrustaccess.PolicyExcludeCertificateArgs{},
 //					},
 //				},
 //				IsolationRequired: pulumi.Bool(false),
-//				MfaConfig: &cloudflare.ZeroTrustAccessPolicyMfaConfigArgs{
+//				MfaConfig: &zerotrustaccess.PolicyMfaConfigArgs{
 //					AllowedAuthenticators: pulumi.StringArray{
 //						pulumi.String("totp"),
 //						pulumi.String("biometrics"),
@@ -88,9 +88,9 @@ import (
 //				},
 //				PurposeJustificationPrompt:   pulumi.String("Please enter a justification for entering this protected domain."),
 //				PurposeJustificationRequired: pulumi.Bool(true),
-//				Requires: cloudflare.ZeroTrustAccessPolicyRequireArray{
-//					&cloudflare.ZeroTrustAccessPolicyRequireArgs{
-//						Certificate: &cloudflare.ZeroTrustAccessPolicyRequireCertificateArgs{},
+//				Requires: zerotrustaccess.PolicyRequireArray{
+//					&zerotrustaccess.PolicyRequireArgs{
+//						Certificate: &zerotrustaccess.PolicyRequireCertificateArgs{},
 //					},
 //				},
 //				SessionDuration: pulumi.String("24h"),
@@ -166,12 +166,6 @@ func NewAccessPolicy(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("cloudflare:index/accessPolicy:AccessPolicy"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessPolicy
 	err := ctx.RegisterResource("cloudflare:index/accessPolicy:AccessPolicy", name, args, &resource, opts...)

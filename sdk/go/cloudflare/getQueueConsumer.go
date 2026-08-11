@@ -19,6 +19,8 @@ import (
 // - `Workers Scripts Write`
 //
 // ## Example Usage
+//
+// Deprecated: cloudflare:index/getQueueConsumer:getQueueConsumer has been deprecated in favor of cloudflare:queue/consumer:getConsumer
 func LookupQueueConsumer(ctx *pulumi.Context, args *LookupQueueConsumerArgs, opts ...pulumi.InvokeOption) (*LookupQueueConsumerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupQueueConsumerResult

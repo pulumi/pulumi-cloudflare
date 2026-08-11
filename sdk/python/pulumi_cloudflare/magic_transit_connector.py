@@ -226,8 +226,13 @@ class _MagicTransitConnectorState:
         pulumi.set(self, "timezone", value)
 
 
+warnings.warn("""cloudflare:index/magicTransitConnector:MagicTransitConnector has been deprecated in favor of cloudflare:magicTransit/connector:Connector""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/magicTransitConnector:MagicTransitConnector")
 class MagicTransitConnector(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/magicTransitConnector:MagicTransitConnector has been deprecated in favor of cloudflare:magicTransit/connector:Connector""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -247,7 +252,7 @@ class MagicTransitConnector(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_magic_transit_connector = cloudflare.MagicTransitConnector("example_magic_transit_connector",
+        example_magic_transit_connector = cloudflare.magictransit.Connector("example_magic_transit_connector",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             device={
                 "id": "id",
@@ -287,7 +292,7 @@ class MagicTransitConnector(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_magic_transit_connector = cloudflare.MagicTransitConnector("example_magic_transit_connector",
+        example_magic_transit_connector = cloudflare.magictransit.Connector("example_magic_transit_connector",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             device={
                 "id": "id",
@@ -333,6 +338,7 @@ class MagicTransitConnector(pulumi.CustomResource):
                  notes: pulumi.Input[Optional[_builtins.str]] = None,
                  timezone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""MagicTransitConnector is deprecated: cloudflare:index/magicTransitConnector:MagicTransitConnector has been deprecated in favor of cloudflare:magicTransit/connector:Connector""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

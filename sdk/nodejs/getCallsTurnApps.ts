@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCallsTurnApps = cloudflare.getCallsTurnApps({
+ * const exampleCallsTurnApps = cloudflare.callsturn.getApps({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCallsTurnApps:getCallsTurnApps has been deprecated in favor of cloudflare:callsTurn/apps:getApps */
 export function getCallsTurnApps(args?: GetCallsTurnAppsArgs, opts?: pulumi.InvokeOptions): Promise<GetCallsTurnAppsResult> {
+    pulumi.log.warn("getCallsTurnApps is deprecated: cloudflare:index/getCallsTurnApps:getCallsTurnApps has been deprecated in favor of cloudflare:callsTurn/apps:getApps")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCallsTurnApps:getCallsTurnApps", {
@@ -75,12 +77,14 @@ export interface GetCallsTurnAppsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCallsTurnApps = cloudflare.getCallsTurnApps({
+ * const exampleCallsTurnApps = cloudflare.callsturn.getApps({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCallsTurnApps:getCallsTurnApps has been deprecated in favor of cloudflare:callsTurn/apps:getApps */
 export function getCallsTurnAppsOutput(args?: GetCallsTurnAppsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCallsTurnAppsResult> {
+    pulumi.log.warn("getCallsTurnApps is deprecated: cloudflare:index/getCallsTurnApps:getCallsTurnApps has been deprecated in favor of cloudflare:callsTurn/apps:getApps")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCallsTurnApps:getCallsTurnApps", {

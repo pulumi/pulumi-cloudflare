@@ -25,9 +25,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAccessRule = new Cloudflare.AccessRule("example_access_rule", new()
+    ///     var exampleAccessRule = new Cloudflare.Modules.Access.AccessRule("example_access_rule", new()
     ///     {
-    ///         Configuration = new Cloudflare.Inputs.AccessRuleConfigurationArgs
+    ///         Configuration = new Cloudflare.Modules.Access.Inputs.RuleConfigurationArgs
     ///         {
     ///             Target = "ip",
     ///             Value = "198.51.100.4",
@@ -46,6 +46,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/accessRule:AccessRule example '&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;rule_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/accessRule:AccessRule has been deprecated in favor of cloudflare:access/rule:Rule")]
     [CloudflareResourceType("cloudflare:index/accessRule:AccessRule")]
     public partial class AccessRule : global::Pulumi.CustomResource
     {

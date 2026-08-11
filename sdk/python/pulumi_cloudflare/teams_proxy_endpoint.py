@@ -219,7 +219,7 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_gateway_proxy_endpoint = cloudflare.ZeroTrustGatewayProxyEndpoint("example_zero_trust_gateway_proxy_endpoint",
+        example_zero_trust_gateway_proxy_endpoint = cloudflare.zerotrustgatewayproxy.Endpoint("example_zero_trust_gateway_proxy_endpoint",
             account_id="699d98642c564d2e855e9661899b7252",
             name="Devops team",
             kind="ip")
@@ -252,7 +252,7 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_gateway_proxy_endpoint = cloudflare.ZeroTrustGatewayProxyEndpoint("example_zero_trust_gateway_proxy_endpoint",
+        example_zero_trust_gateway_proxy_endpoint = cloudflare.zerotrustgatewayproxy.Endpoint("example_zero_trust_gateway_proxy_endpoint",
             account_id="699d98642c564d2e855e9661899b7252",
             name="Devops team",
             kind="ip")
@@ -305,8 +305,6 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["subdomain"] = None
             __props__.__dict__["updated_at"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(TeamsProxyEndpoint, __self__).__init__(
             'cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint',
             resource_name,

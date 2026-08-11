@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustDlpSensitivityGroups:getZeroTrustDlpSensitivityGroups has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/groups:getGroups")]
     public static class GetZeroTrustDlpSensitivityGroups
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDlpSensitivityGroups = Cloudflare.GetZeroTrustDlpSensitivityGroups.Invoke(new()
+        ///     var exampleZeroTrustDlpSensitivityGroups = Cloudflare.Modules.ZeroTrustDlpSensitivity.GetGroups.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///     });
@@ -54,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDlpSensitivityGroups = Cloudflare.GetZeroTrustDlpSensitivityGroups.Invoke(new()
+        ///     var exampleZeroTrustDlpSensitivityGroups = Cloudflare.Modules.ZeroTrustDlpSensitivity.GetGroups.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///     });
@@ -81,7 +82,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDlpSensitivityGroups = Cloudflare.GetZeroTrustDlpSensitivityGroups.Invoke(new()
+        ///     var exampleZeroTrustDlpSensitivityGroups = Cloudflare.Modules.ZeroTrustDlpSensitivity.GetGroups.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///     });

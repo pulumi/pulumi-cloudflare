@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/hyperdrive"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetHyperdriveConfigs(ctx, &cloudflare.LookupHyperdriveConfigsArgs{
+//			_, err := hyperdrive.LookupConfigs(ctx, &hyperdrive.LookupConfigsArgs{
 //				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
@@ -41,6 +41,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getHyperdriveConfigs:getHyperdriveConfigs has been deprecated in favor of cloudflare:hyperdrive/configs:getConfigs
 func LookupHyperdriveConfigs(ctx *pulumi.Context, args *LookupHyperdriveConfigsArgs, opts ...pulumi.InvokeOption) (*LookupHyperdriveConfigsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupHyperdriveConfigsResult

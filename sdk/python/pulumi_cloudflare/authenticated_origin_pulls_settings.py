@@ -96,8 +96,13 @@ class _AuthenticatedOriginPullsSettingsState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/authenticatedOriginPullsSettings:AuthenticatedOriginPullsSettings has been deprecated in favor of cloudflare:authenticatedOriginPulls/settings:Settings""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/authenticatedOriginPullsSettings:AuthenticatedOriginPullsSettings")
 class AuthenticatedOriginPullsSettings(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/authenticatedOriginPullsSettings:AuthenticatedOriginPullsSettings has been deprecated in favor of cloudflare:authenticatedOriginPulls/settings:Settings""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -117,7 +122,7 @@ class AuthenticatedOriginPullsSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_authenticated_origin_pulls_settings = cloudflare.AuthenticatedOriginPullsSettings("example_authenticated_origin_pulls_settings",
+        example_authenticated_origin_pulls_settings = cloudflare.authenticatedoriginpulls.Settings("example_authenticated_origin_pulls_settings",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             enabled=True)
         ```
@@ -152,7 +157,7 @@ class AuthenticatedOriginPullsSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_authenticated_origin_pulls_settings = cloudflare.AuthenticatedOriginPullsSettings("example_authenticated_origin_pulls_settings",
+        example_authenticated_origin_pulls_settings = cloudflare.authenticatedoriginpulls.Settings("example_authenticated_origin_pulls_settings",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             enabled=True)
         ```
@@ -182,6 +187,7 @@ class AuthenticatedOriginPullsSettings(pulumi.CustomResource):
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""AuthenticatedOriginPullsSettings is deprecated: cloudflare:index/authenticatedOriginPullsSettings:AuthenticatedOriginPullsSettings has been deprecated in favor of cloudflare:authenticatedOriginPulls/settings:Settings""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessShortLivedCertificate = new cloudflare.ZeroTrustAccessShortLivedCertificate("example_zero_trust_access_short_lived_certificate", {
+ * const exampleZeroTrustAccessShortLivedCertificate = new cloudflare.zerotrustaccessshortlived.Certificate("example_zero_trust_access_short_lived_certificate", {
  *     appId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     zoneId: "zone_id",
  * });
@@ -27,6 +27,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate example '<{accounts|zones}/{account_id|zone_id}>/<app_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate has been deprecated in favor of cloudflare:zeroTrustAccessShortLived/certificate:Certificate
  */
 export class ZeroTrustAccessShortLivedCertificate extends pulumi.CustomResource {
     /**
@@ -39,6 +41,7 @@ export class ZeroTrustAccessShortLivedCertificate extends pulumi.CustomResource 
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustAccessShortLivedCertificateState, opts?: pulumi.CustomResourceOptions): ZeroTrustAccessShortLivedCertificate {
+        pulumi.log.warn("ZeroTrustAccessShortLivedCertificate is deprecated: cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate has been deprecated in favor of cloudflare:zeroTrustAccessShortLived/certificate:Certificate")
         return new ZeroTrustAccessShortLivedCertificate(name, <any>state, { ...opts, id: id });
     }
 
@@ -84,8 +87,11 @@ export class ZeroTrustAccessShortLivedCertificate extends pulumi.CustomResource 
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate has been deprecated in favor of cloudflare:zeroTrustAccessShortLived/certificate:Certificate */
     constructor(name: string, args: ZeroTrustAccessShortLivedCertificateArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate has been deprecated in favor of cloudflare:zeroTrustAccessShortLived/certificate:Certificate */
     constructor(name: string, argsOrState?: ZeroTrustAccessShortLivedCertificateArgs | ZeroTrustAccessShortLivedCertificateState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustAccessShortLivedCertificate is deprecated: cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate has been deprecated in favor of cloudflare:zeroTrustAccessShortLived/certificate:Certificate")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

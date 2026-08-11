@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAiGatewayDynamicRouting = new cloudflare.AiGatewayDynamicRouting("example_ai_gateway_dynamic_routing", {
+ * const exampleAiGatewayDynamicRouting = new cloudflare.aigateway.DynamicRouting("example_ai_gateway_dynamic_routing", {
  *     accountId: "0d37909e38d3e99c29fa2cd343ac421a",
  *     gatewayId: "54442216",
  *     elements: [{
@@ -39,6 +39,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/aiGatewayDynamicRouting:AiGatewayDynamicRouting example '<account_id>/<gateway_id>/<id>'
  * ```
+ *
+ * @deprecated cloudflare:index/aiGatewayDynamicRouting:AiGatewayDynamicRouting has been deprecated in favor of cloudflare:aiGateway/dynamicRouting:DynamicRouting
  */
 export class AiGatewayDynamicRouting extends pulumi.CustomResource {
     /**
@@ -51,6 +53,7 @@ export class AiGatewayDynamicRouting extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AiGatewayDynamicRoutingState, opts?: pulumi.CustomResourceOptions): AiGatewayDynamicRouting {
+        pulumi.log.warn("AiGatewayDynamicRouting is deprecated: cloudflare:index/aiGatewayDynamicRouting:AiGatewayDynamicRouting has been deprecated in favor of cloudflare:aiGateway/dynamicRouting:DynamicRouting")
         return new AiGatewayDynamicRouting(name, <any>state, { ...opts, id: id });
     }
 
@@ -86,8 +89,11 @@ export class AiGatewayDynamicRouting extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/aiGatewayDynamicRouting:AiGatewayDynamicRouting has been deprecated in favor of cloudflare:aiGateway/dynamicRouting:DynamicRouting */
     constructor(name: string, args: AiGatewayDynamicRoutingArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/aiGatewayDynamicRouting:AiGatewayDynamicRouting has been deprecated in favor of cloudflare:aiGateway/dynamicRouting:DynamicRouting */
     constructor(name: string, argsOrState?: AiGatewayDynamicRoutingArgs | AiGatewayDynamicRoutingState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("AiGatewayDynamicRouting is deprecated: cloudflare:index/aiGatewayDynamicRouting:AiGatewayDynamicRouting has been deprecated in favor of cloudflare:aiGateway/dynamicRouting:DynamicRouting")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

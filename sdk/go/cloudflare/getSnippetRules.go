@@ -15,6 +15,8 @@ import (
 //
 // - `Snippets Read`
 // - `Snippets Write`
+//
+// Deprecated: cloudflare:index/getSnippetRules:getSnippetRules has been deprecated in favor of cloudflare:snippetRules/snippetRules:getSnippetRules
 func LookupSnippetRules(ctx *pulumi.Context, args *LookupSnippetRulesArgs, opts ...pulumi.InvokeOption) (*LookupSnippetRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSnippetRulesResult

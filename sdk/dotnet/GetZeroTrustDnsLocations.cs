@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustDnsLocations:getZeroTrustDnsLocations has been deprecated in favor of cloudflare:zeroTrustDns/locations:getLocations")]
     public static class GetZeroTrustDnsLocations
     {
         /// <summary>
@@ -28,7 +29,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDnsLocations = Cloudflare.GetZeroTrustDnsLocations.Invoke(new()
+        ///     var exampleZeroTrustDnsLocations = Cloudflare.Modules.ZeroTrustDns.GetLocations.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///     });
@@ -56,7 +57,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDnsLocations = Cloudflare.GetZeroTrustDnsLocations.Invoke(new()
+        ///     var exampleZeroTrustDnsLocations = Cloudflare.Modules.ZeroTrustDns.GetLocations.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///     });
@@ -84,7 +85,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDnsLocations = Cloudflare.GetZeroTrustDnsLocations.Invoke(new()
+        ///     var exampleZeroTrustDnsLocations = Cloudflare.Modules.ZeroTrustDns.GetLocations.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///     });

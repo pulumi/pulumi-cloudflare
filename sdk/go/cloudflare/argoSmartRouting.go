@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/argo"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewArgoSmartRouting(ctx, "example_argo_smart_routing", &cloudflare.ArgoSmartRoutingArgs{
+//			_, err := argo.NewSmartRouting(ctx, "example_argo_smart_routing", &argo.SmartRoutingArgs{
 //				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Value:  pulumi.String("on"),
 //			})
@@ -49,6 +49,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/argoSmartRouting:ArgoSmartRouting example '<zone_id>'
 // ```
+//
+// Deprecated: cloudflare:index/argoSmartRouting:ArgoSmartRouting has been deprecated in favor of cloudflare:argo/smartRouting:SmartRouting
 type ArgoSmartRouting struct {
 	pulumi.CustomResourceState
 

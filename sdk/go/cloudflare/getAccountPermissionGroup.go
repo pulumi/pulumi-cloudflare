@@ -50,14 +50,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/accountpermission"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetAccountPermissionGroup(ctx, &cloudflare.GetAccountPermissionGroupArgs{
+//			_, err := accountpermission.GetGroup(ctx, &accountpermission.GetGroupArgs{
 //				AccountId:         "023e105f4ecef8ad9ca31a8372d0c353",
 //				PermissionGroupId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
@@ -69,6 +69,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getAccountPermissionGroup:getAccountPermissionGroup has been deprecated in favor of cloudflare:accountPermission/group:getGroup
 func GetAccountPermissionGroup(ctx *pulumi.Context, args *GetAccountPermissionGroupArgs, opts ...pulumi.InvokeOption) (*GetAccountPermissionGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountPermissionGroupResult

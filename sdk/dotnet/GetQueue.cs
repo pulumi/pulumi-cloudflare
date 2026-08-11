@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getQueue:getQueue has been deprecated in favor of cloudflare:queue/queue:getQueue")]
     public static class GetQueue
     {
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleQueue = Cloudflare.GetQueue.Invoke(new()
+        ///     var exampleQueue = Cloudflare.Modules.Queue.GetQueue.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         QueueId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -59,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleQueue = Cloudflare.GetQueue.Invoke(new()
+        ///     var exampleQueue = Cloudflare.Modules.Queue.GetQueue.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         QueueId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -89,7 +90,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleQueue = Cloudflare.GetQueue.Invoke(new()
+        ///     var exampleQueue = Cloudflare.Modules.Queue.GetQueue.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         QueueId = "023e105f4ecef8ad9ca31a8372d0c353",

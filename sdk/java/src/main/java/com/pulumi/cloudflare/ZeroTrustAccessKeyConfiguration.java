@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustAccessKeyConfiguration;
- * import com.pulumi.cloudflare.ZeroTrustAccessKeyConfigurationArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccess.KeyConfiguration;
+ * import com.pulumi.cloudflare.zeroTrustAccess.KeyConfigurationArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustAccessKeyConfiguration = new ZeroTrustAccessKeyConfiguration("exampleZeroTrustAccessKeyConfiguration", ZeroTrustAccessKeyConfigurationArgs.builder()
+ *         var exampleZeroTrustAccessKeyConfiguration = new KeyConfiguration("exampleZeroTrustAccessKeyConfiguration", KeyConfigurationArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .keyRotationIntervalDays(30.0)
  *             .build());
@@ -62,7 +62,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration example &#39;&lt;account_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration has been deprecated in favor of cloudflare:zeroTrustAccess/keyConfiguration:KeyConfiguration
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration has been deprecated in favor of cloudflare:zeroTrustAccess/keyConfiguration:KeyConfiguration */
 @ResourceType(type="cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration")
 public class ZeroTrustAccessKeyConfiguration extends com.pulumi.resources.CustomResource {
     /**

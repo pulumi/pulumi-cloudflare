@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleEmailRoutingAddress = new Cloudflare.EmailRoutingAddress("example_email_routing_address", new()
+    ///     var exampleEmailRoutingAddress = new Cloudflare.Modules.EmailRouting.EmailRoutingAddress("example_email_routing_address", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Email = "user@example.com",
@@ -40,6 +40,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/emailRoutingAddress:EmailRoutingAddress example '&lt;account_id&gt;/&lt;destination_address_identifier&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/emailRoutingAddress:EmailRoutingAddress has been deprecated in favor of cloudflare:emailRouting/address:Address")]
     [CloudflareResourceType("cloudflare:index/emailRoutingAddress:EmailRoutingAddress")]
     public partial class EmailRoutingAddress : global::Pulumi.CustomResource
     {

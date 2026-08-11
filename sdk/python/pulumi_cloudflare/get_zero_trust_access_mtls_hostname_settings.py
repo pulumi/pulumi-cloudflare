@@ -21,6 +21,8 @@ __all__ = [
     'get_zero_trust_access_mtls_hostname_settings_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustAccessMtlsHostnameSettings:getZeroTrustAccessMtlsHostnameSettings has been deprecated in favor of cloudflare:zeroTrustAccessMtls/hostnameSettings:getHostnameSettings""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustAccessMtlsHostnameSettingsResult:
     """
@@ -112,7 +114,7 @@ def get_zero_trust_access_mtls_hostname_settings(account_id: Optional[_builtins.
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_mtls_hostname_settings = cloudflare.get_zero_trust_access_mtls_hostname_settings(account_id="account_id",
+    example_zero_trust_access_mtls_hostname_settings = cloudflare.zerotrustaccessmtls.get_hostname_settings(account_id="account_id",
         zone_id="zone_id")
     ```
 
@@ -120,6 +122,7 @@ def get_zero_trust_access_mtls_hostname_settings(account_id: Optional[_builtins.
     :param _builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_zero_trust_access_mtls_hostname_settings is deprecated: cloudflare:index/getZeroTrustAccessMtlsHostnameSettings:getZeroTrustAccessMtlsHostnameSettings has been deprecated in favor of cloudflare:zeroTrustAccessMtls/hostnameSettings:getHostnameSettings""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['zoneId'] = zone_id
@@ -147,7 +150,7 @@ def get_zero_trust_access_mtls_hostname_settings_output(account_id: pulumi.Input
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_mtls_hostname_settings = cloudflare.get_zero_trust_access_mtls_hostname_settings(account_id="account_id",
+    example_zero_trust_access_mtls_hostname_settings = cloudflare.zerotrustaccessmtls.get_hostname_settings(account_id="account_id",
         zone_id="zone_id")
     ```
 
@@ -155,6 +158,7 @@ def get_zero_trust_access_mtls_hostname_settings_output(account_id: pulumi.Input
     :param _builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_zero_trust_access_mtls_hostname_settings is deprecated: cloudflare:index/getZeroTrustAccessMtlsHostnameSettings:getZeroTrustAccessMtlsHostnameSettings has been deprecated in favor of cloudflare:zeroTrustAccessMtls/hostnameSettings:getHostnameSettings""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['zoneId'] = zone_id

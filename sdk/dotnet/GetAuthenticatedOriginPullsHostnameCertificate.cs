@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getAuthenticatedOriginPullsHostnameCertificate:getAuthenticatedOriginPullsHostnameCertificate has been deprecated in favor of cloudflare:authenticatedOriginPullsHostname/certificate:getCertificate")]
     public static class GetAuthenticatedOriginPullsHostnameCertificate
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAuthenticatedOriginPullsHostnameCertificate = Cloudflare.GetAuthenticatedOriginPullsHostnameCertificate.Invoke(new()
+        ///     var exampleAuthenticatedOriginPullsHostnameCertificate = Cloudflare.Modules.AuthenticatedOriginPullsHostname.GetCertificate.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         CertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -45,7 +46,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAuthenticatedOriginPullsHostnameCertificate = Cloudflare.GetAuthenticatedOriginPullsHostnameCertificate.Invoke(new()
+        ///     var exampleAuthenticatedOriginPullsHostnameCertificate = Cloudflare.Modules.AuthenticatedOriginPullsHostname.GetCertificate.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         CertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -68,7 +69,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAuthenticatedOriginPullsHostnameCertificate = Cloudflare.GetAuthenticatedOriginPullsHostnameCertificate.Invoke(new()
+        ///     var exampleAuthenticatedOriginPullsHostnameCertificate = Cloudflare.Modules.AuthenticatedOriginPullsHostname.GetCertificate.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         CertificateId = "023e105f4ecef8ad9ca31a8372d0c353",

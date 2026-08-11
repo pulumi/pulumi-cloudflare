@@ -204,8 +204,13 @@ class _RegistrarDomainState:
         pulumi.set(self, "privacy", value)
 
 
+warnings.warn("""cloudflare:index/registrarDomain:RegistrarDomain has been deprecated in favor of cloudflare:registrar/domain:Domain""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/registrarDomain:RegistrarDomain")
 class RegistrarDomain(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/registrarDomain:RegistrarDomain has been deprecated in favor of cloudflare:registrar/domain:Domain""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -223,7 +228,7 @@ class RegistrarDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_registrar_domain = cloudflare.RegistrarDomain("example_registrar_domain",
+        example_registrar_domain = cloudflare.registrar.Domain("example_registrar_domain",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             domain_name="example.com",
             auto_renew=True,
@@ -260,7 +265,7 @@ class RegistrarDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_registrar_domain = cloudflare.RegistrarDomain("example_registrar_domain",
+        example_registrar_domain = cloudflare.registrar.Domain("example_registrar_domain",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             domain_name="example.com",
             auto_renew=True,
@@ -294,6 +299,7 @@ class RegistrarDomain(pulumi.CustomResource):
                  locked: pulumi.Input[Optional[_builtins.bool]] = None,
                  privacy: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
+        pulumi.log.warn("""RegistrarDomain is deprecated: cloudflare:index/registrarDomain:RegistrarDomain has been deprecated in favor of cloudflare:registrar/domain:Domain""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

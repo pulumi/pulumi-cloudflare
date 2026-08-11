@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleR2CustomDomain = new Cloudflare.R2CustomDomain("example_r2_custom_domain", new()
+    ///     var exampleR2CustomDomain = new Cloudflare.Modules.R2.R2CustomDomain("example_r2_custom_domain", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         BucketName = "example-bucket",
@@ -46,6 +46,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/r2CustomDomain:R2CustomDomain has been deprecated in favor of cloudflare:r2/customDomain:CustomDomain")]
     [CloudflareResourceType("cloudflare:index/r2CustomDomain:R2CustomDomain")]
     public partial class R2CustomDomain : global::Pulumi.CustomResource
     {

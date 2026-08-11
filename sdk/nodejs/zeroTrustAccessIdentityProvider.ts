@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessIdentityProvider = new cloudflare.ZeroTrustAccessIdentityProvider("example_zero_trust_access_identity_provider", {
+ * const exampleZeroTrustAccessIdentityProvider = new cloudflare.zerotrustaccessidentity.Provider("example_zero_trust_access_identity_provider", {
  *     config: {
  *         claims: [
  *             "email_verified",
@@ -50,6 +50,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider example '<{accounts|zones}/{account_id|zone_id}>/<identity_provider_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider has been deprecated in favor of cloudflare:zeroTrustAccessIdentity/provider:Provider
  */
 export class ZeroTrustAccessIdentityProvider extends pulumi.CustomResource {
     /**
@@ -62,6 +64,7 @@ export class ZeroTrustAccessIdentityProvider extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustAccessIdentityProviderState, opts?: pulumi.CustomResourceOptions): ZeroTrustAccessIdentityProvider {
+        pulumi.log.warn("ZeroTrustAccessIdentityProvider is deprecated: cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider has been deprecated in favor of cloudflare:zeroTrustAccessIdentity/provider:Provider")
         return new ZeroTrustAccessIdentityProvider(name, <any>state, { ...opts, id: id });
     }
 
@@ -127,8 +130,11 @@ export class ZeroTrustAccessIdentityProvider extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider has been deprecated in favor of cloudflare:zeroTrustAccessIdentity/provider:Provider */
     constructor(name: string, args: ZeroTrustAccessIdentityProviderArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider has been deprecated in favor of cloudflare:zeroTrustAccessIdentity/provider:Provider */
     constructor(name: string, argsOrState?: ZeroTrustAccessIdentityProviderArgs | ZeroTrustAccessIdentityProviderState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustAccessIdentityProvider is deprecated: cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider has been deprecated in favor of cloudflare:zeroTrustAccessIdentity/provider:Provider")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

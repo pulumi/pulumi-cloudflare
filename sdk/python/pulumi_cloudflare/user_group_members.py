@@ -121,8 +121,13 @@ class _UserGroupMembersState:
         pulumi.set(self, "user_group_id", value)
 
 
+warnings.warn("""cloudflare:index/userGroupMembers:UserGroupMembers has been deprecated in favor of cloudflare:userGroup/members:Members""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/userGroupMembers:UserGroupMembers")
 class UserGroupMembers(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/userGroupMembers:UserGroupMembers has been deprecated in favor of cloudflare:userGroup/members:Members""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -144,7 +149,7 @@ class UserGroupMembers(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_user_group_members = cloudflare.UserGroupMembers("example_user_group_members",
+        example_user_group_members = cloudflare.usergroup.Members("example_user_group_members",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             user_group_id="023e105f4ecef8ad9ca31a8372d0c353",
             members=[{
@@ -183,7 +188,7 @@ class UserGroupMembers(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_user_group_members = cloudflare.UserGroupMembers("example_user_group_members",
+        example_user_group_members = cloudflare.usergroup.Members("example_user_group_members",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             user_group_id="023e105f4ecef8ad9ca31a8372d0c353",
             members=[{
@@ -217,6 +222,7 @@ class UserGroupMembers(pulumi.CustomResource):
                  members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupMembersMemberArgs', 'UserGroupMembersMemberArgsDict']]]]] = None,
                  user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""UserGroupMembers is deprecated: cloudflare:index/userGroupMembers:UserGroupMembers has been deprecated in favor of cloudflare:userGroup/members:Members""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

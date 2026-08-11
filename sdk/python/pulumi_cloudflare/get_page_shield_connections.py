@@ -21,6 +21,8 @@ __all__ = [
     'get_page_shield_connections_output',
 ]
 
+warnings.warn("""cloudflare:index/getPageShieldConnections:getPageShieldConnections has been deprecated in favor of cloudflare:pageShieldConnections/pageShieldConnections:getPageShieldConnections""", DeprecationWarning)
+
 @pulumi.output_type
 class GetPageShieldConnectionsResult:
     """
@@ -200,7 +202,7 @@ def get_page_shield_connections(connection_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_page_shield_connections = cloudflare.get_page_shield_connections(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_page_shield_connections = cloudflare.pageshieldconnections.get_page_shield_connections(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         connection_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -208,6 +210,7 @@ def get_page_shield_connections(connection_id: Optional[_builtins.str] = None,
     :param _builtins.str connection_id: Identifier
     :param _builtins.str zone_id: Identifier
     """
+    pulumi.log.warn("""get_page_shield_connections is deprecated: cloudflare:index/getPageShieldConnections:getPageShieldConnections has been deprecated in favor of cloudflare:pageShieldConnections/pageShieldConnections:getPageShieldConnections""")
     __args__ = dict()
     __args__['connectionId'] = connection_id
     __args__['zoneId'] = zone_id
@@ -249,7 +252,7 @@ def get_page_shield_connections_output(connection_id: pulumi.Input[Optional[_bui
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_page_shield_connections = cloudflare.get_page_shield_connections(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_page_shield_connections = cloudflare.pageshieldconnections.get_page_shield_connections(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         connection_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -257,6 +260,7 @@ def get_page_shield_connections_output(connection_id: pulumi.Input[Optional[_bui
     :param _builtins.str connection_id: Identifier
     :param _builtins.str zone_id: Identifier
     """
+    pulumi.log.warn("""get_page_shield_connections is deprecated: cloudflare:index/getPageShieldConnections:getPageShieldConnections has been deprecated in favor of cloudflare:pageShieldConnections/pageShieldConnections:getPageShieldConnections""")
     __args__ = dict()
     __args__['connectionId'] = connection_id
     __args__['zoneId'] = zone_id

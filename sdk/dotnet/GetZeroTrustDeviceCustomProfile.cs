@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustDeviceCustomProfile:getZeroTrustDeviceCustomProfile has been deprecated in favor of cloudflare:zeroTrustDeviceCustomProfile/zeroTrustDeviceCustomProfile:getZeroTrustDeviceCustomProfile")]
     public static class GetZeroTrustDeviceCustomProfile
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDeviceCustomProfile = Cloudflare.GetZeroTrustDeviceCustomProfile.Invoke(new()
+        ///     var exampleZeroTrustDeviceCustomProfile = Cloudflare.Modules.ZeroTrustDeviceCustomProfile.GetZeroTrustDeviceCustomProfile.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         PolicyId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
@@ -45,7 +46,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDeviceCustomProfile = Cloudflare.GetZeroTrustDeviceCustomProfile.Invoke(new()
+        ///     var exampleZeroTrustDeviceCustomProfile = Cloudflare.Modules.ZeroTrustDeviceCustomProfile.GetZeroTrustDeviceCustomProfile.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         PolicyId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
@@ -68,7 +69,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDeviceCustomProfile = Cloudflare.GetZeroTrustDeviceCustomProfile.Invoke(new()
+        ///     var exampleZeroTrustDeviceCustomProfile = Cloudflare.Modules.ZeroTrustDeviceCustomProfile.GetZeroTrustDeviceCustomProfile.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         PolicyId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",

@@ -28,14 +28,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/d1"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewD1Database(ctx, "example_d1_database", &cloudflare.D1DatabaseArgs{
+//			_, err := d1.NewDatabase(ctx, "example_d1_database", &d1.DatabaseArgs{
 //				AccountId:           pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:                pulumi.String("my-database"),
 //				Jurisdiction:        pulumi.String("eu"),
@@ -55,6 +55,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/d1Database:D1Database example '<account_id>/<database_id>'
 // ```
+//
+// Deprecated: cloudflare:index/d1Database:D1Database has been deprecated in favor of cloudflare:d1/database:Database
 type D1Database struct {
 	pulumi.CustomResourceState
 

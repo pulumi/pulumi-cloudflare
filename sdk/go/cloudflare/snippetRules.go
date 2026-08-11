@@ -24,17 +24,17 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/snippetrules"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewSnippetRules(ctx, "example_snippet_rules", &cloudflare.SnippetRulesArgs{
+//			_, err := snippetrules.NewSnippetRules(ctx, "example_snippet_rules", &snippetrules.SnippetRulesArgs{
 //				ZoneId: pulumi.String("9f1839b6152d298aca64c4e906b6d074"),
-//				Rules: cloudflare.SnippetRulesRuleArray{
-//					&cloudflare.SnippetRulesRuleArgs{
+//				Rules: snippetrules.SnippetRulesRuleArray{
+//					&snippetrules.SnippetRulesRuleArgs{
 //						Expression:  pulumi.String("ip.src eq 1.1.1.1"),
 //						SnippetName: pulumi.String("my_snippet"),
 //						Description: pulumi.String("Execute my_snippet when IP address is 1.1.1.1."),
@@ -56,6 +56,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/snippetRules:SnippetRules example '<zone_id>'
 // ```
+//
+// Deprecated: cloudflare:index/snippetRules:SnippetRules has been deprecated in favor of cloudflare:snippetRules/snippetRules:SnippetRules
 type SnippetRules struct {
 	pulumi.CustomResourceState
 

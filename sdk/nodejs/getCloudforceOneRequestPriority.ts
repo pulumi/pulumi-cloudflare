@@ -16,13 +16,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCloudforceOneRequestPriority = cloudflare.getCloudforceOneRequestPriority({
+ * const exampleCloudforceOneRequestPriority = cloudflare.cloudforceonerequest.getPriority({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     priorityId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCloudforceOneRequestPriority:getCloudforceOneRequestPriority has been deprecated in favor of cloudflare:cloudforceOneRequest/priority:getPriority */
 export function getCloudforceOneRequestPriority(args: GetCloudforceOneRequestPriorityArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudforceOneRequestPriorityResult> {
+    pulumi.log.warn("getCloudforceOneRequestPriority is deprecated: cloudflare:index/getCloudforceOneRequestPriority:getCloudforceOneRequestPriority has been deprecated in favor of cloudflare:cloudforceOneRequest/priority:getPriority")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCloudforceOneRequestPriority:getCloudforceOneRequestPriority", {
         "accountId": args.accountId,
@@ -111,13 +113,15 @@ export interface GetCloudforceOneRequestPriorityResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCloudforceOneRequestPriority = cloudflare.getCloudforceOneRequestPriority({
+ * const exampleCloudforceOneRequestPriority = cloudflare.cloudforceonerequest.getPriority({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     priorityId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCloudforceOneRequestPriority:getCloudforceOneRequestPriority has been deprecated in favor of cloudflare:cloudforceOneRequest/priority:getPriority */
 export function getCloudforceOneRequestPriorityOutput(args: GetCloudforceOneRequestPriorityOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudforceOneRequestPriorityResult> {
+    pulumi.log.warn("getCloudforceOneRequestPriority is deprecated: cloudflare:index/getCloudforceOneRequestPriority:getCloudforceOneRequestPriority has been deprecated in favor of cloudflare:cloudforceOneRequest/priority:getPriority")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCloudforceOneRequestPriority:getCloudforceOneRequestPriority", {
         "accountId": args.accountId,

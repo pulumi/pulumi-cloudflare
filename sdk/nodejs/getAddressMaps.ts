@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAddressMaps = cloudflare.getAddressMaps({
+ * const exampleAddressMaps = cloudflare.address.getMaps({
  *     accountId: "258def64c72dae45f3e4c8516e2111f2",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAddressMaps:getAddressMaps has been deprecated in favor of cloudflare:address/maps:getMaps */
 export function getAddressMaps(args?: GetAddressMapsArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressMapsResult> {
+    pulumi.log.warn("getAddressMaps is deprecated: cloudflare:index/getAddressMaps:getAddressMaps has been deprecated in favor of cloudflare:address/maps:getMaps")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAddressMaps:getAddressMaps", {
@@ -75,12 +77,14 @@ export interface GetAddressMapsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAddressMaps = cloudflare.getAddressMaps({
+ * const exampleAddressMaps = cloudflare.address.getMaps({
  *     accountId: "258def64c72dae45f3e4c8516e2111f2",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAddressMaps:getAddressMaps has been deprecated in favor of cloudflare:address/maps:getMaps */
 export function getAddressMapsOutput(args?: GetAddressMapsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAddressMapsResult> {
+    pulumi.log.warn("getAddressMaps is deprecated: cloudflare:index/getAddressMaps:getAddressMaps has been deprecated in favor of cloudflare:address/maps:getMaps")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAddressMaps:getAddressMaps", {

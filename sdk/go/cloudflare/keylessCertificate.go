@@ -58,14 +58,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/keyless"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewKeylessCertificate(ctx, "example_keyless_certificate", &cloudflare.KeylessCertificateArgs{
+//			_, err := keyless.NewCertificate(ctx, "example_keyless_certificate", &keyless.CertificateArgs{
 //				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Certificate: pulumi.String(`  -----BEGIN CERTIFICATE-----
 //	  MIIDtTCCAp2gAwIBAgIJAM15n7fdxhRtMA0GCSqGSIb3DQEBBQUAMEUxCzAJBgNV
@@ -96,7 +96,7 @@ import (
 //				Port:         pulumi.Float64(24008),
 //				BundleMethod: pulumi.String("ubiquitous"),
 //				Name:         pulumi.String("example.com Keyless SSL"),
-//				Tunnel: &cloudflare.KeylessCertificateTunnelArgs{
+//				Tunnel: &keyless.CertificateTunnelArgs{
 //					PrivateIp: pulumi.String("10.0.0.1"),
 //					VnetId:    pulumi.String("7365377a-85a4-4390-9480-531ef7dc7a3c"),
 //				},
@@ -115,6 +115,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/keylessCertificate:KeylessCertificate example '<zone_id>/<keyless_certificate_id>'
 // ```
+//
+// Deprecated: cloudflare:index/keylessCertificate:KeylessCertificate has been deprecated in favor of cloudflare:keyless/certificate:Certificate
 type KeylessCertificate struct {
 	pulumi.CustomResourceState
 

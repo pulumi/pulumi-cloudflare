@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleEmailSecurityImpersonationRegistry = new cloudflare.EmailSecurityImpersonationRegistry("example_email_security_impersonation_registry", {
+ * const exampleEmailSecurityImpersonationRegistry = new cloudflare.emailsecurityimpersonation.Registry("example_email_security_impersonation_registry", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     email: "email",
  *     isEmailRegex: true,
@@ -29,6 +29,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry example '<account_id>/<display_name_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry has been deprecated in favor of cloudflare:emailSecurityImpersonation/registry:Registry
  */
 export class EmailSecurityImpersonationRegistry extends pulumi.CustomResource {
     /**
@@ -41,6 +43,7 @@ export class EmailSecurityImpersonationRegistry extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: EmailSecurityImpersonationRegistryState, opts?: pulumi.CustomResourceOptions): EmailSecurityImpersonationRegistry {
+        pulumi.log.warn("EmailSecurityImpersonationRegistry is deprecated: cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry has been deprecated in favor of cloudflare:emailSecurityImpersonation/registry:Registry")
         return new EmailSecurityImpersonationRegistry(name, <any>state, { ...opts, id: id });
     }
 
@@ -92,8 +95,11 @@ export class EmailSecurityImpersonationRegistry extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry has been deprecated in favor of cloudflare:emailSecurityImpersonation/registry:Registry */
     constructor(name: string, args: EmailSecurityImpersonationRegistryArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry has been deprecated in favor of cloudflare:emailSecurityImpersonation/registry:Registry */
     constructor(name: string, argsOrState?: EmailSecurityImpersonationRegistryArgs | EmailSecurityImpersonationRegistryState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("EmailSecurityImpersonationRegistry is deprecated: cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry has been deprecated in favor of cloudflare:emailSecurityImpersonation/registry:Registry")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

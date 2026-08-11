@@ -21,6 +21,8 @@ __all__ = [
     'get_custom_pages_output',
 ]
 
+warnings.warn("""cloudflare:index/getCustomPages:getCustomPages has been deprecated in favor of cloudflare:customPages/customPages:getCustomPages""", DeprecationWarning)
+
 @pulumi.output_type
 class GetCustomPagesResult:
     """
@@ -176,7 +178,7 @@ def get_custom_pages(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_custom_pages = cloudflare.get_custom_pages(identifier="ratelimit_block",
+    example_custom_pages = cloudflare.custompages.get_custom_pages(identifier="ratelimit_block",
         account_id="account_id",
         zone_id="zone_id")
     ```
@@ -187,6 +189,7 @@ def get_custom_pages(account_id: Optional[_builtins.str] = None,
            Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_custom_pages is deprecated: cloudflare:index/getCustomPages:getCustomPages has been deprecated in favor of cloudflare:customPages/customPages:getCustomPages""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['identifier'] = identifier
@@ -225,7 +228,7 @@ def get_custom_pages_output(account_id: pulumi.Input[Optional[Optional[_builtins
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_custom_pages = cloudflare.get_custom_pages(identifier="ratelimit_block",
+    example_custom_pages = cloudflare.custompages.get_custom_pages(identifier="ratelimit_block",
         account_id="account_id",
         zone_id="zone_id")
     ```
@@ -236,6 +239,7 @@ def get_custom_pages_output(account_id: pulumi.Input[Optional[Optional[_builtins
            Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_custom_pages is deprecated: cloudflare:index/getCustomPages:getCustomPages has been deprecated in favor of cloudflare:customPages/customPages:getCustomPages""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['identifier'] = identifier

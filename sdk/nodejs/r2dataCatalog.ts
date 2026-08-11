@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleR2DataCatalog = new cloudflare.R2DataCatalog("example_r2_data_catalog", {
+ * const exampleR2DataCatalog = new cloudflare.r2.DataCatalog("example_r2_data_catalog", {
  *     accountId: "0123456789abcdef0123456789abcdef",
  *     bucketName: "my-data-bucket",
  * });
@@ -29,6 +29,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/r2DataCatalog:R2DataCatalog example '<account_id>/<bucket_name>'
  * ```
+ *
+ * @deprecated cloudflare:index/r2DataCatalog:R2DataCatalog has been deprecated in favor of cloudflare:r2/dataCatalog:DataCatalog
  */
 export class R2DataCatalog extends pulumi.CustomResource {
     /**
@@ -41,6 +43,7 @@ export class R2DataCatalog extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: R2DataCatalogState, opts?: pulumi.CustomResourceOptions): R2DataCatalog {
+        pulumi.log.warn("R2DataCatalog is deprecated: cloudflare:index/r2DataCatalog:R2DataCatalog has been deprecated in favor of cloudflare:r2/dataCatalog:DataCatalog")
         return new R2DataCatalog(name, <any>state, { ...opts, id: id });
     }
 
@@ -96,8 +99,11 @@ export class R2DataCatalog extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/r2DataCatalog:R2DataCatalog has been deprecated in favor of cloudflare:r2/dataCatalog:DataCatalog */
     constructor(name: string, args: R2DataCatalogArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/r2DataCatalog:R2DataCatalog has been deprecated in favor of cloudflare:r2/dataCatalog:DataCatalog */
     constructor(name: string, argsOrState?: R2DataCatalogArgs | R2DataCatalogState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("R2DataCatalog is deprecated: cloudflare:index/r2DataCatalog:R2DataCatalog has been deprecated in favor of cloudflare:r2/dataCatalog:DataCatalog")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

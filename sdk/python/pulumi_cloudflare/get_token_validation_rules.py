@@ -23,6 +23,8 @@ __all__ = [
     'get_token_validation_rules_output',
 ]
 
+warnings.warn("""cloudflare:index/getTokenValidationRules:getTokenValidationRules has been deprecated in favor of cloudflare:tokenValidationRules/tokenValidationRules:getTokenValidationRules""", DeprecationWarning)
+
 @pulumi.output_type
 class GetTokenValidationRulesResult:
     """
@@ -184,7 +186,7 @@ def get_token_validation_rules(filter: Optional[Union['GetTokenValidationRulesFi
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_token_validation_rules = cloudflare.get_token_validation_rules(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_token_validation_rules = cloudflare.tokenvalidationrules.get_token_validation_rules(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         rule_id="4a7ee8d3-dd63-4ceb-9d5f-c27831854ce7")
     ```
 
@@ -192,6 +194,7 @@ def get_token_validation_rules(filter: Optional[Union['GetTokenValidationRulesFi
     :param _builtins.str rule_id: UUID.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_token_validation_rules is deprecated: cloudflare:index/getTokenValidationRules:getTokenValidationRules has been deprecated in favor of cloudflare:tokenValidationRules/tokenValidationRules:getTokenValidationRules""")
     __args__ = dict()
     __args__['filter'] = filter
     __args__['ruleId'] = rule_id
@@ -230,7 +233,7 @@ def get_token_validation_rules_output(filter: pulumi.Input[Optional[Optional[Uni
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_token_validation_rules = cloudflare.get_token_validation_rules(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_token_validation_rules = cloudflare.tokenvalidationrules.get_token_validation_rules(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         rule_id="4a7ee8d3-dd63-4ceb-9d5f-c27831854ce7")
     ```
 
@@ -238,6 +241,7 @@ def get_token_validation_rules_output(filter: pulumi.Input[Optional[Optional[Uni
     :param _builtins.str rule_id: UUID.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_token_validation_rules is deprecated: cloudflare:index/getTokenValidationRules:getTokenValidationRules has been deprecated in favor of cloudflare:tokenValidationRules/tokenValidationRules:getTokenValidationRules""")
     __args__ = dict()
     __args__['filter'] = filter
     __args__['ruleId'] = rule_id

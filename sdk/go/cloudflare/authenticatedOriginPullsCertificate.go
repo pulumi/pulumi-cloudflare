@@ -19,14 +19,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/authenticatedoriginpulls"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, "example_authenticated_origin_pulls_certificate", &cloudflare.AuthenticatedOriginPullsCertificateArgs{
+//			_, err := authenticatedoriginpulls.NewCertificate(ctx, "example_authenticated_origin_pulls_certificate", &authenticatedoriginpulls.CertificateArgs{
 //				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Certificate: pulumi.String(`  -----BEGIN CERTIFICATE-----
 //	  MIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV
@@ -98,6 +98,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate example '<zone_id>/<certificate_id>'
 // ```
+//
+// Deprecated: cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate has been deprecated in favor of cloudflare:authenticatedOriginPulls/certificate:Certificate
 type AuthenticatedOriginPullsCertificate struct {
 	pulumi.CustomResourceState
 

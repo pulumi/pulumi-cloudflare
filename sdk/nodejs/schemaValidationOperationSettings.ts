@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSchemaValidationOperationSettings = new cloudflare.SchemaValidationOperationSettings("example_schema_validation_operation_settings", {
+ * const exampleSchemaValidationOperationSettings = new cloudflare.schemavalidationoperationsettings.SchemaValidationOperationSettings("example_schema_validation_operation_settings", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     operationId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     mitigationAction: "block",
@@ -28,6 +28,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/schemaValidationOperationSettings:SchemaValidationOperationSettings has been deprecated in favor of cloudflare:schemaValidationOperationSettings/schemaValidationOperationSettings:SchemaValidationOperationSettings
  */
 export class SchemaValidationOperationSettings extends pulumi.CustomResource {
     /**
@@ -40,6 +42,7 @@ export class SchemaValidationOperationSettings extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SchemaValidationOperationSettingsState, opts?: pulumi.CustomResourceOptions): SchemaValidationOperationSettings {
+        pulumi.log.warn("SchemaValidationOperationSettings is deprecated: cloudflare:index/schemaValidationOperationSettings:SchemaValidationOperationSettings has been deprecated in favor of cloudflare:schemaValidationOperationSettings/schemaValidationOperationSettings:SchemaValidationOperationSettings")
         return new SchemaValidationOperationSettings(name, <any>state, { ...opts, id: id });
     }
 
@@ -83,8 +86,11 @@ export class SchemaValidationOperationSettings extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/schemaValidationOperationSettings:SchemaValidationOperationSettings has been deprecated in favor of cloudflare:schemaValidationOperationSettings/schemaValidationOperationSettings:SchemaValidationOperationSettings */
     constructor(name: string, args: SchemaValidationOperationSettingsArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/schemaValidationOperationSettings:SchemaValidationOperationSettings has been deprecated in favor of cloudflare:schemaValidationOperationSettings/schemaValidationOperationSettings:SchemaValidationOperationSettings */
     constructor(name: string, argsOrState?: SchemaValidationOperationSettingsArgs | SchemaValidationOperationSettingsState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("SchemaValidationOperationSettings is deprecated: cloudflare:index/schemaValidationOperationSettings:SchemaValidationOperationSettings has been deprecated in favor of cloudflare:schemaValidationOperationSettings/schemaValidationOperationSettings:SchemaValidationOperationSettings")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

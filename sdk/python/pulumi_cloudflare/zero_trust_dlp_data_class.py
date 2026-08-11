@@ -197,8 +197,13 @@ class _ZeroTrustDlpDataClassState:
         pulumi.set(self, "updated_at", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustDlpDataClass:ZeroTrustDlpDataClass has been deprecated in favor of cloudflare:zeroTrustDlpData/class:Class""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustDlpDataClass:ZeroTrustDlpDataClass")
 class ZeroTrustDlpDataClass(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustDlpDataClass:ZeroTrustDlpDataClass has been deprecated in favor of cloudflare:zeroTrustDlpData/class:Class""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -222,7 +227,7 @@ class ZeroTrustDlpDataClass(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_data_class = cloudflare.ZeroTrustDlpDataClass("example_zero_trust_dlp_data_class",
+        example_zero_trust_dlp_data_class = cloudflare.zerotrustdlpdata.Class("example_zero_trust_dlp_data_class",
             account_id="account_id",
             data_tags=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
             expression="expression",
@@ -262,7 +267,7 @@ class ZeroTrustDlpDataClass(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_data_class = cloudflare.ZeroTrustDlpDataClass("example_zero_trust_dlp_data_class",
+        example_zero_trust_dlp_data_class = cloudflare.zerotrustdlpdata.Class("example_zero_trust_dlp_data_class",
             account_id="account_id",
             data_tags=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
             expression="expression",
@@ -303,6 +308,7 @@ class ZeroTrustDlpDataClass(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  sensitivity_levels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpDataClassSensitivityLevelArgs', 'ZeroTrustDlpDataClassSensitivityLevelArgsDict']]]]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustDlpDataClass is deprecated: cloudflare:index/zeroTrustDlpDataClass:ZeroTrustDlpDataClass has been deprecated in favor of cloudflare:zeroTrustDlpData/class:Class""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

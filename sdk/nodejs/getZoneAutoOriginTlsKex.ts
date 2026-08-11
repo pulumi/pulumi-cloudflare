@@ -11,12 +11,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneAutoOriginTlsKex = cloudflare.getZoneAutoOriginTlsKex({
+ * const exampleZoneAutoOriginTlsKex = cloudflare.zone.getAutoOriginTlsKex({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZoneAutoOriginTlsKex:getZoneAutoOriginTlsKex has been deprecated in favor of cloudflare:zone/autoOriginTlsKex:getAutoOriginTlsKex */
 export function getZoneAutoOriginTlsKex(args: GetZoneAutoOriginTlsKexArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneAutoOriginTlsKexResult> {
+    pulumi.log.warn("getZoneAutoOriginTlsKex is deprecated: cloudflare:index/getZoneAutoOriginTlsKex:getZoneAutoOriginTlsKex has been deprecated in favor of cloudflare:zone/autoOriginTlsKex:getAutoOriginTlsKex")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZoneAutoOriginTlsKex:getZoneAutoOriginTlsKex", {
         "zoneId": args.zoneId,
@@ -55,12 +57,14 @@ export interface GetZoneAutoOriginTlsKexResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneAutoOriginTlsKex = cloudflare.getZoneAutoOriginTlsKex({
+ * const exampleZoneAutoOriginTlsKex = cloudflare.zone.getAutoOriginTlsKex({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZoneAutoOriginTlsKex:getZoneAutoOriginTlsKex has been deprecated in favor of cloudflare:zone/autoOriginTlsKex:getAutoOriginTlsKex */
 export function getZoneAutoOriginTlsKexOutput(args: GetZoneAutoOriginTlsKexOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneAutoOriginTlsKexResult> {
+    pulumi.log.warn("getZoneAutoOriginTlsKex is deprecated: cloudflare:index/getZoneAutoOriginTlsKex:getZoneAutoOriginTlsKex has been deprecated in favor of cloudflare:zone/autoOriginTlsKex:getAutoOriginTlsKex")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZoneAutoOriginTlsKex:getZoneAutoOriginTlsKex", {
         "zoneId": args.zoneId,

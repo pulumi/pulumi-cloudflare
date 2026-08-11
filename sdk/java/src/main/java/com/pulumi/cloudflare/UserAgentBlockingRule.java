@@ -31,9 +31,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.UserAgentBlockingRule;
- * import com.pulumi.cloudflare.UserAgentBlockingRuleArgs;
- * import com.pulumi.cloudflare.inputs.UserAgentBlockingRuleConfigurationArgs;
+ * import com.pulumi.cloudflare.userAgentBlocking.Rule;
+ * import com.pulumi.cloudflare.userAgentBlocking.RuleArgs;
+ * import com.pulumi.cloudflare.userAgentBlocking.inputs.RuleConfigurationArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -47,9 +47,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleUserAgentBlockingRule = new UserAgentBlockingRule("exampleUserAgentBlockingRule", UserAgentBlockingRuleArgs.builder()
+ *         var exampleUserAgentBlockingRule = new Rule("exampleUserAgentBlockingRule", RuleArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .configuration(UserAgentBlockingRuleConfigurationArgs.builder()
+ *             .configuration(RuleConfigurationArgs.builder()
  *                 .target("ua")
  *                 .value("Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)")
  *                 .build())
@@ -69,7 +69,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule example &#39;&lt;zone_id&gt;/&lt;ua_rule_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule has been deprecated in favor of cloudflare:userAgentBlocking/rule:Rule
+ * 
  */
+@Deprecated /* cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule has been deprecated in favor of cloudflare:userAgentBlocking/rule:Rule */
 @ResourceType(type="cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule")
 public class UserAgentBlockingRule extends com.pulumi.resources.CustomResource {
     @Export(name="configuration", refs={UserAgentBlockingRuleConfiguration.class}, tree="[0]")

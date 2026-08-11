@@ -25,11 +25,11 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessGroup = new Cloudflare.ZeroTrustAccessGroup("example_zero_trust_access_group", new()
+    ///     var exampleZeroTrustAccessGroup = new Cloudflare.Modules.ZeroTrustAccess.ZeroTrustAccessGroup("example_zero_trust_access_group", new()
     ///     {
     ///         Includes = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustAccessGroupIncludeArgs
+    ///             new Cloudflare.Modules.ZeroTrustAccess.Inputs.GroupIncludeArgs
     ///             {
     ///                 Certificate = null,
     ///             },
@@ -38,7 +38,7 @@ namespace Pulumi.Cloudflare
     ///         ZoneId = "zone_id",
     ///         Excludes = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustAccessGroupExcludeArgs
+    ///             new Cloudflare.Modules.ZeroTrustAccess.Inputs.GroupExcludeArgs
     ///             {
     ///                 Certificate = null,
     ///             },
@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
     ///         IsDefault = true,
     ///         Requires = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustAccessGroupRequireArgs
+    ///             new Cloudflare.Modules.ZeroTrustAccess.Inputs.GroupRequireArgs
     ///             {
     ///                 Certificate = null,
     ///             },
@@ -131,10 +131,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/accessGroup:AccessGroup" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

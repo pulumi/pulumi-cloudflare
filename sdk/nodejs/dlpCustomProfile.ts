@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpCustomProfile = new cloudflare.ZeroTrustDlpCustomProfile("example_zero_trust_dlp_custom_profile", {
+ * const exampleZeroTrustDlpCustomProfile = new cloudflare.zerotrustdlpcustom.Profile("example_zero_trust_dlp_custom_profile", {
  *     name: "name",
  *     accountId: "account_id",
  *     description: "Custom profile with entries",
@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * // Custom entry that is a part of this new profile
- * const exampleCustomEntry = new cloudflare.ZeroTrustDlpCustomEntry("example_custom_entry", {
+ * const exampleCustomEntry = new cloudflare.zerotrustdlpcustom.Entry("example_custom_entry", {
  *     name: "custom",
  *     accountId: "account_id",
  *     profileId: exampleZeroTrustDlpCustomProfile.id,
@@ -196,8 +196,6 @@ export class DlpCustomProfile extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/dlpCustomProfile:DlpCustomProfile" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DlpCustomProfile.__pulumiType, name, resourceInputs, opts);
     }
 }

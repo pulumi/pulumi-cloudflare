@@ -19,13 +19,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleNotificationPolicyWebhooks = cloudflare.getNotificationPolicyWebhooks({
+ * const exampleNotificationPolicyWebhooks = cloudflare.notificationpolicywebhooks.getNotificationPolicyWebhooks({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     webhookId: "b115d5ec15c641ee8b7692c449b5227b",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getNotificationPolicyWebhooks:getNotificationPolicyWebhooks has been deprecated in favor of cloudflare:notificationPolicyWebhooks/notificationPolicyWebhooks:getNotificationPolicyWebhooks */
 export function getNotificationPolicyWebhooks(args: GetNotificationPolicyWebhooksArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationPolicyWebhooksResult> {
+    pulumi.log.warn("getNotificationPolicyWebhooks is deprecated: cloudflare:index/getNotificationPolicyWebhooks:getNotificationPolicyWebhooks has been deprecated in favor of cloudflare:notificationPolicyWebhooks/notificationPolicyWebhooks:getNotificationPolicyWebhooks")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getNotificationPolicyWebhooks:getNotificationPolicyWebhooks", {
         "accountId": args.accountId,
@@ -108,13 +110,15 @@ export interface GetNotificationPolicyWebhooksResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleNotificationPolicyWebhooks = cloudflare.getNotificationPolicyWebhooks({
+ * const exampleNotificationPolicyWebhooks = cloudflare.notificationpolicywebhooks.getNotificationPolicyWebhooks({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     webhookId: "b115d5ec15c641ee8b7692c449b5227b",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getNotificationPolicyWebhooks:getNotificationPolicyWebhooks has been deprecated in favor of cloudflare:notificationPolicyWebhooks/notificationPolicyWebhooks:getNotificationPolicyWebhooks */
 export function getNotificationPolicyWebhooksOutput(args: GetNotificationPolicyWebhooksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNotificationPolicyWebhooksResult> {
+    pulumi.log.warn("getNotificationPolicyWebhooks is deprecated: cloudflare:index/getNotificationPolicyWebhooks:getNotificationPolicyWebhooks has been deprecated in favor of cloudflare:notificationPolicyWebhooks/notificationPolicyWebhooks:getNotificationPolicyWebhooks")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getNotificationPolicyWebhooks:getNotificationPolicyWebhooks", {
         "accountId": args.accountId,

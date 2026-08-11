@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersForPlatformsDispatchNamespace = new cloudflare.WorkersForPlatformsDispatchNamespace("example_workers_for_platforms_dispatch_namespace", {
+ * const exampleWorkersForPlatformsDispatchNamespace = new cloudflare.workersforplatformsdispatch.Namespace("example_workers_for_platforms_dispatch_namespace", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "my-dispatch-namespace",
  * });
@@ -28,6 +28,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace example '<account_id>/<dispatch_namespace>'
  * ```
+ *
+ * @deprecated cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace has been deprecated in favor of cloudflare:workersForPlatformsDispatch/namespace:Namespace
  */
 export class WorkersForPlatformsDispatchNamespace extends pulumi.CustomResource {
     /**
@@ -40,6 +42,7 @@ export class WorkersForPlatformsDispatchNamespace extends pulumi.CustomResource 
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WorkersForPlatformsDispatchNamespaceState, opts?: pulumi.CustomResourceOptions): WorkersForPlatformsDispatchNamespace {
+        pulumi.log.warn("WorkersForPlatformsDispatchNamespace is deprecated: cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace has been deprecated in favor of cloudflare:workersForPlatformsDispatch/namespace:Namespace")
         return new WorkersForPlatformsDispatchNamespace(name, <any>state, { ...opts, id: id });
     }
 
@@ -105,8 +108,11 @@ export class WorkersForPlatformsDispatchNamespace extends pulumi.CustomResource 
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace has been deprecated in favor of cloudflare:workersForPlatformsDispatch/namespace:Namespace */
     constructor(name: string, args: WorkersForPlatformsDispatchNamespaceArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace has been deprecated in favor of cloudflare:workersForPlatformsDispatch/namespace:Namespace */
     constructor(name: string, argsOrState?: WorkersForPlatformsDispatchNamespaceArgs | WorkersForPlatformsDispatchNamespaceState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("WorkersForPlatformsDispatchNamespace is deprecated: cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace has been deprecated in favor of cloudflare:workersForPlatformsDispatch/namespace:Namespace")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

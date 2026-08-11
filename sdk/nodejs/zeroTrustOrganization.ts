@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustOrganization = new cloudflare.ZeroTrustOrganization("example_zero_trust_organization", {
+ * const exampleZeroTrustOrganization = new cloudflare.zerotrust.Organization("example_zero_trust_organization", {
  *     zoneId: "zone_id",
  *     allowAuthenticateViaWarp: true,
  *     authDomain: "test.cloudflareaccess.com",
@@ -73,6 +73,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization has been deprecated in favor of cloudflare:zeroTrust/organization:Organization
  */
 export class ZeroTrustOrganization extends pulumi.CustomResource {
     /**
@@ -85,6 +87,7 @@ export class ZeroTrustOrganization extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustOrganizationState, opts?: pulumi.CustomResourceOptions): ZeroTrustOrganization {
+        pulumi.log.warn("ZeroTrustOrganization is deprecated: cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization has been deprecated in favor of cloudflare:zeroTrust/organization:Organization")
         return new ZeroTrustOrganization(name, <any>state, { ...opts, id: id });
     }
 
@@ -180,8 +183,11 @@ export class ZeroTrustOrganization extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization has been deprecated in favor of cloudflare:zeroTrust/organization:Organization */
     constructor(name: string, args?: ZeroTrustOrganizationArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization has been deprecated in favor of cloudflare:zeroTrust/organization:Organization */
     constructor(name: string, argsOrState?: ZeroTrustOrganizationArgs | ZeroTrustOrganizationState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustOrganization is deprecated: cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization has been deprecated in favor of cloudflare:zeroTrust/organization:Organization")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

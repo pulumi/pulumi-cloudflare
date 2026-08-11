@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsFirewalls = cloudflare.getDnsFirewalls({
+ * const exampleDnsFirewalls = cloudflare.dns.getFirewalls({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getDnsFirewalls:getDnsFirewalls has been deprecated in favor of cloudflare:dns/firewalls:getFirewalls */
 export function getDnsFirewalls(args?: GetDnsFirewallsArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsFirewallsResult> {
+    pulumi.log.warn("getDnsFirewalls is deprecated: cloudflare:index/getDnsFirewalls:getDnsFirewalls has been deprecated in favor of cloudflare:dns/firewalls:getFirewalls")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getDnsFirewalls:getDnsFirewalls", {
@@ -75,12 +77,14 @@ export interface GetDnsFirewallsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsFirewalls = cloudflare.getDnsFirewalls({
+ * const exampleDnsFirewalls = cloudflare.dns.getFirewalls({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getDnsFirewalls:getDnsFirewalls has been deprecated in favor of cloudflare:dns/firewalls:getFirewalls */
 export function getDnsFirewallsOutput(args?: GetDnsFirewallsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsFirewallsResult> {
+    pulumi.log.warn("getDnsFirewalls is deprecated: cloudflare:index/getDnsFirewalls:getDnsFirewalls has been deprecated in favor of cloudflare:dns/firewalls:getFirewalls")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getDnsFirewalls:getDnsFirewalls", {

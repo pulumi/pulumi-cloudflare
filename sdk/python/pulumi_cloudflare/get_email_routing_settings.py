@@ -21,6 +21,8 @@ __all__ = [
     'get_email_routing_settings_output',
 ]
 
+warnings.warn("""cloudflare:index/getEmailRoutingSettings:getEmailRoutingSettings has been deprecated in favor of cloudflare:emailRouting/settings:getSettings""", DeprecationWarning)
+
 @pulumi.output_type
 class GetEmailRoutingSettingsResult:
     """
@@ -161,12 +163,13 @@ def get_email_routing_settings(zone_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_email_routing_settings = cloudflare.get_email_routing_settings(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_email_routing_settings = cloudflare.emailrouting.get_settings(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_email_routing_settings is deprecated: cloudflare:index/getEmailRoutingSettings:getEmailRoutingSettings has been deprecated in favor of cloudflare:emailRouting/settings:getSettings""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -196,12 +199,13 @@ def get_email_routing_settings_output(zone_id: pulumi.Input[Optional[Optional[_b
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_email_routing_settings = cloudflare.get_email_routing_settings(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_email_routing_settings = cloudflare.emailrouting.get_settings(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_email_routing_settings is deprecated: cloudflare:index/getEmailRoutingSettings:getEmailRoutingSettings has been deprecated in favor of cloudflare:emailRouting/settings:getSettings""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

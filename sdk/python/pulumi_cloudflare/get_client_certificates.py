@@ -22,6 +22,8 @@ __all__ = [
     'get_client_certificates_output',
 ]
 
+warnings.warn("""cloudflare:index/getClientCertificates:getClientCertificates has been deprecated in favor of cloudflare:client/certificates:getCertificates""", DeprecationWarning)
+
 @pulumi.output_type
 class GetClientCertificatesResult:
     """
@@ -129,7 +131,7 @@ def get_client_certificates(limit: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_client_certificates = cloudflare.get_client_certificates(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_client_certificates = cloudflare.client.get_certificates(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         limit=10,
         offset=10,
         status="all")
@@ -143,6 +145,7 @@ def get_client_certificates(limit: Optional[_builtins.int] = None,
            Available values: "all", "active", "pending*reactivation", "pending*revocation", "revoked".
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_client_certificates is deprecated: cloudflare:index/getClientCertificates:getClientCertificates has been deprecated in favor of cloudflare:client/certificates:getCertificates""")
     __args__ = dict()
     __args__['limit'] = limit
     __args__['maxItems'] = max_items
@@ -177,7 +180,7 @@ def get_client_certificates_output(limit: pulumi.Input[Optional[Optional[_builti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_client_certificates = cloudflare.get_client_certificates(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_client_certificates = cloudflare.client.get_certificates(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         limit=10,
         offset=10,
         status="all")
@@ -191,6 +194,7 @@ def get_client_certificates_output(limit: pulumi.Input[Optional[Optional[_builti
            Available values: "all", "active", "pending*reactivation", "pending*revocation", "revoked".
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_client_certificates is deprecated: cloudflare:index/getClientCertificates:getClientCertificates has been deprecated in favor of cloudflare:client/certificates:getCertificates""")
     __args__ = dict()
     __args__['limit'] = limit
     __args__['maxItems'] = max_items

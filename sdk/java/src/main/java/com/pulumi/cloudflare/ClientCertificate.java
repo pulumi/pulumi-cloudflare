@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ClientCertificate;
- * import com.pulumi.cloudflare.ClientCertificateArgs;
+ * import com.pulumi.cloudflare.client.Certificate;
+ * import com.pulumi.cloudflare.client.CertificateArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleClientCertificate = new ClientCertificate("exampleClientCertificate", ClientCertificateArgs.builder()
+ *         var exampleClientCertificate = new Certificate("exampleClientCertificate", CertificateArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .csr("""
  *   -----BEGIN CERTIFICATE REQUEST-----
@@ -68,7 +68,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/clientCertificate:ClientCertificate example &#39;&lt;zone_id&gt;/&lt;client_certificate_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/clientCertificate:ClientCertificate has been deprecated in favor of cloudflare:client/certificate:Certificate
+ * 
  */
+@Deprecated /* cloudflare:index/clientCertificate:ClientCertificate has been deprecated in favor of cloudflare:client/certificate:Certificate */
 @ResourceType(type="cloudflare:index/clientCertificate:ClientCertificate")
 public class ClientCertificate extends com.pulumi.resources.CustomResource {
     /**

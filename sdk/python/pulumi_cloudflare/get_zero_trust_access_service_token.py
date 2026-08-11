@@ -23,6 +23,8 @@ __all__ = [
     'get_zero_trust_access_service_token_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustAccessServiceToken:getZeroTrustAccessServiceToken has been deprecated in favor of cloudflare:zeroTrustAccessService/token:getToken""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustAccessServiceTokenResult:
     """
@@ -158,7 +160,7 @@ def get_zero_trust_access_service_token(account_id: Optional[_builtins.str] = No
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_service_token = cloudflare.get_zero_trust_access_service_token(service_token_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+    example_zero_trust_access_service_token = cloudflare.zerotrustaccessservice.get_token(service_token_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         account_id="account_id",
         zone_id="zone_id")
     ```
@@ -168,6 +170,7 @@ def get_zero_trust_access_service_token(account_id: Optional[_builtins.str] = No
     :param _builtins.str service_token_id: UUID.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_zero_trust_access_service_token is deprecated: cloudflare:index/getZeroTrustAccessServiceToken:getZeroTrustAccessServiceToken has been deprecated in favor of cloudflare:zeroTrustAccessService/token:getToken""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -203,7 +206,7 @@ def get_zero_trust_access_service_token_output(account_id: pulumi.Input[Optional
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_service_token = cloudflare.get_zero_trust_access_service_token(service_token_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+    example_zero_trust_access_service_token = cloudflare.zerotrustaccessservice.get_token(service_token_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         account_id="account_id",
         zone_id="zone_id")
     ```
@@ -213,6 +216,7 @@ def get_zero_trust_access_service_token_output(account_id: pulumi.Input[Optional
     :param _builtins.str service_token_id: UUID.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_zero_trust_access_service_token is deprecated: cloudflare:index/getZeroTrustAccessServiceToken:getZeroTrustAccessServiceToken has been deprecated in favor of cloudflare:zeroTrustAccessService/token:getToken""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

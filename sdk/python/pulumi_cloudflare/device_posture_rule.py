@@ -333,7 +333,7 @@ class DevicePostureRule(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_device_posture_rule = cloudflare.ZeroTrustDevicePostureRule("example_zero_trust_device_posture_rule",
+        example_zero_trust_device_posture_rule = cloudflare.zerotrustdeviceposture.Rule("example_zero_trust_device_posture_rule",
             account_id="699d98642c564d2e855e9661899b7252",
             name="Admin Serial Numbers",
             type="file",
@@ -387,7 +387,7 @@ class DevicePostureRule(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_device_posture_rule = cloudflare.ZeroTrustDevicePostureRule("example_zero_trust_device_posture_rule",
+        example_zero_trust_device_posture_rule = cloudflare.zerotrustdeviceposture.Rule("example_zero_trust_device_posture_rule",
             account_id="699d98642c564d2e855e9661899b7252",
             name="Admin Serial Numbers",
             type="file",
@@ -459,8 +459,6 @@ class DevicePostureRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
             __props__.__dict__["enabled"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/devicePostureRule:DevicePostureRule")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(DevicePostureRule, __self__).__init__(
             'cloudflare:index/devicePostureRule:DevicePostureRule',
             resource_name,

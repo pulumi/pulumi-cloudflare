@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCloudforceOneRequestPriority = new cloudflare.CloudforceOneRequestPriority("example_cloudforce_one_request_priority", {
+ * const exampleCloudforceOneRequestPriority = new cloudflare.cloudforceonerequest.Priority("example_cloudforce_one_request_priority", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     labels: [
  *         "DoS",
@@ -33,6 +33,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority example '<account_id>/<priority_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority has been deprecated in favor of cloudflare:cloudforceOneRequest/priority:Priority
  */
 export class CloudforceOneRequestPriority extends pulumi.CustomResource {
     /**
@@ -45,6 +47,7 @@ export class CloudforceOneRequestPriority extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CloudforceOneRequestPriorityState, opts?: pulumi.CustomResourceOptions): CloudforceOneRequestPriority {
+        pulumi.log.warn("CloudforceOneRequestPriority is deprecated: cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority has been deprecated in favor of cloudflare:cloudforceOneRequest/priority:Priority")
         return new CloudforceOneRequestPriority(name, <any>state, { ...opts, id: id });
     }
 
@@ -123,8 +126,11 @@ export class CloudforceOneRequestPriority extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority has been deprecated in favor of cloudflare:cloudforceOneRequest/priority:Priority */
     constructor(name: string, args: CloudforceOneRequestPriorityArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority has been deprecated in favor of cloudflare:cloudforceOneRequest/priority:Priority */
     constructor(name: string, argsOrState?: CloudforceOneRequestPriorityArgs | CloudforceOneRequestPriorityState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("CloudforceOneRequestPriority is deprecated: cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority has been deprecated in favor of cloudflare:cloudforceOneRequest/priority:Priority")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

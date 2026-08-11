@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustTunnelCloudflaredRoute = new cloudflare.ZeroTrustTunnelCloudflaredRoute("example_zero_trust_tunnel_cloudflared_route", {
+ * const exampleZeroTrustTunnelCloudflaredRoute = new cloudflare.zerotrusttunnelcloudflared.Route("example_zero_trust_tunnel_cloudflared_route", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     network: "172.16.0.0/16",
  *     tunnelId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
@@ -30,6 +30,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustTunnelCloudflaredRoute:ZeroTrustTunnelCloudflaredRoute example '<account_id>/<route_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustTunnelCloudflaredRoute:ZeroTrustTunnelCloudflaredRoute has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/route:Route
  */
 export class ZeroTrustTunnelCloudflaredRoute extends pulumi.CustomResource {
     /**
@@ -42,6 +44,7 @@ export class ZeroTrustTunnelCloudflaredRoute extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustTunnelCloudflaredRouteState, opts?: pulumi.CustomResourceOptions): ZeroTrustTunnelCloudflaredRoute {
+        pulumi.log.warn("ZeroTrustTunnelCloudflaredRoute is deprecated: cloudflare:index/zeroTrustTunnelCloudflaredRoute:ZeroTrustTunnelCloudflaredRoute has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/route:Route")
         return new ZeroTrustTunnelCloudflaredRoute(name, <any>state, { ...opts, id: id });
     }
 
@@ -95,8 +98,11 @@ export class ZeroTrustTunnelCloudflaredRoute extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustTunnelCloudflaredRoute:ZeroTrustTunnelCloudflaredRoute has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/route:Route */
     constructor(name: string, args: ZeroTrustTunnelCloudflaredRouteArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustTunnelCloudflaredRoute:ZeroTrustTunnelCloudflaredRoute has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/route:Route */
     constructor(name: string, argsOrState?: ZeroTrustTunnelCloudflaredRouteArgs | ZeroTrustTunnelCloudflaredRouteState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustTunnelCloudflaredRoute is deprecated: cloudflare:index/zeroTrustTunnelCloudflaredRoute:ZeroTrustTunnelCloudflaredRoute has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/route:Route")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

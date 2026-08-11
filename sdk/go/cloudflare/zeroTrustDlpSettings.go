@@ -24,18 +24,18 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdlp"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDlpSettings(ctx, "example_zero_trust_dlp_settings", &cloudflare.ZeroTrustDlpSettingsArgs{
+//			_, err := zerotrustdlp.NewSettings(ctx, "example_zero_trust_dlp_settings", &zerotrustdlp.SettingsArgs{
 //				AccountId:         pulumi.String("account_id"),
 //				AiContextAnalysis: pulumi.Bool(true),
 //				Ocr:               pulumi.Bool(true),
-//				PayloadLogging: &cloudflare.ZeroTrustDlpSettingsPayloadLoggingArgs{
+//				PayloadLogging: &zerotrustdlp.SettingsPayloadLoggingArgs{
 //					MaskingLevel: pulumi.String("full"),
 //					PublicKey:    pulumi.String("public_key"),
 //				},
@@ -54,6 +54,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustDlpSettings:ZeroTrustDlpSettings example '<account_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustDlpSettings:ZeroTrustDlpSettings has been deprecated in favor of cloudflare:zeroTrustDlp/settings:Settings
 type ZeroTrustDlpSettings struct {
 	pulumi.CustomResourceState
 

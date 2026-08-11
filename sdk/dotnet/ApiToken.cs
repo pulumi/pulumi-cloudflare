@@ -26,21 +26,21 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApiToken = new Cloudflare.ApiToken("example_api_token", new()
+    ///     var exampleApiToken = new Cloudflare.Modules.ApiToken.ApiToken("example_api_token", new()
     ///     {
     ///         Name = "workers read-only token",
     ///         Policies = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ApiTokenPolicyArgs
+    ///             new Cloudflare.Modules.ApiToken.Inputs.ApiTokenPolicyArgs
     ///             {
     ///                 Effect = "allow",
     ///                 PermissionGroups = new[]
     ///                 {
-    ///                     new Cloudflare.Inputs.ApiTokenPolicyPermissionGroupArgs
+    ///                     new Cloudflare.Modules.ApiToken.Inputs.ApiTokenPolicyPermissionGroupArgs
     ///                     {
     ///                         Id = "1a71c399035b4950a1bd1466bbe4f420",
     ///                     },
-    ///                     new Cloudflare.Inputs.ApiTokenPolicyPermissionGroupArgs
+    ///                     new Cloudflare.Modules.ApiToken.Inputs.ApiTokenPolicyPermissionGroupArgs
     ///                     {
     ///                         Id = "8b47d2786a534c08a1f94ee8f9f599ef",
     ///                     },
@@ -51,9 +51,9 @@ namespace Pulumi.Cloudflare
     ///                 }),
     ///             },
     ///         },
-    ///         Condition = new Cloudflare.Inputs.ApiTokenConditionArgs
+    ///         Condition = new Cloudflare.Modules.ApiToken.Inputs.ApiTokenConditionArgs
     ///         {
-    ///             RequestIp = new Cloudflare.Inputs.ApiTokenConditionRequestIpArgs
+    ///             RequestIp = new Cloudflare.Modules.ApiToken.Inputs.ApiTokenConditionRequestIpArgs
     ///             {
     ///                 Ins = new[]
     ///                 {
@@ -80,6 +80,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/apiToken:ApiToken example '&lt;token_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/apiToken:ApiToken has been deprecated in favor of cloudflare:apiToken/apiToken:ApiToken")]
     [CloudflareResourceType("cloudflare:index/apiToken:ApiToken")]
     public partial class ApiToken : global::Pulumi.CustomResource
     {

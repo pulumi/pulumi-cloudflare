@@ -16,13 +16,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWeb3Hostname = cloudflare.getWeb3Hostname({
+ * const exampleWeb3Hostname = cloudflare.web3.getHostname({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     identifier: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWeb3Hostname:getWeb3Hostname has been deprecated in favor of cloudflare:web3/hostname:getHostname */
 export function getWeb3Hostname(args: GetWeb3HostnameArgs, opts?: pulumi.InvokeOptions): Promise<GetWeb3HostnameResult> {
+    pulumi.log.warn("getWeb3Hostname is deprecated: cloudflare:index/getWeb3Hostname:getWeb3Hostname has been deprecated in favor of cloudflare:web3/hostname:getHostname")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWeb3Hostname:getWeb3Hostname", {
         "identifier": args.identifier,
@@ -97,13 +99,15 @@ export interface GetWeb3HostnameResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWeb3Hostname = cloudflare.getWeb3Hostname({
+ * const exampleWeb3Hostname = cloudflare.web3.getHostname({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     identifier: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWeb3Hostname:getWeb3Hostname has been deprecated in favor of cloudflare:web3/hostname:getHostname */
 export function getWeb3HostnameOutput(args: GetWeb3HostnameOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWeb3HostnameResult> {
+    pulumi.log.warn("getWeb3Hostname is deprecated: cloudflare:index/getWeb3Hostname:getWeb3Hostname has been deprecated in favor of cloudflare:web3/hostname:getHostname")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWeb3Hostname:getWeb3Hostname", {
         "identifier": args.identifier,

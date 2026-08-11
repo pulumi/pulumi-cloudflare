@@ -25,12 +25,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustRiskBehavior = new Cloudflare.ZeroTrustRiskBehavior("example_zero_trust_risk_behavior", new()
+    ///     var exampleZeroTrustRiskBehavior = new Cloudflare.Modules.ZeroTrust.ZeroTrustRiskBehavior("example_zero_trust_risk_behavior", new()
     ///     {
     ///         AccountId = "account_id",
     ///         Behaviors = 
     ///         {
-    ///             { "foo", new Cloudflare.Inputs.ZeroTrustRiskBehaviorBehaviorsArgs
+    ///             { "foo", new Cloudflare.Modules.ZeroTrust.Inputs.RiskBehaviorBehaviorsArgs
     ///             {
     ///                 Enabled = true,
     ///                 RiskLevel = "low",
@@ -45,6 +45,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior has been deprecated in favor of cloudflare:zeroTrust/riskBehavior:RiskBehavior")]
     [CloudflareResourceType("cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior")]
     public partial class ZeroTrustRiskBehavior : global::Pulumi.CustomResource
     {

@@ -23,6 +23,8 @@ __all__ = [
     'get_share_output',
 ]
 
+warnings.warn("""cloudflare:index/getShare:getShare has been deprecated in favor of cloudflare:share/share:getShare""", DeprecationWarning)
+
 @pulumi.output_type
 class GetShareResult:
     """
@@ -277,7 +279,7 @@ def get_share(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_share = cloudflare.get_share(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_share = cloudflare.share.get_share(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         share_id="3fd85f74b32742f1bff64a85009dda07",
         include_recipient_counts=True,
         include_resources=True)
@@ -289,6 +291,7 @@ def get_share(account_id: Optional[_builtins.str] = None,
     :param _builtins.bool include_resources: Include resources in the response.
     :param _builtins.str share_id: Share identifier tag.
     """
+    pulumi.log.warn("""get_share is deprecated: cloudflare:index/getShare:getShare has been deprecated in favor of cloudflare:share/share:getShare""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -331,7 +334,7 @@ def get_share_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_share = cloudflare.get_share(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_share = cloudflare.share.get_share(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         share_id="3fd85f74b32742f1bff64a85009dda07",
         include_recipient_counts=True,
         include_resources=True)
@@ -343,6 +346,7 @@ def get_share_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
     :param _builtins.bool include_resources: Include resources in the response.
     :param _builtins.str share_id: Share identifier tag.
     """
+    pulumi.log.warn("""get_share is deprecated: cloudflare:index/getShare:getShare has been deprecated in favor of cloudflare:share/share:getShare""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

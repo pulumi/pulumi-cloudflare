@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.DnsZoneTransfersPeer;
- * import com.pulumi.cloudflare.DnsZoneTransfersPeerArgs;
+ * import com.pulumi.cloudflare.dnsZoneTransfers.Peer;
+ * import com.pulumi.cloudflare.dnsZoneTransfers.PeerArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleDnsZoneTransfersPeer = new DnsZoneTransfersPeer("exampleDnsZoneTransfersPeer", DnsZoneTransfersPeerArgs.builder()
+ *         var exampleDnsZoneTransfersPeer = new Peer("exampleDnsZoneTransfersPeer", PeerArgs.builder()
  *             .accountId("01a7362d577a6c3019a474fd6f485823")
  *             .name("my-peer-1")
  *             .build());
@@ -62,7 +62,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer example &#39;&lt;account_id&gt;/&lt;peer_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer has been deprecated in favor of cloudflare:dnsZoneTransfers/peer:Peer
+ * 
  */
+@Deprecated /* cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer has been deprecated in favor of cloudflare:dnsZoneTransfers/peer:Peer */
 @ResourceType(type="cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer")
 public class DnsZoneTransfersPeer extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

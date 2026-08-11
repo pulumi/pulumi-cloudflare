@@ -20,13 +20,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicWanStaticRoute = cloudflare.getMagicWanStaticRoute({
+ * const exampleMagicWanStaticRoute = cloudflare.magicwan.getStaticRoute({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     routeId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getMagicWanStaticRoute:getMagicWanStaticRoute has been deprecated in favor of cloudflare:magicWan/staticRoute:getStaticRoute */
 export function getMagicWanStaticRoute(args: GetMagicWanStaticRouteArgs, opts?: pulumi.InvokeOptions): Promise<GetMagicWanStaticRouteResult> {
+    pulumi.log.warn("getMagicWanStaticRoute is deprecated: cloudflare:index/getMagicWanStaticRoute:getMagicWanStaticRoute has been deprecated in favor of cloudflare:magicWan/staticRoute:getStaticRoute")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getMagicWanStaticRoute:getMagicWanStaticRoute", {
         "accountId": args.accountId,
@@ -80,13 +82,15 @@ export interface GetMagicWanStaticRouteResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicWanStaticRoute = cloudflare.getMagicWanStaticRoute({
+ * const exampleMagicWanStaticRoute = cloudflare.magicwan.getStaticRoute({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     routeId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getMagicWanStaticRoute:getMagicWanStaticRoute has been deprecated in favor of cloudflare:magicWan/staticRoute:getStaticRoute */
 export function getMagicWanStaticRouteOutput(args: GetMagicWanStaticRouteOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMagicWanStaticRouteResult> {
+    pulumi.log.warn("getMagicWanStaticRoute is deprecated: cloudflare:index/getMagicWanStaticRoute:getMagicWanStaticRoute has been deprecated in favor of cloudflare:magicWan/staticRoute:getStaticRoute")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getMagicWanStaticRoute:getMagicWanStaticRoute", {
         "accountId": args.accountId,

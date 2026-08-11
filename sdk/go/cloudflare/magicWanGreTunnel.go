@@ -19,21 +19,21 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/magicwan"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewMagicWanGreTunnel(ctx, "example_magic_wan_gre_tunnel", &cloudflare.MagicWanGreTunnelArgs{
+//			_, err := magicwan.NewGreTunnel(ctx, "example_magic_wan_gre_tunnel", &magicwan.GreTunnelArgs{
 //				AccountId:              pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				CloudflareGreEndpoint:  pulumi.String("203.0.113.1"),
 //				CustomerGreEndpoint:    pulumi.String("203.0.113.1"),
 //				InterfaceAddress:       pulumi.String("192.0.2.0/31"),
 //				Name:                   pulumi.String("GRE_1"),
 //				AutomaticReturnRouting: pulumi.Bool(true),
-//				Bgp: &cloudflare.MagicWanGreTunnelBgpArgs{
+//				Bgp: &magicwan.GreTunnelBgpArgs{
 //					CustomerAsn: pulumi.Int(0),
 //					ExtraPrefixes: pulumi.StringArray{
 //						pulumi.String("string"),
@@ -41,11 +41,11 @@ import (
 //					Md5Key: pulumi.String("md5_key"),
 //				},
 //				Description: pulumi.String("Tunnel for ISP X"),
-//				HealthCheck: &cloudflare.MagicWanGreTunnelHealthCheckArgs{
+//				HealthCheck: &magicwan.GreTunnelHealthCheckArgs{
 //					Direction: pulumi.String("bidirectional"),
 //					Enabled:   pulumi.Bool(true),
 //					Rate:      pulumi.String("low"),
-//					Target: &cloudflare.MagicWanGreTunnelHealthCheckTargetArgs{
+//					Target: &magicwan.GreTunnelHealthCheckTargetArgs{
 //						Saved: pulumi.String("203.0.113.1"),
 //					},
 //					Type: pulumi.String("request"),
@@ -68,6 +68,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel example '<account_id>/<gre_tunnel_id>'
 // ```
+//
+// Deprecated: cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel has been deprecated in favor of cloudflare:magicWan/greTunnel:GreTunnel
 type MagicWanGreTunnel struct {
 	pulumi.CustomResourceState
 

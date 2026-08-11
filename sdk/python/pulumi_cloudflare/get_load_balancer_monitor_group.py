@@ -22,6 +22,8 @@ __all__ = [
     'get_load_balancer_monitor_group_output',
 ]
 
+warnings.warn("""cloudflare:index/getLoadBalancerMonitorGroup:getLoadBalancerMonitorGroup has been deprecated in favor of cloudflare:loadBalancerMonitor/group:getGroup""", DeprecationWarning)
+
 @pulumi.output_type
 class GetLoadBalancerMonitorGroupResult:
     """
@@ -129,13 +131,14 @@ def get_load_balancer_monitor_group(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_load_balancer_monitor_group = cloudflare.get_load_balancer_monitor_group(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_load_balancer_monitor_group = cloudflare.loadbalancermonitor.get_group(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         monitor_group_id="17b5962d775c646f3f9725cbc7a53df4")
     ```
 
 
     :param _builtins.str account_id: Identifier.
     """
+    pulumi.log.warn("""get_load_balancer_monitor_group is deprecated: cloudflare:index/getLoadBalancerMonitorGroup:getLoadBalancerMonitorGroup has been deprecated in favor of cloudflare:loadBalancerMonitor/group:getGroup""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['monitorGroupId'] = monitor_group_id
@@ -160,13 +163,14 @@ def get_load_balancer_monitor_group_output(account_id: pulumi.Input[Optional[_bu
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_load_balancer_monitor_group = cloudflare.get_load_balancer_monitor_group(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_load_balancer_monitor_group = cloudflare.loadbalancermonitor.get_group(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         monitor_group_id="17b5962d775c646f3f9725cbc7a53df4")
     ```
 
 
     :param _builtins.str account_id: Identifier.
     """
+    pulumi.log.warn("""get_load_balancer_monitor_group is deprecated: cloudflare:index/getLoadBalancerMonitorGroup:getLoadBalancerMonitorGroup has been deprecated in favor of cloudflare:loadBalancerMonitor/group:getGroup""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['monitorGroupId'] = monitor_group_id

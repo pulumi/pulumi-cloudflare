@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getPageShieldScriptsList:getPageShieldScriptsList has been deprecated in favor of cloudflare:pageShieldScripts/list:getList")]
     public static class GetPageShieldScriptsList
     {
         /// <summary>
@@ -31,7 +32,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var examplePageShieldScriptsList = Cloudflare.GetPageShieldScriptsList.Invoke(new()
+        ///     var examplePageShieldScriptsList = Cloudflare.Modules.PageShieldScripts.GetList.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
@@ -73,7 +74,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var examplePageShieldScriptsList = Cloudflare.GetPageShieldScriptsList.Invoke(new()
+        ///     var examplePageShieldScriptsList = Cloudflare.Modules.PageShieldScripts.GetList.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
@@ -115,7 +116,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var examplePageShieldScriptsList = Cloudflare.GetPageShieldScriptsList.Invoke(new()
+        ///     var examplePageShieldScriptsList = Cloudflare.Modules.PageShieldScripts.GetList.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",

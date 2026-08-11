@@ -18,14 +18,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/originca"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetOriginCaCertificate(ctx, &cloudflare.LookupOriginCaCertificateArgs{
+//			_, err := originca.GetCertificate(ctx, &originca.GetCertificateArgs{
 //				CertificateId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
@@ -36,6 +36,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getOriginCaCertificate:getOriginCaCertificate has been deprecated in favor of cloudflare:originCa/certificate:getCertificate
 func LookupOriginCaCertificate(ctx *pulumi.Context, args *LookupOriginCaCertificateArgs, opts ...pulumi.InvokeOption) (*LookupOriginCaCertificateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOriginCaCertificateResult

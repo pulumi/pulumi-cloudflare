@@ -21,6 +21,8 @@ __all__ = [
     'get_workers_script_subdomain_output',
 ]
 
+warnings.warn("""cloudflare:index/getWorkersScriptSubdomain:getWorkersScriptSubdomain has been deprecated in favor of cloudflare:workersScript/subdomain:getSubdomain""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWorkersScriptSubdomainResult:
     """
@@ -101,7 +103,7 @@ def get_workers_script_subdomain(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_script_subdomain = cloudflare.get_workers_script_subdomain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_script_subdomain = cloudflare.workersscript.get_subdomain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         script_name="this-is_my_script-01")
     ```
 
@@ -109,6 +111,7 @@ def get_workers_script_subdomain(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Identifier.
     :param _builtins.str script_name: Name of the script, used in URLs and route configuration.
     """
+    pulumi.log.warn("""get_workers_script_subdomain is deprecated: cloudflare:index/getWorkersScriptSubdomain:getWorkersScriptSubdomain has been deprecated in favor of cloudflare:workersScript/subdomain:getSubdomain""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['scriptName'] = script_name
@@ -136,7 +139,7 @@ def get_workers_script_subdomain_output(account_id: pulumi.Input[Optional[_built
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_script_subdomain = cloudflare.get_workers_script_subdomain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_script_subdomain = cloudflare.workersscript.get_subdomain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         script_name="this-is_my_script-01")
     ```
 
@@ -144,6 +147,7 @@ def get_workers_script_subdomain_output(account_id: pulumi.Input[Optional[_built
     :param _builtins.str account_id: Identifier.
     :param _builtins.str script_name: Name of the script, used in URLs and route configuration.
     """
+    pulumi.log.warn("""get_workers_script_subdomain is deprecated: cloudflare:index/getWorkersScriptSubdomain:getWorkersScriptSubdomain has been deprecated in favor of cloudflare:workersScript/subdomain:getSubdomain""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['scriptName'] = script_name

@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustNetworkHostnameRoute;
- * import com.pulumi.cloudflare.ZeroTrustNetworkHostnameRouteArgs;
+ * import com.pulumi.cloudflare.zeroTrustNetworkHostname.Route;
+ * import com.pulumi.cloudflare.zeroTrustNetworkHostname.RouteArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustNetworkHostnameRoute = new ZeroTrustNetworkHostnameRoute("exampleZeroTrustNetworkHostnameRoute", ZeroTrustNetworkHostnameRouteArgs.builder()
+ *         var exampleZeroTrustNetworkHostnameRoute = new Route("exampleZeroTrustNetworkHostnameRoute", RouteArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
  *             .comment("example comment")
  *             .hostname("office-1.local")
@@ -64,7 +64,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute example &#39;&lt;account_id&gt;/&lt;hostname_route_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute has been deprecated in favor of cloudflare:zeroTrustNetworkHostname/route:Route
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute has been deprecated in favor of cloudflare:zeroTrustNetworkHostname/route:Route */
 @ResourceType(type="cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute")
 public class ZeroTrustNetworkHostnameRoute extends com.pulumi.resources.CustomResource {
     /**

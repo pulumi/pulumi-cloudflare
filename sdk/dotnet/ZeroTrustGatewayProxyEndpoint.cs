@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustGatewayProxyEndpoint = new Cloudflare.ZeroTrustGatewayProxyEndpoint("example_zero_trust_gateway_proxy_endpoint", new()
+    ///     var exampleZeroTrustGatewayProxyEndpoint = new Cloudflare.Modules.ZeroTrustGatewayProxy.ZeroTrustGatewayProxyEndpoint("example_zero_trust_gateway_proxy_endpoint", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Name = "Devops team",
@@ -36,6 +36,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint example '&lt;account_id&gt;/&lt;proxy_endpoint_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint has been deprecated in favor of cloudflare:zeroTrustGatewayProxy/endpoint:Endpoint")]
     [CloudflareResourceType("cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint")]
     public partial class ZeroTrustGatewayProxyEndpoint : global::Pulumi.CustomResource
     {

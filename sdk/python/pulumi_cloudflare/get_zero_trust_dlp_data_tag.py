@@ -21,6 +21,8 @@ __all__ = [
     'get_zero_trust_dlp_data_tag_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDlpDataTag:getZeroTrustDlpDataTag has been deprecated in favor of cloudflare:zeroTrustDlpDataTag/zeroTrustDlpDataTag:getZeroTrustDlpDataTag""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDlpDataTagResult:
     """
@@ -128,11 +130,12 @@ def get_zero_trust_dlp_data_tag(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_data_tag = cloudflare.get_zero_trust_dlp_data_tag(account_id="account_id",
+    example_zero_trust_dlp_data_tag = cloudflare.zerotrustdlpdatatag.get_zero_trust_dlp_data_tag(account_id="account_id",
         category_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         tag_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_dlp_data_tag is deprecated: cloudflare:index/getZeroTrustDlpDataTag:getZeroTrustDlpDataTag has been deprecated in favor of cloudflare:zeroTrustDlpDataTag/zeroTrustDlpDataTag:getZeroTrustDlpDataTag""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['categoryId'] = category_id
@@ -165,11 +168,12 @@ def get_zero_trust_dlp_data_tag_output(account_id: pulumi.Input[Optional[_builti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_data_tag = cloudflare.get_zero_trust_dlp_data_tag(account_id="account_id",
+    example_zero_trust_dlp_data_tag = cloudflare.zerotrustdlpdatatag.get_zero_trust_dlp_data_tag(account_id="account_id",
         category_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         tag_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_dlp_data_tag is deprecated: cloudflare:index/getZeroTrustDlpDataTag:getZeroTrustDlpDataTag has been deprecated in favor of cloudflare:zeroTrustDlpDataTag/zeroTrustDlpDataTag:getZeroTrustDlpDataTag""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['categoryId'] = category_id

@@ -23,6 +23,8 @@ __all__ = [
     'get_workers_custom_domain_output',
 ]
 
+warnings.warn("""cloudflare:index/getWorkersCustomDomain:getWorkersCustomDomain has been deprecated in favor of cloudflare:workersCustom/domain:getDomain""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWorkersCustomDomainResult:
     """
@@ -173,7 +175,7 @@ def get_workers_custom_domain(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_custom_domain = cloudflare.get_workers_custom_domain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_custom_domain = cloudflare.workerscustom.get_domain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         domain_id="dbe10b4bc17c295377eabd600e1787fd")
     ```
 
@@ -181,6 +183,7 @@ def get_workers_custom_domain(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Identifier.
     :param _builtins.str domain_id: ID of the domain.
     """
+    pulumi.log.warn("""get_workers_custom_domain is deprecated: cloudflare:index/getWorkersCustomDomain:getWorkersCustomDomain has been deprecated in favor of cloudflare:workersCustom/domain:getDomain""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['domainId'] = domain_id
@@ -215,7 +218,7 @@ def get_workers_custom_domain_output(account_id: pulumi.Input[Optional[Optional[
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_custom_domain = cloudflare.get_workers_custom_domain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_custom_domain = cloudflare.workerscustom.get_domain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         domain_id="dbe10b4bc17c295377eabd600e1787fd")
     ```
 
@@ -223,6 +226,7 @@ def get_workers_custom_domain_output(account_id: pulumi.Input[Optional[Optional[
     :param _builtins.str account_id: Identifier.
     :param _builtins.str domain_id: ID of the domain.
     """
+    pulumi.log.warn("""get_workers_custom_domain is deprecated: cloudflare:index/getWorkersCustomDomain:getWorkersCustomDomain has been deprecated in favor of cloudflare:workersCustom/domain:getDomain""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['domainId'] = domain_id

@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsZoneTransfersPeers = cloudflare.getDnsZoneTransfersPeers({
+ * const exampleDnsZoneTransfersPeers = cloudflare.dnszonetransfers.getPeers({
  *     accountId: "01a7362d577a6c3019a474fd6f485823",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getDnsZoneTransfersPeers:getDnsZoneTransfersPeers has been deprecated in favor of cloudflare:dnsZoneTransfers/peers:getPeers */
 export function getDnsZoneTransfersPeers(args?: GetDnsZoneTransfersPeersArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsZoneTransfersPeersResult> {
+    pulumi.log.warn("getDnsZoneTransfersPeers is deprecated: cloudflare:index/getDnsZoneTransfersPeers:getDnsZoneTransfersPeers has been deprecated in favor of cloudflare:dnsZoneTransfers/peers:getPeers")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getDnsZoneTransfersPeers:getDnsZoneTransfersPeers", {
@@ -69,12 +71,14 @@ export interface GetDnsZoneTransfersPeersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsZoneTransfersPeers = cloudflare.getDnsZoneTransfersPeers({
+ * const exampleDnsZoneTransfersPeers = cloudflare.dnszonetransfers.getPeers({
  *     accountId: "01a7362d577a6c3019a474fd6f485823",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getDnsZoneTransfersPeers:getDnsZoneTransfersPeers has been deprecated in favor of cloudflare:dnsZoneTransfers/peers:getPeers */
 export function getDnsZoneTransfersPeersOutput(args?: GetDnsZoneTransfersPeersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsZoneTransfersPeersResult> {
+    pulumi.log.warn("getDnsZoneTransfersPeers is deprecated: cloudflare:index/getDnsZoneTransfersPeers:getDnsZoneTransfersPeers has been deprecated in favor of cloudflare:dnsZoneTransfers/peers:getPeers")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getDnsZoneTransfersPeers:getDnsZoneTransfersPeers", {

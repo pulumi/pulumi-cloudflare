@@ -23,6 +23,8 @@ __all__ = [
     'get_organization_output',
 ]
 
+warnings.warn("""cloudflare:index/getOrganization:getOrganization has been deprecated in favor of cloudflare:organization/organization:getOrganization""", DeprecationWarning)
+
 @pulumi.output_type
 class GetOrganizationResult:
     """
@@ -129,9 +131,10 @@ def get_organization(filter: Optional[Union['GetOrganizationFilterArgs', 'GetOrg
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_organization = cloudflare.get_organization(organization_id="a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+    example_organization = cloudflare.organization.get_organization(organization_id="a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
     ```
     """
+    pulumi.log.warn("""get_organization is deprecated: cloudflare:index/getOrganization:getOrganization has been deprecated in favor of cloudflare:organization/organization:getOrganization""")
     __args__ = dict()
     __args__['filter'] = filter
     __args__['organizationId'] = organization_id
@@ -162,9 +165,10 @@ def get_organization_output(filter: pulumi.Input[Optional[Optional[Union['GetOrg
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_organization = cloudflare.get_organization(organization_id="a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+    example_organization = cloudflare.organization.get_organization(organization_id="a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
     ```
     """
+    pulumi.log.warn("""get_organization is deprecated: cloudflare:index/getOrganization:getOrganization has been deprecated in favor of cloudflare:organization/organization:getOrganization""")
     __args__ = dict()
     __args__['filter'] = filter
     __args__['organizationId'] = organization_id

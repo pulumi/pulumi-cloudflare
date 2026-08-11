@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpSettings = new cloudflare.ZeroTrustDlpSettings("example_zero_trust_dlp_settings", {
+ * const exampleZeroTrustDlpSettings = new cloudflare.zerotrustdlp.Settings("example_zero_trust_dlp_settings", {
  *     accountId: "account_id",
  *     aiContextAnalysis: true,
  *     ocr: true,
@@ -34,6 +34,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustDlpSettings:ZeroTrustDlpSettings example '<account_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustDlpSettings:ZeroTrustDlpSettings has been deprecated in favor of cloudflare:zeroTrustDlp/settings:Settings
  */
 export class ZeroTrustDlpSettings extends pulumi.CustomResource {
     /**
@@ -46,6 +48,7 @@ export class ZeroTrustDlpSettings extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustDlpSettingsState, opts?: pulumi.CustomResourceOptions): ZeroTrustDlpSettings {
+        pulumi.log.warn("ZeroTrustDlpSettings is deprecated: cloudflare:index/zeroTrustDlpSettings:ZeroTrustDlpSettings has been deprecated in favor of cloudflare:zeroTrustDlp/settings:Settings")
         return new ZeroTrustDlpSettings(name, <any>state, { ...opts, id: id });
     }
 
@@ -86,8 +89,11 @@ export class ZeroTrustDlpSettings extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustDlpSettings:ZeroTrustDlpSettings has been deprecated in favor of cloudflare:zeroTrustDlp/settings:Settings */
     constructor(name: string, args: ZeroTrustDlpSettingsArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustDlpSettings:ZeroTrustDlpSettings has been deprecated in favor of cloudflare:zeroTrustDlp/settings:Settings */
     constructor(name: string, argsOrState?: ZeroTrustDlpSettingsArgs | ZeroTrustDlpSettingsState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustDlpSettings is deprecated: cloudflare:index/zeroTrustDlpSettings:ZeroTrustDlpSettings has been deprecated in favor of cloudflare:zeroTrustDlp/settings:Settings")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

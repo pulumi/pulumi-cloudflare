@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getAccountApiTokenPermissionGroupsList:getAccountApiTokenPermissionGroupsList has been deprecated in favor of cloudflare:accountApiTokenPermissionGroups/list:getList")]
     public static class GetAccountApiTokenPermissionGroupsList
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountApiTokenPermissionGroupsList = Cloudflare.GetAccountApiTokenPermissionGroupsList.Invoke(new()
+        ///     var exampleAccountApiTokenPermissionGroupsList = Cloudflare.Modules.AccountApiTokenPermissionGroups.GetList.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Name = "Account%20Settings%20Write",
@@ -56,7 +57,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountApiTokenPermissionGroupsList = Cloudflare.GetAccountApiTokenPermissionGroupsList.Invoke(new()
+        ///     var exampleAccountApiTokenPermissionGroupsList = Cloudflare.Modules.AccountApiTokenPermissionGroups.GetList.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Name = "Account%20Settings%20Write",
@@ -85,7 +86,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountApiTokenPermissionGroupsList = Cloudflare.GetAccountApiTokenPermissionGroupsList.Invoke(new()
+        ///     var exampleAccountApiTokenPermissionGroupsList = Cloudflare.Modules.AccountApiTokenPermissionGroups.GetList.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Name = "Account%20Settings%20Write",

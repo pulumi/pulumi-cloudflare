@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDlpDataTag = new Cloudflare.ZeroTrustDlpDataTag("example_zero_trust_dlp_data_tag", new()
+    ///     var exampleZeroTrustDlpDataTag = new Cloudflare.Modules.ZeroTrustDlpDataTag.ZeroTrustDlpDataTag("example_zero_trust_dlp_data_tag", new()
     ///     {
     ///         AccountId = "account_id",
     ///         CategoryId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -42,6 +42,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustDlpDataTag:ZeroTrustDlpDataTag example '&lt;account_id&gt;/&lt;category_id&gt;/&lt;tag_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustDlpDataTag:ZeroTrustDlpDataTag has been deprecated in favor of cloudflare:zeroTrustDlpDataTag/zeroTrustDlpDataTag:ZeroTrustDlpDataTag")]
     [CloudflareResourceType("cloudflare:index/zeroTrustDlpDataTag:ZeroTrustDlpDataTag")]
     public partial class ZeroTrustDlpDataTag : global::Pulumi.CustomResource
     {

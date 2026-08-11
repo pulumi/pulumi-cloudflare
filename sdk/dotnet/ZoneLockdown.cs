@@ -25,12 +25,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZoneLockdown = new Cloudflare.ZoneLockdown("example_zone_lockdown", new()
+    ///     var exampleZoneLockdown = new Cloudflare.Modules.Zone.ZoneLockdown("example_zone_lockdown", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Configurations = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZoneLockdownConfigurationArgs
+    ///             new Cloudflare.Modules.Zone.Inputs.LockdownConfigurationArgs
     ///             {
     ///                 Target = "ip",
     ///                 Value = "198.51.100.4",
@@ -54,6 +54,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example '&lt;zone_id&gt;/&lt;lock_downs_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zoneLockdown:ZoneLockdown has been deprecated in favor of cloudflare:zone/lockdown:Lockdown")]
     [CloudflareResourceType("cloudflare:index/zoneLockdown:ZoneLockdown")]
     public partial class ZoneLockdown : global::Pulumi.CustomResource
     {

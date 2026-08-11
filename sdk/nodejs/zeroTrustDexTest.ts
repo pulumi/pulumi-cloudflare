@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDexTest = new cloudflare.ZeroTrustDexTest("example_zero_trust_dex_test", {
+ * const exampleZeroTrustDexTest = new cloudflare.zerotrustdex.Test("example_zero_trust_dex_test", {
  *     accountId: "01a7362d577a6c3019a474fd6f485823",
  *     data: {
  *         host: "https://dash.cloudflare.com",
@@ -44,6 +44,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest example '<account_id>/<dex_test_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest has been deprecated in favor of cloudflare:zeroTrustDex/test:Test
  */
 export class ZeroTrustDexTest extends pulumi.CustomResource {
     /**
@@ -56,6 +58,7 @@ export class ZeroTrustDexTest extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustDexTestState, opts?: pulumi.CustomResourceOptions): ZeroTrustDexTest {
+        pulumi.log.warn("ZeroTrustDexTest is deprecated: cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest has been deprecated in favor of cloudflare:zeroTrustDex/test:Test")
         return new ZeroTrustDexTest(name, <any>state, { ...opts, id: id });
     }
 
@@ -114,8 +117,11 @@ export class ZeroTrustDexTest extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest has been deprecated in favor of cloudflare:zeroTrustDex/test:Test */
     constructor(name: string, args: ZeroTrustDexTestArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest has been deprecated in favor of cloudflare:zeroTrustDex/test:Test */
     constructor(name: string, argsOrState?: ZeroTrustDexTestArgs | ZeroTrustDexTestState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustDexTest is deprecated: cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest has been deprecated in favor of cloudflare:zeroTrustDex/test:Test")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDeviceSubnet = new cloudflare.ZeroTrustDeviceSubnet("example_zero_trust_device_subnet", {
+ * const exampleZeroTrustDeviceSubnet = new cloudflare.zerotrustdevice.Subnet("example_zero_trust_device_subnet", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     name: "IPv4 Cloudflare Source IPs",
  *     network: "100.64.0.0/12",
@@ -32,6 +32,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustDeviceSubnet:ZeroTrustDeviceSubnet example '<account_id>/<subnet_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustDeviceSubnet:ZeroTrustDeviceSubnet has been deprecated in favor of cloudflare:zeroTrustDevice/subnet:Subnet
  */
 export class ZeroTrustDeviceSubnet extends pulumi.CustomResource {
     /**
@@ -44,6 +46,7 @@ export class ZeroTrustDeviceSubnet extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustDeviceSubnetState, opts?: pulumi.CustomResourceOptions): ZeroTrustDeviceSubnet {
+        pulumi.log.warn("ZeroTrustDeviceSubnet is deprecated: cloudflare:index/zeroTrustDeviceSubnet:ZeroTrustDeviceSubnet has been deprecated in favor of cloudflare:zeroTrustDevice/subnet:Subnet")
         return new ZeroTrustDeviceSubnet(name, <any>state, { ...opts, id: id });
     }
 
@@ -106,8 +109,11 @@ export class ZeroTrustDeviceSubnet extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustDeviceSubnet:ZeroTrustDeviceSubnet has been deprecated in favor of cloudflare:zeroTrustDevice/subnet:Subnet */
     constructor(name: string, args: ZeroTrustDeviceSubnetArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustDeviceSubnet:ZeroTrustDeviceSubnet has been deprecated in favor of cloudflare:zeroTrustDevice/subnet:Subnet */
     constructor(name: string, argsOrState?: ZeroTrustDeviceSubnetArgs | ZeroTrustDeviceSubnetState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustDeviceSubnet is deprecated: cloudflare:index/zeroTrustDeviceSubnet:ZeroTrustDeviceSubnet has been deprecated in favor of cloudflare:zeroTrustDevice/subnet:Subnet")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

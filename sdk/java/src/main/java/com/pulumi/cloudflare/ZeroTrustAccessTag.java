@@ -25,8 +25,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustAccessTag;
- * import com.pulumi.cloudflare.ZeroTrustAccessTagArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccess.Tag;
+ * import com.pulumi.cloudflare.zeroTrustAccess.TagArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -40,7 +40,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustAccessTag = new ZeroTrustAccessTag("exampleZeroTrustAccessTag", ZeroTrustAccessTagArgs.builder()
+ *         var exampleZeroTrustAccessTag = new Tag("exampleZeroTrustAccessTag", TagArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .name("engineers")
  *             .build());
@@ -56,7 +56,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag example &#39;&lt;account_id&gt;/&lt;tag_name&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag has been deprecated in favor of cloudflare:zeroTrustAccess/tag:Tag
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag has been deprecated in favor of cloudflare:zeroTrustAccess/tag:Tag */
 @ResourceType(type="cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag")
 public class ZeroTrustAccessTag extends com.pulumi.resources.CustomResource {
     /**

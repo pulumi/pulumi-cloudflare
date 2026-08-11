@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getMagicWanIpsecTunnel:getMagicWanIpsecTunnel has been deprecated in favor of cloudflare:magicWan/ipsecTunnel:getIpsecTunnel")]
     public static class GetMagicWanIpsecTunnel
     {
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicWanIpsecTunnel = Cloudflare.GetMagicWanIpsecTunnel.Invoke(new()
+        ///     var exampleMagicWanIpsecTunnel = Cloudflare.Modules.MagicWan.GetIpsecTunnel.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         IpsecTunnelId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -59,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicWanIpsecTunnel = Cloudflare.GetMagicWanIpsecTunnel.Invoke(new()
+        ///     var exampleMagicWanIpsecTunnel = Cloudflare.Modules.MagicWan.GetIpsecTunnel.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         IpsecTunnelId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -89,7 +90,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicWanIpsecTunnel = Cloudflare.GetMagicWanIpsecTunnel.Invoke(new()
+        ///     var exampleMagicWanIpsecTunnel = Cloudflare.Modules.MagicWan.GetIpsecTunnel.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         IpsecTunnelId = "023e105f4ecef8ad9ca31a8372d0c353",

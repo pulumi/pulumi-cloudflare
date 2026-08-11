@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersRoutes = cloudflare.getWorkersRoutes({
+ * const exampleWorkersRoutes = cloudflare.workers.getRoutes({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkersRoutes:getWorkersRoutes has been deprecated in favor of cloudflare:workers/routes:getRoutes */
 export function getWorkersRoutes(args?: GetWorkersRoutesArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersRoutesResult> {
+    pulumi.log.warn("getWorkersRoutes is deprecated: cloudflare:index/getWorkersRoutes:getWorkersRoutes has been deprecated in favor of cloudflare:workers/routes:getRoutes")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkersRoutes:getWorkersRoutes", {
@@ -75,12 +77,14 @@ export interface GetWorkersRoutesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersRoutes = cloudflare.getWorkersRoutes({
+ * const exampleWorkersRoutes = cloudflare.workers.getRoutes({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkersRoutes:getWorkersRoutes has been deprecated in favor of cloudflare:workers/routes:getRoutes */
 export function getWorkersRoutesOutput(args?: GetWorkersRoutesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersRoutesResult> {
+    pulumi.log.warn("getWorkersRoutes is deprecated: cloudflare:index/getWorkersRoutes:getWorkersRoutes has been deprecated in favor of cloudflare:workers/routes:getRoutes")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkersRoutes:getWorkersRoutes", {

@@ -23,6 +23,8 @@ __all__ = [
     'get_pipeline_stream_output',
 ]
 
+warnings.warn("""cloudflare:index/getPipelineStream:getPipelineStream has been deprecated in favor of cloudflare:pipeline/stream:getStream""", DeprecationWarning)
+
 @pulumi.output_type
 class GetPipelineStreamResult:
     """
@@ -190,7 +192,7 @@ def get_pipeline_stream(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_pipeline_stream = cloudflare.get_pipeline_stream(account_id="0123105f4ecef8ad9ca31a8372d0c353",
+    example_pipeline_stream = cloudflare.pipeline.get_stream(account_id="0123105f4ecef8ad9ca31a8372d0c353",
         stream_id="033e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -198,6 +200,7 @@ def get_pipeline_stream(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Specifies the public ID of the account.
     :param _builtins.str stream_id: Specifies the public ID of the stream.
     """
+    pulumi.log.warn("""get_pipeline_stream is deprecated: cloudflare:index/getPipelineStream:getPipelineStream has been deprecated in favor of cloudflare:pipeline/stream:getStream""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -235,7 +238,7 @@ def get_pipeline_stream_output(account_id: pulumi.Input[Optional[Optional[_built
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_pipeline_stream = cloudflare.get_pipeline_stream(account_id="0123105f4ecef8ad9ca31a8372d0c353",
+    example_pipeline_stream = cloudflare.pipeline.get_stream(account_id="0123105f4ecef8ad9ca31a8372d0c353",
         stream_id="033e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -243,6 +246,7 @@ def get_pipeline_stream_output(account_id: pulumi.Input[Optional[Optional[_built
     :param _builtins.str account_id: Specifies the public ID of the account.
     :param _builtins.str stream_id: Specifies the public ID of the stream.
     """
+    pulumi.log.warn("""get_pipeline_stream is deprecated: cloudflare:index/getPipelineStream:getPipelineStream has been deprecated in favor of cloudflare:pipeline/stream:getStream""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

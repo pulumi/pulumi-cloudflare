@@ -23,16 +23,16 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/accountdnssettingsinternal"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetAccountDnsSettingsInternalViews(ctx, &cloudflare.LookupAccountDnsSettingsInternalViewsArgs{
+//			_, err := accountdnssettingsinternal.GetViews(ctx, &accountdnssettingsinternal.GetViewsArgs{
 //				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Name: cloudflare.GetAccountDnsSettingsInternalViewsName{
+//				Name: accountdnssettingsinternal.GetViewsName{
 //					Contains:   pulumi.StringRef("view"),
 //					Endswith:   pulumi.StringRef("ew"),
 //					Exact:      pulumi.StringRef("my view"),
@@ -50,6 +50,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getAccountDnsSettingsInternalViews:getAccountDnsSettingsInternalViews has been deprecated in favor of cloudflare:accountDnsSettingsInternal/views:getViews
 func LookupAccountDnsSettingsInternalViews(ctx *pulumi.Context, args *LookupAccountDnsSettingsInternalViewsArgs, opts ...pulumi.InvokeOption) (*LookupAccountDnsSettingsInternalViewsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountDnsSettingsInternalViewsResult

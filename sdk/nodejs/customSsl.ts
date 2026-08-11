@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomSsl = new cloudflare.CustomSsl("example_custom_ssl", {
+ * const exampleCustomSsl = new cloudflare.custom.Ssl("example_custom_ssl", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     certificate: `  -----BEGIN CERTIFICATE-----
  *   MIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV
@@ -91,6 +91,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/customSsl:CustomSsl example '<zone_id>/<custom_certificate_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/customSsl:CustomSsl has been deprecated in favor of cloudflare:custom/ssl:Ssl
  */
 export class CustomSsl extends pulumi.CustomResource {
     /**
@@ -103,6 +105,7 @@ export class CustomSsl extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CustomSslState, opts?: pulumi.CustomResourceOptions): CustomSsl {
+        pulumi.log.warn("CustomSsl is deprecated: cloudflare:index/customSsl:CustomSsl has been deprecated in favor of cloudflare:custom/ssl:Ssl")
         return new CustomSsl(name, <any>state, { ...opts, id: id });
     }
 
@@ -205,8 +208,11 @@ export class CustomSsl extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/customSsl:CustomSsl has been deprecated in favor of cloudflare:custom/ssl:Ssl */
     constructor(name: string, args: CustomSslArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/customSsl:CustomSsl has been deprecated in favor of cloudflare:custom/ssl:Ssl */
     constructor(name: string, argsOrState?: CustomSslArgs | CustomSslState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("CustomSsl is deprecated: cloudflare:index/customSsl:CustomSsl has been deprecated in favor of cloudflare:custom/ssl:Ssl")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

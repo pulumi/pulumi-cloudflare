@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_dlp_datasets_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDlpDatasets:getZeroTrustDlpDatasets has been deprecated in favor of cloudflare:zeroTrustDlp/datasets:getDatasets""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDlpDatasetsResult:
     """
@@ -86,12 +88,13 @@ def get_zero_trust_dlp_datasets(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_datasets = cloudflare.get_zero_trust_dlp_datasets(account_id="account_id")
+    example_zero_trust_dlp_datasets = cloudflare.zerotrustdlp.get_datasets(account_id="account_id")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_dlp_datasets is deprecated: cloudflare:index/getZeroTrustDlpDatasets:getZeroTrustDlpDatasets has been deprecated in favor of cloudflare:zeroTrustDlp/datasets:getDatasets""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -117,12 +120,13 @@ def get_zero_trust_dlp_datasets_output(account_id: pulumi.Input[Optional[Optiona
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_datasets = cloudflare.get_zero_trust_dlp_datasets(account_id="account_id")
+    example_zero_trust_dlp_datasets = cloudflare.zerotrustdlp.get_datasets(account_id="account_id")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_dlp_datasets is deprecated: cloudflare:index/getZeroTrustDlpDatasets:getZeroTrustDlpDatasets has been deprecated in favor of cloudflare:zeroTrustDlp/datasets:getDatasets""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

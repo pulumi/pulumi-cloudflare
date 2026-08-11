@@ -13,13 +13,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleR2BucketLifecycle = cloudflare.getR2BucketLifecycle({
+ * const exampleR2BucketLifecycle = cloudflare.r2bucket.getLifecycle({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getR2BucketLifecycle:getR2BucketLifecycle has been deprecated in favor of cloudflare:r2Bucket/lifecycle:getLifecycle */
 export function getR2BucketLifecycle(args: GetR2BucketLifecycleArgs, opts?: pulumi.InvokeOptions): Promise<GetR2BucketLifecycleResult> {
+    pulumi.log.warn("getR2BucketLifecycle is deprecated: cloudflare:index/getR2BucketLifecycle:getR2BucketLifecycle has been deprecated in favor of cloudflare:r2Bucket/lifecycle:getLifecycle")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getR2BucketLifecycle:getR2BucketLifecycle", {
         "accountId": args.accountId,
@@ -62,13 +64,15 @@ export interface GetR2BucketLifecycleResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleR2BucketLifecycle = cloudflare.getR2BucketLifecycle({
+ * const exampleR2BucketLifecycle = cloudflare.r2bucket.getLifecycle({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getR2BucketLifecycle:getR2BucketLifecycle has been deprecated in favor of cloudflare:r2Bucket/lifecycle:getLifecycle */
 export function getR2BucketLifecycleOutput(args: GetR2BucketLifecycleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetR2BucketLifecycleResult> {
+    pulumi.log.warn("getR2BucketLifecycle is deprecated: cloudflare:index/getR2BucketLifecycle:getR2BucketLifecycle has been deprecated in favor of cloudflare:r2Bucket/lifecycle:getLifecycle")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getR2BucketLifecycle:getR2BucketLifecycle", {
         "accountId": args.accountId,

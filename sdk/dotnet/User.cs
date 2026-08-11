@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleUser = new Cloudflare.User("example_user", new()
+    ///     var exampleUser = new Cloudflare.Modules.User.User("example_user", new()
     ///     {
     ///         Country = "US",
     ///         FirstName = "John",
@@ -41,6 +41,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/user:User has been deprecated in favor of cloudflare:user/user:User")]
     [CloudflareResourceType("cloudflare:index/user:User")]
     public partial class User : global::Pulumi.CustomResource
     {

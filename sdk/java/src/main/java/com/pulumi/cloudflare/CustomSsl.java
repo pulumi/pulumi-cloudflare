@@ -35,9 +35,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.CustomSsl;
- * import com.pulumi.cloudflare.CustomSslArgs;
- * import com.pulumi.cloudflare.inputs.CustomSslGeoRestrictionsArgs;
+ * import com.pulumi.cloudflare.custom.Ssl;
+ * import com.pulumi.cloudflare.custom.SslArgs;
+ * import com.pulumi.cloudflare.custom.inputs.SslGeoRestrictionsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleCustomSsl = new CustomSsl("exampleCustomSsl", CustomSslArgs.builder()
+ *         var exampleCustomSsl = new Ssl("exampleCustomSsl", SslArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .certificate("""
  *   -----BEGIN CERTIFICATE-----
@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  *             .bundleMethod("ubiquitous")
  *             .customCsrId("7b163417-1d2b-4c84-a38a-2fb7a0cd7752")
  *             .deploy("staging")
- *             .geoRestrictions(CustomSslGeoRestrictionsArgs.builder()
+ *             .geoRestrictions(SslGeoRestrictionsArgs.builder()
  *                 .label("us")
  *                 .build())
  *             .policy("(country: US) or (region: EU)")
@@ -129,7 +129,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/customSsl:CustomSsl example &#39;&lt;zone_id&gt;/&lt;custom_certificate_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/customSsl:CustomSsl has been deprecated in favor of cloudflare:custom/ssl:Ssl
+ * 
  */
+@Deprecated /* cloudflare:index/customSsl:CustomSsl has been deprecated in favor of cloudflare:custom/ssl:Ssl */
 @ResourceType(type="cloudflare:index/customSsl:CustomSsl")
 public class CustomSsl extends com.pulumi.resources.CustomResource {
     /**

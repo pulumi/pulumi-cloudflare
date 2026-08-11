@@ -22,6 +22,8 @@ __all__ = [
     'get_stream_audio_track_output',
 ]
 
+warnings.warn("""cloudflare:index/getStreamAudioTrack:getStreamAudioTrack has been deprecated in favor of cloudflare:stream/audioTrack:getAudioTrack""", DeprecationWarning)
+
 @pulumi.output_type
 class GetStreamAudioTrackResult:
     """
@@ -89,7 +91,7 @@ def get_stream_audio_track(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_stream_audio_track = cloudflare.get_stream_audio_track(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_stream_audio_track = cloudflare.stream.get_audio_track(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         identifier="ea95132c15732412d22c1476fa83f27a")
     ```
 
@@ -97,6 +99,7 @@ def get_stream_audio_track(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: The account identifier tag.
     :param _builtins.str identifier: A Cloudflare-generated unique identifier for a media item.
     """
+    pulumi.log.warn("""get_stream_audio_track is deprecated: cloudflare:index/getStreamAudioTrack:getStreamAudioTrack has been deprecated in favor of cloudflare:stream/audioTrack:getAudioTrack""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['identifier'] = identifier
@@ -122,7 +125,7 @@ def get_stream_audio_track_output(account_id: pulumi.Input[Optional[_builtins.st
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_stream_audio_track = cloudflare.get_stream_audio_track(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_stream_audio_track = cloudflare.stream.get_audio_track(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         identifier="ea95132c15732412d22c1476fa83f27a")
     ```
 
@@ -130,6 +133,7 @@ def get_stream_audio_track_output(account_id: pulumi.Input[Optional[_builtins.st
     :param _builtins.str account_id: The account identifier tag.
     :param _builtins.str identifier: A Cloudflare-generated unique identifier for a media item.
     """
+    pulumi.log.warn("""get_stream_audio_track is deprecated: cloudflare:index/getStreamAudioTrack:getStreamAudioTrack has been deprecated in favor of cloudflare:stream/audioTrack:getAudioTrack""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['identifier'] = identifier

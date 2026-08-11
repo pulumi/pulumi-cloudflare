@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getCustomPages:getCustomPages has been deprecated in favor of cloudflare:customPages/customPages:getCustomPages")]
     public static class GetCustomPages
     {
         /// <summary>
@@ -30,7 +31,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomPages = Cloudflare.GetCustomPages.Invoke(new()
+        ///     var exampleCustomPages = Cloudflare.Modules.CustomPages.GetCustomPages.Invoke(new()
         ///     {
         ///         Identifier = "ratelimit_block",
         ///         AccountId = "account_id",
@@ -62,7 +63,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomPages = Cloudflare.GetCustomPages.Invoke(new()
+        ///     var exampleCustomPages = Cloudflare.Modules.CustomPages.GetCustomPages.Invoke(new()
         ///     {
         ///         Identifier = "ratelimit_block",
         ///         AccountId = "account_id",
@@ -94,7 +95,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomPages = Cloudflare.GetCustomPages.Invoke(new()
+        ///     var exampleCustomPages = Cloudflare.Modules.CustomPages.GetCustomPages.Invoke(new()
         ///     {
         ///         Identifier = "ratelimit_block",
         ///         AccountId = "account_id",

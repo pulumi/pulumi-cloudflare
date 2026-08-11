@@ -25,14 +25,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/magicnetworkmonitoring"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewMagicNetworkMonitoringRule(ctx, "example_magic_network_monitoring_rule", &cloudflare.MagicNetworkMonitoringRuleArgs{
+//			_, err := magicnetworkmonitoring.NewRule(ctx, "example_magic_network_monitoring_rule", &magicnetworkmonitoring.RuleArgs{
 //				AccountId:              pulumi.String("6f91088a406011ed95aed352566e8d4c"),
 //				AutomaticAdvertisement: pulumi.Bool(true),
 //				Name:                   pulumi.String("my_rule_1"),
@@ -61,6 +61,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule example '<account_id>/<rule_id>'
 // ```
+//
+// Deprecated: cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule has been deprecated in favor of cloudflare:magicNetworkMonitoring/rule:Rule
 type MagicNetworkMonitoringRule struct {
 	pulumi.CustomResourceState
 

@@ -21,6 +21,8 @@ __all__ = [
     'get_mtls_certificate_output',
 ]
 
+warnings.warn("""cloudflare:index/getMtlsCertificate:getMtlsCertificate has been deprecated in favor of cloudflare:mtlsCertificate/mtlsCertificate:getMtlsCertificate""", DeprecationWarning)
+
 @pulumi.output_type
 class GetMtlsCertificateResult:
     """
@@ -179,7 +181,7 @@ def get_mtls_certificate(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_mtls_certificate = cloudflare.get_mtls_certificate(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_mtls_certificate = cloudflare.mtlscertificate.get_mtls_certificate(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         mtls_certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -187,6 +189,7 @@ def get_mtls_certificate(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Identifier.
     :param _builtins.str mtls_certificate_id: Identifier.
     """
+    pulumi.log.warn("""get_mtls_certificate is deprecated: cloudflare:index/getMtlsCertificate:getMtlsCertificate has been deprecated in favor of cloudflare:mtlsCertificate/mtlsCertificate:getMtlsCertificate""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['mtlsCertificateId'] = mtls_certificate_id
@@ -215,7 +218,7 @@ def get_mtls_certificate_output(account_id: pulumi.Input[Optional[_builtins.str]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_mtls_certificate = cloudflare.get_mtls_certificate(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_mtls_certificate = cloudflare.mtlscertificate.get_mtls_certificate(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         mtls_certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -223,6 +226,7 @@ def get_mtls_certificate_output(account_id: pulumi.Input[Optional[_builtins.str]
     :param _builtins.str account_id: Identifier.
     :param _builtins.str mtls_certificate_id: Identifier.
     """
+    pulumi.log.warn("""get_mtls_certificate is deprecated: cloudflare:index/getMtlsCertificate:getMtlsCertificate has been deprecated in favor of cloudflare:mtlsCertificate/mtlsCertificate:getMtlsCertificate""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['mtlsCertificateId'] = mtls_certificate_id

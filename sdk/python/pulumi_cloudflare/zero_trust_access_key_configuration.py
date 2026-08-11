@@ -128,8 +128,13 @@ class _ZeroTrustAccessKeyConfigurationState:
         pulumi.set(self, "last_key_rotation_at", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration has been deprecated in favor of cloudflare:zeroTrustAccess/keyConfiguration:KeyConfiguration""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration")
 class ZeroTrustAccessKeyConfiguration(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration has been deprecated in favor of cloudflare:zeroTrustAccess/keyConfiguration:KeyConfiguration""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -149,7 +154,7 @@ class ZeroTrustAccessKeyConfiguration(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_key_configuration = cloudflare.ZeroTrustAccessKeyConfiguration("example_zero_trust_access_key_configuration",
+        example_zero_trust_access_key_configuration = cloudflare.zerotrustaccess.KeyConfiguration("example_zero_trust_access_key_configuration",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             key_rotation_interval_days=float(30))
         ```
@@ -184,7 +189,7 @@ class ZeroTrustAccessKeyConfiguration(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_key_configuration = cloudflare.ZeroTrustAccessKeyConfiguration("example_zero_trust_access_key_configuration",
+        example_zero_trust_access_key_configuration = cloudflare.zerotrustaccess.KeyConfiguration("example_zero_trust_access_key_configuration",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             key_rotation_interval_days=float(30))
         ```
@@ -214,6 +219,7 @@ class ZeroTrustAccessKeyConfiguration(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  key_rotation_interval_days: pulumi.Input[Optional[_builtins.float]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustAccessKeyConfiguration is deprecated: cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration has been deprecated in favor of cloudflare:zeroTrustAccess/keyConfiguration:KeyConfiguration""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

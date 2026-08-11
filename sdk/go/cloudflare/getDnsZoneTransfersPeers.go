@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/dnszonetransfers"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetDnsZoneTransfersPeers(ctx, &cloudflare.LookupDnsZoneTransfersPeersArgs{
+//			_, err := dnszonetransfers.GetPeers(ctx, &dnszonetransfers.GetPeersArgs{
 //				AccountId: pulumi.StringRef("01a7362d577a6c3019a474fd6f485823"),
 //			}, nil)
 //			if err != nil {
@@ -41,6 +41,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getDnsZoneTransfersPeers:getDnsZoneTransfersPeers has been deprecated in favor of cloudflare:dnsZoneTransfers/peers:getPeers
 func LookupDnsZoneTransfersPeers(ctx *pulumi.Context, args *LookupDnsZoneTransfersPeersArgs, opts ...pulumi.InvokeOption) (*LookupDnsZoneTransfersPeersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDnsZoneTransfersPeersResult

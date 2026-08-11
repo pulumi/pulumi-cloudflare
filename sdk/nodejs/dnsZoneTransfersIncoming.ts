@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsZoneTransfersIncoming = new cloudflare.DnsZoneTransfersIncoming("example_dns_zone_transfers_incoming", {
+ * const exampleDnsZoneTransfersIncoming = new cloudflare.dnszonetransfers.Incoming("example_dns_zone_transfers_incoming", {
  *     zoneId: "269d8f4853475ca241c4e730be286b20",
  *     autoRefreshSeconds: 86400,
  *     name: "www.example.com.",
@@ -35,6 +35,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/dnsZoneTransfersIncoming:DnsZoneTransfersIncoming example '<zone_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/dnsZoneTransfersIncoming:DnsZoneTransfersIncoming has been deprecated in favor of cloudflare:dnsZoneTransfers/incoming:Incoming
  */
 export class DnsZoneTransfersIncoming extends pulumi.CustomResource {
     /**
@@ -47,6 +49,7 @@ export class DnsZoneTransfersIncoming extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DnsZoneTransfersIncomingState, opts?: pulumi.CustomResourceOptions): DnsZoneTransfersIncoming {
+        pulumi.log.warn("DnsZoneTransfersIncoming is deprecated: cloudflare:index/dnsZoneTransfersIncoming:DnsZoneTransfersIncoming has been deprecated in favor of cloudflare:dnsZoneTransfers/incoming:Incoming")
         return new DnsZoneTransfersIncoming(name, <any>state, { ...opts, id: id });
     }
 
@@ -102,8 +105,11 @@ export class DnsZoneTransfersIncoming extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/dnsZoneTransfersIncoming:DnsZoneTransfersIncoming has been deprecated in favor of cloudflare:dnsZoneTransfers/incoming:Incoming */
     constructor(name: string, args: DnsZoneTransfersIncomingArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/dnsZoneTransfersIncoming:DnsZoneTransfersIncoming has been deprecated in favor of cloudflare:dnsZoneTransfers/incoming:Incoming */
     constructor(name: string, argsOrState?: DnsZoneTransfersIncomingArgs | DnsZoneTransfersIncomingState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("DnsZoneTransfersIncoming is deprecated: cloudflare:index/dnsZoneTransfersIncoming:DnsZoneTransfersIncoming has been deprecated in favor of cloudflare:dnsZoneTransfers/incoming:Incoming")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

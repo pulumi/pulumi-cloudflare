@@ -319,8 +319,13 @@ class _ZeroTrustAccessIdentityProviderState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider has been deprecated in favor of cloudflare:zeroTrustAccessIdentity/provider:Provider""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider")
 class ZeroTrustAccessIdentityProvider(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider has been deprecated in favor of cloudflare:zeroTrustAccessIdentity/provider:Provider""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -346,7 +351,7 @@ class ZeroTrustAccessIdentityProvider(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_identity_provider = cloudflare.ZeroTrustAccessIdentityProvider("example_zero_trust_access_identity_provider",
+        example_zero_trust_access_identity_provider = cloudflare.zerotrustaccessidentity.Provider("example_zero_trust_access_identity_provider",
             config={
                 "claims": [
                     "email_verified",
@@ -411,7 +416,7 @@ class ZeroTrustAccessIdentityProvider(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_identity_provider = cloudflare.ZeroTrustAccessIdentityProvider("example_zero_trust_access_identity_provider",
+        example_zero_trust_access_identity_provider = cloudflare.zerotrustaccessidentity.Provider("example_zero_trust_access_identity_provider",
             config={
                 "claims": [
                     "email_verified",
@@ -468,6 +473,7 @@ class ZeroTrustAccessIdentityProvider(pulumi.CustomResource):
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustAccessIdentityProvider is deprecated: cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider has been deprecated in favor of cloudflare:zeroTrustAccessIdentity/provider:Provider""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

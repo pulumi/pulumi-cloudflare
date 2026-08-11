@@ -18,14 +18,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/share"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetShareResources(ctx, &cloudflare.LookupShareResourcesArgs{
+//			_, err := share.LookupResources(ctx, &share.LookupResourcesArgs{
 //				AccountId:    "023e105f4ecef8ad9ca31a8372d0c353",
 //				ShareId:      "3fd85f74b32742f1bff64a85009dda07",
 //				ResourceType: pulumi.StringRef("custom-ruleset"),
@@ -39,6 +39,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getShareResources:getShareResources has been deprecated in favor of cloudflare:share/resources:getResources
 func LookupShareResources(ctx *pulumi.Context, args *LookupShareResourcesArgs, opts ...pulumi.InvokeOption) (*LookupShareResourcesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupShareResourcesResult

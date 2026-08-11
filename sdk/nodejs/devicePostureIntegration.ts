@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDevicePostureIntegration = new cloudflare.ZeroTrustDevicePostureIntegration("example_zero_trust_device_posture_integration", {
+ * const exampleZeroTrustDevicePostureIntegration = new cloudflare.zerotrustdeviceposture.Integration("example_zero_trust_device_posture_integration", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     config: {
  *         apiUrl: "https://as123.awmdm.com/API",
@@ -132,8 +132,6 @@ export class DevicePostureIntegration extends pulumi.CustomResource {
             resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/devicePostureIntegration:DevicePostureIntegration" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DevicePostureIntegration.__pulumiType, name, resourceInputs, opts);
     }
 }

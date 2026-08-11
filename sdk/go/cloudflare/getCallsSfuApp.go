@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/callssfu"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetCallsSfuApp(ctx, &cloudflare.LookupCallsSfuAppArgs{
+//			_, err := callssfu.GetApp(ctx, &callssfu.GetAppArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				AppId:     "2a95132c15732412d22c1476fa83f27a",
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getCallsSfuApp:getCallsSfuApp has been deprecated in favor of cloudflare:callsSfu/app:getApp
 func LookupCallsSfuApp(ctx *pulumi.Context, args *LookupCallsSfuAppArgs, opts ...pulumi.InvokeOption) (*LookupCallsSfuAppResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCallsSfuAppResult

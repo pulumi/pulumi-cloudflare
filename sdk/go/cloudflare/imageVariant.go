@@ -24,17 +24,17 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/image"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewImageVariant(ctx, "example_image_variant", &cloudflare.ImageVariantArgs{
+//			_, err := image.NewVariant(ctx, "example_image_variant", &image.VariantArgs{
 //				AccountId:      pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ImageVariantId: pulumi.String("hero"),
-//				Options: &cloudflare.ImageVariantOptionsArgs{
+//				Options: &image.VariantOptionsArgs{
 //					Fit:      pulumi.String("scale-down"),
 //					Height:   pulumi.Float64(768),
 //					Metadata: pulumi.String("none"),
@@ -56,6 +56,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/imageVariant:ImageVariant example '<account_id>/<variant_id>'
 // ```
+//
+// Deprecated: cloudflare:index/imageVariant:ImageVariant has been deprecated in favor of cloudflare:image/variant:Variant
 type ImageVariant struct {
 	pulumi.CustomResourceState
 

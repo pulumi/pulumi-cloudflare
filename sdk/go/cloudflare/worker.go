@@ -25,21 +25,21 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/worker"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWorker(ctx, "example_worker", &cloudflare.WorkerArgs{
+//			_, err := worker.NewWorker(ctx, "example_worker", &worker.WorkerArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:      pulumi.String("my-worker"),
 //				Logpush:   pulumi.Bool(true),
-//				Observability: &cloudflare.WorkerObservabilityArgs{
+//				Observability: &worker.WorkerObservabilityArgs{
 //					Enabled:          pulumi.Bool(true),
 //					HeadSamplingRate: pulumi.Float64(1),
-//					Logs: &cloudflare.WorkerObservabilityLogsArgs{
+//					Logs: &worker.WorkerObservabilityLogsArgs{
 //						Destinations: pulumi.StringArray{
 //							pulumi.String("string"),
 //						},
@@ -48,7 +48,7 @@ import (
 //						InvocationLogs:   pulumi.Bool(true),
 //						Persist:          pulumi.Bool(true),
 //					},
-//					Traces: &cloudflare.WorkerObservabilityTracesArgs{
+//					Traces: &worker.WorkerObservabilityTracesArgs{
 //						Destinations: pulumi.StringArray{
 //							pulumi.String("string"),
 //						},
@@ -57,7 +57,7 @@ import (
 //						Persist:          pulumi.Bool(true),
 //					},
 //				},
-//				Subdomain: &cloudflare.WorkerSubdomainArgs{
+//				Subdomain: &worker.WorkerSubdomainArgs{
 //					Enabled:         pulumi.Bool(true),
 //					PreviewsEnabled: pulumi.Bool(true),
 //				},
@@ -65,8 +65,8 @@ import (
 //					pulumi.String("my-team"),
 //					pulumi.String("my-public-api"),
 //				},
-//				TailConsumers: cloudflare.WorkerTailConsumerArray{
-//					&cloudflare.WorkerTailConsumerArgs{
+//				TailConsumers: worker.WorkerTailConsumerArray{
+//					&worker.WorkerTailConsumerArgs{
 //						Name: pulumi.String("my-tail-consumer"),
 //					},
 //				},
@@ -85,6 +85,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/worker:Worker example '<account_id>/<worker_id>'
 // ```
+//
+// Deprecated: cloudflare:index/worker:Worker has been deprecated in favor of cloudflare:worker/worker:Worker
 type Worker struct {
 	pulumi.CustomResourceState
 

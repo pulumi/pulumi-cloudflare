@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getLeakedCredentialCheckRule:getLeakedCredentialCheckRule has been deprecated in favor of cloudflare:leakedCredentialCheck/rule:getRule")]
     public static class GetLeakedCredentialCheckRule
     {
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLeakedCredentialCheckRule = Cloudflare.GetLeakedCredentialCheckRule.Invoke(new()
+        ///     var exampleLeakedCredentialCheckRule = Cloudflare.Modules.LeakedCredentialCheck.GetRule.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DetectionId = "18a14bafaa8eb1df04ce683ec18c765e",
@@ -59,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLeakedCredentialCheckRule = Cloudflare.GetLeakedCredentialCheckRule.Invoke(new()
+        ///     var exampleLeakedCredentialCheckRule = Cloudflare.Modules.LeakedCredentialCheck.GetRule.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DetectionId = "18a14bafaa8eb1df04ce683ec18c765e",
@@ -89,7 +90,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLeakedCredentialCheckRule = Cloudflare.GetLeakedCredentialCheckRule.Invoke(new()
+        ///     var exampleLeakedCredentialCheckRule = Cloudflare.Modules.LeakedCredentialCheck.GetRule.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DetectionId = "18a14bafaa8eb1df04ce683ec18c765e",

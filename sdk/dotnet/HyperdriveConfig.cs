@@ -25,11 +25,11 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleHyperdriveConfig = new Cloudflare.HyperdriveConfig("example_hyperdrive_config", new()
+    ///     var exampleHyperdriveConfig = new Cloudflare.Modules.Hyperdrive.HyperdriveConfig("example_hyperdrive_config", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "example-hyperdrive",
-    ///         Origin = new Cloudflare.Inputs.HyperdriveConfigOriginArgs
+    ///         Origin = new Cloudflare.Modules.Hyperdrive.Inputs.ConfigOriginArgs
     ///         {
     ///             Database = "postgres",
     ///             Host = "database.example.com",
@@ -38,11 +38,11 @@ namespace Pulumi.Cloudflare
     ///             Scheme = "postgres",
     ///             User = "postgres",
     ///         },
-    ///         Caching = new Cloudflare.Inputs.HyperdriveConfigCachingArgs
+    ///         Caching = new Cloudflare.Modules.Hyperdrive.Inputs.ConfigCachingArgs
     ///         {
     ///             Disabled = true,
     ///         },
-    ///         Mtls = new Cloudflare.Inputs.HyperdriveConfigMtlsArgs
+    ///         Mtls = new Cloudflare.Modules.Hyperdrive.Inputs.ConfigMtlsArgs
     ///         {
     ///             CaCertificateId = "00000000-0000-0000-0000-0000000000",
     ///             MtlsCertificateId = "00000000-0000-0000-0000-0000000000",
@@ -60,6 +60,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/hyperdriveConfig:HyperdriveConfig example '&lt;account_id&gt;/&lt;hyperdrive_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/hyperdriveConfig:HyperdriveConfig has been deprecated in favor of cloudflare:hyperdrive/config:Config")]
     [CloudflareResourceType("cloudflare:index/hyperdriveConfig:HyperdriveConfig")]
     public partial class HyperdriveConfig : global::Pulumi.CustomResource
     {

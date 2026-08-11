@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleLoadBalancer = new Cloudflare.LoadBalancer("example_load_balancer", new()
+    ///     var exampleLoadBalancer = new Cloudflare.Modules.LoadBalancer.LoadBalancer("example_load_balancer", new()
     ///     {
     ///         DefaultPools = new[]
     ///         {
@@ -36,7 +36,7 @@ namespace Pulumi.Cloudflare
     ///         FallbackPool = "fallback_pool",
     ///         Name = "www.example.com",
     ///         ZoneId = "zone_id",
-    ///         AdaptiveRouting = new Cloudflare.Inputs.LoadBalancerAdaptiveRoutingArgs
+    ///         AdaptiveRouting = new Cloudflare.Modules.LoadBalancer.Inputs.LoadBalancerAdaptiveRoutingArgs
     ///         {
     ///             FailoverAcrossPools = true,
     ///         },
@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         Description = "Load Balancer for www.example.com",
     ///         Enabled = true,
-    ///         LocationStrategy = new Cloudflare.Inputs.LoadBalancerLocationStrategyArgs
+    ///         LocationStrategy = new Cloudflare.Modules.LoadBalancer.Inputs.LoadBalancerLocationStrategyArgs
     ///         {
     ///             Mode = "resolver_ip",
     ///             PreferEcs = "always",
@@ -81,7 +81,7 @@ namespace Pulumi.Cloudflare
     ///             } },
     ///         },
     ///         Proxied = true,
-    ///         RandomSteering = new Cloudflare.Inputs.LoadBalancerRandomSteeringArgs
+    ///         RandomSteering = new Cloudflare.Modules.LoadBalancer.Inputs.LoadBalancerRandomSteeringArgs
     ///         {
     ///             DefaultWeight = 0.2,
     ///             PoolWeights = 
@@ -104,11 +104,11 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         Rules = new[]
     ///         {
-    ///             new Cloudflare.Inputs.LoadBalancerRuleArgs
+    ///             new Cloudflare.Modules.LoadBalancer.Inputs.LoadBalancerRuleArgs
     ///             {
     ///                 Condition = "http.request.uri.path contains \"/testing\"",
     ///                 Disabled = true,
-    ///                 FixedResponse = new Cloudflare.Inputs.LoadBalancerRuleFixedResponseArgs
+    ///                 FixedResponse = new Cloudflare.Modules.LoadBalancer.Inputs.LoadBalancerRuleFixedResponseArgs
     ///                 {
     ///                     ContentType = "application/json",
     ///                     Location = "www.example.com",
@@ -116,9 +116,9 @@ namespace Pulumi.Cloudflare
     ///                     StatusCode = 0,
     ///                 },
     ///                 Name = "route the path /testing to testing datacenter.",
-    ///                 Overrides = new Cloudflare.Inputs.LoadBalancerRuleOverridesArgs
+    ///                 Overrides = new Cloudflare.Modules.LoadBalancer.Inputs.LoadBalancerRuleOverridesArgs
     ///                 {
-    ///                     AdaptiveRouting = new Cloudflare.Inputs.LoadBalancerRuleOverridesAdaptiveRoutingArgs
+    ///                     AdaptiveRouting = new Cloudflare.Modules.LoadBalancer.Inputs.LoadBalancerRuleOverridesAdaptiveRoutingArgs
     ///                     {
     ///                         FailoverAcrossPools = true,
     ///                     },
@@ -141,7 +141,7 @@ namespace Pulumi.Cloudflare
     ///                         "00920f38ce07c2e2f4df50b1f61d4194",
     ///                     },
     ///                     FallbackPool = "fallback_pool",
-    ///                     LocationStrategy = new Cloudflare.Inputs.LoadBalancerRuleOverridesLocationStrategyArgs
+    ///                     LocationStrategy = new Cloudflare.Modules.LoadBalancer.Inputs.LoadBalancerRuleOverridesLocationStrategyArgs
     ///                     {
     ///                         Mode = "resolver_ip",
     ///                         PreferEcs = "always",
@@ -173,7 +173,7 @@ namespace Pulumi.Cloudflare
     ///                             "00920f38ce07c2e2f4df50b1f61d4194",
     ///                         } },
     ///                     },
-    ///                     RandomSteering = new Cloudflare.Inputs.LoadBalancerRuleOverridesRandomSteeringArgs
+    ///                     RandomSteering = new Cloudflare.Modules.LoadBalancer.Inputs.LoadBalancerRuleOverridesRandomSteeringArgs
     ///                     {
     ///                         DefaultWeight = 0.2,
     ///                         PoolWeights = 
@@ -195,7 +195,7 @@ namespace Pulumi.Cloudflare
     ///                         } },
     ///                     },
     ///                     SessionAffinity = "cookie",
-    ///                     SessionAffinityAttributes = new Cloudflare.Inputs.LoadBalancerRuleOverridesSessionAffinityAttributesArgs
+    ///                     SessionAffinityAttributes = new Cloudflare.Modules.LoadBalancer.Inputs.LoadBalancerRuleOverridesSessionAffinityAttributesArgs
     ///                     {
     ///                         DrainDuration = 100,
     ///                         Headers = new[]
@@ -216,7 +216,7 @@ namespace Pulumi.Cloudflare
     ///             },
     ///         },
     ///         SessionAffinity = "cookie",
-    ///         SessionAffinityAttributes = new Cloudflare.Inputs.LoadBalancerSessionAffinityAttributesArgs
+    ///         SessionAffinityAttributes = new Cloudflare.Modules.LoadBalancer.Inputs.LoadBalancerSessionAffinityAttributesArgs
     ///         {
     ///             DrainDuration = 100,
     ///             Headers = new[]
@@ -242,6 +242,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;load_balancer_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/loadBalancer:LoadBalancer has been deprecated in favor of cloudflare:loadBalancer/loadBalancer:LoadBalancer")]
     [CloudflareResourceType("cloudflare:index/loadBalancer:LoadBalancer")]
     public partial class LoadBalancer : global::Pulumi.CustomResource
     {

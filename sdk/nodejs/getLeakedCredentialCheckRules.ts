@@ -20,12 +20,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleLeakedCredentialCheckRules = cloudflare.getLeakedCredentialCheckRules({
+ * const exampleLeakedCredentialCheckRules = cloudflare.leakedcredentialcheck.getRules({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getLeakedCredentialCheckRules:getLeakedCredentialCheckRules has been deprecated in favor of cloudflare:leakedCredentialCheck/rules:getRules */
 export function getLeakedCredentialCheckRules(args?: GetLeakedCredentialCheckRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetLeakedCredentialCheckRulesResult> {
+    pulumi.log.warn("getLeakedCredentialCheckRules is deprecated: cloudflare:index/getLeakedCredentialCheckRules:getLeakedCredentialCheckRules has been deprecated in favor of cloudflare:leakedCredentialCheck/rules:getRules")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getLeakedCredentialCheckRules:getLeakedCredentialCheckRules", {
@@ -79,12 +81,14 @@ export interface GetLeakedCredentialCheckRulesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleLeakedCredentialCheckRules = cloudflare.getLeakedCredentialCheckRules({
+ * const exampleLeakedCredentialCheckRules = cloudflare.leakedcredentialcheck.getRules({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getLeakedCredentialCheckRules:getLeakedCredentialCheckRules has been deprecated in favor of cloudflare:leakedCredentialCheck/rules:getRules */
 export function getLeakedCredentialCheckRulesOutput(args?: GetLeakedCredentialCheckRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLeakedCredentialCheckRulesResult> {
+    pulumi.log.warn("getLeakedCredentialCheckRules is deprecated: cloudflare:index/getLeakedCredentialCheckRules:getLeakedCredentialCheckRules has been deprecated in favor of cloudflare:leakedCredentialCheck/rules:getRules")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getLeakedCredentialCheckRules:getLeakedCredentialCheckRules", {

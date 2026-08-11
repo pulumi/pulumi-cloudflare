@@ -30,9 +30,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDeviceCustomProfileLocalDomainFallback;
- * import com.pulumi.cloudflare.ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArgs;
+ * import com.pulumi.cloudflare.zeroTrustDeviceCustomProfile.LocalDomainFallback;
+ * import com.pulumi.cloudflare.zeroTrustDeviceCustomProfile.LocalDomainFallbackArgs;
+ * import com.pulumi.cloudflare.zeroTrustDeviceCustomProfile.inputs.LocalDomainFallbackDomainArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,10 +46,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustDeviceCustomProfileLocalDomainFallback = new ZeroTrustDeviceCustomProfileLocalDomainFallback("exampleZeroTrustDeviceCustomProfileLocalDomainFallback", ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs.builder()
+ *         var exampleZeroTrustDeviceCustomProfileLocalDomainFallback = new LocalDomainFallback("exampleZeroTrustDeviceCustomProfileLocalDomainFallback", LocalDomainFallbackArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
  *             .policyId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
- *             .domains(ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArgs.builder()
+ *             .domains(LocalDomainFallbackDomainArgs.builder()
  *                 .suffix("example.com")
  *                 .description("Domain bypass for local development")
  *                 .dnsServer(Arrays.asList("1.1.1.1"))
@@ -67,7 +67,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustDeviceCustomProfileLocalDomainFallback:ZeroTrustDeviceCustomProfileLocalDomainFallback example &#39;&lt;account_id&gt;/&lt;policy_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustDeviceCustomProfileLocalDomainFallback:ZeroTrustDeviceCustomProfileLocalDomainFallback has been deprecated in favor of cloudflare:zeroTrustDeviceCustomProfile/localDomainFallback:LocalDomainFallback
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustDeviceCustomProfileLocalDomainFallback:ZeroTrustDeviceCustomProfileLocalDomainFallback has been deprecated in favor of cloudflare:zeroTrustDeviceCustomProfile/localDomainFallback:LocalDomainFallback */
 @ResourceType(type="cloudflare:index/zeroTrustDeviceCustomProfileLocalDomainFallback:ZeroTrustDeviceCustomProfileLocalDomainFallback")
 public class ZeroTrustDeviceCustomProfileLocalDomainFallback extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

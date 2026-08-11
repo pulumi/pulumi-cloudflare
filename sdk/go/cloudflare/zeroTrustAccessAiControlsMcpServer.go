@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustaccessaicontrolsmcp"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustAccessAiControlsMcpServer(ctx, "example_zero_trust_access_ai_controls_mcp_server", &cloudflare.ZeroTrustAccessAiControlsMcpServerArgs{
+//			_, err := zerotrustaccessaicontrolsmcp.NewServer(ctx, "example_zero_trust_access_ai_controls_mcp_server", &zerotrustaccessaicontrolsmcp.ServerArgs{
 //				AccountId:                            pulumi.String("a86a8f5c339544d7bdc89926de14fb8c"),
 //				ZeroTrustAccessAiControlsMcpServerId: pulumi.String("my-mcp-server"),
 //				AuthType:                             pulumi.String("unauthenticated"),
@@ -42,16 +42,16 @@ import (
 //				Description:                          pulumi.String("This is one remote mcp server"),
 //				IsSharedOauthCallbackEnabled:         pulumi.Bool(true),
 //				SecureWebGateway:                     pulumi.Bool(false),
-//				UpdatedPrompts: cloudflare.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArray{
-//					&cloudflare.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs{
+//				UpdatedPrompts: zerotrustaccessaicontrolsmcp.ServerUpdatedPromptArray{
+//					&zerotrustaccessaicontrolsmcp.ServerUpdatedPromptArgs{
 //						Name:        pulumi.String("name"),
 //						Alias:       pulumi.String("my-custom-alias"),
 //						Description: pulumi.String("description"),
 //						Enabled:     pulumi.Bool(true),
 //					},
 //				},
-//				UpdatedTools: cloudflare.ZeroTrustAccessAiControlsMcpServerUpdatedToolArray{
-//					&cloudflare.ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs{
+//				UpdatedTools: zerotrustaccessaicontrolsmcp.ServerUpdatedToolArray{
+//					&zerotrustaccessaicontrolsmcp.ServerUpdatedToolArgs{
 //						Name:        pulumi.String("name"),
 //						Alias:       pulumi.String("my-custom-alias"),
 //						Description: pulumi.String("description"),
@@ -73,6 +73,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer example '<account_id>/<id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/server:Server
 type ZeroTrustAccessAiControlsMcpServer struct {
 	pulumi.CustomResourceState
 

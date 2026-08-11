@@ -16,6 +16,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/moqRelay:MoqRelay example '&lt;account_id&gt;/&lt;relay_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/moqRelay:MoqRelay has been deprecated in favor of cloudflare:moq/relay:Relay")]
     [CloudflareResourceType("cloudflare:index/moqRelay:MoqRelay")]
     public partial class MoqRelay : global::Pulumi.CustomResource
     {

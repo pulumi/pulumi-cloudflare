@@ -25,13 +25,13 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessPolicy = new Cloudflare.ZeroTrustAccessPolicy("example_zero_trust_access_policy", new()
+    ///     var exampleZeroTrustAccessPolicy = new Cloudflare.Modules.ZeroTrustAccess.ZeroTrustAccessPolicy("example_zero_trust_access_policy", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Decision = "allow",
     ///         Includes = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyIncludeArgs
+    ///             new Cloudflare.Modules.ZeroTrustAccess.Inputs.PolicyIncludeArgs
     ///             {
     ///                 Certificate = null,
     ///             },
@@ -39,7 +39,7 @@ namespace Pulumi.Cloudflare
     ///         Name = "Allow devs",
     ///         ApprovalGroups = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyApprovalGroupArgs
+    ///             new Cloudflare.Modules.ZeroTrustAccess.Inputs.PolicyApprovalGroupArgs
     ///             {
     ///                 ApprovalsNeeded = 1,
     ///                 EmailAddresses = new[]
@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare
     ///                 },
     ///                 EmailListUuid = "email_list_uuid",
     ///             },
-    ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyApprovalGroupArgs
+    ///             new Cloudflare.Modules.ZeroTrustAccess.Inputs.PolicyApprovalGroupArgs
     ///             {
     ///                 ApprovalsNeeded = 3,
     ///                 EmailAddresses = new[]
@@ -61,9 +61,9 @@ namespace Pulumi.Cloudflare
     ///             },
     ///         },
     ///         ApprovalRequired = true,
-    ///         ConnectionRules = new Cloudflare.Inputs.ZeroTrustAccessPolicyConnectionRulesArgs
+    ///         ConnectionRules = new Cloudflare.Modules.ZeroTrustAccess.Inputs.PolicyConnectionRulesArgs
     ///         {
-    ///             Rdp = new Cloudflare.Inputs.ZeroTrustAccessPolicyConnectionRulesRdpArgs
+    ///             Rdp = new Cloudflare.Modules.ZeroTrustAccess.Inputs.PolicyConnectionRulesRdpArgs
     ///             {
     ///                 AllowedClipboardLocalToRemoteFormats = new[]
     ///                 {
@@ -79,13 +79,13 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         Excludes = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyExcludeArgs
+    ///             new Cloudflare.Modules.ZeroTrustAccess.Inputs.PolicyExcludeArgs
     ///             {
     ///                 Certificate = null,
     ///             },
     ///         },
     ///         IsolationRequired = false,
-    ///         MfaConfig = new Cloudflare.Inputs.ZeroTrustAccessPolicyMfaConfigArgs
+    ///         MfaConfig = new Cloudflare.Modules.ZeroTrustAccess.Inputs.PolicyMfaConfigArgs
     ///         {
     ///             AllowedAuthenticators = new[]
     ///             {
@@ -100,7 +100,7 @@ namespace Pulumi.Cloudflare
     ///         PurposeJustificationRequired = true,
     ///         Requires = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyRequireArgs
+    ///             new Cloudflare.Modules.ZeroTrustAccess.Inputs.PolicyRequireArgs
     ///             {
     ///                 Certificate = null,
     ///             },
@@ -244,10 +244,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/accessPolicy:AccessPolicy" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

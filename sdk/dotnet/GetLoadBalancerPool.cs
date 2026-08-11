@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getLoadBalancerPool:getLoadBalancerPool has been deprecated in favor of cloudflare:loadBalancer/pool:getPool")]
     public static class GetLoadBalancerPool
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLoadBalancerPool = Cloudflare.GetLoadBalancerPool.Invoke(new()
+        ///     var exampleLoadBalancerPool = Cloudflare.Modules.LoadBalancer.GetPool.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         PoolId = "17b5962d775c646f3f9725cbc7a53df4",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLoadBalancerPool = Cloudflare.GetLoadBalancerPool.Invoke(new()
+        ///     var exampleLoadBalancerPool = Cloudflare.Modules.LoadBalancer.GetPool.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         PoolId = "17b5962d775c646f3f9725cbc7a53df4",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLoadBalancerPool = Cloudflare.GetLoadBalancerPool.Invoke(new()
+        ///     var exampleLoadBalancerPool = Cloudflare.Modules.LoadBalancer.GetPool.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         PoolId = "17b5962d775c646f3f9725cbc7a53df4",

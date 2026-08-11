@@ -20,13 +20,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleTokenValidationConfig = cloudflare.getTokenValidationConfig({
+ * const exampleTokenValidationConfig = cloudflare.tokenvalidation.getConfig({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     configId: "4a7ee8d3-dd63-4ceb-9d5f-c27831854ce7",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getTokenValidationConfig:getTokenValidationConfig has been deprecated in favor of cloudflare:tokenValidation/config:getConfig */
 export function getTokenValidationConfig(args: GetTokenValidationConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetTokenValidationConfigResult> {
+    pulumi.log.warn("getTokenValidationConfig is deprecated: cloudflare:index/getTokenValidationConfig:getTokenValidationConfig has been deprecated in favor of cloudflare:tokenValidation/config:getConfig")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getTokenValidationConfig:getTokenValidationConfig", {
         "configId": args.configId,
@@ -89,13 +91,15 @@ export interface GetTokenValidationConfigResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleTokenValidationConfig = cloudflare.getTokenValidationConfig({
+ * const exampleTokenValidationConfig = cloudflare.tokenvalidation.getConfig({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     configId: "4a7ee8d3-dd63-4ceb-9d5f-c27831854ce7",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getTokenValidationConfig:getTokenValidationConfig has been deprecated in favor of cloudflare:tokenValidation/config:getConfig */
 export function getTokenValidationConfigOutput(args: GetTokenValidationConfigOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTokenValidationConfigResult> {
+    pulumi.log.warn("getTokenValidationConfig is deprecated: cloudflare:index/getTokenValidationConfig:getTokenValidationConfig has been deprecated in favor of cloudflare:tokenValidation/config:getConfig")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getTokenValidationConfig:getTokenValidationConfig", {
         "configId": args.configId,

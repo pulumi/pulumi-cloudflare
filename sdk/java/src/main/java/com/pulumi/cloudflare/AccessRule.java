@@ -32,9 +32,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.AccessRule;
- * import com.pulumi.cloudflare.AccessRuleArgs;
- * import com.pulumi.cloudflare.inputs.AccessRuleConfigurationArgs;
+ * import com.pulumi.cloudflare.access.Rule;
+ * import com.pulumi.cloudflare.access.RuleArgs;
+ * import com.pulumi.cloudflare.access.inputs.RuleConfigurationArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -48,8 +48,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleAccessRule = new AccessRule("exampleAccessRule", AccessRuleArgs.builder()
- *             .configuration(AccessRuleConfigurationArgs.builder()
+ *         var exampleAccessRule = new Rule("exampleAccessRule", RuleArgs.builder()
+ *             .configuration(RuleConfigurationArgs.builder()
  *                 .target("ip")
  *                 .value("198.51.100.4")
  *                 .build())
@@ -69,7 +69,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/accessRule:AccessRule example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;rule_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/accessRule:AccessRule has been deprecated in favor of cloudflare:access/rule:Rule
+ * 
  */
+@Deprecated /* cloudflare:index/accessRule:AccessRule has been deprecated in favor of cloudflare:access/rule:Rule */
 @ResourceType(type="cloudflare:index/accessRule:AccessRule")
 public class AccessRule extends com.pulumi.resources.CustomResource {
     /**

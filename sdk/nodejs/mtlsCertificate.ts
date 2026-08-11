@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMtlsCertificate = new cloudflare.MtlsCertificate("example_mtls_certificate", {
+ * const exampleMtlsCertificate = new cloudflare.mtlscertificate.MtlsCertificate("example_mtls_certificate", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     ca: true,
  *     certificates: `  -----BEGIN CERTIFICATE-----
@@ -31,6 +31,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/mtlsCertificate:MtlsCertificate example '<account_id>/<mtls_certificate_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/mtlsCertificate:MtlsCertificate has been deprecated in favor of cloudflare:mtlsCertificate/mtlsCertificate:MtlsCertificate
  */
 export class MtlsCertificate extends pulumi.CustomResource {
     /**
@@ -43,6 +45,7 @@ export class MtlsCertificate extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: MtlsCertificateState, opts?: pulumi.CustomResourceOptions): MtlsCertificate {
+        pulumi.log.warn("MtlsCertificate is deprecated: cloudflare:index/mtlsCertificate:MtlsCertificate has been deprecated in favor of cloudflare:mtlsCertificate/mtlsCertificate:MtlsCertificate")
         return new MtlsCertificate(name, <any>state, { ...opts, id: id });
     }
 
@@ -112,8 +115,11 @@ export class MtlsCertificate extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/mtlsCertificate:MtlsCertificate has been deprecated in favor of cloudflare:mtlsCertificate/mtlsCertificate:MtlsCertificate */
     constructor(name: string, args: MtlsCertificateArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/mtlsCertificate:MtlsCertificate has been deprecated in favor of cloudflare:mtlsCertificate/mtlsCertificate:MtlsCertificate */
     constructor(name: string, argsOrState?: MtlsCertificateArgs | MtlsCertificateState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("MtlsCertificate is deprecated: cloudflare:index/mtlsCertificate:MtlsCertificate has been deprecated in favor of cloudflare:mtlsCertificate/mtlsCertificate:MtlsCertificate")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

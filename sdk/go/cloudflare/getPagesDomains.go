@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/pages"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetPagesDomains(ctx, &cloudflare.LookupPagesDomainsArgs{
+//			_, err := pages.LookupDomains(ctx, &pages.LookupDomainsArgs{
 //				AccountId:   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ProjectName: "this-is-my-project-01",
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getPagesDomains:getPagesDomains has been deprecated in favor of cloudflare:pages/domains:getDomains
 func LookupPagesDomains(ctx *pulumi.Context, args *LookupPagesDomainsArgs, opts ...pulumi.InvokeOption) (*LookupPagesDomainsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPagesDomainsResult

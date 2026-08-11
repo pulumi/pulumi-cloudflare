@@ -25,12 +25,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleContentScanningExpression = new Cloudflare.ContentScanningExpression("example_content_scanning_expression", new()
+    ///     var exampleContentScanningExpression = new Cloudflare.Modules.ContentScanning.ContentScanningExpression("example_content_scanning_expression", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Bodies = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ContentScanningExpressionBodyArgs
+    ///             new Cloudflare.Modules.ContentScanning.Inputs.ExpressionBodyArgs
     ///             {
     ///                 Payload = "lookup_json_string(http.request.body.raw, \"file\")",
     ///             },
@@ -44,6 +44,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/contentScanningExpression:ContentScanningExpression has been deprecated in favor of cloudflare:contentScanning/expression:Expression")]
     [CloudflareResourceType("cloudflare:index/contentScanningExpression:ContentScanningExpression")]
     public partial class ContentScanningExpression : global::Pulumi.CustomResource
     {

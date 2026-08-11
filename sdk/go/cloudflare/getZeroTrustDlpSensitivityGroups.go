@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdlpsensitivity"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustDlpSensitivityGroups(ctx, &cloudflare.LookupZeroTrustDlpSensitivityGroupsArgs{
+//			_, err := zerotrustdlpsensitivity.GetGroups(ctx, &zerotrustdlpsensitivity.GetGroupsArgs{
 //				AccountId: "account_id",
 //			}, nil)
 //			if err != nil {
@@ -41,6 +41,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustDlpSensitivityGroups:getZeroTrustDlpSensitivityGroups has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/groups:getGroups
 func LookupZeroTrustDlpSensitivityGroups(ctx *pulumi.Context, args *LookupZeroTrustDlpSensitivityGroupsArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustDlpSensitivityGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustDlpSensitivityGroupsResult

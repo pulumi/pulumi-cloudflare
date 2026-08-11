@@ -22,6 +22,8 @@ __all__ = [
     'get_workers_output',
 ]
 
+warnings.warn("""cloudflare:index/getWorkers:getWorkers has been deprecated in favor of cloudflare:workers/workers:getWorkers""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWorkersResult:
     """
@@ -118,7 +120,7 @@ def get_workers(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers = cloudflare.get_workers(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_workers = cloudflare.workers.get_workers(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
@@ -129,6 +131,7 @@ def get_workers(account_id: Optional[_builtins.str] = None,
     :param _builtins.str order_by: Property to sort results by.
            Available values: "deployed*on", "updated*on", "created_on", "name".
     """
+    pulumi.log.warn("""get_workers is deprecated: cloudflare:index/getWorkers:getWorkers has been deprecated in favor of cloudflare:workers/workers:getWorkers""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -161,7 +164,7 @@ def get_workers_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers = cloudflare.get_workers(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_workers = cloudflare.workers.get_workers(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
@@ -172,6 +175,7 @@ def get_workers_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]
     :param _builtins.str order_by: Property to sort results by.
            Available values: "deployed*on", "updated*on", "created_on", "name".
     """
+    pulumi.log.warn("""get_workers is deprecated: cloudflare:index/getWorkers:getWorkers has been deprecated in favor of cloudflare:workers/workers:getWorkers""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

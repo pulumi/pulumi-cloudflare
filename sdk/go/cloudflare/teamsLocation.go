@@ -25,55 +25,55 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdns"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDnsLocation(ctx, "example_zero_trust_dns_location", &cloudflare.ZeroTrustDnsLocationArgs{
+//			_, err := zerotrustdns.NewLocation(ctx, "example_zero_trust_dns_location", &zerotrustdns.LocationArgs{
 //				AccountId:           pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				Name:                pulumi.String("Austin Office Location"),
 //				ClientDefault:       pulumi.Bool(false),
 //				DnsDestinationIpsId: pulumi.String("0e4a32c6-6fb8-4858-9296-98f51631e8e6"),
 //				EcsSupport:          pulumi.Bool(false),
-//				Endpoints: &cloudflare.ZeroTrustDnsLocationEndpointsArgs{
-//					Doh: &cloudflare.ZeroTrustDnsLocationEndpointsDohArgs{
+//				Endpoints: &zerotrustdns.LocationEndpointsArgs{
+//					Doh: &zerotrustdns.LocationEndpointsDohArgs{
 //						Enabled: pulumi.Bool(true),
-//						Networks: cloudflare.ZeroTrustDnsLocationEndpointsDohNetworkArray{
-//							&cloudflare.ZeroTrustDnsLocationEndpointsDohNetworkArgs{
+//						Networks: zerotrustdns.LocationEndpointsDohNetworkArray{
+//							&zerotrustdns.LocationEndpointsDohNetworkArgs{
 //								Network: pulumi.String("2001:85a3::/64"),
 //							},
 //						},
 //						RequireToken: pulumi.Bool(true),
 //					},
-//					Dot: &cloudflare.ZeroTrustDnsLocationEndpointsDotArgs{
+//					Dot: &zerotrustdns.LocationEndpointsDotArgs{
 //						Enabled: pulumi.Bool(true),
-//						Networks: cloudflare.ZeroTrustDnsLocationEndpointsDotNetworkArray{
-//							&cloudflare.ZeroTrustDnsLocationEndpointsDotNetworkArgs{
+//						Networks: zerotrustdns.LocationEndpointsDotNetworkArray{
+//							&zerotrustdns.LocationEndpointsDotNetworkArgs{
 //								Network: pulumi.String("2001:85a3::/64"),
 //							},
 //						},
 //					},
-//					Ipv4: &cloudflare.ZeroTrustDnsLocationEndpointsIpv4Args{
+//					Ipv4: &zerotrustdns.LocationEndpointsIpv4Args{
 //						Enabled: pulumi.Bool(true),
 //					},
-//					Ipv6: &cloudflare.ZeroTrustDnsLocationEndpointsIpv6Args{
+//					Ipv6: &zerotrustdns.LocationEndpointsIpv6Args{
 //						Enabled: pulumi.Bool(true),
-//						Networks: cloudflare.ZeroTrustDnsLocationEndpointsIpv6NetworkArray{
-//							&cloudflare.ZeroTrustDnsLocationEndpointsIpv6NetworkArgs{
+//						Networks: zerotrustdns.LocationEndpointsIpv6NetworkArray{
+//							&zerotrustdns.LocationEndpointsIpv6NetworkArgs{
 //								Network: pulumi.String("2001:85a3::/64"),
 //							},
 //						},
 //					},
 //				},
-//				MaxTtl: &cloudflare.ZeroTrustDnsLocationMaxTtlArgs{
+//				MaxTtl: &zerotrustdns.LocationMaxTtlArgs{
 //					Mode:    pulumi.String("override"),
 //					TtlSecs: pulumi.Int(3600),
 //				},
-//				Networks: cloudflare.ZeroTrustDnsLocationNetworkArray{
-//					&cloudflare.ZeroTrustDnsLocationNetworkArgs{
+//				Networks: zerotrustdns.LocationNetworkArray{
+//					&zerotrustdns.LocationNetworkArgs{
 //						Network: pulumi.String("192.0.2.1/32"),
 //					},
 //				},
@@ -139,12 +139,6 @@ func NewTeamsLocation(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("cloudflare:index/teamsLocation:TeamsLocation"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TeamsLocation
 	err := ctx.RegisterResource("cloudflare:index/teamsLocation:TeamsLocation", name, args, &resource, opts...)

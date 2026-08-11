@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleShareRecipient = new cloudflare.ShareRecipient("example_share_recipient", {
+ * const exampleShareRecipient = new cloudflare.share.Recipient("example_share_recipient", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     shareId: "3fd85f74b32742f1bff64a85009dda07",
  *     organizationId: "023e105f4ecef8ad9ca31a8372d0c353",
@@ -26,6 +26,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/shareRecipient:ShareRecipient example '<account_id>/<share_id>/<recipient_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/shareRecipient:ShareRecipient has been deprecated in favor of cloudflare:share/recipient:Recipient
  */
 export class ShareRecipient extends pulumi.CustomResource {
     /**
@@ -38,6 +40,7 @@ export class ShareRecipient extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ShareRecipientState, opts?: pulumi.CustomResourceOptions): ShareRecipient {
+        pulumi.log.warn("ShareRecipient is deprecated: cloudflare:index/shareRecipient:ShareRecipient has been deprecated in favor of cloudflare:share/recipient:Recipient")
         return new ShareRecipient(name, <any>state, { ...opts, id: id });
     }
 
@@ -93,8 +96,11 @@ export class ShareRecipient extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/shareRecipient:ShareRecipient has been deprecated in favor of cloudflare:share/recipient:Recipient */
     constructor(name: string, args: ShareRecipientArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/shareRecipient:ShareRecipient has been deprecated in favor of cloudflare:share/recipient:Recipient */
     constructor(name: string, argsOrState?: ShareRecipientArgs | ShareRecipientState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ShareRecipient is deprecated: cloudflare:index/shareRecipient:ShareRecipient has been deprecated in favor of cloudflare:share/recipient:Recipient")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

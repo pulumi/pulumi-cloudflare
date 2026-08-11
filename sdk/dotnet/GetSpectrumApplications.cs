@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getSpectrumApplications:getSpectrumApplications has been deprecated in favor of cloudflare:spectrum/applications:getApplications")]
     public static class GetSpectrumApplications
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSpectrumApplications = Cloudflare.GetSpectrumApplications.Invoke(new()
+        ///     var exampleSpectrumApplications = Cloudflare.Modules.Spectrum.GetApplications.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -54,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSpectrumApplications = Cloudflare.GetSpectrumApplications.Invoke(new()
+        ///     var exampleSpectrumApplications = Cloudflare.Modules.Spectrum.GetApplications.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -81,7 +82,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSpectrumApplications = Cloudflare.GetSpectrumApplications.Invoke(new()
+        ///     var exampleSpectrumApplications = Cloudflare.Modules.Spectrum.GetApplications.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

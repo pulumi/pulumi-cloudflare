@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_device_posture_rules_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDevicePostureRules:getZeroTrustDevicePostureRules has been deprecated in favor of cloudflare:zeroTrustDevicePosture/rules:getRules""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDevicePostureRulesResult:
     """
@@ -81,12 +83,13 @@ def get_zero_trust_device_posture_rules(account_id: Optional[_builtins.str] = No
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_device_posture_rules = cloudflare.get_zero_trust_device_posture_rules(account_id="699d98642c564d2e855e9661899b7252")
+    example_zero_trust_device_posture_rules = cloudflare.zerotrustdeviceposture.get_rules(account_id="699d98642c564d2e855e9661899b7252")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_device_posture_rules is deprecated: cloudflare:index/getZeroTrustDevicePostureRules:getZeroTrustDevicePostureRules has been deprecated in favor of cloudflare:zeroTrustDevicePosture/rules:getRules""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -107,12 +110,13 @@ def get_zero_trust_device_posture_rules_output(account_id: pulumi.Input[Optional
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_device_posture_rules = cloudflare.get_zero_trust_device_posture_rules(account_id="699d98642c564d2e855e9661899b7252")
+    example_zero_trust_device_posture_rules = cloudflare.zerotrustdeviceposture.get_rules(account_id="699d98642c564d2e855e9661899b7252")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_device_posture_rules is deprecated: cloudflare:index/getZeroTrustDevicePostureRules:getZeroTrustDevicePostureRules has been deprecated in favor of cloudflare:zeroTrustDevicePosture/rules:getRules""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

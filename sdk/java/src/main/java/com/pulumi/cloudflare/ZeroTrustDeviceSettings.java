@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDeviceSettings;
- * import com.pulumi.cloudflare.ZeroTrustDeviceSettingsArgs;
+ * import com.pulumi.cloudflare.zeroTrustDevice.Settings;
+ * import com.pulumi.cloudflare.zeroTrustDevice.SettingsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustDeviceSettings = new ZeroTrustDeviceSettings("exampleZeroTrustDeviceSettings", ZeroTrustDeviceSettingsArgs.builder()
+ *         var exampleZeroTrustDeviceSettings = new Settings("exampleZeroTrustDeviceSettings", SettingsArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
  *             .disableForTime(0.0)
  *             .externalEmergencySignalEnabled(true)
@@ -67,7 +67,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings has been deprecated in favor of cloudflare:zeroTrustDevice/settings:Settings
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings has been deprecated in favor of cloudflare:zeroTrustDevice/settings:Settings */
 @ResourceType(type="cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings")
 public class ZeroTrustDeviceSettings extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

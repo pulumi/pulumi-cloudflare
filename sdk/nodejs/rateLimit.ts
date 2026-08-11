@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * - `Firewall Services Read`
  * - `Firewall Services Write`
  *
- * > `cloudflare.RateLimit` is in a deprecation phase until June 15th, 2025.
+ * > `cloudflare.rate.Limit` is in a deprecation phase until June 15th, 2025.
  *   During this time period, this resource is still
  *   fully supported but you are strongly advised to move to the
  *   `cloudflare.Ruleset` resource. Full details can be found in the
@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleRateLimit = new cloudflare.RateLimit("example_rate_limit", {
+ * const exampleRateLimit = new cloudflare.rate.Limit("example_rate_limit", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     action: {
  *         mode: "challenge",
@@ -65,6 +65,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/rateLimit:RateLimit example '<zone_id>/<rate_limit_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/rateLimit:RateLimit has been deprecated in favor of cloudflare:rate/limit:Limit
  */
 export class RateLimit extends pulumi.CustomResource {
     /**
@@ -77,6 +79,7 @@ export class RateLimit extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RateLimitState, opts?: pulumi.CustomResourceOptions): RateLimit {
+        pulumi.log.warn("RateLimit is deprecated: cloudflare:index/rateLimit:RateLimit has been deprecated in favor of cloudflare:rate/limit:Limit")
         return new RateLimit(name, <any>state, { ...opts, id: id });
     }
 
@@ -134,8 +137,11 @@ export class RateLimit extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/rateLimit:RateLimit has been deprecated in favor of cloudflare:rate/limit:Limit */
     constructor(name: string, args: RateLimitArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/rateLimit:RateLimit has been deprecated in favor of cloudflare:rate/limit:Limit */
     constructor(name: string, argsOrState?: RateLimitArgs | RateLimitState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("RateLimit is deprecated: cloudflare:index/rateLimit:RateLimit has been deprecated in favor of cloudflare:rate/limit:Limit")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

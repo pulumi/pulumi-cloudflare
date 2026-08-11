@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleSchemaValidationSchemas = new Cloudflare.SchemaValidationSchemas("example_schema_validation_schemas", new()
+    ///     var exampleSchemaValidationSchemas = new Cloudflare.Modules.SchemaValidationSchemas.SchemaValidationSchemas("example_schema_validation_schemas", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Kind = "openapi_v3",
@@ -45,6 +45,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas example '&lt;zone_id&gt;/&lt;schema_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas has been deprecated in favor of cloudflare:schemaValidationSchemas/schemaValidationSchemas:SchemaValidationSchemas")]
     [CloudflareResourceType("cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas")]
     public partial class SchemaValidationSchemas : global::Pulumi.CustomResource
     {

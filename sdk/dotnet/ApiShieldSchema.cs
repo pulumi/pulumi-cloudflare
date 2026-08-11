@@ -17,8 +17,8 @@ namespace Pulumi.Cloudflare
     /// - `Domain API Gateway`
     /// - `Domain API Gateway Read`
     /// 
-    /// &gt; `cloudflare.ApiShieldSchema` is in a deprecation phase and will be removed in the future.
-    ///   Instead, please utilize the cloudflare.SchemaValidationSchemas resource instead.
+    /// &gt; `cloudflare.apiShieldSchema.ApiShieldSchema` is in a deprecation phase and will be removed in the future.
+    ///   Instead, please utilize the cloudflare.schemaValidationSchemas.SchemaValidationSchemas resource instead.
     /// 
     /// ## Example Usage
     /// 
@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApiShieldSchema = new Cloudflare.ApiShieldSchema("example_api_shield_schema", new()
+    ///     var exampleApiShieldSchema = new Cloudflare.Modules.ApiShieldSchema.ApiShieldSchema("example_api_shield_schema", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         File = "Example data",
@@ -42,6 +42,7 @@ namespace Pulumi.Cloudflare
     /// });
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/apiShieldSchema:ApiShieldSchema has been deprecated in favor of cloudflare:apiShieldSchema/apiShieldSchema:ApiShieldSchema")]
     [CloudflareResourceType("cloudflare:index/apiShieldSchema:ApiShieldSchema")]
     public partial class ApiShieldSchema : global::Pulumi.CustomResource
     {

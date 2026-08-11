@@ -19,14 +19,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustgateway"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustGatewayCertificate(ctx, "example_zero_trust_gateway_certificate", &cloudflare.ZeroTrustGatewayCertificateArgs{
+//			_, err := zerotrustgateway.NewCertificate(ctx, "example_zero_trust_gateway_certificate", &zerotrustgateway.CertificateArgs{
 //				AccountId:          pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				ValidityPeriodDays: pulumi.Int(1826),
 //			})
@@ -44,6 +44,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate example '<account_id>/<certificate_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate has been deprecated in favor of cloudflare:zeroTrustGateway/certificate:Certificate
 type ZeroTrustGatewayCertificate struct {
 	pulumi.CustomResourceState
 

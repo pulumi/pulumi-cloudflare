@@ -22,6 +22,8 @@ __all__ = [
     'get_origin_ca_certificates_output',
 ]
 
+warnings.warn("""cloudflare:index/getOriginCaCertificates:getOriginCaCertificates has been deprecated in favor of cloudflare:originCa/certificates:getCertificates""", DeprecationWarning)
+
 @pulumi.output_type
 class GetOriginCaCertificatesResult:
     """
@@ -110,7 +112,7 @@ def get_origin_ca_certificates(limit: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_origin_ca_certificates = cloudflare.get_origin_ca_certificates(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_origin_ca_certificates = cloudflare.originca.get_certificates(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         limit=10,
         offset=10)
     ```
@@ -121,6 +123,7 @@ def get_origin_ca_certificates(limit: Optional[_builtins.int] = None,
     :param _builtins.int offset: Offset the results.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_origin_ca_certificates is deprecated: cloudflare:index/getOriginCaCertificates:getOriginCaCertificates has been deprecated in favor of cloudflare:originCa/certificates:getCertificates""")
     __args__ = dict()
     __args__['limit'] = limit
     __args__['maxItems'] = max_items
@@ -147,7 +150,7 @@ def get_origin_ca_certificates_output(limit: pulumi.Input[Optional[Optional[_bui
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_origin_ca_certificates = cloudflare.get_origin_ca_certificates(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_origin_ca_certificates = cloudflare.originca.get_certificates(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         limit=10,
         offset=10)
     ```
@@ -158,6 +161,7 @@ def get_origin_ca_certificates_output(limit: pulumi.Input[Optional[Optional[_bui
     :param _builtins.int offset: Offset the results.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_origin_ca_certificates is deprecated: cloudflare:index/getOriginCaCertificates:getOriginCaCertificates has been deprecated in favor of cloudflare:originCa/certificates:getCertificates""")
     __args__ = dict()
     __args__['limit'] = limit
     __args__['maxItems'] = max_items

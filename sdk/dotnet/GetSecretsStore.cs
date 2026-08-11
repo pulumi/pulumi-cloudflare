@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getSecretsStore:getSecretsStore has been deprecated in favor of cloudflare:secretsStore/secretsStore:getSecretsStore")]
     public static class GetSecretsStore
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSecretsStore = Cloudflare.GetSecretsStore.Invoke(new()
+        ///     var exampleSecretsStore = Cloudflare.Modules.SecretsStore.GetSecretsStore.Invoke(new()
         ///     {
         ///         AccountId = "985e105f4ecef8ad9ca31a8372d0c353",
         ///         StoreId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSecretsStore = Cloudflare.GetSecretsStore.Invoke(new()
+        ///     var exampleSecretsStore = Cloudflare.Modules.SecretsStore.GetSecretsStore.Invoke(new()
         ///     {
         ///         AccountId = "985e105f4ecef8ad9ca31a8372d0c353",
         ///         StoreId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSecretsStore = Cloudflare.GetSecretsStore.Invoke(new()
+        ///     var exampleSecretsStore = Cloudflare.Modules.SecretsStore.GetSecretsStore.Invoke(new()
         ///     {
         ///         AccountId = "985e105f4ecef8ad9ca31a8372d0c353",
         ///         StoreId = "023e105f4ecef8ad9ca31a8372d0c353",

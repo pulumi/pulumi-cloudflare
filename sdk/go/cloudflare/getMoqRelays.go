@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: cloudflare:index/getMoqRelays:getMoqRelays has been deprecated in favor of cloudflare:moq/relays:getRelays
 func LookupMoqRelays(ctx *pulumi.Context, args *LookupMoqRelaysArgs, opts ...pulumi.InvokeOption) (*LookupMoqRelaysResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMoqRelaysResult

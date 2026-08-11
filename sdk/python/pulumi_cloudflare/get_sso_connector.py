@@ -22,6 +22,8 @@ __all__ = [
     'get_sso_connector_output',
 ]
 
+warnings.warn("""cloudflare:index/getSsoConnector:getSsoConnector has been deprecated in favor of cloudflare:sso/connector:getConnector""", DeprecationWarning)
+
 @pulumi.output_type
 class GetSsoConnectorResult:
     """
@@ -151,7 +153,7 @@ def get_sso_connector(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_sso_connector = cloudflare.get_sso_connector(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_sso_connector = cloudflare.sso.get_connector(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         sso_connector_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -159,6 +161,7 @@ def get_sso_connector(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.str sso_connector_id: SSO Connector identifier tag.
     """
+    pulumi.log.warn("""get_sso_connector is deprecated: cloudflare:index/getSsoConnector:getSsoConnector has been deprecated in favor of cloudflare:sso/connector:getConnector""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['ssoConnectorId'] = sso_connector_id
@@ -189,7 +192,7 @@ def get_sso_connector_output(account_id: pulumi.Input[Optional[Optional[_builtin
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_sso_connector = cloudflare.get_sso_connector(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_sso_connector = cloudflare.sso.get_connector(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         sso_connector_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -197,6 +200,7 @@ def get_sso_connector_output(account_id: pulumi.Input[Optional[Optional[_builtin
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.str sso_connector_id: SSO Connector identifier tag.
     """
+    pulumi.log.warn("""get_sso_connector is deprecated: cloudflare:index/getSsoConnector:getSsoConnector has been deprecated in favor of cloudflare:sso/connector:getConnector""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['ssoConnectorId'] = sso_connector_id

@@ -23,6 +23,8 @@ __all__ = [
     'get_zero_trust_access_group_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustAccessGroup:getZeroTrustAccessGroup has been deprecated in favor of cloudflare:zeroTrustAccess/group:getGroup""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustAccessGroupResult:
     """
@@ -173,7 +175,7 @@ def get_zero_trust_access_group(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_group = cloudflare.get_zero_trust_access_group(group_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+    example_zero_trust_access_group = cloudflare.zerotrustaccess.get_group(group_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         account_id="account_id",
         zone_id="zone_id")
     ```
@@ -183,6 +185,7 @@ def get_zero_trust_access_group(account_id: Optional[_builtins.str] = None,
     :param _builtins.str group_id: UUID.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_zero_trust_access_group is deprecated: cloudflare:index/getZeroTrustAccessGroup:getZeroTrustAccessGroup has been deprecated in favor of cloudflare:zeroTrustAccess/group:getGroup""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -219,7 +222,7 @@ def get_zero_trust_access_group_output(account_id: pulumi.Input[Optional[Optiona
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_group = cloudflare.get_zero_trust_access_group(group_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+    example_zero_trust_access_group = cloudflare.zerotrustaccess.get_group(group_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         account_id="account_id",
         zone_id="zone_id")
     ```
@@ -229,6 +232,7 @@ def get_zero_trust_access_group_output(account_id: pulumi.Input[Optional[Optiona
     :param _builtins.str group_id: UUID.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_zero_trust_access_group is deprecated: cloudflare:index/getZeroTrustAccessGroup:getZeroTrustAccessGroup has been deprecated in favor of cloudflare:zeroTrustAccess/group:getGroup""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

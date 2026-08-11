@@ -23,6 +23,8 @@ __all__ = [
     'get_email_security_impersonation_registry_output',
 ]
 
+warnings.warn("""cloudflare:index/getEmailSecurityImpersonationRegistry:getEmailSecurityImpersonationRegistry has been deprecated in favor of cloudflare:emailSecurityImpersonation/registry:getRegistry""", DeprecationWarning)
+
 @pulumi.output_type
 class GetEmailSecurityImpersonationRegistryResult:
     """
@@ -207,6 +209,7 @@ def get_email_security_impersonation_registry(account_id: Optional[_builtins.str
     :param _builtins.str account_id: Identifier.
     :param _builtins.str impersonation_registry_id: Impersonation registry entry identifier
     """
+    pulumi.log.warn("""get_email_security_impersonation_registry is deprecated: cloudflare:index/getEmailSecurityImpersonationRegistry:getEmailSecurityImpersonationRegistry has been deprecated in favor of cloudflare:emailSecurityImpersonation/registry:getRegistry""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -246,6 +249,7 @@ def get_email_security_impersonation_registry_output(account_id: pulumi.Input[Op
     :param _builtins.str account_id: Identifier.
     :param _builtins.str impersonation_registry_id: Impersonation registry entry identifier
     """
+    pulumi.log.warn("""get_email_security_impersonation_registry is deprecated: cloudflare:index/getEmailSecurityImpersonationRegistry:getEmailSecurityImpersonationRegistry has been deprecated in favor of cloudflare:emailSecurityImpersonation/registry:getRegistry""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

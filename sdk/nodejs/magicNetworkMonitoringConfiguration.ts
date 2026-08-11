@@ -12,6 +12,8 @@ import * as utilities from "./utilities";
  * - `Magic Network Monitoring Admin`
  * - `Magic Network Monitoring Config Read`
  * - `Magic Network Monitoring Config Write`
+ *
+ * @deprecated cloudflare:index/magicNetworkMonitoringConfiguration:MagicNetworkMonitoringConfiguration has been deprecated in favor of cloudflare:magicNetworkMonitoring/configuration:Configuration
  */
 export class MagicNetworkMonitoringConfiguration extends pulumi.CustomResource {
     /**
@@ -24,6 +26,7 @@ export class MagicNetworkMonitoringConfiguration extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: MagicNetworkMonitoringConfigurationState, opts?: pulumi.CustomResourceOptions): MagicNetworkMonitoringConfiguration {
+        pulumi.log.warn("MagicNetworkMonitoringConfiguration is deprecated: cloudflare:index/magicNetworkMonitoringConfiguration:MagicNetworkMonitoringConfiguration has been deprecated in favor of cloudflare:magicNetworkMonitoring/configuration:Configuration")
         return new MagicNetworkMonitoringConfiguration(name, <any>state, { ...opts, id: id });
     }
 
@@ -60,8 +63,11 @@ export class MagicNetworkMonitoringConfiguration extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/magicNetworkMonitoringConfiguration:MagicNetworkMonitoringConfiguration has been deprecated in favor of cloudflare:magicNetworkMonitoring/configuration:Configuration */
     constructor(name: string, args: MagicNetworkMonitoringConfigurationArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/magicNetworkMonitoringConfiguration:MagicNetworkMonitoringConfiguration has been deprecated in favor of cloudflare:magicNetworkMonitoring/configuration:Configuration */
     constructor(name: string, argsOrState?: MagicNetworkMonitoringConfigurationArgs | MagicNetworkMonitoringConfigurationState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("MagicNetworkMonitoringConfiguration is deprecated: cloudflare:index/magicNetworkMonitoringConfiguration:MagicNetworkMonitoringConfiguration has been deprecated in favor of cloudflare:magicNetworkMonitoring/configuration:Configuration")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustaccessservice"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustAccessServiceToken(ctx, "example_zero_trust_access_service_token", &cloudflare.ZeroTrustAccessServiceTokenArgs{
+//			_, err := zerotrustaccessservice.NewToken(ctx, "example_zero_trust_access_service_token", &zerotrustaccessservice.TokenArgs{
 //				Name:                          pulumi.String("CI/CD token"),
 //				ZoneId:                        pulumi.String("zone_id"),
 //				ClientSecretVersion:           pulumi.Float64(0),
@@ -52,6 +52,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken example '<{accounts|zones}/{account_id|zone_id}>/<service_token_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken has been deprecated in favor of cloudflare:zeroTrustAccessService/token:Token
 type ZeroTrustAccessServiceToken struct {
 	pulumi.CustomResourceState
 

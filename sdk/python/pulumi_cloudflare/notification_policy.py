@@ -316,8 +316,13 @@ class _NotificationPolicyState:
         pulumi.set(self, "name", value)
 
 
+warnings.warn("""cloudflare:index/notificationPolicy:NotificationPolicy has been deprecated in favor of cloudflare:notification/policy:Policy""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/notificationPolicy:NotificationPolicy")
 class NotificationPolicy(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/notificationPolicy:NotificationPolicy has been deprecated in favor of cloudflare:notification/policy:Policy""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -346,7 +351,7 @@ class NotificationPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_notification_policy = cloudflare.NotificationPolicy("example_notification_policy",
+        example_notification_policy = cloudflare.notification.Policy("example_notification_policy",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             alert_type="universal_ssl_event_type",
             enabled=True,
@@ -451,7 +456,7 @@ class NotificationPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_notification_policy = cloudflare.NotificationPolicy("example_notification_policy",
+        example_notification_policy = cloudflare.notification.Policy("example_notification_policy",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             alert_type="universal_ssl_event_type",
             enabled=True,
@@ -547,6 +552,7 @@ class NotificationPolicy(pulumi.CustomResource):
                  mechanisms: pulumi.Input[Optional[Union['NotificationPolicyMechanismsArgs', 'NotificationPolicyMechanismsArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""NotificationPolicy is deprecated: cloudflare:index/notificationPolicy:NotificationPolicy has been deprecated in favor of cloudflare:notification/policy:Policy""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

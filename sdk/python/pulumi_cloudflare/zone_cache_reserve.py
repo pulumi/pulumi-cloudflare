@@ -133,8 +133,13 @@ class _ZoneCacheReserveState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/zoneCacheReserve:ZoneCacheReserve has been deprecated in favor of cloudflare:zoneCache/reserve:Reserve""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zoneCacheReserve:ZoneCacheReserve")
 class ZoneCacheReserve(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zoneCacheReserve:ZoneCacheReserve has been deprecated in favor of cloudflare:zoneCache/reserve:Reserve""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -156,7 +161,7 @@ class ZoneCacheReserve(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zone_cache_reserve = cloudflare.ZoneCacheReserve("example_zone_cache_reserve",
+        example_zone_cache_reserve = cloudflare.zonecache.Reserve("example_zone_cache_reserve",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             value="on")
         ```
@@ -194,7 +199,7 @@ class ZoneCacheReserve(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zone_cache_reserve = cloudflare.ZoneCacheReserve("example_zone_cache_reserve",
+        example_zone_cache_reserve = cloudflare.zonecache.Reserve("example_zone_cache_reserve",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             value="on")
         ```
@@ -224,6 +229,7 @@ class ZoneCacheReserve(pulumi.CustomResource):
                  value: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZoneCacheReserve is deprecated: cloudflare:index/zoneCacheReserve:ZoneCacheReserve has been deprecated in favor of cloudflare:zoneCache/reserve:Reserve""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

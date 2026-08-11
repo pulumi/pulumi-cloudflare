@@ -21,13 +21,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomPagesList = cloudflare.getCustomPagesList({
+ * const exampleCustomPagesList = cloudflare.custompages.getList({
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCustomPagesList:getCustomPagesList has been deprecated in favor of cloudflare:customPages/list:getList */
 export function getCustomPagesList(args?: GetCustomPagesListArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomPagesListResult> {
+    pulumi.log.warn("getCustomPagesList is deprecated: cloudflare:index/getCustomPagesList:getCustomPagesList has been deprecated in favor of cloudflare:customPages/list:getList")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCustomPagesList:getCustomPagesList", {
@@ -91,13 +93,15 @@ export interface GetCustomPagesListResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomPagesList = cloudflare.getCustomPagesList({
+ * const exampleCustomPagesList = cloudflare.custompages.getList({
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCustomPagesList:getCustomPagesList has been deprecated in favor of cloudflare:customPages/list:getList */
 export function getCustomPagesListOutput(args?: GetCustomPagesListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomPagesListResult> {
+    pulumi.log.warn("getCustomPagesList is deprecated: cloudflare:index/getCustomPagesList:getCustomPagesList has been deprecated in favor of cloudflare:customPages/list:getList")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCustomPagesList:getCustomPagesList", {

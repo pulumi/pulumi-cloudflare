@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/customorigintrust"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetCustomOriginTrustStore(ctx, &cloudflare.LookupCustomOriginTrustStoreArgs{
+//			_, err := customorigintrust.GetStore(ctx, &customorigintrust.GetStoreArgs{
 //				ZoneId:                   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				CustomOriginTrustStoreId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getCustomOriginTrustStore:getCustomOriginTrustStore has been deprecated in favor of cloudflare:customOriginTrust/store:getStore
 func LookupCustomOriginTrustStore(ctx *pulumi.Context, args *LookupCustomOriginTrustStoreArgs, opts ...pulumi.InvokeOption) (*LookupCustomOriginTrustStoreResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomOriginTrustStoreResult

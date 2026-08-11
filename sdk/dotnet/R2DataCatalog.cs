@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleR2DataCatalog = new Cloudflare.R2DataCatalog("example_r2_data_catalog", new()
+    ///     var exampleR2DataCatalog = new Cloudflare.Modules.R2.R2DataCatalog("example_r2_data_catalog", new()
     ///     {
     ///         AccountId = "0123456789abcdef0123456789abcdef",
     ///         BucketName = "my-data-bucket",
@@ -40,6 +40,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/r2DataCatalog:R2DataCatalog example '&lt;account_id&gt;/&lt;bucket_name&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/r2DataCatalog:R2DataCatalog has been deprecated in favor of cloudflare:r2/dataCatalog:DataCatalog")]
     [CloudflareResourceType("cloudflare:index/r2DataCatalog:R2DataCatalog")]
     public partial class R2DataCatalog : global::Pulumi.CustomResource
     {

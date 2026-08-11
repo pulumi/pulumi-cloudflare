@@ -26,20 +26,20 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWorkersDeployment = new Cloudflare.WorkersDeployment("example_workers_deployment", new()
+    ///     var exampleWorkersDeployment = new Cloudflare.Modules.Workers.WorkersDeployment("example_workers_deployment", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         ScriptName = "this-is_my_script-01",
     ///         Strategy = "percentage",
     ///         Versions = new[]
     ///         {
-    ///             new Cloudflare.Inputs.WorkersDeploymentVersionArgs
+    ///             new Cloudflare.Modules.Workers.Inputs.DeploymentVersionArgs
     ///             {
     ///                 Percentage = 100,
     ///                 VersionId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
     ///             },
     ///         },
-    ///         Annotations = new Cloudflare.Inputs.WorkersDeploymentAnnotationsArgs
+    ///         Annotations = new Cloudflare.Modules.Workers.Inputs.DeploymentAnnotationsArgs
     ///         {
     ///             WorkersMessage = "Deploy bug fix.",
     ///         },
@@ -54,6 +54,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/workersDeployment:WorkersDeployment example '&lt;account_id&gt;/&lt;script_name&gt;/&lt;deployment_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/workersDeployment:WorkersDeployment has been deprecated in favor of cloudflare:workers/deployment:Deployment")]
     [CloudflareResourceType("cloudflare:index/workersDeployment:WorkersDeployment")]
     public partial class WorkersDeployment : global::Pulumi.CustomResource
     {

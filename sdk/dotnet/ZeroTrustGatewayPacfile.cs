@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustGatewayPacfile = new Cloudflare.ZeroTrustGatewayPacfile("example_zero_trust_gateway_pacfile", new()
+    ///     var exampleZeroTrustGatewayPacfile = new Cloudflare.Modules.ZeroTrustGateway.ZeroTrustGatewayPacfile("example_zero_trust_gateway_pacfile", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Contents = "function FindProxyForURL(url, host) { return \"DIRECT\"; }",
@@ -43,6 +43,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile example '&lt;account_id&gt;/&lt;pacfile_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile has been deprecated in favor of cloudflare:zeroTrustGateway/pacfile:Pacfile")]
     [CloudflareResourceType("cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile")]
     public partial class ZeroTrustGatewayPacfile : global::Pulumi.CustomResource
     {

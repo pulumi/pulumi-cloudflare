@@ -21,6 +21,8 @@ __all__ = [
     'get_zone_dnssec_output',
 ]
 
+warnings.warn("""cloudflare:index/getZoneDnssec:getZoneDnssec has been deprecated in favor of cloudflare:zone/dnssec:getDnssec""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZoneDnssecResult:
     """
@@ -216,12 +218,13 @@ def get_zone_dnssec(zone_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zone_dnssec = cloudflare.get_zone_dnssec(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_zone_dnssec = cloudflare.zone.get_dnssec(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_zone_dnssec is deprecated: cloudflare:index/getZoneDnssec:getZoneDnssec has been deprecated in favor of cloudflare:zone/dnssec:getDnssec""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -258,12 +261,13 @@ def get_zone_dnssec_output(zone_id: pulumi.Input[Optional[Optional[_builtins.str
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zone_dnssec = cloudflare.get_zone_dnssec(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_zone_dnssec = cloudflare.zone.get_dnssec(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_zone_dnssec is deprecated: cloudflare:index/getZoneDnssec:getZoneDnssec has been deprecated in favor of cloudflare:zone/dnssec:getDnssec""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

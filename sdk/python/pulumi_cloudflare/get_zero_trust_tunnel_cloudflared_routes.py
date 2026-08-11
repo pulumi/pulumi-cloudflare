@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_tunnel_cloudflared_routes_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustTunnelCloudflaredRoutes:getZeroTrustTunnelCloudflaredRoutes has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/routes:getRoutes""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustTunnelCloudflaredRoutesResult:
     """
@@ -208,7 +210,7 @@ def get_zero_trust_tunnel_cloudflared_routes(account_id: Optional[_builtins.str]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_tunnel_cloudflared_routes = cloudflare.get_zero_trust_tunnel_cloudflared_routes(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_tunnel_cloudflared_routes = cloudflare.zerotrusttunnelcloudflared.get_routes(account_id="699d98642c564d2e855e9661899b7252",
         existed_at="2019-10-12T07%3A20%3A50.52Z",
         is_deleted=True,
         network_subset="172.16.0.0/16",
@@ -232,6 +234,7 @@ def get_zero_trust_tunnel_cloudflared_routes(account_id: Optional[_builtins.str]
     :param _builtins.str tunnel_id: UUID of the tunnel.
     :param _builtins.str virtual_network_id: UUID of the virtual network.
     """
+    pulumi.log.warn("""get_zero_trust_tunnel_cloudflared_routes is deprecated: cloudflare:index/getZeroTrustTunnelCloudflaredRoutes:getZeroTrustTunnelCloudflaredRoutes has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/routes:getRoutes""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['comment'] = comment
@@ -286,7 +289,7 @@ def get_zero_trust_tunnel_cloudflared_routes_output(account_id: pulumi.Input[Opt
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_tunnel_cloudflared_routes = cloudflare.get_zero_trust_tunnel_cloudflared_routes(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_tunnel_cloudflared_routes = cloudflare.zerotrusttunnelcloudflared.get_routes(account_id="699d98642c564d2e855e9661899b7252",
         existed_at="2019-10-12T07%3A20%3A50.52Z",
         is_deleted=True,
         network_subset="172.16.0.0/16",
@@ -310,6 +313,7 @@ def get_zero_trust_tunnel_cloudflared_routes_output(account_id: pulumi.Input[Opt
     :param _builtins.str tunnel_id: UUID of the tunnel.
     :param _builtins.str virtual_network_id: UUID of the virtual network.
     """
+    pulumi.log.warn("""get_zero_trust_tunnel_cloudflared_routes is deprecated: cloudflare:index/getZeroTrustTunnelCloudflaredRoutes:getZeroTrustTunnelCloudflaredRoutes has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/routes:getRoutes""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['comment'] = comment

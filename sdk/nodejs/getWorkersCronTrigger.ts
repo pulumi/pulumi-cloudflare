@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersCronTrigger = cloudflare.getWorkersCronTrigger({
+ * const exampleWorkersCronTrigger = cloudflare.workers.getCronTrigger({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     scriptName: "this-is_my_script-01",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkersCronTrigger:getWorkersCronTrigger has been deprecated in favor of cloudflare:workers/cronTrigger:getCronTrigger */
 export function getWorkersCronTrigger(args: GetWorkersCronTriggerArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersCronTriggerResult> {
+    pulumi.log.warn("getWorkersCronTrigger is deprecated: cloudflare:index/getWorkersCronTrigger:getWorkersCronTrigger has been deprecated in favor of cloudflare:workers/cronTrigger:getCronTrigger")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkersCronTrigger:getWorkersCronTrigger", {
         "accountId": args.accountId,
@@ -76,13 +78,15 @@ export interface GetWorkersCronTriggerResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersCronTrigger = cloudflare.getWorkersCronTrigger({
+ * const exampleWorkersCronTrigger = cloudflare.workers.getCronTrigger({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     scriptName: "this-is_my_script-01",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkersCronTrigger:getWorkersCronTrigger has been deprecated in favor of cloudflare:workers/cronTrigger:getCronTrigger */
 export function getWorkersCronTriggerOutput(args: GetWorkersCronTriggerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersCronTriggerResult> {
+    pulumi.log.warn("getWorkersCronTrigger is deprecated: cloudflare:index/getWorkersCronTrigger:getWorkersCronTrigger has been deprecated in favor of cloudflare:workers/cronTrigger:getCronTrigger")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkersCronTrigger:getWorkersCronTrigger", {
         "accountId": args.accountId,

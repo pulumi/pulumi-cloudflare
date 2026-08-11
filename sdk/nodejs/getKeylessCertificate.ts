@@ -52,13 +52,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleKeylessCertificate = cloudflare.getKeylessCertificate({
+ * const exampleKeylessCertificate = cloudflare.keyless.getCertificate({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     keylessCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getKeylessCertificate:getKeylessCertificate has been deprecated in favor of cloudflare:keyless/certificate:getCertificate */
 export function getKeylessCertificate(args: GetKeylessCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetKeylessCertificateResult> {
+    pulumi.log.warn("getKeylessCertificate is deprecated: cloudflare:index/getKeylessCertificate:getKeylessCertificate has been deprecated in favor of cloudflare:keyless/certificate:getCertificate")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getKeylessCertificate:getKeylessCertificate", {
         "keylessCertificateId": args.keylessCertificateId,
@@ -180,13 +182,15 @@ export interface GetKeylessCertificateResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleKeylessCertificate = cloudflare.getKeylessCertificate({
+ * const exampleKeylessCertificate = cloudflare.keyless.getCertificate({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     keylessCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getKeylessCertificate:getKeylessCertificate has been deprecated in favor of cloudflare:keyless/certificate:getCertificate */
 export function getKeylessCertificateOutput(args: GetKeylessCertificateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKeylessCertificateResult> {
+    pulumi.log.warn("getKeylessCertificate is deprecated: cloudflare:index/getKeylessCertificate:getKeylessCertificate has been deprecated in favor of cloudflare:keyless/certificate:getCertificate")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getKeylessCertificate:getKeylessCertificate", {
         "keylessCertificateId": args.keylessCertificateId,

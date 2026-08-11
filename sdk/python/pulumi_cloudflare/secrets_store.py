@@ -120,8 +120,13 @@ class _SecretsStoreState:
         pulumi.set(self, "name", value)
 
 
+warnings.warn("""cloudflare:index/secretsStore:SecretsStore has been deprecated in favor of cloudflare:secretsStore/secretsStore:SecretsStore""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/secretsStore:SecretsStore")
 class SecretsStore(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/secretsStore:SecretsStore has been deprecated in favor of cloudflare:secretsStore/secretsStore:SecretsStore""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -141,7 +146,7 @@ class SecretsStore(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_secrets_store = cloudflare.SecretsStore("example_secrets_store",
+        example_secrets_store = cloudflare.secretsstore.SecretsStore("example_secrets_store",
             account_id="985e105f4ecef8ad9ca31a8372d0c353",
             name="service_x_keys")
         ```
@@ -175,7 +180,7 @@ class SecretsStore(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_secrets_store = cloudflare.SecretsStore("example_secrets_store",
+        example_secrets_store = cloudflare.secretsstore.SecretsStore("example_secrets_store",
             account_id="985e105f4ecef8ad9ca31a8372d0c353",
             name="service_x_keys")
         ```
@@ -205,6 +210,7 @@ class SecretsStore(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""SecretsStore is deprecated: cloudflare:index/secretsStore:SecretsStore has been deprecated in favor of cloudflare:secretsStore/secretsStore:SecretsStore""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/stream"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetStreamLiveInput(ctx, &cloudflare.LookupStreamLiveInputArgs{
+//			_, err := stream.LookupLiveInput(ctx, &stream.LookupLiveInputArgs{
 //				AccountId:           "023e105f4ecef8ad9ca31a8372d0c353",
 //				LiveInputIdentifier: "66be4bf738797e01e1fca35a7bdecdcd",
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getStreamLiveInput:getStreamLiveInput has been deprecated in favor of cloudflare:stream/liveInput:getLiveInput
 func LookupStreamLiveInput(ctx *pulumi.Context, args *LookupStreamLiveInputArgs, opts ...pulumi.InvokeOption) (*LookupStreamLiveInputResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupStreamLiveInputResult

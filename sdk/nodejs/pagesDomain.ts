@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const examplePagesDomain = new cloudflare.PagesDomain("example_pages_domain", {
+ * const examplePagesDomain = new cloudflare.pages.Domain("example_pages_domain", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     projectName: "this-is-my-project-01",
  *     name: "this-is-my-domain-01.com",
@@ -33,6 +33,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/pagesDomain:PagesDomain example '<account_id>/<project_name>/<domain_name>'
  * ```
+ *
+ * @deprecated cloudflare:index/pagesDomain:PagesDomain has been deprecated in favor of cloudflare:pages/domain:Domain
  */
 export class PagesDomain extends pulumi.CustomResource {
     /**
@@ -45,6 +47,7 @@ export class PagesDomain extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: PagesDomainState, opts?: pulumi.CustomResourceOptions): PagesDomain {
+        pulumi.log.warn("PagesDomain is deprecated: cloudflare:index/pagesDomain:PagesDomain has been deprecated in favor of cloudflare:pages/domain:Domain")
         return new PagesDomain(name, <any>state, { ...opts, id: id });
     }
 
@@ -95,8 +98,11 @@ export class PagesDomain extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/pagesDomain:PagesDomain has been deprecated in favor of cloudflare:pages/domain:Domain */
     constructor(name: string, args: PagesDomainArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/pagesDomain:PagesDomain has been deprecated in favor of cloudflare:pages/domain:Domain */
     constructor(name: string, argsOrState?: PagesDomainArgs | PagesDomainState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("PagesDomain is deprecated: cloudflare:index/pagesDomain:PagesDomain has been deprecated in favor of cloudflare:pages/domain:Domain")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

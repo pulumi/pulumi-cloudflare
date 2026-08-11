@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getWorkersKvNamespaces:getWorkersKvNamespaces has been deprecated in favor of cloudflare:workersKv/namespaces:getNamespaces")]
     public static class GetWorkersKvNamespaces
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersKvNamespaces = Cloudflare.GetWorkersKvNamespaces.Invoke(new()
+        ///     var exampleWorkersKvNamespaces = Cloudflare.Modules.WorkersKv.GetNamespaces.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
@@ -56,7 +57,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersKvNamespaces = Cloudflare.GetWorkersKvNamespaces.Invoke(new()
+        ///     var exampleWorkersKvNamespaces = Cloudflare.Modules.WorkersKv.GetNamespaces.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
@@ -85,7 +86,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersKvNamespaces = Cloudflare.GetWorkersKvNamespaces.Invoke(new()
+        ///     var exampleWorkersKvNamespaces = Cloudflare.Modules.WorkersKv.GetNamespaces.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",

@@ -23,6 +23,8 @@ __all__ = [
     'get_account_dns_settings_internal_views_output',
 ]
 
+warnings.warn("""cloudflare:index/getAccountDnsSettingsInternalViews:getAccountDnsSettingsInternalViews has been deprecated in favor of cloudflare:accountDnsSettingsInternal/views:getViews""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAccountDnsSettingsInternalViewsResult:
     """
@@ -168,7 +170,7 @@ def get_account_dns_settings_internal_views(account_id: Optional[_builtins.str] 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_dns_settings_internal_views = cloudflare.get_account_dns_settings_internal_views(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_account_dns_settings_internal_views = cloudflare.accountdnssettingsinternal.get_views(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         name={
             "contains": "view",
             "endswith": "ew",
@@ -192,6 +194,7 @@ def get_account_dns_settings_internal_views(account_id: Optional[_builtins.str] 
     :param _builtins.str zone_id: A zone ID that exists in the zones list for the view.
     :param _builtins.str zone_name: A zone name that exists in the zones list for the view.
     """
+    pulumi.log.warn("""get_account_dns_settings_internal_views is deprecated: cloudflare:index/getAccountDnsSettingsInternalViews:getAccountDnsSettingsInternalViews has been deprecated in favor of cloudflare:accountDnsSettingsInternal/views:getViews""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction
@@ -235,7 +238,7 @@ def get_account_dns_settings_internal_views_output(account_id: pulumi.Input[Opti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_dns_settings_internal_views = cloudflare.get_account_dns_settings_internal_views(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_account_dns_settings_internal_views = cloudflare.accountdnssettingsinternal.get_views(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         name={
             "contains": "view",
             "endswith": "ew",
@@ -259,6 +262,7 @@ def get_account_dns_settings_internal_views_output(account_id: pulumi.Input[Opti
     :param _builtins.str zone_id: A zone ID that exists in the zones list for the view.
     :param _builtins.str zone_name: A zone name that exists in the zones list for the view.
     """
+    pulumi.log.warn("""get_account_dns_settings_internal_views is deprecated: cloudflare:index/getAccountDnsSettingsInternalViews:getAccountDnsSettingsInternalViews has been deprecated in favor of cloudflare:accountDnsSettingsInternal/views:getViews""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction

@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/workerskv"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetWorkersKv(ctx, &cloudflare.LookupWorkersKvArgs{
+//			_, err := workerskv.GetWorkersKv(ctx, &workerskv.GetWorkersKvArgs{
 //				AccountId:   "023e105f4ecef8ad9ca31a8372d0c353",
 //				NamespaceId: "0f2ac74b498b48028cb68387c421e279",
 //				KeyName:     "My-Key",
@@ -43,6 +43,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getWorkersKv:getWorkersKv has been deprecated in favor of cloudflare:workersKv/workersKv:getWorkersKv
 func LookupWorkersKv(ctx *pulumi.Context, args *LookupWorkersKvArgs, opts ...pulumi.InvokeOption) (*LookupWorkersKvResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkersKvResult

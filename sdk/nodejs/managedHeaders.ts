@@ -148,8 +148,6 @@ export class ManagedHeaders extends pulumi.CustomResource {
             resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/managedHeaders:ManagedHeaders" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ManagedHeaders.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZone:getZone has been deprecated in favor of cloudflare:zone/zone:getZone")]
     public static class GetZone
     {
         /// <summary>
@@ -62,7 +63,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZone = Cloudflare.GetZone.Invoke(new()
+        ///     var exampleZone = Cloudflare.Modules.Zone.GetZone.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -124,7 +125,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZone = Cloudflare.GetZone.Invoke(new()
+        ///     var exampleZone = Cloudflare.Modules.Zone.GetZone.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -186,7 +187,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZone = Cloudflare.GetZone.Invoke(new()
+        ///     var exampleZone = Cloudflare.Modules.Zone.GetZone.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

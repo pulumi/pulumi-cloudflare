@@ -22,6 +22,8 @@ __all__ = [
     'get_magic_wan_static_route_output',
 ]
 
+warnings.warn("""cloudflare:index/getMagicWanStaticRoute:getMagicWanStaticRoute has been deprecated in favor of cloudflare:magicWan/staticRoute:getStaticRoute""", DeprecationWarning)
+
 @pulumi.output_type
 class GetMagicWanStaticRouteResult:
     """
@@ -100,7 +102,7 @@ def get_magic_wan_static_route(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_wan_static_route = cloudflare.get_magic_wan_static_route(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_magic_wan_static_route = cloudflare.magicwan.get_static_route(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         route_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -108,6 +110,7 @@ def get_magic_wan_static_route(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Identifier
     :param _builtins.str route_id: Identifier
     """
+    pulumi.log.warn("""get_magic_wan_static_route is deprecated: cloudflare:index/getMagicWanStaticRoute:getMagicWanStaticRoute has been deprecated in favor of cloudflare:magicWan/staticRoute:getStaticRoute""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['routeId'] = route_id
@@ -136,7 +139,7 @@ def get_magic_wan_static_route_output(account_id: pulumi.Input[Optional[Optional
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_wan_static_route = cloudflare.get_magic_wan_static_route(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_magic_wan_static_route = cloudflare.magicwan.get_static_route(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         route_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -144,6 +147,7 @@ def get_magic_wan_static_route_output(account_id: pulumi.Input[Optional[Optional
     :param _builtins.str account_id: Identifier
     :param _builtins.str route_id: Identifier
     """
+    pulumi.log.warn("""get_magic_wan_static_route is deprecated: cloudflare:index/getMagicWanStaticRoute:getMagicWanStaticRoute has been deprecated in favor of cloudflare:magicWan/staticRoute:getStaticRoute""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['routeId'] = route_id

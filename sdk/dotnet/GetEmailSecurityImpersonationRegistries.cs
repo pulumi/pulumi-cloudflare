@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getEmailSecurityImpersonationRegistries:getEmailSecurityImpersonationRegistries has been deprecated in favor of cloudflare:emailSecurityImpersonation/registries:getRegistries")]
     public static class GetEmailSecurityImpersonationRegistries
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailSecurityImpersonationRegistries = Cloudflare.GetEmailSecurityImpersonationRegistries.Invoke(new()
+        ///     var exampleEmailSecurityImpersonationRegistries = Cloudflare.Modules.EmailSecurityImpersonation.GetRegistries.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
@@ -58,7 +59,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailSecurityImpersonationRegistries = Cloudflare.GetEmailSecurityImpersonationRegistries.Invoke(new()
+        ///     var exampleEmailSecurityImpersonationRegistries = Cloudflare.Modules.EmailSecurityImpersonation.GetRegistries.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
@@ -89,7 +90,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailSecurityImpersonationRegistries = Cloudflare.GetEmailSecurityImpersonationRegistries.Invoke(new()
+        ///     var exampleEmailSecurityImpersonationRegistries = Cloudflare.Modules.EmailSecurityImpersonation.GetRegistries.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",

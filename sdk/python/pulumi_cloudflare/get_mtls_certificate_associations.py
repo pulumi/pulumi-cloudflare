@@ -21,6 +21,8 @@ __all__ = [
     'get_mtls_certificate_associations_output',
 ]
 
+warnings.warn("""cloudflare:index/getMtlsCertificateAssociations:getMtlsCertificateAssociations has been deprecated in favor of cloudflare:mtlsCertificate/associations:getAssociations""", DeprecationWarning)
+
 @pulumi.output_type
 class GetMtlsCertificateAssociationsResult:
     """
@@ -100,7 +102,7 @@ def get_mtls_certificate_associations(account_id: Optional[_builtins.str] = None
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_mtls_certificate_associations = cloudflare.get_mtls_certificate_associations(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_mtls_certificate_associations = cloudflare.mtlscertificate.get_associations(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         mtls_certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -108,6 +110,7 @@ def get_mtls_certificate_associations(account_id: Optional[_builtins.str] = None
     :param _builtins.str account_id: Identifier.
     :param _builtins.str mtls_certificate_id: Identifier.
     """
+    pulumi.log.warn("""get_mtls_certificate_associations is deprecated: cloudflare:index/getMtlsCertificateAssociations:getMtlsCertificateAssociations has been deprecated in favor of cloudflare:mtlsCertificate/associations:getAssociations""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['mtlsCertificateId'] = mtls_certificate_id
@@ -134,7 +137,7 @@ def get_mtls_certificate_associations_output(account_id: pulumi.Input[Optional[_
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_mtls_certificate_associations = cloudflare.get_mtls_certificate_associations(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_mtls_certificate_associations = cloudflare.mtlscertificate.get_associations(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         mtls_certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -142,6 +145,7 @@ def get_mtls_certificate_associations_output(account_id: pulumi.Input[Optional[_
     :param _builtins.str account_id: Identifier.
     :param _builtins.str mtls_certificate_id: Identifier.
     """
+    pulumi.log.warn("""get_mtls_certificate_associations is deprecated: cloudflare:index/getMtlsCertificateAssociations:getMtlsCertificateAssociations has been deprecated in favor of cloudflare:mtlsCertificate/associations:getAssociations""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['mtlsCertificateId'] = mtls_certificate_id

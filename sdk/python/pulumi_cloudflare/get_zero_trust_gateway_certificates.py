@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_gateway_certificates_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustGatewayCertificates:getZeroTrustGatewayCertificates has been deprecated in favor of cloudflare:zeroTrustGateway/certificates:getCertificates""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustGatewayCertificatesResult:
     """
@@ -81,12 +83,13 @@ def get_zero_trust_gateway_certificates(account_id: Optional[_builtins.str] = No
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_gateway_certificates = cloudflare.get_zero_trust_gateway_certificates(account_id="699d98642c564d2e855e9661899b7252")
+    example_zero_trust_gateway_certificates = cloudflare.zerotrustgateway.get_certificates(account_id="699d98642c564d2e855e9661899b7252")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_gateway_certificates is deprecated: cloudflare:index/getZeroTrustGatewayCertificates:getZeroTrustGatewayCertificates has been deprecated in favor of cloudflare:zeroTrustGateway/certificates:getCertificates""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -107,12 +110,13 @@ def get_zero_trust_gateway_certificates_output(account_id: pulumi.Input[Optional
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_gateway_certificates = cloudflare.get_zero_trust_gateway_certificates(account_id="699d98642c564d2e855e9661899b7252")
+    example_zero_trust_gateway_certificates = cloudflare.zerotrustgateway.get_certificates(account_id="699d98642c564d2e855e9661899b7252")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_gateway_certificates is deprecated: cloudflare:index/getZeroTrustGatewayCertificates:getZeroTrustGatewayCertificates has been deprecated in favor of cloudflare:zeroTrustGateway/certificates:getCertificates""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

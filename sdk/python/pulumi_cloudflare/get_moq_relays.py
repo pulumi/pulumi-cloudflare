@@ -22,6 +22,8 @@ __all__ = [
     'get_moq_relays_output',
 ]
 
+warnings.warn("""cloudflare:index/getMoqRelays:getMoqRelays has been deprecated in favor of cloudflare:moq/relays:getRelays""", DeprecationWarning)
+
 @pulumi.output_type
 class GetMoqRelaysResult:
     """
@@ -149,6 +151,7 @@ def get_moq_relays(account_id: Optional[_builtins.str] = None,
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.int per_page: Maximum number of relays to return per page.
     """
+    pulumi.log.warn("""get_moq_relays is deprecated: cloudflare:index/getMoqRelays:getMoqRelays has been deprecated in favor of cloudflare:moq/relays:getRelays""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['asc'] = asc
@@ -189,6 +192,7 @@ def get_moq_relays_output(account_id: pulumi.Input[Optional[_builtins.str]] = No
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.int per_page: Maximum number of relays to return per page.
     """
+    pulumi.log.warn("""get_moq_relays is deprecated: cloudflare:index/getMoqRelays:getMoqRelays has been deprecated in favor of cloudflare:moq/relays:getRelays""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['asc'] = asc

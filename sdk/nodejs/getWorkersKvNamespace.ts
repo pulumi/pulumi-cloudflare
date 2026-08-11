@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersKvNamespace = cloudflare.getWorkersKvNamespace({
+ * const exampleWorkersKvNamespace = cloudflare.workerskv.getNamespace({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     namespaceId: "0f2ac74b498b48028cb68387c421e279",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkersKvNamespace:getWorkersKvNamespace has been deprecated in favor of cloudflare:workersKv/namespace:getNamespace */
 export function getWorkersKvNamespace(args?: GetWorkersKvNamespaceArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersKvNamespaceResult> {
+    pulumi.log.warn("getWorkersKvNamespace is deprecated: cloudflare:index/getWorkersKvNamespace:getWorkersKvNamespace has been deprecated in favor of cloudflare:workersKv/namespace:getNamespace")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkersKvNamespace:getWorkersKvNamespace", {
@@ -87,13 +89,15 @@ export interface GetWorkersKvNamespaceResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersKvNamespace = cloudflare.getWorkersKvNamespace({
+ * const exampleWorkersKvNamespace = cloudflare.workerskv.getNamespace({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     namespaceId: "0f2ac74b498b48028cb68387c421e279",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkersKvNamespace:getWorkersKvNamespace has been deprecated in favor of cloudflare:workersKv/namespace:getNamespace */
 export function getWorkersKvNamespaceOutput(args?: GetWorkersKvNamespaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersKvNamespaceResult> {
+    pulumi.log.warn("getWorkersKvNamespace is deprecated: cloudflare:index/getWorkersKvNamespace:getWorkersKvNamespace has been deprecated in favor of cloudflare:workersKv/namespace:getNamespace")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkersKvNamespace:getWorkersKvNamespace", {

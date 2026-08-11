@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessIdentityProvider = new cloudflare.ZeroTrustAccessIdentityProvider("example_zero_trust_access_identity_provider", {
+ * const exampleZeroTrustAccessIdentityProvider = new cloudflare.zerotrustaccessidentity.Provider("example_zero_trust_access_identity_provider", {
  *     config: {
  *         claims: [
  *             "email_verified",
@@ -170,8 +170,6 @@ export class AccessIdentityProvider extends pulumi.CustomResource {
             resourceInputs["samlCertificateSet"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessIdentityProvider:AccessIdentityProvider" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AccessIdentityProvider.__pulumiType, name, resourceInputs, opts);
     }
 }

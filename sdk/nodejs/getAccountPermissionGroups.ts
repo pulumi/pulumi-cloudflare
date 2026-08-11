@@ -45,7 +45,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountPermissionGroups = cloudflare.getAccountPermissionGroups({
+ * const exampleAccountPermissionGroups = cloudflare.accountpermission.getGroups({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     id: "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
  *     label: "labelOfThePermissionGroup",
@@ -53,7 +53,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccountPermissionGroups:getAccountPermissionGroups has been deprecated in favor of cloudflare:accountPermission/groups:getGroups */
 export function getAccountPermissionGroups(args?: GetAccountPermissionGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountPermissionGroupsResult> {
+    pulumi.log.warn("getAccountPermissionGroups is deprecated: cloudflare:index/getAccountPermissionGroups:getAccountPermissionGroups has been deprecated in favor of cloudflare:accountPermission/groups:getGroups")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountPermissionGroups:getAccountPermissionGroups", {
@@ -159,7 +161,7 @@ export interface GetAccountPermissionGroupsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountPermissionGroups = cloudflare.getAccountPermissionGroups({
+ * const exampleAccountPermissionGroups = cloudflare.accountpermission.getGroups({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     id: "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
  *     label: "labelOfThePermissionGroup",
@@ -167,7 +169,9 @@ export interface GetAccountPermissionGroupsResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccountPermissionGroups:getAccountPermissionGroups has been deprecated in favor of cloudflare:accountPermission/groups:getGroups */
 export function getAccountPermissionGroupsOutput(args?: GetAccountPermissionGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountPermissionGroupsResult> {
+    pulumi.log.warn("getAccountPermissionGroups is deprecated: cloudflare:index/getAccountPermissionGroups:getAccountPermissionGroups has been deprecated in favor of cloudflare:accountPermission/groups:getGroups")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountPermissionGroups:getAccountPermissionGroups", {

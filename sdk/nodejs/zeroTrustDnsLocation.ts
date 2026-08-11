@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDnsLocation = new cloudflare.ZeroTrustDnsLocation("example_zero_trust_dns_location", {
+ * const exampleZeroTrustDnsLocation = new cloudflare.zerotrustdns.Location("example_zero_trust_dns_location", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     name: "Austin Office Location",
  *     clientDefault: false,
@@ -64,6 +64,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation example '<account_id>/<location_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation has been deprecated in favor of cloudflare:zeroTrustDns/location:Location
  */
 export class ZeroTrustDnsLocation extends pulumi.CustomResource {
     /**
@@ -76,6 +78,7 @@ export class ZeroTrustDnsLocation extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustDnsLocationState, opts?: pulumi.CustomResourceOptions): ZeroTrustDnsLocation {
+        pulumi.log.warn("ZeroTrustDnsLocation is deprecated: cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation has been deprecated in favor of cloudflare:zeroTrustDns/location:Location")
         return new ZeroTrustDnsLocation(name, <any>state, { ...opts, id: id });
     }
 
@@ -152,8 +155,11 @@ export class ZeroTrustDnsLocation extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation has been deprecated in favor of cloudflare:zeroTrustDns/location:Location */
     constructor(name: string, args: ZeroTrustDnsLocationArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation has been deprecated in favor of cloudflare:zeroTrustDns/location:Location */
     constructor(name: string, argsOrState?: ZeroTrustDnsLocationArgs | ZeroTrustDnsLocationState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustDnsLocation is deprecated: cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation has been deprecated in favor of cloudflare:zeroTrustDns/location:Location")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

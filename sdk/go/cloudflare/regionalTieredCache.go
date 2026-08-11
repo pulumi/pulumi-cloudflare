@@ -26,14 +26,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/regional"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewRegionalTieredCache(ctx, "example_regional_tiered_cache", &cloudflare.RegionalTieredCacheArgs{
+//			_, err := regional.NewTieredCache(ctx, "example_regional_tiered_cache", &regional.TieredCacheArgs{
 //				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Value:  pulumi.String("on"),
 //			})
@@ -51,6 +51,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/regionalTieredCache:RegionalTieredCache example '<zone_id>'
 // ```
+//
+// Deprecated: cloudflare:index/regionalTieredCache:RegionalTieredCache has been deprecated in favor of cloudflare:regional/tieredCache:TieredCache
 type RegionalTieredCache struct {
 	pulumi.CustomResourceState
 

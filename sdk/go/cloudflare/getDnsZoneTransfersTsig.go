@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/dnszonetransfers"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetDnsZoneTransfersTsig(ctx, &cloudflare.LookupDnsZoneTransfersTsigArgs{
+//			_, err := dnszonetransfers.GetTsig(ctx, &dnszonetransfers.GetTsigArgs{
 //				AccountId: pulumi.StringRef("01a7362d577a6c3019a474fd6f485823"),
 //				TsigId:    "69cd1e104af3e6ed3cb344f263fd0d5a",
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getDnsZoneTransfersTsig:getDnsZoneTransfersTsig has been deprecated in favor of cloudflare:dnsZoneTransfers/tsig:getTsig
 func LookupDnsZoneTransfersTsig(ctx *pulumi.Context, args *LookupDnsZoneTransfersTsigArgs, opts ...pulumi.InvokeOption) (*LookupDnsZoneTransfersTsigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDnsZoneTransfersTsigResult

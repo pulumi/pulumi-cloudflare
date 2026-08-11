@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDlsPrefixBinding = new cloudflare.DlsPrefixBinding("example_dls_prefix_binding", {
+ * const exampleDlsPrefixBinding = new cloudflare.dlsprefix.Binding("example_dls_prefix_binding", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     cidr: "10.0.1.0/24",
  *     prefixId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
@@ -30,6 +30,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/dlsPrefixBinding:DlsPrefixBinding example '<account_id>/<binding_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/dlsPrefixBinding:DlsPrefixBinding has been deprecated in favor of cloudflare:dlsPrefix/binding:Binding
  */
 export class DlsPrefixBinding extends pulumi.CustomResource {
     /**
@@ -42,6 +44,7 @@ export class DlsPrefixBinding extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DlsPrefixBindingState, opts?: pulumi.CustomResourceOptions): DlsPrefixBinding {
+        pulumi.log.warn("DlsPrefixBinding is deprecated: cloudflare:index/dlsPrefixBinding:DlsPrefixBinding has been deprecated in favor of cloudflare:dlsPrefix/binding:Binding")
         return new DlsPrefixBinding(name, <any>state, { ...opts, id: id });
     }
 
@@ -83,8 +86,11 @@ export class DlsPrefixBinding extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/dlsPrefixBinding:DlsPrefixBinding has been deprecated in favor of cloudflare:dlsPrefix/binding:Binding */
     constructor(name: string, args: DlsPrefixBindingArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/dlsPrefixBinding:DlsPrefixBinding has been deprecated in favor of cloudflare:dlsPrefix/binding:Binding */
     constructor(name: string, argsOrState?: DlsPrefixBindingArgs | DlsPrefixBindingState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("DlsPrefixBinding is deprecated: cloudflare:index/dlsPrefixBinding:DlsPrefixBinding has been deprecated in favor of cloudflare:dlsPrefix/binding:Binding")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

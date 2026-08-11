@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessCustomPage = new cloudflare.ZeroTrustAccessCustomPage("example_zero_trust_access_custom_page", {
+ * const exampleZeroTrustAccessCustomPage = new cloudflare.zerotrustaccesscustom.Page("example_zero_trust_access_custom_page", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     customHtml: "<html><body><h1>Access Denied</h1></body></html>",
  *     name: "name",
@@ -29,6 +29,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage example '<account_id>/<custom_page_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage has been deprecated in favor of cloudflare:zeroTrustAccessCustom/page:Page
  */
 export class ZeroTrustAccessCustomPage extends pulumi.CustomResource {
     /**
@@ -41,6 +43,7 @@ export class ZeroTrustAccessCustomPage extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustAccessCustomPageState, opts?: pulumi.CustomResourceOptions): ZeroTrustAccessCustomPage {
+        pulumi.log.warn("ZeroTrustAccessCustomPage is deprecated: cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage has been deprecated in favor of cloudflare:zeroTrustAccessCustom/page:Page")
         return new ZeroTrustAccessCustomPage(name, <any>state, { ...opts, id: id });
     }
 
@@ -87,8 +90,11 @@ export class ZeroTrustAccessCustomPage extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage has been deprecated in favor of cloudflare:zeroTrustAccessCustom/page:Page */
     constructor(name: string, args: ZeroTrustAccessCustomPageArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage has been deprecated in favor of cloudflare:zeroTrustAccessCustom/page:Page */
     constructor(name: string, argsOrState?: ZeroTrustAccessCustomPageArgs | ZeroTrustAccessCustomPageState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustAccessCustomPage is deprecated: cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage has been deprecated in favor of cloudflare:zeroTrustAccessCustom/page:Page")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

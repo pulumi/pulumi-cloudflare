@@ -20,13 +20,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleQueue = cloudflare.getQueue({
+ * const exampleQueue = cloudflare.queue.getQueue({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     queueId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getQueue:getQueue has been deprecated in favor of cloudflare:queue/queue:getQueue */
 export function getQueue(args: GetQueueArgs, opts?: pulumi.InvokeOptions): Promise<GetQueueResult> {
+    pulumi.log.warn("getQueue is deprecated: cloudflare:index/getQueue:getQueue has been deprecated in favor of cloudflare:queue/queue:getQueue")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getQueue:getQueue", {
         "accountId": args.accountId,
@@ -87,13 +89,15 @@ export interface GetQueueResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleQueue = cloudflare.getQueue({
+ * const exampleQueue = cloudflare.queue.getQueue({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     queueId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getQueue:getQueue has been deprecated in favor of cloudflare:queue/queue:getQueue */
 export function getQueueOutput(args: GetQueueOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQueueResult> {
+    pulumi.log.warn("getQueue is deprecated: cloudflare:index/getQueue:getQueue has been deprecated in favor of cloudflare:queue/queue:getQueue")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getQueue:getQueue", {
         "accountId": args.accountId,

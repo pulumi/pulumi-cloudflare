@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getR2BucketSippy:getR2BucketSippy has been deprecated in favor of cloudflare:r2Bucket/sippy:getSippy")]
     public static class GetR2BucketSippy
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleR2BucketSippy = Cloudflare.GetR2BucketSippy.Invoke(new()
+        ///     var exampleR2BucketSippy = Cloudflare.Modules.R2Bucket.GetSippy.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         BucketName = "example-bucket",
@@ -45,7 +46,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleR2BucketSippy = Cloudflare.GetR2BucketSippy.Invoke(new()
+        ///     var exampleR2BucketSippy = Cloudflare.Modules.R2Bucket.GetSippy.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         BucketName = "example-bucket",
@@ -68,7 +69,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleR2BucketSippy = Cloudflare.GetR2BucketSippy.Invoke(new()
+        ///     var exampleR2BucketSippy = Cloudflare.Modules.R2Bucket.GetSippy.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         BucketName = "example-bucket",

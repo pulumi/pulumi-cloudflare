@@ -299,7 +299,7 @@ class AccessServiceToken(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_service_token = cloudflare.ZeroTrustAccessServiceToken("example_zero_trust_access_service_token",
+        example_zero_trust_access_service_token = cloudflare.zerotrustaccessservice.Token("example_zero_trust_access_service_token",
             name="CI/CD token",
             zone_id="zone_id",
             client_secret_version=float(0),
@@ -341,7 +341,7 @@ class AccessServiceToken(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_service_token = cloudflare.ZeroTrustAccessServiceToken("example_zero_trust_access_service_token",
+        example_zero_trust_access_service_token = cloudflare.zerotrustaccessservice.Token("example_zero_trust_access_service_token",
             name="CI/CD token",
             zone_id="zone_id",
             client_secret_version=float(0),
@@ -398,8 +398,6 @@ class AccessServiceToken(pulumi.CustomResource):
             __props__.__dict__["client_id"] = None
             __props__.__dict__["client_secret"] = None
             __props__.__dict__["expires_at"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessServiceToken:AccessServiceToken")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clientSecret"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AccessServiceToken, __self__).__init__(

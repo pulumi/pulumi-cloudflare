@@ -22,6 +22,8 @@ __all__ = [
     'get_share_recipients_output',
 ]
 
+warnings.warn("""cloudflare:index/getShareRecipients:getShareRecipients has been deprecated in favor of cloudflare:share/recipients:getRecipients""", DeprecationWarning)
+
 @pulumi.output_type
 class GetShareRecipientsResult:
     """
@@ -110,7 +112,7 @@ def get_share_recipients(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_share_recipients = cloudflare.get_share_recipients(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_share_recipients = cloudflare.share.get_recipients(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         share_id="3fd85f74b32742f1bff64a85009dda07",
         include_resources=True)
     ```
@@ -121,6 +123,7 @@ def get_share_recipients(account_id: Optional[_builtins.str] = None,
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str share_id: Share identifier tag.
     """
+    pulumi.log.warn("""get_share_recipients is deprecated: cloudflare:index/getShareRecipients:getShareRecipients has been deprecated in favor of cloudflare:share/recipients:getRecipients""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['includeResources'] = include_resources
@@ -147,7 +150,7 @@ def get_share_recipients_output(account_id: pulumi.Input[Optional[_builtins.str]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_share_recipients = cloudflare.get_share_recipients(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_share_recipients = cloudflare.share.get_recipients(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         share_id="3fd85f74b32742f1bff64a85009dda07",
         include_resources=True)
     ```
@@ -158,6 +161,7 @@ def get_share_recipients_output(account_id: pulumi.Input[Optional[_builtins.str]
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str share_id: Share identifier tag.
     """
+    pulumi.log.warn("""get_share_recipients is deprecated: cloudflare:index/getShareRecipients:getShareRecipients has been deprecated in favor of cloudflare:share/recipients:getRecipients""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['includeResources'] = include_resources

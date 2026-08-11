@@ -21,6 +21,8 @@ __all__ = [
     'get_zero_trust_gateway_pacfile_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustGatewayPacfile:getZeroTrustGatewayPacfile has been deprecated in favor of cloudflare:zeroTrustGateway/pacfile:getPacfile""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustGatewayPacfileResult:
     """
@@ -160,10 +162,11 @@ def get_zero_trust_gateway_pacfile(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_gateway_pacfile = cloudflare.get_zero_trust_gateway_pacfile(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_gateway_pacfile = cloudflare.zerotrustgateway.get_pacfile(account_id="699d98642c564d2e855e9661899b7252",
         pacfile_id="ed35569b41ce4d1facfe683550f54086")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_gateway_pacfile is deprecated: cloudflare:index/getZeroTrustGatewayPacfile:getZeroTrustGatewayPacfile has been deprecated in favor of cloudflare:zeroTrustGateway/pacfile:getPacfile""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['pacfileId'] = pacfile_id
@@ -196,10 +199,11 @@ def get_zero_trust_gateway_pacfile_output(account_id: pulumi.Input[Optional[Opti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_gateway_pacfile = cloudflare.get_zero_trust_gateway_pacfile(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_gateway_pacfile = cloudflare.zerotrustgateway.get_pacfile(account_id="699d98642c564d2e855e9661899b7252",
         pacfile_id="ed35569b41ce4d1facfe683550f54086")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_gateway_pacfile is deprecated: cloudflare:index/getZeroTrustGatewayPacfile:getZeroTrustGatewayPacfile has been deprecated in favor of cloudflare:zeroTrustGateway/pacfile:getPacfile""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['pacfileId'] = pacfile_id

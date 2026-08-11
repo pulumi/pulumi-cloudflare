@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustResourceLibraryApplication:getZeroTrustResourceLibraryApplication has been deprecated in favor of cloudflare:zeroTrustResourceLibrary/application:getApplication")]
     public static class GetZeroTrustResourceLibraryApplication
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustResourceLibraryApplication = Cloudflare.GetZeroTrustResourceLibraryApplication.Invoke(new()
+        ///     var exampleZeroTrustResourceLibraryApplication = Cloudflare.Modules.ZeroTrustResourceLibrary.GetApplication.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Id = "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
@@ -45,7 +46,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustResourceLibraryApplication = Cloudflare.GetZeroTrustResourceLibraryApplication.Invoke(new()
+        ///     var exampleZeroTrustResourceLibraryApplication = Cloudflare.Modules.ZeroTrustResourceLibrary.GetApplication.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Id = "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
@@ -68,7 +69,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustResourceLibraryApplication = Cloudflare.GetZeroTrustResourceLibraryApplication.Invoke(new()
+        ///     var exampleZeroTrustResourceLibraryApplication = Cloudflare.Modules.ZeroTrustResourceLibrary.GetApplication.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Id = "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",

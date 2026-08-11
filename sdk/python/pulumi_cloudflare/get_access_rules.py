@@ -23,6 +23,8 @@ __all__ = [
     'get_access_rules_output',
 ]
 
+warnings.warn("""cloudflare:index/getAccessRules:getAccessRules has been deprecated in favor of cloudflare:access/rules:getRules""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAccessRulesResult:
     """
@@ -183,7 +185,7 @@ def get_access_rules(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_access_rules = cloudflare.get_access_rules(account_id="account_id",
+    example_access_rules = cloudflare.access.get_rules(account_id="account_id",
         zone_id="zone_id",
         configuration={
             "target": "ip",
@@ -210,6 +212,7 @@ def get_access_rules(account_id: Optional[_builtins.str] = None,
            Available values: "configuration.target", "configuration.value", "mode".
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_access_rules is deprecated: cloudflare:index/getAccessRules:getAccessRules has been deprecated in favor of cloudflare:access/rules:getRules""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['configuration'] = configuration
@@ -256,7 +259,7 @@ def get_access_rules_output(account_id: pulumi.Input[Optional[Optional[_builtins
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_access_rules = cloudflare.get_access_rules(account_id="account_id",
+    example_access_rules = cloudflare.access.get_rules(account_id="account_id",
         zone_id="zone_id",
         configuration={
             "target": "ip",
@@ -283,6 +286,7 @@ def get_access_rules_output(account_id: pulumi.Input[Optional[Optional[_builtins
            Available values: "configuration.target", "configuration.value", "mode".
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_access_rules is deprecated: cloudflare:index/getAccessRules:getAccessRules has been deprecated in favor of cloudflare:access/rules:getRules""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['configuration'] = configuration

@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDexRule = new cloudflare.ZeroTrustDexRule("example_zero_trust_dex_rule", {
+ * const exampleZeroTrustDexRule = new cloudflare.zerotrustdex.Rule("example_zero_trust_dex_rule", {
  *     accountId: "01a7362d577a6c3019a474fd6f485823",
  *     match: "match",
  *     name: "name",
@@ -33,6 +33,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule example '<account_id>/<rule_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule has been deprecated in favor of cloudflare:zeroTrustDex/rule:Rule
  */
 export class ZeroTrustDexRule extends pulumi.CustomResource {
     /**
@@ -45,6 +47,7 @@ export class ZeroTrustDexRule extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustDexRuleState, opts?: pulumi.CustomResourceOptions): ZeroTrustDexRule {
+        pulumi.log.warn("ZeroTrustDexRule is deprecated: cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule has been deprecated in favor of cloudflare:zeroTrustDex/rule:Rule")
         return new ZeroTrustDexRule(name, <any>state, { ...opts, id: id });
     }
 
@@ -86,8 +89,11 @@ export class ZeroTrustDexRule extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule has been deprecated in favor of cloudflare:zeroTrustDex/rule:Rule */
     constructor(name: string, args: ZeroTrustDexRuleArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule has been deprecated in favor of cloudflare:zeroTrustDex/rule:Rule */
     constructor(name: string, argsOrState?: ZeroTrustDexRuleArgs | ZeroTrustDexRuleState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustDexRule is deprecated: cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule has been deprecated in favor of cloudflare:zeroTrustDex/rule:Rule")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

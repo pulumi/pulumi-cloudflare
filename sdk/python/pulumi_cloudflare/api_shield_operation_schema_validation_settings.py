@@ -152,8 +152,13 @@ class _ApiShieldOperationSchemaValidationSettingsState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldOperation/schemaValidationSettings:SchemaValidationSettings""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings")
 class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldOperation/schemaValidationSettings:SchemaValidationSettings""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -170,8 +175,8 @@ class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
         - `Domain API Gateway`
         - `Domain API Gateway Read`
 
-        > `ApiShieldOperationSchemaValidationSettings` is in a deprecation phase and will be removed in the future.
-          Instead, please utilize the SchemaValidationOperationSettings resource instead.
+        > `apiShieldOperation.SchemaValidationSettings` is in a deprecation phase and will be removed in the future.
+          Instead, please utilize the schemaValidationOperationSettings.SchemaValidationOperationSettings resource instead.
 
         ## Example Usage
 
@@ -179,7 +184,7 @@ class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_api_shield_operation_schema_validation_settings = cloudflare.ApiShieldOperationSchemaValidationSettings("example_api_shield_operation_schema_validation_settings",
+        example_api_shield_operation_schema_validation_settings = cloudflare.apishieldoperation.SchemaValidationSettings("example_api_shield_operation_schema_validation_settings",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             operation_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
             mitigation_action="block")
@@ -218,8 +223,8 @@ class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
         - `Domain API Gateway`
         - `Domain API Gateway Read`
 
-        > `ApiShieldOperationSchemaValidationSettings` is in a deprecation phase and will be removed in the future.
-          Instead, please utilize the SchemaValidationOperationSettings resource instead.
+        > `apiShieldOperation.SchemaValidationSettings` is in a deprecation phase and will be removed in the future.
+          Instead, please utilize the schemaValidationOperationSettings.SchemaValidationOperationSettings resource instead.
 
         ## Example Usage
 
@@ -227,7 +232,7 @@ class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_api_shield_operation_schema_validation_settings = cloudflare.ApiShieldOperationSchemaValidationSettings("example_api_shield_operation_schema_validation_settings",
+        example_api_shield_operation_schema_validation_settings = cloudflare.apishieldoperation.SchemaValidationSettings("example_api_shield_operation_schema_validation_settings",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             operation_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
             mitigation_action="block")
@@ -259,6 +264,7 @@ class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
                  operation_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ApiShieldOperationSchemaValidationSettings is deprecated: cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldOperation/schemaValidationSettings:SchemaValidationSettings""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

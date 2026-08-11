@@ -500,8 +500,13 @@ class _MagicWanIpsecTunnelState:
         pulumi.set(self, "replay_protection", value)
 
 
+warnings.warn("""cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel has been deprecated in favor of cloudflare:magicWan/ipsecTunnel:IpsecTunnel""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel")
 class MagicWanIpsecTunnel(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel has been deprecated in favor of cloudflare:magicWan/ipsecTunnel:IpsecTunnel""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -527,7 +532,7 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_magic_wan_ipsec_tunnel = cloudflare.MagicWanIpsecTunnel("example_magic_wan_ipsec_tunnel",
+        example_magic_wan_ipsec_tunnel = cloudflare.magicwan.IpsecTunnel("example_magic_wan_ipsec_tunnel",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             cloudflare_endpoint="203.0.113.1",
             interface_address="192.0.2.0/31",
@@ -590,7 +595,7 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_magic_wan_ipsec_tunnel = cloudflare.MagicWanIpsecTunnel("example_magic_wan_ipsec_tunnel",
+        example_magic_wan_ipsec_tunnel = cloudflare.magicwan.IpsecTunnel("example_magic_wan_ipsec_tunnel",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             cloudflare_endpoint="203.0.113.1",
             interface_address="192.0.2.0/31",
@@ -656,6 +661,7 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
                  psk: pulumi.Input[Optional[_builtins.str]] = None,
                  replay_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
+        pulumi.log.warn("""MagicWanIpsecTunnel is deprecated: cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel has been deprecated in favor of cloudflare:magicWan/ipsecTunnel:IpsecTunnel""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustaccess"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustAccessKeyConfiguration(ctx, "example_zero_trust_access_key_configuration", &cloudflare.ZeroTrustAccessKeyConfigurationArgs{
+//			_, err := zerotrustaccess.NewKeyConfiguration(ctx, "example_zero_trust_access_key_configuration", &zerotrustaccess.KeyConfigurationArgs{
 //				AccountId:               pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				KeyRotationIntervalDays: pulumi.Float64(30),
 //			})
@@ -77,12 +77,6 @@ func NewAccessKeysConfiguration(ctx *pulumi.Context,
 	if args.KeyRotationIntervalDays == nil {
 		return nil, errors.New("invalid value for required argument 'KeyRotationIntervalDays'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessKeysConfiguration
 	err := ctx.RegisterResource("cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration", name, args, &resource, opts...)

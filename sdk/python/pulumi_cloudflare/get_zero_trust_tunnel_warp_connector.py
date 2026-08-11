@@ -23,6 +23,8 @@ __all__ = [
     'get_zero_trust_tunnel_warp_connector_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustTunnelWarpConnector:getZeroTrustTunnelWarpConnector has been deprecated in favor of cloudflare:zeroTrustTunnelWarpConnector/zeroTrustTunnelWarpConnector:getZeroTrustTunnelWarpConnector""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustTunnelWarpConnectorResult:
     """
@@ -225,7 +227,7 @@ def get_zero_trust_tunnel_warp_connector(account_id: Optional[_builtins.str] = N
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_tunnel_warp_connector = cloudflare.get_zero_trust_tunnel_warp_connector(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_tunnel_warp_connector = cloudflare.zerotrusttunnelwarpconnector.get_zero_trust_tunnel_warp_connector(account_id="699d98642c564d2e855e9661899b7252",
         tunnel_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
     ```
 
@@ -233,6 +235,7 @@ def get_zero_trust_tunnel_warp_connector(account_id: Optional[_builtins.str] = N
     :param _builtins.str account_id: Cloudflare account ID
     :param _builtins.str tunnel_id: UUID of the tunnel.
     """
+    pulumi.log.warn("""get_zero_trust_tunnel_warp_connector is deprecated: cloudflare:index/getZeroTrustTunnelWarpConnector:getZeroTrustTunnelWarpConnector has been deprecated in favor of cloudflare:zeroTrustTunnelWarpConnector/zeroTrustTunnelWarpConnector:getZeroTrustTunnelWarpConnector""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -273,7 +276,7 @@ def get_zero_trust_tunnel_warp_connector_output(account_id: pulumi.Input[Optiona
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_tunnel_warp_connector = cloudflare.get_zero_trust_tunnel_warp_connector(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_tunnel_warp_connector = cloudflare.zerotrusttunnelwarpconnector.get_zero_trust_tunnel_warp_connector(account_id="699d98642c564d2e855e9661899b7252",
         tunnel_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
     ```
 
@@ -281,6 +284,7 @@ def get_zero_trust_tunnel_warp_connector_output(account_id: pulumi.Input[Optiona
     :param _builtins.str account_id: Cloudflare account ID
     :param _builtins.str tunnel_id: UUID of the tunnel.
     """
+    pulumi.log.warn("""get_zero_trust_tunnel_warp_connector is deprecated: cloudflare:index/getZeroTrustTunnelWarpConnector:getZeroTrustTunnelWarpConnector has been deprecated in favor of cloudflare:zeroTrustTunnelWarpConnector/zeroTrustTunnelWarpConnector:getZeroTrustTunnelWarpConnector""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

@@ -26,9 +26,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDeviceDeploymentGroups;
- * import com.pulumi.cloudflare.ZeroTrustDeviceDeploymentGroupsArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDeploymentGroupsVersionConfigArgs;
+ * import com.pulumi.cloudflare.zeroTrustDeviceDeploymentGroups.ZeroTrustDeviceDeploymentGroups;
+ * import com.pulumi.cloudflare.zeroTrustDeviceDeploymentGroups.ZeroTrustDeviceDeploymentGroupsArgs;
+ * import com.pulumi.cloudflare.zeroTrustDeviceDeploymentGroups.inputs.ZeroTrustDeviceDeploymentGroupsVersionConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -63,7 +63,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups example &#39;&lt;account_id&gt;/&lt;group_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups */
 @ResourceType(type="cloudflare:index/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups")
 public class ZeroTrustDeviceDeploymentGroups extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

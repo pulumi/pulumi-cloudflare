@@ -170,8 +170,13 @@ class _MagicNetworkMonitoringConfigurationState:
         pulumi.set(self, "warp_devices", value)
 
 
+warnings.warn("""cloudflare:index/magicNetworkMonitoringConfiguration:MagicNetworkMonitoringConfiguration has been deprecated in favor of cloudflare:magicNetworkMonitoring/configuration:Configuration""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/magicNetworkMonitoringConfiguration:MagicNetworkMonitoringConfiguration")
 class MagicNetworkMonitoringConfiguration(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/magicNetworkMonitoringConfiguration:MagicNetworkMonitoringConfiguration has been deprecated in favor of cloudflare:magicNetworkMonitoring/configuration:Configuration""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -230,6 +235,7 @@ class MagicNetworkMonitoringConfiguration(pulumi.CustomResource):
                  router_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  warp_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicNetworkMonitoringConfigurationWarpDeviceArgs', 'MagicNetworkMonitoringConfigurationWarpDeviceArgsDict']]]]] = None,
                  __props__=None):
+        pulumi.log.warn("""MagicNetworkMonitoringConfiguration is deprecated: cloudflare:index/magicNetworkMonitoringConfiguration:MagicNetworkMonitoringConfiguration has been deprecated in favor of cloudflare:magicNetworkMonitoring/configuration:Configuration""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

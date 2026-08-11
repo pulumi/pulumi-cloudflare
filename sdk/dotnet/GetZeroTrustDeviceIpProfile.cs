@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustDeviceIpProfile:getZeroTrustDeviceIpProfile has been deprecated in favor of cloudflare:zeroTrustDeviceIp/profile:getProfile")]
     public static class GetZeroTrustDeviceIpProfile
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDeviceIpProfile = Cloudflare.GetZeroTrustDeviceIpProfile.Invoke(new()
+        ///     var exampleZeroTrustDeviceIpProfile = Cloudflare.Modules.ZeroTrustDeviceIp.GetProfile.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ProfileId = "profile_id",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDeviceIpProfile = Cloudflare.GetZeroTrustDeviceIpProfile.Invoke(new()
+        ///     var exampleZeroTrustDeviceIpProfile = Cloudflare.Modules.ZeroTrustDeviceIp.GetProfile.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ProfileId = "profile_id",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDeviceIpProfile = Cloudflare.GetZeroTrustDeviceIpProfile.Invoke(new()
+        ///     var exampleZeroTrustDeviceIpProfile = Cloudflare.Modules.ZeroTrustDeviceIp.GetProfile.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ProfileId = "profile_id",

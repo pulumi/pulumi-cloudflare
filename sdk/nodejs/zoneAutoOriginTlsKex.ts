@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneAutoOriginTlsKex = new cloudflare.ZoneAutoOriginTlsKex("example_zone_auto_origin_tls_kex", {
+ * const exampleZoneAutoOriginTlsKex = new cloudflare.zone.AutoOriginTlsKex("example_zone_auto_origin_tls_kex", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     enabled: true,
  * });
@@ -22,6 +22,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zoneAutoOriginTlsKex:ZoneAutoOriginTlsKex example '<zone_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zoneAutoOriginTlsKex:ZoneAutoOriginTlsKex has been deprecated in favor of cloudflare:zone/autoOriginTlsKex:AutoOriginTlsKex
  */
 export class ZoneAutoOriginTlsKex extends pulumi.CustomResource {
     /**
@@ -34,6 +36,7 @@ export class ZoneAutoOriginTlsKex extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZoneAutoOriginTlsKexState, opts?: pulumi.CustomResourceOptions): ZoneAutoOriginTlsKex {
+        pulumi.log.warn("ZoneAutoOriginTlsKex is deprecated: cloudflare:index/zoneAutoOriginTlsKex:ZoneAutoOriginTlsKex has been deprecated in favor of cloudflare:zone/autoOriginTlsKex:AutoOriginTlsKex")
         return new ZoneAutoOriginTlsKex(name, <any>state, { ...opts, id: id });
     }
 
@@ -68,8 +71,11 @@ export class ZoneAutoOriginTlsKex extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zoneAutoOriginTlsKex:ZoneAutoOriginTlsKex has been deprecated in favor of cloudflare:zone/autoOriginTlsKex:AutoOriginTlsKex */
     constructor(name: string, args: ZoneAutoOriginTlsKexArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zoneAutoOriginTlsKex:ZoneAutoOriginTlsKex has been deprecated in favor of cloudflare:zone/autoOriginTlsKex:AutoOriginTlsKex */
     constructor(name: string, argsOrState?: ZoneAutoOriginTlsKexArgs | ZoneAutoOriginTlsKexState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZoneAutoOriginTlsKex is deprecated: cloudflare:index/zoneAutoOriginTlsKex:ZoneAutoOriginTlsKex has been deprecated in favor of cloudflare:zone/autoOriginTlsKex:AutoOriginTlsKex")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

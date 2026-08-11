@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getSsoConnector:getSsoConnector has been deprecated in favor of cloudflare:sso/connector:getConnector")]
     public static class GetSsoConnector
     {
         /// <summary>
@@ -26,7 +27,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSsoConnector = Cloudflare.GetSsoConnector.Invoke(new()
+        ///     var exampleSsoConnector = Cloudflare.Modules.Sso.GetConnector.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         SsoConnectorId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -53,7 +54,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSsoConnector = Cloudflare.GetSsoConnector.Invoke(new()
+        ///     var exampleSsoConnector = Cloudflare.Modules.Sso.GetConnector.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         SsoConnectorId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -80,7 +81,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSsoConnector = Cloudflare.GetSsoConnector.Invoke(new()
+        ///     var exampleSsoConnector = Cloudflare.Modules.Sso.GetConnector.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         SsoConnectorId = "023e105f4ecef8ad9ca31a8372d0c353",

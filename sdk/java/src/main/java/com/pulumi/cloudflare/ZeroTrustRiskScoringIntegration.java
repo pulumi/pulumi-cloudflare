@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustRiskScoringIntegration;
- * import com.pulumi.cloudflare.ZeroTrustRiskScoringIntegrationArgs;
+ * import com.pulumi.cloudflare.zeroTrustRiskScoring.Integration;
+ * import com.pulumi.cloudflare.zeroTrustRiskScoring.IntegrationArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustRiskScoringIntegration = new ZeroTrustRiskScoringIntegration("exampleZeroTrustRiskScoringIntegration", ZeroTrustRiskScoringIntegrationArgs.builder()
+ *         var exampleZeroTrustRiskScoringIntegration = new Integration("exampleZeroTrustRiskScoringIntegration", IntegrationArgs.builder()
  *             .accountId("account_id")
  *             .integrationType("Okta")
  *             .tenantUrl("https://example.com")
@@ -63,7 +63,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration example &#39;&lt;account_id&gt;/&lt;integration_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integration:Integration
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integration:Integration */
 @ResourceType(type="cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration")
 public class ZeroTrustRiskScoringIntegration extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

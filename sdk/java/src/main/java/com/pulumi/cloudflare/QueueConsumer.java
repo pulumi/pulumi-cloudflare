@@ -32,9 +32,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.QueueConsumer;
- * import com.pulumi.cloudflare.QueueConsumerArgs;
- * import com.pulumi.cloudflare.inputs.QueueConsumerSettingsArgs;
+ * import com.pulumi.cloudflare.queue.Consumer;
+ * import com.pulumi.cloudflare.queue.ConsumerArgs;
+ * import com.pulumi.cloudflare.queue.inputs.ConsumerSettingsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -48,13 +48,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleQueueConsumer = new QueueConsumer("exampleQueueConsumer", QueueConsumerArgs.builder()
+ *         var exampleQueueConsumer = new Consumer("exampleQueueConsumer", ConsumerArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .queueId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .scriptName("my-consumer-worker")
  *             .type("worker")
  *             .deadLetterQueue("example-queue")
- *             .settings(QueueConsumerSettingsArgs.builder()
+ *             .settings(ConsumerSettingsArgs.builder()
  *                 .batchSize(50.0)
  *                 .maxConcurrency(10.0)
  *                 .maxRetries(3.0)
@@ -72,7 +72,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/queueConsumer:QueueConsumer has been deprecated in favor of cloudflare:queue/consumer:Consumer
+ * 
  */
+@Deprecated /* cloudflare:index/queueConsumer:QueueConsumer has been deprecated in favor of cloudflare:queue/consumer:Consumer */
 @ResourceType(type="cloudflare:index/queueConsumer:QueueConsumer")
 public class QueueConsumer extends com.pulumi.resources.CustomResource {
     /**

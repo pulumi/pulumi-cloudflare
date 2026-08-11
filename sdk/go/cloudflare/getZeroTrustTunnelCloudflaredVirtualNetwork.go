@@ -25,14 +25,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrusttunnelcloudflaredvirtual"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustTunnelCloudflaredVirtualNetwork(ctx, &cloudflare.LookupZeroTrustTunnelCloudflaredVirtualNetworkArgs{
+//			_, err := zerotrusttunnelcloudflaredvirtual.GetNetwork(ctx, &zerotrusttunnelcloudflaredvirtual.GetNetworkArgs{
 //				AccountId:        pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //				VirtualNetworkId: pulumi.StringRef("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
 //			}, nil)
@@ -44,6 +44,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustTunnelCloudflaredVirtualNetwork:getZeroTrustTunnelCloudflaredVirtualNetwork has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflaredVirtual/network:getNetwork
 func LookupZeroTrustTunnelCloudflaredVirtualNetwork(ctx *pulumi.Context, args *LookupZeroTrustTunnelCloudflaredVirtualNetworkArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustTunnelCloudflaredVirtualNetworkResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustTunnelCloudflaredVirtualNetworkResult

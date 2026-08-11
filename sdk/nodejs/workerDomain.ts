@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersCustomDomain = new cloudflare.WorkersCustomDomain("example_workers_custom_domain", {
+ * const exampleWorkersCustomDomain = new cloudflare.workerscustom.Domain("example_workers_custom_domain", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     hostname: "app.example.com",
  *     service: "my-worker",
@@ -136,8 +136,6 @@ export class WorkerDomain extends pulumi.CustomResource {
             resourceInputs["certId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/workerDomain:WorkerDomain" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkerDomain.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustGatewayPolicy = new cloudflare.ZeroTrustGatewayPolicy("example_zero_trust_gateway_policy", {
+ * const exampleZeroTrustGatewayPolicy = new cloudflare.zerotrustgateway.Policy("example_zero_trust_gateway_policy", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     action: "allow",
  *     name: "block bad websites",
@@ -332,8 +332,6 @@ export class TeamsRule extends pulumi.CustomResource {
             resourceInputs["warningStatus"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/teamsRule:TeamsRule" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(TeamsRule.__pulumiType, name, resourceInputs, opts);
     }
 }

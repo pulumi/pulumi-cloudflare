@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleR2BucketLock = new cloudflare.R2BucketLock("example_r2_bucket_lock", {
+ * const exampleR2BucketLock = new cloudflare.r2bucket.Lock("example_r2_bucket_lock", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
  *     rules: [{
@@ -31,6 +31,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/r2BucketLock:R2BucketLock has been deprecated in favor of cloudflare:r2Bucket/lock:Lock
  */
 export class R2BucketLock extends pulumi.CustomResource {
     /**
@@ -43,6 +45,7 @@ export class R2BucketLock extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: R2BucketLockState, opts?: pulumi.CustomResourceOptions): R2BucketLock {
+        pulumi.log.warn("R2BucketLock is deprecated: cloudflare:index/r2BucketLock:R2BucketLock has been deprecated in favor of cloudflare:r2Bucket/lock:Lock")
         return new R2BucketLock(name, <any>state, { ...opts, id: id });
     }
 
@@ -81,8 +84,11 @@ export class R2BucketLock extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/r2BucketLock:R2BucketLock has been deprecated in favor of cloudflare:r2Bucket/lock:Lock */
     constructor(name: string, args: R2BucketLockArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/r2BucketLock:R2BucketLock has been deprecated in favor of cloudflare:r2Bucket/lock:Lock */
     constructor(name: string, argsOrState?: R2BucketLockArgs | R2BucketLockState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("R2BucketLock is deprecated: cloudflare:index/r2BucketLock:R2BucketLock has been deprecated in favor of cloudflare:r2Bucket/lock:Lock")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

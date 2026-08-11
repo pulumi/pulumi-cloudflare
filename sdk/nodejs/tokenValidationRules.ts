@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleTokenValidationRules = new cloudflare.TokenValidationRules("example_token_validation_rules", {
+ * const exampleTokenValidationRules = new cloudflare.tokenvalidationrules.TokenValidationRules("example_token_validation_rules", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     action: "log",
  *     description: "Long description for Token Validation Rule",
@@ -49,6 +49,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/tokenValidationRules:TokenValidationRules example '<zone_id>/<rule_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/tokenValidationRules:TokenValidationRules has been deprecated in favor of cloudflare:tokenValidationRules/tokenValidationRules:TokenValidationRules
  */
 export class TokenValidationRules extends pulumi.CustomResource {
     /**
@@ -61,6 +63,7 @@ export class TokenValidationRules extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TokenValidationRulesState, opts?: pulumi.CustomResourceOptions): TokenValidationRules {
+        pulumi.log.warn("TokenValidationRules is deprecated: cloudflare:index/tokenValidationRules:TokenValidationRules has been deprecated in favor of cloudflare:tokenValidationRules/tokenValidationRules:TokenValidationRules")
         return new TokenValidationRules(name, <any>state, { ...opts, id: id });
     }
 
@@ -123,8 +126,11 @@ export class TokenValidationRules extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/tokenValidationRules:TokenValidationRules has been deprecated in favor of cloudflare:tokenValidationRules/tokenValidationRules:TokenValidationRules */
     constructor(name: string, args: TokenValidationRulesArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/tokenValidationRules:TokenValidationRules has been deprecated in favor of cloudflare:tokenValidationRules/tokenValidationRules:TokenValidationRules */
     constructor(name: string, argsOrState?: TokenValidationRulesArgs | TokenValidationRulesState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("TokenValidationRules is deprecated: cloudflare:index/tokenValidationRules:TokenValidationRules has been deprecated in favor of cloudflare:tokenValidationRules/tokenValidationRules:TokenValidationRules")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

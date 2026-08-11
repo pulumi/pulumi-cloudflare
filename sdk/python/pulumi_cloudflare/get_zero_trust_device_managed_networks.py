@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_device_managed_networks_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDeviceManagedNetworks:getZeroTrustDeviceManagedNetworks has been deprecated in favor of cloudflare:zeroTrustDeviceManagedNetworks/zeroTrustDeviceManagedNetworks:getZeroTrustDeviceManagedNetworks""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDeviceManagedNetworksResult:
     """
@@ -118,13 +120,14 @@ def get_zero_trust_device_managed_networks(account_id: Optional[_builtins.str] =
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_device_managed_networks = cloudflare.get_zero_trust_device_managed_networks(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_device_managed_networks = cloudflare.zerotrustdevicemanagednetworks.get_zero_trust_device_managed_networks(account_id="699d98642c564d2e855e9661899b7252",
         network_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
 
 
     :param _builtins.str network_id: API UUID.
     """
+    pulumi.log.warn("""get_zero_trust_device_managed_networks is deprecated: cloudflare:index/getZeroTrustDeviceManagedNetworks:getZeroTrustDeviceManagedNetworks has been deprecated in favor of cloudflare:zeroTrustDeviceManagedNetworks/zeroTrustDeviceManagedNetworks:getZeroTrustDeviceManagedNetworks""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['networkId'] = network_id
@@ -148,13 +151,14 @@ def get_zero_trust_device_managed_networks_output(account_id: pulumi.Input[Optio
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_device_managed_networks = cloudflare.get_zero_trust_device_managed_networks(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_device_managed_networks = cloudflare.zerotrustdevicemanagednetworks.get_zero_trust_device_managed_networks(account_id="699d98642c564d2e855e9661899b7252",
         network_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
 
 
     :param _builtins.str network_id: API UUID.
     """
+    pulumi.log.warn("""get_zero_trust_device_managed_networks is deprecated: cloudflare:index/getZeroTrustDeviceManagedNetworks:getZeroTrustDeviceManagedNetworks has been deprecated in favor of cloudflare:zeroTrustDeviceManagedNetworks/zeroTrustDeviceManagedNetworks:getZeroTrustDeviceManagedNetworks""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['networkId'] = network_id

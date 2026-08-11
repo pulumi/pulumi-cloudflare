@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleRegistrarDomain = new Cloudflare.RegistrarDomain("example_registrar_domain", new()
+    ///     var exampleRegistrarDomain = new Cloudflare.Modules.Registrar.RegistrarDomain("example_registrar_domain", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         DomainName = "example.com",
@@ -36,6 +36,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/registrarDomain:RegistrarDomain has been deprecated in favor of cloudflare:registrar/domain:Domain")]
     [CloudflareResourceType("cloudflare:index/registrarDomain:RegistrarDomain")]
     public partial class RegistrarDomain : global::Pulumi.CustomResource
     {

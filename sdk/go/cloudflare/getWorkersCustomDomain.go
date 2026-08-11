@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/workerscustom"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetWorkersCustomDomain(ctx, &cloudflare.LookupWorkersCustomDomainArgs{
+//			_, err := workerscustom.GetDomain(ctx, &workerscustom.GetDomainArgs{
 //				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				DomainId:  pulumi.StringRef("dbe10b4bc17c295377eabd600e1787fd"),
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getWorkersCustomDomain:getWorkersCustomDomain has been deprecated in favor of cloudflare:workersCustom/domain:getDomain
 func LookupWorkersCustomDomain(ctx *pulumi.Context, args *LookupWorkersCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupWorkersCustomDomainResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkersCustomDomainResult

@@ -24,25 +24,25 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/emailrouting"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewEmailRoutingRule(ctx, "example_email_routing_rule", &cloudflare.EmailRoutingRuleArgs{
+//			_, err := emailrouting.NewRule(ctx, "example_email_routing_rule", &emailrouting.RuleArgs{
 //				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Actions: cloudflare.EmailRoutingRuleActionArray{
-//					&cloudflare.EmailRoutingRuleActionArgs{
+//				Actions: emailrouting.RuleActionArray{
+//					&emailrouting.RuleActionArgs{
 //						Type: pulumi.String("forward"),
 //						Value: []string{
 //							"destinationaddress@example.net",
 //						},
 //					},
 //				},
-//				Matchers: cloudflare.EmailRoutingRuleMatcherArray{
-//					&cloudflare.EmailRoutingRuleMatcherArgs{
+//				Matchers: emailrouting.RuleMatcherArray{
+//					&emailrouting.RuleMatcherArgs{
 //						Type:  pulumi.String("literal"),
 //						Field: pulumi.String("to"),
 //						Value: pulumi.String("test@example.com"),
@@ -68,6 +68,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/emailRoutingRule:EmailRoutingRule example '<zone_id>/<rule_identifier>'
 // ```
+//
+// Deprecated: cloudflare:index/emailRoutingRule:EmailRoutingRule has been deprecated in favor of cloudflare:emailRouting/rule:Rule
 type EmailRoutingRule struct {
 	pulumi.CustomResourceState
 

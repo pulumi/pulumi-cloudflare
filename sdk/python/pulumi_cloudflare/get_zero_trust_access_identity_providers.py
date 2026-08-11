@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_access_identity_providers_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustAccessIdentityProviders:getZeroTrustAccessIdentityProviders has been deprecated in favor of cloudflare:zeroTrustAccessIdentity/providers:getProviders""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustAccessIdentityProvidersResult:
     """
@@ -115,7 +117,7 @@ def get_zero_trust_access_identity_providers(account_id: Optional[_builtins.str]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_identity_providers = cloudflare.get_zero_trust_access_identity_providers(account_id="account_id",
+    example_zero_trust_access_identity_providers = cloudflare.zerotrustaccessidentity.get_providers(account_id="account_id",
         zone_id="zone_id",
         scim_enabled="scim_enabled")
     ```
@@ -126,6 +128,7 @@ def get_zero_trust_access_identity_providers(account_id: Optional[_builtins.str]
     :param _builtins.str scim_enabled: Indicates to Access to only retrieve identity providers that have the System for Cross-Domain Identity Management (SCIM) enabled.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_zero_trust_access_identity_providers is deprecated: cloudflare:index/getZeroTrustAccessIdentityProviders:getZeroTrustAccessIdentityProviders has been deprecated in favor of cloudflare:zeroTrustAccessIdentity/providers:getProviders""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -157,7 +160,7 @@ def get_zero_trust_access_identity_providers_output(account_id: pulumi.Input[Opt
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_identity_providers = cloudflare.get_zero_trust_access_identity_providers(account_id="account_id",
+    example_zero_trust_access_identity_providers = cloudflare.zerotrustaccessidentity.get_providers(account_id="account_id",
         zone_id="zone_id",
         scim_enabled="scim_enabled")
     ```
@@ -168,6 +171,7 @@ def get_zero_trust_access_identity_providers_output(account_id: pulumi.Input[Opt
     :param _builtins.str scim_enabled: Indicates to Access to only retrieve identity providers that have the System for Cross-Domain Identity Management (SCIM) enabled.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_zero_trust_access_identity_providers is deprecated: cloudflare:index/getZeroTrustAccessIdentityProviders:getZeroTrustAccessIdentityProviders has been deprecated in favor of cloudflare:zeroTrustAccessIdentity/providers:getProviders""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

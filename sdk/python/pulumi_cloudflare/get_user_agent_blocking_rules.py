@@ -22,6 +22,8 @@ __all__ = [
     'get_user_agent_blocking_rules_output',
 ]
 
+warnings.warn("""cloudflare:index/getUserAgentBlockingRules:getUserAgentBlockingRules has been deprecated in favor of cloudflare:userAgentBlocking/rules:getRules""", DeprecationWarning)
+
 @pulumi.output_type
 class GetUserAgentBlockingRulesResult:
     """
@@ -128,7 +130,7 @@ def get_user_agent_blocking_rules(description: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_user_agent_blocking_rules = cloudflare.get_user_agent_blocking_rules(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_user_agent_blocking_rules = cloudflare.useragentblocking.get_rules(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         description="abusive",
         paused=False,
         user_agent="Safari")
@@ -141,6 +143,7 @@ def get_user_agent_blocking_rules(description: Optional[_builtins.str] = None,
     :param _builtins.str user_agent: A string to search for in the user agent values of existing rules.
     :param _builtins.str zone_id: Defines an identifier.
     """
+    pulumi.log.warn("""get_user_agent_blocking_rules is deprecated: cloudflare:index/getUserAgentBlockingRules:getUserAgentBlockingRules has been deprecated in favor of cloudflare:userAgentBlocking/rules:getRules""")
     __args__ = dict()
     __args__['description'] = description
     __args__['maxItems'] = max_items
@@ -175,7 +178,7 @@ def get_user_agent_blocking_rules_output(description: pulumi.Input[Optional[Opti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_user_agent_blocking_rules = cloudflare.get_user_agent_blocking_rules(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_user_agent_blocking_rules = cloudflare.useragentblocking.get_rules(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         description="abusive",
         paused=False,
         user_agent="Safari")
@@ -188,6 +191,7 @@ def get_user_agent_blocking_rules_output(description: pulumi.Input[Optional[Opti
     :param _builtins.str user_agent: A string to search for in the user agent values of existing rules.
     :param _builtins.str zone_id: Defines an identifier.
     """
+    pulumi.log.warn("""get_user_agent_blocking_rules is deprecated: cloudflare:index/getUserAgentBlockingRules:getUserAgentBlockingRules has been deprecated in favor of cloudflare:userAgentBlocking/rules:getRules""")
     __args__ = dict()
     __args__['description'] = description
     __args__['maxItems'] = max_items

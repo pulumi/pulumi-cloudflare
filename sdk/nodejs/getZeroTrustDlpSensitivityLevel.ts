@@ -16,14 +16,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpSensitivityLevel = cloudflare.getZeroTrustDlpSensitivityLevel({
+ * const exampleZeroTrustDlpSensitivityLevel = cloudflare.zerotrustdlpsensitivitylevel.getZeroTrustDlpSensitivityLevel({
  *     accountId: "account_id",
  *     sensitivityGroupId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  *     sensitivityLevelId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpSensitivityLevel:getZeroTrustDlpSensitivityLevel has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/zeroTrustDlpSensitivityLevel:getZeroTrustDlpSensitivityLevel */
 export function getZeroTrustDlpSensitivityLevel(args: GetZeroTrustDlpSensitivityLevelArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDlpSensitivityLevelResult> {
+    pulumi.log.warn("getZeroTrustDlpSensitivityLevel is deprecated: cloudflare:index/getZeroTrustDlpSensitivityLevel:getZeroTrustDlpSensitivityLevel has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/zeroTrustDlpSensitivityLevel:getZeroTrustDlpSensitivityLevel")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDlpSensitivityLevel:getZeroTrustDlpSensitivityLevel", {
         "accountId": args.accountId,
@@ -69,14 +71,16 @@ export interface GetZeroTrustDlpSensitivityLevelResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpSensitivityLevel = cloudflare.getZeroTrustDlpSensitivityLevel({
+ * const exampleZeroTrustDlpSensitivityLevel = cloudflare.zerotrustdlpsensitivitylevel.getZeroTrustDlpSensitivityLevel({
  *     accountId: "account_id",
  *     sensitivityGroupId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  *     sensitivityLevelId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpSensitivityLevel:getZeroTrustDlpSensitivityLevel has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/zeroTrustDlpSensitivityLevel:getZeroTrustDlpSensitivityLevel */
 export function getZeroTrustDlpSensitivityLevelOutput(args: GetZeroTrustDlpSensitivityLevelOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDlpSensitivityLevelResult> {
+    pulumi.log.warn("getZeroTrustDlpSensitivityLevel is deprecated: cloudflare:index/getZeroTrustDlpSensitivityLevel:getZeroTrustDlpSensitivityLevel has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/zeroTrustDlpSensitivityLevel:getZeroTrustDlpSensitivityLevel")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDlpSensitivityLevel:getZeroTrustDlpSensitivityLevel", {
         "accountId": args.accountId,

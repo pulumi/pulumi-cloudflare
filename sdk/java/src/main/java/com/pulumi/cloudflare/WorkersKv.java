@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WorkersKv;
- * import com.pulumi.cloudflare.WorkersKvArgs;
+ * import com.pulumi.cloudflare.workersKv.WorkersKv;
+ * import com.pulumi.cloudflare.workersKv.WorkersKvArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -64,7 +64,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/workersKv:WorkersKv example &#39;&lt;account_id&gt;/&lt;namespace_id&gt;/&lt;key_name&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/workersKv:WorkersKv has been deprecated in favor of cloudflare:workersKv/workersKv:WorkersKv
+ * 
  */
+@Deprecated /* cloudflare:index/workersKv:WorkersKv has been deprecated in favor of cloudflare:workersKv/workersKv:WorkersKv */
 @ResourceType(type="cloudflare:index/workersKv:WorkersKv")
 public class WorkersKv extends com.pulumi.resources.CustomResource {
     /**

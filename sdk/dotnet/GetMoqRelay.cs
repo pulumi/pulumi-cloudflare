@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getMoqRelay:getMoqRelay has been deprecated in favor of cloudflare:moq/relay:getRelay")]
     public static class GetMoqRelay
     {
         public static Task<GetMoqRelayResult> InvokeAsync(GetMoqRelayArgs args, InvokeOptions? options = null)

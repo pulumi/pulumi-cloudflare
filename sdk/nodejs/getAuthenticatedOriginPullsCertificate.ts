@@ -11,13 +11,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAuthenticatedOriginPullsCertificate = cloudflare.getAuthenticatedOriginPullsCertificate({
+ * const exampleAuthenticatedOriginPullsCertificate = cloudflare.authenticatedoriginpulls.getCertificate({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     certificateId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAuthenticatedOriginPullsCertificate:getAuthenticatedOriginPullsCertificate has been deprecated in favor of cloudflare:authenticatedOriginPulls/certificate:getCertificate */
 export function getAuthenticatedOriginPullsCertificate(args: GetAuthenticatedOriginPullsCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthenticatedOriginPullsCertificateResult> {
+    pulumi.log.warn("getAuthenticatedOriginPullsCertificate is deprecated: cloudflare:index/getAuthenticatedOriginPullsCertificate:getAuthenticatedOriginPullsCertificate has been deprecated in favor of cloudflare:authenticatedOriginPulls/certificate:getCertificate")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAuthenticatedOriginPullsCertificate:getAuthenticatedOriginPullsCertificate", {
         "certificateId": args.certificateId,
@@ -92,13 +94,15 @@ export interface GetAuthenticatedOriginPullsCertificateResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAuthenticatedOriginPullsCertificate = cloudflare.getAuthenticatedOriginPullsCertificate({
+ * const exampleAuthenticatedOriginPullsCertificate = cloudflare.authenticatedoriginpulls.getCertificate({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     certificateId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAuthenticatedOriginPullsCertificate:getAuthenticatedOriginPullsCertificate has been deprecated in favor of cloudflare:authenticatedOriginPulls/certificate:getCertificate */
 export function getAuthenticatedOriginPullsCertificateOutput(args: GetAuthenticatedOriginPullsCertificateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAuthenticatedOriginPullsCertificateResult> {
+    pulumi.log.warn("getAuthenticatedOriginPullsCertificate is deprecated: cloudflare:index/getAuthenticatedOriginPullsCertificate:getAuthenticatedOriginPullsCertificate has been deprecated in favor of cloudflare:authenticatedOriginPulls/certificate:getCertificate")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAuthenticatedOriginPullsCertificate:getAuthenticatedOriginPullsCertificate", {
         "certificateId": args.certificateId,

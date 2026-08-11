@@ -24,15 +24,15 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustaccessidentity"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustAccessIdentityProvider(ctx, "example_zero_trust_access_identity_provider", &cloudflare.ZeroTrustAccessIdentityProviderArgs{
-//				Config: &cloudflare.ZeroTrustAccessIdentityProviderConfigArgs{
+//			_, err := zerotrustaccessidentity.NewProvider(ctx, "example_zero_trust_access_identity_provider", &zerotrustaccessidentity.ProviderArgs{
+//				Config: &zerotrustaccessidentity.ProviderConfigArgs{
 //					Claims: pulumi.StringArray{
 //						pulumi.String("email_verified"),
 //						pulumi.String("preferred_username"),
@@ -49,7 +49,7 @@ import (
 //				Name:   pulumi.String("Widget Corps IDP"),
 //				Type:   pulumi.String("onetimepin"),
 //				ZoneId: pulumi.String("zone_id"),
-//				ScimConfig: &cloudflare.ZeroTrustAccessIdentityProviderScimConfigArgs{
+//				ScimConfig: &zerotrustaccessidentity.ProviderScimConfigArgs{
 //					Enabled:                pulumi.Bool(true),
 //					IdentityUpdateBehavior: pulumi.String("automatic"),
 //					SeatDeprovision:        pulumi.Bool(true),
@@ -70,6 +70,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider example '<{accounts|zones}/{account_id|zone_id}>/<identity_provider_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider has been deprecated in favor of cloudflare:zeroTrustAccessIdentity/provider:Provider
 type ZeroTrustAccessIdentityProvider struct {
 	pulumi.CustomResourceState
 

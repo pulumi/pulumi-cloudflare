@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getEmailSecurityImpersonationRegistry:getEmailSecurityImpersonationRegistry has been deprecated in favor of cloudflare:emailSecurityImpersonation/registry:getRegistry")]
     public static class GetEmailSecurityImpersonationRegistry
     {
         /// <summary>

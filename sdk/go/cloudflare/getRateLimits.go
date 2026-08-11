@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/rate"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetRateLimits(ctx, &cloudflare.LookupRateLimitsArgs{
+//			_, err := rate.LookupLimits(ctx, &rate.LookupLimitsArgs{
 //				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
@@ -41,6 +41,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getRateLimits:getRateLimits has been deprecated in favor of cloudflare:rate/limits:getLimits
 func LookupRateLimits(ctx *pulumi.Context, args *LookupRateLimitsArgs, opts ...pulumi.InvokeOption) (*LookupRateLimitsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRateLimitsResult

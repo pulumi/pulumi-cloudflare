@@ -26,20 +26,20 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/magictransitsite"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewMagicTransitSiteWan(ctx, "example_magic_transit_site_wan", &cloudflare.MagicTransitSiteWanArgs{
+//			_, err := magictransitsite.NewWan(ctx, "example_magic_transit_site_wan", &magictransitsite.WanArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				SiteId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Physport:  pulumi.Int(1),
 //				Name:      pulumi.String("name"),
 //				Priority:  pulumi.Int(0),
-//				StaticAddressing: &cloudflare.MagicTransitSiteWanStaticAddressingArgs{
+//				StaticAddressing: &magictransitsite.WanStaticAddressingArgs{
 //					Address:          pulumi.String("192.0.2.0/24"),
 //					GatewayAddress:   pulumi.String("192.0.2.1"),
 //					SecondaryAddress: pulumi.String("192.0.2.0/24"),
@@ -60,6 +60,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan example '<account_id>/<site_id>/<wan_id>'
 // ```
+//
+// Deprecated: cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan has been deprecated in favor of cloudflare:magicTransitSite/wan:Wan
 type MagicTransitSiteWan struct {
 	pulumi.CustomResourceState
 

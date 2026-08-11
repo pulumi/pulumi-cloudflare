@@ -25,14 +25,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/magicwan"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetMagicWanIpsecTunnel(ctx, &cloudflare.LookupMagicWanIpsecTunnelArgs{
+//			_, err := magicwan.GetIpsecTunnel(ctx, &magicwan.GetIpsecTunnelArgs{
 //				AccountId:     pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				IpsecTunnelId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
@@ -44,6 +44,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getMagicWanIpsecTunnel:getMagicWanIpsecTunnel has been deprecated in favor of cloudflare:magicWan/ipsecTunnel:getIpsecTunnel
 func LookupMagicWanIpsecTunnel(ctx *pulumi.Context, args *LookupMagicWanIpsecTunnelArgs, opts ...pulumi.InvokeOption) (*LookupMagicWanIpsecTunnelResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMagicWanIpsecTunnelResult

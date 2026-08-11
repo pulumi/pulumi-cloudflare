@@ -25,13 +25,13 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWaitingRoomRules = new Cloudflare.WaitingRoomRules("example_waiting_room_rules", new()
+    ///     var exampleWaitingRoomRules = new Cloudflare.Modules.WaitingRoom.WaitingRoomRules("example_waiting_room_rules", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         WaitingRoomId = "699d98642c564d2e855e9661899b7252",
     ///         Rules = new[]
     ///         {
-    ///             new Cloudflare.Inputs.WaitingRoomRulesRuleArgs
+    ///             new Cloudflare.Modules.WaitingRoom.Inputs.RulesRuleArgs
     ///             {
     ///                 Action = "bypass_waiting_room",
     ///                 Expression = "ip.src in {10.20.30.40}",
@@ -50,6 +50,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/waitingRoomRules:WaitingRoomRules example '&lt;zone_id&gt;/&lt;waiting_room_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/waitingRoomRules:WaitingRoomRules has been deprecated in favor of cloudflare:waitingRoom/rules:Rules")]
     [CloudflareResourceType("cloudflare:index/waitingRoomRules:WaitingRoomRules")]
     public partial class WaitingRoomRules : global::Pulumi.CustomResource
     {

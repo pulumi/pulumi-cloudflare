@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleD1Database = new Cloudflare.D1Database("example_d1_database", new()
+    ///     var exampleD1Database = new Cloudflare.Modules.D1.D1Database("example_d1_database", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "my-database",
@@ -45,6 +45,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/d1Database:D1Database example '&lt;account_id&gt;/&lt;database_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/d1Database:D1Database has been deprecated in favor of cloudflare:d1/database:Database")]
     [CloudflareResourceType("cloudflare:index/d1Database:D1Database")]
     public partial class D1Database : global::Pulumi.CustomResource
     {

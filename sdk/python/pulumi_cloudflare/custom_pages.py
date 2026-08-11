@@ -260,8 +260,13 @@ class _CustomPagesState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/customPages:CustomPages has been deprecated in favor of cloudflare:customPages/customPages:CustomPages""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/customPages:CustomPages")
 class CustomPages(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/customPages:CustomPages has been deprecated in favor of cloudflare:customPages/customPages:CustomPages""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -287,7 +292,7 @@ class CustomPages(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_custom_pages = cloudflare.CustomPages("example_custom_pages",
+        example_custom_pages = cloudflare.custompages.CustomPages("example_custom_pages",
             identifier="ratelimit_block",
             state="default",
             url="http://www.example.com",
@@ -332,7 +337,7 @@ class CustomPages(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_custom_pages = cloudflare.CustomPages("example_custom_pages",
+        example_custom_pages = cloudflare.custompages.CustomPages("example_custom_pages",
             identifier="ratelimit_block",
             state="default",
             url="http://www.example.com",
@@ -367,6 +372,7 @@ class CustomPages(pulumi.CustomResource):
                  url: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""CustomPages is deprecated: cloudflare:index/customPages:CustomPages has been deprecated in favor of cloudflare:customPages/customPages:CustomPages""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

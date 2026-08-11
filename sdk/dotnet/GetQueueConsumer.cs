@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getQueueConsumer:getQueueConsumer has been deprecated in favor of cloudflare:queue/consumer:getConsumer")]
     public static class GetQueueConsumer
     {
         /// <summary>

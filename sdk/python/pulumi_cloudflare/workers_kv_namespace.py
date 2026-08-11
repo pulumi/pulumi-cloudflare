@@ -112,8 +112,13 @@ class _WorkersKvNamespaceState:
         pulumi.set(self, "title", value)
 
 
+warnings.warn("""cloudflare:index/workersKvNamespace:WorkersKvNamespace has been deprecated in favor of cloudflare:workersKv/namespace:Namespace""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/workersKvNamespace:WorkersKvNamespace")
 class WorkersKvNamespace(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/workersKvNamespace:WorkersKvNamespace has been deprecated in favor of cloudflare:workersKv/namespace:Namespace""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -133,7 +138,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_workers_kv_namespace = cloudflare.WorkersKvNamespace("example_workers_kv_namespace",
+        example_workers_kv_namespace = cloudflare.workerskv.Namespace("example_workers_kv_namespace",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             title="My Own Namespace")
         ```
@@ -168,7 +173,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_workers_kv_namespace = cloudflare.WorkersKvNamespace("example_workers_kv_namespace",
+        example_workers_kv_namespace = cloudflare.workerskv.Namespace("example_workers_kv_namespace",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             title="My Own Namespace")
         ```
@@ -198,6 +203,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  title: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""WorkersKvNamespace is deprecated: cloudflare:index/workersKvNamespace:WorkersKvNamespace has been deprecated in favor of cloudflare:workersKv/namespace:Namespace""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

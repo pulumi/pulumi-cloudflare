@@ -20,23 +20,23 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustGatewayLogging = new Cloudflare.ZeroTrustGatewayLogging("example_zero_trust_gateway_logging", new()
+    ///     var exampleZeroTrustGatewayLogging = new Cloudflare.Modules.ZeroTrustGateway.ZeroTrustGatewayLogging("example_zero_trust_gateway_logging", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         RedactPii = true,
-    ///         SettingsByRuleType = new Cloudflare.Inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeArgs
+    ///         SettingsByRuleType = new Cloudflare.Modules.ZeroTrustGateway.Inputs.LoggingSettingsByRuleTypeArgs
     ///         {
-    ///             Dns = new Cloudflare.Inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs
+    ///             Dns = new Cloudflare.Modules.ZeroTrustGateway.Inputs.LoggingSettingsByRuleTypeDnsArgs
     ///             {
     ///                 LogAll = false,
     ///                 LogBlocks = true,
     ///             },
-    ///             Http = new Cloudflare.Inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs
+    ///             Http = new Cloudflare.Modules.ZeroTrustGateway.Inputs.LoggingSettingsByRuleTypeHttpArgs
     ///             {
     ///                 LogAll = false,
     ///                 LogBlocks = true,
     ///             },
-    ///             L4 = new Cloudflare.Inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args
+    ///             L4 = new Cloudflare.Modules.ZeroTrustGateway.Inputs.LoggingSettingsByRuleTypeL4Args
     ///             {
     ///                 LogAll = false,
     ///                 LogBlocks = true,
@@ -53,6 +53,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging example '&lt;account_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging has been deprecated in favor of cloudflare:zeroTrustGateway/logging:Logging")]
     [CloudflareResourceType("cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging")]
     public partial class ZeroTrustGatewayLogging : global::Pulumi.CustomResource
     {

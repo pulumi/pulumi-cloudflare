@@ -21,12 +21,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleNotificationPolicies = cloudflare.getNotificationPolicies({
+ * const exampleNotificationPolicies = cloudflare.notification.getPolicies({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getNotificationPolicies:getNotificationPolicies has been deprecated in favor of cloudflare:notification/policies:getPolicies */
 export function getNotificationPolicies(args?: GetNotificationPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationPoliciesResult> {
+    pulumi.log.warn("getNotificationPolicies is deprecated: cloudflare:index/getNotificationPolicies:getNotificationPolicies has been deprecated in favor of cloudflare:notification/policies:getPolicies")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getNotificationPolicies:getNotificationPolicies", {
@@ -81,12 +83,14 @@ export interface GetNotificationPoliciesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleNotificationPolicies = cloudflare.getNotificationPolicies({
+ * const exampleNotificationPolicies = cloudflare.notification.getPolicies({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getNotificationPolicies:getNotificationPolicies has been deprecated in favor of cloudflare:notification/policies:getPolicies */
 export function getNotificationPoliciesOutput(args?: GetNotificationPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNotificationPoliciesResult> {
+    pulumi.log.warn("getNotificationPolicies is deprecated: cloudflare:index/getNotificationPolicies:getNotificationPolicies has been deprecated in favor of cloudflare:notification/policies:getPolicies")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getNotificationPolicies:getNotificationPolicies", {

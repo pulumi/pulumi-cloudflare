@@ -25,12 +25,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustRiskBehavior = new Cloudflare.ZeroTrustRiskBehavior("example_zero_trust_risk_behavior", new()
+    ///     var exampleZeroTrustRiskBehavior = new Cloudflare.Modules.ZeroTrust.ZeroTrustRiskBehavior("example_zero_trust_risk_behavior", new()
     ///     {
     ///         AccountId = "account_id",
     ///         Behaviors = 
     ///         {
-    ///             { "foo", new Cloudflare.Inputs.ZeroTrustRiskBehaviorBehaviorsArgs
+    ///             { "foo", new Cloudflare.Modules.ZeroTrust.Inputs.RiskBehaviorBehaviorsArgs
     ///             {
     ///                 Enabled = true,
     ///                 RiskLevel = "low",
@@ -78,10 +78,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/riskBehavior:RiskBehavior" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

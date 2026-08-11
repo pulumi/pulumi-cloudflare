@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_dex_tests_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDexTests:getZeroTrustDexTests has been deprecated in favor of cloudflare:zeroTrustDex/tests:getTests""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDexTestsResult:
     """
@@ -118,7 +120,7 @@ def get_zero_trust_dex_tests(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dex_tests = cloudflare.get_zero_trust_dex_tests(account_id="01a7362d577a6c3019a474fd6f485823",
+    example_zero_trust_dex_tests = cloudflare.zerotrustdex.get_tests(account_id="01a7362d577a6c3019a474fd6f485823",
         kind="http",
         test_name="testName")
     ```
@@ -130,6 +132,7 @@ def get_zero_trust_dex_tests(account_id: Optional[_builtins.str] = None,
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str test_name: Filter by test name.
     """
+    pulumi.log.warn("""get_zero_trust_dex_tests is deprecated: cloudflare:index/getZeroTrustDexTests:getZeroTrustDexTests has been deprecated in favor of cloudflare:zeroTrustDex/tests:getTests""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['kind'] = kind
@@ -163,7 +166,7 @@ def get_zero_trust_dex_tests_output(account_id: pulumi.Input[Optional[Optional[_
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dex_tests = cloudflare.get_zero_trust_dex_tests(account_id="01a7362d577a6c3019a474fd6f485823",
+    example_zero_trust_dex_tests = cloudflare.zerotrustdex.get_tests(account_id="01a7362d577a6c3019a474fd6f485823",
         kind="http",
         test_name="testName")
     ```
@@ -175,6 +178,7 @@ def get_zero_trust_dex_tests_output(account_id: pulumi.Input[Optional[Optional[_
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str test_name: Filter by test name.
     """
+    pulumi.log.warn("""get_zero_trust_dex_tests is deprecated: cloudflare:index/getZeroTrustDexTests:getZeroTrustDexTests has been deprecated in favor of cloudflare:zeroTrustDex/tests:getTests""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['kind'] = kind

@@ -23,8 +23,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.OrganizationProfile;
- * import com.pulumi.cloudflare.OrganizationProfileArgs;
+ * import com.pulumi.cloudflare.organization.Profile;
+ * import com.pulumi.cloudflare.organization.ProfileArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -38,7 +38,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleOrganizationProfile = new OrganizationProfile("exampleOrganizationProfile", OrganizationProfileArgs.builder()
+ *         var exampleOrganizationProfile = new Profile("exampleOrganizationProfile", ProfileArgs.builder()
  *             .organizationId("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
  *             .businessAddress("business_address")
  *             .businessEmail("business_email")
@@ -56,7 +56,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/organizationProfile:OrganizationProfile has been deprecated in favor of cloudflare:organization/profile:Profile
+ * 
  */
+@Deprecated /* cloudflare:index/organizationProfile:OrganizationProfile has been deprecated in favor of cloudflare:organization/profile:Profile */
 @ResourceType(type="cloudflare:index/organizationProfile:OrganizationProfile")
 public class OrganizationProfile extends com.pulumi.resources.CustomResource {
     @Export(name="businessAddress", refs={String.class}, tree="[0]")

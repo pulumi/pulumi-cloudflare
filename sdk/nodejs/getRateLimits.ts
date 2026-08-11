@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleRateLimits = cloudflare.getRateLimits({
+ * const exampleRateLimits = cloudflare.rate.getLimits({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getRateLimits:getRateLimits has been deprecated in favor of cloudflare:rate/limits:getLimits */
 export function getRateLimits(args?: GetRateLimitsArgs, opts?: pulumi.InvokeOptions): Promise<GetRateLimitsResult> {
+    pulumi.log.warn("getRateLimits is deprecated: cloudflare:index/getRateLimits:getRateLimits has been deprecated in favor of cloudflare:rate/limits:getLimits")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getRateLimits:getRateLimits", {
@@ -75,12 +77,14 @@ export interface GetRateLimitsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleRateLimits = cloudflare.getRateLimits({
+ * const exampleRateLimits = cloudflare.rate.getLimits({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getRateLimits:getRateLimits has been deprecated in favor of cloudflare:rate/limits:getLimits */
 export function getRateLimitsOutput(args?: GetRateLimitsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRateLimitsResult> {
+    pulumi.log.warn("getRateLimits is deprecated: cloudflare:index/getRateLimits:getRateLimits has been deprecated in favor of cloudflare:rate/limits:getLimits")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getRateLimits:getRateLimits", {

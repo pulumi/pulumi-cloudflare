@@ -57,14 +57,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/keyless"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetKeylessCertificate(ctx, &cloudflare.LookupKeylessCertificateArgs{
+//			_, err := keyless.LookupCertificate(ctx, &keyless.LookupCertificateArgs{
 //				ZoneId:               pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				KeylessCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
@@ -76,6 +76,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getKeylessCertificate:getKeylessCertificate has been deprecated in favor of cloudflare:keyless/certificate:getCertificate
 func LookupKeylessCertificate(ctx *pulumi.Context, args *LookupKeylessCertificateArgs, opts ...pulumi.InvokeOption) (*LookupKeylessCertificateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKeylessCertificateResult

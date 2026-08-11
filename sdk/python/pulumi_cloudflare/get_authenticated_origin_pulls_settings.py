@@ -21,6 +21,8 @@ __all__ = [
     'get_authenticated_origin_pulls_settings_output',
 ]
 
+warnings.warn("""cloudflare:index/getAuthenticatedOriginPullsSettings:getAuthenticatedOriginPullsSettings has been deprecated in favor of cloudflare:authenticatedOriginPulls/settings:getSettings""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAuthenticatedOriginPullsSettingsResult:
     """
@@ -87,12 +89,13 @@ def get_authenticated_origin_pulls_settings(zone_id: Optional[_builtins.str] = N
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_authenticated_origin_pulls_settings = cloudflare.get_authenticated_origin_pulls_settings(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_authenticated_origin_pulls_settings = cloudflare.authenticatedoriginpulls.get_settings(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_authenticated_origin_pulls_settings is deprecated: cloudflare:index/getAuthenticatedOriginPullsSettings:getAuthenticatedOriginPullsSettings has been deprecated in favor of cloudflare:authenticatedOriginPulls/settings:getSettings""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -116,12 +119,13 @@ def get_authenticated_origin_pulls_settings_output(zone_id: pulumi.Input[Optiona
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_authenticated_origin_pulls_settings = cloudflare.get_authenticated_origin_pulls_settings(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_authenticated_origin_pulls_settings = cloudflare.authenticatedoriginpulls.get_settings(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_authenticated_origin_pulls_settings is deprecated: cloudflare:index/getAuthenticatedOriginPullsSettings:getAuthenticatedOriginPullsSettings has been deprecated in favor of cloudflare:authenticatedOriginPulls/settings:getSettings""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

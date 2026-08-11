@@ -26,14 +26,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/queue"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewQueue(ctx, "example_queue", &cloudflare.QueueArgs{
+//			_, err := queue.NewQueue(ctx, "example_queue", &queue.QueueArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				QueueName: pulumi.String("example-queue"),
 //			})
@@ -51,6 +51,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/queue:Queue example '<account_id>/<queue_id>'
 // ```
+//
+// Deprecated: cloudflare:index/queue:Queue has been deprecated in favor of cloudflare:queue/queue:Queue
 type Queue struct {
 	pulumi.CustomResourceState
 

@@ -129,8 +129,13 @@ class _StreamKeyState:
         pulumi.set(self, "pem", value)
 
 
+warnings.warn("""cloudflare:index/streamKey:StreamKey has been deprecated in favor of cloudflare:stream/key:Key""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/streamKey:StreamKey")
 class StreamKey(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/streamKey:StreamKey has been deprecated in favor of cloudflare:stream/key:Key""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -149,7 +154,7 @@ class StreamKey(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_stream_key = cloudflare.StreamKey("example_stream_key", account_id="023e105f4ecef8ad9ca31a8372d0c353")
+        example_stream_key = cloudflare.stream.Key("example_stream_key", account_id="023e105f4ecef8ad9ca31a8372d0c353")
         ```
 
         ## Import
@@ -181,7 +186,7 @@ class StreamKey(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_stream_key = cloudflare.StreamKey("example_stream_key", account_id="023e105f4ecef8ad9ca31a8372d0c353")
+        example_stream_key = cloudflare.stream.Key("example_stream_key", account_id="023e105f4ecef8ad9ca31a8372d0c353")
         ```
 
         ## Import
@@ -208,6 +213,7 @@ class StreamKey(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""StreamKey is deprecated: cloudflare:index/streamKey:StreamKey has been deprecated in favor of cloudflare:stream/key:Key""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

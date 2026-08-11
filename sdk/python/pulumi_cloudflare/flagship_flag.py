@@ -369,8 +369,13 @@ class _FlagshipFlagState:
         pulumi.set(self, "variations", value)
 
 
+warnings.warn("""cloudflare:index/flagshipFlag:FlagshipFlag has been deprecated in favor of cloudflare:flagship/flag:Flag""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/flagshipFlag:FlagshipFlag")
 class FlagshipFlag(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/flagshipFlag:FlagshipFlag has been deprecated in favor of cloudflare:flagship/flag:Flag""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -398,7 +403,7 @@ class FlagshipFlag(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_flagship_flag = cloudflare.FlagshipFlag("example_flagship_flag",
+        example_flagship_flag = cloudflare.flagship.Flag("example_flagship_flag",
             account_id="account_id",
             app_id="app_id",
             default_variation="x",
@@ -460,7 +465,7 @@ class FlagshipFlag(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_flagship_flag = cloudflare.FlagshipFlag("example_flagship_flag",
+        example_flagship_flag = cloudflare.flagship.Flag("example_flagship_flag",
             account_id="account_id",
             app_id="app_id",
             default_variation="x",
@@ -517,6 +522,7 @@ class FlagshipFlag(pulumi.CustomResource):
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  variations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
+        pulumi.log.warn("""FlagshipFlag is deprecated: cloudflare:index/flagshipFlag:FlagshipFlag has been deprecated in favor of cloudflare:flagship/flag:Flag""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

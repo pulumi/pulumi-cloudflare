@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWaitingRoom = new cloudflare.WaitingRoom("example_waiting_room", {
+ * const exampleWaitingRoom = new cloudflare.waitingroom.WaitingRoom("example_waiting_room", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     host: "shop.example.com",
  *     name: "production_webinar",
@@ -55,6 +55,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/waitingRoom:WaitingRoom example '<zone_id>/<waiting_room_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/waitingRoom:WaitingRoom has been deprecated in favor of cloudflare:waitingRoom/waitingRoom:WaitingRoom
  */
 export class WaitingRoom extends pulumi.CustomResource {
     /**
@@ -67,6 +69,7 @@ export class WaitingRoom extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WaitingRoomState, opts?: pulumi.CustomResourceOptions): WaitingRoom {
+        pulumi.log.warn("WaitingRoom is deprecated: cloudflare:index/waitingRoom:WaitingRoom has been deprecated in favor of cloudflare:waitingRoom/waitingRoom:WaitingRoom")
         return new WaitingRoom(name, <any>state, { ...opts, id: id });
     }
 
@@ -297,8 +300,11 @@ export class WaitingRoom extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/waitingRoom:WaitingRoom has been deprecated in favor of cloudflare:waitingRoom/waitingRoom:WaitingRoom */
     constructor(name: string, args: WaitingRoomArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/waitingRoom:WaitingRoom has been deprecated in favor of cloudflare:waitingRoom/waitingRoom:WaitingRoom */
     constructor(name: string, argsOrState?: WaitingRoomArgs | WaitingRoomState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("WaitingRoom is deprecated: cloudflare:index/waitingRoom:WaitingRoom has been deprecated in favor of cloudflare:waitingRoom/waitingRoom:WaitingRoom")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

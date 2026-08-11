@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getApiToken:getApiToken has been deprecated in favor of cloudflare:apiToken/apiToken:getApiToken")]
     public static class GetApiToken
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiToken = Cloudflare.GetApiToken.Invoke(new()
+        ///     var exampleApiToken = Cloudflare.Modules.ApiToken.GetApiToken.Invoke(new()
         ///     {
         ///         TokenId = "ed17574386854bf78a67040be0a770b0",
         ///     });
@@ -54,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiToken = Cloudflare.GetApiToken.Invoke(new()
+        ///     var exampleApiToken = Cloudflare.Modules.ApiToken.GetApiToken.Invoke(new()
         ///     {
         ///         TokenId = "ed17574386854bf78a67040be0a770b0",
         ///     });
@@ -81,7 +82,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiToken = Cloudflare.GetApiToken.Invoke(new()
+        ///     var exampleApiToken = Cloudflare.Modules.ApiToken.GetApiToken.Invoke(new()
         ///     {
         ///         TokenId = "ed17574386854bf78a67040be0a770b0",
         ///     });

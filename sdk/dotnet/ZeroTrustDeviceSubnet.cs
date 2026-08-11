@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDeviceSubnet = new Cloudflare.ZeroTrustDeviceSubnet("example_zero_trust_device_subnet", new()
+    ///     var exampleZeroTrustDeviceSubnet = new Cloudflare.Modules.ZeroTrustDevice.ZeroTrustDeviceSubnet("example_zero_trust_device_subnet", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Name = "IPv4 Cloudflare Source IPs",
@@ -43,6 +43,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustDeviceSubnet:ZeroTrustDeviceSubnet example '&lt;account_id&gt;/&lt;subnet_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustDeviceSubnet:ZeroTrustDeviceSubnet has been deprecated in favor of cloudflare:zeroTrustDevice/subnet:Subnet")]
     [CloudflareResourceType("cloudflare:index/zeroTrustDeviceSubnet:ZeroTrustDeviceSubnet")]
     public partial class ZeroTrustDeviceSubnet : global::Pulumi.CustomResource
     {

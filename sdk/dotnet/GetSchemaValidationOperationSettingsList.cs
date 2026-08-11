@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getSchemaValidationOperationSettingsList:getSchemaValidationOperationSettingsList has been deprecated in favor of cloudflare:schemaValidationOperationSettings/list:getList")]
     public static class GetSchemaValidationOperationSettingsList
     {
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSchemaValidationOperationSettingsList = Cloudflare.GetSchemaValidationOperationSettingsList.Invoke(new()
+        ///     var exampleSchemaValidationOperationSettingsList = Cloudflare.Modules.SchemaValidationOperationSettings.GetList.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -58,7 +59,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSchemaValidationOperationSettingsList = Cloudflare.GetSchemaValidationOperationSettingsList.Invoke(new()
+        ///     var exampleSchemaValidationOperationSettingsList = Cloudflare.Modules.SchemaValidationOperationSettings.GetList.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -87,7 +88,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSchemaValidationOperationSettingsList = Cloudflare.GetSchemaValidationOperationSettingsList.Invoke(new()
+        ///     var exampleSchemaValidationOperationSettingsList = Cloudflare.Modules.SchemaValidationOperationSettings.GetList.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

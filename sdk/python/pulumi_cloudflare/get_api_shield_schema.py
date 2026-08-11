@@ -21,6 +21,8 @@ __all__ = [
     'get_api_shield_schema_output',
 ]
 
+warnings.warn("""cloudflare:index/getApiShieldSchema:getApiShieldSchema has been deprecated in favor of cloudflare:apiShieldSchema/apiShieldSchema:getApiShieldSchema""", DeprecationWarning)
+
 @pulumi.output_type
 class GetApiShieldSchemaResult:
     """
@@ -146,7 +148,7 @@ def get_api_shield_schema(omit_source: Optional[_builtins.bool] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_api_shield_schema = cloudflare.get_api_shield_schema(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_api_shield_schema = cloudflare.apishieldschema.get_api_shield_schema(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         schema_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         omit_source=True)
     ```
@@ -155,6 +157,7 @@ def get_api_shield_schema(omit_source: Optional[_builtins.bool] = None,
     :param _builtins.bool omit_source: Omit the source-files of schemas and only retrieve their meta-data.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_api_shield_schema is deprecated: cloudflare:index/getApiShieldSchema:getApiShieldSchema has been deprecated in favor of cloudflare:apiShieldSchema/apiShieldSchema:getApiShieldSchema""")
     __args__ = dict()
     __args__['omitSource'] = omit_source
     __args__['schemaId'] = schema_id
@@ -189,7 +192,7 @@ def get_api_shield_schema_output(omit_source: pulumi.Input[Optional[Optional[_bu
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_api_shield_schema = cloudflare.get_api_shield_schema(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_api_shield_schema = cloudflare.apishieldschema.get_api_shield_schema(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         schema_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         omit_source=True)
     ```
@@ -198,6 +201,7 @@ def get_api_shield_schema_output(omit_source: pulumi.Input[Optional[Optional[_bu
     :param _builtins.bool omit_source: Omit the source-files of schemas and only retrieve their meta-data.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_api_shield_schema is deprecated: cloudflare:index/getApiShieldSchema:getApiShieldSchema has been deprecated in favor of cloudflare:apiShieldSchema/apiShieldSchema:getApiShieldSchema""")
     __args__ = dict()
     __args__['omitSource'] = omit_source
     __args__['schemaId'] = schema_id

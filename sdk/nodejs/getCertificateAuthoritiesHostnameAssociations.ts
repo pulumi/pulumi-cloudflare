@@ -16,13 +16,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCertificateAuthoritiesHostnameAssociations = cloudflare.getCertificateAuthoritiesHostnameAssociations({
+ * const exampleCertificateAuthoritiesHostnameAssociations = cloudflare.certificate.getAuthoritiesHostnameAssociations({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     mtlsCertificateId: "b2134436-2555-4acf-be5b-26c48136575e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCertificateAuthoritiesHostnameAssociations:getCertificateAuthoritiesHostnameAssociations has been deprecated in favor of cloudflare:certificate/authoritiesHostnameAssociations:getAuthoritiesHostnameAssociations */
 export function getCertificateAuthoritiesHostnameAssociations(args?: GetCertificateAuthoritiesHostnameAssociationsArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateAuthoritiesHostnameAssociationsResult> {
+    pulumi.log.warn("getCertificateAuthoritiesHostnameAssociations is deprecated: cloudflare:index/getCertificateAuthoritiesHostnameAssociations:getCertificateAuthoritiesHostnameAssociations has been deprecated in favor of cloudflare:certificate/authoritiesHostnameAssociations:getAuthoritiesHostnameAssociations")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCertificateAuthoritiesHostnameAssociations:getCertificateAuthoritiesHostnameAssociations", {
@@ -75,13 +77,15 @@ export interface GetCertificateAuthoritiesHostnameAssociationsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCertificateAuthoritiesHostnameAssociations = cloudflare.getCertificateAuthoritiesHostnameAssociations({
+ * const exampleCertificateAuthoritiesHostnameAssociations = cloudflare.certificate.getAuthoritiesHostnameAssociations({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     mtlsCertificateId: "b2134436-2555-4acf-be5b-26c48136575e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCertificateAuthoritiesHostnameAssociations:getCertificateAuthoritiesHostnameAssociations has been deprecated in favor of cloudflare:certificate/authoritiesHostnameAssociations:getAuthoritiesHostnameAssociations */
 export function getCertificateAuthoritiesHostnameAssociationsOutput(args?: GetCertificateAuthoritiesHostnameAssociationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCertificateAuthoritiesHostnameAssociationsResult> {
+    pulumi.log.warn("getCertificateAuthoritiesHostnameAssociations is deprecated: cloudflare:index/getCertificateAuthoritiesHostnameAssociations:getCertificateAuthoritiesHostnameAssociations has been deprecated in favor of cloudflare:certificate/authoritiesHostnameAssociations:getAuthoritiesHostnameAssociations")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCertificateAuthoritiesHostnameAssociations:getCertificateAuthoritiesHostnameAssociations", {

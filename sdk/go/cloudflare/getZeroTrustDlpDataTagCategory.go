@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdlpdatatag"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustDlpDataTagCategory(ctx, &cloudflare.LookupZeroTrustDlpDataTagCategoryArgs{
+//			_, err := zerotrustdlpdatatag.GetCategory(ctx, &zerotrustdlpdatatag.GetCategoryArgs{
 //				AccountId:  "account_id",
 //				CategoryId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustDlpDataTagCategory:getZeroTrustDlpDataTagCategory has been deprecated in favor of cloudflare:zeroTrustDlpDataTag/category:getCategory
 func LookupZeroTrustDlpDataTagCategory(ctx *pulumi.Context, args *LookupZeroTrustDlpDataTagCategoryArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustDlpDataTagCategoryResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustDlpDataTagCategoryResult

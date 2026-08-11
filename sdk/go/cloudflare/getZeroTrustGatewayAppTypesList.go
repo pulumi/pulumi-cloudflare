@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustgateway"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustGatewayAppTypesList(ctx, &cloudflare.LookupZeroTrustGatewayAppTypesListArgs{
+//			_, err := zerotrustgateway.GetAppTypesList(ctx, &zerotrustgateway.GetAppTypesListArgs{
 //				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
@@ -41,6 +41,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustGatewayAppTypesList:getZeroTrustGatewayAppTypesList has been deprecated in favor of cloudflare:zeroTrustGateway/appTypesList:getAppTypesList
 func LookupZeroTrustGatewayAppTypesList(ctx *pulumi.Context, args *LookupZeroTrustGatewayAppTypesListArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustGatewayAppTypesListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustGatewayAppTypesListResult

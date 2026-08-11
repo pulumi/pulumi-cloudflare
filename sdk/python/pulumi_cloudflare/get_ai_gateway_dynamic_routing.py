@@ -22,6 +22,8 @@ __all__ = [
     'get_ai_gateway_dynamic_routing_output',
 ]
 
+warnings.warn("""cloudflare:index/getAiGatewayDynamicRouting:getAiGatewayDynamicRouting has been deprecated in favor of cloudflare:aiGateway/dynamicRouting:getDynamicRouting""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAiGatewayDynamicRoutingResult:
     """
@@ -138,7 +140,7 @@ def get_ai_gateway_dynamic_routing(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_ai_gateway_dynamic_routing = cloudflare.get_ai_gateway_dynamic_routing(account_id="0d37909e38d3e99c29fa2cd343ac421a",
+    example_ai_gateway_dynamic_routing = cloudflare.aigateway.get_dynamic_routing(account_id="0d37909e38d3e99c29fa2cd343ac421a",
         gateway_id="54442216",
         id="54442216")
     ```
@@ -146,6 +148,7 @@ def get_ai_gateway_dynamic_routing(account_id: Optional[_builtins.str] = None,
 
     :param _builtins.str id: The ID of this resource.
     """
+    pulumi.log.warn("""get_ai_gateway_dynamic_routing is deprecated: cloudflare:index/getAiGatewayDynamicRouting:getAiGatewayDynamicRouting has been deprecated in favor of cloudflare:aiGateway/dynamicRouting:getDynamicRouting""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['gatewayId'] = gateway_id
@@ -179,7 +182,7 @@ def get_ai_gateway_dynamic_routing_output(account_id: pulumi.Input[Optional[Opti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_ai_gateway_dynamic_routing = cloudflare.get_ai_gateway_dynamic_routing(account_id="0d37909e38d3e99c29fa2cd343ac421a",
+    example_ai_gateway_dynamic_routing = cloudflare.aigateway.get_dynamic_routing(account_id="0d37909e38d3e99c29fa2cd343ac421a",
         gateway_id="54442216",
         id="54442216")
     ```
@@ -187,6 +190,7 @@ def get_ai_gateway_dynamic_routing_output(account_id: pulumi.Input[Optional[Opti
 
     :param _builtins.str id: The ID of this resource.
     """
+    pulumi.log.warn("""get_ai_gateway_dynamic_routing is deprecated: cloudflare:index/getAiGatewayDynamicRouting:getAiGatewayDynamicRouting has been deprecated in favor of cloudflare:aiGateway/dynamicRouting:getDynamicRouting""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['gatewayId'] = gateway_id

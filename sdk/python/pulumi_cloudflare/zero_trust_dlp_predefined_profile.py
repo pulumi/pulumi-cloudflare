@@ -265,8 +265,13 @@ class _ZeroTrustDlpPredefinedProfileState:
         pulumi.set(self, "profile_id", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile has been deprecated in favor of cloudflare:zeroTrustDlpPredefined/profile:Profile""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile")
 class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile has been deprecated in favor of cloudflare:zeroTrustDlpPredefined/profile:Profile""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -292,7 +297,7 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_predefined_profile = cloudflare.ZeroTrustDlpPredefinedProfile("example_zero_trust_dlp_predefined_profile",
+        example_zero_trust_dlp_predefined_profile = cloudflare.zerotrustdlppredefined.Profile("example_zero_trust_dlp_predefined_profile",
             profile_id="e91a2360-da51-4fdf-9711-bcdecd462614",
             account_id="account_id",
             ocr_enabled=True,
@@ -341,7 +346,7 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_predefined_profile = cloudflare.ZeroTrustDlpPredefinedProfile("example_zero_trust_dlp_predefined_profile",
+        example_zero_trust_dlp_predefined_profile = cloudflare.zerotrustdlppredefined.Profile("example_zero_trust_dlp_predefined_profile",
             profile_id="e91a2360-da51-4fdf-9711-bcdecd462614",
             account_id="account_id",
             ocr_enabled=True,
@@ -393,6 +398,7 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
                  ocr_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustDlpPredefinedProfile is deprecated: cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile has been deprecated in favor of cloudflare:zeroTrustDlpPredefined/profile:Profile""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

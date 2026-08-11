@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAuthenticatedOriginPullsCertificate = new cloudflare.AuthenticatedOriginPullsCertificate("example_authenticated_origin_pulls_certificate", {
+ * const exampleAuthenticatedOriginPullsCertificate = new cloudflare.authenticatedoriginpulls.Certificate("example_authenticated_origin_pulls_certificate", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     certificate: `  -----BEGIN CERTIFICATE-----
  *   MIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV
@@ -74,6 +74,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate example '<zone_id>/<certificate_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate has been deprecated in favor of cloudflare:authenticatedOriginPulls/certificate:Certificate
  */
 export class AuthenticatedOriginPullsCertificate extends pulumi.CustomResource {
     /**
@@ -86,6 +88,7 @@ export class AuthenticatedOriginPullsCertificate extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AuthenticatedOriginPullsCertificateState, opts?: pulumi.CustomResourceOptions): AuthenticatedOriginPullsCertificate {
+        pulumi.log.warn("AuthenticatedOriginPullsCertificate is deprecated: cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate has been deprecated in favor of cloudflare:authenticatedOriginPulls/certificate:Certificate")
         return new AuthenticatedOriginPullsCertificate(name, <any>state, { ...opts, id: id });
     }
 
@@ -156,8 +159,11 @@ export class AuthenticatedOriginPullsCertificate extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate has been deprecated in favor of cloudflare:authenticatedOriginPulls/certificate:Certificate */
     constructor(name: string, args: AuthenticatedOriginPullsCertificateArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate has been deprecated in favor of cloudflare:authenticatedOriginPulls/certificate:Certificate */
     constructor(name: string, argsOrState?: AuthenticatedOriginPullsCertificateArgs | AuthenticatedOriginPullsCertificateState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("AuthenticatedOriginPullsCertificate is deprecated: cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate has been deprecated in favor of cloudflare:authenticatedOriginPulls/certificate:Certificate")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

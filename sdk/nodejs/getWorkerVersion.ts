@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkerVersion = cloudflare.getWorkerVersion({
+ * const exampleWorkerVersion = cloudflare.worker.getVersion({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     workerId: "worker_id",
  *     versionId: "version_id",
@@ -27,7 +27,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkerVersion:getWorkerVersion has been deprecated in favor of cloudflare:worker/version:getVersion */
 export function getWorkerVersion(args: GetWorkerVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkerVersionResult> {
+    pulumi.log.warn("getWorkerVersion is deprecated: cloudflare:index/getWorkerVersion:getWorkerVersion has been deprecated in favor of cloudflare:worker/version:getVersion")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkerVersion:getWorkerVersion", {
         "accountId": args.accountId,
@@ -127,7 +129,7 @@ export interface GetWorkerVersionResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkerVersion = cloudflare.getWorkerVersion({
+ * const exampleWorkerVersion = cloudflare.worker.getVersion({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     workerId: "worker_id",
  *     versionId: "version_id",
@@ -135,7 +137,9 @@ export interface GetWorkerVersionResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkerVersion:getWorkerVersion has been deprecated in favor of cloudflare:worker/version:getVersion */
 export function getWorkerVersionOutput(args: GetWorkerVersionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkerVersionResult> {
+    pulumi.log.warn("getWorkerVersion is deprecated: cloudflare:index/getWorkerVersion:getWorkerVersion has been deprecated in favor of cloudflare:worker/version:getVersion")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkerVersion:getWorkerVersion", {
         "accountId": args.accountId,

@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/emailrouting"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewEmailRoutingSettings(ctx, "example_email_routing_settings", &cloudflare.EmailRoutingSettingsArgs{
+//			_, err := emailrouting.NewSettings(ctx, "example_email_routing_settings", &emailrouting.SettingsArgs{
 //				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //			})
 //			if err != nil {
@@ -48,6 +48,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/emailRoutingSettings:EmailRoutingSettings example '<zone_id>'
 // ```
+//
+// Deprecated: cloudflare:index/emailRoutingSettings:EmailRoutingSettings has been deprecated in favor of cloudflare:emailRouting/settings:Settings
 type EmailRoutingSettings struct {
 	pulumi.CustomResourceState
 

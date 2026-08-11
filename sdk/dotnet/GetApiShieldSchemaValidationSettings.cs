@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getApiShieldSchemaValidationSettings:getApiShieldSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldSchema/validationSettings:getValidationSettings")]
     public static class GetApiShieldSchemaValidationSettings
     {
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiShieldSchemaValidationSettings = Cloudflare.GetApiShieldSchemaValidationSettings.Invoke(new()
+        ///     var exampleApiShieldSchemaValidationSettings = Cloudflare.Modules.ApiShieldSchema.GetValidationSettings.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -58,7 +59,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiShieldSchemaValidationSettings = Cloudflare.GetApiShieldSchemaValidationSettings.Invoke(new()
+        ///     var exampleApiShieldSchemaValidationSettings = Cloudflare.Modules.ApiShieldSchema.GetValidationSettings.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -87,7 +88,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiShieldSchemaValidationSettings = Cloudflare.GetApiShieldSchemaValidationSettings.Invoke(new()
+        ///     var exampleApiShieldSchemaValidationSettings = Cloudflare.Modules.ApiShieldSchema.GetValidationSettings.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

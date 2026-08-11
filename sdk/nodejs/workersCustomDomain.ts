@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersCustomDomain = new cloudflare.WorkersCustomDomain("example_workers_custom_domain", {
+ * const exampleWorkersCustomDomain = new cloudflare.workerscustom.Domain("example_workers_custom_domain", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     hostname: "app.example.com",
  *     service: "my-worker",
@@ -30,6 +30,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/workersCustomDomain:WorkersCustomDomain example '<account_id>/<domain_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/workersCustomDomain:WorkersCustomDomain has been deprecated in favor of cloudflare:workersCustom/domain:Domain
  */
 export class WorkersCustomDomain extends pulumi.CustomResource {
     /**
@@ -42,6 +44,7 @@ export class WorkersCustomDomain extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WorkersCustomDomainState, opts?: pulumi.CustomResourceOptions): WorkersCustomDomain {
+        pulumi.log.warn("WorkersCustomDomain is deprecated: cloudflare:index/workersCustomDomain:WorkersCustomDomain has been deprecated in favor of cloudflare:workersCustom/domain:Domain")
         return new WorkersCustomDomain(name, <any>state, { ...opts, id: id });
     }
 
@@ -97,8 +100,11 @@ export class WorkersCustomDomain extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/workersCustomDomain:WorkersCustomDomain has been deprecated in favor of cloudflare:workersCustom/domain:Domain */
     constructor(name: string, args: WorkersCustomDomainArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/workersCustomDomain:WorkersCustomDomain has been deprecated in favor of cloudflare:workersCustom/domain:Domain */
     constructor(name: string, argsOrState?: WorkersCustomDomainArgs | WorkersCustomDomainState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("WorkersCustomDomain is deprecated: cloudflare:index/workersCustomDomain:WorkersCustomDomain has been deprecated in favor of cloudflare:workersCustom/domain:Domain")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

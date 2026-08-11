@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessAiControlsMcpPortal = cloudflare.getZeroTrustAccessAiControlsMcpPortal({
+ * const exampleZeroTrustAccessAiControlsMcpPortal = cloudflare.zerotrustaccessaicontrolsmcp.getPortal({
  *     accountId: "a86a8f5c339544d7bdc89926de14fb8c",
  *     id: "my-mcp-portal",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessAiControlsMcpPortal:getZeroTrustAccessAiControlsMcpPortal has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/portal:getPortal */
 export function getZeroTrustAccessAiControlsMcpPortal(args?: GetZeroTrustAccessAiControlsMcpPortalArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessAiControlsMcpPortalResult> {
+    pulumi.log.warn("getZeroTrustAccessAiControlsMcpPortal is deprecated: cloudflare:index/getZeroTrustAccessAiControlsMcpPortal:getZeroTrustAccessAiControlsMcpPortal has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/portal:getPortal")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessAiControlsMcpPortal:getZeroTrustAccessAiControlsMcpPortal", {
@@ -85,13 +87,15 @@ export interface GetZeroTrustAccessAiControlsMcpPortalResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessAiControlsMcpPortal = cloudflare.getZeroTrustAccessAiControlsMcpPortal({
+ * const exampleZeroTrustAccessAiControlsMcpPortal = cloudflare.zerotrustaccessaicontrolsmcp.getPortal({
  *     accountId: "a86a8f5c339544d7bdc89926de14fb8c",
  *     id: "my-mcp-portal",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessAiControlsMcpPortal:getZeroTrustAccessAiControlsMcpPortal has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/portal:getPortal */
 export function getZeroTrustAccessAiControlsMcpPortalOutput(args?: GetZeroTrustAccessAiControlsMcpPortalOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessAiControlsMcpPortalResult> {
+    pulumi.log.warn("getZeroTrustAccessAiControlsMcpPortal is deprecated: cloudflare:index/getZeroTrustAccessAiControlsMcpPortal:getZeroTrustAccessAiControlsMcpPortal has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/portal:getPortal")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessAiControlsMcpPortal:getZeroTrustAccessAiControlsMcpPortal", {

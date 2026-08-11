@@ -23,16 +23,16 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdevicemanagednetworks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDeviceManagedNetworks(ctx, "example_zero_trust_device_managed_networks", &cloudflare.ZeroTrustDeviceManagedNetworksArgs{
+//			_, err := zerotrustdevicemanagednetworks.NewZeroTrustDeviceManagedNetworks(ctx, "example_zero_trust_device_managed_networks", &zerotrustdevicemanagednetworks.ZeroTrustDeviceManagedNetworksArgs{
 //				AccountId: pulumi.String("699d98642c564d2e855e9661899b7252"),
-//				Config: &cloudflare.ZeroTrustDeviceManagedNetworksConfigArgs{
+//				Config: &zerotrustdevicemanagednetworks.ZeroTrustDeviceManagedNetworksConfigArgs{
 //					TlsSockaddr: pulumi.String("foo.bar:1234"),
 //					Sha256:      pulumi.String("b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"),
 //				},
@@ -53,6 +53,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks example '<account_id>/<network_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks has been deprecated in favor of cloudflare:zeroTrustDeviceManagedNetworks/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks
 type ZeroTrustDeviceManagedNetworks struct {
 	pulumi.CustomResourceState
 

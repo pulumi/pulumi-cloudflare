@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/dlsprefix"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetDlsPrefixBinding(ctx, &cloudflare.LookupDlsPrefixBindingArgs{
+//			_, err := dlsprefix.GetBinding(ctx, &dlsprefix.GetBindingArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				BindingId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getDlsPrefixBinding:getDlsPrefixBinding has been deprecated in favor of cloudflare:dlsPrefix/binding:getBinding
 func LookupDlsPrefixBinding(ctx *pulumi.Context, args *LookupDlsPrefixBindingArgs, opts ...pulumi.InvokeOption) (*LookupDlsPrefixBindingResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDlsPrefixBindingResult

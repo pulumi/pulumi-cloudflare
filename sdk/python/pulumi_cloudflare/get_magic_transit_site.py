@@ -23,6 +23,8 @@ __all__ = [
     'get_magic_transit_site_output',
 ]
 
+warnings.warn("""cloudflare:index/getMagicTransitSite:getMagicTransitSite has been deprecated in favor of cloudflare:magicTransitSite/magicTransitSite:getMagicTransitSite""", DeprecationWarning)
+
 @pulumi.output_type
 class GetMagicTransitSiteResult:
     """
@@ -171,7 +173,7 @@ def get_magic_transit_site(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_transit_site = cloudflare.get_magic_transit_site(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_magic_transit_site = cloudflare.magictransitsite.get_magic_transit_site(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         site_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -179,6 +181,7 @@ def get_magic_transit_site(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Identifier
     :param _builtins.str site_id: Identifier
     """
+    pulumi.log.warn("""get_magic_transit_site is deprecated: cloudflare:index/getMagicTransitSite:getMagicTransitSite has been deprecated in favor of cloudflare:magicTransitSite/magicTransitSite:getMagicTransitSite""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -215,7 +218,7 @@ def get_magic_transit_site_output(account_id: pulumi.Input[Optional[Optional[_bu
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_transit_site = cloudflare.get_magic_transit_site(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_magic_transit_site = cloudflare.magictransitsite.get_magic_transit_site(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         site_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -223,6 +226,7 @@ def get_magic_transit_site_output(account_id: pulumi.Input[Optional[Optional[_bu
     :param _builtins.str account_id: Identifier
     :param _builtins.str site_id: Identifier
     """
+    pulumi.log.warn("""get_magic_transit_site is deprecated: cloudflare:index/getMagicTransitSite:getMagicTransitSite has been deprecated in favor of cloudflare:magicTransitSite/magicTransitSite:getMagicTransitSite""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

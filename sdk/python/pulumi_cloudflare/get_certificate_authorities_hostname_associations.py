@@ -21,6 +21,8 @@ __all__ = [
     'get_certificate_authorities_hostname_associations_output',
 ]
 
+warnings.warn("""cloudflare:index/getCertificateAuthoritiesHostnameAssociations:getCertificateAuthoritiesHostnameAssociations has been deprecated in favor of cloudflare:certificate/authoritiesHostnameAssociations:getAuthoritiesHostnameAssociations""", DeprecationWarning)
+
 @pulumi.output_type
 class GetCertificateAuthoritiesHostnameAssociationsResult:
     """
@@ -97,7 +99,7 @@ def get_certificate_authorities_hostname_associations(mtls_certificate_id: Optio
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_certificate_authorities_hostname_associations = cloudflare.get_certificate_authorities_hostname_associations(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_certificate_authorities_hostname_associations = cloudflare.certificate.get_authorities_hostname_associations(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         mtls_certificate_id="b2134436-2555-4acf-be5b-26c48136575e")
     ```
 
@@ -105,6 +107,7 @@ def get_certificate_authorities_hostname_associations(mtls_certificate_id: Optio
     :param _builtins.str mtls_certificate_id: The UUID to match against for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls*certificate*id is given, the results will be the hostnames associated to your active Cloudflare Managed CA.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_certificate_authorities_hostname_associations is deprecated: cloudflare:index/getCertificateAuthoritiesHostnameAssociations:getCertificateAuthoritiesHostnameAssociations has been deprecated in favor of cloudflare:certificate/authoritiesHostnameAssociations:getAuthoritiesHostnameAssociations""")
     __args__ = dict()
     __args__['mtlsCertificateId'] = mtls_certificate_id
     __args__['zoneId'] = zone_id
@@ -131,7 +134,7 @@ def get_certificate_authorities_hostname_associations_output(mtls_certificate_id
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_certificate_authorities_hostname_associations = cloudflare.get_certificate_authorities_hostname_associations(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_certificate_authorities_hostname_associations = cloudflare.certificate.get_authorities_hostname_associations(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         mtls_certificate_id="b2134436-2555-4acf-be5b-26c48136575e")
     ```
 
@@ -139,6 +142,7 @@ def get_certificate_authorities_hostname_associations_output(mtls_certificate_id
     :param _builtins.str mtls_certificate_id: The UUID to match against for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls*certificate*id is given, the results will be the hostnames associated to your active Cloudflare Managed CA.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_certificate_authorities_hostname_associations is deprecated: cloudflare:index/getCertificateAuthoritiesHostnameAssociations:getCertificateAuthoritiesHostnameAssociations has been deprecated in favor of cloudflare:certificate/authoritiesHostnameAssociations:getAuthoritiesHostnameAssociations""")
     __args__ = dict()
     __args__['mtlsCertificateId'] = mtls_certificate_id
     __args__['zoneId'] = zone_id

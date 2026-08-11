@@ -244,8 +244,13 @@ class _EmailSecurityTrustedDomainsState:
         pulumi.set(self, "pattern", value)
 
 
+warnings.warn("""cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains has been deprecated in favor of cloudflare:emailSecurityTrustedDomains/emailSecurityTrustedDomains:EmailSecurityTrustedDomains""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains")
 class EmailSecurityTrustedDomains(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains has been deprecated in favor of cloudflare:emailSecurityTrustedDomains/emailSecurityTrustedDomains:EmailSecurityTrustedDomains""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -269,7 +274,7 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_email_security_trusted_domains = cloudflare.EmailSecurityTrustedDomains("example_email_security_trusted_domains",
+        example_email_security_trusted_domains = cloudflare.emailsecuritytrusteddomains.EmailSecurityTrustedDomains("example_email_security_trusted_domains",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             is_recent=True,
             is_regex=False,
@@ -309,7 +314,7 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_email_security_trusted_domains = cloudflare.EmailSecurityTrustedDomains("example_email_security_trusted_domains",
+        example_email_security_trusted_domains = cloudflare.emailsecuritytrusteddomains.EmailSecurityTrustedDomains("example_email_security_trusted_domains",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             is_recent=True,
             is_regex=False,
@@ -347,6 +352,7 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
                  is_similarity: pulumi.Input[Optional[_builtins.bool]] = None,
                  pattern: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""EmailSecurityTrustedDomains is deprecated: cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains has been deprecated in favor of cloudflare:emailSecurityTrustedDomains/emailSecurityTrustedDomains:EmailSecurityTrustedDomains""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

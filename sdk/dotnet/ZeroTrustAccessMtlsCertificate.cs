@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessMtlsCertificate = new Cloudflare.ZeroTrustAccessMtlsCertificate("example_zero_trust_access_mtls_certificate", new()
+    ///     var exampleZeroTrustAccessMtlsCertificate = new Cloudflare.Modules.ZeroTrustAccessMtls.ZeroTrustAccessMtlsCertificate("example_zero_trust_access_mtls_certificate", new()
     ///     {
     ///         Certificate = @"  -----BEGIN CERTIFICATE-----
     ///   MIIGAjCCA+qgAwIBAgIJAI7kymlF7CWT...N4RI7KKB7nikiuUf8vhULKy5IX10
@@ -51,6 +51,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate example '&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;certificate_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate has been deprecated in favor of cloudflare:zeroTrustAccessMtls/certificate:Certificate")]
     [CloudflareResourceType("cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate")]
     public partial class ZeroTrustAccessMtlsCertificate : global::Pulumi.CustomResource
     {

@@ -19,12 +19,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsZoneTransfersOutgoing = cloudflare.getDnsZoneTransfersOutgoing({
+ * const exampleDnsZoneTransfersOutgoing = cloudflare.dnszonetransfers.getOutgoing({
  *     zoneId: "269d8f4853475ca241c4e730be286b20",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getDnsZoneTransfersOutgoing:getDnsZoneTransfersOutgoing has been deprecated in favor of cloudflare:dnsZoneTransfers/outgoing:getOutgoing */
 export function getDnsZoneTransfersOutgoing(args?: GetDnsZoneTransfersOutgoingArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsZoneTransfersOutgoingResult> {
+    pulumi.log.warn("getDnsZoneTransfersOutgoing is deprecated: cloudflare:index/getDnsZoneTransfersOutgoing:getDnsZoneTransfersOutgoing has been deprecated in favor of cloudflare:dnsZoneTransfers/outgoing:getOutgoing")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getDnsZoneTransfersOutgoing:getDnsZoneTransfersOutgoing", {
@@ -88,12 +90,14 @@ export interface GetDnsZoneTransfersOutgoingResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsZoneTransfersOutgoing = cloudflare.getDnsZoneTransfersOutgoing({
+ * const exampleDnsZoneTransfersOutgoing = cloudflare.dnszonetransfers.getOutgoing({
  *     zoneId: "269d8f4853475ca241c4e730be286b20",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getDnsZoneTransfersOutgoing:getDnsZoneTransfersOutgoing has been deprecated in favor of cloudflare:dnsZoneTransfers/outgoing:getOutgoing */
 export function getDnsZoneTransfersOutgoingOutput(args?: GetDnsZoneTransfersOutgoingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsZoneTransfersOutgoingResult> {
+    pulumi.log.warn("getDnsZoneTransfersOutgoing is deprecated: cloudflare:index/getDnsZoneTransfersOutgoing:getDnsZoneTransfersOutgoing has been deprecated in favor of cloudflare:dnsZoneTransfers/outgoing:getOutgoing")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getDnsZoneTransfersOutgoing:getDnsZoneTransfersOutgoing", {

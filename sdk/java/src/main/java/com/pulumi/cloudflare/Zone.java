@@ -75,9 +75,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.Zone;
- * import com.pulumi.cloudflare.ZoneArgs;
- * import com.pulumi.cloudflare.inputs.ZoneAccountArgs;
+ * import com.pulumi.cloudflare.zone.Zone;
+ * import com.pulumi.cloudflare.zone.ZoneArgs;
+ * import com.pulumi.cloudflare.zone.inputs.ZoneAccountArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -110,7 +110,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zone:Zone example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zone:Zone has been deprecated in favor of cloudflare:zone/zone:Zone
+ * 
  */
+@Deprecated /* cloudflare:index/zone:Zone has been deprecated in favor of cloudflare:zone/zone:Zone */
 @ResourceType(type="cloudflare:index/zone:Zone")
 public class Zone extends com.pulumi.resources.CustomResource {
     @Export(name="account", refs={ZoneAccount.class}, tree="[0]")

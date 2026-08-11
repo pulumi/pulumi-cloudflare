@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getWaitingRoom:getWaitingRoom has been deprecated in favor of cloudflare:waitingRoom/waitingRoom:getWaitingRoom")]
     public static class GetWaitingRoom
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWaitingRoom = Cloudflare.GetWaitingRoom.Invoke(new()
+        ///     var exampleWaitingRoom = Cloudflare.Modules.WaitingRoom.GetWaitingRoom.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         WaitingRoomId = "699d98642c564d2e855e9661899b7252",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWaitingRoom = Cloudflare.GetWaitingRoom.Invoke(new()
+        ///     var exampleWaitingRoom = Cloudflare.Modules.WaitingRoom.GetWaitingRoom.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         WaitingRoomId = "699d98642c564d2e855e9661899b7252",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWaitingRoom = Cloudflare.GetWaitingRoom.Invoke(new()
+        ///     var exampleWaitingRoom = Cloudflare.Modules.WaitingRoom.GetWaitingRoom.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         WaitingRoomId = "699d98642c564d2e855e9661899b7252",

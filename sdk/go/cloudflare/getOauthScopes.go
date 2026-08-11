@@ -18,14 +18,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/oauth"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetOauthScopes(ctx, &cloudflare.LookupOauthScopesArgs{}, nil)
+//			_, err := oauth.LookupScopes(ctx, &oauth.LookupScopesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -34,6 +34,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getOauthScopes:getOauthScopes has been deprecated in favor of cloudflare:oauth/scopes:getScopes
 func LookupOauthScopes(ctx *pulumi.Context, args *LookupOauthScopesArgs, opts ...pulumi.InvokeOption) (*LookupOauthScopesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOauthScopesResult

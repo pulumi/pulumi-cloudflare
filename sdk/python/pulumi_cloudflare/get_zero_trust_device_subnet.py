@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_device_subnet_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDeviceSubnet:getZeroTrustDeviceSubnet has been deprecated in favor of cloudflare:zeroTrustDevice/subnet:getSubnet""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDeviceSubnetResult:
     """
@@ -186,7 +188,7 @@ def get_zero_trust_device_subnet(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_device_subnet = cloudflare.get_zero_trust_device_subnet(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_device_subnet = cloudflare.zerotrustdevice.get_subnet(account_id="699d98642c564d2e855e9661899b7252",
         subnet_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
     ```
 
@@ -194,6 +196,7 @@ def get_zero_trust_device_subnet(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Cloudflare account ID
     :param _builtins.str subnet_id: The UUID of the subnet.
     """
+    pulumi.log.warn("""get_zero_trust_device_subnet is deprecated: cloudflare:index/getZeroTrustDeviceSubnet:getZeroTrustDeviceSubnet has been deprecated in favor of cloudflare:zeroTrustDevice/subnet:getSubnet""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['subnetId'] = subnet_id
@@ -227,7 +230,7 @@ def get_zero_trust_device_subnet_output(account_id: pulumi.Input[Optional[Option
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_device_subnet = cloudflare.get_zero_trust_device_subnet(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_device_subnet = cloudflare.zerotrustdevice.get_subnet(account_id="699d98642c564d2e855e9661899b7252",
         subnet_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
     ```
 
@@ -235,6 +238,7 @@ def get_zero_trust_device_subnet_output(account_id: pulumi.Input[Optional[Option
     :param _builtins.str account_id: Cloudflare account ID
     :param _builtins.str subnet_id: The UUID of the subnet.
     """
+    pulumi.log.warn("""get_zero_trust_device_subnet is deprecated: cloudflare:index/getZeroTrustDeviceSubnet:getZeroTrustDeviceSubnet has been deprecated in favor of cloudflare:zeroTrustDevice/subnet:getSubnet""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['subnetId'] = subnet_id

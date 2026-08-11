@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDeviceManagedNetworks = new cloudflare.ZeroTrustDeviceManagedNetworks("example_zero_trust_device_managed_networks", {
+ * const exampleZeroTrustDeviceManagedNetworks = new cloudflare.zerotrustdevicemanagednetworks.ZeroTrustDeviceManagedNetworks("example_zero_trust_device_managed_networks", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     config: {
  *         tlsSockaddr: "foo.bar:1234",
@@ -33,6 +33,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks example '<account_id>/<network_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks has been deprecated in favor of cloudflare:zeroTrustDeviceManagedNetworks/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks
  */
 export class ZeroTrustDeviceManagedNetworks extends pulumi.CustomResource {
     /**
@@ -45,6 +47,7 @@ export class ZeroTrustDeviceManagedNetworks extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustDeviceManagedNetworksState, opts?: pulumi.CustomResourceOptions): ZeroTrustDeviceManagedNetworks {
+        pulumi.log.warn("ZeroTrustDeviceManagedNetworks is deprecated: cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks has been deprecated in favor of cloudflare:zeroTrustDeviceManagedNetworks/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks")
         return new ZeroTrustDeviceManagedNetworks(name, <any>state, { ...opts, id: id });
     }
 
@@ -88,8 +91,11 @@ export class ZeroTrustDeviceManagedNetworks extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks has been deprecated in favor of cloudflare:zeroTrustDeviceManagedNetworks/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks */
     constructor(name: string, args: ZeroTrustDeviceManagedNetworksArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks has been deprecated in favor of cloudflare:zeroTrustDeviceManagedNetworks/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks */
     constructor(name: string, argsOrState?: ZeroTrustDeviceManagedNetworksArgs | ZeroTrustDeviceManagedNetworksState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustDeviceManagedNetworks is deprecated: cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks has been deprecated in favor of cloudflare:zeroTrustDeviceManagedNetworks/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

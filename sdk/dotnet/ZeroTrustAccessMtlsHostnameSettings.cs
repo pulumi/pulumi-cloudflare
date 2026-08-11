@@ -25,11 +25,11 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessMtlsHostnameSettings = new Cloudflare.ZeroTrustAccessMtlsHostnameSettings("example_zero_trust_access_mtls_hostname_settings", new()
+    ///     var exampleZeroTrustAccessMtlsHostnameSettings = new Cloudflare.Modules.ZeroTrustAccessMtls.ZeroTrustAccessMtlsHostnameSettings("example_zero_trust_access_mtls_hostname_settings", new()
     ///     {
     ///         Settings = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustAccessMtlsHostnameSettingsSettingArgs
+    ///             new Cloudflare.Modules.ZeroTrustAccessMtls.Inputs.HostnameSettingsSettingArgs
     ///             {
     ///                 ChinaNetwork = false,
     ///                 ClientCertificateForwarding = true,
@@ -46,6 +46,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings has been deprecated in favor of cloudflare:zeroTrustAccessMtls/hostnameSettings:HostnameSettings")]
     [CloudflareResourceType("cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings")]
     public partial class ZeroTrustAccessMtlsHostnameSettings : global::Pulumi.CustomResource
     {

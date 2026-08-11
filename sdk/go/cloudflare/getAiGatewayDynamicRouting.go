@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/aigateway"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetAiGatewayDynamicRouting(ctx, &cloudflare.LookupAiGatewayDynamicRoutingArgs{
+//			_, err := aigateway.GetDynamicRouting(ctx, &aigateway.GetDynamicRoutingArgs{
 //				AccountId: pulumi.StringRef("0d37909e38d3e99c29fa2cd343ac421a"),
 //				GatewayId: "54442216",
 //				Id:        "54442216",
@@ -43,6 +43,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getAiGatewayDynamicRouting:getAiGatewayDynamicRouting has been deprecated in favor of cloudflare:aiGateway/dynamicRouting:getDynamicRouting
 func LookupAiGatewayDynamicRouting(ctx *pulumi.Context, args *LookupAiGatewayDynamicRoutingArgs, opts ...pulumi.InvokeOption) (*LookupAiGatewayDynamicRoutingResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAiGatewayDynamicRoutingResult

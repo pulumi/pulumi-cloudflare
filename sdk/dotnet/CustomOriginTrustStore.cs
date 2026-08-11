@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCustomOriginTrustStore = new Cloudflare.CustomOriginTrustStore("example_custom_origin_trust_store", new()
+    ///     var exampleCustomOriginTrustStore = new Cloudflare.Modules.CustomOriginTrust.CustomOriginTrustStore("example_custom_origin_trust_store", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Certificate = @"  -----BEGIN CERTIFICATE-----
@@ -44,6 +44,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/customOriginTrustStore:CustomOriginTrustStore example '&lt;zone_id&gt;/&lt;custom_origin_trust_store_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/customOriginTrustStore:CustomOriginTrustStore has been deprecated in favor of cloudflare:customOriginTrust/store:Store")]
     [CloudflareResourceType("cloudflare:index/customOriginTrustStore:CustomOriginTrustStore")]
     public partial class CustomOriginTrustStore : global::Pulumi.CustomResource
     {

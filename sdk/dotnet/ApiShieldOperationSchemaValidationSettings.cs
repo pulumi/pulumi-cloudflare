@@ -17,8 +17,8 @@ namespace Pulumi.Cloudflare
     /// - `Domain API Gateway`
     /// - `Domain API Gateway Read`
     /// 
-    /// &gt; `cloudflare.ApiShieldOperationSchemaValidationSettings` is in a deprecation phase and will be removed in the future.
-    ///   Instead, please utilize the cloudflare.SchemaValidationOperationSettings resource instead.
+    /// &gt; `cloudflare.apiShieldOperation.SchemaValidationSettings` is in a deprecation phase and will be removed in the future.
+    ///   Instead, please utilize the cloudflare.schemaValidationOperationSettings.SchemaValidationOperationSettings resource instead.
     /// 
     /// ## Example Usage
     /// 
@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApiShieldOperationSchemaValidationSettings = new Cloudflare.ApiShieldOperationSchemaValidationSettings("example_api_shield_operation_schema_validation_settings", new()
+    ///     var exampleApiShieldOperationSchemaValidationSettings = new Cloudflare.Modules.ApiShieldOperation.ApiShieldOperationSchemaValidationSettings("example_api_shield_operation_schema_validation_settings", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         OperationId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
@@ -46,6 +46,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings example '&lt;zone_id&gt;/&lt;operation_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldOperation/schemaValidationSettings:SchemaValidationSettings")]
     [CloudflareResourceType("cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings")]
     public partial class ApiShieldOperationSchemaValidationSettings : global::Pulumi.CustomResource
     {

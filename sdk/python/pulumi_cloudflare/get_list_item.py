@@ -22,6 +22,8 @@ __all__ = [
     'get_list_item_output',
 ]
 
+warnings.warn("""cloudflare:index/getListItem:getListItem has been deprecated in favor of cloudflare:list/item:getItem""", DeprecationWarning)
+
 @pulumi.output_type
 class GetListItemResult:
     """
@@ -186,7 +188,7 @@ def get_list_item(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_list_item = cloudflare.get_list_item(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_list_item = cloudflare.list.get_item(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         list_id="2c0fc9fa937b11eaa1b71c4d701ab86e",
         item_id="34b12448945f11eaa1b71c4d701ab86e")
     ```
@@ -196,6 +198,7 @@ def get_list_item(account_id: Optional[_builtins.str] = None,
     :param _builtins.str item_id: Defines the unique ID of the item in the List.
     :param _builtins.str list_id: The unique ID of the list.
     """
+    pulumi.log.warn("""get_list_item is deprecated: cloudflare:index/getListItem:getListItem has been deprecated in favor of cloudflare:list/item:getItem""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['itemId'] = item_id
@@ -231,7 +234,7 @@ def get_list_item_output(account_id: pulumi.Input[Optional[Optional[_builtins.st
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_list_item = cloudflare.get_list_item(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_list_item = cloudflare.list.get_item(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         list_id="2c0fc9fa937b11eaa1b71c4d701ab86e",
         item_id="34b12448945f11eaa1b71c4d701ab86e")
     ```
@@ -241,6 +244,7 @@ def get_list_item_output(account_id: pulumi.Input[Optional[Optional[_builtins.st
     :param _builtins.str item_id: Defines the unique ID of the item in the List.
     :param _builtins.str list_id: The unique ID of the list.
     """
+    pulumi.log.warn("""get_list_item is deprecated: cloudflare:index/getListItem:getListItem has been deprecated in favor of cloudflare:list/item:getItem""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['itemId'] = item_id

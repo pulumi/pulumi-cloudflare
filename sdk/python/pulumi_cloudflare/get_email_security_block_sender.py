@@ -23,6 +23,8 @@ __all__ = [
     'get_email_security_block_sender_output',
 ]
 
+warnings.warn("""cloudflare:index/getEmailSecurityBlockSender:getEmailSecurityBlockSender has been deprecated in favor of cloudflare:emailSecurityBlock/sender:getSender""", DeprecationWarning)
+
 @pulumi.output_type
 class GetEmailSecurityBlockSenderResult:
     """
@@ -155,10 +157,11 @@ def get_email_security_block_sender(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_email_security_block_sender = cloudflare.get_email_security_block_sender(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_email_security_block_sender = cloudflare.emailsecurityblock.get_sender(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         pattern_id="2402")
     ```
     """
+    pulumi.log.warn("""get_email_security_block_sender is deprecated: cloudflare:index/getEmailSecurityBlockSender:getEmailSecurityBlockSender has been deprecated in favor of cloudflare:emailSecurityBlock/sender:getSender""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -194,10 +197,11 @@ def get_email_security_block_sender_output(account_id: pulumi.Input[Optional[Opt
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_email_security_block_sender = cloudflare.get_email_security_block_sender(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_email_security_block_sender = cloudflare.emailsecurityblock.get_sender(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         pattern_id="2402")
     ```
     """
+    pulumi.log.warn("""get_email_security_block_sender is deprecated: cloudflare:index/getEmailSecurityBlockSender:getEmailSecurityBlockSender has been deprecated in favor of cloudflare:emailSecurityBlock/sender:getSender""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

@@ -25,11 +25,11 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleImageVariant = new Cloudflare.ImageVariant("example_image_variant", new()
+    ///     var exampleImageVariant = new Cloudflare.Modules.Image.ImageVariant("example_image_variant", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         ImageVariantId = "hero",
-    ///         Options = new Cloudflare.Inputs.ImageVariantOptionsArgs
+    ///         Options = new Cloudflare.Modules.Image.Inputs.VariantOptionsArgs
     ///         {
     ///             Fit = "scale-down",
     ///             Height = 768,
@@ -48,6 +48,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/imageVariant:ImageVariant example '&lt;account_id&gt;/&lt;variant_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/imageVariant:ImageVariant has been deprecated in favor of cloudflare:image/variant:Variant")]
     [CloudflareResourceType("cloudflare:index/imageVariant:ImageVariant")]
     public partial class ImageVariant : global::Pulumi.CustomResource
     {

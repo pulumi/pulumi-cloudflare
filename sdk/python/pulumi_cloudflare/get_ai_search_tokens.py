@@ -22,6 +22,8 @@ __all__ = [
     'get_ai_search_tokens_output',
 ]
 
+warnings.warn("""cloudflare:index/getAiSearchTokens:getAiSearchTokens has been deprecated in favor of cloudflare:aiSearch/tokens:getTokens""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAiSearchTokensResult:
     """
@@ -93,6 +95,7 @@ def get_ai_search_tokens(account_id: Optional[_builtins.str] = None,
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str search: Filter tokens whose name contains this string (case-insensitive).
     """
+    pulumi.log.warn("""get_ai_search_tokens is deprecated: cloudflare:index/getAiSearchTokens:getAiSearchTokens has been deprecated in favor of cloudflare:aiSearch/tokens:getTokens""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -115,6 +118,7 @@ def get_ai_search_tokens_output(account_id: pulumi.Input[Optional[Optional[_buil
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str search: Filter tokens whose name contains this string (case-insensitive).
     """
+    pulumi.log.warn("""get_ai_search_tokens is deprecated: cloudflare:index/getAiSearchTokens:getAiSearchTokens has been deprecated in favor of cloudflare:aiSearch/tokens:getTokens""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getListItem:getListItem has been deprecated in favor of cloudflare:list/item:getItem")]
     public static class GetListItem
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleListItem = Cloudflare.GetListItem.Invoke(new()
+        ///     var exampleListItem = Cloudflare.Modules.List.GetItem.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ListId = "2c0fc9fa937b11eaa1b71c4d701ab86e",
@@ -56,7 +57,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleListItem = Cloudflare.GetListItem.Invoke(new()
+        ///     var exampleListItem = Cloudflare.Modules.List.GetItem.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ListId = "2c0fc9fa937b11eaa1b71c4d701ab86e",
@@ -85,7 +86,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleListItem = Cloudflare.GetListItem.Invoke(new()
+        ///     var exampleListItem = Cloudflare.Modules.List.GetItem.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ListId = "2c0fc9fa937b11eaa1b71c4d701ab86e",

@@ -19,17 +19,17 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/authenticatedoriginpulls"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAuthenticatedOriginPulls(ctx, "example_authenticated_origin_pulls", &cloudflare.AuthenticatedOriginPullsArgs{
+//			_, err := authenticatedoriginpulls.NewAuthenticatedOriginPulls(ctx, "example_authenticated_origin_pulls", &authenticatedoriginpulls.AuthenticatedOriginPullsArgs{
 //				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Configs: cloudflare.AuthenticatedOriginPullsConfigArray{
-//					&cloudflare.AuthenticatedOriginPullsConfigArgs{
+//				Configs: authenticatedoriginpulls.AuthenticatedOriginPullsConfigArray{
+//					&authenticatedoriginpulls.AuthenticatedOriginPullsConfigArgs{
 //						CertId:   pulumi.String("2458ce5a-0c35-4c7f-82c7-8e9487d3ff60"),
 //						Enabled:  pulumi.Bool(true),
 //						Hostname: pulumi.String("app.example.com"),
@@ -50,6 +50,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example '<zone_id>/<hostname>'
 // ```
+//
+// Deprecated: cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls has been deprecated in favor of cloudflare:authenticatedOriginPulls/authenticatedOriginPulls:AuthenticatedOriginPulls
 type AuthenticatedOriginPulls struct {
 	pulumi.CustomResourceState
 

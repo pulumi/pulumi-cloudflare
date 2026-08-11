@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustRiskBehavior = new cloudflare.ZeroTrustRiskBehavior("example_zero_trust_risk_behavior", {
+ * const exampleZeroTrustRiskBehavior = new cloudflare.zerotrust.RiskBehavior("example_zero_trust_risk_behavior", {
  *     accountId: "account_id",
  *     behaviors: {
  *         foo: {
@@ -97,8 +97,6 @@ export class RiskBehavior extends pulumi.CustomResource {
             resourceInputs["behaviors"] = args?.behaviors;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/riskBehavior:RiskBehavior" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(RiskBehavior.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -22,6 +22,8 @@ __all__ = [
     'get_workers_cron_trigger_output',
 ]
 
+warnings.warn("""cloudflare:index/getWorkersCronTrigger:getWorkersCronTrigger has been deprecated in favor of cloudflare:workers/cronTrigger:getCronTrigger""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWorkersCronTriggerResult:
     """
@@ -98,7 +100,7 @@ def get_workers_cron_trigger(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_cron_trigger = cloudflare.get_workers_cron_trigger(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_cron_trigger = cloudflare.workers.get_cron_trigger(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         script_name="this-is_my_script-01")
     ```
 
@@ -106,6 +108,7 @@ def get_workers_cron_trigger(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Identifier.
     :param _builtins.str script_name: Name of the script, used in URLs and route configuration.
     """
+    pulumi.log.warn("""get_workers_cron_trigger is deprecated: cloudflare:index/getWorkersCronTrigger:getWorkersCronTrigger has been deprecated in favor of cloudflare:workers/cronTrigger:getCronTrigger""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['scriptName'] = script_name
@@ -132,7 +135,7 @@ def get_workers_cron_trigger_output(account_id: pulumi.Input[Optional[Optional[_
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_cron_trigger = cloudflare.get_workers_cron_trigger(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_cron_trigger = cloudflare.workers.get_cron_trigger(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         script_name="this-is_my_script-01")
     ```
 
@@ -140,6 +143,7 @@ def get_workers_cron_trigger_output(account_id: pulumi.Input[Optional[Optional[_
     :param _builtins.str account_id: Identifier.
     :param _builtins.str script_name: Name of the script, used in URLs and route configuration.
     """
+    pulumi.log.warn("""get_workers_cron_trigger is deprecated: cloudflare:index/getWorkersCronTrigger:getWorkersCronTrigger has been deprecated in favor of cloudflare:workers/cronTrigger:getCronTrigger""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['scriptName'] = script_name

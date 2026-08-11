@@ -26,14 +26,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/custom"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewCustomSsl(ctx, "example_custom_ssl", &cloudflare.CustomSslArgs{
+//			_, err := custom.NewSsl(ctx, "example_custom_ssl", &custom.SslArgs{
 //				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Certificate: pulumi.String(`  -----BEGIN CERTIFICATE-----
 //	  MIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV
@@ -93,7 +93,7 @@ import (
 //				BundleMethod: pulumi.String("ubiquitous"),
 //				CustomCsrId:  pulumi.String("7b163417-1d2b-4c84-a38a-2fb7a0cd7752"),
 //				Deploy:       pulumi.String("staging"),
-//				GeoRestrictions: &cloudflare.CustomSslGeoRestrictionsArgs{
+//				GeoRestrictions: &custom.SslGeoRestrictionsArgs{
 //					Label: pulumi.String("us"),
 //				},
 //				Policy: pulumi.String("(country: US) or (region: EU)"),
@@ -113,6 +113,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/customSsl:CustomSsl example '<zone_id>/<custom_certificate_id>'
 // ```
+//
+// Deprecated: cloudflare:index/customSsl:CustomSsl has been deprecated in favor of cloudflare:custom/ssl:Ssl
 type CustomSsl struct {
 	pulumi.CustomResourceState
 

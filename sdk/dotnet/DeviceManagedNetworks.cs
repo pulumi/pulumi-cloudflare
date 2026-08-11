@@ -24,10 +24,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDeviceManagedNetworks = new Cloudflare.ZeroTrustDeviceManagedNetworks("example_zero_trust_device_managed_networks", new()
+    ///     var exampleZeroTrustDeviceManagedNetworks = new Cloudflare.Modules.ZeroTrustDeviceManagedNetworks.ZeroTrustDeviceManagedNetworks("example_zero_trust_device_managed_networks", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
-    ///         Config = new Cloudflare.Inputs.ZeroTrustDeviceManagedNetworksConfigArgs
+    ///         Config = new Cloudflare.Modules.ZeroTrustDeviceManagedNetworks.Inputs.ZeroTrustDeviceManagedNetworksConfigArgs
     ///         {
     ///             TlsSockaddr = "foo.bar:1234",
     ///             Sha256 = "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
@@ -100,10 +100,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

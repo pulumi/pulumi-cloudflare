@@ -22,6 +22,8 @@ __all__ = [
     'get_sso_connectors_output',
 ]
 
+warnings.warn("""cloudflare:index/getSsoConnectors:getSsoConnectors has been deprecated in favor of cloudflare:sso/connectors:getConnectors""", DeprecationWarning)
+
 @pulumi.output_type
 class GetSsoConnectorsResult:
     """
@@ -88,13 +90,14 @@ def get_sso_connectors(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_sso_connectors = cloudflare.get_sso_connectors(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_sso_connectors = cloudflare.sso.get_connectors(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_sso_connectors is deprecated: cloudflare:index/getSsoConnectors:getSsoConnectors has been deprecated in favor of cloudflare:sso/connectors:getConnectors""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -119,13 +122,14 @@ def get_sso_connectors_output(account_id: pulumi.Input[Optional[Optional[_builti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_sso_connectors = cloudflare.get_sso_connectors(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_sso_connectors = cloudflare.sso.get_connectors(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_sso_connectors is deprecated: cloudflare:index/getSsoConnectors:getSsoConnectors has been deprecated in favor of cloudflare:sso/connectors:getConnectors""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

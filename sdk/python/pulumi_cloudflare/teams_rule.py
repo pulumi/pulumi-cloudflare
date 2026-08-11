@@ -597,7 +597,7 @@ class TeamsRule(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_gateway_policy = cloudflare.ZeroTrustGatewayPolicy("example_zero_trust_gateway_policy",
+        example_zero_trust_gateway_policy = cloudflare.zerotrustgateway.Policy("example_zero_trust_gateway_policy",
             account_id="699d98642c564d2e855e9661899b7252",
             action="allow",
             name="block bad websites",
@@ -766,7 +766,7 @@ class TeamsRule(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_gateway_policy = cloudflare.ZeroTrustGatewayPolicy("example_zero_trust_gateway_policy",
+        example_zero_trust_gateway_policy = cloudflare.zerotrustgateway.Policy("example_zero_trust_gateway_policy",
             account_id="699d98642c564d2e855e9661899b7252",
             action="allow",
             name="block bad websites",
@@ -971,8 +971,6 @@ class TeamsRule(pulumi.CustomResource):
             __props__.__dict__["updated_at"] = None
             __props__.__dict__["version"] = None
             __props__.__dict__["warning_status"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/teamsRule:TeamsRule")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(TeamsRule, __self__).__init__(
             'cloudflare:index/teamsRule:TeamsRule',
             resource_name,

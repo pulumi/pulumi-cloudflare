@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleArgoTieredCaching = new Cloudflare.ArgoTieredCaching("example_argo_tiered_caching", new()
+    ///     var exampleArgoTieredCaching = new Cloudflare.Modules.Argo.ArgoTieredCaching("example_argo_tiered_caching", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Value = "on",
@@ -35,6 +35,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/argoTieredCaching:ArgoTieredCaching example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/argoTieredCaching:ArgoTieredCaching has been deprecated in favor of cloudflare:argo/tieredCaching:TieredCaching")]
     [CloudflareResourceType("cloudflare:index/argoTieredCaching:ArgoTieredCaching")]
     public partial class ArgoTieredCaching : global::Pulumi.CustomResource
     {

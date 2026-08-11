@@ -23,6 +23,8 @@ __all__ = [
     'get_zero_trust_device_ip_profile_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDeviceIpProfile:getZeroTrustDeviceIpProfile has been deprecated in favor of cloudflare:zeroTrustDeviceIp/profile:getProfile""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDeviceIpProfileResult:
     """
@@ -190,10 +192,11 @@ def get_zero_trust_device_ip_profile(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_device_ip_profile = cloudflare.get_zero_trust_device_ip_profile(account_id="account_id",
+    example_zero_trust_device_ip_profile = cloudflare.zerotrustdeviceip.get_profile(account_id="account_id",
         profile_id="profile_id")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_device_ip_profile is deprecated: cloudflare:index/getZeroTrustDeviceIpProfile:getZeroTrustDeviceIpProfile has been deprecated in favor of cloudflare:zeroTrustDeviceIp/profile:getProfile""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -230,10 +233,11 @@ def get_zero_trust_device_ip_profile_output(account_id: pulumi.Input[Optional[Op
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_device_ip_profile = cloudflare.get_zero_trust_device_ip_profile(account_id="account_id",
+    example_zero_trust_device_ip_profile = cloudflare.zerotrustdeviceip.get_profile(account_id="account_id",
         profile_id="profile_id")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_device_ip_profile is deprecated: cloudflare:index/getZeroTrustDeviceIpProfile:getZeroTrustDeviceIpProfile has been deprecated in favor of cloudflare:zeroTrustDeviceIp/profile:getProfile""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

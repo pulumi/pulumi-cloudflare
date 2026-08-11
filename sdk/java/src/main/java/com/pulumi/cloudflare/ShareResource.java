@@ -24,8 +24,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ShareResource;
- * import com.pulumi.cloudflare.ShareResourceArgs;
+ * import com.pulumi.cloudflare.share.Resource;
+ * import com.pulumi.cloudflare.share.ResourceArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -39,7 +39,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleShareResource = new ShareResource("exampleShareResource", ShareResourceArgs.builder()
+ *         var exampleShareResource = new Resource("exampleShareResource", ResourceArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .shareId("3fd85f74b32742f1bff64a85009dda07")
  *             .meta(Map.ofEntries(
@@ -60,7 +60,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/shareResource:ShareResource example &#39;&lt;account_id&gt;/&lt;share_id&gt;/&lt;share_resource_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/shareResource:ShareResource has been deprecated in favor of cloudflare:share/resource:Resource
+ * 
  */
+@Deprecated /* cloudflare:index/shareResource:ShareResource has been deprecated in favor of cloudflare:share/resource:Resource */
 @ResourceType(type="cloudflare:index/shareResource:ShareResource")
 public class ShareResource extends com.pulumi.resources.CustomResource {
     /**

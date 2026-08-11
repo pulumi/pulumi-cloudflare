@@ -22,6 +22,8 @@ __all__ = [
     'get_zone_dns_settings_output',
 ]
 
+warnings.warn("""cloudflare:index/getZoneDnsSettings:getZoneDnsSettings has been deprecated in favor of cloudflare:zone/dnsSettings:getDnsSettings""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZoneDnsSettingsResult:
     """
@@ -175,12 +177,13 @@ def get_zone_dns_settings(zone_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zone_dns_settings = cloudflare.get_zone_dns_settings(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_zone_dns_settings = cloudflare.zone.get_dns_settings(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_zone_dns_settings is deprecated: cloudflare:index/getZoneDnsSettings:getZoneDnsSettings has been deprecated in favor of cloudflare:zone/dnsSettings:getDnsSettings""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -213,12 +216,13 @@ def get_zone_dns_settings_output(zone_id: pulumi.Input[Optional[Optional[_builti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zone_dns_settings = cloudflare.get_zone_dns_settings(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_zone_dns_settings = cloudflare.zone.get_dns_settings(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_zone_dns_settings is deprecated: cloudflare:index/getZoneDnsSettings:getZoneDnsSettings has been deprecated in favor of cloudflare:zone/dnsSettings:getDnsSettings""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

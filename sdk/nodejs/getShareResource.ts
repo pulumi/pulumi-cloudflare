@@ -13,14 +13,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleShareResource = cloudflare.getShareResource({
+ * const exampleShareResource = cloudflare.share.getResource({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     shareId: "3fd85f74b32742f1bff64a85009dda07",
  *     shareResourceId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getShareResource:getShareResource has been deprecated in favor of cloudflare:share/resource:getResource */
 export function getShareResource(args: GetShareResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetShareResourceResult> {
+    pulumi.log.warn("getShareResource is deprecated: cloudflare:index/getShareResource:getShareResource has been deprecated in favor of cloudflare:share/resource:getResource")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getShareResource:getShareResource", {
         "accountId": args.accountId,
@@ -112,14 +114,16 @@ export interface GetShareResourceResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleShareResource = cloudflare.getShareResource({
+ * const exampleShareResource = cloudflare.share.getResource({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     shareId: "3fd85f74b32742f1bff64a85009dda07",
  *     shareResourceId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getShareResource:getShareResource has been deprecated in favor of cloudflare:share/resource:getResource */
 export function getShareResourceOutput(args: GetShareResourceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetShareResourceResult> {
+    pulumi.log.warn("getShareResource is deprecated: cloudflare:index/getShareResource:getShareResource has been deprecated in favor of cloudflare:share/resource:getResource")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getShareResource:getShareResource", {
         "accountId": args.accountId,

@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSsoConnector = new cloudflare.SsoConnector("example_sso_connector", {
+ * const exampleSsoConnector = new cloudflare.sso.Connector("example_sso_connector", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     emailDomain: "example.com",
  *     beginVerification: true,
@@ -31,6 +31,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/ssoConnector:SsoConnector example '<account_id>/<sso_connector_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/ssoConnector:SsoConnector has been deprecated in favor of cloudflare:sso/connector:Connector
  */
 export class SsoConnector extends pulumi.CustomResource {
     /**
@@ -43,6 +45,7 @@ export class SsoConnector extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SsoConnectorState, opts?: pulumi.CustomResourceOptions): SsoConnector {
+        pulumi.log.warn("SsoConnector is deprecated: cloudflare:index/ssoConnector:SsoConnector has been deprecated in favor of cloudflare:sso/connector:Connector")
         return new SsoConnector(name, <any>state, { ...opts, id: id });
     }
 
@@ -97,8 +100,11 @@ export class SsoConnector extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/ssoConnector:SsoConnector has been deprecated in favor of cloudflare:sso/connector:Connector */
     constructor(name: string, args: SsoConnectorArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/ssoConnector:SsoConnector has been deprecated in favor of cloudflare:sso/connector:Connector */
     constructor(name: string, argsOrState?: SsoConnectorArgs | SsoConnectorState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("SsoConnector is deprecated: cloudflare:index/ssoConnector:SsoConnector has been deprecated in favor of cloudflare:sso/connector:Connector")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

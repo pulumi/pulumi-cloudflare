@@ -23,6 +23,8 @@ __all__ = [
     'get_cloudforce_one_request_output',
 ]
 
+warnings.warn("""cloudflare:index/getCloudforceOneRequest:getCloudforceOneRequest has been deprecated in favor of cloudflare:cloudforceOneRequest/cloudforceOneRequest:getCloudforceOneRequest""", DeprecationWarning)
+
 @pulumi.output_type
 class GetCloudforceOneRequestResult:
     """
@@ -234,7 +236,7 @@ def get_cloudforce_one_request(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_cloudforce_one_request = cloudflare.get_cloudforce_one_request(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_cloudforce_one_request = cloudflare.cloudforceonerequest.get_cloudforce_one_request(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         request_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
 
@@ -242,6 +244,7 @@ def get_cloudforce_one_request(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Identifier.
     :param _builtins.str request_id: UUID.
     """
+    pulumi.log.warn("""get_cloudforce_one_request is deprecated: cloudflare:index/getCloudforceOneRequest:getCloudforceOneRequest has been deprecated in favor of cloudflare:cloudforceOneRequest/cloudforceOneRequest:getCloudforceOneRequest""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -282,7 +285,7 @@ def get_cloudforce_one_request_output(account_id: pulumi.Input[Optional[Optional
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_cloudforce_one_request = cloudflare.get_cloudforce_one_request(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_cloudforce_one_request = cloudflare.cloudforceonerequest.get_cloudforce_one_request(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         request_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
 
@@ -290,6 +293,7 @@ def get_cloudforce_one_request_output(account_id: pulumi.Input[Optional[Optional
     :param _builtins.str account_id: Identifier.
     :param _builtins.str request_id: UUID.
     """
+    pulumi.log.warn("""get_cloudforce_one_request is deprecated: cloudflare:index/getCloudforceOneRequest:getCloudforceOneRequest has been deprecated in favor of cloudflare:cloudforceOneRequest/cloudforceOneRequest:getCloudforceOneRequest""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

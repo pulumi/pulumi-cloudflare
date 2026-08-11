@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var examplePipeline = new Cloudflare.Pipeline("example_pipeline", new()
+    ///     var examplePipeline = new Cloudflare.Modules.Pipeline.Pipeline("example_pipeline", new()
     ///     {
     ///         AccountId = "0123105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "my_pipeline",
@@ -41,6 +41,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/pipeline:Pipeline example '&lt;account_id&gt;/&lt;pipeline_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/pipeline:Pipeline has been deprecated in favor of cloudflare:pipeline/pipeline:Pipeline")]
     [CloudflareResourceType("cloudflare:index/pipeline:Pipeline")]
     public partial class Pipeline : global::Pulumi.CustomResource
     {

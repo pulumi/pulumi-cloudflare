@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDeviceIpProfile = new Cloudflare.ZeroTrustDeviceIpProfile("example_zero_trust_device_ip_profile", new()
+    ///     var exampleZeroTrustDeviceIpProfile = new Cloudflare.Modules.ZeroTrustDeviceIp.ZeroTrustDeviceIpProfile("example_zero_trust_device_ip_profile", new()
     ///     {
     ///         AccountId = "account_id",
     ///         Match = "identity.email == \"test@cloudflare.com\"",
@@ -45,6 +45,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustDeviceIpProfile:ZeroTrustDeviceIpProfile example '&lt;account_id&gt;/&lt;profile_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustDeviceIpProfile:ZeroTrustDeviceIpProfile has been deprecated in favor of cloudflare:zeroTrustDeviceIp/profile:Profile")]
     [CloudflareResourceType("cloudflare:index/zeroTrustDeviceIpProfile:ZeroTrustDeviceIpProfile")]
     public partial class ZeroTrustDeviceIpProfile : global::Pulumi.CustomResource
     {

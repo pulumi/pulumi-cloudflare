@@ -26,18 +26,18 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/tokenvalidation"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewTokenValidationConfig(ctx, "example_token_validation_config", &cloudflare.TokenValidationConfigArgs{
+//			_, err := tokenvalidation.NewConfig(ctx, "example_token_validation_config", &tokenvalidation.ConfigArgs{
 //				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Credentials: &cloudflare.TokenValidationConfigCredentialsArgs{
-//					Keys: cloudflare.TokenValidationConfigCredentialsKeyArray{
-//						&cloudflare.TokenValidationConfigCredentialsKeyArgs{
+//				Credentials: &tokenvalidation.ConfigCredentialsArgs{
+//					Keys: tokenvalidation.ConfigCredentialsKeyArray{
+//						&tokenvalidation.ConfigCredentialsKeyArgs{
 //							Alg: pulumi.String("RS256"),
 //							E:   pulumi.String("e"),
 //							Kid: pulumi.String("kid"),
@@ -68,6 +68,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/tokenValidationConfig:TokenValidationConfig example '<zone_id>/<config_id>'
 // ```
+//
+// Deprecated: cloudflare:index/tokenValidationConfig:TokenValidationConfig has been deprecated in favor of cloudflare:tokenValidation/config:Config
 type TokenValidationConfig struct {
 	pulumi.CustomResourceState
 

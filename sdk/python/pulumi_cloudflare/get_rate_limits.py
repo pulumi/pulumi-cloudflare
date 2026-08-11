@@ -22,6 +22,8 @@ __all__ = [
     'get_rate_limits_output',
 ]
 
+warnings.warn("""cloudflare:index/getRateLimits:getRateLimits has been deprecated in favor of cloudflare:rate/limits:getLimits""", DeprecationWarning)
+
 @pulumi.output_type
 class GetRateLimitsResult:
     """
@@ -89,13 +91,14 @@ def get_rate_limits(max_items: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_rate_limits = cloudflare.get_rate_limits(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_rate_limits = cloudflare.rate.get_limits(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: Defines an identifier.
     """
+    pulumi.log.warn("""get_rate_limits is deprecated: cloudflare:index/getRateLimits:getRateLimits has been deprecated in favor of cloudflare:rate/limits:getLimits""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id
@@ -121,13 +124,14 @@ def get_rate_limits_output(max_items: pulumi.Input[Optional[Optional[_builtins.i
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_rate_limits = cloudflare.get_rate_limits(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_rate_limits = cloudflare.rate.get_limits(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: Defines an identifier.
     """
+    pulumi.log.warn("""get_rate_limits is deprecated: cloudflare:index/getRateLimits:getRateLimits has been deprecated in favor of cloudflare:rate/limits:getLimits""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id

@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustTunnelWarpConnectors = cloudflare.getZeroTrustTunnelWarpConnectors({
+ * const exampleZeroTrustTunnelWarpConnectors = cloudflare.zerotrusttunnel.getWarpConnectors({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     excludePrefix: "vpc1-",
  *     existedAt: "2019-10-12T07%3A20%3A50.52Z",
@@ -34,7 +34,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustTunnelWarpConnectors:getZeroTrustTunnelWarpConnectors has been deprecated in favor of cloudflare:zeroTrustTunnel/warpConnectors:getWarpConnectors */
 export function getZeroTrustTunnelWarpConnectors(args?: GetZeroTrustTunnelWarpConnectorsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustTunnelWarpConnectorsResult> {
+    pulumi.log.warn("getZeroTrustTunnelWarpConnectors is deprecated: cloudflare:index/getZeroTrustTunnelWarpConnectors:getZeroTrustTunnelWarpConnectors has been deprecated in favor of cloudflare:zeroTrustTunnel/warpConnectors:getWarpConnectors")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustTunnelWarpConnectors:getZeroTrustTunnelWarpConnectors", {
@@ -147,7 +149,7 @@ export interface GetZeroTrustTunnelWarpConnectorsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustTunnelWarpConnectors = cloudflare.getZeroTrustTunnelWarpConnectors({
+ * const exampleZeroTrustTunnelWarpConnectors = cloudflare.zerotrusttunnel.getWarpConnectors({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     excludePrefix: "vpc1-",
  *     existedAt: "2019-10-12T07%3A20%3A50.52Z",
@@ -161,7 +163,9 @@ export interface GetZeroTrustTunnelWarpConnectorsResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustTunnelWarpConnectors:getZeroTrustTunnelWarpConnectors has been deprecated in favor of cloudflare:zeroTrustTunnel/warpConnectors:getWarpConnectors */
 export function getZeroTrustTunnelWarpConnectorsOutput(args?: GetZeroTrustTunnelWarpConnectorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustTunnelWarpConnectorsResult> {
+    pulumi.log.warn("getZeroTrustTunnelWarpConnectors is deprecated: cloudflare:index/getZeroTrustTunnelWarpConnectors:getZeroTrustTunnelWarpConnectors has been deprecated in favor of cloudflare:zeroTrustTunnel/warpConnectors:getWarpConnectors")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustTunnelWarpConnectors:getZeroTrustTunnelWarpConnectors", {

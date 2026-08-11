@@ -34,11 +34,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.AiGatewayDynamicRouting;
- * import com.pulumi.cloudflare.AiGatewayDynamicRoutingArgs;
- * import com.pulumi.cloudflare.inputs.AiGatewayDynamicRoutingElementArgs;
- * import com.pulumi.cloudflare.inputs.AiGatewayDynamicRoutingElementOutputsArgs;
- * import com.pulumi.cloudflare.inputs.AiGatewayDynamicRoutingElementOutputsNextArgs;
+ * import com.pulumi.cloudflare.aiGateway.DynamicRouting;
+ * import com.pulumi.cloudflare.aiGateway.DynamicRoutingArgs;
+ * import com.pulumi.cloudflare.aiGateway.inputs.DynamicRoutingElementArgs;
+ * import com.pulumi.cloudflare.aiGateway.inputs.DynamicRoutingElementOutputsArgs;
+ * import com.pulumi.cloudflare.aiGateway.inputs.DynamicRoutingElementOutputsNextArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -52,13 +52,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleAiGatewayDynamicRouting = new AiGatewayDynamicRouting("exampleAiGatewayDynamicRouting", AiGatewayDynamicRoutingArgs.builder()
+ *         var exampleAiGatewayDynamicRouting = new DynamicRouting("exampleAiGatewayDynamicRouting", DynamicRoutingArgs.builder()
  *             .accountId("0d37909e38d3e99c29fa2cd343ac421a")
  *             .gatewayId("54442216")
- *             .elements(AiGatewayDynamicRoutingElementArgs.builder()
+ *             .elements(DynamicRoutingElementArgs.builder()
  *                 .id("id")
- *                 .outputs(AiGatewayDynamicRoutingElementOutputsArgs.builder()
- *                     .next(AiGatewayDynamicRoutingElementOutputsNextArgs.builder()
+ *                 .outputs(DynamicRoutingElementOutputsArgs.builder()
+ *                     .next(DynamicRoutingElementOutputsNextArgs.builder()
  *                         .elementId("elementId")
  *                         .build())
  *                     .build())
@@ -78,7 +78,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/aiGatewayDynamicRouting:AiGatewayDynamicRouting example &#39;&lt;account_id&gt;/&lt;gateway_id&gt;/&lt;id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/aiGatewayDynamicRouting:AiGatewayDynamicRouting has been deprecated in favor of cloudflare:aiGateway/dynamicRouting:DynamicRouting
+ * 
  */
+@Deprecated /* cloudflare:index/aiGatewayDynamicRouting:AiGatewayDynamicRouting has been deprecated in favor of cloudflare:aiGateway/dynamicRouting:DynamicRouting */
 @ResourceType(type="cloudflare:index/aiGatewayDynamicRouting:AiGatewayDynamicRouting")
 public class AiGatewayDynamicRouting extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

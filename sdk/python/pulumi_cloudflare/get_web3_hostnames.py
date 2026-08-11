@@ -22,6 +22,8 @@ __all__ = [
     'get_web3_hostnames_output',
 ]
 
+warnings.warn("""cloudflare:index/getWeb3Hostnames:getWeb3Hostnames has been deprecated in favor of cloudflare:web3/hostnames:getHostnames""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWeb3HostnamesResult:
     """
@@ -89,13 +91,14 @@ def get_web3_hostnames(max_items: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_web3_hostnames = cloudflare.get_web3_hostnames(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_web3_hostnames = cloudflare.web3.get_hostnames(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: Specify the identifier of the hostname.
     """
+    pulumi.log.warn("""get_web3_hostnames is deprecated: cloudflare:index/getWeb3Hostnames:getWeb3Hostnames has been deprecated in favor of cloudflare:web3/hostnames:getHostnames""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id
@@ -121,13 +124,14 @@ def get_web3_hostnames_output(max_items: pulumi.Input[Optional[Optional[_builtin
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_web3_hostnames = cloudflare.get_web3_hostnames(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_web3_hostnames = cloudflare.web3.get_hostnames(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: Specify the identifier of the hostname.
     """
+    pulumi.log.warn("""get_web3_hostnames is deprecated: cloudflare:index/getWeb3Hostnames:getWeb3Hostnames has been deprecated in favor of cloudflare:web3/hostnames:getHostnames""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id

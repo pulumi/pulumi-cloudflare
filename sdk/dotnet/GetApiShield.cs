@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getApiShield:getApiShield has been deprecated in favor of cloudflare:apiShield/apiShield:getApiShield")]
     public static class GetApiShield
     {
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiShield = Cloudflare.GetApiShield.Invoke(new()
+        ///     var exampleApiShield = Cloudflare.Modules.ApiShield.GetApiShield.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Normalize = true,
@@ -59,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiShield = Cloudflare.GetApiShield.Invoke(new()
+        ///     var exampleApiShield = Cloudflare.Modules.ApiShield.GetApiShield.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Normalize = true,
@@ -89,7 +90,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiShield = Cloudflare.GetApiShield.Invoke(new()
+        ///     var exampleApiShield = Cloudflare.Modules.ApiShield.GetApiShield.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Normalize = true,

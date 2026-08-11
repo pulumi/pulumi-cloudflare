@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: cloudflare:index/getZeroTrustDeviceDeploymentGroupsList:getZeroTrustDeviceDeploymentGroupsList has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/list:getList
 func LookupZeroTrustDeviceDeploymentGroupsList(ctx *pulumi.Context, args *LookupZeroTrustDeviceDeploymentGroupsListArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustDeviceDeploymentGroupsListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustDeviceDeploymentGroupsListResult

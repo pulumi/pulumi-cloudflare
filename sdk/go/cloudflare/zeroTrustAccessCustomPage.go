@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustaccesscustom"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustAccessCustomPage(ctx, "example_zero_trust_access_custom_page", &cloudflare.ZeroTrustAccessCustomPageArgs{
+//			_, err := zerotrustaccesscustom.NewPage(ctx, "example_zero_trust_access_custom_page", &zerotrustaccesscustom.PageArgs{
 //				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				CustomHtml: pulumi.String("<html><body><h1>Access Denied</h1></body></html>"),
 //				Name:       pulumi.String("name"),
@@ -51,6 +51,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage example '<account_id>/<custom_page_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage has been deprecated in favor of cloudflare:zeroTrustAccessCustom/page:Page
 type ZeroTrustAccessCustomPage struct {
 	pulumi.CustomResourceState
 

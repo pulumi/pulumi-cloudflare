@@ -21,6 +21,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/streamLiveInput:StreamLiveInput has been deprecated in favor of cloudflare:stream/liveInput:LiveInput")]
     [CloudflareResourceType("cloudflare:index/streamLiveInput:StreamLiveInput")]
     public partial class StreamLiveInput : global::Pulumi.CustomResource
     {

@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleShareResources = cloudflare.getShareResources({
+ * const exampleShareResources = cloudflare.share.getResources({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     shareId: "3fd85f74b32742f1bff64a85009dda07",
  *     resourceType: "custom-ruleset",
@@ -21,7 +21,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getShareResources:getShareResources has been deprecated in favor of cloudflare:share/resources:getResources */
 export function getShareResources(args: GetShareResourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetShareResourcesResult> {
+    pulumi.log.warn("getShareResources is deprecated: cloudflare:index/getShareResources:getShareResources has been deprecated in favor of cloudflare:share/resources:getResources")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getShareResources:getShareResources", {
         "accountId": args.accountId,
@@ -98,7 +100,7 @@ export interface GetShareResourcesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleShareResources = cloudflare.getShareResources({
+ * const exampleShareResources = cloudflare.share.getResources({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     shareId: "3fd85f74b32742f1bff64a85009dda07",
  *     resourceType: "custom-ruleset",
@@ -106,7 +108,9 @@ export interface GetShareResourcesResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getShareResources:getShareResources has been deprecated in favor of cloudflare:share/resources:getResources */
 export function getShareResourcesOutput(args: GetShareResourcesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetShareResourcesResult> {
+    pulumi.log.warn("getShareResources is deprecated: cloudflare:index/getShareResources:getShareResources has been deprecated in favor of cloudflare:share/resources:getResources")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getShareResources:getShareResources", {
         "accountId": args.accountId,

@@ -16,14 +16,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessShortLivedCertificate = cloudflare.getZeroTrustAccessShortLivedCertificate({
+ * const exampleZeroTrustAccessShortLivedCertificate = cloudflare.zerotrustaccessshortlived.getCertificate({
  *     appId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessShortLivedCertificate:getZeroTrustAccessShortLivedCertificate has been deprecated in favor of cloudflare:zeroTrustAccessShortLived/certificate:getCertificate */
 export function getZeroTrustAccessShortLivedCertificate(args: GetZeroTrustAccessShortLivedCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessShortLivedCertificateResult> {
+    pulumi.log.warn("getZeroTrustAccessShortLivedCertificate is deprecated: cloudflare:index/getZeroTrustAccessShortLivedCertificate:getZeroTrustAccessShortLivedCertificate has been deprecated in favor of cloudflare:zeroTrustAccessShortLived/certificate:getCertificate")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessShortLivedCertificate:getZeroTrustAccessShortLivedCertificate", {
         "accountId": args.accountId,
@@ -91,14 +93,16 @@ export interface GetZeroTrustAccessShortLivedCertificateResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessShortLivedCertificate = cloudflare.getZeroTrustAccessShortLivedCertificate({
+ * const exampleZeroTrustAccessShortLivedCertificate = cloudflare.zerotrustaccessshortlived.getCertificate({
  *     appId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessShortLivedCertificate:getZeroTrustAccessShortLivedCertificate has been deprecated in favor of cloudflare:zeroTrustAccessShortLived/certificate:getCertificate */
 export function getZeroTrustAccessShortLivedCertificateOutput(args: GetZeroTrustAccessShortLivedCertificateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessShortLivedCertificateResult> {
+    pulumi.log.warn("getZeroTrustAccessShortLivedCertificate is deprecated: cloudflare:index/getZeroTrustAccessShortLivedCertificate:getZeroTrustAccessShortLivedCertificate has been deprecated in favor of cloudflare:zeroTrustAccessShortLived/certificate:getCertificate")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessShortLivedCertificate:getZeroTrustAccessShortLivedCertificate", {
         "accountId": args.accountId,

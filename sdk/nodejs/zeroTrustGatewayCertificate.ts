@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustGatewayCertificate = new cloudflare.ZeroTrustGatewayCertificate("example_zero_trust_gateway_certificate", {
+ * const exampleZeroTrustGatewayCertificate = new cloudflare.zerotrustgateway.Certificate("example_zero_trust_gateway_certificate", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     validityPeriodDays: 1826,
  * });
@@ -22,6 +22,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate example '<account_id>/<certificate_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate has been deprecated in favor of cloudflare:zeroTrustGateway/certificate:Certificate
  */
 export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
     /**
@@ -34,6 +36,7 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustGatewayCertificateState, opts?: pulumi.CustomResourceOptions): ZeroTrustGatewayCertificate {
+        pulumi.log.warn("ZeroTrustGatewayCertificate is deprecated: cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate has been deprecated in favor of cloudflare:zeroTrustGateway/certificate:Certificate")
         return new ZeroTrustGatewayCertificate(name, <any>state, { ...opts, id: id });
     }
 
@@ -102,8 +105,11 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate has been deprecated in favor of cloudflare:zeroTrustGateway/certificate:Certificate */
     constructor(name: string, args: ZeroTrustGatewayCertificateArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate has been deprecated in favor of cloudflare:zeroTrustGateway/certificate:Certificate */
     constructor(name: string, argsOrState?: ZeroTrustGatewayCertificateArgs | ZeroTrustGatewayCertificateState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustGatewayCertificate is deprecated: cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate has been deprecated in favor of cloudflare:zeroTrustGateway/certificate:Certificate")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

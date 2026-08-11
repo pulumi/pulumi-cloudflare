@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDeviceIpProfiles = cloudflare.getZeroTrustDeviceIpProfiles({
+ * const exampleZeroTrustDeviceIpProfiles = cloudflare.zerotrustdeviceip.getProfiles({
  *     accountId: "account_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDeviceIpProfiles:getZeroTrustDeviceIpProfiles has been deprecated in favor of cloudflare:zeroTrustDeviceIp/profiles:getProfiles */
 export function getZeroTrustDeviceIpProfiles(args?: GetZeroTrustDeviceIpProfilesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDeviceIpProfilesResult> {
+    pulumi.log.warn("getZeroTrustDeviceIpProfiles is deprecated: cloudflare:index/getZeroTrustDeviceIpProfiles:getZeroTrustDeviceIpProfiles has been deprecated in favor of cloudflare:zeroTrustDeviceIp/profiles:getProfiles")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDeviceIpProfiles:getZeroTrustDeviceIpProfiles", {
@@ -78,12 +80,14 @@ export interface GetZeroTrustDeviceIpProfilesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDeviceIpProfiles = cloudflare.getZeroTrustDeviceIpProfiles({
+ * const exampleZeroTrustDeviceIpProfiles = cloudflare.zerotrustdeviceip.getProfiles({
  *     accountId: "account_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDeviceIpProfiles:getZeroTrustDeviceIpProfiles has been deprecated in favor of cloudflare:zeroTrustDeviceIp/profiles:getProfiles */
 export function getZeroTrustDeviceIpProfilesOutput(args?: GetZeroTrustDeviceIpProfilesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDeviceIpProfilesResult> {
+    pulumi.log.warn("getZeroTrustDeviceIpProfiles is deprecated: cloudflare:index/getZeroTrustDeviceIpProfiles:getZeroTrustDeviceIpProfiles has been deprecated in favor of cloudflare:zeroTrustDeviceIp/profiles:getProfiles")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDeviceIpProfiles:getZeroTrustDeviceIpProfiles", {

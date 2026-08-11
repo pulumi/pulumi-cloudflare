@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCloudforceOneRequestMessage = cloudflare.getCloudforceOneRequestMessage({
+ * const exampleCloudforceOneRequestMessage = cloudflare.cloudforceonerequest.getMessage({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     requestId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     page: 0,
@@ -27,7 +27,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCloudforceOneRequestMessage:getCloudforceOneRequestMessage has been deprecated in favor of cloudflare:cloudforceOneRequest/message:getMessage */
 export function getCloudforceOneRequestMessage(args: GetCloudforceOneRequestMessageArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudforceOneRequestMessageResult> {
+    pulumi.log.warn("getCloudforceOneRequestMessage is deprecated: cloudflare:index/getCloudforceOneRequestMessage:getCloudforceOneRequestMessage has been deprecated in favor of cloudflare:cloudforceOneRequest/message:getMessage")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCloudforceOneRequestMessage:getCloudforceOneRequestMessage", {
         "accountId": args.accountId,
@@ -153,7 +155,7 @@ export interface GetCloudforceOneRequestMessageResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCloudforceOneRequestMessage = cloudflare.getCloudforceOneRequestMessage({
+ * const exampleCloudforceOneRequestMessage = cloudflare.cloudforceonerequest.getMessage({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     requestId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     page: 0,
@@ -165,7 +167,9 @@ export interface GetCloudforceOneRequestMessageResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCloudforceOneRequestMessage:getCloudforceOneRequestMessage has been deprecated in favor of cloudflare:cloudforceOneRequest/message:getMessage */
 export function getCloudforceOneRequestMessageOutput(args: GetCloudforceOneRequestMessageOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudforceOneRequestMessageResult> {
+    pulumi.log.warn("getCloudforceOneRequestMessage is deprecated: cloudflare:index/getCloudforceOneRequestMessage:getCloudforceOneRequestMessage has been deprecated in favor of cloudflare:cloudforceOneRequest/message:getMessage")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCloudforceOneRequestMessage:getCloudforceOneRequestMessage", {
         "accountId": args.accountId,

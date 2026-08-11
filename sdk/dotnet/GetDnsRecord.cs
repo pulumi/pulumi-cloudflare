@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getDnsRecord:getDnsRecord has been deprecated in favor of cloudflare:dns/record:getRecord")]
     public static class GetDnsRecord
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDnsRecord = Cloudflare.GetDnsRecord.Invoke(new()
+        ///     var exampleDnsRecord = Cloudflare.Modules.Dns.GetRecord.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DnsRecordId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -56,7 +57,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDnsRecord = Cloudflare.GetDnsRecord.Invoke(new()
+        ///     var exampleDnsRecord = Cloudflare.Modules.Dns.GetRecord.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DnsRecordId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -85,7 +86,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDnsRecord = Cloudflare.GetDnsRecord.Invoke(new()
+        ///     var exampleDnsRecord = Cloudflare.Modules.Dns.GetRecord.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DnsRecordId = "023e105f4ecef8ad9ca31a8372d0c353",

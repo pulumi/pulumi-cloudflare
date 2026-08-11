@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountToken = cloudflare.getAccountToken({
+ * const exampleAccountToken = cloudflare.account.getToken({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     tokenId: "ed17574386854bf78a67040be0a770b0",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccountToken:getAccountToken has been deprecated in favor of cloudflare:account/token:getToken */
 export function getAccountToken(args?: GetAccountTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountTokenResult> {
+    pulumi.log.warn("getAccountToken is deprecated: cloudflare:index/getAccountToken:getAccountToken has been deprecated in favor of cloudflare:account/token:getToken")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountToken:getAccountToken", {
@@ -113,13 +115,15 @@ export interface GetAccountTokenResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountToken = cloudflare.getAccountToken({
+ * const exampleAccountToken = cloudflare.account.getToken({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     tokenId: "ed17574386854bf78a67040be0a770b0",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccountToken:getAccountToken has been deprecated in favor of cloudflare:account/token:getToken */
 export function getAccountTokenOutput(args?: GetAccountTokenOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountTokenResult> {
+    pulumi.log.warn("getAccountToken is deprecated: cloudflare:index/getAccountToken:getAccountToken has been deprecated in favor of cloudflare:account/token:getToken")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountToken:getAccountToken", {

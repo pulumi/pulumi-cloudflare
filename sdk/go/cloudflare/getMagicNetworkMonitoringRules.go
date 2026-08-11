@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/magicnetworkmonitoring"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetMagicNetworkMonitoringRules(ctx, &cloudflare.LookupMagicNetworkMonitoringRulesArgs{
+//			_, err := magicnetworkmonitoring.GetRules(ctx, &magicnetworkmonitoring.GetRulesArgs{
 //				AccountId: pulumi.StringRef("6f91088a406011ed95aed352566e8d4c"),
 //			}, nil)
 //			if err != nil {
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getMagicNetworkMonitoringRules:getMagicNetworkMonitoringRules has been deprecated in favor of cloudflare:magicNetworkMonitoring/rules:getRules
 func LookupMagicNetworkMonitoringRules(ctx *pulumi.Context, args *LookupMagicNetworkMonitoringRulesArgs, opts ...pulumi.InvokeOption) (*LookupMagicNetworkMonitoringRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMagicNetworkMonitoringRulesResult

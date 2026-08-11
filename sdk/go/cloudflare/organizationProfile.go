@@ -19,14 +19,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/organization"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewOrganizationProfile(ctx, "example_organization_profile", &cloudflare.OrganizationProfileArgs{
+//			_, err := organization.NewProfile(ctx, "example_organization_profile", &organization.ProfileArgs{
 //				OrganizationId:   pulumi.String("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8"),
 //				BusinessAddress:  pulumi.String("business_address"),
 //				BusinessEmail:    pulumi.String("business_email"),
@@ -46,6 +46,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/organizationProfile:OrganizationProfile has been deprecated in favor of cloudflare:organization/profile:Profile
 type OrganizationProfile struct {
 	pulumi.CustomResourceState
 

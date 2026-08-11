@@ -22,6 +22,8 @@ __all__ = [
     'get_custom_csrs_output',
 ]
 
+warnings.warn("""cloudflare:index/getCustomCsrs:getCustomCsrs has been deprecated in favor of cloudflare:custom/csrs:getCsrs""", DeprecationWarning)
+
 @pulumi.output_type
 class GetCustomCsrsResult:
     """
@@ -102,7 +104,7 @@ def get_custom_csrs(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_custom_csrs = cloudflare.get_custom_csrs(account_id="account_id",
+    example_custom_csrs = cloudflare.custom.get_csrs(account_id="account_id",
         zone_id="zone_id")
     ```
 
@@ -111,6 +113,7 @@ def get_custom_csrs(account_id: Optional[_builtins.str] = None,
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_custom_csrs is deprecated: cloudflare:index/getCustomCsrs:getCustomCsrs has been deprecated in favor of cloudflare:custom/csrs:getCsrs""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -139,7 +142,7 @@ def get_custom_csrs_output(account_id: pulumi.Input[Optional[Optional[_builtins.
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_custom_csrs = cloudflare.get_custom_csrs(account_id="account_id",
+    example_custom_csrs = cloudflare.custom.get_csrs(account_id="account_id",
         zone_id="zone_id")
     ```
 
@@ -148,6 +151,7 @@ def get_custom_csrs_output(account_id: pulumi.Input[Optional[Optional[_builtins.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_custom_csrs is deprecated: cloudflare:index/getCustomCsrs:getCustomCsrs has been deprecated in favor of cloudflare:custom/csrs:getCsrs""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

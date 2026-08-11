@@ -219,8 +219,13 @@ class _CustomPageAssetState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/customPageAsset:CustomPageAsset has been deprecated in favor of cloudflare:customPage/asset:Asset""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/customPageAsset:CustomPageAsset")
 class CustomPageAsset(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/customPageAsset:CustomPageAsset has been deprecated in favor of cloudflare:customPage/asset:Asset""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -238,7 +243,7 @@ class CustomPageAsset(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_custom_page_asset = cloudflare.CustomPageAsset("example_custom_page_asset",
+        example_custom_page_asset = cloudflare.custompage.Asset("example_custom_page_asset",
             description="Custom 500 error page",
             name="my_custom_error_page",
             url="https://example.com/error.html",
@@ -273,7 +278,7 @@ class CustomPageAsset(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_custom_page_asset = cloudflare.CustomPageAsset("example_custom_page_asset",
+        example_custom_page_asset = cloudflare.custompage.Asset("example_custom_page_asset",
             description="Custom 500 error page",
             name="my_custom_error_page",
             url="https://example.com/error.html",
@@ -308,6 +313,7 @@ class CustomPageAsset(pulumi.CustomResource):
                  url: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""CustomPageAsset is deprecated: cloudflare:index/customPageAsset:CustomPageAsset has been deprecated in favor of cloudflare:customPage/asset:Asset""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

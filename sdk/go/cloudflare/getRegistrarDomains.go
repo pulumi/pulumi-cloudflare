@@ -18,14 +18,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/registrar"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetRegistrarDomains(ctx, &cloudflare.LookupRegistrarDomainsArgs{
+//			_, err := registrar.LookupDomains(ctx, &registrar.LookupDomainsArgs{
 //				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
@@ -36,6 +36,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getRegistrarDomains:getRegistrarDomains has been deprecated in favor of cloudflare:registrar/domains:getDomains
 func LookupRegistrarDomains(ctx *pulumi.Context, args *LookupRegistrarDomainsArgs, opts ...pulumi.InvokeOption) (*LookupRegistrarDomainsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegistrarDomainsResult

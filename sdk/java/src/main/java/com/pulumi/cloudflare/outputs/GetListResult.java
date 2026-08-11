@@ -36,7 +36,7 @@ public final class GetListResult {
      */
     private String id;
     /**
-     * @return The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+     * @return The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.list.Item`.
      * 
      */
     private List<GetListItem> items;
@@ -107,7 +107,7 @@ public final class GetListResult {
         return this.id;
     }
     /**
-     * @return The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+     * @return The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.list.Item`.
      * 
      */
     public List<GetListItem> items() {

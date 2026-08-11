@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleOrganization = cloudflare.getOrganization({
+ * const exampleOrganization = cloudflare.organization.getOrganization({
  *     organizationId: "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getOrganization:getOrganization has been deprecated in favor of cloudflare:organization/organization:getOrganization */
 export function getOrganization(args?: GetOrganizationArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationResult> {
+    pulumi.log.warn("getOrganization is deprecated: cloudflare:index/getOrganization:getOrganization has been deprecated in favor of cloudflare:organization/organization:getOrganization")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getOrganization:getOrganization", {
@@ -68,12 +70,14 @@ export interface GetOrganizationResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleOrganization = cloudflare.getOrganization({
+ * const exampleOrganization = cloudflare.organization.getOrganization({
  *     organizationId: "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getOrganization:getOrganization has been deprecated in favor of cloudflare:organization/organization:getOrganization */
 export function getOrganizationOutput(args?: GetOrganizationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationResult> {
+    pulumi.log.warn("getOrganization is deprecated: cloudflare:index/getOrganization:getOrganization has been deprecated in favor of cloudflare:organization/organization:getOrganization")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getOrganization:getOrganization", {

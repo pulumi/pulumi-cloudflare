@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * - `Domain API Gateway`
  * - `Domain API Gateway Read`
  * 
- * &gt; `cloudflare.ApiShieldSchemaValidationSettings` is in a deprecation phase and will be removed in the future.
+ * &gt; `cloudflare.apiShieldSchema.ValidationSettings` is in a deprecation phase and will be removed in the future.
  *   Instead, please utilize the cloudflare.SchemaValidationSettings resource instead.
  * 
  * ## Example Usage
@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ApiShieldSchemaValidationSettings;
- * import com.pulumi.cloudflare.ApiShieldSchemaValidationSettingsArgs;
+ * import com.pulumi.cloudflare.apiShieldSchema.ValidationSettings;
+ * import com.pulumi.cloudflare.apiShieldSchema.ValidationSettingsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleApiShieldSchemaValidationSettings = new ApiShieldSchemaValidationSettings("exampleApiShieldSchemaValidationSettings", ApiShieldSchemaValidationSettingsArgs.builder()
+ *         var exampleApiShieldSchemaValidationSettings = new ValidationSettings("exampleApiShieldSchemaValidationSettings", ValidationSettingsArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .validationDefaultMitigationAction("block")
  *             .validationOverrideMitigationAction("none")
@@ -66,7 +66,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldSchema/validationSettings:ValidationSettings
+ * 
  */
+@Deprecated /* cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldSchema/validationSettings:ValidationSettings */
 @ResourceType(type="cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings")
 public class ApiShieldSchemaValidationSettings extends com.pulumi.resources.CustomResource {
     /**

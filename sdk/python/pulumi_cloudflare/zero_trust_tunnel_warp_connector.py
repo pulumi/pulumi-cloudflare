@@ -314,8 +314,13 @@ class _ZeroTrustTunnelWarpConnectorState:
         pulumi.set(self, "tunnel_secret", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector has been deprecated in favor of cloudflare:zeroTrustTunnelWarpConnector/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector")
 class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector has been deprecated in favor of cloudflare:zeroTrustTunnelWarpConnector/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -339,7 +344,7 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_tunnel_warp_connector = cloudflare.ZeroTrustTunnelWarpConnector("example_zero_trust_tunnel_warp_connector",
+        example_zero_trust_tunnel_warp_connector = cloudflare.zerotrusttunnelwarpconnector.ZeroTrustTunnelWarpConnector("example_zero_trust_tunnel_warp_connector",
             account_id="699d98642c564d2e855e9661899b7252",
             name="blog",
             ha=True)
@@ -379,7 +384,7 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_tunnel_warp_connector = cloudflare.ZeroTrustTunnelWarpConnector("example_zero_trust_tunnel_warp_connector",
+        example_zero_trust_tunnel_warp_connector = cloudflare.zerotrusttunnelwarpconnector.ZeroTrustTunnelWarpConnector("example_zero_trust_tunnel_warp_connector",
             account_id="699d98642c564d2e855e9661899b7252",
             name="blog",
             ha=True)
@@ -412,6 +417,7 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  tunnel_secret: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustTunnelWarpConnector is deprecated: cloudflare:index/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector has been deprecated in favor of cloudflare:zeroTrustTunnelWarpConnector/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

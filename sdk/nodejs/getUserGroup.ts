@@ -19,13 +19,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleUserGroup = cloudflare.getUserGroup({
+ * const exampleUserGroup = cloudflare.usergroup.getUserGroup({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     userGroupId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getUserGroup:getUserGroup has been deprecated in favor of cloudflare:userGroup/userGroup:getUserGroup */
 export function getUserGroup(args: GetUserGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetUserGroupResult> {
+    pulumi.log.warn("getUserGroup is deprecated: cloudflare:index/getUserGroup:getUserGroup has been deprecated in favor of cloudflare:userGroup/userGroup:getUserGroup")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getUserGroup:getUserGroup", {
         "accountId": args.accountId,
@@ -96,13 +98,15 @@ export interface GetUserGroupResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleUserGroup = cloudflare.getUserGroup({
+ * const exampleUserGroup = cloudflare.usergroup.getUserGroup({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     userGroupId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getUserGroup:getUserGroup has been deprecated in favor of cloudflare:userGroup/userGroup:getUserGroup */
 export function getUserGroupOutput(args: GetUserGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserGroupResult> {
+    pulumi.log.warn("getUserGroup is deprecated: cloudflare:index/getUserGroup:getUserGroup has been deprecated in favor of cloudflare:userGroup/userGroup:getUserGroup")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getUserGroup:getUserGroup", {
         "accountId": args.accountId,

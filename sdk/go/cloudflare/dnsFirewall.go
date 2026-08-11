@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/dns"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewDnsFirewall(ctx, "example_dns_firewall", &cloudflare.DnsFirewallArgs{
+//			_, err := dns.NewFirewall(ctx, "example_dns_firewall", &dns.FirewallArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:      pulumi.String("My Awesome DNS Firewall cluster"),
 //				UpstreamIps: pulumi.StringArray{
@@ -39,7 +39,7 @@ import (
 //					pulumi.String("198.51.100.1"),
 //					pulumi.String("2001:DB8:100::CF"),
 //				},
-//				AttackMitigation: &cloudflare.DnsFirewallAttackMitigationArgs{
+//				AttackMitigation: &dns.FirewallAttackMitigationArgs{
 //					Enabled:                   pulumi.Bool(true),
 //					OnlyWhenUpstreamUnhealthy: pulumi.Bool(false),
 //				},
@@ -66,6 +66,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/dnsFirewall:DnsFirewall example '<account_id>/<dns_firewall_id>'
 // ```
+//
+// Deprecated: cloudflare:index/dnsFirewall:DnsFirewall has been deprecated in favor of cloudflare:dns/firewall:Firewall
 type DnsFirewall struct {
 	pulumi.CustomResourceState
 

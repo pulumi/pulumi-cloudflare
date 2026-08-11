@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustGatewayLogging = new cloudflare.ZeroTrustGatewayLogging("example_zero_trust_gateway_logging", {
+ * const exampleZeroTrustGatewayLogging = new cloudflare.zerotrustgateway.Logging("example_zero_trust_gateway_logging", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     redactPii: true,
  *     settingsByRuleType: {
@@ -38,6 +38,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging example '<account_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging has been deprecated in favor of cloudflare:zeroTrustGateway/logging:Logging
  */
 export class ZeroTrustGatewayLogging extends pulumi.CustomResource {
     /**
@@ -50,6 +52,7 @@ export class ZeroTrustGatewayLogging extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustGatewayLoggingState, opts?: pulumi.CustomResourceOptions): ZeroTrustGatewayLogging {
+        pulumi.log.warn("ZeroTrustGatewayLogging is deprecated: cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging has been deprecated in favor of cloudflare:zeroTrustGateway/logging:Logging")
         return new ZeroTrustGatewayLogging(name, <any>state, { ...opts, id: id });
     }
 
@@ -84,8 +87,11 @@ export class ZeroTrustGatewayLogging extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging has been deprecated in favor of cloudflare:zeroTrustGateway/logging:Logging */
     constructor(name: string, args: ZeroTrustGatewayLoggingArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging has been deprecated in favor of cloudflare:zeroTrustGateway/logging:Logging */
     constructor(name: string, argsOrState?: ZeroTrustGatewayLoggingArgs | ZeroTrustGatewayLoggingState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustGatewayLogging is deprecated: cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging has been deprecated in favor of cloudflare:zeroTrustGateway/logging:Logging")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

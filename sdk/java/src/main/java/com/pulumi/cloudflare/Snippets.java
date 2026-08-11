@@ -20,7 +20,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/snippets:Snippets has been deprecated in favor of cloudflare:snippets/snippets:Snippets
+ * 
  */
+@Deprecated /* cloudflare:index/snippets:Snippets has been deprecated in favor of cloudflare:snippets/snippets:Snippets */
 @ResourceType(type="cloudflare:index/snippets:Snippets")
 public class Snippets extends com.pulumi.resources.CustomResource {
     /**

@@ -23,6 +23,8 @@ __all__ = [
     'get_client_certificate_output',
 ]
 
+warnings.warn("""cloudflare:index/getClientCertificate:getClientCertificate has been deprecated in favor of cloudflare:client/certificate:getCertificate""", DeprecationWarning)
+
 @pulumi.output_type
 class GetClientCertificateResult:
     """
@@ -305,7 +307,7 @@ def get_client_certificate(client_certificate_id: Optional[_builtins.str] = None
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_client_certificate = cloudflare.get_client_certificate(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_client_certificate = cloudflare.client.get_certificate(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         client_certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -313,6 +315,7 @@ def get_client_certificate(client_certificate_id: Optional[_builtins.str] = None
     :param _builtins.str client_certificate_id: Identifier.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_client_certificate is deprecated: cloudflare:index/getClientCertificate:getClientCertificate has been deprecated in favor of cloudflare:client/certificate:getCertificate""")
     __args__ = dict()
     __args__['clientCertificateId'] = client_certificate_id
     __args__['filter'] = filter
@@ -358,7 +361,7 @@ def get_client_certificate_output(client_certificate_id: pulumi.Input[Optional[O
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_client_certificate = cloudflare.get_client_certificate(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_client_certificate = cloudflare.client.get_certificate(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         client_certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -366,6 +369,7 @@ def get_client_certificate_output(client_certificate_id: pulumi.Input[Optional[O
     :param _builtins.str client_certificate_id: Identifier.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_client_certificate is deprecated: cloudflare:index/getClientCertificate:getClientCertificate has been deprecated in favor of cloudflare:client/certificate:getCertificate""")
     __args__ = dict()
     __args__['clientCertificateId'] = client_certificate_id
     __args__['filter'] = filter

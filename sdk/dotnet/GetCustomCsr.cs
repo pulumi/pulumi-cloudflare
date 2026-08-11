@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getCustomCsr:getCustomCsr has been deprecated in favor of cloudflare:custom/csr:getCsr")]
     public static class GetCustomCsr
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomCsr = Cloudflare.GetCustomCsr.Invoke(new()
+        ///     var exampleCustomCsr = Cloudflare.Modules.Custom.GetCsr.Invoke(new()
         ///     {
         ///         CustomCsrId = "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
         ///         AccountId = "account_id",
@@ -56,7 +57,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomCsr = Cloudflare.GetCustomCsr.Invoke(new()
+        ///     var exampleCustomCsr = Cloudflare.Modules.Custom.GetCsr.Invoke(new()
         ///     {
         ///         CustomCsrId = "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
         ///         AccountId = "account_id",
@@ -85,7 +86,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomCsr = Cloudflare.GetCustomCsr.Invoke(new()
+        ///     var exampleCustomCsr = Cloudflare.Modules.Custom.GetCsr.Invoke(new()
         ///     {
         ///         CustomCsrId = "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
         ///         AccountId = "account_id",

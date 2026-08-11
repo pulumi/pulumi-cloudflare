@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustTunnelCloudflaredConfig = new cloudflare.ZeroTrustTunnelCloudflaredConfig("example_zero_trust_tunnel_cloudflared_config", {
+ * const exampleZeroTrustTunnelCloudflaredConfig = new cloudflare.zerotrusttunnelcloudflared.Config("example_zero_trust_tunnel_cloudflared_config", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     tunnelId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
  *     config: {
@@ -82,6 +82,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustTunnelCloudflaredConfig:ZeroTrustTunnelCloudflaredConfig example '<account_id>/<tunnel_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustTunnelCloudflaredConfig:ZeroTrustTunnelCloudflaredConfig has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/config:Config
  */
 export class ZeroTrustTunnelCloudflaredConfig extends pulumi.CustomResource {
     /**
@@ -94,6 +96,7 @@ export class ZeroTrustTunnelCloudflaredConfig extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustTunnelCloudflaredConfigState, opts?: pulumi.CustomResourceOptions): ZeroTrustTunnelCloudflaredConfig {
+        pulumi.log.warn("ZeroTrustTunnelCloudflaredConfig is deprecated: cloudflare:index/zeroTrustTunnelCloudflaredConfig:ZeroTrustTunnelCloudflaredConfig has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/config:Config")
         return new ZeroTrustTunnelCloudflaredConfig(name, <any>state, { ...opts, id: id });
     }
 
@@ -141,8 +144,11 @@ export class ZeroTrustTunnelCloudflaredConfig extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustTunnelCloudflaredConfig:ZeroTrustTunnelCloudflaredConfig has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/config:Config */
     constructor(name: string, args: ZeroTrustTunnelCloudflaredConfigArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustTunnelCloudflaredConfig:ZeroTrustTunnelCloudflaredConfig has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/config:Config */
     constructor(name: string, argsOrState?: ZeroTrustTunnelCloudflaredConfigArgs | ZeroTrustTunnelCloudflaredConfigState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustTunnelCloudflaredConfig is deprecated: cloudflare:index/zeroTrustTunnelCloudflaredConfig:ZeroTrustTunnelCloudflaredConfig has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/config:Config")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

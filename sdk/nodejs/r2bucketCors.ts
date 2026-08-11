@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleR2BucketCors = new cloudflare.R2BucketCors("example_r2_bucket_cors", {
+ * const exampleR2BucketCors = new cloudflare.r2bucket.Cors("example_r2_bucket_cors", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
  *     rules: [{
@@ -32,6 +32,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/r2BucketCors:R2BucketCors has been deprecated in favor of cloudflare:r2Bucket/cors:Cors
  */
 export class R2BucketCors extends pulumi.CustomResource {
     /**
@@ -44,6 +46,7 @@ export class R2BucketCors extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: R2BucketCorsState, opts?: pulumi.CustomResourceOptions): R2BucketCors {
+        pulumi.log.warn("R2BucketCors is deprecated: cloudflare:index/r2BucketCors:R2BucketCors has been deprecated in favor of cloudflare:r2Bucket/cors:Cors")
         return new R2BucketCors(name, <any>state, { ...opts, id: id });
     }
 
@@ -82,8 +85,11 @@ export class R2BucketCors extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/r2BucketCors:R2BucketCors has been deprecated in favor of cloudflare:r2Bucket/cors:Cors */
     constructor(name: string, args: R2BucketCorsArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/r2BucketCors:R2BucketCors has been deprecated in favor of cloudflare:r2Bucket/cors:Cors */
     constructor(name: string, argsOrState?: R2BucketCorsArgs | R2BucketCorsState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("R2BucketCors is deprecated: cloudflare:index/r2BucketCors:R2BucketCors has been deprecated in favor of cloudflare:r2Bucket/cors:Cors")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

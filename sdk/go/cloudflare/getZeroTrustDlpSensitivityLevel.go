@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdlpsensitivitylevel"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustDlpSensitivityLevel(ctx, &cloudflare.LookupZeroTrustDlpSensitivityLevelArgs{
+//			_, err := zerotrustdlpsensitivitylevel.GetZeroTrustDlpSensitivityLevel(ctx, &zerotrustdlpsensitivitylevel.GetZeroTrustDlpSensitivityLevelArgs{
 //				AccountId:          "account_id",
 //				SensitivityGroupId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 //				SensitivityLevelId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -43,6 +43,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustDlpSensitivityLevel:getZeroTrustDlpSensitivityLevel has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/zeroTrustDlpSensitivityLevel:getZeroTrustDlpSensitivityLevel
 func LookupZeroTrustDlpSensitivityLevel(ctx *pulumi.Context, args *LookupZeroTrustDlpSensitivityLevelArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustDlpSensitivityLevelResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustDlpSensitivityLevelResult

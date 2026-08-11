@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/customhostname"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewCustomHostnameFallbackOrigin(ctx, "example_custom_hostname_fallback_origin", &cloudflare.CustomHostnameFallbackOriginArgs{
+//			_, err := customhostname.NewFallbackOrigin(ctx, "example_custom_hostname_fallback_origin", &customhostname.FallbackOriginArgs{
 //				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Origin: pulumi.String("fallback.example.com"),
 //			})
@@ -49,6 +49,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example '<zone_id>'
 // ```
+//
+// Deprecated: cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin has been deprecated in favor of cloudflare:customHostname/fallbackOrigin:FallbackOrigin
 type CustomHostnameFallbackOrigin struct {
 	pulumi.CustomResourceState
 

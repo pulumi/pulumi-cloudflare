@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountSubscription = new cloudflare.AccountSubscription("example_account_subscription", {
+ * const exampleAccountSubscription = new cloudflare.account.Subscription("example_account_subscription", {
  *     accountId: "account_id",
  *     frequency: "monthly",
  *     ratePlan: {
@@ -38,6 +38,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example '<account_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/accountSubscription:AccountSubscription has been deprecated in favor of cloudflare:account/subscription:Subscription
  */
 export class AccountSubscription extends pulumi.CustomResource {
     /**
@@ -50,6 +52,7 @@ export class AccountSubscription extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AccountSubscriptionState, opts?: pulumi.CustomResourceOptions): AccountSubscription {
+        pulumi.log.warn("AccountSubscription is deprecated: cloudflare:index/accountSubscription:AccountSubscription has been deprecated in favor of cloudflare:account/subscription:Subscription")
         return new AccountSubscription(name, <any>state, { ...opts, id: id });
     }
 
@@ -109,8 +112,11 @@ export class AccountSubscription extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/accountSubscription:AccountSubscription has been deprecated in favor of cloudflare:account/subscription:Subscription */
     constructor(name: string, args?: AccountSubscriptionArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/accountSubscription:AccountSubscription has been deprecated in favor of cloudflare:account/subscription:Subscription */
     constructor(name: string, argsOrState?: AccountSubscriptionArgs | AccountSubscriptionState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("AccountSubscription is deprecated: cloudflare:index/accountSubscription:AccountSubscription has been deprecated in favor of cloudflare:account/subscription:Subscription")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

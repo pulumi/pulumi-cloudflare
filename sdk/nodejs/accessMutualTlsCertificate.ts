@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessMtlsCertificate = new cloudflare.ZeroTrustAccessMtlsCertificate("example_zero_trust_access_mtls_certificate", {
+ * const exampleZeroTrustAccessMtlsCertificate = new cloudflare.zerotrustaccessmtls.Certificate("example_zero_trust_access_mtls_certificate", {
  *     certificate: `  -----BEGIN CERTIFICATE-----
  *   MIIGAjCCA+qgAwIBAgIJAI7kymlF7CWT...N4RI7KKB7nikiuUf8vhULKy5IX10
  *   DrUtmu/B

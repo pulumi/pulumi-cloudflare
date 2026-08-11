@@ -23,6 +23,8 @@ __all__ = [
     'get_spectrum_application_output',
 ]
 
+warnings.warn("""cloudflare:index/getSpectrumApplication:getSpectrumApplication has been deprecated in favor of cloudflare:spectrum/application:getApplication""", DeprecationWarning)
+
 @pulumi.output_type
 class GetSpectrumApplicationResult:
     """
@@ -274,7 +276,7 @@ def get_spectrum_application(app_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_spectrum_application = cloudflare.get_spectrum_application(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_spectrum_application = cloudflare.spectrum.get_application(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         app_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -282,6 +284,7 @@ def get_spectrum_application(app_id: Optional[_builtins.str] = None,
     :param _builtins.str app_id: App identifier.
     :param _builtins.str zone_id: Zone identifier.
     """
+    pulumi.log.warn("""get_spectrum_application is deprecated: cloudflare:index/getSpectrumApplication:getSpectrumApplication has been deprecated in favor of cloudflare:spectrum/application:getApplication""")
     __args__ = dict()
     __args__['appId'] = app_id
     __args__['filter'] = filter
@@ -324,7 +327,7 @@ def get_spectrum_application_output(app_id: pulumi.Input[Optional[Optional[_buil
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_spectrum_application = cloudflare.get_spectrum_application(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_spectrum_application = cloudflare.spectrum.get_application(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         app_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -332,6 +335,7 @@ def get_spectrum_application_output(app_id: pulumi.Input[Optional[Optional[_buil
     :param _builtins.str app_id: App identifier.
     :param _builtins.str zone_id: Zone identifier.
     """
+    pulumi.log.warn("""get_spectrum_application is deprecated: cloudflare:index/getSpectrumApplication:getSpectrumApplication has been deprecated in favor of cloudflare:spectrum/application:getApplication""")
     __args__ = dict()
     __args__['appId'] = app_id
     __args__['filter'] = filter

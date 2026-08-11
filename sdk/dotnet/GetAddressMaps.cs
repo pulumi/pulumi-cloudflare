@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getAddressMaps:getAddressMaps has been deprecated in favor of cloudflare:address/maps:getMaps")]
     public static class GetAddressMaps
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAddressMaps = Cloudflare.GetAddressMaps.Invoke(new()
+        ///     var exampleAddressMaps = Cloudflare.Modules.Address.GetMaps.Invoke(new()
         ///     {
         ///         AccountId = "258def64c72dae45f3e4c8516e2111f2",
         ///     });
@@ -54,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAddressMaps = Cloudflare.GetAddressMaps.Invoke(new()
+        ///     var exampleAddressMaps = Cloudflare.Modules.Address.GetMaps.Invoke(new()
         ///     {
         ///         AccountId = "258def64c72dae45f3e4c8516e2111f2",
         ///     });
@@ -81,7 +82,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAddressMaps = Cloudflare.GetAddressMaps.Invoke(new()
+        ///     var exampleAddressMaps = Cloudflare.Modules.Address.GetMaps.Invoke(new()
         ///     {
         ///         AccountId = "258def64c72dae45f3e4c8516e2111f2",
         ///     });

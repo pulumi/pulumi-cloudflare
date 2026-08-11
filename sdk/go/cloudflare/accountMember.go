@@ -25,14 +25,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/account"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAccountMember(ctx, "example_account_member", &cloudflare.AccountMemberArgs{
+//			_, err := account.NewMember(ctx, "example_account_member", &account.MemberArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Email:     pulumi.String("user@example.com"),
 //				Roles: pulumi.StringArray{
@@ -54,6 +54,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/accountMember:AccountMember example '<account_id>/<member_id>'
 // ```
+//
+// Deprecated: cloudflare:index/accountMember:AccountMember has been deprecated in favor of cloudflare:account/member:Member
 type AccountMember struct {
 	pulumi.CustomResourceState
 

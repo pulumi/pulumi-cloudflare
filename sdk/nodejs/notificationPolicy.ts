@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleNotificationPolicy = new cloudflare.NotificationPolicy("example_notification_policy", {
+ * const exampleNotificationPolicy = new cloudflare.notification.Policy("example_notification_policy", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     alertType: "universal_ssl_event_type",
  *     enabled: true,
@@ -92,6 +92,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example '<account_id>/<policy_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/notificationPolicy:NotificationPolicy has been deprecated in favor of cloudflare:notification/policy:Policy
  */
 export class NotificationPolicy extends pulumi.CustomResource {
     /**
@@ -104,6 +106,7 @@ export class NotificationPolicy extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: NotificationPolicyState, opts?: pulumi.CustomResourceOptions): NotificationPolicy {
+        pulumi.log.warn("NotificationPolicy is deprecated: cloudflare:index/notificationPolicy:NotificationPolicy has been deprecated in favor of cloudflare:notification/policy:Policy")
         return new NotificationPolicy(name, <any>state, { ...opts, id: id });
     }
 
@@ -164,8 +167,11 @@ export class NotificationPolicy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/notificationPolicy:NotificationPolicy has been deprecated in favor of cloudflare:notification/policy:Policy */
     constructor(name: string, args: NotificationPolicyArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/notificationPolicy:NotificationPolicy has been deprecated in favor of cloudflare:notification/policy:Policy */
     constructor(name: string, argsOrState?: NotificationPolicyArgs | NotificationPolicyState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("NotificationPolicy is deprecated: cloudflare:index/notificationPolicy:NotificationPolicy has been deprecated in favor of cloudflare:notification/policy:Policy")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getRateLimit:getRateLimit has been deprecated in favor of cloudflare:rate/limit:getLimit")]
     public static class GetRateLimit
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleRateLimit = Cloudflare.GetRateLimit.Invoke(new()
+        ///     var exampleRateLimit = Cloudflare.Modules.Rate.GetLimit.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         RateLimitId = "372e67954025e0ba6aaa6d586b9e0b59",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleRateLimit = Cloudflare.GetRateLimit.Invoke(new()
+        ///     var exampleRateLimit = Cloudflare.Modules.Rate.GetLimit.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         RateLimitId = "372e67954025e0ba6aaa6d586b9e0b59",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleRateLimit = Cloudflare.GetRateLimit.Invoke(new()
+        ///     var exampleRateLimit = Cloudflare.Modules.Rate.GetLimit.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         RateLimitId = "372e67954025e0ba6aaa6d586b9e0b59",

@@ -21,6 +21,8 @@ __all__ = [
     'get_calls_turn_app_output',
 ]
 
+warnings.warn("""cloudflare:index/getCallsTurnApp:getCallsTurnApp has been deprecated in favor of cloudflare:callsTurn/app:getApp""", DeprecationWarning)
+
 @pulumi.output_type
 class GetCallsTurnAppResult:
     """
@@ -124,7 +126,7 @@ def get_calls_turn_app(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_calls_turn_app = cloudflare.get_calls_turn_app(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_calls_turn_app = cloudflare.callsturn.get_app(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         key_id="2a95132c15732412d22c1476fa83f27a")
     ```
 
@@ -132,6 +134,7 @@ def get_calls_turn_app(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: The account identifier tag.
     :param _builtins.str key_id: A Cloudflare-generated unique identifier for a item.
     """
+    pulumi.log.warn("""get_calls_turn_app is deprecated: cloudflare:index/getCallsTurnApp:getCallsTurnApp has been deprecated in favor of cloudflare:callsTurn/app:getApp""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['keyId'] = key_id
@@ -160,7 +163,7 @@ def get_calls_turn_app_output(account_id: pulumi.Input[Optional[_builtins.str]] 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_calls_turn_app = cloudflare.get_calls_turn_app(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_calls_turn_app = cloudflare.callsturn.get_app(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         key_id="2a95132c15732412d22c1476fa83f27a")
     ```
 
@@ -168,6 +171,7 @@ def get_calls_turn_app_output(account_id: pulumi.Input[Optional[_builtins.str]] 
     :param _builtins.str account_id: The account identifier tag.
     :param _builtins.str key_id: A Cloudflare-generated unique identifier for a item.
     """
+    pulumi.log.warn("""get_calls_turn_app is deprecated: cloudflare:index/getCallsTurnApp:getCallsTurnApp has been deprecated in favor of cloudflare:callsTurn/app:getApp""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['keyId'] = key_id

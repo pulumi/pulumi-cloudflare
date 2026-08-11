@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getAuthenticatedOriginPullsCertificate:getAuthenticatedOriginPullsCertificate has been deprecated in favor of cloudflare:authenticatedOriginPulls/certificate:getCertificate")]
     public static class GetAuthenticatedOriginPullsCertificate
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAuthenticatedOriginPullsCertificate = Cloudflare.GetAuthenticatedOriginPullsCertificate.Invoke(new()
+        ///     var exampleAuthenticatedOriginPullsCertificate = Cloudflare.Modules.AuthenticatedOriginPulls.GetCertificate.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         CertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -45,7 +46,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAuthenticatedOriginPullsCertificate = Cloudflare.GetAuthenticatedOriginPullsCertificate.Invoke(new()
+        ///     var exampleAuthenticatedOriginPullsCertificate = Cloudflare.Modules.AuthenticatedOriginPulls.GetCertificate.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         CertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -68,7 +69,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAuthenticatedOriginPullsCertificate = Cloudflare.GetAuthenticatedOriginPullsCertificate.Invoke(new()
+        ///     var exampleAuthenticatedOriginPullsCertificate = Cloudflare.Modules.AuthenticatedOriginPulls.GetCertificate.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         CertificateId = "023e105f4ecef8ad9ca31a8372d0c353",

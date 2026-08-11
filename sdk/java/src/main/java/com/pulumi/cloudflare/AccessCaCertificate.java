@@ -6,13 +6,11 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.AccessCaCertificateArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.AccessCaCertificateState;
-import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -31,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustAccessShortLivedCertificate;
- * import com.pulumi.cloudflare.ZeroTrustAccessShortLivedCertificateArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccessShortLived.Certificate;
+ * import com.pulumi.cloudflare.zeroTrustAccessShortLived.CertificateArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustAccessShortLivedCertificate = new ZeroTrustAccessShortLivedCertificate("exampleZeroTrustAccessShortLivedCertificate", ZeroTrustAccessShortLivedCertificateArgs.builder()
+ *         var exampleZeroTrustAccessShortLivedCertificate = new Certificate("exampleZeroTrustAccessShortLivedCertificate", CertificateArgs.builder()
  *             .appId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
  *             .zoneId("zone_id")
  *             .build());
@@ -179,9 +177,6 @@ public class AccessCaCertificate extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .aliases(List.of(
-                Output.of(Alias.builder().type("cloudflare:index/accessCaCertificate:AccessCaCertificate").build())
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

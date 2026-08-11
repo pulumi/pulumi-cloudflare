@@ -26,14 +26,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/magictransitsite"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewMagicTransitSiteLan(ctx, "example_magic_transit_site_lan", &cloudflare.MagicTransitSiteLanArgs{
+//			_, err := magictransitsite.NewLan(ctx, "example_magic_transit_site_lan", &magictransitsite.LanArgs{
 //				AccountId:     pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				SiteId:        pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				BondId:        pulumi.Int(2),
@@ -41,27 +41,27 @@ import (
 //				IsBreakout:    pulumi.Bool(true),
 //				IsPrioritized: pulumi.Bool(true),
 //				Name:          pulumi.String("name"),
-//				Nat: &cloudflare.MagicTransitSiteLanNatArgs{
+//				Nat: &magictransitsite.LanNatArgs{
 //					StaticPrefix: pulumi.String("192.0.2.0/24"),
 //				},
 //				Physport: pulumi.Int(1),
-//				RoutedSubnets: cloudflare.MagicTransitSiteLanRoutedSubnetArray{
-//					&cloudflare.MagicTransitSiteLanRoutedSubnetArgs{
+//				RoutedSubnets: magictransitsite.LanRoutedSubnetArray{
+//					&magictransitsite.LanRoutedSubnetArgs{
 //						NextHop: pulumi.String("192.0.2.1"),
 //						Prefix:  pulumi.String("192.0.2.0/24"),
-//						Nat: &cloudflare.MagicTransitSiteLanRoutedSubnetNatArgs{
+//						Nat: &magictransitsite.LanRoutedSubnetNatArgs{
 //							StaticPrefix: pulumi.String("192.0.2.0/24"),
 //						},
 //					},
 //				},
-//				StaticAddressing: &cloudflare.MagicTransitSiteLanStaticAddressingArgs{
+//				StaticAddressing: &magictransitsite.LanStaticAddressingArgs{
 //					Address: pulumi.String("192.0.2.0/24"),
-//					DhcpRelay: &cloudflare.MagicTransitSiteLanStaticAddressingDhcpRelayArgs{
+//					DhcpRelay: &magictransitsite.LanStaticAddressingDhcpRelayArgs{
 //						ServerAddresses: pulumi.StringArray{
 //							pulumi.String("192.0.2.1"),
 //						},
 //					},
-//					DhcpServer: &cloudflare.MagicTransitSiteLanStaticAddressingDhcpServerArgs{
+//					DhcpServer: &magictransitsite.LanStaticAddressingDhcpServerArgs{
 //						DhcpPoolEnd:   pulumi.String("192.0.2.1"),
 //						DhcpPoolStart: pulumi.String("192.0.2.1"),
 //						DnsServer:     pulumi.String("192.0.2.1"),
@@ -92,6 +92,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan example '<account_id>/<site_id>/<lan_id>'
 // ```
+//
+// Deprecated: cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan has been deprecated in favor of cloudflare:magicTransitSite/lan:Lan
 type MagicTransitSiteLan struct {
 	pulumi.CustomResourceState
 

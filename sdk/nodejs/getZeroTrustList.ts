@@ -13,13 +13,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustList = cloudflare.getZeroTrustList({
+ * const exampleZeroTrustList = cloudflare.zerotrust.getList({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     listId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustList:getZeroTrustList has been deprecated in favor of cloudflare:zeroTrust/list:getList */
 export function getZeroTrustList(args?: GetZeroTrustListArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustListResult> {
+    pulumi.log.warn("getZeroTrustList is deprecated: cloudflare:index/getZeroTrustList:getZeroTrustList has been deprecated in favor of cloudflare:zeroTrust/list:getList")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustList:getZeroTrustList", {
@@ -86,13 +88,15 @@ export interface GetZeroTrustListResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustList = cloudflare.getZeroTrustList({
+ * const exampleZeroTrustList = cloudflare.zerotrust.getList({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     listId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustList:getZeroTrustList has been deprecated in favor of cloudflare:zeroTrust/list:getList */
 export function getZeroTrustListOutput(args?: GetZeroTrustListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustListResult> {
+    pulumi.log.warn("getZeroTrustList is deprecated: cloudflare:index/getZeroTrustList:getZeroTrustList has been deprecated in favor of cloudflare:zeroTrust/list:getList")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustList:getZeroTrustList", {

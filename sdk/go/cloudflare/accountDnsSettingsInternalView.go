@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/accountdnssettingsinternal"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAccountDnsSettingsInternalView(ctx, "example_account_dns_settings_internal_view", &cloudflare.AccountDnsSettingsInternalViewArgs{
+//			_, err := accountdnssettingsinternal.NewView(ctx, "example_account_dns_settings_internal_view", &accountdnssettingsinternal.ViewArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:      pulumi.String("my view"),
 //				Zones: pulumi.StringArray{
@@ -52,6 +52,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView example '<account_id>/<view_id>'
 // ```
+//
+// Deprecated: cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView has been deprecated in favor of cloudflare:accountDnsSettingsInternal/view:View
 type AccountDnsSettingsInternalView struct {
 	pulumi.CustomResourceState
 

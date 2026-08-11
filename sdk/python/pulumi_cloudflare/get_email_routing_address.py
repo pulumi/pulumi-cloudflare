@@ -23,6 +23,8 @@ __all__ = [
     'get_email_routing_address_output',
 ]
 
+warnings.warn("""cloudflare:index/getEmailRoutingAddress:getEmailRoutingAddress has been deprecated in favor of cloudflare:emailRouting/address:getAddress""", DeprecationWarning)
+
 @pulumi.output_type
 class GetEmailRoutingAddressResult:
     """
@@ -161,7 +163,7 @@ def get_email_routing_address(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_email_routing_address = cloudflare.get_email_routing_address(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_email_routing_address = cloudflare.emailrouting.get_address(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         destination_address_identifier="ea95132c15732412d22c1476fa83f27a")
     ```
 
@@ -169,6 +171,7 @@ def get_email_routing_address(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Identifier.
     :param _builtins.str destination_address_identifier: Destination address identifier.
     """
+    pulumi.log.warn("""get_email_routing_address is deprecated: cloudflare:index/getEmailRoutingAddress:getEmailRoutingAddress has been deprecated in favor of cloudflare:emailRouting/address:getAddress""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['destinationAddressIdentifier'] = destination_address_identifier
@@ -202,7 +205,7 @@ def get_email_routing_address_output(account_id: pulumi.Input[Optional[Optional[
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_email_routing_address = cloudflare.get_email_routing_address(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_email_routing_address = cloudflare.emailrouting.get_address(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         destination_address_identifier="ea95132c15732412d22c1476fa83f27a")
     ```
 
@@ -210,6 +213,7 @@ def get_email_routing_address_output(account_id: pulumi.Input[Optional[Optional[
     :param _builtins.str account_id: Identifier.
     :param _builtins.str destination_address_identifier: Destination address identifier.
     """
+    pulumi.log.warn("""get_email_routing_address is deprecated: cloudflare:index/getEmailRoutingAddress:getEmailRoutingAddress has been deprecated in favor of cloudflare:emailRouting/address:getAddress""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['destinationAddressIdentifier'] = destination_address_identifier

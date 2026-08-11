@@ -19,14 +19,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/originca"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewOriginCaCertificate(ctx, "example_origin_ca_certificate", &cloudflare.OriginCaCertificateArgs{
+//			_, err := originca.NewCertificate(ctx, "example_origin_ca_certificate", &originca.CertificateArgs{
 //				Csr: pulumi.String(`  -----BEGIN CERTIFICATE REQUEST-----
 //	  MIICxzCCAa8CAQAwSDELMAkGA1UEBhMCVVMxFjAUBgNVBAgTDVNhbiBGcmFuY2lz
 //	  Y28xCzAJBgNVBAcTAkNBMRQwEgYDVQQDEwtleGFtcGxlLm5ldDCCASIwDQYJKoZI
@@ -69,6 +69,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example '<certificate_id>'
 // ```
+//
+// Deprecated: cloudflare:index/originCaCertificate:OriginCaCertificate has been deprecated in favor of cloudflare:originCa/certificate:Certificate
 type OriginCaCertificate struct {
 	pulumi.CustomResourceState
 

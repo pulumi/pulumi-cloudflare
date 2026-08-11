@@ -16,12 +16,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleStreamWebhook = cloudflare.getStreamWebhook({
+ * const exampleStreamWebhook = cloudflare.stream.getWebhook({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getStreamWebhook:getStreamWebhook has been deprecated in favor of cloudflare:stream/webhook:getWebhook */
 export function getStreamWebhook(args?: GetStreamWebhookArgs, opts?: pulumi.InvokeOptions): Promise<GetStreamWebhookResult> {
+    pulumi.log.warn("getStreamWebhook is deprecated: cloudflare:index/getStreamWebhook:getStreamWebhook has been deprecated in favor of cloudflare:stream/webhook:getWebhook")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getStreamWebhook:getStreamWebhook", {
@@ -72,12 +74,14 @@ export interface GetStreamWebhookResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleStreamWebhook = cloudflare.getStreamWebhook({
+ * const exampleStreamWebhook = cloudflare.stream.getWebhook({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getStreamWebhook:getStreamWebhook has been deprecated in favor of cloudflare:stream/webhook:getWebhook */
 export function getStreamWebhookOutput(args?: GetStreamWebhookOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStreamWebhookResult> {
+    pulumi.log.warn("getStreamWebhook is deprecated: cloudflare:index/getStreamWebhook:getStreamWebhook has been deprecated in favor of cloudflare:stream/webhook:getWebhook")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getStreamWebhook:getStreamWebhook", {

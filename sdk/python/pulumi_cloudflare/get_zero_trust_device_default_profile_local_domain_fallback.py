@@ -21,6 +21,8 @@ __all__ = [
     'get_zero_trust_device_default_profile_local_domain_fallback_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDeviceDefaultProfileLocalDomainFallback:getZeroTrustDeviceDefaultProfileLocalDomainFallback has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/localDomainFallback:getLocalDomainFallback""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult:
     """
@@ -103,9 +105,10 @@ def get_zero_trust_device_default_profile_local_domain_fallback(account_id: Opti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_device_default_profile_local_domain_fallback = cloudflare.get_zero_trust_device_default_profile_local_domain_fallback(account_id="699d98642c564d2e855e9661899b7252")
+    example_zero_trust_device_default_profile_local_domain_fallback = cloudflare.zerotrustdevicedefaultprofile.get_local_domain_fallback(account_id="699d98642c564d2e855e9661899b7252")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_device_default_profile_local_domain_fallback is deprecated: cloudflare:index/getZeroTrustDeviceDefaultProfileLocalDomainFallback:getZeroTrustDeviceDefaultProfileLocalDomainFallback has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/localDomainFallback:getLocalDomainFallback""")
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -126,9 +129,10 @@ def get_zero_trust_device_default_profile_local_domain_fallback_output(account_i
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_device_default_profile_local_domain_fallback = cloudflare.get_zero_trust_device_default_profile_local_domain_fallback(account_id="699d98642c564d2e855e9661899b7252")
+    example_zero_trust_device_default_profile_local_domain_fallback = cloudflare.zerotrustdevicedefaultprofile.get_local_domain_fallback(account_id="699d98642c564d2e855e9661899b7252")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_device_default_profile_local_domain_fallback is deprecated: cloudflare:index/getZeroTrustDeviceDefaultProfileLocalDomainFallback:getZeroTrustDeviceDefaultProfileLocalDomainFallback has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/localDomainFallback:getLocalDomainFallback""")
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

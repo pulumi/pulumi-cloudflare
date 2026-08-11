@@ -16,13 +16,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleStreamDownload = cloudflare.getStreamDownload({
+ * const exampleStreamDownload = cloudflare.stream.getDownload({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     identifier: "ea95132c15732412d22c1476fa83f27a",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getStreamDownload:getStreamDownload has been deprecated in favor of cloudflare:stream/download:getDownload */
 export function getStreamDownload(args: GetStreamDownloadArgs, opts?: pulumi.InvokeOptions): Promise<GetStreamDownloadResult> {
+    pulumi.log.warn("getStreamDownload is deprecated: cloudflare:index/getStreamDownload:getStreamDownload has been deprecated in favor of cloudflare:stream/download:getDownload")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getStreamDownload:getStreamDownload", {
         "accountId": args.accountId,
@@ -69,13 +71,15 @@ export interface GetStreamDownloadResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleStreamDownload = cloudflare.getStreamDownload({
+ * const exampleStreamDownload = cloudflare.stream.getDownload({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     identifier: "ea95132c15732412d22c1476fa83f27a",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getStreamDownload:getStreamDownload has been deprecated in favor of cloudflare:stream/download:getDownload */
 export function getStreamDownloadOutput(args: GetStreamDownloadOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStreamDownloadResult> {
+    pulumi.log.warn("getStreamDownload is deprecated: cloudflare:index/getStreamDownload:getStreamDownload has been deprecated in favor of cloudflare:stream/download:getDownload")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getStreamDownload:getStreamDownload", {
         "accountId": args.accountId,

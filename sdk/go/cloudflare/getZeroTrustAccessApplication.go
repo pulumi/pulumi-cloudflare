@@ -18,14 +18,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustaccess"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustAccessApplication(ctx, &cloudflare.LookupZeroTrustAccessApplicationArgs{
+//			_, err := zerotrustaccess.GetApplication(ctx, &zerotrustaccess.GetApplicationArgs{
 //				AppId:     pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				AccountId: pulumi.StringRef("account_id"),
 //				ZoneId:    pulumi.StringRef("zone_id"),
@@ -38,6 +38,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication has been deprecated in favor of cloudflare:zeroTrustAccess/application:getApplication
 func LookupZeroTrustAccessApplication(ctx *pulumi.Context, args *LookupZeroTrustAccessApplicationArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustAccessApplicationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustAccessApplicationResult

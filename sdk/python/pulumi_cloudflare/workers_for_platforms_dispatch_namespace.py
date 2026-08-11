@@ -225,8 +225,13 @@ class _WorkersForPlatformsDispatchNamespaceState:
         pulumi.set(self, "trusted_workers", value)
 
 
+warnings.warn("""cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace has been deprecated in favor of cloudflare:workersForPlatformsDispatch/namespace:Namespace""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace")
 class WorkersForPlatformsDispatchNamespace(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace has been deprecated in favor of cloudflare:workersForPlatformsDispatch/namespace:Namespace""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -247,7 +252,7 @@ class WorkersForPlatformsDispatchNamespace(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_workers_for_platforms_dispatch_namespace = cloudflare.WorkersForPlatformsDispatchNamespace("example_workers_for_platforms_dispatch_namespace",
+        example_workers_for_platforms_dispatch_namespace = cloudflare.workersforplatformsdispatch.Namespace("example_workers_for_platforms_dispatch_namespace",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="my-dispatch-namespace")
         ```
@@ -283,7 +288,7 @@ class WorkersForPlatformsDispatchNamespace(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_workers_for_platforms_dispatch_namespace = cloudflare.WorkersForPlatformsDispatchNamespace("example_workers_for_platforms_dispatch_namespace",
+        example_workers_for_platforms_dispatch_namespace = cloudflare.workersforplatformsdispatch.Namespace("example_workers_for_platforms_dispatch_namespace",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="my-dispatch-namespace")
         ```
@@ -313,6 +318,7 @@ class WorkersForPlatformsDispatchNamespace(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""WorkersForPlatformsDispatchNamespace is deprecated: cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace has been deprecated in favor of cloudflare:workersForPlatformsDispatch/namespace:Namespace""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

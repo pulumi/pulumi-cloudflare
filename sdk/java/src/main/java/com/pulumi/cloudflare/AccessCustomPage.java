@@ -6,13 +6,11 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.AccessCustomPageArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.AccessCustomPageState;
-import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
-import java.util.List;
 import javax.annotation.Nullable;
 
 /**
@@ -30,8 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustAccessCustomPage;
- * import com.pulumi.cloudflare.ZeroTrustAccessCustomPageArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccessCustom.Page;
+ * import com.pulumi.cloudflare.zeroTrustAccessCustom.PageArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -45,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustAccessCustomPage = new ZeroTrustAccessCustomPage("exampleZeroTrustAccessCustomPage", ZeroTrustAccessCustomPageArgs.builder()
+ *         var exampleZeroTrustAccessCustomPage = new Page("exampleZeroTrustAccessCustomPage", PageArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .customHtml("<html><body><h1>Access Denied</h1></body></html>")
  *             .name("name")
@@ -182,9 +180,6 @@ public class AccessCustomPage extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .aliases(List.of(
-                Output.of(Alias.builder().type("cloudflare:index/accessCustomPage:AccessCustomPage").build())
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

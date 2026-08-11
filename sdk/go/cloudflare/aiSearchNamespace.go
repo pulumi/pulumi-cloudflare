@@ -15,6 +15,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/aiSearchNamespace:AiSearchNamespace has been deprecated in favor of cloudflare:aiSearch/namespace:Namespace
 type AiSearchNamespace struct {
 	pulumi.CustomResourceState
 

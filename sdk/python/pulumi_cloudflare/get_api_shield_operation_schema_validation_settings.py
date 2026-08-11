@@ -21,6 +21,8 @@ __all__ = [
     'get_api_shield_operation_schema_validation_settings_output',
 ]
 
+warnings.warn("""cloudflare:index/getApiShieldOperationSchemaValidationSettings:getApiShieldOperationSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldOperation/schemaValidationSettings:getSchemaValidationSettings""", DeprecationWarning)
+
 @pulumi.output_type
 class GetApiShieldOperationSchemaValidationSettingsResult:
     """
@@ -81,10 +83,11 @@ def get_api_shield_operation_schema_validation_settings(operation_id: Optional[_
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_api_shield_operation_schema_validation_settings = cloudflare.get_api_shield_operation_schema_validation_settings(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_api_shield_operation_schema_validation_settings = cloudflare.apishieldoperation.get_schema_validation_settings(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         operation_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
     """
+    pulumi.log.warn("""get_api_shield_operation_schema_validation_settings is deprecated: cloudflare:index/getApiShieldOperationSchemaValidationSettings:getApiShieldOperationSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldOperation/schemaValidationSettings:getSchemaValidationSettings""")
     __args__ = dict()
     __args__['operationId'] = operation_id
     __args__['zoneId'] = zone_id
@@ -112,10 +115,11 @@ def get_api_shield_operation_schema_validation_settings_output(operation_id: pul
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_api_shield_operation_schema_validation_settings = cloudflare.get_api_shield_operation_schema_validation_settings(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_api_shield_operation_schema_validation_settings = cloudflare.apishieldoperation.get_schema_validation_settings(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         operation_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
     """
+    pulumi.log.warn("""get_api_shield_operation_schema_validation_settings is deprecated: cloudflare:index/getApiShieldOperationSchemaValidationSettings:getApiShieldOperationSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldOperation/schemaValidationSettings:getSchemaValidationSettings""")
     __args__ = dict()
     __args__['operationId'] = operation_id
     __args__['zoneId'] = zone_id

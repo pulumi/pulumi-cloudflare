@@ -11,12 +11,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleArgoTieredCaching = cloudflare.getArgoTieredCaching({
+ * const exampleArgoTieredCaching = cloudflare.argo.getTieredCaching({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getArgoTieredCaching:getArgoTieredCaching has been deprecated in favor of cloudflare:argo/tieredCaching:getTieredCaching */
 export function getArgoTieredCaching(args?: GetArgoTieredCachingArgs, opts?: pulumi.InvokeOptions): Promise<GetArgoTieredCachingResult> {
+    pulumi.log.warn("getArgoTieredCaching is deprecated: cloudflare:index/getArgoTieredCaching:getArgoTieredCaching has been deprecated in favor of cloudflare:argo/tieredCaching:getTieredCaching")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getArgoTieredCaching:getArgoTieredCaching", {
@@ -67,12 +69,14 @@ export interface GetArgoTieredCachingResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleArgoTieredCaching = cloudflare.getArgoTieredCaching({
+ * const exampleArgoTieredCaching = cloudflare.argo.getTieredCaching({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getArgoTieredCaching:getArgoTieredCaching has been deprecated in favor of cloudflare:argo/tieredCaching:getTieredCaching */
 export function getArgoTieredCachingOutput(args?: GetArgoTieredCachingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetArgoTieredCachingResult> {
+    pulumi.log.warn("getArgoTieredCaching is deprecated: cloudflare:index/getArgoTieredCaching:getArgoTieredCaching has been deprecated in favor of cloudflare:argo/tieredCaching:getTieredCaching")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getArgoTieredCaching:getArgoTieredCaching", {

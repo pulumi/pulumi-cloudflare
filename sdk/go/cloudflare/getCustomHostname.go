@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/customhostname"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetCustomHostname(ctx, &cloudflare.LookupCustomHostnameArgs{
+//			_, err := customhostname.GetCustomHostname(ctx, &customhostname.GetCustomHostnameArgs{
 //				ZoneId:           pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				CustomHostnameId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getCustomHostname:getCustomHostname has been deprecated in favor of cloudflare:customHostname/customHostname:getCustomHostname
 func LookupCustomHostname(ctx *pulumi.Context, args *LookupCustomHostnameArgs, opts ...pulumi.InvokeOption) (*LookupCustomHostnameResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomHostnameResult

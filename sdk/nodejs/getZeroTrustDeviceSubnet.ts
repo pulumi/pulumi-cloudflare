@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDeviceSubnet = cloudflare.getZeroTrustDeviceSubnet({
+ * const exampleZeroTrustDeviceSubnet = cloudflare.zerotrustdevice.getSubnet({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     subnetId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDeviceSubnet:getZeroTrustDeviceSubnet has been deprecated in favor of cloudflare:zeroTrustDevice/subnet:getSubnet */
 export function getZeroTrustDeviceSubnet(args: GetZeroTrustDeviceSubnetArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDeviceSubnetResult> {
+    pulumi.log.warn("getZeroTrustDeviceSubnet is deprecated: cloudflare:index/getZeroTrustDeviceSubnet:getZeroTrustDeviceSubnet has been deprecated in favor of cloudflare:zeroTrustDevice/subnet:getSubnet")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDeviceSubnet:getZeroTrustDeviceSubnet", {
         "accountId": args.accountId,
@@ -108,13 +110,15 @@ export interface GetZeroTrustDeviceSubnetResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDeviceSubnet = cloudflare.getZeroTrustDeviceSubnet({
+ * const exampleZeroTrustDeviceSubnet = cloudflare.zerotrustdevice.getSubnet({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     subnetId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDeviceSubnet:getZeroTrustDeviceSubnet has been deprecated in favor of cloudflare:zeroTrustDevice/subnet:getSubnet */
 export function getZeroTrustDeviceSubnetOutput(args: GetZeroTrustDeviceSubnetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDeviceSubnetResult> {
+    pulumi.log.warn("getZeroTrustDeviceSubnet is deprecated: cloudflare:index/getZeroTrustDeviceSubnet:getZeroTrustDeviceSubnet has been deprecated in favor of cloudflare:zeroTrustDevice/subnet:getSubnet")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDeviceSubnet:getZeroTrustDeviceSubnet", {
         "accountId": args.accountId,

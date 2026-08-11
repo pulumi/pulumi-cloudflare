@@ -19,12 +19,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDnsLocations = cloudflare.getZeroTrustDnsLocations({
+ * const exampleZeroTrustDnsLocations = cloudflare.zerotrustdns.getLocations({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDnsLocations:getZeroTrustDnsLocations has been deprecated in favor of cloudflare:zeroTrustDns/locations:getLocations */
 export function getZeroTrustDnsLocations(args?: GetZeroTrustDnsLocationsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDnsLocationsResult> {
+    pulumi.log.warn("getZeroTrustDnsLocations is deprecated: cloudflare:index/getZeroTrustDnsLocations:getZeroTrustDnsLocations has been deprecated in favor of cloudflare:zeroTrustDns/locations:getLocations")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDnsLocations:getZeroTrustDnsLocations", {
@@ -71,12 +73,14 @@ export interface GetZeroTrustDnsLocationsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDnsLocations = cloudflare.getZeroTrustDnsLocations({
+ * const exampleZeroTrustDnsLocations = cloudflare.zerotrustdns.getLocations({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDnsLocations:getZeroTrustDnsLocations has been deprecated in favor of cloudflare:zeroTrustDns/locations:getLocations */
 export function getZeroTrustDnsLocationsOutput(args?: GetZeroTrustDnsLocationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDnsLocationsResult> {
+    pulumi.log.warn("getZeroTrustDnsLocations is deprecated: cloudflare:index/getZeroTrustDnsLocations:getZeroTrustDnsLocations has been deprecated in favor of cloudflare:zeroTrustDns/locations:getLocations")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDnsLocations:getZeroTrustDnsLocations", {

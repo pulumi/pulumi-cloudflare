@@ -11,14 +11,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomPageAsset = cloudflare.getCustomPageAsset({
+ * const exampleCustomPageAsset = cloudflare.custompage.getAsset({
  *     assetName: "my_custom_error_page",
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCustomPageAsset:getCustomPageAsset has been deprecated in favor of cloudflare:customPage/asset:getAsset */
 export function getCustomPageAsset(args: GetCustomPageAssetArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomPageAssetResult> {
+    pulumi.log.warn("getCustomPageAsset is deprecated: cloudflare:index/getCustomPageAsset:getCustomPageAsset has been deprecated in favor of cloudflare:customPage/asset:getAsset")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCustomPageAsset:getCustomPageAsset", {
         "accountId": args.accountId,
@@ -90,14 +92,16 @@ export interface GetCustomPageAssetResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomPageAsset = cloudflare.getCustomPageAsset({
+ * const exampleCustomPageAsset = cloudflare.custompage.getAsset({
  *     assetName: "my_custom_error_page",
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCustomPageAsset:getCustomPageAsset has been deprecated in favor of cloudflare:customPage/asset:getAsset */
 export function getCustomPageAssetOutput(args: GetCustomPageAssetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomPageAssetResult> {
+    pulumi.log.warn("getCustomPageAsset is deprecated: cloudflare:index/getCustomPageAsset:getCustomPageAsset has been deprecated in favor of cloudflare:customPage/asset:getAsset")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCustomPageAsset:getCustomPageAsset", {
         "accountId": args.accountId,

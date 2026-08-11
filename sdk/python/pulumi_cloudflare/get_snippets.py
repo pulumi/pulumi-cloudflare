@@ -21,6 +21,8 @@ __all__ = [
     'get_snippets_output',
 ]
 
+warnings.warn("""cloudflare:index/getSnippets:getSnippets has been deprecated in favor of cloudflare:snippets/snippets:getSnippets""", DeprecationWarning)
+
 @pulumi.output_type
 class GetSnippetsResult:
     """
@@ -95,13 +97,14 @@ def get_snippets(snippet_name: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_snippets = cloudflare.get_snippets(zone_id="9f1839b6152d298aca64c4e906b6d074")
+    example_snippets = cloudflare.snippets.get_snippets(zone_id="9f1839b6152d298aca64c4e906b6d074")
     ```
 
 
     :param _builtins.str snippet_name: The identifying name of the snippet.
     :param _builtins.str zone_id: The unique ID of the zone.
     """
+    pulumi.log.warn("""get_snippets is deprecated: cloudflare:index/getSnippets:getSnippets has been deprecated in favor of cloudflare:snippets/snippets:getSnippets""")
     __args__ = dict()
     __args__['snippetName'] = snippet_name
     __args__['zoneId'] = zone_id
@@ -123,13 +126,14 @@ def get_snippets_output(snippet_name: pulumi.Input[Optional[_builtins.str]] = No
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_snippets = cloudflare.get_snippets(zone_id="9f1839b6152d298aca64c4e906b6d074")
+    example_snippets = cloudflare.snippets.get_snippets(zone_id="9f1839b6152d298aca64c4e906b6d074")
     ```
 
 
     :param _builtins.str snippet_name: The identifying name of the snippet.
     :param _builtins.str zone_id: The unique ID of the zone.
     """
+    pulumi.log.warn("""get_snippets is deprecated: cloudflare:index/getSnippets:getSnippets has been deprecated in favor of cloudflare:snippets/snippets:getSnippets""")
     __args__ = dict()
     __args__['snippetName'] = snippet_name
     __args__['zoneId'] = zone_id

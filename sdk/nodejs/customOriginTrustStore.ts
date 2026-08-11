@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomOriginTrustStore = new cloudflare.CustomOriginTrustStore("example_custom_origin_trust_store", {
+ * const exampleCustomOriginTrustStore = new cloudflare.customorigintrust.Store("example_custom_origin_trust_store", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     certificate: `  -----BEGIN CERTIFICATE-----
  *   MIIDdjCCAl6gAwIBAgIJAPnMg0Fs+/B0MA0GCSqGSIb3DQEBCwUAMFsx...
@@ -31,6 +31,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/customOriginTrustStore:CustomOriginTrustStore example '<zone_id>/<custom_origin_trust_store_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/customOriginTrustStore:CustomOriginTrustStore has been deprecated in favor of cloudflare:customOriginTrust/store:Store
  */
 export class CustomOriginTrustStore extends pulumi.CustomResource {
     /**
@@ -43,6 +45,7 @@ export class CustomOriginTrustStore extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CustomOriginTrustStoreState, opts?: pulumi.CustomResourceOptions): CustomOriginTrustStore {
+        pulumi.log.warn("CustomOriginTrustStore is deprecated: cloudflare:index/customOriginTrustStore:CustomOriginTrustStore has been deprecated in favor of cloudflare:customOriginTrust/store:Store")
         return new CustomOriginTrustStore(name, <any>state, { ...opts, id: id });
     }
 
@@ -101,8 +104,11 @@ export class CustomOriginTrustStore extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/customOriginTrustStore:CustomOriginTrustStore has been deprecated in favor of cloudflare:customOriginTrust/store:Store */
     constructor(name: string, args: CustomOriginTrustStoreArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/customOriginTrustStore:CustomOriginTrustStore has been deprecated in favor of cloudflare:customOriginTrust/store:Store */
     constructor(name: string, argsOrState?: CustomOriginTrustStoreArgs | CustomOriginTrustStoreState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("CustomOriginTrustStore is deprecated: cloudflare:index/customOriginTrustStore:CustomOriginTrustStore has been deprecated in favor of cloudflare:customOriginTrust/store:Store")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

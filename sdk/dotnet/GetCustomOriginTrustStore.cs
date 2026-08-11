@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getCustomOriginTrustStore:getCustomOriginTrustStore has been deprecated in favor of cloudflare:customOriginTrust/store:getStore")]
     public static class GetCustomOriginTrustStore
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomOriginTrustStore = Cloudflare.GetCustomOriginTrustStore.Invoke(new()
+        ///     var exampleCustomOriginTrustStore = Cloudflare.Modules.CustomOriginTrust.GetStore.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         CustomOriginTrustStoreId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomOriginTrustStore = Cloudflare.GetCustomOriginTrustStore.Invoke(new()
+        ///     var exampleCustomOriginTrustStore = Cloudflare.Modules.CustomOriginTrust.GetStore.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         CustomOriginTrustStoreId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomOriginTrustStore = Cloudflare.GetCustomOriginTrustStore.Invoke(new()
+        ///     var exampleCustomOriginTrustStore = Cloudflare.Modules.CustomOriginTrust.GetStore.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         CustomOriginTrustStoreId = "023e105f4ecef8ad9ca31a8372d0c353",

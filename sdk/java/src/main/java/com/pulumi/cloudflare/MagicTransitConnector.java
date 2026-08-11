@@ -27,9 +27,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.MagicTransitConnector;
- * import com.pulumi.cloudflare.MagicTransitConnectorArgs;
- * import com.pulumi.cloudflare.inputs.MagicTransitConnectorDeviceArgs;
+ * import com.pulumi.cloudflare.magicTransit.Connector;
+ * import com.pulumi.cloudflare.magicTransit.ConnectorArgs;
+ * import com.pulumi.cloudflare.magicTransit.inputs.ConnectorDeviceArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -43,9 +43,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleMagicTransitConnector = new MagicTransitConnector("exampleMagicTransitConnector", MagicTransitConnectorArgs.builder()
+ *         var exampleMagicTransitConnector = new Connector("exampleMagicTransitConnector", ConnectorArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .device(MagicTransitConnectorDeviceArgs.builder()
+ *             .device(ConnectorDeviceArgs.builder()
  *                 .id("id")
  *                 .provisionLicense(true)
  *                 .serialNumber("serial_number")
@@ -70,7 +70,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/magicTransitConnector:MagicTransitConnector example &#39;&lt;account_id&gt;/&lt;connector_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/magicTransitConnector:MagicTransitConnector has been deprecated in favor of cloudflare:magicTransit/connector:Connector
+ * 
  */
+@Deprecated /* cloudflare:index/magicTransitConnector:MagicTransitConnector has been deprecated in favor of cloudflare:magicTransit/connector:Connector */
 @ResourceType(type="cloudflare:index/magicTransitConnector:MagicTransitConnector")
 public class MagicTransitConnector extends com.pulumi.resources.CustomResource {
     /**

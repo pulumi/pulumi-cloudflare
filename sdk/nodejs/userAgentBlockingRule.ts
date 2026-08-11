@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleUserAgentBlockingRule = new cloudflare.UserAgentBlockingRule("example_user_agent_blocking_rule", {
+ * const exampleUserAgentBlockingRule = new cloudflare.useragentblocking.Rule("example_user_agent_blocking_rule", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     configuration: {
  *         target: "ua",
@@ -35,6 +35,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule example '<zone_id>/<ua_rule_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule has been deprecated in favor of cloudflare:userAgentBlocking/rule:Rule
  */
 export class UserAgentBlockingRule extends pulumi.CustomResource {
     /**
@@ -47,6 +49,7 @@ export class UserAgentBlockingRule extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: UserAgentBlockingRuleState, opts?: pulumi.CustomResourceOptions): UserAgentBlockingRule {
+        pulumi.log.warn("UserAgentBlockingRule is deprecated: cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule has been deprecated in favor of cloudflare:userAgentBlocking/rule:Rule")
         return new UserAgentBlockingRule(name, <any>state, { ...opts, id: id });
     }
 
@@ -90,8 +93,11 @@ export class UserAgentBlockingRule extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule has been deprecated in favor of cloudflare:userAgentBlocking/rule:Rule */
     constructor(name: string, args: UserAgentBlockingRuleArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule has been deprecated in favor of cloudflare:userAgentBlocking/rule:Rule */
     constructor(name: string, argsOrState?: UserAgentBlockingRuleArgs | UserAgentBlockingRuleState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("UserAgentBlockingRule is deprecated: cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule has been deprecated in favor of cloudflare:userAgentBlocking/rule:Rule")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

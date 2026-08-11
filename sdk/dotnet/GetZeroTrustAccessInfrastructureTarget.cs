@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustAccessInfrastructureTarget:getZeroTrustAccessInfrastructureTarget has been deprecated in favor of cloudflare:zeroTrustAccessInfrastructure/target:getTarget")]
     public static class GetZeroTrustAccessInfrastructureTarget
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessInfrastructureTarget = Cloudflare.GetZeroTrustAccessInfrastructureTarget.Invoke(new()
+        ///     var exampleZeroTrustAccessInfrastructureTarget = Cloudflare.Modules.ZeroTrustAccessInfrastructure.GetTarget.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         TargetId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -45,7 +46,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessInfrastructureTarget = Cloudflare.GetZeroTrustAccessInfrastructureTarget.Invoke(new()
+        ///     var exampleZeroTrustAccessInfrastructureTarget = Cloudflare.Modules.ZeroTrustAccessInfrastructure.GetTarget.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         TargetId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -68,7 +69,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessInfrastructureTarget = Cloudflare.GetZeroTrustAccessInfrastructureTarget.Invoke(new()
+        ///     var exampleZeroTrustAccessInfrastructureTarget = Cloudflare.Modules.ZeroTrustAccessInfrastructure.GetTarget.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         TargetId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",

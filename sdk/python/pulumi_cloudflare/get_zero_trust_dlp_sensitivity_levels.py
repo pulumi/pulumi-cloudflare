@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_dlp_sensitivity_levels_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDlpSensitivityLevels:getZeroTrustDlpSensitivityLevels has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/levels:getLevels""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDlpSensitivityLevelsResult:
     """
@@ -96,13 +98,14 @@ def get_zero_trust_dlp_sensitivity_levels(account_id: Optional[_builtins.str] = 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_sensitivity_levels = cloudflare.get_zero_trust_dlp_sensitivity_levels(account_id="account_id",
+    example_zero_trust_dlp_sensitivity_levels = cloudflare.zerotrustdlpsensitivity.get_levels(account_id="account_id",
         sensitivity_group_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_dlp_sensitivity_levels is deprecated: cloudflare:index/getZeroTrustDlpSensitivityLevels:getZeroTrustDlpSensitivityLevels has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/levels:getLevels""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -131,13 +134,14 @@ def get_zero_trust_dlp_sensitivity_levels_output(account_id: pulumi.Input[Option
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_sensitivity_levels = cloudflare.get_zero_trust_dlp_sensitivity_levels(account_id="account_id",
+    example_zero_trust_dlp_sensitivity_levels = cloudflare.zerotrustdlpsensitivity.get_levels(account_id="account_id",
         sensitivity_group_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_dlp_sensitivity_levels is deprecated: cloudflare:index/getZeroTrustDlpSensitivityLevels:getZeroTrustDlpSensitivityLevels has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/levels:getLevels""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

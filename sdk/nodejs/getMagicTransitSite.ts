@@ -20,13 +20,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicTransitSite = cloudflare.getMagicTransitSite({
+ * const exampleMagicTransitSite = cloudflare.magictransitsite.getMagicTransitSite({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     siteId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getMagicTransitSite:getMagicTransitSite has been deprecated in favor of cloudflare:magicTransitSite/magicTransitSite:getMagicTransitSite */
 export function getMagicTransitSite(args?: GetMagicTransitSiteArgs, opts?: pulumi.InvokeOptions): Promise<GetMagicTransitSiteResult> {
+    pulumi.log.warn("getMagicTransitSite is deprecated: cloudflare:index/getMagicTransitSite:getMagicTransitSite has been deprecated in favor of cloudflare:magicTransitSite/magicTransitSite:getMagicTransitSite")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getMagicTransitSite:getMagicTransitSite", {
@@ -104,13 +106,15 @@ export interface GetMagicTransitSiteResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicTransitSite = cloudflare.getMagicTransitSite({
+ * const exampleMagicTransitSite = cloudflare.magictransitsite.getMagicTransitSite({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     siteId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getMagicTransitSite:getMagicTransitSite has been deprecated in favor of cloudflare:magicTransitSite/magicTransitSite:getMagicTransitSite */
 export function getMagicTransitSiteOutput(args?: GetMagicTransitSiteOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMagicTransitSiteResult> {
+    pulumi.log.warn("getMagicTransitSite is deprecated: cloudflare:index/getMagicTransitSite:getMagicTransitSite has been deprecated in favor of cloudflare:magicTransitSite/magicTransitSite:getMagicTransitSite")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getMagicTransitSite:getMagicTransitSite", {

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getR2DataCatalog:getR2DataCatalog has been deprecated in favor of cloudflare:r2/dataCatalog:getDataCatalog")]
     public static class GetR2DataCatalog
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleR2DataCatalog = Cloudflare.GetR2DataCatalog.Invoke(new()
+        ///     var exampleR2DataCatalog = Cloudflare.Modules.R2.GetDataCatalog.Invoke(new()
         ///     {
         ///         AccountId = "0123456789abcdef0123456789abcdef",
         ///         BucketName = "my-data-bucket",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleR2DataCatalog = Cloudflare.GetR2DataCatalog.Invoke(new()
+        ///     var exampleR2DataCatalog = Cloudflare.Modules.R2.GetDataCatalog.Invoke(new()
         ///     {
         ///         AccountId = "0123456789abcdef0123456789abcdef",
         ///         BucketName = "my-data-bucket",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleR2DataCatalog = Cloudflare.GetR2DataCatalog.Invoke(new()
+        ///     var exampleR2DataCatalog = Cloudflare.Modules.R2.GetDataCatalog.Invoke(new()
         ///     {
         ///         AccountId = "0123456789abcdef0123456789abcdef",
         ///         BucketName = "my-data-bucket",

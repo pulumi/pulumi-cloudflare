@@ -187,8 +187,13 @@ class _ZeroTrustDevicePostureIntegrationState:
         pulumi.set(self, "type", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration has been deprecated in favor of cloudflare:zeroTrustDevicePosture/integration:Integration""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration")
 class ZeroTrustDevicePostureIntegration(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration has been deprecated in favor of cloudflare:zeroTrustDevicePosture/integration:Integration""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -210,7 +215,7 @@ class ZeroTrustDevicePostureIntegration(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_device_posture_integration = cloudflare.ZeroTrustDevicePostureIntegration("example_zero_trust_device_posture_integration",
+        example_zero_trust_device_posture_integration = cloudflare.zerotrustdeviceposture.Integration("example_zero_trust_device_posture_integration",
             account_id="699d98642c564d2e855e9661899b7252",
             config={
                 "api_url": "https://as123.awmdm.com/API",
@@ -255,7 +260,7 @@ class ZeroTrustDevicePostureIntegration(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_device_posture_integration = cloudflare.ZeroTrustDevicePostureIntegration("example_zero_trust_device_posture_integration",
+        example_zero_trust_device_posture_integration = cloudflare.zerotrustdeviceposture.Integration("example_zero_trust_device_posture_integration",
             account_id="699d98642c564d2e855e9661899b7252",
             config={
                 "api_url": "https://as123.awmdm.com/API",
@@ -296,6 +301,7 @@ class ZeroTrustDevicePostureIntegration(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustDevicePostureIntegration is deprecated: cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration has been deprecated in favor of cloudflare:zeroTrustDevicePosture/integration:Integration""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

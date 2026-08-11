@@ -308,8 +308,13 @@ class _CustomHostnameState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/customHostname:CustomHostname has been deprecated in favor of cloudflare:customHostname/customHostname:CustomHostname""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/customHostname:CustomHostname")
 class CustomHostname(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/customHostname:CustomHostname has been deprecated in favor of cloudflare:customHostname/customHostname:CustomHostname""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -333,7 +338,7 @@ class CustomHostname(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_custom_hostname = cloudflare.CustomHostname("example_custom_hostname",
+        example_custom_hostname = cloudflare.customhostname.CustomHostname("example_custom_hostname",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             hostname="app.example.com",
             custom_metadata={
@@ -444,7 +449,7 @@ class CustomHostname(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_custom_hostname = cloudflare.CustomHostname("example_custom_hostname",
+        example_custom_hostname = cloudflare.customhostname.CustomHostname("example_custom_hostname",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             hostname="app.example.com",
             custom_metadata={
@@ -550,6 +555,7 @@ class CustomHostname(pulumi.CustomResource):
                  ssl: pulumi.Input[Optional[Union['CustomHostnameSslArgs', 'CustomHostnameSslArgsDict']]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""CustomHostname is deprecated: cloudflare:index/customHostname:CustomHostname has been deprecated in favor of cloudflare:customHostname/customHostname:CustomHostname""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

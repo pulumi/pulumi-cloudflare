@@ -30,9 +30,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ContentScanningExpression;
- * import com.pulumi.cloudflare.ContentScanningExpressionArgs;
- * import com.pulumi.cloudflare.inputs.ContentScanningExpressionBodyArgs;
+ * import com.pulumi.cloudflare.contentScanning.Expression;
+ * import com.pulumi.cloudflare.contentScanning.ExpressionArgs;
+ * import com.pulumi.cloudflare.contentScanning.inputs.ExpressionBodyArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,9 +46,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleContentScanningExpression = new ContentScanningExpression("exampleContentScanningExpression", ContentScanningExpressionArgs.builder()
+ *         var exampleContentScanningExpression = new Expression("exampleContentScanningExpression", ExpressionArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .bodies(ContentScanningExpressionBodyArgs.builder()
+ *             .bodies(ExpressionBodyArgs.builder()
  *                 .payload("lookup_json_string(http.request.body.raw, \"file\")")
  *                 .build())
  *             .build());
@@ -62,7 +62,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/contentScanningExpression:ContentScanningExpression has been deprecated in favor of cloudflare:contentScanning/expression:Expression
+ * 
  */
+@Deprecated /* cloudflare:index/contentScanningExpression:ContentScanningExpression has been deprecated in favor of cloudflare:contentScanning/expression:Expression */
 @ResourceType(type="cloudflare:index/contentScanningExpression:ContentScanningExpression")
 public class ContentScanningExpression extends com.pulumi.resources.CustomResource {
     @Export(name="bodies", refs={List.class,ContentScanningExpressionBody.class}, tree="[0,1]")

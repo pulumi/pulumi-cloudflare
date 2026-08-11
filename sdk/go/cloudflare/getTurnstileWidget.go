@@ -25,14 +25,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/turnstile"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetTurnstileWidget(ctx, &cloudflare.LookupTurnstileWidgetArgs{
+//			_, err := turnstile.LookupWidget(ctx, &turnstile.LookupWidgetArgs{
 //				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Sitekey:   pulumi.StringRef("0x4AAF00AAAABn0R22HWm-YUc"),
 //			}, nil)
@@ -44,6 +44,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getTurnstileWidget:getTurnstileWidget has been deprecated in favor of cloudflare:turnstile/widget:getWidget
 func LookupTurnstileWidget(ctx *pulumi.Context, args *LookupTurnstileWidgetArgs, opts ...pulumi.InvokeOption) (*LookupTurnstileWidgetResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTurnstileWidgetResult

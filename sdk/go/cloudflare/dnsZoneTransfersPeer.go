@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/dnszonetransfers"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewDnsZoneTransfersPeer(ctx, "example_dns_zone_transfers_peer", &cloudflare.DnsZoneTransfersPeerArgs{
+//			_, err := dnszonetransfers.NewPeer(ctx, "example_dns_zone_transfers_peer", &dnszonetransfers.PeerArgs{
 //				AccountId: pulumi.String("01a7362d577a6c3019a474fd6f485823"),
 //				Name:      pulumi.String("my-peer-1"),
 //			})
@@ -49,6 +49,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer example '<account_id>/<peer_id>'
 // ```
+//
+// Deprecated: cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer has been deprecated in favor of cloudflare:dnsZoneTransfers/peer:Peer
 type DnsZoneTransfersPeer struct {
 	pulumi.CustomResourceState
 

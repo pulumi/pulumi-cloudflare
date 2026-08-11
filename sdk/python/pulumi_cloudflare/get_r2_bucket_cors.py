@@ -22,6 +22,8 @@ __all__ = [
     'get_r2_bucket_cors_output',
 ]
 
+warnings.warn("""cloudflare:index/getR2BucketCors:getR2BucketCors has been deprecated in favor of cloudflare:r2Bucket/cors:getCors""", DeprecationWarning)
+
 @pulumi.output_type
 class GetR2BucketCorsResult:
     """
@@ -81,7 +83,7 @@ def get_r2_bucket_cors(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_r2_bucket_cors = cloudflare.get_r2_bucket_cors(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_r2_bucket_cors = cloudflare.r2bucket.get_cors(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         bucket_name="example-bucket")
     ```
 
@@ -89,6 +91,7 @@ def get_r2_bucket_cors(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Account ID.
     :param _builtins.str bucket_name: Name of the bucket.
     """
+    pulumi.log.warn("""get_r2_bucket_cors is deprecated: cloudflare:index/getR2BucketCors:getR2BucketCors has been deprecated in favor of cloudflare:r2Bucket/cors:getCors""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['bucketName'] = bucket_name
@@ -109,7 +112,7 @@ def get_r2_bucket_cors_output(account_id: pulumi.Input[Optional[_builtins.str]] 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_r2_bucket_cors = cloudflare.get_r2_bucket_cors(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_r2_bucket_cors = cloudflare.r2bucket.get_cors(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         bucket_name="example-bucket")
     ```
 
@@ -117,6 +120,7 @@ def get_r2_bucket_cors_output(account_id: pulumi.Input[Optional[_builtins.str]] 
     :param _builtins.str account_id: Account ID.
     :param _builtins.str bucket_name: Name of the bucket.
     """
+    pulumi.log.warn("""get_r2_bucket_cors is deprecated: cloudflare:index/getR2BucketCors:getR2BucketCors has been deprecated in favor of cloudflare:r2Bucket/cors:getCors""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['bucketName'] = bucket_name

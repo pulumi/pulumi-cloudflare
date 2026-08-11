@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getClientCertificates:getClientCertificates has been deprecated in favor of cloudflare:client/certificates:getCertificates")]
     public static class GetClientCertificates
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleClientCertificates = Cloudflare.GetClientCertificates.Invoke(new()
+        ///     var exampleClientCertificates = Cloudflare.Modules.Client.GetCertificates.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Limit = 10,
@@ -57,7 +58,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleClientCertificates = Cloudflare.GetClientCertificates.Invoke(new()
+        ///     var exampleClientCertificates = Cloudflare.Modules.Client.GetCertificates.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Limit = 10,
@@ -87,7 +88,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleClientCertificates = Cloudflare.GetClientCertificates.Invoke(new()
+        ///     var exampleClientCertificates = Cloudflare.Modules.Client.GetCertificates.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Limit = 10,

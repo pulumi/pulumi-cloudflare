@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleOriginCloudRegion = new cloudflare.OriginCloudRegion("example_origin_cloud_region", {
+ * const exampleOriginCloudRegion = new cloudflare.origincloud.Region("example_origin_cloud_region", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     originIp: "192.0.2.1",
  *     region: "us-east-1",
@@ -24,6 +24,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/originCloudRegion:OriginCloudRegion example '<zone_id>/<origin_ip>'
  * ```
+ *
+ * @deprecated cloudflare:index/originCloudRegion:OriginCloudRegion has been deprecated in favor of cloudflare:originCloud/region:Region
  */
 export class OriginCloudRegion extends pulumi.CustomResource {
     /**
@@ -36,6 +38,7 @@ export class OriginCloudRegion extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: OriginCloudRegionState, opts?: pulumi.CustomResourceOptions): OriginCloudRegion {
+        pulumi.log.warn("OriginCloudRegion is deprecated: cloudflare:index/originCloudRegion:OriginCloudRegion has been deprecated in favor of cloudflare:originCloud/region:Region")
         return new OriginCloudRegion(name, <any>state, { ...opts, id: id });
     }
 
@@ -82,8 +85,11 @@ export class OriginCloudRegion extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/originCloudRegion:OriginCloudRegion has been deprecated in favor of cloudflare:originCloud/region:Region */
     constructor(name: string, args: OriginCloudRegionArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/originCloudRegion:OriginCloudRegion has been deprecated in favor of cloudflare:originCloud/region:Region */
     constructor(name: string, argsOrState?: OriginCloudRegionArgs | OriginCloudRegionState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("OriginCloudRegion is deprecated: cloudflare:index/originCloudRegion:OriginCloudRegion has been deprecated in favor of cloudflare:originCloud/region:Region")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

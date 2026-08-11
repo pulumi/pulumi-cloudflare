@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/secretsstore"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetSecretsStore(ctx, &cloudflare.LookupSecretsStoreArgs{
+//			_, err := secretsstore.GetSecretsStore(ctx, &secretsstore.GetSecretsStoreArgs{
 //				AccountId: "985e105f4ecef8ad9ca31a8372d0c353",
 //				StoreId:   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getSecretsStore:getSecretsStore has been deprecated in favor of cloudflare:secretsStore/secretsStore:getSecretsStore
 func LookupSecretsStore(ctx *pulumi.Context, args *LookupSecretsStoreArgs, opts ...pulumi.InvokeOption) (*LookupSecretsStoreResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecretsStoreResult

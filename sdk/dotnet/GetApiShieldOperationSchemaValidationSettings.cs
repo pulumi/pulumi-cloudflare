@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getApiShieldOperationSchemaValidationSettings:getApiShieldOperationSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldOperation/schemaValidationSettings:getSchemaValidationSettings")]
     public static class GetApiShieldOperationSchemaValidationSettings
     {
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiShieldOperationSchemaValidationSettings = Cloudflare.GetApiShieldOperationSchemaValidationSettings.Invoke(new()
+        ///     var exampleApiShieldOperationSchemaValidationSettings = Cloudflare.Modules.ApiShieldOperation.GetSchemaValidationSettings.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         OperationId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
@@ -59,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiShieldOperationSchemaValidationSettings = Cloudflare.GetApiShieldOperationSchemaValidationSettings.Invoke(new()
+        ///     var exampleApiShieldOperationSchemaValidationSettings = Cloudflare.Modules.ApiShieldOperation.GetSchemaValidationSettings.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         OperationId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
@@ -89,7 +90,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiShieldOperationSchemaValidationSettings = Cloudflare.GetApiShieldOperationSchemaValidationSettings.Invoke(new()
+        ///     var exampleApiShieldOperationSchemaValidationSettings = Cloudflare.Modules.ApiShieldOperation.GetSchemaValidationSettings.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         OperationId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",

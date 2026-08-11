@@ -19,9 +19,9 @@ import (
 // - `Domain API Gateway`
 // - `Domain API Gateway Read`
 //
-// > `ApiShieldOperationSchemaValidationSettings` is in a deprecation phase and will be removed in the future.
+// > `apiShieldOperation.SchemaValidationSettings` is in a deprecation phase and will be removed in the future.
 //
-//	Instead, please utilize the SchemaValidationOperationSettings resource instead.
+//	Instead, please utilize the schemaValidationOperationSettings.SchemaValidationOperationSettings resource instead.
 //
 // ## Example Usage
 //
@@ -30,14 +30,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/apishieldoperation"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewApiShieldOperationSchemaValidationSettings(ctx, "example_api_shield_operation_schema_validation_settings", &cloudflare.ApiShieldOperationSchemaValidationSettingsArgs{
+//			_, err := apishieldoperation.NewSchemaValidationSettings(ctx, "example_api_shield_operation_schema_validation_settings", &apishieldoperation.SchemaValidationSettingsArgs{
 //				ZoneId:           pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				OperationId:      pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
 //				MitigationAction: pulumi.String("block"),
@@ -56,6 +56,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings example '<zone_id>/<operation_id>'
 // ```
+//
+// Deprecated: cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldOperation/schemaValidationSettings:SchemaValidationSettings
 type ApiShieldOperationSchemaValidationSettings struct {
 	pulumi.CustomResourceState
 

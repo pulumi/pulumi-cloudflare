@@ -23,28 +23,28 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdeviceposture"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDevicePostureRule(ctx, "example_zero_trust_device_posture_rule", &cloudflare.ZeroTrustDevicePostureRuleArgs{
+//			_, err := zerotrustdeviceposture.NewRule(ctx, "example_zero_trust_device_posture_rule", &zerotrustdeviceposture.RuleArgs{
 //				AccountId:   pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				Name:        pulumi.String("Admin Serial Numbers"),
 //				Type:        pulumi.String("file"),
 //				Description: pulumi.String("The rule for admin serial numbers"),
 //				Expiration:  pulumi.String("1h"),
-//				Input: &cloudflare.ZeroTrustDevicePostureRuleInputTypeArgs{
+//				Input: &zerotrustdeviceposture.RuleInputTypeArgs{
 //					OperatingSystem: pulumi.String("linux"),
 //					Path:            pulumi.String("/bin/cat"),
 //					Exists:          pulumi.Bool(true),
 //					Sha256:          pulumi.String("https://api.us-2.crowdstrike.com"),
 //					Thumbprint:      pulumi.String("0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e"),
 //				},
-//				Matches: cloudflare.ZeroTrustDevicePostureRuleMatchArray{
-//					&cloudflare.ZeroTrustDevicePostureRuleMatchArgs{
+//				Matches: zerotrustdeviceposture.RuleMatchArray{
+//					&zerotrustdeviceposture.RuleMatchArgs{
 //						Platform: pulumi.String("windows"),
 //					},
 //				},
@@ -102,12 +102,6 @@ func NewDevicePostureRule(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("cloudflare:index/devicePostureRule:DevicePostureRule"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DevicePostureRule
 	err := ctx.RegisterResource("cloudflare:index/devicePostureRule:DevicePostureRule", name, args, &resource, opts...)

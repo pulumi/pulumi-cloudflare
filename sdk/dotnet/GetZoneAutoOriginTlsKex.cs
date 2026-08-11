@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZoneAutoOriginTlsKex:getZoneAutoOriginTlsKex has been deprecated in favor of cloudflare:zone/autoOriginTlsKex:getAutoOriginTlsKex")]
     public static class GetZoneAutoOriginTlsKex
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZoneAutoOriginTlsKex = Cloudflare.GetZoneAutoOriginTlsKex.Invoke(new()
+        ///     var exampleZoneAutoOriginTlsKex = Cloudflare.Modules.Zone.GetAutoOriginTlsKex.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -44,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZoneAutoOriginTlsKex = Cloudflare.GetZoneAutoOriginTlsKex.Invoke(new()
+        ///     var exampleZoneAutoOriginTlsKex = Cloudflare.Modules.Zone.GetAutoOriginTlsKex.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -66,7 +67,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZoneAutoOriginTlsKex = Cloudflare.GetZoneAutoOriginTlsKex.Invoke(new()
+        ///     var exampleZoneAutoOriginTlsKex = Cloudflare.Modules.Zone.GetAutoOriginTlsKex.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

@@ -33,12 +33,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApiShield = new Cloudflare.ApiShield("example_api_shield", new()
+    ///     var exampleApiShield = new Cloudflare.Modules.ApiShield.ApiShield("example_api_shield", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         AuthIdCharacteristics = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ApiShieldAuthIdCharacteristicArgs
+    ///             new Cloudflare.Modules.ApiShield.Inputs.ApiShieldAuthIdCharacteristicArgs
     ///             {
     ///                 Name = "authorization",
     ///                 Type = "header",
@@ -55,6 +55,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/apiShield:ApiShield example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/apiShield:ApiShield has been deprecated in favor of cloudflare:apiShield/apiShield:ApiShield")]
     [CloudflareResourceType("cloudflare:index/apiShield:ApiShield")]
     public partial class ApiShield : global::Pulumi.CustomResource
     {

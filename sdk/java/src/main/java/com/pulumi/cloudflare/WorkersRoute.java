@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WorkersRoute;
- * import com.pulumi.cloudflare.WorkersRouteArgs;
+ * import com.pulumi.cloudflare.workers.Route;
+ * import com.pulumi.cloudflare.workers.RouteArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleWorkersRoute = new WorkersRoute("exampleWorkersRoute", WorkersRouteArgs.builder()
+ *         var exampleWorkersRoute = new Route("exampleWorkersRoute", RouteArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .pattern("example.com/*")
  *             .script("my-workers-script")
@@ -61,7 +61,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/workersRoute:WorkersRoute example &#39;&lt;zone_id&gt;/&lt;route_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/workersRoute:WorkersRoute has been deprecated in favor of cloudflare:workers/route:Route
+ * 
  */
+@Deprecated /* cloudflare:index/workersRoute:WorkersRoute has been deprecated in favor of cloudflare:workers/route:Route */
 @ResourceType(type="cloudflare:index/workersRoute:WorkersRoute")
 public class WorkersRoute extends com.pulumi.resources.CustomResource {
     /**

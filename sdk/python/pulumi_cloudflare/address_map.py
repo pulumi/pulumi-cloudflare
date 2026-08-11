@@ -275,8 +275,13 @@ class _AddressMapState:
         pulumi.set(self, "modified_at", value)
 
 
+warnings.warn("""cloudflare:index/addressMap:AddressMap has been deprecated in favor of cloudflare:address/map:Map""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/addressMap:AddressMap")
 class AddressMap(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/addressMap:AddressMap has been deprecated in favor of cloudflare:address/map:Map""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -300,7 +305,7 @@ class AddressMap(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_address_map = cloudflare.AddressMap("example_address_map",
+        example_address_map = cloudflare.address.Map("example_address_map",
             account_id="258def64c72dae45f3e4c8516e2111f2",
             description="My Ecommerce zones",
             enabled=True,
@@ -344,7 +349,7 @@ class AddressMap(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_address_map = cloudflare.AddressMap("example_address_map",
+        example_address_map = cloudflare.address.Map("example_address_map",
             account_id="258def64c72dae45f3e4c8516e2111f2",
             description="My Ecommerce zones",
             enabled=True,
@@ -384,6 +389,7 @@ class AddressMap(pulumi.CustomResource):
                  ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  memberships: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressMapMembershipArgs', 'AddressMapMembershipArgsDict']]]]] = None,
                  __props__=None):
+        pulumi.log.warn("""AddressMap is deprecated: cloudflare:index/addressMap:AddressMap has been deprecated in favor of cloudflare:address/map:Map""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

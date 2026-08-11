@@ -20,12 +20,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneCacheVariants = cloudflare.getZoneCacheVariants({
+ * const exampleZoneCacheVariants = cloudflare.zonecache.getVariants({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZoneCacheVariants:getZoneCacheVariants has been deprecated in favor of cloudflare:zoneCache/variants:getVariants */
 export function getZoneCacheVariants(args?: GetZoneCacheVariantsArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneCacheVariantsResult> {
+    pulumi.log.warn("getZoneCacheVariants is deprecated: cloudflare:index/getZoneCacheVariants:getZoneCacheVariants has been deprecated in favor of cloudflare:zoneCache/variants:getVariants")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZoneCacheVariants:getZoneCacheVariants", {
@@ -82,12 +84,14 @@ export interface GetZoneCacheVariantsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneCacheVariants = cloudflare.getZoneCacheVariants({
+ * const exampleZoneCacheVariants = cloudflare.zonecache.getVariants({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZoneCacheVariants:getZoneCacheVariants has been deprecated in favor of cloudflare:zoneCache/variants:getVariants */
 export function getZoneCacheVariantsOutput(args?: GetZoneCacheVariantsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneCacheVariantsResult> {
+    pulumi.log.warn("getZoneCacheVariants is deprecated: cloudflare:index/getZoneCacheVariants:getZoneCacheVariants has been deprecated in favor of cloudflare:zoneCache/variants:getVariants")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZoneCacheVariants:getZoneCacheVariants", {

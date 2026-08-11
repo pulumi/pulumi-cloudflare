@@ -107,8 +107,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZoneSetting;
- * import com.pulumi.cloudflare.ZoneSettingArgs;
+ * import com.pulumi.cloudflare.zone.Setting;
+ * import com.pulumi.cloudflare.zone.SettingArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -123,28 +123,28 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Basic on/off setting
- *         var alwaysOnline = new ZoneSetting("alwaysOnline", ZoneSettingArgs.builder()
+ *         var alwaysOnline = new Setting("alwaysOnline", SettingArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .settingId("always_online")
  *             .value("on")
  *             .build());
  * 
  *         // String value with specific choices
- *         var minTlsVersion = new ZoneSetting("minTlsVersion", ZoneSettingArgs.builder()
+ *         var minTlsVersion = new Setting("minTlsVersion", SettingArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .settingId("min_tls_version")
  *             .value("1.2")
  *             .build());
  * 
  *         // Numeric value
- *         var browserCacheTtl = new ZoneSetting("browserCacheTtl", ZoneSettingArgs.builder()
+ *         var browserCacheTtl = new Setting("browserCacheTtl", SettingArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .settingId("browser_cache_ttl")
  *             .value(14400)
  *             .build());
  * 
  *         // Array/List value
- *         var ciphers = new ZoneSetting("ciphers", ZoneSettingArgs.builder()
+ *         var ciphers = new Setting("ciphers", SettingArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .settingId("ciphers")
  *             .value(            
@@ -153,7 +153,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Nested object value
- *         var securityHeader = new ZoneSetting("securityHeader", ZoneSettingArgs.builder()
+ *         var securityHeader = new Setting("securityHeader", SettingArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .settingId("security_header")
  *             .value(Map.of("strictTransportSecurity", Map.ofEntries(
@@ -166,7 +166,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Special case: ssl_recommender uses 'enabled' instead of 'value'
- *         var sslRecommender = new ZoneSetting("sslRecommender", ZoneSettingArgs.builder()
+ *         var sslRecommender = new Setting("sslRecommender", SettingArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .settingId("ssl_recommender")
  *             .enabled(true)
@@ -187,8 +187,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZoneSetting;
- * import com.pulumi.cloudflare.ZoneSettingArgs;
+ * import com.pulumi.cloudflare.zone.Setting;
+ * import com.pulumi.cloudflare.zone.SettingArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -203,28 +203,28 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Minimum TLS Version
- *         var minTls = new ZoneSetting("minTls", ZoneSettingArgs.builder()
+ *         var minTls = new Setting("minTls", SettingArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .settingId("min_tls_version")
  *             .value("1.2")
  *             .build());
  * 
  *         // SSL/TLS Mode
- *         var ssl = new ZoneSetting("ssl", ZoneSettingArgs.builder()
+ *         var ssl = new Setting("ssl", SettingArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .settingId("ssl")
  *             .value("strict")
  *             .build());
  * 
  *         // Security Level
- *         var securityLevel = new ZoneSetting("securityLevel", ZoneSettingArgs.builder()
+ *         var securityLevel = new Setting("securityLevel", SettingArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .settingId("security_level")
  *             .value("medium")
  *             .build());
  * 
  *         // Cache Level
- *         var cacheLevel = new ZoneSetting("cacheLevel", ZoneSettingArgs.builder()
+ *         var cacheLevel = new Setting("cacheLevel", SettingArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .settingId("cache_level")
  *             .value("aggressive")
@@ -243,8 +243,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZoneSetting;
- * import com.pulumi.cloudflare.ZoneSettingArgs;
+ * import com.pulumi.cloudflare.zone.Setting;
+ * import com.pulumi.cloudflare.zone.SettingArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -259,21 +259,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Browser Cache TTL
- *         var browserCacheTtl = new ZoneSetting("browserCacheTtl", ZoneSettingArgs.builder()
+ *         var browserCacheTtl = new Setting("browserCacheTtl", SettingArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .settingId("browser_cache_ttl")
  *             .value(14400)
  *             .build());
  * 
  *         // Challenge TTL
- *         var challengeTtl = new ZoneSetting("challengeTtl", ZoneSettingArgs.builder()
+ *         var challengeTtl = new Setting("challengeTtl", SettingArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .settingId("challenge_ttl")
  *             .value(1800)
  *             .build());
  * 
  *         // Max Upload Size
- *         var maxUpload = new ZoneSetting("maxUpload", ZoneSettingArgs.builder()
+ *         var maxUpload = new Setting("maxUpload", SettingArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .settingId("max_upload")
  *             .value(100)
@@ -292,8 +292,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZoneSetting;
- * import com.pulumi.cloudflare.ZoneSettingArgs;
+ * import com.pulumi.cloudflare.zone.Setting;
+ * import com.pulumi.cloudflare.zone.SettingArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -308,14 +308,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // 0-RTT (Zero Round Trip Time)
- *         var zeroRtt = new ZoneSetting("zeroRtt", ZoneSettingArgs.builder()
+ *         var zeroRtt = new Setting("zeroRtt", SettingArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .settingId("0rtt")
  *             .value("on")
  *             .build());
  * 
  *         // Network Error Logging (NEL)
- *         var nel = new ZoneSetting("nel", ZoneSettingArgs.builder()
+ *         var nel = new Setting("nel", SettingArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .settingId("nel")
  *             .value(Map.of("enabled", true))
@@ -336,8 +336,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZoneSetting;
- * import com.pulumi.cloudflare.ZoneSettingArgs;
+ * import com.pulumi.cloudflare.zone.Setting;
+ * import com.pulumi.cloudflare.zone.SettingArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -352,35 +352,35 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Enable HTTPS everywhere
- *         var alwaysUseHttps = new ZoneSetting("alwaysUseHttps", ZoneSettingArgs.builder()
+ *         var alwaysUseHttps = new Setting("alwaysUseHttps", SettingArgs.builder()
  *             .zoneId(zoneId)
  *             .settingId("always_use_https")
  *             .value("on")
  *             .build());
  * 
  *         // Automatic HTTPS Rewrites
- *         var automaticHttpsRewrites = new ZoneSetting("automaticHttpsRewrites", ZoneSettingArgs.builder()
+ *         var automaticHttpsRewrites = new Setting("automaticHttpsRewrites", SettingArgs.builder()
  *             .zoneId(zoneId)
  *             .settingId("automatic_https_rewrites")
  *             .value("on")
  *             .build());
  * 
  *         // Minimum TLS 1.2
- *         var minTlsVersion = new ZoneSetting("minTlsVersion", ZoneSettingArgs.builder()
+ *         var minTlsVersion = new Setting("minTlsVersion", SettingArgs.builder()
  *             .zoneId(zoneId)
  *             .settingId("min_tls_version")
  *             .value("1.2")
  *             .build());
  * 
  *         // Enable TLS 1.3
- *         var tls13 = new ZoneSetting("tls13", ZoneSettingArgs.builder()
+ *         var tls13 = new Setting("tls13", SettingArgs.builder()
  *             .zoneId(zoneId)
  *             .settingId("tls_1_3")
  *             .value("on")
  *             .build());
  * 
  *         // Strict SSL
- *         var ssl = new ZoneSetting("ssl", ZoneSettingArgs.builder()
+ *         var ssl = new Setting("ssl", SettingArgs.builder()
  *             .zoneId(zoneId)
  *             .settingId("ssl")
  *             .value("strict")
@@ -399,8 +399,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZoneSetting;
- * import com.pulumi.cloudflare.ZoneSettingArgs;
+ * import com.pulumi.cloudflare.zone.Setting;
+ * import com.pulumi.cloudflare.zone.SettingArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -415,35 +415,35 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Enable HTTP/3
- *         var http3 = new ZoneSetting("http3", ZoneSettingArgs.builder()
+ *         var http3 = new Setting("http3", SettingArgs.builder()
  *             .zoneId(zoneId)
  *             .settingId("http3")
  *             .value("on")
  *             .build());
  * 
  *         // Enable Brotli Compression
- *         var brotli = new ZoneSetting("brotli", ZoneSettingArgs.builder()
+ *         var brotli = new Setting("brotli", SettingArgs.builder()
  *             .zoneId(zoneId)
  *             .settingId("brotli")
  *             .value("on")
  *             .build());
  * 
  *         // Early Hints
- *         var earlyHints = new ZoneSetting("earlyHints", ZoneSettingArgs.builder()
+ *         var earlyHints = new Setting("earlyHints", SettingArgs.builder()
  *             .zoneId(zoneId)
  *             .settingId("early_hints")
  *             .value("on")
  *             .build());
  * 
  *         // Aggressive Caching
- *         var cacheLevel = new ZoneSetting("cacheLevel", ZoneSettingArgs.builder()
+ *         var cacheLevel = new Setting("cacheLevel", SettingArgs.builder()
  *             .zoneId(zoneId)
  *             .settingId("cache_level")
  *             .value("aggressive")
  *             .build());
  * 
  *         // Browser Cache TTL
- *         var browserCache = new ZoneSetting("browserCache", ZoneSettingArgs.builder()
+ *         var browserCache = new Setting("browserCache", SettingArgs.builder()
  *             .zoneId(zoneId)
  *             .settingId("browser_cache_ttl")
  *             .value(14400)
@@ -460,7 +460,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zoneSetting:ZoneSetting example &#39;&lt;zone_id&gt;/&lt;setting_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zoneSetting:ZoneSetting has been deprecated in favor of cloudflare:zone/setting:Setting
+ * 
  */
+@Deprecated /* cloudflare:index/zoneSetting:ZoneSetting has been deprecated in favor of cloudflare:zone/setting:Setting */
 @ResourceType(type="cloudflare:index/zoneSetting:ZoneSetting")
 public class ZoneSetting extends com.pulumi.resources.CustomResource {
     /**

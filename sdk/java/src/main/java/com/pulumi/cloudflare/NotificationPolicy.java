@@ -35,13 +35,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.NotificationPolicy;
- * import com.pulumi.cloudflare.NotificationPolicyArgs;
- * import com.pulumi.cloudflare.inputs.NotificationPolicyMechanismsArgs;
- * import com.pulumi.cloudflare.inputs.NotificationPolicyMechanismsEmailArgs;
- * import com.pulumi.cloudflare.inputs.NotificationPolicyMechanismsPagerdutyArgs;
- * import com.pulumi.cloudflare.inputs.NotificationPolicyMechanismsWebhookArgs;
- * import com.pulumi.cloudflare.inputs.NotificationPolicyFiltersArgs;
+ * import com.pulumi.cloudflare.notification.Policy;
+ * import com.pulumi.cloudflare.notification.PolicyArgs;
+ * import com.pulumi.cloudflare.notification.inputs.PolicyMechanismsArgs;
+ * import com.pulumi.cloudflare.notification.inputs.PolicyMechanismsEmailArgs;
+ * import com.pulumi.cloudflare.notification.inputs.PolicyMechanismsPagerdutyArgs;
+ * import com.pulumi.cloudflare.notification.inputs.PolicyMechanismsWebhookArgs;
+ * import com.pulumi.cloudflare.notification.inputs.PolicyFiltersArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -55,25 +55,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleNotificationPolicy = new NotificationPolicy("exampleNotificationPolicy", NotificationPolicyArgs.builder()
+ *         var exampleNotificationPolicy = new Policy("exampleNotificationPolicy", PolicyArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .alertType("universal_ssl_event_type")
  *             .enabled(true)
- *             .mechanisms(NotificationPolicyMechanismsArgs.builder()
- *                 .emails(NotificationPolicyMechanismsEmailArgs.builder()
+ *             .mechanisms(PolicyMechanismsArgs.builder()
+ *                 .emails(PolicyMechanismsEmailArgs.builder()
  *                     .id("id")
  *                     .build())
- *                 .pagerduties(NotificationPolicyMechanismsPagerdutyArgs.builder()
+ *                 .pagerduties(PolicyMechanismsPagerdutyArgs.builder()
  *                     .id("f174e90afafe4643bbbc4a0ed4fc8415")
  *                     .build())
- *                 .webhooks(NotificationPolicyMechanismsWebhookArgs.builder()
+ *                 .webhooks(PolicyMechanismsWebhookArgs.builder()
  *                     .id("f174e90afafe4643bbbc4a0ed4fc8415")
  *                     .build())
  *                 .build())
  *             .name("SSL Notification Event Policy")
  *             .alertInterval("30m")
  *             .description("Something describing the policy.")
- *             .filters(NotificationPolicyFiltersArgs.builder()
+ *             .filters(PolicyFiltersArgs.builder()
  *                 .actions("string")
  *                 .affectedAsns("string")
  *                 .affectedComponents("string")
@@ -131,7 +131,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example &#39;&lt;account_id&gt;/&lt;policy_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/notificationPolicy:NotificationPolicy has been deprecated in favor of cloudflare:notification/policy:Policy
+ * 
  */
+@Deprecated /* cloudflare:index/notificationPolicy:NotificationPolicy has been deprecated in favor of cloudflare:notification/policy:Policy */
 @ResourceType(type="cloudflare:index/notificationPolicy:NotificationPolicy")
 public class NotificationPolicy extends com.pulumi.resources.CustomResource {
     /**

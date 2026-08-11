@@ -19,13 +19,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountMember = cloudflare.getAccountMember({
+ * const exampleAccountMember = cloudflare.account.getMember({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     memberId: "4536bcfad5faccb111b47003c79917fa",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccountMember:getAccountMember has been deprecated in favor of cloudflare:account/member:getMember */
 export function getAccountMember(args?: GetAccountMemberArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountMemberResult> {
+    pulumi.log.warn("getAccountMember is deprecated: cloudflare:index/getAccountMember:getAccountMember has been deprecated in favor of cloudflare:account/member:getMember")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountMember:getAccountMember", {
@@ -102,13 +104,15 @@ export interface GetAccountMemberResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountMember = cloudflare.getAccountMember({
+ * const exampleAccountMember = cloudflare.account.getMember({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     memberId: "4536bcfad5faccb111b47003c79917fa",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccountMember:getAccountMember has been deprecated in favor of cloudflare:account/member:getMember */
 export function getAccountMemberOutput(args?: GetAccountMemberOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountMemberResult> {
+    pulumi.log.warn("getAccountMember is deprecated: cloudflare:index/getAccountMember:getAccountMember has been deprecated in favor of cloudflare:account/member:getMember")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountMember:getAccountMember", {

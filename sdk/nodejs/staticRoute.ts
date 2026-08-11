@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicWanStaticRoute = new cloudflare.MagicWanStaticRoute("example_magic_wan_static_route", {
+ * const exampleMagicWanStaticRoute = new cloudflare.magicwan.StaticRoute("example_magic_wan_static_route", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     nexthop: "203.0.113.1",
  *     prefix: "192.0.2.0/24",
@@ -151,8 +151,6 @@ export class StaticRoute extends pulumi.CustomResource {
             resourceInputs["modifiedOn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/staticRoute:StaticRoute" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(StaticRoute.__pulumiType, name, resourceInputs, opts);
     }
 }

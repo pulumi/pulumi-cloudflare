@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.CustomPages;
- * import com.pulumi.cloudflare.CustomPagesArgs;
+ * import com.pulumi.cloudflare.customPages.CustomPages;
+ * import com.pulumi.cloudflare.customPages.CustomPagesArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -66,7 +66,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/customPages:CustomPages example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;identifier&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/customPages:CustomPages has been deprecated in favor of cloudflare:customPages/customPages:CustomPages
+ * 
  */
+@Deprecated /* cloudflare:index/customPages:CustomPages has been deprecated in favor of cloudflare:customPages/customPages:CustomPages */
 @ResourceType(type="cloudflare:index/customPages:CustomPages")
 public class CustomPages extends com.pulumi.resources.CustomResource {
     /**

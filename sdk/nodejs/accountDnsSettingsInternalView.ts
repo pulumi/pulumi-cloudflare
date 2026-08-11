@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountDnsSettingsInternalView = new cloudflare.AccountDnsSettingsInternalView("example_account_dns_settings_internal_view", {
+ * const exampleAccountDnsSettingsInternalView = new cloudflare.accountdnssettingsinternal.View("example_account_dns_settings_internal_view", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "my view",
  *     zones: ["372e67954025e0ba6aaa6d586b9e0b59"],
@@ -28,6 +28,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView example '<account_id>/<view_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView has been deprecated in favor of cloudflare:accountDnsSettingsInternal/view:View
  */
 export class AccountDnsSettingsInternalView extends pulumi.CustomResource {
     /**
@@ -40,6 +42,7 @@ export class AccountDnsSettingsInternalView extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AccountDnsSettingsInternalViewState, opts?: pulumi.CustomResourceOptions): AccountDnsSettingsInternalView {
+        pulumi.log.warn("AccountDnsSettingsInternalView is deprecated: cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView has been deprecated in favor of cloudflare:accountDnsSettingsInternal/view:View")
         return new AccountDnsSettingsInternalView(name, <any>state, { ...opts, id: id });
     }
 
@@ -85,8 +88,11 @@ export class AccountDnsSettingsInternalView extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView has been deprecated in favor of cloudflare:accountDnsSettingsInternal/view:View */
     constructor(name: string, args: AccountDnsSettingsInternalViewArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView has been deprecated in favor of cloudflare:accountDnsSettingsInternal/view:View */
     constructor(name: string, argsOrState?: AccountDnsSettingsInternalViewArgs | AccountDnsSettingsInternalViewState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("AccountDnsSettingsInternalView is deprecated: cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView has been deprecated in favor of cloudflare:accountDnsSettingsInternal/view:View")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

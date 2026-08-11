@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCustomHostname = new Cloudflare.CustomHostname("example_custom_hostname", new()
+    ///     var exampleCustomHostname = new Cloudflare.Modules.CustomHostname.CustomHostname("example_custom_hostname", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Hostname = "app.example.com",
@@ -35,14 +35,14 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         CustomOriginServer = "origin2.example.com",
     ///         CustomOriginSni = "sni.example.com",
-    ///         Ssl = new Cloudflare.Inputs.CustomHostnameSslArgs
+    ///         Ssl = new Cloudflare.Modules.CustomHostname.Inputs.CustomHostnameSslArgs
     ///         {
     ///             BundleMethod = "ubiquitous",
     ///             CertificateAuthority = "google",
     ///             CloudflareBranding = false,
     ///             CustomCertBundles = new[]
     ///             {
-    ///                 new Cloudflare.Inputs.CustomHostnameSslCustomCertBundleArgs
+    ///                 new Cloudflare.Modules.CustomHostname.Inputs.CustomHostnameSslCustomCertBundleArgs
     ///                 {
     ///                     CustomCertificate = @"      -----BEGIN CERTIFICATE-----
     ///       MIIDdjCCAl6gAwIBAgIJAPnMg0Fs+/B0MA0GCSqGSIb3DQEBCwUAMFsx...
@@ -94,7 +94,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ",
     ///             Method = "http",
-    ///             Settings = new Cloudflare.Inputs.CustomHostnameSslSettingsArgs
+    ///             Settings = new Cloudflare.Modules.CustomHostname.Inputs.CustomHostnameSslSettingsArgs
     ///             {
     ///                 Ciphers = new[]
     ///                 {
@@ -120,6 +120,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/customHostname:CustomHostname example '&lt;zone_id&gt;/&lt;custom_hostname_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/customHostname:CustomHostname has been deprecated in favor of cloudflare:customHostname/customHostname:CustomHostname")]
     [CloudflareResourceType("cloudflare:index/customHostname:CustomHostname")]
     public partial class CustomHostname : global::Pulumi.CustomResource
     {

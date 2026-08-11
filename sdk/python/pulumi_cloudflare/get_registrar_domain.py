@@ -21,6 +21,8 @@ __all__ = [
     'get_registrar_domain_output',
 ]
 
+warnings.warn("""cloudflare:index/getRegistrarDomain:getRegistrarDomain has been deprecated in favor of cloudflare:registrar/domain:getDomain""", DeprecationWarning)
+
 @pulumi.output_type
 class GetRegistrarDomainResult:
     """
@@ -74,7 +76,7 @@ def get_registrar_domain(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_registrar_domain = cloudflare.get_registrar_domain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_registrar_domain = cloudflare.registrar.get_domain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         domain_name="example.com")
     ```
 
@@ -85,6 +87,7 @@ def get_registrar_domain(account_id: Optional[_builtins.str] = None,
            identifies a registration — the same domain cannot be registered
            twice, making it a natural idempotency key for registration requests.
     """
+    pulumi.log.warn("""get_registrar_domain is deprecated: cloudflare:index/getRegistrarDomain:getRegistrarDomain has been deprecated in favor of cloudflare:registrar/domain:getDomain""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['domainName'] = domain_name
@@ -104,7 +107,7 @@ def get_registrar_domain_output(account_id: pulumi.Input[Optional[_builtins.str]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_registrar_domain = cloudflare.get_registrar_domain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_registrar_domain = cloudflare.registrar.get_domain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         domain_name="example.com")
     ```
 
@@ -115,6 +118,7 @@ def get_registrar_domain_output(account_id: pulumi.Input[Optional[_builtins.str]
            identifies a registration — the same domain cannot be registered
            twice, making it a natural idempotency key for registration requests.
     """
+    pulumi.log.warn("""get_registrar_domain is deprecated: cloudflare:index/getRegistrarDomain:getRegistrarDomain has been deprecated in favor of cloudflare:registrar/domain:getDomain""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['domainName'] = domain_name

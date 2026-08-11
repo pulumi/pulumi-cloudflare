@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrust"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustOrganization(ctx, &cloudflare.LookupZeroTrustOrganizationArgs{
+//			_, err := zerotrust.GetOrganization(ctx, &zerotrust.GetOrganizationArgs{
 //				AccountId: pulumi.StringRef("account_id"),
 //				ZoneId:    pulumi.StringRef("zone_id"),
 //			}, nil)
@@ -43,6 +43,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustOrganization:getZeroTrustOrganization has been deprecated in favor of cloudflare:zeroTrust/organization:getOrganization
 func LookupZeroTrustOrganization(ctx *pulumi.Context, args *LookupZeroTrustOrganizationArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustOrganizationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustOrganizationResult

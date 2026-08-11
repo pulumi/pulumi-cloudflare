@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdevice"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDeviceSettings(ctx, "example_zero_trust_device_settings", &cloudflare.ZeroTrustDeviceSettingsArgs{
+//			_, err := zerotrustdevice.NewSettings(ctx, "example_zero_trust_device_settings", &zerotrustdevice.SettingsArgs{
 //				AccountId:                          pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				DisableForTime:                     pulumi.Float64(0),
 //				ExternalEmergencySignalEnabled:     pulumi.Bool(true),
@@ -54,6 +54,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings has been deprecated in favor of cloudflare:zeroTrustDevice/settings:Settings
 type ZeroTrustDeviceSettings struct {
 	pulumi.CustomResourceState
 

@@ -70,11 +70,6 @@ export type AccessTag = import("./accessTag").AccessTag;
 export const AccessTag: typeof import("./accessTag").AccessTag = null as any;
 utilities.lazyLoad(exports, ["AccessTag"], () => require("./accessTag"));
 
-export { AccountArgs, AccountState } from "./account";
-export type Account = import("./account").Account;
-export const Account: typeof import("./account").Account = null as any;
-utilities.lazyLoad(exports, ["Account"], () => require("./account"));
-
 export { AccountDnsSettingsArgs, AccountDnsSettingsState } from "./accountDnsSettings";
 export type AccountDnsSettings = import("./accountDnsSettings").AccountDnsSettings;
 export const AccountDnsSettings: typeof import("./accountDnsSettings").AccountDnsSettings = null as any;
@@ -99,6 +94,11 @@ export { AccountTokenArgs, AccountTokenState } from "./accountToken";
 export type AccountToken = import("./accountToken").AccountToken;
 export const AccountToken: typeof import("./accountToken").AccountToken = null as any;
 utilities.lazyLoad(exports, ["AccountToken"], () => require("./accountToken"));
+
+export { AccountArgs, AccountState } from "./account_";
+export type Account = import("./account_").Account;
+export const Account: typeof import("./account_").Account = null as any;
+utilities.lazyLoad(exports, ["Account"], () => require("./account_"));
 
 export { AddressMapArgs, AddressMapState } from "./addressMap";
 export type AddressMap = import("./addressMap").AddressMap;
@@ -2685,15 +2685,15 @@ export type HyperdriveConfig = import("./hyperdriveConfig").HyperdriveConfig;
 export const HyperdriveConfig: typeof import("./hyperdriveConfig").HyperdriveConfig = null as any;
 utilities.lazyLoad(exports, ["HyperdriveConfig"], () => require("./hyperdriveConfig"));
 
-export { ImageArgs, ImageState } from "./image";
-export type Image = import("./image").Image;
-export const Image: typeof import("./image").Image = null as any;
-utilities.lazyLoad(exports, ["Image"], () => require("./image"));
-
 export { ImageVariantArgs, ImageVariantState } from "./imageVariant";
 export type ImageVariant = import("./imageVariant").ImageVariant;
 export const ImageVariant: typeof import("./imageVariant").ImageVariant = null as any;
 utilities.lazyLoad(exports, ["ImageVariant"], () => require("./imageVariant"));
+
+export { ImageArgs, ImageState } from "./image_";
+export type Image = import("./image_").Image;
+export const Image: typeof import("./image_").Image = null as any;
+utilities.lazyLoad(exports, ["Image"], () => require("./image_"));
 
 export { KeylessCertificateArgs, KeylessCertificateState } from "./keylessCertificate";
 export type KeylessCertificate = import("./keylessCertificate").KeylessCertificate;
@@ -2710,15 +2710,15 @@ export type LeakedCredentialCheckRule = import("./leakedCredentialCheckRule").Le
 export const LeakedCredentialCheckRule: typeof import("./leakedCredentialCheckRule").LeakedCredentialCheckRule = null as any;
 utilities.lazyLoad(exports, ["LeakedCredentialCheckRule"], () => require("./leakedCredentialCheckRule"));
 
-export { ListArgs, ListState } from "./list";
-export type List = import("./list").List;
-export const List: typeof import("./list").List = null as any;
-utilities.lazyLoad(exports, ["List"], () => require("./list"));
-
 export { ListItemArgs, ListItemState } from "./listItem";
 export type ListItem = import("./listItem").ListItem;
 export const ListItem: typeof import("./listItem").ListItem = null as any;
 utilities.lazyLoad(exports, ["ListItem"], () => require("./listItem"));
+
+export { ListArgs, ListState } from "./list_";
+export type List = import("./list_").List;
+export const List: typeof import("./list_").List = null as any;
+utilities.lazyLoad(exports, ["List"], () => require("./list_"));
 
 export { LoadBalancerArgs, LoadBalancerState } from "./loadBalancer";
 export type LoadBalancer = import("./loadBalancer").LoadBalancer;
@@ -2850,15 +2850,15 @@ export type ObservatoryScheduledTest = import("./observatoryScheduledTest").Obse
 export const ObservatoryScheduledTest: typeof import("./observatoryScheduledTest").ObservatoryScheduledTest = null as any;
 utilities.lazyLoad(exports, ["ObservatoryScheduledTest"], () => require("./observatoryScheduledTest"));
 
-export { OrganizationArgs, OrganizationState } from "./organization";
-export type Organization = import("./organization").Organization;
-export const Organization: typeof import("./organization").Organization = null as any;
-utilities.lazyLoad(exports, ["Organization"], () => require("./organization"));
-
 export { OrganizationProfileArgs, OrganizationProfileState } from "./organizationProfile";
 export type OrganizationProfile = import("./organizationProfile").OrganizationProfile;
 export const OrganizationProfile: typeof import("./organizationProfile").OrganizationProfile = null as any;
 utilities.lazyLoad(exports, ["OrganizationProfile"], () => require("./organizationProfile"));
+
+export { OrganizationArgs, OrganizationState } from "./organization_";
+export type Organization = import("./organization_").Organization;
+export const Organization: typeof import("./organization_").Organization = null as any;
+utilities.lazyLoad(exports, ["Organization"], () => require("./organization_"));
 
 export { OriginCaCertificateArgs, OriginCaCertificateState } from "./originCaCertificate";
 export type OriginCaCertificate = import("./originCaCertificate").OriginCaCertificate;
@@ -2895,11 +2895,6 @@ export type PagesProject = import("./pagesProject").PagesProject;
 export const PagesProject: typeof import("./pagesProject").PagesProject = null as any;
 utilities.lazyLoad(exports, ["PagesProject"], () => require("./pagesProject"));
 
-export { PipelineArgs, PipelineState } from "./pipeline";
-export type Pipeline = import("./pipeline").Pipeline;
-export const Pipeline: typeof import("./pipeline").Pipeline = null as any;
-utilities.lazyLoad(exports, ["Pipeline"], () => require("./pipeline"));
-
 export { PipelineSinkArgs, PipelineSinkState } from "./pipelineSink";
 export type PipelineSink = import("./pipelineSink").PipelineSink;
 export const PipelineSink: typeof import("./pipelineSink").PipelineSink = null as any;
@@ -2910,23 +2905,23 @@ export type PipelineStream = import("./pipelineStream").PipelineStream;
 export const PipelineStream: typeof import("./pipelineStream").PipelineStream = null as any;
 utilities.lazyLoad(exports, ["PipelineStream"], () => require("./pipelineStream"));
 
+export { PipelineArgs, PipelineState } from "./pipeline_";
+export type Pipeline = import("./pipeline_").Pipeline;
+export const Pipeline: typeof import("./pipeline_").Pipeline = null as any;
+utilities.lazyLoad(exports, ["Pipeline"], () => require("./pipeline_"));
+
 export * from "./provider";
 import { Provider } from "./provider";
-
-export { QueueArgs, QueueState } from "./queue";
-export type Queue = import("./queue").Queue;
-export const Queue: typeof import("./queue").Queue = null as any;
-utilities.lazyLoad(exports, ["Queue"], () => require("./queue"));
 
 export { QueueConsumerArgs, QueueConsumerState } from "./queueConsumer";
 export type QueueConsumer = import("./queueConsumer").QueueConsumer;
 export const QueueConsumer: typeof import("./queueConsumer").QueueConsumer = null as any;
 utilities.lazyLoad(exports, ["QueueConsumer"], () => require("./queueConsumer"));
 
-export { R2BucketArgs, R2BucketState } from "./r2bucket";
-export type R2Bucket = import("./r2bucket").R2Bucket;
-export const R2Bucket: typeof import("./r2bucket").R2Bucket = null as any;
-utilities.lazyLoad(exports, ["R2Bucket"], () => require("./r2bucket"));
+export { QueueArgs, QueueState } from "./queue_";
+export type Queue = import("./queue_").Queue;
+export const Queue: typeof import("./queue_").Queue = null as any;
+utilities.lazyLoad(exports, ["Queue"], () => require("./queue_"));
 
 export { R2BucketCorsArgs, R2BucketCorsState } from "./r2bucketCors";
 export type R2BucketCors = import("./r2bucketCors").R2BucketCors;
@@ -2952,6 +2947,11 @@ export { R2BucketSippyArgs, R2BucketSippyState } from "./r2bucketSippy";
 export type R2BucketSippy = import("./r2bucketSippy").R2BucketSippy;
 export const R2BucketSippy: typeof import("./r2bucketSippy").R2BucketSippy = null as any;
 utilities.lazyLoad(exports, ["R2BucketSippy"], () => require("./r2bucketSippy"));
+
+export { R2BucketArgs, R2BucketState } from "./r2bucket_";
+export type R2Bucket = import("./r2bucket_").R2Bucket;
+export const R2Bucket: typeof import("./r2bucket_").R2Bucket = null as any;
+utilities.lazyLoad(exports, ["R2Bucket"], () => require("./r2bucket_"));
 
 export { R2CustomDomainArgs, R2CustomDomainState } from "./r2customDomain";
 export type R2CustomDomain = import("./r2customDomain").R2CustomDomain;
@@ -3028,11 +3028,6 @@ export type SecretsStoreSecret = import("./secretsStoreSecret").SecretsStoreSecr
 export const SecretsStoreSecret: typeof import("./secretsStoreSecret").SecretsStoreSecret = null as any;
 utilities.lazyLoad(exports, ["SecretsStoreSecret"], () => require("./secretsStoreSecret"));
 
-export { ShareArgs, ShareState } from "./share";
-export type Share = import("./share").Share;
-export const Share: typeof import("./share").Share = null as any;
-utilities.lazyLoad(exports, ["Share"], () => require("./share"));
-
 export { ShareRecipientArgs, ShareRecipientState } from "./shareRecipient";
 export type ShareRecipient = import("./shareRecipient").ShareRecipient;
 export const ShareRecipient: typeof import("./shareRecipient").ShareRecipient = null as any;
@@ -3043,20 +3038,25 @@ export type ShareResource = import("./shareResource").ShareResource;
 export const ShareResource: typeof import("./shareResource").ShareResource = null as any;
 utilities.lazyLoad(exports, ["ShareResource"], () => require("./shareResource"));
 
-export { SnippetArgs, SnippetState } from "./snippet";
-export type Snippet = import("./snippet").Snippet;
-export const Snippet: typeof import("./snippet").Snippet = null as any;
-utilities.lazyLoad(exports, ["Snippet"], () => require("./snippet"));
+export { ShareArgs, ShareState } from "./share_";
+export type Share = import("./share_").Share;
+export const Share: typeof import("./share_").Share = null as any;
+utilities.lazyLoad(exports, ["Share"], () => require("./share_"));
 
 export { SnippetRulesArgs, SnippetRulesState } from "./snippetRules";
 export type SnippetRules = import("./snippetRules").SnippetRules;
 export const SnippetRules: typeof import("./snippetRules").SnippetRules = null as any;
 utilities.lazyLoad(exports, ["SnippetRules"], () => require("./snippetRules"));
 
-export { SnippetsArgs, SnippetsState } from "./snippets";
-export type Snippets = import("./snippets").Snippets;
-export const Snippets: typeof import("./snippets").Snippets = null as any;
-utilities.lazyLoad(exports, ["Snippets"], () => require("./snippets"));
+export { SnippetArgs, SnippetState } from "./snippet_";
+export type Snippet = import("./snippet_").Snippet;
+export const Snippet: typeof import("./snippet_").Snippet = null as any;
+utilities.lazyLoad(exports, ["Snippet"], () => require("./snippet_"));
+
+export { SnippetsArgs, SnippetsState } from "./snippets_";
+export type Snippets = import("./snippets_").Snippets;
+export const Snippets: typeof import("./snippets_").Snippets = null as any;
+utilities.lazyLoad(exports, ["Snippets"], () => require("./snippets_"));
 
 export { SpectrumApplicationArgs, SpectrumApplicationState } from "./spectrumApplication";
 export type SpectrumApplication = import("./spectrumApplication").SpectrumApplication;
@@ -3072,11 +3072,6 @@ export { StaticRouteArgs, StaticRouteState } from "./staticRoute";
 export type StaticRoute = import("./staticRoute").StaticRoute;
 export const StaticRoute: typeof import("./staticRoute").StaticRoute = null as any;
 utilities.lazyLoad(exports, ["StaticRoute"], () => require("./staticRoute"));
-
-export { StreamArgs, StreamState } from "./stream";
-export type Stream = import("./stream").Stream;
-export const Stream: typeof import("./stream").Stream = null as any;
-utilities.lazyLoad(exports, ["Stream"], () => require("./stream"));
 
 export { StreamAudioTrackArgs, StreamAudioTrackState } from "./streamAudioTrack";
 export type StreamAudioTrack = import("./streamAudioTrack").StreamAudioTrack;
@@ -3112,6 +3107,11 @@ export { StreamWebhookArgs, StreamWebhookState } from "./streamWebhook";
 export type StreamWebhook = import("./streamWebhook").StreamWebhook;
 export const StreamWebhook: typeof import("./streamWebhook").StreamWebhook = null as any;
 utilities.lazyLoad(exports, ["StreamWebhook"], () => require("./streamWebhook"));
+
+export { StreamArgs, StreamState } from "./stream_";
+export type Stream = import("./stream_").Stream;
+export const Stream: typeof import("./stream_").Stream = null as any;
+utilities.lazyLoad(exports, ["Stream"], () => require("./stream_"));
 
 export { TeamsAccountArgs, TeamsAccountState } from "./teamsAccount";
 export type TeamsAccount = import("./teamsAccount").TeamsAccount;
@@ -3193,11 +3193,6 @@ export type UrlNormalizationSettings = import("./urlNormalizationSettings").UrlN
 export const UrlNormalizationSettings: typeof import("./urlNormalizationSettings").UrlNormalizationSettings = null as any;
 utilities.lazyLoad(exports, ["UrlNormalizationSettings"], () => require("./urlNormalizationSettings"));
 
-export { UserArgs, UserState } from "./user";
-export type User = import("./user").User;
-export const User: typeof import("./user").User = null as any;
-utilities.lazyLoad(exports, ["User"], () => require("./user"));
-
 export { UserAgentBlockingRuleArgs, UserAgentBlockingRuleState } from "./userAgentBlockingRule";
 export type UserAgentBlockingRule = import("./userAgentBlockingRule").UserAgentBlockingRule;
 export const UserAgentBlockingRule: typeof import("./userAgentBlockingRule").UserAgentBlockingRule = null as any;
@@ -3212,6 +3207,11 @@ export { UserGroupMembersArgs, UserGroupMembersState } from "./userGroupMembers"
 export type UserGroupMembers = import("./userGroupMembers").UserGroupMembers;
 export const UserGroupMembers: typeof import("./userGroupMembers").UserGroupMembers = null as any;
 utilities.lazyLoad(exports, ["UserGroupMembers"], () => require("./userGroupMembers"));
+
+export { UserArgs, UserState } from "./user_";
+export type User = import("./user_").User;
+export const User: typeof import("./user_").User = null as any;
+utilities.lazyLoad(exports, ["User"], () => require("./user_"));
 
 export { VulnerabilityScannerCredentialArgs, VulnerabilityScannerCredentialState } from "./vulnerabilityScannerCredential";
 export type VulnerabilityScannerCredential = import("./vulnerabilityScannerCredential").VulnerabilityScannerCredential;
@@ -3263,11 +3263,6 @@ export type WebAnalyticsSite = import("./webAnalyticsSite").WebAnalyticsSite;
 export const WebAnalyticsSite: typeof import("./webAnalyticsSite").WebAnalyticsSite = null as any;
 utilities.lazyLoad(exports, ["WebAnalyticsSite"], () => require("./webAnalyticsSite"));
 
-export { WorkerArgs, WorkerState } from "./worker";
-export type Worker = import("./worker").Worker;
-export const Worker: typeof import("./worker").Worker = null as any;
-utilities.lazyLoad(exports, ["Worker"], () => require("./worker"));
-
 export { WorkerCronTriggerArgs, WorkerCronTriggerState } from "./workerCronTrigger";
 export type WorkerCronTrigger = import("./workerCronTrigger").WorkerCronTrigger;
 export const WorkerCronTrigger: typeof import("./workerCronTrigger").WorkerCronTrigger = null as any;
@@ -3287,6 +3282,11 @@ export { WorkerVersionArgs, WorkerVersionState } from "./workerVersion";
 export type WorkerVersion = import("./workerVersion").WorkerVersion;
 export const WorkerVersion: typeof import("./workerVersion").WorkerVersion = null as any;
 utilities.lazyLoad(exports, ["WorkerVersion"], () => require("./workerVersion"));
+
+export { WorkerArgs, WorkerState } from "./worker_";
+export type Worker = import("./worker_").Worker;
+export const Worker: typeof import("./worker_").Worker = null as any;
+utilities.lazyLoad(exports, ["Worker"], () => require("./worker_"));
 
 export { WorkersCronTriggerArgs, WorkersCronTriggerState } from "./workersCronTrigger";
 export type WorkersCronTrigger = import("./workersCronTrigger").WorkersCronTrigger;
@@ -3648,11 +3648,6 @@ export type ZeroTrustTunnelWarpConnectorConfig = import("./zeroTrustTunnelWarpCo
 export const ZeroTrustTunnelWarpConnectorConfig: typeof import("./zeroTrustTunnelWarpConnectorConfig").ZeroTrustTunnelWarpConnectorConfig = null as any;
 utilities.lazyLoad(exports, ["ZeroTrustTunnelWarpConnectorConfig"], () => require("./zeroTrustTunnelWarpConnectorConfig"));
 
-export { ZoneArgs, ZoneState } from "./zone";
-export type Zone = import("./zone").Zone;
-export const Zone: typeof import("./zone").Zone = null as any;
-utilities.lazyLoad(exports, ["Zone"], () => require("./zone"));
-
 export { ZoneAutoOriginTlsKexArgs, ZoneAutoOriginTlsKexState } from "./zoneAutoOriginTlsKex";
 export type ZoneAutoOriginTlsKex = import("./zoneAutoOriginTlsKex").ZoneAutoOriginTlsKex;
 export const ZoneAutoOriginTlsKex: typeof import("./zoneAutoOriginTlsKex").ZoneAutoOriginTlsKex = null as any;
@@ -3698,14 +3693,297 @@ export type ZoneSubscription = import("./zoneSubscription").ZoneSubscription;
 export const ZoneSubscription: typeof import("./zoneSubscription").ZoneSubscription = null as any;
 utilities.lazyLoad(exports, ["ZoneSubscription"], () => require("./zoneSubscription"));
 
+export { ZoneArgs, ZoneState } from "./zone_";
+export type Zone = import("./zone_").Zone;
+export const Zone: typeof import("./zone_").Zone = null as any;
+utilities.lazyLoad(exports, ["Zone"], () => require("./zone_"));
+
 
 // Export sub-modules:
+import * as access from "./access";
+import * as account from "./account";
+import * as accountapitokenpermissiongroups from "./accountapitokenpermissiongroups";
+import * as accountdnssettingsinternal from "./accountdnssettingsinternal";
+import * as accountpermission from "./accountpermission";
+import * as address from "./address";
+import * as aigateway from "./aigateway";
+import * as aisearch from "./aisearch";
+import * as apishield from "./apishield";
+import * as apishielddiscovery from "./apishielddiscovery";
+import * as apishieldoperation from "./apishieldoperation";
+import * as apishieldschema from "./apishieldschema";
+import * as apitoken from "./apitoken";
+import * as argo from "./argo";
+import * as authenticatedoriginpulls from "./authenticatedoriginpulls";
+import * as authenticatedoriginpullshostname from "./authenticatedoriginpullshostname";
+import * as byoip from "./byoip";
+import * as callssfu from "./callssfu";
+import * as callsturn from "./callsturn";
+import * as certificate from "./certificate";
+import * as client from "./client";
+import * as cloudforceonerequest from "./cloudforceonerequest";
 import * as config from "./config";
+import * as connectivitydirectory from "./connectivitydirectory";
+import * as contentscanning from "./contentscanning";
+import * as custom from "./custom";
+import * as customhostname from "./customhostname";
+import * as customorigintrust from "./customorigintrust";
+import * as custompage from "./custompage";
+import * as custompages from "./custompages";
+import * as d1 from "./d1";
+import * as dlsprefix from "./dlsprefix";
+import * as dns from "./dns";
+import * as dnszonetransfers from "./dnszonetransfers";
+import * as emailrouting from "./emailrouting";
+import * as emailsecurityblock from "./emailsecurityblock";
+import * as emailsecurityimpersonation from "./emailsecurityimpersonation";
+import * as emailsecuritytrusteddomains from "./emailsecuritytrusteddomains";
+import * as firewall from "./firewall";
+import * as flagship from "./flagship";
+import * as hyperdrive from "./hyperdrive";
+import * as image from "./image";
+import * as keyless from "./keyless";
+import * as leakedcredentialcheck from "./leakedcredentialcheck";
+import * as list from "./list";
+import * as loadbalancer from "./loadbalancer";
+import * as loadbalancermonitor from "./loadbalancermonitor";
+import * as logpush from "./logpush";
+import * as logpushdataset from "./logpushdataset";
+import * as magicnetworkmonitoring from "./magicnetworkmonitoring";
+import * as magictransit from "./magictransit";
+import * as magictransitcf1 from "./magictransitcf1";
+import * as magictransitsite from "./magictransitsite";
+import * as magicwan from "./magicwan";
+import * as moq from "./moq";
+import * as mtlscertificate from "./mtlscertificate";
+import * as notification from "./notification";
+import * as notificationpolicywebhooks from "./notificationpolicywebhooks";
+import * as oauth from "./oauth";
+import * as organization from "./organization";
+import * as originca from "./originca";
+import * as origincloud from "./origincloud";
+import * as pages from "./pages";
+import * as pageshield from "./pageshield";
+import * as pageshieldconnections from "./pageshieldconnections";
+import * as pageshieldcookies from "./pageshieldcookies";
+import * as pageshieldscripts from "./pageshieldscripts";
+import * as pipeline from "./pipeline";
+import * as queue from "./queue";
+import * as r2 from "./r2";
+import * as r2bucket from "./r2bucket";
+import * as rate from "./rate";
+import * as regional from "./regional";
+import * as registrar from "./registrar";
+import * as resource from "./resource";
+import * as schemavalidationoperationsettings from "./schemavalidationoperationsettings";
+import * as schemavalidationschemas from "./schemavalidationschemas";
+import * as secretsstore from "./secretsstore";
+import * as share from "./share";
+import * as snippet from "./snippet";
+import * as snippetrules from "./snippetrules";
+import * as snippets from "./snippets";
+import * as spectrum from "./spectrum";
+import * as sso from "./sso";
+import * as stream from "./stream";
+import * as tokenvalidation from "./tokenvalidation";
+import * as tokenvalidationrules from "./tokenvalidationrules";
+import * as turnstile from "./turnstile";
 import * as types from "./types";
+import * as user from "./user";
+import * as useragentblocking from "./useragentblocking";
+import * as usergroup from "./usergroup";
+import * as vulnerabilityscannercredential from "./vulnerabilityscannercredential";
+import * as vulnerabilityscannertarget from "./vulnerabilityscannertarget";
+import * as waitingroom from "./waitingroom";
+import * as web3 from "./web3";
+import * as webanalytics from "./webanalytics";
+import * as worker from "./worker";
+import * as workers from "./workers";
+import * as workerscustom from "./workerscustom";
+import * as workersforplatformsdispatch from "./workersforplatformsdispatch";
+import * as workerskv from "./workerskv";
+import * as workersscript from "./workersscript";
+import * as zerotrust from "./zerotrust";
+import * as zerotrustaccess from "./zerotrustaccess";
+import * as zerotrustaccessaicontrolsmcp from "./zerotrustaccessaicontrolsmcp";
+import * as zerotrustaccesscustom from "./zerotrustaccesscustom";
+import * as zerotrustaccessidentity from "./zerotrustaccessidentity";
+import * as zerotrustaccessinfrastructure from "./zerotrustaccessinfrastructure";
+import * as zerotrustaccessmtls from "./zerotrustaccessmtls";
+import * as zerotrustaccessservice from "./zerotrustaccessservice";
+import * as zerotrustaccessshortlived from "./zerotrustaccessshortlived";
+import * as zerotrustdevice from "./zerotrustdevice";
+import * as zerotrustdevicecustomprofile from "./zerotrustdevicecustomprofile";
+import * as zerotrustdevicedefaultprofile from "./zerotrustdevicedefaultprofile";
+import * as zerotrustdevicedeploymentgroups from "./zerotrustdevicedeploymentgroups";
+import * as zerotrustdeviceip from "./zerotrustdeviceip";
+import * as zerotrustdevicemanagednetworks from "./zerotrustdevicemanagednetworks";
+import * as zerotrustdeviceposture from "./zerotrustdeviceposture";
+import * as zerotrustdex from "./zerotrustdex";
+import * as zerotrustdlp from "./zerotrustdlp";
+import * as zerotrustdlpcustom from "./zerotrustdlpcustom";
+import * as zerotrustdlpcustomprompt from "./zerotrustdlpcustomprompt";
+import * as zerotrustdlpdata from "./zerotrustdlpdata";
+import * as zerotrustdlpdatatag from "./zerotrustdlpdatatag";
+import * as zerotrustdlpintegration from "./zerotrustdlpintegration";
+import * as zerotrustdlppredefined from "./zerotrustdlppredefined";
+import * as zerotrustdlpsensitivity from "./zerotrustdlpsensitivity";
+import * as zerotrustdlpsensitivitylevel from "./zerotrustdlpsensitivitylevel";
+import * as zerotrustdns from "./zerotrustdns";
+import * as zerotrustgateway from "./zerotrustgateway";
+import * as zerotrustgatewayproxy from "./zerotrustgatewayproxy";
+import * as zerotrustnetworkhostname from "./zerotrustnetworkhostname";
+import * as zerotrustresourcelibrary from "./zerotrustresourcelibrary";
+import * as zerotrustriskscoring from "./zerotrustriskscoring";
+import * as zerotrusttunnel from "./zerotrusttunnel";
+import * as zerotrusttunnelcloudflared from "./zerotrusttunnelcloudflared";
+import * as zerotrusttunnelcloudflaredvirtual from "./zerotrusttunnelcloudflaredvirtual";
+import * as zerotrusttunnelwarpconnector from "./zerotrusttunnelwarpconnector";
+import * as zone from "./zone";
+import * as zonecache from "./zonecache";
 
 export {
+    access,
+    account,
+    accountapitokenpermissiongroups,
+    accountdnssettingsinternal,
+    accountpermission,
+    address,
+    aigateway,
+    aisearch,
+    apishield,
+    apishielddiscovery,
+    apishieldoperation,
+    apishieldschema,
+    apitoken,
+    argo,
+    authenticatedoriginpulls,
+    authenticatedoriginpullshostname,
+    byoip,
+    callssfu,
+    callsturn,
+    certificate,
+    client,
+    cloudforceonerequest,
     config,
+    connectivitydirectory,
+    contentscanning,
+    custom,
+    customhostname,
+    customorigintrust,
+    custompage,
+    custompages,
+    d1,
+    dlsprefix,
+    dns,
+    dnszonetransfers,
+    emailrouting,
+    emailsecurityblock,
+    emailsecurityimpersonation,
+    emailsecuritytrusteddomains,
+    firewall,
+    flagship,
+    hyperdrive,
+    image,
+    keyless,
+    leakedcredentialcheck,
+    list,
+    loadbalancer,
+    loadbalancermonitor,
+    logpush,
+    logpushdataset,
+    magicnetworkmonitoring,
+    magictransit,
+    magictransitcf1,
+    magictransitsite,
+    magicwan,
+    moq,
+    mtlscertificate,
+    notification,
+    notificationpolicywebhooks,
+    oauth,
+    organization,
+    originca,
+    origincloud,
+    pages,
+    pageshield,
+    pageshieldconnections,
+    pageshieldcookies,
+    pageshieldscripts,
+    pipeline,
+    queue,
+    r2,
+    r2bucket,
+    rate,
+    regional,
+    registrar,
+    resource,
+    schemavalidationoperationsettings,
+    schemavalidationschemas,
+    secretsstore,
+    share,
+    snippet,
+    snippetrules,
+    snippets,
+    spectrum,
+    sso,
+    stream,
+    tokenvalidation,
+    tokenvalidationrules,
+    turnstile,
     types,
+    user,
+    useragentblocking,
+    usergroup,
+    vulnerabilityscannercredential,
+    vulnerabilityscannertarget,
+    waitingroom,
+    web3,
+    webanalytics,
+    worker,
+    workers,
+    workerscustom,
+    workersforplatformsdispatch,
+    workerskv,
+    workersscript,
+    zerotrust,
+    zerotrustaccess,
+    zerotrustaccessaicontrolsmcp,
+    zerotrustaccesscustom,
+    zerotrustaccessidentity,
+    zerotrustaccessinfrastructure,
+    zerotrustaccessmtls,
+    zerotrustaccessservice,
+    zerotrustaccessshortlived,
+    zerotrustdevice,
+    zerotrustdevicecustomprofile,
+    zerotrustdevicedefaultprofile,
+    zerotrustdevicedeploymentgroups,
+    zerotrustdeviceip,
+    zerotrustdevicemanagednetworks,
+    zerotrustdeviceposture,
+    zerotrustdex,
+    zerotrustdlp,
+    zerotrustdlpcustom,
+    zerotrustdlpcustomprompt,
+    zerotrustdlpdata,
+    zerotrustdlpdatatag,
+    zerotrustdlpintegration,
+    zerotrustdlppredefined,
+    zerotrustdlpsensitivity,
+    zerotrustdlpsensitivitylevel,
+    zerotrustdns,
+    zerotrustgateway,
+    zerotrustgatewayproxy,
+    zerotrustnetworkhostname,
+    zerotrustresourcelibrary,
+    zerotrustriskscoring,
+    zerotrusttunnel,
+    zerotrusttunnelcloudflared,
+    zerotrusttunnelcloudflaredvirtual,
+    zerotrusttunnelwarpconnector,
+    zone,
+    zonecache,
 };
 
 const _module = {

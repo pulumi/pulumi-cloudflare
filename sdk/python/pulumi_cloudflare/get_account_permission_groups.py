@@ -22,6 +22,8 @@ __all__ = [
     'get_account_permission_groups_output',
 ]
 
+warnings.warn("""cloudflare:index/getAccountPermissionGroups:getAccountPermissionGroups has been deprecated in favor of cloudflare:accountPermission/groups:getGroups""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAccountPermissionGroupsResult:
     """
@@ -155,7 +157,7 @@ def get_account_permission_groups(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_permission_groups = cloudflare.get_account_permission_groups(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_account_permission_groups = cloudflare.accountpermission.get_groups(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         id="6d7f2f5f5b1d4a0e9081fdc98d432fd1",
         label="labelOfThePermissionGroup",
         name="NameOfThePermissionGroup")
@@ -168,6 +170,7 @@ def get_account_permission_groups(account_id: Optional[_builtins.str] = None,
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str name: Name of the permission group to be fetched.
     """
+    pulumi.log.warn("""get_account_permission_groups is deprecated: cloudflare:index/getAccountPermissionGroups:getAccountPermissionGroups has been deprecated in favor of cloudflare:accountPermission/groups:getGroups""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['id'] = id
@@ -229,7 +232,7 @@ def get_account_permission_groups_output(account_id: pulumi.Input[Optional[Optio
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_permission_groups = cloudflare.get_account_permission_groups(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_account_permission_groups = cloudflare.accountpermission.get_groups(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         id="6d7f2f5f5b1d4a0e9081fdc98d432fd1",
         label="labelOfThePermissionGroup",
         name="NameOfThePermissionGroup")
@@ -242,6 +245,7 @@ def get_account_permission_groups_output(account_id: pulumi.Input[Optional[Optio
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str name: Name of the permission group to be fetched.
     """
+    pulumi.log.warn("""get_account_permission_groups is deprecated: cloudflare:index/getAccountPermissionGroups:getAccountPermissionGroups has been deprecated in favor of cloudflare:accountPermission/groups:getGroups""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['id'] = id

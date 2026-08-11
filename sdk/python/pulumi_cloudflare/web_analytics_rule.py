@@ -232,8 +232,13 @@ class _WebAnalyticsRuleState:
         pulumi.set(self, "ruleset_id", value)
 
 
+warnings.warn("""cloudflare:index/webAnalyticsRule:WebAnalyticsRule has been deprecated in favor of cloudflare:webAnalytics/rule:Rule""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/webAnalyticsRule:WebAnalyticsRule")
 class WebAnalyticsRule(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/webAnalyticsRule:WebAnalyticsRule has been deprecated in favor of cloudflare:webAnalytics/rule:Rule""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -252,7 +257,7 @@ class WebAnalyticsRule(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_web_analytics_rule = cloudflare.WebAnalyticsRule("example_web_analytics_rule",
+        example_web_analytics_rule = cloudflare.webanalytics.Rule("example_web_analytics_rule",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             ruleset_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
             host="example.com",
@@ -286,7 +291,7 @@ class WebAnalyticsRule(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_web_analytics_rule = cloudflare.WebAnalyticsRule("example_web_analytics_rule",
+        example_web_analytics_rule = cloudflare.webanalytics.Rule("example_web_analytics_rule",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             ruleset_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
             host="example.com",
@@ -322,6 +327,7 @@ class WebAnalyticsRule(pulumi.CustomResource):
                  paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ruleset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""WebAnalyticsRule is deprecated: cloudflare:index/webAnalyticsRule:WebAnalyticsRule has been deprecated in favor of cloudflare:webAnalytics/rule:Rule""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomPages = new cloudflare.CustomPages("example_custom_pages", {
+ * const exampleCustomPages = new cloudflare.custompages.CustomPages("example_custom_pages", {
  *     identifier: "ratelimit_block",
  *     state: "default",
  *     url: "http://www.example.com",
@@ -32,6 +32,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/customPages:CustomPages example '<{accounts|zones}/{account_id|zone_id}>/<identifier>'
  * ```
+ *
+ * @deprecated cloudflare:index/customPages:CustomPages has been deprecated in favor of cloudflare:customPages/customPages:CustomPages
  */
 export class CustomPages extends pulumi.CustomResource {
     /**
@@ -44,6 +46,7 @@ export class CustomPages extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CustomPagesState, opts?: pulumi.CustomResourceOptions): CustomPages {
+        pulumi.log.warn("CustomPages is deprecated: cloudflare:index/customPages:CustomPages has been deprecated in favor of cloudflare:customPages/customPages:CustomPages")
         return new CustomPages(name, <any>state, { ...opts, id: id });
     }
 
@@ -96,8 +99,11 @@ export class CustomPages extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/customPages:CustomPages has been deprecated in favor of cloudflare:customPages/customPages:CustomPages */
     constructor(name: string, args: CustomPagesArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/customPages:CustomPages has been deprecated in favor of cloudflare:customPages/customPages:CustomPages */
     constructor(name: string, argsOrState?: CustomPagesArgs | CustomPagesState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("CustomPages is deprecated: cloudflare:index/customPages:CustomPages has been deprecated in favor of cloudflare:customPages/customPages:CustomPages")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

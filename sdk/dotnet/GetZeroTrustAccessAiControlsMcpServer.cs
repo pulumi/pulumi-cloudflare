@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustAccessAiControlsMcpServer:getZeroTrustAccessAiControlsMcpServer has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/server:getServer")]
     public static class GetZeroTrustAccessAiControlsMcpServer
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessAiControlsMcpServer = Cloudflare.GetZeroTrustAccessAiControlsMcpServer.Invoke(new()
+        ///     var exampleZeroTrustAccessAiControlsMcpServer = Cloudflare.Modules.ZeroTrustAccessAiControlsMcp.GetServer.Invoke(new()
         ///     {
         ///         AccountId = "a86a8f5c339544d7bdc89926de14fb8c",
         ///         Id = "my-mcp-server",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessAiControlsMcpServer = Cloudflare.GetZeroTrustAccessAiControlsMcpServer.Invoke(new()
+        ///     var exampleZeroTrustAccessAiControlsMcpServer = Cloudflare.Modules.ZeroTrustAccessAiControlsMcp.GetServer.Invoke(new()
         ///     {
         ///         AccountId = "a86a8f5c339544d7bdc89926de14fb8c",
         ///         Id = "my-mcp-server",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessAiControlsMcpServer = Cloudflare.GetZeroTrustAccessAiControlsMcpServer.Invoke(new()
+        ///     var exampleZeroTrustAccessAiControlsMcpServer = Cloudflare.Modules.ZeroTrustAccessAiControlsMcp.GetServer.Invoke(new()
         ///     {
         ///         AccountId = "a86a8f5c339544d7bdc89926de14fb8c",
         ///         Id = "my-mcp-server",

@@ -185,8 +185,13 @@ class _ZeroTrustDeviceDeploymentGroupsState:
         pulumi.set(self, "version_configs", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups")
 class ZeroTrustDeviceDeploymentGroups(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -203,7 +208,7 @@ class ZeroTrustDeviceDeploymentGroups(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_device_deployment_groups = cloudflare.ZeroTrustDeviceDeploymentGroups("example_zero_trust_device_deployment_groups",
+        example_zero_trust_device_deployment_groups = cloudflare.zerotrustdevicedeploymentgroups.ZeroTrustDeviceDeploymentGroups("example_zero_trust_device_deployment_groups",
             account_id="account_id",
             name="Engineering Ring 0",
             version_configs=[{
@@ -239,7 +244,7 @@ class ZeroTrustDeviceDeploymentGroups(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_device_deployment_groups = cloudflare.ZeroTrustDeviceDeploymentGroups("example_zero_trust_device_deployment_groups",
+        example_zero_trust_device_deployment_groups = cloudflare.zerotrustdevicedeploymentgroups.ZeroTrustDeviceDeploymentGroups("example_zero_trust_device_deployment_groups",
             account_id="account_id",
             name="Engineering Ring 0",
             version_configs=[{
@@ -276,6 +281,7 @@ class ZeroTrustDeviceDeploymentGroups(pulumi.CustomResource):
                  policy_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDeploymentGroupsVersionConfigArgs', 'ZeroTrustDeviceDeploymentGroupsVersionConfigArgsDict']]]]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustDeviceDeploymentGroups is deprecated: cloudflare:index/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

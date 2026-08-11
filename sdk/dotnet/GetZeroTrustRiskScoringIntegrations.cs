@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustRiskScoringIntegrations:getZeroTrustRiskScoringIntegrations has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integrations:getIntegrations")]
     public static class GetZeroTrustRiskScoringIntegrations
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustRiskScoringIntegrations = Cloudflare.GetZeroTrustRiskScoringIntegrations.Invoke(new()
+        ///     var exampleZeroTrustRiskScoringIntegrations = Cloudflare.Modules.ZeroTrustRiskScoring.GetIntegrations.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///     });
@@ -54,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustRiskScoringIntegrations = Cloudflare.GetZeroTrustRiskScoringIntegrations.Invoke(new()
+        ///     var exampleZeroTrustRiskScoringIntegrations = Cloudflare.Modules.ZeroTrustRiskScoring.GetIntegrations.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///     });
@@ -81,7 +82,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustRiskScoringIntegrations = Cloudflare.GetZeroTrustRiskScoringIntegrations.Invoke(new()
+        ///     var exampleZeroTrustRiskScoringIntegrations = Cloudflare.Modules.ZeroTrustRiskScoring.GetIntegrations.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///     });

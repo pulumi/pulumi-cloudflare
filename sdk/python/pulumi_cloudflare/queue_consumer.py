@@ -249,8 +249,13 @@ class _QueueConsumerState:
         pulumi.set(self, "type", value)
 
 
+warnings.warn("""cloudflare:index/queueConsumer:QueueConsumer has been deprecated in favor of cloudflare:queue/consumer:Consumer""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/queueConsumer:QueueConsumer")
 class QueueConsumer(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/queueConsumer:QueueConsumer has been deprecated in favor of cloudflare:queue/consumer:Consumer""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -276,7 +281,7 @@ class QueueConsumer(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_queue_consumer = cloudflare.QueueConsumer("example_queue_consumer",
+        example_queue_consumer = cloudflare.queue.Consumer("example_queue_consumer",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             queue_id="023e105f4ecef8ad9ca31a8372d0c353",
             script_name="my-consumer-worker",
@@ -323,7 +328,7 @@ class QueueConsumer(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_queue_consumer = cloudflare.QueueConsumer("example_queue_consumer",
+        example_queue_consumer = cloudflare.queue.Consumer("example_queue_consumer",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             queue_id="023e105f4ecef8ad9ca31a8372d0c353",
             script_name="my-consumer-worker",
@@ -365,6 +370,7 @@ class QueueConsumer(pulumi.CustomResource):
                  settings: pulumi.Input[Optional[Union['QueueConsumerSettingsArgs', 'QueueConsumerSettingsArgsDict']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""QueueConsumer is deprecated: cloudflare:index/queueConsumer:QueueConsumer has been deprecated in favor of cloudflare:queue/consumer:Consumer""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

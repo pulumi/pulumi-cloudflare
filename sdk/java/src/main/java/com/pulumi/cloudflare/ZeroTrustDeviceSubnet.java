@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDeviceSubnet;
- * import com.pulumi.cloudflare.ZeroTrustDeviceSubnetArgs;
+ * import com.pulumi.cloudflare.zeroTrustDevice.Subnet;
+ * import com.pulumi.cloudflare.zeroTrustDevice.SubnetArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustDeviceSubnet = new ZeroTrustDeviceSubnet("exampleZeroTrustDeviceSubnet", ZeroTrustDeviceSubnetArgs.builder()
+ *         var exampleZeroTrustDeviceSubnet = new Subnet("exampleZeroTrustDeviceSubnet", SubnetArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
  *             .name("IPv4 Cloudflare Source IPs")
  *             .network("100.64.0.0/12")
@@ -64,7 +64,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustDeviceSubnet:ZeroTrustDeviceSubnet example &#39;&lt;account_id&gt;/&lt;subnet_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustDeviceSubnet:ZeroTrustDeviceSubnet has been deprecated in favor of cloudflare:zeroTrustDevice/subnet:Subnet
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustDeviceSubnet:ZeroTrustDeviceSubnet has been deprecated in favor of cloudflare:zeroTrustDevice/subnet:Subnet */
 @ResourceType(type="cloudflare:index/zeroTrustDeviceSubnet:ZeroTrustDeviceSubnet")
 public class ZeroTrustDeviceSubnet extends com.pulumi.resources.CustomResource {
     /**

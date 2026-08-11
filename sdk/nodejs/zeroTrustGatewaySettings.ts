@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustGatewaySettings = new cloudflare.ZeroTrustGatewaySettings("example_zero_trust_gateway_settings", {
+ * const exampleZeroTrustGatewaySettings = new cloudflare.zerotrustgateway.Settings("example_zero_trust_gateway_settings", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     settings: {
  *         activityLog: {
@@ -90,6 +90,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings example '<account_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings has been deprecated in favor of cloudflare:zeroTrustGateway/settings:Settings
  */
 export class ZeroTrustGatewaySettings extends pulumi.CustomResource {
     /**
@@ -102,6 +104,7 @@ export class ZeroTrustGatewaySettings extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustGatewaySettingsState, opts?: pulumi.CustomResourceOptions): ZeroTrustGatewaySettings {
+        pulumi.log.warn("ZeroTrustGatewaySettings is deprecated: cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings has been deprecated in favor of cloudflare:zeroTrustGateway/settings:Settings")
         return new ZeroTrustGatewaySettings(name, <any>state, { ...opts, id: id });
     }
 
@@ -134,8 +137,11 @@ export class ZeroTrustGatewaySettings extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings has been deprecated in favor of cloudflare:zeroTrustGateway/settings:Settings */
     constructor(name: string, args: ZeroTrustGatewaySettingsArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings has been deprecated in favor of cloudflare:zeroTrustGateway/settings:Settings */
     constructor(name: string, argsOrState?: ZeroTrustGatewaySettingsArgs | ZeroTrustGatewaySettingsState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustGatewaySettings is deprecated: cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings has been deprecated in favor of cloudflare:zeroTrustGateway/settings:Settings")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

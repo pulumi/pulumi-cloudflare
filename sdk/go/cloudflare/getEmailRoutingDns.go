@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/emailrouting"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetEmailRoutingDns(ctx, &cloudflare.LookupEmailRoutingDnsArgs{
+//			_, err := emailrouting.GetDns(ctx, &emailrouting.GetDnsArgs{
 //				ZoneId:    pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Subdomain: pulumi.StringRef("example.net"),
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getEmailRoutingDns:getEmailRoutingDns has been deprecated in favor of cloudflare:emailRouting/dns:getDns
 func LookupEmailRoutingDns(ctx *pulumi.Context, args *LookupEmailRoutingDnsArgs, opts ...pulumi.InvokeOption) (*LookupEmailRoutingDnsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEmailRoutingDnsResult

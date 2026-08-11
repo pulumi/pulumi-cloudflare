@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAddressMap = cloudflare.getAddressMap({
+ * const exampleAddressMap = cloudflare.address.getMap({
  *     accountId: "258def64c72dae45f3e4c8516e2111f2",
  *     addressMapId: "055817b111884e0227e1be16a0be6ee0",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAddressMap:getAddressMap has been deprecated in favor of cloudflare:address/map:getMap */
 export function getAddressMap(args: GetAddressMapArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressMapResult> {
+    pulumi.log.warn("getAddressMap is deprecated: cloudflare:index/getAddressMap:getAddressMap has been deprecated in favor of cloudflare:address/map:getMap")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAddressMap:getAddressMap", {
         "accountId": args.accountId,
@@ -105,13 +107,15 @@ export interface GetAddressMapResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAddressMap = cloudflare.getAddressMap({
+ * const exampleAddressMap = cloudflare.address.getMap({
  *     accountId: "258def64c72dae45f3e4c8516e2111f2",
  *     addressMapId: "055817b111884e0227e1be16a0be6ee0",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAddressMap:getAddressMap has been deprecated in favor of cloudflare:address/map:getMap */
 export function getAddressMapOutput(args: GetAddressMapOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAddressMapResult> {
+    pulumi.log.warn("getAddressMap is deprecated: cloudflare:index/getAddressMap:getAddressMap has been deprecated in favor of cloudflare:address/map:getMap")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAddressMap:getAddressMap", {
         "accountId": args.accountId,

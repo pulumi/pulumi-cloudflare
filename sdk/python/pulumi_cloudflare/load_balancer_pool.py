@@ -569,8 +569,13 @@ class _LoadBalancerPoolState:
         pulumi.set(self, "origins", value)
 
 
+warnings.warn("""cloudflare:index/loadBalancerPool:LoadBalancerPool has been deprecated in favor of cloudflare:loadBalancer/pool:Pool""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/loadBalancerPool:LoadBalancerPool")
 class LoadBalancerPool(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/loadBalancerPool:LoadBalancerPool has been deprecated in favor of cloudflare:loadBalancer/pool:Pool""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -603,7 +608,7 @@ class LoadBalancerPool(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_load_balancer_pool = cloudflare.LoadBalancerPool("example_load_balancer_pool",
+        example_load_balancer_pool = cloudflare.loadbalancer.Pool("example_load_balancer_pool",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="primary-dc-1",
             origins=[{
@@ -690,7 +695,7 @@ class LoadBalancerPool(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_load_balancer_pool = cloudflare.LoadBalancerPool("example_load_balancer_pool",
+        example_load_balancer_pool = cloudflare.loadbalancer.Pool("example_load_balancer_pool",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="primary-dc-1",
             origins=[{
@@ -772,6 +777,7 @@ class LoadBalancerPool(pulumi.CustomResource):
                  origin_steering: pulumi.Input[Optional[Union['LoadBalancerPoolOriginSteeringArgs', 'LoadBalancerPoolOriginSteeringArgsDict']]] = None,
                  origins: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerPoolOriginArgs', 'LoadBalancerPoolOriginArgsDict']]]]] = None,
                  __props__=None):
+        pulumi.log.warn("""LoadBalancerPool is deprecated: cloudflare:index/loadBalancerPool:LoadBalancerPool has been deprecated in favor of cloudflare:loadBalancer/pool:Pool""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

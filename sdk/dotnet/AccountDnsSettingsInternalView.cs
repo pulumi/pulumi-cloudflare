@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAccountDnsSettingsInternalView = new Cloudflare.AccountDnsSettingsInternalView("example_account_dns_settings_internal_view", new()
+    ///     var exampleAccountDnsSettingsInternalView = new Cloudflare.Modules.AccountDnsSettingsInternal.AccountDnsSettingsInternalView("example_account_dns_settings_internal_view", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "my view",
@@ -44,6 +44,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView example '&lt;account_id&gt;/&lt;view_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView has been deprecated in favor of cloudflare:accountDnsSettingsInternal/view:View")]
     [CloudflareResourceType("cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView")]
     public partial class AccountDnsSettingsInternalView : global::Pulumi.CustomResource
     {

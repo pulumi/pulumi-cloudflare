@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkerVersion = new cloudflare.WorkerVersion("example_worker_version", {
+ * const exampleWorkerVersion = new cloudflare.worker.Version("example_worker_version", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     workerId: "worker_id",
  *     annotations: {
@@ -90,6 +90,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/workerVersion:WorkerVersion example '<account_id>/<worker_id>/<version_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/workerVersion:WorkerVersion has been deprecated in favor of cloudflare:worker/version:Version
  */
 export class WorkerVersion extends pulumi.CustomResource {
     /**
@@ -102,6 +104,7 @@ export class WorkerVersion extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WorkerVersionState, opts?: pulumi.CustomResourceOptions): WorkerVersion {
+        pulumi.log.warn("WorkerVersion is deprecated: cloudflare:index/workerVersion:WorkerVersion has been deprecated in favor of cloudflare:worker/version:Version")
         return new WorkerVersion(name, <any>state, { ...opts, id: id });
     }
 
@@ -240,8 +243,11 @@ export class WorkerVersion extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/workerVersion:WorkerVersion has been deprecated in favor of cloudflare:worker/version:Version */
     constructor(name: string, args: WorkerVersionArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/workerVersion:WorkerVersion has been deprecated in favor of cloudflare:worker/version:Version */
     constructor(name: string, argsOrState?: WorkerVersionArgs | WorkerVersionState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("WorkerVersion is deprecated: cloudflare:index/workerVersion:WorkerVersion has been deprecated in favor of cloudflare:worker/version:Version")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

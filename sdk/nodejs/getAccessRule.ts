@@ -18,14 +18,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccessRule = cloudflare.getAccessRule({
+ * const exampleAccessRule = cloudflare.access.getRule({
  *     ruleId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccessRule:getAccessRule has been deprecated in favor of cloudflare:access/rule:getRule */
 export function getAccessRule(args?: GetAccessRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessRuleResult> {
+    pulumi.log.warn("getAccessRule is deprecated: cloudflare:index/getAccessRule:getAccessRule has been deprecated in favor of cloudflare:access/rule:getRule")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccessRule:getAccessRule", {
@@ -118,14 +120,16 @@ export interface GetAccessRuleResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccessRule = cloudflare.getAccessRule({
+ * const exampleAccessRule = cloudflare.access.getRule({
  *     ruleId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccessRule:getAccessRule has been deprecated in favor of cloudflare:access/rule:getRule */
 export function getAccessRuleOutput(args?: GetAccessRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccessRuleResult> {
+    pulumi.log.warn("getAccessRule is deprecated: cloudflare:index/getAccessRule:getAccessRule has been deprecated in favor of cloudflare:access/rule:getRule")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccessRule:getAccessRule", {

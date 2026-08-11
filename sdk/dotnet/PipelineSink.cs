@@ -25,51 +25,51 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var examplePipelineSink = new Cloudflare.PipelineSink("example_pipeline_sink", new()
+    ///     var examplePipelineSink = new Cloudflare.Modules.Pipeline.PipelineSink("example_pipeline_sink", new()
     ///     {
     ///         AccountId = "0123105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "my_sink",
     ///         Type = "r2",
-    ///         Config = new Cloudflare.Inputs.PipelineSinkConfigArgs
+    ///         Config = new Cloudflare.Modules.Pipeline.Inputs.SinkConfigArgs
     ///         {
     ///             AccountId = "account_id",
     ///             Bucket = "bucket",
-    ///             Credentials = new Cloudflare.Inputs.PipelineSinkConfigCredentialsArgs
+    ///             Credentials = new Cloudflare.Modules.Pipeline.Inputs.SinkConfigCredentialsArgs
     ///             {
     ///                 AccessKeyId = "access_key_id",
     ///                 SecretAccessKey = "secret_access_key",
     ///             },
-    ///             FileNaming = new Cloudflare.Inputs.PipelineSinkConfigFileNamingArgs
+    ///             FileNaming = new Cloudflare.Modules.Pipeline.Inputs.SinkConfigFileNamingArgs
     ///             {
     ///                 Prefix = "prefix",
     ///                 Strategy = "serial",
     ///                 Suffix = "suffix",
     ///             },
     ///             Jurisdiction = "jurisdiction",
-    ///             Partitioning = new Cloudflare.Inputs.PipelineSinkConfigPartitioningArgs
+    ///             Partitioning = new Cloudflare.Modules.Pipeline.Inputs.SinkConfigPartitioningArgs
     ///             {
     ///                 TimePattern = "year=%Y/month=%m/day=%d/hour=%H",
     ///             },
     ///             Path = "path",
-    ///             RollingPolicy = new Cloudflare.Inputs.PipelineSinkConfigRollingPolicyArgs
+    ///             RollingPolicy = new Cloudflare.Modules.Pipeline.Inputs.SinkConfigRollingPolicyArgs
     ///             {
     ///                 FileSizeBytes = 0,
     ///                 InactivitySeconds = 1,
     ///                 IntervalSeconds = 1,
     ///             },
     ///         },
-    ///         Format = new Cloudflare.Inputs.PipelineSinkFormatArgs
+    ///         Format = new Cloudflare.Modules.Pipeline.Inputs.SinkFormatArgs
     ///         {
     ///             Type = "json",
     ///             DecimalEncoding = "number",
     ///             TimestampFormat = "rfc3339",
     ///             Unstructured = true,
     ///         },
-    ///         Schema = new Cloudflare.Inputs.PipelineSinkSchemaArgs
+    ///         Schema = new Cloudflare.Modules.Pipeline.Inputs.SinkSchemaArgs
     ///         {
     ///             Fields = new[]
     ///             {
-    ///                 new Cloudflare.Inputs.PipelineSinkSchemaFieldArgs
+    ///                 new Cloudflare.Modules.Pipeline.Inputs.SinkSchemaFieldArgs
     ///                 {
     ///                     Type = "int32",
     ///                     MetadataKey = "metadata_key",
@@ -78,7 +78,7 @@ namespace Pulumi.Cloudflare
     ///                     SqlName = "sql_name",
     ///                 },
     ///             },
-    ///             Format = new Cloudflare.Inputs.PipelineSinkSchemaFormatArgs
+    ///             Format = new Cloudflare.Modules.Pipeline.Inputs.SinkSchemaFormatArgs
     ///             {
     ///                 Type = "json",
     ///                 DecimalEncoding = "number",
@@ -98,6 +98,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/pipelineSink:PipelineSink example '&lt;account_id&gt;/&lt;sink_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/pipelineSink:PipelineSink has been deprecated in favor of cloudflare:pipeline/sink:Sink")]
     [CloudflareResourceType("cloudflare:index/pipelineSink:PipelineSink")]
     public partial class PipelineSink : global::Pulumi.CustomResource
     {

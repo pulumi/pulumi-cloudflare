@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/cloudforceonerequest"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetCloudforceOneRequestPriority(ctx, &cloudflare.LookupCloudforceOneRequestPriorityArgs{
+//			_, err := cloudforceonerequest.GetPriority(ctx, &cloudforceonerequest.GetPriorityArgs{
 //				AccountId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				PriorityId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getCloudforceOneRequestPriority:getCloudforceOneRequestPriority has been deprecated in favor of cloudflare:cloudforceOneRequest/priority:getPriority
 func LookupCloudforceOneRequestPriority(ctx *pulumi.Context, args *LookupCloudforceOneRequestPriorityArgs, opts ...pulumi.InvokeOption) (*LookupCloudforceOneRequestPriorityResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudforceOneRequestPriorityResult

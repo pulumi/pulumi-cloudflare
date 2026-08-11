@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustRiskBehavior = cloudflare.getZeroTrustRiskBehavior({
+ * const exampleZeroTrustRiskBehavior = cloudflare.zerotrust.getRiskBehavior({
  *     accountId: "account_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustRiskBehavior:getZeroTrustRiskBehavior has been deprecated in favor of cloudflare:zeroTrust/riskBehavior:getRiskBehavior */
 export function getZeroTrustRiskBehavior(args?: GetZeroTrustRiskBehaviorArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustRiskBehaviorResult> {
+    pulumi.log.warn("getZeroTrustRiskBehavior is deprecated: cloudflare:index/getZeroTrustRiskBehavior:getZeroTrustRiskBehavior has been deprecated in favor of cloudflare:zeroTrust/riskBehavior:getRiskBehavior")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustRiskBehavior:getZeroTrustRiskBehavior", {
@@ -57,12 +59,14 @@ export interface GetZeroTrustRiskBehaviorResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustRiskBehavior = cloudflare.getZeroTrustRiskBehavior({
+ * const exampleZeroTrustRiskBehavior = cloudflare.zerotrust.getRiskBehavior({
  *     accountId: "account_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustRiskBehavior:getZeroTrustRiskBehavior has been deprecated in favor of cloudflare:zeroTrust/riskBehavior:getRiskBehavior */
 export function getZeroTrustRiskBehaviorOutput(args?: GetZeroTrustRiskBehaviorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustRiskBehaviorResult> {
+    pulumi.log.warn("getZeroTrustRiskBehavior is deprecated: cloudflare:index/getZeroTrustRiskBehavior:getZeroTrustRiskBehavior has been deprecated in favor of cloudflare:zeroTrust/riskBehavior:getRiskBehavior")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustRiskBehavior:getZeroTrustRiskBehavior", {

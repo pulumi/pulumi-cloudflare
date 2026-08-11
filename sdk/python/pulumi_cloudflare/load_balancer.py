@@ -704,8 +704,13 @@ class _LoadBalancerState:
         pulumi.set(self, "zone_name", value)
 
 
+warnings.warn("""cloudflare:index/loadBalancer:LoadBalancer has been deprecated in favor of cloudflare:loadBalancer/loadBalancer:LoadBalancer""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/loadBalancer:LoadBalancer")
 class LoadBalancer(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/loadBalancer:LoadBalancer has been deprecated in favor of cloudflare:loadBalancer/loadBalancer:LoadBalancer""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -743,7 +748,7 @@ class LoadBalancer(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_load_balancer = cloudflare.LoadBalancer("example_load_balancer",
+        example_load_balancer = cloudflare.loadbalancer.LoadBalancer("example_load_balancer",
             default_pools=[
                 "17b5962d775c646f3f9725cbc7a53df4",
                 "9290f38c5d07c2e2f4df57b1f61d4196",
@@ -935,7 +940,7 @@ class LoadBalancer(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_load_balancer = cloudflare.LoadBalancer("example_load_balancer",
+        example_load_balancer = cloudflare.loadbalancer.LoadBalancer("example_load_balancer",
             default_pools=[
                 "17b5962d775c646f3f9725cbc7a53df4",
                 "9290f38c5d07c2e2f4df57b1f61d4196",
@@ -1122,6 +1127,7 @@ class LoadBalancer(pulumi.CustomResource):
                  ttl: pulumi.Input[Optional[_builtins.float]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""LoadBalancer is deprecated: cloudflare:index/loadBalancer:LoadBalancer has been deprecated in favor of cloudflare:loadBalancer/loadBalancer:LoadBalancer""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -22,6 +22,8 @@ __all__ = [
     'get_origin_cloud_regions_output',
 ]
 
+warnings.warn("""cloudflare:index/getOriginCloudRegions:getOriginCloudRegions has been deprecated in favor of cloudflare:originCloud/regions:getRegions""", DeprecationWarning)
+
 @pulumi.output_type
 class GetOriginCloudRegionsResult:
     """
@@ -84,13 +86,14 @@ def get_origin_cloud_regions(max_items: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_origin_cloud_regions = cloudflare.get_origin_cloud_regions(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_origin_cloud_regions = cloudflare.origincloud.get_regions(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_origin_cloud_regions is deprecated: cloudflare:index/getOriginCloudRegions:getOriginCloudRegions has been deprecated in favor of cloudflare:originCloud/regions:getRegions""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id
@@ -111,13 +114,14 @@ def get_origin_cloud_regions_output(max_items: pulumi.Input[Optional[Optional[_b
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_origin_cloud_regions = cloudflare.get_origin_cloud_regions(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_origin_cloud_regions = cloudflare.origincloud.get_regions(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_origin_cloud_regions is deprecated: cloudflare:index/getOriginCloudRegions:getOriginCloudRegions has been deprecated in favor of cloudflare:originCloud/regions:getRegions""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id

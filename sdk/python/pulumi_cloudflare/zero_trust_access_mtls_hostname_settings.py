@@ -171,8 +171,13 @@ class _ZeroTrustAccessMtlsHostnameSettingsState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings has been deprecated in favor of cloudflare:zeroTrustAccessMtls/hostnameSettings:HostnameSettings""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings")
 class ZeroTrustAccessMtlsHostnameSettings(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings has been deprecated in favor of cloudflare:zeroTrustAccessMtls/hostnameSettings:HostnameSettings""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -193,7 +198,7 @@ class ZeroTrustAccessMtlsHostnameSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_mtls_hostname_settings = cloudflare.ZeroTrustAccessMtlsHostnameSettings("example_zero_trust_access_mtls_hostname_settings",
+        example_zero_trust_access_mtls_hostname_settings = cloudflare.zerotrustaccessmtls.HostnameSettings("example_zero_trust_access_mtls_hostname_settings",
             settings=[{
                 "china_network": False,
                 "client_certificate_forwarding": True,
@@ -230,7 +235,7 @@ class ZeroTrustAccessMtlsHostnameSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_mtls_hostname_settings = cloudflare.ZeroTrustAccessMtlsHostnameSettings("example_zero_trust_access_mtls_hostname_settings",
+        example_zero_trust_access_mtls_hostname_settings = cloudflare.zerotrustaccessmtls.HostnameSettings("example_zero_trust_access_mtls_hostname_settings",
             settings=[{
                 "china_network": False,
                 "client_certificate_forwarding": True,
@@ -263,6 +268,7 @@ class ZeroTrustAccessMtlsHostnameSettings(pulumi.CustomResource):
                  settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessMtlsHostnameSettingsSettingArgs', 'ZeroTrustAccessMtlsHostnameSettingsSettingArgsDict']]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustAccessMtlsHostnameSettings is deprecated: cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings has been deprecated in favor of cloudflare:zeroTrustAccessMtls/hostnameSettings:HostnameSettings""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

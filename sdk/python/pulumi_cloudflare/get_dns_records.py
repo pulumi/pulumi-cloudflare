@@ -23,6 +23,8 @@ __all__ = [
     'get_dns_records_output',
 ]
 
+warnings.warn("""cloudflare:index/getDnsRecords:getDnsRecords has been deprecated in favor of cloudflare:dns/records:getRecords""", DeprecationWarning)
+
 @pulumi.output_type
 class GetDnsRecordsResult:
     """
@@ -265,7 +267,7 @@ def get_dns_records(comment: Optional[Union['GetDnsRecordsCommentArgs', 'GetDnsR
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_dns_records = cloudflare.get_dns_records(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_dns_records = cloudflare.dns.get_records(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         comment={
             "absent": "absent",
             "contains": "ello, worl",
@@ -319,6 +321,7 @@ def get_dns_records(comment: Optional[Union['GetDnsRecordsCommentArgs', 'GetDnsR
            Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_dns_records is deprecated: cloudflare:index/getDnsRecords:getDnsRecords has been deprecated in favor of cloudflare:dns/records:getRecords""")
     __args__ = dict()
     __args__['comment'] = comment
     __args__['content'] = content
@@ -386,7 +389,7 @@ def get_dns_records_output(comment: pulumi.Input[Optional[Optional[Union['GetDns
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_dns_records = cloudflare.get_dns_records(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_dns_records = cloudflare.dns.get_records(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         comment={
             "absent": "absent",
             "contains": "ello, worl",
@@ -440,6 +443,7 @@ def get_dns_records_output(comment: pulumi.Input[Optional[Optional[Union['GetDns
            Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_dns_records is deprecated: cloudflare:index/getDnsRecords:getDnsRecords has been deprecated in favor of cloudflare:dns/records:getRecords""")
     __args__ = dict()
     __args__['comment'] = comment
     __args__['content'] = content

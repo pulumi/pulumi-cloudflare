@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicTransitConnector = new cloudflare.MagicTransitConnector("example_magic_transit_connector", {
+ * const exampleMagicTransitConnector = new cloudflare.magictransit.Connector("example_magic_transit_connector", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     device: {
  *         id: "id",
@@ -35,6 +35,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/magicTransitConnector:MagicTransitConnector example '<account_id>/<connector_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/magicTransitConnector:MagicTransitConnector has been deprecated in favor of cloudflare:magicTransit/connector:Connector
  */
 export class MagicTransitConnector extends pulumi.CustomResource {
     /**
@@ -47,6 +49,7 @@ export class MagicTransitConnector extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: MagicTransitConnectorState, opts?: pulumi.CustomResourceOptions): MagicTransitConnector {
+        pulumi.log.warn("MagicTransitConnector is deprecated: cloudflare:index/magicTransitConnector:MagicTransitConnector has been deprecated in favor of cloudflare:magicTransit/connector:Connector")
         return new MagicTransitConnector(name, <any>state, { ...opts, id: id });
     }
 
@@ -86,8 +89,11 @@ export class MagicTransitConnector extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/magicTransitConnector:MagicTransitConnector has been deprecated in favor of cloudflare:magicTransit/connector:Connector */
     constructor(name: string, args: MagicTransitConnectorArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/magicTransitConnector:MagicTransitConnector has been deprecated in favor of cloudflare:magicTransit/connector:Connector */
     constructor(name: string, argsOrState?: MagicTransitConnectorArgs | MagicTransitConnectorState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("MagicTransitConnector is deprecated: cloudflare:index/magicTransitConnector:MagicTransitConnector has been deprecated in favor of cloudflare:magicTransit/connector:Connector")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

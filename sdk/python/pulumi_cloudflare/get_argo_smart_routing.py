@@ -21,6 +21,8 @@ __all__ = [
     'get_argo_smart_routing_output',
 ]
 
+warnings.warn("""cloudflare:index/getArgoSmartRouting:getArgoSmartRouting has been deprecated in favor of cloudflare:argo/smartRouting:getSmartRouting""", DeprecationWarning)
+
 @pulumi.output_type
 class GetArgoSmartRoutingResult:
     """
@@ -112,12 +114,13 @@ def get_argo_smart_routing(zone_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_argo_smart_routing = cloudflare.get_argo_smart_routing(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_argo_smart_routing = cloudflare.argo.get_smart_routing(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str zone_id: Specifies the zone associated with the API call.
     """
+    pulumi.log.warn("""get_argo_smart_routing is deprecated: cloudflare:index/getArgoSmartRouting:getArgoSmartRouting has been deprecated in favor of cloudflare:argo/smartRouting:getSmartRouting""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -143,12 +146,13 @@ def get_argo_smart_routing_output(zone_id: pulumi.Input[Optional[Optional[_built
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_argo_smart_routing = cloudflare.get_argo_smart_routing(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_argo_smart_routing = cloudflare.argo.get_smart_routing(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str zone_id: Specifies the zone associated with the API call.
     """
+    pulumi.log.warn("""get_argo_smart_routing is deprecated: cloudflare:index/getArgoSmartRouting:getArgoSmartRouting has been deprecated in favor of cloudflare:argo/smartRouting:getSmartRouting""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

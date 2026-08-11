@@ -30,9 +30,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDlpSettings;
- * import com.pulumi.cloudflare.ZeroTrustDlpSettingsArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDlpSettingsPayloadLoggingArgs;
+ * import com.pulumi.cloudflare.zeroTrustDlp.Settings;
+ * import com.pulumi.cloudflare.zeroTrustDlp.SettingsArgs;
+ * import com.pulumi.cloudflare.zeroTrustDlp.inputs.SettingsPayloadLoggingArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,11 +46,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustDlpSettings = new ZeroTrustDlpSettings("exampleZeroTrustDlpSettings", ZeroTrustDlpSettingsArgs.builder()
+ *         var exampleZeroTrustDlpSettings = new Settings("exampleZeroTrustDlpSettings", SettingsArgs.builder()
  *             .accountId("account_id")
  *             .aiContextAnalysis(true)
  *             .ocr(true)
- *             .payloadLogging(ZeroTrustDlpSettingsPayloadLoggingArgs.builder()
+ *             .payloadLogging(SettingsPayloadLoggingArgs.builder()
  *                 .maskingLevel("full")
  *                 .publicKey("public_key")
  *                 .build())
@@ -67,7 +67,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustDlpSettings:ZeroTrustDlpSettings example &#39;&lt;account_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustDlpSettings:ZeroTrustDlpSettings has been deprecated in favor of cloudflare:zeroTrustDlp/settings:Settings
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustDlpSettings:ZeroTrustDlpSettings has been deprecated in favor of cloudflare:zeroTrustDlp/settings:Settings */
 @ResourceType(type="cloudflare:index/zeroTrustDlpSettings:ZeroTrustDlpSettings")
 public class ZeroTrustDlpSettings extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

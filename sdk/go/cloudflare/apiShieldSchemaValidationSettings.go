@@ -19,7 +19,7 @@ import (
 // - `Domain API Gateway`
 // - `Domain API Gateway Read`
 //
-// > `ApiShieldSchemaValidationSettings` is in a deprecation phase and will be removed in the future.
+// > `apiShieldSchema.ValidationSettings` is in a deprecation phase and will be removed in the future.
 //
 //	Instead, please utilize the SchemaValidationSettings resource instead.
 //
@@ -30,14 +30,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/apishieldschema"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewApiShieldSchemaValidationSettings(ctx, "example_api_shield_schema_validation_settings", &cloudflare.ApiShieldSchemaValidationSettingsArgs{
+//			_, err := apishieldschema.NewValidationSettings(ctx, "example_api_shield_schema_validation_settings", &apishieldschema.ValidationSettingsArgs{
 //				ZoneId:                             pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ValidationDefaultMitigationAction:  pulumi.String("block"),
 //				ValidationOverrideMitigationAction: pulumi.String("none"),
@@ -56,6 +56,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings example '<zone_id>'
 // ```
+//
+// Deprecated: cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldSchema/validationSettings:ValidationSettings
 type ApiShieldSchemaValidationSettings struct {
 	pulumi.CustomResourceState
 

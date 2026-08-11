@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/customhostname"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewCustomHostname(ctx, "example_custom_hostname", &cloudflare.CustomHostnameArgs{
+//			_, err := customhostname.NewCustomHostname(ctx, "example_custom_hostname", &customhostname.CustomHostnameArgs{
 //				ZoneId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Hostname: pulumi.String("app.example.com"),
 //				CustomMetadata: pulumi.StringMap{
@@ -39,12 +39,12 @@ import (
 //				},
 //				CustomOriginServer: pulumi.String("origin2.example.com"),
 //				CustomOriginSni:    pulumi.String("sni.example.com"),
-//				Ssl: &cloudflare.CustomHostnameSslArgs{
+//				Ssl: &customhostname.CustomHostnameSslArgs{
 //					BundleMethod:         pulumi.String("ubiquitous"),
 //					CertificateAuthority: pulumi.String("google"),
 //					CloudflareBranding:   pulumi.Bool(false),
-//					CustomCertBundles: cloudflare.CustomHostnameSslCustomCertBundleArray{
-//						&cloudflare.CustomHostnameSslCustomCertBundleArgs{
+//					CustomCertBundles: customhostname.CustomHostnameSslCustomCertBundleArray{
+//						&customhostname.CustomHostnameSslCustomCertBundleArgs{
 //							CustomCertificate: pulumi.String("      -----BEGIN CERTIFICATE-----\n      MIIDdjCCAl6gAwIBAgIJAPnMg0Fs+/B0MA0GCSqGSIb3DQEBCwUAMFsx...\n      -----END CERTIFICATE-----\n\n"),
 //							CustomKey:         pulumi.String("      -----BEGIN PRIVATE KEY-----\n      MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC/SCB5...\n      -----END PRIVATE KEY-----\n\n"),
 //						},
@@ -89,7 +89,7 @@ import (
 // `),
 //
 //					Method: pulumi.String("http"),
-//					Settings: &cloudflare.CustomHostnameSslSettingsArgs{
+//					Settings: &customhostname.CustomHostnameSslSettingsArgs{
 //						Ciphers: pulumi.StringArray{
 //							pulumi.String("ECDHE-RSA-AES128-GCM-SHA256"),
 //							pulumi.String("AES128-SHA"),
@@ -117,6 +117,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/customHostname:CustomHostname example '<zone_id>/<custom_hostname_id>'
 // ```
+//
+// Deprecated: cloudflare:index/customHostname:CustomHostname has been deprecated in favor of cloudflare:customHostname/customHostname:CustomHostname
 type CustomHostname struct {
 	pulumi.CustomResourceState
 

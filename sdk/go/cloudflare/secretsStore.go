@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/secretsstore"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewSecretsStore(ctx, "example_secrets_store", &cloudflare.SecretsStoreArgs{
+//			_, err := secretsstore.NewSecretsStore(ctx, "example_secrets_store", &secretsstore.SecretsStoreArgs{
 //				AccountId: pulumi.String("985e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:      pulumi.String("service_x_keys"),
 //			})
@@ -49,6 +49,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/secretsStore:SecretsStore example '<account_id>/<store_id>'
 // ```
+//
+// Deprecated: cloudflare:index/secretsStore:SecretsStore has been deprecated in favor of cloudflare:secretsStore/secretsStore:SecretsStore
 type SecretsStore struct {
 	pulumi.CustomResourceState
 

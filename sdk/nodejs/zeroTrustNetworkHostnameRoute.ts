@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustNetworkHostnameRoute = new cloudflare.ZeroTrustNetworkHostnameRoute("example_zero_trust_network_hostname_route", {
+ * const exampleZeroTrustNetworkHostnameRoute = new cloudflare.zerotrustnetworkhostname.Route("example_zero_trust_network_hostname_route", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     comment: "example comment",
  *     hostname: "office-1.local",
@@ -31,6 +31,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute example '<account_id>/<hostname_route_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute has been deprecated in favor of cloudflare:zeroTrustNetworkHostname/route:Route
  */
 export class ZeroTrustNetworkHostnameRoute extends pulumi.CustomResource {
     /**
@@ -43,6 +45,7 @@ export class ZeroTrustNetworkHostnameRoute extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustNetworkHostnameRouteState, opts?: pulumi.CustomResourceOptions): ZeroTrustNetworkHostnameRoute {
+        pulumi.log.warn("ZeroTrustNetworkHostnameRoute is deprecated: cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute has been deprecated in favor of cloudflare:zeroTrustNetworkHostname/route:Route")
         return new ZeroTrustNetworkHostnameRoute(name, <any>state, { ...opts, id: id });
     }
 
@@ -101,8 +104,11 @@ export class ZeroTrustNetworkHostnameRoute extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute has been deprecated in favor of cloudflare:zeroTrustNetworkHostname/route:Route */
     constructor(name: string, args: ZeroTrustNetworkHostnameRouteArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute has been deprecated in favor of cloudflare:zeroTrustNetworkHostname/route:Route */
     constructor(name: string, argsOrState?: ZeroTrustNetworkHostnameRouteArgs | ZeroTrustNetworkHostnameRouteState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustNetworkHostnameRoute is deprecated: cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute has been deprecated in favor of cloudflare:zeroTrustNetworkHostname/route:Route")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

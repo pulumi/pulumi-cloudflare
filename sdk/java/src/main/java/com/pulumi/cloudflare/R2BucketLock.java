@@ -26,10 +26,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.R2BucketLock;
- * import com.pulumi.cloudflare.R2BucketLockArgs;
- * import com.pulumi.cloudflare.inputs.R2BucketLockRuleArgs;
- * import com.pulumi.cloudflare.inputs.R2BucketLockRuleConditionArgs;
+ * import com.pulumi.cloudflare.r2Bucket.Lock;
+ * import com.pulumi.cloudflare.r2Bucket.LockArgs;
+ * import com.pulumi.cloudflare.r2Bucket.inputs.LockRuleArgs;
+ * import com.pulumi.cloudflare.r2Bucket.inputs.LockRuleConditionArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -43,12 +43,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleR2BucketLock = new R2BucketLock("exampleR2BucketLock", R2BucketLockArgs.builder()
+ *         var exampleR2BucketLock = new Lock("exampleR2BucketLock", LockArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .bucketName("example-bucket")
- *             .rules(R2BucketLockRuleArgs.builder()
+ *             .rules(LockRuleArgs.builder()
  *                 .id("Lock all objects for 24 hours")
- *                 .condition(R2BucketLockRuleConditionArgs.builder()
+ *                 .condition(LockRuleConditionArgs.builder()
  *                     .maxAgeSeconds(100)
  *                     .type("Age")
  *                     .build())
@@ -66,7 +66,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/r2BucketLock:R2BucketLock has been deprecated in favor of cloudflare:r2Bucket/lock:Lock
+ * 
  */
+@Deprecated /* cloudflare:index/r2BucketLock:R2BucketLock has been deprecated in favor of cloudflare:r2Bucket/lock:Lock */
 @ResourceType(type="cloudflare:index/r2BucketLock:R2BucketLock")
 public class R2BucketLock extends com.pulumi.resources.CustomResource {
     /**

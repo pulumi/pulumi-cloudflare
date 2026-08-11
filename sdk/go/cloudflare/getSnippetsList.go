@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: cloudflare:index/getSnippetsList:getSnippetsList has been deprecated in favor of cloudflare:snippets/list:getList
 func LookupSnippetsList(ctx *pulumi.Context, args *LookupSnippetsListArgs, opts ...pulumi.InvokeOption) (*LookupSnippetsListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSnippetsListResult

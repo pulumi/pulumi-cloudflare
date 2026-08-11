@@ -32,9 +32,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustRiskBehavior;
- * import com.pulumi.cloudflare.ZeroTrustRiskBehaviorArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustRiskBehaviorBehaviorsArgs;
+ * import com.pulumi.cloudflare.zeroTrust.RiskBehavior;
+ * import com.pulumi.cloudflare.zeroTrust.RiskBehaviorArgs;
+ * import com.pulumi.cloudflare.zeroTrust.inputs.RiskBehaviorBehaviorsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -48,9 +48,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustRiskBehavior = new ZeroTrustRiskBehavior("exampleZeroTrustRiskBehavior", ZeroTrustRiskBehaviorArgs.builder()
+ *         var exampleZeroTrustRiskBehavior = new RiskBehavior("exampleZeroTrustRiskBehavior", RiskBehaviorArgs.builder()
  *             .accountId("account_id")
- *             .behaviors(Map.of("foo", ZeroTrustRiskBehaviorBehaviorsArgs.builder()
+ *             .behaviors(Map.of("foo", RiskBehaviorBehaviorsArgs.builder()
  *                 .enabled(true)
  *                 .riskLevel("low")
  *                 .build()))
@@ -65,7 +65,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior has been deprecated in favor of cloudflare:zeroTrust/riskBehavior:RiskBehavior
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior has been deprecated in favor of cloudflare:zeroTrust/riskBehavior:RiskBehavior */
 @ResourceType(type="cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior")
 public class ZeroTrustRiskBehavior extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

@@ -25,14 +25,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/apishieldschema"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetApiShieldSchemaValidationSettings(ctx, &cloudflare.LookupApiShieldSchemaValidationSettingsArgs{
+//			_, err := apishieldschema.GetValidationSettings(ctx, &apishieldschema.GetValidationSettingsArgs{
 //				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
@@ -43,6 +43,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getApiShieldSchemaValidationSettings:getApiShieldSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldSchema/validationSettings:getValidationSettings
 func LookupApiShieldSchemaValidationSettings(ctx *pulumi.Context, args *LookupApiShieldSchemaValidationSettingsArgs, opts ...pulumi.InvokeOption) (*LookupApiShieldSchemaValidationSettingsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiShieldSchemaValidationSettingsResult

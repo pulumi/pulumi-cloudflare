@@ -25,10 +25,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleSpectrumApplication = new Cloudflare.SpectrumApplication("example_spectrum_application", new()
+    ///     var exampleSpectrumApplication = new Cloudflare.Modules.Spectrum.SpectrumApplication("example_spectrum_application", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         Dns = new Cloudflare.Inputs.SpectrumApplicationDnsArgs
+    ///         Dns = new Cloudflare.Modules.Spectrum.Inputs.ApplicationDnsArgs
     ///         {
     ///             Name = "ssh.example.com",
     ///             Type = "CNAME",
@@ -36,7 +36,7 @@ namespace Pulumi.Cloudflare
     ///         Protocol = "tcp/22",
     ///         TrafficType = "direct",
     ///         ArgoSmartRouting = true,
-    ///         EdgeIps = new Cloudflare.Inputs.SpectrumApplicationEdgeIpsArgs
+    ///         EdgeIps = new Cloudflare.Modules.Spectrum.Inputs.ApplicationEdgeIpsArgs
     ///         {
     ///             Connectivity = "all",
     ///             Type = "dynamic",
@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             "tcp://127.0.0.1:8080",
     ///         },
-    ///         OriginDns = new Cloudflare.Inputs.SpectrumApplicationOriginDnsArgs
+    ///         OriginDns = new Cloudflare.Modules.Spectrum.Inputs.ApplicationOriginDnsArgs
     ///         {
     ///             Name = "origin.example.com",
     ///             Ttl = 600,
@@ -66,6 +66,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/spectrumApplication:SpectrumApplication example '&lt;zone_id&gt;/&lt;app_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/spectrumApplication:SpectrumApplication has been deprecated in favor of cloudflare:spectrum/application:Application")]
     [CloudflareResourceType("cloudflare:index/spectrumApplication:SpectrumApplication")]
     public partial class SpectrumApplication : global::Pulumi.CustomResource
     {

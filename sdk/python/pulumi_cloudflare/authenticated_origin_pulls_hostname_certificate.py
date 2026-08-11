@@ -225,8 +225,13 @@ class _AuthenticatedOriginPullsHostnameCertificateState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/authenticatedOriginPullsHostnameCertificate:AuthenticatedOriginPullsHostnameCertificate has been deprecated in favor of cloudflare:authenticatedOriginPullsHostname/certificate:Certificate""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/authenticatedOriginPullsHostnameCertificate:AuthenticatedOriginPullsHostnameCertificate")
 class AuthenticatedOriginPullsHostnameCertificate(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/authenticatedOriginPullsHostnameCertificate:AuthenticatedOriginPullsHostnameCertificate has been deprecated in favor of cloudflare:authenticatedOriginPullsHostname/certificate:Certificate""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -242,7 +247,7 @@ class AuthenticatedOriginPullsHostnameCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_authenticated_origin_pulls_hostname_certificate = cloudflare.AuthenticatedOriginPullsHostnameCertificate("example_authenticated_origin_pulls_hostname_certificate",
+        example_authenticated_origin_pulls_hostname_certificate = cloudflare.authenticatedoriginpullshostname.Certificate("example_authenticated_origin_pulls_hostname_certificate",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             certificate=\"\"\"  -----BEGIN CERTIFICATE-----
           MIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV
@@ -325,7 +330,7 @@ class AuthenticatedOriginPullsHostnameCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_authenticated_origin_pulls_hostname_certificate = cloudflare.AuthenticatedOriginPullsHostnameCertificate("example_authenticated_origin_pulls_hostname_certificate",
+        example_authenticated_origin_pulls_hostname_certificate = cloudflare.authenticatedoriginpullshostname.Certificate("example_authenticated_origin_pulls_hostname_certificate",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             certificate=\"\"\"  -----BEGIN CERTIFICATE-----
           MIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV
@@ -408,6 +413,7 @@ class AuthenticatedOriginPullsHostnameCertificate(pulumi.CustomResource):
                  private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""AuthenticatedOriginPullsHostnameCertificate is deprecated: cloudflare:index/authenticatedOriginPullsHostnameCertificate:AuthenticatedOriginPullsHostnameCertificate has been deprecated in favor of cloudflare:authenticatedOriginPullsHostname/certificate:Certificate""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

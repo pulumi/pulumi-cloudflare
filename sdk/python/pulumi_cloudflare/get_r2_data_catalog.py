@@ -22,6 +22,8 @@ __all__ = [
     'get_r2_data_catalog_output',
 ]
 
+warnings.warn("""cloudflare:index/getR2DataCatalog:getR2DataCatalog has been deprecated in favor of cloudflare:r2/dataCatalog:getDataCatalog""", DeprecationWarning)
+
 @pulumi.output_type
 class GetR2DataCatalogResult:
     """
@@ -151,7 +153,7 @@ def get_r2_data_catalog(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_r2_data_catalog = cloudflare.get_r2_data_catalog(account_id="0123456789abcdef0123456789abcdef",
+    example_r2_data_catalog = cloudflare.r2.get_data_catalog(account_id="0123456789abcdef0123456789abcdef",
         bucket_name="my-data-bucket")
     ```
 
@@ -159,6 +161,7 @@ def get_r2_data_catalog(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Use this to identify the account.
     :param _builtins.str bucket_name: Specifies the R2 bucket name.
     """
+    pulumi.log.warn("""get_r2_data_catalog is deprecated: cloudflare:index/getR2DataCatalog:getR2DataCatalog has been deprecated in favor of cloudflare:r2/dataCatalog:getDataCatalog""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['bucketName'] = bucket_name
@@ -189,7 +192,7 @@ def get_r2_data_catalog_output(account_id: pulumi.Input[Optional[Optional[_built
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_r2_data_catalog = cloudflare.get_r2_data_catalog(account_id="0123456789abcdef0123456789abcdef",
+    example_r2_data_catalog = cloudflare.r2.get_data_catalog(account_id="0123456789abcdef0123456789abcdef",
         bucket_name="my-data-bucket")
     ```
 
@@ -197,6 +200,7 @@ def get_r2_data_catalog_output(account_id: pulumi.Input[Optional[Optional[_built
     :param _builtins.str account_id: Use this to identify the account.
     :param _builtins.str bucket_name: Specifies the R2 bucket name.
     """
+    pulumi.log.warn("""get_r2_data_catalog is deprecated: cloudflare:index/getR2DataCatalog:getR2DataCatalog has been deprecated in favor of cloudflare:r2/dataCatalog:getDataCatalog""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['bucketName'] = bucket_name

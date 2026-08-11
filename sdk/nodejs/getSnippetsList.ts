@@ -6,7 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/** @deprecated cloudflare:index/getSnippetsList:getSnippetsList has been deprecated in favor of cloudflare:snippets/list:getList */
 export function getSnippetsList(args: GetSnippetsListArgs, opts?: pulumi.InvokeOptions): Promise<GetSnippetsListResult> {
+    pulumi.log.warn("getSnippetsList is deprecated: cloudflare:index/getSnippetsList:getSnippetsList has been deprecated in favor of cloudflare:snippets/list:getList")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getSnippetsList:getSnippetsList", {
         "maxItems": args.maxItems,
@@ -45,7 +47,9 @@ export interface GetSnippetsListResult {
      */
     readonly zoneId: string;
 }
+/** @deprecated cloudflare:index/getSnippetsList:getSnippetsList has been deprecated in favor of cloudflare:snippets/list:getList */
 export function getSnippetsListOutput(args: GetSnippetsListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSnippetsListResult> {
+    pulumi.log.warn("getSnippetsList is deprecated: cloudflare:index/getSnippetsList:getSnippetsList has been deprecated in favor of cloudflare:snippets/list:getList")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getSnippetsList:getSnippetsList", {
         "maxItems": args.maxItems,

@@ -232,8 +232,13 @@ class _ZeroTrustTunnelCloudflaredVirtualNetworkState:
         pulumi.set(self, "name", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustTunnelCloudflaredVirtualNetwork:ZeroTrustTunnelCloudflaredVirtualNetwork has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflaredVirtual/network:Network""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustTunnelCloudflaredVirtualNetwork:ZeroTrustTunnelCloudflaredVirtualNetwork")
 class ZeroTrustTunnelCloudflaredVirtualNetwork(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustTunnelCloudflaredVirtualNetwork:ZeroTrustTunnelCloudflaredVirtualNetwork has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflaredVirtual/network:Network""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -256,7 +261,7 @@ class ZeroTrustTunnelCloudflaredVirtualNetwork(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_tunnel_cloudflared_virtual_network = cloudflare.ZeroTrustTunnelCloudflaredVirtualNetwork("example_zero_trust_tunnel_cloudflared_virtual_network",
+        example_zero_trust_tunnel_cloudflared_virtual_network = cloudflare.zerotrusttunnelcloudflaredvirtual.Network("example_zero_trust_tunnel_cloudflared_virtual_network",
             account_id="699d98642c564d2e855e9661899b7252",
             name="us-east-1-vpc",
             comment="Staging VPC for data science",
@@ -297,7 +302,7 @@ class ZeroTrustTunnelCloudflaredVirtualNetwork(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_tunnel_cloudflared_virtual_network = cloudflare.ZeroTrustTunnelCloudflaredVirtualNetwork("example_zero_trust_tunnel_cloudflared_virtual_network",
+        example_zero_trust_tunnel_cloudflared_virtual_network = cloudflare.zerotrusttunnelcloudflaredvirtual.Network("example_zero_trust_tunnel_cloudflared_virtual_network",
             account_id="699d98642c564d2e855e9661899b7252",
             name="us-east-1-vpc",
             comment="Staging VPC for data science",
@@ -333,6 +338,7 @@ class ZeroTrustTunnelCloudflaredVirtualNetwork(pulumi.CustomResource):
                  is_default_network: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustTunnelCloudflaredVirtualNetwork is deprecated: cloudflare:index/zeroTrustTunnelCloudflaredVirtualNetwork:ZeroTrustTunnelCloudflaredVirtualNetwork has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflaredVirtual/network:Network""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

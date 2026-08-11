@@ -59,7 +59,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleKeylessCertificate = new Cloudflare.KeylessCertificate("example_keyless_certificate", new()
+    ///     var exampleKeylessCertificate = new Cloudflare.Modules.Keyless.KeylessCertificate("example_keyless_certificate", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Certificate = @"  -----BEGIN CERTIFICATE-----
@@ -89,7 +89,7 @@ namespace Pulumi.Cloudflare
     ///         Port = 24008,
     ///         BundleMethod = "ubiquitous",
     ///         Name = "example.com Keyless SSL",
-    ///         Tunnel = new Cloudflare.Inputs.KeylessCertificateTunnelArgs
+    ///         Tunnel = new Cloudflare.Modules.Keyless.Inputs.CertificateTunnelArgs
     ///         {
     ///             PrivateIp = "10.0.0.1",
     ///             VnetId = "7365377a-85a4-4390-9480-531ef7dc7a3c",
@@ -105,6 +105,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/keylessCertificate:KeylessCertificate example '&lt;zone_id&gt;/&lt;keyless_certificate_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/keylessCertificate:KeylessCertificate has been deprecated in favor of cloudflare:keyless/certificate:Certificate")]
     [CloudflareResourceType("cloudflare:index/keylessCertificate:KeylessCertificate")]
     public partial class KeylessCertificate : global::Pulumi.CustomResource
     {

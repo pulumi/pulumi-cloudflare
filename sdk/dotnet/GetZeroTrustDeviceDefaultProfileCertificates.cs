@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustDeviceDefaultProfileCertificates:getZeroTrustDeviceDefaultProfileCertificates has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/certificates:getCertificates")]
     public static class GetZeroTrustDeviceDefaultProfileCertificates
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDeviceDefaultProfileCertificates = Cloudflare.GetZeroTrustDeviceDefaultProfileCertificates.Invoke(new()
+        ///     var exampleZeroTrustDeviceDefaultProfileCertificates = Cloudflare.Modules.ZeroTrustDeviceDefaultProfile.GetCertificates.Invoke(new()
         ///     {
         ///         ZoneId = "699d98642c564d2e855e9661899b7252",
         ///     });
@@ -54,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDeviceDefaultProfileCertificates = Cloudflare.GetZeroTrustDeviceDefaultProfileCertificates.Invoke(new()
+        ///     var exampleZeroTrustDeviceDefaultProfileCertificates = Cloudflare.Modules.ZeroTrustDeviceDefaultProfile.GetCertificates.Invoke(new()
         ///     {
         ///         ZoneId = "699d98642c564d2e855e9661899b7252",
         ///     });
@@ -81,7 +82,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDeviceDefaultProfileCertificates = Cloudflare.GetZeroTrustDeviceDefaultProfileCertificates.Invoke(new()
+        ///     var exampleZeroTrustDeviceDefaultProfileCertificates = Cloudflare.Modules.ZeroTrustDeviceDefaultProfile.GetCertificates.Invoke(new()
         ///     {
         ///         ZoneId = "699d98642c564d2e855e9661899b7252",
         ///     });

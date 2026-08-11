@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getEmailSecurityTrustedDomains:getEmailSecurityTrustedDomains has been deprecated in favor of cloudflare:emailSecurityTrustedDomains/emailSecurityTrustedDomains:getEmailSecurityTrustedDomains")]
     public static class GetEmailSecurityTrustedDomains
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailSecurityTrustedDomains = Cloudflare.GetEmailSecurityTrustedDomains.Invoke(new()
+        ///     var exampleEmailSecurityTrustedDomains = Cloudflare.Modules.EmailSecurityTrustedDomains.GetEmailSecurityTrustedDomains.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         TrustedDomainId = "2401",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailSecurityTrustedDomains = Cloudflare.GetEmailSecurityTrustedDomains.Invoke(new()
+        ///     var exampleEmailSecurityTrustedDomains = Cloudflare.Modules.EmailSecurityTrustedDomains.GetEmailSecurityTrustedDomains.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         TrustedDomainId = "2401",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailSecurityTrustedDomains = Cloudflare.GetEmailSecurityTrustedDomains.Invoke(new()
+        ///     var exampleEmailSecurityTrustedDomains = Cloudflare.Modules.EmailSecurityTrustedDomains.GetEmailSecurityTrustedDomains.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         TrustedDomainId = "2401",

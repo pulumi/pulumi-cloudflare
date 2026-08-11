@@ -132,8 +132,13 @@ class _ArgoTieredCachingState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/argoTieredCaching:ArgoTieredCaching has been deprecated in favor of cloudflare:argo/tieredCaching:TieredCaching""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/argoTieredCaching:ArgoTieredCaching")
 class ArgoTieredCaching(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/argoTieredCaching:ArgoTieredCaching has been deprecated in favor of cloudflare:argo/tieredCaching:TieredCaching""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -148,7 +153,7 @@ class ArgoTieredCaching(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_argo_tiered_caching = cloudflare.ArgoTieredCaching("example_argo_tiered_caching",
+        example_argo_tiered_caching = cloudflare.argo.TieredCaching("example_argo_tiered_caching",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             value="on")
         ```
@@ -179,7 +184,7 @@ class ArgoTieredCaching(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_argo_tiered_caching = cloudflare.ArgoTieredCaching("example_argo_tiered_caching",
+        example_argo_tiered_caching = cloudflare.argo.TieredCaching("example_argo_tiered_caching",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             value="on")
         ```
@@ -209,6 +214,7 @@ class ArgoTieredCaching(pulumi.CustomResource):
                  value: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ArgoTieredCaching is deprecated: cloudflare:index/argoTieredCaching:ArgoTieredCaching has been deprecated in favor of cloudflare:argo/tieredCaching:TieredCaching""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

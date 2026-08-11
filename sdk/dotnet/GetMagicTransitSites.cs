@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getMagicTransitSites:getMagicTransitSites has been deprecated in favor of cloudflare:magicTransit/sites:getSites")]
     public static class GetMagicTransitSites
     {
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicTransitSites = Cloudflare.GetMagicTransitSites.Invoke(new()
+        ///     var exampleMagicTransitSites = Cloudflare.Modules.MagicTransit.GetSites.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Connectorid = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -59,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicTransitSites = Cloudflare.GetMagicTransitSites.Invoke(new()
+        ///     var exampleMagicTransitSites = Cloudflare.Modules.MagicTransit.GetSites.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Connectorid = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -89,7 +90,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicTransitSites = Cloudflare.GetMagicTransitSites.Invoke(new()
+        ///     var exampleMagicTransitSites = Cloudflare.Modules.MagicTransit.GetSites.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Connectorid = "023e105f4ecef8ad9ca31a8372d0c353",

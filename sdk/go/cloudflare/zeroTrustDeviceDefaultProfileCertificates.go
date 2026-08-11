@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdevicedefaultprofile"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDeviceDefaultProfileCertificates(ctx, "example_zero_trust_device_default_profile_certificates", &cloudflare.ZeroTrustDeviceDefaultProfileCertificatesArgs{
+//			_, err := zerotrustdevicedefaultprofile.NewCertificates(ctx, "example_zero_trust_device_default_profile_certificates", &zerotrustdevicedefaultprofile.CertificatesArgs{
 //				ZoneId:  pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				Enabled: pulumi.Bool(true),
 //			})
@@ -47,6 +47,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/zeroTrustDeviceDefaultProfileCertificates:ZeroTrustDeviceDefaultProfileCertificates has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/certificates:Certificates
 type ZeroTrustDeviceDefaultProfileCertificates struct {
 	pulumi.CustomResourceState
 

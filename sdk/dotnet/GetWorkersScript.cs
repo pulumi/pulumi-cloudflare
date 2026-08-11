@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getWorkersScript:getWorkersScript has been deprecated in favor of cloudflare:workersScript/workersScript:getWorkersScript")]
     public static class GetWorkersScript
     {
         /// <summary>
@@ -28,7 +29,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersScript = Cloudflare.GetWorkersScript.Invoke(new()
+        ///     var exampleWorkersScript = Cloudflare.Modules.WorkersScript.GetWorkersScript.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ScriptName = "this-is_my_script-01",
@@ -57,7 +58,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersScript = Cloudflare.GetWorkersScript.Invoke(new()
+        ///     var exampleWorkersScript = Cloudflare.Modules.WorkersScript.GetWorkersScript.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ScriptName = "this-is_my_script-01",
@@ -86,7 +87,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersScript = Cloudflare.GetWorkersScript.Invoke(new()
+        ///     var exampleWorkersScript = Cloudflare.Modules.WorkersScript.GetWorkersScript.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ScriptName = "this-is_my_script-01",

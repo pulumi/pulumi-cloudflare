@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleLeakedCredentialCheckRule = new Cloudflare.LeakedCredentialCheckRule("example_leaked_credential_check_rule", new()
+    ///     var exampleLeakedCredentialCheckRule = new Cloudflare.Modules.LeakedCredentialCheck.LeakedCredentialCheckRule("example_leaked_credential_check_rule", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Password = "lookup_json_string(http.request.body.raw, \"secret\")",
@@ -43,6 +43,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule example '&lt;zone_id&gt;/&lt;detection_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule has been deprecated in favor of cloudflare:leakedCredentialCheck/rule:Rule")]
     [CloudflareResourceType("cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule")]
     public partial class LeakedCredentialCheckRule : global::Pulumi.CustomResource
     {

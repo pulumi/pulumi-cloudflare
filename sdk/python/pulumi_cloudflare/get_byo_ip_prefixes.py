@@ -22,6 +22,8 @@ __all__ = [
     'get_byo_ip_prefixes_output',
 ]
 
+warnings.warn("""cloudflare:index/getByoIpPrefixes:getByoIpPrefixes has been deprecated in favor of cloudflare:byoIp/prefixes:getPrefixes""", DeprecationWarning)
+
 @pulumi.output_type
 class GetByoIpPrefixesResult:
     """
@@ -93,13 +95,14 @@ def get_byo_ip_prefixes(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_byo_ip_prefixes = cloudflare.get_byo_ip_prefixes(account_id="258def64c72dae45f3e4c8516e2111f2")
+    example_byo_ip_prefixes = cloudflare.byoip.get_prefixes(account_id="258def64c72dae45f3e4c8516e2111f2")
     ```
 
 
     :param _builtins.str account_id: Identifier of a Cloudflare account.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_byo_ip_prefixes is deprecated: cloudflare:index/getByoIpPrefixes:getByoIpPrefixes has been deprecated in favor of cloudflare:byoIp/prefixes:getPrefixes""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -129,13 +132,14 @@ def get_byo_ip_prefixes_output(account_id: pulumi.Input[Optional[Optional[_built
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_byo_ip_prefixes = cloudflare.get_byo_ip_prefixes(account_id="258def64c72dae45f3e4c8516e2111f2")
+    example_byo_ip_prefixes = cloudflare.byoip.get_prefixes(account_id="258def64c72dae45f3e4c8516e2111f2")
     ```
 
 
     :param _builtins.str account_id: Identifier of a Cloudflare account.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_byo_ip_prefixes is deprecated: cloudflare:index/getByoIpPrefixes:getByoIpPrefixes has been deprecated in favor of cloudflare:byoIp/prefixes:getPrefixes""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

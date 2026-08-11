@@ -11,13 +11,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustGatewayProxyEndpoint = cloudflare.getZeroTrustGatewayProxyEndpoint({
+ * const exampleZeroTrustGatewayProxyEndpoint = cloudflare.zerotrustgatewayproxy.getEndpoint({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     proxyEndpointId: "ed35569b41ce4d1facfe683550f54086",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustGatewayProxyEndpoint:getZeroTrustGatewayProxyEndpoint has been deprecated in favor of cloudflare:zeroTrustGatewayProxy/endpoint:getEndpoint */
 export function getZeroTrustGatewayProxyEndpoint(args: GetZeroTrustGatewayProxyEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewayProxyEndpointResult> {
+    pulumi.log.warn("getZeroTrustGatewayProxyEndpoint is deprecated: cloudflare:index/getZeroTrustGatewayProxyEndpoint:getZeroTrustGatewayProxyEndpoint has been deprecated in favor of cloudflare:zeroTrustGatewayProxy/endpoint:getEndpoint")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustGatewayProxyEndpoint:getZeroTrustGatewayProxyEndpoint", {
         "accountId": args.accountId,
@@ -70,13 +72,15 @@ export interface GetZeroTrustGatewayProxyEndpointResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustGatewayProxyEndpoint = cloudflare.getZeroTrustGatewayProxyEndpoint({
+ * const exampleZeroTrustGatewayProxyEndpoint = cloudflare.zerotrustgatewayproxy.getEndpoint({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     proxyEndpointId: "ed35569b41ce4d1facfe683550f54086",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustGatewayProxyEndpoint:getZeroTrustGatewayProxyEndpoint has been deprecated in favor of cloudflare:zeroTrustGatewayProxy/endpoint:getEndpoint */
 export function getZeroTrustGatewayProxyEndpointOutput(args: GetZeroTrustGatewayProxyEndpointOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewayProxyEndpointResult> {
+    pulumi.log.warn("getZeroTrustGatewayProxyEndpoint is deprecated: cloudflare:index/getZeroTrustGatewayProxyEndpoint:getZeroTrustGatewayProxyEndpoint has been deprecated in favor of cloudflare:zeroTrustGatewayProxy/endpoint:getEndpoint")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustGatewayProxyEndpoint:getZeroTrustGatewayProxyEndpoint", {
         "accountId": args.accountId,

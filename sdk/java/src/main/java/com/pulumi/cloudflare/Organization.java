@@ -31,10 +31,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.Organization;
- * import com.pulumi.cloudflare.OrganizationArgs;
- * import com.pulumi.cloudflare.inputs.OrganizationParentArgs;
- * import com.pulumi.cloudflare.inputs.OrganizationProfileArgs;
+ * import com.pulumi.cloudflare.organization.Organization;
+ * import com.pulumi.cloudflare.organization.OrganizationArgs;
+ * import com.pulumi.cloudflare.organization.inputs.OrganizationParentArgs;
+ * import com.pulumi.cloudflare.organization.inputs.OrganizationProfileArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -73,7 +73,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/organization:Organization example &#39;&lt;organization_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/organization:Organization has been deprecated in favor of cloudflare:organization/organization:Organization
+ * 
  */
+@Deprecated /* cloudflare:index/organization:Organization has been deprecated in favor of cloudflare:organization/organization:Organization */
 @ResourceType(type="cloudflare:index/organization:Organization")
 public class Organization extends com.pulumi.resources.CustomResource {
     @Export(name="createTime", refs={String.class}, tree="[0]")

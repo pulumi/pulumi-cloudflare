@@ -25,26 +25,26 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAccountDnsSettings = new Cloudflare.AccountDnsSettings("example_account_dns_settings", new()
+    ///     var exampleAccountDnsSettings = new Cloudflare.Modules.Account.AccountDnsSettings("example_account_dns_settings", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         EnforceDnsOnly = false,
-    ///         ZoneDefaults = new Cloudflare.Inputs.AccountDnsSettingsZoneDefaultsArgs
+    ///         ZoneDefaults = new Cloudflare.Modules.Account.Inputs.DnsSettingsZoneDefaultsArgs
     ///         {
     ///             FlattenAllCnames = false,
     ///             FoundationDns = false,
-    ///             InternalDns = new Cloudflare.Inputs.AccountDnsSettingsZoneDefaultsInternalDnsArgs
+    ///             InternalDns = new Cloudflare.Modules.Account.Inputs.DnsSettingsZoneDefaultsInternalDnsArgs
     ///             {
     ///                 ReferenceZoneId = "reference_zone_id",
     ///             },
     ///             MultiProvider = false,
-    ///             Nameservers = new Cloudflare.Inputs.AccountDnsSettingsZoneDefaultsNameserversArgs
+    ///             Nameservers = new Cloudflare.Modules.Account.Inputs.DnsSettingsZoneDefaultsNameserversArgs
     ///             {
     ///                 Type = "cloudflare.standard",
     ///             },
     ///             NsTtl = 86400,
     ///             SecondaryOverrides = false,
-    ///             Soa = new Cloudflare.Inputs.AccountDnsSettingsZoneDefaultsSoaArgs
+    ///             Soa = new Cloudflare.Modules.Account.Inputs.DnsSettingsZoneDefaultsSoaArgs
     ///             {
     ///                 Expire = 604800,
     ///                 MinTtl = 1800,
@@ -65,6 +65,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/accountDnsSettings:AccountDnsSettings has been deprecated in favor of cloudflare:account/dnsSettings:DnsSettings")]
     [CloudflareResourceType("cloudflare:index/accountDnsSettings:AccountDnsSettings")]
     public partial class AccountDnsSettings : global::Pulumi.CustomResource
     {

@@ -13,12 +13,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleRegistrarDomains = cloudflare.getRegistrarDomains({
+ * const exampleRegistrarDomains = cloudflare.registrar.getDomains({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getRegistrarDomains:getRegistrarDomains has been deprecated in favor of cloudflare:registrar/domains:getDomains */
 export function getRegistrarDomains(args?: GetRegistrarDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistrarDomainsResult> {
+    pulumi.log.warn("getRegistrarDomains is deprecated: cloudflare:index/getRegistrarDomains:getRegistrarDomains has been deprecated in favor of cloudflare:registrar/domains:getDomains")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getRegistrarDomains:getRegistrarDomains", {
@@ -65,12 +67,14 @@ export interface GetRegistrarDomainsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleRegistrarDomains = cloudflare.getRegistrarDomains({
+ * const exampleRegistrarDomains = cloudflare.registrar.getDomains({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getRegistrarDomains:getRegistrarDomains has been deprecated in favor of cloudflare:registrar/domains:getDomains */
 export function getRegistrarDomainsOutput(args?: GetRegistrarDomainsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegistrarDomainsResult> {
+    pulumi.log.warn("getRegistrarDomains is deprecated: cloudflare:index/getRegistrarDomains:getRegistrarDomains has been deprecated in favor of cloudflare:registrar/domains:getDomains")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getRegistrarDomains:getRegistrarDomains", {

@@ -27,16 +27,16 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleMagicTransitCf1Site = new Cloudflare.MagicTransitCf1Site("example_magic_transit_cf1_site", new()
+    ///     var exampleMagicTransitCf1Site = new Cloudflare.Modules.MagicTransitCf1.MagicTransitCf1Site("example_magic_transit_cf1_site", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Bodies = new[]
     ///         {
-    ///             new Cloudflare.Inputs.MagicTransitCf1SiteBodyArgs
+    ///             new Cloudflare.Modules.MagicTransitCf1.Inputs.SiteBodyArgs
     ///             {
     ///                 Name = "Pad 34",
     ///                 Description = "Launch Pad 34",
-    ///                 Location = new Cloudflare.Inputs.MagicTransitCf1SiteBodyLocationArgs
+    ///                 Location = new Cloudflare.Modules.MagicTransitCf1.Inputs.SiteBodyLocationArgs
     ///                 {
     ///                     Lat = 28.521339842093845,
     ///                     Long = -80.56092644815843,
@@ -55,6 +55,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/magicTransitCf1Site:MagicTransitCf1Site example '&lt;account_id&gt;/&lt;cf1_site_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/magicTransitCf1Site:MagicTransitCf1Site has been deprecated in favor of cloudflare:magicTransitCf1/site:Site")]
     [CloudflareResourceType("cloudflare:index/magicTransitCf1Site:MagicTransitCf1Site")]
     public partial class MagicTransitCf1Site : global::Pulumi.CustomResource
     {

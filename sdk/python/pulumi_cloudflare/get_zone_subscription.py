@@ -22,6 +22,8 @@ __all__ = [
     'get_zone_subscription_output',
 ]
 
+warnings.warn("""cloudflare:index/getZoneSubscription:getZoneSubscription has been deprecated in favor of cloudflare:zone/subscription:getSubscription""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZoneSubscriptionResult:
     """
@@ -162,12 +164,13 @@ def get_zone_subscription(zone_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zone_subscription = cloudflare.get_zone_subscription(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_zone_subscription = cloudflare.zone.get_subscription(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str zone_id: Identifier
     """
+    pulumi.log.warn("""get_zone_subscription is deprecated: cloudflare:index/getZoneSubscription:getZoneSubscription has been deprecated in favor of cloudflare:zone/subscription:getSubscription""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -197,12 +200,13 @@ def get_zone_subscription_output(zone_id: pulumi.Input[Optional[Optional[_builti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zone_subscription = cloudflare.get_zone_subscription(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_zone_subscription = cloudflare.zone.get_subscription(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str zone_id: Identifier
     """
+    pulumi.log.warn("""get_zone_subscription is deprecated: cloudflare:index/getZoneSubscription:getZoneSubscription has been deprecated in favor of cloudflare:zone/subscription:getSubscription""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

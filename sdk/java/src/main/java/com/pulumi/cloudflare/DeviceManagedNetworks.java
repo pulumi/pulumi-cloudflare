@@ -7,13 +7,11 @@ import com.pulumi.cloudflare.DeviceManagedNetworksArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.DeviceManagedNetworksState;
 import com.pulumi.cloudflare.outputs.DeviceManagedNetworksConfig;
-import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
-import java.util.List;
 import javax.annotation.Nullable;
 
 /**
@@ -30,9 +28,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDeviceManagedNetworks;
- * import com.pulumi.cloudflare.ZeroTrustDeviceManagedNetworksArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceManagedNetworksConfigArgs;
+ * import com.pulumi.cloudflare.zeroTrustDeviceManagedNetworks.ZeroTrustDeviceManagedNetworks;
+ * import com.pulumi.cloudflare.zeroTrustDeviceManagedNetworks.ZeroTrustDeviceManagedNetworksArgs;
+ * import com.pulumi.cloudflare.zeroTrustDeviceManagedNetworks.inputs.ZeroTrustDeviceManagedNetworksConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -178,9 +176,6 @@ public class DeviceManagedNetworks extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .aliases(List.of(
-                Output.of(Alias.builder().type("cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks").build())
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

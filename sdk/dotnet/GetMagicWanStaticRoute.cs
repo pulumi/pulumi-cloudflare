@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getMagicWanStaticRoute:getMagicWanStaticRoute has been deprecated in favor of cloudflare:magicWan/staticRoute:getStaticRoute")]
     public static class GetMagicWanStaticRoute
     {
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicWanStaticRoute = Cloudflare.GetMagicWanStaticRoute.Invoke(new()
+        ///     var exampleMagicWanStaticRoute = Cloudflare.Modules.MagicWan.GetStaticRoute.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         RouteId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -59,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicWanStaticRoute = Cloudflare.GetMagicWanStaticRoute.Invoke(new()
+        ///     var exampleMagicWanStaticRoute = Cloudflare.Modules.MagicWan.GetStaticRoute.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         RouteId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -89,7 +90,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicWanStaticRoute = Cloudflare.GetMagicWanStaticRoute.Invoke(new()
+        ///     var exampleMagicWanStaticRoute = Cloudflare.Modules.MagicWan.GetStaticRoute.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         RouteId = "023e105f4ecef8ad9ca31a8372d0c353",

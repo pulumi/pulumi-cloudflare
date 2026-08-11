@@ -22,6 +22,8 @@ __all__ = [
     'get_secrets_store_secrets_output',
 ]
 
+warnings.warn("""cloudflare:index/getSecretsStoreSecrets:getSecretsStoreSecrets has been deprecated in favor of cloudflare:secretsStore/secrets:getSecrets""", DeprecationWarning)
+
 @pulumi.output_type
 class GetSecretsStoreSecretsResult:
     """
@@ -150,7 +152,7 @@ def get_secrets_store_secrets(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_secrets_store_secrets = cloudflare.get_secrets_store_secrets(account_id="985e105f4ecef8ad9ca31a8372d0c353",
+    example_secrets_store_secrets = cloudflare.secretsstore.get_secrets(account_id="985e105f4ecef8ad9ca31a8372d0c353",
         store_id="023e105f4ecef8ad9ca31a8372d0c353",
         scopes=["workers"],
         search="search")
@@ -165,6 +167,7 @@ def get_secrets_store_secrets(account_id: Optional[_builtins.str] = None,
     :param Sequence[_builtins.str] scopes: Only secrets with the given scopes will be returned.
     :param _builtins.str search: Search secrets using a filter string, filtering across name and comment.
     """
+    pulumi.log.warn("""get_secrets_store_secrets is deprecated: cloudflare:index/getSecretsStoreSecrets:getSecretsStoreSecrets has been deprecated in favor of cloudflare:secretsStore/secrets:getSecrets""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction
@@ -205,7 +208,7 @@ def get_secrets_store_secrets_output(account_id: pulumi.Input[Optional[_builtins
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_secrets_store_secrets = cloudflare.get_secrets_store_secrets(account_id="985e105f4ecef8ad9ca31a8372d0c353",
+    example_secrets_store_secrets = cloudflare.secretsstore.get_secrets(account_id="985e105f4ecef8ad9ca31a8372d0c353",
         store_id="023e105f4ecef8ad9ca31a8372d0c353",
         scopes=["workers"],
         search="search")
@@ -220,6 +223,7 @@ def get_secrets_store_secrets_output(account_id: pulumi.Input[Optional[_builtins
     :param Sequence[_builtins.str] scopes: Only secrets with the given scopes will be returned.
     :param _builtins.str search: Search secrets using a filter string, filtering across name and comment.
     """
+    pulumi.log.warn("""get_secrets_store_secrets is deprecated: cloudflare:index/getSecretsStoreSecrets:getSecretsStoreSecrets has been deprecated in favor of cloudflare:secretsStore/secrets:getSecrets""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction

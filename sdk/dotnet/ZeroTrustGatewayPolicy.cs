@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustGatewayPolicy = new Cloudflare.ZeroTrustGatewayPolicy("example_zero_trust_gateway_policy", new()
+    ///     var exampleZeroTrustGatewayPolicy = new Cloudflare.Modules.ZeroTrustGateway.ZeroTrustGatewayPolicy("example_zero_trust_gateway_policy", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Action = "allow",
@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
     ///         Description = "Block bad websites based on their host name.",
     ///         DevicePosture = "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
     ///         Enabled = true,
-    ///         Expiration = new Cloudflare.Inputs.ZeroTrustGatewayPolicyExpirationArgs
+    ///         Expiration = new Cloudflare.Modules.ZeroTrustGateway.Inputs.PolicyExpirationArgs
     ///         {
     ///             ExpiresAt = "2014-01-01T05:20:20Z",
     ///             Duration = 10,
@@ -39,7 +39,7 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         Identity = "any(identity.groups.name[*] in {\"finance\"})",
     ///         Precedence = 0,
-    ///         RuleSettings = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsArgs
+    ///         RuleSettings = new Cloudflare.Modules.ZeroTrustGateway.Inputs.PolicyRuleSettingsArgs
     ///         {
     ///             AddHeaders = 
     ///             {
@@ -54,11 +54,11 @@ namespace Pulumi.Cloudflare
     ///                 } },
     ///             },
     ///             AllowChildBypass = false,
-    ///             AuditSsh = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs
+    ///             AuditSsh = new Cloudflare.Modules.ZeroTrustGateway.Inputs.PolicyRuleSettingsAuditSshArgs
     ///             {
     ///                 CommandLogging = false,
     ///             },
-    ///             BisoAdminControls = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs
+    ///             BisoAdminControls = new Cloudflare.Modules.ZeroTrustGateway.Inputs.PolicyRuleSettingsBisoAdminControlsArgs
     ///             {
     ///                 Copy = "remote_only",
     ///                 Dcp = true,
@@ -74,7 +74,7 @@ namespace Pulumi.Cloudflare
     ///                 Version = "v1",
     ///                 WmId = "475345dc-5299-4b6e-8f6a-3d3e4c8e9f1a",
     ///             },
-    ///             BlockPage = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs
+    ///             BlockPage = new Cloudflare.Modules.ZeroTrustGateway.Inputs.PolicyRuleSettingsBlockPageArgs
     ///             {
     ///                 TargetUri = "https://example.com",
     ///                 IncludeContext = true,
@@ -82,7 +82,7 @@ namespace Pulumi.Cloudflare
     ///             BlockPageEnabled = true,
     ///             BlockReason = "This website is a security risk",
     ///             BypassParentRule = false,
-    ///             CheckSession = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs
+    ///             CheckSession = new Cloudflare.Modules.ZeroTrustGateway.Inputs.PolicyRuleSettingsCheckSessionArgs
     ///             {
     ///                 Duration = "300s",
     ///                 Enforce = true,
@@ -92,11 +92,11 @@ namespace Pulumi.Cloudflare
     ///                 "X-Old-Header",
     ///                 "X-Remove-Me",
     ///             },
-    ///             DnsResolvers = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs
+    ///             DnsResolvers = new Cloudflare.Modules.ZeroTrustGateway.Inputs.PolicyRuleSettingsDnsResolversArgs
     ///             {
     ///                 Ipv4s = new[]
     ///                 {
-    ///                     new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args
+    ///                     new Cloudflare.Modules.ZeroTrustGateway.Inputs.PolicyRuleSettingsDnsResolversIpv4Args
     ///                     {
     ///                         Ip = "2.2.2.2",
     ///                         Port = 5053,
@@ -106,7 +106,7 @@ namespace Pulumi.Cloudflare
     ///                 },
     ///                 Ipv6s = new[]
     ///                 {
-    ///                     new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6Args
+    ///                     new Cloudflare.Modules.ZeroTrustGateway.Inputs.PolicyRuleSettingsDnsResolversIpv6Args
     ///                     {
     ///                         Ip = "2001:DB8::",
     ///                         Port = 5053,
@@ -115,13 +115,13 @@ namespace Pulumi.Cloudflare
     ///                     },
     ///                 },
     ///             },
-    ///             Egress = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsEgressArgs
+    ///             Egress = new Cloudflare.Modules.ZeroTrustGateway.Inputs.PolicyRuleSettingsEgressArgs
     ///             {
     ///                 Ipv4 = "192.0.2.2",
     ///                 Ipv4Fallback = "192.0.2.3",
     ///                 Ipv6 = "2001:DB8::/64",
     ///             },
-    ///             ForensicCopy = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs
+    ///             ForensicCopy = new Cloudflare.Modules.ZeroTrustGateway.Inputs.PolicyRuleSettingsForensicCopyArgs
     ///             {
     ///                 Enabled = true,
     ///             },
@@ -129,12 +129,12 @@ namespace Pulumi.Cloudflare
     ///             InsecureDisableDnssecValidation = false,
     ///             IpCategories = true,
     ///             IpIndicatorFeeds = true,
-    ///             L4override = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs
+    ///             L4override = new Cloudflare.Modules.ZeroTrustGateway.Inputs.PolicyRuleSettingsL4overrideArgs
     ///             {
     ///                 Ip = "1.1.1.1",
     ///                 Port = 0,
     ///             },
-    ///             NotificationSettings = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs
+    ///             NotificationSettings = new Cloudflare.Modules.ZeroTrustGateway.Inputs.PolicyRuleSettingsNotificationSettingsArgs
     ///             {
     ///                 Enabled = true,
     ///                 IncludeContext = true,
@@ -147,24 +147,24 @@ namespace Pulumi.Cloudflare
     ///                 "1.1.1.1",
     ///                 "2.2.2.2",
     ///             },
-    ///             PayloadLog = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgs
+    ///             PayloadLog = new Cloudflare.Modules.ZeroTrustGateway.Inputs.PolicyRuleSettingsPayloadLogArgs
     ///             {
     ///                 Enabled = true,
     ///             },
-    ///             Quarantine = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsQuarantineArgs
+    ///             Quarantine = new Cloudflare.Modules.ZeroTrustGateway.Inputs.PolicyRuleSettingsQuarantineArgs
     ///             {
     ///                 FileTypes = new[]
     ///                 {
     ///                     "exe",
     ///                 },
     ///             },
-    ///             Redirect = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsRedirectArgs
+    ///             Redirect = new Cloudflare.Modules.ZeroTrustGateway.Inputs.PolicyRuleSettingsRedirectArgs
     ///             {
     ///                 TargetUri = "https://example.com",
     ///                 IncludeContext = true,
     ///                 PreservePathAndQuery = true,
     ///             },
-    ///             ResolveDnsInternally = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs
+    ///             ResolveDnsInternally = new Cloudflare.Modules.ZeroTrustGateway.Inputs.PolicyRuleSettingsResolveDnsInternallyArgs
     ///             {
     ///                 Fallback = "none",
     ///                 ViewId = "view_id",
@@ -177,12 +177,12 @@ namespace Pulumi.Cloudflare
     ///                     "user=@{identity.name}",
     ///                 } },
     ///             },
-    ///             UntrustedCert = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs
+    ///             UntrustedCert = new Cloudflare.Modules.ZeroTrustGateway.Inputs.PolicyRuleSettingsUntrustedCertArgs
     ///             {
     ///                 Action = "error",
     ///             },
     ///         },
-    ///         Schedule = new Cloudflare.Inputs.ZeroTrustGatewayPolicyScheduleArgs
+    ///         Schedule = new Cloudflare.Modules.ZeroTrustGateway.Inputs.PolicyScheduleArgs
     ///         {
     ///             Fri = "08:00-12:30,13:30-17:00",
     ///             Mon = "08:00-12:30,13:30-17:00",
@@ -205,6 +205,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy example '&lt;account_id&gt;/&lt;rule_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy has been deprecated in favor of cloudflare:zeroTrustGateway/policy:Policy")]
     [CloudflareResourceType("cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy")]
     public partial class ZeroTrustGatewayPolicy : global::Pulumi.CustomResource
     {

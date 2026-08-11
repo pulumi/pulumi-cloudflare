@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_gateway_settings_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustGatewaySettings:getZeroTrustGatewaySettings has been deprecated in favor of cloudflare:zeroTrustGateway/settings:getSettings""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustGatewaySettingsResult:
     """
@@ -98,9 +100,10 @@ def get_zero_trust_gateway_settings(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_gateway_settings = cloudflare.get_zero_trust_gateway_settings(account_id="699d98642c564d2e855e9661899b7252")
+    example_zero_trust_gateway_settings = cloudflare.zerotrustgateway.get_settings(account_id="699d98642c564d2e855e9661899b7252")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_gateway_settings is deprecated: cloudflare:index/getZeroTrustGatewaySettings:getZeroTrustGatewaySettings has been deprecated in favor of cloudflare:zeroTrustGateway/settings:getSettings""")
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -121,9 +124,10 @@ def get_zero_trust_gateway_settings_output(account_id: pulumi.Input[Optional[Opt
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_gateway_settings = cloudflare.get_zero_trust_gateway_settings(account_id="699d98642c564d2e855e9661899b7252")
+    example_zero_trust_gateway_settings = cloudflare.zerotrustgateway.get_settings(account_id="699d98642c564d2e855e9661899b7252")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_gateway_settings is deprecated: cloudflare:index/getZeroTrustGatewaySettings:getZeroTrustGatewaySettings has been deprecated in favor of cloudflare:zeroTrustGateway/settings:getSettings""")
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

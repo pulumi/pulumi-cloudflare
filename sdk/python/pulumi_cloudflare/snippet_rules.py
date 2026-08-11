@@ -98,8 +98,13 @@ class _SnippetRulesState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/snippetRules:SnippetRules has been deprecated in favor of cloudflare:snippetRules/snippetRules:SnippetRules""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/snippetRules:SnippetRules")
 class SnippetRules(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/snippetRules:SnippetRules has been deprecated in favor of cloudflare:snippetRules/snippetRules:SnippetRules""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -119,7 +124,7 @@ class SnippetRules(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_snippet_rules = cloudflare.SnippetRules("example_snippet_rules",
+        example_snippet_rules = cloudflare.snippetrules.SnippetRules("example_snippet_rules",
             zone_id="9f1839b6152d298aca64c4e906b6d074",
             rules=[{
                 "expression": "ip.src eq 1.1.1.1",
@@ -159,7 +164,7 @@ class SnippetRules(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_snippet_rules = cloudflare.SnippetRules("example_snippet_rules",
+        example_snippet_rules = cloudflare.snippetrules.SnippetRules("example_snippet_rules",
             zone_id="9f1839b6152d298aca64c4e906b6d074",
             rules=[{
                 "expression": "ip.src eq 1.1.1.1",
@@ -194,6 +199,7 @@ class SnippetRules(pulumi.CustomResource):
                  rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnippetRulesRuleArgs', 'SnippetRulesRuleArgsDict']]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""SnippetRules is deprecated: cloudflare:index/snippetRules:SnippetRules has been deprecated in favor of cloudflare:snippetRules/snippetRules:SnippetRules""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

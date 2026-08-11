@@ -22,6 +22,8 @@ __all__ = [
     'get_hyperdrive_configs_output',
 ]
 
+warnings.warn("""cloudflare:index/getHyperdriveConfigs:getHyperdriveConfigs has been deprecated in favor of cloudflare:hyperdrive/configs:getConfigs""", DeprecationWarning)
+
 @pulumi.output_type
 class GetHyperdriveConfigsResult:
     """
@@ -89,13 +91,14 @@ def get_hyperdrive_configs(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_hyperdrive_configs = cloudflare.get_hyperdrive_configs(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_hyperdrive_configs = cloudflare.hyperdrive.get_configs(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Define configurations using a unique string identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_hyperdrive_configs is deprecated: cloudflare:index/getHyperdriveConfigs:getHyperdriveConfigs has been deprecated in favor of cloudflare:hyperdrive/configs:getConfigs""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -121,13 +124,14 @@ def get_hyperdrive_configs_output(account_id: pulumi.Input[Optional[Optional[_bu
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_hyperdrive_configs = cloudflare.get_hyperdrive_configs(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_hyperdrive_configs = cloudflare.hyperdrive.get_configs(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Define configurations using a unique string identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_hyperdrive_configs is deprecated: cloudflare:index/getHyperdriveConfigs:getHyperdriveConfigs has been deprecated in favor of cloudflare:hyperdrive/configs:getConfigs""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

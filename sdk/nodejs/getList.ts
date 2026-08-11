@@ -17,14 +17,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleList = cloudflare.getList({
+ * const exampleList = cloudflare.list.getList({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     listId: "2c0fc9fa937b11eaa1b71c4d701ab86e",
  *     search: "1.1.1.1",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getList:getList has been deprecated in favor of cloudflare:list/list:getList */
 export function getList(args: GetListArgs, opts?: pulumi.InvokeOptions): Promise<GetListResult> {
+    pulumi.log.warn("getList is deprecated: cloudflare:index/getList:getList has been deprecated in favor of cloudflare:list/list:getList")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getList:getList", {
         "accountId": args.accountId,
@@ -72,7 +74,7 @@ export interface GetListResult {
      */
     readonly id: string;
     /**
-     * The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+     * The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.list.Item`.
      */
     readonly items: outputs.GetListItem[];
     /**
@@ -116,14 +118,16 @@ export interface GetListResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleList = cloudflare.getList({
+ * const exampleList = cloudflare.list.getList({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     listId: "2c0fc9fa937b11eaa1b71c4d701ab86e",
  *     search: "1.1.1.1",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getList:getList has been deprecated in favor of cloudflare:list/list:getList */
 export function getListOutput(args: GetListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetListResult> {
+    pulumi.log.warn("getList is deprecated: cloudflare:index/getList:getList has been deprecated in favor of cloudflare:list/list:getList")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getList:getList", {
         "accountId": args.accountId,

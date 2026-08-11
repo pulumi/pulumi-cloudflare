@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getPipelineSinks:getPipelineSinks has been deprecated in favor of cloudflare:pipeline/sinks:getSinks")]
     public static class GetPipelineSinks
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var examplePipelineSinks = Cloudflare.GetPipelineSinks.Invoke(new()
+        ///     var examplePipelineSinks = Cloudflare.Modules.Pipeline.GetSinks.Invoke(new()
         ///     {
         ///         AccountId = "0123105f4ecef8ad9ca31a8372d0c353",
         ///         PipelineId = "pipeline_id",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var examplePipelineSinks = Cloudflare.GetPipelineSinks.Invoke(new()
+        ///     var examplePipelineSinks = Cloudflare.Modules.Pipeline.GetSinks.Invoke(new()
         ///     {
         ///         AccountId = "0123105f4ecef8ad9ca31a8372d0c353",
         ///         PipelineId = "pipeline_id",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var examplePipelineSinks = Cloudflare.GetPipelineSinks.Invoke(new()
+        ///     var examplePipelineSinks = Cloudflare.Modules.Pipeline.GetSinks.Invoke(new()
         ///     {
         ///         AccountId = "0123105f4ecef8ad9ca31a8372d0c353",
         ///         PipelineId = "pipeline_id",

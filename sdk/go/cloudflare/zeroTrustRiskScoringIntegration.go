@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustriskscoring"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustRiskScoringIntegration(ctx, "example_zero_trust_risk_scoring_integration", &cloudflare.ZeroTrustRiskScoringIntegrationArgs{
+//			_, err := zerotrustriskscoring.NewIntegration(ctx, "example_zero_trust_risk_scoring_integration", &zerotrustriskscoring.IntegrationArgs{
 //				AccountId:       pulumi.String("account_id"),
 //				IntegrationType: pulumi.String("Okta"),
 //				TenantUrl:       pulumi.String("https://example.com"),
@@ -51,6 +51,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration example '<account_id>/<integration_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integration:Integration
 type ZeroTrustRiskScoringIntegration struct {
 	pulumi.CustomResourceState
 

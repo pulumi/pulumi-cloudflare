@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCloudforceOneRequestAsset = new Cloudflare.CloudforceOneRequestAsset("example_cloudforce_one_request_asset", new()
+    ///     var exampleCloudforceOneRequestAsset = new Cloudflare.Modules.CloudforceOneRequest.CloudforceOneRequestAsset("example_cloudforce_one_request_asset", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         RequestId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
@@ -42,6 +42,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset example '&lt;account_id&gt;/&lt;request_id&gt;/&lt;asset_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset has been deprecated in favor of cloudflare:cloudforceOneRequest/asset:Asset")]
     [CloudflareResourceType("cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset")]
     public partial class CloudforceOneRequestAsset : global::Pulumi.CustomResource
     {

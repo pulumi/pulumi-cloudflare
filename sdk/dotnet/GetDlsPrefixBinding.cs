@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getDlsPrefixBinding:getDlsPrefixBinding has been deprecated in favor of cloudflare:dlsPrefix/binding:getBinding")]
     public static class GetDlsPrefixBinding
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDlsPrefixBinding = Cloudflare.GetDlsPrefixBinding.Invoke(new()
+        ///     var exampleDlsPrefixBinding = Cloudflare.Modules.DlsPrefix.GetBinding.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         BindingId = "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDlsPrefixBinding = Cloudflare.GetDlsPrefixBinding.Invoke(new()
+        ///     var exampleDlsPrefixBinding = Cloudflare.Modules.DlsPrefix.GetBinding.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         BindingId = "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDlsPrefixBinding = Cloudflare.GetDlsPrefixBinding.Invoke(new()
+        ///     var exampleDlsPrefixBinding = Cloudflare.Modules.DlsPrefix.GetBinding.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         BindingId = "a1b2c3d4-e5f6-7890-abcd-ef1234567890",

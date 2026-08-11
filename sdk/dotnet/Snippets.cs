@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/snippets:Snippets has been deprecated in favor of cloudflare:snippets/snippets:Snippets")]
     [CloudflareResourceType("cloudflare:index/snippets:Snippets")]
     public partial class Snippets : global::Pulumi.CustomResource
     {

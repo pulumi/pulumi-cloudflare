@@ -63,8 +63,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZoneHold;
- * import com.pulumi.cloudflare.ZoneHoldArgs;
+ * import com.pulumi.cloudflare.zone.Hold;
+ * import com.pulumi.cloudflare.zone.HoldArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZoneHold = new ZoneHold("exampleZoneHold", ZoneHoldArgs.builder()
+ *         var exampleZoneHold = new Hold("exampleZoneHold", HoldArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .build());
  * 
@@ -93,7 +93,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zoneHold:ZoneHold example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zoneHold:ZoneHold has been deprecated in favor of cloudflare:zone/hold:Hold
+ * 
  */
+@Deprecated /* cloudflare:index/zoneHold:ZoneHold has been deprecated in favor of cloudflare:zone/hold:Hold */
 @ResourceType(type="cloudflare:index/zoneHold:ZoneHold")
 public class ZoneHold extends com.pulumi.resources.CustomResource {
     @Export(name="hold", refs={Boolean.class}, tree="[0]")

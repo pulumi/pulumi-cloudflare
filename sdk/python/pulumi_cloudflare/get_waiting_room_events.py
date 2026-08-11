@@ -22,6 +22,8 @@ __all__ = [
     'get_waiting_room_events_output',
 ]
 
+warnings.warn("""cloudflare:index/getWaitingRoomEvents:getWaitingRoomEvents has been deprecated in favor of cloudflare:waitingRoom/events:getEvents""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWaitingRoomEventsResult:
     """
@@ -99,7 +101,7 @@ def get_waiting_room_events(max_items: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_waiting_room_events = cloudflare.get_waiting_room_events(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_waiting_room_events = cloudflare.waitingroom.get_events(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         waiting_room_id="699d98642c564d2e855e9661899b7252")
     ```
 
@@ -107,6 +109,7 @@ def get_waiting_room_events(max_items: Optional[_builtins.int] = None,
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_waiting_room_events is deprecated: cloudflare:index/getWaitingRoomEvents:getWaitingRoomEvents has been deprecated in favor of cloudflare:waitingRoom/events:getEvents""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['waitingRoomId'] = waiting_room_id
@@ -135,7 +138,7 @@ def get_waiting_room_events_output(max_items: pulumi.Input[Optional[Optional[_bu
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_waiting_room_events = cloudflare.get_waiting_room_events(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_waiting_room_events = cloudflare.waitingroom.get_events(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         waiting_room_id="699d98642c564d2e855e9661899b7252")
     ```
 
@@ -143,6 +146,7 @@ def get_waiting_room_events_output(max_items: pulumi.Input[Optional[Optional[_bu
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_waiting_room_events is deprecated: cloudflare:index/getWaitingRoomEvents:getWaitingRoomEvents has been deprecated in favor of cloudflare:waitingRoom/events:getEvents""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['waitingRoomId'] = waiting_room_id

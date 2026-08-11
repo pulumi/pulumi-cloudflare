@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getAccount:getAccount has been deprecated in favor of cloudflare:account/account:getAccount")]
     public static class GetAccount
     {
         /// <summary>
@@ -54,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccount = Cloudflare.GetAccount.Invoke(new()
+        ///     var exampleAccount = Cloudflare.Modules.Account.GetAccount.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -108,7 +109,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccount = Cloudflare.GetAccount.Invoke(new()
+        ///     var exampleAccount = Cloudflare.Modules.Account.GetAccount.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -162,7 +163,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccount = Cloudflare.GetAccount.Invoke(new()
+        ///     var exampleAccount = Cloudflare.Modules.Account.GetAccount.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustGatewayCategoriesList = cloudflare.getZeroTrustGatewayCategoriesList({
+ * const exampleZeroTrustGatewayCategoriesList = cloudflare.zerotrustgateway.getCategoriesList({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustGatewayCategoriesList:getZeroTrustGatewayCategoriesList has been deprecated in favor of cloudflare:zeroTrustGateway/categoriesList:getCategoriesList */
 export function getZeroTrustGatewayCategoriesList(args?: GetZeroTrustGatewayCategoriesListArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewayCategoriesListResult> {
+    pulumi.log.warn("getZeroTrustGatewayCategoriesList is deprecated: cloudflare:index/getZeroTrustGatewayCategoriesList:getZeroTrustGatewayCategoriesList has been deprecated in favor of cloudflare:zeroTrustGateway/categoriesList:getCategoriesList")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustGatewayCategoriesList:getZeroTrustGatewayCategoriesList", {
@@ -75,12 +77,14 @@ export interface GetZeroTrustGatewayCategoriesListResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustGatewayCategoriesList = cloudflare.getZeroTrustGatewayCategoriesList({
+ * const exampleZeroTrustGatewayCategoriesList = cloudflare.zerotrustgateway.getCategoriesList({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustGatewayCategoriesList:getZeroTrustGatewayCategoriesList has been deprecated in favor of cloudflare:zeroTrustGateway/categoriesList:getCategoriesList */
 export function getZeroTrustGatewayCategoriesListOutput(args?: GetZeroTrustGatewayCategoriesListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewayCategoriesListResult> {
+    pulumi.log.warn("getZeroTrustGatewayCategoriesList is deprecated: cloudflare:index/getZeroTrustGatewayCategoriesList:getZeroTrustGatewayCategoriesList has been deprecated in favor of cloudflare:zeroTrustGateway/categoriesList:getCategoriesList")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustGatewayCategoriesList:getZeroTrustGatewayCategoriesList", {

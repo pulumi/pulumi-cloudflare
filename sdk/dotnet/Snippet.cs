@@ -25,13 +25,13 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleSnippet = new Cloudflare.Snippet("example_snippet", new()
+    ///     var exampleSnippet = new Cloudflare.Modules.Snippet.Snippet("example_snippet", new()
     ///     {
     ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
     ///         SnippetName = "my_snippet",
     ///         Files = new[]
     ///         {
-    ///             new Cloudflare.Inputs.SnippetFileArgs
+    ///             new Cloudflare.Modules.Snippet.Inputs.SnippetFileArgs
     ///             {
     ///                 Name = "main.js",
     ///                 Content = @"export default {
@@ -42,7 +42,7 @@ namespace Pulumi.Cloudflare
     /// ",
     ///             },
     ///         },
-    ///         Metadata = new Cloudflare.Inputs.SnippetMetadataArgs
+    ///         Metadata = new Cloudflare.Modules.Snippet.Inputs.SnippetMetadataArgs
     ///         {
     ///             MainModule = "main.js",
     ///         },
@@ -57,6 +57,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/snippet:Snippet example '&lt;zone_id&gt;/&lt;snippet_name&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/snippet:Snippet has been deprecated in favor of cloudflare:snippet/snippet:Snippet")]
     [CloudflareResourceType("cloudflare:index/snippet:Snippet")]
     public partial class Snippet : global::Pulumi.CustomResource
     {

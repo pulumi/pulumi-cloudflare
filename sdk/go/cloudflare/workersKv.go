@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/workerskv"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWorkersKv(ctx, "example_workers_kv", &cloudflare.WorkersKvArgs{
+//			_, err := workerskv.NewWorkersKv(ctx, "example_workers_kv", &workerskv.WorkersKvArgs{
 //				AccountId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				NamespaceId: pulumi.String("0f2ac74b498b48028cb68387c421e279"),
 //				KeyName:     pulumi.String("My-Key"),
@@ -52,6 +52,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/workersKv:WorkersKv example '<account_id>/<namespace_id>/<key_name>'
 // ```
+//
+// Deprecated: cloudflare:index/workersKv:WorkersKv has been deprecated in favor of cloudflare:workersKv/workersKv:WorkersKv
 type WorkersKv struct {
 	pulumi.CustomResourceState
 

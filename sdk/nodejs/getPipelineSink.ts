@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const examplePipelineSink = cloudflare.getPipelineSink({
+ * const examplePipelineSink = cloudflare.pipeline.getSink({
  *     accountId: "0123105f4ecef8ad9ca31a8372d0c353",
  *     sinkId: "0223105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getPipelineSink:getPipelineSink has been deprecated in favor of cloudflare:pipeline/sink:getSink */
 export function getPipelineSink(args?: GetPipelineSinkArgs, opts?: pulumi.InvokeOptions): Promise<GetPipelineSinkResult> {
+    pulumi.log.warn("getPipelineSink is deprecated: cloudflare:index/getPipelineSink:getPipelineSink has been deprecated in favor of cloudflare:pipeline/sink:getSink")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getPipelineSink:getPipelineSink", {
@@ -96,13 +98,15 @@ export interface GetPipelineSinkResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const examplePipelineSink = cloudflare.getPipelineSink({
+ * const examplePipelineSink = cloudflare.pipeline.getSink({
  *     accountId: "0123105f4ecef8ad9ca31a8372d0c353",
  *     sinkId: "0223105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getPipelineSink:getPipelineSink has been deprecated in favor of cloudflare:pipeline/sink:getSink */
 export function getPipelineSinkOutput(args?: GetPipelineSinkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPipelineSinkResult> {
+    pulumi.log.warn("getPipelineSink is deprecated: cloudflare:index/getPipelineSink:getPipelineSink has been deprecated in favor of cloudflare:pipeline/sink:getSink")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getPipelineSink:getPipelineSink", {

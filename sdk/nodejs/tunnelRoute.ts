@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustTunnelCloudflaredRoute = new cloudflare.ZeroTrustTunnelCloudflaredRoute("example_zero_trust_tunnel_cloudflared_route", {
+ * const exampleZeroTrustTunnelCloudflaredRoute = new cloudflare.zerotrusttunnelcloudflared.Route("example_zero_trust_tunnel_cloudflared_route", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     network: "172.16.0.0/16",
  *     tunnelId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
@@ -134,8 +134,6 @@ export class TunnelRoute extends pulumi.CustomResource {
             resourceInputs["deletedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/tunnelRoute:TunnelRoute" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(TunnelRoute.__pulumiType, name, resourceInputs, opts);
     }
 }

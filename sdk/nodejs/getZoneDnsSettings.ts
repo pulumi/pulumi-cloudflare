@@ -20,12 +20,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneDnsSettings = cloudflare.getZoneDnsSettings({
+ * const exampleZoneDnsSettings = cloudflare.zone.getDnsSettings({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZoneDnsSettings:getZoneDnsSettings has been deprecated in favor of cloudflare:zone/dnsSettings:getDnsSettings */
 export function getZoneDnsSettings(args?: GetZoneDnsSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneDnsSettingsResult> {
+    pulumi.log.warn("getZoneDnsSettings is deprecated: cloudflare:index/getZoneDnsSettings:getZoneDnsSettings has been deprecated in favor of cloudflare:zone/dnsSettings:getDnsSettings")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZoneDnsSettings:getZoneDnsSettings", {
@@ -103,12 +105,14 @@ export interface GetZoneDnsSettingsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneDnsSettings = cloudflare.getZoneDnsSettings({
+ * const exampleZoneDnsSettings = cloudflare.zone.getDnsSettings({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZoneDnsSettings:getZoneDnsSettings has been deprecated in favor of cloudflare:zone/dnsSettings:getDnsSettings */
 export function getZoneDnsSettingsOutput(args?: GetZoneDnsSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneDnsSettingsResult> {
+    pulumi.log.warn("getZoneDnsSettings is deprecated: cloudflare:index/getZoneDnsSettings:getZoneDnsSettings has been deprecated in favor of cloudflare:zone/dnsSettings:getDnsSettings")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZoneDnsSettings:getZoneDnsSettings", {

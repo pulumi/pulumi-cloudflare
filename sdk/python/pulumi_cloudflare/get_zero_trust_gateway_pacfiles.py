@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_gateway_pacfiles_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustGatewayPacfiles:getZeroTrustGatewayPacfiles has been deprecated in favor of cloudflare:zeroTrustGateway/pacfiles:getPacfiles""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustGatewayPacfilesResult:
     """
@@ -86,12 +88,13 @@ def get_zero_trust_gateway_pacfiles(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_gateway_pacfiles = cloudflare.get_zero_trust_gateway_pacfiles(account_id="699d98642c564d2e855e9661899b7252")
+    example_zero_trust_gateway_pacfiles = cloudflare.zerotrustgateway.get_pacfiles(account_id="699d98642c564d2e855e9661899b7252")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_gateway_pacfiles is deprecated: cloudflare:index/getZeroTrustGatewayPacfiles:getZeroTrustGatewayPacfiles has been deprecated in favor of cloudflare:zeroTrustGateway/pacfiles:getPacfiles""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -117,12 +120,13 @@ def get_zero_trust_gateway_pacfiles_output(account_id: pulumi.Input[Optional[Opt
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_gateway_pacfiles = cloudflare.get_zero_trust_gateway_pacfiles(account_id="699d98642c564d2e855e9661899b7252")
+    example_zero_trust_gateway_pacfiles = cloudflare.zerotrustgateway.get_pacfiles(account_id="699d98642c564d2e855e9661899b7252")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_gateway_pacfiles is deprecated: cloudflare:index/getZeroTrustGatewayPacfiles:getZeroTrustGatewayPacfiles has been deprecated in favor of cloudflare:zeroTrustGateway/pacfiles:getPacfiles""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

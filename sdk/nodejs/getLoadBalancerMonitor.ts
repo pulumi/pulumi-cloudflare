@@ -16,13 +16,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleLoadBalancerMonitor = cloudflare.getLoadBalancerMonitor({
+ * const exampleLoadBalancerMonitor = cloudflare.loadbalancermonitor.getLoadBalancerMonitor({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     monitorId: "f1aba936b94213e5b8dca0c0dbf1f9cc",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getLoadBalancerMonitor:getLoadBalancerMonitor has been deprecated in favor of cloudflare:loadBalancerMonitor/loadBalancerMonitor:getLoadBalancerMonitor */
 export function getLoadBalancerMonitor(args: GetLoadBalancerMonitorArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerMonitorResult> {
+    pulumi.log.warn("getLoadBalancerMonitor is deprecated: cloudflare:index/getLoadBalancerMonitor:getLoadBalancerMonitor has been deprecated in favor of cloudflare:loadBalancerMonitor/loadBalancerMonitor:getLoadBalancerMonitor")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getLoadBalancerMonitor:getLoadBalancerMonitor", {
         "accountId": args.accountId,
@@ -134,13 +136,15 @@ export interface GetLoadBalancerMonitorResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleLoadBalancerMonitor = cloudflare.getLoadBalancerMonitor({
+ * const exampleLoadBalancerMonitor = cloudflare.loadbalancermonitor.getLoadBalancerMonitor({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     monitorId: "f1aba936b94213e5b8dca0c0dbf1f9cc",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getLoadBalancerMonitor:getLoadBalancerMonitor has been deprecated in favor of cloudflare:loadBalancerMonitor/loadBalancerMonitor:getLoadBalancerMonitor */
 export function getLoadBalancerMonitorOutput(args: GetLoadBalancerMonitorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadBalancerMonitorResult> {
+    pulumi.log.warn("getLoadBalancerMonitor is deprecated: cloudflare:index/getLoadBalancerMonitor:getLoadBalancerMonitor has been deprecated in favor of cloudflare:loadBalancerMonitor/loadBalancerMonitor:getLoadBalancerMonitor")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getLoadBalancerMonitor:getLoadBalancerMonitor", {
         "accountId": args.accountId,

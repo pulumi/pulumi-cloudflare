@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDeviceDefaultProfile = new cloudflare.ZeroTrustDeviceDefaultProfile("example_zero_trust_device_default_profile", {
+ * const exampleZeroTrustDeviceDefaultProfile = new cloudflare.zerotrustdevicedefaultprofile.ZeroTrustDeviceDefaultProfile("example_zero_trust_device_default_profile", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     allowModeSwitch: true,
  *     allowUpdates: true,
@@ -53,6 +53,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile example '<account_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile
  */
 export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
     /**
@@ -65,6 +67,7 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustDeviceDefaultProfileState, opts?: pulumi.CustomResourceOptions): ZeroTrustDeviceDefaultProfile {
+        pulumi.log.warn("ZeroTrustDeviceDefaultProfile is deprecated: cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile")
         return new ZeroTrustDeviceDefaultProfile(name, <any>state, { ...opts, id: id });
     }
 
@@ -179,8 +182,11 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile */
     constructor(name: string, args: ZeroTrustDeviceDefaultProfileArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile */
     constructor(name: string, argsOrState?: ZeroTrustDeviceDefaultProfileArgs | ZeroTrustDeviceDefaultProfileState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustDeviceDefaultProfile is deprecated: cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

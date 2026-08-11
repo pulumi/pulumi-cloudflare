@@ -19,13 +19,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountRole = cloudflare.getAccountRole({
+ * const exampleAccountRole = cloudflare.account.getRole({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     roleId: "3536bcfad5faccb999b47003c79917fb",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccountRole:getAccountRole has been deprecated in favor of cloudflare:account/role:getRole */
 export function getAccountRole(args: GetAccountRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountRoleResult> {
+    pulumi.log.warn("getAccountRole is deprecated: cloudflare:index/getAccountRole:getAccountRole has been deprecated in favor of cloudflare:account/role:getRole")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountRole:getAccountRole", {
         "accountId": args.accountId,
@@ -86,13 +88,15 @@ export interface GetAccountRoleResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountRole = cloudflare.getAccountRole({
+ * const exampleAccountRole = cloudflare.account.getRole({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     roleId: "3536bcfad5faccb999b47003c79917fb",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccountRole:getAccountRole has been deprecated in favor of cloudflare:account/role:getRole */
 export function getAccountRoleOutput(args: GetAccountRoleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountRoleResult> {
+    pulumi.log.warn("getAccountRole is deprecated: cloudflare:index/getAccountRole:getAccountRole has been deprecated in favor of cloudflare:account/role:getRole")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountRole:getAccountRole", {
         "accountId": args.accountId,

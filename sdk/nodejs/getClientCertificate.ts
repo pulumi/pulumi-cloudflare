@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleClientCertificate = cloudflare.getClientCertificate({
+ * const exampleClientCertificate = cloudflare.client.getCertificate({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     clientCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getClientCertificate:getClientCertificate has been deprecated in favor of cloudflare:client/certificate:getCertificate */
 export function getClientCertificate(args?: GetClientCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetClientCertificateResult> {
+    pulumi.log.warn("getClientCertificate is deprecated: cloudflare:index/getClientCertificate:getClientCertificate has been deprecated in favor of cloudflare:client/certificate:getCertificate")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getClientCertificate:getClientCertificate", {
@@ -148,13 +150,15 @@ export interface GetClientCertificateResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleClientCertificate = cloudflare.getClientCertificate({
+ * const exampleClientCertificate = cloudflare.client.getCertificate({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     clientCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getClientCertificate:getClientCertificate has been deprecated in favor of cloudflare:client/certificate:getCertificate */
 export function getClientCertificateOutput(args?: GetClientCertificateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClientCertificateResult> {
+    pulumi.log.warn("getClientCertificate is deprecated: cloudflare:index/getClientCertificate:getClientCertificate has been deprecated in favor of cloudflare:client/certificate:getCertificate")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getClientCertificate:getClientCertificate", {

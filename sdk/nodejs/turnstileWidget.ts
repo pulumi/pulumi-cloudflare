@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleTurnstileWidget = new cloudflare.TurnstileWidget("example_turnstile_widget", {
+ * const exampleTurnstileWidget = new cloudflare.turnstile.Widget("example_turnstile_widget", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     domains: [
  *         "203.0.113.1",
@@ -40,6 +40,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example '<account_id>/<sitekey>'
  * ```
+ *
+ * @deprecated cloudflare:index/turnstileWidget:TurnstileWidget has been deprecated in favor of cloudflare:turnstile/widget:Widget
  */
 export class TurnstileWidget extends pulumi.CustomResource {
     /**
@@ -52,6 +54,7 @@ export class TurnstileWidget extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TurnstileWidgetState, opts?: pulumi.CustomResourceOptions): TurnstileWidget {
+        pulumi.log.warn("TurnstileWidget is deprecated: cloudflare:index/turnstileWidget:TurnstileWidget has been deprecated in favor of cloudflare:turnstile/widget:Widget")
         return new TurnstileWidget(name, <any>state, { ...opts, id: id });
     }
 
@@ -148,8 +151,11 @@ export class TurnstileWidget extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/turnstileWidget:TurnstileWidget has been deprecated in favor of cloudflare:turnstile/widget:Widget */
     constructor(name: string, args: TurnstileWidgetArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/turnstileWidget:TurnstileWidget has been deprecated in favor of cloudflare:turnstile/widget:Widget */
     constructor(name: string, argsOrState?: TurnstileWidgetArgs | TurnstileWidgetState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("TurnstileWidget is deprecated: cloudflare:index/turnstileWidget:TurnstileWidget has been deprecated in favor of cloudflare:turnstile/widget:Widget")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

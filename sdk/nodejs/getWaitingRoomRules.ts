@@ -16,13 +16,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWaitingRoomRules = cloudflare.getWaitingRoomRules({
+ * const exampleWaitingRoomRules = cloudflare.waitingroom.getRules({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     waitingRoomId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWaitingRoomRules:getWaitingRoomRules has been deprecated in favor of cloudflare:waitingRoom/rules:getRules */
 export function getWaitingRoomRules(args: GetWaitingRoomRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetWaitingRoomRulesResult> {
+    pulumi.log.warn("getWaitingRoomRules is deprecated: cloudflare:index/getWaitingRoomRules:getWaitingRoomRules has been deprecated in favor of cloudflare:waitingRoom/rules:getRules")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWaitingRoomRules:getWaitingRoomRules", {
         "waitingRoomId": args.waitingRoomId,
@@ -89,13 +91,15 @@ export interface GetWaitingRoomRulesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWaitingRoomRules = cloudflare.getWaitingRoomRules({
+ * const exampleWaitingRoomRules = cloudflare.waitingroom.getRules({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     waitingRoomId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWaitingRoomRules:getWaitingRoomRules has been deprecated in favor of cloudflare:waitingRoom/rules:getRules */
 export function getWaitingRoomRulesOutput(args: GetWaitingRoomRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWaitingRoomRulesResult> {
+    pulumi.log.warn("getWaitingRoomRules is deprecated: cloudflare:index/getWaitingRoomRules:getWaitingRoomRules has been deprecated in favor of cloudflare:waitingRoom/rules:getRules")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWaitingRoomRules:getWaitingRoomRules", {
         "waitingRoomId": args.waitingRoomId,

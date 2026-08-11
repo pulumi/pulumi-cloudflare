@@ -25,14 +25,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/workersforplatformsdispatch"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWorkersForPlatformsDispatchNamespace(ctx, "example_workers_for_platforms_dispatch_namespace", &cloudflare.WorkersForPlatformsDispatchNamespaceArgs{
+//			_, err := workersforplatformsdispatch.NewNamespace(ctx, "example_workers_for_platforms_dispatch_namespace", &workersforplatformsdispatch.NamespaceArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:      pulumi.String("my-dispatch-namespace"),
 //			})
@@ -87,12 +87,6 @@ func NewWorkersForPlatformsNamespace(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkersForPlatformsNamespace
 	err := ctx.RegisterResource("cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace", name, args, &resource, opts...)

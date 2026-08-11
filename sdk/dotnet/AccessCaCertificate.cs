@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessShortLivedCertificate = new Cloudflare.ZeroTrustAccessShortLivedCertificate("example_zero_trust_access_short_lived_certificate", new()
+    ///     var exampleZeroTrustAccessShortLivedCertificate = new Cloudflare.Modules.ZeroTrustAccessShortLived.ZeroTrustAccessShortLivedCertificate("example_zero_trust_access_short_lived_certificate", new()
     ///     {
     ///         AppId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
     ///         ZoneId = "zone_id",
@@ -97,10 +97,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/accessCaCertificate:AccessCaCertificate" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

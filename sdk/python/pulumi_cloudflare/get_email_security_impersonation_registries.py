@@ -22,6 +22,8 @@ __all__ = [
     'get_email_security_impersonation_registries_output',
 ]
 
+warnings.warn("""cloudflare:index/getEmailSecurityImpersonationRegistries:getEmailSecurityImpersonationRegistries has been deprecated in favor of cloudflare:emailSecurityImpersonation/registries:getRegistries""", DeprecationWarning)
+
 @pulumi.output_type
 class GetEmailSecurityImpersonationRegistriesResult:
     """
@@ -143,7 +145,7 @@ def get_email_security_impersonation_registries(account_id: Optional[_builtins.s
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_email_security_impersonation_registries = cloudflare.get_email_security_impersonation_registries(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_email_security_impersonation_registries = cloudflare.emailsecurityimpersonation.get_registries(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="asc",
         order="name",
         provenance="A1S_INTERNAL",
@@ -160,6 +162,7 @@ def get_email_security_impersonation_registries(account_id: Optional[_builtins.s
     :param _builtins.str provenance: Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
     :param _builtins.str search: Search term for filtering records. Behavior may change.
     """
+    pulumi.log.warn("""get_email_security_impersonation_registries is deprecated: cloudflare:index/getEmailSecurityImpersonationRegistries:getEmailSecurityImpersonationRegistries has been deprecated in favor of cloudflare:emailSecurityImpersonation/registries:getRegistries""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction
@@ -197,7 +200,7 @@ def get_email_security_impersonation_registries_output(account_id: pulumi.Input[
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_email_security_impersonation_registries = cloudflare.get_email_security_impersonation_registries(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_email_security_impersonation_registries = cloudflare.emailsecurityimpersonation.get_registries(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="asc",
         order="name",
         provenance="A1S_INTERNAL",
@@ -214,6 +217,7 @@ def get_email_security_impersonation_registries_output(account_id: pulumi.Input[
     :param _builtins.str provenance: Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
     :param _builtins.str search: Search term for filtering records. Behavior may change.
     """
+    pulumi.log.warn("""get_email_security_impersonation_registries is deprecated: cloudflare:index/getEmailSecurityImpersonationRegistries:getEmailSecurityImpersonationRegistries has been deprecated in favor of cloudflare:emailSecurityImpersonation/registries:getRegistries""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction

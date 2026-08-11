@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.SsoConnector;
- * import com.pulumi.cloudflare.SsoConnectorArgs;
+ * import com.pulumi.cloudflare.sso.Connector;
+ * import com.pulumi.cloudflare.sso.ConnectorArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleSsoConnector = new SsoConnector("exampleSsoConnector", SsoConnectorArgs.builder()
+ *         var exampleSsoConnector = new Connector("exampleSsoConnector", ConnectorArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .emailDomain("example.com")
  *             .beginVerification(true)
@@ -64,7 +64,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/ssoConnector:SsoConnector example &#39;&lt;account_id&gt;/&lt;sso_connector_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/ssoConnector:SsoConnector has been deprecated in favor of cloudflare:sso/connector:Connector
+ * 
  */
+@Deprecated /* cloudflare:index/ssoConnector:SsoConnector has been deprecated in favor of cloudflare:sso/connector:Connector */
 @ResourceType(type="cloudflare:index/ssoConnector:SsoConnector")
 public class SsoConnector extends com.pulumi.resources.CustomResource {
     /**

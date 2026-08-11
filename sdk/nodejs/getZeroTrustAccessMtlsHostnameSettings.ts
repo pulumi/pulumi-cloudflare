@@ -16,13 +16,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessMtlsHostnameSettings = cloudflare.getZeroTrustAccessMtlsHostnameSettings({
+ * const exampleZeroTrustAccessMtlsHostnameSettings = cloudflare.zerotrustaccessmtls.getHostnameSettings({
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessMtlsHostnameSettings:getZeroTrustAccessMtlsHostnameSettings has been deprecated in favor of cloudflare:zeroTrustAccessMtls/hostnameSettings:getHostnameSettings */
 export function getZeroTrustAccessMtlsHostnameSettings(args?: GetZeroTrustAccessMtlsHostnameSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessMtlsHostnameSettingsResult> {
+    pulumi.log.warn("getZeroTrustAccessMtlsHostnameSettings is deprecated: cloudflare:index/getZeroTrustAccessMtlsHostnameSettings:getZeroTrustAccessMtlsHostnameSettings has been deprecated in favor of cloudflare:zeroTrustAccessMtls/hostnameSettings:getHostnameSettings")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessMtlsHostnameSettings:getZeroTrustAccessMtlsHostnameSettings", {
@@ -82,13 +84,15 @@ export interface GetZeroTrustAccessMtlsHostnameSettingsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessMtlsHostnameSettings = cloudflare.getZeroTrustAccessMtlsHostnameSettings({
+ * const exampleZeroTrustAccessMtlsHostnameSettings = cloudflare.zerotrustaccessmtls.getHostnameSettings({
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessMtlsHostnameSettings:getZeroTrustAccessMtlsHostnameSettings has been deprecated in favor of cloudflare:zeroTrustAccessMtls/hostnameSettings:getHostnameSettings */
 export function getZeroTrustAccessMtlsHostnameSettingsOutput(args?: GetZeroTrustAccessMtlsHostnameSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessMtlsHostnameSettingsResult> {
+    pulumi.log.warn("getZeroTrustAccessMtlsHostnameSettings is deprecated: cloudflare:index/getZeroTrustAccessMtlsHostnameSettings:getZeroTrustAccessMtlsHostnameSettings has been deprecated in favor of cloudflare:zeroTrustAccessMtls/hostnameSettings:getHostnameSettings")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessMtlsHostnameSettings:getZeroTrustAccessMtlsHostnameSettings", {

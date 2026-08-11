@@ -12,7 +12,9 @@ import * as utilities from "./utilities";
  * - `Zero Trust Read`
  * - `Zero Trust Write`
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpCustomPromptTopics:getZeroTrustDlpCustomPromptTopics has been deprecated in favor of cloudflare:zeroTrustDlpCustomPrompt/topics:getTopics */
 export function getZeroTrustDlpCustomPromptTopics(args: GetZeroTrustDlpCustomPromptTopicsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDlpCustomPromptTopicsResult> {
+    pulumi.log.warn("getZeroTrustDlpCustomPromptTopics is deprecated: cloudflare:index/getZeroTrustDlpCustomPromptTopics:getZeroTrustDlpCustomPromptTopics has been deprecated in favor of cloudflare:zeroTrustDlpCustomPrompt/topics:getTopics")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDlpCustomPromptTopics:getZeroTrustDlpCustomPromptTopics", {
         "accountId": args.accountId,
@@ -51,7 +53,9 @@ export interface GetZeroTrustDlpCustomPromptTopicsResult {
  * - `Zero Trust Read`
  * - `Zero Trust Write`
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpCustomPromptTopics:getZeroTrustDlpCustomPromptTopics has been deprecated in favor of cloudflare:zeroTrustDlpCustomPrompt/topics:getTopics */
 export function getZeroTrustDlpCustomPromptTopicsOutput(args: GetZeroTrustDlpCustomPromptTopicsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDlpCustomPromptTopicsResult> {
+    pulumi.log.warn("getZeroTrustDlpCustomPromptTopics is deprecated: cloudflare:index/getZeroTrustDlpCustomPromptTopics:getZeroTrustDlpCustomPromptTopics has been deprecated in favor of cloudflare:zeroTrustDlpCustomPrompt/topics:getTopics")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDlpCustomPromptTopics:getZeroTrustDlpCustomPromptTopics", {
         "accountId": args.accountId,

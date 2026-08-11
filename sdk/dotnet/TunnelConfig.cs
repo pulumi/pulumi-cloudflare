@@ -29,21 +29,21 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustTunnelCloudflaredConfig = new Cloudflare.ZeroTrustTunnelCloudflaredConfig("example_zero_trust_tunnel_cloudflared_config", new()
+    ///     var exampleZeroTrustTunnelCloudflaredConfig = new Cloudflare.Modules.ZeroTrustTunnelCloudflared.ZeroTrustTunnelCloudflaredConfig("example_zero_trust_tunnel_cloudflared_config", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         TunnelId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-    ///         Config = new Cloudflare.Inputs.ZeroTrustTunnelCloudflaredConfigConfigArgs
+    ///         Config = new Cloudflare.Modules.ZeroTrustTunnelCloudflared.Inputs.ConfigConfigArgs
     ///         {
     ///             Ingresses = new[]
     ///             {
-    ///                 new Cloudflare.Inputs.ZeroTrustTunnelCloudflaredConfigConfigIngressArgs
+    ///                 new Cloudflare.Modules.ZeroTrustTunnelCloudflared.Inputs.ConfigConfigIngressArgs
     ///                 {
     ///                     Hostname = "tunnel.example.com",
     ///                     Service = "https://localhost:8001",
-    ///                     OriginRequest = new Cloudflare.Inputs.ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestArgs
+    ///                     OriginRequest = new Cloudflare.Modules.ZeroTrustTunnelCloudflared.Inputs.ConfigConfigIngressOriginRequestArgs
     ///                     {
-    ///                         Access = new Cloudflare.Inputs.ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestAccessArgs
+    ///                         Access = new Cloudflare.Modules.ZeroTrustTunnelCloudflared.Inputs.ConfigConfigIngressOriginRequestAccessArgs
     ///                         {
     ///                             AudTag = new[]
     ///                             {
@@ -70,9 +70,9 @@ namespace Pulumi.Cloudflare
     ///                     Path = "subpath",
     ///                 },
     ///             },
-    ///             OriginRequest = new Cloudflare.Inputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs
+    ///             OriginRequest = new Cloudflare.Modules.ZeroTrustTunnelCloudflared.Inputs.ConfigConfigOriginRequestArgs
     ///             {
-    ///                 Access = new Cloudflare.Inputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs
+    ///                 Access = new Cloudflare.Modules.ZeroTrustTunnelCloudflared.Inputs.ConfigConfigOriginRequestAccessArgs
     ///                 {
     ///                     AudTags = new[]
     ///                     {
@@ -169,10 +169,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/tunnelConfig:TunnelConfig" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

@@ -24,19 +24,19 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdlpcustom"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleZeroTrustDlpCustomProfile, err := cloudflare.NewZeroTrustDlpCustomProfile(ctx, "example_zero_trust_dlp_custom_profile", &cloudflare.ZeroTrustDlpCustomProfileArgs{
+//			exampleZeroTrustDlpCustomProfile, err := zerotrustdlpcustom.NewProfile(ctx, "example_zero_trust_dlp_custom_profile", &zerotrustdlpcustom.ProfileArgs{
 //				Name:        pulumi.String("name"),
 //				AccountId:   pulumi.String("account_id"),
 //				Description: pulumi.String("Custom profile with entries"),
-//				SharedEntries: cloudflare.ZeroTrustDlpCustomProfileSharedEntryArray{
-//					&cloudflare.ZeroTrustDlpCustomProfileSharedEntryArgs{
+//				SharedEntries: zerotrustdlpcustom.ProfileSharedEntryArray{
+//					&zerotrustdlpcustom.ProfileSharedEntryArgs{
 //						EntryId:   pulumi.String("56a8c060-01bb-4f89-ba1e-3ad42770a342"),
 //						EntryType: pulumi.String("predefined"),
 //						Enabled:   pulumi.Bool(true),
@@ -47,11 +47,11 @@ import (
 //				return err
 //			}
 //			// Custom entry that is a part of this new profile
-//			_, err = cloudflare.NewZeroTrustDlpCustomEntry(ctx, "example_custom_entry", &cloudflare.ZeroTrustDlpCustomEntryArgs{
+//			_, err = zerotrustdlpcustom.NewEntry(ctx, "example_custom_entry", &zerotrustdlpcustom.EntryArgs{
 //				Name:      pulumi.String("custom"),
 //				AccountId: pulumi.String("account_id"),
 //				ProfileId: exampleZeroTrustDlpCustomProfile.ID().ToIDOutput().ToStringOutput(),
-//				Pattern: &cloudflare.ZeroTrustDlpCustomEntryPatternArgs{
+//				Pattern: &zerotrustdlpcustom.EntryPatternArgs{
 //					Regex: pulumi.String("customentryregex"),
 //				},
 //				Enabled: pulumi.Bool(true),
@@ -124,12 +124,6 @@ func NewDlpCustomProfile(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("cloudflare:index/dlpCustomProfile:DlpCustomProfile"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DlpCustomProfile
 	err := ctx.RegisterResource("cloudflare:index/dlpCustomProfile:DlpCustomProfile", name, args, &resource, opts...)

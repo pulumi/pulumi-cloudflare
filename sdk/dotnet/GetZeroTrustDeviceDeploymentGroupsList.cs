@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustDeviceDeploymentGroupsList:getZeroTrustDeviceDeploymentGroupsList has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/list:getList")]
     public static class GetZeroTrustDeviceDeploymentGroupsList
     {
         public static Task<GetZeroTrustDeviceDeploymentGroupsListResult> InvokeAsync(GetZeroTrustDeviceDeploymentGroupsListArgs args, InvokeOptions? options = null)

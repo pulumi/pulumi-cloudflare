@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustTunnelCloudflared = new cloudflare.ZeroTrustTunnelCloudflared("example_zero_trust_tunnel_cloudflared", {
+ * const exampleZeroTrustTunnelCloudflared = new cloudflare.zerotrusttunnelcloudflared.ZeroTrustTunnelCloudflared("example_zero_trust_tunnel_cloudflared", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     name: "blog",
  *     configSrc: "cloudflare",
@@ -185,8 +185,6 @@ export class Tunnel extends pulumi.CustomResource {
             resourceInputs["tunType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/tunnel:Tunnel" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         const secretOpts = { additionalSecretOutputs: ["tunnelSecret"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Tunnel.__pulumiType, name, resourceInputs, opts);

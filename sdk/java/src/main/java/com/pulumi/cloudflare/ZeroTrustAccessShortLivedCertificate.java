@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustAccessShortLivedCertificate;
- * import com.pulumi.cloudflare.ZeroTrustAccessShortLivedCertificateArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccessShortLived.Certificate;
+ * import com.pulumi.cloudflare.zeroTrustAccessShortLived.CertificateArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustAccessShortLivedCertificate = new ZeroTrustAccessShortLivedCertificate("exampleZeroTrustAccessShortLivedCertificate", ZeroTrustAccessShortLivedCertificateArgs.builder()
+ *         var exampleZeroTrustAccessShortLivedCertificate = new Certificate("exampleZeroTrustAccessShortLivedCertificate", CertificateArgs.builder()
  *             .appId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
  *             .zoneId("zone_id")
  *             .build());
@@ -62,7 +62,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;app_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate has been deprecated in favor of cloudflare:zeroTrustAccessShortLived/certificate:Certificate
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate has been deprecated in favor of cloudflare:zeroTrustAccessShortLived/certificate:Certificate */
 @ResourceType(type="cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate")
 public class ZeroTrustAccessShortLivedCertificate extends com.pulumi.resources.CustomResource {
     /**

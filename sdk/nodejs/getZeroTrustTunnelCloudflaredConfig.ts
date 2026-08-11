@@ -22,13 +22,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustTunnelCloudflaredConfig = cloudflare.getZeroTrustTunnelCloudflaredConfig({
+ * const exampleZeroTrustTunnelCloudflaredConfig = cloudflare.zerotrusttunnelcloudflared.getConfig({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     tunnelId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustTunnelCloudflaredConfig:getZeroTrustTunnelCloudflaredConfig has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/config:getConfig */
 export function getZeroTrustTunnelCloudflaredConfig(args: GetZeroTrustTunnelCloudflaredConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustTunnelCloudflaredConfigResult> {
+    pulumi.log.warn("getZeroTrustTunnelCloudflaredConfig is deprecated: cloudflare:index/getZeroTrustTunnelCloudflaredConfig:getZeroTrustTunnelCloudflaredConfig has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/config:getConfig")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustTunnelCloudflaredConfig:getZeroTrustTunnelCloudflaredConfig", {
         "accountId": args.accountId,
@@ -93,13 +95,15 @@ export interface GetZeroTrustTunnelCloudflaredConfigResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustTunnelCloudflaredConfig = cloudflare.getZeroTrustTunnelCloudflaredConfig({
+ * const exampleZeroTrustTunnelCloudflaredConfig = cloudflare.zerotrusttunnelcloudflared.getConfig({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     tunnelId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustTunnelCloudflaredConfig:getZeroTrustTunnelCloudflaredConfig has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/config:getConfig */
 export function getZeroTrustTunnelCloudflaredConfigOutput(args: GetZeroTrustTunnelCloudflaredConfigOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustTunnelCloudflaredConfigResult> {
+    pulumi.log.warn("getZeroTrustTunnelCloudflaredConfig is deprecated: cloudflare:index/getZeroTrustTunnelCloudflaredConfig:getZeroTrustTunnelCloudflaredConfig has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/config:getConfig")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustTunnelCloudflaredConfig:getZeroTrustTunnelCloudflaredConfig", {
         "accountId": args.accountId,

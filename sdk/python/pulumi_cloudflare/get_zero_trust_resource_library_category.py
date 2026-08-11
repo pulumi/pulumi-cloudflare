@@ -21,6 +21,8 @@ __all__ = [
     'get_zero_trust_resource_library_category_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustResourceLibraryCategory:getZeroTrustResourceLibraryCategory has been deprecated in favor of cloudflare:zeroTrustResourceLibrary/category:getCategory""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustResourceLibraryCategoryResult:
     """
@@ -104,13 +106,14 @@ def get_zero_trust_resource_library_category(account_id: Optional[_builtins.str]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_resource_library_category = cloudflare.get_zero_trust_resource_library_category(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_zero_trust_resource_library_category = cloudflare.zerotrustresourcelibrary.get_category(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         id="0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0")
     ```
 
 
     :param _builtins.str id: The ID of this resource.
     """
+    pulumi.log.warn("""get_zero_trust_resource_library_category is deprecated: cloudflare:index/getZeroTrustResourceLibraryCategory:getZeroTrustResourceLibraryCategory has been deprecated in favor of cloudflare:zeroTrustResourceLibrary/category:getCategory""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['id'] = id
@@ -133,13 +136,14 @@ def get_zero_trust_resource_library_category_output(account_id: pulumi.Input[Opt
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_resource_library_category = cloudflare.get_zero_trust_resource_library_category(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_zero_trust_resource_library_category = cloudflare.zerotrustresourcelibrary.get_category(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         id="0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0")
     ```
 
 
     :param _builtins.str id: The ID of this resource.
     """
+    pulumi.log.warn("""get_zero_trust_resource_library_category is deprecated: cloudflare:index/getZeroTrustResourceLibraryCategory:getZeroTrustResourceLibraryCategory has been deprecated in favor of cloudflare:zeroTrustResourceLibrary/category:getCategory""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['id'] = id

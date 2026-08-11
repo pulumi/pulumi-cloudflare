@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersCustomDomains = cloudflare.getWorkersCustomDomains({
+ * const exampleWorkersCustomDomains = cloudflare.workerscustom.getDomains({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     environment: "production",
  *     hostname: "app.example.com",
@@ -28,7 +28,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkersCustomDomains:getWorkersCustomDomains has been deprecated in favor of cloudflare:workersCustom/domains:getDomains */
 export function getWorkersCustomDomains(args?: GetWorkersCustomDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersCustomDomainsResult> {
+    pulumi.log.warn("getWorkersCustomDomains is deprecated: cloudflare:index/getWorkersCustomDomains:getWorkersCustomDomains has been deprecated in favor of cloudflare:workersCustom/domains:getDomains")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkersCustomDomains:getWorkersCustomDomains", {
@@ -125,7 +127,7 @@ export interface GetWorkersCustomDomainsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersCustomDomains = cloudflare.getWorkersCustomDomains({
+ * const exampleWorkersCustomDomains = cloudflare.workerscustom.getDomains({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     environment: "production",
  *     hostname: "app.example.com",
@@ -135,7 +137,9 @@ export interface GetWorkersCustomDomainsResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkersCustomDomains:getWorkersCustomDomains has been deprecated in favor of cloudflare:workersCustom/domains:getDomains */
 export function getWorkersCustomDomainsOutput(args?: GetWorkersCustomDomainsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersCustomDomainsResult> {
+    pulumi.log.warn("getWorkersCustomDomains is deprecated: cloudflare:index/getWorkersCustomDomains:getWorkersCustomDomains has been deprecated in favor of cloudflare:workersCustom/domains:getDomains")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkersCustomDomains:getWorkersCustomDomains", {

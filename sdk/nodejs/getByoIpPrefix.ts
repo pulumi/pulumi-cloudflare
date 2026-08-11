@@ -20,13 +20,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleByoIpPrefix = cloudflare.getByoIpPrefix({
+ * const exampleByoIpPrefix = cloudflare.byoip.getPrefix({
  *     accountId: "258def64c72dae45f3e4c8516e2111f2",
  *     prefixId: "2af39739cc4e3b5910c918468bb89828",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getByoIpPrefix:getByoIpPrefix has been deprecated in favor of cloudflare:byoIp/prefix:getPrefix */
 export function getByoIpPrefix(args: GetByoIpPrefixArgs, opts?: pulumi.InvokeOptions): Promise<GetByoIpPrefixResult> {
+    pulumi.log.warn("getByoIpPrefix is deprecated: cloudflare:index/getByoIpPrefix:getByoIpPrefix has been deprecated in favor of cloudflare:byoIp/prefix:getPrefix")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getByoIpPrefix:getByoIpPrefix", {
         "accountId": args.accountId,
@@ -147,13 +149,15 @@ export interface GetByoIpPrefixResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleByoIpPrefix = cloudflare.getByoIpPrefix({
+ * const exampleByoIpPrefix = cloudflare.byoip.getPrefix({
  *     accountId: "258def64c72dae45f3e4c8516e2111f2",
  *     prefixId: "2af39739cc4e3b5910c918468bb89828",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getByoIpPrefix:getByoIpPrefix has been deprecated in favor of cloudflare:byoIp/prefix:getPrefix */
 export function getByoIpPrefixOutput(args: GetByoIpPrefixOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetByoIpPrefixResult> {
+    pulumi.log.warn("getByoIpPrefix is deprecated: cloudflare:index/getByoIpPrefix:getByoIpPrefix has been deprecated in favor of cloudflare:byoIp/prefix:getPrefix")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getByoIpPrefix:getByoIpPrefix", {
         "accountId": args.accountId,

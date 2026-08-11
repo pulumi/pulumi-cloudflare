@@ -21,6 +21,8 @@ __all__ = [
     'get_zone_cache_reserve_output',
 ]
 
+warnings.warn("""cloudflare:index/getZoneCacheReserve:getZoneCacheReserve has been deprecated in favor of cloudflare:zoneCache/reserve:getReserve""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZoneCacheReserveResult:
     """
@@ -114,12 +116,13 @@ def get_zone_cache_reserve(zone_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zone_cache_reserve = cloudflare.get_zone_cache_reserve(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_zone_cache_reserve = cloudflare.zonecache.get_reserve(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_zone_cache_reserve is deprecated: cloudflare:index/getZoneCacheReserve:getZoneCacheReserve has been deprecated in favor of cloudflare:zoneCache/reserve:getReserve""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -147,12 +150,13 @@ def get_zone_cache_reserve_output(zone_id: pulumi.Input[Optional[Optional[_built
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zone_cache_reserve = cloudflare.get_zone_cache_reserve(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_zone_cache_reserve = cloudflare.zonecache.get_reserve(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_zone_cache_reserve is deprecated: cloudflare:index/getZoneCacheReserve:getZoneCacheReserve has been deprecated in favor of cloudflare:zoneCache/reserve:getReserve""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

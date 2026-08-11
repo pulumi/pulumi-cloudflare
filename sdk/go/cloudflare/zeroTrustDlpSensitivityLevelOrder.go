@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdlpsensitivitylevel"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDlpSensitivityLevelOrder(ctx, "example_zero_trust_dlp_sensitivity_level_order", &cloudflare.ZeroTrustDlpSensitivityLevelOrderArgs{
+//			_, err := zerotrustdlpsensitivitylevel.NewOrder(ctx, "example_zero_trust_dlp_sensitivity_level_order", &zerotrustdlpsensitivitylevel.OrderArgs{
 //				AccountId:          pulumi.String("account_id"),
 //				SensitivityGroupId: pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
 //				LevelIds: pulumi.StringArray{
@@ -52,6 +52,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustDlpSensitivityLevelOrder:ZeroTrustDlpSensitivityLevelOrder example '<account_id>/<sensitivity_group_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustDlpSensitivityLevelOrder:ZeroTrustDlpSensitivityLevelOrder has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/order:Order
 type ZeroTrustDlpSensitivityLevelOrder struct {
 	pulumi.CustomResourceState
 

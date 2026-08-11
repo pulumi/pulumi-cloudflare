@@ -188,7 +188,7 @@ class AccessCaCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_short_lived_certificate = cloudflare.ZeroTrustAccessShortLivedCertificate("example_zero_trust_access_short_lived_certificate",
+        example_zero_trust_access_short_lived_certificate = cloudflare.zerotrustaccessshortlived.Certificate("example_zero_trust_access_short_lived_certificate",
             app_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
             zone_id="zone_id")
         ```
@@ -224,7 +224,7 @@ class AccessCaCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_short_lived_certificate = cloudflare.ZeroTrustAccessShortLivedCertificate("example_zero_trust_access_short_lived_certificate",
+        example_zero_trust_access_short_lived_certificate = cloudflare.zerotrustaccessshortlived.Certificate("example_zero_trust_access_short_lived_certificate",
             app_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
             zone_id="zone_id")
         ```
@@ -271,8 +271,6 @@ class AccessCaCertificate(pulumi.CustomResource):
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["aud"] = None
             __props__.__dict__["public_key"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessCaCertificate:AccessCaCertificate")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AccessCaCertificate, __self__).__init__(
             'cloudflare:index/accessCaCertificate:AccessCaCertificate',
             resource_name,

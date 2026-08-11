@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpDataClass = new cloudflare.ZeroTrustDlpDataClass("example_zero_trust_dlp_data_class", {
+ * const exampleZeroTrustDlpDataClass = new cloudflare.zerotrustdlpdata.Class("example_zero_trust_dlp_data_class", {
  *     accountId: "account_id",
  *     dataTags: ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
  *     expression: "expression",
@@ -36,6 +36,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustDlpDataClass:ZeroTrustDlpDataClass example '<account_id>/<data_class_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustDlpDataClass:ZeroTrustDlpDataClass has been deprecated in favor of cloudflare:zeroTrustDlpData/class:Class
  */
 export class ZeroTrustDlpDataClass extends pulumi.CustomResource {
     /**
@@ -48,6 +50,7 @@ export class ZeroTrustDlpDataClass extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustDlpDataClassState, opts?: pulumi.CustomResourceOptions): ZeroTrustDlpDataClass {
+        pulumi.log.warn("ZeroTrustDlpDataClass is deprecated: cloudflare:index/zeroTrustDlpDataClass:ZeroTrustDlpDataClass has been deprecated in favor of cloudflare:zeroTrustDlpData/class:Class")
         return new ZeroTrustDlpDataClass(name, <any>state, { ...opts, id: id });
     }
 
@@ -81,8 +84,11 @@ export class ZeroTrustDlpDataClass extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustDlpDataClass:ZeroTrustDlpDataClass has been deprecated in favor of cloudflare:zeroTrustDlpData/class:Class */
     constructor(name: string, args: ZeroTrustDlpDataClassArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustDlpDataClass:ZeroTrustDlpDataClass has been deprecated in favor of cloudflare:zeroTrustDlpData/class:Class */
     constructor(name: string, argsOrState?: ZeroTrustDlpDataClassArgs | ZeroTrustDlpDataClassState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustDlpDataClass is deprecated: cloudflare:index/zeroTrustDlpDataClass:ZeroTrustDlpDataClass has been deprecated in favor of cloudflare:zeroTrustDlpData/class:Class")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

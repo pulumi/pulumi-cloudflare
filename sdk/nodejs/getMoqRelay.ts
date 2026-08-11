@@ -6,7 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/** @deprecated cloudflare:index/getMoqRelay:getMoqRelay has been deprecated in favor of cloudflare:moq/relay:getRelay */
 export function getMoqRelay(args: GetMoqRelayArgs, opts?: pulumi.InvokeOptions): Promise<GetMoqRelayResult> {
+    pulumi.log.warn("getMoqRelay is deprecated: cloudflare:index/getMoqRelay:getMoqRelay has been deprecated in favor of cloudflare:moq/relay:getRelay")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getMoqRelay:getMoqRelay", {
         "accountId": args.accountId,
@@ -55,7 +57,9 @@ export interface GetMoqRelayResult {
     readonly status: string;
     readonly uid: string;
 }
+/** @deprecated cloudflare:index/getMoqRelay:getMoqRelay has been deprecated in favor of cloudflare:moq/relay:getRelay */
 export function getMoqRelayOutput(args: GetMoqRelayOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMoqRelayResult> {
+    pulumi.log.warn("getMoqRelay is deprecated: cloudflare:index/getMoqRelay:getMoqRelay has been deprecated in favor of cloudflare:moq/relay:getRelay")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getMoqRelay:getMoqRelay", {
         "accountId": args.accountId,

@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleEmailSecurityTrustedDomainsList = cloudflare.getEmailSecurityTrustedDomainsList({
+ * const exampleEmailSecurityTrustedDomainsList = cloudflare.emailsecuritytrusteddomains.getList({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "asc",
  *     isRecent: true,
@@ -29,7 +29,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getEmailSecurityTrustedDomainsList:getEmailSecurityTrustedDomainsList has been deprecated in favor of cloudflare:emailSecurityTrustedDomains/list:getList */
 export function getEmailSecurityTrustedDomainsList(args?: GetEmailSecurityTrustedDomainsListArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailSecurityTrustedDomainsListResult> {
+    pulumi.log.warn("getEmailSecurityTrustedDomainsList is deprecated: cloudflare:index/getEmailSecurityTrustedDomainsList:getEmailSecurityTrustedDomainsList has been deprecated in favor of cloudflare:emailSecurityTrustedDomains/list:getList")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getEmailSecurityTrustedDomainsList:getEmailSecurityTrustedDomainsList", {
@@ -133,7 +135,7 @@ export interface GetEmailSecurityTrustedDomainsListResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleEmailSecurityTrustedDomainsList = cloudflare.getEmailSecurityTrustedDomainsList({
+ * const exampleEmailSecurityTrustedDomainsList = cloudflare.emailsecuritytrusteddomains.getList({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "asc",
  *     isRecent: true,
@@ -144,7 +146,9 @@ export interface GetEmailSecurityTrustedDomainsListResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getEmailSecurityTrustedDomainsList:getEmailSecurityTrustedDomainsList has been deprecated in favor of cloudflare:emailSecurityTrustedDomains/list:getList */
 export function getEmailSecurityTrustedDomainsListOutput(args?: GetEmailSecurityTrustedDomainsListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailSecurityTrustedDomainsListResult> {
+    pulumi.log.warn("getEmailSecurityTrustedDomainsList is deprecated: cloudflare:index/getEmailSecurityTrustedDomainsList:getEmailSecurityTrustedDomainsList has been deprecated in favor of cloudflare:emailSecurityTrustedDomains/list:getList")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getEmailSecurityTrustedDomainsList:getEmailSecurityTrustedDomainsList", {

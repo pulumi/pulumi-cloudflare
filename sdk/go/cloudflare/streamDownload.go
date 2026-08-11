@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/stream"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewStreamDownload(ctx, "example_stream_download", &cloudflare.StreamDownloadArgs{
+//			_, err := stream.NewDownload(ctx, "example_stream_download", &stream.DownloadArgs{
 //				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Identifier: pulumi.String("ea95132c15732412d22c1476fa83f27a"),
 //			})
@@ -47,6 +47,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/streamDownload:StreamDownload has been deprecated in favor of cloudflare:stream/download:Download
 type StreamDownload struct {
 	pulumi.CustomResourceState
 

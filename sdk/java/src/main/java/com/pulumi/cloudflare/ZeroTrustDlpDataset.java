@@ -35,8 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDlpDataset;
- * import com.pulumi.cloudflare.ZeroTrustDlpDatasetArgs;
+ * import com.pulumi.cloudflare.zeroTrustDlp.Dataset;
+ * import com.pulumi.cloudflare.zeroTrustDlp.DatasetArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustDlpDataset = new ZeroTrustDlpDataset("exampleZeroTrustDlpDataset", ZeroTrustDlpDatasetArgs.builder()
+ *         var exampleZeroTrustDlpDataset = new Dataset("exampleZeroTrustDlpDataset", DatasetArgs.builder()
  *             .accountId("account_id")
  *             .name("name")
  *             .caseSensitive(true)
@@ -68,7 +68,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset has been deprecated in favor of cloudflare:zeroTrustDlp/dataset:Dataset
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset has been deprecated in favor of cloudflare:zeroTrustDlp/dataset:Dataset */
 @ResourceType(type="cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset")
 public class ZeroTrustDlpDataset extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

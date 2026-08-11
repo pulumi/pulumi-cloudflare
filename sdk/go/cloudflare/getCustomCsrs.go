@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/custom"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetCustomCsrs(ctx, &cloudflare.LookupCustomCsrsArgs{
+//			_, err := custom.LookupCsrs(ctx, &custom.LookupCsrsArgs{
 //				AccountId: pulumi.StringRef("account_id"),
 //				ZoneId:    pulumi.StringRef("zone_id"),
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getCustomCsrs:getCustomCsrs has been deprecated in favor of cloudflare:custom/csrs:getCsrs
 func LookupCustomCsrs(ctx *pulumi.Context, args *LookupCustomCsrsArgs, opts ...pulumi.InvokeOption) (*LookupCustomCsrsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomCsrsResult

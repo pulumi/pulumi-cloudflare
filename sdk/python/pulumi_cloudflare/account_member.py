@@ -218,8 +218,13 @@ class _AccountMemberState:
         pulumi.set(self, "user", value)
 
 
+warnings.warn("""cloudflare:index/accountMember:AccountMember has been deprecated in favor of cloudflare:account/member:Member""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/accountMember:AccountMember")
 class AccountMember(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/accountMember:AccountMember has been deprecated in favor of cloudflare:account/member:Member""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -243,7 +248,7 @@ class AccountMember(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_account_member = cloudflare.AccountMember("example_account_member",
+        example_account_member = cloudflare.account.Member("example_account_member",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             email="user@example.com",
             roles=["3536bcfad5faccb999b47003c79917fb"],
@@ -286,7 +291,7 @@ class AccountMember(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_account_member = cloudflare.AccountMember("example_account_member",
+        example_account_member = cloudflare.account.Member("example_account_member",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             email="user@example.com",
             roles=["3536bcfad5faccb999b47003c79917fb"],
@@ -321,6 +326,7 @@ class AccountMember(pulumi.CustomResource):
                  roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""AccountMember is deprecated: cloudflare:index/accountMember:AccountMember has been deprecated in favor of cloudflare:account/member:Member""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

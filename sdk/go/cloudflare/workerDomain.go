@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/workerscustom"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWorkersCustomDomain(ctx, "example_workers_custom_domain", &cloudflare.WorkersCustomDomainArgs{
+//			_, err := workerscustom.NewDomain(ctx, "example_workers_custom_domain", &workerscustom.DomainArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Hostname:  pulumi.String("app.example.com"),
 //				Service:   pulumi.String("my-worker"),
@@ -91,12 +91,6 @@ func NewWorkerDomain(ctx *pulumi.Context,
 	if args.Service == nil {
 		return nil, errors.New("invalid value for required argument 'Service'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("cloudflare:index/workerDomain:WorkerDomain"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkerDomain
 	err := ctx.RegisterResource("cloudflare:index/workerDomain:WorkerDomain", name, args, &resource, opts...)

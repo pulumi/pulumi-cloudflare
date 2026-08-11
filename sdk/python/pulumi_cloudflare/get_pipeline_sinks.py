@@ -22,6 +22,8 @@ __all__ = [
     'get_pipeline_sinks_output',
 ]
 
+warnings.warn("""cloudflare:index/getPipelineSinks:getPipelineSinks has been deprecated in favor of cloudflare:pipeline/sinks:getSinks""", DeprecationWarning)
+
 @pulumi.output_type
 class GetPipelineSinksResult:
     """
@@ -112,7 +114,7 @@ def get_pipeline_sinks(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_pipeline_sinks = cloudflare.get_pipeline_sinks(account_id="0123105f4ecef8ad9ca31a8372d0c353",
+    example_pipeline_sinks = cloudflare.pipeline.get_sinks(account_id="0123105f4ecef8ad9ca31a8372d0c353",
         pipeline_id="pipeline_id")
     ```
 
@@ -121,6 +123,7 @@ def get_pipeline_sinks(account_id: Optional[_builtins.str] = None,
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str name: Filters sinks by name (case-insensitive substring).
     """
+    pulumi.log.warn("""get_pipeline_sinks is deprecated: cloudflare:index/getPipelineSinks:getPipelineSinks has been deprecated in favor of cloudflare:pipeline/sinks:getSinks""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -152,7 +155,7 @@ def get_pipeline_sinks_output(account_id: pulumi.Input[Optional[Optional[_builti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_pipeline_sinks = cloudflare.get_pipeline_sinks(account_id="0123105f4ecef8ad9ca31a8372d0c353",
+    example_pipeline_sinks = cloudflare.pipeline.get_sinks(account_id="0123105f4ecef8ad9ca31a8372d0c353",
         pipeline_id="pipeline_id")
     ```
 
@@ -161,6 +164,7 @@ def get_pipeline_sinks_output(account_id: pulumi.Input[Optional[Optional[_builti
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str name: Filters sinks by name (case-insensitive substring).
     """
+    pulumi.log.warn("""get_pipeline_sinks is deprecated: cloudflare:index/getPipelineSinks:getPipelineSinks has been deprecated in favor of cloudflare:pipeline/sinks:getSinks""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

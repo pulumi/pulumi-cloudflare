@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCustomHostnameFallbackOrigin = new Cloudflare.CustomHostnameFallbackOrigin("example_custom_hostname_fallback_origin", new()
+    ///     var exampleCustomHostnameFallbackOrigin = new Cloudflare.Modules.CustomHostname.CustomHostnameFallbackOrigin("example_custom_hostname_fallback_origin", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Origin = "fallback.example.com",
@@ -40,6 +40,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin has been deprecated in favor of cloudflare:customHostname/fallbackOrigin:FallbackOrigin")]
     [CloudflareResourceType("cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin")]
     public partial class CustomHostnameFallbackOrigin : global::Pulumi.CustomResource
     {

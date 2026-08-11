@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.R2DataCatalog;
- * import com.pulumi.cloudflare.R2DataCatalogArgs;
+ * import com.pulumi.cloudflare.r2.DataCatalog;
+ * import com.pulumi.cloudflare.r2.DataCatalogArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleR2DataCatalog = new R2DataCatalog("exampleR2DataCatalog", R2DataCatalogArgs.builder()
+ *         var exampleR2DataCatalog = new DataCatalog("exampleR2DataCatalog", DataCatalogArgs.builder()
  *             .accountId("0123456789abcdef0123456789abcdef")
  *             .bucketName("my-data-bucket")
  *             .build());
@@ -60,7 +60,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/r2DataCatalog:R2DataCatalog example &#39;&lt;account_id&gt;/&lt;bucket_name&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/r2DataCatalog:R2DataCatalog has been deprecated in favor of cloudflare:r2/dataCatalog:DataCatalog
+ * 
  */
+@Deprecated /* cloudflare:index/r2DataCatalog:R2DataCatalog has been deprecated in favor of cloudflare:r2/dataCatalog:DataCatalog */
 @ResourceType(type="cloudflare:index/r2DataCatalog:R2DataCatalog")
 public class R2DataCatalog extends com.pulumi.resources.CustomResource {
     /**

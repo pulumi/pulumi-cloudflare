@@ -17,13 +17,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleLogpushJobs = cloudflare.getLogpushJobs({
+ * const exampleLogpushJobs = cloudflare.logpush.getJobs({
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getLogpushJobs:getLogpushJobs has been deprecated in favor of cloudflare:logpush/jobs:getJobs */
 export function getLogpushJobs(args?: GetLogpushJobsArgs, opts?: pulumi.InvokeOptions): Promise<GetLogpushJobsResult> {
+    pulumi.log.warn("getLogpushJobs is deprecated: cloudflare:index/getLogpushJobs:getLogpushJobs has been deprecated in favor of cloudflare:logpush/jobs:getJobs")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getLogpushJobs:getLogpushJobs", {
@@ -83,13 +85,15 @@ export interface GetLogpushJobsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleLogpushJobs = cloudflare.getLogpushJobs({
+ * const exampleLogpushJobs = cloudflare.logpush.getJobs({
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getLogpushJobs:getLogpushJobs has been deprecated in favor of cloudflare:logpush/jobs:getJobs */
 export function getLogpushJobsOutput(args?: GetLogpushJobsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLogpushJobsResult> {
+    pulumi.log.warn("getLogpushJobs is deprecated: cloudflare:index/getLogpushJobs:getLogpushJobs has been deprecated in favor of cloudflare:logpush/jobs:getJobs")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getLogpushJobs:getLogpushJobs", {

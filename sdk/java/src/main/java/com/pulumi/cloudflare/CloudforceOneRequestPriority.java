@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.CloudforceOneRequestPriority;
- * import com.pulumi.cloudflare.CloudforceOneRequestPriorityArgs;
+ * import com.pulumi.cloudflare.cloudforceOneRequest.Priority;
+ * import com.pulumi.cloudflare.cloudforceOneRequest.PriorityArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleCloudforceOneRequestPriority = new CloudforceOneRequestPriority("exampleCloudforceOneRequestPriority", CloudforceOneRequestPriorityArgs.builder()
+ *         var exampleCloudforceOneRequestPriority = new Priority("exampleCloudforceOneRequestPriority", PriorityArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .labels(            
  *                 "DoS",
@@ -66,7 +66,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority example &#39;&lt;account_id&gt;/&lt;priority_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority has been deprecated in favor of cloudflare:cloudforceOneRequest/priority:Priority
+ * 
  */
+@Deprecated /* cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority has been deprecated in favor of cloudflare:cloudforceOneRequest/priority:Priority */
 @ResourceType(type="cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority")
 public class CloudforceOneRequestPriority extends com.pulumi.resources.CustomResource {
     /**

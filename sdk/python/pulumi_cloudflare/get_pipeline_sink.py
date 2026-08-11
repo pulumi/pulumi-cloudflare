@@ -23,6 +23,8 @@ __all__ = [
     'get_pipeline_sink_output',
 ]
 
+warnings.warn("""cloudflare:index/getPipelineSink:getPipelineSink has been deprecated in favor of cloudflare:pipeline/sink:getSink""", DeprecationWarning)
+
 @pulumi.output_type
 class GetPipelineSinkResult:
     """
@@ -173,7 +175,7 @@ def get_pipeline_sink(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_pipeline_sink = cloudflare.get_pipeline_sink(account_id="0123105f4ecef8ad9ca31a8372d0c353",
+    example_pipeline_sink = cloudflare.pipeline.get_sink(account_id="0123105f4ecef8ad9ca31a8372d0c353",
         sink_id="0223105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -181,6 +183,7 @@ def get_pipeline_sink(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Specifies the public ID of the account.
     :param _builtins.str sink_id: Specifies the publid ID of the sink.
     """
+    pulumi.log.warn("""get_pipeline_sink is deprecated: cloudflare:index/getPipelineSink:getPipelineSink has been deprecated in favor of cloudflare:pipeline/sink:getSink""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -216,7 +219,7 @@ def get_pipeline_sink_output(account_id: pulumi.Input[Optional[Optional[_builtin
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_pipeline_sink = cloudflare.get_pipeline_sink(account_id="0123105f4ecef8ad9ca31a8372d0c353",
+    example_pipeline_sink = cloudflare.pipeline.get_sink(account_id="0123105f4ecef8ad9ca31a8372d0c353",
         sink_id="0223105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -224,6 +227,7 @@ def get_pipeline_sink_output(account_id: pulumi.Input[Optional[Optional[_builtin
     :param _builtins.str account_id: Specifies the public ID of the account.
     :param _builtins.str sink_id: Specifies the publid ID of the sink.
     """
+    pulumi.log.warn("""get_pipeline_sink is deprecated: cloudflare:index/getPipelineSink:getPipelineSink has been deprecated in favor of cloudflare:pipeline/sink:getSink""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

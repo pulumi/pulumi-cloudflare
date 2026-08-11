@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAuthenticatedOriginPullsCertificate = new Cloudflare.AuthenticatedOriginPullsCertificate("example_authenticated_origin_pulls_certificate", new()
+    ///     var exampleAuthenticatedOriginPullsCertificate = new Cloudflare.Modules.AuthenticatedOriginPulls.AuthenticatedOriginPullsCertificate("example_authenticated_origin_pulls_certificate", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Certificate = @"  -----BEGIN CERTIFICATE-----
@@ -87,6 +87,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate example '&lt;zone_id&gt;/&lt;certificate_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate has been deprecated in favor of cloudflare:authenticatedOriginPulls/certificate:Certificate")]
     [CloudflareResourceType("cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate")]
     public partial class AuthenticatedOriginPullsCertificate : global::Pulumi.CustomResource
     {

@@ -22,6 +22,8 @@ __all__ = [
     'get_oauth_client_output',
 ]
 
+warnings.warn("""cloudflare:index/getOauthClient:getOauthClient has been deprecated in favor of cloudflare:oauth/client:getClient""", DeprecationWarning)
+
 @pulumi.output_type
 class GetOauthClientResult:
     """
@@ -306,7 +308,7 @@ def get_oauth_client(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_oauth_client = cloudflare.get_oauth_client(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_oauth_client = cloudflare.oauth.get_client(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         oauth_client_id="a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4")
     ```
 
@@ -314,6 +316,7 @@ def get_oauth_client(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.str oauth_client_id: The unique identifier for an OAuth client.
     """
+    pulumi.log.warn("""get_oauth_client is deprecated: cloudflare:index/getOauthClient:getOauthClient has been deprecated in favor of cloudflare:oauth/client:getClient""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['oauthClientId'] = oauth_client_id
@@ -356,7 +359,7 @@ def get_oauth_client_output(account_id: pulumi.Input[Optional[_builtins.str]] = 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_oauth_client = cloudflare.get_oauth_client(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_oauth_client = cloudflare.oauth.get_client(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         oauth_client_id="a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4")
     ```
 
@@ -364,6 +367,7 @@ def get_oauth_client_output(account_id: pulumi.Input[Optional[_builtins.str]] = 
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.str oauth_client_id: The unique identifier for an OAuth client.
     """
+    pulumi.log.warn("""get_oauth_client is deprecated: cloudflare:index/getOauthClient:getOauthClient has been deprecated in favor of cloudflare:oauth/client:getClient""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['oauthClientId'] = oauth_client_id

@@ -172,8 +172,13 @@ class _ZeroTrustDeviceManagedNetworksState:
         pulumi.set(self, "type", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks has been deprecated in favor of cloudflare:zeroTrustDeviceManagedNetworks/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks")
 class ZeroTrustDeviceManagedNetworks(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks has been deprecated in favor of cloudflare:zeroTrustDeviceManagedNetworks/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -194,7 +199,7 @@ class ZeroTrustDeviceManagedNetworks(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_device_managed_networks = cloudflare.ZeroTrustDeviceManagedNetworks("example_zero_trust_device_managed_networks",
+        example_zero_trust_device_managed_networks = cloudflare.zerotrustdevicemanagednetworks.ZeroTrustDeviceManagedNetworks("example_zero_trust_device_managed_networks",
             account_id="699d98642c564d2e855e9661899b7252",
             config={
                 "tls_sockaddr": "foo.bar:1234",
@@ -235,7 +240,7 @@ class ZeroTrustDeviceManagedNetworks(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_device_managed_networks = cloudflare.ZeroTrustDeviceManagedNetworks("example_zero_trust_device_managed_networks",
+        example_zero_trust_device_managed_networks = cloudflare.zerotrustdevicemanagednetworks.ZeroTrustDeviceManagedNetworks("example_zero_trust_device_managed_networks",
             account_id="699d98642c564d2e855e9661899b7252",
             config={
                 "tls_sockaddr": "foo.bar:1234",
@@ -272,6 +277,7 @@ class ZeroTrustDeviceManagedNetworks(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustDeviceManagedNetworks is deprecated: cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks has been deprecated in favor of cloudflare:zeroTrustDeviceManagedNetworks/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

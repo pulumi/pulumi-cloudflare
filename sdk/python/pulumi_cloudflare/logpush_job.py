@@ -591,8 +591,13 @@ class _LogpushJobState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/logpushJob:LogpushJob has been deprecated in favor of cloudflare:logpush/job:Job""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/logpushJob:LogpushJob")
 class LogpushJob(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/logpushJob:LogpushJob has been deprecated in favor of cloudflare:logpush/job:Job""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -624,7 +629,7 @@ class LogpushJob(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_logpush_job = cloudflare.LogpushJob("example_logpush_job",
+        example_logpush_job = cloudflare.logpush.Job("example_logpush_job",
             destination_conf="s3://mybucket/logs?region=us-west-2",
             zone_id="zone_id",
             dataset="gateway_dns",
@@ -706,7 +711,7 @@ class LogpushJob(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_logpush_job = cloudflare.LogpushJob("example_logpush_job",
+        example_logpush_job = cloudflare.logpush.Job("example_logpush_job",
             destination_conf="s3://mybucket/logs?region=us-west-2",
             zone_id="zone_id",
             dataset="gateway_dns",
@@ -781,6 +786,7 @@ class LogpushJob(pulumi.CustomResource):
                  ownership_challenge: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""LogpushJob is deprecated: cloudflare:index/logpushJob:LogpushJob has been deprecated in favor of cloudflare:logpush/job:Job""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

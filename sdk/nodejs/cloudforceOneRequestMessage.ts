@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCloudforceOneRequestMessage = new cloudflare.CloudforceOneRequestMessage("example_cloudforce_one_request_message", {
+ * const exampleCloudforceOneRequestMessage = new cloudflare.cloudforceonerequest.Message("example_cloudforce_one_request_message", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     requestId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     content: "Can you elaborate on the type of DoS that occurred?",
@@ -27,6 +27,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example '<account_id>/<request_id>/<page>/<per_page>'
  * ```
+ *
+ * @deprecated cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage has been deprecated in favor of cloudflare:cloudforceOneRequest/message:Message
  */
 export class CloudforceOneRequestMessage extends pulumi.CustomResource {
     /**
@@ -39,6 +41,7 @@ export class CloudforceOneRequestMessage extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CloudforceOneRequestMessageState, opts?: pulumi.CustomResourceOptions): CloudforceOneRequestMessage {
+        pulumi.log.warn("CloudforceOneRequestMessage is deprecated: cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage has been deprecated in favor of cloudflare:cloudforceOneRequest/message:Message")
         return new CloudforceOneRequestMessage(name, <any>state, { ...opts, id: id });
     }
 
@@ -92,8 +95,11 @@ export class CloudforceOneRequestMessage extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage has been deprecated in favor of cloudflare:cloudforceOneRequest/message:Message */
     constructor(name: string, args: CloudforceOneRequestMessageArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage has been deprecated in favor of cloudflare:cloudforceOneRequest/message:Message */
     constructor(name: string, argsOrState?: CloudforceOneRequestMessageArgs | CloudforceOneRequestMessageState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("CloudforceOneRequestMessage is deprecated: cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage has been deprecated in favor of cloudflare:cloudforceOneRequest/message:Message")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

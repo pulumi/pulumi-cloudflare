@@ -6,13 +6,11 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.TunnelRouteArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.TunnelRouteState;
-import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
-import java.util.List;
 import javax.annotation.Nullable;
 
 /**
@@ -30,8 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflaredRoute;
- * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflaredRouteArgs;
+ * import com.pulumi.cloudflare.zeroTrustTunnelCloudflared.Route;
+ * import com.pulumi.cloudflare.zeroTrustTunnelCloudflared.RouteArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -45,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustTunnelCloudflaredRoute = new ZeroTrustTunnelCloudflaredRoute("exampleZeroTrustTunnelCloudflaredRoute", ZeroTrustTunnelCloudflaredRouteArgs.builder()
+ *         var exampleZeroTrustTunnelCloudflaredRoute = new Route("exampleZeroTrustTunnelCloudflaredRoute", RouteArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
  *             .network("172.16.0.0/16")
  *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
@@ -209,9 +207,6 @@ public class TunnelRoute extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .aliases(List.of(
-                Output.of(Alias.builder().type("cloudflare:index/tunnelRoute:TunnelRoute").build())
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

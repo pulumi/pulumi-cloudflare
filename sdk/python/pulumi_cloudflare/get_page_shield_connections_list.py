@@ -22,6 +22,8 @@ __all__ = [
     'get_page_shield_connections_list_output',
 ]
 
+warnings.warn("""cloudflare:index/getPageShieldConnectionsList:getPageShieldConnectionsList has been deprecated in favor of cloudflare:pageShieldConnections/list:getList""", DeprecationWarning)
+
 @pulumi.output_type
 class GetPageShieldConnectionsListResult:
     """
@@ -221,7 +223,7 @@ def get_page_shield_connections_list(direction: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_page_shield_connections_list = cloudflare.get_page_shield_connections_list(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_page_shield_connections_list = cloudflare.pageshieldconnections.get_list(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="asc",
         exclude_cdn_cgi=True,
         exclude_urls="blog.cloudflare.com,www.example",
@@ -245,6 +247,7 @@ def get_page_shield_connections_list(direction: Optional[_builtins.str] = None,
            Available values: "csv".
     :param _builtins.str hosts: Includes connections that match one or more URL-encoded hostnames separated by commas.
     """
+    pulumi.log.warn("""get_page_shield_connections_list is deprecated: cloudflare:index/getPageShieldConnectionsList:getPageShieldConnectionsList has been deprecated in favor of cloudflare:pageShieldConnections/list:getList""")
     __args__ = dict()
     __args__['direction'] = direction
     __args__['excludeCdnCgi'] = exclude_cdn_cgi
@@ -310,7 +313,7 @@ def get_page_shield_connections_list_output(direction: pulumi.Input[Optional[Opt
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_page_shield_connections_list = cloudflare.get_page_shield_connections_list(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_page_shield_connections_list = cloudflare.pageshieldconnections.get_list(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="asc",
         exclude_cdn_cgi=True,
         exclude_urls="blog.cloudflare.com,www.example",
@@ -334,6 +337,7 @@ def get_page_shield_connections_list_output(direction: pulumi.Input[Optional[Opt
            Available values: "csv".
     :param _builtins.str hosts: Includes connections that match one or more URL-encoded hostnames separated by commas.
     """
+    pulumi.log.warn("""get_page_shield_connections_list is deprecated: cloudflare:index/getPageShieldConnectionsList:getPageShieldConnectionsList has been deprecated in favor of cloudflare:pageShieldConnections/list:getList""")
     __args__ = dict()
     __args__['direction'] = direction
     __args__['excludeCdnCgi'] = exclude_cdn_cgi

@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleClientCertificate = new cloudflare.ClientCertificate("example_client_certificate", {
+ * const exampleClientCertificate = new cloudflare.client.Certificate("example_client_certificate", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     csr: `  -----BEGIN CERTIFICATE REQUEST-----
  *   MIICY....
@@ -33,6 +33,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/clientCertificate:ClientCertificate example '<zone_id>/<client_certificate_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/clientCertificate:ClientCertificate has been deprecated in favor of cloudflare:client/certificate:Certificate
  */
 export class ClientCertificate extends pulumi.CustomResource {
     /**
@@ -45,6 +47,7 @@ export class ClientCertificate extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ClientCertificateState, opts?: pulumi.CustomResourceOptions): ClientCertificate {
+        pulumi.log.warn("ClientCertificate is deprecated: cloudflare:index/clientCertificate:ClientCertificate has been deprecated in favor of cloudflare:client/certificate:Certificate")
         return new ClientCertificate(name, <any>state, { ...opts, id: id });
     }
 
@@ -144,8 +147,11 @@ export class ClientCertificate extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/clientCertificate:ClientCertificate has been deprecated in favor of cloudflare:client/certificate:Certificate */
     constructor(name: string, args: ClientCertificateArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/clientCertificate:ClientCertificate has been deprecated in favor of cloudflare:client/certificate:Certificate */
     constructor(name: string, argsOrState?: ClientCertificateArgs | ClientCertificateState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ClientCertificate is deprecated: cloudflare:index/clientCertificate:ClientCertificate has been deprecated in favor of cloudflare:client/certificate:Certificate")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -24,34 +24,34 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/pipeline"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewPipelineStream(ctx, "example_pipeline_stream", &cloudflare.PipelineStreamArgs{
+//			_, err := pipeline.NewStream(ctx, "example_pipeline_stream", &pipeline.StreamArgs{
 //				AccountId: pulumi.String("0123105f4ecef8ad9ca31a8372d0c353"),
 //				Name:      pulumi.String("my_stream"),
-//				Format: &cloudflare.PipelineStreamFormatArgs{
+//				Format: &pipeline.StreamFormatArgs{
 //					Type:            pulumi.String("json"),
 //					DecimalEncoding: pulumi.String("number"),
 //					TimestampFormat: pulumi.String("rfc3339"),
 //					Unstructured:    pulumi.Bool(true),
 //				},
-//				Http: &cloudflare.PipelineStreamHttpArgs{
+//				Http: &pipeline.StreamHttpArgs{
 //					Authentication: pulumi.Bool(false),
 //					Enabled:        pulumi.Bool(true),
-//					Cors: &cloudflare.PipelineStreamHttpCorsArgs{
+//					Cors: &pipeline.StreamHttpCorsArgs{
 //						Origins: pulumi.StringArray{
 //							pulumi.String("string"),
 //						},
 //					},
 //				},
-//				Schema: &cloudflare.PipelineStreamSchemaArgs{
-//					Fields: cloudflare.PipelineStreamSchemaFieldArray{
-//						&cloudflare.PipelineStreamSchemaFieldArgs{
+//				Schema: &pipeline.StreamSchemaArgs{
+//					Fields: pipeline.StreamSchemaFieldArray{
+//						&pipeline.StreamSchemaFieldArgs{
 //							Type:        pulumi.String("int32"),
 //							MetadataKey: pulumi.String("metadata_key"),
 //							Name:        pulumi.String("name"),
@@ -59,7 +59,7 @@ import (
 //							SqlName:     pulumi.String("sql_name"),
 //						},
 //					},
-//					Format: &cloudflare.PipelineStreamSchemaFormatArgs{
+//					Format: &pipeline.StreamSchemaFormatArgs{
 //						Type:            pulumi.String("json"),
 //						DecimalEncoding: pulumi.String("number"),
 //						TimestampFormat: pulumi.String("rfc3339"),
@@ -67,7 +67,7 @@ import (
 //					},
 //					Inferred: pulumi.Bool(true),
 //				},
-//				WorkerBinding: &cloudflare.PipelineStreamWorkerBindingArgs{
+//				WorkerBinding: &pipeline.StreamWorkerBindingArgs{
 //					Enabled: pulumi.Bool(true),
 //				},
 //			})
@@ -85,6 +85,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/pipelineStream:PipelineStream example '<account_id>/<stream_id>'
 // ```
+//
+// Deprecated: cloudflare:index/pipelineStream:PipelineStream has been deprecated in favor of cloudflare:pipeline/stream:Stream
 type PipelineStream struct {
 	pulumi.CustomResourceState
 

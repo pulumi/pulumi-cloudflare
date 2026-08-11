@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getWorkersCustomDomain:getWorkersCustomDomain has been deprecated in favor of cloudflare:workersCustom/domain:getDomain")]
     public static class GetWorkersCustomDomain
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersCustomDomain = Cloudflare.GetWorkersCustomDomain.Invoke(new()
+        ///     var exampleWorkersCustomDomain = Cloudflare.Modules.WorkersCustom.GetDomain.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DomainId = "dbe10b4bc17c295377eabd600e1787fd",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersCustomDomain = Cloudflare.GetWorkersCustomDomain.Invoke(new()
+        ///     var exampleWorkersCustomDomain = Cloudflare.Modules.WorkersCustom.GetDomain.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DomainId = "dbe10b4bc17c295377eabd600e1787fd",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersCustomDomain = Cloudflare.GetWorkersCustomDomain.Invoke(new()
+        ///     var exampleWorkersCustomDomain = Cloudflare.Modules.WorkersCustom.GetDomain.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DomainId = "dbe10b4bc17c295377eabd600e1787fd",

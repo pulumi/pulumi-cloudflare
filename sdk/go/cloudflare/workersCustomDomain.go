@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/workerscustom"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWorkersCustomDomain(ctx, "example_workers_custom_domain", &cloudflare.WorkersCustomDomainArgs{
+//			_, err := workerscustom.NewDomain(ctx, "example_workers_custom_domain", &workerscustom.DomainArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Hostname:  pulumi.String("app.example.com"),
 //				Service:   pulumi.String("my-worker"),
@@ -52,6 +52,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/workersCustomDomain:WorkersCustomDomain example '<account_id>/<domain_id>'
 // ```
+//
+// Deprecated: cloudflare:index/workersCustomDomain:WorkersCustomDomain has been deprecated in favor of cloudflare:workersCustom/domain:Domain
 type WorkersCustomDomain struct {
 	pulumi.CustomResourceState
 

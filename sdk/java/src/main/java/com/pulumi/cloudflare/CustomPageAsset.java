@@ -25,8 +25,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.CustomPageAsset;
- * import com.pulumi.cloudflare.CustomPageAssetArgs;
+ * import com.pulumi.cloudflare.customPage.Asset;
+ * import com.pulumi.cloudflare.customPage.AssetArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -40,7 +40,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleCustomPageAsset = new CustomPageAsset("exampleCustomPageAsset", CustomPageAssetArgs.builder()
+ *         var exampleCustomPageAsset = new Asset("exampleCustomPageAsset", AssetArgs.builder()
  *             .description("Custom 500 error page")
  *             .name("my_custom_error_page")
  *             .url("https://example.com/error.html")
@@ -58,7 +58,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/customPageAsset:CustomPageAsset example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;asset_name&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/customPageAsset:CustomPageAsset has been deprecated in favor of cloudflare:customPage/asset:Asset
+ * 
  */
+@Deprecated /* cloudflare:index/customPageAsset:CustomPageAsset has been deprecated in favor of cloudflare:customPage/asset:Asset */
 @ResourceType(type="cloudflare:index/customPageAsset:CustomPageAsset")
 public class CustomPageAsset extends com.pulumi.resources.CustomResource {
     /**

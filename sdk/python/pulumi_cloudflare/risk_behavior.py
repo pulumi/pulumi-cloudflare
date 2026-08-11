@@ -106,7 +106,7 @@ class RiskBehavior(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_risk_behavior = cloudflare.ZeroTrustRiskBehavior("example_zero_trust_risk_behavior",
+        example_zero_trust_risk_behavior = cloudflare.zerotrust.RiskBehavior("example_zero_trust_risk_behavior",
             account_id="account_id",
             behaviors={
                 "foo": {
@@ -142,7 +142,7 @@ class RiskBehavior(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_risk_behavior = cloudflare.ZeroTrustRiskBehavior("example_zero_trust_risk_behavior",
+        example_zero_trust_risk_behavior = cloudflare.zerotrust.RiskBehavior("example_zero_trust_risk_behavior",
             account_id="account_id",
             behaviors={
                 "foo": {
@@ -190,8 +190,6 @@ class RiskBehavior(pulumi.CustomResource):
             if behaviors is None and not opts.urn:
                 raise TypeError("Missing required property 'behaviors'")
             __props__.__dict__["behaviors"] = behaviors
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/riskBehavior:RiskBehavior")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(RiskBehavior, __self__).__init__(
             'cloudflare:index/riskBehavior:RiskBehavior',
             resource_name,

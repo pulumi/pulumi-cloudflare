@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/access"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetAccessRule(ctx, &cloudflare.LookupAccessRuleArgs{
+//			_, err := access.LookupRule(ctx, &access.LookupRuleArgs{
 //				RuleId:    pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				AccountId: pulumi.StringRef("account_id"),
 //				ZoneId:    pulumi.StringRef("zone_id"),
@@ -43,6 +43,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getAccessRule:getAccessRule has been deprecated in favor of cloudflare:access/rule:getRule
 func LookupAccessRule(ctx *pulumi.Context, args *LookupAccessRuleArgs, opts ...pulumi.InvokeOption) (*LookupAccessRuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccessRuleResult

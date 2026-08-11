@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const examplePipelineStream = new cloudflare.PipelineStream("example_pipeline_stream", {
+ * const examplePipelineStream = new cloudflare.pipeline.Stream("example_pipeline_stream", {
  *     accountId: "0123105f4ecef8ad9ca31a8372d0c353",
  *     name: "my_stream",
  *     format: {
@@ -61,6 +61,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/pipelineStream:PipelineStream example '<account_id>/<stream_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/pipelineStream:PipelineStream has been deprecated in favor of cloudflare:pipeline/stream:Stream
  */
 export class PipelineStream extends pulumi.CustomResource {
     /**
@@ -73,6 +75,7 @@ export class PipelineStream extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: PipelineStreamState, opts?: pulumi.CustomResourceOptions): PipelineStream {
+        pulumi.log.warn("PipelineStream is deprecated: cloudflare:index/pipelineStream:PipelineStream has been deprecated in favor of cloudflare:pipeline/stream:Stream")
         return new PipelineStream(name, <any>state, { ...opts, id: id });
     }
 
@@ -120,8 +123,11 @@ export class PipelineStream extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/pipelineStream:PipelineStream has been deprecated in favor of cloudflare:pipeline/stream:Stream */
     constructor(name: string, args: PipelineStreamArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/pipelineStream:PipelineStream has been deprecated in favor of cloudflare:pipeline/stream:Stream */
     constructor(name: string, argsOrState?: PipelineStreamArgs | PipelineStreamState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("PipelineStream is deprecated: cloudflare:index/pipelineStream:PipelineStream has been deprecated in favor of cloudflare:pipeline/stream:Stream")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCustomCsr = new Cloudflare.CustomCsr("example_custom_csr", new()
+    ///     var exampleCustomCsr = new Cloudflare.Modules.Custom.CustomCsr("example_custom_csr", new()
     ///     {
     ///         CommonName = "example.com",
     ///         Country = "US",
@@ -53,6 +53,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/customCsr:CustomCsr example '&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;custom_csr_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/customCsr:CustomCsr has been deprecated in favor of cloudflare:custom/csr:Csr")]
     [CloudflareResourceType("cloudflare:index/customCsr:CustomCsr")]
     public partial class CustomCsr : global::Pulumi.CustomResource
     {

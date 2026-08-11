@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWorkersRoute = new Cloudflare.WorkersRoute("example_workers_route", new()
+    ///     var exampleWorkersRoute = new Cloudflare.Modules.Workers.WorkersRoute("example_workers_route", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Pattern = "example.com/*",
@@ -41,6 +41,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/workersRoute:WorkersRoute example '&lt;zone_id&gt;/&lt;route_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/workersRoute:WorkersRoute has been deprecated in favor of cloudflare:workers/route:Route")]
     [CloudflareResourceType("cloudflare:index/workersRoute:WorkersRoute")]
     public partial class WorkersRoute : global::Pulumi.CustomResource
     {

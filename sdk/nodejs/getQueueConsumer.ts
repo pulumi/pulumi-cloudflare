@@ -16,7 +16,9 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  */
+/** @deprecated cloudflare:index/getQueueConsumer:getQueueConsumer has been deprecated in favor of cloudflare:queue/consumer:getConsumer */
 export function getQueueConsumer(args: GetQueueConsumerArgs, opts?: pulumi.InvokeOptions): Promise<GetQueueConsumerResult> {
+    pulumi.log.warn("getQueueConsumer is deprecated: cloudflare:index/getQueueConsumer:getQueueConsumer has been deprecated in favor of cloudflare:queue/consumer:getConsumer")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getQueueConsumer:getQueueConsumer", {
         "accountId": args.accountId,
@@ -80,7 +82,9 @@ export interface GetQueueConsumerResult {
  *
  * ## Example Usage
  */
+/** @deprecated cloudflare:index/getQueueConsumer:getQueueConsumer has been deprecated in favor of cloudflare:queue/consumer:getConsumer */
 export function getQueueConsumerOutput(args: GetQueueConsumerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQueueConsumerResult> {
+    pulumi.log.warn("getQueueConsumer is deprecated: cloudflare:index/getQueueConsumer:getQueueConsumer has been deprecated in favor of cloudflare:queue/consumer:getConsumer")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getQueueConsumer:getQueueConsumer", {
         "accountId": args.accountId,

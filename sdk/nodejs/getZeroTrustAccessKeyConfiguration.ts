@@ -16,12 +16,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessKeyConfiguration = cloudflare.getZeroTrustAccessKeyConfiguration({
+ * const exampleZeroTrustAccessKeyConfiguration = cloudflare.zerotrustaccess.getKeyConfiguration({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessKeyConfiguration:getZeroTrustAccessKeyConfiguration has been deprecated in favor of cloudflare:zeroTrustAccess/keyConfiguration:getKeyConfiguration */
 export function getZeroTrustAccessKeyConfiguration(args?: GetZeroTrustAccessKeyConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessKeyConfigurationResult> {
+    pulumi.log.warn("getZeroTrustAccessKeyConfiguration is deprecated: cloudflare:index/getZeroTrustAccessKeyConfiguration:getZeroTrustAccessKeyConfiguration has been deprecated in favor of cloudflare:zeroTrustAccess/keyConfiguration:getKeyConfiguration")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessKeyConfiguration:getZeroTrustAccessKeyConfiguration", {
@@ -76,12 +78,14 @@ export interface GetZeroTrustAccessKeyConfigurationResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessKeyConfiguration = cloudflare.getZeroTrustAccessKeyConfiguration({
+ * const exampleZeroTrustAccessKeyConfiguration = cloudflare.zerotrustaccess.getKeyConfiguration({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessKeyConfiguration:getZeroTrustAccessKeyConfiguration has been deprecated in favor of cloudflare:zeroTrustAccess/keyConfiguration:getKeyConfiguration */
 export function getZeroTrustAccessKeyConfigurationOutput(args?: GetZeroTrustAccessKeyConfigurationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessKeyConfigurationResult> {
+    pulumi.log.warn("getZeroTrustAccessKeyConfiguration is deprecated: cloudflare:index/getZeroTrustAccessKeyConfiguration:getZeroTrustAccessKeyConfiguration has been deprecated in favor of cloudflare:zeroTrustAccess/keyConfiguration:getKeyConfiguration")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessKeyConfiguration:getZeroTrustAccessKeyConfiguration", {

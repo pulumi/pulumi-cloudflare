@@ -13,13 +13,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDeviceDeploymentGroups = cloudflare.getZeroTrustDeviceDeploymentGroups({
+ * const exampleZeroTrustDeviceDeploymentGroups = cloudflare.zerotrustdevicedeploymentgroups.getZeroTrustDeviceDeploymentGroups({
  *     accountId: "account_id",
  *     groupId: "group_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDeviceDeploymentGroups:getZeroTrustDeviceDeploymentGroups has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/zeroTrustDeviceDeploymentGroups:getZeroTrustDeviceDeploymentGroups */
 export function getZeroTrustDeviceDeploymentGroups(args: GetZeroTrustDeviceDeploymentGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDeviceDeploymentGroupsResult> {
+    pulumi.log.warn("getZeroTrustDeviceDeploymentGroups is deprecated: cloudflare:index/getZeroTrustDeviceDeploymentGroups:getZeroTrustDeviceDeploymentGroups has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/zeroTrustDeviceDeploymentGroups:getZeroTrustDeviceDeploymentGroups")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDeviceDeploymentGroups:getZeroTrustDeviceDeploymentGroups", {
         "accountId": args.accountId,
@@ -73,13 +75,15 @@ export interface GetZeroTrustDeviceDeploymentGroupsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDeviceDeploymentGroups = cloudflare.getZeroTrustDeviceDeploymentGroups({
+ * const exampleZeroTrustDeviceDeploymentGroups = cloudflare.zerotrustdevicedeploymentgroups.getZeroTrustDeviceDeploymentGroups({
  *     accountId: "account_id",
  *     groupId: "group_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDeviceDeploymentGroups:getZeroTrustDeviceDeploymentGroups has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/zeroTrustDeviceDeploymentGroups:getZeroTrustDeviceDeploymentGroups */
 export function getZeroTrustDeviceDeploymentGroupsOutput(args: GetZeroTrustDeviceDeploymentGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDeviceDeploymentGroupsResult> {
+    pulumi.log.warn("getZeroTrustDeviceDeploymentGroups is deprecated: cloudflare:index/getZeroTrustDeviceDeploymentGroups:getZeroTrustDeviceDeploymentGroups has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/zeroTrustDeviceDeploymentGroups:getZeroTrustDeviceDeploymentGroups")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDeviceDeploymentGroups:getZeroTrustDeviceDeploymentGroups", {
         "accountId": args.accountId,

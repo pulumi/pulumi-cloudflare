@@ -31,11 +31,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.MagicWanGreTunnel;
- * import com.pulumi.cloudflare.MagicWanGreTunnelArgs;
- * import com.pulumi.cloudflare.inputs.MagicWanGreTunnelBgpArgs;
- * import com.pulumi.cloudflare.inputs.MagicWanGreTunnelHealthCheckArgs;
- * import com.pulumi.cloudflare.inputs.MagicWanGreTunnelHealthCheckTargetArgs;
+ * import com.pulumi.cloudflare.magicWan.GreTunnel;
+ * import com.pulumi.cloudflare.magicWan.GreTunnelArgs;
+ * import com.pulumi.cloudflare.magicWan.inputs.GreTunnelBgpArgs;
+ * import com.pulumi.cloudflare.magicWan.inputs.GreTunnelHealthCheckArgs;
+ * import com.pulumi.cloudflare.magicWan.inputs.GreTunnelHealthCheckTargetArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -49,24 +49,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleMagicWanGreTunnel = new MagicWanGreTunnel("exampleMagicWanGreTunnel", MagicWanGreTunnelArgs.builder()
+ *         var exampleMagicWanGreTunnel = new GreTunnel("exampleMagicWanGreTunnel", GreTunnelArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .cloudflareGreEndpoint("203.0.113.1")
  *             .customerGreEndpoint("203.0.113.1")
  *             .interfaceAddress("192.0.2.0/31")
  *             .name("GRE_1")
  *             .automaticReturnRouting(true)
- *             .bgp(MagicWanGreTunnelBgpArgs.builder()
+ *             .bgp(GreTunnelBgpArgs.builder()
  *                 .customerAsn(0)
  *                 .extraPrefixes("string")
  *                 .md5Key("md5_key")
  *                 .build())
  *             .description("Tunnel for ISP X")
- *             .healthCheck(MagicWanGreTunnelHealthCheckArgs.builder()
+ *             .healthCheck(GreTunnelHealthCheckArgs.builder()
  *                 .direction("bidirectional")
  *                 .enabled(true)
  *                 .rate("low")
- *                 .target(MagicWanGreTunnelHealthCheckTargetArgs.builder()
+ *                 .target(GreTunnelHealthCheckTargetArgs.builder()
  *                     .saved("203.0.113.1")
  *                     .build())
  *                 .type("request")
@@ -87,7 +87,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel example &#39;&lt;account_id&gt;/&lt;gre_tunnel_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel has been deprecated in favor of cloudflare:magicWan/greTunnel:GreTunnel
+ * 
  */
+@Deprecated /* cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel has been deprecated in favor of cloudflare:magicWan/greTunnel:GreTunnel */
 @ResourceType(type="cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel")
 public class MagicWanGreTunnel extends com.pulumi.resources.CustomResource {
     /**

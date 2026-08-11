@@ -22,14 +22,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/logpushdataset"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetLogpushDatasetField(ctx, &cloudflare.GetLogpushDatasetFieldArgs{
+//			_, err := logpushdataset.GetField(ctx, &logpushdataset.GetFieldArgs{
 //				DatasetId: pulumi.StringRef("gateway_dns"),
 //				AccountId: pulumi.StringRef("account_id"),
 //				ZoneId:    pulumi.StringRef("zone_id"),
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getLogpushDatasetField:getLogpushDatasetField has been deprecated in favor of cloudflare:logpushDataset/field:getField
 func GetLogpushDatasetField(ctx *pulumi.Context, args *GetLogpushDatasetFieldArgs, opts ...pulumi.InvokeOption) (*GetLogpushDatasetFieldResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLogpushDatasetFieldResult

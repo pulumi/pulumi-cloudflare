@@ -16,13 +16,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustRiskScoringIntegration = cloudflare.getZeroTrustRiskScoringIntegration({
+ * const exampleZeroTrustRiskScoringIntegration = cloudflare.zerotrustriskscoring.getIntegration({
  *     accountId: "account_id",
  *     integrationId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustRiskScoringIntegration:getZeroTrustRiskScoringIntegration has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integration:getIntegration */
 export function getZeroTrustRiskScoringIntegration(args: GetZeroTrustRiskScoringIntegrationArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustRiskScoringIntegrationResult> {
+    pulumi.log.warn("getZeroTrustRiskScoringIntegration is deprecated: cloudflare:index/getZeroTrustRiskScoringIntegration:getZeroTrustRiskScoringIntegration has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integration:getIntegration")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustRiskScoringIntegration:getZeroTrustRiskScoringIntegration", {
         "accountId": args.accountId,
@@ -91,13 +93,15 @@ export interface GetZeroTrustRiskScoringIntegrationResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustRiskScoringIntegration = cloudflare.getZeroTrustRiskScoringIntegration({
+ * const exampleZeroTrustRiskScoringIntegration = cloudflare.zerotrustriskscoring.getIntegration({
  *     accountId: "account_id",
  *     integrationId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustRiskScoringIntegration:getZeroTrustRiskScoringIntegration has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integration:getIntegration */
 export function getZeroTrustRiskScoringIntegrationOutput(args: GetZeroTrustRiskScoringIntegrationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustRiskScoringIntegrationResult> {
+    pulumi.log.warn("getZeroTrustRiskScoringIntegration is deprecated: cloudflare:index/getZeroTrustRiskScoringIntegration:getZeroTrustRiskScoringIntegration has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integration:getIntegration")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustRiskScoringIntegration:getZeroTrustRiskScoringIntegration", {
         "accountId": args.accountId,

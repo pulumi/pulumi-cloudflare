@@ -115,8 +115,13 @@ class _ZeroTrustGatewaySettingsState:
         pulumi.set(self, "updated_at", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings has been deprecated in favor of cloudflare:zeroTrustGateway/settings:Settings""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings")
 class ZeroTrustGatewaySettings(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings has been deprecated in favor of cloudflare:zeroTrustGateway/settings:Settings""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -131,7 +136,7 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_gateway_settings = cloudflare.ZeroTrustGatewaySettings("example_zero_trust_gateway_settings",
+        example_zero_trust_gateway_settings = cloudflare.zerotrustgateway.Settings("example_zero_trust_gateway_settings",
             account_id="699d98642c564d2e855e9661899b7252",
             settings={
                 "activity_log": {
@@ -226,7 +231,7 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_gateway_settings = cloudflare.ZeroTrustGatewaySettings("example_zero_trust_gateway_settings",
+        example_zero_trust_gateway_settings = cloudflare.zerotrustgateway.Settings("example_zero_trust_gateway_settings",
             account_id="699d98642c564d2e855e9661899b7252",
             settings={
                 "activity_log": {
@@ -322,6 +327,7 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  settings: pulumi.Input[Optional[Union['ZeroTrustGatewaySettingsSettingsArgs', 'ZeroTrustGatewaySettingsSettingsArgsDict']]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustGatewaySettings is deprecated: cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings has been deprecated in favor of cloudflare:zeroTrustGateway/settings:Settings""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

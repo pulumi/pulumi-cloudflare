@@ -36,18 +36,18 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDnsLocation;
- * import com.pulumi.cloudflare.ZeroTrustDnsLocationArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationEndpointsArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationEndpointsDohArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationEndpointsDohNetworkArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationEndpointsDotArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationEndpointsDotNetworkArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationEndpointsIpv4Args;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationEndpointsIpv6Args;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationEndpointsIpv6NetworkArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationMaxTtlArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationNetworkArgs;
+ * import com.pulumi.cloudflare.zeroTrustDns.Location;
+ * import com.pulumi.cloudflare.zeroTrustDns.LocationArgs;
+ * import com.pulumi.cloudflare.zeroTrustDns.inputs.LocationEndpointsArgs;
+ * import com.pulumi.cloudflare.zeroTrustDns.inputs.LocationEndpointsDohArgs;
+ * import com.pulumi.cloudflare.zeroTrustDns.inputs.LocationEndpointsDohNetworkArgs;
+ * import com.pulumi.cloudflare.zeroTrustDns.inputs.LocationEndpointsDotArgs;
+ * import com.pulumi.cloudflare.zeroTrustDns.inputs.LocationEndpointsDotNetworkArgs;
+ * import com.pulumi.cloudflare.zeroTrustDns.inputs.LocationEndpointsIpv4Args;
+ * import com.pulumi.cloudflare.zeroTrustDns.inputs.LocationEndpointsIpv6Args;
+ * import com.pulumi.cloudflare.zeroTrustDns.inputs.LocationEndpointsIpv6NetworkArgs;
+ * import com.pulumi.cloudflare.zeroTrustDns.inputs.LocationMaxTtlArgs;
+ * import com.pulumi.cloudflare.zeroTrustDns.inputs.LocationNetworkArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -61,41 +61,41 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustDnsLocation = new ZeroTrustDnsLocation("exampleZeroTrustDnsLocation", ZeroTrustDnsLocationArgs.builder()
+ *         var exampleZeroTrustDnsLocation = new Location("exampleZeroTrustDnsLocation", LocationArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
  *             .name("Austin Office Location")
  *             .clientDefault(false)
  *             .dnsDestinationIpsId("0e4a32c6-6fb8-4858-9296-98f51631e8e6")
  *             .ecsSupport(false)
- *             .endpoints(ZeroTrustDnsLocationEndpointsArgs.builder()
- *                 .doh(ZeroTrustDnsLocationEndpointsDohArgs.builder()
+ *             .endpoints(LocationEndpointsArgs.builder()
+ *                 .doh(LocationEndpointsDohArgs.builder()
  *                     .enabled(true)
- *                     .networks(ZeroTrustDnsLocationEndpointsDohNetworkArgs.builder()
+ *                     .networks(LocationEndpointsDohNetworkArgs.builder()
  *                         .network("2001:85a3::/64")
  *                         .build())
  *                     .requireToken(true)
  *                     .build())
- *                 .dot(ZeroTrustDnsLocationEndpointsDotArgs.builder()
+ *                 .dot(LocationEndpointsDotArgs.builder()
  *                     .enabled(true)
- *                     .networks(ZeroTrustDnsLocationEndpointsDotNetworkArgs.builder()
+ *                     .networks(LocationEndpointsDotNetworkArgs.builder()
  *                         .network("2001:85a3::/64")
  *                         .build())
  *                     .build())
- *                 .ipv4(ZeroTrustDnsLocationEndpointsIpv4Args.builder()
+ *                 .ipv4(LocationEndpointsIpv4Args.builder()
  *                     .enabled(true)
  *                     .build())
- *                 .ipv6(ZeroTrustDnsLocationEndpointsIpv6Args.builder()
+ *                 .ipv6(LocationEndpointsIpv6Args.builder()
  *                     .enabled(true)
- *                     .networks(ZeroTrustDnsLocationEndpointsIpv6NetworkArgs.builder()
+ *                     .networks(LocationEndpointsIpv6NetworkArgs.builder()
  *                         .network("2001:85a3::/64")
  *                         .build())
  *                     .build())
  *                 .build())
- *             .maxTtl(ZeroTrustDnsLocationMaxTtlArgs.builder()
+ *             .maxTtl(LocationMaxTtlArgs.builder()
  *                 .mode("override")
  *                 .ttlSecs(3600)
  *                 .build())
- *             .networks(ZeroTrustDnsLocationNetworkArgs.builder()
+ *             .networks(LocationNetworkArgs.builder()
  *                 .network("192.0.2.1/32")
  *                 .build())
  *             .build());
@@ -111,7 +111,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation example &#39;&lt;account_id&gt;/&lt;location_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation has been deprecated in favor of cloudflare:zeroTrustDns/location:Location
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation has been deprecated in favor of cloudflare:zeroTrustDns/location:Location */
 @ResourceType(type="cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation")
 public class ZeroTrustDnsLocation extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

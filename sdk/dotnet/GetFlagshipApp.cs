@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getFlagshipApp:getFlagshipApp has been deprecated in favor of cloudflare:flagship/app:getApp")]
     public static class GetFlagshipApp
     {
         /// <summary>
@@ -26,7 +27,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleFlagshipApp = Cloudflare.GetFlagshipApp.Invoke(new()
+        ///     var exampleFlagshipApp = Cloudflare.Modules.Flagship.GetApp.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         AppId = "app_id",
@@ -53,7 +54,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleFlagshipApp = Cloudflare.GetFlagshipApp.Invoke(new()
+        ///     var exampleFlagshipApp = Cloudflare.Modules.Flagship.GetApp.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         AppId = "app_id",
@@ -80,7 +81,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleFlagshipApp = Cloudflare.GetFlagshipApp.Invoke(new()
+        ///     var exampleFlagshipApp = Cloudflare.Modules.Flagship.GetApp.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         AppId = "app_id",

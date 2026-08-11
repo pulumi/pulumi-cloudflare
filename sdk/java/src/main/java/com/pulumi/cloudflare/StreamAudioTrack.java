@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.StreamAudioTrack;
- * import com.pulumi.cloudflare.StreamAudioTrackArgs;
+ * import com.pulumi.cloudflare.stream.AudioTrack;
+ * import com.pulumi.cloudflare.stream.AudioTrackArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleStreamAudioTrack = new StreamAudioTrack("exampleStreamAudioTrack", StreamAudioTrackArgs.builder()
+ *         var exampleStreamAudioTrack = new AudioTrack("exampleStreamAudioTrack", AudioTrackArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .identifier("ea95132c15732412d22c1476fa83f27a")
  *             .audioIdentifier("ea95132c15732412d22c1476fa83f27a")
@@ -64,7 +64,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/streamAudioTrack:StreamAudioTrack has been deprecated in favor of cloudflare:stream/audioTrack:AudioTrack
+ * 
  */
+@Deprecated /* cloudflare:index/streamAudioTrack:StreamAudioTrack has been deprecated in favor of cloudflare:stream/audioTrack:AudioTrack */
 @ResourceType(type="cloudflare:index/streamAudioTrack:StreamAudioTrack")
 public class StreamAudioTrack extends com.pulumi.resources.CustomResource {
     /**

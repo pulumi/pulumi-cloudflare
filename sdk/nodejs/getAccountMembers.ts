@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountMembers = cloudflare.getAccountMembers({
+ * const exampleAccountMembers = cloudflare.account.getMembers({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "desc",
  *     order: "status",
@@ -27,7 +27,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccountMembers:getAccountMembers has been deprecated in favor of cloudflare:account/members:getMembers */
 export function getAccountMembers(args?: GetAccountMembersArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountMembersResult> {
+    pulumi.log.warn("getAccountMembers is deprecated: cloudflare:index/getAccountMembers:getAccountMembers has been deprecated in favor of cloudflare:account/members:getMembers")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountMembers:getAccountMembers", {
@@ -113,7 +115,7 @@ export interface GetAccountMembersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountMembers = cloudflare.getAccountMembers({
+ * const exampleAccountMembers = cloudflare.account.getMembers({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "desc",
  *     order: "status",
@@ -121,7 +123,9 @@ export interface GetAccountMembersResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccountMembers:getAccountMembers has been deprecated in favor of cloudflare:account/members:getMembers */
 export function getAccountMembersOutput(args?: GetAccountMembersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountMembersResult> {
+    pulumi.log.warn("getAccountMembers is deprecated: cloudflare:index/getAccountMembers:getAccountMembers has been deprecated in favor of cloudflare:account/members:getMembers")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountMembers:getAccountMembers", {

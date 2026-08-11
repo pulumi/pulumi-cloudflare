@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWorkersCustomDomain = new Cloudflare.WorkersCustomDomain("example_workers_custom_domain", new()
+    ///     var exampleWorkersCustomDomain = new Cloudflare.Modules.WorkersCustom.WorkersCustomDomain("example_workers_custom_domain", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Hostname = "app.example.com",
@@ -112,10 +112,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/workerDomain:WorkerDomain" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

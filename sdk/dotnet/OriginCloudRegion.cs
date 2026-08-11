@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleOriginCloudRegion = new Cloudflare.OriginCloudRegion("example_origin_cloud_region", new()
+    ///     var exampleOriginCloudRegion = new Cloudflare.Modules.OriginCloud.OriginCloudRegion("example_origin_cloud_region", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         OriginIp = "192.0.2.1",
@@ -37,6 +37,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/originCloudRegion:OriginCloudRegion example '&lt;zone_id&gt;/&lt;origin_ip&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/originCloudRegion:OriginCloudRegion has been deprecated in favor of cloudflare:originCloud/region:Region")]
     [CloudflareResourceType("cloudflare:index/originCloudRegion:OriginCloudRegion")]
     public partial class OriginCloudRegion : global::Pulumi.CustomResource
     {

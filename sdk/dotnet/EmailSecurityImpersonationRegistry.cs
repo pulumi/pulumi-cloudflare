@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleEmailSecurityImpersonationRegistry = new Cloudflare.EmailSecurityImpersonationRegistry("example_email_security_impersonation_registry", new()
+    ///     var exampleEmailSecurityImpersonationRegistry = new Cloudflare.Modules.EmailSecurityImpersonation.EmailSecurityImpersonationRegistry("example_email_security_impersonation_registry", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Email = "email",
@@ -42,6 +42,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry example '&lt;account_id&gt;/&lt;display_name_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry has been deprecated in favor of cloudflare:emailSecurityImpersonation/registry:Registry")]
     [CloudflareResourceType("cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry")]
     public partial class EmailSecurityImpersonationRegistry : global::Pulumi.CustomResource
     {

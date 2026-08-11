@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAddressMap = new Cloudflare.AddressMap("example_address_map", new()
+    ///     var exampleAddressMap = new Cloudflare.Modules.Address.AddressMap("example_address_map", new()
     ///     {
     ///         AccountId = "258def64c72dae45f3e4c8516e2111f2",
     ///         Description = "My Ecommerce zones",
@@ -36,7 +36,7 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         Memberships = new[]
     ///         {
-    ///             new Cloudflare.Inputs.AddressMapMembershipArgs
+    ///             new Cloudflare.Modules.Address.Inputs.MapMembershipArgs
     ///             {
     ///                 Identifier = "023e105f4ecef8ad9ca31a8372d0c353",
     ///                 Kind = "zone",
@@ -53,6 +53,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/addressMap:AddressMap example '&lt;account_id&gt;/&lt;address_map_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/addressMap:AddressMap has been deprecated in favor of cloudflare:address/map:Map")]
     [CloudflareResourceType("cloudflare:index/addressMap:AddressMap")]
     public partial class AddressMap : global::Pulumi.CustomResource
     {

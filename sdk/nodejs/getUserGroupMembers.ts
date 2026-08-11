@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleUserGroupMembers = cloudflare.getUserGroupMembers({
+ * const exampleUserGroupMembers = cloudflare.usergroup.getMembers({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     userGroupId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "asc",
@@ -27,7 +27,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getUserGroupMembers:getUserGroupMembers has been deprecated in favor of cloudflare:userGroup/members:getMembers */
 export function getUserGroupMembers(args: GetUserGroupMembersArgs, opts?: pulumi.InvokeOptions): Promise<GetUserGroupMembersResult> {
+    pulumi.log.warn("getUserGroupMembers is deprecated: cloudflare:index/getUserGroupMembers:getUserGroupMembers has been deprecated in favor of cloudflare:userGroup/members:getMembers")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getUserGroupMembers:getUserGroupMembers", {
         "accountId": args.accountId,
@@ -103,7 +105,7 @@ export interface GetUserGroupMembersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleUserGroupMembers = cloudflare.getUserGroupMembers({
+ * const exampleUserGroupMembers = cloudflare.usergroup.getMembers({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     userGroupId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "asc",
@@ -111,7 +113,9 @@ export interface GetUserGroupMembersResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getUserGroupMembers:getUserGroupMembers has been deprecated in favor of cloudflare:userGroup/members:getMembers */
 export function getUserGroupMembersOutput(args: GetUserGroupMembersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserGroupMembersResult> {
+    pulumi.log.warn("getUserGroupMembers is deprecated: cloudflare:index/getUserGroupMembers:getUserGroupMembers has been deprecated in favor of cloudflare:userGroup/members:getMembers")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getUserGroupMembers:getUserGroupMembers", {
         "accountId": args.accountId,

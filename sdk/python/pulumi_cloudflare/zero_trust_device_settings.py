@@ -345,8 +345,13 @@ class _ZeroTrustDeviceSettingsState:
         pulumi.set(self, "use_zt_virtual_ip", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings has been deprecated in favor of cloudflare:zeroTrustDevice/settings:Settings""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings")
 class ZeroTrustDeviceSettings(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings has been deprecated in favor of cloudflare:zeroTrustDevice/settings:Settings""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -373,7 +378,7 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_device_settings = cloudflare.ZeroTrustDeviceSettings("example_zero_trust_device_settings",
+        example_zero_trust_device_settings = cloudflare.zerotrustdevice.Settings("example_zero_trust_device_settings",
             account_id="699d98642c564d2e855e9661899b7252",
             disable_for_time=float(0),
             external_emergency_signal_enabled=True,
@@ -420,7 +425,7 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_device_settings = cloudflare.ZeroTrustDeviceSettings("example_zero_trust_device_settings",
+        example_zero_trust_device_settings = cloudflare.zerotrustdevice.Settings("example_zero_trust_device_settings",
             account_id="699d98642c564d2e855e9661899b7252",
             disable_for_time=float(0),
             external_emergency_signal_enabled=True,
@@ -464,6 +469,7 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
                  root_certificate_installation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  use_zt_virtual_ip: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustDeviceSettings is deprecated: cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings has been deprecated in favor of cloudflare:zeroTrustDevice/settings:Settings""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

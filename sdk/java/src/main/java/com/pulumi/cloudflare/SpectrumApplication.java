@@ -35,11 +35,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.SpectrumApplication;
- * import com.pulumi.cloudflare.SpectrumApplicationArgs;
- * import com.pulumi.cloudflare.inputs.SpectrumApplicationDnsArgs;
- * import com.pulumi.cloudflare.inputs.SpectrumApplicationEdgeIpsArgs;
- * import com.pulumi.cloudflare.inputs.SpectrumApplicationOriginDnsArgs;
+ * import com.pulumi.cloudflare.spectrum.Application;
+ * import com.pulumi.cloudflare.spectrum.ApplicationArgs;
+ * import com.pulumi.cloudflare.spectrum.inputs.ApplicationDnsArgs;
+ * import com.pulumi.cloudflare.spectrum.inputs.ApplicationEdgeIpsArgs;
+ * import com.pulumi.cloudflare.spectrum.inputs.ApplicationOriginDnsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -53,22 +53,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleSpectrumApplication = new SpectrumApplication("exampleSpectrumApplication", SpectrumApplicationArgs.builder()
+ *         var exampleSpectrumApplication = new Application("exampleSpectrumApplication", ApplicationArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .dns(SpectrumApplicationDnsArgs.builder()
+ *             .dns(ApplicationDnsArgs.builder()
  *                 .name("ssh.example.com")
  *                 .type("CNAME")
  *                 .build())
  *             .protocol("tcp/22")
  *             .trafficType("direct")
  *             .argoSmartRouting(true)
- *             .edgeIps(SpectrumApplicationEdgeIpsArgs.builder()
+ *             .edgeIps(ApplicationEdgeIpsArgs.builder()
  *                 .connectivity("all")
  *                 .type("dynamic")
  *                 .build())
  *             .ipFirewall(false)
  *             .originDirects("tcp://127.0.0.1:8080")
- *             .originDns(SpectrumApplicationOriginDnsArgs.builder()
+ *             .originDns(ApplicationOriginDnsArgs.builder()
  *                 .name("origin.example.com")
  *                 .ttl(600)
  *                 .type("")
@@ -89,7 +89,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/spectrumApplication:SpectrumApplication example &#39;&lt;zone_id&gt;/&lt;app_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/spectrumApplication:SpectrumApplication has been deprecated in favor of cloudflare:spectrum/application:Application
+ * 
  */
+@Deprecated /* cloudflare:index/spectrumApplication:SpectrumApplication has been deprecated in favor of cloudflare:spectrum/application:Application */
 @ResourceType(type="cloudflare:index/spectrumApplication:SpectrumApplication")
 public class SpectrumApplication extends com.pulumi.resources.CustomResource {
     /**

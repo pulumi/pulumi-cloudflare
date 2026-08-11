@@ -27,14 +27,14 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleTokenValidationConfig = new Cloudflare.TokenValidationConfig("example_token_validation_config", new()
+    ///     var exampleTokenValidationConfig = new Cloudflare.Modules.TokenValidation.TokenValidationConfig("example_token_validation_config", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         Credentials = new Cloudflare.Inputs.TokenValidationConfigCredentialsArgs
+    ///         Credentials = new Cloudflare.Modules.TokenValidation.Inputs.ConfigCredentialsArgs
     ///         {
     ///             Keys = new[]
     ///             {
-    ///                 new Cloudflare.Inputs.TokenValidationConfigCredentialsKeyArgs
+    ///                 new Cloudflare.Modules.TokenValidation.Inputs.ConfigCredentialsKeyArgs
     ///                 {
     ///                     Alg = "RS256",
     ///                     E = "e",
@@ -63,6 +63,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/tokenValidationConfig:TokenValidationConfig example '&lt;zone_id&gt;/&lt;config_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/tokenValidationConfig:TokenValidationConfig has been deprecated in favor of cloudflare:tokenValidation/config:Config")]
     [CloudflareResourceType("cloudflare:index/tokenValidationConfig:TokenValidationConfig")]
     public partial class TokenValidationConfig : global::Pulumi.CustomResource
     {

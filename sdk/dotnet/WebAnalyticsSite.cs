@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWebAnalyticsSite = new Cloudflare.WebAnalyticsSite("example_web_analytics_site", new()
+    ///     var exampleWebAnalyticsSite = new Cloudflare.Modules.WebAnalytics.WebAnalyticsSite("example_web_analytics_site", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         AutoInstall = true,
@@ -42,6 +42,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example '&lt;account_id&gt;/&lt;site_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/webAnalyticsSite:WebAnalyticsSite has been deprecated in favor of cloudflare:webAnalytics/site:Site")]
     [CloudflareResourceType("cloudflare:index/webAnalyticsSite:WebAnalyticsSite")]
     public partial class WebAnalyticsSite : global::Pulumi.CustomResource
     {

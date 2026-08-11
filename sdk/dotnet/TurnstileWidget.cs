@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleTurnstileWidget = new Cloudflare.TurnstileWidget("example_turnstile_widget", new()
+    ///     var exampleTurnstileWidget = new Cloudflare.Modules.Turnstile.TurnstileWidget("example_turnstile_widget", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Domains = new[]
@@ -54,6 +54,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example '&lt;account_id&gt;/&lt;sitekey&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/turnstileWidget:TurnstileWidget has been deprecated in favor of cloudflare:turnstile/widget:Widget")]
     [CloudflareResourceType("cloudflare:index/turnstileWidget:TurnstileWidget")]
     public partial class TurnstileWidget : global::Pulumi.CustomResource
     {

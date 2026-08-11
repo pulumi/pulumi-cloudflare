@@ -244,8 +244,13 @@ class _StreamAudioTrackState:
         pulumi.set(self, "uid", value)
 
 
+warnings.warn("""cloudflare:index/streamAudioTrack:StreamAudioTrack has been deprecated in favor of cloudflare:stream/audioTrack:AudioTrack""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/streamAudioTrack:StreamAudioTrack")
 class StreamAudioTrack(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/streamAudioTrack:StreamAudioTrack has been deprecated in favor of cloudflare:stream/audioTrack:AudioTrack""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -268,7 +273,7 @@ class StreamAudioTrack(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_stream_audio_track = cloudflare.StreamAudioTrack("example_stream_audio_track",
+        example_stream_audio_track = cloudflare.stream.AudioTrack("example_stream_audio_track",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             identifier="ea95132c15732412d22c1476fa83f27a",
             audio_identifier="ea95132c15732412d22c1476fa83f27a",
@@ -307,7 +312,7 @@ class StreamAudioTrack(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_stream_audio_track = cloudflare.StreamAudioTrack("example_stream_audio_track",
+        example_stream_audio_track = cloudflare.stream.AudioTrack("example_stream_audio_track",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             identifier="ea95132c15732412d22c1476fa83f27a",
             audio_identifier="ea95132c15732412d22c1476fa83f27a",
@@ -341,6 +346,7 @@ class StreamAudioTrack(pulumi.CustomResource):
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""StreamAudioTrack is deprecated: cloudflare:index/streamAudioTrack:StreamAudioTrack has been deprecated in favor of cloudflare:stream/audioTrack:AudioTrack""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

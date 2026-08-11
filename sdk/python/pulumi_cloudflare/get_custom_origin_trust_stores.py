@@ -22,6 +22,8 @@ __all__ = [
     'get_custom_origin_trust_stores_output',
 ]
 
+warnings.warn("""cloudflare:index/getCustomOriginTrustStores:getCustomOriginTrustStores has been deprecated in favor of cloudflare:customOriginTrust/stores:getStores""", DeprecationWarning)
+
 @pulumi.output_type
 class GetCustomOriginTrustStoresResult:
     """
@@ -115,7 +117,7 @@ def get_custom_origin_trust_stores(limit: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_custom_origin_trust_stores = cloudflare.get_custom_origin_trust_stores(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_custom_origin_trust_stores = cloudflare.customorigintrust.get_stores(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         limit=10,
         offset=10)
     ```
@@ -126,6 +128,7 @@ def get_custom_origin_trust_stores(limit: Optional[_builtins.int] = None,
     :param _builtins.int offset: Offset the results.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_custom_origin_trust_stores is deprecated: cloudflare:index/getCustomOriginTrustStores:getCustomOriginTrustStores has been deprecated in favor of cloudflare:customOriginTrust/stores:getStores""")
     __args__ = dict()
     __args__['limit'] = limit
     __args__['maxItems'] = max_items
@@ -157,7 +160,7 @@ def get_custom_origin_trust_stores_output(limit: pulumi.Input[Optional[Optional[
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_custom_origin_trust_stores = cloudflare.get_custom_origin_trust_stores(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_custom_origin_trust_stores = cloudflare.customorigintrust.get_stores(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         limit=10,
         offset=10)
     ```
@@ -168,6 +171,7 @@ def get_custom_origin_trust_stores_output(limit: pulumi.Input[Optional[Optional[
     :param _builtins.int offset: Offset the results.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_custom_origin_trust_stores is deprecated: cloudflare:index/getCustomOriginTrustStores:getCustomOriginTrustStores has been deprecated in favor of cloudflare:customOriginTrust/stores:getStores""")
     __args__ = dict()
     __args__['limit'] = limit
     __args__['maxItems'] = max_items

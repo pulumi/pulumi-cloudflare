@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.EmailSecurityBlockSender;
- * import com.pulumi.cloudflare.EmailSecurityBlockSenderArgs;
+ * import com.pulumi.cloudflare.emailSecurityBlock.Sender;
+ * import com.pulumi.cloudflare.emailSecurityBlock.SenderArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var exampleEmailSecurityBlockSender = new EmailSecurityBlockSender("exampleEmailSecurityBlockSender", EmailSecurityBlockSenderArgs.builder()
+ *         var exampleEmailSecurityBlockSender = new Sender("exampleEmailSecurityBlockSender", SenderArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .isRegex(false)
  *             .pattern("test}{@literal @}{@code example.com")
@@ -64,7 +64,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/emailSecurityBlockSender:EmailSecurityBlockSender example &#39;&lt;account_id&gt;/&lt;pattern_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/emailSecurityBlockSender:EmailSecurityBlockSender has been deprecated in favor of cloudflare:emailSecurityBlock/sender:Sender
+ * 
  */
+@Deprecated /* cloudflare:index/emailSecurityBlockSender:EmailSecurityBlockSender has been deprecated in favor of cloudflare:emailSecurityBlock/sender:Sender */
 @ResourceType(type="cloudflare:index/emailSecurityBlockSender:EmailSecurityBlockSender")
 public class EmailSecurityBlockSender extends com.pulumi.resources.CustomResource {
     /**

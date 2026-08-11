@@ -30,14 +30,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/certificate"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewCertificatePack(ctx, "example_certificate_pack", &cloudflare.CertificatePackArgs{
+//			_, err := certificate.NewPack(ctx, "example_certificate_pack", &certificate.PackArgs{
 //				ZoneId:               pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				CertificateAuthority: pulumi.String("lets_encrypt"),
 //				Hosts: pulumi.StringArray{
@@ -67,6 +67,8 @@ import (
 //
 // While supported, importing isn't recommended and it is advised to replace the
 // certificate entirely instead.
+//
+// Deprecated: cloudflare:index/certificatePack:CertificatePack has been deprecated in favor of cloudflare:certificate/pack:Pack
 type CertificatePack struct {
 	pulumi.CustomResourceState
 

@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDlpSensitivityGroup = new Cloudflare.ZeroTrustDlpSensitivityGroup("example_zero_trust_dlp_sensitivity_group", new()
+    ///     var exampleZeroTrustDlpSensitivityGroup = new Cloudflare.Modules.ZeroTrustDlpSensitivity.ZeroTrustDlpSensitivityGroup("example_zero_trust_dlp_sensitivity_group", new()
     ///     {
     ///         AccountId = "account_id",
     ///         Name = "name",
@@ -41,6 +41,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustDlpSensitivityGroup:ZeroTrustDlpSensitivityGroup example '&lt;account_id&gt;/&lt;sensitivity_group_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustDlpSensitivityGroup:ZeroTrustDlpSensitivityGroup has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/group:Group")]
     [CloudflareResourceType("cloudflare:index/zeroTrustDlpSensitivityGroup:ZeroTrustDlpSensitivityGroup")]
     public partial class ZeroTrustDlpSensitivityGroup : global::Pulumi.CustomResource
     {

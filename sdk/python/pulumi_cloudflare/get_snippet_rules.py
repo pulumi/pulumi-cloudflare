@@ -21,6 +21,8 @@ __all__ = [
     'get_snippet_rules_output',
 ]
 
+warnings.warn("""cloudflare:index/getSnippetRules:getSnippetRules has been deprecated in favor of cloudflare:snippetRules/snippetRules:getSnippetRules""", DeprecationWarning)
+
 @pulumi.output_type
 class GetSnippetRulesResult:
     """
@@ -72,6 +74,7 @@ def get_snippet_rules(zone_id: Optional[_builtins.str] = None,
 
     :param _builtins.str zone_id: Use this field to specify the unique ID of the zone.
     """
+    pulumi.log.warn("""get_snippet_rules is deprecated: cloudflare:index/getSnippetRules:getSnippetRules has been deprecated in favor of cloudflare:snippetRules/snippetRules:getSnippetRules""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -91,6 +94,7 @@ def get_snippet_rules_output(zone_id: pulumi.Input[Optional[_builtins.str]] = No
 
     :param _builtins.str zone_id: Use this field to specify the unique ID of the zone.
     """
+    pulumi.log.warn("""get_snippet_rules is deprecated: cloudflare:index/getSnippetRules:getSnippetRules has been deprecated in favor of cloudflare:snippetRules/snippetRules:getSnippetRules""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

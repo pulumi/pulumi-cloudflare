@@ -257,8 +257,13 @@ class _HyperdriveConfigState:
         pulumi.set(self, "restarted_on", value)
 
 
+warnings.warn("""cloudflare:index/hyperdriveConfig:HyperdriveConfig has been deprecated in favor of cloudflare:hyperdrive/config:Config""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/hyperdriveConfig:HyperdriveConfig")
 class HyperdriveConfig(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/hyperdriveConfig:HyperdriveConfig has been deprecated in favor of cloudflare:hyperdrive/config:Config""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -282,7 +287,7 @@ class HyperdriveConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_hyperdrive_config = cloudflare.HyperdriveConfig("example_hyperdrive_config",
+        example_hyperdrive_config = cloudflare.hyperdrive.Config("example_hyperdrive_config",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="example-hyperdrive",
             origin={
@@ -336,7 +341,7 @@ class HyperdriveConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_hyperdrive_config = cloudflare.HyperdriveConfig("example_hyperdrive_config",
+        example_hyperdrive_config = cloudflare.hyperdrive.Config("example_hyperdrive_config",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="example-hyperdrive",
             origin={
@@ -387,6 +392,7 @@ class HyperdriveConfig(pulumi.CustomResource):
                  origin: pulumi.Input[Optional[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict']]] = None,
                  origin_connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
+        pulumi.log.warn("""HyperdriveConfig is deprecated: cloudflare:index/hyperdriveConfig:HyperdriveConfig has been deprecated in favor of cloudflare:hyperdrive/config:Config""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

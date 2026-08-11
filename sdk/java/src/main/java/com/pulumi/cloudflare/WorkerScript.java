@@ -18,7 +18,6 @@ import com.pulumi.cloudflare.outputs.WorkerScriptObservability;
 import com.pulumi.cloudflare.outputs.WorkerScriptPackageDependency;
 import com.pulumi.cloudflare.outputs.WorkerScriptPlacement;
 import com.pulumi.cloudflare.outputs.WorkerScriptTailConsumer;
-import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -38,7 +37,7 @@ import javax.annotation.Nullable;
  * - `Workers Scripts Write`
  * - `Workers Tail Read`
  * 
- * &gt; For more direct control over Workers resources, we recommend the beta `cloudflare.Worker`, `cloudflare.WorkerVersion`, and `cloudflare.WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
+ * &gt; For more direct control over Workers resources, we recommend the beta `cloudflare.worker.Worker`, `cloudflare.worker.Version`, and `cloudflare.workers.Deployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
  * 
  * ## Import
  * 
@@ -619,9 +618,6 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .aliases(List.of(
-                Output.of(Alias.builder().type("cloudflare:index/workerScript:WorkerScript").build())
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

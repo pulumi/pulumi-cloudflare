@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessServiceToken = new cloudflare.ZeroTrustAccessServiceToken("example_zero_trust_access_service_token", {
+ * const exampleZeroTrustAccessServiceToken = new cloudflare.zerotrustaccessservice.Token("example_zero_trust_access_service_token", {
  *     name: "CI/CD token",
  *     zoneId: "zone_id",
  *     clientSecretVersion: 0,
@@ -30,6 +30,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken example '<{accounts|zones}/{account_id|zone_id}>/<service_token_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken has been deprecated in favor of cloudflare:zeroTrustAccessService/token:Token
  */
 export class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
     /**
@@ -42,6 +44,7 @@ export class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustAccessServiceTokenState, opts?: pulumi.CustomResourceOptions): ZeroTrustAccessServiceToken {
+        pulumi.log.warn("ZeroTrustAccessServiceToken is deprecated: cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken has been deprecated in favor of cloudflare:zeroTrustAccessService/token:Token")
         return new ZeroTrustAccessServiceToken(name, <any>state, { ...opts, id: id });
     }
 
@@ -100,8 +103,11 @@ export class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken has been deprecated in favor of cloudflare:zeroTrustAccessService/token:Token */
     constructor(name: string, args: ZeroTrustAccessServiceTokenArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken has been deprecated in favor of cloudflare:zeroTrustAccessService/token:Token */
     constructor(name: string, argsOrState?: ZeroTrustAccessServiceTokenArgs | ZeroTrustAccessServiceTokenState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustAccessServiceToken is deprecated: cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken has been deprecated in favor of cloudflare:zeroTrustAccessService/token:Token")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

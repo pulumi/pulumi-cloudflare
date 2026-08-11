@@ -22,6 +22,8 @@ __all__ = [
     'get_ai_search_namespaces_output',
 ]
 
+warnings.warn("""cloudflare:index/getAiSearchNamespaces:getAiSearchNamespaces has been deprecated in favor of cloudflare:aiSearch/namespaces:getNamespaces""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAiSearchNamespacesResult:
     """
@@ -93,6 +95,7 @@ def get_ai_search_namespaces(account_id: Optional[_builtins.str] = None,
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str search: Filter namespaces whose name or description contains this string (case-insensitive).
     """
+    pulumi.log.warn("""get_ai_search_namespaces is deprecated: cloudflare:index/getAiSearchNamespaces:getAiSearchNamespaces has been deprecated in favor of cloudflare:aiSearch/namespaces:getNamespaces""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -115,6 +118,7 @@ def get_ai_search_namespaces_output(account_id: pulumi.Input[Optional[_builtins.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str search: Filter namespaces whose name or description contains this string (case-insensitive).
     """
+    pulumi.log.warn("""get_ai_search_namespaces is deprecated: cloudflare:index/getAiSearchNamespaces:getAiSearchNamespaces has been deprecated in favor of cloudflare:aiSearch/namespaces:getNamespaces""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

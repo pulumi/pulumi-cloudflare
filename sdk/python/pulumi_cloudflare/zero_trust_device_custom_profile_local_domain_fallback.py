@@ -103,8 +103,13 @@ class _ZeroTrustDeviceCustomProfileLocalDomainFallbackState:
         pulumi.set(self, "policy_id", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustDeviceCustomProfileLocalDomainFallback:ZeroTrustDeviceCustomProfileLocalDomainFallback has been deprecated in favor of cloudflare:zeroTrustDeviceCustomProfile/localDomainFallback:LocalDomainFallback""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustDeviceCustomProfileLocalDomainFallback:ZeroTrustDeviceCustomProfileLocalDomainFallback")
 class ZeroTrustDeviceCustomProfileLocalDomainFallback(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustDeviceCustomProfileLocalDomainFallback:ZeroTrustDeviceCustomProfileLocalDomainFallback has been deprecated in favor of cloudflare:zeroTrustDeviceCustomProfile/localDomainFallback:LocalDomainFallback""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -124,7 +129,7 @@ class ZeroTrustDeviceCustomProfileLocalDomainFallback(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_device_custom_profile_local_domain_fallback = cloudflare.ZeroTrustDeviceCustomProfileLocalDomainFallback("example_zero_trust_device_custom_profile_local_domain_fallback",
+        example_zero_trust_device_custom_profile_local_domain_fallback = cloudflare.zerotrustdevicecustomprofile.LocalDomainFallback("example_zero_trust_device_custom_profile_local_domain_fallback",
             account_id="699d98642c564d2e855e9661899b7252",
             policy_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
             domains=[{
@@ -161,7 +166,7 @@ class ZeroTrustDeviceCustomProfileLocalDomainFallback(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_device_custom_profile_local_domain_fallback = cloudflare.ZeroTrustDeviceCustomProfileLocalDomainFallback("example_zero_trust_device_custom_profile_local_domain_fallback",
+        example_zero_trust_device_custom_profile_local_domain_fallback = cloudflare.zerotrustdevicecustomprofile.LocalDomainFallback("example_zero_trust_device_custom_profile_local_domain_fallback",
             account_id="699d98642c564d2e855e9661899b7252",
             policy_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
             domains=[{
@@ -197,6 +202,7 @@ class ZeroTrustDeviceCustomProfileLocalDomainFallback(pulumi.CustomResource):
                  domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArgs', 'ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArgsDict']]]]] = None,
                  policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustDeviceCustomProfileLocalDomainFallback is deprecated: cloudflare:index/zeroTrustDeviceCustomProfileLocalDomainFallback:ZeroTrustDeviceCustomProfileLocalDomainFallback has been deprecated in favor of cloudflare:zeroTrustDeviceCustomProfile/localDomainFallback:LocalDomainFallback""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

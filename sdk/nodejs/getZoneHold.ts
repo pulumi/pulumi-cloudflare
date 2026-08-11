@@ -50,12 +50,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneHold = cloudflare.getZoneHold({
+ * const exampleZoneHold = cloudflare.zone.getHold({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZoneHold:getZoneHold has been deprecated in favor of cloudflare:zone/hold:getHold */
 export function getZoneHold(args?: GetZoneHoldArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneHoldResult> {
+    pulumi.log.warn("getZoneHold is deprecated: cloudflare:index/getZoneHold:getZoneHold has been deprecated in favor of cloudflare:zone/hold:getHold")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZoneHold:getZoneHold", {
@@ -135,12 +137,14 @@ export interface GetZoneHoldResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneHold = cloudflare.getZoneHold({
+ * const exampleZoneHold = cloudflare.zone.getHold({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZoneHold:getZoneHold has been deprecated in favor of cloudflare:zone/hold:getHold */
 export function getZoneHoldOutput(args?: GetZoneHoldOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneHoldResult> {
+    pulumi.log.warn("getZoneHold is deprecated: cloudflare:index/getZoneHold:getZoneHold has been deprecated in favor of cloudflare:zone/hold:getHold")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZoneHold:getZoneHold", {

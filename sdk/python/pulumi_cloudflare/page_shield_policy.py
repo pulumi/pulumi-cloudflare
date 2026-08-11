@@ -224,8 +224,13 @@ class _PageShieldPolicyState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/pageShieldPolicy:PageShieldPolicy has been deprecated in favor of cloudflare:pageShield/policy:Policy""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/pageShieldPolicy:PageShieldPolicy")
 class PageShieldPolicy(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/pageShieldPolicy:PageShieldPolicy has been deprecated in favor of cloudflare:pageShield/policy:Policy""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -309,6 +314,7 @@ class PageShieldPolicy(pulumi.CustomResource):
                  value: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""PageShieldPolicy is deprecated: cloudflare:index/pageShieldPolicy:PageShieldPolicy has been deprecated in favor of cloudflare:pageShield/policy:Policy""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

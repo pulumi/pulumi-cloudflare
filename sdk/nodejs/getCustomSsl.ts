@@ -20,13 +20,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomSsl = cloudflare.getCustomSsl({
+ * const exampleCustomSsl = cloudflare.custom.getSsl({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     customCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCustomSsl:getCustomSsl has been deprecated in favor of cloudflare:custom/ssl:getSsl */
 export function getCustomSsl(args?: GetCustomSslArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomSslResult> {
+    pulumi.log.warn("getCustomSsl is deprecated: cloudflare:index/getCustomSsl:getCustomSsl has been deprecated in favor of cloudflare:custom/ssl:getSsl")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCustomSsl:getCustomSsl", {
@@ -120,13 +122,15 @@ export interface GetCustomSslResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomSsl = cloudflare.getCustomSsl({
+ * const exampleCustomSsl = cloudflare.custom.getSsl({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     customCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCustomSsl:getCustomSsl has been deprecated in favor of cloudflare:custom/ssl:getSsl */
 export function getCustomSslOutput(args?: GetCustomSslOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomSslResult> {
+    pulumi.log.warn("getCustomSsl is deprecated: cloudflare:index/getCustomSsl:getCustomSsl has been deprecated in favor of cloudflare:custom/ssl:getSsl")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCustomSsl:getCustomSsl", {

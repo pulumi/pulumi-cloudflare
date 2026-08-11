@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getRegionalHostname:getRegionalHostname has been deprecated in favor of cloudflare:regional/hostname:getHostname")]
     public static class GetRegionalHostname
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleRegionalHostname = Cloudflare.GetRegionalHostname.Invoke(new()
+        ///     var exampleRegionalHostname = Cloudflare.Modules.Regional.GetHostname.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Hostname = "foo.example.com",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleRegionalHostname = Cloudflare.GetRegionalHostname.Invoke(new()
+        ///     var exampleRegionalHostname = Cloudflare.Modules.Regional.GetHostname.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Hostname = "foo.example.com",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleRegionalHostname = Cloudflare.GetRegionalHostname.Invoke(new()
+        ///     var exampleRegionalHostname = Cloudflare.Modules.Regional.GetHostname.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Hostname = "foo.example.com",

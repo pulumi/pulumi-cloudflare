@@ -17,6 +17,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/moqRelay:MoqRelay example '<account_id>/<relay_id>'
 // ```
+//
+// Deprecated: cloudflare:index/moqRelay:MoqRelay has been deprecated in favor of cloudflare:moq/relay:Relay
 type MoqRelay struct {
 	pulumi.CustomResourceState
 

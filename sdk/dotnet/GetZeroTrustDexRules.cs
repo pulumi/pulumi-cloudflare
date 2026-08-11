@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustDexRules:getZeroTrustDexRules has been deprecated in favor of cloudflare:zeroTrustDex/rules:getRules")]
     public static class GetZeroTrustDexRules
     {
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDexRules = Cloudflare.GetZeroTrustDexRules.Invoke(new()
+        ///     var exampleZeroTrustDexRules = Cloudflare.Modules.ZeroTrustDex.GetRules.Invoke(new()
         ///     {
         ///         AccountId = "01a7362d577a6c3019a474fd6f485823",
         ///         Name = "name",
@@ -59,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDexRules = Cloudflare.GetZeroTrustDexRules.Invoke(new()
+        ///     var exampleZeroTrustDexRules = Cloudflare.Modules.ZeroTrustDex.GetRules.Invoke(new()
         ///     {
         ///         AccountId = "01a7362d577a6c3019a474fd6f485823",
         ///         Name = "name",
@@ -89,7 +90,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDexRules = Cloudflare.GetZeroTrustDexRules.Invoke(new()
+        ///     var exampleZeroTrustDexRules = Cloudflare.Modules.ZeroTrustDex.GetRules.Invoke(new()
         ///     {
         ///         AccountId = "01a7362d577a6c3019a474fd6f485823",
         ///         Name = "name",

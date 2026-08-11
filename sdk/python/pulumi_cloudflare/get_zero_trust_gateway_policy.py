@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_gateway_policy_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustGatewayPolicy:getZeroTrustGatewayPolicy has been deprecated in favor of cloudflare:zeroTrustGateway/policy:getPolicy""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustGatewayPolicyResult:
     """
@@ -316,13 +318,14 @@ def get_zero_trust_gateway_policy(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_gateway_policy = cloudflare.get_zero_trust_gateway_policy(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_gateway_policy = cloudflare.zerotrustgateway.get_policy(account_id="699d98642c564d2e855e9661899b7252",
         rule_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
 
 
     :param _builtins.str rule_id: Identify the API resource with a UUID.
     """
+    pulumi.log.warn("""get_zero_trust_gateway_policy is deprecated: cloudflare:index/getZeroTrustGatewayPolicy:getZeroTrustGatewayPolicy has been deprecated in favor of cloudflare:zeroTrustGateway/policy:getPolicy""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['ruleId'] = rule_id
@@ -363,13 +366,14 @@ def get_zero_trust_gateway_policy_output(account_id: pulumi.Input[Optional[Optio
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_gateway_policy = cloudflare.get_zero_trust_gateway_policy(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_gateway_policy = cloudflare.zerotrustgateway.get_policy(account_id="699d98642c564d2e855e9661899b7252",
         rule_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
 
 
     :param _builtins.str rule_id: Identify the API resource with a UUID.
     """
+    pulumi.log.warn("""get_zero_trust_gateway_policy is deprecated: cloudflare:index/getZeroTrustGatewayPolicy:getZeroTrustGatewayPolicy has been deprecated in favor of cloudflare:zeroTrustGateway/policy:getPolicy""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['ruleId'] = rule_id

@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleHyperdriveConfig = new cloudflare.HyperdriveConfig("example_hyperdrive_config", {
+ * const exampleHyperdriveConfig = new cloudflare.hyperdrive.Config("example_hyperdrive_config", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "example-hyperdrive",
  *     origin: {
@@ -46,6 +46,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/hyperdriveConfig:HyperdriveConfig example '<account_id>/<hyperdrive_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/hyperdriveConfig:HyperdriveConfig has been deprecated in favor of cloudflare:hyperdrive/config:Config
  */
 export class HyperdriveConfig extends pulumi.CustomResource {
     /**
@@ -58,6 +60,7 @@ export class HyperdriveConfig extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: HyperdriveConfigState, opts?: pulumi.CustomResourceOptions): HyperdriveConfig {
+        pulumi.log.warn("HyperdriveConfig is deprecated: cloudflare:index/hyperdriveConfig:HyperdriveConfig has been deprecated in favor of cloudflare:hyperdrive/config:Config")
         return new HyperdriveConfig(name, <any>state, { ...opts, id: id });
     }
 
@@ -113,8 +116,11 @@ export class HyperdriveConfig extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/hyperdriveConfig:HyperdriveConfig has been deprecated in favor of cloudflare:hyperdrive/config:Config */
     constructor(name: string, args: HyperdriveConfigArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/hyperdriveConfig:HyperdriveConfig has been deprecated in favor of cloudflare:hyperdrive/config:Config */
     constructor(name: string, argsOrState?: HyperdriveConfigArgs | HyperdriveConfigState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("HyperdriveConfig is deprecated: cloudflare:index/hyperdriveConfig:HyperdriveConfig has been deprecated in favor of cloudflare:hyperdrive/config:Config")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

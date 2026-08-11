@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDlpDataTag;
- * import com.pulumi.cloudflare.ZeroTrustDlpDataTagArgs;
+ * import com.pulumi.cloudflare.zeroTrustDlpDataTag.ZeroTrustDlpDataTag;
+ * import com.pulumi.cloudflare.zeroTrustDlpDataTag.ZeroTrustDlpDataTagArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -62,7 +62,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustDlpDataTag:ZeroTrustDlpDataTag example &#39;&lt;account_id&gt;/&lt;category_id&gt;/&lt;tag_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustDlpDataTag:ZeroTrustDlpDataTag has been deprecated in favor of cloudflare:zeroTrustDlpDataTag/zeroTrustDlpDataTag:ZeroTrustDlpDataTag
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustDlpDataTag:ZeroTrustDlpDataTag has been deprecated in favor of cloudflare:zeroTrustDlpDataTag/zeroTrustDlpDataTag:ZeroTrustDlpDataTag */
 @ResourceType(type="cloudflare:index/zeroTrustDlpDataTag:ZeroTrustDlpDataTag")
 public class ZeroTrustDlpDataTag extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getCustomHostname:getCustomHostname has been deprecated in favor of cloudflare:customHostname/customHostname:getCustomHostname")]
     public static class GetCustomHostname
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomHostname = Cloudflare.GetCustomHostname.Invoke(new()
+        ///     var exampleCustomHostname = Cloudflare.Modules.CustomHostname.GetCustomHostname.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         CustomHostnameId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomHostname = Cloudflare.GetCustomHostname.Invoke(new()
+        ///     var exampleCustomHostname = Cloudflare.Modules.CustomHostname.GetCustomHostname.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         CustomHostnameId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomHostname = Cloudflare.GetCustomHostname.Invoke(new()
+        ///     var exampleCustomHostname = Cloudflare.Modules.CustomHostname.GetCustomHostname.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         CustomHostnameId = "023e105f4ecef8ad9ca31a8372d0c353",

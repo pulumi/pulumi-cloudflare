@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflaredVirtualNetwork;
- * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflaredVirtualNetworkArgs;
+ * import com.pulumi.cloudflare.zeroTrustTunnelCloudflaredVirtual.Network;
+ * import com.pulumi.cloudflare.zeroTrustTunnelCloudflaredVirtual.NetworkArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustTunnelCloudflaredVirtualNetwork = new ZeroTrustTunnelCloudflaredVirtualNetwork("exampleZeroTrustTunnelCloudflaredVirtualNetwork", ZeroTrustTunnelCloudflaredVirtualNetworkArgs.builder()
+ *         var exampleZeroTrustTunnelCloudflaredVirtualNetwork = new Network("exampleZeroTrustTunnelCloudflaredVirtualNetwork", NetworkArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
  *             .name("us-east-1-vpc")
  *             .comment("Staging VPC for data science")
@@ -66,7 +66,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustTunnelCloudflaredVirtualNetwork:ZeroTrustTunnelCloudflaredVirtualNetwork example &#39;&lt;account_id&gt;/&lt;virtual_network_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustTunnelCloudflaredVirtualNetwork:ZeroTrustTunnelCloudflaredVirtualNetwork has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflaredVirtual/network:Network
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustTunnelCloudflaredVirtualNetwork:ZeroTrustTunnelCloudflaredVirtualNetwork has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflaredVirtual/network:Network */
 @ResourceType(type="cloudflare:index/zeroTrustTunnelCloudflaredVirtualNetwork:ZeroTrustTunnelCloudflaredVirtualNetwork")
 public class ZeroTrustTunnelCloudflaredVirtualNetwork extends com.pulumi.resources.CustomResource {
     /**

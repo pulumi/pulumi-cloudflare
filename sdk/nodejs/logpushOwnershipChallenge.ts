@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleLogpushOwnershipChallenge = new cloudflare.LogpushOwnershipChallenge("example_logpush_ownership_challenge", {
+ * const exampleLogpushOwnershipChallenge = new cloudflare.logpush.OwnershipChallenge("example_logpush_ownership_challenge", {
  *     destinationConf: "s3://mybucket/logs?region=us-west-2",
  *     zoneId: "zone_id",
  * });
@@ -24,6 +24,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge has been deprecated in favor of cloudflare:logpush/ownershipChallenge:OwnershipChallenge
  */
 export class LogpushOwnershipChallenge extends pulumi.CustomResource {
     /**
@@ -36,6 +38,7 @@ export class LogpushOwnershipChallenge extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LogpushOwnershipChallengeState, opts?: pulumi.CustomResourceOptions): LogpushOwnershipChallenge {
+        pulumi.log.warn("LogpushOwnershipChallenge is deprecated: cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge has been deprecated in favor of cloudflare:logpush/ownershipChallenge:OwnershipChallenge")
         return new LogpushOwnershipChallenge(name, <any>state, { ...opts, id: id });
     }
 
@@ -76,8 +79,11 @@ export class LogpushOwnershipChallenge extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge has been deprecated in favor of cloudflare:logpush/ownershipChallenge:OwnershipChallenge */
     constructor(name: string, args: LogpushOwnershipChallengeArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge has been deprecated in favor of cloudflare:logpush/ownershipChallenge:OwnershipChallenge */
     constructor(name: string, argsOrState?: LogpushOwnershipChallengeArgs | LogpushOwnershipChallengeState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("LogpushOwnershipChallenge is deprecated: cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge has been deprecated in favor of cloudflare:logpush/ownershipChallenge:OwnershipChallenge")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -22,6 +22,8 @@ __all__ = [
     'get_email_routing_addresses_output',
 ]
 
+warnings.warn("""cloudflare:index/getEmailRoutingAddresses:getEmailRoutingAddresses has been deprecated in favor of cloudflare:emailRouting/addresses:getAddresses""", DeprecationWarning)
+
 @pulumi.output_type
 class GetEmailRoutingAddressesResult:
     """
@@ -116,7 +118,7 @@ def get_email_routing_addresses(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_email_routing_addresses = cloudflare.get_email_routing_addresses(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_email_routing_addresses = cloudflare.emailrouting.get_addresses(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
@@ -126,6 +128,7 @@ def get_email_routing_addresses(account_id: Optional[_builtins.str] = None,
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.bool verified: Filter by verified destination addresses.
     """
+    pulumi.log.warn("""get_email_routing_addresses is deprecated: cloudflare:index/getEmailRoutingAddresses:getEmailRoutingAddresses has been deprecated in favor of cloudflare:emailRouting/addresses:getAddresses""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction
@@ -157,7 +160,7 @@ def get_email_routing_addresses_output(account_id: pulumi.Input[Optional[Optiona
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_email_routing_addresses = cloudflare.get_email_routing_addresses(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_email_routing_addresses = cloudflare.emailrouting.get_addresses(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
@@ -167,6 +170,7 @@ def get_email_routing_addresses_output(account_id: pulumi.Input[Optional[Optiona
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.bool verified: Filter by verified destination addresses.
     """
+    pulumi.log.warn("""get_email_routing_addresses is deprecated: cloudflare:index/getEmailRoutingAddresses:getEmailRoutingAddresses has been deprecated in favor of cloudflare:emailRouting/addresses:getAddresses""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction

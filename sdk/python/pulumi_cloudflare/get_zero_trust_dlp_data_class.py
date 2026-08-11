@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_dlp_data_class_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDlpDataClass:getZeroTrustDlpDataClass has been deprecated in favor of cloudflare:zeroTrustDlpData/class:getClass""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDlpDataClassResult:
     """
@@ -146,10 +148,11 @@ def get_zero_trust_dlp_data_class(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_data_class = cloudflare.get_zero_trust_dlp_data_class(account_id="account_id",
+    example_zero_trust_dlp_data_class = cloudflare.zerotrustdlpdata.get_class(account_id="account_id",
         data_class_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_dlp_data_class is deprecated: cloudflare:index/getZeroTrustDlpDataClass:getZeroTrustDlpDataClass has been deprecated in favor of cloudflare:zeroTrustDlpData/class:getClass""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['dataClassId'] = data_class_id
@@ -182,10 +185,11 @@ def get_zero_trust_dlp_data_class_output(account_id: pulumi.Input[Optional[_buil
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_data_class = cloudflare.get_zero_trust_dlp_data_class(account_id="account_id",
+    example_zero_trust_dlp_data_class = cloudflare.zerotrustdlpdata.get_class(account_id="account_id",
         data_class_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_dlp_data_class is deprecated: cloudflare:index/getZeroTrustDlpDataClass:getZeroTrustDlpDataClass has been deprecated in favor of cloudflare:zeroTrustDlpData/class:getClass""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['dataClassId'] = data_class_id

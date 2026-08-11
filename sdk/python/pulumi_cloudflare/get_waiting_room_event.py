@@ -21,6 +21,8 @@ __all__ = [
     'get_waiting_room_event_output',
 ]
 
+warnings.warn("""cloudflare:index/getWaitingRoomEvent:getWaitingRoomEvent has been deprecated in favor of cloudflare:waitingRoom/event:getEvent""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWaitingRoomEventResult:
     """
@@ -295,7 +297,7 @@ def get_waiting_room_event(event_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_waiting_room_event = cloudflare.get_waiting_room_event(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_waiting_room_event = cloudflare.waitingroom.get_event(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         waiting_room_id="699d98642c564d2e855e9661899b7252",
         event_id="25756b2dfe6e378a06b033b670413757")
     ```
@@ -303,6 +305,7 @@ def get_waiting_room_event(event_id: Optional[_builtins.str] = None,
 
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_waiting_room_event is deprecated: cloudflare:index/getWaitingRoomEvent:getWaitingRoomEvent has been deprecated in favor of cloudflare:waitingRoom/event:getEvent""")
     __args__ = dict()
     __args__['eventId'] = event_id
     __args__['waitingRoomId'] = waiting_room_id
@@ -348,7 +351,7 @@ def get_waiting_room_event_output(event_id: pulumi.Input[Optional[_builtins.str]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_waiting_room_event = cloudflare.get_waiting_room_event(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_waiting_room_event = cloudflare.waitingroom.get_event(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         waiting_room_id="699d98642c564d2e855e9661899b7252",
         event_id="25756b2dfe6e378a06b033b670413757")
     ```
@@ -356,6 +359,7 @@ def get_waiting_room_event_output(event_id: pulumi.Input[Optional[_builtins.str]
 
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_waiting_room_event is deprecated: cloudflare:index/getWaitingRoomEvent:getWaitingRoomEvent has been deprecated in favor of cloudflare:waitingRoom/event:getEvent""")
     __args__ = dict()
     __args__['eventId'] = event_id
     __args__['waitingRoomId'] = waiting_room_id

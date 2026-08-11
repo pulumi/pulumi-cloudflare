@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdlpdatatag"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDlpDataTagCategory(ctx, "example_zero_trust_dlp_data_tag_category", &cloudflare.ZeroTrustDlpDataTagCategoryArgs{
+//			_, err := zerotrustdlpdatatag.NewCategory(ctx, "example_zero_trust_dlp_data_tag_category", &zerotrustdlpdatatag.CategoryArgs{
 //				AccountId:   pulumi.String("account_id"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("description"),
@@ -50,6 +50,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustDlpDataTagCategory:ZeroTrustDlpDataTagCategory example '<account_id>/<category_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustDlpDataTagCategory:ZeroTrustDlpDataTagCategory has been deprecated in favor of cloudflare:zeroTrustDlpDataTag/category:Category
 type ZeroTrustDlpDataTagCategory struct {
 	pulumi.CustomResourceState
 

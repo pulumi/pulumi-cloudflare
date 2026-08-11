@@ -19,31 +19,31 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustgateway"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustGatewaySettings(ctx, "example_zero_trust_gateway_settings", &cloudflare.ZeroTrustGatewaySettingsArgs{
+//			_, err := zerotrustgateway.NewSettings(ctx, "example_zero_trust_gateway_settings", &zerotrustgateway.SettingsArgs{
 //				AccountId: pulumi.String("699d98642c564d2e855e9661899b7252"),
-//				Settings: &cloudflare.ZeroTrustGatewaySettingsSettingsArgs{
-//					ActivityLog: &cloudflare.ZeroTrustGatewaySettingsSettingsActivityLogArgs{
+//				Settings: &zerotrustgateway.SettingsSettingsArgs{
+//					ActivityLog: &zerotrustgateway.SettingsSettingsActivityLogArgs{
 //						Enabled: pulumi.Bool(true),
 //					},
-//					Antivirus: &cloudflare.ZeroTrustGatewaySettingsSettingsAntivirusArgs{
+//					Antivirus: &zerotrustgateway.SettingsSettingsAntivirusArgs{
 //						EnabledDownloadPhase: pulumi.Bool(false),
 //						EnabledUploadPhase:   pulumi.Bool(false),
 //						FailClosed:           pulumi.Bool(false),
-//						NotificationSettings: &cloudflare.ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettingsArgs{
+//						NotificationSettings: &zerotrustgateway.SettingsSettingsAntivirusNotificationSettingsArgs{
 //							Enabled:        pulumi.Bool(true),
 //							IncludeContext: pulumi.Bool(true),
 //							Msg:            pulumi.String("msg"),
 //							SupportUrl:     pulumi.String("support_url"),
 //						},
 //					},
-//					BlockPage: &cloudflare.ZeroTrustGatewaySettingsSettingsBlockPageArgs{
+//					BlockPage: &zerotrustgateway.SettingsSettingsBlockPageArgs{
 //						BackgroundColor: pulumi.String("background_color"),
 //						Enabled:         pulumi.Bool(true),
 //						FooterText:      pulumi.String("--footer--"),
@@ -57,41 +57,41 @@ import (
 //						SuppressFooter:  pulumi.Bool(false),
 //						TargetUri:       pulumi.String("https://example.com"),
 //					},
-//					BodyScanning: &cloudflare.ZeroTrustGatewaySettingsSettingsBodyScanningArgs{
+//					BodyScanning: &zerotrustgateway.SettingsSettingsBodyScanningArgs{
 //						InspectionMode: pulumi.String("deep"),
 //					},
-//					BrowserIsolation: &cloudflare.ZeroTrustGatewaySettingsSettingsBrowserIsolationArgs{
+//					BrowserIsolation: &zerotrustgateway.SettingsSettingsBrowserIsolationArgs{
 //						NonIdentityEnabled:         pulumi.Bool(true),
 //						UrlBrowserIsolationEnabled: pulumi.Bool(true),
 //					},
-//					Certificate: &cloudflare.ZeroTrustGatewaySettingsSettingsCertificateArgs{
+//					Certificate: &zerotrustgateway.SettingsSettingsCertificateArgs{
 //						Id: pulumi.String("d1b364c5-1311-466e-a194-f0e943e0799f"),
 //					},
-//					CustomCertificate: &cloudflare.ZeroTrustGatewaySettingsSettingsCustomCertificateArgs{
+//					CustomCertificate: &zerotrustgateway.SettingsSettingsCustomCertificateArgs{
 //						Enabled: pulumi.Bool(true),
 //						Id:      pulumi.String("d1b364c5-1311-466e-a194-f0e943e0799f"),
 //					},
-//					ExtendedEmailMatching: &cloudflare.ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs{
+//					ExtendedEmailMatching: &zerotrustgateway.SettingsSettingsExtendedEmailMatchingArgs{
 //						Enabled: pulumi.Bool(true),
 //					},
-//					Fips: &cloudflare.ZeroTrustGatewaySettingsSettingsFipsArgs{
+//					Fips: &zerotrustgateway.SettingsSettingsFipsArgs{
 //						Tls: pulumi.Bool(true),
 //					},
-//					HostSelector: &cloudflare.ZeroTrustGatewaySettingsSettingsHostSelectorArgs{
+//					HostSelector: &zerotrustgateway.SettingsSettingsHostSelectorArgs{
 //						Enabled: pulumi.Bool(false),
 //					},
-//					Inspection: &cloudflare.ZeroTrustGatewaySettingsSettingsInspectionArgs{
+//					Inspection: &zerotrustgateway.SettingsSettingsInspectionArgs{
 //						Mode: pulumi.String("static"),
 //					},
 //					MaxTtlSecs: pulumi.Int(3600),
-//					ProtocolDetection: &cloudflare.ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs{
+//					ProtocolDetection: &zerotrustgateway.SettingsSettingsProtocolDetectionArgs{
 //						Enabled: pulumi.Bool(true),
 //					},
-//					Sandbox: &cloudflare.ZeroTrustGatewaySettingsSettingsSandboxArgs{
+//					Sandbox: &zerotrustgateway.SettingsSettingsSandboxArgs{
 //						Enabled:        pulumi.Bool(true),
 //						FallbackAction: pulumi.String("allow"),
 //					},
-//					TlsDecrypt: &cloudflare.ZeroTrustGatewaySettingsSettingsTlsDecryptArgs{
+//					TlsDecrypt: &zerotrustgateway.SettingsSettingsTlsDecryptArgs{
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
@@ -110,6 +110,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings example '<account_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings has been deprecated in favor of cloudflare:zeroTrustGateway/settings:Settings
 type ZeroTrustGatewaySettings struct {
 	pulumi.CustomResourceState
 

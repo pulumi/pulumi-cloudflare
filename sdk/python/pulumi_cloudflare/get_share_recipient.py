@@ -22,6 +22,8 @@ __all__ = [
     'get_share_recipient_output',
 ]
 
+warnings.warn("""cloudflare:index/getShareRecipient:getShareRecipient has been deprecated in favor of cloudflare:share/recipient:getRecipient""", DeprecationWarning)
+
 @pulumi.output_type
 class GetShareRecipientResult:
     """
@@ -156,7 +158,7 @@ def get_share_recipient(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_share_recipient = cloudflare.get_share_recipient(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_share_recipient = cloudflare.share.get_recipient(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         share_id="3fd85f74b32742f1bff64a85009dda07",
         recipient_id="3fd85f74b32742f1bff64a85009dda07",
         include_resources=True)
@@ -168,6 +170,7 @@ def get_share_recipient(account_id: Optional[_builtins.str] = None,
     :param _builtins.str recipient_id: Share Recipient identifier tag.
     :param _builtins.str share_id: Share identifier tag.
     """
+    pulumi.log.warn("""get_share_recipient is deprecated: cloudflare:index/getShareRecipient:getShareRecipient has been deprecated in favor of cloudflare:share/recipient:getRecipient""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['includeResources'] = include_resources
@@ -198,7 +201,7 @@ def get_share_recipient_output(account_id: pulumi.Input[Optional[_builtins.str]]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_share_recipient = cloudflare.get_share_recipient(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_share_recipient = cloudflare.share.get_recipient(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         share_id="3fd85f74b32742f1bff64a85009dda07",
         recipient_id="3fd85f74b32742f1bff64a85009dda07",
         include_resources=True)
@@ -210,6 +213,7 @@ def get_share_recipient_output(account_id: pulumi.Input[Optional[_builtins.str]]
     :param _builtins.str recipient_id: Share Recipient identifier tag.
     :param _builtins.str share_id: Share identifier tag.
     """
+    pulumi.log.warn("""get_share_recipient is deprecated: cloudflare:index/getShareRecipient:getShareRecipient has been deprecated in favor of cloudflare:share/recipient:getRecipient""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['includeResources'] = include_resources

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getSsoConnectors:getSsoConnectors has been deprecated in favor of cloudflare:sso/connectors:getConnectors")]
     public static class GetSsoConnectors
     {
         /// <summary>
@@ -26,7 +27,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSsoConnectors = Cloudflare.GetSsoConnectors.Invoke(new()
+        ///     var exampleSsoConnectors = Cloudflare.Modules.Sso.GetConnectors.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -52,7 +53,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSsoConnectors = Cloudflare.GetSsoConnectors.Invoke(new()
+        ///     var exampleSsoConnectors = Cloudflare.Modules.Sso.GetConnectors.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -78,7 +79,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSsoConnectors = Cloudflare.GetSsoConnectors.Invoke(new()
+        ///     var exampleSsoConnectors = Cloudflare.Modules.Sso.GetConnectors.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

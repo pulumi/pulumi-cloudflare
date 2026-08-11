@@ -22,6 +22,8 @@ __all__ = [
     'get_web_analytics_sites_output',
 ]
 
+warnings.warn("""cloudflare:index/getWebAnalyticsSites:getWebAnalyticsSites has been deprecated in favor of cloudflare:webAnalytics/sites:getSites""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWebAnalyticsSitesResult:
     """
@@ -102,7 +104,7 @@ def get_web_analytics_sites(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_web_analytics_sites = cloudflare.get_web_analytics_sites(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_web_analytics_sites = cloudflare.webanalytics.get_sites(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         order_by="host")
     ```
 
@@ -112,6 +114,7 @@ def get_web_analytics_sites(account_id: Optional[_builtins.str] = None,
     :param _builtins.str order_by: The property used to sort the list of results.
            Available values: "host", "created".
     """
+    pulumi.log.warn("""get_web_analytics_sites is deprecated: cloudflare:index/getWebAnalyticsSites:getWebAnalyticsSites has been deprecated in favor of cloudflare:webAnalytics/sites:getSites""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -139,7 +142,7 @@ def get_web_analytics_sites_output(account_id: pulumi.Input[Optional[Optional[_b
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_web_analytics_sites = cloudflare.get_web_analytics_sites(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_web_analytics_sites = cloudflare.webanalytics.get_sites(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         order_by="host")
     ```
 
@@ -149,6 +152,7 @@ def get_web_analytics_sites_output(account_id: pulumi.Input[Optional[Optional[_b
     :param _builtins.str order_by: The property used to sort the list of results.
            Available values: "host", "created".
     """
+    pulumi.log.warn("""get_web_analytics_sites is deprecated: cloudflare:index/getWebAnalyticsSites:getWebAnalyticsSites has been deprecated in favor of cloudflare:webAnalytics/sites:getSites""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

@@ -21,6 +21,8 @@ __all__ = [
     'get_workers_route_output',
 ]
 
+warnings.warn("""cloudflare:index/getWorkersRoute:getWorkersRoute has been deprecated in favor of cloudflare:workers/route:getRoute""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWorkersRouteResult:
     """
@@ -112,7 +114,7 @@ def get_workers_route(route_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_route = cloudflare.get_workers_route(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_route = cloudflare.workers.get_route(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         route_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -120,6 +122,7 @@ def get_workers_route(route_id: Optional[_builtins.str] = None,
     :param _builtins.str route_id: Identifier.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_workers_route is deprecated: cloudflare:index/getWorkersRoute:getWorkersRoute has been deprecated in favor of cloudflare:workers/route:getRoute""")
     __args__ = dict()
     __args__['routeId'] = route_id
     __args__['zoneId'] = zone_id
@@ -147,7 +150,7 @@ def get_workers_route_output(route_id: pulumi.Input[Optional[_builtins.str]] = N
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_route = cloudflare.get_workers_route(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_route = cloudflare.workers.get_route(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         route_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -155,6 +158,7 @@ def get_workers_route_output(route_id: pulumi.Input[Optional[_builtins.str]] = N
     :param _builtins.str route_id: Identifier.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_workers_route is deprecated: cloudflare:index/getWorkersRoute:getWorkersRoute has been deprecated in favor of cloudflare:workers/route:getRoute""")
     __args__ = dict()
     __args__['routeId'] = route_id
     __args__['zoneId'] = zone_id

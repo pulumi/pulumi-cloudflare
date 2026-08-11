@@ -23,6 +23,8 @@ __all__ = [
     'get_d1_database_output',
 ]
 
+warnings.warn("""cloudflare:index/getD1Database:getD1Database has been deprecated in favor of cloudflare:d1/database:getDatabase""", DeprecationWarning)
+
 @pulumi.output_type
 class GetD1DatabaseResult:
     """
@@ -205,7 +207,7 @@ def get_d1_database(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_d1_database = cloudflare.get_d1_database(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_d1_database = cloudflare.d1.get_database(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         database_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         fields=["uuid"])
     ```
@@ -216,6 +218,7 @@ def get_d1_database(account_id: Optional[_builtins.str] = None,
     :param Sequence[_builtins.str] fields: Comma-separated list of fields to include in the response. When omitted,
            all fields are returned.
     """
+    pulumi.log.warn("""get_d1_database is deprecated: cloudflare:index/getD1Database:getD1Database has been deprecated in favor of cloudflare:d1/database:getDatabase""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['databaseId'] = database_id
@@ -255,7 +258,7 @@ def get_d1_database_output(account_id: pulumi.Input[Optional[Optional[_builtins.
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_d1_database = cloudflare.get_d1_database(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_d1_database = cloudflare.d1.get_database(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         database_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         fields=["uuid"])
     ```
@@ -266,6 +269,7 @@ def get_d1_database_output(account_id: pulumi.Input[Optional[Optional[_builtins.
     :param Sequence[_builtins.str] fields: Comma-separated list of fields to include in the response. When omitted,
            all fields are returned.
     """
+    pulumi.log.warn("""get_d1_database is deprecated: cloudflare:index/getD1Database:getD1Database has been deprecated in favor of cloudflare:d1/database:getDatabase""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['databaseId'] = database_id

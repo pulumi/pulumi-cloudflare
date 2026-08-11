@@ -21,6 +21,8 @@ __all__ = [
     'get_origin_cloud_region_output',
 ]
 
+warnings.warn("""cloudflare:index/getOriginCloudRegion:getOriginCloudRegion has been deprecated in favor of cloudflare:originCloud/region:getRegion""", DeprecationWarning)
+
 @pulumi.output_type
 class GetOriginCloudRegionResult:
     """
@@ -117,13 +119,14 @@ def get_origin_cloud_region(origin_ip: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_origin_cloud_region = cloudflare.get_origin_cloud_region(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_origin_cloud_region = cloudflare.origincloud.get_region(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         origin_ip="192.0.2.1")
     ```
 
 
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_origin_cloud_region is deprecated: cloudflare:index/getOriginCloudRegion:getOriginCloudRegion has been deprecated in favor of cloudflare:originCloud/region:getRegion""")
     __args__ = dict()
     __args__['originIp'] = origin_ip
     __args__['zoneId'] = zone_id
@@ -147,13 +150,14 @@ def get_origin_cloud_region_output(origin_ip: pulumi.Input[Optional[_builtins.st
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_origin_cloud_region = cloudflare.get_origin_cloud_region(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_origin_cloud_region = cloudflare.origincloud.get_region(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         origin_ip="192.0.2.1")
     ```
 
 
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_origin_cloud_region is deprecated: cloudflare:index/getOriginCloudRegion:getOriginCloudRegion has been deprecated in favor of cloudflare:originCloud/region:getRegion""")
     __args__ = dict()
     __args__['originIp'] = origin_ip
     __args__['zoneId'] = zone_id

@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAiGateway = new Cloudflare.AiGateway("example_ai_gateway", new()
+    ///     var exampleAiGateway = new Cloudflare.Modules.AiGateway.AiGateway("example_ai_gateway", new()
     ///     {
     ///         AccountId = "3ebbcb006d4d46d7bb6a8c7f14676cb0",
     ///         AiGatewayId = "my-gateway",
@@ -56,6 +56,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/aiGateway:AiGateway example '&lt;account_id&gt;/&lt;id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/aiGateway:AiGateway has been deprecated in favor of cloudflare:aiGateway/aiGateway:AiGateway")]
     [CloudflareResourceType("cloudflare:index/aiGateway:AiGateway")]
     public partial class AiGateway : global::Pulumi.CustomResource
     {

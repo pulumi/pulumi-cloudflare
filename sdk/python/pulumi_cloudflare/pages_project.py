@@ -385,8 +385,13 @@ class _PagesProjectState:
         pulumi.set(self, "uses_functions", value)
 
 
+warnings.warn("""cloudflare:index/pagesProject:PagesProject has been deprecated in favor of cloudflare:pages/project:Project""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/pagesProject:PagesProject")
 class PagesProject(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/pagesProject:PagesProject has been deprecated in favor of cloudflare:pages/project:Project""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -415,7 +420,7 @@ class PagesProject(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_pages_project = cloudflare.PagesProject("example_pages_project",
+        example_pages_project = cloudflare.pages.Project("example_pages_project",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="my-pages-app",
             production_branch="main",
@@ -654,7 +659,7 @@ class PagesProject(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_pages_project = cloudflare.PagesProject("example_pages_project",
+        example_pages_project = cloudflare.pages.Project("example_pages_project",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="my-pages-app",
             production_branch="main",
@@ -883,6 +888,7 @@ class PagesProject(pulumi.CustomResource):
                  production_branch: pulumi.Input[Optional[_builtins.str]] = None,
                  source: pulumi.Input[Optional[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict']]] = None,
                  __props__=None):
+        pulumi.log.warn("""PagesProject is deprecated: cloudflare:index/pagesProject:PagesProject has been deprecated in favor of cloudflare:pages/project:Project""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

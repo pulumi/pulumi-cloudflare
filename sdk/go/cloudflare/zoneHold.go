@@ -58,14 +58,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zone"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZoneHold(ctx, "example_zone_hold", &cloudflare.ZoneHoldArgs{
+//			_, err := zone.NewHold(ctx, "example_zone_hold", &zone.HoldArgs{
 //				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //			})
 //			if err != nil {
@@ -82,6 +82,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zoneHold:ZoneHold example '<zone_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zoneHold:ZoneHold has been deprecated in favor of cloudflare:zone/hold:Hold
 type ZoneHold struct {
 	pulumi.CustomResourceState
 

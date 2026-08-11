@@ -6,7 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/** @deprecated cloudflare:index/getZeroTrustResourceLibraryCategories:getZeroTrustResourceLibraryCategories has been deprecated in favor of cloudflare:zeroTrustResourceLibrary/categories:getCategories */
 export function getZeroTrustResourceLibraryCategories(args: GetZeroTrustResourceLibraryCategoriesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustResourceLibraryCategoriesResult> {
+    pulumi.log.warn("getZeroTrustResourceLibraryCategories is deprecated: cloudflare:index/getZeroTrustResourceLibraryCategories:getZeroTrustResourceLibraryCategories has been deprecated in favor of cloudflare:zeroTrustResourceLibrary/categories:getCategories")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustResourceLibraryCategories:getZeroTrustResourceLibraryCategories", {
         "accountId": args.accountId,
@@ -57,7 +59,9 @@ export interface GetZeroTrustResourceLibraryCategoriesResult {
      */
     readonly results: outputs.GetZeroTrustResourceLibraryCategoriesResult[];
 }
+/** @deprecated cloudflare:index/getZeroTrustResourceLibraryCategories:getZeroTrustResourceLibraryCategories has been deprecated in favor of cloudflare:zeroTrustResourceLibrary/categories:getCategories */
 export function getZeroTrustResourceLibraryCategoriesOutput(args: GetZeroTrustResourceLibraryCategoriesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustResourceLibraryCategoriesResult> {
+    pulumi.log.warn("getZeroTrustResourceLibraryCategories is deprecated: cloudflare:index/getZeroTrustResourceLibraryCategories:getZeroTrustResourceLibraryCategories has been deprecated in favor of cloudflare:zeroTrustResourceLibrary/categories:getCategories")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustResourceLibraryCategories:getZeroTrustResourceLibraryCategories", {
         "accountId": args.accountId,

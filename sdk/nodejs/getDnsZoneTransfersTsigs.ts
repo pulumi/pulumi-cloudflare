@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsZoneTransfersTsigs = cloudflare.getDnsZoneTransfersTsigs({
+ * const exampleDnsZoneTransfersTsigs = cloudflare.dnszonetransfers.getTsigs({
  *     accountId: "01a7362d577a6c3019a474fd6f485823",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getDnsZoneTransfersTsigs:getDnsZoneTransfersTsigs has been deprecated in favor of cloudflare:dnsZoneTransfers/tsigs:getTsigs */
 export function getDnsZoneTransfersTsigs(args?: GetDnsZoneTransfersTsigsArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsZoneTransfersTsigsResult> {
+    pulumi.log.warn("getDnsZoneTransfersTsigs is deprecated: cloudflare:index/getDnsZoneTransfersTsigs:getDnsZoneTransfersTsigs has been deprecated in favor of cloudflare:dnsZoneTransfers/tsigs:getTsigs")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getDnsZoneTransfersTsigs:getDnsZoneTransfersTsigs", {
@@ -69,12 +71,14 @@ export interface GetDnsZoneTransfersTsigsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsZoneTransfersTsigs = cloudflare.getDnsZoneTransfersTsigs({
+ * const exampleDnsZoneTransfersTsigs = cloudflare.dnszonetransfers.getTsigs({
  *     accountId: "01a7362d577a6c3019a474fd6f485823",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getDnsZoneTransfersTsigs:getDnsZoneTransfersTsigs has been deprecated in favor of cloudflare:dnsZoneTransfers/tsigs:getTsigs */
 export function getDnsZoneTransfersTsigsOutput(args?: GetDnsZoneTransfersTsigsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsZoneTransfersTsigsResult> {
+    pulumi.log.warn("getDnsZoneTransfersTsigs is deprecated: cloudflare:index/getDnsZoneTransfersTsigs:getDnsZoneTransfersTsigs has been deprecated in favor of cloudflare:dnsZoneTransfers/tsigs:getTsigs")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getDnsZoneTransfersTsigs:getDnsZoneTransfersTsigs", {

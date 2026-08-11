@@ -9,14 +9,12 @@ import com.pulumi.cloudflare.inputs.AccessIdentityProviderState;
 import com.pulumi.cloudflare.outputs.AccessIdentityProviderConfig;
 import com.pulumi.cloudflare.outputs.AccessIdentityProviderSamlCertificateSet;
 import com.pulumi.cloudflare.outputs.AccessIdentityProviderScimConfig;
-import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -35,10 +33,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustAccessIdentityProvider;
- * import com.pulumi.cloudflare.ZeroTrustAccessIdentityProviderArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessIdentityProviderConfigArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessIdentityProviderScimConfigArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccessIdentity.Provider;
+ * import com.pulumi.cloudflare.zeroTrustAccessIdentity.ProviderArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccessIdentity.inputs.ProviderConfigArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccessIdentity.inputs.ProviderScimConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -52,8 +50,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustAccessIdentityProvider = new ZeroTrustAccessIdentityProvider("exampleZeroTrustAccessIdentityProvider", ZeroTrustAccessIdentityProviderArgs.builder()
- *             .config(ZeroTrustAccessIdentityProviderConfigArgs.builder()
+ *         var exampleZeroTrustAccessIdentityProvider = new Provider("exampleZeroTrustAccessIdentityProvider", ProviderArgs.builder()
+ *             .config(ProviderConfigArgs.builder()
  *                 .claims(                
  *                     "email_verified",
  *                     "preferred_username",
@@ -69,7 +67,7 @@ import javax.annotation.Nullable;
  *             .name("Widget Corps IDP")
  *             .type("onetimepin")
  *             .zoneId("zone_id")
- *             .scimConfig(ZeroTrustAccessIdentityProviderScimConfigArgs.builder()
+ *             .scimConfig(ProviderScimConfigArgs.builder()
  *                 .enabled(true)
  *                 .identityUpdateBehavior("automatic")
  *                 .seatDeprovision(true)
@@ -269,9 +267,6 @@ public class AccessIdentityProvider extends com.pulumi.resources.CustomResource 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .aliases(List.of(
-                Output.of(Alias.builder().type("cloudflare:index/accessIdentityProvider:AccessIdentityProvider").build())
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

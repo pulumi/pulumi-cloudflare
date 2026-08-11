@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/usergroup"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetUserGroup(ctx, &cloudflare.LookupUserGroupArgs{
+//			_, err := usergroup.GetUserGroup(ctx, &usergroup.GetUserGroupArgs{
 //				AccountId:   "023e105f4ecef8ad9ca31a8372d0c353",
 //				UserGroupId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
@@ -43,6 +43,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getUserGroup:getUserGroup has been deprecated in favor of cloudflare:userGroup/userGroup:getUserGroup
 func LookupUserGroup(ctx *pulumi.Context, args *LookupUserGroupArgs, opts ...pulumi.InvokeOption) (*LookupUserGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupUserGroupResult

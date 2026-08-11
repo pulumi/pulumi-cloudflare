@@ -20,12 +20,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicTransitCf1Sites = cloudflare.getMagicTransitCf1Sites({
+ * const exampleMagicTransitCf1Sites = cloudflare.magictransitcf1.getSites({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getMagicTransitCf1Sites:getMagicTransitCf1Sites has been deprecated in favor of cloudflare:magicTransitCf1/sites:getSites */
 export function getMagicTransitCf1Sites(args: GetMagicTransitCf1SitesArgs, opts?: pulumi.InvokeOptions): Promise<GetMagicTransitCf1SitesResult> {
+    pulumi.log.warn("getMagicTransitCf1Sites is deprecated: cloudflare:index/getMagicTransitCf1Sites:getMagicTransitCf1Sites has been deprecated in favor of cloudflare:magicTransitCf1/sites:getSites")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getMagicTransitCf1Sites:getMagicTransitCf1Sites", {
         "accountId": args.accountId,
@@ -78,12 +80,14 @@ export interface GetMagicTransitCf1SitesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicTransitCf1Sites = cloudflare.getMagicTransitCf1Sites({
+ * const exampleMagicTransitCf1Sites = cloudflare.magictransitcf1.getSites({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getMagicTransitCf1Sites:getMagicTransitCf1Sites has been deprecated in favor of cloudflare:magicTransitCf1/sites:getSites */
 export function getMagicTransitCf1SitesOutput(args: GetMagicTransitCf1SitesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMagicTransitCf1SitesResult> {
+    pulumi.log.warn("getMagicTransitCf1Sites is deprecated: cloudflare:index/getMagicTransitCf1Sites:getMagicTransitCf1Sites has been deprecated in favor of cloudflare:magicTransitCf1/sites:getSites")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getMagicTransitCf1Sites:getMagicTransitCf1Sites", {
         "accountId": args.accountId,

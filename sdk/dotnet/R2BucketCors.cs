@@ -20,15 +20,15 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleR2BucketCors = new Cloudflare.R2BucketCors("example_r2_bucket_cors", new()
+    ///     var exampleR2BucketCors = new Cloudflare.Modules.R2Bucket.R2BucketCors("example_r2_bucket_cors", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         BucketName = "example-bucket",
     ///         Rules = new[]
     ///         {
-    ///             new Cloudflare.Inputs.R2BucketCorsRuleArgs
+    ///             new Cloudflare.Modules.R2Bucket.Inputs.CorsRuleArgs
     ///             {
-    ///                 Allowed = new Cloudflare.Inputs.R2BucketCorsRuleAllowedArgs
+    ///                 Allowed = new Cloudflare.Modules.R2Bucket.Inputs.CorsRuleAllowedArgs
     ///                 {
     ///                     Methods = new[]
     ///                     {
@@ -60,6 +60,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/r2BucketCors:R2BucketCors has been deprecated in favor of cloudflare:r2Bucket/cors:Cors")]
     [CloudflareResourceType("cloudflare:index/r2BucketCors:R2BucketCors")]
     public partial class R2BucketCors : global::Pulumi.CustomResource
     {

@@ -22,6 +22,8 @@ __all__ = [
     'get_calls_turn_apps_output',
 ]
 
+warnings.warn("""cloudflare:index/getCallsTurnApps:getCallsTurnApps has been deprecated in favor of cloudflare:callsTurn/apps:getApps""", DeprecationWarning)
+
 @pulumi.output_type
 class GetCallsTurnAppsResult:
     """
@@ -89,13 +91,14 @@ def get_calls_turn_apps(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_calls_turn_apps = cloudflare.get_calls_turn_apps(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_calls_turn_apps = cloudflare.callsturn.get_apps(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: The account identifier tag.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_calls_turn_apps is deprecated: cloudflare:index/getCallsTurnApps:getCallsTurnApps has been deprecated in favor of cloudflare:callsTurn/apps:getApps""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -121,13 +124,14 @@ def get_calls_turn_apps_output(account_id: pulumi.Input[Optional[Optional[_built
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_calls_turn_apps = cloudflare.get_calls_turn_apps(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_calls_turn_apps = cloudflare.callsturn.get_apps(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: The account identifier tag.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_calls_turn_apps is deprecated: cloudflare:index/getCallsTurnApps:getCallsTurnApps has been deprecated in favor of cloudflare:callsTurn/apps:getApps""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

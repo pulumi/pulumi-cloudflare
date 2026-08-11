@@ -221,8 +221,13 @@ class _ZoneSubscriptionState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/zoneSubscription:ZoneSubscription has been deprecated in favor of cloudflare:zone/subscription:Subscription""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zoneSubscription:ZoneSubscription")
 class ZoneSubscription(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zoneSubscription:ZoneSubscription has been deprecated in favor of cloudflare:zone/subscription:Subscription""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -243,7 +248,7 @@ class ZoneSubscription(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zone_subscription = cloudflare.ZoneSubscription("example_zone_subscription",
+        example_zone_subscription = cloudflare.zone.Subscription("example_zone_subscription",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             frequency="monthly",
             rate_plan={
@@ -290,7 +295,7 @@ class ZoneSubscription(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zone_subscription = cloudflare.ZoneSubscription("example_zone_subscription",
+        example_zone_subscription = cloudflare.zone.Subscription("example_zone_subscription",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             frequency="monthly",
             rate_plan={
@@ -330,6 +335,7 @@ class ZoneSubscription(pulumi.CustomResource):
                  rate_plan: pulumi.Input[Optional[Union['ZoneSubscriptionRatePlanArgs', 'ZoneSubscriptionRatePlanArgsDict']]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZoneSubscription is deprecated: cloudflare:index/zoneSubscription:ZoneSubscription has been deprecated in favor of cloudflare:zone/subscription:Subscription""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

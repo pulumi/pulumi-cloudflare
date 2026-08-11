@@ -419,7 +419,7 @@ class TeamsLocation(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dns_location = cloudflare.ZeroTrustDnsLocation("example_zero_trust_dns_location",
+        example_zero_trust_dns_location = cloudflare.zerotrustdns.Location("example_zero_trust_dns_location",
             account_id="699d98642c564d2e855e9661899b7252",
             name="Austin Office Location",
             client_default=False,
@@ -494,7 +494,7 @@ class TeamsLocation(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dns_location = cloudflare.ZeroTrustDnsLocation("example_zero_trust_dns_location",
+        example_zero_trust_dns_location = cloudflare.zerotrustdns.Location("example_zero_trust_dns_location",
             account_id="699d98642c564d2e855e9661899b7252",
             name="Austin Office Location",
             client_default=False,
@@ -592,8 +592,6 @@ class TeamsLocation(pulumi.CustomResource):
             __props__.__dict__["ipv4_destination"] = None
             __props__.__dict__["ipv4_destination_backup"] = None
             __props__.__dict__["updated_at"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/teamsLocation:TeamsLocation")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(TeamsLocation, __self__).__init__(
             'cloudflare:index/teamsLocation:TeamsLocation',
             resource_name,

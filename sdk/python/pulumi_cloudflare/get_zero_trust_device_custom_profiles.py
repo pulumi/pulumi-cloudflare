@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_device_custom_profiles_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDeviceCustomProfiles:getZeroTrustDeviceCustomProfiles has been deprecated in favor of cloudflare:zeroTrustDevice/customProfiles:getCustomProfiles""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDeviceCustomProfilesResult:
     """
@@ -81,12 +83,13 @@ def get_zero_trust_device_custom_profiles(account_id: Optional[_builtins.str] = 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_device_custom_profiles = cloudflare.get_zero_trust_device_custom_profiles(account_id="699d98642c564d2e855e9661899b7252")
+    example_zero_trust_device_custom_profiles = cloudflare.zerotrustdevice.get_custom_profiles(account_id="699d98642c564d2e855e9661899b7252")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_device_custom_profiles is deprecated: cloudflare:index/getZeroTrustDeviceCustomProfiles:getZeroTrustDeviceCustomProfiles has been deprecated in favor of cloudflare:zeroTrustDevice/customProfiles:getCustomProfiles""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -107,12 +110,13 @@ def get_zero_trust_device_custom_profiles_output(account_id: pulumi.Input[Option
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_device_custom_profiles = cloudflare.get_zero_trust_device_custom_profiles(account_id="699d98642c564d2e855e9661899b7252")
+    example_zero_trust_device_custom_profiles = cloudflare.zerotrustdevice.get_custom_profiles(account_id="699d98642c564d2e855e9661899b7252")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_device_custom_profiles is deprecated: cloudflare:index/getZeroTrustDeviceCustomProfiles:getZeroTrustDeviceCustomProfiles has been deprecated in favor of cloudflare:zeroTrustDevice/customProfiles:getCustomProfiles""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

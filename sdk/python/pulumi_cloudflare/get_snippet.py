@@ -21,6 +21,8 @@ __all__ = [
     'get_snippet_output',
 ]
 
+warnings.warn("""cloudflare:index/getSnippet:getSnippet has been deprecated in favor of cloudflare:snippet/snippet:getSnippet""", DeprecationWarning)
+
 @pulumi.output_type
 class GetSnippetResult:
     """
@@ -112,7 +114,7 @@ def get_snippet(snippet_name: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_snippet = cloudflare.get_snippet(zone_id="9f1839b6152d298aca64c4e906b6d074",
+    example_snippet = cloudflare.snippet.get_snippet(zone_id="9f1839b6152d298aca64c4e906b6d074",
         snippet_name="my_snippet")
     ```
 
@@ -120,6 +122,7 @@ def get_snippet(snippet_name: Optional[_builtins.str] = None,
     :param _builtins.str snippet_name: Identify the snippet.
     :param _builtins.str zone_id: Use this field to specify the unique ID of the zone.
     """
+    pulumi.log.warn("""get_snippet is deprecated: cloudflare:index/getSnippet:getSnippet has been deprecated in favor of cloudflare:snippet/snippet:getSnippet""")
     __args__ = dict()
     __args__['snippetName'] = snippet_name
     __args__['zoneId'] = zone_id
@@ -147,7 +150,7 @@ def get_snippet_output(snippet_name: pulumi.Input[Optional[_builtins.str]] = Non
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_snippet = cloudflare.get_snippet(zone_id="9f1839b6152d298aca64c4e906b6d074",
+    example_snippet = cloudflare.snippet.get_snippet(zone_id="9f1839b6152d298aca64c4e906b6d074",
         snippet_name="my_snippet")
     ```
 
@@ -155,6 +158,7 @@ def get_snippet_output(snippet_name: pulumi.Input[Optional[_builtins.str]] = Non
     :param _builtins.str snippet_name: Identify the snippet.
     :param _builtins.str zone_id: Use this field to specify the unique ID of the zone.
     """
+    pulumi.log.warn("""get_snippet is deprecated: cloudflare:index/getSnippet:getSnippet has been deprecated in favor of cloudflare:snippet/snippet:getSnippet""")
     __args__ = dict()
     __args__['snippetName'] = snippet_name
     __args__['zoneId'] = zone_id

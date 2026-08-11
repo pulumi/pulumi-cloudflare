@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getLoadBalancerMonitorGroups:getLoadBalancerMonitorGroups has been deprecated in favor of cloudflare:loadBalancerMonitor/groups:getGroups")]
     public static class GetLoadBalancerMonitorGroups
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLoadBalancerMonitorGroups = Cloudflare.GetLoadBalancerMonitorGroups.Invoke(new()
+        ///     var exampleLoadBalancerMonitorGroups = Cloudflare.Modules.LoadBalancerMonitor.GetGroups.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -44,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLoadBalancerMonitorGroups = Cloudflare.GetLoadBalancerMonitorGroups.Invoke(new()
+        ///     var exampleLoadBalancerMonitorGroups = Cloudflare.Modules.LoadBalancerMonitor.GetGroups.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -66,7 +67,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLoadBalancerMonitorGroups = Cloudflare.GetLoadBalancerMonitorGroups.Invoke(new()
+        ///     var exampleLoadBalancerMonitorGroups = Cloudflare.Modules.LoadBalancerMonitor.GetGroups.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

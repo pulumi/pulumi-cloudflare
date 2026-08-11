@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * - `Workers Scripts Write`
  * - `Workers Tail Read`
  *
- * > This resource is redundant with `cloudflare.Worker` and should not be used together. When using the `cloudflare.Worker` resource, use the nested `subdomain` attribute to control subdomain settings instead.
+ * > This resource is redundant with `cloudflare.worker.Worker` and should not be used together. When using the `cloudflare.worker.Worker` resource, use the nested `subdomain` attribute to control subdomain settings instead.
  *
  * ## Example Usage
  *
@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersScriptSubdomain = new cloudflare.WorkersScriptSubdomain("example_workers_script_subdomain", {
+ * const exampleWorkersScriptSubdomain = new cloudflare.workersscript.Subdomain("example_workers_script_subdomain", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     scriptName: "this-is_my_script-01",
  *     enabled: true,
@@ -32,6 +32,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain example '<account_id>/<script_name>'
  * ```
+ *
+ * @deprecated cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain has been deprecated in favor of cloudflare:workersScript/subdomain:Subdomain
  */
 export class WorkersScriptSubdomain extends pulumi.CustomResource {
     /**
@@ -44,6 +46,7 @@ export class WorkersScriptSubdomain extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WorkersScriptSubdomainState, opts?: pulumi.CustomResourceOptions): WorkersScriptSubdomain {
+        pulumi.log.warn("WorkersScriptSubdomain is deprecated: cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain has been deprecated in favor of cloudflare:workersScript/subdomain:Subdomain")
         return new WorkersScriptSubdomain(name, <any>state, { ...opts, id: id });
     }
 
@@ -85,8 +88,11 @@ export class WorkersScriptSubdomain extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain has been deprecated in favor of cloudflare:workersScript/subdomain:Subdomain */
     constructor(name: string, args: WorkersScriptSubdomainArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain has been deprecated in favor of cloudflare:workersScript/subdomain:Subdomain */
     constructor(name: string, argsOrState?: WorkersScriptSubdomainArgs | WorkersScriptSubdomainState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("WorkersScriptSubdomain is deprecated: cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain has been deprecated in favor of cloudflare:workersScript/subdomain:Subdomain")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

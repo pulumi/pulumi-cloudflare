@@ -32,12 +32,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ApiToken;
- * import com.pulumi.cloudflare.ApiTokenArgs;
- * import com.pulumi.cloudflare.inputs.ApiTokenPolicyArgs;
- * import com.pulumi.cloudflare.inputs.ApiTokenPolicyPermissionGroupArgs;
- * import com.pulumi.cloudflare.inputs.ApiTokenConditionArgs;
- * import com.pulumi.cloudflare.inputs.ApiTokenConditionRequestIpArgs;
+ * import com.pulumi.cloudflare.apiToken.ApiToken;
+ * import com.pulumi.cloudflare.apiToken.ApiTokenArgs;
+ * import com.pulumi.cloudflare.apiToken.inputs.ApiTokenPolicyArgs;
+ * import com.pulumi.cloudflare.apiToken.inputs.ApiTokenPolicyPermissionGroupArgs;
+ * import com.pulumi.cloudflare.apiToken.inputs.ApiTokenConditionArgs;
+ * import com.pulumi.cloudflare.apiToken.inputs.ApiTokenConditionRequestIpArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -93,7 +93,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/apiToken:ApiToken example &#39;&lt;token_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/apiToken:ApiToken has been deprecated in favor of cloudflare:apiToken/apiToken:ApiToken
+ * 
  */
+@Deprecated /* cloudflare:index/apiToken:ApiToken has been deprecated in favor of cloudflare:apiToken/apiToken:ApiToken */
 @ResourceType(type="cloudflare:index/apiToken:ApiToken")
 public class ApiToken extends com.pulumi.resources.CustomResource {
     @Export(name="condition", refs={ApiTokenCondition.class}, tree="[0]")

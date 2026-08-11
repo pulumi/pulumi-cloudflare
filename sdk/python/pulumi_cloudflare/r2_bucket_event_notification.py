@@ -208,8 +208,13 @@ class _R2BucketEventNotificationState:
         pulumi.set(self, "rules", value)
 
 
+warnings.warn("""cloudflare:index/r2BucketEventNotification:R2BucketEventNotification has been deprecated in favor of cloudflare:r2Bucket/eventNotification:EventNotification""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/r2BucketEventNotification:R2BucketEventNotification")
 class R2BucketEventNotification(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/r2BucketEventNotification:R2BucketEventNotification has been deprecated in favor of cloudflare:r2Bucket/eventNotification:EventNotification""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -232,7 +237,7 @@ class R2BucketEventNotification(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_r2_bucket_event_notification = cloudflare.R2BucketEventNotification("example_r2_bucket_event_notification",
+        example_r2_bucket_event_notification = cloudflare.r2bucket.EventNotification("example_r2_bucket_event_notification",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             bucket_name="example-bucket",
             queue_id="queue_id",
@@ -278,7 +283,7 @@ class R2BucketEventNotification(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_r2_bucket_event_notification = cloudflare.R2BucketEventNotification("example_r2_bucket_event_notification",
+        example_r2_bucket_event_notification = cloudflare.r2bucket.EventNotification("example_r2_bucket_event_notification",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             bucket_name="example-bucket",
             queue_id="queue_id",
@@ -319,6 +324,7 @@ class R2BucketEventNotification(pulumi.CustomResource):
                  queue_id: pulumi.Input[Optional[_builtins.str]] = None,
                  rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['R2BucketEventNotificationRuleArgs', 'R2BucketEventNotificationRuleArgsDict']]]]] = None,
                  __props__=None):
+        pulumi.log.warn("""R2BucketEventNotification is deprecated: cloudflare:index/r2BucketEventNotification:R2BucketEventNotification has been deprecated in favor of cloudflare:r2Bucket/eventNotification:EventNotification""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

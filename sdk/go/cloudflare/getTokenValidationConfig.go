@@ -25,14 +25,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/tokenvalidation"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetTokenValidationConfig(ctx, &cloudflare.LookupTokenValidationConfigArgs{
+//			_, err := tokenvalidation.GetConfig(ctx, &tokenvalidation.GetConfigArgs{
 //				ZoneId:   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ConfigId: "4a7ee8d3-dd63-4ceb-9d5f-c27831854ce7",
 //			}, nil)
@@ -44,6 +44,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getTokenValidationConfig:getTokenValidationConfig has been deprecated in favor of cloudflare:tokenValidation/config:getConfig
 func LookupTokenValidationConfig(ctx *pulumi.Context, args *LookupTokenValidationConfigArgs, opts ...pulumi.InvokeOption) (*LookupTokenValidationConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTokenValidationConfigResult

@@ -22,6 +22,8 @@ __all__ = [
     'get_turnstile_widgets_output',
 ]
 
+warnings.warn("""cloudflare:index/getTurnstileWidgets:getTurnstileWidgets has been deprecated in favor of cloudflare:turnstile/widgets:getWidgets""", DeprecationWarning)
+
 @pulumi.output_type
 class GetTurnstileWidgetsResult:
     """
@@ -123,7 +125,7 @@ def get_turnstile_widgets(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_turnstile_widgets = cloudflare.get_turnstile_widgets(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_turnstile_widgets = cloudflare.turnstile.get_widgets(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="asc",
         filter="name:my-widget",
         order="id")
@@ -136,6 +138,7 @@ def get_turnstile_widgets(account_id: Optional[_builtins.str] = None,
     :param _builtins.str filter: Filter widgets by field using case-insensitive substring matching.
            Format: `field:value`
     """
+    pulumi.log.warn("""get_turnstile_widgets is deprecated: cloudflare:index/getTurnstileWidgets:getTurnstileWidgets has been deprecated in favor of cloudflare:turnstile/widgets:getWidgets""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction
@@ -172,7 +175,7 @@ def get_turnstile_widgets_output(account_id: pulumi.Input[Optional[Optional[_bui
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_turnstile_widgets = cloudflare.get_turnstile_widgets(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_turnstile_widgets = cloudflare.turnstile.get_widgets(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="asc",
         filter="name:my-widget",
         order="id")
@@ -185,6 +188,7 @@ def get_turnstile_widgets_output(account_id: pulumi.Input[Optional[Optional[_bui
     :param _builtins.str filter: Filter widgets by field using case-insensitive substring matching.
            Format: `field:value`
     """
+    pulumi.log.warn("""get_turnstile_widgets is deprecated: cloudflare:index/getTurnstileWidgets:getTurnstileWidgets has been deprecated in favor of cloudflare:turnstile/widgets:getWidgets""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction

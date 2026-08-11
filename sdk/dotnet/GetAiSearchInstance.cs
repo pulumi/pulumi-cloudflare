@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getAiSearchInstance:getAiSearchInstance has been deprecated in favor of cloudflare:aiSearch/instance:getInstance")]
     public static class GetAiSearchInstance
     {
         public static Task<GetAiSearchInstanceResult> InvokeAsync(GetAiSearchInstanceArgs? args = null, InvokeOptions? options = null)

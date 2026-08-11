@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomHostnameFallbackOrigin = new cloudflare.CustomHostnameFallbackOrigin("example_custom_hostname_fallback_origin", {
+ * const exampleCustomHostnameFallbackOrigin = new cloudflare.customhostname.FallbackOrigin("example_custom_hostname_fallback_origin", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     origin: "fallback.example.com",
  * });
@@ -27,6 +27,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example '<zone_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin has been deprecated in favor of cloudflare:customHostname/fallbackOrigin:FallbackOrigin
  */
 export class CustomHostnameFallbackOrigin extends pulumi.CustomResource {
     /**
@@ -39,6 +41,7 @@ export class CustomHostnameFallbackOrigin extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CustomHostnameFallbackOriginState, opts?: pulumi.CustomResourceOptions): CustomHostnameFallbackOrigin {
+        pulumi.log.warn("CustomHostnameFallbackOrigin is deprecated: cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin has been deprecated in favor of cloudflare:customHostname/fallbackOrigin:FallbackOrigin")
         return new CustomHostnameFallbackOrigin(name, <any>state, { ...opts, id: id });
     }
 
@@ -89,8 +92,11 @@ export class CustomHostnameFallbackOrigin extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin has been deprecated in favor of cloudflare:customHostname/fallbackOrigin:FallbackOrigin */
     constructor(name: string, args: CustomHostnameFallbackOriginArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin has been deprecated in favor of cloudflare:customHostname/fallbackOrigin:FallbackOrigin */
     constructor(name: string, argsOrState?: CustomHostnameFallbackOriginArgs | CustomHostnameFallbackOriginState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("CustomHostnameFallbackOrigin is deprecated: cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin has been deprecated in favor of cloudflare:customHostname/fallbackOrigin:FallbackOrigin")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

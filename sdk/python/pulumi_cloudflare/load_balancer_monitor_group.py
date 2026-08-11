@@ -161,8 +161,13 @@ class _LoadBalancerMonitorGroupState:
         pulumi.set(self, "modified_on", value)
 
 
+warnings.warn("""cloudflare:index/loadBalancerMonitorGroup:LoadBalancerMonitorGroup has been deprecated in favor of cloudflare:loadBalancerMonitor/group:Group""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/loadBalancerMonitorGroup:LoadBalancerMonitorGroup")
 class LoadBalancerMonitorGroup(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/loadBalancerMonitorGroup:LoadBalancerMonitorGroup has been deprecated in favor of cloudflare:loadBalancerMonitor/group:Group""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -178,7 +183,7 @@ class LoadBalancerMonitorGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_load_balancer_monitor_group = cloudflare.LoadBalancerMonitorGroup("example_load_balancer_monitor_group",
+        example_load_balancer_monitor_group = cloudflare.loadbalancermonitor.Group("example_load_balancer_monitor_group",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             description="Primary datacenter monitors",
             members=[{
@@ -215,7 +220,7 @@ class LoadBalancerMonitorGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_load_balancer_monitor_group = cloudflare.LoadBalancerMonitorGroup("example_load_balancer_monitor_group",
+        example_load_balancer_monitor_group = cloudflare.loadbalancermonitor.Group("example_load_balancer_monitor_group",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             description="Primary datacenter monitors",
             members=[{
@@ -252,6 +257,7 @@ class LoadBalancerMonitorGroup(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerMonitorGroupMemberArgs', 'LoadBalancerMonitorGroupMemberArgsDict']]]]] = None,
                  __props__=None):
+        pulumi.log.warn("""LoadBalancerMonitorGroup is deprecated: cloudflare:index/loadBalancerMonitorGroup:LoadBalancerMonitorGroup has been deprecated in favor of cloudflare:loadBalancerMonitor/group:Group""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

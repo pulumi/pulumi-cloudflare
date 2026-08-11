@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessCustomPage = new cloudflare.ZeroTrustAccessCustomPage("example_zero_trust_access_custom_page", {
+ * const exampleZeroTrustAccessCustomPage = new cloudflare.zerotrustaccesscustom.Page("example_zero_trust_access_custom_page", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     customHtml: "<html><body><h1>Access Denied</h1></body></html>",
  *     name: "name",
@@ -125,8 +125,6 @@ export class AccessCustomPage extends pulumi.CustomResource {
             resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessCustomPage:AccessCustomPage" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AccessCustomPage.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -161,8 +161,13 @@ class _ZeroTrustAccessShortLivedCertificateState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate has been deprecated in favor of cloudflare:zeroTrustAccessShortLived/certificate:Certificate""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate")
 class ZeroTrustAccessShortLivedCertificate(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate has been deprecated in favor of cloudflare:zeroTrustAccessShortLived/certificate:Certificate""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -183,7 +188,7 @@ class ZeroTrustAccessShortLivedCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_short_lived_certificate = cloudflare.ZeroTrustAccessShortLivedCertificate("example_zero_trust_access_short_lived_certificate",
+        example_zero_trust_access_short_lived_certificate = cloudflare.zerotrustaccessshortlived.Certificate("example_zero_trust_access_short_lived_certificate",
             app_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
             zone_id="zone_id")
         ```
@@ -219,7 +224,7 @@ class ZeroTrustAccessShortLivedCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_short_lived_certificate = cloudflare.ZeroTrustAccessShortLivedCertificate("example_zero_trust_access_short_lived_certificate",
+        example_zero_trust_access_short_lived_certificate = cloudflare.zerotrustaccessshortlived.Certificate("example_zero_trust_access_short_lived_certificate",
             app_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
             zone_id="zone_id")
         ```
@@ -250,6 +255,7 @@ class ZeroTrustAccessShortLivedCertificate(pulumi.CustomResource):
                  app_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustAccessShortLivedCertificate is deprecated: cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate has been deprecated in favor of cloudflare:zeroTrustAccessShortLived/certificate:Certificate""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

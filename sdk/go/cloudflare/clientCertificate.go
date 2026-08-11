@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/client"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewClientCertificate(ctx, "example_client_certificate", &cloudflare.ClientCertificateArgs{
+//			_, err := client.NewCertificate(ctx, "example_client_certificate", &client.CertificateArgs{
 //				ZoneId:       pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Csr:          pulumi.String("  -----BEGIN CERTIFICATE REQUEST-----\n  MIICY....\n  -----END CERTIFICATE REQUEST-----\n"),
 //				ValidityDays: pulumi.Int(3650),
@@ -50,6 +50,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/clientCertificate:ClientCertificate example '<zone_id>/<client_certificate_id>'
 // ```
+//
+// Deprecated: cloudflare:index/clientCertificate:ClientCertificate has been deprecated in favor of cloudflare:client/certificate:Certificate
 type ClientCertificate struct {
 	pulumi.CustomResourceState
 

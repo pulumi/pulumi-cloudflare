@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessAiControlsMcpServer = new cloudflare.ZeroTrustAccessAiControlsMcpServer("example_zero_trust_access_ai_controls_mcp_server", {
+ * const exampleZeroTrustAccessAiControlsMcpServer = new cloudflare.zerotrustaccessaicontrolsmcp.Server("example_zero_trust_access_ai_controls_mcp_server", {
  *     accountId: "a86a8f5c339544d7bdc89926de14fb8c",
  *     zeroTrustAccessAiControlsMcpServerId: "my-mcp-server",
  *     authType: "unauthenticated",
@@ -49,6 +49,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer example '<account_id>/<id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/server:Server
  */
 export class ZeroTrustAccessAiControlsMcpServer extends pulumi.CustomResource {
     /**
@@ -61,6 +63,7 @@ export class ZeroTrustAccessAiControlsMcpServer extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustAccessAiControlsMcpServerState, opts?: pulumi.CustomResourceOptions): ZeroTrustAccessAiControlsMcpServer {
+        pulumi.log.warn("ZeroTrustAccessAiControlsMcpServer is deprecated: cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/server:Server")
         return new ZeroTrustAccessAiControlsMcpServer(name, <any>state, { ...opts, id: id });
     }
 
@@ -128,8 +131,11 @@ export class ZeroTrustAccessAiControlsMcpServer extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/server:Server */
     constructor(name: string, args: ZeroTrustAccessAiControlsMcpServerArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/server:Server */
     constructor(name: string, argsOrState?: ZeroTrustAccessAiControlsMcpServerArgs | ZeroTrustAccessAiControlsMcpServerState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustAccessAiControlsMcpServer is deprecated: cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/server:Server")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

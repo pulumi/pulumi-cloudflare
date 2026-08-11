@@ -212,8 +212,13 @@ class _WorkersDeploymentState:
         pulumi.set(self, "versions", value)
 
 
+warnings.warn("""cloudflare:index/workersDeployment:WorkersDeployment has been deprecated in favor of cloudflare:workers/deployment:Deployment""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/workersDeployment:WorkersDeployment")
 class WorkersDeployment(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/workersDeployment:WorkersDeployment has been deprecated in favor of cloudflare:workers/deployment:Deployment""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -237,7 +242,7 @@ class WorkersDeployment(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_workers_deployment = cloudflare.WorkersDeployment("example_workers_deployment",
+        example_workers_deployment = cloudflare.workers.Deployment("example_workers_deployment",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             script_name="this-is_my_script-01",
             strategy="percentage",
@@ -282,7 +287,7 @@ class WorkersDeployment(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_workers_deployment = cloudflare.WorkersDeployment("example_workers_deployment",
+        example_workers_deployment = cloudflare.workers.Deployment("example_workers_deployment",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             script_name="this-is_my_script-01",
             strategy="percentage",
@@ -323,6 +328,7 @@ class WorkersDeployment(pulumi.CustomResource):
                  strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersDeploymentVersionArgs', 'WorkersDeploymentVersionArgsDict']]]]] = None,
                  __props__=None):
+        pulumi.log.warn("""WorkersDeployment is deprecated: cloudflare:index/workersDeployment:WorkersDeployment has been deprecated in favor of cloudflare:workers/deployment:Deployment""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustDevicePostureRules:getZeroTrustDevicePostureRules has been deprecated in favor of cloudflare:zeroTrustDevicePosture/rules:getRules")]
     public static class GetZeroTrustDevicePostureRules
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDevicePostureRules = Cloudflare.GetZeroTrustDevicePostureRules.Invoke(new()
+        ///     var exampleZeroTrustDevicePostureRules = Cloudflare.Modules.ZeroTrustDevicePosture.GetRules.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///     });
@@ -44,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDevicePostureRules = Cloudflare.GetZeroTrustDevicePostureRules.Invoke(new()
+        ///     var exampleZeroTrustDevicePostureRules = Cloudflare.Modules.ZeroTrustDevicePosture.GetRules.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///     });
@@ -66,7 +67,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDevicePostureRules = Cloudflare.GetZeroTrustDevicePostureRules.Invoke(new()
+        ///     var exampleZeroTrustDevicePostureRules = Cloudflare.Modules.ZeroTrustDevicePosture.GetRules.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///     });

@@ -22,14 +22,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/webanalytics"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetWebAnalyticsSite(ctx, &cloudflare.LookupWebAnalyticsSiteArgs{
+//			_, err := webanalytics.GetSite(ctx, &webanalytics.GetSiteArgs{
 //				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				SiteId:    pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
@@ -41,6 +41,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getWebAnalyticsSite:getWebAnalyticsSite has been deprecated in favor of cloudflare:webAnalytics/site:getSite
 func LookupWebAnalyticsSite(ctx *pulumi.Context, args *LookupWebAnalyticsSiteArgs, opts ...pulumi.InvokeOption) (*LookupWebAnalyticsSiteResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAnalyticsSiteResult

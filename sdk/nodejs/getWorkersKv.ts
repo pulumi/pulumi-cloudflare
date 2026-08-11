@@ -16,14 +16,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersKv = cloudflare.getWorkersKv({
+ * const exampleWorkersKv = cloudflare.workerskv.getWorkersKv({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     namespaceId: "0f2ac74b498b48028cb68387c421e279",
  *     keyName: "My-Key",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkersKv:getWorkersKv has been deprecated in favor of cloudflare:workersKv/workersKv:getWorkersKv */
 export function getWorkersKv(args: GetWorkersKvArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersKvResult> {
+    pulumi.log.warn("getWorkersKv is deprecated: cloudflare:index/getWorkersKv:getWorkersKv has been deprecated in favor of cloudflare:workersKv/workersKv:getWorkersKv")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkersKv:getWorkersKv", {
         "accountId": args.accountId,
@@ -84,14 +86,16 @@ export interface GetWorkersKvResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersKv = cloudflare.getWorkersKv({
+ * const exampleWorkersKv = cloudflare.workerskv.getWorkersKv({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     namespaceId: "0f2ac74b498b48028cb68387c421e279",
  *     keyName: "My-Key",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkersKv:getWorkersKv has been deprecated in favor of cloudflare:workersKv/workersKv:getWorkersKv */
 export function getWorkersKvOutput(args: GetWorkersKvOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersKvResult> {
+    pulumi.log.warn("getWorkersKv is deprecated: cloudflare:index/getWorkersKv:getWorkersKv has been deprecated in favor of cloudflare:workersKv/workersKv:getWorkersKv")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkersKv:getWorkersKv", {
         "accountId": args.accountId,

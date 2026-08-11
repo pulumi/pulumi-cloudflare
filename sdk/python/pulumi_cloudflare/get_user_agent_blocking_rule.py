@@ -23,6 +23,8 @@ __all__ = [
     'get_user_agent_blocking_rule_output',
 ]
 
+warnings.warn("""cloudflare:index/getUserAgentBlockingRule:getUserAgentBlockingRule has been deprecated in favor of cloudflare:userAgentBlocking/rule:getRule""", DeprecationWarning)
+
 @pulumi.output_type
 class GetUserAgentBlockingRuleResult:
     """
@@ -149,7 +151,7 @@ def get_user_agent_blocking_rule(filter: Optional[Union['GetUserAgentBlockingRul
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_user_agent_blocking_rule = cloudflare.get_user_agent_blocking_rule(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_user_agent_blocking_rule = cloudflare.useragentblocking.get_rule(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         ua_rule_id="372e67954025e0ba6aaa6d586b9e0b59")
     ```
 
@@ -157,6 +159,7 @@ def get_user_agent_blocking_rule(filter: Optional[Union['GetUserAgentBlockingRul
     :param _builtins.str ua_rule_id: The unique identifier of the User Agent Blocking rule.
     :param _builtins.str zone_id: Defines an identifier.
     """
+    pulumi.log.warn("""get_user_agent_blocking_rule is deprecated: cloudflare:index/getUserAgentBlockingRule:getUserAgentBlockingRule has been deprecated in favor of cloudflare:userAgentBlocking/rule:getRule""")
     __args__ = dict()
     __args__['filter'] = filter
     __args__['uaRuleId'] = ua_rule_id
@@ -189,7 +192,7 @@ def get_user_agent_blocking_rule_output(filter: pulumi.Input[Optional[Optional[U
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_user_agent_blocking_rule = cloudflare.get_user_agent_blocking_rule(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_user_agent_blocking_rule = cloudflare.useragentblocking.get_rule(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         ua_rule_id="372e67954025e0ba6aaa6d586b9e0b59")
     ```
 
@@ -197,6 +200,7 @@ def get_user_agent_blocking_rule_output(filter: pulumi.Input[Optional[Optional[U
     :param _builtins.str ua_rule_id: The unique identifier of the User Agent Blocking rule.
     :param _builtins.str zone_id: Defines an identifier.
     """
+    pulumi.log.warn("""get_user_agent_blocking_rule is deprecated: cloudflare:index/getUserAgentBlockingRule:getUserAgentBlockingRule has been deprecated in favor of cloudflare:userAgentBlocking/rule:getRule""")
     __args__ = dict()
     __args__['filter'] = filter
     __args__['uaRuleId'] = ua_rule_id

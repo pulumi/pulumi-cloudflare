@@ -129,7 +129,7 @@ class ZeroTrustLocalFallbackDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_device_custom_profile_local_domain_fallback = cloudflare.ZeroTrustDeviceCustomProfileLocalDomainFallback("example_zero_trust_device_custom_profile_local_domain_fallback",
+        example_zero_trust_device_custom_profile_local_domain_fallback = cloudflare.zerotrustdevicecustomprofile.LocalDomainFallback("example_zero_trust_device_custom_profile_local_domain_fallback",
             account_id="699d98642c564d2e855e9661899b7252",
             policy_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
             domains=[{
@@ -166,7 +166,7 @@ class ZeroTrustLocalFallbackDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_device_custom_profile_local_domain_fallback = cloudflare.ZeroTrustDeviceCustomProfileLocalDomainFallback("example_zero_trust_device_custom_profile_local_domain_fallback",
+        example_zero_trust_device_custom_profile_local_domain_fallback = cloudflare.zerotrustdevicecustomprofile.LocalDomainFallback("example_zero_trust_device_custom_profile_local_domain_fallback",
             account_id="699d98642c564d2e855e9661899b7252",
             policy_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
             domains=[{
@@ -220,7 +220,7 @@ class ZeroTrustLocalFallbackDomain(pulumi.CustomResource):
             if policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_id'")
             __props__.__dict__["policy_id"] = policy_id
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/fallbackDomain:FallbackDomain"), pulumi.Alias(type_="cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/fallbackDomain:FallbackDomain")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustLocalFallbackDomain, __self__).__init__(
             'cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain',

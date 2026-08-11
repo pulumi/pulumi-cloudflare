@@ -25,29 +25,29 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/usergroup"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewUserGroup(ctx, "example_user_group", &cloudflare.UserGroupArgs{
+//			_, err := usergroup.NewUserGroup(ctx, "example_user_group", &usergroup.UserGroupArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:      pulumi.String("My New User Group"),
-//				Policies: cloudflare.UserGroupPolicyArray{
-//					&cloudflare.UserGroupPolicyArgs{
+//				Policies: usergroup.UserGroupPolicyArray{
+//					&usergroup.UserGroupPolicyArgs{
 //						Access: pulumi.String("allow"),
-//						PermissionGroups: cloudflare.UserGroupPolicyPermissionGroupArray{
-//							&cloudflare.UserGroupPolicyPermissionGroupArgs{
+//						PermissionGroups: usergroup.UserGroupPolicyPermissionGroupArray{
+//							&usergroup.UserGroupPolicyPermissionGroupArgs{
 //								Id: pulumi.String("c8fed203ed3043cba015a93ad1616f1f"),
 //							},
-//							&cloudflare.UserGroupPolicyPermissionGroupArgs{
+//							&usergroup.UserGroupPolicyPermissionGroupArgs{
 //								Id: pulumi.String("82e64a83756745bbbb1c9c2701bf816b"),
 //							},
 //						},
-//						ResourceGroups: cloudflare.UserGroupPolicyResourceGroupArray{
-//							&cloudflare.UserGroupPolicyResourceGroupArgs{
+//						ResourceGroups: usergroup.UserGroupPolicyResourceGroupArray{
+//							&usergroup.UserGroupPolicyResourceGroupArgs{
 //								Id: pulumi.String("6d7f2f5f5b1d4a0e9081fdc98d432fd1"),
 //							},
 //						},
@@ -68,6 +68,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/userGroup:UserGroup example '<account_id>/<user_group_id>'
 // ```
+//
+// Deprecated: cloudflare:index/userGroup:UserGroup has been deprecated in favor of cloudflare:userGroup/userGroup:UserGroup
 type UserGroup struct {
 	pulumi.CustomResourceState
 

@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDlpSensitivityLevelOrder;
- * import com.pulumi.cloudflare.ZeroTrustDlpSensitivityLevelOrderArgs;
+ * import com.pulumi.cloudflare.zeroTrustDlpSensitivityLevel.Order;
+ * import com.pulumi.cloudflare.zeroTrustDlpSensitivityLevel.OrderArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustDlpSensitivityLevelOrder = new ZeroTrustDlpSensitivityLevelOrder("exampleZeroTrustDlpSensitivityLevelOrder", ZeroTrustDlpSensitivityLevelOrderArgs.builder()
+ *         var exampleZeroTrustDlpSensitivityLevelOrder = new Order("exampleZeroTrustDlpSensitivityLevelOrder", OrderArgs.builder()
  *             .accountId("account_id")
  *             .sensitivityGroupId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
  *             .levelIds("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
@@ -61,7 +61,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustDlpSensitivityLevelOrder:ZeroTrustDlpSensitivityLevelOrder example &#39;&lt;account_id&gt;/&lt;sensitivity_group_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustDlpSensitivityLevelOrder:ZeroTrustDlpSensitivityLevelOrder has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/order:Order
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustDlpSensitivityLevelOrder:ZeroTrustDlpSensitivityLevelOrder has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/order:Order */
 @ResourceType(type="cloudflare:index/zeroTrustDlpSensitivityLevelOrder:ZeroTrustDlpSensitivityLevelOrder")
 public class ZeroTrustDlpSensitivityLevelOrder extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

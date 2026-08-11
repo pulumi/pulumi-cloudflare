@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleUserAgentBlockingRule = cloudflare.getUserAgentBlockingRule({
+ * const exampleUserAgentBlockingRule = cloudflare.useragentblocking.getRule({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     uaRuleId: "372e67954025e0ba6aaa6d586b9e0b59",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getUserAgentBlockingRule:getUserAgentBlockingRule has been deprecated in favor of cloudflare:userAgentBlocking/rule:getRule */
 export function getUserAgentBlockingRule(args?: GetUserAgentBlockingRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetUserAgentBlockingRuleResult> {
+    pulumi.log.warn("getUserAgentBlockingRule is deprecated: cloudflare:index/getUserAgentBlockingRule:getUserAgentBlockingRule has been deprecated in favor of cloudflare:userAgentBlocking/rule:getRule")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getUserAgentBlockingRule:getUserAgentBlockingRule", {
@@ -96,13 +98,15 @@ export interface GetUserAgentBlockingRuleResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleUserAgentBlockingRule = cloudflare.getUserAgentBlockingRule({
+ * const exampleUserAgentBlockingRule = cloudflare.useragentblocking.getRule({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     uaRuleId: "372e67954025e0ba6aaa6d586b9e0b59",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getUserAgentBlockingRule:getUserAgentBlockingRule has been deprecated in favor of cloudflare:userAgentBlocking/rule:getRule */
 export function getUserAgentBlockingRuleOutput(args?: GetUserAgentBlockingRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserAgentBlockingRuleResult> {
+    pulumi.log.warn("getUserAgentBlockingRule is deprecated: cloudflare:index/getUserAgentBlockingRule:getUserAgentBlockingRule has been deprecated in favor of cloudflare:userAgentBlocking/rule:getRule")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getUserAgentBlockingRule:getUserAgentBlockingRule", {

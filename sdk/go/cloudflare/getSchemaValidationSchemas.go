@@ -25,14 +25,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/schemavalidationschemas"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetSchemaValidationSchemas(ctx, &cloudflare.LookupSchemaValidationSchemasArgs{
+//			_, err := schemavalidationschemas.GetSchemaValidationSchemas(ctx, &schemavalidationschemas.GetSchemaValidationSchemasArgs{
 //				ZoneId:     pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				SchemaId:   pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
 //				OmitSource: pulumi.BoolRef(true),
@@ -45,6 +45,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getSchemaValidationSchemas:getSchemaValidationSchemas has been deprecated in favor of cloudflare:schemaValidationSchemas/schemaValidationSchemas:getSchemaValidationSchemas
 func LookupSchemaValidationSchemas(ctx *pulumi.Context, args *LookupSchemaValidationSchemasArgs, opts ...pulumi.InvokeOption) (*LookupSchemaValidationSchemasResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSchemaValidationSchemasResult

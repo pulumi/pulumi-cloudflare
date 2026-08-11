@@ -257,8 +257,13 @@ class _AuthenticatedOriginPullsCertificateState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate has been deprecated in favor of cloudflare:authenticatedOriginPulls/certificate:Certificate""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate")
 class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate has been deprecated in favor of cloudflare:authenticatedOriginPulls/certificate:Certificate""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -274,7 +279,7 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_authenticated_origin_pulls_certificate = cloudflare.AuthenticatedOriginPullsCertificate("example_authenticated_origin_pulls_certificate",
+        example_authenticated_origin_pulls_certificate = cloudflare.authenticatedoriginpulls.Certificate("example_authenticated_origin_pulls_certificate",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             certificate=\"\"\"  -----BEGIN CERTIFICATE-----
           MIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV
@@ -357,7 +362,7 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_authenticated_origin_pulls_certificate = cloudflare.AuthenticatedOriginPullsCertificate("example_authenticated_origin_pulls_certificate",
+        example_authenticated_origin_pulls_certificate = cloudflare.authenticatedoriginpulls.Certificate("example_authenticated_origin_pulls_certificate",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             certificate=\"\"\"  -----BEGIN CERTIFICATE-----
           MIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV
@@ -440,6 +445,7 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
                  private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""AuthenticatedOriginPullsCertificate is deprecated: cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate has been deprecated in favor of cloudflare:authenticatedOriginPulls/certificate:Certificate""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

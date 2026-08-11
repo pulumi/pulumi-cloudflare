@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneCacheReserve = cloudflare.getZoneCacheReserve({
+ * const exampleZoneCacheReserve = cloudflare.zonecache.getReserve({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZoneCacheReserve:getZoneCacheReserve has been deprecated in favor of cloudflare:zoneCache/reserve:getReserve */
 export function getZoneCacheReserve(args?: GetZoneCacheReserveArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneCacheReserveResult> {
+    pulumi.log.warn("getZoneCacheReserve is deprecated: cloudflare:index/getZoneCacheReserve:getZoneCacheReserve has been deprecated in favor of cloudflare:zoneCache/reserve:getReserve")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZoneCacheReserve:getZoneCacheReserve", {
@@ -81,12 +83,14 @@ export interface GetZoneCacheReserveResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneCacheReserve = cloudflare.getZoneCacheReserve({
+ * const exampleZoneCacheReserve = cloudflare.zonecache.getReserve({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZoneCacheReserve:getZoneCacheReserve has been deprecated in favor of cloudflare:zoneCache/reserve:getReserve */
 export function getZoneCacheReserveOutput(args?: GetZoneCacheReserveOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneCacheReserveResult> {
+    pulumi.log.warn("getZoneCacheReserve is deprecated: cloudflare:index/getZoneCacheReserve:getZoneCacheReserve has been deprecated in favor of cloudflare:zoneCache/reserve:getReserve")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZoneCacheReserve:getZoneCacheReserve", {

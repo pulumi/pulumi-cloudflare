@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/aigateway"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAiGateway(ctx, "example_ai_gateway", &cloudflare.AiGatewayArgs{
+//			_, err := aigateway.NewAiGateway(ctx, "example_ai_gateway", &aigateway.AiGatewayArgs{
 //				AccountId:               pulumi.String("3ebbcb006d4d46d7bb6a8c7f14676cb0"),
 //				AiGatewayId:             pulumi.String("my-gateway"),
 //				CacheInvalidateOnUpdate: pulumi.Bool(true),
@@ -65,6 +65,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/aiGateway:AiGateway example '<account_id>/<id>'
 // ```
+//
+// Deprecated: cloudflare:index/aiGateway:AiGateway has been deprecated in favor of cloudflare:aiGateway/aiGateway:AiGateway
 type AiGateway struct {
 	pulumi.CustomResourceState
 

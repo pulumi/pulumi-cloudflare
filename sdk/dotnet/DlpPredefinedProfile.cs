@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDlpPredefinedProfile = new Cloudflare.ZeroTrustDlpPredefinedProfile("example_zero_trust_dlp_predefined_profile", new()
+    ///     var exampleZeroTrustDlpPredefinedProfile = new Cloudflare.Modules.ZeroTrustDlpPredefined.ZeroTrustDlpPredefinedProfile("example_zero_trust_dlp_predefined_profile", new()
     ///     {
     ///         ProfileId = "e91a2360-da51-4fdf-9711-bcdecd462614",
     ///         AccountId = "account_id",
@@ -120,10 +120,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/dlpPredefinedProfile:DlpPredefinedProfile" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

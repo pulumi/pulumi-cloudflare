@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * - `Firewall Services Read`
  * - `Firewall Services Write`
  * 
- * &gt; `cloudflare.FirewallRule` is in a deprecation phase until June 15th, 2025.
+ * &gt; `cloudflare.firewall.Rule` is in a deprecation phase until June 15th, 2025.
  *   During this time period, this resource is still
  *   fully supported but you are strongly advised  to move to the
  *   `cloudflare.Ruleset` resource. Full details can be found in the
@@ -39,11 +39,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.FirewallRule;
- * import com.pulumi.cloudflare.FirewallRuleArgs;
- * import com.pulumi.cloudflare.inputs.FirewallRuleActionArgs;
- * import com.pulumi.cloudflare.inputs.FirewallRuleActionResponseArgs;
- * import com.pulumi.cloudflare.inputs.FirewallRuleFilterArgs;
+ * import com.pulumi.cloudflare.firewall.Rule;
+ * import com.pulumi.cloudflare.firewall.RuleArgs;
+ * import com.pulumi.cloudflare.firewall.inputs.RuleActionArgs;
+ * import com.pulumi.cloudflare.firewall.inputs.RuleActionResponseArgs;
+ * import com.pulumi.cloudflare.firewall.inputs.RuleFilterArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -57,17 +57,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleFirewallRule = new FirewallRule("exampleFirewallRule", FirewallRuleArgs.builder()
+ *         var exampleFirewallRule = new Rule("exampleFirewallRule", RuleArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .action(FirewallRuleActionArgs.builder()
+ *             .action(RuleActionArgs.builder()
  *                 .mode("challenge")
- *                 .response(FirewallRuleActionResponseArgs.builder()
+ *                 .response(RuleActionResponseArgs.builder()
  *                     .body("<error>This request has been rate-limited.</error>")
  *                     .contentType("text/xml")
  *                     .build())
  *                 .timeout(86400.0)
  *                 .build())
- *             .filter(FirewallRuleFilterArgs.builder()
+ *             .filter(RuleFilterArgs.builder()
  *                 .description("Restrict access from these browsers on this address range.")
  *                 .expression("(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155")
  *                 .paused(false)
@@ -86,7 +86,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/firewallRule:FirewallRule example &#39;&lt;zone_id&gt;/&lt;rule_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/firewallRule:FirewallRule has been deprecated in favor of cloudflare:firewall/rule:Rule
+ * 
  */
+@Deprecated /* cloudflare:index/firewallRule:FirewallRule has been deprecated in favor of cloudflare:firewall/rule:Rule */
 @ResourceType(type="cloudflare:index/firewallRule:FirewallRule")
 public class FirewallRule extends com.pulumi.resources.CustomResource {
     /**

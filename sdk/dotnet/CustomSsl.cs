@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCustomSsl = new Cloudflare.CustomSsl("example_custom_ssl", new()
+    ///     var exampleCustomSsl = new Cloudflare.Modules.Custom.CustomSsl("example_custom_ssl", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Certificate = @"  -----BEGIN CERTIFICATE-----
@@ -86,7 +86,7 @@ namespace Pulumi.Cloudflare
     ///         BundleMethod = "ubiquitous",
     ///         CustomCsrId = "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
     ///         Deploy = "staging",
-    ///         GeoRestrictions = new Cloudflare.Inputs.CustomSslGeoRestrictionsArgs
+    ///         GeoRestrictions = new Cloudflare.Modules.Custom.Inputs.SslGeoRestrictionsArgs
     ///         {
     ///             Label = "us",
     ///         },
@@ -103,6 +103,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/customSsl:CustomSsl example '&lt;zone_id&gt;/&lt;custom_certificate_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/customSsl:CustomSsl has been deprecated in favor of cloudflare:custom/ssl:Ssl")]
     [CloudflareResourceType("cloudflare:index/customSsl:CustomSsl")]
     public partial class CustomSsl : global::Pulumi.CustomResource
     {

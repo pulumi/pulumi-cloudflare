@@ -206,7 +206,7 @@ class AccessCustomPage(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_custom_page = cloudflare.ZeroTrustAccessCustomPage("example_zero_trust_access_custom_page",
+        example_zero_trust_access_custom_page = cloudflare.zerotrustaccesscustom.Page("example_zero_trust_access_custom_page",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             custom_html="<html><body><h1>Access Denied</h1></body></html>",
             name="name",
@@ -246,7 +246,7 @@ class AccessCustomPage(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_custom_page = cloudflare.ZeroTrustAccessCustomPage("example_zero_trust_access_custom_page",
+        example_zero_trust_access_custom_page = cloudflare.zerotrustaccesscustom.Page("example_zero_trust_access_custom_page",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             custom_html="<html><body><h1>Access Denied</h1></body></html>",
             name="name",
@@ -302,8 +302,6 @@ class AccessCustomPage(pulumi.CustomResource):
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
             __props__.__dict__["uid"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessCustomPage:AccessCustomPage")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AccessCustomPage, __self__).__init__(
             'cloudflare:index/accessCustomPage:AccessCustomPage',
             resource_name,

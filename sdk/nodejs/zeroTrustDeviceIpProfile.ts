@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDeviceIpProfile = new cloudflare.ZeroTrustDeviceIpProfile("example_zero_trust_device_ip_profile", {
+ * const exampleZeroTrustDeviceIpProfile = new cloudflare.zerotrustdeviceip.Profile("example_zero_trust_device_ip_profile", {
  *     accountId: "account_id",
  *     match: "identity.email == \"test@cloudflare.com\"",
  *     name: "IPv4 Cloudflare Source IPs",
@@ -32,6 +32,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustDeviceIpProfile:ZeroTrustDeviceIpProfile example '<account_id>/<profile_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustDeviceIpProfile:ZeroTrustDeviceIpProfile has been deprecated in favor of cloudflare:zeroTrustDeviceIp/profile:Profile
  */
 export class ZeroTrustDeviceIpProfile extends pulumi.CustomResource {
     /**
@@ -44,6 +46,7 @@ export class ZeroTrustDeviceIpProfile extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustDeviceIpProfileState, opts?: pulumi.CustomResourceOptions): ZeroTrustDeviceIpProfile {
+        pulumi.log.warn("ZeroTrustDeviceIpProfile is deprecated: cloudflare:index/zeroTrustDeviceIpProfile:ZeroTrustDeviceIpProfile has been deprecated in favor of cloudflare:zeroTrustDeviceIp/profile:Profile")
         return new ZeroTrustDeviceIpProfile(name, <any>state, { ...opts, id: id });
     }
 
@@ -102,8 +105,11 @@ export class ZeroTrustDeviceIpProfile extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustDeviceIpProfile:ZeroTrustDeviceIpProfile has been deprecated in favor of cloudflare:zeroTrustDeviceIp/profile:Profile */
     constructor(name: string, args: ZeroTrustDeviceIpProfileArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustDeviceIpProfile:ZeroTrustDeviceIpProfile has been deprecated in favor of cloudflare:zeroTrustDeviceIp/profile:Profile */
     constructor(name: string, argsOrState?: ZeroTrustDeviceIpProfileArgs | ZeroTrustDeviceIpProfileState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustDeviceIpProfile is deprecated: cloudflare:index/zeroTrustDeviceIpProfile:ZeroTrustDeviceIpProfile has been deprecated in favor of cloudflare:zeroTrustDeviceIp/profile:Profile")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -20,13 +20,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicTransitSiteAcls = cloudflare.getMagicTransitSiteAcls({
+ * const exampleMagicTransitSiteAcls = cloudflare.magictransitsite.getAcls({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     siteId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getMagicTransitSiteAcls:getMagicTransitSiteAcls has been deprecated in favor of cloudflare:magicTransitSite/acls:getAcls */
 export function getMagicTransitSiteAcls(args: GetMagicTransitSiteAclsArgs, opts?: pulumi.InvokeOptions): Promise<GetMagicTransitSiteAclsResult> {
+    pulumi.log.warn("getMagicTransitSiteAcls is deprecated: cloudflare:index/getMagicTransitSiteAcls:getMagicTransitSiteAcls has been deprecated in favor of cloudflare:magicTransitSite/acls:getAcls")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getMagicTransitSiteAcls:getMagicTransitSiteAcls", {
         "accountId": args.accountId,
@@ -88,13 +90,15 @@ export interface GetMagicTransitSiteAclsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicTransitSiteAcls = cloudflare.getMagicTransitSiteAcls({
+ * const exampleMagicTransitSiteAcls = cloudflare.magictransitsite.getAcls({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     siteId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getMagicTransitSiteAcls:getMagicTransitSiteAcls has been deprecated in favor of cloudflare:magicTransitSite/acls:getAcls */
 export function getMagicTransitSiteAclsOutput(args: GetMagicTransitSiteAclsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMagicTransitSiteAclsResult> {
+    pulumi.log.warn("getMagicTransitSiteAcls is deprecated: cloudflare:index/getMagicTransitSiteAcls:getMagicTransitSiteAcls has been deprecated in favor of cloudflare:magicTransitSite/acls:getAcls")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getMagicTransitSiteAcls:getMagicTransitSiteAcls", {
         "accountId": args.accountId,

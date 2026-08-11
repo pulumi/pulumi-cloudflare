@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdevicedefaultprofile"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDeviceDefaultProfile(ctx, "example_zero_trust_device_default_profile", &cloudflare.ZeroTrustDeviceDefaultProfileArgs{
+//			_, err := zerotrustdevicedefaultprofile.NewZeroTrustDeviceDefaultProfile(ctx, "example_zero_trust_device_default_profile", &zerotrustdevicedefaultprofile.ZeroTrustDeviceDefaultProfileArgs{
 //				AccountId:           pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				AllowModeSwitch:     pulumi.Bool(true),
 //				AllowUpdates:        pulumi.Bool(true),
@@ -38,15 +38,15 @@ import (
 //				AutoConnect:         pulumi.Float64(0),
 //				CaptivePortal:       pulumi.Float64(180),
 //				DisableAutoFallback: pulumi.Bool(true),
-//				Excludes: cloudflare.ZeroTrustDeviceDefaultProfileExcludeArray{
-//					&cloudflare.ZeroTrustDeviceDefaultProfileExcludeArgs{
+//				Excludes: zerotrustdevicedefaultprofile.ZeroTrustDeviceDefaultProfileExcludeArray{
+//					&zerotrustdevicedefaultprofile.ZeroTrustDeviceDefaultProfileExcludeArgs{
 //						Address:     pulumi.String("192.0.2.0/24"),
 //						Description: pulumi.String("Exclude testing domains from the tunnel"),
 //					},
 //				},
 //				ExcludeOfficeIps: pulumi.Bool(true),
-//				Includes: cloudflare.ZeroTrustDeviceDefaultProfileIncludeArray{
-//					&cloudflare.ZeroTrustDeviceDefaultProfileIncludeArgs{
+//				Includes: zerotrustdevicedefaultprofile.ZeroTrustDeviceDefaultProfileIncludeArray{
+//					&zerotrustdevicedefaultprofile.ZeroTrustDeviceDefaultProfileIncludeArgs{
 //						Address:     pulumi.String("192.0.2.0/24"),
 //						Description: pulumi.String("Include testing domains in the tunnel"),
 //					},
@@ -55,7 +55,7 @@ import (
 //				LanAllowSubnetSize:         pulumi.Float64(24),
 //				RegisterInterfaceIpWithDns: pulumi.Bool(true),
 //				SccmVpnBoundarySupport:     pulumi.Bool(false),
-//				ServiceModeV2: &cloudflare.ZeroTrustDeviceDefaultProfileServiceModeV2Args{
+//				ServiceModeV2: &zerotrustdevicedefaultprofile.ZeroTrustDeviceDefaultProfileServiceModeV2Args{
 //					Mode: pulumi.String("proxy"),
 //					Port: pulumi.Float64(3000),
 //				},
@@ -77,6 +77,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile example '<account_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile
 type ZeroTrustDeviceDefaultProfile struct {
 	pulumi.CustomResourceState
 

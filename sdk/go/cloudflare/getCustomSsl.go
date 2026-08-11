@@ -25,14 +25,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/custom"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetCustomSsl(ctx, &cloudflare.LookupCustomSslArgs{
+//			_, err := custom.LookupSsl(ctx, &custom.LookupSslArgs{
 //				ZoneId:              pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				CustomCertificateId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
@@ -44,6 +44,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getCustomSsl:getCustomSsl has been deprecated in favor of cloudflare:custom/ssl:getSsl
 func LookupCustomSsl(ctx *pulumi.Context, args *LookupCustomSslArgs, opts ...pulumi.InvokeOption) (*LookupCustomSslResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomSslResult

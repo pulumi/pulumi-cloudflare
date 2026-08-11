@@ -21,6 +21,8 @@ __all__ = [
     'get_zero_trust_dlp_custom_prompt_topic_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDlpCustomPromptTopic:getZeroTrustDlpCustomPromptTopic has been deprecated in favor of cloudflare:zeroTrustDlpCustomPrompt/topic:getTopic""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDlpCustomPromptTopicResult:
     """
@@ -141,6 +143,7 @@ def get_zero_trust_dlp_custom_prompt_topic(account_id: Optional[_builtins.str] =
     - `Zero Trust Read`
     - `Zero Trust Write`
     """
+    pulumi.log.warn("""get_zero_trust_dlp_custom_prompt_topic is deprecated: cloudflare:index/getZeroTrustDlpCustomPromptTopic:getZeroTrustDlpCustomPromptTopic has been deprecated in favor of cloudflare:zeroTrustDlpCustomPrompt/topic:getTopic""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['entryId'] = entry_id
@@ -167,6 +170,7 @@ def get_zero_trust_dlp_custom_prompt_topic_output(account_id: pulumi.Input[Optio
     - `Zero Trust Read`
     - `Zero Trust Write`
     """
+    pulumi.log.warn("""get_zero_trust_dlp_custom_prompt_topic is deprecated: cloudflare:index/getZeroTrustDlpCustomPromptTopic:getZeroTrustDlpCustomPromptTopic has been deprecated in favor of cloudflare:zeroTrustDlpCustomPrompt/topic:getTopic""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['entryId'] = entry_id

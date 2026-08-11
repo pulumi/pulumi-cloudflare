@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleR2BucketLifecycle = new cloudflare.R2BucketLifecycle("example_r2_bucket_lifecycle", {
+ * const exampleR2BucketLifecycle = new cloudflare.r2bucket.Lifecycle("example_r2_bucket_lifecycle", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
  *     rules: [{
@@ -48,6 +48,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/r2BucketLifecycle:R2BucketLifecycle has been deprecated in favor of cloudflare:r2Bucket/lifecycle:Lifecycle
  */
 export class R2BucketLifecycle extends pulumi.CustomResource {
     /**
@@ -60,6 +62,7 @@ export class R2BucketLifecycle extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: R2BucketLifecycleState, opts?: pulumi.CustomResourceOptions): R2BucketLifecycle {
+        pulumi.log.warn("R2BucketLifecycle is deprecated: cloudflare:index/r2BucketLifecycle:R2BucketLifecycle has been deprecated in favor of cloudflare:r2Bucket/lifecycle:Lifecycle")
         return new R2BucketLifecycle(name, <any>state, { ...opts, id: id });
     }
 
@@ -98,8 +101,11 @@ export class R2BucketLifecycle extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/r2BucketLifecycle:R2BucketLifecycle has been deprecated in favor of cloudflare:r2Bucket/lifecycle:Lifecycle */
     constructor(name: string, args: R2BucketLifecycleArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/r2BucketLifecycle:R2BucketLifecycle has been deprecated in favor of cloudflare:r2Bucket/lifecycle:Lifecycle */
     constructor(name: string, argsOrState?: R2BucketLifecycleArgs | R2BucketLifecycleState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("R2BucketLifecycle is deprecated: cloudflare:index/r2BucketLifecycle:R2BucketLifecycle has been deprecated in favor of cloudflare:r2Bucket/lifecycle:Lifecycle")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -235,8 +235,13 @@ class _ZeroTrustRiskScoringIntegrationState:
         pulumi.set(self, "well_known_url", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integration:Integration""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration")
 class ZeroTrustRiskScoringIntegration(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integration:Integration""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -259,7 +264,7 @@ class ZeroTrustRiskScoringIntegration(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_risk_scoring_integration = cloudflare.ZeroTrustRiskScoringIntegration("example_zero_trust_risk_scoring_integration",
+        example_zero_trust_risk_scoring_integration = cloudflare.zerotrustriskscoring.Integration("example_zero_trust_risk_scoring_integration",
             account_id="account_id",
             integration_type="Okta",
             tenant_url="https://example.com",
@@ -299,7 +304,7 @@ class ZeroTrustRiskScoringIntegration(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_risk_scoring_integration = cloudflare.ZeroTrustRiskScoringIntegration("example_zero_trust_risk_scoring_integration",
+        example_zero_trust_risk_scoring_integration = cloudflare.zerotrustriskscoring.Integration("example_zero_trust_risk_scoring_integration",
             account_id="account_id",
             integration_type="Okta",
             tenant_url="https://example.com",
@@ -334,6 +339,7 @@ class ZeroTrustRiskScoringIntegration(pulumi.CustomResource):
                  reference_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tenant_url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustRiskScoringIntegration is deprecated: cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integration:Integration""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

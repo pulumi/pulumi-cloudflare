@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleLoadBalancerMonitors = cloudflare.getLoadBalancerMonitors({
+ * const exampleLoadBalancerMonitors = cloudflare.loadbalancer.getMonitors({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getLoadBalancerMonitors:getLoadBalancerMonitors has been deprecated in favor of cloudflare:loadBalancer/monitors:getMonitors */
 export function getLoadBalancerMonitors(args?: GetLoadBalancerMonitorsArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerMonitorsResult> {
+    pulumi.log.warn("getLoadBalancerMonitors is deprecated: cloudflare:index/getLoadBalancerMonitors:getLoadBalancerMonitors has been deprecated in favor of cloudflare:loadBalancer/monitors:getMonitors")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getLoadBalancerMonitors:getLoadBalancerMonitors", {
@@ -75,12 +77,14 @@ export interface GetLoadBalancerMonitorsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleLoadBalancerMonitors = cloudflare.getLoadBalancerMonitors({
+ * const exampleLoadBalancerMonitors = cloudflare.loadbalancer.getMonitors({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getLoadBalancerMonitors:getLoadBalancerMonitors has been deprecated in favor of cloudflare:loadBalancer/monitors:getMonitors */
 export function getLoadBalancerMonitorsOutput(args?: GetLoadBalancerMonitorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadBalancerMonitorsResult> {
+    pulumi.log.warn("getLoadBalancerMonitors is deprecated: cloudflare:index/getLoadBalancerMonitors:getLoadBalancerMonitors has been deprecated in favor of cloudflare:loadBalancer/monitors:getMonitors")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getLoadBalancerMonitors:getLoadBalancerMonitors", {

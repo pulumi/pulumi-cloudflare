@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/loadbalancer"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewLoadBalancer(ctx, "example_load_balancer", &cloudflare.LoadBalancerArgs{
+//			_, err := loadbalancer.NewLoadBalancer(ctx, "example_load_balancer", &loadbalancer.LoadBalancerArgs{
 //				DefaultPools: pulumi.StringArray{
 //					pulumi.String("17b5962d775c646f3f9725cbc7a53df4"),
 //					pulumi.String("9290f38c5d07c2e2f4df57b1f61d4196"),
@@ -40,7 +40,7 @@ import (
 //				FallbackPool: pulumi.String("fallback_pool"),
 //				Name:         pulumi.String("www.example.com"),
 //				ZoneId:       pulumi.String("zone_id"),
-//				AdaptiveRouting: &cloudflare.LoadBalancerAdaptiveRoutingArgs{
+//				AdaptiveRouting: &loadbalancer.LoadBalancerAdaptiveRoutingArgs{
 //					FailoverAcrossPools: pulumi.Bool(true),
 //				},
 //				CountryPools: pulumi.StringArrayMap{
@@ -54,7 +54,7 @@ import (
 //				},
 //				Description: pulumi.String("Load Balancer for www.example.com"),
 //				Enabled:     pulumi.Bool(true),
-//				LocationStrategy: &cloudflare.LoadBalancerLocationStrategyArgs{
+//				LocationStrategy: &loadbalancer.LoadBalancerLocationStrategyArgs{
 //					Mode:      pulumi.String("resolver_ip"),
 //					PreferEcs: pulumi.String("always"),
 //				},
@@ -75,7 +75,7 @@ import (
 //					},
 //				},
 //				Proxied: pulumi.Bool(true),
-//				RandomSteering: &cloudflare.LoadBalancerRandomSteeringArgs{
+//				RandomSteering: &loadbalancer.LoadBalancerRandomSteeringArgs{
 //					DefaultWeight: pulumi.Float64(0.2),
 //					PoolWeights: pulumi.Float64Map{
 //						"9290f38c5d07c2e2f4df57b1f61d4196": pulumi.Float64(0.5),
@@ -91,19 +91,19 @@ import (
 //						pulumi.String("9290f38c5d07c2e2f4df57b1f61d4196"),
 //					},
 //				},
-//				Rules: cloudflare.LoadBalancerRuleArray{
-//					&cloudflare.LoadBalancerRuleArgs{
+//				Rules: loadbalancer.LoadBalancerRuleArray{
+//					&loadbalancer.LoadBalancerRuleArgs{
 //						Condition: pulumi.String("http.request.uri.path contains \"/testing\""),
 //						Disabled:  pulumi.Bool(true),
-//						FixedResponse: &cloudflare.LoadBalancerRuleFixedResponseArgs{
+//						FixedResponse: &loadbalancer.LoadBalancerRuleFixedResponseArgs{
 //							ContentType: pulumi.String("application/json"),
 //							Location:    pulumi.String("www.example.com"),
 //							MessageBody: pulumi.String("Testing Hello"),
 //							StatusCode:  pulumi.Int(0),
 //						},
 //						Name: pulumi.String("route the path /testing to testing datacenter."),
-//						Overrides: &cloudflare.LoadBalancerRuleOverridesArgs{
-//							AdaptiveRouting: &cloudflare.LoadBalancerRuleOverridesAdaptiveRoutingArgs{
+//						Overrides: &loadbalancer.LoadBalancerRuleOverridesArgs{
+//							AdaptiveRouting: &loadbalancer.LoadBalancerRuleOverridesAdaptiveRoutingArgs{
 //								FailoverAcrossPools: pulumi.Bool(true),
 //							},
 //							CountryPools: pulumi.StringArrayMap{
@@ -121,7 +121,7 @@ import (
 //								pulumi.String("00920f38ce07c2e2f4df50b1f61d4194"),
 //							},
 //							FallbackPool: pulumi.String("fallback_pool"),
-//							LocationStrategy: &cloudflare.LoadBalancerRuleOverridesLocationStrategyArgs{
+//							LocationStrategy: &loadbalancer.LoadBalancerRuleOverridesLocationStrategyArgs{
 //								Mode:      pulumi.String("resolver_ip"),
 //								PreferEcs: pulumi.String("always"),
 //							},
@@ -146,7 +146,7 @@ import (
 //									pulumi.String("00920f38ce07c2e2f4df50b1f61d4194"),
 //								},
 //							},
-//							RandomSteering: &cloudflare.LoadBalancerRuleOverridesRandomSteeringArgs{
+//							RandomSteering: &loadbalancer.LoadBalancerRuleOverridesRandomSteeringArgs{
 //								DefaultWeight: pulumi.Float64(0.2),
 //								PoolWeights: pulumi.Float64Map{
 //									"9290f38c5d07c2e2f4df57b1f61d4196": pulumi.Float64(0.5),
@@ -163,7 +163,7 @@ import (
 //								},
 //							},
 //							SessionAffinity: pulumi.String("cookie"),
-//							SessionAffinityAttributes: &cloudflare.LoadBalancerRuleOverridesSessionAffinityAttributesArgs{
+//							SessionAffinityAttributes: &loadbalancer.LoadBalancerRuleOverridesSessionAffinityAttributesArgs{
 //								DrainDuration: pulumi.Float64(100),
 //								Headers: pulumi.StringArray{
 //									pulumi.String("x"),
@@ -182,7 +182,7 @@ import (
 //					},
 //				},
 //				SessionAffinity: pulumi.String("cookie"),
-//				SessionAffinityAttributes: &cloudflare.LoadBalancerSessionAffinityAttributesArgs{
+//				SessionAffinityAttributes: &loadbalancer.LoadBalancerSessionAffinityAttributesArgs{
 //					DrainDuration: pulumi.Float64(100),
 //					Headers: pulumi.StringArray{
 //						pulumi.String("x"),
@@ -210,6 +210,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '<{accounts|zones}/{account_id|zone_id}>/<load_balancer_id>'
 // ```
+//
+// Deprecated: cloudflare:index/loadBalancer:LoadBalancer has been deprecated in favor of cloudflare:loadBalancer/loadBalancer:LoadBalancer
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 

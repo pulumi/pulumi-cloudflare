@@ -23,19 +23,19 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/organization"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewOrganization(ctx, "example_organization", &cloudflare.OrganizationArgs{
+//			_, err := organization.NewOrganization(ctx, "example_organization", &organization.OrganizationArgs{
 //				Name: pulumi.String("name"),
-//				Parent: &cloudflare.OrganizationParentArgs{
+//				Parent: &organization.OrganizationParentArgs{
 //					Id: pulumi.String("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8"),
 //				},
-//				Profile: &cloudflare.OrganizationProfileTypeArgs{
+//				Profile: &organization.OrganizationProfileArgs{
 //					BusinessAddress:  pulumi.String("business_address"),
 //					BusinessEmail:    pulumi.String("business_email"),
 //					BusinessName:     pulumi.String("business_name"),
@@ -57,6 +57,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/organization:Organization example '<organization_id>'
 // ```
+//
+// Deprecated: cloudflare:index/organization:Organization has been deprecated in favor of cloudflare:organization/organization:Organization
 type Organization struct {
 	pulumi.CustomResourceState
 

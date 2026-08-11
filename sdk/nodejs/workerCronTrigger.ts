@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersCronTrigger = new cloudflare.WorkersCronTrigger("example_workers_cron_trigger", {
+ * const exampleWorkersCronTrigger = new cloudflare.workers.CronTrigger("example_workers_cron_trigger", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     scriptName: "this-is_my_script-01",
  *     body: [{
@@ -109,8 +109,6 @@ export class WorkerCronTrigger extends pulumi.CustomResource {
             resourceInputs["scriptName"] = args?.scriptName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/workerCronTrigger:WorkerCronTrigger" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkerCronTrigger.__pulumiType, name, resourceInputs, opts);
     }
 }

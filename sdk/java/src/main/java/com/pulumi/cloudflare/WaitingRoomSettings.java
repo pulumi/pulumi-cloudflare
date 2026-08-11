@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WaitingRoomSettings;
- * import com.pulumi.cloudflare.WaitingRoomSettingsArgs;
+ * import com.pulumi.cloudflare.waitingRoom.Settings;
+ * import com.pulumi.cloudflare.waitingRoom.SettingsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleWaitingRoomSettings = new WaitingRoomSettings("exampleWaitingRoomSettings", WaitingRoomSettingsArgs.builder()
+ *         var exampleWaitingRoomSettings = new Settings("exampleWaitingRoomSettings", SettingsArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .searchEngineCrawlerBypass(true)
  *             .build());
@@ -60,7 +60,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/waitingRoomSettings:WaitingRoomSettings example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/waitingRoomSettings:WaitingRoomSettings has been deprecated in favor of cloudflare:waitingRoom/settings:Settings
+ * 
  */
+@Deprecated /* cloudflare:index/waitingRoomSettings:WaitingRoomSettings has been deprecated in favor of cloudflare:waitingRoom/settings:Settings */
 @ResourceType(type="cloudflare:index/waitingRoomSettings:WaitingRoomSettings")
 public class WaitingRoomSettings extends com.pulumi.resources.CustomResource {
     /**

@@ -152,8 +152,13 @@ class _ApiShieldSchemaValidationSettingsState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldSchema/validationSettings:ValidationSettings""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings")
 class ApiShieldSchemaValidationSettings(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldSchema/validationSettings:ValidationSettings""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -170,7 +175,7 @@ class ApiShieldSchemaValidationSettings(pulumi.CustomResource):
         - `Domain API Gateway`
         - `Domain API Gateway Read`
 
-        > `ApiShieldSchemaValidationSettings` is in a deprecation phase and will be removed in the future.
+        > `apiShieldSchema.ValidationSettings` is in a deprecation phase and will be removed in the future.
           Instead, please utilize the SchemaValidationSettings resource instead.
 
         ## Example Usage
@@ -179,7 +184,7 @@ class ApiShieldSchemaValidationSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_api_shield_schema_validation_settings = cloudflare.ApiShieldSchemaValidationSettings("example_api_shield_schema_validation_settings",
+        example_api_shield_schema_validation_settings = cloudflare.apishieldschema.ValidationSettings("example_api_shield_schema_validation_settings",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             validation_default_mitigation_action="block",
             validation_override_mitigation_action="none")
@@ -218,7 +223,7 @@ class ApiShieldSchemaValidationSettings(pulumi.CustomResource):
         - `Domain API Gateway`
         - `Domain API Gateway Read`
 
-        > `ApiShieldSchemaValidationSettings` is in a deprecation phase and will be removed in the future.
+        > `apiShieldSchema.ValidationSettings` is in a deprecation phase and will be removed in the future.
           Instead, please utilize the SchemaValidationSettings resource instead.
 
         ## Example Usage
@@ -227,7 +232,7 @@ class ApiShieldSchemaValidationSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_api_shield_schema_validation_settings = cloudflare.ApiShieldSchemaValidationSettings("example_api_shield_schema_validation_settings",
+        example_api_shield_schema_validation_settings = cloudflare.apishieldschema.ValidationSettings("example_api_shield_schema_validation_settings",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             validation_default_mitigation_action="block",
             validation_override_mitigation_action="none")
@@ -259,6 +264,7 @@ class ApiShieldSchemaValidationSettings(pulumi.CustomResource):
                  validation_override_mitigation_action: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ApiShieldSchemaValidationSettings is deprecated: cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldSchema/validationSettings:ValidationSettings""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -35,9 +35,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDlpEntry;
- * import com.pulumi.cloudflare.ZeroTrustDlpEntryArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDlpEntryPatternArgs;
+ * import com.pulumi.cloudflare.zeroTrustDlp.Entry;
+ * import com.pulumi.cloudflare.zeroTrustDlp.EntryArgs;
+ * import com.pulumi.cloudflare.zeroTrustDlp.inputs.EntryPatternArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -51,11 +51,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustDlpEntry = new ZeroTrustDlpEntry("exampleZeroTrustDlpEntry", ZeroTrustDlpEntryArgs.builder()
+ *         var exampleZeroTrustDlpEntry = new Entry("exampleZeroTrustDlpEntry", EntryArgs.builder()
  *             .accountId("account_id")
  *             .enabled(true)
  *             .name("name")
- *             .pattern(ZeroTrustDlpEntryPatternArgs.builder()
+ *             .pattern(EntryPatternArgs.builder()
  *                 .regex("regex")
  *                 .validation("luhn")
  *                 .build())
@@ -74,7 +74,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustDlpEntry:ZeroTrustDlpEntry example &#39;&lt;account_id&gt;/&lt;entry_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustDlpEntry:ZeroTrustDlpEntry has been deprecated in favor of cloudflare:zeroTrustDlp/entry:Entry
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustDlpEntry:ZeroTrustDlpEntry has been deprecated in favor of cloudflare:zeroTrustDlp/entry:Entry */
 @ResourceType(type="cloudflare:index/zeroTrustDlpEntry:ZeroTrustDlpEntry")
 public class ZeroTrustDlpEntry extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

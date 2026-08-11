@@ -18,14 +18,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustresourcelibrary"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustResourceLibraryCategory(ctx, &cloudflare.GetZeroTrustResourceLibraryCategoryArgs{
+//			_, err := zerotrustresourcelibrary.GetCategory(ctx, &zerotrustresourcelibrary.GetCategoryArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				Id:        "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
 //			}, nil)
@@ -37,6 +37,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustResourceLibraryCategory:getZeroTrustResourceLibraryCategory has been deprecated in favor of cloudflare:zeroTrustResourceLibrary/category:getCategory
 func GetZeroTrustResourceLibraryCategory(ctx *pulumi.Context, args *GetZeroTrustResourceLibraryCategoryArgs, opts ...pulumi.InvokeOption) (*GetZeroTrustResourceLibraryCategoryResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetZeroTrustResourceLibraryCategoryResult

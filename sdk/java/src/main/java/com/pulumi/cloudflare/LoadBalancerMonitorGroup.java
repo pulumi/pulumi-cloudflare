@@ -25,9 +25,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.LoadBalancerMonitorGroup;
- * import com.pulumi.cloudflare.LoadBalancerMonitorGroupArgs;
- * import com.pulumi.cloudflare.inputs.LoadBalancerMonitorGroupMemberArgs;
+ * import com.pulumi.cloudflare.loadBalancerMonitor.Group;
+ * import com.pulumi.cloudflare.loadBalancerMonitor.GroupArgs;
+ * import com.pulumi.cloudflare.loadBalancerMonitor.inputs.GroupMemberArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -41,10 +41,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleLoadBalancerMonitorGroup = new LoadBalancerMonitorGroup("exampleLoadBalancerMonitorGroup", LoadBalancerMonitorGroupArgs.builder()
+ *         var exampleLoadBalancerMonitorGroup = new Group("exampleLoadBalancerMonitorGroup", GroupArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .description("Primary datacenter monitors")
- *             .members(LoadBalancerMonitorGroupMemberArgs.builder()
+ *             .members(GroupMemberArgs.builder()
  *                 .enabled(true)
  *                 .monitorId("monitor_id")
  *                 .monitoringOnly(false)
@@ -63,7 +63,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/loadBalancerMonitorGroup:LoadBalancerMonitorGroup example &#39;&lt;account_id&gt;/&lt;monitor_group_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/loadBalancerMonitorGroup:LoadBalancerMonitorGroup has been deprecated in favor of cloudflare:loadBalancerMonitor/group:Group
+ * 
  */
+@Deprecated /* cloudflare:index/loadBalancerMonitorGroup:LoadBalancerMonitorGroup has been deprecated in favor of cloudflare:loadBalancerMonitor/group:Group */
 @ResourceType(type="cloudflare:index/loadBalancerMonitorGroup:LoadBalancerMonitorGroup")
 public class LoadBalancerMonitorGroup extends com.pulumi.resources.CustomResource {
     /**

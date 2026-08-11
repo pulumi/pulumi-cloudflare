@@ -22,6 +22,8 @@ __all__ = [
     'get_oauth_clients_output',
 ]
 
+warnings.warn("""cloudflare:index/getOauthClients:getOauthClients has been deprecated in favor of cloudflare:oauth/clients:getClients""", DeprecationWarning)
+
 @pulumi.output_type
 class GetOauthClientsResult:
     """
@@ -88,13 +90,14 @@ def get_oauth_clients(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_oauth_clients = cloudflare.get_oauth_clients(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_oauth_clients = cloudflare.oauth.get_clients(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_oauth_clients is deprecated: cloudflare:index/getOauthClients:getOauthClients has been deprecated in favor of cloudflare:oauth/clients:getClients""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -119,13 +122,14 @@ def get_oauth_clients_output(account_id: pulumi.Input[Optional[_builtins.str]] =
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_oauth_clients = cloudflare.get_oauth_clients(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_oauth_clients = cloudflare.oauth.get_clients(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_oauth_clients is deprecated: cloudflare:index/getOauthClients:getOauthClients has been deprecated in favor of cloudflare:oauth/clients:getClients""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

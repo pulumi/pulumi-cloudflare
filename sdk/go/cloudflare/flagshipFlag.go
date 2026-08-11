@@ -24,23 +24,23 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/flagship"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewFlagshipFlag(ctx, "example_flagship_flag", &cloudflare.FlagshipFlagArgs{
+//			_, err := flagship.NewFlag(ctx, "example_flagship_flag", &flagship.FlagArgs{
 //				AccountId:        pulumi.String("account_id"),
 //				AppId:            pulumi.String("app_id"),
 //				DefaultVariation: pulumi.String("x"),
 //				Enabled:          pulumi.Bool(true),
 //				Key:              pulumi.String("x"),
-//				Rules: cloudflare.FlagshipFlagRuleArray{
-//					&cloudflare.FlagshipFlagRuleArgs{
-//						Conditions: cloudflare.FlagshipFlagRuleConditionArray{
-//							&cloudflare.FlagshipFlagRuleConditionArgs{
+//				Rules: flagship.FlagRuleArray{
+//					&flagship.FlagRuleArgs{
+//						Conditions: flagship.FlagRuleConditionArray{
+//							&flagship.FlagRuleConditionArgs{
 //								Attribute: pulumi.String("x"),
 //								Operator:  pulumi.String("equals"),
 //								Value:     pulumi.String{},
@@ -48,7 +48,7 @@ import (
 //						},
 //						Priority:       pulumi.Int(1),
 //						ServeVariation: pulumi.String("x"),
-//						Rollout: &cloudflare.FlagshipFlagRuleRolloutArgs{
+//						Rollout: &flagship.FlagRuleRolloutArgs{
 //							Percentage: pulumi.Float64(0),
 //							Attribute:  pulumi.String("x"),
 //						},
@@ -72,6 +72,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/flagshipFlag:FlagshipFlag has been deprecated in favor of cloudflare:flagship/flag:Flag
 type FlagshipFlag struct {
 	pulumi.CustomResourceState
 

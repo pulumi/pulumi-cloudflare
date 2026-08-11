@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const examplePagesProject = new cloudflare.PagesProject("example_pages_project", {
+ * const examplePagesProject = new cloudflare.pages.Project("example_pages_project", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "my-pages-app",
  *     productionBranch: "main",
@@ -229,6 +229,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/pagesProject:PagesProject example '<account_id>/<project_name>'
  * ```
+ *
+ * @deprecated cloudflare:index/pagesProject:PagesProject has been deprecated in favor of cloudflare:pages/project:Project
  */
 export class PagesProject extends pulumi.CustomResource {
     /**
@@ -241,6 +243,7 @@ export class PagesProject extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: PagesProjectState, opts?: pulumi.CustomResourceOptions): PagesProject {
+        pulumi.log.warn("PagesProject is deprecated: cloudflare:index/pagesProject:PagesProject has been deprecated in favor of cloudflare:pages/project:Project")
         return new PagesProject(name, <any>state, { ...opts, id: id });
     }
 
@@ -330,8 +333,11 @@ export class PagesProject extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/pagesProject:PagesProject has been deprecated in favor of cloudflare:pages/project:Project */
     constructor(name: string, args: PagesProjectArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/pagesProject:PagesProject has been deprecated in favor of cloudflare:pages/project:Project */
     constructor(name: string, argsOrState?: PagesProjectArgs | PagesProjectState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("PagesProject is deprecated: cloudflare:index/pagesProject:PagesProject has been deprecated in favor of cloudflare:pages/project:Project")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

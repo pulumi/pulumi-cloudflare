@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpCustomProfile = new cloudflare.ZeroTrustDlpCustomProfile("example_zero_trust_dlp_custom_profile", {
+ * const exampleZeroTrustDlpCustomProfile = new cloudflare.zerotrustdlpcustom.Profile("example_zero_trust_dlp_custom_profile", {
  *     name: "name",
  *     accountId: "account_id",
  *     description: "Custom profile with entries",
@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * // Custom entry that is a part of this new profile
- * const exampleCustomEntry = new cloudflare.ZeroTrustDlpCustomEntry("example_custom_entry", {
+ * const exampleCustomEntry = new cloudflare.zerotrustdlpcustom.Entry("example_custom_entry", {
  *     name: "custom",
  *     accountId: "account_id",
  *     profileId: exampleZeroTrustDlpCustomProfile.id,
@@ -45,6 +45,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustDlpCustomProfile:ZeroTrustDlpCustomProfile example '<account_id>/<profile_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustDlpCustomProfile:ZeroTrustDlpCustomProfile has been deprecated in favor of cloudflare:zeroTrustDlpCustom/profile:Profile
  */
 export class ZeroTrustDlpCustomProfile extends pulumi.CustomResource {
     /**
@@ -57,6 +59,7 @@ export class ZeroTrustDlpCustomProfile extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustDlpCustomProfileState, opts?: pulumi.CustomResourceOptions): ZeroTrustDlpCustomProfile {
+        pulumi.log.warn("ZeroTrustDlpCustomProfile is deprecated: cloudflare:index/zeroTrustDlpCustomProfile:ZeroTrustDlpCustomProfile has been deprecated in favor of cloudflare:zeroTrustDlpCustom/profile:Profile")
         return new ZeroTrustDlpCustomProfile(name, <any>state, { ...opts, id: id });
     }
 
@@ -140,8 +143,11 @@ export class ZeroTrustDlpCustomProfile extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustDlpCustomProfile:ZeroTrustDlpCustomProfile has been deprecated in favor of cloudflare:zeroTrustDlpCustom/profile:Profile */
     constructor(name: string, args: ZeroTrustDlpCustomProfileArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustDlpCustomProfile:ZeroTrustDlpCustomProfile has been deprecated in favor of cloudflare:zeroTrustDlpCustom/profile:Profile */
     constructor(name: string, argsOrState?: ZeroTrustDlpCustomProfileArgs | ZeroTrustDlpCustomProfileState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustDlpCustomProfile is deprecated: cloudflare:index/zeroTrustDlpCustomProfile:ZeroTrustDlpCustomProfile has been deprecated in favor of cloudflare:zeroTrustDlpCustom/profile:Profile")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

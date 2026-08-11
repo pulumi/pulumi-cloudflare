@@ -18,14 +18,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsRecord = cloudflare.getDnsRecord({
+ * const exampleDnsRecord = cloudflare.dns.getRecord({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     dnsRecordId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     includeShadowMetadata: true,
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getDnsRecord:getDnsRecord has been deprecated in favor of cloudflare:dns/record:getRecord */
 export function getDnsRecord(args?: GetDnsRecordArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsRecordResult> {
+    pulumi.log.warn("getDnsRecord is deprecated: cloudflare:index/getDnsRecord:getDnsRecord has been deprecated in favor of cloudflare:dns/record:getRecord")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getDnsRecord:getDnsRecord", {
@@ -158,14 +160,16 @@ export interface GetDnsRecordResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsRecord = cloudflare.getDnsRecord({
+ * const exampleDnsRecord = cloudflare.dns.getRecord({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     dnsRecordId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     includeShadowMetadata: true,
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getDnsRecord:getDnsRecord has been deprecated in favor of cloudflare:dns/record:getRecord */
 export function getDnsRecordOutput(args?: GetDnsRecordOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsRecordResult> {
+    pulumi.log.warn("getDnsRecord is deprecated: cloudflare:index/getDnsRecord:getDnsRecord has been deprecated in favor of cloudflare:dns/record:getRecord")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getDnsRecord:getDnsRecord", {

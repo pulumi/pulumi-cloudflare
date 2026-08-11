@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/image"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetImageVariant(ctx, &cloudflare.LookupImageVariantArgs{
+//			_, err := image.LookupVariant(ctx, &image.LookupVariantArgs{
 //				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				VariantId: "hero",
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getImageVariant:getImageVariant has been deprecated in favor of cloudflare:image/variant:getVariant
 func LookupImageVariant(ctx *pulumi.Context, args *LookupImageVariantArgs, opts ...pulumi.InvokeOption) (*LookupImageVariantResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupImageVariantResult

@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustaccess"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustAccessKeyConfiguration(ctx, "example_zero_trust_access_key_configuration", &cloudflare.ZeroTrustAccessKeyConfigurationArgs{
+//			_, err := zerotrustaccess.NewKeyConfiguration(ctx, "example_zero_trust_access_key_configuration", &zerotrustaccess.KeyConfigurationArgs{
 //				AccountId:               pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				KeyRotationIntervalDays: pulumi.Float64(30),
 //			})
@@ -49,6 +49,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration example '<account_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration has been deprecated in favor of cloudflare:zeroTrustAccess/keyConfiguration:KeyConfiguration
 type ZeroTrustAccessKeyConfiguration struct {
 	pulumi.CustomResourceState
 

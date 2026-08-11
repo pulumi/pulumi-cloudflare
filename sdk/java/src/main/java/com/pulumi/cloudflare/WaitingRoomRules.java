@@ -30,9 +30,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WaitingRoomRules;
- * import com.pulumi.cloudflare.WaitingRoomRulesArgs;
- * import com.pulumi.cloudflare.inputs.WaitingRoomRulesRuleArgs;
+ * import com.pulumi.cloudflare.waitingRoom.Rules;
+ * import com.pulumi.cloudflare.waitingRoom.RulesArgs;
+ * import com.pulumi.cloudflare.waitingRoom.inputs.RulesRuleArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,10 +46,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleWaitingRoomRules = new WaitingRoomRules("exampleWaitingRoomRules", WaitingRoomRulesArgs.builder()
+ *         var exampleWaitingRoomRules = new Rules("exampleWaitingRoomRules", RulesArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .waitingRoomId("699d98642c564d2e855e9661899b7252")
- *             .rules(WaitingRoomRulesRuleArgs.builder()
+ *             .rules(RulesRuleArgs.builder()
  *                 .action("bypass_waiting_room")
  *                 .expression("ip.src in {10.20.30.40}")
  *                 .description("allow all traffic from 10.20.30.40")
@@ -68,7 +68,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/waitingRoomRules:WaitingRoomRules example &#39;&lt;zone_id&gt;/&lt;waiting_room_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/waitingRoomRules:WaitingRoomRules has been deprecated in favor of cloudflare:waitingRoom/rules:Rules
+ * 
  */
+@Deprecated /* cloudflare:index/waitingRoomRules:WaitingRoomRules has been deprecated in favor of cloudflare:waitingRoom/rules:Rules */
 @ResourceType(type="cloudflare:index/waitingRoomRules:WaitingRoomRules")
 public class WaitingRoomRules extends com.pulumi.resources.CustomResource {
     @Export(name="rules", refs={List.class,WaitingRoomRulesRule.class}, tree="[0,1]")

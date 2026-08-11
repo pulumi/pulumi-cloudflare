@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleStreamAudioTrack = new cloudflare.StreamAudioTrack("example_stream_audio_track", {
+ * const exampleStreamAudioTrack = new cloudflare.stream.AudioTrack("example_stream_audio_track", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     identifier: "ea95132c15732412d22c1476fa83f27a",
  *     audioIdentifier: "ea95132c15732412d22c1476fa83f27a",
@@ -30,6 +30,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/streamAudioTrack:StreamAudioTrack has been deprecated in favor of cloudflare:stream/audioTrack:AudioTrack
  */
 export class StreamAudioTrack extends pulumi.CustomResource {
     /**
@@ -42,6 +44,7 @@ export class StreamAudioTrack extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: StreamAudioTrackState, opts?: pulumi.CustomResourceOptions): StreamAudioTrack {
+        pulumi.log.warn("StreamAudioTrack is deprecated: cloudflare:index/streamAudioTrack:StreamAudioTrack has been deprecated in favor of cloudflare:stream/audioTrack:AudioTrack")
         return new StreamAudioTrack(name, <any>state, { ...opts, id: id });
     }
 
@@ -100,8 +103,11 @@ export class StreamAudioTrack extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/streamAudioTrack:StreamAudioTrack has been deprecated in favor of cloudflare:stream/audioTrack:AudioTrack */
     constructor(name: string, args: StreamAudioTrackArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/streamAudioTrack:StreamAudioTrack has been deprecated in favor of cloudflare:stream/audioTrack:AudioTrack */
     constructor(name: string, argsOrState?: StreamAudioTrackArgs | StreamAudioTrackState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("StreamAudioTrack is deprecated: cloudflare:index/streamAudioTrack:StreamAudioTrack has been deprecated in favor of cloudflare:stream/audioTrack:AudioTrack")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

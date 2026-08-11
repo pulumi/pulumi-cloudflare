@@ -17,12 +17,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleOauthClients = cloudflare.getOauthClients({
+ * const exampleOauthClients = cloudflare.oauth.getClients({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getOauthClients:getOauthClients has been deprecated in favor of cloudflare:oauth/clients:getClients */
 export function getOauthClients(args: GetOauthClientsArgs, opts?: pulumi.InvokeOptions): Promise<GetOauthClientsResult> {
+    pulumi.log.warn("getOauthClients is deprecated: cloudflare:index/getOauthClients:getOauthClients has been deprecated in favor of cloudflare:oauth/clients:getClients")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getOauthClients:getOauthClients", {
         "accountId": args.accountId,
@@ -72,12 +74,14 @@ export interface GetOauthClientsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleOauthClients = cloudflare.getOauthClients({
+ * const exampleOauthClients = cloudflare.oauth.getClients({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getOauthClients:getOauthClients has been deprecated in favor of cloudflare:oauth/clients:getClients */
 export function getOauthClientsOutput(args: GetOauthClientsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOauthClientsResult> {
+    pulumi.log.warn("getOauthClients is deprecated: cloudflare:index/getOauthClients:getOauthClients has been deprecated in favor of cloudflare:oauth/clients:getClients")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getOauthClients:getOauthClients", {
         "accountId": args.accountId,

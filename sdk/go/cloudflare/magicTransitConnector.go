@@ -19,16 +19,16 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/magictransit"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewMagicTransitConnector(ctx, "example_magic_transit_connector", &cloudflare.MagicTransitConnectorArgs{
+//			_, err := magictransit.NewConnector(ctx, "example_magic_transit_connector", &magictransit.ConnectorArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Device: &cloudflare.MagicTransitConnectorDeviceArgs{
+//				Device: &magictransit.ConnectorDeviceArgs{
 //					Id:               pulumi.String("id"),
 //					ProvisionLicense: pulumi.Bool(true),
 //					SerialNumber:     pulumi.String("serial_number"),
@@ -59,6 +59,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/magicTransitConnector:MagicTransitConnector example '<account_id>/<connector_id>'
 // ```
+//
+// Deprecated: cloudflare:index/magicTransitConnector:MagicTransitConnector has been deprecated in favor of cloudflare:magicTransit/connector:Connector
 type MagicTransitConnector struct {
 	pulumi.CustomResourceState
 

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZoneSetting:getZoneSetting has been deprecated in favor of cloudflare:zone/setting:getSetting")]
     public static class GetZoneSetting
     {
         /// <summary>
@@ -101,7 +102,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZoneSetting = Cloudflare.GetZoneSetting.Invoke(new()
+        ///     var exampleZoneSetting = Cloudflare.Modules.Zone.GetSetting.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         SettingId = "always_online",
@@ -203,7 +204,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZoneSetting = Cloudflare.GetZoneSetting.Invoke(new()
+        ///     var exampleZoneSetting = Cloudflare.Modules.Zone.GetSetting.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         SettingId = "always_online",
@@ -305,7 +306,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZoneSetting = Cloudflare.GetZoneSetting.Invoke(new()
+        ///     var exampleZoneSetting = Cloudflare.Modules.Zone.GetSetting.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         SettingId = "always_online",

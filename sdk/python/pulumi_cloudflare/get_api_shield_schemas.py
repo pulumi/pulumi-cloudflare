@@ -22,6 +22,8 @@ __all__ = [
     'get_api_shield_schemas_output',
 ]
 
+warnings.warn("""cloudflare:index/getApiShieldSchemas:getApiShieldSchemas has been deprecated in favor of cloudflare:apiShield/schemas:getSchemas""", DeprecationWarning)
+
 @pulumi.output_type
 class GetApiShieldSchemasResult:
     """
@@ -117,7 +119,7 @@ def get_api_shield_schemas(max_items: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_api_shield_schemas = cloudflare.get_api_shield_schemas(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_api_shield_schemas = cloudflare.apishield.get_schemas(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         validation_enabled=True)
     ```
 
@@ -127,6 +129,7 @@ def get_api_shield_schemas(max_items: Optional[_builtins.int] = None,
     :param _builtins.bool validation_enabled: Flag whether schema is enabled for validation.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_api_shield_schemas is deprecated: cloudflare:index/getApiShieldSchemas:getApiShieldSchemas has been deprecated in favor of cloudflare:apiShield/schemas:getSchemas""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['omitSource'] = omit_source
@@ -160,7 +163,7 @@ def get_api_shield_schemas_output(max_items: pulumi.Input[Optional[Optional[_bui
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_api_shield_schemas = cloudflare.get_api_shield_schemas(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_api_shield_schemas = cloudflare.apishield.get_schemas(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         validation_enabled=True)
     ```
 
@@ -170,6 +173,7 @@ def get_api_shield_schemas_output(max_items: pulumi.Input[Optional[Optional[_bui
     :param _builtins.bool validation_enabled: Flag whether schema is enabled for validation.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_api_shield_schemas is deprecated: cloudflare:index/getApiShieldSchemas:getApiShieldSchemas has been deprecated in favor of cloudflare:apiShield/schemas:getSchemas""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['omitSource'] = omit_source

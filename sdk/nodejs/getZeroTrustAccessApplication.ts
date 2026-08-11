@@ -13,14 +13,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessApplication = cloudflare.getZeroTrustAccessApplication({
+ * const exampleZeroTrustAccessApplication = cloudflare.zerotrustaccess.getApplication({
  *     appId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication has been deprecated in favor of cloudflare:zeroTrustAccess/application:getApplication */
 export function getZeroTrustAccessApplication(args?: GetZeroTrustAccessApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessApplicationResult> {
+    pulumi.log.warn("getZeroTrustAccessApplication is deprecated: cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication has been deprecated in favor of cloudflare:zeroTrustAccess/application:getApplication")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication", {
@@ -228,14 +230,16 @@ export interface GetZeroTrustAccessApplicationResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessApplication = cloudflare.getZeroTrustAccessApplication({
+ * const exampleZeroTrustAccessApplication = cloudflare.zerotrustaccess.getApplication({
  *     appId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication has been deprecated in favor of cloudflare:zeroTrustAccess/application:getApplication */
 export function getZeroTrustAccessApplicationOutput(args?: GetZeroTrustAccessApplicationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessApplicationResult> {
+    pulumi.log.warn("getZeroTrustAccessApplication is deprecated: cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication has been deprecated in favor of cloudflare:zeroTrustAccess/application:getApplication")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication", {

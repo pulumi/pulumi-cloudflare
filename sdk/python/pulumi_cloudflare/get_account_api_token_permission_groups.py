@@ -22,6 +22,8 @@ __all__ = [
     'get_account_api_token_permission_groups_output',
 ]
 
+warnings.warn("""cloudflare:index/getAccountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups has been deprecated in favor of cloudflare:accountApiTokenPermissionGroups/accountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAccountApiTokenPermissionGroupsResult:
     """
@@ -101,7 +103,7 @@ def get_account_api_token_permission_groups(account_id: Optional[_builtins.str] 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_api_token_permission_groups = cloudflare.get_account_api_token_permission_groups(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_account_api_token_permission_groups = cloudflare.accountapitokenpermissiongroups.get_account_api_token_permission_groups(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         name="Account%20Settings%20Write",
         scope="com.cloudflare.api.account.zone")
     ```
@@ -113,6 +115,7 @@ def get_account_api_token_permission_groups(account_id: Optional[_builtins.str] 
     :param _builtins.str scope: Filter by the scope of the permission group.
            The value must be URL-encoded.
     """
+    pulumi.log.warn("""get_account_api_token_permission_groups is deprecated: cloudflare:index/getAccountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups has been deprecated in favor of cloudflare:accountApiTokenPermissionGroups/accountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['name'] = name
@@ -141,7 +144,7 @@ def get_account_api_token_permission_groups_output(account_id: pulumi.Input[Opti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_api_token_permission_groups = cloudflare.get_account_api_token_permission_groups(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_account_api_token_permission_groups = cloudflare.accountapitokenpermissiongroups.get_account_api_token_permission_groups(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         name="Account%20Settings%20Write",
         scope="com.cloudflare.api.account.zone")
     ```
@@ -153,6 +156,7 @@ def get_account_api_token_permission_groups_output(account_id: pulumi.Input[Opti
     :param _builtins.str scope: Filter by the scope of the permission group.
            The value must be URL-encoded.
     """
+    pulumi.log.warn("""get_account_api_token_permission_groups is deprecated: cloudflare:index/getAccountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups has been deprecated in favor of cloudflare:accountApiTokenPermissionGroups/accountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['name'] = name

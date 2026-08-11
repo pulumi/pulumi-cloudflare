@@ -16,13 +16,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleImage = cloudflare.getImage({
+ * const exampleImage = cloudflare.image.getImage({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     imageId: "image_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getImage:getImage has been deprecated in favor of cloudflare:image/image:getImage */
 export function getImage(args: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
+    pulumi.log.warn("getImage is deprecated: cloudflare:index/getImage:getImage has been deprecated in favor of cloudflare:image/image:getImage")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getImage:getImage", {
         "accountId": args.accountId,
@@ -97,13 +99,15 @@ export interface GetImageResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleImage = cloudflare.getImage({
+ * const exampleImage = cloudflare.image.getImage({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     imageId: "image_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getImage:getImage has been deprecated in favor of cloudflare:image/image:getImage */
 export function getImageOutput(args: GetImageOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetImageResult> {
+    pulumi.log.warn("getImage is deprecated: cloudflare:index/getImage:getImage has been deprecated in favor of cloudflare:image/image:getImage")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getImage:getImage", {
         "accountId": args.accountId,

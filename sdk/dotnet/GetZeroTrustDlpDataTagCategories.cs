@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustDlpDataTagCategories:getZeroTrustDlpDataTagCategories has been deprecated in favor of cloudflare:zeroTrustDlpDataTag/categories:getCategories")]
     public static class GetZeroTrustDlpDataTagCategories
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDlpDataTagCategories = Cloudflare.GetZeroTrustDlpDataTagCategories.Invoke(new()
+        ///     var exampleZeroTrustDlpDataTagCategories = Cloudflare.Modules.ZeroTrustDlpDataTag.GetCategories.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///     });
@@ -54,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDlpDataTagCategories = Cloudflare.GetZeroTrustDlpDataTagCategories.Invoke(new()
+        ///     var exampleZeroTrustDlpDataTagCategories = Cloudflare.Modules.ZeroTrustDlpDataTag.GetCategories.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///     });
@@ -81,7 +82,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDlpDataTagCategories = Cloudflare.GetZeroTrustDlpDataTagCategories.Invoke(new()
+        ///     var exampleZeroTrustDlpDataTagCategories = Cloudflare.Modules.ZeroTrustDlpDataTag.GetCategories.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///     });

@@ -21,6 +21,8 @@ __all__ = [
     'get_zero_trust_access_tag_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustAccessTag:getZeroTrustAccessTag has been deprecated in favor of cloudflare:zeroTrustAccess/tag:getTag""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustAccessTagResult:
     """
@@ -95,7 +97,7 @@ def get_zero_trust_access_tag(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_tag = cloudflare.get_zero_trust_access_tag(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_zero_trust_access_tag = cloudflare.zerotrustaccess.get_tag(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         tag_name="engineers")
     ```
 
@@ -103,6 +105,7 @@ def get_zero_trust_access_tag(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Identifier.
     :param _builtins.str tag_name: The name of the tag
     """
+    pulumi.log.warn("""get_zero_trust_access_tag is deprecated: cloudflare:index/getZeroTrustAccessTag:getZeroTrustAccessTag has been deprecated in favor of cloudflare:zeroTrustAccess/tag:getTag""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['tagName'] = tag_name
@@ -124,7 +127,7 @@ def get_zero_trust_access_tag_output(account_id: pulumi.Input[Optional[Optional[
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_tag = cloudflare.get_zero_trust_access_tag(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_zero_trust_access_tag = cloudflare.zerotrustaccess.get_tag(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         tag_name="engineers")
     ```
 
@@ -132,6 +135,7 @@ def get_zero_trust_access_tag_output(account_id: pulumi.Input[Optional[Optional[
     :param _builtins.str account_id: Identifier.
     :param _builtins.str tag_name: The name of the tag
     """
+    pulumi.log.warn("""get_zero_trust_access_tag is deprecated: cloudflare:index/getZeroTrustAccessTag:getZeroTrustAccessTag has been deprecated in favor of cloudflare:zeroTrustAccess/tag:getTag""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['tagName'] = tag_name

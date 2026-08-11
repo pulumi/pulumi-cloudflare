@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersKv = new cloudflare.WorkersKv("example_workers_kv", {
+ * const exampleWorkersKv = new cloudflare.workerskv.WorkersKv("example_workers_kv", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     namespaceId: "0f2ac74b498b48028cb68387c421e279",
  *     keyName: "My-Key",
@@ -30,6 +30,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/workersKv:WorkersKv example '<account_id>/<namespace_id>/<key_name>'
  * ```
+ *
+ * @deprecated cloudflare:index/workersKv:WorkersKv has been deprecated in favor of cloudflare:workersKv/workersKv:WorkersKv
  */
 export class WorkersKv extends pulumi.CustomResource {
     /**
@@ -42,6 +44,7 @@ export class WorkersKv extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WorkersKvState, opts?: pulumi.CustomResourceOptions): WorkersKv {
+        pulumi.log.warn("WorkersKv is deprecated: cloudflare:index/workersKv:WorkersKv has been deprecated in favor of cloudflare:workersKv/workersKv:WorkersKv")
         return new WorkersKv(name, <any>state, { ...opts, id: id });
     }
 
@@ -87,8 +90,11 @@ export class WorkersKv extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/workersKv:WorkersKv has been deprecated in favor of cloudflare:workersKv/workersKv:WorkersKv */
     constructor(name: string, args: WorkersKvArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/workersKv:WorkersKv has been deprecated in favor of cloudflare:workersKv/workersKv:WorkersKv */
     constructor(name: string, argsOrState?: WorkersKvArgs | WorkersKvState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("WorkersKv is deprecated: cloudflare:index/workersKv:WorkersKv has been deprecated in favor of cloudflare:workersKv/workersKv:WorkersKv")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -23,6 +23,8 @@ __all__ = [
     'get_custom_origin_trust_store_output',
 ]
 
+warnings.warn("""cloudflare:index/getCustomOriginTrustStore:getCustomOriginTrustStore has been deprecated in favor of cloudflare:customOriginTrust/store:getStore""", DeprecationWarning)
+
 @pulumi.output_type
 class GetCustomOriginTrustStoreResult:
     """
@@ -185,7 +187,7 @@ def get_custom_origin_trust_store(custom_origin_trust_store_id: Optional[_builti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_custom_origin_trust_store = cloudflare.get_custom_origin_trust_store(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_custom_origin_trust_store = cloudflare.customorigintrust.get_store(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         custom_origin_trust_store_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -193,6 +195,7 @@ def get_custom_origin_trust_store(custom_origin_trust_store_id: Optional[_builti
     :param _builtins.str custom_origin_trust_store_id: Identifier.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_custom_origin_trust_store is deprecated: cloudflare:index/getCustomOriginTrustStore:getCustomOriginTrustStore has been deprecated in favor of cloudflare:customOriginTrust/store:getStore""")
     __args__ = dict()
     __args__['customOriginTrustStoreId'] = custom_origin_trust_store_id
     __args__['filter'] = filter
@@ -228,7 +231,7 @@ def get_custom_origin_trust_store_output(custom_origin_trust_store_id: pulumi.In
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_custom_origin_trust_store = cloudflare.get_custom_origin_trust_store(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_custom_origin_trust_store = cloudflare.customorigintrust.get_store(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         custom_origin_trust_store_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -236,6 +239,7 @@ def get_custom_origin_trust_store_output(custom_origin_trust_store_id: pulumi.In
     :param _builtins.str custom_origin_trust_store_id: Identifier.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_custom_origin_trust_store is deprecated: cloudflare:index/getCustomOriginTrustStore:getCustomOriginTrustStore has been deprecated in favor of cloudflare:customOriginTrust/store:getStore""")
     __args__ = dict()
     __args__['customOriginTrustStoreId'] = custom_origin_trust_store_id
     __args__['filter'] = filter

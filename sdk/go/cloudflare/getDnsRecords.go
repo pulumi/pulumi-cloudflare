@@ -23,16 +23,16 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/dns"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetDnsRecords(ctx, &cloudflare.LookupDnsRecordsArgs{
+//			_, err := dns.LookupRecords(ctx, &dns.LookupRecordsArgs{
 //				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Comment: cloudflare.GetDnsRecordsComment{
+//				Comment: dns.GetRecordsComment{
 //					Absent:     pulumi.StringRef("absent"),
 //					Contains:   pulumi.StringRef("ello, worl"),
 //					Endswith:   pulumi.StringRef("o, world"),
@@ -40,13 +40,13 @@ import (
 //					Present:    pulumi.StringRef("present"),
 //					Startswith: pulumi.StringRef("Hello, w"),
 //				},
-//				Content: cloudflare.GetDnsRecordsContent{
+//				Content: dns.GetRecordsContent{
 //					Contains:   pulumi.StringRef("7.0.0."),
 //					Endswith:   pulumi.StringRef(".0.1"),
 //					Exact:      pulumi.StringRef("127.0.0.1"),
 //					Startswith: pulumi.StringRef("127.0."),
 //				},
-//				Name: cloudflare.GetDnsRecordsName{
+//				Name: dns.GetRecordsName{
 //					Contains:   pulumi.StringRef("w.example."),
 //					Endswith:   pulumi.StringRef(".example.com"),
 //					Exact:      pulumi.StringRef("www.example.com"),
@@ -55,7 +55,7 @@ import (
 //				Search:         pulumi.StringRef("www.cloudflare.com"),
 //				ShadowedByName: pulumi.StringRef("sub.example.com"),
 //				ShadowingName:  pulumi.StringRef("www.sub.example.com"),
-//				Tag: cloudflare.GetDnsRecordsTag{
+//				Tag: dns.GetRecordsTag{
 //					Absent:     pulumi.StringRef("important"),
 //					Contains:   pulumi.StringRef("greeting:ello, worl"),
 //					Endswith:   pulumi.StringRef("greeting:o, world"),
@@ -73,6 +73,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getDnsRecords:getDnsRecords has been deprecated in favor of cloudflare:dns/records:getRecords
 func LookupDnsRecords(ctx *pulumi.Context, args *LookupDnsRecordsArgs, opts ...pulumi.InvokeOption) (*LookupDnsRecordsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDnsRecordsResult

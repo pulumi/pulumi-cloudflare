@@ -22,6 +22,8 @@ __all__ = [
     'get_r2_bucket_sippy_output',
 ]
 
+warnings.warn("""cloudflare:index/getR2BucketSippy:getR2BucketSippy has been deprecated in favor of cloudflare:r2Bucket/sippy:getSippy""", DeprecationWarning)
+
 @pulumi.output_type
 class GetR2BucketSippyResult:
     """
@@ -108,7 +110,7 @@ def get_r2_bucket_sippy(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_r2_bucket_sippy = cloudflare.get_r2_bucket_sippy(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_r2_bucket_sippy = cloudflare.r2bucket.get_sippy(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         bucket_name="example-bucket")
     ```
 
@@ -116,6 +118,7 @@ def get_r2_bucket_sippy(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Account ID.
     :param _builtins.str bucket_name: Name of the bucket.
     """
+    pulumi.log.warn("""get_r2_bucket_sippy is deprecated: cloudflare:index/getR2BucketSippy:getR2BucketSippy has been deprecated in favor of cloudflare:r2Bucket/sippy:getSippy""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['bucketName'] = bucket_name
@@ -138,7 +141,7 @@ def get_r2_bucket_sippy_output(account_id: pulumi.Input[Optional[_builtins.str]]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_r2_bucket_sippy = cloudflare.get_r2_bucket_sippy(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_r2_bucket_sippy = cloudflare.r2bucket.get_sippy(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         bucket_name="example-bucket")
     ```
 
@@ -146,6 +149,7 @@ def get_r2_bucket_sippy_output(account_id: pulumi.Input[Optional[_builtins.str]]
     :param _builtins.str account_id: Account ID.
     :param _builtins.str bucket_name: Name of the bucket.
     """
+    pulumi.log.warn("""get_r2_bucket_sippy is deprecated: cloudflare:index/getR2BucketSippy:getR2BucketSippy has been deprecated in favor of cloudflare:r2Bucket/sippy:getSippy""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['bucketName'] = bucket_name

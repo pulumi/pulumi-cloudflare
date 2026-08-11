@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustAccessServiceToken;
- * import com.pulumi.cloudflare.ZeroTrustAccessServiceTokenArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccessService.Token;
+ * import com.pulumi.cloudflare.zeroTrustAccessService.TokenArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustAccessServiceToken = new ZeroTrustAccessServiceToken("exampleZeroTrustAccessServiceToken", ZeroTrustAccessServiceTokenArgs.builder()
+ *         var exampleZeroTrustAccessServiceToken = new Token("exampleZeroTrustAccessServiceToken", TokenArgs.builder()
  *             .name("CI/CD token")
  *             .zoneId("zone_id")
  *             .clientSecretVersion(0.0)
@@ -66,7 +66,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;service_token_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken has been deprecated in favor of cloudflare:zeroTrustAccessService/token:Token
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken has been deprecated in favor of cloudflare:zeroTrustAccessService/token:Token */
 @ResourceType(type="cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken")
 public class ZeroTrustAccessServiceToken extends com.pulumi.resources.CustomResource {
     /**

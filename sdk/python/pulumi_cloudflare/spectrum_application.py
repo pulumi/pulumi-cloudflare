@@ -505,8 +505,13 @@ class _SpectrumApplicationState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/spectrumApplication:SpectrumApplication has been deprecated in favor of cloudflare:spectrum/application:Application""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/spectrumApplication:SpectrumApplication")
 class SpectrumApplication(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/spectrumApplication:SpectrumApplication has been deprecated in favor of cloudflare:spectrum/application:Application""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -537,7 +542,7 @@ class SpectrumApplication(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_spectrum_application = cloudflare.SpectrumApplication("example_spectrum_application",
+        example_spectrum_application = cloudflare.spectrum.Application("example_spectrum_application",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             dns={
                 "name": "ssh.example.com",
@@ -609,7 +614,7 @@ class SpectrumApplication(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_spectrum_application = cloudflare.SpectrumApplication("example_spectrum_application",
+        example_spectrum_application = cloudflare.spectrum.Application("example_spectrum_application",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             dns={
                 "name": "ssh.example.com",
@@ -670,6 +675,7 @@ class SpectrumApplication(pulumi.CustomResource):
                  virtual_network_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""SpectrumApplication is deprecated: cloudflare:index/spectrumApplication:SpectrumApplication has been deprecated in favor of cloudflare:spectrum/application:Application""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

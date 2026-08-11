@@ -18,14 +18,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/authenticatedoriginpullshostname"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetAuthenticatedOriginPullsHostnameCertificate(ctx, &cloudflare.LookupAuthenticatedOriginPullsHostnameCertificateArgs{
+//			_, err := authenticatedoriginpullshostname.GetCertificate(ctx, &authenticatedoriginpullshostname.GetCertificateArgs{
 //				ZoneId:        "023e105f4ecef8ad9ca31a8372d0c353",
 //				CertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
@@ -37,6 +37,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getAuthenticatedOriginPullsHostnameCertificate:getAuthenticatedOriginPullsHostnameCertificate has been deprecated in favor of cloudflare:authenticatedOriginPullsHostname/certificate:getCertificate
 func LookupAuthenticatedOriginPullsHostnameCertificate(ctx *pulumi.Context, args *LookupAuthenticatedOriginPullsHostnameCertificateArgs, opts ...pulumi.InvokeOption) (*LookupAuthenticatedOriginPullsHostnameCertificateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAuthenticatedOriginPullsHostnameCertificateResult

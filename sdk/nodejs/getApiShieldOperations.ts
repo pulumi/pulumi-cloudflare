@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleApiShieldOperations = cloudflare.getApiShieldOperations({
+ * const exampleApiShieldOperations = cloudflare.apishield.getOperations({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "desc",
  *     endpoint: "/api/v1",
@@ -31,7 +31,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getApiShieldOperations:getApiShieldOperations has been deprecated in favor of cloudflare:apiShield/operations:getOperations */
 export function getApiShieldOperations(args?: GetApiShieldOperationsArgs, opts?: pulumi.InvokeOptions): Promise<GetApiShieldOperationsResult> {
+    pulumi.log.warn("getApiShieldOperations is deprecated: cloudflare:index/getApiShieldOperations:getApiShieldOperations has been deprecated in favor of cloudflare:apiShield/operations:getOperations")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getApiShieldOperations:getApiShieldOperations", {
@@ -143,7 +145,7 @@ export interface GetApiShieldOperationsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleApiShieldOperations = cloudflare.getApiShieldOperations({
+ * const exampleApiShieldOperations = cloudflare.apishield.getOperations({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "desc",
  *     endpoint: "/api/v1",
@@ -154,7 +156,9 @@ export interface GetApiShieldOperationsResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getApiShieldOperations:getApiShieldOperations has been deprecated in favor of cloudflare:apiShield/operations:getOperations */
 export function getApiShieldOperationsOutput(args?: GetApiShieldOperationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiShieldOperationsResult> {
+    pulumi.log.warn("getApiShieldOperations is deprecated: cloudflare:index/getApiShieldOperations:getApiShieldOperations has been deprecated in favor of cloudflare:apiShield/operations:getOperations")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getApiShieldOperations:getApiShieldOperations", {

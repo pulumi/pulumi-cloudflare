@@ -173,8 +173,13 @@ class _ImageVariantState:
         pulumi.set(self, "variant", value)
 
 
+warnings.warn("""cloudflare:index/imageVariant:ImageVariant has been deprecated in favor of cloudflare:image/variant:Variant""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/imageVariant:ImageVariant")
 class ImageVariant(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/imageVariant:ImageVariant has been deprecated in favor of cloudflare:image/variant:Variant""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -196,7 +201,7 @@ class ImageVariant(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_image_variant = cloudflare.ImageVariant("example_image_variant",
+        example_image_variant = cloudflare.image.Variant("example_image_variant",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             image_variant_id="hero",
             options={
@@ -240,7 +245,7 @@ class ImageVariant(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_image_variant = cloudflare.ImageVariant("example_image_variant",
+        example_image_variant = cloudflare.image.Variant("example_image_variant",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             image_variant_id="hero",
             options={
@@ -279,6 +284,7 @@ class ImageVariant(pulumi.CustomResource):
                  never_require_signed_urls: pulumi.Input[Optional[_builtins.bool]] = None,
                  options: pulumi.Input[Optional[Union['ImageVariantOptionsArgs', 'ImageVariantOptionsArgsDict']]] = None,
                  __props__=None):
+        pulumi.log.warn("""ImageVariant is deprecated: cloudflare:index/imageVariant:ImageVariant has been deprecated in favor of cloudflare:image/variant:Variant""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessMtlsCertificate = new cloudflare.ZeroTrustAccessMtlsCertificate("example_zero_trust_access_mtls_certificate", {
+ * const exampleZeroTrustAccessMtlsCertificate = new cloudflare.zerotrustaccessmtls.Certificate("example_zero_trust_access_mtls_certificate", {
  *     certificate: `  -----BEGIN CERTIFICATE-----
  *   MIIGAjCCA+qgAwIBAgIJAI7kymlF7CWT...N4RI7KKB7nikiuUf8vhULKy5IX10
  *   DrUtmu/B
@@ -35,6 +35,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate example '<{accounts|zones}/{account_id|zone_id}>/<certificate_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate has been deprecated in favor of cloudflare:zeroTrustAccessMtls/certificate:Certificate
  */
 export class ZeroTrustAccessMtlsCertificate extends pulumi.CustomResource {
     /**
@@ -47,6 +49,7 @@ export class ZeroTrustAccessMtlsCertificate extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustAccessMtlsCertificateState, opts?: pulumi.CustomResourceOptions): ZeroTrustAccessMtlsCertificate {
+        pulumi.log.warn("ZeroTrustAccessMtlsCertificate is deprecated: cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate has been deprecated in favor of cloudflare:zeroTrustAccessMtls/certificate:Certificate")
         return new ZeroTrustAccessMtlsCertificate(name, <any>state, { ...opts, id: id });
     }
 
@@ -97,8 +100,11 @@ export class ZeroTrustAccessMtlsCertificate extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate has been deprecated in favor of cloudflare:zeroTrustAccessMtls/certificate:Certificate */
     constructor(name: string, args: ZeroTrustAccessMtlsCertificateArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate has been deprecated in favor of cloudflare:zeroTrustAccessMtls/certificate:Certificate */
     constructor(name: string, argsOrState?: ZeroTrustAccessMtlsCertificateArgs | ZeroTrustAccessMtlsCertificateState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustAccessMtlsCertificate is deprecated: cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate has been deprecated in favor of cloudflare:zeroTrustAccessMtls/certificate:Certificate")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

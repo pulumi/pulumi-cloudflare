@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/r2bucket"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewR2Bucket(ctx, "example_r2_bucket", &cloudflare.R2BucketArgs{
+//			_, err := r2bucket.NewR2Bucket(ctx, "example_r2_bucket", &r2bucket.R2BucketArgs{
 //				AccountId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:         pulumi.String("example-bucket"),
 //				Location:     pulumi.String("apac"),
@@ -50,6 +50,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/r2Bucket:R2Bucket example '<account_id>/<bucket_name>/<jurisdiction>'
 // ```
+//
+// Deprecated: cloudflare:index/r2Bucket:R2Bucket has been deprecated in favor of cloudflare:r2Bucket/r2Bucket:R2Bucket
 type R2Bucket struct {
 	pulumi.CustomResourceState
 

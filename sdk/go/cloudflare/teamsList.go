@@ -19,20 +19,20 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrust"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustList(ctx, "example_zero_trust_list", &cloudflare.ZeroTrustListArgs{
+//			_, err := zerotrust.NewList(ctx, "example_zero_trust_list", &zerotrust.ListArgs{
 //				AccountId:   pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				Name:        pulumi.String("Admin Serial Numbers"),
 //				Type:        pulumi.String("SERIAL"),
 //				Description: pulumi.String("The serial numbers for administrators"),
-//				Items: cloudflare.ZeroTrustListItemArray{
-//					&cloudflare.ZeroTrustListItemArgs{
+//				Items: zerotrust.ListItemArray{
+//					&zerotrust.ListItemArgs{
 //						Description: pulumi.String("Austin office IP"),
 //						Value:       pulumi.String("8GE8721REF"),
 //					},
@@ -89,12 +89,6 @@ func NewTeamsList(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("cloudflare:index/teamsList:TeamsList"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TeamsList
 	err := ctx.RegisterResource("cloudflare:index/teamsList:TeamsList", name, args, &resource, opts...)

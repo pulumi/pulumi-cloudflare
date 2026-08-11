@@ -22,6 +22,8 @@ __all__ = [
     'get_content_scanning_expressions_output',
 ]
 
+warnings.warn("""cloudflare:index/getContentScanningExpressions:getContentScanningExpressions has been deprecated in favor of cloudflare:contentScanning/expressions:getExpressions""", DeprecationWarning)
+
 @pulumi.output_type
 class GetContentScanningExpressionsResult:
     """
@@ -91,13 +93,14 @@ def get_content_scanning_expressions(max_items: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_content_scanning_expressions = cloudflare.get_content_scanning_expressions(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_content_scanning_expressions = cloudflare.contentscanning.get_expressions(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: Defines an identifier.
     """
+    pulumi.log.warn("""get_content_scanning_expressions is deprecated: cloudflare:index/getContentScanningExpressions:getContentScanningExpressions has been deprecated in favor of cloudflare:contentScanning/expressions:getExpressions""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id
@@ -125,13 +128,14 @@ def get_content_scanning_expressions_output(max_items: pulumi.Input[Optional[Opt
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_content_scanning_expressions = cloudflare.get_content_scanning_expressions(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_content_scanning_expressions = cloudflare.contentscanning.get_expressions(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: Defines an identifier.
     """
+    pulumi.log.warn("""get_content_scanning_expressions is deprecated: cloudflare:index/getContentScanningExpressions:getContentScanningExpressions has been deprecated in favor of cloudflare:contentScanning/expressions:getExpressions""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id

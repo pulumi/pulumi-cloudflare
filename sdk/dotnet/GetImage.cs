@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getImage:getImage has been deprecated in favor of cloudflare:image/image:getImage")]
     public static class GetImage
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleImage = Cloudflare.GetImage.Invoke(new()
+        ///     var exampleImage = Cloudflare.Modules.Image.GetImage.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ImageId = "image_id",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleImage = Cloudflare.GetImage.Invoke(new()
+        ///     var exampleImage = Cloudflare.Modules.Image.GetImage.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ImageId = "image_id",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleImage = Cloudflare.GetImage.Invoke(new()
+        ///     var exampleImage = Cloudflare.Modules.Image.GetImage.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ImageId = "image_id",

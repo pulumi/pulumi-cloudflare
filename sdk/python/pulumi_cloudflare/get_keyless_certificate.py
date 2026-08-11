@@ -22,6 +22,8 @@ __all__ = [
     'get_keyless_certificate_output',
 ]
 
+warnings.warn("""cloudflare:index/getKeylessCertificate:getKeylessCertificate has been deprecated in favor of cloudflare:keyless/certificate:getCertificate""", DeprecationWarning)
+
 @pulumi.output_type
 class GetKeylessCertificateResult:
     """
@@ -232,7 +234,7 @@ def get_keyless_certificate(keyless_certificate_id: Optional[_builtins.str] = No
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_keyless_certificate = cloudflare.get_keyless_certificate(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_keyless_certificate = cloudflare.keyless.get_certificate(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         keyless_certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -240,6 +242,7 @@ def get_keyless_certificate(keyless_certificate_id: Optional[_builtins.str] = No
     :param _builtins.str keyless_certificate_id: Identifier.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_keyless_certificate is deprecated: cloudflare:index/getKeylessCertificate:getKeylessCertificate has been deprecated in favor of cloudflare:keyless/certificate:getCertificate""")
     __args__ = dict()
     __args__['keylessCertificateId'] = keyless_certificate_id
     __args__['zoneId'] = zone_id
@@ -308,7 +311,7 @@ def get_keyless_certificate_output(keyless_certificate_id: pulumi.Input[Optional
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_keyless_certificate = cloudflare.get_keyless_certificate(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_keyless_certificate = cloudflare.keyless.get_certificate(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         keyless_certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -316,6 +319,7 @@ def get_keyless_certificate_output(keyless_certificate_id: pulumi.Input[Optional
     :param _builtins.str keyless_certificate_id: Identifier.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_keyless_certificate is deprecated: cloudflare:index/getKeylessCertificate:getKeylessCertificate has been deprecated in favor of cloudflare:keyless/certificate:getCertificate""")
     __args__ = dict()
     __args__['keylessCertificateId'] = keyless_certificate_id
     __args__['zoneId'] = zone_id

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getDnsZoneTransfersAcl:getDnsZoneTransfersAcl has been deprecated in favor of cloudflare:dnsZoneTransfers/acl:getAcl")]
     public static class GetDnsZoneTransfersAcl
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDnsZoneTransfersAcl = Cloudflare.GetDnsZoneTransfersAcl.Invoke(new()
+        ///     var exampleDnsZoneTransfersAcl = Cloudflare.Modules.DnsZoneTransfers.GetAcl.Invoke(new()
         ///     {
         ///         AccountId = "01a7362d577a6c3019a474fd6f485823",
         ///         AclId = "23ff594956f20c2a721606e94745a8aa",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDnsZoneTransfersAcl = Cloudflare.GetDnsZoneTransfersAcl.Invoke(new()
+        ///     var exampleDnsZoneTransfersAcl = Cloudflare.Modules.DnsZoneTransfers.GetAcl.Invoke(new()
         ///     {
         ///         AccountId = "01a7362d577a6c3019a474fd6f485823",
         ///         AclId = "23ff594956f20c2a721606e94745a8aa",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDnsZoneTransfersAcl = Cloudflare.GetDnsZoneTransfersAcl.Invoke(new()
+        ///     var exampleDnsZoneTransfersAcl = Cloudflare.Modules.DnsZoneTransfers.GetAcl.Invoke(new()
         ///     {
         ///         AccountId = "01a7362d577a6c3019a474fd6f485823",
         ///         AclId = "23ff594956f20c2a721606e94745a8aa",

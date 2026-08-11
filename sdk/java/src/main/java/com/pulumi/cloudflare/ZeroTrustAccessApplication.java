@@ -36,7 +36,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;app_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication has been deprecated in favor of cloudflare:zeroTrustAccess/application:Application
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication has been deprecated in favor of cloudflare:zeroTrustAccess/application:Application */
 @ResourceType(type="cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication")
 public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResource {
     /**

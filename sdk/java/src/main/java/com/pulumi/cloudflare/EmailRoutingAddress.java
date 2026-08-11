@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.EmailRoutingAddress;
- * import com.pulumi.cloudflare.EmailRoutingAddressArgs;
+ * import com.pulumi.cloudflare.emailRouting.Address;
+ * import com.pulumi.cloudflare.emailRouting.AddressArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var exampleEmailRoutingAddress = new EmailRoutingAddress("exampleEmailRoutingAddress", EmailRoutingAddressArgs.builder()
+ *         var exampleEmailRoutingAddress = new Address("exampleEmailRoutingAddress", AddressArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .email("user}{@literal @}{@code example.com")
  *             .build());
@@ -60,7 +60,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/emailRoutingAddress:EmailRoutingAddress example &#39;&lt;account_id&gt;/&lt;destination_address_identifier&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/emailRoutingAddress:EmailRoutingAddress has been deprecated in favor of cloudflare:emailRouting/address:Address
+ * 
  */
+@Deprecated /* cloudflare:index/emailRoutingAddress:EmailRoutingAddress has been deprecated in favor of cloudflare:emailRouting/address:Address */
 @ResourceType(type="cloudflare:index/emailRoutingAddress:EmailRoutingAddress")
 public class EmailRoutingAddress extends com.pulumi.resources.CustomResource {
     /**

@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomHostname = cloudflare.getCustomHostname({
+ * const exampleCustomHostname = cloudflare.customhostname.getCustomHostname({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     customHostnameId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCustomHostname:getCustomHostname has been deprecated in favor of cloudflare:customHostname/customHostname:getCustomHostname */
 export function getCustomHostname(args?: GetCustomHostnameArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomHostnameResult> {
+    pulumi.log.warn("getCustomHostname is deprecated: cloudflare:index/getCustomHostname:getCustomHostname has been deprecated in favor of cloudflare:customHostname/customHostname:getCustomHostname")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCustomHostname:getCustomHostname", {
@@ -117,13 +119,15 @@ export interface GetCustomHostnameResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomHostname = cloudflare.getCustomHostname({
+ * const exampleCustomHostname = cloudflare.customhostname.getCustomHostname({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     customHostnameId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCustomHostname:getCustomHostname has been deprecated in favor of cloudflare:customHostname/customHostname:getCustomHostname */
 export function getCustomHostnameOutput(args?: GetCustomHostnameOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomHostnameResult> {
+    pulumi.log.warn("getCustomHostname is deprecated: cloudflare:index/getCustomHostname:getCustomHostname has been deprecated in favor of cloudflare:customHostname/customHostname:getCustomHostname")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCustomHostname:getCustomHostname", {

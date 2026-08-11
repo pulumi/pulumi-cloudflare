@@ -38,7 +38,7 @@ import javax.annotation.Nullable;
  * - `Workers Scripts Write`
  * - `Workers Tail Read`
  * 
- * &gt; For more direct control over Workers resources, we recommend the beta `cloudflare.Worker`, `cloudflare.WorkerVersion`, and `cloudflare.WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
+ * &gt; For more direct control over Workers resources, we recommend the beta `cloudflare.worker.Worker`, `cloudflare.worker.Version`, and `cloudflare.workers.Deployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
  * 
  * ## Import
  * 
@@ -46,7 +46,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/workersScript:WorkersScript example &#39;&lt;account_id&gt;/&lt;script_name&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/workersScript:WorkersScript has been deprecated in favor of cloudflare:workersScript/workersScript:WorkersScript
+ * 
  */
+@Deprecated /* cloudflare:index/workersScript:WorkersScript has been deprecated in favor of cloudflare:workersScript/workersScript:WorkersScript */
 @ResourceType(type="cloudflare:index/workersScript:WorkersScript")
 public class WorkersScript extends com.pulumi.resources.CustomResource {
     /**

@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleNotificationPolicyWebhooks = new Cloudflare.NotificationPolicyWebhooks("example_notification_policy_webhooks", new()
+    ///     var exampleNotificationPolicyWebhooks = new Cloudflare.Modules.NotificationPolicyWebhooks.NotificationPolicyWebhooks("example_notification_policy_webhooks", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "Slack Webhook",
@@ -45,6 +45,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example '&lt;account_id&gt;/&lt;webhook_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks has been deprecated in favor of cloudflare:notificationPolicyWebhooks/notificationPolicyWebhooks:NotificationPolicyWebhooks")]
     [CloudflareResourceType("cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks")]
     public partial class NotificationPolicyWebhooks : global::Pulumi.CustomResource
     {

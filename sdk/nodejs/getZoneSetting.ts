@@ -90,13 +90,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneSetting = cloudflare.getZoneSetting({
+ * const exampleZoneSetting = cloudflare.zone.getSetting({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     settingId: "always_online",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZoneSetting:getZoneSetting has been deprecated in favor of cloudflare:zone/setting:getSetting */
 export function getZoneSetting(args: GetZoneSettingArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneSettingResult> {
+    pulumi.log.warn("getZoneSetting is deprecated: cloudflare:index/getZoneSetting:getZoneSetting has been deprecated in favor of cloudflare:zone/setting:getSetting")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZoneSetting:getZoneSetting", {
         "settingId": args.settingId,
@@ -243,13 +245,15 @@ export interface GetZoneSettingResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneSetting = cloudflare.getZoneSetting({
+ * const exampleZoneSetting = cloudflare.zone.getSetting({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     settingId: "always_online",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZoneSetting:getZoneSetting has been deprecated in favor of cloudflare:zone/setting:getSetting */
 export function getZoneSettingOutput(args: GetZoneSettingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneSettingResult> {
+    pulumi.log.warn("getZoneSetting is deprecated: cloudflare:index/getZoneSetting:getZoneSetting has been deprecated in favor of cloudflare:zone/setting:getSetting")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZoneSetting:getZoneSetting", {
         "settingId": args.settingId,

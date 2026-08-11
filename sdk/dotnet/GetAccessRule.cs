@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getAccessRule:getAccessRule has been deprecated in favor of cloudflare:access/rule:getRule")]
     public static class GetAccessRule
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccessRule = Cloudflare.GetAccessRule.Invoke(new()
+        ///     var exampleAccessRule = Cloudflare.Modules.Access.GetRule.Invoke(new()
         ///     {
         ///         RuleId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         AccountId = "account_id",
@@ -56,7 +57,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccessRule = Cloudflare.GetAccessRule.Invoke(new()
+        ///     var exampleAccessRule = Cloudflare.Modules.Access.GetRule.Invoke(new()
         ///     {
         ///         RuleId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         AccountId = "account_id",
@@ -85,7 +86,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccessRule = Cloudflare.GetAccessRule.Invoke(new()
+        ///     var exampleAccessRule = Cloudflare.Modules.Access.GetRule.Invoke(new()
         ///     {
         ///         RuleId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         AccountId = "account_id",

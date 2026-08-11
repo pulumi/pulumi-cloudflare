@@ -22,6 +22,8 @@ __all__ = [
     'get_certificate_packs_output',
 ]
 
+warnings.warn("""cloudflare:index/getCertificatePacks:getCertificatePacks has been deprecated in favor of cloudflare:certificate/packs:getPacks""", DeprecationWarning)
+
 @pulumi.output_type
 class GetCertificatePacksResult:
     """
@@ -117,7 +119,7 @@ def get_certificate_packs(deploy: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_certificate_packs = cloudflare.get_certificate_packs(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_certificate_packs = cloudflare.certificate.get_packs(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         deploy="staging",
         status="all")
     ```
@@ -130,6 +132,7 @@ def get_certificate_packs(deploy: Optional[_builtins.str] = None,
            Available values: "all".
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_certificate_packs is deprecated: cloudflare:index/getCertificatePacks:getCertificatePacks has been deprecated in favor of cloudflare:certificate/packs:getPacks""")
     __args__ = dict()
     __args__['deploy'] = deploy
     __args__['maxItems'] = max_items
@@ -161,7 +164,7 @@ def get_certificate_packs_output(deploy: pulumi.Input[Optional[Optional[_builtin
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_certificate_packs = cloudflare.get_certificate_packs(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_certificate_packs = cloudflare.certificate.get_packs(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         deploy="staging",
         status="all")
     ```
@@ -174,6 +177,7 @@ def get_certificate_packs_output(deploy: pulumi.Input[Optional[Optional[_builtin
            Available values: "all".
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_certificate_packs is deprecated: cloudflare:index/getCertificatePacks:getCertificatePacks has been deprecated in favor of cloudflare:certificate/packs:getPacks""")
     __args__ = dict()
     __args__['deploy'] = deploy
     __args__['maxItems'] = max_items

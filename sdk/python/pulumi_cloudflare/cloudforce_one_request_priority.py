@@ -343,8 +343,13 @@ class _CloudforceOneRequestPriorityState:
         pulumi.set(self, "updated", value)
 
 
+warnings.warn("""cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority has been deprecated in favor of cloudflare:cloudforceOneRequest/priority:Priority""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority")
 class CloudforceOneRequestPriority(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority has been deprecated in favor of cloudflare:cloudforceOneRequest/priority:Priority""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -367,7 +372,7 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_cloudforce_one_request_priority = cloudflare.CloudforceOneRequestPriority("example_cloudforce_one_request_priority",
+        example_cloudforce_one_request_priority = cloudflare.cloudforceonerequest.Priority("example_cloudforce_one_request_priority",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             labels=[
                 "DoS",
@@ -412,7 +417,7 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_cloudforce_one_request_priority = cloudflare.CloudforceOneRequestPriority("example_cloudforce_one_request_priority",
+        example_cloudforce_one_request_priority = cloudflare.cloudforceonerequest.Priority("example_cloudforce_one_request_priority",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             labels=[
                 "DoS",
@@ -451,6 +456,7 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
                  requirement: pulumi.Input[Optional[_builtins.str]] = None,
                  tlp: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""CloudforceOneRequestPriority is deprecated: cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority has been deprecated in favor of cloudflare:cloudforceOneRequest/priority:Priority""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

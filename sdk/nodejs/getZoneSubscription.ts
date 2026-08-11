@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneSubscription = cloudflare.getZoneSubscription({
+ * const exampleZoneSubscription = cloudflare.zone.getSubscription({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZoneSubscription:getZoneSubscription has been deprecated in favor of cloudflare:zone/subscription:getSubscription */
 export function getZoneSubscription(args?: GetZoneSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneSubscriptionResult> {
+    pulumi.log.warn("getZoneSubscription is deprecated: cloudflare:index/getZoneSubscription:getZoneSubscription has been deprecated in favor of cloudflare:zone/subscription:getSubscription")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZoneSubscription:getZoneSubscription", {
@@ -96,12 +98,14 @@ export interface GetZoneSubscriptionResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneSubscription = cloudflare.getZoneSubscription({
+ * const exampleZoneSubscription = cloudflare.zone.getSubscription({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZoneSubscription:getZoneSubscription has been deprecated in favor of cloudflare:zone/subscription:getSubscription */
 export function getZoneSubscriptionOutput(args?: GetZoneSubscriptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneSubscriptionResult> {
+    pulumi.log.warn("getZoneSubscription is deprecated: cloudflare:index/getZoneSubscription:getZoneSubscription has been deprecated in favor of cloudflare:zone/subscription:getSubscription")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZoneSubscription:getZoneSubscription", {

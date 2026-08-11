@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/worker"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetWorkerVersion(ctx, &cloudflare.LookupWorkerVersionArgs{
+//			_, err := worker.LookupVersion(ctx, &worker.LookupVersionArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				WorkerId:  "worker_id",
 //				VersionId: "version_id",
@@ -45,6 +45,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getWorkerVersion:getWorkerVersion has been deprecated in favor of cloudflare:worker/version:getVersion
 func LookupWorkerVersion(ctx *pulumi.Context, args *LookupWorkerVersionArgs, opts ...pulumi.InvokeOption) (*LookupWorkerVersionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkerVersionResult

@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustTunnelCloudflaredVirtualNetwork = new cloudflare.ZeroTrustTunnelCloudflaredVirtualNetwork("example_zero_trust_tunnel_cloudflared_virtual_network", {
+ * const exampleZeroTrustTunnelCloudflaredVirtualNetwork = new cloudflare.zerotrusttunnelcloudflaredvirtual.Network("example_zero_trust_tunnel_cloudflared_virtual_network", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     name: "us-east-1-vpc",
  *     comment: "Staging VPC for data science",
@@ -30,6 +30,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustTunnelCloudflaredVirtualNetwork:ZeroTrustTunnelCloudflaredVirtualNetwork example '<account_id>/<virtual_network_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustTunnelCloudflaredVirtualNetwork:ZeroTrustTunnelCloudflaredVirtualNetwork has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflaredVirtual/network:Network
  */
 export class ZeroTrustTunnelCloudflaredVirtualNetwork extends pulumi.CustomResource {
     /**
@@ -42,6 +44,7 @@ export class ZeroTrustTunnelCloudflaredVirtualNetwork extends pulumi.CustomResou
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustTunnelCloudflaredVirtualNetworkState, opts?: pulumi.CustomResourceOptions): ZeroTrustTunnelCloudflaredVirtualNetwork {
+        pulumi.log.warn("ZeroTrustTunnelCloudflaredVirtualNetwork is deprecated: cloudflare:index/zeroTrustTunnelCloudflaredVirtualNetwork:ZeroTrustTunnelCloudflaredVirtualNetwork has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflaredVirtual/network:Network")
         return new ZeroTrustTunnelCloudflaredVirtualNetwork(name, <any>state, { ...opts, id: id });
     }
 
@@ -97,8 +100,11 @@ export class ZeroTrustTunnelCloudflaredVirtualNetwork extends pulumi.CustomResou
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustTunnelCloudflaredVirtualNetwork:ZeroTrustTunnelCloudflaredVirtualNetwork has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflaredVirtual/network:Network */
     constructor(name: string, args: ZeroTrustTunnelCloudflaredVirtualNetworkArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustTunnelCloudflaredVirtualNetwork:ZeroTrustTunnelCloudflaredVirtualNetwork has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflaredVirtual/network:Network */
     constructor(name: string, argsOrState?: ZeroTrustTunnelCloudflaredVirtualNetworkArgs | ZeroTrustTunnelCloudflaredVirtualNetworkState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustTunnelCloudflaredVirtualNetwork is deprecated: cloudflare:index/zeroTrustTunnelCloudflaredVirtualNetwork:ZeroTrustTunnelCloudflaredVirtualNetwork has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflaredVirtual/network:Network")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

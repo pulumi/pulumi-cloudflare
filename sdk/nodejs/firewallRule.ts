@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * - `Firewall Services Read`
  * - `Firewall Services Write`
  *
- * > `cloudflare.FirewallRule` is in a deprecation phase until June 15th, 2025.
+ * > `cloudflare.firewall.Rule` is in a deprecation phase until June 15th, 2025.
  *   During this time period, this resource is still
  *   fully supported but you are strongly advised  to move to the
  *   `cloudflare.Ruleset` resource. Full details can be found in the
@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleFirewallRule = new cloudflare.FirewallRule("example_firewall_rule", {
+ * const exampleFirewallRule = new cloudflare.firewall.Rule("example_firewall_rule", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     action: {
  *         mode: "challenge",
@@ -48,6 +48,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/firewallRule:FirewallRule example '<zone_id>/<rule_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/firewallRule:FirewallRule has been deprecated in favor of cloudflare:firewall/rule:Rule
  */
 export class FirewallRule extends pulumi.CustomResource {
     /**
@@ -60,6 +62,7 @@ export class FirewallRule extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: FirewallRuleState, opts?: pulumi.CustomResourceOptions): FirewallRule {
+        pulumi.log.warn("FirewallRule is deprecated: cloudflare:index/firewallRule:FirewallRule has been deprecated in favor of cloudflare:firewall/rule:Rule")
         return new FirewallRule(name, <any>state, { ...opts, id: id });
     }
 
@@ -111,8 +114,11 @@ export class FirewallRule extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/firewallRule:FirewallRule has been deprecated in favor of cloudflare:firewall/rule:Rule */
     constructor(name: string, args: FirewallRuleArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/firewallRule:FirewallRule has been deprecated in favor of cloudflare:firewall/rule:Rule */
     constructor(name: string, argsOrState?: FirewallRuleArgs | FirewallRuleState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("FirewallRule is deprecated: cloudflare:index/firewallRule:FirewallRule has been deprecated in favor of cloudflare:firewall/rule:Rule")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

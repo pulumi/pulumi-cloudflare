@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleConnectivityDirectoryService = new cloudflare.ConnectivityDirectoryService("example_connectivity_directory_service", {
+ * const exampleConnectivityDirectoryService = new cloudflare.connectivitydirectory.Service("example_connectivity_directory_service", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     host: {
  *         ipv4: "10.0.0.1",
@@ -36,6 +36,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService example '<account_id>/<service_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService has been deprecated in favor of cloudflare:connectivityDirectory/service:Service
  */
 export class ConnectivityDirectoryService extends pulumi.CustomResource {
     /**
@@ -48,6 +50,7 @@ export class ConnectivityDirectoryService extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ConnectivityDirectoryServiceState, opts?: pulumi.CustomResourceOptions): ConnectivityDirectoryService {
+        pulumi.log.warn("ConnectivityDirectoryService is deprecated: cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService has been deprecated in favor of cloudflare:connectivityDirectory/service:Service")
         return new ConnectivityDirectoryService(name, <any>state, { ...opts, id: id });
     }
 
@@ -97,8 +100,11 @@ export class ConnectivityDirectoryService extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService has been deprecated in favor of cloudflare:connectivityDirectory/service:Service */
     constructor(name: string, args: ConnectivityDirectoryServiceArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService has been deprecated in favor of cloudflare:connectivityDirectory/service:Service */
     constructor(name: string, argsOrState?: ConnectivityDirectoryServiceArgs | ConnectivityDirectoryServiceState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ConnectivityDirectoryService is deprecated: cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService has been deprecated in favor of cloudflare:connectivityDirectory/service:Service")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

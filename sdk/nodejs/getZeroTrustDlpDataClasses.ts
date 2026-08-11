@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpDataClasses = cloudflare.getZeroTrustDlpDataClasses({
+ * const exampleZeroTrustDlpDataClasses = cloudflare.zerotrustdlpdata.getClasses({
  *     accountId: "account_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpDataClasses:getZeroTrustDlpDataClasses has been deprecated in favor of cloudflare:zeroTrustDlpData/classes:getClasses */
 export function getZeroTrustDlpDataClasses(args: GetZeroTrustDlpDataClassesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDlpDataClassesResult> {
+    pulumi.log.warn("getZeroTrustDlpDataClasses is deprecated: cloudflare:index/getZeroTrustDlpDataClasses:getZeroTrustDlpDataClasses has been deprecated in favor of cloudflare:zeroTrustDlpData/classes:getClasses")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDlpDataClasses:getZeroTrustDlpDataClasses", {
         "accountId": args.accountId,
@@ -68,12 +70,14 @@ export interface GetZeroTrustDlpDataClassesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpDataClasses = cloudflare.getZeroTrustDlpDataClasses({
+ * const exampleZeroTrustDlpDataClasses = cloudflare.zerotrustdlpdata.getClasses({
  *     accountId: "account_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpDataClasses:getZeroTrustDlpDataClasses has been deprecated in favor of cloudflare:zeroTrustDlpData/classes:getClasses */
 export function getZeroTrustDlpDataClassesOutput(args: GetZeroTrustDlpDataClassesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDlpDataClassesResult> {
+    pulumi.log.warn("getZeroTrustDlpDataClasses is deprecated: cloudflare:index/getZeroTrustDlpDataClasses:getZeroTrustDlpDataClasses has been deprecated in favor of cloudflare:zeroTrustDlpData/classes:getClasses")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDlpDataClasses:getZeroTrustDlpDataClasses", {
         "accountId": args.accountId,

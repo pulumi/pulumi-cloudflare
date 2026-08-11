@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/callssfu"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewCallsSfuApp(ctx, "example_calls_sfu_app", &cloudflare.CallsSfuAppArgs{
+//			_, err := callssfu.NewApp(ctx, "example_calls_sfu_app", &callssfu.AppArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:      pulumi.String("production-realtime-app"),
 //			})
@@ -47,6 +47,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/callsSfuApp:CallsSfuApp has been deprecated in favor of cloudflare:callsSfu/app:App
 type CallsSfuApp struct {
 	pulumi.CustomResourceState
 

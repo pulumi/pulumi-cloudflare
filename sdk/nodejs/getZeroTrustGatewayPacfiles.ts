@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustGatewayPacfiles = cloudflare.getZeroTrustGatewayPacfiles({
+ * const exampleZeroTrustGatewayPacfiles = cloudflare.zerotrustgateway.getPacfiles({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustGatewayPacfiles:getZeroTrustGatewayPacfiles has been deprecated in favor of cloudflare:zeroTrustGateway/pacfiles:getPacfiles */
 export function getZeroTrustGatewayPacfiles(args?: GetZeroTrustGatewayPacfilesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewayPacfilesResult> {
+    pulumi.log.warn("getZeroTrustGatewayPacfiles is deprecated: cloudflare:index/getZeroTrustGatewayPacfiles:getZeroTrustGatewayPacfiles has been deprecated in favor of cloudflare:zeroTrustGateway/pacfiles:getPacfiles")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustGatewayPacfiles:getZeroTrustGatewayPacfiles", {
@@ -69,12 +71,14 @@ export interface GetZeroTrustGatewayPacfilesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustGatewayPacfiles = cloudflare.getZeroTrustGatewayPacfiles({
+ * const exampleZeroTrustGatewayPacfiles = cloudflare.zerotrustgateway.getPacfiles({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustGatewayPacfiles:getZeroTrustGatewayPacfiles has been deprecated in favor of cloudflare:zeroTrustGateway/pacfiles:getPacfiles */
 export function getZeroTrustGatewayPacfilesOutput(args?: GetZeroTrustGatewayPacfilesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewayPacfilesResult> {
+    pulumi.log.warn("getZeroTrustGatewayPacfiles is deprecated: cloudflare:index/getZeroTrustGatewayPacfiles:getZeroTrustGatewayPacfiles has been deprecated in favor of cloudflare:zeroTrustGateway/pacfiles:getPacfiles")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustGatewayPacfiles:getZeroTrustGatewayPacfiles", {

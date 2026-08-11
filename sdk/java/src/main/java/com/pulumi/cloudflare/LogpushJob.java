@@ -32,9 +32,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.LogpushJob;
- * import com.pulumi.cloudflare.LogpushJobArgs;
- * import com.pulumi.cloudflare.inputs.LogpushJobOutputOptionsArgs;
+ * import com.pulumi.cloudflare.logpush.Job;
+ * import com.pulumi.cloudflare.logpush.JobArgs;
+ * import com.pulumi.cloudflare.logpush.inputs.JobOutputOptionsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleLogpushJob = new LogpushJob("exampleLogpushJob", LogpushJobArgs.builder()
+ *         var exampleLogpushJob = new Job("exampleLogpushJob", JobArgs.builder()
  *             .destinationConf("s3://mybucket/logs?region=us-west-2")
  *             .zoneId("zone_id")
  *             .dataset("gateway_dns")
@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *             .maxUploadIntervalSeconds(30)
  *             .maxUploadRecords(1000)
  *             .name("example.com")
- *             .outputOptions(LogpushJobOutputOptionsArgs.builder()
+ *             .outputOptions(JobOutputOptionsArgs.builder()
  *                 .batchPrefix("")
  *                 .batchSuffix("")
  *                 .cve202144228(false)
@@ -96,7 +96,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/logpushJob:LogpushJob example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;job_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/logpushJob:LogpushJob has been deprecated in favor of cloudflare:logpush/job:Job
+ * 
  */
+@Deprecated /* cloudflare:index/logpushJob:LogpushJob has been deprecated in favor of cloudflare:logpush/job:Job */
 @ResourceType(type="cloudflare:index/logpushJob:LogpushJob")
 public class LogpushJob extends com.pulumi.resources.CustomResource {
     /**

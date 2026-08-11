@@ -22,6 +22,8 @@ __all__ = [
     'get_d1_databases_output',
 ]
 
+warnings.warn("""cloudflare:index/getD1Databases:getD1Databases has been deprecated in favor of cloudflare:d1/databases:getDatabases""", DeprecationWarning)
+
 @pulumi.output_type
 class GetD1DatabasesResult:
     """
@@ -102,7 +104,7 @@ def get_d1_databases(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_d1_databases = cloudflare.get_d1_databases(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_d1_databases = cloudflare.d1.get_databases(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         name="name")
     ```
 
@@ -111,6 +113,7 @@ def get_d1_databases(account_id: Optional[_builtins.str] = None,
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str name: a database name to search for.
     """
+    pulumi.log.warn("""get_d1_databases is deprecated: cloudflare:index/getD1Databases:getD1Databases has been deprecated in favor of cloudflare:d1/databases:getDatabases""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -139,7 +142,7 @@ def get_d1_databases_output(account_id: pulumi.Input[Optional[Optional[_builtins
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_d1_databases = cloudflare.get_d1_databases(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_d1_databases = cloudflare.d1.get_databases(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         name="name")
     ```
 
@@ -148,6 +151,7 @@ def get_d1_databases_output(account_id: pulumi.Input[Optional[Optional[_builtins
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str name: a database name to search for.
     """
+    pulumi.log.warn("""get_d1_databases is deprecated: cloudflare:index/getD1Databases:getD1Databases has been deprecated in favor of cloudflare:d1/databases:getDatabases""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

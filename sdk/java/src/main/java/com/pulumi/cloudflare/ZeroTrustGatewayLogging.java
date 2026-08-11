@@ -25,12 +25,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustGatewayLogging;
- * import com.pulumi.cloudflare.ZeroTrustGatewayLoggingArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args;
+ * import com.pulumi.cloudflare.zeroTrustGateway.Logging;
+ * import com.pulumi.cloudflare.zeroTrustGateway.LoggingArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.LoggingSettingsByRuleTypeArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.LoggingSettingsByRuleTypeDnsArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.LoggingSettingsByRuleTypeHttpArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.LoggingSettingsByRuleTypeL4Args;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -44,19 +44,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustGatewayLogging = new ZeroTrustGatewayLogging("exampleZeroTrustGatewayLogging", ZeroTrustGatewayLoggingArgs.builder()
+ *         var exampleZeroTrustGatewayLogging = new Logging("exampleZeroTrustGatewayLogging", LoggingArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
  *             .redactPii(true)
- *             .settingsByRuleType(ZeroTrustGatewayLoggingSettingsByRuleTypeArgs.builder()
- *                 .dns(ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs.builder()
+ *             .settingsByRuleType(LoggingSettingsByRuleTypeArgs.builder()
+ *                 .dns(LoggingSettingsByRuleTypeDnsArgs.builder()
  *                     .logAll(false)
  *                     .logBlocks(true)
  *                     .build())
- *                 .http(ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs.builder()
+ *                 .http(LoggingSettingsByRuleTypeHttpArgs.builder()
  *                     .logAll(false)
  *                     .logBlocks(true)
  *                     .build())
- *                 .l4(ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args.builder()
+ *                 .l4(LoggingSettingsByRuleTypeL4Args.builder()
  *                     .logAll(false)
  *                     .logBlocks(true)
  *                     .build())
@@ -74,7 +74,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging example &#39;&lt;account_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging has been deprecated in favor of cloudflare:zeroTrustGateway/logging:Logging
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging has been deprecated in favor of cloudflare:zeroTrustGateway/logging:Logging */
 @ResourceType(type="cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging")
 public class ZeroTrustGatewayLogging extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

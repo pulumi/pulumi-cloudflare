@@ -21,6 +21,8 @@ __all__ = [
     'get_zero_trust_device_default_profile_certificates_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDeviceDefaultProfileCertificates:getZeroTrustDeviceDefaultProfileCertificates has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/certificates:getCertificates""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDeviceDefaultProfileCertificatesResult:
     """
@@ -72,9 +74,10 @@ def get_zero_trust_device_default_profile_certificates(zone_id: Optional[_builti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_device_default_profile_certificates = cloudflare.get_zero_trust_device_default_profile_certificates(zone_id="699d98642c564d2e855e9661899b7252")
+    example_zero_trust_device_default_profile_certificates = cloudflare.zerotrustdevicedefaultprofile.get_certificates(zone_id="699d98642c564d2e855e9661899b7252")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_device_default_profile_certificates is deprecated: cloudflare:index/getZeroTrustDeviceDefaultProfileCertificates:getZeroTrustDeviceDefaultProfileCertificates has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/certificates:getCertificates""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -97,9 +100,10 @@ def get_zero_trust_device_default_profile_certificates_output(zone_id: pulumi.In
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_device_default_profile_certificates = cloudflare.get_zero_trust_device_default_profile_certificates(zone_id="699d98642c564d2e855e9661899b7252")
+    example_zero_trust_device_default_profile_certificates = cloudflare.zerotrustdevicedefaultprofile.get_certificates(zone_id="699d98642c564d2e855e9661899b7252")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_device_default_profile_certificates is deprecated: cloudflare:index/getZeroTrustDeviceDefaultProfileCertificates:getZeroTrustDeviceDefaultProfileCertificates has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/certificates:getCertificates""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

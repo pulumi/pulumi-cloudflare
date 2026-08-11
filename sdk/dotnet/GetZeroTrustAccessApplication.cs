@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication has been deprecated in favor of cloudflare:zeroTrustAccess/application:getApplication")]
     public static class GetZeroTrustAccessApplication
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessApplication = Cloudflare.GetZeroTrustAccessApplication.Invoke(new()
+        ///     var exampleZeroTrustAccessApplication = Cloudflare.Modules.ZeroTrustAccess.GetApplication.Invoke(new()
         ///     {
         ///         AppId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         AccountId = "account_id",
@@ -46,7 +47,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessApplication = Cloudflare.GetZeroTrustAccessApplication.Invoke(new()
+        ///     var exampleZeroTrustAccessApplication = Cloudflare.Modules.ZeroTrustAccess.GetApplication.Invoke(new()
         ///     {
         ///         AppId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         AccountId = "account_id",
@@ -70,7 +71,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessApplication = Cloudflare.GetZeroTrustAccessApplication.Invoke(new()
+        ///     var exampleZeroTrustAccessApplication = Cloudflare.Modules.ZeroTrustAccess.GetApplication.Invoke(new()
         ///     {
         ///         AppId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         AccountId = "account_id",

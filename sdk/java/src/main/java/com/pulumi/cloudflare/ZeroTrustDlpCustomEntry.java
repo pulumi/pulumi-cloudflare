@@ -35,9 +35,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDlpCustomEntry;
- * import com.pulumi.cloudflare.ZeroTrustDlpCustomEntryArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomEntryPatternArgs;
+ * import com.pulumi.cloudflare.zeroTrustDlpCustom.Entry;
+ * import com.pulumi.cloudflare.zeroTrustDlpCustom.EntryArgs;
+ * import com.pulumi.cloudflare.zeroTrustDlpCustom.inputs.EntryPatternArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -51,11 +51,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustDlpCustomEntry = new ZeroTrustDlpCustomEntry("exampleZeroTrustDlpCustomEntry", ZeroTrustDlpCustomEntryArgs.builder()
+ *         var exampleZeroTrustDlpCustomEntry = new Entry("exampleZeroTrustDlpCustomEntry", EntryArgs.builder()
  *             .accountId("account_id")
  *             .enabled(true)
  *             .name("name")
- *             .pattern(ZeroTrustDlpCustomEntryPatternArgs.builder()
+ *             .pattern(EntryPatternArgs.builder()
  *                 .regex("regex")
  *                 .validation("luhn")
  *                 .build())
@@ -74,7 +74,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry example &#39;&lt;account_id&gt;/&lt;entry_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry has been deprecated in favor of cloudflare:zeroTrustDlpCustom/entry:Entry
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry has been deprecated in favor of cloudflare:zeroTrustDlpCustom/entry:Entry */
 @ResourceType(type="cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry")
 public class ZeroTrustDlpCustomEntry extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

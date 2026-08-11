@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustNetworkHostnameRoute:getZeroTrustNetworkHostnameRoute has been deprecated in favor of cloudflare:zeroTrustNetworkHostname/route:getRoute")]
     public static class GetZeroTrustNetworkHostnameRoute
     {
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustNetworkHostnameRoute = Cloudflare.GetZeroTrustNetworkHostnameRoute.Invoke(new()
+        ///     var exampleZeroTrustNetworkHostnameRoute = Cloudflare.Modules.ZeroTrustNetworkHostname.GetRoute.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         HostnameRouteId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
@@ -59,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustNetworkHostnameRoute = Cloudflare.GetZeroTrustNetworkHostnameRoute.Invoke(new()
+        ///     var exampleZeroTrustNetworkHostnameRoute = Cloudflare.Modules.ZeroTrustNetworkHostname.GetRoute.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         HostnameRouteId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
@@ -89,7 +90,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustNetworkHostnameRoute = Cloudflare.GetZeroTrustNetworkHostnameRoute.Invoke(new()
+        ///     var exampleZeroTrustNetworkHostnameRoute = Cloudflare.Modules.ZeroTrustNetworkHostname.GetRoute.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         HostnameRouteId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",

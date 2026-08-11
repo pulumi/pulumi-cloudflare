@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/list"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewListItem(ctx, "example_list_item", &cloudflare.ListItemArgs{
+//			_, err := list.NewItem(ctx, "example_list_item", &list.ItemArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ListId:    pulumi.String("2c0fc9fa937b11eaa1b71c4d701ab86e"),
 //				Ip:        pulumi.String("10.0.0.1"),
@@ -50,6 +50,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
 // ```
+//
+// Deprecated: cloudflare:index/listItem:ListItem has been deprecated in favor of cloudflare:list/item:Item
 type ListItem struct {
 	pulumi.CustomResourceState
 

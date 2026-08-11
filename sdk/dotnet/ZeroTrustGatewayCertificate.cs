@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustGatewayCertificate = new Cloudflare.ZeroTrustGatewayCertificate("example_zero_trust_gateway_certificate", new()
+    ///     var exampleZeroTrustGatewayCertificate = new Cloudflare.Modules.ZeroTrustGateway.ZeroTrustGatewayCertificate("example_zero_trust_gateway_certificate", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         ValidityPeriodDays = 1826,
@@ -35,6 +35,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate example '&lt;account_id&gt;/&lt;certificate_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate has been deprecated in favor of cloudflare:zeroTrustGateway/certificate:Certificate")]
     [CloudflareResourceType("cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate")]
     public partial class ZeroTrustGatewayCertificate : global::Pulumi.CustomResource
     {

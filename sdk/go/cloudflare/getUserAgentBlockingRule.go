@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/useragentblocking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetUserAgentBlockingRule(ctx, &cloudflare.LookupUserAgentBlockingRuleArgs{
+//			_, err := useragentblocking.GetRule(ctx, &useragentblocking.GetRuleArgs{
 //				ZoneId:   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				UaRuleId: pulumi.StringRef("372e67954025e0ba6aaa6d586b9e0b59"),
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getUserAgentBlockingRule:getUserAgentBlockingRule has been deprecated in favor of cloudflare:userAgentBlocking/rule:getRule
 func LookupUserAgentBlockingRule(ctx *pulumi.Context, args *LookupUserAgentBlockingRuleArgs, opts ...pulumi.InvokeOption) (*LookupUserAgentBlockingRuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupUserAgentBlockingRuleResult

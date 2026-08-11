@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getAccountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups has been deprecated in favor of cloudflare:accountApiTokenPermissionGroups/accountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups")]
     public static class GetAccountApiTokenPermissionGroups
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountApiTokenPermissionGroups = Cloudflare.GetAccountApiTokenPermissionGroups.Invoke(new()
+        ///     var exampleAccountApiTokenPermissionGroups = Cloudflare.Modules.AccountApiTokenPermissionGroups.GetAccountApiTokenPermissionGroups.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Name = "Account%20Settings%20Write",
@@ -56,7 +57,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountApiTokenPermissionGroups = Cloudflare.GetAccountApiTokenPermissionGroups.Invoke(new()
+        ///     var exampleAccountApiTokenPermissionGroups = Cloudflare.Modules.AccountApiTokenPermissionGroups.GetAccountApiTokenPermissionGroups.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Name = "Account%20Settings%20Write",
@@ -85,7 +86,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountApiTokenPermissionGroups = Cloudflare.GetAccountApiTokenPermissionGroups.Invoke(new()
+        ///     var exampleAccountApiTokenPermissionGroups = Cloudflare.Modules.AccountApiTokenPermissionGroups.GetAccountApiTokenPermissionGroups.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Name = "Account%20Settings%20Write",

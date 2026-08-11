@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustGatewayAppTypesList = cloudflare.getZeroTrustGatewayAppTypesList({
+ * const exampleZeroTrustGatewayAppTypesList = cloudflare.zerotrustgateway.getAppTypesList({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustGatewayAppTypesList:getZeroTrustGatewayAppTypesList has been deprecated in favor of cloudflare:zeroTrustGateway/appTypesList:getAppTypesList */
 export function getZeroTrustGatewayAppTypesList(args?: GetZeroTrustGatewayAppTypesListArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewayAppTypesListResult> {
+    pulumi.log.warn("getZeroTrustGatewayAppTypesList is deprecated: cloudflare:index/getZeroTrustGatewayAppTypesList:getZeroTrustGatewayAppTypesList has been deprecated in favor of cloudflare:zeroTrustGateway/appTypesList:getAppTypesList")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustGatewayAppTypesList:getZeroTrustGatewayAppTypesList", {
@@ -75,12 +77,14 @@ export interface GetZeroTrustGatewayAppTypesListResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustGatewayAppTypesList = cloudflare.getZeroTrustGatewayAppTypesList({
+ * const exampleZeroTrustGatewayAppTypesList = cloudflare.zerotrustgateway.getAppTypesList({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustGatewayAppTypesList:getZeroTrustGatewayAppTypesList has been deprecated in favor of cloudflare:zeroTrustGateway/appTypesList:getAppTypesList */
 export function getZeroTrustGatewayAppTypesListOutput(args?: GetZeroTrustGatewayAppTypesListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewayAppTypesListResult> {
+    pulumi.log.warn("getZeroTrustGatewayAppTypesList is deprecated: cloudflare:index/getZeroTrustGatewayAppTypesList:getZeroTrustGatewayAppTypesList has been deprecated in favor of cloudflare:zeroTrustGateway/appTypesList:getAppTypesList")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustGatewayAppTypesList:getZeroTrustGatewayAppTypesList", {

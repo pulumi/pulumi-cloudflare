@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getNotificationPolicies:getNotificationPolicies has been deprecated in favor of cloudflare:notification/policies:getPolicies")]
     public static class GetNotificationPolicies
     {
         /// <summary>
@@ -30,7 +31,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleNotificationPolicies = Cloudflare.GetNotificationPolicies.Invoke(new()
+        ///     var exampleNotificationPolicies = Cloudflare.Modules.Notification.GetPolicies.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -60,7 +61,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleNotificationPolicies = Cloudflare.GetNotificationPolicies.Invoke(new()
+        ///     var exampleNotificationPolicies = Cloudflare.Modules.Notification.GetPolicies.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -90,7 +91,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleNotificationPolicies = Cloudflare.GetNotificationPolicies.Invoke(new()
+        ///     var exampleNotificationPolicies = Cloudflare.Modules.Notification.GetPolicies.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

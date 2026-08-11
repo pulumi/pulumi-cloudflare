@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleFlagshipApp = new cloudflare.FlagshipApp("example_flagship_app", {
+ * const exampleFlagshipApp = new cloudflare.flagship.App("example_flagship_app", {
  *     accountId: "account_id",
  *     name: "x",
  * });
@@ -27,6 +27,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/flagshipApp:FlagshipApp example '<account_id>/<app_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/flagshipApp:FlagshipApp has been deprecated in favor of cloudflare:flagship/app:App
  */
 export class FlagshipApp extends pulumi.CustomResource {
     /**
@@ -39,6 +41,7 @@ export class FlagshipApp extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: FlagshipAppState, opts?: pulumi.CustomResourceOptions): FlagshipApp {
+        pulumi.log.warn("FlagshipApp is deprecated: cloudflare:index/flagshipApp:FlagshipApp has been deprecated in favor of cloudflare:flagship/app:App")
         return new FlagshipApp(name, <any>state, { ...opts, id: id });
     }
 
@@ -75,8 +78,11 @@ export class FlagshipApp extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/flagshipApp:FlagshipApp has been deprecated in favor of cloudflare:flagship/app:App */
     constructor(name: string, args: FlagshipAppArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/flagshipApp:FlagshipApp has been deprecated in favor of cloudflare:flagship/app:App */
     constructor(name: string, argsOrState?: FlagshipAppArgs | FlagshipAppState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("FlagshipApp is deprecated: cloudflare:index/flagshipApp:FlagshipApp has been deprecated in favor of cloudflare:flagship/app:App")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

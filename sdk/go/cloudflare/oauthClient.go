@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/oauth"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewOauthClient(ctx, "example_oauth_client", &cloudflare.OauthClientArgs{
+//			_, err := oauth.NewClient(ctx, "example_oauth_client", &oauth.ClientArgs{
 //				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ClientName: pulumi.String("My OAuth App"),
 //				GrantTypes: pulumi.StringArray{
@@ -71,6 +71,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/oauthClient:OauthClient has been deprecated in favor of cloudflare:oauth/client:Client
 type OauthClient struct {
 	pulumi.CustomResourceState
 

@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustTunnelWarpConnectorConfig = new cloudflare.ZeroTrustTunnelWarpConnectorConfig("example_zero_trust_tunnel_warp_connector_config", {
+ * const exampleZeroTrustTunnelWarpConnectorConfig = new cloudflare.zerotrusttunnelwarpconnector.Config("example_zero_trust_tunnel_warp_connector_config", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     tunnelId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
  *     haMode: "aws",
@@ -35,6 +35,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustTunnelWarpConnectorConfig:ZeroTrustTunnelWarpConnectorConfig example '<account_id>/<tunnel_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustTunnelWarpConnectorConfig:ZeroTrustTunnelWarpConnectorConfig has been deprecated in favor of cloudflare:zeroTrustTunnelWarpConnector/config:Config
  */
 export class ZeroTrustTunnelWarpConnectorConfig extends pulumi.CustomResource {
     /**
@@ -47,6 +49,7 @@ export class ZeroTrustTunnelWarpConnectorConfig extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustTunnelWarpConnectorConfigState, opts?: pulumi.CustomResourceOptions): ZeroTrustTunnelWarpConnectorConfig {
+        pulumi.log.warn("ZeroTrustTunnelWarpConnectorConfig is deprecated: cloudflare:index/zeroTrustTunnelWarpConnectorConfig:ZeroTrustTunnelWarpConnectorConfig has been deprecated in favor of cloudflare:zeroTrustTunnelWarpConnector/config:Config")
         return new ZeroTrustTunnelWarpConnectorConfig(name, <any>state, { ...opts, id: id });
     }
 
@@ -101,8 +104,11 @@ export class ZeroTrustTunnelWarpConnectorConfig extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustTunnelWarpConnectorConfig:ZeroTrustTunnelWarpConnectorConfig has been deprecated in favor of cloudflare:zeroTrustTunnelWarpConnector/config:Config */
     constructor(name: string, args: ZeroTrustTunnelWarpConnectorConfigArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustTunnelWarpConnectorConfig:ZeroTrustTunnelWarpConnectorConfig has been deprecated in favor of cloudflare:zeroTrustTunnelWarpConnector/config:Config */
     constructor(name: string, argsOrState?: ZeroTrustTunnelWarpConnectorConfigArgs | ZeroTrustTunnelWarpConnectorConfigState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustTunnelWarpConnectorConfig is deprecated: cloudflare:index/zeroTrustTunnelWarpConnectorConfig:ZeroTrustTunnelWarpConnectorConfig has been deprecated in favor of cloudflare:zeroTrustTunnelWarpConnector/config:Config")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

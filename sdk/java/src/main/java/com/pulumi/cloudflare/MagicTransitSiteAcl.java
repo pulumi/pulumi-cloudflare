@@ -35,10 +35,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.MagicTransitSiteAcl;
- * import com.pulumi.cloudflare.MagicTransitSiteAclArgs;
- * import com.pulumi.cloudflare.inputs.MagicTransitSiteAclLan1Args;
- * import com.pulumi.cloudflare.inputs.MagicTransitSiteAclLan2Args;
+ * import com.pulumi.cloudflare.magicTransitSite.Acl;
+ * import com.pulumi.cloudflare.magicTransitSite.AclArgs;
+ * import com.pulumi.cloudflare.magicTransitSite.inputs.AclLan1Args;
+ * import com.pulumi.cloudflare.magicTransitSite.inputs.AclLan2Args;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -52,17 +52,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleMagicTransitSiteAcl = new MagicTransitSiteAcl("exampleMagicTransitSiteAcl", MagicTransitSiteAclArgs.builder()
+ *         var exampleMagicTransitSiteAcl = new Acl("exampleMagicTransitSiteAcl", AclArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .siteId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .lan1(MagicTransitSiteAclLan1Args.builder()
+ *             .lan1(AclLan1Args.builder()
  *                 .lanId("lan_id")
  *                 .lanName("lan_name")
  *                 .portRanges("8080-9000")
  *                 .ports(1)
  *                 .subnets("192.0.2.1")
  *                 .build())
- *             .lan2(MagicTransitSiteAclLan2Args.builder()
+ *             .lan2(AclLan2Args.builder()
  *                 .lanId("lan_id")
  *                 .lanName("lan_name")
  *                 .portRanges("8080-9000")
@@ -87,7 +87,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/magicTransitSiteAcl:MagicTransitSiteAcl example &#39;&lt;account_id&gt;/&lt;site_id&gt;/&lt;acl_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/magicTransitSiteAcl:MagicTransitSiteAcl has been deprecated in favor of cloudflare:magicTransitSite/acl:Acl
+ * 
  */
+@Deprecated /* cloudflare:index/magicTransitSiteAcl:MagicTransitSiteAcl has been deprecated in favor of cloudflare:magicTransitSite/acl:Acl */
 @ResourceType(type="cloudflare:index/magicTransitSiteAcl:MagicTransitSiteAcl")
 public class MagicTransitSiteAcl extends com.pulumi.resources.CustomResource {
     /**

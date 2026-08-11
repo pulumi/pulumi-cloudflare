@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getLogpushDatasetField:getLogpushDatasetField has been deprecated in favor of cloudflare:logpushDataset/field:getField")]
     public static class GetLogpushDatasetField
     {
         /// <summary>
@@ -26,7 +27,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLogpushDatasetField = Cloudflare.GetLogpushDatasetField.Invoke(new()
+        ///     var exampleLogpushDatasetField = Cloudflare.Modules.LogpushDataset.GetField.Invoke(new()
         ///     {
         ///         DatasetId = "gateway_dns",
         ///         AccountId = "account_id",
@@ -54,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLogpushDatasetField = Cloudflare.GetLogpushDatasetField.Invoke(new()
+        ///     var exampleLogpushDatasetField = Cloudflare.Modules.LogpushDataset.GetField.Invoke(new()
         ///     {
         ///         DatasetId = "gateway_dns",
         ///         AccountId = "account_id",
@@ -82,7 +83,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLogpushDatasetField = Cloudflare.GetLogpushDatasetField.Invoke(new()
+        ///     var exampleLogpushDatasetField = Cloudflare.Modules.LogpushDataset.GetField.Invoke(new()
         ///     {
         ///         DatasetId = "gateway_dns",
         ///         AccountId = "account_id",

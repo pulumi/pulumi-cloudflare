@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.EmailSecurityImpersonationRegistry;
- * import com.pulumi.cloudflare.EmailSecurityImpersonationRegistryArgs;
+ * import com.pulumi.cloudflare.emailSecurityImpersonation.Registry;
+ * import com.pulumi.cloudflare.emailSecurityImpersonation.RegistryArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleEmailSecurityImpersonationRegistry = new EmailSecurityImpersonationRegistry("exampleEmailSecurityImpersonationRegistry", EmailSecurityImpersonationRegistryArgs.builder()
+ *         var exampleEmailSecurityImpersonationRegistry = new Registry("exampleEmailSecurityImpersonationRegistry", RegistryArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .email("email")
  *             .isEmailRegex(true)
@@ -64,7 +64,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry example &#39;&lt;account_id&gt;/&lt;display_name_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry has been deprecated in favor of cloudflare:emailSecurityImpersonation/registry:Registry
+ * 
  */
+@Deprecated /* cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry has been deprecated in favor of cloudflare:emailSecurityImpersonation/registry:Registry */
 @ResourceType(type="cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry")
 public class EmailSecurityImpersonationRegistry extends com.pulumi.resources.CustomResource {
     /**

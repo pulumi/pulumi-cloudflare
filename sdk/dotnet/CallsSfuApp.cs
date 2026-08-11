@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCallsSfuApp = new Cloudflare.CallsSfuApp("example_calls_sfu_app", new()
+    ///     var exampleCallsSfuApp = new Cloudflare.Modules.CallsSfu.CallsSfuApp("example_calls_sfu_app", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "production-realtime-app",
@@ -38,6 +38,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/callsSfuApp:CallsSfuApp has been deprecated in favor of cloudflare:callsSfu/app:App")]
     [CloudflareResourceType("cloudflare:index/callsSfuApp:CallsSfuApp")]
     public partial class CallsSfuApp : global::Pulumi.CustomResource
     {

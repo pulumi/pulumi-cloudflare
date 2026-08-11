@@ -16,13 +16,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMtlsCertificateAssociations = cloudflare.getMtlsCertificateAssociations({
+ * const exampleMtlsCertificateAssociations = cloudflare.mtlscertificate.getAssociations({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     mtlsCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getMtlsCertificateAssociations:getMtlsCertificateAssociations has been deprecated in favor of cloudflare:mtlsCertificate/associations:getAssociations */
 export function getMtlsCertificateAssociations(args: GetMtlsCertificateAssociationsArgs, opts?: pulumi.InvokeOptions): Promise<GetMtlsCertificateAssociationsResult> {
+    pulumi.log.warn("getMtlsCertificateAssociations is deprecated: cloudflare:index/getMtlsCertificateAssociations:getMtlsCertificateAssociations has been deprecated in favor of cloudflare:mtlsCertificate/associations:getAssociations")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getMtlsCertificateAssociations:getMtlsCertificateAssociations", {
         "accountId": args.accountId,
@@ -77,13 +79,15 @@ export interface GetMtlsCertificateAssociationsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMtlsCertificateAssociations = cloudflare.getMtlsCertificateAssociations({
+ * const exampleMtlsCertificateAssociations = cloudflare.mtlscertificate.getAssociations({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     mtlsCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getMtlsCertificateAssociations:getMtlsCertificateAssociations has been deprecated in favor of cloudflare:mtlsCertificate/associations:getAssociations */
 export function getMtlsCertificateAssociationsOutput(args: GetMtlsCertificateAssociationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMtlsCertificateAssociationsResult> {
+    pulumi.log.warn("getMtlsCertificateAssociations is deprecated: cloudflare:index/getMtlsCertificateAssociations:getMtlsCertificateAssociations has been deprecated in favor of cloudflare:mtlsCertificate/associations:getAssociations")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getMtlsCertificateAssociations:getMtlsCertificateAssociations", {
         "accountId": args.accountId,

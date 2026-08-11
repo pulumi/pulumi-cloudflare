@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/stream"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewStreamWatermark(ctx, "example_stream_watermark", &cloudflare.StreamWatermarkArgs{
+//			_, err := stream.NewWatermark(ctx, "example_stream_watermark", &stream.WatermarkArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:      pulumi.String("Marketing Videos"),
 //				Opacity:   pulumi.Float64(0.75),
@@ -52,6 +52,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/streamWatermark:StreamWatermark has been deprecated in favor of cloudflare:stream/watermark:Watermark
 type StreamWatermark struct {
 	pulumi.CustomResourceState
 
