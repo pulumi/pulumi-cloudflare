@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdlpsensitivitylevel"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDlpSensitivityLevel(ctx, "example_zero_trust_dlp_sensitivity_level", &cloudflare.ZeroTrustDlpSensitivityLevelArgs{
+//			_, err := zerotrustdlpsensitivitylevel.NewZeroTrustDlpSensitivityLevel(ctx, "example_zero_trust_dlp_sensitivity_level", &zerotrustdlpsensitivitylevel.ZeroTrustDlpSensitivityLevelArgs{
 //				AccountId:          pulumi.String("account_id"),
 //				SensitivityGroupId: pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
 //				Name:               pulumi.String("name"),
@@ -51,6 +51,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel example '<account_id>/<sensitivity_group_id>/<sensitivity_level_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel
 type ZeroTrustDlpSensitivityLevel struct {
 	pulumi.CustomResourceState
 

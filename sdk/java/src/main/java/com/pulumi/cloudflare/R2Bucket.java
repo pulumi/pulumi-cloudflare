@@ -27,8 +27,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.R2Bucket;
- * import com.pulumi.cloudflare.R2BucketArgs;
+ * import com.pulumi.cloudflare.r2Bucket.R2Bucket;
+ * import com.pulumi.cloudflare.r2Bucket.R2BucketArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -60,7 +60,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/r2Bucket:R2Bucket example &#39;&lt;account_id&gt;/&lt;bucket_name&gt;/&lt;jurisdiction&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/r2Bucket:R2Bucket has been deprecated in favor of cloudflare:r2Bucket/r2Bucket:R2Bucket
+ * 
  */
+@Deprecated /* cloudflare:index/r2Bucket:R2Bucket has been deprecated in favor of cloudflare:r2Bucket/r2Bucket:R2Bucket */
 @ResourceType(type="cloudflare:index/r2Bucket:R2Bucket")
 public class R2Bucket extends com.pulumi.resources.CustomResource {
     /**

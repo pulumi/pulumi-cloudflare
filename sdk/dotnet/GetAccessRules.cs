@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getAccessRules:getAccessRules has been deprecated in favor of cloudflare:access/rules:getRules")]
     public static class GetAccessRules
     {
         /// <summary>
@@ -27,11 +28,11 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccessRules = Cloudflare.GetAccessRules.Invoke(new()
+        ///     var exampleAccessRules = Cloudflare.Modules.Access.GetRules.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",
-        ///         Configuration = new Cloudflare.Inputs.GetAccessRulesConfigurationInputArgs
+        ///         Configuration = new Cloudflare.Modules.Access.Inputs.GetRulesConfigurationInputArgs
         ///         {
         ///             Target = "ip",
         ///             Value = "198.51.100.4",
@@ -64,11 +65,11 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccessRules = Cloudflare.GetAccessRules.Invoke(new()
+        ///     var exampleAccessRules = Cloudflare.Modules.Access.GetRules.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",
-        ///         Configuration = new Cloudflare.Inputs.GetAccessRulesConfigurationInputArgs
+        ///         Configuration = new Cloudflare.Modules.Access.Inputs.GetRulesConfigurationInputArgs
         ///         {
         ///             Target = "ip",
         ///             Value = "198.51.100.4",
@@ -101,11 +102,11 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccessRules = Cloudflare.GetAccessRules.Invoke(new()
+        ///     var exampleAccessRules = Cloudflare.Modules.Access.GetRules.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",
-        ///         Configuration = new Cloudflare.Inputs.GetAccessRulesConfigurationInputArgs
+        ///         Configuration = new Cloudflare.Modules.Access.Inputs.GetRulesConfigurationInputArgs
         ///         {
         ///             Target = "ip",
         ///             Value = "198.51.100.4",

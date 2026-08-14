@@ -20,13 +20,13 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleShare = new Cloudflare.Share("example_share", new()
+    ///     var exampleShare = new Cloudflare.Modules.Share.Share("example_share", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "My Shared WAF Managed Rule",
     ///         Recipients = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ShareRecipientArgs
+    ///             new Cloudflare.Modules.Share.Inputs.ShareRecipientArgs
     ///             {
     ///                 OrganizationId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///                 RecipientAccountId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -34,7 +34,7 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         Resources = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ShareResourceArgs
+    ///             new Cloudflare.Modules.Share.Inputs.ShareResourceArgs
     ///             {
     ///                 Meta = null,
     ///                 ResourceAccountId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -53,6 +53,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/share:Share example '&lt;account_id&gt;/&lt;share_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/share:Share has been deprecated in favor of cloudflare:share/share:Share")]
     [CloudflareResourceType("cloudflare:index/share:Share")]
     public partial class Share : global::Pulumi.CustomResource
     {

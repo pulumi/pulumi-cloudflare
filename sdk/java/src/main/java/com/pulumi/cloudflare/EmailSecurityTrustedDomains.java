@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.EmailSecurityTrustedDomains;
- * import com.pulumi.cloudflare.EmailSecurityTrustedDomainsArgs;
+ * import com.pulumi.cloudflare.emailSecurityTrustedDomains.EmailSecurityTrustedDomains;
+ * import com.pulumi.cloudflare.emailSecurityTrustedDomains.EmailSecurityTrustedDomainsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -65,7 +65,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains example &#39;&lt;account_id&gt;/&lt;trusted_domain_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains has been deprecated in favor of cloudflare:emailSecurityTrustedDomains/emailSecurityTrustedDomains:EmailSecurityTrustedDomains
+ * 
  */
+@Deprecated /* cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains has been deprecated in favor of cloudflare:emailSecurityTrustedDomains/emailSecurityTrustedDomains:EmailSecurityTrustedDomains */
 @ResourceType(type="cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains")
 public class EmailSecurityTrustedDomains extends com.pulumi.resources.CustomResource {
     /**

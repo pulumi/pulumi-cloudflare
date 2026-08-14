@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleOauthClient = new cloudflare.OauthClient("example_oauth_client", {
+ * const exampleOauthClient = new cloudflare.oauth.Client("example_oauth_client", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     clientName: "My OAuth App",
  *     grantTypes: [
@@ -41,6 +41,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/oauthClient:OauthClient has been deprecated in favor of cloudflare:oauth/client:Client
  */
 export class OauthClient extends pulumi.CustomResource {
     /**
@@ -53,6 +55,7 @@ export class OauthClient extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: OauthClientState, opts?: pulumi.CustomResourceOptions): OauthClient {
+        pulumi.log.warn("OauthClient is deprecated: cloudflare:index/oauthClient:OauthClient has been deprecated in favor of cloudflare:oauth/client:Client")
         return new OauthClient(name, <any>state, { ...opts, id: id });
     }
 
@@ -168,8 +171,11 @@ export class OauthClient extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/oauthClient:OauthClient has been deprecated in favor of cloudflare:oauth/client:Client */
     constructor(name: string, args: OauthClientArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/oauthClient:OauthClient has been deprecated in favor of cloudflare:oauth/client:Client */
     constructor(name: string, argsOrState?: OauthClientArgs | OauthClientState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("OauthClient is deprecated: cloudflare:index/oauthClient:OauthClient has been deprecated in favor of cloudflare:oauth/client:Client")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getSnippetRulesList:getSnippetRulesList has been deprecated in favor of cloudflare:snippetRules/list:getList")]
     public static class GetSnippetRulesList
     {
         public static Task<GetSnippetRulesListResult> InvokeAsync(GetSnippetRulesListArgs args, InvokeOptions? options = null)

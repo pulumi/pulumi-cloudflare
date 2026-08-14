@@ -20,13 +20,13 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDeviceDeploymentGroups = new Cloudflare.ZeroTrustDeviceDeploymentGroups("example_zero_trust_device_deployment_groups", new()
+    ///     var exampleZeroTrustDeviceDeploymentGroups = new Cloudflare.Modules.ZeroTrustDeviceDeploymentGroups.ZeroTrustDeviceDeploymentGroups("example_zero_trust_device_deployment_groups", new()
     ///     {
     ///         AccountId = "account_id",
     ///         Name = "Engineering Ring 0",
     ///         VersionConfigs = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustDeviceDeploymentGroupsVersionConfigArgs
+    ///             new Cloudflare.Modules.ZeroTrustDeviceDeploymentGroups.Inputs.ZeroTrustDeviceDeploymentGroupsVersionConfigArgs
     ///             {
     ///                 TargetEnvironment = "windows",
     ///                 Version = "2026.6.234.0",
@@ -47,6 +47,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups example '&lt;account_id&gt;/&lt;group_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups")]
     [CloudflareResourceType("cloudflare:index/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups")]
     public partial class ZeroTrustDeviceDeploymentGroups : global::Pulumi.CustomResource
     {

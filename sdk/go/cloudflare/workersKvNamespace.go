@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/workerskv"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWorkersKvNamespace(ctx, "example_workers_kv_namespace", &cloudflare.WorkersKvNamespaceArgs{
+//			_, err := workerskv.NewNamespace(ctx, "example_workers_kv_namespace", &workerskv.NamespaceArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Title:     pulumi.String("My Own Namespace"),
 //			})
@@ -49,6 +49,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example '<account_id>/<namespace_id>'
 // ```
+//
+// Deprecated: cloudflare:index/workersKvNamespace:WorkersKvNamespace has been deprecated in favor of cloudflare:workersKv/namespace:Namespace
 type WorkersKvNamespace struct {
 	pulumi.CustomResourceState
 

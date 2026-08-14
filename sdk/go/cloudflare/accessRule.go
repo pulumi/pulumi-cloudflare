@@ -24,15 +24,15 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/access"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAccessRule(ctx, "example_access_rule", &cloudflare.AccessRuleArgs{
-//				Configuration: &cloudflare.AccessRuleConfigurationArgs{
+//			_, err := access.NewRule(ctx, "example_access_rule", &access.RuleArgs{
+//				Configuration: &access.RuleConfigurationArgs{
 //					Target: pulumi.String("ip"),
 //					Value:  pulumi.String("198.51.100.4"),
 //				},
@@ -54,6 +54,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/accessRule:AccessRule example '<{accounts|zones}/{account_id|zone_id}>/<rule_id>'
 // ```
+//
+// Deprecated: cloudflare:index/accessRule:AccessRule has been deprecated in favor of cloudflare:access/rule:Rule
 type AccessRule struct {
 	pulumi.CustomResourceState
 

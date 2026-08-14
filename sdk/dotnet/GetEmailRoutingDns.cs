@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getEmailRoutingDns:getEmailRoutingDns has been deprecated in favor of cloudflare:emailRouting/dns:getDns")]
     public static class GetEmailRoutingDns
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailRoutingDns = Cloudflare.GetEmailRoutingDns.Invoke(new()
+        ///     var exampleEmailRoutingDns = Cloudflare.Modules.EmailRouting.GetDns.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Subdomain = "example.net",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailRoutingDns = Cloudflare.GetEmailRoutingDns.Invoke(new()
+        ///     var exampleEmailRoutingDns = Cloudflare.Modules.EmailRouting.GetDns.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Subdomain = "example.net",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailRoutingDns = Cloudflare.GetEmailRoutingDns.Invoke(new()
+        ///     var exampleEmailRoutingDns = Cloudflare.Modules.EmailRouting.GetDns.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Subdomain = "example.net",

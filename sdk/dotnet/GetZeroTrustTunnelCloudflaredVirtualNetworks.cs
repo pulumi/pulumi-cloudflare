@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustTunnelCloudflaredVirtualNetworks:getZeroTrustTunnelCloudflaredVirtualNetworks has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflaredVirtual/networks:getNetworks")]
     public static class GetZeroTrustTunnelCloudflaredVirtualNetworks
     {
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustTunnelCloudflaredVirtualNetworks = Cloudflare.GetZeroTrustTunnelCloudflaredVirtualNetworks.Invoke(new()
+        ///     var exampleZeroTrustTunnelCloudflaredVirtualNetworks = Cloudflare.Modules.ZeroTrustTunnelCloudflaredVirtual.GetNetworks.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         Id = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
@@ -63,7 +64,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustTunnelCloudflaredVirtualNetworks = Cloudflare.GetZeroTrustTunnelCloudflaredVirtualNetworks.Invoke(new()
+        ///     var exampleZeroTrustTunnelCloudflaredVirtualNetworks = Cloudflare.Modules.ZeroTrustTunnelCloudflaredVirtual.GetNetworks.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         Id = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
@@ -97,7 +98,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustTunnelCloudflaredVirtualNetworks = Cloudflare.GetZeroTrustTunnelCloudflaredVirtualNetworks.Invoke(new()
+        ///     var exampleZeroTrustTunnelCloudflaredVirtualNetworks = Cloudflare.Modules.ZeroTrustTunnelCloudflaredVirtual.GetNetworks.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         Id = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",

@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/emailrouting"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetEmailRoutingAddress(ctx, &cloudflare.LookupEmailRoutingAddressArgs{
+//			_, err := emailrouting.GetAddress(ctx, &emailrouting.GetAddressArgs{
 //				AccountId:                    pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				DestinationAddressIdentifier: pulumi.StringRef("ea95132c15732412d22c1476fa83f27a"),
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getEmailRoutingAddress:getEmailRoutingAddress has been deprecated in favor of cloudflare:emailRouting/address:getAddress
 func LookupEmailRoutingAddress(ctx *pulumi.Context, args *LookupEmailRoutingAddressArgs, opts ...pulumi.InvokeOption) (*LookupEmailRoutingAddressResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEmailRoutingAddressResult

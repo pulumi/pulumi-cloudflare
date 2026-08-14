@@ -189,8 +189,13 @@ class _UserAgentBlockingRuleState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule has been deprecated in favor of cloudflare:userAgentBlocking/rule:Rule""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule")
 class UserAgentBlockingRule(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule has been deprecated in favor of cloudflare:userAgentBlocking/rule:Rule""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -213,7 +218,7 @@ class UserAgentBlockingRule(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_user_agent_blocking_rule = cloudflare.UserAgentBlockingRule("example_user_agent_blocking_rule",
+        example_user_agent_blocking_rule = cloudflare.useragentblocking.Rule("example_user_agent_blocking_rule",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             configuration={
                 "target": "ua",
@@ -257,7 +262,7 @@ class UserAgentBlockingRule(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_user_agent_blocking_rule = cloudflare.UserAgentBlockingRule("example_user_agent_blocking_rule",
+        example_user_agent_blocking_rule = cloudflare.useragentblocking.Rule("example_user_agent_blocking_rule",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             configuration={
                 "target": "ua",
@@ -296,6 +301,7 @@ class UserAgentBlockingRule(pulumi.CustomResource):
                  paused: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""UserAgentBlockingRule is deprecated: cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule has been deprecated in favor of cloudflare:userAgentBlocking/rule:Rule""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

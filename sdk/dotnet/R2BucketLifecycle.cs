@@ -20,31 +20,31 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleR2BucketLifecycle = new Cloudflare.R2BucketLifecycle("example_r2_bucket_lifecycle", new()
+    ///     var exampleR2BucketLifecycle = new Cloudflare.Modules.R2Bucket.R2BucketLifecycle("example_r2_bucket_lifecycle", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         BucketName = "example-bucket",
     ///         Rules = new[]
     ///         {
-    ///             new Cloudflare.Inputs.R2BucketLifecycleRuleArgs
+    ///             new Cloudflare.Modules.R2Bucket.Inputs.LifecycleRuleArgs
     ///             {
     ///                 Id = "Expire all objects older than 24 hours",
-    ///                 Conditions = new Cloudflare.Inputs.R2BucketLifecycleRuleConditionsArgs
+    ///                 Conditions = new Cloudflare.Modules.R2Bucket.Inputs.LifecycleRuleConditionsArgs
     ///                 {
     ///                     Prefix = "prefix",
     ///                 },
     ///                 Enabled = true,
-    ///                 AbortMultipartUploadsTransition = new Cloudflare.Inputs.R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs
+    ///                 AbortMultipartUploadsTransition = new Cloudflare.Modules.R2Bucket.Inputs.LifecycleRuleAbortMultipartUploadsTransitionArgs
     ///                 {
-    ///                     Condition = new Cloudflare.Inputs.R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs
+    ///                     Condition = new Cloudflare.Modules.R2Bucket.Inputs.LifecycleRuleAbortMultipartUploadsTransitionConditionArgs
     ///                     {
     ///                         MaxAge = 0,
     ///                         Type = "Age",
     ///                     },
     ///                 },
-    ///                 DeleteObjectsTransition = new Cloudflare.Inputs.R2BucketLifecycleRuleDeleteObjectsTransitionArgs
+    ///                 DeleteObjectsTransition = new Cloudflare.Modules.R2Bucket.Inputs.LifecycleRuleDeleteObjectsTransitionArgs
     ///                 {
-    ///                     Condition = new Cloudflare.Inputs.R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs
+    ///                     Condition = new Cloudflare.Modules.R2Bucket.Inputs.LifecycleRuleDeleteObjectsTransitionConditionArgs
     ///                     {
     ///                         MaxAge = 0,
     ///                         Type = "Age",
@@ -52,9 +52,9 @@ namespace Pulumi.Cloudflare
     ///                 },
     ///                 StorageClassTransitions = new[]
     ///                 {
-    ///                     new Cloudflare.Inputs.R2BucketLifecycleRuleStorageClassTransitionArgs
+    ///                     new Cloudflare.Modules.R2Bucket.Inputs.LifecycleRuleStorageClassTransitionArgs
     ///                     {
-    ///                         Condition = new Cloudflare.Inputs.R2BucketLifecycleRuleStorageClassTransitionConditionArgs
+    ///                         Condition = new Cloudflare.Modules.R2Bucket.Inputs.LifecycleRuleStorageClassTransitionConditionArgs
     ///                         {
     ///                             MaxAge = 0,
     ///                             Type = "Age",
@@ -73,6 +73,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/r2BucketLifecycle:R2BucketLifecycle has been deprecated in favor of cloudflare:r2Bucket/lifecycle:Lifecycle")]
     [CloudflareResourceType("cloudflare:index/r2BucketLifecycle:R2BucketLifecycle")]
     public partial class R2BucketLifecycle : global::Pulumi.CustomResource
     {

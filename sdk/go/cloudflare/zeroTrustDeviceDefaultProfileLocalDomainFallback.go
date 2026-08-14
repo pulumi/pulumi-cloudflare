@@ -23,17 +23,17 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdevicedefaultprofile"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDeviceDefaultProfileLocalDomainFallback(ctx, "example_zero_trust_device_default_profile_local_domain_fallback", &cloudflare.ZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs{
+//			_, err := zerotrustdevicedefaultprofile.NewLocalDomainFallback(ctx, "example_zero_trust_device_default_profile_local_domain_fallback", &zerotrustdevicedefaultprofile.LocalDomainFallbackArgs{
 //				AccountId: pulumi.String("699d98642c564d2e855e9661899b7252"),
-//				Domains: cloudflare.ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArray{
-//					&cloudflare.ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs{
+//				Domains: zerotrustdevicedefaultprofile.LocalDomainFallbackDomainArray{
+//					&zerotrustdevicedefaultprofile.LocalDomainFallbackDomainArgs{
 //						Suffix:      pulumi.String("example.com"),
 //						Description: pulumi.String("Domain bypass for local development"),
 //						DnsServer: []string{
@@ -56,6 +56,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustDeviceDefaultProfileLocalDomainFallback:ZeroTrustDeviceDefaultProfileLocalDomainFallback example '<account_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustDeviceDefaultProfileLocalDomainFallback:ZeroTrustDeviceDefaultProfileLocalDomainFallback has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/localDomainFallback:LocalDomainFallback
 type ZeroTrustDeviceDefaultProfileLocalDomainFallback struct {
 	pulumi.CustomResourceState
 

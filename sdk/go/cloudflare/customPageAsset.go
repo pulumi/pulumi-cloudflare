@@ -19,14 +19,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/custompage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewCustomPageAsset(ctx, "example_custom_page_asset", &cloudflare.CustomPageAssetArgs{
+//			_, err := custompage.NewAsset(ctx, "example_custom_page_asset", &custompage.AssetArgs{
 //				Description: pulumi.String("Custom 500 error page"),
 //				Name:        pulumi.String("my_custom_error_page"),
 //				Url:         pulumi.String("https://example.com/error.html"),
@@ -46,6 +46,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/customPageAsset:CustomPageAsset example '<{accounts|zones}/{account_id|zone_id}>/<asset_name>'
 // ```
+//
+// Deprecated: cloudflare:index/customPageAsset:CustomPageAsset has been deprecated in favor of cloudflare:customPage/asset:Asset
 type CustomPageAsset struct {
 	pulumi.CustomResourceState
 

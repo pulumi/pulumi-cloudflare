@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleContentScanning = cloudflare.getContentScanning({
+ * const exampleContentScanning = cloudflare.contentscanning.getContentScanning({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getContentScanning:getContentScanning has been deprecated in favor of cloudflare:contentScanning/contentScanning:getContentScanning */
 export function getContentScanning(args?: GetContentScanningArgs, opts?: pulumi.InvokeOptions): Promise<GetContentScanningResult> {
+    pulumi.log.warn("getContentScanning is deprecated: cloudflare:index/getContentScanning:getContentScanning has been deprecated in favor of cloudflare:contentScanning/contentScanning:getContentScanning")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getContentScanning:getContentScanning", {
@@ -72,12 +74,14 @@ export interface GetContentScanningResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleContentScanning = cloudflare.getContentScanning({
+ * const exampleContentScanning = cloudflare.contentscanning.getContentScanning({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getContentScanning:getContentScanning has been deprecated in favor of cloudflare:contentScanning/contentScanning:getContentScanning */
 export function getContentScanningOutput(args?: GetContentScanningOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetContentScanningResult> {
+    pulumi.log.warn("getContentScanning is deprecated: cloudflare:index/getContentScanning:getContentScanning has been deprecated in favor of cloudflare:contentScanning/contentScanning:getContentScanning")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getContentScanning:getContentScanning", {

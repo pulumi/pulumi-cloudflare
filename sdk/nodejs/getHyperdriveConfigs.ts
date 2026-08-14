@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleHyperdriveConfigs = cloudflare.getHyperdriveConfigs({
+ * const exampleHyperdriveConfigs = cloudflare.hyperdrive.getConfigs({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getHyperdriveConfigs:getHyperdriveConfigs has been deprecated in favor of cloudflare:hyperdrive/configs:getConfigs */
 export function getHyperdriveConfigs(args?: GetHyperdriveConfigsArgs, opts?: pulumi.InvokeOptions): Promise<GetHyperdriveConfigsResult> {
+    pulumi.log.warn("getHyperdriveConfigs is deprecated: cloudflare:index/getHyperdriveConfigs:getHyperdriveConfigs has been deprecated in favor of cloudflare:hyperdrive/configs:getConfigs")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getHyperdriveConfigs:getHyperdriveConfigs", {
@@ -75,12 +77,14 @@ export interface GetHyperdriveConfigsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleHyperdriveConfigs = cloudflare.getHyperdriveConfigs({
+ * const exampleHyperdriveConfigs = cloudflare.hyperdrive.getConfigs({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getHyperdriveConfigs:getHyperdriveConfigs has been deprecated in favor of cloudflare:hyperdrive/configs:getConfigs */
 export function getHyperdriveConfigsOutput(args?: GetHyperdriveConfigsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHyperdriveConfigsResult> {
+    pulumi.log.warn("getHyperdriveConfigs is deprecated: cloudflare:index/getHyperdriveConfigs:getHyperdriveConfigs has been deprecated in favor of cloudflare:hyperdrive/configs:getConfigs")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getHyperdriveConfigs:getHyperdriveConfigs", {

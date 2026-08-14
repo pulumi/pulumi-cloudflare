@@ -21,6 +21,8 @@ __all__ = [
     'get_byo_ip_prefix_output',
 ]
 
+warnings.warn("""cloudflare:index/getByoIpPrefix:getByoIpPrefix has been deprecated in favor of cloudflare:byoIp/prefix:getPrefix""", DeprecationWarning)
+
 @pulumi.output_type
 class GetByoIpPrefixResult:
     """
@@ -282,7 +284,7 @@ def get_byo_ip_prefix(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_byo_ip_prefix = cloudflare.get_byo_ip_prefix(account_id="258def64c72dae45f3e4c8516e2111f2",
+    example_byo_ip_prefix = cloudflare.byoip.get_prefix(account_id="258def64c72dae45f3e4c8516e2111f2",
         prefix_id="2af39739cc4e3b5910c918468bb89828")
     ```
 
@@ -290,6 +292,7 @@ def get_byo_ip_prefix(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Identifier of a Cloudflare account.
     :param _builtins.str prefix_id: Identifier of an IP Prefix.
     """
+    pulumi.log.warn("""get_byo_ip_prefix is deprecated: cloudflare:index/getByoIpPrefix:getByoIpPrefix has been deprecated in favor of cloudflare:byoIp/prefix:getPrefix""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['prefixId'] = prefix_id
@@ -335,7 +338,7 @@ def get_byo_ip_prefix_output(account_id: pulumi.Input[Optional[Optional[_builtin
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_byo_ip_prefix = cloudflare.get_byo_ip_prefix(account_id="258def64c72dae45f3e4c8516e2111f2",
+    example_byo_ip_prefix = cloudflare.byoip.get_prefix(account_id="258def64c72dae45f3e4c8516e2111f2",
         prefix_id="2af39739cc4e3b5910c918468bb89828")
     ```
 
@@ -343,6 +346,7 @@ def get_byo_ip_prefix_output(account_id: pulumi.Input[Optional[Optional[_builtin
     :param _builtins.str account_id: Identifier of a Cloudflare account.
     :param _builtins.str prefix_id: Identifier of an IP Prefix.
     """
+    pulumi.log.warn("""get_byo_ip_prefix is deprecated: cloudflare:index/getByoIpPrefix:getByoIpPrefix has been deprecated in favor of cloudflare:byoIp/prefix:getPrefix""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['prefixId'] = prefix_id

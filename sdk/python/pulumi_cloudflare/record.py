@@ -552,7 +552,7 @@ class Record(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_dns_record = cloudflare.DnsRecord("example_dns_record",
+        example_dns_record = cloudflare.dns.Record("example_dns_record",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="example.com",
             ttl=float(3600),
@@ -609,7 +609,7 @@ class Record(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_dns_record = cloudflare.DnsRecord("example_dns_record",
+        example_dns_record = cloudflare.dns.Record("example_dns_record",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="example.com",
             ttl=float(3600),
@@ -695,8 +695,6 @@ class Record(pulumi.CustomResource):
             __props__.__dict__["modified_on"] = None
             __props__.__dict__["proxiable"] = None
             __props__.__dict__["tags_modified_on"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/record:Record")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Record, __self__).__init__(
             'cloudflare:index/record:Record',
             resource_name,

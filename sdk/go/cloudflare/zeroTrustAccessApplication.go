@@ -18,6 +18,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication example '<{accounts|zones}/{account_id|zone_id}>/<app_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication has been deprecated in favor of cloudflare:zeroTrustAccess/application:Application
 type ZeroTrustAccessApplication struct {
 	pulumi.CustomResourceState
 

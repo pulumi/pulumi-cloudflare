@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getWebAnalyticsSite:getWebAnalyticsSite has been deprecated in favor of cloudflare:webAnalytics/site:getSite")]
     public static class GetWebAnalyticsSite
     {
         /// <summary>
@@ -26,7 +27,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWebAnalyticsSite = Cloudflare.GetWebAnalyticsSite.Invoke(new()
+        ///     var exampleWebAnalyticsSite = Cloudflare.Modules.WebAnalytics.GetSite.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         SiteId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -53,7 +54,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWebAnalyticsSite = Cloudflare.GetWebAnalyticsSite.Invoke(new()
+        ///     var exampleWebAnalyticsSite = Cloudflare.Modules.WebAnalytics.GetSite.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         SiteId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -80,7 +81,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWebAnalyticsSite = Cloudflare.GetWebAnalyticsSite.Invoke(new()
+        ///     var exampleWebAnalyticsSite = Cloudflare.Modules.WebAnalytics.GetSite.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         SiteId = "023e105f4ecef8ad9ca31a8372d0c353",

@@ -274,8 +274,13 @@ class _D1DatabaseState:
         pulumi.set(self, "version", value)
 
 
+warnings.warn("""cloudflare:index/d1Database:D1Database has been deprecated in favor of cloudflare:d1/database:Database""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/d1Database:D1Database")
 class D1Database(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/d1Database:D1Database has been deprecated in favor of cloudflare:d1/database:Database""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -301,7 +306,7 @@ class D1Database(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_d1_database = cloudflare.D1Database("example_d1_database",
+        example_d1_database = cloudflare.d1.Database("example_d1_database",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="my-database",
             jurisdiction="eu",
@@ -346,7 +351,7 @@ class D1Database(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_d1_database = cloudflare.D1Database("example_d1_database",
+        example_d1_database = cloudflare.d1.Database("example_d1_database",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="my-database",
             jurisdiction="eu",
@@ -381,6 +386,7 @@ class D1Database(pulumi.CustomResource):
                  primary_location_hint: pulumi.Input[Optional[_builtins.str]] = None,
                  read_replication: pulumi.Input[Optional[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict']]] = None,
                  __props__=None):
+        pulumi.log.warn("""D1Database is deprecated: cloudflare:index/d1Database:D1Database has been deprecated in favor of cloudflare:d1/database:Database""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

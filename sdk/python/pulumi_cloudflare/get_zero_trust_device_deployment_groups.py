@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_device_deployment_groups_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDeviceDeploymentGroups:getZeroTrustDeviceDeploymentGroups has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/zeroTrustDeviceDeploymentGroups:getZeroTrustDeviceDeploymentGroups""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDeviceDeploymentGroupsResult:
     """
@@ -138,10 +140,11 @@ def get_zero_trust_device_deployment_groups(account_id: Optional[_builtins.str] 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_device_deployment_groups = cloudflare.get_zero_trust_device_deployment_groups(account_id="account_id",
+    example_zero_trust_device_deployment_groups = cloudflare.zerotrustdevicedeploymentgroups.get_zero_trust_device_deployment_groups(account_id="account_id",
         group_id="group_id")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_device_deployment_groups is deprecated: cloudflare:index/getZeroTrustDeviceDeploymentGroups:getZeroTrustDeviceDeploymentGroups has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/zeroTrustDeviceDeploymentGroups:getZeroTrustDeviceDeploymentGroups""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['groupId'] = group_id
@@ -167,10 +170,11 @@ def get_zero_trust_device_deployment_groups_output(account_id: pulumi.Input[Opti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_device_deployment_groups = cloudflare.get_zero_trust_device_deployment_groups(account_id="account_id",
+    example_zero_trust_device_deployment_groups = cloudflare.zerotrustdevicedeploymentgroups.get_zero_trust_device_deployment_groups(account_id="account_id",
         group_id="group_id")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_device_deployment_groups is deprecated: cloudflare:index/getZeroTrustDeviceDeploymentGroups:getZeroTrustDeviceDeploymentGroups has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/zeroTrustDeviceDeploymentGroups:getZeroTrustDeviceDeploymentGroups""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['groupId'] = group_id

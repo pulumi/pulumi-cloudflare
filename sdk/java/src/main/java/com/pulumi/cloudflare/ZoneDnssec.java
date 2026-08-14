@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZoneDnssec;
- * import com.pulumi.cloudflare.ZoneDnssecArgs;
+ * import com.pulumi.cloudflare.zone.Dnssec;
+ * import com.pulumi.cloudflare.zone.DnssecArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZoneDnssec = new ZoneDnssec("exampleZoneDnssec", ZoneDnssecArgs.builder()
+ *         var exampleZoneDnssec = new Dnssec("exampleZoneDnssec", DnssecArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .dnssecMultiSigner(false)
  *             .dnssecPresigned(true)
@@ -65,7 +65,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zoneDnssec:ZoneDnssec has been deprecated in favor of cloudflare:zone/dnssec:Dnssec
+ * 
  */
+@Deprecated /* cloudflare:index/zoneDnssec:ZoneDnssec has been deprecated in favor of cloudflare:zone/dnssec:Dnssec */
 @ResourceType(type="cloudflare:index/zoneDnssec:ZoneDnssec")
 public class ZoneDnssec extends com.pulumi.resources.CustomResource {
     /**

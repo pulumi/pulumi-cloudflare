@@ -101,8 +101,13 @@ class _ZeroTrustDlpSensitivityLevelOrderState:
         pulumi.set(self, "sensitivity_group_id", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustDlpSensitivityLevelOrder:ZeroTrustDlpSensitivityLevelOrder has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/order:Order""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustDlpSensitivityLevelOrder:ZeroTrustDlpSensitivityLevelOrder")
 class ZeroTrustDlpSensitivityLevelOrder(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustDlpSensitivityLevelOrder:ZeroTrustDlpSensitivityLevelOrder has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/order:Order""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -123,7 +128,7 @@ class ZeroTrustDlpSensitivityLevelOrder(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_sensitivity_level_order = cloudflare.ZeroTrustDlpSensitivityLevelOrder("example_zero_trust_dlp_sensitivity_level_order",
+        example_zero_trust_dlp_sensitivity_level_order = cloudflare.zerotrustdlpsensitivitylevel.Order("example_zero_trust_dlp_sensitivity_level_order",
             account_id="account_id",
             sensitivity_group_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             level_ids=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"])
@@ -157,7 +162,7 @@ class ZeroTrustDlpSensitivityLevelOrder(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_sensitivity_level_order = cloudflare.ZeroTrustDlpSensitivityLevelOrder("example_zero_trust_dlp_sensitivity_level_order",
+        example_zero_trust_dlp_sensitivity_level_order = cloudflare.zerotrustdlpsensitivitylevel.Order("example_zero_trust_dlp_sensitivity_level_order",
             account_id="account_id",
             sensitivity_group_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             level_ids=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"])
@@ -189,6 +194,7 @@ class ZeroTrustDlpSensitivityLevelOrder(pulumi.CustomResource):
                  level_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  sensitivity_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustDlpSensitivityLevelOrder is deprecated: cloudflare:index/zeroTrustDlpSensitivityLevelOrder:ZeroTrustDlpSensitivityLevelOrder has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/order:Order""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

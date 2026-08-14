@@ -20,12 +20,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSchemaValidationOperationSettingsList = cloudflare.getSchemaValidationOperationSettingsList({
+ * const exampleSchemaValidationOperationSettingsList = cloudflare.schemavalidationoperationsettings.getList({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getSchemaValidationOperationSettingsList:getSchemaValidationOperationSettingsList has been deprecated in favor of cloudflare:schemaValidationOperationSettings/list:getList */
 export function getSchemaValidationOperationSettingsList(args?: GetSchemaValidationOperationSettingsListArgs, opts?: pulumi.InvokeOptions): Promise<GetSchemaValidationOperationSettingsListResult> {
+    pulumi.log.warn("getSchemaValidationOperationSettingsList is deprecated: cloudflare:index/getSchemaValidationOperationSettingsList:getSchemaValidationOperationSettingsList has been deprecated in favor of cloudflare:schemaValidationOperationSettings/list:getList")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getSchemaValidationOperationSettingsList:getSchemaValidationOperationSettingsList", {
@@ -64,12 +66,14 @@ export interface GetSchemaValidationOperationSettingsListResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSchemaValidationOperationSettingsList = cloudflare.getSchemaValidationOperationSettingsList({
+ * const exampleSchemaValidationOperationSettingsList = cloudflare.schemavalidationoperationsettings.getList({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getSchemaValidationOperationSettingsList:getSchemaValidationOperationSettingsList has been deprecated in favor of cloudflare:schemaValidationOperationSettings/list:getList */
 export function getSchemaValidationOperationSettingsListOutput(args?: GetSchemaValidationOperationSettingsListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSchemaValidationOperationSettingsListResult> {
+    pulumi.log.warn("getSchemaValidationOperationSettingsList is deprecated: cloudflare:index/getSchemaValidationOperationSettingsList:getSchemaValidationOperationSettingsList has been deprecated in favor of cloudflare:schemaValidationOperationSettings/list:getList")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getSchemaValidationOperationSettingsList:getSchemaValidationOperationSettingsList", {

@@ -57,14 +57,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zone"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZoneHold(ctx, &cloudflare.LookupZoneHoldArgs{
+//			_, err := zone.LookupHold(ctx, &zone.LookupHoldArgs{
 //				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
@@ -75,6 +75,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZoneHold:getZoneHold has been deprecated in favor of cloudflare:zone/hold:getHold
 func LookupZoneHold(ctx *pulumi.Context, args *LookupZoneHoldArgs, opts ...pulumi.InvokeOption) (*LookupZoneHoldResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZoneHoldResult

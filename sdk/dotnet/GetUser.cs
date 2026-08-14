@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getUser:getUser has been deprecated in favor of cloudflare:user/user:getUser")]
     public static class GetUser
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleUser = Cloudflare.GetUser.Invoke();
+        ///     var exampleUser = Cloudflare.Modules.User.GetUser.Invoke();
         /// 
         /// });
         /// ```
@@ -51,7 +52,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleUser = Cloudflare.GetUser.Invoke();
+        ///     var exampleUser = Cloudflare.Modules.User.GetUser.Invoke();
         /// 
         /// });
         /// ```
@@ -75,7 +76,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleUser = Cloudflare.GetUser.Invoke();
+        ///     var exampleUser = Cloudflare.Modules.User.GetUser.Invoke();
         /// 
         /// });
         /// ```

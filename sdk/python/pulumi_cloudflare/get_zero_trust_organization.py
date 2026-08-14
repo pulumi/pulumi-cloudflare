@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_organization_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustOrganization:getZeroTrustOrganization has been deprecated in favor of cloudflare:zeroTrust/organization:getOrganization""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustOrganizationResult:
     """
@@ -264,7 +266,7 @@ def get_zero_trust_organization(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_organization = cloudflare.get_zero_trust_organization(account_id="account_id",
+    example_zero_trust_organization = cloudflare.zerotrust.get_organization(account_id="account_id",
         zone_id="zone_id")
     ```
 
@@ -272,6 +274,7 @@ def get_zero_trust_organization(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_zero_trust_organization is deprecated: cloudflare:index/getZeroTrustOrganization:getZeroTrustOrganization has been deprecated in favor of cloudflare:zeroTrust/organization:getOrganization""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['zoneId'] = zone_id
@@ -313,7 +316,7 @@ def get_zero_trust_organization_output(account_id: pulumi.Input[Optional[Optiona
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_organization = cloudflare.get_zero_trust_organization(account_id="account_id",
+    example_zero_trust_organization = cloudflare.zerotrust.get_organization(account_id="account_id",
         zone_id="zone_id")
     ```
 
@@ -321,6 +324,7 @@ def get_zero_trust_organization_output(account_id: pulumi.Input[Optional[Optiona
     :param _builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_zero_trust_organization is deprecated: cloudflare:index/getZeroTrustOrganization:getZeroTrustOrganization has been deprecated in favor of cloudflare:zeroTrust/organization:getOrganization""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['zoneId'] = zone_id

@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdlpdatatag"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDlpDataTag(ctx, "example_zero_trust_dlp_data_tag", &cloudflare.ZeroTrustDlpDataTagArgs{
+//			_, err := zerotrustdlpdatatag.NewZeroTrustDlpDataTag(ctx, "example_zero_trust_dlp_data_tag", &zerotrustdlpdatatag.ZeroTrustDlpDataTagArgs{
 //				AccountId:   pulumi.String("account_id"),
 //				CategoryId:  pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
 //				Name:        pulumi.String("name"),
@@ -51,6 +51,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustDlpDataTag:ZeroTrustDlpDataTag example '<account_id>/<category_id>/<tag_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustDlpDataTag:ZeroTrustDlpDataTag has been deprecated in favor of cloudflare:zeroTrustDlpDataTag/zeroTrustDlpDataTag:ZeroTrustDlpDataTag
 type ZeroTrustDlpDataTag struct {
 	pulumi.CustomResourceState
 

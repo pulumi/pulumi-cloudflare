@@ -37,12 +37,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustOrganization;
- * import com.pulumi.cloudflare.ZeroTrustOrganizationArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationCustomPagesArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationLoginDesignArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationMfaConfigArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs;
+ * import com.pulumi.cloudflare.zeroTrust.Organization;
+ * import com.pulumi.cloudflare.zeroTrust.OrganizationArgs;
+ * import com.pulumi.cloudflare.zeroTrust.inputs.OrganizationCustomPagesArgs;
+ * import com.pulumi.cloudflare.zeroTrust.inputs.OrganizationLoginDesignArgs;
+ * import com.pulumi.cloudflare.zeroTrust.inputs.OrganizationMfaConfigArgs;
+ * import com.pulumi.cloudflare.zeroTrust.inputs.OrganizationMfaSshPivKeyRequirementsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -56,26 +56,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustOrganization = new ZeroTrustOrganization("exampleZeroTrustOrganization", ZeroTrustOrganizationArgs.builder()
+ *         var exampleZeroTrustOrganization = new Organization("exampleZeroTrustOrganization", OrganizationArgs.builder()
  *             .zoneId("zone_id")
  *             .allowAuthenticateViaWarp(true)
  *             .authDomain("test.cloudflareaccess.com")
  *             .autoRedirectToIdentity(true)
- *             .customPages(ZeroTrustOrganizationCustomPagesArgs.builder()
+ *             .customPages(OrganizationCustomPagesArgs.builder()
  *                 .forbidden("699d98642c564d2e855e9661899b7252")
  *                 .identityDenied("699d98642c564d2e855e9661899b7252")
  *                 .build())
  *             .denyUnmatchedRequests(true)
  *             .denyUnmatchedRequestsExemptedZoneNames("example.com")
  *             .isUiReadOnly(true)
- *             .loginDesign(ZeroTrustOrganizationLoginDesignArgs.builder()
+ *             .loginDesign(OrganizationLoginDesignArgs.builder()
  *                 .backgroundColor("#c5ed1b")
  *                 .footerText("This is an example description.")
  *                 .headerText("This is an example description.")
  *                 .logoPath("https://example.com/logo.png")
  *                 .textColor("#c5ed1b")
  *                 .build())
- *             .mfaConfig(ZeroTrustOrganizationMfaConfigArgs.builder()
+ *             .mfaConfig(OrganizationMfaConfigArgs.builder()
  *                 .allowedAuthenticators(                
  *                     "totp",
  *                     "biometrics",
@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  *                 .sessionDuration("24h")
  *                 .build())
  *             .mfaRequiredForAllApps(false)
- *             .mfaSshPivKeyRequirements(ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs.builder()
+ *             .mfaSshPivKeyRequirements(OrganizationMfaSshPivKeyRequirementsArgs.builder()
  *                 .pinPolicy("always")
  *                 .requireFipsDevice(true)
  *                 .sshKeySizes(                
@@ -112,7 +112,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization has been deprecated in favor of cloudflare:zeroTrust/organization:Organization
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization has been deprecated in favor of cloudflare:zeroTrust/organization:Organization */
 @ResourceType(type="cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization")
 public class ZeroTrustOrganization extends com.pulumi.resources.CustomResource {
     /**

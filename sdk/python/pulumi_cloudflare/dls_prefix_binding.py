@@ -158,8 +158,13 @@ class _DlsPrefixBindingState:
         pulumi.set(self, "region_key", value)
 
 
+warnings.warn("""cloudflare:index/dlsPrefixBinding:DlsPrefixBinding has been deprecated in favor of cloudflare:dlsPrefix/binding:Binding""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/dlsPrefixBinding:DlsPrefixBinding")
 class DlsPrefixBinding(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/dlsPrefixBinding:DlsPrefixBinding has been deprecated in favor of cloudflare:dlsPrefix/binding:Binding""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -182,7 +187,7 @@ class DlsPrefixBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_dls_prefix_binding = cloudflare.DlsPrefixBinding("example_dls_prefix_binding",
+        example_dls_prefix_binding = cloudflare.dlsprefix.Binding("example_dls_prefix_binding",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             cidr="10.0.1.0/24",
             prefix_id="a1b2c3d4-e5f6-7890-abcd-ef1234567890",
@@ -222,7 +227,7 @@ class DlsPrefixBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_dls_prefix_binding = cloudflare.DlsPrefixBinding("example_dls_prefix_binding",
+        example_dls_prefix_binding = cloudflare.dlsprefix.Binding("example_dls_prefix_binding",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             cidr="10.0.1.0/24",
             prefix_id="a1b2c3d4-e5f6-7890-abcd-ef1234567890",
@@ -256,6 +261,7 @@ class DlsPrefixBinding(pulumi.CustomResource):
                  prefix_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""DlsPrefixBinding is deprecated: cloudflare:index/dlsPrefixBinding:DlsPrefixBinding has been deprecated in favor of cloudflare:dlsPrefix/binding:Binding""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

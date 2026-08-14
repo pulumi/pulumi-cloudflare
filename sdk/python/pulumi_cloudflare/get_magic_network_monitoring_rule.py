@@ -21,6 +21,8 @@ __all__ = [
     'get_magic_network_monitoring_rule_output',
 ]
 
+warnings.warn("""cloudflare:index/getMagicNetworkMonitoringRule:getMagicNetworkMonitoringRule has been deprecated in favor of cloudflare:magicNetworkMonitoring/rule:getRule""", DeprecationWarning)
+
 @pulumi.output_type
 class GetMagicNetworkMonitoringRuleResult:
     """
@@ -208,13 +210,14 @@ def get_magic_network_monitoring_rule(account_id: Optional[_builtins.str] = None
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_network_monitoring_rule = cloudflare.get_magic_network_monitoring_rule(account_id="6f91088a406011ed95aed352566e8d4c",
+    example_magic_network_monitoring_rule = cloudflare.magicnetworkmonitoring.get_rule(account_id="6f91088a406011ed95aed352566e8d4c",
         rule_id="2890e6fa406311ed9b5a23f70f6fb8cf")
     ```
 
 
     :param _builtins.str rule_id: The id of the rule. Must be unique.
     """
+    pulumi.log.warn("""get_magic_network_monitoring_rule is deprecated: cloudflare:index/getMagicNetworkMonitoringRule:getMagicNetworkMonitoringRule has been deprecated in favor of cloudflare:magicNetworkMonitoring/rule:getRule""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['ruleId'] = rule_id
@@ -251,13 +254,14 @@ def get_magic_network_monitoring_rule_output(account_id: pulumi.Input[Optional[O
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_network_monitoring_rule = cloudflare.get_magic_network_monitoring_rule(account_id="6f91088a406011ed95aed352566e8d4c",
+    example_magic_network_monitoring_rule = cloudflare.magicnetworkmonitoring.get_rule(account_id="6f91088a406011ed95aed352566e8d4c",
         rule_id="2890e6fa406311ed9b5a23f70f6fb8cf")
     ```
 
 
     :param _builtins.str rule_id: The id of the rule. Must be unique.
     """
+    pulumi.log.warn("""get_magic_network_monitoring_rule is deprecated: cloudflare:index/getMagicNetworkMonitoringRule:getMagicNetworkMonitoringRule has been deprecated in favor of cloudflare:magicNetworkMonitoring/rule:getRule""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['ruleId'] = rule_id

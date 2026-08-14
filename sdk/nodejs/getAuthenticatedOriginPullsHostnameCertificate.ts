@@ -11,13 +11,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAuthenticatedOriginPullsHostnameCertificate = cloudflare.getAuthenticatedOriginPullsHostnameCertificate({
+ * const exampleAuthenticatedOriginPullsHostnameCertificate = cloudflare.authenticatedoriginpullshostname.getCertificate({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     certificateId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAuthenticatedOriginPullsHostnameCertificate:getAuthenticatedOriginPullsHostnameCertificate has been deprecated in favor of cloudflare:authenticatedOriginPullsHostname/certificate:getCertificate */
 export function getAuthenticatedOriginPullsHostnameCertificate(args: GetAuthenticatedOriginPullsHostnameCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthenticatedOriginPullsHostnameCertificateResult> {
+    pulumi.log.warn("getAuthenticatedOriginPullsHostnameCertificate is deprecated: cloudflare:index/getAuthenticatedOriginPullsHostnameCertificate:getAuthenticatedOriginPullsHostnameCertificate has been deprecated in favor of cloudflare:authenticatedOriginPullsHostname/certificate:getCertificate")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAuthenticatedOriginPullsHostnameCertificate:getAuthenticatedOriginPullsHostnameCertificate", {
         "certificateId": args.certificateId,
@@ -92,13 +94,15 @@ export interface GetAuthenticatedOriginPullsHostnameCertificateResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAuthenticatedOriginPullsHostnameCertificate = cloudflare.getAuthenticatedOriginPullsHostnameCertificate({
+ * const exampleAuthenticatedOriginPullsHostnameCertificate = cloudflare.authenticatedoriginpullshostname.getCertificate({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     certificateId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAuthenticatedOriginPullsHostnameCertificate:getAuthenticatedOriginPullsHostnameCertificate has been deprecated in favor of cloudflare:authenticatedOriginPullsHostname/certificate:getCertificate */
 export function getAuthenticatedOriginPullsHostnameCertificateOutput(args: GetAuthenticatedOriginPullsHostnameCertificateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAuthenticatedOriginPullsHostnameCertificateResult> {
+    pulumi.log.warn("getAuthenticatedOriginPullsHostnameCertificate is deprecated: cloudflare:index/getAuthenticatedOriginPullsHostnameCertificate:getAuthenticatedOriginPullsHostnameCertificate has been deprecated in favor of cloudflare:authenticatedOriginPullsHostname/certificate:getCertificate")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAuthenticatedOriginPullsHostnameCertificate:getAuthenticatedOriginPullsHostnameCertificate", {
         "certificateId": args.certificateId,

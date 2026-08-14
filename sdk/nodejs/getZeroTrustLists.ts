@@ -13,13 +13,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustLists = cloudflare.getZeroTrustLists({
+ * const exampleZeroTrustLists = cloudflare.zerotrust.getLists({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     type: "SERIAL",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustLists:getZeroTrustLists has been deprecated in favor of cloudflare:zeroTrust/lists:getLists */
 export function getZeroTrustLists(args?: GetZeroTrustListsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustListsResult> {
+    pulumi.log.warn("getZeroTrustLists is deprecated: cloudflare:index/getZeroTrustLists:getZeroTrustLists has been deprecated in favor of cloudflare:zeroTrust/lists:getLists")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustLists:getZeroTrustLists", {
@@ -71,13 +73,15 @@ export interface GetZeroTrustListsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustLists = cloudflare.getZeroTrustLists({
+ * const exampleZeroTrustLists = cloudflare.zerotrust.getLists({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     type: "SERIAL",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustLists:getZeroTrustLists has been deprecated in favor of cloudflare:zeroTrust/lists:getLists */
 export function getZeroTrustListsOutput(args?: GetZeroTrustListsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustListsResult> {
+    pulumi.log.warn("getZeroTrustLists is deprecated: cloudflare:index/getZeroTrustLists:getZeroTrustLists has been deprecated in favor of cloudflare:zeroTrust/lists:getLists")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustLists:getZeroTrustLists", {

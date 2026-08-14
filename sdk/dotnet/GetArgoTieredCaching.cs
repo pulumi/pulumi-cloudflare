@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getArgoTieredCaching:getArgoTieredCaching has been deprecated in favor of cloudflare:argo/tieredCaching:getTieredCaching")]
     public static class GetArgoTieredCaching
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleArgoTieredCaching = Cloudflare.GetArgoTieredCaching.Invoke(new()
+        ///     var exampleArgoTieredCaching = Cloudflare.Modules.Argo.GetTieredCaching.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -44,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleArgoTieredCaching = Cloudflare.GetArgoTieredCaching.Invoke(new()
+        ///     var exampleArgoTieredCaching = Cloudflare.Modules.Argo.GetTieredCaching.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -66,7 +67,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleArgoTieredCaching = Cloudflare.GetArgoTieredCaching.Invoke(new()
+        ///     var exampleArgoTieredCaching = Cloudflare.Modules.Argo.GetTieredCaching.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

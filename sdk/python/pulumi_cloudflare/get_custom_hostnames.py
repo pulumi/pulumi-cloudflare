@@ -23,6 +23,8 @@ __all__ = [
     'get_custom_hostnames_output',
 ]
 
+warnings.warn("""cloudflare:index/getCustomHostnames:getCustomHostnames has been deprecated in favor of cloudflare:custom/hostnames:getHostnames""", DeprecationWarning)
+
 @pulumi.output_type
 class GetCustomHostnamesResult:
     """
@@ -223,7 +225,7 @@ def get_custom_hostnames(certificate_authority: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_custom_hostnames = cloudflare.get_custom_hostnames(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_custom_hostnames = cloudflare.custom.get_hostnames(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         id="0d89c70d-ad9f-4843-b99f-6cc0252067e9",
         certificate_authority="google",
         custom_origin_server="origin2.example.com",
@@ -258,6 +260,7 @@ def get_custom_hostnames(certificate_authority: Optional[_builtins.str] = None,
     :param _builtins.bool wildcard: Filter by whether the custom hostname is a wildcard hostname.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_custom_hostnames is deprecated: cloudflare:index/getCustomHostnames:getCustomHostnames has been deprecated in favor of cloudflare:custom/hostnames:getHostnames""")
     __args__ = dict()
     __args__['certificateAuthority'] = certificate_authority
     __args__['customOriginServer'] = custom_origin_server
@@ -313,7 +316,7 @@ def get_custom_hostnames_output(certificate_authority: pulumi.Input[Optional[Opt
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_custom_hostnames = cloudflare.get_custom_hostnames(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_custom_hostnames = cloudflare.custom.get_hostnames(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         id="0d89c70d-ad9f-4843-b99f-6cc0252067e9",
         certificate_authority="google",
         custom_origin_server="origin2.example.com",
@@ -348,6 +351,7 @@ def get_custom_hostnames_output(certificate_authority: pulumi.Input[Optional[Opt
     :param _builtins.bool wildcard: Filter by whether the custom hostname is a wildcard hostname.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_custom_hostnames is deprecated: cloudflare:index/getCustomHostnames:getCustomHostnames has been deprecated in favor of cloudflare:custom/hostnames:getHostnames""")
     __args__ = dict()
     __args__['certificateAuthority'] = certificate_authority
     __args__['customOriginServer'] = custom_origin_server

@@ -117,7 +117,7 @@ class AccessTag(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_tag = cloudflare.ZeroTrustAccessTag("example_zero_trust_access_tag",
+        example_zero_trust_access_tag = cloudflare.zerotrustaccess.Tag("example_zero_trust_access_tag",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="engineers")
         ```
@@ -147,7 +147,7 @@ class AccessTag(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_tag = cloudflare.ZeroTrustAccessTag("example_zero_trust_access_tag",
+        example_zero_trust_access_tag = cloudflare.zerotrustaccess.Tag("example_zero_trust_access_tag",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="engineers")
         ```
@@ -192,8 +192,6 @@ class AccessTag(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessTag:AccessTag")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AccessTag, __self__).__init__(
             'cloudflare:index/accessTag:AccessTag',
             resource_name,

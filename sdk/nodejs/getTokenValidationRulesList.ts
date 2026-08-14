@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleTokenValidationRulesList = cloudflare.getTokenValidationRulesList({
+ * const exampleTokenValidationRulesList = cloudflare.tokenvalidationrules.getList({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     id: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     action: "log",
@@ -32,7 +32,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getTokenValidationRulesList:getTokenValidationRulesList has been deprecated in favor of cloudflare:tokenValidationRules/list:getList */
 export function getTokenValidationRulesList(args?: GetTokenValidationRulesListArgs, opts?: pulumi.InvokeOptions): Promise<GetTokenValidationRulesListResult> {
+    pulumi.log.warn("getTokenValidationRulesList is deprecated: cloudflare:index/getTokenValidationRulesList:getTokenValidationRulesList has been deprecated in favor of cloudflare:tokenValidationRules/list:getList")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getTokenValidationRulesList:getTokenValidationRulesList", {
@@ -151,7 +153,7 @@ export interface GetTokenValidationRulesListResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleTokenValidationRulesList = cloudflare.getTokenValidationRulesList({
+ * const exampleTokenValidationRulesList = cloudflare.tokenvalidationrules.getList({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     id: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     action: "log",
@@ -163,7 +165,9 @@ export interface GetTokenValidationRulesListResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getTokenValidationRulesList:getTokenValidationRulesList has been deprecated in favor of cloudflare:tokenValidationRules/list:getList */
 export function getTokenValidationRulesListOutput(args?: GetTokenValidationRulesListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTokenValidationRulesListResult> {
+    pulumi.log.warn("getTokenValidationRulesList is deprecated: cloudflare:index/getTokenValidationRulesList:getTokenValidationRulesList has been deprecated in favor of cloudflare:tokenValidationRules/list:getList")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getTokenValidationRulesList:getTokenValidationRulesList", {

@@ -22,6 +22,8 @@ __all__ = [
     'get_pages_domains_output',
 ]
 
+warnings.warn("""cloudflare:index/getPagesDomains:getPagesDomains has been deprecated in favor of cloudflare:pages/domains:getDomains""", DeprecationWarning)
+
 @pulumi.output_type
 class GetPagesDomainsResult:
     """
@@ -102,7 +104,7 @@ def get_pages_domains(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_pages_domains = cloudflare.get_pages_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_pages_domains = cloudflare.pages.get_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         project_name="this-is-my-project-01")
     ```
 
@@ -111,6 +113,7 @@ def get_pages_domains(account_id: Optional[_builtins.str] = None,
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str project_name: Name of the project.
     """
+    pulumi.log.warn("""get_pages_domains is deprecated: cloudflare:index/getPagesDomains:getPagesDomains has been deprecated in favor of cloudflare:pages/domains:getDomains""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -139,7 +142,7 @@ def get_pages_domains_output(account_id: pulumi.Input[Optional[Optional[_builtin
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_pages_domains = cloudflare.get_pages_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_pages_domains = cloudflare.pages.get_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         project_name="this-is-my-project-01")
     ```
 
@@ -148,6 +151,7 @@ def get_pages_domains_output(account_id: pulumi.Input[Optional[Optional[_builtin
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str project_name: Name of the project.
     """
+    pulumi.log.warn("""get_pages_domains is deprecated: cloudflare:index/getPagesDomains:getPagesDomains has been deprecated in favor of cloudflare:pages/domains:getDomains""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

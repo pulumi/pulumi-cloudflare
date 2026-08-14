@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleListItems = cloudflare.getListItems({
+ * const exampleListItems = cloudflare.list.getItems({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     listId: "2c0fc9fa937b11eaa1b71c4d701ab86e",
  *     perPage: 1,
@@ -26,7 +26,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getListItems:getListItems has been deprecated in favor of cloudflare:list/items:getItems */
 export function getListItems(args: GetListItemsArgs, opts?: pulumi.InvokeOptions): Promise<GetListItemsResult> {
+    pulumi.log.warn("getListItems is deprecated: cloudflare:index/getListItems:getListItems has been deprecated in favor of cloudflare:list/items:getItems")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getListItems:getListItems", {
         "accountId": args.accountId,
@@ -104,7 +106,7 @@ export interface GetListItemsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleListItems = cloudflare.getListItems({
+ * const exampleListItems = cloudflare.list.getItems({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     listId: "2c0fc9fa937b11eaa1b71c4d701ab86e",
  *     perPage: 1,
@@ -112,7 +114,9 @@ export interface GetListItemsResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getListItems:getListItems has been deprecated in favor of cloudflare:list/items:getItems */
 export function getListItemsOutput(args: GetListItemsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetListItemsResult> {
+    pulumi.log.warn("getListItems is deprecated: cloudflare:index/getListItems:getListItems has been deprecated in favor of cloudflare:list/items:getItems")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getListItems:getListItems", {
         "accountId": args.accountId,

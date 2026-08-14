@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleRegionalHostname = new Cloudflare.RegionalHostname("example_regional_hostname", new()
+    ///     var exampleRegionalHostname = new Cloudflare.Modules.Regional.RegionalHostname("example_regional_hostname", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Hostname = "foo.example.com",
@@ -42,6 +42,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/regionalHostname:RegionalHostname example '&lt;zone_id&gt;/&lt;hostname&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/regionalHostname:RegionalHostname has been deprecated in favor of cloudflare:regional/hostname:Hostname")]
     [CloudflareResourceType("cloudflare:index/regionalHostname:RegionalHostname")]
     public partial class RegionalHostname : global::Pulumi.CustomResource
     {

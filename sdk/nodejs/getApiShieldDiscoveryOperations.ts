@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleApiShieldDiscoveryOperations = cloudflare.getApiShieldDiscoveryOperations({
+ * const exampleApiShieldDiscoveryOperations = cloudflare.apishielddiscovery.getOperations({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     diff: true,
  *     direction: "desc",
@@ -33,7 +33,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getApiShieldDiscoveryOperations:getApiShieldDiscoveryOperations has been deprecated in favor of cloudflare:apiShieldDiscovery/operations:getOperations */
 export function getApiShieldDiscoveryOperations(args?: GetApiShieldDiscoveryOperationsArgs, opts?: pulumi.InvokeOptions): Promise<GetApiShieldDiscoveryOperationsResult> {
+    pulumi.log.warn("getApiShieldDiscoveryOperations is deprecated: cloudflare:index/getApiShieldDiscoveryOperations:getApiShieldDiscoveryOperations has been deprecated in favor of cloudflare:apiShieldDiscovery/operations:getOperations")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getApiShieldDiscoveryOperations:getApiShieldDiscoveryOperations", {
@@ -96,7 +98,7 @@ export interface GetApiShieldDiscoveryOperationsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleApiShieldDiscoveryOperations = cloudflare.getApiShieldDiscoveryOperations({
+ * const exampleApiShieldDiscoveryOperations = cloudflare.apishielddiscovery.getOperations({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     diff: true,
  *     direction: "desc",
@@ -109,7 +111,9 @@ export interface GetApiShieldDiscoveryOperationsResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getApiShieldDiscoveryOperations:getApiShieldDiscoveryOperations has been deprecated in favor of cloudflare:apiShieldDiscovery/operations:getOperations */
 export function getApiShieldDiscoveryOperationsOutput(args?: GetApiShieldDiscoveryOperationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiShieldDiscoveryOperationsResult> {
+    pulumi.log.warn("getApiShieldDiscoveryOperations is deprecated: cloudflare:index/getApiShieldDiscoveryOperations:getApiShieldDiscoveryOperations has been deprecated in favor of cloudflare:apiShieldDiscovery/operations:getOperations")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getApiShieldDiscoveryOperations:getApiShieldDiscoveryOperations", {

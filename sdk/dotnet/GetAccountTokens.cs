@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getAccountTokens:getAccountTokens has been deprecated in favor of cloudflare:account/tokens:getTokens")]
     public static class GetAccountTokens
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountTokens = Cloudflare.GetAccountTokens.Invoke(new()
+        ///     var exampleAccountTokens = Cloudflare.Modules.Account.GetTokens.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "desc",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountTokens = Cloudflare.GetAccountTokens.Invoke(new()
+        ///     var exampleAccountTokens = Cloudflare.Modules.Account.GetTokens.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "desc",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountTokens = Cloudflare.GetAccountTokens.Invoke(new()
+        ///     var exampleAccountTokens = Cloudflare.Modules.Account.GetTokens.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "desc",

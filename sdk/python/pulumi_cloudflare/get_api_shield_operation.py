@@ -23,6 +23,8 @@ __all__ = [
     'get_api_shield_operation_output',
 ]
 
+warnings.warn("""cloudflare:index/getApiShieldOperation:getApiShieldOperation has been deprecated in favor of cloudflare:apiShieldOperation/apiShieldOperation:getApiShieldOperation""", DeprecationWarning)
+
 @pulumi.output_type
 class GetApiShieldOperationResult:
     """
@@ -197,6 +199,7 @@ def get_api_shield_operation(feature: Optional[Sequence[_builtins.str]] = None,
     :param _builtins.bool with_schemas: When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_api_shield_operation is deprecated: cloudflare:index/getApiShieldOperation:getApiShieldOperation has been deprecated in favor of cloudflare:apiShieldOperation/apiShieldOperation:getApiShieldOperation""")
     __args__ = dict()
     __args__['feature'] = feature
     __args__['filter'] = filter
@@ -241,6 +244,7 @@ def get_api_shield_operation_output(feature: pulumi.Input[Optional[Optional[Sequ
     :param _builtins.bool with_schemas: When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_api_shield_operation is deprecated: cloudflare:index/getApiShieldOperation:getApiShieldOperation has been deprecated in favor of cloudflare:apiShieldOperation/apiShieldOperation:getApiShieldOperation""")
     __args__ = dict()
     __args__['feature'] = feature
     __args__['filter'] = filter

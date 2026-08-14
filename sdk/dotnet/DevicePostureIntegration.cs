@@ -24,10 +24,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDevicePostureIntegration = new Cloudflare.ZeroTrustDevicePostureIntegration("example_zero_trust_device_posture_integration", new()
+    ///     var exampleZeroTrustDevicePostureIntegration = new Cloudflare.Modules.ZeroTrustDevicePosture.ZeroTrustDevicePostureIntegration("example_zero_trust_device_posture_integration", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
-    ///         Config = new Cloudflare.Inputs.ZeroTrustDevicePostureIntegrationConfigArgs
+    ///         Config = new Cloudflare.Modules.ZeroTrustDevicePosture.Inputs.IntegrationConfigArgs
     ///         {
     ///             ApiUrl = "https://as123.awmdm.com/API",
     ///             AuthUrl = "https://na.uemauth.workspaceone.com/connect/token",
@@ -103,10 +103,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/devicePostureIntegration:DevicePostureIntegration" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

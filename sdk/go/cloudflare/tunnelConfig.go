@@ -28,23 +28,23 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrusttunnelcloudflared"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustTunnelCloudflaredConfig(ctx, "example_zero_trust_tunnel_cloudflared_config", &cloudflare.ZeroTrustTunnelCloudflaredConfigArgs{
+//			_, err := zerotrusttunnelcloudflared.NewConfig(ctx, "example_zero_trust_tunnel_cloudflared_config", &zerotrusttunnelcloudflared.ConfigArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				TunnelId:  pulumi.String("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
-//				Config: &cloudflare.ZeroTrustTunnelCloudflaredConfigConfigArgs{
-//					Ingresses: cloudflare.ZeroTrustTunnelCloudflaredConfigConfigIngressArray{
-//						&cloudflare.ZeroTrustTunnelCloudflaredConfigConfigIngressArgs{
+//				Config: &zerotrusttunnelcloudflared.ConfigConfigArgs{
+//					Ingresses: zerotrusttunnelcloudflared.ConfigConfigIngressArray{
+//						&zerotrusttunnelcloudflared.ConfigConfigIngressArgs{
 //							Hostname: pulumi.String("tunnel.example.com"),
 //							Service:  pulumi.String("https://localhost:8001"),
-//							OriginRequest: &cloudflare.ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestArgs{
-//								Access: &cloudflare.ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestAccessArgs{
+//							OriginRequest: &zerotrusttunnelcloudflared.ConfigConfigIngressOriginRequestArgs{
+//								Access: &zerotrusttunnelcloudflared.ConfigConfigIngressOriginRequestAccessArgs{
 //									AudTag: []string{
 //										"string",
 //									},
@@ -69,8 +69,8 @@ import (
 //							Path: pulumi.String("subpath"),
 //						},
 //					},
-//					OriginRequest: &cloudflare.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs{
-//						Access: &cloudflare.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs{
+//					OriginRequest: &zerotrusttunnelcloudflared.ConfigConfigOriginRequestArgs{
+//						Access: &zerotrusttunnelcloudflared.ConfigConfigOriginRequestAccessArgs{
 //							AudTags: pulumi.StringArray{
 //								pulumi.String("string"),
 //							},
@@ -140,12 +140,6 @@ func NewTunnelConfig(ctx *pulumi.Context,
 	if args.TunnelId == nil {
 		return nil, errors.New("invalid value for required argument 'TunnelId'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("cloudflare:index/tunnelConfig:TunnelConfig"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TunnelConfig
 	err := ctx.RegisterResource("cloudflare:index/tunnelConfig:TunnelConfig", name, args, &resource, opts...)

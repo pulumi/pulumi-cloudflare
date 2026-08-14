@@ -35,8 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.EmailRoutingDns;
- * import com.pulumi.cloudflare.EmailRoutingDnsArgs;
+ * import com.pulumi.cloudflare.emailRouting.Dns;
+ * import com.pulumi.cloudflare.emailRouting.DnsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleEmailRoutingDns = new EmailRoutingDns("exampleEmailRoutingDns", EmailRoutingDnsArgs.builder()
+ *         var exampleEmailRoutingDns = new Dns("exampleEmailRoutingDns", DnsArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .name("example.net")
  *             .build());
@@ -66,7 +66,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/emailRoutingDns:EmailRoutingDns example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/emailRoutingDns:EmailRoutingDns has been deprecated in favor of cloudflare:emailRouting/dns:Dns
+ * 
  */
+@Deprecated /* cloudflare:index/emailRoutingDns:EmailRoutingDns has been deprecated in favor of cloudflare:emailRouting/dns:Dns */
 @ResourceType(type="cloudflare:index/emailRoutingDns:EmailRoutingDns")
 public class EmailRoutingDns extends com.pulumi.resources.CustomResource {
     /**

@@ -18,14 +18,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zone"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZoneAutoOriginTlsKex(ctx, &cloudflare.LookupZoneAutoOriginTlsKexArgs{
+//			_, err := zone.LookupAutoOriginTlsKex(ctx, &zone.LookupAutoOriginTlsKexArgs{
 //				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
@@ -36,6 +36,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZoneAutoOriginTlsKex:getZoneAutoOriginTlsKex has been deprecated in favor of cloudflare:zone/autoOriginTlsKex:getAutoOriginTlsKex
 func LookupZoneAutoOriginTlsKex(ctx *pulumi.Context, args *LookupZoneAutoOriginTlsKexArgs, opts ...pulumi.InvokeOption) (*LookupZoneAutoOriginTlsKexResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZoneAutoOriginTlsKexResult

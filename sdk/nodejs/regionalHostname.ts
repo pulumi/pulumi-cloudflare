@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleRegionalHostname = new cloudflare.RegionalHostname("example_regional_hostname", {
+ * const exampleRegionalHostname = new cloudflare.regional.Hostname("example_regional_hostname", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     hostname: "foo.example.com",
  *     regionKey: "ca",
@@ -29,6 +29,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/regionalHostname:RegionalHostname example '<zone_id>/<hostname>'
  * ```
+ *
+ * @deprecated cloudflare:index/regionalHostname:RegionalHostname has been deprecated in favor of cloudflare:regional/hostname:Hostname
  */
 export class RegionalHostname extends pulumi.CustomResource {
     /**
@@ -41,6 +43,7 @@ export class RegionalHostname extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RegionalHostnameState, opts?: pulumi.CustomResourceOptions): RegionalHostname {
+        pulumi.log.warn("RegionalHostname is deprecated: cloudflare:index/regionalHostname:RegionalHostname has been deprecated in favor of cloudflare:regional/hostname:Hostname")
         return new RegionalHostname(name, <any>state, { ...opts, id: id });
     }
 
@@ -86,8 +89,11 @@ export class RegionalHostname extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/regionalHostname:RegionalHostname has been deprecated in favor of cloudflare:regional/hostname:Hostname */
     constructor(name: string, args: RegionalHostnameArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/regionalHostname:RegionalHostname has been deprecated in favor of cloudflare:regional/hostname:Hostname */
     constructor(name: string, argsOrState?: RegionalHostnameArgs | RegionalHostnameState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("RegionalHostname is deprecated: cloudflare:index/regionalHostname:RegionalHostname has been deprecated in favor of cloudflare:regional/hostname:Hostname")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -1219,8 +1219,13 @@ class _WaitingRoomState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/waitingRoom:WaitingRoom has been deprecated in favor of cloudflare:waitingRoom/waitingRoom:WaitingRoom""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/waitingRoom:WaitingRoom")
 class WaitingRoom(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/waitingRoom:WaitingRoom has been deprecated in favor of cloudflare:waitingRoom/waitingRoom:WaitingRoom""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -1260,7 +1265,7 @@ class WaitingRoom(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_waiting_room = cloudflare.WaitingRoom("example_waiting_room",
+        example_waiting_room = cloudflare.waitingroom.WaitingRoom("example_waiting_room",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             host="shop.example.com",
             name="production_webinar",
@@ -1448,7 +1453,7 @@ class WaitingRoom(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_waiting_room = cloudflare.WaitingRoom("example_waiting_room",
+        example_waiting_room = cloudflare.waitingroom.WaitingRoom("example_waiting_room",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             host="shop.example.com",
             name="production_webinar",
@@ -1524,6 +1529,7 @@ class WaitingRoom(pulumi.CustomResource):
                  turnstile_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""WaitingRoom is deprecated: cloudflare:index/waitingRoom:WaitingRoom has been deprecated in favor of cloudflare:waitingRoom/waitingRoom:WaitingRoom""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

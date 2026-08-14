@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAddressMap = new cloudflare.AddressMap("example_address_map", {
+ * const exampleAddressMap = new cloudflare.address.Map("example_address_map", {
  *     accountId: "258def64c72dae45f3e4c8516e2111f2",
  *     description: "My Ecommerce zones",
  *     enabled: true,
@@ -35,6 +35,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/addressMap:AddressMap example '<account_id>/<address_map_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/addressMap:AddressMap has been deprecated in favor of cloudflare:address/map:Map
  */
 export class AddressMap extends pulumi.CustomResource {
     /**
@@ -47,6 +49,7 @@ export class AddressMap extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AddressMapState, opts?: pulumi.CustomResourceOptions): AddressMap {
+        pulumi.log.warn("AddressMap is deprecated: cloudflare:index/addressMap:AddressMap has been deprecated in favor of cloudflare:address/map:Map")
         return new AddressMap(name, <any>state, { ...opts, id: id });
     }
 
@@ -103,8 +106,11 @@ export class AddressMap extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/addressMap:AddressMap has been deprecated in favor of cloudflare:address/map:Map */
     constructor(name: string, args: AddressMapArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/addressMap:AddressMap has been deprecated in favor of cloudflare:address/map:Map */
     constructor(name: string, argsOrState?: AddressMapArgs | AddressMapState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("AddressMap is deprecated: cloudflare:index/addressMap:AddressMap has been deprecated in favor of cloudflare:address/map:Map")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

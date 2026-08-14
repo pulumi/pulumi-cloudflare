@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAuthenticatedOriginPulls = new cloudflare.AuthenticatedOriginPulls("example_authenticated_origin_pulls", {
+ * const exampleAuthenticatedOriginPulls = new cloudflare.authenticatedoriginpulls.AuthenticatedOriginPulls("example_authenticated_origin_pulls", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     configs: [{
  *         certId: "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
@@ -28,6 +28,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example '<zone_id>/<hostname>'
  * ```
+ *
+ * @deprecated cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls has been deprecated in favor of cloudflare:authenticatedOriginPulls/authenticatedOriginPulls:AuthenticatedOriginPulls
  */
 export class AuthenticatedOriginPulls extends pulumi.CustomResource {
     /**
@@ -40,6 +42,7 @@ export class AuthenticatedOriginPulls extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AuthenticatedOriginPullsState, opts?: pulumi.CustomResourceOptions): AuthenticatedOriginPulls {
+        pulumi.log.warn("AuthenticatedOriginPulls is deprecated: cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls has been deprecated in favor of cloudflare:authenticatedOriginPulls/authenticatedOriginPulls:AuthenticatedOriginPulls")
         return new AuthenticatedOriginPulls(name, <any>state, { ...opts, id: id });
     }
 
@@ -132,8 +135,11 @@ export class AuthenticatedOriginPulls extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls has been deprecated in favor of cloudflare:authenticatedOriginPulls/authenticatedOriginPulls:AuthenticatedOriginPulls */
     constructor(name: string, args: AuthenticatedOriginPullsArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls has been deprecated in favor of cloudflare:authenticatedOriginPulls/authenticatedOriginPulls:AuthenticatedOriginPulls */
     constructor(name: string, argsOrState?: AuthenticatedOriginPullsArgs | AuthenticatedOriginPullsState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("AuthenticatedOriginPulls is deprecated: cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls has been deprecated in favor of cloudflare:authenticatedOriginPulls/authenticatedOriginPulls:AuthenticatedOriginPulls")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

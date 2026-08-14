@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustTunnelCloudflared:getZeroTrustTunnelCloudflared has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/zeroTrustTunnelCloudflared:getZeroTrustTunnelCloudflared")]
     public static class GetZeroTrustTunnelCloudflared
     {
         /// <summary>
@@ -31,7 +32,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustTunnelCloudflared = Cloudflare.GetZeroTrustTunnelCloudflared.Invoke(new()
+        ///     var exampleZeroTrustTunnelCloudflared = Cloudflare.Modules.ZeroTrustTunnelCloudflared.GetZeroTrustTunnelCloudflared.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         TunnelId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
@@ -63,7 +64,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustTunnelCloudflared = Cloudflare.GetZeroTrustTunnelCloudflared.Invoke(new()
+        ///     var exampleZeroTrustTunnelCloudflared = Cloudflare.Modules.ZeroTrustTunnelCloudflared.GetZeroTrustTunnelCloudflared.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         TunnelId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
@@ -95,7 +96,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustTunnelCloudflared = Cloudflare.GetZeroTrustTunnelCloudflared.Invoke(new()
+        ///     var exampleZeroTrustTunnelCloudflared = Cloudflare.Modules.ZeroTrustTunnelCloudflared.GetZeroTrustTunnelCloudflared.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         TunnelId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",

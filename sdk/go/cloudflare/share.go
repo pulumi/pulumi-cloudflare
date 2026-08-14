@@ -19,24 +19,24 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/share"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewShare(ctx, "example_share", &cloudflare.ShareArgs{
+//			_, err := share.NewShare(ctx, "example_share", &share.ShareArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:      pulumi.String("My Shared WAF Managed Rule"),
-//				Recipients: cloudflare.ShareRecipientTypeArray{
-//					&cloudflare.ShareRecipientTypeArgs{
+//				Recipients: share.ShareRecipientArray{
+//					&share.ShareRecipientArgs{
 //						OrganizationId:     pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //						RecipientAccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //					},
 //				},
-//				Resources: cloudflare.ShareResourceTypeArray{
-//					&cloudflare.ShareResourceTypeArgs{
+//				Resources: share.ShareResourceArray{
+//					&share.ShareResourceArgs{
 //						Meta:              pulumi.String{},
 //						ResourceAccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //						ResourceId:        pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
@@ -58,6 +58,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/share:Share example '<account_id>/<share_id>'
 // ```
+//
+// Deprecated: cloudflare:index/share:Share has been deprecated in favor of cloudflare:share/share:Share
 type Share struct {
 	pulumi.CustomResourceState
 

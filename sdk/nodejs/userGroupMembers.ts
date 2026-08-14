@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleUserGroupMembers = new cloudflare.UserGroupMembers("example_user_group_members", {
+ * const exampleUserGroupMembers = new cloudflare.usergroup.Members("example_user_group_members", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     userGroupId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     members: [{
@@ -33,6 +33,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/userGroupMembers:UserGroupMembers example '<account_id>/<user_group_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/userGroupMembers:UserGroupMembers has been deprecated in favor of cloudflare:userGroup/members:Members
  */
 export class UserGroupMembers extends pulumi.CustomResource {
     /**
@@ -45,6 +47,7 @@ export class UserGroupMembers extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: UserGroupMembersState, opts?: pulumi.CustomResourceOptions): UserGroupMembers {
+        pulumi.log.warn("UserGroupMembers is deprecated: cloudflare:index/userGroupMembers:UserGroupMembers has been deprecated in favor of cloudflare:userGroup/members:Members")
         return new UserGroupMembers(name, <any>state, { ...opts, id: id });
     }
 
@@ -79,8 +82,11 @@ export class UserGroupMembers extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/userGroupMembers:UserGroupMembers has been deprecated in favor of cloudflare:userGroup/members:Members */
     constructor(name: string, args: UserGroupMembersArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/userGroupMembers:UserGroupMembers has been deprecated in favor of cloudflare:userGroup/members:Members */
     constructor(name: string, argsOrState?: UserGroupMembersArgs | UserGroupMembersState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("UserGroupMembers is deprecated: cloudflare:index/userGroupMembers:UserGroupMembers has been deprecated in favor of cloudflare:userGroup/members:Members")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

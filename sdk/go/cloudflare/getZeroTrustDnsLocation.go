@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdns"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustDnsLocation(ctx, &cloudflare.LookupZeroTrustDnsLocationArgs{
+//			_, err := zerotrustdns.GetLocation(ctx, &zerotrustdns.GetLocationArgs{
 //				AccountId:  pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //				LocationId: "ed35569b41ce4d1facfe683550f54086",
 //			}, nil)
@@ -43,6 +43,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustDnsLocation:getZeroTrustDnsLocation has been deprecated in favor of cloudflare:zeroTrustDns/location:getLocation
 func LookupZeroTrustDnsLocation(ctx *pulumi.Context, args *LookupZeroTrustDnsLocationArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustDnsLocationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustDnsLocationResult

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getApiTokenPermissionGroupsList:getApiTokenPermissionGroupsList has been deprecated in favor of cloudflare:apiToken/permissionGroupsList:getPermissionGroupsList")]
     public static class GetApiTokenPermissionGroupsList
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiTokenPermissionGroupsList = Cloudflare.GetApiTokenPermissionGroupsList.Invoke(new()
+        ///     var exampleApiTokenPermissionGroupsList = Cloudflare.Modules.ApiToken.GetPermissionGroupsList.Invoke(new()
         ///     {
         ///         Name = "Account%20Settings%20Write",
         ///         Scope = "com.cloudflare.api.account.zone",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiTokenPermissionGroupsList = Cloudflare.GetApiTokenPermissionGroupsList.Invoke(new()
+        ///     var exampleApiTokenPermissionGroupsList = Cloudflare.Modules.ApiToken.GetPermissionGroupsList.Invoke(new()
         ///     {
         ///         Name = "Account%20Settings%20Write",
         ///         Scope = "com.cloudflare.api.account.zone",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiTokenPermissionGroupsList = Cloudflare.GetApiTokenPermissionGroupsList.Invoke(new()
+        ///     var exampleApiTokenPermissionGroupsList = Cloudflare.Modules.ApiToken.GetPermissionGroupsList.Invoke(new()
         ///     {
         ///         Name = "Account%20Settings%20Write",
         ///         Scope = "com.cloudflare.api.account.zone",

@@ -22,6 +22,8 @@ __all__ = [
     'get_magic_wan_gre_tunnel_output',
 ]
 
+warnings.warn("""cloudflare:index/getMagicWanGreTunnel:getMagicWanGreTunnel has been deprecated in favor of cloudflare:magicWan/greTunnel:getGreTunnel""", DeprecationWarning)
+
 @pulumi.output_type
 class GetMagicWanGreTunnelResult:
     """
@@ -100,7 +102,7 @@ def get_magic_wan_gre_tunnel(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_wan_gre_tunnel = cloudflare.get_magic_wan_gre_tunnel(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_magic_wan_gre_tunnel = cloudflare.magicwan.get_gre_tunnel(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         gre_tunnel_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -108,6 +110,7 @@ def get_magic_wan_gre_tunnel(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Identifier
     :param _builtins.str gre_tunnel_id: Identifier
     """
+    pulumi.log.warn("""get_magic_wan_gre_tunnel is deprecated: cloudflare:index/getMagicWanGreTunnel:getMagicWanGreTunnel has been deprecated in favor of cloudflare:magicWan/greTunnel:getGreTunnel""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['greTunnelId'] = gre_tunnel_id
@@ -136,7 +139,7 @@ def get_magic_wan_gre_tunnel_output(account_id: pulumi.Input[Optional[Optional[_
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_wan_gre_tunnel = cloudflare.get_magic_wan_gre_tunnel(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_magic_wan_gre_tunnel = cloudflare.magicwan.get_gre_tunnel(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         gre_tunnel_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -144,6 +147,7 @@ def get_magic_wan_gre_tunnel_output(account_id: pulumi.Input[Optional[Optional[_
     :param _builtins.str account_id: Identifier
     :param _builtins.str gre_tunnel_id: Identifier
     """
+    pulumi.log.warn("""get_magic_wan_gre_tunnel is deprecated: cloudflare:index/getMagicWanGreTunnel:getMagicWanGreTunnel has been deprecated in favor of cloudflare:magicWan/greTunnel:getGreTunnel""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['greTunnelId'] = gre_tunnel_id

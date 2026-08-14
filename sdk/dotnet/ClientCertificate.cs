@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleClientCertificate = new Cloudflare.ClientCertificate("example_client_certificate", new()
+    ///     var exampleClientCertificate = new Cloudflare.Modules.Client.ClientCertificate("example_client_certificate", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Csr = @"  -----BEGIN CERTIFICATE REQUEST-----
@@ -44,6 +44,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/clientCertificate:ClientCertificate example '&lt;zone_id&gt;/&lt;client_certificate_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/clientCertificate:ClientCertificate has been deprecated in favor of cloudflare:client/certificate:Certificate")]
     [CloudflareResourceType("cloudflare:index/clientCertificate:ClientCertificate")]
     public partial class ClientCertificate : global::Pulumi.CustomResource
     {

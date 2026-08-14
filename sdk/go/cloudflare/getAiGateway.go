@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/aigateway"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetAiGateway(ctx, &cloudflare.LookupAiGatewayArgs{
+//			_, err := aigateway.GetAiGateway(ctx, &aigateway.GetAiGatewayArgs{
 //				AccountId: pulumi.StringRef("3ebbcb006d4d46d7bb6a8c7f14676cb0"),
 //				Id:        pulumi.StringRef("my-gateway"),
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getAiGateway:getAiGateway has been deprecated in favor of cloudflare:aiGateway/aiGateway:getAiGateway
 func LookupAiGateway(ctx *pulumi.Context, args *LookupAiGatewayArgs, opts ...pulumi.InvokeOption) (*LookupAiGatewayResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAiGatewayResult

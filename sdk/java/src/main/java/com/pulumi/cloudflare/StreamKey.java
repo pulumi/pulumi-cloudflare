@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.StreamKey;
- * import com.pulumi.cloudflare.StreamKeyArgs;
+ * import com.pulumi.cloudflare.stream.Key;
+ * import com.pulumi.cloudflare.stream.KeyArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleStreamKey = new StreamKey("exampleStreamKey", StreamKeyArgs.builder()
+ *         var exampleStreamKey = new Key("exampleStreamKey", KeyArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .build());
  * 
@@ -59,7 +59,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/streamKey:StreamKey example &#39;&lt;account_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/streamKey:StreamKey has been deprecated in favor of cloudflare:stream/key:Key
+ * 
  */
+@Deprecated /* cloudflare:index/streamKey:StreamKey has been deprecated in favor of cloudflare:stream/key:Key */
 @ResourceType(type="cloudflare:index/streamKey:StreamKey")
 public class StreamKey extends com.pulumi.resources.CustomResource {
     /**

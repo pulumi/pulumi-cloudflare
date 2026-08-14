@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getLogpushJob:getLogpushJob has been deprecated in favor of cloudflare:logpush/job:getJob")]
     public static class GetLogpushJob
     {
         /// <summary>
@@ -26,7 +27,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLogpushJob = Cloudflare.GetLogpushJob.Invoke(new()
+        ///     var exampleLogpushJob = Cloudflare.Modules.Logpush.GetJob.Invoke(new()
         ///     {
         ///         JobId = 1,
         ///         AccountId = "account_id",
@@ -54,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLogpushJob = Cloudflare.GetLogpushJob.Invoke(new()
+        ///     var exampleLogpushJob = Cloudflare.Modules.Logpush.GetJob.Invoke(new()
         ///     {
         ///         JobId = 1,
         ///         AccountId = "account_id",
@@ -82,7 +83,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLogpushJob = Cloudflare.GetLogpushJob.Invoke(new()
+        ///     var exampleLogpushJob = Cloudflare.Modules.Logpush.GetJob.Invoke(new()
         ///     {
         ///         JobId = 1,
         ///         AccountId = "account_id",

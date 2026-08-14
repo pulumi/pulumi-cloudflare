@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdeviceip"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustDeviceIpProfile(ctx, &cloudflare.LookupZeroTrustDeviceIpProfileArgs{
+//			_, err := zerotrustdeviceip.GetProfile(ctx, &zerotrustdeviceip.GetProfileArgs{
 //				AccountId: pulumi.StringRef("account_id"),
 //				ProfileId: pulumi.StringRef("profile_id"),
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustDeviceIpProfile:getZeroTrustDeviceIpProfile has been deprecated in favor of cloudflare:zeroTrustDeviceIp/profile:getProfile
 func LookupZeroTrustDeviceIpProfile(ctx *pulumi.Context, args *LookupZeroTrustDeviceIpProfileArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustDeviceIpProfileResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustDeviceIpProfileResult

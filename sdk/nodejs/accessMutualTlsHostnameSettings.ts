@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessMtlsHostnameSettings = new cloudflare.ZeroTrustAccessMtlsHostnameSettings("example_zero_trust_access_mtls_hostname_settings", {
+ * const exampleZeroTrustAccessMtlsHostnameSettings = new cloudflare.zerotrustaccessmtls.HostnameSettings("example_zero_trust_access_mtls_hostname_settings", {
  *     settings: [{
  *         chinaNetwork: false,
  *         clientCertificateForwarding: true,
@@ -120,8 +120,6 @@ export class AccessMutualTlsHostnameSettings extends pulumi.CustomResource {
             resourceInputs["hostname"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AccessMutualTlsHostnameSettings.__pulumiType, name, resourceInputs, opts);
     }
 }

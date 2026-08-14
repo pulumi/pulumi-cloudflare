@@ -31,12 +31,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.AccountDnsSettings;
- * import com.pulumi.cloudflare.AccountDnsSettingsArgs;
- * import com.pulumi.cloudflare.inputs.AccountDnsSettingsZoneDefaultsArgs;
- * import com.pulumi.cloudflare.inputs.AccountDnsSettingsZoneDefaultsInternalDnsArgs;
- * import com.pulumi.cloudflare.inputs.AccountDnsSettingsZoneDefaultsNameserversArgs;
- * import com.pulumi.cloudflare.inputs.AccountDnsSettingsZoneDefaultsSoaArgs;
+ * import com.pulumi.cloudflare.account.DnsSettings;
+ * import com.pulumi.cloudflare.account.DnsSettingsArgs;
+ * import com.pulumi.cloudflare.account.inputs.DnsSettingsZoneDefaultsArgs;
+ * import com.pulumi.cloudflare.account.inputs.DnsSettingsZoneDefaultsInternalDnsArgs;
+ * import com.pulumi.cloudflare.account.inputs.DnsSettingsZoneDefaultsNameserversArgs;
+ * import com.pulumi.cloudflare.account.inputs.DnsSettingsZoneDefaultsSoaArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -50,22 +50,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleAccountDnsSettings = new AccountDnsSettings("exampleAccountDnsSettings", AccountDnsSettingsArgs.builder()
+ *         var exampleAccountDnsSettings = new DnsSettings("exampleAccountDnsSettings", DnsSettingsArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .enforceDnsOnly(false)
- *             .zoneDefaults(AccountDnsSettingsZoneDefaultsArgs.builder()
+ *             .zoneDefaults(DnsSettingsZoneDefaultsArgs.builder()
  *                 .flattenAllCnames(false)
  *                 .foundationDns(false)
- *                 .internalDns(AccountDnsSettingsZoneDefaultsInternalDnsArgs.builder()
+ *                 .internalDns(DnsSettingsZoneDefaultsInternalDnsArgs.builder()
  *                     .referenceZoneId("reference_zone_id")
  *                     .build())
  *                 .multiProvider(false)
- *                 .nameservers(AccountDnsSettingsZoneDefaultsNameserversArgs.builder()
+ *                 .nameservers(DnsSettingsZoneDefaultsNameserversArgs.builder()
  *                     .type("cloudflare.standard")
  *                     .build())
  *                 .nsTtl(86400.0)
  *                 .secondaryOverrides(false)
- *                 .soa(AccountDnsSettingsZoneDefaultsSoaArgs.builder()
+ *                 .soa(DnsSettingsZoneDefaultsSoaArgs.builder()
  *                     .expire(604800.0)
  *                     .minTtl(1800.0)
  *                     .mname("kristina.ns.cloudflare.com")
@@ -87,7 +87,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/accountDnsSettings:AccountDnsSettings has been deprecated in favor of cloudflare:account/dnsSettings:DnsSettings
+ * 
  */
+@Deprecated /* cloudflare:index/accountDnsSettings:AccountDnsSettings has been deprecated in favor of cloudflare:account/dnsSettings:DnsSettings */
 @ResourceType(type="cloudflare:index/accountDnsSettings:AccountDnsSettings")
 public class AccountDnsSettings extends com.pulumi.resources.CustomResource {
     /**

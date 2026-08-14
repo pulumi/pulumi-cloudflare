@@ -33,10 +33,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WaitingRoom;
- * import com.pulumi.cloudflare.WaitingRoomArgs;
- * import com.pulumi.cloudflare.inputs.WaitingRoomAdditionalRouteArgs;
- * import com.pulumi.cloudflare.inputs.WaitingRoomCookieAttributesArgs;
+ * import com.pulumi.cloudflare.waitingRoom.WaitingRoom;
+ * import com.pulumi.cloudflare.waitingRoom.WaitingRoomArgs;
+ * import com.pulumi.cloudflare.waitingRoom.inputs.WaitingRoomAdditionalRouteArgs;
+ * import com.pulumi.cloudflare.waitingRoom.inputs.WaitingRoomCookieAttributesArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -92,7 +92,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/waitingRoom:WaitingRoom example &#39;&lt;zone_id&gt;/&lt;waiting_room_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/waitingRoom:WaitingRoom has been deprecated in favor of cloudflare:waitingRoom/waitingRoom:WaitingRoom
+ * 
  */
+@Deprecated /* cloudflare:index/waitingRoom:WaitingRoom has been deprecated in favor of cloudflare:waitingRoom/waitingRoom:WaitingRoom */
 @ResourceType(type="cloudflare:index/waitingRoom:WaitingRoom")
 public class WaitingRoom extends com.pulumi.resources.CustomResource {
     /**

@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/dnszonetransfers"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewDnsZoneTransfersAcl(ctx, "example_dns_zone_transfers_acl", &cloudflare.DnsZoneTransfersAclArgs{
+//			_, err := dnszonetransfers.NewAcl(ctx, "example_dns_zone_transfers_acl", &dnszonetransfers.AclArgs{
 //				AccountId: pulumi.String("01a7362d577a6c3019a474fd6f485823"),
 //				IpRange:   pulumi.String("192.0.2.53/28"),
 //				Name:      pulumi.String("my-acl-1"),
@@ -50,6 +50,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/dnsZoneTransfersAcl:DnsZoneTransfersAcl example '<account_id>/<acl_id>'
 // ```
+//
+// Deprecated: cloudflare:index/dnsZoneTransfersAcl:DnsZoneTransfersAcl has been deprecated in favor of cloudflare:dnsZoneTransfers/acl:Acl
 type DnsZoneTransfersAcl struct {
 	pulumi.CustomResourceState
 

@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomOriginTrustStore = cloudflare.getCustomOriginTrustStore({
+ * const exampleCustomOriginTrustStore = cloudflare.customorigintrust.getStore({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     customOriginTrustStoreId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCustomOriginTrustStore:getCustomOriginTrustStore has been deprecated in favor of cloudflare:customOriginTrust/store:getStore */
 export function getCustomOriginTrustStore(args?: GetCustomOriginTrustStoreArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomOriginTrustStoreResult> {
+    pulumi.log.warn("getCustomOriginTrustStore is deprecated: cloudflare:index/getCustomOriginTrustStore:getCustomOriginTrustStore has been deprecated in favor of cloudflare:customOriginTrust/store:getStore")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCustomOriginTrustStore:getCustomOriginTrustStore", {
@@ -108,13 +110,15 @@ export interface GetCustomOriginTrustStoreResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomOriginTrustStore = cloudflare.getCustomOriginTrustStore({
+ * const exampleCustomOriginTrustStore = cloudflare.customorigintrust.getStore({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     customOriginTrustStoreId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCustomOriginTrustStore:getCustomOriginTrustStore has been deprecated in favor of cloudflare:customOriginTrust/store:getStore */
 export function getCustomOriginTrustStoreOutput(args?: GetCustomOriginTrustStoreOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomOriginTrustStoreResult> {
+    pulumi.log.warn("getCustomOriginTrustStore is deprecated: cloudflare:index/getCustomOriginTrustStore:getCustomOriginTrustStore has been deprecated in favor of cloudflare:customOriginTrust/store:getStore")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCustomOriginTrustStore:getCustomOriginTrustStore", {

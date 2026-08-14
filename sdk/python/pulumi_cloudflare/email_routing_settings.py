@@ -183,8 +183,13 @@ class _EmailRoutingSettingsState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/emailRoutingSettings:EmailRoutingSettings has been deprecated in favor of cloudflare:emailRouting/settings:Settings""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/emailRoutingSettings:EmailRoutingSettings")
 class EmailRoutingSettings(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/emailRoutingSettings:EmailRoutingSettings has been deprecated in favor of cloudflare:emailRouting/settings:Settings""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -203,7 +208,7 @@ class EmailRoutingSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_email_routing_settings = cloudflare.EmailRoutingSettings("example_email_routing_settings", zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+        example_email_routing_settings = cloudflare.emailrouting.Settings("example_email_routing_settings", zone_id="023e105f4ecef8ad9ca31a8372d0c353")
         ```
 
         ## Import
@@ -235,7 +240,7 @@ class EmailRoutingSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_email_routing_settings = cloudflare.EmailRoutingSettings("example_email_routing_settings", zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+        example_email_routing_settings = cloudflare.emailrouting.Settings("example_email_routing_settings", zone_id="023e105f4ecef8ad9ca31a8372d0c353")
         ```
 
         ## Import
@@ -262,6 +267,7 @@ class EmailRoutingSettings(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""EmailRoutingSettings is deprecated: cloudflare:index/emailRoutingSettings:EmailRoutingSettings has been deprecated in favor of cloudflare:emailRouting/settings:Settings""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

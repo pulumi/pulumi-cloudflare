@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustResourceLibraryCategories:getZeroTrustResourceLibraryCategories has been deprecated in favor of cloudflare:zeroTrustResourceLibrary/categories:getCategories")]
     public static class GetZeroTrustResourceLibraryCategories
     {
         public static Task<GetZeroTrustResourceLibraryCategoriesResult> InvokeAsync(GetZeroTrustResourceLibraryCategoriesArgs args, InvokeOptions? options = null)

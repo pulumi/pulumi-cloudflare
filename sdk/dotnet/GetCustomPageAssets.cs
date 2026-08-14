@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getCustomPageAssets:getCustomPageAssets has been deprecated in favor of cloudflare:customPage/assets:getAssets")]
     public static class GetCustomPageAssets
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomPageAssets = Cloudflare.GetCustomPageAssets.Invoke(new()
+        ///     var exampleCustomPageAssets = Cloudflare.Modules.CustomPage.GetAssets.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",
@@ -45,7 +46,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomPageAssets = Cloudflare.GetCustomPageAssets.Invoke(new()
+        ///     var exampleCustomPageAssets = Cloudflare.Modules.CustomPage.GetAssets.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",
@@ -68,7 +69,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomPageAssets = Cloudflare.GetCustomPageAssets.Invoke(new()
+        ///     var exampleCustomPageAssets = Cloudflare.Modules.CustomPage.GetAssets.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",

@@ -16,13 +16,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleFirewallRule = cloudflare.getFirewallRule({
+ * const exampleFirewallRule = cloudflare.firewall.getRule({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     ruleId: "372e67954025e0ba6aaa6d586b9e0b60",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getFirewallRule:getFirewallRule has been deprecated in favor of cloudflare:firewall/rule:getRule */
 export function getFirewallRule(args?: GetFirewallRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallRuleResult> {
+    pulumi.log.warn("getFirewallRule is deprecated: cloudflare:index/getFirewallRule:getFirewallRule has been deprecated in favor of cloudflare:firewall/rule:getRule")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getFirewallRule:getFirewallRule", {
@@ -96,13 +98,15 @@ export interface GetFirewallRuleResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleFirewallRule = cloudflare.getFirewallRule({
+ * const exampleFirewallRule = cloudflare.firewall.getRule({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     ruleId: "372e67954025e0ba6aaa6d586b9e0b60",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getFirewallRule:getFirewallRule has been deprecated in favor of cloudflare:firewall/rule:getRule */
 export function getFirewallRuleOutput(args?: GetFirewallRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFirewallRuleResult> {
+    pulumi.log.warn("getFirewallRule is deprecated: cloudflare:index/getFirewallRule:getFirewallRule has been deprecated in favor of cloudflare:firewall/rule:getRule")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getFirewallRule:getFirewallRule", {

@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/pipeline"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetPipelineSink(ctx, &cloudflare.LookupPipelineSinkArgs{
+//			_, err := pipeline.LookupSink(ctx, &pipeline.LookupSinkArgs{
 //				AccountId: pulumi.StringRef("0123105f4ecef8ad9ca31a8372d0c353"),
 //				SinkId:    pulumi.StringRef("0223105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getPipelineSink:getPipelineSink has been deprecated in favor of cloudflare:pipeline/sink:getSink
 func LookupPipelineSink(ctx *pulumi.Context, args *LookupPipelineSinkArgs, opts ...pulumi.InvokeOption) (*LookupPipelineSinkResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPipelineSinkResult

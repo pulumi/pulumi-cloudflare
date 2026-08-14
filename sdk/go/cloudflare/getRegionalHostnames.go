@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/regional"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetRegionalHostnames(ctx, &cloudflare.LookupRegionalHostnamesArgs{
+//			_, err := regional.LookupHostnames(ctx, &regional.LookupHostnamesArgs{
 //				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
@@ -41,6 +41,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getRegionalHostnames:getRegionalHostnames has been deprecated in favor of cloudflare:regional/hostnames:getHostnames
 func LookupRegionalHostnames(ctx *pulumi.Context, args *LookupRegionalHostnamesArgs, opts ...pulumi.InvokeOption) (*LookupRegionalHostnamesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegionalHostnamesResult

@@ -16,14 +16,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWaitingRoomEvent = cloudflare.getWaitingRoomEvent({
+ * const exampleWaitingRoomEvent = cloudflare.waitingroom.getEvent({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     waitingRoomId: "699d98642c564d2e855e9661899b7252",
  *     eventId: "25756b2dfe6e378a06b033b670413757",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWaitingRoomEvent:getWaitingRoomEvent has been deprecated in favor of cloudflare:waitingRoom/event:getEvent */
 export function getWaitingRoomEvent(args: GetWaitingRoomEventArgs, opts?: pulumi.InvokeOptions): Promise<GetWaitingRoomEventResult> {
+    pulumi.log.warn("getWaitingRoomEvent is deprecated: cloudflare:index/getWaitingRoomEvent:getWaitingRoomEvent has been deprecated in favor of cloudflare:waitingRoom/event:getEvent")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWaitingRoomEvent:getWaitingRoomEvent", {
         "eventId": args.eventId,
@@ -135,14 +137,16 @@ export interface GetWaitingRoomEventResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWaitingRoomEvent = cloudflare.getWaitingRoomEvent({
+ * const exampleWaitingRoomEvent = cloudflare.waitingroom.getEvent({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     waitingRoomId: "699d98642c564d2e855e9661899b7252",
  *     eventId: "25756b2dfe6e378a06b033b670413757",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWaitingRoomEvent:getWaitingRoomEvent has been deprecated in favor of cloudflare:waitingRoom/event:getEvent */
 export function getWaitingRoomEventOutput(args: GetWaitingRoomEventOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWaitingRoomEventResult> {
+    pulumi.log.warn("getWaitingRoomEvent is deprecated: cloudflare:index/getWaitingRoomEvent:getWaitingRoomEvent has been deprecated in favor of cloudflare:waitingRoom/event:getEvent")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWaitingRoomEvent:getWaitingRoomEvent", {
         "eventId": args.eventId,

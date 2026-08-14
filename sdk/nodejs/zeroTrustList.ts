@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustList = new cloudflare.ZeroTrustList("example_zero_trust_list", {
+ * const exampleZeroTrustList = new cloudflare.zerotrust.List("example_zero_trust_list", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     name: "Admin Serial Numbers",
  *     type: "SERIAL",
@@ -30,6 +30,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustList:ZeroTrustList example '<account_id>/<list_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustList:ZeroTrustList has been deprecated in favor of cloudflare:zeroTrust/list:List
  */
 export class ZeroTrustList extends pulumi.CustomResource {
     /**
@@ -42,6 +44,7 @@ export class ZeroTrustList extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustListState, opts?: pulumi.CustomResourceOptions): ZeroTrustList {
+        pulumi.log.warn("ZeroTrustList is deprecated: cloudflare:index/zeroTrustList:ZeroTrustList has been deprecated in favor of cloudflare:zeroTrust/list:List")
         return new ZeroTrustList(name, <any>state, { ...opts, id: id });
     }
 
@@ -91,8 +94,11 @@ export class ZeroTrustList extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustList:ZeroTrustList has been deprecated in favor of cloudflare:zeroTrust/list:List */
     constructor(name: string, args: ZeroTrustListArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustList:ZeroTrustList has been deprecated in favor of cloudflare:zeroTrust/list:List */
     constructor(name: string, argsOrState?: ZeroTrustListArgs | ZeroTrustListState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustList is deprecated: cloudflare:index/zeroTrustList:ZeroTrustList has been deprecated in favor of cloudflare:zeroTrust/list:List")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

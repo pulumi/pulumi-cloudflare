@@ -21,6 +21,8 @@ __all__ = [
     'get_logpush_dataset_field_output',
 ]
 
+warnings.warn("""cloudflare:index/getLogpushDatasetField:getLogpushDatasetField has been deprecated in favor of cloudflare:logpushDataset/field:getField""", DeprecationWarning)
+
 @pulumi.output_type
 class GetLogpushDatasetFieldResult:
     """
@@ -89,7 +91,7 @@ def get_logpush_dataset_field(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_logpush_dataset_field = cloudflare.get_logpush_dataset_field(dataset_id="gateway_dns",
+    example_logpush_dataset_field = cloudflare.logpushdataset.get_field(dataset_id="gateway_dns",
         account_id="account_id",
         zone_id="zone_id")
     ```
@@ -100,6 +102,7 @@ def get_logpush_dataset_field(account_id: Optional[_builtins.str] = None,
            Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_logpush_dataset_field is deprecated: cloudflare:index/getLogpushDatasetField:getLogpushDatasetField has been deprecated in favor of cloudflare:logpushDataset/field:getField""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['datasetId'] = dataset_id
@@ -126,7 +129,7 @@ def get_logpush_dataset_field_output(account_id: pulumi.Input[Optional[Optional[
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_logpush_dataset_field = cloudflare.get_logpush_dataset_field(dataset_id="gateway_dns",
+    example_logpush_dataset_field = cloudflare.logpushdataset.get_field(dataset_id="gateway_dns",
         account_id="account_id",
         zone_id="zone_id")
     ```
@@ -137,6 +140,7 @@ def get_logpush_dataset_field_output(account_id: pulumi.Input[Optional[Optional[
            Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_logpush_dataset_field is deprecated: cloudflare:index/getLogpushDatasetField:getLogpushDatasetField has been deprecated in favor of cloudflare:logpushDataset/field:getField""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['datasetId'] = dataset_id

@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneCacheReserve = new cloudflare.ZoneCacheReserve("example_zone_cache_reserve", {
+ * const exampleZoneCacheReserve = new cloudflare.zonecache.Reserve("example_zone_cache_reserve", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     value: "on",
  * });
@@ -29,6 +29,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zoneCacheReserve:ZoneCacheReserve example '<zone_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zoneCacheReserve:ZoneCacheReserve has been deprecated in favor of cloudflare:zoneCache/reserve:Reserve
  */
 export class ZoneCacheReserve extends pulumi.CustomResource {
     /**
@@ -41,6 +43,7 @@ export class ZoneCacheReserve extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZoneCacheReserveState, opts?: pulumi.CustomResourceOptions): ZoneCacheReserve {
+        pulumi.log.warn("ZoneCacheReserve is deprecated: cloudflare:index/zoneCacheReserve:ZoneCacheReserve has been deprecated in favor of cloudflare:zoneCache/reserve:Reserve")
         return new ZoneCacheReserve(name, <any>state, { ...opts, id: id });
     }
 
@@ -83,8 +86,11 @@ export class ZoneCacheReserve extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zoneCacheReserve:ZoneCacheReserve has been deprecated in favor of cloudflare:zoneCache/reserve:Reserve */
     constructor(name: string, args: ZoneCacheReserveArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zoneCacheReserve:ZoneCacheReserve has been deprecated in favor of cloudflare:zoneCache/reserve:Reserve */
     constructor(name: string, argsOrState?: ZoneCacheReserveArgs | ZoneCacheReserveState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZoneCacheReserve is deprecated: cloudflare:index/zoneCacheReserve:ZoneCacheReserve has been deprecated in favor of cloudflare:zoneCache/reserve:Reserve")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

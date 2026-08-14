@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleEmailSecurityBlockSender = new Cloudflare.EmailSecurityBlockSender("example_email_security_block_sender", new()
+    ///     var exampleEmailSecurityBlockSender = new Cloudflare.Modules.EmailSecurityBlock.EmailSecurityBlockSender("example_email_security_block_sender", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         IsRegex = false,
@@ -43,6 +43,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/emailSecurityBlockSender:EmailSecurityBlockSender example '&lt;account_id&gt;/&lt;pattern_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/emailSecurityBlockSender:EmailSecurityBlockSender has been deprecated in favor of cloudflare:emailSecurityBlock/sender:Sender")]
     [CloudflareResourceType("cloudflare:index/emailSecurityBlockSender:EmailSecurityBlockSender")]
     public partial class EmailSecurityBlockSender : global::Pulumi.CustomResource
     {

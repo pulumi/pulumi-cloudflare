@@ -218,8 +218,13 @@ class _AccountSubscriptionState:
         pulumi.set(self, "state", value)
 
 
+warnings.warn("""cloudflare:index/accountSubscription:AccountSubscription has been deprecated in favor of cloudflare:account/subscription:Subscription""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/accountSubscription:AccountSubscription")
 class AccountSubscription(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/accountSubscription:AccountSubscription has been deprecated in favor of cloudflare:account/subscription:Subscription""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -240,7 +245,7 @@ class AccountSubscription(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_account_subscription = cloudflare.AccountSubscription("example_account_subscription",
+        example_account_subscription = cloudflare.account.Subscription("example_account_subscription",
             account_id="account_id",
             frequency="monthly",
             rate_plan={
@@ -286,7 +291,7 @@ class AccountSubscription(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_account_subscription = cloudflare.AccountSubscription("example_account_subscription",
+        example_account_subscription = cloudflare.account.Subscription("example_account_subscription",
             account_id="account_id",
             frequency="monthly",
             rate_plan={
@@ -326,6 +331,7 @@ class AccountSubscription(pulumi.CustomResource):
                  frequency: pulumi.Input[Optional[_builtins.str]] = None,
                  rate_plan: pulumi.Input[Optional[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict']]] = None,
                  __props__=None):
+        pulumi.log.warn("""AccountSubscription is deprecated: cloudflare:index/accountSubscription:AccountSubscription has been deprecated in favor of cloudflare:account/subscription:Subscription""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

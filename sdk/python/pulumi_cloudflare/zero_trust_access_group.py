@@ -258,8 +258,13 @@ class _ZeroTrustAccessGroupState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup has been deprecated in favor of cloudflare:zeroTrustAccess/group:Group""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup")
 class ZeroTrustAccessGroup(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup has been deprecated in favor of cloudflare:zeroTrustAccess/group:Group""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -284,7 +289,7 @@ class ZeroTrustAccessGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_group = cloudflare.ZeroTrustAccessGroup("example_zero_trust_access_group",
+        example_zero_trust_access_group = cloudflare.zerotrustaccess.Group("example_zero_trust_access_group",
             includes=[{
                 "certificate": {},
             }],
@@ -334,7 +339,7 @@ class ZeroTrustAccessGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_group = cloudflare.ZeroTrustAccessGroup("example_zero_trust_access_group",
+        example_zero_trust_access_group = cloudflare.zerotrustaccess.Group("example_zero_trust_access_group",
             includes=[{
                 "certificate": {},
             }],
@@ -379,6 +384,7 @@ class ZeroTrustAccessGroup(pulumi.CustomResource):
                  requires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupRequireArgs', 'ZeroTrustAccessGroupRequireArgsDict']]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustAccessGroup is deprecated: cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup has been deprecated in favor of cloudflare:zeroTrustAccess/group:Group""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

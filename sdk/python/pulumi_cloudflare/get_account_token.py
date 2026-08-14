@@ -23,6 +23,8 @@ __all__ = [
     'get_account_token_output',
 ]
 
+warnings.warn("""cloudflare:index/getAccountToken:getAccountToken has been deprecated in favor of cloudflare:account/token:getToken""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAccountTokenResult:
     """
@@ -206,7 +208,7 @@ def get_account_token(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_token = cloudflare.get_account_token(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_account_token = cloudflare.account.get_token(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         token_id="ed17574386854bf78a67040be0a770b0")
     ```
 
@@ -214,6 +216,7 @@ def get_account_token(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.str token_id: Token identifier tag.
     """
+    pulumi.log.warn("""get_account_token is deprecated: cloudflare:index/getAccountToken:getAccountToken has been deprecated in favor of cloudflare:account/token:getToken""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -251,7 +254,7 @@ def get_account_token_output(account_id: pulumi.Input[Optional[Optional[_builtin
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_token = cloudflare.get_account_token(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_account_token = cloudflare.account.get_token(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         token_id="ed17574386854bf78a67040be0a770b0")
     ```
 
@@ -259,6 +262,7 @@ def get_account_token_output(account_id: pulumi.Input[Optional[Optional[_builtin
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.str token_id: Token identifier tag.
     """
+    pulumi.log.warn("""get_account_token is deprecated: cloudflare:index/getAccountToken:getAccountToken has been deprecated in favor of cloudflare:account/token:getToken""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

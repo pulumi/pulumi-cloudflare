@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: cloudflare:index/getZeroTrustResourceLibraryCategories:getZeroTrustResourceLibraryCategories has been deprecated in favor of cloudflare:zeroTrustResourceLibrary/categories:getCategories
 func LookupZeroTrustResourceLibraryCategories(ctx *pulumi.Context, args *LookupZeroTrustResourceLibraryCategoriesArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustResourceLibraryCategoriesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustResourceLibraryCategoriesResult

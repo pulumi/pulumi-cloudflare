@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/waitingroom"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetWaitingRoomEvents(ctx, &cloudflare.LookupWaitingRoomEventsArgs{
+//			_, err := waitingroom.GetEvents(ctx, &waitingroom.GetEventsArgs{
 //				ZoneId:        pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				WaitingRoomId: "699d98642c564d2e855e9661899b7252",
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getWaitingRoomEvents:getWaitingRoomEvents has been deprecated in favor of cloudflare:waitingRoom/events:getEvents
 func LookupWaitingRoomEvents(ctx *pulumi.Context, args *LookupWaitingRoomEventsArgs, opts ...pulumi.InvokeOption) (*LookupWaitingRoomEventsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWaitingRoomEventsResult

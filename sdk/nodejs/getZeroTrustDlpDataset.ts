@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpDataset = cloudflare.getZeroTrustDlpDataset({
+ * const exampleZeroTrustDlpDataset = cloudflare.zerotrustdlp.getDataset({
  *     accountId: "account_id",
  *     datasetId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpDataset:getZeroTrustDlpDataset has been deprecated in favor of cloudflare:zeroTrustDlp/dataset:getDataset */
 export function getZeroTrustDlpDataset(args: GetZeroTrustDlpDatasetArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDlpDatasetResult> {
+    pulumi.log.warn("getZeroTrustDlpDataset is deprecated: cloudflare:index/getZeroTrustDlpDataset:getZeroTrustDlpDataset has been deprecated in favor of cloudflare:zeroTrustDlp/dataset:getDataset")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDlpDataset:getZeroTrustDlpDataset", {
         "accountId": args.accountId,
@@ -83,13 +85,15 @@ export interface GetZeroTrustDlpDatasetResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpDataset = cloudflare.getZeroTrustDlpDataset({
+ * const exampleZeroTrustDlpDataset = cloudflare.zerotrustdlp.getDataset({
  *     accountId: "account_id",
  *     datasetId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpDataset:getZeroTrustDlpDataset has been deprecated in favor of cloudflare:zeroTrustDlp/dataset:getDataset */
 export function getZeroTrustDlpDatasetOutput(args: GetZeroTrustDlpDatasetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDlpDatasetResult> {
+    pulumi.log.warn("getZeroTrustDlpDataset is deprecated: cloudflare:index/getZeroTrustDlpDataset:getZeroTrustDlpDataset has been deprecated in favor of cloudflare:zeroTrustDlp/dataset:getDataset")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDlpDataset:getZeroTrustDlpDataset", {
         "accountId": args.accountId,

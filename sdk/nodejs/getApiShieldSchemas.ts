@@ -20,13 +20,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleApiShieldSchemas = cloudflare.getApiShieldSchemas({
+ * const exampleApiShieldSchemas = cloudflare.apishield.getSchemas({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     validationEnabled: true,
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getApiShieldSchemas:getApiShieldSchemas has been deprecated in favor of cloudflare:apiShield/schemas:getSchemas */
 export function getApiShieldSchemas(args?: GetApiShieldSchemasArgs, opts?: pulumi.InvokeOptions): Promise<GetApiShieldSchemasResult> {
+    pulumi.log.warn("getApiShieldSchemas is deprecated: cloudflare:index/getApiShieldSchemas:getApiShieldSchemas has been deprecated in favor of cloudflare:apiShield/schemas:getSchemas")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getApiShieldSchemas:getApiShieldSchemas", {
@@ -98,13 +100,15 @@ export interface GetApiShieldSchemasResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleApiShieldSchemas = cloudflare.getApiShieldSchemas({
+ * const exampleApiShieldSchemas = cloudflare.apishield.getSchemas({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     validationEnabled: true,
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getApiShieldSchemas:getApiShieldSchemas has been deprecated in favor of cloudflare:apiShield/schemas:getSchemas */
 export function getApiShieldSchemasOutput(args?: GetApiShieldSchemasOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiShieldSchemasResult> {
+    pulumi.log.warn("getApiShieldSchemas is deprecated: cloudflare:index/getApiShieldSchemas:getApiShieldSchemas has been deprecated in favor of cloudflare:apiShield/schemas:getSchemas")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getApiShieldSchemas:getApiShieldSchemas", {

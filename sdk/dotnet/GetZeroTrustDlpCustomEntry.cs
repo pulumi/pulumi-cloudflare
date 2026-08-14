@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustDlpCustomEntry:getZeroTrustDlpCustomEntry has been deprecated in favor of cloudflare:zeroTrustDlpCustom/entry:getEntry")]
     public static class GetZeroTrustDlpCustomEntry
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDlpCustomEntry = Cloudflare.GetZeroTrustDlpCustomEntry.Invoke(new()
+        ///     var exampleZeroTrustDlpCustomEntry = Cloudflare.Modules.ZeroTrustDlpCustom.GetEntry.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         EntryId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDlpCustomEntry = Cloudflare.GetZeroTrustDlpCustomEntry.Invoke(new()
+        ///     var exampleZeroTrustDlpCustomEntry = Cloudflare.Modules.ZeroTrustDlpCustom.GetEntry.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         EntryId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDlpCustomEntry = Cloudflare.GetZeroTrustDlpCustomEntry.Invoke(new()
+        ///     var exampleZeroTrustDlpCustomEntry = Cloudflare.Modules.ZeroTrustDlpCustom.GetEntry.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         EntryId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",

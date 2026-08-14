@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleR2BucketEventNotification = new cloudflare.R2BucketEventNotification("example_r2_bucket_event_notification", {
+ * const exampleR2BucketEventNotification = new cloudflare.r2bucket.EventNotification("example_r2_bucket_event_notification", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
  *     queueId: "queue_id",
@@ -37,6 +37,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/r2BucketEventNotification:R2BucketEventNotification has been deprecated in favor of cloudflare:r2Bucket/eventNotification:EventNotification
  */
 export class R2BucketEventNotification extends pulumi.CustomResource {
     /**
@@ -49,6 +51,7 @@ export class R2BucketEventNotification extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: R2BucketEventNotificationState, opts?: pulumi.CustomResourceOptions): R2BucketEventNotification {
+        pulumi.log.warn("R2BucketEventNotification is deprecated: cloudflare:index/r2BucketEventNotification:R2BucketEventNotification has been deprecated in favor of cloudflare:r2Bucket/eventNotification:EventNotification")
         return new R2BucketEventNotification(name, <any>state, { ...opts, id: id });
     }
 
@@ -98,8 +101,11 @@ export class R2BucketEventNotification extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/r2BucketEventNotification:R2BucketEventNotification has been deprecated in favor of cloudflare:r2Bucket/eventNotification:EventNotification */
     constructor(name: string, args: R2BucketEventNotificationArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/r2BucketEventNotification:R2BucketEventNotification has been deprecated in favor of cloudflare:r2Bucket/eventNotification:EventNotification */
     constructor(name: string, argsOrState?: R2BucketEventNotificationArgs | R2BucketEventNotificationState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("R2BucketEventNotification is deprecated: cloudflare:index/r2BucketEventNotification:R2BucketEventNotification has been deprecated in favor of cloudflare:r2Bucket/eventNotification:EventNotification")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

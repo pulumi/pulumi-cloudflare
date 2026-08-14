@@ -259,8 +259,13 @@ class _ZeroTrustDeviceSubnetState:
         pulumi.set(self, "subnet_type", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustDeviceSubnet:ZeroTrustDeviceSubnet has been deprecated in favor of cloudflare:zeroTrustDevice/subnet:Subnet""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustDeviceSubnet:ZeroTrustDeviceSubnet")
 class ZeroTrustDeviceSubnet(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustDeviceSubnet:ZeroTrustDeviceSubnet has been deprecated in favor of cloudflare:zeroTrustDevice/subnet:Subnet""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -283,7 +288,7 @@ class ZeroTrustDeviceSubnet(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_device_subnet = cloudflare.ZeroTrustDeviceSubnet("example_zero_trust_device_subnet",
+        example_zero_trust_device_subnet = cloudflare.zerotrustdevice.Subnet("example_zero_trust_device_subnet",
             account_id="699d98642c564d2e855e9661899b7252",
             name="IPv4 Cloudflare Source IPs",
             network="100.64.0.0/12",
@@ -324,7 +329,7 @@ class ZeroTrustDeviceSubnet(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_device_subnet = cloudflare.ZeroTrustDeviceSubnet("example_zero_trust_device_subnet",
+        example_zero_trust_device_subnet = cloudflare.zerotrustdevice.Subnet("example_zero_trust_device_subnet",
             account_id="699d98642c564d2e855e9661899b7252",
             name="IPv4 Cloudflare Source IPs",
             network="100.64.0.0/12",
@@ -360,6 +365,7 @@ class ZeroTrustDeviceSubnet(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustDeviceSubnet is deprecated: cloudflare:index/zeroTrustDeviceSubnet:ZeroTrustDeviceSubnet has been deprecated in favor of cloudflare:zeroTrustDevice/subnet:Subnet""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

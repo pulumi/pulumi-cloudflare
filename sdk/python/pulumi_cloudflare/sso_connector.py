@@ -238,8 +238,13 @@ class _SsoConnectorState:
         pulumi.set(self, "verification", value)
 
 
+warnings.warn("""cloudflare:index/ssoConnector:SsoConnector has been deprecated in favor of cloudflare:sso/connector:Connector""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/ssoConnector:SsoConnector")
 class SsoConnector(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/ssoConnector:SsoConnector has been deprecated in favor of cloudflare:sso/connector:Connector""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -262,7 +267,7 @@ class SsoConnector(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_sso_connector = cloudflare.SsoConnector("example_sso_connector",
+        example_sso_connector = cloudflare.sso.Connector("example_sso_connector",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             email_domain="example.com",
             begin_verification=True,
@@ -302,7 +307,7 @@ class SsoConnector(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_sso_connector = cloudflare.SsoConnector("example_sso_connector",
+        example_sso_connector = cloudflare.sso.Connector("example_sso_connector",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             email_domain="example.com",
             begin_verification=True,
@@ -337,6 +342,7 @@ class SsoConnector(pulumi.CustomResource):
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  use_fedramp_language: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
+        pulumi.log.warn("""SsoConnector is deprecated: cloudflare:index/ssoConnector:SsoConnector has been deprecated in favor of cloudflare:sso/connector:Connector""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

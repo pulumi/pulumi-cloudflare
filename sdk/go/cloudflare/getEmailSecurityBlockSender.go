@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/emailsecurityblock"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetEmailSecurityBlockSender(ctx, &cloudflare.LookupEmailSecurityBlockSenderArgs{
+//			_, err := emailsecurityblock.GetSender(ctx, &emailsecurityblock.GetSenderArgs{
 //				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				PatternId: pulumi.StringRef("2402"),
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getEmailSecurityBlockSender:getEmailSecurityBlockSender has been deprecated in favor of cloudflare:emailSecurityBlock/sender:getSender
 func LookupEmailSecurityBlockSender(ctx *pulumi.Context, args *LookupEmailSecurityBlockSenderArgs, opts ...pulumi.InvokeOption) (*LookupEmailSecurityBlockSenderResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEmailSecurityBlockSenderResult

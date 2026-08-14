@@ -269,8 +269,13 @@ class _SecretsStoreSecretState:
         pulumi.set(self, "value", value)
 
 
+warnings.warn("""cloudflare:index/secretsStoreSecret:SecretsStoreSecret has been deprecated in favor of cloudflare:secretsStore/secret:Secret""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/secretsStoreSecret:SecretsStoreSecret")
 class SecretsStoreSecret(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/secretsStoreSecret:SecretsStoreSecret has been deprecated in favor of cloudflare:secretsStore/secret:Secret""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -294,7 +299,7 @@ class SecretsStoreSecret(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_secrets_store_secret = cloudflare.SecretsStoreSecret("example_secrets_store_secret",
+        example_secrets_store_secret = cloudflare.secretsstore.Secret("example_secrets_store_secret",
             account_id="985e105f4ecef8ad9ca31a8372d0c353",
             store_id="023e105f4ecef8ad9ca31a8372d0c353")
         ```
@@ -333,7 +338,7 @@ class SecretsStoreSecret(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_secrets_store_secret = cloudflare.SecretsStoreSecret("example_secrets_store_secret",
+        example_secrets_store_secret = cloudflare.secretsstore.Secret("example_secrets_store_secret",
             account_id="985e105f4ecef8ad9ca31a8372d0c353",
             store_id="023e105f4ecef8ad9ca31a8372d0c353")
         ```
@@ -367,6 +372,7 @@ class SecretsStoreSecret(pulumi.CustomResource):
                  store_id: pulumi.Input[Optional[_builtins.str]] = None,
                  value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""SecretsStoreSecret is deprecated: cloudflare:index/secretsStoreSecret:SecretsStoreSecret has been deprecated in favor of cloudflare:secretsStore/secret:Secret""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

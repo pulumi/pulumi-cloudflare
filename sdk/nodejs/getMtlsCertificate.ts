@@ -11,13 +11,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMtlsCertificate = cloudflare.getMtlsCertificate({
+ * const exampleMtlsCertificate = cloudflare.mtlscertificate.getMtlsCertificate({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     mtlsCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getMtlsCertificate:getMtlsCertificate has been deprecated in favor of cloudflare:mtlsCertificate/mtlsCertificate:getMtlsCertificate */
 export function getMtlsCertificate(args: GetMtlsCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetMtlsCertificateResult> {
+    pulumi.log.warn("getMtlsCertificate is deprecated: cloudflare:index/getMtlsCertificate:getMtlsCertificate has been deprecated in favor of cloudflare:mtlsCertificate/mtlsCertificate:getMtlsCertificate")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getMtlsCertificate:getMtlsCertificate", {
         "accountId": args.accountId,
@@ -95,13 +97,15 @@ export interface GetMtlsCertificateResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMtlsCertificate = cloudflare.getMtlsCertificate({
+ * const exampleMtlsCertificate = cloudflare.mtlscertificate.getMtlsCertificate({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     mtlsCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getMtlsCertificate:getMtlsCertificate has been deprecated in favor of cloudflare:mtlsCertificate/mtlsCertificate:getMtlsCertificate */
 export function getMtlsCertificateOutput(args: GetMtlsCertificateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMtlsCertificateResult> {
+    pulumi.log.warn("getMtlsCertificate is deprecated: cloudflare:index/getMtlsCertificate:getMtlsCertificate has been deprecated in favor of cloudflare:mtlsCertificate/mtlsCertificate:getMtlsCertificate")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getMtlsCertificate:getMtlsCertificate", {
         "accountId": args.accountId,

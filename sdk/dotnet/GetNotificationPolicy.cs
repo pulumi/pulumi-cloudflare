@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getNotificationPolicy:getNotificationPolicy has been deprecated in favor of cloudflare:notification/policy:getPolicy")]
     public static class GetNotificationPolicy
     {
         /// <summary>
@@ -30,7 +31,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleNotificationPolicy = Cloudflare.GetNotificationPolicy.Invoke(new()
+        ///     var exampleNotificationPolicy = Cloudflare.Modules.Notification.GetPolicy.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         PolicyId = "0da2b59ef118439d8097bdfb215203c9",
@@ -61,7 +62,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleNotificationPolicy = Cloudflare.GetNotificationPolicy.Invoke(new()
+        ///     var exampleNotificationPolicy = Cloudflare.Modules.Notification.GetPolicy.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         PolicyId = "0da2b59ef118439d8097bdfb215203c9",
@@ -92,7 +93,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleNotificationPolicy = Cloudflare.GetNotificationPolicy.Invoke(new()
+        ///     var exampleNotificationPolicy = Cloudflare.Modules.Notification.GetPolicy.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         PolicyId = "0da2b59ef118439d8097bdfb215203c9",

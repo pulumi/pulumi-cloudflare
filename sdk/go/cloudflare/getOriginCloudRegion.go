@@ -18,14 +18,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/origincloud"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetOriginCloudRegion(ctx, &cloudflare.LookupOriginCloudRegionArgs{
+//			_, err := origincloud.GetRegion(ctx, &origincloud.GetRegionArgs{
 //				ZoneId:   "023e105f4ecef8ad9ca31a8372d0c353",
 //				OriginIp: "192.0.2.1",
 //			}, nil)
@@ -37,6 +37,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getOriginCloudRegion:getOriginCloudRegion has been deprecated in favor of cloudflare:originCloud/region:getRegion
 func LookupOriginCloudRegion(ctx *pulumi.Context, args *LookupOriginCloudRegionArgs, opts ...pulumi.InvokeOption) (*LookupOriginCloudRegionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOriginCloudRegionResult

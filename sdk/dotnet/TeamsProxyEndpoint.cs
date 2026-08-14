@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustGatewayProxyEndpoint = new Cloudflare.ZeroTrustGatewayProxyEndpoint("example_zero_trust_gateway_proxy_endpoint", new()
+    ///     var exampleZeroTrustGatewayProxyEndpoint = new Cloudflare.Modules.ZeroTrustGatewayProxy.ZeroTrustGatewayProxyEndpoint("example_zero_trust_gateway_proxy_endpoint", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Name = "Devops team",
@@ -97,10 +97,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

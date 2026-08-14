@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessMtlsHostnameSettings = new cloudflare.ZeroTrustAccessMtlsHostnameSettings("example_zero_trust_access_mtls_hostname_settings", {
+ * const exampleZeroTrustAccessMtlsHostnameSettings = new cloudflare.zerotrustaccessmtls.HostnameSettings("example_zero_trust_access_mtls_hostname_settings", {
  *     settings: [{
  *         chinaNetwork: false,
  *         clientCertificateForwarding: true,
@@ -31,6 +31,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings has been deprecated in favor of cloudflare:zeroTrustAccessMtls/hostnameSettings:HostnameSettings
  */
 export class ZeroTrustAccessMtlsHostnameSettings extends pulumi.CustomResource {
     /**
@@ -43,6 +45,7 @@ export class ZeroTrustAccessMtlsHostnameSettings extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustAccessMtlsHostnameSettingsState, opts?: pulumi.CustomResourceOptions): ZeroTrustAccessMtlsHostnameSettings {
+        pulumi.log.warn("ZeroTrustAccessMtlsHostnameSettings is deprecated: cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings has been deprecated in favor of cloudflare:zeroTrustAccessMtls/hostnameSettings:HostnameSettings")
         return new ZeroTrustAccessMtlsHostnameSettings(name, <any>state, { ...opts, id: id });
     }
 
@@ -89,8 +92,11 @@ export class ZeroTrustAccessMtlsHostnameSettings extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings has been deprecated in favor of cloudflare:zeroTrustAccessMtls/hostnameSettings:HostnameSettings */
     constructor(name: string, args: ZeroTrustAccessMtlsHostnameSettingsArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings has been deprecated in favor of cloudflare:zeroTrustAccessMtls/hostnameSettings:HostnameSettings */
     constructor(name: string, argsOrState?: ZeroTrustAccessMtlsHostnameSettingsArgs | ZeroTrustAccessMtlsHostnameSettingsState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustAccessMtlsHostnameSettings is deprecated: cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings has been deprecated in favor of cloudflare:zeroTrustAccessMtls/hostnameSettings:HostnameSettings")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

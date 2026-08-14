@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleMtlsCertificate = new Cloudflare.MtlsCertificate("example_mtls_certificate", new()
+    ///     var exampleMtlsCertificate = new Cloudflare.Modules.MtlsCertificate.MtlsCertificate("example_mtls_certificate", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Ca = true,
@@ -44,6 +44,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/mtlsCertificate:MtlsCertificate example '&lt;account_id&gt;/&lt;mtls_certificate_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/mtlsCertificate:MtlsCertificate has been deprecated in favor of cloudflare:mtlsCertificate/mtlsCertificate:MtlsCertificate")]
     [CloudflareResourceType("cloudflare:index/mtlsCertificate:MtlsCertificate")]
     public partial class MtlsCertificate : global::Pulumi.CustomResource
     {

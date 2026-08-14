@@ -28,14 +28,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/pages"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewPagesDomain(ctx, "example_pages_domain", &cloudflare.PagesDomainArgs{
+//			_, err := pages.NewDomain(ctx, "example_pages_domain", &pages.DomainArgs{
 //				AccountId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ProjectName: pulumi.String("this-is-my-project-01"),
 //				Name:        pulumi.String("this-is-my-domain-01.com"),
@@ -54,6 +54,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/pagesDomain:PagesDomain example '<account_id>/<project_name>/<domain_name>'
 // ```
+//
+// Deprecated: cloudflare:index/pagesDomain:PagesDomain has been deprecated in favor of cloudflare:pages/domain:Domain
 type PagesDomain struct {
 	pulumi.CustomResourceState
 

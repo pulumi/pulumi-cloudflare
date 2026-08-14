@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/r2bucket"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetR2BucketEventNotification(ctx, &cloudflare.LookupR2BucketEventNotificationArgs{
+//			_, err := r2bucket.GetEventNotification(ctx, &r2bucket.GetEventNotificationArgs{
 //				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
 //				BucketName: "example-bucket",
 //				QueueId:    "queue_id",
@@ -43,6 +43,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getR2BucketEventNotification:getR2BucketEventNotification has been deprecated in favor of cloudflare:r2Bucket/eventNotification:getEventNotification
 func LookupR2BucketEventNotification(ctx *pulumi.Context, args *LookupR2BucketEventNotificationArgs, opts ...pulumi.InvokeOption) (*LookupR2BucketEventNotificationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupR2BucketEventNotificationResult

@@ -63,9 +63,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZone = new Cloudflare.Zone("example_zone", new()
+    ///     var exampleZone = new Cloudflare.Modules.Zone.Zone("example_zone", new()
     ///     {
-    ///         Account = new Cloudflare.Inputs.ZoneAccountArgs
+    ///         Account = new Cloudflare.Modules.Zone.Inputs.ZoneAccountArgs
     ///         {
     ///             Id = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         },
@@ -82,6 +82,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zone:Zone example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zone:Zone has been deprecated in favor of cloudflare:zone/zone:Zone")]
     [CloudflareResourceType("cloudflare:index/zone:Zone")]
     public partial class Zone : global::Pulumi.CustomResource
     {

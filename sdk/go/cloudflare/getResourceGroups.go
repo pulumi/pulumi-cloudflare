@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/resource"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetResourceGroups(ctx, &cloudflare.LookupResourceGroupsArgs{
+//			_, err := resource.LookupGroups(ctx, &resource.LookupGroupsArgs{
 //				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Id:        pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:      pulumi.StringRef("NameOfTheResourceGroup"),
@@ -44,6 +44,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getResourceGroups:getResourceGroups has been deprecated in favor of cloudflare:resource/groups:getGroups
 func LookupResourceGroups(ctx *pulumi.Context, args *LookupResourceGroupsArgs, opts ...pulumi.InvokeOption) (*LookupResourceGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupResourceGroupsResult

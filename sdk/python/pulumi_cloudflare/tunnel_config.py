@@ -226,7 +226,7 @@ class TunnelConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_tunnel_cloudflared_config = cloudflare.ZeroTrustTunnelCloudflaredConfig("example_zero_trust_tunnel_cloudflared_config",
+        example_zero_trust_tunnel_cloudflared_config = cloudflare.zerotrusttunnelcloudflared.Config("example_zero_trust_tunnel_cloudflared_config",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             tunnel_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
             config={
@@ -317,7 +317,7 @@ class TunnelConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_tunnel_cloudflared_config = cloudflare.ZeroTrustTunnelCloudflaredConfig("example_zero_trust_tunnel_cloudflared_config",
+        example_zero_trust_tunnel_cloudflared_config = cloudflare.zerotrusttunnelcloudflared.Config("example_zero_trust_tunnel_cloudflared_config",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             tunnel_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
             config={
@@ -417,8 +417,6 @@ class TunnelConfig(pulumi.CustomResource):
             __props__.__dict__["tunnel_id"] = tunnel_id
             __props__.__dict__["created_at"] = None
             __props__.__dict__["version"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/tunnelConfig:TunnelConfig")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(TunnelConfig, __self__).__init__(
             'cloudflare:index/tunnelConfig:TunnelConfig',
             resource_name,

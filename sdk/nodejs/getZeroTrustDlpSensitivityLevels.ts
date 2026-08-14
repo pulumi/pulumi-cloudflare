@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpSensitivityLevels = cloudflare.getZeroTrustDlpSensitivityLevels({
+ * const exampleZeroTrustDlpSensitivityLevels = cloudflare.zerotrustdlpsensitivity.getLevels({
  *     accountId: "account_id",
  *     sensitivityGroupId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpSensitivityLevels:getZeroTrustDlpSensitivityLevels has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/levels:getLevels */
 export function getZeroTrustDlpSensitivityLevels(args: GetZeroTrustDlpSensitivityLevelsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDlpSensitivityLevelsResult> {
+    pulumi.log.warn("getZeroTrustDlpSensitivityLevels is deprecated: cloudflare:index/getZeroTrustDlpSensitivityLevels:getZeroTrustDlpSensitivityLevels has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/levels:getLevels")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDlpSensitivityLevels:getZeroTrustDlpSensitivityLevels", {
         "accountId": args.accountId,
@@ -72,13 +74,15 @@ export interface GetZeroTrustDlpSensitivityLevelsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpSensitivityLevels = cloudflare.getZeroTrustDlpSensitivityLevels({
+ * const exampleZeroTrustDlpSensitivityLevels = cloudflare.zerotrustdlpsensitivity.getLevels({
  *     accountId: "account_id",
  *     sensitivityGroupId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpSensitivityLevels:getZeroTrustDlpSensitivityLevels has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/levels:getLevels */
 export function getZeroTrustDlpSensitivityLevelsOutput(args: GetZeroTrustDlpSensitivityLevelsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDlpSensitivityLevelsResult> {
+    pulumi.log.warn("getZeroTrustDlpSensitivityLevels is deprecated: cloudflare:index/getZeroTrustDlpSensitivityLevels:getZeroTrustDlpSensitivityLevels has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/levels:getLevels")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDlpSensitivityLevels:getZeroTrustDlpSensitivityLevels", {
         "accountId": args.accountId,

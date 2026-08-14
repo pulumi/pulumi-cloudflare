@@ -22,6 +22,8 @@ __all__ = [
     'get_queue_consumers_output',
 ]
 
+warnings.warn("""cloudflare:index/getQueueConsumers:getQueueConsumers has been deprecated in favor of cloudflare:queue/consumers:getConsumers""", DeprecationWarning)
+
 @pulumi.output_type
 class GetQueueConsumersResult:
     """
@@ -104,7 +106,7 @@ def get_queue_consumers(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_queue_consumers = cloudflare.get_queue_consumers(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_queue_consumers = cloudflare.queue.get_consumers(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         queue_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -113,6 +115,7 @@ def get_queue_consumers(account_id: Optional[_builtins.str] = None,
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str queue_id: A Resource identifier.
     """
+    pulumi.log.warn("""get_queue_consumers is deprecated: cloudflare:index/getQueueConsumers:getQueueConsumers has been deprecated in favor of cloudflare:queue/consumers:getConsumers""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -143,7 +146,7 @@ def get_queue_consumers_output(account_id: pulumi.Input[Optional[Optional[_built
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_queue_consumers = cloudflare.get_queue_consumers(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_queue_consumers = cloudflare.queue.get_consumers(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         queue_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -152,6 +155,7 @@ def get_queue_consumers_output(account_id: pulumi.Input[Optional[Optional[_built
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str queue_id: A Resource identifier.
     """
+    pulumi.log.warn("""get_queue_consumers is deprecated: cloudflare:index/getQueueConsumers:getQueueConsumers has been deprecated in favor of cloudflare:queue/consumers:getConsumers""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

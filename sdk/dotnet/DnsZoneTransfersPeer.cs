@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleDnsZoneTransfersPeer = new Cloudflare.DnsZoneTransfersPeer("example_dns_zone_transfers_peer", new()
+    ///     var exampleDnsZoneTransfersPeer = new Cloudflare.Modules.DnsZoneTransfers.DnsZoneTransfersPeer("example_dns_zone_transfers_peer", new()
     ///     {
     ///         AccountId = "01a7362d577a6c3019a474fd6f485823",
     ///         Name = "my-peer-1",
@@ -40,6 +40,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer example '&lt;account_id&gt;/&lt;peer_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer has been deprecated in favor of cloudflare:dnsZoneTransfers/peer:Peer")]
     [CloudflareResourceType("cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer")]
     public partial class DnsZoneTransfersPeer : global::Pulumi.CustomResource
     {

@@ -221,8 +221,13 @@ class _SchemaValidationSchemasState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas has been deprecated in favor of cloudflare:schemaValidationSchemas/schemaValidationSchemas:SchemaValidationSchemas""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas")
 class SchemaValidationSchemas(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas has been deprecated in favor of cloudflare:schemaValidationSchemas/schemaValidationSchemas:SchemaValidationSchemas""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -247,7 +252,7 @@ class SchemaValidationSchemas(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_schema_validation_schemas = cloudflare.SchemaValidationSchemas("example_schema_validation_schemas",
+        example_schema_validation_schemas = cloudflare.schemavalidationschemas.SchemaValidationSchemas("example_schema_validation_schemas",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             kind="openapi_v3",
             name="petstore schema",
@@ -291,7 +296,7 @@ class SchemaValidationSchemas(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_schema_validation_schemas = cloudflare.SchemaValidationSchemas("example_schema_validation_schemas",
+        example_schema_validation_schemas = cloudflare.schemavalidationschemas.SchemaValidationSchemas("example_schema_validation_schemas",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             kind="openapi_v3",
             name="petstore schema",
@@ -327,6 +332,7 @@ class SchemaValidationSchemas(pulumi.CustomResource):
                  validation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""SchemaValidationSchemas is deprecated: cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas has been deprecated in favor of cloudflare:schemaValidationSchemas/schemaValidationSchemas:SchemaValidationSchemas""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

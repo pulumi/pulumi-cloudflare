@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustDeviceCustomProfiles:getZeroTrustDeviceCustomProfiles has been deprecated in favor of cloudflare:zeroTrustDevice/customProfiles:getCustomProfiles")]
     public static class GetZeroTrustDeviceCustomProfiles
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDeviceCustomProfiles = Cloudflare.GetZeroTrustDeviceCustomProfiles.Invoke(new()
+        ///     var exampleZeroTrustDeviceCustomProfiles = Cloudflare.Modules.ZeroTrustDevice.GetCustomProfiles.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///     });
@@ -44,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDeviceCustomProfiles = Cloudflare.GetZeroTrustDeviceCustomProfiles.Invoke(new()
+        ///     var exampleZeroTrustDeviceCustomProfiles = Cloudflare.Modules.ZeroTrustDevice.GetCustomProfiles.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///     });
@@ -66,7 +67,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDeviceCustomProfiles = Cloudflare.GetZeroTrustDeviceCustomProfiles.Invoke(new()
+        ///     var exampleZeroTrustDeviceCustomProfiles = Cloudflare.Modules.ZeroTrustDevice.GetCustomProfiles.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///     });

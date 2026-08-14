@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/account"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetAccountRole(ctx, &cloudflare.GetAccountRoleArgs{
+//			_, err := account.GetRole(ctx, &account.GetRoleArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				RoleId:    "3536bcfad5faccb999b47003c79917fb",
 //			}, nil)
@@ -43,6 +43,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getAccountRole:getAccountRole has been deprecated in favor of cloudflare:account/role:getRole
 func GetAccountRole(ctx *pulumi.Context, args *GetAccountRoleArgs, opts ...pulumi.InvokeOption) (*GetAccountRoleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountRoleResult

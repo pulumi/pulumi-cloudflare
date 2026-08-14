@@ -18,13 +18,15 @@ import (
 // - `Workers Scripts Write`
 // - `Workers Tail Read`
 //
-// > For more direct control over Workers resources, we recommend the beta `Worker`, `WorkerVersion`, and `WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
+// > For more direct control over Workers resources, we recommend the beta `worker.Worker`, `worker.Version`, and `workers.Deployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
 //
 // ## Import
 //
 // ```sh
 // $ pulumi import cloudflare:index/workersScript:WorkersScript example '<account_id>/<script_name>'
 // ```
+//
+// Deprecated: cloudflare:index/workersScript:WorkersScript has been deprecated in favor of cloudflare:workersScript/workersScript:WorkersScript
 type WorkersScript struct {
 	pulumi.CustomResourceState
 

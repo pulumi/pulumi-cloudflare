@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpPredefinedEntries = cloudflare.getZeroTrustDlpPredefinedEntries({
+ * const exampleZeroTrustDlpPredefinedEntries = cloudflare.zerotrustdlppredefined.getEntries({
  *     accountId: "account_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpPredefinedEntries:getZeroTrustDlpPredefinedEntries has been deprecated in favor of cloudflare:zeroTrustDlpPredefined/entries:getEntries */
 export function getZeroTrustDlpPredefinedEntries(args?: GetZeroTrustDlpPredefinedEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDlpPredefinedEntriesResult> {
+    pulumi.log.warn("getZeroTrustDlpPredefinedEntries is deprecated: cloudflare:index/getZeroTrustDlpPredefinedEntries:getZeroTrustDlpPredefinedEntries has been deprecated in favor of cloudflare:zeroTrustDlpPredefined/entries:getEntries")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDlpPredefinedEntries:getZeroTrustDlpPredefinedEntries", {
@@ -69,12 +71,14 @@ export interface GetZeroTrustDlpPredefinedEntriesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpPredefinedEntries = cloudflare.getZeroTrustDlpPredefinedEntries({
+ * const exampleZeroTrustDlpPredefinedEntries = cloudflare.zerotrustdlppredefined.getEntries({
  *     accountId: "account_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpPredefinedEntries:getZeroTrustDlpPredefinedEntries has been deprecated in favor of cloudflare:zeroTrustDlpPredefined/entries:getEntries */
 export function getZeroTrustDlpPredefinedEntriesOutput(args?: GetZeroTrustDlpPredefinedEntriesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDlpPredefinedEntriesResult> {
+    pulumi.log.warn("getZeroTrustDlpPredefinedEntries is deprecated: cloudflare:index/getZeroTrustDlpPredefinedEntries:getZeroTrustDlpPredefinedEntries has been deprecated in favor of cloudflare:zeroTrustDlpPredefined/entries:getEntries")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDlpPredefinedEntries:getZeroTrustDlpPredefinedEntries", {

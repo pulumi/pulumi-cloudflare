@@ -19,9 +19,9 @@ import (
 //
 // > The `List` resource supports defining list items in line with the
 //
-//	`items` attribute. The provider also has a `ListItem` resource for
+//	`items` attribute. The provider also has a `list.Item` resource for
 //	managing items as independent resources. Using both in line `items` definitions
-//	_and_ `getListItems` on the same list is not supported and will cause
+//	_and_ `list.getItems` on the same list is not supported and will cause
 //	Terraform into an irreconcilable state.
 //
 // ## Example Usage
@@ -78,7 +78,7 @@ type List struct {
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// An informative summary of the list.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
+	// The items in the list. If set, this overwrites all items in the list. Do not use with `list.Item`.
 	Items ListItemTypeArrayOutput `pulumi:"items"`
 	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
 	// Available values: "ip", "redirect", "hostname", "asn".
@@ -138,7 +138,7 @@ type listState struct {
 	CreatedOn *string `pulumi:"createdOn"`
 	// An informative summary of the list.
 	Description *string `pulumi:"description"`
-	// The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
+	// The items in the list. If set, this overwrites all items in the list. Do not use with `list.Item`.
 	Items []ListItemType `pulumi:"items"`
 	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
 	// Available values: "ip", "redirect", "hostname", "asn".
@@ -160,7 +160,7 @@ type ListState struct {
 	CreatedOn pulumi.StringPtrInput
 	// An informative summary of the list.
 	Description pulumi.StringPtrInput
-	// The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
+	// The items in the list. If set, this overwrites all items in the list. Do not use with `list.Item`.
 	Items ListItemTypeArrayInput
 	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
 	// Available values: "ip", "redirect", "hostname", "asn".
@@ -184,7 +184,7 @@ type listArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// An informative summary of the list.
 	Description *string `pulumi:"description"`
-	// The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
+	// The items in the list. If set, this overwrites all items in the list. Do not use with `list.Item`.
 	Items []ListItemType `pulumi:"items"`
 	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
 	// Available values: "ip", "redirect", "hostname", "asn".
@@ -199,7 +199,7 @@ type ListArgs struct {
 	AccountId pulumi.StringInput
 	// An informative summary of the list.
 	Description pulumi.StringPtrInput
-	// The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
+	// The items in the list. If set, this overwrites all items in the list. Do not use with `list.Item`.
 	Items ListItemTypeArrayInput
 	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
 	// Available values: "ip", "redirect", "hostname", "asn".
@@ -310,7 +310,7 @@ func (o ListOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *List) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
+// The items in the list. If set, this overwrites all items in the list. Do not use with `list.Item`.
 func (o ListOutput) Items() ListItemTypeArrayOutput {
 	return o.ApplyT(func(v *List) ListItemTypeArrayOutput { return v.Items }).(ListItemTypeArrayOutput)
 }

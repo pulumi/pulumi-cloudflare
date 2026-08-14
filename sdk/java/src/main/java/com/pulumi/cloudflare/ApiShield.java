@@ -38,9 +38,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ApiShield;
- * import com.pulumi.cloudflare.ApiShieldArgs;
- * import com.pulumi.cloudflare.inputs.ApiShieldAuthIdCharacteristicArgs;
+ * import com.pulumi.cloudflare.apiShield.ApiShield;
+ * import com.pulumi.cloudflare.apiShield.ApiShieldArgs;
+ * import com.pulumi.cloudflare.apiShield.inputs.ApiShieldAuthIdCharacteristicArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -73,7 +73,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/apiShield:ApiShield example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/apiShield:ApiShield has been deprecated in favor of cloudflare:apiShield/apiShield:ApiShield
+ * 
  */
+@Deprecated /* cloudflare:index/apiShield:ApiShield has been deprecated in favor of cloudflare:apiShield/apiShield:ApiShield */
 @ResourceType(type="cloudflare:index/apiShield:ApiShield")
 public class ApiShield extends com.pulumi.resources.CustomResource {
     @Export(name="authIdCharacteristics", refs={List.class,ApiShieldAuthIdCharacteristic.class}, tree="[0,1]")

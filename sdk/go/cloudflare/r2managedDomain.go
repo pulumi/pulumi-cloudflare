@@ -19,14 +19,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/r2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewR2ManagedDomain(ctx, "example_r2_managed_domain", &cloudflare.R2ManagedDomainArgs{
+//			_, err := r2.NewManagedDomain(ctx, "example_r2_managed_domain", &r2.ManagedDomainArgs{
 //				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				BucketName: pulumi.String("example-bucket"),
 //				Enabled:    pulumi.Bool(true),
@@ -43,6 +43,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/r2ManagedDomain:R2ManagedDomain has been deprecated in favor of cloudflare:r2/managedDomain:ManagedDomain
 type R2ManagedDomain struct {
 	pulumi.CustomResourceState
 

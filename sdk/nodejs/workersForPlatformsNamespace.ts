@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersForPlatformsDispatchNamespace = new cloudflare.WorkersForPlatformsDispatchNamespace("example_workers_for_platforms_dispatch_namespace", {
+ * const exampleWorkersForPlatformsDispatchNamespace = new cloudflare.workersforplatformsdispatch.Namespace("example_workers_for_platforms_dispatch_namespace", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "my-dispatch-namespace",
  * });
@@ -144,8 +144,6 @@ export class WorkersForPlatformsNamespace extends pulumi.CustomResource {
             resourceInputs["trustedWorkers"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkersForPlatformsNamespace.__pulumiType, name, resourceInputs, opts);
     }
 }

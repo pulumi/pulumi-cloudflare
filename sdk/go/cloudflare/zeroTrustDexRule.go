@@ -26,14 +26,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDexRule(ctx, "example_zero_trust_dex_rule", &cloudflare.ZeroTrustDexRuleArgs{
+//			_, err := zerotrustdex.NewRule(ctx, "example_zero_trust_dex_rule", &zerotrustdex.RuleArgs{
 //				AccountId:   pulumi.String("01a7362d577a6c3019a474fd6f485823"),
 //				Match:       pulumi.String("match"),
 //				Name:        pulumi.String("name"),
@@ -53,6 +53,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule example '<account_id>/<rule_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule has been deprecated in favor of cloudflare:zeroTrustDex/rule:Rule
 type ZeroTrustDexRule struct {
 	pulumi.CustomResourceState
 

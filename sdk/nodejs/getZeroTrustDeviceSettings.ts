@@ -11,12 +11,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDeviceSettings = cloudflare.getZeroTrustDeviceSettings({
+ * const exampleZeroTrustDeviceSettings = cloudflare.zerotrustdevice.getSettings({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDeviceSettings:getZeroTrustDeviceSettings has been deprecated in favor of cloudflare:zeroTrustDevice/settings:getSettings */
 export function getZeroTrustDeviceSettings(args?: GetZeroTrustDeviceSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDeviceSettingsResult> {
+    pulumi.log.warn("getZeroTrustDeviceSettings is deprecated: cloudflare:index/getZeroTrustDeviceSettings:getZeroTrustDeviceSettings has been deprecated in favor of cloudflare:zeroTrustDevice/settings:getSettings")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDeviceSettings:getZeroTrustDeviceSettings", {
@@ -80,12 +82,14 @@ export interface GetZeroTrustDeviceSettingsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDeviceSettings = cloudflare.getZeroTrustDeviceSettings({
+ * const exampleZeroTrustDeviceSettings = cloudflare.zerotrustdevice.getSettings({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDeviceSettings:getZeroTrustDeviceSettings has been deprecated in favor of cloudflare:zeroTrustDevice/settings:getSettings */
 export function getZeroTrustDeviceSettingsOutput(args?: GetZeroTrustDeviceSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDeviceSettingsResult> {
+    pulumi.log.warn("getZeroTrustDeviceSettings is deprecated: cloudflare:index/getZeroTrustDeviceSettings:getZeroTrustDeviceSettings has been deprecated in favor of cloudflare:zeroTrustDevice/settings:getSettings")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDeviceSettings:getZeroTrustDeviceSettings", {

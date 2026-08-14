@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessPolicy = cloudflare.getZeroTrustAccessPolicy({
+ * const exampleZeroTrustAccessPolicy = cloudflare.zerotrustaccess.getPolicy({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     policyId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessPolicy:getZeroTrustAccessPolicy has been deprecated in favor of cloudflare:zeroTrustAccess/policy:getPolicy */
 export function getZeroTrustAccessPolicy(args: GetZeroTrustAccessPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessPolicyResult> {
+    pulumi.log.warn("getZeroTrustAccessPolicy is deprecated: cloudflare:index/getZeroTrustAccessPolicy:getZeroTrustAccessPolicy has been deprecated in favor of cloudflare:zeroTrustAccess/policy:getPolicy")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessPolicy:getZeroTrustAccessPolicy", {
         "accountId": args.accountId,
@@ -135,13 +137,15 @@ export interface GetZeroTrustAccessPolicyResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessPolicy = cloudflare.getZeroTrustAccessPolicy({
+ * const exampleZeroTrustAccessPolicy = cloudflare.zerotrustaccess.getPolicy({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     policyId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessPolicy:getZeroTrustAccessPolicy has been deprecated in favor of cloudflare:zeroTrustAccess/policy:getPolicy */
 export function getZeroTrustAccessPolicyOutput(args: GetZeroTrustAccessPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessPolicyResult> {
+    pulumi.log.warn("getZeroTrustAccessPolicy is deprecated: cloudflare:index/getZeroTrustAccessPolicy:getZeroTrustAccessPolicy has been deprecated in favor of cloudflare:zeroTrustAccess/policy:getPolicy")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessPolicy:getZeroTrustAccessPolicy", {
         "accountId": args.accountId,

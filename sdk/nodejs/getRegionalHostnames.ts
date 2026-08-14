@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleRegionalHostnames = cloudflare.getRegionalHostnames({
+ * const exampleRegionalHostnames = cloudflare.regional.getHostnames({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getRegionalHostnames:getRegionalHostnames has been deprecated in favor of cloudflare:regional/hostnames:getHostnames */
 export function getRegionalHostnames(args?: GetRegionalHostnamesArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionalHostnamesResult> {
+    pulumi.log.warn("getRegionalHostnames is deprecated: cloudflare:index/getRegionalHostnames:getRegionalHostnames has been deprecated in favor of cloudflare:regional/hostnames:getHostnames")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getRegionalHostnames:getRegionalHostnames", {
@@ -75,12 +77,14 @@ export interface GetRegionalHostnamesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleRegionalHostnames = cloudflare.getRegionalHostnames({
+ * const exampleRegionalHostnames = cloudflare.regional.getHostnames({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getRegionalHostnames:getRegionalHostnames has been deprecated in favor of cloudflare:regional/hostnames:getHostnames */
 export function getRegionalHostnamesOutput(args?: GetRegionalHostnamesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionalHostnamesResult> {
+    pulumi.log.warn("getRegionalHostnames is deprecated: cloudflare:index/getRegionalHostnames:getRegionalHostnames has been deprecated in favor of cloudflare:regional/hostnames:getHostnames")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getRegionalHostnames:getRegionalHostnames", {

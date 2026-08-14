@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleR2DataCatalog = cloudflare.getR2DataCatalog({
+ * const exampleR2DataCatalog = cloudflare.r2.getDataCatalog({
  *     accountId: "0123456789abcdef0123456789abcdef",
  *     bucketName: "my-data-bucket",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getR2DataCatalog:getR2DataCatalog has been deprecated in favor of cloudflare:r2/dataCatalog:getDataCatalog */
 export function getR2DataCatalog(args: GetR2DataCatalogArgs, opts?: pulumi.InvokeOptions): Promise<GetR2DataCatalogResult> {
+    pulumi.log.warn("getR2DataCatalog is deprecated: cloudflare:index/getR2DataCatalog:getR2DataCatalog has been deprecated in favor of cloudflare:r2/dataCatalog:getDataCatalog")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getR2DataCatalog:getR2DataCatalog", {
         "accountId": args.accountId,
@@ -97,13 +99,15 @@ export interface GetR2DataCatalogResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleR2DataCatalog = cloudflare.getR2DataCatalog({
+ * const exampleR2DataCatalog = cloudflare.r2.getDataCatalog({
  *     accountId: "0123456789abcdef0123456789abcdef",
  *     bucketName: "my-data-bucket",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getR2DataCatalog:getR2DataCatalog has been deprecated in favor of cloudflare:r2/dataCatalog:getDataCatalog */
 export function getR2DataCatalogOutput(args: GetR2DataCatalogOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetR2DataCatalogResult> {
+    pulumi.log.warn("getR2DataCatalog is deprecated: cloudflare:index/getR2DataCatalog:getR2DataCatalog has been deprecated in favor of cloudflare:r2/dataCatalog:getDataCatalog")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getR2DataCatalog:getR2DataCatalog", {
         "accountId": args.accountId,

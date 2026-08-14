@@ -32,11 +32,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.UserGroup;
- * import com.pulumi.cloudflare.UserGroupArgs;
- * import com.pulumi.cloudflare.inputs.UserGroupPolicyArgs;
- * import com.pulumi.cloudflare.inputs.UserGroupPolicyPermissionGroupArgs;
- * import com.pulumi.cloudflare.inputs.UserGroupPolicyResourceGroupArgs;
+ * import com.pulumi.cloudflare.userGroup.UserGroup;
+ * import com.pulumi.cloudflare.userGroup.UserGroupArgs;
+ * import com.pulumi.cloudflare.userGroup.inputs.UserGroupPolicyArgs;
+ * import com.pulumi.cloudflare.userGroup.inputs.UserGroupPolicyPermissionGroupArgs;
+ * import com.pulumi.cloudflare.userGroup.inputs.UserGroupPolicyResourceGroupArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -79,7 +79,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/userGroup:UserGroup example &#39;&lt;account_id&gt;/&lt;user_group_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/userGroup:UserGroup has been deprecated in favor of cloudflare:userGroup/userGroup:UserGroup
+ * 
  */
+@Deprecated /* cloudflare:index/userGroup:UserGroup has been deprecated in favor of cloudflare:userGroup/userGroup:UserGroup */
 @ResourceType(type="cloudflare:index/userGroup:UserGroup")
 public class UserGroup extends com.pulumi.resources.CustomResource {
     /**

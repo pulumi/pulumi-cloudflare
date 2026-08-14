@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWaitingRoomEvents = cloudflare.getWaitingRoomEvents({
+ * const exampleWaitingRoomEvents = cloudflare.waitingroom.getEvents({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     waitingRoomId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWaitingRoomEvents:getWaitingRoomEvents has been deprecated in favor of cloudflare:waitingRoom/events:getEvents */
 export function getWaitingRoomEvents(args: GetWaitingRoomEventsArgs, opts?: pulumi.InvokeOptions): Promise<GetWaitingRoomEventsResult> {
+    pulumi.log.warn("getWaitingRoomEvents is deprecated: cloudflare:index/getWaitingRoomEvents:getWaitingRoomEvents has been deprecated in favor of cloudflare:waitingRoom/events:getEvents")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWaitingRoomEvents:getWaitingRoomEvents", {
         "maxItems": args.maxItems,
@@ -78,13 +80,15 @@ export interface GetWaitingRoomEventsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWaitingRoomEvents = cloudflare.getWaitingRoomEvents({
+ * const exampleWaitingRoomEvents = cloudflare.waitingroom.getEvents({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     waitingRoomId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWaitingRoomEvents:getWaitingRoomEvents has been deprecated in favor of cloudflare:waitingRoom/events:getEvents */
 export function getWaitingRoomEventsOutput(args: GetWaitingRoomEventsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWaitingRoomEventsResult> {
+    pulumi.log.warn("getWaitingRoomEvents is deprecated: cloudflare:index/getWaitingRoomEvents:getWaitingRoomEvents has been deprecated in favor of cloudflare:waitingRoom/events:getEvents")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWaitingRoomEvents:getWaitingRoomEvents", {
         "maxItems": args.maxItems,

@@ -20,13 +20,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const examplePageShieldConnections = cloudflare.getPageShieldConnections({
+ * const examplePageShieldConnections = cloudflare.pageshieldconnections.getPageShieldConnections({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     connectionId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getPageShieldConnections:getPageShieldConnections has been deprecated in favor of cloudflare:pageShieldConnections/pageShieldConnections:getPageShieldConnections */
 export function getPageShieldConnections(args: GetPageShieldConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetPageShieldConnectionsResult> {
+    pulumi.log.warn("getPageShieldConnections is deprecated: cloudflare:index/getPageShieldConnections:getPageShieldConnections has been deprecated in favor of cloudflare:pageShieldConnections/pageShieldConnections:getPageShieldConnections")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getPageShieldConnections:getPageShieldConnections", {
         "connectionId": args.connectionId,
@@ -93,13 +95,15 @@ export interface GetPageShieldConnectionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const examplePageShieldConnections = cloudflare.getPageShieldConnections({
+ * const examplePageShieldConnections = cloudflare.pageshieldconnections.getPageShieldConnections({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     connectionId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getPageShieldConnections:getPageShieldConnections has been deprecated in favor of cloudflare:pageShieldConnections/pageShieldConnections:getPageShieldConnections */
 export function getPageShieldConnectionsOutput(args: GetPageShieldConnectionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPageShieldConnectionsResult> {
+    pulumi.log.warn("getPageShieldConnections is deprecated: cloudflare:index/getPageShieldConnections:getPageShieldConnections has been deprecated in favor of cloudflare:pageShieldConnections/pageShieldConnections:getPageShieldConnections")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getPageShieldConnections:getPageShieldConnections", {
         "connectionId": args.connectionId,

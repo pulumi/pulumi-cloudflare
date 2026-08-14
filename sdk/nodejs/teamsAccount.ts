@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustGatewaySettings = new cloudflare.ZeroTrustGatewaySettings("example_zero_trust_gateway_settings", {
+ * const exampleZeroTrustGatewaySettings = new cloudflare.zerotrustgateway.Settings("example_zero_trust_gateway_settings", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     settings: {
  *         activityLog: {
@@ -161,8 +161,6 @@ export class TeamsAccount extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/teamsAccount:TeamsAccount" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(TeamsAccount.__pulumiType, name, resourceInputs, opts);
     }
 }

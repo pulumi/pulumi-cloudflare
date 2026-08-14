@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustGatewayPacfile = new cloudflare.ZeroTrustGatewayPacfile("example_zero_trust_gateway_pacfile", {
+ * const exampleZeroTrustGatewayPacfile = new cloudflare.zerotrustgateway.Pacfile("example_zero_trust_gateway_pacfile", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     contents: "function FindProxyForURL(url, host) { return \"DIRECT\"; }",
  *     name: "Devops team",
@@ -30,6 +30,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile example '<account_id>/<pacfile_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile has been deprecated in favor of cloudflare:zeroTrustGateway/pacfile:Pacfile
  */
 export class ZeroTrustGatewayPacfile extends pulumi.CustomResource {
     /**
@@ -42,6 +44,7 @@ export class ZeroTrustGatewayPacfile extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustGatewayPacfileState, opts?: pulumi.CustomResourceOptions): ZeroTrustGatewayPacfile {
+        pulumi.log.warn("ZeroTrustGatewayPacfile is deprecated: cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile has been deprecated in favor of cloudflare:zeroTrustGateway/pacfile:Pacfile")
         return new ZeroTrustGatewayPacfile(name, <any>state, { ...opts, id: id });
     }
 
@@ -90,8 +93,11 @@ export class ZeroTrustGatewayPacfile extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile has been deprecated in favor of cloudflare:zeroTrustGateway/pacfile:Pacfile */
     constructor(name: string, args: ZeroTrustGatewayPacfileArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile has been deprecated in favor of cloudflare:zeroTrustGateway/pacfile:Pacfile */
     constructor(name: string, argsOrState?: ZeroTrustGatewayPacfileArgs | ZeroTrustGatewayPacfileState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustGatewayPacfile is deprecated: cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile has been deprecated in favor of cloudflare:zeroTrustGateway/pacfile:Pacfile")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

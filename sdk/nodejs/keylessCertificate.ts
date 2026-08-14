@@ -52,7 +52,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleKeylessCertificate = new cloudflare.KeylessCertificate("example_keyless_certificate", {
+ * const exampleKeylessCertificate = new cloudflare.keyless.Certificate("example_keyless_certificate", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     certificate: `  -----BEGIN CERTIFICATE-----
  *   MIIDtTCCAp2gAwIBAgIJAM15n7fdxhRtMA0GCSqGSIb3DQEBBQUAMEUxCzAJBgNV
@@ -93,6 +93,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/keylessCertificate:KeylessCertificate example '<zone_id>/<keyless_certificate_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/keylessCertificate:KeylessCertificate has been deprecated in favor of cloudflare:keyless/certificate:Certificate
  */
 export class KeylessCertificate extends pulumi.CustomResource {
     /**
@@ -105,6 +107,7 @@ export class KeylessCertificate extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: KeylessCertificateState, opts?: pulumi.CustomResourceOptions): KeylessCertificate {
+        pulumi.log.warn("KeylessCertificate is deprecated: cloudflare:index/keylessCertificate:KeylessCertificate has been deprecated in favor of cloudflare:keyless/certificate:Certificate")
         return new KeylessCertificate(name, <any>state, { ...opts, id: id });
     }
 
@@ -182,8 +185,11 @@ export class KeylessCertificate extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/keylessCertificate:KeylessCertificate has been deprecated in favor of cloudflare:keyless/certificate:Certificate */
     constructor(name: string, args: KeylessCertificateArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/keylessCertificate:KeylessCertificate has been deprecated in favor of cloudflare:keyless/certificate:Certificate */
     constructor(name: string, argsOrState?: KeylessCertificateArgs | KeylessCertificateState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("KeylessCertificate is deprecated: cloudflare:index/keylessCertificate:KeylessCertificate has been deprecated in favor of cloudflare:keyless/certificate:Certificate")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

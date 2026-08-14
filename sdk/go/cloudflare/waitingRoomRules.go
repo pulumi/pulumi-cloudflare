@@ -24,18 +24,18 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/waitingroom"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWaitingRoomRules(ctx, "example_waiting_room_rules", &cloudflare.WaitingRoomRulesArgs{
+//			_, err := waitingroom.NewRules(ctx, "example_waiting_room_rules", &waitingroom.RulesArgs{
 //				ZoneId:        pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				WaitingRoomId: pulumi.String("699d98642c564d2e855e9661899b7252"),
-//				Rules: cloudflare.WaitingRoomRulesRuleArray{
-//					&cloudflare.WaitingRoomRulesRuleArgs{
+//				Rules: waitingroom.RulesRuleArray{
+//					&waitingroom.RulesRuleArgs{
 //						Action:      pulumi.String("bypass_waiting_room"),
 //						Expression:  pulumi.String("ip.src in {10.20.30.40}"),
 //						Description: pulumi.String("allow all traffic from 10.20.30.40"),
@@ -57,6 +57,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/waitingRoomRules:WaitingRoomRules example '<zone_id>/<waiting_room_id>'
 // ```
+//
+// Deprecated: cloudflare:index/waitingRoomRules:WaitingRoomRules has been deprecated in favor of cloudflare:waitingRoom/rules:Rules
 type WaitingRoomRules struct {
 	pulumi.CustomResourceState
 

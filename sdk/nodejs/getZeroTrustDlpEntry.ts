@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpEntry = cloudflare.getZeroTrustDlpEntry({
+ * const exampleZeroTrustDlpEntry = cloudflare.zerotrustdlp.getEntry({
  *     accountId: "account_id",
  *     entryId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpEntry:getZeroTrustDlpEntry has been deprecated in favor of cloudflare:zeroTrustDlp/entry:getEntry */
 export function getZeroTrustDlpEntry(args: GetZeroTrustDlpEntryArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDlpEntryResult> {
+    pulumi.log.warn("getZeroTrustDlpEntry is deprecated: cloudflare:index/getZeroTrustDlpEntry:getZeroTrustDlpEntry has been deprecated in favor of cloudflare:zeroTrustDlp/entry:getEntry")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDlpEntry:getZeroTrustDlpEntry", {
         "accountId": args.accountId,
@@ -92,13 +94,15 @@ export interface GetZeroTrustDlpEntryResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpEntry = cloudflare.getZeroTrustDlpEntry({
+ * const exampleZeroTrustDlpEntry = cloudflare.zerotrustdlp.getEntry({
  *     accountId: "account_id",
  *     entryId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpEntry:getZeroTrustDlpEntry has been deprecated in favor of cloudflare:zeroTrustDlp/entry:getEntry */
 export function getZeroTrustDlpEntryOutput(args: GetZeroTrustDlpEntryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDlpEntryResult> {
+    pulumi.log.warn("getZeroTrustDlpEntry is deprecated: cloudflare:index/getZeroTrustDlpEntry:getZeroTrustDlpEntry has been deprecated in favor of cloudflare:zeroTrustDlp/entry:getEntry")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDlpEntry:getZeroTrustDlpEntry", {
         "accountId": args.accountId,

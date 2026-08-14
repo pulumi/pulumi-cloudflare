@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustaccessshortlived"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustAccessShortLivedCertificates(ctx, &cloudflare.LookupZeroTrustAccessShortLivedCertificatesArgs{
+//			_, err := zerotrustaccessshortlived.GetCertificates(ctx, &zerotrustaccessshortlived.GetCertificatesArgs{
 //				AccountId: pulumi.StringRef("account_id"),
 //				ZoneId:    pulumi.StringRef("zone_id"),
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustAccessShortLivedCertificates:getZeroTrustAccessShortLivedCertificates has been deprecated in favor of cloudflare:zeroTrustAccessShortLived/certificates:getCertificates
 func LookupZeroTrustAccessShortLivedCertificates(ctx *pulumi.Context, args *LookupZeroTrustAccessShortLivedCertificatesArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustAccessShortLivedCertificatesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustAccessShortLivedCertificatesResult

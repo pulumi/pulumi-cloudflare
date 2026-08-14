@@ -200,8 +200,13 @@ class _EmailRoutingAddressState:
         pulumi.set(self, "verified", value)
 
 
+warnings.warn("""cloudflare:index/emailRoutingAddress:EmailRoutingAddress has been deprecated in favor of cloudflare:emailRouting/address:Address""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/emailRoutingAddress:EmailRoutingAddress")
 class EmailRoutingAddress(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/emailRoutingAddress:EmailRoutingAddress has been deprecated in favor of cloudflare:emailRouting/address:Address""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -222,7 +227,7 @@ class EmailRoutingAddress(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_email_routing_address = cloudflare.EmailRoutingAddress("example_email_routing_address",
+        example_email_routing_address = cloudflare.emailrouting.Address("example_email_routing_address",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             email="user@example.com")
         ```
@@ -259,7 +264,7 @@ class EmailRoutingAddress(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_email_routing_address = cloudflare.EmailRoutingAddress("example_email_routing_address",
+        example_email_routing_address = cloudflare.emailrouting.Address("example_email_routing_address",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             email="user@example.com")
         ```
@@ -290,6 +295,7 @@ class EmailRoutingAddress(pulumi.CustomResource):
                  email: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""EmailRoutingAddress is deprecated: cloudflare:index/emailRoutingAddress:EmailRoutingAddress has been deprecated in favor of cloudflare:emailRouting/address:Address""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

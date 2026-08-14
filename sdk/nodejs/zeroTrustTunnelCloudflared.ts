@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustTunnelCloudflared = new cloudflare.ZeroTrustTunnelCloudflared("example_zero_trust_tunnel_cloudflared", {
+ * const exampleZeroTrustTunnelCloudflared = new cloudflare.zerotrusttunnelcloudflared.ZeroTrustTunnelCloudflared("example_zero_trust_tunnel_cloudflared", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     name: "blog",
  *     configSrc: "cloudflare",
@@ -35,6 +35,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared example '<account_id>/<tunnel_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared
  */
 export class ZeroTrustTunnelCloudflared extends pulumi.CustomResource {
     /**
@@ -47,6 +49,7 @@ export class ZeroTrustTunnelCloudflared extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustTunnelCloudflaredState, opts?: pulumi.CustomResourceOptions): ZeroTrustTunnelCloudflared {
+        pulumi.log.warn("ZeroTrustTunnelCloudflared is deprecated: cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared")
         return new ZeroTrustTunnelCloudflared(name, <any>state, { ...opts, id: id });
     }
 
@@ -135,8 +138,11 @@ export class ZeroTrustTunnelCloudflared extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared */
     constructor(name: string, args: ZeroTrustTunnelCloudflaredArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared */
     constructor(name: string, argsOrState?: ZeroTrustTunnelCloudflaredArgs | ZeroTrustTunnelCloudflaredState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustTunnelCloudflared is deprecated: cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

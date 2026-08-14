@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getDnsFirewall:getDnsFirewall has been deprecated in favor of cloudflare:dns/firewall:getFirewall")]
     public static class GetDnsFirewall
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDnsFirewall = Cloudflare.GetDnsFirewall.Invoke(new()
+        ///     var exampleDnsFirewall = Cloudflare.Modules.Dns.GetFirewall.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DnsFirewallId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDnsFirewall = Cloudflare.GetDnsFirewall.Invoke(new()
+        ///     var exampleDnsFirewall = Cloudflare.Modules.Dns.GetFirewall.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DnsFirewallId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDnsFirewall = Cloudflare.GetDnsFirewall.Invoke(new()
+        ///     var exampleDnsFirewall = Cloudflare.Modules.Dns.GetFirewall.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DnsFirewallId = "023e105f4ecef8ad9ca31a8372d0c353",

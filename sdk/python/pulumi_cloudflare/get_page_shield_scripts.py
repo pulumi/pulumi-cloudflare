@@ -22,6 +22,8 @@ __all__ = [
     'get_page_shield_scripts_output',
 ]
 
+warnings.warn("""cloudflare:index/getPageShieldScripts:getPageShieldScripts has been deprecated in favor of cloudflare:pageShieldScripts/pageShieldScripts:getPageShieldScripts""", DeprecationWarning)
+
 @pulumi.output_type
 class GetPageShieldScriptsResult:
     """
@@ -308,7 +310,7 @@ def get_page_shield_scripts(script_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_page_shield_scripts = cloudflare.get_page_shield_scripts(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_page_shield_scripts = cloudflare.pageshieldscripts.get_page_shield_scripts(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         script_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -316,6 +318,7 @@ def get_page_shield_scripts(script_id: Optional[_builtins.str] = None,
     :param _builtins.str script_id: Identifier
     :param _builtins.str zone_id: Identifier
     """
+    pulumi.log.warn("""get_page_shield_scripts is deprecated: cloudflare:index/getPageShieldScripts:getPageShieldScripts has been deprecated in favor of cloudflare:pageShieldScripts/pageShieldScripts:getPageShieldScripts""")
     __args__ = dict()
     __args__['scriptId'] = script_id
     __args__['zoneId'] = zone_id
@@ -366,7 +369,7 @@ def get_page_shield_scripts_output(script_id: pulumi.Input[Optional[_builtins.st
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_page_shield_scripts = cloudflare.get_page_shield_scripts(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_page_shield_scripts = cloudflare.pageshieldscripts.get_page_shield_scripts(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         script_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -374,6 +377,7 @@ def get_page_shield_scripts_output(script_id: pulumi.Input[Optional[_builtins.st
     :param _builtins.str script_id: Identifier
     :param _builtins.str zone_id: Identifier
     """
+    pulumi.log.warn("""get_page_shield_scripts is deprecated: cloudflare:index/getPageShieldScripts:getPageShieldScripts has been deprecated in favor of cloudflare:pageShieldScripts/pageShieldScripts:getPageShieldScripts""")
     __args__ = dict()
     __args__['scriptId'] = script_id
     __args__['zoneId'] = zone_id

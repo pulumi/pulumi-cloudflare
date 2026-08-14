@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleStreamWatermark = new cloudflare.StreamWatermark("example_stream_watermark", {
+ * const exampleStreamWatermark = new cloudflare.stream.Watermark("example_stream_watermark", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "Marketing Videos",
  *     opacity: 0.75,
@@ -30,6 +30,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/streamWatermark:StreamWatermark has been deprecated in favor of cloudflare:stream/watermark:Watermark
  */
 export class StreamWatermark extends pulumi.CustomResource {
     /**
@@ -42,6 +44,7 @@ export class StreamWatermark extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: StreamWatermarkState, opts?: pulumi.CustomResourceOptions): StreamWatermark {
+        pulumi.log.warn("StreamWatermark is deprecated: cloudflare:index/streamWatermark:StreamWatermark has been deprecated in favor of cloudflare:stream/watermark:Watermark")
         return new StreamWatermark(name, <any>state, { ...opts, id: id });
     }
 
@@ -123,8 +126,11 @@ export class StreamWatermark extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/streamWatermark:StreamWatermark has been deprecated in favor of cloudflare:stream/watermark:Watermark */
     constructor(name: string, args: StreamWatermarkArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/streamWatermark:StreamWatermark has been deprecated in favor of cloudflare:stream/watermark:Watermark */
     constructor(name: string, argsOrState?: StreamWatermarkArgs | StreamWatermarkState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("StreamWatermark is deprecated: cloudflare:index/streamWatermark:StreamWatermark has been deprecated in favor of cloudflare:stream/watermark:Watermark")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

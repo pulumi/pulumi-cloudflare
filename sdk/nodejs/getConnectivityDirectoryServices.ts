@@ -13,13 +13,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleConnectivityDirectoryServices = cloudflare.getConnectivityDirectoryServices({
+ * const exampleConnectivityDirectoryServices = cloudflare.connectivitydirectory.getServices({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     type: "tcp",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getConnectivityDirectoryServices:getConnectivityDirectoryServices has been deprecated in favor of cloudflare:connectivityDirectory/services:getServices */
 export function getConnectivityDirectoryServices(args?: GetConnectivityDirectoryServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectivityDirectoryServicesResult> {
+    pulumi.log.warn("getConnectivityDirectoryServices is deprecated: cloudflare:index/getConnectivityDirectoryServices:getConnectivityDirectoryServices has been deprecated in favor of cloudflare:connectivityDirectory/services:getServices")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getConnectivityDirectoryServices:getConnectivityDirectoryServices", {
@@ -75,13 +77,15 @@ export interface GetConnectivityDirectoryServicesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleConnectivityDirectoryServices = cloudflare.getConnectivityDirectoryServices({
+ * const exampleConnectivityDirectoryServices = cloudflare.connectivitydirectory.getServices({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     type: "tcp",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getConnectivityDirectoryServices:getConnectivityDirectoryServices has been deprecated in favor of cloudflare:connectivityDirectory/services:getServices */
 export function getConnectivityDirectoryServicesOutput(args?: GetConnectivityDirectoryServicesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectivityDirectoryServicesResult> {
+    pulumi.log.warn("getConnectivityDirectoryServices is deprecated: cloudflare:index/getConnectivityDirectoryServices:getConnectivityDirectoryServices has been deprecated in favor of cloudflare:connectivityDirectory/services:getServices")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getConnectivityDirectoryServices:getConnectivityDirectoryServices", {

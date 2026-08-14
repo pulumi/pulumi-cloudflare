@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZoneCacheReserve = new Cloudflare.ZoneCacheReserve("example_zone_cache_reserve", new()
+    ///     var exampleZoneCacheReserve = new Cloudflare.Modules.ZoneCache.ZoneCacheReserve("example_zone_cache_reserve", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Value = "on",
@@ -42,6 +42,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zoneCacheReserve:ZoneCacheReserve example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zoneCacheReserve:ZoneCacheReserve has been deprecated in favor of cloudflare:zoneCache/reserve:Reserve")]
     [CloudflareResourceType("cloudflare:index/zoneCacheReserve:ZoneCacheReserve")]
     public partial class ZoneCacheReserve : global::Pulumi.CustomResource
     {

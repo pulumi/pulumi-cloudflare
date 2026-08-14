@@ -316,8 +316,13 @@ class _ConnectivityDirectoryServiceState:
         pulumi.set(self, "updated_at", value)
 
 
+warnings.warn("""cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService has been deprecated in favor of cloudflare:connectivityDirectory/service:Service""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService")
 class ConnectivityDirectoryService(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService has been deprecated in favor of cloudflare:connectivityDirectory/service:Service""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -339,7 +344,7 @@ class ConnectivityDirectoryService(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_connectivity_directory_service = cloudflare.ConnectivityDirectoryService("example_connectivity_directory_service",
+        example_connectivity_directory_service = cloudflare.connectivitydirectory.Service("example_connectivity_directory_service",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             host={
                 "ipv4": "10.0.0.1",
@@ -383,7 +388,7 @@ class ConnectivityDirectoryService(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_connectivity_directory_service = cloudflare.ConnectivityDirectoryService("example_connectivity_directory_service",
+        example_connectivity_directory_service = cloudflare.connectivitydirectory.Service("example_connectivity_directory_service",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             host={
                 "ipv4": "10.0.0.1",
@@ -432,6 +437,7 @@ class ConnectivityDirectoryService(pulumi.CustomResource):
                  tls_settings: pulumi.Input[Optional[Union['ConnectivityDirectoryServiceTlsSettingsArgs', 'ConnectivityDirectoryServiceTlsSettingsArgsDict']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ConnectivityDirectoryService is deprecated: cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService has been deprecated in favor of cloudflare:connectivityDirectory/service:Service""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

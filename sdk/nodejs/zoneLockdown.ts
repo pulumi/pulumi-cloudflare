@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneLockdown = new cloudflare.ZoneLockdown("example_zone_lockdown", {
+ * const exampleZoneLockdown = new cloudflare.zone.Lockdown("example_zone_lockdown", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     configurations: [{
  *         target: "ip",
@@ -36,6 +36,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example '<zone_id>/<lock_downs_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zoneLockdown:ZoneLockdown has been deprecated in favor of cloudflare:zone/lockdown:Lockdown
  */
 export class ZoneLockdown extends pulumi.CustomResource {
     /**
@@ -48,6 +50,7 @@ export class ZoneLockdown extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZoneLockdownState, opts?: pulumi.CustomResourceOptions): ZoneLockdown {
+        pulumi.log.warn("ZoneLockdown is deprecated: cloudflare:index/zoneLockdown:ZoneLockdown has been deprecated in favor of cloudflare:zone/lockdown:Lockdown")
         return new ZoneLockdown(name, <any>state, { ...opts, id: id });
     }
 
@@ -105,8 +108,11 @@ export class ZoneLockdown extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zoneLockdown:ZoneLockdown has been deprecated in favor of cloudflare:zone/lockdown:Lockdown */
     constructor(name: string, args: ZoneLockdownArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zoneLockdown:ZoneLockdown has been deprecated in favor of cloudflare:zone/lockdown:Lockdown */
     constructor(name: string, argsOrState?: ZoneLockdownArgs | ZoneLockdownState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZoneLockdown is deprecated: cloudflare:index/zoneLockdown:ZoneLockdown has been deprecated in favor of cloudflare:zone/lockdown:Lockdown")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

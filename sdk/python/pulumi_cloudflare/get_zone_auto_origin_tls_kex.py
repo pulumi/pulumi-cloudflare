@@ -21,6 +21,8 @@ __all__ = [
     'get_zone_auto_origin_tls_kex_output',
 ]
 
+warnings.warn("""cloudflare:index/getZoneAutoOriginTlsKex:getZoneAutoOriginTlsKex has been deprecated in favor of cloudflare:zone/autoOriginTlsKex:getAutoOriginTlsKex""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZoneAutoOriginTlsKexResult:
     """
@@ -91,9 +93,10 @@ def get_zone_auto_origin_tls_kex(zone_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zone_auto_origin_tls_kex = cloudflare.get_zone_auto_origin_tls_kex(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_zone_auto_origin_tls_kex = cloudflare.zone.get_auto_origin_tls_kex(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
     """
+    pulumi.log.warn("""get_zone_auto_origin_tls_kex is deprecated: cloudflare:index/getZoneAutoOriginTlsKex:getZoneAutoOriginTlsKex has been deprecated in favor of cloudflare:zone/autoOriginTlsKex:getAutoOriginTlsKex""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -113,9 +116,10 @@ def get_zone_auto_origin_tls_kex_output(zone_id: pulumi.Input[Optional[_builtins
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zone_auto_origin_tls_kex = cloudflare.get_zone_auto_origin_tls_kex(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_zone_auto_origin_tls_kex = cloudflare.zone.get_auto_origin_tls_kex(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
     """
+    pulumi.log.warn("""get_zone_auto_origin_tls_kex is deprecated: cloudflare:index/getZoneAutoOriginTlsKex:getZoneAutoOriginTlsKex has been deprecated in favor of cloudflare:zone/autoOriginTlsKex:getAutoOriginTlsKex""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

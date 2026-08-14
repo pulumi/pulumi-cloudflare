@@ -21,6 +21,8 @@ __all__ = [
     'get_zero_trust_dlp_sensitivity_level_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDlpSensitivityLevel:getZeroTrustDlpSensitivityLevel has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/zeroTrustDlpSensitivityLevel:getZeroTrustDlpSensitivityLevel""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDlpSensitivityLevelResult:
     """
@@ -128,11 +130,12 @@ def get_zero_trust_dlp_sensitivity_level(account_id: Optional[_builtins.str] = N
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_sensitivity_level = cloudflare.get_zero_trust_dlp_sensitivity_level(account_id="account_id",
+    example_zero_trust_dlp_sensitivity_level = cloudflare.zerotrustdlpsensitivitylevel.get_zero_trust_dlp_sensitivity_level(account_id="account_id",
         sensitivity_group_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         sensitivity_level_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_dlp_sensitivity_level is deprecated: cloudflare:index/getZeroTrustDlpSensitivityLevel:getZeroTrustDlpSensitivityLevel has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/zeroTrustDlpSensitivityLevel:getZeroTrustDlpSensitivityLevel""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['sensitivityGroupId'] = sensitivity_group_id
@@ -165,11 +168,12 @@ def get_zero_trust_dlp_sensitivity_level_output(account_id: pulumi.Input[Optiona
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_sensitivity_level = cloudflare.get_zero_trust_dlp_sensitivity_level(account_id="account_id",
+    example_zero_trust_dlp_sensitivity_level = cloudflare.zerotrustdlpsensitivitylevel.get_zero_trust_dlp_sensitivity_level(account_id="account_id",
         sensitivity_group_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         sensitivity_level_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_dlp_sensitivity_level is deprecated: cloudflare:index/getZeroTrustDlpSensitivityLevel:getZeroTrustDlpSensitivityLevel has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/zeroTrustDlpSensitivityLevel:getZeroTrustDlpSensitivityLevel""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['sensitivityGroupId'] = sensitivity_group_id

@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSpectrumApplication = cloudflare.getSpectrumApplication({
+ * const exampleSpectrumApplication = cloudflare.spectrum.getApplication({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     appId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getSpectrumApplication:getSpectrumApplication has been deprecated in favor of cloudflare:spectrum/application:getApplication */
 export function getSpectrumApplication(args?: GetSpectrumApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetSpectrumApplicationResult> {
+    pulumi.log.warn("getSpectrumApplication is deprecated: cloudflare:index/getSpectrumApplication:getSpectrumApplication has been deprecated in favor of cloudflare:spectrum/application:getApplication")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getSpectrumApplication:getSpectrumApplication", {
@@ -141,13 +143,15 @@ export interface GetSpectrumApplicationResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSpectrumApplication = cloudflare.getSpectrumApplication({
+ * const exampleSpectrumApplication = cloudflare.spectrum.getApplication({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     appId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getSpectrumApplication:getSpectrumApplication has been deprecated in favor of cloudflare:spectrum/application:getApplication */
 export function getSpectrumApplicationOutput(args?: GetSpectrumApplicationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSpectrumApplicationResult> {
+    pulumi.log.warn("getSpectrumApplication is deprecated: cloudflare:index/getSpectrumApplication:getSpectrumApplication has been deprecated in favor of cloudflare:spectrum/application:getApplication")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getSpectrumApplication:getSpectrumApplication", {

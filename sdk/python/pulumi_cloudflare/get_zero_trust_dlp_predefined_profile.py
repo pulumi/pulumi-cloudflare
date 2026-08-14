@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_dlp_predefined_profile_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDlpPredefinedProfile:getZeroTrustDlpPredefinedProfile has been deprecated in favor of cloudflare:zeroTrustDlpPredefined/profile:getProfile""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDlpPredefinedProfileResult:
     """
@@ -168,10 +170,11 @@ def get_zero_trust_dlp_predefined_profile(account_id: Optional[_builtins.str] = 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_predefined_profile = cloudflare.get_zero_trust_dlp_predefined_profile(account_id="account_id",
+    example_zero_trust_dlp_predefined_profile = cloudflare.zerotrustdlppredefined.get_profile(account_id="account_id",
         profile_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_dlp_predefined_profile is deprecated: cloudflare:index/getZeroTrustDlpPredefinedProfile:getZeroTrustDlpPredefinedProfile has been deprecated in favor of cloudflare:zeroTrustDlpPredefined/profile:getProfile""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['profileId'] = profile_id
@@ -205,10 +208,11 @@ def get_zero_trust_dlp_predefined_profile_output(account_id: pulumi.Input[Option
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_predefined_profile = cloudflare.get_zero_trust_dlp_predefined_profile(account_id="account_id",
+    example_zero_trust_dlp_predefined_profile = cloudflare.zerotrustdlppredefined.get_profile(account_id="account_id",
         profile_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_dlp_predefined_profile is deprecated: cloudflare:index/getZeroTrustDlpPredefinedProfile:getZeroTrustDlpPredefinedProfile has been deprecated in favor of cloudflare:zeroTrustDlpPredefined/profile:getProfile""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['profileId'] = profile_id

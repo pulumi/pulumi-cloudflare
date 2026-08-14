@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSchemaValidationOperationSettings = cloudflare.getSchemaValidationOperationSettings({
+ * const exampleSchemaValidationOperationSettings = cloudflare.schemavalidationoperationsettings.getSchemaValidationOperationSettings({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     operationId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getSchemaValidationOperationSettings:getSchemaValidationOperationSettings has been deprecated in favor of cloudflare:schemaValidationOperationSettings/schemaValidationOperationSettings:getSchemaValidationOperationSettings */
 export function getSchemaValidationOperationSettings(args: GetSchemaValidationOperationSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetSchemaValidationOperationSettingsResult> {
+    pulumi.log.warn("getSchemaValidationOperationSettings is deprecated: cloudflare:index/getSchemaValidationOperationSettings:getSchemaValidationOperationSettings has been deprecated in favor of cloudflare:schemaValidationOperationSettings/schemaValidationOperationSettings:getSchemaValidationOperationSettings")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getSchemaValidationOperationSettings:getSchemaValidationOperationSettings", {
         "operationId": args.operationId,
@@ -62,13 +64,15 @@ export interface GetSchemaValidationOperationSettingsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSchemaValidationOperationSettings = cloudflare.getSchemaValidationOperationSettings({
+ * const exampleSchemaValidationOperationSettings = cloudflare.schemavalidationoperationsettings.getSchemaValidationOperationSettings({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     operationId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getSchemaValidationOperationSettings:getSchemaValidationOperationSettings has been deprecated in favor of cloudflare:schemaValidationOperationSettings/schemaValidationOperationSettings:getSchemaValidationOperationSettings */
 export function getSchemaValidationOperationSettingsOutput(args: GetSchemaValidationOperationSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSchemaValidationOperationSettingsResult> {
+    pulumi.log.warn("getSchemaValidationOperationSettings is deprecated: cloudflare:index/getSchemaValidationOperationSettings:getSchemaValidationOperationSettings has been deprecated in favor of cloudflare:schemaValidationOperationSettings/schemaValidationOperationSettings:getSchemaValidationOperationSettings")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getSchemaValidationOperationSettings:getSchemaValidationOperationSettings", {
         "operationId": args.operationId,

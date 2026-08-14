@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustaccess"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustAccessGroup(ctx, &cloudflare.LookupZeroTrustAccessGroupArgs{
+//			_, err := zerotrustaccess.GetGroup(ctx, &zerotrustaccess.GetGroupArgs{
 //				GroupId:   pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
 //				AccountId: pulumi.StringRef("account_id"),
 //				ZoneId:    pulumi.StringRef("zone_id"),
@@ -43,6 +43,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustAccessGroup:getZeroTrustAccessGroup has been deprecated in favor of cloudflare:zeroTrustAccess/group:getGroup
 func LookupZeroTrustAccessGroup(ctx *pulumi.Context, args *LookupZeroTrustAccessGroupArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustAccessGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustAccessGroupResult

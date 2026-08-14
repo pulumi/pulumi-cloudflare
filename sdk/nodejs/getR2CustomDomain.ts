@@ -18,14 +18,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleR2CustomDomain = cloudflare.getR2CustomDomain({
+ * const exampleR2CustomDomain = cloudflare.r2.getCustomDomain({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
  *     domain: "example-domain/custom-domain.com",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getR2CustomDomain:getR2CustomDomain has been deprecated in favor of cloudflare:r2/customDomain:getCustomDomain */
 export function getR2CustomDomain(args: GetR2CustomDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetR2CustomDomainResult> {
+    pulumi.log.warn("getR2CustomDomain is deprecated: cloudflare:index/getR2CustomDomain:getR2CustomDomain has been deprecated in favor of cloudflare:r2/customDomain:getCustomDomain")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getR2CustomDomain:getR2CustomDomain", {
         "accountId": args.accountId,
@@ -103,14 +105,16 @@ export interface GetR2CustomDomainResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleR2CustomDomain = cloudflare.getR2CustomDomain({
+ * const exampleR2CustomDomain = cloudflare.r2.getCustomDomain({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
  *     domain: "example-domain/custom-domain.com",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getR2CustomDomain:getR2CustomDomain has been deprecated in favor of cloudflare:r2/customDomain:getCustomDomain */
 export function getR2CustomDomainOutput(args: GetR2CustomDomainOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetR2CustomDomainResult> {
+    pulumi.log.warn("getR2CustomDomain is deprecated: cloudflare:index/getR2CustomDomain:getR2CustomDomain has been deprecated in favor of cloudflare:r2/customDomain:getCustomDomain")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getR2CustomDomain:getR2CustomDomain", {
         "accountId": args.accountId,

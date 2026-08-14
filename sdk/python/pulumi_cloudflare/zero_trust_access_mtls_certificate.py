@@ -220,8 +220,13 @@ class _ZeroTrustAccessMtlsCertificateState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate has been deprecated in favor of cloudflare:zeroTrustAccessMtls/certificate:Certificate""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate")
 class ZeroTrustAccessMtlsCertificate(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate has been deprecated in favor of cloudflare:zeroTrustAccessMtls/certificate:Certificate""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -244,7 +249,7 @@ class ZeroTrustAccessMtlsCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_mtls_certificate = cloudflare.ZeroTrustAccessMtlsCertificate("example_zero_trust_access_mtls_certificate",
+        example_zero_trust_access_mtls_certificate = cloudflare.zerotrustaccessmtls.Certificate("example_zero_trust_access_mtls_certificate",
             certificate=\"\"\"  -----BEGIN CERTIFICATE-----
           MIIGAjCCA+qgAwIBAgIJAI7kymlF7CWT...N4RI7KKB7nikiuUf8vhULKy5IX10
           DrUtmu/B
@@ -290,7 +295,7 @@ class ZeroTrustAccessMtlsCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_mtls_certificate = cloudflare.ZeroTrustAccessMtlsCertificate("example_zero_trust_access_mtls_certificate",
+        example_zero_trust_access_mtls_certificate = cloudflare.zerotrustaccessmtls.Certificate("example_zero_trust_access_mtls_certificate",
             certificate=\"\"\"  -----BEGIN CERTIFICATE-----
           MIIGAjCCA+qgAwIBAgIJAI7kymlF7CWT...N4RI7KKB7nikiuUf8vhULKy5IX10
           DrUtmu/B
@@ -331,6 +336,7 @@ class ZeroTrustAccessMtlsCertificate(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustAccessMtlsCertificate is deprecated: cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate has been deprecated in favor of cloudflare:zeroTrustAccessMtls/certificate:Certificate""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

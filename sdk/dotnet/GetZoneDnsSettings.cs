@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZoneDnsSettings:getZoneDnsSettings has been deprecated in favor of cloudflare:zone/dnsSettings:getDnsSettings")]
     public static class GetZoneDnsSettings
     {
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZoneDnsSettings = Cloudflare.GetZoneDnsSettings.Invoke(new()
+        ///     var exampleZoneDnsSettings = Cloudflare.Modules.Zone.GetDnsSettings.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -58,7 +59,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZoneDnsSettings = Cloudflare.GetZoneDnsSettings.Invoke(new()
+        ///     var exampleZoneDnsSettings = Cloudflare.Modules.Zone.GetDnsSettings.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -87,7 +88,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZoneDnsSettings = Cloudflare.GetZoneDnsSettings.Invoke(new()
+        ///     var exampleZoneDnsSettings = Cloudflare.Modules.Zone.GetDnsSettings.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleD1Databases = cloudflare.getD1Databases({
+ * const exampleD1Databases = cloudflare.d1.getDatabases({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "name",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getD1Databases:getD1Databases has been deprecated in favor of cloudflare:d1/databases:getDatabases */
 export function getD1Databases(args?: GetD1DatabasesArgs, opts?: pulumi.InvokeOptions): Promise<GetD1DatabasesResult> {
+    pulumi.log.warn("getD1Databases is deprecated: cloudflare:index/getD1Databases:getD1Databases has been deprecated in favor of cloudflare:d1/databases:getDatabases")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getD1Databases:getD1Databases", {
@@ -85,13 +87,15 @@ export interface GetD1DatabasesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleD1Databases = cloudflare.getD1Databases({
+ * const exampleD1Databases = cloudflare.d1.getDatabases({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "name",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getD1Databases:getD1Databases has been deprecated in favor of cloudflare:d1/databases:getDatabases */
 export function getD1DatabasesOutput(args?: GetD1DatabasesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetD1DatabasesResult> {
+    pulumi.log.warn("getD1Databases is deprecated: cloudflare:index/getD1Databases:getD1Databases has been deprecated in favor of cloudflare:d1/databases:getDatabases")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getD1Databases:getD1Databases", {

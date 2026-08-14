@@ -22,6 +22,8 @@ __all__ = [
     'get_account_roles_output',
 ]
 
+warnings.warn("""cloudflare:index/getAccountRoles:getAccountRoles has been deprecated in favor of cloudflare:account/roles:getRoles""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAccountRolesResult:
     """
@@ -90,13 +92,14 @@ def get_account_roles(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_roles = cloudflare.get_account_roles(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_account_roles = cloudflare.account.get_roles(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_account_roles is deprecated: cloudflare:index/getAccountRoles:getAccountRoles has been deprecated in favor of cloudflare:account/roles:getRoles""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -123,13 +126,14 @@ def get_account_roles_output(account_id: pulumi.Input[Optional[Optional[_builtin
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_roles = cloudflare.get_account_roles(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_account_roles = cloudflare.account.get_roles(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_account_roles is deprecated: cloudflare:index/getAccountRoles:getAccountRoles has been deprecated in favor of cloudflare:account/roles:getRoles""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

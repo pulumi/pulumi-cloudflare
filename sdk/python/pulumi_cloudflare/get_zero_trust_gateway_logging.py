@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_gateway_logging_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustGatewayLogging:getZeroTrustGatewayLogging has been deprecated in favor of cloudflare:zeroTrustGateway/logging:getLogging""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustGatewayLoggingResult:
     """
@@ -92,9 +94,10 @@ def get_zero_trust_gateway_logging(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_gateway_logging = cloudflare.get_zero_trust_gateway_logging(account_id="699d98642c564d2e855e9661899b7252")
+    example_zero_trust_gateway_logging = cloudflare.zerotrustgateway.get_logging(account_id="699d98642c564d2e855e9661899b7252")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_gateway_logging is deprecated: cloudflare:index/getZeroTrustGatewayLogging:getZeroTrustGatewayLogging has been deprecated in favor of cloudflare:zeroTrustGateway/logging:getLogging""")
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -114,9 +117,10 @@ def get_zero_trust_gateway_logging_output(account_id: pulumi.Input[Optional[Opti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_gateway_logging = cloudflare.get_zero_trust_gateway_logging(account_id="699d98642c564d2e855e9661899b7252")
+    example_zero_trust_gateway_logging = cloudflare.zerotrustgateway.get_logging(account_id="699d98642c564d2e855e9661899b7252")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_gateway_logging is deprecated: cloudflare:index/getZeroTrustGatewayLogging:getZeroTrustGatewayLogging has been deprecated in favor of cloudflare:zeroTrustGateway/logging:getLogging""")
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

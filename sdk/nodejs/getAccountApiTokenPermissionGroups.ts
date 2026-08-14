@@ -18,14 +18,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountApiTokenPermissionGroups = cloudflare.getAccountApiTokenPermissionGroups({
+ * const exampleAccountApiTokenPermissionGroups = cloudflare.accountapitokenpermissiongroups.getAccountApiTokenPermissionGroups({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "Account%20Settings%20Write",
  *     scope: "com.cloudflare.api.account.zone",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups has been deprecated in favor of cloudflare:accountApiTokenPermissionGroups/accountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups */
 export function getAccountApiTokenPermissionGroups(args?: GetAccountApiTokenPermissionGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountApiTokenPermissionGroupsResult> {
+    pulumi.log.warn("getAccountApiTokenPermissionGroups is deprecated: cloudflare:index/getAccountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups has been deprecated in favor of cloudflare:accountApiTokenPermissionGroups/accountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups", {
@@ -87,14 +89,16 @@ export interface GetAccountApiTokenPermissionGroupsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountApiTokenPermissionGroups = cloudflare.getAccountApiTokenPermissionGroups({
+ * const exampleAccountApiTokenPermissionGroups = cloudflare.accountapitokenpermissiongroups.getAccountApiTokenPermissionGroups({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "Account%20Settings%20Write",
  *     scope: "com.cloudflare.api.account.zone",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups has been deprecated in favor of cloudflare:accountApiTokenPermissionGroups/accountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups */
 export function getAccountApiTokenPermissionGroupsOutput(args?: GetAccountApiTokenPermissionGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountApiTokenPermissionGroupsResult> {
+    pulumi.log.warn("getAccountApiTokenPermissionGroups is deprecated: cloudflare:index/getAccountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups has been deprecated in favor of cloudflare:accountApiTokenPermissionGroups/accountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups", {

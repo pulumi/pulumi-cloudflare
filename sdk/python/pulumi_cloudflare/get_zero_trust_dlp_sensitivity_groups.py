@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_dlp_sensitivity_groups_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDlpSensitivityGroups:getZeroTrustDlpSensitivityGroups has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/groups:getGroups""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDlpSensitivityGroupsResult:
     """
@@ -86,12 +88,13 @@ def get_zero_trust_dlp_sensitivity_groups(account_id: Optional[_builtins.str] = 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_sensitivity_groups = cloudflare.get_zero_trust_dlp_sensitivity_groups(account_id="account_id")
+    example_zero_trust_dlp_sensitivity_groups = cloudflare.zerotrustdlpsensitivity.get_groups(account_id="account_id")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_dlp_sensitivity_groups is deprecated: cloudflare:index/getZeroTrustDlpSensitivityGroups:getZeroTrustDlpSensitivityGroups has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/groups:getGroups""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -117,12 +120,13 @@ def get_zero_trust_dlp_sensitivity_groups_output(account_id: pulumi.Input[Option
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_sensitivity_groups = cloudflare.get_zero_trust_dlp_sensitivity_groups(account_id="account_id")
+    example_zero_trust_dlp_sensitivity_groups = cloudflare.zerotrustdlpsensitivity.get_groups(account_id="account_id")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_dlp_sensitivity_groups is deprecated: cloudflare:index/getZeroTrustDlpSensitivityGroups:getZeroTrustDlpSensitivityGroups has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/groups:getGroups""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

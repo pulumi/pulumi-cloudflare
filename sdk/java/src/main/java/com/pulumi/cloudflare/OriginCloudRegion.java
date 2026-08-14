@@ -23,8 +23,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.OriginCloudRegion;
- * import com.pulumi.cloudflare.OriginCloudRegionArgs;
+ * import com.pulumi.cloudflare.originCloud.Region;
+ * import com.pulumi.cloudflare.originCloud.RegionArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -38,7 +38,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleOriginCloudRegion = new OriginCloudRegion("exampleOriginCloudRegion", OriginCloudRegionArgs.builder()
+ *         var exampleOriginCloudRegion = new Region("exampleOriginCloudRegion", RegionArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .originIp("192.0.2.1")
  *             .region("us-east-1")
@@ -56,7 +56,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/originCloudRegion:OriginCloudRegion example &#39;&lt;zone_id&gt;/&lt;origin_ip&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/originCloudRegion:OriginCloudRegion has been deprecated in favor of cloudflare:originCloud/region:Region
+ * 
  */
+@Deprecated /* cloudflare:index/originCloudRegion:OriginCloudRegion has been deprecated in favor of cloudflare:originCloud/region:Region */
 @ResourceType(type="cloudflare:index/originCloudRegion:OriginCloudRegion")
 public class OriginCloudRegion extends com.pulumi.resources.CustomResource {
     /**

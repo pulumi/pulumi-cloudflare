@@ -16,13 +16,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsZoneTransfersTsig = cloudflare.getDnsZoneTransfersTsig({
+ * const exampleDnsZoneTransfersTsig = cloudflare.dnszonetransfers.getTsig({
  *     accountId: "01a7362d577a6c3019a474fd6f485823",
  *     tsigId: "69cd1e104af3e6ed3cb344f263fd0d5a",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getDnsZoneTransfersTsig:getDnsZoneTransfersTsig has been deprecated in favor of cloudflare:dnsZoneTransfers/tsig:getTsig */
 export function getDnsZoneTransfersTsig(args: GetDnsZoneTransfersTsigArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsZoneTransfersTsigResult> {
+    pulumi.log.warn("getDnsZoneTransfersTsig is deprecated: cloudflare:index/getDnsZoneTransfersTsig:getDnsZoneTransfersTsig has been deprecated in favor of cloudflare:dnsZoneTransfers/tsig:getTsig")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getDnsZoneTransfersTsig:getDnsZoneTransfersTsig", {
         "accountId": args.accountId,
@@ -73,13 +75,15 @@ export interface GetDnsZoneTransfersTsigResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsZoneTransfersTsig = cloudflare.getDnsZoneTransfersTsig({
+ * const exampleDnsZoneTransfersTsig = cloudflare.dnszonetransfers.getTsig({
  *     accountId: "01a7362d577a6c3019a474fd6f485823",
  *     tsigId: "69cd1e104af3e6ed3cb344f263fd0d5a",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getDnsZoneTransfersTsig:getDnsZoneTransfersTsig has been deprecated in favor of cloudflare:dnsZoneTransfers/tsig:getTsig */
 export function getDnsZoneTransfersTsigOutput(args: GetDnsZoneTransfersTsigOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsZoneTransfersTsigResult> {
+    pulumi.log.warn("getDnsZoneTransfersTsig is deprecated: cloudflare:index/getDnsZoneTransfersTsig:getDnsZoneTransfersTsig has been deprecated in favor of cloudflare:dnsZoneTransfers/tsig:getTsig")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getDnsZoneTransfersTsig:getDnsZoneTransfersTsig", {
         "accountId": args.accountId,

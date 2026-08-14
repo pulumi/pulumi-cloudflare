@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleStreamAudioTrack = new Cloudflare.StreamAudioTrack("example_stream_audio_track", new()
+    ///     var exampleStreamAudioTrack = new Cloudflare.Modules.Stream.StreamAudioTrack("example_stream_audio_track", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Identifier = "ea95132c15732412d22c1476fa83f27a",
@@ -41,6 +41,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/streamAudioTrack:StreamAudioTrack has been deprecated in favor of cloudflare:stream/audioTrack:AudioTrack")]
     [CloudflareResourceType("cloudflare:index/streamAudioTrack:StreamAudioTrack")]
     public partial class StreamAudioTrack : global::Pulumi.CustomResource
     {

@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.CloudforceOneRequestMessage;
- * import com.pulumi.cloudflare.CloudforceOneRequestMessageArgs;
+ * import com.pulumi.cloudflare.cloudforceOneRequest.Message;
+ * import com.pulumi.cloudflare.cloudforceOneRequest.MessageArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleCloudforceOneRequestMessage = new CloudforceOneRequestMessage("exampleCloudforceOneRequestMessage", CloudforceOneRequestMessageArgs.builder()
+ *         var exampleCloudforceOneRequestMessage = new Message("exampleCloudforceOneRequestMessage", MessageArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
  *             .content("Can you elaborate on the type of DoS that occurred?")
@@ -61,7 +61,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example &#39;&lt;account_id&gt;/&lt;request_id&gt;/&lt;page&gt;/&lt;per_page&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage has been deprecated in favor of cloudflare:cloudforceOneRequest/message:Message
+ * 
  */
+@Deprecated /* cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage has been deprecated in favor of cloudflare:cloudforceOneRequest/message:Message */
 @ResourceType(type="cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage")
 public class CloudforceOneRequestMessage extends com.pulumi.resources.CustomResource {
     /**

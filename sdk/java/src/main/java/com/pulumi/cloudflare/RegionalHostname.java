@@ -28,8 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.RegionalHostname;
- * import com.pulumi.cloudflare.RegionalHostnameArgs;
+ * import com.pulumi.cloudflare.regional.Hostname;
+ * import com.pulumi.cloudflare.regional.HostnameArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleRegionalHostname = new RegionalHostname("exampleRegionalHostname", RegionalHostnameArgs.builder()
+ *         var exampleRegionalHostname = new Hostname("exampleRegionalHostname", HostnameArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .hostname("foo.example.com")
  *             .regionKey("ca")
@@ -61,7 +61,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/regionalHostname:RegionalHostname example &#39;&lt;zone_id&gt;/&lt;hostname&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/regionalHostname:RegionalHostname has been deprecated in favor of cloudflare:regional/hostname:Hostname
+ * 
  */
+@Deprecated /* cloudflare:index/regionalHostname:RegionalHostname has been deprecated in favor of cloudflare:regional/hostname:Hostname */
 @ResourceType(type="cloudflare:index/regionalHostname:RegionalHostname")
 public class RegionalHostname extends com.pulumi.resources.CustomResource {
     /**

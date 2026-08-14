@@ -19,20 +19,20 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/r2bucket"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewR2BucketLock(ctx, "example_r2_bucket_lock", &cloudflare.R2BucketLockArgs{
+//			_, err := r2bucket.NewLock(ctx, "example_r2_bucket_lock", &r2bucket.LockArgs{
 //				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				BucketName: pulumi.String("example-bucket"),
-//				Rules: cloudflare.R2BucketLockRuleArray{
-//					&cloudflare.R2BucketLockRuleArgs{
+//				Rules: r2bucket.LockRuleArray{
+//					&r2bucket.LockRuleArgs{
 //						Id: pulumi.String("Lock all objects for 24 hours"),
-//						Condition: &cloudflare.R2BucketLockRuleConditionArgs{
+//						Condition: &r2bucket.LockRuleConditionArgs{
 //							MaxAgeSeconds: pulumi.Int(100),
 //							Type:          pulumi.String("Age"),
 //						},
@@ -53,6 +53,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/r2BucketLock:R2BucketLock has been deprecated in favor of cloudflare:r2Bucket/lock:Lock
 type R2BucketLock struct {
 	pulumi.CustomResourceState
 

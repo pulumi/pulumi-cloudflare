@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WorkersCronTrigger;
- * import com.pulumi.cloudflare.WorkersCronTriggerArgs;
+ * import com.pulumi.cloudflare.workers.CronTrigger;
+ * import com.pulumi.cloudflare.workers.CronTriggerArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var exampleWorkersCronTrigger = new WorkersCronTrigger("exampleWorkersCronTrigger", WorkersCronTriggerArgs.builder()
+ *         var exampleWorkersCronTrigger = new CronTrigger("exampleWorkersCronTrigger", CronTriggerArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .scriptName("this-is_my_script-01")
  *             .body(Arrays.asList(Map.of("cron", "*}&#47;{@code 30 * * * *")))
@@ -63,7 +63,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/workersCronTrigger:WorkersCronTrigger example &#39;&lt;account_id&gt;/&lt;script_name&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/workersCronTrigger:WorkersCronTrigger has been deprecated in favor of cloudflare:workers/cronTrigger:CronTrigger
+ * 
  */
+@Deprecated /* cloudflare:index/workersCronTrigger:WorkersCronTrigger has been deprecated in favor of cloudflare:workers/cronTrigger:CronTrigger */
 @ResourceType(type="cloudflare:index/workersCronTrigger:WorkersCronTrigger")
 public class WorkersCronTrigger extends com.pulumi.resources.CustomResource {
     /**

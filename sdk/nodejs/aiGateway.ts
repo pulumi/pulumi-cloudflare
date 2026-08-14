@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAiGateway = new cloudflare.AiGateway("example_ai_gateway", {
+ * const exampleAiGateway = new cloudflare.aigateway.AiGateway("example_ai_gateway", {
  *     accountId: "3ebbcb006d4d46d7bb6a8c7f14676cb0",
  *     aiGatewayId: "my-gateway",
  *     cacheInvalidateOnUpdate: true,
@@ -45,6 +45,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/aiGateway:AiGateway example '<account_id>/<id>'
  * ```
+ *
+ * @deprecated cloudflare:index/aiGateway:AiGateway has been deprecated in favor of cloudflare:aiGateway/aiGateway:AiGateway
  */
 export class AiGateway extends pulumi.CustomResource {
     /**
@@ -57,6 +59,7 @@ export class AiGateway extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AiGatewayState, opts?: pulumi.CustomResourceOptions): AiGateway {
+        pulumi.log.warn("AiGateway is deprecated: cloudflare:index/aiGateway:AiGateway has been deprecated in favor of cloudflare:aiGateway/aiGateway:AiGateway")
         return new AiGateway(name, <any>state, { ...opts, id: id });
     }
 
@@ -132,8 +135,11 @@ export class AiGateway extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/aiGateway:AiGateway has been deprecated in favor of cloudflare:aiGateway/aiGateway:AiGateway */
     constructor(name: string, args: AiGatewayArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/aiGateway:AiGateway has been deprecated in favor of cloudflare:aiGateway/aiGateway:AiGateway */
     constructor(name: string, argsOrState?: AiGatewayArgs | AiGatewayState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("AiGateway is deprecated: cloudflare:index/aiGateway:AiGateway has been deprecated in favor of cloudflare:aiGateway/aiGateway:AiGateway")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

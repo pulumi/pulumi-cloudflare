@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getWorkersCronTrigger:getWorkersCronTrigger has been deprecated in favor of cloudflare:workers/cronTrigger:getCronTrigger")]
     public static class GetWorkersCronTrigger
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersCronTrigger = Cloudflare.GetWorkersCronTrigger.Invoke(new()
+        ///     var exampleWorkersCronTrigger = Cloudflare.Modules.Workers.GetCronTrigger.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ScriptName = "this-is_my_script-01",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersCronTrigger = Cloudflare.GetWorkersCronTrigger.Invoke(new()
+        ///     var exampleWorkersCronTrigger = Cloudflare.Modules.Workers.GetCronTrigger.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ScriptName = "this-is_my_script-01",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersCronTrigger = Cloudflare.GetWorkersCronTrigger.Invoke(new()
+        ///     var exampleWorkersCronTrigger = Cloudflare.Modules.Workers.GetCronTrigger.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ScriptName = "this-is_my_script-01",

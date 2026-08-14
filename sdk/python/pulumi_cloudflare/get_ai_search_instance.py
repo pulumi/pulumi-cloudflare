@@ -23,6 +23,8 @@ __all__ = [
     'get_ai_search_instance_output',
 ]
 
+warnings.warn("""cloudflare:index/getAiSearchInstance:getAiSearchInstance has been deprecated in favor of cloudflare:aiSearch/instance:getInstance""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAiSearchInstanceResult:
     """
@@ -456,6 +458,7 @@ def get_ai_search_instance(account_id: Optional[_builtins.str] = None,
 
     :param _builtins.str id: The ID of this resource.
     """
+    pulumi.log.warn("""get_ai_search_instance is deprecated: cloudflare:index/getAiSearchInstance:getAiSearchInstance has been deprecated in favor of cloudflare:aiSearch/instance:getInstance""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -514,6 +517,7 @@ def get_ai_search_instance_output(account_id: pulumi.Input[Optional[Optional[_bu
 
     :param _builtins.str id: The ID of this resource.
     """
+    pulumi.log.warn("""get_ai_search_instance is deprecated: cloudflare:index/getAiSearchInstance:getAiSearchInstance has been deprecated in favor of cloudflare:aiSearch/instance:getInstance""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

@@ -32,12 +32,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.MagicWanIpsecTunnel;
- * import com.pulumi.cloudflare.MagicWanIpsecTunnelArgs;
- * import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelBgpArgs;
- * import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelCustomRemoteIdentitiesArgs;
- * import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelHealthCheckArgs;
- * import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelHealthCheckTargetArgs;
+ * import com.pulumi.cloudflare.magicWan.IpsecTunnel;
+ * import com.pulumi.cloudflare.magicWan.IpsecTunnelArgs;
+ * import com.pulumi.cloudflare.magicWan.inputs.IpsecTunnelBgpArgs;
+ * import com.pulumi.cloudflare.magicWan.inputs.IpsecTunnelCustomRemoteIdentitiesArgs;
+ * import com.pulumi.cloudflare.magicWan.inputs.IpsecTunnelHealthCheckArgs;
+ * import com.pulumi.cloudflare.magicWan.inputs.IpsecTunnelHealthCheckTargetArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -51,27 +51,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleMagicWanIpsecTunnel = new MagicWanIpsecTunnel("exampleMagicWanIpsecTunnel", MagicWanIpsecTunnelArgs.builder()
+ *         var exampleMagicWanIpsecTunnel = new IpsecTunnel("exampleMagicWanIpsecTunnel", IpsecTunnelArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .cloudflareEndpoint("203.0.113.1")
  *             .interfaceAddress("192.0.2.0/31")
  *             .name("IPsec_1")
  *             .automaticReturnRouting(true)
- *             .bgp(MagicWanIpsecTunnelBgpArgs.builder()
+ *             .bgp(IpsecTunnelBgpArgs.builder()
  *                 .customerAsn(0)
  *                 .extraPrefixes("string")
  *                 .md5Key("md5_key")
  *                 .build())
- *             .customRemoteIdentities(MagicWanIpsecTunnelCustomRemoteIdentitiesArgs.builder()
+ *             .customRemoteIdentities(IpsecTunnelCustomRemoteIdentitiesArgs.builder()
  *                 .fqdnId("fqdn_id")
  *                 .build())
  *             .customerEndpoint("203.0.113.1")
  *             .description("Tunnel for ISP X")
- *             .healthCheck(MagicWanIpsecTunnelHealthCheckArgs.builder()
+ *             .healthCheck(IpsecTunnelHealthCheckArgs.builder()
  *                 .direction("bidirectional")
  *                 .enabled(true)
  *                 .rate("low")
- *                 .target(MagicWanIpsecTunnelHealthCheckTargetArgs.builder()
+ *                 .target(IpsecTunnelHealthCheckTargetArgs.builder()
  *                     .saved("203.0.113.1")
  *                     .build())
  *                 .type("request")
@@ -92,7 +92,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel example &#39;&lt;account_id&gt;/&lt;ipsec_tunnel_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel has been deprecated in favor of cloudflare:magicWan/ipsecTunnel:IpsecTunnel
+ * 
  */
+@Deprecated /* cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel has been deprecated in favor of cloudflare:magicWan/ipsecTunnel:IpsecTunnel */
 @ResourceType(type="cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel")
 public class MagicWanIpsecTunnel extends com.pulumi.resources.CustomResource {
     /**

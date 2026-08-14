@@ -169,8 +169,13 @@ class _ZoneHoldState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/zoneHold:ZoneHold has been deprecated in favor of cloudflare:zone/hold:Hold""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zoneHold:ZoneHold")
 class ZoneHold(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zoneHold:ZoneHold has been deprecated in favor of cloudflare:zone/hold:Hold""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -225,7 +230,7 @@ class ZoneHold(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zone_hold = cloudflare.ZoneHold("example_zone_hold", zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+        example_zone_hold = cloudflare.zone.Hold("example_zone_hold", zone_id="023e105f4ecef8ad9ca31a8372d0c353")
         ```
 
         ## Import
@@ -300,7 +305,7 @@ class ZoneHold(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zone_hold = cloudflare.ZoneHold("example_zone_hold", zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+        example_zone_hold = cloudflare.zone.Hold("example_zone_hold", zone_id="023e105f4ecef8ad9ca31a8372d0c353")
         ```
 
         ## Import
@@ -329,6 +334,7 @@ class ZoneHold(pulumi.CustomResource):
                  include_subdomains: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZoneHold is deprecated: cloudflare:index/zoneHold:ZoneHold has been deprecated in favor of cloudflare:zone/hold:Hold""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

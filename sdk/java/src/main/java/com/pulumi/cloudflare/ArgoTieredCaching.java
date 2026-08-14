@@ -24,8 +24,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ArgoTieredCaching;
- * import com.pulumi.cloudflare.ArgoTieredCachingArgs;
+ * import com.pulumi.cloudflare.argo.TieredCaching;
+ * import com.pulumi.cloudflare.argo.TieredCachingArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -39,7 +39,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleArgoTieredCaching = new ArgoTieredCaching("exampleArgoTieredCaching", ArgoTieredCachingArgs.builder()
+ *         var exampleArgoTieredCaching = new TieredCaching("exampleArgoTieredCaching", TieredCachingArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .value("on")
  *             .build());
@@ -55,7 +55,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/argoTieredCaching:ArgoTieredCaching example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/argoTieredCaching:ArgoTieredCaching has been deprecated in favor of cloudflare:argo/tieredCaching:TieredCaching
+ * 
  */
+@Deprecated /* cloudflare:index/argoTieredCaching:ArgoTieredCaching has been deprecated in favor of cloudflare:argo/tieredCaching:TieredCaching */
 @ResourceType(type="cloudflare:index/argoTieredCaching:ArgoTieredCaching")
 public class ArgoTieredCaching extends com.pulumi.resources.CustomResource {
     /**

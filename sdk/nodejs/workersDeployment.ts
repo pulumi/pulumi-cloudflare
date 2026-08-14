@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersDeployment = new cloudflare.WorkersDeployment("example_workers_deployment", {
+ * const exampleWorkersDeployment = new cloudflare.workers.Deployment("example_workers_deployment", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     scriptName: "this-is_my_script-01",
  *     strategy: "percentage",
@@ -38,6 +38,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/workersDeployment:WorkersDeployment example '<account_id>/<script_name>/<deployment_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/workersDeployment:WorkersDeployment has been deprecated in favor of cloudflare:workers/deployment:Deployment
  */
 export class WorkersDeployment extends pulumi.CustomResource {
     /**
@@ -50,6 +52,7 @@ export class WorkersDeployment extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WorkersDeploymentState, opts?: pulumi.CustomResourceOptions): WorkersDeployment {
+        pulumi.log.warn("WorkersDeployment is deprecated: cloudflare:index/workersDeployment:WorkersDeployment has been deprecated in favor of cloudflare:workers/deployment:Deployment")
         return new WorkersDeployment(name, <any>state, { ...opts, id: id });
     }
 
@@ -92,8 +95,11 @@ export class WorkersDeployment extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/workersDeployment:WorkersDeployment has been deprecated in favor of cloudflare:workers/deployment:Deployment */
     constructor(name: string, args: WorkersDeploymentArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/workersDeployment:WorkersDeployment has been deprecated in favor of cloudflare:workers/deployment:Deployment */
     constructor(name: string, argsOrState?: WorkersDeploymentArgs | WorkersDeploymentState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("WorkersDeployment is deprecated: cloudflare:index/workersDeployment:WorkersDeployment has been deprecated in favor of cloudflare:workers/deployment:Deployment")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

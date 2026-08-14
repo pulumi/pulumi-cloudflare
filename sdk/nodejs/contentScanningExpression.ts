@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleContentScanningExpression = new cloudflare.ContentScanningExpression("example_content_scanning_expression", {
+ * const exampleContentScanningExpression = new cloudflare.contentscanning.Expression("example_content_scanning_expression", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bodies: [{
  *         payload: "lookup_json_string(http.request.body.raw, \"file\")",
@@ -29,6 +29,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/contentScanningExpression:ContentScanningExpression has been deprecated in favor of cloudflare:contentScanning/expression:Expression
  */
 export class ContentScanningExpression extends pulumi.CustomResource {
     /**
@@ -41,6 +43,7 @@ export class ContentScanningExpression extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ContentScanningExpressionState, opts?: pulumi.CustomResourceOptions): ContentScanningExpression {
+        pulumi.log.warn("ContentScanningExpression is deprecated: cloudflare:index/contentScanningExpression:ContentScanningExpression has been deprecated in favor of cloudflare:contentScanning/expression:Expression")
         return new ContentScanningExpression(name, <any>state, { ...opts, id: id });
     }
 
@@ -71,8 +74,11 @@ export class ContentScanningExpression extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/contentScanningExpression:ContentScanningExpression has been deprecated in favor of cloudflare:contentScanning/expression:Expression */
     constructor(name: string, args: ContentScanningExpressionArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/contentScanningExpression:ContentScanningExpression has been deprecated in favor of cloudflare:contentScanning/expression:Expression */
     constructor(name: string, argsOrState?: ContentScanningExpressionArgs | ContentScanningExpressionState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ContentScanningExpression is deprecated: cloudflare:index/contentScanningExpression:ContentScanningExpression has been deprecated in favor of cloudflare:contentScanning/expression:Expression")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

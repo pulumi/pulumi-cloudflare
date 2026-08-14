@@ -314,8 +314,13 @@ class _EmailSecurityImpersonationRegistryState:
         pulumi.set(self, "provenance", value)
 
 
+warnings.warn("""cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry has been deprecated in favor of cloudflare:emailSecurityImpersonation/registry:Registry""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry")
 class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry has been deprecated in favor of cloudflare:emailSecurityImpersonation/registry:Registry""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -342,7 +347,7 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_email_security_impersonation_registry = cloudflare.EmailSecurityImpersonationRegistry("example_email_security_impersonation_registry",
+        example_email_security_impersonation_registry = cloudflare.emailsecurityimpersonation.Registry("example_email_security_impersonation_registry",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             email="email",
             is_email_regex=True,
@@ -379,7 +384,7 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_email_security_impersonation_registry = cloudflare.EmailSecurityImpersonationRegistry("example_email_security_impersonation_registry",
+        example_email_security_impersonation_registry = cloudflare.emailsecurityimpersonation.Registry("example_email_security_impersonation_registry",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             email="email",
             is_email_regex=True,
@@ -418,6 +423,7 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  provenance: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""EmailSecurityImpersonationRegistry is deprecated: cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry has been deprecated in favor of cloudflare:emailSecurityImpersonation/registry:Registry""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -22,6 +22,8 @@ __all__ = [
     'get_workers_routes_output',
 ]
 
+warnings.warn("""cloudflare:index/getWorkersRoutes:getWorkersRoutes has been deprecated in favor of cloudflare:workers/routes:getRoutes""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWorkersRoutesResult:
     """
@@ -89,13 +91,14 @@ def get_workers_routes(max_items: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_routes = cloudflare.get_workers_routes(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_workers_routes = cloudflare.workers.get_routes(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_workers_routes is deprecated: cloudflare:index/getWorkersRoutes:getWorkersRoutes has been deprecated in favor of cloudflare:workers/routes:getRoutes""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id
@@ -121,13 +124,14 @@ def get_workers_routes_output(max_items: pulumi.Input[Optional[Optional[_builtin
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_routes = cloudflare.get_workers_routes(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_workers_routes = cloudflare.workers.get_routes(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_workers_routes is deprecated: cloudflare:index/getWorkersRoutes:getWorkersRoutes has been deprecated in favor of cloudflare:workers/routes:getRoutes""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id

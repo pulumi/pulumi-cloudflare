@@ -13,13 +13,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDevicePostureRule = cloudflare.getZeroTrustDevicePostureRule({
+ * const exampleZeroTrustDevicePostureRule = cloudflare.zerotrustdeviceposture.getRule({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     ruleId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDevicePostureRule:getZeroTrustDevicePostureRule has been deprecated in favor of cloudflare:zeroTrustDevicePosture/rule:getRule */
 export function getZeroTrustDevicePostureRule(args: GetZeroTrustDevicePostureRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDevicePostureRuleResult> {
+    pulumi.log.warn("getZeroTrustDevicePostureRule is deprecated: cloudflare:index/getZeroTrustDevicePostureRule:getZeroTrustDevicePostureRule has been deprecated in favor of cloudflare:zeroTrustDevicePosture/rule:getRule")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDevicePostureRule:getZeroTrustDevicePostureRule", {
         "accountId": args.accountId,
@@ -92,13 +94,15 @@ export interface GetZeroTrustDevicePostureRuleResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDevicePostureRule = cloudflare.getZeroTrustDevicePostureRule({
+ * const exampleZeroTrustDevicePostureRule = cloudflare.zerotrustdeviceposture.getRule({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     ruleId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDevicePostureRule:getZeroTrustDevicePostureRule has been deprecated in favor of cloudflare:zeroTrustDevicePosture/rule:getRule */
 export function getZeroTrustDevicePostureRuleOutput(args: GetZeroTrustDevicePostureRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDevicePostureRuleResult> {
+    pulumi.log.warn("getZeroTrustDevicePostureRule is deprecated: cloudflare:index/getZeroTrustDevicePostureRule:getZeroTrustDevicePostureRule has been deprecated in favor of cloudflare:zeroTrustDevicePosture/rule:getRule")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDevicePostureRule:getZeroTrustDevicePostureRule", {
         "accountId": args.accountId,

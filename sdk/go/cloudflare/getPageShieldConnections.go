@@ -27,14 +27,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/pageshieldconnections"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetPageShieldConnections(ctx, &cloudflare.GetPageShieldConnectionsArgs{
+//			_, err := pageshieldconnections.GetPageShieldConnections(ctx, &pageshieldconnections.GetPageShieldConnectionsArgs{
 //				ZoneId:       pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ConnectionId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
@@ -46,6 +46,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getPageShieldConnections:getPageShieldConnections has been deprecated in favor of cloudflare:pageShieldConnections/pageShieldConnections:getPageShieldConnections
 func GetPageShieldConnections(ctx *pulumi.Context, args *GetPageShieldConnectionsArgs, opts ...pulumi.InvokeOption) (*GetPageShieldConnectionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPageShieldConnectionsResult

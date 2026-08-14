@@ -22,6 +22,8 @@ __all__ = [
     'get_address_map_output',
 ]
 
+warnings.warn("""cloudflare:index/getAddressMap:getAddressMap has been deprecated in favor of cloudflare:address/map:getMap""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAddressMapResult:
     """
@@ -191,7 +193,7 @@ def get_address_map(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_address_map = cloudflare.get_address_map(account_id="258def64c72dae45f3e4c8516e2111f2",
+    example_address_map = cloudflare.address.get_map(account_id="258def64c72dae45f3e4c8516e2111f2",
         address_map_id="055817b111884e0227e1be16a0be6ee0")
     ```
 
@@ -199,6 +201,7 @@ def get_address_map(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Identifier of a Cloudflare account.
     :param _builtins.str address_map_id: Identifier of an Address Map.
     """
+    pulumi.log.warn("""get_address_map is deprecated: cloudflare:index/getAddressMap:getAddressMap has been deprecated in favor of cloudflare:address/map:getMap""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['addressMapId'] = address_map_id
@@ -233,7 +236,7 @@ def get_address_map_output(account_id: pulumi.Input[Optional[Optional[_builtins.
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_address_map = cloudflare.get_address_map(account_id="258def64c72dae45f3e4c8516e2111f2",
+    example_address_map = cloudflare.address.get_map(account_id="258def64c72dae45f3e4c8516e2111f2",
         address_map_id="055817b111884e0227e1be16a0be6ee0")
     ```
 
@@ -241,6 +244,7 @@ def get_address_map_output(account_id: pulumi.Input[Optional[Optional[_builtins.
     :param _builtins.str account_id: Identifier of a Cloudflare account.
     :param _builtins.str address_map_id: Identifier of an Address Map.
     """
+    pulumi.log.warn("""get_address_map is deprecated: cloudflare:index/getAddressMap:getAddressMap has been deprecated in favor of cloudflare:address/map:getMap""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['addressMapId'] = address_map_id

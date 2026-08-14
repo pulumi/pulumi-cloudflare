@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustDlpCustomPromptTopic:getZeroTrustDlpCustomPromptTopic has been deprecated in favor of cloudflare:zeroTrustDlpCustomPrompt/topic:getTopic")]
     public static class GetZeroTrustDlpCustomPromptTopic
     {
         /// <summary>

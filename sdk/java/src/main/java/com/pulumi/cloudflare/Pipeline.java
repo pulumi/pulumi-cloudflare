@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.Pipeline;
- * import com.pulumi.cloudflare.PipelineArgs;
+ * import com.pulumi.cloudflare.pipeline.Pipeline;
+ * import com.pulumi.cloudflare.pipeline.PipelineArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -62,7 +62,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/pipeline:Pipeline example &#39;&lt;account_id&gt;/&lt;pipeline_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/pipeline:Pipeline has been deprecated in favor of cloudflare:pipeline/pipeline:Pipeline
+ * 
  */
+@Deprecated /* cloudflare:index/pipeline:Pipeline has been deprecated in favor of cloudflare:pipeline/pipeline:Pipeline */
 @ResourceType(type="cloudflare:index/pipeline:Pipeline")
 public class Pipeline extends com.pulumi.resources.CustomResource {
     /**

@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountTokens = cloudflare.getAccountTokens({
+ * const exampleAccountTokens = cloudflare.account.getTokens({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "desc",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccountTokens:getAccountTokens has been deprecated in favor of cloudflare:account/tokens:getTokens */
 export function getAccountTokens(args?: GetAccountTokensArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountTokensResult> {
+    pulumi.log.warn("getAccountTokens is deprecated: cloudflare:index/getAccountTokens:getAccountTokens has been deprecated in favor of cloudflare:account/tokens:getTokens")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountTokens:getAccountTokens", {
@@ -96,13 +98,15 @@ export interface GetAccountTokensResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountTokens = cloudflare.getAccountTokens({
+ * const exampleAccountTokens = cloudflare.account.getTokens({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "desc",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccountTokens:getAccountTokens has been deprecated in favor of cloudflare:account/tokens:getTokens */
 export function getAccountTokensOutput(args?: GetAccountTokensOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountTokensResult> {
+    pulumi.log.warn("getAccountTokens is deprecated: cloudflare:index/getAccountTokens:getAccountTokens has been deprecated in favor of cloudflare:account/tokens:getTokens")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountTokens:getAccountTokens", {

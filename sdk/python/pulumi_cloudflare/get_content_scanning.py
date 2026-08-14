@@ -21,6 +21,8 @@ __all__ = [
     'get_content_scanning_output',
 ]
 
+warnings.warn("""cloudflare:index/getContentScanning:getContentScanning has been deprecated in favor of cloudflare:contentScanning/contentScanning:getContentScanning""", DeprecationWarning)
+
 @pulumi.output_type
 class GetContentScanningResult:
     """
@@ -89,12 +91,13 @@ def get_content_scanning(zone_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_content_scanning = cloudflare.get_content_scanning(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_content_scanning = cloudflare.contentscanning.get_content_scanning(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str zone_id: Defines an identifier.
     """
+    pulumi.log.warn("""get_content_scanning is deprecated: cloudflare:index/getContentScanning:getContentScanning has been deprecated in favor of cloudflare:contentScanning/contentScanning:getContentScanning""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -120,12 +123,13 @@ def get_content_scanning_output(zone_id: pulumi.Input[Optional[Optional[_builtin
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_content_scanning = cloudflare.get_content_scanning(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_content_scanning = cloudflare.contentscanning.get_content_scanning(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str zone_id: Defines an identifier.
     """
+    pulumi.log.warn("""get_content_scanning is deprecated: cloudflare:index/getContentScanning:getContentScanning has been deprecated in favor of cloudflare:contentScanning/contentScanning:getContentScanning""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

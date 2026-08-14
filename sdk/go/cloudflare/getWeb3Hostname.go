@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/web3"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetWeb3Hostname(ctx, &cloudflare.LookupWeb3HostnameArgs{
+//			_, err := web3.LookupHostname(ctx, &web3.LookupHostnameArgs{
 //				ZoneId:     pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Identifier: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getWeb3Hostname:getWeb3Hostname has been deprecated in favor of cloudflare:web3/hostname:getHostname
 func LookupWeb3Hostname(ctx *pulumi.Context, args *LookupWeb3HostnameArgs, opts ...pulumi.InvokeOption) (*LookupWeb3HostnameResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWeb3HostnameResult

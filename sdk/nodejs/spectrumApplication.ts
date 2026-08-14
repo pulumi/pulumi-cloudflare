@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSpectrumApplication = new cloudflare.SpectrumApplication("example_spectrum_application", {
+ * const exampleSpectrumApplication = new cloudflare.spectrum.Application("example_spectrum_application", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     dns: {
  *         name: "ssh.example.com",
@@ -49,6 +49,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/spectrumApplication:SpectrumApplication example '<zone_id>/<app_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/spectrumApplication:SpectrumApplication has been deprecated in favor of cloudflare:spectrum/application:Application
  */
 export class SpectrumApplication extends pulumi.CustomResource {
     /**
@@ -61,6 +63,7 @@ export class SpectrumApplication extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SpectrumApplicationState, opts?: pulumi.CustomResourceOptions): SpectrumApplication {
+        pulumi.log.warn("SpectrumApplication is deprecated: cloudflare:index/spectrumApplication:SpectrumApplication has been deprecated in favor of cloudflare:spectrum/application:Application")
         return new SpectrumApplication(name, <any>state, { ...opts, id: id });
     }
 
@@ -152,8 +155,11 @@ export class SpectrumApplication extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/spectrumApplication:SpectrumApplication has been deprecated in favor of cloudflare:spectrum/application:Application */
     constructor(name: string, args: SpectrumApplicationArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/spectrumApplication:SpectrumApplication has been deprecated in favor of cloudflare:spectrum/application:Application */
     constructor(name: string, argsOrState?: SpectrumApplicationArgs | SpectrumApplicationState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("SpectrumApplication is deprecated: cloudflare:index/spectrumApplication:SpectrumApplication has been deprecated in favor of cloudflare:spectrum/application:Application")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

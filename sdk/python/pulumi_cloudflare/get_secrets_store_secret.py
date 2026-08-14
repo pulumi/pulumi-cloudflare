@@ -23,6 +23,8 @@ __all__ = [
     'get_secrets_store_secret_output',
 ]
 
+warnings.warn("""cloudflare:index/getSecretsStoreSecret:getSecretsStoreSecret has been deprecated in favor of cloudflare:secretsStore/secret:getSecret""", DeprecationWarning)
+
 @pulumi.output_type
 class GetSecretsStoreSecretResult:
     """
@@ -176,11 +178,12 @@ def get_secrets_store_secret(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_secrets_store_secret = cloudflare.get_secrets_store_secret(account_id="985e105f4ecef8ad9ca31a8372d0c353",
+    example_secrets_store_secret = cloudflare.secretsstore.get_secret(account_id="985e105f4ecef8ad9ca31a8372d0c353",
         store_id="023e105f4ecef8ad9ca31a8372d0c353",
         secret_id="3fd85f74b32742f1bff64a85009dda07")
     ```
     """
+    pulumi.log.warn("""get_secrets_store_secret is deprecated: cloudflare:index/getSecretsStoreSecret:getSecretsStoreSecret has been deprecated in favor of cloudflare:secretsStore/secret:getSecret""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -218,11 +221,12 @@ def get_secrets_store_secret_output(account_id: pulumi.Input[Optional[_builtins.
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_secrets_store_secret = cloudflare.get_secrets_store_secret(account_id="985e105f4ecef8ad9ca31a8372d0c353",
+    example_secrets_store_secret = cloudflare.secretsstore.get_secret(account_id="985e105f4ecef8ad9ca31a8372d0c353",
         store_id="023e105f4ecef8ad9ca31a8372d0c353",
         secret_id="3fd85f74b32742f1bff64a85009dda07")
     ```
     """
+    pulumi.log.warn("""get_secrets_store_secret is deprecated: cloudflare:index/getSecretsStoreSecret:getSecretsStoreSecret has been deprecated in favor of cloudflare:secretsStore/secret:getSecret""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

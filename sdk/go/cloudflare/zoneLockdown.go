@@ -24,17 +24,17 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zone"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZoneLockdown(ctx, "example_zone_lockdown", &cloudflare.ZoneLockdownArgs{
+//			_, err := zone.NewLockdown(ctx, "example_zone_lockdown", &zone.LockdownArgs{
 //				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Configurations: cloudflare.ZoneLockdownConfigurationArray{
-//					&cloudflare.ZoneLockdownConfigurationArgs{
+//				Configurations: zone.LockdownConfigurationArray{
+//					&zone.LockdownConfigurationArgs{
 //						Target: pulumi.String("ip"),
 //						Value:  pulumi.String("198.51.100.4"),
 //					},
@@ -60,6 +60,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example '<zone_id>/<lock_downs_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zoneLockdown:ZoneLockdown has been deprecated in favor of cloudflare:zone/lockdown:Lockdown
 type ZoneLockdown struct {
 	pulumi.CustomResourceState
 

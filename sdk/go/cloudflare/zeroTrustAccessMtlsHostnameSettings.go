@@ -24,16 +24,16 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustaccessmtls"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustAccessMtlsHostnameSettings(ctx, "example_zero_trust_access_mtls_hostname_settings", &cloudflare.ZeroTrustAccessMtlsHostnameSettingsArgs{
-//				Settings: cloudflare.ZeroTrustAccessMtlsHostnameSettingsSettingArray{
-//					&cloudflare.ZeroTrustAccessMtlsHostnameSettingsSettingArgs{
+//			_, err := zerotrustaccessmtls.NewHostnameSettings(ctx, "example_zero_trust_access_mtls_hostname_settings", &zerotrustaccessmtls.HostnameSettingsArgs{
+//				Settings: zerotrustaccessmtls.HostnameSettingsSettingArray{
+//					&zerotrustaccessmtls.HostnameSettingsSettingArgs{
 //						ChinaNetwork:                pulumi.Bool(false),
 //						ClientCertificateForwarding: pulumi.Bool(true),
 //						Hostname:                    pulumi.String("admin.example.com"),
@@ -53,6 +53,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings has been deprecated in favor of cloudflare:zeroTrustAccessMtls/hostnameSettings:HostnameSettings
 type ZeroTrustAccessMtlsHostnameSettings struct {
 	pulumi.CustomResourceState
 

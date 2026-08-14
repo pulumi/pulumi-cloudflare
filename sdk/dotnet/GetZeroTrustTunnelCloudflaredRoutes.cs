@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustTunnelCloudflaredRoutes:getZeroTrustTunnelCloudflaredRoutes has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/routes:getRoutes")]
     public static class GetZeroTrustTunnelCloudflaredRoutes
     {
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustTunnelCloudflaredRoutes = Cloudflare.GetZeroTrustTunnelCloudflaredRoutes.Invoke(new()
+        ///     var exampleZeroTrustTunnelCloudflaredRoutes = Cloudflare.Modules.ZeroTrustTunnelCloudflared.GetRoutes.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         ExistedAt = "2019-10-12T07%3A20%3A50.52Z",
@@ -69,7 +70,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustTunnelCloudflaredRoutes = Cloudflare.GetZeroTrustTunnelCloudflaredRoutes.Invoke(new()
+        ///     var exampleZeroTrustTunnelCloudflaredRoutes = Cloudflare.Modules.ZeroTrustTunnelCloudflared.GetRoutes.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         ExistedAt = "2019-10-12T07%3A20%3A50.52Z",
@@ -109,7 +110,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustTunnelCloudflaredRoutes = Cloudflare.GetZeroTrustTunnelCloudflaredRoutes.Invoke(new()
+        ///     var exampleZeroTrustTunnelCloudflaredRoutes = Cloudflare.Modules.ZeroTrustTunnelCloudflared.GetRoutes.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         ExistedAt = "2019-10-12T07%3A20%3A50.52Z",

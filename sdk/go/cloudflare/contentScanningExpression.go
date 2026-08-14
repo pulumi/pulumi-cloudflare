@@ -24,17 +24,17 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/contentscanning"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewContentScanningExpression(ctx, "example_content_scanning_expression", &cloudflare.ContentScanningExpressionArgs{
+//			_, err := contentscanning.NewExpression(ctx, "example_content_scanning_expression", &contentscanning.ExpressionArgs{
 //				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Bodies: cloudflare.ContentScanningExpressionBodyArray{
-//					&cloudflare.ContentScanningExpressionBodyArgs{
+//				Bodies: contentscanning.ExpressionBodyArray{
+//					&contentscanning.ExpressionBodyArgs{
 //						Payload: pulumi.String("lookup_json_string(http.request.body.raw, \"file\")"),
 //					},
 //				},
@@ -51,6 +51,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/contentScanningExpression:ContentScanningExpression has been deprecated in favor of cloudflare:contentScanning/expression:Expression
 type ContentScanningExpression struct {
 	pulumi.CustomResourceState
 

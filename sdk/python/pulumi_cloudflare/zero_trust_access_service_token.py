@@ -269,8 +269,13 @@ class _ZeroTrustAccessServiceTokenState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken has been deprecated in favor of cloudflare:zeroTrustAccessService/token:Token""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken")
 class ZeroTrustAccessServiceToken(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken has been deprecated in favor of cloudflare:zeroTrustAccessService/token:Token""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -294,7 +299,7 @@ class ZeroTrustAccessServiceToken(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_service_token = cloudflare.ZeroTrustAccessServiceToken("example_zero_trust_access_service_token",
+        example_zero_trust_access_service_token = cloudflare.zerotrustaccessservice.Token("example_zero_trust_access_service_token",
             name="CI/CD token",
             zone_id="zone_id",
             client_secret_version=float(0),
@@ -336,7 +341,7 @@ class ZeroTrustAccessServiceToken(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_service_token = cloudflare.ZeroTrustAccessServiceToken("example_zero_trust_access_service_token",
+        example_zero_trust_access_service_token = cloudflare.zerotrustaccessservice.Token("example_zero_trust_access_service_token",
             name="CI/CD token",
             zone_id="zone_id",
             client_secret_version=float(0),
@@ -373,6 +378,7 @@ class ZeroTrustAccessServiceToken(pulumi.CustomResource):
                  previous_client_secret_expires_at: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustAccessServiceToken is deprecated: cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken has been deprecated in favor of cloudflare:zeroTrustAccessService/token:Token""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

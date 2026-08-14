@@ -19,18 +19,18 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdevicedeploymentgroups"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDeviceDeploymentGroups(ctx, "example_zero_trust_device_deployment_groups", &cloudflare.ZeroTrustDeviceDeploymentGroupsArgs{
+//			_, err := zerotrustdevicedeploymentgroups.NewZeroTrustDeviceDeploymentGroups(ctx, "example_zero_trust_device_deployment_groups", &zerotrustdevicedeploymentgroups.ZeroTrustDeviceDeploymentGroupsArgs{
 //				AccountId: pulumi.String("account_id"),
 //				Name:      pulumi.String("Engineering Ring 0"),
-//				VersionConfigs: cloudflare.ZeroTrustDeviceDeploymentGroupsVersionConfigArray{
-//					&cloudflare.ZeroTrustDeviceDeploymentGroupsVersionConfigArgs{
+//				VersionConfigs: zerotrustdevicedeploymentgroups.ZeroTrustDeviceDeploymentGroupsVersionConfigArray{
+//					&zerotrustdevicedeploymentgroups.ZeroTrustDeviceDeploymentGroupsVersionConfigArgs{
 //						TargetEnvironment: pulumi.String("windows"),
 //						Version:           pulumi.String("2026.6.234.0"),
 //					},
@@ -53,6 +53,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups example '<account_id>/<group_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups
 type ZeroTrustDeviceDeploymentGroups struct {
 	pulumi.CustomResourceState
 

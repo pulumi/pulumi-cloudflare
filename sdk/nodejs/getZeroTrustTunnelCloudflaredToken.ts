@@ -17,13 +17,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustTunnelCloudflaredToken = cloudflare.getZeroTrustTunnelCloudflaredToken({
+ * const exampleZeroTrustTunnelCloudflaredToken = cloudflare.zerotrusttunnelcloudflared.getToken({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     tunnelId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustTunnelCloudflaredToken:getZeroTrustTunnelCloudflaredToken has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/token:getToken */
 export function getZeroTrustTunnelCloudflaredToken(args: GetZeroTrustTunnelCloudflaredTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustTunnelCloudflaredTokenResult> {
+    pulumi.log.warn("getZeroTrustTunnelCloudflaredToken is deprecated: cloudflare:index/getZeroTrustTunnelCloudflaredToken:getZeroTrustTunnelCloudflaredToken has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/token:getToken")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustTunnelCloudflaredToken:getZeroTrustTunnelCloudflaredToken", {
         "accountId": args.accountId,
@@ -75,13 +77,15 @@ export interface GetZeroTrustTunnelCloudflaredTokenResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustTunnelCloudflaredToken = cloudflare.getZeroTrustTunnelCloudflaredToken({
+ * const exampleZeroTrustTunnelCloudflaredToken = cloudflare.zerotrusttunnelcloudflared.getToken({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     tunnelId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustTunnelCloudflaredToken:getZeroTrustTunnelCloudflaredToken has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/token:getToken */
 export function getZeroTrustTunnelCloudflaredTokenOutput(args: GetZeroTrustTunnelCloudflaredTokenOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustTunnelCloudflaredTokenResult> {
+    pulumi.log.warn("getZeroTrustTunnelCloudflaredToken is deprecated: cloudflare:index/getZeroTrustTunnelCloudflaredToken:getZeroTrustTunnelCloudflaredToken has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/token:getToken")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustTunnelCloudflaredToken:getZeroTrustTunnelCloudflaredToken", {
         "accountId": args.accountId,

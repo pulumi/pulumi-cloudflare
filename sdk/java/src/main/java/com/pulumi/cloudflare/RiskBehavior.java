@@ -7,13 +7,11 @@ import com.pulumi.cloudflare.RiskBehaviorArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.RiskBehaviorState;
 import com.pulumi.cloudflare.outputs.RiskBehaviorBehaviors;
-import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
-import java.util.List;
 import java.util.Map;
 import javax.annotation.Nullable;
 
@@ -32,9 +30,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustRiskBehavior;
- * import com.pulumi.cloudflare.ZeroTrustRiskBehaviorArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustRiskBehaviorBehaviorsArgs;
+ * import com.pulumi.cloudflare.zeroTrust.RiskBehavior;
+ * import com.pulumi.cloudflare.zeroTrust.RiskBehaviorArgs;
+ * import com.pulumi.cloudflare.zeroTrust.inputs.RiskBehaviorBehaviorsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -48,9 +46,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustRiskBehavior = new ZeroTrustRiskBehavior("exampleZeroTrustRiskBehavior", ZeroTrustRiskBehaviorArgs.builder()
+ *         var exampleZeroTrustRiskBehavior = new RiskBehavior("exampleZeroTrustRiskBehavior", RiskBehaviorArgs.builder()
  *             .accountId("account_id")
- *             .behaviors(Map.of("foo", ZeroTrustRiskBehaviorBehaviorsArgs.builder()
+ *             .behaviors(Map.of("foo", RiskBehaviorBehaviorsArgs.builder()
  *                 .enabled(true)
  *                 .riskLevel("low")
  *                 .build()))
@@ -124,9 +122,6 @@ public class RiskBehavior extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .aliases(List.of(
-                Output.of(Alias.builder().type("cloudflare:index/riskBehavior:RiskBehavior").build())
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

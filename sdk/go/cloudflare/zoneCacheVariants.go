@@ -26,16 +26,16 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zonecache"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZoneCacheVariants(ctx, "example_zone_cache_variants", &cloudflare.ZoneCacheVariantsArgs{
+//			_, err := zonecache.NewVariants(ctx, "example_zone_cache_variants", &zonecache.VariantsArgs{
 //				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Value: &cloudflare.ZoneCacheVariantsValueArgs{
+//				Value: &zonecache.VariantsValueArgs{
 //					Avifs: pulumi.StringArray{
 //						pulumi.String("image/webp"),
 //						pulumi.String("image/jpeg"),
@@ -96,6 +96,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zoneCacheVariants:ZoneCacheVariants example '<zone_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zoneCacheVariants:ZoneCacheVariants has been deprecated in favor of cloudflare:zoneCache/variants:Variants
 type ZoneCacheVariants struct {
 	pulumi.CustomResourceState
 

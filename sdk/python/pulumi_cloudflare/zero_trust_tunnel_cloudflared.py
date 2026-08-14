@@ -338,8 +338,13 @@ class _ZeroTrustTunnelCloudflaredState:
         pulumi.set(self, "tunnel_secret", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared")
 class ZeroTrustTunnelCloudflared(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -365,7 +370,7 @@ class ZeroTrustTunnelCloudflared(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_tunnel_cloudflared = cloudflare.ZeroTrustTunnelCloudflared("example_zero_trust_tunnel_cloudflared",
+        example_zero_trust_tunnel_cloudflared = cloudflare.zerotrusttunnelcloudflared.ZeroTrustTunnelCloudflared("example_zero_trust_tunnel_cloudflared",
             account_id="699d98642c564d2e855e9661899b7252",
             name="blog",
             config_src="cloudflare",
@@ -409,7 +414,7 @@ class ZeroTrustTunnelCloudflared(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_tunnel_cloudflared = cloudflare.ZeroTrustTunnelCloudflared("example_zero_trust_tunnel_cloudflared",
+        example_zero_trust_tunnel_cloudflared = cloudflare.zerotrusttunnelcloudflared.ZeroTrustTunnelCloudflared("example_zero_trust_tunnel_cloudflared",
             account_id="699d98642c564d2e855e9661899b7252",
             name="blog",
             config_src="cloudflare",
@@ -443,6 +448,7 @@ class ZeroTrustTunnelCloudflared(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  tunnel_secret: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustTunnelCloudflared is deprecated: cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdlppredefined"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDlpPredefinedProfile(ctx, "example_zero_trust_dlp_predefined_profile", &cloudflare.ZeroTrustDlpPredefinedProfileArgs{
+//			_, err := zerotrustdlppredefined.NewProfile(ctx, "example_zero_trust_dlp_predefined_profile", &zerotrustdlppredefined.ProfileArgs{
 //				ProfileId:  pulumi.String("e91a2360-da51-4fdf-9711-bcdecd462614"),
 //				AccountId:  pulumi.String("account_id"),
 //				OcrEnabled: pulumi.Bool(true),
@@ -98,12 +98,6 @@ func NewDlpPredefinedProfile(ctx *pulumi.Context,
 	if args.ProfileId == nil {
 		return nil, errors.New("invalid value for required argument 'ProfileId'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("cloudflare:index/dlpPredefinedProfile:DlpPredefinedProfile"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DlpPredefinedProfile
 	err := ctx.RegisterResource("cloudflare:index/dlpPredefinedProfile:DlpPredefinedProfile", name, args, &resource, opts...)

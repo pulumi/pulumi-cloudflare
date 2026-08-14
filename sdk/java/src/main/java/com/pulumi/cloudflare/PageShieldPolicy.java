@@ -30,7 +30,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/pageShieldPolicy:PageShieldPolicy example &#39;&lt;zone_id&gt;/&lt;policy_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/pageShieldPolicy:PageShieldPolicy has been deprecated in favor of cloudflare:pageShield/policy:Policy
+ * 
  */
+@Deprecated /* cloudflare:index/pageShieldPolicy:PageShieldPolicy has been deprecated in favor of cloudflare:pageShield/policy:Policy */
 @ResourceType(type="cloudflare:index/pageShieldPolicy:PageShieldPolicy")
 public class PageShieldPolicy extends com.pulumi.resources.CustomResource {
     /**

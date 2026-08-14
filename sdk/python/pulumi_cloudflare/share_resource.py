@@ -290,8 +290,13 @@ class _ShareResourceState:
         pulumi.set(self, "status", value)
 
 
+warnings.warn("""cloudflare:index/shareResource:ShareResource has been deprecated in favor of cloudflare:share/resource:Resource""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/shareResource:ShareResource")
 class ShareResource(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/shareResource:ShareResource has been deprecated in favor of cloudflare:share/resource:Resource""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -310,7 +315,7 @@ class ShareResource(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_share_resource = cloudflare.ShareResource("example_share_resource",
+        example_share_resource = cloudflare.share.Resource("example_share_resource",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             share_id="3fd85f74b32742f1bff64a85009dda07",
             meta={},
@@ -349,7 +354,7 @@ class ShareResource(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_share_resource = cloudflare.ShareResource("example_share_resource",
+        example_share_resource = cloudflare.share.Resource("example_share_resource",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             share_id="3fd85f74b32742f1bff64a85009dda07",
             meta={},
@@ -387,6 +392,7 @@ class ShareResource(pulumi.CustomResource):
                  resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  share_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ShareResource is deprecated: cloudflare:index/shareResource:ShareResource has been deprecated in favor of cloudflare:share/resource:Resource""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

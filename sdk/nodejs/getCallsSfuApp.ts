@@ -16,13 +16,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCallsSfuApp = cloudflare.getCallsSfuApp({
+ * const exampleCallsSfuApp = cloudflare.callssfu.getApp({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     appId: "2a95132c15732412d22c1476fa83f27a",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCallsSfuApp:getCallsSfuApp has been deprecated in favor of cloudflare:callsSfu/app:getApp */
 export function getCallsSfuApp(args: GetCallsSfuAppArgs, opts?: pulumi.InvokeOptions): Promise<GetCallsSfuAppResult> {
+    pulumi.log.warn("getCallsSfuApp is deprecated: cloudflare:index/getCallsSfuApp:getCallsSfuApp has been deprecated in favor of cloudflare:callsSfu/app:getApp")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCallsSfuApp:getCallsSfuApp", {
         "accountId": args.accountId,
@@ -85,13 +87,15 @@ export interface GetCallsSfuAppResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCallsSfuApp = cloudflare.getCallsSfuApp({
+ * const exampleCallsSfuApp = cloudflare.callssfu.getApp({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     appId: "2a95132c15732412d22c1476fa83f27a",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCallsSfuApp:getCallsSfuApp has been deprecated in favor of cloudflare:callsSfu/app:getApp */
 export function getCallsSfuAppOutput(args: GetCallsSfuAppOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCallsSfuAppResult> {
+    pulumi.log.warn("getCallsSfuApp is deprecated: cloudflare:index/getCallsSfuApp:getCallsSfuApp has been deprecated in favor of cloudflare:callsSfu/app:getApp")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCallsSfuApp:getCallsSfuApp", {
         "accountId": args.accountId,

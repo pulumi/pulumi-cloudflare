@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getCustomHostnames:getCustomHostnames has been deprecated in favor of cloudflare:custom/hostnames:getHostnames")]
     public static class GetCustomHostnames
     {
         /// <summary>
@@ -27,14 +28,14 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomHostnames = Cloudflare.GetCustomHostnames.Invoke(new()
+        ///     var exampleCustomHostnames = Cloudflare.Modules.Custom.GetHostnames.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Id = "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
         ///         CertificateAuthority = "google",
         ///         CustomOriginServer = "origin2.example.com",
         ///         Direction = "desc",
-        ///         Hostname = new Cloudflare.Inputs.GetCustomHostnamesHostnameInputArgs
+        ///         Hostname = new Cloudflare.Modules.Custom.Inputs.GetHostnamesHostnameInputArgs
         ///         {
         ///             Contain = "example.com",
         ///             Exact = "app.example.com",
@@ -68,14 +69,14 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomHostnames = Cloudflare.GetCustomHostnames.Invoke(new()
+        ///     var exampleCustomHostnames = Cloudflare.Modules.Custom.GetHostnames.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Id = "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
         ///         CertificateAuthority = "google",
         ///         CustomOriginServer = "origin2.example.com",
         ///         Direction = "desc",
-        ///         Hostname = new Cloudflare.Inputs.GetCustomHostnamesHostnameInputArgs
+        ///         Hostname = new Cloudflare.Modules.Custom.Inputs.GetHostnamesHostnameInputArgs
         ///         {
         ///             Contain = "example.com",
         ///             Exact = "app.example.com",
@@ -109,14 +110,14 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomHostnames = Cloudflare.GetCustomHostnames.Invoke(new()
+        ///     var exampleCustomHostnames = Cloudflare.Modules.Custom.GetHostnames.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Id = "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
         ///         CertificateAuthority = "google",
         ///         CustomOriginServer = "origin2.example.com",
         ///         Direction = "desc",
-        ///         Hostname = new Cloudflare.Inputs.GetCustomHostnamesHostnameInputArgs
+        ///         Hostname = new Cloudflare.Modules.Custom.Inputs.GetHostnamesHostnameInputArgs
         ///         {
         ///             Contain = "example.com",
         ///             Exact = "app.example.com",

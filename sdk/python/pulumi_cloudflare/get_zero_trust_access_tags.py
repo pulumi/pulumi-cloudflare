@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_access_tags_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustAccessTags:getZeroTrustAccessTags has been deprecated in favor of cloudflare:zeroTrustAccess/tags:getTags""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustAccessTagsResult:
     """
@@ -84,13 +86,14 @@ def get_zero_trust_access_tags(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_tags = cloudflare.get_zero_trust_access_tags(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_zero_trust_access_tags = cloudflare.zerotrustaccess.get_tags(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_access_tags is deprecated: cloudflare:index/getZeroTrustAccessTags:getZeroTrustAccessTags has been deprecated in favor of cloudflare:zeroTrustAccess/tags:getTags""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -111,13 +114,14 @@ def get_zero_trust_access_tags_output(account_id: pulumi.Input[Optional[Optional
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_tags = cloudflare.get_zero_trust_access_tags(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_zero_trust_access_tags = cloudflare.zerotrustaccess.get_tags(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_access_tags is deprecated: cloudflare:index/getZeroTrustAccessTags:getZeroTrustAccessTags has been deprecated in favor of cloudflare:zeroTrustAccess/tags:getTags""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

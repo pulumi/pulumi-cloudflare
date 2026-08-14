@@ -25,14 +25,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/schemavalidationoperationsettings"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetSchemaValidationOperationSettingsList(ctx, &cloudflare.LookupSchemaValidationOperationSettingsListArgs{
+//			_, err := schemavalidationoperationsettings.GetList(ctx, &schemavalidationoperationsettings.GetListArgs{
 //				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
@@ -43,6 +43,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getSchemaValidationOperationSettingsList:getSchemaValidationOperationSettingsList has been deprecated in favor of cloudflare:schemaValidationOperationSettings/list:getList
 func LookupSchemaValidationOperationSettingsList(ctx *pulumi.Context, args *LookupSchemaValidationOperationSettingsListArgs, opts ...pulumi.InvokeOption) (*LookupSchemaValidationOperationSettingsListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSchemaValidationOperationSettingsListResult

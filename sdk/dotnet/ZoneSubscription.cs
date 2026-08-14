@@ -25,11 +25,11 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZoneSubscription = new Cloudflare.ZoneSubscription("example_zone_subscription", new()
+    ///     var exampleZoneSubscription = new Cloudflare.Modules.Zone.ZoneSubscription("example_zone_subscription", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Frequency = "monthly",
-    ///         RatePlan = new Cloudflare.Inputs.ZoneSubscriptionRatePlanArgs
+    ///         RatePlan = new Cloudflare.Modules.Zone.Inputs.SubscriptionRatePlanArgs
     ///         {
     ///             Id = "free",
     ///             Currency = "USD",
@@ -53,6 +53,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zoneSubscription:ZoneSubscription example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zoneSubscription:ZoneSubscription has been deprecated in favor of cloudflare:zone/subscription:Subscription")]
     [CloudflareResourceType("cloudflare:index/zoneSubscription:ZoneSubscription")]
     public partial class ZoneSubscription : global::Pulumi.CustomResource
     {

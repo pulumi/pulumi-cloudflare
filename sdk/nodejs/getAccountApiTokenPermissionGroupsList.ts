@@ -18,14 +18,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountApiTokenPermissionGroupsList = cloudflare.getAccountApiTokenPermissionGroupsList({
+ * const exampleAccountApiTokenPermissionGroupsList = cloudflare.accountapitokenpermissiongroups.getList({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "Account%20Settings%20Write",
  *     scope: "com.cloudflare.api.account.zone",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccountApiTokenPermissionGroupsList:getAccountApiTokenPermissionGroupsList has been deprecated in favor of cloudflare:accountApiTokenPermissionGroups/list:getList */
 export function getAccountApiTokenPermissionGroupsList(args?: GetAccountApiTokenPermissionGroupsListArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountApiTokenPermissionGroupsListResult> {
+    pulumi.log.warn("getAccountApiTokenPermissionGroupsList is deprecated: cloudflare:index/getAccountApiTokenPermissionGroupsList:getAccountApiTokenPermissionGroupsList has been deprecated in favor of cloudflare:accountApiTokenPermissionGroups/list:getList")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountApiTokenPermissionGroupsList:getAccountApiTokenPermissionGroupsList", {
@@ -99,14 +101,16 @@ export interface GetAccountApiTokenPermissionGroupsListResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountApiTokenPermissionGroupsList = cloudflare.getAccountApiTokenPermissionGroupsList({
+ * const exampleAccountApiTokenPermissionGroupsList = cloudflare.accountapitokenpermissiongroups.getList({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "Account%20Settings%20Write",
  *     scope: "com.cloudflare.api.account.zone",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccountApiTokenPermissionGroupsList:getAccountApiTokenPermissionGroupsList has been deprecated in favor of cloudflare:accountApiTokenPermissionGroups/list:getList */
 export function getAccountApiTokenPermissionGroupsListOutput(args?: GetAccountApiTokenPermissionGroupsListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountApiTokenPermissionGroupsListResult> {
+    pulumi.log.warn("getAccountApiTokenPermissionGroupsList is deprecated: cloudflare:index/getAccountApiTokenPermissionGroupsList:getAccountApiTokenPermissionGroupsList has been deprecated in favor of cloudflare:accountApiTokenPermissionGroups/list:getList")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountApiTokenPermissionGroupsList:getAccountApiTokenPermissionGroupsList", {

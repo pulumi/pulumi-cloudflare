@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicWanGreTunnel = new cloudflare.MagicWanGreTunnel("example_magic_wan_gre_tunnel", {
+ * const exampleMagicWanGreTunnel = new cloudflare.magicwan.GreTunnel("example_magic_wan_gre_tunnel", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     cloudflareGreEndpoint: "203.0.113.1",
  *     customerGreEndpoint: "203.0.113.1",
@@ -46,6 +46,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel example '<account_id>/<gre_tunnel_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel has been deprecated in favor of cloudflare:magicWan/greTunnel:GreTunnel
  */
 export class MagicWanGreTunnel extends pulumi.CustomResource {
     /**
@@ -58,6 +60,7 @@ export class MagicWanGreTunnel extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: MagicWanGreTunnelState, opts?: pulumi.CustomResourceOptions): MagicWanGreTunnel {
+        pulumi.log.warn("MagicWanGreTunnel is deprecated: cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel has been deprecated in favor of cloudflare:magicWan/greTunnel:GreTunnel")
         return new MagicWanGreTunnel(name, <any>state, { ...opts, id: id });
     }
 
@@ -134,8 +137,11 @@ export class MagicWanGreTunnel extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel has been deprecated in favor of cloudflare:magicWan/greTunnel:GreTunnel */
     constructor(name: string, args: MagicWanGreTunnelArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel has been deprecated in favor of cloudflare:magicWan/greTunnel:GreTunnel */
     constructor(name: string, argsOrState?: MagicWanGreTunnelArgs | MagicWanGreTunnelState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("MagicWanGreTunnel is deprecated: cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel has been deprecated in favor of cloudflare:magicWan/greTunnel:GreTunnel")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

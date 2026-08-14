@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustgateway"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustGatewayPacfile(ctx, "example_zero_trust_gateway_pacfile", &cloudflare.ZeroTrustGatewayPacfileArgs{
+//			_, err := zerotrustgateway.NewPacfile(ctx, "example_zero_trust_gateway_pacfile", &zerotrustgateway.PacfileArgs{
 //				AccountId:   pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				Contents:    pulumi.String("function FindProxyForURL(url, host) { return \"DIRECT\"; }"),
 //				Name:        pulumi.String("Devops team"),
@@ -52,6 +52,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile example '<account_id>/<pacfile_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile has been deprecated in favor of cloudflare:zeroTrustGateway/pacfile:Pacfile
 type ZeroTrustGatewayPacfile struct {
 	pulumi.CustomResourceState
 

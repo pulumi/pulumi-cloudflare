@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustList = new Cloudflare.ZeroTrustList("example_zero_trust_list", new()
+    ///     var exampleZeroTrustList = new Cloudflare.Modules.ZeroTrust.ZeroTrustList("example_zero_trust_list", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Name = "Admin Serial Numbers",
@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
     ///         Description = "The serial numbers for administrators",
     ///         Items = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustListItemArgs
+    ///             new Cloudflare.Modules.ZeroTrust.Inputs.ListItemArgs
     ///             {
     ///                 Description = "Austin office IP",
     ///                 Value = "8GE8721REF",
@@ -112,10 +112,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/teamsList:TeamsList" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

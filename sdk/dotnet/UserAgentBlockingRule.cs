@@ -25,10 +25,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleUserAgentBlockingRule = new Cloudflare.UserAgentBlockingRule("example_user_agent_blocking_rule", new()
+    ///     var exampleUserAgentBlockingRule = new Cloudflare.Modules.UserAgentBlocking.UserAgentBlockingRule("example_user_agent_blocking_rule", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         Configuration = new Cloudflare.Inputs.UserAgentBlockingRuleConfigurationArgs
+    ///         Configuration = new Cloudflare.Modules.UserAgentBlocking.Inputs.RuleConfigurationArgs
     ///         {
     ///             Target = "ua",
     ///             Value = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)",
@@ -47,6 +47,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule example '&lt;zone_id&gt;/&lt;ua_rule_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule has been deprecated in favor of cloudflare:userAgentBlocking/rule:Rule")]
     [CloudflareResourceType("cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule")]
     public partial class UserAgentBlockingRule : global::Pulumi.CustomResource
     {

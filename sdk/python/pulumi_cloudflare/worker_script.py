@@ -1090,7 +1090,7 @@ class WorkerScript(pulumi.CustomResource):
         - `Workers Scripts Write`
         - `Workers Tail Read`
 
-        > For more direct control over Workers resources, we recommend the beta `Worker`, `WorkerVersion`, and `WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
+        > For more direct control over Workers resources, we recommend the beta `worker.Worker`, `worker.Version`, and `workers.Deployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
 
         ## Import
 
@@ -1144,7 +1144,7 @@ class WorkerScript(pulumi.CustomResource):
         - `Workers Scripts Write`
         - `Workers Tail Read`
 
-        > For more direct control over Workers resources, we recommend the beta `Worker`, `WorkerVersion`, and `WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
+        > For more direct control over Workers resources, we recommend the beta `worker.Worker`, `worker.Version`, and `workers.Deployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
 
         ## Import
 
@@ -1244,8 +1244,6 @@ class WorkerScript(pulumi.CustomResource):
             __props__.__dict__["placement_mode"] = None
             __props__.__dict__["placement_status"] = None
             __props__.__dict__["startup_time_ms"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/workerScript:WorkerScript")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(WorkerScript, __self__).__init__(
             'cloudflare:index/workerScript:WorkerScript',
             resource_name,

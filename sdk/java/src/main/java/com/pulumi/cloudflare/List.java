@@ -23,9 +23,9 @@ import javax.annotation.Nullable;
  * - `Account Filter Lists Read`
  * 
  * &gt; The `cloudflare.List` resource supports defining list items in line with the
- *   `items` attribute. The provider also has a `cloudflare.ListItem` resource for
+ *   `items` attribute. The provider also has a `cloudflare.list.Item` resource for
  *   managing items as independent resources. Using both in line `items` definitions
- *   _and_ `cloudflare.getListItems` on the same list is not supported and will cause
+ *   _and_ `cloudflare.list.getItems` on the same list is not supported and will cause
  *   Terraform into an irreconcilable state.
  * 
  * ## Example Usage
@@ -127,14 +127,14 @@ public class List extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+     * The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.list.Item`.
      * 
      */
     @Export(name="items", refs={java.util.List.class,ListItem.class}, tree="[0,1]")
     private Output</* @Nullable */ java.util.List<ListItem>> items;
 
     /**
-     * @return The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+     * @return The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.list.Item`.
      * 
      */
     public Output<Optional<java.util.List<ListItem>>> items() {

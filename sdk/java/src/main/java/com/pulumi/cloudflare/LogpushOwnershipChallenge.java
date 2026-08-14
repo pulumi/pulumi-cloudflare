@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.LogpushOwnershipChallenge;
- * import com.pulumi.cloudflare.LogpushOwnershipChallengeArgs;
+ * import com.pulumi.cloudflare.logpush.OwnershipChallenge;
+ * import com.pulumi.cloudflare.logpush.OwnershipChallengeArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleLogpushOwnershipChallenge = new LogpushOwnershipChallenge("exampleLogpushOwnershipChallenge", LogpushOwnershipChallengeArgs.builder()
+ *         var exampleLogpushOwnershipChallenge = new OwnershipChallenge("exampleLogpushOwnershipChallenge", OwnershipChallengeArgs.builder()
  *             .destinationConf("s3://mybucket/logs?region=us-west-2")
  *             .zoneId("zone_id")
  *             .build());
@@ -59,7 +59,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge has been deprecated in favor of cloudflare:logpush/ownershipChallenge:OwnershipChallenge
+ * 
  */
+@Deprecated /* cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge has been deprecated in favor of cloudflare:logpush/ownershipChallenge:OwnershipChallenge */
 @ResourceType(type="cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge")
 public class LogpushOwnershipChallenge extends com.pulumi.resources.CustomResource {
     /**

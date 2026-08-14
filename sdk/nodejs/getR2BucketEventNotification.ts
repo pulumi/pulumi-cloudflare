@@ -18,14 +18,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleR2BucketEventNotification = cloudflare.getR2BucketEventNotification({
+ * const exampleR2BucketEventNotification = cloudflare.r2bucket.getEventNotification({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
  *     queueId: "queue_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getR2BucketEventNotification:getR2BucketEventNotification has been deprecated in favor of cloudflare:r2Bucket/eventNotification:getEventNotification */
 export function getR2BucketEventNotification(args: GetR2BucketEventNotificationArgs, opts?: pulumi.InvokeOptions): Promise<GetR2BucketEventNotificationResult> {
+    pulumi.log.warn("getR2BucketEventNotification is deprecated: cloudflare:index/getR2BucketEventNotification:getR2BucketEventNotification has been deprecated in favor of cloudflare:r2Bucket/eventNotification:getEventNotification")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getR2BucketEventNotification:getR2BucketEventNotification", {
         "accountId": args.accountId,
@@ -86,14 +88,16 @@ export interface GetR2BucketEventNotificationResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleR2BucketEventNotification = cloudflare.getR2BucketEventNotification({
+ * const exampleR2BucketEventNotification = cloudflare.r2bucket.getEventNotification({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
  *     queueId: "queue_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getR2BucketEventNotification:getR2BucketEventNotification has been deprecated in favor of cloudflare:r2Bucket/eventNotification:getEventNotification */
 export function getR2BucketEventNotificationOutput(args: GetR2BucketEventNotificationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetR2BucketEventNotificationResult> {
+    pulumi.log.warn("getR2BucketEventNotification is deprecated: cloudflare:index/getR2BucketEventNotification:getR2BucketEventNotification has been deprecated in favor of cloudflare:r2Bucket/eventNotification:getEventNotification")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getR2BucketEventNotification:getR2BucketEventNotification", {
         "accountId": args.accountId,

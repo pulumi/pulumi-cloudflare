@@ -16,13 +16,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleStreamWatermark = cloudflare.getStreamWatermark({
+ * const exampleStreamWatermark = cloudflare.stream.getWatermark({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     identifier: "ea95132c15732412d22c1476fa83f27a",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getStreamWatermark:getStreamWatermark has been deprecated in favor of cloudflare:stream/watermark:getWatermark */
 export function getStreamWatermark(args: GetStreamWatermarkArgs, opts?: pulumi.InvokeOptions): Promise<GetStreamWatermarkResult> {
+    pulumi.log.warn("getStreamWatermark is deprecated: cloudflare:index/getStreamWatermark:getStreamWatermark has been deprecated in favor of cloudflare:stream/watermark:getWatermark")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getStreamWatermark:getStreamWatermark", {
         "accountId": args.accountId,
@@ -113,13 +115,15 @@ export interface GetStreamWatermarkResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleStreamWatermark = cloudflare.getStreamWatermark({
+ * const exampleStreamWatermark = cloudflare.stream.getWatermark({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     identifier: "ea95132c15732412d22c1476fa83f27a",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getStreamWatermark:getStreamWatermark has been deprecated in favor of cloudflare:stream/watermark:getWatermark */
 export function getStreamWatermarkOutput(args: GetStreamWatermarkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStreamWatermarkResult> {
+    pulumi.log.warn("getStreamWatermark is deprecated: cloudflare:index/getStreamWatermark:getStreamWatermark has been deprecated in favor of cloudflare:stream/watermark:getWatermark")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getStreamWatermark:getStreamWatermark", {
         "accountId": args.accountId,

@@ -13,12 +13,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDeviceManagedNetworksList = cloudflare.getZeroTrustDeviceManagedNetworksList({
+ * const exampleZeroTrustDeviceManagedNetworksList = cloudflare.zerotrustdevicemanagednetworks.getList({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDeviceManagedNetworksList:getZeroTrustDeviceManagedNetworksList has been deprecated in favor of cloudflare:zeroTrustDeviceManagedNetworks/list:getList */
 export function getZeroTrustDeviceManagedNetworksList(args?: GetZeroTrustDeviceManagedNetworksListArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDeviceManagedNetworksListResult> {
+    pulumi.log.warn("getZeroTrustDeviceManagedNetworksList is deprecated: cloudflare:index/getZeroTrustDeviceManagedNetworksList:getZeroTrustDeviceManagedNetworksList has been deprecated in favor of cloudflare:zeroTrustDeviceManagedNetworks/list:getList")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDeviceManagedNetworksList:getZeroTrustDeviceManagedNetworksList", {
@@ -59,12 +61,14 @@ export interface GetZeroTrustDeviceManagedNetworksListResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDeviceManagedNetworksList = cloudflare.getZeroTrustDeviceManagedNetworksList({
+ * const exampleZeroTrustDeviceManagedNetworksList = cloudflare.zerotrustdevicemanagednetworks.getList({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDeviceManagedNetworksList:getZeroTrustDeviceManagedNetworksList has been deprecated in favor of cloudflare:zeroTrustDeviceManagedNetworks/list:getList */
 export function getZeroTrustDeviceManagedNetworksListOutput(args?: GetZeroTrustDeviceManagedNetworksListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDeviceManagedNetworksListResult> {
+    pulumi.log.warn("getZeroTrustDeviceManagedNetworksList is deprecated: cloudflare:index/getZeroTrustDeviceManagedNetworksList:getZeroTrustDeviceManagedNetworksList has been deprecated in favor of cloudflare:zeroTrustDeviceManagedNetworks/list:getList")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDeviceManagedNetworksList:getZeroTrustDeviceManagedNetworksList", {

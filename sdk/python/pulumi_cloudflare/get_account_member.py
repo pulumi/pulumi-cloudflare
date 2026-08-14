@@ -23,6 +23,8 @@ __all__ = [
     'get_account_member_output',
 ]
 
+warnings.warn("""cloudflare:index/getAccountMember:getAccountMember has been deprecated in favor of cloudflare:account/member:getMember""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAccountMemberResult:
     """
@@ -162,7 +164,7 @@ def get_account_member(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_member = cloudflare.get_account_member(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_account_member = cloudflare.account.get_member(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         member_id="4536bcfad5faccb111b47003c79917fa")
     ```
 
@@ -170,6 +172,7 @@ def get_account_member(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.str member_id: Membership identifier tag.
     """
+    pulumi.log.warn("""get_account_member is deprecated: cloudflare:index/getAccountMember:getAccountMember has been deprecated in favor of cloudflare:account/member:getMember""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -204,7 +207,7 @@ def get_account_member_output(account_id: pulumi.Input[Optional[Optional[_builti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_member = cloudflare.get_account_member(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_account_member = cloudflare.account.get_member(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         member_id="4536bcfad5faccb111b47003c79917fa")
     ```
 
@@ -212,6 +215,7 @@ def get_account_member_output(account_id: pulumi.Input[Optional[Optional[_builti
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.str member_id: Membership identifier tag.
     """
+    pulumi.log.warn("""get_account_member is deprecated: cloudflare:index/getAccountMember:getAccountMember has been deprecated in favor of cloudflare:account/member:getMember""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

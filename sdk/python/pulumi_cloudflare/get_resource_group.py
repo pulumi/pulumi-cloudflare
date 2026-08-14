@@ -22,6 +22,8 @@ __all__ = [
     'get_resource_group_output',
 ]
 
+warnings.warn("""cloudflare:index/getResourceGroup:getResourceGroup has been deprecated in favor of cloudflare:resource/group:getGroup""", DeprecationWarning)
+
 @pulumi.output_type
 class GetResourceGroupResult:
     """
@@ -126,7 +128,7 @@ def get_resource_group(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_resource_group = cloudflare.get_resource_group(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_resource_group = cloudflare.resource.get_group(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         resource_group_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -134,6 +136,7 @@ def get_resource_group(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.str resource_group_id: Resource Group identifier tag.
     """
+    pulumi.log.warn("""get_resource_group is deprecated: cloudflare:index/getResourceGroup:getResourceGroup has been deprecated in favor of cloudflare:resource/group:getGroup""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['resourceGroupId'] = resource_group_id
@@ -163,7 +166,7 @@ def get_resource_group_output(account_id: pulumi.Input[Optional[_builtins.str]] 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_resource_group = cloudflare.get_resource_group(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_resource_group = cloudflare.resource.get_group(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         resource_group_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -171,6 +174,7 @@ def get_resource_group_output(account_id: pulumi.Input[Optional[_builtins.str]] 
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.str resource_group_id: Resource Group identifier tag.
     """
+    pulumi.log.warn("""get_resource_group is deprecated: cloudflare:index/getResourceGroup:getResourceGroup has been deprecated in favor of cloudflare:resource/group:getGroup""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['resourceGroupId'] = resource_group_id

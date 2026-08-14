@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleDnsZoneTransfersAcl = new Cloudflare.DnsZoneTransfersAcl("example_dns_zone_transfers_acl", new()
+    ///     var exampleDnsZoneTransfersAcl = new Cloudflare.Modules.DnsZoneTransfers.DnsZoneTransfersAcl("example_dns_zone_transfers_acl", new()
     ///     {
     ///         AccountId = "01a7362d577a6c3019a474fd6f485823",
     ///         IpRange = "192.0.2.53/28",
@@ -41,6 +41,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/dnsZoneTransfersAcl:DnsZoneTransfersAcl example '&lt;account_id&gt;/&lt;acl_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/dnsZoneTransfersAcl:DnsZoneTransfersAcl has been deprecated in favor of cloudflare:dnsZoneTransfers/acl:Acl")]
     [CloudflareResourceType("cloudflare:index/dnsZoneTransfersAcl:DnsZoneTransfersAcl")]
     public partial class DnsZoneTransfersAcl : global::Pulumi.CustomResource
     {

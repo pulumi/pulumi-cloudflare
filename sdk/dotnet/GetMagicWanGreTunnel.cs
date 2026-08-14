@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getMagicWanGreTunnel:getMagicWanGreTunnel has been deprecated in favor of cloudflare:magicWan/greTunnel:getGreTunnel")]
     public static class GetMagicWanGreTunnel
     {
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicWanGreTunnel = Cloudflare.GetMagicWanGreTunnel.Invoke(new()
+        ///     var exampleMagicWanGreTunnel = Cloudflare.Modules.MagicWan.GetGreTunnel.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         GreTunnelId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -59,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicWanGreTunnel = Cloudflare.GetMagicWanGreTunnel.Invoke(new()
+        ///     var exampleMagicWanGreTunnel = Cloudflare.Modules.MagicWan.GetGreTunnel.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         GreTunnelId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -89,7 +90,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicWanGreTunnel = Cloudflare.GetMagicWanGreTunnel.Invoke(new()
+        ///     var exampleMagicWanGreTunnel = Cloudflare.Modules.MagicWan.GetGreTunnel.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         GreTunnelId = "023e105f4ecef8ad9ca31a8372d0c353",

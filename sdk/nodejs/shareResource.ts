@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleShareResource = new cloudflare.ShareResource("example_share_resource", {
+ * const exampleShareResource = new cloudflare.share.Resource("example_share_resource", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     shareId: "3fd85f74b32742f1bff64a85009dda07",
  *     meta: {},
@@ -26,6 +26,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/shareResource:ShareResource example '<account_id>/<share_id>/<share_resource_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/shareResource:ShareResource has been deprecated in favor of cloudflare:share/resource:Resource
  */
 export class ShareResource extends pulumi.CustomResource {
     /**
@@ -38,6 +40,7 @@ export class ShareResource extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ShareResourceState, opts?: pulumi.CustomResourceOptions): ShareResource {
+        pulumi.log.warn("ShareResource is deprecated: cloudflare:index/shareResource:ShareResource has been deprecated in favor of cloudflare:share/resource:Resource")
         return new ShareResource(name, <any>state, { ...opts, id: id });
     }
 
@@ -105,8 +108,11 @@ export class ShareResource extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/shareResource:ShareResource has been deprecated in favor of cloudflare:share/resource:Resource */
     constructor(name: string, args: ShareResourceArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/shareResource:ShareResource has been deprecated in favor of cloudflare:share/resource:Resource */
     constructor(name: string, argsOrState?: ShareResourceArgs | ShareResourceState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ShareResource is deprecated: cloudflare:index/shareResource:ShareResource has been deprecated in favor of cloudflare:share/resource:Resource")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

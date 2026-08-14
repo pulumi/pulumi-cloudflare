@@ -22,6 +22,8 @@ __all__ = [
     'get_worker_versions_output',
 ]
 
+warnings.warn("""cloudflare:index/getWorkerVersions:getWorkerVersions has been deprecated in favor of cloudflare:worker/versions:getVersions""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWorkerVersionsResult:
     """
@@ -103,7 +105,7 @@ def get_worker_versions(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_worker_versions = cloudflare.get_worker_versions(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_worker_versions = cloudflare.worker.get_versions(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         worker_id="worker_id")
     ```
 
@@ -112,6 +114,7 @@ def get_worker_versions(account_id: Optional[_builtins.str] = None,
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str worker_id: Identifier for the Worker, which can be ID or name.
     """
+    pulumi.log.warn("""get_worker_versions is deprecated: cloudflare:index/getWorkerVersions:getWorkerVersions has been deprecated in favor of cloudflare:worker/versions:getVersions""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -141,7 +144,7 @@ def get_worker_versions_output(account_id: pulumi.Input[Optional[Optional[_built
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_worker_versions = cloudflare.get_worker_versions(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_worker_versions = cloudflare.worker.get_versions(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         worker_id="worker_id")
     ```
 
@@ -150,6 +153,7 @@ def get_worker_versions_output(account_id: pulumi.Input[Optional[Optional[_built
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str worker_id: Identifier for the Worker, which can be ID or name.
     """
+    pulumi.log.warn("""get_worker_versions is deprecated: cloudflare:index/getWorkerVersions:getWorkerVersions has been deprecated in favor of cloudflare:worker/versions:getVersions""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

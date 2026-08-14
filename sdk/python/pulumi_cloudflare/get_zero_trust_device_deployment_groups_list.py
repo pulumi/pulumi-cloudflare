@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_device_deployment_groups_list_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDeviceDeploymentGroupsList:getZeroTrustDeviceDeploymentGroupsList has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/list:getList""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDeviceDeploymentGroupsListResult:
     """
@@ -79,6 +81,7 @@ def get_zero_trust_device_deployment_groups_list(account_id: Optional[_builtins.
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_device_deployment_groups_list is deprecated: cloudflare:index/getZeroTrustDeviceDeploymentGroupsList:getZeroTrustDeviceDeploymentGroupsList has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/list:getList""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -97,6 +100,7 @@ def get_zero_trust_device_deployment_groups_list_output(account_id: pulumi.Input
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_device_deployment_groups_list is deprecated: cloudflare:index/getZeroTrustDeviceDeploymentGroupsList:getZeroTrustDeviceDeploymentGroupsList has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/list:getList""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

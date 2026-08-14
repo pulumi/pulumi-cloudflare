@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_access_policies_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustAccessPolicies:getZeroTrustAccessPolicies has been deprecated in favor of cloudflare:zeroTrustAccess/policies:getPolicies""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustAccessPoliciesResult:
     """
@@ -89,13 +91,14 @@ def get_zero_trust_access_policies(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_policies = cloudflare.get_zero_trust_access_policies(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_zero_trust_access_policies = cloudflare.zerotrustaccess.get_policies(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_access_policies is deprecated: cloudflare:index/getZeroTrustAccessPolicies:getZeroTrustAccessPolicies has been deprecated in favor of cloudflare:zeroTrustAccess/policies:getPolicies""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -121,13 +124,14 @@ def get_zero_trust_access_policies_output(account_id: pulumi.Input[Optional[Opti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_policies = cloudflare.get_zero_trust_access_policies(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_zero_trust_access_policies = cloudflare.zerotrustaccess.get_policies(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_access_policies is deprecated: cloudflare:index/getZeroTrustAccessPolicies:getZeroTrustAccessPolicies has been deprecated in favor of cloudflare:zeroTrustAccess/policies:getPolicies""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

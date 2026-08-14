@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleStreamCaptionLanguage = new cloudflare.StreamCaptionLanguage("example_stream_caption_language", {
+ * const exampleStreamCaptionLanguage = new cloudflare.stream.CaptionLanguage("example_stream_caption_language", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     identifier: "ea95132c15732412d22c1476fa83f27a",
  *     language: "tr",
@@ -26,6 +26,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/streamCaptionLanguage:StreamCaptionLanguage has been deprecated in favor of cloudflare:stream/captionLanguage:CaptionLanguage
  */
 export class StreamCaptionLanguage extends pulumi.CustomResource {
     /**
@@ -38,6 +40,7 @@ export class StreamCaptionLanguage extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: StreamCaptionLanguageState, opts?: pulumi.CustomResourceOptions): StreamCaptionLanguage {
+        pulumi.log.warn("StreamCaptionLanguage is deprecated: cloudflare:index/streamCaptionLanguage:StreamCaptionLanguage has been deprecated in favor of cloudflare:stream/captionLanguage:CaptionLanguage")
         return new StreamCaptionLanguage(name, <any>state, { ...opts, id: id });
     }
 
@@ -92,8 +95,11 @@ export class StreamCaptionLanguage extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/streamCaptionLanguage:StreamCaptionLanguage has been deprecated in favor of cloudflare:stream/captionLanguage:CaptionLanguage */
     constructor(name: string, args: StreamCaptionLanguageArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/streamCaptionLanguage:StreamCaptionLanguage has been deprecated in favor of cloudflare:stream/captionLanguage:CaptionLanguage */
     constructor(name: string, argsOrState?: StreamCaptionLanguageArgs | StreamCaptionLanguageState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("StreamCaptionLanguage is deprecated: cloudflare:index/streamCaptionLanguage:StreamCaptionLanguage has been deprecated in favor of cloudflare:stream/captionLanguage:CaptionLanguage")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

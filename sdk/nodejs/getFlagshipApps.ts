@@ -17,12 +17,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleFlagshipApps = cloudflare.getFlagshipApps({
+ * const exampleFlagshipApps = cloudflare.flagship.getApps({
  *     accountId: "account_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getFlagshipApps:getFlagshipApps has been deprecated in favor of cloudflare:flagship/apps:getApps */
 export function getFlagshipApps(args: GetFlagshipAppsArgs, opts?: pulumi.InvokeOptions): Promise<GetFlagshipAppsResult> {
+    pulumi.log.warn("getFlagshipApps is deprecated: cloudflare:index/getFlagshipApps:getFlagshipApps has been deprecated in favor of cloudflare:flagship/apps:getApps")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getFlagshipApps:getFlagshipApps", {
         "accountId": args.accountId,
@@ -72,12 +74,14 @@ export interface GetFlagshipAppsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleFlagshipApps = cloudflare.getFlagshipApps({
+ * const exampleFlagshipApps = cloudflare.flagship.getApps({
  *     accountId: "account_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getFlagshipApps:getFlagshipApps has been deprecated in favor of cloudflare:flagship/apps:getApps */
 export function getFlagshipAppsOutput(args: GetFlagshipAppsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFlagshipAppsResult> {
+    pulumi.log.warn("getFlagshipApps is deprecated: cloudflare:index/getFlagshipApps:getFlagshipApps has been deprecated in favor of cloudflare:flagship/apps:getApps")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getFlagshipApps:getFlagshipApps", {
         "accountId": args.accountId,

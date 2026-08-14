@@ -21,6 +21,8 @@ __all__ = [
     'get_zero_trust_risk_scoring_integration_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustRiskScoringIntegration:getZeroTrustRiskScoringIntegration has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integration:getIntegration""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustRiskScoringIntegrationResult:
     """
@@ -168,10 +170,11 @@ def get_zero_trust_risk_scoring_integration(account_id: Optional[_builtins.str] 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_risk_scoring_integration = cloudflare.get_zero_trust_risk_scoring_integration(account_id="account_id",
+    example_zero_trust_risk_scoring_integration = cloudflare.zerotrustriskscoring.get_integration(account_id="account_id",
         integration_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_risk_scoring_integration is deprecated: cloudflare:index/getZeroTrustRiskScoringIntegration:getZeroTrustRiskScoringIntegration has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integration:getIntegration""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['integrationId'] = integration_id
@@ -204,10 +207,11 @@ def get_zero_trust_risk_scoring_integration_output(account_id: pulumi.Input[Opti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_risk_scoring_integration = cloudflare.get_zero_trust_risk_scoring_integration(account_id="account_id",
+    example_zero_trust_risk_scoring_integration = cloudflare.zerotrustriskscoring.get_integration(account_id="account_id",
         integration_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_risk_scoring_integration is deprecated: cloudflare:index/getZeroTrustRiskScoringIntegration:getZeroTrustRiskScoringIntegration has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integration:getIntegration""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['integrationId'] = integration_id

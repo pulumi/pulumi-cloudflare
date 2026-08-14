@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAuthenticatedOriginPullsSettings = new Cloudflare.AuthenticatedOriginPullsSettings("example_authenticated_origin_pulls_settings", new()
+    ///     var exampleAuthenticatedOriginPullsSettings = new Cloudflare.Modules.AuthenticatedOriginPulls.AuthenticatedOriginPullsSettings("example_authenticated_origin_pulls_settings", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Enabled = true,
@@ -40,6 +40,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/authenticatedOriginPullsSettings:AuthenticatedOriginPullsSettings example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/authenticatedOriginPullsSettings:AuthenticatedOriginPullsSettings has been deprecated in favor of cloudflare:authenticatedOriginPulls/settings:Settings")]
     [CloudflareResourceType("cloudflare:index/authenticatedOriginPullsSettings:AuthenticatedOriginPullsSettings")]
     public partial class AuthenticatedOriginPullsSettings : global::Pulumi.CustomResource
     {

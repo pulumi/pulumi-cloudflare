@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getHyperdriveConfig:getHyperdriveConfig has been deprecated in favor of cloudflare:hyperdrive/config:getConfig")]
     public static class GetHyperdriveConfig
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleHyperdriveConfig = Cloudflare.GetHyperdriveConfig.Invoke(new()
+        ///     var exampleHyperdriveConfig = Cloudflare.Modules.Hyperdrive.GetConfig.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         HyperdriveId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleHyperdriveConfig = Cloudflare.GetHyperdriveConfig.Invoke(new()
+        ///     var exampleHyperdriveConfig = Cloudflare.Modules.Hyperdrive.GetConfig.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         HyperdriveId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleHyperdriveConfig = Cloudflare.GetHyperdriveConfig.Invoke(new()
+        ///     var exampleHyperdriveConfig = Cloudflare.Modules.Hyperdrive.GetConfig.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         HyperdriveId = "023e105f4ecef8ad9ca31a8372d0c353",

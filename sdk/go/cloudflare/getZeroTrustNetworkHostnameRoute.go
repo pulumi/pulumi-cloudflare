@@ -25,14 +25,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustnetworkhostname"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustNetworkHostnameRoute(ctx, &cloudflare.LookupZeroTrustNetworkHostnameRouteArgs{
+//			_, err := zerotrustnetworkhostname.GetRoute(ctx, &zerotrustnetworkhostname.GetRouteArgs{
 //				AccountId:       pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //				HostnameRouteId: pulumi.StringRef("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
 //			}, nil)
@@ -44,6 +44,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustNetworkHostnameRoute:getZeroTrustNetworkHostnameRoute has been deprecated in favor of cloudflare:zeroTrustNetworkHostname/route:getRoute
 func LookupZeroTrustNetworkHostnameRoute(ctx *pulumi.Context, args *LookupZeroTrustNetworkHostnameRouteArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustNetworkHostnameRouteResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustNetworkHostnameRouteResult

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getCallsTurnApps:getCallsTurnApps has been deprecated in favor of cloudflare:callsTurn/apps:getApps")]
     public static class GetCallsTurnApps
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCallsTurnApps = Cloudflare.GetCallsTurnApps.Invoke(new()
+        ///     var exampleCallsTurnApps = Cloudflare.Modules.CallsTurn.GetApps.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -54,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCallsTurnApps = Cloudflare.GetCallsTurnApps.Invoke(new()
+        ///     var exampleCallsTurnApps = Cloudflare.Modules.CallsTurn.GetApps.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -81,7 +82,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCallsTurnApps = Cloudflare.GetCallsTurnApps.Invoke(new()
+        ///     var exampleCallsTurnApps = Cloudflare.Modules.CallsTurn.GetApps.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

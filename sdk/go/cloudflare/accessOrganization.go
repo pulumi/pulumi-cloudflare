@@ -24,19 +24,19 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrust"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustOrganization(ctx, "example_zero_trust_organization", &cloudflare.ZeroTrustOrganizationArgs{
+//			_, err := zerotrust.NewOrganization(ctx, "example_zero_trust_organization", &zerotrust.OrganizationArgs{
 //				ZoneId:                   pulumi.String("zone_id"),
 //				AllowAuthenticateViaWarp: pulumi.Bool(true),
 //				AuthDomain:               pulumi.String("test.cloudflareaccess.com"),
 //				AutoRedirectToIdentity:   pulumi.Bool(true),
-//				CustomPages: &cloudflare.ZeroTrustOrganizationCustomPagesArgs{
+//				CustomPages: &zerotrust.OrganizationCustomPagesArgs{
 //					Forbidden:      pulumi.String("699d98642c564d2e855e9661899b7252"),
 //					IdentityDenied: pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				},
@@ -45,14 +45,14 @@ import (
 //					pulumi.String("example.com"),
 //				},
 //				IsUiReadOnly: pulumi.Bool(true),
-//				LoginDesign: &cloudflare.ZeroTrustOrganizationLoginDesignArgs{
+//				LoginDesign: &zerotrust.OrganizationLoginDesignArgs{
 //					BackgroundColor: pulumi.String("#c5ed1b"),
 //					FooterText:      pulumi.String("This is an example description."),
 //					HeaderText:      pulumi.String("This is an example description."),
 //					LogoPath:        pulumi.String("https://example.com/logo.png"),
 //					TextColor:       pulumi.String("#c5ed1b"),
 //				},
-//				MfaConfig: &cloudflare.ZeroTrustOrganizationMfaConfigArgs{
+//				MfaConfig: &zerotrust.OrganizationMfaConfigArgs{
 //					AllowedAuthenticators: pulumi.StringArray{
 //						pulumi.String("totp"),
 //						pulumi.String("biometrics"),
@@ -63,7 +63,7 @@ import (
 //					SessionDuration:            pulumi.String("24h"),
 //				},
 //				MfaRequiredForAllApps: pulumi.Bool(false),
-//				MfaSshPivKeyRequirements: &cloudflare.ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs{
+//				MfaSshPivKeyRequirements: &zerotrust.OrganizationMfaSshPivKeyRequirementsArgs{
 //					PinPolicy:         pulumi.String("always"),
 //					RequireFipsDevice: pulumi.Bool(true),
 //					SshKeySizes: pulumi.IntArray{
@@ -144,12 +144,6 @@ func NewAccessOrganization(ctx *pulumi.Context,
 		args = &AccessOrganizationArgs{}
 	}
 
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("cloudflare:index/accessOrganization:AccessOrganization"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessOrganization
 	err := ctx.RegisterResource("cloudflare:index/accessOrganization:AccessOrganization", name, args, &resource, opts...)

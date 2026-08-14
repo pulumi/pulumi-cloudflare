@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountDnsSettings = new cloudflare.AccountDnsSettings("example_account_dns_settings", {
+ * const exampleAccountDnsSettings = new cloudflare.account.DnsSettings("example_account_dns_settings", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     enforceDnsOnly: false,
  *     zoneDefaults: {
@@ -50,6 +50,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/accountDnsSettings:AccountDnsSettings has been deprecated in favor of cloudflare:account/dnsSettings:DnsSettings
  */
 export class AccountDnsSettings extends pulumi.CustomResource {
     /**
@@ -62,6 +64,7 @@ export class AccountDnsSettings extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AccountDnsSettingsState, opts?: pulumi.CustomResourceOptions): AccountDnsSettings {
+        pulumi.log.warn("AccountDnsSettings is deprecated: cloudflare:index/accountDnsSettings:AccountDnsSettings has been deprecated in favor of cloudflare:account/dnsSettings:DnsSettings")
         return new AccountDnsSettings(name, <any>state, { ...opts, id: id });
     }
 
@@ -96,8 +99,11 @@ export class AccountDnsSettings extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/accountDnsSettings:AccountDnsSettings has been deprecated in favor of cloudflare:account/dnsSettings:DnsSettings */
     constructor(name: string, args: AccountDnsSettingsArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/accountDnsSettings:AccountDnsSettings has been deprecated in favor of cloudflare:account/dnsSettings:DnsSettings */
     constructor(name: string, argsOrState?: AccountDnsSettingsArgs | AccountDnsSettingsState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("AccountDnsSettings is deprecated: cloudflare:index/accountDnsSettings:AccountDnsSettings has been deprecated in favor of cloudflare:account/dnsSettings:DnsSettings")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

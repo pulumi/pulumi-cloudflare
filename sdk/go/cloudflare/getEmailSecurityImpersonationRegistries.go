@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/emailsecurityimpersonation"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetEmailSecurityImpersonationRegistries(ctx, &cloudflare.LookupEmailSecurityImpersonationRegistriesArgs{
+//			_, err := emailsecurityimpersonation.GetRegistries(ctx, &emailsecurityimpersonation.GetRegistriesArgs{
 //				AccountId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Direction:  pulumi.StringRef("asc"),
 //				Order:      pulumi.StringRef("name"),
@@ -45,6 +45,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getEmailSecurityImpersonationRegistries:getEmailSecurityImpersonationRegistries has been deprecated in favor of cloudflare:emailSecurityImpersonation/registries:getRegistries
 func LookupEmailSecurityImpersonationRegistries(ctx *pulumi.Context, args *LookupEmailSecurityImpersonationRegistriesArgs, opts ...pulumi.InvokeOption) (*LookupEmailSecurityImpersonationRegistriesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEmailSecurityImpersonationRegistriesResult

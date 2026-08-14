@@ -130,8 +130,13 @@ class _StreamDownloadState:
         pulumi.set(self, "identifier", value)
 
 
+warnings.warn("""cloudflare:index/streamDownload:StreamDownload has been deprecated in favor of cloudflare:stream/download:Download""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/streamDownload:StreamDownload")
 class StreamDownload(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/streamDownload:StreamDownload has been deprecated in favor of cloudflare:stream/download:Download""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -151,7 +156,7 @@ class StreamDownload(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_stream_download = cloudflare.StreamDownload("example_stream_download",
+        example_stream_download = cloudflare.stream.Download("example_stream_download",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             identifier="ea95132c15732412d22c1476fa83f27a")
         ```
@@ -184,7 +189,7 @@ class StreamDownload(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_stream_download = cloudflare.StreamDownload("example_stream_download",
+        example_stream_download = cloudflare.stream.Download("example_stream_download",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             identifier="ea95132c15732412d22c1476fa83f27a")
         ```
@@ -212,6 +217,7 @@ class StreamDownload(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""StreamDownload is deprecated: cloudflare:index/streamDownload:StreamDownload has been deprecated in favor of cloudflare:stream/download:Download""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

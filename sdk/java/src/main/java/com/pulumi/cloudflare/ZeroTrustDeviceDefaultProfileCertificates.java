@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDeviceDefaultProfileCertificates;
- * import com.pulumi.cloudflare.ZeroTrustDeviceDefaultProfileCertificatesArgs;
+ * import com.pulumi.cloudflare.zeroTrustDeviceDefaultProfile.Certificates;
+ * import com.pulumi.cloudflare.zeroTrustDeviceDefaultProfile.CertificatesArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustDeviceDefaultProfileCertificates = new ZeroTrustDeviceDefaultProfileCertificates("exampleZeroTrustDeviceDefaultProfileCertificates", ZeroTrustDeviceDefaultProfileCertificatesArgs.builder()
+ *         var exampleZeroTrustDeviceDefaultProfileCertificates = new Certificates("exampleZeroTrustDeviceDefaultProfileCertificates", CertificatesArgs.builder()
  *             .zoneId("699d98642c564d2e855e9661899b7252")
  *             .enabled(true)
  *             .build());
@@ -58,7 +58,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustDeviceDefaultProfileCertificates:ZeroTrustDeviceDefaultProfileCertificates has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/certificates:Certificates
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustDeviceDefaultProfileCertificates:ZeroTrustDeviceDefaultProfileCertificates has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/certificates:Certificates */
 @ResourceType(type="cloudflare:index/zeroTrustDeviceDefaultProfileCertificates:ZeroTrustDeviceDefaultProfileCertificates")
 public class ZeroTrustDeviceDefaultProfileCertificates extends com.pulumi.resources.CustomResource {
     /**

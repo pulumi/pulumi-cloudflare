@@ -17,7 +17,7 @@ import (
 // - `Firewall Services Read`
 // - `Firewall Services Write`
 //
-// > `RateLimit` is in a deprecation phase until June 15th, 2025.
+// > `rate.Limit` is in a deprecation phase until June 15th, 2025.
 //
 //	During this time period, this resource is still
 //	fully supported but you are strongly advised to move to the
@@ -31,32 +31,32 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/rate"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewRateLimit(ctx, "example_rate_limit", &cloudflare.RateLimitArgs{
+//			_, err := rate.NewLimit(ctx, "example_rate_limit", &rate.LimitArgs{
 //				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Action: &cloudflare.RateLimitActionArgs{
+//				Action: &rate.LimitActionArgs{
 //					Mode: pulumi.String("challenge"),
-//					Response: &cloudflare.RateLimitActionResponseArgs{
+//					Response: &rate.LimitActionResponseArgs{
 //						Body:        pulumi.String("<error>This request has been rate-limited.</error>"),
 //						ContentType: pulumi.String("text/xml"),
 //					},
 //					Timeout: pulumi.Float64(86400),
 //				},
-//				Match: &cloudflare.RateLimitMatchArgs{
-//					Headers: cloudflare.RateLimitMatchHeaderArray{
-//						&cloudflare.RateLimitMatchHeaderArgs{
+//				Match: &rate.LimitMatchArgs{
+//					Headers: rate.LimitMatchHeaderArray{
+//						&rate.LimitMatchHeaderArgs{
 //							Name:  pulumi.String("Cf-Cache-Status"),
 //							Op:    pulumi.String("ne"),
 //							Value: pulumi.String("HIT"),
 //						},
 //					},
-//					Request: &cloudflare.RateLimitMatchRequestArgs{
+//					Request: &rate.LimitMatchRequestArgs{
 //						Methods: pulumi.StringArray{
 //							pulumi.String("GET"),
 //							pulumi.String("POST"),
@@ -67,7 +67,7 @@ import (
 //						},
 //						Url: pulumi.String("*.example.org/path*"),
 //					},
-//					Response: &cloudflare.RateLimitMatchResponseArgs{
+//					Response: &rate.LimitMatchResponseArgs{
 //						OriginTraffic: pulumi.Bool(true),
 //					},
 //				},
@@ -88,6 +88,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/rateLimit:RateLimit example '<zone_id>/<rate_limit_id>'
 // ```
+//
+// Deprecated: cloudflare:index/rateLimit:RateLimit has been deprecated in favor of cloudflare:rate/limit:Limit
 type RateLimit struct {
 	pulumi.CustomResourceState
 

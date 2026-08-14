@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleArgoSmartRouting = new cloudflare.ArgoSmartRouting("example_argo_smart_routing", {
+ * const exampleArgoSmartRouting = new cloudflare.argo.SmartRouting("example_argo_smart_routing", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     value: "on",
  * });
@@ -27,6 +27,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/argoSmartRouting:ArgoSmartRouting example '<zone_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/argoSmartRouting:ArgoSmartRouting has been deprecated in favor of cloudflare:argo/smartRouting:SmartRouting
  */
 export class ArgoSmartRouting extends pulumi.CustomResource {
     /**
@@ -39,6 +41,7 @@ export class ArgoSmartRouting extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ArgoSmartRoutingState, opts?: pulumi.CustomResourceOptions): ArgoSmartRouting {
+        pulumi.log.warn("ArgoSmartRouting is deprecated: cloudflare:index/argoSmartRouting:ArgoSmartRouting has been deprecated in favor of cloudflare:argo/smartRouting:SmartRouting")
         return new ArgoSmartRouting(name, <any>state, { ...opts, id: id });
     }
 
@@ -81,8 +84,11 @@ export class ArgoSmartRouting extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/argoSmartRouting:ArgoSmartRouting has been deprecated in favor of cloudflare:argo/smartRouting:SmartRouting */
     constructor(name: string, args: ArgoSmartRoutingArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/argoSmartRouting:ArgoSmartRouting has been deprecated in favor of cloudflare:argo/smartRouting:SmartRouting */
     constructor(name: string, argsOrState?: ArgoSmartRoutingArgs | ArgoSmartRoutingState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ArgoSmartRouting is deprecated: cloudflare:index/argoSmartRouting:ArgoSmartRouting has been deprecated in favor of cloudflare:argo/smartRouting:SmartRouting")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

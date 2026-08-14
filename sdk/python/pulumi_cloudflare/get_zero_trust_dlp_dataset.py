@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_dlp_dataset_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDlpDataset:getZeroTrustDlpDataset has been deprecated in favor of cloudflare:zeroTrustDlp/dataset:getDataset""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDlpDatasetResult:
     """
@@ -191,10 +193,11 @@ def get_zero_trust_dlp_dataset(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_dataset = cloudflare.get_zero_trust_dlp_dataset(account_id="account_id",
+    example_zero_trust_dlp_dataset = cloudflare.zerotrustdlp.get_dataset(account_id="account_id",
         dataset_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_dlp_dataset is deprecated: cloudflare:index/getZeroTrustDlpDataset:getZeroTrustDlpDataset has been deprecated in favor of cloudflare:zeroTrustDlp/dataset:getDataset""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['datasetId'] = dataset_id
@@ -231,10 +234,11 @@ def get_zero_trust_dlp_dataset_output(account_id: pulumi.Input[Optional[Optional
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_dataset = cloudflare.get_zero_trust_dlp_dataset(account_id="account_id",
+    example_zero_trust_dlp_dataset = cloudflare.zerotrustdlp.get_dataset(account_id="account_id",
         dataset_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_dlp_dataset is deprecated: cloudflare:index/getZeroTrustDlpDataset:getZeroTrustDlpDataset has been deprecated in favor of cloudflare:zeroTrustDlp/dataset:getDataset""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['datasetId'] = dataset_id

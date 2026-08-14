@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleDnsZoneTransfersIncoming = new Cloudflare.DnsZoneTransfersIncoming("example_dns_zone_transfers_incoming", new()
+    ///     var exampleDnsZoneTransfersIncoming = new Cloudflare.Modules.DnsZoneTransfers.DnsZoneTransfersIncoming("example_dns_zone_transfers_incoming", new()
     ///     {
     ///         ZoneId = "269d8f4853475ca241c4e730be286b20",
     ///         AutoRefreshSeconds = 86400,
@@ -49,6 +49,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/dnsZoneTransfersIncoming:DnsZoneTransfersIncoming example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/dnsZoneTransfersIncoming:DnsZoneTransfersIncoming has been deprecated in favor of cloudflare:dnsZoneTransfers/incoming:Incoming")]
     [CloudflareResourceType("cloudflare:index/dnsZoneTransfersIncoming:DnsZoneTransfersIncoming")]
     public partial class DnsZoneTransfersIncoming : global::Pulumi.CustomResource
     {

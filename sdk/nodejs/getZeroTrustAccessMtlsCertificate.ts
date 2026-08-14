@@ -16,14 +16,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessMtlsCertificate = cloudflare.getZeroTrustAccessMtlsCertificate({
+ * const exampleZeroTrustAccessMtlsCertificate = cloudflare.zerotrustaccessmtls.getCertificate({
  *     certificateId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessMtlsCertificate:getZeroTrustAccessMtlsCertificate has been deprecated in favor of cloudflare:zeroTrustAccessMtls/certificate:getCertificate */
 export function getZeroTrustAccessMtlsCertificate(args: GetZeroTrustAccessMtlsCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessMtlsCertificateResult> {
+    pulumi.log.warn("getZeroTrustAccessMtlsCertificate is deprecated: cloudflare:index/getZeroTrustAccessMtlsCertificate:getZeroTrustAccessMtlsCertificate has been deprecated in favor of cloudflare:zeroTrustAccessMtls/certificate:getCertificate")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessMtlsCertificate:getZeroTrustAccessMtlsCertificate", {
         "accountId": args.accountId,
@@ -96,14 +98,16 @@ export interface GetZeroTrustAccessMtlsCertificateResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessMtlsCertificate = cloudflare.getZeroTrustAccessMtlsCertificate({
+ * const exampleZeroTrustAccessMtlsCertificate = cloudflare.zerotrustaccessmtls.getCertificate({
  *     certificateId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessMtlsCertificate:getZeroTrustAccessMtlsCertificate has been deprecated in favor of cloudflare:zeroTrustAccessMtls/certificate:getCertificate */
 export function getZeroTrustAccessMtlsCertificateOutput(args: GetZeroTrustAccessMtlsCertificateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessMtlsCertificateResult> {
+    pulumi.log.warn("getZeroTrustAccessMtlsCertificate is deprecated: cloudflare:index/getZeroTrustAccessMtlsCertificate:getZeroTrustAccessMtlsCertificate has been deprecated in favor of cloudflare:zeroTrustAccessMtls/certificate:getCertificate")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessMtlsCertificate:getZeroTrustAccessMtlsCertificate", {
         "accountId": args.accountId,

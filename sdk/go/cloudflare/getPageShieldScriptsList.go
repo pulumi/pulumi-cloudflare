@@ -27,14 +27,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/pageshieldscripts"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetPageShieldScriptsList(ctx, &cloudflare.LookupPageShieldScriptsListArgs{
+//			_, err := pageshieldscripts.GetList(ctx, &pageshieldscripts.GetListArgs{
 //				ZoneId:              pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Direction:           pulumi.StringRef("asc"),
 //				ExcludeUrls:         pulumi.StringRef("blog.cloudflare.com,www.example"),
@@ -56,6 +56,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getPageShieldScriptsList:getPageShieldScriptsList has been deprecated in favor of cloudflare:pageShieldScripts/list:getList
 func LookupPageShieldScriptsList(ctx *pulumi.Context, args *LookupPageShieldScriptsListArgs, opts ...pulumi.InvokeOption) (*LookupPageShieldScriptsListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPageShieldScriptsListResult

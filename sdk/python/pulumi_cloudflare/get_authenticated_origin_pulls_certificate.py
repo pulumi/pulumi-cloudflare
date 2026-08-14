@@ -21,6 +21,8 @@ __all__ = [
     'get_authenticated_origin_pulls_certificate_output',
 ]
 
+warnings.warn("""cloudflare:index/getAuthenticatedOriginPullsCertificate:getAuthenticatedOriginPullsCertificate has been deprecated in favor of cloudflare:authenticatedOriginPulls/certificate:getCertificate""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAuthenticatedOriginPullsCertificateResult:
     """
@@ -168,7 +170,7 @@ def get_authenticated_origin_pulls_certificate(certificate_id: Optional[_builtin
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_authenticated_origin_pulls_certificate = cloudflare.get_authenticated_origin_pulls_certificate(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_authenticated_origin_pulls_certificate = cloudflare.authenticatedoriginpulls.get_certificate(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -176,6 +178,7 @@ def get_authenticated_origin_pulls_certificate(certificate_id: Optional[_builtin
     :param _builtins.str certificate_id: Identifier.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_authenticated_origin_pulls_certificate is deprecated: cloudflare:index/getAuthenticatedOriginPullsCertificate:getAuthenticatedOriginPullsCertificate has been deprecated in favor of cloudflare:authenticatedOriginPulls/certificate:getCertificate""")
     __args__ = dict()
     __args__['certificateId'] = certificate_id
     __args__['zoneId'] = zone_id
@@ -203,7 +206,7 @@ def get_authenticated_origin_pulls_certificate_output(certificate_id: pulumi.Inp
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_authenticated_origin_pulls_certificate = cloudflare.get_authenticated_origin_pulls_certificate(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_authenticated_origin_pulls_certificate = cloudflare.authenticatedoriginpulls.get_certificate(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -211,6 +214,7 @@ def get_authenticated_origin_pulls_certificate_output(certificate_id: pulumi.Inp
     :param _builtins.str certificate_id: Identifier.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_authenticated_origin_pulls_certificate is deprecated: cloudflare:index/getAuthenticatedOriginPullsCertificate:getAuthenticatedOriginPullsCertificate has been deprecated in favor of cloudflare:authenticatedOriginPulls/certificate:getCertificate""")
     __args__ = dict()
     __args__['certificateId'] = certificate_id
     __args__['zoneId'] = zone_id

@@ -19,18 +19,18 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/loadbalancermonitor"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewLoadBalancerMonitorGroup(ctx, "example_load_balancer_monitor_group", &cloudflare.LoadBalancerMonitorGroupArgs{
+//			_, err := loadbalancermonitor.NewGroup(ctx, "example_load_balancer_monitor_group", &loadbalancermonitor.GroupArgs{
 //				AccountId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Description: pulumi.String("Primary datacenter monitors"),
-//				Members: cloudflare.LoadBalancerMonitorGroupMemberArray{
-//					&cloudflare.LoadBalancerMonitorGroupMemberArgs{
+//				Members: loadbalancermonitor.GroupMemberArray{
+//					&loadbalancermonitor.GroupMemberArgs{
 //						Enabled:        pulumi.Bool(true),
 //						MonitorId:      pulumi.String("monitor_id"),
 //						MonitoringOnly: pulumi.Bool(false),
@@ -52,6 +52,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/loadBalancerMonitorGroup:LoadBalancerMonitorGroup example '<account_id>/<monitor_group_id>'
 // ```
+//
+// Deprecated: cloudflare:index/loadBalancerMonitorGroup:LoadBalancerMonitorGroup has been deprecated in favor of cloudflare:loadBalancerMonitor/group:Group
 type LoadBalancerMonitorGroup struct {
 	pulumi.CustomResourceState
 

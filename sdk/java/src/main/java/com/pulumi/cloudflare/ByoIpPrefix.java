@@ -35,8 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ByoIpPrefix;
- * import com.pulumi.cloudflare.ByoIpPrefixArgs;
+ * import com.pulumi.cloudflare.byoIp.Prefix;
+ * import com.pulumi.cloudflare.byoIp.PrefixArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleByoIpPrefix = new ByoIpPrefix("exampleByoIpPrefix", ByoIpPrefixArgs.builder()
+ *         var exampleByoIpPrefix = new Prefix("exampleByoIpPrefix", PrefixArgs.builder()
  *             .accountId("258def64c72dae45f3e4c8516e2111f2")
  *             .asn(13335)
  *             .cidr("192.0.2.0/24")
@@ -70,7 +70,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example &#39;&lt;account_id&gt;/&lt;prefix_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/byoIpPrefix:ByoIpPrefix has been deprecated in favor of cloudflare:byoIp/prefix:Prefix
+ * 
  */
+@Deprecated /* cloudflare:index/byoIpPrefix:ByoIpPrefix has been deprecated in favor of cloudflare:byoIp/prefix:Prefix */
 @ResourceType(type="cloudflare:index/byoIpPrefix:ByoIpPrefix")
 public class ByoIpPrefix extends com.pulumi.resources.CustomResource {
     /**

@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleUserGroup = new cloudflare.UserGroup("example_user_group", {
+ * const exampleUserGroup = new cloudflare.usergroup.UserGroup("example_user_group", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "My New User Group",
  *     policies: [{
@@ -44,6 +44,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/userGroup:UserGroup example '<account_id>/<user_group_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/userGroup:UserGroup has been deprecated in favor of cloudflare:userGroup/userGroup:UserGroup
  */
 export class UserGroup extends pulumi.CustomResource {
     /**
@@ -56,6 +58,7 @@ export class UserGroup extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: UserGroupState, opts?: pulumi.CustomResourceOptions): UserGroup {
+        pulumi.log.warn("UserGroup is deprecated: cloudflare:index/userGroup:UserGroup has been deprecated in favor of cloudflare:userGroup/userGroup:UserGroup")
         return new UserGroup(name, <any>state, { ...opts, id: id });
     }
 
@@ -101,8 +104,11 @@ export class UserGroup extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/userGroup:UserGroup has been deprecated in favor of cloudflare:userGroup/userGroup:UserGroup */
     constructor(name: string, args: UserGroupArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/userGroup:UserGroup has been deprecated in favor of cloudflare:userGroup/userGroup:UserGroup */
     constructor(name: string, argsOrState?: UserGroupArgs | UserGroupState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("UserGroup is deprecated: cloudflare:index/userGroup:UserGroup has been deprecated in favor of cloudflare:userGroup/userGroup:UserGroup")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

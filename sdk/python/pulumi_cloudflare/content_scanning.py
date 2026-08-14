@@ -116,8 +116,13 @@ class _ContentScanningState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/contentScanning:ContentScanning has been deprecated in favor of cloudflare:contentScanning/contentScanning:ContentScanning""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/contentScanning:ContentScanning")
 class ContentScanning(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/contentScanning:ContentScanning has been deprecated in favor of cloudflare:contentScanning/contentScanning:ContentScanning""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -139,7 +144,7 @@ class ContentScanning(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_content_scanning = cloudflare.ContentScanning("example_content_scanning",
+        example_content_scanning = cloudflare.contentscanning.ContentScanning("example_content_scanning",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             value="enabled")
         ```
@@ -175,7 +180,7 @@ class ContentScanning(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_content_scanning = cloudflare.ContentScanning("example_content_scanning",
+        example_content_scanning = cloudflare.contentscanning.ContentScanning("example_content_scanning",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             value="enabled")
         ```
@@ -203,6 +208,7 @@ class ContentScanning(pulumi.CustomResource):
                  value: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ContentScanning is deprecated: cloudflare:index/contentScanning:ContentScanning has been deprecated in favor of cloudflare:contentScanning/contentScanning:ContentScanning""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -23,6 +23,8 @@ __all__ = [
     'get_worker_output',
 ]
 
+warnings.warn("""cloudflare:index/getWorker:getWorker has been deprecated in favor of cloudflare:worker/worker:getWorker""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWorkerResult:
     """
@@ -221,7 +223,7 @@ def get_worker(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_worker = cloudflare.get_worker(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_worker = cloudflare.worker.get_worker(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         worker_id="worker_id")
     ```
 
@@ -229,6 +231,7 @@ def get_worker(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Identifier.
     :param _builtins.str worker_id: Identifier for the Worker, which can be ID or name.
     """
+    pulumi.log.warn("""get_worker is deprecated: cloudflare:index/getWorker:getWorker has been deprecated in favor of cloudflare:worker/worker:getWorker""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -268,7 +271,7 @@ def get_worker_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_worker = cloudflare.get_worker(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_worker = cloudflare.worker.get_worker(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         worker_id="worker_id")
     ```
 
@@ -276,6 +279,7 @@ def get_worker_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]
     :param _builtins.str account_id: Identifier.
     :param _builtins.str worker_id: Identifier for the Worker, which can be ID or name.
     """
+    pulumi.log.warn("""get_worker is deprecated: cloudflare:index/getWorker:getWorker has been deprecated in favor of cloudflare:worker/worker:getWorker""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

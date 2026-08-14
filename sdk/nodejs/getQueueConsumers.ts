@@ -20,13 +20,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleQueueConsumers = cloudflare.getQueueConsumers({
+ * const exampleQueueConsumers = cloudflare.queue.getConsumers({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     queueId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getQueueConsumers:getQueueConsumers has been deprecated in favor of cloudflare:queue/consumers:getConsumers */
 export function getQueueConsumers(args: GetQueueConsumersArgs, opts?: pulumi.InvokeOptions): Promise<GetQueueConsumersResult> {
+    pulumi.log.warn("getQueueConsumers is deprecated: cloudflare:index/getQueueConsumers:getQueueConsumers has been deprecated in favor of cloudflare:queue/consumers:getConsumers")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getQueueConsumers:getQueueConsumers", {
         "accountId": args.accountId,
@@ -88,13 +90,15 @@ export interface GetQueueConsumersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleQueueConsumers = cloudflare.getQueueConsumers({
+ * const exampleQueueConsumers = cloudflare.queue.getConsumers({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     queueId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getQueueConsumers:getQueueConsumers has been deprecated in favor of cloudflare:queue/consumers:getConsumers */
 export function getQueueConsumersOutput(args: GetQueueConsumersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQueueConsumersResult> {
+    pulumi.log.warn("getQueueConsumers is deprecated: cloudflare:index/getQueueConsumers:getQueueConsumers has been deprecated in favor of cloudflare:queue/consumers:getConsumers")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getQueueConsumers:getQueueConsumers", {
         "accountId": args.accountId,

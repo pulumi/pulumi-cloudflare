@@ -26,14 +26,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zonecache"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZoneCacheReserve(ctx, "example_zone_cache_reserve", &cloudflare.ZoneCacheReserveArgs{
+//			_, err := zonecache.NewReserve(ctx, "example_zone_cache_reserve", &zonecache.ReserveArgs{
 //				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Value:  pulumi.String("on"),
 //			})
@@ -51,6 +51,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zoneCacheReserve:ZoneCacheReserve example '<zone_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zoneCacheReserve:ZoneCacheReserve has been deprecated in favor of cloudflare:zoneCache/reserve:Reserve
 type ZoneCacheReserve struct {
 	pulumi.CustomResourceState
 

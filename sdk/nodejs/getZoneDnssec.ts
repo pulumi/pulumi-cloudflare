@@ -16,12 +16,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneDnssec = cloudflare.getZoneDnssec({
+ * const exampleZoneDnssec = cloudflare.zone.getDnssec({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZoneDnssec:getZoneDnssec has been deprecated in favor of cloudflare:zone/dnssec:getDnssec */
 export function getZoneDnssec(args?: GetZoneDnssecArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneDnssecResult> {
+    pulumi.log.warn("getZoneDnssec is deprecated: cloudflare:index/getZoneDnssec:getZoneDnssec has been deprecated in favor of cloudflare:zone/dnssec:getDnssec")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZoneDnssec:getZoneDnssec", {
@@ -93,12 +95,14 @@ export interface GetZoneDnssecResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneDnssec = cloudflare.getZoneDnssec({
+ * const exampleZoneDnssec = cloudflare.zone.getDnssec({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZoneDnssec:getZoneDnssec has been deprecated in favor of cloudflare:zone/dnssec:getDnssec */
 export function getZoneDnssecOutput(args?: GetZoneDnssecOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneDnssecResult> {
+    pulumi.log.warn("getZoneDnssec is deprecated: cloudflare:index/getZoneDnssec:getZoneDnssec has been deprecated in favor of cloudflare:zone/dnssec:getDnssec")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZoneDnssec:getZoneDnssec", {

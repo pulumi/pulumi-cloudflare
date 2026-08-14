@@ -27,14 +27,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/dnszonetransfers"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewDnsZoneTransfersOutgoing(ctx, "example_dns_zone_transfers_outgoing", &cloudflare.DnsZoneTransfersOutgoingArgs{
+//			_, err := dnszonetransfers.NewOutgoing(ctx, "example_dns_zone_transfers_outgoing", &dnszonetransfers.OutgoingArgs{
 //				ZoneId: pulumi.String("269d8f4853475ca241c4e730be286b20"),
 //				Name:   pulumi.String("www.example.com."),
 //				Peers: pulumi.StringArray{
@@ -56,6 +56,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/dnsZoneTransfersOutgoing:DnsZoneTransfersOutgoing example '<zone_id>'
 // ```
+//
+// Deprecated: cloudflare:index/dnsZoneTransfersOutgoing:DnsZoneTransfersOutgoing has been deprecated in favor of cloudflare:dnsZoneTransfers/outgoing:Outgoing
 type DnsZoneTransfersOutgoing struct {
 	pulumi.CustomResourceState
 

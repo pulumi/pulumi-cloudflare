@@ -19,22 +19,22 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustaccessinfrastructure"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustAccessInfrastructureTarget(ctx, "example_zero_trust_access_infrastructure_target", &cloudflare.ZeroTrustAccessInfrastructureTargetArgs{
+//			_, err := zerotrustaccessinfrastructure.NewTarget(ctx, "example_zero_trust_access_infrastructure_target", &zerotrustaccessinfrastructure.TargetArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Hostname:  pulumi.String("infra-access-target"),
-//				Ip: &cloudflare.ZeroTrustAccessInfrastructureTargetIpArgs{
-//					Ipv4: &cloudflare.ZeroTrustAccessInfrastructureTargetIpIpv4Args{
+//				Ip: &zerotrustaccessinfrastructure.TargetIpArgs{
+//					Ipv4: &zerotrustaccessinfrastructure.TargetIpIpv4Args{
 //						IpAddr:           pulumi.String("187.26.29.249"),
 //						VirtualNetworkId: pulumi.String("c77b744e-acc8-428f-9257-6878c046ed55"),
 //					},
-//					Ipv6: &cloudflare.ZeroTrustAccessInfrastructureTargetIpIpv6Args{
+//					Ipv6: &zerotrustaccessinfrastructure.TargetIpIpv6Args{
 //						IpAddr:           pulumi.String("64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0"),
 //						VirtualNetworkId: pulumi.String("c77b744e-acc8-428f-9257-6878c046ed55"),
 //					},
@@ -54,6 +54,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustAccessInfrastructureTarget:ZeroTrustAccessInfrastructureTarget example '<account_id>/<target_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustAccessInfrastructureTarget:ZeroTrustAccessInfrastructureTarget has been deprecated in favor of cloudflare:zeroTrustAccessInfrastructure/target:Target
 type ZeroTrustAccessInfrastructureTarget struct {
 	pulumi.CustomResourceState
 

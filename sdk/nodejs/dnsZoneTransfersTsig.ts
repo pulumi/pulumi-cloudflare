@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsZoneTransfersTsig = new cloudflare.DnsZoneTransfersTsig("example_dns_zone_transfers_tsig", {
+ * const exampleDnsZoneTransfersTsig = new cloudflare.dnszonetransfers.Tsig("example_dns_zone_transfers_tsig", {
  *     accountId: "01a7362d577a6c3019a474fd6f485823",
  *     algo: "hmac-sha512.",
  *     name: "tsig.customer.cf.",
@@ -29,6 +29,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/dnsZoneTransfersTsig:DnsZoneTransfersTsig example '<account_id>/<tsig_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/dnsZoneTransfersTsig:DnsZoneTransfersTsig has been deprecated in favor of cloudflare:dnsZoneTransfers/tsig:Tsig
  */
 export class DnsZoneTransfersTsig extends pulumi.CustomResource {
     /**
@@ -41,6 +43,7 @@ export class DnsZoneTransfersTsig extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DnsZoneTransfersTsigState, opts?: pulumi.CustomResourceOptions): DnsZoneTransfersTsig {
+        pulumi.log.warn("DnsZoneTransfersTsig is deprecated: cloudflare:index/dnsZoneTransfersTsig:DnsZoneTransfersTsig has been deprecated in favor of cloudflare:dnsZoneTransfers/tsig:Tsig")
         return new DnsZoneTransfersTsig(name, <any>state, { ...opts, id: id });
     }
 
@@ -79,8 +82,11 @@ export class DnsZoneTransfersTsig extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/dnsZoneTransfersTsig:DnsZoneTransfersTsig has been deprecated in favor of cloudflare:dnsZoneTransfers/tsig:Tsig */
     constructor(name: string, args: DnsZoneTransfersTsigArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/dnsZoneTransfersTsig:DnsZoneTransfersTsig has been deprecated in favor of cloudflare:dnsZoneTransfers/tsig:Tsig */
     constructor(name: string, argsOrState?: DnsZoneTransfersTsigArgs | DnsZoneTransfersTsigState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("DnsZoneTransfersTsig is deprecated: cloudflare:index/dnsZoneTransfersTsig:DnsZoneTransfersTsig has been deprecated in favor of cloudflare:dnsZoneTransfers/tsig:Tsig")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

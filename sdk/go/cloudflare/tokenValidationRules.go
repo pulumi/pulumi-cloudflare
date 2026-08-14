@@ -26,30 +26,30 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/tokenvalidationrules"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewTokenValidationRules(ctx, "example_token_validation_rules", &cloudflare.TokenValidationRulesArgs{
+//			_, err := tokenvalidationrules.NewTokenValidationRules(ctx, "example_token_validation_rules", &tokenvalidationrules.TokenValidationRulesArgs{
 //				ZoneId:      pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Action:      pulumi.String("log"),
 //				Description: pulumi.String("Long description for Token Validation Rule"),
 //				Enabled:     pulumi.Bool(true),
 //				Expression:  pulumi.String("is_jwt_valid(\"52973293-cb04-4a97-8f55-e7d2ad1107dd\") or is_jwt_valid(\"46eab8d1-6376-45e3-968f-2c649d77d423\")"),
-//				Selector: &cloudflare.TokenValidationRulesSelectorArgs{
-//					Excludes: cloudflare.TokenValidationRulesSelectorExcludeArray{
-//						&cloudflare.TokenValidationRulesSelectorExcludeArgs{
+//				Selector: &tokenvalidationrules.TokenValidationRulesSelectorArgs{
+//					Excludes: tokenvalidationrules.TokenValidationRulesSelectorExcludeArray{
+//						&tokenvalidationrules.TokenValidationRulesSelectorExcludeArgs{
 //							OperationIds: pulumi.StringArray{
 //								pulumi.String("f9c5615e-fe15-48ce-bec6-cfc1946f1bec"),
 //								pulumi.String("56828eae-035a-4396-ba07-51c66d680a04"),
 //							},
 //						},
 //					},
-//					Includes: cloudflare.TokenValidationRulesSelectorIncludeArray{
-//						&cloudflare.TokenValidationRulesSelectorIncludeArgs{
+//					Includes: tokenvalidationrules.TokenValidationRulesSelectorIncludeArray{
+//						&tokenvalidationrules.TokenValidationRulesSelectorIncludeArgs{
 //							Host: []string{
 //								"v1.example.com",
 //								"v2.example.com",
@@ -73,6 +73,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/tokenValidationRules:TokenValidationRules example '<zone_id>/<rule_id>'
 // ```
+//
+// Deprecated: cloudflare:index/tokenValidationRules:TokenValidationRules has been deprecated in favor of cloudflare:tokenValidationRules/tokenValidationRules:TokenValidationRules
 type TokenValidationRules struct {
 	pulumi.CustomResourceState
 

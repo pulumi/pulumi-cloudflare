@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustNetworkHostnameRoute = new Cloudflare.ZeroTrustNetworkHostnameRoute("example_zero_trust_network_hostname_route", new()
+    ///     var exampleZeroTrustNetworkHostnameRoute = new Cloudflare.Modules.ZeroTrustNetworkHostname.ZeroTrustNetworkHostnameRoute("example_zero_trust_network_hostname_route", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Comment = "example comment",
@@ -44,6 +44,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute example '&lt;account_id&gt;/&lt;hostname_route_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute has been deprecated in favor of cloudflare:zeroTrustNetworkHostname/route:Route")]
     [CloudflareResourceType("cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute")]
     public partial class ZeroTrustNetworkHostnameRoute : global::Pulumi.CustomResource
     {

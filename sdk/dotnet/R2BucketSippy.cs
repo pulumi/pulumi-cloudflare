@@ -24,17 +24,17 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleR2BucketSippy = new Cloudflare.R2BucketSippy("example_r2_bucket_sippy", new()
+    ///     var exampleR2BucketSippy = new Cloudflare.Modules.R2Bucket.R2BucketSippy("example_r2_bucket_sippy", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         BucketName = "example-bucket",
-    ///         Destination = new Cloudflare.Inputs.R2BucketSippyDestinationArgs
+    ///         Destination = new Cloudflare.Modules.R2Bucket.Inputs.SippyDestinationArgs
     ///         {
     ///             AccessKeyId = "accessKeyId",
     ///             CloudProvider = "r2",
     ///             SecretAccessKey = "secretAccessKey",
     ///         },
-    ///         Source = new Cloudflare.Inputs.R2BucketSippySourceArgs
+    ///         Source = new Cloudflare.Modules.R2Bucket.Inputs.SippySourceArgs
     ///         {
     ///             AccessKeyId = "accessKeyId",
     ///             Bucket = "bucket",
@@ -51,6 +51,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/r2BucketSippy:R2BucketSippy has been deprecated in favor of cloudflare:r2Bucket/sippy:Sippy")]
     [CloudflareResourceType("cloudflare:index/r2BucketSippy:R2BucketSippy")]
     public partial class R2BucketSippy : global::Pulumi.CustomResource
     {

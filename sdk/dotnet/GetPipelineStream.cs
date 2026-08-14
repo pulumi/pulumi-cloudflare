@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getPipelineStream:getPipelineStream has been deprecated in favor of cloudflare:pipeline/stream:getStream")]
     public static class GetPipelineStream
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var examplePipelineStream = Cloudflare.GetPipelineStream.Invoke(new()
+        ///     var examplePipelineStream = Cloudflare.Modules.Pipeline.GetStream.Invoke(new()
         ///     {
         ///         AccountId = "0123105f4ecef8ad9ca31a8372d0c353",
         ///         StreamId = "033e105f4ecef8ad9ca31a8372d0c353",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var examplePipelineStream = Cloudflare.GetPipelineStream.Invoke(new()
+        ///     var examplePipelineStream = Cloudflare.Modules.Pipeline.GetStream.Invoke(new()
         ///     {
         ///         AccountId = "0123105f4ecef8ad9ca31a8372d0c353",
         ///         StreamId = "033e105f4ecef8ad9ca31a8372d0c353",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var examplePipelineStream = Cloudflare.GetPipelineStream.Invoke(new()
+        ///     var examplePipelineStream = Cloudflare.Modules.Pipeline.GetStream.Invoke(new()
         ///     {
         ///         AccountId = "0123105f4ecef8ad9ca31a8372d0c353",
         ///         StreamId = "033e105f4ecef8ad9ca31a8372d0c353",

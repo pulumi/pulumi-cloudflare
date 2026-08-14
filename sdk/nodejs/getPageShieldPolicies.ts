@@ -22,12 +22,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const examplePageShieldPolicies = cloudflare.getPageShieldPolicies({
+ * const examplePageShieldPolicies = cloudflare.pageshield.getPolicies({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getPageShieldPolicies:getPageShieldPolicies has been deprecated in favor of cloudflare:pageShield/policies:getPolicies */
 export function getPageShieldPolicies(args?: GetPageShieldPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetPageShieldPoliciesResult> {
+    pulumi.log.warn("getPageShieldPolicies is deprecated: cloudflare:index/getPageShieldPolicies:getPageShieldPolicies has been deprecated in favor of cloudflare:pageShield/policies:getPolicies")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getPageShieldPolicies:getPageShieldPolicies", {
@@ -83,12 +85,14 @@ export interface GetPageShieldPoliciesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const examplePageShieldPolicies = cloudflare.getPageShieldPolicies({
+ * const examplePageShieldPolicies = cloudflare.pageshield.getPolicies({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getPageShieldPolicies:getPageShieldPolicies has been deprecated in favor of cloudflare:pageShield/policies:getPolicies */
 export function getPageShieldPoliciesOutput(args?: GetPageShieldPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPageShieldPoliciesResult> {
+    pulumi.log.warn("getPageShieldPolicies is deprecated: cloudflare:index/getPageShieldPolicies:getPageShieldPolicies has been deprecated in favor of cloudflare:pageShield/policies:getPolicies")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getPageShieldPolicies:getPageShieldPolicies", {

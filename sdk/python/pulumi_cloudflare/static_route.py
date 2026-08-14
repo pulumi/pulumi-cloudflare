@@ -314,7 +314,7 @@ class StaticRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_magic_wan_static_route = cloudflare.MagicWanStaticRoute("example_magic_wan_static_route",
+        example_magic_wan_static_route = cloudflare.magicwan.StaticRoute("example_magic_wan_static_route",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             nexthop="203.0.113.1",
             prefix="192.0.2.0/24",
@@ -357,7 +357,7 @@ class StaticRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_magic_wan_static_route = cloudflare.MagicWanStaticRoute("example_magic_wan_static_route",
+        example_magic_wan_static_route = cloudflare.magicwan.StaticRoute("example_magic_wan_static_route",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             nexthop="203.0.113.1",
             prefix="192.0.2.0/24",
@@ -426,8 +426,6 @@ class StaticRoute(pulumi.CustomResource):
             __props__.__dict__["weight"] = weight
             __props__.__dict__["created_on"] = None
             __props__.__dict__["modified_on"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/staticRoute:StaticRoute")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(StaticRoute, __self__).__init__(
             'cloudflare:index/staticRoute:StaticRoute',
             resource_name,

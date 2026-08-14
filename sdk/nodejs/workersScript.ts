@@ -13,13 +13,15 @@ import * as utilities from "./utilities";
  * - `Workers Scripts Write`
  * - `Workers Tail Read`
  *
- * > For more direct control over Workers resources, we recommend the beta `cloudflare.Worker`, `cloudflare.WorkerVersion`, and `cloudflare.WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
+ * > For more direct control over Workers resources, we recommend the beta `cloudflare.worker.Worker`, `cloudflare.worker.Version`, and `cloudflare.workers.Deployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
  *
  * ## Import
  *
  * ```sh
  * $ pulumi import cloudflare:index/workersScript:WorkersScript example '<account_id>/<script_name>'
  * ```
+ *
+ * @deprecated cloudflare:index/workersScript:WorkersScript has been deprecated in favor of cloudflare:workersScript/workersScript:WorkersScript
  */
 export class WorkersScript extends pulumi.CustomResource {
     /**
@@ -32,6 +34,7 @@ export class WorkersScript extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WorkersScriptState, opts?: pulumi.CustomResourceOptions): WorkersScript {
+        pulumi.log.warn("WorkersScript is deprecated: cloudflare:index/workersScript:WorkersScript has been deprecated in favor of cloudflare:workersScript/workersScript:WorkersScript")
         return new WorkersScript(name, <any>state, { ...opts, id: id });
     }
 
@@ -210,8 +213,11 @@ export class WorkersScript extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/workersScript:WorkersScript has been deprecated in favor of cloudflare:workersScript/workersScript:WorkersScript */
     constructor(name: string, args: WorkersScriptArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/workersScript:WorkersScript has been deprecated in favor of cloudflare:workersScript/workersScript:WorkersScript */
     constructor(name: string, argsOrState?: WorkersScriptArgs | WorkersScriptState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("WorkersScript is deprecated: cloudflare:index/workersScript:WorkersScript has been deprecated in favor of cloudflare:workersScript/workersScript:WorkersScript")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

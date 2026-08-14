@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneLockdown = cloudflare.getZoneLockdown({
+ * const exampleZoneLockdown = cloudflare.zone.getLockdown({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     lockDownsId: "372e67954025e0ba6aaa6d586b9e0b59",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZoneLockdown:getZoneLockdown has been deprecated in favor of cloudflare:zone/lockdown:getLockdown */
 export function getZoneLockdown(args?: GetZoneLockdownArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneLockdownResult> {
+    pulumi.log.warn("getZoneLockdown is deprecated: cloudflare:index/getZoneLockdown:getZoneLockdown has been deprecated in favor of cloudflare:zone/lockdown:getLockdown")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZoneLockdown:getZoneLockdown", {
@@ -103,13 +105,15 @@ export interface GetZoneLockdownResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneLockdown = cloudflare.getZoneLockdown({
+ * const exampleZoneLockdown = cloudflare.zone.getLockdown({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     lockDownsId: "372e67954025e0ba6aaa6d586b9e0b59",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZoneLockdown:getZoneLockdown has been deprecated in favor of cloudflare:zone/lockdown:getLockdown */
 export function getZoneLockdownOutput(args?: GetZoneLockdownOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneLockdownResult> {
+    pulumi.log.warn("getZoneLockdown is deprecated: cloudflare:index/getZoneLockdown:getZoneLockdown has been deprecated in favor of cloudflare:zone/lockdown:getLockdown")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZoneLockdown:getZoneLockdown", {

@@ -237,8 +237,13 @@ class _PipelineSinkState:
         pulumi.set(self, "type", value)
 
 
+warnings.warn("""cloudflare:index/pipelineSink:PipelineSink has been deprecated in favor of cloudflare:pipeline/sink:Sink""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/pipelineSink:PipelineSink")
 class PipelineSink(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/pipelineSink:PipelineSink has been deprecated in favor of cloudflare:pipeline/sink:Sink""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -262,7 +267,7 @@ class PipelineSink(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_pipeline_sink = cloudflare.PipelineSink("example_pipeline_sink",
+        example_pipeline_sink = cloudflare.pipeline.Sink("example_pipeline_sink",
             account_id="0123105f4ecef8ad9ca31a8372d0c353",
             name="my_sink",
             type="r2",
@@ -346,7 +351,7 @@ class PipelineSink(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_pipeline_sink = cloudflare.PipelineSink("example_pipeline_sink",
+        example_pipeline_sink = cloudflare.pipeline.Sink("example_pipeline_sink",
             account_id="0123105f4ecef8ad9ca31a8372d0c353",
             name="my_sink",
             type="r2",
@@ -426,6 +431,7 @@ class PipelineSink(pulumi.CustomResource):
                  schema: pulumi.Input[Optional[Union['PipelineSinkSchemaArgs', 'PipelineSinkSchemaArgsDict']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""PipelineSink is deprecated: cloudflare:index/pipelineSink:PipelineSink has been deprecated in favor of cloudflare:pipeline/sink:Sink""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

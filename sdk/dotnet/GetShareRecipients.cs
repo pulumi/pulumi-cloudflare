@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getShareRecipients:getShareRecipients has been deprecated in favor of cloudflare:share/recipients:getRecipients")]
     public static class GetShareRecipients
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleShareRecipients = Cloudflare.GetShareRecipients.Invoke(new()
+        ///     var exampleShareRecipients = Cloudflare.Modules.Share.GetRecipients.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ShareId = "3fd85f74b32742f1bff64a85009dda07",
@@ -46,7 +47,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleShareRecipients = Cloudflare.GetShareRecipients.Invoke(new()
+        ///     var exampleShareRecipients = Cloudflare.Modules.Share.GetRecipients.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ShareId = "3fd85f74b32742f1bff64a85009dda07",
@@ -70,7 +71,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleShareRecipients = Cloudflare.GetShareRecipients.Invoke(new()
+        ///     var exampleShareRecipients = Cloudflare.Modules.Share.GetRecipients.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ShareId = "3fd85f74b32742f1bff64a85009dda07",

@@ -149,8 +149,13 @@ class _ZeroTrustDlpDataTagState:
         pulumi.set(self, "updated_at", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustDlpDataTag:ZeroTrustDlpDataTag has been deprecated in favor of cloudflare:zeroTrustDlpDataTag/zeroTrustDlpDataTag:ZeroTrustDlpDataTag""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustDlpDataTag:ZeroTrustDlpDataTag")
 class ZeroTrustDlpDataTag(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustDlpDataTag:ZeroTrustDlpDataTag has been deprecated in favor of cloudflare:zeroTrustDlpDataTag/zeroTrustDlpDataTag:ZeroTrustDlpDataTag""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -172,7 +177,7 @@ class ZeroTrustDlpDataTag(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_data_tag = cloudflare.ZeroTrustDlpDataTag("example_zero_trust_dlp_data_tag",
+        example_zero_trust_dlp_data_tag = cloudflare.zerotrustdlpdatatag.ZeroTrustDlpDataTag("example_zero_trust_dlp_data_tag",
             account_id="account_id",
             category_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             name="name",
@@ -207,7 +212,7 @@ class ZeroTrustDlpDataTag(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_data_tag = cloudflare.ZeroTrustDlpDataTag("example_zero_trust_dlp_data_tag",
+        example_zero_trust_dlp_data_tag = cloudflare.zerotrustdlpdatatag.ZeroTrustDlpDataTag("example_zero_trust_dlp_data_tag",
             account_id="account_id",
             category_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             name="name",
@@ -241,6 +246,7 @@ class ZeroTrustDlpDataTag(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustDlpDataTag is deprecated: cloudflare:index/zeroTrustDlpDataTag:ZeroTrustDlpDataTag has been deprecated in favor of cloudflare:zeroTrustDlpDataTag/zeroTrustDlpDataTag:ZeroTrustDlpDataTag""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

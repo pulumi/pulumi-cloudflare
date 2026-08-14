@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsFirewall = new cloudflare.DnsFirewall("example_dns_firewall", {
+ * const exampleDnsFirewall = new cloudflare.dns.Firewall("example_dns_firewall", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "My Awesome DNS Firewall cluster",
  *     upstreamIps: [
@@ -46,6 +46,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/dnsFirewall:DnsFirewall example '<account_id>/<dns_firewall_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/dnsFirewall:DnsFirewall has been deprecated in favor of cloudflare:dns/firewall:Firewall
  */
 export class DnsFirewall extends pulumi.CustomResource {
     /**
@@ -58,6 +60,7 @@ export class DnsFirewall extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DnsFirewallState, opts?: pulumi.CustomResourceOptions): DnsFirewall {
+        pulumi.log.warn("DnsFirewall is deprecated: cloudflare:index/dnsFirewall:DnsFirewall has been deprecated in favor of cloudflare:dns/firewall:Firewall")
         return new DnsFirewall(name, <any>state, { ...opts, id: id });
     }
 
@@ -153,8 +156,11 @@ export class DnsFirewall extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/dnsFirewall:DnsFirewall has been deprecated in favor of cloudflare:dns/firewall:Firewall */
     constructor(name: string, args: DnsFirewallArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/dnsFirewall:DnsFirewall has been deprecated in favor of cloudflare:dns/firewall:Firewall */
     constructor(name: string, argsOrState?: DnsFirewallArgs | DnsFirewallState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("DnsFirewall is deprecated: cloudflare:index/dnsFirewall:DnsFirewall has been deprecated in favor of cloudflare:dns/firewall:Firewall")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

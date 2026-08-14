@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDeviceDeploymentGroups = new cloudflare.ZeroTrustDeviceDeploymentGroups("example_zero_trust_device_deployment_groups", {
+ * const exampleZeroTrustDeviceDeploymentGroups = new cloudflare.zerotrustdevicedeploymentgroups.ZeroTrustDeviceDeploymentGroups("example_zero_trust_device_deployment_groups", {
  *     accountId: "account_id",
  *     name: "Engineering Ring 0",
  *     versionConfigs: [{
@@ -29,6 +29,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups example '<account_id>/<group_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups
  */
 export class ZeroTrustDeviceDeploymentGroups extends pulumi.CustomResource {
     /**
@@ -41,6 +43,7 @@ export class ZeroTrustDeviceDeploymentGroups extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustDeviceDeploymentGroupsState, opts?: pulumi.CustomResourceOptions): ZeroTrustDeviceDeploymentGroups {
+        pulumi.log.warn("ZeroTrustDeviceDeploymentGroups is deprecated: cloudflare:index/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups")
         return new ZeroTrustDeviceDeploymentGroups(name, <any>state, { ...opts, id: id });
     }
 
@@ -87,8 +90,11 @@ export class ZeroTrustDeviceDeploymentGroups extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups */
     constructor(name: string, args: ZeroTrustDeviceDeploymentGroupsArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups */
     constructor(name: string, argsOrState?: ZeroTrustDeviceDeploymentGroupsArgs | ZeroTrustDeviceDeploymentGroupsState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustDeviceDeploymentGroups is deprecated: cloudflare:index/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

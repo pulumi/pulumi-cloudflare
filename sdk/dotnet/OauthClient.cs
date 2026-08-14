@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleOauthClient = new Cloudflare.OauthClient("example_oauth_client", new()
+    ///     var exampleOauthClient = new Cloudflare.Modules.Oauth.OauthClient("example_oauth_client", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         ClientName = "My OAuth App",
@@ -68,6 +68,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/oauthClient:OauthClient has been deprecated in favor of cloudflare:oauth/client:Client")]
     [CloudflareResourceType("cloudflare:index/oauthClient:OauthClient")]
     public partial class OauthClient : global::Pulumi.CustomResource
     {

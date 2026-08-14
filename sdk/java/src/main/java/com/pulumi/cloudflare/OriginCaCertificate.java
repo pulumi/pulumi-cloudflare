@@ -25,8 +25,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.OriginCaCertificate;
- * import com.pulumi.cloudflare.OriginCaCertificateArgs;
+ * import com.pulumi.cloudflare.originCa.Certificate;
+ * import com.pulumi.cloudflare.originCa.CertificateArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -40,7 +40,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleOriginCaCertificate = new OriginCaCertificate("exampleOriginCaCertificate", OriginCaCertificateArgs.builder()
+ *         var exampleOriginCaCertificate = new Certificate("exampleOriginCaCertificate", CertificateArgs.builder()
  *             .csr("""
  *   -----BEGIN CERTIFICATE REQUEST-----
  *   MIICxzCCAa8CAQAwSDELMAkGA1UEBhMCVVMxFjAUBgNVBAgTDVNhbiBGcmFuY2lz
@@ -79,7 +79,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example &#39;&lt;certificate_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/originCaCertificate:OriginCaCertificate has been deprecated in favor of cloudflare:originCa/certificate:Certificate
+ * 
  */
+@Deprecated /* cloudflare:index/originCaCertificate:OriginCaCertificate has been deprecated in favor of cloudflare:originCa/certificate:Certificate */
 @ResourceType(type="cloudflare:index/originCaCertificate:OriginCaCertificate")
 public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
     /**

@@ -26,8 +26,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustGatewayCertificate;
- * import com.pulumi.cloudflare.ZeroTrustGatewayCertificateArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.Certificate;
+ * import com.pulumi.cloudflare.zeroTrustGateway.CertificateArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustGatewayCertificate = new ZeroTrustGatewayCertificate("exampleZeroTrustGatewayCertificate", ZeroTrustGatewayCertificateArgs.builder()
+ *         var exampleZeroTrustGatewayCertificate = new Certificate("exampleZeroTrustGatewayCertificate", CertificateArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
  *             .validityPeriodDays(1826)
  *             .build());
@@ -57,7 +57,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate example &#39;&lt;account_id&gt;/&lt;certificate_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate has been deprecated in favor of cloudflare:zeroTrustGateway/certificate:Certificate
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate has been deprecated in favor of cloudflare:zeroTrustGateway/certificate:Certificate */
 @ResourceType(type="cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate")
 public class ZeroTrustGatewayCertificate extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

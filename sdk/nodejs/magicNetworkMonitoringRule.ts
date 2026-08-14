@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicNetworkMonitoringRule = new cloudflare.MagicNetworkMonitoringRule("example_magic_network_monitoring_rule", {
+ * const exampleMagicNetworkMonitoringRule = new cloudflare.magicnetworkmonitoring.Rule("example_magic_network_monitoring_rule", {
  *     accountId: "6f91088a406011ed95aed352566e8d4c",
  *     automaticAdvertisement: true,
  *     name: "my_rule_1",
@@ -37,6 +37,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule example '<account_id>/<rule_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule has been deprecated in favor of cloudflare:magicNetworkMonitoring/rule:Rule
  */
 export class MagicNetworkMonitoringRule extends pulumi.CustomResource {
     /**
@@ -49,6 +51,7 @@ export class MagicNetworkMonitoringRule extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: MagicNetworkMonitoringRuleState, opts?: pulumi.CustomResourceOptions): MagicNetworkMonitoringRule {
+        pulumi.log.warn("MagicNetworkMonitoringRule is deprecated: cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule has been deprecated in favor of cloudflare:magicNetworkMonitoring/rule:Rule")
         return new MagicNetworkMonitoringRule(name, <any>state, { ...opts, id: id });
     }
 
@@ -117,8 +120,11 @@ export class MagicNetworkMonitoringRule extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule has been deprecated in favor of cloudflare:magicNetworkMonitoring/rule:Rule */
     constructor(name: string, args: MagicNetworkMonitoringRuleArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule has been deprecated in favor of cloudflare:magicNetworkMonitoring/rule:Rule */
     constructor(name: string, argsOrState?: MagicNetworkMonitoringRuleArgs | MagicNetworkMonitoringRuleState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("MagicNetworkMonitoringRule is deprecated: cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule has been deprecated in favor of cloudflare:magicNetworkMonitoring/rule:Rule")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

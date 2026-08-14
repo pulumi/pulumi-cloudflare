@@ -18,14 +18,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdeviceposture"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustDevicePostureIntegration(ctx, &cloudflare.LookupZeroTrustDevicePostureIntegrationArgs{
+//			_, err := zerotrustdeviceposture.GetIntegration(ctx, &zerotrustdeviceposture.GetIntegrationArgs{
 //				AccountId:     pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //				IntegrationId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //			}, nil)
@@ -37,6 +37,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustDevicePostureIntegration:getZeroTrustDevicePostureIntegration has been deprecated in favor of cloudflare:zeroTrustDevicePosture/integration:getIntegration
 func LookupZeroTrustDevicePostureIntegration(ctx *pulumi.Context, args *LookupZeroTrustDevicePostureIntegrationArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustDevicePostureIntegrationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustDevicePostureIntegrationResult

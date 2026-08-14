@@ -175,8 +175,13 @@ class _RegionalHostnameState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/regionalHostname:RegionalHostname has been deprecated in favor of cloudflare:regional/hostname:Hostname""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/regionalHostname:RegionalHostname")
 class RegionalHostname(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/regionalHostname:RegionalHostname has been deprecated in favor of cloudflare:regional/hostname:Hostname""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -198,7 +203,7 @@ class RegionalHostname(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_regional_hostname = cloudflare.RegionalHostname("example_regional_hostname",
+        example_regional_hostname = cloudflare.regional.Hostname("example_regional_hostname",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             hostname="foo.example.com",
             region_key="ca",
@@ -237,7 +242,7 @@ class RegionalHostname(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_regional_hostname = cloudflare.RegionalHostname("example_regional_hostname",
+        example_regional_hostname = cloudflare.regional.Hostname("example_regional_hostname",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             hostname="foo.example.com",
             region_key="ca",
@@ -271,6 +276,7 @@ class RegionalHostname(pulumi.CustomResource):
                  routing: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""RegionalHostname is deprecated: cloudflare:index/regionalHostname:RegionalHostname has been deprecated in favor of cloudflare:regional/hostname:Hostname""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

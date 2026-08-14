@@ -58,9 +58,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.Account;
- * import com.pulumi.cloudflare.AccountArgs;
- * import com.pulumi.cloudflare.inputs.AccountUnitArgs;
+ * import com.pulumi.cloudflare.account.Account;
+ * import com.pulumi.cloudflare.account.AccountArgs;
+ * import com.pulumi.cloudflare.account.inputs.AccountUnitArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -93,7 +93,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/account:Account example &#39;&lt;account_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/account:Account has been deprecated in favor of cloudflare:account/account:Account
+ * 
  */
+@Deprecated /* cloudflare:index/account:Account has been deprecated in favor of cloudflare:account/account:Account */
 @ResourceType(type="cloudflare:index/account:Account")
 public class Account extends com.pulumi.resources.CustomResource {
     /**

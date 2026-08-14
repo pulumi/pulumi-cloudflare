@@ -19,36 +19,36 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/magicwan"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewMagicWanIpsecTunnel(ctx, "example_magic_wan_ipsec_tunnel", &cloudflare.MagicWanIpsecTunnelArgs{
+//			_, err := magicwan.NewIpsecTunnel(ctx, "example_magic_wan_ipsec_tunnel", &magicwan.IpsecTunnelArgs{
 //				AccountId:              pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				CloudflareEndpoint:     pulumi.String("203.0.113.1"),
 //				InterfaceAddress:       pulumi.String("192.0.2.0/31"),
 //				Name:                   pulumi.String("IPsec_1"),
 //				AutomaticReturnRouting: pulumi.Bool(true),
-//				Bgp: &cloudflare.MagicWanIpsecTunnelBgpArgs{
+//				Bgp: &magicwan.IpsecTunnelBgpArgs{
 //					CustomerAsn: pulumi.Int(0),
 //					ExtraPrefixes: pulumi.StringArray{
 //						pulumi.String("string"),
 //					},
 //					Md5Key: pulumi.String("md5_key"),
 //				},
-//				CustomRemoteIdentities: &cloudflare.MagicWanIpsecTunnelCustomRemoteIdentitiesArgs{
+//				CustomRemoteIdentities: &magicwan.IpsecTunnelCustomRemoteIdentitiesArgs{
 //					FqdnId: pulumi.String("fqdn_id"),
 //				},
 //				CustomerEndpoint: pulumi.String("203.0.113.1"),
 //				Description:      pulumi.String("Tunnel for ISP X"),
-//				HealthCheck: &cloudflare.MagicWanIpsecTunnelHealthCheckArgs{
+//				HealthCheck: &magicwan.IpsecTunnelHealthCheckArgs{
 //					Direction: pulumi.String("bidirectional"),
 //					Enabled:   pulumi.Bool(true),
 //					Rate:      pulumi.String("low"),
-//					Target: &cloudflare.MagicWanIpsecTunnelHealthCheckTargetArgs{
+//					Target: &magicwan.IpsecTunnelHealthCheckTargetArgs{
 //						Saved: pulumi.String("203.0.113.1"),
 //					},
 //					Type: pulumi.String("request"),
@@ -71,6 +71,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel example '<account_id>/<ipsec_tunnel_id>'
 // ```
+//
+// Deprecated: cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel has been deprecated in favor of cloudflare:magicWan/ipsecTunnel:IpsecTunnel
 type MagicWanIpsecTunnel struct {
 	pulumi.CustomResourceState
 

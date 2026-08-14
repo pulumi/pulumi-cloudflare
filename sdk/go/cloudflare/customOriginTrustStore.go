@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/customorigintrust"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewCustomOriginTrustStore(ctx, "example_custom_origin_trust_store", &cloudflare.CustomOriginTrustStoreArgs{
+//			_, err := customorigintrust.NewStore(ctx, "example_custom_origin_trust_store", &customorigintrust.StoreArgs{
 //				ZoneId:      pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Certificate: pulumi.String("  -----BEGIN CERTIFICATE-----\n  MIIDdjCCAl6gAwIBAgIJAPnMg0Fs+/B0MA0GCSqGSIb3DQEBCwUAMFsx...\n  -----END CERTIFICATE-----\n\n"),
 //			})
@@ -49,6 +49,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/customOriginTrustStore:CustomOriginTrustStore example '<zone_id>/<custom_origin_trust_store_id>'
 // ```
+//
+// Deprecated: cloudflare:index/customOriginTrustStore:CustomOriginTrustStore has been deprecated in favor of cloudflare:customOriginTrust/store:Store
 type CustomOriginTrustStore struct {
 	pulumi.CustomResourceState
 

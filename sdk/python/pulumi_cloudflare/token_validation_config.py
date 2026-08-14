@@ -222,8 +222,13 @@ class _TokenValidationConfigState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/tokenValidationConfig:TokenValidationConfig has been deprecated in favor of cloudflare:tokenValidation/config:Config""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/tokenValidationConfig:TokenValidationConfig")
 class TokenValidationConfig(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/tokenValidationConfig:TokenValidationConfig has been deprecated in favor of cloudflare:tokenValidation/config:Config""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -249,7 +254,7 @@ class TokenValidationConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_token_validation_config = cloudflare.TokenValidationConfig("example_token_validation_config",
+        example_token_validation_config = cloudflare.tokenvalidation.Config("example_token_validation_config",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             credentials={
                 "keys": [{
@@ -302,7 +307,7 @@ class TokenValidationConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_token_validation_config = cloudflare.TokenValidationConfig("example_token_validation_config",
+        example_token_validation_config = cloudflare.tokenvalidation.Config("example_token_validation_config",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             credentials={
                 "keys": [{
@@ -351,6 +356,7 @@ class TokenValidationConfig(pulumi.CustomResource):
                  token_type: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""TokenValidationConfig is deprecated: cloudflare:index/tokenValidationConfig:TokenValidationConfig has been deprecated in favor of cloudflare:tokenValidation/config:Config""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

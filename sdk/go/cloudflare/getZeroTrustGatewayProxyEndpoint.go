@@ -18,14 +18,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustgatewayproxy"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustGatewayProxyEndpoint(ctx, &cloudflare.LookupZeroTrustGatewayProxyEndpointArgs{
+//			_, err := zerotrustgatewayproxy.GetEndpoint(ctx, &zerotrustgatewayproxy.GetEndpointArgs{
 //				AccountId:       pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //				ProxyEndpointId: "ed35569b41ce4d1facfe683550f54086",
 //			}, nil)
@@ -37,6 +37,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustGatewayProxyEndpoint:getZeroTrustGatewayProxyEndpoint has been deprecated in favor of cloudflare:zeroTrustGatewayProxy/endpoint:getEndpoint
 func LookupZeroTrustGatewayProxyEndpoint(ctx *pulumi.Context, args *LookupZeroTrustGatewayProxyEndpointArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustGatewayProxyEndpointResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustGatewayProxyEndpointResult

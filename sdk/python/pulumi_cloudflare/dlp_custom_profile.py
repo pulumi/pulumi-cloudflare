@@ -531,7 +531,7 @@ class DlpCustomProfile(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_custom_profile = cloudflare.ZeroTrustDlpCustomProfile("example_zero_trust_dlp_custom_profile",
+        example_zero_trust_dlp_custom_profile = cloudflare.zerotrustdlpcustom.Profile("example_zero_trust_dlp_custom_profile",
             name="name",
             account_id="account_id",
             description="Custom profile with entries",
@@ -541,7 +541,7 @@ class DlpCustomProfile(pulumi.CustomResource):
                 "enabled": True,
             }])
         # Custom entry that is a part of this new profile
-        example_custom_entry = cloudflare.ZeroTrustDlpCustomEntry("example_custom_entry",
+        example_custom_entry = cloudflare.zerotrustdlpcustom.Entry("example_custom_entry",
             name="custom",
             account_id="account_id",
             profile_id=example_zero_trust_dlp_custom_profile.id,
@@ -588,7 +588,7 @@ class DlpCustomProfile(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_custom_profile = cloudflare.ZeroTrustDlpCustomProfile("example_zero_trust_dlp_custom_profile",
+        example_zero_trust_dlp_custom_profile = cloudflare.zerotrustdlpcustom.Profile("example_zero_trust_dlp_custom_profile",
             name="name",
             account_id="account_id",
             description="Custom profile with entries",
@@ -598,7 +598,7 @@ class DlpCustomProfile(pulumi.CustomResource):
                 "enabled": True,
             }])
         # Custom entry that is a part of this new profile
-        example_custom_entry = cloudflare.ZeroTrustDlpCustomEntry("example_custom_entry",
+        example_custom_entry = cloudflare.zerotrustdlpcustom.Entry("example_custom_entry",
             name="custom",
             account_id="account_id",
             profile_id=example_zero_trust_dlp_custom_profile.id,
@@ -674,8 +674,6 @@ class DlpCustomProfile(pulumi.CustomResource):
             __props__.__dict__["open_access"] = None
             __props__.__dict__["type"] = None
             __props__.__dict__["updated_at"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/dlpCustomProfile:DlpCustomProfile")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(DlpCustomProfile, __self__).__init__(
             'cloudflare:index/dlpCustomProfile:DlpCustomProfile',
             resource_name,

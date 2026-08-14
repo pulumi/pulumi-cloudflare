@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getPageShieldCookies:getPageShieldCookies has been deprecated in favor of cloudflare:pageShieldCookies/pageShieldCookies:getPageShieldCookies")]
     public static class GetPageShieldCookies
     {
         /// <summary>
@@ -31,7 +32,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var examplePageShieldCookies = Cloudflare.GetPageShieldCookies.Invoke(new()
+        ///     var examplePageShieldCookies = Cloudflare.Modules.PageShieldCookies.GetPageShieldCookies.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         CookieId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -63,7 +64,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var examplePageShieldCookies = Cloudflare.GetPageShieldCookies.Invoke(new()
+        ///     var examplePageShieldCookies = Cloudflare.Modules.PageShieldCookies.GetPageShieldCookies.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         CookieId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -95,7 +96,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var examplePageShieldCookies = Cloudflare.GetPageShieldCookies.Invoke(new()
+        ///     var examplePageShieldCookies = Cloudflare.Modules.PageShieldCookies.GetPageShieldCookies.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         CookieId = "023e105f4ecef8ad9ca31a8372d0c353",

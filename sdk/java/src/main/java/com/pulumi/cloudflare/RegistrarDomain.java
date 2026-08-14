@@ -25,8 +25,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.RegistrarDomain;
- * import com.pulumi.cloudflare.RegistrarDomainArgs;
+ * import com.pulumi.cloudflare.registrar.Domain;
+ * import com.pulumi.cloudflare.registrar.DomainArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -40,7 +40,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleRegistrarDomain = new RegistrarDomain("exampleRegistrarDomain", RegistrarDomainArgs.builder()
+ *         var exampleRegistrarDomain = new Domain("exampleRegistrarDomain", DomainArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .domainName("example.com")
  *             .autoRenew(true)
@@ -57,7 +57,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/registrarDomain:RegistrarDomain has been deprecated in favor of cloudflare:registrar/domain:Domain
+ * 
  */
+@Deprecated /* cloudflare:index/registrarDomain:RegistrarDomain has been deprecated in favor of cloudflare:registrar/domain:Domain */
 @ResourceType(type="cloudflare:index/registrarDomain:RegistrarDomain")
 public class RegistrarDomain extends com.pulumi.resources.CustomResource {
     /**

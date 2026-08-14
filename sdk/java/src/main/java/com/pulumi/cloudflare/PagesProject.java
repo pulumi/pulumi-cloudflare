@@ -41,44 +41,44 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.PagesProject;
- * import com.pulumi.cloudflare.PagesProjectArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectBuildConfigArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsPreviewArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsPreviewAiBindingsArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsPreviewBrowsersArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsPreviewD1DatabasesArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsPreviewEnvVarsArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsPreviewKvNamespacesArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsPreviewLimitsArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsPreviewMtlsCertificatesArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsPreviewPlacementArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsPreviewQueueProducersArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsPreviewR2BucketsArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsPreviewServicesArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionAiBindingsArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionBrowsersArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionD1DatabasesArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionDurableObjectNamespacesArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionEnvVarsArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionHyperdriveBindingsArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionKvNamespacesArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionLimitsArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionMtlsCertificatesArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionPlacementArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionQueueProducersArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionR2BucketsArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionServicesArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionVectorizeBindingsArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectSourceArgs;
- * import com.pulumi.cloudflare.inputs.PagesProjectSourceConfigArgs;
+ * import com.pulumi.cloudflare.pages.Project;
+ * import com.pulumi.cloudflare.pages.ProjectArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectBuildConfigArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsPreviewArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsPreviewAiBindingsArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsPreviewBrowsersArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsPreviewD1DatabasesArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsPreviewEnvVarsArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsPreviewHyperdriveBindingsArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsPreviewKvNamespacesArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsPreviewLimitsArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsPreviewMtlsCertificatesArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsPreviewPlacementArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsPreviewQueueProducersArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsPreviewR2BucketsArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsPreviewServicesArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsPreviewVectorizeBindingsArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsProductionArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsProductionAiBindingsArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsProductionAnalyticsEngineDatasetsArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsProductionBrowsersArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsProductionD1DatabasesArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsProductionDurableObjectNamespacesArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsProductionEnvVarsArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsProductionHyperdriveBindingsArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsProductionKvNamespacesArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsProductionLimitsArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsProductionMtlsCertificatesArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsProductionPlacementArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsProductionQueueProducersArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsProductionR2BucketsArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsProductionServicesArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectDeploymentConfigsProductionVectorizeBindingsArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectSourceArgs;
+ * import com.pulumi.cloudflare.pages.inputs.ProjectSourceConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -92,11 +92,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var examplePagesProject = new PagesProject("examplePagesProject", PagesProjectArgs.builder()
+ *         var examplePagesProject = new Project("examplePagesProject", ProjectArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .name("my-pages-app")
  *             .productionBranch("main")
- *             .buildConfig(PagesProjectBuildConfigArgs.builder()
+ *             .buildConfig(ProjectBuildConfigArgs.builder()
  *                 .buildCaching(true)
  *                 .buildCommand("npm run build")
  *                 .destinationDir("build")
@@ -104,124 +104,124 @@ import javax.annotation.Nullable;
  *                 .webAnalyticsTag("cee1c73f6e4743d0b5e6bb1a0bcaabcc")
  *                 .webAnalyticsToken("021e1057c18547eca7b79f2516f06o7x")
  *                 .build())
- *             .deploymentConfigs(PagesProjectDeploymentConfigsArgs.builder()
- *                 .preview(PagesProjectDeploymentConfigsPreviewArgs.builder()
- *                     .aiBindings(Map.of("AI_BINDING", PagesProjectDeploymentConfigsPreviewAiBindingsArgs.builder()
+ *             .deploymentConfigs(ProjectDeploymentConfigsArgs.builder()
+ *                 .preview(ProjectDeploymentConfigsPreviewArgs.builder()
+ *                     .aiBindings(Map.of("AI_BINDING", ProjectDeploymentConfigsPreviewAiBindingsArgs.builder()
  *                         .projectId("some-project-id")
  *                         .build()))
  *                     .alwaysUseLatestCompatibilityDate(false)
- *                     .analyticsEngineDatasets(Map.of("ANALYTICS_ENGINE_BINDING", PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsArgs.builder()
+ *                     .analyticsEngineDatasets(Map.of("ANALYTICS_ENGINE_BINDING", ProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsArgs.builder()
  *                         .dataset("api_analytics")
  *                         .build()))
- *                     .browsers(Map.of("BROWSER", PagesProjectDeploymentConfigsPreviewBrowsersArgs.builder()
+ *                     .browsers(Map.of("BROWSER", ProjectDeploymentConfigsPreviewBrowsersArgs.builder()
  *                         .build()))
  *                     .buildImageMajorVersion(3)
  *                     .compatibilityDate("2025-01-01")
  *                     .compatibilityFlags("url_standard")
- *                     .d1Databases(Map.of("D1_BINDING", PagesProjectDeploymentConfigsPreviewD1DatabasesArgs.builder()
+ *                     .d1Databases(Map.of("D1_BINDING", ProjectDeploymentConfigsPreviewD1DatabasesArgs.builder()
  *                         .id("445e2955-951a-43f8-a35b-a4d0c8138f63")
  *                         .build()))
- *                     .durableObjectNamespaces(Map.of("DO_BINDING", PagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs.builder()
+ *                     .durableObjectNamespaces(Map.of("DO_BINDING", ProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs.builder()
  *                         .namespaceId("5eb63bbbe01eeed093cb22bb8f5acdc3")
  *                         .build()))
- *                     .envVars(Map.of("foo", PagesProjectDeploymentConfigsPreviewEnvVarsArgs.builder()
+ *                     .envVars(Map.of("foo", ProjectDeploymentConfigsPreviewEnvVarsArgs.builder()
  *                         .type("plain_text")
  *                         .value("hello world")
  *                         .build()))
  *                     .failOpen(true)
- *                     .hyperdriveBindings(Map.of("HYPERDRIVE", PagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs.builder()
+ *                     .hyperdriveBindings(Map.of("HYPERDRIVE", ProjectDeploymentConfigsPreviewHyperdriveBindingsArgs.builder()
  *                         .id("a76a99bc342644deb02c38d66082262a")
  *                         .build()))
- *                     .kvNamespaces(Map.of("KV_BINDING", PagesProjectDeploymentConfigsPreviewKvNamespacesArgs.builder()
+ *                     .kvNamespaces(Map.of("KV_BINDING", ProjectDeploymentConfigsPreviewKvNamespacesArgs.builder()
  *                         .namespaceId("5eb63bbbe01eeed093cb22bb8f5acdc3")
  *                         .build()))
- *                     .limits(PagesProjectDeploymentConfigsPreviewLimitsArgs.builder()
+ *                     .limits(ProjectDeploymentConfigsPreviewLimitsArgs.builder()
  *                         .cpuMs(100)
  *                         .build())
- *                     .mtlsCertificates(Map.of("MTLS", PagesProjectDeploymentConfigsPreviewMtlsCertificatesArgs.builder()
+ *                     .mtlsCertificates(Map.of("MTLS", ProjectDeploymentConfigsPreviewMtlsCertificatesArgs.builder()
  *                         .certificateId("d7cdd17c-916f-4cb7-aabe-585eb382ec4e")
  *                         .build()))
- *                     .placement(PagesProjectDeploymentConfigsPreviewPlacementArgs.builder()
+ *                     .placement(ProjectDeploymentConfigsPreviewPlacementArgs.builder()
  *                         .mode("smart")
  *                         .build())
- *                     .queueProducers(Map.of("QUEUE_PRODUCER_BINDING", PagesProjectDeploymentConfigsPreviewQueueProducersArgs.builder()
+ *                     .queueProducers(Map.of("QUEUE_PRODUCER_BINDING", ProjectDeploymentConfigsPreviewQueueProducersArgs.builder()
  *                         .name("some-queue")
  *                         .build()))
- *                     .r2Buckets(Map.of("R2_BINDING", PagesProjectDeploymentConfigsPreviewR2BucketsArgs.builder()
+ *                     .r2Buckets(Map.of("R2_BINDING", ProjectDeploymentConfigsPreviewR2BucketsArgs.builder()
  *                         .name("some-bucket")
  *                         .jurisdiction("eu")
  *                         .build()))
- *                     .services(Map.of("SERVICE_BINDING", PagesProjectDeploymentConfigsPreviewServicesArgs.builder()
+ *                     .services(Map.of("SERVICE_BINDING", ProjectDeploymentConfigsPreviewServicesArgs.builder()
  *                         .service("example-worker")
  *                         .entrypoint("MyHandler")
  *                         .environment("production")
  *                         .build()))
  *                     .usageModel("standard")
- *                     .vectorizeBindings(Map.of("VECTORIZE", PagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs.builder()
+ *                     .vectorizeBindings(Map.of("VECTORIZE", ProjectDeploymentConfigsPreviewVectorizeBindingsArgs.builder()
  *                         .indexName("my_index")
  *                         .build()))
  *                     .wranglerConfigHash("abc123def456")
  *                     .build())
- *                 .production(PagesProjectDeploymentConfigsProductionArgs.builder()
- *                     .aiBindings(Map.of("AI_BINDING", PagesProjectDeploymentConfigsProductionAiBindingsArgs.builder()
+ *                 .production(ProjectDeploymentConfigsProductionArgs.builder()
+ *                     .aiBindings(Map.of("AI_BINDING", ProjectDeploymentConfigsProductionAiBindingsArgs.builder()
  *                         .projectId("some-project-id")
  *                         .build()))
  *                     .alwaysUseLatestCompatibilityDate(false)
- *                     .analyticsEngineDatasets(Map.of("ANALYTICS_ENGINE_BINDING", PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsArgs.builder()
+ *                     .analyticsEngineDatasets(Map.of("ANALYTICS_ENGINE_BINDING", ProjectDeploymentConfigsProductionAnalyticsEngineDatasetsArgs.builder()
  *                         .dataset("api_analytics")
  *                         .build()))
- *                     .browsers(Map.of("BROWSER", PagesProjectDeploymentConfigsProductionBrowsersArgs.builder()
+ *                     .browsers(Map.of("BROWSER", ProjectDeploymentConfigsProductionBrowsersArgs.builder()
  *                         .build()))
  *                     .buildImageMajorVersion(3)
  *                     .compatibilityDate("2025-01-01")
  *                     .compatibilityFlags("url_standard")
- *                     .d1Databases(Map.of("D1_BINDING", PagesProjectDeploymentConfigsProductionD1DatabasesArgs.builder()
+ *                     .d1Databases(Map.of("D1_BINDING", ProjectDeploymentConfigsProductionD1DatabasesArgs.builder()
  *                         .id("445e2955-951a-43f8-a35b-a4d0c8138f63")
  *                         .build()))
- *                     .durableObjectNamespaces(Map.of("DO_BINDING", PagesProjectDeploymentConfigsProductionDurableObjectNamespacesArgs.builder()
+ *                     .durableObjectNamespaces(Map.of("DO_BINDING", ProjectDeploymentConfigsProductionDurableObjectNamespacesArgs.builder()
  *                         .namespaceId("5eb63bbbe01eeed093cb22bb8f5acdc3")
  *                         .build()))
- *                     .envVars(Map.of("foo", PagesProjectDeploymentConfigsProductionEnvVarsArgs.builder()
+ *                     .envVars(Map.of("foo", ProjectDeploymentConfigsProductionEnvVarsArgs.builder()
  *                         .type("plain_text")
  *                         .value("hello world")
  *                         .build()))
  *                     .failOpen(true)
- *                     .hyperdriveBindings(Map.of("HYPERDRIVE", PagesProjectDeploymentConfigsProductionHyperdriveBindingsArgs.builder()
+ *                     .hyperdriveBindings(Map.of("HYPERDRIVE", ProjectDeploymentConfigsProductionHyperdriveBindingsArgs.builder()
  *                         .id("a76a99bc342644deb02c38d66082262a")
  *                         .build()))
- *                     .kvNamespaces(Map.of("KV_BINDING", PagesProjectDeploymentConfigsProductionKvNamespacesArgs.builder()
+ *                     .kvNamespaces(Map.of("KV_BINDING", ProjectDeploymentConfigsProductionKvNamespacesArgs.builder()
  *                         .namespaceId("5eb63bbbe01eeed093cb22bb8f5acdc3")
  *                         .build()))
- *                     .limits(PagesProjectDeploymentConfigsProductionLimitsArgs.builder()
+ *                     .limits(ProjectDeploymentConfigsProductionLimitsArgs.builder()
  *                         .cpuMs(100)
  *                         .build())
- *                     .mtlsCertificates(Map.of("MTLS", PagesProjectDeploymentConfigsProductionMtlsCertificatesArgs.builder()
+ *                     .mtlsCertificates(Map.of("MTLS", ProjectDeploymentConfigsProductionMtlsCertificatesArgs.builder()
  *                         .certificateId("d7cdd17c-916f-4cb7-aabe-585eb382ec4e")
  *                         .build()))
- *                     .placement(PagesProjectDeploymentConfigsProductionPlacementArgs.builder()
+ *                     .placement(ProjectDeploymentConfigsProductionPlacementArgs.builder()
  *                         .mode("smart")
  *                         .build())
- *                     .queueProducers(Map.of("QUEUE_PRODUCER_BINDING", PagesProjectDeploymentConfigsProductionQueueProducersArgs.builder()
+ *                     .queueProducers(Map.of("QUEUE_PRODUCER_BINDING", ProjectDeploymentConfigsProductionQueueProducersArgs.builder()
  *                         .name("some-queue")
  *                         .build()))
- *                     .r2Buckets(Map.of("R2_BINDING", PagesProjectDeploymentConfigsProductionR2BucketsArgs.builder()
+ *                     .r2Buckets(Map.of("R2_BINDING", ProjectDeploymentConfigsProductionR2BucketsArgs.builder()
  *                         .name("some-bucket")
  *                         .jurisdiction("eu")
  *                         .build()))
- *                     .services(Map.of("SERVICE_BINDING", PagesProjectDeploymentConfigsProductionServicesArgs.builder()
+ *                     .services(Map.of("SERVICE_BINDING", ProjectDeploymentConfigsProductionServicesArgs.builder()
  *                         .service("example-worker")
  *                         .entrypoint("MyHandler")
  *                         .environment("production")
  *                         .build()))
  *                     .usageModel("standard")
- *                     .vectorizeBindings(Map.of("VECTORIZE", PagesProjectDeploymentConfigsProductionVectorizeBindingsArgs.builder()
+ *                     .vectorizeBindings(Map.of("VECTORIZE", ProjectDeploymentConfigsProductionVectorizeBindingsArgs.builder()
  *                         .indexName("my_index")
  *                         .build()))
  *                     .wranglerConfigHash("abc123def456")
  *                     .build())
  *                 .build())
- *             .source(PagesProjectSourceArgs.builder()
- *                 .config(PagesProjectSourceConfigArgs.builder()
+ *             .source(ProjectSourceArgs.builder()
+ *                 .config(ProjectSourceConfigArgs.builder()
  *                     .deploymentsEnabled(true)
  *                     .owner("my-org")
  *                     .ownerId("12345678")
@@ -253,7 +253,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/pagesProject:PagesProject example &#39;&lt;account_id&gt;/&lt;project_name&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/pagesProject:PagesProject has been deprecated in favor of cloudflare:pages/project:Project
+ * 
  */
+@Deprecated /* cloudflare:index/pagesProject:PagesProject has been deprecated in favor of cloudflare:pages/project:Project */
 @ResourceType(type="cloudflare:index/pagesProject:PagesProject")
 public class PagesProject extends com.pulumi.resources.CustomResource {
     /**

@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsZoneTransfersAcls = cloudflare.getDnsZoneTransfersAcls({
+ * const exampleDnsZoneTransfersAcls = cloudflare.dnszonetransfers.getAcls({
  *     accountId: "01a7362d577a6c3019a474fd6f485823",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getDnsZoneTransfersAcls:getDnsZoneTransfersAcls has been deprecated in favor of cloudflare:dnsZoneTransfers/acls:getAcls */
 export function getDnsZoneTransfersAcls(args?: GetDnsZoneTransfersAclsArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsZoneTransfersAclsResult> {
+    pulumi.log.warn("getDnsZoneTransfersAcls is deprecated: cloudflare:index/getDnsZoneTransfersAcls:getDnsZoneTransfersAcls has been deprecated in favor of cloudflare:dnsZoneTransfers/acls:getAcls")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getDnsZoneTransfersAcls:getDnsZoneTransfersAcls", {
@@ -69,12 +71,14 @@ export interface GetDnsZoneTransfersAclsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsZoneTransfersAcls = cloudflare.getDnsZoneTransfersAcls({
+ * const exampleDnsZoneTransfersAcls = cloudflare.dnszonetransfers.getAcls({
  *     accountId: "01a7362d577a6c3019a474fd6f485823",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getDnsZoneTransfersAcls:getDnsZoneTransfersAcls has been deprecated in favor of cloudflare:dnsZoneTransfers/acls:getAcls */
 export function getDnsZoneTransfersAclsOutput(args?: GetDnsZoneTransfersAclsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsZoneTransfersAclsResult> {
+    pulumi.log.warn("getDnsZoneTransfersAcls is deprecated: cloudflare:index/getDnsZoneTransfersAcls:getDnsZoneTransfersAcls has been deprecated in favor of cloudflare:dnsZoneTransfers/acls:getAcls")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getDnsZoneTransfersAcls:getDnsZoneTransfersAcls", {

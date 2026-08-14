@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustDeviceManagedNetworksList:getZeroTrustDeviceManagedNetworksList has been deprecated in favor of cloudflare:zeroTrustDeviceManagedNetworks/list:getList")]
     public static class GetZeroTrustDeviceManagedNetworksList
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDeviceManagedNetworksList = Cloudflare.GetZeroTrustDeviceManagedNetworksList.Invoke(new()
+        ///     var exampleZeroTrustDeviceManagedNetworksList = Cloudflare.Modules.ZeroTrustDeviceManagedNetworks.GetList.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///     });
@@ -44,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDeviceManagedNetworksList = Cloudflare.GetZeroTrustDeviceManagedNetworksList.Invoke(new()
+        ///     var exampleZeroTrustDeviceManagedNetworksList = Cloudflare.Modules.ZeroTrustDeviceManagedNetworks.GetList.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///     });
@@ -66,7 +67,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDeviceManagedNetworksList = Cloudflare.GetZeroTrustDeviceManagedNetworksList.Invoke(new()
+        ///     var exampleZeroTrustDeviceManagedNetworksList = Cloudflare.Modules.ZeroTrustDeviceManagedNetworks.GetList.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///     });

@@ -913,8 +913,13 @@ class _ZeroTrustDeviceCustomProfileState:
         pulumi.set(self, "virtual_networks", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustDeviceCustomProfile:ZeroTrustDeviceCustomProfile has been deprecated in favor of cloudflare:zeroTrustDeviceCustomProfile/zeroTrustDeviceCustomProfile:ZeroTrustDeviceCustomProfile""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustDeviceCustomProfile:ZeroTrustDeviceCustomProfile")
 class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustDeviceCustomProfile:ZeroTrustDeviceCustomProfile has been deprecated in favor of cloudflare:zeroTrustDeviceCustomProfile/zeroTrustDeviceCustomProfile:ZeroTrustDeviceCustomProfile""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -957,7 +962,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_device_custom_profile = cloudflare.ZeroTrustDeviceCustomProfile("example_zero_trust_device_custom_profile",
+        example_zero_trust_device_custom_profile = cloudflare.zerotrustdevicecustomprofile.ZeroTrustDeviceCustomProfile("example_zero_trust_device_custom_profile",
             account_id="699d98642c564d2e855e9661899b7252",
             match="identity.email == \\"test@cloudflare.com\\"",
             name="Allow Developers",
@@ -1043,7 +1048,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_device_custom_profile = cloudflare.ZeroTrustDeviceCustomProfile("example_zero_trust_device_custom_profile",
+        example_zero_trust_device_custom_profile = cloudflare.zerotrustdevicecustomprofile.ZeroTrustDeviceCustomProfile("example_zero_trust_device_custom_profile",
             account_id="699d98642c564d2e855e9661899b7252",
             match="identity.email == \\"test@cloudflare.com\\"",
             name="Allow Developers",
@@ -1127,6 +1132,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
                  tunnel_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  virtual_networks: pulumi.Input[Optional[Union['ZeroTrustDeviceCustomProfileVirtualNetworksArgs', 'ZeroTrustDeviceCustomProfileVirtualNetworksArgsDict']]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustDeviceCustomProfile is deprecated: cloudflare:index/zeroTrustDeviceCustomProfile:ZeroTrustDeviceCustomProfile has been deprecated in favor of cloudflare:zeroTrustDeviceCustomProfile/zeroTrustDeviceCustomProfile:ZeroTrustDeviceCustomProfile""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

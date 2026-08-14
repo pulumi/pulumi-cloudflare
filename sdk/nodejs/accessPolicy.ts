@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessPolicy = new cloudflare.ZeroTrustAccessPolicy("example_zero_trust_access_policy", {
+ * const exampleZeroTrustAccessPolicy = new cloudflare.zerotrustaccess.Policy("example_zero_trust_access_policy", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     decision: "allow",
  *     includes: [{
@@ -245,8 +245,6 @@ export class AccessPolicy extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessPolicy:AccessPolicy" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AccessPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

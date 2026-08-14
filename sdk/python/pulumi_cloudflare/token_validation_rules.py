@@ -321,8 +321,13 @@ class _TokenValidationRulesState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/tokenValidationRules:TokenValidationRules has been deprecated in favor of cloudflare:tokenValidationRules/tokenValidationRules:TokenValidationRules""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/tokenValidationRules:TokenValidationRules")
 class TokenValidationRules(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/tokenValidationRules:TokenValidationRules has been deprecated in favor of cloudflare:tokenValidationRules/tokenValidationRules:TokenValidationRules""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -350,7 +355,7 @@ class TokenValidationRules(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_token_validation_rules = cloudflare.TokenValidationRules("example_token_validation_rules",
+        example_token_validation_rules = cloudflare.tokenvalidationrules.TokenValidationRules("example_token_validation_rules",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             action="log",
             description="Long description for Token Validation Rule",
@@ -414,7 +419,7 @@ class TokenValidationRules(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_token_validation_rules = cloudflare.TokenValidationRules("example_token_validation_rules",
+        example_token_validation_rules = cloudflare.tokenvalidationrules.TokenValidationRules("example_token_validation_rules",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             action="log",
             description="Long description for Token Validation Rule",
@@ -468,6 +473,7 @@ class TokenValidationRules(pulumi.CustomResource):
                  title: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""TokenValidationRules is deprecated: cloudflare:index/tokenValidationRules:TokenValidationRules has been deprecated in favor of cloudflare:tokenValidationRules/tokenValidationRules:TokenValidationRules""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -315,8 +315,13 @@ class _ZeroTrustDlpCustomEntryState:
         pulumi.set(self, "word_list", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry has been deprecated in favor of cloudflare:zeroTrustDlpCustom/entry:Entry""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry")
 class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry has been deprecated in favor of cloudflare:zeroTrustDlpCustom/entry:Entry""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -340,7 +345,7 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_custom_entry = cloudflare.ZeroTrustDlpCustomEntry("example_zero_trust_dlp_custom_entry",
+        example_zero_trust_dlp_custom_entry = cloudflare.zerotrustdlpcustom.Entry("example_zero_trust_dlp_custom_entry",
             account_id="account_id",
             enabled=True,
             name="name",
@@ -380,7 +385,7 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_custom_entry = cloudflare.ZeroTrustDlpCustomEntry("example_zero_trust_dlp_custom_entry",
+        example_zero_trust_dlp_custom_entry = cloudflare.zerotrustdlpcustom.Entry("example_zero_trust_dlp_custom_entry",
             account_id="account_id",
             enabled=True,
             name="name",
@@ -421,6 +426,7 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
                  pattern: pulumi.Input[Optional[Union['ZeroTrustDlpCustomEntryPatternArgs', 'ZeroTrustDlpCustomEntryPatternArgsDict']]] = None,
                  profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustDlpCustomEntry is deprecated: cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry has been deprecated in favor of cloudflare:zeroTrustDlpCustom/entry:Entry""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

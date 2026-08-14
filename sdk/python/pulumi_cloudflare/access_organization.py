@@ -672,7 +672,7 @@ class AccessOrganization(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_organization = cloudflare.ZeroTrustOrganization("example_zero_trust_organization",
+        example_zero_trust_organization = cloudflare.zerotrust.Organization("example_zero_trust_organization",
             zone_id="zone_id",
             allow_authenticate_via_warp=True,
             auth_domain="test.cloudflareaccess.com",
@@ -766,7 +766,7 @@ class AccessOrganization(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_organization = cloudflare.ZeroTrustOrganization("example_zero_trust_organization",
+        example_zero_trust_organization = cloudflare.zerotrust.Organization("example_zero_trust_organization",
             zone_id="zone_id",
             allow_authenticate_via_warp=True,
             auth_domain="test.cloudflareaccess.com",
@@ -884,8 +884,6 @@ class AccessOrganization(pulumi.CustomResource):
             __props__.__dict__["user_seat_expiration_inactive_time"] = user_seat_expiration_inactive_time
             __props__.__dict__["warp_auth_session_duration"] = warp_auth_session_duration
             __props__.__dict__["zone_id"] = zone_id
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessOrganization:AccessOrganization")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AccessOrganization, __self__).__init__(
             'cloudflare:index/accessOrganization:AccessOrganization',
             resource_name,

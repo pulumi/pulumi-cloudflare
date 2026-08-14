@@ -6,7 +6,6 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.AccessServiceTokenArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.AccessServiceTokenState;
-import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -32,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustAccessServiceToken;
- * import com.pulumi.cloudflare.ZeroTrustAccessServiceTokenArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccessService.Token;
+ * import com.pulumi.cloudflare.zeroTrustAccessService.TokenArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -47,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustAccessServiceToken = new ZeroTrustAccessServiceToken("exampleZeroTrustAccessServiceToken", ZeroTrustAccessServiceTokenArgs.builder()
+ *         var exampleZeroTrustAccessServiceToken = new Token("exampleZeroTrustAccessServiceToken", TokenArgs.builder()
  *             .name("CI/CD token")
  *             .zoneId("zone_id")
  *             .clientSecretVersion(0.0)
@@ -231,9 +230,6 @@ public class AccessServiceToken extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .aliases(List.of(
-                Output.of(Alias.builder().type("cloudflare:index/accessServiceToken:AccessServiceToken").build())
-            ))
             .additionalSecretOutputs(List.of(
                 "clientSecret"
             ))

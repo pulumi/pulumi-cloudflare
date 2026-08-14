@@ -25,18 +25,18 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleLoadBalancerPool = new Cloudflare.LoadBalancerPool("example_load_balancer_pool", new()
+    ///     var exampleLoadBalancerPool = new Cloudflare.Modules.LoadBalancer.LoadBalancerPool("example_load_balancer_pool", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "primary-dc-1",
     ///         Origins = new[]
     ///         {
-    ///             new Cloudflare.Inputs.LoadBalancerPoolOriginArgs
+    ///             new Cloudflare.Modules.LoadBalancer.Inputs.PoolOriginArgs
     ///             {
     ///                 Address = "0.0.0.0",
     ///                 Enabled = true,
     ///                 FlattenCname = true,
-    ///                 Header = new Cloudflare.Inputs.LoadBalancerPoolOriginHeaderArgs
+    ///                 Header = new Cloudflare.Modules.LoadBalancer.Inputs.PoolOriginHeaderArgs
     ///                 {
     ///                     Host = new[]
     ///                     {
@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare
     ///         Description = "Primary data center - Provider XYZ",
     ///         Enabled = false,
     ///         Latitude = 0,
-    ///         LoadShedding = new Cloudflare.Inputs.LoadBalancerPoolLoadSheddingArgs
+    ///         LoadShedding = new Cloudflare.Modules.LoadBalancer.Inputs.PoolLoadSheddingArgs
     ///         {
     ///             DefaultPercent = 0,
     ///             DefaultPolicy = "random",
@@ -64,20 +64,20 @@ namespace Pulumi.Cloudflare
     ///         Monitor = "monitor",
     ///         MonitorGroup = "monitor_group",
     ///         NotificationEmail = "someone@example.com,sometwo@example.com",
-    ///         NotificationFilter = new Cloudflare.Inputs.LoadBalancerPoolNotificationFilterArgs
+    ///         NotificationFilter = new Cloudflare.Modules.LoadBalancer.Inputs.PoolNotificationFilterArgs
     ///         {
-    ///             Origin = new Cloudflare.Inputs.LoadBalancerPoolNotificationFilterOriginArgs
+    ///             Origin = new Cloudflare.Modules.LoadBalancer.Inputs.PoolNotificationFilterOriginArgs
     ///             {
     ///                 Disable = true,
     ///                 Healthy = true,
     ///             },
-    ///             Pool = new Cloudflare.Inputs.LoadBalancerPoolNotificationFilterPoolArgs
+    ///             Pool = new Cloudflare.Modules.LoadBalancer.Inputs.PoolNotificationFilterPoolArgs
     ///             {
     ///                 Disable = true,
     ///                 Healthy = false,
     ///             },
     ///         },
-    ///         OriginSteering = new Cloudflare.Inputs.LoadBalancerPoolOriginSteeringArgs
+    ///         OriginSteering = new Cloudflare.Modules.LoadBalancer.Inputs.PoolOriginSteeringArgs
     ///         {
     ///             Policy = "random",
     ///         },
@@ -92,6 +92,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/loadBalancerPool:LoadBalancerPool example '&lt;account_id&gt;/&lt;pool_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/loadBalancerPool:LoadBalancerPool has been deprecated in favor of cloudflare:loadBalancer/pool:Pool")]
     [CloudflareResourceType("cloudflare:index/loadBalancerPool:LoadBalancerPool")]
     public partial class LoadBalancerPool : global::Pulumi.CustomResource
     {

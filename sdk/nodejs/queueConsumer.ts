@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleQueueConsumer = new cloudflare.QueueConsumer("example_queue_consumer", {
+ * const exampleQueueConsumer = new cloudflare.queue.Consumer("example_queue_consumer", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     queueId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     scriptName: "my-consumer-worker",
@@ -39,6 +39,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/queueConsumer:QueueConsumer has been deprecated in favor of cloudflare:queue/consumer:Consumer
  */
 export class QueueConsumer extends pulumi.CustomResource {
     /**
@@ -51,6 +53,7 @@ export class QueueConsumer extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: QueueConsumerState, opts?: pulumi.CustomResourceOptions): QueueConsumer {
+        pulumi.log.warn("QueueConsumer is deprecated: cloudflare:index/queueConsumer:QueueConsumer has been deprecated in favor of cloudflare:queue/consumer:Consumer")
         return new QueueConsumer(name, <any>state, { ...opts, id: id });
     }
 
@@ -100,8 +103,11 @@ export class QueueConsumer extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/queueConsumer:QueueConsumer has been deprecated in favor of cloudflare:queue/consumer:Consumer */
     constructor(name: string, args: QueueConsumerArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/queueConsumer:QueueConsumer has been deprecated in favor of cloudflare:queue/consumer:Consumer */
     constructor(name: string, argsOrState?: QueueConsumerArgs | QueueConsumerState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("QueueConsumer is deprecated: cloudflare:index/queueConsumer:QueueConsumer has been deprecated in favor of cloudflare:queue/consumer:Consumer")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -18,14 +18,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdevicedeploymentgroups"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustDeviceDeploymentGroups(ctx, &cloudflare.LookupZeroTrustDeviceDeploymentGroupsArgs{
+//			_, err := zerotrustdevicedeploymentgroups.GetZeroTrustDeviceDeploymentGroups(ctx, &zerotrustdevicedeploymentgroups.GetZeroTrustDeviceDeploymentGroupsArgs{
 //				AccountId: "account_id",
 //				GroupId:   "group_id",
 //			}, nil)
@@ -37,6 +37,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustDeviceDeploymentGroups:getZeroTrustDeviceDeploymentGroups has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/zeroTrustDeviceDeploymentGroups:getZeroTrustDeviceDeploymentGroups
 func LookupZeroTrustDeviceDeploymentGroups(ctx *pulumi.Context, args *LookupZeroTrustDeviceDeploymentGroupsArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustDeviceDeploymentGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustDeviceDeploymentGroupsResult

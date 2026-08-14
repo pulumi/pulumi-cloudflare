@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.TurnstileWidget;
- * import com.pulumi.cloudflare.TurnstileWidgetArgs;
+ * import com.pulumi.cloudflare.turnstile.Widget;
+ * import com.pulumi.cloudflare.turnstile.WidgetArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleTurnstileWidget = new TurnstileWidget("exampleTurnstileWidget", TurnstileWidgetArgs.builder()
+ *         var exampleTurnstileWidget = new Widget("exampleTurnstileWidget", WidgetArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .domains(            
  *                 "203.0.113.1",
@@ -73,7 +73,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example &#39;&lt;account_id&gt;/&lt;sitekey&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/turnstileWidget:TurnstileWidget has been deprecated in favor of cloudflare:turnstile/widget:Widget
+ * 
  */
+@Deprecated /* cloudflare:index/turnstileWidget:TurnstileWidget has been deprecated in favor of cloudflare:turnstile/widget:Widget */
 @ResourceType(type="cloudflare:index/turnstileWidget:TurnstileWidget")
 public class TurnstileWidget extends com.pulumi.resources.CustomResource {
     /**

@@ -26,14 +26,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/schemavalidationoperationsettings"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewSchemaValidationOperationSettings(ctx, "example_schema_validation_operation_settings", &cloudflare.SchemaValidationOperationSettingsArgs{
+//			_, err := schemavalidationoperationsettings.NewSchemaValidationOperationSettings(ctx, "example_schema_validation_operation_settings", &schemavalidationoperationsettings.SchemaValidationOperationSettingsArgs{
 //				ZoneId:           pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				OperationId:      pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
 //				MitigationAction: pulumi.String("block"),
@@ -50,6 +50,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/schemaValidationOperationSettings:SchemaValidationOperationSettings has been deprecated in favor of cloudflare:schemaValidationOperationSettings/schemaValidationOperationSettings:SchemaValidationOperationSettings
 type SchemaValidationOperationSettings struct {
 	pulumi.CustomResourceState
 

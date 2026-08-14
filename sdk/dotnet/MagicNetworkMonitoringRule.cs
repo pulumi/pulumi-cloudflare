@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleMagicNetworkMonitoringRule = new Cloudflare.MagicNetworkMonitoringRule("example_magic_network_monitoring_rule", new()
+    ///     var exampleMagicNetworkMonitoringRule = new Cloudflare.Modules.MagicNetworkMonitoring.MagicNetworkMonitoringRule("example_magic_network_monitoring_rule", new()
     ///     {
     ///         AccountId = "6f91088a406011ed95aed352566e8d4c",
     ///         AutomaticAdvertisement = true,
@@ -53,6 +53,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule example '&lt;account_id&gt;/&lt;rule_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule has been deprecated in favor of cloudflare:magicNetworkMonitoring/rule:Rule")]
     [CloudflareResourceType("cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule")]
     public partial class MagicNetworkMonitoringRule : global::Pulumi.CustomResource
     {

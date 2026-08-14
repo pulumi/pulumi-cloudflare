@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * - `Firewall Services Read`
  * - `Firewall Services Write`
  * 
- * &gt; `cloudflare.RateLimit` is in a deprecation phase until June 15th, 2025.
+ * &gt; `cloudflare.rate.Limit` is in a deprecation phase until June 15th, 2025.
  *   During this time period, this resource is still
  *   fully supported but you are strongly advised to move to the
  *   `cloudflare.Ruleset` resource. Full details can be found in the
@@ -40,14 +40,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.RateLimit;
- * import com.pulumi.cloudflare.RateLimitArgs;
- * import com.pulumi.cloudflare.inputs.RateLimitActionArgs;
- * import com.pulumi.cloudflare.inputs.RateLimitActionResponseArgs;
- * import com.pulumi.cloudflare.inputs.RateLimitMatchArgs;
- * import com.pulumi.cloudflare.inputs.RateLimitMatchHeaderArgs;
- * import com.pulumi.cloudflare.inputs.RateLimitMatchRequestArgs;
- * import com.pulumi.cloudflare.inputs.RateLimitMatchResponseArgs;
+ * import com.pulumi.cloudflare.rate.Limit;
+ * import com.pulumi.cloudflare.rate.LimitArgs;
+ * import com.pulumi.cloudflare.rate.inputs.LimitActionArgs;
+ * import com.pulumi.cloudflare.rate.inputs.LimitActionResponseArgs;
+ * import com.pulumi.cloudflare.rate.inputs.LimitMatchArgs;
+ * import com.pulumi.cloudflare.rate.inputs.LimitMatchHeaderArgs;
+ * import com.pulumi.cloudflare.rate.inputs.LimitMatchRequestArgs;
+ * import com.pulumi.cloudflare.rate.inputs.LimitMatchResponseArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -61,23 +61,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleRateLimit = new RateLimit("exampleRateLimit", RateLimitArgs.builder()
+ *         var exampleRateLimit = new Limit("exampleRateLimit", LimitArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .action(RateLimitActionArgs.builder()
+ *             .action(LimitActionArgs.builder()
  *                 .mode("challenge")
- *                 .response(RateLimitActionResponseArgs.builder()
+ *                 .response(LimitActionResponseArgs.builder()
  *                     .body("<error>This request has been rate-limited.</error>")
  *                     .contentType("text/xml")
  *                     .build())
  *                 .timeout(86400.0)
  *                 .build())
- *             .match(RateLimitMatchArgs.builder()
- *                 .headers(RateLimitMatchHeaderArgs.builder()
+ *             .match(LimitMatchArgs.builder()
+ *                 .headers(LimitMatchHeaderArgs.builder()
  *                     .name("Cf-Cache-Status")
  *                     .op("ne")
  *                     .value("HIT")
  *                     .build())
- *                 .request(RateLimitMatchRequestArgs.builder()
+ *                 .request(LimitMatchRequestArgs.builder()
  *                     .methods(                    
  *                         "GET",
  *                         "POST")
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *                         "HTTPS")
  *                     .url("*.example.org/path*")
  *                     .build())
- *                 .response(RateLimitMatchResponseArgs.builder()
+ *                 .response(LimitMatchResponseArgs.builder()
  *                     .originTraffic(true)
  *                     .build())
  *                 .build())
@@ -105,7 +105,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/rateLimit:RateLimit example &#39;&lt;zone_id&gt;/&lt;rate_limit_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/rateLimit:RateLimit has been deprecated in favor of cloudflare:rate/limit:Limit
+ * 
  */
+@Deprecated /* cloudflare:index/rateLimit:RateLimit has been deprecated in favor of cloudflare:rate/limit:Limit */
 @ResourceType(type="cloudflare:index/rateLimit:RateLimit")
 public class RateLimit extends com.pulumi.resources.CustomResource {
     /**

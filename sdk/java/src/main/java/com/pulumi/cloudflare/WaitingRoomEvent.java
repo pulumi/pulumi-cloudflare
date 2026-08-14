@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WaitingRoomEvent;
- * import com.pulumi.cloudflare.WaitingRoomEventArgs;
+ * import com.pulumi.cloudflare.waitingRoom.Event;
+ * import com.pulumi.cloudflare.waitingRoom.EventArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleWaitingRoomEvent = new WaitingRoomEvent("exampleWaitingRoomEvent", WaitingRoomEventArgs.builder()
+ *         var exampleWaitingRoomEvent = new Event("exampleWaitingRoomEvent", EventArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .waitingRoomId("699d98642c564d2e855e9661899b7252")
  *             .eventEndTime("2021-09-28T17:00:00.000Z")
@@ -77,7 +77,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent example &#39;&lt;zone_id&gt;/&lt;waiting_room_id&gt;/&lt;event_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/waitingRoomEvent:WaitingRoomEvent has been deprecated in favor of cloudflare:waitingRoom/event:Event
+ * 
  */
+@Deprecated /* cloudflare:index/waitingRoomEvent:WaitingRoomEvent has been deprecated in favor of cloudflare:waitingRoom/event:Event */
 @ResourceType(type="cloudflare:index/waitingRoomEvent:WaitingRoomEvent")
 public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
     @Export(name="createdOn", refs={String.class}, tree="[0]")

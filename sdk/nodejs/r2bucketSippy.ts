@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleR2BucketSippy = new cloudflare.R2BucketSippy("example_r2_bucket_sippy", {
+ * const exampleR2BucketSippy = new cloudflare.r2bucket.Sippy("example_r2_bucket_sippy", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
  *     destination: {
@@ -38,6 +38,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/r2BucketSippy:R2BucketSippy has been deprecated in favor of cloudflare:r2Bucket/sippy:Sippy
  */
 export class R2BucketSippy extends pulumi.CustomResource {
     /**
@@ -50,6 +52,7 @@ export class R2BucketSippy extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: R2BucketSippyState, opts?: pulumi.CustomResourceOptions): R2BucketSippy {
+        pulumi.log.warn("R2BucketSippy is deprecated: cloudflare:index/r2BucketSippy:R2BucketSippy has been deprecated in favor of cloudflare:r2Bucket/sippy:Sippy")
         return new R2BucketSippy(name, <any>state, { ...opts, id: id });
     }
 
@@ -99,8 +102,11 @@ export class R2BucketSippy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/r2BucketSippy:R2BucketSippy has been deprecated in favor of cloudflare:r2Bucket/sippy:Sippy */
     constructor(name: string, args: R2BucketSippyArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/r2BucketSippy:R2BucketSippy has been deprecated in favor of cloudflare:r2Bucket/sippy:Sippy */
     constructor(name: string, argsOrState?: R2BucketSippyArgs | R2BucketSippyState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("R2BucketSippy is deprecated: cloudflare:index/r2BucketSippy:R2BucketSippy has been deprecated in favor of cloudflare:r2Bucket/sippy:Sippy")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

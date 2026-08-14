@@ -464,8 +464,13 @@ class _CustomCsrState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/customCsr:CustomCsr has been deprecated in favor of cloudflare:custom/csr:Csr""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/customCsr:CustomCsr")
 class CustomCsr(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/customCsr:CustomCsr has been deprecated in favor of cloudflare:custom/csr:Csr""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -495,7 +500,7 @@ class CustomCsr(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_custom_csr = cloudflare.CustomCsr("example_custom_csr",
+        example_custom_csr = cloudflare.custom.Csr("example_custom_csr",
             common_name="example.com",
             country="US",
             locality="San Francisco",
@@ -553,7 +558,7 @@ class CustomCsr(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_custom_csr = cloudflare.CustomCsr("example_custom_csr",
+        example_custom_csr = cloudflare.custom.Csr("example_custom_csr",
             common_name="example.com",
             country="US",
             locality="San Francisco",
@@ -605,6 +610,7 @@ class CustomCsr(pulumi.CustomResource):
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""CustomCsr is deprecated: cloudflare:index/customCsr:CustomCsr has been deprecated in favor of cloudflare:custom/csr:Csr""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

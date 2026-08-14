@@ -23,16 +23,16 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdeviceposture"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDevicePostureIntegration(ctx, "example_zero_trust_device_posture_integration", &cloudflare.ZeroTrustDevicePostureIntegrationArgs{
+//			_, err := zerotrustdeviceposture.NewIntegration(ctx, "example_zero_trust_device_posture_integration", &zerotrustdeviceposture.IntegrationArgs{
 //				AccountId: pulumi.String("699d98642c564d2e855e9661899b7252"),
-//				Config: &cloudflare.ZeroTrustDevicePostureIntegrationConfigArgs{
+//				Config: &zerotrustdeviceposture.IntegrationConfigArgs{
 //					ApiUrl:       pulumi.String("https://as123.awmdm.com/API"),
 //					AuthUrl:      pulumi.String("https://na.uemauth.workspaceone.com/connect/token"),
 //					ClientId:     pulumi.String("example client id"),
@@ -95,12 +95,6 @@ func NewDevicePostureIntegration(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("cloudflare:index/devicePostureIntegration:DevicePostureIntegration"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DevicePostureIntegration
 	err := ctx.RegisterResource("cloudflare:index/devicePostureIntegration:DevicePostureIntegration", name, args, &resource, opts...)

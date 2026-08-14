@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: cloudflare:index/getAiSearchNamespaces:getAiSearchNamespaces has been deprecated in favor of cloudflare:aiSearch/namespaces:getNamespaces
 func LookupAiSearchNamespaces(ctx *pulumi.Context, args *LookupAiSearchNamespacesArgs, opts ...pulumi.InvokeOption) (*LookupAiSearchNamespacesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAiSearchNamespacesResult

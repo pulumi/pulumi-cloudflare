@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountSubscription = cloudflare.getAccountSubscription({
+ * const exampleAccountSubscription = cloudflare.account.getSubscription({
  *     accountId: "account_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccountSubscription:getAccountSubscription has been deprecated in favor of cloudflare:account/subscription:getSubscription */
 export function getAccountSubscription(args?: GetAccountSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountSubscriptionResult> {
+    pulumi.log.warn("getAccountSubscription is deprecated: cloudflare:index/getAccountSubscription:getAccountSubscription has been deprecated in favor of cloudflare:account/subscription:getSubscription")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountSubscription:getAccountSubscription", {
@@ -105,12 +107,14 @@ export interface GetAccountSubscriptionResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountSubscription = cloudflare.getAccountSubscription({
+ * const exampleAccountSubscription = cloudflare.account.getSubscription({
  *     accountId: "account_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccountSubscription:getAccountSubscription has been deprecated in favor of cloudflare:account/subscription:getSubscription */
 export function getAccountSubscriptionOutput(args?: GetAccountSubscriptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountSubscriptionResult> {
+    pulumi.log.warn("getAccountSubscription is deprecated: cloudflare:index/getAccountSubscription:getAccountSubscription has been deprecated in favor of cloudflare:account/subscription:getSubscription")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountSubscription:getAccountSubscription", {

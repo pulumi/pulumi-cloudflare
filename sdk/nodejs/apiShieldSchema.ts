@@ -14,8 +14,8 @@ import * as utilities from "./utilities";
  * - `Domain API Gateway`
  * - `Domain API Gateway Read`
  *
- * > `cloudflare.ApiShieldSchema` is in a deprecation phase and will be removed in the future.
- *   Instead, please utilize the cloudflare.SchemaValidationSchemas resource instead.
+ * > `cloudflare.apiShieldSchema.ApiShieldSchema` is in a deprecation phase and will be removed in the future.
+ *   Instead, please utilize the cloudflare.schemaValidationSchemas.SchemaValidationSchemas resource instead.
  *
  * ## Example Usage
  *
@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleApiShieldSchema = new cloudflare.ApiShieldSchema("example_api_shield_schema", {
+ * const exampleApiShieldSchema = new cloudflare.apishieldschema.ApiShieldSchema("example_api_shield_schema", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     file: "Example data",
  *     kind: "openapi_v3",
@@ -31,6 +31,8 @@ import * as utilities from "./utilities";
  *     validationEnabled: "true",
  * });
  * ```
+ *
+ * @deprecated cloudflare:index/apiShieldSchema:ApiShieldSchema has been deprecated in favor of cloudflare:apiShieldSchema/apiShieldSchema:ApiShieldSchema
  */
 export class ApiShieldSchema extends pulumi.CustomResource {
     /**
@@ -43,6 +45,7 @@ export class ApiShieldSchema extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ApiShieldSchemaState, opts?: pulumi.CustomResourceOptions): ApiShieldSchema {
+        pulumi.log.warn("ApiShieldSchema is deprecated: cloudflare:index/apiShieldSchema:ApiShieldSchema has been deprecated in favor of cloudflare:apiShieldSchema/apiShieldSchema:ApiShieldSchema")
         return new ApiShieldSchema(name, <any>state, { ...opts, id: id });
     }
 
@@ -98,8 +101,11 @@ export class ApiShieldSchema extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/apiShieldSchema:ApiShieldSchema has been deprecated in favor of cloudflare:apiShieldSchema/apiShieldSchema:ApiShieldSchema */
     constructor(name: string, args: ApiShieldSchemaArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/apiShieldSchema:ApiShieldSchema has been deprecated in favor of cloudflare:apiShieldSchema/apiShieldSchema:ApiShieldSchema */
     constructor(name: string, argsOrState?: ApiShieldSchemaArgs | ApiShieldSchemaState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ApiShieldSchema is deprecated: cloudflare:index/apiShieldSchema:ApiShieldSchema has been deprecated in favor of cloudflare:apiShieldSchema/apiShieldSchema:ApiShieldSchema")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

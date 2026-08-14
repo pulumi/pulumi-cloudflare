@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getCallsSfuApp:getCallsSfuApp has been deprecated in favor of cloudflare:callsSfu/app:getApp")]
     public static class GetCallsSfuApp
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCallsSfuApp = Cloudflare.GetCallsSfuApp.Invoke(new()
+        ///     var exampleCallsSfuApp = Cloudflare.Modules.CallsSfu.GetApp.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         AppId = "2a95132c15732412d22c1476fa83f27a",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCallsSfuApp = Cloudflare.GetCallsSfuApp.Invoke(new()
+        ///     var exampleCallsSfuApp = Cloudflare.Modules.CallsSfu.GetApp.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         AppId = "2a95132c15732412d22c1476fa83f27a",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCallsSfuApp = Cloudflare.GetCallsSfuApp.Invoke(new()
+        ///     var exampleCallsSfuApp = Cloudflare.Modules.CallsSfu.GetApp.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         AppId = "2a95132c15732412d22c1476fa83f27a",

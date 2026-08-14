@@ -30,9 +30,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDevicePostureIntegration;
- * import com.pulumi.cloudflare.ZeroTrustDevicePostureIntegrationArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDevicePostureIntegrationConfigArgs;
+ * import com.pulumi.cloudflare.zeroTrustDevicePosture.Integration;
+ * import com.pulumi.cloudflare.zeroTrustDevicePosture.IntegrationArgs;
+ * import com.pulumi.cloudflare.zeroTrustDevicePosture.inputs.IntegrationConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,9 +46,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustDevicePostureIntegration = new ZeroTrustDevicePostureIntegration("exampleZeroTrustDevicePostureIntegration", ZeroTrustDevicePostureIntegrationArgs.builder()
+ *         var exampleZeroTrustDevicePostureIntegration = new Integration("exampleZeroTrustDevicePostureIntegration", IntegrationArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
- *             .config(ZeroTrustDevicePostureIntegrationConfigArgs.builder()
+ *             .config(IntegrationConfigArgs.builder()
  *                 .apiUrl("https://as123.awmdm.com/API")
  *                 .authUrl("https://na.uemauth.workspaceone.com/connect/token")
  *                 .clientId("example client id")
@@ -70,7 +70,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration example &#39;&lt;account_id&gt;/&lt;integration_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration has been deprecated in favor of cloudflare:zeroTrustDevicePosture/integration:Integration
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration has been deprecated in favor of cloudflare:zeroTrustDevicePosture/integration:Integration */
 @ResourceType(type="cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration")
 public class ZeroTrustDevicePostureIntegration extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

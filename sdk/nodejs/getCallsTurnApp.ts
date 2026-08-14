@@ -16,13 +16,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCallsTurnApp = cloudflare.getCallsTurnApp({
+ * const exampleCallsTurnApp = cloudflare.callsturn.getApp({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     keyId: "2a95132c15732412d22c1476fa83f27a",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCallsTurnApp:getCallsTurnApp has been deprecated in favor of cloudflare:callsTurn/app:getApp */
 export function getCallsTurnApp(args: GetCallsTurnAppArgs, opts?: pulumi.InvokeOptions): Promise<GetCallsTurnAppResult> {
+    pulumi.log.warn("getCallsTurnApp is deprecated: cloudflare:index/getCallsTurnApp:getCallsTurnApp has been deprecated in favor of cloudflare:callsTurn/app:getApp")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCallsTurnApp:getCallsTurnApp", {
         "accountId": args.accountId,
@@ -85,13 +87,15 @@ export interface GetCallsTurnAppResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCallsTurnApp = cloudflare.getCallsTurnApp({
+ * const exampleCallsTurnApp = cloudflare.callsturn.getApp({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     keyId: "2a95132c15732412d22c1476fa83f27a",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCallsTurnApp:getCallsTurnApp has been deprecated in favor of cloudflare:callsTurn/app:getApp */
 export function getCallsTurnAppOutput(args: GetCallsTurnAppOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCallsTurnAppResult> {
+    pulumi.log.warn("getCallsTurnApp is deprecated: cloudflare:index/getCallsTurnApp:getCallsTurnApp has been deprecated in favor of cloudflare:callsTurn/app:getApp")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCallsTurnApp:getCallsTurnApp", {
         "accountId": args.accountId,

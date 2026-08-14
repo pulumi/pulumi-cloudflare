@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getWorkersDeployment:getWorkersDeployment has been deprecated in favor of cloudflare:workers/deployment:getDeployment")]
     public static class GetWorkersDeployment
     {
         /// <summary>
@@ -28,7 +29,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersDeployment = Cloudflare.GetWorkersDeployment.Invoke(new()
+        ///     var exampleWorkersDeployment = Cloudflare.Modules.Workers.GetDeployment.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ScriptName = "this-is_my_script-01",
@@ -58,7 +59,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersDeployment = Cloudflare.GetWorkersDeployment.Invoke(new()
+        ///     var exampleWorkersDeployment = Cloudflare.Modules.Workers.GetDeployment.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ScriptName = "this-is_my_script-01",
@@ -88,7 +89,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersDeployment = Cloudflare.GetWorkersDeployment.Invoke(new()
+        ///     var exampleWorkersDeployment = Cloudflare.Modules.Workers.GetDeployment.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ScriptName = "this-is_my_script-01",

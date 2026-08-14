@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/address"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetAddressMap(ctx, &cloudflare.LookupAddressMapArgs{
+//			_, err := address.LookupMap(ctx, &address.LookupMapArgs{
 //				AccountId:    pulumi.StringRef("258def64c72dae45f3e4c8516e2111f2"),
 //				AddressMapId: "055817b111884e0227e1be16a0be6ee0",
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getAddressMap:getAddressMap has been deprecated in favor of cloudflare:address/map:getMap
 func LookupAddressMap(ctx *pulumi.Context, args *LookupAddressMapArgs, opts ...pulumi.InvokeOption) (*LookupAddressMapResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAddressMapResult

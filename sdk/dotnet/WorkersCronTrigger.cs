@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWorkersCronTrigger = new Cloudflare.WorkersCronTrigger("example_workers_cron_trigger", new()
+    ///     var exampleWorkersCronTrigger = new Cloudflare.Modules.Workers.WorkersCronTrigger("example_workers_cron_trigger", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         ScriptName = "this-is_my_script-01",
@@ -47,6 +47,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/workersCronTrigger:WorkersCronTrigger example '&lt;account_id&gt;/&lt;script_name&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/workersCronTrigger:WorkersCronTrigger has been deprecated in favor of cloudflare:workers/cronTrigger:CronTrigger")]
     [CloudflareResourceType("cloudflare:index/workersCronTrigger:WorkersCronTrigger")]
     public partial class WorkersCronTrigger : global::Pulumi.CustomResource
     {

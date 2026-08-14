@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWaitingRoom = new Cloudflare.WaitingRoom("example_waiting_room", new()
+    ///     var exampleWaitingRoom = new Cloudflare.Modules.WaitingRoom.WaitingRoom("example_waiting_room", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Host = "shop.example.com",
@@ -34,13 +34,13 @@ namespace Pulumi.Cloudflare
     ///         TotalActiveUsers = 200,
     ///         AdditionalRoutes = new[]
     ///         {
-    ///             new Cloudflare.Inputs.WaitingRoomAdditionalRouteArgs
+    ///             new Cloudflare.Modules.WaitingRoom.Inputs.WaitingRoomAdditionalRouteArgs
     ///             {
     ///                 Host = "shop2.example.com",
     ///                 Path = "/shop2/checkout",
     ///             },
     ///         },
-    ///         CookieAttributes = new Cloudflare.Inputs.WaitingRoomCookieAttributesArgs
+    ///         CookieAttributes = new Cloudflare.Modules.WaitingRoom.Inputs.WaitingRoomCookieAttributesArgs
     ///         {
     ///             Samesite = "auto",
     ///             Secure = "auto",
@@ -74,6 +74,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/waitingRoom:WaitingRoom example '&lt;zone_id&gt;/&lt;waiting_room_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/waitingRoom:WaitingRoom has been deprecated in favor of cloudflare:waitingRoom/waitingRoom:WaitingRoom")]
     [CloudflareResourceType("cloudflare:index/waitingRoom:WaitingRoom")]
     public partial class WaitingRoom : global::Pulumi.CustomResource
     {

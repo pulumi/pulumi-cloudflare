@@ -26,14 +26,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrusttunnelwarpconnector"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustTunnelWarpConnector(ctx, "example_zero_trust_tunnel_warp_connector", &cloudflare.ZeroTrustTunnelWarpConnectorArgs{
+//			_, err := zerotrusttunnelwarpconnector.NewZeroTrustTunnelWarpConnector(ctx, "example_zero_trust_tunnel_warp_connector", &zerotrusttunnelwarpconnector.ZeroTrustTunnelWarpConnectorArgs{
 //				AccountId: pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				Name:      pulumi.String("blog"),
 //				Ha:        pulumi.Bool(true),
@@ -52,6 +52,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector example '<account_id>/<tunnel_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector has been deprecated in favor of cloudflare:zeroTrustTunnelWarpConnector/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector
 type ZeroTrustTunnelWarpConnector struct {
 	pulumi.CustomResourceState
 

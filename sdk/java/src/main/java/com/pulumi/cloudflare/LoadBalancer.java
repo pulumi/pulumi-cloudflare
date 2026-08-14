@@ -37,19 +37,19 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.LoadBalancer;
- * import com.pulumi.cloudflare.LoadBalancerArgs;
- * import com.pulumi.cloudflare.inputs.LoadBalancerAdaptiveRoutingArgs;
- * import com.pulumi.cloudflare.inputs.LoadBalancerLocationStrategyArgs;
- * import com.pulumi.cloudflare.inputs.LoadBalancerRandomSteeringArgs;
- * import com.pulumi.cloudflare.inputs.LoadBalancerRuleArgs;
- * import com.pulumi.cloudflare.inputs.LoadBalancerRuleFixedResponseArgs;
- * import com.pulumi.cloudflare.inputs.LoadBalancerRuleOverridesArgs;
- * import com.pulumi.cloudflare.inputs.LoadBalancerRuleOverridesAdaptiveRoutingArgs;
- * import com.pulumi.cloudflare.inputs.LoadBalancerRuleOverridesLocationStrategyArgs;
- * import com.pulumi.cloudflare.inputs.LoadBalancerRuleOverridesRandomSteeringArgs;
- * import com.pulumi.cloudflare.inputs.LoadBalancerRuleOverridesSessionAffinityAttributesArgs;
- * import com.pulumi.cloudflare.inputs.LoadBalancerSessionAffinityAttributesArgs;
+ * import com.pulumi.cloudflare.loadBalancer.LoadBalancer;
+ * import com.pulumi.cloudflare.loadBalancer.LoadBalancerArgs;
+ * import com.pulumi.cloudflare.loadBalancer.inputs.LoadBalancerAdaptiveRoutingArgs;
+ * import com.pulumi.cloudflare.loadBalancer.inputs.LoadBalancerLocationStrategyArgs;
+ * import com.pulumi.cloudflare.loadBalancer.inputs.LoadBalancerRandomSteeringArgs;
+ * import com.pulumi.cloudflare.loadBalancer.inputs.LoadBalancerRuleArgs;
+ * import com.pulumi.cloudflare.loadBalancer.inputs.LoadBalancerRuleFixedResponseArgs;
+ * import com.pulumi.cloudflare.loadBalancer.inputs.LoadBalancerRuleOverridesArgs;
+ * import com.pulumi.cloudflare.loadBalancer.inputs.LoadBalancerRuleOverridesAdaptiveRoutingArgs;
+ * import com.pulumi.cloudflare.loadBalancer.inputs.LoadBalancerRuleOverridesLocationStrategyArgs;
+ * import com.pulumi.cloudflare.loadBalancer.inputs.LoadBalancerRuleOverridesRandomSteeringArgs;
+ * import com.pulumi.cloudflare.loadBalancer.inputs.LoadBalancerRuleOverridesSessionAffinityAttributesArgs;
+ * import com.pulumi.cloudflare.loadBalancer.inputs.LoadBalancerSessionAffinityAttributesArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -208,7 +208,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;load_balancer_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/loadBalancer:LoadBalancer has been deprecated in favor of cloudflare:loadBalancer/loadBalancer:LoadBalancer
+ * 
  */
+@Deprecated /* cloudflare:index/loadBalancer:LoadBalancer has been deprecated in favor of cloudflare:loadBalancer/loadBalancer:LoadBalancer */
 @ResourceType(type="cloudflare:index/loadBalancer:LoadBalancer")
 public class LoadBalancer extends com.pulumi.resources.CustomResource {
     /**

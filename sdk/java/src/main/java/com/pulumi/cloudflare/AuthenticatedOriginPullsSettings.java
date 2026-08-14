@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.AuthenticatedOriginPullsSettings;
- * import com.pulumi.cloudflare.AuthenticatedOriginPullsSettingsArgs;
+ * import com.pulumi.cloudflare.authenticatedOriginPulls.Settings;
+ * import com.pulumi.cloudflare.authenticatedOriginPulls.SettingsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleAuthenticatedOriginPullsSettings = new AuthenticatedOriginPullsSettings("exampleAuthenticatedOriginPullsSettings", AuthenticatedOriginPullsSettingsArgs.builder()
+ *         var exampleAuthenticatedOriginPullsSettings = new Settings("exampleAuthenticatedOriginPullsSettings", SettingsArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .enabled(true)
  *             .build());
@@ -60,7 +60,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/authenticatedOriginPullsSettings:AuthenticatedOriginPullsSettings example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/authenticatedOriginPullsSettings:AuthenticatedOriginPullsSettings has been deprecated in favor of cloudflare:authenticatedOriginPulls/settings:Settings
+ * 
  */
+@Deprecated /* cloudflare:index/authenticatedOriginPullsSettings:AuthenticatedOriginPullsSettings has been deprecated in favor of cloudflare:authenticatedOriginPulls/settings:Settings */
 @ResourceType(type="cloudflare:index/authenticatedOriginPullsSettings:AuthenticatedOriginPullsSettings")
 public class AuthenticatedOriginPullsSettings extends com.pulumi.resources.CustomResource {
     /**

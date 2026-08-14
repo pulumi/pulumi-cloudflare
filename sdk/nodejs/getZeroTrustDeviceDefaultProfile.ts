@@ -13,12 +13,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDeviceDefaultProfile = cloudflare.getZeroTrustDeviceDefaultProfile({
+ * const exampleZeroTrustDeviceDefaultProfile = cloudflare.zerotrustdevicedefaultprofile.getZeroTrustDeviceDefaultProfile({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDeviceDefaultProfile:getZeroTrustDeviceDefaultProfile has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/zeroTrustDeviceDefaultProfile:getZeroTrustDeviceDefaultProfile */
 export function getZeroTrustDeviceDefaultProfile(args?: GetZeroTrustDeviceDefaultProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDeviceDefaultProfileResult> {
+    pulumi.log.warn("getZeroTrustDeviceDefaultProfile is deprecated: cloudflare:index/getZeroTrustDeviceDefaultProfile:getZeroTrustDeviceDefaultProfile has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/zeroTrustDeviceDefaultProfile:getZeroTrustDeviceDefaultProfile")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDeviceDefaultProfile:getZeroTrustDeviceDefaultProfile", {
@@ -126,12 +128,14 @@ export interface GetZeroTrustDeviceDefaultProfileResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDeviceDefaultProfile = cloudflare.getZeroTrustDeviceDefaultProfile({
+ * const exampleZeroTrustDeviceDefaultProfile = cloudflare.zerotrustdevicedefaultprofile.getZeroTrustDeviceDefaultProfile({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDeviceDefaultProfile:getZeroTrustDeviceDefaultProfile has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/zeroTrustDeviceDefaultProfile:getZeroTrustDeviceDefaultProfile */
 export function getZeroTrustDeviceDefaultProfileOutput(args?: GetZeroTrustDeviceDefaultProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDeviceDefaultProfileResult> {
+    pulumi.log.warn("getZeroTrustDeviceDefaultProfile is deprecated: cloudflare:index/getZeroTrustDeviceDefaultProfile:getZeroTrustDeviceDefaultProfile has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/zeroTrustDeviceDefaultProfile:getZeroTrustDeviceDefaultProfile")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDeviceDefaultProfile:getZeroTrustDeviceDefaultProfile", {

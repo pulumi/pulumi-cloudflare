@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCallsSfuApp = new cloudflare.CallsSfuApp("example_calls_sfu_app", {
+ * const exampleCallsSfuApp = new cloudflare.callssfu.App("example_calls_sfu_app", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "production-realtime-app",
  * });
@@ -25,6 +25,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/callsSfuApp:CallsSfuApp has been deprecated in favor of cloudflare:callsSfu/app:App
  */
 export class CallsSfuApp extends pulumi.CustomResource {
     /**
@@ -37,6 +39,7 @@ export class CallsSfuApp extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CallsSfuAppState, opts?: pulumi.CustomResourceOptions): CallsSfuApp {
+        pulumi.log.warn("CallsSfuApp is deprecated: cloudflare:index/callsSfuApp:CallsSfuApp has been deprecated in favor of cloudflare:callsSfu/app:App")
         return new CallsSfuApp(name, <any>state, { ...opts, id: id });
     }
 
@@ -90,8 +93,11 @@ export class CallsSfuApp extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/callsSfuApp:CallsSfuApp has been deprecated in favor of cloudflare:callsSfu/app:App */
     constructor(name: string, args: CallsSfuAppArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/callsSfuApp:CallsSfuApp has been deprecated in favor of cloudflare:callsSfu/app:App */
     constructor(name: string, argsOrState?: CallsSfuAppArgs | CallsSfuAppState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("CallsSfuApp is deprecated: cloudflare:index/callsSfuApp:CallsSfuApp has been deprecated in favor of cloudflare:callsSfu/app:App")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

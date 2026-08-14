@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessInfrastructureTarget = new cloudflare.ZeroTrustAccessInfrastructureTarget("example_zero_trust_access_infrastructure_target", {
+ * const exampleZeroTrustAccessInfrastructureTarget = new cloudflare.zerotrustaccessinfrastructure.Target("example_zero_trust_access_infrastructure_target", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     hostname: "infra-access-target",
  *     ip: {
@@ -34,6 +34,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustAccessInfrastructureTarget:ZeroTrustAccessInfrastructureTarget example '<account_id>/<target_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustAccessInfrastructureTarget:ZeroTrustAccessInfrastructureTarget has been deprecated in favor of cloudflare:zeroTrustAccessInfrastructure/target:Target
  */
 export class ZeroTrustAccessInfrastructureTarget extends pulumi.CustomResource {
     /**
@@ -46,6 +48,7 @@ export class ZeroTrustAccessInfrastructureTarget extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustAccessInfrastructureTargetState, opts?: pulumi.CustomResourceOptions): ZeroTrustAccessInfrastructureTarget {
+        pulumi.log.warn("ZeroTrustAccessInfrastructureTarget is deprecated: cloudflare:index/zeroTrustAccessInfrastructureTarget:ZeroTrustAccessInfrastructureTarget has been deprecated in favor of cloudflare:zeroTrustAccessInfrastructure/target:Target")
         return new ZeroTrustAccessInfrastructureTarget(name, <any>state, { ...opts, id: id });
     }
 
@@ -94,8 +97,11 @@ export class ZeroTrustAccessInfrastructureTarget extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustAccessInfrastructureTarget:ZeroTrustAccessInfrastructureTarget has been deprecated in favor of cloudflare:zeroTrustAccessInfrastructure/target:Target */
     constructor(name: string, args: ZeroTrustAccessInfrastructureTargetArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustAccessInfrastructureTarget:ZeroTrustAccessInfrastructureTarget has been deprecated in favor of cloudflare:zeroTrustAccessInfrastructure/target:Target */
     constructor(name: string, argsOrState?: ZeroTrustAccessInfrastructureTargetArgs | ZeroTrustAccessInfrastructureTargetState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustAccessInfrastructureTarget is deprecated: cloudflare:index/zeroTrustAccessInfrastructureTarget:ZeroTrustAccessInfrastructureTarget has been deprecated in favor of cloudflare:zeroTrustAccessInfrastructure/target:Target")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

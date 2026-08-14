@@ -27,10 +27,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZoneCacheVariants = new Cloudflare.ZoneCacheVariants("example_zone_cache_variants", new()
+    ///     var exampleZoneCacheVariants = new Cloudflare.Modules.ZoneCache.ZoneCacheVariants("example_zone_cache_variants", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         Value = new Cloudflare.Inputs.ZoneCacheVariantsValueArgs
+    ///         Value = new Cloudflare.Modules.ZoneCache.Inputs.VariantsValueArgs
     ///         {
     ///             Avifs = new[]
     ///             {
@@ -99,6 +99,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zoneCacheVariants:ZoneCacheVariants example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zoneCacheVariants:ZoneCacheVariants has been deprecated in favor of cloudflare:zoneCache/variants:Variants")]
     [CloudflareResourceType("cloudflare:index/zoneCacheVariants:ZoneCacheVariants")]
     public partial class ZoneCacheVariants : global::Pulumi.CustomResource
     {

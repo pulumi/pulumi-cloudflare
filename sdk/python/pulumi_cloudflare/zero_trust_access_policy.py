@@ -537,8 +537,13 @@ class _ZeroTrustAccessPolicyState:
         pulumi.set(self, "updated_at", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy has been deprecated in favor of cloudflare:zeroTrustAccess/policy:Policy""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy")
 class ZeroTrustAccessPolicy(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy has been deprecated in favor of cloudflare:zeroTrustAccess/policy:Policy""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -570,7 +575,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_policy = cloudflare.ZeroTrustAccessPolicy("example_zero_trust_access_policy",
+        example_zero_trust_access_policy = cloudflare.zerotrustaccess.Policy("example_zero_trust_access_policy",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             decision="allow",
             includes=[{
@@ -672,7 +677,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_policy = cloudflare.ZeroTrustAccessPolicy("example_zero_trust_access_policy",
+        example_zero_trust_access_policy = cloudflare.zerotrustaccess.Policy("example_zero_trust_access_policy",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             decision="allow",
             includes=[{
@@ -768,6 +773,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
                  requires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessPolicyRequireArgs', 'ZeroTrustAccessPolicyRequireArgsDict']]]]] = None,
                  session_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustAccessPolicy is deprecated: cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy has been deprecated in favor of cloudflare:zeroTrustAccess/policy:Policy""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

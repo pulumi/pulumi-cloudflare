@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_access_applications_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustAccessApplications:getZeroTrustAccessApplications has been deprecated in favor of cloudflare:zeroTrustAccess/applications:getApplications""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustAccessApplicationsResult:
     """
@@ -162,7 +164,7 @@ def get_zero_trust_access_applications(account_id: Optional[_builtins.str] = Non
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_applications = cloudflare.get_zero_trust_access_applications(account_id="account_id",
+    example_zero_trust_access_applications = cloudflare.zerotrustaccess.get_applications(account_id="account_id",
         zone_id="zone_id",
         aud="aud",
         domain="domain",
@@ -181,6 +183,7 @@ def get_zero_trust_access_applications(account_id: Optional[_builtins.str] = Non
     :param _builtins.str search: Search for apps by other listed query parameters.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_zero_trust_access_applications is deprecated: cloudflare:index/getZeroTrustAccessApplications:getZeroTrustAccessApplications has been deprecated in favor of cloudflare:zeroTrustAccess/applications:getApplications""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['aud'] = aud
@@ -219,7 +222,7 @@ def get_zero_trust_access_applications_output(account_id: pulumi.Input[Optional[
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_applications = cloudflare.get_zero_trust_access_applications(account_id="account_id",
+    example_zero_trust_access_applications = cloudflare.zerotrustaccess.get_applications(account_id="account_id",
         zone_id="zone_id",
         aud="aud",
         domain="domain",
@@ -238,6 +241,7 @@ def get_zero_trust_access_applications_output(account_id: pulumi.Input[Optional[
     :param _builtins.str search: Search for apps by other listed query parameters.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_zero_trust_access_applications is deprecated: cloudflare:index/getZeroTrustAccessApplications:getZeroTrustAccessApplications has been deprecated in favor of cloudflare:zeroTrustAccess/applications:getApplications""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['aud'] = aud

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getCustomPagesList:getCustomPagesList has been deprecated in favor of cloudflare:customPages/list:getList")]
     public static class GetCustomPagesList
     {
         /// <summary>
@@ -30,7 +31,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomPagesList = Cloudflare.GetCustomPagesList.Invoke(new()
+        ///     var exampleCustomPagesList = Cloudflare.Modules.CustomPages.GetList.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",
@@ -61,7 +62,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomPagesList = Cloudflare.GetCustomPagesList.Invoke(new()
+        ///     var exampleCustomPagesList = Cloudflare.Modules.CustomPages.GetList.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",
@@ -92,7 +93,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomPagesList = Cloudflare.GetCustomPagesList.Invoke(new()
+        ///     var exampleCustomPagesList = Cloudflare.Modules.CustomPages.GetList.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",

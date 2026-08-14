@@ -22,14 +22,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/logpush"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetLogpushJobs(ctx, &cloudflare.LookupLogpushJobsArgs{
+//			_, err := logpush.LookupJobs(ctx, &logpush.LookupJobsArgs{
 //				AccountId: pulumi.StringRef("account_id"),
 //				ZoneId:    pulumi.StringRef("zone_id"),
 //			}, nil)
@@ -41,6 +41,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getLogpushJobs:getLogpushJobs has been deprecated in favor of cloudflare:logpush/jobs:getJobs
 func LookupLogpushJobs(ctx *pulumi.Context, args *LookupLogpushJobsArgs, opts ...pulumi.InvokeOption) (*LookupLogpushJobsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupLogpushJobsResult

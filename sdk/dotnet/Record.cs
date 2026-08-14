@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleDnsRecord = new Cloudflare.DnsRecord("example_dns_record", new()
+    ///     var exampleDnsRecord = new Cloudflare.Modules.Dns.DnsRecord("example_dns_record", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "example.com",
@@ -35,7 +35,7 @@ namespace Pulumi.Cloudflare
     ///         Content = "198.51.100.4",
     ///         PrivateRouting = true,
     ///         Proxied = true,
-    ///         Settings = new Cloudflare.Inputs.DnsRecordSettingsArgs
+    ///         Settings = new Cloudflare.Modules.Dns.Inputs.RecordSettingsArgs
     ///         {
     ///             Ipv4Only = true,
     ///             Ipv6Only = true,
@@ -191,10 +191,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/record:Record" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

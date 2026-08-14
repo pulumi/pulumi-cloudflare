@@ -229,8 +229,13 @@ class _ZeroTrustListState:
         pulumi.set(self, "updated_at", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustList:ZeroTrustList has been deprecated in favor of cloudflare:zeroTrust/list:List""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustList:ZeroTrustList")
 class ZeroTrustList(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustList:ZeroTrustList has been deprecated in favor of cloudflare:zeroTrust/list:List""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -248,7 +253,7 @@ class ZeroTrustList(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_list = cloudflare.ZeroTrustList("example_zero_trust_list",
+        example_zero_trust_list = cloudflare.zerotrust.List("example_zero_trust_list",
             account_id="699d98642c564d2e855e9661899b7252",
             name="Admin Serial Numbers",
             type="SERIAL",
@@ -287,7 +292,7 @@ class ZeroTrustList(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_list = cloudflare.ZeroTrustList("example_zero_trust_list",
+        example_zero_trust_list = cloudflare.zerotrust.List("example_zero_trust_list",
             account_id="699d98642c564d2e855e9661899b7252",
             name="Admin Serial Numbers",
             type="SERIAL",
@@ -326,6 +331,7 @@ class ZeroTrustList(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustList is deprecated: cloudflare:index/zeroTrustList:ZeroTrustList has been deprecated in favor of cloudflare:zeroTrust/list:List""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

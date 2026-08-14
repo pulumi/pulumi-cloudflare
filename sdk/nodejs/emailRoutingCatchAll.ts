@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleEmailRoutingCatchAll = new cloudflare.EmailRoutingCatchAll("example_email_routing_catch_all", {
+ * const exampleEmailRoutingCatchAll = new cloudflare.emailrouting.CatchAll("example_email_routing_catch_all", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     actions: [{
  *         type: "forward",
@@ -39,6 +39,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll example '<zone_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll has been deprecated in favor of cloudflare:emailRouting/catchAll:CatchAll
  */
 export class EmailRoutingCatchAll extends pulumi.CustomResource {
     /**
@@ -51,6 +53,7 @@ export class EmailRoutingCatchAll extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: EmailRoutingCatchAllState, opts?: pulumi.CustomResourceOptions): EmailRoutingCatchAll {
+        pulumi.log.warn("EmailRoutingCatchAll is deprecated: cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll has been deprecated in favor of cloudflare:emailRouting/catchAll:CatchAll")
         return new EmailRoutingCatchAll(name, <any>state, { ...opts, id: id });
     }
 
@@ -114,8 +117,11 @@ export class EmailRoutingCatchAll extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll has been deprecated in favor of cloudflare:emailRouting/catchAll:CatchAll */
     constructor(name: string, args: EmailRoutingCatchAllArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll has been deprecated in favor of cloudflare:emailRouting/catchAll:CatchAll */
     constructor(name: string, argsOrState?: EmailRoutingCatchAllArgs | EmailRoutingCatchAllState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("EmailRoutingCatchAll is deprecated: cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll has been deprecated in favor of cloudflare:emailRouting/catchAll:CatchAll")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

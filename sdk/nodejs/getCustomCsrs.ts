@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomCsrs = cloudflare.getCustomCsrs({
+ * const exampleCustomCsrs = cloudflare.custom.getCsrs({
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCustomCsrs:getCustomCsrs has been deprecated in favor of cloudflare:custom/csrs:getCsrs */
 export function getCustomCsrs(args?: GetCustomCsrsArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomCsrsResult> {
+    pulumi.log.warn("getCustomCsrs is deprecated: cloudflare:index/getCustomCsrs:getCustomCsrs has been deprecated in favor of cloudflare:custom/csrs:getCsrs")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCustomCsrs:getCustomCsrs", {
@@ -85,13 +87,15 @@ export interface GetCustomCsrsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomCsrs = cloudflare.getCustomCsrs({
+ * const exampleCustomCsrs = cloudflare.custom.getCsrs({
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCustomCsrs:getCustomCsrs has been deprecated in favor of cloudflare:custom/csrs:getCsrs */
 export function getCustomCsrsOutput(args?: GetCustomCsrsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomCsrsResult> {
+    pulumi.log.warn("getCustomCsrs is deprecated: cloudflare:index/getCustomCsrs:getCustomCsrs has been deprecated in favor of cloudflare:custom/csrs:getCsrs")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCustomCsrs:getCustomCsrs", {

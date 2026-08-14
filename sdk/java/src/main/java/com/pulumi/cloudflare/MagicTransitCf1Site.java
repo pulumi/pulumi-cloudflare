@@ -34,10 +34,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.MagicTransitCf1Site;
- * import com.pulumi.cloudflare.MagicTransitCf1SiteArgs;
- * import com.pulumi.cloudflare.inputs.MagicTransitCf1SiteBodyArgs;
- * import com.pulumi.cloudflare.inputs.MagicTransitCf1SiteBodyLocationArgs;
+ * import com.pulumi.cloudflare.magicTransitCf1.Site;
+ * import com.pulumi.cloudflare.magicTransitCf1.SiteArgs;
+ * import com.pulumi.cloudflare.magicTransitCf1.inputs.SiteBodyArgs;
+ * import com.pulumi.cloudflare.magicTransitCf1.inputs.SiteBodyLocationArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -51,12 +51,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleMagicTransitCf1Site = new MagicTransitCf1Site("exampleMagicTransitCf1Site", MagicTransitCf1SiteArgs.builder()
+ *         var exampleMagicTransitCf1Site = new Site("exampleMagicTransitCf1Site", SiteArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .bodies(MagicTransitCf1SiteBodyArgs.builder()
+ *             .bodies(SiteBodyArgs.builder()
  *                 .name("Pad 34")
  *                 .description("Launch Pad 34")
- *                 .location(MagicTransitCf1SiteBodyLocationArgs.builder()
+ *                 .location(SiteBodyLocationArgs.builder()
  *                     .lat(28.521339842093845)
  *                     .long_(-80.56092644815843)
  *                     .name("Cape Canaveral")
@@ -75,7 +75,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/magicTransitCf1Site:MagicTransitCf1Site example &#39;&lt;account_id&gt;/&lt;cf1_site_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/magicTransitCf1Site:MagicTransitCf1Site has been deprecated in favor of cloudflare:magicTransitCf1/site:Site
+ * 
  */
+@Deprecated /* cloudflare:index/magicTransitCf1Site:MagicTransitCf1Site has been deprecated in favor of cloudflare:magicTransitCf1/site:Site */
 @ResourceType(type="cloudflare:index/magicTransitCf1Site:MagicTransitCf1Site")
 public class MagicTransitCf1Site extends com.pulumi.resources.CustomResource {
     /**

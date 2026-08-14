@@ -23,6 +23,8 @@ __all__ = [
     'get_account_output',
 ]
 
+warnings.warn("""cloudflare:index/getAccount:getAccount has been deprecated in favor of cloudflare:account/account:getAccount""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAccountResult:
     """
@@ -174,12 +176,13 @@ def get_account(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account = cloudflare.get_account(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_account = cloudflare.account.get_account(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Account identifier tag.
     """
+    pulumi.log.warn("""get_account is deprecated: cloudflare:index/getAccount:getAccount has been deprecated in favor of cloudflare:account/account:getAccount""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -237,12 +240,13 @@ def get_account_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account = cloudflare.get_account(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_account = cloudflare.account.get_account(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Account identifier tag.
     """
+    pulumi.log.warn("""get_account is deprecated: cloudflare:index/getAccount:getAccount has been deprecated in favor of cloudflare:account/account:getAccount""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

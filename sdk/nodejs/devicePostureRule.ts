@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDevicePostureRule = new cloudflare.ZeroTrustDevicePostureRule("example_zero_trust_device_posture_rule", {
+ * const exampleZeroTrustDevicePostureRule = new cloudflare.zerotrustdeviceposture.Rule("example_zero_trust_device_posture_rule", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     name: "Admin Serial Numbers",
  *     type: "file",
@@ -153,8 +153,6 @@ export class DevicePostureRule extends pulumi.CustomResource {
             resourceInputs["enabled"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/devicePostureRule:DevicePostureRule" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DevicePostureRule.__pulumiType, name, resourceInputs, opts);
     }
 }

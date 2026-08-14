@@ -20,14 +20,14 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleMagicWanIpsecTunnel = new Cloudflare.MagicWanIpsecTunnel("example_magic_wan_ipsec_tunnel", new()
+    ///     var exampleMagicWanIpsecTunnel = new Cloudflare.Modules.MagicWan.MagicWanIpsecTunnel("example_magic_wan_ipsec_tunnel", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         CloudflareEndpoint = "203.0.113.1",
     ///         InterfaceAddress = "192.0.2.0/31",
     ///         Name = "IPsec_1",
     ///         AutomaticReturnRouting = true,
-    ///         Bgp = new Cloudflare.Inputs.MagicWanIpsecTunnelBgpArgs
+    ///         Bgp = new Cloudflare.Modules.MagicWan.Inputs.IpsecTunnelBgpArgs
     ///         {
     ///             CustomerAsn = 0,
     ///             ExtraPrefixes = new[]
@@ -36,18 +36,18 @@ namespace Pulumi.Cloudflare
     ///             },
     ///             Md5Key = "md5_key",
     ///         },
-    ///         CustomRemoteIdentities = new Cloudflare.Inputs.MagicWanIpsecTunnelCustomRemoteIdentitiesArgs
+    ///         CustomRemoteIdentities = new Cloudflare.Modules.MagicWan.Inputs.IpsecTunnelCustomRemoteIdentitiesArgs
     ///         {
     ///             FqdnId = "fqdn_id",
     ///         },
     ///         CustomerEndpoint = "203.0.113.1",
     ///         Description = "Tunnel for ISP X",
-    ///         HealthCheck = new Cloudflare.Inputs.MagicWanIpsecTunnelHealthCheckArgs
+    ///         HealthCheck = new Cloudflare.Modules.MagicWan.Inputs.IpsecTunnelHealthCheckArgs
     ///         {
     ///             Direction = "bidirectional",
     ///             Enabled = true,
     ///             Rate = "low",
-    ///             Target = new Cloudflare.Inputs.MagicWanIpsecTunnelHealthCheckTargetArgs
+    ///             Target = new Cloudflare.Modules.MagicWan.Inputs.IpsecTunnelHealthCheckTargetArgs
     ///             {
     ///                 Saved = "203.0.113.1",
     ///             },
@@ -67,6 +67,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel example '&lt;account_id&gt;/&lt;ipsec_tunnel_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel has been deprecated in favor of cloudflare:magicWan/ipsecTunnel:IpsecTunnel")]
     [CloudflareResourceType("cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel")]
     public partial class MagicWanIpsecTunnel : global::Pulumi.CustomResource
     {

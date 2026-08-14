@@ -26,16 +26,16 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDexTest(ctx, "example_zero_trust_dex_test", &cloudflare.ZeroTrustDexTestArgs{
+//			_, err := zerotrustdex.NewTest(ctx, "example_zero_trust_dex_test", &zerotrustdex.TestArgs{
 //				AccountId: pulumi.String("01a7362d577a6c3019a474fd6f485823"),
-//				Data: &cloudflare.ZeroTrustDexTestDataArgs{
+//				Data: &zerotrustdex.TestDataArgs{
 //					Host:   pulumi.String("https://dash.cloudflare.com"),
 //					Kind:   pulumi.String("http"),
 //					Method: pulumi.String("GET"),
@@ -44,8 +44,8 @@ import (
 //				Interval:    pulumi.String("30m"),
 //				Name:        pulumi.String("HTTP dash health check"),
 //				Description: pulumi.String("Checks the dash endpoint every 30 minutes"),
-//				TargetPolicies: cloudflare.ZeroTrustDexTestTargetPolicyArray{
-//					&cloudflare.ZeroTrustDexTestTargetPolicyArgs{
+//				TargetPolicies: zerotrustdex.TestTargetPolicyArray{
+//					&zerotrustdex.TestTargetPolicyArgs{
 //						Id:      pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
 //						Default: pulumi.Bool(true),
 //						Name:    pulumi.String("name"),
@@ -66,6 +66,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest example '<account_id>/<dex_test_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest has been deprecated in favor of cloudflare:zeroTrustDex/test:Test
 type ZeroTrustDexTest struct {
 	pulumi.CustomResourceState
 

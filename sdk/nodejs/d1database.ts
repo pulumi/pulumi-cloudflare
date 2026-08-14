@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleD1Database = new cloudflare.D1Database("example_d1_database", {
+ * const exampleD1Database = new cloudflare.d1.Database("example_d1_database", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "my-database",
  *     jurisdiction: "eu",
@@ -34,6 +34,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/d1Database:D1Database example '<account_id>/<database_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/d1Database:D1Database has been deprecated in favor of cloudflare:d1/database:Database
  */
 export class D1Database extends pulumi.CustomResource {
     /**
@@ -46,6 +48,7 @@ export class D1Database extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: D1DatabaseState, opts?: pulumi.CustomResourceOptions): D1Database {
+        pulumi.log.warn("D1Database is deprecated: cloudflare:index/d1Database:D1Database has been deprecated in favor of cloudflare:d1/database:Database")
         return new D1Database(name, <any>state, { ...opts, id: id });
     }
 
@@ -107,8 +110,11 @@ export class D1Database extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/d1Database:D1Database has been deprecated in favor of cloudflare:d1/database:Database */
     constructor(name: string, args: D1DatabaseArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/d1Database:D1Database has been deprecated in favor of cloudflare:d1/database:Database */
     constructor(name: string, argsOrState?: D1DatabaseArgs | D1DatabaseState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("D1Database is deprecated: cloudflare:index/d1Database:D1Database has been deprecated in favor of cloudflare:d1/database:Database")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -25,14 +25,14 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleR2BucketEventNotification = new Cloudflare.R2BucketEventNotification("example_r2_bucket_event_notification", new()
+    ///     var exampleR2BucketEventNotification = new Cloudflare.Modules.R2Bucket.R2BucketEventNotification("example_r2_bucket_event_notification", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         BucketName = "example-bucket",
     ///         QueueId = "queue_id",
     ///         Rules = new[]
     ///         {
-    ///             new Cloudflare.Inputs.R2BucketEventNotificationRuleArgs
+    ///             new Cloudflare.Modules.R2Bucket.Inputs.EventNotificationRuleArgs
     ///             {
     ///                 Actions = new[]
     ///                 {
@@ -53,6 +53,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/r2BucketEventNotification:R2BucketEventNotification has been deprecated in favor of cloudflare:r2Bucket/eventNotification:EventNotification")]
     [CloudflareResourceType("cloudflare:index/r2BucketEventNotification:R2BucketEventNotification")]
     public partial class R2BucketEventNotification : global::Pulumi.CustomResource
     {

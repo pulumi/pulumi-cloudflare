@@ -26,14 +26,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/leakedcredentialcheck"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewLeakedCredentialCheckRule(ctx, "example_leaked_credential_check_rule", &cloudflare.LeakedCredentialCheckRuleArgs{
+//			_, err := leakedcredentialcheck.NewRule(ctx, "example_leaked_credential_check_rule", &leakedcredentialcheck.RuleArgs{
 //				ZoneId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Password: pulumi.String("lookup_json_string(http.request.body.raw, \"secret\")"),
 //				Username: pulumi.String("lookup_json_string(http.request.body.raw, \"user\")"),
@@ -52,6 +52,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule example '<zone_id>/<detection_id>'
 // ```
+//
+// Deprecated: cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule has been deprecated in favor of cloudflare:leakedCredentialCheck/rule:Rule
 type LeakedCredentialCheckRule struct {
 	pulumi.CustomResourceState
 

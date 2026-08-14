@@ -19,14 +19,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/registrar"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewRegistrarDomain(ctx, "example_registrar_domain", &cloudflare.RegistrarDomainArgs{
+//			_, err := registrar.NewDomain(ctx, "example_registrar_domain", &registrar.DomainArgs{
 //				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				DomainName: pulumi.String("example.com"),
 //				AutoRenew:  pulumi.Bool(true),
@@ -45,6 +45,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/registrarDomain:RegistrarDomain has been deprecated in favor of cloudflare:registrar/domain:Domain
 type RegistrarDomain struct {
 	pulumi.CustomResourceState
 

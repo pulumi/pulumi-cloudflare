@@ -129,8 +129,13 @@ class _StreamWebhookState:
         pulumi.set(self, "secret", value)
 
 
+warnings.warn("""cloudflare:index/streamWebhook:StreamWebhook has been deprecated in favor of cloudflare:stream/webhook:Webhook""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/streamWebhook:StreamWebhook")
 class StreamWebhook(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/streamWebhook:StreamWebhook has been deprecated in favor of cloudflare:stream/webhook:Webhook""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -150,7 +155,7 @@ class StreamWebhook(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_stream_webhook = cloudflare.StreamWebhook("example_stream_webhook",
+        example_stream_webhook = cloudflare.stream.Webhook("example_stream_webhook",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             notification_url="https://example.com")
         ```
@@ -183,7 +188,7 @@ class StreamWebhook(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_stream_webhook = cloudflare.StreamWebhook("example_stream_webhook",
+        example_stream_webhook = cloudflare.stream.Webhook("example_stream_webhook",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             notification_url="https://example.com")
         ```
@@ -211,6 +216,7 @@ class StreamWebhook(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  notification_url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""StreamWebhook is deprecated: cloudflare:index/streamWebhook:StreamWebhook has been deprecated in favor of cloudflare:stream/webhook:Webhook""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -20,13 +20,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustTunnelWarpConnectorConfig = cloudflare.getZeroTrustTunnelWarpConnectorConfig({
+ * const exampleZeroTrustTunnelWarpConnectorConfig = cloudflare.zerotrusttunnelwarpconnector.getConfig({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     tunnelId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustTunnelWarpConnectorConfig:getZeroTrustTunnelWarpConnectorConfig has been deprecated in favor of cloudflare:zeroTrustTunnelWarpConnector/config:getConfig */
 export function getZeroTrustTunnelWarpConnectorConfig(args: GetZeroTrustTunnelWarpConnectorConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustTunnelWarpConnectorConfigResult> {
+    pulumi.log.warn("getZeroTrustTunnelWarpConnectorConfig is deprecated: cloudflare:index/getZeroTrustTunnelWarpConnectorConfig:getZeroTrustTunnelWarpConnectorConfig has been deprecated in favor of cloudflare:zeroTrustTunnelWarpConnector/config:getConfig")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustTunnelWarpConnectorConfig:getZeroTrustTunnelWarpConnectorConfig", {
         "accountId": args.accountId,
@@ -96,13 +98,15 @@ export interface GetZeroTrustTunnelWarpConnectorConfigResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustTunnelWarpConnectorConfig = cloudflare.getZeroTrustTunnelWarpConnectorConfig({
+ * const exampleZeroTrustTunnelWarpConnectorConfig = cloudflare.zerotrusttunnelwarpconnector.getConfig({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     tunnelId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustTunnelWarpConnectorConfig:getZeroTrustTunnelWarpConnectorConfig has been deprecated in favor of cloudflare:zeroTrustTunnelWarpConnector/config:getConfig */
 export function getZeroTrustTunnelWarpConnectorConfigOutput(args: GetZeroTrustTunnelWarpConnectorConfigOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustTunnelWarpConnectorConfigResult> {
+    pulumi.log.warn("getZeroTrustTunnelWarpConnectorConfig is deprecated: cloudflare:index/getZeroTrustTunnelWarpConnectorConfig:getZeroTrustTunnelWarpConnectorConfig has been deprecated in favor of cloudflare:zeroTrustTunnelWarpConnector/config:getConfig")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustTunnelWarpConnectorConfig:getZeroTrustTunnelWarpConnectorConfig", {
         "accountId": args.accountId,

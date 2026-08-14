@@ -21,6 +21,8 @@ __all__ = [
     'get_stream_webhook_output',
 ]
 
+warnings.warn("""cloudflare:index/getStreamWebhook:getStreamWebhook has been deprecated in favor of cloudflare:stream/webhook:getWebhook""", DeprecationWarning)
+
 @pulumi.output_type
 class GetStreamWebhookResult:
     """
@@ -99,12 +101,13 @@ def get_stream_webhook(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_stream_webhook = cloudflare.get_stream_webhook(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_stream_webhook = cloudflare.stream.get_webhook(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: The account identifier tag.
     """
+    pulumi.log.warn("""get_stream_webhook is deprecated: cloudflare:index/getStreamWebhook:getStreamWebhook has been deprecated in favor of cloudflare:stream/webhook:getWebhook""")
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -129,12 +132,13 @@ def get_stream_webhook_output(account_id: pulumi.Input[Optional[Optional[_builti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_stream_webhook = cloudflare.get_stream_webhook(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_stream_webhook = cloudflare.stream.get_webhook(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: The account identifier tag.
     """
+    pulumi.log.warn("""get_stream_webhook is deprecated: cloudflare:index/getStreamWebhook:getStreamWebhook has been deprecated in favor of cloudflare:stream/webhook:getWebhook""")
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

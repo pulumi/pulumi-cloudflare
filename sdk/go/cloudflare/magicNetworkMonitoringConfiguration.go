@@ -17,6 +17,8 @@ import (
 // - `Magic Network Monitoring Admin`
 // - `Magic Network Monitoring Config Read`
 // - `Magic Network Monitoring Config Write`
+//
+// Deprecated: cloudflare:index/magicNetworkMonitoringConfiguration:MagicNetworkMonitoringConfiguration has been deprecated in favor of cloudflare:magicNetworkMonitoring/configuration:Configuration
 type MagicNetworkMonitoringConfiguration struct {
 	pulumi.CustomResourceState
 

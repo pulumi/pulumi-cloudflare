@@ -20,21 +20,21 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustGatewaySettings = new Cloudflare.ZeroTrustGatewaySettings("example_zero_trust_gateway_settings", new()
+    ///     var exampleZeroTrustGatewaySettings = new Cloudflare.Modules.ZeroTrustGateway.ZeroTrustGatewaySettings("example_zero_trust_gateway_settings", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
-    ///         Settings = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsArgs
+    ///         Settings = new Cloudflare.Modules.ZeroTrustGateway.Inputs.SettingsSettingsArgs
     ///         {
-    ///             ActivityLog = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsActivityLogArgs
+    ///             ActivityLog = new Cloudflare.Modules.ZeroTrustGateway.Inputs.SettingsSettingsActivityLogArgs
     ///             {
     ///                 Enabled = true,
     ///             },
-    ///             Antivirus = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsAntivirusArgs
+    ///             Antivirus = new Cloudflare.Modules.ZeroTrustGateway.Inputs.SettingsSettingsAntivirusArgs
     ///             {
     ///                 EnabledDownloadPhase = false,
     ///                 EnabledUploadPhase = false,
     ///                 FailClosed = false,
-    ///                 NotificationSettings = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettingsArgs
+    ///                 NotificationSettings = new Cloudflare.Modules.ZeroTrustGateway.Inputs.SettingsSettingsAntivirusNotificationSettingsArgs
     ///                 {
     ///                     Enabled = true,
     ///                     IncludeContext = true,
@@ -42,7 +42,7 @@ namespace Pulumi.Cloudflare
     ///                     SupportUrl = "support_url",
     ///                 },
     ///             },
-    ///             BlockPage = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsBlockPageArgs
+    ///             BlockPage = new Cloudflare.Modules.ZeroTrustGateway.Inputs.SettingsSettingsBlockPageArgs
     ///             {
     ///                 BackgroundColor = "background_color",
     ///                 Enabled = true,
@@ -57,51 +57,51 @@ namespace Pulumi.Cloudflare
     ///                 SuppressFooter = false,
     ///                 TargetUri = "https://example.com",
     ///             },
-    ///             BodyScanning = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsBodyScanningArgs
+    ///             BodyScanning = new Cloudflare.Modules.ZeroTrustGateway.Inputs.SettingsSettingsBodyScanningArgs
     ///             {
     ///                 InspectionMode = "deep",
     ///             },
-    ///             BrowserIsolation = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsBrowserIsolationArgs
+    ///             BrowserIsolation = new Cloudflare.Modules.ZeroTrustGateway.Inputs.SettingsSettingsBrowserIsolationArgs
     ///             {
     ///                 NonIdentityEnabled = true,
     ///                 UrlBrowserIsolationEnabled = true,
     ///             },
-    ///             Certificate = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsCertificateArgs
+    ///             Certificate = new Cloudflare.Modules.ZeroTrustGateway.Inputs.SettingsSettingsCertificateArgs
     ///             {
     ///                 Id = "d1b364c5-1311-466e-a194-f0e943e0799f",
     ///             },
-    ///             CustomCertificate = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsCustomCertificateArgs
+    ///             CustomCertificate = new Cloudflare.Modules.ZeroTrustGateway.Inputs.SettingsSettingsCustomCertificateArgs
     ///             {
     ///                 Enabled = true,
     ///                 Id = "d1b364c5-1311-466e-a194-f0e943e0799f",
     ///             },
-    ///             ExtendedEmailMatching = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs
+    ///             ExtendedEmailMatching = new Cloudflare.Modules.ZeroTrustGateway.Inputs.SettingsSettingsExtendedEmailMatchingArgs
     ///             {
     ///                 Enabled = true,
     ///             },
-    ///             Fips = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsFipsArgs
+    ///             Fips = new Cloudflare.Modules.ZeroTrustGateway.Inputs.SettingsSettingsFipsArgs
     ///             {
     ///                 Tls = true,
     ///             },
-    ///             HostSelector = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsHostSelectorArgs
+    ///             HostSelector = new Cloudflare.Modules.ZeroTrustGateway.Inputs.SettingsSettingsHostSelectorArgs
     ///             {
     ///                 Enabled = false,
     ///             },
-    ///             Inspection = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsInspectionArgs
+    ///             Inspection = new Cloudflare.Modules.ZeroTrustGateway.Inputs.SettingsSettingsInspectionArgs
     ///             {
     ///                 Mode = "static",
     ///             },
     ///             MaxTtlSecs = 3600,
-    ///             ProtocolDetection = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs
+    ///             ProtocolDetection = new Cloudflare.Modules.ZeroTrustGateway.Inputs.SettingsSettingsProtocolDetectionArgs
     ///             {
     ///                 Enabled = true,
     ///             },
-    ///             Sandbox = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsSandboxArgs
+    ///             Sandbox = new Cloudflare.Modules.ZeroTrustGateway.Inputs.SettingsSettingsSandboxArgs
     ///             {
     ///                 Enabled = true,
     ///                 FallbackAction = "allow",
     ///             },
-    ///             TlsDecrypt = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsTlsDecryptArgs
+    ///             TlsDecrypt = new Cloudflare.Modules.ZeroTrustGateway.Inputs.SettingsSettingsTlsDecryptArgs
     ///             {
     ///                 Enabled = true,
     ///             },
@@ -159,10 +159,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/teamsAccount:TeamsAccount" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

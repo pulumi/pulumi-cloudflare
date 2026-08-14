@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessAiControlsMcpPortal = new Cloudflare.ZeroTrustAccessAiControlsMcpPortal("example_zero_trust_access_ai_controls_mcp_portal", new()
+    ///     var exampleZeroTrustAccessAiControlsMcpPortal = new Cloudflare.Modules.ZeroTrustAccessAiControlsMcp.ZeroTrustAccessAiControlsMcpPortal("example_zero_trust_access_ai_controls_mcp_portal", new()
     ///     {
     ///         AccountId = "a86a8f5c339544d7bdc89926de14fb8c",
     ///         ZeroTrustAccessAiControlsMcpPortalId = "my-mcp-portal",
@@ -36,14 +36,14 @@ namespace Pulumi.Cloudflare
     ///         SecureWebGateway = false,
     ///         Servers = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustAccessAiControlsMcpPortalServerArgs
+    ///             new Cloudflare.Modules.ZeroTrustAccessAiControlsMcp.Inputs.PortalServerArgs
     ///             {
     ///                 ServerId = "my-mcp-server",
     ///                 DefaultDisabled = true,
     ///                 OnBehalf = true,
     ///                 UpdatedPrompts = new[]
     ///                 {
-    ///                     new Cloudflare.Inputs.ZeroTrustAccessAiControlsMcpPortalServerUpdatedPromptArgs
+    ///                     new Cloudflare.Modules.ZeroTrustAccessAiControlsMcp.Inputs.PortalServerUpdatedPromptArgs
     ///                     {
     ///                         Name = "name",
     ///                         Alias = "my-custom-alias",
@@ -53,7 +53,7 @@ namespace Pulumi.Cloudflare
     ///                 },
     ///                 UpdatedTools = new[]
     ///                 {
-    ///                     new Cloudflare.Inputs.ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs
+    ///                     new Cloudflare.Modules.ZeroTrustAccessAiControlsMcp.Inputs.PortalServerUpdatedToolArgs
     ///                     {
     ///                         Name = "name",
     ///                         Alias = "my-custom-alias",
@@ -74,6 +74,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal example '&lt;account_id&gt;/&lt;id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/portal:Portal")]
     [CloudflareResourceType("cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal")]
     public partial class ZeroTrustAccessAiControlsMcpPortal : global::Pulumi.CustomResource
     {

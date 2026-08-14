@@ -27,14 +27,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/custompages"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewCustomPages(ctx, "example_custom_pages", &cloudflare.CustomPagesArgs{
+//			_, err := custompages.NewCustomPages(ctx, "example_custom_pages", &custompages.CustomPagesArgs{
 //				Identifier: pulumi.String("ratelimit_block"),
 //				State:      pulumi.String("default"),
 //				Url:        pulumi.String("http://www.example.com"),
@@ -54,6 +54,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/customPages:CustomPages example '<{accounts|zones}/{account_id|zone_id}>/<identifier>'
 // ```
+//
+// Deprecated: cloudflare:index/customPages:CustomPages has been deprecated in favor of cloudflare:customPages/customPages:CustomPages
 type CustomPages struct {
 	pulumi.CustomResourceState
 

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustAccessGroups:getZeroTrustAccessGroups has been deprecated in favor of cloudflare:zeroTrustAccess/groups:getGroups")]
     public static class GetZeroTrustAccessGroups
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessGroups = Cloudflare.GetZeroTrustAccessGroups.Invoke(new()
+        ///     var exampleZeroTrustAccessGroups = Cloudflare.Modules.ZeroTrustAccess.GetGroups.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",
@@ -57,7 +58,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessGroups = Cloudflare.GetZeroTrustAccessGroups.Invoke(new()
+        ///     var exampleZeroTrustAccessGroups = Cloudflare.Modules.ZeroTrustAccess.GetGroups.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",
@@ -87,7 +88,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessGroups = Cloudflare.GetZeroTrustAccessGroups.Invoke(new()
+        ///     var exampleZeroTrustAccessGroups = Cloudflare.Modules.ZeroTrustAccess.GetGroups.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",

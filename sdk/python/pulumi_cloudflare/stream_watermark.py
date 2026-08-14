@@ -385,8 +385,13 @@ class _StreamWatermarkState:
         pulumi.set(self, "width", value)
 
 
+warnings.warn("""cloudflare:index/streamWatermark:StreamWatermark has been deprecated in favor of cloudflare:stream/watermark:Watermark""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/streamWatermark:StreamWatermark")
 class StreamWatermark(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/streamWatermark:StreamWatermark has been deprecated in favor of cloudflare:stream/watermark:Watermark""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -412,7 +417,7 @@ class StreamWatermark(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_stream_watermark = cloudflare.StreamWatermark("example_stream_watermark",
+        example_stream_watermark = cloudflare.stream.Watermark("example_stream_watermark",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="Marketing Videos",
             opacity=0.75,
@@ -456,7 +461,7 @@ class StreamWatermark(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_stream_watermark = cloudflare.StreamWatermark("example_stream_watermark",
+        example_stream_watermark = cloudflare.stream.Watermark("example_stream_watermark",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="Marketing Videos",
             opacity=0.75,
@@ -495,6 +500,7 @@ class StreamWatermark(pulumi.CustomResource):
                  scale: pulumi.Input[Optional[_builtins.float]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""StreamWatermark is deprecated: cloudflare:index/streamWatermark:StreamWatermark has been deprecated in favor of cloudflare:stream/watermark:Watermark""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

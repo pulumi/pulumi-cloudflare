@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleClientCertificates = cloudflare.getClientCertificates({
+ * const exampleClientCertificates = cloudflare.client.getCertificates({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     limit: 10,
  *     offset: 10,
@@ -26,7 +26,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getClientCertificates:getClientCertificates has been deprecated in favor of cloudflare:client/certificates:getCertificates */
 export function getClientCertificates(args?: GetClientCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetClientCertificatesResult> {
+    pulumi.log.warn("getClientCertificates is deprecated: cloudflare:index/getClientCertificates:getClientCertificates has been deprecated in favor of cloudflare:client/certificates:getCertificates")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getClientCertificates:getClientCertificates", {
@@ -107,7 +109,7 @@ export interface GetClientCertificatesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleClientCertificates = cloudflare.getClientCertificates({
+ * const exampleClientCertificates = cloudflare.client.getCertificates({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     limit: 10,
  *     offset: 10,
@@ -115,7 +117,9 @@ export interface GetClientCertificatesResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getClientCertificates:getClientCertificates has been deprecated in favor of cloudflare:client/certificates:getCertificates */
 export function getClientCertificatesOutput(args?: GetClientCertificatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClientCertificatesResult> {
+    pulumi.log.warn("getClientCertificates is deprecated: cloudflare:index/getClientCertificates:getClientCertificates has been deprecated in favor of cloudflare:client/certificates:getCertificates")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getClientCertificates:getClientCertificates", {

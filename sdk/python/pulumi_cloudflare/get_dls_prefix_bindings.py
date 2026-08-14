@@ -22,6 +22,8 @@ __all__ = [
     'get_dls_prefix_bindings_output',
 ]
 
+warnings.warn("""cloudflare:index/getDlsPrefixBindings:getDlsPrefixBindings has been deprecated in favor of cloudflare:dlsPrefix/bindings:getBindings""", DeprecationWarning)
+
 @pulumi.output_type
 class GetDlsPrefixBindingsResult:
     """
@@ -89,13 +91,14 @@ def get_dls_prefix_bindings(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_dls_prefix_bindings = cloudflare.get_dls_prefix_bindings(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_dls_prefix_bindings = cloudflare.dlsprefix.get_bindings(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Identifier of a Cloudflare account.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_dls_prefix_bindings is deprecated: cloudflare:index/getDlsPrefixBindings:getDlsPrefixBindings has been deprecated in favor of cloudflare:dlsPrefix/bindings:getBindings""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -121,13 +124,14 @@ def get_dls_prefix_bindings_output(account_id: pulumi.Input[Optional[_builtins.s
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_dls_prefix_bindings = cloudflare.get_dls_prefix_bindings(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_dls_prefix_bindings = cloudflare.dlsprefix.get_bindings(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Identifier of a Cloudflare account.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_dls_prefix_bindings is deprecated: cloudflare:index/getDlsPrefixBindings:getDlsPrefixBindings has been deprecated in favor of cloudflare:dlsPrefix/bindings:getBindings""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

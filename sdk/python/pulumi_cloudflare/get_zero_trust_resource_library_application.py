@@ -21,6 +21,8 @@ __all__ = [
     'get_zero_trust_resource_library_application_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustResourceLibraryApplication:getZeroTrustResourceLibraryApplication has been deprecated in favor of cloudflare:zeroTrustResourceLibrary/application:getApplication""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustResourceLibraryApplicationResult:
     """
@@ -272,13 +274,14 @@ def get_zero_trust_resource_library_application(account_id: Optional[_builtins.s
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_resource_library_application = cloudflare.get_zero_trust_resource_library_application(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_zero_trust_resource_library_application = cloudflare.zerotrustresourcelibrary.get_application(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         id="0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0")
     ```
 
 
     :param _builtins.str id: The ID of this resource.
     """
+    pulumi.log.warn("""get_zero_trust_resource_library_application is deprecated: cloudflare:index/getZeroTrustResourceLibraryApplication:getZeroTrustResourceLibraryApplication has been deprecated in favor of cloudflare:zeroTrustResourceLibrary/application:getApplication""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['id'] = id
@@ -315,13 +318,14 @@ def get_zero_trust_resource_library_application_output(account_id: pulumi.Input[
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_resource_library_application = cloudflare.get_zero_trust_resource_library_application(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_zero_trust_resource_library_application = cloudflare.zerotrustresourcelibrary.get_application(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         id="0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0")
     ```
 
 
     :param _builtins.str id: The ID of this resource.
     """
+    pulumi.log.warn("""get_zero_trust_resource_library_application is deprecated: cloudflare:index/getZeroTrustResourceLibraryApplication:getZeroTrustResourceLibraryApplication has been deprecated in favor of cloudflare:zeroTrustResourceLibrary/application:getApplication""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['id'] = id

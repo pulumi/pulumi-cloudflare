@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getPageShieldPolicies:getPageShieldPolicies has been deprecated in favor of cloudflare:pageShield/policies:getPolicies")]
     public static class GetPageShieldPolicies
     {
         /// <summary>
@@ -31,7 +32,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var examplePageShieldPolicies = Cloudflare.GetPageShieldPolicies.Invoke(new()
+        ///     var examplePageShieldPolicies = Cloudflare.Modules.PageShield.GetPolicies.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -62,7 +63,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var examplePageShieldPolicies = Cloudflare.GetPageShieldPolicies.Invoke(new()
+        ///     var examplePageShieldPolicies = Cloudflare.Modules.PageShield.GetPolicies.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -93,7 +94,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var examplePageShieldPolicies = Cloudflare.GetPageShieldPolicies.Invoke(new()
+        ///     var examplePageShieldPolicies = Cloudflare.Modules.PageShield.GetPolicies.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

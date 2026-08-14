@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleSsoConnector = new Cloudflare.SsoConnector("example_sso_connector", new()
+    ///     var exampleSsoConnector = new Cloudflare.Modules.Sso.SsoConnector("example_sso_connector", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         EmailDomain = "example.com",
@@ -42,6 +42,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/ssoConnector:SsoConnector example '&lt;account_id&gt;/&lt;sso_connector_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/ssoConnector:SsoConnector has been deprecated in favor of cloudflare:sso/connector:Connector")]
     [CloudflareResourceType("cloudflare:index/ssoConnector:SsoConnector")]
     public partial class SsoConnector : global::Pulumi.CustomResource
     {

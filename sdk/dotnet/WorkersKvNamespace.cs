@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWorkersKvNamespace = new Cloudflare.WorkersKvNamespace("example_workers_kv_namespace", new()
+    ///     var exampleWorkersKvNamespace = new Cloudflare.Modules.WorkersKv.WorkersKvNamespace("example_workers_kv_namespace", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Title = "My Own Namespace",
@@ -40,6 +40,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example '&lt;account_id&gt;/&lt;namespace_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/workersKvNamespace:WorkersKvNamespace has been deprecated in favor of cloudflare:workersKv/namespace:Namespace")]
     [CloudflareResourceType("cloudflare:index/workersKvNamespace:WorkersKvNamespace")]
     public partial class WorkersKvNamespace : global::Pulumi.CustomResource
     {

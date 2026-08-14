@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/webanalytics"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWebAnalyticsSite(ctx, "example_web_analytics_site", &cloudflare.WebAnalyticsSiteArgs{
+//			_, err := webanalytics.NewSite(ctx, "example_web_analytics_site", &webanalytics.SiteArgs{
 //				AccountId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				AutoInstall: pulumi.Bool(true),
 //				Host:        pulumi.String("example.com"),
@@ -51,6 +51,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example '<account_id>/<site_id>'
 // ```
+//
+// Deprecated: cloudflare:index/webAnalyticsSite:WebAnalyticsSite has been deprecated in favor of cloudflare:webAnalytics/site:Site
 type WebAnalyticsSite struct {
 	pulumi.CustomResourceState
 

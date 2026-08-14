@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpSensitivityGroup = new cloudflare.ZeroTrustDlpSensitivityGroup("example_zero_trust_dlp_sensitivity_group", {
+ * const exampleZeroTrustDlpSensitivityGroup = new cloudflare.zerotrustdlpsensitivity.Group("example_zero_trust_dlp_sensitivity_group", {
  *     accountId: "account_id",
  *     name: "name",
  *     description: "description",
@@ -30,6 +30,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustDlpSensitivityGroup:ZeroTrustDlpSensitivityGroup example '<account_id>/<sensitivity_group_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustDlpSensitivityGroup:ZeroTrustDlpSensitivityGroup has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/group:Group
  */
 export class ZeroTrustDlpSensitivityGroup extends pulumi.CustomResource {
     /**
@@ -42,6 +44,7 @@ export class ZeroTrustDlpSensitivityGroup extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustDlpSensitivityGroupState, opts?: pulumi.CustomResourceOptions): ZeroTrustDlpSensitivityGroup {
+        pulumi.log.warn("ZeroTrustDlpSensitivityGroup is deprecated: cloudflare:index/zeroTrustDlpSensitivityGroup:ZeroTrustDlpSensitivityGroup has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/group:Group")
         return new ZeroTrustDlpSensitivityGroup(name, <any>state, { ...opts, id: id });
     }
 
@@ -74,8 +77,11 @@ export class ZeroTrustDlpSensitivityGroup extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustDlpSensitivityGroup:ZeroTrustDlpSensitivityGroup has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/group:Group */
     constructor(name: string, args: ZeroTrustDlpSensitivityGroupArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustDlpSensitivityGroup:ZeroTrustDlpSensitivityGroup has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/group:Group */
     constructor(name: string, argsOrState?: ZeroTrustDlpSensitivityGroupArgs | ZeroTrustDlpSensitivityGroupState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustDlpSensitivityGroup is deprecated: cloudflare:index/zeroTrustDlpSensitivityGroup:ZeroTrustDlpSensitivityGroup has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/group:Group")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

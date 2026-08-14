@@ -22,6 +22,8 @@ __all__ = [
     'get_r2_bucket_event_notification_output',
 ]
 
+warnings.warn("""cloudflare:index/getR2BucketEventNotification:getR2BucketEventNotification has been deprecated in favor of cloudflare:r2Bucket/eventNotification:getEventNotification""", DeprecationWarning)
+
 @pulumi.output_type
 class GetR2BucketEventNotificationResult:
     """
@@ -111,7 +113,7 @@ def get_r2_bucket_event_notification(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_r2_bucket_event_notification = cloudflare.get_r2_bucket_event_notification(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_r2_bucket_event_notification = cloudflare.r2bucket.get_event_notification(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         bucket_name="example-bucket",
         queue_id="queue_id")
     ```
@@ -121,6 +123,7 @@ def get_r2_bucket_event_notification(account_id: Optional[_builtins.str] = None,
     :param _builtins.str bucket_name: Name of the bucket.
     :param _builtins.str queue_id: Queue ID.
     """
+    pulumi.log.warn("""get_r2_bucket_event_notification is deprecated: cloudflare:index/getR2BucketEventNotification:getR2BucketEventNotification has been deprecated in favor of cloudflare:r2Bucket/eventNotification:getEventNotification""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['bucketName'] = bucket_name
@@ -150,7 +153,7 @@ def get_r2_bucket_event_notification_output(account_id: pulumi.Input[Optional[_b
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_r2_bucket_event_notification = cloudflare.get_r2_bucket_event_notification(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_r2_bucket_event_notification = cloudflare.r2bucket.get_event_notification(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         bucket_name="example-bucket",
         queue_id="queue_id")
     ```
@@ -160,6 +163,7 @@ def get_r2_bucket_event_notification_output(account_id: pulumi.Input[Optional[_b
     :param _builtins.str bucket_name: Name of the bucket.
     :param _builtins.str queue_id: Queue ID.
     """
+    pulumi.log.warn("""get_r2_bucket_event_notification is deprecated: cloudflare:index/getR2BucketEventNotification:getR2BucketEventNotification has been deprecated in favor of cloudflare:r2Bucket/eventNotification:getEventNotification""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['bucketName'] = bucket_name

@@ -33,10 +33,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDevicePostureRule;
- * import com.pulumi.cloudflare.ZeroTrustDevicePostureRuleArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDevicePostureRuleInputArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDevicePostureRuleMatchArgs;
+ * import com.pulumi.cloudflare.zeroTrustDevicePosture.Rule;
+ * import com.pulumi.cloudflare.zeroTrustDevicePosture.RuleArgs;
+ * import com.pulumi.cloudflare.zeroTrustDevicePosture.inputs.RuleInputArgs;
+ * import com.pulumi.cloudflare.zeroTrustDevicePosture.inputs.RuleMatchArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -50,20 +50,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustDevicePostureRule = new ZeroTrustDevicePostureRule("exampleZeroTrustDevicePostureRule", ZeroTrustDevicePostureRuleArgs.builder()
+ *         var exampleZeroTrustDevicePostureRule = new Rule("exampleZeroTrustDevicePostureRule", RuleArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
  *             .name("Admin Serial Numbers")
  *             .type("file")
  *             .description("The rule for admin serial numbers")
  *             .expiration("1h")
- *             .input(ZeroTrustDevicePostureRuleInputArgs.builder()
+ *             .input(RuleInputArgs.builder()
  *                 .operatingSystem("linux")
  *                 .path("/bin/cat")
  *                 .exists(true)
  *                 .sha256("https://api.us-2.crowdstrike.com")
  *                 .thumbprint("0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e")
  *                 .build())
- *             .matches(ZeroTrustDevicePostureRuleMatchArgs.builder()
+ *             .matches(RuleMatchArgs.builder()
  *                 .platform("windows")
  *                 .build())
  *             .schedule("1h")
@@ -80,7 +80,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule example &#39;&lt;account_id&gt;/&lt;rule_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule has been deprecated in favor of cloudflare:zeroTrustDevicePosture/rule:Rule
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule has been deprecated in favor of cloudflare:zeroTrustDevicePosture/rule:Rule */
 @ResourceType(type="cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule")
 public class ZeroTrustDevicePostureRule extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

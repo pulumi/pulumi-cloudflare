@@ -295,8 +295,13 @@ class _MagicTransitSiteAclState:
         pulumi.set(self, "unidirectional", value)
 
 
+warnings.warn("""cloudflare:index/magicTransitSiteAcl:MagicTransitSiteAcl has been deprecated in favor of cloudflare:magicTransitSite/acl:Acl""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/magicTransitSiteAcl:MagicTransitSiteAcl")
 class MagicTransitSiteAcl(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/magicTransitSiteAcl:MagicTransitSiteAcl has been deprecated in favor of cloudflare:magicTransitSite/acl:Acl""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -325,7 +330,7 @@ class MagicTransitSiteAcl(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_magic_transit_site_acl = cloudflare.MagicTransitSiteAcl("example_magic_transit_site_acl",
+        example_magic_transit_site_acl = cloudflare.magictransitsite.Acl("example_magic_transit_site_acl",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             site_id="023e105f4ecef8ad9ca31a8372d0c353",
             lan1={
@@ -385,7 +390,7 @@ class MagicTransitSiteAcl(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_magic_transit_site_acl = cloudflare.MagicTransitSiteAcl("example_magic_transit_site_acl",
+        example_magic_transit_site_acl = cloudflare.magictransitsite.Acl("example_magic_transit_site_acl",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             site_id="023e105f4ecef8ad9ca31a8372d0c353",
             lan1={
@@ -441,6 +446,7 @@ class MagicTransitSiteAcl(pulumi.CustomResource):
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  unidirectional: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
+        pulumi.log.warn("""MagicTransitSiteAcl is deprecated: cloudflare:index/magicTransitSiteAcl:MagicTransitSiteAcl has been deprecated in favor of cloudflare:magicTransitSite/acl:Acl""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

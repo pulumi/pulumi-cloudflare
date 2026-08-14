@@ -33,9 +33,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.MagicTransitSiteWan;
- * import com.pulumi.cloudflare.MagicTransitSiteWanArgs;
- * import com.pulumi.cloudflare.inputs.MagicTransitSiteWanStaticAddressingArgs;
+ * import com.pulumi.cloudflare.magicTransitSite.Wan;
+ * import com.pulumi.cloudflare.magicTransitSite.WanArgs;
+ * import com.pulumi.cloudflare.magicTransitSite.inputs.WanStaticAddressingArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -49,13 +49,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleMagicTransitSiteWan = new MagicTransitSiteWan("exampleMagicTransitSiteWan", MagicTransitSiteWanArgs.builder()
+ *         var exampleMagicTransitSiteWan = new Wan("exampleMagicTransitSiteWan", WanArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .siteId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .physport(1)
  *             .name("name")
  *             .priority(0)
- *             .staticAddressing(MagicTransitSiteWanStaticAddressingArgs.builder()
+ *             .staticAddressing(WanStaticAddressingArgs.builder()
  *                 .address("192.0.2.0/24")
  *                 .gatewayAddress("192.0.2.1")
  *                 .secondaryAddress("192.0.2.0/24")
@@ -74,7 +74,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan example &#39;&lt;account_id&gt;/&lt;site_id&gt;/&lt;wan_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan has been deprecated in favor of cloudflare:magicTransitSite/wan:Wan
+ * 
  */
+@Deprecated /* cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan has been deprecated in favor of cloudflare:magicTransitSite/wan:Wan */
 @ResourceType(type="cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan")
 public class MagicTransitSiteWan extends com.pulumi.resources.CustomResource {
     /**

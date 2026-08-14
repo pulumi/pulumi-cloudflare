@@ -22,6 +22,8 @@ __all__ = [
     'get_workers_deployment_output',
 ]
 
+warnings.warn("""cloudflare:index/getWorkersDeployment:getWorkersDeployment has been deprecated in favor of cloudflare:workers/deployment:getDeployment""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWorkersDeploymentResult:
     """
@@ -157,7 +159,7 @@ def get_workers_deployment(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_deployment = cloudflare.get_workers_deployment(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_deployment = cloudflare.workers.get_deployment(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         script_name="this-is_my_script-01",
         deployment_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
@@ -166,6 +168,7 @@ def get_workers_deployment(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Identifier.
     :param _builtins.str script_name: Name of the script, used in URLs and route configuration.
     """
+    pulumi.log.warn("""get_workers_deployment is deprecated: cloudflare:index/getWorkersDeployment:getWorkersDeployment has been deprecated in favor of cloudflare:workers/deployment:getDeployment""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['deploymentId'] = deployment_id
@@ -201,7 +204,7 @@ def get_workers_deployment_output(account_id: pulumi.Input[Optional[_builtins.st
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_deployment = cloudflare.get_workers_deployment(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_deployment = cloudflare.workers.get_deployment(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         script_name="this-is_my_script-01",
         deployment_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
@@ -210,6 +213,7 @@ def get_workers_deployment_output(account_id: pulumi.Input[Optional[_builtins.st
     :param _builtins.str account_id: Identifier.
     :param _builtins.str script_name: Name of the script, used in URLs and route configuration.
     """
+    pulumi.log.warn("""get_workers_deployment is deprecated: cloudflare:index/getWorkersDeployment:getWorkersDeployment has been deprecated in favor of cloudflare:workers/deployment:getDeployment""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['deploymentId'] = deployment_id

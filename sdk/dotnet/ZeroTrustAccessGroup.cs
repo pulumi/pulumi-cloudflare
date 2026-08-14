@@ -25,11 +25,11 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessGroup = new Cloudflare.ZeroTrustAccessGroup("example_zero_trust_access_group", new()
+    ///     var exampleZeroTrustAccessGroup = new Cloudflare.Modules.ZeroTrustAccess.ZeroTrustAccessGroup("example_zero_trust_access_group", new()
     ///     {
     ///         Includes = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustAccessGroupIncludeArgs
+    ///             new Cloudflare.Modules.ZeroTrustAccess.Inputs.GroupIncludeArgs
     ///             {
     ///                 Certificate = null,
     ///             },
@@ -38,7 +38,7 @@ namespace Pulumi.Cloudflare
     ///         ZoneId = "zone_id",
     ///         Excludes = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustAccessGroupExcludeArgs
+    ///             new Cloudflare.Modules.ZeroTrustAccess.Inputs.GroupExcludeArgs
     ///             {
     ///                 Certificate = null,
     ///             },
@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
     ///         IsDefault = true,
     ///         Requires = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustAccessGroupRequireArgs
+    ///             new Cloudflare.Modules.ZeroTrustAccess.Inputs.GroupRequireArgs
     ///             {
     ///                 Certificate = null,
     ///             },
@@ -62,6 +62,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup example '&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;group_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup has been deprecated in favor of cloudflare:zeroTrustAccess/group:Group")]
     [CloudflareResourceType("cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup")]
     public partial class ZeroTrustAccessGroup : global::Pulumi.CustomResource
     {

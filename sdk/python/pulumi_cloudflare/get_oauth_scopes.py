@@ -22,6 +22,8 @@ __all__ = [
     'get_oauth_scopes_output',
 ]
 
+warnings.warn("""cloudflare:index/getOauthScopes:getOauthScopes has been deprecated in favor of cloudflare:oauth/scopes:getScopes""", DeprecationWarning)
+
 @pulumi.output_type
 class GetOauthScopesResult:
     """
@@ -71,12 +73,13 @@ def get_oauth_scopes(max_items: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_oauth_scopes = cloudflare.get_oauth_scopes()
+    example_oauth_scopes = cloudflare.oauth.get_scopes()
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_oauth_scopes is deprecated: cloudflare:index/getOauthScopes:getOauthScopes has been deprecated in favor of cloudflare:oauth/scopes:getScopes""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -94,12 +97,13 @@ def get_oauth_scopes_output(max_items: pulumi.Input[Optional[Optional[_builtins.
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_oauth_scopes = cloudflare.get_oauth_scopes()
+    example_oauth_scopes = cloudflare.oauth.get_scopes()
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_oauth_scopes is deprecated: cloudflare:index/getOauthScopes:getOauthScopes has been deprecated in favor of cloudflare:oauth/scopes:getScopes""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

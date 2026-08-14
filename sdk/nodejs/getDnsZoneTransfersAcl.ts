@@ -16,13 +16,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsZoneTransfersAcl = cloudflare.getDnsZoneTransfersAcl({
+ * const exampleDnsZoneTransfersAcl = cloudflare.dnszonetransfers.getAcl({
  *     accountId: "01a7362d577a6c3019a474fd6f485823",
  *     aclId: "23ff594956f20c2a721606e94745a8aa",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getDnsZoneTransfersAcl:getDnsZoneTransfersAcl has been deprecated in favor of cloudflare:dnsZoneTransfers/acl:getAcl */
 export function getDnsZoneTransfersAcl(args: GetDnsZoneTransfersAclArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsZoneTransfersAclResult> {
+    pulumi.log.warn("getDnsZoneTransfersAcl is deprecated: cloudflare:index/getDnsZoneTransfersAcl:getDnsZoneTransfersAcl has been deprecated in favor of cloudflare:dnsZoneTransfers/acl:getAcl")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getDnsZoneTransfersAcl:getDnsZoneTransfersAcl", {
         "accountId": args.accountId,
@@ -69,13 +71,15 @@ export interface GetDnsZoneTransfersAclResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsZoneTransfersAcl = cloudflare.getDnsZoneTransfersAcl({
+ * const exampleDnsZoneTransfersAcl = cloudflare.dnszonetransfers.getAcl({
  *     accountId: "01a7362d577a6c3019a474fd6f485823",
  *     aclId: "23ff594956f20c2a721606e94745a8aa",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getDnsZoneTransfersAcl:getDnsZoneTransfersAcl has been deprecated in favor of cloudflare:dnsZoneTransfers/acl:getAcl */
 export function getDnsZoneTransfersAclOutput(args: GetDnsZoneTransfersAclOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsZoneTransfersAclResult> {
+    pulumi.log.warn("getDnsZoneTransfersAcl is deprecated: cloudflare:index/getDnsZoneTransfersAcl:getDnsZoneTransfersAcl has been deprecated in favor of cloudflare:dnsZoneTransfers/acl:getAcl")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getDnsZoneTransfersAcl:getDnsZoneTransfersAcl", {
         "accountId": args.accountId,

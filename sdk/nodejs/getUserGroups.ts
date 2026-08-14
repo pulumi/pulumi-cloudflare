@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleUserGroups = cloudflare.getUserGroups({
+ * const exampleUserGroups = cloudflare.user.getGroups({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     id: "023e105f4ecef8ad9ca31a8372d0c353",
  *     fuzzyName: "Foo",
@@ -27,7 +27,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getUserGroups:getUserGroups has been deprecated in favor of cloudflare:user/groups:getGroups */
 export function getUserGroups(args: GetUserGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetUserGroupsResult> {
+    pulumi.log.warn("getUserGroups is deprecated: cloudflare:index/getUserGroups:getUserGroups has been deprecated in favor of cloudflare:user/groups:getGroups")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getUserGroups:getUserGroups", {
         "accountId": args.accountId,
@@ -117,7 +119,7 @@ export interface GetUserGroupsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleUserGroups = cloudflare.getUserGroups({
+ * const exampleUserGroups = cloudflare.user.getGroups({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     id: "023e105f4ecef8ad9ca31a8372d0c353",
  *     fuzzyName: "Foo",
@@ -125,7 +127,9 @@ export interface GetUserGroupsResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getUserGroups:getUserGroups has been deprecated in favor of cloudflare:user/groups:getGroups */
 export function getUserGroupsOutput(args: GetUserGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserGroupsResult> {
+    pulumi.log.warn("getUserGroups is deprecated: cloudflare:index/getUserGroups:getUserGroups has been deprecated in favor of cloudflare:user/groups:getGroups")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getUserGroups:getUserGroups", {
         "accountId": args.accountId,

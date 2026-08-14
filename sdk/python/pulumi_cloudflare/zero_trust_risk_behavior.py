@@ -80,8 +80,13 @@ class _ZeroTrustRiskBehaviorState:
         pulumi.set(self, "behaviors", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior has been deprecated in favor of cloudflare:zeroTrust/riskBehavior:RiskBehavior""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior")
 class ZeroTrustRiskBehavior(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior has been deprecated in favor of cloudflare:zeroTrust/riskBehavior:RiskBehavior""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -101,7 +106,7 @@ class ZeroTrustRiskBehavior(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_risk_behavior = cloudflare.ZeroTrustRiskBehavior("example_zero_trust_risk_behavior",
+        example_zero_trust_risk_behavior = cloudflare.zerotrust.RiskBehavior("example_zero_trust_risk_behavior",
             account_id="account_id",
             behaviors={
                 "foo": {
@@ -137,7 +142,7 @@ class ZeroTrustRiskBehavior(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_risk_behavior = cloudflare.ZeroTrustRiskBehavior("example_zero_trust_risk_behavior",
+        example_zero_trust_risk_behavior = cloudflare.zerotrust.RiskBehavior("example_zero_trust_risk_behavior",
             account_id="account_id",
             behaviors={
                 "foo": {
@@ -170,6 +175,7 @@ class ZeroTrustRiskBehavior(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  behaviors: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ZeroTrustRiskBehaviorBehaviorsArgs', 'ZeroTrustRiskBehaviorBehaviorsArgsDict']]]]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustRiskBehavior is deprecated: cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior has been deprecated in favor of cloudflare:zeroTrust/riskBehavior:RiskBehavior""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

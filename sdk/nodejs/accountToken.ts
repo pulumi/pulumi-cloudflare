@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountToken = new cloudflare.AccountToken("example_account_token", {
+ * const exampleAccountToken = new cloudflare.account.Token("example_account_token", {
  *     accountId: "b67e14daa5f8dceeb91fe5449ba496eb",
  *     name: "workers read-only token",
  *     policies: [{
@@ -57,6 +57,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/accountToken:AccountToken example '<account_id>/<token_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/accountToken:AccountToken has been deprecated in favor of cloudflare:account/token:Token
  */
 export class AccountToken extends pulumi.CustomResource {
     /**
@@ -69,6 +71,7 @@ export class AccountToken extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AccountTokenState, opts?: pulumi.CustomResourceOptions): AccountToken {
+        pulumi.log.warn("AccountToken is deprecated: cloudflare:index/accountToken:AccountToken has been deprecated in favor of cloudflare:account/token:Token")
         return new AccountToken(name, <any>state, { ...opts, id: id });
     }
 
@@ -136,8 +139,11 @@ export class AccountToken extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/accountToken:AccountToken has been deprecated in favor of cloudflare:account/token:Token */
     constructor(name: string, args: AccountTokenArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/accountToken:AccountToken has been deprecated in favor of cloudflare:account/token:Token */
     constructor(name: string, argsOrState?: AccountTokenArgs | AccountTokenState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("AccountToken is deprecated: cloudflare:index/accountToken:AccountToken has been deprecated in favor of cloudflare:account/token:Token")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

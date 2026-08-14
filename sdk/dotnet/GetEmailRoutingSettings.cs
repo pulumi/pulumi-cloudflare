@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getEmailRoutingSettings:getEmailRoutingSettings has been deprecated in favor of cloudflare:emailRouting/settings:getSettings")]
     public static class GetEmailRoutingSettings
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailRoutingSettings = Cloudflare.GetEmailRoutingSettings.Invoke(new()
+        ///     var exampleEmailRoutingSettings = Cloudflare.Modules.EmailRouting.GetSettings.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -54,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailRoutingSettings = Cloudflare.GetEmailRoutingSettings.Invoke(new()
+        ///     var exampleEmailRoutingSettings = Cloudflare.Modules.EmailRouting.GetSettings.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -81,7 +82,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailRoutingSettings = Cloudflare.GetEmailRoutingSettings.Invoke(new()
+        ///     var exampleEmailRoutingSettings = Cloudflare.Modules.EmailRouting.GetSettings.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

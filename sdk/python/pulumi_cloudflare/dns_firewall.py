@@ -517,8 +517,13 @@ class _DnsFirewallState:
         pulumi.set(self, "upstream_ips", value)
 
 
+warnings.warn("""cloudflare:index/dnsFirewall:DnsFirewall has been deprecated in favor of cloudflare:dns/firewall:Firewall""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/dnsFirewall:DnsFirewall")
 class DnsFirewall(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/dnsFirewall:DnsFirewall has been deprecated in favor of cloudflare:dns/firewall:Firewall""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -548,7 +553,7 @@ class DnsFirewall(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_dns_firewall = cloudflare.DnsFirewall("example_dns_firewall",
+        example_dns_firewall = cloudflare.dns.Firewall("example_dns_firewall",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="My Awesome DNS Firewall cluster",
             upstream_ips=[
@@ -629,7 +634,7 @@ class DnsFirewall(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_dns_firewall = cloudflare.DnsFirewall("example_dns_firewall",
+        example_dns_firewall = cloudflare.dns.Firewall("example_dns_firewall",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="My Awesome DNS Firewall cluster",
             upstream_ips=[
@@ -686,6 +691,7 @@ class DnsFirewall(pulumi.CustomResource):
                  retries: pulumi.Input[Optional[_builtins.float]] = None,
                  upstream_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
+        pulumi.log.warn("""DnsFirewall is deprecated: cloudflare:index/dnsFirewall:DnsFirewall has been deprecated in favor of cloudflare:dns/firewall:Firewall""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

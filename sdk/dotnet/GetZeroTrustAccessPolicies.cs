@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustAccessPolicies:getZeroTrustAccessPolicies has been deprecated in favor of cloudflare:zeroTrustAccess/policies:getPolicies")]
     public static class GetZeroTrustAccessPolicies
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessPolicies = Cloudflare.GetZeroTrustAccessPolicies.Invoke(new()
+        ///     var exampleZeroTrustAccessPolicies = Cloudflare.Modules.ZeroTrustAccess.GetPolicies.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -54,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessPolicies = Cloudflare.GetZeroTrustAccessPolicies.Invoke(new()
+        ///     var exampleZeroTrustAccessPolicies = Cloudflare.Modules.ZeroTrustAccess.GetPolicies.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -81,7 +82,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustAccessPolicies = Cloudflare.GetZeroTrustAccessPolicies.Invoke(new()
+        ///     var exampleZeroTrustAccessPolicies = Cloudflare.Modules.ZeroTrustAccess.GetPolicies.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

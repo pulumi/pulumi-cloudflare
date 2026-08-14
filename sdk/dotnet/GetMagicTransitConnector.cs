@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getMagicTransitConnector:getMagicTransitConnector has been deprecated in favor of cloudflare:magicTransit/connector:getConnector")]
     public static class GetMagicTransitConnector
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicTransitConnector = Cloudflare.GetMagicTransitConnector.Invoke(new()
+        ///     var exampleMagicTransitConnector = Cloudflare.Modules.MagicTransit.GetConnector.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ConnectorId = "connector_id",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicTransitConnector = Cloudflare.GetMagicTransitConnector.Invoke(new()
+        ///     var exampleMagicTransitConnector = Cloudflare.Modules.MagicTransit.GetConnector.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ConnectorId = "connector_id",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicTransitConnector = Cloudflare.GetMagicTransitConnector.Invoke(new()
+        ///     var exampleMagicTransitConnector = Cloudflare.Modules.MagicTransit.GetConnector.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ConnectorId = "connector_id",

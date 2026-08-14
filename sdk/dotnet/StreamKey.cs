@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleStreamKey = new Cloudflare.StreamKey("example_stream_key", new()
+    ///     var exampleStreamKey = new Cloudflare.Modules.Stream.StreamKey("example_stream_key", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///     });
@@ -39,6 +39,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/streamKey:StreamKey example '&lt;account_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/streamKey:StreamKey has been deprecated in favor of cloudflare:stream/key:Key")]
     [CloudflareResourceType("cloudflare:index/streamKey:StreamKey")]
     public partial class StreamKey : global::Pulumi.CustomResource
     {

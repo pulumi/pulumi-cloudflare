@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDnsLocation = new cloudflare.ZeroTrustDnsLocation("example_zero_trust_dns_location", {
+ * const exampleZeroTrustDnsLocation = new cloudflare.zerotrustdns.Location("example_zero_trust_dns_location", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     name: "Austin Office Location",
  *     clientDefault: false,
@@ -204,8 +204,6 @@ export class TeamsLocation extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/teamsLocation:TeamsLocation" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(TeamsLocation.__pulumiType, name, resourceInputs, opts);
     }
 }

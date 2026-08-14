@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const examplePagesProjects = cloudflare.getPagesProjects({
+ * const examplePagesProjects = cloudflare.pages.getProjects({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getPagesProjects:getPagesProjects has been deprecated in favor of cloudflare:pages/projects:getProjects */
 export function getPagesProjects(args?: GetPagesProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetPagesProjectsResult> {
+    pulumi.log.warn("getPagesProjects is deprecated: cloudflare:index/getPagesProjects:getPagesProjects has been deprecated in favor of cloudflare:pages/projects:getProjects")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getPagesProjects:getPagesProjects", {
@@ -75,12 +77,14 @@ export interface GetPagesProjectsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const examplePagesProjects = cloudflare.getPagesProjects({
+ * const examplePagesProjects = cloudflare.pages.getProjects({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getPagesProjects:getPagesProjects has been deprecated in favor of cloudflare:pages/projects:getProjects */
 export function getPagesProjectsOutput(args?: GetPagesProjectsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPagesProjectsResult> {
+    pulumi.log.warn("getPagesProjects is deprecated: cloudflare:index/getPagesProjects:getPagesProjects has been deprecated in favor of cloudflare:pages/projects:getProjects")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getPagesProjects:getPagesProjects", {

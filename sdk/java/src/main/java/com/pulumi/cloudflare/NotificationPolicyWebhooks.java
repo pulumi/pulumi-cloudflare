@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.NotificationPolicyWebhooks;
- * import com.pulumi.cloudflare.NotificationPolicyWebhooksArgs;
+ * import com.pulumi.cloudflare.notificationPolicyWebhooks.NotificationPolicyWebhooks;
+ * import com.pulumi.cloudflare.notificationPolicyWebhooks.NotificationPolicyWebhooksArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -66,7 +66,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example &#39;&lt;account_id&gt;/&lt;webhook_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks has been deprecated in favor of cloudflare:notificationPolicyWebhooks/notificationPolicyWebhooks:NotificationPolicyWebhooks
+ * 
  */
+@Deprecated /* cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks has been deprecated in favor of cloudflare:notificationPolicyWebhooks/notificationPolicyWebhooks:NotificationPolicyWebhooks */
 @ResourceType(type="cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks")
 public class NotificationPolicyWebhooks extends com.pulumi.resources.CustomResource {
     /**

@@ -287,8 +287,13 @@ class _MtlsCertificateState:
         pulumi.set(self, "uploaded_on", value)
 
 
+warnings.warn("""cloudflare:index/mtlsCertificate:MtlsCertificate has been deprecated in favor of cloudflare:mtlsCertificate/mtlsCertificate:MtlsCertificate""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/mtlsCertificate:MtlsCertificate")
 class MtlsCertificate(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/mtlsCertificate:MtlsCertificate has been deprecated in favor of cloudflare:mtlsCertificate/mtlsCertificate:MtlsCertificate""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -306,7 +311,7 @@ class MtlsCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_mtls_certificate = cloudflare.MtlsCertificate("example_mtls_certificate",
+        example_mtls_certificate = cloudflare.mtlscertificate.MtlsCertificate("example_mtls_certificate",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             ca=True,
             certificates=\"\"\"  -----BEGIN CERTIFICATE-----
@@ -348,7 +353,7 @@ class MtlsCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_mtls_certificate = cloudflare.MtlsCertificate("example_mtls_certificate",
+        example_mtls_certificate = cloudflare.mtlscertificate.MtlsCertificate("example_mtls_certificate",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             ca=True,
             certificates=\"\"\"  -----BEGIN CERTIFICATE-----
@@ -390,6 +395,7 @@ class MtlsCertificate(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""MtlsCertificate is deprecated: cloudflare:index/mtlsCertificate:MtlsCertificate has been deprecated in favor of cloudflare:mtlsCertificate/mtlsCertificate:MtlsCertificate""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

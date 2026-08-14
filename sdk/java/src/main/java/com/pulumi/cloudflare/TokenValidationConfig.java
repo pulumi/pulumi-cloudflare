@@ -32,10 +32,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.TokenValidationConfig;
- * import com.pulumi.cloudflare.TokenValidationConfigArgs;
- * import com.pulumi.cloudflare.inputs.TokenValidationConfigCredentialsArgs;
- * import com.pulumi.cloudflare.inputs.TokenValidationConfigCredentialsKeyArgs;
+ * import com.pulumi.cloudflare.tokenValidation.Config;
+ * import com.pulumi.cloudflare.tokenValidation.ConfigArgs;
+ * import com.pulumi.cloudflare.tokenValidation.inputs.ConfigCredentialsArgs;
+ * import com.pulumi.cloudflare.tokenValidation.inputs.ConfigCredentialsKeyArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -49,10 +49,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleTokenValidationConfig = new TokenValidationConfig("exampleTokenValidationConfig", TokenValidationConfigArgs.builder()
+ *         var exampleTokenValidationConfig = new Config("exampleTokenValidationConfig", ConfigArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .credentials(TokenValidationConfigCredentialsArgs.builder()
- *                 .keys(TokenValidationConfigCredentialsKeyArgs.builder()
+ *             .credentials(ConfigCredentialsArgs.builder()
+ *                 .keys(ConfigCredentialsKeyArgs.builder()
  *                     .alg("RS256")
  *                     .e("e")
  *                     .kid("kid")
@@ -79,7 +79,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/tokenValidationConfig:TokenValidationConfig example &#39;&lt;zone_id&gt;/&lt;config_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/tokenValidationConfig:TokenValidationConfig has been deprecated in favor of cloudflare:tokenValidation/config:Config
+ * 
  */
+@Deprecated /* cloudflare:index/tokenValidationConfig:TokenValidationConfig has been deprecated in favor of cloudflare:tokenValidation/config:Config */
 @ResourceType(type="cloudflare:index/tokenValidationConfig:TokenValidationConfig")
 public class TokenValidationConfig extends com.pulumi.resources.CustomResource {
     @Export(name="createdAt", refs={String.class}, tree="[0]")

@@ -9,7 +9,6 @@ import com.pulumi.cloudflare.inputs.TeamsRuleState;
 import com.pulumi.cloudflare.outputs.TeamsRuleExpiration;
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettings;
 import com.pulumi.cloudflare.outputs.TeamsRuleSchedule;
-import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -31,27 +30,27 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustGatewayPolicy;
- * import com.pulumi.cloudflare.ZeroTrustGatewayPolicyArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyExpirationArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6Args;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsEgressArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsQuarantineArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsRedirectArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyScheduleArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.Policy;
+ * import com.pulumi.cloudflare.zeroTrustGateway.PolicyArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.PolicyExpirationArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.PolicyRuleSettingsArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.PolicyRuleSettingsAuditSshArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.PolicyRuleSettingsBisoAdminControlsArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.PolicyRuleSettingsBlockPageArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.PolicyRuleSettingsCheckSessionArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.PolicyRuleSettingsDnsResolversArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.PolicyRuleSettingsDnsResolversIpv4Args;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.PolicyRuleSettingsDnsResolversIpv6Args;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.PolicyRuleSettingsEgressArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.PolicyRuleSettingsForensicCopyArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.PolicyRuleSettingsL4overrideArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.PolicyRuleSettingsNotificationSettingsArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.PolicyRuleSettingsPayloadLogArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.PolicyRuleSettingsQuarantineArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.PolicyRuleSettingsRedirectArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.PolicyRuleSettingsResolveDnsInternallyArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.PolicyRuleSettingsUntrustedCertArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.PolicyScheduleArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -65,21 +64,21 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var exampleZeroTrustGatewayPolicy = new ZeroTrustGatewayPolicy("exampleZeroTrustGatewayPolicy", ZeroTrustGatewayPolicyArgs.builder()
+ *         var exampleZeroTrustGatewayPolicy = new Policy("exampleZeroTrustGatewayPolicy", PolicyArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
  *             .action("allow")
  *             .name("block bad websites")
  *             .description("Block bad websites based on their host name.")
  *             .devicePosture("any(device_posture.checks.passed[*] in }{{@code \"1308749e-fcfb-4ebc-b051-fe022b632644\"}}{@code )")
  *             .enabled(true)
- *             .expiration(ZeroTrustGatewayPolicyExpirationArgs.builder()
+ *             .expiration(PolicyExpirationArgs.builder()
  *                 .expiresAt("2014-01-01T05:20:20Z")
  *                 .duration(10)
  *                 .build())
  *             .filters("http")
  *             .identity("any(identity.groups.name[*] in }{{@code \"finance\"}}{@code )")
  *             .precedence(0)
- *             .ruleSettings(ZeroTrustGatewayPolicyRuleSettingsArgs.builder()
+ *             .ruleSettings(PolicyRuleSettingsArgs.builder()
  *                 .addHeaders(Map.ofEntries(
  *                     Map.entry("My-Next-Header", Arrays.asList(                    
  *                         "foo",
@@ -87,10 +86,10 @@ import javax.annotation.Nullable;
  *                     Map.entry("X-Custom-Header-Name", Arrays.asList("somecustomvalue"))
  *                 ))
  *                 .allowChildBypass(false)
- *                 .auditSsh(ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs.builder()
+ *                 .auditSsh(PolicyRuleSettingsAuditSshArgs.builder()
  *                     .commandLogging(false)
  *                     .build())
- *                 .bisoAdminControls(ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs.builder()
+ *                 .bisoAdminControls(PolicyRuleSettingsBisoAdminControlsArgs.builder()
  *                     .copy("remote_only")
  *                     .dcp(true)
  *                     .dd(true)
@@ -105,51 +104,51 @@ import javax.annotation.Nullable;
  *                     .version("v1")
  *                     .wmId("475345dc-5299-4b6e-8f6a-3d3e4c8e9f1a")
  *                     .build())
- *                 .blockPage(ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs.builder()
+ *                 .blockPage(PolicyRuleSettingsBlockPageArgs.builder()
  *                     .targetUri("https://example.com")
  *                     .includeContext(true)
  *                     .build())
  *                 .blockPageEnabled(true)
  *                 .blockReason("This website is a security risk")
  *                 .bypassParentRule(false)
- *                 .checkSession(ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs.builder()
+ *                 .checkSession(PolicyRuleSettingsCheckSessionArgs.builder()
  *                     .duration("300s")
  *                     .enforce(true)
  *                     .build())
  *                 .deleteHeaders(                
  *                     "X-Old-Header",
  *                     "X-Remove-Me")
- *                 .dnsResolvers(ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs.builder()
- *                     .ipv4s(ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args.builder()
+ *                 .dnsResolvers(PolicyRuleSettingsDnsResolversArgs.builder()
+ *                     .ipv4s(PolicyRuleSettingsDnsResolversIpv4Args.builder()
  *                         .ip("2.2.2.2")
  *                         .port(5053)
  *                         .routeThroughPrivateNetwork(true)
  *                         .vnetId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
  *                         .build())
- *                     .ipv6s(ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6Args.builder()
+ *                     .ipv6s(PolicyRuleSettingsDnsResolversIpv6Args.builder()
  *                         .ip("2001:DB8::")
  *                         .port(5053)
  *                         .routeThroughPrivateNetwork(true)
  *                         .vnetId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
  *                         .build())
  *                     .build())
- *                 .egress(ZeroTrustGatewayPolicyRuleSettingsEgressArgs.builder()
+ *                 .egress(PolicyRuleSettingsEgressArgs.builder()
  *                     .ipv4("192.0.2.2")
  *                     .ipv4Fallback("192.0.2.3")
  *                     .ipv6("2001:DB8::/64")
  *                     .build())
- *                 .forensicCopy(ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs.builder()
+ *                 .forensicCopy(PolicyRuleSettingsForensicCopyArgs.builder()
  *                     .enabled(true)
  *                     .build())
  *                 .ignoreCnameCategoryMatches(true)
  *                 .insecureDisableDnssecValidation(false)
  *                 .ipCategories(true)
  *                 .ipIndicatorFeeds(true)
- *                 .l4override(ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs.builder()
+ *                 .l4override(PolicyRuleSettingsL4overrideArgs.builder()
  *                     .ip("1.1.1.1")
  *                     .port(0)
  *                     .build())
- *                 .notificationSettings(ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs.builder()
+ *                 .notificationSettings(PolicyRuleSettingsNotificationSettingsArgs.builder()
  *                     .enabled(true)
  *                     .includeContext(true)
  *                     .msg("msg")
@@ -159,28 +158,28 @@ import javax.annotation.Nullable;
  *                 .overrideIps(                
  *                     "1.1.1.1",
  *                     "2.2.2.2")
- *                 .payloadLog(ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgs.builder()
+ *                 .payloadLog(PolicyRuleSettingsPayloadLogArgs.builder()
  *                     .enabled(true)
  *                     .build())
- *                 .quarantine(ZeroTrustGatewayPolicyRuleSettingsQuarantineArgs.builder()
+ *                 .quarantine(PolicyRuleSettingsQuarantineArgs.builder()
  *                     .fileTypes("exe")
  *                     .build())
- *                 .redirect(ZeroTrustGatewayPolicyRuleSettingsRedirectArgs.builder()
+ *                 .redirect(PolicyRuleSettingsRedirectArgs.builder()
  *                     .targetUri("https://example.com")
  *                     .includeContext(true)
  *                     .preservePathAndQuery(true)
  *                     .build())
- *                 .resolveDnsInternally(ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs.builder()
+ *                 .resolveDnsInternally(PolicyRuleSettingsResolveDnsInternallyArgs.builder()
  *                     .fallback("none")
  *                     .viewId("view_id")
  *                     .build())
  *                 .resolveDnsThroughCloudflare(true)
  *                 .setHeaders(Map.of("X-User-Identity", Arrays.asList("user=}{@literal @}{{@code identity.name}}{@code ")))
- *                 .untrustedCert(ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs.builder()
+ *                 .untrustedCert(PolicyRuleSettingsUntrustedCertArgs.builder()
  *                     .action("error")
  *                     .build())
  *                 .build())
- *             .schedule(ZeroTrustGatewayPolicyScheduleArgs.builder()
+ *             .schedule(PolicyScheduleArgs.builder()
  *                 .fri("08:00-12:30,13:30-17:00")
  *                 .mon("08:00-12:30,13:30-17:00")
  *                 .sat("08:00-12:30,13:30-17:00")
@@ -523,9 +522,6 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .aliases(List.of(
-                Output.of(Alias.builder().type("cloudflare:index/teamsRule:TeamsRule").build())
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

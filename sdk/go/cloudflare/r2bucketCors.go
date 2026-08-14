@@ -19,19 +19,19 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/r2bucket"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewR2BucketCors(ctx, "example_r2_bucket_cors", &cloudflare.R2BucketCorsArgs{
+//			_, err := r2bucket.NewCors(ctx, "example_r2_bucket_cors", &r2bucket.CorsArgs{
 //				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				BucketName: pulumi.String("example-bucket"),
-//				Rules: cloudflare.R2BucketCorsRuleArray{
-//					&cloudflare.R2BucketCorsRuleArgs{
-//						Allowed: &cloudflare.R2BucketCorsRuleAllowedArgs{
+//				Rules: r2bucket.CorsRuleArray{
+//					&r2bucket.CorsRuleArgs{
+//						Allowed: &r2bucket.CorsRuleAllowedArgs{
 //							Methods: pulumi.StringArray{
 //								pulumi.String("GET"),
 //							},
@@ -62,6 +62,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/r2BucketCors:R2BucketCors has been deprecated in favor of cloudflare:r2Bucket/cors:Cors
 type R2BucketCors struct {
 	pulumi.CustomResourceState
 

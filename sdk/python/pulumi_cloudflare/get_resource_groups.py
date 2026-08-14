@@ -22,6 +22,8 @@ __all__ = [
     'get_resource_groups_output',
 ]
 
+warnings.warn("""cloudflare:index/getResourceGroups:getResourceGroups has been deprecated in favor of cloudflare:resource/groups:getGroups""", DeprecationWarning)
+
 @pulumi.output_type
 class GetResourceGroupsResult:
     """
@@ -116,7 +118,7 @@ def get_resource_groups(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_resource_groups = cloudflare.get_resource_groups(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_resource_groups = cloudflare.resource.get_groups(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         id="023e105f4ecef8ad9ca31a8372d0c353",
         name="NameOfTheResourceGroup")
     ```
@@ -127,6 +129,7 @@ def get_resource_groups(account_id: Optional[_builtins.str] = None,
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str name: Name of the resource group to be fetched.
     """
+    pulumi.log.warn("""get_resource_groups is deprecated: cloudflare:index/getResourceGroups:getResourceGroups has been deprecated in favor of cloudflare:resource/groups:getGroups""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['id'] = id
@@ -159,7 +162,7 @@ def get_resource_groups_output(account_id: pulumi.Input[Optional[Optional[_built
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_resource_groups = cloudflare.get_resource_groups(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_resource_groups = cloudflare.resource.get_groups(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         id="023e105f4ecef8ad9ca31a8372d0c353",
         name="NameOfTheResourceGroup")
     ```
@@ -170,6 +173,7 @@ def get_resource_groups_output(account_id: pulumi.Input[Optional[Optional[_built
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str name: Name of the resource group to be fetched.
     """
+    pulumi.log.warn("""get_resource_groups is deprecated: cloudflare:index/getResourceGroups:getResourceGroups has been deprecated in favor of cloudflare:resource/groups:getGroups""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['id'] = id

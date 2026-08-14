@@ -21,6 +21,8 @@ __all__ = [
     'get_cloudforce_one_request_priority_output',
 ]
 
+warnings.warn("""cloudflare:index/getCloudforceOneRequestPriority:getCloudforceOneRequestPriority has been deprecated in favor of cloudflare:cloudforceOneRequest/priority:getPriority""", DeprecationWarning)
+
 @pulumi.output_type
 class GetCloudforceOneRequestPriorityResult:
     """
@@ -222,7 +224,7 @@ def get_cloudforce_one_request_priority(account_id: Optional[_builtins.str] = No
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_cloudforce_one_request_priority = cloudflare.get_cloudforce_one_request_priority(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_cloudforce_one_request_priority = cloudflare.cloudforceonerequest.get_priority(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         priority_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
 
@@ -230,6 +232,7 @@ def get_cloudforce_one_request_priority(account_id: Optional[_builtins.str] = No
     :param _builtins.str account_id: Identifier.
     :param _builtins.str priority_id: UUID.
     """
+    pulumi.log.warn("""get_cloudforce_one_request_priority is deprecated: cloudflare:index/getCloudforceOneRequestPriority:getCloudforceOneRequestPriority has been deprecated in favor of cloudflare:cloudforceOneRequest/priority:getPriority""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['priorityId'] = priority_id
@@ -267,7 +270,7 @@ def get_cloudforce_one_request_priority_output(account_id: pulumi.Input[Optional
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_cloudforce_one_request_priority = cloudflare.get_cloudforce_one_request_priority(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_cloudforce_one_request_priority = cloudflare.cloudforceonerequest.get_priority(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         priority_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
 
@@ -275,6 +278,7 @@ def get_cloudforce_one_request_priority_output(account_id: pulumi.Input[Optional
     :param _builtins.str account_id: Identifier.
     :param _builtins.str priority_id: UUID.
     """
+    pulumi.log.warn("""get_cloudforce_one_request_priority is deprecated: cloudflare:index/getCloudforceOneRequestPriority:getCloudforceOneRequestPriority has been deprecated in favor of cloudflare:cloudforceOneRequest/priority:getPriority""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['priorityId'] = priority_id

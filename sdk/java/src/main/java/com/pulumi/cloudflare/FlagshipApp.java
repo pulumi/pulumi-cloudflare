@@ -28,8 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.FlagshipApp;
- * import com.pulumi.cloudflare.FlagshipAppArgs;
+ * import com.pulumi.cloudflare.flagship.App;
+ * import com.pulumi.cloudflare.flagship.AppArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleFlagshipApp = new FlagshipApp("exampleFlagshipApp", FlagshipAppArgs.builder()
+ *         var exampleFlagshipApp = new App("exampleFlagshipApp", AppArgs.builder()
  *             .accountId("account_id")
  *             .name("x")
  *             .build());
@@ -59,7 +59,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/flagshipApp:FlagshipApp example &#39;&lt;account_id&gt;/&lt;app_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/flagshipApp:FlagshipApp has been deprecated in favor of cloudflare:flagship/app:App
+ * 
  */
+@Deprecated /* cloudflare:index/flagshipApp:FlagshipApp has been deprecated in favor of cloudflare:flagship/app:App */
 @ResourceType(type="cloudflare:index/flagshipApp:FlagshipApp")
 public class FlagshipApp extends com.pulumi.resources.CustomResource {
     /**

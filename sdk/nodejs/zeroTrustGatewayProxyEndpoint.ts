@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustGatewayProxyEndpoint = new cloudflare.ZeroTrustGatewayProxyEndpoint("example_zero_trust_gateway_proxy_endpoint", {
+ * const exampleZeroTrustGatewayProxyEndpoint = new cloudflare.zerotrustgatewayproxy.Endpoint("example_zero_trust_gateway_proxy_endpoint", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     name: "Devops team",
  *     kind: "ip",
@@ -23,6 +23,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint example '<account_id>/<proxy_endpoint_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint has been deprecated in favor of cloudflare:zeroTrustGatewayProxy/endpoint:Endpoint
  */
 export class ZeroTrustGatewayProxyEndpoint extends pulumi.CustomResource {
     /**
@@ -35,6 +37,7 @@ export class ZeroTrustGatewayProxyEndpoint extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustGatewayProxyEndpointState, opts?: pulumi.CustomResourceOptions): ZeroTrustGatewayProxyEndpoint {
+        pulumi.log.warn("ZeroTrustGatewayProxyEndpoint is deprecated: cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint has been deprecated in favor of cloudflare:zeroTrustGatewayProxy/endpoint:Endpoint")
         return new ZeroTrustGatewayProxyEndpoint(name, <any>state, { ...opts, id: id });
     }
 
@@ -80,8 +83,11 @@ export class ZeroTrustGatewayProxyEndpoint extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint has been deprecated in favor of cloudflare:zeroTrustGatewayProxy/endpoint:Endpoint */
     constructor(name: string, args: ZeroTrustGatewayProxyEndpointArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint has been deprecated in favor of cloudflare:zeroTrustGatewayProxy/endpoint:Endpoint */
     constructor(name: string, argsOrState?: ZeroTrustGatewayProxyEndpointArgs | ZeroTrustGatewayProxyEndpointState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustGatewayProxyEndpoint is deprecated: cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint has been deprecated in favor of cloudflare:zeroTrustGatewayProxy/endpoint:Endpoint")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

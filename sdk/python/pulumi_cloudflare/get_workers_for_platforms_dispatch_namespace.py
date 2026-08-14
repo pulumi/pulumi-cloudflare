@@ -21,6 +21,8 @@ __all__ = [
     'get_workers_for_platforms_dispatch_namespace_output',
 ]
 
+warnings.warn("""cloudflare:index/getWorkersForPlatformsDispatchNamespace:getWorkersForPlatformsDispatchNamespace has been deprecated in favor of cloudflare:workersForPlatformsDispatch/namespace:getNamespace""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWorkersForPlatformsDispatchNamespaceResult:
     """
@@ -185,7 +187,7 @@ def get_workers_for_platforms_dispatch_namespace(account_id: Optional[_builtins.
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_for_platforms_dispatch_namespace = cloudflare.get_workers_for_platforms_dispatch_namespace(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_for_platforms_dispatch_namespace = cloudflare.workersforplatformsdispatch.get_namespace(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         dispatch_namespace="my-dispatch-namespace")
     ```
 
@@ -193,6 +195,7 @@ def get_workers_for_platforms_dispatch_namespace(account_id: Optional[_builtins.
     :param _builtins.str account_id: Identifier.
     :param _builtins.str dispatch_namespace: Name of the Workers for Platforms dispatch namespace.
     """
+    pulumi.log.warn("""get_workers_for_platforms_dispatch_namespace is deprecated: cloudflare:index/getWorkersForPlatformsDispatchNamespace:getWorkersForPlatformsDispatchNamespace has been deprecated in favor of cloudflare:workersForPlatformsDispatch/namespace:getNamespace""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['dispatchNamespace'] = dispatch_namespace
@@ -227,7 +230,7 @@ def get_workers_for_platforms_dispatch_namespace_output(account_id: pulumi.Input
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_for_platforms_dispatch_namespace = cloudflare.get_workers_for_platforms_dispatch_namespace(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_for_platforms_dispatch_namespace = cloudflare.workersforplatformsdispatch.get_namespace(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         dispatch_namespace="my-dispatch-namespace")
     ```
 
@@ -235,6 +238,7 @@ def get_workers_for_platforms_dispatch_namespace_output(account_id: pulumi.Input
     :param _builtins.str account_id: Identifier.
     :param _builtins.str dispatch_namespace: Name of the Workers for Platforms dispatch namespace.
     """
+    pulumi.log.warn("""get_workers_for_platforms_dispatch_namespace is deprecated: cloudflare:index/getWorkersForPlatformsDispatchNamespace:getWorkersForPlatformsDispatchNamespace has been deprecated in favor of cloudflare:workersForPlatformsDispatch/namespace:getNamespace""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['dispatchNamespace'] = dispatch_namespace

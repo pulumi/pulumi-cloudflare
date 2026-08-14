@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessGroup = new cloudflare.ZeroTrustAccessGroup("example_zero_trust_access_group", {
+ * const exampleZeroTrustAccessGroup = new cloudflare.zerotrustaccess.Group("example_zero_trust_access_group", {
  *     includes: [{
  *         certificate: {},
  *     }],
@@ -39,6 +39,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup example '<{accounts|zones}/{account_id|zone_id}>/<group_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup has been deprecated in favor of cloudflare:zeroTrustAccess/group:Group
  */
 export class ZeroTrustAccessGroup extends pulumi.CustomResource {
     /**
@@ -51,6 +53,7 @@ export class ZeroTrustAccessGroup extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustAccessGroupState, opts?: pulumi.CustomResourceOptions): ZeroTrustAccessGroup {
+        pulumi.log.warn("ZeroTrustAccessGroup is deprecated: cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup has been deprecated in favor of cloudflare:zeroTrustAccess/group:Group")
         return new ZeroTrustAccessGroup(name, <any>state, { ...opts, id: id });
     }
 
@@ -104,8 +107,11 @@ export class ZeroTrustAccessGroup extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup has been deprecated in favor of cloudflare:zeroTrustAccess/group:Group */
     constructor(name: string, args: ZeroTrustAccessGroupArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup has been deprecated in favor of cloudflare:zeroTrustAccess/group:Group */
     constructor(name: string, argsOrState?: ZeroTrustAccessGroupArgs | ZeroTrustAccessGroupState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustAccessGroup is deprecated: cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup has been deprecated in favor of cloudflare:zeroTrustAccess/group:Group")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

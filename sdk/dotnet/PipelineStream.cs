@@ -25,22 +25,22 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var examplePipelineStream = new Cloudflare.PipelineStream("example_pipeline_stream", new()
+    ///     var examplePipelineStream = new Cloudflare.Modules.Pipeline.PipelineStream("example_pipeline_stream", new()
     ///     {
     ///         AccountId = "0123105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "my_stream",
-    ///         Format = new Cloudflare.Inputs.PipelineStreamFormatArgs
+    ///         Format = new Cloudflare.Modules.Pipeline.Inputs.StreamFormatArgs
     ///         {
     ///             Type = "json",
     ///             DecimalEncoding = "number",
     ///             TimestampFormat = "rfc3339",
     ///             Unstructured = true,
     ///         },
-    ///         Http = new Cloudflare.Inputs.PipelineStreamHttpArgs
+    ///         Http = new Cloudflare.Modules.Pipeline.Inputs.StreamHttpArgs
     ///         {
     ///             Authentication = false,
     ///             Enabled = true,
-    ///             Cors = new Cloudflare.Inputs.PipelineStreamHttpCorsArgs
+    ///             Cors = new Cloudflare.Modules.Pipeline.Inputs.StreamHttpCorsArgs
     ///             {
     ///                 Origins = new[]
     ///                 {
@@ -48,11 +48,11 @@ namespace Pulumi.Cloudflare
     ///                 },
     ///             },
     ///         },
-    ///         Schema = new Cloudflare.Inputs.PipelineStreamSchemaArgs
+    ///         Schema = new Cloudflare.Modules.Pipeline.Inputs.StreamSchemaArgs
     ///         {
     ///             Fields = new[]
     ///             {
-    ///                 new Cloudflare.Inputs.PipelineStreamSchemaFieldArgs
+    ///                 new Cloudflare.Modules.Pipeline.Inputs.StreamSchemaFieldArgs
     ///                 {
     ///                     Type = "int32",
     ///                     MetadataKey = "metadata_key",
@@ -61,7 +61,7 @@ namespace Pulumi.Cloudflare
     ///                     SqlName = "sql_name",
     ///                 },
     ///             },
-    ///             Format = new Cloudflare.Inputs.PipelineStreamSchemaFormatArgs
+    ///             Format = new Cloudflare.Modules.Pipeline.Inputs.StreamSchemaFormatArgs
     ///             {
     ///                 Type = "json",
     ///                 DecimalEncoding = "number",
@@ -70,7 +70,7 @@ namespace Pulumi.Cloudflare
     ///             },
     ///             Inferred = true,
     ///         },
-    ///         WorkerBinding = new Cloudflare.Inputs.PipelineStreamWorkerBindingArgs
+    ///         WorkerBinding = new Cloudflare.Modules.Pipeline.Inputs.StreamWorkerBindingArgs
     ///         {
     ///             Enabled = true,
     ///         },
@@ -85,6 +85,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/pipelineStream:PipelineStream example '&lt;account_id&gt;/&lt;stream_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/pipelineStream:PipelineStream has been deprecated in favor of cloudflare:pipeline/stream:Stream")]
     [CloudflareResourceType("cloudflare:index/pipelineStream:PipelineStream")]
     public partial class PipelineStream : global::Pulumi.CustomResource
     {

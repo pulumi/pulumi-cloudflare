@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WorkersKvNamespace;
- * import com.pulumi.cloudflare.WorkersKvNamespaceArgs;
+ * import com.pulumi.cloudflare.workersKv.Namespace;
+ * import com.pulumi.cloudflare.workersKv.NamespaceArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleWorkersKvNamespace = new WorkersKvNamespace("exampleWorkersKvNamespace", WorkersKvNamespaceArgs.builder()
+ *         var exampleWorkersKvNamespace = new Namespace("exampleWorkersKvNamespace", NamespaceArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .title("My Own Namespace")
  *             .build());
@@ -60,7 +60,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example &#39;&lt;account_id&gt;/&lt;namespace_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/workersKvNamespace:WorkersKvNamespace has been deprecated in favor of cloudflare:workersKv/namespace:Namespace
+ * 
  */
+@Deprecated /* cloudflare:index/workersKvNamespace:WorkersKvNamespace has been deprecated in favor of cloudflare:workersKv/namespace:Namespace */
 @ResourceType(type="cloudflare:index/workersKvNamespace:WorkersKvNamespace")
 public class WorkersKvNamespace extends com.pulumi.resources.CustomResource {
     /**

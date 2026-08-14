@@ -13,12 +13,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustGatewayLogging = cloudflare.getZeroTrustGatewayLogging({
+ * const exampleZeroTrustGatewayLogging = cloudflare.zerotrustgateway.getLogging({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustGatewayLogging:getZeroTrustGatewayLogging has been deprecated in favor of cloudflare:zeroTrustGateway/logging:getLogging */
 export function getZeroTrustGatewayLogging(args?: GetZeroTrustGatewayLoggingArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewayLoggingResult> {
+    pulumi.log.warn("getZeroTrustGatewayLogging is deprecated: cloudflare:index/getZeroTrustGatewayLogging:getZeroTrustGatewayLogging has been deprecated in favor of cloudflare:zeroTrustGateway/logging:getLogging")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustGatewayLogging:getZeroTrustGatewayLogging", {
@@ -58,12 +60,14 @@ export interface GetZeroTrustGatewayLoggingResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustGatewayLogging = cloudflare.getZeroTrustGatewayLogging({
+ * const exampleZeroTrustGatewayLogging = cloudflare.zerotrustgateway.getLogging({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustGatewayLogging:getZeroTrustGatewayLogging has been deprecated in favor of cloudflare:zeroTrustGateway/logging:getLogging */
 export function getZeroTrustGatewayLoggingOutput(args?: GetZeroTrustGatewayLoggingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewayLoggingResult> {
+    pulumi.log.warn("getZeroTrustGatewayLogging is deprecated: cloudflare:index/getZeroTrustGatewayLogging:getZeroTrustGatewayLogging has been deprecated in favor of cloudflare:zeroTrustGateway/logging:getLogging")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustGatewayLogging:getZeroTrustGatewayLogging", {

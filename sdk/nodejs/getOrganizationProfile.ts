@@ -11,12 +11,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleOrganizationProfile = cloudflare.getOrganizationProfile({
+ * const exampleOrganizationProfile = cloudflare.organization.getProfile({
  *     organizationId: "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getOrganizationProfile:getOrganizationProfile has been deprecated in favor of cloudflare:organization/profile:getProfile */
 export function getOrganizationProfile(args: GetOrganizationProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationProfileResult> {
+    pulumi.log.warn("getOrganizationProfile is deprecated: cloudflare:index/getOrganizationProfile:getOrganizationProfile has been deprecated in favor of cloudflare:organization/profile:getProfile")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getOrganizationProfile:getOrganizationProfile", {
         "organizationId": args.organizationId,
@@ -48,12 +50,14 @@ export interface GetOrganizationProfileResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleOrganizationProfile = cloudflare.getOrganizationProfile({
+ * const exampleOrganizationProfile = cloudflare.organization.getProfile({
  *     organizationId: "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getOrganizationProfile:getOrganizationProfile has been deprecated in favor of cloudflare:organization/profile:getProfile */
 export function getOrganizationProfileOutput(args: GetOrganizationProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationProfileResult> {
+    pulumi.log.warn("getOrganizationProfile is deprecated: cloudflare:index/getOrganizationProfile:getOrganizationProfile has been deprecated in favor of cloudflare:organization/profile:getProfile")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getOrganizationProfile:getOrganizationProfile", {
         "organizationId": args.organizationId,

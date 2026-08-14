@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/accountapitokenpermissiongroups"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetAccountApiTokenPermissionGroupsList(ctx, &cloudflare.LookupAccountApiTokenPermissionGroupsListArgs{
+//			_, err := accountapitokenpermissiongroups.GetList(ctx, &accountapitokenpermissiongroups.GetListArgs{
 //				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:      pulumi.StringRef("Account%20Settings%20Write"),
 //				Scope:     pulumi.StringRef("com.cloudflare.api.account.zone"),
@@ -43,6 +43,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getAccountApiTokenPermissionGroupsList:getAccountApiTokenPermissionGroupsList has been deprecated in favor of cloudflare:accountApiTokenPermissionGroups/list:getList
 func LookupAccountApiTokenPermissionGroupsList(ctx *pulumi.Context, args *LookupAccountApiTokenPermissionGroupsListArgs, opts ...pulumi.InvokeOption) (*LookupAccountApiTokenPermissionGroupsListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountApiTokenPermissionGroupsListResult

@@ -15,14 +15,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleLogpushDatasetField = cloudflare.getLogpushDatasetField({
+ * const exampleLogpushDatasetField = cloudflare.logpushdataset.getField({
  *     datasetId: "gateway_dns",
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getLogpushDatasetField:getLogpushDatasetField has been deprecated in favor of cloudflare:logpushDataset/field:getField */
 export function getLogpushDatasetField(args?: GetLogpushDatasetFieldArgs, opts?: pulumi.InvokeOptions): Promise<GetLogpushDatasetFieldResult> {
+    pulumi.log.warn("getLogpushDatasetField is deprecated: cloudflare:index/getLogpushDatasetField:getLogpushDatasetField has been deprecated in favor of cloudflare:logpushDataset/field:getField")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getLogpushDatasetField:getLogpushDatasetField", {
@@ -80,14 +82,16 @@ export interface GetLogpushDatasetFieldResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleLogpushDatasetField = cloudflare.getLogpushDatasetField({
+ * const exampleLogpushDatasetField = cloudflare.logpushdataset.getField({
  *     datasetId: "gateway_dns",
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getLogpushDatasetField:getLogpushDatasetField has been deprecated in favor of cloudflare:logpushDataset/field:getField */
 export function getLogpushDatasetFieldOutput(args?: GetLogpushDatasetFieldOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLogpushDatasetFieldResult> {
+    pulumi.log.warn("getLogpushDatasetField is deprecated: cloudflare:index/getLogpushDatasetField:getLogpushDatasetField has been deprecated in favor of cloudflare:logpushDataset/field:getField")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getLogpushDatasetField:getLogpushDatasetField", {

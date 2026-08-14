@@ -25,14 +25,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/contentscanning"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetContentScanning(ctx, &cloudflare.LookupContentScanningArgs{
+//			_, err := contentscanning.GetContentScanning(ctx, &contentscanning.GetContentScanningArgs{
 //				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
@@ -43,6 +43,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getContentScanning:getContentScanning has been deprecated in favor of cloudflare:contentScanning/contentScanning:getContentScanning
 func LookupContentScanning(ctx *pulumi.Context, args *LookupContentScanningArgs, opts ...pulumi.InvokeOption) (*LookupContentScanningResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupContentScanningResult

@@ -22,6 +22,8 @@ __all__ = [
     'get_custom_ssls_output',
 ]
 
+warnings.warn("""cloudflare:index/getCustomSsls:getCustomSsls has been deprecated in favor of cloudflare:custom/ssls:getSsls""", DeprecationWarning)
+
 @pulumi.output_type
 class GetCustomSslsResult:
     """
@@ -119,7 +121,7 @@ def get_custom_ssls(match: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_custom_ssls = cloudflare.get_custom_ssls(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_custom_ssls = cloudflare.custom.get_ssls(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         status="active")
     ```
 
@@ -131,6 +133,7 @@ def get_custom_ssls(match: Optional[_builtins.str] = None,
            Available values: "active", "expired", "deleted", "pending", "initializing".
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_custom_ssls is deprecated: cloudflare:index/getCustomSsls:getCustomSsls has been deprecated in favor of cloudflare:custom/ssls:getSsls""")
     __args__ = dict()
     __args__['match'] = match
     __args__['maxItems'] = max_items
@@ -164,7 +167,7 @@ def get_custom_ssls_output(match: pulumi.Input[Optional[Optional[_builtins.str]]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_custom_ssls = cloudflare.get_custom_ssls(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_custom_ssls = cloudflare.custom.get_ssls(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         status="active")
     ```
 
@@ -176,6 +179,7 @@ def get_custom_ssls_output(match: pulumi.Input[Optional[Optional[_builtins.str]]
            Available values: "active", "expired", "deleted", "pending", "initializing".
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_custom_ssls is deprecated: cloudflare:index/getCustomSsls:getCustomSsls has been deprecated in favor of cloudflare:custom/ssls:getSsls""")
     __args__ = dict()
     __args__['match'] = match
     __args__['maxItems'] = max_items

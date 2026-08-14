@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDevicePostureIntegration = new cloudflare.ZeroTrustDevicePostureIntegration("example_zero_trust_device_posture_integration", {
+ * const exampleZeroTrustDevicePostureIntegration = new cloudflare.zerotrustdeviceposture.Integration("example_zero_trust_device_posture_integration", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     config: {
  *         apiUrl: "https://as123.awmdm.com/API",
@@ -36,6 +36,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration example '<account_id>/<integration_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration has been deprecated in favor of cloudflare:zeroTrustDevicePosture/integration:Integration
  */
 export class ZeroTrustDevicePostureIntegration extends pulumi.CustomResource {
     /**
@@ -48,6 +50,7 @@ export class ZeroTrustDevicePostureIntegration extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustDevicePostureIntegrationState, opts?: pulumi.CustomResourceOptions): ZeroTrustDevicePostureIntegration {
+        pulumi.log.warn("ZeroTrustDevicePostureIntegration is deprecated: cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration has been deprecated in favor of cloudflare:zeroTrustDevicePosture/integration:Integration")
         return new ZeroTrustDevicePostureIntegration(name, <any>state, { ...opts, id: id });
     }
 
@@ -91,8 +94,11 @@ export class ZeroTrustDevicePostureIntegration extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration has been deprecated in favor of cloudflare:zeroTrustDevicePosture/integration:Integration */
     constructor(name: string, args: ZeroTrustDevicePostureIntegrationArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration has been deprecated in favor of cloudflare:zeroTrustDevicePosture/integration:Integration */
     constructor(name: string, argsOrState?: ZeroTrustDevicePostureIntegrationArgs | ZeroTrustDevicePostureIntegrationState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustDevicePostureIntegration is deprecated: cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration has been deprecated in favor of cloudflare:zeroTrustDevicePosture/integration:Integration")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

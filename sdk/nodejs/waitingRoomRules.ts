@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWaitingRoomRules = new cloudflare.WaitingRoomRules("example_waiting_room_rules", {
+ * const exampleWaitingRoomRules = new cloudflare.waitingroom.Rules("example_waiting_room_rules", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     waitingRoomId: "699d98642c564d2e855e9661899b7252",
  *     rules: [{
@@ -35,6 +35,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/waitingRoomRules:WaitingRoomRules example '<zone_id>/<waiting_room_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/waitingRoomRules:WaitingRoomRules has been deprecated in favor of cloudflare:waitingRoom/rules:Rules
  */
 export class WaitingRoomRules extends pulumi.CustomResource {
     /**
@@ -47,6 +49,7 @@ export class WaitingRoomRules extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WaitingRoomRulesState, opts?: pulumi.CustomResourceOptions): WaitingRoomRules {
+        pulumi.log.warn("WaitingRoomRules is deprecated: cloudflare:index/waitingRoomRules:WaitingRoomRules has been deprecated in favor of cloudflare:waitingRoom/rules:Rules")
         return new WaitingRoomRules(name, <any>state, { ...opts, id: id });
     }
 
@@ -78,8 +81,11 @@ export class WaitingRoomRules extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/waitingRoomRules:WaitingRoomRules has been deprecated in favor of cloudflare:waitingRoom/rules:Rules */
     constructor(name: string, args: WaitingRoomRulesArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/waitingRoomRules:WaitingRoomRules has been deprecated in favor of cloudflare:waitingRoom/rules:Rules */
     constructor(name: string, argsOrState?: WaitingRoomRulesArgs | WaitingRoomRulesState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("WaitingRoomRules is deprecated: cloudflare:index/waitingRoomRules:WaitingRoomRules has been deprecated in favor of cloudflare:waitingRoom/rules:Rules")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

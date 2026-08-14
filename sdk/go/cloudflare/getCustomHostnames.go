@@ -23,20 +23,20 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/custom"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetCustomHostnames(ctx, &cloudflare.LookupCustomHostnamesArgs{
+//			_, err := custom.LookupHostnames(ctx, &custom.LookupHostnamesArgs{
 //				ZoneId:               pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Id:                   pulumi.StringRef("0d89c70d-ad9f-4843-b99f-6cc0252067e9"),
 //				CertificateAuthority: pulumi.StringRef("google"),
 //				CustomOriginServer:   pulumi.StringRef("origin2.example.com"),
 //				Direction:            pulumi.StringRef("desc"),
-//				Hostname: cloudflare.GetCustomHostnamesHostname{
+//				Hostname: custom.GetHostnamesHostname{
 //					Contain:    pulumi.StringRef("example.com"),
 //					Exact:      pulumi.StringRef("app.example.com"),
 //					StartsWith: pulumi.StringRef("app"),
@@ -54,6 +54,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getCustomHostnames:getCustomHostnames has been deprecated in favor of cloudflare:custom/hostnames:getHostnames
 func LookupCustomHostnames(ctx *pulumi.Context, args *LookupCustomHostnamesArgs, opts ...pulumi.InvokeOption) (*LookupCustomHostnamesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomHostnamesResult

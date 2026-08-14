@@ -25,14 +25,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/apishield"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetApiShieldOperations(ctx, &cloudflare.LookupApiShieldOperationsArgs{
+//			_, err := apishield.GetOperations(ctx, &apishield.GetOperationsArgs{
 //				ZoneId:    pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Direction: pulumi.StringRef("desc"),
 //				Endpoint:  pulumi.StringRef("/api/v1"),
@@ -55,6 +55,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getApiShieldOperations:getApiShieldOperations has been deprecated in favor of cloudflare:apiShield/operations:getOperations
 func LookupApiShieldOperations(ctx *pulumi.Context, args *LookupApiShieldOperationsArgs, opts ...pulumi.InvokeOption) (*LookupApiShieldOperationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiShieldOperationsResult

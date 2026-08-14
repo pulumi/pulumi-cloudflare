@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getAccountToken:getAccountToken has been deprecated in favor of cloudflare:account/token:getToken")]
     public static class GetAccountToken
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountToken = Cloudflare.GetAccountToken.Invoke(new()
+        ///     var exampleAccountToken = Cloudflare.Modules.Account.GetToken.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         TokenId = "ed17574386854bf78a67040be0a770b0",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountToken = Cloudflare.GetAccountToken.Invoke(new()
+        ///     var exampleAccountToken = Cloudflare.Modules.Account.GetToken.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         TokenId = "ed17574386854bf78a67040be0a770b0",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountToken = Cloudflare.GetAccountToken.Invoke(new()
+        ///     var exampleAccountToken = Cloudflare.Modules.Account.GetToken.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         TokenId = "ed17574386854bf78a67040be0a770b0",

@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/workersforplatformsdispatch"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetWorkersForPlatformsDispatchNamespace(ctx, &cloudflare.LookupWorkersForPlatformsDispatchNamespaceArgs{
+//			_, err := workersforplatformsdispatch.GetNamespace(ctx, &workersforplatformsdispatch.GetNamespaceArgs{
 //				AccountId:         pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				DispatchNamespace: "my-dispatch-namespace",
 //			}, nil)
@@ -43,6 +43,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getWorkersForPlatformsDispatchNamespace:getWorkersForPlatformsDispatchNamespace has been deprecated in favor of cloudflare:workersForPlatformsDispatch/namespace:getNamespace
 func LookupWorkersForPlatformsDispatchNamespace(ctx *pulumi.Context, args *LookupWorkersForPlatformsDispatchNamespaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkersForPlatformsDispatchNamespaceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkersForPlatformsDispatchNamespaceResult

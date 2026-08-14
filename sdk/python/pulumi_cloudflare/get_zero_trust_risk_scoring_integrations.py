@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_risk_scoring_integrations_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustRiskScoringIntegrations:getZeroTrustRiskScoringIntegrations has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integrations:getIntegrations""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustRiskScoringIntegrationsResult:
     """
@@ -86,12 +88,13 @@ def get_zero_trust_risk_scoring_integrations(account_id: Optional[_builtins.str]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_risk_scoring_integrations = cloudflare.get_zero_trust_risk_scoring_integrations(account_id="account_id")
+    example_zero_trust_risk_scoring_integrations = cloudflare.zerotrustriskscoring.get_integrations(account_id="account_id")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_risk_scoring_integrations is deprecated: cloudflare:index/getZeroTrustRiskScoringIntegrations:getZeroTrustRiskScoringIntegrations has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integrations:getIntegrations""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -117,12 +120,13 @@ def get_zero_trust_risk_scoring_integrations_output(account_id: pulumi.Input[Opt
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_risk_scoring_integrations = cloudflare.get_zero_trust_risk_scoring_integrations(account_id="account_id")
+    example_zero_trust_risk_scoring_integrations = cloudflare.zerotrustriskscoring.get_integrations(account_id="account_id")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_risk_scoring_integrations is deprecated: cloudflare:index/getZeroTrustRiskScoringIntegrations:getZeroTrustRiskScoringIntegrations has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integrations:getIntegrations""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

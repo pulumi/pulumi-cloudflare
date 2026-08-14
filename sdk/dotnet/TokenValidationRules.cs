@@ -27,18 +27,18 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleTokenValidationRules = new Cloudflare.TokenValidationRules("example_token_validation_rules", new()
+    ///     var exampleTokenValidationRules = new Cloudflare.Modules.TokenValidationRules.TokenValidationRules("example_token_validation_rules", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Action = "log",
     ///         Description = "Long description for Token Validation Rule",
     ///         Enabled = true,
     ///         Expression = "is_jwt_valid(\"52973293-cb04-4a97-8f55-e7d2ad1107dd\") or is_jwt_valid(\"46eab8d1-6376-45e3-968f-2c649d77d423\")",
-    ///         Selector = new Cloudflare.Inputs.TokenValidationRulesSelectorArgs
+    ///         Selector = new Cloudflare.Modules.TokenValidationRules.Inputs.TokenValidationRulesSelectorArgs
     ///         {
     ///             Excludes = new[]
     ///             {
-    ///                 new Cloudflare.Inputs.TokenValidationRulesSelectorExcludeArgs
+    ///                 new Cloudflare.Modules.TokenValidationRules.Inputs.TokenValidationRulesSelectorExcludeArgs
     ///                 {
     ///                     OperationIds = new[]
     ///                     {
@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare
     ///             },
     ///             Includes = new[]
     ///             {
-    ///                 new Cloudflare.Inputs.TokenValidationRulesSelectorIncludeArgs
+    ///                 new Cloudflare.Modules.TokenValidationRules.Inputs.TokenValidationRulesSelectorIncludeArgs
     ///                 {
     ///                     Host = new[]
     ///                     {
@@ -71,6 +71,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/tokenValidationRules:TokenValidationRules example '&lt;zone_id&gt;/&lt;rule_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/tokenValidationRules:TokenValidationRules has been deprecated in favor of cloudflare:tokenValidationRules/tokenValidationRules:TokenValidationRules")]
     [CloudflareResourceType("cloudflare:index/tokenValidationRules:TokenValidationRules")]
     public partial class TokenValidationRules : global::Pulumi.CustomResource
     {

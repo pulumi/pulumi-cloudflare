@@ -22,6 +22,8 @@ __all__ = [
     'get_custom_pages_list_output',
 ]
 
+warnings.warn("""cloudflare:index/getCustomPagesList:getCustomPagesList has been deprecated in favor of cloudflare:customPages/list:getList""", DeprecationWarning)
+
 @pulumi.output_type
 class GetCustomPagesListResult:
     """
@@ -105,7 +107,7 @@ def get_custom_pages_list(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_custom_pages_list = cloudflare.get_custom_pages_list(account_id="account_id",
+    example_custom_pages_list = cloudflare.custompages.get_list(account_id="account_id",
         zone_id="zone_id")
     ```
 
@@ -114,6 +116,7 @@ def get_custom_pages_list(account_id: Optional[_builtins.str] = None,
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_custom_pages_list is deprecated: cloudflare:index/getCustomPagesList:getCustomPagesList has been deprecated in favor of cloudflare:customPages/list:getList""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -145,7 +148,7 @@ def get_custom_pages_list_output(account_id: pulumi.Input[Optional[Optional[_bui
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_custom_pages_list = cloudflare.get_custom_pages_list(account_id="account_id",
+    example_custom_pages_list = cloudflare.custompages.get_list(account_id="account_id",
         zone_id="zone_id")
     ```
 
@@ -154,6 +157,7 @@ def get_custom_pages_list_output(account_id: pulumi.Input[Optional[Optional[_bui
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_custom_pages_list is deprecated: cloudflare:index/getCustomPagesList:getCustomPagesList has been deprecated in favor of cloudflare:customPages/list:getList""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

@@ -20,13 +20,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicWanIpsecTunnel = cloudflare.getMagicWanIpsecTunnel({
+ * const exampleMagicWanIpsecTunnel = cloudflare.magicwan.getIpsecTunnel({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     ipsecTunnelId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getMagicWanIpsecTunnel:getMagicWanIpsecTunnel has been deprecated in favor of cloudflare:magicWan/ipsecTunnel:getIpsecTunnel */
 export function getMagicWanIpsecTunnel(args: GetMagicWanIpsecTunnelArgs, opts?: pulumi.InvokeOptions): Promise<GetMagicWanIpsecTunnelResult> {
+    pulumi.log.warn("getMagicWanIpsecTunnel is deprecated: cloudflare:index/getMagicWanIpsecTunnel:getMagicWanIpsecTunnel has been deprecated in favor of cloudflare:magicWan/ipsecTunnel:getIpsecTunnel")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getMagicWanIpsecTunnel:getMagicWanIpsecTunnel", {
         "accountId": args.accountId,
@@ -80,13 +82,15 @@ export interface GetMagicWanIpsecTunnelResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicWanIpsecTunnel = cloudflare.getMagicWanIpsecTunnel({
+ * const exampleMagicWanIpsecTunnel = cloudflare.magicwan.getIpsecTunnel({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     ipsecTunnelId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getMagicWanIpsecTunnel:getMagicWanIpsecTunnel has been deprecated in favor of cloudflare:magicWan/ipsecTunnel:getIpsecTunnel */
 export function getMagicWanIpsecTunnelOutput(args: GetMagicWanIpsecTunnelOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMagicWanIpsecTunnelResult> {
+    pulumi.log.warn("getMagicWanIpsecTunnel is deprecated: cloudflare:index/getMagicWanIpsecTunnel:getMagicWanIpsecTunnel has been deprecated in favor of cloudflare:magicWan/ipsecTunnel:getIpsecTunnel")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getMagicWanIpsecTunnel:getMagicWanIpsecTunnel", {
         "accountId": args.accountId,

@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleR2CustomDomain = new cloudflare.R2CustomDomain("example_r2_custom_domain", {
+ * const exampleR2CustomDomain = new cloudflare.r2.CustomDomain("example_r2_custom_domain", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
  *     domain: "prefix.example-domain.com",
@@ -32,6 +32,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/r2CustomDomain:R2CustomDomain has been deprecated in favor of cloudflare:r2/customDomain:CustomDomain
  */
 export class R2CustomDomain extends pulumi.CustomResource {
     /**
@@ -44,6 +46,7 @@ export class R2CustomDomain extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: R2CustomDomainState, opts?: pulumi.CustomResourceOptions): R2CustomDomain {
+        pulumi.log.warn("R2CustomDomain is deprecated: cloudflare:index/r2CustomDomain:R2CustomDomain has been deprecated in favor of cloudflare:r2/customDomain:CustomDomain")
         return new R2CustomDomain(name, <any>state, { ...opts, id: id });
     }
 
@@ -107,8 +110,11 @@ export class R2CustomDomain extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/r2CustomDomain:R2CustomDomain has been deprecated in favor of cloudflare:r2/customDomain:CustomDomain */
     constructor(name: string, args: R2CustomDomainArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/r2CustomDomain:R2CustomDomain has been deprecated in favor of cloudflare:r2/customDomain:CustomDomain */
     constructor(name: string, argsOrState?: R2CustomDomainArgs | R2CustomDomainState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("R2CustomDomain is deprecated: cloudflare:index/r2CustomDomain:R2CustomDomain has been deprecated in favor of cloudflare:r2/customDomain:CustomDomain")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

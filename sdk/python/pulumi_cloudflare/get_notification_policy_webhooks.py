@@ -21,6 +21,8 @@ __all__ = [
     'get_notification_policy_webhooks_output',
 ]
 
+warnings.warn("""cloudflare:index/getNotificationPolicyWebhooks:getNotificationPolicyWebhooks has been deprecated in favor of cloudflare:notificationPolicyWebhooks/notificationPolicyWebhooks:getNotificationPolicyWebhooks""", DeprecationWarning)
+
 @pulumi.output_type
 class GetNotificationPolicyWebhooksResult:
     """
@@ -176,7 +178,7 @@ def get_notification_policy_webhooks(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_notification_policy_webhooks = cloudflare.get_notification_policy_webhooks(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_notification_policy_webhooks = cloudflare.notificationpolicywebhooks.get_notification_policy_webhooks(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         webhook_id="b115d5ec15c641ee8b7692c449b5227b")
     ```
 
@@ -184,6 +186,7 @@ def get_notification_policy_webhooks(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: The account id
     :param _builtins.str webhook_id: The unique identifier of a webhook
     """
+    pulumi.log.warn("""get_notification_policy_webhooks is deprecated: cloudflare:index/getNotificationPolicyWebhooks:getNotificationPolicyWebhooks has been deprecated in favor of cloudflare:notificationPolicyWebhooks/notificationPolicyWebhooks:getNotificationPolicyWebhooks""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['webhookId'] = webhook_id
@@ -219,7 +222,7 @@ def get_notification_policy_webhooks_output(account_id: pulumi.Input[Optional[Op
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_notification_policy_webhooks = cloudflare.get_notification_policy_webhooks(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_notification_policy_webhooks = cloudflare.notificationpolicywebhooks.get_notification_policy_webhooks(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         webhook_id="b115d5ec15c641ee8b7692c449b5227b")
     ```
 
@@ -227,6 +230,7 @@ def get_notification_policy_webhooks_output(account_id: pulumi.Input[Optional[Op
     :param _builtins.str account_id: The account id
     :param _builtins.str webhook_id: The unique identifier of a webhook
     """
+    pulumi.log.warn("""get_notification_policy_webhooks is deprecated: cloudflare:index/getNotificationPolicyWebhooks:getNotificationPolicyWebhooks has been deprecated in favor of cloudflare:notificationPolicyWebhooks/notificationPolicyWebhooks:getNotificationPolicyWebhooks""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['webhookId'] = webhook_id

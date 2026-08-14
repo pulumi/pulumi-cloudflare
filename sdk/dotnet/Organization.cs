@@ -24,14 +24,14 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleOrganization = new Cloudflare.Organization("example_organization", new()
+    ///     var exampleOrganization = new Cloudflare.Modules.Organization.Organization("example_organization", new()
     ///     {
     ///         Name = "name",
-    ///         Parent = new Cloudflare.Inputs.OrganizationParentArgs
+    ///         Parent = new Cloudflare.Modules.Organization.Inputs.OrganizationParentArgs
     ///         {
     ///             Id = "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
     ///         },
-    ///         Profile = new Cloudflare.Inputs.OrganizationProfileArgs
+    ///         Profile = new Cloudflare.Modules.Organization.Inputs.OrganizationProfileArgs
     ///         {
     ///             BusinessAddress = "business_address",
     ///             BusinessEmail = "business_email",
@@ -50,6 +50,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/organization:Organization example '&lt;organization_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/organization:Organization has been deprecated in favor of cloudflare:organization/organization:Organization")]
     [CloudflareResourceType("cloudflare:index/organization:Organization")]
     public partial class Organization : global::Pulumi.CustomResource
     {

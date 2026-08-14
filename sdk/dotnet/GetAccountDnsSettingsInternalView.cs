@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getAccountDnsSettingsInternalView:getAccountDnsSettingsInternalView has been deprecated in favor of cloudflare:accountDnsSettingsInternal/view:getView")]
     public static class GetAccountDnsSettingsInternalView
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountDnsSettingsInternalView = Cloudflare.GetAccountDnsSettingsInternalView.Invoke(new()
+        ///     var exampleAccountDnsSettingsInternalView = Cloudflare.Modules.AccountDnsSettingsInternal.GetView.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ViewId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountDnsSettingsInternalView = Cloudflare.GetAccountDnsSettingsInternalView.Invoke(new()
+        ///     var exampleAccountDnsSettingsInternalView = Cloudflare.Modules.AccountDnsSettingsInternal.GetView.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ViewId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountDnsSettingsInternalView = Cloudflare.GetAccountDnsSettingsInternalView.Invoke(new()
+        ///     var exampleAccountDnsSettingsInternalView = Cloudflare.Modules.AccountDnsSettingsInternal.GetView.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ViewId = "023e105f4ecef8ad9ca31a8372d0c353",

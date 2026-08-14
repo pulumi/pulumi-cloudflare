@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * - `Workers Scripts Write`
  * - `Workers Tail Read`
  * 
- * &gt; This resource is redundant with `cloudflare.Worker` and should not be used together. When using the `cloudflare.Worker` resource, use the nested `subdomain` attribute to control subdomain settings instead.
+ * &gt; This resource is redundant with `cloudflare.worker.Worker` and should not be used together. When using the `cloudflare.worker.Worker` resource, use the nested `subdomain` attribute to control subdomain settings instead.
  * 
  * ## Example Usage
  * 
@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WorkersScriptSubdomain;
- * import com.pulumi.cloudflare.WorkersScriptSubdomainArgs;
+ * import com.pulumi.cloudflare.workersScript.Subdomain;
+ * import com.pulumi.cloudflare.workersScript.SubdomainArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleWorkersScriptSubdomain = new WorkersScriptSubdomain("exampleWorkersScriptSubdomain", WorkersScriptSubdomainArgs.builder()
+ *         var exampleWorkersScriptSubdomain = new Subdomain("exampleWorkersScriptSubdomain", SubdomainArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .scriptName("this-is_my_script-01")
  *             .enabled(true)
@@ -65,7 +65,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain example &#39;&lt;account_id&gt;/&lt;script_name&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain has been deprecated in favor of cloudflare:workersScript/subdomain:Subdomain
+ * 
  */
+@Deprecated /* cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain has been deprecated in favor of cloudflare:workersScript/subdomain:Subdomain */
 @ResourceType(type="cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain")
 public class WorkersScriptSubdomain extends com.pulumi.resources.CustomResource {
     /**

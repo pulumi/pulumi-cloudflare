@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustriskscoring"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustRiskScoringIntegrations(ctx, &cloudflare.LookupZeroTrustRiskScoringIntegrationsArgs{
+//			_, err := zerotrustriskscoring.GetIntegrations(ctx, &zerotrustriskscoring.GetIntegrationsArgs{
 //				AccountId: pulumi.StringRef("account_id"),
 //			}, nil)
 //			if err != nil {
@@ -41,6 +41,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustRiskScoringIntegrations:getZeroTrustRiskScoringIntegrations has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integrations:getIntegrations
 func LookupZeroTrustRiskScoringIntegrations(ctx *pulumi.Context, args *LookupZeroTrustRiskScoringIntegrationsArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustRiskScoringIntegrationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustRiskScoringIntegrationsResult

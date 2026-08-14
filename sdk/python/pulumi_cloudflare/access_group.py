@@ -289,7 +289,7 @@ class AccessGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_group = cloudflare.ZeroTrustAccessGroup("example_zero_trust_access_group",
+        example_zero_trust_access_group = cloudflare.zerotrustaccess.Group("example_zero_trust_access_group",
             includes=[{
                 "certificate": {},
             }],
@@ -339,7 +339,7 @@ class AccessGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_group = cloudflare.ZeroTrustAccessGroup("example_zero_trust_access_group",
+        example_zero_trust_access_group = cloudflare.zerotrustaccess.Group("example_zero_trust_access_group",
             includes=[{
                 "certificate": {},
             }],
@@ -404,8 +404,6 @@ class AccessGroup(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["requires"] = requires
             __props__.__dict__["zone_id"] = zone_id
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessGroup:AccessGroup")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AccessGroup, __self__).__init__(
             'cloudflare:index/accessGroup:AccessGroup',
             resource_name,

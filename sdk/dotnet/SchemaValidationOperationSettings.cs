@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleSchemaValidationOperationSettings = new Cloudflare.SchemaValidationOperationSettings("example_schema_validation_operation_settings", new()
+    ///     var exampleSchemaValidationOperationSettings = new Cloudflare.Modules.SchemaValidationOperationSettings.SchemaValidationOperationSettings("example_schema_validation_operation_settings", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         OperationId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
@@ -41,6 +41,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/schemaValidationOperationSettings:SchemaValidationOperationSettings has been deprecated in favor of cloudflare:schemaValidationOperationSettings/schemaValidationOperationSettings:SchemaValidationOperationSettings")]
     [CloudflareResourceType("cloudflare:index/schemaValidationOperationSettings:SchemaValidationOperationSettings")]
     public partial class SchemaValidationOperationSettings : global::Pulumi.CustomResource
     {

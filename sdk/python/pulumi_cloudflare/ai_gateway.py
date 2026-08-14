@@ -705,8 +705,13 @@ class _AiGatewayState:
         pulumi.set(self, "zdr", value)
 
 
+warnings.warn("""cloudflare:index/aiGateway:AiGateway has been deprecated in favor of cloudflare:aiGateway/aiGateway:AiGateway""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/aiGateway:AiGateway")
 class AiGateway(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/aiGateway:AiGateway has been deprecated in favor of cloudflare:aiGateway/aiGateway:AiGateway""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -748,7 +753,7 @@ class AiGateway(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_ai_gateway = cloudflare.AiGateway("example_ai_gateway",
+        example_ai_gateway = cloudflare.aigateway.AiGateway("example_ai_gateway",
             account_id="3ebbcb006d4d46d7bb6a8c7f14676cb0",
             ai_gateway_id="my-gateway",
             cache_invalidate_on_update=True,
@@ -806,7 +811,7 @@ class AiGateway(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_ai_gateway = cloudflare.AiGateway("example_ai_gateway",
+        example_ai_gateway = cloudflare.aigateway.AiGateway("example_ai_gateway",
             account_id="3ebbcb006d4d46d7bb6a8c7f14676cb0",
             ai_gateway_id="my-gateway",
             cache_invalidate_on_update=True,
@@ -874,6 +879,7 @@ class AiGateway(pulumi.CustomResource):
                  workers_ai_billing_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  zdr: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
+        pulumi.log.warn("""AiGateway is deprecated: cloudflare:index/aiGateway:AiGateway has been deprecated in favor of cloudflare:aiGateway/aiGateway:AiGateway""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

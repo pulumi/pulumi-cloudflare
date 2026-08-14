@@ -31,9 +31,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDlpDataClass;
- * import com.pulumi.cloudflare.ZeroTrustDlpDataClassArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDlpDataClassSensitivityLevelArgs;
+ * import com.pulumi.cloudflare.zeroTrustDlpData.Class;
+ * import com.pulumi.cloudflare.zeroTrustDlpData.ClassArgs;
+ * import com.pulumi.cloudflare.zeroTrustDlpData.inputs.ClassSensitivityLevelArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -47,12 +47,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustDlpDataClass = new ZeroTrustDlpDataClass("exampleZeroTrustDlpDataClass", ZeroTrustDlpDataClassArgs.builder()
+ *         var exampleZeroTrustDlpDataClass = new Class("exampleZeroTrustDlpDataClass", ClassArgs.builder()
  *             .accountId("account_id")
  *             .dataTags("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
  *             .expression("expression")
  *             .name("name")
- *             .sensitivityLevels(ZeroTrustDlpDataClassSensitivityLevelArgs.builder()
+ *             .sensitivityLevels(ClassSensitivityLevelArgs.builder()
  *                 .groupId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
  *                 .levelId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
  *                 .build())
@@ -70,7 +70,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustDlpDataClass:ZeroTrustDlpDataClass example &#39;&lt;account_id&gt;/&lt;data_class_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustDlpDataClass:ZeroTrustDlpDataClass has been deprecated in favor of cloudflare:zeroTrustDlpData/class:Class
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustDlpDataClass:ZeroTrustDlpDataClass has been deprecated in favor of cloudflare:zeroTrustDlpData/class:Class */
 @ResourceType(type="cloudflare:index/zeroTrustDlpDataClass:ZeroTrustDlpDataClass")
 public class ZeroTrustDlpDataClass extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

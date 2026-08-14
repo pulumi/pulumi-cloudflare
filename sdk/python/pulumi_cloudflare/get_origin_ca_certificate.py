@@ -23,6 +23,8 @@ __all__ = [
     'get_origin_ca_certificate_output',
 ]
 
+warnings.warn("""cloudflare:index/getOriginCaCertificate:getOriginCaCertificate has been deprecated in favor of cloudflare:originCa/certificate:getCertificate""", DeprecationWarning)
+
 @pulumi.output_type
 class GetOriginCaCertificateResult:
     """
@@ -157,12 +159,13 @@ def get_origin_ca_certificate(certificate_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_origin_ca_certificate = cloudflare.get_origin_ca_certificate(certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_origin_ca_certificate = cloudflare.originca.get_certificate(certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str certificate_id: Identifier.
     """
+    pulumi.log.warn("""get_origin_ca_certificate is deprecated: cloudflare:index/getOriginCaCertificate:getOriginCaCertificate has been deprecated in favor of cloudflare:originCa/certificate:getCertificate""")
     __args__ = dict()
     __args__['certificateId'] = certificate_id
     __args__['filter'] = filter
@@ -189,12 +192,13 @@ def get_origin_ca_certificate_output(certificate_id: pulumi.Input[Optional[Optio
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_origin_ca_certificate = cloudflare.get_origin_ca_certificate(certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_origin_ca_certificate = cloudflare.originca.get_certificate(certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str certificate_id: Identifier.
     """
+    pulumi.log.warn("""get_origin_ca_certificate is deprecated: cloudflare:index/getOriginCaCertificate:getOriginCaCertificate has been deprecated in favor of cloudflare:originCa/certificate:getCertificate""")
     __args__ = dict()
     __args__['certificateId'] = certificate_id
     __args__['filter'] = filter

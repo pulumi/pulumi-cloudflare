@@ -23,6 +23,8 @@ __all__ = [
     'get_schema_validation_schemas_output',
 ]
 
+warnings.warn("""cloudflare:index/getSchemaValidationSchemas:getSchemaValidationSchemas has been deprecated in favor of cloudflare:schemaValidationSchemas/schemaValidationSchemas:getSchemaValidationSchemas""", DeprecationWarning)
+
 @pulumi.output_type
 class GetSchemaValidationSchemasResult:
     """
@@ -173,7 +175,7 @@ def get_schema_validation_schemas(filter: Optional[Union['GetSchemaValidationSch
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_schema_validation_schemas = cloudflare.get_schema_validation_schemas(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_schema_validation_schemas = cloudflare.schemavalidationschemas.get_schema_validation_schemas(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         schema_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         omit_source=True)
     ```
@@ -183,6 +185,7 @@ def get_schema_validation_schemas(filter: Optional[Union['GetSchemaValidationSch
     :param _builtins.str schema_id: UUID.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_schema_validation_schemas is deprecated: cloudflare:index/getSchemaValidationSchemas:getSchemaValidationSchemas has been deprecated in favor of cloudflare:schemaValidationSchemas/schemaValidationSchemas:getSchemaValidationSchemas""")
     __args__ = dict()
     __args__['filter'] = filter
     __args__['omitSource'] = omit_source
@@ -221,7 +224,7 @@ def get_schema_validation_schemas_output(filter: pulumi.Input[Optional[Optional[
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_schema_validation_schemas = cloudflare.get_schema_validation_schemas(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_schema_validation_schemas = cloudflare.schemavalidationschemas.get_schema_validation_schemas(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         schema_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         omit_source=True)
     ```
@@ -231,6 +234,7 @@ def get_schema_validation_schemas_output(filter: pulumi.Input[Optional[Optional[
     :param _builtins.str schema_id: UUID.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_schema_validation_schemas is deprecated: cloudflare:index/getSchemaValidationSchemas:getSchemaValidationSchemas has been deprecated in favor of cloudflare:schemaValidationSchemas/schemaValidationSchemas:getSchemaValidationSchemas""")
     __args__ = dict()
     __args__['filter'] = filter
     __args__['omitSource'] = omit_source

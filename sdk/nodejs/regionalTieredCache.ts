@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleRegionalTieredCache = new cloudflare.RegionalTieredCache("example_regional_tiered_cache", {
+ * const exampleRegionalTieredCache = new cloudflare.regional.TieredCache("example_regional_tiered_cache", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     value: "on",
  * });
@@ -29,6 +29,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/regionalTieredCache:RegionalTieredCache example '<zone_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/regionalTieredCache:RegionalTieredCache has been deprecated in favor of cloudflare:regional/tieredCache:TieredCache
  */
 export class RegionalTieredCache extends pulumi.CustomResource {
     /**
@@ -41,6 +43,7 @@ export class RegionalTieredCache extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RegionalTieredCacheState, opts?: pulumi.CustomResourceOptions): RegionalTieredCache {
+        pulumi.log.warn("RegionalTieredCache is deprecated: cloudflare:index/regionalTieredCache:RegionalTieredCache has been deprecated in favor of cloudflare:regional/tieredCache:TieredCache")
         return new RegionalTieredCache(name, <any>state, { ...opts, id: id });
     }
 
@@ -83,8 +86,11 @@ export class RegionalTieredCache extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/regionalTieredCache:RegionalTieredCache has been deprecated in favor of cloudflare:regional/tieredCache:TieredCache */
     constructor(name: string, args: RegionalTieredCacheArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/regionalTieredCache:RegionalTieredCache has been deprecated in favor of cloudflare:regional/tieredCache:TieredCache */
     constructor(name: string, argsOrState?: RegionalTieredCacheArgs | RegionalTieredCacheState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("RegionalTieredCache is deprecated: cloudflare:index/regionalTieredCache:RegionalTieredCache has been deprecated in favor of cloudflare:regional/tieredCache:TieredCache")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

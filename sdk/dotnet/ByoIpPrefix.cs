@@ -29,7 +29,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleByoIpPrefix = new Cloudflare.ByoIpPrefix("example_byo_ip_prefix", new()
+    ///     var exampleByoIpPrefix = new Cloudflare.Modules.ByoIp.ByoIpPrefix("example_byo_ip_prefix", new()
     ///     {
     ///         AccountId = "258def64c72dae45f3e4c8516e2111f2",
     ///         Asn = 13335,
@@ -48,6 +48,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example '&lt;account_id&gt;/&lt;prefix_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/byoIpPrefix:ByoIpPrefix has been deprecated in favor of cloudflare:byoIp/prefix:Prefix")]
     [CloudflareResourceType("cloudflare:index/byoIpPrefix:ByoIpPrefix")]
     public partial class ByoIpPrefix : global::Pulumi.CustomResource
     {

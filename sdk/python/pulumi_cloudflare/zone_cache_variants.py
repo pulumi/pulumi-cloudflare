@@ -130,8 +130,13 @@ class _ZoneCacheVariantsState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/zoneCacheVariants:ZoneCacheVariants has been deprecated in favor of cloudflare:zoneCache/variants:Variants""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zoneCacheVariants:ZoneCacheVariants")
 class ZoneCacheVariants(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zoneCacheVariants:ZoneCacheVariants has been deprecated in favor of cloudflare:zoneCache/variants:Variants""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -153,7 +158,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zone_cache_variants = cloudflare.ZoneCacheVariants("example_zone_cache_variants",
+        example_zone_cache_variants = cloudflare.zonecache.Variants("example_zone_cache_variants",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             value={
                 "avifs": [
@@ -235,7 +240,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zone_cache_variants = cloudflare.ZoneCacheVariants("example_zone_cache_variants",
+        example_zone_cache_variants = cloudflare.zonecache.Variants("example_zone_cache_variants",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             value={
                 "avifs": [
@@ -310,6 +315,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
                  value: pulumi.Input[Optional[Union['ZoneCacheVariantsValueArgs', 'ZoneCacheVariantsValueArgsDict']]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZoneCacheVariants is deprecated: cloudflare:index/zoneCacheVariants:ZoneCacheVariants has been deprecated in favor of cloudflare:zoneCache/variants:Variants""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

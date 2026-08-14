@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleQueue = new Cloudflare.Queue("example_queue", new()
+    ///     var exampleQueue = new Cloudflare.Modules.Queue.Queue("example_queue", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         QueueName = "example-queue",
@@ -42,6 +42,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/queue:Queue example '&lt;account_id&gt;/&lt;queue_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/queue:Queue has been deprecated in favor of cloudflare:queue/queue:Queue")]
     [CloudflareResourceType("cloudflare:index/queue:Queue")]
     public partial class Queue : global::Pulumi.CustomResource
     {

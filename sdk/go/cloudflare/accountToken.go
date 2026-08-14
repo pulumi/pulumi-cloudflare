@@ -26,7 +26,7 @@ import (
 //
 //	"encoding/json"
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/account"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -40,25 +40,25 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			_, err = cloudflare.NewAccountToken(ctx, "example_account_token", &cloudflare.AccountTokenArgs{
+//			_, err = account.NewToken(ctx, "example_account_token", &account.TokenArgs{
 //				AccountId: pulumi.String("b67e14daa5f8dceeb91fe5449ba496eb"),
 //				Name:      pulumi.String("workers read-only token"),
-//				Policies: cloudflare.AccountTokenPolicyArray{
-//					&cloudflare.AccountTokenPolicyArgs{
+//				Policies: account.TokenPolicyArray{
+//					&account.TokenPolicyArgs{
 //						Effect: pulumi.String("allow"),
-//						PermissionGroups: cloudflare.AccountTokenPolicyPermissionGroupArray{
-//							&cloudflare.AccountTokenPolicyPermissionGroupArgs{
+//						PermissionGroups: account.TokenPolicyPermissionGroupArray{
+//							&account.TokenPolicyPermissionGroupArgs{
 //								Id: pulumi.String("1a71c399035b4950a1bd1466bbe4f420"),
 //							},
-//							&cloudflare.AccountTokenPolicyPermissionGroupArgs{
+//							&account.TokenPolicyPermissionGroupArgs{
 //								Id: pulumi.String("8b47d2786a534c08a1f94ee8f9f599ef"),
 //							},
 //						},
 //						Resources: pulumi.String(json0),
 //					},
 //				},
-//				Condition: &cloudflare.AccountTokenConditionArgs{
-//					RequestIp: &cloudflare.AccountTokenConditionRequestIpArgs{
+//				Condition: &account.TokenConditionArgs{
+//					RequestIp: &account.TokenConditionRequestIpArgs{
 //						Ins: pulumi.StringArray{
 //							pulumi.String("123.123.123.0/24"),
 //							pulumi.String("2606:4700::/32"),
@@ -86,6 +86,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/accountToken:AccountToken example '<account_id>/<token_id>'
 // ```
+//
+// Deprecated: cloudflare:index/accountToken:AccountToken has been deprecated in favor of cloudflare:account/token:Token
 type AccountToken struct {
 	pulumi.CustomResourceState
 

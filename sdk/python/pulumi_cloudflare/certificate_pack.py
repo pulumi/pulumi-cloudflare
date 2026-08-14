@@ -369,8 +369,13 @@ class _CertificatePackState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/certificatePack:CertificatePack has been deprecated in favor of cloudflare:certificate/pack:Pack""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/certificatePack:CertificatePack")
 class CertificatePack(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/certificatePack:CertificatePack has been deprecated in favor of cloudflare:certificate/pack:Pack""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -401,7 +406,7 @@ class CertificatePack(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_certificate_pack = cloudflare.CertificatePack("example_certificate_pack",
+        example_certificate_pack = cloudflare.certificate.Pack("example_certificate_pack",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             certificate_authority="lets_encrypt",
             hosts=[
@@ -463,7 +468,7 @@ class CertificatePack(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_certificate_pack = cloudflare.CertificatePack("example_certificate_pack",
+        example_certificate_pack = cloudflare.certificate.Pack("example_certificate_pack",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             certificate_authority="lets_encrypt",
             hosts=[
@@ -510,6 +515,7 @@ class CertificatePack(pulumi.CustomResource):
                  validity_days: pulumi.Input[Optional[_builtins.int]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""CertificatePack is deprecated: cloudflare:index/certificatePack:CertificatePack has been deprecated in favor of cloudflare:certificate/pack:Pack""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

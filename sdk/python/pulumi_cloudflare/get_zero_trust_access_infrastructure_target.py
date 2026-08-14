@@ -23,6 +23,8 @@ __all__ = [
     'get_zero_trust_access_infrastructure_target_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustAccessInfrastructureTarget:getZeroTrustAccessInfrastructureTarget has been deprecated in favor of cloudflare:zeroTrustAccessInfrastructure/target:getTarget""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustAccessInfrastructureTargetResult:
     """
@@ -143,7 +145,7 @@ def get_zero_trust_access_infrastructure_target(account_id: Optional[_builtins.s
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_infrastructure_target = cloudflare.get_zero_trust_access_infrastructure_target(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_zero_trust_access_infrastructure_target = cloudflare.zerotrustaccessinfrastructure.get_target(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         target_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
 
@@ -151,6 +153,7 @@ def get_zero_trust_access_infrastructure_target(account_id: Optional[_builtins.s
     :param _builtins.str account_id: Account identifier
     :param _builtins.str target_id: Target identifier
     """
+    pulumi.log.warn("""get_zero_trust_access_infrastructure_target is deprecated: cloudflare:index/getZeroTrustAccessInfrastructureTarget:getZeroTrustAccessInfrastructureTarget has been deprecated in favor of cloudflare:zeroTrustAccessInfrastructure/target:getTarget""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -178,7 +181,7 @@ def get_zero_trust_access_infrastructure_target_output(account_id: pulumi.Input[
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_infrastructure_target = cloudflare.get_zero_trust_access_infrastructure_target(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_zero_trust_access_infrastructure_target = cloudflare.zerotrustaccessinfrastructure.get_target(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         target_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
 
@@ -186,6 +189,7 @@ def get_zero_trust_access_infrastructure_target_output(account_id: pulumi.Input[
     :param _builtins.str account_id: Account identifier
     :param _builtins.str target_id: Target identifier
     """
+    pulumi.log.warn("""get_zero_trust_access_infrastructure_target is deprecated: cloudflare:index/getZeroTrustAccessInfrastructureTarget:getZeroTrustAccessInfrastructureTarget has been deprecated in favor of cloudflare:zeroTrustAccessInfrastructure/target:getTarget""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

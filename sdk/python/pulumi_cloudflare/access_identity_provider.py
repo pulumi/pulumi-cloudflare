@@ -351,7 +351,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_identity_provider = cloudflare.ZeroTrustAccessIdentityProvider("example_zero_trust_access_identity_provider",
+        example_zero_trust_access_identity_provider = cloudflare.zerotrustaccessidentity.Provider("example_zero_trust_access_identity_provider",
             config={
                 "claims": [
                     "email_verified",
@@ -416,7 +416,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_identity_provider = cloudflare.ZeroTrustAccessIdentityProvider("example_zero_trust_access_identity_provider",
+        example_zero_trust_access_identity_provider = cloudflare.zerotrustaccessidentity.Provider("example_zero_trust_access_identity_provider",
             config={
                 "claims": [
                     "email_verified",
@@ -497,8 +497,6 @@ class AccessIdentityProvider(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["saml_certificate_set"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessIdentityProvider:AccessIdentityProvider")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AccessIdentityProvider, __self__).__init__(
             'cloudflare:index/accessIdentityProvider:AccessIdentityProvider',
             resource_name,

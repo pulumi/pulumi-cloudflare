@@ -25,14 +25,14 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDlpCustomProfile = new Cloudflare.ZeroTrustDlpCustomProfile("example_zero_trust_dlp_custom_profile", new()
+    ///     var exampleZeroTrustDlpCustomProfile = new Cloudflare.Modules.ZeroTrustDlpCustom.ZeroTrustDlpCustomProfile("example_zero_trust_dlp_custom_profile", new()
     ///     {
     ///         Name = "name",
     ///         AccountId = "account_id",
     ///         Description = "Custom profile with entries",
     ///         SharedEntries = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustDlpCustomProfileSharedEntryArgs
+    ///             new Cloudflare.Modules.ZeroTrustDlpCustom.Inputs.ProfileSharedEntryArgs
     ///             {
     ///                 EntryId = "56a8c060-01bb-4f89-ba1e-3ad42770a342",
     ///                 EntryType = "predefined",
@@ -42,12 +42,12 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // Custom entry that is a part of this new profile
-    ///     var exampleCustomEntry = new Cloudflare.ZeroTrustDlpCustomEntry("example_custom_entry", new()
+    ///     var exampleCustomEntry = new Cloudflare.Modules.ZeroTrustDlpCustom.ZeroTrustDlpCustomEntry("example_custom_entry", new()
     ///     {
     ///         Name = "custom",
     ///         AccountId = "account_id",
     ///         ProfileId = exampleZeroTrustDlpCustomProfile.Id,
-    ///         Pattern = new Cloudflare.Inputs.ZeroTrustDlpCustomEntryPatternArgs
+    ///         Pattern = new Cloudflare.Modules.ZeroTrustDlpCustom.Inputs.EntryPatternArgs
     ///         {
     ///             Regex = "customentryregex",
     ///         },
@@ -178,10 +178,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/dlpCustomProfile:DlpCustomProfile" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

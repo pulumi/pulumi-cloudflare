@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicTransitSiteLan = new cloudflare.MagicTransitSiteLan("example_magic_transit_site_lan", {
+ * const exampleMagicTransitSiteLan = new cloudflare.magictransitsite.Lan("example_magic_transit_site_lan", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     siteId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bondId: 2,
@@ -66,6 +66,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan example '<account_id>/<site_id>/<lan_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan has been deprecated in favor of cloudflare:magicTransitSite/lan:Lan
  */
 export class MagicTransitSiteLan extends pulumi.CustomResource {
     /**
@@ -78,6 +80,7 @@ export class MagicTransitSiteLan extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: MagicTransitSiteLanState, opts?: pulumi.CustomResourceOptions): MagicTransitSiteLan {
+        pulumi.log.warn("MagicTransitSiteLan is deprecated: cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan has been deprecated in favor of cloudflare:magicTransitSite/lan:Lan")
         return new MagicTransitSiteLan(name, <any>state, { ...opts, id: id });
     }
 
@@ -136,8 +139,11 @@ export class MagicTransitSiteLan extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan has been deprecated in favor of cloudflare:magicTransitSite/lan:Lan */
     constructor(name: string, args: MagicTransitSiteLanArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan has been deprecated in favor of cloudflare:magicTransitSite/lan:Lan */
     constructor(name: string, argsOrState?: MagicTransitSiteLanArgs | MagicTransitSiteLanState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("MagicTransitSiteLan is deprecated: cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan has been deprecated in favor of cloudflare:magicTransitSite/lan:Lan")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

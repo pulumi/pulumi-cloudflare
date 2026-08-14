@@ -25,36 +25,36 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/worker"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWorkerVersion(ctx, "example_worker_version", &cloudflare.WorkerVersionArgs{
+//			_, err := worker.NewVersion(ctx, "example_worker_version", &worker.VersionArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				WorkerId:  pulumi.String("worker_id"),
-//				Annotations: &cloudflare.WorkerVersionAnnotationsArgs{
+//				Annotations: &worker.VersionAnnotationsArgs{
 //					WorkersMessage: pulumi.String("Fixed bug."),
 //					WorkersTag:     pulumi.String("v1.0.1"),
 //				},
-//				Assets: &cloudflare.WorkerVersionAssetsArgs{
-//					Config: &cloudflare.WorkerVersionAssetsConfigArgs{
+//				Assets: &worker.VersionAssetsArgs{
+//					Config: &worker.VersionAssetsConfigArgs{
 //						HtmlHandling:     pulumi.String("auto-trailing-slash"),
 //						NotFoundHandling: pulumi.String("404-page"),
 //						RunWorkerFirst:   pulumi.Any{},
 //					},
 //					Jwt: pulumi.String("jwt"),
 //				},
-//				Bindings: cloudflare.WorkerVersionBindingArray{
-//					&cloudflare.WorkerVersionBindingArgs{
+//				Bindings: worker.VersionBindingArray{
+//					&worker.VersionBindingArgs{
 //						Name: pulumi.String("MY_ENV_VAR"),
 //						Text: pulumi.String("my_data"),
 //						Type: pulumi.String("plain_text"),
 //					},
 //				},
-//				CacheOptions: &cloudflare.WorkerVersionCacheOptionsArgs{
+//				CacheOptions: &worker.VersionCacheOptionsArgs{
 //					Enabled:           pulumi.Bool(true),
 //					CrossVersionCache: pulumi.Bool(true),
 //				},
@@ -62,17 +62,17 @@ import (
 //				CompatibilityFlags: pulumi.StringArray{
 //					pulumi.String("nodejs_compat"),
 //				},
-//				Containers: cloudflare.WorkerVersionContainerArray{
-//					&cloudflare.WorkerVersionContainerArgs{
+//				Containers: worker.VersionContainerArray{
+//					&worker.VersionContainerArgs{
 //						ClassName: pulumi.String("MyDurableObject"),
 //					},
 //				},
-//				Limits: &cloudflare.WorkerVersionLimitsArgs{
+//				Limits: &worker.VersionLimitsArgs{
 //					CpuMs:       pulumi.Int(50),
 //					Subrequests: pulumi.Int(1000),
 //				},
 //				MainModule: pulumi.String("index.js"),
-//				Migrations: &cloudflare.WorkerVersionMigrationsArgs{
+//				Migrations: &worker.VersionMigrationsArgs{
 //					DeletedClasses: pulumi.StringArray{
 //						pulumi.String("string"),
 //					},
@@ -84,35 +84,35 @@ import (
 //					},
 //					NewTag: pulumi.String("v2"),
 //					OldTag: pulumi.String("v1"),
-//					RenamedClasses: cloudflare.WorkerVersionMigrationsRenamedClassArray{
-//						&cloudflare.WorkerVersionMigrationsRenamedClassArgs{
+//					RenamedClasses: worker.VersionMigrationsRenamedClassArray{
+//						&worker.VersionMigrationsRenamedClassArgs{
 //							From: pulumi.String("from"),
 //							To:   pulumi.String("to"),
 //						},
 //					},
-//					TransferredClasses: cloudflare.WorkerVersionMigrationsTransferredClassArray{
-//						&cloudflare.WorkerVersionMigrationsTransferredClassArgs{
+//					TransferredClasses: worker.VersionMigrationsTransferredClassArray{
+//						&worker.VersionMigrationsTransferredClassArgs{
 //							From:       pulumi.String("from"),
 //							FromScript: pulumi.String("from_script"),
 //							To:         pulumi.String("to"),
 //						},
 //					},
 //				},
-//				Modules: cloudflare.WorkerVersionModuleArray{
-//					&cloudflare.WorkerVersionModuleArgs{
+//				Modules: worker.VersionModuleArray{
+//					&worker.VersionModuleArgs{
 //						ContentFile: pulumi.String("dist/index.js"),
 //						ContentType: pulumi.String("application/javascript+module"),
 //						Name:        pulumi.String("index.js"),
 //					},
 //				},
-//				PackageDependencies: cloudflare.WorkerVersionPackageDependencyArray{
-//					&cloudflare.WorkerVersionPackageDependencyArgs{
+//				PackageDependencies: worker.VersionPackageDependencyArray{
+//					&worker.VersionPackageDependencyArgs{
 //						InstalledVersion:   pulumi.String("4.17.22"),
 //						Name:               pulumi.String("lodash"),
 //						PackageJsonVersion: pulumi.String("^4.17.21"),
 //					},
 //				},
-//				Placement: &cloudflare.WorkerVersionPlacementArgs{
+//				Placement: &worker.VersionPlacementArgs{
 //					Mode: pulumi.String("smart"),
 //				},
 //			})
@@ -130,6 +130,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/workerVersion:WorkerVersion example '<account_id>/<worker_id>/<version_id>'
 // ```
+//
+// Deprecated: cloudflare:index/workerVersion:WorkerVersion has been deprecated in favor of cloudflare:worker/version:Version
 type WorkerVersion struct {
 	pulumi.CustomResourceState
 

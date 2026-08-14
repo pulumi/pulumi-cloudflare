@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWeb3Hostnames = cloudflare.getWeb3Hostnames({
+ * const exampleWeb3Hostnames = cloudflare.web3.getHostnames({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWeb3Hostnames:getWeb3Hostnames has been deprecated in favor of cloudflare:web3/hostnames:getHostnames */
 export function getWeb3Hostnames(args?: GetWeb3HostnamesArgs, opts?: pulumi.InvokeOptions): Promise<GetWeb3HostnamesResult> {
+    pulumi.log.warn("getWeb3Hostnames is deprecated: cloudflare:index/getWeb3Hostnames:getWeb3Hostnames has been deprecated in favor of cloudflare:web3/hostnames:getHostnames")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWeb3Hostnames:getWeb3Hostnames", {
@@ -75,12 +77,14 @@ export interface GetWeb3HostnamesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWeb3Hostnames = cloudflare.getWeb3Hostnames({
+ * const exampleWeb3Hostnames = cloudflare.web3.getHostnames({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWeb3Hostnames:getWeb3Hostnames has been deprecated in favor of cloudflare:web3/hostnames:getHostnames */
 export function getWeb3HostnamesOutput(args?: GetWeb3HostnamesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWeb3HostnamesResult> {
+    pulumi.log.warn("getWeb3Hostnames is deprecated: cloudflare:index/getWeb3Hostnames:getWeb3Hostnames has been deprecated in favor of cloudflare:web3/hostnames:getHostnames")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWeb3Hostnames:getWeb3Hostnames", {

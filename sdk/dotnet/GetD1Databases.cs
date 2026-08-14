@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getD1Databases:getD1Databases has been deprecated in favor of cloudflare:d1/databases:getDatabases")]
     public static class GetD1Databases
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleD1Databases = Cloudflare.GetD1Databases.Invoke(new()
+        ///     var exampleD1Databases = Cloudflare.Modules.D1.GetDatabases.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Name = "name",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleD1Databases = Cloudflare.GetD1Databases.Invoke(new()
+        ///     var exampleD1Databases = Cloudflare.Modules.D1.GetDatabases.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Name = "name",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleD1Databases = Cloudflare.GetD1Databases.Invoke(new()
+        ///     var exampleD1Databases = Cloudflare.Modules.D1.GetDatabases.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Name = "name",

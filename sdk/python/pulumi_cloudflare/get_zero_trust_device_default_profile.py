@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_device_default_profile_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDeviceDefaultProfile:getZeroTrustDeviceDefaultProfile has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/zeroTrustDeviceDefaultProfile:getZeroTrustDeviceDefaultProfile""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDeviceDefaultProfileResult:
     """
@@ -320,9 +322,10 @@ def get_zero_trust_device_default_profile(account_id: Optional[_builtins.str] = 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_device_default_profile = cloudflare.get_zero_trust_device_default_profile(account_id="699d98642c564d2e855e9661899b7252")
+    example_zero_trust_device_default_profile = cloudflare.zerotrustdevicedefaultprofile.get_zero_trust_device_default_profile(account_id="699d98642c564d2e855e9661899b7252")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_device_default_profile is deprecated: cloudflare:index/getZeroTrustDeviceDefaultProfile:getZeroTrustDeviceDefaultProfile has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/zeroTrustDeviceDefaultProfile:getZeroTrustDeviceDefaultProfile""")
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -362,9 +365,10 @@ def get_zero_trust_device_default_profile_output(account_id: pulumi.Input[Option
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_device_default_profile = cloudflare.get_zero_trust_device_default_profile(account_id="699d98642c564d2e855e9661899b7252")
+    example_zero_trust_device_default_profile = cloudflare.zerotrustdevicedefaultprofile.get_zero_trust_device_default_profile(account_id="699d98642c564d2e855e9661899b7252")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_device_default_profile is deprecated: cloudflare:index/getZeroTrustDeviceDefaultProfile:getZeroTrustDeviceDefaultProfile has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/zeroTrustDeviceDefaultProfile:getZeroTrustDeviceDefaultProfile""")
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

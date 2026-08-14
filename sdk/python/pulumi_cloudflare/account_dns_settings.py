@@ -123,8 +123,13 @@ class _AccountDnsSettingsState:
         pulumi.set(self, "zone_defaults", value)
 
 
+warnings.warn("""cloudflare:index/accountDnsSettings:AccountDnsSettings has been deprecated in favor of cloudflare:account/dnsSettings:DnsSettings""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/accountDnsSettings:AccountDnsSettings")
 class AccountDnsSettings(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/accountDnsSettings:AccountDnsSettings has been deprecated in favor of cloudflare:account/dnsSettings:DnsSettings""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -145,7 +150,7 @@ class AccountDnsSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_account_dns_settings = cloudflare.AccountDnsSettings("example_account_dns_settings",
+        example_account_dns_settings = cloudflare.account.DnsSettings("example_account_dns_settings",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             enforce_dns_only=False,
             zone_defaults={
@@ -201,7 +206,7 @@ class AccountDnsSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_account_dns_settings = cloudflare.AccountDnsSettings("example_account_dns_settings",
+        example_account_dns_settings = cloudflare.account.DnsSettings("example_account_dns_settings",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             enforce_dns_only=False,
             zone_defaults={
@@ -253,6 +258,7 @@ class AccountDnsSettings(pulumi.CustomResource):
                  enforce_dns_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone_defaults: pulumi.Input[Optional[Union['AccountDnsSettingsZoneDefaultsArgs', 'AccountDnsSettingsZoneDefaultsArgsDict']]] = None,
                  __props__=None):
+        pulumi.log.warn("""AccountDnsSettings is deprecated: cloudflare:index/accountDnsSettings:AccountDnsSettings has been deprecated in favor of cloudflare:account/dnsSettings:DnsSettings""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

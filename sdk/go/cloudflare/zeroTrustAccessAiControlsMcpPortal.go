@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustaccessaicontrolsmcp"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustAccessAiControlsMcpPortal(ctx, "example_zero_trust_access_ai_controls_mcp_portal", &cloudflare.ZeroTrustAccessAiControlsMcpPortalArgs{
+//			_, err := zerotrustaccessaicontrolsmcp.NewPortal(ctx, "example_zero_trust_access_ai_controls_mcp_portal", &zerotrustaccessaicontrolsmcp.PortalArgs{
 //				AccountId:                            pulumi.String("a86a8f5c339544d7bdc89926de14fb8c"),
 //				ZeroTrustAccessAiControlsMcpPortalId: pulumi.String("my-mcp-portal"),
 //				Hostname:                             pulumi.String("exmaple.com"),
@@ -39,21 +39,21 @@ import (
 //				AllowCodeMode:                        pulumi.Bool(true),
 //				Description:                          pulumi.String("This is my custom MCP Portal"),
 //				SecureWebGateway:                     pulumi.Bool(false),
-//				Servers: cloudflare.ZeroTrustAccessAiControlsMcpPortalServerArray{
-//					&cloudflare.ZeroTrustAccessAiControlsMcpPortalServerArgs{
+//				Servers: zerotrustaccessaicontrolsmcp.PortalServerArray{
+//					&zerotrustaccessaicontrolsmcp.PortalServerArgs{
 //						ServerId:        pulumi.String("my-mcp-server"),
 //						DefaultDisabled: pulumi.Bool(true),
 //						OnBehalf:        pulumi.Bool(true),
-//						UpdatedPrompts: cloudflare.ZeroTrustAccessAiControlsMcpPortalServerUpdatedPromptArray{
-//							&cloudflare.ZeroTrustAccessAiControlsMcpPortalServerUpdatedPromptArgs{
+//						UpdatedPrompts: zerotrustaccessaicontrolsmcp.PortalServerUpdatedPromptArray{
+//							&zerotrustaccessaicontrolsmcp.PortalServerUpdatedPromptArgs{
 //								Name:        pulumi.String("name"),
 //								Alias:       pulumi.String("my-custom-alias"),
 //								Description: pulumi.String("description"),
 //								Enabled:     pulumi.Bool(true),
 //							},
 //						},
-//						UpdatedTools: cloudflare.ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArray{
-//							&cloudflare.ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs{
+//						UpdatedTools: zerotrustaccessaicontrolsmcp.PortalServerUpdatedToolArray{
+//							&zerotrustaccessaicontrolsmcp.PortalServerUpdatedToolArgs{
 //								Name:        pulumi.String("name"),
 //								Alias:       pulumi.String("my-custom-alias"),
 //								Description: pulumi.String("description"),
@@ -77,6 +77,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal example '<account_id>/<id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/portal:Portal
 type ZeroTrustAccessAiControlsMcpPortal struct {
 	pulumi.CustomResourceState
 

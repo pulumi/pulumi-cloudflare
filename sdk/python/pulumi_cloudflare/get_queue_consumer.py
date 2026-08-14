@@ -22,6 +22,8 @@ __all__ = [
     'get_queue_consumer_output',
 ]
 
+warnings.warn("""cloudflare:index/getQueueConsumer:getQueueConsumer has been deprecated in favor of cloudflare:queue/consumer:getConsumer""", DeprecationWarning)
+
 @pulumi.output_type
 class GetQueueConsumerResult:
     """
@@ -154,6 +156,7 @@ def get_queue_consumer(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: A Resource identifier.
     :param _builtins.str queue_id: A Resource identifier.
     """
+    pulumi.log.warn("""get_queue_consumer is deprecated: cloudflare:index/getQueueConsumer:getQueueConsumer has been deprecated in favor of cloudflare:queue/consumer:getConsumer""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['queueId'] = queue_id
@@ -187,6 +190,7 @@ def get_queue_consumer_output(account_id: pulumi.Input[Optional[_builtins.str]] 
     :param _builtins.str account_id: A Resource identifier.
     :param _builtins.str queue_id: A Resource identifier.
     """
+    pulumi.log.warn("""get_queue_consumer is deprecated: cloudflare:index/getQueueConsumer:getQueueConsumer has been deprecated in favor of cloudflare:queue/consumer:getConsumer""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['queueId'] = queue_id

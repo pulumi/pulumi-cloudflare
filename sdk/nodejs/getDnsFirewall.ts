@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsFirewall = cloudflare.getDnsFirewall({
+ * const exampleDnsFirewall = cloudflare.dns.getFirewall({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     dnsFirewallId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getDnsFirewall:getDnsFirewall has been deprecated in favor of cloudflare:dns/firewall:getFirewall */
 export function getDnsFirewall(args: GetDnsFirewallArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsFirewallResult> {
+    pulumi.log.warn("getDnsFirewall is deprecated: cloudflare:index/getDnsFirewall:getDnsFirewall has been deprecated in favor of cloudflare:dns/firewall:getFirewall")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getDnsFirewall:getDnsFirewall", {
         "accountId": args.accountId,
@@ -102,13 +104,15 @@ export interface GetDnsFirewallResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsFirewall = cloudflare.getDnsFirewall({
+ * const exampleDnsFirewall = cloudflare.dns.getFirewall({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     dnsFirewallId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getDnsFirewall:getDnsFirewall has been deprecated in favor of cloudflare:dns/firewall:getFirewall */
 export function getDnsFirewallOutput(args: GetDnsFirewallOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsFirewallResult> {
+    pulumi.log.warn("getDnsFirewall is deprecated: cloudflare:index/getDnsFirewall:getDnsFirewall has been deprecated in favor of cloudflare:dns/firewall:getFirewall")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getDnsFirewall:getDnsFirewall", {
         "accountId": args.accountId,

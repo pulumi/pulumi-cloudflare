@@ -24,22 +24,22 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/address"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAddressMap(ctx, "example_address_map", &cloudflare.AddressMapArgs{
+//			_, err := address.NewMap(ctx, "example_address_map", &address.MapArgs{
 //				AccountId:   pulumi.String("258def64c72dae45f3e4c8516e2111f2"),
 //				Description: pulumi.String("My Ecommerce zones"),
 //				Enabled:     pulumi.Bool(true),
 //				Ips: pulumi.StringArray{
 //					pulumi.String("192.0.2.1"),
 //				},
-//				Memberships: cloudflare.AddressMapMembershipArray{
-//					&cloudflare.AddressMapMembershipArgs{
+//				Memberships: address.MapMembershipArray{
+//					&address.MapMembershipArgs{
 //						Identifier: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //						Kind:       pulumi.String("zone"),
 //					},
@@ -59,6 +59,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/addressMap:AddressMap example '<account_id>/<address_map_id>'
 // ```
+//
+// Deprecated: cloudflare:index/addressMap:AddressMap has been deprecated in favor of cloudflare:address/map:Map
 type AddressMap struct {
 	pulumi.CustomResourceState
 

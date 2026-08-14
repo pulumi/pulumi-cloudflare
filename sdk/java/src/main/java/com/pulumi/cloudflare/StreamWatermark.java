@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.StreamWatermark;
- * import com.pulumi.cloudflare.StreamWatermarkArgs;
+ * import com.pulumi.cloudflare.stream.Watermark;
+ * import com.pulumi.cloudflare.stream.WatermarkArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleStreamWatermark = new StreamWatermark("exampleStreamWatermark", StreamWatermarkArgs.builder()
+ *         var exampleStreamWatermark = new Watermark("exampleStreamWatermark", WatermarkArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .name("Marketing Videos")
  *             .opacity(0.75)
@@ -65,7 +65,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/streamWatermark:StreamWatermark has been deprecated in favor of cloudflare:stream/watermark:Watermark
+ * 
  */
+@Deprecated /* cloudflare:index/streamWatermark:StreamWatermark has been deprecated in favor of cloudflare:stream/watermark:Watermark */
 @ResourceType(type="cloudflare:index/streamWatermark:StreamWatermark")
 public class StreamWatermark extends com.pulumi.resources.CustomResource {
     /**

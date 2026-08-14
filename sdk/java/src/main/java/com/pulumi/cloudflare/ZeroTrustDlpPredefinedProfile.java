@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDlpPredefinedProfile;
- * import com.pulumi.cloudflare.ZeroTrustDlpPredefinedProfileArgs;
+ * import com.pulumi.cloudflare.zeroTrustDlpPredefined.Profile;
+ * import com.pulumi.cloudflare.zeroTrustDlpPredefined.ProfileArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustDlpPredefinedProfile = new ZeroTrustDlpPredefinedProfile("exampleZeroTrustDlpPredefinedProfile", ZeroTrustDlpPredefinedProfileArgs.builder()
+ *         var exampleZeroTrustDlpPredefinedProfile = new Profile("exampleZeroTrustDlpPredefinedProfile", ProfileArgs.builder()
  *             .profileId("e91a2360-da51-4fdf-9711-bcdecd462614")
  *             .accountId("account_id")
  *             .ocrEnabled(true)
@@ -80,7 +80,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile example &#39;&lt;account_id&gt;/&lt;profile_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile has been deprecated in favor of cloudflare:zeroTrustDlpPredefined/profile:Profile
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile has been deprecated in favor of cloudflare:zeroTrustDlpPredefined/profile:Profile */
 @ResourceType(type="cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile")
 public class ZeroTrustDlpPredefinedProfile extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

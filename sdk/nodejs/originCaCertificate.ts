@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleOriginCaCertificate = new cloudflare.OriginCaCertificate("example_origin_ca_certificate", {
+ * const exampleOriginCaCertificate = new cloudflare.originca.Certificate("example_origin_ca_certificate", {
  *     csr: `  -----BEGIN CERTIFICATE REQUEST-----
  *   MIICxzCCAa8CAQAwSDELMAkGA1UEBhMCVVMxFjAUBgNVBAgTDVNhbiBGcmFuY2lz
  *   Y28xCzAJBgNVBAcTAkNBMRQwEgYDVQQDEwtleGFtcGxlLm5ldDCCASIwDQYJKoZI
@@ -45,6 +45,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example '<certificate_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/originCaCertificate:OriginCaCertificate has been deprecated in favor of cloudflare:originCa/certificate:Certificate
  */
 export class OriginCaCertificate extends pulumi.CustomResource {
     /**
@@ -57,6 +59,7 @@ export class OriginCaCertificate extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: OriginCaCertificateState, opts?: pulumi.CustomResourceOptions): OriginCaCertificate {
+        pulumi.log.warn("OriginCaCertificate is deprecated: cloudflare:index/originCaCertificate:OriginCaCertificate has been deprecated in favor of cloudflare:originCa/certificate:Certificate")
         return new OriginCaCertificate(name, <any>state, { ...opts, id: id });
     }
 
@@ -109,8 +112,11 @@ export class OriginCaCertificate extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/originCaCertificate:OriginCaCertificate has been deprecated in favor of cloudflare:originCa/certificate:Certificate */
     constructor(name: string, args: OriginCaCertificateArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/originCaCertificate:OriginCaCertificate has been deprecated in favor of cloudflare:originCa/certificate:Certificate */
     constructor(name: string, argsOrState?: OriginCaCertificateArgs | OriginCaCertificateState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("OriginCaCertificate is deprecated: cloudflare:index/originCaCertificate:OriginCaCertificate has been deprecated in favor of cloudflare:originCa/certificate:Certificate")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

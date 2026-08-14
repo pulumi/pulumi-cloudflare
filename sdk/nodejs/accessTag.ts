@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessTag = new cloudflare.ZeroTrustAccessTag("example_zero_trust_access_tag", {
+ * const exampleZeroTrustAccessTag = new cloudflare.zerotrustaccess.Tag("example_zero_trust_access_tag", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "engineers",
  * });
@@ -93,8 +93,6 @@ export class AccessTag extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessTag:AccessTag" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AccessTag.__pulumiType, name, resourceInputs, opts);
     }
 }

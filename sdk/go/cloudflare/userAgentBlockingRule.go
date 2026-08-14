@@ -24,16 +24,16 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/useragentblocking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewUserAgentBlockingRule(ctx, "example_user_agent_blocking_rule", &cloudflare.UserAgentBlockingRuleArgs{
+//			_, err := useragentblocking.NewRule(ctx, "example_user_agent_blocking_rule", &useragentblocking.RuleArgs{
 //				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Configuration: &cloudflare.UserAgentBlockingRuleConfigurationArgs{
+//				Configuration: &useragentblocking.RuleConfigurationArgs{
 //					Target: pulumi.String("ua"),
 //					Value:  pulumi.String("Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)"),
 //				},
@@ -55,6 +55,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule example '<zone_id>/<ua_rule_id>'
 // ```
+//
+// Deprecated: cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule has been deprecated in favor of cloudflare:userAgentBlocking/rule:Rule
 type UserAgentBlockingRule struct {
 	pulumi.CustomResourceState
 

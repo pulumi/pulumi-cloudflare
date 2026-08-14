@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleApiToken = cloudflare.getApiToken({
+ * const exampleApiToken = cloudflare.apitoken.getApiToken({
  *     tokenId: "ed17574386854bf78a67040be0a770b0",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getApiToken:getApiToken has been deprecated in favor of cloudflare:apiToken/apiToken:getApiToken */
 export function getApiToken(args?: GetApiTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetApiTokenResult> {
+    pulumi.log.warn("getApiToken is deprecated: cloudflare:index/getApiToken:getApiToken has been deprecated in favor of cloudflare:apiToken/apiToken:getApiToken")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getApiToken:getApiToken", {
@@ -103,12 +105,14 @@ export interface GetApiTokenResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleApiToken = cloudflare.getApiToken({
+ * const exampleApiToken = cloudflare.apitoken.getApiToken({
  *     tokenId: "ed17574386854bf78a67040be0a770b0",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getApiToken:getApiToken has been deprecated in favor of cloudflare:apiToken/apiToken:getApiToken */
 export function getApiTokenOutput(args?: GetApiTokenOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiTokenResult> {
+    pulumi.log.warn("getApiToken is deprecated: cloudflare:index/getApiToken:getApiToken has been deprecated in favor of cloudflare:apiToken/apiToken:getApiToken")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getApiToken:getApiToken", {

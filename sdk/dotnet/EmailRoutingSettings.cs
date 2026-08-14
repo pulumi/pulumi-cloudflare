@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleEmailRoutingSettings = new Cloudflare.EmailRoutingSettings("example_email_routing_settings", new()
+    ///     var exampleEmailRoutingSettings = new Cloudflare.Modules.EmailRouting.EmailRoutingSettings("example_email_routing_settings", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///     });
@@ -39,6 +39,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/emailRoutingSettings:EmailRoutingSettings example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/emailRoutingSettings:EmailRoutingSettings has been deprecated in favor of cloudflare:emailRouting/settings:Settings")]
     [CloudflareResourceType("cloudflare:index/emailRoutingSettings:EmailRoutingSettings")]
     public partial class EmailRoutingSettings : global::Pulumi.CustomResource
     {

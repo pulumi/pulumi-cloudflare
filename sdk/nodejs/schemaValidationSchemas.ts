@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSchemaValidationSchemas = new cloudflare.SchemaValidationSchemas("example_schema_validation_schemas", {
+ * const exampleSchemaValidationSchemas = new cloudflare.schemavalidationschemas.SchemaValidationSchemas("example_schema_validation_schemas", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     kind: "openapi_v3",
  *     name: "petstore schema",
@@ -32,6 +32,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas example '<zone_id>/<schema_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas has been deprecated in favor of cloudflare:schemaValidationSchemas/schemaValidationSchemas:SchemaValidationSchemas
  */
 export class SchemaValidationSchemas extends pulumi.CustomResource {
     /**
@@ -44,6 +46,7 @@ export class SchemaValidationSchemas extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SchemaValidationSchemasState, opts?: pulumi.CustomResourceOptions): SchemaValidationSchemas {
+        pulumi.log.warn("SchemaValidationSchemas is deprecated: cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas has been deprecated in favor of cloudflare:schemaValidationSchemas/schemaValidationSchemas:SchemaValidationSchemas")
         return new SchemaValidationSchemas(name, <any>state, { ...opts, id: id });
     }
 
@@ -95,8 +98,11 @@ export class SchemaValidationSchemas extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas has been deprecated in favor of cloudflare:schemaValidationSchemas/schemaValidationSchemas:SchemaValidationSchemas */
     constructor(name: string, args: SchemaValidationSchemasArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas has been deprecated in favor of cloudflare:schemaValidationSchemas/schemaValidationSchemas:SchemaValidationSchemas */
     constructor(name: string, argsOrState?: SchemaValidationSchemasArgs | SchemaValidationSchemasState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("SchemaValidationSchemas is deprecated: cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas has been deprecated in favor of cloudflare:schemaValidationSchemas/schemaValidationSchemas:SchemaValidationSchemas")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

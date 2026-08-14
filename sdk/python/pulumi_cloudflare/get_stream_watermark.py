@@ -21,6 +21,8 @@ __all__ = [
     'get_stream_watermark_output',
 ]
 
+warnings.warn("""cloudflare:index/getStreamWatermark:getStreamWatermark has been deprecated in favor of cloudflare:stream/watermark:getWatermark""", DeprecationWarning)
+
 @pulumi.output_type
 class GetStreamWatermarkResult:
     """
@@ -208,7 +210,7 @@ def get_stream_watermark(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_stream_watermark = cloudflare.get_stream_watermark(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_stream_watermark = cloudflare.stream.get_watermark(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         identifier="ea95132c15732412d22c1476fa83f27a")
     ```
 
@@ -216,6 +218,7 @@ def get_stream_watermark(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: The account identifier tag.
     :param _builtins.str identifier: The unique identifier for a watermark profile.
     """
+    pulumi.log.warn("""get_stream_watermark is deprecated: cloudflare:index/getStreamWatermark:getStreamWatermark has been deprecated in favor of cloudflare:stream/watermark:getWatermark""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['identifier'] = identifier
@@ -251,7 +254,7 @@ def get_stream_watermark_output(account_id: pulumi.Input[Optional[_builtins.str]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_stream_watermark = cloudflare.get_stream_watermark(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_stream_watermark = cloudflare.stream.get_watermark(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         identifier="ea95132c15732412d22c1476fa83f27a")
     ```
 
@@ -259,6 +262,7 @@ def get_stream_watermark_output(account_id: pulumi.Input[Optional[_builtins.str]
     :param _builtins.str account_id: The account identifier tag.
     :param _builtins.str identifier: The unique identifier for a watermark profile.
     """
+    pulumi.log.warn("""get_stream_watermark is deprecated: cloudflare:index/getStreamWatermark:getStreamWatermark has been deprecated in favor of cloudflare:stream/watermark:getWatermark""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['identifier'] = identifier

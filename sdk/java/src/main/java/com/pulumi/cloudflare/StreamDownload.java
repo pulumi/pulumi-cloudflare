@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.StreamDownload;
- * import com.pulumi.cloudflare.StreamDownloadArgs;
+ * import com.pulumi.cloudflare.stream.Download;
+ * import com.pulumi.cloudflare.stream.DownloadArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleStreamDownload = new StreamDownload("exampleStreamDownload", StreamDownloadArgs.builder()
+ *         var exampleStreamDownload = new Download("exampleStreamDownload", DownloadArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .identifier("ea95132c15732412d22c1476fa83f27a")
  *             .build());
@@ -59,7 +59,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/streamDownload:StreamDownload has been deprecated in favor of cloudflare:stream/download:Download
+ * 
  */
+@Deprecated /* cloudflare:index/streamDownload:StreamDownload has been deprecated in favor of cloudflare:stream/download:Download */
 @ResourceType(type="cloudflare:index/streamDownload:StreamDownload")
 public class StreamDownload extends com.pulumi.resources.CustomResource {
     /**

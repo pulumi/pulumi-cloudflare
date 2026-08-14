@@ -252,7 +252,7 @@ class WorkersForPlatformsNamespace(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_workers_for_platforms_dispatch_namespace = cloudflare.WorkersForPlatformsDispatchNamespace("example_workers_for_platforms_dispatch_namespace",
+        example_workers_for_platforms_dispatch_namespace = cloudflare.workersforplatformsdispatch.Namespace("example_workers_for_platforms_dispatch_namespace",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="my-dispatch-namespace")
         ```
@@ -288,7 +288,7 @@ class WorkersForPlatformsNamespace(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_workers_for_platforms_dispatch_namespace = cloudflare.WorkersForPlatformsDispatchNamespace("example_workers_for_platforms_dispatch_namespace",
+        example_workers_for_platforms_dispatch_namespace = cloudflare.workersforplatformsdispatch.Namespace("example_workers_for_platforms_dispatch_namespace",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="my-dispatch-namespace")
         ```
@@ -339,8 +339,6 @@ class WorkersForPlatformsNamespace(pulumi.CustomResource):
             __props__.__dict__["namespace_name"] = None
             __props__.__dict__["script_count"] = None
             __props__.__dict__["trusted_workers"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(WorkersForPlatformsNamespace, __self__).__init__(
             'cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace',
             resource_name,

@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersCronTrigger = new cloudflare.WorkersCronTrigger("example_workers_cron_trigger", {
+ * const exampleWorkersCronTrigger = new cloudflare.workers.CronTrigger("example_workers_cron_trigger", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     scriptName: "this-is_my_script-01",
  *     body: [{
@@ -32,6 +32,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/workersCronTrigger:WorkersCronTrigger example '<account_id>/<script_name>'
  * ```
+ *
+ * @deprecated cloudflare:index/workersCronTrigger:WorkersCronTrigger has been deprecated in favor of cloudflare:workers/cronTrigger:CronTrigger
  */
 export class WorkersCronTrigger extends pulumi.CustomResource {
     /**
@@ -44,6 +46,7 @@ export class WorkersCronTrigger extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WorkersCronTriggerState, opts?: pulumi.CustomResourceOptions): WorkersCronTrigger {
+        pulumi.log.warn("WorkersCronTrigger is deprecated: cloudflare:index/workersCronTrigger:WorkersCronTrigger has been deprecated in favor of cloudflare:workers/cronTrigger:CronTrigger")
         return new WorkersCronTrigger(name, <any>state, { ...opts, id: id });
     }
 
@@ -78,8 +81,11 @@ export class WorkersCronTrigger extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/workersCronTrigger:WorkersCronTrigger has been deprecated in favor of cloudflare:workers/cronTrigger:CronTrigger */
     constructor(name: string, args: WorkersCronTriggerArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/workersCronTrigger:WorkersCronTrigger has been deprecated in favor of cloudflare:workers/cronTrigger:CronTrigger */
     constructor(name: string, argsOrState?: WorkersCronTriggerArgs | WorkersCronTriggerState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("WorkersCronTrigger is deprecated: cloudflare:index/workersCronTrigger:WorkersCronTrigger has been deprecated in favor of cloudflare:workers/cronTrigger:CronTrigger")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

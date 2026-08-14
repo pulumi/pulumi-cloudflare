@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWorkersForPlatformsDispatchNamespace = new Cloudflare.WorkersForPlatformsDispatchNamespace("example_workers_for_platforms_dispatch_namespace", new()
+    ///     var exampleWorkersForPlatformsDispatchNamespace = new Cloudflare.Modules.WorkersForPlatformsDispatch.WorkersForPlatformsDispatchNamespace("example_workers_for_platforms_dispatch_namespace", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "my-dispatch-namespace",
@@ -41,6 +41,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace example '&lt;account_id&gt;/&lt;dispatch_namespace&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace has been deprecated in favor of cloudflare:workersForPlatformsDispatch/namespace:Namespace")]
     [CloudflareResourceType("cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace")]
     public partial class WorkersForPlatformsDispatchNamespace : global::Pulumi.CustomResource
     {

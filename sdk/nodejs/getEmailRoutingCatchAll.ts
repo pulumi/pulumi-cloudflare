@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleEmailRoutingCatchAll = cloudflare.getEmailRoutingCatchAll({
+ * const exampleEmailRoutingCatchAll = cloudflare.emailrouting.getCatchAll({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getEmailRoutingCatchAll:getEmailRoutingCatchAll has been deprecated in favor of cloudflare:emailRouting/catchAll:getCatchAll */
 export function getEmailRoutingCatchAll(args?: GetEmailRoutingCatchAllArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailRoutingCatchAllResult> {
+    pulumi.log.warn("getEmailRoutingCatchAll is deprecated: cloudflare:index/getEmailRoutingCatchAll:getEmailRoutingCatchAll has been deprecated in favor of cloudflare:emailRouting/catchAll:getCatchAll")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getEmailRoutingCatchAll:getEmailRoutingCatchAll", {
@@ -95,12 +97,14 @@ export interface GetEmailRoutingCatchAllResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleEmailRoutingCatchAll = cloudflare.getEmailRoutingCatchAll({
+ * const exampleEmailRoutingCatchAll = cloudflare.emailrouting.getCatchAll({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getEmailRoutingCatchAll:getEmailRoutingCatchAll has been deprecated in favor of cloudflare:emailRouting/catchAll:getCatchAll */
 export function getEmailRoutingCatchAllOutput(args?: GetEmailRoutingCatchAllOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailRoutingCatchAllResult> {
+    pulumi.log.warn("getEmailRoutingCatchAll is deprecated: cloudflare:index/getEmailRoutingCatchAll:getEmailRoutingCatchAll has been deprecated in favor of cloudflare:emailRouting/catchAll:getCatchAll")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getEmailRoutingCatchAll:getEmailRoutingCatchAll", {

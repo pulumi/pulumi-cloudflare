@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_access_groups_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustAccessGroups:getZeroTrustAccessGroups has been deprecated in favor of cloudflare:zeroTrustAccess/groups:getGroups""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustAccessGroupsResult:
     """
@@ -128,7 +130,7 @@ def get_zero_trust_access_groups(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_groups = cloudflare.get_zero_trust_access_groups(account_id="account_id",
+    example_zero_trust_access_groups = cloudflare.zerotrustaccess.get_groups(account_id="account_id",
         zone_id="zone_id",
         name="name",
         search="search")
@@ -141,6 +143,7 @@ def get_zero_trust_access_groups(account_id: Optional[_builtins.str] = None,
     :param _builtins.str search: Search for groups by other listed query parameters.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_zero_trust_access_groups is deprecated: cloudflare:index/getZeroTrustAccessGroups:getZeroTrustAccessGroups has been deprecated in favor of cloudflare:zeroTrustAccess/groups:getGroups""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -175,7 +178,7 @@ def get_zero_trust_access_groups_output(account_id: pulumi.Input[Optional[Option
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_groups = cloudflare.get_zero_trust_access_groups(account_id="account_id",
+    example_zero_trust_access_groups = cloudflare.zerotrustaccess.get_groups(account_id="account_id",
         zone_id="zone_id",
         name="name",
         search="search")
@@ -188,6 +191,7 @@ def get_zero_trust_access_groups_output(account_id: pulumi.Input[Optional[Option
     :param _builtins.str search: Search for groups by other listed query parameters.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_zero_trust_access_groups is deprecated: cloudflare:index/getZeroTrustAccessGroups:getZeroTrustAccessGroups has been deprecated in favor of cloudflare:zeroTrustAccess/groups:getGroups""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

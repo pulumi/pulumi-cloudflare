@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/firewall"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetFirewallRules(ctx, &cloudflare.LookupFirewallRulesArgs{
+//			_, err := firewall.LookupRules(ctx, &firewall.LookupRulesArgs{
 //				ZoneId:      pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Id:          pulumi.StringRef("372e67954025e0ba6aaa6d586b9e0b60"),
 //				Action:      pulumi.StringRef("block"),
@@ -45,6 +45,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getFirewallRules:getFirewallRules has been deprecated in favor of cloudflare:firewall/rules:getRules
 func LookupFirewallRules(ctx *pulumi.Context, args *LookupFirewallRulesArgs, opts ...pulumi.InvokeOption) (*LookupFirewallRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFirewallRulesResult

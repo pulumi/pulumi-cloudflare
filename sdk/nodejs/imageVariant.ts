@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleImageVariant = new cloudflare.ImageVariant("example_image_variant", {
+ * const exampleImageVariant = new cloudflare.image.Variant("example_image_variant", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     imageVariantId: "hero",
  *     options: {
@@ -36,6 +36,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/imageVariant:ImageVariant example '<account_id>/<variant_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/imageVariant:ImageVariant has been deprecated in favor of cloudflare:image/variant:Variant
  */
 export class ImageVariant extends pulumi.CustomResource {
     /**
@@ -48,6 +50,7 @@ export class ImageVariant extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ImageVariantState, opts?: pulumi.CustomResourceOptions): ImageVariant {
+        pulumi.log.warn("ImageVariant is deprecated: cloudflare:index/imageVariant:ImageVariant has been deprecated in favor of cloudflare:image/variant:Variant")
         return new ImageVariant(name, <any>state, { ...opts, id: id });
     }
 
@@ -90,8 +93,11 @@ export class ImageVariant extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/imageVariant:ImageVariant has been deprecated in favor of cloudflare:image/variant:Variant */
     constructor(name: string, args: ImageVariantArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/imageVariant:ImageVariant has been deprecated in favor of cloudflare:image/variant:Variant */
     constructor(name: string, argsOrState?: ImageVariantArgs | ImageVariantState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ImageVariant is deprecated: cloudflare:index/imageVariant:ImageVariant has been deprecated in favor of cloudflare:image/variant:Variant")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

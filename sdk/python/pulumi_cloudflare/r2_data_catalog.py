@@ -182,8 +182,13 @@ class _R2DataCatalogState:
         pulumi.set(self, "status", value)
 
 
+warnings.warn("""cloudflare:index/r2DataCatalog:R2DataCatalog has been deprecated in favor of cloudflare:r2/dataCatalog:DataCatalog""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/r2DataCatalog:R2DataCatalog")
 class R2DataCatalog(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/r2DataCatalog:R2DataCatalog has been deprecated in favor of cloudflare:r2/dataCatalog:DataCatalog""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -203,7 +208,7 @@ class R2DataCatalog(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_r2_data_catalog = cloudflare.R2DataCatalog("example_r2_data_catalog",
+        example_r2_data_catalog = cloudflare.r2.DataCatalog("example_r2_data_catalog",
             account_id="0123456789abcdef0123456789abcdef",
             bucket_name="my-data-bucket")
         ```
@@ -238,7 +243,7 @@ class R2DataCatalog(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_r2_data_catalog = cloudflare.R2DataCatalog("example_r2_data_catalog",
+        example_r2_data_catalog = cloudflare.r2.DataCatalog("example_r2_data_catalog",
             account_id="0123456789abcdef0123456789abcdef",
             bucket_name="my-data-bucket")
         ```
@@ -268,6 +273,7 @@ class R2DataCatalog(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""R2DataCatalog is deprecated: cloudflare:index/r2DataCatalog:R2DataCatalog has been deprecated in favor of cloudflare:r2/dataCatalog:DataCatalog""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

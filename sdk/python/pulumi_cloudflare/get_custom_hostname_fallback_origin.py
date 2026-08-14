@@ -21,6 +21,8 @@ __all__ = [
     'get_custom_hostname_fallback_origin_output',
 ]
 
+warnings.warn("""cloudflare:index/getCustomHostnameFallbackOrigin:getCustomHostnameFallbackOrigin has been deprecated in favor of cloudflare:customHostname/fallbackOrigin:getFallbackOrigin""", DeprecationWarning)
+
 @pulumi.output_type
 class GetCustomHostnameFallbackOriginResult:
     """
@@ -136,12 +138,13 @@ def get_custom_hostname_fallback_origin(zone_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_custom_hostname_fallback_origin = cloudflare.get_custom_hostname_fallback_origin(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_custom_hostname_fallback_origin = cloudflare.customhostname.get_fallback_origin(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_custom_hostname_fallback_origin is deprecated: cloudflare:index/getCustomHostnameFallbackOrigin:getCustomHostnameFallbackOrigin has been deprecated in favor of cloudflare:customHostname/fallbackOrigin:getFallbackOrigin""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -169,12 +172,13 @@ def get_custom_hostname_fallback_origin_output(zone_id: pulumi.Input[Optional[Op
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_custom_hostname_fallback_origin = cloudflare.get_custom_hostname_fallback_origin(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_custom_hostname_fallback_origin = cloudflare.customhostname.get_fallback_origin(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_custom_hostname_fallback_origin is deprecated: cloudflare:index/getCustomHostnameFallbackOrigin:getCustomHostnameFallbackOrigin has been deprecated in favor of cloudflare:customHostname/fallbackOrigin:getFallbackOrigin""")
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

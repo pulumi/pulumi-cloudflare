@@ -31,9 +31,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.UserGroupMembers;
- * import com.pulumi.cloudflare.UserGroupMembersArgs;
- * import com.pulumi.cloudflare.inputs.UserGroupMembersMemberArgs;
+ * import com.pulumi.cloudflare.userGroup.Members;
+ * import com.pulumi.cloudflare.userGroup.MembersArgs;
+ * import com.pulumi.cloudflare.userGroup.inputs.MembersMemberArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -47,10 +47,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleUserGroupMembers = new UserGroupMembers("exampleUserGroupMembers", UserGroupMembersArgs.builder()
+ *         var exampleUserGroupMembers = new Members("exampleUserGroupMembers", MembersArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .userGroupId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .members(UserGroupMembersMemberArgs.builder()
+ *             .members(MembersMemberArgs.builder()
  *                 .id("023e105f4ecef8ad9ca31a8372d0c353")
  *                 .build())
  *             .build());
@@ -66,7 +66,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/userGroupMembers:UserGroupMembers example &#39;&lt;account_id&gt;/&lt;user_group_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/userGroupMembers:UserGroupMembers has been deprecated in favor of cloudflare:userGroup/members:Members
+ * 
  */
+@Deprecated /* cloudflare:index/userGroupMembers:UserGroupMembers has been deprecated in favor of cloudflare:userGroup/members:Members */
 @ResourceType(type="cloudflare:index/userGroupMembers:UserGroupMembers")
 public class UserGroupMembers extends com.pulumi.resources.CustomResource {
     /**

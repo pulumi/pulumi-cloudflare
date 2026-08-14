@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDlpDataset = new Cloudflare.ZeroTrustDlpDataset("example_zero_trust_dlp_dataset", new()
+    ///     var exampleZeroTrustDlpDataset = new Cloudflare.Modules.ZeroTrustDlp.ZeroTrustDlpDataset("example_zero_trust_dlp_dataset", new()
     ///     {
     ///         AccountId = "account_id",
     ///         Name = "name",
@@ -42,6 +42,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset has been deprecated in favor of cloudflare:zeroTrustDlp/dataset:Dataset")]
     [CloudflareResourceType("cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset")]
     public partial class ZeroTrustDlpDataset : global::Pulumi.CustomResource
     {

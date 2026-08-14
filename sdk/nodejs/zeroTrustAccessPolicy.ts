@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessPolicy = new cloudflare.ZeroTrustAccessPolicy("example_zero_trust_access_policy", {
+ * const exampleZeroTrustAccessPolicy = new cloudflare.zerotrustaccess.Policy("example_zero_trust_access_policy", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     decision: "allow",
  *     includes: [{
@@ -83,6 +83,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy example '<account_id>/<policy_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy has been deprecated in favor of cloudflare:zeroTrustAccess/policy:Policy
  */
 export class ZeroTrustAccessPolicy extends pulumi.CustomResource {
     /**
@@ -95,6 +97,7 @@ export class ZeroTrustAccessPolicy extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustAccessPolicyState, opts?: pulumi.CustomResourceOptions): ZeroTrustAccessPolicy {
+        pulumi.log.warn("ZeroTrustAccessPolicy is deprecated: cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy has been deprecated in favor of cloudflare:zeroTrustAccess/policy:Policy")
         return new ZeroTrustAccessPolicy(name, <any>state, { ...opts, id: id });
     }
 
@@ -184,8 +187,11 @@ export class ZeroTrustAccessPolicy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy has been deprecated in favor of cloudflare:zeroTrustAccess/policy:Policy */
     constructor(name: string, args: ZeroTrustAccessPolicyArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy has been deprecated in favor of cloudflare:zeroTrustAccess/policy:Policy */
     constructor(name: string, argsOrState?: ZeroTrustAccessPolicyArgs | ZeroTrustAccessPolicyState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustAccessPolicy is deprecated: cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy has been deprecated in favor of cloudflare:zeroTrustAccess/policy:Policy")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

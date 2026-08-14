@@ -13,12 +13,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustGatewayPolicies = cloudflare.getZeroTrustGatewayPolicies({
+ * const exampleZeroTrustGatewayPolicies = cloudflare.zerotrustgateway.getPolicies({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustGatewayPolicies:getZeroTrustGatewayPolicies has been deprecated in favor of cloudflare:zeroTrustGateway/policies:getPolicies */
 export function getZeroTrustGatewayPolicies(args?: GetZeroTrustGatewayPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewayPoliciesResult> {
+    pulumi.log.warn("getZeroTrustGatewayPolicies is deprecated: cloudflare:index/getZeroTrustGatewayPolicies:getZeroTrustGatewayPolicies has been deprecated in favor of cloudflare:zeroTrustGateway/policies:getPolicies")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustGatewayPolicies:getZeroTrustGatewayPolicies", {
@@ -59,12 +61,14 @@ export interface GetZeroTrustGatewayPoliciesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustGatewayPolicies = cloudflare.getZeroTrustGatewayPolicies({
+ * const exampleZeroTrustGatewayPolicies = cloudflare.zerotrustgateway.getPolicies({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustGatewayPolicies:getZeroTrustGatewayPolicies has been deprecated in favor of cloudflare:zeroTrustGateway/policies:getPolicies */
 export function getZeroTrustGatewayPoliciesOutput(args?: GetZeroTrustGatewayPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewayPoliciesResult> {
+    pulumi.log.warn("getZeroTrustGatewayPolicies is deprecated: cloudflare:index/getZeroTrustGatewayPolicies:getZeroTrustGatewayPolicies has been deprecated in favor of cloudflare:zeroTrustGateway/policies:getPolicies")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustGatewayPolicies:getZeroTrustGatewayPolicies", {

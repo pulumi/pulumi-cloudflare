@@ -16,14 +16,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCloudforceOneRequestAsset = cloudflare.getCloudforceOneRequestAsset({
+ * const exampleCloudforceOneRequestAsset = cloudflare.cloudforceonerequest.getAsset({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     requestId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     assetId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCloudforceOneRequestAsset:getCloudforceOneRequestAsset has been deprecated in favor of cloudflare:cloudforceOneRequest/asset:getAsset */
 export function getCloudforceOneRequestAsset(args: GetCloudforceOneRequestAssetArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudforceOneRequestAssetResult> {
+    pulumi.log.warn("getCloudforceOneRequestAsset is deprecated: cloudflare:index/getCloudforceOneRequestAsset:getCloudforceOneRequestAsset has been deprecated in favor of cloudflare:cloudforceOneRequest/asset:getAsset")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCloudforceOneRequestAsset:getCloudforceOneRequestAsset", {
         "accountId": args.accountId,
@@ -99,14 +101,16 @@ export interface GetCloudforceOneRequestAssetResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCloudforceOneRequestAsset = cloudflare.getCloudforceOneRequestAsset({
+ * const exampleCloudforceOneRequestAsset = cloudflare.cloudforceonerequest.getAsset({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     requestId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     assetId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCloudforceOneRequestAsset:getCloudforceOneRequestAsset has been deprecated in favor of cloudflare:cloudforceOneRequest/asset:getAsset */
 export function getCloudforceOneRequestAssetOutput(args: GetCloudforceOneRequestAssetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudforceOneRequestAssetResult> {
+    pulumi.log.warn("getCloudforceOneRequestAsset is deprecated: cloudflare:index/getCloudforceOneRequestAsset:getCloudforceOneRequestAsset has been deprecated in favor of cloudflare:cloudforceOneRequest/asset:getAsset")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCloudforceOneRequestAsset:getCloudforceOneRequestAsset", {
         "accountId": args.accountId,

@@ -24,18 +24,18 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/snippet"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewSnippet(ctx, "example_snippet", &cloudflare.SnippetArgs{
+//			_, err := snippet.NewSnippet(ctx, "example_snippet", &snippet.SnippetArgs{
 //				ZoneId:      pulumi.String("9f1839b6152d298aca64c4e906b6d074"),
 //				SnippetName: pulumi.String("my_snippet"),
-//				Files: cloudflare.SnippetFileArray{
-//					&cloudflare.SnippetFileArgs{
+//				Files: snippet.SnippetFileArray{
+//					&snippet.SnippetFileArgs{
 //						Name: pulumi.String("main.js"),
 //						Content: pulumi.String(`export default {
 //	  async fetch(request) {
@@ -47,7 +47,7 @@ import (
 //
 //					},
 //				},
-//				Metadata: &cloudflare.SnippetMetadataArgs{
+//				Metadata: &snippet.SnippetMetadataArgs{
 //					MainModule: pulumi.String("main.js"),
 //				},
 //			})
@@ -65,6 +65,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/snippet:Snippet example '<zone_id>/<snippet_name>'
 // ```
+//
+// Deprecated: cloudflare:index/snippet:Snippet has been deprecated in favor of cloudflare:snippet/snippet:Snippet
 type Snippet struct {
 	pulumi.CustomResourceState
 

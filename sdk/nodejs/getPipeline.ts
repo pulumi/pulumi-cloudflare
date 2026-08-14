@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const examplePipeline = cloudflare.getPipeline({
+ * const examplePipeline = cloudflare.pipeline.getPipeline({
  *     accountId: "0123105f4ecef8ad9ca31a8372d0c353",
  *     pipelineId: "043e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getPipeline:getPipeline has been deprecated in favor of cloudflare:pipeline/pipeline:getPipeline */
 export function getPipeline(args: GetPipelineArgs, opts?: pulumi.InvokeOptions): Promise<GetPipelineResult> {
+    pulumi.log.warn("getPipeline is deprecated: cloudflare:index/getPipeline:getPipeline has been deprecated in favor of cloudflare:pipeline/pipeline:getPipeline")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getPipeline:getPipeline", {
         "accountId": args.accountId,
@@ -97,13 +99,15 @@ export interface GetPipelineResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const examplePipeline = cloudflare.getPipeline({
+ * const examplePipeline = cloudflare.pipeline.getPipeline({
  *     accountId: "0123105f4ecef8ad9ca31a8372d0c353",
  *     pipelineId: "043e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getPipeline:getPipeline has been deprecated in favor of cloudflare:pipeline/pipeline:getPipeline */
 export function getPipelineOutput(args: GetPipelineOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPipelineResult> {
+    pulumi.log.warn("getPipeline is deprecated: cloudflare:index/getPipeline:getPipeline has been deprecated in favor of cloudflare:pipeline/pipeline:getPipeline")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getPipeline:getPipeline", {
         "accountId": args.accountId,

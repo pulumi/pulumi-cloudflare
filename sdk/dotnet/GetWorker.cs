@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getWorker:getWorker has been deprecated in favor of cloudflare:worker/worker:getWorker")]
     public static class GetWorker
     {
         /// <summary>
@@ -28,7 +29,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorker = Cloudflare.GetWorker.Invoke(new()
+        ///     var exampleWorker = Cloudflare.Modules.Worker.GetWorker.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         WorkerId = "worker_id",
@@ -57,7 +58,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorker = Cloudflare.GetWorker.Invoke(new()
+        ///     var exampleWorker = Cloudflare.Modules.Worker.GetWorker.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         WorkerId = "worker_id",
@@ -86,7 +87,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorker = Cloudflare.GetWorker.Invoke(new()
+        ///     var exampleWorker = Cloudflare.Modules.Worker.GetWorker.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         WorkerId = "worker_id",

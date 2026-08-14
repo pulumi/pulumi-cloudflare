@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ApiShieldOperation;
- * import com.pulumi.cloudflare.ApiShieldOperationArgs;
+ * import com.pulumi.cloudflare.apiShieldOperation.ApiShieldOperation;
+ * import com.pulumi.cloudflare.apiShieldOperation.ApiShieldOperationArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -65,7 +65,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/apiShieldOperation:ApiShieldOperation example &#39;&lt;zone_id&gt;/&lt;operation_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/apiShieldOperation:ApiShieldOperation has been deprecated in favor of cloudflare:apiShieldOperation/apiShieldOperation:ApiShieldOperation
+ * 
  */
+@Deprecated /* cloudflare:index/apiShieldOperation:ApiShieldOperation has been deprecated in favor of cloudflare:apiShieldOperation/apiShieldOperation:ApiShieldOperation */
 @ResourceType(type="cloudflare:index/apiShieldOperation:ApiShieldOperation")
 public class ApiShieldOperation extends com.pulumi.resources.CustomResource {
     /**

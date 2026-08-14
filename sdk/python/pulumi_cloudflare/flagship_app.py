@@ -128,8 +128,13 @@ class _FlagshipAppState:
         pulumi.set(self, "updated_by", value)
 
 
+warnings.warn("""cloudflare:index/flagshipApp:FlagshipApp has been deprecated in favor of cloudflare:flagship/app:App""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/flagshipApp:FlagshipApp")
 class FlagshipApp(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/flagshipApp:FlagshipApp has been deprecated in favor of cloudflare:flagship/app:App""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -149,7 +154,7 @@ class FlagshipApp(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_flagship_app = cloudflare.FlagshipApp("example_flagship_app",
+        example_flagship_app = cloudflare.flagship.App("example_flagship_app",
             account_id="account_id",
             name="x")
         ```
@@ -183,7 +188,7 @@ class FlagshipApp(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_flagship_app = cloudflare.FlagshipApp("example_flagship_app",
+        example_flagship_app = cloudflare.flagship.App("example_flagship_app",
             account_id="account_id",
             name="x")
         ```
@@ -213,6 +218,7 @@ class FlagshipApp(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""FlagshipApp is deprecated: cloudflare:index/flagshipApp:FlagshipApp has been deprecated in favor of cloudflare:flagship/app:App""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

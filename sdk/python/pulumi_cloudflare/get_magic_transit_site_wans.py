@@ -22,6 +22,8 @@ __all__ = [
     'get_magic_transit_site_wans_output',
 ]
 
+warnings.warn("""cloudflare:index/getMagicTransitSiteWans:getMagicTransitSiteWans has been deprecated in favor of cloudflare:magicTransitSite/wans:getWans""", DeprecationWarning)
+
 @pulumi.output_type
 class GetMagicTransitSiteWansResult:
     """
@@ -104,7 +106,7 @@ def get_magic_transit_site_wans(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_transit_site_wans = cloudflare.get_magic_transit_site_wans(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_magic_transit_site_wans = cloudflare.magictransitsite.get_wans(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         site_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -113,6 +115,7 @@ def get_magic_transit_site_wans(account_id: Optional[_builtins.str] = None,
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str site_id: Identifier
     """
+    pulumi.log.warn("""get_magic_transit_site_wans is deprecated: cloudflare:index/getMagicTransitSiteWans:getMagicTransitSiteWans has been deprecated in favor of cloudflare:magicTransitSite/wans:getWans""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -143,7 +146,7 @@ def get_magic_transit_site_wans_output(account_id: pulumi.Input[Optional[Optiona
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_transit_site_wans = cloudflare.get_magic_transit_site_wans(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_magic_transit_site_wans = cloudflare.magictransitsite.get_wans(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         site_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -152,6 +155,7 @@ def get_magic_transit_site_wans_output(account_id: pulumi.Input[Optional[Optiona
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str site_id: Identifier
     """
+    pulumi.log.warn("""get_magic_transit_site_wans is deprecated: cloudflare:index/getMagicTransitSiteWans:getMagicTransitSiteWans has been deprecated in favor of cloudflare:magicTransitSite/wans:getWans""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

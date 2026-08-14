@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getAccountMembers:getAccountMembers has been deprecated in favor of cloudflare:account/members:getMembers")]
     public static class GetAccountMembers
     {
         /// <summary>
@@ -28,7 +29,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountMembers = Cloudflare.GetAccountMembers.Invoke(new()
+        ///     var exampleAccountMembers = Cloudflare.Modules.Account.GetMembers.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "desc",
@@ -59,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountMembers = Cloudflare.GetAccountMembers.Invoke(new()
+        ///     var exampleAccountMembers = Cloudflare.Modules.Account.GetMembers.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "desc",
@@ -90,7 +91,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountMembers = Cloudflare.GetAccountMembers.Invoke(new()
+        ///     var exampleAccountMembers = Cloudflare.Modules.Account.GetMembers.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "desc",

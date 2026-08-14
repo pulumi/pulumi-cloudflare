@@ -19,14 +19,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersDeployment = cloudflare.getWorkersDeployment({
+ * const exampleWorkersDeployment = cloudflare.workers.getDeployment({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     scriptName: "this-is_my_script-01",
  *     deploymentId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkersDeployment:getWorkersDeployment has been deprecated in favor of cloudflare:workers/deployment:getDeployment */
 export function getWorkersDeployment(args: GetWorkersDeploymentArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersDeploymentResult> {
+    pulumi.log.warn("getWorkersDeployment is deprecated: cloudflare:index/getWorkersDeployment:getWorkersDeployment has been deprecated in favor of cloudflare:workers/deployment:getDeployment")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkersDeployment:getWorkersDeployment", {
         "accountId": args.accountId,
@@ -90,14 +92,16 @@ export interface GetWorkersDeploymentResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersDeployment = cloudflare.getWorkersDeployment({
+ * const exampleWorkersDeployment = cloudflare.workers.getDeployment({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     scriptName: "this-is_my_script-01",
  *     deploymentId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkersDeployment:getWorkersDeployment has been deprecated in favor of cloudflare:workers/deployment:getDeployment */
 export function getWorkersDeploymentOutput(args: GetWorkersDeploymentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersDeploymentResult> {
+    pulumi.log.warn("getWorkersDeployment is deprecated: cloudflare:index/getWorkersDeployment:getWorkersDeployment has been deprecated in favor of cloudflare:workers/deployment:getDeployment")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkersDeployment:getWorkersDeployment", {
         "accountId": args.accountId,

@@ -173,8 +173,13 @@ class _ZeroTrustAccessInfrastructureTargetState:
         pulumi.set(self, "modified_at", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustAccessInfrastructureTarget:ZeroTrustAccessInfrastructureTarget has been deprecated in favor of cloudflare:zeroTrustAccessInfrastructure/target:Target""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustAccessInfrastructureTarget:ZeroTrustAccessInfrastructureTarget")
 class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustAccessInfrastructureTarget:ZeroTrustAccessInfrastructureTarget has been deprecated in favor of cloudflare:zeroTrustAccessInfrastructure/target:Target""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -190,7 +195,7 @@ class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_infrastructure_target = cloudflare.ZeroTrustAccessInfrastructureTarget("example_zero_trust_access_infrastructure_target",
+        example_zero_trust_access_infrastructure_target = cloudflare.zerotrustaccessinfrastructure.Target("example_zero_trust_access_infrastructure_target",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             hostname="infra-access-target",
             ip={
@@ -234,7 +239,7 @@ class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_infrastructure_target = cloudflare.ZeroTrustAccessInfrastructureTarget("example_zero_trust_access_infrastructure_target",
+        example_zero_trust_access_infrastructure_target = cloudflare.zerotrustaccessinfrastructure.Target("example_zero_trust_access_infrastructure_target",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             hostname="infra-access-target",
             ip={
@@ -275,6 +280,7 @@ class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
                  hostname: pulumi.Input[Optional[_builtins.str]] = None,
                  ip: pulumi.Input[Optional[Union['ZeroTrustAccessInfrastructureTargetIpArgs', 'ZeroTrustAccessInfrastructureTargetIpArgsDict']]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustAccessInfrastructureTarget is deprecated: cloudflare:index/zeroTrustAccessInfrastructureTarget:ZeroTrustAccessInfrastructureTarget has been deprecated in favor of cloudflare:zeroTrustAccessInfrastructure/target:Target""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

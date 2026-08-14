@@ -23,6 +23,8 @@ __all__ = [
     'get_api_token_output',
 ]
 
+warnings.warn("""cloudflare:index/getApiToken:getApiToken has been deprecated in favor of cloudflare:apiToken/apiToken:getApiToken""", DeprecationWarning)
+
 @pulumi.output_type
 class GetApiTokenResult:
     """
@@ -193,12 +195,13 @@ def get_api_token(filter: Optional[Union['GetApiTokenFilterArgs', 'GetApiTokenFi
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_api_token = cloudflare.get_api_token(token_id="ed17574386854bf78a67040be0a770b0")
+    example_api_token = cloudflare.apitoken.get_api_token(token_id="ed17574386854bf78a67040be0a770b0")
     ```
 
 
     :param _builtins.str token_id: Token identifier tag.
     """
+    pulumi.log.warn("""get_api_token is deprecated: cloudflare:index/getApiToken:getApiToken has been deprecated in favor of cloudflare:apiToken/apiToken:getApiToken""")
     __args__ = dict()
     __args__['filter'] = filter
     __args__['tokenId'] = token_id
@@ -233,12 +236,13 @@ def get_api_token_output(filter: pulumi.Input[Optional[Optional[Union['GetApiTok
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_api_token = cloudflare.get_api_token(token_id="ed17574386854bf78a67040be0a770b0")
+    example_api_token = cloudflare.apitoken.get_api_token(token_id="ed17574386854bf78a67040be0a770b0")
     ```
 
 
     :param _builtins.str token_id: Token identifier tag.
     """
+    pulumi.log.warn("""get_api_token is deprecated: cloudflare:index/getApiToken:getApiToken has been deprecated in favor of cloudflare:apiToken/apiToken:getApiToken""")
     __args__ = dict()
     __args__['filter'] = filter
     __args__['tokenId'] = token_id

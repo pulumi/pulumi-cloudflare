@@ -23,22 +23,22 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/r2bucket"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewR2BucketSippy(ctx, "example_r2_bucket_sippy", &cloudflare.R2BucketSippyArgs{
+//			_, err := r2bucket.NewSippy(ctx, "example_r2_bucket_sippy", &r2bucket.SippyArgs{
 //				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				BucketName: pulumi.String("example-bucket"),
-//				Destination: &cloudflare.R2BucketSippyDestinationArgs{
+//				Destination: &r2bucket.SippyDestinationArgs{
 //					AccessKeyId:     pulumi.String("accessKeyId"),
 //					CloudProvider:   pulumi.String("r2"),
 //					SecretAccessKey: pulumi.String("secretAccessKey"),
 //				},
-//				Source: &cloudflare.R2BucketSippySourceArgs{
+//				Source: &r2bucket.SippySourceArgs{
 //					AccessKeyId:     pulumi.String("accessKeyId"),
 //					Bucket:          pulumi.String("bucket"),
 //					CloudProvider:   pulumi.String("aws"),
@@ -58,6 +58,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/r2BucketSippy:R2BucketSippy has been deprecated in favor of cloudflare:r2Bucket/sippy:Sippy
 type R2BucketSippy struct {
 	pulumi.CustomResourceState
 

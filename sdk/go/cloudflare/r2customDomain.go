@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/r2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewR2CustomDomain(ctx, "example_r2_custom_domain", &cloudflare.R2CustomDomainArgs{
+//			_, err := r2.NewCustomDomain(ctx, "example_r2_custom_domain", &r2.CustomDomainArgs{
 //				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				BucketName: pulumi.String("example-bucket"),
 //				Domain:     pulumi.String("prefix.example-domain.com"),
@@ -54,6 +54,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/r2CustomDomain:R2CustomDomain has been deprecated in favor of cloudflare:r2/customDomain:CustomDomain
 type R2CustomDomain struct {
 	pulumi.CustomResourceState
 

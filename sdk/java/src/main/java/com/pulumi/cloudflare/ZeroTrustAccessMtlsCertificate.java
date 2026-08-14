@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustAccessMtlsCertificate;
- * import com.pulumi.cloudflare.ZeroTrustAccessMtlsCertificateArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccessMtls.Certificate;
+ * import com.pulumi.cloudflare.zeroTrustAccessMtls.CertificateArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustAccessMtlsCertificate = new ZeroTrustAccessMtlsCertificate("exampleZeroTrustAccessMtlsCertificate", ZeroTrustAccessMtlsCertificateArgs.builder()
+ *         var exampleZeroTrustAccessMtlsCertificate = new Certificate("exampleZeroTrustAccessMtlsCertificate", CertificateArgs.builder()
  *             .certificate("""
  *   -----BEGIN CERTIFICATE-----
  *   MIIGAjCCA+qgAwIBAgIJAI7kymlF7CWT...N4RI7KKB7nikiuUf8vhULKy5IX10
@@ -71,7 +71,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;certificate_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate has been deprecated in favor of cloudflare:zeroTrustAccessMtls/certificate:Certificate
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate has been deprecated in favor of cloudflare:zeroTrustAccessMtls/certificate:Certificate */
 @ResourceType(type="cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate")
 public class ZeroTrustAccessMtlsCertificate extends com.pulumi.resources.CustomResource {
     /**

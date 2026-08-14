@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCertificateAuthoritiesHostnameAssociations = new Cloudflare.CertificateAuthoritiesHostnameAssociations("example_certificate_authorities_hostname_associations", new()
+    ///     var exampleCertificateAuthoritiesHostnameAssociations = new Cloudflare.Modules.Certificate.CertificateAuthoritiesHostnameAssociations("example_certificate_authorities_hostname_associations", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Hostnames = new[]
@@ -44,6 +44,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/certificateAuthoritiesHostnameAssociations:CertificateAuthoritiesHostnameAssociations example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/certificateAuthoritiesHostnameAssociations:CertificateAuthoritiesHostnameAssociations has been deprecated in favor of cloudflare:certificate/authoritiesHostnameAssociations:AuthoritiesHostnameAssociations")]
     [CloudflareResourceType("cloudflare:index/certificateAuthoritiesHostnameAssociations:CertificateAuthoritiesHostnameAssociations")]
     public partial class CertificateAuthoritiesHostnameAssociations : global::Pulumi.CustomResource
     {

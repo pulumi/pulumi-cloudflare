@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getWorkersScriptSubdomain:getWorkersScriptSubdomain has been deprecated in favor of cloudflare:workersScript/subdomain:getSubdomain")]
     public static class GetWorkersScriptSubdomain
     {
         /// <summary>
@@ -28,7 +29,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersScriptSubdomain = Cloudflare.GetWorkersScriptSubdomain.Invoke(new()
+        ///     var exampleWorkersScriptSubdomain = Cloudflare.Modules.WorkersScript.GetSubdomain.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ScriptName = "this-is_my_script-01",
@@ -57,7 +58,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersScriptSubdomain = Cloudflare.GetWorkersScriptSubdomain.Invoke(new()
+        ///     var exampleWorkersScriptSubdomain = Cloudflare.Modules.WorkersScript.GetSubdomain.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ScriptName = "this-is_my_script-01",
@@ -86,7 +87,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersScriptSubdomain = Cloudflare.GetWorkersScriptSubdomain.Invoke(new()
+        ///     var exampleWorkersScriptSubdomain = Cloudflare.Modules.WorkersScript.GetSubdomain.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ScriptName = "this-is_my_script-01",

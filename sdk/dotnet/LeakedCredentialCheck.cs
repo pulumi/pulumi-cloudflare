@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleLeakedCredentialCheck = new Cloudflare.LeakedCredentialCheck("example_leaked_credential_check", new()
+    ///     var exampleLeakedCredentialCheck = new Cloudflare.Modules.LeakedCredentialCheck.LeakedCredentialCheck("example_leaked_credential_check", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Enabled = true,
@@ -40,6 +40,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck has been deprecated in favor of cloudflare:leakedCredentialCheck/leakedCredentialCheck:LeakedCredentialCheck")]
     [CloudflareResourceType("cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck")]
     public partial class LeakedCredentialCheck : global::Pulumi.CustomResource
     {

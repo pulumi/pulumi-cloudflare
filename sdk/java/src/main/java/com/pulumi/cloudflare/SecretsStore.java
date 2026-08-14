@@ -28,8 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.SecretsStore;
- * import com.pulumi.cloudflare.SecretsStoreArgs;
+ * import com.pulumi.cloudflare.secretsStore.SecretsStore;
+ * import com.pulumi.cloudflare.secretsStore.SecretsStoreArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -59,7 +59,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/secretsStore:SecretsStore example &#39;&lt;account_id&gt;/&lt;store_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/secretsStore:SecretsStore has been deprecated in favor of cloudflare:secretsStore/secretsStore:SecretsStore
+ * 
  */
+@Deprecated /* cloudflare:index/secretsStore:SecretsStore has been deprecated in favor of cloudflare:secretsStore/secretsStore:SecretsStore */
 @ResourceType(type="cloudflare:index/secretsStore:SecretsStore")
 public class SecretsStore extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

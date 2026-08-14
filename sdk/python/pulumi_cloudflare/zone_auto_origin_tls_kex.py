@@ -104,8 +104,13 @@ class _ZoneAutoOriginTlsKexState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/zoneAutoOriginTlsKex:ZoneAutoOriginTlsKex has been deprecated in favor of cloudflare:zone/autoOriginTlsKex:AutoOriginTlsKex""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zoneAutoOriginTlsKex:ZoneAutoOriginTlsKex")
 class ZoneAutoOriginTlsKex(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zoneAutoOriginTlsKex:ZoneAutoOriginTlsKex has been deprecated in favor of cloudflare:zone/autoOriginTlsKex:AutoOriginTlsKex""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -120,7 +125,7 @@ class ZoneAutoOriginTlsKex(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zone_auto_origin_tls_kex = cloudflare.ZoneAutoOriginTlsKex("example_zone_auto_origin_tls_kex",
+        example_zone_auto_origin_tls_kex = cloudflare.zone.AutoOriginTlsKex("example_zone_auto_origin_tls_kex",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             enabled=True)
         ```
@@ -149,7 +154,7 @@ class ZoneAutoOriginTlsKex(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zone_auto_origin_tls_kex = cloudflare.ZoneAutoOriginTlsKex("example_zone_auto_origin_tls_kex",
+        example_zone_auto_origin_tls_kex = cloudflare.zone.AutoOriginTlsKex("example_zone_auto_origin_tls_kex",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             enabled=True)
         ```
@@ -179,6 +184,7 @@ class ZoneAutoOriginTlsKex(pulumi.CustomResource):
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZoneAutoOriginTlsKex is deprecated: cloudflare:index/zoneAutoOriginTlsKex:ZoneAutoOriginTlsKex has been deprecated in favor of cloudflare:zone/autoOriginTlsKex:AutoOriginTlsKex""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

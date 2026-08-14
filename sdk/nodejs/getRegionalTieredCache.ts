@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleRegionalTieredCache = cloudflare.getRegionalTieredCache({
+ * const exampleRegionalTieredCache = cloudflare.regional.getTieredCache({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getRegionalTieredCache:getRegionalTieredCache has been deprecated in favor of cloudflare:regional/tieredCache:getTieredCache */
 export function getRegionalTieredCache(args?: GetRegionalTieredCacheArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionalTieredCacheResult> {
+    pulumi.log.warn("getRegionalTieredCache is deprecated: cloudflare:index/getRegionalTieredCache:getRegionalTieredCache has been deprecated in favor of cloudflare:regional/tieredCache:getTieredCache")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getRegionalTieredCache:getRegionalTieredCache", {
@@ -81,12 +83,14 @@ export interface GetRegionalTieredCacheResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleRegionalTieredCache = cloudflare.getRegionalTieredCache({
+ * const exampleRegionalTieredCache = cloudflare.regional.getTieredCache({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getRegionalTieredCache:getRegionalTieredCache has been deprecated in favor of cloudflare:regional/tieredCache:getTieredCache */
 export function getRegionalTieredCacheOutput(args?: GetRegionalTieredCacheOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionalTieredCacheResult> {
+    pulumi.log.warn("getRegionalTieredCache is deprecated: cloudflare:index/getRegionalTieredCache:getRegionalTieredCache has been deprecated in favor of cloudflare:regional/tieredCache:getTieredCache")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getRegionalTieredCache:getRegionalTieredCache", {

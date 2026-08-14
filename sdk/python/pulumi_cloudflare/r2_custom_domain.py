@@ -319,8 +319,13 @@ class _R2CustomDomainState:
         pulumi.set(self, "zone_name", value)
 
 
+warnings.warn("""cloudflare:index/r2CustomDomain:R2CustomDomain has been deprecated in favor of cloudflare:r2/customDomain:CustomDomain""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/r2CustomDomain:R2CustomDomain")
 class R2CustomDomain(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/r2CustomDomain:R2CustomDomain has been deprecated in favor of cloudflare:r2/customDomain:CustomDomain""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -346,7 +351,7 @@ class R2CustomDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_r2_custom_domain = cloudflare.R2CustomDomain("example_r2_custom_domain",
+        example_r2_custom_domain = cloudflare.r2.CustomDomain("example_r2_custom_domain",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             bucket_name="example-bucket",
             domain="prefix.example-domain.com",
@@ -391,7 +396,7 @@ class R2CustomDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_r2_custom_domain = cloudflare.R2CustomDomain("example_r2_custom_domain",
+        example_r2_custom_domain = cloudflare.r2.CustomDomain("example_r2_custom_domain",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             bucket_name="example-bucket",
             domain="prefix.example-domain.com",
@@ -430,6 +435,7 @@ class R2CustomDomain(pulumi.CustomResource):
                  min_tls: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""R2CustomDomain is deprecated: cloudflare:index/r2CustomDomain:R2CustomDomain has been deprecated in favor of cloudflare:r2/customDomain:CustomDomain""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

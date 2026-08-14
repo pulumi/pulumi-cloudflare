@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getOrganizationProfile:getOrganizationProfile has been deprecated in favor of cloudflare:organization/profile:getProfile")]
     public static class GetOrganizationProfile
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOrganizationProfile = Cloudflare.GetOrganizationProfile.Invoke(new()
+        ///     var exampleOrganizationProfile = Cloudflare.Modules.Organization.GetProfile.Invoke(new()
         ///     {
         ///         OrganizationId = "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
         ///     });
@@ -44,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOrganizationProfile = Cloudflare.GetOrganizationProfile.Invoke(new()
+        ///     var exampleOrganizationProfile = Cloudflare.Modules.Organization.GetProfile.Invoke(new()
         ///     {
         ///         OrganizationId = "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
         ///     });
@@ -66,7 +67,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOrganizationProfile = Cloudflare.GetOrganizationProfile.Invoke(new()
+        ///     var exampleOrganizationProfile = Cloudflare.Modules.Organization.GetProfile.Invoke(new()
         ///     {
         ///         OrganizationId = "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
         ///     });

@@ -37,8 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflared;
- * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflaredArgs;
+ * import com.pulumi.cloudflare.zeroTrustTunnelCloudflared.ZeroTrustTunnelCloudflared;
+ * import com.pulumi.cloudflare.zeroTrustTunnelCloudflared.ZeroTrustTunnelCloudflaredArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -70,7 +70,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared example &#39;&lt;account_id&gt;/&lt;tunnel_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared */
 @ResourceType(type="cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared")
 public class ZeroTrustTunnelCloudflared extends com.pulumi.resources.CustomResource {
     /**

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getAuthenticatedOriginPullsHostnameCertificates:getAuthenticatedOriginPullsHostnameCertificates has been deprecated in favor of cloudflare:authenticatedOriginPullsHostname/certificates:getCertificates")]
     public static class GetAuthenticatedOriginPullsHostnameCertificates
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAuthenticatedOriginPullsHostnameCertificates = Cloudflare.GetAuthenticatedOriginPullsHostnameCertificates.Invoke(new()
+        ///     var exampleAuthenticatedOriginPullsHostnameCertificates = Cloudflare.Modules.AuthenticatedOriginPullsHostname.GetCertificates.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -44,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAuthenticatedOriginPullsHostnameCertificates = Cloudflare.GetAuthenticatedOriginPullsHostnameCertificates.Invoke(new()
+        ///     var exampleAuthenticatedOriginPullsHostnameCertificates = Cloudflare.Modules.AuthenticatedOriginPullsHostname.GetCertificates.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -66,7 +67,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAuthenticatedOriginPullsHostnameCertificates = Cloudflare.GetAuthenticatedOriginPullsHostnameCertificates.Invoke(new()
+        ///     var exampleAuthenticatedOriginPullsHostnameCertificates = Cloudflare.Modules.AuthenticatedOriginPullsHostname.GetCertificates.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

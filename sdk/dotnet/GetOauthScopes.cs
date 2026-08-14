@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getOauthScopes:getOauthScopes has been deprecated in favor of cloudflare:oauth/scopes:getScopes")]
     public static class GetOauthScopes
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOauthScopes = Cloudflare.GetOauthScopes.Invoke();
+        ///     var exampleOauthScopes = Cloudflare.Modules.Oauth.GetScopes.Invoke();
         /// 
         /// });
         /// ```
@@ -41,7 +42,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOauthScopes = Cloudflare.GetOauthScopes.Invoke();
+        ///     var exampleOauthScopes = Cloudflare.Modules.Oauth.GetScopes.Invoke();
         /// 
         /// });
         /// ```
@@ -60,7 +61,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOauthScopes = Cloudflare.GetOauthScopes.Invoke();
+        ///     var exampleOauthScopes = Cloudflare.Modules.Oauth.GetScopes.Invoke();
         /// 
         /// });
         /// ```

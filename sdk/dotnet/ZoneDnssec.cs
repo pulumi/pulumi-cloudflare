@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZoneDnssec = new Cloudflare.ZoneDnssec("example_zone_dnssec", new()
+    ///     var exampleZoneDnssec = new Cloudflare.Modules.Zone.ZoneDnssec("example_zone_dnssec", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         DnssecMultiSigner = false,
@@ -43,6 +43,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zoneDnssec:ZoneDnssec has been deprecated in favor of cloudflare:zone/dnssec:Dnssec")]
     [CloudflareResourceType("cloudflare:index/zoneDnssec:ZoneDnssec")]
     public partial class ZoneDnssec : global::Pulumi.CustomResource
     {

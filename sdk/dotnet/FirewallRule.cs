@@ -15,7 +15,7 @@ namespace Pulumi.Cloudflare
     /// - `Firewall Services Read`
     /// - `Firewall Services Write`
     /// 
-    /// &gt; `cloudflare.FirewallRule` is in a deprecation phase until June 15th, 2025.
+    /// &gt; `cloudflare.firewall.Rule` is in a deprecation phase until June 15th, 2025.
     ///   During this time period, this resource is still
     ///   fully supported but you are strongly advised  to move to the
     ///   `cloudflare.Ruleset` resource. Full details can be found in the
@@ -31,20 +31,20 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleFirewallRule = new Cloudflare.FirewallRule("example_firewall_rule", new()
+    ///     var exampleFirewallRule = new Cloudflare.Modules.Firewall.FirewallRule("example_firewall_rule", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         Action = new Cloudflare.Inputs.FirewallRuleActionArgs
+    ///         Action = new Cloudflare.Modules.Firewall.Inputs.RuleActionArgs
     ///         {
     ///             Mode = "challenge",
-    ///             Response = new Cloudflare.Inputs.FirewallRuleActionResponseArgs
+    ///             Response = new Cloudflare.Modules.Firewall.Inputs.RuleActionResponseArgs
     ///             {
     ///                 Body = "&lt;error&gt;This request has been rate-limited.&lt;/error&gt;",
     ///                 ContentType = "text/xml",
     ///             },
     ///             Timeout = 86400,
     ///         },
-    ///         Filter = new Cloudflare.Inputs.FirewallRuleFilterArgs
+    ///         Filter = new Cloudflare.Modules.Firewall.Inputs.RuleFilterArgs
     ///         {
     ///             Description = "Restrict access from these browsers on this address range.",
     ///             Expression = "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
@@ -62,6 +62,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/firewallRule:FirewallRule example '&lt;zone_id&gt;/&lt;rule_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/firewallRule:FirewallRule has been deprecated in favor of cloudflare:firewall/rule:Rule")]
     [CloudflareResourceType("cloudflare:index/firewallRule:FirewallRule")]
     public partial class FirewallRule : global::Pulumi.CustomResource
     {

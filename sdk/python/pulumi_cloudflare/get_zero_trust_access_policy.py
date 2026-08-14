@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_access_policy_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustAccessPolicy:getZeroTrustAccessPolicy has been deprecated in favor of cloudflare:zeroTrustAccess/policy:getPolicy""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustAccessPolicyResult:
     """
@@ -285,7 +287,7 @@ def get_zero_trust_access_policy(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_policy = cloudflare.get_zero_trust_access_policy(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_zero_trust_access_policy = cloudflare.zerotrustaccess.get_policy(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         policy_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
 
@@ -293,6 +295,7 @@ def get_zero_trust_access_policy(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Identifier.
     :param _builtins.str policy_id: The UUID of the policy
     """
+    pulumi.log.warn("""get_zero_trust_access_policy is deprecated: cloudflare:index/getZeroTrustAccessPolicy:getZeroTrustAccessPolicy has been deprecated in favor of cloudflare:zeroTrustAccess/policy:getPolicy""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['policyId'] = policy_id
@@ -335,7 +338,7 @@ def get_zero_trust_access_policy_output(account_id: pulumi.Input[Optional[Option
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_policy = cloudflare.get_zero_trust_access_policy(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_zero_trust_access_policy = cloudflare.zerotrustaccess.get_policy(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         policy_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
 
@@ -343,6 +346,7 @@ def get_zero_trust_access_policy_output(account_id: pulumi.Input[Optional[Option
     :param _builtins.str account_id: Identifier.
     :param _builtins.str policy_id: The UUID of the policy
     """
+    pulumi.log.warn("""get_zero_trust_access_policy is deprecated: cloudflare:index/getZeroTrustAccessPolicy:getZeroTrustAccessPolicy has been deprecated in favor of cloudflare:zeroTrustAccess/policy:getPolicy""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['policyId'] = policy_id

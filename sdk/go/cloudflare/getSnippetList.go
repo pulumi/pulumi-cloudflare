@@ -15,6 +15,8 @@ import (
 //
 // - `Snippets Read`
 // - `Snippets Write`
+//
+// Deprecated: cloudflare:index/getSnippetList:getSnippetList has been deprecated in favor of cloudflare:snippet/list:getList
 func LookupSnippetList(ctx *pulumi.Context, args *LookupSnippetListArgs, opts ...pulumi.InvokeOption) (*LookupSnippetListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSnippetListResult

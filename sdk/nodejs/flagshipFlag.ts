@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleFlagshipFlag = new cloudflare.FlagshipFlag("example_flagship_flag", {
+ * const exampleFlagshipFlag = new cloudflare.flagship.Flag("example_flagship_flag", {
  *     accountId: "account_id",
  *     appId: "app_id",
  *     defaultVariation: "x",
@@ -48,6 +48,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/flagshipFlag:FlagshipFlag has been deprecated in favor of cloudflare:flagship/flag:Flag
  */
 export class FlagshipFlag extends pulumi.CustomResource {
     /**
@@ -60,6 +62,7 @@ export class FlagshipFlag extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: FlagshipFlagState, opts?: pulumi.CustomResourceOptions): FlagshipFlag {
+        pulumi.log.warn("FlagshipFlag is deprecated: cloudflare:index/flagshipFlag:FlagshipFlag has been deprecated in favor of cloudflare:flagship/flag:Flag")
         return new FlagshipFlag(name, <any>state, { ...opts, id: id });
     }
 
@@ -125,8 +128,11 @@ export class FlagshipFlag extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/flagshipFlag:FlagshipFlag has been deprecated in favor of cloudflare:flagship/flag:Flag */
     constructor(name: string, args: FlagshipFlagArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/flagshipFlag:FlagshipFlag has been deprecated in favor of cloudflare:flagship/flag:Flag */
     constructor(name: string, argsOrState?: FlagshipFlagArgs | FlagshipFlagState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("FlagshipFlag is deprecated: cloudflare:index/flagshipFlag:FlagshipFlag has been deprecated in favor of cloudflare:flagship/flag:Flag")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

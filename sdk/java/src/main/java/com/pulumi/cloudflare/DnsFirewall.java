@@ -34,9 +34,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.DnsFirewall;
- * import com.pulumi.cloudflare.DnsFirewallArgs;
- * import com.pulumi.cloudflare.inputs.DnsFirewallAttackMitigationArgs;
+ * import com.pulumi.cloudflare.dns.Firewall;
+ * import com.pulumi.cloudflare.dns.FirewallArgs;
+ * import com.pulumi.cloudflare.dns.inputs.FirewallAttackMitigationArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -50,14 +50,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleDnsFirewall = new DnsFirewall("exampleDnsFirewall", DnsFirewallArgs.builder()
+ *         var exampleDnsFirewall = new Firewall("exampleDnsFirewall", FirewallArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .name("My Awesome DNS Firewall cluster")
  *             .upstreamIps(            
  *                 "192.0.2.1",
  *                 "198.51.100.1",
  *                 "2001:DB8:100::CF")
- *             .attackMitigation(DnsFirewallAttackMitigationArgs.builder()
+ *             .attackMitigation(FirewallAttackMitigationArgs.builder()
  *                 .enabled(true)
  *                 .onlyWhenUpstreamUnhealthy(false)
  *                 .build())
@@ -82,7 +82,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/dnsFirewall:DnsFirewall example &#39;&lt;account_id&gt;/&lt;dns_firewall_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/dnsFirewall:DnsFirewall has been deprecated in favor of cloudflare:dns/firewall:Firewall
+ * 
  */
+@Deprecated /* cloudflare:index/dnsFirewall:DnsFirewall has been deprecated in favor of cloudflare:dns/firewall:Firewall */
 @ResourceType(type="cloudflare:index/dnsFirewall:DnsFirewall")
 public class DnsFirewall extends com.pulumi.resources.CustomResource {
     /**

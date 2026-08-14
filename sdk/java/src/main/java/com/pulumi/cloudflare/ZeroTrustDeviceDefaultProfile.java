@@ -39,11 +39,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDeviceDefaultProfile;
- * import com.pulumi.cloudflare.ZeroTrustDeviceDefaultProfileArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileExcludeArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileIncludeArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileServiceModeV2Args;
+ * import com.pulumi.cloudflare.zeroTrustDeviceDefaultProfile.ZeroTrustDeviceDefaultProfile;
+ * import com.pulumi.cloudflare.zeroTrustDeviceDefaultProfile.ZeroTrustDeviceDefaultProfileArgs;
+ * import com.pulumi.cloudflare.zeroTrustDeviceDefaultProfile.inputs.ZeroTrustDeviceDefaultProfileExcludeArgs;
+ * import com.pulumi.cloudflare.zeroTrustDeviceDefaultProfile.inputs.ZeroTrustDeviceDefaultProfileIncludeArgs;
+ * import com.pulumi.cloudflare.zeroTrustDeviceDefaultProfile.inputs.ZeroTrustDeviceDefaultProfileServiceModeV2Args;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -98,7 +98,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile example &#39;&lt;account_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile */
 @ResourceType(type="cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile")
 public class ZeroTrustDeviceDefaultProfile extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

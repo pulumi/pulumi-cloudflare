@@ -20,13 +20,13 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleConnectivityDirectoryService = new Cloudflare.ConnectivityDirectoryService("example_connectivity_directory_service", new()
+    ///     var exampleConnectivityDirectoryService = new Cloudflare.Modules.ConnectivityDirectory.ConnectivityDirectoryService("example_connectivity_directory_service", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         Host = new Cloudflare.Inputs.ConnectivityDirectoryServiceHostArgs
+    ///         Host = new Cloudflare.Modules.ConnectivityDirectory.Inputs.ServiceHostArgs
     ///         {
     ///             Ipv4 = "10.0.0.1",
-    ///             Network = new Cloudflare.Inputs.ConnectivityDirectoryServiceHostNetworkArgs
+    ///             Network = new Cloudflare.Modules.ConnectivityDirectory.Inputs.ServiceHostNetworkArgs
     ///             {
     ///                 TunnelId = "0191dce4-9ab4-7fce-b660-8e5dec5172da",
     ///             },
@@ -35,7 +35,7 @@ namespace Pulumi.Cloudflare
     ///         Type = "http",
     ///         HttpPort = 8080,
     ///         HttpsPort = 8443,
-    ///         TlsSettings = new Cloudflare.Inputs.ConnectivityDirectoryServiceTlsSettingsArgs
+    ///         TlsSettings = new Cloudflare.Modules.ConnectivityDirectory.Inputs.ServiceTlsSettingsArgs
     ///         {
     ///             CertVerificationMode = "verify_full",
     ///         },
@@ -50,6 +50,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService example '&lt;account_id&gt;/&lt;service_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService has been deprecated in favor of cloudflare:connectivityDirectory/service:Service")]
     [CloudflareResourceType("cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService")]
     public partial class ConnectivityDirectoryService : global::Pulumi.CustomResource
     {

@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustList = new cloudflare.ZeroTrustList("example_zero_trust_list", {
+ * const exampleZeroTrustList = new cloudflare.zerotrust.List("example_zero_trust_list", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     name: "Admin Serial Numbers",
  *     type: "SERIAL",
@@ -132,8 +132,6 @@ export class TeamsList extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/teamsList:TeamsList" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(TeamsList.__pulumiType, name, resourceInputs, opts);
     }
 }

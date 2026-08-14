@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpCustomEntry = new cloudflare.ZeroTrustDlpCustomEntry("example_zero_trust_dlp_custom_entry", {
+ * const exampleZeroTrustDlpCustomEntry = new cloudflare.zerotrustdlpcustom.Entry("example_zero_trust_dlp_custom_entry", {
  *     accountId: "account_id",
  *     enabled: true,
  *     name: "name",
@@ -36,6 +36,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry example '<account_id>/<entry_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry has been deprecated in favor of cloudflare:zeroTrustDlpCustom/entry:Entry
  */
 export class ZeroTrustDlpCustomEntry extends pulumi.CustomResource {
     /**
@@ -48,6 +50,7 @@ export class ZeroTrustDlpCustomEntry extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustDlpCustomEntryState, opts?: pulumi.CustomResourceOptions): ZeroTrustDlpCustomEntry {
+        pulumi.log.warn("ZeroTrustDlpCustomEntry is deprecated: cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry has been deprecated in favor of cloudflare:zeroTrustDlpCustom/entry:Entry")
         return new ZeroTrustDlpCustomEntry(name, <any>state, { ...opts, id: id });
     }
 
@@ -103,8 +106,11 @@ export class ZeroTrustDlpCustomEntry extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry has been deprecated in favor of cloudflare:zeroTrustDlpCustom/entry:Entry */
     constructor(name: string, args: ZeroTrustDlpCustomEntryArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry has been deprecated in favor of cloudflare:zeroTrustDlpCustom/entry:Entry */
     constructor(name: string, argsOrState?: ZeroTrustDlpCustomEntryArgs | ZeroTrustDlpCustomEntryState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustDlpCustomEntry is deprecated: cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry has been deprecated in favor of cloudflare:zeroTrustDlpCustom/entry:Entry")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

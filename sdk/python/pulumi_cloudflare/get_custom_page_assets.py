@@ -22,6 +22,8 @@ __all__ = [
     'get_custom_page_assets_output',
 ]
 
+warnings.warn("""cloudflare:index/getCustomPageAssets:getCustomPageAssets has been deprecated in favor of cloudflare:customPage/assets:getAssets""", DeprecationWarning)
+
 @pulumi.output_type
 class GetCustomPageAssetsResult:
     """
@@ -97,7 +99,7 @@ def get_custom_page_assets(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_custom_page_assets = cloudflare.get_custom_page_assets(account_id="account_id",
+    example_custom_page_assets = cloudflare.custompage.get_assets(account_id="account_id",
         zone_id="zone_id")
     ```
 
@@ -106,6 +108,7 @@ def get_custom_page_assets(account_id: Optional[_builtins.str] = None,
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_custom_page_assets is deprecated: cloudflare:index/getCustomPageAssets:getCustomPageAssets has been deprecated in favor of cloudflare:customPage/assets:getAssets""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -129,7 +132,7 @@ def get_custom_page_assets_output(account_id: pulumi.Input[Optional[Optional[_bu
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_custom_page_assets = cloudflare.get_custom_page_assets(account_id="account_id",
+    example_custom_page_assets = cloudflare.custompage.get_assets(account_id="account_id",
         zone_id="zone_id")
     ```
 
@@ -138,6 +141,7 @@ def get_custom_page_assets_output(account_id: pulumi.Input[Optional[Optional[_bu
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_custom_page_assets is deprecated: cloudflare:index/getCustomPageAssets:getCustomPageAssets has been deprecated in favor of cloudflare:customPage/assets:getAssets""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

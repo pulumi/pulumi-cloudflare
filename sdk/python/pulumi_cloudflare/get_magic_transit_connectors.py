@@ -22,6 +22,8 @@ __all__ = [
     'get_magic_transit_connectors_output',
 ]
 
+warnings.warn("""cloudflare:index/getMagicTransitConnectors:getMagicTransitConnectors has been deprecated in favor of cloudflare:magicTransit/connectors:getConnectors""", DeprecationWarning)
+
 @pulumi.output_type
 class GetMagicTransitConnectorsResult:
     """
@@ -103,7 +105,7 @@ def get_magic_transit_connectors(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_transit_connectors = cloudflare.get_magic_transit_connectors(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_magic_transit_connectors = cloudflare.magictransit.get_connectors(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
@@ -112,6 +114,7 @@ def get_magic_transit_connectors(account_id: Optional[_builtins.str] = None,
            Available values: "MANAGED", "LICENSED".
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_magic_transit_connectors is deprecated: cloudflare:index/getMagicTransitConnectors:getMagicTransitConnectors has been deprecated in favor of cloudflare:magicTransit/connectors:getConnectors""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['deviceType'] = device_type
@@ -140,7 +143,7 @@ def get_magic_transit_connectors_output(account_id: pulumi.Input[Optional[Option
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_transit_connectors = cloudflare.get_magic_transit_connectors(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_magic_transit_connectors = cloudflare.magictransit.get_connectors(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
@@ -149,6 +152,7 @@ def get_magic_transit_connectors_output(account_id: pulumi.Input[Optional[Option
            Available values: "MANAGED", "LICENSED".
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_magic_transit_connectors is deprecated: cloudflare:index/getMagicTransitConnectors:getMagicTransitConnectors has been deprecated in favor of cloudflare:magicTransit/connectors:getConnectors""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['deviceType'] = device_type

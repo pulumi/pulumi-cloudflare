@@ -18,14 +18,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdevicedefaultprofile"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustDeviceDefaultProfile(ctx, &cloudflare.LookupZeroTrustDeviceDefaultProfileArgs{
+//			_, err := zerotrustdevicedefaultprofile.GetZeroTrustDeviceDefaultProfile(ctx, &zerotrustdevicedefaultprofile.GetZeroTrustDeviceDefaultProfileArgs{
 //				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //			}, nil)
 //			if err != nil {
@@ -36,6 +36,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustDeviceDefaultProfile:getZeroTrustDeviceDefaultProfile has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/zeroTrustDeviceDefaultProfile:getZeroTrustDeviceDefaultProfile
 func LookupZeroTrustDeviceDefaultProfile(ctx *pulumi.Context, args *LookupZeroTrustDeviceDefaultProfileArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustDeviceDefaultProfileResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustDeviceDefaultProfileResult

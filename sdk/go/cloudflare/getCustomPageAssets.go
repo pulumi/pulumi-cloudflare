@@ -18,14 +18,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/custompage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetCustomPageAssets(ctx, &cloudflare.LookupCustomPageAssetsArgs{
+//			_, err := custompage.GetAssets(ctx, &custompage.GetAssetsArgs{
 //				AccountId: pulumi.StringRef("account_id"),
 //				ZoneId:    pulumi.StringRef("zone_id"),
 //			}, nil)
@@ -37,6 +37,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getCustomPageAssets:getCustomPageAssets has been deprecated in favor of cloudflare:customPage/assets:getAssets
 func LookupCustomPageAssets(ctx *pulumi.Context, args *LookupCustomPageAssetsArgs, opts ...pulumi.InvokeOption) (*LookupCustomPageAssetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomPageAssetsResult

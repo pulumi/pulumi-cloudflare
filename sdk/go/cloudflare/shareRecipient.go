@@ -19,14 +19,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/share"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewShareRecipient(ctx, "example_share_recipient", &cloudflare.ShareRecipientArgs{
+//			_, err := share.NewRecipient(ctx, "example_share_recipient", &share.RecipientArgs{
 //				AccountId:          pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ShareId:            pulumi.String("3fd85f74b32742f1bff64a85009dda07"),
 //				OrganizationId:     pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
@@ -46,6 +46,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/shareRecipient:ShareRecipient example '<account_id>/<share_id>/<recipient_id>'
 // ```
+//
+// Deprecated: cloudflare:index/shareRecipient:ShareRecipient has been deprecated in favor of cloudflare:share/recipient:Recipient
 type ShareRecipient struct {
 	pulumi.CustomResourceState
 

@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpPredefinedProfile = new cloudflare.ZeroTrustDlpPredefinedProfile("example_zero_trust_dlp_predefined_profile", {
+ * const exampleZeroTrustDlpPredefinedProfile = new cloudflare.zerotrustdlppredefined.Profile("example_zero_trust_dlp_predefined_profile", {
  *     profileId: "e91a2360-da51-4fdf-9711-bcdecd462614",
  *     accountId: "account_id",
  *     ocrEnabled: true,
@@ -45,6 +45,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile example '<account_id>/<profile_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile has been deprecated in favor of cloudflare:zeroTrustDlpPredefined/profile:Profile
  */
 export class ZeroTrustDlpPredefinedProfile extends pulumi.CustomResource {
     /**
@@ -57,6 +59,7 @@ export class ZeroTrustDlpPredefinedProfile extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustDlpPredefinedProfileState, opts?: pulumi.CustomResourceOptions): ZeroTrustDlpPredefinedProfile {
+        pulumi.log.warn("ZeroTrustDlpPredefinedProfile is deprecated: cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile has been deprecated in favor of cloudflare:zeroTrustDlpPredefined/profile:Profile")
         return new ZeroTrustDlpPredefinedProfile(name, <any>state, { ...opts, id: id });
     }
 
@@ -101,8 +104,11 @@ export class ZeroTrustDlpPredefinedProfile extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile has been deprecated in favor of cloudflare:zeroTrustDlpPredefined/profile:Profile */
     constructor(name: string, args: ZeroTrustDlpPredefinedProfileArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile has been deprecated in favor of cloudflare:zeroTrustDlpPredefined/profile:Profile */
     constructor(name: string, argsOrState?: ZeroTrustDlpPredefinedProfileArgs | ZeroTrustDlpPredefinedProfileState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustDlpPredefinedProfile is deprecated: cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile has been deprecated in favor of cloudflare:zeroTrustDlpPredefined/profile:Profile")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

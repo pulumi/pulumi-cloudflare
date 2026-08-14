@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessGroups = cloudflare.getZeroTrustAccessGroups({
+ * const exampleZeroTrustAccessGroups = cloudflare.zerotrustaccess.getGroups({
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  *     name: "name",
@@ -26,7 +26,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessGroups:getZeroTrustAccessGroups has been deprecated in favor of cloudflare:zeroTrustAccess/groups:getGroups */
 export function getZeroTrustAccessGroups(args?: GetZeroTrustAccessGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessGroupsResult> {
+    pulumi.log.warn("getZeroTrustAccessGroups is deprecated: cloudflare:index/getZeroTrustAccessGroups:getZeroTrustAccessGroups has been deprecated in favor of cloudflare:zeroTrustAccess/groups:getGroups")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessGroups:getZeroTrustAccessGroups", {
@@ -105,7 +107,7 @@ export interface GetZeroTrustAccessGroupsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessGroups = cloudflare.getZeroTrustAccessGroups({
+ * const exampleZeroTrustAccessGroups = cloudflare.zerotrustaccess.getGroups({
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  *     name: "name",
@@ -113,7 +115,9 @@ export interface GetZeroTrustAccessGroupsResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessGroups:getZeroTrustAccessGroups has been deprecated in favor of cloudflare:zeroTrustAccess/groups:getGroups */
 export function getZeroTrustAccessGroupsOutput(args?: GetZeroTrustAccessGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessGroupsResult> {
+    pulumi.log.warn("getZeroTrustAccessGroups is deprecated: cloudflare:index/getZeroTrustAccessGroups:getZeroTrustAccessGroups has been deprecated in favor of cloudflare:zeroTrustAccess/groups:getGroups")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessGroups:getZeroTrustAccessGroups", {

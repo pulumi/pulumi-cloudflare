@@ -11,13 +11,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleR2Bucket = cloudflare.getR2Bucket({
+ * const exampleR2Bucket = cloudflare.r2bucket.getR2Bucket({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getR2Bucket:getR2Bucket has been deprecated in favor of cloudflare:r2Bucket/r2Bucket:getR2Bucket */
 export function getR2Bucket(args: GetR2BucketArgs, opts?: pulumi.InvokeOptions): Promise<GetR2BucketResult> {
+    pulumi.log.warn("getR2Bucket is deprecated: cloudflare:index/getR2Bucket:getR2Bucket has been deprecated in favor of cloudflare:r2Bucket/r2Bucket:getR2Bucket")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getR2Bucket:getR2Bucket", {
         "accountId": args.accountId,
@@ -86,13 +88,15 @@ export interface GetR2BucketResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleR2Bucket = cloudflare.getR2Bucket({
+ * const exampleR2Bucket = cloudflare.r2bucket.getR2Bucket({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getR2Bucket:getR2Bucket has been deprecated in favor of cloudflare:r2Bucket/r2Bucket:getR2Bucket */
 export function getR2BucketOutput(args: GetR2BucketOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetR2BucketResult> {
+    pulumi.log.warn("getR2Bucket is deprecated: cloudflare:index/getR2Bucket:getR2Bucket has been deprecated in favor of cloudflare:r2Bucket/r2Bucket:getR2Bucket")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getR2Bucket:getR2Bucket", {
         "accountId": args.accountId,

@@ -19,13 +19,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkerVersions = cloudflare.getWorkerVersions({
+ * const exampleWorkerVersions = cloudflare.worker.getVersions({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     workerId: "worker_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkerVersions:getWorkerVersions has been deprecated in favor of cloudflare:worker/versions:getVersions */
 export function getWorkerVersions(args: GetWorkerVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkerVersionsResult> {
+    pulumi.log.warn("getWorkerVersions is deprecated: cloudflare:index/getWorkerVersions:getWorkerVersions has been deprecated in favor of cloudflare:worker/versions:getVersions")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkerVersions:getWorkerVersions", {
         "accountId": args.accountId,
@@ -86,13 +88,15 @@ export interface GetWorkerVersionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkerVersions = cloudflare.getWorkerVersions({
+ * const exampleWorkerVersions = cloudflare.worker.getVersions({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     workerId: "worker_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkerVersions:getWorkerVersions has been deprecated in favor of cloudflare:worker/versions:getVersions */
 export function getWorkerVersionsOutput(args: GetWorkerVersionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkerVersionsResult> {
+    pulumi.log.warn("getWorkerVersions is deprecated: cloudflare:index/getWorkerVersions:getWorkerVersions has been deprecated in favor of cloudflare:worker/versions:getVersions")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkerVersions:getWorkerVersions", {
         "accountId": args.accountId,

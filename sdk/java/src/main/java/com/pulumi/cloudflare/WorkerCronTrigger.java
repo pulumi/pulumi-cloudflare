@@ -7,7 +7,6 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.WorkerCronTriggerArgs;
 import com.pulumi.cloudflare.inputs.WorkerCronTriggerState;
 import com.pulumi.cloudflare.outputs.WorkerCronTriggerSchedule;
-import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -31,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WorkersCronTrigger;
- * import com.pulumi.cloudflare.WorkersCronTriggerArgs;
+ * import com.pulumi.cloudflare.workers.CronTrigger;
+ * import com.pulumi.cloudflare.workers.CronTriggerArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,7 +45,7 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var exampleWorkersCronTrigger = new WorkersCronTrigger("exampleWorkersCronTrigger", WorkersCronTriggerArgs.builder()
+ *         var exampleWorkersCronTrigger = new CronTrigger("exampleWorkersCronTrigger", CronTriggerArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .scriptName("this-is_my_script-01")
  *             .body(Arrays.asList(Map.of("cron", "*}&#47;{@code 30 * * * *")))
@@ -144,9 +143,6 @@ public class WorkerCronTrigger extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .aliases(List.of(
-                Output.of(Alias.builder().type("cloudflare:index/workerCronTrigger:WorkerCronTrigger").build())
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

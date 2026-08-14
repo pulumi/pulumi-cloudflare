@@ -22,6 +22,8 @@ __all__ = [
     'get_token_validation_configs_output',
 ]
 
+warnings.warn("""cloudflare:index/getTokenValidationConfigs:getTokenValidationConfigs has been deprecated in favor of cloudflare:tokenValidation/configs:getConfigs""", DeprecationWarning)
+
 @pulumi.output_type
 class GetTokenValidationConfigsResult:
     """
@@ -91,13 +93,14 @@ def get_token_validation_configs(max_items: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_token_validation_configs = cloudflare.get_token_validation_configs(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_token_validation_configs = cloudflare.tokenvalidation.get_configs(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_token_validation_configs is deprecated: cloudflare:index/getTokenValidationConfigs:getTokenValidationConfigs has been deprecated in favor of cloudflare:tokenValidation/configs:getConfigs""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id
@@ -125,13 +128,14 @@ def get_token_validation_configs_output(max_items: pulumi.Input[Optional[Optiona
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_token_validation_configs = cloudflare.get_token_validation_configs(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_token_validation_configs = cloudflare.tokenvalidation.get_configs(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_token_validation_configs is deprecated: cloudflare:index/getTokenValidationConfigs:getTokenValidationConfigs has been deprecated in favor of cloudflare:tokenValidation/configs:getConfigs""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id

@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustTunnelCloudflaredRoute = new Cloudflare.ZeroTrustTunnelCloudflaredRoute("example_zero_trust_tunnel_cloudflared_route", new()
+    ///     var exampleZeroTrustTunnelCloudflaredRoute = new Cloudflare.Modules.ZeroTrustTunnelCloudflared.ZeroTrustTunnelCloudflaredRoute("example_zero_trust_tunnel_cloudflared_route", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Network = "172.16.0.0/16",
@@ -112,10 +112,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/tunnelRoute:TunnelRoute" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

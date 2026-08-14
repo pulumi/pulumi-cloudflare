@@ -21,6 +21,8 @@ __all__ = [
     'get_dns_zone_transfers_acl_output',
 ]
 
+warnings.warn("""cloudflare:index/getDnsZoneTransfersAcl:getDnsZoneTransfersAcl has been deprecated in favor of cloudflare:dnsZoneTransfers/acl:getAcl""", DeprecationWarning)
+
 @pulumi.output_type
 class GetDnsZoneTransfersAclResult:
     """
@@ -106,10 +108,11 @@ def get_dns_zone_transfers_acl(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_dns_zone_transfers_acl = cloudflare.get_dns_zone_transfers_acl(account_id="01a7362d577a6c3019a474fd6f485823",
+    example_dns_zone_transfers_acl = cloudflare.dnszonetransfers.get_acl(account_id="01a7362d577a6c3019a474fd6f485823",
         acl_id="23ff594956f20c2a721606e94745a8aa")
     ```
     """
+    pulumi.log.warn("""get_dns_zone_transfers_acl is deprecated: cloudflare:index/getDnsZoneTransfersAcl:getDnsZoneTransfersAcl has been deprecated in favor of cloudflare:dnsZoneTransfers/acl:getAcl""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['aclId'] = acl_id
@@ -137,10 +140,11 @@ def get_dns_zone_transfers_acl_output(account_id: pulumi.Input[Optional[Optional
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_dns_zone_transfers_acl = cloudflare.get_dns_zone_transfers_acl(account_id="01a7362d577a6c3019a474fd6f485823",
+    example_dns_zone_transfers_acl = cloudflare.dnszonetransfers.get_acl(account_id="01a7362d577a6c3019a474fd6f485823",
         acl_id="23ff594956f20c2a721606e94745a8aa")
     ```
     """
+    pulumi.log.warn("""get_dns_zone_transfers_acl is deprecated: cloudflare:index/getDnsZoneTransfersAcl:getDnsZoneTransfersAcl has been deprecated in favor of cloudflare:dnsZoneTransfers/acl:getAcl""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['aclId'] = acl_id

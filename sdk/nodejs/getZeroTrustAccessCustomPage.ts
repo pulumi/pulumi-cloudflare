@@ -16,13 +16,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessCustomPage = cloudflare.getZeroTrustAccessCustomPage({
+ * const exampleZeroTrustAccessCustomPage = cloudflare.zerotrustaccesscustom.getPage({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     customPageId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessCustomPage:getZeroTrustAccessCustomPage has been deprecated in favor of cloudflare:zeroTrustAccessCustom/page:getPage */
 export function getZeroTrustAccessCustomPage(args: GetZeroTrustAccessCustomPageArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessCustomPageResult> {
+    pulumi.log.warn("getZeroTrustAccessCustomPage is deprecated: cloudflare:index/getZeroTrustAccessCustomPage:getZeroTrustAccessCustomPage has been deprecated in favor of cloudflare:zeroTrustAccessCustom/page:getPage")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessCustomPage:getZeroTrustAccessCustomPage", {
         "accountId": args.accountId,
@@ -90,13 +92,15 @@ export interface GetZeroTrustAccessCustomPageResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessCustomPage = cloudflare.getZeroTrustAccessCustomPage({
+ * const exampleZeroTrustAccessCustomPage = cloudflare.zerotrustaccesscustom.getPage({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     customPageId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessCustomPage:getZeroTrustAccessCustomPage has been deprecated in favor of cloudflare:zeroTrustAccessCustom/page:getPage */
 export function getZeroTrustAccessCustomPageOutput(args: GetZeroTrustAccessCustomPageOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessCustomPageResult> {
+    pulumi.log.warn("getZeroTrustAccessCustomPage is deprecated: cloudflare:index/getZeroTrustAccessCustomPage:getZeroTrustAccessCustomPage has been deprecated in favor of cloudflare:zeroTrustAccessCustom/page:getPage")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessCustomPage:getZeroTrustAccessCustomPage", {
         "accountId": args.accountId,

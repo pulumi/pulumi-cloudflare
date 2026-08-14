@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getFirewallRule:getFirewallRule has been deprecated in favor of cloudflare:firewall/rule:getRule")]
     public static class GetFirewallRule
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleFirewallRule = Cloudflare.GetFirewallRule.Invoke(new()
+        ///     var exampleFirewallRule = Cloudflare.Modules.Firewall.GetRule.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         RuleId = "372e67954025e0ba6aaa6d586b9e0b60",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleFirewallRule = Cloudflare.GetFirewallRule.Invoke(new()
+        ///     var exampleFirewallRule = Cloudflare.Modules.Firewall.GetRule.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         RuleId = "372e67954025e0ba6aaa6d586b9e0b60",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleFirewallRule = Cloudflare.GetFirewallRule.Invoke(new()
+        ///     var exampleFirewallRule = Cloudflare.Modules.Firewall.GetRule.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         RuleId = "372e67954025e0ba6aaa6d586b9e0b60",

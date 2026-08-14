@@ -249,7 +249,7 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_mtls_certificate = cloudflare.ZeroTrustAccessMtlsCertificate("example_zero_trust_access_mtls_certificate",
+        example_zero_trust_access_mtls_certificate = cloudflare.zerotrustaccessmtls.Certificate("example_zero_trust_access_mtls_certificate",
             certificate=\"\"\"  -----BEGIN CERTIFICATE-----
           MIIGAjCCA+qgAwIBAgIJAI7kymlF7CWT...N4RI7KKB7nikiuUf8vhULKy5IX10
           DrUtmu/B
@@ -295,7 +295,7 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_mtls_certificate = cloudflare.ZeroTrustAccessMtlsCertificate("example_zero_trust_access_mtls_certificate",
+        example_zero_trust_access_mtls_certificate = cloudflare.zerotrustaccessmtls.Certificate("example_zero_trust_access_mtls_certificate",
             certificate=\"\"\"  -----BEGIN CERTIFICATE-----
           MIIGAjCCA+qgAwIBAgIJAI7kymlF7CWT...N4RI7KKB7nikiuUf8vhULKy5IX10
           DrUtmu/B

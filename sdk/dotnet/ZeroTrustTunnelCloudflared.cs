@@ -29,7 +29,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustTunnelCloudflared = new Cloudflare.ZeroTrustTunnelCloudflared("example_zero_trust_tunnel_cloudflared", new()
+    ///     var exampleZeroTrustTunnelCloudflared = new Cloudflare.Modules.ZeroTrustTunnelCloudflared.ZeroTrustTunnelCloudflared("example_zero_trust_tunnel_cloudflared", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Name = "blog",
@@ -46,6 +46,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared example '&lt;account_id&gt;/&lt;tunnel_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared")]
     [CloudflareResourceType("cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared")]
     public partial class ZeroTrustTunnelCloudflared : global::Pulumi.CustomResource
     {

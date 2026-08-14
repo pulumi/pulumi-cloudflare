@@ -21,6 +21,8 @@ __all__ = [
     'get_authenticated_origin_pulls_output',
 ]
 
+warnings.warn("""cloudflare:index/getAuthenticatedOriginPulls:getAuthenticatedOriginPulls has been deprecated in favor of cloudflare:authenticatedOriginPulls/authenticatedOriginPulls:getAuthenticatedOriginPulls""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAuthenticatedOriginPullsResult:
     """
@@ -229,7 +231,7 @@ def get_authenticated_origin_pulls(hostname: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_authenticated_origin_pulls = cloudflare.get_authenticated_origin_pulls(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_authenticated_origin_pulls = cloudflare.authenticatedoriginpulls.get_authenticated_origin_pulls(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         hostname="app.example.com")
     ```
 
@@ -237,6 +239,7 @@ def get_authenticated_origin_pulls(hostname: Optional[_builtins.str] = None,
     :param _builtins.str hostname: The hostname on the origin for which the client certificate uploaded will be used.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_authenticated_origin_pulls is deprecated: cloudflare:index/getAuthenticatedOriginPulls:getAuthenticatedOriginPulls has been deprecated in favor of cloudflare:authenticatedOriginPulls/authenticatedOriginPulls:getAuthenticatedOriginPulls""")
     __args__ = dict()
     __args__['hostname'] = hostname
     __args__['zoneId'] = zone_id
@@ -269,7 +272,7 @@ def get_authenticated_origin_pulls_output(hostname: pulumi.Input[Optional[_built
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_authenticated_origin_pulls = cloudflare.get_authenticated_origin_pulls(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_authenticated_origin_pulls = cloudflare.authenticatedoriginpulls.get_authenticated_origin_pulls(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         hostname="app.example.com")
     ```
 
@@ -277,6 +280,7 @@ def get_authenticated_origin_pulls_output(hostname: pulumi.Input[Optional[_built
     :param _builtins.str hostname: The hostname on the origin for which the client certificate uploaded will be used.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_authenticated_origin_pulls is deprecated: cloudflare:index/getAuthenticatedOriginPulls:getAuthenticatedOriginPulls has been deprecated in favor of cloudflare:authenticatedOriginPulls/authenticatedOriginPulls:getAuthenticatedOriginPulls""")
     __args__ = dict()
     __args__['hostname'] = hostname
     __args__['zoneId'] = zone_id

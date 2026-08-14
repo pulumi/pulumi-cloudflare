@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.CallsSfuApp;
- * import com.pulumi.cloudflare.CallsSfuAppArgs;
+ * import com.pulumi.cloudflare.callsSfu.App;
+ * import com.pulumi.cloudflare.callsSfu.AppArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleCallsSfuApp = new CallsSfuApp("exampleCallsSfuApp", CallsSfuAppArgs.builder()
+ *         var exampleCallsSfuApp = new App("exampleCallsSfuApp", AppArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .name("production-realtime-app")
  *             .build());
@@ -59,7 +59,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/callsSfuApp:CallsSfuApp has been deprecated in favor of cloudflare:callsSfu/app:App
+ * 
  */
+@Deprecated /* cloudflare:index/callsSfuApp:CallsSfuApp has been deprecated in favor of cloudflare:callsSfu/app:App */
 @ResourceType(type="cloudflare:index/callsSfuApp:CallsSfuApp")
 public class CallsSfuApp extends com.pulumi.resources.CustomResource {
     /**

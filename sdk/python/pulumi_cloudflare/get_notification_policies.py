@@ -22,6 +22,8 @@ __all__ = [
     'get_notification_policies_output',
 ]
 
+warnings.warn("""cloudflare:index/getNotificationPolicies:getNotificationPolicies has been deprecated in favor of cloudflare:notification/policies:getPolicies""", DeprecationWarning)
+
 @pulumi.output_type
 class GetNotificationPoliciesResult:
     """
@@ -92,13 +94,14 @@ def get_notification_policies(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_notification_policies = cloudflare.get_notification_policies(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_notification_policies = cloudflare.notification.get_policies(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: The account id
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_notification_policies is deprecated: cloudflare:index/getNotificationPolicies:getNotificationPolicies has been deprecated in favor of cloudflare:notification/policies:getPolicies""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -127,13 +130,14 @@ def get_notification_policies_output(account_id: pulumi.Input[Optional[Optional[
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_notification_policies = cloudflare.get_notification_policies(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_notification_policies = cloudflare.notification.get_policies(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: The account id
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_notification_policies is deprecated: cloudflare:index/getNotificationPolicies:getNotificationPolicies has been deprecated in favor of cloudflare:notification/policies:getPolicies""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

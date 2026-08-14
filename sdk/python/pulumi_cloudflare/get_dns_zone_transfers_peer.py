@@ -21,6 +21,8 @@ __all__ = [
     'get_dns_zone_transfers_peer_output',
 ]
 
+warnings.warn("""cloudflare:index/getDnsZoneTransfersPeer:getDnsZoneTransfersPeer has been deprecated in favor of cloudflare:dnsZoneTransfers/peer:getPeer""", DeprecationWarning)
+
 @pulumi.output_type
 class GetDnsZoneTransfersPeerResult:
     """
@@ -142,10 +144,11 @@ def get_dns_zone_transfers_peer(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_dns_zone_transfers_peer = cloudflare.get_dns_zone_transfers_peer(account_id="01a7362d577a6c3019a474fd6f485823",
+    example_dns_zone_transfers_peer = cloudflare.dnszonetransfers.get_peer(account_id="01a7362d577a6c3019a474fd6f485823",
         peer_id="23ff594956f20c2a721606e94745a8aa")
     ```
     """
+    pulumi.log.warn("""get_dns_zone_transfers_peer is deprecated: cloudflare:index/getDnsZoneTransfersPeer:getDnsZoneTransfersPeer has been deprecated in favor of cloudflare:dnsZoneTransfers/peer:getPeer""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['peerId'] = peer_id
@@ -176,10 +179,11 @@ def get_dns_zone_transfers_peer_output(account_id: pulumi.Input[Optional[Optiona
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_dns_zone_transfers_peer = cloudflare.get_dns_zone_transfers_peer(account_id="01a7362d577a6c3019a474fd6f485823",
+    example_dns_zone_transfers_peer = cloudflare.dnszonetransfers.get_peer(account_id="01a7362d577a6c3019a474fd6f485823",
         peer_id="23ff594956f20c2a721606e94745a8aa")
     ```
     """
+    pulumi.log.warn("""get_dns_zone_transfers_peer is deprecated: cloudflare:index/getDnsZoneTransfersPeer:getDnsZoneTransfersPeer has been deprecated in favor of cloudflare:dnsZoneTransfers/peer:getPeer""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['peerId'] = peer_id

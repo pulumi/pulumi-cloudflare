@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.AccountMember;
- * import com.pulumi.cloudflare.AccountMemberArgs;
+ * import com.pulumi.cloudflare.account.Member;
+ * import com.pulumi.cloudflare.account.MemberArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var exampleAccountMember = new AccountMember("exampleAccountMember", AccountMemberArgs.builder()
+ *         var exampleAccountMember = new Member("exampleAccountMember", MemberArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .email("user}{@literal @}{@code example.com")
  *             .roles("3536bcfad5faccb999b47003c79917fb")
@@ -65,7 +65,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/accountMember:AccountMember example &#39;&lt;account_id&gt;/&lt;member_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/accountMember:AccountMember has been deprecated in favor of cloudflare:account/member:Member
+ * 
  */
+@Deprecated /* cloudflare:index/accountMember:AccountMember has been deprecated in favor of cloudflare:account/member:Member */
 @ResourceType(type="cloudflare:index/accountMember:AccountMember")
 public class AccountMember extends com.pulumi.resources.CustomResource {
     /**

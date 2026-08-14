@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleEmailRoutingRule = new cloudflare.EmailRoutingRule("example_email_routing_rule", {
+ * const exampleEmailRoutingRule = new cloudflare.emailrouting.Rule("example_email_routing_rule", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     actions: [{
  *         type: "forward",
@@ -42,6 +42,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/emailRoutingRule:EmailRoutingRule example '<zone_id>/<rule_identifier>'
  * ```
+ *
+ * @deprecated cloudflare:index/emailRoutingRule:EmailRoutingRule has been deprecated in favor of cloudflare:emailRouting/rule:Rule
  */
 export class EmailRoutingRule extends pulumi.CustomResource {
     /**
@@ -54,6 +56,7 @@ export class EmailRoutingRule extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: EmailRoutingRuleState, opts?: pulumi.CustomResourceOptions): EmailRoutingRule {
+        pulumi.log.warn("EmailRoutingRule is deprecated: cloudflare:index/emailRoutingRule:EmailRoutingRule has been deprecated in favor of cloudflare:emailRouting/rule:Rule")
         return new EmailRoutingRule(name, <any>state, { ...opts, id: id });
     }
 
@@ -121,8 +124,11 @@ export class EmailRoutingRule extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/emailRoutingRule:EmailRoutingRule has been deprecated in favor of cloudflare:emailRouting/rule:Rule */
     constructor(name: string, args: EmailRoutingRuleArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/emailRoutingRule:EmailRoutingRule has been deprecated in favor of cloudflare:emailRouting/rule:Rule */
     constructor(name: string, argsOrState?: EmailRoutingRuleArgs | EmailRoutingRuleState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("EmailRoutingRule is deprecated: cloudflare:index/emailRoutingRule:EmailRoutingRule has been deprecated in favor of cloudflare:emailRouting/rule:Rule")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

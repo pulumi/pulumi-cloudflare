@@ -18,14 +18,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleApiShieldSchema = cloudflare.getApiShieldSchema({
+ * const exampleApiShieldSchema = cloudflare.apishieldschema.getApiShieldSchema({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     schemaId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     omitSource: true,
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getApiShieldSchema:getApiShieldSchema has been deprecated in favor of cloudflare:apiShieldSchema/apiShieldSchema:getApiShieldSchema */
 export function getApiShieldSchema(args: GetApiShieldSchemaArgs, opts?: pulumi.InvokeOptions): Promise<GetApiShieldSchemaResult> {
+    pulumi.log.warn("getApiShieldSchema is deprecated: cloudflare:index/getApiShieldSchema:getApiShieldSchema has been deprecated in favor of cloudflare:apiShieldSchema/apiShieldSchema:getApiShieldSchema")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getApiShieldSchema:getApiShieldSchema", {
         "omitSource": args.omitSource,
@@ -95,14 +97,16 @@ export interface GetApiShieldSchemaResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleApiShieldSchema = cloudflare.getApiShieldSchema({
+ * const exampleApiShieldSchema = cloudflare.apishieldschema.getApiShieldSchema({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     schemaId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     omitSource: true,
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getApiShieldSchema:getApiShieldSchema has been deprecated in favor of cloudflare:apiShieldSchema/apiShieldSchema:getApiShieldSchema */
 export function getApiShieldSchemaOutput(args: GetApiShieldSchemaOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiShieldSchemaResult> {
+    pulumi.log.warn("getApiShieldSchema is deprecated: cloudflare:index/getApiShieldSchema:getApiShieldSchema has been deprecated in favor of cloudflare:apiShieldSchema/apiShieldSchema:getApiShieldSchema")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getApiShieldSchema:getApiShieldSchema", {
         "omitSource": args.omitSource,

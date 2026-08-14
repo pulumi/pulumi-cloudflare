@@ -21,6 +21,8 @@ __all__ = [
     'get_web3_hostname_output',
 ]
 
+warnings.warn("""cloudflare:index/getWeb3Hostname:getWeb3Hostname has been deprecated in favor of cloudflare:web3/hostname:getHostname""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWeb3HostnameResult:
     """
@@ -168,7 +170,7 @@ def get_web3_hostname(identifier: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_web3_hostname = cloudflare.get_web3_hostname(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_web3_hostname = cloudflare.web3.get_hostname(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         identifier="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -176,6 +178,7 @@ def get_web3_hostname(identifier: Optional[_builtins.str] = None,
     :param _builtins.str identifier: Specify the identifier of the hostname.
     :param _builtins.str zone_id: Specify the identifier of the hostname.
     """
+    pulumi.log.warn("""get_web3_hostname is deprecated: cloudflare:index/getWeb3Hostname:getWeb3Hostname has been deprecated in favor of cloudflare:web3/hostname:getHostname""")
     __args__ = dict()
     __args__['identifier'] = identifier
     __args__['zoneId'] = zone_id
@@ -208,7 +211,7 @@ def get_web3_hostname_output(identifier: pulumi.Input[Optional[_builtins.str]] =
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_web3_hostname = cloudflare.get_web3_hostname(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_web3_hostname = cloudflare.web3.get_hostname(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         identifier="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -216,6 +219,7 @@ def get_web3_hostname_output(identifier: pulumi.Input[Optional[_builtins.str]] =
     :param _builtins.str identifier: Specify the identifier of the hostname.
     :param _builtins.str zone_id: Specify the identifier of the hostname.
     """
+    pulumi.log.warn("""get_web3_hostname is deprecated: cloudflare:index/getWeb3Hostname:getWeb3Hostname has been deprecated in favor of cloudflare:web3/hostname:getHostname""")
     __args__ = dict()
     __args__['identifier'] = identifier
     __args__['zoneId'] = zone_id

@@ -265,8 +265,13 @@ class _EmailRoutingDnsState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/emailRoutingDns:EmailRoutingDns has been deprecated in favor of cloudflare:emailRouting/dns:Dns""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/emailRoutingDns:EmailRoutingDns")
 class EmailRoutingDns(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/emailRoutingDns:EmailRoutingDns has been deprecated in favor of cloudflare:emailRouting/dns:Dns""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -286,7 +291,7 @@ class EmailRoutingDns(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_email_routing_dns = cloudflare.EmailRoutingDns("example_email_routing_dns",
+        example_email_routing_dns = cloudflare.emailrouting.Dns("example_email_routing_dns",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="example.net")
         ```
@@ -321,7 +326,7 @@ class EmailRoutingDns(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_email_routing_dns = cloudflare.EmailRoutingDns("example_email_routing_dns",
+        example_email_routing_dns = cloudflare.emailrouting.Dns("example_email_routing_dns",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="example.net")
         ```
@@ -351,6 +356,7 @@ class EmailRoutingDns(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""EmailRoutingDns is deprecated: cloudflare:index/emailRoutingDns:EmailRoutingDns has been deprecated in favor of cloudflare:emailRouting/dns:Dns""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustTunnelCloudflaredVirtualNetwork = new cloudflare.ZeroTrustTunnelCloudflaredVirtualNetwork("example_zero_trust_tunnel_cloudflared_virtual_network", {
+ * const exampleZeroTrustTunnelCloudflaredVirtualNetwork = new cloudflare.zerotrusttunnelcloudflaredvirtual.Network("example_zero_trust_tunnel_cloudflared_virtual_network", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     name: "us-east-1-vpc",
  *     comment: "Staging VPC for data science",
@@ -133,8 +133,6 @@ export class TunnelVirtualNetwork extends pulumi.CustomResource {
             resourceInputs["deletedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(TunnelVirtualNetwork.__pulumiType, name, resourceInputs, opts);
     }
 }

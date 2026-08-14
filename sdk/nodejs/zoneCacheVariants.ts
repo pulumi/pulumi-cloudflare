@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneCacheVariants = new cloudflare.ZoneCacheVariants("example_zone_cache_variants", {
+ * const exampleZoneCacheVariants = new cloudflare.zonecache.Variants("example_zone_cache_variants", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     value: {
  *         avifs: [
@@ -76,6 +76,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zoneCacheVariants:ZoneCacheVariants example '<zone_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zoneCacheVariants:ZoneCacheVariants has been deprecated in favor of cloudflare:zoneCache/variants:Variants
  */
 export class ZoneCacheVariants extends pulumi.CustomResource {
     /**
@@ -88,6 +90,7 @@ export class ZoneCacheVariants extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZoneCacheVariantsState, opts?: pulumi.CustomResourceOptions): ZoneCacheVariants {
+        pulumi.log.warn("ZoneCacheVariants is deprecated: cloudflare:index/zoneCacheVariants:ZoneCacheVariants has been deprecated in favor of cloudflare:zoneCache/variants:Variants")
         return new ZoneCacheVariants(name, <any>state, { ...opts, id: id });
     }
 
@@ -129,8 +132,11 @@ export class ZoneCacheVariants extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zoneCacheVariants:ZoneCacheVariants has been deprecated in favor of cloudflare:zoneCache/variants:Variants */
     constructor(name: string, args: ZoneCacheVariantsArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zoneCacheVariants:ZoneCacheVariants has been deprecated in favor of cloudflare:zoneCache/variants:Variants */
     constructor(name: string, argsOrState?: ZoneCacheVariantsArgs | ZoneCacheVariantsState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZoneCacheVariants is deprecated: cloudflare:index/zoneCacheVariants:ZoneCacheVariants has been deprecated in favor of cloudflare:zoneCache/variants:Variants")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

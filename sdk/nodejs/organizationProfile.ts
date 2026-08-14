@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleOrganizationProfile = new cloudflare.OrganizationProfile("example_organization_profile", {
+ * const exampleOrganizationProfile = new cloudflare.organization.Profile("example_organization_profile", {
  *     organizationId: "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
  *     businessAddress: "business_address",
  *     businessEmail: "business_email",
@@ -24,6 +24,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/organizationProfile:OrganizationProfile has been deprecated in favor of cloudflare:organization/profile:Profile
  */
 export class OrganizationProfile extends pulumi.CustomResource {
     /**
@@ -36,6 +38,7 @@ export class OrganizationProfile extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: OrganizationProfileState, opts?: pulumi.CustomResourceOptions): OrganizationProfile {
+        pulumi.log.warn("OrganizationProfile is deprecated: cloudflare:index/organizationProfile:OrganizationProfile has been deprecated in favor of cloudflare:organization/profile:Profile")
         return new OrganizationProfile(name, <any>state, { ...opts, id: id });
     }
 
@@ -67,8 +70,11 @@ export class OrganizationProfile extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/organizationProfile:OrganizationProfile has been deprecated in favor of cloudflare:organization/profile:Profile */
     constructor(name: string, args: OrganizationProfileArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/organizationProfile:OrganizationProfile has been deprecated in favor of cloudflare:organization/profile:Profile */
     constructor(name: string, argsOrState?: OrganizationProfileArgs | OrganizationProfileState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("OrganizationProfile is deprecated: cloudflare:index/organizationProfile:OrganizationProfile has been deprecated in favor of cloudflare:organization/profile:Profile")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

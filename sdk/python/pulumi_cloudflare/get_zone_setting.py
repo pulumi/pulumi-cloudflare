@@ -21,6 +21,8 @@ __all__ = [
     'get_zone_setting_output',
 ]
 
+warnings.warn("""cloudflare:index/getZoneSetting:getZoneSetting has been deprecated in favor of cloudflare:zone/setting:getSetting""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZoneSettingResult:
     """
@@ -224,7 +226,7 @@ def get_zone_setting(setting_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zone_setting = cloudflare.get_zone_setting(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_zone_setting = cloudflare.zone.get_setting(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         setting_id="always_online")
     ```
 
@@ -232,6 +234,7 @@ def get_zone_setting(setting_id: Optional[_builtins.str] = None,
     :param _builtins.str setting_id: Setting name
     :param _builtins.str zone_id: Identifier
     """
+    pulumi.log.warn("""get_zone_setting is deprecated: cloudflare:index/getZoneSetting:getZoneSetting has been deprecated in favor of cloudflare:zone/setting:getSetting""")
     __args__ = dict()
     __args__['settingId'] = setting_id
     __args__['zoneId'] = zone_id
@@ -336,7 +339,7 @@ def get_zone_setting_output(setting_id: pulumi.Input[Optional[_builtins.str]] = 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zone_setting = cloudflare.get_zone_setting(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_zone_setting = cloudflare.zone.get_setting(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         setting_id="always_online")
     ```
 
@@ -344,6 +347,7 @@ def get_zone_setting_output(setting_id: pulumi.Input[Optional[_builtins.str]] = 
     :param _builtins.str setting_id: Setting name
     :param _builtins.str zone_id: Identifier
     """
+    pulumi.log.warn("""get_zone_setting is deprecated: cloudflare:index/getZoneSetting:getZoneSetting has been deprecated in favor of cloudflare:zone/setting:getSetting""")
     __args__ = dict()
     __args__['settingId'] = setting_id
     __args__['zoneId'] = zone_id

@@ -23,6 +23,8 @@ __all__ = [
     'get_share_resource_output',
 ]
 
+warnings.warn("""cloudflare:index/getShareResource:getShareResource has been deprecated in favor of cloudflare:share/resource:getResource""", DeprecationWarning)
+
 @pulumi.output_type
 class GetShareResourceResult:
     """
@@ -206,7 +208,7 @@ def get_share_resource(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_share_resource = cloudflare.get_share_resource(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_share_resource = cloudflare.share.get_resource(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         share_id="3fd85f74b32742f1bff64a85009dda07",
         share_resource_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
@@ -216,6 +218,7 @@ def get_share_resource(account_id: Optional[_builtins.str] = None,
     :param _builtins.str share_id: Share identifier tag.
     :param _builtins.str share_resource_id: Share Resource identifier.
     """
+    pulumi.log.warn("""get_share_resource is deprecated: cloudflare:index/getShareResource:getShareResource has been deprecated in favor of cloudflare:share/resource:getResource""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -250,7 +253,7 @@ def get_share_resource_output(account_id: pulumi.Input[Optional[_builtins.str]] 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_share_resource = cloudflare.get_share_resource(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_share_resource = cloudflare.share.get_resource(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         share_id="3fd85f74b32742f1bff64a85009dda07",
         share_resource_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
@@ -260,6 +263,7 @@ def get_share_resource_output(account_id: pulumi.Input[Optional[_builtins.str]] 
     :param _builtins.str share_id: Share identifier tag.
     :param _builtins.str share_resource_id: Share Resource identifier.
     """
+    pulumi.log.warn("""get_share_resource is deprecated: cloudflare:index/getShareResource:getShareResource has been deprecated in favor of cloudflare:share/resource:getResource""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

@@ -26,14 +26,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustnetworkhostname"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustNetworkHostnameRoute(ctx, "example_zero_trust_network_hostname_route", &cloudflare.ZeroTrustNetworkHostnameRouteArgs{
+//			_, err := zerotrustnetworkhostname.NewRoute(ctx, "example_zero_trust_network_hostname_route", &zerotrustnetworkhostname.RouteArgs{
 //				AccountId: pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				Comment:   pulumi.String("example comment"),
 //				Hostname:  pulumi.String("office-1.local"),
@@ -53,6 +53,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute example '<account_id>/<hostname_route_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute has been deprecated in favor of cloudflare:zeroTrustNetworkHostname/route:Route
 type ZeroTrustNetworkHostnameRoute struct {
 	pulumi.CustomResourceState
 

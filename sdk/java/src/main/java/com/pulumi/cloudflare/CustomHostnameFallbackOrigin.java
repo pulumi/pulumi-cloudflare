@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.CustomHostnameFallbackOrigin;
- * import com.pulumi.cloudflare.CustomHostnameFallbackOriginArgs;
+ * import com.pulumi.cloudflare.customHostname.FallbackOrigin;
+ * import com.pulumi.cloudflare.customHostname.FallbackOriginArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleCustomHostnameFallbackOrigin = new CustomHostnameFallbackOrigin("exampleCustomHostnameFallbackOrigin", CustomHostnameFallbackOriginArgs.builder()
+ *         var exampleCustomHostnameFallbackOrigin = new FallbackOrigin("exampleCustomHostnameFallbackOrigin", FallbackOriginArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .origin("fallback.example.com")
  *             .build());
@@ -60,7 +60,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin has been deprecated in favor of cloudflare:customHostname/fallbackOrigin:FallbackOrigin
+ * 
  */
+@Deprecated /* cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin has been deprecated in favor of cloudflare:customHostname/fallbackOrigin:FallbackOrigin */
 @ResourceType(type="cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin")
 public class CustomHostnameFallbackOrigin extends com.pulumi.resources.CustomResource {
     /**

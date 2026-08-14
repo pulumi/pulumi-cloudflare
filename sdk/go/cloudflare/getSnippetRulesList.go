@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: cloudflare:index/getSnippetRulesList:getSnippetRulesList has been deprecated in favor of cloudflare:snippetRules/list:getList
 func LookupSnippetRulesList(ctx *pulumi.Context, args *LookupSnippetRulesListArgs, opts ...pulumi.InvokeOption) (*LookupSnippetRulesListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSnippetRulesListResult

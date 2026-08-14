@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getSnippet:getSnippet has been deprecated in favor of cloudflare:snippet/snippet:getSnippet")]
     public static class GetSnippet
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSnippet = Cloudflare.GetSnippet.Invoke(new()
+        ///     var exampleSnippet = Cloudflare.Modules.Snippet.GetSnippet.Invoke(new()
         ///     {
         ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
         ///         SnippetName = "my_snippet",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSnippet = Cloudflare.GetSnippet.Invoke(new()
+        ///     var exampleSnippet = Cloudflare.Modules.Snippet.GetSnippet.Invoke(new()
         ///     {
         ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
         ///         SnippetName = "my_snippet",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSnippet = Cloudflare.GetSnippet.Invoke(new()
+        ///     var exampleSnippet = Cloudflare.Modules.Snippet.GetSnippet.Invoke(new()
         ///     {
         ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
         ///         SnippetName = "my_snippet",

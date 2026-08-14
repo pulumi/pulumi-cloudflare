@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.RegionalTieredCache;
- * import com.pulumi.cloudflare.RegionalTieredCacheArgs;
+ * import com.pulumi.cloudflare.regional.TieredCache;
+ * import com.pulumi.cloudflare.regional.TieredCacheArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleRegionalTieredCache = new RegionalTieredCache("exampleRegionalTieredCache", RegionalTieredCacheArgs.builder()
+ *         var exampleRegionalTieredCache = new TieredCache("exampleRegionalTieredCache", TieredCacheArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .value("on")
  *             .build());
@@ -62,7 +62,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/regionalTieredCache:RegionalTieredCache example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/regionalTieredCache:RegionalTieredCache has been deprecated in favor of cloudflare:regional/tieredCache:TieredCache
+ * 
  */
+@Deprecated /* cloudflare:index/regionalTieredCache:RegionalTieredCache has been deprecated in favor of cloudflare:regional/tieredCache:TieredCache */
 @ResourceType(type="cloudflare:index/regionalTieredCache:RegionalTieredCache")
 public class RegionalTieredCache extends com.pulumi.resources.CustomResource {
     /**

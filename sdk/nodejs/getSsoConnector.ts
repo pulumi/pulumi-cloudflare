@@ -17,13 +17,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSsoConnector = cloudflare.getSsoConnector({
+ * const exampleSsoConnector = cloudflare.sso.getConnector({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     ssoConnectorId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getSsoConnector:getSsoConnector has been deprecated in favor of cloudflare:sso/connector:getConnector */
 export function getSsoConnector(args: GetSsoConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetSsoConnectorResult> {
+    pulumi.log.warn("getSsoConnector is deprecated: cloudflare:index/getSsoConnector:getSsoConnector has been deprecated in favor of cloudflare:sso/connector:getConnector")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getSsoConnector:getSsoConnector", {
         "accountId": args.accountId,
@@ -88,13 +90,15 @@ export interface GetSsoConnectorResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSsoConnector = cloudflare.getSsoConnector({
+ * const exampleSsoConnector = cloudflare.sso.getConnector({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     ssoConnectorId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getSsoConnector:getSsoConnector has been deprecated in favor of cloudflare:sso/connector:getConnector */
 export function getSsoConnectorOutput(args: GetSsoConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSsoConnectorResult> {
+    pulumi.log.warn("getSsoConnector is deprecated: cloudflare:index/getSsoConnector:getSsoConnector has been deprecated in favor of cloudflare:sso/connector:getConnector")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getSsoConnector:getSsoConnector", {
         "accountId": args.accountId,

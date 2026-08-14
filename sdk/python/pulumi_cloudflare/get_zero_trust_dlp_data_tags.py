@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_dlp_data_tags_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDlpDataTags:getZeroTrustDlpDataTags has been deprecated in favor of cloudflare:zeroTrustDlpData/tags:getTags""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDlpDataTagsResult:
     """
@@ -96,13 +98,14 @@ def get_zero_trust_dlp_data_tags(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_data_tags = cloudflare.get_zero_trust_dlp_data_tags(account_id="account_id",
+    example_zero_trust_dlp_data_tags = cloudflare.zerotrustdlpdata.get_tags(account_id="account_id",
         category_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_dlp_data_tags is deprecated: cloudflare:index/getZeroTrustDlpDataTags:getZeroTrustDlpDataTags has been deprecated in favor of cloudflare:zeroTrustDlpData/tags:getTags""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['categoryId'] = category_id
@@ -131,13 +134,14 @@ def get_zero_trust_dlp_data_tags_output(account_id: pulumi.Input[Optional[_built
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_data_tags = cloudflare.get_zero_trust_dlp_data_tags(account_id="account_id",
+    example_zero_trust_dlp_data_tags = cloudflare.zerotrustdlpdata.get_tags(account_id="account_id",
         category_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_dlp_data_tags is deprecated: cloudflare:index/getZeroTrustDlpDataTags:getZeroTrustDlpDataTags has been deprecated in favor of cloudflare:zeroTrustDlpData/tags:getTags""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['categoryId'] = category_id

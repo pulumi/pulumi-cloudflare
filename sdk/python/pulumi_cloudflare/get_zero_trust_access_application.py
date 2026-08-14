@@ -23,6 +23,8 @@ __all__ = [
     'get_zero_trust_access_application_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication has been deprecated in favor of cloudflare:zeroTrustAccess/application:getApplication""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustAccessApplicationResult:
     """
@@ -560,7 +562,7 @@ def get_zero_trust_access_application(account_id: Optional[_builtins.str] = None
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_application = cloudflare.get_zero_trust_access_application(app_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_zero_trust_access_application = cloudflare.zerotrustaccess.get_application(app_id="023e105f4ecef8ad9ca31a8372d0c353",
         account_id="account_id",
         zone_id="zone_id")
     ```
@@ -570,6 +572,7 @@ def get_zero_trust_access_application(account_id: Optional[_builtins.str] = None
     :param _builtins.str app_id: Identifier.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_zero_trust_access_application is deprecated: cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication has been deprecated in favor of cloudflare:zeroTrustAccess/application:getApplication""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['appId'] = app_id
@@ -634,7 +637,7 @@ def get_zero_trust_access_application_output(account_id: pulumi.Input[Optional[O
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_application = cloudflare.get_zero_trust_access_application(app_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_zero_trust_access_application = cloudflare.zerotrustaccess.get_application(app_id="023e105f4ecef8ad9ca31a8372d0c353",
         account_id="account_id",
         zone_id="zone_id")
     ```
@@ -644,6 +647,7 @@ def get_zero_trust_access_application_output(account_id: pulumi.Input[Optional[O
     :param _builtins.str app_id: Identifier.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_zero_trust_access_application is deprecated: cloudflare:index/getZeroTrustAccessApplication:getZeroTrustAccessApplication has been deprecated in favor of cloudflare:zeroTrustAccess/application:getApplication""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['appId'] = app_id

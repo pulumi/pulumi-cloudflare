@@ -16,12 +16,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDeviceDefaultProfileCertificates = cloudflare.getZeroTrustDeviceDefaultProfileCertificates({
+ * const exampleZeroTrustDeviceDefaultProfileCertificates = cloudflare.zerotrustdevicedefaultprofile.getCertificates({
  *     zoneId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDeviceDefaultProfileCertificates:getZeroTrustDeviceDefaultProfileCertificates has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/certificates:getCertificates */
 export function getZeroTrustDeviceDefaultProfileCertificates(args?: GetZeroTrustDeviceDefaultProfileCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDeviceDefaultProfileCertificatesResult> {
+    pulumi.log.warn("getZeroTrustDeviceDefaultProfileCertificates is deprecated: cloudflare:index/getZeroTrustDeviceDefaultProfileCertificates:getZeroTrustDeviceDefaultProfileCertificates has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/certificates:getCertificates")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDeviceDefaultProfileCertificates:getZeroTrustDeviceDefaultProfileCertificates", {
@@ -58,12 +60,14 @@ export interface GetZeroTrustDeviceDefaultProfileCertificatesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDeviceDefaultProfileCertificates = cloudflare.getZeroTrustDeviceDefaultProfileCertificates({
+ * const exampleZeroTrustDeviceDefaultProfileCertificates = cloudflare.zerotrustdevicedefaultprofile.getCertificates({
  *     zoneId: "699d98642c564d2e855e9661899b7252",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDeviceDefaultProfileCertificates:getZeroTrustDeviceDefaultProfileCertificates has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/certificates:getCertificates */
 export function getZeroTrustDeviceDefaultProfileCertificatesOutput(args?: GetZeroTrustDeviceDefaultProfileCertificatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDeviceDefaultProfileCertificatesResult> {
+    pulumi.log.warn("getZeroTrustDeviceDefaultProfileCertificates is deprecated: cloudflare:index/getZeroTrustDeviceDefaultProfileCertificates:getZeroTrustDeviceDefaultProfileCertificates has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/certificates:getCertificates")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDeviceDefaultProfileCertificates:getZeroTrustDeviceDefaultProfileCertificates", {

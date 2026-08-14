@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomPageAsset = new cloudflare.CustomPageAsset("example_custom_page_asset", {
+ * const exampleCustomPageAsset = new cloudflare.custompage.Asset("example_custom_page_asset", {
  *     description: "Custom 500 error page",
  *     name: "my_custom_error_page",
  *     url: "https://example.com/error.html",
@@ -24,6 +24,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/customPageAsset:CustomPageAsset example '<{accounts|zones}/{account_id|zone_id}>/<asset_name>'
  * ```
+ *
+ * @deprecated cloudflare:index/customPageAsset:CustomPageAsset has been deprecated in favor of cloudflare:customPage/asset:Asset
  */
 export class CustomPageAsset extends pulumi.CustomResource {
     /**
@@ -36,6 +38,7 @@ export class CustomPageAsset extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CustomPageAssetState, opts?: pulumi.CustomResourceOptions): CustomPageAsset {
+        pulumi.log.warn("CustomPageAsset is deprecated: cloudflare:index/customPageAsset:CustomPageAsset has been deprecated in favor of cloudflare:customPage/asset:Asset")
         return new CustomPageAsset(name, <any>state, { ...opts, id: id });
     }
 
@@ -86,8 +89,11 @@ export class CustomPageAsset extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/customPageAsset:CustomPageAsset has been deprecated in favor of cloudflare:customPage/asset:Asset */
     constructor(name: string, args: CustomPageAssetArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/customPageAsset:CustomPageAsset has been deprecated in favor of cloudflare:customPage/asset:Asset */
     constructor(name: string, argsOrState?: CustomPageAssetArgs | CustomPageAssetState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("CustomPageAsset is deprecated: cloudflare:index/customPageAsset:CustomPageAsset has been deprecated in favor of cloudflare:customPage/asset:Asset")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

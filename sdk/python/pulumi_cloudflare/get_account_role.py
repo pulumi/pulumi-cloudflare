@@ -22,6 +22,8 @@ __all__ = [
     'get_account_role_output',
 ]
 
+warnings.warn("""cloudflare:index/getAccountRole:getAccountRole has been deprecated in favor of cloudflare:account/role:getRole""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAccountRoleResult:
     """
@@ -123,7 +125,7 @@ def get_account_role(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_role = cloudflare.get_account_role(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_account_role = cloudflare.account.get_role(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         role_id="3536bcfad5faccb999b47003c79917fb")
     ```
 
@@ -131,6 +133,7 @@ def get_account_role(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.str role_id: Role identifier tag.
     """
+    pulumi.log.warn("""get_account_role is deprecated: cloudflare:index/getAccountRole:getAccountRole has been deprecated in favor of cloudflare:account/role:getRole""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['roleId'] = role_id
@@ -160,7 +163,7 @@ def get_account_role_output(account_id: pulumi.Input[Optional[_builtins.str]] = 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_role = cloudflare.get_account_role(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_account_role = cloudflare.account.get_role(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         role_id="3536bcfad5faccb999b47003c79917fb")
     ```
 
@@ -168,6 +171,7 @@ def get_account_role_output(account_id: pulumi.Input[Optional[_builtins.str]] = 
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.str role_id: Role identifier tag.
     """
+    pulumi.log.warn("""get_account_role is deprecated: cloudflare:index/getAccountRole:getAccountRole has been deprecated in favor of cloudflare:account/role:getRole""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['roleId'] = role_id

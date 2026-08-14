@@ -30,9 +30,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.R2BucketEventNotification;
- * import com.pulumi.cloudflare.R2BucketEventNotificationArgs;
- * import com.pulumi.cloudflare.inputs.R2BucketEventNotificationRuleArgs;
+ * import com.pulumi.cloudflare.r2Bucket.EventNotification;
+ * import com.pulumi.cloudflare.r2Bucket.EventNotificationArgs;
+ * import com.pulumi.cloudflare.r2Bucket.inputs.EventNotificationRuleArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,11 +46,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleR2BucketEventNotification = new R2BucketEventNotification("exampleR2BucketEventNotification", R2BucketEventNotificationArgs.builder()
+ *         var exampleR2BucketEventNotification = new EventNotification("exampleR2BucketEventNotification", EventNotificationArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .bucketName("example-bucket")
  *             .queueId("queue_id")
- *             .rules(R2BucketEventNotificationRuleArgs.builder()
+ *             .rules(EventNotificationRuleArgs.builder()
  *                 .actions(                
  *                     "PutObject",
  *                     "CopyObject")
@@ -69,7 +69,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/r2BucketEventNotification:R2BucketEventNotification has been deprecated in favor of cloudflare:r2Bucket/eventNotification:EventNotification
+ * 
  */
+@Deprecated /* cloudflare:index/r2BucketEventNotification:R2BucketEventNotification has been deprecated in favor of cloudflare:r2Bucket/eventNotification:EventNotification */
 @ResourceType(type="cloudflare:index/r2BucketEventNotification:R2BucketEventNotification")
 public class R2BucketEventNotification extends com.pulumi.resources.CustomResource {
     /**

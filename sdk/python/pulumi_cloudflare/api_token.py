@@ -286,8 +286,13 @@ class _ApiTokenState:
         pulumi.set(self, "value", value)
 
 
+warnings.warn("""cloudflare:index/apiToken:ApiToken has been deprecated in favor of cloudflare:apiToken/apiToken:ApiToken""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/apiToken:ApiToken")
 class ApiToken(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/apiToken:ApiToken has been deprecated in favor of cloudflare:apiToken/apiToken:ApiToken""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -312,7 +317,7 @@ class ApiToken(pulumi.CustomResource):
         import json
         import pulumi_cloudflare as cloudflare
 
-        example_api_token = cloudflare.ApiToken("example_api_token",
+        example_api_token = cloudflare.apitoken.ApiToken("example_api_token",
             name="workers read-only token",
             policies=[{
                 "effect": "allow",
@@ -379,7 +384,7 @@ class ApiToken(pulumi.CustomResource):
         import json
         import pulumi_cloudflare as cloudflare
 
-        example_api_token = cloudflare.ApiToken("example_api_token",
+        example_api_token = cloudflare.apitoken.ApiToken("example_api_token",
             name="workers read-only token",
             policies=[{
                 "effect": "allow",
@@ -440,6 +445,7 @@ class ApiToken(pulumi.CustomResource):
                  policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict']]]]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ApiToken is deprecated: cloudflare:index/apiToken:ApiToken has been deprecated in favor of cloudflare:apiToken/apiToken:ApiToken""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

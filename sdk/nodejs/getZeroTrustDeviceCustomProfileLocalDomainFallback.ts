@@ -11,13 +11,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDeviceCustomProfileLocalDomainFallback = cloudflare.getZeroTrustDeviceCustomProfileLocalDomainFallback({
+ * const exampleZeroTrustDeviceCustomProfileLocalDomainFallback = cloudflare.zerotrustdevicecustomprofile.getLocalDomainFallback({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     policyId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDeviceCustomProfileLocalDomainFallback:getZeroTrustDeviceCustomProfileLocalDomainFallback has been deprecated in favor of cloudflare:zeroTrustDeviceCustomProfile/localDomainFallback:getLocalDomainFallback */
 export function getZeroTrustDeviceCustomProfileLocalDomainFallback(args: GetZeroTrustDeviceCustomProfileLocalDomainFallbackArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDeviceCustomProfileLocalDomainFallbackResult> {
+    pulumi.log.warn("getZeroTrustDeviceCustomProfileLocalDomainFallback is deprecated: cloudflare:index/getZeroTrustDeviceCustomProfileLocalDomainFallback:getZeroTrustDeviceCustomProfileLocalDomainFallback has been deprecated in favor of cloudflare:zeroTrustDeviceCustomProfile/localDomainFallback:getLocalDomainFallback")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDeviceCustomProfileLocalDomainFallback:getZeroTrustDeviceCustomProfileLocalDomainFallback", {
         "accountId": args.accountId,
@@ -63,13 +65,15 @@ export interface GetZeroTrustDeviceCustomProfileLocalDomainFallbackResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDeviceCustomProfileLocalDomainFallback = cloudflare.getZeroTrustDeviceCustomProfileLocalDomainFallback({
+ * const exampleZeroTrustDeviceCustomProfileLocalDomainFallback = cloudflare.zerotrustdevicecustomprofile.getLocalDomainFallback({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     policyId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDeviceCustomProfileLocalDomainFallback:getZeroTrustDeviceCustomProfileLocalDomainFallback has been deprecated in favor of cloudflare:zeroTrustDeviceCustomProfile/localDomainFallback:getLocalDomainFallback */
 export function getZeroTrustDeviceCustomProfileLocalDomainFallbackOutput(args: GetZeroTrustDeviceCustomProfileLocalDomainFallbackOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDeviceCustomProfileLocalDomainFallbackResult> {
+    pulumi.log.warn("getZeroTrustDeviceCustomProfileLocalDomainFallback is deprecated: cloudflare:index/getZeroTrustDeviceCustomProfileLocalDomainFallback:getZeroTrustDeviceCustomProfileLocalDomainFallback has been deprecated in favor of cloudflare:zeroTrustDeviceCustomProfile/localDomainFallback:getLocalDomainFallback")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDeviceCustomProfileLocalDomainFallback:getZeroTrustDeviceCustomProfileLocalDomainFallback", {
         "accountId": args.accountId,

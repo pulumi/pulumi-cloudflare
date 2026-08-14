@@ -27,14 +27,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/notificationpolicywebhooks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewNotificationPolicyWebhooks(ctx, "example_notification_policy_webhooks", &cloudflare.NotificationPolicyWebhooksArgs{
+//			_, err := notificationpolicywebhooks.NewNotificationPolicyWebhooks(ctx, "example_notification_policy_webhooks", &notificationpolicywebhooks.NotificationPolicyWebhooksArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:      pulumi.String("Slack Webhook"),
 //				Url:       pulumi.String("https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd"),
@@ -54,6 +54,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example '<account_id>/<webhook_id>'
 // ```
+//
+// Deprecated: cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks has been deprecated in favor of cloudflare:notificationPolicyWebhooks/notificationPolicyWebhooks:NotificationPolicyWebhooks
 type NotificationPolicyWebhooks struct {
 	pulumi.CustomResourceState
 

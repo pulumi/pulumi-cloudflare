@@ -250,8 +250,13 @@ class _PipelineStreamState:
         pulumi.set(self, "worker_binding", value)
 
 
+warnings.warn("""cloudflare:index/pipelineStream:PipelineStream has been deprecated in favor of cloudflare:pipeline/stream:Stream""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/pipelineStream:PipelineStream")
 class PipelineStream(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/pipelineStream:PipelineStream has been deprecated in favor of cloudflare:pipeline/stream:Stream""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -275,7 +280,7 @@ class PipelineStream(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_pipeline_stream = cloudflare.PipelineStream("example_pipeline_stream",
+        example_pipeline_stream = cloudflare.pipeline.Stream("example_pipeline_stream",
             account_id="0123105f4ecef8ad9ca31a8372d0c353",
             name="my_stream",
             format={
@@ -342,7 +347,7 @@ class PipelineStream(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_pipeline_stream = cloudflare.PipelineStream("example_pipeline_stream",
+        example_pipeline_stream = cloudflare.pipeline.Stream("example_pipeline_stream",
             account_id="0123105f4ecef8ad9ca31a8372d0c353",
             name="my_stream",
             format={
@@ -408,6 +413,7 @@ class PipelineStream(pulumi.CustomResource):
                  schema: pulumi.Input[Optional[Union['PipelineStreamSchemaArgs', 'PipelineStreamSchemaArgsDict']]] = None,
                  worker_binding: pulumi.Input[Optional[Union['PipelineStreamWorkerBindingArgs', 'PipelineStreamWorkerBindingArgsDict']]] = None,
                  __props__=None):
+        pulumi.log.warn("""PipelineStream is deprecated: cloudflare:index/pipelineStream:PipelineStream has been deprecated in favor of cloudflare:pipeline/stream:Stream""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -19,38 +19,38 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/r2bucket"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewR2BucketLifecycle(ctx, "example_r2_bucket_lifecycle", &cloudflare.R2BucketLifecycleArgs{
+//			_, err := r2bucket.NewLifecycle(ctx, "example_r2_bucket_lifecycle", &r2bucket.LifecycleArgs{
 //				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				BucketName: pulumi.String("example-bucket"),
-//				Rules: cloudflare.R2BucketLifecycleRuleArray{
-//					&cloudflare.R2BucketLifecycleRuleArgs{
+//				Rules: r2bucket.LifecycleRuleArray{
+//					&r2bucket.LifecycleRuleArgs{
 //						Id: pulumi.String("Expire all objects older than 24 hours"),
-//						Conditions: &cloudflare.R2BucketLifecycleRuleConditionsArgs{
+//						Conditions: &r2bucket.LifecycleRuleConditionsArgs{
 //							Prefix: pulumi.String("prefix"),
 //						},
 //						Enabled: pulumi.Bool(true),
-//						AbortMultipartUploadsTransition: &cloudflare.R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs{
-//							Condition: &cloudflare.R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs{
+//						AbortMultipartUploadsTransition: &r2bucket.LifecycleRuleAbortMultipartUploadsTransitionArgs{
+//							Condition: &r2bucket.LifecycleRuleAbortMultipartUploadsTransitionConditionArgs{
 //								MaxAge: pulumi.Int(0),
 //								Type:   pulumi.String("Age"),
 //							},
 //						},
-//						DeleteObjectsTransition: &cloudflare.R2BucketLifecycleRuleDeleteObjectsTransitionArgs{
-//							Condition: &cloudflare.R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs{
+//						DeleteObjectsTransition: &r2bucket.LifecycleRuleDeleteObjectsTransitionArgs{
+//							Condition: &r2bucket.LifecycleRuleDeleteObjectsTransitionConditionArgs{
 //								MaxAge: pulumi.Int(0),
 //								Type:   pulumi.String("Age"),
 //							},
 //						},
-//						StorageClassTransitions: cloudflare.R2BucketLifecycleRuleStorageClassTransitionArray{
-//							&cloudflare.R2BucketLifecycleRuleStorageClassTransitionArgs{
-//								Condition: &cloudflare.R2BucketLifecycleRuleStorageClassTransitionConditionArgs{
+//						StorageClassTransitions: r2bucket.LifecycleRuleStorageClassTransitionArray{
+//							&r2bucket.LifecycleRuleStorageClassTransitionArgs{
+//								Condition: &r2bucket.LifecycleRuleStorageClassTransitionConditionArgs{
 //									MaxAge: pulumi.Int(0),
 //									Type:   pulumi.String("Age"),
 //								},
@@ -72,6 +72,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/r2BucketLifecycle:R2BucketLifecycle has been deprecated in favor of cloudflare:r2Bucket/lifecycle:Lifecycle
 type R2BucketLifecycle struct {
 	pulumi.CustomResourceState
 

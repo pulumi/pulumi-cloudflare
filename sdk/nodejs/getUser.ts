@@ -18,10 +18,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleUser = cloudflare.getUser({});
+ * const exampleUser = cloudflare.user.getUser({});
  * ```
  */
+/** @deprecated cloudflare:index/getUser:getUser has been deprecated in favor of cloudflare:user/user:getUser */
 export function getUser(opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
+    pulumi.log.warn("getUser is deprecated: cloudflare:index/getUser:getUser has been deprecated in favor of cloudflare:user/user:getUser")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getUser:getUser", {
     }, opts);
@@ -101,10 +103,12 @@ export interface GetUserResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleUser = cloudflare.getUser({});
+ * const exampleUser = cloudflare.user.getUser({});
  * ```
  */
+/** @deprecated cloudflare:index/getUser:getUser has been deprecated in favor of cloudflare:user/user:getUser */
 export function getUserOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserResult> {
+    pulumi.log.warn("getUser is deprecated: cloudflare:index/getUser:getUser has been deprecated in favor of cloudflare:user/user:getUser")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getUser:getUser", {
     }, opts);

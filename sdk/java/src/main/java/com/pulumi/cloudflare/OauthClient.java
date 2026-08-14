@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.OauthClient;
- * import com.pulumi.cloudflare.OauthClientArgs;
+ * import com.pulumi.cloudflare.oauth.Client;
+ * import com.pulumi.cloudflare.oauth.ClientArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleOauthClient = new OauthClient("exampleOauthClient", OauthClientArgs.builder()
+ *         var exampleOauthClient = new Client("exampleOauthClient", ClientArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .clientName("My OAuth App")
  *             .grantTypes(            
@@ -74,7 +74,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/oauthClient:OauthClient has been deprecated in favor of cloudflare:oauth/client:Client
+ * 
  */
+@Deprecated /* cloudflare:index/oauthClient:OauthClient has been deprecated in favor of cloudflare:oauth/client:Client */
 @ResourceType(type="cloudflare:index/oauthClient:OauthClient")
 public class OauthClient extends com.pulumi.resources.CustomResource {
     /**

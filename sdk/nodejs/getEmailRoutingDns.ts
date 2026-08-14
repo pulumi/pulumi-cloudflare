@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleEmailRoutingDns = cloudflare.getEmailRoutingDns({
+ * const exampleEmailRoutingDns = cloudflare.emailrouting.getDns({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     subdomain: "example.net",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getEmailRoutingDns:getEmailRoutingDns has been deprecated in favor of cloudflare:emailRouting/dns:getDns */
 export function getEmailRoutingDns(args?: GetEmailRoutingDnsArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailRoutingDnsResult> {
+    pulumi.log.warn("getEmailRoutingDns is deprecated: cloudflare:index/getEmailRoutingDns:getEmailRoutingDns has been deprecated in favor of cloudflare:emailRouting/dns:getDns")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getEmailRoutingDns:getEmailRoutingDns", {
@@ -84,13 +86,15 @@ export interface GetEmailRoutingDnsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleEmailRoutingDns = cloudflare.getEmailRoutingDns({
+ * const exampleEmailRoutingDns = cloudflare.emailrouting.getDns({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     subdomain: "example.net",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getEmailRoutingDns:getEmailRoutingDns has been deprecated in favor of cloudflare:emailRouting/dns:getDns */
 export function getEmailRoutingDnsOutput(args?: GetEmailRoutingDnsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailRoutingDnsResult> {
+    pulumi.log.warn("getEmailRoutingDns is deprecated: cloudflare:index/getEmailRoutingDns:getEmailRoutingDns has been deprecated in favor of cloudflare:emailRouting/dns:getDns")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getEmailRoutingDns:getEmailRoutingDns", {

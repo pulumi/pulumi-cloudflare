@@ -22,6 +22,8 @@ __all__ = [
     'get_token_validation_config_output',
 ]
 
+warnings.warn("""cloudflare:index/getTokenValidationConfig:getTokenValidationConfig has been deprecated in favor of cloudflare:tokenValidation/config:getConfig""", DeprecationWarning)
+
 @pulumi.output_type
 class GetTokenValidationConfigResult:
     """
@@ -157,7 +159,7 @@ def get_token_validation_config(config_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_token_validation_config = cloudflare.get_token_validation_config(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_token_validation_config = cloudflare.tokenvalidation.get_config(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         config_id="4a7ee8d3-dd63-4ceb-9d5f-c27831854ce7")
     ```
 
@@ -165,6 +167,7 @@ def get_token_validation_config(config_id: Optional[_builtins.str] = None,
     :param _builtins.str config_id: UUID.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_token_validation_config is deprecated: cloudflare:index/getTokenValidationConfig:getTokenValidationConfig has been deprecated in favor of cloudflare:tokenValidation/config:getConfig""")
     __args__ = dict()
     __args__['configId'] = config_id
     __args__['zoneId'] = zone_id
@@ -199,7 +202,7 @@ def get_token_validation_config_output(config_id: pulumi.Input[Optional[_builtin
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_token_validation_config = cloudflare.get_token_validation_config(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_token_validation_config = cloudflare.tokenvalidation.get_config(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         config_id="4a7ee8d3-dd63-4ceb-9d5f-c27831854ce7")
     ```
 
@@ -207,6 +210,7 @@ def get_token_validation_config_output(config_id: pulumi.Input[Optional[_builtin
     :param _builtins.str config_id: UUID.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_token_validation_config is deprecated: cloudflare:index/getTokenValidationConfig:getTokenValidationConfig has been deprecated in favor of cloudflare:tokenValidation/config:getConfig""")
     __args__ = dict()
     __args__['configId'] = config_id
     __args__['zoneId'] = zone_id

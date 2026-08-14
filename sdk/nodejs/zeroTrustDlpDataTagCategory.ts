@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpDataTagCategory = new cloudflare.ZeroTrustDlpDataTagCategory("example_zero_trust_dlp_data_tag_category", {
+ * const exampleZeroTrustDlpDataTagCategory = new cloudflare.zerotrustdlpdatatag.Category("example_zero_trust_dlp_data_tag_category", {
  *     accountId: "account_id",
  *     name: "name",
  *     description: "description",
@@ -30,6 +30,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustDlpDataTagCategory:ZeroTrustDlpDataTagCategory example '<account_id>/<category_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustDlpDataTagCategory:ZeroTrustDlpDataTagCategory has been deprecated in favor of cloudflare:zeroTrustDlpDataTag/category:Category
  */
 export class ZeroTrustDlpDataTagCategory extends pulumi.CustomResource {
     /**
@@ -42,6 +44,7 @@ export class ZeroTrustDlpDataTagCategory extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustDlpDataTagCategoryState, opts?: pulumi.CustomResourceOptions): ZeroTrustDlpDataTagCategory {
+        pulumi.log.warn("ZeroTrustDlpDataTagCategory is deprecated: cloudflare:index/zeroTrustDlpDataTagCategory:ZeroTrustDlpDataTagCategory has been deprecated in favor of cloudflare:zeroTrustDlpDataTag/category:Category")
         return new ZeroTrustDlpDataTagCategory(name, <any>state, { ...opts, id: id });
     }
 
@@ -74,8 +77,11 @@ export class ZeroTrustDlpDataTagCategory extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustDlpDataTagCategory:ZeroTrustDlpDataTagCategory has been deprecated in favor of cloudflare:zeroTrustDlpDataTag/category:Category */
     constructor(name: string, args: ZeroTrustDlpDataTagCategoryArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustDlpDataTagCategory:ZeroTrustDlpDataTagCategory has been deprecated in favor of cloudflare:zeroTrustDlpDataTag/category:Category */
     constructor(name: string, argsOrState?: ZeroTrustDlpDataTagCategoryArgs | ZeroTrustDlpDataTagCategoryState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustDlpDataTagCategory is deprecated: cloudflare:index/zeroTrustDlpDataTagCategory:ZeroTrustDlpDataTagCategory has been deprecated in favor of cloudflare:zeroTrustDlpDataTag/category:Category")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

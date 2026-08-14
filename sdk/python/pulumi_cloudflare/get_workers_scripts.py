@@ -22,6 +22,8 @@ __all__ = [
     'get_workers_scripts_output',
 ]
 
+warnings.warn("""cloudflare:index/getWorkersScripts:getWorkersScripts has been deprecated in favor of cloudflare:workers/scripts:getScripts""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWorkersScriptsResult:
     """
@@ -103,7 +105,7 @@ def get_workers_scripts(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_scripts = cloudflare.get_workers_scripts(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_scripts = cloudflare.workers.get_scripts(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         tags="production:yes,staging:no")
     ```
 
@@ -112,6 +114,7 @@ def get_workers_scripts(account_id: Optional[_builtins.str] = None,
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str tags: Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'.
     """
+    pulumi.log.warn("""get_workers_scripts is deprecated: cloudflare:index/getWorkersScripts:getWorkersScripts has been deprecated in favor of cloudflare:workers/scripts:getScripts""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -141,7 +144,7 @@ def get_workers_scripts_output(account_id: pulumi.Input[Optional[Optional[_built
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_scripts = cloudflare.get_workers_scripts(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_scripts = cloudflare.workers.get_scripts(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         tags="production:yes,staging:no")
     ```
 
@@ -150,6 +153,7 @@ def get_workers_scripts_output(account_id: pulumi.Input[Optional[Optional[_built
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str tags: Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'.
     """
+    pulumi.log.warn("""get_workers_scripts is deprecated: cloudflare:index/getWorkersScripts:getWorkersScripts has been deprecated in favor of cloudflare:workers/scripts:getScripts""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

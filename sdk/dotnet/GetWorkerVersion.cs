@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getWorkerVersion:getWorkerVersion has been deprecated in favor of cloudflare:worker/version:getVersion")]
     public static class GetWorkerVersion
     {
         /// <summary>
@@ -28,7 +29,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkerVersion = Cloudflare.GetWorkerVersion.Invoke(new()
+        ///     var exampleWorkerVersion = Cloudflare.Modules.Worker.GetVersion.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         WorkerId = "worker_id",
@@ -59,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkerVersion = Cloudflare.GetWorkerVersion.Invoke(new()
+        ///     var exampleWorkerVersion = Cloudflare.Modules.Worker.GetVersion.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         WorkerId = "worker_id",
@@ -90,7 +91,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkerVersion = Cloudflare.GetWorkerVersion.Invoke(new()
+        ///     var exampleWorkerVersion = Cloudflare.Modules.Worker.GetVersion.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         WorkerId = "worker_id",

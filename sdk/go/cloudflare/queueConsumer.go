@@ -26,20 +26,20 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/queue"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewQueueConsumer(ctx, "example_queue_consumer", &cloudflare.QueueConsumerArgs{
+//			_, err := queue.NewConsumer(ctx, "example_queue_consumer", &queue.ConsumerArgs{
 //				AccountId:       pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				QueueId:         pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ScriptName:      pulumi.String("my-consumer-worker"),
 //				Type:            pulumi.String("worker"),
 //				DeadLetterQueue: pulumi.String("example-queue"),
-//				Settings: &cloudflare.QueueConsumerSettingsArgs{
+//				Settings: &queue.ConsumerSettingsArgs{
 //					BatchSize:      pulumi.Float64(50),
 //					MaxConcurrency: pulumi.Float64(10),
 //					MaxRetries:     pulumi.Float64(3),
@@ -59,6 +59,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/queueConsumer:QueueConsumer has been deprecated in favor of cloudflare:queue/consumer:Consumer
 type QueueConsumer struct {
 	pulumi.CustomResourceState
 

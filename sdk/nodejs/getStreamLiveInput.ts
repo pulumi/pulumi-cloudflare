@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleStreamLiveInput = cloudflare.getStreamLiveInput({
+ * const exampleStreamLiveInput = cloudflare.stream.getLiveInput({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     liveInputIdentifier: "66be4bf738797e01e1fca35a7bdecdcd",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getStreamLiveInput:getStreamLiveInput has been deprecated in favor of cloudflare:stream/liveInput:getLiveInput */
 export function getStreamLiveInput(args: GetStreamLiveInputArgs, opts?: pulumi.InvokeOptions): Promise<GetStreamLiveInputResult> {
+    pulumi.log.warn("getStreamLiveInput is deprecated: cloudflare:index/getStreamLiveInput:getStreamLiveInput has been deprecated in favor of cloudflare:stream/liveInput:getLiveInput")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getStreamLiveInput:getStreamLiveInput", {
         "accountId": args.accountId,
@@ -136,13 +138,15 @@ export interface GetStreamLiveInputResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleStreamLiveInput = cloudflare.getStreamLiveInput({
+ * const exampleStreamLiveInput = cloudflare.stream.getLiveInput({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     liveInputIdentifier: "66be4bf738797e01e1fca35a7bdecdcd",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getStreamLiveInput:getStreamLiveInput has been deprecated in favor of cloudflare:stream/liveInput:getLiveInput */
 export function getStreamLiveInputOutput(args: GetStreamLiveInputOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStreamLiveInputResult> {
+    pulumi.log.warn("getStreamLiveInput is deprecated: cloudflare:index/getStreamLiveInput:getStreamLiveInput has been deprecated in favor of cloudflare:stream/liveInput:getLiveInput")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getStreamLiveInput:getStreamLiveInput", {
         "accountId": args.accountId,

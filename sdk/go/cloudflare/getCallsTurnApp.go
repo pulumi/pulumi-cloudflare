@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/callsturn"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetCallsTurnApp(ctx, &cloudflare.LookupCallsTurnAppArgs{
+//			_, err := callsturn.GetApp(ctx, &callsturn.GetAppArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				KeyId:     "2a95132c15732412d22c1476fa83f27a",
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getCallsTurnApp:getCallsTurnApp has been deprecated in favor of cloudflare:callsTurn/app:getApp
 func LookupCallsTurnApp(ctx *pulumi.Context, args *LookupCallsTurnAppArgs, opts ...pulumi.InvokeOption) (*LookupCallsTurnAppResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCallsTurnAppResult

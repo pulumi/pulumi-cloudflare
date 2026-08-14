@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustDlpSensitivityLevel:getZeroTrustDlpSensitivityLevel has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/zeroTrustDlpSensitivityLevel:getZeroTrustDlpSensitivityLevel")]
     public static class GetZeroTrustDlpSensitivityLevel
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDlpSensitivityLevel = Cloudflare.GetZeroTrustDlpSensitivityLevel.Invoke(new()
+        ///     var exampleZeroTrustDlpSensitivityLevel = Cloudflare.Modules.ZeroTrustDlpSensitivityLevel.GetZeroTrustDlpSensitivityLevel.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         SensitivityGroupId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -56,7 +57,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDlpSensitivityLevel = Cloudflare.GetZeroTrustDlpSensitivityLevel.Invoke(new()
+        ///     var exampleZeroTrustDlpSensitivityLevel = Cloudflare.Modules.ZeroTrustDlpSensitivityLevel.GetZeroTrustDlpSensitivityLevel.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         SensitivityGroupId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -85,7 +86,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDlpSensitivityLevel = Cloudflare.GetZeroTrustDlpSensitivityLevel.Invoke(new()
+        ///     var exampleZeroTrustDlpSensitivityLevel = Cloudflare.Modules.ZeroTrustDlpSensitivityLevel.GetZeroTrustDlpSensitivityLevel.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         SensitivityGroupId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",

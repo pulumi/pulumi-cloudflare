@@ -8,7 +8,6 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.DevicePostureRuleState;
 import com.pulumi.cloudflare.outputs.DevicePostureRuleInput;
 import com.pulumi.cloudflare.outputs.DevicePostureRuleMatch;
-import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -33,10 +32,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDevicePostureRule;
- * import com.pulumi.cloudflare.ZeroTrustDevicePostureRuleArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDevicePostureRuleInputArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDevicePostureRuleMatchArgs;
+ * import com.pulumi.cloudflare.zeroTrustDevicePosture.Rule;
+ * import com.pulumi.cloudflare.zeroTrustDevicePosture.RuleArgs;
+ * import com.pulumi.cloudflare.zeroTrustDevicePosture.inputs.RuleInputArgs;
+ * import com.pulumi.cloudflare.zeroTrustDevicePosture.inputs.RuleMatchArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -50,20 +49,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustDevicePostureRule = new ZeroTrustDevicePostureRule("exampleZeroTrustDevicePostureRule", ZeroTrustDevicePostureRuleArgs.builder()
+ *         var exampleZeroTrustDevicePostureRule = new Rule("exampleZeroTrustDevicePostureRule", RuleArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
  *             .name("Admin Serial Numbers")
  *             .type("file")
  *             .description("The rule for admin serial numbers")
  *             .expiration("1h")
- *             .input(ZeroTrustDevicePostureRuleInputArgs.builder()
+ *             .input(RuleInputArgs.builder()
  *                 .operatingSystem("linux")
  *                 .path("/bin/cat")
  *                 .exists(true)
  *                 .sha256("https://api.us-2.crowdstrike.com")
  *                 .thumbprint("0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e")
  *                 .build())
- *             .matches(ZeroTrustDevicePostureRuleMatchArgs.builder()
+ *             .matches(RuleMatchArgs.builder()
  *                 .platform("windows")
  *                 .build())
  *             .schedule("1h")
@@ -247,9 +246,6 @@ public class DevicePostureRule extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .aliases(List.of(
-                Output.of(Alias.builder().type("cloudflare:index/devicePostureRule:DevicePostureRule").build())
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

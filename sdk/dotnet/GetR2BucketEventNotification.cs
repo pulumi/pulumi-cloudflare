@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getR2BucketEventNotification:getR2BucketEventNotification has been deprecated in favor of cloudflare:r2Bucket/eventNotification:getEventNotification")]
     public static class GetR2BucketEventNotification
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleR2BucketEventNotification = Cloudflare.GetR2BucketEventNotification.Invoke(new()
+        ///     var exampleR2BucketEventNotification = Cloudflare.Modules.R2Bucket.GetEventNotification.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         BucketName = "example-bucket",
@@ -56,7 +57,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleR2BucketEventNotification = Cloudflare.GetR2BucketEventNotification.Invoke(new()
+        ///     var exampleR2BucketEventNotification = Cloudflare.Modules.R2Bucket.GetEventNotification.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         BucketName = "example-bucket",
@@ -85,7 +86,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleR2BucketEventNotification = Cloudflare.GetR2BucketEventNotification.Invoke(new()
+        ///     var exampleR2BucketEventNotification = Cloudflare.Modules.R2Bucket.GetEventNotification.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         BucketName = "example-bucket",

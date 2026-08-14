@@ -25,11 +25,11 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAccountSubscription = new Cloudflare.AccountSubscription("example_account_subscription", new()
+    ///     var exampleAccountSubscription = new Cloudflare.Modules.Account.AccountSubscription("example_account_subscription", new()
     ///     {
     ///         AccountId = "account_id",
     ///         Frequency = "monthly",
-    ///         RatePlan = new Cloudflare.Inputs.AccountSubscriptionRatePlanArgs
+    ///         RatePlan = new Cloudflare.Modules.Account.Inputs.SubscriptionRatePlanArgs
     ///         {
     ///             Id = "free",
     ///             Currency = "USD",
@@ -53,6 +53,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example '&lt;account_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/accountSubscription:AccountSubscription has been deprecated in favor of cloudflare:account/subscription:Subscription")]
     [CloudflareResourceType("cloudflare:index/accountSubscription:AccountSubscription")]
     public partial class AccountSubscription : global::Pulumi.CustomResource
     {

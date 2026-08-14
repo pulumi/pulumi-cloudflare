@@ -33,9 +33,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustTunnelWarpConnectorConfig;
- * import com.pulumi.cloudflare.ZeroTrustTunnelWarpConnectorConfigArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustTunnelWarpConnectorConfigConfigArgs;
+ * import com.pulumi.cloudflare.zeroTrustTunnelWarpConnector.Config;
+ * import com.pulumi.cloudflare.zeroTrustTunnelWarpConnector.ConfigArgs;
+ * import com.pulumi.cloudflare.zeroTrustTunnelWarpConnector.inputs.ConfigConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -49,11 +49,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustTunnelWarpConnectorConfig = new ZeroTrustTunnelWarpConnectorConfig("exampleZeroTrustTunnelWarpConnectorConfig", ZeroTrustTunnelWarpConnectorConfigArgs.builder()
+ *         var exampleZeroTrustTunnelWarpConnectorConfig = new Config("exampleZeroTrustTunnelWarpConnectorConfig", ConfigArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
  *             .haMode("aws")
- *             .config(ZeroTrustTunnelWarpConnectorConfigConfigArgs.builder()
+ *             .config(ConfigConfigArgs.builder()
  *                 .fnrId("eni-0123456789abcdef0")
  *                 .build())
  *             .build());
@@ -69,7 +69,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustTunnelWarpConnectorConfig:ZeroTrustTunnelWarpConnectorConfig example &#39;&lt;account_id&gt;/&lt;tunnel_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustTunnelWarpConnectorConfig:ZeroTrustTunnelWarpConnectorConfig has been deprecated in favor of cloudflare:zeroTrustTunnelWarpConnector/config:Config
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustTunnelWarpConnectorConfig:ZeroTrustTunnelWarpConnectorConfig has been deprecated in favor of cloudflare:zeroTrustTunnelWarpConnector/config:Config */
 @ResourceType(type="cloudflare:index/zeroTrustTunnelWarpConnectorConfig:ZeroTrustTunnelWarpConnectorConfig")
 public class ZeroTrustTunnelWarpConnectorConfig extends com.pulumi.resources.CustomResource {
     /**

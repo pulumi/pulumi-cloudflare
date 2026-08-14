@@ -28,8 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.CustomOriginTrustStore;
- * import com.pulumi.cloudflare.CustomOriginTrustStoreArgs;
+ * import com.pulumi.cloudflare.customOriginTrust.Store;
+ * import com.pulumi.cloudflare.customOriginTrust.StoreArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleCustomOriginTrustStore = new CustomOriginTrustStore("exampleCustomOriginTrustStore", CustomOriginTrustStoreArgs.builder()
+ *         var exampleCustomOriginTrustStore = new Store("exampleCustomOriginTrustStore", StoreArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .certificate("""
  *   -----BEGIN CERTIFICATE-----
@@ -64,7 +64,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/customOriginTrustStore:CustomOriginTrustStore example &#39;&lt;zone_id&gt;/&lt;custom_origin_trust_store_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/customOriginTrustStore:CustomOriginTrustStore has been deprecated in favor of cloudflare:customOriginTrust/store:Store
+ * 
  */
+@Deprecated /* cloudflare:index/customOriginTrustStore:CustomOriginTrustStore has been deprecated in favor of cloudflare:customOriginTrust/store:Store */
 @ResourceType(type="cloudflare:index/customOriginTrustStore:CustomOriginTrustStore")
 public class CustomOriginTrustStore extends com.pulumi.resources.CustomResource {
     /**

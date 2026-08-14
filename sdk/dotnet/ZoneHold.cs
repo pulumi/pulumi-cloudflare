@@ -59,7 +59,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZoneHold = new Cloudflare.ZoneHold("example_zone_hold", new()
+    ///     var exampleZoneHold = new Cloudflare.Modules.Zone.ZoneHold("example_zone_hold", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///     });
@@ -73,6 +73,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zoneHold:ZoneHold example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zoneHold:ZoneHold has been deprecated in favor of cloudflare:zone/hold:Hold")]
     [CloudflareResourceType("cloudflare:index/zoneHold:ZoneHold")]
     public partial class ZoneHold : global::Pulumi.CustomResource
     {

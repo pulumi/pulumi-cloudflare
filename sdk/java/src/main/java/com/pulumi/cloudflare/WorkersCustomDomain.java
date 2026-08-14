@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WorkersCustomDomain;
- * import com.pulumi.cloudflare.WorkersCustomDomainArgs;
+ * import com.pulumi.cloudflare.workersCustom.Domain;
+ * import com.pulumi.cloudflare.workersCustom.DomainArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleWorkersCustomDomain = new WorkersCustomDomain("exampleWorkersCustomDomain", WorkersCustomDomainArgs.builder()
+ *         var exampleWorkersCustomDomain = new Domain("exampleWorkersCustomDomain", DomainArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .hostname("app.example.com")
  *             .service("my-worker")
@@ -64,7 +64,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/workersCustomDomain:WorkersCustomDomain example &#39;&lt;account_id&gt;/&lt;domain_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/workersCustomDomain:WorkersCustomDomain has been deprecated in favor of cloudflare:workersCustom/domain:Domain
+ * 
  */
+@Deprecated /* cloudflare:index/workersCustomDomain:WorkersCustomDomain has been deprecated in favor of cloudflare:workersCustom/domain:Domain */
 @ResourceType(type="cloudflare:index/workersCustomDomain:WorkersCustomDomain")
 public class WorkersCustomDomain extends com.pulumi.resources.CustomResource {
     /**

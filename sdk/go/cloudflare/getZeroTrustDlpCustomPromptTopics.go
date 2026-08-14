@@ -15,6 +15,8 @@ import (
 //
 // - `Zero Trust Read`
 // - `Zero Trust Write`
+//
+// Deprecated: cloudflare:index/getZeroTrustDlpCustomPromptTopics:getZeroTrustDlpCustomPromptTopics has been deprecated in favor of cloudflare:zeroTrustDlpCustomPrompt/topics:getTopics
 func LookupZeroTrustDlpCustomPromptTopics(ctx *pulumi.Context, args *LookupZeroTrustDlpCustomPromptTopicsArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustDlpCustomPromptTopicsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustDlpCustomPromptTopicsResult

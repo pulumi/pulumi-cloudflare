@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/certificate"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetCertificatePacks(ctx, &cloudflare.LookupCertificatePacksArgs{
+//			_, err := certificate.LookupPacks(ctx, &certificate.LookupPacksArgs{
 //				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Deploy: pulumi.StringRef("staging"),
 //				Status: pulumi.StringRef("all"),
@@ -43,6 +43,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getCertificatePacks:getCertificatePacks has been deprecated in favor of cloudflare:certificate/packs:getPacks
 func LookupCertificatePacks(ctx *pulumi.Context, args *LookupCertificatePacksArgs, opts ...pulumi.InvokeOption) (*LookupCertificatePacksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCertificatePacksResult

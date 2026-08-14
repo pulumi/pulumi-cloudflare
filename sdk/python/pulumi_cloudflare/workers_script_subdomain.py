@@ -159,8 +159,13 @@ class _WorkersScriptSubdomainState:
         pulumi.set(self, "script_name", value)
 
 
+warnings.warn("""cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain has been deprecated in favor of cloudflare:workersScript/subdomain:Subdomain""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain")
 class WorkersScriptSubdomain(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain has been deprecated in favor of cloudflare:workersScript/subdomain:Subdomain""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -177,7 +182,7 @@ class WorkersScriptSubdomain(pulumi.CustomResource):
         - `Workers Scripts Write`
         - `Workers Tail Read`
 
-        > This resource is redundant with `Worker` and should not be used together. When using the `Worker` resource, use the nested `subdomain` attribute to control subdomain settings instead.
+        > This resource is redundant with `worker.Worker` and should not be used together. When using the `worker.Worker` resource, use the nested `subdomain` attribute to control subdomain settings instead.
 
         ## Example Usage
 
@@ -185,7 +190,7 @@ class WorkersScriptSubdomain(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_workers_script_subdomain = cloudflare.WorkersScriptSubdomain("example_workers_script_subdomain",
+        example_workers_script_subdomain = cloudflare.workersscript.Subdomain("example_workers_script_subdomain",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             script_name="this-is_my_script-01",
             enabled=True,
@@ -219,7 +224,7 @@ class WorkersScriptSubdomain(pulumi.CustomResource):
         - `Workers Scripts Write`
         - `Workers Tail Read`
 
-        > This resource is redundant with `Worker` and should not be used together. When using the `Worker` resource, use the nested `subdomain` attribute to control subdomain settings instead.
+        > This resource is redundant with `worker.Worker` and should not be used together. When using the `worker.Worker` resource, use the nested `subdomain` attribute to control subdomain settings instead.
 
         ## Example Usage
 
@@ -227,7 +232,7 @@ class WorkersScriptSubdomain(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_workers_script_subdomain = cloudflare.WorkersScriptSubdomain("example_workers_script_subdomain",
+        example_workers_script_subdomain = cloudflare.workersscript.Subdomain("example_workers_script_subdomain",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             script_name="this-is_my_script-01",
             enabled=True,
@@ -261,6 +266,7 @@ class WorkersScriptSubdomain(pulumi.CustomResource):
                  previews_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""WorkersScriptSubdomain is deprecated: cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain has been deprecated in favor of cloudflare:workersScript/subdomain:Subdomain""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

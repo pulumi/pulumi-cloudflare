@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSecretsStore = new cloudflare.SecretsStore("example_secrets_store", {
+ * const exampleSecretsStore = new cloudflare.secretsstore.SecretsStore("example_secrets_store", {
  *     accountId: "985e105f4ecef8ad9ca31a8372d0c353",
  *     name: "service_x_keys",
  * });
@@ -27,6 +27,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/secretsStore:SecretsStore example '<account_id>/<store_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/secretsStore:SecretsStore has been deprecated in favor of cloudflare:secretsStore/secretsStore:SecretsStore
  */
 export class SecretsStore extends pulumi.CustomResource {
     /**
@@ -39,6 +41,7 @@ export class SecretsStore extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SecretsStoreState, opts?: pulumi.CustomResourceOptions): SecretsStore {
+        pulumi.log.warn("SecretsStore is deprecated: cloudflare:index/secretsStore:SecretsStore has been deprecated in favor of cloudflare:secretsStore/secretsStore:SecretsStore")
         return new SecretsStore(name, <any>state, { ...opts, id: id });
     }
 
@@ -77,8 +80,11 @@ export class SecretsStore extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/secretsStore:SecretsStore has been deprecated in favor of cloudflare:secretsStore/secretsStore:SecretsStore */
     constructor(name: string, args: SecretsStoreArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/secretsStore:SecretsStore has been deprecated in favor of cloudflare:secretsStore/secretsStore:SecretsStore */
     constructor(name: string, argsOrState?: SecretsStoreArgs | SecretsStoreState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("SecretsStore is deprecated: cloudflare:index/secretsStore:SecretsStore has been deprecated in favor of cloudflare:secretsStore/secretsStore:SecretsStore")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

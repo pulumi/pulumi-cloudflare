@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getDnsRecords:getDnsRecords has been deprecated in favor of cloudflare:dns/records:getRecords")]
     public static class GetDnsRecords
     {
         /// <summary>
@@ -27,10 +28,10 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDnsRecords = Cloudflare.GetDnsRecords.Invoke(new()
+        ///     var exampleDnsRecords = Cloudflare.Modules.Dns.GetRecords.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         Comment = new Cloudflare.Inputs.GetDnsRecordsCommentInputArgs
+        ///         Comment = new Cloudflare.Modules.Dns.Inputs.GetRecordsCommentInputArgs
         ///         {
         ///             Absent = "absent",
         ///             Contains = "ello, worl",
@@ -39,14 +40,14 @@ namespace Pulumi.Cloudflare
         ///             Present = "present",
         ///             Startswith = "Hello, w",
         ///         },
-        ///         Content = new Cloudflare.Inputs.GetDnsRecordsContentInputArgs
+        ///         Content = new Cloudflare.Modules.Dns.Inputs.GetRecordsContentInputArgs
         ///         {
         ///             Contains = "7.0.0.",
         ///             Endswith = ".0.1",
         ///             Exact = "127.0.0.1",
         ///             Startswith = "127.0.",
         ///         },
-        ///         Name = new Cloudflare.Inputs.GetDnsRecordsNameInputArgs
+        ///         Name = new Cloudflare.Modules.Dns.Inputs.GetRecordsNameInputArgs
         ///         {
         ///             Contains = "w.example.",
         ///             Endswith = ".example.com",
@@ -56,7 +57,7 @@ namespace Pulumi.Cloudflare
         ///         Search = "www.cloudflare.com",
         ///         ShadowedByName = "sub.example.com",
         ///         ShadowingName = "www.sub.example.com",
-        ///         Tag = new Cloudflare.Inputs.GetDnsRecordsTagInputArgs
+        ///         Tag = new Cloudflare.Modules.Dns.Inputs.GetRecordsTagInputArgs
         ///         {
         ///             Absent = "important",
         ///             Contains = "greeting:ello, worl",
@@ -90,10 +91,10 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDnsRecords = Cloudflare.GetDnsRecords.Invoke(new()
+        ///     var exampleDnsRecords = Cloudflare.Modules.Dns.GetRecords.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         Comment = new Cloudflare.Inputs.GetDnsRecordsCommentInputArgs
+        ///         Comment = new Cloudflare.Modules.Dns.Inputs.GetRecordsCommentInputArgs
         ///         {
         ///             Absent = "absent",
         ///             Contains = "ello, worl",
@@ -102,14 +103,14 @@ namespace Pulumi.Cloudflare
         ///             Present = "present",
         ///             Startswith = "Hello, w",
         ///         },
-        ///         Content = new Cloudflare.Inputs.GetDnsRecordsContentInputArgs
+        ///         Content = new Cloudflare.Modules.Dns.Inputs.GetRecordsContentInputArgs
         ///         {
         ///             Contains = "7.0.0.",
         ///             Endswith = ".0.1",
         ///             Exact = "127.0.0.1",
         ///             Startswith = "127.0.",
         ///         },
-        ///         Name = new Cloudflare.Inputs.GetDnsRecordsNameInputArgs
+        ///         Name = new Cloudflare.Modules.Dns.Inputs.GetRecordsNameInputArgs
         ///         {
         ///             Contains = "w.example.",
         ///             Endswith = ".example.com",
@@ -119,7 +120,7 @@ namespace Pulumi.Cloudflare
         ///         Search = "www.cloudflare.com",
         ///         ShadowedByName = "sub.example.com",
         ///         ShadowingName = "www.sub.example.com",
-        ///         Tag = new Cloudflare.Inputs.GetDnsRecordsTagInputArgs
+        ///         Tag = new Cloudflare.Modules.Dns.Inputs.GetRecordsTagInputArgs
         ///         {
         ///             Absent = "important",
         ///             Contains = "greeting:ello, worl",
@@ -153,10 +154,10 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDnsRecords = Cloudflare.GetDnsRecords.Invoke(new()
+        ///     var exampleDnsRecords = Cloudflare.Modules.Dns.GetRecords.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         Comment = new Cloudflare.Inputs.GetDnsRecordsCommentInputArgs
+        ///         Comment = new Cloudflare.Modules.Dns.Inputs.GetRecordsCommentInputArgs
         ///         {
         ///             Absent = "absent",
         ///             Contains = "ello, worl",
@@ -165,14 +166,14 @@ namespace Pulumi.Cloudflare
         ///             Present = "present",
         ///             Startswith = "Hello, w",
         ///         },
-        ///         Content = new Cloudflare.Inputs.GetDnsRecordsContentInputArgs
+        ///         Content = new Cloudflare.Modules.Dns.Inputs.GetRecordsContentInputArgs
         ///         {
         ///             Contains = "7.0.0.",
         ///             Endswith = ".0.1",
         ///             Exact = "127.0.0.1",
         ///             Startswith = "127.0.",
         ///         },
-        ///         Name = new Cloudflare.Inputs.GetDnsRecordsNameInputArgs
+        ///         Name = new Cloudflare.Modules.Dns.Inputs.GetRecordsNameInputArgs
         ///         {
         ///             Contains = "w.example.",
         ///             Endswith = ".example.com",
@@ -182,7 +183,7 @@ namespace Pulumi.Cloudflare
         ///         Search = "www.cloudflare.com",
         ///         ShadowedByName = "sub.example.com",
         ///         ShadowingName = "www.sub.example.com",
-        ///         Tag = new Cloudflare.Inputs.GetDnsRecordsTagInputArgs
+        ///         Tag = new Cloudflare.Modules.Dns.Inputs.GetRecordsTagInputArgs
         ///         {
         ///             Absent = "important",
         ///             Contains = "greeting:ello, worl",

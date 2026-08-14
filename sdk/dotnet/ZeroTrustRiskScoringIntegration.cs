@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustRiskScoringIntegration = new Cloudflare.ZeroTrustRiskScoringIntegration("example_zero_trust_risk_scoring_integration", new()
+    ///     var exampleZeroTrustRiskScoringIntegration = new Cloudflare.Modules.ZeroTrustRiskScoring.ZeroTrustRiskScoringIntegration("example_zero_trust_risk_scoring_integration", new()
     ///     {
     ///         AccountId = "account_id",
     ///         IntegrationType = "Okta",
@@ -42,6 +42,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration example '&lt;account_id&gt;/&lt;integration_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integration:Integration")]
     [CloudflareResourceType("cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration")]
     public partial class ZeroTrustRiskScoringIntegration : global::Pulumi.CustomResource
     {

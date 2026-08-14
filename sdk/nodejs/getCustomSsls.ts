@@ -20,13 +20,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomSsls = cloudflare.getCustomSsls({
+ * const exampleCustomSsls = cloudflare.custom.getSsls({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     status: "active",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCustomSsls:getCustomSsls has been deprecated in favor of cloudflare:custom/ssls:getSsls */
 export function getCustomSsls(args?: GetCustomSslsArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomSslsResult> {
+    pulumi.log.warn("getCustomSsls is deprecated: cloudflare:index/getCustomSsls:getCustomSsls has been deprecated in favor of cloudflare:custom/ssls:getSsls")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCustomSsls:getCustomSsls", {
@@ -102,13 +104,15 @@ export interface GetCustomSslsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomSsls = cloudflare.getCustomSsls({
+ * const exampleCustomSsls = cloudflare.custom.getSsls({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     status: "active",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCustomSsls:getCustomSsls has been deprecated in favor of cloudflare:custom/ssls:getSsls */
 export function getCustomSslsOutput(args?: GetCustomSslsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomSslsResult> {
+    pulumi.log.warn("getCustomSsls is deprecated: cloudflare:index/getCustomSsls:getCustomSsls has been deprecated in favor of cloudflare:custom/ssls:getSsls")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCustomSsls:getCustomSsls", {

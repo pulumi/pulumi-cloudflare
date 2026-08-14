@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleLeakedCredentialCheck = cloudflare.getLeakedCredentialCheck({
+ * const exampleLeakedCredentialCheck = cloudflare.leakedcredentialcheck.getLeakedCredentialCheck({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getLeakedCredentialCheck:getLeakedCredentialCheck has been deprecated in favor of cloudflare:leakedCredentialCheck/leakedCredentialCheck:getLeakedCredentialCheck */
 export function getLeakedCredentialCheck(args?: GetLeakedCredentialCheckArgs, opts?: pulumi.InvokeOptions): Promise<GetLeakedCredentialCheckResult> {
+    pulumi.log.warn("getLeakedCredentialCheck is deprecated: cloudflare:index/getLeakedCredentialCheck:getLeakedCredentialCheck has been deprecated in favor of cloudflare:leakedCredentialCheck/leakedCredentialCheck:getLeakedCredentialCheck")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getLeakedCredentialCheck:getLeakedCredentialCheck", {
@@ -68,12 +70,14 @@ export interface GetLeakedCredentialCheckResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleLeakedCredentialCheck = cloudflare.getLeakedCredentialCheck({
+ * const exampleLeakedCredentialCheck = cloudflare.leakedcredentialcheck.getLeakedCredentialCheck({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getLeakedCredentialCheck:getLeakedCredentialCheck has been deprecated in favor of cloudflare:leakedCredentialCheck/leakedCredentialCheck:getLeakedCredentialCheck */
 export function getLeakedCredentialCheckOutput(args?: GetLeakedCredentialCheckOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLeakedCredentialCheckResult> {
+    pulumi.log.warn("getLeakedCredentialCheck is deprecated: cloudflare:index/getLeakedCredentialCheck:getLeakedCredentialCheck has been deprecated in favor of cloudflare:leakedCredentialCheck/leakedCredentialCheck:getLeakedCredentialCheck")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getLeakedCredentialCheck:getLeakedCredentialCheck", {

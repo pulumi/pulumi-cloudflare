@@ -26,16 +26,16 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWorker = new Cloudflare.Worker("example_worker", new()
+    ///     var exampleWorker = new Cloudflare.Modules.Worker.Worker("example_worker", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "my-worker",
     ///         Logpush = true,
-    ///         Observability = new Cloudflare.Inputs.WorkerObservabilityArgs
+    ///         Observability = new Cloudflare.Modules.Worker.Inputs.WorkerObservabilityArgs
     ///         {
     ///             Enabled = true,
     ///             HeadSamplingRate = 1,
-    ///             Logs = new Cloudflare.Inputs.WorkerObservabilityLogsArgs
+    ///             Logs = new Cloudflare.Modules.Worker.Inputs.WorkerObservabilityLogsArgs
     ///             {
     ///                 Destinations = new[]
     ///                 {
@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
     ///                 InvocationLogs = true,
     ///                 Persist = true,
     ///             },
-    ///             Traces = new Cloudflare.Inputs.WorkerObservabilityTracesArgs
+    ///             Traces = new Cloudflare.Modules.Worker.Inputs.WorkerObservabilityTracesArgs
     ///             {
     ///                 Destinations = new[]
     ///                 {
@@ -57,7 +57,7 @@ namespace Pulumi.Cloudflare
     ///                 Persist = true,
     ///             },
     ///         },
-    ///         Subdomain = new Cloudflare.Inputs.WorkerSubdomainArgs
+    ///         Subdomain = new Cloudflare.Modules.Worker.Inputs.WorkerSubdomainArgs
     ///         {
     ///             Enabled = true,
     ///             PreviewsEnabled = true,
@@ -69,7 +69,7 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         TailConsumers = new[]
     ///         {
-    ///             new Cloudflare.Inputs.WorkerTailConsumerArgs
+    ///             new Cloudflare.Modules.Worker.Inputs.WorkerTailConsumerArgs
     ///             {
     ///                 Name = "my-tail-consumer",
     ///             },
@@ -85,6 +85,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/worker:Worker example '&lt;account_id&gt;/&lt;worker_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/worker:Worker has been deprecated in favor of cloudflare:worker/worker:Worker")]
     [CloudflareResourceType("cloudflare:index/worker:Worker")]
     public partial class Worker : global::Pulumi.CustomResource
     {

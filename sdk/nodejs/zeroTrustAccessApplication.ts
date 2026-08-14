@@ -14,6 +14,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication example '<{accounts|zones}/{account_id|zone_id}>/<app_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication has been deprecated in favor of cloudflare:zeroTrustAccess/application:Application
  */
 export class ZeroTrustAccessApplication extends pulumi.CustomResource {
     /**
@@ -26,6 +28,7 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustAccessApplicationState, opts?: pulumi.CustomResourceOptions): ZeroTrustAccessApplication {
+        pulumi.log.warn("ZeroTrustAccessApplication is deprecated: cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication has been deprecated in favor of cloudflare:zeroTrustAccess/application:Application")
         return new ZeroTrustAccessApplication(name, <any>state, { ...opts, id: id });
     }
 
@@ -215,8 +218,11 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication has been deprecated in favor of cloudflare:zeroTrustAccess/application:Application */
     constructor(name: string, args?: ZeroTrustAccessApplicationArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication has been deprecated in favor of cloudflare:zeroTrustAccess/application:Application */
     constructor(name: string, argsOrState?: ZeroTrustAccessApplicationArgs | ZeroTrustAccessApplicationState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustAccessApplication is deprecated: cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication has been deprecated in favor of cloudflare:zeroTrustAccess/application:Application")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

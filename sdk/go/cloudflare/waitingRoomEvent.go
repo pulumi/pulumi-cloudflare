@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/waitingroom"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWaitingRoomEvent(ctx, "example_waiting_room_event", &cloudflare.WaitingRoomEventArgs{
+//			_, err := waitingroom.NewEvent(ctx, "example_waiting_room_event", &waitingroom.EventArgs{
 //				ZoneId:                pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				WaitingRoomId:         pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				EventEndTime:          pulumi.String("2021-09-28T17:00:00.000Z"),
@@ -64,6 +64,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent example '<zone_id>/<waiting_room_id>/<event_id>'
 // ```
+//
+// Deprecated: cloudflare:index/waitingRoomEvent:WaitingRoomEvent has been deprecated in favor of cloudflare:waitingRoom/event:Event
 type WaitingRoomEvent struct {
 	pulumi.CustomResourceState
 

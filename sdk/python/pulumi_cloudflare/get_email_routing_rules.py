@@ -22,6 +22,8 @@ __all__ = [
     'get_email_routing_rules_output',
 ]
 
+warnings.warn("""cloudflare:index/getEmailRoutingRules:getEmailRoutingRules has been deprecated in favor of cloudflare:emailRouting/rules:getRules""", DeprecationWarning)
+
 @pulumi.output_type
 class GetEmailRoutingRulesResult:
     """
@@ -102,7 +104,7 @@ def get_email_routing_rules(enabled: Optional[_builtins.bool] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_email_routing_rules = cloudflare.get_email_routing_rules(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_email_routing_rules = cloudflare.emailrouting.get_rules(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         enabled=True)
     ```
 
@@ -111,6 +113,7 @@ def get_email_routing_rules(enabled: Optional[_builtins.bool] = None,
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_email_routing_rules is deprecated: cloudflare:index/getEmailRoutingRules:getEmailRoutingRules has been deprecated in favor of cloudflare:emailRouting/rules:getRules""")
     __args__ = dict()
     __args__['enabled'] = enabled
     __args__['maxItems'] = max_items
@@ -139,7 +142,7 @@ def get_email_routing_rules_output(enabled: pulumi.Input[Optional[Optional[_buil
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_email_routing_rules = cloudflare.get_email_routing_rules(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_email_routing_rules = cloudflare.emailrouting.get_rules(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         enabled=True)
     ```
 
@@ -148,6 +151,7 @@ def get_email_routing_rules_output(enabled: pulumi.Input[Optional[Optional[_buil
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_email_routing_rules is deprecated: cloudflare:index/getEmailRoutingRules:getEmailRoutingRules has been deprecated in favor of cloudflare:emailRouting/rules:getRules""")
     __args__ = dict()
     __args__['enabled'] = enabled
     __args__['maxItems'] = max_items

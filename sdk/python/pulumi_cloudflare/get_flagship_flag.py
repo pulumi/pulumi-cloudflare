@@ -22,6 +22,8 @@ __all__ = [
     'get_flagship_flag_output',
 ]
 
+warnings.warn("""cloudflare:index/getFlagshipFlag:getFlagshipFlag has been deprecated in favor of cloudflare:flagship/flag:getFlag""", DeprecationWarning)
+
 @pulumi.output_type
 class GetFlagshipFlagResult:
     """
@@ -189,7 +191,7 @@ def get_flagship_flag(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_flagship_flag = cloudflare.get_flagship_flag(account_id="account_id",
+    example_flagship_flag = cloudflare.flagship.get_flag(account_id="account_id",
         app_id="app_id",
         flag_key="flag_key")
     ```
@@ -199,6 +201,7 @@ def get_flagship_flag(account_id: Optional[_builtins.str] = None,
     :param _builtins.str app_id: App identifier.
     :param _builtins.str flag_key: Flag key (slug).
     """
+    pulumi.log.warn("""get_flagship_flag is deprecated: cloudflare:index/getFlagshipFlag:getFlagshipFlag has been deprecated in favor of cloudflare:flagship/flag:getFlag""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['appId'] = app_id
@@ -234,7 +237,7 @@ def get_flagship_flag_output(account_id: pulumi.Input[Optional[_builtins.str]] =
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_flagship_flag = cloudflare.get_flagship_flag(account_id="account_id",
+    example_flagship_flag = cloudflare.flagship.get_flag(account_id="account_id",
         app_id="app_id",
         flag_key="flag_key")
     ```
@@ -244,6 +247,7 @@ def get_flagship_flag_output(account_id: pulumi.Input[Optional[_builtins.str]] =
     :param _builtins.str app_id: App identifier.
     :param _builtins.str flag_key: Flag key (slug).
     """
+    pulumi.log.warn("""get_flagship_flag is deprecated: cloudflare:index/getFlagshipFlag:getFlagshipFlag has been deprecated in favor of cloudflare:flagship/flag:getFlag""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['appId'] = app_id

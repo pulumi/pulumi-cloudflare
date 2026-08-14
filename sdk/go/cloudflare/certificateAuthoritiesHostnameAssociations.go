@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/certificate"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewCertificateAuthoritiesHostnameAssociations(ctx, "example_certificate_authorities_hostname_associations", &cloudflare.CertificateAuthoritiesHostnameAssociationsArgs{
+//			_, err := certificate.NewAuthoritiesHostnameAssociations(ctx, "example_certificate_authorities_hostname_associations", &certificate.AuthoritiesHostnameAssociationsArgs{
 //				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Hostnames: pulumi.StringArray{
 //					pulumi.String("api.example.com"),
@@ -52,6 +52,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/certificateAuthoritiesHostnameAssociations:CertificateAuthoritiesHostnameAssociations example '<zone_id>'
 // ```
+//
+// Deprecated: cloudflare:index/certificateAuthoritiesHostnameAssociations:CertificateAuthoritiesHostnameAssociations has been deprecated in favor of cloudflare:certificate/authoritiesHostnameAssociations:AuthoritiesHostnameAssociations
 type CertificateAuthoritiesHostnameAssociations struct {
 	pulumi.CustomResourceState
 

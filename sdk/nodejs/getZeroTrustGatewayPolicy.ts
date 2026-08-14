@@ -13,13 +13,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustGatewayPolicy = cloudflare.getZeroTrustGatewayPolicy({
+ * const exampleZeroTrustGatewayPolicy = cloudflare.zerotrustgateway.getPolicy({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     ruleId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustGatewayPolicy:getZeroTrustGatewayPolicy has been deprecated in favor of cloudflare:zeroTrustGateway/policy:getPolicy */
 export function getZeroTrustGatewayPolicy(args: GetZeroTrustGatewayPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewayPolicyResult> {
+    pulumi.log.warn("getZeroTrustGatewayPolicy is deprecated: cloudflare:index/getZeroTrustGatewayPolicy:getZeroTrustGatewayPolicy has been deprecated in favor of cloudflare:zeroTrustGateway/policy:getPolicy")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustGatewayPolicy:getZeroTrustGatewayPolicy", {
         "accountId": args.accountId,
@@ -134,13 +136,15 @@ export interface GetZeroTrustGatewayPolicyResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustGatewayPolicy = cloudflare.getZeroTrustGatewayPolicy({
+ * const exampleZeroTrustGatewayPolicy = cloudflare.zerotrustgateway.getPolicy({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     ruleId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustGatewayPolicy:getZeroTrustGatewayPolicy has been deprecated in favor of cloudflare:zeroTrustGateway/policy:getPolicy */
 export function getZeroTrustGatewayPolicyOutput(args: GetZeroTrustGatewayPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewayPolicyResult> {
+    pulumi.log.warn("getZeroTrustGatewayPolicy is deprecated: cloudflare:index/getZeroTrustGatewayPolicy:getZeroTrustGatewayPolicy has been deprecated in favor of cloudflare:zeroTrustGateway/policy:getPolicy")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustGatewayPolicy:getZeroTrustGatewayPolicy", {
         "accountId": args.accountId,

@@ -24,22 +24,22 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdlpdata"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDlpDataClass(ctx, "example_zero_trust_dlp_data_class", &cloudflare.ZeroTrustDlpDataClassArgs{
+//			_, err := zerotrustdlpdata.NewClass(ctx, "example_zero_trust_dlp_data_class", &zerotrustdlpdata.ClassArgs{
 //				AccountId: pulumi.String("account_id"),
 //				DataTags: pulumi.StringArray{
 //					pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
 //				},
 //				Expression: pulumi.String("expression"),
 //				Name:       pulumi.String("name"),
-//				SensitivityLevels: cloudflare.ZeroTrustDlpDataClassSensitivityLevelArray{
-//					&cloudflare.ZeroTrustDlpDataClassSensitivityLevelArgs{
+//				SensitivityLevels: zerotrustdlpdata.ClassSensitivityLevelArray{
+//					&zerotrustdlpdata.ClassSensitivityLevelArgs{
 //						GroupId: pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
 //						LevelId: pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
 //					},
@@ -60,6 +60,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustDlpDataClass:ZeroTrustDlpDataClass example '<account_id>/<data_class_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustDlpDataClass:ZeroTrustDlpDataClass has been deprecated in favor of cloudflare:zeroTrustDlpData/class:Class
 type ZeroTrustDlpDataClass struct {
 	pulumi.CustomResourceState
 

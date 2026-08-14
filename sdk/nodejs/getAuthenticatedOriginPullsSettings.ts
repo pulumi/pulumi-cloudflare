@@ -16,12 +16,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAuthenticatedOriginPullsSettings = cloudflare.getAuthenticatedOriginPullsSettings({
+ * const exampleAuthenticatedOriginPullsSettings = cloudflare.authenticatedoriginpulls.getSettings({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAuthenticatedOriginPullsSettings:getAuthenticatedOriginPullsSettings has been deprecated in favor of cloudflare:authenticatedOriginPulls/settings:getSettings */
 export function getAuthenticatedOriginPullsSettings(args?: GetAuthenticatedOriginPullsSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthenticatedOriginPullsSettingsResult> {
+    pulumi.log.warn("getAuthenticatedOriginPullsSettings is deprecated: cloudflare:index/getAuthenticatedOriginPullsSettings:getAuthenticatedOriginPullsSettings has been deprecated in favor of cloudflare:authenticatedOriginPulls/settings:getSettings")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAuthenticatedOriginPullsSettings:getAuthenticatedOriginPullsSettings", {
@@ -68,12 +70,14 @@ export interface GetAuthenticatedOriginPullsSettingsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAuthenticatedOriginPullsSettings = cloudflare.getAuthenticatedOriginPullsSettings({
+ * const exampleAuthenticatedOriginPullsSettings = cloudflare.authenticatedoriginpulls.getSettings({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAuthenticatedOriginPullsSettings:getAuthenticatedOriginPullsSettings has been deprecated in favor of cloudflare:authenticatedOriginPulls/settings:getSettings */
 export function getAuthenticatedOriginPullsSettingsOutput(args?: GetAuthenticatedOriginPullsSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAuthenticatedOriginPullsSettingsResult> {
+    pulumi.log.warn("getAuthenticatedOriginPullsSettings is deprecated: cloudflare:index/getAuthenticatedOriginPullsSettings:getAuthenticatedOriginPullsSettings has been deprecated in favor of cloudflare:authenticatedOriginPulls/settings:getSettings")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAuthenticatedOriginPullsSettings:getAuthenticatedOriginPullsSettings", {

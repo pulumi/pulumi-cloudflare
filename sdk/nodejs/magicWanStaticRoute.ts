@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicWanStaticRoute = new cloudflare.MagicWanStaticRoute("example_magic_wan_static_route", {
+ * const exampleMagicWanStaticRoute = new cloudflare.magicwan.StaticRoute("example_magic_wan_static_route", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     nexthop: "203.0.113.1",
  *     prefix: "192.0.2.0/24",
@@ -32,6 +32,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute example '<account_id>/<route_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute has been deprecated in favor of cloudflare:magicWan/staticRoute:StaticRoute
  */
 export class MagicWanStaticRoute extends pulumi.CustomResource {
     /**
@@ -44,6 +46,7 @@ export class MagicWanStaticRoute extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: MagicWanStaticRouteState, opts?: pulumi.CustomResourceOptions): MagicWanStaticRoute {
+        pulumi.log.warn("MagicWanStaticRoute is deprecated: cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute has been deprecated in favor of cloudflare:magicWan/staticRoute:StaticRoute")
         return new MagicWanStaticRoute(name, <any>state, { ...opts, id: id });
     }
 
@@ -105,8 +108,11 @@ export class MagicWanStaticRoute extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute has been deprecated in favor of cloudflare:magicWan/staticRoute:StaticRoute */
     constructor(name: string, args: MagicWanStaticRouteArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute has been deprecated in favor of cloudflare:magicWan/staticRoute:StaticRoute */
     constructor(name: string, argsOrState?: MagicWanStaticRouteArgs | MagicWanStaticRouteState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("MagicWanStaticRoute is deprecated: cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute has been deprecated in favor of cloudflare:magicWan/staticRoute:StaticRoute")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

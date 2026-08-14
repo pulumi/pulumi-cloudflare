@@ -16,6 +16,7 @@ namespace Pulumi.Cloudflare
     /// - `Magic Network Monitoring Config Read`
     /// - `Magic Network Monitoring Config Write`
     /// </summary>
+    [Obsolete(@"cloudflare:index/magicNetworkMonitoringConfiguration:MagicNetworkMonitoringConfiguration has been deprecated in favor of cloudflare:magicNetworkMonitoring/configuration:Configuration")]
     [CloudflareResourceType("cloudflare:index/magicNetworkMonitoringConfiguration:MagicNetworkMonitoringConfiguration")]
     public partial class MagicNetworkMonitoringConfiguration : global::Pulumi.CustomResource
     {

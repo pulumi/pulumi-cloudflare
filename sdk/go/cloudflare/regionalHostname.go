@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/regional"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewRegionalHostname(ctx, "example_regional_hostname", &cloudflare.RegionalHostnameArgs{
+//			_, err := regional.NewHostname(ctx, "example_regional_hostname", &regional.HostnameArgs{
 //				ZoneId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Hostname:  pulumi.String("foo.example.com"),
 //				RegionKey: pulumi.String("ca"),
@@ -51,6 +51,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/regionalHostname:RegionalHostname example '<zone_id>/<hostname>'
 // ```
+//
+// Deprecated: cloudflare:index/regionalHostname:RegionalHostname has been deprecated in favor of cloudflare:regional/hostname:Hostname
 type RegionalHostname struct {
 	pulumi.CustomResourceState
 

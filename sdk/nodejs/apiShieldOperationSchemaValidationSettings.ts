@@ -12,8 +12,8 @@ import * as utilities from "./utilities";
  * - `Domain API Gateway`
  * - `Domain API Gateway Read`
  *
- * > `cloudflare.ApiShieldOperationSchemaValidationSettings` is in a deprecation phase and will be removed in the future.
- *   Instead, please utilize the cloudflare.SchemaValidationOperationSettings resource instead.
+ * > `cloudflare.apiShieldOperation.SchemaValidationSettings` is in a deprecation phase and will be removed in the future.
+ *   Instead, please utilize the cloudflare.schemaValidationOperationSettings.SchemaValidationOperationSettings resource instead.
  *
  * ## Example Usage
  *
@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleApiShieldOperationSchemaValidationSettings = new cloudflare.ApiShieldOperationSchemaValidationSettings("example_api_shield_operation_schema_validation_settings", {
+ * const exampleApiShieldOperationSchemaValidationSettings = new cloudflare.apishieldoperation.SchemaValidationSettings("example_api_shield_operation_schema_validation_settings", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     operationId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     mitigationAction: "block",
@@ -33,6 +33,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings example '<zone_id>/<operation_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldOperation/schemaValidationSettings:SchemaValidationSettings
  */
 export class ApiShieldOperationSchemaValidationSettings extends pulumi.CustomResource {
     /**
@@ -45,6 +47,7 @@ export class ApiShieldOperationSchemaValidationSettings extends pulumi.CustomRes
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ApiShieldOperationSchemaValidationSettingsState, opts?: pulumi.CustomResourceOptions): ApiShieldOperationSchemaValidationSettings {
+        pulumi.log.warn("ApiShieldOperationSchemaValidationSettings is deprecated: cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldOperation/schemaValidationSettings:SchemaValidationSettings")
         return new ApiShieldOperationSchemaValidationSettings(name, <any>state, { ...opts, id: id });
     }
 
@@ -88,8 +91,11 @@ export class ApiShieldOperationSchemaValidationSettings extends pulumi.CustomRes
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldOperation/schemaValidationSettings:SchemaValidationSettings */
     constructor(name: string, args: ApiShieldOperationSchemaValidationSettingsArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldOperation/schemaValidationSettings:SchemaValidationSettings */
     constructor(name: string, argsOrState?: ApiShieldOperationSchemaValidationSettingsArgs | ApiShieldOperationSchemaValidationSettingsState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ApiShieldOperationSchemaValidationSettings is deprecated: cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldOperation/schemaValidationSettings:SchemaValidationSettings")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

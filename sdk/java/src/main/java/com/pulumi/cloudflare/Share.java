@@ -27,10 +27,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.Share;
- * import com.pulumi.cloudflare.ShareArgs;
- * import com.pulumi.cloudflare.inputs.ShareRecipientArgs;
- * import com.pulumi.cloudflare.inputs.ShareResourceArgs;
+ * import com.pulumi.cloudflare.share.Share;
+ * import com.pulumi.cloudflare.share.ShareArgs;
+ * import com.pulumi.cloudflare.share.inputs.ShareRecipientArgs;
+ * import com.pulumi.cloudflare.share.inputs.ShareResourceArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -71,7 +71,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/share:Share example &#39;&lt;account_id&gt;/&lt;share_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/share:Share has been deprecated in favor of cloudflare:share/share:Share
+ * 
  */
+@Deprecated /* cloudflare:index/share:Share has been deprecated in favor of cloudflare:share/share:Share */
 @ResourceType(type="cloudflare:index/share:Share")
 public class Share extends com.pulumi.resources.CustomResource {
     /**

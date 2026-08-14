@@ -13,12 +13,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAuthenticatedOriginPullsHostnameCertificates = cloudflare.getAuthenticatedOriginPullsHostnameCertificates({
+ * const exampleAuthenticatedOriginPullsHostnameCertificates = cloudflare.authenticatedoriginpullshostname.getCertificates({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAuthenticatedOriginPullsHostnameCertificates:getAuthenticatedOriginPullsHostnameCertificates has been deprecated in favor of cloudflare:authenticatedOriginPullsHostname/certificates:getCertificates */
 export function getAuthenticatedOriginPullsHostnameCertificates(args: GetAuthenticatedOriginPullsHostnameCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthenticatedOriginPullsHostnameCertificatesResult> {
+    pulumi.log.warn("getAuthenticatedOriginPullsHostnameCertificates is deprecated: cloudflare:index/getAuthenticatedOriginPullsHostnameCertificates:getAuthenticatedOriginPullsHostnameCertificates has been deprecated in favor of cloudflare:authenticatedOriginPullsHostname/certificates:getCertificates")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAuthenticatedOriginPullsHostnameCertificates:getAuthenticatedOriginPullsHostnameCertificates", {
         "maxItems": args.maxItems,
@@ -64,12 +66,14 @@ export interface GetAuthenticatedOriginPullsHostnameCertificatesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAuthenticatedOriginPullsHostnameCertificates = cloudflare.getAuthenticatedOriginPullsHostnameCertificates({
+ * const exampleAuthenticatedOriginPullsHostnameCertificates = cloudflare.authenticatedoriginpullshostname.getCertificates({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAuthenticatedOriginPullsHostnameCertificates:getAuthenticatedOriginPullsHostnameCertificates has been deprecated in favor of cloudflare:authenticatedOriginPullsHostname/certificates:getCertificates */
 export function getAuthenticatedOriginPullsHostnameCertificatesOutput(args: GetAuthenticatedOriginPullsHostnameCertificatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAuthenticatedOriginPullsHostnameCertificatesResult> {
+    pulumi.log.warn("getAuthenticatedOriginPullsHostnameCertificates is deprecated: cloudflare:index/getAuthenticatedOriginPullsHostnameCertificates:getAuthenticatedOriginPullsHostnameCertificates has been deprecated in favor of cloudflare:authenticatedOriginPullsHostname/certificates:getCertificates")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAuthenticatedOriginPullsHostnameCertificates:getAuthenticatedOriginPullsHostnameCertificates", {
         "maxItems": args.maxItems,

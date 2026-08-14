@@ -19,7 +19,7 @@ from .access_policy import *
 from .access_rule import *
 from .access_service_token import *
 from .access_tag import *
-from .account import *
+from .account_ import *
 from .account_dns_settings import *
 from .account_dns_settings_internal_view import *
 from .account_member import *
@@ -542,12 +542,12 @@ from .google_tag_gateway import *
 from .healthcheck import *
 from .hostname_tls_setting import *
 from .hyperdrive_config import *
-from .image import *
+from .image_ import *
 from .image_variant import *
 from .keyless_certificate import *
 from .leaked_credential_check import *
 from .leaked_credential_check_rule import *
-from .list import *
+from .list_ import *
 from .list_item import *
 from .load_balancer import *
 from .load_balancer_monitor import *
@@ -575,7 +575,7 @@ from .notification_policy import *
 from .notification_policy_webhooks import *
 from .oauth_client import *
 from .observatory_scheduled_test import *
-from .organization import *
+from .organization_ import *
 from .organization_profile import *
 from .origin_ca_certificate import *
 from .origin_cloud_region import *
@@ -584,11 +584,11 @@ from .page_rule import *
 from .page_shield_policy import *
 from .pages_domain import *
 from .pages_project import *
-from .pipeline import *
+from .pipeline_ import *
 from .pipeline_sink import *
 from .pipeline_stream import *
 from .provider import *
-from .queue import *
+from .queue_ import *
 from .queue_consumer import *
 from .r2_bucket import *
 from .r2_bucket_cors import *
@@ -611,16 +611,16 @@ from .schema_validation_schemas import *
 from .schema_validation_settings import *
 from .secrets_store import *
 from .secrets_store_secret import *
-from .share import *
+from .share_ import *
 from .share_recipient import *
 from .share_resource import *
-from .snippet import *
+from .snippet_ import *
 from .snippet_rules import *
-from .snippets import *
+from .snippets_ import *
 from .spectrum_application import *
 from .sso_connector import *
 from .static_route import *
-from .stream import *
+from .stream_ import *
 from .stream_audio_track import *
 from .stream_caption_language import *
 from .stream_download import *
@@ -644,7 +644,7 @@ from .tunnel_virtual_network import *
 from .turnstile_widget import *
 from .universal_ssl_setting import *
 from .url_normalization_settings import *
-from .user import *
+from .user_ import *
 from .user_agent_blocking_rule import *
 from .user_group import *
 from .user_group_members import *
@@ -658,7 +658,7 @@ from .waiting_room_settings import *
 from .web3_hostname import *
 from .web_analytics_rule import *
 from .web_analytics_site import *
-from .worker import *
+from .worker_ import *
 from .worker_cron_trigger import *
 from .worker_domain import *
 from .worker_script import *
@@ -735,7 +735,7 @@ from .zero_trust_tunnel_cloudflared_route import *
 from .zero_trust_tunnel_cloudflared_virtual_network import *
 from .zero_trust_tunnel_warp_connector import *
 from .zero_trust_tunnel_warp_connector_config import *
-from .zone import *
+from .zone_ import *
 from .zone_auto_origin_tls_kex import *
 from .zone_cache_reserve import *
 from .zone_cache_variants import *
@@ -750,14 +750,983 @@ from . import outputs
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
+    import pulumi_cloudflare.access as __access
+    access = __access
+    import pulumi_cloudflare.account as __account
+    account = __account
+    import pulumi_cloudflare.accountapitokenpermissiongroups as __accountapitokenpermissiongroups
+    accountapitokenpermissiongroups = __accountapitokenpermissiongroups
+    import pulumi_cloudflare.accountdnssettingsinternal as __accountdnssettingsinternal
+    accountdnssettingsinternal = __accountdnssettingsinternal
+    import pulumi_cloudflare.accountpermission as __accountpermission
+    accountpermission = __accountpermission
+    import pulumi_cloudflare.address as __address
+    address = __address
+    import pulumi_cloudflare.aigateway as __aigateway
+    aigateway = __aigateway
+    import pulumi_cloudflare.aisearch as __aisearch
+    aisearch = __aisearch
+    import pulumi_cloudflare.apishield as __apishield
+    apishield = __apishield
+    import pulumi_cloudflare.apishielddiscovery as __apishielddiscovery
+    apishielddiscovery = __apishielddiscovery
+    import pulumi_cloudflare.apishieldoperation as __apishieldoperation
+    apishieldoperation = __apishieldoperation
+    import pulumi_cloudflare.apishieldschema as __apishieldschema
+    apishieldschema = __apishieldschema
+    import pulumi_cloudflare.apitoken as __apitoken
+    apitoken = __apitoken
+    import pulumi_cloudflare.argo as __argo
+    argo = __argo
+    import pulumi_cloudflare.authenticatedoriginpulls as __authenticatedoriginpulls
+    authenticatedoriginpulls = __authenticatedoriginpulls
+    import pulumi_cloudflare.authenticatedoriginpullshostname as __authenticatedoriginpullshostname
+    authenticatedoriginpullshostname = __authenticatedoriginpullshostname
+    import pulumi_cloudflare.byoip as __byoip
+    byoip = __byoip
+    import pulumi_cloudflare.callssfu as __callssfu
+    callssfu = __callssfu
+    import pulumi_cloudflare.callsturn as __callsturn
+    callsturn = __callsturn
+    import pulumi_cloudflare.certificate as __certificate
+    certificate = __certificate
+    import pulumi_cloudflare.client as __client
+    client = __client
+    import pulumi_cloudflare.cloudforceonerequest as __cloudforceonerequest
+    cloudforceonerequest = __cloudforceonerequest
     import pulumi_cloudflare.config as __config
     config = __config
+    import pulumi_cloudflare.connectivitydirectory as __connectivitydirectory
+    connectivitydirectory = __connectivitydirectory
+    import pulumi_cloudflare.contentscanning as __contentscanning
+    contentscanning = __contentscanning
+    import pulumi_cloudflare.custom as __custom
+    custom = __custom
+    import pulumi_cloudflare.customhostname as __customhostname
+    customhostname = __customhostname
+    import pulumi_cloudflare.customorigintrust as __customorigintrust
+    customorigintrust = __customorigintrust
+    import pulumi_cloudflare.custompage as __custompage
+    custompage = __custompage
+    import pulumi_cloudflare.custompages as __custompages
+    custompages = __custompages
+    import pulumi_cloudflare.d1 as __d1
+    d1 = __d1
+    import pulumi_cloudflare.dlsprefix as __dlsprefix
+    dlsprefix = __dlsprefix
+    import pulumi_cloudflare.dns as __dns
+    dns = __dns
+    import pulumi_cloudflare.dnszonetransfers as __dnszonetransfers
+    dnszonetransfers = __dnszonetransfers
+    import pulumi_cloudflare.emailrouting as __emailrouting
+    emailrouting = __emailrouting
+    import pulumi_cloudflare.emailsecurityblock as __emailsecurityblock
+    emailsecurityblock = __emailsecurityblock
+    import pulumi_cloudflare.emailsecurityimpersonation as __emailsecurityimpersonation
+    emailsecurityimpersonation = __emailsecurityimpersonation
+    import pulumi_cloudflare.emailsecuritytrusteddomains as __emailsecuritytrusteddomains
+    emailsecuritytrusteddomains = __emailsecuritytrusteddomains
+    import pulumi_cloudflare.firewall as __firewall
+    firewall = __firewall
+    import pulumi_cloudflare.flagship as __flagship
+    flagship = __flagship
+    import pulumi_cloudflare.hyperdrive as __hyperdrive
+    hyperdrive = __hyperdrive
+    import pulumi_cloudflare.image as __image
+    image = __image
+    import pulumi_cloudflare.keyless as __keyless
+    keyless = __keyless
+    import pulumi_cloudflare.leakedcredentialcheck as __leakedcredentialcheck
+    leakedcredentialcheck = __leakedcredentialcheck
+    import pulumi_cloudflare.list as __list
+    list = __list
+    import pulumi_cloudflare.loadbalancer as __loadbalancer
+    loadbalancer = __loadbalancer
+    import pulumi_cloudflare.loadbalancermonitor as __loadbalancermonitor
+    loadbalancermonitor = __loadbalancermonitor
+    import pulumi_cloudflare.logpush as __logpush
+    logpush = __logpush
+    import pulumi_cloudflare.logpushdataset as __logpushdataset
+    logpushdataset = __logpushdataset
+    import pulumi_cloudflare.magicnetworkmonitoring as __magicnetworkmonitoring
+    magicnetworkmonitoring = __magicnetworkmonitoring
+    import pulumi_cloudflare.magictransit as __magictransit
+    magictransit = __magictransit
+    import pulumi_cloudflare.magictransitcf1 as __magictransitcf1
+    magictransitcf1 = __magictransitcf1
+    import pulumi_cloudflare.magictransitsite as __magictransitsite
+    magictransitsite = __magictransitsite
+    import pulumi_cloudflare.magicwan as __magicwan
+    magicwan = __magicwan
+    import pulumi_cloudflare.moq as __moq
+    moq = __moq
+    import pulumi_cloudflare.mtlscertificate as __mtlscertificate
+    mtlscertificate = __mtlscertificate
+    import pulumi_cloudflare.notification as __notification
+    notification = __notification
+    import pulumi_cloudflare.notificationpolicywebhooks as __notificationpolicywebhooks
+    notificationpolicywebhooks = __notificationpolicywebhooks
+    import pulumi_cloudflare.oauth as __oauth
+    oauth = __oauth
+    import pulumi_cloudflare.organization as __organization
+    organization = __organization
+    import pulumi_cloudflare.originca as __originca
+    originca = __originca
+    import pulumi_cloudflare.origincloud as __origincloud
+    origincloud = __origincloud
+    import pulumi_cloudflare.pages as __pages
+    pages = __pages
+    import pulumi_cloudflare.pageshield as __pageshield
+    pageshield = __pageshield
+    import pulumi_cloudflare.pageshieldconnections as __pageshieldconnections
+    pageshieldconnections = __pageshieldconnections
+    import pulumi_cloudflare.pageshieldcookies as __pageshieldcookies
+    pageshieldcookies = __pageshieldcookies
+    import pulumi_cloudflare.pageshieldscripts as __pageshieldscripts
+    pageshieldscripts = __pageshieldscripts
+    import pulumi_cloudflare.pipeline as __pipeline
+    pipeline = __pipeline
+    import pulumi_cloudflare.queue as __queue
+    queue = __queue
+    import pulumi_cloudflare.r2 as __r2
+    r2 = __r2
+    import pulumi_cloudflare.r2bucket as __r2bucket
+    r2bucket = __r2bucket
+    import pulumi_cloudflare.rate as __rate
+    rate = __rate
+    import pulumi_cloudflare.regional as __regional
+    regional = __regional
+    import pulumi_cloudflare.registrar as __registrar
+    registrar = __registrar
+    import pulumi_cloudflare.resource as __resource
+    resource = __resource
+    import pulumi_cloudflare.schemavalidationoperationsettings as __schemavalidationoperationsettings
+    schemavalidationoperationsettings = __schemavalidationoperationsettings
+    import pulumi_cloudflare.schemavalidationschemas as __schemavalidationschemas
+    schemavalidationschemas = __schemavalidationschemas
+    import pulumi_cloudflare.secretsstore as __secretsstore
+    secretsstore = __secretsstore
+    import pulumi_cloudflare.share as __share
+    share = __share
+    import pulumi_cloudflare.snippet as __snippet
+    snippet = __snippet
+    import pulumi_cloudflare.snippetrules as __snippetrules
+    snippetrules = __snippetrules
+    import pulumi_cloudflare.snippets as __snippets
+    snippets = __snippets
+    import pulumi_cloudflare.spectrum as __spectrum
+    spectrum = __spectrum
+    import pulumi_cloudflare.sso as __sso
+    sso = __sso
+    import pulumi_cloudflare.stream as __stream
+    stream = __stream
+    import pulumi_cloudflare.tokenvalidation as __tokenvalidation
+    tokenvalidation = __tokenvalidation
+    import pulumi_cloudflare.tokenvalidationrules as __tokenvalidationrules
+    tokenvalidationrules = __tokenvalidationrules
+    import pulumi_cloudflare.turnstile as __turnstile
+    turnstile = __turnstile
+    import pulumi_cloudflare.user as __user
+    user = __user
+    import pulumi_cloudflare.useragentblocking as __useragentblocking
+    useragentblocking = __useragentblocking
+    import pulumi_cloudflare.usergroup as __usergroup
+    usergroup = __usergroup
+    import pulumi_cloudflare.vulnerabilityscannercredential as __vulnerabilityscannercredential
+    vulnerabilityscannercredential = __vulnerabilityscannercredential
+    import pulumi_cloudflare.vulnerabilityscannertarget as __vulnerabilityscannertarget
+    vulnerabilityscannertarget = __vulnerabilityscannertarget
+    import pulumi_cloudflare.waitingroom as __waitingroom
+    waitingroom = __waitingroom
+    import pulumi_cloudflare.web3 as __web3
+    web3 = __web3
+    import pulumi_cloudflare.webanalytics as __webanalytics
+    webanalytics = __webanalytics
+    import pulumi_cloudflare.worker as __worker
+    worker = __worker
+    import pulumi_cloudflare.workers as __workers
+    workers = __workers
+    import pulumi_cloudflare.workerscustom as __workerscustom
+    workerscustom = __workerscustom
+    import pulumi_cloudflare.workersforplatformsdispatch as __workersforplatformsdispatch
+    workersforplatformsdispatch = __workersforplatformsdispatch
+    import pulumi_cloudflare.workerskv as __workerskv
+    workerskv = __workerskv
+    import pulumi_cloudflare.workersscript as __workersscript
+    workersscript = __workersscript
+    import pulumi_cloudflare.zerotrust as __zerotrust
+    zerotrust = __zerotrust
+    import pulumi_cloudflare.zerotrustaccess as __zerotrustaccess
+    zerotrustaccess = __zerotrustaccess
+    import pulumi_cloudflare.zerotrustaccessaicontrolsmcp as __zerotrustaccessaicontrolsmcp
+    zerotrustaccessaicontrolsmcp = __zerotrustaccessaicontrolsmcp
+    import pulumi_cloudflare.zerotrustaccesscustom as __zerotrustaccesscustom
+    zerotrustaccesscustom = __zerotrustaccesscustom
+    import pulumi_cloudflare.zerotrustaccessidentity as __zerotrustaccessidentity
+    zerotrustaccessidentity = __zerotrustaccessidentity
+    import pulumi_cloudflare.zerotrustaccessinfrastructure as __zerotrustaccessinfrastructure
+    zerotrustaccessinfrastructure = __zerotrustaccessinfrastructure
+    import pulumi_cloudflare.zerotrustaccessmtls as __zerotrustaccessmtls
+    zerotrustaccessmtls = __zerotrustaccessmtls
+    import pulumi_cloudflare.zerotrustaccessservice as __zerotrustaccessservice
+    zerotrustaccessservice = __zerotrustaccessservice
+    import pulumi_cloudflare.zerotrustaccessshortlived as __zerotrustaccessshortlived
+    zerotrustaccessshortlived = __zerotrustaccessshortlived
+    import pulumi_cloudflare.zerotrustdevice as __zerotrustdevice
+    zerotrustdevice = __zerotrustdevice
+    import pulumi_cloudflare.zerotrustdevicecustomprofile as __zerotrustdevicecustomprofile
+    zerotrustdevicecustomprofile = __zerotrustdevicecustomprofile
+    import pulumi_cloudflare.zerotrustdevicedefaultprofile as __zerotrustdevicedefaultprofile
+    zerotrustdevicedefaultprofile = __zerotrustdevicedefaultprofile
+    import pulumi_cloudflare.zerotrustdevicedeploymentgroups as __zerotrustdevicedeploymentgroups
+    zerotrustdevicedeploymentgroups = __zerotrustdevicedeploymentgroups
+    import pulumi_cloudflare.zerotrustdeviceip as __zerotrustdeviceip
+    zerotrustdeviceip = __zerotrustdeviceip
+    import pulumi_cloudflare.zerotrustdevicemanagednetworks as __zerotrustdevicemanagednetworks
+    zerotrustdevicemanagednetworks = __zerotrustdevicemanagednetworks
+    import pulumi_cloudflare.zerotrustdeviceposture as __zerotrustdeviceposture
+    zerotrustdeviceposture = __zerotrustdeviceposture
+    import pulumi_cloudflare.zerotrustdex as __zerotrustdex
+    zerotrustdex = __zerotrustdex
+    import pulumi_cloudflare.zerotrustdlp as __zerotrustdlp
+    zerotrustdlp = __zerotrustdlp
+    import pulumi_cloudflare.zerotrustdlpcustom as __zerotrustdlpcustom
+    zerotrustdlpcustom = __zerotrustdlpcustom
+    import pulumi_cloudflare.zerotrustdlpcustomprompt as __zerotrustdlpcustomprompt
+    zerotrustdlpcustomprompt = __zerotrustdlpcustomprompt
+    import pulumi_cloudflare.zerotrustdlpdata as __zerotrustdlpdata
+    zerotrustdlpdata = __zerotrustdlpdata
+    import pulumi_cloudflare.zerotrustdlpdatatag as __zerotrustdlpdatatag
+    zerotrustdlpdatatag = __zerotrustdlpdatatag
+    import pulumi_cloudflare.zerotrustdlpintegration as __zerotrustdlpintegration
+    zerotrustdlpintegration = __zerotrustdlpintegration
+    import pulumi_cloudflare.zerotrustdlppredefined as __zerotrustdlppredefined
+    zerotrustdlppredefined = __zerotrustdlppredefined
+    import pulumi_cloudflare.zerotrustdlpsensitivity as __zerotrustdlpsensitivity
+    zerotrustdlpsensitivity = __zerotrustdlpsensitivity
+    import pulumi_cloudflare.zerotrustdlpsensitivitylevel as __zerotrustdlpsensitivitylevel
+    zerotrustdlpsensitivitylevel = __zerotrustdlpsensitivitylevel
+    import pulumi_cloudflare.zerotrustdns as __zerotrustdns
+    zerotrustdns = __zerotrustdns
+    import pulumi_cloudflare.zerotrustgateway as __zerotrustgateway
+    zerotrustgateway = __zerotrustgateway
+    import pulumi_cloudflare.zerotrustgatewayproxy as __zerotrustgatewayproxy
+    zerotrustgatewayproxy = __zerotrustgatewayproxy
+    import pulumi_cloudflare.zerotrustnetworkhostname as __zerotrustnetworkhostname
+    zerotrustnetworkhostname = __zerotrustnetworkhostname
+    import pulumi_cloudflare.zerotrustresourcelibrary as __zerotrustresourcelibrary
+    zerotrustresourcelibrary = __zerotrustresourcelibrary
+    import pulumi_cloudflare.zerotrustriskscoring as __zerotrustriskscoring
+    zerotrustriskscoring = __zerotrustriskscoring
+    import pulumi_cloudflare.zerotrusttunnel as __zerotrusttunnel
+    zerotrusttunnel = __zerotrusttunnel
+    import pulumi_cloudflare.zerotrusttunnelcloudflared as __zerotrusttunnelcloudflared
+    zerotrusttunnelcloudflared = __zerotrusttunnelcloudflared
+    import pulumi_cloudflare.zerotrusttunnelcloudflaredvirtual as __zerotrusttunnelcloudflaredvirtual
+    zerotrusttunnelcloudflaredvirtual = __zerotrusttunnelcloudflaredvirtual
+    import pulumi_cloudflare.zerotrusttunnelwarpconnector as __zerotrusttunnelwarpconnector
+    zerotrusttunnelwarpconnector = __zerotrusttunnelwarpconnector
+    import pulumi_cloudflare.zone as __zone
+    zone = __zone
+    import pulumi_cloudflare.zonecache as __zonecache
+    zonecache = __zonecache
 else:
+    access = _utilities.lazy_import('pulumi_cloudflare.access')
+    account = _utilities.lazy_import('pulumi_cloudflare.account')
+    accountapitokenpermissiongroups = _utilities.lazy_import('pulumi_cloudflare.accountapitokenpermissiongroups')
+    accountdnssettingsinternal = _utilities.lazy_import('pulumi_cloudflare.accountdnssettingsinternal')
+    accountpermission = _utilities.lazy_import('pulumi_cloudflare.accountpermission')
+    address = _utilities.lazy_import('pulumi_cloudflare.address')
+    aigateway = _utilities.lazy_import('pulumi_cloudflare.aigateway')
+    aisearch = _utilities.lazy_import('pulumi_cloudflare.aisearch')
+    apishield = _utilities.lazy_import('pulumi_cloudflare.apishield')
+    apishielddiscovery = _utilities.lazy_import('pulumi_cloudflare.apishielddiscovery')
+    apishieldoperation = _utilities.lazy_import('pulumi_cloudflare.apishieldoperation')
+    apishieldschema = _utilities.lazy_import('pulumi_cloudflare.apishieldschema')
+    apitoken = _utilities.lazy_import('pulumi_cloudflare.apitoken')
+    argo = _utilities.lazy_import('pulumi_cloudflare.argo')
+    authenticatedoriginpulls = _utilities.lazy_import('pulumi_cloudflare.authenticatedoriginpulls')
+    authenticatedoriginpullshostname = _utilities.lazy_import('pulumi_cloudflare.authenticatedoriginpullshostname')
+    byoip = _utilities.lazy_import('pulumi_cloudflare.byoip')
+    callssfu = _utilities.lazy_import('pulumi_cloudflare.callssfu')
+    callsturn = _utilities.lazy_import('pulumi_cloudflare.callsturn')
+    certificate = _utilities.lazy_import('pulumi_cloudflare.certificate')
+    client = _utilities.lazy_import('pulumi_cloudflare.client')
+    cloudforceonerequest = _utilities.lazy_import('pulumi_cloudflare.cloudforceonerequest')
     config = _utilities.lazy_import('pulumi_cloudflare.config')
+    connectivitydirectory = _utilities.lazy_import('pulumi_cloudflare.connectivitydirectory')
+    contentscanning = _utilities.lazy_import('pulumi_cloudflare.contentscanning')
+    custom = _utilities.lazy_import('pulumi_cloudflare.custom')
+    customhostname = _utilities.lazy_import('pulumi_cloudflare.customhostname')
+    customorigintrust = _utilities.lazy_import('pulumi_cloudflare.customorigintrust')
+    custompage = _utilities.lazy_import('pulumi_cloudflare.custompage')
+    custompages = _utilities.lazy_import('pulumi_cloudflare.custompages')
+    d1 = _utilities.lazy_import('pulumi_cloudflare.d1')
+    dlsprefix = _utilities.lazy_import('pulumi_cloudflare.dlsprefix')
+    dns = _utilities.lazy_import('pulumi_cloudflare.dns')
+    dnszonetransfers = _utilities.lazy_import('pulumi_cloudflare.dnszonetransfers')
+    emailrouting = _utilities.lazy_import('pulumi_cloudflare.emailrouting')
+    emailsecurityblock = _utilities.lazy_import('pulumi_cloudflare.emailsecurityblock')
+    emailsecurityimpersonation = _utilities.lazy_import('pulumi_cloudflare.emailsecurityimpersonation')
+    emailsecuritytrusteddomains = _utilities.lazy_import('pulumi_cloudflare.emailsecuritytrusteddomains')
+    firewall = _utilities.lazy_import('pulumi_cloudflare.firewall')
+    flagship = _utilities.lazy_import('pulumi_cloudflare.flagship')
+    hyperdrive = _utilities.lazy_import('pulumi_cloudflare.hyperdrive')
+    image = _utilities.lazy_import('pulumi_cloudflare.image')
+    keyless = _utilities.lazy_import('pulumi_cloudflare.keyless')
+    leakedcredentialcheck = _utilities.lazy_import('pulumi_cloudflare.leakedcredentialcheck')
+    list = _utilities.lazy_import('pulumi_cloudflare.list')
+    loadbalancer = _utilities.lazy_import('pulumi_cloudflare.loadbalancer')
+    loadbalancermonitor = _utilities.lazy_import('pulumi_cloudflare.loadbalancermonitor')
+    logpush = _utilities.lazy_import('pulumi_cloudflare.logpush')
+    logpushdataset = _utilities.lazy_import('pulumi_cloudflare.logpushdataset')
+    magicnetworkmonitoring = _utilities.lazy_import('pulumi_cloudflare.magicnetworkmonitoring')
+    magictransit = _utilities.lazy_import('pulumi_cloudflare.magictransit')
+    magictransitcf1 = _utilities.lazy_import('pulumi_cloudflare.magictransitcf1')
+    magictransitsite = _utilities.lazy_import('pulumi_cloudflare.magictransitsite')
+    magicwan = _utilities.lazy_import('pulumi_cloudflare.magicwan')
+    moq = _utilities.lazy_import('pulumi_cloudflare.moq')
+    mtlscertificate = _utilities.lazy_import('pulumi_cloudflare.mtlscertificate')
+    notification = _utilities.lazy_import('pulumi_cloudflare.notification')
+    notificationpolicywebhooks = _utilities.lazy_import('pulumi_cloudflare.notificationpolicywebhooks')
+    oauth = _utilities.lazy_import('pulumi_cloudflare.oauth')
+    organization = _utilities.lazy_import('pulumi_cloudflare.organization')
+    originca = _utilities.lazy_import('pulumi_cloudflare.originca')
+    origincloud = _utilities.lazy_import('pulumi_cloudflare.origincloud')
+    pages = _utilities.lazy_import('pulumi_cloudflare.pages')
+    pageshield = _utilities.lazy_import('pulumi_cloudflare.pageshield')
+    pageshieldconnections = _utilities.lazy_import('pulumi_cloudflare.pageshieldconnections')
+    pageshieldcookies = _utilities.lazy_import('pulumi_cloudflare.pageshieldcookies')
+    pageshieldscripts = _utilities.lazy_import('pulumi_cloudflare.pageshieldscripts')
+    pipeline = _utilities.lazy_import('pulumi_cloudflare.pipeline')
+    queue = _utilities.lazy_import('pulumi_cloudflare.queue')
+    r2 = _utilities.lazy_import('pulumi_cloudflare.r2')
+    r2bucket = _utilities.lazy_import('pulumi_cloudflare.r2bucket')
+    rate = _utilities.lazy_import('pulumi_cloudflare.rate')
+    regional = _utilities.lazy_import('pulumi_cloudflare.regional')
+    registrar = _utilities.lazy_import('pulumi_cloudflare.registrar')
+    resource = _utilities.lazy_import('pulumi_cloudflare.resource')
+    schemavalidationoperationsettings = _utilities.lazy_import('pulumi_cloudflare.schemavalidationoperationsettings')
+    schemavalidationschemas = _utilities.lazy_import('pulumi_cloudflare.schemavalidationschemas')
+    secretsstore = _utilities.lazy_import('pulumi_cloudflare.secretsstore')
+    share = _utilities.lazy_import('pulumi_cloudflare.share')
+    snippet = _utilities.lazy_import('pulumi_cloudflare.snippet')
+    snippetrules = _utilities.lazy_import('pulumi_cloudflare.snippetrules')
+    snippets = _utilities.lazy_import('pulumi_cloudflare.snippets')
+    spectrum = _utilities.lazy_import('pulumi_cloudflare.spectrum')
+    sso = _utilities.lazy_import('pulumi_cloudflare.sso')
+    stream = _utilities.lazy_import('pulumi_cloudflare.stream')
+    tokenvalidation = _utilities.lazy_import('pulumi_cloudflare.tokenvalidation')
+    tokenvalidationrules = _utilities.lazy_import('pulumi_cloudflare.tokenvalidationrules')
+    turnstile = _utilities.lazy_import('pulumi_cloudflare.turnstile')
+    user = _utilities.lazy_import('pulumi_cloudflare.user')
+    useragentblocking = _utilities.lazy_import('pulumi_cloudflare.useragentblocking')
+    usergroup = _utilities.lazy_import('pulumi_cloudflare.usergroup')
+    vulnerabilityscannercredential = _utilities.lazy_import('pulumi_cloudflare.vulnerabilityscannercredential')
+    vulnerabilityscannertarget = _utilities.lazy_import('pulumi_cloudflare.vulnerabilityscannertarget')
+    waitingroom = _utilities.lazy_import('pulumi_cloudflare.waitingroom')
+    web3 = _utilities.lazy_import('pulumi_cloudflare.web3')
+    webanalytics = _utilities.lazy_import('pulumi_cloudflare.webanalytics')
+    worker = _utilities.lazy_import('pulumi_cloudflare.worker')
+    workers = _utilities.lazy_import('pulumi_cloudflare.workers')
+    workerscustom = _utilities.lazy_import('pulumi_cloudflare.workerscustom')
+    workersforplatformsdispatch = _utilities.lazy_import('pulumi_cloudflare.workersforplatformsdispatch')
+    workerskv = _utilities.lazy_import('pulumi_cloudflare.workerskv')
+    workersscript = _utilities.lazy_import('pulumi_cloudflare.workersscript')
+    zerotrust = _utilities.lazy_import('pulumi_cloudflare.zerotrust')
+    zerotrustaccess = _utilities.lazy_import('pulumi_cloudflare.zerotrustaccess')
+    zerotrustaccessaicontrolsmcp = _utilities.lazy_import('pulumi_cloudflare.zerotrustaccessaicontrolsmcp')
+    zerotrustaccesscustom = _utilities.lazy_import('pulumi_cloudflare.zerotrustaccesscustom')
+    zerotrustaccessidentity = _utilities.lazy_import('pulumi_cloudflare.zerotrustaccessidentity')
+    zerotrustaccessinfrastructure = _utilities.lazy_import('pulumi_cloudflare.zerotrustaccessinfrastructure')
+    zerotrustaccessmtls = _utilities.lazy_import('pulumi_cloudflare.zerotrustaccessmtls')
+    zerotrustaccessservice = _utilities.lazy_import('pulumi_cloudflare.zerotrustaccessservice')
+    zerotrustaccessshortlived = _utilities.lazy_import('pulumi_cloudflare.zerotrustaccessshortlived')
+    zerotrustdevice = _utilities.lazy_import('pulumi_cloudflare.zerotrustdevice')
+    zerotrustdevicecustomprofile = _utilities.lazy_import('pulumi_cloudflare.zerotrustdevicecustomprofile')
+    zerotrustdevicedefaultprofile = _utilities.lazy_import('pulumi_cloudflare.zerotrustdevicedefaultprofile')
+    zerotrustdevicedeploymentgroups = _utilities.lazy_import('pulumi_cloudflare.zerotrustdevicedeploymentgroups')
+    zerotrustdeviceip = _utilities.lazy_import('pulumi_cloudflare.zerotrustdeviceip')
+    zerotrustdevicemanagednetworks = _utilities.lazy_import('pulumi_cloudflare.zerotrustdevicemanagednetworks')
+    zerotrustdeviceposture = _utilities.lazy_import('pulumi_cloudflare.zerotrustdeviceposture')
+    zerotrustdex = _utilities.lazy_import('pulumi_cloudflare.zerotrustdex')
+    zerotrustdlp = _utilities.lazy_import('pulumi_cloudflare.zerotrustdlp')
+    zerotrustdlpcustom = _utilities.lazy_import('pulumi_cloudflare.zerotrustdlpcustom')
+    zerotrustdlpcustomprompt = _utilities.lazy_import('pulumi_cloudflare.zerotrustdlpcustomprompt')
+    zerotrustdlpdata = _utilities.lazy_import('pulumi_cloudflare.zerotrustdlpdata')
+    zerotrustdlpdatatag = _utilities.lazy_import('pulumi_cloudflare.zerotrustdlpdatatag')
+    zerotrustdlpintegration = _utilities.lazy_import('pulumi_cloudflare.zerotrustdlpintegration')
+    zerotrustdlppredefined = _utilities.lazy_import('pulumi_cloudflare.zerotrustdlppredefined')
+    zerotrustdlpsensitivity = _utilities.lazy_import('pulumi_cloudflare.zerotrustdlpsensitivity')
+    zerotrustdlpsensitivitylevel = _utilities.lazy_import('pulumi_cloudflare.zerotrustdlpsensitivitylevel')
+    zerotrustdns = _utilities.lazy_import('pulumi_cloudflare.zerotrustdns')
+    zerotrustgateway = _utilities.lazy_import('pulumi_cloudflare.zerotrustgateway')
+    zerotrustgatewayproxy = _utilities.lazy_import('pulumi_cloudflare.zerotrustgatewayproxy')
+    zerotrustnetworkhostname = _utilities.lazy_import('pulumi_cloudflare.zerotrustnetworkhostname')
+    zerotrustresourcelibrary = _utilities.lazy_import('pulumi_cloudflare.zerotrustresourcelibrary')
+    zerotrustriskscoring = _utilities.lazy_import('pulumi_cloudflare.zerotrustriskscoring')
+    zerotrusttunnel = _utilities.lazy_import('pulumi_cloudflare.zerotrusttunnel')
+    zerotrusttunnelcloudflared = _utilities.lazy_import('pulumi_cloudflare.zerotrusttunnelcloudflared')
+    zerotrusttunnelcloudflaredvirtual = _utilities.lazy_import('pulumi_cloudflare.zerotrusttunnelcloudflaredvirtual')
+    zerotrusttunnelwarpconnector = _utilities.lazy_import('pulumi_cloudflare.zerotrusttunnelwarpconnector')
+    zone = _utilities.lazy_import('pulumi_cloudflare.zone')
+    zonecache = _utilities.lazy_import('pulumi_cloudflare.zonecache')
 
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "cloudflare",
+  "mod": "access/rule",
+  "fqn": "pulumi_cloudflare.access",
+  "classes": {
+   "cloudflare:access/rule:Rule": "Rule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "account/account",
+  "fqn": "pulumi_cloudflare.account",
+  "classes": {
+   "cloudflare:account/account:Account": "Account"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "account/dnsSettings",
+  "fqn": "pulumi_cloudflare.account",
+  "classes": {
+   "cloudflare:account/dnsSettings:DnsSettings": "DnsSettings"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "account/member",
+  "fqn": "pulumi_cloudflare.account",
+  "classes": {
+   "cloudflare:account/member:Member": "Member"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "account/subscription",
+  "fqn": "pulumi_cloudflare.account",
+  "classes": {
+   "cloudflare:account/subscription:Subscription": "Subscription"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "account/token",
+  "fqn": "pulumi_cloudflare.account",
+  "classes": {
+   "cloudflare:account/token:Token": "Token"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "accountDnsSettingsInternal/view",
+  "fqn": "pulumi_cloudflare.accountdnssettingsinternal",
+  "classes": {
+   "cloudflare:accountDnsSettingsInternal/view:View": "View"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "address/map",
+  "fqn": "pulumi_cloudflare.address",
+  "classes": {
+   "cloudflare:address/map:Map": "Map"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "aiGateway/aiGateway",
+  "fqn": "pulumi_cloudflare.aigateway",
+  "classes": {
+   "cloudflare:aiGateway/aiGateway:AiGateway": "AiGateway"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "aiGateway/dynamicRouting",
+  "fqn": "pulumi_cloudflare.aigateway",
+  "classes": {
+   "cloudflare:aiGateway/dynamicRouting:DynamicRouting": "DynamicRouting"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "aiSearch/instance",
+  "fqn": "pulumi_cloudflare.aisearch",
+  "classes": {
+   "cloudflare:aiSearch/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "aiSearch/namespace",
+  "fqn": "pulumi_cloudflare.aisearch",
+  "classes": {
+   "cloudflare:aiSearch/namespace:Namespace": "Namespace"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "aiSearch/token",
+  "fqn": "pulumi_cloudflare.aisearch",
+  "classes": {
+   "cloudflare:aiSearch/token:Token": "Token"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "apiShield/apiShield",
+  "fqn": "pulumi_cloudflare.apishield",
+  "classes": {
+   "cloudflare:apiShield/apiShield:ApiShield": "ApiShield"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "apiShieldDiscovery/operation",
+  "fqn": "pulumi_cloudflare.apishielddiscovery",
+  "classes": {
+   "cloudflare:apiShieldDiscovery/operation:Operation": "Operation"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "apiShieldOperation/apiShieldOperation",
+  "fqn": "pulumi_cloudflare.apishieldoperation",
+  "classes": {
+   "cloudflare:apiShieldOperation/apiShieldOperation:ApiShieldOperation": "ApiShieldOperation"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "apiShieldOperation/schemaValidationSettings",
+  "fqn": "pulumi_cloudflare.apishieldoperation",
+  "classes": {
+   "cloudflare:apiShieldOperation/schemaValidationSettings:SchemaValidationSettings": "SchemaValidationSettings"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "apiShieldSchema/apiShieldSchema",
+  "fqn": "pulumi_cloudflare.apishieldschema",
+  "classes": {
+   "cloudflare:apiShieldSchema/apiShieldSchema:ApiShieldSchema": "ApiShieldSchema"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "apiShieldSchema/validationSettings",
+  "fqn": "pulumi_cloudflare.apishieldschema",
+  "classes": {
+   "cloudflare:apiShieldSchema/validationSettings:ValidationSettings": "ValidationSettings"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "apiToken/apiToken",
+  "fqn": "pulumi_cloudflare.apitoken",
+  "classes": {
+   "cloudflare:apiToken/apiToken:ApiToken": "ApiToken"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "argo/smartRouting",
+  "fqn": "pulumi_cloudflare.argo",
+  "classes": {
+   "cloudflare:argo/smartRouting:SmartRouting": "SmartRouting"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "argo/tieredCaching",
+  "fqn": "pulumi_cloudflare.argo",
+  "classes": {
+   "cloudflare:argo/tieredCaching:TieredCaching": "TieredCaching"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "authenticatedOriginPulls/authenticatedOriginPulls",
+  "fqn": "pulumi_cloudflare.authenticatedoriginpulls",
+  "classes": {
+   "cloudflare:authenticatedOriginPulls/authenticatedOriginPulls:AuthenticatedOriginPulls": "AuthenticatedOriginPulls"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "authenticatedOriginPulls/certificate",
+  "fqn": "pulumi_cloudflare.authenticatedoriginpulls",
+  "classes": {
+   "cloudflare:authenticatedOriginPulls/certificate:Certificate": "Certificate"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "authenticatedOriginPulls/settings",
+  "fqn": "pulumi_cloudflare.authenticatedoriginpulls",
+  "classes": {
+   "cloudflare:authenticatedOriginPulls/settings:Settings": "Settings"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "authenticatedOriginPullsHostname/certificate",
+  "fqn": "pulumi_cloudflare.authenticatedoriginpullshostname",
+  "classes": {
+   "cloudflare:authenticatedOriginPullsHostname/certificate:Certificate": "Certificate"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "byoIp/prefix",
+  "fqn": "pulumi_cloudflare.byoip",
+  "classes": {
+   "cloudflare:byoIp/prefix:Prefix": "Prefix"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "callsSfu/app",
+  "fqn": "pulumi_cloudflare.callssfu",
+  "classes": {
+   "cloudflare:callsSfu/app:App": "App"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "callsTurn/app",
+  "fqn": "pulumi_cloudflare.callsturn",
+  "classes": {
+   "cloudflare:callsTurn/app:App": "App"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "certificate/authoritiesHostnameAssociations",
+  "fqn": "pulumi_cloudflare.certificate",
+  "classes": {
+   "cloudflare:certificate/authoritiesHostnameAssociations:AuthoritiesHostnameAssociations": "AuthoritiesHostnameAssociations"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "certificate/pack",
+  "fqn": "pulumi_cloudflare.certificate",
+  "classes": {
+   "cloudflare:certificate/pack:Pack": "Pack"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "client/certificate",
+  "fqn": "pulumi_cloudflare.client",
+  "classes": {
+   "cloudflare:client/certificate:Certificate": "Certificate"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "cloudforceOneRequest/asset",
+  "fqn": "pulumi_cloudflare.cloudforceonerequest",
+  "classes": {
+   "cloudflare:cloudforceOneRequest/asset:Asset": "Asset"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "cloudforceOneRequest/cloudforceOneRequest",
+  "fqn": "pulumi_cloudflare.cloudforceonerequest",
+  "classes": {
+   "cloudflare:cloudforceOneRequest/cloudforceOneRequest:CloudforceOneRequest": "CloudforceOneRequest"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "cloudforceOneRequest/message",
+  "fqn": "pulumi_cloudflare.cloudforceonerequest",
+  "classes": {
+   "cloudflare:cloudforceOneRequest/message:Message": "Message"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "cloudforceOneRequest/priority",
+  "fqn": "pulumi_cloudflare.cloudforceonerequest",
+  "classes": {
+   "cloudflare:cloudforceOneRequest/priority:Priority": "Priority"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "connectivityDirectory/service",
+  "fqn": "pulumi_cloudflare.connectivitydirectory",
+  "classes": {
+   "cloudflare:connectivityDirectory/service:Service": "Service"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "contentScanning/contentScanning",
+  "fqn": "pulumi_cloudflare.contentscanning",
+  "classes": {
+   "cloudflare:contentScanning/contentScanning:ContentScanning": "ContentScanning"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "contentScanning/expression",
+  "fqn": "pulumi_cloudflare.contentscanning",
+  "classes": {
+   "cloudflare:contentScanning/expression:Expression": "Expression"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "custom/csr",
+  "fqn": "pulumi_cloudflare.custom",
+  "classes": {
+   "cloudflare:custom/csr:Csr": "Csr"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "custom/ssl",
+  "fqn": "pulumi_cloudflare.custom",
+  "classes": {
+   "cloudflare:custom/ssl:Ssl": "Ssl"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "customHostname/customHostname",
+  "fqn": "pulumi_cloudflare.customhostname",
+  "classes": {
+   "cloudflare:customHostname/customHostname:CustomHostname": "CustomHostname"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "customHostname/fallbackOrigin",
+  "fqn": "pulumi_cloudflare.customhostname",
+  "classes": {
+   "cloudflare:customHostname/fallbackOrigin:FallbackOrigin": "FallbackOrigin"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "customOriginTrust/store",
+  "fqn": "pulumi_cloudflare.customorigintrust",
+  "classes": {
+   "cloudflare:customOriginTrust/store:Store": "Store"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "customPage/asset",
+  "fqn": "pulumi_cloudflare.custompage",
+  "classes": {
+   "cloudflare:customPage/asset:Asset": "Asset"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "customPages/customPages",
+  "fqn": "pulumi_cloudflare.custompages",
+  "classes": {
+   "cloudflare:customPages/customPages:CustomPages": "CustomPages"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "d1/database",
+  "fqn": "pulumi_cloudflare.d1",
+  "classes": {
+   "cloudflare:d1/database:Database": "Database"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "dlsPrefix/binding",
+  "fqn": "pulumi_cloudflare.dlsprefix",
+  "classes": {
+   "cloudflare:dlsPrefix/binding:Binding": "Binding"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "dns/firewall",
+  "fqn": "pulumi_cloudflare.dns",
+  "classes": {
+   "cloudflare:dns/firewall:Firewall": "Firewall"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "dns/record",
+  "fqn": "pulumi_cloudflare.dns",
+  "classes": {
+   "cloudflare:dns/record:Record": "Record"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "dnsZoneTransfers/acl",
+  "fqn": "pulumi_cloudflare.dnszonetransfers",
+  "classes": {
+   "cloudflare:dnsZoneTransfers/acl:Acl": "Acl"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "dnsZoneTransfers/incoming",
+  "fqn": "pulumi_cloudflare.dnszonetransfers",
+  "classes": {
+   "cloudflare:dnsZoneTransfers/incoming:Incoming": "Incoming"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "dnsZoneTransfers/outgoing",
+  "fqn": "pulumi_cloudflare.dnszonetransfers",
+  "classes": {
+   "cloudflare:dnsZoneTransfers/outgoing:Outgoing": "Outgoing"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "dnsZoneTransfers/peer",
+  "fqn": "pulumi_cloudflare.dnszonetransfers",
+  "classes": {
+   "cloudflare:dnsZoneTransfers/peer:Peer": "Peer"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "dnsZoneTransfers/tsig",
+  "fqn": "pulumi_cloudflare.dnszonetransfers",
+  "classes": {
+   "cloudflare:dnsZoneTransfers/tsig:Tsig": "Tsig"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "emailRouting/address",
+  "fqn": "pulumi_cloudflare.emailrouting",
+  "classes": {
+   "cloudflare:emailRouting/address:Address": "Address"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "emailRouting/catchAll",
+  "fqn": "pulumi_cloudflare.emailrouting",
+  "classes": {
+   "cloudflare:emailRouting/catchAll:CatchAll": "CatchAll"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "emailRouting/dns",
+  "fqn": "pulumi_cloudflare.emailrouting",
+  "classes": {
+   "cloudflare:emailRouting/dns:Dns": "Dns"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "emailRouting/rule",
+  "fqn": "pulumi_cloudflare.emailrouting",
+  "classes": {
+   "cloudflare:emailRouting/rule:Rule": "Rule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "emailRouting/settings",
+  "fqn": "pulumi_cloudflare.emailrouting",
+  "classes": {
+   "cloudflare:emailRouting/settings:Settings": "Settings"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "emailSecurityBlock/sender",
+  "fqn": "pulumi_cloudflare.emailsecurityblock",
+  "classes": {
+   "cloudflare:emailSecurityBlock/sender:Sender": "Sender"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "emailSecurityImpersonation/registry",
+  "fqn": "pulumi_cloudflare.emailsecurityimpersonation",
+  "classes": {
+   "cloudflare:emailSecurityImpersonation/registry:Registry": "Registry"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "emailSecurityTrustedDomains/emailSecurityTrustedDomains",
+  "fqn": "pulumi_cloudflare.emailsecuritytrusteddomains",
+  "classes": {
+   "cloudflare:emailSecurityTrustedDomains/emailSecurityTrustedDomains:EmailSecurityTrustedDomains": "EmailSecurityTrustedDomains"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "firewall/rule",
+  "fqn": "pulumi_cloudflare.firewall",
+  "classes": {
+   "cloudflare:firewall/rule:Rule": "Rule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "flagship/app",
+  "fqn": "pulumi_cloudflare.flagship",
+  "classes": {
+   "cloudflare:flagship/app:App": "App"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "flagship/flag",
+  "fqn": "pulumi_cloudflare.flagship",
+  "classes": {
+   "cloudflare:flagship/flag:Flag": "Flag"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "hyperdrive/config",
+  "fqn": "pulumi_cloudflare.hyperdrive",
+  "classes": {
+   "cloudflare:hyperdrive/config:Config": "Config"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "image/image",
+  "fqn": "pulumi_cloudflare.image",
+  "classes": {
+   "cloudflare:image/image:Image": "Image"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "image/variant",
+  "fqn": "pulumi_cloudflare.image",
+  "classes": {
+   "cloudflare:image/variant:Variant": "Variant"
+  }
+ },
  {
   "pkg": "cloudflare",
   "mod": "index/accessApplication",
@@ -3092,6 +4061,1358 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/zoneSubscription:ZoneSubscription": "ZoneSubscription"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "keyless/certificate",
+  "fqn": "pulumi_cloudflare.keyless",
+  "classes": {
+   "cloudflare:keyless/certificate:Certificate": "Certificate"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "leakedCredentialCheck/leakedCredentialCheck",
+  "fqn": "pulumi_cloudflare.leakedcredentialcheck",
+  "classes": {
+   "cloudflare:leakedCredentialCheck/leakedCredentialCheck:LeakedCredentialCheck": "LeakedCredentialCheck"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "leakedCredentialCheck/rule",
+  "fqn": "pulumi_cloudflare.leakedcredentialcheck",
+  "classes": {
+   "cloudflare:leakedCredentialCheck/rule:Rule": "Rule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "list/item",
+  "fqn": "pulumi_cloudflare.list",
+  "classes": {
+   "cloudflare:list/item:Item": "Item"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "loadBalancer/loadBalancer",
+  "fqn": "pulumi_cloudflare.loadbalancer",
+  "classes": {
+   "cloudflare:loadBalancer/loadBalancer:LoadBalancer": "LoadBalancer"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "loadBalancer/pool",
+  "fqn": "pulumi_cloudflare.loadbalancer",
+  "classes": {
+   "cloudflare:loadBalancer/pool:Pool": "Pool"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "loadBalancerMonitor/group",
+  "fqn": "pulumi_cloudflare.loadbalancermonitor",
+  "classes": {
+   "cloudflare:loadBalancerMonitor/group:Group": "Group"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "loadBalancerMonitor/loadBalancerMonitor",
+  "fqn": "pulumi_cloudflare.loadbalancermonitor",
+  "classes": {
+   "cloudflare:loadBalancerMonitor/loadBalancerMonitor:LoadBalancerMonitor": "LoadBalancerMonitor"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "logpush/job",
+  "fqn": "pulumi_cloudflare.logpush",
+  "classes": {
+   "cloudflare:logpush/job:Job": "Job"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "logpush/ownershipChallenge",
+  "fqn": "pulumi_cloudflare.logpush",
+  "classes": {
+   "cloudflare:logpush/ownershipChallenge:OwnershipChallenge": "OwnershipChallenge"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "magicNetworkMonitoring/configuration",
+  "fqn": "pulumi_cloudflare.magicnetworkmonitoring",
+  "classes": {
+   "cloudflare:magicNetworkMonitoring/configuration:Configuration": "Configuration"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "magicNetworkMonitoring/rule",
+  "fqn": "pulumi_cloudflare.magicnetworkmonitoring",
+  "classes": {
+   "cloudflare:magicNetworkMonitoring/rule:Rule": "Rule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "magicTransit/connector",
+  "fqn": "pulumi_cloudflare.magictransit",
+  "classes": {
+   "cloudflare:magicTransit/connector:Connector": "Connector"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "magicTransitCf1/site",
+  "fqn": "pulumi_cloudflare.magictransitcf1",
+  "classes": {
+   "cloudflare:magicTransitCf1/site:Site": "Site"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "magicTransitSite/acl",
+  "fqn": "pulumi_cloudflare.magictransitsite",
+  "classes": {
+   "cloudflare:magicTransitSite/acl:Acl": "Acl"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "magicTransitSite/lan",
+  "fqn": "pulumi_cloudflare.magictransitsite",
+  "classes": {
+   "cloudflare:magicTransitSite/lan:Lan": "Lan"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "magicTransitSite/magicTransitSite",
+  "fqn": "pulumi_cloudflare.magictransitsite",
+  "classes": {
+   "cloudflare:magicTransitSite/magicTransitSite:MagicTransitSite": "MagicTransitSite"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "magicTransitSite/wan",
+  "fqn": "pulumi_cloudflare.magictransitsite",
+  "classes": {
+   "cloudflare:magicTransitSite/wan:Wan": "Wan"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "magicWan/greTunnel",
+  "fqn": "pulumi_cloudflare.magicwan",
+  "classes": {
+   "cloudflare:magicWan/greTunnel:GreTunnel": "GreTunnel"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "magicWan/ipsecTunnel",
+  "fqn": "pulumi_cloudflare.magicwan",
+  "classes": {
+   "cloudflare:magicWan/ipsecTunnel:IpsecTunnel": "IpsecTunnel"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "magicWan/staticRoute",
+  "fqn": "pulumi_cloudflare.magicwan",
+  "classes": {
+   "cloudflare:magicWan/staticRoute:StaticRoute": "StaticRoute"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "moq/relay",
+  "fqn": "pulumi_cloudflare.moq",
+  "classes": {
+   "cloudflare:moq/relay:Relay": "Relay"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "mtlsCertificate/mtlsCertificate",
+  "fqn": "pulumi_cloudflare.mtlscertificate",
+  "classes": {
+   "cloudflare:mtlsCertificate/mtlsCertificate:MtlsCertificate": "MtlsCertificate"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "notification/policy",
+  "fqn": "pulumi_cloudflare.notification",
+  "classes": {
+   "cloudflare:notification/policy:Policy": "Policy"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "notificationPolicyWebhooks/notificationPolicyWebhooks",
+  "fqn": "pulumi_cloudflare.notificationpolicywebhooks",
+  "classes": {
+   "cloudflare:notificationPolicyWebhooks/notificationPolicyWebhooks:NotificationPolicyWebhooks": "NotificationPolicyWebhooks"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "oauth/client",
+  "fqn": "pulumi_cloudflare.oauth",
+  "classes": {
+   "cloudflare:oauth/client:Client": "Client"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "organization/organization",
+  "fqn": "pulumi_cloudflare.organization",
+  "classes": {
+   "cloudflare:organization/organization:Organization": "Organization"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "organization/profile",
+  "fqn": "pulumi_cloudflare.organization",
+  "classes": {
+   "cloudflare:organization/profile:Profile": "Profile"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "originCa/certificate",
+  "fqn": "pulumi_cloudflare.originca",
+  "classes": {
+   "cloudflare:originCa/certificate:Certificate": "Certificate"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "originCloud/region",
+  "fqn": "pulumi_cloudflare.origincloud",
+  "classes": {
+   "cloudflare:originCloud/region:Region": "Region"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "pageShield/policy",
+  "fqn": "pulumi_cloudflare.pageshield",
+  "classes": {
+   "cloudflare:pageShield/policy:Policy": "Policy"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "pages/domain",
+  "fqn": "pulumi_cloudflare.pages",
+  "classes": {
+   "cloudflare:pages/domain:Domain": "Domain"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "pages/project",
+  "fqn": "pulumi_cloudflare.pages",
+  "classes": {
+   "cloudflare:pages/project:Project": "Project"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "pipeline/pipeline",
+  "fqn": "pulumi_cloudflare.pipeline",
+  "classes": {
+   "cloudflare:pipeline/pipeline:Pipeline": "Pipeline"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "pipeline/sink",
+  "fqn": "pulumi_cloudflare.pipeline",
+  "classes": {
+   "cloudflare:pipeline/sink:Sink": "Sink"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "pipeline/stream",
+  "fqn": "pulumi_cloudflare.pipeline",
+  "classes": {
+   "cloudflare:pipeline/stream:Stream": "Stream"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "queue/consumer",
+  "fqn": "pulumi_cloudflare.queue",
+  "classes": {
+   "cloudflare:queue/consumer:Consumer": "Consumer"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "queue/queue",
+  "fqn": "pulumi_cloudflare.queue",
+  "classes": {
+   "cloudflare:queue/queue:Queue": "Queue"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "r2/customDomain",
+  "fqn": "pulumi_cloudflare.r2",
+  "classes": {
+   "cloudflare:r2/customDomain:CustomDomain": "CustomDomain"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "r2/dataCatalog",
+  "fqn": "pulumi_cloudflare.r2",
+  "classes": {
+   "cloudflare:r2/dataCatalog:DataCatalog": "DataCatalog"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "r2/managedDomain",
+  "fqn": "pulumi_cloudflare.r2",
+  "classes": {
+   "cloudflare:r2/managedDomain:ManagedDomain": "ManagedDomain"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "r2Bucket/cors",
+  "fqn": "pulumi_cloudflare.r2bucket",
+  "classes": {
+   "cloudflare:r2Bucket/cors:Cors": "Cors"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "r2Bucket/eventNotification",
+  "fqn": "pulumi_cloudflare.r2bucket",
+  "classes": {
+   "cloudflare:r2Bucket/eventNotification:EventNotification": "EventNotification"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "r2Bucket/lifecycle",
+  "fqn": "pulumi_cloudflare.r2bucket",
+  "classes": {
+   "cloudflare:r2Bucket/lifecycle:Lifecycle": "Lifecycle"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "r2Bucket/lock",
+  "fqn": "pulumi_cloudflare.r2bucket",
+  "classes": {
+   "cloudflare:r2Bucket/lock:Lock": "Lock"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "r2Bucket/r2Bucket",
+  "fqn": "pulumi_cloudflare.r2bucket",
+  "classes": {
+   "cloudflare:r2Bucket/r2Bucket:R2Bucket": "R2Bucket"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "r2Bucket/sippy",
+  "fqn": "pulumi_cloudflare.r2bucket",
+  "classes": {
+   "cloudflare:r2Bucket/sippy:Sippy": "Sippy"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "rate/limit",
+  "fqn": "pulumi_cloudflare.rate",
+  "classes": {
+   "cloudflare:rate/limit:Limit": "Limit"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "regional/hostname",
+  "fqn": "pulumi_cloudflare.regional",
+  "classes": {
+   "cloudflare:regional/hostname:Hostname": "Hostname"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "regional/tieredCache",
+  "fqn": "pulumi_cloudflare.regional",
+  "classes": {
+   "cloudflare:regional/tieredCache:TieredCache": "TieredCache"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "registrar/domain",
+  "fqn": "pulumi_cloudflare.registrar",
+  "classes": {
+   "cloudflare:registrar/domain:Domain": "Domain"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "schemaValidationOperationSettings/schemaValidationOperationSettings",
+  "fqn": "pulumi_cloudflare.schemavalidationoperationsettings",
+  "classes": {
+   "cloudflare:schemaValidationOperationSettings/schemaValidationOperationSettings:SchemaValidationOperationSettings": "SchemaValidationOperationSettings"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "schemaValidationSchemas/schemaValidationSchemas",
+  "fqn": "pulumi_cloudflare.schemavalidationschemas",
+  "classes": {
+   "cloudflare:schemaValidationSchemas/schemaValidationSchemas:SchemaValidationSchemas": "SchemaValidationSchemas"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "secretsStore/secret",
+  "fqn": "pulumi_cloudflare.secretsstore",
+  "classes": {
+   "cloudflare:secretsStore/secret:Secret": "Secret"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "secretsStore/secretsStore",
+  "fqn": "pulumi_cloudflare.secretsstore",
+  "classes": {
+   "cloudflare:secretsStore/secretsStore:SecretsStore": "SecretsStore"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "share/recipient",
+  "fqn": "pulumi_cloudflare.share",
+  "classes": {
+   "cloudflare:share/recipient:Recipient": "Recipient"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "share/resource",
+  "fqn": "pulumi_cloudflare.share",
+  "classes": {
+   "cloudflare:share/resource:Resource": "Resource"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "share/share",
+  "fqn": "pulumi_cloudflare.share",
+  "classes": {
+   "cloudflare:share/share:Share": "Share"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "snippet/snippet",
+  "fqn": "pulumi_cloudflare.snippet",
+  "classes": {
+   "cloudflare:snippet/snippet:Snippet": "Snippet"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "snippetRules/snippetRules",
+  "fqn": "pulumi_cloudflare.snippetrules",
+  "classes": {
+   "cloudflare:snippetRules/snippetRules:SnippetRules": "SnippetRules"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "snippets/snippets",
+  "fqn": "pulumi_cloudflare.snippets",
+  "classes": {
+   "cloudflare:snippets/snippets:Snippets": "Snippets"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "spectrum/application",
+  "fqn": "pulumi_cloudflare.spectrum",
+  "classes": {
+   "cloudflare:spectrum/application:Application": "Application"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "sso/connector",
+  "fqn": "pulumi_cloudflare.sso",
+  "classes": {
+   "cloudflare:sso/connector:Connector": "Connector"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "stream/audioTrack",
+  "fqn": "pulumi_cloudflare.stream",
+  "classes": {
+   "cloudflare:stream/audioTrack:AudioTrack": "AudioTrack"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "stream/captionLanguage",
+  "fqn": "pulumi_cloudflare.stream",
+  "classes": {
+   "cloudflare:stream/captionLanguage:CaptionLanguage": "CaptionLanguage"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "stream/download",
+  "fqn": "pulumi_cloudflare.stream",
+  "classes": {
+   "cloudflare:stream/download:Download": "Download"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "stream/key",
+  "fqn": "pulumi_cloudflare.stream",
+  "classes": {
+   "cloudflare:stream/key:Key": "Key"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "stream/liveInput",
+  "fqn": "pulumi_cloudflare.stream",
+  "classes": {
+   "cloudflare:stream/liveInput:LiveInput": "LiveInput"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "stream/stream",
+  "fqn": "pulumi_cloudflare.stream",
+  "classes": {
+   "cloudflare:stream/stream:Stream": "Stream"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "stream/watermark",
+  "fqn": "pulumi_cloudflare.stream",
+  "classes": {
+   "cloudflare:stream/watermark:Watermark": "Watermark"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "stream/webhook",
+  "fqn": "pulumi_cloudflare.stream",
+  "classes": {
+   "cloudflare:stream/webhook:Webhook": "Webhook"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "tokenValidation/config",
+  "fqn": "pulumi_cloudflare.tokenvalidation",
+  "classes": {
+   "cloudflare:tokenValidation/config:Config": "Config"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "tokenValidationRules/tokenValidationRules",
+  "fqn": "pulumi_cloudflare.tokenvalidationrules",
+  "classes": {
+   "cloudflare:tokenValidationRules/tokenValidationRules:TokenValidationRules": "TokenValidationRules"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "turnstile/widget",
+  "fqn": "pulumi_cloudflare.turnstile",
+  "classes": {
+   "cloudflare:turnstile/widget:Widget": "Widget"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "user/user",
+  "fqn": "pulumi_cloudflare.user",
+  "classes": {
+   "cloudflare:user/user:User": "User"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "userAgentBlocking/rule",
+  "fqn": "pulumi_cloudflare.useragentblocking",
+  "classes": {
+   "cloudflare:userAgentBlocking/rule:Rule": "Rule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "userGroup/members",
+  "fqn": "pulumi_cloudflare.usergroup",
+  "classes": {
+   "cloudflare:userGroup/members:Members": "Members"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "userGroup/userGroup",
+  "fqn": "pulumi_cloudflare.usergroup",
+  "classes": {
+   "cloudflare:userGroup/userGroup:UserGroup": "UserGroup"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "vulnerabilityScannerCredential/set",
+  "fqn": "pulumi_cloudflare.vulnerabilityscannercredential",
+  "classes": {
+   "cloudflare:vulnerabilityScannerCredential/set:Set": "Set"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "vulnerabilityScannerCredential/vulnerabilityScannerCredential",
+  "fqn": "pulumi_cloudflare.vulnerabilityscannercredential",
+  "classes": {
+   "cloudflare:vulnerabilityScannerCredential/vulnerabilityScannerCredential:VulnerabilityScannerCredential": "VulnerabilityScannerCredential"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "vulnerabilityScannerTarget/environment",
+  "fqn": "pulumi_cloudflare.vulnerabilityscannertarget",
+  "classes": {
+   "cloudflare:vulnerabilityScannerTarget/environment:Environment": "Environment"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "waitingRoom/event",
+  "fqn": "pulumi_cloudflare.waitingroom",
+  "classes": {
+   "cloudflare:waitingRoom/event:Event": "Event"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "waitingRoom/rules",
+  "fqn": "pulumi_cloudflare.waitingroom",
+  "classes": {
+   "cloudflare:waitingRoom/rules:Rules": "Rules"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "waitingRoom/settings",
+  "fqn": "pulumi_cloudflare.waitingroom",
+  "classes": {
+   "cloudflare:waitingRoom/settings:Settings": "Settings"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "waitingRoom/waitingRoom",
+  "fqn": "pulumi_cloudflare.waitingroom",
+  "classes": {
+   "cloudflare:waitingRoom/waitingRoom:WaitingRoom": "WaitingRoom"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "web3/hostname",
+  "fqn": "pulumi_cloudflare.web3",
+  "classes": {
+   "cloudflare:web3/hostname:Hostname": "Hostname"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "webAnalytics/rule",
+  "fqn": "pulumi_cloudflare.webanalytics",
+  "classes": {
+   "cloudflare:webAnalytics/rule:Rule": "Rule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "webAnalytics/site",
+  "fqn": "pulumi_cloudflare.webanalytics",
+  "classes": {
+   "cloudflare:webAnalytics/site:Site": "Site"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "worker/version",
+  "fqn": "pulumi_cloudflare.worker",
+  "classes": {
+   "cloudflare:worker/version:Version": "Version"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "worker/worker",
+  "fqn": "pulumi_cloudflare.worker",
+  "classes": {
+   "cloudflare:worker/worker:Worker": "Worker"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "workers/cronTrigger",
+  "fqn": "pulumi_cloudflare.workers",
+  "classes": {
+   "cloudflare:workers/cronTrigger:CronTrigger": "CronTrigger"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "workers/deployment",
+  "fqn": "pulumi_cloudflare.workers",
+  "classes": {
+   "cloudflare:workers/deployment:Deployment": "Deployment"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "workers/route",
+  "fqn": "pulumi_cloudflare.workers",
+  "classes": {
+   "cloudflare:workers/route:Route": "Route"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "workersCustom/domain",
+  "fqn": "pulumi_cloudflare.workerscustom",
+  "classes": {
+   "cloudflare:workersCustom/domain:Domain": "Domain"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "workersForPlatformsDispatch/namespace",
+  "fqn": "pulumi_cloudflare.workersforplatformsdispatch",
+  "classes": {
+   "cloudflare:workersForPlatformsDispatch/namespace:Namespace": "Namespace"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "workersKv/namespace",
+  "fqn": "pulumi_cloudflare.workerskv",
+  "classes": {
+   "cloudflare:workersKv/namespace:Namespace": "Namespace"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "workersKv/workersKv",
+  "fqn": "pulumi_cloudflare.workerskv",
+  "classes": {
+   "cloudflare:workersKv/workersKv:WorkersKv": "WorkersKv"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "workersScript/subdomain",
+  "fqn": "pulumi_cloudflare.workersscript",
+  "classes": {
+   "cloudflare:workersScript/subdomain:Subdomain": "Subdomain"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "workersScript/workersScript",
+  "fqn": "pulumi_cloudflare.workersscript",
+  "classes": {
+   "cloudflare:workersScript/workersScript:WorkersScript": "WorkersScript"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrust/list",
+  "fqn": "pulumi_cloudflare.zerotrust",
+  "classes": {
+   "cloudflare:zeroTrust/list:List": "List"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrust/organization",
+  "fqn": "pulumi_cloudflare.zerotrust",
+  "classes": {
+   "cloudflare:zeroTrust/organization:Organization": "Organization"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrust/riskBehavior",
+  "fqn": "pulumi_cloudflare.zerotrust",
+  "classes": {
+   "cloudflare:zeroTrust/riskBehavior:RiskBehavior": "RiskBehavior"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustAccess/application",
+  "fqn": "pulumi_cloudflare.zerotrustaccess",
+  "classes": {
+   "cloudflare:zeroTrustAccess/application:Application": "Application"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustAccess/group",
+  "fqn": "pulumi_cloudflare.zerotrustaccess",
+  "classes": {
+   "cloudflare:zeroTrustAccess/group:Group": "Group"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustAccess/keyConfiguration",
+  "fqn": "pulumi_cloudflare.zerotrustaccess",
+  "classes": {
+   "cloudflare:zeroTrustAccess/keyConfiguration:KeyConfiguration": "KeyConfiguration"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustAccess/policy",
+  "fqn": "pulumi_cloudflare.zerotrustaccess",
+  "classes": {
+   "cloudflare:zeroTrustAccess/policy:Policy": "Policy"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustAccess/tag",
+  "fqn": "pulumi_cloudflare.zerotrustaccess",
+  "classes": {
+   "cloudflare:zeroTrustAccess/tag:Tag": "Tag"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustAccessAiControlsMcp/portal",
+  "fqn": "pulumi_cloudflare.zerotrustaccessaicontrolsmcp",
+  "classes": {
+   "cloudflare:zeroTrustAccessAiControlsMcp/portal:Portal": "Portal"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustAccessAiControlsMcp/server",
+  "fqn": "pulumi_cloudflare.zerotrustaccessaicontrolsmcp",
+  "classes": {
+   "cloudflare:zeroTrustAccessAiControlsMcp/server:Server": "Server"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustAccessCustom/page",
+  "fqn": "pulumi_cloudflare.zerotrustaccesscustom",
+  "classes": {
+   "cloudflare:zeroTrustAccessCustom/page:Page": "Page"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustAccessIdentity/provider",
+  "fqn": "pulumi_cloudflare.zerotrustaccessidentity",
+  "classes": {
+   "cloudflare:zeroTrustAccessIdentity/provider:Provider": "Provider"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustAccessInfrastructure/target",
+  "fqn": "pulumi_cloudflare.zerotrustaccessinfrastructure",
+  "classes": {
+   "cloudflare:zeroTrustAccessInfrastructure/target:Target": "Target"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustAccessMtls/certificate",
+  "fqn": "pulumi_cloudflare.zerotrustaccessmtls",
+  "classes": {
+   "cloudflare:zeroTrustAccessMtls/certificate:Certificate": "Certificate"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustAccessMtls/hostnameSettings",
+  "fqn": "pulumi_cloudflare.zerotrustaccessmtls",
+  "classes": {
+   "cloudflare:zeroTrustAccessMtls/hostnameSettings:HostnameSettings": "HostnameSettings"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustAccessService/token",
+  "fqn": "pulumi_cloudflare.zerotrustaccessservice",
+  "classes": {
+   "cloudflare:zeroTrustAccessService/token:Token": "Token"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustAccessShortLived/certificate",
+  "fqn": "pulumi_cloudflare.zerotrustaccessshortlived",
+  "classes": {
+   "cloudflare:zeroTrustAccessShortLived/certificate:Certificate": "Certificate"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDevice/settings",
+  "fqn": "pulumi_cloudflare.zerotrustdevice",
+  "classes": {
+   "cloudflare:zeroTrustDevice/settings:Settings": "Settings"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDevice/subnet",
+  "fqn": "pulumi_cloudflare.zerotrustdevice",
+  "classes": {
+   "cloudflare:zeroTrustDevice/subnet:Subnet": "Subnet"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDeviceCustomProfile/localDomainFallback",
+  "fqn": "pulumi_cloudflare.zerotrustdevicecustomprofile",
+  "classes": {
+   "cloudflare:zeroTrustDeviceCustomProfile/localDomainFallback:LocalDomainFallback": "LocalDomainFallback"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDeviceCustomProfile/zeroTrustDeviceCustomProfile",
+  "fqn": "pulumi_cloudflare.zerotrustdevicecustomprofile",
+  "classes": {
+   "cloudflare:zeroTrustDeviceCustomProfile/zeroTrustDeviceCustomProfile:ZeroTrustDeviceCustomProfile": "ZeroTrustDeviceCustomProfile"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDeviceDefaultProfile/certificates",
+  "fqn": "pulumi_cloudflare.zerotrustdevicedefaultprofile",
+  "classes": {
+   "cloudflare:zeroTrustDeviceDefaultProfile/certificates:Certificates": "Certificates"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDeviceDefaultProfile/localDomainFallback",
+  "fqn": "pulumi_cloudflare.zerotrustdevicedefaultprofile",
+  "classes": {
+   "cloudflare:zeroTrustDeviceDefaultProfile/localDomainFallback:LocalDomainFallback": "LocalDomainFallback"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDeviceDefaultProfile/zeroTrustDeviceDefaultProfile",
+  "fqn": "pulumi_cloudflare.zerotrustdevicedefaultprofile",
+  "classes": {
+   "cloudflare:zeroTrustDeviceDefaultProfile/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile": "ZeroTrustDeviceDefaultProfile"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDeviceDeploymentGroups/zeroTrustDeviceDeploymentGroups",
+  "fqn": "pulumi_cloudflare.zerotrustdevicedeploymentgroups",
+  "classes": {
+   "cloudflare:zeroTrustDeviceDeploymentGroups/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups": "ZeroTrustDeviceDeploymentGroups"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDeviceIp/profile",
+  "fqn": "pulumi_cloudflare.zerotrustdeviceip",
+  "classes": {
+   "cloudflare:zeroTrustDeviceIp/profile:Profile": "Profile"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDeviceManagedNetworks/zeroTrustDeviceManagedNetworks",
+  "fqn": "pulumi_cloudflare.zerotrustdevicemanagednetworks",
+  "classes": {
+   "cloudflare:zeroTrustDeviceManagedNetworks/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks": "ZeroTrustDeviceManagedNetworks"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDevicePosture/integration",
+  "fqn": "pulumi_cloudflare.zerotrustdeviceposture",
+  "classes": {
+   "cloudflare:zeroTrustDevicePosture/integration:Integration": "Integration"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDevicePosture/rule",
+  "fqn": "pulumi_cloudflare.zerotrustdeviceposture",
+  "classes": {
+   "cloudflare:zeroTrustDevicePosture/rule:Rule": "Rule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDex/rule",
+  "fqn": "pulumi_cloudflare.zerotrustdex",
+  "classes": {
+   "cloudflare:zeroTrustDex/rule:Rule": "Rule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDex/test",
+  "fqn": "pulumi_cloudflare.zerotrustdex",
+  "classes": {
+   "cloudflare:zeroTrustDex/test:Test": "Test"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDlp/dataset",
+  "fqn": "pulumi_cloudflare.zerotrustdlp",
+  "classes": {
+   "cloudflare:zeroTrustDlp/dataset:Dataset": "Dataset"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDlp/entry",
+  "fqn": "pulumi_cloudflare.zerotrustdlp",
+  "classes": {
+   "cloudflare:zeroTrustDlp/entry:Entry": "Entry"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDlp/settings",
+  "fqn": "pulumi_cloudflare.zerotrustdlp",
+  "classes": {
+   "cloudflare:zeroTrustDlp/settings:Settings": "Settings"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDlpCustom/entry",
+  "fqn": "pulumi_cloudflare.zerotrustdlpcustom",
+  "classes": {
+   "cloudflare:zeroTrustDlpCustom/entry:Entry": "Entry"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDlpCustom/profile",
+  "fqn": "pulumi_cloudflare.zerotrustdlpcustom",
+  "classes": {
+   "cloudflare:zeroTrustDlpCustom/profile:Profile": "Profile"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDlpData/class",
+  "fqn": "pulumi_cloudflare.zerotrustdlpdata",
+  "classes": {
+   "cloudflare:zeroTrustDlpData/class:Class": "Class"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDlpDataTag/category",
+  "fqn": "pulumi_cloudflare.zerotrustdlpdatatag",
+  "classes": {
+   "cloudflare:zeroTrustDlpDataTag/category:Category": "Category"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDlpDataTag/zeroTrustDlpDataTag",
+  "fqn": "pulumi_cloudflare.zerotrustdlpdatatag",
+  "classes": {
+   "cloudflare:zeroTrustDlpDataTag/zeroTrustDlpDataTag:ZeroTrustDlpDataTag": "ZeroTrustDlpDataTag"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDlpIntegration/entry",
+  "fqn": "pulumi_cloudflare.zerotrustdlpintegration",
+  "classes": {
+   "cloudflare:zeroTrustDlpIntegration/entry:Entry": "Entry"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDlpPredefined/entry",
+  "fqn": "pulumi_cloudflare.zerotrustdlppredefined",
+  "classes": {
+   "cloudflare:zeroTrustDlpPredefined/entry:Entry": "Entry"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDlpPredefined/profile",
+  "fqn": "pulumi_cloudflare.zerotrustdlppredefined",
+  "classes": {
+   "cloudflare:zeroTrustDlpPredefined/profile:Profile": "Profile"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDlpSensitivity/group",
+  "fqn": "pulumi_cloudflare.zerotrustdlpsensitivity",
+  "classes": {
+   "cloudflare:zeroTrustDlpSensitivity/group:Group": "Group"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDlpSensitivityLevel/order",
+  "fqn": "pulumi_cloudflare.zerotrustdlpsensitivitylevel",
+  "classes": {
+   "cloudflare:zeroTrustDlpSensitivityLevel/order:Order": "Order"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDlpSensitivityLevel/zeroTrustDlpSensitivityLevel",
+  "fqn": "pulumi_cloudflare.zerotrustdlpsensitivitylevel",
+  "classes": {
+   "cloudflare:zeroTrustDlpSensitivityLevel/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel": "ZeroTrustDlpSensitivityLevel"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustDns/location",
+  "fqn": "pulumi_cloudflare.zerotrustdns",
+  "classes": {
+   "cloudflare:zeroTrustDns/location:Location": "Location"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustGateway/certificate",
+  "fqn": "pulumi_cloudflare.zerotrustgateway",
+  "classes": {
+   "cloudflare:zeroTrustGateway/certificate:Certificate": "Certificate"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustGateway/logging",
+  "fqn": "pulumi_cloudflare.zerotrustgateway",
+  "classes": {
+   "cloudflare:zeroTrustGateway/logging:Logging": "Logging"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustGateway/pacfile",
+  "fqn": "pulumi_cloudflare.zerotrustgateway",
+  "classes": {
+   "cloudflare:zeroTrustGateway/pacfile:Pacfile": "Pacfile"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustGateway/policy",
+  "fqn": "pulumi_cloudflare.zerotrustgateway",
+  "classes": {
+   "cloudflare:zeroTrustGateway/policy:Policy": "Policy"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustGateway/settings",
+  "fqn": "pulumi_cloudflare.zerotrustgateway",
+  "classes": {
+   "cloudflare:zeroTrustGateway/settings:Settings": "Settings"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustGatewayProxy/endpoint",
+  "fqn": "pulumi_cloudflare.zerotrustgatewayproxy",
+  "classes": {
+   "cloudflare:zeroTrustGatewayProxy/endpoint:Endpoint": "Endpoint"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustNetworkHostname/route",
+  "fqn": "pulumi_cloudflare.zerotrustnetworkhostname",
+  "classes": {
+   "cloudflare:zeroTrustNetworkHostname/route:Route": "Route"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustRiskScoring/integration",
+  "fqn": "pulumi_cloudflare.zerotrustriskscoring",
+  "classes": {
+   "cloudflare:zeroTrustRiskScoring/integration:Integration": "Integration"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustTunnelCloudflared/config",
+  "fqn": "pulumi_cloudflare.zerotrusttunnelcloudflared",
+  "classes": {
+   "cloudflare:zeroTrustTunnelCloudflared/config:Config": "Config"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustTunnelCloudflared/route",
+  "fqn": "pulumi_cloudflare.zerotrusttunnelcloudflared",
+  "classes": {
+   "cloudflare:zeroTrustTunnelCloudflared/route:Route": "Route"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustTunnelCloudflared/zeroTrustTunnelCloudflared",
+  "fqn": "pulumi_cloudflare.zerotrusttunnelcloudflared",
+  "classes": {
+   "cloudflare:zeroTrustTunnelCloudflared/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared": "ZeroTrustTunnelCloudflared"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustTunnelCloudflaredVirtual/network",
+  "fqn": "pulumi_cloudflare.zerotrusttunnelcloudflaredvirtual",
+  "classes": {
+   "cloudflare:zeroTrustTunnelCloudflaredVirtual/network:Network": "Network"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustTunnelWarpConnector/config",
+  "fqn": "pulumi_cloudflare.zerotrusttunnelwarpconnector",
+  "classes": {
+   "cloudflare:zeroTrustTunnelWarpConnector/config:Config": "Config"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zeroTrustTunnelWarpConnector/zeroTrustTunnelWarpConnector",
+  "fqn": "pulumi_cloudflare.zerotrusttunnelwarpconnector",
+  "classes": {
+   "cloudflare:zeroTrustTunnelWarpConnector/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector": "ZeroTrustTunnelWarpConnector"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zone/autoOriginTlsKex",
+  "fqn": "pulumi_cloudflare.zone",
+  "classes": {
+   "cloudflare:zone/autoOriginTlsKex:AutoOriginTlsKex": "AutoOriginTlsKex"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zone/dnsSettings",
+  "fqn": "pulumi_cloudflare.zone",
+  "classes": {
+   "cloudflare:zone/dnsSettings:DnsSettings": "DnsSettings"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zone/dnssec",
+  "fqn": "pulumi_cloudflare.zone",
+  "classes": {
+   "cloudflare:zone/dnssec:Dnssec": "Dnssec"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zone/hold",
+  "fqn": "pulumi_cloudflare.zone",
+  "classes": {
+   "cloudflare:zone/hold:Hold": "Hold"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zone/lockdown",
+  "fqn": "pulumi_cloudflare.zone",
+  "classes": {
+   "cloudflare:zone/lockdown:Lockdown": "Lockdown"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zone/setting",
+  "fqn": "pulumi_cloudflare.zone",
+  "classes": {
+   "cloudflare:zone/setting:Setting": "Setting"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zone/subscription",
+  "fqn": "pulumi_cloudflare.zone",
+  "classes": {
+   "cloudflare:zone/subscription:Subscription": "Subscription"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zone/zone",
+  "fqn": "pulumi_cloudflare.zone",
+  "classes": {
+   "cloudflare:zone/zone:Zone": "Zone"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zoneCache/reserve",
+  "fqn": "pulumi_cloudflare.zonecache",
+  "classes": {
+   "cloudflare:zoneCache/reserve:Reserve": "Reserve"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "zoneCache/variants",
+  "fqn": "pulumi_cloudflare.zonecache",
+  "classes": {
+   "cloudflare:zoneCache/variants:Variants": "Variants"
   }
  }
 ]

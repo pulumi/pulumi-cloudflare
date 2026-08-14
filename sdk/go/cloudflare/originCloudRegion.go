@@ -19,14 +19,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/origincloud"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewOriginCloudRegion(ctx, "example_origin_cloud_region", &cloudflare.OriginCloudRegionArgs{
+//			_, err := origincloud.NewRegion(ctx, "example_origin_cloud_region", &origincloud.RegionArgs{
 //				ZoneId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				OriginIp: pulumi.String("192.0.2.1"),
 //				Region:   pulumi.String("us-east-1"),
@@ -46,6 +46,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/originCloudRegion:OriginCloudRegion example '<zone_id>/<origin_ip>'
 // ```
+//
+// Deprecated: cloudflare:index/originCloudRegion:OriginCloudRegion has been deprecated in favor of cloudflare:originCloud/region:Region
 type OriginCloudRegion struct {
 	pulumi.CustomResourceState
 

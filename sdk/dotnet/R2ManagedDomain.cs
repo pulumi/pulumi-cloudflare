@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleR2ManagedDomain = new Cloudflare.R2ManagedDomain("example_r2_managed_domain", new()
+    ///     var exampleR2ManagedDomain = new Cloudflare.Modules.R2.R2ManagedDomain("example_r2_managed_domain", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         BucketName = "example-bucket",
@@ -34,6 +34,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/r2ManagedDomain:R2ManagedDomain has been deprecated in favor of cloudflare:r2/managedDomain:ManagedDomain")]
     [CloudflareResourceType("cloudflare:index/r2ManagedDomain:R2ManagedDomain")]
     public partial class R2ManagedDomain : global::Pulumi.CustomResource
     {

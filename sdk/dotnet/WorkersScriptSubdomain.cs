@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare
     /// - `Workers Scripts Write`
     /// - `Workers Tail Read`
     /// 
-    /// &gt; This resource is redundant with `cloudflare.Worker` and should not be used together. When using the `cloudflare.Worker` resource, use the nested `Subdomain` attribute to control subdomain settings instead.
+    /// &gt; This resource is redundant with `cloudflare.worker.Worker` and should not be used together. When using the `cloudflare.worker.Worker` resource, use the nested `Subdomain` attribute to control subdomain settings instead.
     /// 
     /// ## Example Usage
     /// 
@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWorkersScriptSubdomain = new Cloudflare.WorkersScriptSubdomain("example_workers_script_subdomain", new()
+    ///     var exampleWorkersScriptSubdomain = new Cloudflare.Modules.WorkersScript.WorkersScriptSubdomain("example_workers_script_subdomain", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         ScriptName = "this-is_my_script-01",
@@ -45,6 +45,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain example '&lt;account_id&gt;/&lt;script_name&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain has been deprecated in favor of cloudflare:workersScript/subdomain:Subdomain")]
     [CloudflareResourceType("cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain")]
     public partial class WorkersScriptSubdomain : global::Pulumi.CustomResource
     {

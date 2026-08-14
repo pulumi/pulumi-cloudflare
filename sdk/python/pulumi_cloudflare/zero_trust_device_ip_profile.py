@@ -277,8 +277,13 @@ class _ZeroTrustDeviceIpProfileState:
         pulumi.set(self, "updated_at", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustDeviceIpProfile:ZeroTrustDeviceIpProfile has been deprecated in favor of cloudflare:zeroTrustDeviceIp/profile:Profile""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustDeviceIpProfile:ZeroTrustDeviceIpProfile")
 class ZeroTrustDeviceIpProfile(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustDeviceIpProfile:ZeroTrustDeviceIpProfile has been deprecated in favor of cloudflare:zeroTrustDeviceIp/profile:Profile""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -303,7 +308,7 @@ class ZeroTrustDeviceIpProfile(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_device_ip_profile = cloudflare.ZeroTrustDeviceIpProfile("example_zero_trust_device_ip_profile",
+        example_zero_trust_device_ip_profile = cloudflare.zerotrustdeviceip.Profile("example_zero_trust_device_ip_profile",
             account_id="account_id",
             match="identity.email == \\"test@cloudflare.com\\"",
             name="IPv4 Cloudflare Source IPs",
@@ -347,7 +352,7 @@ class ZeroTrustDeviceIpProfile(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_device_ip_profile = cloudflare.ZeroTrustDeviceIpProfile("example_zero_trust_device_ip_profile",
+        example_zero_trust_device_ip_profile = cloudflare.zerotrustdeviceip.Profile("example_zero_trust_device_ip_profile",
             account_id="account_id",
             match="identity.email == \\"test@cloudflare.com\\"",
             name="IPv4 Cloudflare Source IPs",
@@ -387,6 +392,7 @@ class ZeroTrustDeviceIpProfile(pulumi.CustomResource):
                  precedence: pulumi.Input[Optional[_builtins.int]] = None,
                  subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustDeviceIpProfile is deprecated: cloudflare:index/zeroTrustDeviceIpProfile:ZeroTrustDeviceIpProfile has been deprecated in favor of cloudflare:zeroTrustDeviceIp/profile:Profile""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

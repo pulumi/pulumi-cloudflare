@@ -26,9 +26,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.AuthenticatedOriginPulls;
- * import com.pulumi.cloudflare.AuthenticatedOriginPullsArgs;
- * import com.pulumi.cloudflare.inputs.AuthenticatedOriginPullsConfigArgs;
+ * import com.pulumi.cloudflare.authenticatedOriginPulls.AuthenticatedOriginPulls;
+ * import com.pulumi.cloudflare.authenticatedOriginPulls.AuthenticatedOriginPullsArgs;
+ * import com.pulumi.cloudflare.authenticatedOriginPulls.inputs.AuthenticatedOriginPullsConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -62,7 +62,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example &#39;&lt;zone_id&gt;/&lt;hostname&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls has been deprecated in favor of cloudflare:authenticatedOriginPulls/authenticatedOriginPulls:AuthenticatedOriginPulls
+ * 
  */
+@Deprecated /* cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls has been deprecated in favor of cloudflare:authenticatedOriginPulls/authenticatedOriginPulls:AuthenticatedOriginPulls */
 @ResourceType(type="cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls")
 public class AuthenticatedOriginPulls extends com.pulumi.resources.CustomResource {
     /**

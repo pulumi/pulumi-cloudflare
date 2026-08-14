@@ -25,9 +25,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessIdentityProvider = new Cloudflare.ZeroTrustAccessIdentityProvider("example_zero_trust_access_identity_provider", new()
+    ///     var exampleZeroTrustAccessIdentityProvider = new Cloudflare.Modules.ZeroTrustAccessIdentity.ZeroTrustAccessIdentityProvider("example_zero_trust_access_identity_provider", new()
     ///     {
-    ///         Config = new Cloudflare.Inputs.ZeroTrustAccessIdentityProviderConfigArgs
+    ///         Config = new Cloudflare.Modules.ZeroTrustAccessIdentity.Inputs.ProviderConfigArgs
     ///         {
     ///             Claims = new[]
     ///             {
@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
     ///         Name = "Widget Corps IDP",
     ///         Type = "onetimepin",
     ///         ZoneId = "zone_id",
-    ///         ScimConfig = new Cloudflare.Inputs.ZeroTrustAccessIdentityProviderScimConfigArgs
+    ///         ScimConfig = new Cloudflare.Modules.ZeroTrustAccessIdentity.Inputs.ProviderScimConfigArgs
     ///         {
     ///             Enabled = true,
     ///             IdentityUpdateBehavior = "automatic",
@@ -64,6 +64,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider example '&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;identity_provider_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider has been deprecated in favor of cloudflare:zeroTrustAccessIdentity/provider:Provider")]
     [CloudflareResourceType("cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider")]
     public partial class ZeroTrustAccessIdentityProvider : global::Pulumi.CustomResource
     {

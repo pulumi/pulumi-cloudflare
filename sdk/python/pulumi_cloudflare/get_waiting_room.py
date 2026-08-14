@@ -22,6 +22,8 @@ __all__ = [
     'get_waiting_room_output',
 ]
 
+warnings.warn("""cloudflare:index/getWaitingRoom:getWaitingRoom has been deprecated in favor of cloudflare:waitingRoom/waitingRoom:getWaitingRoom""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWaitingRoomResult:
     """
@@ -320,13 +322,14 @@ def get_waiting_room(waiting_room_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_waiting_room = cloudflare.get_waiting_room(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_waiting_room = cloudflare.waitingroom.get_waiting_room(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         waiting_room_id="699d98642c564d2e855e9661899b7252")
     ```
 
 
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_waiting_room is deprecated: cloudflare:index/getWaitingRoom:getWaitingRoom has been deprecated in favor of cloudflare:waitingRoom/waitingRoom:getWaitingRoom""")
     __args__ = dict()
     __args__['waitingRoomId'] = waiting_room_id
     __args__['zoneId'] = zone_id
@@ -377,13 +380,14 @@ def get_waiting_room_output(waiting_room_id: pulumi.Input[Optional[_builtins.str
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_waiting_room = cloudflare.get_waiting_room(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_waiting_room = cloudflare.waitingroom.get_waiting_room(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         waiting_room_id="699d98642c564d2e855e9661899b7252")
     ```
 
 
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_waiting_room is deprecated: cloudflare:index/getWaitingRoom:getWaitingRoom has been deprecated in favor of cloudflare:waitingRoom/waitingRoom:getWaitingRoom""")
     __args__ = dict()
     __args__['waitingRoomId'] = waiting_room_id
     __args__['zoneId'] = zone_id

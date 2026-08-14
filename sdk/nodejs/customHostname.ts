@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomHostname = new cloudflare.CustomHostname("example_custom_hostname", {
+ * const exampleCustomHostname = new cloudflare.customhostname.CustomHostname("example_custom_hostname", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     hostname: "app.example.com",
  *     customMetadata: {
@@ -101,6 +101,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/customHostname:CustomHostname example '<zone_id>/<custom_hostname_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/customHostname:CustomHostname has been deprecated in favor of cloudflare:customHostname/customHostname:CustomHostname
  */
 export class CustomHostname extends pulumi.CustomResource {
     /**
@@ -113,6 +115,7 @@ export class CustomHostname extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CustomHostnameState, opts?: pulumi.CustomResourceOptions): CustomHostname {
+        pulumi.log.warn("CustomHostname is deprecated: cloudflare:index/customHostname:CustomHostname has been deprecated in favor of cloudflare:customHostname/customHostname:CustomHostname")
         return new CustomHostname(name, <any>state, { ...opts, id: id });
     }
 
@@ -183,8 +186,11 @@ export class CustomHostname extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/customHostname:CustomHostname has been deprecated in favor of cloudflare:customHostname/customHostname:CustomHostname */
     constructor(name: string, args: CustomHostnameArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/customHostname:CustomHostname has been deprecated in favor of cloudflare:customHostname/customHostname:CustomHostname */
     constructor(name: string, argsOrState?: CustomHostnameArgs | CustomHostnameState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("CustomHostname is deprecated: cloudflare:index/customHostname:CustomHostname has been deprecated in favor of cloudflare:customHostname/customHostname:CustomHostname")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

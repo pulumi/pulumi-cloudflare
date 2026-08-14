@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessCustomPage = new Cloudflare.ZeroTrustAccessCustomPage("example_zero_trust_access_custom_page", new()
+    ///     var exampleZeroTrustAccessCustomPage = new Cloudflare.Modules.ZeroTrustAccessCustom.ZeroTrustAccessCustomPage("example_zero_trust_access_custom_page", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         CustomHtml = "&lt;html&gt;&lt;body&gt;&lt;h1&gt;Access Denied&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;",
@@ -100,10 +100,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/accessCustomPage:AccessCustomPage" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

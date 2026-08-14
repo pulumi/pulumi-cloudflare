@@ -22,14 +22,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/flagship"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetFlagshipFlags(ctx, &cloudflare.LookupFlagshipFlagsArgs{
+//			_, err := flagship.LookupFlags(ctx, &flagship.LookupFlagsArgs{
 //				AccountId: "account_id",
 //				AppId:     "app_id",
 //				Limit:     pulumi.StringRef("limit"),
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getFlagshipFlags:getFlagshipFlags has been deprecated in favor of cloudflare:flagship/flags:getFlags
 func LookupFlagshipFlags(ctx *pulumi.Context, args *LookupFlagshipFlagsArgs, opts ...pulumi.InvokeOption) (*LookupFlagshipFlagsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFlagshipFlagsResult

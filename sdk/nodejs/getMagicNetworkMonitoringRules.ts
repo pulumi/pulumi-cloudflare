@@ -19,12 +19,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicNetworkMonitoringRules = cloudflare.getMagicNetworkMonitoringRules({
+ * const exampleMagicNetworkMonitoringRules = cloudflare.magicnetworkmonitoring.getRules({
  *     accountId: "6f91088a406011ed95aed352566e8d4c",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getMagicNetworkMonitoringRules:getMagicNetworkMonitoringRules has been deprecated in favor of cloudflare:magicNetworkMonitoring/rules:getRules */
 export function getMagicNetworkMonitoringRules(args?: GetMagicNetworkMonitoringRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetMagicNetworkMonitoringRulesResult> {
+    pulumi.log.warn("getMagicNetworkMonitoringRules is deprecated: cloudflare:index/getMagicNetworkMonitoringRules:getMagicNetworkMonitoringRules has been deprecated in favor of cloudflare:magicNetworkMonitoring/rules:getRules")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getMagicNetworkMonitoringRules:getMagicNetworkMonitoringRules", {
@@ -71,12 +73,14 @@ export interface GetMagicNetworkMonitoringRulesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicNetworkMonitoringRules = cloudflare.getMagicNetworkMonitoringRules({
+ * const exampleMagicNetworkMonitoringRules = cloudflare.magicnetworkmonitoring.getRules({
  *     accountId: "6f91088a406011ed95aed352566e8d4c",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getMagicNetworkMonitoringRules:getMagicNetworkMonitoringRules has been deprecated in favor of cloudflare:magicNetworkMonitoring/rules:getRules */
 export function getMagicNetworkMonitoringRulesOutput(args?: GetMagicNetworkMonitoringRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMagicNetworkMonitoringRulesResult> {
+    pulumi.log.warn("getMagicNetworkMonitoringRules is deprecated: cloudflare:index/getMagicNetworkMonitoringRules:getMagicNetworkMonitoringRules has been deprecated in favor of cloudflare:magicNetworkMonitoring/rules:getRules")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getMagicNetworkMonitoringRules:getMagicNetworkMonitoringRules", {

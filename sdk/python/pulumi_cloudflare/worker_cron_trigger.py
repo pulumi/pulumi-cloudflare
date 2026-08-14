@@ -148,7 +148,7 @@ class WorkerCronTrigger(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_workers_cron_trigger = cloudflare.WorkersCronTrigger("example_workers_cron_trigger",
+        example_workers_cron_trigger = cloudflare.workers.CronTrigger("example_workers_cron_trigger",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             script_name="this-is_my_script-01",
             body=[{
@@ -186,7 +186,7 @@ class WorkerCronTrigger(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_workers_cron_trigger = cloudflare.WorkersCronTrigger("example_workers_cron_trigger",
+        example_workers_cron_trigger = cloudflare.workers.CronTrigger("example_workers_cron_trigger",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             script_name="this-is_my_script-01",
             body=[{
@@ -238,8 +238,6 @@ class WorkerCronTrigger(pulumi.CustomResource):
             if script_name is None and not opts.urn:
                 raise TypeError("Missing required property 'script_name'")
             __props__.__dict__["script_name"] = script_name
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/workerCronTrigger:WorkerCronTrigger")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(WorkerCronTrigger, __self__).__init__(
             'cloudflare:index/workerCronTrigger:WorkerCronTrigger',
             resource_name,

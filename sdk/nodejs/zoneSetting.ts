@@ -93,25 +93,25 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * // Basic on/off setting
- * const alwaysOnline = new cloudflare.ZoneSetting("always_online", {
+ * const alwaysOnline = new cloudflare.zone.Setting("always_online", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     settingId: "always_online",
  *     value: "on",
  * });
  * // String value with specific choices
- * const minTlsVersion = new cloudflare.ZoneSetting("min_tls_version", {
+ * const minTlsVersion = new cloudflare.zone.Setting("min_tls_version", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     settingId: "min_tls_version",
  *     value: "1.2",
  * });
  * // Numeric value
- * const browserCacheTtl = new cloudflare.ZoneSetting("browser_cache_ttl", {
+ * const browserCacheTtl = new cloudflare.zone.Setting("browser_cache_ttl", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     settingId: "browser_cache_ttl",
  *     value: 14400,
  * });
  * // Array/List value
- * const ciphers = new cloudflare.ZoneSetting("ciphers", {
+ * const ciphers = new cloudflare.zone.Setting("ciphers", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     settingId: "ciphers",
  *     value: [
@@ -120,7 +120,7 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * // Nested object value
- * const securityHeader = new cloudflare.ZoneSetting("security_header", {
+ * const securityHeader = new cloudflare.zone.Setting("security_header", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     settingId: "security_header",
  *     value: {
@@ -134,7 +134,7 @@ import * as utilities from "./utilities";
  *     },
  * });
  * // Special case: ssl_recommender uses 'enabled' instead of 'value'
- * const sslRecommender = new cloudflare.ZoneSetting("ssl_recommender", {
+ * const sslRecommender = new cloudflare.zone.Setting("ssl_recommender", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     settingId: "ssl_recommender",
  *     enabled: true,
@@ -149,25 +149,25 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * // Minimum TLS Version
- * const minTls = new cloudflare.ZoneSetting("min_tls", {
+ * const minTls = new cloudflare.zone.Setting("min_tls", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     settingId: "min_tls_version",
  *     value: "1.2",
  * });
  * // SSL/TLS Mode
- * const ssl = new cloudflare.ZoneSetting("ssl", {
+ * const ssl = new cloudflare.zone.Setting("ssl", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     settingId: "ssl",
  *     value: "strict",
  * });
  * // Security Level
- * const securityLevel = new cloudflare.ZoneSetting("security_level", {
+ * const securityLevel = new cloudflare.zone.Setting("security_level", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     settingId: "security_level",
  *     value: "medium",
  * });
  * // Cache Level
- * const cacheLevel = new cloudflare.ZoneSetting("cache_level", {
+ * const cacheLevel = new cloudflare.zone.Setting("cache_level", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     settingId: "cache_level",
  *     value: "aggressive",
@@ -180,19 +180,19 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * // Browser Cache TTL
- * const browserCacheTtl = new cloudflare.ZoneSetting("browser_cache_ttl", {
+ * const browserCacheTtl = new cloudflare.zone.Setting("browser_cache_ttl", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     settingId: "browser_cache_ttl",
  *     value: 14400,
  * });
  * // Challenge TTL
- * const challengeTtl = new cloudflare.ZoneSetting("challenge_ttl", {
+ * const challengeTtl = new cloudflare.zone.Setting("challenge_ttl", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     settingId: "challenge_ttl",
  *     value: 1800,
  * });
  * // Max Upload Size
- * const maxUpload = new cloudflare.ZoneSetting("max_upload", {
+ * const maxUpload = new cloudflare.zone.Setting("max_upload", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     settingId: "max_upload",
  *     value: 100,
@@ -205,13 +205,13 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * // 0-RTT (Zero Round Trip Time)
- * const zeroRtt = new cloudflare.ZoneSetting("zero_rtt", {
+ * const zeroRtt = new cloudflare.zone.Setting("zero_rtt", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     settingId: "0rtt",
  *     value: "on",
  * });
  * // Network Error Logging (NEL)
- * const nel = new cloudflare.ZoneSetting("nel", {
+ * const nel = new cloudflare.zone.Setting("nel", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     settingId: "nel",
  *     value: {
@@ -228,31 +228,31 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * // Enable HTTPS everywhere
- * const alwaysUseHttps = new cloudflare.ZoneSetting("always_use_https", {
+ * const alwaysUseHttps = new cloudflare.zone.Setting("always_use_https", {
  *     zoneId: zoneId,
  *     settingId: "always_use_https",
  *     value: "on",
  * });
  * // Automatic HTTPS Rewrites
- * const automaticHttpsRewrites = new cloudflare.ZoneSetting("automatic_https_rewrites", {
+ * const automaticHttpsRewrites = new cloudflare.zone.Setting("automatic_https_rewrites", {
  *     zoneId: zoneId,
  *     settingId: "automatic_https_rewrites",
  *     value: "on",
  * });
  * // Minimum TLS 1.2
- * const minTlsVersion = new cloudflare.ZoneSetting("min_tls_version", {
+ * const minTlsVersion = new cloudflare.zone.Setting("min_tls_version", {
  *     zoneId: zoneId,
  *     settingId: "min_tls_version",
  *     value: "1.2",
  * });
  * // Enable TLS 1.3
- * const tls13 = new cloudflare.ZoneSetting("tls_1_3", {
+ * const tls13 = new cloudflare.zone.Setting("tls_1_3", {
  *     zoneId: zoneId,
  *     settingId: "tls_1_3",
  *     value: "on",
  * });
  * // Strict SSL
- * const ssl = new cloudflare.ZoneSetting("ssl", {
+ * const ssl = new cloudflare.zone.Setting("ssl", {
  *     zoneId: zoneId,
  *     settingId: "ssl",
  *     value: "strict",
@@ -265,31 +265,31 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * // Enable HTTP/3
- * const http3 = new cloudflare.ZoneSetting("http3", {
+ * const http3 = new cloudflare.zone.Setting("http3", {
  *     zoneId: zoneId,
  *     settingId: "http3",
  *     value: "on",
  * });
  * // Enable Brotli Compression
- * const brotli = new cloudflare.ZoneSetting("brotli", {
+ * const brotli = new cloudflare.zone.Setting("brotli", {
  *     zoneId: zoneId,
  *     settingId: "brotli",
  *     value: "on",
  * });
  * // Early Hints
- * const earlyHints = new cloudflare.ZoneSetting("early_hints", {
+ * const earlyHints = new cloudflare.zone.Setting("early_hints", {
  *     zoneId: zoneId,
  *     settingId: "early_hints",
  *     value: "on",
  * });
  * // Aggressive Caching
- * const cacheLevel = new cloudflare.ZoneSetting("cache_level", {
+ * const cacheLevel = new cloudflare.zone.Setting("cache_level", {
  *     zoneId: zoneId,
  *     settingId: "cache_level",
  *     value: "aggressive",
  * });
  * // Browser Cache TTL
- * const browserCache = new cloudflare.ZoneSetting("browser_cache", {
+ * const browserCache = new cloudflare.zone.Setting("browser_cache", {
  *     zoneId: zoneId,
  *     settingId: "browser_cache_ttl",
  *     value: 14400,
@@ -301,6 +301,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zoneSetting:ZoneSetting example '<zone_id>/<setting_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zoneSetting:ZoneSetting has been deprecated in favor of cloudflare:zone/setting:Setting
  */
 export class ZoneSetting extends pulumi.CustomResource {
     /**
@@ -313,6 +315,7 @@ export class ZoneSetting extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZoneSettingState, opts?: pulumi.CustomResourceOptions): ZoneSetting {
+        pulumi.log.warn("ZoneSetting is deprecated: cloudflare:index/zoneSetting:ZoneSetting has been deprecated in favor of cloudflare:zone/setting:Setting")
         return new ZoneSetting(name, <any>state, { ...opts, id: id });
     }
 
@@ -367,8 +370,11 @@ export class ZoneSetting extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zoneSetting:ZoneSetting has been deprecated in favor of cloudflare:zone/setting:Setting */
     constructor(name: string, args: ZoneSettingArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zoneSetting:ZoneSetting has been deprecated in favor of cloudflare:zone/setting:Setting */
     constructor(name: string, argsOrState?: ZoneSettingArgs | ZoneSettingState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZoneSetting is deprecated: cloudflare:index/zoneSetting:ZoneSetting has been deprecated in favor of cloudflare:zone/setting:Setting")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: cloudflare:index/getAiSearchTokens:getAiSearchTokens has been deprecated in favor of cloudflare:aiSearch/tokens:getTokens
 func LookupAiSearchTokens(ctx *pulumi.Context, args *LookupAiSearchTokensArgs, opts ...pulumi.InvokeOption) (*LookupAiSearchTokensResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAiSearchTokensResult

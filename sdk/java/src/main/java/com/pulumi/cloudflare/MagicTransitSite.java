@@ -33,9 +33,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.MagicTransitSite;
- * import com.pulumi.cloudflare.MagicTransitSiteArgs;
- * import com.pulumi.cloudflare.inputs.MagicTransitSiteLocationArgs;
+ * import com.pulumi.cloudflare.magicTransitSite.MagicTransitSite;
+ * import com.pulumi.cloudflare.magicTransitSite.MagicTransitSiteArgs;
+ * import com.pulumi.cloudflare.magicTransitSite.inputs.MagicTransitSiteLocationArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -73,7 +73,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/magicTransitSite:MagicTransitSite example &#39;&lt;account_id&gt;/&lt;site_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/magicTransitSite:MagicTransitSite has been deprecated in favor of cloudflare:magicTransitSite/magicTransitSite:MagicTransitSite
+ * 
  */
+@Deprecated /* cloudflare:index/magicTransitSite:MagicTransitSite has been deprecated in favor of cloudflare:magicTransitSite/magicTransitSite:MagicTransitSite */
 @ResourceType(type="cloudflare:index/magicTransitSite:MagicTransitSite")
 public class MagicTransitSite extends com.pulumi.resources.CustomResource {
     /**

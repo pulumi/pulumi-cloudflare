@@ -34,11 +34,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.TokenValidationRules;
- * import com.pulumi.cloudflare.TokenValidationRulesArgs;
- * import com.pulumi.cloudflare.inputs.TokenValidationRulesSelectorArgs;
- * import com.pulumi.cloudflare.inputs.TokenValidationRulesSelectorExcludeArgs;
- * import com.pulumi.cloudflare.inputs.TokenValidationRulesSelectorIncludeArgs;
+ * import com.pulumi.cloudflare.tokenValidationRules.TokenValidationRules;
+ * import com.pulumi.cloudflare.tokenValidationRules.TokenValidationRulesArgs;
+ * import com.pulumi.cloudflare.tokenValidationRules.inputs.TokenValidationRulesSelectorArgs;
+ * import com.pulumi.cloudflare.tokenValidationRules.inputs.TokenValidationRulesSelectorExcludeArgs;
+ * import com.pulumi.cloudflare.tokenValidationRules.inputs.TokenValidationRulesSelectorIncludeArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -84,7 +84,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/tokenValidationRules:TokenValidationRules example &#39;&lt;zone_id&gt;/&lt;rule_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/tokenValidationRules:TokenValidationRules has been deprecated in favor of cloudflare:tokenValidationRules/tokenValidationRules:TokenValidationRules
+ * 
  */
+@Deprecated /* cloudflare:index/tokenValidationRules:TokenValidationRules has been deprecated in favor of cloudflare:tokenValidationRules/tokenValidationRules:TokenValidationRules */
 @ResourceType(type="cloudflare:index/tokenValidationRules:TokenValidationRules")
 public class TokenValidationRules extends com.pulumi.resources.CustomResource {
     /**

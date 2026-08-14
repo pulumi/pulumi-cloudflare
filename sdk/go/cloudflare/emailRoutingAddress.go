@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/emailrouting"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewEmailRoutingAddress(ctx, "example_email_routing_address", &cloudflare.EmailRoutingAddressArgs{
+//			_, err := emailrouting.NewAddress(ctx, "example_email_routing_address", &emailrouting.AddressArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Email:     pulumi.String("user@example.com"),
 //			})
@@ -49,6 +49,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/emailRoutingAddress:EmailRoutingAddress example '<account_id>/<destination_address_identifier>'
 // ```
+//
+// Deprecated: cloudflare:index/emailRoutingAddress:EmailRoutingAddress has been deprecated in favor of cloudflare:emailRouting/address:Address
 type EmailRoutingAddress struct {
 	pulumi.CustomResourceState
 

@@ -22,6 +22,8 @@ __all__ = [
     'get_dns_zone_transfers_tsigs_output',
 ]
 
+warnings.warn("""cloudflare:index/getDnsZoneTransfersTsigs:getDnsZoneTransfersTsigs has been deprecated in favor of cloudflare:dnsZoneTransfers/tsigs:getTsigs""", DeprecationWarning)
+
 @pulumi.output_type
 class GetDnsZoneTransfersTsigsResult:
     """
@@ -86,12 +88,13 @@ def get_dns_zone_transfers_tsigs(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_dns_zone_transfers_tsigs = cloudflare.get_dns_zone_transfers_tsigs(account_id="01a7362d577a6c3019a474fd6f485823")
+    example_dns_zone_transfers_tsigs = cloudflare.dnszonetransfers.get_tsigs(account_id="01a7362d577a6c3019a474fd6f485823")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_dns_zone_transfers_tsigs is deprecated: cloudflare:index/getDnsZoneTransfersTsigs:getDnsZoneTransfersTsigs has been deprecated in favor of cloudflare:dnsZoneTransfers/tsigs:getTsigs""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -117,12 +120,13 @@ def get_dns_zone_transfers_tsigs_output(account_id: pulumi.Input[Optional[Option
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_dns_zone_transfers_tsigs = cloudflare.get_dns_zone_transfers_tsigs(account_id="01a7362d577a6c3019a474fd6f485823")
+    example_dns_zone_transfers_tsigs = cloudflare.dnszonetransfers.get_tsigs(account_id="01a7362d577a6c3019a474fd6f485823")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_dns_zone_transfers_tsigs is deprecated: cloudflare:index/getDnsZoneTransfersTsigs:getDnsZoneTransfersTsigs has been deprecated in favor of cloudflare:dnsZoneTransfers/tsigs:getTsigs""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

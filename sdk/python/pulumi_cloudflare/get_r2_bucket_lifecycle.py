@@ -22,6 +22,8 @@ __all__ = [
     'get_r2_bucket_lifecycle_output',
 ]
 
+warnings.warn("""cloudflare:index/getR2BucketLifecycle:getR2BucketLifecycle has been deprecated in favor of cloudflare:r2Bucket/lifecycle:getLifecycle""", DeprecationWarning)
+
 @pulumi.output_type
 class GetR2BucketLifecycleResult:
     """
@@ -81,7 +83,7 @@ def get_r2_bucket_lifecycle(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_r2_bucket_lifecycle = cloudflare.get_r2_bucket_lifecycle(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_r2_bucket_lifecycle = cloudflare.r2bucket.get_lifecycle(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         bucket_name="example-bucket")
     ```
 
@@ -89,6 +91,7 @@ def get_r2_bucket_lifecycle(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Account ID.
     :param _builtins.str bucket_name: Name of the bucket.
     """
+    pulumi.log.warn("""get_r2_bucket_lifecycle is deprecated: cloudflare:index/getR2BucketLifecycle:getR2BucketLifecycle has been deprecated in favor of cloudflare:r2Bucket/lifecycle:getLifecycle""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['bucketName'] = bucket_name
@@ -109,7 +112,7 @@ def get_r2_bucket_lifecycle_output(account_id: pulumi.Input[Optional[_builtins.s
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_r2_bucket_lifecycle = cloudflare.get_r2_bucket_lifecycle(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_r2_bucket_lifecycle = cloudflare.r2bucket.get_lifecycle(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         bucket_name="example-bucket")
     ```
 
@@ -117,6 +120,7 @@ def get_r2_bucket_lifecycle_output(account_id: pulumi.Input[Optional[_builtins.s
     :param _builtins.str account_id: Account ID.
     :param _builtins.str bucket_name: Name of the bucket.
     """
+    pulumi.log.warn("""get_r2_bucket_lifecycle is deprecated: cloudflare:index/getR2BucketLifecycle:getR2BucketLifecycle has been deprecated in favor of cloudflare:r2Bucket/lifecycle:getLifecycle""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['bucketName'] = bucket_name

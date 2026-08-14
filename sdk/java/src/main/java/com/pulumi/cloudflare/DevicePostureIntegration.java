@@ -7,13 +7,11 @@ import com.pulumi.cloudflare.DevicePostureIntegrationArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.DevicePostureIntegrationState;
 import com.pulumi.cloudflare.outputs.DevicePostureIntegrationConfig;
-import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
-import java.util.List;
 import javax.annotation.Nullable;
 
 /**
@@ -30,9 +28,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDevicePostureIntegration;
- * import com.pulumi.cloudflare.ZeroTrustDevicePostureIntegrationArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDevicePostureIntegrationConfigArgs;
+ * import com.pulumi.cloudflare.zeroTrustDevicePosture.Integration;
+ * import com.pulumi.cloudflare.zeroTrustDevicePosture.IntegrationArgs;
+ * import com.pulumi.cloudflare.zeroTrustDevicePosture.inputs.IntegrationConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,9 +44,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustDevicePostureIntegration = new ZeroTrustDevicePostureIntegration("exampleZeroTrustDevicePostureIntegration", ZeroTrustDevicePostureIntegrationArgs.builder()
+ *         var exampleZeroTrustDevicePostureIntegration = new Integration("exampleZeroTrustDevicePostureIntegration", IntegrationArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
- *             .config(ZeroTrustDevicePostureIntegrationConfigArgs.builder()
+ *             .config(IntegrationConfigArgs.builder()
  *                 .apiUrl("https://as123.awmdm.com/API")
  *                 .authUrl("https://na.uemauth.workspaceone.com/connect/token")
  *                 .clientId("example client id")
@@ -181,9 +179,6 @@ public class DevicePostureIntegration extends com.pulumi.resources.CustomResourc
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .aliases(List.of(
-                Output.of(Alias.builder().type("cloudflare:index/devicePostureIntegration:DevicePostureIntegration").build())
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

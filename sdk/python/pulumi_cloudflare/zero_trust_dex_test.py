@@ -283,8 +283,13 @@ class _ZeroTrustDexTestState:
         pulumi.set(self, "test_id", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest has been deprecated in favor of cloudflare:zeroTrustDex/test:Test""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest")
 class ZeroTrustDexTest(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest has been deprecated in favor of cloudflare:zeroTrustDex/test:Test""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -311,7 +316,7 @@ class ZeroTrustDexTest(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dex_test = cloudflare.ZeroTrustDexTest("example_zero_trust_dex_test",
+        example_zero_trust_dex_test = cloudflare.zerotrustdex.Test("example_zero_trust_dex_test",
             account_id="01a7362d577a6c3019a474fd6f485823",
             data={
                 "host": "https://dash.cloudflare.com",
@@ -366,7 +371,7 @@ class ZeroTrustDexTest(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dex_test = cloudflare.ZeroTrustDexTest("example_zero_trust_dex_test",
+        example_zero_trust_dex_test = cloudflare.zerotrustdex.Test("example_zero_trust_dex_test",
             account_id="01a7362d577a6c3019a474fd6f485823",
             data={
                 "host": "https://dash.cloudflare.com",
@@ -414,6 +419,7 @@ class ZeroTrustDexTest(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  target_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDexTestTargetPolicyArgs', 'ZeroTrustDexTestTargetPolicyArgsDict']]]]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustDexTest is deprecated: cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest has been deprecated in favor of cloudflare:zeroTrustDex/test:Test""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

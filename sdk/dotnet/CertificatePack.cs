@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCertificatePack = new Cloudflare.CertificatePack("example_certificate_pack", new()
+    ///     var exampleCertificatePack = new Cloudflare.Modules.Certificate.CertificatePack("example_certificate_pack", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         CertificateAuthority = "lets_encrypt",
@@ -59,6 +59,7 @@ namespace Pulumi.Cloudflare
     /// While supported, importing isn't recommended and it is advised to replace the
     /// certificate entirely instead.
     /// </summary>
+    [Obsolete(@"cloudflare:index/certificatePack:CertificatePack has been deprecated in favor of cloudflare:certificate/pack:Pack")]
     [CloudflareResourceType("cloudflare:index/certificatePack:CertificatePack")]
     public partial class CertificatePack : global::Pulumi.CustomResource
     {

@@ -39,18 +39,18 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustAccessPolicy;
- * import com.pulumi.cloudflare.ZeroTrustAccessPolicyArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyIncludeArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyIncludeCertificateArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyApprovalGroupArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyConnectionRulesArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyConnectionRulesRdpArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyExcludeArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyExcludeCertificateArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyMfaConfigArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireCertificateArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccess.Policy;
+ * import com.pulumi.cloudflare.zeroTrustAccess.PolicyArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccess.inputs.PolicyIncludeArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccess.inputs.PolicyIncludeCertificateArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccess.inputs.PolicyApprovalGroupArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccess.inputs.PolicyConnectionRulesArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccess.inputs.PolicyConnectionRulesRdpArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccess.inputs.PolicyExcludeArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccess.inputs.PolicyExcludeCertificateArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccess.inputs.PolicyMfaConfigArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccess.inputs.PolicyRequireArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccess.inputs.PolicyRequireCertificateArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -64,23 +64,23 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var exampleZeroTrustAccessPolicy = new ZeroTrustAccessPolicy("exampleZeroTrustAccessPolicy", ZeroTrustAccessPolicyArgs.builder()
+ *         var exampleZeroTrustAccessPolicy = new Policy("exampleZeroTrustAccessPolicy", PolicyArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .decision("allow")
- *             .includes(ZeroTrustAccessPolicyIncludeArgs.builder()
- *                 .certificate(ZeroTrustAccessPolicyIncludeCertificateArgs.builder()
+ *             .includes(PolicyIncludeArgs.builder()
+ *                 .certificate(PolicyIncludeCertificateArgs.builder()
  *                     .build())
  *                 .build())
  *             .name("Allow devs")
  *             .approvalGroups(            
- *                 ZeroTrustAccessPolicyApprovalGroupArgs.builder()
+ *                 PolicyApprovalGroupArgs.builder()
  *                     .approvalsNeeded(1.0)
  *                     .emailAddresses(                    
  *                         "test1}{@literal @}{@code cloudflare.com",
  *                         "test2}{@literal @}{@code cloudflare.com")
  *                     .emailListUuid("email_list_uuid")
  *                     .build(),
- *                 ZeroTrustAccessPolicyApprovalGroupArgs.builder()
+ *                 PolicyApprovalGroupArgs.builder()
  *                     .approvalsNeeded(3.0)
  *                     .emailAddresses(                    
  *                         "test}{@literal @}{@code cloudflare.com",
@@ -88,8 +88,8 @@ import javax.annotation.Nullable;
  *                     .emailListUuid("597147a1-976b-4ef2-9af0-81d5d007fc34")
  *                     .build())
  *             .approvalRequired(true)
- *             .connectionRules(ZeroTrustAccessPolicyConnectionRulesArgs.builder()
- *                 .rdp(ZeroTrustAccessPolicyConnectionRulesRdpArgs.builder()
+ *             .connectionRules(PolicyConnectionRulesArgs.builder()
+ *                 .rdp(PolicyConnectionRulesRdpArgs.builder()
  *                     .allowedClipboardLocalToRemoteFormats(                    
  *                         "text",
  *                         "file")
@@ -98,12 +98,12 @@ import javax.annotation.Nullable;
  *                         "file")
  *                     .build())
  *                 .build())
- *             .excludes(ZeroTrustAccessPolicyExcludeArgs.builder()
- *                 .certificate(ZeroTrustAccessPolicyExcludeCertificateArgs.builder()
+ *             .excludes(PolicyExcludeArgs.builder()
+ *                 .certificate(PolicyExcludeCertificateArgs.builder()
  *                     .build())
  *                 .build())
  *             .isolationRequired(false)
- *             .mfaConfig(ZeroTrustAccessPolicyMfaConfigArgs.builder()
+ *             .mfaConfig(PolicyMfaConfigArgs.builder()
  *                 .allowedAuthenticators(                
  *                     "totp",
  *                     "biometrics",
@@ -113,8 +113,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .purposeJustificationPrompt("Please enter a justification for entering this protected domain.")
  *             .purposeJustificationRequired(true)
- *             .requires(ZeroTrustAccessPolicyRequireArgs.builder()
- *                 .certificate(ZeroTrustAccessPolicyRequireCertificateArgs.builder()
+ *             .requires(PolicyRequireArgs.builder()
+ *                 .certificate(PolicyRequireCertificateArgs.builder()
  *                     .build())
  *                 .build())
  *             .sessionDuration("24h")
@@ -131,7 +131,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy example &#39;&lt;account_id&gt;/&lt;policy_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy has been deprecated in favor of cloudflare:zeroTrustAccess/policy:Policy
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy has been deprecated in favor of cloudflare:zeroTrustAccess/policy:Policy */
 @ResourceType(type="cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy")
 public class ZeroTrustAccessPolicy extends com.pulumi.resources.CustomResource {
     /**

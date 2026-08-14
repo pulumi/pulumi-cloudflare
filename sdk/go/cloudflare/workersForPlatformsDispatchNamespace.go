@@ -25,14 +25,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/workersforplatformsdispatch"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWorkersForPlatformsDispatchNamespace(ctx, "example_workers_for_platforms_dispatch_namespace", &cloudflare.WorkersForPlatformsDispatchNamespaceArgs{
+//			_, err := workersforplatformsdispatch.NewNamespace(ctx, "example_workers_for_platforms_dispatch_namespace", &workersforplatformsdispatch.NamespaceArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:      pulumi.String("my-dispatch-namespace"),
 //			})
@@ -50,6 +50,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace example '<account_id>/<dispatch_namespace>'
 // ```
+//
+// Deprecated: cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace has been deprecated in favor of cloudflare:workersForPlatformsDispatch/namespace:Namespace
 type WorkersForPlatformsDispatchNamespace struct {
 	pulumi.CustomResourceState
 

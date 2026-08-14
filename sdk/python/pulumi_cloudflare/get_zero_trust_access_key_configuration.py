@@ -21,6 +21,8 @@ __all__ = [
     'get_zero_trust_access_key_configuration_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustAccessKeyConfiguration:getZeroTrustAccessKeyConfiguration has been deprecated in favor of cloudflare:zeroTrustAccess/keyConfiguration:getKeyConfiguration""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustAccessKeyConfigurationResult:
     """
@@ -111,12 +113,13 @@ def get_zero_trust_access_key_configuration(account_id: Optional[_builtins.str] 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_key_configuration = cloudflare.get_zero_trust_access_key_configuration(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_zero_trust_access_key_configuration = cloudflare.zerotrustaccess.get_key_configuration(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Identifier.
     """
+    pulumi.log.warn("""get_zero_trust_access_key_configuration is deprecated: cloudflare:index/getZeroTrustAccessKeyConfiguration:getZeroTrustAccessKeyConfiguration has been deprecated in favor of cloudflare:zeroTrustAccess/keyConfiguration:getKeyConfiguration""")
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -142,12 +145,13 @@ def get_zero_trust_access_key_configuration_output(account_id: pulumi.Input[Opti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_key_configuration = cloudflare.get_zero_trust_access_key_configuration(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_zero_trust_access_key_configuration = cloudflare.zerotrustaccess.get_key_configuration(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Identifier.
     """
+    pulumi.log.warn("""get_zero_trust_access_key_configuration is deprecated: cloudflare:index/getZeroTrustAccessKeyConfiguration:getZeroTrustAccessKeyConfiguration has been deprecated in favor of cloudflare:zeroTrustAccess/keyConfiguration:getKeyConfiguration""")
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

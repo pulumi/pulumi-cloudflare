@@ -22,6 +22,8 @@ __all__ = [
     'get_list_output',
 ]
 
+warnings.warn("""cloudflare:index/getList:getList has been deprecated in favor of cloudflare:list/list:getList""", DeprecationWarning)
+
 @pulumi.output_type
 class GetListResult:
     """
@@ -101,7 +103,7 @@ class GetListResult:
     @pulumi.getter
     def items(self) -> Sequence['outputs.GetListItemResult']:
         """
-        The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
+        The items in the list. If set, this overwrites all items in the list. Do not use with `list.Item`.
         """
         return pulumi.get(self, "items")
 
@@ -198,7 +200,7 @@ def get_list(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_list = cloudflare.get_list(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_list = cloudflare.list.get_list(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         list_id="2c0fc9fa937b11eaa1b71c4d701ab86e",
         search="1.1.1.1")
     ```
@@ -208,6 +210,7 @@ def get_list(account_id: Optional[_builtins.str] = None,
     :param _builtins.str list_id: The unique ID of the list.
     :param _builtins.str search: A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
     """
+    pulumi.log.warn("""get_list is deprecated: cloudflare:index/getList:getList has been deprecated in favor of cloudflare:list/list:getList""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['listId'] = list_id
@@ -243,7 +246,7 @@ def get_list_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_list = cloudflare.get_list(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_list = cloudflare.list.get_list(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         list_id="2c0fc9fa937b11eaa1b71c4d701ab86e",
         search="1.1.1.1")
     ```
@@ -253,6 +256,7 @@ def get_list_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] 
     :param _builtins.str list_id: The unique ID of the list.
     :param _builtins.str search: A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
     """
+    pulumi.log.warn("""get_list is deprecated: cloudflare:index/getList:getList has been deprecated in favor of cloudflare:list/list:getList""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['listId'] = list_id

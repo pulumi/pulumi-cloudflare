@@ -28,14 +28,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrusttunnelcloudflared"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustTunnelCloudflared(ctx, "example_zero_trust_tunnel_cloudflared", &cloudflare.ZeroTrustTunnelCloudflaredArgs{
+//			_, err := zerotrusttunnelcloudflared.NewZeroTrustTunnelCloudflared(ctx, "example_zero_trust_tunnel_cloudflared", &zerotrusttunnelcloudflared.ZeroTrustTunnelCloudflaredArgs{
 //				AccountId:    pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				Name:         pulumi.String("blog"),
 //				ConfigSrc:    pulumi.String("cloudflare"),
@@ -110,12 +110,6 @@ func NewTunnel(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("cloudflare:index/tunnel:Tunnel"),
-		},
-	})
-	opts = append(opts, aliases)
 	if args.TunnelSecret != nil {
 		args.TunnelSecret = pulumi.ToSecret(args.TunnelSecret).(pulumi.StringPtrInput)
 	}

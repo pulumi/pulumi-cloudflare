@@ -24,8 +24,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZoneAutoOriginTlsKex;
- * import com.pulumi.cloudflare.ZoneAutoOriginTlsKexArgs;
+ * import com.pulumi.cloudflare.zone.AutoOriginTlsKex;
+ * import com.pulumi.cloudflare.zone.AutoOriginTlsKexArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -39,7 +39,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZoneAutoOriginTlsKex = new ZoneAutoOriginTlsKex("exampleZoneAutoOriginTlsKex", ZoneAutoOriginTlsKexArgs.builder()
+ *         var exampleZoneAutoOriginTlsKex = new AutoOriginTlsKex("exampleZoneAutoOriginTlsKex", AutoOriginTlsKexArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .enabled(true)
  *             .build());
@@ -55,7 +55,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zoneAutoOriginTlsKex:ZoneAutoOriginTlsKex example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zoneAutoOriginTlsKex:ZoneAutoOriginTlsKex has been deprecated in favor of cloudflare:zone/autoOriginTlsKex:AutoOriginTlsKex
+ * 
  */
+@Deprecated /* cloudflare:index/zoneAutoOriginTlsKex:ZoneAutoOriginTlsKex has been deprecated in favor of cloudflare:zone/autoOriginTlsKex:AutoOriginTlsKex */
 @ResourceType(type="cloudflare:index/zoneAutoOriginTlsKex:ZoneAutoOriginTlsKex")
 public class ZoneAutoOriginTlsKex extends com.pulumi.resources.CustomResource {
     /**

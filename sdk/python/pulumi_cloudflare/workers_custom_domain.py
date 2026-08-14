@@ -247,8 +247,13 @@ class _WorkersCustomDomainState:
         pulumi.set(self, "zone_name", value)
 
 
+warnings.warn("""cloudflare:index/workersCustomDomain:WorkersCustomDomain has been deprecated in favor of cloudflare:workersCustom/domain:Domain""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/workersCustomDomain:WorkersCustomDomain")
 class WorkersCustomDomain(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/workersCustomDomain:WorkersCustomDomain has been deprecated in favor of cloudflare:workersCustom/domain:Domain""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -272,7 +277,7 @@ class WorkersCustomDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_workers_custom_domain = cloudflare.WorkersCustomDomain("example_workers_custom_domain",
+        example_workers_custom_domain = cloudflare.workerscustom.Domain("example_workers_custom_domain",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             hostname="app.example.com",
             service="my-worker",
@@ -314,7 +319,7 @@ class WorkersCustomDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_workers_custom_domain = cloudflare.WorkersCustomDomain("example_workers_custom_domain",
+        example_workers_custom_domain = cloudflare.workerscustom.Domain("example_workers_custom_domain",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             hostname="app.example.com",
             service="my-worker",
@@ -351,6 +356,7 @@ class WorkersCustomDomain(pulumi.CustomResource):
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""WorkersCustomDomain is deprecated: cloudflare:index/workersCustomDomain:WorkersCustomDomain has been deprecated in favor of cloudflare:workersCustom/domain:Domain""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -22,6 +22,8 @@ __all__ = [
     'get_authenticated_origin_pulls_hostname_certificates_output',
 ]
 
+warnings.warn("""cloudflare:index/getAuthenticatedOriginPullsHostnameCertificates:getAuthenticatedOriginPullsHostnameCertificates has been deprecated in favor of cloudflare:authenticatedOriginPullsHostname/certificates:getCertificates""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAuthenticatedOriginPullsHostnameCertificatesResult:
     """
@@ -84,13 +86,14 @@ def get_authenticated_origin_pulls_hostname_certificates(max_items: Optional[_bu
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_authenticated_origin_pulls_hostname_certificates = cloudflare.get_authenticated_origin_pulls_hostname_certificates(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_authenticated_origin_pulls_hostname_certificates = cloudflare.authenticatedoriginpullshostname.get_certificates(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_authenticated_origin_pulls_hostname_certificates is deprecated: cloudflare:index/getAuthenticatedOriginPullsHostnameCertificates:getAuthenticatedOriginPullsHostnameCertificates has been deprecated in favor of cloudflare:authenticatedOriginPullsHostname/certificates:getCertificates""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id
@@ -111,13 +114,14 @@ def get_authenticated_origin_pulls_hostname_certificates_output(max_items: pulum
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_authenticated_origin_pulls_hostname_certificates = cloudflare.get_authenticated_origin_pulls_hostname_certificates(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_authenticated_origin_pulls_hostname_certificates = cloudflare.authenticatedoriginpullshostname.get_certificates(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_authenticated_origin_pulls_hostname_certificates is deprecated: cloudflare:index/getAuthenticatedOriginPullsHostnameCertificates:getAuthenticatedOriginPullsHostnameCertificates has been deprecated in favor of cloudflare:authenticatedOriginPullsHostname/certificates:getCertificates""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id

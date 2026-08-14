@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getCustomPageAsset:getCustomPageAsset has been deprecated in favor of cloudflare:customPage/asset:getAsset")]
     public static class GetCustomPageAsset
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomPageAsset = Cloudflare.GetCustomPageAsset.Invoke(new()
+        ///     var exampleCustomPageAsset = Cloudflare.Modules.CustomPage.GetAsset.Invoke(new()
         ///     {
         ///         AssetName = "my_custom_error_page",
         ///         AccountId = "account_id",
@@ -46,7 +47,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomPageAsset = Cloudflare.GetCustomPageAsset.Invoke(new()
+        ///     var exampleCustomPageAsset = Cloudflare.Modules.CustomPage.GetAsset.Invoke(new()
         ///     {
         ///         AssetName = "my_custom_error_page",
         ///         AccountId = "account_id",
@@ -70,7 +71,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomPageAsset = Cloudflare.GetCustomPageAsset.Invoke(new()
+        ///     var exampleCustomPageAsset = Cloudflare.Modules.CustomPage.GetAsset.Invoke(new()
         ///     {
         ///         AssetName = "my_custom_error_page",
         ///         AccountId = "account_id",

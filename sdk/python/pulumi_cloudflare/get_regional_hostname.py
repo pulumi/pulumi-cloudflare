@@ -21,6 +21,8 @@ __all__ = [
     'get_regional_hostname_output',
 ]
 
+warnings.warn("""cloudflare:index/getRegionalHostname:getRegionalHostname has been deprecated in favor of cloudflare:regional/hostname:getHostname""", DeprecationWarning)
+
 @pulumi.output_type
 class GetRegionalHostnameResult:
     """
@@ -124,7 +126,7 @@ def get_regional_hostname(hostname: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_regional_hostname = cloudflare.get_regional_hostname(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_regional_hostname = cloudflare.regional.get_hostname(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         hostname="foo.example.com")
     ```
 
@@ -132,6 +134,7 @@ def get_regional_hostname(hostname: Optional[_builtins.str] = None,
     :param _builtins.str hostname: DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_regional_hostname is deprecated: cloudflare:index/getRegionalHostname:getRegionalHostname has been deprecated in favor of cloudflare:regional/hostname:getHostname""")
     __args__ = dict()
     __args__['hostname'] = hostname
     __args__['zoneId'] = zone_id
@@ -160,7 +163,7 @@ def get_regional_hostname_output(hostname: pulumi.Input[Optional[_builtins.str]]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_regional_hostname = cloudflare.get_regional_hostname(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_regional_hostname = cloudflare.regional.get_hostname(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         hostname="foo.example.com")
     ```
 
@@ -168,6 +171,7 @@ def get_regional_hostname_output(hostname: pulumi.Input[Optional[_builtins.str]]
     :param _builtins.str hostname: DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_regional_hostname is deprecated: cloudflare:index/getRegionalHostname:getRegionalHostname has been deprecated in favor of cloudflare:regional/hostname:getHostname""")
     __args__ = dict()
     __args__['hostname'] = hostname
     __args__['zoneId'] = zone_id

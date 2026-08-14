@@ -31,9 +31,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ImageVariant;
- * import com.pulumi.cloudflare.ImageVariantArgs;
- * import com.pulumi.cloudflare.inputs.ImageVariantOptionsArgs;
+ * import com.pulumi.cloudflare.image.Variant;
+ * import com.pulumi.cloudflare.image.VariantArgs;
+ * import com.pulumi.cloudflare.image.inputs.VariantOptionsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -47,10 +47,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleImageVariant = new ImageVariant("exampleImageVariant", ImageVariantArgs.builder()
+ *         var exampleImageVariant = new Variant("exampleImageVariant", VariantArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .imageVariantId("hero")
- *             .options(ImageVariantOptionsArgs.builder()
+ *             .options(VariantOptionsArgs.builder()
  *                 .fit("scale-down")
  *                 .height(768.0)
  *                 .metadata("none")
@@ -70,7 +70,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/imageVariant:ImageVariant example &#39;&lt;account_id&gt;/&lt;variant_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/imageVariant:ImageVariant has been deprecated in favor of cloudflare:image/variant:Variant
+ * 
  */
+@Deprecated /* cloudflare:index/imageVariant:ImageVariant has been deprecated in favor of cloudflare:image/variant:Variant */
 @ResourceType(type="cloudflare:index/imageVariant:ImageVariant")
 public class ImageVariant extends com.pulumi.resources.CustomResource {
     /**

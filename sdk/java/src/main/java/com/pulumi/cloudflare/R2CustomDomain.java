@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.R2CustomDomain;
- * import com.pulumi.cloudflare.R2CustomDomainArgs;
+ * import com.pulumi.cloudflare.r2.CustomDomain;
+ * import com.pulumi.cloudflare.r2.CustomDomainArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleR2CustomDomain = new R2CustomDomain("exampleR2CustomDomain", R2CustomDomainArgs.builder()
+ *         var exampleR2CustomDomain = new CustomDomain("exampleR2CustomDomain", CustomDomainArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .bucketName("example-bucket")
  *             .domain("prefix.example-domain.com")
@@ -66,7 +66,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/r2CustomDomain:R2CustomDomain has been deprecated in favor of cloudflare:r2/customDomain:CustomDomain
+ * 
  */
+@Deprecated /* cloudflare:index/r2CustomDomain:R2CustomDomain has been deprecated in favor of cloudflare:r2/customDomain:CustomDomain */
 @ResourceType(type="cloudflare:index/r2CustomDomain:R2CustomDomain")
 public class R2CustomDomain extends com.pulumi.resources.CustomResource {
     /**

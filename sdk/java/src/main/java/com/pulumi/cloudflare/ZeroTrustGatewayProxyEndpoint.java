@@ -26,8 +26,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustGatewayProxyEndpoint;
- * import com.pulumi.cloudflare.ZeroTrustGatewayProxyEndpointArgs;
+ * import com.pulumi.cloudflare.zeroTrustGatewayProxy.Endpoint;
+ * import com.pulumi.cloudflare.zeroTrustGatewayProxy.EndpointArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustGatewayProxyEndpoint = new ZeroTrustGatewayProxyEndpoint("exampleZeroTrustGatewayProxyEndpoint", ZeroTrustGatewayProxyEndpointArgs.builder()
+ *         var exampleZeroTrustGatewayProxyEndpoint = new Endpoint("exampleZeroTrustGatewayProxyEndpoint", EndpointArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
  *             .name("Devops team")
  *             .kind("ip")
@@ -58,7 +58,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint example &#39;&lt;account_id&gt;/&lt;proxy_endpoint_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint has been deprecated in favor of cloudflare:zeroTrustGatewayProxy/endpoint:Endpoint
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint has been deprecated in favor of cloudflare:zeroTrustGatewayProxy/endpoint:Endpoint */
 @ResourceType(type="cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint")
 public class ZeroTrustGatewayProxyEndpoint extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

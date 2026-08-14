@@ -178,8 +178,13 @@ class _ZeroTrustAccessCustomPageState:
         pulumi.set(self, "uid", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage has been deprecated in favor of cloudflare:zeroTrustAccessCustom/page:Page""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage")
 class ZeroTrustAccessCustomPage(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage has been deprecated in favor of cloudflare:zeroTrustAccessCustom/page:Page""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -201,7 +206,7 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_custom_page = cloudflare.ZeroTrustAccessCustomPage("example_zero_trust_access_custom_page",
+        example_zero_trust_access_custom_page = cloudflare.zerotrustaccesscustom.Page("example_zero_trust_access_custom_page",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             custom_html="<html><body><h1>Access Denied</h1></body></html>",
             name="name",
@@ -241,7 +246,7 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_custom_page = cloudflare.ZeroTrustAccessCustomPage("example_zero_trust_access_custom_page",
+        example_zero_trust_access_custom_page = cloudflare.zerotrustaccesscustom.Page("example_zero_trust_access_custom_page",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             custom_html="<html><body><h1>Access Denied</h1></body></html>",
             name="name",
@@ -275,6 +280,7 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustAccessCustomPage is deprecated: cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage has been deprecated in favor of cloudflare:zeroTrustAccessCustom/page:Page""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

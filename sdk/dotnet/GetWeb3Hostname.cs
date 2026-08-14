@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getWeb3Hostname:getWeb3Hostname has been deprecated in favor of cloudflare:web3/hostname:getHostname")]
     public static class GetWeb3Hostname
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWeb3Hostname = Cloudflare.GetWeb3Hostname.Invoke(new()
+        ///     var exampleWeb3Hostname = Cloudflare.Modules.Web3.GetHostname.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Identifier = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWeb3Hostname = Cloudflare.GetWeb3Hostname.Invoke(new()
+        ///     var exampleWeb3Hostname = Cloudflare.Modules.Web3.GetHostname.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Identifier = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWeb3Hostname = Cloudflare.GetWeb3Hostname.Invoke(new()
+        ///     var exampleWeb3Hostname = Cloudflare.Modules.Web3.GetHostname.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Identifier = "023e105f4ecef8ad9ca31a8372d0c353",

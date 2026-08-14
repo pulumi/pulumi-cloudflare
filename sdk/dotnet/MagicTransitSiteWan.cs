@@ -27,14 +27,14 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleMagicTransitSiteWan = new Cloudflare.MagicTransitSiteWan("example_magic_transit_site_wan", new()
+    ///     var exampleMagicTransitSiteWan = new Cloudflare.Modules.MagicTransitSite.MagicTransitSiteWan("example_magic_transit_site_wan", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SiteId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Physport = 1,
     ///         Name = "name",
     ///         Priority = 0,
-    ///         StaticAddressing = new Cloudflare.Inputs.MagicTransitSiteWanStaticAddressingArgs
+    ///         StaticAddressing = new Cloudflare.Modules.MagicTransitSite.Inputs.WanStaticAddressingArgs
     ///         {
     ///             Address = "192.0.2.0/24",
     ///             GatewayAddress = "192.0.2.1",
@@ -52,6 +52,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan example '&lt;account_id&gt;/&lt;site_id&gt;/&lt;wan_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan has been deprecated in favor of cloudflare:magicTransitSite/wan:Wan")]
     [CloudflareResourceType("cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan")]
     public partial class MagicTransitSiteWan : global::Pulumi.CustomResource
     {

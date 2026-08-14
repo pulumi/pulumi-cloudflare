@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleR2ManagedDomain = new cloudflare.R2ManagedDomain("example_r2_managed_domain", {
+ * const exampleR2ManagedDomain = new cloudflare.r2.ManagedDomain("example_r2_managed_domain", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
  *     enabled: true,
@@ -21,6 +21,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/r2ManagedDomain:R2ManagedDomain has been deprecated in favor of cloudflare:r2/managedDomain:ManagedDomain
  */
 export class R2ManagedDomain extends pulumi.CustomResource {
     /**
@@ -33,6 +35,7 @@ export class R2ManagedDomain extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: R2ManagedDomainState, opts?: pulumi.CustomResourceOptions): R2ManagedDomain {
+        pulumi.log.warn("R2ManagedDomain is deprecated: cloudflare:index/r2ManagedDomain:R2ManagedDomain has been deprecated in favor of cloudflare:r2/managedDomain:ManagedDomain")
         return new R2ManagedDomain(name, <any>state, { ...opts, id: id });
     }
 
@@ -82,8 +85,11 @@ export class R2ManagedDomain extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/r2ManagedDomain:R2ManagedDomain has been deprecated in favor of cloudflare:r2/managedDomain:ManagedDomain */
     constructor(name: string, args: R2ManagedDomainArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/r2ManagedDomain:R2ManagedDomain has been deprecated in favor of cloudflare:r2/managedDomain:ManagedDomain */
     constructor(name: string, argsOrState?: R2ManagedDomainArgs | R2ManagedDomainState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("R2ManagedDomain is deprecated: cloudflare:index/r2ManagedDomain:R2ManagedDomain has been deprecated in favor of cloudflare:r2/managedDomain:ManagedDomain")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -1575,8 +1575,6 @@ class AccessApplication(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["aud"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessApplication:AccessApplication")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AccessApplication, __self__).__init__(
             'cloudflare:index/accessApplication:AccessApplication',
             resource_name,

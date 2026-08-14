@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpCustomProfile = cloudflare.getZeroTrustDlpCustomProfile({
+ * const exampleZeroTrustDlpCustomProfile = cloudflare.zerotrustdlpcustom.getProfile({
  *     accountId: "account_id",
  *     profileId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpCustomProfile:getZeroTrustDlpCustomProfile has been deprecated in favor of cloudflare:zeroTrustDlpCustom/profile:getProfile */
 export function getZeroTrustDlpCustomProfile(args: GetZeroTrustDlpCustomProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDlpCustomProfileResult> {
+    pulumi.log.warn("getZeroTrustDlpCustomProfile is deprecated: cloudflare:index/getZeroTrustDlpCustomProfile:getZeroTrustDlpCustomProfile has been deprecated in favor of cloudflare:zeroTrustDlpCustom/profile:getProfile")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDlpCustomProfile:getZeroTrustDlpCustomProfile", {
         "accountId": args.accountId,
@@ -120,13 +122,15 @@ export interface GetZeroTrustDlpCustomProfileResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpCustomProfile = cloudflare.getZeroTrustDlpCustomProfile({
+ * const exampleZeroTrustDlpCustomProfile = cloudflare.zerotrustdlpcustom.getProfile({
  *     accountId: "account_id",
  *     profileId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpCustomProfile:getZeroTrustDlpCustomProfile has been deprecated in favor of cloudflare:zeroTrustDlpCustom/profile:getProfile */
 export function getZeroTrustDlpCustomProfileOutput(args: GetZeroTrustDlpCustomProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDlpCustomProfileResult> {
+    pulumi.log.warn("getZeroTrustDlpCustomProfile is deprecated: cloudflare:index/getZeroTrustDlpCustomProfile:getZeroTrustDlpCustomProfile has been deprecated in favor of cloudflare:zeroTrustDlpCustom/profile:getProfile")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDlpCustomProfile:getZeroTrustDlpCustomProfile", {
         "accountId": args.accountId,

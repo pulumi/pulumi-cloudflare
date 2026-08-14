@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustTunnelCloudflaredRoutes = cloudflare.getZeroTrustTunnelCloudflaredRoutes({
+ * const exampleZeroTrustTunnelCloudflaredRoutes = cloudflare.zerotrusttunnelcloudflared.getRoutes({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     existedAt: "2019-10-12T07%3A20%3A50.52Z",
  *     isDeleted: true,
@@ -33,7 +33,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustTunnelCloudflaredRoutes:getZeroTrustTunnelCloudflaredRoutes has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/routes:getRoutes */
 export function getZeroTrustTunnelCloudflaredRoutes(args?: GetZeroTrustTunnelCloudflaredRoutesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustTunnelCloudflaredRoutesResult> {
+    pulumi.log.warn("getZeroTrustTunnelCloudflaredRoutes is deprecated: cloudflare:index/getZeroTrustTunnelCloudflaredRoutes:getZeroTrustTunnelCloudflaredRoutes has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/routes:getRoutes")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustTunnelCloudflaredRoutes:getZeroTrustTunnelCloudflaredRoutes", {
@@ -168,7 +170,7 @@ export interface GetZeroTrustTunnelCloudflaredRoutesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustTunnelCloudflaredRoutes = cloudflare.getZeroTrustTunnelCloudflaredRoutes({
+ * const exampleZeroTrustTunnelCloudflaredRoutes = cloudflare.zerotrusttunnelcloudflared.getRoutes({
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     existedAt: "2019-10-12T07%3A20%3A50.52Z",
  *     isDeleted: true,
@@ -181,7 +183,9 @@ export interface GetZeroTrustTunnelCloudflaredRoutesResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustTunnelCloudflaredRoutes:getZeroTrustTunnelCloudflaredRoutes has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/routes:getRoutes */
 export function getZeroTrustTunnelCloudflaredRoutesOutput(args?: GetZeroTrustTunnelCloudflaredRoutesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustTunnelCloudflaredRoutesResult> {
+    pulumi.log.warn("getZeroTrustTunnelCloudflaredRoutes is deprecated: cloudflare:index/getZeroTrustTunnelCloudflaredRoutes:getZeroTrustTunnelCloudflaredRoutes has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/routes:getRoutes")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustTunnelCloudflaredRoutes:getZeroTrustTunnelCloudflaredRoutes", {

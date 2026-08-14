@@ -36,10 +36,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustAccessAiControlsMcpServer;
- * import com.pulumi.cloudflare.ZeroTrustAccessAiControlsMcpServerArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccessAiControlsMcp.Server;
+ * import com.pulumi.cloudflare.zeroTrustAccessAiControlsMcp.ServerArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccessAiControlsMcp.inputs.ServerUpdatedPromptArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccessAiControlsMcp.inputs.ServerUpdatedToolArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustAccessAiControlsMcpServer = new ZeroTrustAccessAiControlsMcpServer("exampleZeroTrustAccessAiControlsMcpServer", ZeroTrustAccessAiControlsMcpServerArgs.builder()
+ *         var exampleZeroTrustAccessAiControlsMcpServer = new Server("exampleZeroTrustAccessAiControlsMcpServer", ServerArgs.builder()
  *             .accountId("a86a8f5c339544d7bdc89926de14fb8c")
  *             .zeroTrustAccessAiControlsMcpServerId("my-mcp-server")
  *             .authType("unauthenticated")
@@ -64,13 +64,13 @@ import javax.annotation.Nullable;
  *             .description("This is one remote mcp server")
  *             .isSharedOauthCallbackEnabled(true)
  *             .secureWebGateway(false)
- *             .updatedPrompts(ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs.builder()
+ *             .updatedPrompts(ServerUpdatedPromptArgs.builder()
  *                 .name("name")
  *                 .alias("my-custom-alias")
  *                 .description("description")
  *                 .enabled(true)
  *                 .build())
- *             .updatedTools(ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs.builder()
+ *             .updatedTools(ServerUpdatedToolArgs.builder()
  *                 .name("name")
  *                 .alias("my-custom-alias")
  *                 .description("description")
@@ -89,7 +89,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer example &#39;&lt;account_id&gt;/&lt;id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/server:Server
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/server:Server */
 @ResourceType(type="cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer")
 public class ZeroTrustAccessAiControlsMcpServer extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

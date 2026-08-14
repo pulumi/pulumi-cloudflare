@@ -17,6 +17,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/streamLiveInput:StreamLiveInput has been deprecated in favor of cloudflare:stream/liveInput:LiveInput
  */
 export class StreamLiveInput extends pulumi.CustomResource {
     /**
@@ -29,6 +31,7 @@ export class StreamLiveInput extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: StreamLiveInputState, opts?: pulumi.CustomResourceOptions): StreamLiveInput {
+        pulumi.log.warn("StreamLiveInput is deprecated: cloudflare:index/streamLiveInput:StreamLiveInput has been deprecated in favor of cloudflare:stream/liveInput:LiveInput")
         return new StreamLiveInput(name, <any>state, { ...opts, id: id });
     }
 
@@ -131,8 +134,11 @@ export class StreamLiveInput extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/streamLiveInput:StreamLiveInput has been deprecated in favor of cloudflare:stream/liveInput:LiveInput */
     constructor(name: string, args: StreamLiveInputArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/streamLiveInput:StreamLiveInput has been deprecated in favor of cloudflare:stream/liveInput:LiveInput */
     constructor(name: string, argsOrState?: StreamLiveInputArgs | StreamLiveInputState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("StreamLiveInput is deprecated: cloudflare:index/streamLiveInput:StreamLiveInput has been deprecated in favor of cloudflare:stream/liveInput:LiveInput")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

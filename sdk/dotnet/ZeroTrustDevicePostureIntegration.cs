@@ -24,10 +24,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDevicePostureIntegration = new Cloudflare.ZeroTrustDevicePostureIntegration("example_zero_trust_device_posture_integration", new()
+    ///     var exampleZeroTrustDevicePostureIntegration = new Cloudflare.Modules.ZeroTrustDevicePosture.ZeroTrustDevicePostureIntegration("example_zero_trust_device_posture_integration", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
-    ///         Config = new Cloudflare.Inputs.ZeroTrustDevicePostureIntegrationConfigArgs
+    ///         Config = new Cloudflare.Modules.ZeroTrustDevicePosture.Inputs.IntegrationConfigArgs
     ///         {
     ///             ApiUrl = "https://as123.awmdm.com/API",
     ///             AuthUrl = "https://na.uemauth.workspaceone.com/connect/token",
@@ -48,6 +48,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration example '&lt;account_id&gt;/&lt;integration_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration has been deprecated in favor of cloudflare:zeroTrustDevicePosture/integration:Integration")]
     [CloudflareResourceType("cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration")]
     public partial class ZeroTrustDevicePostureIntegration : global::Pulumi.CustomResource
     {

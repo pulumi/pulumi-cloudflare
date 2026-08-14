@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDeviceDefaultProfileCertificates = new Cloudflare.ZeroTrustDeviceDefaultProfileCertificates("example_zero_trust_device_default_profile_certificates", new()
+    ///     var exampleZeroTrustDeviceDefaultProfileCertificates = new Cloudflare.Modules.ZeroTrustDeviceDefaultProfile.ZeroTrustDeviceDefaultProfileCertificates("example_zero_trust_device_default_profile_certificates", new()
     ///     {
     ///         ZoneId = "699d98642c564d2e855e9661899b7252",
     ///         Enabled = true,
@@ -38,6 +38,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustDeviceDefaultProfileCertificates:ZeroTrustDeviceDefaultProfileCertificates has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/certificates:Certificates")]
     [CloudflareResourceType("cloudflare:index/zeroTrustDeviceDefaultProfileCertificates:ZeroTrustDeviceDefaultProfileCertificates")]
     public partial class ZeroTrustDeviceDefaultProfileCertificates : global::Pulumi.CustomResource
     {

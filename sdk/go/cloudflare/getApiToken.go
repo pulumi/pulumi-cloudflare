@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/apitoken"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetApiToken(ctx, &cloudflare.LookupApiTokenArgs{
+//			_, err := apitoken.GetApiToken(ctx, &apitoken.GetApiTokenArgs{
 //				TokenId: pulumi.StringRef("ed17574386854bf78a67040be0a770b0"),
 //			}, nil)
 //			if err != nil {
@@ -41,6 +41,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getApiToken:getApiToken has been deprecated in favor of cloudflare:apiToken/apiToken:getApiToken
 func LookupApiToken(ctx *pulumi.Context, args *LookupApiTokenArgs, opts ...pulumi.InvokeOption) (*LookupApiTokenResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiTokenResult

@@ -25,14 +25,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/magictransitsite"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetMagicTransitSiteAcls(ctx, &cloudflare.LookupMagicTransitSiteAclsArgs{
+//			_, err := magictransitsite.GetAcls(ctx, &magictransitsite.GetAclsArgs{
 //				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				SiteId:    "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
@@ -44,6 +44,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getMagicTransitSiteAcls:getMagicTransitSiteAcls has been deprecated in favor of cloudflare:magicTransitSite/acls:getAcls
 func LookupMagicTransitSiteAcls(ctx *pulumi.Context, args *LookupMagicTransitSiteAclsArgs, opts ...pulumi.InvokeOption) (*LookupMagicTransitSiteAclsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMagicTransitSiteAclsResult

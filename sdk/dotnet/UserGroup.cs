@@ -26,29 +26,29 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleUserGroup = new Cloudflare.UserGroup("example_user_group", new()
+    ///     var exampleUserGroup = new Cloudflare.Modules.UserGroup.UserGroup("example_user_group", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "My New User Group",
     ///         Policies = new[]
     ///         {
-    ///             new Cloudflare.Inputs.UserGroupPolicyArgs
+    ///             new Cloudflare.Modules.UserGroup.Inputs.UserGroupPolicyArgs
     ///             {
     ///                 Access = "allow",
     ///                 PermissionGroups = new[]
     ///                 {
-    ///                     new Cloudflare.Inputs.UserGroupPolicyPermissionGroupArgs
+    ///                     new Cloudflare.Modules.UserGroup.Inputs.UserGroupPolicyPermissionGroupArgs
     ///                     {
     ///                         Id = "c8fed203ed3043cba015a93ad1616f1f",
     ///                     },
-    ///                     new Cloudflare.Inputs.UserGroupPolicyPermissionGroupArgs
+    ///                     new Cloudflare.Modules.UserGroup.Inputs.UserGroupPolicyPermissionGroupArgs
     ///                     {
     ///                         Id = "82e64a83756745bbbb1c9c2701bf816b",
     ///                     },
     ///                 },
     ///                 ResourceGroups = new[]
     ///                 {
-    ///                     new Cloudflare.Inputs.UserGroupPolicyResourceGroupArgs
+    ///                     new Cloudflare.Modules.UserGroup.Inputs.UserGroupPolicyResourceGroupArgs
     ///                     {
     ///                         Id = "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
     ///                     },
@@ -66,6 +66,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/userGroup:UserGroup example '&lt;account_id&gt;/&lt;user_group_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/userGroup:UserGroup has been deprecated in favor of cloudflare:userGroup/userGroup:UserGroup")]
     [CloudflareResourceType("cloudflare:index/userGroup:UserGroup")]
     public partial class UserGroup : global::Pulumi.CustomResource
     {

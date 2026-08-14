@@ -26,16 +26,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.R2BucketLifecycle;
- * import com.pulumi.cloudflare.R2BucketLifecycleArgs;
- * import com.pulumi.cloudflare.inputs.R2BucketLifecycleRuleArgs;
- * import com.pulumi.cloudflare.inputs.R2BucketLifecycleRuleConditionsArgs;
- * import com.pulumi.cloudflare.inputs.R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs;
- * import com.pulumi.cloudflare.inputs.R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs;
- * import com.pulumi.cloudflare.inputs.R2BucketLifecycleRuleDeleteObjectsTransitionArgs;
- * import com.pulumi.cloudflare.inputs.R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs;
- * import com.pulumi.cloudflare.inputs.R2BucketLifecycleRuleStorageClassTransitionArgs;
- * import com.pulumi.cloudflare.inputs.R2BucketLifecycleRuleStorageClassTransitionConditionArgs;
+ * import com.pulumi.cloudflare.r2Bucket.Lifecycle;
+ * import com.pulumi.cloudflare.r2Bucket.LifecycleArgs;
+ * import com.pulumi.cloudflare.r2Bucket.inputs.LifecycleRuleArgs;
+ * import com.pulumi.cloudflare.r2Bucket.inputs.LifecycleRuleConditionsArgs;
+ * import com.pulumi.cloudflare.r2Bucket.inputs.LifecycleRuleAbortMultipartUploadsTransitionArgs;
+ * import com.pulumi.cloudflare.r2Bucket.inputs.LifecycleRuleAbortMultipartUploadsTransitionConditionArgs;
+ * import com.pulumi.cloudflare.r2Bucket.inputs.LifecycleRuleDeleteObjectsTransitionArgs;
+ * import com.pulumi.cloudflare.r2Bucket.inputs.LifecycleRuleDeleteObjectsTransitionConditionArgs;
+ * import com.pulumi.cloudflare.r2Bucket.inputs.LifecycleRuleStorageClassTransitionArgs;
+ * import com.pulumi.cloudflare.r2Bucket.inputs.LifecycleRuleStorageClassTransitionConditionArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -49,29 +49,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleR2BucketLifecycle = new R2BucketLifecycle("exampleR2BucketLifecycle", R2BucketLifecycleArgs.builder()
+ *         var exampleR2BucketLifecycle = new Lifecycle("exampleR2BucketLifecycle", LifecycleArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .bucketName("example-bucket")
- *             .rules(R2BucketLifecycleRuleArgs.builder()
+ *             .rules(LifecycleRuleArgs.builder()
  *                 .id("Expire all objects older than 24 hours")
- *                 .conditions(R2BucketLifecycleRuleConditionsArgs.builder()
+ *                 .conditions(LifecycleRuleConditionsArgs.builder()
  *                     .prefix("prefix")
  *                     .build())
  *                 .enabled(true)
- *                 .abortMultipartUploadsTransition(R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs.builder()
- *                     .condition(R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs.builder()
+ *                 .abortMultipartUploadsTransition(LifecycleRuleAbortMultipartUploadsTransitionArgs.builder()
+ *                     .condition(LifecycleRuleAbortMultipartUploadsTransitionConditionArgs.builder()
  *                         .maxAge(0)
  *                         .type("Age")
  *                         .build())
  *                     .build())
- *                 .deleteObjectsTransition(R2BucketLifecycleRuleDeleteObjectsTransitionArgs.builder()
- *                     .condition(R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs.builder()
+ *                 .deleteObjectsTransition(LifecycleRuleDeleteObjectsTransitionArgs.builder()
+ *                     .condition(LifecycleRuleDeleteObjectsTransitionConditionArgs.builder()
  *                         .maxAge(0)
  *                         .type("Age")
  *                         .build())
  *                     .build())
- *                 .storageClassTransitions(R2BucketLifecycleRuleStorageClassTransitionArgs.builder()
- *                     .condition(R2BucketLifecycleRuleStorageClassTransitionConditionArgs.builder()
+ *                 .storageClassTransitions(LifecycleRuleStorageClassTransitionArgs.builder()
+ *                     .condition(LifecycleRuleStorageClassTransitionConditionArgs.builder()
  *                         .maxAge(0)
  *                         .type("Age")
  *                         .build())
@@ -89,7 +89,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/r2BucketLifecycle:R2BucketLifecycle has been deprecated in favor of cloudflare:r2Bucket/lifecycle:Lifecycle
+ * 
  */
+@Deprecated /* cloudflare:index/r2BucketLifecycle:R2BucketLifecycle has been deprecated in favor of cloudflare:r2Bucket/lifecycle:Lifecycle */
 @ResourceType(type="cloudflare:index/r2BucketLifecycle:R2BucketLifecycle")
 public class R2BucketLifecycle extends com.pulumi.resources.CustomResource {
     /**

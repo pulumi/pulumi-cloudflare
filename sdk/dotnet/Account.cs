@@ -52,11 +52,11 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAccount = new Cloudflare.Account("example_account", new()
+    ///     var exampleAccount = new Cloudflare.Modules.Account.Account("example_account", new()
     ///     {
     ///         Name = "name",
     ///         Type = "standard",
-    ///         Unit = new Cloudflare.Inputs.AccountUnitArgs
+    ///         Unit = new Cloudflare.Modules.Account.Inputs.AccountUnitArgs
     ///         {
     ///             Id = "f267e341f3dd4697bd3b9f71dd96247f",
     ///         },
@@ -71,6 +71,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/account:Account example '&lt;account_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/account:Account has been deprecated in favor of cloudflare:account/account:Account")]
     [CloudflareResourceType("cloudflare:index/account:Account")]
     public partial class Account : global::Pulumi.CustomResource
     {

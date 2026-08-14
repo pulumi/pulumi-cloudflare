@@ -35,13 +35,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.Worker;
- * import com.pulumi.cloudflare.WorkerArgs;
- * import com.pulumi.cloudflare.inputs.WorkerObservabilityArgs;
- * import com.pulumi.cloudflare.inputs.WorkerObservabilityLogsArgs;
- * import com.pulumi.cloudflare.inputs.WorkerObservabilityTracesArgs;
- * import com.pulumi.cloudflare.inputs.WorkerSubdomainArgs;
- * import com.pulumi.cloudflare.inputs.WorkerTailConsumerArgs;
+ * import com.pulumi.cloudflare.worker.Worker;
+ * import com.pulumi.cloudflare.worker.WorkerArgs;
+ * import com.pulumi.cloudflare.worker.inputs.WorkerObservabilityArgs;
+ * import com.pulumi.cloudflare.worker.inputs.WorkerObservabilityLogsArgs;
+ * import com.pulumi.cloudflare.worker.inputs.WorkerObservabilityTracesArgs;
+ * import com.pulumi.cloudflare.worker.inputs.WorkerSubdomainArgs;
+ * import com.pulumi.cloudflare.worker.inputs.WorkerTailConsumerArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -99,7 +99,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/worker:Worker example &#39;&lt;account_id&gt;/&lt;worker_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/worker:Worker has been deprecated in favor of cloudflare:worker/worker:Worker
+ * 
  */
+@Deprecated /* cloudflare:index/worker:Worker has been deprecated in favor of cloudflare:worker/worker:Worker */
 @ResourceType(type="cloudflare:index/worker:Worker")
 public class Worker extends com.pulumi.resources.CustomResource {
     /**

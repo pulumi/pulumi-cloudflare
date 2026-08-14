@@ -27,10 +27,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDexTest = new Cloudflare.ZeroTrustDexTest("example_zero_trust_dex_test", new()
+    ///     var exampleZeroTrustDexTest = new Cloudflare.Modules.ZeroTrustDex.ZeroTrustDexTest("example_zero_trust_dex_test", new()
     ///     {
     ///         AccountId = "01a7362d577a6c3019a474fd6f485823",
-    ///         Data = new Cloudflare.Inputs.ZeroTrustDexTestDataArgs
+    ///         Data = new Cloudflare.Modules.ZeroTrustDex.Inputs.TestDataArgs
     ///         {
     ///             Host = "https://dash.cloudflare.com",
     ///             Kind = "http",
@@ -42,7 +42,7 @@ namespace Pulumi.Cloudflare
     ///         Description = "Checks the dash endpoint every 30 minutes",
     ///         TargetPolicies = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustDexTestTargetPolicyArgs
+    ///             new Cloudflare.Modules.ZeroTrustDex.Inputs.TestTargetPolicyArgs
     ///             {
     ///                 Id = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
     ///                 Default = true,
@@ -60,6 +60,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest example '&lt;account_id&gt;/&lt;dex_test_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest has been deprecated in favor of cloudflare:zeroTrustDex/test:Test")]
     [CloudflareResourceType("cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest")]
     public partial class ZeroTrustDexTest : global::Pulumi.CustomResource
     {

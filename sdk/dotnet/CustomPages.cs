@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCustomPages = new Cloudflare.CustomPages("example_custom_pages", new()
+    ///     var exampleCustomPages = new Cloudflare.Modules.CustomPages.CustomPages("example_custom_pages", new()
     ///     {
     ///         Identifier = "ratelimit_block",
     ///         State = "default",
@@ -45,6 +45,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/customPages:CustomPages example '&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;identifier&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/customPages:CustomPages has been deprecated in favor of cloudflare:customPages/customPages:CustomPages")]
     [CloudflareResourceType("cloudflare:index/customPages:CustomPages")]
     public partial class CustomPages : global::Pulumi.CustomResource
     {

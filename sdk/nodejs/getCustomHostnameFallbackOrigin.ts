@@ -16,12 +16,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomHostnameFallbackOrigin = cloudflare.getCustomHostnameFallbackOrigin({
+ * const exampleCustomHostnameFallbackOrigin = cloudflare.customhostname.getFallbackOrigin({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCustomHostnameFallbackOrigin:getCustomHostnameFallbackOrigin has been deprecated in favor of cloudflare:customHostname/fallbackOrigin:getFallbackOrigin */
 export function getCustomHostnameFallbackOrigin(args?: GetCustomHostnameFallbackOriginArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomHostnameFallbackOriginResult> {
+    pulumi.log.warn("getCustomHostnameFallbackOrigin is deprecated: cloudflare:index/getCustomHostnameFallbackOrigin:getCustomHostnameFallbackOrigin has been deprecated in favor of cloudflare:customHostname/fallbackOrigin:getFallbackOrigin")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCustomHostnameFallbackOrigin:getCustomHostnameFallbackOrigin", {
@@ -85,12 +87,14 @@ export interface GetCustomHostnameFallbackOriginResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCustomHostnameFallbackOrigin = cloudflare.getCustomHostnameFallbackOrigin({
+ * const exampleCustomHostnameFallbackOrigin = cloudflare.customhostname.getFallbackOrigin({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCustomHostnameFallbackOrigin:getCustomHostnameFallbackOrigin has been deprecated in favor of cloudflare:customHostname/fallbackOrigin:getFallbackOrigin */
 export function getCustomHostnameFallbackOriginOutput(args?: GetCustomHostnameFallbackOriginOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomHostnameFallbackOriginResult> {
+    pulumi.log.warn("getCustomHostnameFallbackOrigin is deprecated: cloudflare:index/getCustomHostnameFallbackOrigin:getCustomHostnameFallbackOrigin has been deprecated in favor of cloudflare:customHostname/fallbackOrigin:getFallbackOrigin")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCustomHostnameFallbackOrigin:getCustomHostnameFallbackOrigin", {

@@ -26,8 +26,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ShareRecipient;
- * import com.pulumi.cloudflare.ShareRecipientArgs;
+ * import com.pulumi.cloudflare.share.Recipient;
+ * import com.pulumi.cloudflare.share.RecipientArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleShareRecipient = new ShareRecipient("exampleShareRecipient", ShareRecipientArgs.builder()
+ *         var exampleShareRecipient = new Recipient("exampleShareRecipient", RecipientArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .shareId("3fd85f74b32742f1bff64a85009dda07")
  *             .organizationId("023e105f4ecef8ad9ca31a8372d0c353")
@@ -59,7 +59,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/shareRecipient:ShareRecipient example &#39;&lt;account_id&gt;/&lt;share_id&gt;/&lt;recipient_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/shareRecipient:ShareRecipient has been deprecated in favor of cloudflare:share/recipient:Recipient
+ * 
  */
+@Deprecated /* cloudflare:index/shareRecipient:ShareRecipient has been deprecated in favor of cloudflare:share/recipient:Recipient */
 @ResourceType(type="cloudflare:index/shareRecipient:ShareRecipient")
 public class ShareRecipient extends com.pulumi.resources.CustomResource {
     /**

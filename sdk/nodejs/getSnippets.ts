@@ -11,12 +11,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSnippets = cloudflare.getSnippets({
+ * const exampleSnippets = cloudflare.snippets.getSnippets({
  *     zoneId: "9f1839b6152d298aca64c4e906b6d074",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getSnippets:getSnippets has been deprecated in favor of cloudflare:snippets/snippets:getSnippets */
 export function getSnippets(args: GetSnippetsArgs, opts?: pulumi.InvokeOptions): Promise<GetSnippetsResult> {
+    pulumi.log.warn("getSnippets is deprecated: cloudflare:index/getSnippets:getSnippets has been deprecated in favor of cloudflare:snippets/snippets:getSnippets")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getSnippets:getSnippets", {
         "snippetName": args.snippetName,
@@ -66,12 +68,14 @@ export interface GetSnippetsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSnippets = cloudflare.getSnippets({
+ * const exampleSnippets = cloudflare.snippets.getSnippets({
  *     zoneId: "9f1839b6152d298aca64c4e906b6d074",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getSnippets:getSnippets has been deprecated in favor of cloudflare:snippets/snippets:getSnippets */
 export function getSnippetsOutput(args: GetSnippetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSnippetsResult> {
+    pulumi.log.warn("getSnippets is deprecated: cloudflare:index/getSnippets:getSnippets has been deprecated in favor of cloudflare:snippets/snippets:getSnippets")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getSnippets:getSnippets", {
         "snippetName": args.snippetName,

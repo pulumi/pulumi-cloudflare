@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpDatasets = cloudflare.getZeroTrustDlpDatasets({
+ * const exampleZeroTrustDlpDatasets = cloudflare.zerotrustdlp.getDatasets({
  *     accountId: "account_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpDatasets:getZeroTrustDlpDatasets has been deprecated in favor of cloudflare:zeroTrustDlp/datasets:getDatasets */
 export function getZeroTrustDlpDatasets(args?: GetZeroTrustDlpDatasetsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDlpDatasetsResult> {
+    pulumi.log.warn("getZeroTrustDlpDatasets is deprecated: cloudflare:index/getZeroTrustDlpDatasets:getZeroTrustDlpDatasets has been deprecated in favor of cloudflare:zeroTrustDlp/datasets:getDatasets")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDlpDatasets:getZeroTrustDlpDatasets", {
@@ -69,12 +71,14 @@ export interface GetZeroTrustDlpDatasetsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpDatasets = cloudflare.getZeroTrustDlpDatasets({
+ * const exampleZeroTrustDlpDatasets = cloudflare.zerotrustdlp.getDatasets({
  *     accountId: "account_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpDatasets:getZeroTrustDlpDatasets has been deprecated in favor of cloudflare:zeroTrustDlp/datasets:getDatasets */
 export function getZeroTrustDlpDatasetsOutput(args?: GetZeroTrustDlpDatasetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDlpDatasetsResult> {
+    pulumi.log.warn("getZeroTrustDlpDatasets is deprecated: cloudflare:index/getZeroTrustDlpDatasets:getZeroTrustDlpDatasets has been deprecated in favor of cloudflare:zeroTrustDlp/datasets:getDatasets")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDlpDatasets:getZeroTrustDlpDatasets", {

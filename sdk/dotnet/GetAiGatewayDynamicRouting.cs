@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getAiGatewayDynamicRouting:getAiGatewayDynamicRouting has been deprecated in favor of cloudflare:aiGateway/dynamicRouting:getDynamicRouting")]
     public static class GetAiGatewayDynamicRouting
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAiGatewayDynamicRouting = Cloudflare.GetAiGatewayDynamicRouting.Invoke(new()
+        ///     var exampleAiGatewayDynamicRouting = Cloudflare.Modules.AiGateway.GetDynamicRouting.Invoke(new()
         ///     {
         ///         AccountId = "0d37909e38d3e99c29fa2cd343ac421a",
         ///         GatewayId = "54442216",
@@ -56,7 +57,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAiGatewayDynamicRouting = Cloudflare.GetAiGatewayDynamicRouting.Invoke(new()
+        ///     var exampleAiGatewayDynamicRouting = Cloudflare.Modules.AiGateway.GetDynamicRouting.Invoke(new()
         ///     {
         ///         AccountId = "0d37909e38d3e99c29fa2cd343ac421a",
         ///         GatewayId = "54442216",
@@ -85,7 +86,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAiGatewayDynamicRouting = Cloudflare.GetAiGatewayDynamicRouting.Invoke(new()
+        ///     var exampleAiGatewayDynamicRouting = Cloudflare.Modules.AiGateway.GetDynamicRouting.Invoke(new()
         ///     {
         ///         AccountId = "0d37909e38d3e99c29fa2cd343ac421a",
         ///         GatewayId = "54442216",

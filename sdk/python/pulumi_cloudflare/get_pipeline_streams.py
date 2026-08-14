@@ -22,6 +22,8 @@ __all__ = [
     'get_pipeline_streams_output',
 ]
 
+warnings.warn("""cloudflare:index/getPipelineStreams:getPipelineStreams has been deprecated in favor of cloudflare:pipeline/streams:getStreams""", DeprecationWarning)
+
 @pulumi.output_type
 class GetPipelineStreamsResult:
     """
@@ -115,7 +117,7 @@ def get_pipeline_streams(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_pipeline_streams = cloudflare.get_pipeline_streams(account_id="0123105f4ecef8ad9ca31a8372d0c353",
+    example_pipeline_streams = cloudflare.pipeline.get_streams(account_id="0123105f4ecef8ad9ca31a8372d0c353",
         pipeline_id="043e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -125,6 +127,7 @@ def get_pipeline_streams(account_id: Optional[_builtins.str] = None,
     :param _builtins.str name: Filters streams by name (case-insensitive substring).
     :param _builtins.str pipeline_id: Specifies the public ID of the pipeline.
     """
+    pulumi.log.warn("""get_pipeline_streams is deprecated: cloudflare:index/getPipelineStreams:getPipelineStreams has been deprecated in favor of cloudflare:pipeline/streams:getStreams""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -156,7 +159,7 @@ def get_pipeline_streams_output(account_id: pulumi.Input[Optional[Optional[_buil
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_pipeline_streams = cloudflare.get_pipeline_streams(account_id="0123105f4ecef8ad9ca31a8372d0c353",
+    example_pipeline_streams = cloudflare.pipeline.get_streams(account_id="0123105f4ecef8ad9ca31a8372d0c353",
         pipeline_id="043e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -166,6 +169,7 @@ def get_pipeline_streams_output(account_id: pulumi.Input[Optional[Optional[_buil
     :param _builtins.str name: Filters streams by name (case-insensitive substring).
     :param _builtins.str pipeline_id: Specifies the public ID of the pipeline.
     """
+    pulumi.log.warn("""get_pipeline_streams is deprecated: cloudflare:index/getPipelineStreams:getPipelineStreams has been deprecated in favor of cloudflare:pipeline/streams:getStreams""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

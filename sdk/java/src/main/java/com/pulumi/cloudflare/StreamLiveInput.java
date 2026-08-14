@@ -35,7 +35,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/streamLiveInput:StreamLiveInput has been deprecated in favor of cloudflare:stream/liveInput:LiveInput
+ * 
  */
+@Deprecated /* cloudflare:index/streamLiveInput:StreamLiveInput has been deprecated in favor of cloudflare:stream/liveInput:LiveInput */
 @ResourceType(type="cloudflare:index/streamLiveInput:StreamLiveInput")
 public class StreamLiveInput extends com.pulumi.resources.CustomResource {
     /**

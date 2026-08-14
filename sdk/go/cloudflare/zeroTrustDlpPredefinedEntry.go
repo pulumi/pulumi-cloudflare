@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdlppredefined"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDlpPredefinedEntry(ctx, "example_zero_trust_dlp_predefined_entry", &cloudflare.ZeroTrustDlpPredefinedEntryArgs{
+//			_, err := zerotrustdlppredefined.NewEntry(ctx, "example_zero_trust_dlp_predefined_entry", &zerotrustdlppredefined.EntryArgs{
 //				AccountId: pulumi.String("account_id"),
 //				Enabled:   pulumi.Bool(true),
 //				EntryId:   pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
@@ -51,6 +51,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustDlpPredefinedEntry:ZeroTrustDlpPredefinedEntry example '<account_id>/<entry_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustDlpPredefinedEntry:ZeroTrustDlpPredefinedEntry has been deprecated in favor of cloudflare:zeroTrustDlpPredefined/entry:Entry
 type ZeroTrustDlpPredefinedEntry struct {
 	pulumi.CustomResourceState
 

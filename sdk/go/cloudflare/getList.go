@@ -22,14 +22,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/list"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetList(ctx, &cloudflare.LookupListArgs{
+//			_, err := list.GetList(ctx, &list.GetListArgs{
 //				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ListId:    "2c0fc9fa937b11eaa1b71c4d701ab86e",
 //				Search:    pulumi.StringRef("1.1.1.1"),
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getList:getList has been deprecated in favor of cloudflare:list/list:getList
 func LookupList(ctx *pulumi.Context, args *LookupListArgs, opts ...pulumi.InvokeOption) (*LookupListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupListResult
@@ -72,7 +74,7 @@ type LookupListResult struct {
 	Description string `pulumi:"description"`
 	// The unique ID of the list.
 	Id string `pulumi:"id"`
-	// The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
+	// The items in the list. If set, this overwrites all items in the list. Do not use with `list.Item`.
 	Items []GetListItemType `pulumi:"items"`
 	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
 	// Available values: "ip", "redirect", "hostname", "asn".
@@ -149,7 +151,7 @@ func (o LookupListResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupListResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
+// The items in the list. If set, this overwrites all items in the list. Do not use with `list.Item`.
 func (o LookupListResultOutput) Items() GetListItemTypeArrayOutput {
 	return o.ApplyT(func(v LookupListResult) []GetListItemType { return v.Items }).(GetListItemTypeArrayOutput)
 }

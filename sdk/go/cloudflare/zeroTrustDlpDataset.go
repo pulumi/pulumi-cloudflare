@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdlp"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDlpDataset(ctx, "example_zero_trust_dlp_dataset", &cloudflare.ZeroTrustDlpDatasetArgs{
+//			_, err := zerotrustdlp.NewDataset(ctx, "example_zero_trust_dlp_dataset", &zerotrustdlp.DatasetArgs{
 //				AccountId:       pulumi.String("account_id"),
 //				Name:            pulumi.String("name"),
 //				CaseSensitive:   pulumi.Bool(true),
@@ -51,6 +51,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset has been deprecated in favor of cloudflare:zeroTrustDlp/dataset:Dataset
 type ZeroTrustDlpDataset struct {
 	pulumi.CustomResourceState
 

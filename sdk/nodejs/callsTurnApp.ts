@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCallsTurnApp = new cloudflare.CallsTurnApp("example_calls_turn_app", {
+ * const exampleCallsTurnApp = new cloudflare.callsturn.App("example_calls_turn_app", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "my-turn-key",
  * });
@@ -25,6 +25,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/callsTurnApp:CallsTurnApp has been deprecated in favor of cloudflare:callsTurn/app:App
  */
 export class CallsTurnApp extends pulumi.CustomResource {
     /**
@@ -37,6 +39,7 @@ export class CallsTurnApp extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CallsTurnAppState, opts?: pulumi.CustomResourceOptions): CallsTurnApp {
+        pulumi.log.warn("CallsTurnApp is deprecated: cloudflare:index/callsTurnApp:CallsTurnApp has been deprecated in favor of cloudflare:callsTurn/app:App")
         return new CallsTurnApp(name, <any>state, { ...opts, id: id });
     }
 
@@ -90,8 +93,11 @@ export class CallsTurnApp extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/callsTurnApp:CallsTurnApp has been deprecated in favor of cloudflare:callsTurn/app:App */
     constructor(name: string, args: CallsTurnAppArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/callsTurnApp:CallsTurnApp has been deprecated in favor of cloudflare:callsTurn/app:App */
     constructor(name: string, argsOrState?: CallsTurnAppArgs | CallsTurnAppState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("CallsTurnApp is deprecated: cloudflare:index/callsTurnApp:CallsTurnApp has been deprecated in favor of cloudflare:callsTurn/app:App")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

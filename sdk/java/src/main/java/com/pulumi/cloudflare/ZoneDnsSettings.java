@@ -36,11 +36,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZoneDnsSettings;
- * import com.pulumi.cloudflare.ZoneDnsSettingsArgs;
- * import com.pulumi.cloudflare.inputs.ZoneDnsSettingsInternalDnsArgs;
- * import com.pulumi.cloudflare.inputs.ZoneDnsSettingsNameserversArgs;
- * import com.pulumi.cloudflare.inputs.ZoneDnsSettingsSoaArgs;
+ * import com.pulumi.cloudflare.zone.DnsSettings;
+ * import com.pulumi.cloudflare.zone.DnsSettingsArgs;
+ * import com.pulumi.cloudflare.zone.inputs.DnsSettingsInternalDnsArgs;
+ * import com.pulumi.cloudflare.zone.inputs.DnsSettingsNameserversArgs;
+ * import com.pulumi.cloudflare.zone.inputs.DnsSettingsSoaArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -54,21 +54,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZoneDnsSettings = new ZoneDnsSettings("exampleZoneDnsSettings", ZoneDnsSettingsArgs.builder()
+ *         var exampleZoneDnsSettings = new DnsSettings("exampleZoneDnsSettings", DnsSettingsArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .flattenAllCnames(false)
  *             .foundationDns(false)
- *             .internalDns(ZoneDnsSettingsInternalDnsArgs.builder()
+ *             .internalDns(DnsSettingsInternalDnsArgs.builder()
  *                 .referenceZoneId("reference_zone_id")
  *                 .build())
  *             .multiProvider(false)
- *             .nameservers(ZoneDnsSettingsNameserversArgs.builder()
+ *             .nameservers(DnsSettingsNameserversArgs.builder()
  *                 .nsSet(1)
  *                 .type("cloudflare.standard")
  *                 .build())
  *             .nsTtl(86400.0)
  *             .secondaryOverrides(false)
- *             .soa(ZoneDnsSettingsSoaArgs.builder()
+ *             .soa(DnsSettingsSoaArgs.builder()
  *                 .expire(604800.0)
  *                 .minTtl(1800.0)
  *                 .mname("kristina.ns.cloudflare.com")
@@ -89,7 +89,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/zoneDnsSettings:ZoneDnsSettings has been deprecated in favor of cloudflare:zone/dnsSettings:DnsSettings
+ * 
  */
+@Deprecated /* cloudflare:index/zoneDnsSettings:ZoneDnsSettings has been deprecated in favor of cloudflare:zone/dnsSettings:DnsSettings */
 @ResourceType(type="cloudflare:index/zoneDnsSettings:ZoneDnsSettings")
 public class ZoneDnsSettings extends com.pulumi.resources.CustomResource {
     /**

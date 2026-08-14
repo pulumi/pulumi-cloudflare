@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleStreamWebhook = new cloudflare.StreamWebhook("example_stream_webhook", {
+ * const exampleStreamWebhook = new cloudflare.stream.Webhook("example_stream_webhook", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     notificationUrl: "https://example.com",
  * });
@@ -25,6 +25,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/streamWebhook:StreamWebhook has been deprecated in favor of cloudflare:stream/webhook:Webhook
  */
 export class StreamWebhook extends pulumi.CustomResource {
     /**
@@ -37,6 +39,7 @@ export class StreamWebhook extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: StreamWebhookState, opts?: pulumi.CustomResourceOptions): StreamWebhook {
+        pulumi.log.warn("StreamWebhook is deprecated: cloudflare:index/streamWebhook:StreamWebhook has been deprecated in favor of cloudflare:stream/webhook:Webhook")
         return new StreamWebhook(name, <any>state, { ...opts, id: id });
     }
 
@@ -78,8 +81,11 @@ export class StreamWebhook extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/streamWebhook:StreamWebhook has been deprecated in favor of cloudflare:stream/webhook:Webhook */
     constructor(name: string, args: StreamWebhookArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/streamWebhook:StreamWebhook has been deprecated in favor of cloudflare:stream/webhook:Webhook */
     constructor(name: string, argsOrState?: StreamWebhookArgs | StreamWebhookState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("StreamWebhook is deprecated: cloudflare:index/streamWebhook:StreamWebhook has been deprecated in favor of cloudflare:stream/webhook:Webhook")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

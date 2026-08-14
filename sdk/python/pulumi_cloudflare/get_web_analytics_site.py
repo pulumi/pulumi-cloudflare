@@ -23,6 +23,8 @@ __all__ = [
     'get_web_analytics_site_output',
 ]
 
+warnings.warn("""cloudflare:index/getWebAnalyticsSite:getWebAnalyticsSite has been deprecated in favor of cloudflare:webAnalytics/site:getSite""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWebAnalyticsSiteResult:
     """
@@ -177,7 +179,7 @@ def get_web_analytics_site(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_web_analytics_site = cloudflare.get_web_analytics_site(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_web_analytics_site = cloudflare.webanalytics.get_site(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         site_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -185,6 +187,7 @@ def get_web_analytics_site(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Identifier.
     :param _builtins.str site_id: Identifier.
     """
+    pulumi.log.warn("""get_web_analytics_site is deprecated: cloudflare:index/getWebAnalyticsSite:getWebAnalyticsSite has been deprecated in favor of cloudflare:webAnalytics/site:getSite""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -219,7 +222,7 @@ def get_web_analytics_site_output(account_id: pulumi.Input[Optional[Optional[_bu
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_web_analytics_site = cloudflare.get_web_analytics_site(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_web_analytics_site = cloudflare.webanalytics.get_site(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         site_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -227,6 +230,7 @@ def get_web_analytics_site_output(account_id: pulumi.Input[Optional[Optional[_bu
     :param _builtins.str account_id: Identifier.
     :param _builtins.str site_id: Identifier.
     """
+    pulumi.log.warn("""get_web_analytics_site is deprecated: cloudflare:index/getWebAnalyticsSite:getWebAnalyticsSite has been deprecated in favor of cloudflare:webAnalytics/site:getSite""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

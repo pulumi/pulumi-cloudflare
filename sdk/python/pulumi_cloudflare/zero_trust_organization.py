@@ -628,8 +628,13 @@ class _ZeroTrustOrganizationState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization has been deprecated in favor of cloudflare:zeroTrust/organization:Organization""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization")
 class ZeroTrustOrganization(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization has been deprecated in favor of cloudflare:zeroTrust/organization:Organization""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -667,7 +672,7 @@ class ZeroTrustOrganization(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_organization = cloudflare.ZeroTrustOrganization("example_zero_trust_organization",
+        example_zero_trust_organization = cloudflare.zerotrust.Organization("example_zero_trust_organization",
             zone_id="zone_id",
             allow_authenticate_via_warp=True,
             auth_domain="test.cloudflareaccess.com",
@@ -761,7 +766,7 @@ class ZeroTrustOrganization(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_organization = cloudflare.ZeroTrustOrganization("example_zero_trust_organization",
+        example_zero_trust_organization = cloudflare.zerotrust.Organization("example_zero_trust_organization",
             zone_id="zone_id",
             allow_authenticate_via_warp=True,
             auth_domain="test.cloudflareaccess.com",
@@ -851,6 +856,7 @@ class ZeroTrustOrganization(pulumi.CustomResource):
                  warp_auth_session_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustOrganization is deprecated: cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization has been deprecated in favor of cloudflare:zeroTrust/organization:Organization""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

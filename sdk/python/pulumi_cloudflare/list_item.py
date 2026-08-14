@@ -306,8 +306,13 @@ class _ListItemState:
         pulumi.set(self, "redirect", value)
 
 
+warnings.warn("""cloudflare:index/listItem:ListItem has been deprecated in favor of cloudflare:list/item:Item""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/listItem:ListItem")
 class ListItem(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/listItem:ListItem has been deprecated in favor of cloudflare:list/item:Item""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -332,7 +337,7 @@ class ListItem(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_list_item = cloudflare.ListItem("example_list_item",
+        example_list_item = cloudflare.list.Item("example_list_item",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             list_id="2c0fc9fa937b11eaa1b71c4d701ab86e",
             ip="10.0.0.1")
@@ -373,7 +378,7 @@ class ListItem(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_list_item = cloudflare.ListItem("example_list_item",
+        example_list_item = cloudflare.list.Item("example_list_item",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             list_id="2c0fc9fa937b11eaa1b71c4d701ab86e",
             ip="10.0.0.1")
@@ -409,6 +414,7 @@ class ListItem(pulumi.CustomResource):
                  list_id: pulumi.Input[Optional[_builtins.str]] = None,
                  redirect: pulumi.Input[Optional[Union['ListItemRedirectArgs', 'ListItemRedirectArgsDict']]] = None,
                  __props__=None):
+        pulumi.log.warn("""ListItem is deprecated: cloudflare:index/listItem:ListItem has been deprecated in favor of cloudflare:list/item:Item""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

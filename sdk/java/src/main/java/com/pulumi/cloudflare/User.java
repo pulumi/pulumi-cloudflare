@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.User;
- * import com.pulumi.cloudflare.UserArgs;
+ * import com.pulumi.cloudflare.user.User;
+ * import com.pulumi.cloudflare.user.UserArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -64,7 +64,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/user:User has been deprecated in favor of cloudflare:user/user:User
+ * 
  */
+@Deprecated /* cloudflare:index/user:User has been deprecated in favor of cloudflare:user/user:User */
 @ResourceType(type="cloudflare:index/user:User")
 public class User extends com.pulumi.resources.CustomResource {
     /**

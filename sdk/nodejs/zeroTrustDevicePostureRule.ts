@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDevicePostureRule = new cloudflare.ZeroTrustDevicePostureRule("example_zero_trust_device_posture_rule", {
+ * const exampleZeroTrustDevicePostureRule = new cloudflare.zerotrustdeviceposture.Rule("example_zero_trust_device_posture_rule", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     name: "Admin Serial Numbers",
  *     type: "file",
@@ -42,6 +42,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule example '<account_id>/<rule_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule has been deprecated in favor of cloudflare:zeroTrustDevicePosture/rule:Rule
  */
 export class ZeroTrustDevicePostureRule extends pulumi.CustomResource {
     /**
@@ -54,6 +56,7 @@ export class ZeroTrustDevicePostureRule extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustDevicePostureRuleState, opts?: pulumi.CustomResourceOptions): ZeroTrustDevicePostureRule {
+        pulumi.log.warn("ZeroTrustDevicePostureRule is deprecated: cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule has been deprecated in favor of cloudflare:zeroTrustDevicePosture/rule:Rule")
         return new ZeroTrustDevicePostureRule(name, <any>state, { ...opts, id: id });
     }
 
@@ -113,8 +116,11 @@ export class ZeroTrustDevicePostureRule extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule has been deprecated in favor of cloudflare:zeroTrustDevicePosture/rule:Rule */
     constructor(name: string, args: ZeroTrustDevicePostureRuleArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule has been deprecated in favor of cloudflare:zeroTrustDevicePosture/rule:Rule */
     constructor(name: string, argsOrState?: ZeroTrustDevicePostureRuleArgs | ZeroTrustDevicePostureRuleState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustDevicePostureRule is deprecated: cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule has been deprecated in favor of cloudflare:zeroTrustDevicePosture/rule:Rule")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

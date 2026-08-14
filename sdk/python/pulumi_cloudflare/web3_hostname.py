@@ -237,8 +237,13 @@ class _Web3HostnameState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/web3Hostname:Web3Hostname has been deprecated in favor of cloudflare:web3/hostname:Hostname""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/web3Hostname:Web3Hostname")
 class Web3Hostname(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/web3Hostname:Web3Hostname has been deprecated in favor of cloudflare:web3/hostname:Hostname""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -261,7 +266,7 @@ class Web3Hostname(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_web3_hostname = cloudflare.Web3Hostname("example_web3_hostname",
+        example_web3_hostname = cloudflare.web3.Hostname("example_web3_hostname",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="gateway.example.com",
             target="ipfs",
@@ -303,7 +308,7 @@ class Web3Hostname(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_web3_hostname = cloudflare.Web3Hostname("example_web3_hostname",
+        example_web3_hostname = cloudflare.web3.Hostname("example_web3_hostname",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="gateway.example.com",
             target="ipfs",
@@ -339,6 +344,7 @@ class Web3Hostname(pulumi.CustomResource):
                  target: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""Web3Hostname is deprecated: cloudflare:index/web3Hostname:Web3Hostname has been deprecated in favor of cloudflare:web3/hostname:Hostname""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

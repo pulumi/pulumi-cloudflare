@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleSecretsStoreSecret = new Cloudflare.SecretsStoreSecret("example_secrets_store_secret", new()
+    ///     var exampleSecretsStoreSecret = new Cloudflare.Modules.SecretsStore.SecretsStoreSecret("example_secrets_store_secret", new()
     ///     {
     ///         AccountId = "985e105f4ecef8ad9ca31a8372d0c353",
     ///         StoreId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -40,6 +40,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/secretsStoreSecret:SecretsStoreSecret example '&lt;account_id&gt;/&lt;store_id&gt;/&lt;secret_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/secretsStoreSecret:SecretsStoreSecret has been deprecated in favor of cloudflare:secretsStore/secret:Secret")]
     [CloudflareResourceType("cloudflare:index/secretsStoreSecret:SecretsStoreSecret")]
     public partial class SecretsStoreSecret : global::Pulumi.CustomResource
     {

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getWorkerVersions:getWorkerVersions has been deprecated in favor of cloudflare:worker/versions:getVersions")]
     public static class GetWorkerVersions
     {
         /// <summary>
@@ -28,7 +29,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkerVersions = Cloudflare.GetWorkerVersions.Invoke(new()
+        ///     var exampleWorkerVersions = Cloudflare.Modules.Worker.GetVersions.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         WorkerId = "worker_id",
@@ -57,7 +58,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkerVersions = Cloudflare.GetWorkerVersions.Invoke(new()
+        ///     var exampleWorkerVersions = Cloudflare.Modules.Worker.GetVersions.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         WorkerId = "worker_id",
@@ -86,7 +87,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkerVersions = Cloudflare.GetWorkerVersions.Invoke(new()
+        ///     var exampleWorkerVersions = Cloudflare.Modules.Worker.GetVersions.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         WorkerId = "worker_id",

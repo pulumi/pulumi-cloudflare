@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_tunnel_warp_connectors_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustTunnelWarpConnectors:getZeroTrustTunnelWarpConnectors has been deprecated in favor of cloudflare:zeroTrustTunnel/warpConnectors:getWarpConnectors""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustTunnelWarpConnectorsResult:
     """
@@ -197,7 +199,7 @@ def get_zero_trust_tunnel_warp_connectors(account_id: Optional[_builtins.str] = 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_tunnel_warp_connectors = cloudflare.get_zero_trust_tunnel_warp_connectors(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_tunnel_warp_connectors = cloudflare.zerotrusttunnel.get_warp_connectors(account_id="699d98642c564d2e855e9661899b7252",
         exclude_prefix="vpc1-",
         existed_at="2019-10-12T07%3A20%3A50.52Z",
         include_prefix="vpc1-",
@@ -219,6 +221,7 @@ def get_zero_trust_tunnel_warp_connectors(account_id: Optional[_builtins.str] = 
            Available values: "inactive", "degraded", "healthy", "down".
     :param _builtins.str uuid: UUID of the tunnel.
     """
+    pulumi.log.warn("""get_zero_trust_tunnel_warp_connectors is deprecated: cloudflare:index/getZeroTrustTunnelWarpConnectors:getZeroTrustTunnelWarpConnectors has been deprecated in favor of cloudflare:zeroTrustTunnel/warpConnectors:getWarpConnectors""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['excludePrefix'] = exclude_prefix
@@ -273,7 +276,7 @@ def get_zero_trust_tunnel_warp_connectors_output(account_id: pulumi.Input[Option
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_tunnel_warp_connectors = cloudflare.get_zero_trust_tunnel_warp_connectors(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_tunnel_warp_connectors = cloudflare.zerotrusttunnel.get_warp_connectors(account_id="699d98642c564d2e855e9661899b7252",
         exclude_prefix="vpc1-",
         existed_at="2019-10-12T07%3A20%3A50.52Z",
         include_prefix="vpc1-",
@@ -295,6 +298,7 @@ def get_zero_trust_tunnel_warp_connectors_output(account_id: pulumi.Input[Option
            Available values: "inactive", "degraded", "healthy", "down".
     :param _builtins.str uuid: UUID of the tunnel.
     """
+    pulumi.log.warn("""get_zero_trust_tunnel_warp_connectors is deprecated: cloudflare:index/getZeroTrustTunnelWarpConnectors:getZeroTrustTunnelWarpConnectors has been deprecated in favor of cloudflare:zeroTrustTunnel/warpConnectors:getWarpConnectors""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['excludePrefix'] = exclude_prefix

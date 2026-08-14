@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/workers"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetWorkersRoute(ctx, &cloudflare.LookupWorkersRouteArgs{
+//			_, err := workers.LookupRoute(ctx, &workers.LookupRouteArgs{
 //				ZoneId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				RouteId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getWorkersRoute:getWorkersRoute has been deprecated in favor of cloudflare:workers/route:getRoute
 func LookupWorkersRoute(ctx *pulumi.Context, args *LookupWorkersRouteArgs, opts ...pulumi.InvokeOption) (*LookupWorkersRouteResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkersRouteResult

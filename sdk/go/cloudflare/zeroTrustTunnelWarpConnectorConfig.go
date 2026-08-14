@@ -26,18 +26,18 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrusttunnelwarpconnector"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustTunnelWarpConnectorConfig(ctx, "example_zero_trust_tunnel_warp_connector_config", &cloudflare.ZeroTrustTunnelWarpConnectorConfigArgs{
+//			_, err := zerotrusttunnelwarpconnector.NewConfig(ctx, "example_zero_trust_tunnel_warp_connector_config", &zerotrusttunnelwarpconnector.ConfigArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				TunnelId:  pulumi.String("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
 //				HaMode:    pulumi.String("aws"),
-//				Config: &cloudflare.ZeroTrustTunnelWarpConnectorConfigConfigArgs{
+//				Config: &zerotrusttunnelwarpconnector.ConfigConfigArgs{
 //					FnrId: pulumi.String("eni-0123456789abcdef0"),
 //				},
 //			})
@@ -55,6 +55,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustTunnelWarpConnectorConfig:ZeroTrustTunnelWarpConnectorConfig example '<account_id>/<tunnel_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustTunnelWarpConnectorConfig:ZeroTrustTunnelWarpConnectorConfig has been deprecated in favor of cloudflare:zeroTrustTunnelWarpConnector/config:Config
 type ZeroTrustTunnelWarpConnectorConfig struct {
 	pulumi.CustomResourceState
 

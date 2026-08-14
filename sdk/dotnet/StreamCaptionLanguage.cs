@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleStreamCaptionLanguage = new Cloudflare.StreamCaptionLanguage("example_stream_caption_language", new()
+    ///     var exampleStreamCaptionLanguage = new Cloudflare.Modules.Stream.StreamCaptionLanguage("example_stream_caption_language", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Identifier = "ea95132c15732412d22c1476fa83f27a",
@@ -39,6 +39,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/streamCaptionLanguage:StreamCaptionLanguage has been deprecated in favor of cloudflare:stream/captionLanguage:CaptionLanguage")]
     [CloudflareResourceType("cloudflare:index/streamCaptionLanguage:StreamCaptionLanguage")]
     public partial class StreamCaptionLanguage : global::Pulumi.CustomResource
     {

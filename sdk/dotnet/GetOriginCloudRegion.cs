@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getOriginCloudRegion:getOriginCloudRegion has been deprecated in favor of cloudflare:originCloud/region:getRegion")]
     public static class GetOriginCloudRegion
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOriginCloudRegion = Cloudflare.GetOriginCloudRegion.Invoke(new()
+        ///     var exampleOriginCloudRegion = Cloudflare.Modules.OriginCloud.GetRegion.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         OriginIp = "192.0.2.1",
@@ -45,7 +46,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOriginCloudRegion = Cloudflare.GetOriginCloudRegion.Invoke(new()
+        ///     var exampleOriginCloudRegion = Cloudflare.Modules.OriginCloud.GetRegion.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         OriginIp = "192.0.2.1",
@@ -68,7 +69,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOriginCloudRegion = Cloudflare.GetOriginCloudRegion.Invoke(new()
+        ///     var exampleOriginCloudRegion = Cloudflare.Modules.OriginCloud.GetRegion.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         OriginIp = "192.0.2.1",

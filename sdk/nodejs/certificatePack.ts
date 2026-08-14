@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCertificatePack = new cloudflare.CertificatePack("example_certificate_pack", {
+ * const exampleCertificatePack = new cloudflare.certificate.Pack("example_certificate_pack", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     certificateAuthority: "lets_encrypt",
  *     hosts: [
@@ -47,6 +47,8 @@ import * as utilities from "./utilities";
  *
  * While supported, importing isn't recommended and it is advised to replace the
  * certificate entirely instead.
+ *
+ * @deprecated cloudflare:index/certificatePack:CertificatePack has been deprecated in favor of cloudflare:certificate/pack:Pack
  */
 export class CertificatePack extends pulumi.CustomResource {
     /**
@@ -59,6 +61,7 @@ export class CertificatePack extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CertificatePackState, opts?: pulumi.CustomResourceOptions): CertificatePack {
+        pulumi.log.warn("CertificatePack is deprecated: cloudflare:index/certificatePack:CertificatePack has been deprecated in favor of cloudflare:certificate/pack:Pack")
         return new CertificatePack(name, <any>state, { ...opts, id: id });
     }
 
@@ -141,8 +144,11 @@ export class CertificatePack extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/certificatePack:CertificatePack has been deprecated in favor of cloudflare:certificate/pack:Pack */
     constructor(name: string, args: CertificatePackArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/certificatePack:CertificatePack has been deprecated in favor of cloudflare:certificate/pack:Pack */
     constructor(name: string, argsOrState?: CertificatePackArgs | CertificatePackState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("CertificatePack is deprecated: cloudflare:index/certificatePack:CertificatePack has been deprecated in favor of cloudflare:certificate/pack:Pack")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

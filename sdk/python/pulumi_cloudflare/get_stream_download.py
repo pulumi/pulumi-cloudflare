@@ -21,6 +21,8 @@ __all__ = [
     'get_stream_download_output',
 ]
 
+warnings.warn("""cloudflare:index/getStreamDownload:getStreamDownload has been deprecated in favor of cloudflare:stream/download:getDownload""", DeprecationWarning)
+
 @pulumi.output_type
 class GetStreamDownloadResult:
     """
@@ -76,7 +78,7 @@ def get_stream_download(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_stream_download = cloudflare.get_stream_download(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_stream_download = cloudflare.stream.get_download(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         identifier="ea95132c15732412d22c1476fa83f27a")
     ```
 
@@ -84,6 +86,7 @@ def get_stream_download(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Identifier.
     :param _builtins.str identifier: A Cloudflare-generated unique identifier for a media item.
     """
+    pulumi.log.warn("""get_stream_download is deprecated: cloudflare:index/getStreamDownload:getStreamDownload has been deprecated in favor of cloudflare:stream/download:getDownload""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['identifier'] = identifier
@@ -108,7 +111,7 @@ def get_stream_download_output(account_id: pulumi.Input[Optional[_builtins.str]]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_stream_download = cloudflare.get_stream_download(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_stream_download = cloudflare.stream.get_download(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         identifier="ea95132c15732412d22c1476fa83f27a")
     ```
 
@@ -116,6 +119,7 @@ def get_stream_download_output(account_id: pulumi.Input[Optional[_builtins.str]]
     :param _builtins.str account_id: Identifier.
     :param _builtins.str identifier: A Cloudflare-generated unique identifier for a media item.
     """
+    pulumi.log.warn("""get_stream_download is deprecated: cloudflare:index/getStreamDownload:getStreamDownload has been deprecated in favor of cloudflare:stream/download:getDownload""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['identifier'] = identifier

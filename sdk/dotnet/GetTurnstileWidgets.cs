@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getTurnstileWidgets:getTurnstileWidgets has been deprecated in favor of cloudflare:turnstile/widgets:getWidgets")]
     public static class GetTurnstileWidgets
     {
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleTurnstileWidgets = Cloudflare.GetTurnstileWidgets.Invoke(new()
+        ///     var exampleTurnstileWidgets = Cloudflare.Modules.Turnstile.GetWidgets.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
@@ -61,7 +62,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleTurnstileWidgets = Cloudflare.GetTurnstileWidgets.Invoke(new()
+        ///     var exampleTurnstileWidgets = Cloudflare.Modules.Turnstile.GetWidgets.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
@@ -93,7 +94,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleTurnstileWidgets = Cloudflare.GetTurnstileWidgets.Invoke(new()
+        ///     var exampleTurnstileWidgets = Cloudflare.Modules.Turnstile.GetWidgets.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",

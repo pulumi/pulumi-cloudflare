@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSnippetRules = new cloudflare.SnippetRules("example_snippet_rules", {
+ * const exampleSnippetRules = new cloudflare.snippetrules.SnippetRules("example_snippet_rules", {
  *     zoneId: "9f1839b6152d298aca64c4e906b6d074",
  *     rules: [{
  *         expression: "ip.src eq 1.1.1.1",
@@ -34,6 +34,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/snippetRules:SnippetRules example '<zone_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/snippetRules:SnippetRules has been deprecated in favor of cloudflare:snippetRules/snippetRules:SnippetRules
  */
 export class SnippetRules extends pulumi.CustomResource {
     /**
@@ -46,6 +48,7 @@ export class SnippetRules extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SnippetRulesState, opts?: pulumi.CustomResourceOptions): SnippetRules {
+        pulumi.log.warn("SnippetRules is deprecated: cloudflare:index/snippetRules:SnippetRules has been deprecated in favor of cloudflare:snippetRules/snippetRules:SnippetRules")
         return new SnippetRules(name, <any>state, { ...opts, id: id });
     }
 
@@ -79,8 +82,11 @@ export class SnippetRules extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/snippetRules:SnippetRules has been deprecated in favor of cloudflare:snippetRules/snippetRules:SnippetRules */
     constructor(name: string, args: SnippetRulesArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/snippetRules:SnippetRules has been deprecated in favor of cloudflare:snippetRules/snippetRules:SnippetRules */
     constructor(name: string, argsOrState?: SnippetRulesArgs | SnippetRulesState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("SnippetRules is deprecated: cloudflare:index/snippetRules:SnippetRules has been deprecated in favor of cloudflare:snippetRules/snippetRules:SnippetRules")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

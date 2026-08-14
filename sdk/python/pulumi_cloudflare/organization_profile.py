@@ -170,8 +170,13 @@ class _OrganizationProfileState:
         pulumi.set(self, "organization_id", value)
 
 
+warnings.warn("""cloudflare:index/organizationProfile:OrganizationProfile has been deprecated in favor of cloudflare:organization/profile:Profile""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/organizationProfile:OrganizationProfile")
 class OrganizationProfile(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/organizationProfile:OrganizationProfile has been deprecated in favor of cloudflare:organization/profile:Profile""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -190,7 +195,7 @@ class OrganizationProfile(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_organization_profile = cloudflare.OrganizationProfile("example_organization_profile",
+        example_organization_profile = cloudflare.organization.Profile("example_organization_profile",
             organization_id="a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
             business_address="business_address",
             business_email="business_email",
@@ -220,7 +225,7 @@ class OrganizationProfile(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_organization_profile = cloudflare.OrganizationProfile("example_organization_profile",
+        example_organization_profile = cloudflare.organization.Profile("example_organization_profile",
             organization_id="a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
             business_address="business_address",
             business_email="business_email",
@@ -256,6 +261,7 @@ class OrganizationProfile(pulumi.CustomResource):
                  external_metadata: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""OrganizationProfile is deprecated: cloudflare:index/organizationProfile:OrganizationProfile has been deprecated in favor of cloudflare:organization/profile:Profile""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

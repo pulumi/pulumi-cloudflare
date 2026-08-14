@@ -347,8 +347,13 @@ class _CloudforceOneRequestState:
         pulumi.set(self, "updated", value)
 
 
+warnings.warn("""cloudflare:index/cloudforceOneRequest:CloudforceOneRequest has been deprecated in favor of cloudflare:cloudforceOneRequest/cloudforceOneRequest:CloudforceOneRequest""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/cloudforceOneRequest:CloudforceOneRequest")
 class CloudforceOneRequest(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/cloudforceOneRequest:CloudforceOneRequest has been deprecated in favor of cloudflare:cloudforceOneRequest/cloudforceOneRequest:CloudforceOneRequest""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -372,7 +377,7 @@ class CloudforceOneRequest(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_cloudforce_one_request = cloudflare.CloudforceOneRequest("example_cloudforce_one_request",
+        example_cloudforce_one_request = cloudflare.cloudforceonerequest.CloudforceOneRequest("example_cloudforce_one_request",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             content="What regions were most effected by the recent DoS?",
             priority="routine",
@@ -416,7 +421,7 @@ class CloudforceOneRequest(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_cloudforce_one_request = cloudflare.CloudforceOneRequest("example_cloudforce_one_request",
+        example_cloudforce_one_request = cloudflare.cloudforceonerequest.CloudforceOneRequest("example_cloudforce_one_request",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             content="What regions were most effected by the recent DoS?",
             priority="routine",
@@ -454,6 +459,7 @@ class CloudforceOneRequest(pulumi.CustomResource):
                  summary: pulumi.Input[Optional[_builtins.str]] = None,
                  tlp: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""CloudforceOneRequest is deprecated: cloudflare:index/cloudforceOneRequest:CloudforceOneRequest has been deprecated in favor of cloudflare:cloudforceOneRequest/cloudforceOneRequest:CloudforceOneRequest""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

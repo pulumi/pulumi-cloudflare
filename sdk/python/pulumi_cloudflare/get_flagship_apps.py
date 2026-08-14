@@ -22,6 +22,8 @@ __all__ = [
     'get_flagship_apps_output',
 ]
 
+warnings.warn("""cloudflare:index/getFlagshipApps:getFlagshipApps has been deprecated in favor of cloudflare:flagship/apps:getApps""", DeprecationWarning)
+
 @pulumi.output_type
 class GetFlagshipAppsResult:
     """
@@ -88,13 +90,14 @@ def get_flagship_apps(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_flagship_apps = cloudflare.get_flagship_apps(account_id="account_id")
+    example_flagship_apps = cloudflare.flagship.get_apps(account_id="account_id")
     ```
 
 
     :param _builtins.str account_id: Cloudflare account ID.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_flagship_apps is deprecated: cloudflare:index/getFlagshipApps:getFlagshipApps has been deprecated in favor of cloudflare:flagship/apps:getApps""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -119,13 +122,14 @@ def get_flagship_apps_output(account_id: pulumi.Input[Optional[_builtins.str]] =
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_flagship_apps = cloudflare.get_flagship_apps(account_id="account_id")
+    example_flagship_apps = cloudflare.flagship.get_apps(account_id="account_id")
     ```
 
 
     :param _builtins.str account_id: Cloudflare account ID.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_flagship_apps is deprecated: cloudflare:index/getFlagshipApps:getFlagshipApps has been deprecated in favor of cloudflare:flagship/apps:getApps""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

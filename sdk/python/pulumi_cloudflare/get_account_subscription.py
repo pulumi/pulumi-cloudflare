@@ -22,6 +22,8 @@ __all__ = [
     'get_account_subscription_output',
 ]
 
+warnings.warn("""cloudflare:index/getAccountSubscription:getAccountSubscription has been deprecated in favor of cloudflare:account/subscription:getSubscription""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAccountSubscriptionResult:
     """
@@ -175,13 +177,14 @@ def get_account_subscription(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_subscription = cloudflare.get_account_subscription(account_id="account_id")
+    example_account_subscription = cloudflare.account.get_subscription(account_id="account_id")
     ```
 
 
     :param _builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_account_subscription is deprecated: cloudflare:index/getAccountSubscription:getAccountSubscription has been deprecated in favor of cloudflare:account/subscription:getSubscription""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['zoneId'] = zone_id
@@ -214,13 +217,14 @@ def get_account_subscription_output(account_id: pulumi.Input[Optional[Optional[_
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_subscription = cloudflare.get_account_subscription(account_id="account_id")
+    example_account_subscription = cloudflare.account.get_subscription(account_id="account_id")
     ```
 
 
     :param _builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_account_subscription is deprecated: cloudflare:index/getAccountSubscription:getAccountSubscription has been deprecated in favor of cloudflare:account/subscription:getSubscription""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['zoneId'] = zone_id

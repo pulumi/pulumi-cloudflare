@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrusttunnelcloudflaredvirtual"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustTunnelCloudflaredVirtualNetwork(ctx, "example_zero_trust_tunnel_cloudflared_virtual_network", &cloudflare.ZeroTrustTunnelCloudflaredVirtualNetworkArgs{
+//			_, err := zerotrusttunnelcloudflaredvirtual.NewNetwork(ctx, "example_zero_trust_tunnel_cloudflared_virtual_network", &zerotrusttunnelcloudflaredvirtual.NetworkArgs{
 //				AccountId:        pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				Name:             pulumi.String("us-east-1-vpc"),
 //				Comment:          pulumi.String("Staging VPC for data science"),
@@ -88,12 +88,6 @@ func NewTunnelVirtualNetwork(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TunnelVirtualNetwork
 	err := ctx.RegisterResource("cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork", name, args, &resource, opts...)

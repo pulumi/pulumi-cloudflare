@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getEmailRoutingCatchAll:getEmailRoutingCatchAll has been deprecated in favor of cloudflare:emailRouting/catchAll:getCatchAll")]
     public static class GetEmailRoutingCatchAll
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailRoutingCatchAll = Cloudflare.GetEmailRoutingCatchAll.Invoke(new()
+        ///     var exampleEmailRoutingCatchAll = Cloudflare.Modules.EmailRouting.GetCatchAll.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -54,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailRoutingCatchAll = Cloudflare.GetEmailRoutingCatchAll.Invoke(new()
+        ///     var exampleEmailRoutingCatchAll = Cloudflare.Modules.EmailRouting.GetCatchAll.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -81,7 +82,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailRoutingCatchAll = Cloudflare.GetEmailRoutingCatchAll.Invoke(new()
+        ///     var exampleEmailRoutingCatchAll = Cloudflare.Modules.EmailRouting.GetCatchAll.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

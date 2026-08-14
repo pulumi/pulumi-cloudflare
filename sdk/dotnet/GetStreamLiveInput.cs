@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getStreamLiveInput:getStreamLiveInput has been deprecated in favor of cloudflare:stream/liveInput:getLiveInput")]
     public static class GetStreamLiveInput
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleStreamLiveInput = Cloudflare.GetStreamLiveInput.Invoke(new()
+        ///     var exampleStreamLiveInput = Cloudflare.Modules.Stream.GetLiveInput.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         LiveInputIdentifier = "66be4bf738797e01e1fca35a7bdecdcd",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleStreamLiveInput = Cloudflare.GetStreamLiveInput.Invoke(new()
+        ///     var exampleStreamLiveInput = Cloudflare.Modules.Stream.GetLiveInput.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         LiveInputIdentifier = "66be4bf738797e01e1fca35a7bdecdcd",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleStreamLiveInput = Cloudflare.GetStreamLiveInput.Invoke(new()
+        ///     var exampleStreamLiveInput = Cloudflare.Modules.Stream.GetLiveInput.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         LiveInputIdentifier = "66be4bf738797e01e1fca35a7bdecdcd",

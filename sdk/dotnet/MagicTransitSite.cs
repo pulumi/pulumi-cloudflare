@@ -27,14 +27,14 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleMagicTransitSite = new Cloudflare.MagicTransitSite("example_magic_transit_site", new()
+    ///     var exampleMagicTransitSite = new Cloudflare.Modules.MagicTransitSite.MagicTransitSite("example_magic_transit_site", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "site_1",
     ///         ConnectorId = "ac60d3d0435248289d446cedd870bcf4",
     ///         Description = "description",
     ///         HaMode = true,
-    ///         Location = new Cloudflare.Inputs.MagicTransitSiteLocationArgs
+    ///         Location = new Cloudflare.Modules.MagicTransitSite.Inputs.MagicTransitSiteLocationArgs
     ///         {
     ///             Lat = "37.6192",
     ///             Lon = "122.3816",
@@ -51,6 +51,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/magicTransitSite:MagicTransitSite example '&lt;account_id&gt;/&lt;site_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/magicTransitSite:MagicTransitSite has been deprecated in favor of cloudflare:magicTransitSite/magicTransitSite:MagicTransitSite")]
     [CloudflareResourceType("cloudflare:index/magicTransitSite:MagicTransitSite")]
     public partial class MagicTransitSite : global::Pulumi.CustomResource
     {

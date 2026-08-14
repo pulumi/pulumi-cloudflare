@@ -203,8 +203,13 @@ class _OriginCaCertificateState:
         pulumi.set(self, "requested_validity", value)
 
 
+warnings.warn("""cloudflare:index/originCaCertificate:OriginCaCertificate has been deprecated in favor of cloudflare:originCa/certificate:Certificate""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/originCaCertificate:OriginCaCertificate")
 class OriginCaCertificate(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/originCaCertificate:OriginCaCertificate has been deprecated in favor of cloudflare:originCa/certificate:Certificate""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -221,7 +226,7 @@ class OriginCaCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_origin_ca_certificate = cloudflare.OriginCaCertificate("example_origin_ca_certificate",
+        example_origin_ca_certificate = cloudflare.originca.Certificate("example_origin_ca_certificate",
             csr=\"\"\"  -----BEGIN CERTIFICATE REQUEST-----
           MIICxzCCAa8CAQAwSDELMAkGA1UEBhMCVVMxFjAUBgNVBAgTDVNhbiBGcmFuY2lz
           Y28xCzAJBgNVBAcTAkNBMRQwEgYDVQQDEwtleGFtcGxlLm5ldDCCASIwDQYJKoZI
@@ -279,7 +284,7 @@ class OriginCaCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_origin_ca_certificate = cloudflare.OriginCaCertificate("example_origin_ca_certificate",
+        example_origin_ca_certificate = cloudflare.originca.Certificate("example_origin_ca_certificate",
             csr=\"\"\"  -----BEGIN CERTIFICATE REQUEST-----
           MIICxzCCAa8CAQAwSDELMAkGA1UEBhMCVVMxFjAUBgNVBAgTDVNhbiBGcmFuY2lz
           Y28xCzAJBgNVBAcTAkNBMRQwEgYDVQQDEwtleGFtcGxlLm5ldDCCASIwDQYJKoZI
@@ -334,6 +339,7 @@ class OriginCaCertificate(pulumi.CustomResource):
                  request_type: pulumi.Input[Optional[_builtins.str]] = None,
                  requested_validity: pulumi.Input[Optional[_builtins.float]] = None,
                  __props__=None):
+        pulumi.log.warn("""OriginCaCertificate is deprecated: cloudflare:index/originCaCertificate:OriginCaCertificate has been deprecated in favor of cloudflare:originCa/certificate:Certificate""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

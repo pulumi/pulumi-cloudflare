@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessServiceToken = new cloudflare.ZeroTrustAccessServiceToken("example_zero_trust_access_service_token", {
+ * const exampleZeroTrustAccessServiceToken = new cloudflare.zerotrustaccessservice.Token("example_zero_trust_access_service_token", {
  *     name: "CI/CD token",
  *     zoneId: "zone_id",
  *     clientSecretVersion: 0,
@@ -137,8 +137,6 @@ export class AccessServiceToken extends pulumi.CustomResource {
             resourceInputs["expiresAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessServiceToken:AccessServiceToken" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         const secretOpts = { additionalSecretOutputs: ["clientSecret"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(AccessServiceToken.__pulumiType, name, resourceInputs, opts);

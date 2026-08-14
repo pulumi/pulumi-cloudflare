@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleEmailSecurityTrustedDomains = new Cloudflare.EmailSecurityTrustedDomains("example_email_security_trusted_domains", new()
+    ///     var exampleEmailSecurityTrustedDomains = new Cloudflare.Modules.EmailSecurityTrustedDomains.EmailSecurityTrustedDomains("example_email_security_trusted_domains", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         IsRecent = true,
@@ -44,6 +44,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains example '&lt;account_id&gt;/&lt;trusted_domain_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains has been deprecated in favor of cloudflare:emailSecurityTrustedDomains/emailSecurityTrustedDomains:EmailSecurityTrustedDomains")]
     [CloudflareResourceType("cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains")]
     public partial class EmailSecurityTrustedDomains : global::Pulumi.CustomResource
     {

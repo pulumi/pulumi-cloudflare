@@ -277,7 +277,7 @@ class WorkerDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_workers_custom_domain = cloudflare.WorkersCustomDomain("example_workers_custom_domain",
+        example_workers_custom_domain = cloudflare.workerscustom.Domain("example_workers_custom_domain",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             hostname="app.example.com",
             service="my-worker",
@@ -319,7 +319,7 @@ class WorkerDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_workers_custom_domain = cloudflare.WorkersCustomDomain("example_workers_custom_domain",
+        example_workers_custom_domain = cloudflare.workerscustom.Domain("example_workers_custom_domain",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             hostname="app.example.com",
             service="my-worker",
@@ -378,8 +378,6 @@ class WorkerDomain(pulumi.CustomResource):
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["zone_name"] = zone_name
             __props__.__dict__["cert_id"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/workerDomain:WorkerDomain")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(WorkerDomain, __self__).__init__(
             'cloudflare:index/workerDomain:WorkerDomain',
             resource_name,

@@ -33,9 +33,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZoneLockdown;
- * import com.pulumi.cloudflare.ZoneLockdownArgs;
- * import com.pulumi.cloudflare.inputs.ZoneLockdownConfigurationArgs;
+ * import com.pulumi.cloudflare.zone.Lockdown;
+ * import com.pulumi.cloudflare.zone.LockdownArgs;
+ * import com.pulumi.cloudflare.zone.inputs.LockdownConfigurationArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -49,9 +49,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZoneLockdown = new ZoneLockdown("exampleZoneLockdown", ZoneLockdownArgs.builder()
+ *         var exampleZoneLockdown = new Lockdown("exampleZoneLockdown", LockdownArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .configurations(ZoneLockdownConfigurationArgs.builder()
+ *             .configurations(LockdownConfigurationArgs.builder()
  *                 .target("ip")
  *                 .value("198.51.100.4")
  *                 .build())
@@ -72,7 +72,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example &#39;&lt;zone_id&gt;/&lt;lock_downs_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zoneLockdown:ZoneLockdown has been deprecated in favor of cloudflare:zone/lockdown:Lockdown
+ * 
  */
+@Deprecated /* cloudflare:index/zoneLockdown:ZoneLockdown has been deprecated in favor of cloudflare:zone/lockdown:Lockdown */
 @ResourceType(type="cloudflare:index/zoneLockdown:ZoneLockdown")
 public class ZoneLockdown extends com.pulumi.resources.CustomResource {
     /**

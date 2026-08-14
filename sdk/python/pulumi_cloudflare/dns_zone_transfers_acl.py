@@ -119,8 +119,13 @@ class _DnsZoneTransfersAclState:
         pulumi.set(self, "name", value)
 
 
+warnings.warn("""cloudflare:index/dnsZoneTransfersAcl:DnsZoneTransfersAcl has been deprecated in favor of cloudflare:dnsZoneTransfers/acl:Acl""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/dnsZoneTransfersAcl:DnsZoneTransfersAcl")
 class DnsZoneTransfersAcl(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/dnsZoneTransfersAcl:DnsZoneTransfersAcl has been deprecated in favor of cloudflare:dnsZoneTransfers/acl:Acl""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -141,7 +146,7 @@ class DnsZoneTransfersAcl(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_dns_zone_transfers_acl = cloudflare.DnsZoneTransfersAcl("example_dns_zone_transfers_acl",
+        example_dns_zone_transfers_acl = cloudflare.dnszonetransfers.Acl("example_dns_zone_transfers_acl",
             account_id="01a7362d577a6c3019a474fd6f485823",
             ip_range="192.0.2.53/28",
             name="my-acl-1")
@@ -177,7 +182,7 @@ class DnsZoneTransfersAcl(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_dns_zone_transfers_acl = cloudflare.DnsZoneTransfersAcl("example_dns_zone_transfers_acl",
+        example_dns_zone_transfers_acl = cloudflare.dnszonetransfers.Acl("example_dns_zone_transfers_acl",
             account_id="01a7362d577a6c3019a474fd6f485823",
             ip_range="192.0.2.53/28",
             name="my-acl-1")
@@ -209,6 +214,7 @@ class DnsZoneTransfersAcl(pulumi.CustomResource):
                  ip_range: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""DnsZoneTransfersAcl is deprecated: cloudflare:index/dnsZoneTransfersAcl:DnsZoneTransfersAcl has been deprecated in favor of cloudflare:dnsZoneTransfers/acl:Acl""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

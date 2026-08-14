@@ -22,6 +22,8 @@ __all__ = [
     'get_user_output',
 ]
 
+warnings.warn("""cloudflare:index/getUser:getUser has been deprecated in favor of cloudflare:user/user:getUser""", DeprecationWarning)
+
 @pulumi.output_type
 class GetUserResult:
     """
@@ -228,9 +230,10 @@ def get_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserRes
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_user = cloudflare.get_user()
+    example_user = cloudflare.user.get_user()
     ```
     """
+    pulumi.log.warn("""get_user is deprecated: cloudflare:index/getUser:getUser has been deprecated in favor of cloudflare:user/user:getUser""")
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult).value
@@ -264,9 +267,10 @@ def get_user_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutp
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_user = cloudflare.get_user()
+    example_user = cloudflare.user.get_user()
     ```
     """
+    pulumi.log.warn("""get_user is deprecated: cloudflare:index/getUser:getUser has been deprecated in favor of cloudflare:user/user:getUser""")
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult)

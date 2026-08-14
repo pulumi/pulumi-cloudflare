@@ -20,13 +20,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleApiShield = cloudflare.getApiShield({
+ * const exampleApiShield = cloudflare.apishield.getApiShield({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     normalize: true,
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getApiShield:getApiShield has been deprecated in favor of cloudflare:apiShield/apiShield:getApiShield */
 export function getApiShield(args?: GetApiShieldArgs, opts?: pulumi.InvokeOptions): Promise<GetApiShieldResult> {
+    pulumi.log.warn("getApiShield is deprecated: cloudflare:index/getApiShield:getApiShield has been deprecated in favor of cloudflare:apiShield/apiShield:getApiShield")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getApiShield:getApiShield", {
@@ -81,13 +83,15 @@ export interface GetApiShieldResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleApiShield = cloudflare.getApiShield({
+ * const exampleApiShield = cloudflare.apishield.getApiShield({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     normalize: true,
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getApiShield:getApiShield has been deprecated in favor of cloudflare:apiShield/apiShield:getApiShield */
 export function getApiShieldOutput(args?: GetApiShieldOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiShieldResult> {
+    pulumi.log.warn("getApiShield is deprecated: cloudflare:index/getApiShield:getApiShield has been deprecated in favor of cloudflare:apiShield/apiShield:getApiShield")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getApiShield:getApiShield", {

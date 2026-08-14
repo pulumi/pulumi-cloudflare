@@ -220,8 +220,13 @@ class _MoqRelayState:
         pulumi.set(self, "uid", value)
 
 
+warnings.warn("""cloudflare:index/moqRelay:MoqRelay has been deprecated in favor of cloudflare:moq/relay:Relay""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/moqRelay:MoqRelay")
 class MoqRelay(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/moqRelay:MoqRelay has been deprecated in favor of cloudflare:moq/relay:Relay""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -277,6 +282,7 @@ class MoqRelay(pulumi.CustomResource):
                  config: pulumi.Input[Optional[Union['MoqRelayConfigArgs', 'MoqRelayConfigArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""MoqRelay is deprecated: cloudflare:index/moqRelay:MoqRelay has been deprecated in favor of cloudflare:moq/relay:Relay""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

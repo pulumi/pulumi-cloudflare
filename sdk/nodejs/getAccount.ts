@@ -45,12 +45,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccount = cloudflare.getAccount({
+ * const exampleAccount = cloudflare.account.getAccount({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccount:getAccount has been deprecated in favor of cloudflare:account/account:getAccount */
 export function getAccount(args?: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
+    pulumi.log.warn("getAccount is deprecated: cloudflare:index/getAccount:getAccount has been deprecated in favor of cloudflare:account/account:getAccount")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccount:getAccount", {
@@ -143,12 +145,14 @@ export interface GetAccountResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccount = cloudflare.getAccount({
+ * const exampleAccount = cloudflare.account.getAccount({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccount:getAccount has been deprecated in favor of cloudflare:account/account:getAccount */
 export function getAccountOutput(args?: GetAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountResult> {
+    pulumi.log.warn("getAccount is deprecated: cloudflare:index/getAccount:getAccount has been deprecated in favor of cloudflare:account/account:getAccount")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccount:getAccount", {

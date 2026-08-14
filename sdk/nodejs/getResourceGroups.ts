@@ -19,14 +19,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleResourceGroups = cloudflare.getResourceGroups({
+ * const exampleResourceGroups = cloudflare.resource.getGroups({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     id: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "NameOfTheResourceGroup",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getResourceGroups:getResourceGroups has been deprecated in favor of cloudflare:resource/groups:getGroups */
 export function getResourceGroups(args?: GetResourceGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceGroupsResult> {
+    pulumi.log.warn("getResourceGroups is deprecated: cloudflare:index/getResourceGroups:getResourceGroups has been deprecated in favor of cloudflare:resource/groups:getGroups")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getResourceGroups:getResourceGroups", {
@@ -97,14 +99,16 @@ export interface GetResourceGroupsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleResourceGroups = cloudflare.getResourceGroups({
+ * const exampleResourceGroups = cloudflare.resource.getGroups({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     id: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "NameOfTheResourceGroup",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getResourceGroups:getResourceGroups has been deprecated in favor of cloudflare:resource/groups:getGroups */
 export function getResourceGroupsOutput(args?: GetResourceGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetResourceGroupsResult> {
+    pulumi.log.warn("getResourceGroups is deprecated: cloudflare:index/getResourceGroups:getResourceGroups has been deprecated in favor of cloudflare:resource/groups:getGroups")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getResourceGroups:getResourceGroups", {

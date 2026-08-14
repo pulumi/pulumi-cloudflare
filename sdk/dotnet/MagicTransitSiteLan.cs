@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleMagicTransitSiteLan = new Cloudflare.MagicTransitSiteLan("example_magic_transit_site_lan", new()
+    ///     var exampleMagicTransitSiteLan = new Cloudflare.Modules.MagicTransitSite.MagicTransitSiteLan("example_magic_transit_site_lan", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SiteId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -36,34 +36,34 @@ namespace Pulumi.Cloudflare
     ///         IsBreakout = true,
     ///         IsPrioritized = true,
     ///         Name = "name",
-    ///         Nat = new Cloudflare.Inputs.MagicTransitSiteLanNatArgs
+    ///         Nat = new Cloudflare.Modules.MagicTransitSite.Inputs.LanNatArgs
     ///         {
     ///             StaticPrefix = "192.0.2.0/24",
     ///         },
     ///         Physport = 1,
     ///         RoutedSubnets = new[]
     ///         {
-    ///             new Cloudflare.Inputs.MagicTransitSiteLanRoutedSubnetArgs
+    ///             new Cloudflare.Modules.MagicTransitSite.Inputs.LanRoutedSubnetArgs
     ///             {
     ///                 NextHop = "192.0.2.1",
     ///                 Prefix = "192.0.2.0/24",
-    ///                 Nat = new Cloudflare.Inputs.MagicTransitSiteLanRoutedSubnetNatArgs
+    ///                 Nat = new Cloudflare.Modules.MagicTransitSite.Inputs.LanRoutedSubnetNatArgs
     ///                 {
     ///                     StaticPrefix = "192.0.2.0/24",
     ///                 },
     ///             },
     ///         },
-    ///         StaticAddressing = new Cloudflare.Inputs.MagicTransitSiteLanStaticAddressingArgs
+    ///         StaticAddressing = new Cloudflare.Modules.MagicTransitSite.Inputs.LanStaticAddressingArgs
     ///         {
     ///             Address = "192.0.2.0/24",
-    ///             DhcpRelay = new Cloudflare.Inputs.MagicTransitSiteLanStaticAddressingDhcpRelayArgs
+    ///             DhcpRelay = new Cloudflare.Modules.MagicTransitSite.Inputs.LanStaticAddressingDhcpRelayArgs
     ///             {
     ///                 ServerAddresses = new[]
     ///                 {
     ///                     "192.0.2.1",
     ///                 },
     ///             },
-    ///             DhcpServer = new Cloudflare.Inputs.MagicTransitSiteLanStaticAddressingDhcpServerArgs
+    ///             DhcpServer = new Cloudflare.Modules.MagicTransitSite.Inputs.LanStaticAddressingDhcpServerArgs
     ///             {
     ///                 DhcpPoolEnd = "192.0.2.1",
     ///                 DhcpPoolStart = "192.0.2.1",
@@ -93,6 +93,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan example '&lt;account_id&gt;/&lt;site_id&gt;/&lt;lan_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan has been deprecated in favor of cloudflare:magicTransitSite/lan:Lan")]
     [CloudflareResourceType("cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan")]
     public partial class MagicTransitSiteLan : global::Pulumi.CustomResource
     {

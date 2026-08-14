@@ -35,9 +35,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.DnsRecord;
- * import com.pulumi.cloudflare.DnsRecordArgs;
- * import com.pulumi.cloudflare.inputs.DnsRecordSettingsArgs;
+ * import com.pulumi.cloudflare.dns.Record;
+ * import com.pulumi.cloudflare.dns.RecordArgs;
+ * import com.pulumi.cloudflare.dns.inputs.RecordSettingsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleDnsRecord = new DnsRecord("exampleDnsRecord", DnsRecordArgs.builder()
+ *         var exampleDnsRecord = new Record("exampleDnsRecord", RecordArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .name("example.com")
  *             .ttl(3600.0)
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .content("198.51.100.4")
  *             .privateRouting(true)
  *             .proxied(true)
- *             .settings(DnsRecordSettingsArgs.builder()
+ *             .settings(RecordSettingsArgs.builder()
  *                 .ipv4Only(true)
  *                 .ipv6Only(true)
  *                 .build())
@@ -78,7 +78,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/dnsRecord:DnsRecord example &#39;&lt;zone_id&gt;/&lt;dns_record_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/dnsRecord:DnsRecord has been deprecated in favor of cloudflare:dns/record:Record
+ * 
  */
+@Deprecated /* cloudflare:index/dnsRecord:DnsRecord has been deprecated in favor of cloudflare:dns/record:Record */
 @ResourceType(type="cloudflare:index/dnsRecord:DnsRecord")
 public class DnsRecord extends com.pulumi.resources.CustomResource {
     /**

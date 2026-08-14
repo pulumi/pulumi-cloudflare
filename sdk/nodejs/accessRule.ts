@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccessRule = new cloudflare.AccessRule("example_access_rule", {
+ * const exampleAccessRule = new cloudflare.access.Rule("example_access_rule", {
  *     configuration: {
  *         target: "ip",
  *         value: "198.51.100.4",
@@ -34,6 +34,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/accessRule:AccessRule example '<{accounts|zones}/{account_id|zone_id}>/<rule_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/accessRule:AccessRule has been deprecated in favor of cloudflare:access/rule:Rule
  */
 export class AccessRule extends pulumi.CustomResource {
     /**
@@ -46,6 +48,7 @@ export class AccessRule extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AccessRuleState, opts?: pulumi.CustomResourceOptions): AccessRule {
+        pulumi.log.warn("AccessRule is deprecated: cloudflare:index/accessRule:AccessRule has been deprecated in favor of cloudflare:access/rule:Rule")
         return new AccessRule(name, <any>state, { ...opts, id: id });
     }
 
@@ -108,8 +111,11 @@ export class AccessRule extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/accessRule:AccessRule has been deprecated in favor of cloudflare:access/rule:Rule */
     constructor(name: string, args: AccessRuleArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/accessRule:AccessRule has been deprecated in favor of cloudflare:access/rule:Rule */
     constructor(name: string, argsOrState?: AccessRuleArgs | AccessRuleState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("AccessRule is deprecated: cloudflare:index/accessRule:AccessRule has been deprecated in favor of cloudflare:access/rule:Rule")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

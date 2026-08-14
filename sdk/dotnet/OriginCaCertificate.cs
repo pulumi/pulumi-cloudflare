@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleOriginCaCertificate = new Cloudflare.OriginCaCertificate("example_origin_ca_certificate", new()
+    ///     var exampleOriginCaCertificate = new Cloudflare.Modules.OriginCa.OriginCaCertificate("example_origin_ca_certificate", new()
     ///     {
     ///         Csr = @"  -----BEGIN CERTIFICATE REQUEST-----
     ///   MIICxzCCAa8CAQAwSDELMAkGA1UEBhMCVVMxFjAUBgNVBAgTDVNhbiBGcmFuY2lz
@@ -59,6 +59,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example '&lt;certificate_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/originCaCertificate:OriginCaCertificate has been deprecated in favor of cloudflare:originCa/certificate:Certificate")]
     [CloudflareResourceType("cloudflare:index/originCaCertificate:OriginCaCertificate")]
     public partial class OriginCaCertificate : global::Pulumi.CustomResource
     {

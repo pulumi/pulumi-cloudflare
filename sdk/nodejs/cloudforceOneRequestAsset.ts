@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCloudforceOneRequestAsset = new cloudflare.CloudforceOneRequestAsset("example_cloudforce_one_request_asset", {
+ * const exampleCloudforceOneRequestAsset = new cloudflare.cloudforceonerequest.Asset("example_cloudforce_one_request_asset", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     requestId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     page: 0,
@@ -29,6 +29,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset example '<account_id>/<request_id>/<asset_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset has been deprecated in favor of cloudflare:cloudforceOneRequest/asset:Asset
  */
 export class CloudforceOneRequestAsset extends pulumi.CustomResource {
     /**
@@ -41,6 +43,7 @@ export class CloudforceOneRequestAsset extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CloudforceOneRequestAssetState, opts?: pulumi.CustomResourceOptions): CloudforceOneRequestAsset {
+        pulumi.log.warn("CloudforceOneRequestAsset is deprecated: cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset has been deprecated in favor of cloudflare:cloudforceOneRequest/asset:Asset")
         return new CloudforceOneRequestAsset(name, <any>state, { ...opts, id: id });
     }
 
@@ -102,8 +105,11 @@ export class CloudforceOneRequestAsset extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset has been deprecated in favor of cloudflare:cloudforceOneRequest/asset:Asset */
     constructor(name: string, args: CloudforceOneRequestAssetArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset has been deprecated in favor of cloudflare:cloudforceOneRequest/asset:Asset */
     constructor(name: string, argsOrState?: CloudforceOneRequestAssetArgs | CloudforceOneRequestAssetState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("CloudforceOneRequestAsset is deprecated: cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset has been deprecated in favor of cloudflare:cloudforceOneRequest/asset:Asset")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

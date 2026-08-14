@@ -24,49 +24,49 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/pipeline"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewPipelineSink(ctx, "example_pipeline_sink", &cloudflare.PipelineSinkArgs{
+//			_, err := pipeline.NewSink(ctx, "example_pipeline_sink", &pipeline.SinkArgs{
 //				AccountId: pulumi.String("0123105f4ecef8ad9ca31a8372d0c353"),
 //				Name:      pulumi.String("my_sink"),
 //				Type:      pulumi.String("r2"),
-//				Config: &cloudflare.PipelineSinkConfigArgs{
+//				Config: &pipeline.SinkConfigArgs{
 //					AccountId: pulumi.String("account_id"),
 //					Bucket:    pulumi.String("bucket"),
-//					Credentials: &cloudflare.PipelineSinkConfigCredentialsArgs{
+//					Credentials: &pipeline.SinkConfigCredentialsArgs{
 //						AccessKeyId:     pulumi.String("access_key_id"),
 //						SecretAccessKey: pulumi.String("secret_access_key"),
 //					},
-//					FileNaming: &cloudflare.PipelineSinkConfigFileNamingArgs{
+//					FileNaming: &pipeline.SinkConfigFileNamingArgs{
 //						Prefix:   pulumi.String("prefix"),
 //						Strategy: pulumi.String("serial"),
 //						Suffix:   pulumi.String("suffix"),
 //					},
 //					Jurisdiction: pulumi.String("jurisdiction"),
-//					Partitioning: &cloudflare.PipelineSinkConfigPartitioningArgs{
+//					Partitioning: &pipeline.SinkConfigPartitioningArgs{
 //						TimePattern: pulumi.String("year=%Y/month=%m/day=%d/hour=%H"),
 //					},
 //					Path: pulumi.String("path"),
-//					RollingPolicy: &cloudflare.PipelineSinkConfigRollingPolicyArgs{
+//					RollingPolicy: &pipeline.SinkConfigRollingPolicyArgs{
 //						FileSizeBytes:     pulumi.Int(0),
 //						InactivitySeconds: pulumi.Int(1),
 //						IntervalSeconds:   pulumi.Int(1),
 //					},
 //				},
-//				Format: &cloudflare.PipelineSinkFormatArgs{
+//				Format: &pipeline.SinkFormatArgs{
 //					Type:            pulumi.String("json"),
 //					DecimalEncoding: pulumi.String("number"),
 //					TimestampFormat: pulumi.String("rfc3339"),
 //					Unstructured:    pulumi.Bool(true),
 //				},
-//				Schema: &cloudflare.PipelineSinkSchemaArgs{
-//					Fields: cloudflare.PipelineSinkSchemaFieldArray{
-//						&cloudflare.PipelineSinkSchemaFieldArgs{
+//				Schema: &pipeline.SinkSchemaArgs{
+//					Fields: pipeline.SinkSchemaFieldArray{
+//						&pipeline.SinkSchemaFieldArgs{
 //							Type:        pulumi.String("int32"),
 //							MetadataKey: pulumi.String("metadata_key"),
 //							Name:        pulumi.String("name"),
@@ -74,7 +74,7 @@ import (
 //							SqlName:     pulumi.String("sql_name"),
 //						},
 //					},
-//					Format: &cloudflare.PipelineSinkSchemaFormatArgs{
+//					Format: &pipeline.SinkSchemaFormatArgs{
 //						Type:            pulumi.String("json"),
 //						DecimalEncoding: pulumi.String("number"),
 //						TimestampFormat: pulumi.String("rfc3339"),
@@ -97,6 +97,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/pipelineSink:PipelineSink example '<account_id>/<sink_id>'
 // ```
+//
+// Deprecated: cloudflare:index/pipelineSink:PipelineSink has been deprecated in favor of cloudflare:pipeline/sink:Sink
 type PipelineSink struct {
 	pulumi.CustomResourceState
 

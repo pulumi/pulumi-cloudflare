@@ -26,20 +26,20 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/magictransitsite"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewMagicTransitSite(ctx, "example_magic_transit_site", &cloudflare.MagicTransitSiteArgs{
+//			_, err := magictransitsite.NewMagicTransitSite(ctx, "example_magic_transit_site", &magictransitsite.MagicTransitSiteArgs{
 //				AccountId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:        pulumi.String("site_1"),
 //				ConnectorId: pulumi.String("ac60d3d0435248289d446cedd870bcf4"),
 //				Description: pulumi.String("description"),
 //				HaMode:      pulumi.Bool(true),
-//				Location: &cloudflare.MagicTransitSiteLocationArgs{
+//				Location: &magictransitsite.MagicTransitSiteLocationArgs{
 //					Lat: pulumi.String("37.6192"),
 //					Lon: pulumi.String("122.3816"),
 //				},
@@ -59,6 +59,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/magicTransitSite:MagicTransitSite example '<account_id>/<site_id>'
 // ```
+//
+// Deprecated: cloudflare:index/magicTransitSite:MagicTransitSite has been deprecated in favor of cloudflare:magicTransitSite/magicTransitSite:MagicTransitSite
 type MagicTransitSite struct {
 	pulumi.CustomResourceState
 

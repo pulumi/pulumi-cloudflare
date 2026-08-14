@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.DnsZoneTransfersOutgoing;
- * import com.pulumi.cloudflare.DnsZoneTransfersOutgoingArgs;
+ * import com.pulumi.cloudflare.dnsZoneTransfers.Outgoing;
+ * import com.pulumi.cloudflare.dnsZoneTransfers.OutgoingArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleDnsZoneTransfersOutgoing = new DnsZoneTransfersOutgoing("exampleDnsZoneTransfersOutgoing", DnsZoneTransfersOutgoingArgs.builder()
+ *         var exampleDnsZoneTransfersOutgoing = new Outgoing("exampleDnsZoneTransfersOutgoing", OutgoingArgs.builder()
  *             .zoneId("269d8f4853475ca241c4e730be286b20")
  *             .name("www.example.com.")
  *             .peers(            
@@ -67,7 +67,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/dnsZoneTransfersOutgoing:DnsZoneTransfersOutgoing example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/dnsZoneTransfersOutgoing:DnsZoneTransfersOutgoing has been deprecated in favor of cloudflare:dnsZoneTransfers/outgoing:Outgoing
+ * 
  */
+@Deprecated /* cloudflare:index/dnsZoneTransfersOutgoing:DnsZoneTransfersOutgoing has been deprecated in favor of cloudflare:dnsZoneTransfers/outgoing:Outgoing */
 @ResourceType(type="cloudflare:index/dnsZoneTransfersOutgoing:DnsZoneTransfersOutgoing")
 public class DnsZoneTransfersOutgoing extends com.pulumi.resources.CustomResource {
     /**

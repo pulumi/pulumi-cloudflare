@@ -22,6 +22,8 @@ __all__ = [
     'get_token_validation_rules_list_output',
 ]
 
+warnings.warn("""cloudflare:index/getTokenValidationRulesList:getTokenValidationRulesList has been deprecated in favor of cloudflare:tokenValidationRules/list:getList""", DeprecationWarning)
+
 @pulumi.output_type
 class GetTokenValidationRulesListResult:
     """
@@ -183,7 +185,7 @@ def get_token_validation_rules_list(action: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_token_validation_rules_list = cloudflare.get_token_validation_rules_list(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_token_validation_rules_list = cloudflare.tokenvalidationrules.get_list(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         action="log",
         enabled=True,
@@ -205,6 +207,7 @@ def get_token_validation_rules_list(action: Optional[_builtins.str] = None,
     :param Sequence[_builtins.str] token_configurations: Select rules using any of these token configurations.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_token_validation_rules_list is deprecated: cloudflare:index/getTokenValidationRulesList:getTokenValidationRulesList has been deprecated in favor of cloudflare:tokenValidationRules/list:getList""")
     __args__ = dict()
     __args__['action'] = action
     __args__['enabled'] = enabled
@@ -253,7 +256,7 @@ def get_token_validation_rules_list_output(action: pulumi.Input[Optional[Optiona
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_token_validation_rules_list = cloudflare.get_token_validation_rules_list(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_token_validation_rules_list = cloudflare.tokenvalidationrules.get_list(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         action="log",
         enabled=True,
@@ -275,6 +278,7 @@ def get_token_validation_rules_list_output(action: pulumi.Input[Optional[Optiona
     :param Sequence[_builtins.str] token_configurations: Select rules using any of these token configurations.
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_token_validation_rules_list is deprecated: cloudflare:index/getTokenValidationRulesList:getTokenValidationRulesList has been deprecated in favor of cloudflare:tokenValidationRules/list:getList""")
     __args__ = dict()
     __args__['action'] = action
     __args__['enabled'] = enabled

@@ -23,6 +23,8 @@ __all__ = [
     'get_zero_trust_access_ai_controls_mcp_portal_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustAccessAiControlsMcpPortal:getZeroTrustAccessAiControlsMcpPortal has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/portal:getPortal""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustAccessAiControlsMcpPortalResult:
     """
@@ -181,13 +183,14 @@ def get_zero_trust_access_ai_controls_mcp_portal(account_id: Optional[_builtins.
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_ai_controls_mcp_portal = cloudflare.get_zero_trust_access_ai_controls_mcp_portal(account_id="a86a8f5c339544d7bdc89926de14fb8c",
+    example_zero_trust_access_ai_controls_mcp_portal = cloudflare.zerotrustaccessaicontrolsmcp.get_portal(account_id="a86a8f5c339544d7bdc89926de14fb8c",
         id="my-mcp-portal")
     ```
 
 
     :param _builtins.str id: portal id
     """
+    pulumi.log.warn("""get_zero_trust_access_ai_controls_mcp_portal is deprecated: cloudflare:index/getZeroTrustAccessAiControlsMcpPortal:getZeroTrustAccessAiControlsMcpPortal has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/portal:getPortal""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -225,13 +228,14 @@ def get_zero_trust_access_ai_controls_mcp_portal_output(account_id: pulumi.Input
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_ai_controls_mcp_portal = cloudflare.get_zero_trust_access_ai_controls_mcp_portal(account_id="a86a8f5c339544d7bdc89926de14fb8c",
+    example_zero_trust_access_ai_controls_mcp_portal = cloudflare.zerotrustaccessaicontrolsmcp.get_portal(account_id="a86a8f5c339544d7bdc89926de14fb8c",
         id="my-mcp-portal")
     ```
 
 
     :param _builtins.str id: portal id
     """
+    pulumi.log.warn("""get_zero_trust_access_ai_controls_mcp_portal is deprecated: cloudflare:index/getZeroTrustAccessAiControlsMcpPortal:getZeroTrustAccessAiControlsMcpPortal has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/portal:getPortal""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

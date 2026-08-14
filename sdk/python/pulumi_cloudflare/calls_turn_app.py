@@ -193,8 +193,13 @@ class _CallsTurnAppState:
         pulumi.set(self, "uid", value)
 
 
+warnings.warn("""cloudflare:index/callsTurnApp:CallsTurnApp has been deprecated in favor of cloudflare:callsTurn/app:App""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/callsTurnApp:CallsTurnApp")
 class CallsTurnApp(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/callsTurnApp:CallsTurnApp has been deprecated in favor of cloudflare:callsTurn/app:App""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -215,7 +220,7 @@ class CallsTurnApp(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_calls_turn_app = cloudflare.CallsTurnApp("example_calls_turn_app",
+        example_calls_turn_app = cloudflare.callsturn.App("example_calls_turn_app",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="my-turn-key")
         ```
@@ -249,7 +254,7 @@ class CallsTurnApp(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_calls_turn_app = cloudflare.CallsTurnApp("example_calls_turn_app",
+        example_calls_turn_app = cloudflare.callsturn.App("example_calls_turn_app",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="my-turn-key")
         ```
@@ -278,6 +283,7 @@ class CallsTurnApp(pulumi.CustomResource):
                  key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""CallsTurnApp is deprecated: cloudflare:index/callsTurnApp:CallsTurnApp has been deprecated in favor of cloudflare:callsTurn/app:App""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

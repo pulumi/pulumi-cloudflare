@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_dlp_integration_entry_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDlpIntegrationEntry:getZeroTrustDlpIntegrationEntry has been deprecated in favor of cloudflare:zeroTrustDlpIntegration/entry:getEntry""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDlpIntegrationEntryResult:
     """
@@ -232,10 +234,11 @@ def get_zero_trust_dlp_integration_entry(account_id: Optional[_builtins.str] = N
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_integration_entry = cloudflare.get_zero_trust_dlp_integration_entry(account_id="account_id",
+    example_zero_trust_dlp_integration_entry = cloudflare.zerotrustdlpintegration.get_entry(account_id="account_id",
         entry_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_dlp_integration_entry is deprecated: cloudflare:index/getZeroTrustDlpIntegrationEntry:getZeroTrustDlpIntegrationEntry has been deprecated in favor of cloudflare:zeroTrustDlpIntegration/entry:getEntry""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['entryId'] = entry_id
@@ -276,10 +279,11 @@ def get_zero_trust_dlp_integration_entry_output(account_id: pulumi.Input[Optiona
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_integration_entry = cloudflare.get_zero_trust_dlp_integration_entry(account_id="account_id",
+    example_zero_trust_dlp_integration_entry = cloudflare.zerotrustdlpintegration.get_entry(account_id="account_id",
         entry_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_dlp_integration_entry is deprecated: cloudflare:index/getZeroTrustDlpIntegrationEntry:getZeroTrustDlpIntegrationEntry has been deprecated in favor of cloudflare:zeroTrustDlpIntegration/entry:getEntry""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['entryId'] = entry_id

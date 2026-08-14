@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.DnsZoneTransfersIncoming;
- * import com.pulumi.cloudflare.DnsZoneTransfersIncomingArgs;
+ * import com.pulumi.cloudflare.dnsZoneTransfers.Incoming;
+ * import com.pulumi.cloudflare.dnsZoneTransfers.IncomingArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleDnsZoneTransfersIncoming = new DnsZoneTransfersIncoming("exampleDnsZoneTransfersIncoming", DnsZoneTransfersIncomingArgs.builder()
+ *         var exampleDnsZoneTransfersIncoming = new Incoming("exampleDnsZoneTransfersIncoming", IncomingArgs.builder()
  *             .zoneId("269d8f4853475ca241c4e730be286b20")
  *             .autoRefreshSeconds(86400.0)
  *             .name("www.example.com.")
@@ -68,7 +68,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/dnsZoneTransfersIncoming:DnsZoneTransfersIncoming example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/dnsZoneTransfersIncoming:DnsZoneTransfersIncoming has been deprecated in favor of cloudflare:dnsZoneTransfers/incoming:Incoming
+ * 
  */
+@Deprecated /* cloudflare:index/dnsZoneTransfersIncoming:DnsZoneTransfersIncoming has been deprecated in favor of cloudflare:dnsZoneTransfers/incoming:Incoming */
 @ResourceType(type="cloudflare:index/dnsZoneTransfersIncoming:DnsZoneTransfersIncoming")
 public class DnsZoneTransfersIncoming extends com.pulumi.resources.CustomResource {
     /**

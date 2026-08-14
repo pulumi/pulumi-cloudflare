@@ -16,12 +16,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleArgoSmartRouting = cloudflare.getArgoSmartRouting({
+ * const exampleArgoSmartRouting = cloudflare.argo.getSmartRouting({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getArgoSmartRouting:getArgoSmartRouting has been deprecated in favor of cloudflare:argo/smartRouting:getSmartRouting */
 export function getArgoSmartRouting(args?: GetArgoSmartRoutingArgs, opts?: pulumi.InvokeOptions): Promise<GetArgoSmartRoutingResult> {
+    pulumi.log.warn("getArgoSmartRouting is deprecated: cloudflare:index/getArgoSmartRouting:getArgoSmartRouting has been deprecated in favor of cloudflare:argo/smartRouting:getSmartRouting")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getArgoSmartRouting:getArgoSmartRouting", {
@@ -77,12 +79,14 @@ export interface GetArgoSmartRoutingResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleArgoSmartRouting = cloudflare.getArgoSmartRouting({
+ * const exampleArgoSmartRouting = cloudflare.argo.getSmartRouting({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getArgoSmartRouting:getArgoSmartRouting has been deprecated in favor of cloudflare:argo/smartRouting:getSmartRouting */
 export function getArgoSmartRoutingOutput(args?: GetArgoSmartRoutingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetArgoSmartRoutingResult> {
+    pulumi.log.warn("getArgoSmartRouting is deprecated: cloudflare:index/getArgoSmartRouting:getArgoSmartRouting has been deprecated in favor of cloudflare:argo/smartRouting:getSmartRouting")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getArgoSmartRouting:getArgoSmartRouting", {

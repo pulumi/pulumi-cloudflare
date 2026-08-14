@@ -21,6 +21,8 @@ __all__ = [
     'get_dls_prefix_binding_output',
 ]
 
+warnings.warn("""cloudflare:index/getDlsPrefixBinding:getDlsPrefixBinding has been deprecated in favor of cloudflare:dlsPrefix/binding:getBinding""", DeprecationWarning)
+
 @pulumi.output_type
 class GetDlsPrefixBindingResult:
     """
@@ -124,7 +126,7 @@ def get_dls_prefix_binding(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_dls_prefix_binding = cloudflare.get_dls_prefix_binding(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_dls_prefix_binding = cloudflare.dlsprefix.get_binding(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         binding_id="a1b2c3d4-e5f6-7890-abcd-ef1234567890")
     ```
 
@@ -132,6 +134,7 @@ def get_dls_prefix_binding(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Identifier of a Cloudflare account.
     :param _builtins.str binding_id: Unique identifier for the prefix binding.
     """
+    pulumi.log.warn("""get_dls_prefix_binding is deprecated: cloudflare:index/getDlsPrefixBinding:getDlsPrefixBinding has been deprecated in favor of cloudflare:dlsPrefix/binding:getBinding""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['bindingId'] = binding_id
@@ -160,7 +163,7 @@ def get_dls_prefix_binding_output(account_id: pulumi.Input[Optional[_builtins.st
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_dls_prefix_binding = cloudflare.get_dls_prefix_binding(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_dls_prefix_binding = cloudflare.dlsprefix.get_binding(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         binding_id="a1b2c3d4-e5f6-7890-abcd-ef1234567890")
     ```
 
@@ -168,6 +171,7 @@ def get_dls_prefix_binding_output(account_id: pulumi.Input[Optional[_builtins.st
     :param _builtins.str account_id: Identifier of a Cloudflare account.
     :param _builtins.str binding_id: Unique identifier for the prefix binding.
     """
+    pulumi.log.warn("""get_dls_prefix_binding is deprecated: cloudflare:index/getDlsPrefixBinding:getDlsPrefixBinding has been deprecated in favor of cloudflare:dlsPrefix/binding:getBinding""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['bindingId'] = binding_id

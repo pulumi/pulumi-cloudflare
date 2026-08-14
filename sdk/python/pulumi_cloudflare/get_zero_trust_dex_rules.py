@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_dex_rules_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDexRules:getZeroTrustDexRules has been deprecated in favor of cloudflare:zeroTrustDex/rules:getRules""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDexRulesResult:
     """
@@ -132,7 +134,7 @@ def get_zero_trust_dex_rules(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dex_rules = cloudflare.get_zero_trust_dex_rules(account_id="01a7362d577a6c3019a474fd6f485823",
+    example_zero_trust_dex_rules = cloudflare.zerotrustdex.get_rules(account_id="01a7362d577a6c3019a474fd6f485823",
         name="name")
     ```
 
@@ -145,6 +147,7 @@ def get_zero_trust_dex_rules(account_id: Optional[_builtins.str] = None,
     :param _builtins.str sort_order: Sort direction for sort_by property.
            Available values: "ASC", "DESC".
     """
+    pulumi.log.warn("""get_zero_trust_dex_rules is deprecated: cloudflare:index/getZeroTrustDexRules:getZeroTrustDexRules has been deprecated in favor of cloudflare:zeroTrustDex/rules:getRules""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -181,7 +184,7 @@ def get_zero_trust_dex_rules_output(account_id: pulumi.Input[Optional[Optional[_
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dex_rules = cloudflare.get_zero_trust_dex_rules(account_id="01a7362d577a6c3019a474fd6f485823",
+    example_zero_trust_dex_rules = cloudflare.zerotrustdex.get_rules(account_id="01a7362d577a6c3019a474fd6f485823",
         name="name")
     ```
 
@@ -194,6 +197,7 @@ def get_zero_trust_dex_rules_output(account_id: pulumi.Input[Optional[Optional[_
     :param _builtins.str sort_order: Sort direction for sort_by property.
            Available values: "ASC", "DESC".
     """
+    pulumi.log.warn("""get_zero_trust_dex_rules is deprecated: cloudflare:index/getZeroTrustDexRules:getZeroTrustDexRules has been deprecated in favor of cloudflare:zeroTrustDex/rules:getRules""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

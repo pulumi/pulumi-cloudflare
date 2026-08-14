@@ -516,8 +516,13 @@ class _DnsRecordState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/dnsRecord:DnsRecord has been deprecated in favor of cloudflare:dns/record:Record""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/dnsRecord:DnsRecord")
 class DnsRecord(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/dnsRecord:DnsRecord has been deprecated in favor of cloudflare:dns/record:Record""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -547,7 +552,7 @@ class DnsRecord(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_dns_record = cloudflare.DnsRecord("example_dns_record",
+        example_dns_record = cloudflare.dns.Record("example_dns_record",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="example.com",
             ttl=float(3600),
@@ -604,7 +609,7 @@ class DnsRecord(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_dns_record = cloudflare.DnsRecord("example_dns_record",
+        example_dns_record = cloudflare.dns.Record("example_dns_record",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="example.com",
             ttl=float(3600),
@@ -655,6 +660,7 @@ class DnsRecord(pulumi.CustomResource):
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""DnsRecord is deprecated: cloudflare:index/dnsRecord:DnsRecord has been deprecated in favor of cloudflare:dns/record:Record""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

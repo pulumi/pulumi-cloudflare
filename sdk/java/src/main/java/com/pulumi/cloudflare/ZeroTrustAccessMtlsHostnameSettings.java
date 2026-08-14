@@ -33,9 +33,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustAccessMtlsHostnameSettings;
- * import com.pulumi.cloudflare.ZeroTrustAccessMtlsHostnameSettingsArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessMtlsHostnameSettingsSettingArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccessMtls.HostnameSettings;
+ * import com.pulumi.cloudflare.zeroTrustAccessMtls.HostnameSettingsArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccessMtls.inputs.HostnameSettingsSettingArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -49,8 +49,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustAccessMtlsHostnameSettings = new ZeroTrustAccessMtlsHostnameSettings("exampleZeroTrustAccessMtlsHostnameSettings", ZeroTrustAccessMtlsHostnameSettingsArgs.builder()
- *             .settings(ZeroTrustAccessMtlsHostnameSettingsSettingArgs.builder()
+ *         var exampleZeroTrustAccessMtlsHostnameSettings = new HostnameSettings("exampleZeroTrustAccessMtlsHostnameSettings", HostnameSettingsArgs.builder()
+ *             .settings(HostnameSettingsSettingArgs.builder()
  *                 .chinaNetwork(false)
  *                 .clientCertificateForwarding(true)
  *                 .hostname("admin.example.com")
@@ -67,7 +67,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings has been deprecated in favor of cloudflare:zeroTrustAccessMtls/hostnameSettings:HostnameSettings
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings has been deprecated in favor of cloudflare:zeroTrustAccessMtls/hostnameSettings:HostnameSettings */
 @ResourceType(type="cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings")
 public class ZeroTrustAccessMtlsHostnameSettings extends com.pulumi.resources.CustomResource {
     /**

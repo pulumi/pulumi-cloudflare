@@ -37,14 +37,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.MagicTransitSiteLan;
- * import com.pulumi.cloudflare.MagicTransitSiteLanArgs;
- * import com.pulumi.cloudflare.inputs.MagicTransitSiteLanNatArgs;
- * import com.pulumi.cloudflare.inputs.MagicTransitSiteLanRoutedSubnetArgs;
- * import com.pulumi.cloudflare.inputs.MagicTransitSiteLanRoutedSubnetNatArgs;
- * import com.pulumi.cloudflare.inputs.MagicTransitSiteLanStaticAddressingArgs;
- * import com.pulumi.cloudflare.inputs.MagicTransitSiteLanStaticAddressingDhcpRelayArgs;
- * import com.pulumi.cloudflare.inputs.MagicTransitSiteLanStaticAddressingDhcpServerArgs;
+ * import com.pulumi.cloudflare.magicTransitSite.Lan;
+ * import com.pulumi.cloudflare.magicTransitSite.LanArgs;
+ * import com.pulumi.cloudflare.magicTransitSite.inputs.LanNatArgs;
+ * import com.pulumi.cloudflare.magicTransitSite.inputs.LanRoutedSubnetArgs;
+ * import com.pulumi.cloudflare.magicTransitSite.inputs.LanRoutedSubnetNatArgs;
+ * import com.pulumi.cloudflare.magicTransitSite.inputs.LanStaticAddressingArgs;
+ * import com.pulumi.cloudflare.magicTransitSite.inputs.LanStaticAddressingDhcpRelayArgs;
+ * import com.pulumi.cloudflare.magicTransitSite.inputs.LanStaticAddressingDhcpServerArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleMagicTransitSiteLan = new MagicTransitSiteLan("exampleMagicTransitSiteLan", MagicTransitSiteLanArgs.builder()
+ *         var exampleMagicTransitSiteLan = new Lan("exampleMagicTransitSiteLan", LanArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .siteId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .bondId(2)
@@ -66,23 +66,23 @@ import javax.annotation.Nullable;
  *             .isBreakout(true)
  *             .isPrioritized(true)
  *             .name("name")
- *             .nat(MagicTransitSiteLanNatArgs.builder()
+ *             .nat(LanNatArgs.builder()
  *                 .staticPrefix("192.0.2.0/24")
  *                 .build())
  *             .physport(1)
- *             .routedSubnets(MagicTransitSiteLanRoutedSubnetArgs.builder()
+ *             .routedSubnets(LanRoutedSubnetArgs.builder()
  *                 .nextHop("192.0.2.1")
  *                 .prefix("192.0.2.0/24")
- *                 .nat(MagicTransitSiteLanRoutedSubnetNatArgs.builder()
+ *                 .nat(LanRoutedSubnetNatArgs.builder()
  *                     .staticPrefix("192.0.2.0/24")
  *                     .build())
  *                 .build())
- *             .staticAddressing(MagicTransitSiteLanStaticAddressingArgs.builder()
+ *             .staticAddressing(LanStaticAddressingArgs.builder()
  *                 .address("192.0.2.0/24")
- *                 .dhcpRelay(MagicTransitSiteLanStaticAddressingDhcpRelayArgs.builder()
+ *                 .dhcpRelay(LanStaticAddressingDhcpRelayArgs.builder()
  *                     .serverAddresses("192.0.2.1")
  *                     .build())
- *                 .dhcpServer(MagicTransitSiteLanStaticAddressingDhcpServerArgs.builder()
+ *                 .dhcpServer(LanStaticAddressingDhcpServerArgs.builder()
  *                     .dhcpPoolEnd("192.0.2.1")
  *                     .dhcpPoolStart("192.0.2.1")
  *                     .dnsServer("192.0.2.1")
@@ -109,7 +109,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan example &#39;&lt;account_id&gt;/&lt;site_id&gt;/&lt;lan_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan has been deprecated in favor of cloudflare:magicTransitSite/lan:Lan
+ * 
  */
+@Deprecated /* cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan has been deprecated in favor of cloudflare:magicTransitSite/lan:Lan */
 @ResourceType(type="cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan")
 public class MagicTransitSiteLan extends com.pulumi.resources.CustomResource {
     /**

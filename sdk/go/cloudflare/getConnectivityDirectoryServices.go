@@ -18,14 +18,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/connectivitydirectory"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetConnectivityDirectoryServices(ctx, &cloudflare.LookupConnectivityDirectoryServicesArgs{
+//			_, err := connectivitydirectory.GetServices(ctx, &connectivitydirectory.GetServicesArgs{
 //				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Type:      pulumi.StringRef("tcp"),
 //			}, nil)
@@ -37,6 +37,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getConnectivityDirectoryServices:getConnectivityDirectoryServices has been deprecated in favor of cloudflare:connectivityDirectory/services:getServices
 func LookupConnectivityDirectoryServices(ctx *pulumi.Context, args *LookupConnectivityDirectoryServicesArgs, opts ...pulumi.InvokeOption) (*LookupConnectivityDirectoryServicesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectivityDirectoryServicesResult

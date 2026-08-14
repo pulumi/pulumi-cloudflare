@@ -32,9 +32,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZoneCacheVariants;
- * import com.pulumi.cloudflare.ZoneCacheVariantsArgs;
- * import com.pulumi.cloudflare.inputs.ZoneCacheVariantsValueArgs;
+ * import com.pulumi.cloudflare.zoneCache.Variants;
+ * import com.pulumi.cloudflare.zoneCache.VariantsArgs;
+ * import com.pulumi.cloudflare.zoneCache.inputs.VariantsValueArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -48,9 +48,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZoneCacheVariants = new ZoneCacheVariants("exampleZoneCacheVariants", ZoneCacheVariantsArgs.builder()
+ *         var exampleZoneCacheVariants = new Variants("exampleZoneCacheVariants", VariantsArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .value(ZoneCacheVariantsValueArgs.builder()
+ *             .value(VariantsValueArgs.builder()
  *                 .avifs(                
  *                     "image/webp",
  *                     "image/jpeg")
@@ -98,7 +98,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zoneCacheVariants:ZoneCacheVariants example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zoneCacheVariants:ZoneCacheVariants has been deprecated in favor of cloudflare:zoneCache/variants:Variants
+ * 
  */
+@Deprecated /* cloudflare:index/zoneCacheVariants:ZoneCacheVariants has been deprecated in favor of cloudflare:zoneCache/variants:Variants */
 @ResourceType(type="cloudflare:index/zoneCacheVariants:ZoneCacheVariants")
 public class ZoneCacheVariants extends com.pulumi.resources.CustomResource {
     /**

@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const examplePipelineSinks = cloudflare.getPipelineSinks({
+ * const examplePipelineSinks = cloudflare.pipeline.getSinks({
  *     accountId: "0123105f4ecef8ad9ca31a8372d0c353",
  *     pipelineId: "pipeline_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getPipelineSinks:getPipelineSinks has been deprecated in favor of cloudflare:pipeline/sinks:getSinks */
 export function getPipelineSinks(args?: GetPipelineSinksArgs, opts?: pulumi.InvokeOptions): Promise<GetPipelineSinksResult> {
+    pulumi.log.warn("getPipelineSinks is deprecated: cloudflare:index/getPipelineSinks:getPipelineSinks has been deprecated in favor of cloudflare:pipeline/sinks:getSinks")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getPipelineSinks:getPipelineSinks", {
@@ -88,13 +90,15 @@ export interface GetPipelineSinksResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const examplePipelineSinks = cloudflare.getPipelineSinks({
+ * const examplePipelineSinks = cloudflare.pipeline.getSinks({
  *     accountId: "0123105f4ecef8ad9ca31a8372d0c353",
  *     pipelineId: "pipeline_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getPipelineSinks:getPipelineSinks has been deprecated in favor of cloudflare:pipeline/sinks:getSinks */
 export function getPipelineSinksOutput(args?: GetPipelineSinksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPipelineSinksResult> {
+    pulumi.log.warn("getPipelineSinks is deprecated: cloudflare:index/getPipelineSinks:getPipelineSinks has been deprecated in favor of cloudflare:pipeline/sinks:getSinks")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getPipelineSinks:getPipelineSinks", {

@@ -378,8 +378,13 @@ class _ZeroTrustDlpDatasetState:
         pulumi.set(self, "version", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset has been deprecated in favor of cloudflare:zeroTrustDlp/dataset:Dataset""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset")
 class ZeroTrustDlpDataset(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset has been deprecated in favor of cloudflare:zeroTrustDlp/dataset:Dataset""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -404,7 +409,7 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_dataset = cloudflare.ZeroTrustDlpDataset("example_zero_trust_dlp_dataset",
+        example_zero_trust_dlp_dataset = cloudflare.zerotrustdlp.Dataset("example_zero_trust_dlp_dataset",
             account_id="account_id",
             name="name",
             case_sensitive=True,
@@ -448,7 +453,7 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_dataset = cloudflare.ZeroTrustDlpDataset("example_zero_trust_dlp_dataset",
+        example_zero_trust_dlp_dataset = cloudflare.zerotrustdlp.Dataset("example_zero_trust_dlp_dataset",
             account_id="account_id",
             name="name",
             case_sensitive=True,
@@ -485,6 +490,7 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  secret: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustDlpDataset is deprecated: cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset has been deprecated in favor of cloudflare:zeroTrustDlp/dataset:Dataset""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

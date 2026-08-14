@@ -24,21 +24,21 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/aigateway"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAiGatewayDynamicRouting(ctx, "example_ai_gateway_dynamic_routing", &cloudflare.AiGatewayDynamicRoutingArgs{
+//			_, err := aigateway.NewDynamicRouting(ctx, "example_ai_gateway_dynamic_routing", &aigateway.DynamicRoutingArgs{
 //				AccountId: pulumi.String("0d37909e38d3e99c29fa2cd343ac421a"),
 //				GatewayId: pulumi.String("54442216"),
-//				Elements: cloudflare.AiGatewayDynamicRoutingElementArray{
-//					&cloudflare.AiGatewayDynamicRoutingElementArgs{
+//				Elements: aigateway.DynamicRoutingElementArray{
+//					&aigateway.DynamicRoutingElementArgs{
 //						Id: pulumi.String("id"),
-//						Outputs: &cloudflare.AiGatewayDynamicRoutingElementOutputsArgs{
-//							Next: &cloudflare.AiGatewayDynamicRoutingElementOutputsNextArgs{
+//						Outputs: &aigateway.DynamicRoutingElementOutputsArgs{
+//							Next: &aigateway.DynamicRoutingElementOutputsNextArgs{
 //								ElementId: pulumi.String("elementId"),
 //							},
 //						},
@@ -61,6 +61,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/aiGatewayDynamicRouting:AiGatewayDynamicRouting example '<account_id>/<gateway_id>/<id>'
 // ```
+//
+// Deprecated: cloudflare:index/aiGatewayDynamicRouting:AiGatewayDynamicRouting has been deprecated in favor of cloudflare:aiGateway/dynamicRouting:DynamicRouting
 type AiGatewayDynamicRouting struct {
 	pulumi.CustomResourceState
 

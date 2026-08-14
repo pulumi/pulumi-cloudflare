@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_device_managed_networks_list_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDeviceManagedNetworksList:getZeroTrustDeviceManagedNetworksList has been deprecated in favor of cloudflare:zeroTrustDeviceManagedNetworks/list:getList""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDeviceManagedNetworksListResult:
     """
@@ -81,12 +83,13 @@ def get_zero_trust_device_managed_networks_list(account_id: Optional[_builtins.s
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_device_managed_networks_list = cloudflare.get_zero_trust_device_managed_networks_list(account_id="699d98642c564d2e855e9661899b7252")
+    example_zero_trust_device_managed_networks_list = cloudflare.zerotrustdevicemanagednetworks.get_list(account_id="699d98642c564d2e855e9661899b7252")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_device_managed_networks_list is deprecated: cloudflare:index/getZeroTrustDeviceManagedNetworksList:getZeroTrustDeviceManagedNetworksList has been deprecated in favor of cloudflare:zeroTrustDeviceManagedNetworks/list:getList""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -107,12 +110,13 @@ def get_zero_trust_device_managed_networks_list_output(account_id: pulumi.Input[
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_device_managed_networks_list = cloudflare.get_zero_trust_device_managed_networks_list(account_id="699d98642c564d2e855e9661899b7252")
+    example_zero_trust_device_managed_networks_list = cloudflare.zerotrustdevicemanagednetworks.get_list(account_id="699d98642c564d2e855e9661899b7252")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_device_managed_networks_list is deprecated: cloudflare:index/getZeroTrustDeviceManagedNetworksList:getZeroTrustDeviceManagedNetworksList has been deprecated in favor of cloudflare:zeroTrustDeviceManagedNetworks/list:getList""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

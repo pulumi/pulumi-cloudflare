@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleLogpushJob = new cloudflare.LogpushJob("example_logpush_job", {
+ * const exampleLogpushJob = new cloudflare.logpush.Job("example_logpush_job", {
  *     destinationConf: "s3://mybucket/logs?region=us-west-2",
  *     zoneId: "zone_id",
  *     dataset: "gateway_dns",
@@ -60,6 +60,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/logpushJob:LogpushJob example '<{accounts|zones}/{account_id|zone_id}>/<job_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/logpushJob:LogpushJob has been deprecated in favor of cloudflare:logpush/job:Job
  */
 export class LogpushJob extends pulumi.CustomResource {
     /**
@@ -72,6 +74,7 @@ export class LogpushJob extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LogpushJobState, opts?: pulumi.CustomResourceOptions): LogpushJob {
+        pulumi.log.warn("LogpushJob is deprecated: cloudflare:index/logpushJob:LogpushJob has been deprecated in favor of cloudflare:logpush/job:Job")
         return new LogpushJob(name, <any>state, { ...opts, id: id });
     }
 
@@ -176,8 +179,11 @@ export class LogpushJob extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/logpushJob:LogpushJob has been deprecated in favor of cloudflare:logpush/job:Job */
     constructor(name: string, args: LogpushJobArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/logpushJob:LogpushJob has been deprecated in favor of cloudflare:logpush/job:Job */
     constructor(name: string, argsOrState?: LogpushJobArgs | LogpushJobState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("LogpushJob is deprecated: cloudflare:index/logpushJob:LogpushJob has been deprecated in favor of cloudflare:logpush/job:Job")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

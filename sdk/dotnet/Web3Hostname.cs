@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWeb3Hostname = new Cloudflare.Web3Hostname("example_web3_hostname", new()
+    ///     var exampleWeb3Hostname = new Cloudflare.Modules.Web3.Web3Hostname("example_web3_hostname", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "gateway.example.com",
@@ -43,6 +43,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/web3Hostname:Web3Hostname example '&lt;zone_id&gt;/&lt;identifier&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/web3Hostname:Web3Hostname has been deprecated in favor of cloudflare:web3/hostname:Hostname")]
     [CloudflareResourceType("cloudflare:index/web3Hostname:Web3Hostname")]
     public partial class Web3Hostname : global::Pulumi.CustomResource
     {

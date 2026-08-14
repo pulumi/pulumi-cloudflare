@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleTurnstileWidgets = cloudflare.getTurnstileWidgets({
+ * const exampleTurnstileWidgets = cloudflare.turnstile.getWidgets({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "asc",
  *     filter: "name:my-widget",
@@ -28,7 +28,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getTurnstileWidgets:getTurnstileWidgets has been deprecated in favor of cloudflare:turnstile/widgets:getWidgets */
 export function getTurnstileWidgets(args?: GetTurnstileWidgetsArgs, opts?: pulumi.InvokeOptions): Promise<GetTurnstileWidgetsResult> {
+    pulumi.log.warn("getTurnstileWidgets is deprecated: cloudflare:index/getTurnstileWidgets:getTurnstileWidgets has been deprecated in favor of cloudflare:turnstile/widgets:getWidgets")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getTurnstileWidgets:getTurnstileWidgets", {
@@ -98,7 +100,7 @@ export interface GetTurnstileWidgetsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleTurnstileWidgets = cloudflare.getTurnstileWidgets({
+ * const exampleTurnstileWidgets = cloudflare.turnstile.getWidgets({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "asc",
  *     filter: "name:my-widget",
@@ -106,7 +108,9 @@ export interface GetTurnstileWidgetsResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getTurnstileWidgets:getTurnstileWidgets has been deprecated in favor of cloudflare:turnstile/widgets:getWidgets */
 export function getTurnstileWidgetsOutput(args?: GetTurnstileWidgetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTurnstileWidgetsResult> {
+    pulumi.log.warn("getTurnstileWidgets is deprecated: cloudflare:index/getTurnstileWidgets:getTurnstileWidgets has been deprecated in favor of cloudflare:turnstile/widgets:getWidgets")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getTurnstileWidgets:getTurnstileWidgets", {

@@ -19,18 +19,18 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/connectivitydirectory"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewConnectivityDirectoryService(ctx, "example_connectivity_directory_service", &cloudflare.ConnectivityDirectoryServiceArgs{
+//			_, err := connectivitydirectory.NewService(ctx, "example_connectivity_directory_service", &connectivitydirectory.ServiceArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Host: &cloudflare.ConnectivityDirectoryServiceHostArgs{
+//				Host: &connectivitydirectory.ServiceHostArgs{
 //					Ipv4: pulumi.String("10.0.0.1"),
-//					Network: &cloudflare.ConnectivityDirectoryServiceHostNetworkArgs{
+//					Network: &connectivitydirectory.ServiceHostNetworkArgs{
 //						TunnelId: pulumi.String("0191dce4-9ab4-7fce-b660-8e5dec5172da"),
 //					},
 //				},
@@ -38,7 +38,7 @@ import (
 //				Type:      pulumi.String("http"),
 //				HttpPort:  pulumi.Int(8080),
 //				HttpsPort: pulumi.Int(8443),
-//				TlsSettings: &cloudflare.ConnectivityDirectoryServiceTlsSettingsArgs{
+//				TlsSettings: &connectivitydirectory.ServiceTlsSettingsArgs{
 //					CertVerificationMode: pulumi.String("verify_full"),
 //				},
 //			})
@@ -56,6 +56,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService example '<account_id>/<service_id>'
 // ```
+//
+// Deprecated: cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService has been deprecated in favor of cloudflare:connectivityDirectory/service:Service
 type ConnectivityDirectoryService struct {
 	pulumi.CustomResourceState
 

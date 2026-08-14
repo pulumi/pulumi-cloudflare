@@ -105,8 +105,13 @@ class _WaitingRoomSettingsState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/waitingRoomSettings:WaitingRoomSettings has been deprecated in favor of cloudflare:waitingRoom/settings:Settings""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/waitingRoomSettings:WaitingRoomSettings")
 class WaitingRoomSettings(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/waitingRoomSettings:WaitingRoomSettings has been deprecated in favor of cloudflare:waitingRoom/settings:Settings""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -126,7 +131,7 @@ class WaitingRoomSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_waiting_room_settings = cloudflare.WaitingRoomSettings("example_waiting_room_settings",
+        example_waiting_room_settings = cloudflare.waitingroom.Settings("example_waiting_room_settings",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             search_engine_crawler_bypass=True)
         ```
@@ -163,7 +168,7 @@ class WaitingRoomSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_waiting_room_settings = cloudflare.WaitingRoomSettings("example_waiting_room_settings",
+        example_waiting_room_settings = cloudflare.waitingroom.Settings("example_waiting_room_settings",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             search_engine_crawler_bypass=True)
         ```
@@ -193,6 +198,7 @@ class WaitingRoomSettings(pulumi.CustomResource):
                  search_engine_crawler_bypass: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""WaitingRoomSettings is deprecated: cloudflare:index/waitingRoomSettings:WaitingRoomSettings has been deprecated in favor of cloudflare:waitingRoom/settings:Settings""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

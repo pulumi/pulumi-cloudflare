@@ -25,12 +25,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDlpCustomEntry = new Cloudflare.ZeroTrustDlpCustomEntry("example_zero_trust_dlp_custom_entry", new()
+    ///     var exampleZeroTrustDlpCustomEntry = new Cloudflare.Modules.ZeroTrustDlpCustom.ZeroTrustDlpCustomEntry("example_zero_trust_dlp_custom_entry", new()
     ///     {
     ///         AccountId = "account_id",
     ///         Enabled = true,
     ///         Name = "name",
-    ///         Pattern = new Cloudflare.Inputs.ZeroTrustDlpCustomEntryPatternArgs
+    ///         Pattern = new Cloudflare.Modules.ZeroTrustDlpCustom.Inputs.EntryPatternArgs
     ///         {
     ///             Regex = "regex",
     ///             Validation = "luhn",
@@ -48,6 +48,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry example '&lt;account_id&gt;/&lt;entry_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry has been deprecated in favor of cloudflare:zeroTrustDlpCustom/entry:Entry")]
     [CloudflareResourceType("cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry")]
     public partial class ZeroTrustDlpCustomEntry : global::Pulumi.CustomResource
     {

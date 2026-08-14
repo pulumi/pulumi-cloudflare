@@ -16,12 +16,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleEmailRoutingSettings = cloudflare.getEmailRoutingSettings({
+ * const exampleEmailRoutingSettings = cloudflare.emailrouting.getSettings({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getEmailRoutingSettings:getEmailRoutingSettings has been deprecated in favor of cloudflare:emailRouting/settings:getSettings */
 export function getEmailRoutingSettings(args?: GetEmailRoutingSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailRoutingSettingsResult> {
+    pulumi.log.warn("getEmailRoutingSettings is deprecated: cloudflare:index/getEmailRoutingSettings:getEmailRoutingSettings has been deprecated in favor of cloudflare:emailRouting/settings:getSettings")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getEmailRoutingSettings:getEmailRoutingSettings", {
@@ -95,12 +97,14 @@ export interface GetEmailRoutingSettingsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleEmailRoutingSettings = cloudflare.getEmailRoutingSettings({
+ * const exampleEmailRoutingSettings = cloudflare.emailrouting.getSettings({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getEmailRoutingSettings:getEmailRoutingSettings has been deprecated in favor of cloudflare:emailRouting/settings:getSettings */
 export function getEmailRoutingSettingsOutput(args?: GetEmailRoutingSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailRoutingSettingsResult> {
+    pulumi.log.warn("getEmailRoutingSettings is deprecated: cloudflare:index/getEmailRoutingSettings:getEmailRoutingSettings has been deprecated in favor of cloudflare:emailRouting/settings:getSettings")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getEmailRoutingSettings:getEmailRoutingSettings", {

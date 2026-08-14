@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustOrganization = new cloudflare.ZeroTrustOrganization("example_zero_trust_organization", {
+ * const exampleZeroTrustOrganization = new cloudflare.zerotrust.Organization("example_zero_trust_organization", {
  *     zoneId: "zone_id",
  *     allowAuthenticateViaWarp: true,
  *     authDomain: "test.cloudflareaccess.com",
@@ -234,8 +234,6 @@ export class AccessOrganization extends pulumi.CustomResource {
             resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessOrganization:AccessOrganization" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AccessOrganization.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -21,6 +21,8 @@ __all__ = [
     'get_workers_kv_output',
 ]
 
+warnings.warn("""cloudflare:index/getWorkersKv:getWorkersKv has been deprecated in favor of cloudflare:workersKv/workersKv:getWorkersKv""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWorkersKvResult:
     """
@@ -110,7 +112,7 @@ def get_workers_kv(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_kv = cloudflare.get_workers_kv(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_kv = cloudflare.workerskv.get_workers_kv(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         namespace_id="0f2ac74b498b48028cb68387c421e279",
         key_name="My-Key")
     ```
@@ -120,6 +122,7 @@ def get_workers_kv(account_id: Optional[_builtins.str] = None,
     :param _builtins.str key_name: A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
     :param _builtins.str namespace_id: Namespace identifier tag.
     """
+    pulumi.log.warn("""get_workers_kv is deprecated: cloudflare:index/getWorkersKv:getWorkersKv has been deprecated in favor of cloudflare:workersKv/workersKv:getWorkersKv""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['keyName'] = key_name
@@ -149,7 +152,7 @@ def get_workers_kv_output(account_id: pulumi.Input[Optional[_builtins.str]] = No
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_kv = cloudflare.get_workers_kv(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_kv = cloudflare.workerskv.get_workers_kv(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         namespace_id="0f2ac74b498b48028cb68387c421e279",
         key_name="My-Key")
     ```
@@ -159,6 +162,7 @@ def get_workers_kv_output(account_id: pulumi.Input[Optional[_builtins.str]] = No
     :param _builtins.str key_name: A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
     :param _builtins.str namespace_id: Namespace identifier tag.
     """
+    pulumi.log.warn("""get_workers_kv is deprecated: cloudflare:index/getWorkersKv:getWorkersKv has been deprecated in favor of cloudflare:workersKv/workersKv:getWorkersKv""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['keyName'] = key_name

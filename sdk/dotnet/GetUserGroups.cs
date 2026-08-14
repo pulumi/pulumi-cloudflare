@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getUserGroups:getUserGroups has been deprecated in favor of cloudflare:user/groups:getGroups")]
     public static class GetUserGroups
     {
         /// <summary>
@@ -28,7 +29,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleUserGroups = Cloudflare.GetUserGroups.Invoke(new()
+        ///     var exampleUserGroups = Cloudflare.Modules.User.GetGroups.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Id = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -59,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleUserGroups = Cloudflare.GetUserGroups.Invoke(new()
+        ///     var exampleUserGroups = Cloudflare.Modules.User.GetGroups.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Id = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -90,7 +91,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleUserGroups = Cloudflare.GetUserGroups.Invoke(new()
+        ///     var exampleUserGroups = Cloudflare.Modules.User.GetGroups.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Id = "023e105f4ecef8ad9ca31a8372d0c353",

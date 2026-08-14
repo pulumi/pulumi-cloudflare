@@ -13,10 +13,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleOauthScopes = cloudflare.getOauthScopes({});
+ * const exampleOauthScopes = cloudflare.oauth.getScopes({});
  * ```
  */
+/** @deprecated cloudflare:index/getOauthScopes:getOauthScopes has been deprecated in favor of cloudflare:oauth/scopes:getScopes */
 export function getOauthScopes(args?: GetOauthScopesArgs, opts?: pulumi.InvokeOptions): Promise<GetOauthScopesResult> {
+    pulumi.log.warn("getOauthScopes is deprecated: cloudflare:index/getOauthScopes:getOauthScopes has been deprecated in favor of cloudflare:oauth/scopes:getScopes")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getOauthScopes:getOauthScopes", {
@@ -54,10 +56,12 @@ export interface GetOauthScopesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleOauthScopes = cloudflare.getOauthScopes({});
+ * const exampleOauthScopes = cloudflare.oauth.getScopes({});
  * ```
  */
+/** @deprecated cloudflare:index/getOauthScopes:getOauthScopes has been deprecated in favor of cloudflare:oauth/scopes:getScopes */
 export function getOauthScopesOutput(args?: GetOauthScopesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOauthScopesResult> {
+    pulumi.log.warn("getOauthScopes is deprecated: cloudflare:index/getOauthScopes:getOauthScopes has been deprecated in favor of cloudflare:oauth/scopes:getScopes")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getOauthScopes:getOauthScopes", {

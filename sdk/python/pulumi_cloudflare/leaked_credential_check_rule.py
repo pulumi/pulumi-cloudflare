@@ -129,8 +129,13 @@ class _LeakedCredentialCheckRuleState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule has been deprecated in favor of cloudflare:leakedCredentialCheck/rule:Rule""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule")
 class LeakedCredentialCheckRule(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule has been deprecated in favor of cloudflare:leakedCredentialCheck/rule:Rule""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -153,7 +158,7 @@ class LeakedCredentialCheckRule(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_leaked_credential_check_rule = cloudflare.LeakedCredentialCheckRule("example_leaked_credential_check_rule",
+        example_leaked_credential_check_rule = cloudflare.leakedcredentialcheck.Rule("example_leaked_credential_check_rule",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             password="lookup_json_string(http.request.body.raw, \\"secret\\")",
             username="lookup_json_string(http.request.body.raw, \\"user\\")")
@@ -192,7 +197,7 @@ class LeakedCredentialCheckRule(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_leaked_credential_check_rule = cloudflare.LeakedCredentialCheckRule("example_leaked_credential_check_rule",
+        example_leaked_credential_check_rule = cloudflare.leakedcredentialcheck.Rule("example_leaked_credential_check_rule",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             password="lookup_json_string(http.request.body.raw, \\"secret\\")",
             username="lookup_json_string(http.request.body.raw, \\"user\\")")
@@ -224,6 +229,7 @@ class LeakedCredentialCheckRule(pulumi.CustomResource):
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""LeakedCredentialCheckRule is deprecated: cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule has been deprecated in favor of cloudflare:leakedCredentialCheck/rule:Rule""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

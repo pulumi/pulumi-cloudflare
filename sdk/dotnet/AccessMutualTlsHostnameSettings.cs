@@ -25,11 +25,11 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessMtlsHostnameSettings = new Cloudflare.ZeroTrustAccessMtlsHostnameSettings("example_zero_trust_access_mtls_hostname_settings", new()
+    ///     var exampleZeroTrustAccessMtlsHostnameSettings = new Cloudflare.Modules.ZeroTrustAccessMtls.ZeroTrustAccessMtlsHostnameSettings("example_zero_trust_access_mtls_hostname_settings", new()
     ///     {
     ///         Settings = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustAccessMtlsHostnameSettingsSettingArgs
+    ///             new Cloudflare.Modules.ZeroTrustAccessMtls.Inputs.HostnameSettingsSettingArgs
     ///             {
     ///                 ChinaNetwork = false,
     ///                 ClientCertificateForwarding = true,
@@ -106,10 +106,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

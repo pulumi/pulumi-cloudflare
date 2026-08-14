@@ -23,6 +23,8 @@ __all__ = [
     'get_moq_relay_output',
 ]
 
+warnings.warn("""cloudflare:index/getMoqRelay:getMoqRelay has been deprecated in favor of cloudflare:moq/relay:getRelay""", DeprecationWarning)
+
 @pulumi.output_type
 class GetMoqRelayResult:
     """
@@ -151,6 +153,7 @@ def get_moq_relay(account_id: Optional[_builtins.str] = None,
 
     :param _builtins.str account_id: Cloudflare account identifier.
     """
+    pulumi.log.warn("""get_moq_relay is deprecated: cloudflare:index/getMoqRelay:getMoqRelay has been deprecated in favor of cloudflare:moq/relay:getRelay""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -178,6 +181,7 @@ def get_moq_relay_output(account_id: pulumi.Input[Optional[_builtins.str]] = Non
 
     :param _builtins.str account_id: Cloudflare account identifier.
     """
+    pulumi.log.warn("""get_moq_relay is deprecated: cloudflare:index/getMoqRelay:getMoqRelay has been deprecated in favor of cloudflare:moq/relay:getRelay""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

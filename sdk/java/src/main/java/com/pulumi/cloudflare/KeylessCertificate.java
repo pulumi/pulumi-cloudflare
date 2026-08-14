@@ -67,9 +67,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.KeylessCertificate;
- * import com.pulumi.cloudflare.KeylessCertificateArgs;
- * import com.pulumi.cloudflare.inputs.KeylessCertificateTunnelArgs;
+ * import com.pulumi.cloudflare.keyless.Certificate;
+ * import com.pulumi.cloudflare.keyless.CertificateArgs;
+ * import com.pulumi.cloudflare.keyless.inputs.CertificateTunnelArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleKeylessCertificate = new KeylessCertificate("exampleKeylessCertificate", KeylessCertificateArgs.builder()
+ *         var exampleKeylessCertificate = new Certificate("exampleKeylessCertificate", CertificateArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .certificate("""
  *   -----BEGIN CERTIFICATE-----
@@ -113,7 +113,7 @@ import javax.annotation.Nullable;
  *             .port(24008.0)
  *             .bundleMethod("ubiquitous")
  *             .name("example.com Keyless SSL")
- *             .tunnel(KeylessCertificateTunnelArgs.builder()
+ *             .tunnel(CertificateTunnelArgs.builder()
  *                 .privateIp("10.0.0.1")
  *                 .vnetId("7365377a-85a4-4390-9480-531ef7dc7a3c")
  *                 .build())
@@ -130,7 +130,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/keylessCertificate:KeylessCertificate example &#39;&lt;zone_id&gt;/&lt;keyless_certificate_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/keylessCertificate:KeylessCertificate has been deprecated in favor of cloudflare:keyless/certificate:Certificate
+ * 
  */
+@Deprecated /* cloudflare:index/keylessCertificate:KeylessCertificate has been deprecated in favor of cloudflare:keyless/certificate:Certificate */
 @ResourceType(type="cloudflare:index/keylessCertificate:KeylessCertificate")
 public class KeylessCertificate extends com.pulumi.resources.CustomResource {
     /**

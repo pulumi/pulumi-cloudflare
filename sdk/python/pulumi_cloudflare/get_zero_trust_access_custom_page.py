@@ -21,6 +21,8 @@ __all__ = [
     'get_zero_trust_access_custom_page_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustAccessCustomPage:getZeroTrustAccessCustomPage has been deprecated in favor of cloudflare:zeroTrustAccessCustom/page:getPage""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustAccessCustomPageResult:
     """
@@ -137,7 +139,7 @@ def get_zero_trust_access_custom_page(account_id: Optional[_builtins.str] = None
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_custom_page = cloudflare.get_zero_trust_access_custom_page(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_zero_trust_access_custom_page = cloudflare.zerotrustaccesscustom.get_page(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         custom_page_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
 
@@ -145,6 +147,7 @@ def get_zero_trust_access_custom_page(account_id: Optional[_builtins.str] = None
     :param _builtins.str account_id: Identifier.
     :param _builtins.str custom_page_id: UUID.
     """
+    pulumi.log.warn("""get_zero_trust_access_custom_page is deprecated: cloudflare:index/getZeroTrustAccessCustomPage:getZeroTrustAccessCustomPage has been deprecated in favor of cloudflare:zeroTrustAccessCustom/page:getPage""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['customPageId'] = custom_page_id
@@ -174,7 +177,7 @@ def get_zero_trust_access_custom_page_output(account_id: pulumi.Input[Optional[O
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_custom_page = cloudflare.get_zero_trust_access_custom_page(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_zero_trust_access_custom_page = cloudflare.zerotrustaccesscustom.get_page(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         custom_page_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
 
@@ -182,6 +185,7 @@ def get_zero_trust_access_custom_page_output(account_id: pulumi.Input[Optional[O
     :param _builtins.str account_id: Identifier.
     :param _builtins.str custom_page_id: UUID.
     """
+    pulumi.log.warn("""get_zero_trust_access_custom_page is deprecated: cloudflare:index/getZeroTrustAccessCustomPage:getZeroTrustAccessCustomPage has been deprecated in favor of cloudflare:zeroTrustAccessCustom/page:getPage""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['customPageId'] = custom_page_id

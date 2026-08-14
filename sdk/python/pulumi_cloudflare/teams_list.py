@@ -253,7 +253,7 @@ class TeamsList(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_list = cloudflare.ZeroTrustList("example_zero_trust_list",
+        example_zero_trust_list = cloudflare.zerotrust.List("example_zero_trust_list",
             account_id="699d98642c564d2e855e9661899b7252",
             name="Admin Serial Numbers",
             type="SERIAL",
@@ -292,7 +292,7 @@ class TeamsList(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_list = cloudflare.ZeroTrustList("example_zero_trust_list",
+        example_zero_trust_list = cloudflare.zerotrust.List("example_zero_trust_list",
             account_id="699d98642c564d2e855e9661899b7252",
             name="Admin Serial Numbers",
             type="SERIAL",
@@ -354,8 +354,6 @@ class TeamsList(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["list_count"] = None
             __props__.__dict__["updated_at"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/teamsList:TeamsList")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(TeamsList, __self__).__init__(
             'cloudflare:index/teamsList:TeamsList',
             resource_name,

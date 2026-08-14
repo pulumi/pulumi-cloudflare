@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/cloudforceonerequest"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewCloudforceOneRequest(ctx, "example_cloudforce_one_request", &cloudflare.CloudforceOneRequestArgs{
+//			_, err := cloudforceonerequest.NewCloudforceOneRequest(ctx, "example_cloudforce_one_request", &cloudforceonerequest.CloudforceOneRequestArgs{
 //				AccountId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Content:     pulumi.String("What regions were most effected by the recent DoS?"),
 //				Priority:    pulumi.String("routine"),
@@ -53,6 +53,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/cloudforceOneRequest:CloudforceOneRequest example '<account_id>/<request_id>'
 // ```
+//
+// Deprecated: cloudflare:index/cloudforceOneRequest:CloudforceOneRequest has been deprecated in favor of cloudflare:cloudforceOneRequest/cloudforceOneRequest:CloudforceOneRequest
 type CloudforceOneRequest struct {
 	pulumi.CustomResourceState
 

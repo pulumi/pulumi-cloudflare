@@ -22,6 +22,8 @@ __all__ = [
     'get_connectivity_directory_services_output',
 ]
 
+warnings.warn("""cloudflare:index/getConnectivityDirectoryServices:getConnectivityDirectoryServices has been deprecated in favor of cloudflare:connectivityDirectory/services:getServices""", DeprecationWarning)
+
 @pulumi.output_type
 class GetConnectivityDirectoryServicesResult:
     """
@@ -97,7 +99,7 @@ def get_connectivity_directory_services(account_id: Optional[_builtins.str] = No
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_connectivity_directory_services = cloudflare.get_connectivity_directory_services(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_connectivity_directory_services = cloudflare.connectivitydirectory.get_services(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         type="tcp")
     ```
 
@@ -106,6 +108,7 @@ def get_connectivity_directory_services(account_id: Optional[_builtins.str] = No
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str type: Available values: "tcp", "http".
     """
+    pulumi.log.warn("""get_connectivity_directory_services is deprecated: cloudflare:index/getConnectivityDirectoryServices:getConnectivityDirectoryServices has been deprecated in favor of cloudflare:connectivityDirectory/services:getServices""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -129,7 +132,7 @@ def get_connectivity_directory_services_output(account_id: pulumi.Input[Optional
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_connectivity_directory_services = cloudflare.get_connectivity_directory_services(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_connectivity_directory_services = cloudflare.connectivitydirectory.get_services(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         type="tcp")
     ```
 
@@ -138,6 +141,7 @@ def get_connectivity_directory_services_output(account_id: pulumi.Input[Optional
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str type: Available values: "tcp", "http".
     """
+    pulumi.log.warn("""get_connectivity_directory_services is deprecated: cloudflare:index/getConnectivityDirectoryServices:getConnectivityDirectoryServices has been deprecated in favor of cloudflare:connectivityDirectory/services:getServices""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

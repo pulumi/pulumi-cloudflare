@@ -22,6 +22,8 @@ __all__ = [
     'get_queue_output',
 ]
 
+warnings.warn("""cloudflare:index/getQueue:getQueue has been deprecated in favor of cloudflare:queue/queue:getQueue""", DeprecationWarning)
+
 @pulumi.output_type
 class GetQueueResult:
     """
@@ -163,7 +165,7 @@ def get_queue(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_queue = cloudflare.get_queue(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_queue = cloudflare.queue.get_queue(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         queue_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -171,6 +173,7 @@ def get_queue(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: A Resource identifier.
     :param _builtins.str queue_id: A Resource identifier.
     """
+    pulumi.log.warn("""get_queue is deprecated: cloudflare:index/getQueue:getQueue has been deprecated in favor of cloudflare:queue/queue:getQueue""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['queueId'] = queue_id
@@ -206,7 +209,7 @@ def get_queue_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_queue = cloudflare.get_queue(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_queue = cloudflare.queue.get_queue(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         queue_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -214,6 +217,7 @@ def get_queue_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]]
     :param _builtins.str account_id: A Resource identifier.
     :param _builtins.str queue_id: A Resource identifier.
     """
+    pulumi.log.warn("""get_queue is deprecated: cloudflare:index/getQueue:getQueue has been deprecated in favor of cloudflare:queue/queue:getQueue""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['queueId'] = queue_id

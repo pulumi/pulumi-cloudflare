@@ -18,14 +18,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleD1Database = cloudflare.getD1Database({
+ * const exampleD1Database = cloudflare.d1.getDatabase({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     databaseId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  *     fields: ["uuid"],
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getD1Database:getD1Database has been deprecated in favor of cloudflare:d1/database:getDatabase */
 export function getD1Database(args?: GetD1DatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetD1DatabaseResult> {
+    pulumi.log.warn("getD1Database is deprecated: cloudflare:index/getD1Database:getD1Database has been deprecated in favor of cloudflare:d1/database:getDatabase")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getD1Database:getD1Database", {
@@ -118,14 +120,16 @@ export interface GetD1DatabaseResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleD1Database = cloudflare.getD1Database({
+ * const exampleD1Database = cloudflare.d1.getDatabase({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     databaseId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  *     fields: ["uuid"],
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getD1Database:getD1Database has been deprecated in favor of cloudflare:d1/database:getDatabase */
 export function getD1DatabaseOutput(args?: GetD1DatabaseOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetD1DatabaseResult> {
+    pulumi.log.warn("getD1Database is deprecated: cloudflare:index/getD1Database:getD1Database has been deprecated in favor of cloudflare:d1/database:getDatabase")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getD1Database:getD1Database", {

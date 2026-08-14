@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/cloudforceonerequest"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewCloudforceOneRequestAsset(ctx, "example_cloudforce_one_request_asset", &cloudflare.CloudforceOneRequestAssetArgs{
+//			_, err := cloudforceonerequest.NewAsset(ctx, "example_cloudforce_one_request_asset", &cloudforceonerequest.AssetArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				RequestId: pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
 //				Page:      pulumi.Int(0),
@@ -51,6 +51,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset example '<account_id>/<request_id>/<asset_id>'
 // ```
+//
+// Deprecated: cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset has been deprecated in favor of cloudflare:cloudforceOneRequest/asset:Asset
 type CloudforceOneRequestAsset struct {
 	pulumi.CustomResourceState
 

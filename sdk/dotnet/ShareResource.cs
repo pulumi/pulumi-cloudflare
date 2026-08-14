@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleShareResource = new Cloudflare.ShareResource("example_share_resource", new()
+    ///     var exampleShareResource = new Cloudflare.Modules.Share.ShareResource("example_share_resource", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         ShareId = "3fd85f74b32742f1bff64a85009dda07",
@@ -39,6 +39,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/shareResource:ShareResource example '&lt;account_id&gt;/&lt;share_id&gt;/&lt;share_resource_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/shareResource:ShareResource has been deprecated in favor of cloudflare:share/resource:Resource")]
     [CloudflareResourceType("cloudflare:index/shareResource:ShareResource")]
     public partial class ShareResource : global::Pulumi.CustomResource
     {

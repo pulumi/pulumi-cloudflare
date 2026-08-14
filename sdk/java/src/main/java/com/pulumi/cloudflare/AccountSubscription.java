@@ -31,9 +31,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.AccountSubscription;
- * import com.pulumi.cloudflare.AccountSubscriptionArgs;
- * import com.pulumi.cloudflare.inputs.AccountSubscriptionRatePlanArgs;
+ * import com.pulumi.cloudflare.account.Subscription;
+ * import com.pulumi.cloudflare.account.SubscriptionArgs;
+ * import com.pulumi.cloudflare.account.inputs.SubscriptionRatePlanArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -47,10 +47,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleAccountSubscription = new AccountSubscription("exampleAccountSubscription", AccountSubscriptionArgs.builder()
+ *         var exampleAccountSubscription = new Subscription("exampleAccountSubscription", SubscriptionArgs.builder()
  *             .accountId("account_id")
  *             .frequency("monthly")
- *             .ratePlan(AccountSubscriptionRatePlanArgs.builder()
+ *             .ratePlan(SubscriptionRatePlanArgs.builder()
  *                 .id("free")
  *                 .currency("USD")
  *                 .externallyManaged(false)
@@ -72,7 +72,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example &#39;&lt;account_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/accountSubscription:AccountSubscription has been deprecated in favor of cloudflare:account/subscription:Subscription
+ * 
  */
+@Deprecated /* cloudflare:index/accountSubscription:AccountSubscription has been deprecated in favor of cloudflare:account/subscription:Subscription */
 @ResourceType(type="cloudflare:index/accountSubscription:AccountSubscription")
 public class AccountSubscription extends com.pulumi.resources.CustomResource {
     /**

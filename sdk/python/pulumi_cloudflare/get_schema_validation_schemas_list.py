@@ -22,6 +22,8 @@ __all__ = [
     'get_schema_validation_schemas_list_output',
 ]
 
+warnings.warn("""cloudflare:index/getSchemaValidationSchemasList:getSchemaValidationSchemasList has been deprecated in favor of cloudflare:schemaValidationSchemas/list:getList""", DeprecationWarning)
+
 @pulumi.output_type
 class GetSchemaValidationSchemasListResult:
     """
@@ -117,7 +119,7 @@ def get_schema_validation_schemas_list(max_items: Optional[_builtins.int] = None
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_schema_validation_schemas_list = cloudflare.get_schema_validation_schemas_list(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_schema_validation_schemas_list = cloudflare.schemavalidationschemas.get_list(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         validation_enabled=True)
     ```
 
@@ -127,6 +129,7 @@ def get_schema_validation_schemas_list(max_items: Optional[_builtins.int] = None
     :param _builtins.bool validation_enabled: Filter for enabled schemas
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_schema_validation_schemas_list is deprecated: cloudflare:index/getSchemaValidationSchemasList:getSchemaValidationSchemasList has been deprecated in favor of cloudflare:schemaValidationSchemas/list:getList""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['omitSource'] = omit_source
@@ -160,7 +163,7 @@ def get_schema_validation_schemas_list_output(max_items: pulumi.Input[Optional[O
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_schema_validation_schemas_list = cloudflare.get_schema_validation_schemas_list(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_schema_validation_schemas_list = cloudflare.schemavalidationschemas.get_list(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         validation_enabled=True)
     ```
 
@@ -170,6 +173,7 @@ def get_schema_validation_schemas_list_output(max_items: pulumi.Input[Optional[O
     :param _builtins.bool validation_enabled: Filter for enabled schemas
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_schema_validation_schemas_list is deprecated: cloudflare:index/getSchemaValidationSchemasList:getSchemaValidationSchemasList has been deprecated in favor of cloudflare:schemaValidationSchemas/list:getList""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['omitSource'] = omit_source

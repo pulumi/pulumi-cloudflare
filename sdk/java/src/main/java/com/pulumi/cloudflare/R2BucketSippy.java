@@ -31,10 +31,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.R2BucketSippy;
- * import com.pulumi.cloudflare.R2BucketSippyArgs;
- * import com.pulumi.cloudflare.inputs.R2BucketSippyDestinationArgs;
- * import com.pulumi.cloudflare.inputs.R2BucketSippySourceArgs;
+ * import com.pulumi.cloudflare.r2Bucket.Sippy;
+ * import com.pulumi.cloudflare.r2Bucket.SippyArgs;
+ * import com.pulumi.cloudflare.r2Bucket.inputs.SippyDestinationArgs;
+ * import com.pulumi.cloudflare.r2Bucket.inputs.SippySourceArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -48,15 +48,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleR2BucketSippy = new R2BucketSippy("exampleR2BucketSippy", R2BucketSippyArgs.builder()
+ *         var exampleR2BucketSippy = new Sippy("exampleR2BucketSippy", SippyArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .bucketName("example-bucket")
- *             .destination(R2BucketSippyDestinationArgs.builder()
+ *             .destination(SippyDestinationArgs.builder()
  *                 .accessKeyId("accessKeyId")
  *                 .cloudProvider("r2")
  *                 .secretAccessKey("secretAccessKey")
  *                 .build())
- *             .source(R2BucketSippySourceArgs.builder()
+ *             .source(SippySourceArgs.builder()
  *                 .accessKeyId("accessKeyId")
  *                 .bucket("bucket")
  *                 .cloudProvider("aws")
@@ -74,7 +74,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/r2BucketSippy:R2BucketSippy has been deprecated in favor of cloudflare:r2Bucket/sippy:Sippy
+ * 
  */
+@Deprecated /* cloudflare:index/r2BucketSippy:R2BucketSippy has been deprecated in favor of cloudflare:r2Bucket/sippy:Sippy */
 @ResourceType(type="cloudflare:index/r2BucketSippy:R2BucketSippy")
 public class R2BucketSippy extends com.pulumi.resources.CustomResource {
     /**

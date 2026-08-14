@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCertificatePack = cloudflare.getCertificatePack({
+ * const exampleCertificatePack = cloudflare.certificate.getPack({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     certificatePackId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCertificatePack:getCertificatePack has been deprecated in favor of cloudflare:certificate/pack:getPack */
 export function getCertificatePack(args?: GetCertificatePackArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificatePackResult> {
+    pulumi.log.warn("getCertificatePack is deprecated: cloudflare:index/getCertificatePack:getCertificatePack has been deprecated in favor of cloudflare:certificate/pack:getPack")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCertificatePack:getCertificatePack", {
@@ -132,13 +134,15 @@ export interface GetCertificatePackResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleCertificatePack = cloudflare.getCertificatePack({
+ * const exampleCertificatePack = cloudflare.certificate.getPack({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     certificatePackId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getCertificatePack:getCertificatePack has been deprecated in favor of cloudflare:certificate/pack:getPack */
 export function getCertificatePackOutput(args?: GetCertificatePackOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCertificatePackResult> {
+    pulumi.log.warn("getCertificatePack is deprecated: cloudflare:index/getCertificatePack:getCertificatePack has been deprecated in favor of cloudflare:certificate/pack:getPack")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCertificatePack:getCertificatePack", {

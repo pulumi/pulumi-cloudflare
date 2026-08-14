@@ -198,7 +198,7 @@ class AccessMutualTlsHostnameSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_mtls_hostname_settings = cloudflare.ZeroTrustAccessMtlsHostnameSettings("example_zero_trust_access_mtls_hostname_settings",
+        example_zero_trust_access_mtls_hostname_settings = cloudflare.zerotrustaccessmtls.HostnameSettings("example_zero_trust_access_mtls_hostname_settings",
             settings=[{
                 "china_network": False,
                 "client_certificate_forwarding": True,
@@ -235,7 +235,7 @@ class AccessMutualTlsHostnameSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_mtls_hostname_settings = cloudflare.ZeroTrustAccessMtlsHostnameSettings("example_zero_trust_access_mtls_hostname_settings",
+        example_zero_trust_access_mtls_hostname_settings = cloudflare.zerotrustaccessmtls.HostnameSettings("example_zero_trust_access_mtls_hostname_settings",
             settings=[{
                 "china_network": False,
                 "client_certificate_forwarding": True,
@@ -285,8 +285,6 @@ class AccessMutualTlsHostnameSettings(pulumi.CustomResource):
             __props__.__dict__["china_network"] = None
             __props__.__dict__["client_certificate_forwarding"] = None
             __props__.__dict__["hostname"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AccessMutualTlsHostnameSettings, __self__).__init__(
             'cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings',
             resource_name,

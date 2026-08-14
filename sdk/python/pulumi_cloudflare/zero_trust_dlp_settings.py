@@ -163,8 +163,13 @@ class _ZeroTrustDlpSettingsState:
         pulumi.set(self, "payload_logging", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustDlpSettings:ZeroTrustDlpSettings has been deprecated in favor of cloudflare:zeroTrustDlp/settings:Settings""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustDlpSettings:ZeroTrustDlpSettings")
 class ZeroTrustDlpSettings(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustDlpSettings:ZeroTrustDlpSettings has been deprecated in favor of cloudflare:zeroTrustDlp/settings:Settings""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -186,7 +191,7 @@ class ZeroTrustDlpSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_settings = cloudflare.ZeroTrustDlpSettings("example_zero_trust_dlp_settings",
+        example_zero_trust_dlp_settings = cloudflare.zerotrustdlp.Settings("example_zero_trust_dlp_settings",
             account_id="account_id",
             ai_context_analysis=True,
             ocr=True,
@@ -229,7 +234,7 @@ class ZeroTrustDlpSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_settings = cloudflare.ZeroTrustDlpSettings("example_zero_trust_dlp_settings",
+        example_zero_trust_dlp_settings = cloudflare.zerotrustdlp.Settings("example_zero_trust_dlp_settings",
             account_id="account_id",
             ai_context_analysis=True,
             ocr=True,
@@ -266,6 +271,7 @@ class ZeroTrustDlpSettings(pulumi.CustomResource):
                  ocr: pulumi.Input[Optional[_builtins.bool]] = None,
                  payload_logging: pulumi.Input[Optional[Union['ZeroTrustDlpSettingsPayloadLoggingArgs', 'ZeroTrustDlpSettingsPayloadLoggingArgsDict']]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustDlpSettings is deprecated: cloudflare:index/zeroTrustDlpSettings:ZeroTrustDlpSettings has been deprecated in favor of cloudflare:zeroTrustDlp/settings:Settings""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

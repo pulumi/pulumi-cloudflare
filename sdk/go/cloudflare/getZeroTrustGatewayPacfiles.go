@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustgateway"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustGatewayPacfiles(ctx, &cloudflare.LookupZeroTrustGatewayPacfilesArgs{
+//			_, err := zerotrustgateway.GetPacfiles(ctx, &zerotrustgateway.GetPacfilesArgs{
 //				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //			}, nil)
 //			if err != nil {
@@ -41,6 +41,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustGatewayPacfiles:getZeroTrustGatewayPacfiles has been deprecated in favor of cloudflare:zeroTrustGateway/pacfiles:getPacfiles
 func LookupZeroTrustGatewayPacfiles(ctx *pulumi.Context, args *LookupZeroTrustGatewayPacfilesArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustGatewayPacfilesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustGatewayPacfilesResult

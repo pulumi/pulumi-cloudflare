@@ -25,6 +25,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/pageShieldPolicy:PageShieldPolicy example '&lt;zone_id&gt;/&lt;policy_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/pageShieldPolicy:PageShieldPolicy has been deprecated in favor of cloudflare:pageShield/policy:Policy")]
     [CloudflareResourceType("cloudflare:index/pageShieldPolicy:PageShieldPolicy")]
     public partial class PageShieldPolicy : global::Pulumi.CustomResource
     {

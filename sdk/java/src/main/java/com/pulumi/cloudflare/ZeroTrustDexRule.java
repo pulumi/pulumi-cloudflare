@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDexRule;
- * import com.pulumi.cloudflare.ZeroTrustDexRuleArgs;
+ * import com.pulumi.cloudflare.zeroTrustDex.Rule;
+ * import com.pulumi.cloudflare.zeroTrustDex.RuleArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustDexRule = new ZeroTrustDexRule("exampleZeroTrustDexRule", ZeroTrustDexRuleArgs.builder()
+ *         var exampleZeroTrustDexRule = new Rule("exampleZeroTrustDexRule", RuleArgs.builder()
  *             .accountId("01a7362d577a6c3019a474fd6f485823")
  *             .match("match")
  *             .name("name")
@@ -66,7 +66,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule example &#39;&lt;account_id&gt;/&lt;rule_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule has been deprecated in favor of cloudflare:zeroTrustDex/rule:Rule
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule has been deprecated in favor of cloudflare:zeroTrustDex/rule:Rule */
 @ResourceType(type="cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule")
 public class ZeroTrustDexRule extends com.pulumi.resources.CustomResource {
     /**

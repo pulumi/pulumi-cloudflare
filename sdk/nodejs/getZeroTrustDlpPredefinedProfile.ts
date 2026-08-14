@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpPredefinedProfile = cloudflare.getZeroTrustDlpPredefinedProfile({
+ * const exampleZeroTrustDlpPredefinedProfile = cloudflare.zerotrustdlppredefined.getProfile({
  *     accountId: "account_id",
  *     profileId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpPredefinedProfile:getZeroTrustDlpPredefinedProfile has been deprecated in favor of cloudflare:zeroTrustDlpPredefined/profile:getProfile */
 export function getZeroTrustDlpPredefinedProfile(args: GetZeroTrustDlpPredefinedProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDlpPredefinedProfileResult> {
+    pulumi.log.warn("getZeroTrustDlpPredefinedProfile is deprecated: cloudflare:index/getZeroTrustDlpPredefinedProfile:getZeroTrustDlpPredefinedProfile has been deprecated in favor of cloudflare:zeroTrustDlpPredefined/profile:getProfile")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDlpPredefinedProfile:getZeroTrustDlpPredefinedProfile", {
         "accountId": args.accountId,
@@ -85,13 +87,15 @@ export interface GetZeroTrustDlpPredefinedProfileResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpPredefinedProfile = cloudflare.getZeroTrustDlpPredefinedProfile({
+ * const exampleZeroTrustDlpPredefinedProfile = cloudflare.zerotrustdlppredefined.getProfile({
  *     accountId: "account_id",
  *     profileId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpPredefinedProfile:getZeroTrustDlpPredefinedProfile has been deprecated in favor of cloudflare:zeroTrustDlpPredefined/profile:getProfile */
 export function getZeroTrustDlpPredefinedProfileOutput(args: GetZeroTrustDlpPredefinedProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDlpPredefinedProfileResult> {
+    pulumi.log.warn("getZeroTrustDlpPredefinedProfile is deprecated: cloudflare:index/getZeroTrustDlpPredefinedProfile:getZeroTrustDlpPredefinedProfile has been deprecated in favor of cloudflare:zeroTrustDlpPredefined/profile:getProfile")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDlpPredefinedProfile:getZeroTrustDlpPredefinedProfile", {
         "accountId": args.accountId,

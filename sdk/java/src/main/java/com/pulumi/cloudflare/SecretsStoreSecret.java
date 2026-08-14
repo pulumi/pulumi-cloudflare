@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.SecretsStoreSecret;
- * import com.pulumi.cloudflare.SecretsStoreSecretArgs;
+ * import com.pulumi.cloudflare.secretsStore.Secret;
+ * import com.pulumi.cloudflare.secretsStore.SecretArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleSecretsStoreSecret = new SecretsStoreSecret("exampleSecretsStoreSecret", SecretsStoreSecretArgs.builder()
+ *         var exampleSecretsStoreSecret = new Secret("exampleSecretsStoreSecret", SecretArgs.builder()
  *             .accountId("985e105f4ecef8ad9ca31a8372d0c353")
  *             .storeId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .build());
@@ -61,7 +61,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/secretsStoreSecret:SecretsStoreSecret example &#39;&lt;account_id&gt;/&lt;store_id&gt;/&lt;secret_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/secretsStoreSecret:SecretsStoreSecret has been deprecated in favor of cloudflare:secretsStore/secret:Secret
+ * 
  */
+@Deprecated /* cloudflare:index/secretsStoreSecret:SecretsStoreSecret has been deprecated in favor of cloudflare:secretsStore/secret:Secret */
 @ResourceType(type="cloudflare:index/secretsStoreSecret:SecretsStoreSecret")
 public class SecretsStoreSecret extends com.pulumi.resources.CustomResource {
     /**

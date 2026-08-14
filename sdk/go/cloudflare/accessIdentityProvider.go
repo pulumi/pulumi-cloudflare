@@ -24,15 +24,15 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustaccessidentity"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustAccessIdentityProvider(ctx, "example_zero_trust_access_identity_provider", &cloudflare.ZeroTrustAccessIdentityProviderArgs{
-//				Config: &cloudflare.ZeroTrustAccessIdentityProviderConfigArgs{
+//			_, err := zerotrustaccessidentity.NewProvider(ctx, "example_zero_trust_access_identity_provider", &zerotrustaccessidentity.ProviderArgs{
+//				Config: &zerotrustaccessidentity.ProviderConfigArgs{
 //					Claims: pulumi.StringArray{
 //						pulumi.String("email_verified"),
 //						pulumi.String("preferred_username"),
@@ -49,7 +49,7 @@ import (
 //				Name:   pulumi.String("Widget Corps IDP"),
 //				Type:   pulumi.String("onetimepin"),
 //				ZoneId: pulumi.String("zone_id"),
-//				ScimConfig: &cloudflare.ZeroTrustAccessIdentityProviderScimConfigArgs{
+//				ScimConfig: &zerotrustaccessidentity.ProviderScimConfigArgs{
 //					Enabled:                pulumi.Bool(true),
 //					IdentityUpdateBehavior: pulumi.String("automatic"),
 //					SeatDeprovision:        pulumi.Bool(true),
@@ -115,12 +115,6 @@ func NewAccessIdentityProvider(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("cloudflare:index/accessIdentityProvider:AccessIdentityProvider"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessIdentityProvider
 	err := ctx.RegisterResource("cloudflare:index/accessIdentityProvider:AccessIdentityProvider", name, args, &resource, opts...)

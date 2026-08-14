@@ -22,6 +22,8 @@ __all__ = [
     'get_share_resources_output',
 ]
 
+warnings.warn("""cloudflare:index/getShareResources:getShareResources has been deprecated in favor of cloudflare:share/resources:getResources""", DeprecationWarning)
+
 @pulumi.output_type
 class GetShareResourcesResult:
     """
@@ -125,7 +127,7 @@ def get_share_resources(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_share_resources = cloudflare.get_share_resources(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_share_resources = cloudflare.share.get_resources(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         share_id="3fd85f74b32742f1bff64a85009dda07",
         resource_type="custom-ruleset",
         status="active")
@@ -140,6 +142,7 @@ def get_share_resources(account_id: Optional[_builtins.str] = None,
     :param _builtins.str status: Filter share resources by status.
            Available values: "active", "deleting", "deleted".
     """
+    pulumi.log.warn("""get_share_resources is deprecated: cloudflare:index/getShareResources:getShareResources has been deprecated in favor of cloudflare:share/resources:getResources""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -169,7 +172,7 @@ def get_share_resources_output(account_id: pulumi.Input[Optional[_builtins.str]]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_share_resources = cloudflare.get_share_resources(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_share_resources = cloudflare.share.get_resources(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         share_id="3fd85f74b32742f1bff64a85009dda07",
         resource_type="custom-ruleset",
         status="active")
@@ -184,6 +187,7 @@ def get_share_resources_output(account_id: pulumi.Input[Optional[_builtins.str]]
     :param _builtins.str status: Filter share resources by status.
            Available values: "active", "deleting", "deleted".
     """
+    pulumi.log.warn("""get_share_resources is deprecated: cloudflare:index/getShareResources:getShareResources has been deprecated in favor of cloudflare:share/resources:getResources""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

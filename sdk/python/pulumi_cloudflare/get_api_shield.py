@@ -22,6 +22,8 @@ __all__ = [
     'get_api_shield_output',
 ]
 
+warnings.warn("""cloudflare:index/getApiShield:getApiShield has been deprecated in favor of cloudflare:apiShield/apiShield:getApiShield""", DeprecationWarning)
+
 @pulumi.output_type
 class GetApiShieldResult:
     """
@@ -100,7 +102,7 @@ def get_api_shield(normalize: Optional[_builtins.bool] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_api_shield = cloudflare.get_api_shield(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_api_shield = cloudflare.apishield.get_api_shield(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         normalize=True)
     ```
 
@@ -108,6 +110,7 @@ def get_api_shield(normalize: Optional[_builtins.bool] = None,
     :param _builtins.bool normalize: Ensures that the configuration is written or retrieved in normalized fashion
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_api_shield is deprecated: cloudflare:index/getApiShield:getApiShield has been deprecated in favor of cloudflare:apiShield/apiShield:getApiShield""")
     __args__ = dict()
     __args__['normalize'] = normalize
     __args__['zoneId'] = zone_id
@@ -136,7 +139,7 @@ def get_api_shield_output(normalize: pulumi.Input[Optional[Optional[_builtins.bo
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_api_shield = cloudflare.get_api_shield(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_api_shield = cloudflare.apishield.get_api_shield(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         normalize=True)
     ```
 
@@ -144,6 +147,7 @@ def get_api_shield_output(normalize: pulumi.Input[Optional[Optional[_builtins.bo
     :param _builtins.bool normalize: Ensures that the configuration is written or retrieved in normalized fashion
     :param _builtins.str zone_id: Identifier.
     """
+    pulumi.log.warn("""get_api_shield is deprecated: cloudflare:index/getApiShield:getApiShield has been deprecated in favor of cloudflare:apiShield/apiShield:getApiShield""")
     __args__ = dict()
     __args__['normalize'] = normalize
     __args__['zoneId'] = zone_id

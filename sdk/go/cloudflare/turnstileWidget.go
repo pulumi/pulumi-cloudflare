@@ -26,14 +26,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/turnstile"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewTurnstileWidget(ctx, "example_turnstile_widget", &cloudflare.TurnstileWidgetArgs{
+//			_, err := turnstile.NewWidget(ctx, "example_turnstile_widget", &turnstile.WidgetArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Domains: pulumi.StringArray{
 //					pulumi.String("203.0.113.1"),
@@ -62,6 +62,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example '<account_id>/<sitekey>'
 // ```
+//
+// Deprecated: cloudflare:index/turnstileWidget:TurnstileWidget has been deprecated in favor of cloudflare:turnstile/widget:Widget
 type TurnstileWidget struct {
 	pulumi.CustomResourceState
 

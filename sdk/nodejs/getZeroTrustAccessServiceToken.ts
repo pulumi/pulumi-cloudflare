@@ -18,14 +18,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessServiceToken = cloudflare.getZeroTrustAccessServiceToken({
+ * const exampleZeroTrustAccessServiceToken = cloudflare.zerotrustaccessservice.getToken({
  *     serviceTokenId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessServiceToken:getZeroTrustAccessServiceToken has been deprecated in favor of cloudflare:zeroTrustAccessService/token:getToken */
 export function getZeroTrustAccessServiceToken(args?: GetZeroTrustAccessServiceTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessServiceTokenResult> {
+    pulumi.log.warn("getZeroTrustAccessServiceToken is deprecated: cloudflare:index/getZeroTrustAccessServiceToken:getZeroTrustAccessServiceToken has been deprecated in favor of cloudflare:zeroTrustAccessService/token:getToken")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessServiceToken:getZeroTrustAccessServiceToken", {
@@ -102,14 +104,16 @@ export interface GetZeroTrustAccessServiceTokenResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessServiceToken = cloudflare.getZeroTrustAccessServiceToken({
+ * const exampleZeroTrustAccessServiceToken = cloudflare.zerotrustaccessservice.getToken({
  *     serviceTokenId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessServiceToken:getZeroTrustAccessServiceToken has been deprecated in favor of cloudflare:zeroTrustAccessService/token:getToken */
 export function getZeroTrustAccessServiceTokenOutput(args?: GetZeroTrustAccessServiceTokenOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessServiceTokenResult> {
+    pulumi.log.warn("getZeroTrustAccessServiceToken is deprecated: cloudflare:index/getZeroTrustAccessServiceToken:getZeroTrustAccessServiceToken has been deprecated in favor of cloudflare:zeroTrustAccessService/token:getToken")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessServiceToken:getZeroTrustAccessServiceToken", {

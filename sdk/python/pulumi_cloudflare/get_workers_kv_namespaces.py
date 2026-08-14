@@ -22,6 +22,8 @@ __all__ = [
     'get_workers_kv_namespaces_output',
 ]
 
+warnings.warn("""cloudflare:index/getWorkersKvNamespaces:getWorkersKvNamespaces has been deprecated in favor of cloudflare:workersKv/namespaces:getNamespaces""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWorkersKvNamespacesResult:
     """
@@ -117,7 +119,7 @@ def get_workers_kv_namespaces(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_kv_namespaces = cloudflare.get_workers_kv_namespaces(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_kv_namespaces = cloudflare.workerskv.get_namespaces(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="asc",
         order="id")
     ```
@@ -130,6 +132,7 @@ def get_workers_kv_namespaces(account_id: Optional[_builtins.str] = None,
     :param _builtins.str order: Field to order results by.
            Available values: "id", "title".
     """
+    pulumi.log.warn("""get_workers_kv_namespaces is deprecated: cloudflare:index/getWorkersKvNamespaces:getWorkersKvNamespaces has been deprecated in favor of cloudflare:workersKv/namespaces:getNamespaces""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction
@@ -161,7 +164,7 @@ def get_workers_kv_namespaces_output(account_id: pulumi.Input[Optional[Optional[
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_kv_namespaces = cloudflare.get_workers_kv_namespaces(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_kv_namespaces = cloudflare.workerskv.get_namespaces(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="asc",
         order="id")
     ```
@@ -174,6 +177,7 @@ def get_workers_kv_namespaces_output(account_id: pulumi.Input[Optional[Optional[
     :param _builtins.str order: Field to order results by.
            Available values: "id", "title".
     """
+    pulumi.log.warn("""get_workers_kv_namespaces is deprecated: cloudflare:index/getWorkersKvNamespaces:getWorkersKvNamespaces has been deprecated in favor of cloudflare:workersKv/namespaces:getNamespaces""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getKeylessCertificate:getKeylessCertificate has been deprecated in favor of cloudflare:keyless/certificate:getCertificate")]
     public static class GetKeylessCertificate
     {
         /// <summary>
@@ -61,7 +62,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleKeylessCertificate = Cloudflare.GetKeylessCertificate.Invoke(new()
+        ///     var exampleKeylessCertificate = Cloudflare.Modules.Keyless.GetCertificate.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         KeylessCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -123,7 +124,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleKeylessCertificate = Cloudflare.GetKeylessCertificate.Invoke(new()
+        ///     var exampleKeylessCertificate = Cloudflare.Modules.Keyless.GetCertificate.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         KeylessCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -185,7 +186,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleKeylessCertificate = Cloudflare.GetKeylessCertificate.Invoke(new()
+        ///     var exampleKeylessCertificate = Cloudflare.Modules.Keyless.GetCertificate.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         KeylessCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",

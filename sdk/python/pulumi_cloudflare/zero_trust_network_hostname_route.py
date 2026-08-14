@@ -227,8 +227,13 @@ class _ZeroTrustNetworkHostnameRouteState:
         pulumi.set(self, "tunnel_name", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute has been deprecated in favor of cloudflare:zeroTrustNetworkHostname/route:Route""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute")
 class ZeroTrustNetworkHostnameRoute(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute has been deprecated in favor of cloudflare:zeroTrustNetworkHostname/route:Route""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -252,7 +257,7 @@ class ZeroTrustNetworkHostnameRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_network_hostname_route = cloudflare.ZeroTrustNetworkHostnameRoute("example_zero_trust_network_hostname_route",
+        example_zero_trust_network_hostname_route = cloudflare.zerotrustnetworkhostname.Route("example_zero_trust_network_hostname_route",
             account_id="699d98642c564d2e855e9661899b7252",
             comment="example comment",
             hostname="office-1.local",
@@ -293,7 +298,7 @@ class ZeroTrustNetworkHostnameRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_network_hostname_route = cloudflare.ZeroTrustNetworkHostnameRoute("example_zero_trust_network_hostname_route",
+        example_zero_trust_network_hostname_route = cloudflare.zerotrustnetworkhostname.Route("example_zero_trust_network_hostname_route",
             account_id="699d98642c564d2e855e9661899b7252",
             comment="example comment",
             hostname="office-1.local",
@@ -327,6 +332,7 @@ class ZeroTrustNetworkHostnameRoute(pulumi.CustomResource):
                  hostname: pulumi.Input[Optional[_builtins.str]] = None,
                  tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustNetworkHostnameRoute is deprecated: cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute has been deprecated in favor of cloudflare:zeroTrustNetworkHostname/route:Route""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

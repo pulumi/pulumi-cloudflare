@@ -33,11 +33,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.FlagshipFlag;
- * import com.pulumi.cloudflare.FlagshipFlagArgs;
- * import com.pulumi.cloudflare.inputs.FlagshipFlagRuleArgs;
- * import com.pulumi.cloudflare.inputs.FlagshipFlagRuleConditionArgs;
- * import com.pulumi.cloudflare.inputs.FlagshipFlagRuleRolloutArgs;
+ * import com.pulumi.cloudflare.flagship.Flag;
+ * import com.pulumi.cloudflare.flagship.FlagArgs;
+ * import com.pulumi.cloudflare.flagship.inputs.FlagRuleArgs;
+ * import com.pulumi.cloudflare.flagship.inputs.FlagRuleConditionArgs;
+ * import com.pulumi.cloudflare.flagship.inputs.FlagRuleRolloutArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -51,14 +51,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleFlagshipFlag = new FlagshipFlag("exampleFlagshipFlag", FlagshipFlagArgs.builder()
+ *         var exampleFlagshipFlag = new Flag("exampleFlagshipFlag", FlagArgs.builder()
  *             .accountId("account_id")
  *             .appId("app_id")
  *             .defaultVariation("x")
  *             .enabled(true)
  *             .key("x")
- *             .rules(FlagshipFlagRuleArgs.builder()
- *                 .conditions(FlagshipFlagRuleConditionArgs.builder()
+ *             .rules(FlagRuleArgs.builder()
+ *                 .conditions(FlagRuleConditionArgs.builder()
  *                     .attribute("x")
  *                     .operator("equals")
  *                     .value(Map.ofEntries(
@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .priority(1)
  *                 .serveVariation("x")
- *                 .rollout(FlagshipFlagRuleRolloutArgs.builder()
+ *                 .rollout(FlagRuleRolloutArgs.builder()
  *                     .percentage(0.0)
  *                     .attribute("x")
  *                     .build())
@@ -85,7 +85,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/flagshipFlag:FlagshipFlag has been deprecated in favor of cloudflare:flagship/flag:Flag
+ * 
  */
+@Deprecated /* cloudflare:index/flagshipFlag:FlagshipFlag has been deprecated in favor of cloudflare:flagship/flag:Flag */
 @ResourceType(type="cloudflare:index/flagshipFlag:FlagshipFlag")
 public class FlagshipFlag extends com.pulumi.resources.CustomResource {
     /**

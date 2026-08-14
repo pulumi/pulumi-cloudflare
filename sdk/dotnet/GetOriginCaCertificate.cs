@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getOriginCaCertificate:getOriginCaCertificate has been deprecated in favor of cloudflare:originCa/certificate:getCertificate")]
     public static class GetOriginCaCertificate
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOriginCaCertificate = Cloudflare.GetOriginCaCertificate.Invoke(new()
+        ///     var exampleOriginCaCertificate = Cloudflare.Modules.OriginCa.GetCertificate.Invoke(new()
         ///     {
         ///         CertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -44,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOriginCaCertificate = Cloudflare.GetOriginCaCertificate.Invoke(new()
+        ///     var exampleOriginCaCertificate = Cloudflare.Modules.OriginCa.GetCertificate.Invoke(new()
         ///     {
         ///         CertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -66,7 +67,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOriginCaCertificate = Cloudflare.GetOriginCaCertificate.Invoke(new()
+        ///     var exampleOriginCaCertificate = Cloudflare.Modules.OriginCa.GetCertificate.Invoke(new()
         ///     {
         ///         CertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

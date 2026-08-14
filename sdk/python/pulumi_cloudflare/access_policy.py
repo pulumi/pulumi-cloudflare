@@ -575,7 +575,7 @@ class AccessPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_policy = cloudflare.ZeroTrustAccessPolicy("example_zero_trust_access_policy",
+        example_zero_trust_access_policy = cloudflare.zerotrustaccess.Policy("example_zero_trust_access_policy",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             decision="allow",
             includes=[{
@@ -677,7 +677,7 @@ class AccessPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_access_policy = cloudflare.ZeroTrustAccessPolicy("example_zero_trust_access_policy",
+        example_zero_trust_access_policy = cloudflare.zerotrustaccess.Policy("example_zero_trust_access_policy",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             decision="allow",
             includes=[{
@@ -806,8 +806,6 @@ class AccessPolicy(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["reusable"] = None
             __props__.__dict__["updated_at"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessPolicy:AccessPolicy")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AccessPolicy, __self__).__init__(
             'cloudflare:index/accessPolicy:AccessPolicy',
             resource_name,

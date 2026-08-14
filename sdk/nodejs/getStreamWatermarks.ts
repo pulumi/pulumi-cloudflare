@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleStreamWatermarks = cloudflare.getStreamWatermarks({
+ * const exampleStreamWatermarks = cloudflare.stream.getWatermarks({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getStreamWatermarks:getStreamWatermarks has been deprecated in favor of cloudflare:stream/watermarks:getWatermarks */
 export function getStreamWatermarks(args?: GetStreamWatermarksArgs, opts?: pulumi.InvokeOptions): Promise<GetStreamWatermarksResult> {
+    pulumi.log.warn("getStreamWatermarks is deprecated: cloudflare:index/getStreamWatermarks:getStreamWatermarks has been deprecated in favor of cloudflare:stream/watermarks:getWatermarks")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getStreamWatermarks:getStreamWatermarks", {
@@ -75,12 +77,14 @@ export interface GetStreamWatermarksResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleStreamWatermarks = cloudflare.getStreamWatermarks({
+ * const exampleStreamWatermarks = cloudflare.stream.getWatermarks({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getStreamWatermarks:getStreamWatermarks has been deprecated in favor of cloudflare:stream/watermarks:getWatermarks */
 export function getStreamWatermarksOutput(args?: GetStreamWatermarksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStreamWatermarksResult> {
+    pulumi.log.warn("getStreamWatermarks is deprecated: cloudflare:index/getStreamWatermarks:getStreamWatermarks has been deprecated in favor of cloudflare:stream/watermarks:getWatermarks")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getStreamWatermarks:getStreamWatermarks", {

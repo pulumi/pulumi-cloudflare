@@ -18,14 +18,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessIdentityProvider = cloudflare.getZeroTrustAccessIdentityProvider({
+ * const exampleZeroTrustAccessIdentityProvider = cloudflare.zerotrustaccessidentity.getProvider({
  *     identityProviderId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider has been deprecated in favor of cloudflare:zeroTrustAccessIdentity/provider:getProvider */
 export function getZeroTrustAccessIdentityProvider(args?: GetZeroTrustAccessIdentityProviderArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessIdentityProviderResult> {
+    pulumi.log.warn("getZeroTrustAccessIdentityProvider is deprecated: cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider has been deprecated in favor of cloudflare:zeroTrustAccessIdentity/provider:getProvider")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider", {
@@ -121,14 +123,16 @@ export interface GetZeroTrustAccessIdentityProviderResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessIdentityProvider = cloudflare.getZeroTrustAccessIdentityProvider({
+ * const exampleZeroTrustAccessIdentityProvider = cloudflare.zerotrustaccessidentity.getProvider({
  *     identityProviderId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider has been deprecated in favor of cloudflare:zeroTrustAccessIdentity/provider:getProvider */
 export function getZeroTrustAccessIdentityProviderOutput(args?: GetZeroTrustAccessIdentityProviderOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessIdentityProviderResult> {
+    pulumi.log.warn("getZeroTrustAccessIdentityProvider is deprecated: cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider has been deprecated in favor of cloudflare:zeroTrustAccessIdentity/provider:getProvider")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider", {

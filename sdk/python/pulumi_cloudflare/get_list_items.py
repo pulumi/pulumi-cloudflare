@@ -22,6 +22,8 @@ __all__ = [
     'get_list_items_output',
 ]
 
+warnings.warn("""cloudflare:index/getListItems:getListItems has been deprecated in favor of cloudflare:list/items:getItems""", DeprecationWarning)
+
 @pulumi.output_type
 class GetListItemsResult:
     """
@@ -128,7 +130,7 @@ def get_list_items(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_list_items = cloudflare.get_list_items(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_list_items = cloudflare.list.get_items(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         list_id="2c0fc9fa937b11eaa1b71c4d701ab86e",
         per_page=1,
         search="1.1.1.")
@@ -141,6 +143,7 @@ def get_list_items(account_id: Optional[_builtins.str] = None,
     :param _builtins.int per_page: Amount of results to include in each paginated response. A non-negative 32 bit integer.
     :param _builtins.str search: A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
     """
+    pulumi.log.warn("""get_list_items is deprecated: cloudflare:index/getListItems:getListItems has been deprecated in favor of cloudflare:list/items:getItems""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['listId'] = list_id
@@ -175,7 +178,7 @@ def get_list_items_output(account_id: pulumi.Input[Optional[Optional[_builtins.s
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_list_items = cloudflare.get_list_items(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_list_items = cloudflare.list.get_items(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         list_id="2c0fc9fa937b11eaa1b71c4d701ab86e",
         per_page=1,
         search="1.1.1.")
@@ -188,6 +191,7 @@ def get_list_items_output(account_id: pulumi.Input[Optional[Optional[_builtins.s
     :param _builtins.int per_page: Amount of results to include in each paginated response. A non-negative 32 bit integer.
     :param _builtins.str search: A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
     """
+    pulumi.log.warn("""get_list_items is deprecated: cloudflare:index/getListItems:getListItems has been deprecated in favor of cloudflare:list/items:getItems""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['listId'] = list_id

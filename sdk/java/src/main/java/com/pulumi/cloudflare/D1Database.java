@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.D1Database;
- * import com.pulumi.cloudflare.D1DatabaseArgs;
+ * import com.pulumi.cloudflare.d1.Database;
+ * import com.pulumi.cloudflare.d1.DatabaseArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleD1Database = new D1Database("exampleD1Database", D1DatabaseArgs.builder()
+ *         var exampleD1Database = new Database("exampleD1Database", DatabaseArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .name("my-database")
  *             .jurisdiction("eu")
@@ -67,7 +67,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/d1Database:D1Database example &#39;&lt;account_id&gt;/&lt;database_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/d1Database:D1Database has been deprecated in favor of cloudflare:d1/database:Database
+ * 
  */
+@Deprecated /* cloudflare:index/d1Database:D1Database has been deprecated in favor of cloudflare:d1/database:Database */
 @ResourceType(type="cloudflare:index/d1Database:D1Database")
 public class D1Database extends com.pulumi.resources.CustomResource {
     /**

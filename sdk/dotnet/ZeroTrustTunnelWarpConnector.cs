@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustTunnelWarpConnector = new Cloudflare.ZeroTrustTunnelWarpConnector("example_zero_trust_tunnel_warp_connector", new()
+    ///     var exampleZeroTrustTunnelWarpConnector = new Cloudflare.Modules.ZeroTrustTunnelWarpConnector.ZeroTrustTunnelWarpConnector("example_zero_trust_tunnel_warp_connector", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Name = "blog",
@@ -43,6 +43,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector example '&lt;account_id&gt;/&lt;tunnel_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector has been deprecated in favor of cloudflare:zeroTrustTunnelWarpConnector/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector")]
     [CloudflareResourceType("cloudflare:index/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector")]
     public partial class ZeroTrustTunnelWarpConnector : global::Pulumi.CustomResource
     {

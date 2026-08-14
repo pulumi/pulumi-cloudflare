@@ -24,26 +24,26 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/waitingroom"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWaitingRoom(ctx, "example_waiting_room", &cloudflare.WaitingRoomArgs{
+//			_, err := waitingroom.NewWaitingRoom(ctx, "example_waiting_room", &waitingroom.WaitingRoomArgs{
 //				ZoneId:            pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Host:              pulumi.String("shop.example.com"),
 //				Name:              pulumi.String("production_webinar"),
 //				NewUsersPerMinute: pulumi.Int(200),
 //				TotalActiveUsers:  pulumi.Int(200),
-//				AdditionalRoutes: cloudflare.WaitingRoomAdditionalRouteArray{
-//					&cloudflare.WaitingRoomAdditionalRouteArgs{
+//				AdditionalRoutes: waitingroom.WaitingRoomAdditionalRouteArray{
+//					&waitingroom.WaitingRoomAdditionalRouteArgs{
 //						Host: pulumi.String("shop2.example.com"),
 //						Path: pulumi.String("/shop2/checkout"),
 //					},
 //				},
-//				CookieAttributes: &cloudflare.WaitingRoomCookieAttributesArgs{
+//				CookieAttributes: &waitingroom.WaitingRoomCookieAttributesArgs{
 //					Samesite: pulumi.String("auto"),
 //					Secure:   pulumi.String("auto"),
 //				},
@@ -79,6 +79,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/waitingRoom:WaitingRoom example '<zone_id>/<waiting_room_id>'
 // ```
+//
+// Deprecated: cloudflare:index/waitingRoom:WaitingRoom has been deprecated in favor of cloudflare:waitingRoom/waitingRoom:WaitingRoom
 type WaitingRoom struct {
 	pulumi.CustomResourceState
 

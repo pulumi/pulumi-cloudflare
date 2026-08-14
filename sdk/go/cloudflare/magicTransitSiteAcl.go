@@ -26,17 +26,17 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/magictransitsite"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewMagicTransitSiteAcl(ctx, "example_magic_transit_site_acl", &cloudflare.MagicTransitSiteAclArgs{
+//			_, err := magictransitsite.NewAcl(ctx, "example_magic_transit_site_acl", &magictransitsite.AclArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				SiteId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Lan1: &cloudflare.MagicTransitSiteAclLan1Args{
+//				Lan1: &magictransitsite.AclLan1Args{
 //					LanId:   pulumi.String("lan_id"),
 //					LanName: pulumi.String("lan_name"),
 //					PortRanges: pulumi.StringArray{
@@ -49,7 +49,7 @@ import (
 //						pulumi.String("192.0.2.1"),
 //					},
 //				},
-//				Lan2: &cloudflare.MagicTransitSiteAclLan2Args{
+//				Lan2: &magictransitsite.AclLan2Args{
 //					LanId:   pulumi.String("lan_id"),
 //					LanName: pulumi.String("lan_name"),
 //					PortRanges: pulumi.StringArray{
@@ -84,6 +84,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/magicTransitSiteAcl:MagicTransitSiteAcl example '<account_id>/<site_id>/<acl_id>'
 // ```
+//
+// Deprecated: cloudflare:index/magicTransitSiteAcl:MagicTransitSiteAcl has been deprecated in favor of cloudflare:magicTransitSite/acl:Acl
 type MagicTransitSiteAcl struct {
 	pulumi.CustomResourceState
 

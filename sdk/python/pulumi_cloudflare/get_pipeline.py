@@ -22,6 +22,8 @@ __all__ = [
     'get_pipeline_output',
 ]
 
+warnings.warn("""cloudflare:index/getPipeline:getPipeline has been deprecated in favor of cloudflare:pipeline/pipeline:getPipeline""", DeprecationWarning)
+
 @pulumi.output_type
 class GetPipelineResult:
     """
@@ -167,7 +169,7 @@ def get_pipeline(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_pipeline = cloudflare.get_pipeline(account_id="0123105f4ecef8ad9ca31a8372d0c353",
+    example_pipeline = cloudflare.pipeline.get_pipeline(account_id="0123105f4ecef8ad9ca31a8372d0c353",
         pipeline_id="043e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -175,6 +177,7 @@ def get_pipeline(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Specifies the public ID of the account.
     :param _builtins.str pipeline_id: Specifies the public ID of the pipeline.
     """
+    pulumi.log.warn("""get_pipeline is deprecated: cloudflare:index/getPipeline:getPipeline has been deprecated in favor of cloudflare:pipeline/pipeline:getPipeline""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['pipelineId'] = pipeline_id
@@ -207,7 +210,7 @@ def get_pipeline_output(account_id: pulumi.Input[Optional[Optional[_builtins.str
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_pipeline = cloudflare.get_pipeline(account_id="0123105f4ecef8ad9ca31a8372d0c353",
+    example_pipeline = cloudflare.pipeline.get_pipeline(account_id="0123105f4ecef8ad9ca31a8372d0c353",
         pipeline_id="043e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -215,6 +218,7 @@ def get_pipeline_output(account_id: pulumi.Input[Optional[Optional[_builtins.str
     :param _builtins.str account_id: Specifies the public ID of the account.
     :param _builtins.str pipeline_id: Specifies the public ID of the pipeline.
     """
+    pulumi.log.warn("""get_pipeline is deprecated: cloudflare:index/getPipeline:getPipeline has been deprecated in favor of cloudflare:pipeline/pipeline:getPipeline""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['pipelineId'] = pipeline_id

@@ -25,14 +25,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/magicwan"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetMagicWanStaticRoute(ctx, &cloudflare.LookupMagicWanStaticRouteArgs{
+//			_, err := magicwan.GetStaticRoute(ctx, &magicwan.GetStaticRouteArgs{
 //				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				RouteId:   "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
@@ -44,6 +44,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getMagicWanStaticRoute:getMagicWanStaticRoute has been deprecated in favor of cloudflare:magicWan/staticRoute:getStaticRoute
 func LookupMagicWanStaticRoute(ctx *pulumi.Context, args *LookupMagicWanStaticRouteArgs, opts ...pulumi.InvokeOption) (*LookupMagicWanStaticRouteResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMagicWanStaticRouteResult

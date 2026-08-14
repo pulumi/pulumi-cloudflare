@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersRoute = new cloudflare.WorkersRoute("example_workers_route", {
+ * const exampleWorkersRoute = new cloudflare.workers.Route("example_workers_route", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     pattern: "example.com/*",
  *     script: "my-workers-script",
@@ -28,6 +28,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/workersRoute:WorkersRoute example '<zone_id>/<route_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/workersRoute:WorkersRoute has been deprecated in favor of cloudflare:workers/route:Route
  */
 export class WorkersRoute extends pulumi.CustomResource {
     /**
@@ -40,6 +42,7 @@ export class WorkersRoute extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WorkersRouteState, opts?: pulumi.CustomResourceOptions): WorkersRoute {
+        pulumi.log.warn("WorkersRoute is deprecated: cloudflare:index/workersRoute:WorkersRoute has been deprecated in favor of cloudflare:workers/route:Route")
         return new WorkersRoute(name, <any>state, { ...opts, id: id });
     }
 
@@ -77,8 +80,11 @@ export class WorkersRoute extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/workersRoute:WorkersRoute has been deprecated in favor of cloudflare:workers/route:Route */
     constructor(name: string, args: WorkersRouteArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/workersRoute:WorkersRoute has been deprecated in favor of cloudflare:workers/route:Route */
     constructor(name: string, argsOrState?: WorkersRouteArgs | WorkersRouteState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("WorkersRoute is deprecated: cloudflare:index/workersRoute:WorkersRoute has been deprecated in favor of cloudflare:workers/route:Route")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

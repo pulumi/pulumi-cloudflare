@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.StreamCaptionLanguage;
- * import com.pulumi.cloudflare.StreamCaptionLanguageArgs;
+ * import com.pulumi.cloudflare.stream.CaptionLanguage;
+ * import com.pulumi.cloudflare.stream.CaptionLanguageArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleStreamCaptionLanguage = new StreamCaptionLanguage("exampleStreamCaptionLanguage", StreamCaptionLanguageArgs.builder()
+ *         var exampleStreamCaptionLanguage = new CaptionLanguage("exampleStreamCaptionLanguage", CaptionLanguageArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .identifier("ea95132c15732412d22c1476fa83f27a")
  *             .language("tr")
@@ -60,7 +60,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/streamCaptionLanguage:StreamCaptionLanguage has been deprecated in favor of cloudflare:stream/captionLanguage:CaptionLanguage
+ * 
  */
+@Deprecated /* cloudflare:index/streamCaptionLanguage:StreamCaptionLanguage has been deprecated in favor of cloudflare:stream/captionLanguage:CaptionLanguage */
 @ResourceType(type="cloudflare:index/streamCaptionLanguage:StreamCaptionLanguage")
 public class StreamCaptionLanguage extends com.pulumi.resources.CustomResource {
     /**

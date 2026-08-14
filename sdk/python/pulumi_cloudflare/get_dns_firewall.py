@@ -22,6 +22,8 @@ __all__ = [
     'get_dns_firewall_output',
 ]
 
+warnings.warn("""cloudflare:index/getDnsFirewall:getDnsFirewall has been deprecated in favor of cloudflare:dns/firewall:getFirewall""", DeprecationWarning)
+
 @pulumi.output_type
 class GetDnsFirewallResult:
     """
@@ -212,7 +214,7 @@ def get_dns_firewall(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_dns_firewall = cloudflare.get_dns_firewall(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_dns_firewall = cloudflare.dns.get_firewall(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         dns_firewall_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -220,6 +222,7 @@ def get_dns_firewall(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Identifier.
     :param _builtins.str dns_firewall_id: Identifier.
     """
+    pulumi.log.warn("""get_dns_firewall is deprecated: cloudflare:index/getDnsFirewall:getDnsFirewall has been deprecated in favor of cloudflare:dns/firewall:getFirewall""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['dnsFirewallId'] = dns_firewall_id
@@ -257,7 +260,7 @@ def get_dns_firewall_output(account_id: pulumi.Input[Optional[Optional[_builtins
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_dns_firewall = cloudflare.get_dns_firewall(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_dns_firewall = cloudflare.dns.get_firewall(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         dns_firewall_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -265,6 +268,7 @@ def get_dns_firewall_output(account_id: pulumi.Input[Optional[Optional[_builtins
     :param _builtins.str account_id: Identifier.
     :param _builtins.str dns_firewall_id: Identifier.
     """
+    pulumi.log.warn("""get_dns_firewall is deprecated: cloudflare:index/getDnsFirewall:getDnsFirewall has been deprecated in favor of cloudflare:dns/firewall:getFirewall""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['dnsFirewallId'] = dns_firewall_id

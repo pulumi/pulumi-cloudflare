@@ -317,8 +317,13 @@ class _AccountTokenState:
         pulumi.set(self, "value", value)
 
 
+warnings.warn("""cloudflare:index/accountToken:AccountToken has been deprecated in favor of cloudflare:account/token:Token""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/accountToken:AccountToken")
 class AccountToken(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/accountToken:AccountToken has been deprecated in favor of cloudflare:account/token:Token""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -344,7 +349,7 @@ class AccountToken(pulumi.CustomResource):
         import json
         import pulumi_cloudflare as cloudflare
 
-        example_account_token = cloudflare.AccountToken("example_account_token",
+        example_account_token = cloudflare.account.Token("example_account_token",
             account_id="b67e14daa5f8dceeb91fe5449ba496eb",
             name="workers read-only token",
             policies=[{
@@ -413,7 +418,7 @@ class AccountToken(pulumi.CustomResource):
         import json
         import pulumi_cloudflare as cloudflare
 
-        example_account_token = cloudflare.AccountToken("example_account_token",
+        example_account_token = cloudflare.account.Token("example_account_token",
             account_id="b67e14daa5f8dceeb91fe5449ba496eb",
             name="workers read-only token",
             policies=[{
@@ -476,6 +481,7 @@ class AccountToken(pulumi.CustomResource):
                  policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccountTokenPolicyArgs', 'AccountTokenPolicyArgsDict']]]]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""AccountToken is deprecated: cloudflare:index/accountToken:AccountToken has been deprecated in favor of cloudflare:account/token:Token""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

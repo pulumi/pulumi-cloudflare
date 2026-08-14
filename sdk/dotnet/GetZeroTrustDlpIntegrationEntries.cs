@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustDlpIntegrationEntries:getZeroTrustDlpIntegrationEntries has been deprecated in favor of cloudflare:zeroTrustDlpIntegration/entries:getEntries")]
     public static class GetZeroTrustDlpIntegrationEntries
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDlpIntegrationEntries = Cloudflare.GetZeroTrustDlpIntegrationEntries.Invoke(new()
+        ///     var exampleZeroTrustDlpIntegrationEntries = Cloudflare.Modules.ZeroTrustDlpIntegration.GetEntries.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///     });
@@ -54,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDlpIntegrationEntries = Cloudflare.GetZeroTrustDlpIntegrationEntries.Invoke(new()
+        ///     var exampleZeroTrustDlpIntegrationEntries = Cloudflare.Modules.ZeroTrustDlpIntegration.GetEntries.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///     });
@@ -81,7 +82,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDlpIntegrationEntries = Cloudflare.GetZeroTrustDlpIntegrationEntries.Invoke(new()
+        ///     var exampleZeroTrustDlpIntegrationEntries = Cloudflare.Modules.ZeroTrustDlpIntegration.GetEntries.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///     });

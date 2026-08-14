@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getEmailSecurityBlockSenders:getEmailSecurityBlockSenders has been deprecated in favor of cloudflare:emailSecurityBlock/senders:getSenders")]
     public static class GetEmailSecurityBlockSenders
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailSecurityBlockSenders = Cloudflare.GetEmailSecurityBlockSenders.Invoke(new()
+        ///     var exampleEmailSecurityBlockSenders = Cloudflare.Modules.EmailSecurityBlock.GetSenders.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
@@ -59,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailSecurityBlockSenders = Cloudflare.GetEmailSecurityBlockSenders.Invoke(new()
+        ///     var exampleEmailSecurityBlockSenders = Cloudflare.Modules.EmailSecurityBlock.GetSenders.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
@@ -91,7 +92,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailSecurityBlockSenders = Cloudflare.GetEmailSecurityBlockSenders.Invoke(new()
+        ///     var exampleEmailSecurityBlockSenders = Cloudflare.Modules.EmailSecurityBlock.GetSenders.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",

@@ -53,12 +53,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZone = cloudflare.getZone({
+ * const exampleZone = cloudflare.zone.getZone({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZone:getZone has been deprecated in favor of cloudflare:zone/zone:getZone */
 export function getZone(args?: GetZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneResult> {
+    pulumi.log.warn("getZone is deprecated: cloudflare:index/getZone:getZone has been deprecated in favor of cloudflare:zone/zone:getZone")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZone:getZone", {
@@ -161,12 +163,14 @@ see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresour
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZone = cloudflare.getZone({
+ * const exampleZone = cloudflare.zone.getZone({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZone:getZone has been deprecated in favor of cloudflare:zone/zone:getZone */
 export function getZoneOutput(args?: GetZoneOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneResult> {
+    pulumi.log.warn("getZone is deprecated: cloudflare:index/getZone:getZone has been deprecated in favor of cloudflare:zone/zone:getZone")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZone:getZone", {

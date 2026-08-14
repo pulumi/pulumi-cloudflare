@@ -35,14 +35,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustAccessGroup;
- * import com.pulumi.cloudflare.ZeroTrustAccessGroupArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupIncludeCertificateArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupExcludeArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupExcludeCertificateArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupRequireArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupRequireCertificateArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccess.Group;
+ * import com.pulumi.cloudflare.zeroTrustAccess.GroupArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccess.inputs.GroupIncludeArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccess.inputs.GroupIncludeCertificateArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccess.inputs.GroupExcludeArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccess.inputs.GroupExcludeCertificateArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccess.inputs.GroupRequireArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccess.inputs.GroupRequireCertificateArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -56,20 +56,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustAccessGroup = new ZeroTrustAccessGroup("exampleZeroTrustAccessGroup", ZeroTrustAccessGroupArgs.builder()
- *             .includes(ZeroTrustAccessGroupIncludeArgs.builder()
- *                 .certificate(ZeroTrustAccessGroupIncludeCertificateArgs.builder()
+ *         var exampleZeroTrustAccessGroup = new Group("exampleZeroTrustAccessGroup", GroupArgs.builder()
+ *             .includes(GroupIncludeArgs.builder()
+ *                 .certificate(GroupIncludeCertificateArgs.builder()
  *                     .build())
  *                 .build())
  *             .name("Allow devs")
  *             .zoneId("zone_id")
- *             .excludes(ZeroTrustAccessGroupExcludeArgs.builder()
- *                 .certificate(ZeroTrustAccessGroupExcludeCertificateArgs.builder()
+ *             .excludes(GroupExcludeArgs.builder()
+ *                 .certificate(GroupExcludeCertificateArgs.builder()
  *                     .build())
  *                 .build())
  *             .isDefault(true)
- *             .requires(ZeroTrustAccessGroupRequireArgs.builder()
- *                 .certificate(ZeroTrustAccessGroupRequireCertificateArgs.builder()
+ *             .requires(GroupRequireArgs.builder()
+ *                 .certificate(GroupRequireCertificateArgs.builder()
  *                     .build())
  *                 .build())
  *             .build());
@@ -85,7 +85,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;group_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup has been deprecated in favor of cloudflare:zeroTrustAccess/group:Group
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup has been deprecated in favor of cloudflare:zeroTrustAccess/group:Group */
 @ResourceType(type="cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup")
 public class ZeroTrustAccessGroup extends com.pulumi.resources.CustomResource {
     /**

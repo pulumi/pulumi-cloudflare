@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getAuthenticatedOriginPulls:getAuthenticatedOriginPulls has been deprecated in favor of cloudflare:authenticatedOriginPulls/authenticatedOriginPulls:getAuthenticatedOriginPulls")]
     public static class GetAuthenticatedOriginPulls
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAuthenticatedOriginPulls = Cloudflare.GetAuthenticatedOriginPulls.Invoke(new()
+        ///     var exampleAuthenticatedOriginPulls = Cloudflare.Modules.AuthenticatedOriginPulls.GetAuthenticatedOriginPulls.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Hostname = "app.example.com",
@@ -45,7 +46,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAuthenticatedOriginPulls = Cloudflare.GetAuthenticatedOriginPulls.Invoke(new()
+        ///     var exampleAuthenticatedOriginPulls = Cloudflare.Modules.AuthenticatedOriginPulls.GetAuthenticatedOriginPulls.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Hostname = "app.example.com",
@@ -68,7 +69,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAuthenticatedOriginPulls = Cloudflare.GetAuthenticatedOriginPulls.Invoke(new()
+        ///     var exampleAuthenticatedOriginPulls = Cloudflare.Modules.AuthenticatedOriginPulls.GetAuthenticatedOriginPulls.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Hostname = "app.example.com",

@@ -21,6 +21,8 @@ __all__ = [
     'get_custom_page_asset_output',
 ]
 
+warnings.warn("""cloudflare:index/getCustomPageAsset:getCustomPageAsset has been deprecated in favor of cloudflare:customPage/asset:getAsset""", DeprecationWarning)
+
 @pulumi.output_type
 class GetCustomPageAssetResult:
     """
@@ -153,7 +155,7 @@ def get_custom_page_asset(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_custom_page_asset = cloudflare.get_custom_page_asset(asset_name="my_custom_error_page",
+    example_custom_page_asset = cloudflare.custompage.get_asset(asset_name="my_custom_error_page",
         account_id="account_id",
         zone_id="zone_id")
     ```
@@ -163,6 +165,7 @@ def get_custom_page_asset(account_id: Optional[_builtins.str] = None,
     :param _builtins.str asset_name: The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_).
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_custom_page_asset is deprecated: cloudflare:index/getCustomPageAsset:getCustomPageAsset has been deprecated in favor of cloudflare:customPage/asset:getAsset""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['assetName'] = asset_name
@@ -191,7 +194,7 @@ def get_custom_page_asset_output(account_id: pulumi.Input[Optional[Optional[_bui
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_custom_page_asset = cloudflare.get_custom_page_asset(asset_name="my_custom_error_page",
+    example_custom_page_asset = cloudflare.custompage.get_asset(asset_name="my_custom_error_page",
         account_id="account_id",
         zone_id="zone_id")
     ```
@@ -201,6 +204,7 @@ def get_custom_page_asset_output(account_id: pulumi.Input[Optional[Optional[_bui
     :param _builtins.str asset_name: The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_).
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_custom_page_asset is deprecated: cloudflare:index/getCustomPageAsset:getCustomPageAsset has been deprecated in favor of cloudflare:customPage/asset:getAsset""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['assetName'] = asset_name

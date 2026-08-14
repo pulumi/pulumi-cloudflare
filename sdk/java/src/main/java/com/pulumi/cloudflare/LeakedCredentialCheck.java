@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.LeakedCredentialCheck;
- * import com.pulumi.cloudflare.LeakedCredentialCheckArgs;
+ * import com.pulumi.cloudflare.leakedCredentialCheck.LeakedCredentialCheck;
+ * import com.pulumi.cloudflare.leakedCredentialCheck.LeakedCredentialCheckArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -61,7 +61,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck has been deprecated in favor of cloudflare:leakedCredentialCheck/leakedCredentialCheck:LeakedCredentialCheck
+ * 
  */
+@Deprecated /* cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck has been deprecated in favor of cloudflare:leakedCredentialCheck/leakedCredentialCheck:LeakedCredentialCheck */
 @ResourceType(type="cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck")
 public class LeakedCredentialCheck extends com.pulumi.resources.CustomResource {
     /**

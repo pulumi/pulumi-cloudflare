@@ -209,8 +209,13 @@ class _StreamCaptionLanguageState:
         pulumi.set(self, "status", value)
 
 
+warnings.warn("""cloudflare:index/streamCaptionLanguage:StreamCaptionLanguage has been deprecated in favor of cloudflare:stream/captionLanguage:CaptionLanguage""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/streamCaptionLanguage:StreamCaptionLanguage")
 class StreamCaptionLanguage(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/streamCaptionLanguage:StreamCaptionLanguage has been deprecated in favor of cloudflare:stream/captionLanguage:CaptionLanguage""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -232,7 +237,7 @@ class StreamCaptionLanguage(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_stream_caption_language = cloudflare.StreamCaptionLanguage("example_stream_caption_language",
+        example_stream_caption_language = cloudflare.stream.CaptionLanguage("example_stream_caption_language",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             identifier="ea95132c15732412d22c1476fa83f27a",
             language="tr")
@@ -268,7 +273,7 @@ class StreamCaptionLanguage(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_stream_caption_language = cloudflare.StreamCaptionLanguage("example_stream_caption_language",
+        example_stream_caption_language = cloudflare.stream.CaptionLanguage("example_stream_caption_language",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             identifier="ea95132c15732412d22c1476fa83f27a",
             language="tr")
@@ -299,6 +304,7 @@ class StreamCaptionLanguage(pulumi.CustomResource):
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  language: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""StreamCaptionLanguage is deprecated: cloudflare:index/streamCaptionLanguage:StreamCaptionLanguage has been deprecated in favor of cloudflare:stream/captionLanguage:CaptionLanguage""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

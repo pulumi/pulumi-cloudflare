@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpDataTagCategory = cloudflare.getZeroTrustDlpDataTagCategory({
+ * const exampleZeroTrustDlpDataTagCategory = cloudflare.zerotrustdlpdatatag.getCategory({
  *     accountId: "account_id",
  *     categoryId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpDataTagCategory:getZeroTrustDlpDataTagCategory has been deprecated in favor of cloudflare:zeroTrustDlpDataTag/category:getCategory */
 export function getZeroTrustDlpDataTagCategory(args: GetZeroTrustDlpDataTagCategoryArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDlpDataTagCategoryResult> {
+    pulumi.log.warn("getZeroTrustDlpDataTagCategory is deprecated: cloudflare:index/getZeroTrustDlpDataTagCategory:getZeroTrustDlpDataTagCategory has been deprecated in favor of cloudflare:zeroTrustDlpDataTag/category:getCategory")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDlpDataTagCategory:getZeroTrustDlpDataTagCategory", {
         "accountId": args.accountId,
@@ -69,13 +71,15 @@ export interface GetZeroTrustDlpDataTagCategoryResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpDataTagCategory = cloudflare.getZeroTrustDlpDataTagCategory({
+ * const exampleZeroTrustDlpDataTagCategory = cloudflare.zerotrustdlpdatatag.getCategory({
  *     accountId: "account_id",
  *     categoryId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpDataTagCategory:getZeroTrustDlpDataTagCategory has been deprecated in favor of cloudflare:zeroTrustDlpDataTag/category:getCategory */
 export function getZeroTrustDlpDataTagCategoryOutput(args: GetZeroTrustDlpDataTagCategoryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDlpDataTagCategoryResult> {
+    pulumi.log.warn("getZeroTrustDlpDataTagCategory is deprecated: cloudflare:index/getZeroTrustDlpDataTagCategory:getZeroTrustDlpDataTagCategory has been deprecated in favor of cloudflare:zeroTrustDlpDataTag/category:getCategory")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDlpDataTagCategory:getZeroTrustDlpDataTagCategory", {
         "accountId": args.accountId,

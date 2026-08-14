@@ -22,6 +22,8 @@ __all__ = [
     'get_account_tokens_output',
 ]
 
+warnings.warn("""cloudflare:index/getAccountTokens:getAccountTokens has been deprecated in favor of cloudflare:account/tokens:getTokens""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAccountTokensResult:
     """
@@ -116,7 +118,7 @@ def get_account_tokens(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_tokens = cloudflare.get_account_tokens(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_account_tokens = cloudflare.account.get_tokens(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="desc")
     ```
 
@@ -127,6 +129,7 @@ def get_account_tokens(account_id: Optional[_builtins.str] = None,
     :param _builtins.bool include_expired: When true, includes recently-expired tokens in the response.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_account_tokens is deprecated: cloudflare:index/getAccountTokens:getAccountTokens has been deprecated in favor of cloudflare:account/tokens:getTokens""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction
@@ -158,7 +161,7 @@ def get_account_tokens_output(account_id: pulumi.Input[Optional[Optional[_builti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_tokens = cloudflare.get_account_tokens(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_account_tokens = cloudflare.account.get_tokens(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="desc")
     ```
 
@@ -169,6 +172,7 @@ def get_account_tokens_output(account_id: pulumi.Input[Optional[Optional[_builti
     :param _builtins.bool include_expired: When true, includes recently-expired tokens in the response.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_account_tokens is deprecated: cloudflare:index/getAccountTokens:getAccountTokens has been deprecated in favor of cloudflare:account/tokens:getTokens""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction

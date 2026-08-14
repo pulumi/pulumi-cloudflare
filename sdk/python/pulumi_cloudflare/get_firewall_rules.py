@@ -22,6 +22,8 @@ __all__ = [
     'get_firewall_rules_output',
 ]
 
+warnings.warn("""cloudflare:index/getFirewallRules:getFirewallRules has been deprecated in favor of cloudflare:firewall/rules:getRules""", DeprecationWarning)
+
 @pulumi.output_type
 class GetFirewallRulesResult:
     """
@@ -141,7 +143,7 @@ def get_firewall_rules(action: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_firewall_rules = cloudflare.get_firewall_rules(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_firewall_rules = cloudflare.firewall.get_rules(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         id="372e67954025e0ba6aaa6d586b9e0b60",
         action="block",
         description="mir",
@@ -156,6 +158,7 @@ def get_firewall_rules(action: Optional[_builtins.str] = None,
     :param _builtins.bool paused: When true, indicates that the firewall rule is currently paused.
     :param _builtins.str zone_id: Defines an identifier.
     """
+    pulumi.log.warn("""get_firewall_rules is deprecated: cloudflare:index/getFirewallRules:getFirewallRules has been deprecated in favor of cloudflare:firewall/rules:getRules""")
     __args__ = dict()
     __args__['action'] = action
     __args__['description'] = description
@@ -193,7 +196,7 @@ def get_firewall_rules_output(action: pulumi.Input[Optional[Optional[_builtins.s
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_firewall_rules = cloudflare.get_firewall_rules(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_firewall_rules = cloudflare.firewall.get_rules(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         id="372e67954025e0ba6aaa6d586b9e0b60",
         action="block",
         description="mir",
@@ -208,6 +211,7 @@ def get_firewall_rules_output(action: pulumi.Input[Optional[Optional[_builtins.s
     :param _builtins.bool paused: When true, indicates that the firewall rule is currently paused.
     :param _builtins.str zone_id: Defines an identifier.
     """
+    pulumi.log.warn("""get_firewall_rules is deprecated: cloudflare:index/getFirewallRules:getFirewallRules has been deprecated in favor of cloudflare:firewall/rules:getRules""")
     __args__ = dict()
     __args__['action'] = action
     __args__['description'] = description

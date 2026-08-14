@@ -494,8 +494,13 @@ class _ZeroTrustDlpCustomProfileState:
         pulumi.set(self, "updated_at", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustDlpCustomProfile:ZeroTrustDlpCustomProfile has been deprecated in favor of cloudflare:zeroTrustDlpCustom/profile:Profile""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustDlpCustomProfile:ZeroTrustDlpCustomProfile")
 class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustDlpCustomProfile:ZeroTrustDlpCustomProfile has been deprecated in favor of cloudflare:zeroTrustDlpCustom/profile:Profile""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -526,7 +531,7 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_custom_profile = cloudflare.ZeroTrustDlpCustomProfile("example_zero_trust_dlp_custom_profile",
+        example_zero_trust_dlp_custom_profile = cloudflare.zerotrustdlpcustom.Profile("example_zero_trust_dlp_custom_profile",
             name="name",
             account_id="account_id",
             description="Custom profile with entries",
@@ -536,7 +541,7 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
                 "enabled": True,
             }])
         # Custom entry that is a part of this new profile
-        example_custom_entry = cloudflare.ZeroTrustDlpCustomEntry("example_custom_entry",
+        example_custom_entry = cloudflare.zerotrustdlpcustom.Entry("example_custom_entry",
             name="custom",
             account_id="account_id",
             profile_id=example_zero_trust_dlp_custom_profile.id,
@@ -583,7 +588,7 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_custom_profile = cloudflare.ZeroTrustDlpCustomProfile("example_zero_trust_dlp_custom_profile",
+        example_zero_trust_dlp_custom_profile = cloudflare.zerotrustdlpcustom.Profile("example_zero_trust_dlp_custom_profile",
             name="name",
             account_id="account_id",
             description="Custom profile with entries",
@@ -593,7 +598,7 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
                 "enabled": True,
             }])
         # Custom entry that is a part of this new profile
-        example_custom_entry = cloudflare.ZeroTrustDlpCustomEntry("example_custom_entry",
+        example_custom_entry = cloudflare.zerotrustdlpcustom.Entry("example_custom_entry",
             name="custom",
             account_id="account_id",
             profile_id=example_zero_trust_dlp_custom_profile.id,
@@ -639,6 +644,7 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
                  sensitivity_levels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpCustomProfileSensitivityLevelArgs', 'ZeroTrustDlpCustomProfileSensitivityLevelArgsDict']]]]] = None,
                  shared_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpCustomProfileSharedEntryArgs', 'ZeroTrustDlpCustomProfileSharedEntryArgsDict']]]]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustDlpCustomProfile is deprecated: cloudflare:index/zeroTrustDlpCustomProfile:ZeroTrustDlpCustomProfile has been deprecated in favor of cloudflare:zeroTrustDlpCustom/profile:Profile""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

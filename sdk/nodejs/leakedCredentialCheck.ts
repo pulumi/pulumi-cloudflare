@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleLeakedCredentialCheck = new cloudflare.LeakedCredentialCheck("example_leaked_credential_check", {
+ * const exampleLeakedCredentialCheck = new cloudflare.leakedcredentialcheck.LeakedCredentialCheck("example_leaked_credential_check", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     enabled: true,
  * });
@@ -27,6 +27,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck has been deprecated in favor of cloudflare:leakedCredentialCheck/leakedCredentialCheck:LeakedCredentialCheck
  */
 export class LeakedCredentialCheck extends pulumi.CustomResource {
     /**
@@ -39,6 +41,7 @@ export class LeakedCredentialCheck extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LeakedCredentialCheckState, opts?: pulumi.CustomResourceOptions): LeakedCredentialCheck {
+        pulumi.log.warn("LeakedCredentialCheck is deprecated: cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck has been deprecated in favor of cloudflare:leakedCredentialCheck/leakedCredentialCheck:LeakedCredentialCheck")
         return new LeakedCredentialCheck(name, <any>state, { ...opts, id: id });
     }
 
@@ -72,8 +75,11 @@ export class LeakedCredentialCheck extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck has been deprecated in favor of cloudflare:leakedCredentialCheck/leakedCredentialCheck:LeakedCredentialCheck */
     constructor(name: string, args: LeakedCredentialCheckArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck has been deprecated in favor of cloudflare:leakedCredentialCheck/leakedCredentialCheck:LeakedCredentialCheck */
     constructor(name: string, argsOrState?: LeakedCredentialCheckArgs | LeakedCredentialCheckState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("LeakedCredentialCheck is deprecated: cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck has been deprecated in favor of cloudflare:leakedCredentialCheck/leakedCredentialCheck:LeakedCredentialCheck")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

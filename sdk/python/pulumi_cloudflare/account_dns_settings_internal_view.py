@@ -159,8 +159,13 @@ class _AccountDnsSettingsInternalViewState:
         pulumi.set(self, "zones", value)
 
 
+warnings.warn("""cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView has been deprecated in favor of cloudflare:accountDnsSettingsInternal/view:View""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView")
 class AccountDnsSettingsInternalView(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView has been deprecated in favor of cloudflare:accountDnsSettingsInternal/view:View""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -181,7 +186,7 @@ class AccountDnsSettingsInternalView(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_account_dns_settings_internal_view = cloudflare.AccountDnsSettingsInternalView("example_account_dns_settings_internal_view",
+        example_account_dns_settings_internal_view = cloudflare.accountdnssettingsinternal.View("example_account_dns_settings_internal_view",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="my view",
             zones=["372e67954025e0ba6aaa6d586b9e0b59"])
@@ -218,7 +223,7 @@ class AccountDnsSettingsInternalView(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_account_dns_settings_internal_view = cloudflare.AccountDnsSettingsInternalView("example_account_dns_settings_internal_view",
+        example_account_dns_settings_internal_view = cloudflare.accountdnssettingsinternal.View("example_account_dns_settings_internal_view",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="my view",
             zones=["372e67954025e0ba6aaa6d586b9e0b59"])
@@ -250,6 +255,7 @@ class AccountDnsSettingsInternalView(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
+        pulumi.log.warn("""AccountDnsSettingsInternalView is deprecated: cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView has been deprecated in favor of cloudflare:accountDnsSettingsInternal/view:View""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

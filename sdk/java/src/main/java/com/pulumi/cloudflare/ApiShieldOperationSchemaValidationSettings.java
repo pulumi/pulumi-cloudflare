@@ -22,8 +22,8 @@ import javax.annotation.Nullable;
  * - `Domain API Gateway`
  * - `Domain API Gateway Read`
  * 
- * &gt; `cloudflare.ApiShieldOperationSchemaValidationSettings` is in a deprecation phase and will be removed in the future.
- *   Instead, please utilize the cloudflare.SchemaValidationOperationSettings resource instead.
+ * &gt; `cloudflare.apiShieldOperation.SchemaValidationSettings` is in a deprecation phase and will be removed in the future.
+ *   Instead, please utilize the cloudflare.schemaValidationOperationSettings.SchemaValidationOperationSettings resource instead.
  * 
  * ## Example Usage
  * 
@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ApiShieldOperationSchemaValidationSettings;
- * import com.pulumi.cloudflare.ApiShieldOperationSchemaValidationSettingsArgs;
+ * import com.pulumi.cloudflare.apiShieldOperation.SchemaValidationSettings;
+ * import com.pulumi.cloudflare.apiShieldOperation.SchemaValidationSettingsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleApiShieldOperationSchemaValidationSettings = new ApiShieldOperationSchemaValidationSettings("exampleApiShieldOperationSchemaValidationSettings", ApiShieldOperationSchemaValidationSettingsArgs.builder()
+ *         var exampleApiShieldOperationSchemaValidationSettings = new SchemaValidationSettings("exampleApiShieldOperationSchemaValidationSettings", SchemaValidationSettingsArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .operationId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
  *             .mitigationAction("block")
@@ -66,7 +66,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings example &#39;&lt;zone_id&gt;/&lt;operation_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldOperation/schemaValidationSettings:SchemaValidationSettings
+ * 
  */
+@Deprecated /* cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldOperation/schemaValidationSettings:SchemaValidationSettings */
 @ResourceType(type="cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings")
 public class ApiShieldOperationSchemaValidationSettings extends com.pulumi.resources.CustomResource {
     /**

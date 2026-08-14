@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZoneAutoOriginTlsKex = new Cloudflare.ZoneAutoOriginTlsKex("example_zone_auto_origin_tls_kex", new()
+    ///     var exampleZoneAutoOriginTlsKex = new Cloudflare.Modules.Zone.ZoneAutoOriginTlsKex("example_zone_auto_origin_tls_kex", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Enabled = true,
@@ -35,6 +35,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zoneAutoOriginTlsKex:ZoneAutoOriginTlsKex example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zoneAutoOriginTlsKex:ZoneAutoOriginTlsKex has been deprecated in favor of cloudflare:zone/autoOriginTlsKex:AutoOriginTlsKex")]
     [CloudflareResourceType("cloudflare:index/zoneAutoOriginTlsKex:ZoneAutoOriginTlsKex")]
     public partial class ZoneAutoOriginTlsKex : global::Pulumi.CustomResource
     {

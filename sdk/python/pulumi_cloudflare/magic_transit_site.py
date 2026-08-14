@@ -250,8 +250,13 @@ class _MagicTransitSiteState:
         pulumi.set(self, "secondary_connector_id", value)
 
 
+warnings.warn("""cloudflare:index/magicTransitSite:MagicTransitSite has been deprecated in favor of cloudflare:magicTransitSite/magicTransitSite:MagicTransitSite""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/magicTransitSite:MagicTransitSite")
 class MagicTransitSite(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/magicTransitSite:MagicTransitSite has been deprecated in favor of cloudflare:magicTransitSite/magicTransitSite:MagicTransitSite""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -278,7 +283,7 @@ class MagicTransitSite(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_magic_transit_site = cloudflare.MagicTransitSite("example_magic_transit_site",
+        example_magic_transit_site = cloudflare.magictransitsite.MagicTransitSite("example_magic_transit_site",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="site_1",
             connector_id="ac60d3d0435248289d446cedd870bcf4",
@@ -327,7 +332,7 @@ class MagicTransitSite(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_magic_transit_site = cloudflare.MagicTransitSite("example_magic_transit_site",
+        example_magic_transit_site = cloudflare.magictransitsite.MagicTransitSite("example_magic_transit_site",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="site_1",
             connector_id="ac60d3d0435248289d446cedd870bcf4",
@@ -370,6 +375,7 @@ class MagicTransitSite(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  secondary_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""MagicTransitSite is deprecated: cloudflare:index/magicTransitSite:MagicTransitSite has been deprecated in favor of cloudflare:magicTransitSite/magicTransitSite:MagicTransitSite""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -19,13 +19,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustOrganization = cloudflare.getZeroTrustOrganization({
+ * const exampleZeroTrustOrganization = cloudflare.zerotrust.getOrganization({
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustOrganization:getZeroTrustOrganization has been deprecated in favor of cloudflare:zeroTrust/organization:getOrganization */
 export function getZeroTrustOrganization(args?: GetZeroTrustOrganizationArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustOrganizationResult> {
+    pulumi.log.warn("getZeroTrustOrganization is deprecated: cloudflare:index/getZeroTrustOrganization:getZeroTrustOrganization has been deprecated in favor of cloudflare:zeroTrust/organization:getOrganization")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustOrganization:getZeroTrustOrganization", {
@@ -132,13 +134,15 @@ export interface GetZeroTrustOrganizationResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustOrganization = cloudflare.getZeroTrustOrganization({
+ * const exampleZeroTrustOrganization = cloudflare.zerotrust.getOrganization({
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustOrganization:getZeroTrustOrganization has been deprecated in favor of cloudflare:zeroTrust/organization:getOrganization */
 export function getZeroTrustOrganizationOutput(args?: GetZeroTrustOrganizationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustOrganizationResult> {
+    pulumi.log.warn("getZeroTrustOrganization is deprecated: cloudflare:index/getZeroTrustOrganization:getZeroTrustOrganization has been deprecated in favor of cloudflare:zeroTrust/organization:getOrganization")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustOrganization:getZeroTrustOrganization", {

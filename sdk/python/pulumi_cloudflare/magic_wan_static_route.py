@@ -288,8 +288,13 @@ class _MagicWanStaticRouteState:
         pulumi.set(self, "weight", value)
 
 
+warnings.warn("""cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute has been deprecated in favor of cloudflare:magicWan/staticRoute:StaticRoute""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute")
 class MagicWanStaticRoute(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute has been deprecated in favor of cloudflare:magicWan/staticRoute:StaticRoute""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -309,7 +314,7 @@ class MagicWanStaticRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_magic_wan_static_route = cloudflare.MagicWanStaticRoute("example_magic_wan_static_route",
+        example_magic_wan_static_route = cloudflare.magicwan.StaticRoute("example_magic_wan_static_route",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             nexthop="203.0.113.1",
             prefix="192.0.2.0/24",
@@ -352,7 +357,7 @@ class MagicWanStaticRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_magic_wan_static_route = cloudflare.MagicWanStaticRoute("example_magic_wan_static_route",
+        example_magic_wan_static_route = cloudflare.magicwan.StaticRoute("example_magic_wan_static_route",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             nexthop="203.0.113.1",
             prefix="192.0.2.0/24",
@@ -395,6 +400,7 @@ class MagicWanStaticRoute(pulumi.CustomResource):
                  scope: pulumi.Input[Optional[Union['MagicWanStaticRouteScopeArgs', 'MagicWanStaticRouteScopeArgsDict']]] = None,
                  weight: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
+        pulumi.log.warn("""MagicWanStaticRoute is deprecated: cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute has been deprecated in favor of cloudflare:magicWan/staticRoute:StaticRoute""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

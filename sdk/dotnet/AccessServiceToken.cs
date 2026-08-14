@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessServiceToken = new Cloudflare.ZeroTrustAccessServiceToken("example_zero_trust_access_service_token", new()
+    ///     var exampleZeroTrustAccessServiceToken = new Cloudflare.Modules.ZeroTrustAccessService.ZeroTrustAccessServiceToken("example_zero_trust_access_service_token", new()
     ///     {
     ///         Name = "CI/CD token",
     ///         ZoneId = "zone_id",
@@ -121,10 +121,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/accessServiceToken:AccessServiceToken" },
-                },
                 AdditionalSecretOutputs =
                 {
                     "clientSecret",

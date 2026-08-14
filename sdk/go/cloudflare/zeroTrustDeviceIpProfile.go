@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdeviceip"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDeviceIpProfile(ctx, "example_zero_trust_device_ip_profile", &cloudflare.ZeroTrustDeviceIpProfileArgs{
+//			_, err := zerotrustdeviceip.NewProfile(ctx, "example_zero_trust_device_ip_profile", &zerotrustdeviceip.ProfileArgs{
 //				AccountId:   pulumi.String("account_id"),
 //				Match:       pulumi.String("identity.email == \"test@cloudflare.com\""),
 //				Name:        pulumi.String("IPv4 Cloudflare Source IPs"),
@@ -54,6 +54,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustDeviceIpProfile:ZeroTrustDeviceIpProfile example '<account_id>/<profile_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustDeviceIpProfile:ZeroTrustDeviceIpProfile has been deprecated in favor of cloudflare:zeroTrustDeviceIp/profile:Profile
 type ZeroTrustDeviceIpProfile struct {
 	pulumi.CustomResourceState
 

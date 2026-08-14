@@ -6,7 +6,6 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.TeamsProxyEndpointArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.TeamsProxyEndpointState;
-import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -26,8 +25,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustGatewayProxyEndpoint;
- * import com.pulumi.cloudflare.ZeroTrustGatewayProxyEndpointArgs;
+ * import com.pulumi.cloudflare.zeroTrustGatewayProxy.Endpoint;
+ * import com.pulumi.cloudflare.zeroTrustGatewayProxy.EndpointArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -41,7 +40,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustGatewayProxyEndpoint = new ZeroTrustGatewayProxyEndpoint("exampleZeroTrustGatewayProxyEndpoint", ZeroTrustGatewayProxyEndpointArgs.builder()
+ *         var exampleZeroTrustGatewayProxyEndpoint = new Endpoint("exampleZeroTrustGatewayProxyEndpoint", EndpointArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
  *             .name("Devops team")
  *             .kind("ip")
@@ -181,9 +180,6 @@ public class TeamsProxyEndpoint extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .aliases(List.of(
-                Output.of(Alias.builder().type("cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint").build())
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

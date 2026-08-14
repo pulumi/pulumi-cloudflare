@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessServiceToken = new Cloudflare.ZeroTrustAccessServiceToken("example_zero_trust_access_service_token", new()
+    ///     var exampleZeroTrustAccessServiceToken = new Cloudflare.Modules.ZeroTrustAccessService.ZeroTrustAccessServiceToken("example_zero_trust_access_service_token", new()
     ///     {
     ///         Name = "CI/CD token",
     ///         ZoneId = "zone_id",
@@ -43,6 +43,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken example '&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;service_token_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken has been deprecated in favor of cloudflare:zeroTrustAccessService/token:Token")]
     [CloudflareResourceType("cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken")]
     public partial class ZeroTrustAccessServiceToken : global::Pulumi.CustomResource
     {

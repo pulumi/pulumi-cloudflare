@@ -629,8 +629,13 @@ class _OauthClientState:
         pulumi.set(self, "visibility", value)
 
 
+warnings.warn("""cloudflare:index/oauthClient:OauthClient has been deprecated in favor of cloudflare:oauth/client:Client""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/oauthClient:OauthClient")
 class OauthClient(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/oauthClient:OauthClient has been deprecated in favor of cloudflare:oauth/client:Client""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -663,7 +668,7 @@ class OauthClient(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_oauth_client = cloudflare.OauthClient("example_oauth_client",
+        example_oauth_client = cloudflare.oauth.Client("example_oauth_client",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             client_name="My OAuth App",
             grant_types=[
@@ -725,7 +730,7 @@ class OauthClient(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_oauth_client = cloudflare.OauthClient("example_oauth_client",
+        example_oauth_client = cloudflare.oauth.Client("example_oauth_client",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             client_name="My OAuth App",
             grant_types=[
@@ -780,6 +785,7 @@ class OauthClient(pulumi.CustomResource):
                  tos_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  visibility: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""OauthClient is deprecated: cloudflare:index/oauthClient:OauthClient has been deprecated in favor of cloudflare:oauth/client:Client""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

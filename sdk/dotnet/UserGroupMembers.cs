@@ -26,13 +26,13 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleUserGroupMembers = new Cloudflare.UserGroupMembers("example_user_group_members", new()
+    ///     var exampleUserGroupMembers = new Cloudflare.Modules.UserGroup.UserGroupMembers("example_user_group_members", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         UserGroupId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Members = new[]
     ///         {
-    ///             new Cloudflare.Inputs.UserGroupMembersMemberArgs
+    ///             new Cloudflare.Modules.UserGroup.Inputs.MembersMemberArgs
     ///             {
     ///                 Id = "023e105f4ecef8ad9ca31a8372d0c353",
     ///             },
@@ -48,6 +48,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/userGroupMembers:UserGroupMembers example '&lt;account_id&gt;/&lt;user_group_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/userGroupMembers:UserGroupMembers has been deprecated in favor of cloudflare:userGroup/members:Members")]
     [CloudflareResourceType("cloudflare:index/userGroupMembers:UserGroupMembers")]
     public partial class UserGroupMembers : global::Pulumi.CustomResource
     {

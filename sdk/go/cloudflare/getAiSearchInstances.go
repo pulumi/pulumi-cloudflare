@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: cloudflare:index/getAiSearchInstances:getAiSearchInstances has been deprecated in favor of cloudflare:aiSearch/instances:getInstances
 func LookupAiSearchInstances(ctx *pulumi.Context, args *LookupAiSearchInstancesArgs, opts ...pulumi.InvokeOption) (*LookupAiSearchInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAiSearchInstancesResult

@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_access_short_lived_certificates_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustAccessShortLivedCertificates:getZeroTrustAccessShortLivedCertificates has been deprecated in favor of cloudflare:zeroTrustAccessShortLived/certificates:getCertificates""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustAccessShortLivedCertificatesResult:
     """
@@ -102,7 +104,7 @@ def get_zero_trust_access_short_lived_certificates(account_id: Optional[_builtin
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_short_lived_certificates = cloudflare.get_zero_trust_access_short_lived_certificates(account_id="account_id",
+    example_zero_trust_access_short_lived_certificates = cloudflare.zerotrustaccessshortlived.get_certificates(account_id="account_id",
         zone_id="zone_id")
     ```
 
@@ -111,6 +113,7 @@ def get_zero_trust_access_short_lived_certificates(account_id: Optional[_builtin
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_zero_trust_access_short_lived_certificates is deprecated: cloudflare:index/getZeroTrustAccessShortLivedCertificates:getZeroTrustAccessShortLivedCertificates has been deprecated in favor of cloudflare:zeroTrustAccessShortLived/certificates:getCertificates""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -139,7 +142,7 @@ def get_zero_trust_access_short_lived_certificates_output(account_id: pulumi.Inp
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_short_lived_certificates = cloudflare.get_zero_trust_access_short_lived_certificates(account_id="account_id",
+    example_zero_trust_access_short_lived_certificates = cloudflare.zerotrustaccessshortlived.get_certificates(account_id="account_id",
         zone_id="zone_id")
     ```
 
@@ -148,6 +151,7 @@ def get_zero_trust_access_short_lived_certificates_output(account_id: pulumi.Inp
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_zero_trust_access_short_lived_certificates is deprecated: cloudflare:index/getZeroTrustAccessShortLivedCertificates:getZeroTrustAccessShortLivedCertificates has been deprecated in favor of cloudflare:zeroTrustAccessShortLived/certificates:getCertificates""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

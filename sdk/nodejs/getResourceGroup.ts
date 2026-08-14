@@ -19,13 +19,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleResourceGroup = cloudflare.getResourceGroup({
+ * const exampleResourceGroup = cloudflare.resource.getGroup({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     resourceGroupId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getResourceGroup:getResourceGroup has been deprecated in favor of cloudflare:resource/group:getGroup */
 export function getResourceGroup(args: GetResourceGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceGroupResult> {
+    pulumi.log.warn("getResourceGroup is deprecated: cloudflare:index/getResourceGroup:getResourceGroup has been deprecated in favor of cloudflare:resource/group:getGroup")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getResourceGroup:getResourceGroup", {
         "accountId": args.accountId,
@@ -89,13 +91,15 @@ export interface GetResourceGroupResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleResourceGroup = cloudflare.getResourceGroup({
+ * const exampleResourceGroup = cloudflare.resource.getGroup({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     resourceGroupId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getResourceGroup:getResourceGroup has been deprecated in favor of cloudflare:resource/group:getGroup */
 export function getResourceGroupOutput(args: GetResourceGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetResourceGroupResult> {
+    pulumi.log.warn("getResourceGroup is deprecated: cloudflare:index/getResourceGroup:getResourceGroup has been deprecated in favor of cloudflare:resource/group:getGroup")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getResourceGroup:getResourceGroup", {
         "accountId": args.accountId,

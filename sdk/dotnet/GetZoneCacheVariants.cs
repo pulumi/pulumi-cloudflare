@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZoneCacheVariants:getZoneCacheVariants has been deprecated in favor of cloudflare:zoneCache/variants:getVariants")]
     public static class GetZoneCacheVariants
     {
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZoneCacheVariants = Cloudflare.GetZoneCacheVariants.Invoke(new()
+        ///     var exampleZoneCacheVariants = Cloudflare.Modules.ZoneCache.GetVariants.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -58,7 +59,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZoneCacheVariants = Cloudflare.GetZoneCacheVariants.Invoke(new()
+        ///     var exampleZoneCacheVariants = Cloudflare.Modules.ZoneCache.GetVariants.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -87,7 +88,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZoneCacheVariants = Cloudflare.GetZoneCacheVariants.Invoke(new()
+        ///     var exampleZoneCacheVariants = Cloudflare.Modules.ZoneCache.GetVariants.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

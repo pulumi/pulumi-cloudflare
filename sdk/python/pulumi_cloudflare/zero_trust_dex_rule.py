@@ -189,8 +189,13 @@ class _ZeroTrustDexRuleState:
         pulumi.set(self, "updated_at", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule has been deprecated in favor of cloudflare:zeroTrustDex/rule:Rule""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule")
 class ZeroTrustDexRule(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule has been deprecated in favor of cloudflare:zeroTrustDex/rule:Rule""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -214,7 +219,7 @@ class ZeroTrustDexRule(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dex_rule = cloudflare.ZeroTrustDexRule("example_zero_trust_dex_rule",
+        example_zero_trust_dex_rule = cloudflare.zerotrustdex.Rule("example_zero_trust_dex_rule",
             account_id="01a7362d577a6c3019a474fd6f485823",
             match="match",
             name="name",
@@ -254,7 +259,7 @@ class ZeroTrustDexRule(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dex_rule = cloudflare.ZeroTrustDexRule("example_zero_trust_dex_rule",
+        example_zero_trust_dex_rule = cloudflare.zerotrustdex.Rule("example_zero_trust_dex_rule",
             account_id="01a7362d577a6c3019a474fd6f485823",
             match="match",
             name="name",
@@ -288,6 +293,7 @@ class ZeroTrustDexRule(pulumi.CustomResource):
                  match: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustDexRule is deprecated: cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule has been deprecated in favor of cloudflare:zeroTrustDex/rule:Rule""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

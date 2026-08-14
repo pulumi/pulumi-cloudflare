@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApiShieldDiscoveryOperation = new Cloudflare.ApiShieldDiscoveryOperation("example_api_shield_discovery_operation", new()
+    ///     var exampleApiShieldDiscoveryOperation = new Cloudflare.Modules.ApiShieldDiscovery.ApiShieldDiscoveryOperation("example_api_shield_discovery_operation", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         OperationId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
@@ -39,6 +39,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/apiShieldDiscoveryOperation:ApiShieldDiscoveryOperation has been deprecated in favor of cloudflare:apiShieldDiscovery/operation:Operation")]
     [CloudflareResourceType("cloudflare:index/apiShieldDiscoveryOperation:ApiShieldDiscoveryOperation")]
     public partial class ApiShieldDiscoveryOperation : global::Pulumi.CustomResource
     {

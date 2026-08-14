@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustDeviceDeploymentGroups:getZeroTrustDeviceDeploymentGroups has been deprecated in favor of cloudflare:zeroTrustDeviceDeploymentGroups/zeroTrustDeviceDeploymentGroups:getZeroTrustDeviceDeploymentGroups")]
     public static class GetZeroTrustDeviceDeploymentGroups
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDeviceDeploymentGroups = Cloudflare.GetZeroTrustDeviceDeploymentGroups.Invoke(new()
+        ///     var exampleZeroTrustDeviceDeploymentGroups = Cloudflare.Modules.ZeroTrustDeviceDeploymentGroups.GetZeroTrustDeviceDeploymentGroups.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         GroupId = "group_id",
@@ -45,7 +46,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDeviceDeploymentGroups = Cloudflare.GetZeroTrustDeviceDeploymentGroups.Invoke(new()
+        ///     var exampleZeroTrustDeviceDeploymentGroups = Cloudflare.Modules.ZeroTrustDeviceDeploymentGroups.GetZeroTrustDeviceDeploymentGroups.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         GroupId = "group_id",
@@ -68,7 +69,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDeviceDeploymentGroups = Cloudflare.GetZeroTrustDeviceDeploymentGroups.Invoke(new()
+        ///     var exampleZeroTrustDeviceDeploymentGroups = Cloudflare.Modules.ZeroTrustDeviceDeploymentGroups.GetZeroTrustDeviceDeploymentGroups.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         GroupId = "group_id",

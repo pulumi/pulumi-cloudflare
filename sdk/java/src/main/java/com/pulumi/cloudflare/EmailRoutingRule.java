@@ -34,10 +34,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.EmailRoutingRule;
- * import com.pulumi.cloudflare.EmailRoutingRuleArgs;
- * import com.pulumi.cloudflare.inputs.EmailRoutingRuleActionArgs;
- * import com.pulumi.cloudflare.inputs.EmailRoutingRuleMatcherArgs;
+ * import com.pulumi.cloudflare.emailRouting.Rule;
+ * import com.pulumi.cloudflare.emailRouting.RuleArgs;
+ * import com.pulumi.cloudflare.emailRouting.inputs.RuleActionArgs;
+ * import com.pulumi.cloudflare.emailRouting.inputs.RuleMatcherArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -51,13 +51,13 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var exampleEmailRoutingRule = new EmailRoutingRule("exampleEmailRoutingRule", EmailRoutingRuleArgs.builder()
+ *         var exampleEmailRoutingRule = new Rule("exampleEmailRoutingRule", RuleArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .actions(EmailRoutingRuleActionArgs.builder()
+ *             .actions(RuleActionArgs.builder()
  *                 .type("forward")
  *                 .value(Arrays.asList("destinationaddress}{@literal @}{@code example.net"))
  *                 .build())
- *             .matchers(EmailRoutingRuleMatcherArgs.builder()
+ *             .matchers(RuleMatcherArgs.builder()
  *                 .type("literal")
  *                 .field("to")
  *                 .value("test}{@literal @}{@code example.com")
@@ -80,7 +80,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/emailRoutingRule:EmailRoutingRule example &#39;&lt;zone_id&gt;/&lt;rule_identifier&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/emailRoutingRule:EmailRoutingRule has been deprecated in favor of cloudflare:emailRouting/rule:Rule
+ * 
  */
+@Deprecated /* cloudflare:index/emailRoutingRule:EmailRoutingRule has been deprecated in favor of cloudflare:emailRouting/rule:Rule */
 @ResourceType(type="cloudflare:index/emailRoutingRule:EmailRoutingRule")
 public class EmailRoutingRule extends com.pulumi.resources.CustomResource {
     /**

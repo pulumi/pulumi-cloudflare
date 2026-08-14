@@ -223,8 +223,13 @@ class _ZeroTrustGatewayPacfileState:
         pulumi.set(self, "url", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile has been deprecated in favor of cloudflare:zeroTrustGateway/pacfile:Pacfile""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile")
 class ZeroTrustGatewayPacfile(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile has been deprecated in favor of cloudflare:zeroTrustGateway/pacfile:Pacfile""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -247,7 +252,7 @@ class ZeroTrustGatewayPacfile(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_gateway_pacfile = cloudflare.ZeroTrustGatewayPacfile("example_zero_trust_gateway_pacfile",
+        example_zero_trust_gateway_pacfile = cloudflare.zerotrustgateway.Pacfile("example_zero_trust_gateway_pacfile",
             account_id="699d98642c564d2e855e9661899b7252",
             contents="function FindProxyForURL(url, host) { return \\"DIRECT\\"; }",
             name="Devops team",
@@ -287,7 +292,7 @@ class ZeroTrustGatewayPacfile(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_gateway_pacfile = cloudflare.ZeroTrustGatewayPacfile("example_zero_trust_gateway_pacfile",
+        example_zero_trust_gateway_pacfile = cloudflare.zerotrustgateway.Pacfile("example_zero_trust_gateway_pacfile",
             account_id="699d98642c564d2e855e9661899b7252",
             contents="function FindProxyForURL(url, host) { return \\"DIRECT\\"; }",
             name="Devops team",
@@ -323,6 +328,7 @@ class ZeroTrustGatewayPacfile(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  slug: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustGatewayPacfile is deprecated: cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile has been deprecated in favor of cloudflare:zeroTrustGateway/pacfile:Pacfile""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

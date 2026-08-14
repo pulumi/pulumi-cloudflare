@@ -17,13 +17,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersScriptSubdomain = cloudflare.getWorkersScriptSubdomain({
+ * const exampleWorkersScriptSubdomain = cloudflare.workersscript.getSubdomain({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     scriptName: "this-is_my_script-01",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkersScriptSubdomain:getWorkersScriptSubdomain has been deprecated in favor of cloudflare:workersScript/subdomain:getSubdomain */
 export function getWorkersScriptSubdomain(args: GetWorkersScriptSubdomainArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersScriptSubdomainResult> {
+    pulumi.log.warn("getWorkersScriptSubdomain is deprecated: cloudflare:index/getWorkersScriptSubdomain:getWorkersScriptSubdomain has been deprecated in favor of cloudflare:workersScript/subdomain:getSubdomain")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkersScriptSubdomain:getWorkersScriptSubdomain", {
         "accountId": args.accountId,
@@ -79,13 +81,15 @@ export interface GetWorkersScriptSubdomainResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersScriptSubdomain = cloudflare.getWorkersScriptSubdomain({
+ * const exampleWorkersScriptSubdomain = cloudflare.workersscript.getSubdomain({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     scriptName: "this-is_my_script-01",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkersScriptSubdomain:getWorkersScriptSubdomain has been deprecated in favor of cloudflare:workersScript/subdomain:getSubdomain */
 export function getWorkersScriptSubdomainOutput(args: GetWorkersScriptSubdomainOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersScriptSubdomainResult> {
+    pulumi.log.warn("getWorkersScriptSubdomain is deprecated: cloudflare:index/getWorkersScriptSubdomain:getWorkersScriptSubdomain has been deprecated in favor of cloudflare:workersScript/subdomain:getSubdomain")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkersScriptSubdomain:getWorkersScriptSubdomain", {
         "accountId": args.accountId,

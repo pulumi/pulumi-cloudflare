@@ -37,12 +37,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDlpCustomProfile;
- * import com.pulumi.cloudflare.ZeroTrustDlpCustomProfileArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomProfileSharedEntryArgs;
- * import com.pulumi.cloudflare.ZeroTrustDlpCustomEntry;
- * import com.pulumi.cloudflare.ZeroTrustDlpCustomEntryArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomEntryPatternArgs;
+ * import com.pulumi.cloudflare.zeroTrustDlpCustom.Profile;
+ * import com.pulumi.cloudflare.zeroTrustDlpCustom.ProfileArgs;
+ * import com.pulumi.cloudflare.zeroTrustDlpCustom.inputs.ProfileSharedEntryArgs;
+ * import com.pulumi.cloudflare.zeroTrustDlpCustom.Entry;
+ * import com.pulumi.cloudflare.zeroTrustDlpCustom.EntryArgs;
+ * import com.pulumi.cloudflare.zeroTrustDlpCustom.inputs.EntryPatternArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -56,11 +56,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustDlpCustomProfile = new ZeroTrustDlpCustomProfile("exampleZeroTrustDlpCustomProfile", ZeroTrustDlpCustomProfileArgs.builder()
+ *         var exampleZeroTrustDlpCustomProfile = new Profile("exampleZeroTrustDlpCustomProfile", ProfileArgs.builder()
  *             .name("name")
  *             .accountId("account_id")
  *             .description("Custom profile with entries")
- *             .sharedEntries(ZeroTrustDlpCustomProfileSharedEntryArgs.builder()
+ *             .sharedEntries(ProfileSharedEntryArgs.builder()
  *                 .entryId("56a8c060-01bb-4f89-ba1e-3ad42770a342")
  *                 .entryType("predefined")
  *                 .enabled(true)
@@ -68,11 +68,11 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Custom entry that is a part of this new profile
- *         var exampleCustomEntry = new ZeroTrustDlpCustomEntry("exampleCustomEntry", ZeroTrustDlpCustomEntryArgs.builder()
+ *         var exampleCustomEntry = new Entry("exampleCustomEntry", EntryArgs.builder()
  *             .name("custom")
  *             .accountId("account_id")
  *             .profileId(exampleZeroTrustDlpCustomProfile.id())
- *             .pattern(ZeroTrustDlpCustomEntryPatternArgs.builder()
+ *             .pattern(EntryPatternArgs.builder()
  *                 .regex("customentryregex")
  *                 .build())
  *             .enabled(true)
@@ -89,7 +89,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustDlpCustomProfile:ZeroTrustDlpCustomProfile example &#39;&lt;account_id&gt;/&lt;profile_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustDlpCustomProfile:ZeroTrustDlpCustomProfile has been deprecated in favor of cloudflare:zeroTrustDlpCustom/profile:Profile
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustDlpCustomProfile:ZeroTrustDlpCustomProfile has been deprecated in favor of cloudflare:zeroTrustDlpCustom/profile:Profile */
 @ResourceType(type="cloudflare:index/zeroTrustDlpCustomProfile:ZeroTrustDlpCustomProfile")
 public class ZeroTrustDlpCustomProfile extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

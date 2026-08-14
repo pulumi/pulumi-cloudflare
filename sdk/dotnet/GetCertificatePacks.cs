@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getCertificatePacks:getCertificatePacks has been deprecated in favor of cloudflare:certificate/packs:getPacks")]
     public static class GetCertificatePacks
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCertificatePacks = Cloudflare.GetCertificatePacks.Invoke(new()
+        ///     var exampleCertificatePacks = Cloudflare.Modules.Certificate.GetPacks.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Deploy = "staging",
@@ -56,7 +57,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCertificatePacks = Cloudflare.GetCertificatePacks.Invoke(new()
+        ///     var exampleCertificatePacks = Cloudflare.Modules.Certificate.GetPacks.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Deploy = "staging",
@@ -85,7 +86,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCertificatePacks = Cloudflare.GetCertificatePacks.Invoke(new()
+        ///     var exampleCertificatePacks = Cloudflare.Modules.Certificate.GetPacks.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Deploy = "staging",

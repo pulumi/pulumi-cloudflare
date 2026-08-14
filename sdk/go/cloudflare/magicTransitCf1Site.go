@@ -26,20 +26,20 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/magictransitcf1"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewMagicTransitCf1Site(ctx, "example_magic_transit_cf1_site", &cloudflare.MagicTransitCf1SiteArgs{
+//			_, err := magictransitcf1.NewSite(ctx, "example_magic_transit_cf1_site", &magictransitcf1.SiteArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Bodies: cloudflare.MagicTransitCf1SiteBodyArray{
-//					&cloudflare.MagicTransitCf1SiteBodyArgs{
+//				Bodies: magictransitcf1.SiteBodyArray{
+//					&magictransitcf1.SiteBodyArgs{
 //						Name:        pulumi.String("Pad 34"),
 //						Description: pulumi.String("Launch Pad 34"),
-//						Location: &cloudflare.MagicTransitCf1SiteBodyLocationArgs{
+//						Location: &magictransitcf1.SiteBodyLocationArgs{
 //							Lat:  pulumi.Float64(28.521339842093845),
 //							Long: pulumi.Float64(-80.56092644815843),
 //							Name: pulumi.String("Cape Canaveral"),
@@ -61,6 +61,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/magicTransitCf1Site:MagicTransitCf1Site example '<account_id>/<cf1_site_id>'
 // ```
+//
+// Deprecated: cloudflare:index/magicTransitCf1Site:MagicTransitCf1Site has been deprecated in favor of cloudflare:magicTransitCf1/site:Site
 type MagicTransitCf1Site struct {
 	pulumi.CustomResourceState
 

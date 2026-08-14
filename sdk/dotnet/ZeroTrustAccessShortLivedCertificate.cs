@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessShortLivedCertificate = new Cloudflare.ZeroTrustAccessShortLivedCertificate("example_zero_trust_access_short_lived_certificate", new()
+    ///     var exampleZeroTrustAccessShortLivedCertificate = new Cloudflare.Modules.ZeroTrustAccessShortLived.ZeroTrustAccessShortLivedCertificate("example_zero_trust_access_short_lived_certificate", new()
     ///     {
     ///         AppId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
     ///         ZoneId = "zone_id",
@@ -40,6 +40,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate example '&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;app_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate has been deprecated in favor of cloudflare:zeroTrustAccessShortLived/certificate:Certificate")]
     [CloudflareResourceType("cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate")]
     public partial class ZeroTrustAccessShortLivedCertificate : global::Pulumi.CustomResource
     {

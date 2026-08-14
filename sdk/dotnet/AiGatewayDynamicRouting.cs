@@ -25,18 +25,18 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAiGatewayDynamicRouting = new Cloudflare.AiGatewayDynamicRouting("example_ai_gateway_dynamic_routing", new()
+    ///     var exampleAiGatewayDynamicRouting = new Cloudflare.Modules.AiGateway.AiGatewayDynamicRouting("example_ai_gateway_dynamic_routing", new()
     ///     {
     ///         AccountId = "0d37909e38d3e99c29fa2cd343ac421a",
     ///         GatewayId = "54442216",
     ///         Elements = new[]
     ///         {
-    ///             new Cloudflare.Inputs.AiGatewayDynamicRoutingElementArgs
+    ///             new Cloudflare.Modules.AiGateway.Inputs.DynamicRoutingElementArgs
     ///             {
     ///                 Id = "id",
-    ///                 Outputs = new Cloudflare.Inputs.AiGatewayDynamicRoutingElementOutputsArgs
+    ///                 Outputs = new Cloudflare.Modules.AiGateway.Inputs.DynamicRoutingElementOutputsArgs
     ///                 {
-    ///                     Next = new Cloudflare.Inputs.AiGatewayDynamicRoutingElementOutputsNextArgs
+    ///                     Next = new Cloudflare.Modules.AiGateway.Inputs.DynamicRoutingElementOutputsNextArgs
     ///                     {
     ///                         ElementId = "elementId",
     ///                     },
@@ -56,6 +56,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/aiGatewayDynamicRouting:AiGatewayDynamicRouting example '&lt;account_id&gt;/&lt;gateway_id&gt;/&lt;id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/aiGatewayDynamicRouting:AiGatewayDynamicRouting has been deprecated in favor of cloudflare:aiGateway/dynamicRouting:DynamicRouting")]
     [CloudflareResourceType("cloudflare:index/aiGatewayDynamicRouting:AiGatewayDynamicRouting")]
     public partial class AiGatewayDynamicRouting : global::Pulumi.CustomResource
     {

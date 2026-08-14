@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDeviceDefaultProfileLocalDomainFallback = new cloudflare.ZeroTrustDeviceDefaultProfileLocalDomainFallback("example_zero_trust_device_default_profile_local_domain_fallback", {
+ * const exampleZeroTrustDeviceDefaultProfileLocalDomainFallback = new cloudflare.zerotrustdevicedefaultprofile.LocalDomainFallback("example_zero_trust_device_default_profile_local_domain_fallback", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     domains: [{
  *         suffix: "example.com",
@@ -32,6 +32,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustDeviceDefaultProfileLocalDomainFallback:ZeroTrustDeviceDefaultProfileLocalDomainFallback example '<account_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustDeviceDefaultProfileLocalDomainFallback:ZeroTrustDeviceDefaultProfileLocalDomainFallback has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/localDomainFallback:LocalDomainFallback
  */
 export class ZeroTrustDeviceDefaultProfileLocalDomainFallback extends pulumi.CustomResource {
     /**
@@ -44,6 +46,7 @@ export class ZeroTrustDeviceDefaultProfileLocalDomainFallback extends pulumi.Cus
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustDeviceDefaultProfileLocalDomainFallbackState, opts?: pulumi.CustomResourceOptions): ZeroTrustDeviceDefaultProfileLocalDomainFallback {
+        pulumi.log.warn("ZeroTrustDeviceDefaultProfileLocalDomainFallback is deprecated: cloudflare:index/zeroTrustDeviceDefaultProfileLocalDomainFallback:ZeroTrustDeviceDefaultProfileLocalDomainFallback has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/localDomainFallback:LocalDomainFallback")
         return new ZeroTrustDeviceDefaultProfileLocalDomainFallback(name, <any>state, { ...opts, id: id });
     }
 
@@ -71,8 +74,11 @@ export class ZeroTrustDeviceDefaultProfileLocalDomainFallback extends pulumi.Cus
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustDeviceDefaultProfileLocalDomainFallback:ZeroTrustDeviceDefaultProfileLocalDomainFallback has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/localDomainFallback:LocalDomainFallback */
     constructor(name: string, args: ZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustDeviceDefaultProfileLocalDomainFallback:ZeroTrustDeviceDefaultProfileLocalDomainFallback has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/localDomainFallback:LocalDomainFallback */
     constructor(name: string, argsOrState?: ZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs | ZeroTrustDeviceDefaultProfileLocalDomainFallbackState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustDeviceDefaultProfileLocalDomainFallback is deprecated: cloudflare:index/zeroTrustDeviceDefaultProfileLocalDomainFallback:ZeroTrustDeviceDefaultProfileLocalDomainFallback has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/localDomainFallback:LocalDomainFallback")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -7,7 +7,6 @@ import com.pulumi.cloudflare.TunnelArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.TunnelState;
 import com.pulumi.cloudflare.outputs.TunnelConnection;
-import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -37,8 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflared;
- * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflaredArgs;
+ * import com.pulumi.cloudflare.zeroTrustTunnelCloudflared.ZeroTrustTunnelCloudflared;
+ * import com.pulumi.cloudflare.zeroTrustTunnelCloudflared.ZeroTrustTunnelCloudflaredArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -327,9 +326,6 @@ public class Tunnel extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .aliases(List.of(
-                Output.of(Alias.builder().type("cloudflare:index/tunnel:Tunnel").build())
-            ))
             .additionalSecretOutputs(List.of(
                 "tunnelSecret"
             ))

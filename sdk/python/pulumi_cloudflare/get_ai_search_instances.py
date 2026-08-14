@@ -22,6 +22,8 @@ __all__ = [
     'get_ai_search_instances_output',
 ]
 
+warnings.warn("""cloudflare:index/getAiSearchInstances:getAiSearchInstances has been deprecated in favor of cloudflare:aiSearch/instances:getInstances""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAiSearchInstancesResult:
     """
@@ -139,6 +141,7 @@ def get_ai_search_instances(account_id: Optional[_builtins.str] = None,
            Available values: "asc", "desc".
     :param _builtins.str search: Filter instances whose id contains this string (case-insensitive).
     """
+    pulumi.log.warn("""get_ai_search_instances is deprecated: cloudflare:index/getAiSearchInstances:getAiSearchInstances has been deprecated in favor of cloudflare:aiSearch/instances:getInstances""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -175,6 +178,7 @@ def get_ai_search_instances_output(account_id: pulumi.Input[Optional[Optional[_b
            Available values: "asc", "desc".
     :param _builtins.str search: Filter instances whose id contains this string (case-insensitive).
     """
+    pulumi.log.warn("""get_ai_search_instances is deprecated: cloudflare:index/getAiSearchInstances:getAiSearchInstances has been deprecated in favor of cloudflare:aiSearch/instances:getInstances""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

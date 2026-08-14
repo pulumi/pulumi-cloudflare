@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.SchemaValidationSchemas;
- * import com.pulumi.cloudflare.SchemaValidationSchemasArgs;
+ * import com.pulumi.cloudflare.schemaValidationSchemas.SchemaValidationSchemas;
+ * import com.pulumi.cloudflare.schemaValidationSchemas.SchemaValidationSchemasArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -65,7 +65,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas example &#39;&lt;zone_id&gt;/&lt;schema_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas has been deprecated in favor of cloudflare:schemaValidationSchemas/schemaValidationSchemas:SchemaValidationSchemas
+ * 
  */
+@Deprecated /* cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas has been deprecated in favor of cloudflare:schemaValidationSchemas/schemaValidationSchemas:SchemaValidationSchemas */
 @ResourceType(type="cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas")
 public class SchemaValidationSchemas extends com.pulumi.resources.CustomResource {
     @Export(name="createdAt", refs={String.class}, tree="[0]")

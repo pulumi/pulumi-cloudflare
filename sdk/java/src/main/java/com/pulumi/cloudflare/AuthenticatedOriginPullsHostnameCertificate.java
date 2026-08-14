@@ -24,8 +24,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.AuthenticatedOriginPullsHostnameCertificate;
- * import com.pulumi.cloudflare.AuthenticatedOriginPullsHostnameCertificateArgs;
+ * import com.pulumi.cloudflare.authenticatedOriginPullsHostname.Certificate;
+ * import com.pulumi.cloudflare.authenticatedOriginPullsHostname.CertificateArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -39,7 +39,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleAuthenticatedOriginPullsHostnameCertificate = new AuthenticatedOriginPullsHostnameCertificate("exampleAuthenticatedOriginPullsHostnameCertificate", AuthenticatedOriginPullsHostnameCertificateArgs.builder()
+ *         var exampleAuthenticatedOriginPullsHostnameCertificate = new Certificate("exampleAuthenticatedOriginPullsHostnameCertificate", CertificateArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .certificate("""
  *   -----BEGIN CERTIFICATE-----
@@ -109,7 +109,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/authenticatedOriginPullsHostnameCertificate:AuthenticatedOriginPullsHostnameCertificate example &#39;&lt;zone_id&gt;/&lt;certificate_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/authenticatedOriginPullsHostnameCertificate:AuthenticatedOriginPullsHostnameCertificate has been deprecated in favor of cloudflare:authenticatedOriginPullsHostname/certificate:Certificate
+ * 
  */
+@Deprecated /* cloudflare:index/authenticatedOriginPullsHostnameCertificate:AuthenticatedOriginPullsHostnameCertificate has been deprecated in favor of cloudflare:authenticatedOriginPullsHostname/certificate:Certificate */
 @ResourceType(type="cloudflare:index/authenticatedOriginPullsHostnameCertificate:AuthenticatedOriginPullsHostnameCertificate")
 public class AuthenticatedOriginPullsHostnameCertificate extends com.pulumi.resources.CustomResource {
     /**

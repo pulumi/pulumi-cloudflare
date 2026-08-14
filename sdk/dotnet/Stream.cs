@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleStream = new Cloudflare.Stream("example_stream", new()
+    ///     var exampleStream = new Cloudflare.Modules.Stream.Stream("example_stream", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///     });
@@ -37,6 +37,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/stream:Stream has been deprecated in favor of cloudflare:stream/stream:Stream")]
     [CloudflareResourceType("cloudflare:index/stream:Stream")]
     public partial class Stream : global::Pulumi.CustomResource
     {

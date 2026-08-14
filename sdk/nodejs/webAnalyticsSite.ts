@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWebAnalyticsSite = new cloudflare.WebAnalyticsSite("example_web_analytics_site", {
+ * const exampleWebAnalyticsSite = new cloudflare.webanalytics.Site("example_web_analytics_site", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     autoInstall: true,
  *     host: "example.com",
@@ -31,6 +31,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example '<account_id>/<site_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/webAnalyticsSite:WebAnalyticsSite has been deprecated in favor of cloudflare:webAnalytics/site:Site
  */
 export class WebAnalyticsSite extends pulumi.CustomResource {
     /**
@@ -43,6 +45,7 @@ export class WebAnalyticsSite extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WebAnalyticsSiteState, opts?: pulumi.CustomResourceOptions): WebAnalyticsSite {
+        pulumi.log.warn("WebAnalyticsSite is deprecated: cloudflare:index/webAnalyticsSite:WebAnalyticsSite has been deprecated in favor of cloudflare:webAnalytics/site:Site")
         return new WebAnalyticsSite(name, <any>state, { ...opts, id: id });
     }
 
@@ -110,8 +113,11 @@ export class WebAnalyticsSite extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/webAnalyticsSite:WebAnalyticsSite has been deprecated in favor of cloudflare:webAnalytics/site:Site */
     constructor(name: string, args: WebAnalyticsSiteArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/webAnalyticsSite:WebAnalyticsSite has been deprecated in favor of cloudflare:webAnalytics/site:Site */
     constructor(name: string, argsOrState?: WebAnalyticsSiteArgs | WebAnalyticsSiteState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("WebAnalyticsSite is deprecated: cloudflare:index/webAnalyticsSite:WebAnalyticsSite has been deprecated in favor of cloudflare:webAnalytics/site:Site")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

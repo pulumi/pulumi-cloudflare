@@ -17,13 +17,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleOauthClient = cloudflare.getOauthClient({
+ * const exampleOauthClient = cloudflare.oauth.getClient({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     oauthClientId: "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getOauthClient:getOauthClient has been deprecated in favor of cloudflare:oauth/client:getClient */
 export function getOauthClient(args: GetOauthClientArgs, opts?: pulumi.InvokeOptions): Promise<GetOauthClientResult> {
+    pulumi.log.warn("getOauthClient is deprecated: cloudflare:index/getOauthClient:getOauthClient has been deprecated in favor of cloudflare:oauth/client:getClient")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getOauthClient:getOauthClient", {
         "accountId": args.accountId,
@@ -147,13 +149,15 @@ export interface GetOauthClientResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleOauthClient = cloudflare.getOauthClient({
+ * const exampleOauthClient = cloudflare.oauth.getClient({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     oauthClientId: "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getOauthClient:getOauthClient has been deprecated in favor of cloudflare:oauth/client:getClient */
 export function getOauthClientOutput(args: GetOauthClientOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOauthClientResult> {
+    pulumi.log.warn("getOauthClient is deprecated: cloudflare:index/getOauthClient:getOauthClient has been deprecated in favor of cloudflare:oauth/client:getClient")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getOauthClient:getOauthClient", {
         "accountId": args.accountId,

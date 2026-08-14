@@ -19,14 +19,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustgatewayproxy"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustGatewayProxyEndpoint(ctx, "example_zero_trust_gateway_proxy_endpoint", &cloudflare.ZeroTrustGatewayProxyEndpointArgs{
+//			_, err := zerotrustgatewayproxy.NewEndpoint(ctx, "example_zero_trust_gateway_proxy_endpoint", &zerotrustgatewayproxy.EndpointArgs{
 //				AccountId: pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				Name:      pulumi.String("Devops team"),
 //				Kind:      pulumi.String("ip"),
@@ -77,12 +77,6 @@ func NewTeamsProxyEndpoint(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TeamsProxyEndpoint
 	err := ctx.RegisterResource("cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint", name, args, &resource, opts...)

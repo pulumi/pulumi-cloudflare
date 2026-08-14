@@ -22,6 +22,8 @@ __all__ = [
     'get_magic_transit_cf1_sites_output',
 ]
 
+warnings.warn("""cloudflare:index/getMagicTransitCf1Sites:getMagicTransitCf1Sites has been deprecated in favor of cloudflare:magicTransitCf1/sites:getSites""", DeprecationWarning)
+
 @pulumi.output_type
 class GetMagicTransitCf1SitesResult:
     """
@@ -91,13 +93,14 @@ def get_magic_transit_cf1_sites(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_transit_cf1_sites = cloudflare.get_magic_transit_cf1_sites(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_magic_transit_cf1_sites = cloudflare.magictransitcf1.get_sites(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Identifier
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_magic_transit_cf1_sites is deprecated: cloudflare:index/getMagicTransitCf1Sites:getMagicTransitCf1Sites has been deprecated in favor of cloudflare:magicTransitCf1/sites:getSites""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -125,13 +128,14 @@ def get_magic_transit_cf1_sites_output(account_id: pulumi.Input[Optional[_builti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_transit_cf1_sites = cloudflare.get_magic_transit_cf1_sites(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_magic_transit_cf1_sites = cloudflare.magictransitcf1.get_sites(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Identifier
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_magic_transit_cf1_sites is deprecated: cloudflare:index/getMagicTransitCf1Sites:getMagicTransitCf1Sites has been deprecated in favor of cloudflare:magicTransitCf1/sites:getSites""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

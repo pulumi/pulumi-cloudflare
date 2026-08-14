@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustAccessCustomPage;
- * import com.pulumi.cloudflare.ZeroTrustAccessCustomPageArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccessCustom.Page;
+ * import com.pulumi.cloudflare.zeroTrustAccessCustom.PageArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustAccessCustomPage = new ZeroTrustAccessCustomPage("exampleZeroTrustAccessCustomPage", ZeroTrustAccessCustomPageArgs.builder()
+ *         var exampleZeroTrustAccessCustomPage = new Page("exampleZeroTrustAccessCustomPage", PageArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .customHtml("<html><body><h1>Access Denied</h1></body></html>")
  *             .name("name")
@@ -63,7 +63,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage example &#39;&lt;account_id&gt;/&lt;custom_page_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage has been deprecated in favor of cloudflare:zeroTrustAccessCustom/page:Page
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage has been deprecated in favor of cloudflare:zeroTrustAccessCustom/page:Page */
 @ResourceType(type="cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage")
 public class ZeroTrustAccessCustomPage extends com.pulumi.resources.CustomResource {
     /**

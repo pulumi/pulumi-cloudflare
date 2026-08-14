@@ -191,8 +191,13 @@ class _R2ManagedDomainState:
         pulumi.set(self, "jurisdiction", value)
 
 
+warnings.warn("""cloudflare:index/r2ManagedDomain:R2ManagedDomain has been deprecated in favor of cloudflare:r2/managedDomain:ManagedDomain""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/r2ManagedDomain:R2ManagedDomain")
 class R2ManagedDomain(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/r2ManagedDomain:R2ManagedDomain has been deprecated in favor of cloudflare:r2/managedDomain:ManagedDomain""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -209,7 +214,7 @@ class R2ManagedDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_r2_managed_domain = cloudflare.R2ManagedDomain("example_r2_managed_domain",
+        example_r2_managed_domain = cloudflare.r2.ManagedDomain("example_r2_managed_domain",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             bucket_name="example-bucket",
             enabled=True)
@@ -240,7 +245,7 @@ class R2ManagedDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_r2_managed_domain = cloudflare.R2ManagedDomain("example_r2_managed_domain",
+        example_r2_managed_domain = cloudflare.r2.ManagedDomain("example_r2_managed_domain",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             bucket_name="example-bucket",
             enabled=True)
@@ -271,6 +276,7 @@ class R2ManagedDomain(pulumi.CustomResource):
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""R2ManagedDomain is deprecated: cloudflare:index/r2ManagedDomain:R2ManagedDomain has been deprecated in favor of cloudflare:r2/managedDomain:ManagedDomain""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

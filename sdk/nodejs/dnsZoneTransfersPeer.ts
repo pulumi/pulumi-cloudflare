@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsZoneTransfersPeer = new cloudflare.DnsZoneTransfersPeer("example_dns_zone_transfers_peer", {
+ * const exampleDnsZoneTransfersPeer = new cloudflare.dnszonetransfers.Peer("example_dns_zone_transfers_peer", {
  *     accountId: "01a7362d577a6c3019a474fd6f485823",
  *     name: "my-peer-1",
  * });
@@ -27,6 +27,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer example '<account_id>/<peer_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer has been deprecated in favor of cloudflare:dnsZoneTransfers/peer:Peer
  */
 export class DnsZoneTransfersPeer extends pulumi.CustomResource {
     /**
@@ -39,6 +41,7 @@ export class DnsZoneTransfersPeer extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DnsZoneTransfersPeerState, opts?: pulumi.CustomResourceOptions): DnsZoneTransfersPeer {
+        pulumi.log.warn("DnsZoneTransfersPeer is deprecated: cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer has been deprecated in favor of cloudflare:dnsZoneTransfers/peer:Peer")
         return new DnsZoneTransfersPeer(name, <any>state, { ...opts, id: id });
     }
 
@@ -85,8 +88,11 @@ export class DnsZoneTransfersPeer extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer has been deprecated in favor of cloudflare:dnsZoneTransfers/peer:Peer */
     constructor(name: string, args: DnsZoneTransfersPeerArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer has been deprecated in favor of cloudflare:dnsZoneTransfers/peer:Peer */
     constructor(name: string, argsOrState?: DnsZoneTransfersPeerArgs | DnsZoneTransfersPeerState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("DnsZoneTransfersPeer is deprecated: cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer has been deprecated in favor of cloudflare:dnsZoneTransfers/peer:Peer")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -20,14 +20,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSchemaValidationSchemas = cloudflare.getSchemaValidationSchemas({
+ * const exampleSchemaValidationSchemas = cloudflare.schemavalidationschemas.getSchemaValidationSchemas({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     schemaId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     omitSource: true,
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getSchemaValidationSchemas:getSchemaValidationSchemas has been deprecated in favor of cloudflare:schemaValidationSchemas/schemaValidationSchemas:getSchemaValidationSchemas */
 export function getSchemaValidationSchemas(args?: GetSchemaValidationSchemasArgs, opts?: pulumi.InvokeOptions): Promise<GetSchemaValidationSchemasResult> {
+    pulumi.log.warn("getSchemaValidationSchemas is deprecated: cloudflare:index/getSchemaValidationSchemas:getSchemaValidationSchemas has been deprecated in favor of cloudflare:schemaValidationSchemas/schemaValidationSchemas:getSchemaValidationSchemas")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getSchemaValidationSchemas:getSchemaValidationSchemas", {
@@ -111,14 +113,16 @@ export interface GetSchemaValidationSchemasResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleSchemaValidationSchemas = cloudflare.getSchemaValidationSchemas({
+ * const exampleSchemaValidationSchemas = cloudflare.schemavalidationschemas.getSchemaValidationSchemas({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     schemaId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     omitSource: true,
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getSchemaValidationSchemas:getSchemaValidationSchemas has been deprecated in favor of cloudflare:schemaValidationSchemas/schemaValidationSchemas:getSchemaValidationSchemas */
 export function getSchemaValidationSchemasOutput(args?: GetSchemaValidationSchemasOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSchemaValidationSchemasResult> {
+    pulumi.log.warn("getSchemaValidationSchemas is deprecated: cloudflare:index/getSchemaValidationSchemas:getSchemaValidationSchemas has been deprecated in favor of cloudflare:schemaValidationSchemas/schemaValidationSchemas:getSchemaValidationSchemas")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getSchemaValidationSchemas:getSchemaValidationSchemas", {

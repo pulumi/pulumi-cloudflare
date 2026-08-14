@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/apishielddiscovery"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewApiShieldDiscoveryOperation(ctx, "example_api_shield_discovery_operation", &cloudflare.ApiShieldDiscoveryOperationArgs{
+//			_, err := apishielddiscovery.NewOperation(ctx, "example_api_shield_discovery_operation", &apishielddiscovery.OperationArgs{
 //				ZoneId:      pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				OperationId: pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
 //				State:       pulumi.String("review"),
@@ -48,6 +48,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/apiShieldDiscoveryOperation:ApiShieldDiscoveryOperation has been deprecated in favor of cloudflare:apiShieldDiscovery/operation:Operation
 type ApiShieldDiscoveryOperation struct {
 	pulumi.CustomResourceState
 

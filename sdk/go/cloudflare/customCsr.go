@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/custom"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewCustomCsr(ctx, "example_custom_csr", &cloudflare.CustomCsrArgs{
+//			_, err := custom.NewCsr(ctx, "example_custom_csr", &custom.CsrArgs{
 //				CommonName:   pulumi.String("example.com"),
 //				Country:      pulumi.String("US"),
 //				Locality:     pulumi.String("San Francisco"),
@@ -61,6 +61,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/customCsr:CustomCsr example '<{accounts|zones}/{account_id|zone_id}>/<custom_csr_id>'
 // ```
+//
+// Deprecated: cloudflare:index/customCsr:CustomCsr has been deprecated in favor of cloudflare:custom/csr:Csr
 type CustomCsr struct {
 	pulumi.CustomResourceState
 

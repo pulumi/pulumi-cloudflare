@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleArgoSmartRouting = new Cloudflare.ArgoSmartRouting("example_argo_smart_routing", new()
+    ///     var exampleArgoSmartRouting = new Cloudflare.Modules.Argo.ArgoSmartRouting("example_argo_smart_routing", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Value = "on",
@@ -40,6 +40,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/argoSmartRouting:ArgoSmartRouting example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/argoSmartRouting:ArgoSmartRouting has been deprecated in favor of cloudflare:argo/smartRouting:SmartRouting")]
     [CloudflareResourceType("cloudflare:index/argoSmartRouting:ArgoSmartRouting")]
     public partial class ArgoSmartRouting : global::Pulumi.CustomResource
     {

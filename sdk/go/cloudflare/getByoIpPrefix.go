@@ -27,14 +27,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/byoip"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetByoIpPrefix(ctx, &cloudflare.LookupByoIpPrefixArgs{
+//			_, err := byoip.GetPrefix(ctx, &byoip.GetPrefixArgs{
 //				AccountId: pulumi.StringRef("258def64c72dae45f3e4c8516e2111f2"),
 //				PrefixId:  "2af39739cc4e3b5910c918468bb89828",
 //			}, nil)
@@ -46,6 +46,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getByoIpPrefix:getByoIpPrefix has been deprecated in favor of cloudflare:byoIp/prefix:getPrefix
 func LookupByoIpPrefix(ctx *pulumi.Context, args *LookupByoIpPrefixArgs, opts ...pulumi.InvokeOption) (*LookupByoIpPrefixResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupByoIpPrefixResult

@@ -315,8 +315,13 @@ class _WebAnalyticsSiteState:
         pulumi.set(self, "zone_tag", value)
 
 
+warnings.warn("""cloudflare:index/webAnalyticsSite:WebAnalyticsSite has been deprecated in favor of cloudflare:webAnalytics/site:Site""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/webAnalyticsSite:WebAnalyticsSite")
 class WebAnalyticsSite(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/webAnalyticsSite:WebAnalyticsSite has been deprecated in favor of cloudflare:webAnalytics/site:Site""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -340,7 +345,7 @@ class WebAnalyticsSite(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_web_analytics_site = cloudflare.WebAnalyticsSite("example_web_analytics_site",
+        example_web_analytics_site = cloudflare.webanalytics.Site("example_web_analytics_site",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             auto_install=True,
             host="example.com",
@@ -381,7 +386,7 @@ class WebAnalyticsSite(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_web_analytics_site = cloudflare.WebAnalyticsSite("example_web_analytics_site",
+        example_web_analytics_site = cloudflare.webanalytics.Site("example_web_analytics_site",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             auto_install=True,
             host="example.com",
@@ -417,6 +422,7 @@ class WebAnalyticsSite(pulumi.CustomResource):
                  lite: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone_tag: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""WebAnalyticsSite is deprecated: cloudflare:index/webAnalyticsSite:WebAnalyticsSite has been deprecated in favor of cloudflare:webAnalytics/site:Site""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

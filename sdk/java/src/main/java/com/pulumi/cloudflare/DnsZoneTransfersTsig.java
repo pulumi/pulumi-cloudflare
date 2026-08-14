@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.DnsZoneTransfersTsig;
- * import com.pulumi.cloudflare.DnsZoneTransfersTsigArgs;
+ * import com.pulumi.cloudflare.dnsZoneTransfers.Tsig;
+ * import com.pulumi.cloudflare.dnsZoneTransfers.TsigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleDnsZoneTransfersTsig = new DnsZoneTransfersTsig("exampleDnsZoneTransfersTsig", DnsZoneTransfersTsigArgs.builder()
+ *         var exampleDnsZoneTransfersTsig = new Tsig("exampleDnsZoneTransfersTsig", TsigArgs.builder()
  *             .accountId("01a7362d577a6c3019a474fd6f485823")
  *             .algo("hmac-sha512.")
  *             .name("tsig.customer.cf.")
@@ -62,7 +62,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/dnsZoneTransfersTsig:DnsZoneTransfersTsig example &#39;&lt;account_id&gt;/&lt;tsig_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/dnsZoneTransfersTsig:DnsZoneTransfersTsig has been deprecated in favor of cloudflare:dnsZoneTransfers/tsig:Tsig
+ * 
  */
+@Deprecated /* cloudflare:index/dnsZoneTransfersTsig:DnsZoneTransfersTsig has been deprecated in favor of cloudflare:dnsZoneTransfers/tsig:Tsig */
 @ResourceType(type="cloudflare:index/dnsZoneTransfersTsig:DnsZoneTransfersTsig")
 public class DnsZoneTransfersTsig extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDeviceSettings = new Cloudflare.ZeroTrustDeviceSettings("example_zero_trust_device_settings", new()
+    ///     var exampleZeroTrustDeviceSettings = new Cloudflare.Modules.ZeroTrustDevice.ZeroTrustDeviceSettings("example_zero_trust_device_settings", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         DisableForTime = 0,
@@ -45,6 +45,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings has been deprecated in favor of cloudflare:zeroTrustDevice/settings:Settings")]
     [CloudflareResourceType("cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings")]
     public partial class ZeroTrustDeviceSettings : global::Pulumi.CustomResource
     {

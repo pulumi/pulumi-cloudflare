@@ -33,11 +33,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.HyperdriveConfig;
- * import com.pulumi.cloudflare.HyperdriveConfigArgs;
- * import com.pulumi.cloudflare.inputs.HyperdriveConfigOriginArgs;
- * import com.pulumi.cloudflare.inputs.HyperdriveConfigCachingArgs;
- * import com.pulumi.cloudflare.inputs.HyperdriveConfigMtlsArgs;
+ * import com.pulumi.cloudflare.hyperdrive.Config;
+ * import com.pulumi.cloudflare.hyperdrive.ConfigArgs;
+ * import com.pulumi.cloudflare.hyperdrive.inputs.ConfigOriginArgs;
+ * import com.pulumi.cloudflare.hyperdrive.inputs.ConfigCachingArgs;
+ * import com.pulumi.cloudflare.hyperdrive.inputs.ConfigMtlsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -51,10 +51,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleHyperdriveConfig = new HyperdriveConfig("exampleHyperdriveConfig", HyperdriveConfigArgs.builder()
+ *         var exampleHyperdriveConfig = new Config("exampleHyperdriveConfig", ConfigArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .name("example-hyperdrive")
- *             .origin(HyperdriveConfigOriginArgs.builder()
+ *             .origin(ConfigOriginArgs.builder()
  *                 .database("postgres")
  *                 .host("database.example.com")
  *                 .password("password")
@@ -62,10 +62,10 @@ import javax.annotation.Nullable;
  *                 .scheme("postgres")
  *                 .user("postgres")
  *                 .build())
- *             .caching(HyperdriveConfigCachingArgs.builder()
+ *             .caching(ConfigCachingArgs.builder()
  *                 .disabled(true)
  *                 .build())
- *             .mtls(HyperdriveConfigMtlsArgs.builder()
+ *             .mtls(ConfigMtlsArgs.builder()
  *                 .caCertificateId("00000000-0000-0000-0000-0000000000")
  *                 .mtlsCertificateId("00000000-0000-0000-0000-0000000000")
  *                 .sslmode("verify-full")
@@ -84,7 +84,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/hyperdriveConfig:HyperdriveConfig example &#39;&lt;account_id&gt;/&lt;hyperdrive_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/hyperdriveConfig:HyperdriveConfig has been deprecated in favor of cloudflare:hyperdrive/config:Config
+ * 
  */
+@Deprecated /* cloudflare:index/hyperdriveConfig:HyperdriveConfig has been deprecated in favor of cloudflare:hyperdrive/config:Config */
 @ResourceType(type="cloudflare:index/hyperdriveConfig:HyperdriveConfig")
 public class HyperdriveConfig extends com.pulumi.resources.CustomResource {
     /**

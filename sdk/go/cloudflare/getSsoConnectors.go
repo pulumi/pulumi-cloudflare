@@ -22,14 +22,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/sso"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetSsoConnectors(ctx, &cloudflare.LookupSsoConnectorsArgs{
+//			_, err := sso.LookupConnectors(ctx, &sso.LookupConnectorsArgs{
 //				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
@@ -40,6 +40,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getSsoConnectors:getSsoConnectors has been deprecated in favor of cloudflare:sso/connectors:getConnectors
 func LookupSsoConnectors(ctx *pulumi.Context, args *LookupSsoConnectorsArgs, opts ...pulumi.InvokeOption) (*LookupSsoConnectorsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSsoConnectorsResult

@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleFlagshipApp = new Cloudflare.FlagshipApp("example_flagship_app", new()
+    ///     var exampleFlagshipApp = new Cloudflare.Modules.Flagship.FlagshipApp("example_flagship_app", new()
     ///     {
     ///         AccountId = "account_id",
     ///         Name = "x",
@@ -40,6 +40,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/flagshipApp:FlagshipApp example '&lt;account_id&gt;/&lt;app_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/flagshipApp:FlagshipApp has been deprecated in favor of cloudflare:flagship/app:App")]
     [CloudflareResourceType("cloudflare:index/flagshipApp:FlagshipApp")]
     public partial class FlagshipApp : global::Pulumi.CustomResource
     {

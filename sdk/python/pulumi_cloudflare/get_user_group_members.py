@@ -22,6 +22,8 @@ __all__ = [
     'get_user_group_members_output',
 ]
 
+warnings.warn("""cloudflare:index/getUserGroupMembers:getUserGroupMembers has been deprecated in favor of cloudflare:userGroup/members:getMembers""", DeprecationWarning)
+
 @pulumi.output_type
 class GetUserGroupMembersResult:
     """
@@ -129,7 +131,7 @@ def get_user_group_members(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_user_group_members = cloudflare.get_user_group_members(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_user_group_members = cloudflare.usergroup.get_members(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         user_group_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="asc",
         fuzzy_email="user@")
@@ -142,6 +144,7 @@ def get_user_group_members(account_id: Optional[_builtins.str] = None,
     :param _builtins.str fuzzy_email: A string used for filtering members by partial email match.
     :param _builtins.str user_group_id: User Group identifier tag.
     """
+    pulumi.log.warn("""get_user_group_members is deprecated: cloudflare:index/getUserGroupMembers:getUserGroupMembers has been deprecated in favor of cloudflare:userGroup/members:getMembers""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction
@@ -175,7 +178,7 @@ def get_user_group_members_output(account_id: pulumi.Input[Optional[_builtins.st
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_user_group_members = cloudflare.get_user_group_members(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_user_group_members = cloudflare.usergroup.get_members(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         user_group_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="asc",
         fuzzy_email="user@")
@@ -188,6 +191,7 @@ def get_user_group_members_output(account_id: pulumi.Input[Optional[_builtins.st
     :param _builtins.str fuzzy_email: A string used for filtering members by partial email match.
     :param _builtins.str user_group_id: User Group identifier tag.
     """
+    pulumi.log.warn("""get_user_group_members is deprecated: cloudflare:index/getUserGroupMembers:getUserGroupMembers has been deprecated in favor of cloudflare:userGroup/members:getMembers""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['direction'] = direction

@@ -42,8 +42,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.CertificatePack;
- * import com.pulumi.cloudflare.CertificatePackArgs;
+ * import com.pulumi.cloudflare.certificate.Pack;
+ * import com.pulumi.cloudflare.certificate.PackArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleCertificatePack = new CertificatePack("exampleCertificatePack", CertificatePackArgs.builder()
+ *         var exampleCertificatePack = new Pack("exampleCertificatePack", PackArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .certificateAuthority("lets_encrypt")
  *             .hosts(            
@@ -84,7 +84,11 @@ import javax.annotation.Nullable;
  * While supported, importing isn&#39;t recommended and it is advised to replace the
  * certificate entirely instead.
  * 
+ * @deprecated
+ * cloudflare:index/certificatePack:CertificatePack has been deprecated in favor of cloudflare:certificate/pack:Pack
+ * 
  */
+@Deprecated /* cloudflare:index/certificatePack:CertificatePack has been deprecated in favor of cloudflare:certificate/pack:Pack */
 @ResourceType(type="cloudflare:index/certificatePack:CertificatePack")
 public class CertificatePack extends com.pulumi.resources.CustomResource {
     /**

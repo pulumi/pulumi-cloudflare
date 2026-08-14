@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/custom"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetCustomCsr(ctx, &cloudflare.LookupCustomCsrArgs{
+//			_, err := custom.LookupCsr(ctx, &custom.LookupCsrArgs{
 //				CustomCsrId: pulumi.StringRef("7b163417-1d2b-4c84-a38a-2fb7a0cd7752"),
 //				AccountId:   pulumi.StringRef("account_id"),
 //				ZoneId:      pulumi.StringRef("zone_id"),
@@ -43,6 +43,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getCustomCsr:getCustomCsr has been deprecated in favor of cloudflare:custom/csr:getCsr
 func LookupCustomCsr(ctx *pulumi.Context, args *LookupCustomCsrArgs, opts ...pulumi.InvokeOption) (*LookupCustomCsrResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomCsrResult

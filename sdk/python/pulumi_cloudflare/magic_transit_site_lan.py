@@ -378,8 +378,13 @@ class _MagicTransitSiteLanState:
         pulumi.set(self, "vlan_tag", value)
 
 
+warnings.warn("""cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan has been deprecated in favor of cloudflare:magicTransitSite/lan:Lan""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan")
 class MagicTransitSiteLan(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan has been deprecated in favor of cloudflare:magicTransitSite/lan:Lan""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -411,7 +416,7 @@ class MagicTransitSiteLan(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_magic_transit_site_lan = cloudflare.MagicTransitSiteLan("example_magic_transit_site_lan",
+        example_magic_transit_site_lan = cloudflare.magictransitsite.Lan("example_magic_transit_site_lan",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             site_id="023e105f4ecef8ad9ca31a8372d0c353",
             bond_id=2,
@@ -488,7 +493,7 @@ class MagicTransitSiteLan(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_magic_transit_site_lan = cloudflare.MagicTransitSiteLan("example_magic_transit_site_lan",
+        example_magic_transit_site_lan = cloudflare.magictransitsite.Lan("example_magic_transit_site_lan",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             site_id="023e105f4ecef8ad9ca31a8372d0c353",
             bond_id=2,
@@ -563,6 +568,7 @@ class MagicTransitSiteLan(pulumi.CustomResource):
                  static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict']]] = None,
                  vlan_tag: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
+        pulumi.log.warn("""MagicTransitSiteLan is deprecated: cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan has been deprecated in favor of cloudflare:magicTransitSite/lan:Lan""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

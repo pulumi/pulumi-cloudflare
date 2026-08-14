@@ -22,6 +22,8 @@ __all__ = [
     'get_registrar_domains_output',
 ]
 
+warnings.warn("""cloudflare:index/getRegistrarDomains:getRegistrarDomains has been deprecated in favor of cloudflare:registrar/domains:getDomains""", DeprecationWarning)
+
 @pulumi.output_type
 class GetRegistrarDomainsResult:
     """
@@ -84,13 +86,14 @@ def get_registrar_domains(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_registrar_domains = cloudflare.get_registrar_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_registrar_domains = cloudflare.registrar.get_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Identifier
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_registrar_domains is deprecated: cloudflare:index/getRegistrarDomains:getRegistrarDomains has been deprecated in favor of cloudflare:registrar/domains:getDomains""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -111,13 +114,14 @@ def get_registrar_domains_output(account_id: pulumi.Input[Optional[Optional[_bui
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_registrar_domains = cloudflare.get_registrar_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_registrar_domains = cloudflare.registrar.get_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: Identifier
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_registrar_domains is deprecated: cloudflare:index/getRegistrarDomains:getRegistrarDomains has been deprecated in favor of cloudflare:registrar/domains:getDomains""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

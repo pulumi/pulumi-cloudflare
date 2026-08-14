@@ -17,7 +17,7 @@ namespace Pulumi.Cloudflare
     /// - `Domain API Gateway`
     /// - `Domain API Gateway Read`
     /// 
-    /// &gt; `cloudflare.ApiShieldSchemaValidationSettings` is in a deprecation phase and will be removed in the future.
+    /// &gt; `cloudflare.apiShieldSchema.ValidationSettings` is in a deprecation phase and will be removed in the future.
     ///   Instead, please utilize the cloudflare.SchemaValidationSettings resource instead.
     /// 
     /// ## Example Usage
@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApiShieldSchemaValidationSettings = new Cloudflare.ApiShieldSchemaValidationSettings("example_api_shield_schema_validation_settings", new()
+    ///     var exampleApiShieldSchemaValidationSettings = new Cloudflare.Modules.ApiShieldSchema.ApiShieldSchemaValidationSettings("example_api_shield_schema_validation_settings", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         ValidationDefaultMitigationAction = "block",
@@ -46,6 +46,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldSchema/validationSettings:ValidationSettings")]
     [CloudflareResourceType("cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings")]
     public partial class ApiShieldSchemaValidationSettings : global::Pulumi.CustomResource
     {

@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleEmailSecurityImpersonationRegistries = cloudflare.getEmailSecurityImpersonationRegistries({
+ * const exampleEmailSecurityImpersonationRegistries = cloudflare.emailsecurityimpersonation.getRegistries({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "asc",
  *     order: "name",
@@ -27,7 +27,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getEmailSecurityImpersonationRegistries:getEmailSecurityImpersonationRegistries has been deprecated in favor of cloudflare:emailSecurityImpersonation/registries:getRegistries */
 export function getEmailSecurityImpersonationRegistries(args?: GetEmailSecurityImpersonationRegistriesArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailSecurityImpersonationRegistriesResult> {
+    pulumi.log.warn("getEmailSecurityImpersonationRegistries is deprecated: cloudflare:index/getEmailSecurityImpersonationRegistries:getEmailSecurityImpersonationRegistries has been deprecated in favor of cloudflare:emailSecurityImpersonation/registries:getRegistries")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getEmailSecurityImpersonationRegistries:getEmailSecurityImpersonationRegistries", {
@@ -119,7 +121,7 @@ export interface GetEmailSecurityImpersonationRegistriesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleEmailSecurityImpersonationRegistries = cloudflare.getEmailSecurityImpersonationRegistries({
+ * const exampleEmailSecurityImpersonationRegistries = cloudflare.emailsecurityimpersonation.getRegistries({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "asc",
  *     order: "name",
@@ -128,7 +130,9 @@ export interface GetEmailSecurityImpersonationRegistriesResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getEmailSecurityImpersonationRegistries:getEmailSecurityImpersonationRegistries has been deprecated in favor of cloudflare:emailSecurityImpersonation/registries:getRegistries */
 export function getEmailSecurityImpersonationRegistriesOutput(args?: GetEmailSecurityImpersonationRegistriesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailSecurityImpersonationRegistriesResult> {
+    pulumi.log.warn("getEmailSecurityImpersonationRegistries is deprecated: cloudflare:index/getEmailSecurityImpersonationRegistries:getEmailSecurityImpersonationRegistries has been deprecated in favor of cloudflare:emailSecurityImpersonation/registries:getRegistries")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getEmailSecurityImpersonationRegistries:getEmailSecurityImpersonationRegistries", {

@@ -23,6 +23,8 @@ __all__ = [
     'get_zero_trust_tunnel_cloudflared_virtual_network_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustTunnelCloudflaredVirtualNetwork:getZeroTrustTunnelCloudflaredVirtualNetwork has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflaredVirtual/network:getNetwork""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustTunnelCloudflaredVirtualNetworkResult:
     """
@@ -162,7 +164,7 @@ def get_zero_trust_tunnel_cloudflared_virtual_network(account_id: Optional[_buil
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_tunnel_cloudflared_virtual_network = cloudflare.get_zero_trust_tunnel_cloudflared_virtual_network(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_tunnel_cloudflared_virtual_network = cloudflare.zerotrusttunnelcloudflaredvirtual.get_network(account_id="699d98642c564d2e855e9661899b7252",
         virtual_network_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
     ```
 
@@ -170,6 +172,7 @@ def get_zero_trust_tunnel_cloudflared_virtual_network(account_id: Optional[_buil
     :param _builtins.str account_id: Cloudflare account ID
     :param _builtins.str virtual_network_id: UUID of the virtual network.
     """
+    pulumi.log.warn("""get_zero_trust_tunnel_cloudflared_virtual_network is deprecated: cloudflare:index/getZeroTrustTunnelCloudflaredVirtualNetwork:getZeroTrustTunnelCloudflaredVirtualNetwork has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflaredVirtual/network:getNetwork""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -205,7 +208,7 @@ def get_zero_trust_tunnel_cloudflared_virtual_network_output(account_id: pulumi.
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_tunnel_cloudflared_virtual_network = cloudflare.get_zero_trust_tunnel_cloudflared_virtual_network(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_tunnel_cloudflared_virtual_network = cloudflare.zerotrusttunnelcloudflaredvirtual.get_network(account_id="699d98642c564d2e855e9661899b7252",
         virtual_network_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
     ```
 
@@ -213,6 +216,7 @@ def get_zero_trust_tunnel_cloudflared_virtual_network_output(account_id: pulumi.
     :param _builtins.str account_id: Cloudflare account ID
     :param _builtins.str virtual_network_id: UUID of the virtual network.
     """
+    pulumi.log.warn("""get_zero_trust_tunnel_cloudflared_virtual_network is deprecated: cloudflare:index/getZeroTrustTunnelCloudflaredVirtualNetwork:getZeroTrustTunnelCloudflaredVirtualNetwork has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflaredVirtual/network:getNetwork""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

@@ -154,8 +154,13 @@ class _R2BucketLockState:
         pulumi.set(self, "rules", value)
 
 
+warnings.warn("""cloudflare:index/r2BucketLock:R2BucketLock has been deprecated in favor of cloudflare:r2Bucket/lock:Lock""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/r2BucketLock:R2BucketLock")
 class R2BucketLock(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/r2BucketLock:R2BucketLock has been deprecated in favor of cloudflare:r2Bucket/lock:Lock""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -172,7 +177,7 @@ class R2BucketLock(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_r2_bucket_lock = cloudflare.R2BucketLock("example_r2_bucket_lock",
+        example_r2_bucket_lock = cloudflare.r2bucket.Lock("example_r2_bucket_lock",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             bucket_name="example-bucket",
             rules=[{
@@ -210,7 +215,7 @@ class R2BucketLock(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_r2_bucket_lock = cloudflare.R2BucketLock("example_r2_bucket_lock",
+        example_r2_bucket_lock = cloudflare.r2bucket.Lock("example_r2_bucket_lock",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             bucket_name="example-bucket",
             rules=[{
@@ -249,6 +254,7 @@ class R2BucketLock(pulumi.CustomResource):
                  jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
                  rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['R2BucketLockRuleArgs', 'R2BucketLockRuleArgsDict']]]]] = None,
                  __props__=None):
+        pulumi.log.warn("""R2BucketLock is deprecated: cloudflare:index/r2BucketLock:R2BucketLock has been deprecated in favor of cloudflare:r2Bucket/lock:Lock""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

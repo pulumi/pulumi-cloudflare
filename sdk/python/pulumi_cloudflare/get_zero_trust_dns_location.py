@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_dns_location_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDnsLocation:getZeroTrustDnsLocation has been deprecated in favor of cloudflare:zeroTrustDns/location:getLocation""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDnsLocationResult:
     """
@@ -246,10 +248,11 @@ def get_zero_trust_dns_location(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dns_location = cloudflare.get_zero_trust_dns_location(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_dns_location = cloudflare.zerotrustdns.get_location(account_id="699d98642c564d2e855e9661899b7252",
         location_id="ed35569b41ce4d1facfe683550f54086")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_dns_location is deprecated: cloudflare:index/getZeroTrustDnsLocation:getZeroTrustDnsLocation has been deprecated in favor of cloudflare:zeroTrustDns/location:getLocation""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['locationId'] = location_id
@@ -290,10 +293,11 @@ def get_zero_trust_dns_location_output(account_id: pulumi.Input[Optional[Optiona
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dns_location = cloudflare.get_zero_trust_dns_location(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_dns_location = cloudflare.zerotrustdns.get_location(account_id="699d98642c564d2e855e9661899b7252",
         location_id="ed35569b41ce4d1facfe683550f54086")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_dns_location is deprecated: cloudflare:index/getZeroTrustDnsLocation:getZeroTrustDnsLocation has been deprecated in favor of cloudflare:zeroTrustDns/location:getLocation""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['locationId'] = location_id

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getStreamDownload:getStreamDownload has been deprecated in favor of cloudflare:stream/download:getDownload")]
     public static class GetStreamDownload
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleStreamDownload = Cloudflare.GetStreamDownload.Invoke(new()
+        ///     var exampleStreamDownload = Cloudflare.Modules.Stream.GetDownload.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Identifier = "ea95132c15732412d22c1476fa83f27a",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleStreamDownload = Cloudflare.GetStreamDownload.Invoke(new()
+        ///     var exampleStreamDownload = Cloudflare.Modules.Stream.GetDownload.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Identifier = "ea95132c15732412d22c1476fa83f27a",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleStreamDownload = Cloudflare.GetStreamDownload.Invoke(new()
+        ///     var exampleStreamDownload = Cloudflare.Modules.Stream.GetDownload.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Identifier = "ea95132c15732412d22c1476fa83f27a",

@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/image"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewImage(ctx, "example_image", &cloudflare.ImageArgs{
+//			_, err := image.NewImage(ctx, "example_image", &image.ImageArgs{
 //				AccountId:         pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ImageId:           pulumi.String("id"),
 //				Creator:           pulumi.String("creator"),
@@ -54,6 +54,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/image:Image example '<account_id>/<image_id>'
 // ```
+//
+// Deprecated: cloudflare:index/image:Image has been deprecated in favor of cloudflare:image/image:Image
 type Image struct {
 	pulumi.CustomResourceState
 

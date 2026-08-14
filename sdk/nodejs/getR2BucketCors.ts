@@ -13,13 +13,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleR2BucketCors = cloudflare.getR2BucketCors({
+ * const exampleR2BucketCors = cloudflare.r2bucket.getCors({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getR2BucketCors:getR2BucketCors has been deprecated in favor of cloudflare:r2Bucket/cors:getCors */
 export function getR2BucketCors(args: GetR2BucketCorsArgs, opts?: pulumi.InvokeOptions): Promise<GetR2BucketCorsResult> {
+    pulumi.log.warn("getR2BucketCors is deprecated: cloudflare:index/getR2BucketCors:getR2BucketCors has been deprecated in favor of cloudflare:r2Bucket/cors:getCors")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getR2BucketCors:getR2BucketCors", {
         "accountId": args.accountId,
@@ -62,13 +64,15 @@ export interface GetR2BucketCorsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleR2BucketCors = cloudflare.getR2BucketCors({
+ * const exampleR2BucketCors = cloudflare.r2bucket.getCors({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getR2BucketCors:getR2BucketCors has been deprecated in favor of cloudflare:r2Bucket/cors:getCors */
 export function getR2BucketCorsOutput(args: GetR2BucketCorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetR2BucketCorsResult> {
+    pulumi.log.warn("getR2BucketCors is deprecated: cloudflare:index/getR2BucketCors:getR2BucketCors has been deprecated in favor of cloudflare:r2Bucket/cors:getCors")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getR2BucketCors:getR2BucketCors", {
         "accountId": args.accountId,

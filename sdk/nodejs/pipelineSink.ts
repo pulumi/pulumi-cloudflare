@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const examplePipelineSink = new cloudflare.PipelineSink("example_pipeline_sink", {
+ * const examplePipelineSink = new cloudflare.pipeline.Sink("example_pipeline_sink", {
  *     accountId: "0123105f4ecef8ad9ca31a8372d0c353",
  *     name: "my_sink",
  *     type: "r2",
@@ -75,6 +75,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/pipelineSink:PipelineSink example '<account_id>/<sink_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/pipelineSink:PipelineSink has been deprecated in favor of cloudflare:pipeline/sink:Sink
  */
 export class PipelineSink extends pulumi.CustomResource {
     /**
@@ -87,6 +89,7 @@ export class PipelineSink extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: PipelineSinkState, opts?: pulumi.CustomResourceOptions): PipelineSink {
+        pulumi.log.warn("PipelineSink is deprecated: cloudflare:index/pipelineSink:PipelineSink has been deprecated in favor of cloudflare:pipeline/sink:Sink")
         return new PipelineSink(name, <any>state, { ...opts, id: id });
     }
 
@@ -133,8 +136,11 @@ export class PipelineSink extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/pipelineSink:PipelineSink has been deprecated in favor of cloudflare:pipeline/sink:Sink */
     constructor(name: string, args: PipelineSinkArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/pipelineSink:PipelineSink has been deprecated in favor of cloudflare:pipeline/sink:Sink */
     constructor(name: string, argsOrState?: PipelineSinkArgs | PipelineSinkState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("PipelineSink is deprecated: cloudflare:index/pipelineSink:PipelineSink has been deprecated in favor of cloudflare:pipeline/sink:Sink")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

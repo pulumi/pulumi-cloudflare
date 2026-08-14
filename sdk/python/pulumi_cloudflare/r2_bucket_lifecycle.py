@@ -154,8 +154,13 @@ class _R2BucketLifecycleState:
         pulumi.set(self, "rules", value)
 
 
+warnings.warn("""cloudflare:index/r2BucketLifecycle:R2BucketLifecycle has been deprecated in favor of cloudflare:r2Bucket/lifecycle:Lifecycle""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/r2BucketLifecycle:R2BucketLifecycle")
 class R2BucketLifecycle(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/r2BucketLifecycle:R2BucketLifecycle has been deprecated in favor of cloudflare:r2Bucket/lifecycle:Lifecycle""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -172,7 +177,7 @@ class R2BucketLifecycle(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_r2_bucket_lifecycle = cloudflare.R2BucketLifecycle("example_r2_bucket_lifecycle",
+        example_r2_bucket_lifecycle = cloudflare.r2bucket.Lifecycle("example_r2_bucket_lifecycle",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             bucket_name="example-bucket",
             rules=[{
@@ -227,7 +232,7 @@ class R2BucketLifecycle(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_r2_bucket_lifecycle = cloudflare.R2BucketLifecycle("example_r2_bucket_lifecycle",
+        example_r2_bucket_lifecycle = cloudflare.r2bucket.Lifecycle("example_r2_bucket_lifecycle",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             bucket_name="example-bucket",
             rules=[{
@@ -283,6 +288,7 @@ class R2BucketLifecycle(pulumi.CustomResource):
                  jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
                  rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['R2BucketLifecycleRuleArgs', 'R2BucketLifecycleRuleArgsDict']]]]] = None,
                  __props__=None):
+        pulumi.log.warn("""R2BucketLifecycle is deprecated: cloudflare:index/r2BucketLifecycle:R2BucketLifecycle has been deprecated in favor of cloudflare:r2Bucket/lifecycle:Lifecycle""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

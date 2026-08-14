@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustRiskBehavior:getZeroTrustRiskBehavior has been deprecated in favor of cloudflare:zeroTrust/riskBehavior:getRiskBehavior")]
     public static class GetZeroTrustRiskBehavior
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustRiskBehavior = Cloudflare.GetZeroTrustRiskBehavior.Invoke(new()
+        ///     var exampleZeroTrustRiskBehavior = Cloudflare.Modules.ZeroTrust.GetRiskBehavior.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///     });
@@ -54,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustRiskBehavior = Cloudflare.GetZeroTrustRiskBehavior.Invoke(new()
+        ///     var exampleZeroTrustRiskBehavior = Cloudflare.Modules.ZeroTrust.GetRiskBehavior.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///     });
@@ -81,7 +82,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustRiskBehavior = Cloudflare.GetZeroTrustRiskBehavior.Invoke(new()
+        ///     var exampleZeroTrustRiskBehavior = Cloudflare.Modules.ZeroTrust.GetRiskBehavior.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///     });

@@ -21,6 +21,8 @@ __all__ = [
     'get_zero_trust_gateway_certificate_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustGatewayCertificate:getZeroTrustGatewayCertificate has been deprecated in favor of cloudflare:zeroTrustGateway/certificate:getCertificate""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustGatewayCertificateResult:
     """
@@ -202,13 +204,14 @@ def get_zero_trust_gateway_certificate(account_id: Optional[_builtins.str] = Non
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_gateway_certificate = cloudflare.get_zero_trust_gateway_certificate(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_gateway_certificate = cloudflare.zerotrustgateway.get_certificate(account_id="699d98642c564d2e855e9661899b7252",
         certificate_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
 
 
     :param _builtins.str certificate_id: Identify the certificate with a UUID.
     """
+    pulumi.log.warn("""get_zero_trust_gateway_certificate is deprecated: cloudflare:index/getZeroTrustGatewayCertificate:getZeroTrustGatewayCertificate has been deprecated in favor of cloudflare:zeroTrustGateway/certificate:getCertificate""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['certificateId'] = certificate_id
@@ -240,13 +243,14 @@ def get_zero_trust_gateway_certificate_output(account_id: pulumi.Input[Optional[
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_gateway_certificate = cloudflare.get_zero_trust_gateway_certificate(account_id="699d98642c564d2e855e9661899b7252",
+    example_zero_trust_gateway_certificate = cloudflare.zerotrustgateway.get_certificate(account_id="699d98642c564d2e855e9661899b7252",
         certificate_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
 
 
     :param _builtins.str certificate_id: Identify the certificate with a UUID.
     """
+    pulumi.log.warn("""get_zero_trust_gateway_certificate is deprecated: cloudflare:index/getZeroTrustGatewayCertificate:getZeroTrustGatewayCertificate has been deprecated in favor of cloudflare:zeroTrustGateway/certificate:getCertificate""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['certificateId'] = certificate_id

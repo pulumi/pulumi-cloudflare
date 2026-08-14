@@ -18,14 +18,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/authenticatedoriginpulls"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetAuthenticatedOriginPullsCertificates(ctx, &cloudflare.LookupAuthenticatedOriginPullsCertificatesArgs{
+//			_, err := authenticatedoriginpulls.GetCertificates(ctx, &authenticatedoriginpulls.GetCertificatesArgs{
 //				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
@@ -36,6 +36,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getAuthenticatedOriginPullsCertificates:getAuthenticatedOriginPullsCertificates has been deprecated in favor of cloudflare:authenticatedOriginPulls/certificates:getCertificates
 func LookupAuthenticatedOriginPullsCertificates(ctx *pulumi.Context, args *LookupAuthenticatedOriginPullsCertificatesArgs, opts ...pulumi.InvokeOption) (*LookupAuthenticatedOriginPullsCertificatesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAuthenticatedOriginPullsCertificatesResult

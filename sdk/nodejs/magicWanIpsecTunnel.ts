@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicWanIpsecTunnel = new cloudflare.MagicWanIpsecTunnel("example_magic_wan_ipsec_tunnel", {
+ * const exampleMagicWanIpsecTunnel = new cloudflare.magicwan.IpsecTunnel("example_magic_wan_ipsec_tunnel", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     cloudflareEndpoint: "203.0.113.1",
  *     interfaceAddress: "192.0.2.0/31",
@@ -49,6 +49,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel example '<account_id>/<ipsec_tunnel_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel has been deprecated in favor of cloudflare:magicWan/ipsecTunnel:IpsecTunnel
  */
 export class MagicWanIpsecTunnel extends pulumi.CustomResource {
     /**
@@ -61,6 +63,7 @@ export class MagicWanIpsecTunnel extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: MagicWanIpsecTunnelState, opts?: pulumi.CustomResourceOptions): MagicWanIpsecTunnel {
+        pulumi.log.warn("MagicWanIpsecTunnel is deprecated: cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel has been deprecated in favor of cloudflare:magicWan/ipsecTunnel:IpsecTunnel")
         return new MagicWanIpsecTunnel(name, <any>state, { ...opts, id: id });
     }
 
@@ -146,8 +149,11 @@ export class MagicWanIpsecTunnel extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel has been deprecated in favor of cloudflare:magicWan/ipsecTunnel:IpsecTunnel */
     constructor(name: string, args: MagicWanIpsecTunnelArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel has been deprecated in favor of cloudflare:magicWan/ipsecTunnel:IpsecTunnel */
     constructor(name: string, argsOrState?: MagicWanIpsecTunnelArgs | MagicWanIpsecTunnelState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("MagicWanIpsecTunnel is deprecated: cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel has been deprecated in favor of cloudflare:magicWan/ipsecTunnel:IpsecTunnel")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

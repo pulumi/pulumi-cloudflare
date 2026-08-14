@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/emailsecurityimpersonation"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewEmailSecurityImpersonationRegistry(ctx, "example_email_security_impersonation_registry", &cloudflare.EmailSecurityImpersonationRegistryArgs{
+//			_, err := emailsecurityimpersonation.NewRegistry(ctx, "example_email_security_impersonation_registry", &emailsecurityimpersonation.RegistryArgs{
 //				AccountId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Email:        pulumi.String("email"),
 //				IsEmailRegex: pulumi.Bool(true),
@@ -51,6 +51,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry example '<account_id>/<display_name_id>'
 // ```
+//
+// Deprecated: cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry has been deprecated in favor of cloudflare:emailSecurityImpersonation/registry:Registry
 type EmailSecurityImpersonationRegistry struct {
 	pulumi.CustomResourceState
 

@@ -11,13 +11,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustResourceLibraryCategory = cloudflare.getZeroTrustResourceLibraryCategory({
+ * const exampleZeroTrustResourceLibraryCategory = cloudflare.zerotrustresourcelibrary.getCategory({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     id: "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustResourceLibraryCategory:getZeroTrustResourceLibraryCategory has been deprecated in favor of cloudflare:zeroTrustResourceLibrary/category:getCategory */
 export function getZeroTrustResourceLibraryCategory(args: GetZeroTrustResourceLibraryCategoryArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustResourceLibraryCategoryResult> {
+    pulumi.log.warn("getZeroTrustResourceLibraryCategory is deprecated: cloudflare:index/getZeroTrustResourceLibraryCategory:getZeroTrustResourceLibraryCategory has been deprecated in favor of cloudflare:zeroTrustResourceLibrary/category:getCategory")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustResourceLibraryCategory:getZeroTrustResourceLibraryCategory", {
         "accountId": args.accountId,
@@ -65,13 +67,15 @@ export interface GetZeroTrustResourceLibraryCategoryResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustResourceLibraryCategory = cloudflare.getZeroTrustResourceLibraryCategory({
+ * const exampleZeroTrustResourceLibraryCategory = cloudflare.zerotrustresourcelibrary.getCategory({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     id: "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustResourceLibraryCategory:getZeroTrustResourceLibraryCategory has been deprecated in favor of cloudflare:zeroTrustResourceLibrary/category:getCategory */
 export function getZeroTrustResourceLibraryCategoryOutput(args: GetZeroTrustResourceLibraryCategoryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustResourceLibraryCategoryResult> {
+    pulumi.log.warn("getZeroTrustResourceLibraryCategory is deprecated: cloudflare:index/getZeroTrustResourceLibraryCategory:getZeroTrustResourceLibraryCategory has been deprecated in favor of cloudflare:zeroTrustResourceLibrary/category:getCategory")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustResourceLibraryCategory:getZeroTrustResourceLibraryCategory", {
         "accountId": args.accountId,

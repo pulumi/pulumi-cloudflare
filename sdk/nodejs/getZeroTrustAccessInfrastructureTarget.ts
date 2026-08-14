@@ -13,13 +13,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessInfrastructureTarget = cloudflare.getZeroTrustAccessInfrastructureTarget({
+ * const exampleZeroTrustAccessInfrastructureTarget = cloudflare.zerotrustaccessinfrastructure.getTarget({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     targetId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessInfrastructureTarget:getZeroTrustAccessInfrastructureTarget has been deprecated in favor of cloudflare:zeroTrustAccessInfrastructure/target:getTarget */
 export function getZeroTrustAccessInfrastructureTarget(args?: GetZeroTrustAccessInfrastructureTargetArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessInfrastructureTargetResult> {
+    pulumi.log.warn("getZeroTrustAccessInfrastructureTarget is deprecated: cloudflare:index/getZeroTrustAccessInfrastructureTarget:getZeroTrustAccessInfrastructureTarget has been deprecated in favor of cloudflare:zeroTrustAccessInfrastructure/target:getTarget")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessInfrastructureTarget:getZeroTrustAccessInfrastructureTarget", {
@@ -85,13 +87,15 @@ export interface GetZeroTrustAccessInfrastructureTargetResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustAccessInfrastructureTarget = cloudflare.getZeroTrustAccessInfrastructureTarget({
+ * const exampleZeroTrustAccessInfrastructureTarget = cloudflare.zerotrustaccessinfrastructure.getTarget({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     targetId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustAccessInfrastructureTarget:getZeroTrustAccessInfrastructureTarget has been deprecated in favor of cloudflare:zeroTrustAccessInfrastructure/target:getTarget */
 export function getZeroTrustAccessInfrastructureTargetOutput(args?: GetZeroTrustAccessInfrastructureTargetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessInfrastructureTargetResult> {
+    pulumi.log.warn("getZeroTrustAccessInfrastructureTarget is deprecated: cloudflare:index/getZeroTrustAccessInfrastructureTarget:getZeroTrustAccessInfrastructureTarget has been deprecated in favor of cloudflare:zeroTrustAccessInfrastructure/target:getTarget")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessInfrastructureTarget:getZeroTrustAccessInfrastructureTarget", {

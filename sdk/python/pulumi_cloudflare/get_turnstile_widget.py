@@ -23,6 +23,8 @@ __all__ = [
     'get_turnstile_widget_output',
 ]
 
+warnings.warn("""cloudflare:index/getTurnstileWidget:getTurnstileWidget has been deprecated in favor of cloudflare:turnstile/widget:getWidget""", DeprecationWarning)
+
 @pulumi.output_type
 class GetTurnstileWidgetResult:
     """
@@ -269,7 +271,7 @@ def get_turnstile_widget(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_turnstile_widget = cloudflare.get_turnstile_widget(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_turnstile_widget = cloudflare.turnstile.get_widget(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         sitekey="0x4AAF00AAAABn0R22HWm-YUc")
     ```
 
@@ -277,6 +279,7 @@ def get_turnstile_widget(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Identifier
     :param _builtins.str sitekey: Widget item identifier tag.
     """
+    pulumi.log.warn("""get_turnstile_widget is deprecated: cloudflare:index/getTurnstileWidget:getTurnstileWidget has been deprecated in favor of cloudflare:turnstile/widget:getWidget""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -320,7 +323,7 @@ def get_turnstile_widget_output(account_id: pulumi.Input[Optional[Optional[_buil
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_turnstile_widget = cloudflare.get_turnstile_widget(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_turnstile_widget = cloudflare.turnstile.get_widget(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         sitekey="0x4AAF00AAAABn0R22HWm-YUc")
     ```
 
@@ -328,6 +331,7 @@ def get_turnstile_widget_output(account_id: pulumi.Input[Optional[Optional[_buil
     :param _builtins.str account_id: Identifier
     :param _builtins.str sitekey: Widget item identifier tag.
     """
+    pulumi.log.warn("""get_turnstile_widget is deprecated: cloudflare:index/getTurnstileWidget:getTurnstileWidget has been deprecated in favor of cloudflare:turnstile/widget:getWidget""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

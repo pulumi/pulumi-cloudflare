@@ -20,12 +20,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleContentScanningExpressions = cloudflare.getContentScanningExpressions({
+ * const exampleContentScanningExpressions = cloudflare.contentscanning.getExpressions({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getContentScanningExpressions:getContentScanningExpressions has been deprecated in favor of cloudflare:contentScanning/expressions:getExpressions */
 export function getContentScanningExpressions(args?: GetContentScanningExpressionsArgs, opts?: pulumi.InvokeOptions): Promise<GetContentScanningExpressionsResult> {
+    pulumi.log.warn("getContentScanningExpressions is deprecated: cloudflare:index/getContentScanningExpressions:getContentScanningExpressions has been deprecated in favor of cloudflare:contentScanning/expressions:getExpressions")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getContentScanningExpressions:getContentScanningExpressions", {
@@ -79,12 +81,14 @@ export interface GetContentScanningExpressionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleContentScanningExpressions = cloudflare.getContentScanningExpressions({
+ * const exampleContentScanningExpressions = cloudflare.contentscanning.getExpressions({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getContentScanningExpressions:getContentScanningExpressions has been deprecated in favor of cloudflare:contentScanning/expressions:getExpressions */
 export function getContentScanningExpressionsOutput(args?: GetContentScanningExpressionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetContentScanningExpressionsResult> {
+    pulumi.log.warn("getContentScanningExpressions is deprecated: cloudflare:index/getContentScanningExpressions:getContentScanningExpressions has been deprecated in favor of cloudflare:contentScanning/expressions:getExpressions")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getContentScanningExpressions:getContentScanningExpressions", {

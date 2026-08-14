@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getCertificateAuthoritiesHostnameAssociations:getCertificateAuthoritiesHostnameAssociations has been deprecated in favor of cloudflare:certificate/authoritiesHostnameAssociations:getAuthoritiesHostnameAssociations")]
     public static class GetCertificateAuthoritiesHostnameAssociations
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCertificateAuthoritiesHostnameAssociations = Cloudflare.GetCertificateAuthoritiesHostnameAssociations.Invoke(new()
+        ///     var exampleCertificateAuthoritiesHostnameAssociations = Cloudflare.Modules.Certificate.GetAuthoritiesHostnameAssociations.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         MtlsCertificateId = "b2134436-2555-4acf-be5b-26c48136575e",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCertificateAuthoritiesHostnameAssociations = Cloudflare.GetCertificateAuthoritiesHostnameAssociations.Invoke(new()
+        ///     var exampleCertificateAuthoritiesHostnameAssociations = Cloudflare.Modules.Certificate.GetAuthoritiesHostnameAssociations.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         MtlsCertificateId = "b2134436-2555-4acf-be5b-26c48136575e",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCertificateAuthoritiesHostnameAssociations = Cloudflare.GetCertificateAuthoritiesHostnameAssociations.Invoke(new()
+        ///     var exampleCertificateAuthoritiesHostnameAssociations = Cloudflare.Modules.Certificate.GetAuthoritiesHostnameAssociations.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         MtlsCertificateId = "b2134436-2555-4acf-be5b-26c48136575e",

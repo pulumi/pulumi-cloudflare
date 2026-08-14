@@ -165,8 +165,13 @@ class _LogpushOwnershipChallengeState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge has been deprecated in favor of cloudflare:logpush/ownershipChallenge:OwnershipChallenge""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge")
 class LogpushOwnershipChallenge(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge has been deprecated in favor of cloudflare:logpush/ownershipChallenge:OwnershipChallenge""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -186,7 +191,7 @@ class LogpushOwnershipChallenge(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_logpush_ownership_challenge = cloudflare.LogpushOwnershipChallenge("example_logpush_ownership_challenge",
+        example_logpush_ownership_challenge = cloudflare.logpush.OwnershipChallenge("example_logpush_ownership_challenge",
             destination_conf="s3://mybucket/logs?region=us-west-2",
             zone_id="zone_id")
         ```
@@ -219,7 +224,7 @@ class LogpushOwnershipChallenge(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_logpush_ownership_challenge = cloudflare.LogpushOwnershipChallenge("example_logpush_ownership_challenge",
+        example_logpush_ownership_challenge = cloudflare.logpush.OwnershipChallenge("example_logpush_ownership_challenge",
             destination_conf="s3://mybucket/logs?region=us-west-2",
             zone_id="zone_id")
         ```
@@ -248,6 +253,7 @@ class LogpushOwnershipChallenge(pulumi.CustomResource):
                  destination_conf: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""LogpushOwnershipChallenge is deprecated: cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge has been deprecated in favor of cloudflare:logpush/ownershipChallenge:OwnershipChallenge""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

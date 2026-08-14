@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_tunnel_cloudflared_config_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustTunnelCloudflaredConfig:getZeroTrustTunnelCloudflaredConfig has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/config:getConfig""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustTunnelCloudflaredConfigResult:
     """
@@ -127,7 +129,7 @@ def get_zero_trust_tunnel_cloudflared_config(account_id: Optional[_builtins.str]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_tunnel_cloudflared_config = cloudflare.get_zero_trust_tunnel_cloudflared_config(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_zero_trust_tunnel_cloudflared_config = cloudflare.zerotrusttunnelcloudflared.get_config(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         tunnel_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
     ```
 
@@ -135,6 +137,7 @@ def get_zero_trust_tunnel_cloudflared_config(account_id: Optional[_builtins.str]
     :param _builtins.str account_id: Identifier.
     :param _builtins.str tunnel_id: UUID of the tunnel.
     """
+    pulumi.log.warn("""get_zero_trust_tunnel_cloudflared_config is deprecated: cloudflare:index/getZeroTrustTunnelCloudflaredConfig:getZeroTrustTunnelCloudflaredConfig has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/config:getConfig""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['tunnelId'] = tunnel_id
@@ -167,7 +170,7 @@ def get_zero_trust_tunnel_cloudflared_config_output(account_id: pulumi.Input[Opt
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_tunnel_cloudflared_config = cloudflare.get_zero_trust_tunnel_cloudflared_config(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_zero_trust_tunnel_cloudflared_config = cloudflare.zerotrusttunnelcloudflared.get_config(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         tunnel_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
     ```
 
@@ -175,6 +178,7 @@ def get_zero_trust_tunnel_cloudflared_config_output(account_id: pulumi.Input[Opt
     :param _builtins.str account_id: Identifier.
     :param _builtins.str tunnel_id: UUID of the tunnel.
     """
+    pulumi.log.warn("""get_zero_trust_tunnel_cloudflared_config is deprecated: cloudflare:index/getZeroTrustTunnelCloudflaredConfig:getZeroTrustTunnelCloudflaredConfig has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/config:getConfig""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['tunnelId'] = tunnel_id

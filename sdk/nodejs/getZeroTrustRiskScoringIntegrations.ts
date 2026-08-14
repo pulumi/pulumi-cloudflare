@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustRiskScoringIntegrations = cloudflare.getZeroTrustRiskScoringIntegrations({
+ * const exampleZeroTrustRiskScoringIntegrations = cloudflare.zerotrustriskscoring.getIntegrations({
  *     accountId: "account_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustRiskScoringIntegrations:getZeroTrustRiskScoringIntegrations has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integrations:getIntegrations */
 export function getZeroTrustRiskScoringIntegrations(args?: GetZeroTrustRiskScoringIntegrationsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustRiskScoringIntegrationsResult> {
+    pulumi.log.warn("getZeroTrustRiskScoringIntegrations is deprecated: cloudflare:index/getZeroTrustRiskScoringIntegrations:getZeroTrustRiskScoringIntegrations has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integrations:getIntegrations")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustRiskScoringIntegrations:getZeroTrustRiskScoringIntegrations", {
@@ -69,12 +71,14 @@ export interface GetZeroTrustRiskScoringIntegrationsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustRiskScoringIntegrations = cloudflare.getZeroTrustRiskScoringIntegrations({
+ * const exampleZeroTrustRiskScoringIntegrations = cloudflare.zerotrustriskscoring.getIntegrations({
  *     accountId: "account_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustRiskScoringIntegrations:getZeroTrustRiskScoringIntegrations has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integrations:getIntegrations */
 export function getZeroTrustRiskScoringIntegrationsOutput(args?: GetZeroTrustRiskScoringIntegrationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustRiskScoringIntegrationsResult> {
+    pulumi.log.warn("getZeroTrustRiskScoringIntegrations is deprecated: cloudflare:index/getZeroTrustRiskScoringIntegrations:getZeroTrustRiskScoringIntegrations has been deprecated in favor of cloudflare:zeroTrustRiskScoring/integrations:getIntegrations")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustRiskScoringIntegrations:getZeroTrustRiskScoringIntegrations", {

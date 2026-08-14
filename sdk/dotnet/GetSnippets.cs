@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getSnippets:getSnippets has been deprecated in favor of cloudflare:snippets/snippets:getSnippets")]
     public static class GetSnippets
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSnippets = Cloudflare.GetSnippets.Invoke(new()
+        ///     var exampleSnippets = Cloudflare.Modules.Snippets.GetSnippets.Invoke(new()
         ///     {
         ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
         ///     });
@@ -44,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSnippets = Cloudflare.GetSnippets.Invoke(new()
+        ///     var exampleSnippets = Cloudflare.Modules.Snippets.GetSnippets.Invoke(new()
         ///     {
         ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
         ///     });
@@ -66,7 +67,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSnippets = Cloudflare.GetSnippets.Invoke(new()
+        ///     var exampleSnippets = Cloudflare.Modules.Snippets.GetSnippets.Invoke(new()
         ///     {
         ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
         ///     });

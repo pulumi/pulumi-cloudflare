@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleDnsZoneTransfersAcl = new cloudflare.DnsZoneTransfersAcl("example_dns_zone_transfers_acl", {
+ * const exampleDnsZoneTransfersAcl = new cloudflare.dnszonetransfers.Acl("example_dns_zone_transfers_acl", {
  *     accountId: "01a7362d577a6c3019a474fd6f485823",
  *     ipRange: "192.0.2.53/28",
  *     name: "my-acl-1",
@@ -28,6 +28,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/dnsZoneTransfersAcl:DnsZoneTransfersAcl example '<account_id>/<acl_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/dnsZoneTransfersAcl:DnsZoneTransfersAcl has been deprecated in favor of cloudflare:dnsZoneTransfers/acl:Acl
  */
 export class DnsZoneTransfersAcl extends pulumi.CustomResource {
     /**
@@ -40,6 +42,7 @@ export class DnsZoneTransfersAcl extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DnsZoneTransfersAclState, opts?: pulumi.CustomResourceOptions): DnsZoneTransfersAcl {
+        pulumi.log.warn("DnsZoneTransfersAcl is deprecated: cloudflare:index/dnsZoneTransfersAcl:DnsZoneTransfersAcl has been deprecated in favor of cloudflare:dnsZoneTransfers/acl:Acl")
         return new DnsZoneTransfersAcl(name, <any>state, { ...opts, id: id });
     }
 
@@ -74,8 +77,11 @@ export class DnsZoneTransfersAcl extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/dnsZoneTransfersAcl:DnsZoneTransfersAcl has been deprecated in favor of cloudflare:dnsZoneTransfers/acl:Acl */
     constructor(name: string, args: DnsZoneTransfersAclArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/dnsZoneTransfersAcl:DnsZoneTransfersAcl has been deprecated in favor of cloudflare:dnsZoneTransfers/acl:Acl */
     constructor(name: string, argsOrState?: DnsZoneTransfersAclArgs | DnsZoneTransfersAclState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("DnsZoneTransfersAcl is deprecated: cloudflare:index/dnsZoneTransfersAcl:DnsZoneTransfersAcl has been deprecated in favor of cloudflare:dnsZoneTransfers/acl:Acl")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

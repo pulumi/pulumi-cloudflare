@@ -10,6 +10,8 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.
+ *
+ * @deprecated cloudflare:index/aiSearchInstance:AiSearchInstance has been deprecated in favor of cloudflare:aiSearch/instance:Instance
  */
 export class AiSearchInstance extends pulumi.CustomResource {
     /**
@@ -22,6 +24,7 @@ export class AiSearchInstance extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AiSearchInstanceState, opts?: pulumi.CustomResourceOptions): AiSearchInstance {
+        pulumi.log.warn("AiSearchInstance is deprecated: cloudflare:index/aiSearchInstance:AiSearchInstance has been deprecated in favor of cloudflare:aiSearch/instance:Instance")
         return new AiSearchInstance(name, <any>state, { ...opts, id: id });
     }
 
@@ -137,8 +140,11 @@ export class AiSearchInstance extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/aiSearchInstance:AiSearchInstance has been deprecated in favor of cloudflare:aiSearch/instance:Instance */
     constructor(name: string, args: AiSearchInstanceArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/aiSearchInstance:AiSearchInstance has been deprecated in favor of cloudflare:aiSearch/instance:Instance */
     constructor(name: string, argsOrState?: AiSearchInstanceArgs | AiSearchInstanceState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("AiSearchInstance is deprecated: cloudflare:index/aiSearchInstance:AiSearchInstance has been deprecated in favor of cloudflare:aiSearch/instance:Instance")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

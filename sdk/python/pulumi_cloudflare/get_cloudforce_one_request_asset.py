@@ -21,6 +21,8 @@ __all__ = [
     'get_cloudforce_one_request_asset_output',
 ]
 
+warnings.warn("""cloudflare:index/getCloudforceOneRequestAsset:getCloudforceOneRequestAsset has been deprecated in favor of cloudflare:cloudforceOneRequest/asset:getAsset""", DeprecationWarning)
+
 @pulumi.output_type
 class GetCloudforceOneRequestAssetResult:
     """
@@ -149,7 +151,7 @@ def get_cloudforce_one_request_asset(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_cloudforce_one_request_asset = cloudflare.get_cloudforce_one_request_asset(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_cloudforce_one_request_asset = cloudflare.cloudforceonerequest.get_asset(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         request_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         asset_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
@@ -159,6 +161,7 @@ def get_cloudforce_one_request_asset(account_id: Optional[_builtins.str] = None,
     :param _builtins.str asset_id: UUID.
     :param _builtins.str request_id: UUID.
     """
+    pulumi.log.warn("""get_cloudforce_one_request_asset is deprecated: cloudflare:index/getCloudforceOneRequestAsset:getCloudforceOneRequestAsset has been deprecated in favor of cloudflare:cloudforceOneRequest/asset:getAsset""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['assetId'] = asset_id
@@ -191,7 +194,7 @@ def get_cloudforce_one_request_asset_output(account_id: pulumi.Input[Optional[_b
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_cloudforce_one_request_asset = cloudflare.get_cloudforce_one_request_asset(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_cloudforce_one_request_asset = cloudflare.cloudforceonerequest.get_asset(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         request_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         asset_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
@@ -201,6 +204,7 @@ def get_cloudforce_one_request_asset_output(account_id: pulumi.Input[Optional[_b
     :param _builtins.str asset_id: UUID.
     :param _builtins.str request_id: UUID.
     """
+    pulumi.log.warn("""get_cloudforce_one_request_asset is deprecated: cloudflare:index/getCloudforceOneRequestAsset:getCloudforceOneRequestAsset has been deprecated in favor of cloudflare:cloudforceOneRequest/asset:getAsset""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['assetId'] = asset_id

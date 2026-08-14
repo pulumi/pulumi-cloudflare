@@ -12,6 +12,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/moqRelay:MoqRelay example '<account_id>/<relay_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/moqRelay:MoqRelay has been deprecated in favor of cloudflare:moq/relay:Relay
  */
 export class MoqRelay extends pulumi.CustomResource {
     /**
@@ -24,6 +26,7 @@ export class MoqRelay extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: MoqRelayState, opts?: pulumi.CustomResourceOptions): MoqRelay {
+        pulumi.log.warn("MoqRelay is deprecated: cloudflare:index/moqRelay:MoqRelay has been deprecated in favor of cloudflare:moq/relay:Relay")
         return new MoqRelay(name, <any>state, { ...opts, id: id });
     }
 
@@ -80,8 +83,11 @@ export class MoqRelay extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/moqRelay:MoqRelay has been deprecated in favor of cloudflare:moq/relay:Relay */
     constructor(name: string, args: MoqRelayArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/moqRelay:MoqRelay has been deprecated in favor of cloudflare:moq/relay:Relay */
     constructor(name: string, argsOrState?: MoqRelayArgs | MoqRelayState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("MoqRelay is deprecated: cloudflare:index/moqRelay:MoqRelay has been deprecated in favor of cloudflare:moq/relay:Relay")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

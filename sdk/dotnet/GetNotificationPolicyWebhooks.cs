@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getNotificationPolicyWebhooks:getNotificationPolicyWebhooks has been deprecated in favor of cloudflare:notificationPolicyWebhooks/notificationPolicyWebhooks:getNotificationPolicyWebhooks")]
     public static class GetNotificationPolicyWebhooks
     {
         /// <summary>
@@ -30,7 +31,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleNotificationPolicyWebhooks = Cloudflare.GetNotificationPolicyWebhooks.Invoke(new()
+        ///     var exampleNotificationPolicyWebhooks = Cloudflare.Modules.NotificationPolicyWebhooks.GetNotificationPolicyWebhooks.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         WebhookId = "b115d5ec15c641ee8b7692c449b5227b",
@@ -61,7 +62,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleNotificationPolicyWebhooks = Cloudflare.GetNotificationPolicyWebhooks.Invoke(new()
+        ///     var exampleNotificationPolicyWebhooks = Cloudflare.Modules.NotificationPolicyWebhooks.GetNotificationPolicyWebhooks.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         WebhookId = "b115d5ec15c641ee8b7692c449b5227b",
@@ -92,7 +93,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleNotificationPolicyWebhooks = Cloudflare.GetNotificationPolicyWebhooks.Invoke(new()
+        ///     var exampleNotificationPolicyWebhooks = Cloudflare.Modules.NotificationPolicyWebhooks.GetNotificationPolicyWebhooks.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         WebhookId = "b115d5ec15c641ee8b7692c449b5227b",

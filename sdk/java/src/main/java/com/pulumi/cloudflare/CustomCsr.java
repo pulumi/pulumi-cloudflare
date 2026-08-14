@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.CustomCsr;
- * import com.pulumi.cloudflare.CustomCsrArgs;
+ * import com.pulumi.cloudflare.custom.Csr;
+ * import com.pulumi.cloudflare.custom.CsrArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleCustomCsr = new CustomCsr("exampleCustomCsr", CustomCsrArgs.builder()
+ *         var exampleCustomCsr = new Csr("exampleCustomCsr", CsrArgs.builder()
  *             .commonName("example.com")
  *             .country("US")
  *             .locality("San Francisco")
@@ -72,7 +72,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/customCsr:CustomCsr example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;custom_csr_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/customCsr:CustomCsr has been deprecated in favor of cloudflare:custom/csr:Csr
+ * 
  */
+@Deprecated /* cloudflare:index/customCsr:CustomCsr has been deprecated in favor of cloudflare:custom/csr:Csr */
 @ResourceType(type="cloudflare:index/customCsr:CustomCsr")
 public class CustomCsr extends com.pulumi.resources.CustomResource {
     /**

@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_access_service_tokens_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustAccessServiceTokens:getZeroTrustAccessServiceTokens has been deprecated in favor of cloudflare:zeroTrustAccessService/tokens:getTokens""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustAccessServiceTokensResult:
     """
@@ -128,7 +130,7 @@ def get_zero_trust_access_service_tokens(account_id: Optional[_builtins.str] = N
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_service_tokens = cloudflare.get_zero_trust_access_service_tokens(account_id="account_id",
+    example_zero_trust_access_service_tokens = cloudflare.zerotrustaccessservice.get_tokens(account_id="account_id",
         zone_id="zone_id",
         name="name",
         search="search")
@@ -141,6 +143,7 @@ def get_zero_trust_access_service_tokens(account_id: Optional[_builtins.str] = N
     :param _builtins.str search: Search for service tokens by other listed query parameters.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_zero_trust_access_service_tokens is deprecated: cloudflare:index/getZeroTrustAccessServiceTokens:getZeroTrustAccessServiceTokens has been deprecated in favor of cloudflare:zeroTrustAccessService/tokens:getTokens""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -175,7 +178,7 @@ def get_zero_trust_access_service_tokens_output(account_id: pulumi.Input[Optiona
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_service_tokens = cloudflare.get_zero_trust_access_service_tokens(account_id="account_id",
+    example_zero_trust_access_service_tokens = cloudflare.zerotrustaccessservice.get_tokens(account_id="account_id",
         zone_id="zone_id",
         name="name",
         search="search")
@@ -188,6 +191,7 @@ def get_zero_trust_access_service_tokens_output(account_id: pulumi.Input[Optiona
     :param _builtins.str search: Search for service tokens by other listed query parameters.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_zero_trust_access_service_tokens is deprecated: cloudflare:index/getZeroTrustAccessServiceTokens:getZeroTrustAccessServiceTokens has been deprecated in favor of cloudflare:zeroTrustAccessService/tokens:getTokens""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

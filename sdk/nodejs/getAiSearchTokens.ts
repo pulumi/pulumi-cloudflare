@@ -6,7 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/** @deprecated cloudflare:index/getAiSearchTokens:getAiSearchTokens has been deprecated in favor of cloudflare:aiSearch/tokens:getTokens */
 export function getAiSearchTokens(args?: GetAiSearchTokensArgs, opts?: pulumi.InvokeOptions): Promise<GetAiSearchTokensResult> {
+    pulumi.log.warn("getAiSearchTokens is deprecated: cloudflare:index/getAiSearchTokens:getAiSearchTokens has been deprecated in favor of cloudflare:aiSearch/tokens:getTokens")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAiSearchTokens:getAiSearchTokens", {
@@ -49,7 +51,9 @@ export interface GetAiSearchTokensResult {
      */
     readonly search?: string;
 }
+/** @deprecated cloudflare:index/getAiSearchTokens:getAiSearchTokens has been deprecated in favor of cloudflare:aiSearch/tokens:getTokens */
 export function getAiSearchTokensOutput(args?: GetAiSearchTokensOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAiSearchTokensResult> {
+    pulumi.log.warn("getAiSearchTokens is deprecated: cloudflare:index/getAiSearchTokens:getAiSearchTokens has been deprecated in favor of cloudflare:aiSearch/tokens:getTokens")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAiSearchTokens:getAiSearchTokens", {

@@ -128,8 +128,13 @@ class _WorkersRouteState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/workersRoute:WorkersRoute has been deprecated in favor of cloudflare:workers/route:Route""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/workersRoute:WorkersRoute")
 class WorkersRoute(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/workersRoute:WorkersRoute has been deprecated in favor of cloudflare:workers/route:Route""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -150,7 +155,7 @@ class WorkersRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_workers_route = cloudflare.WorkersRoute("example_workers_route",
+        example_workers_route = cloudflare.workers.Route("example_workers_route",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             pattern="example.com/*",
             script="my-workers-script")
@@ -187,7 +192,7 @@ class WorkersRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_workers_route = cloudflare.WorkersRoute("example_workers_route",
+        example_workers_route = cloudflare.workers.Route("example_workers_route",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             pattern="example.com/*",
             script="my-workers-script")
@@ -219,6 +224,7 @@ class WorkersRoute(pulumi.CustomResource):
                  script: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""WorkersRoute is deprecated: cloudflare:index/workersRoute:WorkersRoute has been deprecated in favor of cloudflare:workers/route:Route""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

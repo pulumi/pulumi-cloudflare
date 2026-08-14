@@ -22,6 +22,8 @@ __all__ = [
     'get_account_permission_group_output',
 ]
 
+warnings.warn("""cloudflare:index/getAccountPermissionGroup:getAccountPermissionGroup has been deprecated in favor of cloudflare:accountPermission/group:getGroup""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAccountPermissionGroupResult:
     """
@@ -140,7 +142,7 @@ def get_account_permission_group(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_permission_group = cloudflare.get_account_permission_group(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_account_permission_group = cloudflare.accountpermission.get_group(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         permission_group_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -148,6 +150,7 @@ def get_account_permission_group(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.str permission_group_id: Permission Group identifier tag.
     """
+    pulumi.log.warn("""get_account_permission_group is deprecated: cloudflare:index/getAccountPermissionGroup:getAccountPermissionGroup has been deprecated in favor of cloudflare:accountPermission/group:getGroup""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['permissionGroupId'] = permission_group_id
@@ -202,7 +205,7 @@ def get_account_permission_group_output(account_id: pulumi.Input[Optional[_built
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_permission_group = cloudflare.get_account_permission_group(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_account_permission_group = cloudflare.accountpermission.get_group(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         permission_group_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -210,6 +213,7 @@ def get_account_permission_group_output(account_id: pulumi.Input[Optional[_built
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.str permission_group_id: Permission Group identifier tag.
     """
+    pulumi.log.warn("""get_account_permission_group is deprecated: cloudflare:index/getAccountPermissionGroup:getAccountPermissionGroup has been deprecated in favor of cloudflare:accountPermission/group:getGroup""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['permissionGroupId'] = permission_group_id

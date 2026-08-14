@@ -20,13 +20,13 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleLoadBalancerMonitorGroup = new Cloudflare.LoadBalancerMonitorGroup("example_load_balancer_monitor_group", new()
+    ///     var exampleLoadBalancerMonitorGroup = new Cloudflare.Modules.LoadBalancerMonitor.LoadBalancerMonitorGroup("example_load_balancer_monitor_group", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Description = "Primary datacenter monitors",
     ///         Members = new[]
     ///         {
-    ///             new Cloudflare.Inputs.LoadBalancerMonitorGroupMemberArgs
+    ///             new Cloudflare.Modules.LoadBalancerMonitor.Inputs.GroupMemberArgs
     ///             {
     ///                 Enabled = true,
     ///                 MonitorId = "monitor_id",
@@ -45,6 +45,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/loadBalancerMonitorGroup:LoadBalancerMonitorGroup example '&lt;account_id&gt;/&lt;monitor_group_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/loadBalancerMonitorGroup:LoadBalancerMonitorGroup has been deprecated in favor of cloudflare:loadBalancerMonitor/group:Group")]
     [CloudflareResourceType("cloudflare:index/loadBalancerMonitorGroup:LoadBalancerMonitorGroup")]
     public partial class LoadBalancerMonitorGroup : global::Pulumi.CustomResource
     {

@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdevice"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDeviceSubnet(ctx, "example_zero_trust_device_subnet", &cloudflare.ZeroTrustDeviceSubnetArgs{
+//			_, err := zerotrustdevice.NewSubnet(ctx, "example_zero_trust_device_subnet", &zerotrustdevice.SubnetArgs{
 //				AccountId:        pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				Name:             pulumi.String("IPv4 Cloudflare Source IPs"),
 //				Network:          pulumi.String("100.64.0.0/12"),
@@ -52,6 +52,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustDeviceSubnet:ZeroTrustDeviceSubnet example '<account_id>/<subnet_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustDeviceSubnet:ZeroTrustDeviceSubnet has been deprecated in favor of cloudflare:zeroTrustDevice/subnet:Subnet
 type ZeroTrustDeviceSubnet struct {
 	pulumi.CustomResourceState
 

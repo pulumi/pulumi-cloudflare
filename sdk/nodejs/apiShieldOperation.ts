@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleApiShieldOperation = new cloudflare.ApiShieldOperation("example_api_shield_operation", {
+ * const exampleApiShieldOperation = new cloudflare.apishieldoperation.ApiShieldOperation("example_api_shield_operation", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     endpoint: "/api/v1/users/{var1}",
  *     host: "www.example.com",
@@ -33,6 +33,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/apiShieldOperation:ApiShieldOperation example '<zone_id>/<operation_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/apiShieldOperation:ApiShieldOperation has been deprecated in favor of cloudflare:apiShieldOperation/apiShieldOperation:ApiShieldOperation
  */
 export class ApiShieldOperation extends pulumi.CustomResource {
     /**
@@ -45,6 +47,7 @@ export class ApiShieldOperation extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ApiShieldOperationState, opts?: pulumi.CustomResourceOptions): ApiShieldOperation {
+        pulumi.log.warn("ApiShieldOperation is deprecated: cloudflare:index/apiShieldOperation:ApiShieldOperation has been deprecated in favor of cloudflare:apiShieldOperation/apiShieldOperation:ApiShieldOperation")
         return new ApiShieldOperation(name, <any>state, { ...opts, id: id });
     }
 
@@ -97,8 +100,11 @@ export class ApiShieldOperation extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/apiShieldOperation:ApiShieldOperation has been deprecated in favor of cloudflare:apiShieldOperation/apiShieldOperation:ApiShieldOperation */
     constructor(name: string, args: ApiShieldOperationArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/apiShieldOperation:ApiShieldOperation has been deprecated in favor of cloudflare:apiShieldOperation/apiShieldOperation:ApiShieldOperation */
     constructor(name: string, argsOrState?: ApiShieldOperationArgs | ApiShieldOperationState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ApiShieldOperation is deprecated: cloudflare:index/apiShieldOperation:ApiShieldOperation has been deprecated in favor of cloudflare:apiShieldOperation/apiShieldOperation:ApiShieldOperation")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -21,6 +21,8 @@ __all__ = [
     'get_page_shield_policy_output',
 ]
 
+warnings.warn("""cloudflare:index/getPageShieldPolicy:getPageShieldPolicy has been deprecated in favor of cloudflare:pageShield/policy:getPolicy""", DeprecationWarning)
+
 @pulumi.output_type
 class GetPageShieldPolicyResult:
     """
@@ -153,7 +155,7 @@ def get_page_shield_policy(policy_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_page_shield_policy = cloudflare.get_page_shield_policy(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_page_shield_policy = cloudflare.pageshield.get_policy(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         policy_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -161,6 +163,7 @@ def get_page_shield_policy(policy_id: Optional[_builtins.str] = None,
     :param _builtins.str policy_id: Identifier
     :param _builtins.str zone_id: Identifier
     """
+    pulumi.log.warn("""get_page_shield_policy is deprecated: cloudflare:index/getPageShieldPolicy:getPageShieldPolicy has been deprecated in favor of cloudflare:pageShield/policy:getPolicy""")
     __args__ = dict()
     __args__['policyId'] = policy_id
     __args__['zoneId'] = zone_id
@@ -195,7 +198,7 @@ def get_page_shield_policy_output(policy_id: pulumi.Input[Optional[_builtins.str
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_page_shield_policy = cloudflare.get_page_shield_policy(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_page_shield_policy = cloudflare.pageshield.get_policy(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         policy_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -203,6 +206,7 @@ def get_page_shield_policy_output(policy_id: pulumi.Input[Optional[_builtins.str
     :param _builtins.str policy_id: Identifier
     :param _builtins.str zone_id: Identifier
     """
+    pulumi.log.warn("""get_page_shield_policy is deprecated: cloudflare:index/getPageShieldPolicy:getPageShieldPolicy has been deprecated in favor of cloudflare:pageShield/policy:getPolicy""")
     __args__ = dict()
     __args__['policyId'] = policy_id
     __args__['zoneId'] = zone_id

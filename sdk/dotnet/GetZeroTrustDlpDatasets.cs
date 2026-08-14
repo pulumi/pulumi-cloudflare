@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustDlpDatasets:getZeroTrustDlpDatasets has been deprecated in favor of cloudflare:zeroTrustDlp/datasets:getDatasets")]
     public static class GetZeroTrustDlpDatasets
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDlpDatasets = Cloudflare.GetZeroTrustDlpDatasets.Invoke(new()
+        ///     var exampleZeroTrustDlpDatasets = Cloudflare.Modules.ZeroTrustDlp.GetDatasets.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///     });
@@ -54,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDlpDatasets = Cloudflare.GetZeroTrustDlpDatasets.Invoke(new()
+        ///     var exampleZeroTrustDlpDatasets = Cloudflare.Modules.ZeroTrustDlp.GetDatasets.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///     });
@@ -81,7 +82,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDlpDatasets = Cloudflare.GetZeroTrustDlpDatasets.Invoke(new()
+        ///     var exampleZeroTrustDlpDatasets = Cloudflare.Modules.ZeroTrustDlp.GetDatasets.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///     });

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getAccountDnsSettingsInternalViews:getAccountDnsSettingsInternalViews has been deprecated in favor of cloudflare:accountDnsSettingsInternal/views:getViews")]
     public static class GetAccountDnsSettingsInternalViews
     {
         /// <summary>
@@ -27,10 +28,10 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountDnsSettingsInternalViews = Cloudflare.GetAccountDnsSettingsInternalViews.Invoke(new()
+        ///     var exampleAccountDnsSettingsInternalViews = Cloudflare.Modules.AccountDnsSettingsInternal.GetViews.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         Name = new Cloudflare.Inputs.GetAccountDnsSettingsInternalViewsNameInputArgs
+        ///         Name = new Cloudflare.Modules.AccountDnsSettingsInternal.Inputs.GetViewsNameInputArgs
         ///         {
         ///             Contains = "view",
         ///             Endswith = "ew",
@@ -64,10 +65,10 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountDnsSettingsInternalViews = Cloudflare.GetAccountDnsSettingsInternalViews.Invoke(new()
+        ///     var exampleAccountDnsSettingsInternalViews = Cloudflare.Modules.AccountDnsSettingsInternal.GetViews.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         Name = new Cloudflare.Inputs.GetAccountDnsSettingsInternalViewsNameInputArgs
+        ///         Name = new Cloudflare.Modules.AccountDnsSettingsInternal.Inputs.GetViewsNameInputArgs
         ///         {
         ///             Contains = "view",
         ///             Endswith = "ew",
@@ -101,10 +102,10 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountDnsSettingsInternalViews = Cloudflare.GetAccountDnsSettingsInternalViews.Invoke(new()
+        ///     var exampleAccountDnsSettingsInternalViews = Cloudflare.Modules.AccountDnsSettingsInternal.GetViews.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         Name = new Cloudflare.Inputs.GetAccountDnsSettingsInternalViewsNameInputArgs
+        ///         Name = new Cloudflare.Modules.AccountDnsSettingsInternal.Inputs.GetViewsNameInputArgs
         ///         {
         ///             Contains = "view",
         ///             Endswith = "ew",

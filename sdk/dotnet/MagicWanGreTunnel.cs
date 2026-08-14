@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleMagicWanGreTunnel = new Cloudflare.MagicWanGreTunnel("example_magic_wan_gre_tunnel", new()
+    ///     var exampleMagicWanGreTunnel = new Cloudflare.Modules.MagicWan.MagicWanGreTunnel("example_magic_wan_gre_tunnel", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         CloudflareGreEndpoint = "203.0.113.1",
@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
     ///         InterfaceAddress = "192.0.2.0/31",
     ///         Name = "GRE_1",
     ///         AutomaticReturnRouting = true,
-    ///         Bgp = new Cloudflare.Inputs.MagicWanGreTunnelBgpArgs
+    ///         Bgp = new Cloudflare.Modules.MagicWan.Inputs.GreTunnelBgpArgs
     ///         {
     ///             CustomerAsn = 0,
     ///             ExtraPrefixes = new[]
@@ -38,12 +38,12 @@ namespace Pulumi.Cloudflare
     ///             Md5Key = "md5_key",
     ///         },
     ///         Description = "Tunnel for ISP X",
-    ///         HealthCheck = new Cloudflare.Inputs.MagicWanGreTunnelHealthCheckArgs
+    ///         HealthCheck = new Cloudflare.Modules.MagicWan.Inputs.GreTunnelHealthCheckArgs
     ///         {
     ///             Direction = "bidirectional",
     ///             Enabled = true,
     ///             Rate = "low",
-    ///             Target = new Cloudflare.Inputs.MagicWanGreTunnelHealthCheckTargetArgs
+    ///             Target = new Cloudflare.Modules.MagicWan.Inputs.GreTunnelHealthCheckTargetArgs
     ///             {
     ///                 Saved = "203.0.113.1",
     ///             },
@@ -63,6 +63,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel example '&lt;account_id&gt;/&lt;gre_tunnel_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel has been deprecated in favor of cloudflare:magicWan/greTunnel:GreTunnel")]
     [CloudflareResourceType("cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel")]
     public partial class MagicWanGreTunnel : global::Pulumi.CustomResource
     {

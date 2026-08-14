@@ -22,6 +22,8 @@ __all__ = [
     'get_stream_live_input_output',
 ]
 
+warnings.warn("""cloudflare:index/getStreamLiveInput:getStreamLiveInput has been deprecated in favor of cloudflare:stream/liveInput:getLiveInput""", DeprecationWarning)
+
 @pulumi.output_type
 class GetStreamLiveInputResult:
     """
@@ -270,7 +272,7 @@ def get_stream_live_input(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_stream_live_input = cloudflare.get_stream_live_input(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_stream_live_input = cloudflare.stream.get_live_input(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         live_input_identifier="66be4bf738797e01e1fca35a7bdecdcd")
     ```
 
@@ -278,6 +280,7 @@ def get_stream_live_input(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Identifier.
     :param _builtins.str live_input_identifier: A unique identifier for a live input.
     """
+    pulumi.log.warn("""get_stream_live_input is deprecated: cloudflare:index/getStreamLiveInput:getStreamLiveInput has been deprecated in favor of cloudflare:stream/liveInput:getLiveInput""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['liveInputIdentifier'] = live_input_identifier
@@ -318,7 +321,7 @@ def get_stream_live_input_output(account_id: pulumi.Input[Optional[_builtins.str
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_stream_live_input = cloudflare.get_stream_live_input(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_stream_live_input = cloudflare.stream.get_live_input(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         live_input_identifier="66be4bf738797e01e1fca35a7bdecdcd")
     ```
 
@@ -326,6 +329,7 @@ def get_stream_live_input_output(account_id: pulumi.Input[Optional[_builtins.str
     :param _builtins.str account_id: Identifier.
     :param _builtins.str live_input_identifier: A unique identifier for a live input.
     """
+    pulumi.log.warn("""get_stream_live_input is deprecated: cloudflare:index/getStreamLiveInput:getStreamLiveInput has been deprecated in favor of cloudflare:stream/liveInput:getLiveInput""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['liveInputIdentifier'] = live_input_identifier

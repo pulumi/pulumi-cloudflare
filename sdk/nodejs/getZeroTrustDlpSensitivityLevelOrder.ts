@@ -16,13 +16,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpSensitivityLevelOrder = cloudflare.getZeroTrustDlpSensitivityLevelOrder({
+ * const exampleZeroTrustDlpSensitivityLevelOrder = cloudflare.zerotrustdlpsensitivitylevel.getOrder({
  *     accountId: "account_id",
  *     sensitivityGroupId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpSensitivityLevelOrder:getZeroTrustDlpSensitivityLevelOrder has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/order:getOrder */
 export function getZeroTrustDlpSensitivityLevelOrder(args: GetZeroTrustDlpSensitivityLevelOrderArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDlpSensitivityLevelOrderResult> {
+    pulumi.log.warn("getZeroTrustDlpSensitivityLevelOrder is deprecated: cloudflare:index/getZeroTrustDlpSensitivityLevelOrder:getZeroTrustDlpSensitivityLevelOrder has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/order:getOrder")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDlpSensitivityLevelOrder:getZeroTrustDlpSensitivityLevelOrder", {
         "accountId": args.accountId,
@@ -62,13 +64,15 @@ export interface GetZeroTrustDlpSensitivityLevelOrderResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpSensitivityLevelOrder = cloudflare.getZeroTrustDlpSensitivityLevelOrder({
+ * const exampleZeroTrustDlpSensitivityLevelOrder = cloudflare.zerotrustdlpsensitivitylevel.getOrder({
  *     accountId: "account_id",
  *     sensitivityGroupId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDlpSensitivityLevelOrder:getZeroTrustDlpSensitivityLevelOrder has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/order:getOrder */
 export function getZeroTrustDlpSensitivityLevelOrderOutput(args: GetZeroTrustDlpSensitivityLevelOrderOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDlpSensitivityLevelOrderResult> {
+    pulumi.log.warn("getZeroTrustDlpSensitivityLevelOrder is deprecated: cloudflare:index/getZeroTrustDlpSensitivityLevelOrder:getZeroTrustDlpSensitivityLevelOrder has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/order:getOrder")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDlpSensitivityLevelOrder:getZeroTrustDlpSensitivityLevelOrder", {
         "accountId": args.accountId,

@@ -13,12 +13,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleOriginCaCertificate = cloudflare.getOriginCaCertificate({
+ * const exampleOriginCaCertificate = cloudflare.originca.getCertificate({
  *     certificateId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getOriginCaCertificate:getOriginCaCertificate has been deprecated in favor of cloudflare:originCa/certificate:getCertificate */
 export function getOriginCaCertificate(args?: GetOriginCaCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetOriginCaCertificateResult> {
+    pulumi.log.warn("getOriginCaCertificate is deprecated: cloudflare:index/getOriginCaCertificate:getOriginCaCertificate has been deprecated in favor of cloudflare:originCa/certificate:getCertificate")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getOriginCaCertificate:getOriginCaCertificate", {
@@ -86,12 +88,14 @@ export interface GetOriginCaCertificateResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleOriginCaCertificate = cloudflare.getOriginCaCertificate({
+ * const exampleOriginCaCertificate = cloudflare.originca.getCertificate({
  *     certificateId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getOriginCaCertificate:getOriginCaCertificate has been deprecated in favor of cloudflare:originCa/certificate:getCertificate */
 export function getOriginCaCertificateOutput(args?: GetOriginCaCertificateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOriginCaCertificateResult> {
+    pulumi.log.warn("getOriginCaCertificate is deprecated: cloudflare:index/getOriginCaCertificate:getOriginCaCertificate has been deprecated in favor of cloudflare:originCa/certificate:getCertificate")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getOriginCaCertificate:getOriginCaCertificate", {

@@ -32,12 +32,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.AccountToken;
- * import com.pulumi.cloudflare.AccountTokenArgs;
- * import com.pulumi.cloudflare.inputs.AccountTokenPolicyArgs;
- * import com.pulumi.cloudflare.inputs.AccountTokenPolicyPermissionGroupArgs;
- * import com.pulumi.cloudflare.inputs.AccountTokenConditionArgs;
- * import com.pulumi.cloudflare.inputs.AccountTokenConditionRequestIpArgs;
+ * import com.pulumi.cloudflare.account.Token;
+ * import com.pulumi.cloudflare.account.TokenArgs;
+ * import com.pulumi.cloudflare.account.inputs.TokenPolicyArgs;
+ * import com.pulumi.cloudflare.account.inputs.TokenPolicyPermissionGroupArgs;
+ * import com.pulumi.cloudflare.account.inputs.TokenConditionArgs;
+ * import com.pulumi.cloudflare.account.inputs.TokenConditionRequestIpArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -52,16 +52,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleAccountToken = new AccountToken("exampleAccountToken", AccountTokenArgs.builder()
+ *         var exampleAccountToken = new Token("exampleAccountToken", TokenArgs.builder()
  *             .accountId("b67e14daa5f8dceeb91fe5449ba496eb")
  *             .name("workers read-only token")
- *             .policies(AccountTokenPolicyArgs.builder()
+ *             .policies(TokenPolicyArgs.builder()
  *                 .effect("allow")
  *                 .permissionGroups(                
- *                     AccountTokenPolicyPermissionGroupArgs.builder()
+ *                     TokenPolicyPermissionGroupArgs.builder()
  *                         .id("1a71c399035b4950a1bd1466bbe4f420")
  *                         .build(),
- *                     AccountTokenPolicyPermissionGroupArgs.builder()
+ *                     TokenPolicyPermissionGroupArgs.builder()
  *                         .id("8b47d2786a534c08a1f94ee8f9f599ef")
  *                         .build())
  *                 .resources(serializeJson(
@@ -69,8 +69,8 @@ import javax.annotation.Nullable;
  *                         jsonProperty("com.cloudflare.api.account.b67e14daa5f8dceeb91fe5449ba496eb", "*")
  *                     )))
  *                 .build())
- *             .condition(AccountTokenConditionArgs.builder()
- *                 .requestIp(AccountTokenConditionRequestIpArgs.builder()
+ *             .condition(TokenConditionArgs.builder()
+ *                 .requestIp(TokenConditionRequestIpArgs.builder()
  *                     .ins(                    
  *                         "123.123.123.0/24",
  *                         "2606:4700::/32")
@@ -94,7 +94,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/accountToken:AccountToken example &#39;&lt;account_id&gt;/&lt;token_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/accountToken:AccountToken has been deprecated in favor of cloudflare:account/token:Token
+ * 
  */
+@Deprecated /* cloudflare:index/accountToken:AccountToken has been deprecated in favor of cloudflare:account/token:Token */
 @ResourceType(type="cloudflare:index/accountToken:AccountToken")
 public class AccountToken extends com.pulumi.resources.CustomResource {
     /**

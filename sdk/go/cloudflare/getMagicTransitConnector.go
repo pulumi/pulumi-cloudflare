@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/magictransit"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetMagicTransitConnector(ctx, &cloudflare.LookupMagicTransitConnectorArgs{
+//			_, err := magictransit.GetConnector(ctx, &magictransit.GetConnectorArgs{
 //				AccountId:   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ConnectorId: pulumi.StringRef("connector_id"),
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getMagicTransitConnector:getMagicTransitConnector has been deprecated in favor of cloudflare:magicTransit/connector:getConnector
 func LookupMagicTransitConnector(ctx *pulumi.Context, args *LookupMagicTransitConnectorArgs, opts ...pulumi.InvokeOption) (*LookupMagicTransitConnectorResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMagicTransitConnectorResult

@@ -277,8 +277,13 @@ class _ApiShieldSchemaState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/apiShieldSchema:ApiShieldSchema has been deprecated in favor of cloudflare:apiShieldSchema/apiShieldSchema:ApiShieldSchema""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/apiShieldSchema:ApiShieldSchema")
 class ApiShieldSchema(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/apiShieldSchema:ApiShieldSchema has been deprecated in favor of cloudflare:apiShieldSchema/apiShieldSchema:ApiShieldSchema""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -298,8 +303,8 @@ class ApiShieldSchema(pulumi.CustomResource):
         - `Domain API Gateway`
         - `Domain API Gateway Read`
 
-        > `ApiShieldSchema` is in a deprecation phase and will be removed in the future.
-          Instead, please utilize the SchemaValidationSchemas resource instead.
+        > `apiShieldSchema.ApiShieldSchema` is in a deprecation phase and will be removed in the future.
+          Instead, please utilize the schemaValidationSchemas.SchemaValidationSchemas resource instead.
 
         ## Example Usage
 
@@ -307,7 +312,7 @@ class ApiShieldSchema(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_api_shield_schema = cloudflare.ApiShieldSchema("example_api_shield_schema",
+        example_api_shield_schema = cloudflare.apishieldschema.ApiShieldSchema("example_api_shield_schema",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             file="Example data",
             kind="openapi_v3",
@@ -340,8 +345,8 @@ class ApiShieldSchema(pulumi.CustomResource):
         - `Domain API Gateway`
         - `Domain API Gateway Read`
 
-        > `ApiShieldSchema` is in a deprecation phase and will be removed in the future.
-          Instead, please utilize the SchemaValidationSchemas resource instead.
+        > `apiShieldSchema.ApiShieldSchema` is in a deprecation phase and will be removed in the future.
+          Instead, please utilize the schemaValidationSchemas.SchemaValidationSchemas resource instead.
 
         ## Example Usage
 
@@ -349,7 +354,7 @@ class ApiShieldSchema(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_api_shield_schema = cloudflare.ApiShieldSchema("example_api_shield_schema",
+        example_api_shield_schema = cloudflare.apishieldschema.ApiShieldSchema("example_api_shield_schema",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             file="Example data",
             kind="openapi_v3",
@@ -380,6 +385,7 @@ class ApiShieldSchema(pulumi.CustomResource):
                  validation_enabled: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ApiShieldSchema is deprecated: cloudflare:index/apiShieldSchema:ApiShieldSchema has been deprecated in favor of cloudflare:apiShieldSchema/apiShieldSchema:ApiShieldSchema""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -220,8 +220,13 @@ class _R2BucketState:
         pulumi.set(self, "storage_class", value)
 
 
+warnings.warn("""cloudflare:index/r2Bucket:R2Bucket has been deprecated in favor of cloudflare:r2Bucket/r2Bucket:R2Bucket""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/r2Bucket:R2Bucket")
 class R2Bucket(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/r2Bucket:R2Bucket has been deprecated in favor of cloudflare:r2Bucket/r2Bucket:R2Bucket""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -243,7 +248,7 @@ class R2Bucket(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_r2_bucket = cloudflare.R2Bucket("example_r2_bucket",
+        example_r2_bucket = cloudflare.r2bucket.R2Bucket("example_r2_bucket",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="example-bucket",
             location="apac",
@@ -285,7 +290,7 @@ class R2Bucket(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_r2_bucket = cloudflare.R2Bucket("example_r2_bucket",
+        example_r2_bucket = cloudflare.r2bucket.R2Bucket("example_r2_bucket",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="example-bucket",
             location="apac",
@@ -320,6 +325,7 @@ class R2Bucket(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_class: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""R2Bucket is deprecated: cloudflare:index/r2Bucket:R2Bucket has been deprecated in favor of cloudflare:r2Bucket/r2Bucket:R2Bucket""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

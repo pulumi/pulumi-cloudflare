@@ -35,10 +35,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustAccessIdentityProvider;
- * import com.pulumi.cloudflare.ZeroTrustAccessIdentityProviderArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessIdentityProviderConfigArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessIdentityProviderScimConfigArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccessIdentity.Provider;
+ * import com.pulumi.cloudflare.zeroTrustAccessIdentity.ProviderArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccessIdentity.inputs.ProviderConfigArgs;
+ * import com.pulumi.cloudflare.zeroTrustAccessIdentity.inputs.ProviderScimConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -52,8 +52,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustAccessIdentityProvider = new ZeroTrustAccessIdentityProvider("exampleZeroTrustAccessIdentityProvider", ZeroTrustAccessIdentityProviderArgs.builder()
- *             .config(ZeroTrustAccessIdentityProviderConfigArgs.builder()
+ *         var exampleZeroTrustAccessIdentityProvider = new Provider("exampleZeroTrustAccessIdentityProvider", ProviderArgs.builder()
+ *             .config(ProviderConfigArgs.builder()
  *                 .claims(                
  *                     "email_verified",
  *                     "preferred_username",
@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .name("Widget Corps IDP")
  *             .type("onetimepin")
  *             .zoneId("zone_id")
- *             .scimConfig(ZeroTrustAccessIdentityProviderScimConfigArgs.builder()
+ *             .scimConfig(ProviderScimConfigArgs.builder()
  *                 .enabled(true)
  *                 .identityUpdateBehavior("automatic")
  *                 .seatDeprovision(true)
@@ -88,7 +88,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;identity_provider_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider has been deprecated in favor of cloudflare:zeroTrustAccessIdentity/provider:Provider
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider has been deprecated in favor of cloudflare:zeroTrustAccessIdentity/provider:Provider */
 @ResourceType(type="cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider")
 public class ZeroTrustAccessIdentityProvider extends com.pulumi.resources.CustomResource {
     /**

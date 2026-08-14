@@ -25,12 +25,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleEmailRoutingRule = new Cloudflare.EmailRoutingRule("example_email_routing_rule", new()
+    ///     var exampleEmailRoutingRule = new Cloudflare.Modules.EmailRouting.EmailRoutingRule("example_email_routing_rule", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Actions = new[]
     ///         {
-    ///             new Cloudflare.Inputs.EmailRoutingRuleActionArgs
+    ///             new Cloudflare.Modules.EmailRouting.Inputs.RuleActionArgs
     ///             {
     ///                 Type = "forward",
     ///                 Value = new[]
@@ -41,7 +41,7 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         Matchers = new[]
     ///         {
-    ///             new Cloudflare.Inputs.EmailRoutingRuleMatcherArgs
+    ///             new Cloudflare.Modules.EmailRouting.Inputs.RuleMatcherArgs
     ///             {
     ///                 Type = "literal",
     ///                 Field = "to",
@@ -64,6 +64,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/emailRoutingRule:EmailRoutingRule example '&lt;zone_id&gt;/&lt;rule_identifier&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/emailRoutingRule:EmailRoutingRule has been deprecated in favor of cloudflare:emailRouting/rule:Rule")]
     [CloudflareResourceType("cloudflare:index/emailRoutingRule:EmailRoutingRule")]
     public partial class EmailRoutingRule : global::Pulumi.CustomResource
     {

@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleEmailRoutingDns = new cloudflare.EmailRoutingDns("example_email_routing_dns", {
+ * const exampleEmailRoutingDns = new cloudflare.emailrouting.Dns("example_email_routing_dns", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "example.net",
  * });
@@ -29,6 +29,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/emailRoutingDns:EmailRoutingDns example '<zone_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/emailRoutingDns:EmailRoutingDns has been deprecated in favor of cloudflare:emailRouting/dns:Dns
  */
 export class EmailRoutingDns extends pulumi.CustomResource {
     /**
@@ -41,6 +43,7 @@ export class EmailRoutingDns extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: EmailRoutingDnsState, opts?: pulumi.CustomResourceOptions): EmailRoutingDns {
+        pulumi.log.warn("EmailRoutingDns is deprecated: cloudflare:index/emailRoutingDns:EmailRoutingDns has been deprecated in favor of cloudflare:emailRouting/dns:Dns")
         return new EmailRoutingDns(name, <any>state, { ...opts, id: id });
     }
 
@@ -109,8 +112,11 @@ export class EmailRoutingDns extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/emailRoutingDns:EmailRoutingDns has been deprecated in favor of cloudflare:emailRouting/dns:Dns */
     constructor(name: string, args: EmailRoutingDnsArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/emailRoutingDns:EmailRoutingDns has been deprecated in favor of cloudflare:emailRouting/dns:Dns */
     constructor(name: string, argsOrState?: EmailRoutingDnsArgs | EmailRoutingDnsState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("EmailRoutingDns is deprecated: cloudflare:index/emailRoutingDns:EmailRoutingDns has been deprecated in favor of cloudflare:emailRouting/dns:Dns")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -24,8 +24,8 @@ import javax.annotation.Nullable;
  * - `Domain API Gateway`
  * - `Domain API Gateway Read`
  * 
- * &gt; `cloudflare.ApiShieldSchema` is in a deprecation phase and will be removed in the future.
- *   Instead, please utilize the cloudflare.SchemaValidationSchemas resource instead.
+ * &gt; `cloudflare.apiShieldSchema.ApiShieldSchema` is in a deprecation phase and will be removed in the future.
+ *   Instead, please utilize the cloudflare.schemaValidationSchemas.SchemaValidationSchemas resource instead.
  * 
  * ## Example Usage
  * 
@@ -36,8 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ApiShieldSchema;
- * import com.pulumi.cloudflare.ApiShieldSchemaArgs;
+ * import com.pulumi.cloudflare.apiShieldSchema.ApiShieldSchema;
+ * import com.pulumi.cloudflare.apiShieldSchema.ApiShieldSchemaArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -64,7 +64,11 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * @deprecated
+ * cloudflare:index/apiShieldSchema:ApiShieldSchema has been deprecated in favor of cloudflare:apiShieldSchema/apiShieldSchema:ApiShieldSchema
+ * 
  */
+@Deprecated /* cloudflare:index/apiShieldSchema:ApiShieldSchema has been deprecated in favor of cloudflare:apiShieldSchema/apiShieldSchema:ApiShieldSchema */
 @ResourceType(type="cloudflare:index/apiShieldSchema:ApiShieldSchema")
 public class ApiShieldSchema extends com.pulumi.resources.CustomResource {
     @Export(name="createdAt", refs={String.class}, tree="[0]")

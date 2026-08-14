@@ -23,6 +23,8 @@ __all__ = [
     'get_custom_csr_output',
 ]
 
+warnings.warn("""cloudflare:index/getCustomCsr:getCustomCsr has been deprecated in favor of cloudflare:custom/csr:getCsr""", DeprecationWarning)
+
 @pulumi.output_type
 class GetCustomCsrResult:
     """
@@ -270,7 +272,7 @@ def get_custom_csr(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_custom_csr = cloudflare.get_custom_csr(custom_csr_id="7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
+    example_custom_csr = cloudflare.custom.get_csr(custom_csr_id="7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
         account_id="account_id",
         zone_id="zone_id")
     ```
@@ -280,6 +282,7 @@ def get_custom_csr(account_id: Optional[_builtins.str] = None,
     :param _builtins.str custom_csr_id: Custom CSR identifier tag.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_custom_csr is deprecated: cloudflare:index/getCustomCsr:getCustomCsr has been deprecated in favor of cloudflare:custom/csr:getCsr""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['customCsrId'] = custom_csr_id
@@ -324,7 +327,7 @@ def get_custom_csr_output(account_id: pulumi.Input[Optional[Optional[_builtins.s
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_custom_csr = cloudflare.get_custom_csr(custom_csr_id="7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
+    example_custom_csr = cloudflare.custom.get_csr(custom_csr_id="7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
         account_id="account_id",
         zone_id="zone_id")
     ```
@@ -334,6 +337,7 @@ def get_custom_csr_output(account_id: pulumi.Input[Optional[Optional[_builtins.s
     :param _builtins.str custom_csr_id: Custom CSR identifier tag.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_custom_csr is deprecated: cloudflare:index/getCustomCsr:getCustomCsr has been deprecated in favor of cloudflare:custom/csr:getCsr""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['customCsrId'] = custom_csr_id

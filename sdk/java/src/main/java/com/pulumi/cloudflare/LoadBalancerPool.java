@@ -37,15 +37,15 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.LoadBalancerPool;
- * import com.pulumi.cloudflare.LoadBalancerPoolArgs;
- * import com.pulumi.cloudflare.inputs.LoadBalancerPoolOriginArgs;
- * import com.pulumi.cloudflare.inputs.LoadBalancerPoolOriginHeaderArgs;
- * import com.pulumi.cloudflare.inputs.LoadBalancerPoolLoadSheddingArgs;
- * import com.pulumi.cloudflare.inputs.LoadBalancerPoolNotificationFilterArgs;
- * import com.pulumi.cloudflare.inputs.LoadBalancerPoolNotificationFilterOriginArgs;
- * import com.pulumi.cloudflare.inputs.LoadBalancerPoolNotificationFilterPoolArgs;
- * import com.pulumi.cloudflare.inputs.LoadBalancerPoolOriginSteeringArgs;
+ * import com.pulumi.cloudflare.loadBalancer.Pool;
+ * import com.pulumi.cloudflare.loadBalancer.PoolArgs;
+ * import com.pulumi.cloudflare.loadBalancer.inputs.PoolOriginArgs;
+ * import com.pulumi.cloudflare.loadBalancer.inputs.PoolOriginHeaderArgs;
+ * import com.pulumi.cloudflare.loadBalancer.inputs.PoolLoadSheddingArgs;
+ * import com.pulumi.cloudflare.loadBalancer.inputs.PoolNotificationFilterArgs;
+ * import com.pulumi.cloudflare.loadBalancer.inputs.PoolNotificationFilterOriginArgs;
+ * import com.pulumi.cloudflare.loadBalancer.inputs.PoolNotificationFilterPoolArgs;
+ * import com.pulumi.cloudflare.loadBalancer.inputs.PoolOriginSteeringArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -59,14 +59,14 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var exampleLoadBalancerPool = new LoadBalancerPool("exampleLoadBalancerPool", LoadBalancerPoolArgs.builder()
+ *         var exampleLoadBalancerPool = new Pool("exampleLoadBalancerPool", PoolArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .name("primary-dc-1")
- *             .origins(LoadBalancerPoolOriginArgs.builder()
+ *             .origins(PoolOriginArgs.builder()
  *                 .address("0.0.0.0")
  *                 .enabled(true)
  *                 .flattenCname(true)
- *                 .header(LoadBalancerPoolOriginHeaderArgs.builder()
+ *                 .header(PoolOriginHeaderArgs.builder()
  *                     .host(Arrays.asList("example.com"))
  *                     .build())
  *                 .name("app-server-1")
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *             .description("Primary data center - Provider XYZ")
  *             .enabled(false)
  *             .latitude(0.0)
- *             .loadShedding(LoadBalancerPoolLoadSheddingArgs.builder()
+ *             .loadShedding(PoolLoadSheddingArgs.builder()
  *                 .defaultPercent(0.0)
  *                 .defaultPolicy("random")
  *                 .sessionPercent(0.0)
@@ -88,17 +88,17 @@ import javax.annotation.Nullable;
  *             .monitor("monitor")
  *             .monitorGroup("monitor_group")
  *             .notificationEmail("someone}{@literal @}{@code example.com,sometwo}{@literal @}{@code example.com")
- *             .notificationFilter(LoadBalancerPoolNotificationFilterArgs.builder()
- *                 .origin(LoadBalancerPoolNotificationFilterOriginArgs.builder()
+ *             .notificationFilter(PoolNotificationFilterArgs.builder()
+ *                 .origin(PoolNotificationFilterOriginArgs.builder()
  *                     .disable(true)
  *                     .healthy(true)
  *                     .build())
- *                 .pool(LoadBalancerPoolNotificationFilterPoolArgs.builder()
+ *                 .pool(PoolNotificationFilterPoolArgs.builder()
  *                     .disable(true)
  *                     .healthy(false)
  *                     .build())
  *                 .build())
- *             .originSteering(LoadBalancerPoolOriginSteeringArgs.builder()
+ *             .originSteering(PoolOriginSteeringArgs.builder()
  *                 .policy("random")
  *                 .build())
  *             .build());
@@ -114,7 +114,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/loadBalancerPool:LoadBalancerPool example &#39;&lt;account_id&gt;/&lt;pool_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/loadBalancerPool:LoadBalancerPool has been deprecated in favor of cloudflare:loadBalancer/pool:Pool
+ * 
  */
+@Deprecated /* cloudflare:index/loadBalancerPool:LoadBalancerPool has been deprecated in favor of cloudflare:loadBalancer/pool:Pool */
 @ResourceType(type="cloudflare:index/loadBalancerPool:LoadBalancerPool")
 public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
     /**

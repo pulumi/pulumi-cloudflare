@@ -22,6 +22,8 @@ __all__ = [
     'get_magic_network_monitoring_rules_output',
 ]
 
+warnings.warn("""cloudflare:index/getMagicNetworkMonitoringRules:getMagicNetworkMonitoringRules has been deprecated in favor of cloudflare:magicNetworkMonitoring/rules:getRules""", DeprecationWarning)
+
 @pulumi.output_type
 class GetMagicNetworkMonitoringRulesResult:
     """
@@ -87,12 +89,13 @@ def get_magic_network_monitoring_rules(account_id: Optional[_builtins.str] = Non
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_network_monitoring_rules = cloudflare.get_magic_network_monitoring_rules(account_id="6f91088a406011ed95aed352566e8d4c")
+    example_magic_network_monitoring_rules = cloudflare.magicnetworkmonitoring.get_rules(account_id="6f91088a406011ed95aed352566e8d4c")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_magic_network_monitoring_rules is deprecated: cloudflare:index/getMagicNetworkMonitoringRules:getMagicNetworkMonitoringRules has been deprecated in favor of cloudflare:magicNetworkMonitoring/rules:getRules""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -119,12 +122,13 @@ def get_magic_network_monitoring_rules_output(account_id: pulumi.Input[Optional[
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_network_monitoring_rules = cloudflare.get_magic_network_monitoring_rules(account_id="6f91088a406011ed95aed352566e8d4c")
+    example_magic_network_monitoring_rules = cloudflare.magicnetworkmonitoring.get_rules(account_id="6f91088a406011ed95aed352566e8d4c")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_magic_network_monitoring_rules is deprecated: cloudflare:index/getMagicNetworkMonitoringRules:getMagicNetworkMonitoringRules has been deprecated in favor of cloudflare:magicNetworkMonitoring/rules:getRules""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

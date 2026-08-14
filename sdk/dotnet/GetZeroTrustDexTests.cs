@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getZeroTrustDexTests:getZeroTrustDexTests has been deprecated in favor of cloudflare:zeroTrustDex/tests:getTests")]
     public static class GetZeroTrustDexTests
     {
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDexTests = Cloudflare.GetZeroTrustDexTests.Invoke(new()
+        ///     var exampleZeroTrustDexTests = Cloudflare.Modules.ZeroTrustDex.GetTests.Invoke(new()
         ///     {
         ///         AccountId = "01a7362d577a6c3019a474fd6f485823",
         ///         Kind = "http",
@@ -60,7 +61,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDexTests = Cloudflare.GetZeroTrustDexTests.Invoke(new()
+        ///     var exampleZeroTrustDexTests = Cloudflare.Modules.ZeroTrustDex.GetTests.Invoke(new()
         ///     {
         ///         AccountId = "01a7362d577a6c3019a474fd6f485823",
         ///         Kind = "http",
@@ -91,7 +92,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDexTests = Cloudflare.GetZeroTrustDexTests.Invoke(new()
+        ///     var exampleZeroTrustDexTests = Cloudflare.Modules.ZeroTrustDex.GetTests.Invoke(new()
         ///     {
         ///         AccountId = "01a7362d577a6c3019a474fd6f485823",
         ///         Kind = "http",

@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_dns_locations_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDnsLocations:getZeroTrustDnsLocations has been deprecated in favor of cloudflare:zeroTrustDns/locations:getLocations""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDnsLocationsResult:
     """
@@ -87,12 +89,13 @@ def get_zero_trust_dns_locations(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dns_locations = cloudflare.get_zero_trust_dns_locations(account_id="699d98642c564d2e855e9661899b7252")
+    example_zero_trust_dns_locations = cloudflare.zerotrustdns.get_locations(account_id="699d98642c564d2e855e9661899b7252")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_dns_locations is deprecated: cloudflare:index/getZeroTrustDnsLocations:getZeroTrustDnsLocations has been deprecated in favor of cloudflare:zeroTrustDns/locations:getLocations""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -119,12 +122,13 @@ def get_zero_trust_dns_locations_output(account_id: pulumi.Input[Optional[Option
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dns_locations = cloudflare.get_zero_trust_dns_locations(account_id="699d98642c564d2e855e9661899b7252")
+    example_zero_trust_dns_locations = cloudflare.zerotrustdns.get_locations(account_id="699d98642c564d2e855e9661899b7252")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_dns_locations is deprecated: cloudflare:index/getZeroTrustDnsLocations:getZeroTrustDnsLocations has been deprecated in favor of cloudflare:zeroTrustDns/locations:getLocations""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

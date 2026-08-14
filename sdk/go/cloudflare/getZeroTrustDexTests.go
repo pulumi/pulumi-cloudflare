@@ -25,14 +25,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustDexTests(ctx, &cloudflare.LookupZeroTrustDexTestsArgs{
+//			_, err := zerotrustdex.GetTests(ctx, &zerotrustdex.GetTestsArgs{
 //				AccountId: pulumi.StringRef("01a7362d577a6c3019a474fd6f485823"),
 //				Kind:      pulumi.StringRef("http"),
 //				TestName:  pulumi.StringRef("testName"),
@@ -45,6 +45,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustDexTests:getZeroTrustDexTests has been deprecated in favor of cloudflare:zeroTrustDex/tests:getTests
 func LookupZeroTrustDexTests(ctx *pulumi.Context, args *LookupZeroTrustDexTestsArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustDexTestsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustDexTestsResult

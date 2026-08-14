@@ -395,8 +395,13 @@ class _ClientCertificateState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/clientCertificate:ClientCertificate has been deprecated in favor of cloudflare:client/certificate:Certificate""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/clientCertificate:ClientCertificate")
 class ClientCertificate(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/clientCertificate:ClientCertificate has been deprecated in favor of cloudflare:client/certificate:Certificate""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -418,7 +423,7 @@ class ClientCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_client_certificate = cloudflare.ClientCertificate("example_client_certificate",
+        example_client_certificate = cloudflare.client.Certificate("example_client_certificate",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             csr=\"\"\"  -----BEGIN CERTIFICATE REQUEST-----
           MIICY....
@@ -458,7 +463,7 @@ class ClientCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_client_certificate = cloudflare.ClientCertificate("example_client_certificate",
+        example_client_certificate = cloudflare.client.Certificate("example_client_certificate",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             csr=\"\"\"  -----BEGIN CERTIFICATE REQUEST-----
           MIICY....
@@ -494,6 +499,7 @@ class ClientCertificate(pulumi.CustomResource):
                  validity_days: pulumi.Input[Optional[_builtins.int]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ClientCertificate is deprecated: cloudflare:index/clientCertificate:ClientCertificate has been deprecated in favor of cloudflare:client/certificate:Certificate""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

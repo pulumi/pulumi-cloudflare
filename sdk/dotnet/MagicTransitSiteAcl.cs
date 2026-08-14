@@ -27,11 +27,11 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleMagicTransitSiteAcl = new Cloudflare.MagicTransitSiteAcl("example_magic_transit_site_acl", new()
+    ///     var exampleMagicTransitSiteAcl = new Cloudflare.Modules.MagicTransitSite.MagicTransitSiteAcl("example_magic_transit_site_acl", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SiteId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         Lan1 = new Cloudflare.Inputs.MagicTransitSiteAclLan1Args
+    ///         Lan1 = new Cloudflare.Modules.MagicTransitSite.Inputs.AclLan1Args
     ///         {
     ///             LanId = "lan_id",
     ///             LanName = "lan_name",
@@ -48,7 +48,7 @@ namespace Pulumi.Cloudflare
     ///                 "192.0.2.1",
     ///             },
     ///         },
-    ///         Lan2 = new Cloudflare.Inputs.MagicTransitSiteAclLan2Args
+    ///         Lan2 = new Cloudflare.Modules.MagicTransitSite.Inputs.AclLan2Args
     ///         {
     ///             LanId = "lan_id",
     ///             LanName = "lan_name",
@@ -84,6 +84,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/magicTransitSiteAcl:MagicTransitSiteAcl example '&lt;account_id&gt;/&lt;site_id&gt;/&lt;acl_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/magicTransitSiteAcl:MagicTransitSiteAcl has been deprecated in favor of cloudflare:magicTransitSite/acl:Acl")]
     [CloudflareResourceType("cloudflare:index/magicTransitSiteAcl:MagicTransitSiteAcl")]
     public partial class MagicTransitSiteAcl : global::Pulumi.CustomResource
     {

@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/stream"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetStreamKey(ctx, &cloudflare.LookupStreamKeyArgs{
+//			_, err := stream.LookupKey(ctx, &stream.LookupKeyArgs{
 //				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
@@ -41,6 +41,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getStreamKey:getStreamKey has been deprecated in favor of cloudflare:stream/key:getKey
 func LookupStreamKey(ctx *pulumi.Context, args *LookupStreamKeyArgs, opts ...pulumi.InvokeOption) (*LookupStreamKeyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupStreamKeyResult

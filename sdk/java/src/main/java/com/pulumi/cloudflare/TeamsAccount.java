@@ -7,13 +7,11 @@ import com.pulumi.cloudflare.TeamsAccountArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.TeamsAccountState;
 import com.pulumi.cloudflare.outputs.TeamsAccountSettings;
-import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -27,24 +25,24 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustGatewaySettings;
- * import com.pulumi.cloudflare.ZeroTrustGatewaySettingsArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsActivityLogArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsAntivirusArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettingsArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsBlockPageArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsBodyScanningArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsBrowserIsolationArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsCertificateArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsCustomCertificateArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsFipsArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsHostSelectorArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsInspectionArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsSandboxArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsTlsDecryptArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.Settings;
+ * import com.pulumi.cloudflare.zeroTrustGateway.SettingsArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.SettingsSettingsArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.SettingsSettingsActivityLogArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.SettingsSettingsAntivirusArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.SettingsSettingsAntivirusNotificationSettingsArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.SettingsSettingsBlockPageArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.SettingsSettingsBodyScanningArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.SettingsSettingsBrowserIsolationArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.SettingsSettingsCertificateArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.SettingsSettingsCustomCertificateArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.SettingsSettingsExtendedEmailMatchingArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.SettingsSettingsFipsArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.SettingsSettingsHostSelectorArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.SettingsSettingsInspectionArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.SettingsSettingsProtocolDetectionArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.SettingsSettingsSandboxArgs;
+ * import com.pulumi.cloudflare.zeroTrustGateway.inputs.SettingsSettingsTlsDecryptArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -58,24 +56,24 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var exampleZeroTrustGatewaySettings = new ZeroTrustGatewaySettings("exampleZeroTrustGatewaySettings", ZeroTrustGatewaySettingsArgs.builder()
+ *         var exampleZeroTrustGatewaySettings = new Settings("exampleZeroTrustGatewaySettings", SettingsArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
- *             .settings(ZeroTrustGatewaySettingsSettingsArgs.builder()
- *                 .activityLog(ZeroTrustGatewaySettingsSettingsActivityLogArgs.builder()
+ *             .settings(SettingsSettingsArgs.builder()
+ *                 .activityLog(SettingsSettingsActivityLogArgs.builder()
  *                     .enabled(true)
  *                     .build())
- *                 .antivirus(ZeroTrustGatewaySettingsSettingsAntivirusArgs.builder()
+ *                 .antivirus(SettingsSettingsAntivirusArgs.builder()
  *                     .enabledDownloadPhase(false)
  *                     .enabledUploadPhase(false)
  *                     .failClosed(false)
- *                     .notificationSettings(ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettingsArgs.builder()
+ *                     .notificationSettings(SettingsSettingsAntivirusNotificationSettingsArgs.builder()
  *                         .enabled(true)
  *                         .includeContext(true)
  *                         .msg("msg")
  *                         .supportUrl("support_url")
  *                         .build())
  *                     .build())
- *                 .blockPage(ZeroTrustGatewaySettingsSettingsBlockPageArgs.builder()
+ *                 .blockPage(SettingsSettingsBlockPageArgs.builder()
  *                     .backgroundColor("background_color")
  *                     .enabled(true)
  *                     .footerText("--footer--")
@@ -89,41 +87,41 @@ import javax.annotation.Nullable;
  *                     .suppressFooter(false)
  *                     .targetUri("https://example.com")
  *                     .build())
- *                 .bodyScanning(ZeroTrustGatewaySettingsSettingsBodyScanningArgs.builder()
+ *                 .bodyScanning(SettingsSettingsBodyScanningArgs.builder()
  *                     .inspectionMode("deep")
  *                     .build())
- *                 .browserIsolation(ZeroTrustGatewaySettingsSettingsBrowserIsolationArgs.builder()
+ *                 .browserIsolation(SettingsSettingsBrowserIsolationArgs.builder()
  *                     .nonIdentityEnabled(true)
  *                     .urlBrowserIsolationEnabled(true)
  *                     .build())
- *                 .certificate(ZeroTrustGatewaySettingsSettingsCertificateArgs.builder()
+ *                 .certificate(SettingsSettingsCertificateArgs.builder()
  *                     .id("d1b364c5-1311-466e-a194-f0e943e0799f")
  *                     .build())
- *                 .customCertificate(ZeroTrustGatewaySettingsSettingsCustomCertificateArgs.builder()
+ *                 .customCertificate(SettingsSettingsCustomCertificateArgs.builder()
  *                     .enabled(true)
  *                     .id("d1b364c5-1311-466e-a194-f0e943e0799f")
  *                     .build())
- *                 .extendedEmailMatching(ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs.builder()
+ *                 .extendedEmailMatching(SettingsSettingsExtendedEmailMatchingArgs.builder()
  *                     .enabled(true)
  *                     .build())
- *                 .fips(ZeroTrustGatewaySettingsSettingsFipsArgs.builder()
+ *                 .fips(SettingsSettingsFipsArgs.builder()
  *                     .tls(true)
  *                     .build())
- *                 .hostSelector(ZeroTrustGatewaySettingsSettingsHostSelectorArgs.builder()
+ *                 .hostSelector(SettingsSettingsHostSelectorArgs.builder()
  *                     .enabled(false)
  *                     .build())
- *                 .inspection(ZeroTrustGatewaySettingsSettingsInspectionArgs.builder()
+ *                 .inspection(SettingsSettingsInspectionArgs.builder()
  *                     .mode("static")
  *                     .build())
  *                 .maxTtlSecs(3600)
- *                 .protocolDetection(ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs.builder()
+ *                 .protocolDetection(SettingsSettingsProtocolDetectionArgs.builder()
  *                     .enabled(true)
  *                     .build())
- *                 .sandbox(ZeroTrustGatewaySettingsSettingsSandboxArgs.builder()
+ *                 .sandbox(SettingsSettingsSandboxArgs.builder()
  *                     .enabled(true)
  *                     .fallbackAction("allow")
  *                     .build())
- *                 .tlsDecrypt(ZeroTrustGatewaySettingsSettingsTlsDecryptArgs.builder()
+ *                 .tlsDecrypt(SettingsSettingsTlsDecryptArgs.builder()
  *                     .enabled(true)
  *                     .build())
  *                 .build())
@@ -219,9 +217,6 @@ public class TeamsAccount extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .aliases(List.of(
-                Output.of(Alias.builder().type("cloudflare:index/teamsAccount:TeamsAccount").build())
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

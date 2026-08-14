@@ -313,8 +313,6 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["aud"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessApplication:AccessApplication" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AccessApplication.__pulumiType, name, resourceInputs, opts);
     }
 }

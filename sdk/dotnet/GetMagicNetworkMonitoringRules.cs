@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getMagicNetworkMonitoringRules:getMagicNetworkMonitoringRules has been deprecated in favor of cloudflare:magicNetworkMonitoring/rules:getRules")]
     public static class GetMagicNetworkMonitoringRules
     {
         /// <summary>
@@ -28,7 +29,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicNetworkMonitoringRules = Cloudflare.GetMagicNetworkMonitoringRules.Invoke(new()
+        ///     var exampleMagicNetworkMonitoringRules = Cloudflare.Modules.MagicNetworkMonitoring.GetRules.Invoke(new()
         ///     {
         ///         AccountId = "6f91088a406011ed95aed352566e8d4c",
         ///     });
@@ -56,7 +57,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicNetworkMonitoringRules = Cloudflare.GetMagicNetworkMonitoringRules.Invoke(new()
+        ///     var exampleMagicNetworkMonitoringRules = Cloudflare.Modules.MagicNetworkMonitoring.GetRules.Invoke(new()
         ///     {
         ///         AccountId = "6f91088a406011ed95aed352566e8d4c",
         ///     });
@@ -84,7 +85,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicNetworkMonitoringRules = Cloudflare.GetMagicNetworkMonitoringRules.Invoke(new()
+        ///     var exampleMagicNetworkMonitoringRules = Cloudflare.Modules.MagicNetworkMonitoring.GetRules.Invoke(new()
         ///     {
         ///         AccountId = "6f91088a406011ed95aed352566e8d4c",
         ///     });

@@ -407,8 +407,13 @@ class _ByoIpPrefixState:
         pulumi.set(self, "rpki_validation_state", value)
 
 
+warnings.warn("""cloudflare:index/byoIpPrefix:ByoIpPrefix has been deprecated in favor of cloudflare:byoIp/prefix:Prefix""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/byoIpPrefix:ByoIpPrefix")
 class ByoIpPrefix(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/byoIpPrefix:ByoIpPrefix has been deprecated in favor of cloudflare:byoIp/prefix:Prefix""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -436,7 +441,7 @@ class ByoIpPrefix(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_byo_ip_prefix = cloudflare.ByoIpPrefix("example_byo_ip_prefix",
+        example_byo_ip_prefix = cloudflare.byoip.Prefix("example_byo_ip_prefix",
             account_id="258def64c72dae45f3e4c8516e2111f2",
             asn=13335,
             cidr="192.0.2.0/24",
@@ -483,7 +488,7 @@ class ByoIpPrefix(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_byo_ip_prefix = cloudflare.ByoIpPrefix("example_byo_ip_prefix",
+        example_byo_ip_prefix = cloudflare.byoip.Prefix("example_byo_ip_prefix",
             account_id="258def64c72dae45f3e4c8516e2111f2",
             asn=13335,
             cidr="192.0.2.0/24",
@@ -521,6 +526,7 @@ class ByoIpPrefix(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  loa_document_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ByoIpPrefix is deprecated: cloudflare:index/byoIpPrefix:ByoIpPrefix has been deprecated in favor of cloudflare:byoIp/prefix:Prefix""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

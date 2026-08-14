@@ -359,8 +359,13 @@ class _ZoneDnsSettingsState:
         pulumi.set(self, "zone_mode", value)
 
 
+warnings.warn("""cloudflare:index/zoneDnsSettings:ZoneDnsSettings has been deprecated in favor of cloudflare:zone/dnsSettings:DnsSettings""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zoneDnsSettings:ZoneDnsSettings")
 class ZoneDnsSettings(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zoneDnsSettings:ZoneDnsSettings has been deprecated in favor of cloudflare:zone/dnsSettings:DnsSettings""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -390,7 +395,7 @@ class ZoneDnsSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zone_dns_settings = cloudflare.ZoneDnsSettings("example_zone_dns_settings",
+        example_zone_dns_settings = cloudflare.zone.DnsSettings("example_zone_dns_settings",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             flatten_all_cnames=False,
             foundation_dns=False,
@@ -455,7 +460,7 @@ class ZoneDnsSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zone_dns_settings = cloudflare.ZoneDnsSettings("example_zone_dns_settings",
+        example_zone_dns_settings = cloudflare.zone.DnsSettings("example_zone_dns_settings",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             flatten_all_cnames=False,
             foundation_dns=False,
@@ -512,6 +517,7 @@ class ZoneDnsSettings(pulumi.CustomResource):
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZoneDnsSettings is deprecated: cloudflare:index/zoneDnsSettings:ZoneDnsSettings has been deprecated in favor of cloudflare:zone/dnsSettings:DnsSettings""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -33,10 +33,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.EmailRoutingCatchAll;
- * import com.pulumi.cloudflare.EmailRoutingCatchAllArgs;
- * import com.pulumi.cloudflare.inputs.EmailRoutingCatchAllActionArgs;
- * import com.pulumi.cloudflare.inputs.EmailRoutingCatchAllMatcherArgs;
+ * import com.pulumi.cloudflare.emailRouting.CatchAll;
+ * import com.pulumi.cloudflare.emailRouting.CatchAllArgs;
+ * import com.pulumi.cloudflare.emailRouting.inputs.CatchAllActionArgs;
+ * import com.pulumi.cloudflare.emailRouting.inputs.CatchAllMatcherArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -50,13 +50,13 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var exampleEmailRoutingCatchAll = new EmailRoutingCatchAll("exampleEmailRoutingCatchAll", EmailRoutingCatchAllArgs.builder()
+ *         var exampleEmailRoutingCatchAll = new CatchAll("exampleEmailRoutingCatchAll", CatchAllArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .actions(EmailRoutingCatchAllActionArgs.builder()
+ *             .actions(CatchAllActionArgs.builder()
  *                 .type("forward")
  *                 .value(Arrays.asList("destinationaddress}{@literal @}{@code example.net"))
  *                 .build())
- *             .matchers(EmailRoutingCatchAllMatcherArgs.builder()
+ *             .matchers(CatchAllMatcherArgs.builder()
  *                 .type("all")
  *                 .build())
  *             .enabled(true)
@@ -76,7 +76,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll has been deprecated in favor of cloudflare:emailRouting/catchAll:CatchAll
+ * 
  */
+@Deprecated /* cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll has been deprecated in favor of cloudflare:emailRouting/catchAll:CatchAll */
 @ResourceType(type="cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll")
 public class EmailRoutingCatchAll extends com.pulumi.resources.CustomResource {
     /**

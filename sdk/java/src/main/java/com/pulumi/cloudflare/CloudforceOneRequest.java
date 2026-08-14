@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.CloudforceOneRequest;
- * import com.pulumi.cloudflare.CloudforceOneRequestArgs;
+ * import com.pulumi.cloudflare.cloudforceOneRequest.CloudforceOneRequest;
+ * import com.pulumi.cloudflare.cloudforceOneRequest.CloudforceOneRequestArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -65,7 +65,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/cloudforceOneRequest:CloudforceOneRequest example &#39;&lt;account_id&gt;/&lt;request_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/cloudforceOneRequest:CloudforceOneRequest has been deprecated in favor of cloudflare:cloudforceOneRequest/cloudforceOneRequest:CloudforceOneRequest
+ * 
  */
+@Deprecated /* cloudflare:index/cloudforceOneRequest:CloudforceOneRequest has been deprecated in favor of cloudflare:cloudforceOneRequest/cloudforceOneRequest:CloudforceOneRequest */
 @ResourceType(type="cloudflare:index/cloudforceOneRequest:CloudforceOneRequest")
 public class CloudforceOneRequest extends com.pulumi.resources.CustomResource {
     /**

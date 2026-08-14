@@ -20,14 +20,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDexTests = cloudflare.getZeroTrustDexTests({
+ * const exampleZeroTrustDexTests = cloudflare.zerotrustdex.getTests({
  *     accountId: "01a7362d577a6c3019a474fd6f485823",
  *     kind: "http",
  *     testName: "testName",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDexTests:getZeroTrustDexTests has been deprecated in favor of cloudflare:zeroTrustDex/tests:getTests */
 export function getZeroTrustDexTests(args?: GetZeroTrustDexTestsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDexTestsResult> {
+    pulumi.log.warn("getZeroTrustDexTests is deprecated: cloudflare:index/getZeroTrustDexTests:getZeroTrustDexTests has been deprecated in favor of cloudflare:zeroTrustDex/tests:getTests")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDexTests:getZeroTrustDexTests", {
@@ -101,14 +103,16 @@ export interface GetZeroTrustDexTestsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDexTests = cloudflare.getZeroTrustDexTests({
+ * const exampleZeroTrustDexTests = cloudflare.zerotrustdex.getTests({
  *     accountId: "01a7362d577a6c3019a474fd6f485823",
  *     kind: "http",
  *     testName: "testName",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustDexTests:getZeroTrustDexTests has been deprecated in favor of cloudflare:zeroTrustDex/tests:getTests */
 export function getZeroTrustDexTestsOutput(args?: GetZeroTrustDexTestsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDexTestsResult> {
+    pulumi.log.warn("getZeroTrustDexTests is deprecated: cloudflare:index/getZeroTrustDexTests:getZeroTrustDexTests has been deprecated in favor of cloudflare:zeroTrustDex/tests:getTests")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDexTests:getZeroTrustDexTests", {

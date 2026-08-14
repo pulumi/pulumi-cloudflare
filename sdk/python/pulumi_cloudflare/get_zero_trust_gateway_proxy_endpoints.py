@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_gateway_proxy_endpoints_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustGatewayProxyEndpoints:getZeroTrustGatewayProxyEndpoints has been deprecated in favor of cloudflare:zeroTrustGatewayProxy/endpoints:getEndpoints""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustGatewayProxyEndpointsResult:
     """
@@ -81,12 +83,13 @@ def get_zero_trust_gateway_proxy_endpoints(account_id: Optional[_builtins.str] =
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_gateway_proxy_endpoints = cloudflare.get_zero_trust_gateway_proxy_endpoints(account_id="699d98642c564d2e855e9661899b7252")
+    example_zero_trust_gateway_proxy_endpoints = cloudflare.zerotrustgatewayproxy.get_endpoints(account_id="699d98642c564d2e855e9661899b7252")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_gateway_proxy_endpoints is deprecated: cloudflare:index/getZeroTrustGatewayProxyEndpoints:getZeroTrustGatewayProxyEndpoints has been deprecated in favor of cloudflare:zeroTrustGatewayProxy/endpoints:getEndpoints""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -107,12 +110,13 @@ def get_zero_trust_gateway_proxy_endpoints_output(account_id: pulumi.Input[Optio
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_gateway_proxy_endpoints = cloudflare.get_zero_trust_gateway_proxy_endpoints(account_id="699d98642c564d2e855e9661899b7252")
+    example_zero_trust_gateway_proxy_endpoints = cloudflare.zerotrustgatewayproxy.get_endpoints(account_id="699d98642c564d2e855e9661899b7252")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_gateway_proxy_endpoints is deprecated: cloudflare:index/getZeroTrustGatewayProxyEndpoints:getZeroTrustGatewayProxyEndpoints has been deprecated in favor of cloudflare:zeroTrustGatewayProxy/endpoints:getEndpoints""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

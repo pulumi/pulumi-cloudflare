@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/loadbalancermonitor"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetLoadBalancerMonitor(ctx, &cloudflare.LookupLoadBalancerMonitorArgs{
+//			_, err := loadbalancermonitor.GetLoadBalancerMonitor(ctx, &loadbalancermonitor.GetLoadBalancerMonitorArgs{
 //				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				MonitorId: "f1aba936b94213e5b8dca0c0dbf1f9cc",
 //			}, nil)
@@ -42,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getLoadBalancerMonitor:getLoadBalancerMonitor has been deprecated in favor of cloudflare:loadBalancerMonitor/loadBalancerMonitor:getLoadBalancerMonitor
 func LookupLoadBalancerMonitor(ctx *pulumi.Context, args *LookupLoadBalancerMonitorArgs, opts ...pulumi.InvokeOption) (*LookupLoadBalancerMonitorResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupLoadBalancerMonitorResult

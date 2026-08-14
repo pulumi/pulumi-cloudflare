@@ -34,15 +34,15 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.PipelineStream;
- * import com.pulumi.cloudflare.PipelineStreamArgs;
- * import com.pulumi.cloudflare.inputs.PipelineStreamFormatArgs;
- * import com.pulumi.cloudflare.inputs.PipelineStreamHttpArgs;
- * import com.pulumi.cloudflare.inputs.PipelineStreamHttpCorsArgs;
- * import com.pulumi.cloudflare.inputs.PipelineStreamSchemaArgs;
- * import com.pulumi.cloudflare.inputs.PipelineStreamSchemaFieldArgs;
- * import com.pulumi.cloudflare.inputs.PipelineStreamSchemaFormatArgs;
- * import com.pulumi.cloudflare.inputs.PipelineStreamWorkerBindingArgs;
+ * import com.pulumi.cloudflare.pipeline.Stream;
+ * import com.pulumi.cloudflare.pipeline.StreamArgs;
+ * import com.pulumi.cloudflare.pipeline.inputs.StreamFormatArgs;
+ * import com.pulumi.cloudflare.pipeline.inputs.StreamHttpArgs;
+ * import com.pulumi.cloudflare.pipeline.inputs.StreamHttpCorsArgs;
+ * import com.pulumi.cloudflare.pipeline.inputs.StreamSchemaArgs;
+ * import com.pulumi.cloudflare.pipeline.inputs.StreamSchemaFieldArgs;
+ * import com.pulumi.cloudflare.pipeline.inputs.StreamSchemaFormatArgs;
+ * import com.pulumi.cloudflare.pipeline.inputs.StreamWorkerBindingArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -56,31 +56,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var examplePipelineStream = new PipelineStream("examplePipelineStream", PipelineStreamArgs.builder()
+ *         var examplePipelineStream = new Stream("examplePipelineStream", StreamArgs.builder()
  *             .accountId("0123105f4ecef8ad9ca31a8372d0c353")
  *             .name("my_stream")
- *             .format(PipelineStreamFormatArgs.builder()
+ *             .format(StreamFormatArgs.builder()
  *                 .type("json")
  *                 .decimalEncoding("number")
  *                 .timestampFormat("rfc3339")
  *                 .unstructured(true)
  *                 .build())
- *             .http(PipelineStreamHttpArgs.builder()
+ *             .http(StreamHttpArgs.builder()
  *                 .authentication(false)
  *                 .enabled(true)
- *                 .cors(PipelineStreamHttpCorsArgs.builder()
+ *                 .cors(StreamHttpCorsArgs.builder()
  *                     .origins("string")
  *                     .build())
  *                 .build())
- *             .schema(PipelineStreamSchemaArgs.builder()
- *                 .fields(PipelineStreamSchemaFieldArgs.builder()
+ *             .schema(StreamSchemaArgs.builder()
+ *                 .fields(StreamSchemaFieldArgs.builder()
  *                     .type("int32")
  *                     .metadataKey("metadata_key")
  *                     .name("name")
  *                     .required(true)
  *                     .sqlName("sql_name")
  *                     .build())
- *                 .format(PipelineStreamSchemaFormatArgs.builder()
+ *                 .format(StreamSchemaFormatArgs.builder()
  *                     .type("json")
  *                     .decimalEncoding("number")
  *                     .timestampFormat("rfc3339")
@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .inferred(true)
  *                 .build())
- *             .workerBinding(PipelineStreamWorkerBindingArgs.builder()
+ *             .workerBinding(StreamWorkerBindingArgs.builder()
  *                 .enabled(true)
  *                 .build())
  *             .build());
@@ -104,7 +104,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/pipelineStream:PipelineStream example &#39;&lt;account_id&gt;/&lt;stream_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/pipelineStream:PipelineStream has been deprecated in favor of cloudflare:pipeline/stream:Stream
+ * 
  */
+@Deprecated /* cloudflare:index/pipelineStream:PipelineStream has been deprecated in favor of cloudflare:pipeline/stream:Stream */
 @ResourceType(type="cloudflare:index/pipelineStream:PipelineStream")
 public class PipelineStream extends com.pulumi.resources.CustomResource {
     /**

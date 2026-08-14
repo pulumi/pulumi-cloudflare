@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleEmailSecurityTrustedDomains = new cloudflare.EmailSecurityTrustedDomains("example_email_security_trusted_domains", {
+ * const exampleEmailSecurityTrustedDomains = new cloudflare.emailsecuritytrusteddomains.EmailSecurityTrustedDomains("example_email_security_trusted_domains", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     isRecent: true,
  *     isRegex: false,
@@ -31,6 +31,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains example '<account_id>/<trusted_domain_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains has been deprecated in favor of cloudflare:emailSecurityTrustedDomains/emailSecurityTrustedDomains:EmailSecurityTrustedDomains
  */
 export class EmailSecurityTrustedDomains extends pulumi.CustomResource {
     /**
@@ -43,6 +45,7 @@ export class EmailSecurityTrustedDomains extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: EmailSecurityTrustedDomainsState, opts?: pulumi.CustomResourceOptions): EmailSecurityTrustedDomains {
+        pulumi.log.warn("EmailSecurityTrustedDomains is deprecated: cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains has been deprecated in favor of cloudflare:emailSecurityTrustedDomains/emailSecurityTrustedDomains:EmailSecurityTrustedDomains")
         return new EmailSecurityTrustedDomains(name, <any>state, { ...opts, id: id });
     }
 
@@ -91,8 +94,11 @@ export class EmailSecurityTrustedDomains extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains has been deprecated in favor of cloudflare:emailSecurityTrustedDomains/emailSecurityTrustedDomains:EmailSecurityTrustedDomains */
     constructor(name: string, args: EmailSecurityTrustedDomainsArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains has been deprecated in favor of cloudflare:emailSecurityTrustedDomains/emailSecurityTrustedDomains:EmailSecurityTrustedDomains */
     constructor(name: string, argsOrState?: EmailSecurityTrustedDomainsArgs | EmailSecurityTrustedDomainsState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("EmailSecurityTrustedDomains is deprecated: cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains has been deprecated in favor of cloudflare:emailSecurityTrustedDomains/emailSecurityTrustedDomains:EmailSecurityTrustedDomains")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

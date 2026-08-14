@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleNotificationPolicyWebhooks = new cloudflare.NotificationPolicyWebhooks("example_notification_policy_webhooks", {
+ * const exampleNotificationPolicyWebhooks = new cloudflare.notificationpolicywebhooks.NotificationPolicyWebhooks("example_notification_policy_webhooks", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "Slack Webhook",
  *     url: "https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd",
@@ -32,6 +32,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example '<account_id>/<webhook_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks has been deprecated in favor of cloudflare:notificationPolicyWebhooks/notificationPolicyWebhooks:NotificationPolicyWebhooks
  */
 export class NotificationPolicyWebhooks extends pulumi.CustomResource {
     /**
@@ -44,6 +46,7 @@ export class NotificationPolicyWebhooks extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: NotificationPolicyWebhooksState, opts?: pulumi.CustomResourceOptions): NotificationPolicyWebhooks {
+        pulumi.log.warn("NotificationPolicyWebhooks is deprecated: cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks has been deprecated in favor of cloudflare:notificationPolicyWebhooks/notificationPolicyWebhooks:NotificationPolicyWebhooks")
         return new NotificationPolicyWebhooks(name, <any>state, { ...opts, id: id });
     }
 
@@ -102,8 +105,11 @@ export class NotificationPolicyWebhooks extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks has been deprecated in favor of cloudflare:notificationPolicyWebhooks/notificationPolicyWebhooks:NotificationPolicyWebhooks */
     constructor(name: string, args: NotificationPolicyWebhooksArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks has been deprecated in favor of cloudflare:notificationPolicyWebhooks/notificationPolicyWebhooks:NotificationPolicyWebhooks */
     constructor(name: string, argsOrState?: NotificationPolicyWebhooksArgs | NotificationPolicyWebhooksState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("NotificationPolicyWebhooks is deprecated: cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks has been deprecated in favor of cloudflare:notificationPolicyWebhooks/notificationPolicyWebhooks:NotificationPolicyWebhooks")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

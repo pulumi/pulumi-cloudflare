@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustaccessshortlived"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustAccessShortLivedCertificate(ctx, "example_zero_trust_access_short_lived_certificate", &cloudflare.ZeroTrustAccessShortLivedCertificateArgs{
+//			_, err := zerotrustaccessshortlived.NewCertificate(ctx, "example_zero_trust_access_short_lived_certificate", &zerotrustaccessshortlived.CertificateArgs{
 //				AppId:  pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
 //				ZoneId: pulumi.String("zone_id"),
 //			})
@@ -49,6 +49,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate example '<{accounts|zones}/{account_id|zone_id}>/<app_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate has been deprecated in favor of cloudflare:zeroTrustAccessShortLived/certificate:Certificate
 type ZeroTrustAccessShortLivedCertificate struct {
 	pulumi.CustomResourceState
 

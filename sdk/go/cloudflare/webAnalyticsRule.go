@@ -19,14 +19,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/webanalytics"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWebAnalyticsRule(ctx, "example_web_analytics_rule", &cloudflare.WebAnalyticsRuleArgs{
+//			_, err := webanalytics.NewRule(ctx, "example_web_analytics_rule", &webanalytics.RuleArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				RulesetId: pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
 //				Host:      pulumi.String("example.com"),
@@ -48,6 +48,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/webAnalyticsRule:WebAnalyticsRule has been deprecated in favor of cloudflare:webAnalytics/rule:Rule
 type WebAnalyticsRule struct {
 	pulumi.CustomResourceState
 

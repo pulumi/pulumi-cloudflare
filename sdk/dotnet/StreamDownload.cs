@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleStreamDownload = new Cloudflare.StreamDownload("example_stream_download", new()
+    ///     var exampleStreamDownload = new Cloudflare.Modules.Stream.StreamDownload("example_stream_download", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Identifier = "ea95132c15732412d22c1476fa83f27a",
@@ -38,6 +38,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/streamDownload:StreamDownload has been deprecated in favor of cloudflare:stream/download:Download")]
     [CloudflareResourceType("cloudflare:index/streamDownload:StreamDownload")]
     public partial class StreamDownload : global::Pulumi.CustomResource
     {

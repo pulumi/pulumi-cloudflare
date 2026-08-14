@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustTunnelWarpConnector;
- * import com.pulumi.cloudflare.ZeroTrustTunnelWarpConnectorArgs;
+ * import com.pulumi.cloudflare.zeroTrustTunnelWarpConnector.ZeroTrustTunnelWarpConnector;
+ * import com.pulumi.cloudflare.zeroTrustTunnelWarpConnector.ZeroTrustTunnelWarpConnectorArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -66,7 +66,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector example &#39;&lt;account_id&gt;/&lt;tunnel_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector has been deprecated in favor of cloudflare:zeroTrustTunnelWarpConnector/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector has been deprecated in favor of cloudflare:zeroTrustTunnelWarpConnector/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector */
 @ResourceType(type="cloudflare:index/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector")
 public class ZeroTrustTunnelWarpConnector extends com.pulumi.resources.CustomResource {
     /**

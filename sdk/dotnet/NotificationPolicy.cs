@@ -28,30 +28,30 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleNotificationPolicy = new Cloudflare.NotificationPolicy("example_notification_policy", new()
+    ///     var exampleNotificationPolicy = new Cloudflare.Modules.Notification.NotificationPolicy("example_notification_policy", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         AlertType = "universal_ssl_event_type",
     ///         Enabled = true,
-    ///         Mechanisms = new Cloudflare.Inputs.NotificationPolicyMechanismsArgs
+    ///         Mechanisms = new Cloudflare.Modules.Notification.Inputs.PolicyMechanismsArgs
     ///         {
     ///             Emails = new[]
     ///             {
-    ///                 new Cloudflare.Inputs.NotificationPolicyMechanismsEmailArgs
+    ///                 new Cloudflare.Modules.Notification.Inputs.PolicyMechanismsEmailArgs
     ///                 {
     ///                     Id = "id",
     ///                 },
     ///             },
     ///             Pagerduties = new[]
     ///             {
-    ///                 new Cloudflare.Inputs.NotificationPolicyMechanismsPagerdutyArgs
+    ///                 new Cloudflare.Modules.Notification.Inputs.PolicyMechanismsPagerdutyArgs
     ///                 {
     ///                     Id = "f174e90afafe4643bbbc4a0ed4fc8415",
     ///                 },
     ///             },
     ///             Webhooks = new[]
     ///             {
-    ///                 new Cloudflare.Inputs.NotificationPolicyMechanismsWebhookArgs
+    ///                 new Cloudflare.Modules.Notification.Inputs.PolicyMechanismsWebhookArgs
     ///                 {
     ///                     Id = "f174e90afafe4643bbbc4a0ed4fc8415",
     ///                 },
@@ -60,7 +60,7 @@ namespace Pulumi.Cloudflare
     ///         Name = "SSL Notification Event Policy",
     ///         AlertInterval = "30m",
     ///         Description = "Something describing the policy.",
-    ///         Filters = new Cloudflare.Inputs.NotificationPolicyFiltersArgs
+    ///         Filters = new Cloudflare.Modules.Notification.Inputs.PolicyFiltersArgs
     ///         {
     ///             Actions = new[]
     ///             {
@@ -246,6 +246,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example '&lt;account_id&gt;/&lt;policy_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/notificationPolicy:NotificationPolicy has been deprecated in favor of cloudflare:notification/policy:Policy")]
     [CloudflareResourceType("cloudflare:index/notificationPolicy:NotificationPolicy")]
     public partial class NotificationPolicy : global::Pulumi.CustomResource
     {

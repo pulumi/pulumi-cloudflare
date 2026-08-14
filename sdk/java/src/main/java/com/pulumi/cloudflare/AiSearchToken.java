@@ -20,7 +20,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/aiSearchToken:AiSearchToken has been deprecated in favor of cloudflare:aiSearch/token:Token
+ * 
  */
+@Deprecated /* cloudflare:index/aiSearchToken:AiSearchToken has been deprecated in favor of cloudflare:aiSearch/token:Token */
 @ResourceType(type="cloudflare:index/aiSearchToken:AiSearchToken")
 public class AiSearchToken extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

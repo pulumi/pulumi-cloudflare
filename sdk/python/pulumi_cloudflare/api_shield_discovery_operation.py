@@ -141,8 +141,13 @@ class _ApiShieldDiscoveryOperationState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/apiShieldDiscoveryOperation:ApiShieldDiscoveryOperation has been deprecated in favor of cloudflare:apiShieldDiscovery/operation:Operation""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/apiShieldDiscoveryOperation:ApiShieldDiscoveryOperation")
 class ApiShieldDiscoveryOperation(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/apiShieldDiscoveryOperation:ApiShieldDiscoveryOperation has been deprecated in favor of cloudflare:apiShieldDiscovery/operation:Operation""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -163,7 +168,7 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_api_shield_discovery_operation = cloudflare.ApiShieldDiscoveryOperation("example_api_shield_discovery_operation",
+        example_api_shield_discovery_operation = cloudflare.apishielddiscovery.Operation("example_api_shield_discovery_operation",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             operation_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
             state="review")
@@ -201,7 +206,7 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_api_shield_discovery_operation = cloudflare.ApiShieldDiscoveryOperation("example_api_shield_discovery_operation",
+        example_api_shield_discovery_operation = cloudflare.apishielddiscovery.Operation("example_api_shield_discovery_operation",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             operation_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
             state="review")
@@ -231,6 +236,7 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ApiShieldDiscoveryOperation is deprecated: cloudflare:index/apiShieldDiscoveryOperation:ApiShieldDiscoveryOperation has been deprecated in favor of cloudflare:apiShieldDiscovery/operation:Operation""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessAiControlsMcpServer = new Cloudflare.ZeroTrustAccessAiControlsMcpServer("example_zero_trust_access_ai_controls_mcp_server", new()
+    ///     var exampleZeroTrustAccessAiControlsMcpServer = new Cloudflare.Modules.ZeroTrustAccessAiControlsMcp.ZeroTrustAccessAiControlsMcpServer("example_zero_trust_access_ai_controls_mcp_server", new()
     ///     {
     ///         AccountId = "a86a8f5c339544d7bdc89926de14fb8c",
     ///         ZeroTrustAccessAiControlsMcpServerId = "my-mcp-server",
@@ -39,7 +39,7 @@ namespace Pulumi.Cloudflare
     ///         SecureWebGateway = false,
     ///         UpdatedPrompts = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs
+    ///             new Cloudflare.Modules.ZeroTrustAccessAiControlsMcp.Inputs.ServerUpdatedPromptArgs
     ///             {
     ///                 Name = "name",
     ///                 Alias = "my-custom-alias",
@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         UpdatedTools = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs
+    ///             new Cloudflare.Modules.ZeroTrustAccessAiControlsMcp.Inputs.ServerUpdatedToolArgs
     ///             {
     ///                 Name = "name",
     ///                 Alias = "my-custom-alias",
@@ -68,6 +68,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer example '&lt;account_id&gt;/&lt;id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer has been deprecated in favor of cloudflare:zeroTrustAccessAiControlsMcp/server:Server")]
     [CloudflareResourceType("cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer")]
     public partial class ZeroTrustAccessAiControlsMcpServer : global::Pulumi.CustomResource
     {

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getStreamKey:getStreamKey has been deprecated in favor of cloudflare:stream/key:getKey")]
     public static class GetStreamKey
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleStreamKey = Cloudflare.GetStreamKey.Invoke(new()
+        ///     var exampleStreamKey = Cloudflare.Modules.Stream.GetKey.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -54,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleStreamKey = Cloudflare.GetStreamKey.Invoke(new()
+        ///     var exampleStreamKey = Cloudflare.Modules.Stream.GetKey.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
@@ -81,7 +82,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleStreamKey = Cloudflare.GetStreamKey.Invoke(new()
+        ///     var exampleStreamKey = Cloudflare.Modules.Stream.GetKey.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });

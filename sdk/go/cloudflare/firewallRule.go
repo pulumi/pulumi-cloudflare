@@ -17,7 +17,7 @@ import (
 // - `Firewall Services Read`
 // - `Firewall Services Write`
 //
-// > `FirewallRule` is in a deprecation phase until June 15th, 2025.
+// > `firewall.Rule` is in a deprecation phase until June 15th, 2025.
 //
 //	During this time period, this resource is still
 //	fully supported but you are strongly advised  to move to the
@@ -31,24 +31,24 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/firewall"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewFirewallRule(ctx, "example_firewall_rule", &cloudflare.FirewallRuleArgs{
+//			_, err := firewall.NewRule(ctx, "example_firewall_rule", &firewall.RuleArgs{
 //				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Action: &cloudflare.FirewallRuleActionArgs{
+//				Action: &firewall.RuleActionArgs{
 //					Mode: pulumi.String("challenge"),
-//					Response: &cloudflare.FirewallRuleActionResponseArgs{
+//					Response: &firewall.RuleActionResponseArgs{
 //						Body:        pulumi.String("<error>This request has been rate-limited.</error>"),
 //						ContentType: pulumi.String("text/xml"),
 //					},
 //					Timeout: pulumi.Float64(86400),
 //				},
-//				Filter: &cloudflare.FirewallRuleFilterArgs{
+//				Filter: &firewall.RuleFilterArgs{
 //					Description: pulumi.String("Restrict access from these browsers on this address range."),
 //					Expression:  pulumi.String("(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155"),
 //					Paused:      pulumi.Bool(false),
@@ -69,6 +69,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/firewallRule:FirewallRule example '<zone_id>/<rule_id>'
 // ```
+//
+// Deprecated: cloudflare:index/firewallRule:FirewallRule has been deprecated in favor of cloudflare:firewall/rule:Rule
 type FirewallRule struct {
 	pulumi.CustomResourceState
 

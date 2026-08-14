@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.LeakedCredentialCheckRule;
- * import com.pulumi.cloudflare.LeakedCredentialCheckRuleArgs;
+ * import com.pulumi.cloudflare.leakedCredentialCheck.Rule;
+ * import com.pulumi.cloudflare.leakedCredentialCheck.RuleArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleLeakedCredentialCheckRule = new LeakedCredentialCheckRule("exampleLeakedCredentialCheckRule", LeakedCredentialCheckRuleArgs.builder()
+ *         var exampleLeakedCredentialCheckRule = new Rule("exampleLeakedCredentialCheckRule", RuleArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .password("lookup_json_string(http.request.body.raw, \"secret\")")
  *             .username("lookup_json_string(http.request.body.raw, \"user\")")
@@ -63,7 +63,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule example &#39;&lt;zone_id&gt;/&lt;detection_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule has been deprecated in favor of cloudflare:leakedCredentialCheck/rule:Rule
+ * 
  */
+@Deprecated /* cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule has been deprecated in favor of cloudflare:leakedCredentialCheck/rule:Rule */
 @ResourceType(type="cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule")
 public class LeakedCredentialCheckRule extends com.pulumi.resources.CustomResource {
     /**

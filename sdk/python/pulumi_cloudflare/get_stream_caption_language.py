@@ -21,6 +21,8 @@ __all__ = [
     'get_stream_caption_language_output',
 ]
 
+warnings.warn("""cloudflare:index/getStreamCaptionLanguage:getStreamCaptionLanguage has been deprecated in favor of cloudflare:stream/captionLanguage:getCaptionLanguage""", DeprecationWarning)
+
 @pulumi.output_type
 class GetStreamCaptionLanguageResult:
     """
@@ -126,7 +128,7 @@ def get_stream_caption_language(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_stream_caption_language = cloudflare.get_stream_caption_language(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_stream_caption_language = cloudflare.stream.get_caption_language(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         identifier="ea95132c15732412d22c1476fa83f27a",
         language="tr")
     ```
@@ -136,6 +138,7 @@ def get_stream_caption_language(account_id: Optional[_builtins.str] = None,
     :param _builtins.str identifier: A Cloudflare-generated unique identifier for a media item.
     :param _builtins.str language: The language tag in BCP 47 format.
     """
+    pulumi.log.warn("""get_stream_caption_language is deprecated: cloudflare:index/getStreamCaptionLanguage:getStreamCaptionLanguage has been deprecated in favor of cloudflare:stream/captionLanguage:getCaptionLanguage""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['identifier'] = identifier
@@ -166,7 +169,7 @@ def get_stream_caption_language_output(account_id: pulumi.Input[Optional[_builti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_stream_caption_language = cloudflare.get_stream_caption_language(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_stream_caption_language = cloudflare.stream.get_caption_language(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         identifier="ea95132c15732412d22c1476fa83f27a",
         language="tr")
     ```
@@ -176,6 +179,7 @@ def get_stream_caption_language_output(account_id: pulumi.Input[Optional[_builti
     :param _builtins.str identifier: A Cloudflare-generated unique identifier for a media item.
     :param _builtins.str language: The language tag in BCP 47 format.
     """
+    pulumi.log.warn("""get_stream_caption_language is deprecated: cloudflare:index/getStreamCaptionLanguage:getStreamCaptionLanguage has been deprecated in favor of cloudflare:stream/captionLanguage:getCaptionLanguage""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['identifier'] = identifier

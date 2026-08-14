@@ -28,14 +28,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/byoip"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewByoIpPrefix(ctx, "example_byo_ip_prefix", &cloudflare.ByoIpPrefixArgs{
+//			_, err := byoip.NewPrefix(ctx, "example_byo_ip_prefix", &byoip.PrefixArgs{
 //				AccountId:           pulumi.String("258def64c72dae45f3e4c8516e2111f2"),
 //				Asn:                 pulumi.Int(13335),
 //				Cidr:                pulumi.String("192.0.2.0/24"),
@@ -57,6 +57,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example '<account_id>/<prefix_id>'
 // ```
+//
+// Deprecated: cloudflare:index/byoIpPrefix:ByoIpPrefix has been deprecated in favor of cloudflare:byoIp/prefix:Prefix
 type ByoIpPrefix struct {
 	pulumi.CustomResourceState
 

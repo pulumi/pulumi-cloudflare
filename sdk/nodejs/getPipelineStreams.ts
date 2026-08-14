@@ -18,13 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const examplePipelineStreams = cloudflare.getPipelineStreams({
+ * const examplePipelineStreams = cloudflare.pipeline.getStreams({
  *     accountId: "0123105f4ecef8ad9ca31a8372d0c353",
  *     pipelineId: "043e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getPipelineStreams:getPipelineStreams has been deprecated in favor of cloudflare:pipeline/streams:getStreams */
 export function getPipelineStreams(args?: GetPipelineStreamsArgs, opts?: pulumi.InvokeOptions): Promise<GetPipelineStreamsResult> {
+    pulumi.log.warn("getPipelineStreams is deprecated: cloudflare:index/getPipelineStreams:getPipelineStreams has been deprecated in favor of cloudflare:pipeline/streams:getStreams")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getPipelineStreams:getPipelineStreams", {
@@ -94,13 +96,15 @@ export interface GetPipelineStreamsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const examplePipelineStreams = cloudflare.getPipelineStreams({
+ * const examplePipelineStreams = cloudflare.pipeline.getStreams({
  *     accountId: "0123105f4ecef8ad9ca31a8372d0c353",
  *     pipelineId: "043e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getPipelineStreams:getPipelineStreams has been deprecated in favor of cloudflare:pipeline/streams:getStreams */
 export function getPipelineStreamsOutput(args?: GetPipelineStreamsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPipelineStreamsResult> {
+    pulumi.log.warn("getPipelineStreams is deprecated: cloudflare:index/getPipelineStreams:getPipelineStreams has been deprecated in favor of cloudflare:pipeline/streams:getStreams")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getPipelineStreams:getPipelineStreams", {

@@ -34,11 +34,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.CustomHostname;
- * import com.pulumi.cloudflare.CustomHostnameArgs;
- * import com.pulumi.cloudflare.inputs.CustomHostnameSslArgs;
- * import com.pulumi.cloudflare.inputs.CustomHostnameSslCustomCertBundleArgs;
- * import com.pulumi.cloudflare.inputs.CustomHostnameSslSettingsArgs;
+ * import com.pulumi.cloudflare.customHostname.CustomHostname;
+ * import com.pulumi.cloudflare.customHostname.CustomHostnameArgs;
+ * import com.pulumi.cloudflare.customHostname.inputs.CustomHostnameSslArgs;
+ * import com.pulumi.cloudflare.customHostname.inputs.CustomHostnameSslCustomCertBundleArgs;
+ * import com.pulumi.cloudflare.customHostname.inputs.CustomHostnameSslSettingsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -141,7 +141,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/customHostname:CustomHostname example &#39;&lt;zone_id&gt;/&lt;custom_hostname_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/customHostname:CustomHostname has been deprecated in favor of cloudflare:customHostname/customHostname:CustomHostname
+ * 
  */
+@Deprecated /* cloudflare:index/customHostname:CustomHostname has been deprecated in favor of cloudflare:customHostname/customHostname:CustomHostname */
 @ResourceType(type="cloudflare:index/customHostname:CustomHostname")
 public class CustomHostname extends com.pulumi.resources.CustomResource {
     /**

@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare
     /// - `Workers Scripts Write`
     /// - `Workers Tail Read`
     /// 
-    /// &gt; For more direct control over Workers resources, we recommend the beta `cloudflare.Worker`, `cloudflare.WorkerVersion`, and `cloudflare.WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
+    /// &gt; For more direct control over Workers resources, we recommend the beta `cloudflare.worker.Worker`, `cloudflare.worker.Version`, and `cloudflare.workers.Deployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
     /// 
     /// ## Import
     /// 
@@ -274,10 +274,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/workerScript:WorkerScript" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

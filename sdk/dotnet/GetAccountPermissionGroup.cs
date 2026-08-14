@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getAccountPermissionGroup:getAccountPermissionGroup has been deprecated in favor of cloudflare:accountPermission/group:getGroup")]
     public static class GetAccountPermissionGroup
     {
         /// <summary>
@@ -54,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountPermissionGroup = Cloudflare.GetAccountPermissionGroup.Invoke(new()
+        ///     var exampleAccountPermissionGroup = Cloudflare.Modules.AccountPermission.GetGroup.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         PermissionGroupId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -109,7 +110,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountPermissionGroup = Cloudflare.GetAccountPermissionGroup.Invoke(new()
+        ///     var exampleAccountPermissionGroup = Cloudflare.Modules.AccountPermission.GetGroup.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         PermissionGroupId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -164,7 +165,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountPermissionGroup = Cloudflare.GetAccountPermissionGroup.Invoke(new()
+        ///     var exampleAccountPermissionGroup = Cloudflare.Modules.AccountPermission.GetGroup.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         PermissionGroupId = "023e105f4ecef8ad9ca31a8372d0c353",

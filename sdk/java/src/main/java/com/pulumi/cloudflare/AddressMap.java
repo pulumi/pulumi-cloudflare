@@ -32,9 +32,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.AddressMap;
- * import com.pulumi.cloudflare.AddressMapArgs;
- * import com.pulumi.cloudflare.inputs.AddressMapMembershipArgs;
+ * import com.pulumi.cloudflare.address.Map;
+ * import com.pulumi.cloudflare.address.MapArgs;
+ * import com.pulumi.cloudflare.address.inputs.MapMembershipArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -48,12 +48,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleAddressMap = new AddressMap("exampleAddressMap", AddressMapArgs.builder()
+ *         var exampleAddressMap = new Map("exampleAddressMap", MapArgs.builder()
  *             .accountId("258def64c72dae45f3e4c8516e2111f2")
  *             .description("My Ecommerce zones")
  *             .enabled(true)
  *             .ips("192.0.2.1")
- *             .memberships(AddressMapMembershipArgs.builder()
+ *             .memberships(MapMembershipArgs.builder()
  *                 .identifier("023e105f4ecef8ad9ca31a8372d0c353")
  *                 .kind("zone")
  *                 .build())
@@ -70,7 +70,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/addressMap:AddressMap example &#39;&lt;account_id&gt;/&lt;address_map_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/addressMap:AddressMap has been deprecated in favor of cloudflare:address/map:Map
+ * 
  */
+@Deprecated /* cloudflare:index/addressMap:AddressMap has been deprecated in favor of cloudflare:address/map:Map */
 @ResourceType(type="cloudflare:index/addressMap:AddressMap")
 public class AddressMap extends com.pulumi.resources.CustomResource {
     /**

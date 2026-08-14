@@ -25,14 +25,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrusttunnelcloudflared"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustTunnelCloudflaredRoutes(ctx, &cloudflare.LookupZeroTrustTunnelCloudflaredRoutesArgs{
+//			_, err := zerotrusttunnelcloudflared.GetRoutes(ctx, &zerotrusttunnelcloudflared.GetRoutesArgs{
 //				AccountId:       pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //				ExistedAt:       pulumi.StringRef("2019-10-12T07%3A20%3A50.52Z"),
 //				IsDeleted:       pulumi.BoolRef(true),
@@ -53,6 +53,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustTunnelCloudflaredRoutes:getZeroTrustTunnelCloudflaredRoutes has been deprecated in favor of cloudflare:zeroTrustTunnelCloudflared/routes:getRoutes
 func LookupZeroTrustTunnelCloudflaredRoutes(ctx *pulumi.Context, args *LookupZeroTrustTunnelCloudflaredRoutesArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustTunnelCloudflaredRoutesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustTunnelCloudflaredRoutesResult

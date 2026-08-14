@@ -285,8 +285,13 @@ class _ZeroTrustGatewayCertificateState:
         pulumi.set(self, "validity_period_days", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate has been deprecated in favor of cloudflare:zeroTrustGateway/certificate:Certificate""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate")
 class ZeroTrustGatewayCertificate(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate has been deprecated in favor of cloudflare:zeroTrustGateway/certificate:Certificate""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -302,7 +307,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_gateway_certificate = cloudflare.ZeroTrustGatewayCertificate("example_zero_trust_gateway_certificate",
+        example_zero_trust_gateway_certificate = cloudflare.zerotrustgateway.Certificate("example_zero_trust_gateway_certificate",
             account_id="699d98642c564d2e855e9661899b7252",
             validity_period_days=1826)
         ```
@@ -332,7 +337,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_gateway_certificate = cloudflare.ZeroTrustGatewayCertificate("example_zero_trust_gateway_certificate",
+        example_zero_trust_gateway_certificate = cloudflare.zerotrustgateway.Certificate("example_zero_trust_gateway_certificate",
             account_id="699d98642c564d2e855e9661899b7252",
             validity_period_days=1826)
         ```
@@ -363,6 +368,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
                  activate: pulumi.Input[Optional[_builtins.bool]] = None,
                  validity_period_days: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustGatewayCertificate is deprecated: cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate has been deprecated in favor of cloudflare:zeroTrustGateway/certificate:Certificate""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

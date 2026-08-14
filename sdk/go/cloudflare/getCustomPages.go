@@ -26,14 +26,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/custompages"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetCustomPages(ctx, &cloudflare.LookupCustomPagesArgs{
+//			_, err := custompages.GetCustomPages(ctx, &custompages.GetCustomPagesArgs{
 //				Identifier: "ratelimit_block",
 //				AccountId:  pulumi.StringRef("account_id"),
 //				ZoneId:     pulumi.StringRef("zone_id"),
@@ -46,6 +46,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getCustomPages:getCustomPages has been deprecated in favor of cloudflare:customPages/customPages:getCustomPages
 func LookupCustomPages(ctx *pulumi.Context, args *LookupCustomPagesArgs, opts ...pulumi.InvokeOption) (*LookupCustomPagesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomPagesResult

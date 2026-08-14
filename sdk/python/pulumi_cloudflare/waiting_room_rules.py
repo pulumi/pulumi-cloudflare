@@ -113,8 +113,13 @@ class _WaitingRoomRulesState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/waitingRoomRules:WaitingRoomRules has been deprecated in favor of cloudflare:waitingRoom/rules:Rules""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/waitingRoomRules:WaitingRoomRules")
 class WaitingRoomRules(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/waitingRoomRules:WaitingRoomRules has been deprecated in favor of cloudflare:waitingRoom/rules:Rules""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -135,7 +140,7 @@ class WaitingRoomRules(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_waiting_room_rules = cloudflare.WaitingRoomRules("example_waiting_room_rules",
+        example_waiting_room_rules = cloudflare.waitingroom.Rules("example_waiting_room_rules",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             waiting_room_id="699d98642c564d2e855e9661899b7252",
             rules=[{
@@ -175,7 +180,7 @@ class WaitingRoomRules(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_waiting_room_rules = cloudflare.WaitingRoomRules("example_waiting_room_rules",
+        example_waiting_room_rules = cloudflare.waitingroom.Rules("example_waiting_room_rules",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             waiting_room_id="699d98642c564d2e855e9661899b7252",
             rules=[{
@@ -212,6 +217,7 @@ class WaitingRoomRules(pulumi.CustomResource):
                  waiting_room_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""WaitingRoomRules is deprecated: cloudflare:index/waitingRoomRules:WaitingRoomRules has been deprecated in favor of cloudflare:waitingRoom/rules:Rules""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

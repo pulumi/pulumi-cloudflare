@@ -24,23 +24,23 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/spectrum"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewSpectrumApplication(ctx, "example_spectrum_application", &cloudflare.SpectrumApplicationArgs{
+//			_, err := spectrum.NewApplication(ctx, "example_spectrum_application", &spectrum.ApplicationArgs{
 //				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Dns: &cloudflare.SpectrumApplicationDnsArgs{
+//				Dns: &spectrum.ApplicationDnsArgs{
 //					Name: pulumi.String("ssh.example.com"),
 //					Type: pulumi.String("CNAME"),
 //				},
 //				Protocol:         pulumi.String("tcp/22"),
 //				TrafficType:      pulumi.String("direct"),
 //				ArgoSmartRouting: pulumi.Bool(true),
-//				EdgeIps: &cloudflare.SpectrumApplicationEdgeIpsArgs{
+//				EdgeIps: &spectrum.ApplicationEdgeIpsArgs{
 //					Connectivity: pulumi.String("all"),
 //					Type:         pulumi.String("dynamic"),
 //				},
@@ -48,7 +48,7 @@ import (
 //				OriginDirects: pulumi.StringArray{
 //					pulumi.String("tcp://127.0.0.1:8080"),
 //				},
-//				OriginDns: &cloudflare.SpectrumApplicationOriginDnsArgs{
+//				OriginDns: &spectrum.ApplicationOriginDnsArgs{
 //					Name: pulumi.String("origin.example.com"),
 //					Ttl:  pulumi.Int(600),
 //					Type: pulumi.String(""),
@@ -71,6 +71,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/spectrumApplication:SpectrumApplication example '<zone_id>/<app_id>'
 // ```
+//
+// Deprecated: cloudflare:index/spectrumApplication:SpectrumApplication has been deprecated in favor of cloudflare:spectrum/application:Application
 type SpectrumApplication struct {
 	pulumi.CustomResourceState
 

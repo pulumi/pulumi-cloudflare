@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getMtlsCertificate:getMtlsCertificate has been deprecated in favor of cloudflare:mtlsCertificate/mtlsCertificate:getMtlsCertificate")]
     public static class GetMtlsCertificate
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMtlsCertificate = Cloudflare.GetMtlsCertificate.Invoke(new()
+        ///     var exampleMtlsCertificate = Cloudflare.Modules.MtlsCertificate.GetMtlsCertificate.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         MtlsCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -45,7 +46,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMtlsCertificate = Cloudflare.GetMtlsCertificate.Invoke(new()
+        ///     var exampleMtlsCertificate = Cloudflare.Modules.MtlsCertificate.GetMtlsCertificate.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         MtlsCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -68,7 +69,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMtlsCertificate = Cloudflare.GetMtlsCertificate.Invoke(new()
+        ///     var exampleMtlsCertificate = Cloudflare.Modules.MtlsCertificate.GetMtlsCertificate.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         MtlsCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",

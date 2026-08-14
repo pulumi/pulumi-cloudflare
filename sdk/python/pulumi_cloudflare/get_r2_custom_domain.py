@@ -22,6 +22,8 @@ __all__ = [
     'get_r2_custom_domain_output',
 ]
 
+warnings.warn("""cloudflare:index/getR2CustomDomain:getR2CustomDomain has been deprecated in favor of cloudflare:r2/customDomain:getCustomDomain""", DeprecationWarning)
+
 @pulumi.output_type
 class GetR2CustomDomainResult:
     """
@@ -160,7 +162,7 @@ def get_r2_custom_domain(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_r2_custom_domain = cloudflare.get_r2_custom_domain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_r2_custom_domain = cloudflare.r2.get_custom_domain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         bucket_name="example-bucket",
         domain="example-domain/custom-domain.com")
     ```
@@ -170,6 +172,7 @@ def get_r2_custom_domain(account_id: Optional[_builtins.str] = None,
     :param _builtins.str bucket_name: Name of the bucket.
     :param _builtins.str domain: Name of the custom domain.
     """
+    pulumi.log.warn("""get_r2_custom_domain is deprecated: cloudflare:index/getR2CustomDomain:getR2CustomDomain has been deprecated in favor of cloudflare:r2/customDomain:getCustomDomain""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['bucketName'] = bucket_name
@@ -203,7 +206,7 @@ def get_r2_custom_domain_output(account_id: pulumi.Input[Optional[_builtins.str]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_r2_custom_domain = cloudflare.get_r2_custom_domain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_r2_custom_domain = cloudflare.r2.get_custom_domain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         bucket_name="example-bucket",
         domain="example-domain/custom-domain.com")
     ```
@@ -213,6 +216,7 @@ def get_r2_custom_domain_output(account_id: pulumi.Input[Optional[_builtins.str]
     :param _builtins.str bucket_name: Name of the bucket.
     :param _builtins.str domain: Name of the custom domain.
     """
+    pulumi.log.warn("""get_r2_custom_domain is deprecated: cloudflare:index/getR2CustomDomain:getR2CustomDomain has been deprecated in favor of cloudflare:r2/customDomain:getCustomDomain""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['bucketName'] = bucket_name

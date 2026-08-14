@@ -23,6 +23,8 @@ __all__ = [
     'get_access_rule_output',
 ]
 
+warnings.warn("""cloudflare:index/getAccessRule:getAccessRule has been deprecated in favor of cloudflare:access/rule:getRule""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAccessRuleResult:
     """
@@ -198,7 +200,7 @@ def get_access_rule(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_access_rule = cloudflare.get_access_rule(rule_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_access_rule = cloudflare.access.get_rule(rule_id="023e105f4ecef8ad9ca31a8372d0c353",
         account_id="account_id",
         zone_id="zone_id")
     ```
@@ -208,6 +210,7 @@ def get_access_rule(account_id: Optional[_builtins.str] = None,
     :param _builtins.str rule_id: Unique identifier for a rule.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_access_rule is deprecated: cloudflare:index/getAccessRule:getAccessRule has been deprecated in favor of cloudflare:access/rule:getRule""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -246,7 +249,7 @@ def get_access_rule_output(account_id: pulumi.Input[Optional[Optional[_builtins.
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_access_rule = cloudflare.get_access_rule(rule_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_access_rule = cloudflare.access.get_rule(rule_id="023e105f4ecef8ad9ca31a8372d0c353",
         account_id="account_id",
         zone_id="zone_id")
     ```
@@ -256,6 +259,7 @@ def get_access_rule_output(account_id: pulumi.Input[Optional[Optional[_builtins.
     :param _builtins.str rule_id: Unique identifier for a rule.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_access_rule is deprecated: cloudflare:index/getAccessRule:getAccessRule has been deprecated in favor of cloudflare:access/rule:getRule""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

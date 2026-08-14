@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleEmailSecurityBlockSenders = cloudflare.getEmailSecurityBlockSenders({
+ * const exampleEmailSecurityBlockSenders = cloudflare.emailsecurityblock.getSenders({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "asc",
  *     order: "pattern",
@@ -28,7 +28,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getEmailSecurityBlockSenders:getEmailSecurityBlockSenders has been deprecated in favor of cloudflare:emailSecurityBlock/senders:getSenders */
 export function getEmailSecurityBlockSenders(args?: GetEmailSecurityBlockSendersArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailSecurityBlockSendersResult> {
+    pulumi.log.warn("getEmailSecurityBlockSenders is deprecated: cloudflare:index/getEmailSecurityBlockSenders:getEmailSecurityBlockSenders has been deprecated in favor of cloudflare:emailSecurityBlock/senders:getSenders")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getEmailSecurityBlockSenders:getEmailSecurityBlockSenders", {
@@ -80,7 +82,7 @@ export interface GetEmailSecurityBlockSendersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleEmailSecurityBlockSenders = cloudflare.getEmailSecurityBlockSenders({
+ * const exampleEmailSecurityBlockSenders = cloudflare.emailsecurityblock.getSenders({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "asc",
  *     order: "pattern",
@@ -90,7 +92,9 @@ export interface GetEmailSecurityBlockSendersResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getEmailSecurityBlockSenders:getEmailSecurityBlockSenders has been deprecated in favor of cloudflare:emailSecurityBlock/senders:getSenders */
 export function getEmailSecurityBlockSendersOutput(args?: GetEmailSecurityBlockSendersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailSecurityBlockSendersResult> {
+    pulumi.log.warn("getEmailSecurityBlockSenders is deprecated: cloudflare:index/getEmailSecurityBlockSenders:getEmailSecurityBlockSenders has been deprecated in favor of cloudflare:emailSecurityBlock/senders:getSenders")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getEmailSecurityBlockSenders:getEmailSecurityBlockSenders", {

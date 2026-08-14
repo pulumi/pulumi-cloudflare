@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpPredefinedProfile = new cloudflare.ZeroTrustDlpPredefinedProfile("example_zero_trust_dlp_predefined_profile", {
+ * const exampleZeroTrustDlpPredefinedProfile = new cloudflare.zerotrustdlppredefined.Profile("example_zero_trust_dlp_predefined_profile", {
  *     profileId: "e91a2360-da51-4fdf-9711-bcdecd462614",
  *     accountId: "account_id",
  *     ocrEnabled: true,
@@ -143,8 +143,6 @@ export class DlpPredefinedProfile extends pulumi.CustomResource {
             resourceInputs["openAccess"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/dlpPredefinedProfile:DlpPredefinedProfile" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DlpPredefinedProfile.__pulumiType, name, resourceInputs, opts);
     }
 }

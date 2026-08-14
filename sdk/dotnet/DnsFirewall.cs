@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleDnsFirewall = new Cloudflare.DnsFirewall("example_dns_firewall", new()
+    ///     var exampleDnsFirewall = new Cloudflare.Modules.Dns.DnsFirewall("example_dns_firewall", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "My Awesome DNS Firewall cluster",
@@ -35,7 +35,7 @@ namespace Pulumi.Cloudflare
     ///             "198.51.100.1",
     ///             "2001:DB8:100::CF",
     ///         },
-    ///         AttackMitigation = new Cloudflare.Inputs.DnsFirewallAttackMitigationArgs
+    ///         AttackMitigation = new Cloudflare.Modules.Dns.Inputs.FirewallAttackMitigationArgs
     ///         {
     ///             Enabled = true,
     ///             OnlyWhenUpstreamUnhealthy = false,
@@ -59,6 +59,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/dnsFirewall:DnsFirewall example '&lt;account_id&gt;/&lt;dns_firewall_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/dnsFirewall:DnsFirewall has been deprecated in favor of cloudflare:dns/firewall:Firewall")]
     [CloudflareResourceType("cloudflare:index/dnsFirewall:DnsFirewall")]
     public partial class DnsFirewall : global::Pulumi.CustomResource
     {

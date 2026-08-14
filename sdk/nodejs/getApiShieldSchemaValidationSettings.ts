@@ -18,12 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleApiShieldSchemaValidationSettings = cloudflare.getApiShieldSchemaValidationSettings({
+ * const exampleApiShieldSchemaValidationSettings = cloudflare.apishieldschema.getValidationSettings({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getApiShieldSchemaValidationSettings:getApiShieldSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldSchema/validationSettings:getValidationSettings */
 export function getApiShieldSchemaValidationSettings(args?: GetApiShieldSchemaValidationSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetApiShieldSchemaValidationSettingsResult> {
+    pulumi.log.warn("getApiShieldSchemaValidationSettings is deprecated: cloudflare:index/getApiShieldSchemaValidationSettings:getApiShieldSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldSchema/validationSettings:getValidationSettings")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getApiShieldSchemaValidationSettings:getApiShieldSchemaValidationSettings", {
@@ -73,12 +75,14 @@ export interface GetApiShieldSchemaValidationSettingsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleApiShieldSchemaValidationSettings = cloudflare.getApiShieldSchemaValidationSettings({
+ * const exampleApiShieldSchemaValidationSettings = cloudflare.apishieldschema.getValidationSettings({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getApiShieldSchemaValidationSettings:getApiShieldSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldSchema/validationSettings:getValidationSettings */
 export function getApiShieldSchemaValidationSettingsOutput(args?: GetApiShieldSchemaValidationSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiShieldSchemaValidationSettingsResult> {
+    pulumi.log.warn("getApiShieldSchemaValidationSettings is deprecated: cloudflare:index/getApiShieldSchemaValidationSettings:getApiShieldSchemaValidationSettings has been deprecated in favor of cloudflare:apiShieldSchema/validationSettings:getValidationSettings")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getApiShieldSchemaValidationSettings:getApiShieldSchemaValidationSettings", {

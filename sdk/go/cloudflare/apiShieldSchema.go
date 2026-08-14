@@ -19,9 +19,9 @@ import (
 // - `Domain API Gateway`
 // - `Domain API Gateway Read`
 //
-// > `ApiShieldSchema` is in a deprecation phase and will be removed in the future.
+// > `apiShieldSchema.ApiShieldSchema` is in a deprecation phase and will be removed in the future.
 //
-//	Instead, please utilize the SchemaValidationSchemas resource instead.
+//	Instead, please utilize the schemaValidationSchemas.SchemaValidationSchemas resource instead.
 //
 // ## Example Usage
 //
@@ -30,14 +30,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/apishieldschema"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewApiShieldSchema(ctx, "example_api_shield_schema", &cloudflare.ApiShieldSchemaArgs{
+//			_, err := apishieldschema.NewApiShieldSchema(ctx, "example_api_shield_schema", &apishieldschema.ApiShieldSchemaArgs{
 //				ZoneId:            pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				File:              pulumi.String("Example data"),
 //				Kind:              pulumi.String("openapi_v3"),
@@ -52,6 +52,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/apiShieldSchema:ApiShieldSchema has been deprecated in favor of cloudflare:apiShieldSchema/apiShieldSchema:ApiShieldSchema
 type ApiShieldSchema struct {
 	pulumi.CustomResourceState
 

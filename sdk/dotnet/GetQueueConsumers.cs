@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getQueueConsumers:getQueueConsumers has been deprecated in favor of cloudflare:queue/consumers:getConsumers")]
     public static class GetQueueConsumers
     {
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleQueueConsumers = Cloudflare.GetQueueConsumers.Invoke(new()
+        ///     var exampleQueueConsumers = Cloudflare.Modules.Queue.GetConsumers.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         QueueId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -59,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleQueueConsumers = Cloudflare.GetQueueConsumers.Invoke(new()
+        ///     var exampleQueueConsumers = Cloudflare.Modules.Queue.GetConsumers.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         QueueId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -89,7 +90,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleQueueConsumers = Cloudflare.GetQueueConsumers.Invoke(new()
+        ///     var exampleQueueConsumers = Cloudflare.Modules.Queue.GetConsumers.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         QueueId = "023e105f4ecef8ad9ca31a8372d0c353",

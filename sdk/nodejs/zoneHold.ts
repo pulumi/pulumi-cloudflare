@@ -50,7 +50,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZoneHold = new cloudflare.ZoneHold("example_zone_hold", {zoneId: "023e105f4ecef8ad9ca31a8372d0c353"});
+ * const exampleZoneHold = new cloudflare.zone.Hold("example_zone_hold", {zoneId: "023e105f4ecef8ad9ca31a8372d0c353"});
  * ```
  *
  * ## Import
@@ -58,6 +58,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zoneHold:ZoneHold example '<zone_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zoneHold:ZoneHold has been deprecated in favor of cloudflare:zone/hold:Hold
  */
 export class ZoneHold extends pulumi.CustomResource {
     /**
@@ -70,6 +72,7 @@ export class ZoneHold extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZoneHoldState, opts?: pulumi.CustomResourceOptions): ZoneHold {
+        pulumi.log.warn("ZoneHold is deprecated: cloudflare:index/zoneHold:ZoneHold has been deprecated in favor of cloudflare:zone/hold:Hold")
         return new ZoneHold(name, <any>state, { ...opts, id: id });
     }
 
@@ -115,8 +118,11 @@ export class ZoneHold extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zoneHold:ZoneHold has been deprecated in favor of cloudflare:zone/hold:Hold */
     constructor(name: string, args: ZoneHoldArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zoneHold:ZoneHold has been deprecated in favor of cloudflare:zone/hold:Hold */
     constructor(name: string, argsOrState?: ZoneHoldArgs | ZoneHoldState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZoneHold is deprecated: cloudflare:index/zoneHold:ZoneHold has been deprecated in favor of cloudflare:zone/hold:Hold")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const examplePageShieldScriptsList = cloudflare.getPageShieldScriptsList({
+ * const examplePageShieldScriptsList = cloudflare.pageshieldscripts.getList({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "asc",
  *     excludeUrls: "blog.cloudflare.com,www.example",
@@ -38,7 +38,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getPageShieldScriptsList:getPageShieldScriptsList has been deprecated in favor of cloudflare:pageShieldScripts/list:getList */
 export function getPageShieldScriptsList(args?: GetPageShieldScriptsListArgs, opts?: pulumi.InvokeOptions): Promise<GetPageShieldScriptsListResult> {
+    pulumi.log.warn("getPageShieldScriptsList is deprecated: cloudflare:index/getPageShieldScriptsList:getPageShieldScriptsList has been deprecated in favor of cloudflare:pageShieldScripts/list:getList")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getPageShieldScriptsList:getPageShieldScriptsList", {
@@ -162,7 +164,7 @@ export interface GetPageShieldScriptsListResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const examplePageShieldScriptsList = cloudflare.getPageShieldScriptsList({
+ * const examplePageShieldScriptsList = cloudflare.pageshieldscripts.getList({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "asc",
  *     excludeUrls: "blog.cloudflare.com,www.example",
@@ -178,7 +180,9 @@ export interface GetPageShieldScriptsListResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getPageShieldScriptsList:getPageShieldScriptsList has been deprecated in favor of cloudflare:pageShieldScripts/list:getList */
 export function getPageShieldScriptsListOutput(args?: GetPageShieldScriptsListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPageShieldScriptsListResult> {
+    pulumi.log.warn("getPageShieldScriptsList is deprecated: cloudflare:index/getPageShieldScriptsList:getPageShieldScriptsList has been deprecated in favor of cloudflare:pageShieldScripts/list:getList")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getPageShieldScriptsList:getPageShieldScriptsList", {

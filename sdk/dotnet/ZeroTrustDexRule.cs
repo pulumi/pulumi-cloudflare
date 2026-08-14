@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDexRule = new Cloudflare.ZeroTrustDexRule("example_zero_trust_dex_rule", new()
+    ///     var exampleZeroTrustDexRule = new Cloudflare.Modules.ZeroTrustDex.ZeroTrustDexRule("example_zero_trust_dex_rule", new()
     ///     {
     ///         AccountId = "01a7362d577a6c3019a474fd6f485823",
     ///         Match = "match",
@@ -44,6 +44,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule example '&lt;account_id&gt;/&lt;rule_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule has been deprecated in favor of cloudflare:zeroTrustDex/rule:Rule")]
     [CloudflareResourceType("cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule")]
     public partial class ZeroTrustDexRule : global::Pulumi.CustomResource
     {

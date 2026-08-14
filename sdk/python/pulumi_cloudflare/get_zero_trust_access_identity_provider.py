@@ -23,6 +23,8 @@ __all__ = [
     'get_zero_trust_access_identity_provider_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider has been deprecated in favor of cloudflare:zeroTrustAccessIdentity/provider:getProvider""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustAccessIdentityProviderResult:
     """
@@ -201,7 +203,7 @@ def get_zero_trust_access_identity_provider(account_id: Optional[_builtins.str] 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_identity_provider = cloudflare.get_zero_trust_access_identity_provider(identity_provider_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+    example_zero_trust_access_identity_provider = cloudflare.zerotrustaccessidentity.get_provider(identity_provider_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         account_id="account_id",
         zone_id="zone_id")
     ```
@@ -211,6 +213,7 @@ def get_zero_trust_access_identity_provider(account_id: Optional[_builtins.str] 
     :param _builtins.str identity_provider_id: UUID.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_zero_trust_access_identity_provider is deprecated: cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider has been deprecated in favor of cloudflare:zeroTrustAccessIdentity/provider:getProvider""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -249,7 +252,7 @@ def get_zero_trust_access_identity_provider_output(account_id: pulumi.Input[Opti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_identity_provider = cloudflare.get_zero_trust_access_identity_provider(identity_provider_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+    example_zero_trust_access_identity_provider = cloudflare.zerotrustaccessidentity.get_provider(identity_provider_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         account_id="account_id",
         zone_id="zone_id")
     ```
@@ -259,6 +262,7 @@ def get_zero_trust_access_identity_provider_output(account_id: pulumi.Input[Opti
     :param _builtins.str identity_provider_id: UUID.
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
+    pulumi.log.warn("""get_zero_trust_access_identity_provider is deprecated: cloudflare:index/getZeroTrustAccessIdentityProvider:getZeroTrustAccessIdentityProvider has been deprecated in favor of cloudflare:zeroTrustAccessIdentity/provider:getProvider""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

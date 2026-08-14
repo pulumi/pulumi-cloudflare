@@ -17,14 +17,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleLogpushDatasetJob = cloudflare.getLogpushDatasetJob({
+ * const exampleLogpushDatasetJob = cloudflare.logpushdataset.getJob({
  *     datasetId: "gateway_dns",
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getLogpushDatasetJob:getLogpushDatasetJob has been deprecated in favor of cloudflare:logpushDataset/job:getJob */
 export function getLogpushDatasetJob(args?: GetLogpushDatasetJobArgs, opts?: pulumi.InvokeOptions): Promise<GetLogpushDatasetJobResult> {
+    pulumi.log.warn("getLogpushDatasetJob is deprecated: cloudflare:index/getLogpushDatasetJob:getLogpushDatasetJob has been deprecated in favor of cloudflare:logpushDataset/job:getJob")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getLogpushDatasetJob:getLogpushDatasetJob", {
@@ -149,14 +151,16 @@ export interface GetLogpushDatasetJobResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleLogpushDatasetJob = cloudflare.getLogpushDatasetJob({
+ * const exampleLogpushDatasetJob = cloudflare.logpushdataset.getJob({
  *     datasetId: "gateway_dns",
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getLogpushDatasetJob:getLogpushDatasetJob has been deprecated in favor of cloudflare:logpushDataset/job:getJob */
 export function getLogpushDatasetJobOutput(args?: GetLogpushDatasetJobOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLogpushDatasetJobResult> {
+    pulumi.log.warn("getLogpushDatasetJob is deprecated: cloudflare:index/getLogpushDatasetJob:getLogpushDatasetJob has been deprecated in favor of cloudflare:logpushDataset/job:getJob")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getLogpushDatasetJob:getLogpushDatasetJob", {

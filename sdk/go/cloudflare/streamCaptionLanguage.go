@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/stream"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewStreamCaptionLanguage(ctx, "example_stream_caption_language", &cloudflare.StreamCaptionLanguageArgs{
+//			_, err := stream.NewCaptionLanguage(ctx, "example_stream_caption_language", &stream.CaptionLanguageArgs{
 //				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Identifier: pulumi.String("ea95132c15732412d22c1476fa83f27a"),
 //				Language:   pulumi.String("tr"),
@@ -48,6 +48,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/streamCaptionLanguage:StreamCaptionLanguage has been deprecated in favor of cloudflare:stream/captionLanguage:CaptionLanguage
 type StreamCaptionLanguage struct {
 	pulumi.CustomResourceState
 

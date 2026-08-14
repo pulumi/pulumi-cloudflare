@@ -64,14 +64,14 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+     * The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.list.Item`.
      * 
      */
     @Import(name="items")
     private @Nullable Output<List<ListItemArgs>> items;
 
     /**
-     * @return The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+     * @return The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.list.Item`.
      * 
      */
     public Optional<Output<List<ListItemArgs>>> items() {
@@ -251,7 +251,7 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param items The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+         * @param items The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.list.Item`.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param items The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+         * @param items The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.list.Item`.
          * 
          * @return builder
          * 
@@ -272,7 +272,7 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param items The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+         * @param items The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.list.Item`.
          * 
          * @return builder
          * 

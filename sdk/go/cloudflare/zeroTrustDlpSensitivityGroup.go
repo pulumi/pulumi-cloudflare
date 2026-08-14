@@ -24,14 +24,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdlpsensitivity"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDlpSensitivityGroup(ctx, "example_zero_trust_dlp_sensitivity_group", &cloudflare.ZeroTrustDlpSensitivityGroupArgs{
+//			_, err := zerotrustdlpsensitivity.NewGroup(ctx, "example_zero_trust_dlp_sensitivity_group", &zerotrustdlpsensitivity.GroupArgs{
 //				AccountId:   pulumi.String("account_id"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("description"),
@@ -50,6 +50,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustDlpSensitivityGroup:ZeroTrustDlpSensitivityGroup example '<account_id>/<sensitivity_group_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustDlpSensitivityGroup:ZeroTrustDlpSensitivityGroup has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/group:Group
 type ZeroTrustDlpSensitivityGroup struct {
 	pulumi.CustomResourceState
 

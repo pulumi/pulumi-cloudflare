@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCloudforceOneRequestPriority = new Cloudflare.CloudforceOneRequestPriority("example_cloudforce_one_request_priority", new()
+    ///     var exampleCloudforceOneRequestPriority = new Cloudflare.Modules.CloudforceOneRequest.CloudforceOneRequestPriority("example_cloudforce_one_request_priority", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Labels = new[]
@@ -47,6 +47,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority example '&lt;account_id&gt;/&lt;priority_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority has been deprecated in favor of cloudflare:cloudforceOneRequest/priority:Priority")]
     [CloudflareResourceType("cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority")]
     public partial class CloudforceOneRequestPriority : global::Pulumi.CustomResource
     {

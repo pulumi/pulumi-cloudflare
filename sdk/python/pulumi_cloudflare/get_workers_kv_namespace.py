@@ -23,6 +23,8 @@ __all__ = [
     'get_workers_kv_namespace_output',
 ]
 
+warnings.warn("""cloudflare:index/getWorkersKvNamespace:getWorkersKvNamespace has been deprecated in favor of cloudflare:workersKv/namespace:getNamespace""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWorkersKvNamespaceResult:
     """
@@ -124,7 +126,7 @@ def get_workers_kv_namespace(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_kv_namespace = cloudflare.get_workers_kv_namespace(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_kv_namespace = cloudflare.workerskv.get_namespace(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         namespace_id="0f2ac74b498b48028cb68387c421e279")
     ```
 
@@ -132,6 +134,7 @@ def get_workers_kv_namespace(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Identifier.
     :param _builtins.str namespace_id: Namespace identifier tag.
     """
+    pulumi.log.warn("""get_workers_kv_namespace is deprecated: cloudflare:index/getWorkersKvNamespace:getWorkersKvNamespace has been deprecated in favor of cloudflare:workersKv/namespace:getNamespace""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -162,7 +165,7 @@ def get_workers_kv_namespace_output(account_id: pulumi.Input[Optional[Optional[_
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_kv_namespace = cloudflare.get_workers_kv_namespace(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_kv_namespace = cloudflare.workerskv.get_namespace(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         namespace_id="0f2ac74b498b48028cb68387c421e279")
     ```
 
@@ -170,6 +173,7 @@ def get_workers_kv_namespace_output(account_id: pulumi.Input[Optional[Optional[_
     :param _builtins.str account_id: Identifier.
     :param _builtins.str namespace_id: Namespace identifier tag.
     """
+    pulumi.log.warn("""get_workers_kv_namespace is deprecated: cloudflare:index/getWorkersKvNamespace:getWorkersKvNamespace has been deprecated in favor of cloudflare:workersKv/namespace:getNamespace""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

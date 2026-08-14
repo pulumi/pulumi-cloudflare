@@ -27,14 +27,14 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleQueueConsumer = new Cloudflare.QueueConsumer("example_queue_consumer", new()
+    ///     var exampleQueueConsumer = new Cloudflare.Modules.Queue.QueueConsumer("example_queue_consumer", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         QueueId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         ScriptName = "my-consumer-worker",
     ///         Type = "worker",
     ///         DeadLetterQueue = "example-queue",
-    ///         Settings = new Cloudflare.Inputs.QueueConsumerSettingsArgs
+    ///         Settings = new Cloudflare.Modules.Queue.Inputs.ConsumerSettingsArgs
     ///         {
     ///             BatchSize = 50,
     ///             MaxConcurrency = 10,
@@ -51,6 +51,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/queueConsumer:QueueConsumer has been deprecated in favor of cloudflare:queue/consumer:Consumer")]
     [CloudflareResourceType("cloudflare:index/queueConsumer:QueueConsumer")]
     public partial class QueueConsumer : global::Pulumi.CustomResource
     {

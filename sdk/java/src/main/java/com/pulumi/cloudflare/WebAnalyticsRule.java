@@ -27,8 +27,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WebAnalyticsRule;
- * import com.pulumi.cloudflare.WebAnalyticsRuleArgs;
+ * import com.pulumi.cloudflare.webAnalytics.Rule;
+ * import com.pulumi.cloudflare.webAnalytics.RuleArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleWebAnalyticsRule = new WebAnalyticsRule("exampleWebAnalyticsRule", WebAnalyticsRuleArgs.builder()
+ *         var exampleWebAnalyticsRule = new Rule("exampleWebAnalyticsRule", RuleArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .rulesetId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
  *             .host("example.com")
@@ -60,7 +60,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/webAnalyticsRule:WebAnalyticsRule has been deprecated in favor of cloudflare:webAnalytics/rule:Rule
+ * 
  */
+@Deprecated /* cloudflare:index/webAnalyticsRule:WebAnalyticsRule has been deprecated in favor of cloudflare:webAnalytics/rule:Rule */
 @ResourceType(type="cloudflare:index/webAnalyticsRule:WebAnalyticsRule")
 public class WebAnalyticsRule extends com.pulumi.resources.CustomResource {
     /**

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getCustomCsrs:getCustomCsrs has been deprecated in favor of cloudflare:custom/csrs:getCsrs")]
     public static class GetCustomCsrs
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomCsrs = Cloudflare.GetCustomCsrs.Invoke(new()
+        ///     var exampleCustomCsrs = Cloudflare.Modules.Custom.GetCsrs.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomCsrs = Cloudflare.GetCustomCsrs.Invoke(new()
+        ///     var exampleCustomCsrs = Cloudflare.Modules.Custom.GetCsrs.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomCsrs = Cloudflare.GetCustomCsrs.Invoke(new()
+        ///     var exampleCustomCsrs = Cloudflare.Modules.Custom.GetCsrs.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",

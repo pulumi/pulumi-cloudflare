@@ -32,10 +32,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WorkersDeployment;
- * import com.pulumi.cloudflare.WorkersDeploymentArgs;
- * import com.pulumi.cloudflare.inputs.WorkersDeploymentVersionArgs;
- * import com.pulumi.cloudflare.inputs.WorkersDeploymentAnnotationsArgs;
+ * import com.pulumi.cloudflare.workers.Deployment;
+ * import com.pulumi.cloudflare.workers.DeploymentArgs;
+ * import com.pulumi.cloudflare.workers.inputs.DeploymentVersionArgs;
+ * import com.pulumi.cloudflare.workers.inputs.DeploymentAnnotationsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -49,15 +49,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleWorkersDeployment = new WorkersDeployment("exampleWorkersDeployment", WorkersDeploymentArgs.builder()
+ *         var exampleWorkersDeployment = new Deployment("exampleWorkersDeployment", DeploymentArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .scriptName("this-is_my_script-01")
  *             .strategy("percentage")
- *             .versions(WorkersDeploymentVersionArgs.builder()
+ *             .versions(DeploymentVersionArgs.builder()
  *                 .percentage(100.0)
  *                 .versionId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
  *                 .build())
- *             .annotations(WorkersDeploymentAnnotationsArgs.builder()
+ *             .annotations(DeploymentAnnotationsArgs.builder()
  *                 .workersMessage("Deploy bug fix.")
  *                 .build())
  *             .build());
@@ -73,7 +73,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/workersDeployment:WorkersDeployment example &#39;&lt;account_id&gt;/&lt;script_name&gt;/&lt;deployment_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/workersDeployment:WorkersDeployment has been deprecated in favor of cloudflare:workers/deployment:Deployment
+ * 
  */
+@Deprecated /* cloudflare:index/workersDeployment:WorkersDeployment has been deprecated in favor of cloudflare:workers/deployment:Deployment */
 @ResourceType(type="cloudflare:index/workersDeployment:WorkersDeployment")
 public class WorkersDeployment extends com.pulumi.resources.CustomResource {
     /**

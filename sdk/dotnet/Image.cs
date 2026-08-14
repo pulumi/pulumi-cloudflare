@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleImage = new Cloudflare.Image("example_image", new()
+    ///     var exampleImage = new Cloudflare.Modules.Image.Image("example_image", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         ImageId = "id",
@@ -45,6 +45,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/image:Image example '&lt;account_id&gt;/&lt;image_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/image:Image has been deprecated in favor of cloudflare:image/image:Image")]
     [CloudflareResourceType("cloudflare:index/image:Image")]
     public partial class Image : global::Pulumi.CustomResource
     {

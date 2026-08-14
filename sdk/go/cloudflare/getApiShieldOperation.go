@@ -19,6 +19,8 @@ import (
 // - `Domain API Gateway Read`
 //
 // ## Example Usage
+//
+// Deprecated: cloudflare:index/getApiShieldOperation:getApiShieldOperation has been deprecated in favor of cloudflare:apiShieldOperation/apiShieldOperation:getApiShieldOperation
 func LookupApiShieldOperation(ctx *pulumi.Context, args *LookupApiShieldOperationArgs, opts ...pulumi.InvokeOption) (*LookupApiShieldOperationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiShieldOperationResult

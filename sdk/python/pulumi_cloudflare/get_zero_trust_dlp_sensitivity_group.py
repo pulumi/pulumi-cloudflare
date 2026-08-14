@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_dlp_sensitivity_group_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDlpSensitivityGroup:getZeroTrustDlpSensitivityGroup has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/group:getGroup""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDlpSensitivityGroupResult:
     """
@@ -137,10 +139,11 @@ def get_zero_trust_dlp_sensitivity_group(account_id: Optional[_builtins.str] = N
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_sensitivity_group = cloudflare.get_zero_trust_dlp_sensitivity_group(account_id="account_id",
+    example_zero_trust_dlp_sensitivity_group = cloudflare.zerotrustdlpsensitivity.get_group(account_id="account_id",
         sensitivity_group_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_dlp_sensitivity_group is deprecated: cloudflare:index/getZeroTrustDlpSensitivityGroup:getZeroTrustDlpSensitivityGroup has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/group:getGroup""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['sensitivityGroupId'] = sensitivity_group_id
@@ -172,10 +175,11 @@ def get_zero_trust_dlp_sensitivity_group_output(account_id: pulumi.Input[Optiona
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_sensitivity_group = cloudflare.get_zero_trust_dlp_sensitivity_group(account_id="account_id",
+    example_zero_trust_dlp_sensitivity_group = cloudflare.zerotrustdlpsensitivity.get_group(account_id="account_id",
         sensitivity_group_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
     """
+    pulumi.log.warn("""get_zero_trust_dlp_sensitivity_group is deprecated: cloudflare:index/getZeroTrustDlpSensitivityGroup:getZeroTrustDlpSensitivityGroup has been deprecated in favor of cloudflare:zeroTrustDlpSensitivity/group:getGroup""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['sensitivityGroupId'] = sensitivity_group_id

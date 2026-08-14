@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustList = new Cloudflare.ZeroTrustList("example_zero_trust_list", new()
+    ///     var exampleZeroTrustList = new Cloudflare.Modules.ZeroTrust.ZeroTrustList("example_zero_trust_list", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Name = "Admin Serial Numbers",
@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
     ///         Description = "The serial numbers for administrators",
     ///         Items = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustListItemArgs
+    ///             new Cloudflare.Modules.ZeroTrust.Inputs.ListItemArgs
     ///             {
     ///                 Description = "Austin office IP",
     ///                 Value = "8GE8721REF",
@@ -45,6 +45,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustList:ZeroTrustList example '&lt;account_id&gt;/&lt;list_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustList:ZeroTrustList has been deprecated in favor of cloudflare:zeroTrust/list:List")]
     [CloudflareResourceType("cloudflare:index/zeroTrustList:ZeroTrustList")]
     public partial class ZeroTrustList : global::Pulumi.CustomResource
     {

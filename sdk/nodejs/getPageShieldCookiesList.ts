@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const examplePageShieldCookiesList = cloudflare.getPageShieldCookiesList({
+ * const examplePageShieldCookiesList = cloudflare.pageshieldcookies.getList({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "asc",
  *     domain: "example.com",
@@ -41,7 +41,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getPageShieldCookiesList:getPageShieldCookiesList has been deprecated in favor of cloudflare:pageShieldCookies/list:getList */
 export function getPageShieldCookiesList(args?: GetPageShieldCookiesListArgs, opts?: pulumi.InvokeOptions): Promise<GetPageShieldCookiesListResult> {
+    pulumi.log.warn("getPageShieldCookiesList is deprecated: cloudflare:index/getPageShieldCookiesList:getPageShieldCookiesList has been deprecated in favor of cloudflare:pageShieldCookies/list:getList")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getPageShieldCookiesList:getPageShieldCookiesList", {
@@ -152,7 +154,7 @@ export interface GetPageShieldCookiesListResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const examplePageShieldCookiesList = cloudflare.getPageShieldCookiesList({
+ * const examplePageShieldCookiesList = cloudflare.pageshieldcookies.getList({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "asc",
  *     domain: "example.com",
@@ -171,7 +173,9 @@ export interface GetPageShieldCookiesListResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getPageShieldCookiesList:getPageShieldCookiesList has been deprecated in favor of cloudflare:pageShieldCookies/list:getList */
 export function getPageShieldCookiesListOutput(args?: GetPageShieldCookiesListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPageShieldCookiesListResult> {
+    pulumi.log.warn("getPageShieldCookiesList is deprecated: cloudflare:index/getPageShieldCookiesList:getPageShieldCookiesList has been deprecated in favor of cloudflare:pageShieldCookies/list:getList")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getPageShieldCookiesList:getPageShieldCookiesList", {

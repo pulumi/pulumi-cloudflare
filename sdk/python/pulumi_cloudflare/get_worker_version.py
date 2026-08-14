@@ -22,6 +22,8 @@ __all__ = [
     'get_worker_version_output',
 ]
 
+warnings.warn("""cloudflare:index/getWorkerVersion:getWorkerVersion has been deprecated in favor of cloudflare:worker/version:getVersion""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWorkerVersionResult:
     """
@@ -319,7 +321,7 @@ def get_worker_version(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_worker_version = cloudflare.get_worker_version(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_worker_version = cloudflare.worker.get_version(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         worker_id="worker_id",
         version_id="version_id",
         include="modules")
@@ -332,6 +334,7 @@ def get_worker_version(account_id: Optional[_builtins.str] = None,
     :param _builtins.str version_id: Identifier for the version, which can be a UUID, a UUID prefix (minimum length 8), or the literal "latest" to operate on the most recently created version.
     :param _builtins.str worker_id: Identifier for the Worker, which can be ID or name.
     """
+    pulumi.log.warn("""get_worker_version is deprecated: cloudflare:index/getWorkerVersion:getWorkerVersion has been deprecated in favor of cloudflare:worker/version:getVersion""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['include'] = include
@@ -386,7 +389,7 @@ def get_worker_version_output(account_id: pulumi.Input[Optional[_builtins.str]] 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_worker_version = cloudflare.get_worker_version(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_worker_version = cloudflare.worker.get_version(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         worker_id="worker_id",
         version_id="version_id",
         include="modules")
@@ -399,6 +402,7 @@ def get_worker_version_output(account_id: pulumi.Input[Optional[_builtins.str]] 
     :param _builtins.str version_id: Identifier for the version, which can be a UUID, a UUID prefix (minimum length 8), or the literal "latest" to operate on the most recently created version.
     :param _builtins.str worker_id: Identifier for the Worker, which can be ID or name.
     """
+    pulumi.log.warn("""get_worker_version is deprecated: cloudflare:index/getWorkerVersion:getWorkerVersion has been deprecated in favor of cloudflare:worker/version:getVersion""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['include'] = include

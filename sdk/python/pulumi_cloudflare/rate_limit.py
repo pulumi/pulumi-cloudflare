@@ -239,8 +239,13 @@ class _RateLimitState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/rateLimit:RateLimit has been deprecated in favor of cloudflare:rate/limit:Limit""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/rateLimit:RateLimit")
 class RateLimit(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/rateLimit:RateLimit has been deprecated in favor of cloudflare:rate/limit:Limit""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -257,7 +262,7 @@ class RateLimit(pulumi.CustomResource):
         - `Firewall Services Read`
         - `Firewall Services Write`
 
-        > `RateLimit` is in a deprecation phase until June 15th, 2025.
+        > `rate.Limit` is in a deprecation phase until June 15th, 2025.
           During this time period, this resource is still
           fully supported but you are strongly advised to move to the
           `Ruleset` resource. Full details can be found in the
@@ -269,7 +274,7 @@ class RateLimit(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_rate_limit = cloudflare.RateLimit("example_rate_limit",
+        example_rate_limit = cloudflare.rate.Limit("example_rate_limit",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             action={
                 "mode": "challenge",
@@ -331,7 +336,7 @@ class RateLimit(pulumi.CustomResource):
         - `Firewall Services Read`
         - `Firewall Services Write`
 
-        > `RateLimit` is in a deprecation phase until June 15th, 2025.
+        > `rate.Limit` is in a deprecation phase until June 15th, 2025.
           During this time period, this resource is still
           fully supported but you are strongly advised to move to the
           `Ruleset` resource. Full details can be found in the
@@ -343,7 +348,7 @@ class RateLimit(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_rate_limit = cloudflare.RateLimit("example_rate_limit",
+        example_rate_limit = cloudflare.rate.Limit("example_rate_limit",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             action={
                 "mode": "challenge",
@@ -406,6 +411,7 @@ class RateLimit(pulumi.CustomResource):
                  threshold: pulumi.Input[Optional[_builtins.float]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""RateLimit is deprecated: cloudflare:index/rateLimit:RateLimit has been deprecated in favor of cloudflare:rate/limit:Limit""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

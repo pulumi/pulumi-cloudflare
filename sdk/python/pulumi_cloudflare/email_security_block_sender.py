@@ -250,8 +250,13 @@ class _EmailSecurityBlockSenderState:
         pulumi.set(self, "pattern_type", value)
 
 
+warnings.warn("""cloudflare:index/emailSecurityBlockSender:EmailSecurityBlockSender has been deprecated in favor of cloudflare:emailSecurityBlock/sender:Sender""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/emailSecurityBlockSender:EmailSecurityBlockSender")
 class EmailSecurityBlockSender(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/emailSecurityBlockSender:EmailSecurityBlockSender has been deprecated in favor of cloudflare:emailSecurityBlock/sender:Sender""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -274,7 +279,7 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_email_security_block_sender = cloudflare.EmailSecurityBlockSender("example_email_security_block_sender",
+        example_email_security_block_sender = cloudflare.emailsecurityblock.Sender("example_email_security_block_sender",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             is_regex=False,
             pattern="test@example.com",
@@ -321,7 +326,7 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_email_security_block_sender = cloudflare.EmailSecurityBlockSender("example_email_security_block_sender",
+        example_email_security_block_sender = cloudflare.emailsecurityblock.Sender("example_email_security_block_sender",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             is_regex=False,
             pattern="test@example.com",
@@ -357,6 +362,7 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
                  pattern: pulumi.Input[Optional[_builtins.str]] = None,
                  pattern_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""EmailSecurityBlockSender is deprecated: cloudflare:index/emailSecurityBlockSender:EmailSecurityBlockSender has been deprecated in favor of cloudflare:emailSecurityBlock/sender:Sender""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

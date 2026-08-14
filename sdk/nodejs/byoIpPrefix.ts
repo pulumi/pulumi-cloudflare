@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleByoIpPrefix = new cloudflare.ByoIpPrefix("example_byo_ip_prefix", {
+ * const exampleByoIpPrefix = new cloudflare.byoip.Prefix("example_byo_ip_prefix", {
  *     accountId: "258def64c72dae45f3e4c8516e2111f2",
  *     asn: 13335,
  *     cidr: "192.0.2.0/24",
@@ -35,6 +35,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example '<account_id>/<prefix_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/byoIpPrefix:ByoIpPrefix has been deprecated in favor of cloudflare:byoIp/prefix:Prefix
  */
 export class ByoIpPrefix extends pulumi.CustomResource {
     /**
@@ -47,6 +49,7 @@ export class ByoIpPrefix extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ByoIpPrefixState, opts?: pulumi.CustomResourceOptions): ByoIpPrefix {
+        pulumi.log.warn("ByoIpPrefix is deprecated: cloudflare:index/byoIpPrefix:ByoIpPrefix has been deprecated in favor of cloudflare:byoIp/prefix:Prefix")
         return new ByoIpPrefix(name, <any>state, { ...opts, id: id });
     }
 
@@ -142,8 +145,11 @@ export class ByoIpPrefix extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/byoIpPrefix:ByoIpPrefix has been deprecated in favor of cloudflare:byoIp/prefix:Prefix */
     constructor(name: string, args: ByoIpPrefixArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/byoIpPrefix:ByoIpPrefix has been deprecated in favor of cloudflare:byoIp/prefix:Prefix */
     constructor(name: string, argsOrState?: ByoIpPrefixArgs | ByoIpPrefixState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ByoIpPrefix is deprecated: cloudflare:index/byoIpPrefix:ByoIpPrefix has been deprecated in favor of cloudflare:byoIp/prefix:Prefix")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

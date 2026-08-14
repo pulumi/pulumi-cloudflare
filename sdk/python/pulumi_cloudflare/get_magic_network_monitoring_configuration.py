@@ -22,6 +22,8 @@ __all__ = [
     'get_magic_network_monitoring_configuration_output',
 ]
 
+warnings.warn("""cloudflare:index/getMagicNetworkMonitoringConfiguration:getMagicNetworkMonitoringConfiguration has been deprecated in favor of cloudflare:magicNetworkMonitoring/configuration:getConfiguration""", DeprecationWarning)
+
 @pulumi.output_type
 class GetMagicNetworkMonitoringConfigurationResult:
     """
@@ -104,9 +106,10 @@ def get_magic_network_monitoring_configuration(account_id: Optional[_builtins.st
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_network_monitoring_configuration = cloudflare.get_magic_network_monitoring_configuration(account_id="6f91088a406011ed95aed352566e8d4c")
+    example_magic_network_monitoring_configuration = cloudflare.magicnetworkmonitoring.get_configuration(account_id="6f91088a406011ed95aed352566e8d4c")
     ```
     """
+    pulumi.log.warn("""get_magic_network_monitoring_configuration is deprecated: cloudflare:index/getMagicNetworkMonitoringConfiguration:getMagicNetworkMonitoringConfiguration has been deprecated in favor of cloudflare:magicNetworkMonitoring/configuration:getConfiguration""")
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -133,9 +136,10 @@ def get_magic_network_monitoring_configuration_output(account_id: pulumi.Input[O
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_network_monitoring_configuration = cloudflare.get_magic_network_monitoring_configuration(account_id="6f91088a406011ed95aed352566e8d4c")
+    example_magic_network_monitoring_configuration = cloudflare.magicnetworkmonitoring.get_configuration(account_id="6f91088a406011ed95aed352566e8d4c")
     ```
     """
+    pulumi.log.warn("""get_magic_network_monitoring_configuration is deprecated: cloudflare:index/getMagicNetworkMonitoringConfiguration:getMagicNetworkMonitoringConfiguration has been deprecated in favor of cloudflare:magicNetworkMonitoring/configuration:getConfiguration""")
     __args__ = dict()
     __args__['accountId'] = account_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

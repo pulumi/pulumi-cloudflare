@@ -18,14 +18,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustdevicedefaultprofile"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustDeviceDefaultProfileLocalDomainFallback(ctx, &cloudflare.LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs{
+//			_, err := zerotrustdevicedefaultprofile.GetLocalDomainFallback(ctx, &zerotrustdevicedefaultprofile.GetLocalDomainFallbackArgs{
 //				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //			}, nil)
 //			if err != nil {
@@ -36,6 +36,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZeroTrustDeviceDefaultProfileLocalDomainFallback:getZeroTrustDeviceDefaultProfileLocalDomainFallback has been deprecated in favor of cloudflare:zeroTrustDeviceDefaultProfile/localDomainFallback:getLocalDomainFallback
 func LookupZeroTrustDeviceDefaultProfileLocalDomainFallback(ctx *pulumi.Context, args *LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResult

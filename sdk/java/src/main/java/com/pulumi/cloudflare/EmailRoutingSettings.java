@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.EmailRoutingSettings;
- * import com.pulumi.cloudflare.EmailRoutingSettingsArgs;
+ * import com.pulumi.cloudflare.emailRouting.Settings;
+ * import com.pulumi.cloudflare.emailRouting.SettingsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleEmailRoutingSettings = new EmailRoutingSettings("exampleEmailRoutingSettings", EmailRoutingSettingsArgs.builder()
+ *         var exampleEmailRoutingSettings = new Settings("exampleEmailRoutingSettings", SettingsArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .build());
  * 
@@ -59,7 +59,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/emailRoutingSettings:EmailRoutingSettings example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/emailRoutingSettings:EmailRoutingSettings has been deprecated in favor of cloudflare:emailRouting/settings:Settings
+ * 
  */
+@Deprecated /* cloudflare:index/emailRoutingSettings:EmailRoutingSettings has been deprecated in favor of cloudflare:emailRouting/settings:Settings */
 @ResourceType(type="cloudflare:index/emailRoutingSettings:EmailRoutingSettings")
 public class EmailRoutingSettings extends com.pulumi.resources.CustomResource {
     /**

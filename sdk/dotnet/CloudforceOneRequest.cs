@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCloudforceOneRequest = new Cloudflare.CloudforceOneRequest("example_cloudforce_one_request", new()
+    ///     var exampleCloudforceOneRequest = new Cloudflare.Modules.CloudforceOneRequest.CloudforceOneRequest("example_cloudforce_one_request", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Content = "What regions were most effected by the recent DoS?",
@@ -44,6 +44,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/cloudforceOneRequest:CloudforceOneRequest example '&lt;account_id&gt;/&lt;request_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/cloudforceOneRequest:CloudforceOneRequest has been deprecated in favor of cloudflare:cloudforceOneRequest/cloudforceOneRequest:CloudforceOneRequest")]
     [CloudflareResourceType("cloudflare:index/cloudforceOneRequest:CloudforceOneRequest")]
     public partial class CloudforceOneRequest : global::Pulumi.CustomResource
     {

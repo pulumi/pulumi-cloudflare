@@ -19,14 +19,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zone"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZoneAutoOriginTlsKex(ctx, "example_zone_auto_origin_tls_kex", &cloudflare.ZoneAutoOriginTlsKexArgs{
+//			_, err := zone.NewAutoOriginTlsKex(ctx, "example_zone_auto_origin_tls_kex", &zone.AutoOriginTlsKexArgs{
 //				ZoneId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Enabled: pulumi.Bool(true),
 //			})
@@ -44,6 +44,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zoneAutoOriginTlsKex:ZoneAutoOriginTlsKex example '<zone_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zoneAutoOriginTlsKex:ZoneAutoOriginTlsKex has been deprecated in favor of cloudflare:zone/autoOriginTlsKex:AutoOriginTlsKex
 type ZoneAutoOriginTlsKex struct {
 	pulumi.CustomResourceState
 

@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_dlp_integration_entries_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDlpIntegrationEntries:getZeroTrustDlpIntegrationEntries has been deprecated in favor of cloudflare:zeroTrustDlpIntegration/entries:getEntries""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDlpIntegrationEntriesResult:
     """
@@ -86,12 +88,13 @@ def get_zero_trust_dlp_integration_entries(account_id: Optional[_builtins.str] =
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_integration_entries = cloudflare.get_zero_trust_dlp_integration_entries(account_id="account_id")
+    example_zero_trust_dlp_integration_entries = cloudflare.zerotrustdlpintegration.get_entries(account_id="account_id")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_dlp_integration_entries is deprecated: cloudflare:index/getZeroTrustDlpIntegrationEntries:getZeroTrustDlpIntegrationEntries has been deprecated in favor of cloudflare:zeroTrustDlpIntegration/entries:getEntries""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -117,12 +120,13 @@ def get_zero_trust_dlp_integration_entries_output(account_id: pulumi.Input[Optio
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_dlp_integration_entries = cloudflare.get_zero_trust_dlp_integration_entries(account_id="account_id")
+    example_zero_trust_dlp_integration_entries = cloudflare.zerotrustdlpintegration.get_entries(account_id="account_id")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_dlp_integration_entries is deprecated: cloudflare:index/getZeroTrustDlpIntegrationEntries:getZeroTrustDlpIntegrationEntries has been deprecated in favor of cloudflare:zeroTrustDlpIntegration/entries:getEntries""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

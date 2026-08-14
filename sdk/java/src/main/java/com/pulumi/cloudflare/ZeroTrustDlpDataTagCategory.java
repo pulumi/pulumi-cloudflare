@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDlpDataTagCategory;
- * import com.pulumi.cloudflare.ZeroTrustDlpDataTagCategoryArgs;
+ * import com.pulumi.cloudflare.zeroTrustDlpDataTag.Category;
+ * import com.pulumi.cloudflare.zeroTrustDlpDataTag.CategoryArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustDlpDataTagCategory = new ZeroTrustDlpDataTagCategory("exampleZeroTrustDlpDataTagCategory", ZeroTrustDlpDataTagCategoryArgs.builder()
+ *         var exampleZeroTrustDlpDataTagCategory = new Category("exampleZeroTrustDlpDataTagCategory", CategoryArgs.builder()
  *             .accountId("account_id")
  *             .name("name")
  *             .description("description")
@@ -63,7 +63,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/zeroTrustDlpDataTagCategory:ZeroTrustDlpDataTagCategory example &#39;&lt;account_id&gt;/&lt;category_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/zeroTrustDlpDataTagCategory:ZeroTrustDlpDataTagCategory has been deprecated in favor of cloudflare:zeroTrustDlpDataTag/category:Category
+ * 
  */
+@Deprecated /* cloudflare:index/zeroTrustDlpDataTagCategory:ZeroTrustDlpDataTagCategory has been deprecated in favor of cloudflare:zeroTrustDlpDataTag/category:Category */
 @ResourceType(type="cloudflare:index/zeroTrustDlpDataTagCategory:ZeroTrustDlpDataTagCategory")
 public class ZeroTrustDlpDataTagCategory extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

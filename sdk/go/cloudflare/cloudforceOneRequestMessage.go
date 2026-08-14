@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/cloudforceonerequest"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewCloudforceOneRequestMessage(ctx, "example_cloudforce_one_request_message", &cloudflare.CloudforceOneRequestMessageArgs{
+//			_, err := cloudforceonerequest.NewMessage(ctx, "example_cloudforce_one_request_message", &cloudforceonerequest.MessageArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				RequestId: pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
 //				Content:   pulumi.String("Can you elaborate on the type of DoS that occurred?"),
@@ -49,6 +49,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example '<account_id>/<request_id>/<page>/<per_page>'
 // ```
+//
+// Deprecated: cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage has been deprecated in favor of cloudflare:cloudforceOneRequest/message:Message
 type CloudforceOneRequestMessage struct {
 	pulumi.CustomResourceState
 

@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleStreamWatermark = new Cloudflare.StreamWatermark("example_stream_watermark", new()
+    ///     var exampleStreamWatermark = new Cloudflare.Modules.Stream.StreamWatermark("example_stream_watermark", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "Marketing Videos",
@@ -43,6 +43,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/streamWatermark:StreamWatermark has been deprecated in favor of cloudflare:stream/watermark:Watermark")]
     [CloudflareResourceType("cloudflare:index/streamWatermark:StreamWatermark")]
     public partial class StreamWatermark : global::Pulumi.CustomResource
     {

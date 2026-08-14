@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_dlp_custom_prompt_topics_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustDlpCustomPromptTopics:getZeroTrustDlpCustomPromptTopics has been deprecated in favor of cloudflare:zeroTrustDlpCustomPrompt/topics:getTopics""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustDlpCustomPromptTopicsResult:
     """
@@ -83,6 +85,7 @@ def get_zero_trust_dlp_custom_prompt_topics(account_id: Optional[_builtins.str] 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_dlp_custom_prompt_topics is deprecated: cloudflare:index/getZeroTrustDlpCustomPromptTopics:getZeroTrustDlpCustomPromptTopics has been deprecated in favor of cloudflare:zeroTrustDlpCustomPrompt/topics:getTopics""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
@@ -105,6 +108,7 @@ def get_zero_trust_dlp_custom_prompt_topics_output(account_id: pulumi.Input[Opti
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
+    pulumi.log.warn("""get_zero_trust_dlp_custom_prompt_topics is deprecated: cloudflare:index/getZeroTrustDlpCustomPromptTopics:getZeroTrustDlpCustomPromptTopics has been deprecated in favor of cloudflare:zeroTrustDlpCustomPrompt/topics:getTopics""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items

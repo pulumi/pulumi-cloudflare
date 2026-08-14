@@ -32,17 +32,17 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.PipelineSink;
- * import com.pulumi.cloudflare.PipelineSinkArgs;
- * import com.pulumi.cloudflare.inputs.PipelineSinkConfigArgs;
- * import com.pulumi.cloudflare.inputs.PipelineSinkConfigCredentialsArgs;
- * import com.pulumi.cloudflare.inputs.PipelineSinkConfigFileNamingArgs;
- * import com.pulumi.cloudflare.inputs.PipelineSinkConfigPartitioningArgs;
- * import com.pulumi.cloudflare.inputs.PipelineSinkConfigRollingPolicyArgs;
- * import com.pulumi.cloudflare.inputs.PipelineSinkFormatArgs;
- * import com.pulumi.cloudflare.inputs.PipelineSinkSchemaArgs;
- * import com.pulumi.cloudflare.inputs.PipelineSinkSchemaFieldArgs;
- * import com.pulumi.cloudflare.inputs.PipelineSinkSchemaFormatArgs;
+ * import com.pulumi.cloudflare.pipeline.Sink;
+ * import com.pulumi.cloudflare.pipeline.SinkArgs;
+ * import com.pulumi.cloudflare.pipeline.inputs.SinkConfigArgs;
+ * import com.pulumi.cloudflare.pipeline.inputs.SinkConfigCredentialsArgs;
+ * import com.pulumi.cloudflare.pipeline.inputs.SinkConfigFileNamingArgs;
+ * import com.pulumi.cloudflare.pipeline.inputs.SinkConfigPartitioningArgs;
+ * import com.pulumi.cloudflare.pipeline.inputs.SinkConfigRollingPolicyArgs;
+ * import com.pulumi.cloudflare.pipeline.inputs.SinkFormatArgs;
+ * import com.pulumi.cloudflare.pipeline.inputs.SinkSchemaArgs;
+ * import com.pulumi.cloudflare.pipeline.inputs.SinkSchemaFieldArgs;
+ * import com.pulumi.cloudflare.pipeline.inputs.SinkSchemaFormatArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -56,48 +56,48 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var examplePipelineSink = new PipelineSink("examplePipelineSink", PipelineSinkArgs.builder()
+ *         var examplePipelineSink = new Sink("examplePipelineSink", SinkArgs.builder()
  *             .accountId("0123105f4ecef8ad9ca31a8372d0c353")
  *             .name("my_sink")
  *             .type("r2")
- *             .config(PipelineSinkConfigArgs.builder()
+ *             .config(SinkConfigArgs.builder()
  *                 .accountId("account_id")
  *                 .bucket("bucket")
- *                 .credentials(PipelineSinkConfigCredentialsArgs.builder()
+ *                 .credentials(SinkConfigCredentialsArgs.builder()
  *                     .accessKeyId("access_key_id")
  *                     .secretAccessKey("secret_access_key")
  *                     .build())
- *                 .fileNaming(PipelineSinkConfigFileNamingArgs.builder()
+ *                 .fileNaming(SinkConfigFileNamingArgs.builder()
  *                     .prefix("prefix")
  *                     .strategy("serial")
  *                     .suffix("suffix")
  *                     .build())
  *                 .jurisdiction("jurisdiction")
- *                 .partitioning(PipelineSinkConfigPartitioningArgs.builder()
+ *                 .partitioning(SinkConfigPartitioningArgs.builder()
  *                     .timePattern("year=%Y/month=%m/day=%d/hour=%H")
  *                     .build())
  *                 .path("path")
- *                 .rollingPolicy(PipelineSinkConfigRollingPolicyArgs.builder()
+ *                 .rollingPolicy(SinkConfigRollingPolicyArgs.builder()
  *                     .fileSizeBytes(0)
  *                     .inactivitySeconds(1)
  *                     .intervalSeconds(1)
  *                     .build())
  *                 .build())
- *             .format(PipelineSinkFormatArgs.builder()
+ *             .format(SinkFormatArgs.builder()
  *                 .type("json")
  *                 .decimalEncoding("number")
  *                 .timestampFormat("rfc3339")
  *                 .unstructured(true)
  *                 .build())
- *             .schema(PipelineSinkSchemaArgs.builder()
- *                 .fields(PipelineSinkSchemaFieldArgs.builder()
+ *             .schema(SinkSchemaArgs.builder()
+ *                 .fields(SinkSchemaFieldArgs.builder()
  *                     .type("int32")
  *                     .metadataKey("metadata_key")
  *                     .name("name")
  *                     .required(true)
  *                     .sqlName("sql_name")
  *                     .build())
- *                 .format(PipelineSinkSchemaFormatArgs.builder()
+ *                 .format(SinkSchemaFormatArgs.builder()
  *                     .type("json")
  *                     .decimalEncoding("number")
  *                     .timestampFormat("rfc3339")
@@ -118,7 +118,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/pipelineSink:PipelineSink example &#39;&lt;account_id&gt;/&lt;sink_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/pipelineSink:PipelineSink has been deprecated in favor of cloudflare:pipeline/sink:Sink
+ * 
  */
+@Deprecated /* cloudflare:index/pipelineSink:PipelineSink has been deprecated in favor of cloudflare:pipeline/sink:Sink */
 @ResourceType(type="cloudflare:index/pipelineSink:PipelineSink")
 public class PipelineSink extends com.pulumi.resources.CustomResource {
     /**

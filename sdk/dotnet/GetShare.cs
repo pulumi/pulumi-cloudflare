@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getShare:getShare has been deprecated in favor of cloudflare:share/share:getShare")]
     public static class GetShare
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleShare = Cloudflare.GetShare.Invoke(new()
+        ///     var exampleShare = Cloudflare.Modules.Share.GetShare.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ShareId = "3fd85f74b32742f1bff64a85009dda07",
@@ -47,7 +48,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleShare = Cloudflare.GetShare.Invoke(new()
+        ///     var exampleShare = Cloudflare.Modules.Share.GetShare.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ShareId = "3fd85f74b32742f1bff64a85009dda07",
@@ -72,7 +73,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleShare = Cloudflare.GetShare.Invoke(new()
+        ///     var exampleShare = Cloudflare.Modules.Share.GetShare.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ShareId = "3fd85f74b32742f1bff64a85009dda07",

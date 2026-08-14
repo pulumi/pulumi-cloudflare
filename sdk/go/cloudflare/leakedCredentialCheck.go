@@ -26,14 +26,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/leakedcredentialcheck"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewLeakedCredentialCheck(ctx, "example_leaked_credential_check", &cloudflare.LeakedCredentialCheckArgs{
+//			_, err := leakedcredentialcheck.NewLeakedCredentialCheck(ctx, "example_leaked_credential_check", &leakedcredentialcheck.LeakedCredentialCheckArgs{
 //				ZoneId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Enabled: pulumi.Bool(true),
 //			})
@@ -49,6 +49,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck has been deprecated in favor of cloudflare:leakedCredentialCheck/leakedCredentialCheck:LeakedCredentialCheck
 type LeakedCredentialCheck struct {
 	pulumi.CustomResourceState
 

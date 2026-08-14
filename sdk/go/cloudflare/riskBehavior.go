@@ -24,17 +24,17 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrust"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustRiskBehavior(ctx, "example_zero_trust_risk_behavior", &cloudflare.ZeroTrustRiskBehaviorArgs{
+//			_, err := zerotrust.NewRiskBehavior(ctx, "example_zero_trust_risk_behavior", &zerotrust.RiskBehaviorArgs{
 //				AccountId: pulumi.String("account_id"),
-//				Behaviors: cloudflare.ZeroTrustRiskBehaviorBehaviorsMap{
-//					"foo": &cloudflare.ZeroTrustRiskBehaviorBehaviorsArgs{
+//				Behaviors: zerotrust.RiskBehaviorBehaviorsMap{
+//					"foo": &zerotrust.RiskBehaviorBehaviorsArgs{
 //						Enabled:   pulumi.Bool(true),
 //						RiskLevel: pulumi.String("low"),
 //					},
@@ -74,12 +74,6 @@ func NewRiskBehavior(ctx *pulumi.Context,
 	if args.Behaviors == nil {
 		return nil, errors.New("invalid value for required argument 'Behaviors'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("cloudflare:index/riskBehavior:RiskBehavior"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RiskBehavior
 	err := ctx.RegisterResource("cloudflare:index/riskBehavior:RiskBehavior", name, args, &resource, opts...)

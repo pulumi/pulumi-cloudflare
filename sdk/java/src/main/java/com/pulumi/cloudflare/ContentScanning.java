@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ContentScanning;
- * import com.pulumi.cloudflare.ContentScanningArgs;
+ * import com.pulumi.cloudflare.contentScanning.ContentScanning;
+ * import com.pulumi.cloudflare.contentScanning.ContentScanningArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -59,7 +59,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/contentScanning:ContentScanning has been deprecated in favor of cloudflare:contentScanning/contentScanning:ContentScanning
+ * 
  */
+@Deprecated /* cloudflare:index/contentScanning:ContentScanning has been deprecated in favor of cloudflare:contentScanning/contentScanning:ContentScanning */
 @ResourceType(type="cloudflare:index/contentScanning:ContentScanning")
 public class ContentScanning extends com.pulumi.resources.CustomResource {
     /**

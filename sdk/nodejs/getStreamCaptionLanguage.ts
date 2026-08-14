@@ -16,14 +16,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleStreamCaptionLanguage = cloudflare.getStreamCaptionLanguage({
+ * const exampleStreamCaptionLanguage = cloudflare.stream.getCaptionLanguage({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     identifier: "ea95132c15732412d22c1476fa83f27a",
  *     language: "tr",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getStreamCaptionLanguage:getStreamCaptionLanguage has been deprecated in favor of cloudflare:stream/captionLanguage:getCaptionLanguage */
 export function getStreamCaptionLanguage(args: GetStreamCaptionLanguageArgs, opts?: pulumi.InvokeOptions): Promise<GetStreamCaptionLanguageResult> {
+    pulumi.log.warn("getStreamCaptionLanguage is deprecated: cloudflare:index/getStreamCaptionLanguage:getStreamCaptionLanguage has been deprecated in favor of cloudflare:stream/captionLanguage:getCaptionLanguage")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getStreamCaptionLanguage:getStreamCaptionLanguage", {
         "accountId": args.accountId,
@@ -92,14 +94,16 @@ export interface GetStreamCaptionLanguageResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleStreamCaptionLanguage = cloudflare.getStreamCaptionLanguage({
+ * const exampleStreamCaptionLanguage = cloudflare.stream.getCaptionLanguage({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     identifier: "ea95132c15732412d22c1476fa83f27a",
  *     language: "tr",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getStreamCaptionLanguage:getStreamCaptionLanguage has been deprecated in favor of cloudflare:stream/captionLanguage:getCaptionLanguage */
 export function getStreamCaptionLanguageOutput(args: GetStreamCaptionLanguageOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStreamCaptionLanguageResult> {
+    pulumi.log.warn("getStreamCaptionLanguage is deprecated: cloudflare:index/getStreamCaptionLanguage:getStreamCaptionLanguage has been deprecated in favor of cloudflare:stream/captionLanguage:getCaptionLanguage")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getStreamCaptionLanguage:getStreamCaptionLanguage", {
         "accountId": args.accountId,

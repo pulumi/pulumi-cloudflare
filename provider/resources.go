@@ -29,19 +29,17 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens/fallbackstrat"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 
 	"github.com/pulumi/pulumi-cloudflare/provider/v6/pkg/version"
 )
 
 // all of the token components used below.
-const (
-	// packages:
-	mainPkg = "cloudflare"
-	// modules:
-	mainMod = "index" // the y module
-)
+const mainPkg = "cloudflare"
 
 //go:embed cmd/pulumi-resource-cloudflare/bridge-metadata.json
 var metadata []byte
@@ -656,8 +654,36 @@ func Provider() info.Provider {
 		res.ComputeID = delegateID("id")
 	}
 
-	prov.MustComputeTokens(tfbridgetokens.SingleModule("cloudflare_", mainMod,
-		tfbridgetokens.MakeStandard(mainPkg)))
+	inferred, err := fallbackstrat.MappedModulesWithInferredFallback(
+		&prov, "cloudflare_", "", nil, tfbridgetokens.MakeStandard(mainPkg))
+	contract.AssertNoErrorf(err, "error inferring modules")
+
+	// InferredModules does not add the conventional "get" prefix to data source
+	// members. Without it, a resource and data source with the same Terraform
+	// token produce the same Pulumi token and collide during schema generation.
+	inferDataSource := inferred.DataSource
+	inferred.DataSource = func(terraformToken string, dataSource *info.DataSource) error {
+		if err := inferDataSource(terraformToken, dataSource); err != nil {
+			return err
+		}
+		name := dataSource.Tok.Name().String()
+		if !strings.HasPrefix(name, "get") {
+			dataSource.Tok = tokens.ModuleMember(fmt.Sprintf("%s:get%s", dataSource.Tok.Module(), name))
+		}
+
+		// A data source that stays in index must keep its old member path. The
+		// inferred path and old path generate the same SDK symbol, so emitting
+		// both would make language code generators produce duplicate files.
+		if strings.HasPrefix(dataSource.Tok.Module().String(), mainPkg+":index") {
+			entries := loadV619Compatibility().Functions[terraformToken]
+			contract.Assertf(len(entries) == 1, "expected one v6.19 function token for %q", terraformToken)
+			dataSource.Tok = tokens.ModuleMember(entries[0].Token)
+		}
+		return nil
+	}
+
+	prov.MustComputeTokens(inferred)
+	configureInferredCSharp(&prov)
 
 	resourcesWithMissingID := []string{
 		"cloudflare_zero_trust_organization",
@@ -732,6 +758,7 @@ func Provider() info.Provider {
 	resetMigratedResourcesSchemaVersion(&prov)
 
 	prov.MustApplyAutoAliases()
+	applyV619Compatibility(&prov)
 
 	return prov
 }

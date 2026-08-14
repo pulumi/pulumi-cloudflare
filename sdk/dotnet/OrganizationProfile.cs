@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleOrganizationProfile = new Cloudflare.OrganizationProfile("example_organization_profile", new()
+    ///     var exampleOrganizationProfile = new Cloudflare.Modules.Organization.OrganizationProfile("example_organization_profile", new()
     ///     {
     ///         OrganizationId = "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
     ///         BusinessAddress = "business_address",
@@ -37,6 +37,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; This resource does not currently support `pulumi import`.
     /// </summary>
+    [Obsolete(@"cloudflare:index/organizationProfile:OrganizationProfile has been deprecated in favor of cloudflare:organization/profile:Profile")]
     [CloudflareResourceType("cloudflare:index/organizationProfile:OrganizationProfile")]
     public partial class OrganizationProfile : global::Pulumi.CustomResource
     {

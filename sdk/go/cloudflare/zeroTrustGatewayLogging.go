@@ -19,26 +19,26 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zerotrustgateway"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustGatewayLogging(ctx, "example_zero_trust_gateway_logging", &cloudflare.ZeroTrustGatewayLoggingArgs{
+//			_, err := zerotrustgateway.NewLogging(ctx, "example_zero_trust_gateway_logging", &zerotrustgateway.LoggingArgs{
 //				AccountId: pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				RedactPii: pulumi.Bool(true),
-//				SettingsByRuleType: &cloudflare.ZeroTrustGatewayLoggingSettingsByRuleTypeArgs{
-//					Dns: &cloudflare.ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs{
+//				SettingsByRuleType: &zerotrustgateway.LoggingSettingsByRuleTypeArgs{
+//					Dns: &zerotrustgateway.LoggingSettingsByRuleTypeDnsArgs{
 //						LogAll:    pulumi.Bool(false),
 //						LogBlocks: pulumi.Bool(true),
 //					},
-//					Http: &cloudflare.ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs{
+//					Http: &zerotrustgateway.LoggingSettingsByRuleTypeHttpArgs{
 //						LogAll:    pulumi.Bool(false),
 //						LogBlocks: pulumi.Bool(true),
 //					},
-//					L4: &cloudflare.ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args{
+//					L4: &zerotrustgateway.LoggingSettingsByRuleTypeL4Args{
 //						LogAll:    pulumi.Bool(false),
 //						LogBlocks: pulumi.Bool(true),
 //					},
@@ -58,6 +58,8 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging example '<account_id>'
 // ```
+//
+// Deprecated: cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging has been deprecated in favor of cloudflare:zeroTrustGateway/logging:Logging
 type ZeroTrustGatewayLogging struct {
 	pulumi.CustomResourceState
 

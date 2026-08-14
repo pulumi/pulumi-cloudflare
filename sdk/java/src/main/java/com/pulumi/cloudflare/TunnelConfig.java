@@ -7,14 +7,12 @@ import com.pulumi.cloudflare.TunnelConfigArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.TunnelConfigState;
 import com.pulumi.cloudflare.outputs.TunnelConfigConfig;
-import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import javax.annotation.Nullable;
 
 /**
@@ -36,14 +34,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflaredConfig;
- * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflaredConfigArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigConfigArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigConfigIngressArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestAccessArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs;
+ * import com.pulumi.cloudflare.zeroTrustTunnelCloudflared.Config;
+ * import com.pulumi.cloudflare.zeroTrustTunnelCloudflared.ConfigArgs;
+ * import com.pulumi.cloudflare.zeroTrustTunnelCloudflared.inputs.ConfigConfigArgs;
+ * import com.pulumi.cloudflare.zeroTrustTunnelCloudflared.inputs.ConfigConfigIngressArgs;
+ * import com.pulumi.cloudflare.zeroTrustTunnelCloudflared.inputs.ConfigConfigIngressOriginRequestArgs;
+ * import com.pulumi.cloudflare.zeroTrustTunnelCloudflared.inputs.ConfigConfigIngressOriginRequestAccessArgs;
+ * import com.pulumi.cloudflare.zeroTrustTunnelCloudflared.inputs.ConfigConfigOriginRequestArgs;
+ * import com.pulumi.cloudflare.zeroTrustTunnelCloudflared.inputs.ConfigConfigOriginRequestAccessArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -57,15 +55,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZeroTrustTunnelCloudflaredConfig = new ZeroTrustTunnelCloudflaredConfig("exampleZeroTrustTunnelCloudflaredConfig", ZeroTrustTunnelCloudflaredConfigArgs.builder()
+ *         var exampleZeroTrustTunnelCloudflaredConfig = new Config("exampleZeroTrustTunnelCloudflaredConfig", ConfigArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
- *             .config(ZeroTrustTunnelCloudflaredConfigConfigArgs.builder()
- *                 .ingresses(ZeroTrustTunnelCloudflaredConfigConfigIngressArgs.builder()
+ *             .config(ConfigConfigArgs.builder()
+ *                 .ingresses(ConfigConfigIngressArgs.builder()
  *                     .hostname("tunnel.example.com")
  *                     .service("https://localhost:8001")
- *                     .originRequest(ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestArgs.builder()
- *                         .access(ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestAccessArgs.builder()
+ *                     .originRequest(ConfigConfigIngressOriginRequestArgs.builder()
+ *                         .access(ConfigConfigIngressOriginRequestAccessArgs.builder()
  *                             .audTag(Arrays.asList("string"))
  *                             .teamName("zero-trust-organization-name")
  *                             .required(false)
@@ -87,8 +85,8 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .path("subpath")
  *                     .build())
- *                 .originRequest(ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs.builder()
- *                     .access(ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs.builder()
+ *                 .originRequest(ConfigConfigOriginRequestArgs.builder()
+ *                     .access(ConfigConfigOriginRequestAccessArgs.builder()
  *                         .audTags("string")
  *                         .teamName("zero-trust-organization-name")
  *                         .required(false)
@@ -247,9 +245,6 @@ public class TunnelConfig extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .aliases(List.of(
-                Output.of(Alias.builder().type("cloudflare:index/tunnelConfig:TunnelConfig").build())
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

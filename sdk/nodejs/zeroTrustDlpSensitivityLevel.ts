@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustDlpSensitivityLevel = new cloudflare.ZeroTrustDlpSensitivityLevel("example_zero_trust_dlp_sensitivity_level", {
+ * const exampleZeroTrustDlpSensitivityLevel = new cloudflare.zerotrustdlpsensitivitylevel.ZeroTrustDlpSensitivityLevel("example_zero_trust_dlp_sensitivity_level", {
  *     accountId: "account_id",
  *     sensitivityGroupId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  *     name: "name",
@@ -29,6 +29,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel example '<account_id>/<sensitivity_group_id>/<sensitivity_level_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel
  */
 export class ZeroTrustDlpSensitivityLevel extends pulumi.CustomResource {
     /**
@@ -41,6 +43,7 @@ export class ZeroTrustDlpSensitivityLevel extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZeroTrustDlpSensitivityLevelState, opts?: pulumi.CustomResourceOptions): ZeroTrustDlpSensitivityLevel {
+        pulumi.log.warn("ZeroTrustDlpSensitivityLevel is deprecated: cloudflare:index/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel")
         return new ZeroTrustDlpSensitivityLevel(name, <any>state, { ...opts, id: id });
     }
 
@@ -72,8 +75,11 @@ export class ZeroTrustDlpSensitivityLevel extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel */
     constructor(name: string, args: ZeroTrustDlpSensitivityLevelArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel */
     constructor(name: string, argsOrState?: ZeroTrustDlpSensitivityLevelArgs | ZeroTrustDlpSensitivityLevelState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ZeroTrustDlpSensitivityLevel is deprecated: cloudflare:index/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel has been deprecated in favor of cloudflare:zeroTrustDlpSensitivityLevel/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

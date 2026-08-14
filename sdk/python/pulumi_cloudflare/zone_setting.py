@@ -209,8 +209,13 @@ class _ZoneSettingState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/zoneSetting:ZoneSetting has been deprecated in favor of cloudflare:zone/setting:Setting""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zoneSetting:ZoneSetting")
 class ZoneSetting(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zoneSetting:ZoneSetting has been deprecated in favor of cloudflare:zone/setting:Setting""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -309,22 +314,22 @@ class ZoneSetting(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # Basic on/off setting
-        always_online = cloudflare.ZoneSetting("always_online",
+        always_online = cloudflare.zone.Setting("always_online",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="always_online",
             value="on")
         # String value with specific choices
-        min_tls_version = cloudflare.ZoneSetting("min_tls_version",
+        min_tls_version = cloudflare.zone.Setting("min_tls_version",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="min_tls_version",
             value="1.2")
         # Numeric value
-        browser_cache_ttl = cloudflare.ZoneSetting("browser_cache_ttl",
+        browser_cache_ttl = cloudflare.zone.Setting("browser_cache_ttl",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="browser_cache_ttl",
             value=14400)
         # Array/List value
-        ciphers = cloudflare.ZoneSetting("ciphers",
+        ciphers = cloudflare.zone.Setting("ciphers",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="ciphers",
             value=[
@@ -332,7 +337,7 @@ class ZoneSetting(pulumi.CustomResource):
                 "ECDHE-ECDSA-CHACHA20-POLY1305",
             ])
         # Nested object value
-        security_header = cloudflare.ZoneSetting("security_header",
+        security_header = cloudflare.zone.Setting("security_header",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="security_header",
             value={
@@ -345,7 +350,7 @@ class ZoneSetting(pulumi.CustomResource):
                 },
             })
         # Special case: ssl_recommender uses 'enabled' instead of 'value'
-        ssl_recommender = cloudflare.ZoneSetting("ssl_recommender",
+        ssl_recommender = cloudflare.zone.Setting("ssl_recommender",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="ssl_recommender",
             enabled=True)
@@ -359,22 +364,22 @@ class ZoneSetting(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # Minimum TLS Version
-        min_tls = cloudflare.ZoneSetting("min_tls",
+        min_tls = cloudflare.zone.Setting("min_tls",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="min_tls_version",
             value="1.2")
         # SSL/TLS Mode
-        ssl = cloudflare.ZoneSetting("ssl",
+        ssl = cloudflare.zone.Setting("ssl",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="ssl",
             value="strict")
         # Security Level
-        security_level = cloudflare.ZoneSetting("security_level",
+        security_level = cloudflare.zone.Setting("security_level",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="security_level",
             value="medium")
         # Cache Level
-        cache_level = cloudflare.ZoneSetting("cache_level",
+        cache_level = cloudflare.zone.Setting("cache_level",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="cache_level",
             value="aggressive")
@@ -386,17 +391,17 @@ class ZoneSetting(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # Browser Cache TTL
-        browser_cache_ttl = cloudflare.ZoneSetting("browser_cache_ttl",
+        browser_cache_ttl = cloudflare.zone.Setting("browser_cache_ttl",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="browser_cache_ttl",
             value=14400)
         # Challenge TTL
-        challenge_ttl = cloudflare.ZoneSetting("challenge_ttl",
+        challenge_ttl = cloudflare.zone.Setting("challenge_ttl",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="challenge_ttl",
             value=1800)
         # Max Upload Size
-        max_upload = cloudflare.ZoneSetting("max_upload",
+        max_upload = cloudflare.zone.Setting("max_upload",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="max_upload",
             value=100)
@@ -408,12 +413,12 @@ class ZoneSetting(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # 0-RTT (Zero Round Trip Time)
-        zero_rtt = cloudflare.ZoneSetting("zero_rtt",
+        zero_rtt = cloudflare.zone.Setting("zero_rtt",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="0rtt",
             value="on")
         # Network Error Logging (NEL)
-        nel = cloudflare.ZoneSetting("nel",
+        nel = cloudflare.zone.Setting("nel",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="nel",
             value={
@@ -429,27 +434,27 @@ class ZoneSetting(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # Enable HTTPS everywhere
-        always_use_https = cloudflare.ZoneSetting("always_use_https",
+        always_use_https = cloudflare.zone.Setting("always_use_https",
             zone_id=zone_id,
             setting_id="always_use_https",
             value="on")
         # Automatic HTTPS Rewrites
-        automatic_https_rewrites = cloudflare.ZoneSetting("automatic_https_rewrites",
+        automatic_https_rewrites = cloudflare.zone.Setting("automatic_https_rewrites",
             zone_id=zone_id,
             setting_id="automatic_https_rewrites",
             value="on")
         # Minimum TLS 1.2
-        min_tls_version = cloudflare.ZoneSetting("min_tls_version",
+        min_tls_version = cloudflare.zone.Setting("min_tls_version",
             zone_id=zone_id,
             setting_id="min_tls_version",
             value="1.2")
         # Enable TLS 1.3
-        tls13 = cloudflare.ZoneSetting("tls_1_3",
+        tls13 = cloudflare.zone.Setting("tls_1_3",
             zone_id=zone_id,
             setting_id="tls_1_3",
             value="on")
         # Strict SSL
-        ssl = cloudflare.ZoneSetting("ssl",
+        ssl = cloudflare.zone.Setting("ssl",
             zone_id=zone_id,
             setting_id="ssl",
             value="strict")
@@ -461,27 +466,27 @@ class ZoneSetting(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # Enable HTTP/3
-        http3 = cloudflare.ZoneSetting("http3",
+        http3 = cloudflare.zone.Setting("http3",
             zone_id=zone_id,
             setting_id="http3",
             value="on")
         # Enable Brotli Compression
-        brotli = cloudflare.ZoneSetting("brotli",
+        brotli = cloudflare.zone.Setting("brotli",
             zone_id=zone_id,
             setting_id="brotli",
             value="on")
         # Early Hints
-        early_hints = cloudflare.ZoneSetting("early_hints",
+        early_hints = cloudflare.zone.Setting("early_hints",
             zone_id=zone_id,
             setting_id="early_hints",
             value="on")
         # Aggressive Caching
-        cache_level = cloudflare.ZoneSetting("cache_level",
+        cache_level = cloudflare.zone.Setting("cache_level",
             zone_id=zone_id,
             setting_id="cache_level",
             value="aggressive")
         # Browser Cache TTL
-        browser_cache = cloudflare.ZoneSetting("browser_cache",
+        browser_cache = cloudflare.zone.Setting("browser_cache",
             zone_id=zone_id,
             setting_id="browser_cache_ttl",
             value=14400)
@@ -596,22 +601,22 @@ class ZoneSetting(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # Basic on/off setting
-        always_online = cloudflare.ZoneSetting("always_online",
+        always_online = cloudflare.zone.Setting("always_online",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="always_online",
             value="on")
         # String value with specific choices
-        min_tls_version = cloudflare.ZoneSetting("min_tls_version",
+        min_tls_version = cloudflare.zone.Setting("min_tls_version",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="min_tls_version",
             value="1.2")
         # Numeric value
-        browser_cache_ttl = cloudflare.ZoneSetting("browser_cache_ttl",
+        browser_cache_ttl = cloudflare.zone.Setting("browser_cache_ttl",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="browser_cache_ttl",
             value=14400)
         # Array/List value
-        ciphers = cloudflare.ZoneSetting("ciphers",
+        ciphers = cloudflare.zone.Setting("ciphers",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="ciphers",
             value=[
@@ -619,7 +624,7 @@ class ZoneSetting(pulumi.CustomResource):
                 "ECDHE-ECDSA-CHACHA20-POLY1305",
             ])
         # Nested object value
-        security_header = cloudflare.ZoneSetting("security_header",
+        security_header = cloudflare.zone.Setting("security_header",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="security_header",
             value={
@@ -632,7 +637,7 @@ class ZoneSetting(pulumi.CustomResource):
                 },
             })
         # Special case: ssl_recommender uses 'enabled' instead of 'value'
-        ssl_recommender = cloudflare.ZoneSetting("ssl_recommender",
+        ssl_recommender = cloudflare.zone.Setting("ssl_recommender",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="ssl_recommender",
             enabled=True)
@@ -646,22 +651,22 @@ class ZoneSetting(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # Minimum TLS Version
-        min_tls = cloudflare.ZoneSetting("min_tls",
+        min_tls = cloudflare.zone.Setting("min_tls",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="min_tls_version",
             value="1.2")
         # SSL/TLS Mode
-        ssl = cloudflare.ZoneSetting("ssl",
+        ssl = cloudflare.zone.Setting("ssl",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="ssl",
             value="strict")
         # Security Level
-        security_level = cloudflare.ZoneSetting("security_level",
+        security_level = cloudflare.zone.Setting("security_level",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="security_level",
             value="medium")
         # Cache Level
-        cache_level = cloudflare.ZoneSetting("cache_level",
+        cache_level = cloudflare.zone.Setting("cache_level",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="cache_level",
             value="aggressive")
@@ -673,17 +678,17 @@ class ZoneSetting(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # Browser Cache TTL
-        browser_cache_ttl = cloudflare.ZoneSetting("browser_cache_ttl",
+        browser_cache_ttl = cloudflare.zone.Setting("browser_cache_ttl",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="browser_cache_ttl",
             value=14400)
         # Challenge TTL
-        challenge_ttl = cloudflare.ZoneSetting("challenge_ttl",
+        challenge_ttl = cloudflare.zone.Setting("challenge_ttl",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="challenge_ttl",
             value=1800)
         # Max Upload Size
-        max_upload = cloudflare.ZoneSetting("max_upload",
+        max_upload = cloudflare.zone.Setting("max_upload",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="max_upload",
             value=100)
@@ -695,12 +700,12 @@ class ZoneSetting(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # 0-RTT (Zero Round Trip Time)
-        zero_rtt = cloudflare.ZoneSetting("zero_rtt",
+        zero_rtt = cloudflare.zone.Setting("zero_rtt",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="0rtt",
             value="on")
         # Network Error Logging (NEL)
-        nel = cloudflare.ZoneSetting("nel",
+        nel = cloudflare.zone.Setting("nel",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="nel",
             value={
@@ -716,27 +721,27 @@ class ZoneSetting(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # Enable HTTPS everywhere
-        always_use_https = cloudflare.ZoneSetting("always_use_https",
+        always_use_https = cloudflare.zone.Setting("always_use_https",
             zone_id=zone_id,
             setting_id="always_use_https",
             value="on")
         # Automatic HTTPS Rewrites
-        automatic_https_rewrites = cloudflare.ZoneSetting("automatic_https_rewrites",
+        automatic_https_rewrites = cloudflare.zone.Setting("automatic_https_rewrites",
             zone_id=zone_id,
             setting_id="automatic_https_rewrites",
             value="on")
         # Minimum TLS 1.2
-        min_tls_version = cloudflare.ZoneSetting("min_tls_version",
+        min_tls_version = cloudflare.zone.Setting("min_tls_version",
             zone_id=zone_id,
             setting_id="min_tls_version",
             value="1.2")
         # Enable TLS 1.3
-        tls13 = cloudflare.ZoneSetting("tls_1_3",
+        tls13 = cloudflare.zone.Setting("tls_1_3",
             zone_id=zone_id,
             setting_id="tls_1_3",
             value="on")
         # Strict SSL
-        ssl = cloudflare.ZoneSetting("ssl",
+        ssl = cloudflare.zone.Setting("ssl",
             zone_id=zone_id,
             setting_id="ssl",
             value="strict")
@@ -748,27 +753,27 @@ class ZoneSetting(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # Enable HTTP/3
-        http3 = cloudflare.ZoneSetting("http3",
+        http3 = cloudflare.zone.Setting("http3",
             zone_id=zone_id,
             setting_id="http3",
             value="on")
         # Enable Brotli Compression
-        brotli = cloudflare.ZoneSetting("brotli",
+        brotli = cloudflare.zone.Setting("brotli",
             zone_id=zone_id,
             setting_id="brotli",
             value="on")
         # Early Hints
-        early_hints = cloudflare.ZoneSetting("early_hints",
+        early_hints = cloudflare.zone.Setting("early_hints",
             zone_id=zone_id,
             setting_id="early_hints",
             value="on")
         # Aggressive Caching
-        cache_level = cloudflare.ZoneSetting("cache_level",
+        cache_level = cloudflare.zone.Setting("cache_level",
             zone_id=zone_id,
             setting_id="cache_level",
             value="aggressive")
         # Browser Cache TTL
-        browser_cache = cloudflare.ZoneSetting("browser_cache",
+        browser_cache = cloudflare.zone.Setting("browser_cache",
             zone_id=zone_id,
             setting_id="browser_cache_ttl",
             value=14400)
@@ -801,6 +806,7 @@ class ZoneSetting(pulumi.CustomResource):
                  value: Optional[Any] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZoneSetting is deprecated: cloudflare:index/zoneSetting:ZoneSetting has been deprecated in favor of cloudflare:zone/setting:Setting""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

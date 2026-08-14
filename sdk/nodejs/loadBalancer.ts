@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleLoadBalancer = new cloudflare.LoadBalancer("example_load_balancer", {
+ * const exampleLoadBalancer = new cloudflare.loadbalancer.LoadBalancer("example_load_balancer", {
  *     defaultPools: [
  *         "17b5962d775c646f3f9725cbc7a53df4",
  *         "9290f38c5d07c2e2f4df57b1f61d4196",
@@ -168,6 +168,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '<{accounts|zones}/{account_id|zone_id}>/<load_balancer_id>'
  * ```
+ *
+ * @deprecated cloudflare:index/loadBalancer:LoadBalancer has been deprecated in favor of cloudflare:loadBalancer/loadBalancer:LoadBalancer
  */
 export class LoadBalancer extends pulumi.CustomResource {
     /**
@@ -180,6 +182,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LoadBalancerState, opts?: pulumi.CustomResourceOptions): LoadBalancer {
+        pulumi.log.warn("LoadBalancer is deprecated: cloudflare:index/loadBalancer:LoadBalancer has been deprecated in favor of cloudflare:loadBalancer/loadBalancer:LoadBalancer")
         return new LoadBalancer(name, <any>state, { ...opts, id: id });
     }
 
@@ -286,8 +289,11 @@ export class LoadBalancer extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare:index/loadBalancer:LoadBalancer has been deprecated in favor of cloudflare:loadBalancer/loadBalancer:LoadBalancer */
     constructor(name: string, args: LoadBalancerArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare:index/loadBalancer:LoadBalancer has been deprecated in favor of cloudflare:loadBalancer/loadBalancer:LoadBalancer */
     constructor(name: string, argsOrState?: LoadBalancerArgs | LoadBalancerState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("LoadBalancer is deprecated: cloudflare:index/loadBalancer:LoadBalancer has been deprecated in favor of cloudflare:loadBalancer/loadBalancer:LoadBalancer")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

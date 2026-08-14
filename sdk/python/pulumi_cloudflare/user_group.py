@@ -162,8 +162,13 @@ class _UserGroupState:
         pulumi.set(self, "policies", value)
 
 
+warnings.warn("""cloudflare:index/userGroup:UserGroup has been deprecated in favor of cloudflare:userGroup/userGroup:UserGroup""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/userGroup:UserGroup")
 class UserGroup(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/userGroup:UserGroup has been deprecated in favor of cloudflare:userGroup/userGroup:UserGroup""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -185,7 +190,7 @@ class UserGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_user_group = cloudflare.UserGroup("example_user_group",
+        example_user_group = cloudflare.usergroup.UserGroup("example_user_group",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="My New User Group",
             policies=[{
@@ -236,7 +241,7 @@ class UserGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_user_group = cloudflare.UserGroup("example_user_group",
+        example_user_group = cloudflare.usergroup.UserGroup("example_user_group",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="My New User Group",
             policies=[{
@@ -281,6 +286,7 @@ class UserGroup(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict']]]]] = None,
                  __props__=None):
+        pulumi.log.warn("""UserGroup is deprecated: cloudflare:index/userGroup:UserGroup has been deprecated in favor of cloudflare:userGroup/userGroup:UserGroup""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

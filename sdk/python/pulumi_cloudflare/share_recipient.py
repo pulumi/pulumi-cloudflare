@@ -224,8 +224,13 @@ class _ShareRecipientState:
         pulumi.set(self, "share_id", value)
 
 
+warnings.warn("""cloudflare:index/shareRecipient:ShareRecipient has been deprecated in favor of cloudflare:share/recipient:Recipient""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/shareRecipient:ShareRecipient")
 class ShareRecipient(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/shareRecipient:ShareRecipient has been deprecated in favor of cloudflare:share/recipient:Recipient""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -242,7 +247,7 @@ class ShareRecipient(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_share_recipient = cloudflare.ShareRecipient("example_share_recipient",
+        example_share_recipient = cloudflare.share.Recipient("example_share_recipient",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             share_id="3fd85f74b32742f1bff64a85009dda07",
             organization_id="023e105f4ecef8ad9ca31a8372d0c353",
@@ -276,7 +281,7 @@ class ShareRecipient(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_share_recipient = cloudflare.ShareRecipient("example_share_recipient",
+        example_share_recipient = cloudflare.share.Recipient("example_share_recipient",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             share_id="3fd85f74b32742f1bff64a85009dda07",
             organization_id="023e105f4ecef8ad9ca31a8372d0c353",
@@ -310,6 +315,7 @@ class ShareRecipient(pulumi.CustomResource):
                  recipient_account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  share_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ShareRecipient is deprecated: cloudflare:index/shareRecipient:ShareRecipient has been deprecated in favor of cloudflare:share/recipient:Recipient""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

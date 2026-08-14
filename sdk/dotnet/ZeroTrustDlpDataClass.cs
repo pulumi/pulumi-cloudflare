@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDlpDataClass = new Cloudflare.ZeroTrustDlpDataClass("example_zero_trust_dlp_data_class", new()
+    ///     var exampleZeroTrustDlpDataClass = new Cloudflare.Modules.ZeroTrustDlpData.ZeroTrustDlpDataClass("example_zero_trust_dlp_data_class", new()
     ///     {
     ///         AccountId = "account_id",
     ///         DataTags = new[]
@@ -36,7 +36,7 @@ namespace Pulumi.Cloudflare
     ///         Name = "name",
     ///         SensitivityLevels = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustDlpDataClassSensitivityLevelArgs
+    ///             new Cloudflare.Modules.ZeroTrustDlpData.Inputs.ClassSensitivityLevelArgs
     ///             {
     ///                 GroupId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
     ///                 LevelId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -54,6 +54,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustDlpDataClass:ZeroTrustDlpDataClass example '&lt;account_id&gt;/&lt;data_class_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustDlpDataClass:ZeroTrustDlpDataClass has been deprecated in favor of cloudflare:zeroTrustDlpData/class:Class")]
     [CloudflareResourceType("cloudflare:index/zeroTrustDlpDataClass:ZeroTrustDlpDataClass")]
     public partial class ZeroTrustDlpDataClass : global::Pulumi.CustomResource
     {

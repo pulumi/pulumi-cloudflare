@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/logpush"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewLogpushOwnershipChallenge(ctx, "example_logpush_ownership_challenge", &cloudflare.LogpushOwnershipChallengeArgs{
+//			_, err := logpush.NewOwnershipChallenge(ctx, "example_logpush_ownership_challenge", &logpush.OwnershipChallengeArgs{
 //				DestinationConf: pulumi.String("s3://mybucket/logs?region=us-west-2"),
 //				ZoneId:          pulumi.String("zone_id"),
 //			})
@@ -46,6 +46,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge has been deprecated in favor of cloudflare:logpush/ownershipChallenge:OwnershipChallenge
 type LogpushOwnershipChallenge struct {
 	pulumi.CustomResourceState
 

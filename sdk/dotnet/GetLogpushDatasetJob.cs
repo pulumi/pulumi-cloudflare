@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getLogpushDatasetJob:getLogpushDatasetJob has been deprecated in favor of cloudflare:logpushDataset/job:getJob")]
     public static class GetLogpushDatasetJob
     {
         /// <summary>
@@ -26,7 +27,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLogpushDatasetJob = Cloudflare.GetLogpushDatasetJob.Invoke(new()
+        ///     var exampleLogpushDatasetJob = Cloudflare.Modules.LogpushDataset.GetJob.Invoke(new()
         ///     {
         ///         DatasetId = "gateway_dns",
         ///         AccountId = "account_id",
@@ -54,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLogpushDatasetJob = Cloudflare.GetLogpushDatasetJob.Invoke(new()
+        ///     var exampleLogpushDatasetJob = Cloudflare.Modules.LogpushDataset.GetJob.Invoke(new()
         ///     {
         ///         DatasetId = "gateway_dns",
         ///         AccountId = "account_id",
@@ -82,7 +83,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLogpushDatasetJob = Cloudflare.GetLogpushDatasetJob.Invoke(new()
+        ///     var exampleLogpushDatasetJob = Cloudflare.Modules.LogpushDataset.GetJob.Invoke(new()
         ///     {
         ///         DatasetId = "gateway_dns",
         ///         AccountId = "account_id",

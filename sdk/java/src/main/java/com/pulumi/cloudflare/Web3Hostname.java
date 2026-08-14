@@ -29,8 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.Web3Hostname;
- * import com.pulumi.cloudflare.Web3HostnameArgs;
+ * import com.pulumi.cloudflare.web3.Hostname;
+ * import com.pulumi.cloudflare.web3.HostnameArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleWeb3Hostname = new Web3Hostname("exampleWeb3Hostname", Web3HostnameArgs.builder()
+ *         var exampleWeb3Hostname = new Hostname("exampleWeb3Hostname", HostnameArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .name("gateway.example.com")
  *             .target("ipfs")
@@ -63,7 +63,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/web3Hostname:Web3Hostname example &#39;&lt;zone_id&gt;/&lt;identifier&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/web3Hostname:Web3Hostname has been deprecated in favor of cloudflare:web3/hostname:Hostname
+ * 
  */
+@Deprecated /* cloudflare:index/web3Hostname:Web3Hostname has been deprecated in favor of cloudflare:web3/hostname:Hostname */
 @ResourceType(type="cloudflare:index/web3Hostname:Web3Hostname")
 public class Web3Hostname extends com.pulumi.resources.CustomResource {
     @Export(name="createdOn", refs={String.class}, tree="[0]")

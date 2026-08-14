@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ListItem;
- * import com.pulumi.cloudflare.ListItemArgs;
+ * import com.pulumi.cloudflare.list.Item;
+ * import com.pulumi.cloudflare.list.ItemArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleListItem = new ListItem("exampleListItem", ListItemArgs.builder()
+ *         var exampleListItem = new Item("exampleListItem", ItemArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .listId("2c0fc9fa937b11eaa1b71c4d701ab86e")
  *             .ip("10.0.0.1")
@@ -64,7 +64,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/listItem:ListItem example &#39;&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/listItem:ListItem has been deprecated in favor of cloudflare:list/item:Item
+ * 
  */
+@Deprecated /* cloudflare:index/listItem:ListItem has been deprecated in favor of cloudflare:list/item:Item */
 @ResourceType(type="cloudflare:index/listItem:ListItem")
 public class ListItem extends com.pulumi.resources.CustomResource {
     /**

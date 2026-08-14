@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getConnectivityDirectoryService:getConnectivityDirectoryService has been deprecated in favor of cloudflare:connectivityDirectory/service:getService")]
     public static class GetConnectivityDirectoryService
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleConnectivityDirectoryService = Cloudflare.GetConnectivityDirectoryService.Invoke(new()
+        ///     var exampleConnectivityDirectoryService = Cloudflare.Modules.ConnectivityDirectory.GetService.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ServiceId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -45,7 +46,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleConnectivityDirectoryService = Cloudflare.GetConnectivityDirectoryService.Invoke(new()
+        ///     var exampleConnectivityDirectoryService = Cloudflare.Modules.ConnectivityDirectory.GetService.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ServiceId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -68,7 +69,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleConnectivityDirectoryService = Cloudflare.GetConnectivityDirectoryService.Invoke(new()
+        ///     var exampleConnectivityDirectoryService = Cloudflare.Modules.ConnectivityDirectory.GetService.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         ServiceId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",

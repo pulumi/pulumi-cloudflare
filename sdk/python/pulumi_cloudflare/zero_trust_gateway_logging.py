@@ -123,8 +123,13 @@ class _ZeroTrustGatewayLoggingState:
         pulumi.set(self, "settings_by_rule_type", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging has been deprecated in favor of cloudflare:zeroTrustGateway/logging:Logging""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging")
 class ZeroTrustGatewayLogging(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging has been deprecated in favor of cloudflare:zeroTrustGateway/logging:Logging""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -140,7 +145,7 @@ class ZeroTrustGatewayLogging(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_gateway_logging = cloudflare.ZeroTrustGatewayLogging("example_zero_trust_gateway_logging",
+        example_zero_trust_gateway_logging = cloudflare.zerotrustgateway.Logging("example_zero_trust_gateway_logging",
             account_id="699d98642c564d2e855e9661899b7252",
             redact_pii=True,
             settings_by_rule_type={
@@ -184,7 +189,7 @@ class ZeroTrustGatewayLogging(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_gateway_logging = cloudflare.ZeroTrustGatewayLogging("example_zero_trust_gateway_logging",
+        example_zero_trust_gateway_logging = cloudflare.zerotrustgateway.Logging("example_zero_trust_gateway_logging",
             account_id="699d98642c564d2e855e9661899b7252",
             redact_pii=True,
             settings_by_rule_type={
@@ -229,6 +234,7 @@ class ZeroTrustGatewayLogging(pulumi.CustomResource):
                  redact_pii: pulumi.Input[Optional[_builtins.bool]] = None,
                  settings_by_rule_type: pulumi.Input[Optional[Union['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs', 'ZeroTrustGatewayLoggingSettingsByRuleTypeArgsDict']]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustGatewayLogging is deprecated: cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging has been deprecated in favor of cloudflare:zeroTrustGateway/logging:Logging""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

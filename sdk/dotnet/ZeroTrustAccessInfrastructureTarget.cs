@@ -20,18 +20,18 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessInfrastructureTarget = new Cloudflare.ZeroTrustAccessInfrastructureTarget("example_zero_trust_access_infrastructure_target", new()
+    ///     var exampleZeroTrustAccessInfrastructureTarget = new Cloudflare.Modules.ZeroTrustAccessInfrastructure.ZeroTrustAccessInfrastructureTarget("example_zero_trust_access_infrastructure_target", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Hostname = "infra-access-target",
-    ///         Ip = new Cloudflare.Inputs.ZeroTrustAccessInfrastructureTargetIpArgs
+    ///         Ip = new Cloudflare.Modules.ZeroTrustAccessInfrastructure.Inputs.TargetIpArgs
     ///         {
-    ///             Ipv4 = new Cloudflare.Inputs.ZeroTrustAccessInfrastructureTargetIpIpv4Args
+    ///             Ipv4 = new Cloudflare.Modules.ZeroTrustAccessInfrastructure.Inputs.TargetIpIpv4Args
     ///             {
     ///                 IpAddr = "187.26.29.249",
     ///                 VirtualNetworkId = "c77b744e-acc8-428f-9257-6878c046ed55",
     ///             },
-    ///             Ipv6 = new Cloudflare.Inputs.ZeroTrustAccessInfrastructureTargetIpIpv6Args
+    ///             Ipv6 = new Cloudflare.Modules.ZeroTrustAccessInfrastructure.Inputs.TargetIpIpv6Args
     ///             {
     ///                 IpAddr = "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
     ///                 VirtualNetworkId = "c77b744e-acc8-428f-9257-6878c046ed55",
@@ -48,6 +48,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustAccessInfrastructureTarget:ZeroTrustAccessInfrastructureTarget example '&lt;account_id&gt;/&lt;target_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustAccessInfrastructureTarget:ZeroTrustAccessInfrastructureTarget has been deprecated in favor of cloudflare:zeroTrustAccessInfrastructure/target:Target")]
     [CloudflareResourceType("cloudflare:index/zeroTrustAccessInfrastructureTarget:ZeroTrustAccessInfrastructureTarget")]
     public partial class ZeroTrustAccessInfrastructureTarget : global::Pulumi.CustomResource
     {

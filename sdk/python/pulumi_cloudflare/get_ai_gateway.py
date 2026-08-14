@@ -23,6 +23,8 @@ __all__ = [
     'get_ai_gateway_output',
 ]
 
+warnings.warn("""cloudflare:index/getAiGateway:getAiGateway has been deprecated in favor of cloudflare:aiGateway/aiGateway:getAiGateway""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAiGatewayResult:
     """
@@ -330,13 +332,14 @@ def get_ai_gateway(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_ai_gateway = cloudflare.get_ai_gateway(account_id="3ebbcb006d4d46d7bb6a8c7f14676cb0",
+    example_ai_gateway = cloudflare.aigateway.get_ai_gateway(account_id="3ebbcb006d4d46d7bb6a8c7f14676cb0",
         id="my-gateway")
     ```
 
 
     :param _builtins.str id: gateway id
     """
+    pulumi.log.warn("""get_ai_gateway is deprecated: cloudflare:index/getAiGateway:getAiGateway has been deprecated in favor of cloudflare:aiGateway/aiGateway:getAiGateway""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -389,13 +392,14 @@ def get_ai_gateway_output(account_id: pulumi.Input[Optional[Optional[_builtins.s
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_ai_gateway = cloudflare.get_ai_gateway(account_id="3ebbcb006d4d46d7bb6a8c7f14676cb0",
+    example_ai_gateway = cloudflare.aigateway.get_ai_gateway(account_id="3ebbcb006d4d46d7bb6a8c7f14676cb0",
         id="my-gateway")
     ```
 
 
     :param _builtins.str id: gateway id
     """
+    pulumi.log.warn("""get_ai_gateway is deprecated: cloudflare:index/getAiGateway:getAiGateway has been deprecated in favor of cloudflare:aiGateway/aiGateway:getAiGateway""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

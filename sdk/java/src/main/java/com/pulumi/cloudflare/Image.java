@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.Image;
- * import com.pulumi.cloudflare.ImageArgs;
+ * import com.pulumi.cloudflare.image.Image;
+ * import com.pulumi.cloudflare.image.ImageArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -68,7 +68,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/image:Image example &#39;&lt;account_id&gt;/&lt;image_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/image:Image has been deprecated in favor of cloudflare:image/image:Image
+ * 
  */
+@Deprecated /* cloudflare:index/image:Image has been deprecated in favor of cloudflare:image/image:Image */
 @ResourceType(type="cloudflare:index/image:Image")
 public class Image extends com.pulumi.resources.CustomResource {
     /**

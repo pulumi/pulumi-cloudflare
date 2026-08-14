@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getAccountSubscription:getAccountSubscription has been deprecated in favor of cloudflare:account/subscription:getSubscription")]
     public static class GetAccountSubscription
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountSubscription = Cloudflare.GetAccountSubscription.Invoke(new()
+        ///     var exampleAccountSubscription = Cloudflare.Modules.Account.GetSubscription.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///     });
@@ -54,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountSubscription = Cloudflare.GetAccountSubscription.Invoke(new()
+        ///     var exampleAccountSubscription = Cloudflare.Modules.Account.GetSubscription.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///     });
@@ -81,7 +82,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountSubscription = Cloudflare.GetAccountSubscription.Invoke(new()
+        ///     var exampleAccountSubscription = Cloudflare.Modules.Account.GetSubscription.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///     });

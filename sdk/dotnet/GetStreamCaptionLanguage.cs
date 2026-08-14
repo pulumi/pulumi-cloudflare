@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getStreamCaptionLanguage:getStreamCaptionLanguage has been deprecated in favor of cloudflare:stream/captionLanguage:getCaptionLanguage")]
     public static class GetStreamCaptionLanguage
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleStreamCaptionLanguage = Cloudflare.GetStreamCaptionLanguage.Invoke(new()
+        ///     var exampleStreamCaptionLanguage = Cloudflare.Modules.Stream.GetCaptionLanguage.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Identifier = "ea95132c15732412d22c1476fa83f27a",
@@ -56,7 +57,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleStreamCaptionLanguage = Cloudflare.GetStreamCaptionLanguage.Invoke(new()
+        ///     var exampleStreamCaptionLanguage = Cloudflare.Modules.Stream.GetCaptionLanguage.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Identifier = "ea95132c15732412d22c1476fa83f27a",
@@ -85,7 +86,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleStreamCaptionLanguage = Cloudflare.GetStreamCaptionLanguage.Invoke(new()
+        ///     var exampleStreamCaptionLanguage = Cloudflare.Modules.Stream.GetCaptionLanguage.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Identifier = "ea95132c15732412d22c1476fa83f27a",

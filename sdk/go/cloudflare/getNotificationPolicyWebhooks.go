@@ -26,14 +26,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/notificationpolicywebhooks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetNotificationPolicyWebhooks(ctx, &cloudflare.LookupNotificationPolicyWebhooksArgs{
+//			_, err := notificationpolicywebhooks.GetNotificationPolicyWebhooks(ctx, &notificationpolicywebhooks.GetNotificationPolicyWebhooksArgs{
 //				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				WebhookId: "b115d5ec15c641ee8b7692c449b5227b",
 //			}, nil)
@@ -45,6 +45,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getNotificationPolicyWebhooks:getNotificationPolicyWebhooks has been deprecated in favor of cloudflare:notificationPolicyWebhooks/notificationPolicyWebhooks:getNotificationPolicyWebhooks
 func LookupNotificationPolicyWebhooks(ctx *pulumi.Context, args *LookupNotificationPolicyWebhooksArgs, opts ...pulumi.InvokeOption) (*LookupNotificationPolicyWebhooksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNotificationPolicyWebhooksResult

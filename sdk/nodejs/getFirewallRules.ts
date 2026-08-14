@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleFirewallRules = cloudflare.getFirewallRules({
+ * const exampleFirewallRules = cloudflare.firewall.getRules({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     id: "372e67954025e0ba6aaa6d586b9e0b60",
  *     action: "block",
@@ -27,7 +27,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getFirewallRules:getFirewallRules has been deprecated in favor of cloudflare:firewall/rules:getRules */
 export function getFirewallRules(args?: GetFirewallRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallRulesResult> {
+    pulumi.log.warn("getFirewallRules is deprecated: cloudflare:index/getFirewallRules:getFirewallRules has been deprecated in favor of cloudflare:firewall/rules:getRules")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getFirewallRules:getFirewallRules", {
@@ -115,7 +117,7 @@ export interface GetFirewallRulesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleFirewallRules = cloudflare.getFirewallRules({
+ * const exampleFirewallRules = cloudflare.firewall.getRules({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     id: "372e67954025e0ba6aaa6d586b9e0b60",
  *     action: "block",
@@ -124,7 +126,9 @@ export interface GetFirewallRulesResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getFirewallRules:getFirewallRules has been deprecated in favor of cloudflare:firewall/rules:getRules */
 export function getFirewallRulesOutput(args?: GetFirewallRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFirewallRulesResult> {
+    pulumi.log.warn("getFirewallRules is deprecated: cloudflare:index/getFirewallRules:getFirewallRules has been deprecated in favor of cloudflare:firewall/rules:getRules")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getFirewallRules:getFirewallRules", {

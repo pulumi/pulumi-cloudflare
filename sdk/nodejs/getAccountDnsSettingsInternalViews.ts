@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountDnsSettingsInternalViews = cloudflare.getAccountDnsSettingsInternalViews({
+ * const exampleAccountDnsSettingsInternalViews = cloudflare.accountdnssettingsinternal.getViews({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: {
  *         contains: "view",
@@ -32,7 +32,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccountDnsSettingsInternalViews:getAccountDnsSettingsInternalViews has been deprecated in favor of cloudflare:accountDnsSettingsInternal/views:getViews */
 export function getAccountDnsSettingsInternalViews(args?: GetAccountDnsSettingsInternalViewsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountDnsSettingsInternalViewsResult> {
+    pulumi.log.warn("getAccountDnsSettingsInternalViews is deprecated: cloudflare:index/getAccountDnsSettingsInternalViews:getAccountDnsSettingsInternalViews has been deprecated in favor of cloudflare:accountDnsSettingsInternal/views:getViews")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountDnsSettingsInternalViews:getAccountDnsSettingsInternalViews", {
@@ -138,7 +140,7 @@ export interface GetAccountDnsSettingsInternalViewsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleAccountDnsSettingsInternalViews = cloudflare.getAccountDnsSettingsInternalViews({
+ * const exampleAccountDnsSettingsInternalViews = cloudflare.accountdnssettingsinternal.getViews({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: {
  *         contains: "view",
@@ -152,7 +154,9 @@ export interface GetAccountDnsSettingsInternalViewsResult {
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getAccountDnsSettingsInternalViews:getAccountDnsSettingsInternalViews has been deprecated in favor of cloudflare:accountDnsSettingsInternal/views:getViews */
 export function getAccountDnsSettingsInternalViewsOutput(args?: GetAccountDnsSettingsInternalViewsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountDnsSettingsInternalViewsResult> {
+    pulumi.log.warn("getAccountDnsSettingsInternalViews is deprecated: cloudflare:index/getAccountDnsSettingsInternalViews:getAccountDnsSettingsInternalViews has been deprecated in favor of cloudflare:accountDnsSettingsInternal/views:getViews")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountDnsSettingsInternalViews:getAccountDnsSettingsInternalViews", {

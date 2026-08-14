@@ -22,6 +22,8 @@ import (
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.
+//
+// Deprecated: cloudflare:index/streamLiveInput:StreamLiveInput has been deprecated in favor of cloudflare:stream/liveInput:LiveInput
 type StreamLiveInput struct {
 	pulumi.CustomResourceState
 

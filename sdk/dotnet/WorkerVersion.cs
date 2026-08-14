@@ -26,18 +26,18 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWorkerVersion = new Cloudflare.WorkerVersion("example_worker_version", new()
+    ///     var exampleWorkerVersion = new Cloudflare.Modules.Worker.WorkerVersion("example_worker_version", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         WorkerId = "worker_id",
-    ///         Annotations = new Cloudflare.Inputs.WorkerVersionAnnotationsArgs
+    ///         Annotations = new Cloudflare.Modules.Worker.Inputs.VersionAnnotationsArgs
     ///         {
     ///             WorkersMessage = "Fixed bug.",
     ///             WorkersTag = "v1.0.1",
     ///         },
-    ///         Assets = new Cloudflare.Inputs.WorkerVersionAssetsArgs
+    ///         Assets = new Cloudflare.Modules.Worker.Inputs.VersionAssetsArgs
     ///         {
-    ///             Config = new Cloudflare.Inputs.WorkerVersionAssetsConfigArgs
+    ///             Config = new Cloudflare.Modules.Worker.Inputs.VersionAssetsConfigArgs
     ///             {
     ///                 HtmlHandling = "auto-trailing-slash",
     ///                 NotFoundHandling = "404-page",
@@ -47,14 +47,14 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         Bindings = new[]
     ///         {
-    ///             new Cloudflare.Inputs.WorkerVersionBindingArgs
+    ///             new Cloudflare.Modules.Worker.Inputs.VersionBindingArgs
     ///             {
     ///                 Name = "MY_ENV_VAR",
     ///                 Text = "my_data",
     ///                 Type = "plain_text",
     ///             },
     ///         },
-    ///         CacheOptions = new Cloudflare.Inputs.WorkerVersionCacheOptionsArgs
+    ///         CacheOptions = new Cloudflare.Modules.Worker.Inputs.VersionCacheOptionsArgs
     ///         {
     ///             Enabled = true,
     ///             CrossVersionCache = true,
@@ -66,18 +66,18 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         Containers = new[]
     ///         {
-    ///             new Cloudflare.Inputs.WorkerVersionContainerArgs
+    ///             new Cloudflare.Modules.Worker.Inputs.VersionContainerArgs
     ///             {
     ///                 ClassName = "MyDurableObject",
     ///             },
     ///         },
-    ///         Limits = new Cloudflare.Inputs.WorkerVersionLimitsArgs
+    ///         Limits = new Cloudflare.Modules.Worker.Inputs.VersionLimitsArgs
     ///         {
     ///             CpuMs = 50,
     ///             Subrequests = 1000,
     ///         },
     ///         MainModule = "index.js",
-    ///         Migrations = new Cloudflare.Inputs.WorkerVersionMigrationsArgs
+    ///         Migrations = new Cloudflare.Modules.Worker.Inputs.VersionMigrationsArgs
     ///         {
     ///             DeletedClasses = new[]
     ///             {
@@ -95,7 +95,7 @@ namespace Pulumi.Cloudflare
     ///             OldTag = "v1",
     ///             RenamedClasses = new[]
     ///             {
-    ///                 new Cloudflare.Inputs.WorkerVersionMigrationsRenamedClassArgs
+    ///                 new Cloudflare.Modules.Worker.Inputs.VersionMigrationsRenamedClassArgs
     ///                 {
     ///                     From = "from",
     ///                     To = "to",
@@ -103,7 +103,7 @@ namespace Pulumi.Cloudflare
     ///             },
     ///             TransferredClasses = new[]
     ///             {
-    ///                 new Cloudflare.Inputs.WorkerVersionMigrationsTransferredClassArgs
+    ///                 new Cloudflare.Modules.Worker.Inputs.VersionMigrationsTransferredClassArgs
     ///                 {
     ///                     From = "from",
     ///                     FromScript = "from_script",
@@ -113,7 +113,7 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         Modules = new[]
     ///         {
-    ///             new Cloudflare.Inputs.WorkerVersionModuleArgs
+    ///             new Cloudflare.Modules.Worker.Inputs.VersionModuleArgs
     ///             {
     ///                 ContentFile = "dist/index.js",
     ///                 ContentType = "application/javascript+module",
@@ -122,14 +122,14 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         PackageDependencies = new[]
     ///         {
-    ///             new Cloudflare.Inputs.WorkerVersionPackageDependencyArgs
+    ///             new Cloudflare.Modules.Worker.Inputs.VersionPackageDependencyArgs
     ///             {
     ///                 InstalledVersion = "4.17.22",
     ///                 Name = "lodash",
     ///                 PackageJsonVersion = "^4.17.21",
     ///             },
     ///         },
-    ///         Placement = new Cloudflare.Inputs.WorkerVersionPlacementArgs
+    ///         Placement = new Cloudflare.Modules.Worker.Inputs.VersionPlacementArgs
     ///         {
     ///             Mode = "smart",
     ///         },
@@ -144,6 +144,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/workerVersion:WorkerVersion example '&lt;account_id&gt;/&lt;worker_id&gt;/&lt;version_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/workerVersion:WorkerVersion has been deprecated in favor of cloudflare:worker/version:Version")]
     [CloudflareResourceType("cloudflare:index/workerVersion:WorkerVersion")]
     public partial class WorkerVersion : global::Pulumi.CustomResource
     {

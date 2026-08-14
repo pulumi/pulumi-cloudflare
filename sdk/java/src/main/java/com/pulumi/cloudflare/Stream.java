@@ -38,8 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.Stream;
- * import com.pulumi.cloudflare.StreamArgs;
+ * import com.pulumi.cloudflare.stream.Stream;
+ * import com.pulumi.cloudflare.stream.StreamArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -66,7 +66,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource does not currently support `pulumi import`.
  * 
+ * @deprecated
+ * cloudflare:index/stream:Stream has been deprecated in favor of cloudflare:stream/stream:Stream
+ * 
  */
+@Deprecated /* cloudflare:index/stream:Stream has been deprecated in favor of cloudflare:stream/stream:Stream */
 @ResourceType(type="cloudflare:index/stream:Stream")
 public class Stream extends com.pulumi.resources.CustomResource {
     /**

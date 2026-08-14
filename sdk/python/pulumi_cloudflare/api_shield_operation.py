@@ -220,8 +220,13 @@ class _ApiShieldOperationState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare:index/apiShieldOperation:ApiShieldOperation has been deprecated in favor of cloudflare:apiShieldOperation/apiShieldOperation:ApiShieldOperation""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/apiShieldOperation:ApiShieldOperation")
 class ApiShieldOperation(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/apiShieldOperation:ApiShieldOperation has been deprecated in favor of cloudflare:apiShieldOperation/apiShieldOperation:ApiShieldOperation""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -245,7 +250,7 @@ class ApiShieldOperation(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_api_shield_operation = cloudflare.ApiShieldOperation("example_api_shield_operation",
+        example_api_shield_operation = cloudflare.apishieldoperation.ApiShieldOperation("example_api_shield_operation",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             endpoint="/api/v1/users/{var1}",
             host="www.example.com",
@@ -287,7 +292,7 @@ class ApiShieldOperation(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_api_shield_operation = cloudflare.ApiShieldOperation("example_api_shield_operation",
+        example_api_shield_operation = cloudflare.apishieldoperation.ApiShieldOperation("example_api_shield_operation",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             endpoint="/api/v1/users/{var1}",
             host="www.example.com",
@@ -321,6 +326,7 @@ class ApiShieldOperation(pulumi.CustomResource):
                  method: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ApiShieldOperation is deprecated: cloudflare:index/apiShieldOperation:ApiShieldOperation has been deprecated in favor of cloudflare:apiShieldOperation/apiShieldOperation:ApiShieldOperation""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

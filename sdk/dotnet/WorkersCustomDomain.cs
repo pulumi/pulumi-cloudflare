@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWorkersCustomDomain = new Cloudflare.WorkersCustomDomain("example_workers_custom_domain", new()
+    ///     var exampleWorkersCustomDomain = new Cloudflare.Modules.WorkersCustom.WorkersCustomDomain("example_workers_custom_domain", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Hostname = "app.example.com",
@@ -43,6 +43,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/workersCustomDomain:WorkersCustomDomain example '&lt;account_id&gt;/&lt;domain_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/workersCustomDomain:WorkersCustomDomain has been deprecated in favor of cloudflare:workersCustom/domain:Domain")]
     [CloudflareResourceType("cloudflare:index/workersCustomDomain:WorkersCustomDomain")]
     public partial class WorkersCustomDomain : global::Pulumi.CustomResource
     {

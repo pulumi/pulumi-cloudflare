@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WorkersForPlatformsDispatchNamespace;
- * import com.pulumi.cloudflare.WorkersForPlatformsDispatchNamespaceArgs;
+ * import com.pulumi.cloudflare.workersForPlatformsDispatch.Namespace;
+ * import com.pulumi.cloudflare.workersForPlatformsDispatch.NamespaceArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleWorkersForPlatformsDispatchNamespace = new WorkersForPlatformsDispatchNamespace("exampleWorkersForPlatformsDispatchNamespace", WorkersForPlatformsDispatchNamespaceArgs.builder()
+ *         var exampleWorkersForPlatformsDispatchNamespace = new Namespace("exampleWorkersForPlatformsDispatchNamespace", NamespaceArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .name("my-dispatch-namespace")
  *             .build());
@@ -65,7 +65,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace example &#39;&lt;account_id&gt;/&lt;dispatch_namespace&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace has been deprecated in favor of cloudflare:workersForPlatformsDispatch/namespace:Namespace
+ * 
  */
+@Deprecated /* cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace has been deprecated in favor of cloudflare:workersForPlatformsDispatch/namespace:Namespace */
 @ResourceType(type="cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace")
 public class WorkersForPlatformsDispatchNamespace extends com.pulumi.resources.CustomResource {
     /**

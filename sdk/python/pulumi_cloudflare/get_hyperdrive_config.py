@@ -22,6 +22,8 @@ __all__ = [
     'get_hyperdrive_config_output',
 ]
 
+warnings.warn("""cloudflare:index/getHyperdriveConfig:getHyperdriveConfig has been deprecated in favor of cloudflare:hyperdrive/config:getConfig""", DeprecationWarning)
+
 @pulumi.output_type
 class GetHyperdriveConfigResult:
     """
@@ -176,7 +178,7 @@ def get_hyperdrive_config(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_hyperdrive_config = cloudflare.get_hyperdrive_config(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_hyperdrive_config = cloudflare.hyperdrive.get_config(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         hyperdrive_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -184,6 +186,7 @@ def get_hyperdrive_config(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Define configurations using a unique string identifier.
     :param _builtins.str hyperdrive_id: Define configurations using a unique string identifier.
     """
+    pulumi.log.warn("""get_hyperdrive_config is deprecated: cloudflare:index/getHyperdriveConfig:getHyperdriveConfig has been deprecated in favor of cloudflare:hyperdrive/config:getConfig""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['hyperdriveId'] = hyperdrive_id
@@ -217,7 +220,7 @@ def get_hyperdrive_config_output(account_id: pulumi.Input[Optional[Optional[_bui
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_hyperdrive_config = cloudflare.get_hyperdrive_config(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_hyperdrive_config = cloudflare.hyperdrive.get_config(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         hyperdrive_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -225,6 +228,7 @@ def get_hyperdrive_config_output(account_id: pulumi.Input[Optional[Optional[_bui
     :param _builtins.str account_id: Define configurations using a unique string identifier.
     :param _builtins.str hyperdrive_id: Define configurations using a unique string identifier.
     """
+    pulumi.log.warn("""get_hyperdrive_config is deprecated: cloudflare:index/getHyperdriveConfig:getHyperdriveConfig has been deprecated in favor of cloudflare:hyperdrive/config:getConfig""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['hyperdriveId'] = hyperdrive_id

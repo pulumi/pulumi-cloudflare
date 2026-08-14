@@ -21,6 +21,8 @@ __all__ = [
     'get_schema_validation_operation_settings_output',
 ]
 
+warnings.warn("""cloudflare:index/getSchemaValidationOperationSettings:getSchemaValidationOperationSettings has been deprecated in favor of cloudflare:schemaValidationOperationSettings/schemaValidationOperationSettings:getSchemaValidationOperationSettings""", DeprecationWarning)
+
 @pulumi.output_type
 class GetSchemaValidationOperationSettingsResult:
     """
@@ -81,10 +83,11 @@ def get_schema_validation_operation_settings(operation_id: Optional[_builtins.st
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_schema_validation_operation_settings = cloudflare.get_schema_validation_operation_settings(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_schema_validation_operation_settings = cloudflare.schemavalidationoperationsettings.get_schema_validation_operation_settings(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         operation_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
     """
+    pulumi.log.warn("""get_schema_validation_operation_settings is deprecated: cloudflare:index/getSchemaValidationOperationSettings:getSchemaValidationOperationSettings has been deprecated in favor of cloudflare:schemaValidationOperationSettings/schemaValidationOperationSettings:getSchemaValidationOperationSettings""")
     __args__ = dict()
     __args__['operationId'] = operation_id
     __args__['zoneId'] = zone_id
@@ -112,10 +115,11 @@ def get_schema_validation_operation_settings_output(operation_id: pulumi.Input[O
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_schema_validation_operation_settings = cloudflare.get_schema_validation_operation_settings(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_schema_validation_operation_settings = cloudflare.schemavalidationoperationsettings.get_schema_validation_operation_settings(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         operation_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
     """
+    pulumi.log.warn("""get_schema_validation_operation_settings is deprecated: cloudflare:index/getSchemaValidationOperationSettings:getSchemaValidationOperationSettings has been deprecated in favor of cloudflare:schemaValidationOperationSettings/schemaValidationOperationSettings:getSchemaValidationOperationSettings""")
     __args__ = dict()
     __args__['operationId'] = operation_id
     __args__['zoneId'] = zone_id

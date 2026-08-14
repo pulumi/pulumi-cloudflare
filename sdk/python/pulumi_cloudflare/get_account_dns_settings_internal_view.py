@@ -23,6 +23,8 @@ __all__ = [
     'get_account_dns_settings_internal_view_output',
 ]
 
+warnings.warn("""cloudflare:index/getAccountDnsSettingsInternalView:getAccountDnsSettingsInternalView has been deprecated in favor of cloudflare:accountDnsSettingsInternal/view:getView""", DeprecationWarning)
+
 @pulumi.output_type
 class GetAccountDnsSettingsInternalViewResult:
     """
@@ -148,7 +150,7 @@ def get_account_dns_settings_internal_view(account_id: Optional[_builtins.str] =
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_dns_settings_internal_view = cloudflare.get_account_dns_settings_internal_view(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_account_dns_settings_internal_view = cloudflare.accountdnssettingsinternal.get_view(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         view_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -156,6 +158,7 @@ def get_account_dns_settings_internal_view(account_id: Optional[_builtins.str] =
     :param _builtins.str account_id: Identifier.
     :param _builtins.str view_id: Identifier.
     """
+    pulumi.log.warn("""get_account_dns_settings_internal_view is deprecated: cloudflare:index/getAccountDnsSettingsInternalView:getAccountDnsSettingsInternalView has been deprecated in favor of cloudflare:accountDnsSettingsInternal/view:getView""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -188,7 +191,7 @@ def get_account_dns_settings_internal_view_output(account_id: pulumi.Input[Optio
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_dns_settings_internal_view = cloudflare.get_account_dns_settings_internal_view(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_account_dns_settings_internal_view = cloudflare.accountdnssettingsinternal.get_view(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         view_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -196,6 +199,7 @@ def get_account_dns_settings_internal_view_output(account_id: pulumi.Input[Optio
     :param _builtins.str account_id: Identifier.
     :param _builtins.str view_id: Identifier.
     """
+    pulumi.log.warn("""get_account_dns_settings_internal_view is deprecated: cloudflare:index/getAccountDnsSettingsInternalView:getAccountDnsSettingsInternalView has been deprecated in favor of cloudflare:accountDnsSettingsInternal/view:getView""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

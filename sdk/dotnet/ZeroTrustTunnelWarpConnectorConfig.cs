@@ -27,12 +27,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustTunnelWarpConnectorConfig = new Cloudflare.ZeroTrustTunnelWarpConnectorConfig("example_zero_trust_tunnel_warp_connector_config", new()
+    ///     var exampleZeroTrustTunnelWarpConnectorConfig = new Cloudflare.Modules.ZeroTrustTunnelWarpConnector.ZeroTrustTunnelWarpConnectorConfig("example_zero_trust_tunnel_warp_connector_config", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         TunnelId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
     ///         HaMode = "aws",
-    ///         Config = new Cloudflare.Inputs.ZeroTrustTunnelWarpConnectorConfigConfigArgs
+    ///         Config = new Cloudflare.Modules.ZeroTrustTunnelWarpConnector.Inputs.ConfigConfigArgs
     ///         {
     ///             FnrId = "eni-0123456789abcdef0",
     ///         },
@@ -47,6 +47,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustTunnelWarpConnectorConfig:ZeroTrustTunnelWarpConnectorConfig example '&lt;account_id&gt;/&lt;tunnel_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustTunnelWarpConnectorConfig:ZeroTrustTunnelWarpConnectorConfig has been deprecated in favor of cloudflare:zeroTrustTunnelWarpConnector/config:Config")]
     [CloudflareResourceType("cloudflare:index/zeroTrustTunnelWarpConnectorConfig:ZeroTrustTunnelWarpConnectorConfig")]
     public partial class ZeroTrustTunnelWarpConnectorConfig : global::Pulumi.CustomResource
     {

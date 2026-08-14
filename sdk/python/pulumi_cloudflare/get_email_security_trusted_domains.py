@@ -23,6 +23,8 @@ __all__ = [
     'get_email_security_trusted_domains_output',
 ]
 
+warnings.warn("""cloudflare:index/getEmailSecurityTrustedDomains:getEmailSecurityTrustedDomains has been deprecated in favor of cloudflare:emailSecurityTrustedDomains/emailSecurityTrustedDomains:getEmailSecurityTrustedDomains""", DeprecationWarning)
+
 @pulumi.output_type
 class GetEmailSecurityTrustedDomainsResult:
     """
@@ -182,7 +184,7 @@ def get_email_security_trusted_domains(account_id: Optional[_builtins.str] = Non
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_email_security_trusted_domains = cloudflare.get_email_security_trusted_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_email_security_trusted_domains = cloudflare.emailsecuritytrusteddomains.get_email_security_trusted_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         trusted_domain_id="2401")
     ```
 
@@ -190,6 +192,7 @@ def get_email_security_trusted_domains(account_id: Optional[_builtins.str] = Non
     :param _builtins.str account_id: Identifier.
     :param _builtins.str trusted_domain_id: Trusted domain identifier
     """
+    pulumi.log.warn("""get_email_security_trusted_domains is deprecated: cloudflare:index/getEmailSecurityTrustedDomains:getEmailSecurityTrustedDomains has been deprecated in favor of cloudflare:emailSecurityTrustedDomains/emailSecurityTrustedDomains:getEmailSecurityTrustedDomains""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter
@@ -226,7 +229,7 @@ def get_email_security_trusted_domains_output(account_id: pulumi.Input[Optional[
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_email_security_trusted_domains = cloudflare.get_email_security_trusted_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_email_security_trusted_domains = cloudflare.emailsecuritytrusteddomains.get_email_security_trusted_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         trusted_domain_id="2401")
     ```
 
@@ -234,6 +237,7 @@ def get_email_security_trusted_domains_output(account_id: pulumi.Input[Optional[
     :param _builtins.str account_id: Identifier.
     :param _builtins.str trusted_domain_id: Trusted domain identifier
     """
+    pulumi.log.warn("""get_email_security_trusted_domains is deprecated: cloudflare:index/getEmailSecurityTrustedDomains:getEmailSecurityTrustedDomains has been deprecated in favor of cloudflare:emailSecurityTrustedDomains/emailSecurityTrustedDomains:getEmailSecurityTrustedDomains""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['filter'] = filter

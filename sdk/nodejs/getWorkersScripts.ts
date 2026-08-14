@@ -19,13 +19,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersScripts = cloudflare.getWorkersScripts({
+ * const exampleWorkersScripts = cloudflare.workers.getScripts({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     tags: "production:yes,staging:no",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkersScripts:getWorkersScripts has been deprecated in favor of cloudflare:workers/scripts:getScripts */
 export function getWorkersScripts(args?: GetWorkersScriptsArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersScriptsResult> {
+    pulumi.log.warn("getWorkersScripts is deprecated: cloudflare:index/getWorkersScripts:getWorkersScripts has been deprecated in favor of cloudflare:workers/scripts:getScripts")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkersScripts:getWorkersScripts", {
@@ -87,13 +89,15 @@ export interface GetWorkersScriptsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersScripts = cloudflare.getWorkersScripts({
+ * const exampleWorkersScripts = cloudflare.workers.getScripts({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     tags: "production:yes,staging:no",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkersScripts:getWorkersScripts has been deprecated in favor of cloudflare:workers/scripts:getScripts */
 export function getWorkersScriptsOutput(args?: GetWorkersScriptsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersScriptsResult> {
+    pulumi.log.warn("getWorkersScripts is deprecated: cloudflare:index/getWorkersScripts:getWorkersScripts has been deprecated in favor of cloudflare:workers/scripts:getScripts")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkersScripts:getWorkersScripts", {

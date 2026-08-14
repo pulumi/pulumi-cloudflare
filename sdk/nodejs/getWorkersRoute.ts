@@ -16,13 +16,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersRoute = cloudflare.getWorkersRoute({
+ * const exampleWorkersRoute = cloudflare.workers.getRoute({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     routeId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkersRoute:getWorkersRoute has been deprecated in favor of cloudflare:workers/route:getRoute */
 export function getWorkersRoute(args: GetWorkersRouteArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersRouteResult> {
+    pulumi.log.warn("getWorkersRoute is deprecated: cloudflare:index/getWorkersRoute:getWorkersRoute has been deprecated in favor of cloudflare:workers/route:getRoute")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkersRoute:getWorkersRoute", {
         "routeId": args.routeId,
@@ -81,13 +83,15 @@ export interface GetWorkersRouteResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersRoute = cloudflare.getWorkersRoute({
+ * const exampleWorkersRoute = cloudflare.workers.getRoute({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     routeId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getWorkersRoute:getWorkersRoute has been deprecated in favor of cloudflare:workers/route:getRoute */
 export function getWorkersRouteOutput(args: GetWorkersRouteOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersRouteResult> {
+    pulumi.log.warn("getWorkersRoute is deprecated: cloudflare:index/getWorkersRoute:getWorkersRoute has been deprecated in favor of cloudflare:workers/route:getRoute")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkersRoute:getWorkersRoute", {
         "routeId": args.routeId,

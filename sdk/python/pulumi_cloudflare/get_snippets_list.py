@@ -22,6 +22,8 @@ __all__ = [
     'get_snippets_list_output',
 ]
 
+warnings.warn("""cloudflare:index/getSnippetsList:getSnippetsList has been deprecated in favor of cloudflare:snippets/list:getList""", DeprecationWarning)
+
 @pulumi.output_type
 class GetSnippetsListResult:
     """
@@ -83,6 +85,7 @@ def get_snippets_list(max_items: Optional[_builtins.int] = None,
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: The unique ID of the zone.
     """
+    pulumi.log.warn("""get_snippets_list is deprecated: cloudflare:index/getSnippetsList:getSnippetsList has been deprecated in favor of cloudflare:snippets/list:getList""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id
@@ -102,6 +105,7 @@ def get_snippets_list_output(max_items: pulumi.Input[Optional[Optional[_builtins
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: The unique ID of the zone.
     """
+    pulumi.log.warn("""get_snippets_list is deprecated: cloudflare:index/getSnippetsList:getSnippetsList has been deprecated in favor of cloudflare:snippets/list:getList""")
     __args__ = dict()
     __args__['maxItems'] = max_items
     __args__['zoneId'] = zone_id

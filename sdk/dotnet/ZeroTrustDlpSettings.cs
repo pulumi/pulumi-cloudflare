@@ -25,12 +25,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDlpSettings = new Cloudflare.ZeroTrustDlpSettings("example_zero_trust_dlp_settings", new()
+    ///     var exampleZeroTrustDlpSettings = new Cloudflare.Modules.ZeroTrustDlp.ZeroTrustDlpSettings("example_zero_trust_dlp_settings", new()
     ///     {
     ///         AccountId = "account_id",
     ///         AiContextAnalysis = true,
     ///         Ocr = true,
-    ///         PayloadLogging = new Cloudflare.Inputs.ZeroTrustDlpSettingsPayloadLoggingArgs
+    ///         PayloadLogging = new Cloudflare.Modules.ZeroTrustDlp.Inputs.SettingsPayloadLoggingArgs
     ///         {
     ///             MaskingLevel = "full",
     ///             PublicKey = "public_key",
@@ -46,6 +46,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/zeroTrustDlpSettings:ZeroTrustDlpSettings example '&lt;account_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/zeroTrustDlpSettings:ZeroTrustDlpSettings has been deprecated in favor of cloudflare:zeroTrustDlp/settings:Settings")]
     [CloudflareResourceType("cloudflare:index/zeroTrustDlpSettings:ZeroTrustDlpSettings")]
     public partial class ZeroTrustDlpSettings : global::Pulumi.CustomResource
     {

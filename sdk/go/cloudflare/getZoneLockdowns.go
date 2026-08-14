@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/zone"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZoneLockdowns(ctx, &cloudflare.LookupZoneLockdownsArgs{
+//			_, err := zone.LookupLockdowns(ctx, &zone.LookupLockdownsArgs{
 //				ZoneId:            pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				CreatedOn:         pulumi.StringRef("2014-01-01T05:20:00.12345Z"),
 //				Description:       pulumi.StringRef("endpoints"),
@@ -50,6 +50,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare:index/getZoneLockdowns:getZoneLockdowns has been deprecated in favor of cloudflare:zone/lockdowns:getLockdowns
 func LookupZoneLockdowns(ctx *pulumi.Context, args *LookupZoneLockdownsArgs, opts ...pulumi.InvokeOption) (*LookupZoneLockdownsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZoneLockdownsResult

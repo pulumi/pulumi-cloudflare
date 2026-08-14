@@ -37,8 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.AiGateway;
- * import com.pulumi.cloudflare.AiGatewayArgs;
+ * import com.pulumi.cloudflare.aiGateway.AiGateway;
+ * import com.pulumi.cloudflare.aiGateway.AiGatewayArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -84,7 +84,11 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/aiGateway:AiGateway example &#39;&lt;account_id&gt;/&lt;id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare:index/aiGateway:AiGateway has been deprecated in favor of cloudflare:aiGateway/aiGateway:AiGateway
+ * 
  */
+@Deprecated /* cloudflare:index/aiGateway:AiGateway has been deprecated in favor of cloudflare:aiGateway/aiGateway:AiGateway */
 @ResourceType(type="cloudflare:index/aiGateway:AiGateway")
 public class AiGateway extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

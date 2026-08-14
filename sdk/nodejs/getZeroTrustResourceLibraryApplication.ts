@@ -11,13 +11,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustResourceLibraryApplication = cloudflare.getZeroTrustResourceLibraryApplication({
+ * const exampleZeroTrustResourceLibraryApplication = cloudflare.zerotrustresourcelibrary.getApplication({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     id: "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustResourceLibraryApplication:getZeroTrustResourceLibraryApplication has been deprecated in favor of cloudflare:zeroTrustResourceLibrary/application:getApplication */
 export function getZeroTrustResourceLibraryApplication(args: GetZeroTrustResourceLibraryApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustResourceLibraryApplicationResult> {
+    pulumi.log.warn("getZeroTrustResourceLibraryApplication is deprecated: cloudflare:index/getZeroTrustResourceLibraryApplication:getZeroTrustResourceLibraryApplication has been deprecated in favor of cloudflare:zeroTrustResourceLibrary/application:getApplication")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustResourceLibraryApplication:getZeroTrustResourceLibraryApplication", {
         "accountId": args.accountId,
@@ -121,13 +123,15 @@ export interface GetZeroTrustResourceLibraryApplicationResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZeroTrustResourceLibraryApplication = cloudflare.getZeroTrustResourceLibraryApplication({
+ * const exampleZeroTrustResourceLibraryApplication = cloudflare.zerotrustresourcelibrary.getApplication({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     id: "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
  * });
  * ```
  */
+/** @deprecated cloudflare:index/getZeroTrustResourceLibraryApplication:getZeroTrustResourceLibraryApplication has been deprecated in favor of cloudflare:zeroTrustResourceLibrary/application:getApplication */
 export function getZeroTrustResourceLibraryApplicationOutput(args: GetZeroTrustResourceLibraryApplicationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustResourceLibraryApplicationResult> {
+    pulumi.log.warn("getZeroTrustResourceLibraryApplication is deprecated: cloudflare:index/getZeroTrustResourceLibraryApplication:getZeroTrustResourceLibraryApplication has been deprecated in favor of cloudflare:zeroTrustResourceLibrary/application:getApplication")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustResourceLibraryApplication:getZeroTrustResourceLibraryApplication", {
         "accountId": args.accountId,

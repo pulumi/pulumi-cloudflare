@@ -150,8 +150,13 @@ class _DnsZoneTransfersTsigState:
         pulumi.set(self, "secret", value)
 
 
+warnings.warn("""cloudflare:index/dnsZoneTransfersTsig:DnsZoneTransfersTsig has been deprecated in favor of cloudflare:dnsZoneTransfers/tsig:Tsig""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/dnsZoneTransfersTsig:DnsZoneTransfersTsig")
 class DnsZoneTransfersTsig(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/dnsZoneTransfersTsig:DnsZoneTransfersTsig has been deprecated in favor of cloudflare:dnsZoneTransfers/tsig:Tsig""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -173,7 +178,7 @@ class DnsZoneTransfersTsig(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_dns_zone_transfers_tsig = cloudflare.DnsZoneTransfersTsig("example_dns_zone_transfers_tsig",
+        example_dns_zone_transfers_tsig = cloudflare.dnszonetransfers.Tsig("example_dns_zone_transfers_tsig",
             account_id="01a7362d577a6c3019a474fd6f485823",
             algo="hmac-sha512.",
             name="tsig.customer.cf.",
@@ -211,7 +216,7 @@ class DnsZoneTransfersTsig(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_dns_zone_transfers_tsig = cloudflare.DnsZoneTransfersTsig("example_dns_zone_transfers_tsig",
+        example_dns_zone_transfers_tsig = cloudflare.dnszonetransfers.Tsig("example_dns_zone_transfers_tsig",
             account_id="01a7362d577a6c3019a474fd6f485823",
             algo="hmac-sha512.",
             name="tsig.customer.cf.",
@@ -245,6 +250,7 @@ class DnsZoneTransfersTsig(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  secret: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""DnsZoneTransfersTsig is deprecated: cloudflare:index/dnsZoneTransfersTsig:DnsZoneTransfersTsig has been deprecated in favor of cloudflare:dnsZoneTransfers/tsig:Tsig""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

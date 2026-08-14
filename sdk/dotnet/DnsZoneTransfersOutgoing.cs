@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleDnsZoneTransfersOutgoing = new Cloudflare.DnsZoneTransfersOutgoing("example_dns_zone_transfers_outgoing", new()
+    ///     var exampleDnsZoneTransfersOutgoing = new Cloudflare.Modules.DnsZoneTransfers.DnsZoneTransfersOutgoing("example_dns_zone_transfers_outgoing", new()
     ///     {
     ///         ZoneId = "269d8f4853475ca241c4e730be286b20",
     ///         Name = "www.example.com.",
@@ -48,6 +48,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/dnsZoneTransfersOutgoing:DnsZoneTransfersOutgoing example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/dnsZoneTransfersOutgoing:DnsZoneTransfersOutgoing has been deprecated in favor of cloudflare:dnsZoneTransfers/outgoing:Outgoing")]
     [CloudflareResourceType("cloudflare:index/dnsZoneTransfersOutgoing:DnsZoneTransfersOutgoing")]
     public partial class DnsZoneTransfersOutgoing : global::Pulumi.CustomResource
     {

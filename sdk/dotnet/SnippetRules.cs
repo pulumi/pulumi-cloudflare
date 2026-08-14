@@ -25,12 +25,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleSnippetRules = new Cloudflare.SnippetRules("example_snippet_rules", new()
+    ///     var exampleSnippetRules = new Cloudflare.Modules.SnippetRules.SnippetRules("example_snippet_rules", new()
     ///     {
     ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
     ///         Rules = new[]
     ///         {
-    ///             new Cloudflare.Inputs.SnippetRulesRuleArgs
+    ///             new Cloudflare.Modules.SnippetRules.Inputs.SnippetRulesRuleArgs
     ///             {
     ///                 Expression = "ip.src eq 1.1.1.1",
     ///                 SnippetName = "my_snippet",
@@ -49,6 +49,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/snippetRules:SnippetRules example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare:index/snippetRules:SnippetRules has been deprecated in favor of cloudflare:snippetRules/snippetRules:SnippetRules")]
     [CloudflareResourceType("cloudflare:index/snippetRules:SnippetRules")]
     public partial class SnippetRules : global::Pulumi.CustomResource
     {

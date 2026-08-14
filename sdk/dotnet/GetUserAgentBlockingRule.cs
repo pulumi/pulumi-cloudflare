@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare:index/getUserAgentBlockingRule:getUserAgentBlockingRule has been deprecated in favor of cloudflare:userAgentBlocking/rule:getRule")]
     public static class GetUserAgentBlockingRule
     {
         /// <summary>
@@ -27,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleUserAgentBlockingRule = Cloudflare.GetUserAgentBlockingRule.Invoke(new()
+        ///     var exampleUserAgentBlockingRule = Cloudflare.Modules.UserAgentBlocking.GetRule.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         UaRuleId = "372e67954025e0ba6aaa6d586b9e0b59",
@@ -55,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleUserAgentBlockingRule = Cloudflare.GetUserAgentBlockingRule.Invoke(new()
+        ///     var exampleUserAgentBlockingRule = Cloudflare.Modules.UserAgentBlocking.GetRule.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         UaRuleId = "372e67954025e0ba6aaa6d586b9e0b59",
@@ -83,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleUserAgentBlockingRule = Cloudflare.GetUserAgentBlockingRule.Invoke(new()
+        ///     var exampleUserAgentBlockingRule = Cloudflare.Modules.UserAgentBlocking.GetRule.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         UaRuleId = "372e67954025e0ba6aaa6d586b9e0b59",

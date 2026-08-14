@@ -22,6 +22,8 @@ __all__ = [
     'get_zero_trust_access_infrastructure_targets_output',
 ]
 
+warnings.warn("""cloudflare:index/getZeroTrustAccessInfrastructureTargets:getZeroTrustAccessInfrastructureTargets has been deprecated in favor of cloudflare:zeroTrustAccessInfrastructure/targets:getTargets""", DeprecationWarning)
+
 @pulumi.output_type
 class GetZeroTrustAccessInfrastructureTargetsResult:
     """
@@ -328,7 +330,7 @@ def get_zero_trust_access_infrastructure_targets(account_id: Optional[_builtins.
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_infrastructure_targets = cloudflare.get_zero_trust_access_infrastructure_targets(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_zero_trust_access_infrastructure_targets = cloudflare.zerotrustaccessinfrastructure.get_targets(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         created_after="2019-12-27T18:11:19.117Z",
         created_before="2019-12-27T18:11:19.117Z",
         direction="asc",
@@ -381,6 +383,7 @@ def get_zero_trust_access_infrastructure_targets(account_id: Optional[_builtins.
            candidates.
     :param _builtins.str virtual_network_id: Private virtual network identifier of the target
     """
+    pulumi.log.warn("""get_zero_trust_access_infrastructure_targets is deprecated: cloudflare:index/getZeroTrustAccessInfrastructureTargets:getZeroTrustAccessInfrastructureTargets has been deprecated in favor of cloudflare:zeroTrustAccessInfrastructure/targets:getTargets""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['createdAfter'] = created_after
@@ -455,7 +458,7 @@ def get_zero_trust_access_infrastructure_targets_output(account_id: pulumi.Input
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zero_trust_access_infrastructure_targets = cloudflare.get_zero_trust_access_infrastructure_targets(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_zero_trust_access_infrastructure_targets = cloudflare.zerotrustaccessinfrastructure.get_targets(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         created_after="2019-12-27T18:11:19.117Z",
         created_before="2019-12-27T18:11:19.117Z",
         direction="asc",
@@ -508,6 +511,7 @@ def get_zero_trust_access_infrastructure_targets_output(account_id: pulumi.Input
            candidates.
     :param _builtins.str virtual_network_id: Private virtual network identifier of the target
     """
+    pulumi.log.warn("""get_zero_trust_access_infrastructure_targets is deprecated: cloudflare:index/getZeroTrustAccessInfrastructureTargets:getZeroTrustAccessInfrastructureTargets has been deprecated in favor of cloudflare:zeroTrustAccessInfrastructure/targets:getTargets""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['createdAfter'] = created_after

@@ -332,8 +332,13 @@ class _ZeroTrustDlpEntryState:
         pulumi.set(self, "word_list", value)
 
 
+warnings.warn("""cloudflare:index/zeroTrustDlpEntry:ZeroTrustDlpEntry has been deprecated in favor of cloudflare:zeroTrustDlp/entry:Entry""", DeprecationWarning)
+
+
 @pulumi.type_token("cloudflare:index/zeroTrustDlpEntry:ZeroTrustDlpEntry")
 class ZeroTrustDlpEntry(pulumi.CustomResource):
+    warnings.warn("""cloudflare:index/zeroTrustDlpEntry:ZeroTrustDlpEntry has been deprecated in favor of cloudflare:zeroTrustDlp/entry:Entry""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -358,7 +363,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_entry = cloudflare.ZeroTrustDlpEntry("example_zero_trust_dlp_entry",
+        example_zero_trust_dlp_entry = cloudflare.zerotrustdlp.Entry("example_zero_trust_dlp_entry",
             account_id="account_id",
             enabled=True,
             name="name",
@@ -399,7 +404,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zero_trust_dlp_entry = cloudflare.ZeroTrustDlpEntry("example_zero_trust_dlp_entry",
+        example_zero_trust_dlp_entry = cloudflare.zerotrustdlp.Entry("example_zero_trust_dlp_entry",
             account_id="account_id",
             enabled=True,
             name="name",
@@ -441,6 +446,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
                  profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ZeroTrustDlpEntry is deprecated: cloudflare:index/zeroTrustDlpEntry:ZeroTrustDlpEntry has been deprecated in favor of cloudflare:zeroTrustDlp/entry:Entry""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
