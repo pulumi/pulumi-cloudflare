@@ -17,7 +17,9 @@ package cloudflare
 import (
 	"context"
 	"fmt"
+	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 
 	// embed allows embedding files
@@ -30,6 +32,7 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+	pschema "github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 
 	"github.com/pulumi/pulumi-cloudflare/provider/v6/pkg/version"
@@ -81,7 +84,11 @@ func Provider() info.Provider {
 		TFProviderModuleVersion: "v5",
 		MetadataInfo:            tfbridge.NewProviderMetadata(metadata),
 		DocRules:                &info.DocRule{EditRules: docEditRules},
+		SchemaPostProcessor:     describeUserAgentOperatorSuffix,
 		Config: map[string]*info.Schema{
+			"user_agent_operator_suffix": {
+				Default: &info.Default{ComputeDefault: pulumiUserAgentOperatorSuffix},
+			},
 			"api_token": {
 				Secret: tfbridge.True(),
 			},
@@ -740,6 +747,7 @@ func docEditRules(defaults []info.DocsEdit) []info.DocsEdit {
 	return append(
 		defaults,
 		skipGettingStartedSection,
+		describeUserAgentOperatorSuffixInDocs,
 	)
 }
 
@@ -750,6 +758,80 @@ var skipGettingStartedSection = info.DocsEdit{
 		return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
 			return headerText == "Getting Started"
 		})
+	},
+}
+
+// userAgentOperatorSuffixEnvVar is documented by upstream but never read by its Configure, so we
+// honor it ourselves.
+const userAgentOperatorSuffixEnvVar = "CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX"
+
+// pulumiUserAgentOperatorSuffix identifies Pulumi to Cloudflare. Upstream appends the suffix to the
+// User-Agent in place of `terraform/<version>`, which is meaningless under Pulumi. The bridge only
+// calls this when the user has not set the property, so explicit config always wins. Returning nil
+// here leaves the property unset; an explicitly empty value in config is passed through to
+// upstream, where patch 0002 treats it as unset. Either way the User-Agent falls back to
+// upstream's `terraform/<version>`.
+func pulumiUserAgentOperatorSuffix(context.Context, info.ComputeDefaultOptions) (any, error) {
+	if v, ok := os.LookupEnv(userAgentOperatorSuffixEnvVar); ok {
+		if v == "" {
+			return nil, nil
+		}
+		return v, nil
+	}
+	// version.Version is set by -ldflags, so it is only empty under `go test` and `go run`.
+	if version.Version == "" {
+		return "pulumi", nil
+	}
+	return "pulumi/" + version.Version, nil
+}
+
+// userAgentOperatorSuffixDescription replaces upstream's description, which documents a
+// `terraform/<version>` default that does not apply under Pulumi and warns users off the value we
+// now set by default. It is applied twice because the schema and upstream's docs/index.md carry
+// independent copies of the original.
+const userAgentOperatorSuffixDescription = "A value appended to the HTTP User Agent sent with " +
+	"every API call, used to identify the tool making the request. Defaults to " +
+	"`pulumi/<version>`. Set it to a value of your own to identify your traffic differently, or " +
+	"to the empty string to remove the Pulumi identifier entirely. Alternatively, can be " +
+	"configured using the `" + userAgentOperatorSuffixEnvVar + "` environment variable."
+
+// describeUserAgentOperatorSuffix overwrites the description in all three places tfgen emits it.
+func describeUserAgentOperatorSuffix(spec *pschema.PackageSpec) {
+	const key = "userAgentOperatorSuffix"
+	for _, props := range []map[string]pschema.PropertySpec{
+		spec.Config.Variables,
+		spec.Provider.Properties,
+		spec.Provider.InputProperties,
+	} {
+		if p, ok := props[key]; ok {
+			p.Description = userAgentOperatorSuffixDescription
+			props[key] = p
+		}
+	}
+}
+
+// userAgentOperatorSuffixDocLine matches upstream's entry for the option in the config list in
+// docs/index.md, which tfplugindocs generates from the schema description we are replacing.
+var userAgentOperatorSuffixDocLine = regexp.MustCompile(
+	"(?m)^- `user_agent_operator_suffix` \\(String\\) .*$",
+)
+
+// describeUserAgentOperatorSuffixInDocs rewrites the option's entry in upstream's docs/index.md.
+// Left alone, tfgen would emit upstream's description with `Terraform` swapped for `Pulumi`,
+// claiming we remove a Pulumi version that was never in the User-Agent. It runs after code
+// translation but before tfgen rewrites the field names, so the entry is written in Terraform
+// casing.
+var describeUserAgentOperatorSuffixInDocs = info.DocsEdit{
+	Path:  "index.md",
+	Phase: info.PostCodeTranslation,
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		if !userAgentOperatorSuffixDocLine.Match(content) {
+			// Upstream dropped or reworded the entry. Fail rather than silently ship a
+			// description that contradicts what the provider does.
+			return nil, fmt.Errorf("no user_agent_operator_suffix entry in index.md to rewrite")
+		}
+		entry := "- `user_agent_operator_suffix` (String) " + userAgentOperatorSuffixDescription
+		return userAgentOperatorSuffixDocLine.ReplaceAllLiteral(content, []byte(entry)), nil
 	},
 }
 

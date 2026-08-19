@@ -46,7 +46,7 @@ export class Provider extends pulumi.ProviderResource {
      */
     declare public readonly email: pulumi.Output<string | undefined>;
     /**
-     * A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely identifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX` environment variable.
+     * A value appended to the HTTP User Agent sent with every API call, used to identify the tool making the request. Defaults to `pulumi/<version>`. Set it to a value of your own to identify your traffic differently, or to the empty string to remove the Pulumi identifier entirely. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX` environment variable.
      */
     declare public readonly userAgentOperatorSuffix: pulumi.Output<string | undefined>;
 
@@ -109,7 +109,7 @@ export interface ProviderArgs {
      */
     email?: pulumi.Input<string | undefined>;
     /**
-     * A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely identifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX` environment variable.
+     * A value appended to the HTTP User Agent sent with every API call, used to identify the tool making the request. Defaults to `pulumi/<version>`. Set it to a value of your own to identify your traffic differently, or to the empty string to remove the Pulumi identifier entirely. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX` environment variable.
      */
     userAgentOperatorSuffix?: pulumi.Input<string | undefined>;
 }
