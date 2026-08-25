@@ -84,7 +84,7 @@ type LookupD1DatabaseResult struct {
 	// D1 database identifier (UUID).
 	Id string `pulumi:"id"`
 	// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-	// Available values: "eu", "fedramp".
+	// Available values: "eu", "fedramp", "us".
 	Jurisdiction string `pulumi:"jurisdiction"`
 	// D1 database name.
 	Name      string  `pulumi:"name"`
@@ -172,7 +172,7 @@ func (o LookupD1DatabaseResultOutput) Id() pulumi.StringOutput {
 }
 
 // Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-// Available values: "eu", "fedramp".
+// Available values: "eu", "fedramp", "us".
 func (o LookupD1DatabaseResultOutput) Jurisdiction() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupD1DatabaseResult) string { return v.Jurisdiction }).(pulumi.StringOutput)
 }

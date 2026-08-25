@@ -100,6 +100,7 @@ import javax.annotation.Nullable;
  *             .sessionDuration("24h")
  *             .uiReadOnlyToggleReason("Temporarily turn off the UI read only lock to make a change via the UI")
  *             .userSeatExpirationInactiveTime("730h")
+ *             .warpAuthNonBrowser401(false)
  *             .warpAuthSessionDuration("24h")
  *             .build());
  * 
@@ -254,14 +255,14 @@ public class ZeroTrustOrganization extends com.pulumi.resources.CustomResource {
         return this.mfaConfigurationAllowed;
     }
     /**
-     * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: &#39;allowed*authenticators&#39; cannot only contain &#39;ssh*piv_key&#39; if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+     * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: &#39;allowed*authenticators&#39; cannot contain only the infrastructure SSH authenticators (&#39;piv*key&#39; and &#39;ssh*fido2*key&#39;) if the organization has any non-infrastructure applications.
      * 
      */
     @Export(name="mfaRequiredForAllApps", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> mfaRequiredForAllApps;
 
     /**
-     * @return Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: &#39;allowed*authenticators&#39; cannot only contain &#39;ssh*piv_key&#39; if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+     * @return Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: &#39;allowed*authenticators&#39; cannot contain only the infrastructure SSH authenticators (&#39;piv*key&#39; and &#39;ssh*fido2*key&#39;) if the organization has any non-infrastructure applications.
      * 
      */
     public Output<Boolean> mfaRequiredForAllApps() {
@@ -336,6 +337,20 @@ public class ZeroTrustOrganization extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> userSeatExpirationInactiveTime() {
         return Codegen.optional(this.userSeatExpirationInactiveTime);
+    }
+    /**
+     * When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
+     * 
+     */
+    @Export(name="warpAuthNonBrowser401", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> warpAuthNonBrowser401;
+
+    /**
+     * @return When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
+     * 
+     */
+    public Output<Boolean> warpAuthNonBrowser401() {
+        return this.warpAuthNonBrowser401;
     }
     /**
      * The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.

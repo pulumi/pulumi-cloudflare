@@ -11,12 +11,75 @@ namespace Pulumi.Cloudflare
 {
     public static class GetMoqRelays
     {
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleMoqRelays = Cloudflare.GetMoqRelays.Invoke(new()
+        ///     {
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         CreatedAfter = "2026-03-27T15:00:00Z",
+        ///         CreatedBefore = "2026-03-27T15:00:00Z",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetMoqRelaysResult> InvokeAsync(GetMoqRelaysArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMoqRelaysResult>("cloudflare:index/getMoqRelays:getMoqRelays", args ?? new GetMoqRelaysArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleMoqRelays = Cloudflare.GetMoqRelays.Invoke(new()
+        ///     {
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         CreatedAfter = "2026-03-27T15:00:00Z",
+        ///         CreatedBefore = "2026-03-27T15:00:00Z",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetMoqRelaysResult> Invoke(GetMoqRelaysInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMoqRelaysResult>("cloudflare:index/getMoqRelays:getMoqRelays", args ?? new GetMoqRelaysInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleMoqRelays = Cloudflare.GetMoqRelays.Invoke(new()
+        ///     {
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         CreatedAfter = "2026-03-27T15:00:00Z",
+        ///         CreatedBefore = "2026-03-27T15:00:00Z",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetMoqRelaysResult> Invoke(GetMoqRelaysInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetMoqRelaysResult>("cloudflare:index/getMoqRelays:getMoqRelays", args ?? new GetMoqRelaysInvokeArgs(), options.WithDefaults());
     }
@@ -60,7 +123,8 @@ namespace Pulumi.Cloudflare
         public int? MaxItems { get; set; }
 
         /// <summary>
-        /// Maximum number of relays to return per page.
+        /// Maximum number of relays to return per page. Values above the maximum are
+        /// clamped to it rather than rejected.
         /// </summary>
         [Input("perPage")]
         public int? PerPage { get; set; }
@@ -109,7 +173,8 @@ namespace Pulumi.Cloudflare
         public Input<int>? MaxItems { get; set; }
 
         /// <summary>
-        /// Maximum number of relays to return per page.
+        /// Maximum number of relays to return per page. Values above the maximum are
+        /// clamped to it rather than rejected.
         /// </summary>
         [Input("perPage")]
         public Input<int>? PerPage { get; set; }
@@ -150,9 +215,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly int? MaxItems;
         /// <summary>
-        /// Maximum number of relays to return per page.
+        /// Maximum number of relays to return per page. Values above the maximum are
+        /// clamped to it rather than rejected.
         /// </summary>
-        public readonly int? PerPage;
+        public readonly int PerPage;
         /// <summary>
         /// The items returned by the data source
         /// </summary>
@@ -170,7 +236,7 @@ namespace Pulumi.Cloudflare
 
             int? maxItems,
 
-            int? perPage,
+            int perPage,
 
             ImmutableArray<Outputs.GetMoqRelaysResultResult> results)
         {

@@ -75,9 +75,6 @@ namespace Pulumi.Cloudflare
         [Output("options")]
         public Output<Outputs.ImageVariantOptions> Options { get; private set; } = null!;
 
-        [Output("variant")]
-        public Output<Outputs.ImageVariantVariant> Variant { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a ImageVariant resource with the given unique name, arguments, and options.
@@ -179,9 +176,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("options")]
         public Input<Inputs.ImageVariantOptionsGetArgs>? Options { get; set; }
-
-        [Input("variant")]
-        public Input<Inputs.ImageVariantVariantGetArgs>? Variant { get; set; }
 
         public ImageVariantState()
         {

@@ -28,13 +28,16 @@ class GetZeroTrustAccessAiControlsMcpPortalResult:
     """
     A collection of values returned by getZeroTrustAccessAiControlsMcpPortal.
     """
-    def __init__(__self__, account_id=None, allow_code_mode=None, created_at=None, created_by=None, description=None, filter=None, hostname=None, id=None, modified_at=None, modified_by=None, name=None, secure_web_gateway=None, servers=None):
+    def __init__(__self__, account_id=None, allow_code_mode=None, code_mode=None, created_at=None, created_by=None, description=None, filter=None, hostname=None, id=None, modified_at=None, modified_by=None, name=None, secure_web_gateway=None, servers=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if allow_code_mode and not isinstance(allow_code_mode, bool):
             raise TypeError("Expected argument 'allow_code_mode' to be a bool")
         pulumi.set(__self__, "allow_code_mode", allow_code_mode)
+        if code_mode and not isinstance(code_mode, str):
+            raise TypeError("Expected argument 'code_mode' to be a str")
+        pulumi.set(__self__, "code_mode", code_mode)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -76,11 +79,21 @@ class GetZeroTrustAccessAiControlsMcpPortalResult:
 
     @_builtins.property
     @pulumi.getter(name="allowCodeMode")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def allow_code_mode(self) -> _builtins.bool:
         """
-        Allow remote code execution in Dynamic Workers (beta)
+        Deprecated: use `code_mode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
         """
         return pulumi.get(self, "allow_code_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="codeMode")
+    def code_mode(self) -> _builtins.str:
+        """
+        Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `opt_in`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `default_on`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `opt_in` when omitted on create. If both `code_mode` and `allow_code_mode` are sent, they must be consistent or the request returns a 400.
+        Available values: "off", "opt*in", "default*on", "enforced".
+        """
+        return pulumi.get(self, "code_mode")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
@@ -95,6 +108,9 @@ class GetZeroTrustAccessAiControlsMcpPortalResult:
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
+        """
+        Optional description of the MCP portal.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -105,13 +121,16 @@ class GetZeroTrustAccessAiControlsMcpPortalResult:
     @_builtins.property
     @pulumi.getter
     def hostname(self) -> _builtins.str:
+        """
+        Hostname where the MCP portal is available.
+        """
         return pulumi.get(self, "hostname")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        portal id
+        Unique identifier for the MCP portal.
         """
         return pulumi.get(self, "id")
 
@@ -128,13 +147,16 @@ class GetZeroTrustAccessAiControlsMcpPortalResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        Display name for the MCP portal.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="secureWebGateway")
     def secure_web_gateway(self) -> _builtins.bool:
         """
-        Route outbound MCP traffic through Zero Trust Secure Web Gateway
+        Route outbound MCP traffic through Zero Trust Secure Web Gateway.
         """
         return pulumi.get(self, "secure_web_gateway")
 
@@ -152,6 +174,7 @@ class AwaitableGetZeroTrustAccessAiControlsMcpPortalResult(GetZeroTrustAccessAiC
         return GetZeroTrustAccessAiControlsMcpPortalResult(
             account_id=self.account_id,
             allow_code_mode=self.allow_code_mode,
+            code_mode=self.code_mode,
             created_at=self.created_at,
             created_by=self.created_by,
             description=self.description,
@@ -186,7 +209,7 @@ def get_zero_trust_access_ai_controls_mcp_portal(account_id: Optional[_builtins.
     ```
 
 
-    :param _builtins.str id: portal id
+    :param _builtins.str id: Unique identifier for the MCP portal.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -198,6 +221,7 @@ def get_zero_trust_access_ai_controls_mcp_portal(account_id: Optional[_builtins.
     return AwaitableGetZeroTrustAccessAiControlsMcpPortalResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         allow_code_mode=pulumi.get(__ret__, 'allow_code_mode'),
+        code_mode=pulumi.get(__ret__, 'code_mode'),
         created_at=pulumi.get(__ret__, 'created_at'),
         created_by=pulumi.get(__ret__, 'created_by'),
         description=pulumi.get(__ret__, 'description'),
@@ -230,7 +254,7 @@ def get_zero_trust_access_ai_controls_mcp_portal_output(account_id: pulumi.Input
     ```
 
 
-    :param _builtins.str id: portal id
+    :param _builtins.str id: Unique identifier for the MCP portal.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -241,6 +265,7 @@ def get_zero_trust_access_ai_controls_mcp_portal_output(account_id: pulumi.Input
     return __ret__.apply(lambda __response__: GetZeroTrustAccessAiControlsMcpPortalResult(
         account_id=pulumi.get(__response__, 'account_id'),
         allow_code_mode=pulumi.get(__response__, 'allow_code_mode'),
+        code_mode=pulumi.get(__response__, 'code_mode'),
         created_at=pulumi.get(__response__, 'created_at'),
         created_by=pulumi.get(__response__, 'created_by'),
         description=pulumi.get(__response__, 'description'),

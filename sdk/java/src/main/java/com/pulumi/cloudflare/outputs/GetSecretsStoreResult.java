@@ -13,6 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSecretsStoreResult {
+    /**
+     * @return Account Identifier
+     * 
+     */
     private String accountId;
     /**
      * @return When the secret was created.
@@ -21,7 +25,7 @@ public final class GetSecretsStoreResult {
     private String created;
     private @Nullable GetSecretsStoreFilter filter;
     /**
-     * @return The ID of this resource.
+     * @return Store Identifier
      * 
      */
     private String id;
@@ -35,9 +39,17 @@ public final class GetSecretsStoreResult {
      * 
      */
     private String name;
+    /**
+     * @return Store Identifier
+     * 
+     */
     private @Nullable String storeId;
 
     private GetSecretsStoreResult() {}
+    /**
+     * @return Account Identifier
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
@@ -52,7 +64,7 @@ public final class GetSecretsStoreResult {
         return Optional.ofNullable(this.filter);
     }
     /**
-     * @return The ID of this resource.
+     * @return Store Identifier
      * 
      */
     public String id() {
@@ -72,6 +84,10 @@ public final class GetSecretsStoreResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Store Identifier
+     * 
+     */
     public Optional<String> storeId() {
         return Optional.ofNullable(this.storeId);
     }

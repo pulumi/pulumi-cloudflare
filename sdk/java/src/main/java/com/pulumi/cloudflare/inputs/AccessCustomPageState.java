@@ -3,9 +3,12 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.AccessCustomPageWarningArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -28,6 +31,21 @@ public final class AccessCustomPageState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
+    }
+
+    /**
+     * Contract version of the page&#39;s Liquid template. Present (&gt;= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+     * 
+     */
+    @Import(name="contractVersion")
+    private @Nullable Output<Integer> contractVersion;
+
+    /**
+     * @return Contract version of the page&#39;s Liquid template. Present (&gt;= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+     * 
+     */
+    public Optional<Output<Integer>> contractVersion() {
+        return Optional.ofNullable(this.contractVersion);
     }
 
     /**
@@ -62,7 +80,7 @@ public final class AccessCustomPageState extends com.pulumi.resources.ResourceAr
 
     /**
      * Custom page type.
-     * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;.
+     * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;, &#34;login&#34;, &#34;interstitial&#34;.
      * 
      */
     @Import(name="type")
@@ -70,7 +88,7 @@ public final class AccessCustomPageState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Custom page type.
-     * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;.
+     * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;, &#34;login&#34;, &#34;interstitial&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -92,14 +110,31 @@ public final class AccessCustomPageState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.uid);
     }
 
+    /**
+     * Advisory validation findings returned when creating or updating a template. Omitted when empty.
+     * 
+     */
+    @Import(name="warnings")
+    private @Nullable Output<List<AccessCustomPageWarningArgs>> warnings;
+
+    /**
+     * @return Advisory validation findings returned when creating or updating a template. Omitted when empty.
+     * 
+     */
+    public Optional<Output<List<AccessCustomPageWarningArgs>>> warnings() {
+        return Optional.ofNullable(this.warnings);
+    }
+
     private AccessCustomPageState() {}
 
     private AccessCustomPageState(AccessCustomPageState $) {
         this.accountId = $.accountId;
+        this.contractVersion = $.contractVersion;
         this.customHtml = $.customHtml;
         this.name = $.name;
         this.type = $.type;
         this.uid = $.uid;
+        this.warnings = $.warnings;
     }
 
     public static Builder builder() {
@@ -139,6 +174,27 @@ public final class AccessCustomPageState extends com.pulumi.resources.ResourceAr
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param contractVersion Contract version of the page&#39;s Liquid template. Present (&gt;= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contractVersion(@Nullable Output<Integer> contractVersion) {
+            $.contractVersion = contractVersion;
+            return this;
+        }
+
+        /**
+         * @param contractVersion Contract version of the page&#39;s Liquid template. Present (&gt;= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contractVersion(Integer contractVersion) {
+            return contractVersion(Output.of(contractVersion));
         }
 
         /**
@@ -185,7 +241,7 @@ public final class AccessCustomPageState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param type Custom page type.
-         * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;.
+         * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;, &#34;login&#34;, &#34;interstitial&#34;.
          * 
          * @return builder
          * 
@@ -197,7 +253,7 @@ public final class AccessCustomPageState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param type Custom page type.
-         * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;.
+         * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;, &#34;login&#34;, &#34;interstitial&#34;.
          * 
          * @return builder
          * 
@@ -225,6 +281,37 @@ public final class AccessCustomPageState extends com.pulumi.resources.ResourceAr
          */
         public Builder uid(String uid) {
             return uid(Output.of(uid));
+        }
+
+        /**
+         * @param warnings Advisory validation findings returned when creating or updating a template. Omitted when empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warnings(@Nullable Output<List<AccessCustomPageWarningArgs>> warnings) {
+            $.warnings = warnings;
+            return this;
+        }
+
+        /**
+         * @param warnings Advisory validation findings returned when creating or updating a template. Omitted when empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warnings(List<AccessCustomPageWarningArgs> warnings) {
+            return warnings(Output.of(warnings));
+        }
+
+        /**
+         * @param warnings Advisory validation findings returned when creating or updating a template. Omitted when empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warnings(AccessCustomPageWarningArgs... warnings) {
+            return warnings(List.of(warnings));
         }
 
         public AccessCustomPageState build() {

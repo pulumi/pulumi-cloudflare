@@ -61,11 +61,14 @@ type ZeroTrustDlpIntegrationEntry struct {
 	CaseSensitive pulumi.BoolOutput                            `pulumi:"caseSensitive"`
 	Confidence    ZeroTrustDlpIntegrationEntryConfidenceOutput `pulumi:"confidence"`
 	CreatedAt     pulumi.StringOutput                          `pulumi:"createdAt"`
-	Description   pulumi.StringOutput                          `pulumi:"description"`
-	Enabled       pulumi.BoolOutput                            `pulumi:"enabled"`
-	EntryId       pulumi.StringOutput                          `pulumi:"entryId"`
-	Name          pulumi.StringOutput                          `pulumi:"name"`
-	Pattern       ZeroTrustDlpIntegrationEntryPatternOutput    `pulumi:"pattern"`
+	// Whether this entry is deprecated for new use. This is computed from the static catalog and
+	// emitted only when true.
+	Deprecated  pulumi.BoolOutput                         `pulumi:"deprecated"`
+	Description pulumi.StringOutput                       `pulumi:"description"`
+	Enabled     pulumi.BoolOutput                         `pulumi:"enabled"`
+	EntryId     pulumi.StringOutput                       `pulumi:"entryId"`
+	Name        pulumi.StringOutput                       `pulumi:"name"`
+	Pattern     ZeroTrustDlpIntegrationEntryPatternOutput `pulumi:"pattern"`
 	// This field is not used as the owning profile.
 	// For predefined entries it is already set to a predefined profile.
 	ProfileId pulumi.StringPtrOutput                         `pulumi:"profileId"`
@@ -127,11 +130,14 @@ type zeroTrustDlpIntegrationEntryState struct {
 	CaseSensitive *bool                                   `pulumi:"caseSensitive"`
 	Confidence    *ZeroTrustDlpIntegrationEntryConfidence `pulumi:"confidence"`
 	CreatedAt     *string                                 `pulumi:"createdAt"`
-	Description   *string                                 `pulumi:"description"`
-	Enabled       *bool                                   `pulumi:"enabled"`
-	EntryId       *string                                 `pulumi:"entryId"`
-	Name          *string                                 `pulumi:"name"`
-	Pattern       *ZeroTrustDlpIntegrationEntryPattern    `pulumi:"pattern"`
+	// Whether this entry is deprecated for new use. This is computed from the static catalog and
+	// emitted only when true.
+	Deprecated  *bool                                `pulumi:"deprecated"`
+	Description *string                              `pulumi:"description"`
+	Enabled     *bool                                `pulumi:"enabled"`
+	EntryId     *string                              `pulumi:"entryId"`
+	Name        *string                              `pulumi:"name"`
+	Pattern     *ZeroTrustDlpIntegrationEntryPattern `pulumi:"pattern"`
 	// This field is not used as the owning profile.
 	// For predefined entries it is already set to a predefined profile.
 	ProfileId *string                               `pulumi:"profileId"`
@@ -155,11 +161,14 @@ type ZeroTrustDlpIntegrationEntryState struct {
 	CaseSensitive pulumi.BoolPtrInput
 	Confidence    ZeroTrustDlpIntegrationEntryConfidencePtrInput
 	CreatedAt     pulumi.StringPtrInput
-	Description   pulumi.StringPtrInput
-	Enabled       pulumi.BoolPtrInput
-	EntryId       pulumi.StringPtrInput
-	Name          pulumi.StringPtrInput
-	Pattern       ZeroTrustDlpIntegrationEntryPatternPtrInput
+	// Whether this entry is deprecated for new use. This is computed from the static catalog and
+	// emitted only when true.
+	Deprecated  pulumi.BoolPtrInput
+	Description pulumi.StringPtrInput
+	Enabled     pulumi.BoolPtrInput
+	EntryId     pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
+	Pattern     ZeroTrustDlpIntegrationEntryPatternPtrInput
 	// This field is not used as the owning profile.
 	// For predefined entries it is already set to a predefined profile.
 	ProfileId pulumi.StringPtrInput
@@ -304,6 +313,12 @@ func (o ZeroTrustDlpIntegrationEntryOutput) Confidence() ZeroTrustDlpIntegration
 
 func (o ZeroTrustDlpIntegrationEntryOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Whether this entry is deprecated for new use. This is computed from the static catalog and
+// emitted only when true.
+func (o ZeroTrustDlpIntegrationEntryOutput) Deprecated() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) pulumi.BoolOutput { return v.Deprecated }).(pulumi.BoolOutput)
 }
 
 func (o ZeroTrustDlpIntegrationEntryOutput) Description() pulumi.StringOutput {

@@ -41,7 +41,7 @@ export interface GetZeroTrustAccessAiControlsMcpServerArgs {
     accountId?: string;
     filter?: inputs.GetZeroTrustAccessAiControlsMcpServerFilter;
     /**
-     * server id
+     * Unique identifier for the MCP server.
      */
     id?: string;
 }
@@ -56,18 +56,30 @@ export interface GetZeroTrustAccessAiControlsMcpServerResult {
      */
     readonly authConfigSummary: outputs.GetZeroTrustAccessAiControlsMcpServerAuthConfigSummary;
     /**
+     * Authentication method used to connect to the upstream MCP server.
      * Available values: "oauth", "bearer", "unauthenticated".
      */
     readonly authType: string;
+    /**
+     * Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
+     * Available values: "notRequired", "required", "connected", "stale", "manual".
+     */
+    readonly authenticationStatus: string;
     readonly createdAt: string;
     readonly createdBy: string;
+    /**
+     * Optional description of the MCP server.
+     */
     readonly description: string;
     readonly error: string;
     readonly errorDetails: outputs.GetZeroTrustAccessAiControlsMcpServerErrorDetails;
     readonly filter?: outputs.GetZeroTrustAccessAiControlsMcpServerFilter;
+    /**
+     * URL of the upstream MCP endpoint.
+     */
     readonly hostname: string;
     /**
-     * server id
+     * Unique identifier for the MCP server.
      */
     readonly id: string;
     /**
@@ -78,10 +90,13 @@ export interface GetZeroTrustAccessAiControlsMcpServerResult {
     readonly lastSynced: string;
     readonly modifiedAt: string;
     readonly modifiedBy: string;
+    /**
+     * Display name for the MCP server.
+     */
     readonly name: string;
     readonly prompts: {[key: string]: string}[];
     /**
-     * Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+     * Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
      */
     readonly secureWebGateway: boolean;
     /**
@@ -90,7 +105,13 @@ export interface GetZeroTrustAccessAiControlsMcpServerResult {
      */
     readonly status: string;
     readonly tools: {[key: string]: string}[];
+    /**
+     * Server-wide prompt capability overrides.
+     */
     readonly updatedPrompts: outputs.GetZeroTrustAccessAiControlsMcpServerUpdatedPrompt[];
+    /**
+     * Server-wide tool capability overrides.
+     */
     readonly updatedTools: outputs.GetZeroTrustAccessAiControlsMcpServerUpdatedTool[];
 }
 /**
@@ -128,7 +149,7 @@ export interface GetZeroTrustAccessAiControlsMcpServerOutputArgs {
     accountId?: pulumi.Input<string | undefined>;
     filter?: pulumi.Input<inputs.GetZeroTrustAccessAiControlsMcpServerFilterArgs | undefined>;
     /**
-     * server id
+     * Unique identifier for the MCP server.
      */
     id?: pulumi.Input<string | undefined>;
 }

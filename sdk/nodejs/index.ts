@@ -270,6 +270,11 @@ export type ContentScanningExpression = import("./contentScanningExpression").Co
 export const ContentScanningExpression: typeof import("./contentScanningExpression").ContentScanningExpression = null as any;
 utilities.lazyLoad(exports, ["ContentScanningExpression"], () => require("./contentScanningExpression"));
 
+export { CtAlertingArgs, CtAlertingState } from "./ctAlerting";
+export type CtAlerting = import("./ctAlerting").CtAlerting;
+export const CtAlerting: typeof import("./ctAlerting").CtAlerting = null as any;
+utilities.lazyLoad(exports, ["CtAlerting"], () => require("./ctAlerting"));
+
 export { CustomCsrArgs, CustomCsrState } from "./customCsr";
 export type CustomCsr = import("./customCsr").CustomCsr;
 export const CustomCsr: typeof import("./customCsr").CustomCsr = null as any;
@@ -790,6 +795,11 @@ export const getContentScanningExpressions: typeof import("./getContentScanningE
 export const getContentScanningExpressionsOutput: typeof import("./getContentScanningExpressions").getContentScanningExpressionsOutput = null as any;
 utilities.lazyLoad(exports, ["getContentScanningExpressions","getContentScanningExpressionsOutput"], () => require("./getContentScanningExpressions"));
 
+export { GetCtAlertingArgs, GetCtAlertingResult, GetCtAlertingOutputArgs } from "./getCtAlerting";
+export const getCtAlerting: typeof import("./getCtAlerting").getCtAlerting = null as any;
+export const getCtAlertingOutput: typeof import("./getCtAlerting").getCtAlertingOutput = null as any;
+utilities.lazyLoad(exports, ["getCtAlerting","getCtAlertingOutput"], () => require("./getCtAlerting"));
+
 export { GetCustomCsrArgs, GetCustomCsrResult, GetCustomCsrOutputArgs } from "./getCustomCsr";
 export const getCustomCsr: typeof import("./getCustomCsr").getCustomCsr = null as any;
 export const getCustomCsrOutput: typeof import("./getCustomCsr").getCustomCsrOutput = null as any;
@@ -1064,6 +1074,11 @@ export { GetHostnameTlsSettingArgs, GetHostnameTlsSettingResult, GetHostnameTlsS
 export const getHostnameTlsSetting: typeof import("./getHostnameTlsSetting").getHostnameTlsSetting = null as any;
 export const getHostnameTlsSettingOutput: typeof import("./getHostnameTlsSetting").getHostnameTlsSettingOutput = null as any;
 utilities.lazyLoad(exports, ["getHostnameTlsSetting","getHostnameTlsSettingOutput"], () => require("./getHostnameTlsSetting"));
+
+export { GetHostnameTlsSettingsArgs, GetHostnameTlsSettingsResult, GetHostnameTlsSettingsOutputArgs } from "./getHostnameTlsSettings";
+export const getHostnameTlsSettings: typeof import("./getHostnameTlsSettings").getHostnameTlsSettings = null as any;
+export const getHostnameTlsSettingsOutput: typeof import("./getHostnameTlsSettings").getHostnameTlsSettingsOutput = null as any;
+utilities.lazyLoad(exports, ["getHostnameTlsSettings","getHostnameTlsSettingsOutput"], () => require("./getHostnameTlsSettings"));
 
 export { GetHyperdriveConfigArgs, GetHyperdriveConfigResult, GetHyperdriveConfigOutputArgs } from "./getHyperdriveConfig";
 export const getHyperdriveConfig: typeof import("./getHyperdriveConfig").getHyperdriveConfig = null as any;
@@ -1494,6 +1509,11 @@ export { GetPipelineStreamsArgs, GetPipelineStreamsResult, GetPipelineStreamsOut
 export const getPipelineStreams: typeof import("./getPipelineStreams").getPipelineStreams = null as any;
 export const getPipelineStreamsOutput: typeof import("./getPipelineStreams").getPipelineStreamsOutput = null as any;
 utilities.lazyLoad(exports, ["getPipelineStreams","getPipelineStreamsOutput"], () => require("./getPipelineStreams"));
+
+export { GetPrecursorArgs, GetPrecursorResult, GetPrecursorOutputArgs } from "./getPrecursor";
+export const getPrecursor: typeof import("./getPrecursor").getPrecursor = null as any;
+export const getPrecursorOutput: typeof import("./getPrecursor").getPrecursorOutput = null as any;
+utilities.lazyLoad(exports, ["getPrecursor","getPrecursorOutput"], () => require("./getPrecursor"));
 
 export { GetQueueArgs, GetQueueResult, GetQueueOutputArgs } from "./getQueue";
 export const getQueue: typeof import("./getQueue").getQueue = null as any;
@@ -2910,6 +2930,11 @@ export type PipelineStream = import("./pipelineStream").PipelineStream;
 export const PipelineStream: typeof import("./pipelineStream").PipelineStream = null as any;
 utilities.lazyLoad(exports, ["PipelineStream"], () => require("./pipelineStream"));
 
+export { PrecursorArgs, PrecursorState } from "./precursor";
+export type Precursor = import("./precursor").Precursor;
+export const Precursor: typeof import("./precursor").Precursor = null as any;
+utilities.lazyLoad(exports, ["Precursor"], () => require("./precursor"));
+
 export * from "./provider";
 import { Provider } from "./provider";
 
@@ -3818,6 +3843,8 @@ const _module = {
                 return new ContentScanning(name, <any>undefined, { urn })
             case "cloudflare:index/contentScanningExpression:ContentScanningExpression":
                 return new ContentScanningExpression(name, <any>undefined, { urn })
+            case "cloudflare:index/ctAlerting:CtAlerting":
+                return new CtAlerting(name, <any>undefined, { urn })
             case "cloudflare:index/customCsr:CustomCsr":
                 return new CustomCsr(name, <any>undefined, { urn })
             case "cloudflare:index/customHostname:CustomHostname":
@@ -3982,6 +4009,8 @@ const _module = {
                 return new PipelineSink(name, <any>undefined, { urn })
             case "cloudflare:index/pipelineStream:PipelineStream":
                 return new PipelineStream(name, <any>undefined, { urn })
+            case "cloudflare:index/precursor:Precursor":
+                return new Precursor(name, <any>undefined, { urn })
             case "cloudflare:index/queue:Queue":
                 return new Queue(name, <any>undefined, { urn })
             case "cloudflare:index/queueConsumer:QueueConsumer":
@@ -4354,6 +4383,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/cloudforceOneRequestP
 pulumi.runtime.registerResourceModule("cloudflare", "index/connectivityDirectoryService", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/contentScanning", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/contentScanningExpression", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/ctAlerting", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customCsr", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customHostname", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customHostnameFallbackOrigin", _module)
@@ -4436,6 +4466,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/pagesProject", _modul
 pulumi.runtime.registerResourceModule("cloudflare", "index/pipeline", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/pipelineSink", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/pipelineStream", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/precursor", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/queue", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/queueConsumer", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/r2Bucket", _module)

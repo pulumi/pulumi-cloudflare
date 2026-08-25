@@ -36,8 +36,8 @@ class GetZeroTrustResourceLibraryCategoryResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
+        if id and not isinstance(id, int):
+            raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -66,7 +66,7 @@ class GetZeroTrustResourceLibraryCategoryResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.str:
+    def id(self) -> _builtins.int:
         """
         The ID of this resource.
         """
@@ -95,7 +95,7 @@ class AwaitableGetZeroTrustResourceLibraryCategoryResult(GetZeroTrustResourceLib
 
 
 def get_zero_trust_resource_library_category(account_id: Optional[_builtins.str] = None,
-                                             id: Optional[_builtins.str] = None,
+                                             id: Optional[_builtins.int] = None,
                                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustResourceLibraryCategoryResult:
     """
     ## Example Usage
@@ -105,11 +105,11 @@ def get_zero_trust_resource_library_category(account_id: Optional[_builtins.str]
     import pulumi_cloudflare as cloudflare
 
     example_zero_trust_resource_library_category = cloudflare.get_zero_trust_resource_library_category(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        id="0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0")
+        id=12)
     ```
 
 
-    :param _builtins.str id: The ID of this resource.
+    :param _builtins.int id: The ID of this resource.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -124,7 +124,7 @@ def get_zero_trust_resource_library_category(account_id: Optional[_builtins.str]
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
 def get_zero_trust_resource_library_category_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                                    id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                    id: pulumi.Input[Optional[_builtins.int]] = None,
                                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustResourceLibraryCategoryResult]:
     """
     ## Example Usage
@@ -134,11 +134,11 @@ def get_zero_trust_resource_library_category_output(account_id: pulumi.Input[Opt
     import pulumi_cloudflare as cloudflare
 
     example_zero_trust_resource_library_category = cloudflare.get_zero_trust_resource_library_category(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        id="0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0")
+        id=12)
     ```
 
 
-    :param _builtins.str id: The ID of this resource.
+    :param _builtins.int id: The ID of this resource.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

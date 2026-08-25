@@ -16,14 +16,18 @@ public final class MoqRelayConfigUpstreamsUpstreamArgs extends com.pulumi.resour
     public static final MoqRelayConfigUpstreamsUpstreamArgs Empty = new MoqRelayConfigUpstreamsUpstreamArgs();
 
     /**
-     * Upstream MOQT server publisher URL.
+     * Upstream MOQT server publisher URL. Must be an absolute URL with a
+     * host and a scheme the relay can dial: moqt:// (raw QUIC) or https://
+     * (WebTransport). Validated on update (PUT); rejected with 21013.
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return Upstream MOQT server publisher URL.
+     * @return Upstream MOQT server publisher URL. Must be an absolute URL with a
+     * host and a scheme the relay can dial: moqt:// (raw QUIC) or https://
+     * (WebTransport). Validated on update (PUT); rejected with 21013.
      * 
      */
     public Optional<Output<String>> url() {
@@ -55,7 +59,9 @@ public final class MoqRelayConfigUpstreamsUpstreamArgs extends com.pulumi.resour
         }
 
         /**
-         * @param url Upstream MOQT server publisher URL.
+         * @param url Upstream MOQT server publisher URL. Must be an absolute URL with a
+         * host and a scheme the relay can dial: moqt:// (raw QUIC) or https://
+         * (WebTransport). Validated on update (PUT); rejected with 21013.
          * 
          * @return builder
          * 
@@ -66,7 +72,9 @@ public final class MoqRelayConfigUpstreamsUpstreamArgs extends com.pulumi.resour
         }
 
         /**
-         * @param url Upstream MOQT server publisher URL.
+         * @param url Upstream MOQT server publisher URL. Must be an absolute URL with a
+         * host and a scheme the relay can dial: moqt:// (raw QUIC) or https://
+         * (WebTransport). Validated on update (PUT); rejected with 21013.
          * 
          * @return builder
          * 

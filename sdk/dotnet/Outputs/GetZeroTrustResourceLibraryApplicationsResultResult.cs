@@ -34,6 +34,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string ApplicationTypeDescription;
         /// <summary>
+        /// Returns the category ID.
+        /// </summary>
+        public readonly int CategoryId;
+        /// <summary>
         /// Returns the application creation time.
         /// </summary>
         public readonly string CreatedAt;
@@ -42,7 +46,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly double GenAiScore;
         /// <summary>
-        /// Returns the list of hostnames for the application.
+        /// Hostnames matched by the application.
         /// </summary>
         public readonly ImmutableArray<string> Hostnames;
         /// <summary>
@@ -52,13 +56,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Returns the application ID.
         /// </summary>
-        public readonly string Id;
+        public readonly int Id;
         /// <summary>
-        /// Returns the Intel API ID for the application.
-        /// </summary>
-        public readonly int IntelId;
-        /// <summary>
-        /// Returns the list of IP subnets for the application.
+        /// IP subnets matched by the application.
         /// </summary>
         public readonly ImmutableArray<string> IpSubnets;
         /// <summary>
@@ -66,11 +66,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Returns the list of port protocols for the application.
+        /// Port and protocol pairs matched by the application.
         /// </summary>
         public readonly ImmutableArray<string> PortProtocols;
         /// <summary>
-        /// Returns the list of support domains for the application.
+        /// Support domains matched by the application.
         /// </summary>
         public readonly ImmutableArray<string> SupportDomains;
         /// <summary>
@@ -98,6 +98,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string applicationTypeDescription,
 
+            int categoryId,
+
             string createdAt,
 
             double genAiScore,
@@ -106,9 +108,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string humanId,
 
-            string id,
-
-            int intelId,
+            int id,
 
             ImmutableArray<string> ipSubnets,
 
@@ -129,12 +129,12 @@ namespace Pulumi.Cloudflare.Outputs
             ApplicationSource = applicationSource;
             ApplicationType = applicationType;
             ApplicationTypeDescription = applicationTypeDescription;
+            CategoryId = categoryId;
             CreatedAt = createdAt;
             GenAiScore = genAiScore;
             Hostnames = hostnames;
             HumanId = humanId;
             Id = id;
-            IntelId = intelId;
             IpSubnets = ipSubnets;
             Name = name;
             PortProtocols = portProtocols;

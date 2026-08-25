@@ -18,14 +18,14 @@ public final class ListItemHostnameArgs extends com.pulumi.resources.ResourceArg
     public static final ListItemHostnameArgs Empty = new ListItemHostnameArgs();
 
     /**
-     * Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+     * Only applies to wildcard hostnames (e.g., *.example.com). When true (default), the rule blocks only subdomains. When false, the rule blocks both the root domain and subdomains.
      * 
      */
     @Import(name="excludeExactHostname")
     private @Nullable Output<Boolean> excludeExactHostname;
 
     /**
-     * @return Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+     * @return Only applies to wildcard hostnames (e.g., *.example.com). When true (default), the rule blocks only subdomains. When false, the rule blocks both the root domain and subdomains.
      * 
      */
     public Optional<Output<Boolean>> excludeExactHostname() {
@@ -65,7 +65,7 @@ public final class ListItemHostnameArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param excludeExactHostname Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+         * @param excludeExactHostname Only applies to wildcard hostnames (e.g., *.example.com). When true (default), the rule blocks only subdomains. When false, the rule blocks both the root domain and subdomains.
          * 
          * @return builder
          * 
@@ -76,7 +76,7 @@ public final class ListItemHostnameArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param excludeExactHostname Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+         * @param excludeExactHostname Only applies to wildcard hostnames (e.g., *.example.com). When true (default), the rule blocks only subdomains. When false, the rule blocks both the root domain and subdomains.
          * 
          * @return builder
          * 

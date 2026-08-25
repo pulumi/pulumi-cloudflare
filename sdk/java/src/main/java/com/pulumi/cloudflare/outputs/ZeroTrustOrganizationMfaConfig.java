@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustOrganizationMfaConfig {
     /**
-     * @return Lists the MFA methods that users can authenticate with. `sshPivKey` is only relevant for infrastructure applications.
+     * @return Lists the MFA methods that users can authenticate with. The `pivKey` and `sshFido2Key` values are supported only for infrastructure applications.
      * 
      */
     private @Nullable List<String> allowedAuthenticators;
@@ -35,7 +35,7 @@ public final class ZeroTrustOrganizationMfaConfig {
 
     private ZeroTrustOrganizationMfaConfig() {}
     /**
-     * @return Lists the MFA methods that users can authenticate with. `sshPivKey` is only relevant for infrastructure applications.
+     * @return Lists the MFA methods that users can authenticate with. The `pivKey` and `sshFido2Key` values are supported only for infrastructure applications.
      * 
      */
     public List<String> allowedAuthenticators() {

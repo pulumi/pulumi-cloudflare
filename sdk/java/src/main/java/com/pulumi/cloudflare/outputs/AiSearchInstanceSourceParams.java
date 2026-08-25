@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiSearchInstanceSourceParams {
     /**
-     * @return List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+     * @return List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.
      * 
      */
     private @Nullable List<String> excludeItems;
     /**
-     * @return List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+     * @return List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.
      * 
      */
     private @Nullable List<String> includeItems;
@@ -29,14 +29,14 @@ public final class AiSearchInstanceSourceParams {
 
     private AiSearchInstanceSourceParams() {}
     /**
-     * @return List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+     * @return List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.
      * 
      */
     public List<String> excludeItems() {
         return this.excludeItems == null ? List.of() : this.excludeItems;
     }
     /**
-     * @return List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+     * @return List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.
      * 
      */
     public List<String> includeItems() {

@@ -353,14 +353,14 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="sessionDuration", refs={String.class}, tree="[0]")
-    private Output<String> sessionDuration;
+    private Output</* @Nullable */ String> sessionDuration;
 
     /**
      * @return The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      * 
      */
-    public Output<String> sessionDuration() {
-        return this.sessionDuration;
+    public Output<Optional<String>> sessionDuration() {
+        return Codegen.optional(this.sessionDuration);
     }
     @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;

@@ -13,16 +13,6 @@ import * as utilities from "./utilities";
  * - `Load Balancers Write`
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleLoadBalancer = cloudflare.getLoadBalancer({
- *     loadBalancerId: "699d98642c564d2e855e9661899b7252",
- *     zoneId: "zone_id",
- * });
- * ```
  */
 export function getLoadBalancer(args: GetLoadBalancerArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -147,16 +137,6 @@ export interface GetLoadBalancerResult {
  * - `Load Balancers Write`
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleLoadBalancer = cloudflare.getLoadBalancer({
- *     loadBalancerId: "699d98642c564d2e855e9661899b7252",
- *     zoneId: "zone_id",
- * });
- * ```
  */
 export function getLoadBalancerOutput(args: GetLoadBalancerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadBalancerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -23,6 +23,12 @@ public final class GetZeroTrustDlpPredefinedEntriesResult {
     private Boolean caseSensitive;
     private GetZeroTrustDlpPredefinedEntriesResultConfidence confidence;
     private String createdAt;
+    /**
+     * @return Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * emitted only when true.
+     * 
+     */
+    private Boolean deprecated;
     private String description;
     private Boolean enabled;
     private String id;
@@ -63,6 +69,14 @@ public final class GetZeroTrustDlpPredefinedEntriesResult {
     }
     public String createdAt() {
         return this.createdAt;
+    }
+    /**
+     * @return Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * emitted only when true.
+     * 
+     */
+    public Boolean deprecated() {
+        return this.deprecated;
     }
     public String description() {
         return this.description;
@@ -125,6 +139,7 @@ public final class GetZeroTrustDlpPredefinedEntriesResult {
         private Boolean caseSensitive;
         private GetZeroTrustDlpPredefinedEntriesResultConfidence confidence;
         private String createdAt;
+        private Boolean deprecated;
         private String description;
         private Boolean enabled;
         private String id;
@@ -143,6 +158,7 @@ public final class GetZeroTrustDlpPredefinedEntriesResult {
     	      this.caseSensitive = defaults.caseSensitive;
     	      this.confidence = defaults.confidence;
     	      this.createdAt = defaults.createdAt;
+    	      this.deprecated = defaults.deprecated;
     	      this.description = defaults.description;
     	      this.enabled = defaults.enabled;
     	      this.id = defaults.id;
@@ -179,6 +195,14 @@ public final class GetZeroTrustDlpPredefinedEntriesResult {
               throw new MissingRequiredPropertyException("GetZeroTrustDlpPredefinedEntriesResult", "createdAt");
             }
             this.createdAt = createdAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deprecated(Boolean deprecated) {
+            if (deprecated == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpPredefinedEntriesResult", "deprecated");
+            }
+            this.deprecated = deprecated;
             return this;
         }
         @CustomType.Setter
@@ -282,6 +306,7 @@ public final class GetZeroTrustDlpPredefinedEntriesResult {
             _resultValue.caseSensitive = caseSensitive;
             _resultValue.confidence = confidence;
             _resultValue.createdAt = createdAt;
+            _resultValue.deprecated = deprecated;
             _resultValue.description = description;
             _resultValue.enabled = enabled;
             _resultValue.id = id;

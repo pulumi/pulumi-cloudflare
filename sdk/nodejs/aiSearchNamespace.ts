@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -44,6 +46,8 @@ export class AiSearchNamespace extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     declare public readonly name: pulumi.Output<string>;
+    declare public /*out*/ readonly publicEndpointId: pulumi.Output<string>;
+    declare public readonly publicEndpointParams: pulumi.Output<outputs.AiSearchNamespacePublicEndpointParams>;
 
     /**
      * Create a AiSearchNamespace resource with the given unique name, arguments, and options.
@@ -62,6 +66,8 @@ export class AiSearchNamespace extends pulumi.CustomResource {
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["description"] = state?.description;
             resourceInputs["name"] = state?.name;
+            resourceInputs["publicEndpointId"] = state?.publicEndpointId;
+            resourceInputs["publicEndpointParams"] = state?.publicEndpointParams;
         } else {
             const args = argsOrState as AiSearchNamespaceArgs | undefined;
             if (args?.accountId === undefined && !opts.urn) {
@@ -73,7 +79,9 @@ export class AiSearchNamespace extends pulumi.CustomResource {
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
+            resourceInputs["publicEndpointParams"] = args?.publicEndpointParams;
             resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["publicEndpointId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AiSearchNamespace.__pulumiType, name, resourceInputs, opts);
@@ -91,6 +99,8 @@ export interface AiSearchNamespaceState {
      */
     description?: pulumi.Input<string | undefined>;
     name?: pulumi.Input<string | undefined>;
+    publicEndpointId?: pulumi.Input<string | undefined>;
+    publicEndpointParams?: pulumi.Input<inputs.AiSearchNamespacePublicEndpointParams | undefined>;
 }
 
 /**
@@ -103,4 +113,5 @@ export interface AiSearchNamespaceArgs {
      */
     description?: pulumi.Input<string | undefined>;
     name: pulumi.Input<string>;
+    publicEndpointParams?: pulumi.Input<inputs.AiSearchNamespacePublicEndpointParams | undefined>;
 }

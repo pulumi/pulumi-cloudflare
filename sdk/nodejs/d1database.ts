@@ -77,7 +77,7 @@ export class D1Database extends pulumi.CustomResource {
     declare public /*out*/ readonly fileSize: pulumi.Output<number>;
     /**
      * Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-     * Available values: "eu", "fedramp".
+     * Available values: "eu", "fedramp", "us".
      */
     declare public readonly jurisdiction: pulumi.Output<string | undefined>;
     /**
@@ -165,7 +165,7 @@ export interface D1DatabaseState {
     fileSize?: pulumi.Input<number | undefined>;
     /**
      * Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-     * Available values: "eu", "fedramp".
+     * Available values: "eu", "fedramp", "us".
      */
     jurisdiction?: pulumi.Input<string | undefined>;
     /**
@@ -199,7 +199,7 @@ export interface D1DatabaseArgs {
     accountId: pulumi.Input<string>;
     /**
      * Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-     * Available values: "eu", "fedramp".
+     * Available values: "eu", "fedramp", "us".
      */
     jurisdiction?: pulumi.Input<string | undefined>;
     /**

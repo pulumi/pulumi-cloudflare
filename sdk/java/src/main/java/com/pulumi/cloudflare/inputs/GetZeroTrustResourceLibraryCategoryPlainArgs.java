@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -25,13 +26,13 @@ public final class GetZeroTrustResourceLibraryCategoryPlainArgs extends com.pulu
      * 
      */
     @Import(name="id", required=true)
-    private String id;
+    private Integer id;
 
     /**
      * @return The ID of this resource.
      * 
      */
-    public String id() {
+    public Integer id() {
         return this.id;
     }
 
@@ -71,7 +72,7 @@ public final class GetZeroTrustResourceLibraryCategoryPlainArgs extends com.pulu
          * @return builder
          * 
          */
-        public Builder id(String id) {
+        public Builder id(Integer id) {
             $.id = id;
             return this;
         }

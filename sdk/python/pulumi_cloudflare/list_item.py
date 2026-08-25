@@ -35,7 +35,7 @@ class ListItemInitArgs:
         :param pulumi.Input[_builtins.str] list_id: The unique ID of the list.
         :param pulumi.Input[_builtins.int] asn: A non-negative 32 bit integer
         :param pulumi.Input[_builtins.str] comment: An informative summary of the list item.
-        :param pulumi.Input['ListItemHostnameArgs'] hostname: Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+        :param pulumi.Input['ListItemHostnameArgs'] hostname: Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         :param pulumi.Input[_builtins.str] ip: An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
         :param pulumi.Input['ListItemRedirectArgs'] redirect: The definition of the redirect.
         """
@@ -104,7 +104,7 @@ class ListItemInitArgs:
     @pulumi.getter
     def hostname(self) -> pulumi.Input[Optional['ListItemHostnameArgs']]:
         """
-        Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+        Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         """
         return pulumi.get(self, "hostname")
 
@@ -157,7 +157,7 @@ class _ListItemState:
         :param pulumi.Input[_builtins.int] asn: A non-negative 32 bit integer
         :param pulumi.Input[_builtins.str] comment: An informative summary of the list item.
         :param pulumi.Input[_builtins.str] created_on: The RFC 3339 timestamp of when the item was created.
-        :param pulumi.Input['ListItemHostnameArgs'] hostname: Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+        :param pulumi.Input['ListItemHostnameArgs'] hostname: Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         :param pulumi.Input[_builtins.str] ip: An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
         :param pulumi.Input[_builtins.str] list_id: The unique ID of the list.
         :param pulumi.Input[_builtins.str] modified_on: The RFC 3339 timestamp of when the item was last modified.
@@ -237,7 +237,7 @@ class _ListItemState:
     @pulumi.getter
     def hostname(self) -> pulumi.Input[Optional['ListItemHostnameArgs']]:
         """
-        Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+        Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         """
         return pulumi.get(self, "hostname")
 
@@ -350,7 +350,7 @@ class ListItem(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: The Account ID for this resource.
         :param pulumi.Input[_builtins.int] asn: A non-negative 32 bit integer
         :param pulumi.Input[_builtins.str] comment: An informative summary of the list item.
-        :param pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']] hostname: Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+        :param pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']] hostname: Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         :param pulumi.Input[_builtins.str] ip: An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
         :param pulumi.Input[_builtins.str] list_id: The unique ID of the list.
         :param pulumi.Input[Union['ListItemRedirectArgs', 'ListItemRedirectArgsDict']] redirect: The definition of the redirect.
@@ -462,7 +462,7 @@ class ListItem(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] asn: A non-negative 32 bit integer
         :param pulumi.Input[_builtins.str] comment: An informative summary of the list item.
         :param pulumi.Input[_builtins.str] created_on: The RFC 3339 timestamp of when the item was created.
-        :param pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']] hostname: Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+        :param pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']] hostname: Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         :param pulumi.Input[_builtins.str] ip: An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
         :param pulumi.Input[_builtins.str] list_id: The unique ID of the list.
         :param pulumi.Input[_builtins.str] modified_on: The RFC 3339 timestamp of when the item was last modified.
@@ -521,7 +521,7 @@ class ListItem(pulumi.CustomResource):
     @pulumi.getter
     def hostname(self) -> pulumi.Output[Optional['outputs.ListItemHostname']]:
         """
-        Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+        Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         """
         return pulumi.get(self, "hostname")
 

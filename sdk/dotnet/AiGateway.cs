@@ -43,6 +43,7 @@ namespace Pulumi.Cloudflare
     ///         RetryBackoff = "constant",
     ///         RetryDelay = 0,
     ///         RetryMaxAttempts = 1,
+    ///         StoreId = "store_id",
     ///         WorkersAiBillingMode = "postpaid",
     ///         Zdr = true,
     ///     });
@@ -91,6 +92,9 @@ namespace Pulumi.Cloudflare
 
         [Output("isDefault")]
         public Output<bool> IsDefault { get; private set; } = null!;
+
+        [Output("logClassification")]
+        public Output<bool?> LogClassification { get; private set; } = null!;
 
         [Output("logManagement")]
         public Output<int?> LogManagement { get; private set; } = null!;
@@ -154,8 +158,8 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.AiGatewayStripe?> Stripe { get; private set; } = null!;
 
         /// <summary>
-        /// Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-        /// Available values: "postpaid".
+        /// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+        /// Available values: "postpaid", "unified".
         /// </summary>
         [Output("workersAiBillingMode")]
         public Output<string> WorkersAiBillingMode { get; private set; } = null!;
@@ -236,6 +240,9 @@ namespace Pulumi.Cloudflare
         [Input("guardrails")]
         public Input<Inputs.AiGatewayGuardrailsArgs>? Guardrails { get; set; }
 
+        [Input("logClassification")]
+        public Input<bool>? LogClassification { get; set; }
+
         [Input("logManagement")]
         public Input<int>? LogManagement { get; set; }
 
@@ -300,8 +307,8 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.AiGatewayStripeArgs>? Stripe { get; set; }
 
         /// <summary>
-        /// Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-        /// Available values: "postpaid".
+        /// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+        /// Available values: "postpaid", "unified".
         /// </summary>
         [Input("workersAiBillingMode")]
         public Input<string>? WorkersAiBillingMode { get; set; }
@@ -349,6 +356,9 @@ namespace Pulumi.Cloudflare
 
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
+
+        [Input("logClassification")]
+        public Input<bool>? LogClassification { get; set; }
 
         [Input("logManagement")]
         public Input<int>? LogManagement { get; set; }
@@ -417,8 +427,8 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.AiGatewayStripeGetArgs>? Stripe { get; set; }
 
         /// <summary>
-        /// Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-        /// Available values: "postpaid".
+        /// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+        /// Available values: "postpaid", "unified".
         /// </summary>
         [Input("workersAiBillingMode")]
         public Input<string>? WorkersAiBillingMode { get; set; }

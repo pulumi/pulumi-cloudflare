@@ -93,14 +93,14 @@ public final class ZeroTrustAccessApplicationDestinationArgs extends com.pulumi.
     }
 
     /**
-     * Available values: &#34;public&#34;, &#34;private&#34;.
+     * Available values: &#34;public&#34;, &#34;private&#34;, &#34;via*mcp*server*portal&#34;, &#34;worker&#34;, &#34;preview*worker&#34;, &#34;all*workers&#34;, &#34;all*preview_workers&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Available values: &#34;public&#34;, &#34;private&#34;.
+     * @return Available values: &#34;public&#34;, &#34;private&#34;, &#34;via*mcp*server*portal&#34;, &#34;worker&#34;, &#34;preview*worker&#34;, &#34;all*workers&#34;, &#34;all*preview_workers&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -137,6 +137,21 @@ public final class ZeroTrustAccessApplicationDestinationArgs extends com.pulumi.
         return Optional.ofNullable(this.vnetId);
     }
 
+    /**
+     * The ID of the Cloudflare Worker to protect with Access. Required when type is `worker` or `previewWorker`.
+     * 
+     */
+    @Import(name="workerId")
+    private @Nullable Output<String> workerId;
+
+    /**
+     * @return The ID of the Cloudflare Worker to protect with Access. Required when type is `worker` or `previewWorker`.
+     * 
+     */
+    public Optional<Output<String>> workerId() {
+        return Optional.ofNullable(this.workerId);
+    }
+
     private ZeroTrustAccessApplicationDestinationArgs() {}
 
     private ZeroTrustAccessApplicationDestinationArgs(ZeroTrustAccessApplicationDestinationArgs $) {
@@ -148,6 +163,7 @@ public final class ZeroTrustAccessApplicationDestinationArgs extends com.pulumi.
         this.type = $.type;
         this.uri = $.uri;
         this.vnetId = $.vnetId;
+        this.workerId = $.workerId;
     }
 
     public static Builder builder() {
@@ -276,7 +292,7 @@ public final class ZeroTrustAccessApplicationDestinationArgs extends com.pulumi.
         }
 
         /**
-         * @param type Available values: &#34;public&#34;, &#34;private&#34;.
+         * @param type Available values: &#34;public&#34;, &#34;private&#34;, &#34;via*mcp*server*portal&#34;, &#34;worker&#34;, &#34;preview*worker&#34;, &#34;all*workers&#34;, &#34;all*preview_workers&#34;.
          * 
          * @return builder
          * 
@@ -287,7 +303,7 @@ public final class ZeroTrustAccessApplicationDestinationArgs extends com.pulumi.
         }
 
         /**
-         * @param type Available values: &#34;public&#34;, &#34;private&#34;.
+         * @param type Available values: &#34;public&#34;, &#34;private&#34;, &#34;via*mcp*server*portal&#34;, &#34;worker&#34;, &#34;preview*worker&#34;, &#34;all*workers&#34;, &#34;all*preview_workers&#34;.
          * 
          * @return builder
          * 
@@ -336,6 +352,27 @@ public final class ZeroTrustAccessApplicationDestinationArgs extends com.pulumi.
          */
         public Builder vnetId(String vnetId) {
             return vnetId(Output.of(vnetId));
+        }
+
+        /**
+         * @param workerId The ID of the Cloudflare Worker to protect with Access. Required when type is `worker` or `previewWorker`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workerId(@Nullable Output<String> workerId) {
+            $.workerId = workerId;
+            return this;
+        }
+
+        /**
+         * @param workerId The ID of the Cloudflare Worker to protect with Access. Required when type is `worker` or `previewWorker`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workerId(String workerId) {
+            return workerId(Output.of(workerId));
         }
 
         public ZeroTrustAccessApplicationDestinationArgs build() {

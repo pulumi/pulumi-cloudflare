@@ -119,6 +119,10 @@ export class LoadBalancerPool extends pulumi.CustomResource {
      */
     declare public readonly enabled: pulumi.Output<boolean>;
     /**
+     * A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+     */
+    declare public readonly healthSources: pulumi.Output<string[] | undefined>;
+    /**
      * The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
      */
     declare public readonly latitude: pulumi.Output<number | undefined>;
@@ -187,6 +191,7 @@ export class LoadBalancerPool extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["disabledAt"] = state?.disabledAt;
             resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["healthSources"] = state?.healthSources;
             resourceInputs["latitude"] = state?.latitude;
             resourceInputs["loadShedding"] = state?.loadShedding;
             resourceInputs["longitude"] = state?.longitude;
@@ -215,6 +220,7 @@ export class LoadBalancerPool extends pulumi.CustomResource {
             resourceInputs["checkRegions"] = args?.checkRegions;
             resourceInputs["description"] = args?.description;
             resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["healthSources"] = args?.healthSources;
             resourceInputs["latitude"] = args?.latitude;
             resourceInputs["loadShedding"] = args?.loadShedding;
             resourceInputs["longitude"] = args?.longitude;
@@ -261,6 +267,10 @@ export interface LoadBalancerPoolState {
      * Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
      */
     enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+     */
+    healthSources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
      */
@@ -332,6 +342,10 @@ export interface LoadBalancerPoolArgs {
      * Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
      */
     enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+     */
+    healthSources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
      */

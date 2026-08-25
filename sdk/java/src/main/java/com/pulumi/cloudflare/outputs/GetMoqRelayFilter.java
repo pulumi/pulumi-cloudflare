@@ -35,10 +35,11 @@ public final class GetMoqRelayFilter {
      */
     private @Nullable String createdBefore;
     /**
-     * @return Maximum number of relays to return per page.
+     * @return Maximum number of relays to return per page. Values above the maximum are
+     * clamped to it rather than rejected.
      * 
      */
-    private @Nullable Integer perPage;
+    private Integer perPage;
 
     private GetMoqRelayFilter() {}
     /**
@@ -68,11 +69,12 @@ public final class GetMoqRelayFilter {
         return Optional.ofNullable(this.createdBefore);
     }
     /**
-     * @return Maximum number of relays to return per page.
+     * @return Maximum number of relays to return per page. Values above the maximum are
+     * clamped to it rather than rejected.
      * 
      */
-    public Optional<Integer> perPage() {
-        return Optional.ofNullable(this.perPage);
+    public Integer perPage() {
+        return this.perPage;
     }
 
     public static Builder builder() {
@@ -87,7 +89,7 @@ public final class GetMoqRelayFilter {
         private Boolean asc;
         private @Nullable String createdAfter;
         private @Nullable String createdBefore;
-        private @Nullable Integer perPage;
+        private Integer perPage;
         public Builder() {}
         public Builder(GetMoqRelayFilter defaults) {
     	      Objects.requireNonNull(defaults);
@@ -118,8 +120,10 @@ public final class GetMoqRelayFilter {
             return this;
         }
         @CustomType.Setter
-        public Builder perPage(@Nullable Integer perPage) {
-
+        public Builder perPage(Integer perPage) {
+            if (perPage == null) {
+              throw new MissingRequiredPropertyException("GetMoqRelayFilter", "perPage");
+            }
             this.perPage = perPage;
             return this;
         }

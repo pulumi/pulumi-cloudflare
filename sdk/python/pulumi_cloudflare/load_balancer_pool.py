@@ -27,6 +27,7 @@ class LoadBalancerPoolArgs:
                  check_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 health_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  latitude: pulumi.Input[Optional[_builtins.float]] = None,
                  load_shedding: pulumi.Input[Optional['LoadBalancerPoolLoadSheddingArgs']] = None,
                  longitude: pulumi.Input[Optional[_builtins.float]] = None,
@@ -45,6 +46,7 @@ class LoadBalancerPoolArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] check_regions: A list of regions from which to run health checks. Null means every Cloudflare data center.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the pool.
         :param pulumi.Input[_builtins.bool] enabled: Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] health_sources: A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
         :param pulumi.Input[_builtins.float] latitude: The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
         :param pulumi.Input['LoadBalancerPoolLoadSheddingArgs'] load_shedding: Configures load shedding policies and percentages for the pool.
         :param pulumi.Input[_builtins.float] longitude: The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
@@ -64,6 +66,8 @@ class LoadBalancerPoolArgs:
             pulumi.set(__self__, "description", description)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if health_sources is not None:
+            pulumi.set(__self__, "health_sources", health_sources)
         if latitude is not None:
             pulumi.set(__self__, "latitude", latitude)
         if load_shedding is not None:
@@ -154,6 +158,18 @@ class LoadBalancerPoolArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="healthSources")
+    def health_sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+        """
+        return pulumi.get(self, "health_sources")
+
+    @health_sources.setter
+    def health_sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "health_sources", value)
 
     @_builtins.property
     @pulumi.getter
@@ -273,6 +289,7 @@ class _LoadBalancerPoolState:
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled_at: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 health_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  latitude: pulumi.Input[Optional[_builtins.float]] = None,
                  load_shedding: pulumi.Input[Optional['LoadBalancerPoolLoadSheddingArgs']] = None,
                  longitude: pulumi.Input[Optional[_builtins.float]] = None,
@@ -294,6 +311,7 @@ class _LoadBalancerPoolState:
         :param pulumi.Input[_builtins.str] description: A human-readable description of the pool.
         :param pulumi.Input[_builtins.str] disabled_at: This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.
         :param pulumi.Input[_builtins.bool] enabled: Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] health_sources: A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
         :param pulumi.Input[_builtins.float] latitude: The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
         :param pulumi.Input['LoadBalancerPoolLoadSheddingArgs'] load_shedding: Configures load shedding policies and percentages for the pool.
         :param pulumi.Input[_builtins.float] longitude: The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
@@ -319,6 +337,8 @@ class _LoadBalancerPoolState:
             pulumi.set(__self__, "disabled_at", disabled_at)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if health_sources is not None:
+            pulumi.set(__self__, "health_sources", health_sources)
         if latitude is not None:
             pulumi.set(__self__, "latitude", latitude)
         if load_shedding is not None:
@@ -414,6 +434,18 @@ class _LoadBalancerPoolState:
     @enabled.setter
     def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="healthSources")
+    def health_sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+        """
+        return pulumi.get(self, "health_sources")
+
+    @health_sources.setter
+    def health_sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "health_sources", value)
 
     @_builtins.property
     @pulumi.getter
@@ -579,6 +611,7 @@ class LoadBalancerPool(pulumi.CustomResource):
                  check_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 health_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  latitude: pulumi.Input[Optional[_builtins.float]] = None,
                  load_shedding: pulumi.Input[Optional[Union['LoadBalancerPoolLoadSheddingArgs', 'LoadBalancerPoolLoadSheddingArgsDict']]] = None,
                  longitude: pulumi.Input[Optional[_builtins.float]] = None,
@@ -660,6 +693,7 @@ class LoadBalancerPool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] check_regions: A list of regions from which to run health checks. Null means every Cloudflare data center.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the pool.
         :param pulumi.Input[_builtins.bool] enabled: Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] health_sources: A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
         :param pulumi.Input[_builtins.float] latitude: The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
         :param pulumi.Input[Union['LoadBalancerPoolLoadSheddingArgs', 'LoadBalancerPoolLoadSheddingArgsDict']] load_shedding: Configures load shedding policies and percentages for the pool.
         :param pulumi.Input[_builtins.float] longitude: The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
@@ -760,6 +794,7 @@ class LoadBalancerPool(pulumi.CustomResource):
                  check_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 health_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  latitude: pulumi.Input[Optional[_builtins.float]] = None,
                  load_shedding: pulumi.Input[Optional[Union['LoadBalancerPoolLoadSheddingArgs', 'LoadBalancerPoolLoadSheddingArgsDict']]] = None,
                  longitude: pulumi.Input[Optional[_builtins.float]] = None,
@@ -786,6 +821,7 @@ class LoadBalancerPool(pulumi.CustomResource):
             __props__.__dict__["check_regions"] = check_regions
             __props__.__dict__["description"] = description
             __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["health_sources"] = health_sources
             __props__.__dict__["latitude"] = latitude
             __props__.__dict__["load_shedding"] = load_shedding
             __props__.__dict__["longitude"] = longitude
@@ -821,6 +857,7 @@ class LoadBalancerPool(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             disabled_at: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            health_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             latitude: pulumi.Input[Optional[_builtins.float]] = None,
             load_shedding: pulumi.Input[Optional[Union['LoadBalancerPoolLoadSheddingArgs', 'LoadBalancerPoolLoadSheddingArgsDict']]] = None,
             longitude: pulumi.Input[Optional[_builtins.float]] = None,
@@ -846,6 +883,7 @@ class LoadBalancerPool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: A human-readable description of the pool.
         :param pulumi.Input[_builtins.str] disabled_at: This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.
         :param pulumi.Input[_builtins.bool] enabled: Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] health_sources: A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
         :param pulumi.Input[_builtins.float] latitude: The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
         :param pulumi.Input[Union['LoadBalancerPoolLoadSheddingArgs', 'LoadBalancerPoolLoadSheddingArgsDict']] load_shedding: Configures load shedding policies and percentages for the pool.
         :param pulumi.Input[_builtins.float] longitude: The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
@@ -869,6 +907,7 @@ class LoadBalancerPool(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["disabled_at"] = disabled_at
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["health_sources"] = health_sources
         __props__.__dict__["latitude"] = latitude
         __props__.__dict__["load_shedding"] = load_shedding
         __props__.__dict__["longitude"] = longitude
@@ -928,6 +967,14 @@ class LoadBalancerPool(pulumi.CustomResource):
         Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="healthSources")
+    def health_sources(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+        """
+        return pulumi.get(self, "health_sources")
 
     @_builtins.property
     @pulumi.getter

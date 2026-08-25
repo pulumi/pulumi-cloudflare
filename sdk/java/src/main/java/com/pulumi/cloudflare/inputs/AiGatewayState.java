@@ -101,6 +101,13 @@ public final class AiGatewayState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.isDefault);
     }
 
+    @Import(name="logClassification")
+    private @Nullable Output<Boolean> logClassification;
+
+    public Optional<Output<Boolean>> logClassification() {
+        return Optional.ofNullable(this.logClassification);
+    }
+
     @Import(name="logManagement")
     private @Nullable Output<Integer> logManagement;
 
@@ -249,16 +256,16 @@ public final class AiGatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Controls how Workers AI inference calls routed through this gateway are billed. Only &#39;postpaid&#39; is currently supported.
-     * Available values: &#34;postpaid&#34;.
+     * Controls how Workers AI inference calls routed through this gateway are billed. &#39;postpaid&#39; bills the account directly through Workers AI; &#39;unified&#39; deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+     * Available values: &#34;postpaid&#34;, &#34;unified&#34;.
      * 
      */
     @Import(name="workersAiBillingMode")
     private @Nullable Output<String> workersAiBillingMode;
 
     /**
-     * @return Controls how Workers AI inference calls routed through this gateway are billed. Only &#39;postpaid&#39; is currently supported.
-     * Available values: &#34;postpaid&#34;.
+     * @return Controls how Workers AI inference calls routed through this gateway are billed. &#39;postpaid&#39; bills the account directly through Workers AI; &#39;unified&#39; deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+     * Available values: &#34;postpaid&#34;, &#34;unified&#34;.
      * 
      */
     public Optional<Output<String>> workersAiBillingMode() {
@@ -285,6 +292,7 @@ public final class AiGatewayState extends com.pulumi.resources.ResourceArgs {
         this.dlp = $.dlp;
         this.guardrails = $.guardrails;
         this.isDefault = $.isDefault;
+        this.logClassification = $.logClassification;
         this.logManagement = $.logManagement;
         this.logManagementStrategy = $.logManagementStrategy;
         this.logpush = $.logpush;
@@ -422,6 +430,15 @@ public final class AiGatewayState extends com.pulumi.resources.ResourceArgs {
 
         public Builder isDefault(Boolean isDefault) {
             return isDefault(Output.of(isDefault));
+        }
+
+        public Builder logClassification(@Nullable Output<Boolean> logClassification) {
+            $.logClassification = logClassification;
+            return this;
+        }
+
+        public Builder logClassification(Boolean logClassification) {
+            return logClassification(Output.of(logClassification));
         }
 
         public Builder logManagement(@Nullable Output<Integer> logManagement) {
@@ -626,8 +643,8 @@ public final class AiGatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workersAiBillingMode Controls how Workers AI inference calls routed through this gateway are billed. Only &#39;postpaid&#39; is currently supported.
-         * Available values: &#34;postpaid&#34;.
+         * @param workersAiBillingMode Controls how Workers AI inference calls routed through this gateway are billed. &#39;postpaid&#39; bills the account directly through Workers AI; &#39;unified&#39; deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+         * Available values: &#34;postpaid&#34;, &#34;unified&#34;.
          * 
          * @return builder
          * 
@@ -638,8 +655,8 @@ public final class AiGatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workersAiBillingMode Controls how Workers AI inference calls routed through this gateway are billed. Only &#39;postpaid&#39; is currently supported.
-         * Available values: &#34;postpaid&#34;.
+         * @param workersAiBillingMode Controls how Workers AI inference calls routed through this gateway are billed. &#39;postpaid&#39; bills the account directly through Workers AI; &#39;unified&#39; deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+         * Available values: &#34;postpaid&#34;, &#34;unified&#34;.
          * 
          * @return builder
          * 

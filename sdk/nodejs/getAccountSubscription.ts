@@ -20,6 +20,7 @@ import * as utilities from "./utilities";
  *
  * const exampleAccountSubscription = cloudflare.getAccountSubscription({
  *     accountId: "account_id",
+ *     zoneId: "zone_id",
  * });
  * ```
  */
@@ -107,6 +108,7 @@ export interface GetAccountSubscriptionResult {
  *
  * const exampleAccountSubscription = cloudflare.getAccountSubscription({
  *     accountId: "account_id",
+ *     zoneId: "zone_id",
  * });
  * ```
  */

@@ -295,12 +295,14 @@ type AccessApplicationDestination struct {
 	McpServerId *string `pulumi:"mcpServerId"`
 	// The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
 	PortRange *string `pulumi:"portRange"`
-	// Available values: "public", "private".
+	// Available values: "public", "private", "via*mcp*server*portal", "worker", "preview*worker", "all*workers", "all*preview_workers".
 	Type *string `pulumi:"type"`
 	// The URI of the destination. Public destinations' URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).
 	Uri *string `pulumi:"uri"`
 	// The VNET ID to match the destination. When omitted, all VNETs will match.
 	VnetId *string `pulumi:"vnetId"`
+	// The ID of the Cloudflare Worker to protect with Access. Required when type is `worker` or `previewWorker`.
+	WorkerId *string `pulumi:"workerId"`
 }
 
 // AccessApplicationDestinationInput is an input type that accepts AccessApplicationDestinationArgs and AccessApplicationDestinationOutput values.
@@ -326,12 +328,14 @@ type AccessApplicationDestinationArgs struct {
 	McpServerId pulumi.StringPtrInput `pulumi:"mcpServerId"`
 	// The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
 	PortRange pulumi.StringPtrInput `pulumi:"portRange"`
-	// Available values: "public", "private".
+	// Available values: "public", "private", "via*mcp*server*portal", "worker", "preview*worker", "all*workers", "all*preview_workers".
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// The URI of the destination. Public destinations' URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 	// The VNET ID to match the destination. When omitted, all VNETs will match.
 	VnetId pulumi.StringPtrInput `pulumi:"vnetId"`
+	// The ID of the Cloudflare Worker to protect with Access. Required when type is `worker` or `previewWorker`.
+	WorkerId pulumi.StringPtrInput `pulumi:"workerId"`
 }
 
 func (AccessApplicationDestinationArgs) ElementType() reflect.Type {
@@ -411,7 +415,7 @@ func (o AccessApplicationDestinationOutput) PortRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationDestination) *string { return v.PortRange }).(pulumi.StringPtrOutput)
 }
 
-// Available values: "public", "private".
+// Available values: "public", "private", "via*mcp*server*portal", "worker", "preview*worker", "all*workers", "all*preview_workers".
 func (o AccessApplicationDestinationOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationDestination) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -424,6 +428,11 @@ func (o AccessApplicationDestinationOutput) Uri() pulumi.StringPtrOutput {
 // The VNET ID to match the destination. When omitted, all VNETs will match.
 func (o AccessApplicationDestinationOutput) VnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationDestination) *string { return v.VnetId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Cloudflare Worker to protect with Access. Required when type is `worker` or `previewWorker`.
+func (o AccessApplicationDestinationOutput) WorkerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationDestination) *string { return v.WorkerId }).(pulumi.StringPtrOutput)
 }
 
 type AccessApplicationDestinationArrayOutput struct{ *pulumi.OutputState }
@@ -15949,6 +15958,121 @@ func (o AccessApplicationTargetCriteriaArrayOutput) Index(i pulumi.IntInput) Acc
 	}).(AccessApplicationTargetCriteriaOutput)
 }
 
+type AccessCustomPageWarning struct {
+	// Human-readable description of the finding.
+	Message *string `pulumi:"message"`
+	// Optional pointer to the part of the template the finding refers to.
+	Ref *string `pulumi:"ref"`
+	// The validation tier that produced the finding (e.g. html, liquid).
+	Tier *string `pulumi:"tier"`
+}
+
+// AccessCustomPageWarningInput is an input type that accepts AccessCustomPageWarningArgs and AccessCustomPageWarningOutput values.
+// You can construct a concrete instance of `AccessCustomPageWarningInput` via:
+//
+//	AccessCustomPageWarningArgs{...}
+type AccessCustomPageWarningInput interface {
+	pulumi.Input
+
+	ToAccessCustomPageWarningOutput() AccessCustomPageWarningOutput
+	ToAccessCustomPageWarningOutputWithContext(context.Context) AccessCustomPageWarningOutput
+}
+
+type AccessCustomPageWarningArgs struct {
+	// Human-readable description of the finding.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// Optional pointer to the part of the template the finding refers to.
+	Ref pulumi.StringPtrInput `pulumi:"ref"`
+	// The validation tier that produced the finding (e.g. html, liquid).
+	Tier pulumi.StringPtrInput `pulumi:"tier"`
+}
+
+func (AccessCustomPageWarningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessCustomPageWarning)(nil)).Elem()
+}
+
+func (i AccessCustomPageWarningArgs) ToAccessCustomPageWarningOutput() AccessCustomPageWarningOutput {
+	return i.ToAccessCustomPageWarningOutputWithContext(context.Background())
+}
+
+func (i AccessCustomPageWarningArgs) ToAccessCustomPageWarningOutputWithContext(ctx context.Context) AccessCustomPageWarningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessCustomPageWarningOutput)
+}
+
+// AccessCustomPageWarningArrayInput is an input type that accepts AccessCustomPageWarningArray and AccessCustomPageWarningArrayOutput values.
+// You can construct a concrete instance of `AccessCustomPageWarningArrayInput` via:
+//
+//	AccessCustomPageWarningArray{ AccessCustomPageWarningArgs{...} }
+type AccessCustomPageWarningArrayInput interface {
+	pulumi.Input
+
+	ToAccessCustomPageWarningArrayOutput() AccessCustomPageWarningArrayOutput
+	ToAccessCustomPageWarningArrayOutputWithContext(context.Context) AccessCustomPageWarningArrayOutput
+}
+
+type AccessCustomPageWarningArray []AccessCustomPageWarningInput
+
+func (AccessCustomPageWarningArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessCustomPageWarning)(nil)).Elem()
+}
+
+func (i AccessCustomPageWarningArray) ToAccessCustomPageWarningArrayOutput() AccessCustomPageWarningArrayOutput {
+	return i.ToAccessCustomPageWarningArrayOutputWithContext(context.Background())
+}
+
+func (i AccessCustomPageWarningArray) ToAccessCustomPageWarningArrayOutputWithContext(ctx context.Context) AccessCustomPageWarningArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessCustomPageWarningArrayOutput)
+}
+
+type AccessCustomPageWarningOutput struct{ *pulumi.OutputState }
+
+func (AccessCustomPageWarningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessCustomPageWarning)(nil)).Elem()
+}
+
+func (o AccessCustomPageWarningOutput) ToAccessCustomPageWarningOutput() AccessCustomPageWarningOutput {
+	return o
+}
+
+func (o AccessCustomPageWarningOutput) ToAccessCustomPageWarningOutputWithContext(ctx context.Context) AccessCustomPageWarningOutput {
+	return o
+}
+
+// Human-readable description of the finding.
+func (o AccessCustomPageWarningOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessCustomPageWarning) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// Optional pointer to the part of the template the finding refers to.
+func (o AccessCustomPageWarningOutput) Ref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessCustomPageWarning) *string { return v.Ref }).(pulumi.StringPtrOutput)
+}
+
+// The validation tier that produced the finding (e.g. html, liquid).
+func (o AccessCustomPageWarningOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessCustomPageWarning) *string { return v.Tier }).(pulumi.StringPtrOutput)
+}
+
+type AccessCustomPageWarningArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessCustomPageWarningArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessCustomPageWarning)(nil)).Elem()
+}
+
+func (o AccessCustomPageWarningArrayOutput) ToAccessCustomPageWarningArrayOutput() AccessCustomPageWarningArrayOutput {
+	return o
+}
+
+func (o AccessCustomPageWarningArrayOutput) ToAccessCustomPageWarningArrayOutputWithContext(ctx context.Context) AccessCustomPageWarningArrayOutput {
+	return o
+}
+
+func (o AccessCustomPageWarningArrayOutput) Index(i pulumi.IntInput) AccessCustomPageWarningOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessCustomPageWarning {
+		return vs[0].([]AccessCustomPageWarning)[vs[1].(int)]
+	}).(AccessCustomPageWarningOutput)
+}
+
 type AccessGroupExclude struct {
 	// An empty object which matches on all service tokens.
 	AnyValidServiceToken    *AccessGroupExcludeAnyValidServiceToken    `pulumi:"anyValidServiceToken"`
@@ -29838,7 +29962,7 @@ func (o AccessOrganizationLoginDesignPtrOutput) TextColor() pulumi.StringPtrOutp
 }
 
 type AccessOrganizationMfaConfig struct {
-	// Lists the MFA methods that users can authenticate with. `sshPivKey` is only relevant for infrastructure applications.
+	// Lists the MFA methods that users can authenticate with. The `pivKey` and `sshFido2Key` values are supported only for infrastructure applications.
 	AllowedAuthenticators []string `pulumi:"allowedAuthenticators"`
 	// Allows a user to skip MFA via Authentication Method Reference (AMR) matching when the AMR claim provided by the IdP the user used to authenticate contains "mfa". Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days).
 	AmrMatchingSessionDuration *string `pulumi:"amrMatchingSessionDuration"`
@@ -29860,7 +29984,7 @@ type AccessOrganizationMfaConfigInput interface {
 }
 
 type AccessOrganizationMfaConfigArgs struct {
-	// Lists the MFA methods that users can authenticate with. `sshPivKey` is only relevant for infrastructure applications.
+	// Lists the MFA methods that users can authenticate with. The `pivKey` and `sshFido2Key` values are supported only for infrastructure applications.
 	AllowedAuthenticators pulumi.StringArrayInput `pulumi:"allowedAuthenticators"`
 	// Allows a user to skip MFA via Authentication Method Reference (AMR) matching when the AMR claim provided by the IdP the user used to authenticate contains "mfa". Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days).
 	AmrMatchingSessionDuration pulumi.StringPtrInput `pulumi:"amrMatchingSessionDuration"`
@@ -29947,7 +30071,7 @@ func (o AccessOrganizationMfaConfigOutput) ToAccessOrganizationMfaConfigPtrOutpu
 	}).(AccessOrganizationMfaConfigPtrOutput)
 }
 
-// Lists the MFA methods that users can authenticate with. `sshPivKey` is only relevant for infrastructure applications.
+// Lists the MFA methods that users can authenticate with. The `pivKey` and `sshFido2Key` values are supported only for infrastructure applications.
 func (o AccessOrganizationMfaConfigOutput) AllowedAuthenticators() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessOrganizationMfaConfig) []string { return v.AllowedAuthenticators }).(pulumi.StringArrayOutput)
 }
@@ -29991,7 +30115,7 @@ func (o AccessOrganizationMfaConfigPtrOutput) Elem() AccessOrganizationMfaConfig
 	}).(AccessOrganizationMfaConfigOutput)
 }
 
-// Lists the MFA methods that users can authenticate with. `sshPivKey` is only relevant for infrastructure applications.
+// Lists the MFA methods that users can authenticate with. The `pivKey` and `sshFido2Key` values are supported only for infrastructure applications.
 func (o AccessOrganizationMfaConfigPtrOutput) AllowedAuthenticators() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessOrganizationMfaConfig) []string {
 		if v == nil {
@@ -53105,9 +53229,9 @@ func (o AiSearchInstanceRetrievalOptionsBoostByArrayOutput) Index(i pulumi.IntIn
 }
 
 type AiSearchInstanceSourceParams struct {
-	// List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+	// List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.
 	ExcludeItems []string `pulumi:"excludeItems"`
-	// List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+	// List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.
 	IncludeItems   []string                                `pulumi:"includeItems"`
 	Prefix         *string                                 `pulumi:"prefix"`
 	R2Jurisdiction *string                                 `pulumi:"r2Jurisdiction"`
@@ -53126,9 +53250,9 @@ type AiSearchInstanceSourceParamsInput interface {
 }
 
 type AiSearchInstanceSourceParamsArgs struct {
-	// List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+	// List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.
 	ExcludeItems pulumi.StringArrayInput `pulumi:"excludeItems"`
-	// List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+	// List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.
 	IncludeItems   pulumi.StringArrayInput                        `pulumi:"includeItems"`
 	Prefix         pulumi.StringPtrInput                          `pulumi:"prefix"`
 	R2Jurisdiction pulumi.StringPtrInput                          `pulumi:"r2Jurisdiction"`
@@ -53212,12 +53336,12 @@ func (o AiSearchInstanceSourceParamsOutput) ToAiSearchInstanceSourceParamsPtrOut
 	}).(AiSearchInstanceSourceParamsPtrOutput)
 }
 
-// List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+// List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.
 func (o AiSearchInstanceSourceParamsOutput) ExcludeItems() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AiSearchInstanceSourceParams) []string { return v.ExcludeItems }).(pulumi.StringArrayOutput)
 }
 
-// List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+// List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.
 func (o AiSearchInstanceSourceParamsOutput) IncludeItems() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AiSearchInstanceSourceParams) []string { return v.IncludeItems }).(pulumi.StringArrayOutput)
 }
@@ -53258,7 +53382,7 @@ func (o AiSearchInstanceSourceParamsPtrOutput) Elem() AiSearchInstanceSourcePara
 	}).(AiSearchInstanceSourceParamsOutput)
 }
 
-// List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+// List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.
 func (o AiSearchInstanceSourceParamsPtrOutput) ExcludeItems() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AiSearchInstanceSourceParams) []string {
 		if v == nil {
@@ -53268,7 +53392,7 @@ func (o AiSearchInstanceSourceParamsPtrOutput) ExcludeItems() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
-// List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+// List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.
 func (o AiSearchInstanceSourceParamsPtrOutput) IncludeItems() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AiSearchInstanceSourceParams) []string {
 		if v == nil {
@@ -53306,8 +53430,11 @@ func (o AiSearchInstanceSourceParamsPtrOutput) WebCrawler() AiSearchInstanceSour
 }
 
 type AiSearchInstanceSourceParamsWebCrawler struct {
-	ParseOptions *AiSearchInstanceSourceParamsWebCrawlerParseOptions `pulumi:"parseOptions"`
-	// Available values: "sitemap", "feed-rss", "crawl".
+	// Options for parse*type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.
+	DiscoverOptions *AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions `pulumi:"discoverOptions"`
+	ParseOptions    *AiSearchInstanceSourceParamsWebCrawlerParseOptions    `pulumi:"parseOptions"`
+	// How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.
+	// Available values: "sitemap", "discover".
 	ParseType    *string                                             `pulumi:"parseType"`
 	StoreOptions *AiSearchInstanceSourceParamsWebCrawlerStoreOptions `pulumi:"storeOptions"`
 }
@@ -53324,8 +53451,11 @@ type AiSearchInstanceSourceParamsWebCrawlerInput interface {
 }
 
 type AiSearchInstanceSourceParamsWebCrawlerArgs struct {
-	ParseOptions AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrInput `pulumi:"parseOptions"`
-	// Available values: "sitemap", "feed-rss", "crawl".
+	// Options for parse*type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.
+	DiscoverOptions AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrInput `pulumi:"discoverOptions"`
+	ParseOptions    AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrInput    `pulumi:"parseOptions"`
+	// How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.
+	// Available values: "sitemap", "discover".
 	ParseType    pulumi.StringPtrInput                                      `pulumi:"parseType"`
 	StoreOptions AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrInput `pulumi:"storeOptions"`
 }
@@ -53407,13 +53537,21 @@ func (o AiSearchInstanceSourceParamsWebCrawlerOutput) ToAiSearchInstanceSourcePa
 	}).(AiSearchInstanceSourceParamsWebCrawlerPtrOutput)
 }
 
+// Options for parse*type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.
+func (o AiSearchInstanceSourceParamsWebCrawlerOutput) DiscoverOptions() AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput {
+	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawler) *AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions {
+		return v.DiscoverOptions
+	}).(AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput)
+}
+
 func (o AiSearchInstanceSourceParamsWebCrawlerOutput) ParseOptions() AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput {
 	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawler) *AiSearchInstanceSourceParamsWebCrawlerParseOptions {
 		return v.ParseOptions
 	}).(AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput)
 }
 
-// Available values: "sitemap", "feed-rss", "crawl".
+// How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.
+// Available values: "sitemap", "discover".
 func (o AiSearchInstanceSourceParamsWebCrawlerOutput) ParseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawler) *string { return v.ParseType }).(pulumi.StringPtrOutput)
 }
@@ -53448,6 +53586,16 @@ func (o AiSearchInstanceSourceParamsWebCrawlerPtrOutput) Elem() AiSearchInstance
 	}).(AiSearchInstanceSourceParamsWebCrawlerOutput)
 }
 
+// Options for parse*type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.
+func (o AiSearchInstanceSourceParamsWebCrawlerPtrOutput) DiscoverOptions() AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParamsWebCrawler) *AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions {
+		if v == nil {
+			return nil
+		}
+		return v.DiscoverOptions
+	}).(AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput)
+}
+
 func (o AiSearchInstanceSourceParamsWebCrawlerPtrOutput) ParseOptions() AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput {
 	return o.ApplyT(func(v *AiSearchInstanceSourceParamsWebCrawler) *AiSearchInstanceSourceParamsWebCrawlerParseOptions {
 		if v == nil {
@@ -53457,7 +53605,8 @@ func (o AiSearchInstanceSourceParamsWebCrawlerPtrOutput) ParseOptions() AiSearch
 	}).(AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput)
 }
 
-// Available values: "sitemap", "feed-rss", "crawl".
+// How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.
+// Available values: "sitemap", "discover".
 func (o AiSearchInstanceSourceParamsWebCrawlerPtrOutput) ParseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiSearchInstanceSourceParamsWebCrawler) *string {
 		if v == nil {
@@ -53474,6 +53623,242 @@ func (o AiSearchInstanceSourceParamsWebCrawlerPtrOutput) StoreOptions() AiSearch
 		}
 		return v.StoreOptions
 	}).(AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput)
+}
+
+type AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions struct {
+	// Maximum link-follow depth from the seed URL.
+	Depth *float64 `pulumi:"depth"`
+	// Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.
+	IncludeExternalLinks *bool `pulumi:"includeExternalLinks"`
+	// Follow links to subdomains of the source host.
+	IncludeSubdomains *bool `pulumi:"includeSubdomains"`
+	// Maximum number of pages to crawl (1-100000).
+	Limit *float64 `pulumi:"limit"`
+	// Maximum content age in seconds to accept (0–604800).
+	MaxAge *float64 `pulumi:"maxAge"`
+	// Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both.
+	// Available values: "all", "sitemaps", "links".
+	Source *string `pulumi:"source"`
+}
+
+// AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsInput is an input type that accepts AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs and AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput values.
+// You can construct a concrete instance of `AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsInput` via:
+//
+//	AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs{...}
+type AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsInput interface {
+	pulumi.Input
+
+	ToAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput() AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput
+	ToAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutputWithContext(context.Context) AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput
+}
+
+type AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs struct {
+	// Maximum link-follow depth from the seed URL.
+	Depth pulumi.Float64PtrInput `pulumi:"depth"`
+	// Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.
+	IncludeExternalLinks pulumi.BoolPtrInput `pulumi:"includeExternalLinks"`
+	// Follow links to subdomains of the source host.
+	IncludeSubdomains pulumi.BoolPtrInput `pulumi:"includeSubdomains"`
+	// Maximum number of pages to crawl (1-100000).
+	Limit pulumi.Float64PtrInput `pulumi:"limit"`
+	// Maximum content age in seconds to accept (0–604800).
+	MaxAge pulumi.Float64PtrInput `pulumi:"maxAge"`
+	// Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both.
+	// Available values: "all", "sitemaps", "links".
+	Source pulumi.StringPtrInput `pulumi:"source"`
+}
+
+func (AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions)(nil)).Elem()
+}
+
+func (i AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs) ToAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput() AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput {
+	return i.ToAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs) ToAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput)
+}
+
+func (i AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs) ToAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput() AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput {
+	return i.ToAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs) ToAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput).ToAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutputWithContext(ctx)
+}
+
+// AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrInput is an input type that accepts AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs, AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtr and AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput values.
+// You can construct a concrete instance of `AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrInput` via:
+//
+//	        AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrInput interface {
+	pulumi.Input
+
+	ToAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput() AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput
+	ToAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutputWithContext(context.Context) AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput
+}
+
+type aiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrType AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs
+
+func AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtr(v *AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs) AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrInput {
+	return (*aiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrType)(v)
+}
+
+func (*aiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions)(nil)).Elem()
+}
+
+func (i *aiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrType) ToAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput() AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput {
+	return i.ToAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *aiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrType) ToAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput)
+}
+
+type AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions)(nil)).Elem()
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput) ToAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput() AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput {
+	return o
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput) ToAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput {
+	return o
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput) ToAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput() AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput {
+	return o.ToAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput) ToAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions) *AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions {
+		return &v
+	}).(AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput)
+}
+
+// Maximum link-follow depth from the seed URL.
+func (o AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput) Depth() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions) *float64 { return v.Depth }).(pulumi.Float64PtrOutput)
+}
+
+// Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.
+func (o AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput) IncludeExternalLinks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions) *bool { return v.IncludeExternalLinks }).(pulumi.BoolPtrOutput)
+}
+
+// Follow links to subdomains of the source host.
+func (o AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput) IncludeSubdomains() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions) *bool { return v.IncludeSubdomains }).(pulumi.BoolPtrOutput)
+}
+
+// Maximum number of pages to crawl (1-100000).
+func (o AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput) Limit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions) *float64 { return v.Limit }).(pulumi.Float64PtrOutput)
+}
+
+// Maximum content age in seconds to accept (0–604800).
+func (o AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput) MaxAge() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions) *float64 { return v.MaxAge }).(pulumi.Float64PtrOutput)
+}
+
+// Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both.
+// Available values: "all", "sitemaps", "links".
+func (o AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions)(nil)).Elem()
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput) ToAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput() AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput {
+	return o
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput) ToAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutputWithContext(ctx context.Context) AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput {
+	return o
+}
+
+func (o AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput) Elem() AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions) AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions {
+		if v != nil {
+			return *v
+		}
+		var ret AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions
+		return ret
+	}).(AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput)
+}
+
+// Maximum link-follow depth from the seed URL.
+func (o AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput) Depth() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Depth
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.
+func (o AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput) IncludeExternalLinks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeExternalLinks
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Follow links to subdomains of the source host.
+func (o AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput) IncludeSubdomains() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeSubdomains
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Maximum number of pages to crawl (1-100000).
+func (o AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput) Limit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Limit
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Maximum content age in seconds to accept (0–604800).
+func (o AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput) MaxAge() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAge
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both.
+// Available values: "all", "sitemaps", "links".
+func (o AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Source
+	}).(pulumi.StringPtrOutput)
 }
 
 type AiSearchInstanceSourceParamsWebCrawlerParseOptions struct {
@@ -53954,6 +54339,870 @@ func (o AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput) StorageType
 		}
 		return v.StorageType
 	}).(pulumi.StringPtrOutput)
+}
+
+type AiSearchNamespacePublicEndpointParams struct {
+	AuthorizedHosts         []string                                                      `pulumi:"authorizedHosts"`
+	ChatCompletionsEndpoint *AiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint `pulumi:"chatCompletionsEndpoint"`
+	// Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
+	CustomDomains []string `pulumi:"customDomains"`
+	// When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+	DefaultDomainEnabled *bool `pulumi:"defaultDomainEnabled"`
+	Enabled              *bool `pulumi:"enabled"`
+	// Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.
+	InstancesAlloweds []string                                             `pulumi:"instancesAlloweds"`
+	Mcp               *AiSearchNamespacePublicEndpointParamsMcp            `pulumi:"mcp"`
+	RateLimit         *AiSearchNamespacePublicEndpointParamsRateLimit      `pulumi:"rateLimit"`
+	SearchEndpoint    *AiSearchNamespacePublicEndpointParamsSearchEndpoint `pulumi:"searchEndpoint"`
+}
+
+// AiSearchNamespacePublicEndpointParamsInput is an input type that accepts AiSearchNamespacePublicEndpointParamsArgs and AiSearchNamespacePublicEndpointParamsOutput values.
+// You can construct a concrete instance of `AiSearchNamespacePublicEndpointParamsInput` via:
+//
+//	AiSearchNamespacePublicEndpointParamsArgs{...}
+type AiSearchNamespacePublicEndpointParamsInput interface {
+	pulumi.Input
+
+	ToAiSearchNamespacePublicEndpointParamsOutput() AiSearchNamespacePublicEndpointParamsOutput
+	ToAiSearchNamespacePublicEndpointParamsOutputWithContext(context.Context) AiSearchNamespacePublicEndpointParamsOutput
+}
+
+type AiSearchNamespacePublicEndpointParamsArgs struct {
+	AuthorizedHosts         pulumi.StringArrayInput                                              `pulumi:"authorizedHosts"`
+	ChatCompletionsEndpoint AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrInput `pulumi:"chatCompletionsEndpoint"`
+	// Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
+	CustomDomains pulumi.StringArrayInput `pulumi:"customDomains"`
+	// When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+	DefaultDomainEnabled pulumi.BoolPtrInput `pulumi:"defaultDomainEnabled"`
+	Enabled              pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.
+	InstancesAlloweds pulumi.StringArrayInput                                     `pulumi:"instancesAlloweds"`
+	Mcp               AiSearchNamespacePublicEndpointParamsMcpPtrInput            `pulumi:"mcp"`
+	RateLimit         AiSearchNamespacePublicEndpointParamsRateLimitPtrInput      `pulumi:"rateLimit"`
+	SearchEndpoint    AiSearchNamespacePublicEndpointParamsSearchEndpointPtrInput `pulumi:"searchEndpoint"`
+}
+
+func (AiSearchNamespacePublicEndpointParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchNamespacePublicEndpointParams)(nil)).Elem()
+}
+
+func (i AiSearchNamespacePublicEndpointParamsArgs) ToAiSearchNamespacePublicEndpointParamsOutput() AiSearchNamespacePublicEndpointParamsOutput {
+	return i.ToAiSearchNamespacePublicEndpointParamsOutputWithContext(context.Background())
+}
+
+func (i AiSearchNamespacePublicEndpointParamsArgs) ToAiSearchNamespacePublicEndpointParamsOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchNamespacePublicEndpointParamsOutput)
+}
+
+func (i AiSearchNamespacePublicEndpointParamsArgs) ToAiSearchNamespacePublicEndpointParamsPtrOutput() AiSearchNamespacePublicEndpointParamsPtrOutput {
+	return i.ToAiSearchNamespacePublicEndpointParamsPtrOutputWithContext(context.Background())
+}
+
+func (i AiSearchNamespacePublicEndpointParamsArgs) ToAiSearchNamespacePublicEndpointParamsPtrOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchNamespacePublicEndpointParamsOutput).ToAiSearchNamespacePublicEndpointParamsPtrOutputWithContext(ctx)
+}
+
+// AiSearchNamespacePublicEndpointParamsPtrInput is an input type that accepts AiSearchNamespacePublicEndpointParamsArgs, AiSearchNamespacePublicEndpointParamsPtr and AiSearchNamespacePublicEndpointParamsPtrOutput values.
+// You can construct a concrete instance of `AiSearchNamespacePublicEndpointParamsPtrInput` via:
+//
+//	        AiSearchNamespacePublicEndpointParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiSearchNamespacePublicEndpointParamsPtrInput interface {
+	pulumi.Input
+
+	ToAiSearchNamespacePublicEndpointParamsPtrOutput() AiSearchNamespacePublicEndpointParamsPtrOutput
+	ToAiSearchNamespacePublicEndpointParamsPtrOutputWithContext(context.Context) AiSearchNamespacePublicEndpointParamsPtrOutput
+}
+
+type aiSearchNamespacePublicEndpointParamsPtrType AiSearchNamespacePublicEndpointParamsArgs
+
+func AiSearchNamespacePublicEndpointParamsPtr(v *AiSearchNamespacePublicEndpointParamsArgs) AiSearchNamespacePublicEndpointParamsPtrInput {
+	return (*aiSearchNamespacePublicEndpointParamsPtrType)(v)
+}
+
+func (*aiSearchNamespacePublicEndpointParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchNamespacePublicEndpointParams)(nil)).Elem()
+}
+
+func (i *aiSearchNamespacePublicEndpointParamsPtrType) ToAiSearchNamespacePublicEndpointParamsPtrOutput() AiSearchNamespacePublicEndpointParamsPtrOutput {
+	return i.ToAiSearchNamespacePublicEndpointParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *aiSearchNamespacePublicEndpointParamsPtrType) ToAiSearchNamespacePublicEndpointParamsPtrOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchNamespacePublicEndpointParamsPtrOutput)
+}
+
+type AiSearchNamespacePublicEndpointParamsOutput struct{ *pulumi.OutputState }
+
+func (AiSearchNamespacePublicEndpointParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchNamespacePublicEndpointParams)(nil)).Elem()
+}
+
+func (o AiSearchNamespacePublicEndpointParamsOutput) ToAiSearchNamespacePublicEndpointParamsOutput() AiSearchNamespacePublicEndpointParamsOutput {
+	return o
+}
+
+func (o AiSearchNamespacePublicEndpointParamsOutput) ToAiSearchNamespacePublicEndpointParamsOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsOutput {
+	return o
+}
+
+func (o AiSearchNamespacePublicEndpointParamsOutput) ToAiSearchNamespacePublicEndpointParamsPtrOutput() AiSearchNamespacePublicEndpointParamsPtrOutput {
+	return o.ToAiSearchNamespacePublicEndpointParamsPtrOutputWithContext(context.Background())
+}
+
+func (o AiSearchNamespacePublicEndpointParamsOutput) ToAiSearchNamespacePublicEndpointParamsPtrOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiSearchNamespacePublicEndpointParams) *AiSearchNamespacePublicEndpointParams {
+		return &v
+	}).(AiSearchNamespacePublicEndpointParamsPtrOutput)
+}
+
+func (o AiSearchNamespacePublicEndpointParamsOutput) AuthorizedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiSearchNamespacePublicEndpointParams) []string { return v.AuthorizedHosts }).(pulumi.StringArrayOutput)
+}
+
+func (o AiSearchNamespacePublicEndpointParamsOutput) ChatCompletionsEndpoint() AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput {
+	return o.ApplyT(func(v AiSearchNamespacePublicEndpointParams) *AiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint {
+		return v.ChatCompletionsEndpoint
+	}).(AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput)
+}
+
+// Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
+func (o AiSearchNamespacePublicEndpointParamsOutput) CustomDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiSearchNamespacePublicEndpointParams) []string { return v.CustomDomains }).(pulumi.StringArrayOutput)
+}
+
+// When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+func (o AiSearchNamespacePublicEndpointParamsOutput) DefaultDomainEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiSearchNamespacePublicEndpointParams) *bool { return v.DefaultDomainEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o AiSearchNamespacePublicEndpointParamsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiSearchNamespacePublicEndpointParams) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.
+func (o AiSearchNamespacePublicEndpointParamsOutput) InstancesAlloweds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiSearchNamespacePublicEndpointParams) []string { return v.InstancesAlloweds }).(pulumi.StringArrayOutput)
+}
+
+func (o AiSearchNamespacePublicEndpointParamsOutput) Mcp() AiSearchNamespacePublicEndpointParamsMcpPtrOutput {
+	return o.ApplyT(func(v AiSearchNamespacePublicEndpointParams) *AiSearchNamespacePublicEndpointParamsMcp { return v.Mcp }).(AiSearchNamespacePublicEndpointParamsMcpPtrOutput)
+}
+
+func (o AiSearchNamespacePublicEndpointParamsOutput) RateLimit() AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput {
+	return o.ApplyT(func(v AiSearchNamespacePublicEndpointParams) *AiSearchNamespacePublicEndpointParamsRateLimit {
+		return v.RateLimit
+	}).(AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput)
+}
+
+func (o AiSearchNamespacePublicEndpointParamsOutput) SearchEndpoint() AiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput {
+	return o.ApplyT(func(v AiSearchNamespacePublicEndpointParams) *AiSearchNamespacePublicEndpointParamsSearchEndpoint {
+		return v.SearchEndpoint
+	}).(AiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput)
+}
+
+type AiSearchNamespacePublicEndpointParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (AiSearchNamespacePublicEndpointParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchNamespacePublicEndpointParams)(nil)).Elem()
+}
+
+func (o AiSearchNamespacePublicEndpointParamsPtrOutput) ToAiSearchNamespacePublicEndpointParamsPtrOutput() AiSearchNamespacePublicEndpointParamsPtrOutput {
+	return o
+}
+
+func (o AiSearchNamespacePublicEndpointParamsPtrOutput) ToAiSearchNamespacePublicEndpointParamsPtrOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsPtrOutput {
+	return o
+}
+
+func (o AiSearchNamespacePublicEndpointParamsPtrOutput) Elem() AiSearchNamespacePublicEndpointParamsOutput {
+	return o.ApplyT(func(v *AiSearchNamespacePublicEndpointParams) AiSearchNamespacePublicEndpointParams {
+		if v != nil {
+			return *v
+		}
+		var ret AiSearchNamespacePublicEndpointParams
+		return ret
+	}).(AiSearchNamespacePublicEndpointParamsOutput)
+}
+
+func (o AiSearchNamespacePublicEndpointParamsPtrOutput) AuthorizedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiSearchNamespacePublicEndpointParams) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthorizedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o AiSearchNamespacePublicEndpointParamsPtrOutput) ChatCompletionsEndpoint() AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput {
+	return o.ApplyT(func(v *AiSearchNamespacePublicEndpointParams) *AiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint {
+		if v == nil {
+			return nil
+		}
+		return v.ChatCompletionsEndpoint
+	}).(AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput)
+}
+
+// Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
+func (o AiSearchNamespacePublicEndpointParamsPtrOutput) CustomDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiSearchNamespacePublicEndpointParams) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomDomains
+	}).(pulumi.StringArrayOutput)
+}
+
+// When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+func (o AiSearchNamespacePublicEndpointParamsPtrOutput) DefaultDomainEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiSearchNamespacePublicEndpointParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultDomainEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o AiSearchNamespacePublicEndpointParamsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiSearchNamespacePublicEndpointParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.
+func (o AiSearchNamespacePublicEndpointParamsPtrOutput) InstancesAlloweds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiSearchNamespacePublicEndpointParams) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InstancesAlloweds
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o AiSearchNamespacePublicEndpointParamsPtrOutput) Mcp() AiSearchNamespacePublicEndpointParamsMcpPtrOutput {
+	return o.ApplyT(func(v *AiSearchNamespacePublicEndpointParams) *AiSearchNamespacePublicEndpointParamsMcp {
+		if v == nil {
+			return nil
+		}
+		return v.Mcp
+	}).(AiSearchNamespacePublicEndpointParamsMcpPtrOutput)
+}
+
+func (o AiSearchNamespacePublicEndpointParamsPtrOutput) RateLimit() AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput {
+	return o.ApplyT(func(v *AiSearchNamespacePublicEndpointParams) *AiSearchNamespacePublicEndpointParamsRateLimit {
+		if v == nil {
+			return nil
+		}
+		return v.RateLimit
+	}).(AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput)
+}
+
+func (o AiSearchNamespacePublicEndpointParamsPtrOutput) SearchEndpoint() AiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput {
+	return o.ApplyT(func(v *AiSearchNamespacePublicEndpointParams) *AiSearchNamespacePublicEndpointParamsSearchEndpoint {
+		if v == nil {
+			return nil
+		}
+		return v.SearchEndpoint
+	}).(AiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput)
+}
+
+type AiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint struct {
+	// Disable chat completions endpoint for this public endpoint
+	Disabled *bool `pulumi:"disabled"`
+}
+
+// AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointInput is an input type that accepts AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs and AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput values.
+// You can construct a concrete instance of `AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointInput` via:
+//
+//	AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs{...}
+type AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointInput interface {
+	pulumi.Input
+
+	ToAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput() AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput
+	ToAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutputWithContext(context.Context) AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput
+}
+
+type AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs struct {
+	// Disable chat completions endpoint for this public endpoint
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+}
+
+func (AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint)(nil)).Elem()
+}
+
+func (i AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs) ToAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput() AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput {
+	return i.ToAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutputWithContext(context.Background())
+}
+
+func (i AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs) ToAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput)
+}
+
+func (i AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs) ToAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput() AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput {
+	return i.ToAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs) ToAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput).ToAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutputWithContext(ctx)
+}
+
+// AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrInput is an input type that accepts AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs, AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtr and AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput values.
+// You can construct a concrete instance of `AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrInput` via:
+//
+//	        AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrInput interface {
+	pulumi.Input
+
+	ToAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput() AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput
+	ToAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutputWithContext(context.Context) AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput
+}
+
+type aiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrType AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs
+
+func AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtr(v *AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs) AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrInput {
+	return (*aiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrType)(v)
+}
+
+func (*aiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint)(nil)).Elem()
+}
+
+func (i *aiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrType) ToAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput() AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput {
+	return i.ToAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *aiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrType) ToAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput)
+}
+
+type AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput struct{ *pulumi.OutputState }
+
+func (AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint)(nil)).Elem()
+}
+
+func (o AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput) ToAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput() AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput {
+	return o
+}
+
+func (o AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput) ToAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput {
+	return o
+}
+
+func (o AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput) ToAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput() AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput {
+	return o.ToAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput) ToAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint) *AiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint {
+		return &v
+	}).(AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput)
+}
+
+// Disable chat completions endpoint for this public endpoint
+func (o AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+type AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint)(nil)).Elem()
+}
+
+func (o AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput) ToAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput() AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput {
+	return o
+}
+
+func (o AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput) ToAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput {
+	return o
+}
+
+func (o AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput) Elem() AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput {
+	return o.ApplyT(func(v *AiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint) AiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret AiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint
+		return ret
+	}).(AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput)
+}
+
+// Disable chat completions endpoint for this public endpoint
+func (o AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AiSearchNamespacePublicEndpointParamsMcp struct {
+	Description *string `pulumi:"description"`
+	// Disable MCP endpoint for this public endpoint
+	Disabled *bool `pulumi:"disabled"`
+}
+
+// AiSearchNamespacePublicEndpointParamsMcpInput is an input type that accepts AiSearchNamespacePublicEndpointParamsMcpArgs and AiSearchNamespacePublicEndpointParamsMcpOutput values.
+// You can construct a concrete instance of `AiSearchNamespacePublicEndpointParamsMcpInput` via:
+//
+//	AiSearchNamespacePublicEndpointParamsMcpArgs{...}
+type AiSearchNamespacePublicEndpointParamsMcpInput interface {
+	pulumi.Input
+
+	ToAiSearchNamespacePublicEndpointParamsMcpOutput() AiSearchNamespacePublicEndpointParamsMcpOutput
+	ToAiSearchNamespacePublicEndpointParamsMcpOutputWithContext(context.Context) AiSearchNamespacePublicEndpointParamsMcpOutput
+}
+
+type AiSearchNamespacePublicEndpointParamsMcpArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Disable MCP endpoint for this public endpoint
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+}
+
+func (AiSearchNamespacePublicEndpointParamsMcpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchNamespacePublicEndpointParamsMcp)(nil)).Elem()
+}
+
+func (i AiSearchNamespacePublicEndpointParamsMcpArgs) ToAiSearchNamespacePublicEndpointParamsMcpOutput() AiSearchNamespacePublicEndpointParamsMcpOutput {
+	return i.ToAiSearchNamespacePublicEndpointParamsMcpOutputWithContext(context.Background())
+}
+
+func (i AiSearchNamespacePublicEndpointParamsMcpArgs) ToAiSearchNamespacePublicEndpointParamsMcpOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsMcpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchNamespacePublicEndpointParamsMcpOutput)
+}
+
+func (i AiSearchNamespacePublicEndpointParamsMcpArgs) ToAiSearchNamespacePublicEndpointParamsMcpPtrOutput() AiSearchNamespacePublicEndpointParamsMcpPtrOutput {
+	return i.ToAiSearchNamespacePublicEndpointParamsMcpPtrOutputWithContext(context.Background())
+}
+
+func (i AiSearchNamespacePublicEndpointParamsMcpArgs) ToAiSearchNamespacePublicEndpointParamsMcpPtrOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsMcpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchNamespacePublicEndpointParamsMcpOutput).ToAiSearchNamespacePublicEndpointParamsMcpPtrOutputWithContext(ctx)
+}
+
+// AiSearchNamespacePublicEndpointParamsMcpPtrInput is an input type that accepts AiSearchNamespacePublicEndpointParamsMcpArgs, AiSearchNamespacePublicEndpointParamsMcpPtr and AiSearchNamespacePublicEndpointParamsMcpPtrOutput values.
+// You can construct a concrete instance of `AiSearchNamespacePublicEndpointParamsMcpPtrInput` via:
+//
+//	        AiSearchNamespacePublicEndpointParamsMcpArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiSearchNamespacePublicEndpointParamsMcpPtrInput interface {
+	pulumi.Input
+
+	ToAiSearchNamespacePublicEndpointParamsMcpPtrOutput() AiSearchNamespacePublicEndpointParamsMcpPtrOutput
+	ToAiSearchNamespacePublicEndpointParamsMcpPtrOutputWithContext(context.Context) AiSearchNamespacePublicEndpointParamsMcpPtrOutput
+}
+
+type aiSearchNamespacePublicEndpointParamsMcpPtrType AiSearchNamespacePublicEndpointParamsMcpArgs
+
+func AiSearchNamespacePublicEndpointParamsMcpPtr(v *AiSearchNamespacePublicEndpointParamsMcpArgs) AiSearchNamespacePublicEndpointParamsMcpPtrInput {
+	return (*aiSearchNamespacePublicEndpointParamsMcpPtrType)(v)
+}
+
+func (*aiSearchNamespacePublicEndpointParamsMcpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchNamespacePublicEndpointParamsMcp)(nil)).Elem()
+}
+
+func (i *aiSearchNamespacePublicEndpointParamsMcpPtrType) ToAiSearchNamespacePublicEndpointParamsMcpPtrOutput() AiSearchNamespacePublicEndpointParamsMcpPtrOutput {
+	return i.ToAiSearchNamespacePublicEndpointParamsMcpPtrOutputWithContext(context.Background())
+}
+
+func (i *aiSearchNamespacePublicEndpointParamsMcpPtrType) ToAiSearchNamespacePublicEndpointParamsMcpPtrOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsMcpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchNamespacePublicEndpointParamsMcpPtrOutput)
+}
+
+type AiSearchNamespacePublicEndpointParamsMcpOutput struct{ *pulumi.OutputState }
+
+func (AiSearchNamespacePublicEndpointParamsMcpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchNamespacePublicEndpointParamsMcp)(nil)).Elem()
+}
+
+func (o AiSearchNamespacePublicEndpointParamsMcpOutput) ToAiSearchNamespacePublicEndpointParamsMcpOutput() AiSearchNamespacePublicEndpointParamsMcpOutput {
+	return o
+}
+
+func (o AiSearchNamespacePublicEndpointParamsMcpOutput) ToAiSearchNamespacePublicEndpointParamsMcpOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsMcpOutput {
+	return o
+}
+
+func (o AiSearchNamespacePublicEndpointParamsMcpOutput) ToAiSearchNamespacePublicEndpointParamsMcpPtrOutput() AiSearchNamespacePublicEndpointParamsMcpPtrOutput {
+	return o.ToAiSearchNamespacePublicEndpointParamsMcpPtrOutputWithContext(context.Background())
+}
+
+func (o AiSearchNamespacePublicEndpointParamsMcpOutput) ToAiSearchNamespacePublicEndpointParamsMcpPtrOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsMcpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiSearchNamespacePublicEndpointParamsMcp) *AiSearchNamespacePublicEndpointParamsMcp {
+		return &v
+	}).(AiSearchNamespacePublicEndpointParamsMcpPtrOutput)
+}
+
+func (o AiSearchNamespacePublicEndpointParamsMcpOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiSearchNamespacePublicEndpointParamsMcp) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Disable MCP endpoint for this public endpoint
+func (o AiSearchNamespacePublicEndpointParamsMcpOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiSearchNamespacePublicEndpointParamsMcp) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+type AiSearchNamespacePublicEndpointParamsMcpPtrOutput struct{ *pulumi.OutputState }
+
+func (AiSearchNamespacePublicEndpointParamsMcpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchNamespacePublicEndpointParamsMcp)(nil)).Elem()
+}
+
+func (o AiSearchNamespacePublicEndpointParamsMcpPtrOutput) ToAiSearchNamespacePublicEndpointParamsMcpPtrOutput() AiSearchNamespacePublicEndpointParamsMcpPtrOutput {
+	return o
+}
+
+func (o AiSearchNamespacePublicEndpointParamsMcpPtrOutput) ToAiSearchNamespacePublicEndpointParamsMcpPtrOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsMcpPtrOutput {
+	return o
+}
+
+func (o AiSearchNamespacePublicEndpointParamsMcpPtrOutput) Elem() AiSearchNamespacePublicEndpointParamsMcpOutput {
+	return o.ApplyT(func(v *AiSearchNamespacePublicEndpointParamsMcp) AiSearchNamespacePublicEndpointParamsMcp {
+		if v != nil {
+			return *v
+		}
+		var ret AiSearchNamespacePublicEndpointParamsMcp
+		return ret
+	}).(AiSearchNamespacePublicEndpointParamsMcpOutput)
+}
+
+func (o AiSearchNamespacePublicEndpointParamsMcpPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiSearchNamespacePublicEndpointParamsMcp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Disable MCP endpoint for this public endpoint
+func (o AiSearchNamespacePublicEndpointParamsMcpPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiSearchNamespacePublicEndpointParamsMcp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AiSearchNamespacePublicEndpointParamsRateLimit struct {
+	PeriodMs *int `pulumi:"periodMs"`
+	Requests *int `pulumi:"requests"`
+	// Available values: "fixed", "sliding".
+	Technique *string `pulumi:"technique"`
+}
+
+// AiSearchNamespacePublicEndpointParamsRateLimitInput is an input type that accepts AiSearchNamespacePublicEndpointParamsRateLimitArgs and AiSearchNamespacePublicEndpointParamsRateLimitOutput values.
+// You can construct a concrete instance of `AiSearchNamespacePublicEndpointParamsRateLimitInput` via:
+//
+//	AiSearchNamespacePublicEndpointParamsRateLimitArgs{...}
+type AiSearchNamespacePublicEndpointParamsRateLimitInput interface {
+	pulumi.Input
+
+	ToAiSearchNamespacePublicEndpointParamsRateLimitOutput() AiSearchNamespacePublicEndpointParamsRateLimitOutput
+	ToAiSearchNamespacePublicEndpointParamsRateLimitOutputWithContext(context.Context) AiSearchNamespacePublicEndpointParamsRateLimitOutput
+}
+
+type AiSearchNamespacePublicEndpointParamsRateLimitArgs struct {
+	PeriodMs pulumi.IntPtrInput `pulumi:"periodMs"`
+	Requests pulumi.IntPtrInput `pulumi:"requests"`
+	// Available values: "fixed", "sliding".
+	Technique pulumi.StringPtrInput `pulumi:"technique"`
+}
+
+func (AiSearchNamespacePublicEndpointParamsRateLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchNamespacePublicEndpointParamsRateLimit)(nil)).Elem()
+}
+
+func (i AiSearchNamespacePublicEndpointParamsRateLimitArgs) ToAiSearchNamespacePublicEndpointParamsRateLimitOutput() AiSearchNamespacePublicEndpointParamsRateLimitOutput {
+	return i.ToAiSearchNamespacePublicEndpointParamsRateLimitOutputWithContext(context.Background())
+}
+
+func (i AiSearchNamespacePublicEndpointParamsRateLimitArgs) ToAiSearchNamespacePublicEndpointParamsRateLimitOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsRateLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchNamespacePublicEndpointParamsRateLimitOutput)
+}
+
+func (i AiSearchNamespacePublicEndpointParamsRateLimitArgs) ToAiSearchNamespacePublicEndpointParamsRateLimitPtrOutput() AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput {
+	return i.ToAiSearchNamespacePublicEndpointParamsRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (i AiSearchNamespacePublicEndpointParamsRateLimitArgs) ToAiSearchNamespacePublicEndpointParamsRateLimitPtrOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchNamespacePublicEndpointParamsRateLimitOutput).ToAiSearchNamespacePublicEndpointParamsRateLimitPtrOutputWithContext(ctx)
+}
+
+// AiSearchNamespacePublicEndpointParamsRateLimitPtrInput is an input type that accepts AiSearchNamespacePublicEndpointParamsRateLimitArgs, AiSearchNamespacePublicEndpointParamsRateLimitPtr and AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput values.
+// You can construct a concrete instance of `AiSearchNamespacePublicEndpointParamsRateLimitPtrInput` via:
+//
+//	        AiSearchNamespacePublicEndpointParamsRateLimitArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiSearchNamespacePublicEndpointParamsRateLimitPtrInput interface {
+	pulumi.Input
+
+	ToAiSearchNamespacePublicEndpointParamsRateLimitPtrOutput() AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput
+	ToAiSearchNamespacePublicEndpointParamsRateLimitPtrOutputWithContext(context.Context) AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput
+}
+
+type aiSearchNamespacePublicEndpointParamsRateLimitPtrType AiSearchNamespacePublicEndpointParamsRateLimitArgs
+
+func AiSearchNamespacePublicEndpointParamsRateLimitPtr(v *AiSearchNamespacePublicEndpointParamsRateLimitArgs) AiSearchNamespacePublicEndpointParamsRateLimitPtrInput {
+	return (*aiSearchNamespacePublicEndpointParamsRateLimitPtrType)(v)
+}
+
+func (*aiSearchNamespacePublicEndpointParamsRateLimitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchNamespacePublicEndpointParamsRateLimit)(nil)).Elem()
+}
+
+func (i *aiSearchNamespacePublicEndpointParamsRateLimitPtrType) ToAiSearchNamespacePublicEndpointParamsRateLimitPtrOutput() AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput {
+	return i.ToAiSearchNamespacePublicEndpointParamsRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (i *aiSearchNamespacePublicEndpointParamsRateLimitPtrType) ToAiSearchNamespacePublicEndpointParamsRateLimitPtrOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput)
+}
+
+type AiSearchNamespacePublicEndpointParamsRateLimitOutput struct{ *pulumi.OutputState }
+
+func (AiSearchNamespacePublicEndpointParamsRateLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchNamespacePublicEndpointParamsRateLimit)(nil)).Elem()
+}
+
+func (o AiSearchNamespacePublicEndpointParamsRateLimitOutput) ToAiSearchNamespacePublicEndpointParamsRateLimitOutput() AiSearchNamespacePublicEndpointParamsRateLimitOutput {
+	return o
+}
+
+func (o AiSearchNamespacePublicEndpointParamsRateLimitOutput) ToAiSearchNamespacePublicEndpointParamsRateLimitOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsRateLimitOutput {
+	return o
+}
+
+func (o AiSearchNamespacePublicEndpointParamsRateLimitOutput) ToAiSearchNamespacePublicEndpointParamsRateLimitPtrOutput() AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput {
+	return o.ToAiSearchNamespacePublicEndpointParamsRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (o AiSearchNamespacePublicEndpointParamsRateLimitOutput) ToAiSearchNamespacePublicEndpointParamsRateLimitPtrOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiSearchNamespacePublicEndpointParamsRateLimit) *AiSearchNamespacePublicEndpointParamsRateLimit {
+		return &v
+	}).(AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput)
+}
+
+func (o AiSearchNamespacePublicEndpointParamsRateLimitOutput) PeriodMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiSearchNamespacePublicEndpointParamsRateLimit) *int { return v.PeriodMs }).(pulumi.IntPtrOutput)
+}
+
+func (o AiSearchNamespacePublicEndpointParamsRateLimitOutput) Requests() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiSearchNamespacePublicEndpointParamsRateLimit) *int { return v.Requests }).(pulumi.IntPtrOutput)
+}
+
+// Available values: "fixed", "sliding".
+func (o AiSearchNamespacePublicEndpointParamsRateLimitOutput) Technique() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiSearchNamespacePublicEndpointParamsRateLimit) *string { return v.Technique }).(pulumi.StringPtrOutput)
+}
+
+type AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput struct{ *pulumi.OutputState }
+
+func (AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchNamespacePublicEndpointParamsRateLimit)(nil)).Elem()
+}
+
+func (o AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput) ToAiSearchNamespacePublicEndpointParamsRateLimitPtrOutput() AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput {
+	return o
+}
+
+func (o AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput) ToAiSearchNamespacePublicEndpointParamsRateLimitPtrOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput {
+	return o
+}
+
+func (o AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput) Elem() AiSearchNamespacePublicEndpointParamsRateLimitOutput {
+	return o.ApplyT(func(v *AiSearchNamespacePublicEndpointParamsRateLimit) AiSearchNamespacePublicEndpointParamsRateLimit {
+		if v != nil {
+			return *v
+		}
+		var ret AiSearchNamespacePublicEndpointParamsRateLimit
+		return ret
+	}).(AiSearchNamespacePublicEndpointParamsRateLimitOutput)
+}
+
+func (o AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput) PeriodMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiSearchNamespacePublicEndpointParamsRateLimit) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodMs
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput) Requests() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiSearchNamespacePublicEndpointParamsRateLimit) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Requests
+	}).(pulumi.IntPtrOutput)
+}
+
+// Available values: "fixed", "sliding".
+func (o AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput) Technique() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiSearchNamespacePublicEndpointParamsRateLimit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Technique
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiSearchNamespacePublicEndpointParamsSearchEndpoint struct {
+	// Disable search endpoint for this public endpoint
+	Disabled *bool `pulumi:"disabled"`
+}
+
+// AiSearchNamespacePublicEndpointParamsSearchEndpointInput is an input type that accepts AiSearchNamespacePublicEndpointParamsSearchEndpointArgs and AiSearchNamespacePublicEndpointParamsSearchEndpointOutput values.
+// You can construct a concrete instance of `AiSearchNamespacePublicEndpointParamsSearchEndpointInput` via:
+//
+//	AiSearchNamespacePublicEndpointParamsSearchEndpointArgs{...}
+type AiSearchNamespacePublicEndpointParamsSearchEndpointInput interface {
+	pulumi.Input
+
+	ToAiSearchNamespacePublicEndpointParamsSearchEndpointOutput() AiSearchNamespacePublicEndpointParamsSearchEndpointOutput
+	ToAiSearchNamespacePublicEndpointParamsSearchEndpointOutputWithContext(context.Context) AiSearchNamespacePublicEndpointParamsSearchEndpointOutput
+}
+
+type AiSearchNamespacePublicEndpointParamsSearchEndpointArgs struct {
+	// Disable search endpoint for this public endpoint
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+}
+
+func (AiSearchNamespacePublicEndpointParamsSearchEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchNamespacePublicEndpointParamsSearchEndpoint)(nil)).Elem()
+}
+
+func (i AiSearchNamespacePublicEndpointParamsSearchEndpointArgs) ToAiSearchNamespacePublicEndpointParamsSearchEndpointOutput() AiSearchNamespacePublicEndpointParamsSearchEndpointOutput {
+	return i.ToAiSearchNamespacePublicEndpointParamsSearchEndpointOutputWithContext(context.Background())
+}
+
+func (i AiSearchNamespacePublicEndpointParamsSearchEndpointArgs) ToAiSearchNamespacePublicEndpointParamsSearchEndpointOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsSearchEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchNamespacePublicEndpointParamsSearchEndpointOutput)
+}
+
+func (i AiSearchNamespacePublicEndpointParamsSearchEndpointArgs) ToAiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput() AiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput {
+	return i.ToAiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i AiSearchNamespacePublicEndpointParamsSearchEndpointArgs) ToAiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchNamespacePublicEndpointParamsSearchEndpointOutput).ToAiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutputWithContext(ctx)
+}
+
+// AiSearchNamespacePublicEndpointParamsSearchEndpointPtrInput is an input type that accepts AiSearchNamespacePublicEndpointParamsSearchEndpointArgs, AiSearchNamespacePublicEndpointParamsSearchEndpointPtr and AiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput values.
+// You can construct a concrete instance of `AiSearchNamespacePublicEndpointParamsSearchEndpointPtrInput` via:
+//
+//	        AiSearchNamespacePublicEndpointParamsSearchEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiSearchNamespacePublicEndpointParamsSearchEndpointPtrInput interface {
+	pulumi.Input
+
+	ToAiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput() AiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput
+	ToAiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutputWithContext(context.Context) AiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput
+}
+
+type aiSearchNamespacePublicEndpointParamsSearchEndpointPtrType AiSearchNamespacePublicEndpointParamsSearchEndpointArgs
+
+func AiSearchNamespacePublicEndpointParamsSearchEndpointPtr(v *AiSearchNamespacePublicEndpointParamsSearchEndpointArgs) AiSearchNamespacePublicEndpointParamsSearchEndpointPtrInput {
+	return (*aiSearchNamespacePublicEndpointParamsSearchEndpointPtrType)(v)
+}
+
+func (*aiSearchNamespacePublicEndpointParamsSearchEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchNamespacePublicEndpointParamsSearchEndpoint)(nil)).Elem()
+}
+
+func (i *aiSearchNamespacePublicEndpointParamsSearchEndpointPtrType) ToAiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput() AiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput {
+	return i.ToAiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *aiSearchNamespacePublicEndpointParamsSearchEndpointPtrType) ToAiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput)
+}
+
+type AiSearchNamespacePublicEndpointParamsSearchEndpointOutput struct{ *pulumi.OutputState }
+
+func (AiSearchNamespacePublicEndpointParamsSearchEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchNamespacePublicEndpointParamsSearchEndpoint)(nil)).Elem()
+}
+
+func (o AiSearchNamespacePublicEndpointParamsSearchEndpointOutput) ToAiSearchNamespacePublicEndpointParamsSearchEndpointOutput() AiSearchNamespacePublicEndpointParamsSearchEndpointOutput {
+	return o
+}
+
+func (o AiSearchNamespacePublicEndpointParamsSearchEndpointOutput) ToAiSearchNamespacePublicEndpointParamsSearchEndpointOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsSearchEndpointOutput {
+	return o
+}
+
+func (o AiSearchNamespacePublicEndpointParamsSearchEndpointOutput) ToAiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput() AiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput {
+	return o.ToAiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o AiSearchNamespacePublicEndpointParamsSearchEndpointOutput) ToAiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiSearchNamespacePublicEndpointParamsSearchEndpoint) *AiSearchNamespacePublicEndpointParamsSearchEndpoint {
+		return &v
+	}).(AiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput)
+}
+
+// Disable search endpoint for this public endpoint
+func (o AiSearchNamespacePublicEndpointParamsSearchEndpointOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiSearchNamespacePublicEndpointParamsSearchEndpoint) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+type AiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (AiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchNamespacePublicEndpointParamsSearchEndpoint)(nil)).Elem()
+}
+
+func (o AiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput) ToAiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput() AiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput {
+	return o
+}
+
+func (o AiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput) ToAiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutputWithContext(ctx context.Context) AiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput {
+	return o
+}
+
+func (o AiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput) Elem() AiSearchNamespacePublicEndpointParamsSearchEndpointOutput {
+	return o.ApplyT(func(v *AiSearchNamespacePublicEndpointParamsSearchEndpoint) AiSearchNamespacePublicEndpointParamsSearchEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret AiSearchNamespacePublicEndpointParamsSearchEndpoint
+		return ret
+	}).(AiSearchNamespacePublicEndpointParamsSearchEndpointOutput)
+}
+
+// Disable search endpoint for this public endpoint
+func (o AiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiSearchNamespacePublicEndpointParamsSearchEndpoint) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ApiShieldAuthIdCharacteristic struct {
@@ -59083,7 +60332,7 @@ type CloudConnectorRulesRule struct {
 	// Parameters of Cloud Connector Rule
 	Parameters *CloudConnectorRulesRuleParameters `pulumi:"parameters"`
 	// Cloud Provider type
-	// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage".
+	// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage", "ociStorage".
 	Provider *string `pulumi:"provider"`
 }
 
@@ -59106,7 +60355,7 @@ type CloudConnectorRulesRuleArgs struct {
 	// Parameters of Cloud Connector Rule
 	Parameters CloudConnectorRulesRuleParametersPtrInput `pulumi:"parameters"`
 	// Cloud Provider type
-	// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage".
+	// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage", "ociStorage".
 	Provider pulumi.StringPtrInput `pulumi:"provider"`
 }
 
@@ -59183,7 +60432,7 @@ func (o CloudConnectorRulesRuleOutput) Parameters() CloudConnectorRulesRuleParam
 }
 
 // Cloud Provider type
-// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage".
+// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage", "ociStorage".
 func (o CloudConnectorRulesRuleOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudConnectorRulesRule) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
@@ -70241,379 +71490,6 @@ func (o ImageVariantOptionsPtrOutput) Width() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-type ImageVariantVariant struct {
-	Id *string `pulumi:"id"`
-	// Indicates whether the variant can access an image without a signature, regardless of image access control.
-	NeverRequireSignedUrls *bool `pulumi:"neverRequireSignedUrls"`
-	// Allows you to define image resizing sizes for different use cases.
-	Options *ImageVariantVariantOptions `pulumi:"options"`
-}
-
-// ImageVariantVariantInput is an input type that accepts ImageVariantVariantArgs and ImageVariantVariantOutput values.
-// You can construct a concrete instance of `ImageVariantVariantInput` via:
-//
-//	ImageVariantVariantArgs{...}
-type ImageVariantVariantInput interface {
-	pulumi.Input
-
-	ToImageVariantVariantOutput() ImageVariantVariantOutput
-	ToImageVariantVariantOutputWithContext(context.Context) ImageVariantVariantOutput
-}
-
-type ImageVariantVariantArgs struct {
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Indicates whether the variant can access an image without a signature, regardless of image access control.
-	NeverRequireSignedUrls pulumi.BoolPtrInput `pulumi:"neverRequireSignedUrls"`
-	// Allows you to define image resizing sizes for different use cases.
-	Options ImageVariantVariantOptionsPtrInput `pulumi:"options"`
-}
-
-func (ImageVariantVariantArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageVariantVariant)(nil)).Elem()
-}
-
-func (i ImageVariantVariantArgs) ToImageVariantVariantOutput() ImageVariantVariantOutput {
-	return i.ToImageVariantVariantOutputWithContext(context.Background())
-}
-
-func (i ImageVariantVariantArgs) ToImageVariantVariantOutputWithContext(ctx context.Context) ImageVariantVariantOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageVariantVariantOutput)
-}
-
-func (i ImageVariantVariantArgs) ToImageVariantVariantPtrOutput() ImageVariantVariantPtrOutput {
-	return i.ToImageVariantVariantPtrOutputWithContext(context.Background())
-}
-
-func (i ImageVariantVariantArgs) ToImageVariantVariantPtrOutputWithContext(ctx context.Context) ImageVariantVariantPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageVariantVariantOutput).ToImageVariantVariantPtrOutputWithContext(ctx)
-}
-
-// ImageVariantVariantPtrInput is an input type that accepts ImageVariantVariantArgs, ImageVariantVariantPtr and ImageVariantVariantPtrOutput values.
-// You can construct a concrete instance of `ImageVariantVariantPtrInput` via:
-//
-//	        ImageVariantVariantArgs{...}
-//
-//	or:
-//
-//	        nil
-type ImageVariantVariantPtrInput interface {
-	pulumi.Input
-
-	ToImageVariantVariantPtrOutput() ImageVariantVariantPtrOutput
-	ToImageVariantVariantPtrOutputWithContext(context.Context) ImageVariantVariantPtrOutput
-}
-
-type imageVariantVariantPtrType ImageVariantVariantArgs
-
-func ImageVariantVariantPtr(v *ImageVariantVariantArgs) ImageVariantVariantPtrInput {
-	return (*imageVariantVariantPtrType)(v)
-}
-
-func (*imageVariantVariantPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageVariantVariant)(nil)).Elem()
-}
-
-func (i *imageVariantVariantPtrType) ToImageVariantVariantPtrOutput() ImageVariantVariantPtrOutput {
-	return i.ToImageVariantVariantPtrOutputWithContext(context.Background())
-}
-
-func (i *imageVariantVariantPtrType) ToImageVariantVariantPtrOutputWithContext(ctx context.Context) ImageVariantVariantPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageVariantVariantPtrOutput)
-}
-
-type ImageVariantVariantOutput struct{ *pulumi.OutputState }
-
-func (ImageVariantVariantOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageVariantVariant)(nil)).Elem()
-}
-
-func (o ImageVariantVariantOutput) ToImageVariantVariantOutput() ImageVariantVariantOutput {
-	return o
-}
-
-func (o ImageVariantVariantOutput) ToImageVariantVariantOutputWithContext(ctx context.Context) ImageVariantVariantOutput {
-	return o
-}
-
-func (o ImageVariantVariantOutput) ToImageVariantVariantPtrOutput() ImageVariantVariantPtrOutput {
-	return o.ToImageVariantVariantPtrOutputWithContext(context.Background())
-}
-
-func (o ImageVariantVariantOutput) ToImageVariantVariantPtrOutputWithContext(ctx context.Context) ImageVariantVariantPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageVariantVariant) *ImageVariantVariant {
-		return &v
-	}).(ImageVariantVariantPtrOutput)
-}
-
-func (o ImageVariantVariantOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ImageVariantVariant) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the variant can access an image without a signature, regardless of image access control.
-func (o ImageVariantVariantOutput) NeverRequireSignedUrls() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ImageVariantVariant) *bool { return v.NeverRequireSignedUrls }).(pulumi.BoolPtrOutput)
-}
-
-// Allows you to define image resizing sizes for different use cases.
-func (o ImageVariantVariantOutput) Options() ImageVariantVariantOptionsPtrOutput {
-	return o.ApplyT(func(v ImageVariantVariant) *ImageVariantVariantOptions { return v.Options }).(ImageVariantVariantOptionsPtrOutput)
-}
-
-type ImageVariantVariantPtrOutput struct{ *pulumi.OutputState }
-
-func (ImageVariantVariantPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageVariantVariant)(nil)).Elem()
-}
-
-func (o ImageVariantVariantPtrOutput) ToImageVariantVariantPtrOutput() ImageVariantVariantPtrOutput {
-	return o
-}
-
-func (o ImageVariantVariantPtrOutput) ToImageVariantVariantPtrOutputWithContext(ctx context.Context) ImageVariantVariantPtrOutput {
-	return o
-}
-
-func (o ImageVariantVariantPtrOutput) Elem() ImageVariantVariantOutput {
-	return o.ApplyT(func(v *ImageVariantVariant) ImageVariantVariant {
-		if v != nil {
-			return *v
-		}
-		var ret ImageVariantVariant
-		return ret
-	}).(ImageVariantVariantOutput)
-}
-
-func (o ImageVariantVariantPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ImageVariantVariant) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the variant can access an image without a signature, regardless of image access control.
-func (o ImageVariantVariantPtrOutput) NeverRequireSignedUrls() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ImageVariantVariant) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.NeverRequireSignedUrls
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Allows you to define image resizing sizes for different use cases.
-func (o ImageVariantVariantPtrOutput) Options() ImageVariantVariantOptionsPtrOutput {
-	return o.ApplyT(func(v *ImageVariantVariant) *ImageVariantVariantOptions {
-		if v == nil {
-			return nil
-		}
-		return v.Options
-	}).(ImageVariantVariantOptionsPtrOutput)
-}
-
-type ImageVariantVariantOptions struct {
-	// The fit property describes how the width and height dimensions should be interpreted.
-	// Available values: "scale-down", "contain", "cover", "crop", "pad".
-	Fit *string `pulumi:"fit"`
-	// Maximum height in image pixels.
-	Height *float64 `pulumi:"height"`
-	// What EXIF data should be preserved in the output image.
-	// Available values: "keep", "copyright", "none".
-	Metadata *string `pulumi:"metadata"`
-	// Maximum width in image pixels.
-	Width *float64 `pulumi:"width"`
-}
-
-// ImageVariantVariantOptionsInput is an input type that accepts ImageVariantVariantOptionsArgs and ImageVariantVariantOptionsOutput values.
-// You can construct a concrete instance of `ImageVariantVariantOptionsInput` via:
-//
-//	ImageVariantVariantOptionsArgs{...}
-type ImageVariantVariantOptionsInput interface {
-	pulumi.Input
-
-	ToImageVariantVariantOptionsOutput() ImageVariantVariantOptionsOutput
-	ToImageVariantVariantOptionsOutputWithContext(context.Context) ImageVariantVariantOptionsOutput
-}
-
-type ImageVariantVariantOptionsArgs struct {
-	// The fit property describes how the width and height dimensions should be interpreted.
-	// Available values: "scale-down", "contain", "cover", "crop", "pad".
-	Fit pulumi.StringPtrInput `pulumi:"fit"`
-	// Maximum height in image pixels.
-	Height pulumi.Float64PtrInput `pulumi:"height"`
-	// What EXIF data should be preserved in the output image.
-	// Available values: "keep", "copyright", "none".
-	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
-	// Maximum width in image pixels.
-	Width pulumi.Float64PtrInput `pulumi:"width"`
-}
-
-func (ImageVariantVariantOptionsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageVariantVariantOptions)(nil)).Elem()
-}
-
-func (i ImageVariantVariantOptionsArgs) ToImageVariantVariantOptionsOutput() ImageVariantVariantOptionsOutput {
-	return i.ToImageVariantVariantOptionsOutputWithContext(context.Background())
-}
-
-func (i ImageVariantVariantOptionsArgs) ToImageVariantVariantOptionsOutputWithContext(ctx context.Context) ImageVariantVariantOptionsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageVariantVariantOptionsOutput)
-}
-
-func (i ImageVariantVariantOptionsArgs) ToImageVariantVariantOptionsPtrOutput() ImageVariantVariantOptionsPtrOutput {
-	return i.ToImageVariantVariantOptionsPtrOutputWithContext(context.Background())
-}
-
-func (i ImageVariantVariantOptionsArgs) ToImageVariantVariantOptionsPtrOutputWithContext(ctx context.Context) ImageVariantVariantOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageVariantVariantOptionsOutput).ToImageVariantVariantOptionsPtrOutputWithContext(ctx)
-}
-
-// ImageVariantVariantOptionsPtrInput is an input type that accepts ImageVariantVariantOptionsArgs, ImageVariantVariantOptionsPtr and ImageVariantVariantOptionsPtrOutput values.
-// You can construct a concrete instance of `ImageVariantVariantOptionsPtrInput` via:
-//
-//	        ImageVariantVariantOptionsArgs{...}
-//
-//	or:
-//
-//	        nil
-type ImageVariantVariantOptionsPtrInput interface {
-	pulumi.Input
-
-	ToImageVariantVariantOptionsPtrOutput() ImageVariantVariantOptionsPtrOutput
-	ToImageVariantVariantOptionsPtrOutputWithContext(context.Context) ImageVariantVariantOptionsPtrOutput
-}
-
-type imageVariantVariantOptionsPtrType ImageVariantVariantOptionsArgs
-
-func ImageVariantVariantOptionsPtr(v *ImageVariantVariantOptionsArgs) ImageVariantVariantOptionsPtrInput {
-	return (*imageVariantVariantOptionsPtrType)(v)
-}
-
-func (*imageVariantVariantOptionsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageVariantVariantOptions)(nil)).Elem()
-}
-
-func (i *imageVariantVariantOptionsPtrType) ToImageVariantVariantOptionsPtrOutput() ImageVariantVariantOptionsPtrOutput {
-	return i.ToImageVariantVariantOptionsPtrOutputWithContext(context.Background())
-}
-
-func (i *imageVariantVariantOptionsPtrType) ToImageVariantVariantOptionsPtrOutputWithContext(ctx context.Context) ImageVariantVariantOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageVariantVariantOptionsPtrOutput)
-}
-
-type ImageVariantVariantOptionsOutput struct{ *pulumi.OutputState }
-
-func (ImageVariantVariantOptionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageVariantVariantOptions)(nil)).Elem()
-}
-
-func (o ImageVariantVariantOptionsOutput) ToImageVariantVariantOptionsOutput() ImageVariantVariantOptionsOutput {
-	return o
-}
-
-func (o ImageVariantVariantOptionsOutput) ToImageVariantVariantOptionsOutputWithContext(ctx context.Context) ImageVariantVariantOptionsOutput {
-	return o
-}
-
-func (o ImageVariantVariantOptionsOutput) ToImageVariantVariantOptionsPtrOutput() ImageVariantVariantOptionsPtrOutput {
-	return o.ToImageVariantVariantOptionsPtrOutputWithContext(context.Background())
-}
-
-func (o ImageVariantVariantOptionsOutput) ToImageVariantVariantOptionsPtrOutputWithContext(ctx context.Context) ImageVariantVariantOptionsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageVariantVariantOptions) *ImageVariantVariantOptions {
-		return &v
-	}).(ImageVariantVariantOptionsPtrOutput)
-}
-
-// The fit property describes how the width and height dimensions should be interpreted.
-// Available values: "scale-down", "contain", "cover", "crop", "pad".
-func (o ImageVariantVariantOptionsOutput) Fit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ImageVariantVariantOptions) *string { return v.Fit }).(pulumi.StringPtrOutput)
-}
-
-// Maximum height in image pixels.
-func (o ImageVariantVariantOptionsOutput) Height() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ImageVariantVariantOptions) *float64 { return v.Height }).(pulumi.Float64PtrOutput)
-}
-
-// What EXIF data should be preserved in the output image.
-// Available values: "keep", "copyright", "none".
-func (o ImageVariantVariantOptionsOutput) Metadata() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ImageVariantVariantOptions) *string { return v.Metadata }).(pulumi.StringPtrOutput)
-}
-
-// Maximum width in image pixels.
-func (o ImageVariantVariantOptionsOutput) Width() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ImageVariantVariantOptions) *float64 { return v.Width }).(pulumi.Float64PtrOutput)
-}
-
-type ImageVariantVariantOptionsPtrOutput struct{ *pulumi.OutputState }
-
-func (ImageVariantVariantOptionsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageVariantVariantOptions)(nil)).Elem()
-}
-
-func (o ImageVariantVariantOptionsPtrOutput) ToImageVariantVariantOptionsPtrOutput() ImageVariantVariantOptionsPtrOutput {
-	return o
-}
-
-func (o ImageVariantVariantOptionsPtrOutput) ToImageVariantVariantOptionsPtrOutputWithContext(ctx context.Context) ImageVariantVariantOptionsPtrOutput {
-	return o
-}
-
-func (o ImageVariantVariantOptionsPtrOutput) Elem() ImageVariantVariantOptionsOutput {
-	return o.ApplyT(func(v *ImageVariantVariantOptions) ImageVariantVariantOptions {
-		if v != nil {
-			return *v
-		}
-		var ret ImageVariantVariantOptions
-		return ret
-	}).(ImageVariantVariantOptionsOutput)
-}
-
-// The fit property describes how the width and height dimensions should be interpreted.
-// Available values: "scale-down", "contain", "cover", "crop", "pad".
-func (o ImageVariantVariantOptionsPtrOutput) Fit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ImageVariantVariantOptions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Fit
-	}).(pulumi.StringPtrOutput)
-}
-
-// Maximum height in image pixels.
-func (o ImageVariantVariantOptionsPtrOutput) Height() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ImageVariantVariantOptions) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.Height
-	}).(pulumi.Float64PtrOutput)
-}
-
-// What EXIF data should be preserved in the output image.
-// Available values: "keep", "copyright", "none".
-func (o ImageVariantVariantOptionsPtrOutput) Metadata() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ImageVariantVariantOptions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Metadata
-	}).(pulumi.StringPtrOutput)
-}
-
-// Maximum width in image pixels.
-func (o ImageVariantVariantOptionsPtrOutput) Width() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ImageVariantVariantOptions) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.Width
-	}).(pulumi.Float64PtrOutput)
-}
-
 type KeylessCertificateTunnel struct {
 	// Private IP of the Key Server Host.
 	PrivateIp string `pulumi:"privateIp"`
@@ -70904,7 +71780,7 @@ func (o ListItemTypeArrayOutput) Index(i pulumi.IntInput) ListItemTypeOutput {
 }
 
 type ListItemHostname struct {
-	// Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+	// Only applies to wildcard hostnames (e.g., *.example.com). When true (default), the rule blocks only subdomains. When false, the rule blocks both the root domain and subdomains.
 	ExcludeExactHostname *bool  `pulumi:"excludeExactHostname"`
 	UrlHostname          string `pulumi:"urlHostname"`
 }
@@ -70921,7 +71797,7 @@ type ListItemHostnameInput interface {
 }
 
 type ListItemHostnameArgs struct {
-	// Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+	// Only applies to wildcard hostnames (e.g., *.example.com). When true (default), the rule blocks only subdomains. When false, the rule blocks both the root domain and subdomains.
 	ExcludeExactHostname pulumi.BoolPtrInput `pulumi:"excludeExactHostname"`
 	UrlHostname          pulumi.StringInput  `pulumi:"urlHostname"`
 }
@@ -71003,7 +71879,7 @@ func (o ListItemHostnameOutput) ToListItemHostnamePtrOutputWithContext(ctx conte
 	}).(ListItemHostnamePtrOutput)
 }
 
-// Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+// Only applies to wildcard hostnames (e.g., *.example.com). When true (default), the rule blocks only subdomains. When false, the rule blocks both the root domain and subdomains.
 func (o ListItemHostnameOutput) ExcludeExactHostname() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListItemHostname) *bool { return v.ExcludeExactHostname }).(pulumi.BoolPtrOutput)
 }
@@ -71036,7 +71912,7 @@ func (o ListItemHostnamePtrOutput) Elem() ListItemHostnameOutput {
 	}).(ListItemHostnameOutput)
 }
 
-// Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+// Only applies to wildcard hostnames (e.g., *.example.com). When true (default), the rule blocks only subdomains. When false, the rule blocks both the root domain and subdomains.
 func (o ListItemHostnamePtrOutput) ExcludeExactHostname() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListItemHostname) *bool {
 		if v == nil {
@@ -79858,686 +80734,6 @@ func (o ManagedHeadersManagedResponseHeaderArrayOutput) Index(i pulumi.IntInput)
 	}).(ManagedHeadersManagedResponseHeaderOutput)
 }
 
-type ManagedTransformsManagedRequestHeader struct {
-	// Whether the Managed Transform is enabled.
-	Enabled bool `pulumi:"enabled"`
-	// The human-readable identifier of the Managed Transform.
-	Id string `pulumi:"id"`
-}
-
-// ManagedTransformsManagedRequestHeaderInput is an input type that accepts ManagedTransformsManagedRequestHeaderArgs and ManagedTransformsManagedRequestHeaderOutput values.
-// You can construct a concrete instance of `ManagedTransformsManagedRequestHeaderInput` via:
-//
-//	ManagedTransformsManagedRequestHeaderArgs{...}
-type ManagedTransformsManagedRequestHeaderInput interface {
-	pulumi.Input
-
-	ToManagedTransformsManagedRequestHeaderOutput() ManagedTransformsManagedRequestHeaderOutput
-	ToManagedTransformsManagedRequestHeaderOutputWithContext(context.Context) ManagedTransformsManagedRequestHeaderOutput
-}
-
-type ManagedTransformsManagedRequestHeaderArgs struct {
-	// Whether the Managed Transform is enabled.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// The human-readable identifier of the Managed Transform.
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (ManagedTransformsManagedRequestHeaderArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedTransformsManagedRequestHeader)(nil)).Elem()
-}
-
-func (i ManagedTransformsManagedRequestHeaderArgs) ToManagedTransformsManagedRequestHeaderOutput() ManagedTransformsManagedRequestHeaderOutput {
-	return i.ToManagedTransformsManagedRequestHeaderOutputWithContext(context.Background())
-}
-
-func (i ManagedTransformsManagedRequestHeaderArgs) ToManagedTransformsManagedRequestHeaderOutputWithContext(ctx context.Context) ManagedTransformsManagedRequestHeaderOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedTransformsManagedRequestHeaderOutput)
-}
-
-// ManagedTransformsManagedRequestHeaderArrayInput is an input type that accepts ManagedTransformsManagedRequestHeaderArray and ManagedTransformsManagedRequestHeaderArrayOutput values.
-// You can construct a concrete instance of `ManagedTransformsManagedRequestHeaderArrayInput` via:
-//
-//	ManagedTransformsManagedRequestHeaderArray{ ManagedTransformsManagedRequestHeaderArgs{...} }
-type ManagedTransformsManagedRequestHeaderArrayInput interface {
-	pulumi.Input
-
-	ToManagedTransformsManagedRequestHeaderArrayOutput() ManagedTransformsManagedRequestHeaderArrayOutput
-	ToManagedTransformsManagedRequestHeaderArrayOutputWithContext(context.Context) ManagedTransformsManagedRequestHeaderArrayOutput
-}
-
-type ManagedTransformsManagedRequestHeaderArray []ManagedTransformsManagedRequestHeaderInput
-
-func (ManagedTransformsManagedRequestHeaderArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ManagedTransformsManagedRequestHeader)(nil)).Elem()
-}
-
-func (i ManagedTransformsManagedRequestHeaderArray) ToManagedTransformsManagedRequestHeaderArrayOutput() ManagedTransformsManagedRequestHeaderArrayOutput {
-	return i.ToManagedTransformsManagedRequestHeaderArrayOutputWithContext(context.Background())
-}
-
-func (i ManagedTransformsManagedRequestHeaderArray) ToManagedTransformsManagedRequestHeaderArrayOutputWithContext(ctx context.Context) ManagedTransformsManagedRequestHeaderArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedTransformsManagedRequestHeaderArrayOutput)
-}
-
-type ManagedTransformsManagedRequestHeaderOutput struct{ *pulumi.OutputState }
-
-func (ManagedTransformsManagedRequestHeaderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedTransformsManagedRequestHeader)(nil)).Elem()
-}
-
-func (o ManagedTransformsManagedRequestHeaderOutput) ToManagedTransformsManagedRequestHeaderOutput() ManagedTransformsManagedRequestHeaderOutput {
-	return o
-}
-
-func (o ManagedTransformsManagedRequestHeaderOutput) ToManagedTransformsManagedRequestHeaderOutputWithContext(ctx context.Context) ManagedTransformsManagedRequestHeaderOutput {
-	return o
-}
-
-// Whether the Managed Transform is enabled.
-func (o ManagedTransformsManagedRequestHeaderOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v ManagedTransformsManagedRequestHeader) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// The human-readable identifier of the Managed Transform.
-func (o ManagedTransformsManagedRequestHeaderOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedTransformsManagedRequestHeader) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type ManagedTransformsManagedRequestHeaderArrayOutput struct{ *pulumi.OutputState }
-
-func (ManagedTransformsManagedRequestHeaderArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ManagedTransformsManagedRequestHeader)(nil)).Elem()
-}
-
-func (o ManagedTransformsManagedRequestHeaderArrayOutput) ToManagedTransformsManagedRequestHeaderArrayOutput() ManagedTransformsManagedRequestHeaderArrayOutput {
-	return o
-}
-
-func (o ManagedTransformsManagedRequestHeaderArrayOutput) ToManagedTransformsManagedRequestHeaderArrayOutputWithContext(ctx context.Context) ManagedTransformsManagedRequestHeaderArrayOutput {
-	return o
-}
-
-func (o ManagedTransformsManagedRequestHeaderArrayOutput) Index(i pulumi.IntInput) ManagedTransformsManagedRequestHeaderOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedTransformsManagedRequestHeader {
-		return vs[0].([]ManagedTransformsManagedRequestHeader)[vs[1].(int)]
-	}).(ManagedTransformsManagedRequestHeaderOutput)
-}
-
-type ManagedTransformsManagedResponseHeader struct {
-	// Whether the Managed Transform is enabled.
-	Enabled bool `pulumi:"enabled"`
-	// The human-readable identifier of the Managed Transform.
-	Id string `pulumi:"id"`
-}
-
-// ManagedTransformsManagedResponseHeaderInput is an input type that accepts ManagedTransformsManagedResponseHeaderArgs and ManagedTransformsManagedResponseHeaderOutput values.
-// You can construct a concrete instance of `ManagedTransformsManagedResponseHeaderInput` via:
-//
-//	ManagedTransformsManagedResponseHeaderArgs{...}
-type ManagedTransformsManagedResponseHeaderInput interface {
-	pulumi.Input
-
-	ToManagedTransformsManagedResponseHeaderOutput() ManagedTransformsManagedResponseHeaderOutput
-	ToManagedTransformsManagedResponseHeaderOutputWithContext(context.Context) ManagedTransformsManagedResponseHeaderOutput
-}
-
-type ManagedTransformsManagedResponseHeaderArgs struct {
-	// Whether the Managed Transform is enabled.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// The human-readable identifier of the Managed Transform.
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (ManagedTransformsManagedResponseHeaderArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedTransformsManagedResponseHeader)(nil)).Elem()
-}
-
-func (i ManagedTransformsManagedResponseHeaderArgs) ToManagedTransformsManagedResponseHeaderOutput() ManagedTransformsManagedResponseHeaderOutput {
-	return i.ToManagedTransformsManagedResponseHeaderOutputWithContext(context.Background())
-}
-
-func (i ManagedTransformsManagedResponseHeaderArgs) ToManagedTransformsManagedResponseHeaderOutputWithContext(ctx context.Context) ManagedTransformsManagedResponseHeaderOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedTransformsManagedResponseHeaderOutput)
-}
-
-// ManagedTransformsManagedResponseHeaderArrayInput is an input type that accepts ManagedTransformsManagedResponseHeaderArray and ManagedTransformsManagedResponseHeaderArrayOutput values.
-// You can construct a concrete instance of `ManagedTransformsManagedResponseHeaderArrayInput` via:
-//
-//	ManagedTransformsManagedResponseHeaderArray{ ManagedTransformsManagedResponseHeaderArgs{...} }
-type ManagedTransformsManagedResponseHeaderArrayInput interface {
-	pulumi.Input
-
-	ToManagedTransformsManagedResponseHeaderArrayOutput() ManagedTransformsManagedResponseHeaderArrayOutput
-	ToManagedTransformsManagedResponseHeaderArrayOutputWithContext(context.Context) ManagedTransformsManagedResponseHeaderArrayOutput
-}
-
-type ManagedTransformsManagedResponseHeaderArray []ManagedTransformsManagedResponseHeaderInput
-
-func (ManagedTransformsManagedResponseHeaderArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ManagedTransformsManagedResponseHeader)(nil)).Elem()
-}
-
-func (i ManagedTransformsManagedResponseHeaderArray) ToManagedTransformsManagedResponseHeaderArrayOutput() ManagedTransformsManagedResponseHeaderArrayOutput {
-	return i.ToManagedTransformsManagedResponseHeaderArrayOutputWithContext(context.Background())
-}
-
-func (i ManagedTransformsManagedResponseHeaderArray) ToManagedTransformsManagedResponseHeaderArrayOutputWithContext(ctx context.Context) ManagedTransformsManagedResponseHeaderArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedTransformsManagedResponseHeaderArrayOutput)
-}
-
-type ManagedTransformsManagedResponseHeaderOutput struct{ *pulumi.OutputState }
-
-func (ManagedTransformsManagedResponseHeaderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedTransformsManagedResponseHeader)(nil)).Elem()
-}
-
-func (o ManagedTransformsManagedResponseHeaderOutput) ToManagedTransformsManagedResponseHeaderOutput() ManagedTransformsManagedResponseHeaderOutput {
-	return o
-}
-
-func (o ManagedTransformsManagedResponseHeaderOutput) ToManagedTransformsManagedResponseHeaderOutputWithContext(ctx context.Context) ManagedTransformsManagedResponseHeaderOutput {
-	return o
-}
-
-// Whether the Managed Transform is enabled.
-func (o ManagedTransformsManagedResponseHeaderOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v ManagedTransformsManagedResponseHeader) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// The human-readable identifier of the Managed Transform.
-func (o ManagedTransformsManagedResponseHeaderOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedTransformsManagedResponseHeader) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type ManagedTransformsManagedResponseHeaderArrayOutput struct{ *pulumi.OutputState }
-
-func (ManagedTransformsManagedResponseHeaderArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ManagedTransformsManagedResponseHeader)(nil)).Elem()
-}
-
-func (o ManagedTransformsManagedResponseHeaderArrayOutput) ToManagedTransformsManagedResponseHeaderArrayOutput() ManagedTransformsManagedResponseHeaderArrayOutput {
-	return o
-}
-
-func (o ManagedTransformsManagedResponseHeaderArrayOutput) ToManagedTransformsManagedResponseHeaderArrayOutputWithContext(ctx context.Context) ManagedTransformsManagedResponseHeaderArrayOutput {
-	return o
-}
-
-func (o ManagedTransformsManagedResponseHeaderArrayOutput) Index(i pulumi.IntInput) ManagedTransformsManagedResponseHeaderOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedTransformsManagedResponseHeader {
-		return vs[0].([]ManagedTransformsManagedResponseHeader)[vs[1].(int)]
-	}).(ManagedTransformsManagedResponseHeaderOutput)
-}
-
-type MoqRelayConfig struct {
-	LingeringSubscribe *MoqRelayConfigLingeringSubscribe `pulumi:"lingeringSubscribe"`
-	// Upstreams are external MOQT server publishers that a relay falls back
-	// to when it has no local publisher for a requested namespace/track.
-	Upstreams *MoqRelayConfigUpstreams `pulumi:"upstreams"`
-}
-
-// MoqRelayConfigInput is an input type that accepts MoqRelayConfigArgs and MoqRelayConfigOutput values.
-// You can construct a concrete instance of `MoqRelayConfigInput` via:
-//
-//	MoqRelayConfigArgs{...}
-type MoqRelayConfigInput interface {
-	pulumi.Input
-
-	ToMoqRelayConfigOutput() MoqRelayConfigOutput
-	ToMoqRelayConfigOutputWithContext(context.Context) MoqRelayConfigOutput
-}
-
-type MoqRelayConfigArgs struct {
-	LingeringSubscribe MoqRelayConfigLingeringSubscribePtrInput `pulumi:"lingeringSubscribe"`
-	// Upstreams are external MOQT server publishers that a relay falls back
-	// to when it has no local publisher for a requested namespace/track.
-	Upstreams MoqRelayConfigUpstreamsPtrInput `pulumi:"upstreams"`
-}
-
-func (MoqRelayConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MoqRelayConfig)(nil)).Elem()
-}
-
-func (i MoqRelayConfigArgs) ToMoqRelayConfigOutput() MoqRelayConfigOutput {
-	return i.ToMoqRelayConfigOutputWithContext(context.Background())
-}
-
-func (i MoqRelayConfigArgs) ToMoqRelayConfigOutputWithContext(ctx context.Context) MoqRelayConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigOutput)
-}
-
-func (i MoqRelayConfigArgs) ToMoqRelayConfigPtrOutput() MoqRelayConfigPtrOutput {
-	return i.ToMoqRelayConfigPtrOutputWithContext(context.Background())
-}
-
-func (i MoqRelayConfigArgs) ToMoqRelayConfigPtrOutputWithContext(ctx context.Context) MoqRelayConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigOutput).ToMoqRelayConfigPtrOutputWithContext(ctx)
-}
-
-// MoqRelayConfigPtrInput is an input type that accepts MoqRelayConfigArgs, MoqRelayConfigPtr and MoqRelayConfigPtrOutput values.
-// You can construct a concrete instance of `MoqRelayConfigPtrInput` via:
-//
-//	        MoqRelayConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type MoqRelayConfigPtrInput interface {
-	pulumi.Input
-
-	ToMoqRelayConfigPtrOutput() MoqRelayConfigPtrOutput
-	ToMoqRelayConfigPtrOutputWithContext(context.Context) MoqRelayConfigPtrOutput
-}
-
-type moqRelayConfigPtrType MoqRelayConfigArgs
-
-func MoqRelayConfigPtr(v *MoqRelayConfigArgs) MoqRelayConfigPtrInput {
-	return (*moqRelayConfigPtrType)(v)
-}
-
-func (*moqRelayConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MoqRelayConfig)(nil)).Elem()
-}
-
-func (i *moqRelayConfigPtrType) ToMoqRelayConfigPtrOutput() MoqRelayConfigPtrOutput {
-	return i.ToMoqRelayConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *moqRelayConfigPtrType) ToMoqRelayConfigPtrOutputWithContext(ctx context.Context) MoqRelayConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigPtrOutput)
-}
-
-type MoqRelayConfigOutput struct{ *pulumi.OutputState }
-
-func (MoqRelayConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MoqRelayConfig)(nil)).Elem()
-}
-
-func (o MoqRelayConfigOutput) ToMoqRelayConfigOutput() MoqRelayConfigOutput {
-	return o
-}
-
-func (o MoqRelayConfigOutput) ToMoqRelayConfigOutputWithContext(ctx context.Context) MoqRelayConfigOutput {
-	return o
-}
-
-func (o MoqRelayConfigOutput) ToMoqRelayConfigPtrOutput() MoqRelayConfigPtrOutput {
-	return o.ToMoqRelayConfigPtrOutputWithContext(context.Background())
-}
-
-func (o MoqRelayConfigOutput) ToMoqRelayConfigPtrOutputWithContext(ctx context.Context) MoqRelayConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MoqRelayConfig) *MoqRelayConfig {
-		return &v
-	}).(MoqRelayConfigPtrOutput)
-}
-
-func (o MoqRelayConfigOutput) LingeringSubscribe() MoqRelayConfigLingeringSubscribePtrOutput {
-	return o.ApplyT(func(v MoqRelayConfig) *MoqRelayConfigLingeringSubscribe { return v.LingeringSubscribe }).(MoqRelayConfigLingeringSubscribePtrOutput)
-}
-
-// Upstreams are external MOQT server publishers that a relay falls back
-// to when it has no local publisher for a requested namespace/track.
-func (o MoqRelayConfigOutput) Upstreams() MoqRelayConfigUpstreamsPtrOutput {
-	return o.ApplyT(func(v MoqRelayConfig) *MoqRelayConfigUpstreams { return v.Upstreams }).(MoqRelayConfigUpstreamsPtrOutput)
-}
-
-type MoqRelayConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (MoqRelayConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MoqRelayConfig)(nil)).Elem()
-}
-
-func (o MoqRelayConfigPtrOutput) ToMoqRelayConfigPtrOutput() MoqRelayConfigPtrOutput {
-	return o
-}
-
-func (o MoqRelayConfigPtrOutput) ToMoqRelayConfigPtrOutputWithContext(ctx context.Context) MoqRelayConfigPtrOutput {
-	return o
-}
-
-func (o MoqRelayConfigPtrOutput) Elem() MoqRelayConfigOutput {
-	return o.ApplyT(func(v *MoqRelayConfig) MoqRelayConfig {
-		if v != nil {
-			return *v
-		}
-		var ret MoqRelayConfig
-		return ret
-	}).(MoqRelayConfigOutput)
-}
-
-func (o MoqRelayConfigPtrOutput) LingeringSubscribe() MoqRelayConfigLingeringSubscribePtrOutput {
-	return o.ApplyT(func(v *MoqRelayConfig) *MoqRelayConfigLingeringSubscribe {
-		if v == nil {
-			return nil
-		}
-		return v.LingeringSubscribe
-	}).(MoqRelayConfigLingeringSubscribePtrOutput)
-}
-
-// Upstreams are external MOQT server publishers that a relay falls back
-// to when it has no local publisher for a requested namespace/track.
-func (o MoqRelayConfigPtrOutput) Upstreams() MoqRelayConfigUpstreamsPtrOutput {
-	return o.ApplyT(func(v *MoqRelayConfig) *MoqRelayConfigUpstreams {
-		if v == nil {
-			return nil
-		}
-		return v.Upstreams
-	}).(MoqRelayConfigUpstreamsPtrOutput)
-}
-
-type MoqRelayConfigLingeringSubscribe struct {
-	Enabled *bool `pulumi:"enabled"`
-	// Relay-level ceiling on lingering subscribe timeout (ms). Default 30000.
-	MaxTimeoutMs *int `pulumi:"maxTimeoutMs"`
-}
-
-// MoqRelayConfigLingeringSubscribeInput is an input type that accepts MoqRelayConfigLingeringSubscribeArgs and MoqRelayConfigLingeringSubscribeOutput values.
-// You can construct a concrete instance of `MoqRelayConfigLingeringSubscribeInput` via:
-//
-//	MoqRelayConfigLingeringSubscribeArgs{...}
-type MoqRelayConfigLingeringSubscribeInput interface {
-	pulumi.Input
-
-	ToMoqRelayConfigLingeringSubscribeOutput() MoqRelayConfigLingeringSubscribeOutput
-	ToMoqRelayConfigLingeringSubscribeOutputWithContext(context.Context) MoqRelayConfigLingeringSubscribeOutput
-}
-
-type MoqRelayConfigLingeringSubscribeArgs struct {
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Relay-level ceiling on lingering subscribe timeout (ms). Default 30000.
-	MaxTimeoutMs pulumi.IntPtrInput `pulumi:"maxTimeoutMs"`
-}
-
-func (MoqRelayConfigLingeringSubscribeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MoqRelayConfigLingeringSubscribe)(nil)).Elem()
-}
-
-func (i MoqRelayConfigLingeringSubscribeArgs) ToMoqRelayConfigLingeringSubscribeOutput() MoqRelayConfigLingeringSubscribeOutput {
-	return i.ToMoqRelayConfigLingeringSubscribeOutputWithContext(context.Background())
-}
-
-func (i MoqRelayConfigLingeringSubscribeArgs) ToMoqRelayConfigLingeringSubscribeOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigLingeringSubscribeOutput)
-}
-
-func (i MoqRelayConfigLingeringSubscribeArgs) ToMoqRelayConfigLingeringSubscribePtrOutput() MoqRelayConfigLingeringSubscribePtrOutput {
-	return i.ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(context.Background())
-}
-
-func (i MoqRelayConfigLingeringSubscribeArgs) ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigLingeringSubscribeOutput).ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(ctx)
-}
-
-// MoqRelayConfigLingeringSubscribePtrInput is an input type that accepts MoqRelayConfigLingeringSubscribeArgs, MoqRelayConfigLingeringSubscribePtr and MoqRelayConfigLingeringSubscribePtrOutput values.
-// You can construct a concrete instance of `MoqRelayConfigLingeringSubscribePtrInput` via:
-//
-//	        MoqRelayConfigLingeringSubscribeArgs{...}
-//
-//	or:
-//
-//	        nil
-type MoqRelayConfigLingeringSubscribePtrInput interface {
-	pulumi.Input
-
-	ToMoqRelayConfigLingeringSubscribePtrOutput() MoqRelayConfigLingeringSubscribePtrOutput
-	ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(context.Context) MoqRelayConfigLingeringSubscribePtrOutput
-}
-
-type moqRelayConfigLingeringSubscribePtrType MoqRelayConfigLingeringSubscribeArgs
-
-func MoqRelayConfigLingeringSubscribePtr(v *MoqRelayConfigLingeringSubscribeArgs) MoqRelayConfigLingeringSubscribePtrInput {
-	return (*moqRelayConfigLingeringSubscribePtrType)(v)
-}
-
-func (*moqRelayConfigLingeringSubscribePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MoqRelayConfigLingeringSubscribe)(nil)).Elem()
-}
-
-func (i *moqRelayConfigLingeringSubscribePtrType) ToMoqRelayConfigLingeringSubscribePtrOutput() MoqRelayConfigLingeringSubscribePtrOutput {
-	return i.ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(context.Background())
-}
-
-func (i *moqRelayConfigLingeringSubscribePtrType) ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigLingeringSubscribePtrOutput)
-}
-
-type MoqRelayConfigLingeringSubscribeOutput struct{ *pulumi.OutputState }
-
-func (MoqRelayConfigLingeringSubscribeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MoqRelayConfigLingeringSubscribe)(nil)).Elem()
-}
-
-func (o MoqRelayConfigLingeringSubscribeOutput) ToMoqRelayConfigLingeringSubscribeOutput() MoqRelayConfigLingeringSubscribeOutput {
-	return o
-}
-
-func (o MoqRelayConfigLingeringSubscribeOutput) ToMoqRelayConfigLingeringSubscribeOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribeOutput {
-	return o
-}
-
-func (o MoqRelayConfigLingeringSubscribeOutput) ToMoqRelayConfigLingeringSubscribePtrOutput() MoqRelayConfigLingeringSubscribePtrOutput {
-	return o.ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(context.Background())
-}
-
-func (o MoqRelayConfigLingeringSubscribeOutput) ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MoqRelayConfigLingeringSubscribe) *MoqRelayConfigLingeringSubscribe {
-		return &v
-	}).(MoqRelayConfigLingeringSubscribePtrOutput)
-}
-
-func (o MoqRelayConfigLingeringSubscribeOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MoqRelayConfigLingeringSubscribe) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// Relay-level ceiling on lingering subscribe timeout (ms). Default 30000.
-func (o MoqRelayConfigLingeringSubscribeOutput) MaxTimeoutMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MoqRelayConfigLingeringSubscribe) *int { return v.MaxTimeoutMs }).(pulumi.IntPtrOutput)
-}
-
-type MoqRelayConfigLingeringSubscribePtrOutput struct{ *pulumi.OutputState }
-
-func (MoqRelayConfigLingeringSubscribePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MoqRelayConfigLingeringSubscribe)(nil)).Elem()
-}
-
-func (o MoqRelayConfigLingeringSubscribePtrOutput) ToMoqRelayConfigLingeringSubscribePtrOutput() MoqRelayConfigLingeringSubscribePtrOutput {
-	return o
-}
-
-func (o MoqRelayConfigLingeringSubscribePtrOutput) ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribePtrOutput {
-	return o
-}
-
-func (o MoqRelayConfigLingeringSubscribePtrOutput) Elem() MoqRelayConfigLingeringSubscribeOutput {
-	return o.ApplyT(func(v *MoqRelayConfigLingeringSubscribe) MoqRelayConfigLingeringSubscribe {
-		if v != nil {
-			return *v
-		}
-		var ret MoqRelayConfigLingeringSubscribe
-		return ret
-	}).(MoqRelayConfigLingeringSubscribeOutput)
-}
-
-func (o MoqRelayConfigLingeringSubscribePtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MoqRelayConfigLingeringSubscribe) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Relay-level ceiling on lingering subscribe timeout (ms). Default 30000.
-func (o MoqRelayConfigLingeringSubscribePtrOutput) MaxTimeoutMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MoqRelayConfigLingeringSubscribe) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxTimeoutMs
-	}).(pulumi.IntPtrOutput)
-}
-
-type MoqRelayConfigUpstreams struct {
-	Enabled *bool `pulumi:"enabled"`
-	// Ordered list of upstream MOQT server publishers. Each entry is an
-	// object (not a bare string) so per-upstream configuration can be
-	// added in the future without another breaking change.
-	Upstreams []MoqRelayConfigUpstreamsUpstream `pulumi:"upstreams"`
-}
-
-// MoqRelayConfigUpstreamsInput is an input type that accepts MoqRelayConfigUpstreamsArgs and MoqRelayConfigUpstreamsOutput values.
-// You can construct a concrete instance of `MoqRelayConfigUpstreamsInput` via:
-//
-//	MoqRelayConfigUpstreamsArgs{...}
-type MoqRelayConfigUpstreamsInput interface {
-	pulumi.Input
-
-	ToMoqRelayConfigUpstreamsOutput() MoqRelayConfigUpstreamsOutput
-	ToMoqRelayConfigUpstreamsOutputWithContext(context.Context) MoqRelayConfigUpstreamsOutput
-}
-
-type MoqRelayConfigUpstreamsArgs struct {
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Ordered list of upstream MOQT server publishers. Each entry is an
-	// object (not a bare string) so per-upstream configuration can be
-	// added in the future without another breaking change.
-	Upstreams MoqRelayConfigUpstreamsUpstreamArrayInput `pulumi:"upstreams"`
-}
-
-func (MoqRelayConfigUpstreamsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MoqRelayConfigUpstreams)(nil)).Elem()
-}
-
-func (i MoqRelayConfigUpstreamsArgs) ToMoqRelayConfigUpstreamsOutput() MoqRelayConfigUpstreamsOutput {
-	return i.ToMoqRelayConfigUpstreamsOutputWithContext(context.Background())
-}
-
-func (i MoqRelayConfigUpstreamsArgs) ToMoqRelayConfigUpstreamsOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigUpstreamsOutput)
-}
-
-func (i MoqRelayConfigUpstreamsArgs) ToMoqRelayConfigUpstreamsPtrOutput() MoqRelayConfigUpstreamsPtrOutput {
-	return i.ToMoqRelayConfigUpstreamsPtrOutputWithContext(context.Background())
-}
-
-func (i MoqRelayConfigUpstreamsArgs) ToMoqRelayConfigUpstreamsPtrOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigUpstreamsOutput).ToMoqRelayConfigUpstreamsPtrOutputWithContext(ctx)
-}
-
-// MoqRelayConfigUpstreamsPtrInput is an input type that accepts MoqRelayConfigUpstreamsArgs, MoqRelayConfigUpstreamsPtr and MoqRelayConfigUpstreamsPtrOutput values.
-// You can construct a concrete instance of `MoqRelayConfigUpstreamsPtrInput` via:
-//
-//	        MoqRelayConfigUpstreamsArgs{...}
-//
-//	or:
-//
-//	        nil
-type MoqRelayConfigUpstreamsPtrInput interface {
-	pulumi.Input
-
-	ToMoqRelayConfigUpstreamsPtrOutput() MoqRelayConfigUpstreamsPtrOutput
-	ToMoqRelayConfigUpstreamsPtrOutputWithContext(context.Context) MoqRelayConfigUpstreamsPtrOutput
-}
-
-type moqRelayConfigUpstreamsPtrType MoqRelayConfigUpstreamsArgs
-
-func MoqRelayConfigUpstreamsPtr(v *MoqRelayConfigUpstreamsArgs) MoqRelayConfigUpstreamsPtrInput {
-	return (*moqRelayConfigUpstreamsPtrType)(v)
-}
-
-func (*moqRelayConfigUpstreamsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MoqRelayConfigUpstreams)(nil)).Elem()
-}
-
-func (i *moqRelayConfigUpstreamsPtrType) ToMoqRelayConfigUpstreamsPtrOutput() MoqRelayConfigUpstreamsPtrOutput {
-	return i.ToMoqRelayConfigUpstreamsPtrOutputWithContext(context.Background())
-}
-
-func (i *moqRelayConfigUpstreamsPtrType) ToMoqRelayConfigUpstreamsPtrOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigUpstreamsPtrOutput)
-}
-
-type MoqRelayConfigUpstreamsOutput struct{ *pulumi.OutputState }
-
-func (MoqRelayConfigUpstreamsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MoqRelayConfigUpstreams)(nil)).Elem()
-}
-
-func (o MoqRelayConfigUpstreamsOutput) ToMoqRelayConfigUpstreamsOutput() MoqRelayConfigUpstreamsOutput {
-	return o
-}
-
-func (o MoqRelayConfigUpstreamsOutput) ToMoqRelayConfigUpstreamsOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsOutput {
-	return o
-}
-
-func (o MoqRelayConfigUpstreamsOutput) ToMoqRelayConfigUpstreamsPtrOutput() MoqRelayConfigUpstreamsPtrOutput {
-	return o.ToMoqRelayConfigUpstreamsPtrOutputWithContext(context.Background())
-}
-
-func (o MoqRelayConfigUpstreamsOutput) ToMoqRelayConfigUpstreamsPtrOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MoqRelayConfigUpstreams) *MoqRelayConfigUpstreams {
-		return &v
-	}).(MoqRelayConfigUpstreamsPtrOutput)
-}
-
-func (o MoqRelayConfigUpstreamsOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MoqRelayConfigUpstreams) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// Ordered list of upstream MOQT server publishers. Each entry is an
-// object (not a bare string) so per-upstream configuration can be
-// added in the future without another breaking change.
-func (o MoqRelayConfigUpstreamsOutput) Upstreams() MoqRelayConfigUpstreamsUpstreamArrayOutput {
-	return o.ApplyT(func(v MoqRelayConfigUpstreams) []MoqRelayConfigUpstreamsUpstream { return v.Upstreams }).(MoqRelayConfigUpstreamsUpstreamArrayOutput)
-}
-
-type MoqRelayConfigUpstreamsPtrOutput struct{ *pulumi.OutputState }
-
-func (MoqRelayConfigUpstreamsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MoqRelayConfigUpstreams)(nil)).Elem()
-}
-
-func (o MoqRelayConfigUpstreamsPtrOutput) ToMoqRelayConfigUpstreamsPtrOutput() MoqRelayConfigUpstreamsPtrOutput {
-	return o
-}
-
-func (o MoqRelayConfigUpstreamsPtrOutput) ToMoqRelayConfigUpstreamsPtrOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsPtrOutput {
-	return o
-}
-
-func (o MoqRelayConfigUpstreamsPtrOutput) Elem() MoqRelayConfigUpstreamsOutput {
-	return o.ApplyT(func(v *MoqRelayConfigUpstreams) MoqRelayConfigUpstreams {
-		if v != nil {
-			return *v
-		}
-		var ret MoqRelayConfigUpstreams
-		return ret
-	}).(MoqRelayConfigUpstreamsOutput)
-}
-
-func (o MoqRelayConfigUpstreamsPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MoqRelayConfigUpstreams) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Ordered list of upstream MOQT server publishers. Each entry is an
-// object (not a bare string) so per-upstream configuration can be
-// added in the future without another breaking change.
-func (o MoqRelayConfigUpstreamsPtrOutput) Upstreams() MoqRelayConfigUpstreamsUpstreamArrayOutput {
-	return o.ApplyT(func(v *MoqRelayConfigUpstreams) []MoqRelayConfigUpstreamsUpstream {
-		if v == nil {
-			return nil
-		}
-		return v.Upstreams
-	}).(MoqRelayConfigUpstreamsUpstreamArrayOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationCorsHeadersInput)(nil)).Elem(), AccessApplicationCorsHeadersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationCorsHeadersPtrInput)(nil)).Elem(), AccessApplicationCorsHeadersArgs{})
@@ -80741,6 +80937,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationScimConfigMappingOperationsPtrInput)(nil)).Elem(), AccessApplicationScimConfigMappingOperationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationTargetCriteriaInput)(nil)).Elem(), AccessApplicationTargetCriteriaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationTargetCriteriaArrayInput)(nil)).Elem(), AccessApplicationTargetCriteriaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessCustomPageWarningInput)(nil)).Elem(), AccessCustomPageWarningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessCustomPageWarningArrayInput)(nil)).Elem(), AccessCustomPageWarningArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeInput)(nil)).Elem(), AccessGroupExcludeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeArrayInput)(nil)).Elem(), AccessGroupExcludeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeAnyValidServiceTokenInput)(nil)).Elem(), AccessGroupExcludeAnyValidServiceTokenArgs{})
@@ -81224,12 +81422,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceSourceParamsPtrInput)(nil)).Elem(), AiSearchInstanceSourceParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceSourceParamsWebCrawlerInput)(nil)).Elem(), AiSearchInstanceSourceParamsWebCrawlerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceSourceParamsWebCrawlerPtrInput)(nil)).Elem(), AiSearchInstanceSourceParamsWebCrawlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsInput)(nil)).Elem(), AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrInput)(nil)).Elem(), AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceSourceParamsWebCrawlerParseOptionsInput)(nil)).Elem(), AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrInput)(nil)).Elem(), AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorInput)(nil)).Elem(), AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorArrayInput)(nil)).Elem(), AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceSourceParamsWebCrawlerStoreOptionsInput)(nil)).Elem(), AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrInput)(nil)).Elem(), AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchNamespacePublicEndpointParamsInput)(nil)).Elem(), AiSearchNamespacePublicEndpointParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchNamespacePublicEndpointParamsPtrInput)(nil)).Elem(), AiSearchNamespacePublicEndpointParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointInput)(nil)).Elem(), AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrInput)(nil)).Elem(), AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchNamespacePublicEndpointParamsMcpInput)(nil)).Elem(), AiSearchNamespacePublicEndpointParamsMcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchNamespacePublicEndpointParamsMcpPtrInput)(nil)).Elem(), AiSearchNamespacePublicEndpointParamsMcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchNamespacePublicEndpointParamsRateLimitInput)(nil)).Elem(), AiSearchNamespacePublicEndpointParamsRateLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchNamespacePublicEndpointParamsRateLimitPtrInput)(nil)).Elem(), AiSearchNamespacePublicEndpointParamsRateLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchNamespacePublicEndpointParamsSearchEndpointInput)(nil)).Elem(), AiSearchNamespacePublicEndpointParamsSearchEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchNamespacePublicEndpointParamsSearchEndpointPtrInput)(nil)).Elem(), AiSearchNamespacePublicEndpointParamsSearchEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiShieldAuthIdCharacteristicInput)(nil)).Elem(), ApiShieldAuthIdCharacteristicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiShieldAuthIdCharacteristicArrayInput)(nil)).Elem(), ApiShieldAuthIdCharacteristicArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiShieldOperationFeaturesInput)(nil)).Elem(), ApiShieldOperationFeaturesArgs{})
@@ -81417,10 +81627,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HyperdriveConfigOriginPtrInput)(nil)).Elem(), HyperdriveConfigOriginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageVariantOptionsInput)(nil)).Elem(), ImageVariantOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageVariantOptionsPtrInput)(nil)).Elem(), ImageVariantOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ImageVariantVariantInput)(nil)).Elem(), ImageVariantVariantArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ImageVariantVariantPtrInput)(nil)).Elem(), ImageVariantVariantArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ImageVariantVariantOptionsInput)(nil)).Elem(), ImageVariantVariantOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ImageVariantVariantOptionsPtrInput)(nil)).Elem(), ImageVariantVariantOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeylessCertificateTunnelInput)(nil)).Elem(), KeylessCertificateTunnelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeylessCertificateTunnelPtrInput)(nil)).Elem(), KeylessCertificateTunnelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemTypeInput)(nil)).Elem(), ListItemTypeArgs{})
@@ -81527,16 +81733,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedHeadersManagedRequestHeaderArrayInput)(nil)).Elem(), ManagedHeadersManagedRequestHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedHeadersManagedResponseHeaderInput)(nil)).Elem(), ManagedHeadersManagedResponseHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedHeadersManagedResponseHeaderArrayInput)(nil)).Elem(), ManagedHeadersManagedResponseHeaderArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedTransformsManagedRequestHeaderInput)(nil)).Elem(), ManagedTransformsManagedRequestHeaderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedTransformsManagedRequestHeaderArrayInput)(nil)).Elem(), ManagedTransformsManagedRequestHeaderArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedTransformsManagedResponseHeaderInput)(nil)).Elem(), ManagedTransformsManagedResponseHeaderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedTransformsManagedResponseHeaderArrayInput)(nil)).Elem(), ManagedTransformsManagedResponseHeaderArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigInput)(nil)).Elem(), MoqRelayConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigPtrInput)(nil)).Elem(), MoqRelayConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigLingeringSubscribeInput)(nil)).Elem(), MoqRelayConfigLingeringSubscribeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigLingeringSubscribePtrInput)(nil)).Elem(), MoqRelayConfigLingeringSubscribeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigUpstreamsInput)(nil)).Elem(), MoqRelayConfigUpstreamsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigUpstreamsPtrInput)(nil)).Elem(), MoqRelayConfigUpstreamsArgs{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeadersOutput{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeadersPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationDestinationOutput{})
@@ -81739,6 +81935,8 @@ func init() {
 	pulumi.RegisterOutputType(AccessApplicationScimConfigMappingOperationsPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationTargetCriteriaOutput{})
 	pulumi.RegisterOutputType(AccessApplicationTargetCriteriaArrayOutput{})
+	pulumi.RegisterOutputType(AccessCustomPageWarningOutput{})
+	pulumi.RegisterOutputType(AccessCustomPageWarningArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeAnyValidServiceTokenOutput{})
@@ -82222,12 +82420,24 @@ func init() {
 	pulumi.RegisterOutputType(AiSearchInstanceSourceParamsPtrOutput{})
 	pulumi.RegisterOutputType(AiSearchInstanceSourceParamsWebCrawlerOutput{})
 	pulumi.RegisterOutputType(AiSearchInstanceSourceParamsWebCrawlerPtrOutput{})
+	pulumi.RegisterOutputType(AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput{})
+	pulumi.RegisterOutputType(AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsPtrOutput{})
 	pulumi.RegisterOutputType(AiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput{})
 	pulumi.RegisterOutputType(AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrOutput{})
 	pulumi.RegisterOutputType(AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorOutput{})
 	pulumi.RegisterOutputType(AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorArrayOutput{})
 	pulumi.RegisterOutputType(AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput{})
 	pulumi.RegisterOutputType(AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput{})
+	pulumi.RegisterOutputType(AiSearchNamespacePublicEndpointParamsOutput{})
+	pulumi.RegisterOutputType(AiSearchNamespacePublicEndpointParamsPtrOutput{})
+	pulumi.RegisterOutputType(AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput{})
+	pulumi.RegisterOutputType(AiSearchNamespacePublicEndpointParamsChatCompletionsEndpointPtrOutput{})
+	pulumi.RegisterOutputType(AiSearchNamespacePublicEndpointParamsMcpOutput{})
+	pulumi.RegisterOutputType(AiSearchNamespacePublicEndpointParamsMcpPtrOutput{})
+	pulumi.RegisterOutputType(AiSearchNamespacePublicEndpointParamsRateLimitOutput{})
+	pulumi.RegisterOutputType(AiSearchNamespacePublicEndpointParamsRateLimitPtrOutput{})
+	pulumi.RegisterOutputType(AiSearchNamespacePublicEndpointParamsSearchEndpointOutput{})
+	pulumi.RegisterOutputType(AiSearchNamespacePublicEndpointParamsSearchEndpointPtrOutput{})
 	pulumi.RegisterOutputType(ApiShieldAuthIdCharacteristicOutput{})
 	pulumi.RegisterOutputType(ApiShieldAuthIdCharacteristicArrayOutput{})
 	pulumi.RegisterOutputType(ApiShieldOperationFeaturesOutput{})
@@ -82415,10 +82625,6 @@ func init() {
 	pulumi.RegisterOutputType(HyperdriveConfigOriginPtrOutput{})
 	pulumi.RegisterOutputType(ImageVariantOptionsOutput{})
 	pulumi.RegisterOutputType(ImageVariantOptionsPtrOutput{})
-	pulumi.RegisterOutputType(ImageVariantVariantOutput{})
-	pulumi.RegisterOutputType(ImageVariantVariantPtrOutput{})
-	pulumi.RegisterOutputType(ImageVariantVariantOptionsOutput{})
-	pulumi.RegisterOutputType(ImageVariantVariantOptionsPtrOutput{})
 	pulumi.RegisterOutputType(KeylessCertificateTunnelOutput{})
 	pulumi.RegisterOutputType(KeylessCertificateTunnelPtrOutput{})
 	pulumi.RegisterOutputType(ListItemTypeOutput{})
@@ -82525,14 +82731,4 @@ func init() {
 	pulumi.RegisterOutputType(ManagedHeadersManagedRequestHeaderArrayOutput{})
 	pulumi.RegisterOutputType(ManagedHeadersManagedResponseHeaderOutput{})
 	pulumi.RegisterOutputType(ManagedHeadersManagedResponseHeaderArrayOutput{})
-	pulumi.RegisterOutputType(ManagedTransformsManagedRequestHeaderOutput{})
-	pulumi.RegisterOutputType(ManagedTransformsManagedRequestHeaderArrayOutput{})
-	pulumi.RegisterOutputType(ManagedTransformsManagedResponseHeaderOutput{})
-	pulumi.RegisterOutputType(ManagedTransformsManagedResponseHeaderArrayOutput{})
-	pulumi.RegisterOutputType(MoqRelayConfigOutput{})
-	pulumi.RegisterOutputType(MoqRelayConfigPtrOutput{})
-	pulumi.RegisterOutputType(MoqRelayConfigLingeringSubscribeOutput{})
-	pulumi.RegisterOutputType(MoqRelayConfigLingeringSubscribePtrOutput{})
-	pulumi.RegisterOutputType(MoqRelayConfigUpstreamsOutput{})
-	pulumi.RegisterOutputType(MoqRelayConfigUpstreamsPtrOutput{})
 }

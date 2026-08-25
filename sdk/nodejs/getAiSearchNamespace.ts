@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getAiSearchNamespace(args: GetAiSearchNamespaceArgs, opts?: pulumi.InvokeOptions): Promise<GetAiSearchNamespaceResult> {
@@ -31,6 +33,8 @@ export interface GetAiSearchNamespaceResult {
      */
     readonly description: string;
     readonly name: string;
+    readonly publicEndpointId: string;
+    readonly publicEndpointParams: outputs.GetAiSearchNamespacePublicEndpointParams;
 }
 export function getAiSearchNamespaceOutput(args: GetAiSearchNamespaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAiSearchNamespaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

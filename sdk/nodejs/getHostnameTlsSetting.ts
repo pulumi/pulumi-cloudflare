@@ -5,11 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Accepted Permissions
- *
- * - `SSL and Certificates Read`
- * - `SSL and Certificates Write`
- *
  * ## Example Usage
  *
  * ```typescript
@@ -19,12 +14,14 @@ import * as utilities from "./utilities";
  * const exampleHostnameTlsSetting = cloudflare.getHostnameTlsSetting({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     settingId: "ciphers",
+ *     hostname: "app.example.com",
  * });
  * ```
  */
 export function getHostnameTlsSetting(args: GetHostnameTlsSettingArgs, opts?: pulumi.InvokeOptions): Promise<GetHostnameTlsSettingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getHostnameTlsSetting:getHostnameTlsSetting", {
+        "hostname": args.hostname,
         "settingId": args.settingId,
         "zoneId": args.zoneId,
     }, opts);
@@ -34,6 +31,10 @@ export function getHostnameTlsSetting(args: GetHostnameTlsSettingArgs, opts?: pu
  * A collection of arguments for invoking getHostnameTlsSetting.
  */
 export interface GetHostnameTlsSettingArgs {
+    /**
+     * The hostname for which the tls settings are set.
+     */
+    hostname: string;
     /**
      * The TLS Setting name.
      * The value type depends on the setting:
@@ -61,11 +62,6 @@ export interface GetHostnameTlsSettingResult {
      * The TLS Setting name.
      * The value type depends on the setting:
      */
-    readonly id: string;
-    /**
-     * The TLS Setting name.
-     * The value type depends on the setting:
-     */
     readonly settingId: string;
     /**
      * Deployment status for the given tls setting.
@@ -86,11 +82,6 @@ export interface GetHostnameTlsSettingResult {
     readonly zoneId?: string;
 }
 /**
- * Accepted Permissions
- *
- * - `SSL and Certificates Read`
- * - `SSL and Certificates Write`
- *
  * ## Example Usage
  *
  * ```typescript
@@ -100,12 +91,14 @@ export interface GetHostnameTlsSettingResult {
  * const exampleHostnameTlsSetting = cloudflare.getHostnameTlsSetting({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     settingId: "ciphers",
+ *     hostname: "app.example.com",
  * });
  * ```
  */
 export function getHostnameTlsSettingOutput(args: GetHostnameTlsSettingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHostnameTlsSettingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getHostnameTlsSetting:getHostnameTlsSetting", {
+        "hostname": args.hostname,
         "settingId": args.settingId,
         "zoneId": args.zoneId,
     }, opts);
@@ -115,6 +108,10 @@ export function getHostnameTlsSettingOutput(args: GetHostnameTlsSettingOutputArg
  * A collection of arguments for invoking getHostnameTlsSetting.
  */
 export interface GetHostnameTlsSettingOutputArgs {
+    /**
+     * The hostname for which the tls settings are set.
+     */
+    hostname: pulumi.Input<string>;
     /**
      * The TLS Setting name.
      * The value type depends on the setting:

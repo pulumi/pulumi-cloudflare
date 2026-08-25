@@ -13,13 +13,25 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class ZeroTrustAccessAiControlsMcpPortalServer
     {
+        /// <summary>
+        /// Disable this server by default for clients connecting through the portal.
+        /// </summary>
         public readonly bool? DefaultDisabled;
+        /// <summary>
+        /// Use end-user OAuth credentials when connecting this server to the portal.
+        /// </summary>
         public readonly bool? OnBehalf;
         /// <summary>
-        /// server id
+        /// Unique identifier for the MCP server.
         /// </summary>
         public readonly string ServerId;
+        /// <summary>
+        /// Portal-specific prompt overrides.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt> UpdatedPrompts;
+        /// <summary>
+        /// Portal-specific tool overrides.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ZeroTrustAccessAiControlsMcpPortalServerUpdatedTool> UpdatedTools;
 
         [OutputConstructor]

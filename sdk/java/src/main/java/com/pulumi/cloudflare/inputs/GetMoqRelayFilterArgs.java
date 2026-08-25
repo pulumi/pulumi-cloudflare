@@ -74,18 +74,20 @@ public final class GetMoqRelayFilterArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Maximum number of relays to return per page.
+     * Maximum number of relays to return per page. Values above the maximum are
+     * clamped to it rather than rejected.
      * 
      */
-    @Import(name="perPage")
-    private @Nullable Output<Integer> perPage;
+    @Import(name="perPage", required=true)
+    private Output<Integer> perPage;
 
     /**
-     * @return Maximum number of relays to return per page.
+     * @return Maximum number of relays to return per page. Values above the maximum are
+     * clamped to it rather than rejected.
      * 
      */
-    public Optional<Output<Integer>> perPage() {
-        return Optional.ofNullable(this.perPage);
+    public Output<Integer> perPage() {
+        return this.perPage;
     }
 
     private GetMoqRelayFilterArgs() {}
@@ -189,18 +191,20 @@ public final class GetMoqRelayFilterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param perPage Maximum number of relays to return per page.
+         * @param perPage Maximum number of relays to return per page. Values above the maximum are
+         * clamped to it rather than rejected.
          * 
          * @return builder
          * 
          */
-        public Builder perPage(@Nullable Output<Integer> perPage) {
+        public Builder perPage(Output<Integer> perPage) {
             $.perPage = perPage;
             return this;
         }
 
         /**
-         * @param perPage Maximum number of relays to return per page.
+         * @param perPage Maximum number of relays to return per page. Values above the maximum are
+         * clamped to it rather than rejected.
          * 
          * @return builder
          * 
@@ -212,6 +216,9 @@ public final class GetMoqRelayFilterArgs extends com.pulumi.resources.ResourceAr
         public GetMoqRelayFilterArgs build() {
             if ($.asc == null) {
                 throw new MissingRequiredPropertyException("GetMoqRelayFilterArgs", "asc");
+            }
+            if ($.perPage == null) {
+                throw new MissingRequiredPropertyException("GetMoqRelayFilterArgs", "perPage");
             }
             return $;
         }

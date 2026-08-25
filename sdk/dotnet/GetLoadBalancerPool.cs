@@ -164,6 +164,10 @@ namespace Pulumi.Cloudflare
         public readonly bool Enabled;
         public readonly Outputs.GetLoadBalancerPoolFilterResult? Filter;
         /// <summary>
+        /// A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+        /// </summary>
+        public readonly ImmutableArray<string> HealthSources;
+        /// <summary>
         /// The ID of this resource.
         /// </summary>
         public readonly string Id;
@@ -234,6 +238,8 @@ namespace Pulumi.Cloudflare
 
             Outputs.GetLoadBalancerPoolFilterResult? filter,
 
+            ImmutableArray<string> healthSources,
+
             string id,
 
             double latitude,
@@ -271,6 +277,7 @@ namespace Pulumi.Cloudflare
             DisabledAt = disabledAt;
             Enabled = enabled;
             Filter = filter;
+            HealthSources = healthSources;
             Id = id;
             Latitude = latitude;
             LoadShedding = loadShedding;

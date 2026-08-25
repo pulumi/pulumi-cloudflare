@@ -54,7 +54,7 @@ type SecretsStoreSecret struct {
 
 	// Account Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Freeform text describing the secret.
+	// Freeform text describing the secret
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// When the secret was created.
 	Created pulumi.StringOutput `pulumi:"created"`
@@ -62,7 +62,7 @@ type SecretsStoreSecret struct {
 	Modified pulumi.StringOutput `pulumi:"modified"`
 	// The name of the secret
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The list of services that can use this secret.
+	// The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 	// Available values: "pending", "active", "deleted".
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -126,7 +126,7 @@ func GetSecretsStoreSecret(ctx *pulumi.Context,
 type secretsStoreSecretState struct {
 	// Account Identifier
 	AccountId *string `pulumi:"accountId"`
-	// Freeform text describing the secret.
+	// Freeform text describing the secret
 	Comment *string `pulumi:"comment"`
 	// When the secret was created.
 	Created *string `pulumi:"created"`
@@ -134,7 +134,7 @@ type secretsStoreSecretState struct {
 	Modified *string `pulumi:"modified"`
 	// The name of the secret
 	Name *string `pulumi:"name"`
-	// The list of services that can use this secret.
+	// The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
 	Scopes []string `pulumi:"scopes"`
 	// Available values: "pending", "active", "deleted".
 	Status *string `pulumi:"status"`
@@ -147,7 +147,7 @@ type secretsStoreSecretState struct {
 type SecretsStoreSecretState struct {
 	// Account Identifier
 	AccountId pulumi.StringPtrInput
-	// Freeform text describing the secret.
+	// Freeform text describing the secret
 	Comment pulumi.StringPtrInput
 	// When the secret was created.
 	Created pulumi.StringPtrInput
@@ -155,7 +155,7 @@ type SecretsStoreSecretState struct {
 	Modified pulumi.StringPtrInput
 	// The name of the secret
 	Name pulumi.StringPtrInput
-	// The list of services that can use this secret.
+	// The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
 	Scopes pulumi.StringArrayInput
 	// Available values: "pending", "active", "deleted".
 	Status pulumi.StringPtrInput
@@ -172,11 +172,11 @@ func (SecretsStoreSecretState) ElementType() reflect.Type {
 type secretsStoreSecretArgs struct {
 	// Account Identifier
 	AccountId string `pulumi:"accountId"`
-	// Freeform text describing the secret.
+	// Freeform text describing the secret
 	Comment *string `pulumi:"comment"`
 	// The name of the secret
 	Name string `pulumi:"name"`
-	// The list of services that can use this secret.
+	// The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
 	Scopes []string `pulumi:"scopes"`
 	// Store Identifier
 	StoreId string `pulumi:"storeId"`
@@ -188,11 +188,11 @@ type secretsStoreSecretArgs struct {
 type SecretsStoreSecretArgs struct {
 	// Account Identifier
 	AccountId pulumi.StringInput
-	// Freeform text describing the secret.
+	// Freeform text describing the secret
 	Comment pulumi.StringPtrInput
 	// The name of the secret
 	Name pulumi.StringInput
-	// The list of services that can use this secret.
+	// The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
 	Scopes pulumi.StringArrayInput
 	// Store Identifier
 	StoreId pulumi.StringInput
@@ -292,7 +292,7 @@ func (o SecretsStoreSecretOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretsStoreSecret) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Freeform text describing the secret.
+// Freeform text describing the secret
 func (o SecretsStoreSecretOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretsStoreSecret) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
@@ -312,7 +312,7 @@ func (o SecretsStoreSecretOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretsStoreSecret) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The list of services that can use this secret.
+// The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
 func (o SecretsStoreSecretOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SecretsStoreSecret) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
 }

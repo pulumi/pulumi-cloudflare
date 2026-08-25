@@ -12,14 +12,18 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MoqRelayConfigUpstreamsUpstream {
     /**
-     * @return Upstream MOQT server publisher URL.
+     * @return Upstream MOQT server publisher URL. Must be an absolute URL with a
+     * host and a scheme the relay can dial: moqt:// (raw QUIC) or https://
+     * (WebTransport). Validated on update (PUT); rejected with 21013.
      * 
      */
     private @Nullable String url;
 
     private MoqRelayConfigUpstreamsUpstream() {}
     /**
-     * @return Upstream MOQT server publisher URL.
+     * @return Upstream MOQT server publisher URL. Must be an absolute URL with a
+     * host and a scheme the relay can dial: moqt:// (raw QUIC) or https://
+     * (WebTransport). Validated on update (PUT); rejected with 21013.
      * 
      */
     public Optional<String> url() {

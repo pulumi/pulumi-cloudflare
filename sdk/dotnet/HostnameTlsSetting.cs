@@ -12,7 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Accepted Permissions
     /// 
-    /// - `SSL and Certificates Read`
     /// - `SSL and Certificates Write`
     /// 
     /// ## Example Usage
@@ -43,7 +42,7 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example '&lt;zone_id&gt;/&lt;setting_id&gt;'
+    /// $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example '&lt;zone_id&gt;/&lt;setting_id&gt;/&lt;hostname&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/hostnameTlsSetting:HostnameTlsSetting")]

@@ -28,7 +28,7 @@ class GetZeroTrustAccessServiceTokenResult:
     """
     A collection of values returned by getZeroTrustAccessServiceToken.
     """
-    def __init__(__self__, account_id=None, client_id=None, duration=None, expires_at=None, filter=None, id=None, name=None, service_token_id=None, zone_id=None):
+    def __init__(__self__, account_id=None, client_id=None, duration=None, enabled=None, expires_at=None, filter=None, id=None, name=None, service_token_id=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -38,6 +38,9 @@ class GetZeroTrustAccessServiceTokenResult:
         if duration and not isinstance(duration, str):
             raise TypeError("Expected argument 'duration' to be a str")
         pulumi.set(__self__, "duration", duration)
+        if enabled and not isinstance(enabled, bool):
+            raise TypeError("Expected argument 'enabled' to be a bool")
+        pulumi.set(__self__, "enabled", enabled)
         if expires_at and not isinstance(expires_at, str):
             raise TypeError("Expected argument 'expires_at' to be a str")
         pulumi.set(__self__, "expires_at", expires_at)
@@ -80,6 +83,14 @@ class GetZeroTrustAccessServiceTokenResult:
         The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         """
         return pulumi.get(self, "duration")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+        """
+        return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter(name="expiresAt")
@@ -133,6 +144,7 @@ class AwaitableGetZeroTrustAccessServiceTokenResult(GetZeroTrustAccessServiceTok
             account_id=self.account_id,
             client_id=self.client_id,
             duration=self.duration,
+            enabled=self.enabled,
             expires_at=self.expires_at,
             filter=self.filter,
             id=self.id,
@@ -180,6 +192,7 @@ def get_zero_trust_access_service_token(account_id: Optional[_builtins.str] = No
         account_id=pulumi.get(__ret__, 'account_id'),
         client_id=pulumi.get(__ret__, 'client_id'),
         duration=pulumi.get(__ret__, 'duration'),
+        enabled=pulumi.get(__ret__, 'enabled'),
         expires_at=pulumi.get(__ret__, 'expires_at'),
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
@@ -224,6 +237,7 @@ def get_zero_trust_access_service_token_output(account_id: pulumi.Input[Optional
         account_id=pulumi.get(__response__, 'account_id'),
         client_id=pulumi.get(__response__, 'client_id'),
         duration=pulumi.get(__response__, 'duration'),
+        enabled=pulumi.get(__response__, 'enabled'),
         expires_at=pulumi.get(__response__, 'expires_at'),
         filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),

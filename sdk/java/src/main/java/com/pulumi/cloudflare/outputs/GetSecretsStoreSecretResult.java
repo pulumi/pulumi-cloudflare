@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSecretsStoreSecretResult {
+    /**
+     * @return Account Identifier
+     * 
+     */
     private String accountId;
     /**
      * @return Freeform text describing the secret.
@@ -27,7 +31,7 @@ public final class GetSecretsStoreSecretResult {
     private String created;
     private @Nullable GetSecretsStoreSecretFilter filter;
     /**
-     * @return The ID of this resource.
+     * @return Secret identifier tag.
      * 
      */
     private String id;
@@ -46,15 +50,27 @@ public final class GetSecretsStoreSecretResult {
      * 
      */
     private List<String> scopes;
+    /**
+     * @return Secret identifier tag.
+     * 
+     */
     private @Nullable String secretId;
     /**
      * @return Available values: &#34;pending&#34;, &#34;active&#34;, &#34;deleted&#34;.
      * 
      */
     private String status;
+    /**
+     * @return Store Identifier
+     * 
+     */
     private String storeId;
 
     private GetSecretsStoreSecretResult() {}
+    /**
+     * @return Account Identifier
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
@@ -76,7 +92,7 @@ public final class GetSecretsStoreSecretResult {
         return Optional.ofNullable(this.filter);
     }
     /**
-     * @return The ID of this resource.
+     * @return Secret identifier tag.
      * 
      */
     public String id() {
@@ -103,6 +119,10 @@ public final class GetSecretsStoreSecretResult {
     public List<String> scopes() {
         return this.scopes;
     }
+    /**
+     * @return Secret identifier tag.
+     * 
+     */
     public Optional<String> secretId() {
         return Optional.ofNullable(this.secretId);
     }
@@ -113,6 +133,10 @@ public final class GetSecretsStoreSecretResult {
     public String status() {
         return this.status;
     }
+    /**
+     * @return Store Identifier
+     * 
+     */
     public String storeId() {
         return this.storeId;
     }

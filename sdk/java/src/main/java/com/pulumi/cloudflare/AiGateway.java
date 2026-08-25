@@ -69,6 +69,7 @@ import javax.annotation.Nullable;
  *             .retryBackoff("constant")
  *             .retryDelay(0)
  *             .retryMaxAttempts(1)
+ *             .storeId("store_id")
  *             .workersAiBillingMode("postpaid")
  *             .zdr(true)
  *             .build());
@@ -154,6 +155,12 @@ public class AiGateway extends com.pulumi.resources.CustomResource {
 
     public Output<Boolean> isDefault() {
         return this.isDefault;
+    }
+    @Export(name="logClassification", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> logClassification;
+
+    public Output<Optional<Boolean>> logClassification() {
+        return Codegen.optional(this.logClassification);
     }
     @Export(name="logManagement", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> logManagement;
@@ -288,16 +295,16 @@ public class AiGateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.stripe);
     }
     /**
-     * Controls how Workers AI inference calls routed through this gateway are billed. Only &#39;postpaid&#39; is currently supported.
-     * Available values: &#34;postpaid&#34;.
+     * Controls how Workers AI inference calls routed through this gateway are billed. &#39;postpaid&#39; bills the account directly through Workers AI; &#39;unified&#39; deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+     * Available values: &#34;postpaid&#34;, &#34;unified&#34;.
      * 
      */
     @Export(name="workersAiBillingMode", refs={String.class}, tree="[0]")
     private Output<String> workersAiBillingMode;
 
     /**
-     * @return Controls how Workers AI inference calls routed through this gateway are billed. Only &#39;postpaid&#39; is currently supported.
-     * Available values: &#34;postpaid&#34;.
+     * @return Controls how Workers AI inference calls routed through this gateway are billed. &#39;postpaid&#39; bills the account directly through Workers AI; &#39;unified&#39; deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+     * Available values: &#34;postpaid&#34;, &#34;unified&#34;.
      * 
      */
     public Output<String> workersAiBillingMode() {

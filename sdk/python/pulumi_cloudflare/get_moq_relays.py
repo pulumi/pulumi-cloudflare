@@ -97,9 +97,10 @@ class GetMoqRelaysResult:
 
     @_builtins.property
     @pulumi.getter(name="perPage")
-    def per_page(self) -> Optional[_builtins.int]:
+    def per_page(self) -> _builtins.int:
         """
-        Maximum number of relays to return per page.
+        Maximum number of relays to return per page. Values above the maximum are
+        clamped to it rather than rejected.
         """
         return pulumi.get(self, "per_page")
 
@@ -135,7 +136,17 @@ def get_moq_relays(account_id: Optional[_builtins.str] = None,
                    per_page: Optional[_builtins.int] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMoqRelaysResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_moq_relays = cloudflare.get_moq_relays(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        created_after="2026-03-27T15:00:00Z",
+        created_before="2026-03-27T15:00:00Z")
+    ```
+
 
     :param _builtins.str account_id: Cloudflare account identifier.
     :param _builtins.bool asc: Sort order by `created`. When true, results are returned oldest-first
@@ -147,7 +158,8 @@ def get_moq_relays(account_id: Optional[_builtins.str] = None,
            RFC 3339 timestamp (typically the `created` value of the first item
            on the current page, to fetch the previous page).
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.int per_page: Maximum number of relays to return per page.
+    :param _builtins.int per_page: Maximum number of relays to return per page. Values above the maximum are
+           clamped to it rather than rejected.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -175,7 +187,17 @@ def get_moq_relays_output(account_id: pulumi.Input[Optional[_builtins.str]] = No
                           per_page: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMoqRelaysResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_moq_relays = cloudflare.get_moq_relays(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        created_after="2026-03-27T15:00:00Z",
+        created_before="2026-03-27T15:00:00Z")
+    ```
+
 
     :param _builtins.str account_id: Cloudflare account identifier.
     :param _builtins.bool asc: Sort order by `created`. When true, results are returned oldest-first
@@ -187,7 +209,8 @@ def get_moq_relays_output(account_id: pulumi.Input[Optional[_builtins.str]] = No
            RFC 3339 timestamp (typically the `created` value of the first item
            on the current page, to fetch the previous page).
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.int per_page: Maximum number of relays to return per page.
+    :param _builtins.int per_page: Maximum number of relays to return per page. Values above the maximum are
+           clamped to it rather than rejected.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

@@ -171,14 +171,14 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: &#39;allowed*authenticators&#39; cannot only contain &#39;ssh*piv_key&#39; if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+     * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: &#39;allowed*authenticators&#39; cannot contain only the infrastructure SSH authenticators (&#39;piv*key&#39; and &#39;ssh*fido2*key&#39;) if the organization has any non-infrastructure applications.
      * 
      */
     @Import(name="mfaRequiredForAllApps")
     private @Nullable Output<Boolean> mfaRequiredForAllApps;
 
     /**
-     * @return Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: &#39;allowed*authenticators&#39; cannot only contain &#39;ssh*piv_key&#39; if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+     * @return Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: &#39;allowed*authenticators&#39; cannot contain only the infrastructure SSH authenticators (&#39;piv*key&#39; and &#39;ssh*fido2*key&#39;) if the organization has any non-infrastructure applications.
      * 
      */
     public Optional<Output<Boolean>> mfaRequiredForAllApps() {
@@ -261,6 +261,21 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
+     * 
+     */
+    @Import(name="warpAuthNonBrowser401")
+    private @Nullable Output<Boolean> warpAuthNonBrowser401;
+
+    /**
+     * @return When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
+     * 
+     */
+    public Optional<Output<Boolean>> warpAuthNonBrowser401() {
+        return Optional.ofNullable(this.warpAuthNonBrowser401);
+    }
+
+    /**
      * The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
      * 
      */
@@ -310,6 +325,7 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         this.sessionDuration = $.sessionDuration;
         this.uiReadOnlyToggleReason = $.uiReadOnlyToggleReason;
         this.userSeatExpirationInactiveTime = $.userSeatExpirationInactiveTime;
+        this.warpAuthNonBrowser401 = $.warpAuthNonBrowser401;
         this.warpAuthSessionDuration = $.warpAuthSessionDuration;
         this.zoneId = $.zoneId;
     }
@@ -550,7 +566,7 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param mfaRequiredForAllApps Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: &#39;allowed*authenticators&#39; cannot only contain &#39;ssh*piv_key&#39; if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+         * @param mfaRequiredForAllApps Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: &#39;allowed*authenticators&#39; cannot contain only the infrastructure SSH authenticators (&#39;piv*key&#39; and &#39;ssh*fido2*key&#39;) if the organization has any non-infrastructure applications.
          * 
          * @return builder
          * 
@@ -561,7 +577,7 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param mfaRequiredForAllApps Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: &#39;allowed*authenticators&#39; cannot only contain &#39;ssh*piv_key&#39; if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+         * @param mfaRequiredForAllApps Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: &#39;allowed*authenticators&#39; cannot contain only the infrastructure SSH authenticators (&#39;piv*key&#39; and &#39;ssh*fido2*key&#39;) if the organization has any non-infrastructure applications.
          * 
          * @return builder
          * 
@@ -673,6 +689,27 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
          */
         public Builder userSeatExpirationInactiveTime(String userSeatExpirationInactiveTime) {
             return userSeatExpirationInactiveTime(Output.of(userSeatExpirationInactiveTime));
+        }
+
+        /**
+         * @param warpAuthNonBrowser401 When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warpAuthNonBrowser401(@Nullable Output<Boolean> warpAuthNonBrowser401) {
+            $.warpAuthNonBrowser401 = warpAuthNonBrowser401;
+            return this;
+        }
+
+        /**
+         * @param warpAuthNonBrowser401 When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warpAuthNonBrowser401(Boolean warpAuthNonBrowser401) {
+            return warpAuthNonBrowser401(Output.of(warpAuthNonBrowser401));
         }
 
         /**

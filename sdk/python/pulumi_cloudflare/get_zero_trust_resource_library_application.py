@@ -26,7 +26,7 @@ class GetZeroTrustResourceLibraryApplicationResult:
     """
     A collection of values returned by getZeroTrustResourceLibraryApplication.
     """
-    def __init__(__self__, account_id=None, application_confidence_score=None, application_score_composition=None, application_source=None, application_type=None, application_type_description=None, created_at=None, gen_ai_score=None, hostnames=None, human_id=None, id=None, intel_id=None, ip_subnets=None, name=None, port_protocols=None, support_domains=None, supporteds=None, updated_at=None, version=None):
+    def __init__(__self__, account_id=None, application_confidence_score=None, application_score_composition=None, application_source=None, application_type=None, application_type_description=None, category_id=None, created_at=None, gen_ai_score=None, hostnames=None, human_id=None, id=None, ip_subnets=None, name=None, port_protocols=None, support_domains=None, supporteds=None, updated_at=None, version=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -45,6 +45,9 @@ class GetZeroTrustResourceLibraryApplicationResult:
         if application_type_description and not isinstance(application_type_description, str):
             raise TypeError("Expected argument 'application_type_description' to be a str")
         pulumi.set(__self__, "application_type_description", application_type_description)
+        if category_id and not isinstance(category_id, int):
+            raise TypeError("Expected argument 'category_id' to be a int")
+        pulumi.set(__self__, "category_id", category_id)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -57,12 +60,9 @@ class GetZeroTrustResourceLibraryApplicationResult:
         if human_id and not isinstance(human_id, str):
             raise TypeError("Expected argument 'human_id' to be a str")
         pulumi.set(__self__, "human_id", human_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
+        if id and not isinstance(id, int):
+            raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
-        if intel_id and not isinstance(intel_id, int):
-            raise TypeError("Expected argument 'intel_id' to be a int")
-        pulumi.set(__self__, "intel_id", intel_id)
         if ip_subnets and not isinstance(ip_subnets, list):
             raise TypeError("Expected argument 'ip_subnets' to be a list")
         pulumi.set(__self__, "ip_subnets", ip_subnets)
@@ -131,6 +131,14 @@ class GetZeroTrustResourceLibraryApplicationResult:
         return pulumi.get(self, "application_type_description")
 
     @_builtins.property
+    @pulumi.getter(name="categoryId")
+    def category_id(self) -> _builtins.int:
+        """
+        Returns the category ID.
+        """
+        return pulumi.get(self, "category_id")
+
+    @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
         """
@@ -150,7 +158,7 @@ class GetZeroTrustResourceLibraryApplicationResult:
     @pulumi.getter
     def hostnames(self) -> Sequence[_builtins.str]:
         """
-        Returns the list of hostnames for the application.
+        Hostnames matched by the application.
         """
         return pulumi.get(self, "hostnames")
 
@@ -164,25 +172,17 @@ class GetZeroTrustResourceLibraryApplicationResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.str:
+    def id(self) -> _builtins.int:
         """
         The ID of this resource.
         """
         return pulumi.get(self, "id")
 
     @_builtins.property
-    @pulumi.getter(name="intelId")
-    def intel_id(self) -> _builtins.int:
-        """
-        Returns the Intel API ID for the application.
-        """
-        return pulumi.get(self, "intel_id")
-
-    @_builtins.property
     @pulumi.getter(name="ipSubnets")
     def ip_subnets(self) -> Sequence[_builtins.str]:
         """
-        Returns the list of IP subnets for the application.
+        IP subnets matched by the application.
         """
         return pulumi.get(self, "ip_subnets")
 
@@ -198,7 +198,7 @@ class GetZeroTrustResourceLibraryApplicationResult:
     @pulumi.getter(name="portProtocols")
     def port_protocols(self) -> Sequence[_builtins.str]:
         """
-        Returns the list of port protocols for the application.
+        Port and protocol pairs matched by the application.
         """
         return pulumi.get(self, "port_protocols")
 
@@ -206,7 +206,7 @@ class GetZeroTrustResourceLibraryApplicationResult:
     @pulumi.getter(name="supportDomains")
     def support_domains(self) -> Sequence[_builtins.str]:
         """
-        Returns the list of support domains for the application.
+        Support domains matched by the application.
         """
         return pulumi.get(self, "support_domains")
 
@@ -247,12 +247,12 @@ class AwaitableGetZeroTrustResourceLibraryApplicationResult(GetZeroTrustResource
             application_source=self.application_source,
             application_type=self.application_type,
             application_type_description=self.application_type_description,
+            category_id=self.category_id,
             created_at=self.created_at,
             gen_ai_score=self.gen_ai_score,
             hostnames=self.hostnames,
             human_id=self.human_id,
             id=self.id,
-            intel_id=self.intel_id,
             ip_subnets=self.ip_subnets,
             name=self.name,
             port_protocols=self.port_protocols,
@@ -263,7 +263,7 @@ class AwaitableGetZeroTrustResourceLibraryApplicationResult(GetZeroTrustResource
 
 
 def get_zero_trust_resource_library_application(account_id: Optional[_builtins.str] = None,
-                                                id: Optional[_builtins.str] = None,
+                                                id: Optional[_builtins.int] = None,
                                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustResourceLibraryApplicationResult:
     """
     ## Example Usage
@@ -273,11 +273,11 @@ def get_zero_trust_resource_library_application(account_id: Optional[_builtins.s
     import pulumi_cloudflare as cloudflare
 
     example_zero_trust_resource_library_application = cloudflare.get_zero_trust_resource_library_application(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        id="0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0")
+        id=498)
     ```
 
 
-    :param _builtins.str id: The ID of this resource.
+    :param _builtins.int id: The ID of this resource.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -292,12 +292,12 @@ def get_zero_trust_resource_library_application(account_id: Optional[_builtins.s
         application_source=pulumi.get(__ret__, 'application_source'),
         application_type=pulumi.get(__ret__, 'application_type'),
         application_type_description=pulumi.get(__ret__, 'application_type_description'),
+        category_id=pulumi.get(__ret__, 'category_id'),
         created_at=pulumi.get(__ret__, 'created_at'),
         gen_ai_score=pulumi.get(__ret__, 'gen_ai_score'),
         hostnames=pulumi.get(__ret__, 'hostnames'),
         human_id=pulumi.get(__ret__, 'human_id'),
         id=pulumi.get(__ret__, 'id'),
-        intel_id=pulumi.get(__ret__, 'intel_id'),
         ip_subnets=pulumi.get(__ret__, 'ip_subnets'),
         name=pulumi.get(__ret__, 'name'),
         port_protocols=pulumi.get(__ret__, 'port_protocols'),
@@ -306,7 +306,7 @@ def get_zero_trust_resource_library_application(account_id: Optional[_builtins.s
         updated_at=pulumi.get(__ret__, 'updated_at'),
         version=pulumi.get(__ret__, 'version'))
 def get_zero_trust_resource_library_application_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                                       id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                       id: pulumi.Input[Optional[_builtins.int]] = None,
                                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustResourceLibraryApplicationResult]:
     """
     ## Example Usage
@@ -316,11 +316,11 @@ def get_zero_trust_resource_library_application_output(account_id: pulumi.Input[
     import pulumi_cloudflare as cloudflare
 
     example_zero_trust_resource_library_application = cloudflare.get_zero_trust_resource_library_application(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        id="0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0")
+        id=498)
     ```
 
 
-    :param _builtins.str id: The ID of this resource.
+    :param _builtins.int id: The ID of this resource.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -334,12 +334,12 @@ def get_zero_trust_resource_library_application_output(account_id: pulumi.Input[
         application_source=pulumi.get(__response__, 'application_source'),
         application_type=pulumi.get(__response__, 'application_type'),
         application_type_description=pulumi.get(__response__, 'application_type_description'),
+        category_id=pulumi.get(__response__, 'category_id'),
         created_at=pulumi.get(__response__, 'created_at'),
         gen_ai_score=pulumi.get(__response__, 'gen_ai_score'),
         hostnames=pulumi.get(__response__, 'hostnames'),
         human_id=pulumi.get(__response__, 'human_id'),
         id=pulumi.get(__response__, 'id'),
-        intel_id=pulumi.get(__response__, 'intel_id'),
         ip_subnets=pulumi.get(__response__, 'ip_subnets'),
         name=pulumi.get(__response__, 'name'),
         port_protocols=pulumi.get(__response__, 'port_protocols'),

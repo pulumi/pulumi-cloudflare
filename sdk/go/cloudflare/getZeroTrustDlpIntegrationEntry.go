@@ -67,9 +67,12 @@ type LookupZeroTrustDlpIntegrationEntryResult struct {
 	CaseSensitive bool                                      `pulumi:"caseSensitive"`
 	Confidence    GetZeroTrustDlpIntegrationEntryConfidence `pulumi:"confidence"`
 	CreatedAt     string                                    `pulumi:"createdAt"`
-	Description   string                                    `pulumi:"description"`
-	Enabled       bool                                      `pulumi:"enabled"`
-	EntryId       string                                    `pulumi:"entryId"`
+	// Whether this entry is deprecated for new use. This is computed from the static catalog and
+	// emitted only when true.
+	Deprecated  bool   `pulumi:"deprecated"`
+	Description string `pulumi:"description"`
+	Enabled     bool   `pulumi:"enabled"`
+	EntryId     string `pulumi:"entryId"`
 	// The ID of this resource.
 	Id        string                                   `pulumi:"id"`
 	Name      string                                   `pulumi:"name"`
@@ -140,6 +143,12 @@ func (o LookupZeroTrustDlpIntegrationEntryResultOutput) Confidence() GetZeroTrus
 
 func (o LookupZeroTrustDlpIntegrationEntryResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpIntegrationEntryResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Whether this entry is deprecated for new use. This is computed from the static catalog and
+// emitted only when true.
+func (o LookupZeroTrustDlpIntegrationEntryResultOutput) Deprecated() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustDlpIntegrationEntryResult) bool { return v.Deprecated }).(pulumi.BoolOutput)
 }
 
 func (o LookupZeroTrustDlpIntegrationEntryResultOutput) Description() pulumi.StringOutput {

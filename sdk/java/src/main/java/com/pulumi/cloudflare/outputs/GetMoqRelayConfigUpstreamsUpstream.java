@@ -11,14 +11,18 @@ import java.util.Objects;
 @CustomType
 public final class GetMoqRelayConfigUpstreamsUpstream {
     /**
-     * @return Upstream MOQT server publisher URL.
+     * @return Upstream MOQT server publisher URL. Must be an absolute URL with a
+     * host and a scheme the relay can dial: moqt:// (raw QUIC) or https://
+     * (WebTransport). Validated on update (PUT); rejected with 21013.
      * 
      */
     private String url;
 
     private GetMoqRelayConfigUpstreamsUpstream() {}
     /**
-     * @return Upstream MOQT server publisher URL.
+     * @return Upstream MOQT server publisher URL. Must be an absolute URL with a
+     * host and a scheme the relay can dial: moqt:// (raw QUIC) or https://
+     * (WebTransport). Validated on update (PUT); rejected with 21013.
      * 
      */
     public String url() {

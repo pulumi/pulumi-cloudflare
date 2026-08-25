@@ -31,6 +31,7 @@ namespace Pulumi.Cloudflare
     ///         ZoneId = "zone_id",
     ///         ClientSecretVersion = 0,
     ///         Duration = "60m",
+    ///         Enabled = true,
     ///         PreviousClientSecretExpiresAt = "2014-01-01T05:20:00.12345Z",
     ///     });
     /// 
@@ -76,6 +77,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("duration")]
         public Output<string> Duration { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `ClientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+        /// </summary>
+        [Output("enabled")]
+        public Output<bool> Enabled { get; private set; } = null!;
 
         [Output("expiresAt")]
         public Output<string> ExpiresAt { get; private set; } = null!;
@@ -171,6 +178,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? Duration { get; set; }
 
         /// <summary>
+        /// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `ClientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
         /// The name of the service token.
         /// </summary>
         [Input("name", required: true)]
@@ -235,6 +248,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
+
+        /// <summary>
+        /// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `ClientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
 
         [Input("expiresAt")]
         public Input<string>? ExpiresAt { get; set; }

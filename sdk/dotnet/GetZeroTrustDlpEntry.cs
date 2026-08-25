@@ -138,6 +138,11 @@ namespace Pulumi.Cloudflare
         public readonly bool CaseSensitive;
         public readonly Outputs.GetZeroTrustDlpEntryConfidenceResult Confidence;
         public readonly string CreatedAt;
+        /// <summary>
+        /// Whether this entry is deprecated for new use. This is computed from the static catalog and
+        /// emitted only when true.
+        /// </summary>
+        public readonly bool Deprecated;
         public readonly string Description;
         public readonly bool Enabled;
         public readonly string EntryId;
@@ -175,6 +180,8 @@ namespace Pulumi.Cloudflare
 
             string createdAt,
 
+            bool deprecated,
+
             string description,
 
             bool enabled,
@@ -207,6 +214,7 @@ namespace Pulumi.Cloudflare
             CaseSensitive = caseSensitive;
             Confidence = confidence;
             CreatedAt = createdAt;
+            Deprecated = deprecated;
             Description = description;
             Enabled = enabled;
             EntryId = entryId;

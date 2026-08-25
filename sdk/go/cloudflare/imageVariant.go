@@ -67,7 +67,6 @@ type ImageVariant struct {
 	NeverRequireSignedUrls pulumi.BoolOutput `pulumi:"neverRequireSignedUrls"`
 	// Allows you to define image resizing sizes for different use cases.
 	Options ImageVariantOptionsOutput `pulumi:"options"`
-	Variant ImageVariantVariantOutput `pulumi:"variant"`
 }
 
 // NewImageVariant registers a new resource with the given unique name, arguments, and options.
@@ -117,7 +116,6 @@ type imageVariantState struct {
 	NeverRequireSignedUrls *bool `pulumi:"neverRequireSignedUrls"`
 	// Allows you to define image resizing sizes for different use cases.
 	Options *ImageVariantOptions `pulumi:"options"`
-	Variant *ImageVariantVariant `pulumi:"variant"`
 }
 
 type ImageVariantState struct {
@@ -129,7 +127,6 @@ type ImageVariantState struct {
 	NeverRequireSignedUrls pulumi.BoolPtrInput
 	// Allows you to define image resizing sizes for different use cases.
 	Options ImageVariantOptionsPtrInput
-	Variant ImageVariantVariantPtrInput
 }
 
 func (ImageVariantState) ElementType() reflect.Type {
@@ -264,10 +261,6 @@ func (o ImageVariantOutput) NeverRequireSignedUrls() pulumi.BoolOutput {
 // Allows you to define image resizing sizes for different use cases.
 func (o ImageVariantOutput) Options() ImageVariantOptionsOutput {
 	return o.ApplyT(func(v *ImageVariant) ImageVariantOptionsOutput { return v.Options }).(ImageVariantOptionsOutput)
-}
-
-func (o ImageVariantOutput) Variant() ImageVariantVariantOutput {
-	return o.ApplyT(func(v *ImageVariant) ImageVariantVariantOutput { return v.Variant }).(ImageVariantVariantOutput)
 }
 
 type ImageVariantArrayOutput struct{ *pulumi.OutputState }

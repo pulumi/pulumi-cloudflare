@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetAiSearchNamespacesResultPublicEndpointParams;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -17,6 +18,8 @@ public final class GetAiSearchNamespacesResult {
      */
     private String description;
     private String name;
+    private String publicEndpointId;
+    private GetAiSearchNamespacesResultPublicEndpointParams publicEndpointParams;
 
     private GetAiSearchNamespacesResult() {}
     public String createdAt() {
@@ -32,6 +35,12 @@ public final class GetAiSearchNamespacesResult {
     public String name() {
         return this.name;
     }
+    public String publicEndpointId() {
+        return this.publicEndpointId;
+    }
+    public GetAiSearchNamespacesResultPublicEndpointParams publicEndpointParams() {
+        return this.publicEndpointParams;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -45,12 +54,16 @@ public final class GetAiSearchNamespacesResult {
         private String createdAt;
         private String description;
         private String name;
+        private String publicEndpointId;
+        private GetAiSearchNamespacesResultPublicEndpointParams publicEndpointParams;
         public Builder() {}
         public Builder(GetAiSearchNamespacesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdAt = defaults.createdAt;
     	      this.description = defaults.description;
     	      this.name = defaults.name;
+    	      this.publicEndpointId = defaults.publicEndpointId;
+    	      this.publicEndpointParams = defaults.publicEndpointParams;
         }
 
         @CustomType.Setter
@@ -77,11 +90,29 @@ public final class GetAiSearchNamespacesResult {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
+        public Builder publicEndpointId(String publicEndpointId) {
+            if (publicEndpointId == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchNamespacesResult", "publicEndpointId");
+            }
+            this.publicEndpointId = publicEndpointId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder publicEndpointParams(GetAiSearchNamespacesResultPublicEndpointParams publicEndpointParams) {
+            if (publicEndpointParams == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchNamespacesResult", "publicEndpointParams");
+            }
+            this.publicEndpointParams = publicEndpointParams;
+            return this;
+        }
         public GetAiSearchNamespacesResult build() {
             final var _resultValue = new GetAiSearchNamespacesResult();
             _resultValue.createdAt = createdAt;
             _resultValue.description = description;
             _resultValue.name = name;
+            _resultValue.publicEndpointId = publicEndpointId;
+            _resultValue.publicEndpointParams = publicEndpointParams;
             return _resultValue;
         }
     }

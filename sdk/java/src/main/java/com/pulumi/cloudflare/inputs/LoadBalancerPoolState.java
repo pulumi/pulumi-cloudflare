@@ -106,6 +106,21 @@ public final class LoadBalancerPoolState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [&#34;regional&#34;, &#34;global&#34;]; any other combination is rejected. Null (the default) behaves like [&#34;local&#34;, &#34;global&#34;]. [&#34;regional&#34;, &#34;global&#34;] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+     * 
+     */
+    @Import(name="healthSources")
+    private @Nullable Output<List<String>> healthSources;
+
+    /**
+     * @return A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [&#34;regional&#34;, &#34;global&#34;]; any other combination is rejected. Null (the default) behaves like [&#34;local&#34;, &#34;global&#34;]. [&#34;regional&#34;, &#34;global&#34;] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+     * 
+     */
+    public Optional<Output<List<String>>> healthSources() {
+        return Optional.ofNullable(this.healthSources);
+    }
+
+    /**
      * The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
      * 
      */
@@ -301,6 +316,7 @@ public final class LoadBalancerPoolState extends com.pulumi.resources.ResourceAr
         this.description = $.description;
         this.disabledAt = $.disabledAt;
         this.enabled = $.enabled;
+        this.healthSources = $.healthSources;
         this.latitude = $.latitude;
         this.loadShedding = $.loadShedding;
         this.longitude = $.longitude;
@@ -456,6 +472,37 @@ public final class LoadBalancerPoolState extends com.pulumi.resources.ResourceAr
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param healthSources A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [&#34;regional&#34;, &#34;global&#34;]; any other combination is rejected. Null (the default) behaves like [&#34;local&#34;, &#34;global&#34;]. [&#34;regional&#34;, &#34;global&#34;] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthSources(@Nullable Output<List<String>> healthSources) {
+            $.healthSources = healthSources;
+            return this;
+        }
+
+        /**
+         * @param healthSources A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [&#34;regional&#34;, &#34;global&#34;]; any other combination is rejected. Null (the default) behaves like [&#34;local&#34;, &#34;global&#34;]. [&#34;regional&#34;, &#34;global&#34;] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthSources(List<String> healthSources) {
+            return healthSources(Output.of(healthSources));
+        }
+
+        /**
+         * @param healthSources A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [&#34;regional&#34;, &#34;global&#34;]; any other combination is rejected. Null (the default) behaves like [&#34;local&#34;, &#34;global&#34;]. [&#34;regional&#34;, &#34;global&#34;] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthSources(String... healthSources) {
+            return healthSources(List.of(healthSources));
         }
 
         /**

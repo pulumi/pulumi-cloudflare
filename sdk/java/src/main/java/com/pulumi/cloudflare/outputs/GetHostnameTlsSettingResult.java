@@ -27,12 +27,6 @@ public final class GetHostnameTlsSettingResult {
      * The value type depends on the setting:
      * 
      */
-    private String id;
-    /**
-     * @return The TLS Setting name.
-     * The value type depends on the setting:
-     * 
-     */
     private String settingId;
     /**
      * @return Deployment status for the given tls setting.
@@ -70,14 +64,6 @@ public final class GetHostnameTlsSettingResult {
      */
     public String hostname() {
         return this.hostname;
-    }
-    /**
-     * @return The TLS Setting name.
-     * The value type depends on the setting:
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return The TLS Setting name.
@@ -128,7 +114,6 @@ public final class GetHostnameTlsSettingResult {
     public static final class Builder {
         private String createdAt;
         private String hostname;
-        private String id;
         private String settingId;
         private String status;
         private String updatedAt;
@@ -139,7 +124,6 @@ public final class GetHostnameTlsSettingResult {
     	      Objects.requireNonNull(defaults);
     	      this.createdAt = defaults.createdAt;
     	      this.hostname = defaults.hostname;
-    	      this.id = defaults.id;
     	      this.settingId = defaults.settingId;
     	      this.status = defaults.status;
     	      this.updatedAt = defaults.updatedAt;
@@ -161,14 +145,6 @@ public final class GetHostnameTlsSettingResult {
               throw new MissingRequiredPropertyException("GetHostnameTlsSettingResult", "hostname");
             }
             this.hostname = hostname;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetHostnameTlsSettingResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -213,7 +189,6 @@ public final class GetHostnameTlsSettingResult {
             final var _resultValue = new GetHostnameTlsSettingResult();
             _resultValue.createdAt = createdAt;
             _resultValue.hostname = hostname;
-            _resultValue.id = id;
             _resultValue.settingId = settingId;
             _resultValue.status = status;
             _resultValue.updatedAt = updatedAt;

@@ -7,7 +7,6 @@ import * as utilities from "./utilities";
 /**
  * Accepted Permissions
  *
- * - `SSL and Certificates Read`
  * - `SSL and Certificates Write`
  *
  * ## Example Usage
@@ -30,7 +29,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example '<zone_id>/<setting_id>'
+ * $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example '<zone_id>/<setting_id>/<hostname>'
  * ```
  */
 export class HostnameTlsSetting extends pulumi.CustomResource {

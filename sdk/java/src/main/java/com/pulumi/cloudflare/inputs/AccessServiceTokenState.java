@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -91,6 +92,21 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.duration);
     }
 
+    /**
+     * Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+     * 
+     */
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
+
+    /**
+     * @return Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+     * 
+     */
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
+    }
+
     @Import(name="expiresAt")
     private @Nullable Output<String> expiresAt;
 
@@ -151,6 +167,7 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
         this.clientSecret = $.clientSecret;
         this.clientSecretVersion = $.clientSecretVersion;
         this.duration = $.duration;
+        this.enabled = $.enabled;
         this.expiresAt = $.expiresAt;
         this.name = $.name;
         this.previousClientSecretExpiresAt = $.previousClientSecretExpiresAt;
@@ -278,6 +295,27 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
          */
         public Builder duration(String duration) {
             return duration(Output.of(duration));
+        }
+
+        /**
+         * @param enabled Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        /**
+         * @param enabled Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
         }
 
         public Builder expiresAt(@Nullable Output<String> expiresAt) {

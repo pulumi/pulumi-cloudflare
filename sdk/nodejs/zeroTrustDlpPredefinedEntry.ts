@@ -69,6 +69,11 @@ export class ZeroTrustDlpPredefinedEntry extends pulumi.CustomResource {
     declare public /*out*/ readonly caseSensitive: pulumi.Output<boolean>;
     declare public /*out*/ readonly confidence: pulumi.Output<outputs.ZeroTrustDlpPredefinedEntryConfidence>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    /**
+     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * emitted only when true.
+     */
+    declare public /*out*/ readonly deprecated: pulumi.Output<boolean>;
     declare public /*out*/ readonly description: pulumi.Output<string>;
     declare public readonly enabled: pulumi.Output<boolean>;
     declare public readonly entryId: pulumi.Output<string>;
@@ -113,6 +118,7 @@ export class ZeroTrustDlpPredefinedEntry extends pulumi.CustomResource {
             resourceInputs["caseSensitive"] = state?.caseSensitive;
             resourceInputs["confidence"] = state?.confidence;
             resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["deprecated"] = state?.deprecated;
             resourceInputs["description"] = state?.description;
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["entryId"] = state?.entryId;
@@ -144,6 +150,7 @@ export class ZeroTrustDlpPredefinedEntry extends pulumi.CustomResource {
             resourceInputs["caseSensitive"] = undefined /*out*/;
             resourceInputs["confidence"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["deprecated"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pattern"] = undefined /*out*/;
@@ -173,6 +180,11 @@ export interface ZeroTrustDlpPredefinedEntryState {
     caseSensitive?: pulumi.Input<boolean | undefined>;
     confidence?: pulumi.Input<inputs.ZeroTrustDlpPredefinedEntryConfidence | undefined>;
     createdAt?: pulumi.Input<string | undefined>;
+    /**
+     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * emitted only when true.
+     */
+    deprecated?: pulumi.Input<boolean | undefined>;
     description?: pulumi.Input<string | undefined>;
     enabled?: pulumi.Input<boolean | undefined>;
     entryId?: pulumi.Input<string | undefined>;

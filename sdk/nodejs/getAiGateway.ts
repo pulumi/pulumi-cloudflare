@@ -64,6 +64,7 @@ export interface GetAiGatewayResult {
      */
     readonly id: string;
     readonly isDefault: boolean;
+    readonly logClassification: boolean;
     readonly logManagement: number;
     /**
      * Available values: "STOP*INSERTING", "DELETE*OLDEST".
@@ -96,8 +97,8 @@ export interface GetAiGatewayResult {
     readonly storeId: string;
     readonly stripe: outputs.GetAiGatewayStripe;
     /**
-     * Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-     * Available values: "postpaid".
+     * Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+     * Available values: "postpaid", "unified".
      */
     readonly workersAiBillingMode: string;
     readonly zdr: boolean;

@@ -48,6 +48,30 @@ import * as utilities from "./utilities";
  *     containers: [{
  *         className: "MyDurableObject",
  *     }],
+ *     exports: {
+ *         Admin: {
+ *             type: "worker",
+ *             cache: {
+ *                 enabled: true,
+ *             },
+ *             renamedTo: "renamed_to",
+ *             state: "created",
+ *             storage: "sqlite",
+ *             transferFrom: "transfer_from",
+ *             transferredTo: "transferred_to",
+ *         },
+ *         "default": {
+ *             type: "worker",
+ *             cache: {
+ *                 enabled: false,
+ *             },
+ *             renamedTo: "renamed_to",
+ *             state: "created",
+ *             storage: "sqlite",
+ *             transferFrom: "transfer_from",
+ *             transferredTo: "transferred_to",
+ *         },
+ *     },
  *     limits: {
  *         cpuMs: 50,
  *         subrequests: 1000,

@@ -26,10 +26,13 @@ class GetZeroTrustAccessCustomPageResult:
     """
     A collection of values returned by getZeroTrustAccessCustomPage.
     """
-    def __init__(__self__, account_id=None, custom_html=None, custom_page_id=None, id=None, name=None, type=None, uid=None):
+    def __init__(__self__, account_id=None, contract_version=None, custom_html=None, custom_page_id=None, id=None, name=None, type=None, uid=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if contract_version and not isinstance(contract_version, int):
+            raise TypeError("Expected argument 'contract_version' to be a int")
+        pulumi.set(__self__, "contract_version", contract_version)
         if custom_html and not isinstance(custom_html, str):
             raise TypeError("Expected argument 'custom_html' to be a str")
         pulumi.set(__self__, "custom_html", custom_html)
@@ -56,6 +59,14 @@ class GetZeroTrustAccessCustomPageResult:
         Identifier.
         """
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter(name="contractVersion")
+    def contract_version(self) -> _builtins.int:
+        """
+        Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+        """
+        return pulumi.get(self, "contract_version")
 
     @_builtins.property
     @pulumi.getter(name="customHtml")
@@ -94,7 +105,7 @@ class GetZeroTrustAccessCustomPageResult:
     def type(self) -> _builtins.str:
         """
         Custom page type.
-        Available values: "identity_denied", "forbidden".
+        Available values: "identity_denied", "forbidden", "login", "interstitial".
         """
         return pulumi.get(self, "type")
 
@@ -114,6 +125,7 @@ class AwaitableGetZeroTrustAccessCustomPageResult(GetZeroTrustAccessCustomPageRe
             yield self
         return GetZeroTrustAccessCustomPageResult(
             account_id=self.account_id,
+            contract_version=self.contract_version,
             custom_html=self.custom_html,
             custom_page_id=self.custom_page_id,
             id=self.id,
@@ -153,6 +165,7 @@ def get_zero_trust_access_custom_page(account_id: Optional[_builtins.str] = None
 
     return AwaitableGetZeroTrustAccessCustomPageResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        contract_version=pulumi.get(__ret__, 'contract_version'),
         custom_html=pulumi.get(__ret__, 'custom_html'),
         custom_page_id=pulumi.get(__ret__, 'custom_page_id'),
         id=pulumi.get(__ret__, 'id'),
@@ -189,6 +202,7 @@ def get_zero_trust_access_custom_page_output(account_id: pulumi.Input[Optional[O
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustAccessCustomPage:getZeroTrustAccessCustomPage', __args__, opts=opts, typ=GetZeroTrustAccessCustomPageResult)
     return __ret__.apply(lambda __response__: GetZeroTrustAccessCustomPageResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        contract_version=pulumi.get(__response__, 'contract_version'),
         custom_html=pulumi.get(__response__, 'custom_html'),
         custom_page_id=pulumi.get(__response__, 'custom_page_id'),
         id=pulumi.get(__response__, 'id'),

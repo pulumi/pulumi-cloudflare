@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,6 +18,11 @@ public final class GetZeroTrustAccessCustomPageResult {
      * 
      */
     private @Nullable String accountId;
+    /**
+     * @return Contract version of the page&#39;s Liquid template. Present (&gt;= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+     * 
+     */
+    private Integer contractVersion;
     /**
      * @return Custom page HTML.
      * 
@@ -39,7 +45,7 @@ public final class GetZeroTrustAccessCustomPageResult {
     private String name;
     /**
      * @return Custom page type.
-     * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;.
+     * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;, &#34;login&#34;, &#34;interstitial&#34;.
      * 
      */
     private String type;
@@ -56,6 +62,13 @@ public final class GetZeroTrustAccessCustomPageResult {
      */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
+    }
+    /**
+     * @return Contract version of the page&#39;s Liquid template. Present (&gt;= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+     * 
+     */
+    public Integer contractVersion() {
+        return this.contractVersion;
     }
     /**
      * @return Custom page HTML.
@@ -87,7 +100,7 @@ public final class GetZeroTrustAccessCustomPageResult {
     }
     /**
      * @return Custom page type.
-     * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;.
+     * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;, &#34;login&#34;, &#34;interstitial&#34;.
      * 
      */
     public String type() {
@@ -111,6 +124,7 @@ public final class GetZeroTrustAccessCustomPageResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
+        private Integer contractVersion;
         private String customHtml;
         private String customPageId;
         private String id;
@@ -121,6 +135,7 @@ public final class GetZeroTrustAccessCustomPageResult {
         public Builder(GetZeroTrustAccessCustomPageResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.contractVersion = defaults.contractVersion;
     	      this.customHtml = defaults.customHtml;
     	      this.customPageId = defaults.customPageId;
     	      this.id = defaults.id;
@@ -133,6 +148,14 @@ public final class GetZeroTrustAccessCustomPageResult {
         public Builder accountId(@Nullable String accountId) {
 
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder contractVersion(Integer contractVersion) {
+            if (contractVersion == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessCustomPageResult", "contractVersion");
+            }
+            this.contractVersion = contractVersion;
             return this;
         }
         @CustomType.Setter
@@ -186,6 +209,7 @@ public final class GetZeroTrustAccessCustomPageResult {
         public GetZeroTrustAccessCustomPageResult build() {
             final var _resultValue = new GetZeroTrustAccessCustomPageResult();
             _resultValue.accountId = accountId;
+            _resultValue.contractVersion = contractVersion;
             _resultValue.customHtml = customHtml;
             _resultValue.customPageId = customPageId;
             _resultValue.id = id;

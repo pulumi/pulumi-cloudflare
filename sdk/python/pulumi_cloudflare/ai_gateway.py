@@ -31,6 +31,7 @@ class AiGatewayArgs:
                  authentication: pulumi.Input[Optional[_builtins.bool]] = None,
                  dlp: pulumi.Input[Optional['AiGatewayDlpArgs']] = None,
                  guardrails: pulumi.Input[Optional['AiGatewayGuardrailsArgs']] = None,
+                 log_classification: pulumi.Input[Optional[_builtins.bool]] = None,
                  log_management: pulumi.Input[Optional[_builtins.int]] = None,
                  log_management_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  logpush: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -55,8 +56,8 @@ class AiGatewayArgs:
                Available values: "constant", "linear", "exponential".
         :param pulumi.Input[_builtins.int] retry_delay: Delay between retry attempts in milliseconds (0-5000)
         :param pulumi.Input[_builtins.int] retry_max_attempts: Maximum number of retry attempts for failed requests (1-5)
-        :param pulumi.Input[_builtins.str] workers_ai_billing_mode: Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-               Available values: "postpaid".
+        :param pulumi.Input[_builtins.str] workers_ai_billing_mode: Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+               Available values: "postpaid", "unified".
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "ai_gateway_id", ai_gateway_id)
@@ -71,6 +72,8 @@ class AiGatewayArgs:
             pulumi.set(__self__, "dlp", dlp)
         if guardrails is not None:
             pulumi.set(__self__, "guardrails", guardrails)
+        if log_classification is not None:
+            pulumi.set(__self__, "log_classification", log_classification)
         if log_management is not None:
             pulumi.set(__self__, "log_management", log_management)
         if log_management_strategy is not None:
@@ -192,6 +195,15 @@ class AiGatewayArgs:
     @guardrails.setter
     def guardrails(self, value: pulumi.Input[Optional['AiGatewayGuardrailsArgs']]):
         pulumi.set(self, "guardrails", value)
+
+    @_builtins.property
+    @pulumi.getter(name="logClassification")
+    def log_classification(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        return pulumi.get(self, "log_classification")
+
+    @log_classification.setter
+    def log_classification(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "log_classification", value)
 
     @_builtins.property
     @pulumi.getter(name="logManagement")
@@ -321,8 +333,8 @@ class AiGatewayArgs:
     @pulumi.getter(name="workersAiBillingMode")
     def workers_ai_billing_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-        Available values: "postpaid".
+        Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+        Available values: "postpaid", "unified".
         """
         return pulumi.get(self, "workers_ai_billing_mode")
 
@@ -353,6 +365,7 @@ class _AiGatewayState:
                  dlp: pulumi.Input[Optional['AiGatewayDlpArgs']] = None,
                  guardrails: pulumi.Input[Optional['AiGatewayGuardrailsArgs']] = None,
                  is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_classification: pulumi.Input[Optional[_builtins.bool]] = None,
                  log_management: pulumi.Input[Optional[_builtins.int]] = None,
                  log_management_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  logpush: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -380,8 +393,8 @@ class _AiGatewayState:
                Available values: "constant", "linear", "exponential".
         :param pulumi.Input[_builtins.int] retry_delay: Delay between retry attempts in milliseconds (0-5000)
         :param pulumi.Input[_builtins.int] retry_max_attempts: Maximum number of retry attempts for failed requests (1-5)
-        :param pulumi.Input[_builtins.str] workers_ai_billing_mode: Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-               Available values: "postpaid".
+        :param pulumi.Input[_builtins.str] workers_ai_billing_mode: Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+               Available values: "postpaid", "unified".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -403,6 +416,8 @@ class _AiGatewayState:
             pulumi.set(__self__, "guardrails", guardrails)
         if is_default is not None:
             pulumi.set(__self__, "is_default", is_default)
+        if log_classification is not None:
+            pulumi.set(__self__, "log_classification", log_classification)
         if log_management is not None:
             pulumi.set(__self__, "log_management", log_management)
         if log_management_strategy is not None:
@@ -530,6 +545,15 @@ class _AiGatewayState:
     @is_default.setter
     def is_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default", value)
+
+    @_builtins.property
+    @pulumi.getter(name="logClassification")
+    def log_classification(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        return pulumi.get(self, "log_classification")
+
+    @log_classification.setter
+    def log_classification(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "log_classification", value)
 
     @_builtins.property
     @pulumi.getter(name="logManagement")
@@ -686,8 +710,8 @@ class _AiGatewayState:
     @pulumi.getter(name="workersAiBillingMode")
     def workers_ai_billing_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-        Available values: "postpaid".
+        Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+        Available values: "postpaid", "unified".
         """
         return pulumi.get(self, "workers_ai_billing_mode")
 
@@ -719,6 +743,7 @@ class AiGateway(pulumi.CustomResource):
                  collect_logs: pulumi.Input[Optional[_builtins.bool]] = None,
                  dlp: pulumi.Input[Optional[Union['AiGatewayDlpArgs', 'AiGatewayDlpArgsDict']]] = None,
                  guardrails: pulumi.Input[Optional[Union['AiGatewayGuardrailsArgs', 'AiGatewayGuardrailsArgsDict']]] = None,
+                 log_classification: pulumi.Input[Optional[_builtins.bool]] = None,
                  log_management: pulumi.Input[Optional[_builtins.int]] = None,
                  log_management_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  logpush: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -765,6 +790,7 @@ class AiGateway(pulumi.CustomResource):
             retry_backoff="constant",
             retry_delay=0,
             retry_max_attempts=1,
+            store_id="store_id",
             workers_ai_billing_mode="postpaid",
             zdr=True)
         ```
@@ -785,8 +811,8 @@ class AiGateway(pulumi.CustomResource):
                Available values: "constant", "linear", "exponential".
         :param pulumi.Input[_builtins.int] retry_delay: Delay between retry attempts in milliseconds (0-5000)
         :param pulumi.Input[_builtins.int] retry_max_attempts: Maximum number of retry attempts for failed requests (1-5)
-        :param pulumi.Input[_builtins.str] workers_ai_billing_mode: Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-               Available values: "postpaid".
+        :param pulumi.Input[_builtins.str] workers_ai_billing_mode: Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+               Available values: "postpaid", "unified".
         """
         ...
     @overload
@@ -823,6 +849,7 @@ class AiGateway(pulumi.CustomResource):
             retry_backoff="constant",
             retry_delay=0,
             retry_max_attempts=1,
+            store_id="store_id",
             workers_ai_billing_mode="postpaid",
             zdr=True)
         ```
@@ -857,6 +884,7 @@ class AiGateway(pulumi.CustomResource):
                  collect_logs: pulumi.Input[Optional[_builtins.bool]] = None,
                  dlp: pulumi.Input[Optional[Union['AiGatewayDlpArgs', 'AiGatewayDlpArgsDict']]] = None,
                  guardrails: pulumi.Input[Optional[Union['AiGatewayGuardrailsArgs', 'AiGatewayGuardrailsArgsDict']]] = None,
+                 log_classification: pulumi.Input[Optional[_builtins.bool]] = None,
                  log_management: pulumi.Input[Optional[_builtins.int]] = None,
                  log_management_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  logpush: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -900,6 +928,7 @@ class AiGateway(pulumi.CustomResource):
             __props__.__dict__["collect_logs"] = collect_logs
             __props__.__dict__["dlp"] = dlp
             __props__.__dict__["guardrails"] = guardrails
+            __props__.__dict__["log_classification"] = log_classification
             __props__.__dict__["log_management"] = log_management
             __props__.__dict__["log_management_strategy"] = log_management_strategy
             __props__.__dict__["logpush"] = logpush
@@ -943,6 +972,7 @@ class AiGateway(pulumi.CustomResource):
             dlp: pulumi.Input[Optional[Union['AiGatewayDlpArgs', 'AiGatewayDlpArgsDict']]] = None,
             guardrails: pulumi.Input[Optional[Union['AiGatewayGuardrailsArgs', 'AiGatewayGuardrailsArgsDict']]] = None,
             is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            log_classification: pulumi.Input[Optional[_builtins.bool]] = None,
             log_management: pulumi.Input[Optional[_builtins.int]] = None,
             log_management_strategy: pulumi.Input[Optional[_builtins.str]] = None,
             logpush: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -974,8 +1004,8 @@ class AiGateway(pulumi.CustomResource):
                Available values: "constant", "linear", "exponential".
         :param pulumi.Input[_builtins.int] retry_delay: Delay between retry attempts in milliseconds (0-5000)
         :param pulumi.Input[_builtins.int] retry_max_attempts: Maximum number of retry attempts for failed requests (1-5)
-        :param pulumi.Input[_builtins.str] workers_ai_billing_mode: Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-               Available values: "postpaid".
+        :param pulumi.Input[_builtins.str] workers_ai_billing_mode: Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+               Available values: "postpaid", "unified".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -991,6 +1021,7 @@ class AiGateway(pulumi.CustomResource):
         __props__.__dict__["dlp"] = dlp
         __props__.__dict__["guardrails"] = guardrails
         __props__.__dict__["is_default"] = is_default
+        __props__.__dict__["log_classification"] = log_classification
         __props__.__dict__["log_management"] = log_management
         __props__.__dict__["log_management_strategy"] = log_management_strategy
         __props__.__dict__["logpush"] = logpush
@@ -1062,6 +1093,11 @@ class AiGateway(pulumi.CustomResource):
     @pulumi.getter(name="isDefault")
     def is_default(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "is_default")
+
+    @_builtins.property
+    @pulumi.getter(name="logClassification")
+    def log_classification(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        return pulumi.get(self, "log_classification")
 
     @_builtins.property
     @pulumi.getter(name="logManagement")
@@ -1158,8 +1194,8 @@ class AiGateway(pulumi.CustomResource):
     @pulumi.getter(name="workersAiBillingMode")
     def workers_ai_billing_mode(self) -> pulumi.Output[_builtins.str]:
         """
-        Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-        Available values: "postpaid".
+        Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+        Available values: "postpaid", "unified".
         """
         return pulumi.get(self, "workers_ai_billing_mode")
 

@@ -30,14 +30,14 @@ public final class GetZeroTrustAccessAiControlsMcpPortalPlainArgs extends com.pu
     }
 
     /**
-     * portal id
+     * Unique identifier for the MCP portal.
      * 
      */
     @Import(name="id")
     private @Nullable String id;
 
     /**
-     * @return portal id
+     * @return Unique identifier for the MCP portal.
      * 
      */
     public Optional<String> id() {
@@ -81,7 +81,7 @@ public final class GetZeroTrustAccessAiControlsMcpPortalPlainArgs extends com.pu
         }
 
         /**
-         * @param id portal id
+         * @param id Unique identifier for the MCP portal.
          * 
          * @return builder
          * 

@@ -17,14 +17,14 @@ public final class AccessOrganizationMfaConfigArgs extends com.pulumi.resources.
     public static final AccessOrganizationMfaConfigArgs Empty = new AccessOrganizationMfaConfigArgs();
 
     /**
-     * Lists the MFA methods that users can authenticate with. `sshPivKey` is only relevant for infrastructure applications.
+     * Lists the MFA methods that users can authenticate with. The `pivKey` and `sshFido2Key` values are supported only for infrastructure applications.
      * 
      */
     @Import(name="allowedAuthenticators")
     private @Nullable Output<List<String>> allowedAuthenticators;
 
     /**
-     * @return Lists the MFA methods that users can authenticate with. `sshPivKey` is only relevant for infrastructure applications.
+     * @return Lists the MFA methods that users can authenticate with. The `pivKey` and `sshFido2Key` values are supported only for infrastructure applications.
      * 
      */
     public Optional<Output<List<String>>> allowedAuthenticators() {
@@ -104,7 +104,7 @@ public final class AccessOrganizationMfaConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param allowedAuthenticators Lists the MFA methods that users can authenticate with. `sshPivKey` is only relevant for infrastructure applications.
+         * @param allowedAuthenticators Lists the MFA methods that users can authenticate with. The `pivKey` and `sshFido2Key` values are supported only for infrastructure applications.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class AccessOrganizationMfaConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param allowedAuthenticators Lists the MFA methods that users can authenticate with. `sshPivKey` is only relevant for infrastructure applications.
+         * @param allowedAuthenticators Lists the MFA methods that users can authenticate with. The `pivKey` and `sshFido2Key` values are supported only for infrastructure applications.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class AccessOrganizationMfaConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param allowedAuthenticators Lists the MFA methods that users can authenticate with. `sshPivKey` is only relevant for infrastructure applications.
+         * @param allowedAuthenticators Lists the MFA methods that users can authenticate with. The `pivKey` and `sshFido2Key` values are supported only for infrastructure applications.
          * 
          * @return builder
          * 

@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -31,6 +32,21 @@ public final class WorkerSubdomainArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Prepend a version or preview prefix to this host suffix to form the *.workers.dev [preview URL](https://developers.cloudflare.com/workers/configuration/previews/) the Worker would serve on once previews are enabled, e.g. `https://&lt;prefix&gt;-my-worker.my-subdomain.workers.dev`. Present whenever the account owns a workers.dev subdomain, regardless of whether `previewsEnabled` is true, so presence does not imply preview URLs are currently live. Absent only when the account owns no workers.dev subdomain.
+     * 
+     */
+    @Import(name="previewUrlSuffix")
+    private @Nullable Output<String> previewUrlSuffix;
+
+    /**
+     * @return Prepend a version or preview prefix to this host suffix to form the *.workers.dev [preview URL](https://developers.cloudflare.com/workers/configuration/previews/) the Worker would serve on once previews are enabled, e.g. `https://&lt;prefix&gt;-my-worker.my-subdomain.workers.dev`. Present whenever the account owns a workers.dev subdomain, regardless of whether `previewsEnabled` is true, so presence does not imply preview URLs are currently live. Absent only when the account owns no workers.dev subdomain.
+     * 
+     */
+    public Optional<Output<String>> previewUrlSuffix() {
+        return Optional.ofNullable(this.previewUrlSuffix);
+    }
+
+    /**
      * Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.
      * 
      */
@@ -45,11 +61,28 @@ public final class WorkerSubdomainArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.previewsEnabled);
     }
 
+    /**
+     * The address the Worker would serve on once its *.workers.dev subdomain is enabled. Present whenever the account owns a workers.dev subdomain, regardless of whether `enabled` is true, so presence does not imply the Worker is currently live at this URL. Absent only when the account owns no workers.dev subdomain.
+     * 
+     */
+    @Import(name="url")
+    private @Nullable Output<String> url;
+
+    /**
+     * @return The address the Worker would serve on once its *.workers.dev subdomain is enabled. Present whenever the account owns a workers.dev subdomain, regardless of whether `enabled` is true, so presence does not imply the Worker is currently live at this URL. Absent only when the account owns no workers.dev subdomain.
+     * 
+     */
+    public Optional<Output<String>> url() {
+        return Optional.ofNullable(this.url);
+    }
+
     private WorkerSubdomainArgs() {}
 
     private WorkerSubdomainArgs(WorkerSubdomainArgs $) {
         this.enabled = $.enabled;
+        this.previewUrlSuffix = $.previewUrlSuffix;
         this.previewsEnabled = $.previewsEnabled;
+        this.url = $.url;
     }
 
     public static Builder builder() {
@@ -92,6 +125,27 @@ public final class WorkerSubdomainArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param previewUrlSuffix Prepend a version or preview prefix to this host suffix to form the *.workers.dev [preview URL](https://developers.cloudflare.com/workers/configuration/previews/) the Worker would serve on once previews are enabled, e.g. `https://&lt;prefix&gt;-my-worker.my-subdomain.workers.dev`. Present whenever the account owns a workers.dev subdomain, regardless of whether `previewsEnabled` is true, so presence does not imply preview URLs are currently live. Absent only when the account owns no workers.dev subdomain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder previewUrlSuffix(@Nullable Output<String> previewUrlSuffix) {
+            $.previewUrlSuffix = previewUrlSuffix;
+            return this;
+        }
+
+        /**
+         * @param previewUrlSuffix Prepend a version or preview prefix to this host suffix to form the *.workers.dev [preview URL](https://developers.cloudflare.com/workers/configuration/previews/) the Worker would serve on once previews are enabled, e.g. `https://&lt;prefix&gt;-my-worker.my-subdomain.workers.dev`. Present whenever the account owns a workers.dev subdomain, regardless of whether `previewsEnabled` is true, so presence does not imply preview URLs are currently live. Absent only when the account owns no workers.dev subdomain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder previewUrlSuffix(String previewUrlSuffix) {
+            return previewUrlSuffix(Output.of(previewUrlSuffix));
+        }
+
+        /**
          * @param previewsEnabled Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.
          * 
          * @return builder
@@ -110,6 +164,27 @@ public final class WorkerSubdomainArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder previewsEnabled(Boolean previewsEnabled) {
             return previewsEnabled(Output.of(previewsEnabled));
+        }
+
+        /**
+         * @param url The address the Worker would serve on once its *.workers.dev subdomain is enabled. Present whenever the account owns a workers.dev subdomain, regardless of whether `enabled` is true, so presence does not imply the Worker is currently live at this URL. Absent only when the account owns no workers.dev subdomain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder url(@Nullable Output<String> url) {
+            $.url = url;
+            return this;
+        }
+
+        /**
+         * @param url The address the Worker would serve on once its *.workers.dev subdomain is enabled. Present whenever the account owns a workers.dev subdomain, regardless of whether `enabled` is true, so presence does not imply the Worker is currently live at this URL. Absent only when the account owns no workers.dev subdomain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder url(String url) {
+            return url(Output.of(url));
         }
 
         public WorkerSubdomainArgs build() {

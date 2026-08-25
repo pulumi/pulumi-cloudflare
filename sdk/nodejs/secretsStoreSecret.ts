@@ -61,7 +61,7 @@ export class SecretsStoreSecret extends pulumi.CustomResource {
      */
     declare public readonly accountId: pulumi.Output<string>;
     /**
-     * Freeform text describing the secret.
+     * Freeform text describing the secret
      */
     declare public readonly comment: pulumi.Output<string | undefined>;
     /**
@@ -77,7 +77,7 @@ export class SecretsStoreSecret extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The list of services that can use this secret.
+     * The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
      */
     declare public readonly scopes: pulumi.Output<string[]>;
     /**
@@ -158,7 +158,7 @@ export interface SecretsStoreSecretState {
      */
     accountId?: pulumi.Input<string | undefined>;
     /**
-     * Freeform text describing the secret.
+     * Freeform text describing the secret
      */
     comment?: pulumi.Input<string | undefined>;
     /**
@@ -174,7 +174,7 @@ export interface SecretsStoreSecretState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The list of services that can use this secret.
+     * The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -200,7 +200,7 @@ export interface SecretsStoreSecretArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * Freeform text describing the secret.
+     * Freeform text describing the secret
      */
     comment?: pulumi.Input<string | undefined>;
     /**
@@ -208,7 +208,7 @@ export interface SecretsStoreSecretArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The list of services that can use this secret.
+     * The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
     /**

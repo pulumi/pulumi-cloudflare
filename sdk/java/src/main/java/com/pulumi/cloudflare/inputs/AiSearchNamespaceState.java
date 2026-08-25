@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.AiSearchNamespacePublicEndpointParamsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -51,6 +52,20 @@ public final class AiSearchNamespaceState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.name);
     }
 
+    @Import(name="publicEndpointId")
+    private @Nullable Output<String> publicEndpointId;
+
+    public Optional<Output<String>> publicEndpointId() {
+        return Optional.ofNullable(this.publicEndpointId);
+    }
+
+    @Import(name="publicEndpointParams")
+    private @Nullable Output<AiSearchNamespacePublicEndpointParamsArgs> publicEndpointParams;
+
+    public Optional<Output<AiSearchNamespacePublicEndpointParamsArgs>> publicEndpointParams() {
+        return Optional.ofNullable(this.publicEndpointParams);
+    }
+
     private AiSearchNamespaceState() {}
 
     private AiSearchNamespaceState(AiSearchNamespaceState $) {
@@ -58,6 +73,8 @@ public final class AiSearchNamespaceState extends com.pulumi.resources.ResourceA
         this.createdAt = $.createdAt;
         this.description = $.description;
         this.name = $.name;
+        this.publicEndpointId = $.publicEndpointId;
+        this.publicEndpointParams = $.publicEndpointParams;
     }
 
     public static Builder builder() {
@@ -124,6 +141,24 @@ public final class AiSearchNamespaceState extends com.pulumi.resources.ResourceA
 
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder publicEndpointId(@Nullable Output<String> publicEndpointId) {
+            $.publicEndpointId = publicEndpointId;
+            return this;
+        }
+
+        public Builder publicEndpointId(String publicEndpointId) {
+            return publicEndpointId(Output.of(publicEndpointId));
+        }
+
+        public Builder publicEndpointParams(@Nullable Output<AiSearchNamespacePublicEndpointParamsArgs> publicEndpointParams) {
+            $.publicEndpointParams = publicEndpointParams;
+            return this;
+        }
+
+        public Builder publicEndpointParams(AiSearchNamespacePublicEndpointParamsArgs publicEndpointParams) {
+            return publicEndpointParams(Output.of(publicEndpointParams));
         }
 
         public AiSearchNamespaceState build() {

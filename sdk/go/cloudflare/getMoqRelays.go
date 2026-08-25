@@ -11,6 +11,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.GetMoqRelays(ctx, &cloudflare.LookupMoqRelaysArgs{
+//				AccountId:     "023e105f4ecef8ad9ca31a8372d0c353",
+//				CreatedAfter:  pulumi.StringRef("2026-03-27T15:00:00Z"),
+//				CreatedBefore: pulumi.StringRef("2026-03-27T15:00:00Z"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupMoqRelays(ctx *pulumi.Context, args *LookupMoqRelaysArgs, opts ...pulumi.InvokeOption) (*LookupMoqRelaysResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMoqRelaysResult
@@ -38,7 +65,8 @@ type LookupMoqRelaysArgs struct {
 	CreatedBefore *string `pulumi:"createdBefore"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Maximum number of relays to return per page.
+	// Maximum number of relays to return per page. Values above the maximum are
+	// clamped to it rather than rejected.
 	PerPage *int `pulumi:"perPage"`
 }
 
@@ -59,8 +87,9 @@ type LookupMoqRelaysResult struct {
 	CreatedBefore *string `pulumi:"createdBefore"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Maximum number of relays to return per page.
-	PerPage *int `pulumi:"perPage"`
+	// Maximum number of relays to return per page. Values above the maximum are
+	// clamped to it rather than rejected.
+	PerPage int `pulumi:"perPage"`
 	// The items returned by the data source
 	Results []GetMoqRelaysResult `pulumi:"results"`
 }
@@ -91,7 +120,8 @@ type LookupMoqRelaysOutputArgs struct {
 	CreatedBefore pulumi.StringPtrInput `pulumi:"createdBefore"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Maximum number of relays to return per page.
+	// Maximum number of relays to return per page. Values above the maximum are
+	// clamped to it rather than rejected.
 	PerPage pulumi.IntPtrInput `pulumi:"perPage"`
 }
 
@@ -144,9 +174,10 @@ func (o LookupMoqRelaysResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupMoqRelaysResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
-// Maximum number of relays to return per page.
-func (o LookupMoqRelaysResultOutput) PerPage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupMoqRelaysResult) *int { return v.PerPage }).(pulumi.IntPtrOutput)
+// Maximum number of relays to return per page. Values above the maximum are
+// clamped to it rather than rejected.
+func (o LookupMoqRelaysResultOutput) PerPage() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupMoqRelaysResult) int { return v.PerPage }).(pulumi.IntOutput)
 }
 
 // The items returned by the data source

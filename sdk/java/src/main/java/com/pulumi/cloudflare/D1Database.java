@@ -114,7 +114,7 @@ public class D1Database extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-     * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
      * 
      */
     @Export(name="jurisdiction", refs={String.class}, tree="[0]")
@@ -122,7 +122,7 @@ public class D1Database extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-     * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
      * 
      */
     public Output<Optional<String>> jurisdiction() {

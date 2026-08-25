@@ -53,9 +53,10 @@ import javax.annotation.Nullable;
  *         var exampleZeroTrustAccessAiControlsMcpPortal = new ZeroTrustAccessAiControlsMcpPortal("exampleZeroTrustAccessAiControlsMcpPortal", ZeroTrustAccessAiControlsMcpPortalArgs.builder()
  *             .accountId("a86a8f5c339544d7bdc89926de14fb8c")
  *             .zeroTrustAccessAiControlsMcpPortalId("my-mcp-portal")
- *             .hostname("exmaple.com")
+ *             .hostname("example.com")
  *             .name("My MCP Portal")
  *             .allowCodeMode(true)
+ *             .codeMode("opt_in")
  *             .description("This is my custom MCP Portal")
  *             .secureWebGateway(false)
  *             .servers(ZeroTrustAccessAiControlsMcpPortalServerArgs.builder()
@@ -98,18 +99,38 @@ public class ZeroTrustAccessAiControlsMcpPortal extends com.pulumi.resources.Cus
         return this.accountId;
     }
     /**
-     * Allow remote code execution in Dynamic Workers (beta)
+     * Deprecated: use `codeMode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
      * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Export(name="allowCodeMode", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowCodeMode;
 
     /**
-     * @return Allow remote code execution in Dynamic Workers (beta)
+     * @return Deprecated: use `codeMode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
      * 
      */
     public Output<Boolean> allowCodeMode() {
         return this.allowCodeMode;
+    }
+    /**
+     * Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `optIn`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `defaultOn`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `optIn` when omitted on create. If both `codeMode` and `allowCodeMode` are sent, they must be consistent or the request returns a 400.
+     * Available values: &#34;off&#34;, &#34;opt*in&#34;, &#34;default*on&#34;, &#34;enforced&#34;.
+     * 
+     */
+    @Export(name="codeMode", refs={String.class}, tree="[0]")
+    private Output<String> codeMode;
+
+    /**
+     * @return Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `optIn`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `defaultOn`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `optIn` when omitted on create. If both `codeMode` and `allowCodeMode` are sent, they must be consistent or the request returns a 400.
+     * Available values: &#34;off&#34;, &#34;opt*in&#34;, &#34;default*on&#34;, &#34;enforced&#34;.
+     * 
+     */
+    public Output<String> codeMode() {
+        return this.codeMode;
     }
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
@@ -123,15 +144,31 @@ public class ZeroTrustAccessAiControlsMcpPortal extends com.pulumi.resources.Cus
     public Output<String> createdBy() {
         return this.createdBy;
     }
+    /**
+     * Optional description of the MCP portal.
+     * 
+     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
+    /**
+     * @return Optional description of the MCP portal.
+     * 
+     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * Hostname where the MCP portal is available.
+     * 
+     */
     @Export(name="hostname", refs={String.class}, tree="[0]")
     private Output<String> hostname;
 
+    /**
+     * @return Hostname where the MCP portal is available.
+     * 
+     */
     public Output<String> hostname() {
         return this.hostname;
     }
@@ -147,41 +184,57 @@ public class ZeroTrustAccessAiControlsMcpPortal extends com.pulumi.resources.Cus
     public Output<String> modifiedBy() {
         return this.modifiedBy;
     }
+    /**
+     * Display name for the MCP portal.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Display name for the MCP portal.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Route outbound MCP traffic through Zero Trust Secure Web Gateway
+     * Route outbound MCP traffic through Zero Trust Secure Web Gateway.
      * 
      */
     @Export(name="secureWebGateway", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> secureWebGateway;
 
     /**
-     * @return Route outbound MCP traffic through Zero Trust Secure Web Gateway
+     * @return Route outbound MCP traffic through Zero Trust Secure Web Gateway.
      * 
      */
     public Output<Boolean> secureWebGateway() {
         return this.secureWebGateway;
     }
+    /**
+     * MCP servers attached to the portal and their portal-specific settings.
+     * 
+     */
     @Export(name="servers", refs={List.class,ZeroTrustAccessAiControlsMcpPortalServer.class}, tree="[0,1]")
     private Output<List<ZeroTrustAccessAiControlsMcpPortalServer>> servers;
 
+    /**
+     * @return MCP servers attached to the portal and their portal-specific settings.
+     * 
+     */
     public Output<List<ZeroTrustAccessAiControlsMcpPortalServer>> servers() {
         return this.servers;
     }
     /**
-     * portal id
+     * Unique identifier for the MCP portal.
      * 
      */
     @Export(name="zeroTrustAccessAiControlsMcpPortalId", refs={String.class}, tree="[0]")
     private Output<String> zeroTrustAccessAiControlsMcpPortalId;
 
     /**
-     * @return portal id
+     * @return Unique identifier for the MCP portal.
      * 
      */
     public Output<String> zeroTrustAccessAiControlsMcpPortalId() {

@@ -3,7 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.OrganizationMetaFlags;
+import com.pulumi.cloudflare.outputs.OrganizationMetaTenantFlags;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
@@ -13,11 +13,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OrganizationMeta {
-    /**
-     * @return Enable features for Organizations.
-     * 
-     */
-    private @Nullable OrganizationMetaFlags flags;
     /**
      * @return Ordered chain of organization tags from the root organization down to
      * (and including) this organization itself. Root organizations return a
@@ -29,15 +24,13 @@ public final class OrganizationMeta {
      */
     private @Nullable List<String> hierarchyTags;
     private @Nullable String managedBy;
-
-    private OrganizationMeta() {}
     /**
      * @return Enable features for Organizations.
      * 
      */
-    public Optional<OrganizationMetaFlags> flags() {
-        return Optional.ofNullable(this.flags);
-    }
+    private @Nullable OrganizationMetaTenantFlags tenantFlags;
+
+    private OrganizationMeta() {}
     /**
      * @return Ordered chain of organization tags from the root organization down to
      * (and including) this organization itself. Root organizations return a
@@ -53,6 +46,13 @@ public final class OrganizationMeta {
     public Optional<String> managedBy() {
         return Optional.ofNullable(this.managedBy);
     }
+    /**
+     * @return Enable features for Organizations.
+     * 
+     */
+    public Optional<OrganizationMetaTenantFlags> tenantFlags() {
+        return Optional.ofNullable(this.tenantFlags);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -63,23 +63,17 @@ public final class OrganizationMeta {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable OrganizationMetaFlags flags;
         private @Nullable List<String> hierarchyTags;
         private @Nullable String managedBy;
+        private @Nullable OrganizationMetaTenantFlags tenantFlags;
         public Builder() {}
         public Builder(OrganizationMeta defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.flags = defaults.flags;
     	      this.hierarchyTags = defaults.hierarchyTags;
     	      this.managedBy = defaults.managedBy;
+    	      this.tenantFlags = defaults.tenantFlags;
         }
 
-        @CustomType.Setter
-        public Builder flags(@Nullable OrganizationMetaFlags flags) {
-
-            this.flags = flags;
-            return this;
-        }
         @CustomType.Setter
         public Builder hierarchyTags(@Nullable List<String> hierarchyTags) {
 
@@ -95,11 +89,17 @@ public final class OrganizationMeta {
             this.managedBy = managedBy;
             return this;
         }
+        @CustomType.Setter
+        public Builder tenantFlags(@Nullable OrganizationMetaTenantFlags tenantFlags) {
+
+            this.tenantFlags = tenantFlags;
+            return this;
+        }
         public OrganizationMeta build() {
             final var _resultValue = new OrganizationMeta();
-            _resultValue.flags = flags;
             _resultValue.hierarchyTags = hierarchyTags;
             _resultValue.managedBy = managedBy;
+            _resultValue.tenantFlags = tenantFlags;
             return _resultValue;
         }
     }

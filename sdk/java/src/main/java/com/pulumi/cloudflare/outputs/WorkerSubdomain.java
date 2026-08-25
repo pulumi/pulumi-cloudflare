@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,10 +18,20 @@ public final class WorkerSubdomain {
      */
     private @Nullable Boolean enabled;
     /**
+     * @return Prepend a version or preview prefix to this host suffix to form the *.workers.dev [preview URL](https://developers.cloudflare.com/workers/configuration/previews/) the Worker would serve on once previews are enabled, e.g. `https://&lt;prefix&gt;-my-worker.my-subdomain.workers.dev`. Present whenever the account owns a workers.dev subdomain, regardless of whether `previewsEnabled` is true, so presence does not imply preview URLs are currently live. Absent only when the account owns no workers.dev subdomain.
+     * 
+     */
+    private @Nullable String previewUrlSuffix;
+    /**
      * @return Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.
      * 
      */
     private @Nullable Boolean previewsEnabled;
+    /**
+     * @return The address the Worker would serve on once its *.workers.dev subdomain is enabled. Present whenever the account owns a workers.dev subdomain, regardless of whether `enabled` is true, so presence does not imply the Worker is currently live at this URL. Absent only when the account owns no workers.dev subdomain.
+     * 
+     */
+    private @Nullable String url;
 
     private WorkerSubdomain() {}
     /**
@@ -31,11 +42,25 @@ public final class WorkerSubdomain {
         return Optional.ofNullable(this.enabled);
     }
     /**
+     * @return Prepend a version or preview prefix to this host suffix to form the *.workers.dev [preview URL](https://developers.cloudflare.com/workers/configuration/previews/) the Worker would serve on once previews are enabled, e.g. `https://&lt;prefix&gt;-my-worker.my-subdomain.workers.dev`. Present whenever the account owns a workers.dev subdomain, regardless of whether `previewsEnabled` is true, so presence does not imply preview URLs are currently live. Absent only when the account owns no workers.dev subdomain.
+     * 
+     */
+    public Optional<String> previewUrlSuffix() {
+        return Optional.ofNullable(this.previewUrlSuffix);
+    }
+    /**
      * @return Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.
      * 
      */
     public Optional<Boolean> previewsEnabled() {
         return Optional.ofNullable(this.previewsEnabled);
+    }
+    /**
+     * @return The address the Worker would serve on once its *.workers.dev subdomain is enabled. Present whenever the account owns a workers.dev subdomain, regardless of whether `enabled` is true, so presence does not imply the Worker is currently live at this URL. Absent only when the account owns no workers.dev subdomain.
+     * 
+     */
+    public Optional<String> url() {
+        return Optional.ofNullable(this.url);
     }
 
     public static Builder builder() {
@@ -48,12 +73,16 @@ public final class WorkerSubdomain {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
+        private @Nullable String previewUrlSuffix;
         private @Nullable Boolean previewsEnabled;
+        private @Nullable String url;
         public Builder() {}
         public Builder(WorkerSubdomain defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
+    	      this.previewUrlSuffix = defaults.previewUrlSuffix;
     	      this.previewsEnabled = defaults.previewsEnabled;
+    	      this.url = defaults.url;
         }
 
         @CustomType.Setter
@@ -63,15 +92,29 @@ public final class WorkerSubdomain {
             return this;
         }
         @CustomType.Setter
+        public Builder previewUrlSuffix(@Nullable String previewUrlSuffix) {
+
+            this.previewUrlSuffix = previewUrlSuffix;
+            return this;
+        }
+        @CustomType.Setter
         public Builder previewsEnabled(@Nullable Boolean previewsEnabled) {
 
             this.previewsEnabled = previewsEnabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder url(@Nullable String url) {
+
+            this.url = url;
+            return this;
+        }
         public WorkerSubdomain build() {
             final var _resultValue = new WorkerSubdomain();
             _resultValue.enabled = enabled;
+            _resultValue.previewUrlSuffix = previewUrlSuffix;
             _resultValue.previewsEnabled = previewsEnabled;
+            _resultValue.url = url;
             return _resultValue;
         }
     }

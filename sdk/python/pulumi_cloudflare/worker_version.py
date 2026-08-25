@@ -824,6 +824,30 @@ class WorkerVersion(pulumi.CustomResource):
             containers=[{
                 "class_name": "MyDurableObject",
             }],
+            exports={
+                "Admin": {
+                    "type": "worker",
+                    "cache": {
+                        "enabled": True,
+                    },
+                    "renamed_to": "renamed_to",
+                    "state": "created",
+                    "storage": "sqlite",
+                    "transfer_from": "transfer_from",
+                    "transferred_to": "transferred_to",
+                },
+                "default": {
+                    "type": "worker",
+                    "cache": {
+                        "enabled": False,
+                    },
+                    "renamed_to": "renamed_to",
+                    "state": "created",
+                    "storage": "sqlite",
+                    "transfer_from": "transfer_from",
+                    "transferred_to": "transferred_to",
+                },
+            },
             limits={
                 "cpu_ms": 50,
                 "subrequests": 1000,
@@ -950,6 +974,30 @@ class WorkerVersion(pulumi.CustomResource):
             containers=[{
                 "class_name": "MyDurableObject",
             }],
+            exports={
+                "Admin": {
+                    "type": "worker",
+                    "cache": {
+                        "enabled": True,
+                    },
+                    "renamed_to": "renamed_to",
+                    "state": "created",
+                    "storage": "sqlite",
+                    "transfer_from": "transfer_from",
+                    "transferred_to": "transferred_to",
+                },
+                "default": {
+                    "type": "worker",
+                    "cache": {
+                        "enabled": False,
+                    },
+                    "renamed_to": "renamed_to",
+                    "state": "created",
+                    "storage": "sqlite",
+                    "transfer_from": "transfer_from",
+                    "transferred_to": "transferred_to",
+                },
+            },
             limits={
                 "cpu_ms": 50,
                 "subrequests": 1000,

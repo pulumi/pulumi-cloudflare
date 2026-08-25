@@ -64,6 +64,8 @@ type LookupZeroTrustAccessCustomPageArgs struct {
 type LookupZeroTrustAccessCustomPageResult struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
+	// Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+	ContractVersion int `pulumi:"contractVersion"`
 	// Custom page HTML.
 	CustomHtml string `pulumi:"customHtml"`
 	// UUID.
@@ -73,7 +75,7 @@ type LookupZeroTrustAccessCustomPageResult struct {
 	// Custom page name.
 	Name string `pulumi:"name"`
 	// Custom page type.
-	// Available values: "identityDenied", "forbidden".
+	// Available values: "identityDenied", "forbidden", "login", "interstitial".
 	Type string `pulumi:"type"`
 	// UUID.
 	Uid string `pulumi:"uid"`
@@ -120,6 +122,11 @@ func (o LookupZeroTrustAccessCustomPageResultOutput) AccountId() pulumi.StringPt
 	return o.ApplyT(func(v LookupZeroTrustAccessCustomPageResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
+// Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+func (o LookupZeroTrustAccessCustomPageResultOutput) ContractVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessCustomPageResult) int { return v.ContractVersion }).(pulumi.IntOutput)
+}
+
 // Custom page HTML.
 func (o LookupZeroTrustAccessCustomPageResultOutput) CustomHtml() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessCustomPageResult) string { return v.CustomHtml }).(pulumi.StringOutput)
@@ -141,7 +148,7 @@ func (o LookupZeroTrustAccessCustomPageResultOutput) Name() pulumi.StringOutput 
 }
 
 // Custom page type.
-// Available values: "identityDenied", "forbidden".
+// Available values: "identityDenied", "forbidden", "login", "interstitial".
 func (o LookupZeroTrustAccessCustomPageResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessCustomPageResult) string { return v.Type }).(pulumi.StringOutput)
 }

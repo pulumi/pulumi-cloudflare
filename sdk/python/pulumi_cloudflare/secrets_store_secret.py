@@ -30,10 +30,10 @@ class SecretsStoreSecretArgs:
 
         :param pulumi.Input[_builtins.str] account_id: Account Identifier
         :param pulumi.Input[_builtins.str] name: The name of the secret
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The list of services that can use this secret.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The list of services that can use this secret. Valid values are `workers`, `ai_gateway`, `dex`, and `access`. Must be listed in alphabetical order.
         :param pulumi.Input[_builtins.str] store_id: Store Identifier
         :param pulumi.Input[_builtins.str] value: The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - no API response will provide this value, it is only used to create/modify secrets.
-        :param pulumi.Input[_builtins.str] comment: Freeform text describing the secret.
+        :param pulumi.Input[_builtins.str] comment: Freeform text describing the secret
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
@@ -71,7 +71,7 @@ class SecretsStoreSecretArgs:
     @pulumi.getter
     def scopes(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        The list of services that can use this secret.
+        The list of services that can use this secret. Valid values are `workers`, `ai_gateway`, `dex`, and `access`. Must be listed in alphabetical order.
         """
         return pulumi.get(self, "scopes")
 
@@ -107,7 +107,7 @@ class SecretsStoreSecretArgs:
     @pulumi.getter
     def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Freeform text describing the secret.
+        Freeform text describing the secret
         """
         return pulumi.get(self, "comment")
 
@@ -132,11 +132,11 @@ class _SecretsStoreSecretState:
         Input properties used for looking up and filtering SecretsStoreSecret resources.
 
         :param pulumi.Input[_builtins.str] account_id: Account Identifier
-        :param pulumi.Input[_builtins.str] comment: Freeform text describing the secret.
+        :param pulumi.Input[_builtins.str] comment: Freeform text describing the secret
         :param pulumi.Input[_builtins.str] created: When the secret was created.
         :param pulumi.Input[_builtins.str] modified: When the secret was modified.
         :param pulumi.Input[_builtins.str] name: The name of the secret
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The list of services that can use this secret.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The list of services that can use this secret. Valid values are `workers`, `ai_gateway`, `dex`, and `access`. Must be listed in alphabetical order.
         :param pulumi.Input[_builtins.str] status: Available values: "pending", "active", "deleted".
         :param pulumi.Input[_builtins.str] store_id: Store Identifier
         :param pulumi.Input[_builtins.str] value: The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - no API response will provide this value, it is only used to create/modify secrets.
@@ -176,7 +176,7 @@ class _SecretsStoreSecretState:
     @pulumi.getter
     def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Freeform text describing the secret.
+        Freeform text describing the secret
         """
         return pulumi.get(self, "comment")
 
@@ -224,7 +224,7 @@ class _SecretsStoreSecretState:
     @pulumi.getter
     def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of services that can use this secret.
+        The list of services that can use this secret. Valid values are `workers`, `ai_gateway`, `dex`, and `access`. Must be listed in alphabetical order.
         """
         return pulumi.get(self, "scopes")
 
@@ -309,9 +309,9 @@ class SecretsStoreSecret(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Identifier
-        :param pulumi.Input[_builtins.str] comment: Freeform text describing the secret.
+        :param pulumi.Input[_builtins.str] comment: Freeform text describing the secret
         :param pulumi.Input[_builtins.str] name: The name of the secret
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The list of services that can use this secret.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The list of services that can use this secret. Valid values are `workers`, `ai_gateway`, `dex`, and `access`. Must be listed in alphabetical order.
         :param pulumi.Input[_builtins.str] store_id: Store Identifier
         :param pulumi.Input[_builtins.str] value: The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - no API response will provide this value, it is only used to create/modify secrets.
         """
@@ -423,11 +423,11 @@ class SecretsStoreSecret(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Identifier
-        :param pulumi.Input[_builtins.str] comment: Freeform text describing the secret.
+        :param pulumi.Input[_builtins.str] comment: Freeform text describing the secret
         :param pulumi.Input[_builtins.str] created: When the secret was created.
         :param pulumi.Input[_builtins.str] modified: When the secret was modified.
         :param pulumi.Input[_builtins.str] name: The name of the secret
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The list of services that can use this secret.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The list of services that can use this secret. Valid values are `workers`, `ai_gateway`, `dex`, and `access`. Must be listed in alphabetical order.
         :param pulumi.Input[_builtins.str] status: Available values: "pending", "active", "deleted".
         :param pulumi.Input[_builtins.str] store_id: Store Identifier
         :param pulumi.Input[_builtins.str] value: The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - no API response will provide this value, it is only used to create/modify secrets.
@@ -459,7 +459,7 @@ class SecretsStoreSecret(pulumi.CustomResource):
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Freeform text describing the secret.
+        Freeform text describing the secret
         """
         return pulumi.get(self, "comment")
 
@@ -491,7 +491,7 @@ class SecretsStoreSecret(pulumi.CustomResource):
     @pulumi.getter
     def scopes(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        The list of services that can use this secret.
+        The list of services that can use this secret. Valid values are `workers`, `ai_gateway`, `dex`, and `access`. Must be listed in alphabetical order.
         """
         return pulumi.get(self, "scopes")
 

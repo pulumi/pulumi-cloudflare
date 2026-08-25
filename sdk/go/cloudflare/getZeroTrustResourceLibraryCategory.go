@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustResourceLibraryCategory(ctx, &cloudflare.GetZeroTrustResourceLibraryCategoryArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-//				Id:        "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
+//				Id:        12,
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,7 +51,7 @@ func GetZeroTrustResourceLibraryCategory(ctx *pulumi.Context, args *GetZeroTrust
 type GetZeroTrustResourceLibraryCategoryArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// The ID of this resource.
-	Id string `pulumi:"id"`
+	Id int `pulumi:"id"`
 }
 
 // A collection of values returned by getZeroTrustResourceLibraryCategory.
@@ -62,7 +62,7 @@ type GetZeroTrustResourceLibraryCategoryResult struct {
 	// Returns the category description.
 	Description string `pulumi:"description"`
 	// The ID of this resource.
-	Id string `pulumi:"id"`
+	Id int `pulumi:"id"`
 	// Returns the category name.
 	Name string `pulumi:"name"`
 }
@@ -80,7 +80,7 @@ func GetZeroTrustResourceLibraryCategoryOutput(ctx *pulumi.Context, args GetZero
 type GetZeroTrustResourceLibraryCategoryOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The ID of this resource.
-	Id pulumi.StringInput `pulumi:"id"`
+	Id pulumi.IntInput `pulumi:"id"`
 }
 
 func (GetZeroTrustResourceLibraryCategoryOutputArgs) ElementType() reflect.Type {
@@ -117,8 +117,8 @@ func (o GetZeroTrustResourceLibraryCategoryResultOutput) Description() pulumi.St
 }
 
 // The ID of this resource.
-func (o GetZeroTrustResourceLibraryCategoryResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustResourceLibraryCategoryResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetZeroTrustResourceLibraryCategoryResultOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetZeroTrustResourceLibraryCategoryResult) int { return v.Id }).(pulumi.IntOutput)
 }
 
 // Returns the category name.

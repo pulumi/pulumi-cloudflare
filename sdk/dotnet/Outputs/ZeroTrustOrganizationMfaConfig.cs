@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustOrganizationMfaConfig
     {
         /// <summary>
-        /// Lists the MFA methods that users can authenticate with. `SshPivKey` is only relevant for infrastructure applications.
+        /// Lists the MFA methods that users can authenticate with. The `PivKey` and `SshFido2Key` values are supported only for infrastructure applications.
         /// </summary>
         public readonly ImmutableArray<string> AllowedAuthenticators;
         /// <summary>

@@ -31,6 +31,7 @@ namespace Pulumi.Cloudflare
     ///         CustomHtml = "&lt;html&gt;&lt;body&gt;&lt;h1&gt;Access Denied&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;",
     ///         Name = "name",
     ///         Type = "identity_denied",
+    ///         ContractVersion = 0,
     ///     });
     /// 
     /// });
@@ -52,6 +53,12 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
+        /// Contract version of the page's Liquid template. Present (&gt;= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+        /// </summary>
+        [Output("contractVersion")]
+        public Output<int> ContractVersion { get; private set; } = null!;
+
+        /// <summary>
         /// Custom page HTML.
         /// </summary>
         [Output("customHtml")]
@@ -65,7 +72,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Custom page type.
-        /// Available values: "IdentityDenied", "forbidden".
+        /// Available values: "IdentityDenied", "forbidden", "login", "interstitial".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -75,6 +82,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
+
+        /// <summary>
+        /// Advisory validation findings returned when creating or updating a template. Omitted when empty.
+        /// </summary>
+        [Output("warnings")]
+        public Output<ImmutableArray<Outputs.ZeroTrustAccessCustomPageWarning>> Warnings { get; private set; } = null!;
 
 
         /// <summary>
@@ -133,6 +146,12 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
+        /// Contract version of the page's Liquid template. Present (&gt;= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+        /// </summary>
+        [Input("contractVersion")]
+        public Input<int>? ContractVersion { get; set; }
+
+        /// <summary>
         /// Custom page HTML.
         /// </summary>
         [Input("customHtml", required: true)]
@@ -146,7 +165,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Custom page type.
-        /// Available values: "IdentityDenied", "forbidden".
+        /// Available values: "IdentityDenied", "forbidden", "login", "interstitial".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -166,6 +185,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
+        /// Contract version of the page's Liquid template. Present (&gt;= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+        /// </summary>
+        [Input("contractVersion")]
+        public Input<int>? ContractVersion { get; set; }
+
+        /// <summary>
         /// Custom page HTML.
         /// </summary>
         [Input("customHtml")]
@@ -179,7 +204,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Custom page type.
-        /// Available values: "IdentityDenied", "forbidden".
+        /// Available values: "IdentityDenied", "forbidden", "login", "interstitial".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -189,6 +214,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }
+
+        [Input("warnings")]
+        private InputList<Inputs.ZeroTrustAccessCustomPageWarningGetArgs>? _warnings;
+
+        /// <summary>
+        /// Advisory validation findings returned when creating or updating a template. Omitted when empty.
+        /// </summary>
+        public InputList<Inputs.ZeroTrustAccessCustomPageWarningGetArgs> Warnings
+        {
+            get => _warnings ?? (_warnings = new InputList<Inputs.ZeroTrustAccessCustomPageWarningGetArgs>());
+            set => _warnings = value;
+        }
 
         public ZeroTrustAccessCustomPageState()
         {

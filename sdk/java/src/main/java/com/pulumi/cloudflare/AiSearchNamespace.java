@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.AiSearchNamespaceArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.AiSearchNamespaceState;
+import com.pulumi.cloudflare.outputs.AiSearchNamespacePublicEndpointParams;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -53,6 +54,18 @@ public class AiSearchNamespace extends com.pulumi.resources.CustomResource {
 
     public Output<String> name() {
         return this.name;
+    }
+    @Export(name="publicEndpointId", refs={String.class}, tree="[0]")
+    private Output<String> publicEndpointId;
+
+    public Output<String> publicEndpointId() {
+        return this.publicEndpointId;
+    }
+    @Export(name="publicEndpointParams", refs={AiSearchNamespacePublicEndpointParams.class}, tree="[0]")
+    private Output<AiSearchNamespacePublicEndpointParams> publicEndpointParams;
+
+    public Output<AiSearchNamespacePublicEndpointParams> publicEndpointParams() {
+        return this.publicEndpointParams;
     }
 
     /**

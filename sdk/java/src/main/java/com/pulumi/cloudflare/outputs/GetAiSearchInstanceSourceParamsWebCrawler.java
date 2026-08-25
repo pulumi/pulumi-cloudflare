@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions;
 import com.pulumi.cloudflare.outputs.GetAiSearchInstanceSourceParamsWebCrawlerParseOptions;
 import com.pulumi.cloudflare.outputs.GetAiSearchInstanceSourceParamsWebCrawlerStoreOptions;
 import com.pulumi.core.annotations.CustomType;
@@ -12,20 +13,34 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAiSearchInstanceSourceParamsWebCrawler {
+    /**
+     * @return Options for parse*type &#39;discover&#39;, where Browser Run discovers URLs by link following and sitemaps. Ignored for &#39;sitemap&#39;.
+     * 
+     */
+    private GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions discoverOptions;
     private GetAiSearchInstanceSourceParamsWebCrawlerParseOptions parseOptions;
     /**
-     * @return Available values: &#34;sitemap&#34;, &#34;discover&#34;.
+     * @return How URLs are discovered. &#39;sitemap&#39; reads XML sitemaps; &#39;discover&#39; follows links recursively and requires the source to be a Verified zone on this account.
+     * Available values: &#34;sitemap&#34;, &#34;discover&#34;.
      * 
      */
     private String parseType;
     private GetAiSearchInstanceSourceParamsWebCrawlerStoreOptions storeOptions;
 
     private GetAiSearchInstanceSourceParamsWebCrawler() {}
+    /**
+     * @return Options for parse*type &#39;discover&#39;, where Browser Run discovers URLs by link following and sitemaps. Ignored for &#39;sitemap&#39;.
+     * 
+     */
+    public GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions discoverOptions() {
+        return this.discoverOptions;
+    }
     public GetAiSearchInstanceSourceParamsWebCrawlerParseOptions parseOptions() {
         return this.parseOptions;
     }
     /**
-     * @return Available values: &#34;sitemap&#34;, &#34;discover&#34;.
+     * @return How URLs are discovered. &#39;sitemap&#39; reads XML sitemaps; &#39;discover&#39; follows links recursively and requires the source to be a Verified zone on this account.
+     * Available values: &#34;sitemap&#34;, &#34;discover&#34;.
      * 
      */
     public String parseType() {
@@ -44,17 +59,27 @@ public final class GetAiSearchInstanceSourceParamsWebCrawler {
     }
     @CustomType.Builder
     public static final class Builder {
+        private GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions discoverOptions;
         private GetAiSearchInstanceSourceParamsWebCrawlerParseOptions parseOptions;
         private String parseType;
         private GetAiSearchInstanceSourceParamsWebCrawlerStoreOptions storeOptions;
         public Builder() {}
         public Builder(GetAiSearchInstanceSourceParamsWebCrawler defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.discoverOptions = defaults.discoverOptions;
     	      this.parseOptions = defaults.parseOptions;
     	      this.parseType = defaults.parseType;
     	      this.storeOptions = defaults.storeOptions;
         }
 
+        @CustomType.Setter
+        public Builder discoverOptions(GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions discoverOptions) {
+            if (discoverOptions == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchInstanceSourceParamsWebCrawler", "discoverOptions");
+            }
+            this.discoverOptions = discoverOptions;
+            return this;
+        }
         @CustomType.Setter
         public Builder parseOptions(GetAiSearchInstanceSourceParamsWebCrawlerParseOptions parseOptions) {
             if (parseOptions == null) {
@@ -81,6 +106,7 @@ public final class GetAiSearchInstanceSourceParamsWebCrawler {
         }
         public GetAiSearchInstanceSourceParamsWebCrawler build() {
             final var _resultValue = new GetAiSearchInstanceSourceParamsWebCrawler();
+            _resultValue.discoverOptions = discoverOptions;
             _resultValue.parseOptions = parseOptions;
             _resultValue.parseType = parseType;
             _resultValue.storeOptions = storeOptions;

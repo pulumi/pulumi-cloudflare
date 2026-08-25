@@ -81,7 +81,7 @@ namespace Pulumi.Cloudflare
         public Output<bool?> EnforceDnsOnly { get; private set; } = null!;
 
         [Output("zoneDefaults")]
-        public Output<Outputs.AccountDnsSettingsZoneDefaults?> ZoneDefaults { get; private set; } = null!;
+        public Output<Outputs.AccountDnsSettingsZoneDefaults> ZoneDefaults { get; private set; } = null!;
 
 
         /// <summary>

@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleZeroTrustResourceLibraryApplication = Cloudflare.GetZeroTrustResourceLibraryApplication.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         Id = "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
+        ///         Id = 498,
         ///     });
         /// 
         /// });
@@ -48,7 +48,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleZeroTrustResourceLibraryApplication = Cloudflare.GetZeroTrustResourceLibraryApplication.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         Id = "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
+        ///         Id = 498,
         ///     });
         /// 
         /// });
@@ -71,7 +71,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleZeroTrustResourceLibraryApplication = Cloudflare.GetZeroTrustResourceLibraryApplication.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         Id = "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
+        ///         Id = 498,
         ///     });
         /// 
         /// });
@@ -91,7 +91,7 @@ namespace Pulumi.Cloudflare
         /// The ID of this resource.
         /// </summary>
         [Input("id", required: true)]
-        public string Id { get; set; } = null!;
+        public int Id { get; set; }
 
         public GetZeroTrustResourceLibraryApplicationArgs()
         {
@@ -108,7 +108,7 @@ namespace Pulumi.Cloudflare
         /// The ID of this resource.
         /// </summary>
         [Input("id", required: true)]
-        public Input<string> Id { get; set; } = null!;
+        public Input<int> Id { get; set; } = null!;
 
         public GetZeroTrustResourceLibraryApplicationInvokeArgs()
         {
@@ -142,6 +142,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string ApplicationTypeDescription;
         /// <summary>
+        /// Returns the category ID.
+        /// </summary>
+        public readonly int CategoryId;
+        /// <summary>
         /// Returns the application creation time.
         /// </summary>
         public readonly string CreatedAt;
@@ -150,7 +154,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly double GenAiScore;
         /// <summary>
-        /// Returns the list of hostnames for the application.
+        /// Hostnames matched by the application.
         /// </summary>
         public readonly ImmutableArray<string> Hostnames;
         /// <summary>
@@ -160,13 +164,9 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The ID of this resource.
         /// </summary>
-        public readonly string Id;
+        public readonly int Id;
         /// <summary>
-        /// Returns the Intel API ID for the application.
-        /// </summary>
-        public readonly int IntelId;
-        /// <summary>
-        /// Returns the list of IP subnets for the application.
+        /// IP subnets matched by the application.
         /// </summary>
         public readonly ImmutableArray<string> IpSubnets;
         /// <summary>
@@ -174,11 +174,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Returns the list of port protocols for the application.
+        /// Port and protocol pairs matched by the application.
         /// </summary>
         public readonly ImmutableArray<string> PortProtocols;
         /// <summary>
-        /// Returns the list of support domains for the application.
+        /// Support domains matched by the application.
         /// </summary>
         public readonly ImmutableArray<string> SupportDomains;
         /// <summary>
@@ -208,6 +208,8 @@ namespace Pulumi.Cloudflare
 
             string applicationTypeDescription,
 
+            int categoryId,
+
             string createdAt,
 
             double genAiScore,
@@ -216,9 +218,7 @@ namespace Pulumi.Cloudflare
 
             string humanId,
 
-            string id,
-
-            int intelId,
+            int id,
 
             ImmutableArray<string> ipSubnets,
 
@@ -240,12 +240,12 @@ namespace Pulumi.Cloudflare
             ApplicationSource = applicationSource;
             ApplicationType = applicationType;
             ApplicationTypeDescription = applicationTypeDescription;
+            CategoryId = categoryId;
             CreatedAt = createdAt;
             GenAiScore = genAiScore;
             Hostnames = hostnames;
             HumanId = humanId;
             Id = id;
-            IntelId = intelId;
             IpSubnets = ipSubnets;
             Name = name;
             PortProtocols = portProtocols;

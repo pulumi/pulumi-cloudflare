@@ -77,16 +77,20 @@ public class ShareRecipient extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * Share Recipient association status.
-     * Available values: &#34;associating&#34;, &#34;associated&#34;, &#34;disassociating&#34;, &#34;disassociated&#34;.
+     * The current state of the recipient relative to the share. The
+     * `desiredAssociationStatus` (not exposed in the response) tracks the
+     * target state set by the API; the background reconciliation workflow
+     * drives `currentAssociationStatus` toward it.
      * 
      */
     @Export(name="associationStatus", refs={String.class}, tree="[0]")
     private Output<String> associationStatus;
 
     /**
-     * @return Share Recipient association status.
-     * Available values: &#34;associating&#34;, &#34;associated&#34;, &#34;disassociating&#34;, &#34;disassociated&#34;.
+     * @return The current state of the recipient relative to the share. The
+     * `desiredAssociationStatus` (not exposed in the response) tracks the
+     * target state set by the API; the background reconciliation workflow
+     * drives `currentAssociationStatus` toward it.
      * 
      */
     public Output<String> associationStatus() {

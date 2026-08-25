@@ -14,10 +14,6 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class OrganizationMeta
     {
         /// <summary>
-        /// Enable features for Organizations.
-        /// </summary>
-        public readonly Outputs.OrganizationMetaFlags? Flags;
-        /// <summary>
         /// Ordered chain of organization tags from the root organization down to
         /// (and including) this organization itself. Root organizations return a
         /// single-element array containing their own tag; sub-organizations return
@@ -27,18 +23,22 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> HierarchyTags;
         public readonly string? ManagedBy;
+        /// <summary>
+        /// Enable features for Organizations.
+        /// </summary>
+        public readonly Outputs.OrganizationMetaTenantFlags? TenantFlags;
 
         [OutputConstructor]
         private OrganizationMeta(
-            Outputs.OrganizationMetaFlags? flags,
-
             ImmutableArray<string> hierarchyTags,
 
-            string? managedBy)
+            string? managedBy,
+
+            Outputs.OrganizationMetaTenantFlags? tenantFlags)
         {
-            Flags = flags;
             HierarchyTags = hierarchyTags;
             ManagedBy = managedBy;
+            TenantFlags = tenantFlags;
         }
     }
 }

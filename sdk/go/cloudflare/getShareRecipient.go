@@ -65,8 +65,10 @@ type LookupShareRecipientArgs struct {
 type LookupShareRecipientResult struct {
 	// Account identifier.
 	AccountId string `pulumi:"accountId"`
-	// Share Recipient association status.
-	// Available values: "associating", "associated", "disassociating", "disassociated".
+	// The current state of the recipient relative to the share. The
+	// `desiredAssociationStatus` (not exposed in the response) tracks the
+	// target state set by the API; the background reconciliation workflow
+	// drives `currentAssociationStatus` toward it.
 	AssociationStatus string `pulumi:"associationStatus"`
 	// When the share was created.
 	Created string `pulumi:"created"`
@@ -128,8 +130,10 @@ func (o LookupShareRecipientResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareRecipientResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Share Recipient association status.
-// Available values: "associating", "associated", "disassociating", "disassociated".
+// The current state of the recipient relative to the share. The
+// `desiredAssociationStatus` (not exposed in the response) tracks the
+// target state set by the API; the background reconciliation workflow
+// drives `currentAssociationStatus` toward it.
 func (o LookupShareRecipientResultOutput) AssociationStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareRecipientResult) string { return v.AssociationStatus }).(pulumi.StringOutput)
 }

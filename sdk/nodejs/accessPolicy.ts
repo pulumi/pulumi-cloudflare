@@ -177,7 +177,7 @@ export class AccessPolicy extends pulumi.CustomResource {
     /**
      * The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      */
-    declare public readonly sessionDuration: pulumi.Output<string>;
+    declare public readonly sessionDuration: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**

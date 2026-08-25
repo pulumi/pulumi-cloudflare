@@ -53,6 +53,10 @@ export interface GetZeroTrustAccessCustomPageResult {
      */
     readonly accountId?: string;
     /**
+     * Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+     */
+    readonly contractVersion: number;
+    /**
      * Custom page HTML.
      */
     readonly customHtml: string;
@@ -70,7 +74,7 @@ export interface GetZeroTrustAccessCustomPageResult {
     readonly name: string;
     /**
      * Custom page type.
-     * Available values: "identityDenied", "forbidden".
+     * Available values: "identityDenied", "forbidden", "login", "interstitial".
      */
     readonly type: string;
     /**

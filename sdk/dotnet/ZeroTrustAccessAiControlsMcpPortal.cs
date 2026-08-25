@@ -29,9 +29,10 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         AccountId = "a86a8f5c339544d7bdc89926de14fb8c",
     ///         ZeroTrustAccessAiControlsMcpPortalId = "my-mcp-portal",
-    ///         Hostname = "exmaple.com",
+    ///         Hostname = "example.com",
     ///         Name = "My MCP Portal",
     ///         AllowCodeMode = true,
+    ///         CodeMode = "opt_in",
     ///         Description = "This is my custom MCP Portal",
     ///         SecureWebGateway = false,
     ///         Servers = new[]
@@ -81,10 +82,17 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Allow remote code execution in Dynamic Workers (beta)
+        /// Deprecated: use `CodeMode` for new integrations. `True` maps to any non-off Code Mode policy; `False` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
         /// </summary>
         [Output("allowCodeMode")]
         public Output<bool> AllowCodeMode { get; private set; } = null!;
+
+        /// <summary>
+        /// Code Mode policy for this portal. `Off`: Code Mode is unavailable; query parameters are ignored. `OptIn`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `DefaultOn`: Code Mode is on by default; clients can opt out with `?codemode=off`. `Enforced`: Code Mode is always on; query parameters are ignored. Defaults to `OptIn` when omitted on create. If both `CodeMode` and `AllowCodeMode` are sent, they must be consistent or the request returns a 400.
+        /// Available values: "off", "opt*in", "default*on", "enforced".
+        /// </summary>
+        [Output("codeMode")]
+        public Output<string> CodeMode { get; private set; } = null!;
 
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -92,9 +100,15 @@ namespace Pulumi.Cloudflare
         [Output("createdBy")]
         public Output<string> CreatedBy { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional description of the MCP portal.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Hostname where the MCP portal is available.
+        /// </summary>
         [Output("hostname")]
         public Output<string> Hostname { get; private set; } = null!;
 
@@ -104,20 +118,26 @@ namespace Pulumi.Cloudflare
         [Output("modifiedBy")]
         public Output<string> ModifiedBy { get; private set; } = null!;
 
+        /// <summary>
+        /// Display name for the MCP portal.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Route outbound MCP traffic through Zero Trust Secure Web Gateway
+        /// Route outbound MCP traffic through Zero Trust Secure Web Gateway.
         /// </summary>
         [Output("secureWebGateway")]
         public Output<bool> SecureWebGateway { get; private set; } = null!;
 
+        /// <summary>
+        /// MCP servers attached to the portal and their portal-specific settings.
+        /// </summary>
         [Output("servers")]
         public Output<ImmutableArray<Outputs.ZeroTrustAccessAiControlsMcpPortalServer>> Servers { get; private set; } = null!;
 
         /// <summary>
-        /// portal id
+        /// Unique identifier for the MCP portal.
         /// </summary>
         [Output("zeroTrustAccessAiControlsMcpPortalId")]
         public Output<string> ZeroTrustAccessAiControlsMcpPortalId { get; private set; } = null!;
@@ -172,28 +192,48 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Allow remote code execution in Dynamic Workers (beta)
+        /// Deprecated: use `CodeMode` for new integrations. `True` maps to any non-off Code Mode policy; `False` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
         /// </summary>
         [Input("allowCodeMode")]
         public Input<bool>? AllowCodeMode { get; set; }
 
+        /// <summary>
+        /// Code Mode policy for this portal. `Off`: Code Mode is unavailable; query parameters are ignored. `OptIn`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `DefaultOn`: Code Mode is on by default; clients can opt out with `?codemode=off`. `Enforced`: Code Mode is always on; query parameters are ignored. Defaults to `OptIn` when omitted on create. If both `CodeMode` and `AllowCodeMode` are sent, they must be consistent or the request returns a 400.
+        /// Available values: "off", "opt*in", "default*on", "enforced".
+        /// </summary>
+        [Input("codeMode")]
+        public Input<string>? CodeMode { get; set; }
+
+        /// <summary>
+        /// Optional description of the MCP portal.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Hostname where the MCP portal is available.
+        /// </summary>
         [Input("hostname", required: true)]
         public Input<string> Hostname { get; set; } = null!;
 
+        /// <summary>
+        /// Display name for the MCP portal.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Route outbound MCP traffic through Zero Trust Secure Web Gateway
+        /// Route outbound MCP traffic through Zero Trust Secure Web Gateway.
         /// </summary>
         [Input("secureWebGateway")]
         public Input<bool>? SecureWebGateway { get; set; }
 
         [Input("servers")]
         private InputList<Inputs.ZeroTrustAccessAiControlsMcpPortalServerArgs>? _servers;
+
+        /// <summary>
+        /// MCP servers attached to the portal and their portal-specific settings.
+        /// </summary>
         public InputList<Inputs.ZeroTrustAccessAiControlsMcpPortalServerArgs> Servers
         {
             get => _servers ?? (_servers = new InputList<Inputs.ZeroTrustAccessAiControlsMcpPortalServerArgs>());
@@ -201,7 +241,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// portal id
+        /// Unique identifier for the MCP portal.
         /// </summary>
         [Input("zeroTrustAccessAiControlsMcpPortalId", required: true)]
         public Input<string> ZeroTrustAccessAiControlsMcpPortalId { get; set; } = null!;
@@ -218,10 +258,17 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Allow remote code execution in Dynamic Workers (beta)
+        /// Deprecated: use `CodeMode` for new integrations. `True` maps to any non-off Code Mode policy; `False` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
         /// </summary>
         [Input("allowCodeMode")]
         public Input<bool>? AllowCodeMode { get; set; }
+
+        /// <summary>
+        /// Code Mode policy for this portal. `Off`: Code Mode is unavailable; query parameters are ignored. `OptIn`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `DefaultOn`: Code Mode is on by default; clients can opt out with `?codemode=off`. `Enforced`: Code Mode is always on; query parameters are ignored. Defaults to `OptIn` when omitted on create. If both `CodeMode` and `AllowCodeMode` are sent, they must be consistent or the request returns a 400.
+        /// Available values: "off", "opt*in", "default*on", "enforced".
+        /// </summary>
+        [Input("codeMode")]
+        public Input<string>? CodeMode { get; set; }
 
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
@@ -229,9 +276,15 @@ namespace Pulumi.Cloudflare
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
+        /// <summary>
+        /// Optional description of the MCP portal.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Hostname where the MCP portal is available.
+        /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
@@ -241,17 +294,24 @@ namespace Pulumi.Cloudflare
         [Input("modifiedBy")]
         public Input<string>? ModifiedBy { get; set; }
 
+        /// <summary>
+        /// Display name for the MCP portal.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Route outbound MCP traffic through Zero Trust Secure Web Gateway
+        /// Route outbound MCP traffic through Zero Trust Secure Web Gateway.
         /// </summary>
         [Input("secureWebGateway")]
         public Input<bool>? SecureWebGateway { get; set; }
 
         [Input("servers")]
         private InputList<Inputs.ZeroTrustAccessAiControlsMcpPortalServerGetArgs>? _servers;
+
+        /// <summary>
+        /// MCP servers attached to the portal and their portal-specific settings.
+        /// </summary>
         public InputList<Inputs.ZeroTrustAccessAiControlsMcpPortalServerGetArgs> Servers
         {
             get => _servers ?? (_servers = new InputList<Inputs.ZeroTrustAccessAiControlsMcpPortalServerGetArgs>());
@@ -259,7 +319,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// portal id
+        /// Unique identifier for the MCP portal.
         /// </summary>
         [Input("zeroTrustAccessAiControlsMcpPortalId")]
         public Input<string>? ZeroTrustAccessAiControlsMcpPortalId { get; set; }

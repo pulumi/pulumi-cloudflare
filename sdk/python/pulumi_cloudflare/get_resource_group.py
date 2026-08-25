@@ -91,7 +91,7 @@ class GetResourceGroupResult:
     @pulumi.getter
     def scopes(self) -> Sequence['outputs.GetResourceGroupScopeResult']:
         """
-        A scope is a combination of scope objects which provides additional context.
+        The scope associated to the resource group
         """
         return pulumi.get(self, "scopes")
 

@@ -605,7 +605,7 @@ class ZoneDnsSettings(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="internalDns")
-    def internal_dns(self) -> pulumi.Output[Optional['outputs.ZoneDnsSettingsInternalDns']]:
+    def internal_dns(self) -> pulumi.Output['outputs.ZoneDnsSettingsInternalDns']:
         """
         Settings for this internal zone.
         """
@@ -621,7 +621,7 @@ class ZoneDnsSettings(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def nameservers(self) -> pulumi.Output[Optional['outputs.ZoneDnsSettingsNameservers']]:
+    def nameservers(self) -> pulumi.Output['outputs.ZoneDnsSettingsNameservers']:
         """
         Settings determining the nameservers through which the zone should be available.
         """
@@ -645,7 +645,7 @@ class ZoneDnsSettings(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def soa(self) -> pulumi.Output[Optional['outputs.ZoneDnsSettingsSoa']]:
+    def soa(self) -> pulumi.Output['outputs.ZoneDnsSettingsSoa']:
         """
         Components of the zone's SOA record.
         """

@@ -59,9 +59,9 @@ import javax.annotation.Nullable;
  *             .authType("unauthenticated")
  *             .hostname("https://example.com/mcp")
  *             .name("My MCP Server")
- *             .authCredentials("auth_credentials")
+ *             .authCredentials("sk-my-bearer-token")
  *             .clientSecret("client_secret")
- *             .description("This is one remote mcp server")
+ *             .description("This is one remote MCP server")
  *             .isSharedOauthCallbackEnabled(true)
  *             .secureWebGateway(false)
  *             .updatedPrompts(ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs.builder()
@@ -112,13 +112,22 @@ public class ZeroTrustAccessAiControlsMcpServer extends com.pulumi.resources.Cus
     public Output<ZeroTrustAccessAiControlsMcpServerAuthConfigSummary> authConfigSummary() {
         return this.authConfigSummary;
     }
+    /**
+     * Static credential for the upstream MCP server. For authType &#34;bearer&#34;, either a raw token string (e.g. &#34;sk-abc123&#34;), which is wrapped server-side as `Authorization: Bearer &lt;token&gt;`, or a JSON-encoded object of the form `{&#34;headers&#34;:{&#34;Header-Name&#34;:&#34;value&#34;,...}}` for custom or multiple static headers (e.g. Cloudflare Access service tokens: `{&#34;headers&#34;:{&#34;cf-access-client-id&#34;:&#34;...&#34;,&#34;cf-access-client-secret&#34;:&#34;...&#34;}}`).
+     * 
+     */
     @Export(name="authCredentials", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authCredentials;
 
+    /**
+     * @return Static credential for the upstream MCP server. For authType &#34;bearer&#34;, either a raw token string (e.g. &#34;sk-abc123&#34;), which is wrapped server-side as `Authorization: Bearer &lt;token&gt;`, or a JSON-encoded object of the form `{&#34;headers&#34;:{&#34;Header-Name&#34;:&#34;value&#34;,...}}` for custom or multiple static headers (e.g. Cloudflare Access service tokens: `{&#34;headers&#34;:{&#34;cf-access-client-id&#34;:&#34;...&#34;,&#34;cf-access-client-secret&#34;:&#34;...&#34;}}`).
+     * 
+     */
     public Output<Optional<String>> authCredentials() {
         return Codegen.optional(this.authCredentials);
     }
     /**
+     * Authentication method used to connect to the upstream MCP server.
      * Available values: &#34;oauth&#34;, &#34;bearer&#34;, &#34;unauthenticated&#34;.
      * 
      */
@@ -126,11 +135,28 @@ public class ZeroTrustAccessAiControlsMcpServer extends com.pulumi.resources.Cus
     private Output<String> authType;
 
     /**
-     * @return Available values: &#34;oauth&#34;, &#34;bearer&#34;, &#34;unauthenticated&#34;.
+     * @return Authentication method used to connect to the upstream MCP server.
+     * Available values: &#34;oauth&#34;, &#34;bearer&#34;, &#34;unauthenticated&#34;.
      * 
      */
     public Output<String> authType() {
         return this.authType;
+    }
+    /**
+     * Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
+     * Available values: &#34;notRequired&#34;, &#34;required&#34;, &#34;connected&#34;, &#34;stale&#34;, &#34;manual&#34;.
+     * 
+     */
+    @Export(name="authenticationStatus", refs={String.class}, tree="[0]")
+    private Output<String> authenticationStatus;
+
+    /**
+     * @return Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
+     * Available values: &#34;notRequired&#34;, &#34;required&#34;, &#34;connected&#34;, &#34;stale&#34;, &#34;manual&#34;.
+     * 
+     */
+    public Output<String> authenticationStatus() {
+        return this.authenticationStatus;
     }
     /**
      * Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is &#39;manual&#39;. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
@@ -158,9 +184,17 @@ public class ZeroTrustAccessAiControlsMcpServer extends com.pulumi.resources.Cus
     public Output<String> createdBy() {
         return this.createdBy;
     }
+    /**
+     * Optional description of the MCP server.
+     * 
+     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
+    /**
+     * @return Optional description of the MCP server.
+     * 
+     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
@@ -176,21 +210,29 @@ public class ZeroTrustAccessAiControlsMcpServer extends com.pulumi.resources.Cus
     public Output<ZeroTrustAccessAiControlsMcpServerErrorDetails> errorDetails() {
         return this.errorDetails;
     }
+    /**
+     * URL of the upstream MCP endpoint.
+     * 
+     */
     @Export(name="hostname", refs={String.class}, tree="[0]")
     private Output<String> hostname;
 
+    /**
+     * @return URL of the upstream MCP endpoint.
+     * 
+     */
     public Output<String> hostname() {
         return this.hostname;
     }
     /**
-     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
+     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true.
      * 
      */
     @Export(name="isSharedOauthCallbackEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isSharedOauthCallbackEnabled;
 
     /**
-     * @return When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
+     * @return When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true.
      * 
      */
     public Output<Boolean> isSharedOauthCallbackEnabled() {
@@ -220,9 +262,17 @@ public class ZeroTrustAccessAiControlsMcpServer extends com.pulumi.resources.Cus
     public Output<String> modifiedBy() {
         return this.modifiedBy;
     }
+    /**
+     * Display name for the MCP server.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Display name for the MCP server.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -233,14 +283,14 @@ public class ZeroTrustAccessAiControlsMcpServer extends com.pulumi.resources.Cus
         return this.prompts;
     }
     /**
-     * Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+     * Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
      * 
      */
     @Export(name="secureWebGateway", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> secureWebGateway;
 
     /**
-     * @return Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+     * @return Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
      * 
      */
     public Output<Boolean> secureWebGateway() {
@@ -258,27 +308,43 @@ public class ZeroTrustAccessAiControlsMcpServer extends com.pulumi.resources.Cus
     public Output<List<Map<String,String>>> tools() {
         return this.tools;
     }
+    /**
+     * Server-wide prompt capability overrides.
+     * 
+     */
     @Export(name="updatedPrompts", refs={List.class,ZeroTrustAccessAiControlsMcpServerUpdatedPrompt.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ZeroTrustAccessAiControlsMcpServerUpdatedPrompt>> updatedPrompts;
 
+    /**
+     * @return Server-wide prompt capability overrides.
+     * 
+     */
     public Output<Optional<List<ZeroTrustAccessAiControlsMcpServerUpdatedPrompt>>> updatedPrompts() {
         return Codegen.optional(this.updatedPrompts);
     }
+    /**
+     * Server-wide tool capability overrides.
+     * 
+     */
     @Export(name="updatedTools", refs={List.class,ZeroTrustAccessAiControlsMcpServerUpdatedTool.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ZeroTrustAccessAiControlsMcpServerUpdatedTool>> updatedTools;
 
+    /**
+     * @return Server-wide tool capability overrides.
+     * 
+     */
     public Output<Optional<List<ZeroTrustAccessAiControlsMcpServerUpdatedTool>>> updatedTools() {
         return Codegen.optional(this.updatedTools);
     }
     /**
-     * server id
+     * Unique identifier for the MCP server.
      * 
      */
     @Export(name="zeroTrustAccessAiControlsMcpServerId", refs={String.class}, tree="[0]")
     private Output<String> zeroTrustAccessAiControlsMcpServerId;
 
     /**
-     * @return server id
+     * @return Unique identifier for the MCP server.
      * 
      */
     public Output<String> zeroTrustAccessAiControlsMcpServerId() {

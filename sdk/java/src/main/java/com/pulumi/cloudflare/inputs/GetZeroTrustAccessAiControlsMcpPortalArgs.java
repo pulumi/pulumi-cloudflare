@@ -31,14 +31,14 @@ public final class GetZeroTrustAccessAiControlsMcpPortalArgs extends com.pulumi.
     }
 
     /**
-     * portal id
+     * Unique identifier for the MCP portal.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return portal id
+     * @return Unique identifier for the MCP portal.
      * 
      */
     public Optional<Output<String>> id() {
@@ -90,7 +90,7 @@ public final class GetZeroTrustAccessAiControlsMcpPortalArgs extends com.pulumi.
         }
 
         /**
-         * @param id portal id
+         * @param id Unique identifier for the MCP portal.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class GetZeroTrustAccessAiControlsMcpPortalArgs extends com.pulumi.
         }
 
         /**
-         * @param id portal id
+         * @param id Unique identifier for the MCP portal.
          * 
          * @return builder
          * 

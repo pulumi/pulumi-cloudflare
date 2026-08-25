@@ -125,14 +125,14 @@ public class ZoneDnsSettings extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="internalDns", refs={ZoneDnsSettingsInternalDns.class}, tree="[0]")
-    private Output</* @Nullable */ ZoneDnsSettingsInternalDns> internalDns;
+    private Output<ZoneDnsSettingsInternalDns> internalDns;
 
     /**
      * @return Settings for this internal zone.
      * 
      */
-    public Output<Optional<ZoneDnsSettingsInternalDns>> internalDns() {
-        return Codegen.optional(this.internalDns);
+    public Output<ZoneDnsSettingsInternalDns> internalDns() {
+        return this.internalDns;
     }
     /**
      * Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
@@ -153,14 +153,14 @@ public class ZoneDnsSettings extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="nameservers", refs={ZoneDnsSettingsNameservers.class}, tree="[0]")
-    private Output</* @Nullable */ ZoneDnsSettingsNameservers> nameservers;
+    private Output<ZoneDnsSettingsNameservers> nameservers;
 
     /**
      * @return Settings determining the nameservers through which the zone should be available.
      * 
      */
-    public Output<Optional<ZoneDnsSettingsNameservers>> nameservers() {
-        return Codegen.optional(this.nameservers);
+    public Output<ZoneDnsSettingsNameservers> nameservers() {
+        return this.nameservers;
     }
     /**
      * The time to live (TTL) of the zone&#39;s nameserver (NS) records.
@@ -195,14 +195,14 @@ public class ZoneDnsSettings extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="soa", refs={ZoneDnsSettingsSoa.class}, tree="[0]")
-    private Output</* @Nullable */ ZoneDnsSettingsSoa> soa;
+    private Output<ZoneDnsSettingsSoa> soa;
 
     /**
      * @return Components of the zone&#39;s SOA record.
      * 
      */
-    public Output<Optional<ZoneDnsSettingsSoa>> soa() {
-        return Codegen.optional(this.soa);
+    public Output<ZoneDnsSettingsSoa> soa() {
+        return this.soa;
     }
     /**
      * Identifier.

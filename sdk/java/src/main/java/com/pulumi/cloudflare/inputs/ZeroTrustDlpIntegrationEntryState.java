@@ -61,6 +61,23 @@ public final class ZeroTrustDlpIntegrationEntryState extends com.pulumi.resource
         return Optional.ofNullable(this.createdAt);
     }
 
+    /**
+     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * emitted only when true.
+     * 
+     */
+    @Import(name="deprecated")
+    private @Nullable Output<Boolean> deprecated;
+
+    /**
+     * @return Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * emitted only when true.
+     * 
+     */
+    public Optional<Output<Boolean>> deprecated() {
+        return Optional.ofNullable(this.deprecated);
+    }
+
     @Import(name="description")
     private @Nullable Output<String> description;
 
@@ -193,6 +210,7 @@ public final class ZeroTrustDlpIntegrationEntryState extends com.pulumi.resource
         this.caseSensitive = $.caseSensitive;
         this.confidence = $.confidence;
         this.createdAt = $.createdAt;
+        this.deprecated = $.deprecated;
         this.description = $.description;
         this.enabled = $.enabled;
         this.entryId = $.entryId;
@@ -276,6 +294,29 @@ public final class ZeroTrustDlpIntegrationEntryState extends com.pulumi.resource
 
         public Builder createdAt(String createdAt) {
             return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param deprecated Whether this entry is deprecated for new use. This is computed from the static catalog and
+         * emitted only when true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deprecated(@Nullable Output<Boolean> deprecated) {
+            $.deprecated = deprecated;
+            return this;
+        }
+
+        /**
+         * @param deprecated Whether this entry is deprecated for new use. This is computed from the static catalog and
+         * emitted only when true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deprecated(Boolean deprecated) {
+            return deprecated(Output.of(deprecated));
         }
 
         public Builder description(@Nullable Output<String> description) {

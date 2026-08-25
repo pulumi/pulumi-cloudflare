@@ -228,7 +228,6 @@ class HostnameTlsSetting(pulumi.CustomResource):
         """
         Accepted Permissions
 
-        - `SSL and Certificates Read`
         - `SSL and Certificates Write`
 
         ## Example Usage
@@ -250,7 +249,7 @@ class HostnameTlsSetting(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example '<zone_id>/<setting_id>'
+        $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example '<zone_id>/<setting_id>/<hostname>'
         ```
 
 
@@ -272,7 +271,6 @@ class HostnameTlsSetting(pulumi.CustomResource):
         """
         Accepted Permissions
 
-        - `SSL and Certificates Read`
         - `SSL and Certificates Write`
 
         ## Example Usage
@@ -294,7 +292,7 @@ class HostnameTlsSetting(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example '<zone_id>/<setting_id>'
+        $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example '<zone_id>/<setting_id>/<hostname>'
         ```
 
 

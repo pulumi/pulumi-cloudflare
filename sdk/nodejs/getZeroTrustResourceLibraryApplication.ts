@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * const exampleZeroTrustResourceLibraryApplication = cloudflare.getZeroTrustResourceLibraryApplication({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     id: "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
+ *     id: 498,
  * });
  * ```
  */
@@ -33,7 +33,7 @@ export interface GetZeroTrustResourceLibraryApplicationArgs {
     /**
      * The ID of this resource.
      */
-    id: string;
+    id: number;
 }
 
 /**
@@ -62,6 +62,10 @@ export interface GetZeroTrustResourceLibraryApplicationResult {
      */
     readonly applicationTypeDescription: string;
     /**
+     * Returns the category ID.
+     */
+    readonly categoryId: number;
+    /**
      * Returns the application creation time.
      */
     readonly createdAt: string;
@@ -70,7 +74,7 @@ export interface GetZeroTrustResourceLibraryApplicationResult {
      */
     readonly genAiScore: number;
     /**
-     * Returns the list of hostnames for the application.
+     * Hostnames matched by the application.
      */
     readonly hostnames: string[];
     /**
@@ -80,13 +84,9 @@ export interface GetZeroTrustResourceLibraryApplicationResult {
     /**
      * The ID of this resource.
      */
-    readonly id: string;
+    readonly id: number;
     /**
-     * Returns the Intel API ID for the application.
-     */
-    readonly intelId: number;
-    /**
-     * Returns the list of IP subnets for the application.
+     * IP subnets matched by the application.
      */
     readonly ipSubnets: string[];
     /**
@@ -94,11 +94,11 @@ export interface GetZeroTrustResourceLibraryApplicationResult {
      */
     readonly name: string;
     /**
-     * Returns the list of port protocols for the application.
+     * Port and protocol pairs matched by the application.
      */
     readonly portProtocols: string[];
     /**
-     * Returns the list of support domains for the application.
+     * Support domains matched by the application.
      */
     readonly supportDomains: string[];
     /**
@@ -123,7 +123,7 @@ export interface GetZeroTrustResourceLibraryApplicationResult {
  *
  * const exampleZeroTrustResourceLibraryApplication = cloudflare.getZeroTrustResourceLibraryApplication({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     id: "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
+ *     id: 498,
  * });
  * ```
  */
@@ -143,5 +143,5 @@ export interface GetZeroTrustResourceLibraryApplicationOutputArgs {
     /**
      * The ID of this resource.
      */
-    id: pulumi.Input<string>;
+    id: pulumi.Input<number>;
 }

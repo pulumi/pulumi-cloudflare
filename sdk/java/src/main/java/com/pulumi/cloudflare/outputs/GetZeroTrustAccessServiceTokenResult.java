@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessServiceTokenFilter;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -28,6 +29,11 @@ public final class GetZeroTrustAccessServiceTokenResult {
      * 
      */
     private String duration;
+    /**
+     * @return Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+     * 
+     */
+    private Boolean enabled;
     private String expiresAt;
     private @Nullable GetZeroTrustAccessServiceTokenFilter filter;
     /**
@@ -72,6 +78,13 @@ public final class GetZeroTrustAccessServiceTokenResult {
      */
     public String duration() {
         return this.duration;
+    }
+    /**
+     * @return Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+     * 
+     */
+    public Boolean enabled() {
+        return this.enabled;
     }
     public String expiresAt() {
         return this.expiresAt;
@@ -120,6 +133,7 @@ public final class GetZeroTrustAccessServiceTokenResult {
         private @Nullable String accountId;
         private String clientId;
         private String duration;
+        private Boolean enabled;
         private String expiresAt;
         private @Nullable GetZeroTrustAccessServiceTokenFilter filter;
         private String id;
@@ -132,6 +146,7 @@ public final class GetZeroTrustAccessServiceTokenResult {
     	      this.accountId = defaults.accountId;
     	      this.clientId = defaults.clientId;
     	      this.duration = defaults.duration;
+    	      this.enabled = defaults.enabled;
     	      this.expiresAt = defaults.expiresAt;
     	      this.filter = defaults.filter;
     	      this.id = defaults.id;
@@ -160,6 +175,14 @@ public final class GetZeroTrustAccessServiceTokenResult {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessServiceTokenResult", "duration");
             }
             this.duration = duration;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enabled(Boolean enabled) {
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessServiceTokenResult", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
@@ -209,6 +232,7 @@ public final class GetZeroTrustAccessServiceTokenResult {
             _resultValue.accountId = accountId;
             _resultValue.clientId = clientId;
             _resultValue.duration = duration;
+            _resultValue.enabled = enabled;
             _resultValue.expiresAt = expiresAt;
             _resultValue.filter = filter;
             _resultValue.id = id;

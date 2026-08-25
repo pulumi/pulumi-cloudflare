@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions;
 import com.pulumi.cloudflare.outputs.AiSearchInstanceSourceParamsWebCrawlerParseOptions;
 import com.pulumi.cloudflare.outputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptions;
 import com.pulumi.core.annotations.CustomType;
@@ -13,20 +14,34 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AiSearchInstanceSourceParamsWebCrawler {
+    /**
+     * @return Options for parse*type &#39;discover&#39;, where Browser Run discovers URLs by link following and sitemaps. Ignored for &#39;sitemap&#39;.
+     * 
+     */
+    private @Nullable AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions discoverOptions;
     private @Nullable AiSearchInstanceSourceParamsWebCrawlerParseOptions parseOptions;
     /**
-     * @return Available values: &#34;sitemap&#34;, &#34;feed-rss&#34;, &#34;crawl&#34;.
+     * @return How URLs are discovered. &#39;sitemap&#39; reads XML sitemaps; &#39;discover&#39; follows links recursively and requires the source to be a Verified zone on this account.
+     * Available values: &#34;sitemap&#34;, &#34;discover&#34;.
      * 
      */
     private @Nullable String parseType;
     private @Nullable AiSearchInstanceSourceParamsWebCrawlerStoreOptions storeOptions;
 
     private AiSearchInstanceSourceParamsWebCrawler() {}
+    /**
+     * @return Options for parse*type &#39;discover&#39;, where Browser Run discovers URLs by link following and sitemaps. Ignored for &#39;sitemap&#39;.
+     * 
+     */
+    public Optional<AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions> discoverOptions() {
+        return Optional.ofNullable(this.discoverOptions);
+    }
     public Optional<AiSearchInstanceSourceParamsWebCrawlerParseOptions> parseOptions() {
         return Optional.ofNullable(this.parseOptions);
     }
     /**
-     * @return Available values: &#34;sitemap&#34;, &#34;feed-rss&#34;, &#34;crawl&#34;.
+     * @return How URLs are discovered. &#39;sitemap&#39; reads XML sitemaps; &#39;discover&#39; follows links recursively and requires the source to be a Verified zone on this account.
+     * Available values: &#34;sitemap&#34;, &#34;discover&#34;.
      * 
      */
     public Optional<String> parseType() {
@@ -45,17 +60,25 @@ public final class AiSearchInstanceSourceParamsWebCrawler {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions discoverOptions;
         private @Nullable AiSearchInstanceSourceParamsWebCrawlerParseOptions parseOptions;
         private @Nullable String parseType;
         private @Nullable AiSearchInstanceSourceParamsWebCrawlerStoreOptions storeOptions;
         public Builder() {}
         public Builder(AiSearchInstanceSourceParamsWebCrawler defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.discoverOptions = defaults.discoverOptions;
     	      this.parseOptions = defaults.parseOptions;
     	      this.parseType = defaults.parseType;
     	      this.storeOptions = defaults.storeOptions;
         }
 
+        @CustomType.Setter
+        public Builder discoverOptions(@Nullable AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions discoverOptions) {
+
+            this.discoverOptions = discoverOptions;
+            return this;
+        }
         @CustomType.Setter
         public Builder parseOptions(@Nullable AiSearchInstanceSourceParamsWebCrawlerParseOptions parseOptions) {
 
@@ -76,6 +99,7 @@ public final class AiSearchInstanceSourceParamsWebCrawler {
         }
         public AiSearchInstanceSourceParamsWebCrawler build() {
             final var _resultValue = new AiSearchInstanceSourceParamsWebCrawler();
+            _resultValue.discoverOptions = discoverOptions;
             _resultValue.parseOptions = parseOptions;
             _resultValue.parseType = parseType;
             _resultValue.storeOptions = storeOptions;

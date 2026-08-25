@@ -47,6 +47,9 @@ class GetSecretsStoresResult:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
+        """
+        Account Identifier.
+        """
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -118,6 +121,7 @@ def get_secrets_stores(account_id: Optional[_builtins.str] = None,
     ```
 
 
+    :param _builtins.str account_id: Account Identifier.
     :param _builtins.str direction: Direction to sort objects.
            Available values: "asc", "desc".
     :param _builtins.int max_items: Max items to fetch, default: 1000
@@ -159,6 +163,7 @@ def get_secrets_stores_output(account_id: pulumi.Input[Optional[_builtins.str]] 
     ```
 
 
+    :param _builtins.str account_id: Account Identifier.
     :param _builtins.str direction: Direction to sort objects.
            Available values: "asc", "desc".
     :param _builtins.int max_items: Max items to fetch, default: 1000

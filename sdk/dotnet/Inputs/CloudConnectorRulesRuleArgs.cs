@@ -32,7 +32,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Cloud Provider type
-        /// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage".
+        /// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage", "OciStorage".
         /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }

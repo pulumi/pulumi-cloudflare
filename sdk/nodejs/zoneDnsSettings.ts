@@ -90,7 +90,7 @@ export class ZoneDnsSettings extends pulumi.CustomResource {
     /**
      * Settings for this internal zone.
      */
-    declare public readonly internalDns: pulumi.Output<outputs.ZoneDnsSettingsInternalDns | undefined>;
+    declare public readonly internalDns: pulumi.Output<outputs.ZoneDnsSettingsInternalDns>;
     /**
      * Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
      */
@@ -98,7 +98,7 @@ export class ZoneDnsSettings extends pulumi.CustomResource {
     /**
      * Settings determining the nameservers through which the zone should be available.
      */
-    declare public readonly nameservers: pulumi.Output<outputs.ZoneDnsSettingsNameservers | undefined>;
+    declare public readonly nameservers: pulumi.Output<outputs.ZoneDnsSettingsNameservers>;
     /**
      * The time to live (TTL) of the zone's nameserver (NS) records.
      */
@@ -110,7 +110,7 @@ export class ZoneDnsSettings extends pulumi.CustomResource {
     /**
      * Components of the zone's SOA record.
      */
-    declare public readonly soa: pulumi.Output<outputs.ZoneDnsSettingsSoa | undefined>;
+    declare public readonly soa: pulumi.Output<outputs.ZoneDnsSettingsSoa>;
     /**
      * Identifier.
      */

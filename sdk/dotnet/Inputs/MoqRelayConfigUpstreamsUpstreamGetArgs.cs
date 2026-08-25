@@ -13,7 +13,9 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class MoqRelayConfigUpstreamsUpstreamGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Upstream MOQT server publisher URL.
+        /// Upstream MOQT server publisher URL. Must be an absolute URL with a
+        /// host and a scheme the relay can dial: moqt:// (raw QUIC) or https://
+        /// (WebTransport). Validated on update (PUT); rejected with 21013.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

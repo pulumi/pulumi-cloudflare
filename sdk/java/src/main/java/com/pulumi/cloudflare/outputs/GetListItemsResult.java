@@ -29,7 +29,7 @@ public final class GetListItemsResult {
      */
     private String createdOn;
     /**
-     * @return Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+     * @return Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      * 
      */
     private GetListItemsResultHostname hostname;
@@ -77,7 +77,7 @@ public final class GetListItemsResult {
         return this.createdOn;
     }
     /**
-     * @return Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+     * @return Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      * 
      */
     public GetListItemsResultHostname hostname() {

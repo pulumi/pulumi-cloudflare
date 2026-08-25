@@ -104,8 +104,10 @@ class _ShareRecipientState:
         Input properties used for looking up and filtering ShareRecipient resources.
 
         :param pulumi.Input[_builtins.str] account_id: Account identifier.
-        :param pulumi.Input[_builtins.str] association_status: Share Recipient association status.
-               Available values: "associating", "associated", "disassociating", "disassociated".
+        :param pulumi.Input[_builtins.str] association_status: The current state of the recipient relative to the share. The
+               `desired_association_status` (not exposed in the response) tracks the
+               target state set by the API; the background reconciliation workflow
+               drives `current_association_status` toward it.
         :param pulumi.Input[_builtins.str] created: When the share was created.
         :param pulumi.Input[_builtins.str] modified: When the share was modified.
         :param pulumi.Input[_builtins.str] organization_id: Organization identifier.
@@ -145,8 +147,10 @@ class _ShareRecipientState:
     @pulumi.getter(name="associationStatus")
     def association_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Share Recipient association status.
-        Available values: "associating", "associated", "disassociating", "disassociated".
+        The current state of the recipient relative to the share. The
+        `desired_association_status` (not exposed in the response) tracks the
+        target state set by the API; the background reconciliation workflow
+        drives `current_association_status` toward it.
         """
         return pulumi.get(self, "association_status")
 
@@ -356,8 +360,10 @@ class ShareRecipient(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier.
-        :param pulumi.Input[_builtins.str] association_status: Share Recipient association status.
-               Available values: "associating", "associated", "disassociating", "disassociated".
+        :param pulumi.Input[_builtins.str] association_status: The current state of the recipient relative to the share. The
+               `desired_association_status` (not exposed in the response) tracks the
+               target state set by the API; the background reconciliation workflow
+               drives `current_association_status` toward it.
         :param pulumi.Input[_builtins.str] created: When the share was created.
         :param pulumi.Input[_builtins.str] modified: When the share was modified.
         :param pulumi.Input[_builtins.str] organization_id: Organization identifier.
@@ -390,8 +396,10 @@ class ShareRecipient(pulumi.CustomResource):
     @pulumi.getter(name="associationStatus")
     def association_status(self) -> pulumi.Output[_builtins.str]:
         """
-        Share Recipient association status.
-        Available values: "associating", "associated", "disassociating", "disassociated".
+        The current state of the recipient relative to the share. The
+        `desired_association_status` (not exposed in the response) tracks the
+        target state set by the API; the background reconciliation workflow
+        drives `current_association_status` toward it.
         """
         return pulumi.get(self, "association_status")
 

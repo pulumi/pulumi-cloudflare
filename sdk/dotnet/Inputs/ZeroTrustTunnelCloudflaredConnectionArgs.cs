@@ -37,12 +37,6 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `True`, the connection has disconnected but is still being tracked. If `False`, the connection is actively serving traffic.
-        /// </summary>
-        [Input("isPendingReconnect")]
-        public Input<bool>? IsPendingReconnect { get; set; }
-
-        /// <summary>
         /// Timestamp of when the connection was established.
         /// </summary>
         [Input("openedAt")]

@@ -63,7 +63,7 @@ export interface AccessApplicationDestination {
      */
     portRange?: pulumi.Input<string | undefined>;
     /**
-     * Available values: "public", "private".
+     * Available values: "public", "private", "via*mcp*server*portal", "worker", "preview*worker", "all*workers", "all*preview_workers".
      */
     type?: pulumi.Input<string | undefined>;
     /**
@@ -74,6 +74,10 @@ export interface AccessApplicationDestination {
      * The VNET ID to match the destination. When omitted, all VNETs will match.
      */
     vnetId?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the Cloudflare Worker to protect with Access. Required when type is `worker` or `previewWorker`.
+     */
+    workerId?: pulumi.Input<string | undefined>;
 }
 
 export interface AccessApplicationFooterLink {
@@ -1271,6 +1275,21 @@ export interface AccessApplicationTargetCriteria {
     targetAttributes: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
 }
 
+export interface AccessCustomPageWarning {
+    /**
+     * Human-readable description of the finding.
+     */
+    message?: pulumi.Input<string | undefined>;
+    /**
+     * Optional pointer to the part of the template the finding refers to.
+     */
+    ref?: pulumi.Input<string | undefined>;
+    /**
+     * The validation tier that produced the finding (e.g. html, liquid).
+     */
+    tier?: pulumi.Input<string | undefined>;
+}
+
 export interface AccessGroupExclude {
     /**
      * An empty object which matches on all service tokens.
@@ -2285,7 +2304,7 @@ export interface AccessOrganizationLoginDesign {
 
 export interface AccessOrganizationMfaConfig {
     /**
-     * Lists the MFA methods that users can authenticate with. `sshPivKey` is only relevant for infrastructure applications.
+     * Lists the MFA methods that users can authenticate with. The `pivKey` and `sshFido2Key` values are supported only for infrastructure applications.
      */
     allowedAuthenticators?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -3885,11 +3904,11 @@ export interface AiSearchInstanceRetrievalOptionsBoostBy {
 
 export interface AiSearchInstanceSourceParams {
     /**
-     * List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+     * List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.
      */
     excludeItems?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+     * List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.
      */
     includeItems?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     prefix?: pulumi.Input<string | undefined>;
@@ -3898,12 +3917,45 @@ export interface AiSearchInstanceSourceParams {
 }
 
 export interface AiSearchInstanceSourceParamsWebCrawler {
+    /**
+     * Options for parse*type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.
+     */
+    discoverOptions?: pulumi.Input<inputs.AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions | undefined>;
     parseOptions?: pulumi.Input<inputs.AiSearchInstanceSourceParamsWebCrawlerParseOptions | undefined>;
     /**
-     * Available values: "sitemap", "feed-rss", "crawl".
+     * How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.
+     * Available values: "sitemap", "discover".
      */
     parseType?: pulumi.Input<string | undefined>;
     storeOptions?: pulumi.Input<inputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptions | undefined>;
+}
+
+export interface AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions {
+    /**
+     * Maximum link-follow depth from the seed URL.
+     */
+    depth?: pulumi.Input<number | undefined>;
+    /**
+     * Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.
+     */
+    includeExternalLinks?: pulumi.Input<boolean | undefined>;
+    /**
+     * Follow links to subdomains of the source host.
+     */
+    includeSubdomains?: pulumi.Input<boolean | undefined>;
+    /**
+     * Maximum number of pages to crawl (1-100000).
+     */
+    limit?: pulumi.Input<number | undefined>;
+    /**
+     * Maximum content age in seconds to accept (0–604800).
+     */
+    maxAge?: pulumi.Input<number | undefined>;
+    /**
+     * Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both.
+     * Available values: "all", "sitemaps", "links".
+     */
+    source?: pulumi.Input<string | undefined>;
 }
 
 export interface AiSearchInstanceSourceParamsWebCrawlerParseOptions {
@@ -3941,6 +3993,58 @@ export interface AiSearchInstanceSourceParamsWebCrawlerStoreOptions {
      * Available values: "r2".
      */
     storageType?: pulumi.Input<string | undefined>;
+}
+
+export interface AiSearchNamespacePublicEndpointParams {
+    authorizedHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    chatCompletionsEndpoint?: pulumi.Input<inputs.AiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint | undefined>;
+    /**
+     * Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
+     */
+    customDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+     */
+    defaultDomainEnabled?: pulumi.Input<boolean | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.
+     */
+    instancesAlloweds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    mcp?: pulumi.Input<inputs.AiSearchNamespacePublicEndpointParamsMcp | undefined>;
+    rateLimit?: pulumi.Input<inputs.AiSearchNamespacePublicEndpointParamsRateLimit | undefined>;
+    searchEndpoint?: pulumi.Input<inputs.AiSearchNamespacePublicEndpointParamsSearchEndpoint | undefined>;
+}
+
+export interface AiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint {
+    /**
+     * Disable chat completions endpoint for this public endpoint
+     */
+    disabled?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AiSearchNamespacePublicEndpointParamsMcp {
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * Disable MCP endpoint for this public endpoint
+     */
+    disabled?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AiSearchNamespacePublicEndpointParamsRateLimit {
+    periodMs?: pulumi.Input<number | undefined>;
+    requests?: pulumi.Input<number | undefined>;
+    /**
+     * Available values: "fixed", "sliding".
+     */
+    technique?: pulumi.Input<string | undefined>;
+}
+
+export interface AiSearchNamespacePublicEndpointParamsSearchEndpoint {
+    /**
+     * Disable search endpoint for this public endpoint
+     */
+    disabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ApiShieldAuthIdCharacteristic {
@@ -4440,7 +4544,7 @@ export interface CloudConnectorRulesRule {
     parameters?: pulumi.Input<inputs.CloudConnectorRulesRuleParameters | undefined>;
     /**
      * Cloud Provider type
-     * Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage".
+     * Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage", "ociStorage".
      */
     provider?: pulumi.Input<string | undefined>;
 }
@@ -7134,7 +7238,8 @@ export interface GetMoqRelayFilter {
      */
     createdBefore?: string;
     /**
-     * Maximum number of relays to return per page.
+     * Maximum number of relays to return per page. Values above the maximum are
+     * clamped to it rather than rejected.
      */
     perPage?: number;
 }
@@ -7158,7 +7263,8 @@ export interface GetMoqRelayFilterArgs {
      */
     createdBefore?: pulumi.Input<string | undefined>;
     /**
-     * Maximum number of relays to return per page.
+     * Maximum number of relays to return per page. Values above the maximum are
+     * clamped to it rather than rejected.
      */
     perPage?: pulumi.Input<number | undefined>;
 }
@@ -8998,39 +9104,6 @@ export interface ImageVariantOptions {
     width: pulumi.Input<number>;
 }
 
-export interface ImageVariantVariant {
-    id?: pulumi.Input<string | undefined>;
-    /**
-     * Indicates whether the variant can access an image without a signature, regardless of image access control.
-     */
-    neverRequireSignedUrls?: pulumi.Input<boolean | undefined>;
-    /**
-     * Allows you to define image resizing sizes for different use cases.
-     */
-    options?: pulumi.Input<inputs.ImageVariantVariantOptions | undefined>;
-}
-
-export interface ImageVariantVariantOptions {
-    /**
-     * The fit property describes how the width and height dimensions should be interpreted.
-     * Available values: "scale-down", "contain", "cover", "crop", "pad".
-     */
-    fit?: pulumi.Input<string | undefined>;
-    /**
-     * Maximum height in image pixels.
-     */
-    height?: pulumi.Input<number | undefined>;
-    /**
-     * What EXIF data should be preserved in the output image.
-     * Available values: "keep", "copyright", "none".
-     */
-    metadata?: pulumi.Input<string | undefined>;
-    /**
-     * Maximum width in image pixels.
-     */
-    width?: pulumi.Input<number | undefined>;
-}
-
 export interface KeylessCertificateTunnel {
     /**
      * Private IP of the Key Server Host.
@@ -9067,7 +9140,7 @@ export interface ListItem {
 
 export interface ListItemHostname {
     /**
-     * Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+     * Only applies to wildcard hostnames (e.g., *.example.com). When true (default), the rule blocks only subdomains. When false, the rule blocks both the root domain and subdomains.
      */
     excludeExactHostname?: pulumi.Input<boolean | undefined>;
     urlHostname: pulumi.Input<string>;
@@ -9966,7 +10039,9 @@ export interface MoqRelayConfigUpstreams {
 
 export interface MoqRelayConfigUpstreamsUpstream {
     /**
-     * Upstream MOQT server publisher URL.
+     * Upstream MOQT server publisher URL. Must be an absolute URL with a
+     * host and a scheme the relay can dial: moqt:// (raw QUIC) or https://
+     * (WebTransport). Validated on update (PUT); rejected with 21013.
      */
     url?: pulumi.Input<string | undefined>;
 }
@@ -10374,10 +10449,6 @@ export interface ObservatoryScheduledTestTestRegion {
 
 export interface OrganizationMeta {
     /**
-     * Enable features for Organizations.
-     */
-    flags?: pulumi.Input<inputs.OrganizationMetaFlags | undefined>;
-    /**
      * Ordered chain of organization tags from the root organization down to
      * (and including) this organization itself. Root organizations return a
      * single-element array containing their own tag; sub-organizations return
@@ -10387,13 +10458,19 @@ export interface OrganizationMeta {
      */
     hierarchyTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     managedBy?: pulumi.Input<string | undefined>;
+    /**
+     * Enable features for Organizations.
+     */
+    tenantFlags?: pulumi.Input<inputs.OrganizationMetaTenantFlags | undefined>;
 }
 
-export interface OrganizationMetaFlags {
+export interface OrganizationMetaTenantFlags {
     accountCreation?: pulumi.Input<string | undefined>;
     accountDeletion?: pulumi.Input<string | undefined>;
     accountMigration?: pulumi.Input<string | undefined>;
     accountMobility?: pulumi.Input<string | undefined>;
+    enterpriseCapability?: pulumi.Input<string | undefined>;
+    memberManagement?: pulumi.Input<string | undefined>;
     subOrgCreation?: pulumi.Input<string | undefined>;
 }
 
@@ -11783,6 +11860,31 @@ export interface PipelineTable {
     version?: pulumi.Input<number | undefined>;
 }
 
+export interface PrecursorEnforcementRule {
+    /**
+     * An informative description of the rule.
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the rule is active.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * The filter expression that determines which requests the rule matches.
+     */
+    expression: pulumi.Input<string>;
+    /**
+     * The read-only identifier that Cloudflare assigns to the rule.
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * The override mode Precursor applies to requests matching an enforcement
+     * rule. Unlike `defaultMode`, this cannot be `off`.
+     * Available values: "min-friction", "max-security".
+     */
+    mode: pulumi.Input<string>;
+}
+
 export interface QueueConsumer {
     /**
      * A Resource identifier.
@@ -12050,7 +12152,7 @@ export interface R2BucketSippySource {
      */
     accessKeyId?: pulumi.Input<string | undefined>;
     /**
-     * Access key for the Azure Storage account. Mutually exclusive with `sasToken`.
+     * Access key for the Azure Storage account. Mutually exclusive with sasToken.
      */
     accountKey?: pulumi.Input<string | undefined>;
     /**
@@ -12086,7 +12188,7 @@ export interface R2BucketSippySource {
      */
     region?: pulumi.Input<string | undefined>;
     /**
-     * Shared Access Signature token for the Azure Storage account. Mutually exclusive with `accountKey`.
+     * Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
      */
     sasToken?: pulumi.Input<string | undefined>;
     /**
@@ -14979,10 +15081,6 @@ export interface TunnelConnection {
      */
     id?: pulumi.Input<string | undefined>;
     /**
-     * Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
-     */
-    isPendingReconnect?: pulumi.Input<boolean | undefined>;
-    /**
      * Timestamp of when the connection was established.
      */
     openedAt?: pulumi.Input<string | undefined>;
@@ -15907,9 +16005,17 @@ export interface WorkerSubdomain {
      */
     enabled?: pulumi.Input<boolean | undefined>;
     /**
+     * Prepend a version or preview prefix to this host suffix to form the *.workers.dev [preview URL](https://developers.cloudflare.com/workers/configuration/previews/) the Worker would serve on once previews are enabled, e.g. `https://<prefix>-my-worker.my-subdomain.workers.dev`. Present whenever the account owns a workers.dev subdomain, regardless of whether `previewsEnabled` is true, so presence does not imply preview URLs are currently live. Absent only when the account owns no workers.dev subdomain.
+     */
+    previewUrlSuffix?: pulumi.Input<string | undefined>;
+    /**
      * Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.
      */
     previewsEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * The address the Worker would serve on once its *.workers.dev subdomain is enabled. Present whenever the account owns a workers.dev subdomain, regardless of whether `enabled` is true, so presence does not imply the Worker is currently live at this URL. Absent only when the account owns no workers.dev subdomain.
+     */
+    url?: pulumi.Input<string | undefined>;
 }
 
 export interface WorkerTailConsumer {
@@ -16127,7 +16233,7 @@ export interface WorkerVersionBinding {
     tunnelId?: pulumi.Input<string | undefined>;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "ai*search", "ai*search*namespace", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+     * Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
      */
     type: pulumi.Input<string>;
     /**
@@ -17043,27 +17149,63 @@ export interface WorkflowSchedule {
 }
 
 export interface ZeroTrustAccessAiControlsMcpPortalServer {
+    /**
+     * Disable this server by default for clients connecting through the portal.
+     */
     defaultDisabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Use end-user OAuth credentials when connecting this server to the portal.
+     */
     onBehalf?: pulumi.Input<boolean | undefined>;
     /**
-     * server id
+     * Unique identifier for the MCP server.
      */
     serverId: pulumi.Input<string>;
+    /**
+     * Portal-specific prompt overrides.
+     */
     updatedPrompts?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt>[] | undefined>;
+    /**
+     * Portal-specific tool overrides.
+     */
     updatedTools?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpPortalServerUpdatedTool>[] | undefined>;
 }
 
 export interface ZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt {
+    /**
+     * Custom name exposed for the capability.
+     */
     alias?: pulumi.Input<string | undefined>;
+    /**
+     * Custom description exposed for the capability.
+     */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the capability is available through the MCP server.
+     */
     enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Name of the tool or prompt capability to override.
+     */
     name: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessAiControlsMcpPortalServerUpdatedTool {
+    /**
+     * Custom name exposed for the capability.
+     */
     alias?: pulumi.Input<string | undefined>;
+    /**
+     * Custom description exposed for the capability.
+     */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the capability is available through the MCP server.
+     */
     enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Name of the tool or prompt capability to override.
+     */
     name: pulumi.Input<string>;
 }
 
@@ -17117,16 +17259,40 @@ export interface ZeroTrustAccessAiControlsMcpServerErrorDetails {
 }
 
 export interface ZeroTrustAccessAiControlsMcpServerUpdatedPrompt {
+    /**
+     * Custom name exposed for the capability.
+     */
     alias?: pulumi.Input<string | undefined>;
+    /**
+     * Custom description exposed for the capability.
+     */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the capability is available through the MCP server.
+     */
     enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Name of the tool or prompt capability to override.
+     */
     name: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessAiControlsMcpServerUpdatedTool {
+    /**
+     * Custom name exposed for the capability.
+     */
     alias?: pulumi.Input<string | undefined>;
+    /**
+     * Custom description exposed for the capability.
+     */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the capability is available through the MCP server.
+     */
     enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Name of the tool or prompt capability to override.
+     */
     name: pulumi.Input<string>;
 }
 
@@ -17188,7 +17354,7 @@ export interface ZeroTrustAccessApplicationDestination {
      */
     portRange?: pulumi.Input<string | undefined>;
     /**
-     * Available values: "public", "private".
+     * Available values: "public", "private", "via*mcp*server*portal", "worker", "preview*worker", "all*workers", "all*preview_workers".
      */
     type?: pulumi.Input<string | undefined>;
     /**
@@ -17199,6 +17365,10 @@ export interface ZeroTrustAccessApplicationDestination {
      * The VNET ID to match the destination. When omitted, all VNETs will match.
      */
     vnetId?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the Cloudflare Worker to protect with Access. Required when type is `worker` or `previewWorker`.
+     */
+    workerId?: pulumi.Input<string | undefined>;
 }
 
 export interface ZeroTrustAccessApplicationFooterLink {
@@ -18394,6 +18564,21 @@ export interface ZeroTrustAccessApplicationTargetCriteria {
      * Contains a map of target attribute keys to target attribute values.
      */
     targetAttributes: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
+}
+
+export interface ZeroTrustAccessCustomPageWarning {
+    /**
+     * Human-readable description of the finding.
+     */
+    message?: pulumi.Input<string | undefined>;
+    /**
+     * Optional pointer to the part of the template the finding refers to.
+     */
+    ref?: pulumi.Input<string | undefined>;
+    /**
+     * The validation tier that produced the finding (e.g. html, liquid).
+     */
+    tier?: pulumi.Input<string | undefined>;
 }
 
 export interface ZeroTrustAccessGroupExclude {
@@ -21981,7 +22166,7 @@ export interface ZeroTrustOrganizationLoginDesign {
 
 export interface ZeroTrustOrganizationMfaConfig {
     /**
-     * Lists the MFA methods that users can authenticate with. `sshPivKey` is only relevant for infrastructure applications.
+     * Lists the MFA methods that users can authenticate with. The `pivKey` and `sshFido2Key` values are supported only for infrastructure applications.
      */
     allowedAuthenticators?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -22229,10 +22414,6 @@ export interface ZeroTrustTunnelCloudflaredConnection {
      */
     id?: pulumi.Input<string | undefined>;
     /**
-     * Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
-     */
-    isPendingReconnect?: pulumi.Input<boolean | undefined>;
-    /**
      * Timestamp of when the connection was established.
      */
     openedAt?: pulumi.Input<string | undefined>;
@@ -22292,10 +22473,6 @@ export interface ZeroTrustTunnelWarpConnectorConnection {
      * UUID of the Cloudflare Tunnel connection.
      */
     id?: pulumi.Input<string | undefined>;
-    /**
-     * Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
-     */
-    isPendingReconnect?: pulumi.Input<boolean | undefined>;
     /**
      * Timestamp of when the connection was established.
      */

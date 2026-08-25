@@ -28,7 +28,7 @@ class GetAiGatewayResult:
     """
     A collection of values returned by getAiGateway.
     """
-    def __init__(__self__, account_id=None, authentication=None, cache_invalidate_on_update=None, cache_ttl=None, collect_logs=None, created_at=None, dlp=None, filter=None, guardrails=None, id=None, is_default=None, log_management=None, log_management_strategy=None, logpush=None, logpush_public_key=None, modified_at=None, otels=None, rate_limiting_interval=None, rate_limiting_limit=None, rate_limiting_technique=None, retry_backoff=None, retry_delay=None, retry_max_attempts=None, spend_limits=None, store_id=None, stripe=None, workers_ai_billing_mode=None, zdr=None):
+    def __init__(__self__, account_id=None, authentication=None, cache_invalidate_on_update=None, cache_ttl=None, collect_logs=None, created_at=None, dlp=None, filter=None, guardrails=None, id=None, is_default=None, log_classification=None, log_management=None, log_management_strategy=None, logpush=None, logpush_public_key=None, modified_at=None, otels=None, rate_limiting_interval=None, rate_limiting_limit=None, rate_limiting_technique=None, retry_backoff=None, retry_delay=None, retry_max_attempts=None, spend_limits=None, store_id=None, stripe=None, workers_ai_billing_mode=None, zdr=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -62,6 +62,9 @@ class GetAiGatewayResult:
         if is_default and not isinstance(is_default, bool):
             raise TypeError("Expected argument 'is_default' to be a bool")
         pulumi.set(__self__, "is_default", is_default)
+        if log_classification and not isinstance(log_classification, bool):
+            raise TypeError("Expected argument 'log_classification' to be a bool")
+        pulumi.set(__self__, "log_classification", log_classification)
         if log_management and not isinstance(log_management, int):
             raise TypeError("Expected argument 'log_management' to be a int")
         pulumi.set(__self__, "log_management", log_management)
@@ -173,6 +176,11 @@ class GetAiGatewayResult:
         return pulumi.get(self, "is_default")
 
     @_builtins.property
+    @pulumi.getter(name="logClassification")
+    def log_classification(self) -> _builtins.bool:
+        return pulumi.get(self, "log_classification")
+
+    @_builtins.property
     @pulumi.getter(name="logManagement")
     def log_management(self) -> _builtins.int:
         return pulumi.get(self, "log_management")
@@ -267,8 +275,8 @@ class GetAiGatewayResult:
     @pulumi.getter(name="workersAiBillingMode")
     def workers_ai_billing_mode(self) -> _builtins.str:
         """
-        Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-        Available values: "postpaid".
+        Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+        Available values: "postpaid", "unified".
         """
         return pulumi.get(self, "workers_ai_billing_mode")
 
@@ -295,6 +303,7 @@ class AwaitableGetAiGatewayResult(GetAiGatewayResult):
             guardrails=self.guardrails,
             id=self.id,
             is_default=self.is_default,
+            log_classification=self.log_classification,
             log_management=self.log_management,
             log_management_strategy=self.log_management_strategy,
             logpush=self.logpush,
@@ -356,6 +365,7 @@ def get_ai_gateway(account_id: Optional[_builtins.str] = None,
         guardrails=pulumi.get(__ret__, 'guardrails'),
         id=pulumi.get(__ret__, 'id'),
         is_default=pulumi.get(__ret__, 'is_default'),
+        log_classification=pulumi.get(__ret__, 'log_classification'),
         log_management=pulumi.get(__ret__, 'log_management'),
         log_management_strategy=pulumi.get(__ret__, 'log_management_strategy'),
         logpush=pulumi.get(__ret__, 'logpush'),
@@ -414,6 +424,7 @@ def get_ai_gateway_output(account_id: pulumi.Input[Optional[Optional[_builtins.s
         guardrails=pulumi.get(__response__, 'guardrails'),
         id=pulumi.get(__response__, 'id'),
         is_default=pulumi.get(__response__, 'is_default'),
+        log_classification=pulumi.get(__response__, 'log_classification'),
         log_management=pulumi.get(__response__, 'log_management'),
         log_management_strategy=pulumi.get(__response__, 'log_management_strategy'),
         logpush=pulumi.get(__response__, 'logpush'),

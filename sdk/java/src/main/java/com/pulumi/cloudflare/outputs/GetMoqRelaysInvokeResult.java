@@ -47,10 +47,11 @@ public final class GetMoqRelaysInvokeResult {
      */
     private @Nullable Integer maxItems;
     /**
-     * @return Maximum number of relays to return per page.
+     * @return Maximum number of relays to return per page. Values above the maximum are
+     * clamped to it rather than rejected.
      * 
      */
-    private @Nullable Integer perPage;
+    private Integer perPage;
     /**
      * @return The items returned by the data source
      * 
@@ -99,11 +100,12 @@ public final class GetMoqRelaysInvokeResult {
         return Optional.ofNullable(this.maxItems);
     }
     /**
-     * @return Maximum number of relays to return per page.
+     * @return Maximum number of relays to return per page. Values above the maximum are
+     * clamped to it rather than rejected.
      * 
      */
-    public Optional<Integer> perPage() {
-        return Optional.ofNullable(this.perPage);
+    public Integer perPage() {
+        return this.perPage;
     }
     /**
      * @return The items returned by the data source
@@ -127,7 +129,7 @@ public final class GetMoqRelaysInvokeResult {
         private @Nullable String createdAfter;
         private @Nullable String createdBefore;
         private @Nullable Integer maxItems;
-        private @Nullable Integer perPage;
+        private Integer perPage;
         private List<GetMoqRelaysResult> results;
         public Builder() {}
         public Builder(GetMoqRelaysInvokeResult defaults) {
@@ -176,8 +178,10 @@ public final class GetMoqRelaysInvokeResult {
             return this;
         }
         @CustomType.Setter
-        public Builder perPage(@Nullable Integer perPage) {
-
+        public Builder perPage(Integer perPage) {
+            if (perPage == null) {
+              throw new MissingRequiredPropertyException("GetMoqRelaysInvokeResult", "perPage");
+            }
             this.perPage = perPage;
             return this;
         }

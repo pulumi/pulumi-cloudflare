@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * const exampleZeroTrustResourceLibraryCategory = cloudflare.getZeroTrustResourceLibraryCategory({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     id: "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
+ *     id: 12,
  * });
  * ```
  */
@@ -33,7 +33,7 @@ export interface GetZeroTrustResourceLibraryCategoryArgs {
     /**
      * The ID of this resource.
      */
-    id: string;
+    id: number;
 }
 
 /**
@@ -52,7 +52,7 @@ export interface GetZeroTrustResourceLibraryCategoryResult {
     /**
      * The ID of this resource.
      */
-    readonly id: string;
+    readonly id: number;
     /**
      * Returns the category name.
      */
@@ -67,7 +67,7 @@ export interface GetZeroTrustResourceLibraryCategoryResult {
  *
  * const exampleZeroTrustResourceLibraryCategory = cloudflare.getZeroTrustResourceLibraryCategory({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     id: "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
+ *     id: 12,
  * });
  * ```
  */
@@ -87,5 +87,5 @@ export interface GetZeroTrustResourceLibraryCategoryOutputArgs {
     /**
      * The ID of this resource.
      */
-    id: pulumi.Input<string>;
+    id: pulumi.Input<number>;
 }

@@ -28,7 +28,7 @@ class GetZeroTrustAccessAiControlsMcpServerResult:
     """
     A collection of values returned by getZeroTrustAccessAiControlsMcpServer.
     """
-    def __init__(__self__, account_id=None, auth_config_summary=None, auth_type=None, created_at=None, created_by=None, description=None, error=None, error_details=None, filter=None, hostname=None, id=None, is_shared_oauth_callback_enabled=None, last_successful_sync=None, last_synced=None, modified_at=None, modified_by=None, name=None, prompts=None, secure_web_gateway=None, status=None, tools=None, updated_prompts=None, updated_tools=None):
+    def __init__(__self__, account_id=None, auth_config_summary=None, auth_type=None, authentication_status=None, created_at=None, created_by=None, description=None, error=None, error_details=None, filter=None, hostname=None, id=None, is_shared_oauth_callback_enabled=None, last_successful_sync=None, last_synced=None, modified_at=None, modified_by=None, name=None, prompts=None, secure_web_gateway=None, status=None, tools=None, updated_prompts=None, updated_tools=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -38,6 +38,9 @@ class GetZeroTrustAccessAiControlsMcpServerResult:
         if auth_type and not isinstance(auth_type, str):
             raise TypeError("Expected argument 'auth_type' to be a str")
         pulumi.set(__self__, "auth_type", auth_type)
+        if authentication_status and not isinstance(authentication_status, str):
+            raise TypeError("Expected argument 'authentication_status' to be a str")
+        pulumi.set(__self__, "authentication_status", authentication_status)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -116,9 +119,19 @@ class GetZeroTrustAccessAiControlsMcpServerResult:
     @pulumi.getter(name="authType")
     def auth_type(self) -> _builtins.str:
         """
+        Authentication method used to connect to the upstream MCP server.
         Available values: "oauth", "bearer", "unauthenticated".
         """
         return pulumi.get(self, "auth_type")
+
+    @_builtins.property
+    @pulumi.getter(name="authenticationStatus")
+    def authentication_status(self) -> _builtins.str:
+        """
+        Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
+        Available values: "not_required", "required", "connected", "stale", "manual".
+        """
+        return pulumi.get(self, "authentication_status")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
@@ -133,6 +146,9 @@ class GetZeroTrustAccessAiControlsMcpServerResult:
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
+        """
+        Optional description of the MCP server.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -153,13 +169,16 @@ class GetZeroTrustAccessAiControlsMcpServerResult:
     @_builtins.property
     @pulumi.getter
     def hostname(self) -> _builtins.str:
+        """
+        URL of the upstream MCP endpoint.
+        """
         return pulumi.get(self, "hostname")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        server id
+        Unique identifier for the MCP server.
         """
         return pulumi.get(self, "id")
 
@@ -194,6 +213,9 @@ class GetZeroTrustAccessAiControlsMcpServerResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        Display name for the MCP server.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -205,7 +227,7 @@ class GetZeroTrustAccessAiControlsMcpServerResult:
     @pulumi.getter(name="secureWebGateway")
     def secure_web_gateway(self) -> _builtins.bool:
         """
-        Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+        Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
         """
         return pulumi.get(self, "secure_web_gateway")
 
@@ -226,11 +248,17 @@ class GetZeroTrustAccessAiControlsMcpServerResult:
     @_builtins.property
     @pulumi.getter(name="updatedPrompts")
     def updated_prompts(self) -> Sequence['outputs.GetZeroTrustAccessAiControlsMcpServerUpdatedPromptResult']:
+        """
+        Server-wide prompt capability overrides.
+        """
         return pulumi.get(self, "updated_prompts")
 
     @_builtins.property
     @pulumi.getter(name="updatedTools")
     def updated_tools(self) -> Sequence['outputs.GetZeroTrustAccessAiControlsMcpServerUpdatedToolResult']:
+        """
+        Server-wide tool capability overrides.
+        """
         return pulumi.get(self, "updated_tools")
 
 
@@ -243,6 +271,7 @@ class AwaitableGetZeroTrustAccessAiControlsMcpServerResult(GetZeroTrustAccessAiC
             account_id=self.account_id,
             auth_config_summary=self.auth_config_summary,
             auth_type=self.auth_type,
+            authentication_status=self.authentication_status,
             created_at=self.created_at,
             created_by=self.created_by,
             description=self.description,
@@ -286,7 +315,7 @@ def get_zero_trust_access_ai_controls_mcp_server(account_id: Optional[_builtins.
     ```
 
 
-    :param _builtins.str id: server id
+    :param _builtins.str id: Unique identifier for the MCP server.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -299,6 +328,7 @@ def get_zero_trust_access_ai_controls_mcp_server(account_id: Optional[_builtins.
         account_id=pulumi.get(__ret__, 'account_id'),
         auth_config_summary=pulumi.get(__ret__, 'auth_config_summary'),
         auth_type=pulumi.get(__ret__, 'auth_type'),
+        authentication_status=pulumi.get(__ret__, 'authentication_status'),
         created_at=pulumi.get(__ret__, 'created_at'),
         created_by=pulumi.get(__ret__, 'created_by'),
         description=pulumi.get(__ret__, 'description'),
@@ -340,7 +370,7 @@ def get_zero_trust_access_ai_controls_mcp_server_output(account_id: pulumi.Input
     ```
 
 
-    :param _builtins.str id: server id
+    :param _builtins.str id: Unique identifier for the MCP server.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -352,6 +382,7 @@ def get_zero_trust_access_ai_controls_mcp_server_output(account_id: pulumi.Input
         account_id=pulumi.get(__response__, 'account_id'),
         auth_config_summary=pulumi.get(__response__, 'auth_config_summary'),
         auth_type=pulumi.get(__response__, 'auth_type'),
+        authentication_status=pulumi.get(__response__, 'authentication_status'),
         created_at=pulumi.get(__response__, 'created_at'),
         created_by=pulumi.get(__response__, 'created_by'),
         description=pulumi.get(__response__, 'description'),

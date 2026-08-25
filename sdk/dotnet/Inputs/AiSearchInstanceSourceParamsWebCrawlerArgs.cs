@@ -12,11 +12,18 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class AiSearchInstanceSourceParamsWebCrawlerArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Options for parse*type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.
+        /// </summary>
+        [Input("discoverOptions")]
+        public Input<Inputs.AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs>? DiscoverOptions { get; set; }
+
         [Input("parseOptions")]
         public Input<Inputs.AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs>? ParseOptions { get; set; }
 
         /// <summary>
-        /// Available values: "sitemap", "feed-rss", "crawl".
+        /// How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.
+        /// Available values: "sitemap", "discover".
         /// </summary>
         [Input("parseType")]
         public Input<string>? ParseType { get; set; }

@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustResourceLibraryApplication(ctx, &cloudflare.GetZeroTrustResourceLibraryApplicationArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-//				Id:        "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
+//				Id:        498,
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,7 +51,7 @@ func GetZeroTrustResourceLibraryApplication(ctx *pulumi.Context, args *GetZeroTr
 type GetZeroTrustResourceLibraryApplicationArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// The ID of this resource.
-	Id string `pulumi:"id"`
+	Id int `pulumi:"id"`
 }
 
 // A collection of values returned by getZeroTrustResourceLibraryApplication.
@@ -67,25 +67,25 @@ type GetZeroTrustResourceLibraryApplicationResult struct {
 	ApplicationType string `pulumi:"applicationType"`
 	// Returns the application type description.
 	ApplicationTypeDescription string `pulumi:"applicationTypeDescription"`
+	// Returns the category ID.
+	CategoryId int `pulumi:"categoryId"`
 	// Returns the application creation time.
 	CreatedAt string `pulumi:"createdAt"`
 	// GenAI score for the application. Returns -1 when no score is available.
 	GenAiScore float64 `pulumi:"genAiScore"`
-	// Returns the list of hostnames for the application.
+	// Hostnames matched by the application.
 	Hostnames []string `pulumi:"hostnames"`
 	// Returns the human readable ID.
 	HumanId string `pulumi:"humanId"`
 	// The ID of this resource.
-	Id string `pulumi:"id"`
-	// Returns the Intel API ID for the application.
-	IntelId int `pulumi:"intelId"`
-	// Returns the list of IP subnets for the application.
+	Id int `pulumi:"id"`
+	// IP subnets matched by the application.
 	IpSubnets []string `pulumi:"ipSubnets"`
 	// Returns the application name.
 	Name string `pulumi:"name"`
-	// Returns the list of port protocols for the application.
+	// Port and protocol pairs matched by the application.
 	PortProtocols []string `pulumi:"portProtocols"`
-	// Returns the list of support domains for the application.
+	// Support domains matched by the application.
 	SupportDomains []string `pulumi:"supportDomains"`
 	// Cloudflare products that support this application.
 	Supporteds []string `pulumi:"supporteds"`
@@ -108,7 +108,7 @@ func GetZeroTrustResourceLibraryApplicationOutput(ctx *pulumi.Context, args GetZ
 type GetZeroTrustResourceLibraryApplicationOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The ID of this resource.
-	Id pulumi.StringInput `pulumi:"id"`
+	Id pulumi.IntInput `pulumi:"id"`
 }
 
 func (GetZeroTrustResourceLibraryApplicationOutputArgs) ElementType() reflect.Type {
@@ -159,6 +159,11 @@ func (o GetZeroTrustResourceLibraryApplicationResultOutput) ApplicationTypeDescr
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) string { return v.ApplicationTypeDescription }).(pulumi.StringOutput)
 }
 
+// Returns the category ID.
+func (o GetZeroTrustResourceLibraryApplicationResultOutput) CategoryId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) int { return v.CategoryId }).(pulumi.IntOutput)
+}
+
 // Returns the application creation time.
 func (o GetZeroTrustResourceLibraryApplicationResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) string { return v.CreatedAt }).(pulumi.StringOutput)
@@ -169,7 +174,7 @@ func (o GetZeroTrustResourceLibraryApplicationResultOutput) GenAiScore() pulumi.
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) float64 { return v.GenAiScore }).(pulumi.Float64Output)
 }
 
-// Returns the list of hostnames for the application.
+// Hostnames matched by the application.
 func (o GetZeroTrustResourceLibraryApplicationResultOutput) Hostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
 }
@@ -180,16 +185,11 @@ func (o GetZeroTrustResourceLibraryApplicationResultOutput) HumanId() pulumi.Str
 }
 
 // The ID of this resource.
-func (o GetZeroTrustResourceLibraryApplicationResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetZeroTrustResourceLibraryApplicationResultOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) int { return v.Id }).(pulumi.IntOutput)
 }
 
-// Returns the Intel API ID for the application.
-func (o GetZeroTrustResourceLibraryApplicationResultOutput) IntelId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) int { return v.IntelId }).(pulumi.IntOutput)
-}
-
-// Returns the list of IP subnets for the application.
+// IP subnets matched by the application.
 func (o GetZeroTrustResourceLibraryApplicationResultOutput) IpSubnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) []string { return v.IpSubnets }).(pulumi.StringArrayOutput)
 }
@@ -199,12 +199,12 @@ func (o GetZeroTrustResourceLibraryApplicationResultOutput) Name() pulumi.String
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Returns the list of port protocols for the application.
+// Port and protocol pairs matched by the application.
 func (o GetZeroTrustResourceLibraryApplicationResultOutput) PortProtocols() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) []string { return v.PortProtocols }).(pulumi.StringArrayOutput)
 }
 
-// Returns the list of support domains for the application.
+// Support domains matched by the application.
 func (o GetZeroTrustResourceLibraryApplicationResultOutput) SupportDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) []string { return v.SupportDomains }).(pulumi.StringArrayOutput)
 }

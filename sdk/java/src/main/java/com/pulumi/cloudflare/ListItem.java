@@ -124,14 +124,14 @@ public class ListItem extends com.pulumi.resources.CustomResource {
         return this.createdOn;
     }
     /**
-     * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+     * Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      * 
      */
     @Export(name="hostname", refs={ListItemHostname.class}, tree="[0]")
     private Output</* @Nullable */ ListItemHostname> hostname;
 
     /**
-     * @return Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+     * @return Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      * 
      */
     public Output<Optional<ListItemHostname>> hostname() {

@@ -31,9 +31,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? CreatedBefore;
         /// <summary>
-        /// Maximum number of relays to return per page.
+        /// Maximum number of relays to return per page. Values above the maximum are
+        /// clamped to it rather than rejected.
         /// </summary>
-        public readonly int? PerPage;
+        public readonly int PerPage;
 
         [OutputConstructor]
         private GetMoqRelayFilterResult(
@@ -43,7 +44,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? createdBefore,
 
-            int? perPage)
+            int perPage)
         {
             Asc = asc;
             CreatedAfter = createdAfter;

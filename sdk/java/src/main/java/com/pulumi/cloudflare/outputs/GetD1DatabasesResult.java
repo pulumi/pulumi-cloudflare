@@ -22,7 +22,7 @@ public final class GetD1DatabasesResult {
     private String id;
     /**
      * @return Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-     * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
      * 
      */
     private String jurisdiction;
@@ -55,7 +55,7 @@ public final class GetD1DatabasesResult {
     }
     /**
      * @return Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-     * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
      * 
      */
     public String jurisdiction() {

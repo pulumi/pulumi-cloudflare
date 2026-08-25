@@ -33,16 +33,20 @@ public final class ShareRecipientState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Share Recipient association status.
-     * Available values: &#34;associating&#34;, &#34;associated&#34;, &#34;disassociating&#34;, &#34;disassociated&#34;.
+     * The current state of the recipient relative to the share. The
+     * `desiredAssociationStatus` (not exposed in the response) tracks the
+     * target state set by the API; the background reconciliation workflow
+     * drives `currentAssociationStatus` toward it.
      * 
      */
     @Import(name="associationStatus")
     private @Nullable Output<String> associationStatus;
 
     /**
-     * @return Share Recipient association status.
-     * Available values: &#34;associating&#34;, &#34;associated&#34;, &#34;disassociating&#34;, &#34;disassociated&#34;.
+     * @return The current state of the recipient relative to the share. The
+     * `desiredAssociationStatus` (not exposed in the response) tracks the
+     * target state set by the API; the background reconciliation workflow
+     * drives `currentAssociationStatus` toward it.
      * 
      */
     public Optional<Output<String>> associationStatus() {
@@ -184,8 +188,10 @@ public final class ShareRecipientState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param associationStatus Share Recipient association status.
-         * Available values: &#34;associating&#34;, &#34;associated&#34;, &#34;disassociating&#34;, &#34;disassociated&#34;.
+         * @param associationStatus The current state of the recipient relative to the share. The
+         * `desiredAssociationStatus` (not exposed in the response) tracks the
+         * target state set by the API; the background reconciliation workflow
+         * drives `currentAssociationStatus` toward it.
          * 
          * @return builder
          * 
@@ -196,8 +202,10 @@ public final class ShareRecipientState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param associationStatus Share Recipient association status.
-         * Available values: &#34;associating&#34;, &#34;associated&#34;, &#34;disassociating&#34;, &#34;disassociated&#34;.
+         * @param associationStatus The current state of the recipient relative to the share. The
+         * `desiredAssociationStatus` (not exposed in the response) tracks the
+         * target state set by the API; the background reconciliation workflow
+         * drives `currentAssociationStatus` toward it.
          * 
          * @return builder
          * 

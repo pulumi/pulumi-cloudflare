@@ -179,7 +179,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly Outputs.GetZeroTrustOrganizationMfaConfigResult MfaConfig;
         /// <summary>
-        /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+        /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
         /// </summary>
         public readonly bool MfaRequiredForAllApps;
         /// <summary>
@@ -202,6 +202,10 @@ namespace Pulumi.Cloudflare
         /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `Ns`, `Us` (or `µs`), `Ms`, `S`, `M`, `H`.
         /// </summary>
         public readonly string UserSeatExpirationInactiveTime;
+        /// <summary>
+        /// When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
+        /// </summary>
+        public readonly bool WarpAuthNonBrowser401;
         /// <summary>
         /// The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
         /// </summary>
@@ -245,6 +249,8 @@ namespace Pulumi.Cloudflare
 
             string userSeatExpirationInactiveTime,
 
+            bool warpAuthNonBrowser401,
+
             string warpAuthSessionDuration,
 
             string? zoneId)
@@ -265,6 +271,7 @@ namespace Pulumi.Cloudflare
             SessionDuration = sessionDuration;
             UiReadOnlyToggleReason = uiReadOnlyToggleReason;
             UserSeatExpirationInactiveTime = userSeatExpirationInactiveTime;
+            WarpAuthNonBrowser401 = warpAuthNonBrowser401;
             WarpAuthSessionDuration = warpAuthSessionDuration;
             ZoneId = zoneId;
         }

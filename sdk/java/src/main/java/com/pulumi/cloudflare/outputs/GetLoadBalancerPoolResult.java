@@ -49,6 +49,11 @@ public final class GetLoadBalancerPoolResult {
     private Boolean enabled;
     private @Nullable GetLoadBalancerPoolFilter filter;
     /**
+     * @return A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [&#34;regional&#34;, &#34;global&#34;]; any other combination is rejected. Null (the default) behaves like [&#34;local&#34;, &#34;global&#34;]. [&#34;regional&#34;, &#34;global&#34;] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+     * 
+     */
+    private List<String> healthSources;
+    /**
      * @return The ID of this resource.
      * 
      */
@@ -157,6 +162,13 @@ public final class GetLoadBalancerPoolResult {
     }
     public Optional<GetLoadBalancerPoolFilter> filter() {
         return Optional.ofNullable(this.filter);
+    }
+    /**
+     * @return A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [&#34;regional&#34;, &#34;global&#34;]; any other combination is rejected. Null (the default) behaves like [&#34;local&#34;, &#34;global&#34;]. [&#34;regional&#34;, &#34;global&#34;] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+     * 
+     */
+    public List<String> healthSources() {
+        return this.healthSources;
     }
     /**
      * @return The ID of this resource.
@@ -272,6 +284,7 @@ public final class GetLoadBalancerPoolResult {
         private String disabledAt;
         private Boolean enabled;
         private @Nullable GetLoadBalancerPoolFilter filter;
+        private List<String> healthSources;
         private String id;
         private Double latitude;
         private GetLoadBalancerPoolLoadShedding loadShedding;
@@ -297,6 +310,7 @@ public final class GetLoadBalancerPoolResult {
     	      this.disabledAt = defaults.disabledAt;
     	      this.enabled = defaults.enabled;
     	      this.filter = defaults.filter;
+    	      this.healthSources = defaults.healthSources;
     	      this.id = defaults.id;
     	      this.latitude = defaults.latitude;
     	      this.loadShedding = defaults.loadShedding;
@@ -368,6 +382,17 @@ public final class GetLoadBalancerPoolResult {
 
             this.filter = filter;
             return this;
+        }
+        @CustomType.Setter
+        public Builder healthSources(List<String> healthSources) {
+            if (healthSources == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerPoolResult", "healthSources");
+            }
+            this.healthSources = healthSources;
+            return this;
+        }
+        public Builder healthSources(String... healthSources) {
+            return healthSources(List.of(healthSources));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -502,6 +527,7 @@ public final class GetLoadBalancerPoolResult {
             _resultValue.disabledAt = disabledAt;
             _resultValue.enabled = enabled;
             _resultValue.filter = filter;
+            _resultValue.healthSources = healthSources;
             _resultValue.id = id;
             _resultValue.latitude = latitude;
             _resultValue.loadShedding = loadShedding;

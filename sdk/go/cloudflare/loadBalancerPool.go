@@ -106,6 +106,8 @@ type LoadBalancerPool struct {
 	DisabledAt pulumi.StringOutput `pulumi:"disabledAt"`
 	// Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+	HealthSources pulumi.StringArrayOutput `pulumi:"healthSources"`
 	// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
 	Latitude pulumi.Float64PtrOutput `pulumi:"latitude"`
 	// Configures load shedding policies and percentages for the pool.
@@ -183,6 +185,8 @@ type loadBalancerPoolState struct {
 	DisabledAt *string `pulumi:"disabledAt"`
 	// Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
 	Enabled *bool `pulumi:"enabled"`
+	// A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+	HealthSources []string `pulumi:"healthSources"`
 	// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
 	Latitude *float64 `pulumi:"latitude"`
 	// Configures load shedding policies and percentages for the pool.
@@ -222,6 +226,8 @@ type LoadBalancerPoolState struct {
 	DisabledAt pulumi.StringPtrInput
 	// Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
 	Enabled pulumi.BoolPtrInput
+	// A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+	HealthSources pulumi.StringArrayInput
 	// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
 	Latitude pulumi.Float64PtrInput
 	// Configures load shedding policies and percentages for the pool.
@@ -262,6 +268,8 @@ type loadBalancerPoolArgs struct {
 	Description *string `pulumi:"description"`
 	// Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
 	Enabled *bool `pulumi:"enabled"`
+	// A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+	HealthSources []string `pulumi:"healthSources"`
 	// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
 	Latitude *float64 `pulumi:"latitude"`
 	// Configures load shedding policies and percentages for the pool.
@@ -296,6 +304,8 @@ type LoadBalancerPoolArgs struct {
 	Description pulumi.StringPtrInput
 	// Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
 	Enabled pulumi.BoolPtrInput
+	// A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+	HealthSources pulumi.StringArrayInput
 	// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
 	Latitude pulumi.Float64PtrInput
 	// Configures load shedding policies and percentages for the pool.
@@ -434,6 +444,11 @@ func (o LoadBalancerPoolOutput) DisabledAt() pulumi.StringOutput {
 // Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
 func (o LoadBalancerPoolOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+func (o LoadBalancerPoolOutput) HealthSources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringArrayOutput { return v.HealthSources }).(pulumi.StringArrayOutput)
 }
 
 // The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.

@@ -175,7 +175,8 @@ def get_account_subscription(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_subscription = cloudflare.get_account_subscription(account_id="account_id")
+    example_account_subscription = cloudflare.get_account_subscription(account_id="account_id",
+        zone_id="zone_id")
     ```
 
 
@@ -214,7 +215,8 @@ def get_account_subscription_output(account_id: pulumi.Input[Optional[Optional[_
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_subscription = cloudflare.get_account_subscription(account_id="account_id")
+    example_account_subscription = cloudflare.get_account_subscription(account_id="account_id",
+        zone_id="zone_id")
     ```
 
 

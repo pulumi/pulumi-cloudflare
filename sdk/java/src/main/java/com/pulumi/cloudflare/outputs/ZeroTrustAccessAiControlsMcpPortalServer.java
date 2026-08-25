@@ -16,33 +16,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustAccessAiControlsMcpPortalServer {
+    /**
+     * @return Disable this server by default for clients connecting through the portal.
+     * 
+     */
     private @Nullable Boolean defaultDisabled;
+    /**
+     * @return Use end-user OAuth credentials when connecting this server to the portal.
+     * 
+     */
     private @Nullable Boolean onBehalf;
     /**
-     * @return server id
+     * @return Unique identifier for the MCP server.
      * 
      */
     private String serverId;
+    /**
+     * @return Portal-specific prompt overrides.
+     * 
+     */
     private @Nullable List<ZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt> updatedPrompts;
+    /**
+     * @return Portal-specific tool overrides.
+     * 
+     */
     private @Nullable List<ZeroTrustAccessAiControlsMcpPortalServerUpdatedTool> updatedTools;
 
     private ZeroTrustAccessAiControlsMcpPortalServer() {}
+    /**
+     * @return Disable this server by default for clients connecting through the portal.
+     * 
+     */
     public Optional<Boolean> defaultDisabled() {
         return Optional.ofNullable(this.defaultDisabled);
     }
+    /**
+     * @return Use end-user OAuth credentials when connecting this server to the portal.
+     * 
+     */
     public Optional<Boolean> onBehalf() {
         return Optional.ofNullable(this.onBehalf);
     }
     /**
-     * @return server id
+     * @return Unique identifier for the MCP server.
      * 
      */
     public String serverId() {
         return this.serverId;
     }
+    /**
+     * @return Portal-specific prompt overrides.
+     * 
+     */
     public List<ZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt> updatedPrompts() {
         return this.updatedPrompts == null ? List.of() : this.updatedPrompts;
     }
+    /**
+     * @return Portal-specific tool overrides.
+     * 
+     */
     public List<ZeroTrustAccessAiControlsMcpPortalServerUpdatedTool> updatedTools() {
         return this.updatedTools == null ? List.of() : this.updatedTools;
     }

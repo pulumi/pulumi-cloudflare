@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -32,11 +31,6 @@ public final class ZeroTrustTunnelWarpConnectorConnection {
      * 
      */
     private @Nullable String id;
-    /**
-     * @return Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
-     * 
-     */
-    private @Nullable Boolean isPendingReconnect;
     /**
      * @return Timestamp of when the connection was established.
      * 
@@ -83,13 +77,6 @@ public final class ZeroTrustTunnelWarpConnectorConnection {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
-     * 
-     */
-    public Optional<Boolean> isPendingReconnect() {
-        return Optional.ofNullable(this.isPendingReconnect);
-    }
-    /**
      * @return Timestamp of when the connection was established.
      * 
      */
@@ -124,7 +111,6 @@ public final class ZeroTrustTunnelWarpConnectorConnection {
         private @Nullable String clientVersion;
         private @Nullable String coloName;
         private @Nullable String id;
-        private @Nullable Boolean isPendingReconnect;
         private @Nullable String openedAt;
         private @Nullable String originIp;
         private @Nullable String uuid;
@@ -135,7 +121,6 @@ public final class ZeroTrustTunnelWarpConnectorConnection {
     	      this.clientVersion = defaults.clientVersion;
     	      this.coloName = defaults.coloName;
     	      this.id = defaults.id;
-    	      this.isPendingReconnect = defaults.isPendingReconnect;
     	      this.openedAt = defaults.openedAt;
     	      this.originIp = defaults.originIp;
     	      this.uuid = defaults.uuid;
@@ -166,12 +151,6 @@ public final class ZeroTrustTunnelWarpConnectorConnection {
             return this;
         }
         @CustomType.Setter
-        public Builder isPendingReconnect(@Nullable Boolean isPendingReconnect) {
-
-            this.isPendingReconnect = isPendingReconnect;
-            return this;
-        }
-        @CustomType.Setter
         public Builder openedAt(@Nullable String openedAt) {
 
             this.openedAt = openedAt;
@@ -195,7 +174,6 @@ public final class ZeroTrustTunnelWarpConnectorConnection {
             _resultValue.clientVersion = clientVersion;
             _resultValue.coloName = coloName;
             _resultValue.id = id;
-            _resultValue.isPendingReconnect = isPendingReconnect;
             _resultValue.openedAt = openedAt;
             _resultValue.originIp = originIp;
             _resultValue.uuid = uuid;

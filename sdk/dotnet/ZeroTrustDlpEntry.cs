@@ -68,6 +68,13 @@ namespace Pulumi.Cloudflare
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether this entry is deprecated for new use. This is computed from the static catalog and
+        /// emitted only when true.
+        /// </summary>
+        [Output("deprecated")]
+        public Output<bool> Deprecated { get; private set; } = null!;
+
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
@@ -207,6 +214,13 @@ namespace Pulumi.Cloudflare
 
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Whether this entry is deprecated for new use. This is computed from the static catalog and
+        /// emitted only when true.
+        /// </summary>
+        [Input("deprecated")]
+        public Input<bool>? Deprecated { get; set; }
 
         [Input("description")]
         public Input<string>? Description { get; set; }

@@ -39,6 +39,11 @@ public final class GetZeroTrustResourceLibraryApplicationsResult {
      */
     private String applicationTypeDescription;
     /**
+     * @return Returns the category ID.
+     * 
+     */
+    private Integer categoryId;
+    /**
      * @return Returns the application creation time.
      * 
      */
@@ -49,7 +54,7 @@ public final class GetZeroTrustResourceLibraryApplicationsResult {
      */
     private Double genAiScore;
     /**
-     * @return Returns the list of hostnames for the application.
+     * @return Hostnames matched by the application.
      * 
      */
     private List<String> hostnames;
@@ -62,14 +67,9 @@ public final class GetZeroTrustResourceLibraryApplicationsResult {
      * @return Returns the application ID.
      * 
      */
-    private String id;
+    private Integer id;
     /**
-     * @return Returns the Intel API ID for the application.
-     * 
-     */
-    private Integer intelId;
-    /**
-     * @return Returns the list of IP subnets for the application.
+     * @return IP subnets matched by the application.
      * 
      */
     private List<String> ipSubnets;
@@ -79,12 +79,12 @@ public final class GetZeroTrustResourceLibraryApplicationsResult {
      */
     private String name;
     /**
-     * @return Returns the list of port protocols for the application.
+     * @return Port and protocol pairs matched by the application.
      * 
      */
     private List<String> portProtocols;
     /**
-     * @return Returns the list of support domains for the application.
+     * @return Support domains matched by the application.
      * 
      */
     private List<String> supportDomains;
@@ -141,6 +141,13 @@ public final class GetZeroTrustResourceLibraryApplicationsResult {
         return this.applicationTypeDescription;
     }
     /**
+     * @return Returns the category ID.
+     * 
+     */
+    public Integer categoryId() {
+        return this.categoryId;
+    }
+    /**
      * @return Returns the application creation time.
      * 
      */
@@ -155,7 +162,7 @@ public final class GetZeroTrustResourceLibraryApplicationsResult {
         return this.genAiScore;
     }
     /**
-     * @return Returns the list of hostnames for the application.
+     * @return Hostnames matched by the application.
      * 
      */
     public List<String> hostnames() {
@@ -172,18 +179,11 @@ public final class GetZeroTrustResourceLibraryApplicationsResult {
      * @return Returns the application ID.
      * 
      */
-    public String id() {
+    public Integer id() {
         return this.id;
     }
     /**
-     * @return Returns the Intel API ID for the application.
-     * 
-     */
-    public Integer intelId() {
-        return this.intelId;
-    }
-    /**
-     * @return Returns the list of IP subnets for the application.
+     * @return IP subnets matched by the application.
      * 
      */
     public List<String> ipSubnets() {
@@ -197,14 +197,14 @@ public final class GetZeroTrustResourceLibraryApplicationsResult {
         return this.name;
     }
     /**
-     * @return Returns the list of port protocols for the application.
+     * @return Port and protocol pairs matched by the application.
      * 
      */
     public List<String> portProtocols() {
         return this.portProtocols;
     }
     /**
-     * @return Returns the list of support domains for the application.
+     * @return Support domains matched by the application.
      * 
      */
     public List<String> supportDomains() {
@@ -246,12 +246,12 @@ public final class GetZeroTrustResourceLibraryApplicationsResult {
         private String applicationSource;
         private String applicationType;
         private String applicationTypeDescription;
+        private Integer categoryId;
         private String createdAt;
         private Double genAiScore;
         private List<String> hostnames;
         private String humanId;
-        private String id;
-        private Integer intelId;
+        private Integer id;
         private List<String> ipSubnets;
         private String name;
         private List<String> portProtocols;
@@ -267,12 +267,12 @@ public final class GetZeroTrustResourceLibraryApplicationsResult {
     	      this.applicationSource = defaults.applicationSource;
     	      this.applicationType = defaults.applicationType;
     	      this.applicationTypeDescription = defaults.applicationTypeDescription;
+    	      this.categoryId = defaults.categoryId;
     	      this.createdAt = defaults.createdAt;
     	      this.genAiScore = defaults.genAiScore;
     	      this.hostnames = defaults.hostnames;
     	      this.humanId = defaults.humanId;
     	      this.id = defaults.id;
-    	      this.intelId = defaults.intelId;
     	      this.ipSubnets = defaults.ipSubnets;
     	      this.name = defaults.name;
     	      this.portProtocols = defaults.portProtocols;
@@ -323,6 +323,14 @@ public final class GetZeroTrustResourceLibraryApplicationsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder categoryId(Integer categoryId) {
+            if (categoryId == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustResourceLibraryApplicationsResult", "categoryId");
+            }
+            this.categoryId = categoryId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder createdAt(String createdAt) {
             if (createdAt == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustResourceLibraryApplicationsResult", "createdAt");
@@ -358,19 +366,11 @@ public final class GetZeroTrustResourceLibraryApplicationsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
+        public Builder id(Integer id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustResourceLibraryApplicationsResult", "id");
             }
             this.id = id;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder intelId(Integer intelId) {
-            if (intelId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustResourceLibraryApplicationsResult", "intelId");
-            }
-            this.intelId = intelId;
             return this;
         }
         @CustomType.Setter
@@ -448,12 +448,12 @@ public final class GetZeroTrustResourceLibraryApplicationsResult {
             _resultValue.applicationSource = applicationSource;
             _resultValue.applicationType = applicationType;
             _resultValue.applicationTypeDescription = applicationTypeDescription;
+            _resultValue.categoryId = categoryId;
             _resultValue.createdAt = createdAt;
             _resultValue.genAiScore = genAiScore;
             _resultValue.hostnames = hostnames;
             _resultValue.humanId = humanId;
             _resultValue.id = id;
-            _resultValue.intelId = intelId;
             _resultValue.ipSubnets = ipSubnets;
             _resultValue.name = name;
             _resultValue.portProtocols = portProtocols;

@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustOrganizationMfaConfig {
     /**
-     * @return Lists the MFA methods that users can authenticate with.
+     * @return Lists the MFA methods that users can authenticate with. The `pivKey` and `sshFido2Key` values are supported only for infrastructure applications.
      * 
      */
     private List<String> allowedAuthenticators;
@@ -34,7 +34,7 @@ public final class GetZeroTrustOrganizationMfaConfig {
 
     private GetZeroTrustOrganizationMfaConfig() {}
     /**
-     * @return Lists the MFA methods that users can authenticate with.
+     * @return Lists the MFA methods that users can authenticate with. The `pivKey` and `sshFido2Key` values are supported only for infrastructure applications.
      * 
      */
     public List<String> allowedAuthenticators() {

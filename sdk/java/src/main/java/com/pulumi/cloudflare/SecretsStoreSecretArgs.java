@@ -33,14 +33,14 @@ public final class SecretsStoreSecretArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Freeform text describing the secret.
+     * Freeform text describing the secret
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return Freeform text describing the secret.
+     * @return Freeform text describing the secret
      * 
      */
     public Optional<Output<String>> comment() {
@@ -63,14 +63,14 @@ public final class SecretsStoreSecretArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The list of services that can use this secret.
+     * The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
      * 
      */
     @Import(name="scopes", required=true)
     private Output<List<String>> scopes;
 
     /**
-     * @return The list of services that can use this secret.
+     * @return The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
      * 
      */
     public Output<List<String>> scopes() {
@@ -158,7 +158,7 @@ public final class SecretsStoreSecretArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param comment Freeform text describing the secret.
+         * @param comment Freeform text describing the secret
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class SecretsStoreSecretArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param comment Freeform text describing the secret.
+         * @param comment Freeform text describing the secret
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class SecretsStoreSecretArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param scopes The list of services that can use this secret.
+         * @param scopes The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class SecretsStoreSecretArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param scopes The list of services that can use this secret.
+         * @param scopes The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class SecretsStoreSecretArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param scopes The list of services that can use this secret.
+         * @param scopes The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
          * 
          * @return builder
          * 

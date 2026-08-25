@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? AccessKeyId;
         /// <summary>
-        /// Access key for the Azure Storage account. Mutually exclusive with `SasToken`.
+        /// Access key for the Azure Storage account. Mutually exclusive with sasToken.
         /// </summary>
         public readonly string? AccountKey;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Region;
         /// <summary>
-        /// Shared Access Signature token for the Azure Storage account. Mutually exclusive with `AccountKey`.
+        /// Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
         /// </summary>
         public readonly string? SasToken;
         /// <summary>

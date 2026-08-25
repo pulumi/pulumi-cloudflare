@@ -7,7 +7,6 @@ import com.pulumi.cloudflare.ImageVariantArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.ImageVariantState;
 import com.pulumi.cloudflare.outputs.ImageVariantOptions;
-import com.pulumi.cloudflare.outputs.ImageVariantVariant;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -128,12 +127,6 @@ public class ImageVariant extends com.pulumi.resources.CustomResource {
      */
     public Output<ImageVariantOptions> options() {
         return this.options;
-    }
-    @Export(name="variant", refs={ImageVariantVariant.class}, tree="[0]")
-    private Output<ImageVariantVariant> variant;
-
-    public Output<ImageVariantVariant> variant() {
-        return this.variant;
     }
 
     /**

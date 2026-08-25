@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
@@ -52,6 +53,7 @@ import javax.annotation.Nullable;
  *             .zoneId("zone_id")
  *             .clientSecretVersion(0.0)
  *             .duration("60m")
+ *             .enabled(true)
  *             .previousClientSecretExpiresAt("2014-01-01T05:20:00.12345Z")
  *             .build());
  * 
@@ -138,6 +140,20 @@ public class ZeroTrustAccessServiceToken extends com.pulumi.resources.CustomReso
      */
     public Output<String> duration() {
         return this.duration;
+    }
+    /**
+     * Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+     * 
+     */
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enabled;
+
+    /**
+     * @return Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+     * 
+     */
+    public Output<Boolean> enabled() {
+        return this.enabled;
     }
     @Export(name="expiresAt", refs={String.class}, tree="[0]")
     private Output<String> expiresAt;

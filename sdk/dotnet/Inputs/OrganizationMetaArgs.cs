@@ -12,12 +12,6 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class OrganizationMetaArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Enable features for Organizations.
-        /// </summary>
-        [Input("flags")]
-        public Input<Inputs.OrganizationMetaFlagsArgs>? Flags { get; set; }
-
         [Input("hierarchyTags")]
         private InputList<string>? _hierarchyTags;
 
@@ -37,6 +31,12 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("managedBy")]
         public Input<string>? ManagedBy { get; set; }
+
+        /// <summary>
+        /// Enable features for Organizations.
+        /// </summary>
+        [Input("tenantFlags")]
+        public Input<Inputs.OrganizationMetaTenantFlagsArgs>? TenantFlags { get; set; }
 
         public OrganizationMetaArgs()
         {

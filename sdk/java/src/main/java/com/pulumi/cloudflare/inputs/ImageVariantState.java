@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.ImageVariantOptionsArgs;
-import com.pulumi.cloudflare.inputs.ImageVariantVariantArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -78,13 +77,6 @@ public final class ImageVariantState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.options);
     }
 
-    @Import(name="variant")
-    private @Nullable Output<ImageVariantVariantArgs> variant;
-
-    public Optional<Output<ImageVariantVariantArgs>> variant() {
-        return Optional.ofNullable(this.variant);
-    }
-
     private ImageVariantState() {}
 
     private ImageVariantState(ImageVariantState $) {
@@ -92,7 +84,6 @@ public final class ImageVariantState extends com.pulumi.resources.ResourceArgs {
         this.imageVariantId = $.imageVariantId;
         this.neverRequireSignedUrls = $.neverRequireSignedUrls;
         this.options = $.options;
-        this.variant = $.variant;
     }
 
     public static Builder builder() {
@@ -195,15 +186,6 @@ public final class ImageVariantState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder options(ImageVariantOptionsArgs options) {
             return options(Output.of(options));
-        }
-
-        public Builder variant(@Nullable Output<ImageVariantVariantArgs> variant) {
-            $.variant = variant;
-            return this;
-        }
-
-        public Builder variant(ImageVariantVariantArgs variant) {
-            return variant(Output.of(variant));
         }
 
         public ImageVariantState build() {

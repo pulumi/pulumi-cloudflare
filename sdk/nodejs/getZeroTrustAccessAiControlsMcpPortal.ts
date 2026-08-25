@@ -41,7 +41,7 @@ export interface GetZeroTrustAccessAiControlsMcpPortalArgs {
     accountId?: string;
     filter?: inputs.GetZeroTrustAccessAiControlsMcpPortalFilter;
     /**
-     * portal id
+     * Unique identifier for the MCP portal.
      */
     id?: string;
 }
@@ -52,23 +52,39 @@ export interface GetZeroTrustAccessAiControlsMcpPortalArgs {
 export interface GetZeroTrustAccessAiControlsMcpPortalResult {
     readonly accountId?: string;
     /**
-     * Allow remote code execution in Dynamic Workers (beta)
+     * Deprecated: use `codeMode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
+     *
+     * @deprecated This attribute is deprecated.
      */
     readonly allowCodeMode: boolean;
+    /**
+     * Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `optIn`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `defaultOn`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `optIn` when omitted on create. If both `codeMode` and `allowCodeMode` are sent, they must be consistent or the request returns a 400.
+     * Available values: "off", "opt*in", "default*on", "enforced".
+     */
+    readonly codeMode: string;
     readonly createdAt: string;
     readonly createdBy: string;
+    /**
+     * Optional description of the MCP portal.
+     */
     readonly description: string;
     readonly filter?: outputs.GetZeroTrustAccessAiControlsMcpPortalFilter;
+    /**
+     * Hostname where the MCP portal is available.
+     */
     readonly hostname: string;
     /**
-     * portal id
+     * Unique identifier for the MCP portal.
      */
     readonly id: string;
     readonly modifiedAt: string;
     readonly modifiedBy: string;
+    /**
+     * Display name for the MCP portal.
+     */
     readonly name: string;
     /**
-     * Route outbound MCP traffic through Zero Trust Secure Web Gateway
+     * Route outbound MCP traffic through Zero Trust Secure Web Gateway.
      */
     readonly secureWebGateway: boolean;
     readonly servers: outputs.GetZeroTrustAccessAiControlsMcpPortalServer[];
@@ -108,7 +124,7 @@ export interface GetZeroTrustAccessAiControlsMcpPortalOutputArgs {
     accountId?: pulumi.Input<string | undefined>;
     filter?: pulumi.Input<inputs.GetZeroTrustAccessAiControlsMcpPortalFilterArgs | undefined>;
     /**
-     * portal id
+     * Unique identifier for the MCP portal.
      */
     id?: pulumi.Input<string | undefined>;
 }

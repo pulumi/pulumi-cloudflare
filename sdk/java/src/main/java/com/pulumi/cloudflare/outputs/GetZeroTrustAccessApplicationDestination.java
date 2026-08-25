@@ -39,7 +39,7 @@ public final class GetZeroTrustAccessApplicationDestination {
      */
     private String portRange;
     /**
-     * @return Available values: &#34;public&#34;, &#34;private&#34;.
+     * @return Available values: &#34;public&#34;, &#34;private&#34;, &#34;via*mcp*server*portal&#34;, &#34;worker&#34;, &#34;preview*worker&#34;, &#34;all*workers&#34;, &#34;all*preview_workers&#34;.
      * 
      */
     private String type;
@@ -53,6 +53,11 @@ public final class GetZeroTrustAccessApplicationDestination {
      * 
      */
     private String vnetId;
+    /**
+     * @return The ID of the Cloudflare Worker to protect with Access. Required when type is `worker` or `previewWorker`.
+     * 
+     */
+    private String workerId;
 
     private GetZeroTrustAccessApplicationDestination() {}
     /**
@@ -92,7 +97,7 @@ public final class GetZeroTrustAccessApplicationDestination {
         return this.portRange;
     }
     /**
-     * @return Available values: &#34;public&#34;, &#34;private&#34;.
+     * @return Available values: &#34;public&#34;, &#34;private&#34;, &#34;via*mcp*server*portal&#34;, &#34;worker&#34;, &#34;preview*worker&#34;, &#34;all*workers&#34;, &#34;all*preview_workers&#34;.
      * 
      */
     public String type() {
@@ -112,6 +117,13 @@ public final class GetZeroTrustAccessApplicationDestination {
     public String vnetId() {
         return this.vnetId;
     }
+    /**
+     * @return The ID of the Cloudflare Worker to protect with Access. Required when type is `worker` or `previewWorker`.
+     * 
+     */
+    public String workerId() {
+        return this.workerId;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -130,6 +142,7 @@ public final class GetZeroTrustAccessApplicationDestination {
         private String type;
         private String uri;
         private String vnetId;
+        private String workerId;
         public Builder() {}
         public Builder(GetZeroTrustAccessApplicationDestination defaults) {
     	      Objects.requireNonNull(defaults);
@@ -141,6 +154,7 @@ public final class GetZeroTrustAccessApplicationDestination {
     	      this.type = defaults.type;
     	      this.uri = defaults.uri;
     	      this.vnetId = defaults.vnetId;
+    	      this.workerId = defaults.workerId;
         }
 
         @CustomType.Setter
@@ -205,6 +219,14 @@ public final class GetZeroTrustAccessApplicationDestination {
             this.vnetId = vnetId;
             return this;
         }
+        @CustomType.Setter
+        public Builder workerId(String workerId) {
+            if (workerId == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationDestination", "workerId");
+            }
+            this.workerId = workerId;
+            return this;
+        }
         public GetZeroTrustAccessApplicationDestination build() {
             final var _resultValue = new GetZeroTrustAccessApplicationDestination();
             _resultValue.cidr = cidr;
@@ -215,6 +237,7 @@ public final class GetZeroTrustAccessApplicationDestination {
             _resultValue.type = type;
             _resultValue.uri = uri;
             _resultValue.vnetId = vnetId;
+            _resultValue.workerId = workerId;
             return _resultValue;
         }
     }

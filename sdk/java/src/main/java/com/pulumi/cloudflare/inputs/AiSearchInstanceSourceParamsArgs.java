@@ -18,14 +18,14 @@ public final class AiSearchInstanceSourceParamsArgs extends com.pulumi.resources
     public static final AiSearchInstanceSourceParamsArgs Empty = new AiSearchInstanceSourceParamsArgs();
 
     /**
-     * List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+     * List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.
      * 
      */
     @Import(name="excludeItems")
     private @Nullable Output<List<String>> excludeItems;
 
     /**
-     * @return List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+     * @return List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.
      * 
      */
     public Optional<Output<List<String>>> excludeItems() {
@@ -33,14 +33,14 @@ public final class AiSearchInstanceSourceParamsArgs extends com.pulumi.resources
     }
 
     /**
-     * List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+     * List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.
      * 
      */
     @Import(name="includeItems")
     private @Nullable Output<List<String>> includeItems;
 
     /**
-     * @return List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+     * @return List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.
      * 
      */
     public Optional<Output<List<String>>> includeItems() {
@@ -97,7 +97,7 @@ public final class AiSearchInstanceSourceParamsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param excludeItems List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+         * @param excludeItems List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class AiSearchInstanceSourceParamsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param excludeItems List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+         * @param excludeItems List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class AiSearchInstanceSourceParamsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param excludeItems List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+         * @param excludeItems List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class AiSearchInstanceSourceParamsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param includeItems List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+         * @param includeItems List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class AiSearchInstanceSourceParamsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param includeItems List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+         * @param includeItems List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class AiSearchInstanceSourceParamsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param includeItems List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+         * @param includeItems List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.
          * 
          * @return builder
          * 

@@ -146,8 +146,8 @@ type AccessPolicy struct {
 	Requires AccessPolicyRequireArrayOutput `pulumi:"requires"`
 	Reusable pulumi.BoolOutput              `pulumi:"reusable"`
 	// The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
-	SessionDuration pulumi.StringOutput `pulumi:"sessionDuration"`
-	UpdatedAt       pulumi.StringOutput `pulumi:"updatedAt"`
+	SessionDuration pulumi.StringPtrOutput `pulumi:"sessionDuration"`
+	UpdatedAt       pulumi.StringOutput    `pulumi:"updatedAt"`
 }
 
 // NewAccessPolicy registers a new resource with the given unique name, arguments, and options.
@@ -504,8 +504,8 @@ func (o AccessPolicyOutput) Reusable() pulumi.BoolOutput {
 }
 
 // The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
-func (o AccessPolicyOutput) SessionDuration() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.SessionDuration }).(pulumi.StringOutput)
+func (o AccessPolicyOutput) SessionDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicy) pulumi.StringPtrOutput { return v.SessionDuration }).(pulumi.StringPtrOutput)
 }
 
 func (o AccessPolicyOutput) UpdatedAt() pulumi.StringOutput {

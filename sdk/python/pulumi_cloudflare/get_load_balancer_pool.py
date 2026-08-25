@@ -28,7 +28,7 @@ class GetLoadBalancerPoolResult:
     """
     A collection of values returned by getLoadBalancerPool.
     """
-    def __init__(__self__, account_id=None, check_regions=None, created_on=None, description=None, disabled_at=None, enabled=None, filter=None, id=None, latitude=None, load_shedding=None, longitude=None, minimum_origins=None, modified_on=None, monitor=None, monitor_group=None, name=None, networks=None, notification_email=None, notification_filter=None, origin_steering=None, origins=None, pool_id=None):
+    def __init__(__self__, account_id=None, check_regions=None, created_on=None, description=None, disabled_at=None, enabled=None, filter=None, health_sources=None, id=None, latitude=None, load_shedding=None, longitude=None, minimum_origins=None, modified_on=None, monitor=None, monitor_group=None, name=None, networks=None, notification_email=None, notification_filter=None, origin_steering=None, origins=None, pool_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -50,6 +50,9 @@ class GetLoadBalancerPoolResult:
         if filter and not isinstance(filter, dict):
             raise TypeError("Expected argument 'filter' to be a dict")
         pulumi.set(__self__, "filter", filter)
+        if health_sources and not isinstance(health_sources, list):
+            raise TypeError("Expected argument 'health_sources' to be a list")
+        pulumi.set(__self__, "health_sources", health_sources)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -145,6 +148,14 @@ class GetLoadBalancerPoolResult:
     @pulumi.getter
     def filter(self) -> Optional['outputs.GetLoadBalancerPoolFilterResult']:
         return pulumi.get(self, "filter")
+
+    @_builtins.property
+    @pulumi.getter(name="healthSources")
+    def health_sources(self) -> Sequence[_builtins.str]:
+        """
+        A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+        """
+        return pulumi.get(self, "health_sources")
 
     @_builtins.property
     @pulumi.getter
@@ -274,6 +285,7 @@ class AwaitableGetLoadBalancerPoolResult(GetLoadBalancerPoolResult):
             disabled_at=self.disabled_at,
             enabled=self.enabled,
             filter=self.filter,
+            health_sources=self.health_sources,
             id=self.id,
             latitude=self.latitude,
             load_shedding=self.load_shedding,
@@ -329,6 +341,7 @@ def get_load_balancer_pool(account_id: Optional[_builtins.str] = None,
         disabled_at=pulumi.get(__ret__, 'disabled_at'),
         enabled=pulumi.get(__ret__, 'enabled'),
         filter=pulumi.get(__ret__, 'filter'),
+        health_sources=pulumi.get(__ret__, 'health_sources'),
         id=pulumi.get(__ret__, 'id'),
         latitude=pulumi.get(__ret__, 'latitude'),
         load_shedding=pulumi.get(__ret__, 'load_shedding'),
@@ -381,6 +394,7 @@ def get_load_balancer_pool_output(account_id: pulumi.Input[Optional[Optional[_bu
         disabled_at=pulumi.get(__response__, 'disabled_at'),
         enabled=pulumi.get(__response__, 'enabled'),
         filter=pulumi.get(__response__, 'filter'),
+        health_sources=pulumi.get(__response__, 'health_sources'),
         id=pulumi.get(__response__, 'id'),
         latitude=pulumi.get(__response__, 'latitude'),
         load_shedding=pulumi.get(__response__, 'load_shedding'),

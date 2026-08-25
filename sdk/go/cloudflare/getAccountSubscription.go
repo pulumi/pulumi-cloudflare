@@ -32,6 +32,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetAccountSubscription(ctx, &cloudflare.LookupAccountSubscriptionArgs{
 //				AccountId: pulumi.StringRef("account_id"),
+//				ZoneId:    pulumi.StringRef("zone_id"),
 //			}, nil)
 //			if err != nil {
 //				return err

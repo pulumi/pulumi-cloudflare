@@ -101,6 +101,7 @@ class _ZeroTrustDlpCustomEntryState:
                  case_sensitive: pulumi.Input[Optional[_builtins.bool]] = None,
                  confidence: pulumi.Input[Optional['ZeroTrustDlpCustomEntryConfidenceArgs']] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -119,6 +120,8 @@ class _ZeroTrustDlpCustomEntryState:
         :param pulumi.Input[_builtins.bool] case_sensitive: Only applies to custom word lists.
                Determines if the words should be matched in a case-sensitive manner
                Cannot be set to false if secret is true
+        :param pulumi.Input[_builtins.bool] deprecated: Whether this entry is deprecated for new use. This is computed from the static catalog and
+               emitted only when true.
         :param pulumi.Input[_builtins.str] type: Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
         :param pulumi.Input[_builtins.str] upload_status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         :param pulumi.Input['ZeroTrustDlpCustomEntryVariantArgs'] variant: A Predefined AI prompt classification topic entry.
@@ -131,6 +134,8 @@ class _ZeroTrustDlpCustomEntryState:
             pulumi.set(__self__, "confidence", confidence)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if deprecated is not None:
+            pulumi.set(__self__, "deprecated", deprecated)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enabled is not None:
@@ -196,6 +201,19 @@ class _ZeroTrustDlpCustomEntryState:
     @created_at.setter
     def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def deprecated(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether this entry is deprecated for new use. This is computed from the static catalog and
+        emitted only when true.
+        """
+        return pulumi.get(self, "deprecated")
+
+    @deprecated.setter
+    def deprecated(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "deprecated", value)
 
     @_builtins.property
     @pulumi.getter
@@ -446,6 +464,7 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
             __props__.__dict__["case_sensitive"] = None
             __props__.__dict__["confidence"] = None
             __props__.__dict__["created_at"] = None
+            __props__.__dict__["deprecated"] = None
             __props__.__dict__["profiles"] = None
             __props__.__dict__["secret"] = None
             __props__.__dict__["type"] = None
@@ -467,6 +486,7 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
             case_sensitive: pulumi.Input[Optional[_builtins.bool]] = None,
             confidence: pulumi.Input[Optional[Union['ZeroTrustDlpCustomEntryConfidenceArgs', 'ZeroTrustDlpCustomEntryConfidenceArgsDict']]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -489,6 +509,8 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] case_sensitive: Only applies to custom word lists.
                Determines if the words should be matched in a case-sensitive manner
                Cannot be set to false if secret is true
+        :param pulumi.Input[_builtins.bool] deprecated: Whether this entry is deprecated for new use. This is computed from the static catalog and
+               emitted only when true.
         :param pulumi.Input[_builtins.str] type: Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
         :param pulumi.Input[_builtins.str] upload_status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         :param pulumi.Input[Union['ZeroTrustDlpCustomEntryVariantArgs', 'ZeroTrustDlpCustomEntryVariantArgsDict']] variant: A Predefined AI prompt classification topic entry.
@@ -501,6 +523,7 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
         __props__.__dict__["case_sensitive"] = case_sensitive
         __props__.__dict__["confidence"] = confidence
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["deprecated"] = deprecated
         __props__.__dict__["description"] = description
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["name"] = name
@@ -539,6 +562,15 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def deprecated(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether this entry is deprecated for new use. This is computed from the static catalog and
+        emitted only when true.
+        """
+        return pulumi.get(self, "deprecated")
 
     @_builtins.property
     @pulumi.getter
