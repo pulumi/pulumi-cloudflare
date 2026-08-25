@@ -1,3 +1,0 @@
-name: cloudflare
-description: A Pulumi resource provider for cloudflare.
-language: nodejs
