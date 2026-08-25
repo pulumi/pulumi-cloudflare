@@ -65,14 +65,14 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+     * Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      * 
      */
     @Import(name="hostname")
     private @Nullable Output<ListItemHostnameArgs> hostname;
 
     /**
-     * @return Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+     * @return Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      * 
      */
     public Optional<Output<ListItemHostnameArgs>> hostname() {
@@ -218,7 +218,7 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostname Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+         * @param hostname Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostname Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+         * @param hostname Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
          * 
          * @return builder
          * 

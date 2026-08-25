@@ -62,8 +62,10 @@ export interface GetShareRecipientResult {
      */
     readonly accountId: string;
     /**
-     * Share Recipient association status.
-     * Available values: "associating", "associated", "disassociating", "disassociated".
+     * The current state of the recipient relative to the share. The
+     * `desiredAssociationStatus` (not exposed in the response) tracks the
+     * target state set by the API; the background reconciliation workflow
+     * drives `currentAssociationStatus` toward it.
      */
     readonly associationStatus: string;
     /**

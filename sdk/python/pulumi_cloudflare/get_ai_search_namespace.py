@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
 
 __all__ = [
     'GetAiSearchNamespaceResult',
@@ -26,7 +27,7 @@ class GetAiSearchNamespaceResult:
     """
     A collection of values returned by getAiSearchNamespace.
     """
-    def __init__(__self__, account_id=None, created_at=None, description=None, name=None):
+    def __init__(__self__, account_id=None, created_at=None, description=None, name=None, public_endpoint_id=None, public_endpoint_params=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -39,6 +40,12 @@ class GetAiSearchNamespaceResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if public_endpoint_id and not isinstance(public_endpoint_id, str):
+            raise TypeError("Expected argument 'public_endpoint_id' to be a str")
+        pulumi.set(__self__, "public_endpoint_id", public_endpoint_id)
+        if public_endpoint_params and not isinstance(public_endpoint_params, dict):
+            raise TypeError("Expected argument 'public_endpoint_params' to be a dict")
+        pulumi.set(__self__, "public_endpoint_params", public_endpoint_params)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -63,6 +70,16 @@ class GetAiSearchNamespaceResult:
     def name(self) -> _builtins.str:
         return pulumi.get(self, "name")
 
+    @_builtins.property
+    @pulumi.getter(name="publicEndpointId")
+    def public_endpoint_id(self) -> _builtins.str:
+        return pulumi.get(self, "public_endpoint_id")
+
+    @_builtins.property
+    @pulumi.getter(name="publicEndpointParams")
+    def public_endpoint_params(self) -> 'outputs.GetAiSearchNamespacePublicEndpointParamsResult':
+        return pulumi.get(self, "public_endpoint_params")
+
 
 class AwaitableGetAiSearchNamespaceResult(GetAiSearchNamespaceResult):
     # pylint: disable=using-constant-test
@@ -73,7 +90,9 @@ class AwaitableGetAiSearchNamespaceResult(GetAiSearchNamespaceResult):
             account_id=self.account_id,
             created_at=self.created_at,
             description=self.description,
-            name=self.name)
+            name=self.name,
+            public_endpoint_id=self.public_endpoint_id,
+            public_endpoint_params=self.public_endpoint_params)
 
 
 def get_ai_search_namespace(account_id: Optional[_builtins.str] = None,
@@ -92,7 +111,9 @@ def get_ai_search_namespace(account_id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         created_at=pulumi.get(__ret__, 'created_at'),
         description=pulumi.get(__ret__, 'description'),
-        name=pulumi.get(__ret__, 'name'))
+        name=pulumi.get(__ret__, 'name'),
+        public_endpoint_id=pulumi.get(__ret__, 'public_endpoint_id'),
+        public_endpoint_params=pulumi.get(__ret__, 'public_endpoint_params'))
 def get_ai_search_namespace_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                    name: pulumi.Input[Optional[_builtins.str]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiSearchNamespaceResult]:
@@ -108,4 +129,6 @@ def get_ai_search_namespace_output(account_id: pulumi.Input[Optional[_builtins.s
         account_id=pulumi.get(__response__, 'account_id'),
         created_at=pulumi.get(__response__, 'created_at'),
         description=pulumi.get(__response__, 'description'),
-        name=pulumi.get(__response__, 'name')))
+        name=pulumi.get(__response__, 'name'),
+        public_endpoint_id=pulumi.get(__response__, 'public_endpoint_id'),
+        public_endpoint_params=pulumi.get(__response__, 'public_endpoint_params')))

@@ -53,6 +53,11 @@ export interface GetZeroTrustDlpIntegrationEntryResult {
     readonly caseSensitive: boolean;
     readonly confidence: outputs.GetZeroTrustDlpIntegrationEntryConfidence;
     readonly createdAt: string;
+    /**
+     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * emitted only when true.
+     */
+    readonly deprecated: boolean;
     readonly description: string;
     readonly enabled: boolean;
     readonly entryId: string;

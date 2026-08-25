@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -24,7 +25,7 @@ public final class GetZeroTrustResourceLibraryCategoriesResult {
      * @return Returns the category ID.
      * 
      */
-    private String id;
+    private Integer id;
     /**
      * @return Returns the category name.
      * 
@@ -50,7 +51,7 @@ public final class GetZeroTrustResourceLibraryCategoriesResult {
      * @return Returns the category ID.
      * 
      */
-    public String id() {
+    public Integer id() {
         return this.id;
     }
     /**
@@ -72,7 +73,7 @@ public final class GetZeroTrustResourceLibraryCategoriesResult {
     public static final class Builder {
         private String createdAt;
         private String description;
-        private String id;
+        private Integer id;
         private String name;
         public Builder() {}
         public Builder(GetZeroTrustResourceLibraryCategoriesResult defaults) {
@@ -100,7 +101,7 @@ public final class GetZeroTrustResourceLibraryCategoriesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
+        public Builder id(Integer id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustResourceLibraryCategoriesResult", "id");
             }

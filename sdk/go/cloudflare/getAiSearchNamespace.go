@@ -32,8 +32,10 @@ type LookupAiSearchNamespaceResult struct {
 	AccountId string `pulumi:"accountId"`
 	CreatedAt string `pulumi:"createdAt"`
 	// Optional description for the namespace. Max 256 characters.
-	Description string `pulumi:"description"`
-	Name        string `pulumi:"name"`
+	Description          string                                   `pulumi:"description"`
+	Name                 string                                   `pulumi:"name"`
+	PublicEndpointId     string                                   `pulumi:"publicEndpointId"`
+	PublicEndpointParams GetAiSearchNamespacePublicEndpointParams `pulumi:"publicEndpointParams"`
 }
 
 func LookupAiSearchNamespaceOutput(ctx *pulumi.Context, args LookupAiSearchNamespaceOutputArgs, opts ...pulumi.InvokeOption) LookupAiSearchNamespaceResultOutput {
@@ -85,6 +87,16 @@ func (o LookupAiSearchNamespaceResultOutput) Description() pulumi.StringOutput {
 
 func (o LookupAiSearchNamespaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchNamespaceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupAiSearchNamespaceResultOutput) PublicEndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAiSearchNamespaceResult) string { return v.PublicEndpointId }).(pulumi.StringOutput)
+}
+
+func (o LookupAiSearchNamespaceResultOutput) PublicEndpointParams() GetAiSearchNamespacePublicEndpointParamsOutput {
+	return o.ApplyT(func(v LookupAiSearchNamespaceResult) GetAiSearchNamespacePublicEndpointParams {
+		return v.PublicEndpointParams
+	}).(GetAiSearchNamespacePublicEndpointParamsOutput)
 }
 
 func init() {

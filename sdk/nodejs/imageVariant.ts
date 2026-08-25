@@ -81,7 +81,6 @@ export class ImageVariant extends pulumi.CustomResource {
      * Allows you to define image resizing sizes for different use cases.
      */
     declare public readonly options: pulumi.Output<outputs.ImageVariantOptions>;
-    declare public /*out*/ readonly variant: pulumi.Output<outputs.ImageVariantVariant>;
 
     /**
      * Create a ImageVariant resource with the given unique name, arguments, and options.
@@ -100,7 +99,6 @@ export class ImageVariant extends pulumi.CustomResource {
             resourceInputs["imageVariantId"] = state?.imageVariantId;
             resourceInputs["neverRequireSignedUrls"] = state?.neverRequireSignedUrls;
             resourceInputs["options"] = state?.options;
-            resourceInputs["variant"] = state?.variant;
         } else {
             const args = argsOrState as ImageVariantArgs | undefined;
             if (args?.accountId === undefined && !opts.urn) {
@@ -116,7 +114,6 @@ export class ImageVariant extends pulumi.CustomResource {
             resourceInputs["imageVariantId"] = args?.imageVariantId;
             resourceInputs["neverRequireSignedUrls"] = args?.neverRequireSignedUrls;
             resourceInputs["options"] = args?.options;
-            resourceInputs["variant"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ImageVariant.__pulumiType, name, resourceInputs, opts);
@@ -143,7 +140,6 @@ export interface ImageVariantState {
      * Allows you to define image resizing sizes for different use cases.
      */
     options?: pulumi.Input<inputs.ImageVariantOptions | undefined>;
-    variant?: pulumi.Input<inputs.ImageVariantVariant | undefined>;
 }
 
 /**

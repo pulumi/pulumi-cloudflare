@@ -31,14 +31,14 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Access key for the Azure Storage account. Mutually exclusive with `sasToken`.
+     * Access key for the Azure Storage account. Mutually exclusive with sasToken.
      * 
      */
     @Import(name="accountKey")
     private @Nullable Output<String> accountKey;
 
     /**
-     * @return Access key for the Azure Storage account. Mutually exclusive with `sasToken`.
+     * @return Access key for the Azure Storage account. Mutually exclusive with sasToken.
      * 
      */
     public Optional<Output<String>> accountKey() {
@@ -166,14 +166,14 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Shared Access Signature token for the Azure Storage account. Mutually exclusive with `accountKey`.
+     * Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
      * 
      */
     @Import(name="sasToken")
     private @Nullable Output<String> sasToken;
 
     /**
-     * @return Shared Access Signature token for the Azure Storage account. Mutually exclusive with `accountKey`.
+     * @return Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
      * 
      */
     public Optional<Output<String>> sasToken() {
@@ -252,7 +252,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountKey Access key for the Azure Storage account. Mutually exclusive with `sasToken`.
+         * @param accountKey Access key for the Azure Storage account. Mutually exclusive with sasToken.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountKey Access key for the Azure Storage account. Mutually exclusive with `sasToken`.
+         * @param accountKey Access key for the Azure Storage account. Mutually exclusive with sasToken.
          * 
          * @return builder
          * 
@@ -441,7 +441,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sasToken Shared Access Signature token for the Azure Storage account. Mutually exclusive with `accountKey`.
+         * @param sasToken Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
          * 
          * @return builder
          * 
@@ -452,7 +452,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sasToken Shared Access Signature token for the Azure Storage account. Mutually exclusive with `accountKey`.
+         * @param sasToken Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
          * 
          * @return builder
          * 

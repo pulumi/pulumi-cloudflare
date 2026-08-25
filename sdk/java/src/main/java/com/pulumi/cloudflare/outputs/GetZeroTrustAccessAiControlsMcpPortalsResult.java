@@ -14,24 +14,46 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustAccessAiControlsMcpPortalsResult {
     /**
-     * @return Allow remote code execution in Dynamic Workers (beta)
+     * @return Deprecated: use `codeMode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
      * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private Boolean allowCodeMode;
+    /**
+     * @return Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `optIn`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `defaultOn`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `optIn` when omitted on create. If both `codeMode` and `allowCodeMode` are sent, they must be consistent or the request returns a 400.
+     * Available values: &#34;off&#34;, &#34;opt*in&#34;, &#34;default*on&#34;, &#34;enforced&#34;.
+     * 
+     */
+    private String codeMode;
     private String createdAt;
     private String createdBy;
+    /**
+     * @return Optional description of the MCP portal.
+     * 
+     */
     private String description;
+    /**
+     * @return Hostname where the MCP portal is available.
+     * 
+     */
     private String hostname;
     /**
-     * @return portal id
+     * @return Unique identifier for the MCP portal.
      * 
      */
     private String id;
     private String modifiedAt;
     private String modifiedBy;
+    /**
+     * @return Display name for the MCP portal.
+     * 
+     */
     private String name;
     /**
-     * @return Route outbound MCP traffic through Zero Trust Secure Web Gateway
+     * @return Route outbound MCP traffic through Zero Trust Secure Web Gateway.
      * 
      */
     private Boolean secureWebGateway;
@@ -39,11 +61,23 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsResult {
 
     private GetZeroTrustAccessAiControlsMcpPortalsResult() {}
     /**
-     * @return Allow remote code execution in Dynamic Workers (beta)
+     * @return Deprecated: use `codeMode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
      * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Boolean allowCodeMode() {
         return this.allowCodeMode;
+    }
+    /**
+     * @return Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `optIn`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `defaultOn`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `optIn` when omitted on create. If both `codeMode` and `allowCodeMode` are sent, they must be consistent or the request returns a 400.
+     * Available values: &#34;off&#34;, &#34;opt*in&#34;, &#34;default*on&#34;, &#34;enforced&#34;.
+     * 
+     */
+    public String codeMode() {
+        return this.codeMode;
     }
     public String createdAt() {
         return this.createdAt;
@@ -51,14 +85,22 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsResult {
     public String createdBy() {
         return this.createdBy;
     }
+    /**
+     * @return Optional description of the MCP portal.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return Hostname where the MCP portal is available.
+     * 
+     */
     public String hostname() {
         return this.hostname;
     }
     /**
-     * @return portal id
+     * @return Unique identifier for the MCP portal.
      * 
      */
     public String id() {
@@ -70,11 +112,15 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsResult {
     public String modifiedBy() {
         return this.modifiedBy;
     }
+    /**
+     * @return Display name for the MCP portal.
+     * 
+     */
     public String name() {
         return this.name;
     }
     /**
-     * @return Route outbound MCP traffic through Zero Trust Secure Web Gateway
+     * @return Route outbound MCP traffic through Zero Trust Secure Web Gateway.
      * 
      */
     public Boolean secureWebGateway() {
@@ -94,6 +140,7 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsResult {
     @CustomType.Builder
     public static final class Builder {
         private Boolean allowCodeMode;
+        private String codeMode;
         private String createdAt;
         private String createdBy;
         private String description;
@@ -108,6 +155,7 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsResult {
         public Builder(GetZeroTrustAccessAiControlsMcpPortalsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowCodeMode = defaults.allowCodeMode;
+    	      this.codeMode = defaults.codeMode;
     	      this.createdAt = defaults.createdAt;
     	      this.createdBy = defaults.createdBy;
     	      this.description = defaults.description;
@@ -126,6 +174,14 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsResult {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpPortalsResult", "allowCodeMode");
             }
             this.allowCodeMode = allowCodeMode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder codeMode(String codeMode) {
+            if (codeMode == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpPortalsResult", "codeMode");
+            }
+            this.codeMode = codeMode;
             return this;
         }
         @CustomType.Setter
@@ -214,6 +270,7 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsResult {
         public GetZeroTrustAccessAiControlsMcpPortalsResult build() {
             final var _resultValue = new GetZeroTrustAccessAiControlsMcpPortalsResult();
             _resultValue.allowCodeMode = allowCodeMode;
+            _resultValue.codeMode = codeMode;
             _resultValue.createdAt = createdAt;
             _resultValue.createdBy = createdBy;
             _resultValue.description = description;

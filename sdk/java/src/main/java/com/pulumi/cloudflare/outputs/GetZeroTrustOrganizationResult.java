@@ -61,7 +61,7 @@ public final class GetZeroTrustOrganizationResult {
      */
     private GetZeroTrustOrganizationMfaConfig mfaConfig;
     /**
-     * @return Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: &#39;allowed*authenticators&#39; cannot only contain &#39;ssh*piv_key&#39; if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+     * @return Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: &#39;allowed*authenticators&#39; cannot contain only the infrastructure SSH authenticators (&#39;piv*key&#39; and &#39;ssh*fido2*key&#39;) if the organization has any non-infrastructure applications.
      * 
      */
     private Boolean mfaRequiredForAllApps;
@@ -90,6 +90,11 @@ public final class GetZeroTrustOrganizationResult {
      * 
      */
     private String userSeatExpirationInactiveTime;
+    /**
+     * @return When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
+     * 
+     */
+    private Boolean warpAuthNonBrowser401;
     /**
      * @return The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
      * 
@@ -165,7 +170,7 @@ public final class GetZeroTrustOrganizationResult {
         return this.mfaConfig;
     }
     /**
-     * @return Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: &#39;allowed*authenticators&#39; cannot only contain &#39;ssh*piv_key&#39; if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+     * @return Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: &#39;allowed*authenticators&#39; cannot contain only the infrastructure SSH authenticators (&#39;piv*key&#39; and &#39;ssh*fido2*key&#39;) if the organization has any non-infrastructure applications.
      * 
      */
     public Boolean mfaRequiredForAllApps() {
@@ -207,6 +212,13 @@ public final class GetZeroTrustOrganizationResult {
         return this.userSeatExpirationInactiveTime;
     }
     /**
+     * @return When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
+     * 
+     */
+    public Boolean warpAuthNonBrowser401() {
+        return this.warpAuthNonBrowser401;
+    }
+    /**
      * @return The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
      * 
      */
@@ -246,6 +258,7 @@ public final class GetZeroTrustOrganizationResult {
         private String sessionDuration;
         private String uiReadOnlyToggleReason;
         private String userSeatExpirationInactiveTime;
+        private Boolean warpAuthNonBrowser401;
         private String warpAuthSessionDuration;
         private @Nullable String zoneId;
         public Builder() {}
@@ -267,6 +280,7 @@ public final class GetZeroTrustOrganizationResult {
     	      this.sessionDuration = defaults.sessionDuration;
     	      this.uiReadOnlyToggleReason = defaults.uiReadOnlyToggleReason;
     	      this.userSeatExpirationInactiveTime = defaults.userSeatExpirationInactiveTime;
+    	      this.warpAuthNonBrowser401 = defaults.warpAuthNonBrowser401;
     	      this.warpAuthSessionDuration = defaults.warpAuthSessionDuration;
     	      this.zoneId = defaults.zoneId;
         }
@@ -401,6 +415,14 @@ public final class GetZeroTrustOrganizationResult {
             return this;
         }
         @CustomType.Setter
+        public Builder warpAuthNonBrowser401(Boolean warpAuthNonBrowser401) {
+            if (warpAuthNonBrowser401 == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "warpAuthNonBrowser401");
+            }
+            this.warpAuthNonBrowser401 = warpAuthNonBrowser401;
+            return this;
+        }
+        @CustomType.Setter
         public Builder warpAuthSessionDuration(String warpAuthSessionDuration) {
             if (warpAuthSessionDuration == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "warpAuthSessionDuration");
@@ -432,6 +454,7 @@ public final class GetZeroTrustOrganizationResult {
             _resultValue.sessionDuration = sessionDuration;
             _resultValue.uiReadOnlyToggleReason = uiReadOnlyToggleReason;
             _resultValue.userSeatExpirationInactiveTime = userSeatExpirationInactiveTime;
+            _resultValue.warpAuthNonBrowser401 = warpAuthNonBrowser401;
             _resultValue.warpAuthSessionDuration = warpAuthSessionDuration;
             _resultValue.zoneId = zoneId;
             return _resultValue;

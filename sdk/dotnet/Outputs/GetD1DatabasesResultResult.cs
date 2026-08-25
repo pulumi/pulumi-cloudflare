@@ -23,7 +23,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Id;
         /// <summary>
         /// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-        /// Available values: "eu", "fedramp".
+        /// Available values: "eu", "fedramp", "us".
         /// </summary>
         public readonly string Jurisdiction;
         /// <summary>

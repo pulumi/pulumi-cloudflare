@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.AiSearchNamespacePublicEndpointParamsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -45,12 +46,20 @@ public final class AiSearchNamespaceArgs extends com.pulumi.resources.ResourceAr
         return this.name;
     }
 
+    @Import(name="publicEndpointParams")
+    private @Nullable Output<AiSearchNamespacePublicEndpointParamsArgs> publicEndpointParams;
+
+    public Optional<Output<AiSearchNamespacePublicEndpointParamsArgs>> publicEndpointParams() {
+        return Optional.ofNullable(this.publicEndpointParams);
+    }
+
     private AiSearchNamespaceArgs() {}
 
     private AiSearchNamespaceArgs(AiSearchNamespaceArgs $) {
         this.accountId = $.accountId;
         this.description = $.description;
         this.name = $.name;
+        this.publicEndpointParams = $.publicEndpointParams;
     }
 
     public static Builder builder() {
@@ -108,6 +117,15 @@ public final class AiSearchNamespaceArgs extends com.pulumi.resources.ResourceAr
 
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder publicEndpointParams(@Nullable Output<AiSearchNamespacePublicEndpointParamsArgs> publicEndpointParams) {
+            $.publicEndpointParams = publicEndpointParams;
+            return this;
+        }
+
+        public Builder publicEndpointParams(AiSearchNamespacePublicEndpointParamsArgs publicEndpointParams) {
+            return publicEndpointParams(Output.of(publicEndpointParams));
         }
 
         public AiSearchNamespaceArgs build() {

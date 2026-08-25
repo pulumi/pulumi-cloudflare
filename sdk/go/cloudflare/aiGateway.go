@@ -48,6 +48,7 @@ import (
 //				RetryBackoff:            pulumi.String("constant"),
 //				RetryDelay:              pulumi.Int(0),
 //				RetryMaxAttempts:        pulumi.Int(1),
+//				StoreId:                 pulumi.String("store_id"),
 //				WorkersAiBillingMode:    pulumi.String("postpaid"),
 //				Zdr:                     pulumi.Bool(true),
 //			})
@@ -79,6 +80,7 @@ type AiGateway struct {
 	Dlp                     AiGatewayDlpPtrOutput        `pulumi:"dlp"`
 	Guardrails              AiGatewayGuardrailsPtrOutput `pulumi:"guardrails"`
 	IsDefault               pulumi.BoolOutput            `pulumi:"isDefault"`
+	LogClassification       pulumi.BoolPtrOutput         `pulumi:"logClassification"`
 	LogManagement           pulumi.IntPtrOutput          `pulumi:"logManagement"`
 	// Available values: "STOP*INSERTING", "DELETE*OLDEST".
 	LogManagementStrategy pulumi.StringPtrOutput   `pulumi:"logManagementStrategy"`
@@ -100,8 +102,8 @@ type AiGateway struct {
 	SpendLimits      AiGatewaySpendLimitsOutput `pulumi:"spendLimits"`
 	StoreId          pulumi.StringPtrOutput     `pulumi:"storeId"`
 	Stripe           AiGatewayStripePtrOutput   `pulumi:"stripe"`
-	// Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-	// Available values: "postpaid".
+	// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+	// Available values: "postpaid", "unified".
 	WorkersAiBillingMode pulumi.StringOutput  `pulumi:"workersAiBillingMode"`
 	Zdr                  pulumi.BoolPtrOutput `pulumi:"zdr"`
 }
@@ -168,6 +170,7 @@ type aiGatewayState struct {
 	Dlp                     *AiGatewayDlp        `pulumi:"dlp"`
 	Guardrails              *AiGatewayGuardrails `pulumi:"guardrails"`
 	IsDefault               *bool                `pulumi:"isDefault"`
+	LogClassification       *bool                `pulumi:"logClassification"`
 	LogManagement           *int                 `pulumi:"logManagement"`
 	// Available values: "STOP*INSERTING", "DELETE*OLDEST".
 	LogManagementStrategy *string         `pulumi:"logManagementStrategy"`
@@ -189,8 +192,8 @@ type aiGatewayState struct {
 	SpendLimits      *AiGatewaySpendLimits `pulumi:"spendLimits"`
 	StoreId          *string               `pulumi:"storeId"`
 	Stripe           *AiGatewayStripe      `pulumi:"stripe"`
-	// Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-	// Available values: "postpaid".
+	// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+	// Available values: "postpaid", "unified".
 	WorkersAiBillingMode *string `pulumi:"workersAiBillingMode"`
 	Zdr                  *bool   `pulumi:"zdr"`
 }
@@ -207,6 +210,7 @@ type AiGatewayState struct {
 	Dlp                     AiGatewayDlpPtrInput
 	Guardrails              AiGatewayGuardrailsPtrInput
 	IsDefault               pulumi.BoolPtrInput
+	LogClassification       pulumi.BoolPtrInput
 	LogManagement           pulumi.IntPtrInput
 	// Available values: "STOP*INSERTING", "DELETE*OLDEST".
 	LogManagementStrategy pulumi.StringPtrInput
@@ -228,8 +232,8 @@ type AiGatewayState struct {
 	SpendLimits      AiGatewaySpendLimitsPtrInput
 	StoreId          pulumi.StringPtrInput
 	Stripe           AiGatewayStripePtrInput
-	// Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-	// Available values: "postpaid".
+	// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+	// Available values: "postpaid", "unified".
 	WorkersAiBillingMode pulumi.StringPtrInput
 	Zdr                  pulumi.BoolPtrInput
 }
@@ -248,6 +252,7 @@ type aiGatewayArgs struct {
 	CollectLogs             bool                 `pulumi:"collectLogs"`
 	Dlp                     *AiGatewayDlp        `pulumi:"dlp"`
 	Guardrails              *AiGatewayGuardrails `pulumi:"guardrails"`
+	LogClassification       *bool                `pulumi:"logClassification"`
 	LogManagement           *int                 `pulumi:"logManagement"`
 	// Available values: "STOP*INSERTING", "DELETE*OLDEST".
 	LogManagementStrategy *string         `pulumi:"logManagementStrategy"`
@@ -268,8 +273,8 @@ type aiGatewayArgs struct {
 	SpendLimits      *AiGatewaySpendLimits `pulumi:"spendLimits"`
 	StoreId          *string               `pulumi:"storeId"`
 	Stripe           *AiGatewayStripe      `pulumi:"stripe"`
-	// Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-	// Available values: "postpaid".
+	// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+	// Available values: "postpaid", "unified".
 	WorkersAiBillingMode *string `pulumi:"workersAiBillingMode"`
 	Zdr                  *bool   `pulumi:"zdr"`
 }
@@ -285,6 +290,7 @@ type AiGatewayArgs struct {
 	CollectLogs             pulumi.BoolInput
 	Dlp                     AiGatewayDlpPtrInput
 	Guardrails              AiGatewayGuardrailsPtrInput
+	LogClassification       pulumi.BoolPtrInput
 	LogManagement           pulumi.IntPtrInput
 	// Available values: "STOP*INSERTING", "DELETE*OLDEST".
 	LogManagementStrategy pulumi.StringPtrInput
@@ -305,8 +311,8 @@ type AiGatewayArgs struct {
 	SpendLimits      AiGatewaySpendLimitsPtrInput
 	StoreId          pulumi.StringPtrInput
 	Stripe           AiGatewayStripePtrInput
-	// Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-	// Available values: "postpaid".
+	// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+	// Available values: "postpaid", "unified".
 	WorkersAiBillingMode pulumi.StringPtrInput
 	Zdr                  pulumi.BoolPtrInput
 }
@@ -439,6 +445,10 @@ func (o AiGatewayOutput) IsDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AiGateway) pulumi.BoolOutput { return v.IsDefault }).(pulumi.BoolOutput)
 }
 
+func (o AiGatewayOutput) LogClassification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiGateway) pulumi.BoolPtrOutput { return v.LogClassification }).(pulumi.BoolPtrOutput)
+}
+
 func (o AiGatewayOutput) LogManagement() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AiGateway) pulumi.IntPtrOutput { return v.LogManagement }).(pulumi.IntPtrOutput)
 }
@@ -505,8 +515,8 @@ func (o AiGatewayOutput) Stripe() AiGatewayStripePtrOutput {
 	return o.ApplyT(func(v *AiGateway) AiGatewayStripePtrOutput { return v.Stripe }).(AiGatewayStripePtrOutput)
 }
 
-// Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-// Available values: "postpaid".
+// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+// Available values: "postpaid", "unified".
 func (o AiGatewayOutput) WorkersAiBillingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGateway) pulumi.StringOutput { return v.WorkersAiBillingMode }).(pulumi.StringOutput)
 }

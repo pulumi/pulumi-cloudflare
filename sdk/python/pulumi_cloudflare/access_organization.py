@@ -38,6 +38,7 @@ class AccessOrganizationArgs:
                  session_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  ui_read_only_toggle_reason: pulumi.Input[Optional[_builtins.str]] = None,
                  user_seat_expiration_inactive_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 warp_auth_non_browser401: pulumi.Input[Optional[_builtins.bool]] = None,
                  warp_auth_session_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -52,12 +53,13 @@ class AccessOrganizationArgs:
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         :param pulumi.Input['AccessOrganizationMfaConfigArgs'] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
         :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
-        :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+        :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
         :param pulumi.Input['AccessOrganizationMfaSshPivKeyRequirementsArgs'] mfa_ssh_piv_key_requirements: Configures SSH PIV key requirements for MFA using hardware security keys.
         :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         :param pulumi.Input[_builtins.str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
         :param pulumi.Input[_builtins.str] user_seat_expiration_inactive_time: The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
+        :param pulumi.Input[_builtins.bool] warp_auth_non_browser401: When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
         :param pulumi.Input[_builtins.str] warp_auth_session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
@@ -95,6 +97,8 @@ class AccessOrganizationArgs:
             pulumi.set(__self__, "ui_read_only_toggle_reason", ui_read_only_toggle_reason)
         if user_seat_expiration_inactive_time is not None:
             pulumi.set(__self__, "user_seat_expiration_inactive_time", user_seat_expiration_inactive_time)
+        if warp_auth_non_browser401 is not None:
+            pulumi.set(__self__, "warp_auth_non_browser401", warp_auth_non_browser401)
         if warp_auth_session_duration is not None:
             pulumi.set(__self__, "warp_auth_session_duration", warp_auth_session_duration)
         if zone_id is not None:
@@ -230,7 +234,7 @@ class AccessOrganizationArgs:
     @pulumi.getter(name="mfaRequiredForAllApps")
     def mfa_required_for_all_apps(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+        Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
         """
         return pulumi.get(self, "mfa_required_for_all_apps")
 
@@ -297,6 +301,18 @@ class AccessOrganizationArgs:
     @user_seat_expiration_inactive_time.setter
     def user_seat_expiration_inactive_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_seat_expiration_inactive_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="warpAuthNonBrowser401")
+    def warp_auth_non_browser401(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
+        """
+        return pulumi.get(self, "warp_auth_non_browser401")
+
+    @warp_auth_non_browser401.setter
+    def warp_auth_non_browser401(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "warp_auth_non_browser401", value)
 
     @_builtins.property
     @pulumi.getter(name="warpAuthSessionDuration")
@@ -343,6 +359,7 @@ class _AccessOrganizationState:
                  session_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  ui_read_only_toggle_reason: pulumi.Input[Optional[_builtins.str]] = None,
                  user_seat_expiration_inactive_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 warp_auth_non_browser401: pulumi.Input[Optional[_builtins.bool]] = None,
                  warp_auth_session_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -357,12 +374,13 @@ class _AccessOrganizationState:
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         :param pulumi.Input['AccessOrganizationMfaConfigArgs'] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
         :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
-        :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+        :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
         :param pulumi.Input['AccessOrganizationMfaSshPivKeyRequirementsArgs'] mfa_ssh_piv_key_requirements: Configures SSH PIV key requirements for MFA using hardware security keys.
         :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         :param pulumi.Input[_builtins.str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
         :param pulumi.Input[_builtins.str] user_seat_expiration_inactive_time: The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
+        :param pulumi.Input[_builtins.bool] warp_auth_non_browser401: When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
         :param pulumi.Input[_builtins.str] warp_auth_session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
@@ -400,6 +418,8 @@ class _AccessOrganizationState:
             pulumi.set(__self__, "ui_read_only_toggle_reason", ui_read_only_toggle_reason)
         if user_seat_expiration_inactive_time is not None:
             pulumi.set(__self__, "user_seat_expiration_inactive_time", user_seat_expiration_inactive_time)
+        if warp_auth_non_browser401 is not None:
+            pulumi.set(__self__, "warp_auth_non_browser401", warp_auth_non_browser401)
         if warp_auth_session_duration is not None:
             pulumi.set(__self__, "warp_auth_session_duration", warp_auth_session_duration)
         if zone_id is not None:
@@ -535,7 +555,7 @@ class _AccessOrganizationState:
     @pulumi.getter(name="mfaRequiredForAllApps")
     def mfa_required_for_all_apps(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+        Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
         """
         return pulumi.get(self, "mfa_required_for_all_apps")
 
@@ -602,6 +622,18 @@ class _AccessOrganizationState:
     @user_seat_expiration_inactive_time.setter
     def user_seat_expiration_inactive_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_seat_expiration_inactive_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="warpAuthNonBrowser401")
+    def warp_auth_non_browser401(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
+        """
+        return pulumi.get(self, "warp_auth_non_browser401")
+
+    @warp_auth_non_browser401.setter
+    def warp_auth_non_browser401(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "warp_auth_non_browser401", value)
 
     @_builtins.property
     @pulumi.getter(name="warpAuthSessionDuration")
@@ -656,6 +688,7 @@ class AccessOrganization(pulumi.CustomResource):
                  session_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  ui_read_only_toggle_reason: pulumi.Input[Optional[_builtins.str]] = None,
                  user_seat_expiration_inactive_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 warp_auth_non_browser401: pulumi.Input[Optional[_builtins.bool]] = None,
                  warp_auth_session_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -719,6 +752,7 @@ class AccessOrganization(pulumi.CustomResource):
             session_duration="24h",
             ui_read_only_toggle_reason="Temporarily turn off the UI read only lock to make a change via the UI",
             user_seat_expiration_inactive_time="730h",
+            warp_auth_non_browser401=False,
             warp_auth_session_duration="24h")
         ```
 
@@ -738,12 +772,13 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         :param pulumi.Input[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict']] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
         :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
-        :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+        :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
         :param pulumi.Input[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict']] mfa_ssh_piv_key_requirements: Configures SSH PIV key requirements for MFA using hardware security keys.
         :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         :param pulumi.Input[_builtins.str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
         :param pulumi.Input[_builtins.str] user_seat_expiration_inactive_time: The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
+        :param pulumi.Input[_builtins.bool] warp_auth_non_browser401: When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
         :param pulumi.Input[_builtins.str] warp_auth_session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
@@ -813,6 +848,7 @@ class AccessOrganization(pulumi.CustomResource):
             session_duration="24h",
             ui_read_only_toggle_reason="Temporarily turn off the UI read only lock to make a change via the UI",
             user_seat_expiration_inactive_time="730h",
+            warp_auth_non_browser401=False,
             warp_auth_session_duration="24h")
         ```
 
@@ -853,6 +889,7 @@ class AccessOrganization(pulumi.CustomResource):
                  session_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  ui_read_only_toggle_reason: pulumi.Input[Optional[_builtins.str]] = None,
                  user_seat_expiration_inactive_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 warp_auth_non_browser401: pulumi.Input[Optional[_builtins.bool]] = None,
                  warp_auth_session_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -882,6 +919,7 @@ class AccessOrganization(pulumi.CustomResource):
             __props__.__dict__["session_duration"] = session_duration
             __props__.__dict__["ui_read_only_toggle_reason"] = ui_read_only_toggle_reason
             __props__.__dict__["user_seat_expiration_inactive_time"] = user_seat_expiration_inactive_time
+            __props__.__dict__["warp_auth_non_browser401"] = warp_auth_non_browser401
             __props__.__dict__["warp_auth_session_duration"] = warp_auth_session_duration
             __props__.__dict__["zone_id"] = zone_id
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessOrganization:AccessOrganization")])
@@ -913,6 +951,7 @@ class AccessOrganization(pulumi.CustomResource):
             session_duration: pulumi.Input[Optional[_builtins.str]] = None,
             ui_read_only_toggle_reason: pulumi.Input[Optional[_builtins.str]] = None,
             user_seat_expiration_inactive_time: pulumi.Input[Optional[_builtins.str]] = None,
+            warp_auth_non_browser401: pulumi.Input[Optional[_builtins.bool]] = None,
             warp_auth_session_duration: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccessOrganization':
         """
@@ -931,12 +970,13 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         :param pulumi.Input[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict']] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
         :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
-        :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+        :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
         :param pulumi.Input[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict']] mfa_ssh_piv_key_requirements: Configures SSH PIV key requirements for MFA using hardware security keys.
         :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         :param pulumi.Input[_builtins.str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
         :param pulumi.Input[_builtins.str] user_seat_expiration_inactive_time: The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
+        :param pulumi.Input[_builtins.bool] warp_auth_non_browser401: When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
         :param pulumi.Input[_builtins.str] warp_auth_session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
@@ -961,6 +1001,7 @@ class AccessOrganization(pulumi.CustomResource):
         __props__.__dict__["session_duration"] = session_duration
         __props__.__dict__["ui_read_only_toggle_reason"] = ui_read_only_toggle_reason
         __props__.__dict__["user_seat_expiration_inactive_time"] = user_seat_expiration_inactive_time
+        __props__.__dict__["warp_auth_non_browser401"] = warp_auth_non_browser401
         __props__.__dict__["warp_auth_session_duration"] = warp_auth_session_duration
         __props__.__dict__["zone_id"] = zone_id
         return AccessOrganization(resource_name, opts=opts, __props__=__props__)
@@ -1051,7 +1092,7 @@ class AccessOrganization(pulumi.CustomResource):
     @pulumi.getter(name="mfaRequiredForAllApps")
     def mfa_required_for_all_apps(self) -> pulumi.Output[_builtins.bool]:
         """
-        Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+        Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
         """
         return pulumi.get(self, "mfa_required_for_all_apps")
 
@@ -1094,6 +1135,14 @@ class AccessOrganization(pulumi.CustomResource):
         The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
         """
         return pulumi.get(self, "user_seat_expiration_inactive_time")
+
+    @_builtins.property
+    @pulumi.getter(name="warpAuthNonBrowser401")
+    def warp_auth_non_browser401(self) -> pulumi.Output[_builtins.bool]:
+        """
+        When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
+        """
+        return pulumi.get(self, "warp_auth_non_browser401")
 
     @_builtins.property
     @pulumi.getter(name="warpAuthSessionDuration")

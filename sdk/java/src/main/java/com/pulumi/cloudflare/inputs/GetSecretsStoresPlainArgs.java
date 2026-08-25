@@ -16,9 +16,17 @@ public final class GetSecretsStoresPlainArgs extends com.pulumi.resources.Invoke
 
     public static final GetSecretsStoresPlainArgs Empty = new GetSecretsStoresPlainArgs();
 
+    /**
+     * Account Identifier.
+     * 
+     */
     @Import(name="accountId", required=true)
     private String accountId;
 
+    /**
+     * @return Account Identifier.
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
@@ -99,6 +107,12 @@ public final class GetSecretsStoresPlainArgs extends com.pulumi.resources.Invoke
             $ = new GetSecretsStoresPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId Account Identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             $.accountId = accountId;
             return this;

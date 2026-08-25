@@ -34,9 +34,10 @@ import (
 //			_, err := cloudflare.NewZeroTrustAccessAiControlsMcpPortal(ctx, "example_zero_trust_access_ai_controls_mcp_portal", &cloudflare.ZeroTrustAccessAiControlsMcpPortalArgs{
 //				AccountId:                            pulumi.String("a86a8f5c339544d7bdc89926de14fb8c"),
 //				ZeroTrustAccessAiControlsMcpPortalId: pulumi.String("my-mcp-portal"),
-//				Hostname:                             pulumi.String("exmaple.com"),
+//				Hostname:                             pulumi.String("example.com"),
 //				Name:                                 pulumi.String("My MCP Portal"),
 //				AllowCodeMode:                        pulumi.Bool(true),
+//				CodeMode:                             pulumi.String("opt_in"),
 //				Description:                          pulumi.String("This is my custom MCP Portal"),
 //				SecureWebGateway:                     pulumi.Bool(false),
 //				Servers: cloudflare.ZeroTrustAccessAiControlsMcpPortalServerArray{
@@ -81,19 +82,28 @@ type ZeroTrustAccessAiControlsMcpPortal struct {
 	pulumi.CustomResourceState
 
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Allow remote code execution in Dynamic Workers (beta)
-	AllowCodeMode pulumi.BoolOutput      `pulumi:"allowCodeMode"`
-	CreatedAt     pulumi.StringOutput    `pulumi:"createdAt"`
-	CreatedBy     pulumi.StringOutput    `pulumi:"createdBy"`
-	Description   pulumi.StringPtrOutput `pulumi:"description"`
-	Hostname      pulumi.StringOutput    `pulumi:"hostname"`
-	ModifiedAt    pulumi.StringOutput    `pulumi:"modifiedAt"`
-	ModifiedBy    pulumi.StringOutput    `pulumi:"modifiedBy"`
-	Name          pulumi.StringOutput    `pulumi:"name"`
-	// Route outbound MCP traffic through Zero Trust Secure Web Gateway
-	SecureWebGateway pulumi.BoolOutput                                   `pulumi:"secureWebGateway"`
-	Servers          ZeroTrustAccessAiControlsMcpPortalServerArrayOutput `pulumi:"servers"`
-	// portal id
+	// Deprecated: use `codeMode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
+	//
+	// Deprecated: This attribute is deprecated.
+	AllowCodeMode pulumi.BoolOutput `pulumi:"allowCodeMode"`
+	// Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `optIn`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `defaultOn`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `optIn` when omitted on create. If both `codeMode` and `allowCodeMode` are sent, they must be consistent or the request returns a 400.
+	// Available values: "off", "opt*in", "default*on", "enforced".
+	CodeMode  pulumi.StringOutput `pulumi:"codeMode"`
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
+	// Optional description of the MCP portal.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Hostname where the MCP portal is available.
+	Hostname   pulumi.StringOutput `pulumi:"hostname"`
+	ModifiedAt pulumi.StringOutput `pulumi:"modifiedAt"`
+	ModifiedBy pulumi.StringOutput `pulumi:"modifiedBy"`
+	// Display name for the MCP portal.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Route outbound MCP traffic through Zero Trust Secure Web Gateway.
+	SecureWebGateway pulumi.BoolOutput `pulumi:"secureWebGateway"`
+	// MCP servers attached to the portal and their portal-specific settings.
+	Servers ZeroTrustAccessAiControlsMcpPortalServerArrayOutput `pulumi:"servers"`
+	// Unique identifier for the MCP portal.
 	ZeroTrustAccessAiControlsMcpPortalId pulumi.StringOutput `pulumi:"zeroTrustAccessAiControlsMcpPortalId"`
 }
 
@@ -140,37 +150,55 @@ func GetZeroTrustAccessAiControlsMcpPortal(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ZeroTrustAccessAiControlsMcpPortal resources.
 type zeroTrustAccessAiControlsMcpPortalState struct {
 	AccountId *string `pulumi:"accountId"`
-	// Allow remote code execution in Dynamic Workers (beta)
-	AllowCodeMode *bool   `pulumi:"allowCodeMode"`
-	CreatedAt     *string `pulumi:"createdAt"`
-	CreatedBy     *string `pulumi:"createdBy"`
-	Description   *string `pulumi:"description"`
-	Hostname      *string `pulumi:"hostname"`
-	ModifiedAt    *string `pulumi:"modifiedAt"`
-	ModifiedBy    *string `pulumi:"modifiedBy"`
-	Name          *string `pulumi:"name"`
-	// Route outbound MCP traffic through Zero Trust Secure Web Gateway
-	SecureWebGateway *bool                                      `pulumi:"secureWebGateway"`
-	Servers          []ZeroTrustAccessAiControlsMcpPortalServer `pulumi:"servers"`
-	// portal id
+	// Deprecated: use `codeMode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
+	//
+	// Deprecated: This attribute is deprecated.
+	AllowCodeMode *bool `pulumi:"allowCodeMode"`
+	// Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `optIn`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `defaultOn`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `optIn` when omitted on create. If both `codeMode` and `allowCodeMode` are sent, they must be consistent or the request returns a 400.
+	// Available values: "off", "opt*in", "default*on", "enforced".
+	CodeMode  *string `pulumi:"codeMode"`
+	CreatedAt *string `pulumi:"createdAt"`
+	CreatedBy *string `pulumi:"createdBy"`
+	// Optional description of the MCP portal.
+	Description *string `pulumi:"description"`
+	// Hostname where the MCP portal is available.
+	Hostname   *string `pulumi:"hostname"`
+	ModifiedAt *string `pulumi:"modifiedAt"`
+	ModifiedBy *string `pulumi:"modifiedBy"`
+	// Display name for the MCP portal.
+	Name *string `pulumi:"name"`
+	// Route outbound MCP traffic through Zero Trust Secure Web Gateway.
+	SecureWebGateway *bool `pulumi:"secureWebGateway"`
+	// MCP servers attached to the portal and their portal-specific settings.
+	Servers []ZeroTrustAccessAiControlsMcpPortalServer `pulumi:"servers"`
+	// Unique identifier for the MCP portal.
 	ZeroTrustAccessAiControlsMcpPortalId *string `pulumi:"zeroTrustAccessAiControlsMcpPortalId"`
 }
 
 type ZeroTrustAccessAiControlsMcpPortalState struct {
 	AccountId pulumi.StringPtrInput
-	// Allow remote code execution in Dynamic Workers (beta)
+	// Deprecated: use `codeMode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
+	//
+	// Deprecated: This attribute is deprecated.
 	AllowCodeMode pulumi.BoolPtrInput
-	CreatedAt     pulumi.StringPtrInput
-	CreatedBy     pulumi.StringPtrInput
-	Description   pulumi.StringPtrInput
-	Hostname      pulumi.StringPtrInput
-	ModifiedAt    pulumi.StringPtrInput
-	ModifiedBy    pulumi.StringPtrInput
-	Name          pulumi.StringPtrInput
-	// Route outbound MCP traffic through Zero Trust Secure Web Gateway
+	// Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `optIn`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `defaultOn`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `optIn` when omitted on create. If both `codeMode` and `allowCodeMode` are sent, they must be consistent or the request returns a 400.
+	// Available values: "off", "opt*in", "default*on", "enforced".
+	CodeMode  pulumi.StringPtrInput
+	CreatedAt pulumi.StringPtrInput
+	CreatedBy pulumi.StringPtrInput
+	// Optional description of the MCP portal.
+	Description pulumi.StringPtrInput
+	// Hostname where the MCP portal is available.
+	Hostname   pulumi.StringPtrInput
+	ModifiedAt pulumi.StringPtrInput
+	ModifiedBy pulumi.StringPtrInput
+	// Display name for the MCP portal.
+	Name pulumi.StringPtrInput
+	// Route outbound MCP traffic through Zero Trust Secure Web Gateway.
 	SecureWebGateway pulumi.BoolPtrInput
-	Servers          ZeroTrustAccessAiControlsMcpPortalServerArrayInput
-	// portal id
+	// MCP servers attached to the portal and their portal-specific settings.
+	Servers ZeroTrustAccessAiControlsMcpPortalServerArrayInput
+	// Unique identifier for the MCP portal.
 	ZeroTrustAccessAiControlsMcpPortalId pulumi.StringPtrInput
 }
 
@@ -180,30 +208,48 @@ func (ZeroTrustAccessAiControlsMcpPortalState) ElementType() reflect.Type {
 
 type zeroTrustAccessAiControlsMcpPortalArgs struct {
 	AccountId string `pulumi:"accountId"`
-	// Allow remote code execution in Dynamic Workers (beta)
-	AllowCodeMode *bool   `pulumi:"allowCodeMode"`
-	Description   *string `pulumi:"description"`
-	Hostname      string  `pulumi:"hostname"`
-	Name          string  `pulumi:"name"`
-	// Route outbound MCP traffic through Zero Trust Secure Web Gateway
-	SecureWebGateway *bool                                      `pulumi:"secureWebGateway"`
-	Servers          []ZeroTrustAccessAiControlsMcpPortalServer `pulumi:"servers"`
-	// portal id
+	// Deprecated: use `codeMode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
+	//
+	// Deprecated: This attribute is deprecated.
+	AllowCodeMode *bool `pulumi:"allowCodeMode"`
+	// Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `optIn`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `defaultOn`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `optIn` when omitted on create. If both `codeMode` and `allowCodeMode` are sent, they must be consistent or the request returns a 400.
+	// Available values: "off", "opt*in", "default*on", "enforced".
+	CodeMode *string `pulumi:"codeMode"`
+	// Optional description of the MCP portal.
+	Description *string `pulumi:"description"`
+	// Hostname where the MCP portal is available.
+	Hostname string `pulumi:"hostname"`
+	// Display name for the MCP portal.
+	Name string `pulumi:"name"`
+	// Route outbound MCP traffic through Zero Trust Secure Web Gateway.
+	SecureWebGateway *bool `pulumi:"secureWebGateway"`
+	// MCP servers attached to the portal and their portal-specific settings.
+	Servers []ZeroTrustAccessAiControlsMcpPortalServer `pulumi:"servers"`
+	// Unique identifier for the MCP portal.
 	ZeroTrustAccessAiControlsMcpPortalId string `pulumi:"zeroTrustAccessAiControlsMcpPortalId"`
 }
 
 // The set of arguments for constructing a ZeroTrustAccessAiControlsMcpPortal resource.
 type ZeroTrustAccessAiControlsMcpPortalArgs struct {
 	AccountId pulumi.StringInput
-	// Allow remote code execution in Dynamic Workers (beta)
+	// Deprecated: use `codeMode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
+	//
+	// Deprecated: This attribute is deprecated.
 	AllowCodeMode pulumi.BoolPtrInput
-	Description   pulumi.StringPtrInput
-	Hostname      pulumi.StringInput
-	Name          pulumi.StringInput
-	// Route outbound MCP traffic through Zero Trust Secure Web Gateway
+	// Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `optIn`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `defaultOn`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `optIn` when omitted on create. If both `codeMode` and `allowCodeMode` are sent, they must be consistent or the request returns a 400.
+	// Available values: "off", "opt*in", "default*on", "enforced".
+	CodeMode pulumi.StringPtrInput
+	// Optional description of the MCP portal.
+	Description pulumi.StringPtrInput
+	// Hostname where the MCP portal is available.
+	Hostname pulumi.StringInput
+	// Display name for the MCP portal.
+	Name pulumi.StringInput
+	// Route outbound MCP traffic through Zero Trust Secure Web Gateway.
 	SecureWebGateway pulumi.BoolPtrInput
-	Servers          ZeroTrustAccessAiControlsMcpPortalServerArrayInput
-	// portal id
+	// MCP servers attached to the portal and their portal-specific settings.
+	Servers ZeroTrustAccessAiControlsMcpPortalServerArrayInput
+	// Unique identifier for the MCP portal.
 	ZeroTrustAccessAiControlsMcpPortalId pulumi.StringInput
 }
 
@@ -298,9 +344,17 @@ func (o ZeroTrustAccessAiControlsMcpPortalOutput) AccountId() pulumi.StringOutpu
 	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpPortal) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Allow remote code execution in Dynamic Workers (beta)
+// Deprecated: use `codeMode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
+//
+// Deprecated: This attribute is deprecated.
 func (o ZeroTrustAccessAiControlsMcpPortalOutput) AllowCodeMode() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpPortal) pulumi.BoolOutput { return v.AllowCodeMode }).(pulumi.BoolOutput)
+}
+
+// Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `optIn`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `defaultOn`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `optIn` when omitted on create. If both `codeMode` and `allowCodeMode` are sent, they must be consistent or the request returns a 400.
+// Available values: "off", "opt*in", "default*on", "enforced".
+func (o ZeroTrustAccessAiControlsMcpPortalOutput) CodeMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpPortal) pulumi.StringOutput { return v.CodeMode }).(pulumi.StringOutput)
 }
 
 func (o ZeroTrustAccessAiControlsMcpPortalOutput) CreatedAt() pulumi.StringOutput {
@@ -311,10 +365,12 @@ func (o ZeroTrustAccessAiControlsMcpPortalOutput) CreatedBy() pulumi.StringOutpu
 	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpPortal) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
+// Optional description of the MCP portal.
 func (o ZeroTrustAccessAiControlsMcpPortalOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpPortal) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Hostname where the MCP portal is available.
 func (o ZeroTrustAccessAiControlsMcpPortalOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpPortal) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
 }
@@ -327,22 +383,24 @@ func (o ZeroTrustAccessAiControlsMcpPortalOutput) ModifiedBy() pulumi.StringOutp
 	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpPortal) pulumi.StringOutput { return v.ModifiedBy }).(pulumi.StringOutput)
 }
 
+// Display name for the MCP portal.
 func (o ZeroTrustAccessAiControlsMcpPortalOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpPortal) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Route outbound MCP traffic through Zero Trust Secure Web Gateway
+// Route outbound MCP traffic through Zero Trust Secure Web Gateway.
 func (o ZeroTrustAccessAiControlsMcpPortalOutput) SecureWebGateway() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpPortal) pulumi.BoolOutput { return v.SecureWebGateway }).(pulumi.BoolOutput)
 }
 
+// MCP servers attached to the portal and their portal-specific settings.
 func (o ZeroTrustAccessAiControlsMcpPortalOutput) Servers() ZeroTrustAccessAiControlsMcpPortalServerArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpPortal) ZeroTrustAccessAiControlsMcpPortalServerArrayOutput {
 		return v.Servers
 	}).(ZeroTrustAccessAiControlsMcpPortalServerArrayOutput)
 }
 
-// portal id
+// Unique identifier for the MCP portal.
 func (o ZeroTrustAccessAiControlsMcpPortalOutput) ZeroTrustAccessAiControlsMcpPortalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpPortal) pulumi.StringOutput {
 		return v.ZeroTrustAccessAiControlsMcpPortalId

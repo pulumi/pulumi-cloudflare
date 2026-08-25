@@ -25,6 +25,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Id;
         public readonly bool IsDefault;
+        public readonly bool LogClassification;
         public readonly int LogManagement;
         /// <summary>
         /// Available values: "STOP*INSERTING", "DELETE*OLDEST".
@@ -57,8 +58,8 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string StoreId;
         public readonly Outputs.GetAiGatewaysResultStripeResult Stripe;
         /// <summary>
-        /// Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-        /// Available values: "postpaid".
+        /// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+        /// Available values: "postpaid", "unified".
         /// </summary>
         public readonly string WorkersAiBillingMode;
         public readonly bool Zdr;
@@ -82,6 +83,8 @@ namespace Pulumi.Cloudflare.Outputs
             string id,
 
             bool isDefault,
+
+            bool logClassification,
 
             int logManagement,
 
@@ -126,6 +129,7 @@ namespace Pulumi.Cloudflare.Outputs
             Guardrails = guardrails;
             Id = id;
             IsDefault = isDefault;
+            LogClassification = logClassification;
             LogManagement = logManagement;
             LogManagementStrategy = logManagementStrategy;
             Logpush = logpush;

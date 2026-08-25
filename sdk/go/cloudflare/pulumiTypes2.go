@@ -13,6 +13,965 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ZeroTrustAccessGroupExcludeAzureAd struct {
+	// The ID of an Azure group.
+	Id string `pulumi:"id"`
+	// The ID of your Azure identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// ZeroTrustAccessGroupExcludeAzureAdInput is an input type that accepts ZeroTrustAccessGroupExcludeAzureAdArgs and ZeroTrustAccessGroupExcludeAzureAdOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeAzureAdInput` via:
+//
+//	ZeroTrustAccessGroupExcludeAzureAdArgs{...}
+type ZeroTrustAccessGroupExcludeAzureAdInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessGroupExcludeAzureAdOutput() ZeroTrustAccessGroupExcludeAzureAdOutput
+	ToZeroTrustAccessGroupExcludeAzureAdOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeAzureAdOutput
+}
+
+type ZeroTrustAccessGroupExcludeAzureAdArgs struct {
+	// The ID of an Azure group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of your Azure identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (ZeroTrustAccessGroupExcludeAzureAdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeAzureAd)(nil)).Elem()
+}
+
+func (i ZeroTrustAccessGroupExcludeAzureAdArgs) ToZeroTrustAccessGroupExcludeAzureAdOutput() ZeroTrustAccessGroupExcludeAzureAdOutput {
+	return i.ToZeroTrustAccessGroupExcludeAzureAdOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessGroupExcludeAzureAdArgs) ToZeroTrustAccessGroupExcludeAzureAdOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeAzureAdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeAzureAdOutput)
+}
+
+func (i ZeroTrustAccessGroupExcludeAzureAdArgs) ToZeroTrustAccessGroupExcludeAzureAdPtrOutput() ZeroTrustAccessGroupExcludeAzureAdPtrOutput {
+	return i.ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessGroupExcludeAzureAdArgs) ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeAzureAdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeAzureAdOutput).ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(ctx)
+}
+
+// ZeroTrustAccessGroupExcludeAzureAdPtrInput is an input type that accepts ZeroTrustAccessGroupExcludeAzureAdArgs, ZeroTrustAccessGroupExcludeAzureAdPtr and ZeroTrustAccessGroupExcludeAzureAdPtrOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeAzureAdPtrInput` via:
+//
+//	        ZeroTrustAccessGroupExcludeAzureAdArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustAccessGroupExcludeAzureAdPtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessGroupExcludeAzureAdPtrOutput() ZeroTrustAccessGroupExcludeAzureAdPtrOutput
+	ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeAzureAdPtrOutput
+}
+
+type zeroTrustAccessGroupExcludeAzureAdPtrType ZeroTrustAccessGroupExcludeAzureAdArgs
+
+func ZeroTrustAccessGroupExcludeAzureAdPtr(v *ZeroTrustAccessGroupExcludeAzureAdArgs) ZeroTrustAccessGroupExcludeAzureAdPtrInput {
+	return (*zeroTrustAccessGroupExcludeAzureAdPtrType)(v)
+}
+
+func (*zeroTrustAccessGroupExcludeAzureAdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeAzureAd)(nil)).Elem()
+}
+
+func (i *zeroTrustAccessGroupExcludeAzureAdPtrType) ToZeroTrustAccessGroupExcludeAzureAdPtrOutput() ZeroTrustAccessGroupExcludeAzureAdPtrOutput {
+	return i.ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustAccessGroupExcludeAzureAdPtrType) ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeAzureAdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeAzureAdPtrOutput)
+}
+
+type ZeroTrustAccessGroupExcludeAzureAdOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessGroupExcludeAzureAdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeAzureAd)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessGroupExcludeAzureAdOutput) ToZeroTrustAccessGroupExcludeAzureAdOutput() ZeroTrustAccessGroupExcludeAzureAdOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeAzureAdOutput) ToZeroTrustAccessGroupExcludeAzureAdOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeAzureAdOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeAzureAdOutput) ToZeroTrustAccessGroupExcludeAzureAdPtrOutput() ZeroTrustAccessGroupExcludeAzureAdPtrOutput {
+	return o.ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustAccessGroupExcludeAzureAdOutput) ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeAzureAdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessGroupExcludeAzureAd) *ZeroTrustAccessGroupExcludeAzureAd {
+		return &v
+	}).(ZeroTrustAccessGroupExcludeAzureAdPtrOutput)
+}
+
+// The ID of an Azure group.
+func (o ZeroTrustAccessGroupExcludeAzureAdOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeAzureAd) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of your Azure identity provider.
+func (o ZeroTrustAccessGroupExcludeAzureAdOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeAzureAd) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type ZeroTrustAccessGroupExcludeAzureAdPtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessGroupExcludeAzureAdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeAzureAd)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessGroupExcludeAzureAdPtrOutput) ToZeroTrustAccessGroupExcludeAzureAdPtrOutput() ZeroTrustAccessGroupExcludeAzureAdPtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeAzureAdPtrOutput) ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeAzureAdPtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeAzureAdPtrOutput) Elem() ZeroTrustAccessGroupExcludeAzureAdOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeAzureAd) ZeroTrustAccessGroupExcludeAzureAd {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustAccessGroupExcludeAzureAd
+		return ret
+	}).(ZeroTrustAccessGroupExcludeAzureAdOutput)
+}
+
+// The ID of an Azure group.
+func (o ZeroTrustAccessGroupExcludeAzureAdPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeAzureAd) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of your Azure identity provider.
+func (o ZeroTrustAccessGroupExcludeAzureAdPtrOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeAzureAd) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdentityProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ZeroTrustAccessGroupExcludeCertificate struct {
+}
+
+// ZeroTrustAccessGroupExcludeCertificateInput is an input type that accepts ZeroTrustAccessGroupExcludeCertificateArgs and ZeroTrustAccessGroupExcludeCertificateOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeCertificateInput` via:
+//
+//	ZeroTrustAccessGroupExcludeCertificateArgs{...}
+type ZeroTrustAccessGroupExcludeCertificateInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessGroupExcludeCertificateOutput() ZeroTrustAccessGroupExcludeCertificateOutput
+	ToZeroTrustAccessGroupExcludeCertificateOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeCertificateOutput
+}
+
+type ZeroTrustAccessGroupExcludeCertificateArgs struct {
+}
+
+func (ZeroTrustAccessGroupExcludeCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeCertificate)(nil)).Elem()
+}
+
+func (i ZeroTrustAccessGroupExcludeCertificateArgs) ToZeroTrustAccessGroupExcludeCertificateOutput() ZeroTrustAccessGroupExcludeCertificateOutput {
+	return i.ToZeroTrustAccessGroupExcludeCertificateOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessGroupExcludeCertificateArgs) ToZeroTrustAccessGroupExcludeCertificateOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCertificateOutput)
+}
+
+func (i ZeroTrustAccessGroupExcludeCertificateArgs) ToZeroTrustAccessGroupExcludeCertificatePtrOutput() ZeroTrustAccessGroupExcludeCertificatePtrOutput {
+	return i.ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessGroupExcludeCertificateArgs) ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCertificateOutput).ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(ctx)
+}
+
+// ZeroTrustAccessGroupExcludeCertificatePtrInput is an input type that accepts ZeroTrustAccessGroupExcludeCertificateArgs, ZeroTrustAccessGroupExcludeCertificatePtr and ZeroTrustAccessGroupExcludeCertificatePtrOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeCertificatePtrInput` via:
+//
+//	        ZeroTrustAccessGroupExcludeCertificateArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustAccessGroupExcludeCertificatePtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessGroupExcludeCertificatePtrOutput() ZeroTrustAccessGroupExcludeCertificatePtrOutput
+	ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeCertificatePtrOutput
+}
+
+type zeroTrustAccessGroupExcludeCertificatePtrType ZeroTrustAccessGroupExcludeCertificateArgs
+
+func ZeroTrustAccessGroupExcludeCertificatePtr(v *ZeroTrustAccessGroupExcludeCertificateArgs) ZeroTrustAccessGroupExcludeCertificatePtrInput {
+	return (*zeroTrustAccessGroupExcludeCertificatePtrType)(v)
+}
+
+func (*zeroTrustAccessGroupExcludeCertificatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeCertificate)(nil)).Elem()
+}
+
+func (i *zeroTrustAccessGroupExcludeCertificatePtrType) ToZeroTrustAccessGroupExcludeCertificatePtrOutput() ZeroTrustAccessGroupExcludeCertificatePtrOutput {
+	return i.ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustAccessGroupExcludeCertificatePtrType) ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCertificatePtrOutput)
+}
+
+type ZeroTrustAccessGroupExcludeCertificateOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessGroupExcludeCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeCertificate)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessGroupExcludeCertificateOutput) ToZeroTrustAccessGroupExcludeCertificateOutput() ZeroTrustAccessGroupExcludeCertificateOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeCertificateOutput) ToZeroTrustAccessGroupExcludeCertificateOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCertificateOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeCertificateOutput) ToZeroTrustAccessGroupExcludeCertificatePtrOutput() ZeroTrustAccessGroupExcludeCertificatePtrOutput {
+	return o.ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustAccessGroupExcludeCertificateOutput) ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCertificatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessGroupExcludeCertificate) *ZeroTrustAccessGroupExcludeCertificate {
+		return &v
+	}).(ZeroTrustAccessGroupExcludeCertificatePtrOutput)
+}
+
+type ZeroTrustAccessGroupExcludeCertificatePtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessGroupExcludeCertificatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeCertificate)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessGroupExcludeCertificatePtrOutput) ToZeroTrustAccessGroupExcludeCertificatePtrOutput() ZeroTrustAccessGroupExcludeCertificatePtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeCertificatePtrOutput) ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCertificatePtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeCertificatePtrOutput) Elem() ZeroTrustAccessGroupExcludeCertificateOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeCertificate) ZeroTrustAccessGroupExcludeCertificate {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustAccessGroupExcludeCertificate
+		return ret
+	}).(ZeroTrustAccessGroupExcludeCertificateOutput)
+}
+
+type ZeroTrustAccessGroupExcludeCloudflareAccountMember struct {
+	// Identifier.
+	AccountId *string `pulumi:"accountId"`
+}
+
+// ZeroTrustAccessGroupExcludeCloudflareAccountMemberInput is an input type that accepts ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs and ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeCloudflareAccountMemberInput` via:
+//
+//	ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs{...}
+type ZeroTrustAccessGroupExcludeCloudflareAccountMemberInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput() ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput
+	ToZeroTrustAccessGroupExcludeCloudflareAccountMemberOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput
+}
+
+type ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs struct {
+	// Identifier.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+}
+
+func (ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeCloudflareAccountMember)(nil)).Elem()
+}
+
+func (i ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput() ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput {
+	return i.ToZeroTrustAccessGroupExcludeCloudflareAccountMemberOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput)
+}
+
+func (i ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput() ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput {
+	return i.ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput).ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(ctx)
+}
+
+// ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrInput is an input type that accepts ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs, ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtr and ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrInput` via:
+//
+//	        ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput() ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput
+	ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput
+}
+
+type zeroTrustAccessGroupExcludeCloudflareAccountMemberPtrType ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs
+
+func ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtr(v *ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs) ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrInput {
+	return (*zeroTrustAccessGroupExcludeCloudflareAccountMemberPtrType)(v)
+}
+
+func (*zeroTrustAccessGroupExcludeCloudflareAccountMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeCloudflareAccountMember)(nil)).Elem()
+}
+
+func (i *zeroTrustAccessGroupExcludeCloudflareAccountMemberPtrType) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput() ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput {
+	return i.ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustAccessGroupExcludeCloudflareAccountMemberPtrType) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput)
+}
+
+type ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeCloudflareAccountMember)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput() ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput() ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput {
+	return o.ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessGroupExcludeCloudflareAccountMember) *ZeroTrustAccessGroupExcludeCloudflareAccountMember {
+		return &v
+	}).(ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput)
+}
+
+// Identifier.
+func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeCloudflareAccountMember) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+type ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeCloudflareAccountMember)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput() ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput) Elem() ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeCloudflareAccountMember) ZeroTrustAccessGroupExcludeCloudflareAccountMember {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustAccessGroupExcludeCloudflareAccountMember
+		return ret
+	}).(ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput)
+}
+
+// Identifier.
+func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeCloudflareAccountMember) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ZeroTrustAccessGroupExcludeCommonName struct {
+	// The common name to match.
+	CommonName string `pulumi:"commonName"`
+}
+
+// ZeroTrustAccessGroupExcludeCommonNameInput is an input type that accepts ZeroTrustAccessGroupExcludeCommonNameArgs and ZeroTrustAccessGroupExcludeCommonNameOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeCommonNameInput` via:
+//
+//	ZeroTrustAccessGroupExcludeCommonNameArgs{...}
+type ZeroTrustAccessGroupExcludeCommonNameInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessGroupExcludeCommonNameOutput() ZeroTrustAccessGroupExcludeCommonNameOutput
+	ToZeroTrustAccessGroupExcludeCommonNameOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeCommonNameOutput
+}
+
+type ZeroTrustAccessGroupExcludeCommonNameArgs struct {
+	// The common name to match.
+	CommonName pulumi.StringInput `pulumi:"commonName"`
+}
+
+func (ZeroTrustAccessGroupExcludeCommonNameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeCommonName)(nil)).Elem()
+}
+
+func (i ZeroTrustAccessGroupExcludeCommonNameArgs) ToZeroTrustAccessGroupExcludeCommonNameOutput() ZeroTrustAccessGroupExcludeCommonNameOutput {
+	return i.ToZeroTrustAccessGroupExcludeCommonNameOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessGroupExcludeCommonNameArgs) ToZeroTrustAccessGroupExcludeCommonNameOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCommonNameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCommonNameOutput)
+}
+
+func (i ZeroTrustAccessGroupExcludeCommonNameArgs) ToZeroTrustAccessGroupExcludeCommonNamePtrOutput() ZeroTrustAccessGroupExcludeCommonNamePtrOutput {
+	return i.ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessGroupExcludeCommonNameArgs) ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCommonNamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCommonNameOutput).ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(ctx)
+}
+
+// ZeroTrustAccessGroupExcludeCommonNamePtrInput is an input type that accepts ZeroTrustAccessGroupExcludeCommonNameArgs, ZeroTrustAccessGroupExcludeCommonNamePtr and ZeroTrustAccessGroupExcludeCommonNamePtrOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeCommonNamePtrInput` via:
+//
+//	        ZeroTrustAccessGroupExcludeCommonNameArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustAccessGroupExcludeCommonNamePtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessGroupExcludeCommonNamePtrOutput() ZeroTrustAccessGroupExcludeCommonNamePtrOutput
+	ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeCommonNamePtrOutput
+}
+
+type zeroTrustAccessGroupExcludeCommonNamePtrType ZeroTrustAccessGroupExcludeCommonNameArgs
+
+func ZeroTrustAccessGroupExcludeCommonNamePtr(v *ZeroTrustAccessGroupExcludeCommonNameArgs) ZeroTrustAccessGroupExcludeCommonNamePtrInput {
+	return (*zeroTrustAccessGroupExcludeCommonNamePtrType)(v)
+}
+
+func (*zeroTrustAccessGroupExcludeCommonNamePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeCommonName)(nil)).Elem()
+}
+
+func (i *zeroTrustAccessGroupExcludeCommonNamePtrType) ToZeroTrustAccessGroupExcludeCommonNamePtrOutput() ZeroTrustAccessGroupExcludeCommonNamePtrOutput {
+	return i.ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustAccessGroupExcludeCommonNamePtrType) ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCommonNamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCommonNamePtrOutput)
+}
+
+type ZeroTrustAccessGroupExcludeCommonNameOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessGroupExcludeCommonNameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeCommonName)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessGroupExcludeCommonNameOutput) ToZeroTrustAccessGroupExcludeCommonNameOutput() ZeroTrustAccessGroupExcludeCommonNameOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeCommonNameOutput) ToZeroTrustAccessGroupExcludeCommonNameOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCommonNameOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeCommonNameOutput) ToZeroTrustAccessGroupExcludeCommonNamePtrOutput() ZeroTrustAccessGroupExcludeCommonNamePtrOutput {
+	return o.ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustAccessGroupExcludeCommonNameOutput) ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCommonNamePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessGroupExcludeCommonName) *ZeroTrustAccessGroupExcludeCommonName {
+		return &v
+	}).(ZeroTrustAccessGroupExcludeCommonNamePtrOutput)
+}
+
+// The common name to match.
+func (o ZeroTrustAccessGroupExcludeCommonNameOutput) CommonName() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeCommonName) string { return v.CommonName }).(pulumi.StringOutput)
+}
+
+type ZeroTrustAccessGroupExcludeCommonNamePtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessGroupExcludeCommonNamePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeCommonName)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessGroupExcludeCommonNamePtrOutput) ToZeroTrustAccessGroupExcludeCommonNamePtrOutput() ZeroTrustAccessGroupExcludeCommonNamePtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeCommonNamePtrOutput) ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCommonNamePtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeCommonNamePtrOutput) Elem() ZeroTrustAccessGroupExcludeCommonNameOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeCommonName) ZeroTrustAccessGroupExcludeCommonName {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustAccessGroupExcludeCommonName
+		return ret
+	}).(ZeroTrustAccessGroupExcludeCommonNameOutput)
+}
+
+// The common name to match.
+func (o ZeroTrustAccessGroupExcludeCommonNamePtrOutput) CommonName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeCommonName) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CommonName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ZeroTrustAccessGroupExcludeDevicePosture struct {
+	// The ID of a device posture integration.
+	IntegrationUid string `pulumi:"integrationUid"`
+}
+
+// ZeroTrustAccessGroupExcludeDevicePostureInput is an input type that accepts ZeroTrustAccessGroupExcludeDevicePostureArgs and ZeroTrustAccessGroupExcludeDevicePostureOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeDevicePostureInput` via:
+//
+//	ZeroTrustAccessGroupExcludeDevicePostureArgs{...}
+type ZeroTrustAccessGroupExcludeDevicePostureInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessGroupExcludeDevicePostureOutput() ZeroTrustAccessGroupExcludeDevicePostureOutput
+	ToZeroTrustAccessGroupExcludeDevicePostureOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeDevicePostureOutput
+}
+
+type ZeroTrustAccessGroupExcludeDevicePostureArgs struct {
+	// The ID of a device posture integration.
+	IntegrationUid pulumi.StringInput `pulumi:"integrationUid"`
+}
+
+func (ZeroTrustAccessGroupExcludeDevicePostureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeDevicePosture)(nil)).Elem()
+}
+
+func (i ZeroTrustAccessGroupExcludeDevicePostureArgs) ToZeroTrustAccessGroupExcludeDevicePostureOutput() ZeroTrustAccessGroupExcludeDevicePostureOutput {
+	return i.ToZeroTrustAccessGroupExcludeDevicePostureOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessGroupExcludeDevicePostureArgs) ToZeroTrustAccessGroupExcludeDevicePostureOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeDevicePostureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeDevicePostureOutput)
+}
+
+func (i ZeroTrustAccessGroupExcludeDevicePostureArgs) ToZeroTrustAccessGroupExcludeDevicePosturePtrOutput() ZeroTrustAccessGroupExcludeDevicePosturePtrOutput {
+	return i.ToZeroTrustAccessGroupExcludeDevicePosturePtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessGroupExcludeDevicePostureArgs) ToZeroTrustAccessGroupExcludeDevicePosturePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeDevicePosturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeDevicePostureOutput).ToZeroTrustAccessGroupExcludeDevicePosturePtrOutputWithContext(ctx)
+}
+
+// ZeroTrustAccessGroupExcludeDevicePosturePtrInput is an input type that accepts ZeroTrustAccessGroupExcludeDevicePostureArgs, ZeroTrustAccessGroupExcludeDevicePosturePtr and ZeroTrustAccessGroupExcludeDevicePosturePtrOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeDevicePosturePtrInput` via:
+//
+//	        ZeroTrustAccessGroupExcludeDevicePostureArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustAccessGroupExcludeDevicePosturePtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessGroupExcludeDevicePosturePtrOutput() ZeroTrustAccessGroupExcludeDevicePosturePtrOutput
+	ToZeroTrustAccessGroupExcludeDevicePosturePtrOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeDevicePosturePtrOutput
+}
+
+type zeroTrustAccessGroupExcludeDevicePosturePtrType ZeroTrustAccessGroupExcludeDevicePostureArgs
+
+func ZeroTrustAccessGroupExcludeDevicePosturePtr(v *ZeroTrustAccessGroupExcludeDevicePostureArgs) ZeroTrustAccessGroupExcludeDevicePosturePtrInput {
+	return (*zeroTrustAccessGroupExcludeDevicePosturePtrType)(v)
+}
+
+func (*zeroTrustAccessGroupExcludeDevicePosturePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeDevicePosture)(nil)).Elem()
+}
+
+func (i *zeroTrustAccessGroupExcludeDevicePosturePtrType) ToZeroTrustAccessGroupExcludeDevicePosturePtrOutput() ZeroTrustAccessGroupExcludeDevicePosturePtrOutput {
+	return i.ToZeroTrustAccessGroupExcludeDevicePosturePtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustAccessGroupExcludeDevicePosturePtrType) ToZeroTrustAccessGroupExcludeDevicePosturePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeDevicePosturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeDevicePosturePtrOutput)
+}
+
+type ZeroTrustAccessGroupExcludeDevicePostureOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessGroupExcludeDevicePostureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeDevicePosture)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessGroupExcludeDevicePostureOutput) ToZeroTrustAccessGroupExcludeDevicePostureOutput() ZeroTrustAccessGroupExcludeDevicePostureOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeDevicePostureOutput) ToZeroTrustAccessGroupExcludeDevicePostureOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeDevicePostureOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeDevicePostureOutput) ToZeroTrustAccessGroupExcludeDevicePosturePtrOutput() ZeroTrustAccessGroupExcludeDevicePosturePtrOutput {
+	return o.ToZeroTrustAccessGroupExcludeDevicePosturePtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustAccessGroupExcludeDevicePostureOutput) ToZeroTrustAccessGroupExcludeDevicePosturePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeDevicePosturePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessGroupExcludeDevicePosture) *ZeroTrustAccessGroupExcludeDevicePosture {
+		return &v
+	}).(ZeroTrustAccessGroupExcludeDevicePosturePtrOutput)
+}
+
+// The ID of a device posture integration.
+func (o ZeroTrustAccessGroupExcludeDevicePostureOutput) IntegrationUid() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeDevicePosture) string { return v.IntegrationUid }).(pulumi.StringOutput)
+}
+
+type ZeroTrustAccessGroupExcludeDevicePosturePtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessGroupExcludeDevicePosturePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeDevicePosture)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessGroupExcludeDevicePosturePtrOutput) ToZeroTrustAccessGroupExcludeDevicePosturePtrOutput() ZeroTrustAccessGroupExcludeDevicePosturePtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeDevicePosturePtrOutput) ToZeroTrustAccessGroupExcludeDevicePosturePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeDevicePosturePtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeDevicePosturePtrOutput) Elem() ZeroTrustAccessGroupExcludeDevicePostureOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeDevicePosture) ZeroTrustAccessGroupExcludeDevicePosture {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustAccessGroupExcludeDevicePosture
+		return ret
+	}).(ZeroTrustAccessGroupExcludeDevicePostureOutput)
+}
+
+// The ID of a device posture integration.
+func (o ZeroTrustAccessGroupExcludeDevicePosturePtrOutput) IntegrationUid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeDevicePosture) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IntegrationUid
+	}).(pulumi.StringPtrOutput)
+}
+
+type ZeroTrustAccessGroupExcludeEmail struct {
+	// The email of the user.
+	Email string `pulumi:"email"`
+}
+
+// ZeroTrustAccessGroupExcludeEmailInput is an input type that accepts ZeroTrustAccessGroupExcludeEmailArgs and ZeroTrustAccessGroupExcludeEmailOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeEmailInput` via:
+//
+//	ZeroTrustAccessGroupExcludeEmailArgs{...}
+type ZeroTrustAccessGroupExcludeEmailInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessGroupExcludeEmailOutput() ZeroTrustAccessGroupExcludeEmailOutput
+	ToZeroTrustAccessGroupExcludeEmailOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeEmailOutput
+}
+
+type ZeroTrustAccessGroupExcludeEmailArgs struct {
+	// The email of the user.
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (ZeroTrustAccessGroupExcludeEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeEmail)(nil)).Elem()
+}
+
+func (i ZeroTrustAccessGroupExcludeEmailArgs) ToZeroTrustAccessGroupExcludeEmailOutput() ZeroTrustAccessGroupExcludeEmailOutput {
+	return i.ToZeroTrustAccessGroupExcludeEmailOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessGroupExcludeEmailArgs) ToZeroTrustAccessGroupExcludeEmailOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeEmailOutput)
+}
+
+func (i ZeroTrustAccessGroupExcludeEmailArgs) ToZeroTrustAccessGroupExcludeEmailPtrOutput() ZeroTrustAccessGroupExcludeEmailPtrOutput {
+	return i.ToZeroTrustAccessGroupExcludeEmailPtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessGroupExcludeEmailArgs) ToZeroTrustAccessGroupExcludeEmailPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeEmailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeEmailOutput).ToZeroTrustAccessGroupExcludeEmailPtrOutputWithContext(ctx)
+}
+
+// ZeroTrustAccessGroupExcludeEmailPtrInput is an input type that accepts ZeroTrustAccessGroupExcludeEmailArgs, ZeroTrustAccessGroupExcludeEmailPtr and ZeroTrustAccessGroupExcludeEmailPtrOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeEmailPtrInput` via:
+//
+//	        ZeroTrustAccessGroupExcludeEmailArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustAccessGroupExcludeEmailPtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessGroupExcludeEmailPtrOutput() ZeroTrustAccessGroupExcludeEmailPtrOutput
+	ToZeroTrustAccessGroupExcludeEmailPtrOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeEmailPtrOutput
+}
+
+type zeroTrustAccessGroupExcludeEmailPtrType ZeroTrustAccessGroupExcludeEmailArgs
+
+func ZeroTrustAccessGroupExcludeEmailPtr(v *ZeroTrustAccessGroupExcludeEmailArgs) ZeroTrustAccessGroupExcludeEmailPtrInput {
+	return (*zeroTrustAccessGroupExcludeEmailPtrType)(v)
+}
+
+func (*zeroTrustAccessGroupExcludeEmailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeEmail)(nil)).Elem()
+}
+
+func (i *zeroTrustAccessGroupExcludeEmailPtrType) ToZeroTrustAccessGroupExcludeEmailPtrOutput() ZeroTrustAccessGroupExcludeEmailPtrOutput {
+	return i.ToZeroTrustAccessGroupExcludeEmailPtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustAccessGroupExcludeEmailPtrType) ToZeroTrustAccessGroupExcludeEmailPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeEmailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeEmailPtrOutput)
+}
+
+type ZeroTrustAccessGroupExcludeEmailOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessGroupExcludeEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeEmail)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessGroupExcludeEmailOutput) ToZeroTrustAccessGroupExcludeEmailOutput() ZeroTrustAccessGroupExcludeEmailOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeEmailOutput) ToZeroTrustAccessGroupExcludeEmailOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeEmailOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeEmailOutput) ToZeroTrustAccessGroupExcludeEmailPtrOutput() ZeroTrustAccessGroupExcludeEmailPtrOutput {
+	return o.ToZeroTrustAccessGroupExcludeEmailPtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustAccessGroupExcludeEmailOutput) ToZeroTrustAccessGroupExcludeEmailPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeEmailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessGroupExcludeEmail) *ZeroTrustAccessGroupExcludeEmail {
+		return &v
+	}).(ZeroTrustAccessGroupExcludeEmailPtrOutput)
+}
+
+// The email of the user.
+func (o ZeroTrustAccessGroupExcludeEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type ZeroTrustAccessGroupExcludeEmailPtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessGroupExcludeEmailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeEmail)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessGroupExcludeEmailPtrOutput) ToZeroTrustAccessGroupExcludeEmailPtrOutput() ZeroTrustAccessGroupExcludeEmailPtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeEmailPtrOutput) ToZeroTrustAccessGroupExcludeEmailPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeEmailPtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeEmailPtrOutput) Elem() ZeroTrustAccessGroupExcludeEmailOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeEmail) ZeroTrustAccessGroupExcludeEmail {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustAccessGroupExcludeEmail
+		return ret
+	}).(ZeroTrustAccessGroupExcludeEmailOutput)
+}
+
+// The email of the user.
+func (o ZeroTrustAccessGroupExcludeEmailPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeEmail) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+type ZeroTrustAccessGroupExcludeEmailDomain struct {
+	// The email domain to match.
+	Domain string `pulumi:"domain"`
+}
+
+// ZeroTrustAccessGroupExcludeEmailDomainInput is an input type that accepts ZeroTrustAccessGroupExcludeEmailDomainArgs and ZeroTrustAccessGroupExcludeEmailDomainOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeEmailDomainInput` via:
+//
+//	ZeroTrustAccessGroupExcludeEmailDomainArgs{...}
+type ZeroTrustAccessGroupExcludeEmailDomainInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessGroupExcludeEmailDomainOutput() ZeroTrustAccessGroupExcludeEmailDomainOutput
+	ToZeroTrustAccessGroupExcludeEmailDomainOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeEmailDomainOutput
+}
+
+type ZeroTrustAccessGroupExcludeEmailDomainArgs struct {
+	// The email domain to match.
+	Domain pulumi.StringInput `pulumi:"domain"`
+}
+
+func (ZeroTrustAccessGroupExcludeEmailDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeEmailDomain)(nil)).Elem()
+}
+
+func (i ZeroTrustAccessGroupExcludeEmailDomainArgs) ToZeroTrustAccessGroupExcludeEmailDomainOutput() ZeroTrustAccessGroupExcludeEmailDomainOutput {
+	return i.ToZeroTrustAccessGroupExcludeEmailDomainOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessGroupExcludeEmailDomainArgs) ToZeroTrustAccessGroupExcludeEmailDomainOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeEmailDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeEmailDomainOutput)
+}
+
+func (i ZeroTrustAccessGroupExcludeEmailDomainArgs) ToZeroTrustAccessGroupExcludeEmailDomainPtrOutput() ZeroTrustAccessGroupExcludeEmailDomainPtrOutput {
+	return i.ToZeroTrustAccessGroupExcludeEmailDomainPtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessGroupExcludeEmailDomainArgs) ToZeroTrustAccessGroupExcludeEmailDomainPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeEmailDomainPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeEmailDomainOutput).ToZeroTrustAccessGroupExcludeEmailDomainPtrOutputWithContext(ctx)
+}
+
+// ZeroTrustAccessGroupExcludeEmailDomainPtrInput is an input type that accepts ZeroTrustAccessGroupExcludeEmailDomainArgs, ZeroTrustAccessGroupExcludeEmailDomainPtr and ZeroTrustAccessGroupExcludeEmailDomainPtrOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeEmailDomainPtrInput` via:
+//
+//	        ZeroTrustAccessGroupExcludeEmailDomainArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustAccessGroupExcludeEmailDomainPtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessGroupExcludeEmailDomainPtrOutput() ZeroTrustAccessGroupExcludeEmailDomainPtrOutput
+	ToZeroTrustAccessGroupExcludeEmailDomainPtrOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeEmailDomainPtrOutput
+}
+
+type zeroTrustAccessGroupExcludeEmailDomainPtrType ZeroTrustAccessGroupExcludeEmailDomainArgs
+
+func ZeroTrustAccessGroupExcludeEmailDomainPtr(v *ZeroTrustAccessGroupExcludeEmailDomainArgs) ZeroTrustAccessGroupExcludeEmailDomainPtrInput {
+	return (*zeroTrustAccessGroupExcludeEmailDomainPtrType)(v)
+}
+
+func (*zeroTrustAccessGroupExcludeEmailDomainPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeEmailDomain)(nil)).Elem()
+}
+
+func (i *zeroTrustAccessGroupExcludeEmailDomainPtrType) ToZeroTrustAccessGroupExcludeEmailDomainPtrOutput() ZeroTrustAccessGroupExcludeEmailDomainPtrOutput {
+	return i.ToZeroTrustAccessGroupExcludeEmailDomainPtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustAccessGroupExcludeEmailDomainPtrType) ToZeroTrustAccessGroupExcludeEmailDomainPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeEmailDomainPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeEmailDomainPtrOutput)
+}
+
+type ZeroTrustAccessGroupExcludeEmailDomainOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessGroupExcludeEmailDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeEmailDomain)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessGroupExcludeEmailDomainOutput) ToZeroTrustAccessGroupExcludeEmailDomainOutput() ZeroTrustAccessGroupExcludeEmailDomainOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeEmailDomainOutput) ToZeroTrustAccessGroupExcludeEmailDomainOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeEmailDomainOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeEmailDomainOutput) ToZeroTrustAccessGroupExcludeEmailDomainPtrOutput() ZeroTrustAccessGroupExcludeEmailDomainPtrOutput {
+	return o.ToZeroTrustAccessGroupExcludeEmailDomainPtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustAccessGroupExcludeEmailDomainOutput) ToZeroTrustAccessGroupExcludeEmailDomainPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeEmailDomainPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessGroupExcludeEmailDomain) *ZeroTrustAccessGroupExcludeEmailDomain {
+		return &v
+	}).(ZeroTrustAccessGroupExcludeEmailDomainPtrOutput)
+}
+
+// The email domain to match.
+func (o ZeroTrustAccessGroupExcludeEmailDomainOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeEmailDomain) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+type ZeroTrustAccessGroupExcludeEmailDomainPtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessGroupExcludeEmailDomainPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeEmailDomain)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessGroupExcludeEmailDomainPtrOutput) ToZeroTrustAccessGroupExcludeEmailDomainPtrOutput() ZeroTrustAccessGroupExcludeEmailDomainPtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeEmailDomainPtrOutput) ToZeroTrustAccessGroupExcludeEmailDomainPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeEmailDomainPtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeEmailDomainPtrOutput) Elem() ZeroTrustAccessGroupExcludeEmailDomainOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeEmailDomain) ZeroTrustAccessGroupExcludeEmailDomain {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustAccessGroupExcludeEmailDomain
+		return ret
+	}).(ZeroTrustAccessGroupExcludeEmailDomainOutput)
+}
+
+// The email domain to match.
+func (o ZeroTrustAccessGroupExcludeEmailDomainPtrOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeEmailDomain) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Domain
+	}).(pulumi.StringPtrOutput)
+}
+
 type ZeroTrustAccessGroupExcludeEmailList struct {
 	// The ID of a previously created email list.
 	Id string `pulumi:"id"`
@@ -43554,7 +44513,7 @@ func (o ZeroTrustOrganizationLoginDesignPtrOutput) TextColor() pulumi.StringPtrO
 }
 
 type ZeroTrustOrganizationMfaConfig struct {
-	// Lists the MFA methods that users can authenticate with. `sshPivKey` is only relevant for infrastructure applications.
+	// Lists the MFA methods that users can authenticate with. The `pivKey` and `sshFido2Key` values are supported only for infrastructure applications.
 	AllowedAuthenticators []string `pulumi:"allowedAuthenticators"`
 	// Allows a user to skip MFA via Authentication Method Reference (AMR) matching when the AMR claim provided by the IdP the user used to authenticate contains "mfa". Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days).
 	AmrMatchingSessionDuration *string `pulumi:"amrMatchingSessionDuration"`
@@ -43576,7 +44535,7 @@ type ZeroTrustOrganizationMfaConfigInput interface {
 }
 
 type ZeroTrustOrganizationMfaConfigArgs struct {
-	// Lists the MFA methods that users can authenticate with. `sshPivKey` is only relevant for infrastructure applications.
+	// Lists the MFA methods that users can authenticate with. The `pivKey` and `sshFido2Key` values are supported only for infrastructure applications.
 	AllowedAuthenticators pulumi.StringArrayInput `pulumi:"allowedAuthenticators"`
 	// Allows a user to skip MFA via Authentication Method Reference (AMR) matching when the AMR claim provided by the IdP the user used to authenticate contains "mfa". Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days).
 	AmrMatchingSessionDuration pulumi.StringPtrInput `pulumi:"amrMatchingSessionDuration"`
@@ -43663,7 +44622,7 @@ func (o ZeroTrustOrganizationMfaConfigOutput) ToZeroTrustOrganizationMfaConfigPt
 	}).(ZeroTrustOrganizationMfaConfigPtrOutput)
 }
 
-// Lists the MFA methods that users can authenticate with. `sshPivKey` is only relevant for infrastructure applications.
+// Lists the MFA methods that users can authenticate with. The `pivKey` and `sshFido2Key` values are supported only for infrastructure applications.
 func (o ZeroTrustOrganizationMfaConfigOutput) AllowedAuthenticators() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZeroTrustOrganizationMfaConfig) []string { return v.AllowedAuthenticators }).(pulumi.StringArrayOutput)
 }
@@ -43707,7 +44666,7 @@ func (o ZeroTrustOrganizationMfaConfigPtrOutput) Elem() ZeroTrustOrganizationMfa
 	}).(ZeroTrustOrganizationMfaConfigOutput)
 }
 
-// Lists the MFA methods that users can authenticate with. `sshPivKey` is only relevant for infrastructure applications.
+// Lists the MFA methods that users can authenticate with. The `pivKey` and `sshFido2Key` values are supported only for infrastructure applications.
 func (o ZeroTrustOrganizationMfaConfigPtrOutput) AllowedAuthenticators() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustOrganizationMfaConfig) []string {
 		if v == nil {
@@ -45520,8 +46479,6 @@ type ZeroTrustTunnelCloudflaredConnection struct {
 	ColoName *string `pulumi:"coloName"`
 	// UUID of the Cloudflare Tunnel connection.
 	Id *string `pulumi:"id"`
-	// Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
-	IsPendingReconnect *bool `pulumi:"isPendingReconnect"`
 	// Timestamp of when the connection was established.
 	OpenedAt *string `pulumi:"openedAt"`
 	// The public IP address of the host running cloudflared.
@@ -45550,8 +46507,6 @@ type ZeroTrustTunnelCloudflaredConnectionArgs struct {
 	ColoName pulumi.StringPtrInput `pulumi:"coloName"`
 	// UUID of the Cloudflare Tunnel connection.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
-	IsPendingReconnect pulumi.BoolPtrInput `pulumi:"isPendingReconnect"`
 	// Timestamp of when the connection was established.
 	OpenedAt pulumi.StringPtrInput `pulumi:"openedAt"`
 	// The public IP address of the host running cloudflared.
@@ -45629,11 +46584,6 @@ func (o ZeroTrustTunnelCloudflaredConnectionOutput) ColoName() pulumi.StringPtrO
 // UUID of the Cloudflare Tunnel connection.
 func (o ZeroTrustTunnelCloudflaredConnectionOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustTunnelCloudflaredConnection) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
-func (o ZeroTrustTunnelCloudflaredConnectionOutput) IsPendingReconnect() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ZeroTrustTunnelCloudflaredConnection) *bool { return v.IsPendingReconnect }).(pulumi.BoolPtrOutput)
 }
 
 // Timestamp of when the connection was established.
@@ -46053,8 +47003,6 @@ type ZeroTrustTunnelWarpConnectorConnection struct {
 	ColoName *string `pulumi:"coloName"`
 	// UUID of the Cloudflare Tunnel connection.
 	Id *string `pulumi:"id"`
-	// Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
-	IsPendingReconnect *bool `pulumi:"isPendingReconnect"`
 	// Timestamp of when the connection was established.
 	OpenedAt *string `pulumi:"openedAt"`
 	// The public IP address of the host running cloudflared.
@@ -46083,8 +47031,6 @@ type ZeroTrustTunnelWarpConnectorConnectionArgs struct {
 	ColoName pulumi.StringPtrInput `pulumi:"coloName"`
 	// UUID of the Cloudflare Tunnel connection.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
-	IsPendingReconnect pulumi.BoolPtrInput `pulumi:"isPendingReconnect"`
 	// Timestamp of when the connection was established.
 	OpenedAt pulumi.StringPtrInput `pulumi:"openedAt"`
 	// The public IP address of the host running cloudflared.
@@ -46162,11 +47108,6 @@ func (o ZeroTrustTunnelWarpConnectorConnectionOutput) ColoName() pulumi.StringPt
 // UUID of the Cloudflare Tunnel connection.
 func (o ZeroTrustTunnelWarpConnectorConnectionOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustTunnelWarpConnectorConnection) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
-func (o ZeroTrustTunnelWarpConnectorConnectionOutput) IsPendingReconnect() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ZeroTrustTunnelWarpConnectorConnection) *bool { return v.IsPendingReconnect }).(pulumi.BoolPtrOutput)
 }
 
 // Timestamp of when the connection was established.
@@ -51665,7 +52606,7 @@ type GetAccountMemberPolicyResourceGroup struct {
 	Meta GetAccountMemberPolicyResourceGroupMeta `pulumi:"meta"`
 	// Name of the resource group.
 	Name string `pulumi:"name"`
-	// A scope is a combination of scope objects which provides additional context.
+	// The scope associated to the resource group
 	Scopes []GetAccountMemberPolicyResourceGroupScope `pulumi:"scopes"`
 }
 
@@ -51687,7 +52628,7 @@ type GetAccountMemberPolicyResourceGroupArgs struct {
 	Meta GetAccountMemberPolicyResourceGroupMetaInput `pulumi:"meta"`
 	// Name of the resource group.
 	Name pulumi.StringInput `pulumi:"name"`
-	// A scope is a combination of scope objects which provides additional context.
+	// The scope associated to the resource group
 	Scopes GetAccountMemberPolicyResourceGroupScopeArrayInput `pulumi:"scopes"`
 }
 
@@ -51757,7 +52698,7 @@ func (o GetAccountMemberPolicyResourceGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountMemberPolicyResourceGroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// A scope is a combination of scope objects which provides additional context.
+// The scope associated to the resource group
 func (o GetAccountMemberPolicyResourceGroupOutput) Scopes() GetAccountMemberPolicyResourceGroupScopeArrayOutput {
 	return o.ApplyT(func(v GetAccountMemberPolicyResourceGroup) []GetAccountMemberPolicyResourceGroupScope {
 		return v.Scopes
@@ -53487,7 +54428,7 @@ type GetAccountMembersResultPolicyResourceGroup struct {
 	Meta GetAccountMembersResultPolicyResourceGroupMeta `pulumi:"meta"`
 	// Name of the resource group.
 	Name string `pulumi:"name"`
-	// A scope is a combination of scope objects which provides additional context.
+	// The scope associated to the resource group
 	Scopes []GetAccountMembersResultPolicyResourceGroupScope `pulumi:"scopes"`
 }
 
@@ -53509,7 +54450,7 @@ type GetAccountMembersResultPolicyResourceGroupArgs struct {
 	Meta GetAccountMembersResultPolicyResourceGroupMetaInput `pulumi:"meta"`
 	// Name of the resource group.
 	Name pulumi.StringInput `pulumi:"name"`
-	// A scope is a combination of scope objects which provides additional context.
+	// The scope associated to the resource group
 	Scopes GetAccountMembersResultPolicyResourceGroupScopeArrayInput `pulumi:"scopes"`
 }
 
@@ -53581,7 +54522,7 @@ func (o GetAccountMembersResultPolicyResourceGroupOutput) Name() pulumi.StringOu
 	return o.ApplyT(func(v GetAccountMembersResultPolicyResourceGroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// A scope is a combination of scope objects which provides additional context.
+// The scope associated to the resource group
 func (o GetAccountMembersResultPolicyResourceGroupOutput) Scopes() GetAccountMembersResultPolicyResourceGroupScopeArrayOutput {
 	return o.ApplyT(func(v GetAccountMembersResultPolicyResourceGroup) []GetAccountMembersResultPolicyResourceGroupScope {
 		return v.Scopes
@@ -56842,7 +57783,7 @@ type GetAccountSubscriptionRatePlan struct {
 	// Whether this rate plan is managed externally from Cloudflare.
 	ExternallyManaged bool `pulumi:"externallyManaged"`
 	// The ID of the rate plan.
-	// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnterprise".
+	// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnt".
 	Id string `pulumi:"id"`
 	// Whether a rate plan is enterprise-based (or newly adopted term contract).
 	IsContract bool `pulumi:"isContract"`
@@ -56871,7 +57812,7 @@ type GetAccountSubscriptionRatePlanArgs struct {
 	// Whether this rate plan is managed externally from Cloudflare.
 	ExternallyManaged pulumi.BoolInput `pulumi:"externallyManaged"`
 	// The ID of the rate plan.
-	// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnterprise".
+	// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnt".
 	Id pulumi.StringInput `pulumi:"id"`
 	// Whether a rate plan is enterprise-based (or newly adopted term contract).
 	IsContract pulumi.BoolInput `pulumi:"isContract"`
@@ -56920,7 +57861,7 @@ func (o GetAccountSubscriptionRatePlanOutput) ExternallyManaged() pulumi.BoolOut
 }
 
 // The ID of the rate plan.
-// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnterprise".
+// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnt".
 func (o GetAccountSubscriptionRatePlanOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountSubscriptionRatePlan) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -60861,9 +61802,10 @@ type GetAiGatewaysResult struct {
 	Dlp                     GetAiGatewaysResultDlp        `pulumi:"dlp"`
 	Guardrails              GetAiGatewaysResultGuardrails `pulumi:"guardrails"`
 	// gateway id
-	Id            string `pulumi:"id"`
-	IsDefault     bool   `pulumi:"isDefault"`
-	LogManagement int    `pulumi:"logManagement"`
+	Id                string `pulumi:"id"`
+	IsDefault         bool   `pulumi:"isDefault"`
+	LogClassification bool   `pulumi:"logClassification"`
+	LogManagement     int    `pulumi:"logManagement"`
 	// Available values: "STOP*INSERTING", "DELETE*OLDEST".
 	LogManagementStrategy string                    `pulumi:"logManagementStrategy"`
 	Logpush               bool                      `pulumi:"logpush"`
@@ -60884,8 +61826,8 @@ type GetAiGatewaysResult struct {
 	SpendLimits      GetAiGatewaysResultSpendLimits `pulumi:"spendLimits"`
 	StoreId          string                         `pulumi:"storeId"`
 	Stripe           GetAiGatewaysResultStripe      `pulumi:"stripe"`
-	// Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-	// Available values: "postpaid".
+	// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+	// Available values: "postpaid", "unified".
 	WorkersAiBillingMode string `pulumi:"workersAiBillingMode"`
 	Zdr                  bool   `pulumi:"zdr"`
 }
@@ -60910,9 +61852,10 @@ type GetAiGatewaysResultArgs struct {
 	Dlp                     GetAiGatewaysResultDlpInput        `pulumi:"dlp"`
 	Guardrails              GetAiGatewaysResultGuardrailsInput `pulumi:"guardrails"`
 	// gateway id
-	Id            pulumi.StringInput `pulumi:"id"`
-	IsDefault     pulumi.BoolInput   `pulumi:"isDefault"`
-	LogManagement pulumi.IntInput    `pulumi:"logManagement"`
+	Id                pulumi.StringInput `pulumi:"id"`
+	IsDefault         pulumi.BoolInput   `pulumi:"isDefault"`
+	LogClassification pulumi.BoolInput   `pulumi:"logClassification"`
+	LogManagement     pulumi.IntInput    `pulumi:"logManagement"`
 	// Available values: "STOP*INSERTING", "DELETE*OLDEST".
 	LogManagementStrategy pulumi.StringInput                `pulumi:"logManagementStrategy"`
 	Logpush               pulumi.BoolInput                  `pulumi:"logpush"`
@@ -60933,8 +61876,8 @@ type GetAiGatewaysResultArgs struct {
 	SpendLimits      GetAiGatewaysResultSpendLimitsInput `pulumi:"spendLimits"`
 	StoreId          pulumi.StringInput                  `pulumi:"storeId"`
 	Stripe           GetAiGatewaysResultStripeInput      `pulumi:"stripe"`
-	// Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-	// Available values: "postpaid".
+	// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+	// Available values: "postpaid", "unified".
 	WorkersAiBillingMode pulumi.StringInput `pulumi:"workersAiBillingMode"`
 	Zdr                  pulumi.BoolInput   `pulumi:"zdr"`
 }
@@ -61027,6 +61970,10 @@ func (o GetAiGatewaysResultOutput) IsDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAiGatewaysResult) bool { return v.IsDefault }).(pulumi.BoolOutput)
 }
 
+func (o GetAiGatewaysResultOutput) LogClassification() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) bool { return v.LogClassification }).(pulumi.BoolOutput)
+}
+
 func (o GetAiGatewaysResultOutput) LogManagement() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAiGatewaysResult) int { return v.LogManagement }).(pulumi.IntOutput)
 }
@@ -61093,8 +62040,8 @@ func (o GetAiGatewaysResultOutput) Stripe() GetAiGatewaysResultStripeOutput {
 	return o.ApplyT(func(v GetAiGatewaysResult) GetAiGatewaysResultStripe { return v.Stripe }).(GetAiGatewaysResultStripeOutput)
 }
 
-// Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-// Available values: "postpaid".
+// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+// Available values: "postpaid", "unified".
 func (o GetAiGatewaysResultOutput) WorkersAiBillingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAiGatewaysResult) string { return v.WorkersAiBillingMode }).(pulumi.StringOutput)
 }
@@ -63380,9 +64327,9 @@ func (o GetAiSearchInstanceRetrievalOptionsBoostByArrayOutput) Index(i pulumi.In
 }
 
 type GetAiSearchInstanceSourceParams struct {
-	// List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+	// List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.
 	ExcludeItems []string `pulumi:"excludeItems"`
-	// List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+	// List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.
 	IncludeItems   []string                                  `pulumi:"includeItems"`
 	Prefix         string                                    `pulumi:"prefix"`
 	R2Jurisdiction string                                    `pulumi:"r2Jurisdiction"`
@@ -63401,9 +64348,9 @@ type GetAiSearchInstanceSourceParamsInput interface {
 }
 
 type GetAiSearchInstanceSourceParamsArgs struct {
-	// List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+	// List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.
 	ExcludeItems pulumi.StringArrayInput `pulumi:"excludeItems"`
-	// List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+	// List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.
 	IncludeItems   pulumi.StringArrayInput                        `pulumi:"includeItems"`
 	Prefix         pulumi.StringInput                             `pulumi:"prefix"`
 	R2Jurisdiction pulumi.StringInput                             `pulumi:"r2Jurisdiction"`
@@ -63436,12 +64383,12 @@ func (o GetAiSearchInstanceSourceParamsOutput) ToGetAiSearchInstanceSourceParams
 	return o
 }
 
-// List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+// List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.
 func (o GetAiSearchInstanceSourceParamsOutput) ExcludeItems() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAiSearchInstanceSourceParams) []string { return v.ExcludeItems }).(pulumi.StringArrayOutput)
 }
 
-// List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+// List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.
 func (o GetAiSearchInstanceSourceParamsOutput) IncludeItems() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAiSearchInstanceSourceParams) []string { return v.IncludeItems }).(pulumi.StringArrayOutput)
 }
@@ -63459,7 +64406,10 @@ func (o GetAiSearchInstanceSourceParamsOutput) WebCrawler() GetAiSearchInstanceS
 }
 
 type GetAiSearchInstanceSourceParamsWebCrawler struct {
-	ParseOptions GetAiSearchInstanceSourceParamsWebCrawlerParseOptions `pulumi:"parseOptions"`
+	// Options for parse*type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.
+	DiscoverOptions GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions `pulumi:"discoverOptions"`
+	ParseOptions    GetAiSearchInstanceSourceParamsWebCrawlerParseOptions    `pulumi:"parseOptions"`
+	// How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.
 	// Available values: "sitemap", "discover".
 	ParseType    string                                                `pulumi:"parseType"`
 	StoreOptions GetAiSearchInstanceSourceParamsWebCrawlerStoreOptions `pulumi:"storeOptions"`
@@ -63477,7 +64427,10 @@ type GetAiSearchInstanceSourceParamsWebCrawlerInput interface {
 }
 
 type GetAiSearchInstanceSourceParamsWebCrawlerArgs struct {
-	ParseOptions GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsInput `pulumi:"parseOptions"`
+	// Options for parse*type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.
+	DiscoverOptions GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsInput `pulumi:"discoverOptions"`
+	ParseOptions    GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsInput    `pulumi:"parseOptions"`
+	// How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.
 	// Available values: "sitemap", "discover".
 	ParseType    pulumi.StringInput                                         `pulumi:"parseType"`
 	StoreOptions GetAiSearchInstanceSourceParamsWebCrawlerStoreOptionsInput `pulumi:"storeOptions"`
@@ -63509,12 +64462,20 @@ func (o GetAiSearchInstanceSourceParamsWebCrawlerOutput) ToGetAiSearchInstanceSo
 	return o
 }
 
+// Options for parse*type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.
+func (o GetAiSearchInstanceSourceParamsWebCrawlerOutput) DiscoverOptions() GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput {
+	return o.ApplyT(func(v GetAiSearchInstanceSourceParamsWebCrawler) GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions {
+		return v.DiscoverOptions
+	}).(GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput)
+}
+
 func (o GetAiSearchInstanceSourceParamsWebCrawlerOutput) ParseOptions() GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput {
 	return o.ApplyT(func(v GetAiSearchInstanceSourceParamsWebCrawler) GetAiSearchInstanceSourceParamsWebCrawlerParseOptions {
 		return v.ParseOptions
 	}).(GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput)
 }
 
+// How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.
 // Available values: "sitemap", "discover".
 func (o GetAiSearchInstanceSourceParamsWebCrawlerOutput) ParseType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAiSearchInstanceSourceParamsWebCrawler) string { return v.ParseType }).(pulumi.StringOutput)
@@ -63524,6 +64485,106 @@ func (o GetAiSearchInstanceSourceParamsWebCrawlerOutput) StoreOptions() GetAiSea
 	return o.ApplyT(func(v GetAiSearchInstanceSourceParamsWebCrawler) GetAiSearchInstanceSourceParamsWebCrawlerStoreOptions {
 		return v.StoreOptions
 	}).(GetAiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput)
+}
+
+type GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions struct {
+	// Maximum link-follow depth from the seed URL.
+	Depth float64 `pulumi:"depth"`
+	// Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.
+	IncludeExternalLinks bool `pulumi:"includeExternalLinks"`
+	// Follow links to subdomains of the source host.
+	IncludeSubdomains bool `pulumi:"includeSubdomains"`
+	// Maximum number of pages to crawl (1-100000).
+	Limit float64 `pulumi:"limit"`
+	// Maximum content age in seconds to accept (0–604800).
+	MaxAge float64 `pulumi:"maxAge"`
+	// Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both.
+	// Available values: "all", "sitemaps", "links".
+	Source string `pulumi:"source"`
+}
+
+// GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsInput is an input type that accepts GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs and GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput values.
+// You can construct a concrete instance of `GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsInput` via:
+//
+//	GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs{...}
+type GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsInput interface {
+	pulumi.Input
+
+	ToGetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput() GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput
+	ToGetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutputWithContext(context.Context) GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput
+}
+
+type GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs struct {
+	// Maximum link-follow depth from the seed URL.
+	Depth pulumi.Float64Input `pulumi:"depth"`
+	// Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.
+	IncludeExternalLinks pulumi.BoolInput `pulumi:"includeExternalLinks"`
+	// Follow links to subdomains of the source host.
+	IncludeSubdomains pulumi.BoolInput `pulumi:"includeSubdomains"`
+	// Maximum number of pages to crawl (1-100000).
+	Limit pulumi.Float64Input `pulumi:"limit"`
+	// Maximum content age in seconds to accept (0–604800).
+	MaxAge pulumi.Float64Input `pulumi:"maxAge"`
+	// Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both.
+	// Available values: "all", "sitemaps", "links".
+	Source pulumi.StringInput `pulumi:"source"`
+}
+
+func (GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions)(nil)).Elem()
+}
+
+func (i GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs) ToGetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput() GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput {
+	return i.ToGetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutputWithContext(context.Background())
+}
+
+func (i GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs) ToGetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutputWithContext(ctx context.Context) GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput)
+}
+
+type GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput struct{ *pulumi.OutputState }
+
+func (GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions)(nil)).Elem()
+}
+
+func (o GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput) ToGetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput() GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput {
+	return o
+}
+
+func (o GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput) ToGetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutputWithContext(ctx context.Context) GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput {
+	return o
+}
+
+// Maximum link-follow depth from the seed URL.
+func (o GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput) Depth() pulumi.Float64Output {
+	return o.ApplyT(func(v GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions) float64 { return v.Depth }).(pulumi.Float64Output)
+}
+
+// Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.
+func (o GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput) IncludeExternalLinks() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions) bool { return v.IncludeExternalLinks }).(pulumi.BoolOutput)
+}
+
+// Follow links to subdomains of the source host.
+func (o GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput) IncludeSubdomains() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions) bool { return v.IncludeSubdomains }).(pulumi.BoolOutput)
+}
+
+// Maximum number of pages to crawl (1-100000).
+func (o GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput) Limit() pulumi.Float64Output {
+	return o.ApplyT(func(v GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions) float64 { return v.Limit }).(pulumi.Float64Output)
+}
+
+// Maximum content age in seconds to accept (0–604800).
+func (o GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput) MaxAge() pulumi.Float64Output {
+	return o.ApplyT(func(v GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions) float64 { return v.MaxAge }).(pulumi.Float64Output)
+}
+
+// Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both.
+// Available values: "all", "sitemaps", "links".
+func (o GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions) string { return v.Source }).(pulumi.StringOutput)
 }
 
 type GetAiSearchInstanceSourceParamsWebCrawlerParseOptions struct {
@@ -65020,7 +66081,8 @@ func (o GetAiSearchInstancesResultSourceParamsOutput) WebCrawler() GetAiSearchIn
 }
 
 type GetAiSearchInstancesResultSourceParamsWebCrawler struct {
-	ParseOptions GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptions `pulumi:"parseOptions"`
+	DiscoverOptions GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptions `pulumi:"discoverOptions"`
+	ParseOptions    GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptions    `pulumi:"parseOptions"`
 	// Available values: "sitemap", "feed-rss", "crawl".
 	ParseType    string                                                       `pulumi:"parseType"`
 	StoreOptions GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptions `pulumi:"storeOptions"`
@@ -65038,7 +66100,8 @@ type GetAiSearchInstancesResultSourceParamsWebCrawlerInput interface {
 }
 
 type GetAiSearchInstancesResultSourceParamsWebCrawlerArgs struct {
-	ParseOptions GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsInput `pulumi:"parseOptions"`
+	DiscoverOptions GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsInput `pulumi:"discoverOptions"`
+	ParseOptions    GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsInput    `pulumi:"parseOptions"`
 	// Available values: "sitemap", "feed-rss", "crawl".
 	ParseType    pulumi.StringInput                                                `pulumi:"parseType"`
 	StoreOptions GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptionsInput `pulumi:"storeOptions"`
@@ -65070,6 +66133,12 @@ func (o GetAiSearchInstancesResultSourceParamsWebCrawlerOutput) ToGetAiSearchIns
 	return o
 }
 
+func (o GetAiSearchInstancesResultSourceParamsWebCrawlerOutput) DiscoverOptions() GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutput {
+	return o.ApplyT(func(v GetAiSearchInstancesResultSourceParamsWebCrawler) GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptions {
+		return v.DiscoverOptions
+	}).(GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutput)
+}
+
 func (o GetAiSearchInstancesResultSourceParamsWebCrawlerOutput) ParseOptions() GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsOutput {
 	return o.ApplyT(func(v GetAiSearchInstancesResultSourceParamsWebCrawler) GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptions {
 		return v.ParseOptions
@@ -65085,6 +66154,95 @@ func (o GetAiSearchInstancesResultSourceParamsWebCrawlerOutput) StoreOptions() G
 	return o.ApplyT(func(v GetAiSearchInstancesResultSourceParamsWebCrawler) GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptions {
 		return v.StoreOptions
 	}).(GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptionsOutput)
+}
+
+type GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptions struct {
+	Depth                float64 `pulumi:"depth"`
+	IncludeExternalLinks bool    `pulumi:"includeExternalLinks"`
+	IncludeSubdomains    bool    `pulumi:"includeSubdomains"`
+	// Maximum number of pages to crawl. New values are capped at 100000; instances configured before that cap may report a higher stored value, which the crawler clamps at run time.
+	Limit  float64 `pulumi:"limit"`
+	MaxAge float64 `pulumi:"maxAge"`
+	// Available values: "all", "sitemaps", "links".
+	Source string `pulumi:"source"`
+}
+
+// GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsInput is an input type that accepts GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsArgs and GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutput values.
+// You can construct a concrete instance of `GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsInput` via:
+//
+//	GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsArgs{...}
+type GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsInput interface {
+	pulumi.Input
+
+	ToGetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutput() GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutput
+	ToGetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutputWithContext(context.Context) GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutput
+}
+
+type GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsArgs struct {
+	Depth                pulumi.Float64Input `pulumi:"depth"`
+	IncludeExternalLinks pulumi.BoolInput    `pulumi:"includeExternalLinks"`
+	IncludeSubdomains    pulumi.BoolInput    `pulumi:"includeSubdomains"`
+	// Maximum number of pages to crawl. New values are capped at 100000; instances configured before that cap may report a higher stored value, which the crawler clamps at run time.
+	Limit  pulumi.Float64Input `pulumi:"limit"`
+	MaxAge pulumi.Float64Input `pulumi:"maxAge"`
+	// Available values: "all", "sitemaps", "links".
+	Source pulumi.StringInput `pulumi:"source"`
+}
+
+func (GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptions)(nil)).Elem()
+}
+
+func (i GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsArgs) ToGetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutput() GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutput {
+	return i.ToGetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutputWithContext(context.Background())
+}
+
+func (i GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsArgs) ToGetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutputWithContext(ctx context.Context) GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutput)
+}
+
+type GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutput struct{ *pulumi.OutputState }
+
+func (GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptions)(nil)).Elem()
+}
+
+func (o GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutput) ToGetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutput() GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutput {
+	return o
+}
+
+func (o GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutput) ToGetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutputWithContext(ctx context.Context) GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutput {
+	return o
+}
+
+func (o GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutput) Depth() pulumi.Float64Output {
+	return o.ApplyT(func(v GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptions) float64 { return v.Depth }).(pulumi.Float64Output)
+}
+
+func (o GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutput) IncludeExternalLinks() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptions) bool {
+		return v.IncludeExternalLinks
+	}).(pulumi.BoolOutput)
+}
+
+func (o GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutput) IncludeSubdomains() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptions) bool {
+		return v.IncludeSubdomains
+	}).(pulumi.BoolOutput)
+}
+
+// Maximum number of pages to crawl. New values are capped at 100000; instances configured before that cap may report a higher stored value, which the crawler clamps at run time.
+func (o GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutput) Limit() pulumi.Float64Output {
+	return o.ApplyT(func(v GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptions) float64 { return v.Limit }).(pulumi.Float64Output)
+}
+
+func (o GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutput) MaxAge() pulumi.Float64Output {
+	return o.ApplyT(func(v GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptions) float64 { return v.MaxAge }).(pulumi.Float64Output)
+}
+
+// Available values: "all", "sitemaps", "links".
+func (o GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptions) string { return v.Source }).(pulumi.StringOutput)
 }
 
 type GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptions struct {
@@ -65351,931 +66509,21 @@ func (o GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptionsOutput) Stor
 	return o.ApplyT(func(v GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptions) string { return v.StorageType }).(pulumi.StringOutput)
 }
 
-type GetAiSearchNamespacesResult struct {
-	CreatedAt string `pulumi:"createdAt"`
-	// Optional description for the namespace. Max 256 characters.
-	Description string `pulumi:"description"`
-	Name        string `pulumi:"name"`
-}
-
-// GetAiSearchNamespacesResultInput is an input type that accepts GetAiSearchNamespacesResultArgs and GetAiSearchNamespacesResultOutput values.
-// You can construct a concrete instance of `GetAiSearchNamespacesResultInput` via:
-//
-//	GetAiSearchNamespacesResultArgs{...}
-type GetAiSearchNamespacesResultInput interface {
-	pulumi.Input
-
-	ToGetAiSearchNamespacesResultOutput() GetAiSearchNamespacesResultOutput
-	ToGetAiSearchNamespacesResultOutputWithContext(context.Context) GetAiSearchNamespacesResultOutput
-}
-
-type GetAiSearchNamespacesResultArgs struct {
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// Optional description for the namespace. Max 256 characters.
-	Description pulumi.StringInput `pulumi:"description"`
-	Name        pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetAiSearchNamespacesResultArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAiSearchNamespacesResult)(nil)).Elem()
-}
-
-func (i GetAiSearchNamespacesResultArgs) ToGetAiSearchNamespacesResultOutput() GetAiSearchNamespacesResultOutput {
-	return i.ToGetAiSearchNamespacesResultOutputWithContext(context.Background())
-}
-
-func (i GetAiSearchNamespacesResultArgs) ToGetAiSearchNamespacesResultOutputWithContext(ctx context.Context) GetAiSearchNamespacesResultOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAiSearchNamespacesResultOutput)
-}
-
-// GetAiSearchNamespacesResultArrayInput is an input type that accepts GetAiSearchNamespacesResultArray and GetAiSearchNamespacesResultArrayOutput values.
-// You can construct a concrete instance of `GetAiSearchNamespacesResultArrayInput` via:
-//
-//	GetAiSearchNamespacesResultArray{ GetAiSearchNamespacesResultArgs{...} }
-type GetAiSearchNamespacesResultArrayInput interface {
-	pulumi.Input
-
-	ToGetAiSearchNamespacesResultArrayOutput() GetAiSearchNamespacesResultArrayOutput
-	ToGetAiSearchNamespacesResultArrayOutputWithContext(context.Context) GetAiSearchNamespacesResultArrayOutput
-}
-
-type GetAiSearchNamespacesResultArray []GetAiSearchNamespacesResultInput
-
-func (GetAiSearchNamespacesResultArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAiSearchNamespacesResult)(nil)).Elem()
-}
-
-func (i GetAiSearchNamespacesResultArray) ToGetAiSearchNamespacesResultArrayOutput() GetAiSearchNamespacesResultArrayOutput {
-	return i.ToGetAiSearchNamespacesResultArrayOutputWithContext(context.Background())
-}
-
-func (i GetAiSearchNamespacesResultArray) ToGetAiSearchNamespacesResultArrayOutputWithContext(ctx context.Context) GetAiSearchNamespacesResultArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAiSearchNamespacesResultArrayOutput)
-}
-
-type GetAiSearchNamespacesResultOutput struct{ *pulumi.OutputState }
-
-func (GetAiSearchNamespacesResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAiSearchNamespacesResult)(nil)).Elem()
-}
-
-func (o GetAiSearchNamespacesResultOutput) ToGetAiSearchNamespacesResultOutput() GetAiSearchNamespacesResultOutput {
-	return o
-}
-
-func (o GetAiSearchNamespacesResultOutput) ToGetAiSearchNamespacesResultOutputWithContext(ctx context.Context) GetAiSearchNamespacesResultOutput {
-	return o
-}
-
-func (o GetAiSearchNamespacesResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAiSearchNamespacesResult) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-// Optional description for the namespace. Max 256 characters.
-func (o GetAiSearchNamespacesResultOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAiSearchNamespacesResult) string { return v.Description }).(pulumi.StringOutput)
-}
-
-func (o GetAiSearchNamespacesResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAiSearchNamespacesResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetAiSearchNamespacesResultArrayOutput struct{ *pulumi.OutputState }
-
-func (GetAiSearchNamespacesResultArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAiSearchNamespacesResult)(nil)).Elem()
-}
-
-func (o GetAiSearchNamespacesResultArrayOutput) ToGetAiSearchNamespacesResultArrayOutput() GetAiSearchNamespacesResultArrayOutput {
-	return o
-}
-
-func (o GetAiSearchNamespacesResultArrayOutput) ToGetAiSearchNamespacesResultArrayOutputWithContext(ctx context.Context) GetAiSearchNamespacesResultArrayOutput {
-	return o
-}
-
-func (o GetAiSearchNamespacesResultArrayOutput) Index(i pulumi.IntInput) GetAiSearchNamespacesResultOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAiSearchNamespacesResult {
-		return vs[0].([]GetAiSearchNamespacesResult)[vs[1].(int)]
-	}).(GetAiSearchNamespacesResultOutput)
-}
-
-type GetAiSearchTokenFilter struct {
-	// Filter tokens whose name contains this string (case-insensitive).
-	Search *string `pulumi:"search"`
-}
-
-// GetAiSearchTokenFilterInput is an input type that accepts GetAiSearchTokenFilterArgs and GetAiSearchTokenFilterOutput values.
-// You can construct a concrete instance of `GetAiSearchTokenFilterInput` via:
-//
-//	GetAiSearchTokenFilterArgs{...}
-type GetAiSearchTokenFilterInput interface {
-	pulumi.Input
-
-	ToGetAiSearchTokenFilterOutput() GetAiSearchTokenFilterOutput
-	ToGetAiSearchTokenFilterOutputWithContext(context.Context) GetAiSearchTokenFilterOutput
-}
-
-type GetAiSearchTokenFilterArgs struct {
-	// Filter tokens whose name contains this string (case-insensitive).
-	Search pulumi.StringPtrInput `pulumi:"search"`
-}
-
-func (GetAiSearchTokenFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAiSearchTokenFilter)(nil)).Elem()
-}
-
-func (i GetAiSearchTokenFilterArgs) ToGetAiSearchTokenFilterOutput() GetAiSearchTokenFilterOutput {
-	return i.ToGetAiSearchTokenFilterOutputWithContext(context.Background())
-}
-
-func (i GetAiSearchTokenFilterArgs) ToGetAiSearchTokenFilterOutputWithContext(ctx context.Context) GetAiSearchTokenFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAiSearchTokenFilterOutput)
-}
-
-func (i GetAiSearchTokenFilterArgs) ToGetAiSearchTokenFilterPtrOutput() GetAiSearchTokenFilterPtrOutput {
-	return i.ToGetAiSearchTokenFilterPtrOutputWithContext(context.Background())
-}
-
-func (i GetAiSearchTokenFilterArgs) ToGetAiSearchTokenFilterPtrOutputWithContext(ctx context.Context) GetAiSearchTokenFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAiSearchTokenFilterOutput).ToGetAiSearchTokenFilterPtrOutputWithContext(ctx)
-}
-
-// GetAiSearchTokenFilterPtrInput is an input type that accepts GetAiSearchTokenFilterArgs, GetAiSearchTokenFilterPtr and GetAiSearchTokenFilterPtrOutput values.
-// You can construct a concrete instance of `GetAiSearchTokenFilterPtrInput` via:
-//
-//	        GetAiSearchTokenFilterArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAiSearchTokenFilterPtrInput interface {
-	pulumi.Input
-
-	ToGetAiSearchTokenFilterPtrOutput() GetAiSearchTokenFilterPtrOutput
-	ToGetAiSearchTokenFilterPtrOutputWithContext(context.Context) GetAiSearchTokenFilterPtrOutput
-}
-
-type getAiSearchTokenFilterPtrType GetAiSearchTokenFilterArgs
-
-func GetAiSearchTokenFilterPtr(v *GetAiSearchTokenFilterArgs) GetAiSearchTokenFilterPtrInput {
-	return (*getAiSearchTokenFilterPtrType)(v)
-}
-
-func (*getAiSearchTokenFilterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAiSearchTokenFilter)(nil)).Elem()
-}
-
-func (i *getAiSearchTokenFilterPtrType) ToGetAiSearchTokenFilterPtrOutput() GetAiSearchTokenFilterPtrOutput {
-	return i.ToGetAiSearchTokenFilterPtrOutputWithContext(context.Background())
-}
-
-func (i *getAiSearchTokenFilterPtrType) ToGetAiSearchTokenFilterPtrOutputWithContext(ctx context.Context) GetAiSearchTokenFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAiSearchTokenFilterPtrOutput)
-}
-
-type GetAiSearchTokenFilterOutput struct{ *pulumi.OutputState }
-
-func (GetAiSearchTokenFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAiSearchTokenFilter)(nil)).Elem()
-}
-
-func (o GetAiSearchTokenFilterOutput) ToGetAiSearchTokenFilterOutput() GetAiSearchTokenFilterOutput {
-	return o
-}
-
-func (o GetAiSearchTokenFilterOutput) ToGetAiSearchTokenFilterOutputWithContext(ctx context.Context) GetAiSearchTokenFilterOutput {
-	return o
-}
-
-func (o GetAiSearchTokenFilterOutput) ToGetAiSearchTokenFilterPtrOutput() GetAiSearchTokenFilterPtrOutput {
-	return o.ToGetAiSearchTokenFilterPtrOutputWithContext(context.Background())
-}
-
-func (o GetAiSearchTokenFilterOutput) ToGetAiSearchTokenFilterPtrOutputWithContext(ctx context.Context) GetAiSearchTokenFilterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAiSearchTokenFilter) *GetAiSearchTokenFilter {
-		return &v
-	}).(GetAiSearchTokenFilterPtrOutput)
-}
-
-// Filter tokens whose name contains this string (case-insensitive).
-func (o GetAiSearchTokenFilterOutput) Search() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAiSearchTokenFilter) *string { return v.Search }).(pulumi.StringPtrOutput)
-}
-
-type GetAiSearchTokenFilterPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAiSearchTokenFilterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAiSearchTokenFilter)(nil)).Elem()
-}
-
-func (o GetAiSearchTokenFilterPtrOutput) ToGetAiSearchTokenFilterPtrOutput() GetAiSearchTokenFilterPtrOutput {
-	return o
-}
-
-func (o GetAiSearchTokenFilterPtrOutput) ToGetAiSearchTokenFilterPtrOutputWithContext(ctx context.Context) GetAiSearchTokenFilterPtrOutput {
-	return o
-}
-
-func (o GetAiSearchTokenFilterPtrOutput) Elem() GetAiSearchTokenFilterOutput {
-	return o.ApplyT(func(v *GetAiSearchTokenFilter) GetAiSearchTokenFilter {
-		if v != nil {
-			return *v
-		}
-		var ret GetAiSearchTokenFilter
-		return ret
-	}).(GetAiSearchTokenFilterOutput)
-}
-
-// Filter tokens whose name contains this string (case-insensitive).
-func (o GetAiSearchTokenFilterPtrOutput) Search() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAiSearchTokenFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Search
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetAiSearchTokensResult struct {
-	CfApiId    string `pulumi:"cfApiId"`
-	CreatedAt  string `pulumi:"createdAt"`
-	CreatedBy  string `pulumi:"createdBy"`
-	Enabled    bool   `pulumi:"enabled"`
-	Id         string `pulumi:"id"`
-	Legacy     bool   `pulumi:"legacy"`
-	ModifiedAt string `pulumi:"modifiedAt"`
-	ModifiedBy string `pulumi:"modifiedBy"`
-	Name       string `pulumi:"name"`
-}
-
-// GetAiSearchTokensResultInput is an input type that accepts GetAiSearchTokensResultArgs and GetAiSearchTokensResultOutput values.
-// You can construct a concrete instance of `GetAiSearchTokensResultInput` via:
-//
-//	GetAiSearchTokensResultArgs{...}
-type GetAiSearchTokensResultInput interface {
-	pulumi.Input
-
-	ToGetAiSearchTokensResultOutput() GetAiSearchTokensResultOutput
-	ToGetAiSearchTokensResultOutputWithContext(context.Context) GetAiSearchTokensResultOutput
-}
-
-type GetAiSearchTokensResultArgs struct {
-	CfApiId    pulumi.StringInput `pulumi:"cfApiId"`
-	CreatedAt  pulumi.StringInput `pulumi:"createdAt"`
-	CreatedBy  pulumi.StringInput `pulumi:"createdBy"`
-	Enabled    pulumi.BoolInput   `pulumi:"enabled"`
-	Id         pulumi.StringInput `pulumi:"id"`
-	Legacy     pulumi.BoolInput   `pulumi:"legacy"`
-	ModifiedAt pulumi.StringInput `pulumi:"modifiedAt"`
-	ModifiedBy pulumi.StringInput `pulumi:"modifiedBy"`
-	Name       pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetAiSearchTokensResultArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAiSearchTokensResult)(nil)).Elem()
-}
-
-func (i GetAiSearchTokensResultArgs) ToGetAiSearchTokensResultOutput() GetAiSearchTokensResultOutput {
-	return i.ToGetAiSearchTokensResultOutputWithContext(context.Background())
-}
-
-func (i GetAiSearchTokensResultArgs) ToGetAiSearchTokensResultOutputWithContext(ctx context.Context) GetAiSearchTokensResultOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAiSearchTokensResultOutput)
-}
-
-// GetAiSearchTokensResultArrayInput is an input type that accepts GetAiSearchTokensResultArray and GetAiSearchTokensResultArrayOutput values.
-// You can construct a concrete instance of `GetAiSearchTokensResultArrayInput` via:
-//
-//	GetAiSearchTokensResultArray{ GetAiSearchTokensResultArgs{...} }
-type GetAiSearchTokensResultArrayInput interface {
-	pulumi.Input
-
-	ToGetAiSearchTokensResultArrayOutput() GetAiSearchTokensResultArrayOutput
-	ToGetAiSearchTokensResultArrayOutputWithContext(context.Context) GetAiSearchTokensResultArrayOutput
-}
-
-type GetAiSearchTokensResultArray []GetAiSearchTokensResultInput
-
-func (GetAiSearchTokensResultArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAiSearchTokensResult)(nil)).Elem()
-}
-
-func (i GetAiSearchTokensResultArray) ToGetAiSearchTokensResultArrayOutput() GetAiSearchTokensResultArrayOutput {
-	return i.ToGetAiSearchTokensResultArrayOutputWithContext(context.Background())
-}
-
-func (i GetAiSearchTokensResultArray) ToGetAiSearchTokensResultArrayOutputWithContext(ctx context.Context) GetAiSearchTokensResultArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAiSearchTokensResultArrayOutput)
-}
-
-type GetAiSearchTokensResultOutput struct{ *pulumi.OutputState }
-
-func (GetAiSearchTokensResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAiSearchTokensResult)(nil)).Elem()
-}
-
-func (o GetAiSearchTokensResultOutput) ToGetAiSearchTokensResultOutput() GetAiSearchTokensResultOutput {
-	return o
-}
-
-func (o GetAiSearchTokensResultOutput) ToGetAiSearchTokensResultOutputWithContext(ctx context.Context) GetAiSearchTokensResultOutput {
-	return o
-}
-
-func (o GetAiSearchTokensResultOutput) CfApiId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAiSearchTokensResult) string { return v.CfApiId }).(pulumi.StringOutput)
-}
-
-func (o GetAiSearchTokensResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAiSearchTokensResult) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-func (o GetAiSearchTokensResultOutput) CreatedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAiSearchTokensResult) string { return v.CreatedBy }).(pulumi.StringOutput)
-}
-
-func (o GetAiSearchTokensResultOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetAiSearchTokensResult) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-func (o GetAiSearchTokensResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAiSearchTokensResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-func (o GetAiSearchTokensResultOutput) Legacy() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetAiSearchTokensResult) bool { return v.Legacy }).(pulumi.BoolOutput)
-}
-
-func (o GetAiSearchTokensResultOutput) ModifiedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAiSearchTokensResult) string { return v.ModifiedAt }).(pulumi.StringOutput)
-}
-
-func (o GetAiSearchTokensResultOutput) ModifiedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAiSearchTokensResult) string { return v.ModifiedBy }).(pulumi.StringOutput)
-}
-
-func (o GetAiSearchTokensResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAiSearchTokensResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetAiSearchTokensResultArrayOutput struct{ *pulumi.OutputState }
-
-func (GetAiSearchTokensResultArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAiSearchTokensResult)(nil)).Elem()
-}
-
-func (o GetAiSearchTokensResultArrayOutput) ToGetAiSearchTokensResultArrayOutput() GetAiSearchTokensResultArrayOutput {
-	return o
-}
-
-func (o GetAiSearchTokensResultArrayOutput) ToGetAiSearchTokensResultArrayOutputWithContext(ctx context.Context) GetAiSearchTokensResultArrayOutput {
-	return o
-}
-
-func (o GetAiSearchTokensResultArrayOutput) Index(i pulumi.IntInput) GetAiSearchTokensResultOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAiSearchTokensResult {
-		return vs[0].([]GetAiSearchTokensResult)[vs[1].(int)]
-	}).(GetAiSearchTokensResultOutput)
-}
-
-type GetApiShieldAuthIdCharacteristic struct {
-	// The name of the characteristic field, i.e., the header or cookie name.
-	Name string `pulumi:"name"`
-	// The type of characteristic.
-	// Available values: "header", "cookie", "jwt".
-	Type string `pulumi:"type"`
-}
-
-// GetApiShieldAuthIdCharacteristicInput is an input type that accepts GetApiShieldAuthIdCharacteristicArgs and GetApiShieldAuthIdCharacteristicOutput values.
-// You can construct a concrete instance of `GetApiShieldAuthIdCharacteristicInput` via:
-//
-//	GetApiShieldAuthIdCharacteristicArgs{...}
-type GetApiShieldAuthIdCharacteristicInput interface {
-	pulumi.Input
-
-	ToGetApiShieldAuthIdCharacteristicOutput() GetApiShieldAuthIdCharacteristicOutput
-	ToGetApiShieldAuthIdCharacteristicOutputWithContext(context.Context) GetApiShieldAuthIdCharacteristicOutput
-}
-
-type GetApiShieldAuthIdCharacteristicArgs struct {
-	// The name of the characteristic field, i.e., the header or cookie name.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The type of characteristic.
-	// Available values: "header", "cookie", "jwt".
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetApiShieldAuthIdCharacteristicArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApiShieldAuthIdCharacteristic)(nil)).Elem()
-}
-
-func (i GetApiShieldAuthIdCharacteristicArgs) ToGetApiShieldAuthIdCharacteristicOutput() GetApiShieldAuthIdCharacteristicOutput {
-	return i.ToGetApiShieldAuthIdCharacteristicOutputWithContext(context.Background())
-}
-
-func (i GetApiShieldAuthIdCharacteristicArgs) ToGetApiShieldAuthIdCharacteristicOutputWithContext(ctx context.Context) GetApiShieldAuthIdCharacteristicOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApiShieldAuthIdCharacteristicOutput)
-}
-
-// GetApiShieldAuthIdCharacteristicArrayInput is an input type that accepts GetApiShieldAuthIdCharacteristicArray and GetApiShieldAuthIdCharacteristicArrayOutput values.
-// You can construct a concrete instance of `GetApiShieldAuthIdCharacteristicArrayInput` via:
-//
-//	GetApiShieldAuthIdCharacteristicArray{ GetApiShieldAuthIdCharacteristicArgs{...} }
-type GetApiShieldAuthIdCharacteristicArrayInput interface {
-	pulumi.Input
-
-	ToGetApiShieldAuthIdCharacteristicArrayOutput() GetApiShieldAuthIdCharacteristicArrayOutput
-	ToGetApiShieldAuthIdCharacteristicArrayOutputWithContext(context.Context) GetApiShieldAuthIdCharacteristicArrayOutput
-}
-
-type GetApiShieldAuthIdCharacteristicArray []GetApiShieldAuthIdCharacteristicInput
-
-func (GetApiShieldAuthIdCharacteristicArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetApiShieldAuthIdCharacteristic)(nil)).Elem()
-}
-
-func (i GetApiShieldAuthIdCharacteristicArray) ToGetApiShieldAuthIdCharacteristicArrayOutput() GetApiShieldAuthIdCharacteristicArrayOutput {
-	return i.ToGetApiShieldAuthIdCharacteristicArrayOutputWithContext(context.Background())
-}
-
-func (i GetApiShieldAuthIdCharacteristicArray) ToGetApiShieldAuthIdCharacteristicArrayOutputWithContext(ctx context.Context) GetApiShieldAuthIdCharacteristicArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApiShieldAuthIdCharacteristicArrayOutput)
-}
-
-type GetApiShieldAuthIdCharacteristicOutput struct{ *pulumi.OutputState }
-
-func (GetApiShieldAuthIdCharacteristicOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApiShieldAuthIdCharacteristic)(nil)).Elem()
-}
-
-func (o GetApiShieldAuthIdCharacteristicOutput) ToGetApiShieldAuthIdCharacteristicOutput() GetApiShieldAuthIdCharacteristicOutput {
-	return o
-}
-
-func (o GetApiShieldAuthIdCharacteristicOutput) ToGetApiShieldAuthIdCharacteristicOutputWithContext(ctx context.Context) GetApiShieldAuthIdCharacteristicOutput {
-	return o
-}
-
-// The name of the characteristic field, i.e., the header or cookie name.
-func (o GetApiShieldAuthIdCharacteristicOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApiShieldAuthIdCharacteristic) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The type of characteristic.
-// Available values: "header", "cookie", "jwt".
-func (o GetApiShieldAuthIdCharacteristicOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApiShieldAuthIdCharacteristic) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetApiShieldAuthIdCharacteristicArrayOutput struct{ *pulumi.OutputState }
-
-func (GetApiShieldAuthIdCharacteristicArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetApiShieldAuthIdCharacteristic)(nil)).Elem()
-}
-
-func (o GetApiShieldAuthIdCharacteristicArrayOutput) ToGetApiShieldAuthIdCharacteristicArrayOutput() GetApiShieldAuthIdCharacteristicArrayOutput {
-	return o
-}
-
-func (o GetApiShieldAuthIdCharacteristicArrayOutput) ToGetApiShieldAuthIdCharacteristicArrayOutputWithContext(ctx context.Context) GetApiShieldAuthIdCharacteristicArrayOutput {
-	return o
-}
-
-func (o GetApiShieldAuthIdCharacteristicArrayOutput) Index(i pulumi.IntInput) GetApiShieldAuthIdCharacteristicOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApiShieldAuthIdCharacteristic {
-		return vs[0].([]GetApiShieldAuthIdCharacteristic)[vs[1].(int)]
-	}).(GetApiShieldAuthIdCharacteristicOutput)
-}
-
-type GetApiShieldDiscoveryOperationsResult struct {
-	// The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
-	Endpoint string                                        `pulumi:"endpoint"`
-	Features GetApiShieldDiscoveryOperationsResultFeatures `pulumi:"features"`
-	// RFC3986-compliant host.
-	Host string `pulumi:"host"`
-	// UUID.
-	Id          string `pulumi:"id"`
-	LastUpdated string `pulumi:"lastUpdated"`
-	// The HTTP method used to access the endpoint.
-	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
-	Method string `pulumi:"method"`
-	// API discovery engine(s) that discovered this operation
-	Origins []string `pulumi:"origins"`
-	// State of operation in API Discovery
-	//   * `review` - Operation is not saved into API Shield Endpoint Management
-	//   * `saved` - Operation is saved into API Shield Endpoint Management
-	//   * `ignored` - Operation is marked as ignored
-	//     Available values: "review", "saved", "ignored".
-	State string `pulumi:"state"`
-}
-
-// GetApiShieldDiscoveryOperationsResultInput is an input type that accepts GetApiShieldDiscoveryOperationsResultArgs and GetApiShieldDiscoveryOperationsResultOutput values.
-// You can construct a concrete instance of `GetApiShieldDiscoveryOperationsResultInput` via:
-//
-//	GetApiShieldDiscoveryOperationsResultArgs{...}
-type GetApiShieldDiscoveryOperationsResultInput interface {
-	pulumi.Input
-
-	ToGetApiShieldDiscoveryOperationsResultOutput() GetApiShieldDiscoveryOperationsResultOutput
-	ToGetApiShieldDiscoveryOperationsResultOutputWithContext(context.Context) GetApiShieldDiscoveryOperationsResultOutput
-}
-
-type GetApiShieldDiscoveryOperationsResultArgs struct {
-	// The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
-	Endpoint pulumi.StringInput                                 `pulumi:"endpoint"`
-	Features GetApiShieldDiscoveryOperationsResultFeaturesInput `pulumi:"features"`
-	// RFC3986-compliant host.
-	Host pulumi.StringInput `pulumi:"host"`
-	// UUID.
-	Id          pulumi.StringInput `pulumi:"id"`
-	LastUpdated pulumi.StringInput `pulumi:"lastUpdated"`
-	// The HTTP method used to access the endpoint.
-	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
-	Method pulumi.StringInput `pulumi:"method"`
-	// API discovery engine(s) that discovered this operation
-	Origins pulumi.StringArrayInput `pulumi:"origins"`
-	// State of operation in API Discovery
-	//   * `review` - Operation is not saved into API Shield Endpoint Management
-	//   * `saved` - Operation is saved into API Shield Endpoint Management
-	//   * `ignored` - Operation is marked as ignored
-	//     Available values: "review", "saved", "ignored".
-	State pulumi.StringInput `pulumi:"state"`
-}
-
-func (GetApiShieldDiscoveryOperationsResultArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApiShieldDiscoveryOperationsResult)(nil)).Elem()
-}
-
-func (i GetApiShieldDiscoveryOperationsResultArgs) ToGetApiShieldDiscoveryOperationsResultOutput() GetApiShieldDiscoveryOperationsResultOutput {
-	return i.ToGetApiShieldDiscoveryOperationsResultOutputWithContext(context.Background())
-}
-
-func (i GetApiShieldDiscoveryOperationsResultArgs) ToGetApiShieldDiscoveryOperationsResultOutputWithContext(ctx context.Context) GetApiShieldDiscoveryOperationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApiShieldDiscoveryOperationsResultOutput)
-}
-
-// GetApiShieldDiscoveryOperationsResultArrayInput is an input type that accepts GetApiShieldDiscoveryOperationsResultArray and GetApiShieldDiscoveryOperationsResultArrayOutput values.
-// You can construct a concrete instance of `GetApiShieldDiscoveryOperationsResultArrayInput` via:
-//
-//	GetApiShieldDiscoveryOperationsResultArray{ GetApiShieldDiscoveryOperationsResultArgs{...} }
-type GetApiShieldDiscoveryOperationsResultArrayInput interface {
-	pulumi.Input
-
-	ToGetApiShieldDiscoveryOperationsResultArrayOutput() GetApiShieldDiscoveryOperationsResultArrayOutput
-	ToGetApiShieldDiscoveryOperationsResultArrayOutputWithContext(context.Context) GetApiShieldDiscoveryOperationsResultArrayOutput
-}
-
-type GetApiShieldDiscoveryOperationsResultArray []GetApiShieldDiscoveryOperationsResultInput
-
-func (GetApiShieldDiscoveryOperationsResultArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetApiShieldDiscoveryOperationsResult)(nil)).Elem()
-}
-
-func (i GetApiShieldDiscoveryOperationsResultArray) ToGetApiShieldDiscoveryOperationsResultArrayOutput() GetApiShieldDiscoveryOperationsResultArrayOutput {
-	return i.ToGetApiShieldDiscoveryOperationsResultArrayOutputWithContext(context.Background())
-}
-
-func (i GetApiShieldDiscoveryOperationsResultArray) ToGetApiShieldDiscoveryOperationsResultArrayOutputWithContext(ctx context.Context) GetApiShieldDiscoveryOperationsResultArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApiShieldDiscoveryOperationsResultArrayOutput)
-}
-
-type GetApiShieldDiscoveryOperationsResultOutput struct{ *pulumi.OutputState }
-
-func (GetApiShieldDiscoveryOperationsResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApiShieldDiscoveryOperationsResult)(nil)).Elem()
-}
-
-func (o GetApiShieldDiscoveryOperationsResultOutput) ToGetApiShieldDiscoveryOperationsResultOutput() GetApiShieldDiscoveryOperationsResultOutput {
-	return o
-}
-
-func (o GetApiShieldDiscoveryOperationsResultOutput) ToGetApiShieldDiscoveryOperationsResultOutputWithContext(ctx context.Context) GetApiShieldDiscoveryOperationsResultOutput {
-	return o
-}
-
-// The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
-func (o GetApiShieldDiscoveryOperationsResultOutput) Endpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApiShieldDiscoveryOperationsResult) string { return v.Endpoint }).(pulumi.StringOutput)
-}
-
-func (o GetApiShieldDiscoveryOperationsResultOutput) Features() GetApiShieldDiscoveryOperationsResultFeaturesOutput {
-	return o.ApplyT(func(v GetApiShieldDiscoveryOperationsResult) GetApiShieldDiscoveryOperationsResultFeatures {
-		return v.Features
-	}).(GetApiShieldDiscoveryOperationsResultFeaturesOutput)
-}
-
-// RFC3986-compliant host.
-func (o GetApiShieldDiscoveryOperationsResultOutput) Host() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApiShieldDiscoveryOperationsResult) string { return v.Host }).(pulumi.StringOutput)
-}
-
-// UUID.
-func (o GetApiShieldDiscoveryOperationsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApiShieldDiscoveryOperationsResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-func (o GetApiShieldDiscoveryOperationsResultOutput) LastUpdated() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApiShieldDiscoveryOperationsResult) string { return v.LastUpdated }).(pulumi.StringOutput)
-}
-
-// The HTTP method used to access the endpoint.
-// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
-func (o GetApiShieldDiscoveryOperationsResultOutput) Method() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApiShieldDiscoveryOperationsResult) string { return v.Method }).(pulumi.StringOutput)
-}
-
-// API discovery engine(s) that discovered this operation
-func (o GetApiShieldDiscoveryOperationsResultOutput) Origins() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetApiShieldDiscoveryOperationsResult) []string { return v.Origins }).(pulumi.StringArrayOutput)
-}
-
-// State of operation in API Discovery
-//   - `review` - Operation is not saved into API Shield Endpoint Management
-//   - `saved` - Operation is saved into API Shield Endpoint Management
-//   - `ignored` - Operation is marked as ignored
-//     Available values: "review", "saved", "ignored".
-func (o GetApiShieldDiscoveryOperationsResultOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApiShieldDiscoveryOperationsResult) string { return v.State }).(pulumi.StringOutput)
-}
-
-type GetApiShieldDiscoveryOperationsResultArrayOutput struct{ *pulumi.OutputState }
-
-func (GetApiShieldDiscoveryOperationsResultArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetApiShieldDiscoveryOperationsResult)(nil)).Elem()
-}
-
-func (o GetApiShieldDiscoveryOperationsResultArrayOutput) ToGetApiShieldDiscoveryOperationsResultArrayOutput() GetApiShieldDiscoveryOperationsResultArrayOutput {
-	return o
-}
-
-func (o GetApiShieldDiscoveryOperationsResultArrayOutput) ToGetApiShieldDiscoveryOperationsResultArrayOutputWithContext(ctx context.Context) GetApiShieldDiscoveryOperationsResultArrayOutput {
-	return o
-}
-
-func (o GetApiShieldDiscoveryOperationsResultArrayOutput) Index(i pulumi.IntInput) GetApiShieldDiscoveryOperationsResultOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApiShieldDiscoveryOperationsResult {
-		return vs[0].([]GetApiShieldDiscoveryOperationsResult)[vs[1].(int)]
-	}).(GetApiShieldDiscoveryOperationsResultOutput)
-}
-
-type GetApiShieldDiscoveryOperationsResultFeatures struct {
-	TrafficStats GetApiShieldDiscoveryOperationsResultFeaturesTrafficStats `pulumi:"trafficStats"`
-}
-
-// GetApiShieldDiscoveryOperationsResultFeaturesInput is an input type that accepts GetApiShieldDiscoveryOperationsResultFeaturesArgs and GetApiShieldDiscoveryOperationsResultFeaturesOutput values.
-// You can construct a concrete instance of `GetApiShieldDiscoveryOperationsResultFeaturesInput` via:
-//
-//	GetApiShieldDiscoveryOperationsResultFeaturesArgs{...}
-type GetApiShieldDiscoveryOperationsResultFeaturesInput interface {
-	pulumi.Input
-
-	ToGetApiShieldDiscoveryOperationsResultFeaturesOutput() GetApiShieldDiscoveryOperationsResultFeaturesOutput
-	ToGetApiShieldDiscoveryOperationsResultFeaturesOutputWithContext(context.Context) GetApiShieldDiscoveryOperationsResultFeaturesOutput
-}
-
-type GetApiShieldDiscoveryOperationsResultFeaturesArgs struct {
-	TrafficStats GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsInput `pulumi:"trafficStats"`
-}
-
-func (GetApiShieldDiscoveryOperationsResultFeaturesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApiShieldDiscoveryOperationsResultFeatures)(nil)).Elem()
-}
-
-func (i GetApiShieldDiscoveryOperationsResultFeaturesArgs) ToGetApiShieldDiscoveryOperationsResultFeaturesOutput() GetApiShieldDiscoveryOperationsResultFeaturesOutput {
-	return i.ToGetApiShieldDiscoveryOperationsResultFeaturesOutputWithContext(context.Background())
-}
-
-func (i GetApiShieldDiscoveryOperationsResultFeaturesArgs) ToGetApiShieldDiscoveryOperationsResultFeaturesOutputWithContext(ctx context.Context) GetApiShieldDiscoveryOperationsResultFeaturesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApiShieldDiscoveryOperationsResultFeaturesOutput)
-}
-
-type GetApiShieldDiscoveryOperationsResultFeaturesOutput struct{ *pulumi.OutputState }
-
-func (GetApiShieldDiscoveryOperationsResultFeaturesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApiShieldDiscoveryOperationsResultFeatures)(nil)).Elem()
-}
-
-func (o GetApiShieldDiscoveryOperationsResultFeaturesOutput) ToGetApiShieldDiscoveryOperationsResultFeaturesOutput() GetApiShieldDiscoveryOperationsResultFeaturesOutput {
-	return o
-}
-
-func (o GetApiShieldDiscoveryOperationsResultFeaturesOutput) ToGetApiShieldDiscoveryOperationsResultFeaturesOutputWithContext(ctx context.Context) GetApiShieldDiscoveryOperationsResultFeaturesOutput {
-	return o
-}
-
-func (o GetApiShieldDiscoveryOperationsResultFeaturesOutput) TrafficStats() GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsOutput {
-	return o.ApplyT(func(v GetApiShieldDiscoveryOperationsResultFeatures) GetApiShieldDiscoveryOperationsResultFeaturesTrafficStats {
-		return v.TrafficStats
-	}).(GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsOutput)
-}
-
-type GetApiShieldDiscoveryOperationsResultFeaturesTrafficStats struct {
-	LastUpdated string `pulumi:"lastUpdated"`
-	// The period in seconds these statistics were computed over
-	PeriodSeconds int `pulumi:"periodSeconds"`
-	// The average number of requests seen during this period
-	Requests float64 `pulumi:"requests"`
-}
-
-// GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsInput is an input type that accepts GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsArgs and GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsOutput values.
-// You can construct a concrete instance of `GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsInput` via:
-//
-//	GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsArgs{...}
-type GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsInput interface {
-	pulumi.Input
-
-	ToGetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsOutput() GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsOutput
-	ToGetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsOutputWithContext(context.Context) GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsOutput
-}
-
-type GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsArgs struct {
-	LastUpdated pulumi.StringInput `pulumi:"lastUpdated"`
-	// The period in seconds these statistics were computed over
-	PeriodSeconds pulumi.IntInput `pulumi:"periodSeconds"`
-	// The average number of requests seen during this period
-	Requests pulumi.Float64Input `pulumi:"requests"`
-}
-
-func (GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApiShieldDiscoveryOperationsResultFeaturesTrafficStats)(nil)).Elem()
-}
-
-func (i GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsArgs) ToGetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsOutput() GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsOutput {
-	return i.ToGetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsOutputWithContext(context.Background())
-}
-
-func (i GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsArgs) ToGetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsOutputWithContext(ctx context.Context) GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsOutput)
-}
-
-type GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsOutput struct{ *pulumi.OutputState }
-
-func (GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApiShieldDiscoveryOperationsResultFeaturesTrafficStats)(nil)).Elem()
-}
-
-func (o GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsOutput) ToGetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsOutput() GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsOutput {
-	return o
-}
-
-func (o GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsOutput) ToGetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsOutputWithContext(ctx context.Context) GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsOutput {
-	return o
-}
-
-func (o GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsOutput) LastUpdated() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApiShieldDiscoveryOperationsResultFeaturesTrafficStats) string { return v.LastUpdated }).(pulumi.StringOutput)
-}
-
-// The period in seconds these statistics were computed over
-func (o GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsOutput) PeriodSeconds() pulumi.IntOutput {
-	return o.ApplyT(func(v GetApiShieldDiscoveryOperationsResultFeaturesTrafficStats) int { return v.PeriodSeconds }).(pulumi.IntOutput)
-}
-
-// The average number of requests seen during this period
-func (o GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsOutput) Requests() pulumi.Float64Output {
-	return o.ApplyT(func(v GetApiShieldDiscoveryOperationsResultFeaturesTrafficStats) float64 { return v.Requests }).(pulumi.Float64Output)
-}
-
-type GetApiShieldOperationFeatures struct {
-	// API Routing settings on endpoint.
-	ApiRouting          GetApiShieldOperationFeaturesApiRouting          `pulumi:"apiRouting"`
-	ConfidenceIntervals GetApiShieldOperationFeaturesConfidenceIntervals `pulumi:"confidenceIntervals"`
-	ParameterSchemas    GetApiShieldOperationFeaturesParameterSchemas    `pulumi:"parameterSchemas"`
-	SchemaInfo          GetApiShieldOperationFeaturesSchemaInfo          `pulumi:"schemaInfo"`
-	Thresholds          GetApiShieldOperationFeaturesThresholds          `pulumi:"thresholds"`
-}
-
-// GetApiShieldOperationFeaturesInput is an input type that accepts GetApiShieldOperationFeaturesArgs and GetApiShieldOperationFeaturesOutput values.
-// You can construct a concrete instance of `GetApiShieldOperationFeaturesInput` via:
-//
-//	GetApiShieldOperationFeaturesArgs{...}
-type GetApiShieldOperationFeaturesInput interface {
-	pulumi.Input
-
-	ToGetApiShieldOperationFeaturesOutput() GetApiShieldOperationFeaturesOutput
-	ToGetApiShieldOperationFeaturesOutputWithContext(context.Context) GetApiShieldOperationFeaturesOutput
-}
-
-type GetApiShieldOperationFeaturesArgs struct {
-	// API Routing settings on endpoint.
-	ApiRouting          GetApiShieldOperationFeaturesApiRoutingInput          `pulumi:"apiRouting"`
-	ConfidenceIntervals GetApiShieldOperationFeaturesConfidenceIntervalsInput `pulumi:"confidenceIntervals"`
-	ParameterSchemas    GetApiShieldOperationFeaturesParameterSchemasInput    `pulumi:"parameterSchemas"`
-	SchemaInfo          GetApiShieldOperationFeaturesSchemaInfoInput          `pulumi:"schemaInfo"`
-	Thresholds          GetApiShieldOperationFeaturesThresholdsInput          `pulumi:"thresholds"`
-}
-
-func (GetApiShieldOperationFeaturesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApiShieldOperationFeatures)(nil)).Elem()
-}
-
-func (i GetApiShieldOperationFeaturesArgs) ToGetApiShieldOperationFeaturesOutput() GetApiShieldOperationFeaturesOutput {
-	return i.ToGetApiShieldOperationFeaturesOutputWithContext(context.Background())
-}
-
-func (i GetApiShieldOperationFeaturesArgs) ToGetApiShieldOperationFeaturesOutputWithContext(ctx context.Context) GetApiShieldOperationFeaturesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApiShieldOperationFeaturesOutput)
-}
-
-type GetApiShieldOperationFeaturesOutput struct{ *pulumi.OutputState }
-
-func (GetApiShieldOperationFeaturesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApiShieldOperationFeatures)(nil)).Elem()
-}
-
-func (o GetApiShieldOperationFeaturesOutput) ToGetApiShieldOperationFeaturesOutput() GetApiShieldOperationFeaturesOutput {
-	return o
-}
-
-func (o GetApiShieldOperationFeaturesOutput) ToGetApiShieldOperationFeaturesOutputWithContext(ctx context.Context) GetApiShieldOperationFeaturesOutput {
-	return o
-}
-
-// API Routing settings on endpoint.
-func (o GetApiShieldOperationFeaturesOutput) ApiRouting() GetApiShieldOperationFeaturesApiRoutingOutput {
-	return o.ApplyT(func(v GetApiShieldOperationFeatures) GetApiShieldOperationFeaturesApiRouting { return v.ApiRouting }).(GetApiShieldOperationFeaturesApiRoutingOutput)
-}
-
-func (o GetApiShieldOperationFeaturesOutput) ConfidenceIntervals() GetApiShieldOperationFeaturesConfidenceIntervalsOutput {
-	return o.ApplyT(func(v GetApiShieldOperationFeatures) GetApiShieldOperationFeaturesConfidenceIntervals {
-		return v.ConfidenceIntervals
-	}).(GetApiShieldOperationFeaturesConfidenceIntervalsOutput)
-}
-
-func (o GetApiShieldOperationFeaturesOutput) ParameterSchemas() GetApiShieldOperationFeaturesParameterSchemasOutput {
-	return o.ApplyT(func(v GetApiShieldOperationFeatures) GetApiShieldOperationFeaturesParameterSchemas {
-		return v.ParameterSchemas
-	}).(GetApiShieldOperationFeaturesParameterSchemasOutput)
-}
-
-func (o GetApiShieldOperationFeaturesOutput) SchemaInfo() GetApiShieldOperationFeaturesSchemaInfoOutput {
-	return o.ApplyT(func(v GetApiShieldOperationFeatures) GetApiShieldOperationFeaturesSchemaInfo { return v.SchemaInfo }).(GetApiShieldOperationFeaturesSchemaInfoOutput)
-}
-
-func (o GetApiShieldOperationFeaturesOutput) Thresholds() GetApiShieldOperationFeaturesThresholdsOutput {
-	return o.ApplyT(func(v GetApiShieldOperationFeatures) GetApiShieldOperationFeaturesThresholds { return v.Thresholds }).(GetApiShieldOperationFeaturesThresholdsOutput)
-}
-
-type GetApiShieldOperationFeaturesApiRouting struct {
-	LastUpdated string `pulumi:"lastUpdated"`
-	// Target route.
-	Route string `pulumi:"route"`
-}
-
-// GetApiShieldOperationFeaturesApiRoutingInput is an input type that accepts GetApiShieldOperationFeaturesApiRoutingArgs and GetApiShieldOperationFeaturesApiRoutingOutput values.
-// You can construct a concrete instance of `GetApiShieldOperationFeaturesApiRoutingInput` via:
-//
-//	GetApiShieldOperationFeaturesApiRoutingArgs{...}
-type GetApiShieldOperationFeaturesApiRoutingInput interface {
-	pulumi.Input
-
-	ToGetApiShieldOperationFeaturesApiRoutingOutput() GetApiShieldOperationFeaturesApiRoutingOutput
-	ToGetApiShieldOperationFeaturesApiRoutingOutputWithContext(context.Context) GetApiShieldOperationFeaturesApiRoutingOutput
-}
-
-type GetApiShieldOperationFeaturesApiRoutingArgs struct {
-	LastUpdated pulumi.StringInput `pulumi:"lastUpdated"`
-	// Target route.
-	Route pulumi.StringInput `pulumi:"route"`
-}
-
-func (GetApiShieldOperationFeaturesApiRoutingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApiShieldOperationFeaturesApiRouting)(nil)).Elem()
-}
-
-func (i GetApiShieldOperationFeaturesApiRoutingArgs) ToGetApiShieldOperationFeaturesApiRoutingOutput() GetApiShieldOperationFeaturesApiRoutingOutput {
-	return i.ToGetApiShieldOperationFeaturesApiRoutingOutputWithContext(context.Background())
-}
-
-func (i GetApiShieldOperationFeaturesApiRoutingArgs) ToGetApiShieldOperationFeaturesApiRoutingOutputWithContext(ctx context.Context) GetApiShieldOperationFeaturesApiRoutingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApiShieldOperationFeaturesApiRoutingOutput)
-}
-
-type GetApiShieldOperationFeaturesApiRoutingOutput struct{ *pulumi.OutputState }
-
-func (GetApiShieldOperationFeaturesApiRoutingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApiShieldOperationFeaturesApiRouting)(nil)).Elem()
-}
-
-func (o GetApiShieldOperationFeaturesApiRoutingOutput) ToGetApiShieldOperationFeaturesApiRoutingOutput() GetApiShieldOperationFeaturesApiRoutingOutput {
-	return o
-}
-
-func (o GetApiShieldOperationFeaturesApiRoutingOutput) ToGetApiShieldOperationFeaturesApiRoutingOutputWithContext(ctx context.Context) GetApiShieldOperationFeaturesApiRoutingOutput {
-	return o
-}
-
-func (o GetApiShieldOperationFeaturesApiRoutingOutput) LastUpdated() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApiShieldOperationFeaturesApiRouting) string { return v.LastUpdated }).(pulumi.StringOutput)
-}
-
-// Target route.
-func (o GetApiShieldOperationFeaturesApiRoutingOutput) Route() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApiShieldOperationFeaturesApiRouting) string { return v.Route }).(pulumi.StringOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeAzureAdInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeAzureAdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeAzureAdPtrInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeAzureAdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeCertificateInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeCertificatePtrInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeCloudflareAccountMemberInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeCommonNameInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeCommonNameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeCommonNamePtrInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeCommonNameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeDevicePostureInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeDevicePostureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeDevicePosturePtrInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeDevicePostureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeEmailInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeEmailPtrInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeEmailDomainInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeEmailDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeEmailDomainPtrInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeEmailDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeEmailListInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeEmailListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeEmailListPtrInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeEmailListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeEveryoneInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeEveryoneArgs{})
@@ -67102,6 +67350,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstanceRetrievalOptionsBoostByArrayInput)(nil)).Elem(), GetAiSearchInstanceRetrievalOptionsBoostByArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstanceSourceParamsInput)(nil)).Elem(), GetAiSearchInstanceSourceParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstanceSourceParamsWebCrawlerInput)(nil)).Elem(), GetAiSearchInstanceSourceParamsWebCrawlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsInput)(nil)).Elem(), GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsInput)(nil)).Elem(), GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorInput)(nil)).Elem(), GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorArrayInput)(nil)).Elem(), GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorArray{})
@@ -67123,24 +67372,25 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstancesResultRetrievalOptionsBoostByArrayInput)(nil)).Elem(), GetAiSearchInstancesResultRetrievalOptionsBoostByArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstancesResultSourceParamsInput)(nil)).Elem(), GetAiSearchInstancesResultSourceParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstancesResultSourceParamsWebCrawlerInput)(nil)).Elem(), GetAiSearchInstancesResultSourceParamsWebCrawlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsInput)(nil)).Elem(), GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsInput)(nil)).Elem(), GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsContentSelectorInput)(nil)).Elem(), GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsContentSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsContentSelectorArrayInput)(nil)).Elem(), GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsContentSelectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptionsInput)(nil)).Elem(), GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchNamespacesResultInput)(nil)).Elem(), GetAiSearchNamespacesResultArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchNamespacesResultArrayInput)(nil)).Elem(), GetAiSearchNamespacesResultArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchTokenFilterInput)(nil)).Elem(), GetAiSearchTokenFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchTokenFilterPtrInput)(nil)).Elem(), GetAiSearchTokenFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchTokensResultInput)(nil)).Elem(), GetAiSearchTokensResultArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchTokensResultArrayInput)(nil)).Elem(), GetAiSearchTokensResultArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetApiShieldAuthIdCharacteristicInput)(nil)).Elem(), GetApiShieldAuthIdCharacteristicArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetApiShieldAuthIdCharacteristicArrayInput)(nil)).Elem(), GetApiShieldAuthIdCharacteristicArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetApiShieldDiscoveryOperationsResultInput)(nil)).Elem(), GetApiShieldDiscoveryOperationsResultArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetApiShieldDiscoveryOperationsResultArrayInput)(nil)).Elem(), GetApiShieldDiscoveryOperationsResultArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetApiShieldDiscoveryOperationsResultFeaturesInput)(nil)).Elem(), GetApiShieldDiscoveryOperationsResultFeaturesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsInput)(nil)).Elem(), GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetApiShieldOperationFeaturesInput)(nil)).Elem(), GetApiShieldOperationFeaturesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetApiShieldOperationFeaturesApiRoutingInput)(nil)).Elem(), GetApiShieldOperationFeaturesApiRoutingArgs{})
+	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeAzureAdOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeAzureAdPtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeCertificateOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeCertificatePtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeCommonNameOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeCommonNamePtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeDevicePostureOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeDevicePosturePtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeEmailOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeEmailPtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeEmailDomainOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeEmailDomainPtrOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeEmailListOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeEmailListPtrOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeEveryoneOutput{})
@@ -67967,6 +68217,7 @@ func init() {
 	pulumi.RegisterOutputType(GetAiSearchInstanceRetrievalOptionsBoostByArrayOutput{})
 	pulumi.RegisterOutputType(GetAiSearchInstanceSourceParamsOutput{})
 	pulumi.RegisterOutputType(GetAiSearchInstanceSourceParamsWebCrawlerOutput{})
+	pulumi.RegisterOutputType(GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsOutput{})
 	pulumi.RegisterOutputType(GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsOutput{})
 	pulumi.RegisterOutputType(GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorOutput{})
 	pulumi.RegisterOutputType(GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorArrayOutput{})
@@ -67988,22 +68239,9 @@ func init() {
 	pulumi.RegisterOutputType(GetAiSearchInstancesResultRetrievalOptionsBoostByArrayOutput{})
 	pulumi.RegisterOutputType(GetAiSearchInstancesResultSourceParamsOutput{})
 	pulumi.RegisterOutputType(GetAiSearchInstancesResultSourceParamsWebCrawlerOutput{})
+	pulumi.RegisterOutputType(GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptionsOutput{})
 	pulumi.RegisterOutputType(GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsOutput{})
 	pulumi.RegisterOutputType(GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsContentSelectorOutput{})
 	pulumi.RegisterOutputType(GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsContentSelectorArrayOutput{})
 	pulumi.RegisterOutputType(GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptionsOutput{})
-	pulumi.RegisterOutputType(GetAiSearchNamespacesResultOutput{})
-	pulumi.RegisterOutputType(GetAiSearchNamespacesResultArrayOutput{})
-	pulumi.RegisterOutputType(GetAiSearchTokenFilterOutput{})
-	pulumi.RegisterOutputType(GetAiSearchTokenFilterPtrOutput{})
-	pulumi.RegisterOutputType(GetAiSearchTokensResultOutput{})
-	pulumi.RegisterOutputType(GetAiSearchTokensResultArrayOutput{})
-	pulumi.RegisterOutputType(GetApiShieldAuthIdCharacteristicOutput{})
-	pulumi.RegisterOutputType(GetApiShieldAuthIdCharacteristicArrayOutput{})
-	pulumi.RegisterOutputType(GetApiShieldDiscoveryOperationsResultOutput{})
-	pulumi.RegisterOutputType(GetApiShieldDiscoveryOperationsResultArrayOutput{})
-	pulumi.RegisterOutputType(GetApiShieldDiscoveryOperationsResultFeaturesOutput{})
-	pulumi.RegisterOutputType(GetApiShieldDiscoveryOperationsResultFeaturesTrafficStatsOutput{})
-	pulumi.RegisterOutputType(GetApiShieldOperationFeaturesOutput{})
-	pulumi.RegisterOutputType(GetApiShieldOperationFeaturesApiRoutingOutput{})
 }

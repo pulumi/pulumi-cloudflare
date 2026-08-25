@@ -72,9 +72,10 @@ type LookupAiGatewayResult struct {
 	Filter                  *GetAiGatewayFilter    `pulumi:"filter"`
 	Guardrails              GetAiGatewayGuardrails `pulumi:"guardrails"`
 	// gateway id
-	Id            string `pulumi:"id"`
-	IsDefault     bool   `pulumi:"isDefault"`
-	LogManagement int    `pulumi:"logManagement"`
+	Id                string `pulumi:"id"`
+	IsDefault         bool   `pulumi:"isDefault"`
+	LogClassification bool   `pulumi:"logClassification"`
+	LogManagement     int    `pulumi:"logManagement"`
 	// Available values: "STOP*INSERTING", "DELETE*OLDEST".
 	LogManagementStrategy string             `pulumi:"logManagementStrategy"`
 	Logpush               bool               `pulumi:"logpush"`
@@ -95,8 +96,8 @@ type LookupAiGatewayResult struct {
 	SpendLimits      GetAiGatewaySpendLimits `pulumi:"spendLimits"`
 	StoreId          string                  `pulumi:"storeId"`
 	Stripe           GetAiGatewayStripe      `pulumi:"stripe"`
-	// Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-	// Available values: "postpaid".
+	// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+	// Available values: "postpaid", "unified".
 	WorkersAiBillingMode string `pulumi:"workersAiBillingMode"`
 	Zdr                  bool   `pulumi:"zdr"`
 }
@@ -182,6 +183,10 @@ func (o LookupAiGatewayResultOutput) IsDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAiGatewayResult) bool { return v.IsDefault }).(pulumi.BoolOutput)
 }
 
+func (o LookupAiGatewayResultOutput) LogClassification() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupAiGatewayResult) bool { return v.LogClassification }).(pulumi.BoolOutput)
+}
+
 func (o LookupAiGatewayResultOutput) LogManagement() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupAiGatewayResult) int { return v.LogManagement }).(pulumi.IntOutput)
 }
@@ -248,8 +253,8 @@ func (o LookupAiGatewayResultOutput) Stripe() GetAiGatewayStripeOutput {
 	return o.ApplyT(func(v LookupAiGatewayResult) GetAiGatewayStripe { return v.Stripe }).(GetAiGatewayStripeOutput)
 }
 
-// Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-// Available values: "postpaid".
+// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+// Available values: "postpaid", "unified".
 func (o LookupAiGatewayResultOutput) WorkersAiBillingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayResult) string { return v.WorkersAiBillingMode }).(pulumi.StringOutput)
 }

@@ -316,6 +316,6 @@ class AccountDnsSettings(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneDefaults")
-    def zone_defaults(self) -> pulumi.Output[Optional['outputs.AccountDnsSettingsZoneDefaults']]:
+    def zone_defaults(self) -> pulumi.Output['outputs.AccountDnsSettingsZoneDefaults']:
         return pulumi.get(self, "zone_defaults")
 

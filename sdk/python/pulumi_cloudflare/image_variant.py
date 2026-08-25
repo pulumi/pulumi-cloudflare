@@ -94,8 +94,7 @@ class _ImageVariantState:
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  image_variant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  never_require_signed_urls: pulumi.Input[Optional[_builtins.bool]] = None,
-                 options: pulumi.Input[Optional['ImageVariantOptionsArgs']] = None,
-                 variant: pulumi.Input[Optional['ImageVariantVariantArgs']] = None):
+                 options: pulumi.Input[Optional['ImageVariantOptionsArgs']] = None):
         """
         Input properties used for looking up and filtering ImageVariant resources.
 
@@ -112,8 +111,6 @@ class _ImageVariantState:
             pulumi.set(__self__, "never_require_signed_urls", never_require_signed_urls)
         if options is not None:
             pulumi.set(__self__, "options", options)
-        if variant is not None:
-            pulumi.set(__self__, "variant", variant)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -162,15 +159,6 @@ class _ImageVariantState:
     @options.setter
     def options(self, value: pulumi.Input[Optional['ImageVariantOptionsArgs']]):
         pulumi.set(self, "options", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def variant(self) -> pulumi.Input[Optional['ImageVariantVariantArgs']]:
-        return pulumi.get(self, "variant")
-
-    @variant.setter
-    def variant(self, value: pulumi.Input[Optional['ImageVariantVariantArgs']]):
-        pulumi.set(self, "variant", value)
 
 
 @pulumi.type_token("cloudflare:index/imageVariant:ImageVariant")
@@ -297,7 +285,6 @@ class ImageVariant(pulumi.CustomResource):
             if options is None and not opts.urn:
                 raise TypeError("Missing required property 'options'")
             __props__.__dict__["options"] = options
-            __props__.__dict__["variant"] = None
         super(ImageVariant, __self__).__init__(
             'cloudflare:index/imageVariant:ImageVariant',
             resource_name,
@@ -311,8 +298,7 @@ class ImageVariant(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             image_variant_id: pulumi.Input[Optional[_builtins.str]] = None,
             never_require_signed_urls: pulumi.Input[Optional[_builtins.bool]] = None,
-            options: pulumi.Input[Optional[Union['ImageVariantOptionsArgs', 'ImageVariantOptionsArgsDict']]] = None,
-            variant: pulumi.Input[Optional[Union['ImageVariantVariantArgs', 'ImageVariantVariantArgsDict']]] = None) -> 'ImageVariant':
+            options: pulumi.Input[Optional[Union['ImageVariantOptionsArgs', 'ImageVariantOptionsArgsDict']]] = None) -> 'ImageVariant':
         """
         Get an existing ImageVariant resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -333,7 +319,6 @@ class ImageVariant(pulumi.CustomResource):
         __props__.__dict__["image_variant_id"] = image_variant_id
         __props__.__dict__["never_require_signed_urls"] = never_require_signed_urls
         __props__.__dict__["options"] = options
-        __props__.__dict__["variant"] = variant
         return ImageVariant(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -367,9 +352,4 @@ class ImageVariant(pulumi.CustomResource):
         Allows you to define image resizing sizes for different use cases.
         """
         return pulumi.get(self, "options")
-
-    @_builtins.property
-    @pulumi.getter
-    def variant(self) -> pulumi.Output['outputs.ImageVariantVariant']:
-        return pulumi.get(self, "variant")
 

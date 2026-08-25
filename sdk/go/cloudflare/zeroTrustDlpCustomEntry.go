@@ -63,16 +63,19 @@ type ZeroTrustDlpCustomEntry struct {
 	// Only applies to custom word lists.
 	// Determines if the words should be matched in a case-sensitive manner
 	// Cannot be set to false if secret is true
-	CaseSensitive pulumi.BoolOutput                         `pulumi:"caseSensitive"`
-	Confidence    ZeroTrustDlpCustomEntryConfidenceOutput   `pulumi:"confidence"`
-	CreatedAt     pulumi.StringOutput                       `pulumi:"createdAt"`
-	Description   pulumi.StringPtrOutput                    `pulumi:"description"`
-	Enabled       pulumi.BoolOutput                         `pulumi:"enabled"`
-	Name          pulumi.StringOutput                       `pulumi:"name"`
-	Pattern       ZeroTrustDlpCustomEntryPatternOutput      `pulumi:"pattern"`
-	ProfileId     pulumi.StringPtrOutput                    `pulumi:"profileId"`
-	Profiles      ZeroTrustDlpCustomEntryProfileArrayOutput `pulumi:"profiles"`
-	Secret        pulumi.BoolOutput                         `pulumi:"secret"`
+	CaseSensitive pulumi.BoolOutput                       `pulumi:"caseSensitive"`
+	Confidence    ZeroTrustDlpCustomEntryConfidenceOutput `pulumi:"confidence"`
+	CreatedAt     pulumi.StringOutput                     `pulumi:"createdAt"`
+	// Whether this entry is deprecated for new use. This is computed from the static catalog and
+	// emitted only when true.
+	Deprecated  pulumi.BoolOutput                         `pulumi:"deprecated"`
+	Description pulumi.StringPtrOutput                    `pulumi:"description"`
+	Enabled     pulumi.BoolOutput                         `pulumi:"enabled"`
+	Name        pulumi.StringOutput                       `pulumi:"name"`
+	Pattern     ZeroTrustDlpCustomEntryPatternOutput      `pulumi:"pattern"`
+	ProfileId   pulumi.StringPtrOutput                    `pulumi:"profileId"`
+	Profiles    ZeroTrustDlpCustomEntryProfileArrayOutput `pulumi:"profiles"`
+	Secret      pulumi.BoolOutput                         `pulumi:"secret"`
 	// Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
 	Type      pulumi.StringOutput `pulumi:"type"`
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
@@ -132,13 +135,16 @@ type zeroTrustDlpCustomEntryState struct {
 	CaseSensitive *bool                              `pulumi:"caseSensitive"`
 	Confidence    *ZeroTrustDlpCustomEntryConfidence `pulumi:"confidence"`
 	CreatedAt     *string                            `pulumi:"createdAt"`
-	Description   *string                            `pulumi:"description"`
-	Enabled       *bool                              `pulumi:"enabled"`
-	Name          *string                            `pulumi:"name"`
-	Pattern       *ZeroTrustDlpCustomEntryPattern    `pulumi:"pattern"`
-	ProfileId     *string                            `pulumi:"profileId"`
-	Profiles      []ZeroTrustDlpCustomEntryProfile   `pulumi:"profiles"`
-	Secret        *bool                              `pulumi:"secret"`
+	// Whether this entry is deprecated for new use. This is computed from the static catalog and
+	// emitted only when true.
+	Deprecated  *bool                            `pulumi:"deprecated"`
+	Description *string                          `pulumi:"description"`
+	Enabled     *bool                            `pulumi:"enabled"`
+	Name        *string                          `pulumi:"name"`
+	Pattern     *ZeroTrustDlpCustomEntryPattern  `pulumi:"pattern"`
+	ProfileId   *string                          `pulumi:"profileId"`
+	Profiles    []ZeroTrustDlpCustomEntryProfile `pulumi:"profiles"`
+	Secret      *bool                            `pulumi:"secret"`
 	// Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
 	Type      *string `pulumi:"type"`
 	UpdatedAt *string `pulumi:"updatedAt"`
@@ -157,13 +163,16 @@ type ZeroTrustDlpCustomEntryState struct {
 	CaseSensitive pulumi.BoolPtrInput
 	Confidence    ZeroTrustDlpCustomEntryConfidencePtrInput
 	CreatedAt     pulumi.StringPtrInput
-	Description   pulumi.StringPtrInput
-	Enabled       pulumi.BoolPtrInput
-	Name          pulumi.StringPtrInput
-	Pattern       ZeroTrustDlpCustomEntryPatternPtrInput
-	ProfileId     pulumi.StringPtrInput
-	Profiles      ZeroTrustDlpCustomEntryProfileArrayInput
-	Secret        pulumi.BoolPtrInput
+	// Whether this entry is deprecated for new use. This is computed from the static catalog and
+	// emitted only when true.
+	Deprecated  pulumi.BoolPtrInput
+	Description pulumi.StringPtrInput
+	Enabled     pulumi.BoolPtrInput
+	Name        pulumi.StringPtrInput
+	Pattern     ZeroTrustDlpCustomEntryPatternPtrInput
+	ProfileId   pulumi.StringPtrInput
+	Profiles    ZeroTrustDlpCustomEntryProfileArrayInput
+	Secret      pulumi.BoolPtrInput
 	// Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
 	Type      pulumi.StringPtrInput
 	UpdatedAt pulumi.StringPtrInput
@@ -301,6 +310,12 @@ func (o ZeroTrustDlpCustomEntryOutput) Confidence() ZeroTrustDlpCustomEntryConfi
 
 func (o ZeroTrustDlpCustomEntryOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomEntry) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Whether this entry is deprecated for new use. This is computed from the static catalog and
+// emitted only when true.
+func (o ZeroTrustDlpCustomEntryOutput) Deprecated() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpCustomEntry) pulumi.BoolOutput { return v.Deprecated }).(pulumi.BoolOutput)
 }
 
 func (o ZeroTrustDlpCustomEntryOutput) Description() pulumi.StringPtrOutput {

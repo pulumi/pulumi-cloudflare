@@ -18,22 +18,6 @@ namespace Pulumi.Cloudflare
         /// - `Load Balancers Write`
         /// 
         /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleLoadBalancers = Cloudflare.GetLoadBalancers.Invoke(new()
-        ///     {
-        ///         ZoneId = "zone_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetLoadBalancersResult> InvokeAsync(GetLoadBalancersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancersResult>("cloudflare:index/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersArgs(), options.WithDefaults());
@@ -45,22 +29,6 @@ namespace Pulumi.Cloudflare
         /// - `Load Balancers Write`
         /// 
         /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleLoadBalancers = Cloudflare.GetLoadBalancers.Invoke(new()
-        ///     {
-        ///         ZoneId = "zone_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetLoadBalancersResult> Invoke(GetLoadBalancersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLoadBalancersResult>("cloudflare:index/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersInvokeArgs(), options.WithDefaults());
@@ -72,22 +40,6 @@ namespace Pulumi.Cloudflare
         /// - `Load Balancers Write`
         /// 
         /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleLoadBalancers = Cloudflare.GetLoadBalancers.Invoke(new()
-        ///     {
-        ///         ZoneId = "zone_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetLoadBalancersResult> Invoke(GetLoadBalancersInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetLoadBalancersResult>("cloudflare:index/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersInvokeArgs(), options.WithDefaults());

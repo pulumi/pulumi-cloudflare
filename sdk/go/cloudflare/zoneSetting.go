@@ -88,6 +88,8 @@ import (
 // | `transformationsAllowedOrigins` | String | Media Transformations Allowed Origins restricts transformations for images an... |
 // | `trueClientIpHeader` | `"on"` / `"off"` | Allows customer to continue to use True Client IP (Akamai feature) in the hea... |
 // | `waf` | `"on"` / `"off"` | The WAF examines HTTP requests to your website.  It inspects both GET and POS... |
+// | `webmcpEnabled` | `"on"` / `"off"` | When enabled, Cloudflare injects the WebMCP bridge (bridge.js) into HTML resp... |
+// | `webmcpPacks` | String | Optional per-zone override of which bundled WebMCP tool packs the injected br... |
 // | `webp` | `"on"` / `"off"` | When the client requesting the image supports the WebP image codec, and WebP ... |
 // | `websockets` | `"on"` / `"off"` | WebSockets are open connections sustained between the client and the origin s... |
 //

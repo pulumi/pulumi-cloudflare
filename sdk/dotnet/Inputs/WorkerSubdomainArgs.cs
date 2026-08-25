@@ -19,10 +19,22 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// Prepend a version or preview prefix to this host suffix to form the *.workers.dev [preview URL](https://developers.cloudflare.com/workers/configuration/previews/) the Worker would serve on once previews are enabled, e.g. `https://&lt;prefix&gt;-my-worker.my-subdomain.workers.dev`. Present whenever the account owns a workers.dev subdomain, regardless of whether `PreviewsEnabled` is true, so presence does not imply preview URLs are currently live. Absent only when the account owns no workers.dev subdomain.
+        /// </summary>
+        [Input("previewUrlSuffix")]
+        public Input<string>? PreviewUrlSuffix { get; set; }
+
+        /// <summary>
         /// Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.
         /// </summary>
         [Input("previewsEnabled")]
         public Input<bool>? PreviewsEnabled { get; set; }
+
+        /// <summary>
+        /// The address the Worker would serve on once its *.workers.dev subdomain is enabled. Present whenever the account owns a workers.dev subdomain, regardless of whether `Enabled` is true, so presence does not imply the Worker is currently live at this URL. Absent only when the account owns no workers.dev subdomain.
+        /// </summary>
+        [Input("url")]
+        public Input<string>? Url { get; set; }
 
         public WorkerSubdomainArgs()
         {

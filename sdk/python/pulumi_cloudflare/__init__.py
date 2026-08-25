@@ -59,6 +59,7 @@ from .cloudforce_one_request_priority import *
 from .connectivity_directory_service import *
 from .content_scanning import *
 from .content_scanning_expression import *
+from .ct_alerting import *
 from .custom_csr import *
 from .custom_hostname import *
 from .custom_hostname_fallback_origin import *
@@ -163,6 +164,7 @@ from .get_connectivity_directory_service import *
 from .get_connectivity_directory_services import *
 from .get_content_scanning import *
 from .get_content_scanning_expressions import *
+from .get_ct_alerting import *
 from .get_custom_csr import *
 from .get_custom_csrs import *
 from .get_custom_hostname import *
@@ -218,6 +220,7 @@ from .get_google_tag_gateway import *
 from .get_healthcheck import *
 from .get_healthchecks import *
 from .get_hostname_tls_setting import *
+from .get_hostname_tls_settings import *
 from .get_hyperdrive_config import *
 from .get_hyperdrive_configs import *
 from .get_image import *
@@ -304,6 +307,7 @@ from .get_pipeline_sink import *
 from .get_pipeline_sinks import *
 from .get_pipeline_stream import *
 from .get_pipeline_streams import *
+from .get_precursor import *
 from .get_queue import *
 from .get_queue_consumer import *
 from .get_queue_consumers import *
@@ -587,6 +591,7 @@ from .pages_project import *
 from .pipeline import *
 from .pipeline_sink import *
 from .pipeline_stream import *
+from .precursor import *
 from .provider import *
 from .queue import *
 from .queue_consumer import *
@@ -1180,6 +1185,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/contentScanningExpression:ContentScanningExpression": "ContentScanningExpression"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/ctAlerting",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/ctAlerting:CtAlerting": "CtAlerting"
   }
  },
  {
@@ -1836,6 +1849,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/pipelineStream:PipelineStream": "PipelineStream"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/precursor",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/precursor:Precursor": "Precursor"
   }
  },
  {

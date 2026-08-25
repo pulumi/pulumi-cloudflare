@@ -71,6 +71,35 @@ namespace Pulumi.Cloudflare
     ///                 ClassName = "MyDurableObject",
     ///             },
     ///         },
+    ///         Exports = 
+    ///         {
+    ///             { "Admin", new Cloudflare.Inputs.WorkerVersionExportsArgs
+    ///             {
+    ///                 Type = "worker",
+    ///                 Cache = new Cloudflare.Inputs.WorkerVersionExportsCacheArgs
+    ///                 {
+    ///                     Enabled = true,
+    ///                 },
+    ///                 RenamedTo = "renamed_to",
+    ///                 State = "created",
+    ///                 Storage = "sqlite",
+    ///                 TransferFrom = "transfer_from",
+    ///                 TransferredTo = "transferred_to",
+    ///             } },
+    ///             { "default", new Cloudflare.Inputs.WorkerVersionExportsArgs
+    ///             {
+    ///                 Type = "worker",
+    ///                 Cache = new Cloudflare.Inputs.WorkerVersionExportsCacheArgs
+    ///                 {
+    ///                     Enabled = false,
+    ///                 },
+    ///                 RenamedTo = "renamed_to",
+    ///                 State = "created",
+    ///                 Storage = "sqlite",
+    ///                 TransferFrom = "transfer_from",
+    ///                 TransferredTo = "transferred_to",
+    ///             } },
+    ///         },
     ///         Limits = new Cloudflare.Inputs.WorkerVersionLimitsArgs
     ///         {
     ///             CpuMs = 50,

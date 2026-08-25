@@ -37,8 +37,14 @@ export function getSecretsStore(args: GetSecretsStoreArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getSecretsStore.
  */
 export interface GetSecretsStoreArgs {
+    /**
+     * Account Identifier
+     */
     accountId: string;
     filter?: inputs.GetSecretsStoreFilter;
+    /**
+     * Store Identifier
+     */
     storeId?: string;
 }
 
@@ -46,6 +52,9 @@ export interface GetSecretsStoreArgs {
  * A collection of values returned by getSecretsStore.
  */
 export interface GetSecretsStoreResult {
+    /**
+     * Account Identifier
+     */
     readonly accountId: string;
     /**
      * When the secret was created.
@@ -53,7 +62,7 @@ export interface GetSecretsStoreResult {
     readonly created: string;
     readonly filter?: outputs.GetSecretsStoreFilter;
     /**
-     * The ID of this resource.
+     * Store Identifier
      */
     readonly id: string;
     /**
@@ -64,6 +73,9 @@ export interface GetSecretsStoreResult {
      * The name of the store.
      */
     readonly name: string;
+    /**
+     * Store Identifier
+     */
     readonly storeId?: string;
 }
 /**
@@ -97,7 +109,13 @@ export function getSecretsStoreOutput(args: GetSecretsStoreOutputArgs, opts?: pu
  * A collection of arguments for invoking getSecretsStore.
  */
 export interface GetSecretsStoreOutputArgs {
+    /**
+     * Account Identifier
+     */
     accountId: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetSecretsStoreFilterArgs | undefined>;
+    /**
+     * Store Identifier
+     */
     storeId?: pulumi.Input<string | undefined>;
 }

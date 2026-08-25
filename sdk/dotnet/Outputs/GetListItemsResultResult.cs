@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string CreatedOn;
         /// <summary>
-        /// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+        /// Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         /// </summary>
         public readonly Outputs.GetListItemsResultHostnameResult Hostname;
         /// <summary>

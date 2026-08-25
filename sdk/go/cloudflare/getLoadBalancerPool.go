@@ -74,6 +74,8 @@ type LookupLoadBalancerPoolResult struct {
 	// Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
 	Enabled bool                       `pulumi:"enabled"`
 	Filter  *GetLoadBalancerPoolFilter `pulumi:"filter"`
+	// A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+	HealthSources []string `pulumi:"healthSources"`
 	// The ID of this resource.
 	Id string `pulumi:"id"`
 	// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
@@ -171,6 +173,11 @@ func (o LookupLoadBalancerPoolResultOutput) Enabled() pulumi.BoolOutput {
 
 func (o LookupLoadBalancerPoolResultOutput) Filter() GetLoadBalancerPoolFilterPtrOutput {
 	return o.ApplyT(func(v LookupLoadBalancerPoolResult) *GetLoadBalancerPoolFilter { return v.Filter }).(GetLoadBalancerPoolFilterPtrOutput)
+}
+
+// A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+func (o LookupLoadBalancerPoolResultOutput) HealthSources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupLoadBalancerPoolResult) []string { return v.HealthSources }).(pulumi.StringArrayOutput)
 }
 
 // The ID of this resource.

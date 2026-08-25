@@ -146,6 +146,8 @@ import com.pulumi.cloudflare.inputs.GetContentScanningArgs;
 import com.pulumi.cloudflare.inputs.GetContentScanningExpressionsArgs;
 import com.pulumi.cloudflare.inputs.GetContentScanningExpressionsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetContentScanningPlainArgs;
+import com.pulumi.cloudflare.inputs.GetCtAlertingArgs;
+import com.pulumi.cloudflare.inputs.GetCtAlertingPlainArgs;
 import com.pulumi.cloudflare.inputs.GetCustomCsrArgs;
 import com.pulumi.cloudflare.inputs.GetCustomCsrPlainArgs;
 import com.pulumi.cloudflare.inputs.GetCustomCsrsArgs;
@@ -256,6 +258,8 @@ import com.pulumi.cloudflare.inputs.GetHealthchecksArgs;
 import com.pulumi.cloudflare.inputs.GetHealthchecksPlainArgs;
 import com.pulumi.cloudflare.inputs.GetHostnameTlsSettingArgs;
 import com.pulumi.cloudflare.inputs.GetHostnameTlsSettingPlainArgs;
+import com.pulumi.cloudflare.inputs.GetHostnameTlsSettingsArgs;
+import com.pulumi.cloudflare.inputs.GetHostnameTlsSettingsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetHyperdriveConfigArgs;
 import com.pulumi.cloudflare.inputs.GetHyperdriveConfigPlainArgs;
 import com.pulumi.cloudflare.inputs.GetHyperdriveConfigsArgs;
@@ -428,6 +432,8 @@ import com.pulumi.cloudflare.inputs.GetPipelineStreamArgs;
 import com.pulumi.cloudflare.inputs.GetPipelineStreamPlainArgs;
 import com.pulumi.cloudflare.inputs.GetPipelineStreamsArgs;
 import com.pulumi.cloudflare.inputs.GetPipelineStreamsPlainArgs;
+import com.pulumi.cloudflare.inputs.GetPrecursorArgs;
+import com.pulumi.cloudflare.inputs.GetPrecursorPlainArgs;
 import com.pulumi.cloudflare.inputs.GetQueueArgs;
 import com.pulumi.cloudflare.inputs.GetQueueConsumerArgs;
 import com.pulumi.cloudflare.inputs.GetQueueConsumerPlainArgs;
@@ -965,6 +971,7 @@ import com.pulumi.cloudflare.outputs.GetConnectivityDirectoryServiceResult;
 import com.pulumi.cloudflare.outputs.GetConnectivityDirectoryServicesInvokeResult;
 import com.pulumi.cloudflare.outputs.GetContentScanningExpressionsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetContentScanningResult;
+import com.pulumi.cloudflare.outputs.GetCtAlertingResult;
 import com.pulumi.cloudflare.outputs.GetCustomCsrResult;
 import com.pulumi.cloudflare.outputs.GetCustomCsrsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetCustomHostnameFallbackOriginResult;
@@ -1020,6 +1027,7 @@ import com.pulumi.cloudflare.outputs.GetGoogleTagGatewayResult;
 import com.pulumi.cloudflare.outputs.GetHealthcheckResult;
 import com.pulumi.cloudflare.outputs.GetHealthchecksInvokeResult;
 import com.pulumi.cloudflare.outputs.GetHostnameTlsSettingResult;
+import com.pulumi.cloudflare.outputs.GetHostnameTlsSettingsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetHyperdriveConfigResult;
 import com.pulumi.cloudflare.outputs.GetHyperdriveConfigsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetImageResult;
@@ -1106,6 +1114,7 @@ import com.pulumi.cloudflare.outputs.GetPipelineSinkResult;
 import com.pulumi.cloudflare.outputs.GetPipelineSinksInvokeResult;
 import com.pulumi.cloudflare.outputs.GetPipelineStreamResult;
 import com.pulumi.cloudflare.outputs.GetPipelineStreamsInvokeResult;
+import com.pulumi.cloudflare.outputs.GetPrecursorResult;
 import com.pulumi.cloudflare.outputs.GetQueueConsumerResult;
 import com.pulumi.cloudflare.outputs.GetQueueConsumersInvokeResult;
 import com.pulumi.cloudflare.outputs.GetQueueResult;
@@ -6210,6 +6219,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleAccountSubscription = CloudflareFunctions.getAccountSubscription(GetAccountSubscriptionArgs.builder()
      *             .accountId("account_id")
+     *             .zoneId("zone_id")
      *             .build());
      * 
      *     }
@@ -6253,6 +6263,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleAccountSubscription = CloudflareFunctions.getAccountSubscription(GetAccountSubscriptionArgs.builder()
      *             .accountId("account_id")
+     *             .zoneId("zone_id")
      *             .build());
      * 
      *     }
@@ -6296,6 +6307,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleAccountSubscription = CloudflareFunctions.getAccountSubscription(GetAccountSubscriptionArgs.builder()
      *             .accountId("account_id")
+     *             .zoneId("zone_id")
      *             .build());
      * 
      *     }
@@ -6339,6 +6351,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleAccountSubscription = CloudflareFunctions.getAccountSubscription(GetAccountSubscriptionArgs.builder()
      *             .accountId("account_id")
+     *             .zoneId("zone_id")
      *             .build());
      * 
      *     }
@@ -6382,6 +6395,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleAccountSubscription = CloudflareFunctions.getAccountSubscription(GetAccountSubscriptionArgs.builder()
      *             .accountId("account_id")
+     *             .zoneId("zone_id")
      *             .build());
      * 
      *     }
@@ -6425,6 +6439,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleAccountSubscription = CloudflareFunctions.getAccountSubscription(GetAccountSubscriptionArgs.builder()
      *             .accountId("account_id")
+     *             .zoneId("zone_id")
      *             .build());
      * 
      *     }
@@ -6468,6 +6483,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleAccountSubscription = CloudflareFunctions.getAccountSubscription(GetAccountSubscriptionArgs.builder()
      *             .accountId("account_id")
+     *             .zoneId("zone_id")
      *             .build());
      * 
      *     }
@@ -20345,6 +20361,221 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetContentScanningExpressionsInvokeResult> getContentScanningExpressionsPlain(GetContentScanningExpressionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getContentScanningExpressions:getContentScanningExpressions", TypeShape.of(GetContentScanningExpressionsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `SSL and Certificates Read`
+     * - `SSL and Certificates Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetCtAlertingArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleCtAlerting = CloudflareFunctions.getCtAlerting(GetCtAlertingArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCtAlertingResult> getCtAlerting(GetCtAlertingArgs args) {
+        return getCtAlerting(args, InvokeOptions.Empty);
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `SSL and Certificates Read`
+     * - `SSL and Certificates Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetCtAlertingArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleCtAlerting = CloudflareFunctions.getCtAlerting(GetCtAlertingArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCtAlertingResult> getCtAlertingPlain(GetCtAlertingPlainArgs args) {
+        return getCtAlertingPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `SSL and Certificates Read`
+     * - `SSL and Certificates Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetCtAlertingArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleCtAlerting = CloudflareFunctions.getCtAlerting(GetCtAlertingArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCtAlertingResult> getCtAlerting(GetCtAlertingArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getCtAlerting:getCtAlerting", TypeShape.of(GetCtAlertingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `SSL and Certificates Read`
+     * - `SSL and Certificates Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetCtAlertingArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleCtAlerting = CloudflareFunctions.getCtAlerting(GetCtAlertingArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCtAlertingResult> getCtAlerting(GetCtAlertingArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getCtAlerting:getCtAlerting", TypeShape.of(GetCtAlertingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `SSL and Certificates Read`
+     * - `SSL and Certificates Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetCtAlertingArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleCtAlerting = CloudflareFunctions.getCtAlerting(GetCtAlertingArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCtAlertingResult> getCtAlertingPlain(GetCtAlertingPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getCtAlerting:getCtAlerting", TypeShape.of(GetCtAlertingResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Accepted Permissions
@@ -35972,11 +36203,6 @@ public final class CloudflareFunctions {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getHealthchecks:getHealthchecks", TypeShape.of(GetHealthchecksInvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Accepted Permissions
-     * 
-     * - `SSL and Certificates Read`
-     * - `SSL and Certificates Write`
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -36004,6 +36230,7 @@ public final class CloudflareFunctions {
      *         final var exampleHostnameTlsSetting = CloudflareFunctions.getHostnameTlsSetting(GetHostnameTlsSettingArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .settingId("ciphers")
+     *             .hostname("app.example.com")
      *             .build());
      * 
      *     }
@@ -36016,11 +36243,6 @@ public final class CloudflareFunctions {
         return getHostnameTlsSetting(args, InvokeOptions.Empty);
     }
     /**
-     * Accepted Permissions
-     * 
-     * - `SSL and Certificates Read`
-     * - `SSL and Certificates Write`
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -36048,6 +36270,7 @@ public final class CloudflareFunctions {
      *         final var exampleHostnameTlsSetting = CloudflareFunctions.getHostnameTlsSetting(GetHostnameTlsSettingArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .settingId("ciphers")
+     *             .hostname("app.example.com")
      *             .build());
      * 
      *     }
@@ -36060,11 +36283,6 @@ public final class CloudflareFunctions {
         return getHostnameTlsSettingPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Accepted Permissions
-     * 
-     * - `SSL and Certificates Read`
-     * - `SSL and Certificates Write`
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -36092,6 +36310,7 @@ public final class CloudflareFunctions {
      *         final var exampleHostnameTlsSetting = CloudflareFunctions.getHostnameTlsSetting(GetHostnameTlsSettingArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .settingId("ciphers")
+     *             .hostname("app.example.com")
      *             .build());
      * 
      *     }
@@ -36104,11 +36323,6 @@ public final class CloudflareFunctions {
         return Deployment.getInstance().invoke("cloudflare:index/getHostnameTlsSetting:getHostnameTlsSetting", TypeShape.of(GetHostnameTlsSettingResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Accepted Permissions
-     * 
-     * - `SSL and Certificates Read`
-     * - `SSL and Certificates Write`
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -36136,6 +36350,7 @@ public final class CloudflareFunctions {
      *         final var exampleHostnameTlsSetting = CloudflareFunctions.getHostnameTlsSetting(GetHostnameTlsSettingArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .settingId("ciphers")
+     *             .hostname("app.example.com")
      *             .build());
      * 
      *     }
@@ -36146,6 +36361,46 @@ public final class CloudflareFunctions {
      */
     public static Output<GetHostnameTlsSettingResult> getHostnameTlsSetting(GetHostnameTlsSettingArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("cloudflare:index/getHostnameTlsSetting:getHostnameTlsSetting", TypeShape.of(GetHostnameTlsSettingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetHostnameTlsSettingArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleHostnameTlsSetting = CloudflareFunctions.getHostnameTlsSetting(GetHostnameTlsSettingArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .settingId("ciphers")
+     *             .hostname("app.example.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetHostnameTlsSettingResult> getHostnameTlsSettingPlain(GetHostnameTlsSettingPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getHostnameTlsSetting:getHostnameTlsSetting", TypeShape.of(GetHostnameTlsSettingResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Accepted Permissions
@@ -36163,7 +36418,7 @@ public final class CloudflareFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetHostnameTlsSettingArgs;
+     * import com.pulumi.cloudflare.inputs.GetHostnameTlsSettingsArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -36177,7 +36432,7 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleHostnameTlsSetting = CloudflareFunctions.getHostnameTlsSetting(GetHostnameTlsSettingArgs.builder()
+     *         final var exampleHostnameTlsSettings = CloudflareFunctions.getHostnameTlsSettings(GetHostnameTlsSettingsArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .settingId("ciphers")
      *             .build());
@@ -36188,8 +36443,184 @@ public final class CloudflareFunctions {
      * </pre>
      * 
      */
-    public static CompletableFuture<GetHostnameTlsSettingResult> getHostnameTlsSettingPlain(GetHostnameTlsSettingPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("cloudflare:index/getHostnameTlsSetting:getHostnameTlsSetting", TypeShape.of(GetHostnameTlsSettingResult.class), args, Utilities.withVersion(options));
+    public static Output<GetHostnameTlsSettingsInvokeResult> getHostnameTlsSettings(GetHostnameTlsSettingsArgs args) {
+        return getHostnameTlsSettings(args, InvokeOptions.Empty);
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `SSL and Certificates Read`
+     * - `SSL and Certificates Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetHostnameTlsSettingsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleHostnameTlsSettings = CloudflareFunctions.getHostnameTlsSettings(GetHostnameTlsSettingsArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .settingId("ciphers")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetHostnameTlsSettingsInvokeResult> getHostnameTlsSettingsPlain(GetHostnameTlsSettingsPlainArgs args) {
+        return getHostnameTlsSettingsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `SSL and Certificates Read`
+     * - `SSL and Certificates Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetHostnameTlsSettingsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleHostnameTlsSettings = CloudflareFunctions.getHostnameTlsSettings(GetHostnameTlsSettingsArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .settingId("ciphers")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetHostnameTlsSettingsInvokeResult> getHostnameTlsSettings(GetHostnameTlsSettingsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getHostnameTlsSettings:getHostnameTlsSettings", TypeShape.of(GetHostnameTlsSettingsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `SSL and Certificates Read`
+     * - `SSL and Certificates Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetHostnameTlsSettingsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleHostnameTlsSettings = CloudflareFunctions.getHostnameTlsSettings(GetHostnameTlsSettingsArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .settingId("ciphers")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetHostnameTlsSettingsInvokeResult> getHostnameTlsSettings(GetHostnameTlsSettingsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getHostnameTlsSettings:getHostnameTlsSettings", TypeShape.of(GetHostnameTlsSettingsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `SSL and Certificates Read`
+     * - `SSL and Certificates Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetHostnameTlsSettingsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleHostnameTlsSettings = CloudflareFunctions.getHostnameTlsSettings(GetHostnameTlsSettingsArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .settingId("ciphers")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetHostnameTlsSettingsInvokeResult> getHostnameTlsSettingsPlain(GetHostnameTlsSettingsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getHostnameTlsSettings:getHostnameTlsSettings", TypeShape.of(GetHostnameTlsSettingsInvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Accepted Permissions
@@ -40261,38 +40692,6 @@ public final class CloudflareFunctions {
      * 
      * ## Example Usage
      * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetLoadBalancerArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleLoadBalancer = CloudflareFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
-     *             .loadBalancerId("699d98642c564d2e855e9661899b7252")
-     *             .zoneId("zone_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
      */
     public static Output<GetLoadBalancerResult> getLoadBalancer(GetLoadBalancerArgs args) {
         return getLoadBalancer(args, InvokeOptions.Empty);
@@ -40304,38 +40703,6 @@ public final class CloudflareFunctions {
      * - `Load Balancers Write`
      * 
      * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetLoadBalancerArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleLoadBalancer = CloudflareFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
-     *             .loadBalancerId("699d98642c564d2e855e9661899b7252")
-     *             .zoneId("zone_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * 
      */
     public static CompletableFuture<GetLoadBalancerResult> getLoadBalancerPlain(GetLoadBalancerPlainArgs args) {
@@ -40349,38 +40716,6 @@ public final class CloudflareFunctions {
      * 
      * ## Example Usage
      * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetLoadBalancerArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleLoadBalancer = CloudflareFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
-     *             .loadBalancerId("699d98642c564d2e855e9661899b7252")
-     *             .zoneId("zone_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
      */
     public static Output<GetLoadBalancerResult> getLoadBalancer(GetLoadBalancerArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("cloudflare:index/getLoadBalancer:getLoadBalancer", TypeShape.of(GetLoadBalancerResult.class), args, Utilities.withVersion(options));
@@ -40393,38 +40728,6 @@ public final class CloudflareFunctions {
      * 
      * ## Example Usage
      * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetLoadBalancerArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleLoadBalancer = CloudflareFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
-     *             .loadBalancerId("699d98642c564d2e855e9661899b7252")
-     *             .zoneId("zone_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
      */
     public static Output<GetLoadBalancerResult> getLoadBalancer(GetLoadBalancerArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("cloudflare:index/getLoadBalancer:getLoadBalancer", TypeShape.of(GetLoadBalancerResult.class), args, Utilities.withVersion(options));
@@ -40436,38 +40739,6 @@ public final class CloudflareFunctions {
      * - `Load Balancers Write`
      * 
      * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetLoadBalancerArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleLoadBalancer = CloudflareFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
-     *             .loadBalancerId("699d98642c564d2e855e9661899b7252")
-     *             .zoneId("zone_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * 
      */
     public static CompletableFuture<GetLoadBalancerResult> getLoadBalancerPlain(GetLoadBalancerPlainArgs args, InvokeOptions options) {
@@ -42003,37 +42274,6 @@ public final class CloudflareFunctions {
      * 
      * ## Example Usage
      * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetLoadBalancersArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleLoadBalancers = CloudflareFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .zoneId("zone_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
      */
     public static Output<GetLoadBalancersInvokeResult> getLoadBalancers() {
         return getLoadBalancers(GetLoadBalancersArgs.Empty, InvokeOptions.Empty);
@@ -42045,37 +42285,6 @@ public final class CloudflareFunctions {
      * - `Load Balancers Write`
      * 
      * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetLoadBalancersArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleLoadBalancers = CloudflareFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .zoneId("zone_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * 
      */
     public static CompletableFuture<GetLoadBalancersInvokeResult> getLoadBalancersPlain() {
@@ -42089,37 +42298,6 @@ public final class CloudflareFunctions {
      * 
      * ## Example Usage
      * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetLoadBalancersArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleLoadBalancers = CloudflareFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .zoneId("zone_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
      */
     public static Output<GetLoadBalancersInvokeResult> getLoadBalancers(GetLoadBalancersArgs args) {
         return getLoadBalancers(args, InvokeOptions.Empty);
@@ -42131,37 +42309,6 @@ public final class CloudflareFunctions {
      * - `Load Balancers Write`
      * 
      * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetLoadBalancersArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleLoadBalancers = CloudflareFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .zoneId("zone_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * 
      */
     public static CompletableFuture<GetLoadBalancersInvokeResult> getLoadBalancersPlain(GetLoadBalancersPlainArgs args) {
@@ -42175,37 +42322,6 @@ public final class CloudflareFunctions {
      * 
      * ## Example Usage
      * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetLoadBalancersArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleLoadBalancers = CloudflareFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .zoneId("zone_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
      */
     public static Output<GetLoadBalancersInvokeResult> getLoadBalancers(GetLoadBalancersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("cloudflare:index/getLoadBalancers:getLoadBalancers", TypeShape.of(GetLoadBalancersInvokeResult.class), args, Utilities.withVersion(options));
@@ -42218,37 +42334,6 @@ public final class CloudflareFunctions {
      * 
      * ## Example Usage
      * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetLoadBalancersArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleLoadBalancers = CloudflareFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .zoneId("zone_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
      */
     public static Output<GetLoadBalancersInvokeResult> getLoadBalancers(GetLoadBalancersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("cloudflare:index/getLoadBalancers:getLoadBalancers", TypeShape.of(GetLoadBalancersInvokeResult.class), args, Utilities.withVersion(options));
@@ -42260,37 +42345,6 @@ public final class CloudflareFunctions {
      * - `Load Balancers Write`
      * 
      * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetLoadBalancersArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleLoadBalancers = CloudflareFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .zoneId("zone_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * 
      */
     public static CompletableFuture<GetLoadBalancersInvokeResult> getLoadBalancersPlain(GetLoadBalancersPlainArgs args, InvokeOptions options) {
@@ -48950,18 +49004,203 @@ public final class CloudflareFunctions {
     public static CompletableFuture<GetMoqRelayResult> getMoqRelayPlain(GetMoqRelayPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getMoqRelay:getMoqRelay", TypeShape.of(GetMoqRelayResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetMoqRelaysArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleMoqRelays = CloudflareFunctions.getMoqRelays(GetMoqRelaysArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .createdAfter("2026-03-27T15:00:00Z")
+     *             .createdBefore("2026-03-27T15:00:00Z")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetMoqRelaysInvokeResult> getMoqRelays(GetMoqRelaysArgs args) {
         return getMoqRelays(args, InvokeOptions.Empty);
     }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetMoqRelaysArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleMoqRelays = CloudflareFunctions.getMoqRelays(GetMoqRelaysArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .createdAfter("2026-03-27T15:00:00Z")
+     *             .createdBefore("2026-03-27T15:00:00Z")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static CompletableFuture<GetMoqRelaysInvokeResult> getMoqRelaysPlain(GetMoqRelaysPlainArgs args) {
         return getMoqRelaysPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetMoqRelaysArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleMoqRelays = CloudflareFunctions.getMoqRelays(GetMoqRelaysArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .createdAfter("2026-03-27T15:00:00Z")
+     *             .createdBefore("2026-03-27T15:00:00Z")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetMoqRelaysInvokeResult> getMoqRelays(GetMoqRelaysArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("cloudflare:index/getMoqRelays:getMoqRelays", TypeShape.of(GetMoqRelaysInvokeResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetMoqRelaysArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleMoqRelays = CloudflareFunctions.getMoqRelays(GetMoqRelaysArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .createdAfter("2026-03-27T15:00:00Z")
+     *             .createdBefore("2026-03-27T15:00:00Z")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetMoqRelaysInvokeResult> getMoqRelays(GetMoqRelaysArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("cloudflare:index/getMoqRelays:getMoqRelays", TypeShape.of(GetMoqRelaysInvokeResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetMoqRelaysArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleMoqRelays = CloudflareFunctions.getMoqRelays(GetMoqRelaysArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .createdAfter("2026-03-27T15:00:00Z")
+     *             .createdBefore("2026-03-27T15:00:00Z")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static CompletableFuture<GetMoqRelaysInvokeResult> getMoqRelaysPlain(GetMoqRelaysPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getMoqRelays:getMoqRelays", TypeShape.of(GetMoqRelaysInvokeResult.class), args, Utilities.withVersion(options));
     }
@@ -58894,6 +59133,196 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetPipelineStreamsInvokeResult> getPipelineStreamsPlain(GetPipelineStreamsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getPipelineStreams:getPipelineStreams", TypeShape.of(GetPipelineStreamsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetPrecursorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var examplePrecursor = CloudflareFunctions.getPrecursor(GetPrecursorArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPrecursorResult> getPrecursor(GetPrecursorArgs args) {
+        return getPrecursor(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetPrecursorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var examplePrecursor = CloudflareFunctions.getPrecursor(GetPrecursorArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPrecursorResult> getPrecursorPlain(GetPrecursorPlainArgs args) {
+        return getPrecursorPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetPrecursorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var examplePrecursor = CloudflareFunctions.getPrecursor(GetPrecursorArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPrecursorResult> getPrecursor(GetPrecursorArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getPrecursor:getPrecursor", TypeShape.of(GetPrecursorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetPrecursorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var examplePrecursor = CloudflareFunctions.getPrecursor(GetPrecursorArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPrecursorResult> getPrecursor(GetPrecursorArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getPrecursor:getPrecursor", TypeShape.of(GetPrecursorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetPrecursorArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var examplePrecursor = CloudflareFunctions.getPrecursor(GetPrecursorArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPrecursorResult> getPrecursorPlain(GetPrecursorPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getPrecursor:getPrecursor", TypeShape.of(GetPrecursorResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Accepted Permissions
@@ -110550,7 +110979,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleZeroTrustResourceLibraryApplication = CloudflareFunctions.getZeroTrustResourceLibraryApplication(GetZeroTrustResourceLibraryApplicationArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .id("0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0")
+     *             .id(498)
      *             .build());
      * 
      *     }
@@ -110589,7 +111018,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleZeroTrustResourceLibraryApplication = CloudflareFunctions.getZeroTrustResourceLibraryApplication(GetZeroTrustResourceLibraryApplicationArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .id("0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0")
+     *             .id(498)
      *             .build());
      * 
      *     }
@@ -110628,7 +111057,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleZeroTrustResourceLibraryApplication = CloudflareFunctions.getZeroTrustResourceLibraryApplication(GetZeroTrustResourceLibraryApplicationArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .id("0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0")
+     *             .id(498)
      *             .build());
      * 
      *     }
@@ -110667,7 +111096,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleZeroTrustResourceLibraryApplication = CloudflareFunctions.getZeroTrustResourceLibraryApplication(GetZeroTrustResourceLibraryApplicationArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .id("0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0")
+     *             .id(498)
      *             .build());
      * 
      *     }
@@ -110706,7 +111135,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleZeroTrustResourceLibraryApplication = CloudflareFunctions.getZeroTrustResourceLibraryApplication(GetZeroTrustResourceLibraryApplicationArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .id("0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0")
+     *             .id(498)
      *             .build());
      * 
      *     }
@@ -110965,7 +111394,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleZeroTrustResourceLibraryCategory = CloudflareFunctions.getZeroTrustResourceLibraryCategory(GetZeroTrustResourceLibraryCategoryArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .id("0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0")
+     *             .id(12)
      *             .build());
      * 
      *     }
@@ -111004,7 +111433,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleZeroTrustResourceLibraryCategory = CloudflareFunctions.getZeroTrustResourceLibraryCategory(GetZeroTrustResourceLibraryCategoryArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .id("0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0")
+     *             .id(12)
      *             .build());
      * 
      *     }
@@ -111043,7 +111472,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleZeroTrustResourceLibraryCategory = CloudflareFunctions.getZeroTrustResourceLibraryCategory(GetZeroTrustResourceLibraryCategoryArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .id("0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0")
+     *             .id(12)
      *             .build());
      * 
      *     }
@@ -111082,7 +111511,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleZeroTrustResourceLibraryCategory = CloudflareFunctions.getZeroTrustResourceLibraryCategory(GetZeroTrustResourceLibraryCategoryArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .id("0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0")
+     *             .id(12)
      *             .build());
      * 
      *     }
@@ -111121,7 +111550,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleZeroTrustResourceLibraryCategory = CloudflareFunctions.getZeroTrustResourceLibraryCategory(GetZeroTrustResourceLibraryCategoryArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .id("0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0")
+     *             .id(12)
      *             .build());
      * 
      *     }
@@ -118936,6 +119365,8 @@ public final class CloudflareFunctions {
      * | `transformationsAllowedOrigins` | String | Media Transformations Allowed Origins restricts transformations for images an... |
      * | `trueClientIpHeader` | `&#34;on&#34;` / `&#34;off&#34;` | Allows customer to continue to use True Client IP (Akamai feature) in the hea... |
      * | `waf` | `&#34;on&#34;` / `&#34;off&#34;` | The WAF examines HTTP requests to your website.  It inspects both GET and POS... |
+     * | `webmcpEnabled` | `&#34;on&#34;` / `&#34;off&#34;` | When enabled, Cloudflare injects the WebMCP bridge (bridge.js) into HTML resp... |
+     * | `webmcpPacks` | String | Optional per-zone override of which bundled WebMCP tool packs the injected br... |
      * | `webp` | `&#34;on&#34;` / `&#34;off&#34;` | When the client requesting the image supports the WebP image codec, and WebP ... |
      * | `websockets` | `&#34;on&#34;` / `&#34;off&#34;` | WebSockets are open connections sustained between the client and the origin s... |
      * 
@@ -119054,6 +119485,8 @@ public final class CloudflareFunctions {
      * | `transformationsAllowedOrigins` | String | Media Transformations Allowed Origins restricts transformations for images an... |
      * | `trueClientIpHeader` | `&#34;on&#34;` / `&#34;off&#34;` | Allows customer to continue to use True Client IP (Akamai feature) in the hea... |
      * | `waf` | `&#34;on&#34;` / `&#34;off&#34;` | The WAF examines HTTP requests to your website.  It inspects both GET and POS... |
+     * | `webmcpEnabled` | `&#34;on&#34;` / `&#34;off&#34;` | When enabled, Cloudflare injects the WebMCP bridge (bridge.js) into HTML resp... |
+     * | `webmcpPacks` | String | Optional per-zone override of which bundled WebMCP tool packs the injected br... |
      * | `webp` | `&#34;on&#34;` / `&#34;off&#34;` | When the client requesting the image supports the WebP image codec, and WebP ... |
      * | `websockets` | `&#34;on&#34;` / `&#34;off&#34;` | WebSockets are open connections sustained between the client and the origin s... |
      * 
@@ -119172,6 +119605,8 @@ public final class CloudflareFunctions {
      * | `transformationsAllowedOrigins` | String | Media Transformations Allowed Origins restricts transformations for images an... |
      * | `trueClientIpHeader` | `&#34;on&#34;` / `&#34;off&#34;` | Allows customer to continue to use True Client IP (Akamai feature) in the hea... |
      * | `waf` | `&#34;on&#34;` / `&#34;off&#34;` | The WAF examines HTTP requests to your website.  It inspects both GET and POS... |
+     * | `webmcpEnabled` | `&#34;on&#34;` / `&#34;off&#34;` | When enabled, Cloudflare injects the WebMCP bridge (bridge.js) into HTML resp... |
+     * | `webmcpPacks` | String | Optional per-zone override of which bundled WebMCP tool packs the injected br... |
      * | `webp` | `&#34;on&#34;` / `&#34;off&#34;` | When the client requesting the image supports the WebP image codec, and WebP ... |
      * | `websockets` | `&#34;on&#34;` / `&#34;off&#34;` | WebSockets are open connections sustained between the client and the origin s... |
      * 
@@ -119290,6 +119725,8 @@ public final class CloudflareFunctions {
      * | `transformationsAllowedOrigins` | String | Media Transformations Allowed Origins restricts transformations for images an... |
      * | `trueClientIpHeader` | `&#34;on&#34;` / `&#34;off&#34;` | Allows customer to continue to use True Client IP (Akamai feature) in the hea... |
      * | `waf` | `&#34;on&#34;` / `&#34;off&#34;` | The WAF examines HTTP requests to your website.  It inspects both GET and POS... |
+     * | `webmcpEnabled` | `&#34;on&#34;` / `&#34;off&#34;` | When enabled, Cloudflare injects the WebMCP bridge (bridge.js) into HTML resp... |
+     * | `webmcpPacks` | String | Optional per-zone override of which bundled WebMCP tool packs the injected br... |
      * | `webp` | `&#34;on&#34;` / `&#34;off&#34;` | When the client requesting the image supports the WebP image codec, and WebP ... |
      * | `websockets` | `&#34;on&#34;` / `&#34;off&#34;` | WebSockets are open connections sustained between the client and the origin s... |
      * 
@@ -119408,6 +119845,8 @@ public final class CloudflareFunctions {
      * | `transformationsAllowedOrigins` | String | Media Transformations Allowed Origins restricts transformations for images an... |
      * | `trueClientIpHeader` | `&#34;on&#34;` / `&#34;off&#34;` | Allows customer to continue to use True Client IP (Akamai feature) in the hea... |
      * | `waf` | `&#34;on&#34;` / `&#34;off&#34;` | The WAF examines HTTP requests to your website.  It inspects both GET and POS... |
+     * | `webmcpEnabled` | `&#34;on&#34;` / `&#34;off&#34;` | When enabled, Cloudflare injects the WebMCP bridge (bridge.js) into HTML resp... |
+     * | `webmcpPacks` | String | Optional per-zone override of which bundled WebMCP tool packs the injected br... |
      * | `webp` | `&#34;on&#34;` / `&#34;off&#34;` | When the client requesting the image supports the WebP image codec, and WebP ... |
      * | `websockets` | `&#34;on&#34;` / `&#34;off&#34;` | WebSockets are open connections sustained between the client and the origin s... |
      * 

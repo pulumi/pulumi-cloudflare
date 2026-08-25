@@ -89,7 +89,7 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The language of the default page template. If no defaultTemplateLanguage is provided, then `en-US` (English) will be used.
-     * Available values: &#34;en-US&#34;, &#34;es-ES&#34;, &#34;de-DE&#34;, &#34;fr-FR&#34;, &#34;it-IT&#34;, &#34;ja-JP&#34;, &#34;ko-KR&#34;, &#34;pt-BR&#34;, &#34;zh-CN&#34;, &#34;zh-TW&#34;, &#34;nl-NL&#34;, &#34;pl-PL&#34;, &#34;id-ID&#34;, &#34;tr-TR&#34;, &#34;ar-EG&#34;, &#34;ru-RU&#34;, &#34;fa-IR&#34;, &#34;bg-BG&#34;, &#34;hr-HR&#34;, &#34;cs-CZ&#34;, &#34;da-DK&#34;, &#34;fi-FI&#34;, &#34;lt-LT&#34;, &#34;ms-MY&#34;, &#34;nb-NO&#34;, &#34;ro-RO&#34;, &#34;el-GR&#34;, &#34;he-IL&#34;, &#34;hi-IN&#34;, &#34;hu-HU&#34;, &#34;sr-BA&#34;, &#34;sk-SK&#34;, &#34;sl-SI&#34;, &#34;sv-SE&#34;, &#34;tl-PH&#34;, &#34;th-TH&#34;, &#34;uk-UA&#34;, &#34;vi-VN&#34;.
+     * Available values: &#34;en-US&#34;, &#34;es-ES&#34;, &#34;de-DE&#34;, &#34;fr-FR&#34;, &#34;it-IT&#34;, &#34;ja-JP&#34;, &#34;ko-KR&#34;, &#34;pt-BR&#34;, &#34;zh-CN&#34;, &#34;zh-TW&#34;, &#34;nl-NL&#34;, &#34;pl-PL&#34;, &#34;id-ID&#34;, &#34;tr-TR&#34;, &#34;ar-EG&#34;, &#34;ru-RU&#34;, &#34;fa-IR&#34;, &#34;bg-BG&#34;, &#34;hr-HR&#34;, &#34;cs-CZ&#34;, &#34;da-DK&#34;, &#34;fi-FI&#34;, &#34;lt-LT&#34;, &#34;lv-LV&#34;, &#34;ms-MY&#34;, &#34;nb-NO&#34;, &#34;ro-RO&#34;, &#34;el-GR&#34;, &#34;he-IL&#34;, &#34;hi-IN&#34;, &#34;hu-HU&#34;, &#34;sr-BA&#34;, &#34;sk-SK&#34;, &#34;sl-SI&#34;, &#34;sv-SE&#34;, &#34;tl-PH&#34;, &#34;th-TH&#34;, &#34;uk-UA&#34;, &#34;vi-VN&#34;.
      * 
      */
     @Import(name="defaultTemplateLanguage")
@@ -97,7 +97,7 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The language of the default page template. If no defaultTemplateLanguage is provided, then `en-US` (English) will be used.
-     * Available values: &#34;en-US&#34;, &#34;es-ES&#34;, &#34;de-DE&#34;, &#34;fr-FR&#34;, &#34;it-IT&#34;, &#34;ja-JP&#34;, &#34;ko-KR&#34;, &#34;pt-BR&#34;, &#34;zh-CN&#34;, &#34;zh-TW&#34;, &#34;nl-NL&#34;, &#34;pl-PL&#34;, &#34;id-ID&#34;, &#34;tr-TR&#34;, &#34;ar-EG&#34;, &#34;ru-RU&#34;, &#34;fa-IR&#34;, &#34;bg-BG&#34;, &#34;hr-HR&#34;, &#34;cs-CZ&#34;, &#34;da-DK&#34;, &#34;fi-FI&#34;, &#34;lt-LT&#34;, &#34;ms-MY&#34;, &#34;nb-NO&#34;, &#34;ro-RO&#34;, &#34;el-GR&#34;, &#34;he-IL&#34;, &#34;hi-IN&#34;, &#34;hu-HU&#34;, &#34;sr-BA&#34;, &#34;sk-SK&#34;, &#34;sl-SI&#34;, &#34;sv-SE&#34;, &#34;tl-PH&#34;, &#34;th-TH&#34;, &#34;uk-UA&#34;, &#34;vi-VN&#34;.
+     * Available values: &#34;en-US&#34;, &#34;es-ES&#34;, &#34;de-DE&#34;, &#34;fr-FR&#34;, &#34;it-IT&#34;, &#34;ja-JP&#34;, &#34;ko-KR&#34;, &#34;pt-BR&#34;, &#34;zh-CN&#34;, &#34;zh-TW&#34;, &#34;nl-NL&#34;, &#34;pl-PL&#34;, &#34;id-ID&#34;, &#34;tr-TR&#34;, &#34;ar-EG&#34;, &#34;ru-RU&#34;, &#34;fa-IR&#34;, &#34;bg-BG&#34;, &#34;hr-HR&#34;, &#34;cs-CZ&#34;, &#34;da-DK&#34;, &#34;fi-FI&#34;, &#34;lt-LT&#34;, &#34;lv-LV&#34;, &#34;ms-MY&#34;, &#34;nb-NO&#34;, &#34;ro-RO&#34;, &#34;el-GR&#34;, &#34;he-IL&#34;, &#34;hi-IN&#34;, &#34;hu-HU&#34;, &#34;sr-BA&#34;, &#34;sk-SK&#34;, &#34;sl-SI&#34;, &#34;sv-SE&#34;, &#34;tl-PH&#34;, &#34;th-TH&#34;, &#34;uk-UA&#34;, &#34;vi-VN&#34;.
      * 
      */
     public Optional<Output<String>> defaultTemplateLanguage() {
@@ -762,7 +762,7 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param defaultTemplateLanguage The language of the default page template. If no defaultTemplateLanguage is provided, then `en-US` (English) will be used.
-         * Available values: &#34;en-US&#34;, &#34;es-ES&#34;, &#34;de-DE&#34;, &#34;fr-FR&#34;, &#34;it-IT&#34;, &#34;ja-JP&#34;, &#34;ko-KR&#34;, &#34;pt-BR&#34;, &#34;zh-CN&#34;, &#34;zh-TW&#34;, &#34;nl-NL&#34;, &#34;pl-PL&#34;, &#34;id-ID&#34;, &#34;tr-TR&#34;, &#34;ar-EG&#34;, &#34;ru-RU&#34;, &#34;fa-IR&#34;, &#34;bg-BG&#34;, &#34;hr-HR&#34;, &#34;cs-CZ&#34;, &#34;da-DK&#34;, &#34;fi-FI&#34;, &#34;lt-LT&#34;, &#34;ms-MY&#34;, &#34;nb-NO&#34;, &#34;ro-RO&#34;, &#34;el-GR&#34;, &#34;he-IL&#34;, &#34;hi-IN&#34;, &#34;hu-HU&#34;, &#34;sr-BA&#34;, &#34;sk-SK&#34;, &#34;sl-SI&#34;, &#34;sv-SE&#34;, &#34;tl-PH&#34;, &#34;th-TH&#34;, &#34;uk-UA&#34;, &#34;vi-VN&#34;.
+         * Available values: &#34;en-US&#34;, &#34;es-ES&#34;, &#34;de-DE&#34;, &#34;fr-FR&#34;, &#34;it-IT&#34;, &#34;ja-JP&#34;, &#34;ko-KR&#34;, &#34;pt-BR&#34;, &#34;zh-CN&#34;, &#34;zh-TW&#34;, &#34;nl-NL&#34;, &#34;pl-PL&#34;, &#34;id-ID&#34;, &#34;tr-TR&#34;, &#34;ar-EG&#34;, &#34;ru-RU&#34;, &#34;fa-IR&#34;, &#34;bg-BG&#34;, &#34;hr-HR&#34;, &#34;cs-CZ&#34;, &#34;da-DK&#34;, &#34;fi-FI&#34;, &#34;lt-LT&#34;, &#34;lv-LV&#34;, &#34;ms-MY&#34;, &#34;nb-NO&#34;, &#34;ro-RO&#34;, &#34;el-GR&#34;, &#34;he-IL&#34;, &#34;hi-IN&#34;, &#34;hu-HU&#34;, &#34;sr-BA&#34;, &#34;sk-SK&#34;, &#34;sl-SI&#34;, &#34;sv-SE&#34;, &#34;tl-PH&#34;, &#34;th-TH&#34;, &#34;uk-UA&#34;, &#34;vi-VN&#34;.
          * 
          * @return builder
          * 
@@ -774,7 +774,7 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param defaultTemplateLanguage The language of the default page template. If no defaultTemplateLanguage is provided, then `en-US` (English) will be used.
-         * Available values: &#34;en-US&#34;, &#34;es-ES&#34;, &#34;de-DE&#34;, &#34;fr-FR&#34;, &#34;it-IT&#34;, &#34;ja-JP&#34;, &#34;ko-KR&#34;, &#34;pt-BR&#34;, &#34;zh-CN&#34;, &#34;zh-TW&#34;, &#34;nl-NL&#34;, &#34;pl-PL&#34;, &#34;id-ID&#34;, &#34;tr-TR&#34;, &#34;ar-EG&#34;, &#34;ru-RU&#34;, &#34;fa-IR&#34;, &#34;bg-BG&#34;, &#34;hr-HR&#34;, &#34;cs-CZ&#34;, &#34;da-DK&#34;, &#34;fi-FI&#34;, &#34;lt-LT&#34;, &#34;ms-MY&#34;, &#34;nb-NO&#34;, &#34;ro-RO&#34;, &#34;el-GR&#34;, &#34;he-IL&#34;, &#34;hi-IN&#34;, &#34;hu-HU&#34;, &#34;sr-BA&#34;, &#34;sk-SK&#34;, &#34;sl-SI&#34;, &#34;sv-SE&#34;, &#34;tl-PH&#34;, &#34;th-TH&#34;, &#34;uk-UA&#34;, &#34;vi-VN&#34;.
+         * Available values: &#34;en-US&#34;, &#34;es-ES&#34;, &#34;de-DE&#34;, &#34;fr-FR&#34;, &#34;it-IT&#34;, &#34;ja-JP&#34;, &#34;ko-KR&#34;, &#34;pt-BR&#34;, &#34;zh-CN&#34;, &#34;zh-TW&#34;, &#34;nl-NL&#34;, &#34;pl-PL&#34;, &#34;id-ID&#34;, &#34;tr-TR&#34;, &#34;ar-EG&#34;, &#34;ru-RU&#34;, &#34;fa-IR&#34;, &#34;bg-BG&#34;, &#34;hr-HR&#34;, &#34;cs-CZ&#34;, &#34;da-DK&#34;, &#34;fi-FI&#34;, &#34;lt-LT&#34;, &#34;lv-LV&#34;, &#34;ms-MY&#34;, &#34;nb-NO&#34;, &#34;ro-RO&#34;, &#34;el-GR&#34;, &#34;he-IL&#34;, &#34;hi-IN&#34;, &#34;hu-HU&#34;, &#34;sr-BA&#34;, &#34;sk-SK&#34;, &#34;sl-SI&#34;, &#34;sv-SE&#34;, &#34;tl-PH&#34;, &#34;th-TH&#34;, &#34;uk-UA&#34;, &#34;vi-VN&#34;.
          * 
          * @return builder
          * 

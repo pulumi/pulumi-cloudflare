@@ -37,6 +37,9 @@ export function getSecretsStores(args: GetSecretsStoresArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getSecretsStores.
  */
 export interface GetSecretsStoresArgs {
+    /**
+     * Account Identifier.
+     */
     accountId: string;
     /**
      * Direction to sort objects.
@@ -58,6 +61,9 @@ export interface GetSecretsStoresArgs {
  * A collection of values returned by getSecretsStores.
  */
 export interface GetSecretsStoresResult {
+    /**
+     * Account Identifier.
+     */
     readonly accountId: string;
     /**
      * Direction to sort objects.
@@ -109,6 +115,9 @@ export function getSecretsStoresOutput(args: GetSecretsStoresOutputArgs, opts?: 
  * A collection of arguments for invoking getSecretsStores.
  */
 export interface GetSecretsStoresOutputArgs {
+    /**
+     * Account Identifier.
+     */
     accountId: pulumi.Input<string>;
     /**
      * Direction to sort objects.

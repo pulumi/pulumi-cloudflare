@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustAccessCustomPagesResultResult
     {
         /// <summary>
+        /// Contract version of the page's Liquid template. Present (&gt;= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+        /// </summary>
+        public readonly int ContractVersion;
+        /// <summary>
         /// UUID.
         /// </summary>
         public readonly string Id;
@@ -23,28 +27,38 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Name;
         /// <summary>
         /// Custom page type.
-        /// Available values: "IdentityDenied", "forbidden".
+        /// Available values: "IdentityDenied", "forbidden", "login", "interstitial".
         /// </summary>
         public readonly string Type;
         /// <summary>
         /// UUID.
         /// </summary>
         public readonly string Uid;
+        /// <summary>
+        /// Advisory validation findings returned when creating or updating a template. Omitted when empty.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetZeroTrustAccessCustomPagesResultWarningResult> Warnings;
 
         [OutputConstructor]
         private GetZeroTrustAccessCustomPagesResultResult(
+            int contractVersion,
+
             string id,
 
             string name,
 
             string type,
 
-            string uid)
+            string uid,
+
+            ImmutableArray<Outputs.GetZeroTrustAccessCustomPagesResultWarningResult> warnings)
         {
+            ContractVersion = contractVersion;
             Id = id;
             Name = name;
             Type = type;
             Uid = uid;
+            Warnings = warnings;
         }
     }
 }

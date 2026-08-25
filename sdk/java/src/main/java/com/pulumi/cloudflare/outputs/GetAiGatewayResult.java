@@ -36,6 +36,7 @@ public final class GetAiGatewayResult {
      */
     private String id;
     private Boolean isDefault;
+    private Boolean logClassification;
     private Integer logManagement;
     /**
      * @return Available values: &#34;STOP*INSERTING&#34;, &#34;DELETE*OLDEST&#34;.
@@ -73,8 +74,8 @@ public final class GetAiGatewayResult {
     private String storeId;
     private GetAiGatewayStripe stripe;
     /**
-     * @return Controls how Workers AI inference calls routed through this gateway are billed. Only &#39;postpaid&#39; is currently supported.
-     * Available values: &#34;postpaid&#34;.
+     * @return Controls how Workers AI inference calls routed through this gateway are billed. &#39;postpaid&#39; bills the account directly through Workers AI; &#39;unified&#39; deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+     * Available values: &#34;postpaid&#34;, &#34;unified&#34;.
      * 
      */
     private String workersAiBillingMode;
@@ -117,6 +118,9 @@ public final class GetAiGatewayResult {
     }
     public Boolean isDefault() {
         return this.isDefault;
+    }
+    public Boolean logClassification() {
+        return this.logClassification;
     }
     public Integer logManagement() {
         return this.logManagement;
@@ -185,8 +189,8 @@ public final class GetAiGatewayResult {
         return this.stripe;
     }
     /**
-     * @return Controls how Workers AI inference calls routed through this gateway are billed. Only &#39;postpaid&#39; is currently supported.
-     * Available values: &#34;postpaid&#34;.
+     * @return Controls how Workers AI inference calls routed through this gateway are billed. &#39;postpaid&#39; bills the account directly through Workers AI; &#39;unified&#39; deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+     * Available values: &#34;postpaid&#34;, &#34;unified&#34;.
      * 
      */
     public String workersAiBillingMode() {
@@ -216,6 +220,7 @@ public final class GetAiGatewayResult {
         private GetAiGatewayGuardrails guardrails;
         private String id;
         private Boolean isDefault;
+        private Boolean logClassification;
         private Integer logManagement;
         private String logManagementStrategy;
         private Boolean logpush;
@@ -247,6 +252,7 @@ public final class GetAiGatewayResult {
     	      this.guardrails = defaults.guardrails;
     	      this.id = defaults.id;
     	      this.isDefault = defaults.isDefault;
+    	      this.logClassification = defaults.logClassification;
     	      this.logManagement = defaults.logManagement;
     	      this.logManagementStrategy = defaults.logManagementStrategy;
     	      this.logpush = defaults.logpush;
@@ -348,6 +354,14 @@ public final class GetAiGatewayResult {
               throw new MissingRequiredPropertyException("GetAiGatewayResult", "isDefault");
             }
             this.isDefault = isDefault;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder logClassification(Boolean logClassification) {
+            if (logClassification == null) {
+              throw new MissingRequiredPropertyException("GetAiGatewayResult", "logClassification");
+            }
+            this.logClassification = logClassification;
             return this;
         }
         @CustomType.Setter
@@ -502,6 +516,7 @@ public final class GetAiGatewayResult {
             _resultValue.guardrails = guardrails;
             _resultValue.id = id;
             _resultValue.isDefault = isDefault;
+            _resultValue.logClassification = logClassification;
             _resultValue.logManagement = logManagement;
             _resultValue.logManagementStrategy = logManagementStrategy;
             _resultValue.logpush = logpush;

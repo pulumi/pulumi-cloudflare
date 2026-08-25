@@ -17,7 +17,6 @@ import javax.annotation.Nullable;
 /**
  * Accepted Permissions
  * 
- * - `SSL and Certificates Read`
  * - `SSL and Certificates Write`
  * 
  * ## Example Usage
@@ -61,7 +60,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example &#39;&lt;zone_id&gt;/&lt;setting_id&gt;&#39;
+ * $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example &#39;&lt;zone_id&gt;/&lt;setting_id&gt;/&lt;hostname&gt;&#39;
  * ```
  * 
  */

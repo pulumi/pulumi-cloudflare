@@ -23,7 +23,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.CloudConnectorRulesRuleParameters? Parameters;
         /// <summary>
         /// Cloud Provider type
-        /// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage".
+        /// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage", "OciStorage".
         /// </summary>
         public readonly string? Provider;
 

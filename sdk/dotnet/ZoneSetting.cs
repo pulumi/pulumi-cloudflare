@@ -86,6 +86,8 @@ namespace Pulumi.Cloudflare
     /// | `TransformationsAllowedOrigins` | String | Media Transformations Allowed Origins restricts transformations for images an... |
     /// | `TrueClientIpHeader` | `"on"` / `"off"` | Allows customer to continue to use True Client IP (Akamai feature) in the hea... |
     /// | `Waf` | `"on"` / `"off"` | The WAF examines HTTP requests to your website.  It inspects both GET and POS... |
+    /// | `WebmcpEnabled` | `"on"` / `"off"` | When enabled, Cloudflare injects the WebMCP bridge (bridge.js) into HTML resp... |
+    /// | `WebmcpPacks` | String | Optional per-zone override of which bundled WebMCP tool packs the injected br... |
     /// | `Webp` | `"on"` / `"off"` | When the client requesting the image supports the WebP image codec, and WebP ... |
     /// | `Websockets` | `"on"` / `"off"` | WebSockets are open connections sustained between the client and the origin s... |
     /// 

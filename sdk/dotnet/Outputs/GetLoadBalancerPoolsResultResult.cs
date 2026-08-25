@@ -30,6 +30,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
         /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+        /// </summary>
+        public readonly ImmutableArray<string> HealthSources;
         public readonly string Id;
         /// <summary>
         /// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
@@ -93,6 +97,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool enabled,
 
+            ImmutableArray<string> healthSources,
+
             string id,
 
             double latitude,
@@ -126,6 +132,7 @@ namespace Pulumi.Cloudflare.Outputs
             Description = description;
             DisabledAt = disabledAt;
             Enabled = enabled;
+            HealthSources = healthSources;
             Id = id;
             Latitude = latitude;
             LoadShedding = loadShedding;

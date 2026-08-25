@@ -3,7 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.OrganizationMetaFlagsArgs;
+import com.pulumi.cloudflare.inputs.OrganizationMetaTenantFlagsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -16,21 +16,6 @@ import javax.annotation.Nullable;
 public final class OrganizationMetaArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final OrganizationMetaArgs Empty = new OrganizationMetaArgs();
-
-    /**
-     * Enable features for Organizations.
-     * 
-     */
-    @Import(name="flags")
-    private @Nullable Output<OrganizationMetaFlagsArgs> flags;
-
-    /**
-     * @return Enable features for Organizations.
-     * 
-     */
-    public Optional<Output<OrganizationMetaFlagsArgs>> flags() {
-        return Optional.ofNullable(this.flags);
-    }
 
     /**
      * Ordered chain of organization tags from the root organization down to
@@ -64,12 +49,27 @@ public final class OrganizationMetaArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.managedBy);
     }
 
+    /**
+     * Enable features for Organizations.
+     * 
+     */
+    @Import(name="tenantFlags")
+    private @Nullable Output<OrganizationMetaTenantFlagsArgs> tenantFlags;
+
+    /**
+     * @return Enable features for Organizations.
+     * 
+     */
+    public Optional<Output<OrganizationMetaTenantFlagsArgs>> tenantFlags() {
+        return Optional.ofNullable(this.tenantFlags);
+    }
+
     private OrganizationMetaArgs() {}
 
     private OrganizationMetaArgs(OrganizationMetaArgs $) {
-        this.flags = $.flags;
         this.hierarchyTags = $.hierarchyTags;
         this.managedBy = $.managedBy;
+        this.tenantFlags = $.tenantFlags;
     }
 
     public static Builder builder() {
@@ -88,27 +88,6 @@ public final class OrganizationMetaArgs extends com.pulumi.resources.ResourceArg
 
         public Builder(OrganizationMetaArgs defaults) {
             $ = new OrganizationMetaArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param flags Enable features for Organizations.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder flags(@Nullable Output<OrganizationMetaFlagsArgs> flags) {
-            $.flags = flags;
-            return this;
-        }
-
-        /**
-         * @param flags Enable features for Organizations.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder flags(OrganizationMetaFlagsArgs flags) {
-            return flags(Output.of(flags));
         }
 
         /**
@@ -164,6 +143,27 @@ public final class OrganizationMetaArgs extends com.pulumi.resources.ResourceArg
 
         public Builder managedBy(String managedBy) {
             return managedBy(Output.of(managedBy));
+        }
+
+        /**
+         * @param tenantFlags Enable features for Organizations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tenantFlags(@Nullable Output<OrganizationMetaTenantFlagsArgs> tenantFlags) {
+            $.tenantFlags = tenantFlags;
+            return this;
+        }
+
+        /**
+         * @param tenantFlags Enable features for Organizations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tenantFlags(OrganizationMetaTenantFlagsArgs tenantFlags) {
+            return tenantFlags(Output.of(tenantFlags));
         }
 
         public OrganizationMetaArgs build() {

@@ -52,6 +52,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.WorkerVersionBindingArgs;
  * import com.pulumi.cloudflare.inputs.WorkerVersionCacheOptionsArgs;
  * import com.pulumi.cloudflare.inputs.WorkerVersionContainerArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerVersionExportsArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerVersionExportsCacheArgs;
  * import com.pulumi.cloudflare.inputs.WorkerVersionLimitsArgs;
  * import com.pulumi.cloudflare.inputs.WorkerVersionMigrationsArgs;
  * import com.pulumi.cloudflare.inputs.WorkerVersionMigrationsRenamedClassArgs;
@@ -101,6 +103,30 @@ import javax.annotation.Nullable;
  *             .containers(WorkerVersionContainerArgs.builder()
  *                 .className("MyDurableObject")
  *                 .build())
+ *             .exports(Map.ofEntries(
+ *                 Map.entry("Admin", WorkerVersionExportsArgs.builder()
+ *                     .type("worker")
+ *                     .cache(WorkerVersionExportsCacheArgs.builder()
+ *                         .enabled(true)
+ *                         .build())
+ *                     .renamedTo("renamed_to")
+ *                     .state("created")
+ *                     .storage("sqlite")
+ *                     .transferFrom("transfer_from")
+ *                     .transferredTo("transferred_to")
+ *                     .build()),
+ *                 Map.entry("default", WorkerVersionExportsArgs.builder()
+ *                     .type("worker")
+ *                     .cache(WorkerVersionExportsCacheArgs.builder()
+ *                         .enabled(false)
+ *                         .build())
+ *                     .renamedTo("renamed_to")
+ *                     .state("created")
+ *                     .storage("sqlite")
+ *                     .transferFrom("transfer_from")
+ *                     .transferredTo("transferred_to")
+ *                     .build())
+ *             ))
  *             .limits(WorkerVersionLimitsArgs.builder()
  *                 .cpuMs(50)
  *                 .subrequests(1000)

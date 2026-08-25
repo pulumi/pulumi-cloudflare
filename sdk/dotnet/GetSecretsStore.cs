@@ -99,12 +99,18 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetSecretsStoreArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Account Identifier
+        /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
         [Input("filter")]
         public Inputs.GetSecretsStoreFilterArgs? Filter { get; set; }
 
+        /// <summary>
+        /// Store Identifier
+        /// </summary>
         [Input("storeId")]
         public string? StoreId { get; set; }
 
@@ -116,12 +122,18 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetSecretsStoreInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Account Identifier
+        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         [Input("filter")]
         public Input<Inputs.GetSecretsStoreFilterInputArgs>? Filter { get; set; }
 
+        /// <summary>
+        /// Store Identifier
+        /// </summary>
         [Input("storeId")]
         public Input<string>? StoreId { get; set; }
 
@@ -135,6 +147,9 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetSecretsStoreResult
     {
+        /// <summary>
+        /// Account Identifier
+        /// </summary>
         public readonly string AccountId;
         /// <summary>
         /// When the secret was created.
@@ -142,7 +157,7 @@ namespace Pulumi.Cloudflare
         public readonly string Created;
         public readonly Outputs.GetSecretsStoreFilterResult? Filter;
         /// <summary>
-        /// The ID of this resource.
+        /// Store Identifier
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -153,6 +168,9 @@ namespace Pulumi.Cloudflare
         /// The name of the store.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Store Identifier
+        /// </summary>
         public readonly string? StoreId;
 
         [OutputConstructor]

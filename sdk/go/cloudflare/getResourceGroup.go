@@ -73,7 +73,7 @@ type GetResourceGroupResult struct {
 	Name string `pulumi:"name"`
 	// Resource Group identifier tag.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
-	// A scope is a combination of scope objects which provides additional context.
+	// The scope associated to the resource group
 	Scopes []GetResourceGroupScope `pulumi:"scopes"`
 }
 
@@ -138,7 +138,7 @@ func (o GetResourceGroupResultOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceGroupResult) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// A scope is a combination of scope objects which provides additional context.
+// The scope associated to the resource group
 func (o GetResourceGroupResultOutput) Scopes() GetResourceGroupScopeArrayOutput {
 	return o.ApplyT(func(v GetResourceGroupResult) []GetResourceGroupScope { return v.Scopes }).(GetResourceGroupScopeArrayOutput)
 }

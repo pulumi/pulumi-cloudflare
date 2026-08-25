@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['AiSearchNamespaceArgs', 'AiSearchNamespace']
 
@@ -21,7 +23,8 @@ class AiSearchNamespaceArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 description: pulumi.Input[Optional[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_endpoint_params: pulumi.Input[Optional['AiSearchNamespacePublicEndpointParamsArgs']] = None):
         """
         The set of arguments for constructing a AiSearchNamespace resource.
 
@@ -31,6 +34,8 @@ class AiSearchNamespaceArgs:
         pulumi.set(__self__, "name", name)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if public_endpoint_params is not None:
+            pulumi.set(__self__, "public_endpoint_params", public_endpoint_params)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -62,6 +67,15 @@ class AiSearchNamespaceArgs:
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
+    @_builtins.property
+    @pulumi.getter(name="publicEndpointParams")
+    def public_endpoint_params(self) -> pulumi.Input[Optional['AiSearchNamespacePublicEndpointParamsArgs']]:
+        return pulumi.get(self, "public_endpoint_params")
+
+    @public_endpoint_params.setter
+    def public_endpoint_params(self, value: pulumi.Input[Optional['AiSearchNamespacePublicEndpointParamsArgs']]):
+        pulumi.set(self, "public_endpoint_params", value)
+
 
 @pulumi.input_type
 class _AiSearchNamespaceState:
@@ -69,7 +83,9 @@ class _AiSearchNamespaceState:
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 name: pulumi.Input[Optional[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_endpoint_params: pulumi.Input[Optional['AiSearchNamespacePublicEndpointParamsArgs']] = None):
         """
         Input properties used for looking up and filtering AiSearchNamespace resources.
 
@@ -83,6 +99,10 @@ class _AiSearchNamespaceState:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if public_endpoint_id is not None:
+            pulumi.set(__self__, "public_endpoint_id", public_endpoint_id)
+        if public_endpoint_params is not None:
+            pulumi.set(__self__, "public_endpoint_params", public_endpoint_params)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -123,6 +143,24 @@ class _AiSearchNamespaceState:
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
+    @_builtins.property
+    @pulumi.getter(name="publicEndpointId")
+    def public_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "public_endpoint_id")
+
+    @public_endpoint_id.setter
+    def public_endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "public_endpoint_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="publicEndpointParams")
+    def public_endpoint_params(self) -> pulumi.Input[Optional['AiSearchNamespacePublicEndpointParamsArgs']]:
+        return pulumi.get(self, "public_endpoint_params")
+
+    @public_endpoint_params.setter
+    def public_endpoint_params(self, value: pulumi.Input[Optional['AiSearchNamespacePublicEndpointParamsArgs']]):
+        pulumi.set(self, "public_endpoint_params", value)
+
 
 @pulumi.type_token("cloudflare:index/aiSearchNamespace:AiSearchNamespace")
 class AiSearchNamespace(pulumi.CustomResource):
@@ -133,6 +171,7 @@ class AiSearchNamespace(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_endpoint_params: pulumi.Input[Optional[Union['AiSearchNamespacePublicEndpointParamsArgs', 'AiSearchNamespacePublicEndpointParamsArgsDict']]] = None,
                  __props__=None):
         """
         ## Import
@@ -174,6 +213,7 @@ class AiSearchNamespace(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_endpoint_params: pulumi.Input[Optional[Union['AiSearchNamespacePublicEndpointParamsArgs', 'AiSearchNamespacePublicEndpointParamsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -190,7 +230,9 @@ class AiSearchNamespace(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
+            __props__.__dict__["public_endpoint_params"] = public_endpoint_params
             __props__.__dict__["created_at"] = None
+            __props__.__dict__["public_endpoint_id"] = None
         super(AiSearchNamespace, __self__).__init__(
             'cloudflare:index/aiSearchNamespace:AiSearchNamespace',
             resource_name,
@@ -204,7 +246,9 @@ class AiSearchNamespace(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            name: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiSearchNamespace':
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            public_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            public_endpoint_params: pulumi.Input[Optional[Union['AiSearchNamespacePublicEndpointParamsArgs', 'AiSearchNamespacePublicEndpointParamsArgsDict']]] = None) -> 'AiSearchNamespace':
         """
         Get an existing AiSearchNamespace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -222,6 +266,8 @@ class AiSearchNamespace(pulumi.CustomResource):
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
+        __props__.__dict__["public_endpoint_id"] = public_endpoint_id
+        __props__.__dict__["public_endpoint_params"] = public_endpoint_params
         return AiSearchNamespace(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -246,4 +292,14 @@ class AiSearchNamespace(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="publicEndpointId")
+    def public_endpoint_id(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "public_endpoint_id")
+
+    @_builtins.property
+    @pulumi.getter(name="publicEndpointParams")
+    def public_endpoint_params(self) -> pulumi.Output['outputs.AiSearchNamespacePublicEndpointParams']:
+        return pulumi.get(self, "public_endpoint_params")
 

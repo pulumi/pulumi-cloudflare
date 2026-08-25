@@ -56,7 +56,7 @@ func LookupZeroTrustAccessAiControlsMcpServer(ctx *pulumi.Context, args *LookupZ
 type LookupZeroTrustAccessAiControlsMcpServerArgs struct {
 	AccountId *string                                      `pulumi:"accountId"`
 	Filter    *GetZeroTrustAccessAiControlsMcpServerFilter `pulumi:"filter"`
-	// server id
+	// Unique identifier for the MCP server.
 	Id *string `pulumi:"id"`
 }
 
@@ -65,33 +65,42 @@ type LookupZeroTrustAccessAiControlsMcpServerResult struct {
 	AccountId *string `pulumi:"accountId"`
 	// Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
 	AuthConfigSummary GetZeroTrustAccessAiControlsMcpServerAuthConfigSummary `pulumi:"authConfigSummary"`
+	// Authentication method used to connect to the upstream MCP server.
 	// Available values: "oauth", "bearer", "unauthenticated".
-	AuthType     string                                            `pulumi:"authType"`
-	CreatedAt    string                                            `pulumi:"createdAt"`
-	CreatedBy    string                                            `pulumi:"createdBy"`
+	AuthType string `pulumi:"authType"`
+	// Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
+	// Available values: "notRequired", "required", "connected", "stale", "manual".
+	AuthenticationStatus string `pulumi:"authenticationStatus"`
+	CreatedAt            string `pulumi:"createdAt"`
+	CreatedBy            string `pulumi:"createdBy"`
+	// Optional description of the MCP server.
 	Description  string                                            `pulumi:"description"`
 	Error        string                                            `pulumi:"error"`
 	ErrorDetails GetZeroTrustAccessAiControlsMcpServerErrorDetails `pulumi:"errorDetails"`
 	Filter       *GetZeroTrustAccessAiControlsMcpServerFilter      `pulumi:"filter"`
-	Hostname     string                                            `pulumi:"hostname"`
-	// server id
+	// URL of the upstream MCP endpoint.
+	Hostname string `pulumi:"hostname"`
+	// Unique identifier for the MCP server.
 	Id string `pulumi:"id"`
 	// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
-	IsSharedOauthCallbackEnabled bool                `pulumi:"isSharedOauthCallbackEnabled"`
-	LastSuccessfulSync           string              `pulumi:"lastSuccessfulSync"`
-	LastSynced                   string              `pulumi:"lastSynced"`
-	ModifiedAt                   string              `pulumi:"modifiedAt"`
-	ModifiedBy                   string              `pulumi:"modifiedBy"`
-	Name                         string              `pulumi:"name"`
-	Prompts                      []map[string]string `pulumi:"prompts"`
-	// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+	IsSharedOauthCallbackEnabled bool   `pulumi:"isSharedOauthCallbackEnabled"`
+	LastSuccessfulSync           string `pulumi:"lastSuccessfulSync"`
+	LastSynced                   string `pulumi:"lastSynced"`
+	ModifiedAt                   string `pulumi:"modifiedAt"`
+	ModifiedBy                   string `pulumi:"modifiedBy"`
+	// Display name for the MCP server.
+	Name    string              `pulumi:"name"`
+	Prompts []map[string]string `pulumi:"prompts"`
+	// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
 	SecureWebGateway bool `pulumi:"secureWebGateway"`
 	// Current sync state of the server
 	// Available values: "waiting", "ready", "stale", "error".
-	Status         string                                               `pulumi:"status"`
-	Tools          []map[string]string                                  `pulumi:"tools"`
+	Status string              `pulumi:"status"`
+	Tools  []map[string]string `pulumi:"tools"`
+	// Server-wide prompt capability overrides.
 	UpdatedPrompts []GetZeroTrustAccessAiControlsMcpServerUpdatedPrompt `pulumi:"updatedPrompts"`
-	UpdatedTools   []GetZeroTrustAccessAiControlsMcpServerUpdatedTool   `pulumi:"updatedTools"`
+	// Server-wide tool capability overrides.
+	UpdatedTools []GetZeroTrustAccessAiControlsMcpServerUpdatedTool `pulumi:"updatedTools"`
 }
 
 func LookupZeroTrustAccessAiControlsMcpServerOutput(ctx *pulumi.Context, args LookupZeroTrustAccessAiControlsMcpServerOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustAccessAiControlsMcpServerResultOutput {
@@ -107,7 +116,7 @@ func LookupZeroTrustAccessAiControlsMcpServerOutput(ctx *pulumi.Context, args Lo
 type LookupZeroTrustAccessAiControlsMcpServerOutputArgs struct {
 	AccountId pulumi.StringPtrInput                               `pulumi:"accountId"`
 	Filter    GetZeroTrustAccessAiControlsMcpServerFilterPtrInput `pulumi:"filter"`
-	// server id
+	// Unique identifier for the MCP server.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
@@ -141,9 +150,16 @@ func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) AuthConfigSummary(
 	}).(GetZeroTrustAccessAiControlsMcpServerAuthConfigSummaryOutput)
 }
 
+// Authentication method used to connect to the upstream MCP server.
 // Available values: "oauth", "bearer", "unauthenticated".
 func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) AuthType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
+// Available values: "notRequired", "required", "connected", "stale", "manual".
+func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) AuthenticationStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) string { return v.AuthenticationStatus }).(pulumi.StringOutput)
 }
 
 func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) CreatedAt() pulumi.StringOutput {
@@ -154,6 +170,7 @@ func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) CreatedBy() pulumi
 	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) string { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
+// Optional description of the MCP server.
 func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -174,11 +191,12 @@ func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) Filter() GetZeroTr
 	}).(GetZeroTrustAccessAiControlsMcpServerFilterPtrOutput)
 }
 
+// URL of the upstream MCP endpoint.
 func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
-// server id
+// Unique identifier for the MCP server.
 func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -204,6 +222,7 @@ func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) ModifiedBy() pulum
 	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) string { return v.ModifiedBy }).(pulumi.StringOutput)
 }
 
+// Display name for the MCP server.
 func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -212,7 +231,7 @@ func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) Prompts() pulumi.S
 	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) []map[string]string { return v.Prompts }).(pulumi.StringMapArrayOutput)
 }
 
-// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
 func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) SecureWebGateway() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) bool { return v.SecureWebGateway }).(pulumi.BoolOutput)
 }
@@ -227,12 +246,14 @@ func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) Tools() pulumi.Str
 	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) []map[string]string { return v.Tools }).(pulumi.StringMapArrayOutput)
 }
 
+// Server-wide prompt capability overrides.
 func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) UpdatedPrompts() GetZeroTrustAccessAiControlsMcpServerUpdatedPromptArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) []GetZeroTrustAccessAiControlsMcpServerUpdatedPrompt {
 		return v.UpdatedPrompts
 	}).(GetZeroTrustAccessAiControlsMcpServerUpdatedPromptArrayOutput)
 }
 
+// Server-wide tool capability overrides.
 func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) UpdatedTools() GetZeroTrustAccessAiControlsMcpServerUpdatedToolArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) []GetZeroTrustAccessAiControlsMcpServerUpdatedTool {
 		return v.UpdatedTools

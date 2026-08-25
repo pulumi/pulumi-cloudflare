@@ -34,7 +34,7 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-     * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
      * 
      */
     @Import(name="jurisdiction")
@@ -42,7 +42,7 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-     * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
      * 
      */
     public Optional<Output<String>> jurisdiction() {
@@ -147,7 +147,7 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param jurisdiction Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-         * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+         * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param jurisdiction Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-         * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+         * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
          * 
          * @return builder
          * 

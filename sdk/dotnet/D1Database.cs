@@ -68,7 +68,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-        /// Available values: "eu", "fedramp".
+        /// Available values: "eu", "fedramp", "us".
         /// </summary>
         [Output("jurisdiction")]
         public Output<string?> Jurisdiction { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-        /// Available values: "eu", "fedramp".
+        /// Available values: "eu", "fedramp", "us".
         /// </summary>
         [Input("jurisdiction")]
         public Input<string>? Jurisdiction { get; set; }
@@ -210,7 +210,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-        /// Available values: "eu", "fedramp".
+        /// Available values: "eu", "fedramp", "us".
         /// </summary>
         [Input("jurisdiction")]
         public Input<string>? Jurisdiction { get; set; }

@@ -11,21 +11,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetZeroTrustAccessAiControlsMcpServerUpdatedTool {
+    /**
+     * @return Custom name exposed for the capability.
+     * 
+     */
     private String alias;
+    /**
+     * @return Custom description exposed for the capability.
+     * 
+     */
     private String description;
+    /**
+     * @return Whether the capability is available through the MCP server.
+     * 
+     */
     private Boolean enabled;
+    /**
+     * @return Name of the tool or prompt capability to override.
+     * 
+     */
     private String name;
 
     private GetZeroTrustAccessAiControlsMcpServerUpdatedTool() {}
+    /**
+     * @return Custom name exposed for the capability.
+     * 
+     */
     public String alias() {
         return this.alias;
     }
+    /**
+     * @return Custom description exposed for the capability.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return Whether the capability is available through the MCP server.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return Name of the tool or prompt capability to override.
+     * 
+     */
     public String name() {
         return this.name;
     }

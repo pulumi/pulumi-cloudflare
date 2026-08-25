@@ -93,6 +93,8 @@ import javax.annotation.Nullable;
  * | `transformationsAllowedOrigins` | String | Media Transformations Allowed Origins restricts transformations for images an... |
  * | `trueClientIpHeader` | `&#34;on&#34;` / `&#34;off&#34;` | Allows customer to continue to use True Client IP (Akamai feature) in the hea... |
  * | `waf` | `&#34;on&#34;` / `&#34;off&#34;` | The WAF examines HTTP requests to your website.  It inspects both GET and POS... |
+ * | `webmcpEnabled` | `&#34;on&#34;` / `&#34;off&#34;` | When enabled, Cloudflare injects the WebMCP bridge (bridge.js) into HTML resp... |
+ * | `webmcpPacks` | String | Optional per-zone override of which bundled WebMCP tool packs the injected br... |
  * | `webp` | `&#34;on&#34;` / `&#34;off&#34;` | When the client requesting the image supports the WebP image codec, and WebP ... |
  * | `websockets` | `&#34;on&#34;` / `&#34;off&#34;` | WebSockets are open connections sustained between the client and the origin s... |
  * 

@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ZeroTrustAccessCustomPageArgs', 'ZeroTrustAccessCustomPage']
 
@@ -22,7 +24,8 @@ class ZeroTrustAccessCustomPageArgs:
                  account_id: pulumi.Input[_builtins.str],
                  custom_html: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 type: pulumi.Input[_builtins.str]):
+                 type: pulumi.Input[_builtins.str],
+                 contract_version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a ZeroTrustAccessCustomPage resource.
 
@@ -30,12 +33,15 @@ class ZeroTrustAccessCustomPageArgs:
         :param pulumi.Input[_builtins.str] custom_html: Custom page HTML.
         :param pulumi.Input[_builtins.str] name: Custom page name.
         :param pulumi.Input[_builtins.str] type: Custom page type.
-               Available values: "identity_denied", "forbidden".
+               Available values: "identity_denied", "forbidden", "login", "interstitial".
+        :param pulumi.Input[_builtins.int] contract_version: Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "custom_html", custom_html)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
+        if contract_version is not None:
+            pulumi.set(__self__, "contract_version", contract_version)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -78,7 +84,7 @@ class ZeroTrustAccessCustomPageArgs:
     def type(self) -> pulumi.Input[_builtins.str]:
         """
         Custom page type.
-        Available values: "identity_denied", "forbidden".
+        Available values: "identity_denied", "forbidden", "login", "interstitial".
         """
         return pulumi.get(self, "type")
 
@@ -86,27 +92,45 @@ class ZeroTrustAccessCustomPageArgs:
     def type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "type", value)
 
+    @_builtins.property
+    @pulumi.getter(name="contractVersion")
+    def contract_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+        """
+        return pulumi.get(self, "contract_version")
+
+    @contract_version.setter
+    def contract_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "contract_version", value)
+
 
 @pulumi.input_type
 class _ZeroTrustAccessCustomPageState:
     def __init__(__self__, *,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 contract_version: pulumi.Input[Optional[_builtins.int]] = None,
                  custom_html: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
-                 uid: pulumi.Input[Optional[_builtins.str]] = None):
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 warnings: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessCustomPageWarningArgs']]]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustAccessCustomPage resources.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.int] contract_version: Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
         :param pulumi.Input[_builtins.str] custom_html: Custom page HTML.
         :param pulumi.Input[_builtins.str] name: Custom page name.
         :param pulumi.Input[_builtins.str] type: Custom page type.
-               Available values: "identity_denied", "forbidden".
+               Available values: "identity_denied", "forbidden", "login", "interstitial".
         :param pulumi.Input[_builtins.str] uid: UUID.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessCustomPageWarningArgs']]] warnings: Advisory validation findings returned when creating or updating a template. Omitted when empty.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if contract_version is not None:
+            pulumi.set(__self__, "contract_version", contract_version)
         if custom_html is not None:
             pulumi.set(__self__, "custom_html", custom_html)
         if name is not None:
@@ -115,6 +139,8 @@ class _ZeroTrustAccessCustomPageState:
             pulumi.set(__self__, "type", type)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
+        if warnings is not None:
+            pulumi.set(__self__, "warnings", warnings)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -127,6 +153,18 @@ class _ZeroTrustAccessCustomPageState:
     @account_id.setter
     def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="contractVersion")
+    def contract_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+        """
+        return pulumi.get(self, "contract_version")
+
+    @contract_version.setter
+    def contract_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "contract_version", value)
 
     @_builtins.property
     @pulumi.getter(name="customHtml")
@@ -157,7 +195,7 @@ class _ZeroTrustAccessCustomPageState:
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom page type.
-        Available values: "identity_denied", "forbidden".
+        Available values: "identity_denied", "forbidden", "login", "interstitial".
         """
         return pulumi.get(self, "type")
 
@@ -177,6 +215,18 @@ class _ZeroTrustAccessCustomPageState:
     def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def warnings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessCustomPageWarningArgs']]]]:
+        """
+        Advisory validation findings returned when creating or updating a template. Omitted when empty.
+        """
+        return pulumi.get(self, "warnings")
+
+    @warnings.setter
+    def warnings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessCustomPageWarningArgs']]]]):
+        pulumi.set(self, "warnings", value)
+
 
 @pulumi.type_token("cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage")
 class ZeroTrustAccessCustomPage(pulumi.CustomResource):
@@ -185,6 +235,7 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 contract_version: pulumi.Input[Optional[_builtins.int]] = None,
                  custom_html: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -205,7 +256,8 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             custom_html="<html><body><h1>Access Denied</h1></body></html>",
             name="name",
-            type="identity_denied")
+            type="identity_denied",
+            contract_version=0)
         ```
 
         ## Import
@@ -218,10 +270,11 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.int] contract_version: Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
         :param pulumi.Input[_builtins.str] custom_html: Custom page HTML.
         :param pulumi.Input[_builtins.str] name: Custom page name.
         :param pulumi.Input[_builtins.str] type: Custom page type.
-               Available values: "identity_denied", "forbidden".
+               Available values: "identity_denied", "forbidden", "login", "interstitial".
         """
         ...
     @overload
@@ -245,7 +298,8 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             custom_html="<html><body><h1>Access Denied</h1></body></html>",
             name="name",
-            type="identity_denied")
+            type="identity_denied",
+            contract_version=0)
         ```
 
         ## Import
@@ -271,6 +325,7 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 contract_version: pulumi.Input[Optional[_builtins.int]] = None,
                  custom_html: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -286,6 +341,7 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["contract_version"] = contract_version
             if custom_html is None and not opts.urn:
                 raise TypeError("Missing required property 'custom_html'")
             __props__.__dict__["custom_html"] = custom_html
@@ -296,6 +352,7 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
             __props__.__dict__["uid"] = None
+            __props__.__dict__["warnings"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessCustomPage:AccessCustomPage")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustAccessCustomPage, __self__).__init__(
@@ -309,10 +366,12 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            contract_version: pulumi.Input[Optional[_builtins.int]] = None,
             custom_html: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
-            uid: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustAccessCustomPage':
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            warnings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessCustomPageWarningArgs', 'ZeroTrustAccessCustomPageWarningArgsDict']]]]] = None) -> 'ZeroTrustAccessCustomPage':
         """
         Get an existing ZeroTrustAccessCustomPage resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -321,21 +380,25 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.int] contract_version: Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
         :param pulumi.Input[_builtins.str] custom_html: Custom page HTML.
         :param pulumi.Input[_builtins.str] name: Custom page name.
         :param pulumi.Input[_builtins.str] type: Custom page type.
-               Available values: "identity_denied", "forbidden".
+               Available values: "identity_denied", "forbidden", "login", "interstitial".
         :param pulumi.Input[_builtins.str] uid: UUID.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessCustomPageWarningArgs', 'ZeroTrustAccessCustomPageWarningArgsDict']]]] warnings: Advisory validation findings returned when creating or updating a template. Omitted when empty.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ZeroTrustAccessCustomPageState.__new__(_ZeroTrustAccessCustomPageState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["contract_version"] = contract_version
         __props__.__dict__["custom_html"] = custom_html
         __props__.__dict__["name"] = name
         __props__.__dict__["type"] = type
         __props__.__dict__["uid"] = uid
+        __props__.__dict__["warnings"] = warnings
         return ZeroTrustAccessCustomPage(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -345,6 +408,14 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
         Identifier.
         """
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter(name="contractVersion")
+    def contract_version(self) -> pulumi.Output[_builtins.int]:
+        """
+        Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+        """
+        return pulumi.get(self, "contract_version")
 
     @_builtins.property
     @pulumi.getter(name="customHtml")
@@ -367,7 +438,7 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
     def type(self) -> pulumi.Output[_builtins.str]:
         """
         Custom page type.
-        Available values: "identity_denied", "forbidden".
+        Available values: "identity_denied", "forbidden", "login", "interstitial".
         """
         return pulumi.get(self, "type")
 
@@ -378,4 +449,12 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
         UUID.
         """
         return pulumi.get(self, "uid")
+
+    @_builtins.property
+    @pulumi.getter
+    def warnings(self) -> pulumi.Output[Sequence['outputs.ZeroTrustAccessCustomPageWarning']]:
+        """
+        Advisory validation findings returned when creating or updating a template. Omitted when empty.
+        """
+        return pulumi.get(self, "warnings")
 

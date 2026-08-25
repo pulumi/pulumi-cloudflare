@@ -47,8 +47,10 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Share Recipient association status.
-        /// Available values: "associating", "associated", "disassociating", "disassociated".
+        /// The current state of the recipient relative to the share. The
+        /// `DesiredAssociationStatus` (not exposed in the response) tracks the
+        /// target state set by the API; the background reconciliation workflow
+        /// drives `CurrentAssociationStatus` toward it.
         /// </summary>
         [Output("associationStatus")]
         public Output<string> AssociationStatus { get; private set; } = null!;
@@ -171,8 +173,10 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Share Recipient association status.
-        /// Available values: "associating", "associated", "disassociating", "disassociated".
+        /// The current state of the recipient relative to the share. The
+        /// `DesiredAssociationStatus` (not exposed in the response) tracks the
+        /// target state set by the API; the background reconciliation workflow
+        /// drives `CurrentAssociationStatus` toward it.
         /// </summary>
         [Input("associationStatus")]
         public Input<string>? AssociationStatus { get; set; }

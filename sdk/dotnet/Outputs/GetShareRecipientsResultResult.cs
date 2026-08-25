@@ -18,8 +18,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// Share Recipient association status.
-        /// Available values: "associating", "associated", "disassociating", "disassociated".
+        /// The current state of the recipient relative to the share. The
+        /// `DesiredAssociationStatus` (not exposed in the response) tracks the
+        /// target state set by the API; the background reconciliation workflow
+        /// drives `CurrentAssociationStatus` toward it.
         /// </summary>
         public readonly string AssociationStatus;
         /// <summary>

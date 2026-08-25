@@ -26,22 +26,34 @@ class ZeroTrustAccessAiControlsMcpPortalArgs:
                  name: pulumi.Input[_builtins.str],
                  zero_trust_access_ai_controls_mcp_portal_id: pulumi.Input[_builtins.str],
                  allow_code_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 code_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  secure_web_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
                  servers: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerArgs']]]] = None):
         """
         The set of arguments for constructing a ZeroTrustAccessAiControlsMcpPortal resource.
 
-        :param pulumi.Input[_builtins.str] zero_trust_access_ai_controls_mcp_portal_id: portal id
-        :param pulumi.Input[_builtins.bool] allow_code_mode: Allow remote code execution in Dynamic Workers (beta)
-        :param pulumi.Input[_builtins.bool] secure_web_gateway: Route outbound MCP traffic through Zero Trust Secure Web Gateway
+        :param pulumi.Input[_builtins.str] hostname: Hostname where the MCP portal is available.
+        :param pulumi.Input[_builtins.str] name: Display name for the MCP portal.
+        :param pulumi.Input[_builtins.str] zero_trust_access_ai_controls_mcp_portal_id: Unique identifier for the MCP portal.
+        :param pulumi.Input[_builtins.bool] allow_code_mode: Deprecated: use `code_mode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
+        :param pulumi.Input[_builtins.str] code_mode: Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `opt_in`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `default_on`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `opt_in` when omitted on create. If both `code_mode` and `allow_code_mode` are sent, they must be consistent or the request returns a 400.
+               Available values: "off", "opt*in", "default*on", "enforced".
+        :param pulumi.Input[_builtins.str] description: Optional description of the MCP portal.
+        :param pulumi.Input[_builtins.bool] secure_web_gateway: Route outbound MCP traffic through Zero Trust Secure Web Gateway.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerArgs']]] servers: MCP servers attached to the portal and their portal-specific settings.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "zero_trust_access_ai_controls_mcp_portal_id", zero_trust_access_ai_controls_mcp_portal_id)
         if allow_code_mode is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""allow_code_mode is deprecated: This attribute is deprecated.""")
+        if allow_code_mode is not None:
             pulumi.set(__self__, "allow_code_mode", allow_code_mode)
+        if code_mode is not None:
+            pulumi.set(__self__, "code_mode", code_mode)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if secure_web_gateway is not None:
@@ -61,6 +73,9 @@ class ZeroTrustAccessAiControlsMcpPortalArgs:
     @_builtins.property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[_builtins.str]:
+        """
+        Hostname where the MCP portal is available.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -70,6 +85,9 @@ class ZeroTrustAccessAiControlsMcpPortalArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Display name for the MCP portal.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -80,7 +98,7 @@ class ZeroTrustAccessAiControlsMcpPortalArgs:
     @pulumi.getter(name="zeroTrustAccessAiControlsMcpPortalId")
     def zero_trust_access_ai_controls_mcp_portal_id(self) -> pulumi.Input[_builtins.str]:
         """
-        portal id
+        Unique identifier for the MCP portal.
         """
         return pulumi.get(self, "zero_trust_access_ai_controls_mcp_portal_id")
 
@@ -90,9 +108,10 @@ class ZeroTrustAccessAiControlsMcpPortalArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowCodeMode")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def allow_code_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Allow remote code execution in Dynamic Workers (beta)
+        Deprecated: use `code_mode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
         """
         return pulumi.get(self, "allow_code_mode")
 
@@ -101,8 +120,24 @@ class ZeroTrustAccessAiControlsMcpPortalArgs:
         pulumi.set(self, "allow_code_mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="codeMode")
+    def code_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `opt_in`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `default_on`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `opt_in` when omitted on create. If both `code_mode` and `allow_code_mode` are sent, they must be consistent or the request returns a 400.
+        Available values: "off", "opt*in", "default*on", "enforced".
+        """
+        return pulumi.get(self, "code_mode")
+
+    @code_mode.setter
+    def code_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "code_mode", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional description of the MCP portal.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -113,7 +148,7 @@ class ZeroTrustAccessAiControlsMcpPortalArgs:
     @pulumi.getter(name="secureWebGateway")
     def secure_web_gateway(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Route outbound MCP traffic through Zero Trust Secure Web Gateway
+        Route outbound MCP traffic through Zero Trust Secure Web Gateway.
         """
         return pulumi.get(self, "secure_web_gateway")
 
@@ -124,6 +159,9 @@ class ZeroTrustAccessAiControlsMcpPortalArgs:
     @_builtins.property
     @pulumi.getter
     def servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerArgs']]]]:
+        """
+        MCP servers attached to the portal and their portal-specific settings.
+        """
         return pulumi.get(self, "servers")
 
     @servers.setter
@@ -136,6 +174,7 @@ class _ZeroTrustAccessAiControlsMcpPortalState:
     def __init__(__self__, *,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  allow_code_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 code_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
                  created_by: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -149,14 +188,25 @@ class _ZeroTrustAccessAiControlsMcpPortalState:
         """
         Input properties used for looking up and filtering ZeroTrustAccessAiControlsMcpPortal resources.
 
-        :param pulumi.Input[_builtins.bool] allow_code_mode: Allow remote code execution in Dynamic Workers (beta)
-        :param pulumi.Input[_builtins.bool] secure_web_gateway: Route outbound MCP traffic through Zero Trust Secure Web Gateway
-        :param pulumi.Input[_builtins.str] zero_trust_access_ai_controls_mcp_portal_id: portal id
+        :param pulumi.Input[_builtins.bool] allow_code_mode: Deprecated: use `code_mode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
+        :param pulumi.Input[_builtins.str] code_mode: Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `opt_in`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `default_on`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `opt_in` when omitted on create. If both `code_mode` and `allow_code_mode` are sent, they must be consistent or the request returns a 400.
+               Available values: "off", "opt*in", "default*on", "enforced".
+        :param pulumi.Input[_builtins.str] description: Optional description of the MCP portal.
+        :param pulumi.Input[_builtins.str] hostname: Hostname where the MCP portal is available.
+        :param pulumi.Input[_builtins.str] name: Display name for the MCP portal.
+        :param pulumi.Input[_builtins.bool] secure_web_gateway: Route outbound MCP traffic through Zero Trust Secure Web Gateway.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerArgs']]] servers: MCP servers attached to the portal and their portal-specific settings.
+        :param pulumi.Input[_builtins.str] zero_trust_access_ai_controls_mcp_portal_id: Unique identifier for the MCP portal.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if allow_code_mode is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""allow_code_mode is deprecated: This attribute is deprecated.""")
+        if allow_code_mode is not None:
             pulumi.set(__self__, "allow_code_mode", allow_code_mode)
+        if code_mode is not None:
+            pulumi.set(__self__, "code_mode", code_mode)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if created_by is not None:
@@ -189,15 +239,29 @@ class _ZeroTrustAccessAiControlsMcpPortalState:
 
     @_builtins.property
     @pulumi.getter(name="allowCodeMode")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def allow_code_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Allow remote code execution in Dynamic Workers (beta)
+        Deprecated: use `code_mode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
         """
         return pulumi.get(self, "allow_code_mode")
 
     @allow_code_mode.setter
     def allow_code_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_code_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="codeMode")
+    def code_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `opt_in`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `default_on`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `opt_in` when omitted on create. If both `code_mode` and `allow_code_mode` are sent, they must be consistent or the request returns a 400.
+        Available values: "off", "opt*in", "default*on", "enforced".
+        """
+        return pulumi.get(self, "code_mode")
+
+    @code_mode.setter
+    def code_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "code_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
@@ -220,6 +284,9 @@ class _ZeroTrustAccessAiControlsMcpPortalState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional description of the MCP portal.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -229,6 +296,9 @@ class _ZeroTrustAccessAiControlsMcpPortalState:
     @_builtins.property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Hostname where the MCP portal is available.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -256,6 +326,9 @@ class _ZeroTrustAccessAiControlsMcpPortalState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name for the MCP portal.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -266,7 +339,7 @@ class _ZeroTrustAccessAiControlsMcpPortalState:
     @pulumi.getter(name="secureWebGateway")
     def secure_web_gateway(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Route outbound MCP traffic through Zero Trust Secure Web Gateway
+        Route outbound MCP traffic through Zero Trust Secure Web Gateway.
         """
         return pulumi.get(self, "secure_web_gateway")
 
@@ -277,6 +350,9 @@ class _ZeroTrustAccessAiControlsMcpPortalState:
     @_builtins.property
     @pulumi.getter
     def servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerArgs']]]]:
+        """
+        MCP servers attached to the portal and their portal-specific settings.
+        """
         return pulumi.get(self, "servers")
 
     @servers.setter
@@ -287,7 +363,7 @@ class _ZeroTrustAccessAiControlsMcpPortalState:
     @pulumi.getter(name="zeroTrustAccessAiControlsMcpPortalId")
     def zero_trust_access_ai_controls_mcp_portal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        portal id
+        Unique identifier for the MCP portal.
         """
         return pulumi.get(self, "zero_trust_access_ai_controls_mcp_portal_id")
 
@@ -304,6 +380,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  allow_code_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 code_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  hostname: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -326,9 +403,10 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
         example_zero_trust_access_ai_controls_mcp_portal = cloudflare.ZeroTrustAccessAiControlsMcpPortal("example_zero_trust_access_ai_controls_mcp_portal",
             account_id="a86a8f5c339544d7bdc89926de14fb8c",
             zero_trust_access_ai_controls_mcp_portal_id="my-mcp-portal",
-            hostname="exmaple.com",
+            hostname="example.com",
             name="My MCP Portal",
             allow_code_mode=True,
+            code_mode="opt_in",
             description="This is my custom MCP Portal",
             secure_web_gateway=False,
             servers=[{
@@ -359,9 +437,15 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] allow_code_mode: Allow remote code execution in Dynamic Workers (beta)
-        :param pulumi.Input[_builtins.bool] secure_web_gateway: Route outbound MCP traffic through Zero Trust Secure Web Gateway
-        :param pulumi.Input[_builtins.str] zero_trust_access_ai_controls_mcp_portal_id: portal id
+        :param pulumi.Input[_builtins.bool] allow_code_mode: Deprecated: use `code_mode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
+        :param pulumi.Input[_builtins.str] code_mode: Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `opt_in`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `default_on`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `opt_in` when omitted on create. If both `code_mode` and `allow_code_mode` are sent, they must be consistent or the request returns a 400.
+               Available values: "off", "opt*in", "default*on", "enforced".
+        :param pulumi.Input[_builtins.str] description: Optional description of the MCP portal.
+        :param pulumi.Input[_builtins.str] hostname: Hostname where the MCP portal is available.
+        :param pulumi.Input[_builtins.str] name: Display name for the MCP portal.
+        :param pulumi.Input[_builtins.bool] secure_web_gateway: Route outbound MCP traffic through Zero Trust Secure Web Gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpPortalServerArgs', 'ZeroTrustAccessAiControlsMcpPortalServerArgsDict']]]] servers: MCP servers attached to the portal and their portal-specific settings.
+        :param pulumi.Input[_builtins.str] zero_trust_access_ai_controls_mcp_portal_id: Unique identifier for the MCP portal.
         """
         ...
     @overload
@@ -384,9 +468,10 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
         example_zero_trust_access_ai_controls_mcp_portal = cloudflare.ZeroTrustAccessAiControlsMcpPortal("example_zero_trust_access_ai_controls_mcp_portal",
             account_id="a86a8f5c339544d7bdc89926de14fb8c",
             zero_trust_access_ai_controls_mcp_portal_id="my-mcp-portal",
-            hostname="exmaple.com",
+            hostname="example.com",
             name="My MCP Portal",
             allow_code_mode=True,
+            code_mode="opt_in",
             description="This is my custom MCP Portal",
             secure_web_gateway=False,
             servers=[{
@@ -432,6 +517,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  allow_code_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 code_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  hostname: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -451,6 +537,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["allow_code_mode"] = allow_code_mode
+            __props__.__dict__["code_mode"] = code_mode
             __props__.__dict__["description"] = description
             if hostname is None and not opts.urn:
                 raise TypeError("Missing required property 'hostname'")
@@ -479,6 +566,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             allow_code_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+            code_mode: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -496,9 +584,15 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] allow_code_mode: Allow remote code execution in Dynamic Workers (beta)
-        :param pulumi.Input[_builtins.bool] secure_web_gateway: Route outbound MCP traffic through Zero Trust Secure Web Gateway
-        :param pulumi.Input[_builtins.str] zero_trust_access_ai_controls_mcp_portal_id: portal id
+        :param pulumi.Input[_builtins.bool] allow_code_mode: Deprecated: use `code_mode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
+        :param pulumi.Input[_builtins.str] code_mode: Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `opt_in`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `default_on`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `opt_in` when omitted on create. If both `code_mode` and `allow_code_mode` are sent, they must be consistent or the request returns a 400.
+               Available values: "off", "opt*in", "default*on", "enforced".
+        :param pulumi.Input[_builtins.str] description: Optional description of the MCP portal.
+        :param pulumi.Input[_builtins.str] hostname: Hostname where the MCP portal is available.
+        :param pulumi.Input[_builtins.str] name: Display name for the MCP portal.
+        :param pulumi.Input[_builtins.bool] secure_web_gateway: Route outbound MCP traffic through Zero Trust Secure Web Gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpPortalServerArgs', 'ZeroTrustAccessAiControlsMcpPortalServerArgsDict']]]] servers: MCP servers attached to the portal and their portal-specific settings.
+        :param pulumi.Input[_builtins.str] zero_trust_access_ai_controls_mcp_portal_id: Unique identifier for the MCP portal.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -506,6 +600,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["allow_code_mode"] = allow_code_mode
+        __props__.__dict__["code_mode"] = code_mode
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["created_by"] = created_by
         __props__.__dict__["description"] = description
@@ -525,11 +620,21 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="allowCodeMode")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def allow_code_mode(self) -> pulumi.Output[_builtins.bool]:
         """
-        Allow remote code execution in Dynamic Workers (beta)
+        Deprecated: use `code_mode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
         """
         return pulumi.get(self, "allow_code_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="codeMode")
+    def code_mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `opt_in`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `default_on`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `opt_in` when omitted on create. If both `code_mode` and `allow_code_mode` are sent, they must be consistent or the request returns a 400.
+        Available values: "off", "opt*in", "default*on", "enforced".
+        """
+        return pulumi.get(self, "code_mode")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
@@ -544,11 +649,17 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Optional description of the MCP portal.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def hostname(self) -> pulumi.Output[_builtins.str]:
+        """
+        Hostname where the MCP portal is available.
+        """
         return pulumi.get(self, "hostname")
 
     @_builtins.property
@@ -564,26 +675,32 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Display name for the MCP portal.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="secureWebGateway")
     def secure_web_gateway(self) -> pulumi.Output[_builtins.bool]:
         """
-        Route outbound MCP traffic through Zero Trust Secure Web Gateway
+        Route outbound MCP traffic through Zero Trust Secure Web Gateway.
         """
         return pulumi.get(self, "secure_web_gateway")
 
     @_builtins.property
     @pulumi.getter
     def servers(self) -> pulumi.Output[Sequence['outputs.ZeroTrustAccessAiControlsMcpPortalServer']]:
+        """
+        MCP servers attached to the portal and their portal-specific settings.
+        """
         return pulumi.get(self, "servers")
 
     @_builtins.property
     @pulumi.getter(name="zeroTrustAccessAiControlsMcpPortalId")
     def zero_trust_access_ai_controls_mcp_portal_id(self) -> pulumi.Output[_builtins.str]:
         """
-        portal id
+        Unique identifier for the MCP portal.
         """
         return pulumi.get(self, "zero_trust_access_ai_controls_mcp_portal_id")
 

@@ -13,9 +13,21 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class ZeroTrustAccessAiControlsMcpServerUpdatedPrompt
     {
+        /// <summary>
+        /// Custom name exposed for the capability.
+        /// </summary>
         public readonly string? Alias;
+        /// <summary>
+        /// Custom description exposed for the capability.
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// Whether the capability is available through the MCP server.
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Name of the tool or prompt capability to override.
+        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

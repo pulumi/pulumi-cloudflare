@@ -27,72 +27,129 @@ public final class ZeroTrustAccessAiControlsMcpPortalArgs extends com.pulumi.res
     }
 
     /**
-     * Allow remote code execution in Dynamic Workers (beta)
+     * Deprecated: use `codeMode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
      * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="allowCodeMode")
     private @Nullable Output<Boolean> allowCodeMode;
 
     /**
-     * @return Allow remote code execution in Dynamic Workers (beta)
+     * @return Deprecated: use `codeMode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
      * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<Boolean>> allowCodeMode() {
         return Optional.ofNullable(this.allowCodeMode);
     }
 
+    /**
+     * Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `optIn`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `defaultOn`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `optIn` when omitted on create. If both `codeMode` and `allowCodeMode` are sent, they must be consistent or the request returns a 400.
+     * Available values: &#34;off&#34;, &#34;opt*in&#34;, &#34;default*on&#34;, &#34;enforced&#34;.
+     * 
+     */
+    @Import(name="codeMode")
+    private @Nullable Output<String> codeMode;
+
+    /**
+     * @return Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `optIn`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `defaultOn`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `optIn` when omitted on create. If both `codeMode` and `allowCodeMode` are sent, they must be consistent or the request returns a 400.
+     * Available values: &#34;off&#34;, &#34;opt*in&#34;, &#34;default*on&#34;, &#34;enforced&#34;.
+     * 
+     */
+    public Optional<Output<String>> codeMode() {
+        return Optional.ofNullable(this.codeMode);
+    }
+
+    /**
+     * Optional description of the MCP portal.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return Optional description of the MCP portal.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Hostname where the MCP portal is available.
+     * 
+     */
     @Import(name="hostname", required=true)
     private Output<String> hostname;
 
+    /**
+     * @return Hostname where the MCP portal is available.
+     * 
+     */
     public Output<String> hostname() {
         return this.hostname;
     }
 
+    /**
+     * Display name for the MCP portal.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return Display name for the MCP portal.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
 
     /**
-     * Route outbound MCP traffic through Zero Trust Secure Web Gateway
+     * Route outbound MCP traffic through Zero Trust Secure Web Gateway.
      * 
      */
     @Import(name="secureWebGateway")
     private @Nullable Output<Boolean> secureWebGateway;
 
     /**
-     * @return Route outbound MCP traffic through Zero Trust Secure Web Gateway
+     * @return Route outbound MCP traffic through Zero Trust Secure Web Gateway.
      * 
      */
     public Optional<Output<Boolean>> secureWebGateway() {
         return Optional.ofNullable(this.secureWebGateway);
     }
 
+    /**
+     * MCP servers attached to the portal and their portal-specific settings.
+     * 
+     */
     @Import(name="servers")
     private @Nullable Output<List<ZeroTrustAccessAiControlsMcpPortalServerArgs>> servers;
 
+    /**
+     * @return MCP servers attached to the portal and their portal-specific settings.
+     * 
+     */
     public Optional<Output<List<ZeroTrustAccessAiControlsMcpPortalServerArgs>>> servers() {
         return Optional.ofNullable(this.servers);
     }
 
     /**
-     * portal id
+     * Unique identifier for the MCP portal.
      * 
      */
     @Import(name="zeroTrustAccessAiControlsMcpPortalId", required=true)
     private Output<String> zeroTrustAccessAiControlsMcpPortalId;
 
     /**
-     * @return portal id
+     * @return Unique identifier for the MCP portal.
      * 
      */
     public Output<String> zeroTrustAccessAiControlsMcpPortalId() {
@@ -104,6 +161,7 @@ public final class ZeroTrustAccessAiControlsMcpPortalArgs extends com.pulumi.res
     private ZeroTrustAccessAiControlsMcpPortalArgs(ZeroTrustAccessAiControlsMcpPortalArgs $) {
         this.accountId = $.accountId;
         this.allowCodeMode = $.allowCodeMode;
+        this.codeMode = $.codeMode;
         this.description = $.description;
         this.hostname = $.hostname;
         this.name = $.name;
@@ -140,55 +198,122 @@ public final class ZeroTrustAccessAiControlsMcpPortalArgs extends com.pulumi.res
         }
 
         /**
-         * @param allowCodeMode Allow remote code execution in Dynamic Workers (beta)
+         * @param allowCodeMode Deprecated: use `codeMode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder allowCodeMode(@Nullable Output<Boolean> allowCodeMode) {
             $.allowCodeMode = allowCodeMode;
             return this;
         }
 
         /**
-         * @param allowCodeMode Allow remote code execution in Dynamic Workers (beta)
+         * @param allowCodeMode Deprecated: use `codeMode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder allowCodeMode(Boolean allowCodeMode) {
             return allowCodeMode(Output.of(allowCodeMode));
         }
 
+        /**
+         * @param codeMode Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `optIn`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `defaultOn`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `optIn` when omitted on create. If both `codeMode` and `allowCodeMode` are sent, they must be consistent or the request returns a 400.
+         * Available values: &#34;off&#34;, &#34;opt*in&#34;, &#34;default*on&#34;, &#34;enforced&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder codeMode(@Nullable Output<String> codeMode) {
+            $.codeMode = codeMode;
+            return this;
+        }
+
+        /**
+         * @param codeMode Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `optIn`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `defaultOn`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `optIn` when omitted on create. If both `codeMode` and `allowCodeMode` are sent, they must be consistent or the request returns a 400.
+         * Available values: &#34;off&#34;, &#34;opt*in&#34;, &#34;default*on&#34;, &#34;enforced&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder codeMode(String codeMode) {
+            return codeMode(Output.of(codeMode));
+        }
+
+        /**
+         * @param description Optional description of the MCP portal.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description Optional description of the MCP portal.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
+        /**
+         * @param hostname Hostname where the MCP portal is available.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hostname(Output<String> hostname) {
             $.hostname = hostname;
             return this;
         }
 
+        /**
+         * @param hostname Hostname where the MCP portal is available.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hostname(String hostname) {
             return hostname(Output.of(hostname));
         }
 
+        /**
+         * @param name Display name for the MCP portal.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name for the MCP portal.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param secureWebGateway Route outbound MCP traffic through Zero Trust Secure Web Gateway
+         * @param secureWebGateway Route outbound MCP traffic through Zero Trust Secure Web Gateway.
          * 
          * @return builder
          * 
@@ -199,7 +324,7 @@ public final class ZeroTrustAccessAiControlsMcpPortalArgs extends com.pulumi.res
         }
 
         /**
-         * @param secureWebGateway Route outbound MCP traffic through Zero Trust Secure Web Gateway
+         * @param secureWebGateway Route outbound MCP traffic through Zero Trust Secure Web Gateway.
          * 
          * @return builder
          * 
@@ -208,21 +333,39 @@ public final class ZeroTrustAccessAiControlsMcpPortalArgs extends com.pulumi.res
             return secureWebGateway(Output.of(secureWebGateway));
         }
 
+        /**
+         * @param servers MCP servers attached to the portal and their portal-specific settings.
+         * 
+         * @return builder
+         * 
+         */
         public Builder servers(@Nullable Output<List<ZeroTrustAccessAiControlsMcpPortalServerArgs>> servers) {
             $.servers = servers;
             return this;
         }
 
+        /**
+         * @param servers MCP servers attached to the portal and their portal-specific settings.
+         * 
+         * @return builder
+         * 
+         */
         public Builder servers(List<ZeroTrustAccessAiControlsMcpPortalServerArgs> servers) {
             return servers(Output.of(servers));
         }
 
+        /**
+         * @param servers MCP servers attached to the portal and their portal-specific settings.
+         * 
+         * @return builder
+         * 
+         */
         public Builder servers(ZeroTrustAccessAiControlsMcpPortalServerArgs... servers) {
             return servers(List.of(servers));
         }
 
         /**
-         * @param zeroTrustAccessAiControlsMcpPortalId portal id
+         * @param zeroTrustAccessAiControlsMcpPortalId Unique identifier for the MCP portal.
          * 
          * @return builder
          * 
@@ -233,7 +376,7 @@ public final class ZeroTrustAccessAiControlsMcpPortalArgs extends com.pulumi.res
         }
 
         /**
-         * @param zeroTrustAccessAiControlsMcpPortalId portal id
+         * @param zeroTrustAccessAiControlsMcpPortalId Unique identifier for the MCP portal.
          * 
          * @return builder
          * 

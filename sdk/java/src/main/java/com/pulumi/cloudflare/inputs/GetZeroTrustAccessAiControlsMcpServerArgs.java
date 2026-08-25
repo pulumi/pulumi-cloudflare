@@ -31,14 +31,14 @@ public final class GetZeroTrustAccessAiControlsMcpServerArgs extends com.pulumi.
     }
 
     /**
-     * server id
+     * Unique identifier for the MCP server.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return server id
+     * @return Unique identifier for the MCP server.
      * 
      */
     public Optional<Output<String>> id() {
@@ -90,7 +90,7 @@ public final class GetZeroTrustAccessAiControlsMcpServerArgs extends com.pulumi.
         }
 
         /**
-         * @param id server id
+         * @param id Unique identifier for the MCP server.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class GetZeroTrustAccessAiControlsMcpServerArgs extends com.pulumi.
         }
 
         /**
-         * @param id server id
+         * @param id Unique identifier for the MCP server.
          * 
          * @return builder
          * 

@@ -30,14 +30,14 @@ public final class GetZeroTrustAccessAiControlsMcpServerPlainArgs extends com.pu
     }
 
     /**
-     * server id
+     * Unique identifier for the MCP server.
      * 
      */
     @Import(name="id")
     private @Nullable String id;
 
     /**
-     * @return server id
+     * @return Unique identifier for the MCP server.
      * 
      */
     public Optional<String> id() {
@@ -81,7 +81,7 @@ public final class GetZeroTrustAccessAiControlsMcpServerPlainArgs extends com.pu
         }
 
         /**
-         * @param id server id
+         * @param id Unique identifier for the MCP server.
          * 
          * @return builder
          * 

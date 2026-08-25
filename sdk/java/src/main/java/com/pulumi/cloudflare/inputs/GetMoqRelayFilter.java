@@ -73,18 +73,20 @@ public final class GetMoqRelayFilter extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Maximum number of relays to return per page.
+     * Maximum number of relays to return per page. Values above the maximum are
+     * clamped to it rather than rejected.
      * 
      */
-    @Import(name="perPage")
-    private @Nullable Integer perPage;
+    @Import(name="perPage", required=true)
+    private Integer perPage;
 
     /**
-     * @return Maximum number of relays to return per page.
+     * @return Maximum number of relays to return per page. Values above the maximum are
+     * clamped to it rather than rejected.
      * 
      */
-    public Optional<Integer> perPage() {
-        return Optional.ofNullable(this.perPage);
+    public Integer perPage() {
+        return this.perPage;
     }
 
     private GetMoqRelayFilter() {}
@@ -153,12 +155,13 @@ public final class GetMoqRelayFilter extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param perPage Maximum number of relays to return per page.
+         * @param perPage Maximum number of relays to return per page. Values above the maximum are
+         * clamped to it rather than rejected.
          * 
          * @return builder
          * 
          */
-        public Builder perPage(@Nullable Integer perPage) {
+        public Builder perPage(Integer perPage) {
             $.perPage = perPage;
             return this;
         }
@@ -166,6 +169,9 @@ public final class GetMoqRelayFilter extends com.pulumi.resources.InvokeArgs {
         public GetMoqRelayFilter build() {
             if ($.asc == null) {
                 throw new MissingRequiredPropertyException("GetMoqRelayFilter", "asc");
+            }
+            if ($.perPage == null) {
+                throw new MissingRequiredPropertyException("GetMoqRelayFilter", "perPage");
             }
             return $;
         }

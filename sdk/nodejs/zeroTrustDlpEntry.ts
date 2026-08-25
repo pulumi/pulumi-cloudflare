@@ -74,6 +74,11 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
     declare public /*out*/ readonly caseSensitive: pulumi.Output<boolean>;
     declare public /*out*/ readonly confidence: pulumi.Output<outputs.ZeroTrustDlpEntryConfidence>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    /**
+     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * emitted only when true.
+     */
+    declare public /*out*/ readonly deprecated: pulumi.Output<boolean>;
     declare public readonly description: pulumi.Output<string | undefined>;
     declare public readonly enabled: pulumi.Output<boolean>;
     declare public readonly name: pulumi.Output<string>;
@@ -113,6 +118,7 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
             resourceInputs["caseSensitive"] = state?.caseSensitive;
             resourceInputs["confidence"] = state?.confidence;
             resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["deprecated"] = state?.deprecated;
             resourceInputs["description"] = state?.description;
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["name"] = state?.name;
@@ -149,6 +155,7 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
             resourceInputs["caseSensitive"] = undefined /*out*/;
             resourceInputs["confidence"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["deprecated"] = undefined /*out*/;
             resourceInputs["profiles"] = undefined /*out*/;
             resourceInputs["secret"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
@@ -174,6 +181,11 @@ export interface ZeroTrustDlpEntryState {
     caseSensitive?: pulumi.Input<boolean | undefined>;
     confidence?: pulumi.Input<inputs.ZeroTrustDlpEntryConfidence | undefined>;
     createdAt?: pulumi.Input<string | undefined>;
+    /**
+     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * emitted only when true.
+     */
+    deprecated?: pulumi.Input<boolean | undefined>;
     description?: pulumi.Input<string | undefined>;
     enabled?: pulumi.Input<boolean | undefined>;
     name?: pulumi.Input<string | undefined>;

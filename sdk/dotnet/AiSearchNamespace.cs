@@ -32,6 +32,12 @@ namespace Pulumi.Cloudflare
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("publicEndpointId")]
+        public Output<string> PublicEndpointId { get; private set; } = null!;
+
+        [Output("publicEndpointParams")]
+        public Output<Outputs.AiSearchNamespacePublicEndpointParams> PublicEndpointParams { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a AiSearchNamespace resource with the given unique name, arguments, and options.
@@ -90,6 +96,9 @@ namespace Pulumi.Cloudflare
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        [Input("publicEndpointParams")]
+        public Input<Inputs.AiSearchNamespacePublicEndpointParamsArgs>? PublicEndpointParams { get; set; }
+
         public AiSearchNamespaceArgs()
         {
         }
@@ -112,6 +121,12 @@ namespace Pulumi.Cloudflare
 
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("publicEndpointId")]
+        public Input<string>? PublicEndpointId { get; set; }
+
+        [Input("publicEndpointParams")]
+        public Input<Inputs.AiSearchNamespacePublicEndpointParamsGetArgs>? PublicEndpointParams { get; set; }
 
         public AiSearchNamespaceState()
         {

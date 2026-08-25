@@ -17,31 +17,6 @@ import (
 // - `Load Balancers Write`
 //
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetLoadBalancer(ctx, &cloudflare.LookupLoadBalancerArgs{
-//				LoadBalancerId: "699d98642c564d2e855e9661899b7252",
-//				ZoneId:         pulumi.StringRef("zone_id"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupLoadBalancer(ctx *pulumi.Context, args *LookupLoadBalancerArgs, opts ...pulumi.InvokeOption) (*LookupLoadBalancerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupLoadBalancerResult

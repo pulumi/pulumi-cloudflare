@@ -17,30 +17,62 @@ public final class ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs extends com
 
     public static final ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs Empty = new ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs();
 
+    /**
+     * Custom name exposed for the capability.
+     * 
+     */
     @Import(name="alias")
     private @Nullable Output<String> alias;
 
+    /**
+     * @return Custom name exposed for the capability.
+     * 
+     */
     public Optional<Output<String>> alias() {
         return Optional.ofNullable(this.alias);
     }
 
+    /**
+     * Custom description exposed for the capability.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return Custom description exposed for the capability.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Whether the capability is available through the MCP server.
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether the capability is available through the MCP server.
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Name of the tool or prompt capability to override.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return Name of the tool or prompt capability to override.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -72,38 +104,86 @@ public final class ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs extends com
             $ = new ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param alias Custom name exposed for the capability.
+         * 
+         * @return builder
+         * 
+         */
         public Builder alias(@Nullable Output<String> alias) {
             $.alias = alias;
             return this;
         }
 
+        /**
+         * @param alias Custom name exposed for the capability.
+         * 
+         * @return builder
+         * 
+         */
         public Builder alias(String alias) {
             return alias(Output.of(alias));
         }
 
+        /**
+         * @param description Custom description exposed for the capability.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description Custom description exposed for the capability.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
+        /**
+         * @param enabled Whether the capability is available through the MCP server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether the capability is available through the MCP server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param name Name of the tool or prompt capability to override.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Name of the tool or prompt capability to override.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

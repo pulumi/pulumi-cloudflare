@@ -14,7 +14,6 @@ import (
 
 // Accepted Permissions
 //
-// - `SSL and Certificates Read`
 // - `SSL and Certificates Write`
 //
 // ## Example Usage
@@ -52,7 +51,7 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example '<zone_id>/<setting_id>'
+// $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example '<zone_id>/<setting_id>/<hostname>'
 // ```
 type HostnameTlsSetting struct {
 	pulumi.CustomResourceState

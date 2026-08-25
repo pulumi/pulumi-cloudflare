@@ -129,6 +129,12 @@ namespace Pulumi.Cloudflare
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
+        /// A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+        /// </summary>
+        [Output("healthSources")]
+        public Output<ImmutableArray<string>> HealthSources { get; private set; } = null!;
+
+        /// <summary>
         /// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
         /// </summary>
         [Output("latitude")]
@@ -279,6 +285,18 @@ namespace Pulumi.Cloudflare
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        [Input("healthSources")]
+        private InputList<string>? _healthSources;
+
+        /// <summary>
+        /// A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+        /// </summary>
+        public InputList<string> HealthSources
+        {
+            get => _healthSources ?? (_healthSources = new InputList<string>());
+            set => _healthSources = value;
+        }
+
         /// <summary>
         /// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
         /// </summary>
@@ -397,6 +415,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        [Input("healthSources")]
+        private InputList<string>? _healthSources;
+
+        /// <summary>
+        /// A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+        /// </summary>
+        public InputList<string> HealthSources
+        {
+            get => _healthSources ?? (_healthSources = new InputList<string>());
+            set => _healthSources = value;
+        }
 
         /// <summary>
         /// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.

@@ -146,6 +146,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
+        /// Contract version of the page's Liquid template. Present (&gt;= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+        /// </summary>
+        public readonly int ContractVersion;
+        /// <summary>
         /// Custom page HTML.
         /// </summary>
         public readonly string CustomHtml;
@@ -163,7 +167,7 @@ namespace Pulumi.Cloudflare
         public readonly string Name;
         /// <summary>
         /// Custom page type.
-        /// Available values: "IdentityDenied", "forbidden".
+        /// Available values: "IdentityDenied", "forbidden", "login", "interstitial".
         /// </summary>
         public readonly string Type;
         /// <summary>
@@ -174,6 +178,8 @@ namespace Pulumi.Cloudflare
         [OutputConstructor]
         private GetZeroTrustAccessCustomPageResult(
             string? accountId,
+
+            int contractVersion,
 
             string customHtml,
 
@@ -188,6 +194,7 @@ namespace Pulumi.Cloudflare
             string uid)
         {
             AccountId = accountId;
+            ContractVersion = contractVersion;
             CustomHtml = customHtml;
             CustomPageId = customPageId;
             Id = id;

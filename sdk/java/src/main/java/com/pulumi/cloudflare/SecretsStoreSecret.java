@@ -79,14 +79,14 @@ public class SecretsStoreSecret extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * Freeform text describing the secret.
+     * Freeform text describing the secret
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
-     * @return Freeform text describing the secret.
+     * @return Freeform text describing the secret
      * 
      */
     public Output<Optional<String>> comment() {
@@ -135,14 +135,14 @@ public class SecretsStoreSecret extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The list of services that can use this secret.
+     * The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
      * 
      */
     @Export(name="scopes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> scopes;
 
     /**
-     * @return The list of services that can use this secret.
+     * @return The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
      * 
      */
     public Output<List<String>> scopes() {

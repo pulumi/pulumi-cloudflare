@@ -27,7 +27,7 @@ class GetZeroTrustOrganizationResult:
     """
     A collection of values returned by getZeroTrustOrganization.
     """
-    def __init__(__self__, account_id=None, allow_authenticate_via_warp=None, auth_domain=None, auto_redirect_to_identity=None, custom_pages=None, deny_unmatched_requests=None, deny_unmatched_requests_exempted_zone_names=None, is_ui_read_only=None, login_design=None, mfa_config=None, mfa_required_for_all_apps=None, mfa_ssh_piv_key_requirements=None, name=None, session_duration=None, ui_read_only_toggle_reason=None, user_seat_expiration_inactive_time=None, warp_auth_session_duration=None, zone_id=None):
+    def __init__(__self__, account_id=None, allow_authenticate_via_warp=None, auth_domain=None, auto_redirect_to_identity=None, custom_pages=None, deny_unmatched_requests=None, deny_unmatched_requests_exempted_zone_names=None, is_ui_read_only=None, login_design=None, mfa_config=None, mfa_required_for_all_apps=None, mfa_ssh_piv_key_requirements=None, name=None, session_duration=None, ui_read_only_toggle_reason=None, user_seat_expiration_inactive_time=None, warp_auth_non_browser401=None, warp_auth_session_duration=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -76,6 +76,9 @@ class GetZeroTrustOrganizationResult:
         if user_seat_expiration_inactive_time and not isinstance(user_seat_expiration_inactive_time, str):
             raise TypeError("Expected argument 'user_seat_expiration_inactive_time' to be a str")
         pulumi.set(__self__, "user_seat_expiration_inactive_time", user_seat_expiration_inactive_time)
+        if warp_auth_non_browser401 and not isinstance(warp_auth_non_browser401, bool):
+            raise TypeError("Expected argument 'warp_auth_non_browser401' to be a bool")
+        pulumi.set(__self__, "warp_auth_non_browser401", warp_auth_non_browser401)
         if warp_auth_session_duration and not isinstance(warp_auth_session_duration, str):
             raise TypeError("Expected argument 'warp_auth_session_duration' to be a str")
         pulumi.set(__self__, "warp_auth_session_duration", warp_auth_session_duration)
@@ -161,7 +164,7 @@ class GetZeroTrustOrganizationResult:
     @pulumi.getter(name="mfaRequiredForAllApps")
     def mfa_required_for_all_apps(self) -> _builtins.bool:
         """
-        Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+        Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
         """
         return pulumi.get(self, "mfa_required_for_all_apps")
 
@@ -206,6 +209,14 @@ class GetZeroTrustOrganizationResult:
         return pulumi.get(self, "user_seat_expiration_inactive_time")
 
     @_builtins.property
+    @pulumi.getter(name="warpAuthNonBrowser401")
+    def warp_auth_non_browser401(self) -> _builtins.bool:
+        """
+        When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
+        """
+        return pulumi.get(self, "warp_auth_non_browser401")
+
+    @_builtins.property
     @pulumi.getter(name="warpAuthSessionDuration")
     def warp_auth_session_duration(self) -> _builtins.str:
         """
@@ -244,6 +255,7 @@ class AwaitableGetZeroTrustOrganizationResult(GetZeroTrustOrganizationResult):
             session_duration=self.session_duration,
             ui_read_only_toggle_reason=self.ui_read_only_toggle_reason,
             user_seat_expiration_inactive_time=self.user_seat_expiration_inactive_time,
+            warp_auth_non_browser401=self.warp_auth_non_browser401,
             warp_auth_session_duration=self.warp_auth_session_duration,
             zone_id=self.zone_id)
 
@@ -295,6 +307,7 @@ def get_zero_trust_organization(account_id: Optional[_builtins.str] = None,
         session_duration=pulumi.get(__ret__, 'session_duration'),
         ui_read_only_toggle_reason=pulumi.get(__ret__, 'ui_read_only_toggle_reason'),
         user_seat_expiration_inactive_time=pulumi.get(__ret__, 'user_seat_expiration_inactive_time'),
+        warp_auth_non_browser401=pulumi.get(__ret__, 'warp_auth_non_browser401'),
         warp_auth_session_duration=pulumi.get(__ret__, 'warp_auth_session_duration'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_zero_trust_organization_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -343,5 +356,6 @@ def get_zero_trust_organization_output(account_id: pulumi.Input[Optional[Optiona
         session_duration=pulumi.get(__response__, 'session_duration'),
         ui_read_only_toggle_reason=pulumi.get(__response__, 'ui_read_only_toggle_reason'),
         user_seat_expiration_inactive_time=pulumi.get(__response__, 'user_seat_expiration_inactive_time'),
+        warp_auth_non_browser401=pulumi.get(__response__, 'warp_auth_non_browser401'),
         warp_auth_session_duration=pulumi.get(__response__, 'warp_auth_session_duration'),
         zone_id=pulumi.get(__response__, 'zone_id')))

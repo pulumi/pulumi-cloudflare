@@ -38,7 +38,7 @@ public final class ZeroTrustAccessApplicationDestination {
      */
     private @Nullable String portRange;
     /**
-     * @return Available values: &#34;public&#34;, &#34;private&#34;.
+     * @return Available values: &#34;public&#34;, &#34;private&#34;, &#34;via*mcp*server*portal&#34;, &#34;worker&#34;, &#34;preview*worker&#34;, &#34;all*workers&#34;, &#34;all*preview_workers&#34;.
      * 
      */
     private @Nullable String type;
@@ -52,6 +52,11 @@ public final class ZeroTrustAccessApplicationDestination {
      * 
      */
     private @Nullable String vnetId;
+    /**
+     * @return The ID of the Cloudflare Worker to protect with Access. Required when type is `worker` or `previewWorker`.
+     * 
+     */
+    private @Nullable String workerId;
 
     private ZeroTrustAccessApplicationDestination() {}
     /**
@@ -91,7 +96,7 @@ public final class ZeroTrustAccessApplicationDestination {
         return Optional.ofNullable(this.portRange);
     }
     /**
-     * @return Available values: &#34;public&#34;, &#34;private&#34;.
+     * @return Available values: &#34;public&#34;, &#34;private&#34;, &#34;via*mcp*server*portal&#34;, &#34;worker&#34;, &#34;preview*worker&#34;, &#34;all*workers&#34;, &#34;all*preview_workers&#34;.
      * 
      */
     public Optional<String> type() {
@@ -111,6 +116,13 @@ public final class ZeroTrustAccessApplicationDestination {
     public Optional<String> vnetId() {
         return Optional.ofNullable(this.vnetId);
     }
+    /**
+     * @return The ID of the Cloudflare Worker to protect with Access. Required when type is `worker` or `previewWorker`.
+     * 
+     */
+    public Optional<String> workerId() {
+        return Optional.ofNullable(this.workerId);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -129,6 +141,7 @@ public final class ZeroTrustAccessApplicationDestination {
         private @Nullable String type;
         private @Nullable String uri;
         private @Nullable String vnetId;
+        private @Nullable String workerId;
         public Builder() {}
         public Builder(ZeroTrustAccessApplicationDestination defaults) {
     	      Objects.requireNonNull(defaults);
@@ -140,6 +153,7 @@ public final class ZeroTrustAccessApplicationDestination {
     	      this.type = defaults.type;
     	      this.uri = defaults.uri;
     	      this.vnetId = defaults.vnetId;
+    	      this.workerId = defaults.workerId;
         }
 
         @CustomType.Setter
@@ -190,6 +204,12 @@ public final class ZeroTrustAccessApplicationDestination {
             this.vnetId = vnetId;
             return this;
         }
+        @CustomType.Setter
+        public Builder workerId(@Nullable String workerId) {
+
+            this.workerId = workerId;
+            return this;
+        }
         public ZeroTrustAccessApplicationDestination build() {
             final var _resultValue = new ZeroTrustAccessApplicationDestination();
             _resultValue.cidr = cidr;
@@ -200,6 +220,7 @@ public final class ZeroTrustAccessApplicationDestination {
             _resultValue.type = type;
             _resultValue.uri = uri;
             _resultValue.vnetId = vnetId;
+            _resultValue.workerId = workerId;
             return _resultValue;
         }
     }

@@ -63,7 +63,7 @@ export interface AccessApplicationDestination {
      */
     portRange?: string;
     /**
-     * Available values: "public", "private".
+     * Available values: "public", "private", "via*mcp*server*portal", "worker", "preview*worker", "all*workers", "all*preview_workers".
      */
     type: string;
     /**
@@ -74,6 +74,10 @@ export interface AccessApplicationDestination {
      * The VNET ID to match the destination. When omitted, all VNETs will match.
      */
     vnetId?: string;
+    /**
+     * The ID of the Cloudflare Worker to protect with Access. Required when type is `worker` or `previewWorker`.
+     */
+    workerId?: string;
 }
 
 export interface AccessApplicationFooterLink {
@@ -1271,6 +1275,21 @@ export interface AccessApplicationTargetCriteria {
     targetAttributes: {[key: string]: string[]};
 }
 
+export interface AccessCustomPageWarning {
+    /**
+     * Human-readable description of the finding.
+     */
+    message: string;
+    /**
+     * Optional pointer to the part of the template the finding refers to.
+     */
+    ref: string;
+    /**
+     * The validation tier that produced the finding (e.g. html, liquid).
+     */
+    tier: string;
+}
+
 export interface AccessGroupExclude {
     /**
      * An empty object which matches on all service tokens.
@@ -2285,7 +2304,7 @@ export interface AccessOrganizationLoginDesign {
 
 export interface AccessOrganizationMfaConfig {
     /**
-     * Lists the MFA methods that users can authenticate with. `sshPivKey` is only relevant for infrastructure applications.
+     * Lists the MFA methods that users can authenticate with. The `pivKey` and `sshFido2Key` values are supported only for infrastructure applications.
      */
     allowedAuthenticators?: string[];
     /**
@@ -3174,7 +3193,7 @@ export interface AccountDnsSettingsZoneDefaults {
     /**
      * Settings for this internal zone.
      */
-    internalDns?: outputs.AccountDnsSettingsZoneDefaultsInternalDns;
+    internalDns: outputs.AccountDnsSettingsZoneDefaultsInternalDns;
     /**
      * Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
      */
@@ -3182,7 +3201,7 @@ export interface AccountDnsSettingsZoneDefaults {
     /**
      * Settings determining the nameservers through which the zone should be available.
      */
-    nameservers?: outputs.AccountDnsSettingsZoneDefaultsNameservers;
+    nameservers: outputs.AccountDnsSettingsZoneDefaultsNameservers;
     /**
      * The time to live (TTL) of the zone's nameserver (NS) records.
      */
@@ -3194,7 +3213,7 @@ export interface AccountDnsSettingsZoneDefaults {
     /**
      * Components of the zone's SOA record.
      */
-    soa?: outputs.AccountDnsSettingsZoneDefaultsSoa;
+    soa: outputs.AccountDnsSettingsZoneDefaultsSoa;
     /**
      * Whether the zone mode is a regular or CDN/DNS only zone.
      * Available values: "standard", "cdn*only", "dns*only".
@@ -3885,11 +3904,11 @@ export interface AiSearchInstanceRetrievalOptionsBoostBy {
 
 export interface AiSearchInstanceSourceParams {
     /**
-     * List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+     * List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.
      */
     excludeItems?: string[];
     /**
-     * List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+     * List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.
      */
     includeItems?: string[];
     prefix?: string;
@@ -3898,12 +3917,45 @@ export interface AiSearchInstanceSourceParams {
 }
 
 export interface AiSearchInstanceSourceParamsWebCrawler {
+    /**
+     * Options for parse*type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.
+     */
+    discoverOptions?: outputs.AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions;
     parseOptions?: outputs.AiSearchInstanceSourceParamsWebCrawlerParseOptions;
     /**
-     * Available values: "sitemap", "feed-rss", "crawl".
+     * How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.
+     * Available values: "sitemap", "discover".
      */
     parseType: string;
     storeOptions?: outputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptions;
+}
+
+export interface AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions {
+    /**
+     * Maximum link-follow depth from the seed URL.
+     */
+    depth: number;
+    /**
+     * Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.
+     */
+    includeExternalLinks: boolean;
+    /**
+     * Follow links to subdomains of the source host.
+     */
+    includeSubdomains: boolean;
+    /**
+     * Maximum number of pages to crawl (1-100000).
+     */
+    limit: number;
+    /**
+     * Maximum content age in seconds to accept (0–604800).
+     */
+    maxAge: number;
+    /**
+     * Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both.
+     * Available values: "all", "sitemaps", "links".
+     */
+    source: string;
 }
 
 export interface AiSearchInstanceSourceParamsWebCrawlerParseOptions {
@@ -3941,6 +3993,58 @@ export interface AiSearchInstanceSourceParamsWebCrawlerStoreOptions {
      * Available values: "r2".
      */
     storageType?: string;
+}
+
+export interface AiSearchNamespacePublicEndpointParams {
+    authorizedHosts?: string[];
+    chatCompletionsEndpoint: outputs.AiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint;
+    /**
+     * Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
+     */
+    customDomains?: string[];
+    /**
+     * When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+     */
+    defaultDomainEnabled: boolean;
+    enabled: boolean;
+    /**
+     * Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.
+     */
+    instancesAlloweds: string[];
+    mcp: outputs.AiSearchNamespacePublicEndpointParamsMcp;
+    rateLimit?: outputs.AiSearchNamespacePublicEndpointParamsRateLimit;
+    searchEndpoint: outputs.AiSearchNamespacePublicEndpointParamsSearchEndpoint;
+}
+
+export interface AiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint {
+    /**
+     * Disable chat completions endpoint for this public endpoint
+     */
+    disabled: boolean;
+}
+
+export interface AiSearchNamespacePublicEndpointParamsMcp {
+    description: string;
+    /**
+     * Disable MCP endpoint for this public endpoint
+     */
+    disabled: boolean;
+}
+
+export interface AiSearchNamespacePublicEndpointParamsRateLimit {
+    periodMs?: number;
+    requests?: number;
+    /**
+     * Available values: "fixed", "sliding".
+     */
+    technique?: string;
+}
+
+export interface AiSearchNamespacePublicEndpointParamsSearchEndpoint {
+    /**
+     * Disable search endpoint for this public endpoint
+     */
+    disabled: boolean;
 }
 
 export interface ApiShieldAuthIdCharacteristic {
@@ -4440,7 +4544,7 @@ export interface CloudConnectorRulesRule {
     parameters?: outputs.CloudConnectorRulesRuleParameters;
     /**
      * Cloud Provider type
-     * Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage".
+     * Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage", "ociStorage".
      */
     provider?: string;
 }
@@ -5965,7 +6069,7 @@ export interface GetAccountMemberPolicyResourceGroup {
      */
     name: string;
     /**
-     * A scope is a combination of scope objects which provides additional context.
+     * The scope associated to the resource group
      */
     scopes: outputs.GetAccountMemberPolicyResourceGroupScope[];
 }
@@ -6189,7 +6293,7 @@ export interface GetAccountMembersResultPolicyResourceGroup {
      */
     name: string;
     /**
-     * A scope is a combination of scope objects which provides additional context.
+     * The scope associated to the resource group
      */
     scopes: outputs.GetAccountMembersResultPolicyResourceGroupScope[];
 }
@@ -6545,7 +6649,7 @@ export interface GetAccountSubscriptionRatePlan {
     externallyManaged: boolean;
     /**
      * The ID of the rate plan.
-     * Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnterprise".
+     * Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnt".
      */
     id: string;
     /**
@@ -7140,6 +7244,7 @@ export interface GetAiGatewaysResult {
      */
     id: string;
     isDefault: boolean;
+    logClassification: boolean;
     logManagement: number;
     /**
      * Available values: "STOP*INSERTING", "DELETE*OLDEST".
@@ -7172,8 +7277,8 @@ export interface GetAiGatewaysResult {
     storeId: string;
     stripe: outputs.GetAiGatewaysResultStripe;
     /**
-     * Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-     * Available values: "postpaid".
+     * Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+     * Available values: "postpaid", "unified".
      */
     workersAiBillingMode: string;
     zdr: boolean;
@@ -7516,11 +7621,11 @@ export interface GetAiSearchInstanceRetrievalOptionsBoostBy {
 
 export interface GetAiSearchInstanceSourceParams {
     /**
-     * List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)
+     * List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.
      */
     excludeItems: string[];
     /**
-     * List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)
+     * List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.
      */
     includeItems: string[];
     prefix: string;
@@ -7529,12 +7634,45 @@ export interface GetAiSearchInstanceSourceParams {
 }
 
 export interface GetAiSearchInstanceSourceParamsWebCrawler {
+    /**
+     * Options for parse*type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.
+     */
+    discoverOptions: outputs.GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions;
     parseOptions: outputs.GetAiSearchInstanceSourceParamsWebCrawlerParseOptions;
     /**
+     * How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.
      * Available values: "sitemap", "discover".
      */
     parseType: string;
     storeOptions: outputs.GetAiSearchInstanceSourceParamsWebCrawlerStoreOptions;
+}
+
+export interface GetAiSearchInstanceSourceParamsWebCrawlerDiscoverOptions {
+    /**
+     * Maximum link-follow depth from the seed URL.
+     */
+    depth: number;
+    /**
+     * Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.
+     */
+    includeExternalLinks: boolean;
+    /**
+     * Follow links to subdomains of the source host.
+     */
+    includeSubdomains: boolean;
+    /**
+     * Maximum number of pages to crawl (1-100000).
+     */
+    limit: number;
+    /**
+     * Maximum content age in seconds to accept (0–604800).
+     */
+    maxAge: number;
+    /**
+     * Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both.
+     * Available values: "all", "sitemaps", "links".
+     */
+    source: string;
 }
 
 export interface GetAiSearchInstanceSourceParamsWebCrawlerParseOptions {
@@ -7775,12 +7913,28 @@ export interface GetAiSearchInstancesResultSourceParams {
 }
 
 export interface GetAiSearchInstancesResultSourceParamsWebCrawler {
+    discoverOptions: outputs.GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptions;
     parseOptions: outputs.GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptions;
     /**
      * Available values: "sitemap", "feed-rss", "crawl".
      */
     parseType: string;
     storeOptions: outputs.GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptions;
+}
+
+export interface GetAiSearchInstancesResultSourceParamsWebCrawlerDiscoverOptions {
+    depth: number;
+    includeExternalLinks: boolean;
+    includeSubdomains: boolean;
+    /**
+     * Maximum number of pages to crawl. New values are capped at 100000; instances configured before that cap may report a higher stored value, which the crawler clamps at run time.
+     */
+    limit: number;
+    maxAge: number;
+    /**
+     * Available values: "all", "sitemaps", "links".
+     */
+    source: string;
 }
 
 export interface GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptions {
@@ -7820,6 +7974,58 @@ export interface GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptions {
     storageType: string;
 }
 
+export interface GetAiSearchNamespacePublicEndpointParams {
+    authorizedHosts: string[];
+    chatCompletionsEndpoint: outputs.GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint;
+    /**
+     * Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
+     */
+    customDomains: string[];
+    /**
+     * When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+     */
+    defaultDomainEnabled: boolean;
+    enabled: boolean;
+    /**
+     * Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.
+     */
+    instancesAlloweds: string[];
+    mcp: outputs.GetAiSearchNamespacePublicEndpointParamsMcp;
+    rateLimit: outputs.GetAiSearchNamespacePublicEndpointParamsRateLimit;
+    searchEndpoint: outputs.GetAiSearchNamespacePublicEndpointParamsSearchEndpoint;
+}
+
+export interface GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint {
+    /**
+     * Disable chat completions endpoint for this public endpoint
+     */
+    disabled: boolean;
+}
+
+export interface GetAiSearchNamespacePublicEndpointParamsMcp {
+    description: string;
+    /**
+     * Disable MCP endpoint for this public endpoint
+     */
+    disabled: boolean;
+}
+
+export interface GetAiSearchNamespacePublicEndpointParamsRateLimit {
+    periodMs: number;
+    requests: number;
+    /**
+     * Available values: "fixed", "sliding".
+     */
+    technique: string;
+}
+
+export interface GetAiSearchNamespacePublicEndpointParamsSearchEndpoint {
+    /**
+     * Disable search endpoint for this public endpoint
+     */
+    disabled: boolean;
+}
+
 export interface GetAiSearchNamespacesResult {
     createdAt: string;
     /**
@@ -7827,6 +8033,60 @@ export interface GetAiSearchNamespacesResult {
      */
     description: string;
     name: string;
+    publicEndpointId: string;
+    publicEndpointParams: outputs.GetAiSearchNamespacesResultPublicEndpointParams;
+}
+
+export interface GetAiSearchNamespacesResultPublicEndpointParams {
+    authorizedHosts: string[];
+    chatCompletionsEndpoint: outputs.GetAiSearchNamespacesResultPublicEndpointParamsChatCompletionsEndpoint;
+    /**
+     * Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
+     */
+    customDomains: string[];
+    /**
+     * When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+     */
+    defaultDomainEnabled: boolean;
+    enabled: boolean;
+    /**
+     * Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.
+     */
+    instancesAlloweds: string[];
+    mcp: outputs.GetAiSearchNamespacesResultPublicEndpointParamsMcp;
+    rateLimit: outputs.GetAiSearchNamespacesResultPublicEndpointParamsRateLimit;
+    searchEndpoint: outputs.GetAiSearchNamespacesResultPublicEndpointParamsSearchEndpoint;
+}
+
+export interface GetAiSearchNamespacesResultPublicEndpointParamsChatCompletionsEndpoint {
+    /**
+     * Disable chat completions endpoint for this public endpoint
+     */
+    disabled: boolean;
+}
+
+export interface GetAiSearchNamespacesResultPublicEndpointParamsMcp {
+    description: string;
+    /**
+     * Disable MCP endpoint for this public endpoint
+     */
+    disabled: boolean;
+}
+
+export interface GetAiSearchNamespacesResultPublicEndpointParamsRateLimit {
+    periodMs: number;
+    requests: number;
+    /**
+     * Available values: "fixed", "sliding".
+     */
+    technique: string;
+}
+
+export interface GetAiSearchNamespacesResultPublicEndpointParamsSearchEndpoint {
+    /**
+     * Disable search endpoint for this public endpoint
+     */
+    disabled: boolean;
 }
 
 export interface GetAiSearchTokenFilter {
@@ -10337,7 +10597,7 @@ export interface GetD1DatabasesResult {
     id: string;
     /**
      * Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-     * Available values: "eu", "fedramp".
+     * Available values: "eu", "fedramp", "us".
      */
     jurisdiction: string;
     /**
@@ -12175,6 +12435,30 @@ export interface GetHealthchecksResultTcpConfig {
     port: number;
 }
 
+export interface GetHostnameTlsSettingsResult {
+    /**
+     * This is the time the tls setting was originally created for this hostname.
+     */
+    createdAt: string;
+    /**
+     * The hostname for which the tls settings are set.
+     */
+    hostname: string;
+    /**
+     * Deployment status for the given tls setting.
+     */
+    status: string;
+    /**
+     * This is the time the tls setting was updated.
+     */
+    updatedAt: string;
+    /**
+     * The TLS setting value.
+     * The type depends on the `settingId` used in the request path:
+     */
+    value: string;
+}
+
 export interface GetHyperdriveConfigCaching {
     /**
      * Set to true to disable caching of SQL responses. Default is false.
@@ -12522,7 +12806,7 @@ export interface GetListItem {
 
 export interface GetListItemHostname {
     /**
-     * Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+     * Only applies to wildcard hostnames (e.g., *.example.com). When true (default), the rule blocks only subdomains. When false, the rule blocks both the root domain and subdomains.
      */
     excludeExactHostname: boolean;
     urlHostname: string;
@@ -12555,7 +12839,7 @@ export interface GetListItemsResult {
      */
     createdOn: string;
     /**
-     * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+     * Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      */
     hostname: outputs.GetListItemsResultHostname;
     /**
@@ -12578,7 +12862,7 @@ export interface GetListItemsResult {
 
 export interface GetListItemsResultHostname {
     /**
-     * Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+     * Only applies to wildcard hostnames (e.g., *.example.com). When true (default), the rule blocks only subdomains. When false, the rule blocks both the root domain and subdomains.
      */
     excludeExactHostname: boolean;
     urlHostname: string;
@@ -12931,6 +13215,10 @@ export interface GetLoadBalancerPoolsResult {
      * Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
      */
     enabled: boolean;
+    /**
+     * A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array ["regional", "global"]; any other combination is rejected. Null (the default) behaves like ["local", "global"]. ["regional", "global"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+     */
+    healthSources: string[];
     id: string;
     /**
      * The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
@@ -14817,7 +15105,9 @@ export interface GetMoqRelayConfigUpstreams {
 
 export interface GetMoqRelayConfigUpstreamsUpstream {
     /**
-     * Upstream MOQT server publisher URL.
+     * Upstream MOQT server publisher URL. Must be an absolute URL with a
+     * host and a scheme the relay can dial: moqt:// (raw QUIC) or https://
+     * (WebTransport). Validated on update (PUT); rejected with 21013.
      */
     url: string;
 }
@@ -14841,9 +15131,10 @@ export interface GetMoqRelayFilter {
      */
     createdBefore?: string;
     /**
-     * Maximum number of relays to return per page.
+     * Maximum number of relays to return per page. Values above the maximum are
+     * clamped to it rather than rejected.
      */
-    perPage?: number;
+    perPage: number;
 }
 
 export interface GetMoqRelaysResult {
@@ -15561,10 +15852,6 @@ export interface GetOrganizationFilterParent {
 
 export interface GetOrganizationMeta {
     /**
-     * Enable features for Organizations.
-     */
-    flags: outputs.GetOrganizationMetaFlags;
-    /**
      * Ordered chain of organization tags from the root organization down to
      * (and including) this organization itself. Root organizations return a
      * single-element array containing their own tag; sub-organizations return
@@ -15574,13 +15861,19 @@ export interface GetOrganizationMeta {
      */
     hierarchyTags: string[];
     managedBy: string;
+    /**
+     * Enable features for Organizations.
+     */
+    tenantFlags: outputs.GetOrganizationMetaTenantFlags;
 }
 
-export interface GetOrganizationMetaFlags {
+export interface GetOrganizationMetaTenantFlags {
     accountCreation: string;
     accountDeletion: string;
     accountMigration: string;
     accountMobility: string;
+    enterpriseCapability: string;
+    memberManagement: string;
     subOrgCreation: string;
 }
 
@@ -15652,10 +15945,6 @@ export interface GetOrganizationsResult {
 
 export interface GetOrganizationsResultMeta {
     /**
-     * Enable features for Organizations.
-     */
-    flags: outputs.GetOrganizationsResultMetaFlags;
-    /**
      * Ordered chain of organization tags from the root organization down to
      * (and including) this organization itself. Root organizations return a
      * single-element array containing their own tag; sub-organizations return
@@ -15665,13 +15954,19 @@ export interface GetOrganizationsResultMeta {
      */
     hierarchyTags: string[];
     managedBy: string;
+    /**
+     * Enable features for Organizations.
+     */
+    tenantFlags: outputs.GetOrganizationsResultMetaTenantFlags;
 }
 
-export interface GetOrganizationsResultMetaFlags {
+export interface GetOrganizationsResultMetaTenantFlags {
     accountCreation: string;
     accountDeletion: string;
     accountMigration: string;
     accountMobility: string;
+    enterpriseCapability: string;
+    memberManagement: string;
     subOrgCreation: string;
 }
 
@@ -18642,6 +18937,31 @@ export interface GetPipelineTable {
     version: number;
 }
 
+export interface GetPrecursorEnforcementRule {
+    /**
+     * An informative description of the rule.
+     */
+    description: string;
+    /**
+     * Whether the rule is active.
+     */
+    enabled: boolean;
+    /**
+     * The filter expression that determines which requests the rule matches.
+     */
+    expression: string;
+    /**
+     * The read-only identifier that Cloudflare assigns to the rule.
+     */
+    id: string;
+    /**
+     * The override mode Precursor applies to requests matching an enforcement
+     * rule. Unlike `defaultMode`, this cannot be `off`.
+     * Available values: "min-friction", "max-security".
+     */
+    mode: string;
+}
+
 export interface GetQueueConsumer {
     /**
      * A Resource identifier.
@@ -19523,7 +19843,7 @@ export interface GetResourceGroupsResult {
      */
     name: string;
     /**
-     * A scope is a combination of scope objects which provides additional context.
+     * The scope associated to the resource group
      */
     scopes: outputs.GetResourceGroupsResultScope[];
 }
@@ -20940,8 +21260,10 @@ export interface GetShareRecipientsResult {
      */
     accountId: string;
     /**
-     * Share Recipient association status.
-     * Available values: "associating", "associated", "disassociating", "disassociated".
+     * The current state of the recipient relative to the share. The
+     * `desiredAssociationStatus` (not exposed in the response) tracks the
+     * target state set by the API; the background reconciliation workflow
+     * drives `currentAssociationStatus` toward it.
      */
     associationStatus: string;
     /**
@@ -22355,7 +22677,7 @@ export interface GetUserGroupPolicyResourceGroup {
      */
     name: string;
     /**
-     * A scope is a combination of scope objects which provides additional context.
+     * The scope associated to the resource group
      */
     scopes: outputs.GetUserGroupPolicyResourceGroupScope[];
 }
@@ -22460,7 +22782,7 @@ export interface GetUserGroupsResultPolicyResourceGroup {
      */
     name: string;
     /**
-     * A scope is a combination of scope objects which provides additional context.
+     * The scope associated to the resource group
      */
     scopes: outputs.GetUserGroupsResultPolicyResourceGroupScope[];
 }
@@ -22701,7 +23023,7 @@ export interface GetWaitingRoomsResult {
     customPageHtml: string;
     /**
      * The language of the default page template. If no defaultTemplateLanguage is provided, then `en-US` (English) will be used.
-     * Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
+     * Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "lv-LV", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
      */
     defaultTemplateLanguage: string;
     /**
@@ -23255,9 +23577,17 @@ export interface GetWorkerSubdomain {
      */
     enabled: boolean;
     /**
+     * Prepend a version or preview prefix to this host suffix to form the *.workers.dev [preview URL](https://developers.cloudflare.com/workers/configuration/previews/) the Worker would serve on once previews are enabled, e.g. `https://<prefix>-my-worker.my-subdomain.workers.dev`. Present whenever the account owns a workers.dev subdomain, regardless of whether `previewsEnabled` is true, so presence does not imply preview URLs are currently live. Absent only when the account owns no workers.dev subdomain.
+     */
+    previewUrlSuffix: string;
+    /**
      * Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.
      */
     previewsEnabled: boolean;
+    /**
+     * The address the Worker would serve on once its *.workers.dev subdomain is enabled. Present whenever the account owns a workers.dev subdomain, regardless of whether `enabled` is true, so presence does not imply the Worker is currently live at this URL. Absent only when the account owns no workers.dev subdomain.
+     */
+    url: string;
 }
 
 export interface GetWorkerTailConsumer {
@@ -23467,7 +23797,7 @@ export interface GetWorkerVersionBinding {
     tunnelId: string;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "ai*search", "ai*search*namespace", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+     * Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
      */
     type: string;
     /**
@@ -24079,7 +24409,7 @@ export interface GetWorkerVersionsResultBinding {
     tunnelId: string;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "ai*search", "ai*search*namespace", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+     * Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
      */
     type: string;
     /**
@@ -24749,9 +25079,17 @@ export interface GetWorkersResultSubdomain {
      */
     enabled: boolean;
     /**
+     * Prepend a version or preview prefix to this host suffix to form the *.workers.dev [preview URL](https://developers.cloudflare.com/workers/configuration/previews/) the Worker would serve on once previews are enabled, e.g. `https://<prefix>-my-worker.my-subdomain.workers.dev`. Present whenever the account owns a workers.dev subdomain, regardless of whether `previewsEnabled` is true, so presence does not imply preview URLs are currently live. Absent only when the account owns no workers.dev subdomain.
+     */
+    previewUrlSuffix: string;
+    /**
      * Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.
      */
     previewsEnabled: boolean;
+    /**
+     * The address the Worker would serve on once its *.workers.dev subdomain is enabled. Present whenever the account owns a workers.dev subdomain, regardless of whether `enabled` is true, so presence does not imply the Worker is currently live at this URL. Absent only when the account owns no workers.dev subdomain.
+     */
+    url: string;
 }
 
 export interface GetWorkersResultTailConsumer {
@@ -25183,18 +25521,30 @@ export interface GetZeroTrustAccessAiControlsMcpPortalServer {
      */
     authConfigSummary: outputs.GetZeroTrustAccessAiControlsMcpPortalServerAuthConfigSummary;
     /**
+     * Authentication method used to connect to the upstream MCP server.
      * Available values: "oauth", "bearer", "unauthenticated".
      */
     authType: string;
+    /**
+     * Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
+     * Available values: "notRequired", "required", "connected", "stale", "manual".
+     */
+    authenticationStatus: string;
     createdAt: string;
     createdBy: string;
     defaultDisabled: boolean;
+    /**
+     * Optional description of the MCP server.
+     */
     description: string;
     error: string;
     errorDetails: outputs.GetZeroTrustAccessAiControlsMcpPortalServerErrorDetails;
+    /**
+     * URL of the upstream MCP endpoint.
+     */
     hostname: string;
     /**
-     * server id
+     * Unique identifier for the MCP server.
      */
     id: string;
     /**
@@ -25205,15 +25555,18 @@ export interface GetZeroTrustAccessAiControlsMcpPortalServer {
     lastSynced: string;
     modifiedAt: string;
     modifiedBy: string;
+    /**
+     * Display name for the MCP server.
+     */
     name: string;
     onBehalf: boolean;
     prompts: {[key: string]: string}[];
     /**
-     * Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+     * Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
      */
     secureWebGateway: boolean;
     /**
-     * server id
+     * Unique identifier for the MCP server.
      */
     serverId: string;
     /**
@@ -25295,22 +25648,38 @@ export interface GetZeroTrustAccessAiControlsMcpPortalServerUpdatedTool {
 
 export interface GetZeroTrustAccessAiControlsMcpPortalsResult {
     /**
-     * Allow remote code execution in Dynamic Workers (beta)
+     * Deprecated: use `codeMode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
+     *
+     * @deprecated This attribute is deprecated.
      */
     allowCodeMode: boolean;
+    /**
+     * Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `optIn`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `defaultOn`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `optIn` when omitted on create. If both `codeMode` and `allowCodeMode` are sent, they must be consistent or the request returns a 400.
+     * Available values: "off", "opt*in", "default*on", "enforced".
+     */
+    codeMode: string;
     createdAt: string;
     createdBy: string;
+    /**
+     * Optional description of the MCP portal.
+     */
     description: string;
+    /**
+     * Hostname where the MCP portal is available.
+     */
     hostname: string;
     /**
-     * portal id
+     * Unique identifier for the MCP portal.
      */
     id: string;
     modifiedAt: string;
     modifiedBy: string;
+    /**
+     * Display name for the MCP portal.
+     */
     name: string;
     /**
-     * Route outbound MCP traffic through Zero Trust Secure Web Gateway
+     * Route outbound MCP traffic through Zero Trust Secure Web Gateway.
      */
     secureWebGateway: boolean;
     servers: outputs.GetZeroTrustAccessAiControlsMcpPortalsResultServer[];
@@ -25322,18 +25691,30 @@ export interface GetZeroTrustAccessAiControlsMcpPortalsResultServer {
      */
     authConfigSummary: outputs.GetZeroTrustAccessAiControlsMcpPortalsResultServerAuthConfigSummary;
     /**
+     * Authentication method used to connect to the upstream MCP server.
      * Available values: "oauth", "bearer", "unauthenticated".
      */
     authType: string;
+    /**
+     * Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
+     * Available values: "notRequired", "required", "connected", "stale", "manual".
+     */
+    authenticationStatus: string;
     createdAt: string;
     createdBy: string;
     defaultDisabled: boolean;
+    /**
+     * Optional description of the MCP server.
+     */
     description: string;
     error: string;
     errorDetails: outputs.GetZeroTrustAccessAiControlsMcpPortalsResultServerErrorDetails;
+    /**
+     * URL of the upstream MCP endpoint.
+     */
     hostname: string;
     /**
-     * server id
+     * Unique identifier for the MCP server.
      */
     id: string;
     /**
@@ -25344,15 +25725,18 @@ export interface GetZeroTrustAccessAiControlsMcpPortalsResultServer {
     lastSynced: string;
     modifiedAt: string;
     modifiedBy: string;
+    /**
+     * Display name for the MCP server.
+     */
     name: string;
     onBehalf: boolean;
     prompts: {[key: string]: string}[];
     /**
-     * Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+     * Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
      */
     secureWebGateway: boolean;
     /**
-     * server id
+     * Unique identifier for the MCP server.
      */
     serverId: string;
     /**
@@ -25489,16 +25873,40 @@ export interface GetZeroTrustAccessAiControlsMcpServerFilter {
 }
 
 export interface GetZeroTrustAccessAiControlsMcpServerUpdatedPrompt {
+    /**
+     * Custom name exposed for the capability.
+     */
     alias: string;
+    /**
+     * Custom description exposed for the capability.
+     */
     description: string;
+    /**
+     * Whether the capability is available through the MCP server.
+     */
     enabled: boolean;
+    /**
+     * Name of the tool or prompt capability to override.
+     */
     name: string;
 }
 
 export interface GetZeroTrustAccessAiControlsMcpServerUpdatedTool {
+    /**
+     * Custom name exposed for the capability.
+     */
     alias: string;
+    /**
+     * Custom description exposed for the capability.
+     */
     description: string;
+    /**
+     * Whether the capability is available through the MCP server.
+     */
     enabled: boolean;
+    /**
+     * Name of the tool or prompt capability to override.
+     */
     name: string;
 }
 
@@ -25508,17 +25916,29 @@ export interface GetZeroTrustAccessAiControlsMcpServersResult {
      */
     authConfigSummary: outputs.GetZeroTrustAccessAiControlsMcpServersResultAuthConfigSummary;
     /**
+     * Authentication method used to connect to the upstream MCP server.
      * Available values: "oauth", "bearer", "unauthenticated".
      */
     authType: string;
+    /**
+     * Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
+     * Available values: "notRequired", "required", "connected", "stale", "manual".
+     */
+    authenticationStatus: string;
     createdAt: string;
     createdBy: string;
+    /**
+     * Optional description of the MCP server.
+     */
     description: string;
     error: string;
     errorDetails: outputs.GetZeroTrustAccessAiControlsMcpServersResultErrorDetails;
+    /**
+     * URL of the upstream MCP endpoint.
+     */
     hostname: string;
     /**
-     * server id
+     * Unique identifier for the MCP server.
      */
     id: string;
     /**
@@ -25529,10 +25949,13 @@ export interface GetZeroTrustAccessAiControlsMcpServersResult {
     lastSynced: string;
     modifiedAt: string;
     modifiedBy: string;
+    /**
+     * Display name for the MCP server.
+     */
     name: string;
     prompts: {[key: string]: string}[];
     /**
-     * Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+     * Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
      */
     secureWebGateway: boolean;
     /**
@@ -25541,7 +25964,13 @@ export interface GetZeroTrustAccessAiControlsMcpServersResult {
      */
     status: string;
     tools: {[key: string]: string}[];
+    /**
+     * Server-wide prompt capability overrides.
+     */
     updatedPrompts: outputs.GetZeroTrustAccessAiControlsMcpServersResultUpdatedPrompt[];
+    /**
+     * Server-wide tool capability overrides.
+     */
     updatedTools: outputs.GetZeroTrustAccessAiControlsMcpServersResultUpdatedTool[];
 }
 
@@ -25595,16 +26024,40 @@ export interface GetZeroTrustAccessAiControlsMcpServersResultErrorDetails {
 }
 
 export interface GetZeroTrustAccessAiControlsMcpServersResultUpdatedPrompt {
+    /**
+     * Custom name exposed for the capability.
+     */
     alias: string;
+    /**
+     * Custom description exposed for the capability.
+     */
     description: string;
+    /**
+     * Whether the capability is available through the MCP server.
+     */
     enabled: boolean;
+    /**
+     * Name of the tool or prompt capability to override.
+     */
     name: string;
 }
 
 export interface GetZeroTrustAccessAiControlsMcpServersResultUpdatedTool {
+    /**
+     * Custom name exposed for the capability.
+     */
     alias: string;
+    /**
+     * Custom description exposed for the capability.
+     */
     description: string;
+    /**
+     * Whether the capability is available through the MCP server.
+     */
     enabled: boolean;
+    /**
+     * Name of the tool or prompt capability to override.
+     */
     name: string;
 }
 
@@ -25666,7 +26119,7 @@ export interface GetZeroTrustAccessApplicationDestination {
      */
     portRange: string;
     /**
-     * Available values: "public", "private".
+     * Available values: "public", "private", "via*mcp*server*portal", "worker", "preview*worker", "all*workers", "all*preview_workers".
      */
     type: string;
     /**
@@ -25677,6 +26130,10 @@ export interface GetZeroTrustAccessApplicationDestination {
      * The VNET ID to match the destination. When omitted, all VNETs will match.
      */
     vnetId: string;
+    /**
+     * The ID of the Cloudflare Worker to protect with Access. Required when type is `worker` or `previewWorker`.
+     */
+    workerId: string;
 }
 
 export interface GetZeroTrustAccessApplicationFilter {
@@ -27092,7 +27549,7 @@ export interface GetZeroTrustAccessApplicationsResultDestination {
      */
     portRange: string;
     /**
-     * Available values: "public", "private".
+     * Available values: "public", "private", "via*mcp*server*portal", "worker", "preview*worker", "all*workers", "all*preview_workers".
      */
     type: string;
     /**
@@ -27103,6 +27560,10 @@ export interface GetZeroTrustAccessApplicationsResultDestination {
      * The VNET ID to match the destination. When omitted, all VNETs will match.
      */
     vnetId: string;
+    /**
+     * The ID of the Cloudflare Worker to protect with Access. Required when type is `worker` or `previewWorker`.
+     */
+    workerId: string;
 }
 
 export interface GetZeroTrustAccessApplicationsResultFooterLink {
@@ -28283,6 +28744,10 @@ export interface GetZeroTrustAccessApplicationsResultTargetCriteria {
 
 export interface GetZeroTrustAccessCustomPagesResult {
     /**
+     * Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+     */
+    contractVersion: number;
+    /**
      * UUID.
      */
     id: string;
@@ -28292,13 +28757,32 @@ export interface GetZeroTrustAccessCustomPagesResult {
     name: string;
     /**
      * Custom page type.
-     * Available values: "identityDenied", "forbidden".
+     * Available values: "identityDenied", "forbidden", "login", "interstitial".
      */
     type: string;
     /**
      * UUID.
      */
     uid: string;
+    /**
+     * Advisory validation findings returned when creating or updating a template. Omitted when empty.
+     */
+    warnings: outputs.GetZeroTrustAccessCustomPagesResultWarning[];
+}
+
+export interface GetZeroTrustAccessCustomPagesResultWarning {
+    /**
+     * Human-readable description of the finding.
+     */
+    message: string;
+    /**
+     * Optional pointer to the part of the template the finding refers to.
+     */
+    ref: string;
+    /**
+     * The validation tier that produced the finding (e.g. html, liquid).
+     */
+    tier: string;
 }
 
 export interface GetZeroTrustAccessGroupExclude {
@@ -32712,6 +33196,10 @@ export interface GetZeroTrustAccessServiceTokensResult {
      * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      */
     duration: string;
+    /**
+     * Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+     */
+    enabled: boolean;
     expiresAt: string;
     /**
      * The ID of the service token.
@@ -33956,6 +34444,11 @@ export interface GetZeroTrustDlpCustomEntriesResult {
     caseSensitive: boolean;
     confidence: outputs.GetZeroTrustDlpCustomEntriesResultConfidence;
     createdAt: string;
+    /**
+     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * emitted only when true.
+     */
+    deprecated: boolean;
     description: string;
     enabled: boolean;
     id: string;
@@ -34083,6 +34576,11 @@ export interface GetZeroTrustDlpCustomProfileEntry {
     caseSensitive: boolean;
     confidence: outputs.GetZeroTrustDlpCustomProfileEntryConfidence;
     createdAt: string;
+    /**
+     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * emitted only when true.
+     */
+    deprecated: boolean;
     description: string;
     enabled: boolean;
     id: string;
@@ -34152,6 +34650,11 @@ export interface GetZeroTrustDlpCustomProfileSharedEntry {
     caseSensitive: boolean;
     confidence: outputs.GetZeroTrustDlpCustomProfileSharedEntryConfidence;
     createdAt: string;
+    /**
+     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * emitted only when true.
+     */
+    deprecated: boolean;
     description: string;
     enabled: boolean;
     id: string;
@@ -34350,6 +34853,11 @@ export interface GetZeroTrustDlpEntriesResult {
     caseSensitive: boolean;
     confidence: outputs.GetZeroTrustDlpEntriesResultConfidence;
     createdAt: string;
+    /**
+     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * emitted only when true.
+     */
+    deprecated: boolean;
     description: string;
     enabled: boolean;
     id: string;
@@ -34459,6 +34967,11 @@ export interface GetZeroTrustDlpIntegrationEntriesResult {
     caseSensitive: boolean;
     confidence: outputs.GetZeroTrustDlpIntegrationEntriesResultConfidence;
     createdAt: string;
+    /**
+     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * emitted only when true.
+     */
+    deprecated: boolean;
     description: string;
     enabled: boolean;
     id: string;
@@ -34568,6 +35081,11 @@ export interface GetZeroTrustDlpPredefinedEntriesResult {
     caseSensitive: boolean;
     confidence: outputs.GetZeroTrustDlpPredefinedEntriesResultConfidence;
     createdAt: string;
+    /**
+     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * emitted only when true.
+     */
+    deprecated: boolean;
     description: string;
     enabled: boolean;
     id: string;
@@ -34677,6 +35195,11 @@ export interface GetZeroTrustDlpPredefinedProfileEntry {
     caseSensitive: boolean;
     confidence: outputs.GetZeroTrustDlpPredefinedProfileEntryConfidence;
     createdAt: string;
+    /**
+     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * emitted only when true.
+     */
+    deprecated: boolean;
     description: string;
     enabled: boolean;
     id: string;
@@ -36546,7 +37069,7 @@ export interface GetZeroTrustOrganizationLoginDesign {
 
 export interface GetZeroTrustOrganizationMfaConfig {
     /**
-     * Lists the MFA methods that users can authenticate with.
+     * Lists the MFA methods that users can authenticate with. The `pivKey` and `sshFido2Key` values are supported only for infrastructure applications.
      */
     allowedAuthenticators: string[];
     /**
@@ -36610,6 +37133,10 @@ export interface GetZeroTrustResourceLibraryApplicationsResult {
      */
     applicationTypeDescription: string;
     /**
+     * Returns the category ID.
+     */
+    categoryId: number;
+    /**
      * Returns the application creation time.
      */
     createdAt: string;
@@ -36618,7 +37145,7 @@ export interface GetZeroTrustResourceLibraryApplicationsResult {
      */
     genAiScore: number;
     /**
-     * Returns the list of hostnames for the application.
+     * Hostnames matched by the application.
      */
     hostnames: string[];
     /**
@@ -36628,13 +37155,9 @@ export interface GetZeroTrustResourceLibraryApplicationsResult {
     /**
      * Returns the application ID.
      */
-    id: string;
+    id: number;
     /**
-     * Returns the Intel API ID for the application.
-     */
-    intelId: number;
-    /**
-     * Returns the list of IP subnets for the application.
+     * IP subnets matched by the application.
      */
     ipSubnets: string[];
     /**
@@ -36642,11 +37165,11 @@ export interface GetZeroTrustResourceLibraryApplicationsResult {
      */
     name: string;
     /**
-     * Returns the list of port protocols for the application.
+     * Port and protocol pairs matched by the application.
      */
     portProtocols: string[];
     /**
-     * Returns the list of support domains for the application.
+     * Support domains matched by the application.
      */
     supportDomains: string[];
     /**
@@ -36675,7 +37198,7 @@ export interface GetZeroTrustResourceLibraryCategoriesResult {
     /**
      * Returns the category ID.
      */
-    id: string;
+    id: number;
     /**
      * Returns the category name.
      */
@@ -36927,10 +37450,6 @@ export interface GetZeroTrustTunnelCloudflaredConnection {
      */
     id: string;
     /**
-     * Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
-     */
-    isPendingReconnect: boolean;
-    /**
      * Timestamp of when the connection was established.
      */
     openedAt: string;
@@ -37181,10 +37700,6 @@ export interface GetZeroTrustTunnelCloudflaredsResultConnection {
      */
     id: string;
     /**
-     * Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
-     */
-    isPendingReconnect: boolean;
-    /**
      * Timestamp of when the connection was established.
      */
     openedAt: string;
@@ -37244,10 +37759,6 @@ export interface GetZeroTrustTunnelWarpConnectorConnection {
      * UUID of the Cloudflare Tunnel connection.
      */
     id: string;
-    /**
-     * Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
-     */
-    isPendingReconnect: boolean;
     /**
      * Timestamp of when the connection was established.
      */
@@ -37358,10 +37869,6 @@ export interface GetZeroTrustTunnelWarpConnectorsResultConnection {
      * UUID of the Cloudflare Tunnel connection.
      */
     id: string;
-    /**
-     * Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
-     */
-    isPendingReconnect: boolean;
     /**
      * Timestamp of when the connection was established.
      */
@@ -38157,39 +38664,6 @@ export interface ImageVariantOptions {
     width: number;
 }
 
-export interface ImageVariantVariant {
-    id: string;
-    /**
-     * Indicates whether the variant can access an image without a signature, regardless of image access control.
-     */
-    neverRequireSignedUrls: boolean;
-    /**
-     * Allows you to define image resizing sizes for different use cases.
-     */
-    options: outputs.ImageVariantVariantOptions;
-}
-
-export interface ImageVariantVariantOptions {
-    /**
-     * The fit property describes how the width and height dimensions should be interpreted.
-     * Available values: "scale-down", "contain", "cover", "crop", "pad".
-     */
-    fit: string;
-    /**
-     * Maximum height in image pixels.
-     */
-    height: number;
-    /**
-     * What EXIF data should be preserved in the output image.
-     * Available values: "keep", "copyright", "none".
-     */
-    metadata: string;
-    /**
-     * Maximum width in image pixels.
-     */
-    width: number;
-}
-
 export interface KeylessCertificateTunnel {
     /**
      * Private IP of the Key Server Host.
@@ -38226,7 +38700,7 @@ export interface ListItem {
 
 export interface ListItemHostname {
     /**
-     * Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+     * Only applies to wildcard hostnames (e.g., *.example.com). When true (default), the rule blocks only subdomains. When false, the rule blocks both the root domain and subdomains.
      */
     excludeExactHostname?: boolean;
     urlHostname: string;
@@ -39125,7 +39599,9 @@ export interface MoqRelayConfigUpstreams {
 
 export interface MoqRelayConfigUpstreamsUpstream {
     /**
-     * Upstream MOQT server publisher URL.
+     * Upstream MOQT server publisher URL. Must be an absolute URL with a
+     * host and a scheme the relay can dial: moqt:// (raw QUIC) or https://
+     * (WebTransport). Validated on update (PUT); rejected with 21013.
      */
     url?: string;
 }
@@ -39533,10 +40009,6 @@ export interface ObservatoryScheduledTestTestRegion {
 
 export interface OrganizationMeta {
     /**
-     * Enable features for Organizations.
-     */
-    flags: outputs.OrganizationMetaFlags;
-    /**
      * Ordered chain of organization tags from the root organization down to
      * (and including) this organization itself. Root organizations return a
      * single-element array containing their own tag; sub-organizations return
@@ -39546,13 +40018,19 @@ export interface OrganizationMeta {
      */
     hierarchyTags: string[];
     managedBy: string;
+    /**
+     * Enable features for Organizations.
+     */
+    tenantFlags: outputs.OrganizationMetaTenantFlags;
 }
 
-export interface OrganizationMetaFlags {
+export interface OrganizationMetaTenantFlags {
     accountCreation: string;
     accountDeletion: string;
     accountMigration: string;
     accountMobility: string;
+    enterpriseCapability: string;
+    memberManagement: string;
     subOrgCreation: string;
 }
 
@@ -40942,6 +41420,31 @@ export interface PipelineTable {
     version: number;
 }
 
+export interface PrecursorEnforcementRule {
+    /**
+     * An informative description of the rule.
+     */
+    description: string;
+    /**
+     * Whether the rule is active.
+     */
+    enabled: boolean;
+    /**
+     * The filter expression that determines which requests the rule matches.
+     */
+    expression: string;
+    /**
+     * The read-only identifier that Cloudflare assigns to the rule.
+     */
+    id: string;
+    /**
+     * The override mode Precursor applies to requests matching an enforcement
+     * rule. Unlike `defaultMode`, this cannot be `off`.
+     * Available values: "min-friction", "max-security".
+     */
+    mode: string;
+}
+
 export interface QueueConsumer {
     /**
      * A Resource identifier.
@@ -41209,7 +41712,7 @@ export interface R2BucketSippySource {
      */
     accessKeyId?: string;
     /**
-     * Access key for the Azure Storage account. Mutually exclusive with `sasToken`.
+     * Access key for the Azure Storage account. Mutually exclusive with sasToken.
      */
     accountKey?: string;
     /**
@@ -41245,7 +41748,7 @@ export interface R2BucketSippySource {
      */
     region?: string;
     /**
-     * Shared Access Signature token for the Azure Storage account. Mutually exclusive with `accountKey`.
+     * Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
      */
     sasToken?: string;
     /**
@@ -44138,10 +44641,6 @@ export interface TunnelConnection {
      */
     id: string;
     /**
-     * Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
-     */
-    isPendingReconnect: boolean;
-    /**
      * Timestamp of when the connection was established.
      */
     openedAt: string;
@@ -45066,9 +45565,17 @@ export interface WorkerSubdomain {
      */
     enabled: boolean;
     /**
+     * Prepend a version or preview prefix to this host suffix to form the *.workers.dev [preview URL](https://developers.cloudflare.com/workers/configuration/previews/) the Worker would serve on once previews are enabled, e.g. `https://<prefix>-my-worker.my-subdomain.workers.dev`. Present whenever the account owns a workers.dev subdomain, regardless of whether `previewsEnabled` is true, so presence does not imply preview URLs are currently live. Absent only when the account owns no workers.dev subdomain.
+     */
+    previewUrlSuffix: string;
+    /**
      * Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.
      */
     previewsEnabled: boolean;
+    /**
+     * The address the Worker would serve on once its *.workers.dev subdomain is enabled. Present whenever the account owns a workers.dev subdomain, regardless of whether `enabled` is true, so presence does not imply the Worker is currently live at this URL. Absent only when the account owns no workers.dev subdomain.
+     */
+    url: string;
 }
 
 export interface WorkerTailConsumer {
@@ -45286,7 +45793,7 @@ export interface WorkerVersionBinding {
     tunnelId?: string;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "ai*search", "ai*search*namespace", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+     * Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
      */
     type: string;
     /**
@@ -46202,27 +46709,63 @@ export interface WorkflowSchedule {
 }
 
 export interface ZeroTrustAccessAiControlsMcpPortalServer {
+    /**
+     * Disable this server by default for clients connecting through the portal.
+     */
     defaultDisabled: boolean;
+    /**
+     * Use end-user OAuth credentials when connecting this server to the portal.
+     */
     onBehalf: boolean;
     /**
-     * server id
+     * Unique identifier for the MCP server.
      */
     serverId: string;
+    /**
+     * Portal-specific prompt overrides.
+     */
     updatedPrompts?: outputs.ZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt[];
+    /**
+     * Portal-specific tool overrides.
+     */
     updatedTools?: outputs.ZeroTrustAccessAiControlsMcpPortalServerUpdatedTool[];
 }
 
 export interface ZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt {
+    /**
+     * Custom name exposed for the capability.
+     */
     alias?: string;
+    /**
+     * Custom description exposed for the capability.
+     */
     description?: string;
+    /**
+     * Whether the capability is available through the MCP server.
+     */
     enabled?: boolean;
+    /**
+     * Name of the tool or prompt capability to override.
+     */
     name: string;
 }
 
 export interface ZeroTrustAccessAiControlsMcpPortalServerUpdatedTool {
+    /**
+     * Custom name exposed for the capability.
+     */
     alias?: string;
+    /**
+     * Custom description exposed for the capability.
+     */
     description?: string;
+    /**
+     * Whether the capability is available through the MCP server.
+     */
     enabled?: boolean;
+    /**
+     * Name of the tool or prompt capability to override.
+     */
     name: string;
 }
 
@@ -46276,16 +46819,40 @@ export interface ZeroTrustAccessAiControlsMcpServerErrorDetails {
 }
 
 export interface ZeroTrustAccessAiControlsMcpServerUpdatedPrompt {
+    /**
+     * Custom name exposed for the capability.
+     */
     alias?: string;
+    /**
+     * Custom description exposed for the capability.
+     */
     description?: string;
+    /**
+     * Whether the capability is available through the MCP server.
+     */
     enabled?: boolean;
+    /**
+     * Name of the tool or prompt capability to override.
+     */
     name: string;
 }
 
 export interface ZeroTrustAccessAiControlsMcpServerUpdatedTool {
+    /**
+     * Custom name exposed for the capability.
+     */
     alias?: string;
+    /**
+     * Custom description exposed for the capability.
+     */
     description?: string;
+    /**
+     * Whether the capability is available through the MCP server.
+     */
     enabled?: boolean;
+    /**
+     * Name of the tool or prompt capability to override.
+     */
     name: string;
 }
 
@@ -46347,7 +46914,7 @@ export interface ZeroTrustAccessApplicationDestination {
      */
     portRange?: string;
     /**
-     * Available values: "public", "private".
+     * Available values: "public", "private", "via*mcp*server*portal", "worker", "preview*worker", "all*workers", "all*preview_workers".
      */
     type: string;
     /**
@@ -46358,6 +46925,10 @@ export interface ZeroTrustAccessApplicationDestination {
      * The VNET ID to match the destination. When omitted, all VNETs will match.
      */
     vnetId?: string;
+    /**
+     * The ID of the Cloudflare Worker to protect with Access. Required when type is `worker` or `previewWorker`.
+     */
+    workerId?: string;
 }
 
 export interface ZeroTrustAccessApplicationFooterLink {
@@ -47553,6 +48124,21 @@ export interface ZeroTrustAccessApplicationTargetCriteria {
      * Contains a map of target attribute keys to target attribute values.
      */
     targetAttributes: {[key: string]: string[]};
+}
+
+export interface ZeroTrustAccessCustomPageWarning {
+    /**
+     * Human-readable description of the finding.
+     */
+    message: string;
+    /**
+     * Optional pointer to the part of the template the finding refers to.
+     */
+    ref: string;
+    /**
+     * The validation tier that produced the finding (e.g. html, liquid).
+     */
+    tier: string;
 }
 
 export interface ZeroTrustAccessGroupExclude {
@@ -51140,7 +51726,7 @@ export interface ZeroTrustOrganizationLoginDesign {
 
 export interface ZeroTrustOrganizationMfaConfig {
     /**
-     * Lists the MFA methods that users can authenticate with. `sshPivKey` is only relevant for infrastructure applications.
+     * Lists the MFA methods that users can authenticate with. The `pivKey` and `sshFido2Key` values are supported only for infrastructure applications.
      */
     allowedAuthenticators?: string[];
     /**
@@ -51388,10 +51974,6 @@ export interface ZeroTrustTunnelCloudflaredConnection {
      */
     id: string;
     /**
-     * Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
-     */
-    isPendingReconnect: boolean;
-    /**
      * Timestamp of when the connection was established.
      */
     openedAt: string;
@@ -51451,10 +52033,6 @@ export interface ZeroTrustTunnelWarpConnectorConnection {
      * UUID of the Cloudflare Tunnel connection.
      */
     id: string;
-    /**
-     * Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
-     */
-    isPendingReconnect: boolean;
     /**
      * Timestamp of when the connection was established.
      */

@@ -84,6 +84,7 @@ namespace Pulumi.Cloudflare
     ///         SessionDuration = "24h",
     ///         UiReadOnlyToggleReason = "Temporarily turn off the UI read only lock to make a change via the UI",
     ///         UserSeatExpirationInactiveTime = "730h",
+    ///         WarpAuthNonBrowser401 = false,
     ///         WarpAuthSessionDuration = "24h",
     ///     });
     /// 
@@ -159,7 +160,7 @@ namespace Pulumi.Cloudflare
         public Output<bool> MfaConfigurationAllowed { get; private set; } = null!;
 
         /// <summary>
-        /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+        /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
         /// </summary>
         [Output("mfaRequiredForAllApps")]
         public Output<bool> MfaRequiredForAllApps { get; private set; } = null!;
@@ -193,6 +194,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("userSeatExpirationInactiveTime")]
         public Output<string?> UserSeatExpirationInactiveTime { get; private set; } = null!;
+
+        /// <summary>
+        /// When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
+        /// </summary>
+        [Output("warpAuthNonBrowser401")]
+        public Output<bool> WarpAuthNonBrowser401 { get; private set; } = null!;
 
         /// <summary>
         /// The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
@@ -323,7 +330,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? MfaConfigurationAllowed { get; set; }
 
         /// <summary>
-        /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+        /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
         /// </summary>
         [Input("mfaRequiredForAllApps")]
         public Input<bool>? MfaRequiredForAllApps { get; set; }
@@ -357,6 +364,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("userSeatExpirationInactiveTime")]
         public Input<string>? UserSeatExpirationInactiveTime { get; set; }
+
+        /// <summary>
+        /// When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
+        /// </summary>
+        [Input("warpAuthNonBrowser401")]
+        public Input<bool>? WarpAuthNonBrowser401 { get; set; }
 
         /// <summary>
         /// The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
@@ -445,7 +458,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? MfaConfigurationAllowed { get; set; }
 
         /// <summary>
-        /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+        /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
         /// </summary>
         [Input("mfaRequiredForAllApps")]
         public Input<bool>? MfaRequiredForAllApps { get; set; }
@@ -479,6 +492,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("userSeatExpirationInactiveTime")]
         public Input<string>? UserSeatExpirationInactiveTime { get; set; }
+
+        /// <summary>
+        /// When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
+        /// </summary>
+        [Input("warpAuthNonBrowser401")]
+        public Input<bool>? WarpAuthNonBrowser401 { get; set; }
 
         /// <summary>
         /// The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.

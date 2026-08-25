@@ -67,6 +67,30 @@ import (
 //						ClassName: pulumi.String("MyDurableObject"),
 //					},
 //				},
+//				Exports: cloudflare.WorkerVersionExportsMap{
+//					"Admin": &cloudflare.WorkerVersionExportsArgs{
+//						Type: pulumi.String("worker"),
+//						Cache: &cloudflare.WorkerVersionExportsCacheArgs{
+//							Enabled: pulumi.Bool(true),
+//						},
+//						RenamedTo:     pulumi.String("renamed_to"),
+//						State:         pulumi.String("created"),
+//						Storage:       pulumi.String("sqlite"),
+//						TransferFrom:  pulumi.String("transfer_from"),
+//						TransferredTo: pulumi.String("transferred_to"),
+//					},
+//					"default": &cloudflare.WorkerVersionExportsArgs{
+//						Type: pulumi.String("worker"),
+//						Cache: &cloudflare.WorkerVersionExportsCacheArgs{
+//							Enabled: pulumi.Bool(false),
+//						},
+//						RenamedTo:     pulumi.String("renamed_to"),
+//						State:         pulumi.String("created"),
+//						Storage:       pulumi.String("sqlite"),
+//						TransferFrom:  pulumi.String("transfer_from"),
+//						TransferredTo: pulumi.String("transferred_to"),
+//					},
+//				},
 //				Limits: &cloudflare.WorkerVersionLimitsArgs{
 //					CpuMs:       pulumi.Int(50),
 //					Subrequests: pulumi.Int(1000),

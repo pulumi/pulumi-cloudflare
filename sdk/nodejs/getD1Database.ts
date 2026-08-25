@@ -88,7 +88,7 @@ export interface GetD1DatabaseResult {
     readonly id: string;
     /**
      * Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-     * Available values: "eu", "fedramp".
+     * Available values: "eu", "fedramp", "us".
      */
     readonly jurisdiction: string;
     /**

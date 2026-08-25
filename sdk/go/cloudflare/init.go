@@ -127,6 +127,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ContentScanning{}
 	case "cloudflare:index/contentScanningExpression:ContentScanningExpression":
 		r = &ContentScanningExpression{}
+	case "cloudflare:index/ctAlerting:CtAlerting":
+		r = &CtAlerting{}
 	case "cloudflare:index/customCsr:CustomCsr":
 		r = &CustomCsr{}
 	case "cloudflare:index/customHostname:CustomHostname":
@@ -291,6 +293,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PipelineSink{}
 	case "cloudflare:index/pipelineStream:PipelineStream":
 		r = &PipelineStream{}
+	case "cloudflare:index/precursor:Precursor":
+		r = &Precursor{}
 	case "cloudflare:index/queue:Queue":
 		r = &Queue{}
 	case "cloudflare:index/queueConsumer:QueueConsumer":
@@ -903,6 +907,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/ctAlerting",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/customCsr",
 		&module{version},
 	)
@@ -1309,6 +1318,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/pipelineStream",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/precursor",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -13,21 +13,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt {
+    /**
+     * @return Custom name exposed for the capability.
+     * 
+     */
     private @Nullable String alias;
+    /**
+     * @return Custom description exposed for the capability.
+     * 
+     */
     private @Nullable String description;
+    /**
+     * @return Whether the capability is available through the MCP server.
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return Name of the tool or prompt capability to override.
+     * 
+     */
     private String name;
 
     private ZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt() {}
+    /**
+     * @return Custom name exposed for the capability.
+     * 
+     */
     public Optional<String> alias() {
         return Optional.ofNullable(this.alias);
     }
+    /**
+     * @return Custom description exposed for the capability.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return Whether the capability is available through the MCP server.
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return Name of the tool or prompt capability to override.
+     * 
+     */
     public String name() {
         return this.name;
     }

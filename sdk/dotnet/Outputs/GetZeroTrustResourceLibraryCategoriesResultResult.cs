@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Returns the category ID.
         /// </summary>
-        public readonly string Id;
+        public readonly int Id;
         /// <summary>
         /// Returns the category name.
         /// </summary>
@@ -36,7 +36,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string description,
 
-            string id,
+            int id,
 
             string name)
         {

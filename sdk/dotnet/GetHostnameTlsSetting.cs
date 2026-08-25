@@ -12,11 +12,6 @@ namespace Pulumi.Cloudflare
     public static class GetHostnameTlsSetting
     {
         /// <summary>
-        /// Accepted Permissions
-        /// 
-        /// - `SSL and Certificates Read`
-        /// - `SSL and Certificates Write`
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,6 +26,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         SettingId = "ciphers",
+        ///         Hostname = "app.example.com",
         ///     });
         /// 
         /// });
@@ -40,11 +36,6 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostnameTlsSettingResult>("cloudflare:index/getHostnameTlsSetting:getHostnameTlsSetting", args ?? new GetHostnameTlsSettingArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Accepted Permissions
-        /// 
-        /// - `SSL and Certificates Read`
-        /// - `SSL and Certificates Write`
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -59,6 +50,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         SettingId = "ciphers",
+        ///         Hostname = "app.example.com",
         ///     });
         /// 
         /// });
@@ -68,11 +60,6 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetHostnameTlsSettingResult>("cloudflare:index/getHostnameTlsSetting:getHostnameTlsSetting", args ?? new GetHostnameTlsSettingInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Accepted Permissions
-        /// 
-        /// - `SSL and Certificates Read`
-        /// - `SSL and Certificates Write`
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,6 +74,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         SettingId = "ciphers",
+        ///         Hostname = "app.example.com",
         ///     });
         /// 
         /// });
@@ -99,6 +87,12 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetHostnameTlsSettingArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The hostname for which the tls settings are set.
+        /// </summary>
+        [Input("hostname", required: true)]
+        public string Hostname { get; set; } = null!;
+
         /// <summary>
         /// The TLS Setting name.
         /// The value type depends on the setting:
@@ -120,6 +114,12 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetHostnameTlsSettingInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The hostname for which the tls settings are set.
+        /// </summary>
+        [Input("hostname", required: true)]
+        public Input<string> Hostname { get; set; } = null!;
+
         /// <summary>
         /// The TLS Setting name.
         /// The value type depends on the setting:
@@ -155,11 +155,6 @@ namespace Pulumi.Cloudflare
         /// The TLS Setting name.
         /// The value type depends on the setting:
         /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The TLS Setting name.
-        /// The value type depends on the setting:
-        /// </summary>
         public readonly string SettingId;
         /// <summary>
         /// Deployment status for the given tls setting.
@@ -185,8 +180,6 @@ namespace Pulumi.Cloudflare
 
             string hostname,
 
-            string id,
-
             string settingId,
 
             string status,
@@ -199,7 +192,6 @@ namespace Pulumi.Cloudflare
         {
             CreatedAt = createdAt;
             Hostname = hostname;
-            Id = id;
             SettingId = settingId;
             Status = status;
             UpdatedAt = updatedAt;

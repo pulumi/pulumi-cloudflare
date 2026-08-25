@@ -6,8 +6,11 @@ package com.pulumi.cloudflare;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AccessCustomPageArgs extends com.pulumi.resources.ResourceArgs {
@@ -27,6 +30,21 @@ public final class AccessCustomPageArgs extends com.pulumi.resources.ResourceArg
      */
     public Output<String> accountId() {
         return this.accountId;
+    }
+
+    /**
+     * Contract version of the page&#39;s Liquid template. Present (&gt;= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+     * 
+     */
+    @Import(name="contractVersion")
+    private @Nullable Output<Integer> contractVersion;
+
+    /**
+     * @return Contract version of the page&#39;s Liquid template. Present (&gt;= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+     * 
+     */
+    public Optional<Output<Integer>> contractVersion() {
+        return Optional.ofNullable(this.contractVersion);
     }
 
     /**
@@ -61,7 +79,7 @@ public final class AccessCustomPageArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * Custom page type.
-     * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;.
+     * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;, &#34;login&#34;, &#34;interstitial&#34;.
      * 
      */
     @Import(name="type", required=true)
@@ -69,7 +87,7 @@ public final class AccessCustomPageArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Custom page type.
-     * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;.
+     * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;, &#34;login&#34;, &#34;interstitial&#34;.
      * 
      */
     public Output<String> type() {
@@ -80,6 +98,7 @@ public final class AccessCustomPageArgs extends com.pulumi.resources.ResourceArg
 
     private AccessCustomPageArgs(AccessCustomPageArgs $) {
         this.accountId = $.accountId;
+        this.contractVersion = $.contractVersion;
         this.customHtml = $.customHtml;
         this.name = $.name;
         this.type = $.type;
@@ -122,6 +141,27 @@ public final class AccessCustomPageArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param contractVersion Contract version of the page&#39;s Liquid template. Present (&gt;= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contractVersion(@Nullable Output<Integer> contractVersion) {
+            $.contractVersion = contractVersion;
+            return this;
+        }
+
+        /**
+         * @param contractVersion Contract version of the page&#39;s Liquid template. Present (&gt;= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contractVersion(Integer contractVersion) {
+            return contractVersion(Output.of(contractVersion));
         }
 
         /**
@@ -168,7 +208,7 @@ public final class AccessCustomPageArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param type Custom page type.
-         * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;.
+         * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;, &#34;login&#34;, &#34;interstitial&#34;.
          * 
          * @return builder
          * 
@@ -180,7 +220,7 @@ public final class AccessCustomPageArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param type Custom page type.
-         * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;.
+         * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;, &#34;login&#34;, &#34;interstitial&#34;.
          * 
          * @return builder
          * 

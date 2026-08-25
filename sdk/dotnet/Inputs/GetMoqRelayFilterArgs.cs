@@ -36,10 +36,11 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? CreatedBefore { get; set; }
 
         /// <summary>
-        /// Maximum number of relays to return per page.
+        /// Maximum number of relays to return per page. Values above the maximum are
+        /// clamped to it rather than rejected.
         /// </summary>
-        [Input("perPage")]
-        public Input<int>? PerPage { get; set; }
+        [Input("perPage", required: true)]
+        public Input<int> PerPage { get; set; } = null!;
 
         public GetMoqRelayFilterInputArgs()
         {

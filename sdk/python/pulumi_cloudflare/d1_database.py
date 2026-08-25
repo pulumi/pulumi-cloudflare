@@ -32,7 +32,7 @@ class D1DatabaseArgs:
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] name: D1 database name.
         :param pulumi.Input[_builtins.str] jurisdiction: Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-               Available values: "eu", "fedramp".
+               Available values: "eu", "fedramp", "us".
         :param pulumi.Input[_builtins.str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
                Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
         :param pulumi.Input['D1DatabaseReadReplicationArgs'] read_replication: Configuration for D1 read replication.
@@ -75,7 +75,7 @@ class D1DatabaseArgs:
     def jurisdiction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-        Available values: "eu", "fedramp".
+        Available values: "eu", "fedramp", "us".
         """
         return pulumi.get(self, "jurisdiction")
 
@@ -129,7 +129,7 @@ class _D1DatabaseState:
         :param pulumi.Input[_builtins.str] created_at: Specifies the timestamp the resource was created as an ISO8601 string.
         :param pulumi.Input[_builtins.float] file_size: The D1 database's size, in bytes.
         :param pulumi.Input[_builtins.str] jurisdiction: Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-               Available values: "eu", "fedramp".
+               Available values: "eu", "fedramp", "us".
         :param pulumi.Input[_builtins.str] name: D1 database name.
         :param pulumi.Input[_builtins.str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
                Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
@@ -198,7 +198,7 @@ class _D1DatabaseState:
     def jurisdiction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-        Available values: "eu", "fedramp".
+        Available values: "eu", "fedramp", "us".
         """
         return pulumi.get(self, "jurisdiction")
 
@@ -319,7 +319,7 @@ class D1Database(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] jurisdiction: Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-               Available values: "eu", "fedramp".
+               Available values: "eu", "fedramp", "us".
         :param pulumi.Input[_builtins.str] name: D1 database name.
         :param pulumi.Input[_builtins.str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
                Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
@@ -434,7 +434,7 @@ class D1Database(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_at: Specifies the timestamp the resource was created as an ISO8601 string.
         :param pulumi.Input[_builtins.float] file_size: The D1 database's size, in bytes.
         :param pulumi.Input[_builtins.str] jurisdiction: Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-               Available values: "eu", "fedramp".
+               Available values: "eu", "fedramp", "us".
         :param pulumi.Input[_builtins.str] name: D1 database name.
         :param pulumi.Input[_builtins.str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
                Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
@@ -486,7 +486,7 @@ class D1Database(pulumi.CustomResource):
     def jurisdiction(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-        Available values: "eu", "fedramp".
+        Available values: "eu", "fedramp", "us".
         """
         return pulumi.get(self, "jurisdiction")
 

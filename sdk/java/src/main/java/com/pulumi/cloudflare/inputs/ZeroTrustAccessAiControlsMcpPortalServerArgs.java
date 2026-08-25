@@ -20,45 +20,77 @@ public final class ZeroTrustAccessAiControlsMcpPortalServerArgs extends com.pulu
 
     public static final ZeroTrustAccessAiControlsMcpPortalServerArgs Empty = new ZeroTrustAccessAiControlsMcpPortalServerArgs();
 
+    /**
+     * Disable this server by default for clients connecting through the portal.
+     * 
+     */
     @Import(name="defaultDisabled")
     private @Nullable Output<Boolean> defaultDisabled;
 
+    /**
+     * @return Disable this server by default for clients connecting through the portal.
+     * 
+     */
     public Optional<Output<Boolean>> defaultDisabled() {
         return Optional.ofNullable(this.defaultDisabled);
     }
 
+    /**
+     * Use end-user OAuth credentials when connecting this server to the portal.
+     * 
+     */
     @Import(name="onBehalf")
     private @Nullable Output<Boolean> onBehalf;
 
+    /**
+     * @return Use end-user OAuth credentials when connecting this server to the portal.
+     * 
+     */
     public Optional<Output<Boolean>> onBehalf() {
         return Optional.ofNullable(this.onBehalf);
     }
 
     /**
-     * server id
+     * Unique identifier for the MCP server.
      * 
      */
     @Import(name="serverId", required=true)
     private Output<String> serverId;
 
     /**
-     * @return server id
+     * @return Unique identifier for the MCP server.
      * 
      */
     public Output<String> serverId() {
         return this.serverId;
     }
 
+    /**
+     * Portal-specific prompt overrides.
+     * 
+     */
     @Import(name="updatedPrompts")
     private @Nullable Output<List<ZeroTrustAccessAiControlsMcpPortalServerUpdatedPromptArgs>> updatedPrompts;
 
+    /**
+     * @return Portal-specific prompt overrides.
+     * 
+     */
     public Optional<Output<List<ZeroTrustAccessAiControlsMcpPortalServerUpdatedPromptArgs>>> updatedPrompts() {
         return Optional.ofNullable(this.updatedPrompts);
     }
 
+    /**
+     * Portal-specific tool overrides.
+     * 
+     */
     @Import(name="updatedTools")
     private @Nullable Output<List<ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs>> updatedTools;
 
+    /**
+     * @return Portal-specific tool overrides.
+     * 
+     */
     public Optional<Output<List<ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs>>> updatedTools() {
         return Optional.ofNullable(this.updatedTools);
     }
@@ -91,26 +123,50 @@ public final class ZeroTrustAccessAiControlsMcpPortalServerArgs extends com.pulu
             $ = new ZeroTrustAccessAiControlsMcpPortalServerArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param defaultDisabled Disable this server by default for clients connecting through the portal.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultDisabled(@Nullable Output<Boolean> defaultDisabled) {
             $.defaultDisabled = defaultDisabled;
             return this;
         }
 
+        /**
+         * @param defaultDisabled Disable this server by default for clients connecting through the portal.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultDisabled(Boolean defaultDisabled) {
             return defaultDisabled(Output.of(defaultDisabled));
         }
 
+        /**
+         * @param onBehalf Use end-user OAuth credentials when connecting this server to the portal.
+         * 
+         * @return builder
+         * 
+         */
         public Builder onBehalf(@Nullable Output<Boolean> onBehalf) {
             $.onBehalf = onBehalf;
             return this;
         }
 
+        /**
+         * @param onBehalf Use end-user OAuth credentials when connecting this server to the portal.
+         * 
+         * @return builder
+         * 
+         */
         public Builder onBehalf(Boolean onBehalf) {
             return onBehalf(Output.of(onBehalf));
         }
 
         /**
-         * @param serverId server id
+         * @param serverId Unique identifier for the MCP server.
          * 
          * @return builder
          * 
@@ -121,7 +177,7 @@ public final class ZeroTrustAccessAiControlsMcpPortalServerArgs extends com.pulu
         }
 
         /**
-         * @param serverId server id
+         * @param serverId Unique identifier for the MCP server.
          * 
          * @return builder
          * 
@@ -130,28 +186,64 @@ public final class ZeroTrustAccessAiControlsMcpPortalServerArgs extends com.pulu
             return serverId(Output.of(serverId));
         }
 
+        /**
+         * @param updatedPrompts Portal-specific prompt overrides.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedPrompts(@Nullable Output<List<ZeroTrustAccessAiControlsMcpPortalServerUpdatedPromptArgs>> updatedPrompts) {
             $.updatedPrompts = updatedPrompts;
             return this;
         }
 
+        /**
+         * @param updatedPrompts Portal-specific prompt overrides.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedPrompts(List<ZeroTrustAccessAiControlsMcpPortalServerUpdatedPromptArgs> updatedPrompts) {
             return updatedPrompts(Output.of(updatedPrompts));
         }
 
+        /**
+         * @param updatedPrompts Portal-specific prompt overrides.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedPrompts(ZeroTrustAccessAiControlsMcpPortalServerUpdatedPromptArgs... updatedPrompts) {
             return updatedPrompts(List.of(updatedPrompts));
         }
 
+        /**
+         * @param updatedTools Portal-specific tool overrides.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedTools(@Nullable Output<List<ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs>> updatedTools) {
             $.updatedTools = updatedTools;
             return this;
         }
 
+        /**
+         * @param updatedTools Portal-specific tool overrides.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedTools(List<ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs> updatedTools) {
             return updatedTools(Output.of(updatedTools));
         }
 
+        /**
+         * @param updatedTools Portal-specific tool overrides.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedTools(ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs... updatedTools) {
             return updatedTools(List.of(updatedTools));
         }

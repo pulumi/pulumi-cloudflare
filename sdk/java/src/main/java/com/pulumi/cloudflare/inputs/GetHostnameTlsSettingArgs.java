@@ -17,6 +17,21 @@ public final class GetHostnameTlsSettingArgs extends com.pulumi.resources.Invoke
     public static final GetHostnameTlsSettingArgs Empty = new GetHostnameTlsSettingArgs();
 
     /**
+     * The hostname for which the tls settings are set.
+     * 
+     */
+    @Import(name="hostname", required=true)
+    private Output<String> hostname;
+
+    /**
+     * @return The hostname for which the tls settings are set.
+     * 
+     */
+    public Output<String> hostname() {
+        return this.hostname;
+    }
+
+    /**
      * The TLS Setting name.
      * The value type depends on the setting:
      * 
@@ -51,6 +66,7 @@ public final class GetHostnameTlsSettingArgs extends com.pulumi.resources.Invoke
     private GetHostnameTlsSettingArgs() {}
 
     private GetHostnameTlsSettingArgs(GetHostnameTlsSettingArgs $) {
+        this.hostname = $.hostname;
         this.settingId = $.settingId;
         this.zoneId = $.zoneId;
     }
@@ -71,6 +87,27 @@ public final class GetHostnameTlsSettingArgs extends com.pulumi.resources.Invoke
 
         public Builder(GetHostnameTlsSettingArgs defaults) {
             $ = new GetHostnameTlsSettingArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param hostname The hostname for which the tls settings are set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostname(Output<String> hostname) {
+            $.hostname = hostname;
+            return this;
+        }
+
+        /**
+         * @param hostname The hostname for which the tls settings are set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostname(String hostname) {
+            return hostname(Output.of(hostname));
         }
 
         /**
@@ -118,6 +155,9 @@ public final class GetHostnameTlsSettingArgs extends com.pulumi.resources.Invoke
         }
 
         public GetHostnameTlsSettingArgs build() {
+            if ($.hostname == null) {
+                throw new MissingRequiredPropertyException("GetHostnameTlsSettingArgs", "hostname");
+            }
             if ($.settingId == null) {
                 throw new MissingRequiredPropertyException("GetHostnameTlsSettingArgs", "settingId");
             }

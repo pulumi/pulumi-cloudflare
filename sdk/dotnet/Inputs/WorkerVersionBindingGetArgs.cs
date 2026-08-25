@@ -286,7 +286,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The kind of resource that the binding provides.
-        /// Available values: "ai", "ai*search", "ai*search*namespace", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+        /// Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

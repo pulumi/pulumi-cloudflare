@@ -30,6 +30,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleAccountSubscription = Cloudflare.GetAccountSubscription.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
+        ///         ZoneId = "zone_id",
         ///     });
         /// 
         /// });
@@ -57,6 +58,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleAccountSubscription = Cloudflare.GetAccountSubscription.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
+        ///         ZoneId = "zone_id",
         ///     });
         /// 
         /// });
@@ -84,6 +86,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleAccountSubscription = Cloudflare.GetAccountSubscription.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
+        ///         ZoneId = "zone_id",
         ///     });
         /// 
         /// });

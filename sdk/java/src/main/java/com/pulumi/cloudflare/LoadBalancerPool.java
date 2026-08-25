@@ -194,6 +194,20 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
         return this.enabled;
     }
     /**
+     * A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [&#34;regional&#34;, &#34;global&#34;]; any other combination is rejected. Null (the default) behaves like [&#34;local&#34;, &#34;global&#34;]. [&#34;regional&#34;, &#34;global&#34;] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+     * 
+     */
+    @Export(name="healthSources", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> healthSources;
+
+    /**
+     * @return A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [&#34;regional&#34;, &#34;global&#34;]; any other combination is rejected. Null (the default) behaves like [&#34;local&#34;, &#34;global&#34;]. [&#34;regional&#34;, &#34;global&#34;] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.
+     * 
+     */
+    public Output<Optional<List<String>>> healthSources() {
+        return Codegen.optional(this.healthSources);
+    }
+    /**
      * The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
      * 
      */

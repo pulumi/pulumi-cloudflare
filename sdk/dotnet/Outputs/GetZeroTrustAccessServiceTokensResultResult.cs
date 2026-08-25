@@ -21,6 +21,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `Forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         /// </summary>
         public readonly string Duration;
+        /// <summary>
+        /// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `ClientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+        /// </summary>
+        public readonly bool Enabled;
         public readonly string ExpiresAt;
         /// <summary>
         /// The ID of the service token.
@@ -37,6 +41,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string duration,
 
+            bool enabled,
+
             string expiresAt,
 
             string id,
@@ -45,6 +51,7 @@ namespace Pulumi.Cloudflare.Outputs
         {
             ClientId = clientId;
             Duration = duration;
+            Enabled = enabled;
             ExpiresAt = expiresAt;
             Id = id;
             Name = name;

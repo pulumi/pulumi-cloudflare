@@ -103,14 +103,16 @@ public final class GetMoqRelaysPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Maximum number of relays to return per page.
+     * Maximum number of relays to return per page. Values above the maximum are
+     * clamped to it rather than rejected.
      * 
      */
     @Import(name="perPage")
     private @Nullable Integer perPage;
 
     /**
-     * @return Maximum number of relays to return per page.
+     * @return Maximum number of relays to return per page. Values above the maximum are
+     * clamped to it rather than rejected.
      * 
      */
     public Optional<Integer> perPage() {
@@ -207,7 +209,8 @@ public final class GetMoqRelaysPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param perPage Maximum number of relays to return per page.
+         * @param perPage Maximum number of relays to return per page. Values above the maximum are
+         * clamped to it rather than rejected.
          * 
          * @return builder
          * 

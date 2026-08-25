@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSecretsStoresInvokeResult {
+    /**
+     * @return Account Identifier.
+     * 
+     */
     private String accountId;
     /**
      * @return Direction to sort objects.
@@ -40,6 +44,10 @@ public final class GetSecretsStoresInvokeResult {
     private List<GetSecretsStoresResult> results;
 
     private GetSecretsStoresInvokeResult() {}
+    /**
+     * @return Account Identifier.
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }

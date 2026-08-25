@@ -17,7 +17,7 @@ public final class R2BucketSippySource {
      */
     private @Nullable String accessKeyId;
     /**
-     * @return Access key for the Azure Storage account. Mutually exclusive with `sasToken`.
+     * @return Access key for the Azure Storage account. Mutually exclusive with sasToken.
      * 
      */
     private @Nullable String accountKey;
@@ -62,7 +62,7 @@ public final class R2BucketSippySource {
      */
     private @Nullable String region;
     /**
-     * @return Shared Access Signature token for the Azure Storage account. Mutually exclusive with `accountKey`.
+     * @return Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
      * 
      */
     private @Nullable String sasToken;
@@ -81,7 +81,7 @@ public final class R2BucketSippySource {
         return Optional.ofNullable(this.accessKeyId);
     }
     /**
-     * @return Access key for the Azure Storage account. Mutually exclusive with `sasToken`.
+     * @return Access key for the Azure Storage account. Mutually exclusive with sasToken.
      * 
      */
     public Optional<String> accountKey() {
@@ -144,7 +144,7 @@ public final class R2BucketSippySource {
         return Optional.ofNullable(this.region);
     }
     /**
-     * @return Shared Access Signature token for the Azure Storage account. Mutually exclusive with `accountKey`.
+     * @return Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
      * 
      */
     public Optional<String> sasToken() {

@@ -113,6 +113,22 @@ public class ZeroTrustDlpEntry extends com.pulumi.resources.CustomResource {
     public Output<String> createdAt() {
         return this.createdAt;
     }
+    /**
+     * Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * emitted only when true.
+     * 
+     */
+    @Export(name="deprecated", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> deprecated;
+
+    /**
+     * @return Whether this entry is deprecated for new use. This is computed from the static catalog and
+     * emitted only when true.
+     * 
+     */
+    public Output<Boolean> deprecated() {
+        return this.deprecated;
+    }
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 

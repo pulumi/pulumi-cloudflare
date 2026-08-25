@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -21,6 +23,7 @@ import * as utilities from "./utilities";
  *     customHtml: "<html><body><h1>Access Denied</h1></body></html>",
  *     name: "name",
  *     type: "identity_denied",
+ *     contractVersion: 0,
  * });
  * ```
  *
@@ -66,6 +69,10 @@ export class AccessCustomPage extends pulumi.CustomResource {
      */
     declare public readonly accountId: pulumi.Output<string>;
     /**
+     * Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+     */
+    declare public readonly contractVersion: pulumi.Output<number>;
+    /**
      * Custom page HTML.
      */
     declare public readonly customHtml: pulumi.Output<string>;
@@ -75,13 +82,17 @@ export class AccessCustomPage extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     /**
      * Custom page type.
-     * Available values: "identityDenied", "forbidden".
+     * Available values: "identityDenied", "forbidden", "login", "interstitial".
      */
     declare public readonly type: pulumi.Output<string>;
     /**
      * UUID.
      */
     declare public /*out*/ readonly uid: pulumi.Output<string>;
+    /**
+     * Advisory validation findings returned when creating or updating a template. Omitted when empty.
+     */
+    declare public /*out*/ readonly warnings: pulumi.Output<outputs.AccessCustomPageWarning[]>;
 
     /**
      * Create a AccessCustomPage resource with the given unique name, arguments, and options.
@@ -100,10 +111,12 @@ export class AccessCustomPage extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AccessCustomPageState | undefined;
             resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["contractVersion"] = state?.contractVersion;
             resourceInputs["customHtml"] = state?.customHtml;
             resourceInputs["name"] = state?.name;
             resourceInputs["type"] = state?.type;
             resourceInputs["uid"] = state?.uid;
+            resourceInputs["warnings"] = state?.warnings;
         } else {
             const args = argsOrState as AccessCustomPageArgs | undefined;
             if (args?.accountId === undefined && !opts.urn) {
@@ -119,10 +132,12 @@ export class AccessCustomPage extends pulumi.CustomResource {
                 throw new Error("Missing required property 'type'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["contractVersion"] = args?.contractVersion;
             resourceInputs["customHtml"] = args?.customHtml;
             resourceInputs["name"] = args?.name;
             resourceInputs["type"] = args?.type;
             resourceInputs["uid"] = undefined /*out*/;
+            resourceInputs["warnings"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/accessCustomPage:AccessCustomPage" }] };
@@ -140,6 +155,10 @@ export interface AccessCustomPageState {
      */
     accountId?: pulumi.Input<string | undefined>;
     /**
+     * Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+     */
+    contractVersion?: pulumi.Input<number | undefined>;
+    /**
      * Custom page HTML.
      */
     customHtml?: pulumi.Input<string | undefined>;
@@ -149,13 +168,17 @@ export interface AccessCustomPageState {
     name?: pulumi.Input<string | undefined>;
     /**
      * Custom page type.
-     * Available values: "identityDenied", "forbidden".
+     * Available values: "identityDenied", "forbidden", "login", "interstitial".
      */
     type?: pulumi.Input<string | undefined>;
     /**
      * UUID.
      */
     uid?: pulumi.Input<string | undefined>;
+    /**
+     * Advisory validation findings returned when creating or updating a template. Omitted when empty.
+     */
+    warnings?: pulumi.Input<pulumi.Input<inputs.AccessCustomPageWarning>[] | undefined>;
 }
 
 /**
@@ -167,6 +190,10 @@ export interface AccessCustomPageArgs {
      */
     accountId: pulumi.Input<string>;
     /**
+     * Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+     */
+    contractVersion?: pulumi.Input<number | undefined>;
+    /**
      * Custom page HTML.
      */
     customHtml: pulumi.Input<string>;
@@ -176,7 +203,7 @@ export interface AccessCustomPageArgs {
     name: pulumi.Input<string>;
     /**
      * Custom page type.
-     * Available values: "identityDenied", "forbidden".
+     * Available values: "identityDenied", "forbidden", "login", "interstitial".
      */
     type: pulumi.Input<string>;
 }

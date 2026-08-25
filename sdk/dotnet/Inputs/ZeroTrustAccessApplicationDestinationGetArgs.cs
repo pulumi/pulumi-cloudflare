@@ -44,7 +44,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? PortRange { get; set; }
 
         /// <summary>
-        /// Available values: "public", "private".
+        /// Available values: "public", "private", "via*mcp*server*portal", "worker", "preview*worker", "all*workers", "all*preview_workers".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -60,6 +60,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("vnetId")]
         public Input<string>? VnetId { get; set; }
+
+        /// <summary>
+        /// The ID of the Cloudflare Worker to protect with Access. Required when type is `Worker` or `PreviewWorker`.
+        /// </summary>
+        [Input("workerId")]
+        public Input<string>? WorkerId { get; set; }
 
         public ZeroTrustAccessApplicationDestinationGetArgs()
         {

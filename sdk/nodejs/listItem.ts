@@ -76,7 +76,7 @@ export class ListItem extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
-     * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+     * Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      */
     declare public readonly hostname: pulumi.Output<outputs.ListItemHostname | undefined>;
     /**
@@ -168,7 +168,7 @@ export interface ListItemState {
      */
     createdOn?: pulumi.Input<string | undefined>;
     /**
-     * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+     * Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      */
     hostname?: pulumi.Input<inputs.ListItemHostname | undefined>;
     /**
@@ -210,7 +210,7 @@ export interface ListItemArgs {
      */
     comment?: pulumi.Input<string | undefined>;
     /**
-     * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+     * Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      */
     hostname?: pulumi.Input<inputs.ListItemHostname | undefined>;
     /**

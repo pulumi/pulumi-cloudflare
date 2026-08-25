@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _allowedAuthenticators;
 
         /// <summary>
-        /// Lists the MFA methods that users can authenticate with. `SshPivKey` is only relevant for infrastructure applications.
+        /// Lists the MFA methods that users can authenticate with. The `PivKey` and `SshFido2Key` values are supported only for infrastructure applications.
         /// </summary>
         public InputList<string> AllowedAuthenticators
         {

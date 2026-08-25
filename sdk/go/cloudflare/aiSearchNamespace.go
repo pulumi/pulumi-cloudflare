@@ -21,8 +21,10 @@ type AiSearchNamespace struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Optional description for the namespace. Max 256 characters.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	Name        pulumi.StringOutput    `pulumi:"name"`
+	Description          pulumi.StringPtrOutput                      `pulumi:"description"`
+	Name                 pulumi.StringOutput                         `pulumi:"name"`
+	PublicEndpointId     pulumi.StringOutput                         `pulumi:"publicEndpointId"`
+	PublicEndpointParams AiSearchNamespacePublicEndpointParamsOutput `pulumi:"publicEndpointParams"`
 }
 
 // NewAiSearchNamespace registers a new resource with the given unique name, arguments, and options.
@@ -64,16 +66,20 @@ type aiSearchNamespaceState struct {
 	AccountId *string `pulumi:"accountId"`
 	CreatedAt *string `pulumi:"createdAt"`
 	// Optional description for the namespace. Max 256 characters.
-	Description *string `pulumi:"description"`
-	Name        *string `pulumi:"name"`
+	Description          *string                                `pulumi:"description"`
+	Name                 *string                                `pulumi:"name"`
+	PublicEndpointId     *string                                `pulumi:"publicEndpointId"`
+	PublicEndpointParams *AiSearchNamespacePublicEndpointParams `pulumi:"publicEndpointParams"`
 }
 
 type AiSearchNamespaceState struct {
 	AccountId pulumi.StringPtrInput
 	CreatedAt pulumi.StringPtrInput
 	// Optional description for the namespace. Max 256 characters.
-	Description pulumi.StringPtrInput
-	Name        pulumi.StringPtrInput
+	Description          pulumi.StringPtrInput
+	Name                 pulumi.StringPtrInput
+	PublicEndpointId     pulumi.StringPtrInput
+	PublicEndpointParams AiSearchNamespacePublicEndpointParamsPtrInput
 }
 
 func (AiSearchNamespaceState) ElementType() reflect.Type {
@@ -83,16 +89,18 @@ func (AiSearchNamespaceState) ElementType() reflect.Type {
 type aiSearchNamespaceArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Optional description for the namespace. Max 256 characters.
-	Description *string `pulumi:"description"`
-	Name        string  `pulumi:"name"`
+	Description          *string                                `pulumi:"description"`
+	Name                 string                                 `pulumi:"name"`
+	PublicEndpointParams *AiSearchNamespacePublicEndpointParams `pulumi:"publicEndpointParams"`
 }
 
 // The set of arguments for constructing a AiSearchNamespace resource.
 type AiSearchNamespaceArgs struct {
 	AccountId pulumi.StringInput
 	// Optional description for the namespace. Max 256 characters.
-	Description pulumi.StringPtrInput
-	Name        pulumi.StringInput
+	Description          pulumi.StringPtrInput
+	Name                 pulumi.StringInput
+	PublicEndpointParams AiSearchNamespacePublicEndpointParamsPtrInput
 }
 
 func (AiSearchNamespaceArgs) ElementType() reflect.Type {
@@ -197,6 +205,14 @@ func (o AiSearchNamespaceOutput) Description() pulumi.StringPtrOutput {
 
 func (o AiSearchNamespaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiSearchNamespace) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o AiSearchNamespaceOutput) PublicEndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AiSearchNamespace) pulumi.StringOutput { return v.PublicEndpointId }).(pulumi.StringOutput)
+}
+
+func (o AiSearchNamespaceOutput) PublicEndpointParams() AiSearchNamespacePublicEndpointParamsOutput {
+	return o.ApplyT(func(v *AiSearchNamespace) AiSearchNamespacePublicEndpointParamsOutput { return v.PublicEndpointParams }).(AiSearchNamespacePublicEndpointParamsOutput)
 }
 
 type AiSearchNamespaceArrayOutput struct{ *pulumi.OutputState }

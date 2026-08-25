@@ -36,6 +36,7 @@ import (
 //				ZoneId:                        pulumi.String("zone_id"),
 //				ClientSecretVersion:           pulumi.Float64(0),
 //				Duration:                      pulumi.String("60m"),
+//				Enabled:                       pulumi.Bool(true),
 //				PreviousClientSecretExpiresAt: pulumi.String("2014-01-01T05:20:00.12345Z"),
 //			})
 //			if err != nil {
@@ -64,7 +65,9 @@ type ZeroTrustAccessServiceToken struct {
 	// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
 	ClientSecretVersion pulumi.Float64Output `pulumi:"clientSecretVersion"`
 	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
-	Duration  pulumi.StringOutput `pulumi:"duration"`
+	Duration pulumi.StringOutput `pulumi:"duration"`
+	// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+	Enabled   pulumi.BoolOutput   `pulumi:"enabled"`
 	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
 	// The name of the service token.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -126,7 +129,9 @@ type zeroTrustAccessServiceTokenState struct {
 	// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
 	ClientSecretVersion *float64 `pulumi:"clientSecretVersion"`
 	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
-	Duration  *string `pulumi:"duration"`
+	Duration *string `pulumi:"duration"`
+	// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+	Enabled   *bool   `pulumi:"enabled"`
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The name of the service token.
 	Name *string `pulumi:"name"`
@@ -146,7 +151,9 @@ type ZeroTrustAccessServiceTokenState struct {
 	// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
 	ClientSecretVersion pulumi.Float64PtrInput
 	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
-	Duration  pulumi.StringPtrInput
+	Duration pulumi.StringPtrInput
+	// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+	Enabled   pulumi.BoolPtrInput
 	ExpiresAt pulumi.StringPtrInput
 	// The name of the service token.
 	Name pulumi.StringPtrInput
@@ -167,6 +174,8 @@ type zeroTrustAccessServiceTokenArgs struct {
 	ClientSecretVersion *float64 `pulumi:"clientSecretVersion"`
 	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 	Duration *string `pulumi:"duration"`
+	// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+	Enabled *bool `pulumi:"enabled"`
 	// The name of the service token.
 	Name string `pulumi:"name"`
 	// The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
@@ -183,6 +192,8 @@ type ZeroTrustAccessServiceTokenArgs struct {
 	ClientSecretVersion pulumi.Float64PtrInput
 	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 	Duration pulumi.StringPtrInput
+	// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+	Enabled pulumi.BoolPtrInput
 	// The name of the service token.
 	Name pulumi.StringInput
 	// The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
@@ -301,6 +312,11 @@ func (o ZeroTrustAccessServiceTokenOutput) ClientSecretVersion() pulumi.Float64O
 // The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 func (o ZeroTrustAccessServiceTokenOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.StringOutput { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+func (o ZeroTrustAccessServiceTokenOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 func (o ZeroTrustAccessServiceTokenOutput) ExpiresAt() pulumi.StringOutput {

@@ -32,10 +32,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewZeroTrustAccessCustomPage(ctx, "example_zero_trust_access_custom_page", &cloudflare.ZeroTrustAccessCustomPageArgs{
-//				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				CustomHtml: pulumi.String("<html><body><h1>Access Denied</h1></body></html>"),
-//				Name:       pulumi.String("name"),
-//				Type:       pulumi.String("identity_denied"),
+//				AccountId:       pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				CustomHtml:      pulumi.String("<html><body><h1>Access Denied</h1></body></html>"),
+//				Name:            pulumi.String("name"),
+//				Type:            pulumi.String("identity_denied"),
+//				ContractVersion: pulumi.Int(0),
 //			})
 //			if err != nil {
 //				return err
@@ -58,15 +59,19 @@ type AccessCustomPage struct {
 
 	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+	ContractVersion pulumi.IntOutput `pulumi:"contractVersion"`
 	// Custom page HTML.
 	CustomHtml pulumi.StringOutput `pulumi:"customHtml"`
 	// Custom page name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Custom page type.
-	// Available values: "identityDenied", "forbidden".
+	// Available values: "identityDenied", "forbidden", "login", "interstitial".
 	Type pulumi.StringOutput `pulumi:"type"`
 	// UUID.
 	Uid pulumi.StringOutput `pulumi:"uid"`
+	// Advisory validation findings returned when creating or updating a template. Omitted when empty.
+	Warnings AccessCustomPageWarningArrayOutput `pulumi:"warnings"`
 }
 
 // NewAccessCustomPage registers a new resource with the given unique name, arguments, and options.
@@ -119,29 +124,37 @@ func GetAccessCustomPage(ctx *pulumi.Context,
 type accessCustomPageState struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
+	// Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+	ContractVersion *int `pulumi:"contractVersion"`
 	// Custom page HTML.
 	CustomHtml *string `pulumi:"customHtml"`
 	// Custom page name.
 	Name *string `pulumi:"name"`
 	// Custom page type.
-	// Available values: "identityDenied", "forbidden".
+	// Available values: "identityDenied", "forbidden", "login", "interstitial".
 	Type *string `pulumi:"type"`
 	// UUID.
 	Uid *string `pulumi:"uid"`
+	// Advisory validation findings returned when creating or updating a template. Omitted when empty.
+	Warnings []AccessCustomPageWarning `pulumi:"warnings"`
 }
 
 type AccessCustomPageState struct {
 	// Identifier.
 	AccountId pulumi.StringPtrInput
+	// Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+	ContractVersion pulumi.IntPtrInput
 	// Custom page HTML.
 	CustomHtml pulumi.StringPtrInput
 	// Custom page name.
 	Name pulumi.StringPtrInput
 	// Custom page type.
-	// Available values: "identityDenied", "forbidden".
+	// Available values: "identityDenied", "forbidden", "login", "interstitial".
 	Type pulumi.StringPtrInput
 	// UUID.
 	Uid pulumi.StringPtrInput
+	// Advisory validation findings returned when creating or updating a template. Omitted when empty.
+	Warnings AccessCustomPageWarningArrayInput
 }
 
 func (AccessCustomPageState) ElementType() reflect.Type {
@@ -151,12 +164,14 @@ func (AccessCustomPageState) ElementType() reflect.Type {
 type accessCustomPageArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
+	// Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+	ContractVersion *int `pulumi:"contractVersion"`
 	// Custom page HTML.
 	CustomHtml string `pulumi:"customHtml"`
 	// Custom page name.
 	Name string `pulumi:"name"`
 	// Custom page type.
-	// Available values: "identityDenied", "forbidden".
+	// Available values: "identityDenied", "forbidden", "login", "interstitial".
 	Type string `pulumi:"type"`
 }
 
@@ -164,12 +179,14 @@ type accessCustomPageArgs struct {
 type AccessCustomPageArgs struct {
 	// Identifier.
 	AccountId pulumi.StringInput
+	// Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+	ContractVersion pulumi.IntPtrInput
 	// Custom page HTML.
 	CustomHtml pulumi.StringInput
 	// Custom page name.
 	Name pulumi.StringInput
 	// Custom page type.
-	// Available values: "identityDenied", "forbidden".
+	// Available values: "identityDenied", "forbidden", "login", "interstitial".
 	Type pulumi.StringInput
 }
 
@@ -265,6 +282,11 @@ func (o AccessCustomPageOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessCustomPage) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+func (o AccessCustomPageOutput) ContractVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v *AccessCustomPage) pulumi.IntOutput { return v.ContractVersion }).(pulumi.IntOutput)
+}
+
 // Custom page HTML.
 func (o AccessCustomPageOutput) CustomHtml() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessCustomPage) pulumi.StringOutput { return v.CustomHtml }).(pulumi.StringOutput)
@@ -276,7 +298,7 @@ func (o AccessCustomPageOutput) Name() pulumi.StringOutput {
 }
 
 // Custom page type.
-// Available values: "identityDenied", "forbidden".
+// Available values: "identityDenied", "forbidden", "login", "interstitial".
 func (o AccessCustomPageOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessCustomPage) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
@@ -284,6 +306,11 @@ func (o AccessCustomPageOutput) Type() pulumi.StringOutput {
 // UUID.
 func (o AccessCustomPageOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessCustomPage) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// Advisory validation findings returned when creating or updating a template. Omitted when empty.
+func (o AccessCustomPageOutput) Warnings() AccessCustomPageWarningArrayOutput {
+	return o.ApplyT(func(v *AccessCustomPage) AccessCustomPageWarningArrayOutput { return v.Warnings }).(AccessCustomPageWarningArrayOutput)
 }
 
 type AccessCustomPageArrayOutput struct{ *pulumi.OutputState }

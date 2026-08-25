@@ -71,7 +71,9 @@ type LookupZeroTrustAccessServiceTokenResult struct {
 	// The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
 	ClientId string `pulumi:"clientId"`
 	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
-	Duration  string                                `pulumi:"duration"`
+	Duration string `pulumi:"duration"`
+	// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+	Enabled   bool                                  `pulumi:"enabled"`
 	ExpiresAt string                                `pulumi:"expiresAt"`
 	Filter    *GetZeroTrustAccessServiceTokenFilter `pulumi:"filter"`
 	// UUID.
@@ -136,6 +138,11 @@ func (o LookupZeroTrustAccessServiceTokenResultOutput) ClientId() pulumi.StringO
 // The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 func (o LookupZeroTrustAccessServiceTokenResultOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessServiceTokenResult) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+func (o LookupZeroTrustAccessServiceTokenResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessServiceTokenResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 func (o LookupZeroTrustAccessServiceTokenResultOutput) ExpiresAt() pulumi.StringOutput {

@@ -23,19 +23,34 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
      */
     private GetZeroTrustAccessAiControlsMcpPortalServerAuthConfigSummary authConfigSummary;
     /**
-     * @return Available values: &#34;oauth&#34;, &#34;bearer&#34;, &#34;unauthenticated&#34;.
+     * @return Authentication method used to connect to the upstream MCP server.
+     * Available values: &#34;oauth&#34;, &#34;bearer&#34;, &#34;unauthenticated&#34;.
      * 
      */
     private String authType;
+    /**
+     * @return Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
+     * Available values: &#34;notRequired&#34;, &#34;required&#34;, &#34;connected&#34;, &#34;stale&#34;, &#34;manual&#34;.
+     * 
+     */
+    private String authenticationStatus;
     private String createdAt;
     private String createdBy;
     private Boolean defaultDisabled;
+    /**
+     * @return Optional description of the MCP server.
+     * 
+     */
     private String description;
     private String error;
     private GetZeroTrustAccessAiControlsMcpPortalServerErrorDetails errorDetails;
+    /**
+     * @return URL of the upstream MCP endpoint.
+     * 
+     */
     private String hostname;
     /**
-     * @return server id
+     * @return Unique identifier for the MCP server.
      * 
      */
     private String id;
@@ -48,16 +63,20 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
     private String lastSynced;
     private String modifiedAt;
     private String modifiedBy;
+    /**
+     * @return Display name for the MCP server.
+     * 
+     */
     private String name;
     private Boolean onBehalf;
     private List<Map<String,String>> prompts;
     /**
-     * @return Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+     * @return Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
      * 
      */
     private Boolean secureWebGateway;
     /**
-     * @return server id
+     * @return Unique identifier for the MCP server.
      * 
      */
     private String serverId;
@@ -80,11 +99,20 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
         return this.authConfigSummary;
     }
     /**
-     * @return Available values: &#34;oauth&#34;, &#34;bearer&#34;, &#34;unauthenticated&#34;.
+     * @return Authentication method used to connect to the upstream MCP server.
+     * Available values: &#34;oauth&#34;, &#34;bearer&#34;, &#34;unauthenticated&#34;.
      * 
      */
     public String authType() {
         return this.authType;
+    }
+    /**
+     * @return Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
+     * Available values: &#34;notRequired&#34;, &#34;required&#34;, &#34;connected&#34;, &#34;stale&#34;, &#34;manual&#34;.
+     * 
+     */
+    public String authenticationStatus() {
+        return this.authenticationStatus;
     }
     public String createdAt() {
         return this.createdAt;
@@ -95,6 +123,10 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
     public Boolean defaultDisabled() {
         return this.defaultDisabled;
     }
+    /**
+     * @return Optional description of the MCP server.
+     * 
+     */
     public String description() {
         return this.description;
     }
@@ -104,11 +136,15 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
     public GetZeroTrustAccessAiControlsMcpPortalServerErrorDetails errorDetails() {
         return this.errorDetails;
     }
+    /**
+     * @return URL of the upstream MCP endpoint.
+     * 
+     */
     public String hostname() {
         return this.hostname;
     }
     /**
-     * @return server id
+     * @return Unique identifier for the MCP server.
      * 
      */
     public String id() {
@@ -133,6 +169,10 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
     public String modifiedBy() {
         return this.modifiedBy;
     }
+    /**
+     * @return Display name for the MCP server.
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -143,14 +183,14 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
         return this.prompts;
     }
     /**
-     * @return Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+     * @return Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
      * 
      */
     public Boolean secureWebGateway() {
         return this.secureWebGateway;
     }
     /**
-     * @return server id
+     * @return Unique identifier for the MCP server.
      * 
      */
     public String serverId() {
@@ -185,6 +225,7 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
     public static final class Builder {
         private GetZeroTrustAccessAiControlsMcpPortalServerAuthConfigSummary authConfigSummary;
         private String authType;
+        private String authenticationStatus;
         private String createdAt;
         private String createdBy;
         private Boolean defaultDisabled;
@@ -212,6 +253,7 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
     	      Objects.requireNonNull(defaults);
     	      this.authConfigSummary = defaults.authConfigSummary;
     	      this.authType = defaults.authType;
+    	      this.authenticationStatus = defaults.authenticationStatus;
     	      this.createdAt = defaults.createdAt;
     	      this.createdBy = defaults.createdBy;
     	      this.defaultDisabled = defaults.defaultDisabled;
@@ -250,6 +292,14 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpPortalServer", "authType");
             }
             this.authType = authType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder authenticationStatus(String authenticationStatus) {
+            if (authenticationStatus == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpPortalServer", "authenticationStatus");
+            }
+            this.authenticationStatus = authenticationStatus;
             return this;
         }
         @CustomType.Setter
@@ -438,6 +488,7 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
             final var _resultValue = new GetZeroTrustAccessAiControlsMcpPortalServer();
             _resultValue.authConfigSummary = authConfigSummary;
             _resultValue.authType = authType;
+            _resultValue.authenticationStatus = authenticationStatus;
             _resultValue.createdAt = createdAt;
             _resultValue.createdBy = createdBy;
             _resultValue.defaultDisabled = defaultDisabled;

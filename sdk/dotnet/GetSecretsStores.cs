@@ -96,6 +96,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetSecretsStoresArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Account Identifier.
+        /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
@@ -127,6 +130,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetSecretsStoresInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Account Identifier.
+        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
@@ -160,6 +166,9 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetSecretsStoresResult
     {
+        /// <summary>
+        /// Account Identifier.
+        /// </summary>
         public readonly string AccountId;
         /// <summary>
         /// Direction to sort objects.

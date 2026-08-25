@@ -6,6 +6,20 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleMoqRelays = cloudflare.getMoqRelays({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     createdAfter: "2026-03-27T15:00:00Z",
+ *     createdBefore: "2026-03-27T15:00:00Z",
+ * });
+ * ```
+ */
 export function getMoqRelays(args: GetMoqRelaysArgs, opts?: pulumi.InvokeOptions): Promise<GetMoqRelaysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getMoqRelays:getMoqRelays", {
@@ -48,7 +62,8 @@ export interface GetMoqRelaysArgs {
      */
     maxItems?: number;
     /**
-     * Maximum number of relays to return per page.
+     * Maximum number of relays to return per page. Values above the maximum are
+     * clamped to it rather than rejected.
      */
     perPage?: number;
 }
@@ -83,14 +98,29 @@ export interface GetMoqRelaysResult {
      */
     readonly maxItems?: number;
     /**
-     * Maximum number of relays to return per page.
+     * Maximum number of relays to return per page. Values above the maximum are
+     * clamped to it rather than rejected.
      */
-    readonly perPage?: number;
+    readonly perPage: number;
     /**
      * The items returned by the data source
      */
     readonly results: outputs.GetMoqRelaysResult[];
 }
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleMoqRelays = cloudflare.getMoqRelays({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     createdAfter: "2026-03-27T15:00:00Z",
+ *     createdBefore: "2026-03-27T15:00:00Z",
+ * });
+ * ```
+ */
 export function getMoqRelaysOutput(args: GetMoqRelaysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMoqRelaysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getMoqRelays:getMoqRelays", {
@@ -133,7 +163,8 @@ export interface GetMoqRelaysOutputArgs {
      */
     maxItems?: pulumi.Input<number | undefined>;
     /**
-     * Maximum number of relays to return per page.
+     * Maximum number of relays to return per page. Values above the maximum are
+     * clamped to it rather than rejected.
      */
     perPage?: pulumi.Input<number | undefined>;
 }

@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Inputs
         private Input<string>? _accountKey;
 
         /// <summary>
-        /// Access key for the Azure Storage account. Mutually exclusive with `SasToken`.
+        /// Access key for the Azure Storage account. Mutually exclusive with sasToken.
         /// </summary>
         public Input<string>? AccountKey
         {
@@ -96,7 +96,7 @@ namespace Pulumi.Cloudflare.Inputs
         private Input<string>? _sasToken;
 
         /// <summary>
-        /// Shared Access Signature token for the Azure Storage account. Mutually exclusive with `AccountKey`.
+        /// Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
         /// </summary>
         public Input<string>? SasToken
         {

@@ -21,6 +21,7 @@ import * as utilities from "./utilities";
  *     zoneId: "zone_id",
  *     clientSecretVersion: 0,
  *     duration: "60m",
+ *     enabled: true,
  *     previousClientSecretExpiresAt: "2014-01-01T05:20:00.12345Z",
  * });
  * ```
@@ -79,6 +80,10 @@ export class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
      * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      */
     declare public readonly duration: pulumi.Output<string>;
+    /**
+     * Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+     */
+    declare public readonly enabled: pulumi.Output<boolean>;
     declare public /*out*/ readonly expiresAt: pulumi.Output<string>;
     /**
      * The name of the service token.
@@ -111,6 +116,7 @@ export class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
             resourceInputs["clientSecret"] = state?.clientSecret;
             resourceInputs["clientSecretVersion"] = state?.clientSecretVersion;
             resourceInputs["duration"] = state?.duration;
+            resourceInputs["enabled"] = state?.enabled;
             resourceInputs["expiresAt"] = state?.expiresAt;
             resourceInputs["name"] = state?.name;
             resourceInputs["previousClientSecretExpiresAt"] = state?.previousClientSecretExpiresAt;
@@ -123,6 +129,7 @@ export class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["clientSecretVersion"] = args?.clientSecretVersion;
             resourceInputs["duration"] = args?.duration;
+            resourceInputs["enabled"] = args?.enabled;
             resourceInputs["name"] = args?.name;
             resourceInputs["previousClientSecretExpiresAt"] = args?.previousClientSecretExpiresAt;
             resourceInputs["zoneId"] = args?.zoneId;
@@ -163,6 +170,10 @@ export interface ZeroTrustAccessServiceTokenState {
      * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      */
     duration?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
     expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The name of the service token.
@@ -194,6 +205,10 @@ export interface ZeroTrustAccessServiceTokenArgs {
      * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      */
     duration?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `clientSecret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the service token.
      */

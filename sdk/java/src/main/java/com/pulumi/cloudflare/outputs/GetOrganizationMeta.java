@@ -3,7 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.GetOrganizationMetaFlags;
+import com.pulumi.cloudflare.outputs.GetOrganizationMetaTenantFlags;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -12,11 +12,6 @@ import java.util.Objects;
 
 @CustomType
 public final class GetOrganizationMeta {
-    /**
-     * @return Enable features for Organizations.
-     * 
-     */
-    private GetOrganizationMetaFlags flags;
     /**
      * @return Ordered chain of organization tags from the root organization down to
      * (and including) this organization itself. Root organizations return a
@@ -28,15 +23,13 @@ public final class GetOrganizationMeta {
      */
     private List<String> hierarchyTags;
     private String managedBy;
-
-    private GetOrganizationMeta() {}
     /**
      * @return Enable features for Organizations.
      * 
      */
-    public GetOrganizationMetaFlags flags() {
-        return this.flags;
-    }
+    private GetOrganizationMetaTenantFlags tenantFlags;
+
+    private GetOrganizationMeta() {}
     /**
      * @return Ordered chain of organization tags from the root organization down to
      * (and including) this organization itself. Root organizations return a
@@ -52,6 +45,13 @@ public final class GetOrganizationMeta {
     public String managedBy() {
         return this.managedBy;
     }
+    /**
+     * @return Enable features for Organizations.
+     * 
+     */
+    public GetOrganizationMetaTenantFlags tenantFlags() {
+        return this.tenantFlags;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -62,25 +62,17 @@ public final class GetOrganizationMeta {
     }
     @CustomType.Builder
     public static final class Builder {
-        private GetOrganizationMetaFlags flags;
         private List<String> hierarchyTags;
         private String managedBy;
+        private GetOrganizationMetaTenantFlags tenantFlags;
         public Builder() {}
         public Builder(GetOrganizationMeta defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.flags = defaults.flags;
     	      this.hierarchyTags = defaults.hierarchyTags;
     	      this.managedBy = defaults.managedBy;
+    	      this.tenantFlags = defaults.tenantFlags;
         }
 
-        @CustomType.Setter
-        public Builder flags(GetOrganizationMetaFlags flags) {
-            if (flags == null) {
-              throw new MissingRequiredPropertyException("GetOrganizationMeta", "flags");
-            }
-            this.flags = flags;
-            return this;
-        }
         @CustomType.Setter
         public Builder hierarchyTags(List<String> hierarchyTags) {
             if (hierarchyTags == null) {
@@ -100,11 +92,19 @@ public final class GetOrganizationMeta {
             this.managedBy = managedBy;
             return this;
         }
+        @CustomType.Setter
+        public Builder tenantFlags(GetOrganizationMetaTenantFlags tenantFlags) {
+            if (tenantFlags == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationMeta", "tenantFlags");
+            }
+            this.tenantFlags = tenantFlags;
+            return this;
+        }
         public GetOrganizationMeta build() {
             final var _resultValue = new GetOrganizationMeta();
-            _resultValue.flags = flags;
             _resultValue.hierarchyTags = hierarchyTags;
             _resultValue.managedBy = managedBy;
+            _resultValue.tenantFlags = tenantFlags;
             return _resultValue;
         }
     }

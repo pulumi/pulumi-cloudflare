@@ -53,6 +53,7 @@ func LookupSecretsStores(ctx *pulumi.Context, args *LookupSecretsStoresArgs, opt
 
 // A collection of arguments for invoking getSecretsStores.
 type LookupSecretsStoresArgs struct {
+	// Account Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Direction to sort objects.
 	// Available values: "asc", "desc".
@@ -66,6 +67,7 @@ type LookupSecretsStoresArgs struct {
 
 // A collection of values returned by getSecretsStores.
 type LookupSecretsStoresResult struct {
+	// Account Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Direction to sort objects.
 	// Available values: "asc", "desc".
@@ -90,6 +92,7 @@ func LookupSecretsStoresOutput(ctx *pulumi.Context, args LookupSecretsStoresOutp
 
 // A collection of arguments for invoking getSecretsStores.
 type LookupSecretsStoresOutputArgs struct {
+	// Account Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Direction to sort objects.
 	// Available values: "asc", "desc".
@@ -120,6 +123,7 @@ func (o LookupSecretsStoresResultOutput) ToLookupSecretsStoresResultOutputWithCo
 	return o
 }
 
+// Account Identifier.
 func (o LookupSecretsStoresResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretsStoresResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

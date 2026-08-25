@@ -12,20 +12,30 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class ZeroTrustAccessAiControlsMcpPortalServerArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Disable this server by default for clients connecting through the portal.
+        /// </summary>
         [Input("defaultDisabled")]
         public Input<bool>? DefaultDisabled { get; set; }
 
+        /// <summary>
+        /// Use end-user OAuth credentials when connecting this server to the portal.
+        /// </summary>
         [Input("onBehalf")]
         public Input<bool>? OnBehalf { get; set; }
 
         /// <summary>
-        /// server id
+        /// Unique identifier for the MCP server.
         /// </summary>
         [Input("serverId", required: true)]
         public Input<string> ServerId { get; set; } = null!;
 
         [Input("updatedPrompts")]
         private InputList<Inputs.ZeroTrustAccessAiControlsMcpPortalServerUpdatedPromptArgs>? _updatedPrompts;
+
+        /// <summary>
+        /// Portal-specific prompt overrides.
+        /// </summary>
         public InputList<Inputs.ZeroTrustAccessAiControlsMcpPortalServerUpdatedPromptArgs> UpdatedPrompts
         {
             get => _updatedPrompts ?? (_updatedPrompts = new InputList<Inputs.ZeroTrustAccessAiControlsMcpPortalServerUpdatedPromptArgs>());
@@ -34,6 +44,10 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("updatedTools")]
         private InputList<Inputs.ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs>? _updatedTools;
+
+        /// <summary>
+        /// Portal-specific tool overrides.
+        /// </summary>
         public InputList<Inputs.ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs> UpdatedTools
         {
             get => _updatedTools ?? (_updatedTools = new InputList<Inputs.ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs>());

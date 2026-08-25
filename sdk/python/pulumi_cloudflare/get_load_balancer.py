@@ -328,14 +328,6 @@ def get_load_balancer(load_balancer_id: Optional[_builtins.str] = None,
 
     ## Example Usage
 
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example_load_balancer = cloudflare.get_load_balancer(load_balancer_id="699d98642c564d2e855e9661899b7252",
-        zone_id="zone_id")
-    ```
-
 
     :param Mapping[str, Sequence[_builtins.str]] pop_pools: Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
     :param Mapping[str, Sequence[_builtins.str]] region_pools: A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
@@ -385,14 +377,6 @@ def get_load_balancer_output(load_balancer_id: pulumi.Input[Optional[_builtins.s
     - `Load Balancers Write`
 
     ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example_load_balancer = cloudflare.get_load_balancer(load_balancer_id="699d98642c564d2e855e9661899b7252",
-        zone_id="zone_id")
-    ```
 
 
     :param Mapping[str, Sequence[_builtins.str]] pop_pools: Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.

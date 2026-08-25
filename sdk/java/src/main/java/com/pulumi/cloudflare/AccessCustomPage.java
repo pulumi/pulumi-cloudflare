@@ -6,11 +6,13 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.AccessCustomPageArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.AccessCustomPageState;
+import com.pulumi.cloudflare.outputs.AccessCustomPageWarning;
 import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
@@ -50,6 +52,7 @@ import javax.annotation.Nullable;
  *             .customHtml("<html><body><h1>Access Denied</h1></body></html>")
  *             .name("name")
  *             .type("identity_denied")
+ *             .contractVersion(0)
  *             .build());
  * 
  *     }
@@ -85,6 +88,20 @@ public class AccessCustomPage extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
+     * Contract version of the page&#39;s Liquid template. Present (&gt;= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+     * 
+     */
+    @Export(name="contractVersion", refs={Integer.class}, tree="[0]")
+    private Output<Integer> contractVersion;
+
+    /**
+     * @return Contract version of the page&#39;s Liquid template. Present (&gt;= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.
+     * 
+     */
+    public Output<Integer> contractVersion() {
+        return this.contractVersion;
+    }
+    /**
      * Custom page HTML.
      * 
      */
@@ -114,7 +131,7 @@ public class AccessCustomPage extends com.pulumi.resources.CustomResource {
     }
     /**
      * Custom page type.
-     * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;.
+     * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;, &#34;login&#34;, &#34;interstitial&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -122,7 +139,7 @@ public class AccessCustomPage extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Custom page type.
-     * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;.
+     * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;, &#34;login&#34;, &#34;interstitial&#34;.
      * 
      */
     public Output<String> type() {
@@ -141,6 +158,20 @@ public class AccessCustomPage extends com.pulumi.resources.CustomResource {
      */
     public Output<String> uid() {
         return this.uid;
+    }
+    /**
+     * Advisory validation findings returned when creating or updating a template. Omitted when empty.
+     * 
+     */
+    @Export(name="warnings", refs={List.class,AccessCustomPageWarning.class}, tree="[0,1]")
+    private Output<List<AccessCustomPageWarning>> warnings;
+
+    /**
+     * @return Advisory validation findings returned when creating or updating a template. Omitted when empty.
+     * 
+     */
+    public Output<List<AccessCustomPageWarning>> warnings() {
+        return this.warnings;
     }
 
     /**

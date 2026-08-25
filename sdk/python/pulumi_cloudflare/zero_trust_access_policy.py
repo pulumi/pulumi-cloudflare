@@ -1003,7 +1003,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="sessionDuration")
-    def session_duration(self) -> pulumi.Output[_builtins.str]:
+    def session_duration(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         """

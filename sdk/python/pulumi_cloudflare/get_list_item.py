@@ -98,7 +98,7 @@ class GetListItemResult:
     @pulumi.getter
     def hostname(self) -> 'outputs.GetListItemHostnameResult':
         """
-        Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+        Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         """
         return pulumi.get(self, "hostname")
 

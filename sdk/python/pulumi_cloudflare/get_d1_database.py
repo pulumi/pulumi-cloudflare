@@ -128,7 +128,7 @@ class GetD1DatabaseResult:
     def jurisdiction(self) -> _builtins.str:
         """
         Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-        Available values: "eu", "fedramp".
+        Available values: "eu", "fedramp", "us".
         """
         return pulumi.get(self, "jurisdiction")
 

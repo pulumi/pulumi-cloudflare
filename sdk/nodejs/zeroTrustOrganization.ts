@@ -66,6 +66,7 @@ import * as utilities from "./utilities";
  *     sessionDuration: "24h",
  *     uiReadOnlyToggleReason: "Temporarily turn off the UI read only lock to make a change via the UI",
  *     userSeatExpirationInactiveTime: "730h",
+ *     warpAuthNonBrowser401: false,
  *     warpAuthSessionDuration: "24h",
  * });
  * ```
@@ -141,7 +142,7 @@ export class ZeroTrustOrganization extends pulumi.CustomResource {
      */
     declare public readonly mfaConfigurationAllowed: pulumi.Output<boolean>;
     /**
-     * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+     * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
      */
     declare public readonly mfaRequiredForAllApps: pulumi.Output<boolean>;
     /**
@@ -164,6 +165,10 @@ export class ZeroTrustOrganization extends pulumi.CustomResource {
      * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
      */
     declare public readonly userSeatExpirationInactiveTime: pulumi.Output<string | undefined>;
+    /**
+     * When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
+     */
+    declare public readonly warpAuthNonBrowser401: pulumi.Output<boolean>;
     /**
      * The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
      */
@@ -203,6 +208,7 @@ export class ZeroTrustOrganization extends pulumi.CustomResource {
             resourceInputs["sessionDuration"] = state?.sessionDuration;
             resourceInputs["uiReadOnlyToggleReason"] = state?.uiReadOnlyToggleReason;
             resourceInputs["userSeatExpirationInactiveTime"] = state?.userSeatExpirationInactiveTime;
+            resourceInputs["warpAuthNonBrowser401"] = state?.warpAuthNonBrowser401;
             resourceInputs["warpAuthSessionDuration"] = state?.warpAuthSessionDuration;
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
@@ -224,6 +230,7 @@ export class ZeroTrustOrganization extends pulumi.CustomResource {
             resourceInputs["sessionDuration"] = args?.sessionDuration;
             resourceInputs["uiReadOnlyToggleReason"] = args?.uiReadOnlyToggleReason;
             resourceInputs["userSeatExpirationInactiveTime"] = args?.userSeatExpirationInactiveTime;
+            resourceInputs["warpAuthNonBrowser401"] = args?.warpAuthNonBrowser401;
             resourceInputs["warpAuthSessionDuration"] = args?.warpAuthSessionDuration;
             resourceInputs["zoneId"] = args?.zoneId;
         }
@@ -277,7 +284,7 @@ export interface ZeroTrustOrganizationState {
      */
     mfaConfigurationAllowed?: pulumi.Input<boolean | undefined>;
     /**
-     * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+     * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
      */
     mfaRequiredForAllApps?: pulumi.Input<boolean | undefined>;
     /**
@@ -300,6 +307,10 @@ export interface ZeroTrustOrganizationState {
      * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
      */
     userSeatExpirationInactiveTime?: pulumi.Input<string | undefined>;
+    /**
+     * When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
+     */
+    warpAuthNonBrowser401?: pulumi.Input<boolean | undefined>;
     /**
      * The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
      */
@@ -353,7 +364,7 @@ export interface ZeroTrustOrganizationArgs {
      */
     mfaConfigurationAllowed?: pulumi.Input<boolean | undefined>;
     /**
-     * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
+     * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
      */
     mfaRequiredForAllApps?: pulumi.Input<boolean | undefined>;
     /**
@@ -376,6 +387,10 @@ export interface ZeroTrustOrganizationArgs {
      * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
      */
     userSeatExpirationInactiveTime?: pulumi.Input<string | undefined>;
+    /**
+     * When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
+     */
+    warpAuthNonBrowser401?: pulumi.Input<boolean | undefined>;
     /**
      * The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
      */

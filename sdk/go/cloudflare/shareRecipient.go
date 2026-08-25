@@ -51,8 +51,10 @@ type ShareRecipient struct {
 
 	// Account identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Share Recipient association status.
-	// Available values: "associating", "associated", "disassociating", "disassociated".
+	// The current state of the recipient relative to the share. The
+	// `desiredAssociationStatus` (not exposed in the response) tracks the
+	// target state set by the API; the background reconciliation workflow
+	// drives `currentAssociationStatus` toward it.
 	AssociationStatus pulumi.StringOutput `pulumi:"associationStatus"`
 	// When the share was created.
 	Created pulumi.StringOutput `pulumi:"created"`
@@ -105,8 +107,10 @@ func GetShareRecipient(ctx *pulumi.Context,
 type shareRecipientState struct {
 	// Account identifier.
 	AccountId *string `pulumi:"accountId"`
-	// Share Recipient association status.
-	// Available values: "associating", "associated", "disassociating", "disassociated".
+	// The current state of the recipient relative to the share. The
+	// `desiredAssociationStatus` (not exposed in the response) tracks the
+	// target state set by the API; the background reconciliation workflow
+	// drives `currentAssociationStatus` toward it.
 	AssociationStatus *string `pulumi:"associationStatus"`
 	// When the share was created.
 	Created *string `pulumi:"created"`
@@ -124,8 +128,10 @@ type shareRecipientState struct {
 type ShareRecipientState struct {
 	// Account identifier.
 	AccountId pulumi.StringPtrInput
-	// Share Recipient association status.
-	// Available values: "associating", "associated", "disassociating", "disassociated".
+	// The current state of the recipient relative to the share. The
+	// `desiredAssociationStatus` (not exposed in the response) tracks the
+	// target state set by the API; the background reconciliation workflow
+	// drives `currentAssociationStatus` toward it.
 	AssociationStatus pulumi.StringPtrInput
 	// When the share was created.
 	Created pulumi.StringPtrInput
@@ -259,8 +265,10 @@ func (o ShareRecipientOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShareRecipient) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Share Recipient association status.
-// Available values: "associating", "associated", "disassociating", "disassociated".
+// The current state of the recipient relative to the share. The
+// `desiredAssociationStatus` (not exposed in the response) tracks the
+// target state set by the API; the background reconciliation workflow
+// drives `currentAssociationStatus` toward it.
 func (o ShareRecipientOutput) AssociationStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShareRecipient) pulumi.StringOutput { return v.AssociationStatus }).(pulumi.StringOutput)
 }

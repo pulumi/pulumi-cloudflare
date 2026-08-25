@@ -26,16 +26,13 @@ class GetHostnameTlsSettingResult:
     """
     A collection of values returned by getHostnameTlsSetting.
     """
-    def __init__(__self__, created_at=None, hostname=None, id=None, setting_id=None, status=None, updated_at=None, value=None, zone_id=None):
+    def __init__(__self__, created_at=None, hostname=None, setting_id=None, status=None, updated_at=None, value=None, zone_id=None):
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
         if hostname and not isinstance(hostname, str):
             raise TypeError("Expected argument 'hostname' to be a str")
         pulumi.set(__self__, "hostname", hostname)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if setting_id and not isinstance(setting_id, str):
             raise TypeError("Expected argument 'setting_id' to be a str")
         pulumi.set(__self__, "setting_id", setting_id)
@@ -67,15 +64,6 @@ class GetHostnameTlsSettingResult:
         The hostname for which the tls settings are set.
         """
         return pulumi.get(self, "hostname")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The TLS Setting name.
-        The value type depends on the setting:
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="settingId")
@@ -128,7 +116,6 @@ class AwaitableGetHostnameTlsSettingResult(GetHostnameTlsSettingResult):
         return GetHostnameTlsSettingResult(
             created_at=self.created_at,
             hostname=self.hostname,
-            id=self.id,
             setting_id=self.setting_id,
             status=self.status,
             updated_at=self.updated_at,
@@ -136,15 +123,11 @@ class AwaitableGetHostnameTlsSettingResult(GetHostnameTlsSettingResult):
             zone_id=self.zone_id)
 
 
-def get_hostname_tls_setting(setting_id: Optional[_builtins.str] = None,
+def get_hostname_tls_setting(hostname: Optional[_builtins.str] = None,
+                             setting_id: Optional[_builtins.str] = None,
                              zone_id: Optional[_builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHostnameTlsSettingResult:
     """
-    Accepted Permissions
-
-    - `SSL and Certificates Read`
-    - `SSL and Certificates Write`
-
     ## Example Usage
 
     ```python
@@ -152,15 +135,18 @@ def get_hostname_tls_setting(setting_id: Optional[_builtins.str] = None,
     import pulumi_cloudflare as cloudflare
 
     example_hostname_tls_setting = cloudflare.get_hostname_tls_setting(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-        setting_id="ciphers")
+        setting_id="ciphers",
+        hostname="app.example.com")
     ```
 
 
+    :param _builtins.str hostname: The hostname for which the tls settings are set.
     :param _builtins.str setting_id: The TLS Setting name.
            The value type depends on the setting:
     :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()
+    __args__['hostname'] = hostname
     __args__['settingId'] = setting_id
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -169,21 +155,16 @@ def get_hostname_tls_setting(setting_id: Optional[_builtins.str] = None,
     return AwaitableGetHostnameTlsSettingResult(
         created_at=pulumi.get(__ret__, 'created_at'),
         hostname=pulumi.get(__ret__, 'hostname'),
-        id=pulumi.get(__ret__, 'id'),
         setting_id=pulumi.get(__ret__, 'setting_id'),
         status=pulumi.get(__ret__, 'status'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         value=pulumi.get(__ret__, 'value'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_hostname_tls_setting_output(setting_id: pulumi.Input[Optional[_builtins.str]] = None,
+def get_hostname_tls_setting_output(hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                                    setting_id: pulumi.Input[Optional[_builtins.str]] = None,
                                     zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHostnameTlsSettingResult]:
     """
-    Accepted Permissions
-
-    - `SSL and Certificates Read`
-    - `SSL and Certificates Write`
-
     ## Example Usage
 
     ```python
@@ -191,15 +172,18 @@ def get_hostname_tls_setting_output(setting_id: pulumi.Input[Optional[_builtins.
     import pulumi_cloudflare as cloudflare
 
     example_hostname_tls_setting = cloudflare.get_hostname_tls_setting(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-        setting_id="ciphers")
+        setting_id="ciphers",
+        hostname="app.example.com")
     ```
 
 
+    :param _builtins.str hostname: The hostname for which the tls settings are set.
     :param _builtins.str setting_id: The TLS Setting name.
            The value type depends on the setting:
     :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()
+    __args__['hostname'] = hostname
     __args__['settingId'] = setting_id
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -207,7 +191,6 @@ def get_hostname_tls_setting_output(setting_id: pulumi.Input[Optional[_builtins.
     return __ret__.apply(lambda __response__: GetHostnameTlsSettingResult(
         created_at=pulumi.get(__response__, 'created_at'),
         hostname=pulumi.get(__response__, 'hostname'),
-        id=pulumi.get(__response__, 'id'),
         setting_id=pulumi.get(__response__, 'setting_id'),
         status=pulumi.get(__response__, 'status'),
         updated_at=pulumi.get(__response__, 'updated_at'),

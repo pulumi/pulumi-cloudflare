@@ -73,7 +73,7 @@ type LookupListItemResult struct {
 	Comment string `pulumi:"comment"`
 	// The RFC 3339 timestamp of when the list was created.
 	CreatedOn string `pulumi:"createdOn"`
-	// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+	// Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
 	Hostname GetListItemHostname `pulumi:"hostname"`
 	// Defines the unique ID of the item in the List.
 	Id string `pulumi:"id"`
@@ -147,7 +147,7 @@ func (o LookupListItemResultOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupListItemResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+// Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
 func (o LookupListItemResultOutput) Hostname() GetListItemHostnameOutput {
 	return o.ApplyT(func(v LookupListItemResult) GetListItemHostname { return v.Hostname }).(GetListItemHostnameOutput)
 }

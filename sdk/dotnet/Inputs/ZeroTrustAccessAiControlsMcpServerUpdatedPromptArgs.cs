@@ -12,15 +12,27 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Custom name exposed for the capability.
+        /// </summary>
         [Input("alias")]
         public Input<string>? Alias { get; set; }
 
+        /// <summary>
+        /// Custom description exposed for the capability.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Whether the capability is available through the MCP server.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Name of the tool or prompt capability to override.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 

@@ -106,7 +106,7 @@ namespace Pulumi.Cloudflare
         public Inputs.GetZeroTrustAccessAiControlsMcpServerFilterArgs? Filter { get; set; }
 
         /// <summary>
-        /// server id
+        /// Unique identifier for the MCP server.
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
@@ -126,7 +126,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.GetZeroTrustAccessAiControlsMcpServerFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
-        /// server id
+        /// Unique identifier for the MCP server.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -147,18 +147,30 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly Outputs.GetZeroTrustAccessAiControlsMcpServerAuthConfigSummaryResult AuthConfigSummary;
         /// <summary>
+        /// Authentication method used to connect to the upstream MCP server.
         /// Available values: "oauth", "bearer", "unauthenticated".
         /// </summary>
         public readonly string AuthType;
+        /// <summary>
+        /// Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
+        /// Available values: "NotRequired", "required", "connected", "stale", "manual".
+        /// </summary>
+        public readonly string AuthenticationStatus;
         public readonly string CreatedAt;
         public readonly string CreatedBy;
+        /// <summary>
+        /// Optional description of the MCP server.
+        /// </summary>
         public readonly string Description;
         public readonly string Error;
         public readonly Outputs.GetZeroTrustAccessAiControlsMcpServerErrorDetailsResult ErrorDetails;
         public readonly Outputs.GetZeroTrustAccessAiControlsMcpServerFilterResult? Filter;
+        /// <summary>
+        /// URL of the upstream MCP endpoint.
+        /// </summary>
         public readonly string Hostname;
         /// <summary>
-        /// server id
+        /// Unique identifier for the MCP server.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -169,10 +181,13 @@ namespace Pulumi.Cloudflare
         public readonly string LastSynced;
         public readonly string ModifiedAt;
         public readonly string ModifiedBy;
+        /// <summary>
+        /// Display name for the MCP server.
+        /// </summary>
         public readonly string Name;
         public readonly ImmutableArray<ImmutableDictionary<string, string>> Prompts;
         /// <summary>
-        /// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+        /// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
         /// </summary>
         public readonly bool SecureWebGateway;
         /// <summary>
@@ -181,7 +196,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Status;
         public readonly ImmutableArray<ImmutableDictionary<string, string>> Tools;
+        /// <summary>
+        /// Server-wide prompt capability overrides.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustAccessAiControlsMcpServerUpdatedPromptResult> UpdatedPrompts;
+        /// <summary>
+        /// Server-wide tool capability overrides.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustAccessAiControlsMcpServerUpdatedToolResult> UpdatedTools;
 
         [OutputConstructor]
@@ -191,6 +212,8 @@ namespace Pulumi.Cloudflare
             Outputs.GetZeroTrustAccessAiControlsMcpServerAuthConfigSummaryResult authConfigSummary,
 
             string authType,
+
+            string authenticationStatus,
 
             string createdAt,
 
@@ -235,6 +258,7 @@ namespace Pulumi.Cloudflare
             AccountId = accountId;
             AuthConfigSummary = authConfigSummary;
             AuthType = authType;
+            AuthenticationStatus = authenticationStatus;
             CreatedAt = createdAt;
             CreatedBy = createdBy;
             Description = description;

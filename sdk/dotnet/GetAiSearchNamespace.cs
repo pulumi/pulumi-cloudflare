@@ -61,6 +61,8 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Description;
         public readonly string Name;
+        public readonly string PublicEndpointId;
+        public readonly Outputs.GetAiSearchNamespacePublicEndpointParamsResult PublicEndpointParams;
 
         [OutputConstructor]
         private GetAiSearchNamespaceResult(
@@ -70,12 +72,18 @@ namespace Pulumi.Cloudflare
 
             string description,
 
-            string name)
+            string name,
+
+            string publicEndpointId,
+
+            Outputs.GetAiSearchNamespacePublicEndpointParamsResult publicEndpointParams)
         {
             AccountId = accountId;
             CreatedAt = createdAt;
             Description = description;
             Name = name;
+            PublicEndpointId = publicEndpointId;
+            PublicEndpointParams = publicEndpointParams;
         }
     }
 }

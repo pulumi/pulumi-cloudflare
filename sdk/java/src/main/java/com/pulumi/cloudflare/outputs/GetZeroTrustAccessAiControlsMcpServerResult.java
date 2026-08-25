@@ -27,19 +27,34 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
      */
     private GetZeroTrustAccessAiControlsMcpServerAuthConfigSummary authConfigSummary;
     /**
-     * @return Available values: &#34;oauth&#34;, &#34;bearer&#34;, &#34;unauthenticated&#34;.
+     * @return Authentication method used to connect to the upstream MCP server.
+     * Available values: &#34;oauth&#34;, &#34;bearer&#34;, &#34;unauthenticated&#34;.
      * 
      */
     private String authType;
+    /**
+     * @return Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
+     * Available values: &#34;notRequired&#34;, &#34;required&#34;, &#34;connected&#34;, &#34;stale&#34;, &#34;manual&#34;.
+     * 
+     */
+    private String authenticationStatus;
     private String createdAt;
     private String createdBy;
+    /**
+     * @return Optional description of the MCP server.
+     * 
+     */
     private String description;
     private String error;
     private GetZeroTrustAccessAiControlsMcpServerErrorDetails errorDetails;
     private @Nullable GetZeroTrustAccessAiControlsMcpServerFilter filter;
+    /**
+     * @return URL of the upstream MCP endpoint.
+     * 
+     */
     private String hostname;
     /**
-     * @return server id
+     * @return Unique identifier for the MCP server.
      * 
      */
     private String id;
@@ -52,10 +67,14 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
     private String lastSynced;
     private String modifiedAt;
     private String modifiedBy;
+    /**
+     * @return Display name for the MCP server.
+     * 
+     */
     private String name;
     private List<Map<String,String>> prompts;
     /**
-     * @return Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+     * @return Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
      * 
      */
     private Boolean secureWebGateway;
@@ -66,7 +85,15 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
      */
     private String status;
     private List<Map<String,String>> tools;
+    /**
+     * @return Server-wide prompt capability overrides.
+     * 
+     */
     private List<GetZeroTrustAccessAiControlsMcpServerUpdatedPrompt> updatedPrompts;
+    /**
+     * @return Server-wide tool capability overrides.
+     * 
+     */
     private List<GetZeroTrustAccessAiControlsMcpServerUpdatedTool> updatedTools;
 
     private GetZeroTrustAccessAiControlsMcpServerResult() {}
@@ -81,11 +108,20 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
         return this.authConfigSummary;
     }
     /**
-     * @return Available values: &#34;oauth&#34;, &#34;bearer&#34;, &#34;unauthenticated&#34;.
+     * @return Authentication method used to connect to the upstream MCP server.
+     * Available values: &#34;oauth&#34;, &#34;bearer&#34;, &#34;unauthenticated&#34;.
      * 
      */
     public String authType() {
         return this.authType;
+    }
+    /**
+     * @return Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
+     * Available values: &#34;notRequired&#34;, &#34;required&#34;, &#34;connected&#34;, &#34;stale&#34;, &#34;manual&#34;.
+     * 
+     */
+    public String authenticationStatus() {
+        return this.authenticationStatus;
     }
     public String createdAt() {
         return this.createdAt;
@@ -93,6 +129,10 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
     public String createdBy() {
         return this.createdBy;
     }
+    /**
+     * @return Optional description of the MCP server.
+     * 
+     */
     public String description() {
         return this.description;
     }
@@ -105,11 +145,15 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
     public Optional<GetZeroTrustAccessAiControlsMcpServerFilter> filter() {
         return Optional.ofNullable(this.filter);
     }
+    /**
+     * @return URL of the upstream MCP endpoint.
+     * 
+     */
     public String hostname() {
         return this.hostname;
     }
     /**
-     * @return server id
+     * @return Unique identifier for the MCP server.
      * 
      */
     public String id() {
@@ -134,6 +178,10 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
     public String modifiedBy() {
         return this.modifiedBy;
     }
+    /**
+     * @return Display name for the MCP server.
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -141,7 +189,7 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
         return this.prompts;
     }
     /**
-     * @return Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+     * @return Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
      * 
      */
     public Boolean secureWebGateway() {
@@ -158,9 +206,17 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
     public List<Map<String,String>> tools() {
         return this.tools;
     }
+    /**
+     * @return Server-wide prompt capability overrides.
+     * 
+     */
     public List<GetZeroTrustAccessAiControlsMcpServerUpdatedPrompt> updatedPrompts() {
         return this.updatedPrompts;
     }
+    /**
+     * @return Server-wide tool capability overrides.
+     * 
+     */
     public List<GetZeroTrustAccessAiControlsMcpServerUpdatedTool> updatedTools() {
         return this.updatedTools;
     }
@@ -177,6 +233,7 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
         private @Nullable String accountId;
         private GetZeroTrustAccessAiControlsMcpServerAuthConfigSummary authConfigSummary;
         private String authType;
+        private String authenticationStatus;
         private String createdAt;
         private String createdBy;
         private String description;
@@ -203,6 +260,7 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
     	      this.accountId = defaults.accountId;
     	      this.authConfigSummary = defaults.authConfigSummary;
     	      this.authType = defaults.authType;
+    	      this.authenticationStatus = defaults.authenticationStatus;
     	      this.createdAt = defaults.createdAt;
     	      this.createdBy = defaults.createdBy;
     	      this.description = defaults.description;
@@ -245,6 +303,14 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpServerResult", "authType");
             }
             this.authType = authType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder authenticationStatus(String authenticationStatus) {
+            if (authenticationStatus == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpServerResult", "authenticationStatus");
+            }
+            this.authenticationStatus = authenticationStatus;
             return this;
         }
         @CustomType.Setter
@@ -416,6 +482,7 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
             _resultValue.accountId = accountId;
             _resultValue.authConfigSummary = authConfigSummary;
             _resultValue.authType = authType;
+            _resultValue.authenticationStatus = authenticationStatus;
             _resultValue.createdAt = createdAt;
             _resultValue.createdBy = createdBy;
             _resultValue.description = description;

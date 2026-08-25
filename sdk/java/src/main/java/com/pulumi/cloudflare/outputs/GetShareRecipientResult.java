@@ -21,8 +21,10 @@ public final class GetShareRecipientResult {
      */
     private String accountId;
     /**
-     * @return Share Recipient association status.
-     * Available values: &#34;associating&#34;, &#34;associated&#34;, &#34;disassociating&#34;, &#34;disassociated&#34;.
+     * @return The current state of the recipient relative to the share. The
+     * `desiredAssociationStatus` (not exposed in the response) tracks the
+     * target state set by the API; the background reconciliation workflow
+     * drives `currentAssociationStatus` toward it.
      * 
      */
     private String associationStatus;
@@ -67,8 +69,10 @@ public final class GetShareRecipientResult {
         return this.accountId;
     }
     /**
-     * @return Share Recipient association status.
-     * Available values: &#34;associating&#34;, &#34;associated&#34;, &#34;disassociating&#34;, &#34;disassociated&#34;.
+     * @return The current state of the recipient relative to the share. The
+     * `desiredAssociationStatus` (not exposed in the response) tracks the
+     * target state set by the API; the background reconciliation workflow
+     * drives `currentAssociationStatus` toward it.
      * 
      */
     public String associationStatus() {

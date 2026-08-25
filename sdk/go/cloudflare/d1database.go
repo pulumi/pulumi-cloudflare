@@ -65,7 +65,7 @@ type D1Database struct {
 	// The D1 database's size, in bytes.
 	FileSize pulumi.Float64Output `pulumi:"fileSize"`
 	// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-	// Available values: "eu", "fedramp".
+	// Available values: "eu", "fedramp", "us".
 	Jurisdiction pulumi.StringPtrOutput `pulumi:"jurisdiction"`
 	// D1 database name.
 	Name      pulumi.StringOutput  `pulumi:"name"`
@@ -123,7 +123,7 @@ type d1databaseState struct {
 	// The D1 database's size, in bytes.
 	FileSize *float64 `pulumi:"fileSize"`
 	// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-	// Available values: "eu", "fedramp".
+	// Available values: "eu", "fedramp", "us".
 	Jurisdiction *string `pulumi:"jurisdiction"`
 	// D1 database name.
 	Name      *string  `pulumi:"name"`
@@ -146,7 +146,7 @@ type D1DatabaseState struct {
 	// The D1 database's size, in bytes.
 	FileSize pulumi.Float64PtrInput
 	// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-	// Available values: "eu", "fedramp".
+	// Available values: "eu", "fedramp", "us".
 	Jurisdiction pulumi.StringPtrInput
 	// D1 database name.
 	Name      pulumi.StringPtrInput
@@ -169,7 +169,7 @@ type d1databaseArgs struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`
 	// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-	// Available values: "eu", "fedramp".
+	// Available values: "eu", "fedramp", "us".
 	Jurisdiction *string `pulumi:"jurisdiction"`
 	// D1 database name.
 	Name string `pulumi:"name"`
@@ -185,7 +185,7 @@ type D1DatabaseArgs struct {
 	// Account identifier tag.
 	AccountId pulumi.StringInput
 	// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-	// Available values: "eu", "fedramp".
+	// Available values: "eu", "fedramp", "us".
 	Jurisdiction pulumi.StringPtrInput
 	// D1 database name.
 	Name pulumi.StringInput
@@ -299,7 +299,7 @@ func (o D1DatabaseOutput) FileSize() pulumi.Float64Output {
 }
 
 // Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
-// Available values: "eu", "fedramp".
+// Available values: "eu", "fedramp", "us".
 func (o D1DatabaseOutput) Jurisdiction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *D1Database) pulumi.StringPtrOutput { return v.Jurisdiction }).(pulumi.StringPtrOutput)
 }

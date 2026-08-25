@@ -119,10 +119,10 @@ public class AccountDnsSettings extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enforceDnsOnly);
     }
     @Export(name="zoneDefaults", refs={AccountDnsSettingsZoneDefaults.class}, tree="[0]")
-    private Output</* @Nullable */ AccountDnsSettingsZoneDefaults> zoneDefaults;
+    private Output<AccountDnsSettingsZoneDefaults> zoneDefaults;
 
-    public Output<Optional<AccountDnsSettingsZoneDefaults>> zoneDefaults() {
-        return Codegen.optional(this.zoneDefaults);
+    public Output<AccountDnsSettingsZoneDefaults> zoneDefaults() {
+        return this.zoneDefaults;
     }
 
     /**

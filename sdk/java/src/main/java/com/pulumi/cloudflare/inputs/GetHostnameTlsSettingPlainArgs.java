@@ -16,6 +16,21 @@ public final class GetHostnameTlsSettingPlainArgs extends com.pulumi.resources.I
     public static final GetHostnameTlsSettingPlainArgs Empty = new GetHostnameTlsSettingPlainArgs();
 
     /**
+     * The hostname for which the tls settings are set.
+     * 
+     */
+    @Import(name="hostname", required=true)
+    private String hostname;
+
+    /**
+     * @return The hostname for which the tls settings are set.
+     * 
+     */
+    public String hostname() {
+        return this.hostname;
+    }
+
+    /**
      * The TLS Setting name.
      * The value type depends on the setting:
      * 
@@ -50,6 +65,7 @@ public final class GetHostnameTlsSettingPlainArgs extends com.pulumi.resources.I
     private GetHostnameTlsSettingPlainArgs() {}
 
     private GetHostnameTlsSettingPlainArgs(GetHostnameTlsSettingPlainArgs $) {
+        this.hostname = $.hostname;
         this.settingId = $.settingId;
         this.zoneId = $.zoneId;
     }
@@ -70,6 +86,17 @@ public final class GetHostnameTlsSettingPlainArgs extends com.pulumi.resources.I
 
         public Builder(GetHostnameTlsSettingPlainArgs defaults) {
             $ = new GetHostnameTlsSettingPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param hostname The hostname for which the tls settings are set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostname(String hostname) {
+            $.hostname = hostname;
+            return this;
         }
 
         /**
@@ -96,6 +123,9 @@ public final class GetHostnameTlsSettingPlainArgs extends com.pulumi.resources.I
         }
 
         public GetHostnameTlsSettingPlainArgs build() {
+            if ($.hostname == null) {
+                throw new MissingRequiredPropertyException("GetHostnameTlsSettingPlainArgs", "hostname");
+            }
             if ($.settingId == null) {
                 throw new MissingRequiredPropertyException("GetHostnameTlsSettingPlainArgs", "settingId");
             }

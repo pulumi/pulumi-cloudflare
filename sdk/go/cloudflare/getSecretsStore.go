@@ -54,23 +54,27 @@ func LookupSecretsStore(ctx *pulumi.Context, args *LookupSecretsStoreArgs, opts 
 
 // A collection of arguments for invoking getSecretsStore.
 type LookupSecretsStoreArgs struct {
+	// Account Identifier
 	AccountId string                 `pulumi:"accountId"`
 	Filter    *GetSecretsStoreFilter `pulumi:"filter"`
-	StoreId   *string                `pulumi:"storeId"`
+	// Store Identifier
+	StoreId *string `pulumi:"storeId"`
 }
 
 // A collection of values returned by getSecretsStore.
 type LookupSecretsStoreResult struct {
+	// Account Identifier
 	AccountId string `pulumi:"accountId"`
 	// When the secret was created.
 	Created string                 `pulumi:"created"`
 	Filter  *GetSecretsStoreFilter `pulumi:"filter"`
-	// The ID of this resource.
+	// Store Identifier
 	Id string `pulumi:"id"`
 	// When the secret was modified.
 	Modified string `pulumi:"modified"`
 	// The name of the store.
-	Name    string  `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// Store Identifier
 	StoreId *string `pulumi:"storeId"`
 }
 
@@ -85,9 +89,11 @@ func LookupSecretsStoreOutput(ctx *pulumi.Context, args LookupSecretsStoreOutput
 
 // A collection of arguments for invoking getSecretsStore.
 type LookupSecretsStoreOutputArgs struct {
+	// Account Identifier
 	AccountId pulumi.StringInput            `pulumi:"accountId"`
 	Filter    GetSecretsStoreFilterPtrInput `pulumi:"filter"`
-	StoreId   pulumi.StringPtrInput         `pulumi:"storeId"`
+	// Store Identifier
+	StoreId pulumi.StringPtrInput `pulumi:"storeId"`
 }
 
 func (LookupSecretsStoreOutputArgs) ElementType() reflect.Type {
@@ -109,6 +115,7 @@ func (o LookupSecretsStoreResultOutput) ToLookupSecretsStoreResultOutputWithCont
 	return o
 }
 
+// Account Identifier
 func (o LookupSecretsStoreResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretsStoreResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -122,7 +129,7 @@ func (o LookupSecretsStoreResultOutput) Filter() GetSecretsStoreFilterPtrOutput 
 	return o.ApplyT(func(v LookupSecretsStoreResult) *GetSecretsStoreFilter { return v.Filter }).(GetSecretsStoreFilterPtrOutput)
 }
 
-// The ID of this resource.
+// Store Identifier
 func (o LookupSecretsStoreResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretsStoreResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -137,6 +144,7 @@ func (o LookupSecretsStoreResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretsStoreResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Store Identifier
 func (o LookupSecretsStoreResultOutput) StoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretsStoreResult) *string { return v.StoreId }).(pulumi.StringPtrOutput)
 }

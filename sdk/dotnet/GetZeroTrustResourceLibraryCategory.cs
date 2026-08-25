@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleZeroTrustResourceLibraryCategory = Cloudflare.GetZeroTrustResourceLibraryCategory.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         Id = "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
+        ///         Id = 12,
         ///     });
         /// 
         /// });
@@ -48,7 +48,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleZeroTrustResourceLibraryCategory = Cloudflare.GetZeroTrustResourceLibraryCategory.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         Id = "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
+        ///         Id = 12,
         ///     });
         /// 
         /// });
@@ -71,7 +71,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleZeroTrustResourceLibraryCategory = Cloudflare.GetZeroTrustResourceLibraryCategory.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         Id = "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
+        ///         Id = 12,
         ///     });
         /// 
         /// });
@@ -91,7 +91,7 @@ namespace Pulumi.Cloudflare
         /// The ID of this resource.
         /// </summary>
         [Input("id", required: true)]
-        public string Id { get; set; } = null!;
+        public int Id { get; set; }
 
         public GetZeroTrustResourceLibraryCategoryArgs()
         {
@@ -108,7 +108,7 @@ namespace Pulumi.Cloudflare
         /// The ID of this resource.
         /// </summary>
         [Input("id", required: true)]
-        public Input<string> Id { get; set; } = null!;
+        public Input<int> Id { get; set; } = null!;
 
         public GetZeroTrustResourceLibraryCategoryInvokeArgs()
         {
@@ -132,7 +132,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The ID of this resource.
         /// </summary>
-        public readonly string Id;
+        public readonly int Id;
         /// <summary>
         /// Returns the category name.
         /// </summary>
@@ -146,7 +146,7 @@ namespace Pulumi.Cloudflare
 
             string description,
 
-            string id,
+            int id,
 
             string name)
         {

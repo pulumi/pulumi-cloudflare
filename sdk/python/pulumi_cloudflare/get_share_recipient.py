@@ -68,8 +68,10 @@ class GetShareRecipientResult:
     @pulumi.getter(name="associationStatus")
     def association_status(self) -> _builtins.str:
         """
-        Share Recipient association status.
-        Available values: "associating", "associated", "disassociating", "disassociated".
+        The current state of the recipient relative to the share. The
+        `desired_association_status` (not exposed in the response) tracks the
+        target state set by the API; the background reconciliation workflow
+        drives `current_association_status` toward it.
         """
         return pulumi.get(self, "association_status")
 

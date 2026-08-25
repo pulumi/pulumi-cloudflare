@@ -29,7 +29,7 @@ public final class GetUserGroupPolicyResourceGroup {
      */
     private String name;
     /**
-     * @return A scope is a combination of scope objects which provides additional context.
+     * @return The scope associated to the resource group
      * 
      */
     private List<GetUserGroupPolicyResourceGroupScope> scopes;
@@ -57,7 +57,7 @@ public final class GetUserGroupPolicyResourceGroup {
         return this.name;
     }
     /**
-     * @return A scope is a combination of scope objects which provides additional context.
+     * @return The scope associated to the resource group
      * 
      */
     public List<GetUserGroupPolicyResourceGroupScope> scopes() {

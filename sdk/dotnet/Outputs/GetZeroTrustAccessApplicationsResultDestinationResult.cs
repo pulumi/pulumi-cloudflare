@@ -35,7 +35,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string PortRange;
         /// <summary>
-        /// Available values: "public", "private".
+        /// Available values: "public", "private", "via*mcp*server*portal", "worker", "preview*worker", "all*workers", "all*preview_workers".
         /// </summary>
         public readonly string Type;
         /// <summary>
@@ -46,6 +46,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// The VNET ID to match the destination. When omitted, all VNETs will match.
         /// </summary>
         public readonly string VnetId;
+        /// <summary>
+        /// The ID of the Cloudflare Worker to protect with Access. Required when type is `Worker` or `PreviewWorker`.
+        /// </summary>
+        public readonly string WorkerId;
 
         [OutputConstructor]
         private GetZeroTrustAccessApplicationsResultDestinationResult(
@@ -63,7 +67,9 @@ namespace Pulumi.Cloudflare.Outputs
 
             string uri,
 
-            string vnetId)
+            string vnetId,
+
+            string workerId)
         {
             Cidr = cidr;
             Hostname = hostname;
@@ -73,6 +79,7 @@ namespace Pulumi.Cloudflare.Outputs
             Type = type;
             Uri = uri;
             VnetId = vnetId;
+            WorkerId = workerId;
         }
     }
 }

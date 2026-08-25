@@ -35,6 +35,7 @@ import * as utilities from "./utilities";
  *     retryBackoff: "constant",
  *     retryDelay: 0,
  *     retryMaxAttempts: 1,
+ *     storeId: "store_id",
  *     workersAiBillingMode: "postpaid",
  *     zdr: true,
  * });
@@ -87,6 +88,7 @@ export class AiGateway extends pulumi.CustomResource {
     declare public readonly dlp: pulumi.Output<outputs.AiGatewayDlp | undefined>;
     declare public readonly guardrails: pulumi.Output<outputs.AiGatewayGuardrails | undefined>;
     declare public /*out*/ readonly isDefault: pulumi.Output<boolean>;
+    declare public readonly logClassification: pulumi.Output<boolean | undefined>;
     declare public readonly logManagement: pulumi.Output<number | undefined>;
     /**
      * Available values: "STOP*INSERTING", "DELETE*OLDEST".
@@ -119,8 +121,8 @@ export class AiGateway extends pulumi.CustomResource {
     declare public readonly storeId: pulumi.Output<string | undefined>;
     declare public readonly stripe: pulumi.Output<outputs.AiGatewayStripe | undefined>;
     /**
-     * Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-     * Available values: "postpaid".
+     * Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+     * Available values: "postpaid", "unified".
      */
     declare public readonly workersAiBillingMode: pulumi.Output<string>;
     declare public readonly zdr: pulumi.Output<boolean | undefined>;
@@ -148,6 +150,7 @@ export class AiGateway extends pulumi.CustomResource {
             resourceInputs["dlp"] = state?.dlp;
             resourceInputs["guardrails"] = state?.guardrails;
             resourceInputs["isDefault"] = state?.isDefault;
+            resourceInputs["logClassification"] = state?.logClassification;
             resourceInputs["logManagement"] = state?.logManagement;
             resourceInputs["logManagementStrategy"] = state?.logManagementStrategy;
             resourceInputs["logpush"] = state?.logpush;
@@ -196,6 +199,7 @@ export class AiGateway extends pulumi.CustomResource {
             resourceInputs["collectLogs"] = args?.collectLogs;
             resourceInputs["dlp"] = args?.dlp;
             resourceInputs["guardrails"] = args?.guardrails;
+            resourceInputs["logClassification"] = args?.logClassification;
             resourceInputs["logManagement"] = args?.logManagement;
             resourceInputs["logManagementStrategy"] = args?.logManagementStrategy;
             resourceInputs["logpush"] = args?.logpush;
@@ -238,6 +242,7 @@ export interface AiGatewayState {
     dlp?: pulumi.Input<inputs.AiGatewayDlp | undefined>;
     guardrails?: pulumi.Input<inputs.AiGatewayGuardrails | undefined>;
     isDefault?: pulumi.Input<boolean | undefined>;
+    logClassification?: pulumi.Input<boolean | undefined>;
     logManagement?: pulumi.Input<number | undefined>;
     /**
      * Available values: "STOP*INSERTING", "DELETE*OLDEST".
@@ -270,8 +275,8 @@ export interface AiGatewayState {
     storeId?: pulumi.Input<string | undefined>;
     stripe?: pulumi.Input<inputs.AiGatewayStripe | undefined>;
     /**
-     * Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-     * Available values: "postpaid".
+     * Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+     * Available values: "postpaid", "unified".
      */
     workersAiBillingMode?: pulumi.Input<string | undefined>;
     zdr?: pulumi.Input<boolean | undefined>;
@@ -292,6 +297,7 @@ export interface AiGatewayArgs {
     collectLogs: pulumi.Input<boolean>;
     dlp?: pulumi.Input<inputs.AiGatewayDlp | undefined>;
     guardrails?: pulumi.Input<inputs.AiGatewayGuardrails | undefined>;
+    logClassification?: pulumi.Input<boolean | undefined>;
     logManagement?: pulumi.Input<number | undefined>;
     /**
      * Available values: "STOP*INSERTING", "DELETE*OLDEST".
@@ -323,8 +329,8 @@ export interface AiGatewayArgs {
     storeId?: pulumi.Input<string | undefined>;
     stripe?: pulumi.Input<inputs.AiGatewayStripe | undefined>;
     /**
-     * Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-     * Available values: "postpaid".
+     * Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+     * Available values: "postpaid", "unified".
      */
     workersAiBillingMode?: pulumi.Input<string | undefined>;
     zdr?: pulumi.Input<boolean | undefined>;
