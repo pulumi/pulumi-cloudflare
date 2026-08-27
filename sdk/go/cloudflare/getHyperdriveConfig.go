@@ -84,12 +84,8 @@ type LookupHyperdriveConfigResult struct {
 }
 
 func LookupHyperdriveConfigOutput(ctx *pulumi.Context, args LookupHyperdriveConfigOutputArgs, opts ...pulumi.InvokeOption) LookupHyperdriveConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHyperdriveConfigResultOutput, error) {
-			args := v.(LookupHyperdriveConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getHyperdriveConfig:getHyperdriveConfig", args, LookupHyperdriveConfigResultOutput{}, options).(LookupHyperdriveConfigResultOutput), nil
-		}).(LookupHyperdriveConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getHyperdriveConfig:getHyperdriveConfig", args, LookupHyperdriveConfigResultOutput{}, options).(LookupHyperdriveConfigResultOutput)
 }
 
 // A collection of arguments for invoking getHyperdriveConfig.

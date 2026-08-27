@@ -77,12 +77,8 @@ type GetAccountRoleResult struct {
 }
 
 func GetAccountRoleOutput(ctx *pulumi.Context, args GetAccountRoleOutputArgs, opts ...pulumi.InvokeOption) GetAccountRoleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAccountRoleResultOutput, error) {
-			args := v.(GetAccountRoleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getAccountRole:getAccountRole", args, GetAccountRoleResultOutput{}, options).(GetAccountRoleResultOutput), nil
-		}).(GetAccountRoleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getAccountRole:getAccountRole", args, GetAccountRoleResultOutput{}, options).(GetAccountRoleResultOutput)
 }
 
 // A collection of arguments for invoking getAccountRole.

@@ -70,12 +70,8 @@ type LookupWeb3HostnamesResult struct {
 }
 
 func LookupWeb3HostnamesOutput(ctx *pulumi.Context, args LookupWeb3HostnamesOutputArgs, opts ...pulumi.InvokeOption) LookupWeb3HostnamesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWeb3HostnamesResultOutput, error) {
-			args := v.(LookupWeb3HostnamesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getWeb3Hostnames:getWeb3Hostnames", args, LookupWeb3HostnamesResultOutput{}, options).(LookupWeb3HostnamesResultOutput), nil
-		}).(LookupWeb3HostnamesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getWeb3Hostnames:getWeb3Hostnames", args, LookupWeb3HostnamesResultOutput{}, options).(LookupWeb3HostnamesResultOutput)
 }
 
 // A collection of arguments for invoking getWeb3Hostnames.

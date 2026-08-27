@@ -73,12 +73,8 @@ type GetMtlsCertificateAssociationsResult struct {
 }
 
 func GetMtlsCertificateAssociationsOutput(ctx *pulumi.Context, args GetMtlsCertificateAssociationsOutputArgs, opts ...pulumi.InvokeOption) GetMtlsCertificateAssociationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetMtlsCertificateAssociationsResultOutput, error) {
-			args := v.(GetMtlsCertificateAssociationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getMtlsCertificateAssociations:getMtlsCertificateAssociations", args, GetMtlsCertificateAssociationsResultOutput{}, options).(GetMtlsCertificateAssociationsResultOutput), nil
-		}).(GetMtlsCertificateAssociationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getMtlsCertificateAssociations:getMtlsCertificateAssociations", args, GetMtlsCertificateAssociationsResultOutput{}, options).(GetMtlsCertificateAssociationsResultOutput)
 }
 
 // A collection of arguments for invoking getMtlsCertificateAssociations.

@@ -118,12 +118,8 @@ type LookupZeroTrustTunnelCloudflaredRoutesResult struct {
 }
 
 func LookupZeroTrustTunnelCloudflaredRoutesOutput(ctx *pulumi.Context, args LookupZeroTrustTunnelCloudflaredRoutesOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustTunnelCloudflaredRoutesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustTunnelCloudflaredRoutesResultOutput, error) {
-			args := v.(LookupZeroTrustTunnelCloudflaredRoutesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustTunnelCloudflaredRoutes:getZeroTrustTunnelCloudflaredRoutes", args, LookupZeroTrustTunnelCloudflaredRoutesResultOutput{}, options).(LookupZeroTrustTunnelCloudflaredRoutesResultOutput), nil
-		}).(LookupZeroTrustTunnelCloudflaredRoutesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustTunnelCloudflaredRoutes:getZeroTrustTunnelCloudflaredRoutes", args, LookupZeroTrustTunnelCloudflaredRoutesResultOutput{}, options).(LookupZeroTrustTunnelCloudflaredRoutesResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustTunnelCloudflaredRoutes.

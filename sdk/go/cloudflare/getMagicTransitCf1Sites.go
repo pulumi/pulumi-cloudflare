@@ -72,12 +72,8 @@ type LookupMagicTransitCf1SitesResult struct {
 }
 
 func LookupMagicTransitCf1SitesOutput(ctx *pulumi.Context, args LookupMagicTransitCf1SitesOutputArgs, opts ...pulumi.InvokeOption) LookupMagicTransitCf1SitesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMagicTransitCf1SitesResultOutput, error) {
-			args := v.(LookupMagicTransitCf1SitesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getMagicTransitCf1Sites:getMagicTransitCf1Sites", args, LookupMagicTransitCf1SitesResultOutput{}, options).(LookupMagicTransitCf1SitesResultOutput), nil
-		}).(LookupMagicTransitCf1SitesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getMagicTransitCf1Sites:getMagicTransitCf1Sites", args, LookupMagicTransitCf1SitesResultOutput{}, options).(LookupMagicTransitCf1SitesResultOutput)
 }
 
 // A collection of arguments for invoking getMagicTransitCf1Sites.

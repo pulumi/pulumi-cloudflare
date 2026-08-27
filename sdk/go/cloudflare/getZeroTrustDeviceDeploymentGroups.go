@@ -72,12 +72,8 @@ type LookupZeroTrustDeviceDeploymentGroupsResult struct {
 }
 
 func LookupZeroTrustDeviceDeploymentGroupsOutput(ctx *pulumi.Context, args LookupZeroTrustDeviceDeploymentGroupsOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDeviceDeploymentGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustDeviceDeploymentGroupsResultOutput, error) {
-			args := v.(LookupZeroTrustDeviceDeploymentGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustDeviceDeploymentGroups:getZeroTrustDeviceDeploymentGroups", args, LookupZeroTrustDeviceDeploymentGroupsResultOutput{}, options).(LookupZeroTrustDeviceDeploymentGroupsResultOutput), nil
-		}).(LookupZeroTrustDeviceDeploymentGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustDeviceDeploymentGroups:getZeroTrustDeviceDeploymentGroups", args, LookupZeroTrustDeviceDeploymentGroupsResultOutput{}, options).(LookupZeroTrustDeviceDeploymentGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustDeviceDeploymentGroups.

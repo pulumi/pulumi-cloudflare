@@ -102,12 +102,8 @@ type LookupStreamLiveInputResult struct {
 }
 
 func LookupStreamLiveInputOutput(ctx *pulumi.Context, args LookupStreamLiveInputOutputArgs, opts ...pulumi.InvokeOption) LookupStreamLiveInputResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupStreamLiveInputResultOutput, error) {
-			args := v.(LookupStreamLiveInputArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getStreamLiveInput:getStreamLiveInput", args, LookupStreamLiveInputResultOutput{}, options).(LookupStreamLiveInputResultOutput), nil
-		}).(LookupStreamLiveInputResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getStreamLiveInput:getStreamLiveInput", args, LookupStreamLiveInputResultOutput{}, options).(LookupStreamLiveInputResultOutput)
 }
 
 // A collection of arguments for invoking getStreamLiveInput.

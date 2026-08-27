@@ -85,12 +85,8 @@ type LookupZoneDnsSettingsResult struct {
 }
 
 func LookupZoneDnsSettingsOutput(ctx *pulumi.Context, args LookupZoneDnsSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupZoneDnsSettingsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZoneDnsSettingsResultOutput, error) {
-			args := v.(LookupZoneDnsSettingsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZoneDnsSettings:getZoneDnsSettings", args, LookupZoneDnsSettingsResultOutput{}, options).(LookupZoneDnsSettingsResultOutput), nil
-		}).(LookupZoneDnsSettingsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZoneDnsSettings:getZoneDnsSettings", args, LookupZoneDnsSettingsResultOutput{}, options).(LookupZoneDnsSettingsResultOutput)
 }
 
 // A collection of arguments for invoking getZoneDnsSettings.

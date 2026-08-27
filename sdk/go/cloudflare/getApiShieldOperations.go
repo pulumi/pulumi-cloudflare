@@ -112,12 +112,8 @@ type LookupApiShieldOperationsResult struct {
 }
 
 func LookupApiShieldOperationsOutput(ctx *pulumi.Context, args LookupApiShieldOperationsOutputArgs, opts ...pulumi.InvokeOption) LookupApiShieldOperationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupApiShieldOperationsResultOutput, error) {
-			args := v.(LookupApiShieldOperationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getApiShieldOperations:getApiShieldOperations", args, LookupApiShieldOperationsResultOutput{}, options).(LookupApiShieldOperationsResultOutput), nil
-		}).(LookupApiShieldOperationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getApiShieldOperations:getApiShieldOperations", args, LookupApiShieldOperationsResultOutput{}, options).(LookupApiShieldOperationsResultOutput)
 }
 
 // A collection of arguments for invoking getApiShieldOperations.

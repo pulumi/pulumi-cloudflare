@@ -70,12 +70,8 @@ type LookupCtAlertingResult struct {
 }
 
 func LookupCtAlertingOutput(ctx *pulumi.Context, args LookupCtAlertingOutputArgs, opts ...pulumi.InvokeOption) LookupCtAlertingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCtAlertingResultOutput, error) {
-			args := v.(LookupCtAlertingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getCtAlerting:getCtAlerting", args, LookupCtAlertingResultOutput{}, options).(LookupCtAlertingResultOutput), nil
-		}).(LookupCtAlertingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getCtAlerting:getCtAlerting", args, LookupCtAlertingResultOutput{}, options).(LookupCtAlertingResultOutput)
 }
 
 // A collection of arguments for invoking getCtAlerting.

@@ -87,12 +87,8 @@ type LookupZeroTrustAccessServiceTokenResult struct {
 }
 
 func LookupZeroTrustAccessServiceTokenOutput(ctx *pulumi.Context, args LookupZeroTrustAccessServiceTokenOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustAccessServiceTokenResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustAccessServiceTokenResultOutput, error) {
-			args := v.(LookupZeroTrustAccessServiceTokenArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustAccessServiceToken:getZeroTrustAccessServiceToken", args, LookupZeroTrustAccessServiceTokenResultOutput{}, options).(LookupZeroTrustAccessServiceTokenResultOutput), nil
-		}).(LookupZeroTrustAccessServiceTokenResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustAccessServiceToken:getZeroTrustAccessServiceToken", args, LookupZeroTrustAccessServiceTokenResultOutput{}, options).(LookupZeroTrustAccessServiceTokenResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustAccessServiceToken.

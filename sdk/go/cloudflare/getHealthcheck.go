@@ -104,12 +104,8 @@ type LookupHealthcheckResult struct {
 }
 
 func LookupHealthcheckOutput(ctx *pulumi.Context, args LookupHealthcheckOutputArgs, opts ...pulumi.InvokeOption) LookupHealthcheckResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHealthcheckResultOutput, error) {
-			args := v.(LookupHealthcheckArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getHealthcheck:getHealthcheck", args, LookupHealthcheckResultOutput{}, options).(LookupHealthcheckResultOutput), nil
-		}).(LookupHealthcheckResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getHealthcheck:getHealthcheck", args, LookupHealthcheckResultOutput{}, options).(LookupHealthcheckResultOutput)
 }
 
 // A collection of arguments for invoking getHealthcheck.

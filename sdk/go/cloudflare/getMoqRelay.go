@@ -49,12 +49,8 @@ type LookupMoqRelayResult struct {
 }
 
 func LookupMoqRelayOutput(ctx *pulumi.Context, args LookupMoqRelayOutputArgs, opts ...pulumi.InvokeOption) LookupMoqRelayResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMoqRelayResultOutput, error) {
-			args := v.(LookupMoqRelayArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getMoqRelay:getMoqRelay", args, LookupMoqRelayResultOutput{}, options).(LookupMoqRelayResultOutput), nil
-		}).(LookupMoqRelayResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getMoqRelay:getMoqRelay", args, LookupMoqRelayResultOutput{}, options).(LookupMoqRelayResultOutput)
 }
 
 // A collection of arguments for invoking getMoqRelay.

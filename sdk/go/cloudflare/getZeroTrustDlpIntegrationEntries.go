@@ -68,12 +68,8 @@ type LookupZeroTrustDlpIntegrationEntriesResult struct {
 }
 
 func LookupZeroTrustDlpIntegrationEntriesOutput(ctx *pulumi.Context, args LookupZeroTrustDlpIntegrationEntriesOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDlpIntegrationEntriesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustDlpIntegrationEntriesResultOutput, error) {
-			args := v.(LookupZeroTrustDlpIntegrationEntriesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustDlpIntegrationEntries:getZeroTrustDlpIntegrationEntries", args, LookupZeroTrustDlpIntegrationEntriesResultOutput{}, options).(LookupZeroTrustDlpIntegrationEntriesResultOutput), nil
-		}).(LookupZeroTrustDlpIntegrationEntriesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustDlpIntegrationEntries:getZeroTrustDlpIntegrationEntries", args, LookupZeroTrustDlpIntegrationEntriesResultOutput{}, options).(LookupZeroTrustDlpIntegrationEntriesResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustDlpIntegrationEntries.

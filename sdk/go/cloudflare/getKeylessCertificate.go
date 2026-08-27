@@ -124,12 +124,8 @@ type LookupKeylessCertificateResult struct {
 }
 
 func LookupKeylessCertificateOutput(ctx *pulumi.Context, args LookupKeylessCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupKeylessCertificateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupKeylessCertificateResultOutput, error) {
-			args := v.(LookupKeylessCertificateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getKeylessCertificate:getKeylessCertificate", args, LookupKeylessCertificateResultOutput{}, options).(LookupKeylessCertificateResultOutput), nil
-		}).(LookupKeylessCertificateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getKeylessCertificate:getKeylessCertificate", args, LookupKeylessCertificateResultOutput{}, options).(LookupKeylessCertificateResultOutput)
 }
 
 // A collection of arguments for invoking getKeylessCertificate.

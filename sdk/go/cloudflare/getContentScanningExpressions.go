@@ -72,12 +72,8 @@ type LookupContentScanningExpressionsResult struct {
 }
 
 func LookupContentScanningExpressionsOutput(ctx *pulumi.Context, args LookupContentScanningExpressionsOutputArgs, opts ...pulumi.InvokeOption) LookupContentScanningExpressionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupContentScanningExpressionsResultOutput, error) {
-			args := v.(LookupContentScanningExpressionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getContentScanningExpressions:getContentScanningExpressions", args, LookupContentScanningExpressionsResultOutput{}, options).(LookupContentScanningExpressionsResultOutput), nil
-		}).(LookupContentScanningExpressionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getContentScanningExpressions:getContentScanningExpressions", args, LookupContentScanningExpressionsResultOutput{}, options).(LookupContentScanningExpressionsResultOutput)
 }
 
 // A collection of arguments for invoking getContentScanningExpressions.

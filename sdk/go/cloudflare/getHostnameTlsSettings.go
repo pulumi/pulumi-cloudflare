@@ -77,12 +77,8 @@ type LookupHostnameTlsSettingsResult struct {
 }
 
 func LookupHostnameTlsSettingsOutput(ctx *pulumi.Context, args LookupHostnameTlsSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupHostnameTlsSettingsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHostnameTlsSettingsResultOutput, error) {
-			args := v.(LookupHostnameTlsSettingsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getHostnameTlsSettings:getHostnameTlsSettings", args, LookupHostnameTlsSettingsResultOutput{}, options).(LookupHostnameTlsSettingsResultOutput), nil
-		}).(LookupHostnameTlsSettingsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getHostnameTlsSettings:getHostnameTlsSettings", args, LookupHostnameTlsSettingsResultOutput{}, options).(LookupHostnameTlsSettingsResultOutput)
 }
 
 // A collection of arguments for invoking getHostnameTlsSettings.

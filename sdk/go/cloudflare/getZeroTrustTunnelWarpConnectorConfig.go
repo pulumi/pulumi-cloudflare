@@ -82,12 +82,8 @@ type LookupZeroTrustTunnelWarpConnectorConfigResult struct {
 }
 
 func LookupZeroTrustTunnelWarpConnectorConfigOutput(ctx *pulumi.Context, args LookupZeroTrustTunnelWarpConnectorConfigOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustTunnelWarpConnectorConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustTunnelWarpConnectorConfigResultOutput, error) {
-			args := v.(LookupZeroTrustTunnelWarpConnectorConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustTunnelWarpConnectorConfig:getZeroTrustTunnelWarpConnectorConfig", args, LookupZeroTrustTunnelWarpConnectorConfigResultOutput{}, options).(LookupZeroTrustTunnelWarpConnectorConfigResultOutput), nil
-		}).(LookupZeroTrustTunnelWarpConnectorConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustTunnelWarpConnectorConfig:getZeroTrustTunnelWarpConnectorConfig", args, LookupZeroTrustTunnelWarpConnectorConfigResultOutput{}, options).(LookupZeroTrustTunnelWarpConnectorConfigResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustTunnelWarpConnectorConfig.

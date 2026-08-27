@@ -73,12 +73,8 @@ type LookupZeroTrustResourceLibraryApplicationsResult struct {
 }
 
 func LookupZeroTrustResourceLibraryApplicationsOutput(ctx *pulumi.Context, args LookupZeroTrustResourceLibraryApplicationsOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustResourceLibraryApplicationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustResourceLibraryApplicationsResultOutput, error) {
-			args := v.(LookupZeroTrustResourceLibraryApplicationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustResourceLibraryApplications:getZeroTrustResourceLibraryApplications", args, LookupZeroTrustResourceLibraryApplicationsResultOutput{}, options).(LookupZeroTrustResourceLibraryApplicationsResultOutput), nil
-		}).(LookupZeroTrustResourceLibraryApplicationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustResourceLibraryApplications:getZeroTrustResourceLibraryApplications", args, LookupZeroTrustResourceLibraryApplicationsResultOutput{}, options).(LookupZeroTrustResourceLibraryApplicationsResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustResourceLibraryApplications.

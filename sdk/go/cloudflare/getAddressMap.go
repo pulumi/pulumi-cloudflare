@@ -87,12 +87,8 @@ type LookupAddressMapResult struct {
 }
 
 func LookupAddressMapOutput(ctx *pulumi.Context, args LookupAddressMapOutputArgs, opts ...pulumi.InvokeOption) LookupAddressMapResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAddressMapResultOutput, error) {
-			args := v.(LookupAddressMapArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getAddressMap:getAddressMap", args, LookupAddressMapResultOutput{}, options).(LookupAddressMapResultOutput), nil
-		}).(LookupAddressMapResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getAddressMap:getAddressMap", args, LookupAddressMapResultOutput{}, options).(LookupAddressMapResultOutput)
 }
 
 // A collection of arguments for invoking getAddressMap.

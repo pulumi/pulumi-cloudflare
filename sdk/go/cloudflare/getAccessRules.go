@@ -115,12 +115,8 @@ type LookupAccessRulesResult struct {
 }
 
 func LookupAccessRulesOutput(ctx *pulumi.Context, args LookupAccessRulesOutputArgs, opts ...pulumi.InvokeOption) LookupAccessRulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccessRulesResultOutput, error) {
-			args := v.(LookupAccessRulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getAccessRules:getAccessRules", args, LookupAccessRulesResultOutput{}, options).(LookupAccessRulesResultOutput), nil
-		}).(LookupAccessRulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getAccessRules:getAccessRules", args, LookupAccessRulesResultOutput{}, options).(LookupAccessRulesResultOutput)
 }
 
 // A collection of arguments for invoking getAccessRules.

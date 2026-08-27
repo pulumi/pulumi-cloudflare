@@ -75,12 +75,8 @@ type LookupZeroTrustAccessShortLivedCertificatesResult struct {
 }
 
 func LookupZeroTrustAccessShortLivedCertificatesOutput(ctx *pulumi.Context, args LookupZeroTrustAccessShortLivedCertificatesOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustAccessShortLivedCertificatesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustAccessShortLivedCertificatesResultOutput, error) {
-			args := v.(LookupZeroTrustAccessShortLivedCertificatesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustAccessShortLivedCertificates:getZeroTrustAccessShortLivedCertificates", args, LookupZeroTrustAccessShortLivedCertificatesResultOutput{}, options).(LookupZeroTrustAccessShortLivedCertificatesResultOutput), nil
-		}).(LookupZeroTrustAccessShortLivedCertificatesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustAccessShortLivedCertificates:getZeroTrustAccessShortLivedCertificates", args, LookupZeroTrustAccessShortLivedCertificatesResultOutput{}, options).(LookupZeroTrustAccessShortLivedCertificatesResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustAccessShortLivedCertificates.

@@ -70,12 +70,8 @@ type LookupZeroTrustGatewayCategoriesListResult struct {
 }
 
 func LookupZeroTrustGatewayCategoriesListOutput(ctx *pulumi.Context, args LookupZeroTrustGatewayCategoriesListOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustGatewayCategoriesListResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustGatewayCategoriesListResultOutput, error) {
-			args := v.(LookupZeroTrustGatewayCategoriesListArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustGatewayCategoriesList:getZeroTrustGatewayCategoriesList", args, LookupZeroTrustGatewayCategoriesListResultOutput{}, options).(LookupZeroTrustGatewayCategoriesListResultOutput), nil
-		}).(LookupZeroTrustGatewayCategoriesListResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustGatewayCategoriesList:getZeroTrustGatewayCategoriesList", args, LookupZeroTrustGatewayCategoriesListResultOutput{}, options).(LookupZeroTrustGatewayCategoriesListResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustGatewayCategoriesList.

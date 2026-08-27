@@ -84,12 +84,8 @@ type LookupCloudforceOneRequestAssetResult struct {
 }
 
 func LookupCloudforceOneRequestAssetOutput(ctx *pulumi.Context, args LookupCloudforceOneRequestAssetOutputArgs, opts ...pulumi.InvokeOption) LookupCloudforceOneRequestAssetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCloudforceOneRequestAssetResultOutput, error) {
-			args := v.(LookupCloudforceOneRequestAssetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getCloudforceOneRequestAsset:getCloudforceOneRequestAsset", args, LookupCloudforceOneRequestAssetResultOutput{}, options).(LookupCloudforceOneRequestAssetResultOutput), nil
-		}).(LookupCloudforceOneRequestAssetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getCloudforceOneRequestAsset:getCloudforceOneRequestAsset", args, LookupCloudforceOneRequestAssetResultOutput{}, options).(LookupCloudforceOneRequestAssetResultOutput)
 }
 
 // A collection of arguments for invoking getCloudforceOneRequestAsset.

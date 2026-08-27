@@ -69,12 +69,8 @@ type LookupSchemaValidationSettingsResult struct {
 }
 
 func LookupSchemaValidationSettingsOutput(ctx *pulumi.Context, args LookupSchemaValidationSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupSchemaValidationSettingsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSchemaValidationSettingsResultOutput, error) {
-			args := v.(LookupSchemaValidationSettingsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getSchemaValidationSettings:getSchemaValidationSettings", args, LookupSchemaValidationSettingsResultOutput{}, options).(LookupSchemaValidationSettingsResultOutput), nil
-		}).(LookupSchemaValidationSettingsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getSchemaValidationSettings:getSchemaValidationSettings", args, LookupSchemaValidationSettingsResultOutput{}, options).(LookupSchemaValidationSettingsResultOutput)
 }
 
 // A collection of arguments for invoking getSchemaValidationSettings.

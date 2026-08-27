@@ -103,12 +103,8 @@ type LookupZoneHoldResult struct {
 }
 
 func LookupZoneHoldOutput(ctx *pulumi.Context, args LookupZoneHoldOutputArgs, opts ...pulumi.InvokeOption) LookupZoneHoldResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZoneHoldResultOutput, error) {
-			args := v.(LookupZoneHoldArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZoneHold:getZoneHold", args, LookupZoneHoldResultOutput{}, options).(LookupZoneHoldResultOutput), nil
-		}).(LookupZoneHoldResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZoneHold:getZoneHold", args, LookupZoneHoldResultOutput{}, options).(LookupZoneHoldResultOutput)
 }
 
 // A collection of arguments for invoking getZoneHold.

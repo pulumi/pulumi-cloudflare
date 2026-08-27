@@ -107,12 +107,8 @@ type LookupSpectrumApplicationResult struct {
 }
 
 func LookupSpectrumApplicationOutput(ctx *pulumi.Context, args LookupSpectrumApplicationOutputArgs, opts ...pulumi.InvokeOption) LookupSpectrumApplicationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSpectrumApplicationResultOutput, error) {
-			args := v.(LookupSpectrumApplicationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getSpectrumApplication:getSpectrumApplication", args, LookupSpectrumApplicationResultOutput{}, options).(LookupSpectrumApplicationResultOutput), nil
-		}).(LookupSpectrumApplicationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getSpectrumApplication:getSpectrumApplication", args, LookupSpectrumApplicationResultOutput{}, options).(LookupSpectrumApplicationResultOutput)
 }
 
 // A collection of arguments for invoking getSpectrumApplication.

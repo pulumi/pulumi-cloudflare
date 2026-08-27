@@ -64,12 +64,8 @@ type LookupEmailSecurityImpersonationRegistryResult struct {
 }
 
 func LookupEmailSecurityImpersonationRegistryOutput(ctx *pulumi.Context, args LookupEmailSecurityImpersonationRegistryOutputArgs, opts ...pulumi.InvokeOption) LookupEmailSecurityImpersonationRegistryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEmailSecurityImpersonationRegistryResultOutput, error) {
-			args := v.(LookupEmailSecurityImpersonationRegistryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getEmailSecurityImpersonationRegistry:getEmailSecurityImpersonationRegistry", args, LookupEmailSecurityImpersonationRegistryResultOutput{}, options).(LookupEmailSecurityImpersonationRegistryResultOutput), nil
-		}).(LookupEmailSecurityImpersonationRegistryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getEmailSecurityImpersonationRegistry:getEmailSecurityImpersonationRegistry", args, LookupEmailSecurityImpersonationRegistryResultOutput{}, options).(LookupEmailSecurityImpersonationRegistryResultOutput)
 }
 
 // A collection of arguments for invoking getEmailSecurityImpersonationRegistry.

@@ -72,12 +72,8 @@ type LookupZeroTrustDeviceIpProfilesResult struct {
 }
 
 func LookupZeroTrustDeviceIpProfilesOutput(ctx *pulumi.Context, args LookupZeroTrustDeviceIpProfilesOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDeviceIpProfilesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustDeviceIpProfilesResultOutput, error) {
-			args := v.(LookupZeroTrustDeviceIpProfilesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustDeviceIpProfiles:getZeroTrustDeviceIpProfiles", args, LookupZeroTrustDeviceIpProfilesResultOutput{}, options).(LookupZeroTrustDeviceIpProfilesResultOutput), nil
-		}).(LookupZeroTrustDeviceIpProfilesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustDeviceIpProfiles:getZeroTrustDeviceIpProfiles", args, LookupZeroTrustDeviceIpProfilesResultOutput{}, options).(LookupZeroTrustDeviceIpProfilesResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustDeviceIpProfiles.

@@ -108,12 +108,8 @@ type GetPageShieldScriptsResult struct {
 }
 
 func GetPageShieldScriptsOutput(ctx *pulumi.Context, args GetPageShieldScriptsOutputArgs, opts ...pulumi.InvokeOption) GetPageShieldScriptsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPageShieldScriptsResultOutput, error) {
-			args := v.(GetPageShieldScriptsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getPageShieldScripts:getPageShieldScripts", args, GetPageShieldScriptsResultOutput{}, options).(GetPageShieldScriptsResultOutput), nil
-		}).(GetPageShieldScriptsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getPageShieldScripts:getPageShieldScripts", args, GetPageShieldScriptsResultOutput{}, options).(GetPageShieldScriptsResultOutput)
 }
 
 // A collection of arguments for invoking getPageShieldScripts.

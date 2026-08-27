@@ -94,12 +94,8 @@ type LookupWorkerResult struct {
 }
 
 func LookupWorkerOutput(ctx *pulumi.Context, args LookupWorkerOutputArgs, opts ...pulumi.InvokeOption) LookupWorkerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkerResultOutput, error) {
-			args := v.(LookupWorkerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getWorker:getWorker", args, LookupWorkerResultOutput{}, options).(LookupWorkerResultOutput), nil
-		}).(LookupWorkerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getWorker:getWorker", args, LookupWorkerResultOutput{}, options).(LookupWorkerResultOutput)
 }
 
 // A collection of arguments for invoking getWorker.

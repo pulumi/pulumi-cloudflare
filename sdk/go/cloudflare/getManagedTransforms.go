@@ -108,12 +108,8 @@ type LookupManagedTransformsResult struct {
 }
 
 func LookupManagedTransformsOutput(ctx *pulumi.Context, args LookupManagedTransformsOutputArgs, opts ...pulumi.InvokeOption) LookupManagedTransformsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupManagedTransformsResultOutput, error) {
-			args := v.(LookupManagedTransformsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getManagedTransforms:getManagedTransforms", args, LookupManagedTransformsResultOutput{}, options).(LookupManagedTransformsResultOutput), nil
-		}).(LookupManagedTransformsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getManagedTransforms:getManagedTransforms", args, LookupManagedTransformsResultOutput{}, options).(LookupManagedTransformsResultOutput)
 }
 
 // A collection of arguments for invoking getManagedTransforms.

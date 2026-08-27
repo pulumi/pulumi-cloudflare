@@ -73,12 +73,8 @@ type LookupZeroTrustDlpSensitivityGroupResult struct {
 }
 
 func LookupZeroTrustDlpSensitivityGroupOutput(ctx *pulumi.Context, args LookupZeroTrustDlpSensitivityGroupOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDlpSensitivityGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustDlpSensitivityGroupResultOutput, error) {
-			args := v.(LookupZeroTrustDlpSensitivityGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustDlpSensitivityGroup:getZeroTrustDlpSensitivityGroup", args, LookupZeroTrustDlpSensitivityGroupResultOutput{}, options).(LookupZeroTrustDlpSensitivityGroupResultOutput), nil
-		}).(LookupZeroTrustDlpSensitivityGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustDlpSensitivityGroup:getZeroTrustDlpSensitivityGroup", args, LookupZeroTrustDlpSensitivityGroupResultOutput{}, options).(LookupZeroTrustDlpSensitivityGroupResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustDlpSensitivityGroup.

@@ -70,12 +70,8 @@ type LookupStreamWebhookResult struct {
 }
 
 func LookupStreamWebhookOutput(ctx *pulumi.Context, args LookupStreamWebhookOutputArgs, opts ...pulumi.InvokeOption) LookupStreamWebhookResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupStreamWebhookResultOutput, error) {
-			args := v.(LookupStreamWebhookArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getStreamWebhook:getStreamWebhook", args, LookupStreamWebhookResultOutput{}, options).(LookupStreamWebhookResultOutput), nil
-		}).(LookupStreamWebhookResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getStreamWebhook:getStreamWebhook", args, LookupStreamWebhookResultOutput{}, options).(LookupStreamWebhookResultOutput)
 }
 
 // A collection of arguments for invoking getStreamWebhook.

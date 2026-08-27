@@ -73,12 +73,8 @@ type LookupNotificationPoliciesResult struct {
 }
 
 func LookupNotificationPoliciesOutput(ctx *pulumi.Context, args LookupNotificationPoliciesOutputArgs, opts ...pulumi.InvokeOption) LookupNotificationPoliciesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNotificationPoliciesResultOutput, error) {
-			args := v.(LookupNotificationPoliciesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getNotificationPolicies:getNotificationPolicies", args, LookupNotificationPoliciesResultOutput{}, options).(LookupNotificationPoliciesResultOutput), nil
-		}).(LookupNotificationPoliciesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getNotificationPolicies:getNotificationPolicies", args, LookupNotificationPoliciesResultOutput{}, options).(LookupNotificationPoliciesResultOutput)
 }
 
 // A collection of arguments for invoking getNotificationPolicies.

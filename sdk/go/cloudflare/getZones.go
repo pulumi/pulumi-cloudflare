@@ -83,12 +83,8 @@ type LookupZonesResult struct {
 }
 
 func LookupZonesOutput(ctx *pulumi.Context, args LookupZonesOutputArgs, opts ...pulumi.InvokeOption) LookupZonesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZonesResultOutput, error) {
-			args := v.(LookupZonesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZones:getZones", args, LookupZonesResultOutput{}, options).(LookupZonesResultOutput), nil
-		}).(LookupZonesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZones:getZones", args, LookupZonesResultOutput{}, options).(LookupZonesResultOutput)
 }
 
 // A collection of arguments for invoking getZones.

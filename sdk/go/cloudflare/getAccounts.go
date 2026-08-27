@@ -72,12 +72,8 @@ type LookupAccountsResult struct {
 }
 
 func LookupAccountsOutput(ctx *pulumi.Context, args LookupAccountsOutputArgs, opts ...pulumi.InvokeOption) LookupAccountsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccountsResultOutput, error) {
-			args := v.(LookupAccountsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getAccounts:getAccounts", args, LookupAccountsResultOutput{}, options).(LookupAccountsResultOutput), nil
-		}).(LookupAccountsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getAccounts:getAccounts", args, LookupAccountsResultOutput{}, options).(LookupAccountsResultOutput)
 }
 
 // A collection of arguments for invoking getAccounts.

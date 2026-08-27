@@ -81,12 +81,8 @@ type LookupAccountDnsSettingsInternalViewResult struct {
 }
 
 func LookupAccountDnsSettingsInternalViewOutput(ctx *pulumi.Context, args LookupAccountDnsSettingsInternalViewOutputArgs, opts ...pulumi.InvokeOption) LookupAccountDnsSettingsInternalViewResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccountDnsSettingsInternalViewResultOutput, error) {
-			args := v.(LookupAccountDnsSettingsInternalViewArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getAccountDnsSettingsInternalView:getAccountDnsSettingsInternalView", args, LookupAccountDnsSettingsInternalViewResultOutput{}, options).(LookupAccountDnsSettingsInternalViewResultOutput), nil
-		}).(LookupAccountDnsSettingsInternalViewResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getAccountDnsSettingsInternalView:getAccountDnsSettingsInternalView", args, LookupAccountDnsSettingsInternalViewResultOutput{}, options).(LookupAccountDnsSettingsInternalViewResultOutput)
 }
 
 // A collection of arguments for invoking getAccountDnsSettingsInternalView.

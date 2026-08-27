@@ -75,12 +75,8 @@ type LookupShareRecipientsResult struct {
 }
 
 func LookupShareRecipientsOutput(ctx *pulumi.Context, args LookupShareRecipientsOutputArgs, opts ...pulumi.InvokeOption) LookupShareRecipientsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupShareRecipientsResultOutput, error) {
-			args := v.(LookupShareRecipientsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getShareRecipients:getShareRecipients", args, LookupShareRecipientsResultOutput{}, options).(LookupShareRecipientsResultOutput), nil
-		}).(LookupShareRecipientsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getShareRecipients:getShareRecipients", args, LookupShareRecipientsResultOutput{}, options).(LookupShareRecipientsResultOutput)
 }
 
 // A collection of arguments for invoking getShareRecipients.

@@ -70,12 +70,8 @@ type LookupWorkersRoutesResult struct {
 }
 
 func LookupWorkersRoutesOutput(ctx *pulumi.Context, args LookupWorkersRoutesOutputArgs, opts ...pulumi.InvokeOption) LookupWorkersRoutesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkersRoutesResultOutput, error) {
-			args := v.(LookupWorkersRoutesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getWorkersRoutes:getWorkersRoutes", args, LookupWorkersRoutesResultOutput{}, options).(LookupWorkersRoutesResultOutput), nil
-		}).(LookupWorkersRoutesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getWorkersRoutes:getWorkersRoutes", args, LookupWorkersRoutesResultOutput{}, options).(LookupWorkersRoutesResultOutput)
 }
 
 // A collection of arguments for invoking getWorkersRoutes.

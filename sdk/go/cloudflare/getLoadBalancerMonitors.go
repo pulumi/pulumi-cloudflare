@@ -70,12 +70,8 @@ type LookupLoadBalancerMonitorsResult struct {
 }
 
 func LookupLoadBalancerMonitorsOutput(ctx *pulumi.Context, args LookupLoadBalancerMonitorsOutputArgs, opts ...pulumi.InvokeOption) LookupLoadBalancerMonitorsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLoadBalancerMonitorsResultOutput, error) {
-			args := v.(LookupLoadBalancerMonitorsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getLoadBalancerMonitors:getLoadBalancerMonitors", args, LookupLoadBalancerMonitorsResultOutput{}, options).(LookupLoadBalancerMonitorsResultOutput), nil
-		}).(LookupLoadBalancerMonitorsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getLoadBalancerMonitors:getLoadBalancerMonitors", args, LookupLoadBalancerMonitorsResultOutput{}, options).(LookupLoadBalancerMonitorsResultOutput)
 }
 
 // A collection of arguments for invoking getLoadBalancerMonitors.

@@ -62,12 +62,8 @@ type LookupOrganizationProfileResult struct {
 }
 
 func LookupOrganizationProfileOutput(ctx *pulumi.Context, args LookupOrganizationProfileOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationProfileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOrganizationProfileResultOutput, error) {
-			args := v.(LookupOrganizationProfileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getOrganizationProfile:getOrganizationProfile", args, LookupOrganizationProfileResultOutput{}, options).(LookupOrganizationProfileResultOutput), nil
-		}).(LookupOrganizationProfileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getOrganizationProfile:getOrganizationProfile", args, LookupOrganizationProfileResultOutput{}, options).(LookupOrganizationProfileResultOutput)
 }
 
 // A collection of arguments for invoking getOrganizationProfile.

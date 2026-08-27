@@ -71,12 +71,8 @@ type LookupStreamAudioTrackResult struct {
 }
 
 func LookupStreamAudioTrackOutput(ctx *pulumi.Context, args LookupStreamAudioTrackOutputArgs, opts ...pulumi.InvokeOption) LookupStreamAudioTrackResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupStreamAudioTrackResultOutput, error) {
-			args := v.(LookupStreamAudioTrackArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getStreamAudioTrack:getStreamAudioTrack", args, LookupStreamAudioTrackResultOutput{}, options).(LookupStreamAudioTrackResultOutput), nil
-		}).(LookupStreamAudioTrackResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getStreamAudioTrack:getStreamAudioTrack", args, LookupStreamAudioTrackResultOutput{}, options).(LookupStreamAudioTrackResultOutput)
 }
 
 // A collection of arguments for invoking getStreamAudioTrack.

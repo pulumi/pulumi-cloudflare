@@ -63,12 +63,8 @@ type LookupZeroTrustGatewayLoggingResult struct {
 }
 
 func LookupZeroTrustGatewayLoggingOutput(ctx *pulumi.Context, args LookupZeroTrustGatewayLoggingOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustGatewayLoggingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustGatewayLoggingResultOutput, error) {
-			args := v.(LookupZeroTrustGatewayLoggingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustGatewayLogging:getZeroTrustGatewayLogging", args, LookupZeroTrustGatewayLoggingResultOutput{}, options).(LookupZeroTrustGatewayLoggingResultOutput), nil
-		}).(LookupZeroTrustGatewayLoggingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustGatewayLogging:getZeroTrustGatewayLogging", args, LookupZeroTrustGatewayLoggingResultOutput{}, options).(LookupZeroTrustGatewayLoggingResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustGatewayLogging.

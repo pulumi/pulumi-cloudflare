@@ -68,12 +68,8 @@ type LookupAuthenticatedOriginPullsSettingsResult struct {
 }
 
 func LookupAuthenticatedOriginPullsSettingsOutput(ctx *pulumi.Context, args LookupAuthenticatedOriginPullsSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupAuthenticatedOriginPullsSettingsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAuthenticatedOriginPullsSettingsResultOutput, error) {
-			args := v.(LookupAuthenticatedOriginPullsSettingsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getAuthenticatedOriginPullsSettings:getAuthenticatedOriginPullsSettings", args, LookupAuthenticatedOriginPullsSettingsResultOutput{}, options).(LookupAuthenticatedOriginPullsSettingsResultOutput), nil
-		}).(LookupAuthenticatedOriginPullsSettingsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getAuthenticatedOriginPullsSettings:getAuthenticatedOriginPullsSettings", args, LookupAuthenticatedOriginPullsSettingsResultOutput{}, options).(LookupAuthenticatedOriginPullsSettingsResultOutput)
 }
 
 // A collection of arguments for invoking getAuthenticatedOriginPullsSettings.

@@ -75,12 +75,8 @@ type LookupOriginCaCertificatesResult struct {
 }
 
 func LookupOriginCaCertificatesOutput(ctx *pulumi.Context, args LookupOriginCaCertificatesOutputArgs, opts ...pulumi.InvokeOption) LookupOriginCaCertificatesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOriginCaCertificatesResultOutput, error) {
-			args := v.(LookupOriginCaCertificatesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getOriginCaCertificates:getOriginCaCertificates", args, LookupOriginCaCertificatesResultOutput{}, options).(LookupOriginCaCertificatesResultOutput), nil
-		}).(LookupOriginCaCertificatesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getOriginCaCertificates:getOriginCaCertificates", args, LookupOriginCaCertificatesResultOutput{}, options).(LookupOriginCaCertificatesResultOutput)
 }
 
 // A collection of arguments for invoking getOriginCaCertificates.

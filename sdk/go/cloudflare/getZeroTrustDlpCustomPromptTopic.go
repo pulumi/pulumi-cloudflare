@@ -49,12 +49,8 @@ type GetZeroTrustDlpCustomPromptTopicResult struct {
 }
 
 func GetZeroTrustDlpCustomPromptTopicOutput(ctx *pulumi.Context, args GetZeroTrustDlpCustomPromptTopicOutputArgs, opts ...pulumi.InvokeOption) GetZeroTrustDlpCustomPromptTopicResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetZeroTrustDlpCustomPromptTopicResultOutput, error) {
-			args := v.(GetZeroTrustDlpCustomPromptTopicArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustDlpCustomPromptTopic:getZeroTrustDlpCustomPromptTopic", args, GetZeroTrustDlpCustomPromptTopicResultOutput{}, options).(GetZeroTrustDlpCustomPromptTopicResultOutput), nil
-		}).(GetZeroTrustDlpCustomPromptTopicResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustDlpCustomPromptTopic:getZeroTrustDlpCustomPromptTopic", args, GetZeroTrustDlpCustomPromptTopicResultOutput{}, options).(GetZeroTrustDlpCustomPromptTopicResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustDlpCustomPromptTopic.

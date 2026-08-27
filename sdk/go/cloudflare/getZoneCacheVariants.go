@@ -74,12 +74,8 @@ type LookupZoneCacheVariantsResult struct {
 }
 
 func LookupZoneCacheVariantsOutput(ctx *pulumi.Context, args LookupZoneCacheVariantsOutputArgs, opts ...pulumi.InvokeOption) LookupZoneCacheVariantsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZoneCacheVariantsResultOutput, error) {
-			args := v.(LookupZoneCacheVariantsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZoneCacheVariants:getZoneCacheVariants", args, LookupZoneCacheVariantsResultOutput{}, options).(LookupZoneCacheVariantsResultOutput), nil
-		}).(LookupZoneCacheVariantsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZoneCacheVariants:getZoneCacheVariants", args, LookupZoneCacheVariantsResultOutput{}, options).(LookupZoneCacheVariantsResultOutput)
 }
 
 // A collection of arguments for invoking getZoneCacheVariants.

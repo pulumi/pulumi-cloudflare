@@ -87,12 +87,8 @@ type LookupZoneDnssecResult struct {
 }
 
 func LookupZoneDnssecOutput(ctx *pulumi.Context, args LookupZoneDnssecOutputArgs, opts ...pulumi.InvokeOption) LookupZoneDnssecResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZoneDnssecResultOutput, error) {
-			args := v.(LookupZoneDnssecArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZoneDnssec:getZoneDnssec", args, LookupZoneDnssecResultOutput{}, options).(LookupZoneDnssecResultOutput), nil
-		}).(LookupZoneDnssecResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZoneDnssec:getZoneDnssec", args, LookupZoneDnssecResultOutput{}, options).(LookupZoneDnssecResultOutput)
 }
 
 // A collection of arguments for invoking getZoneDnssec.

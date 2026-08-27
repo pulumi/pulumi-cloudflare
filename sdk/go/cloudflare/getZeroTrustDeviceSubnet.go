@@ -88,12 +88,8 @@ type LookupZeroTrustDeviceSubnetResult struct {
 }
 
 func LookupZeroTrustDeviceSubnetOutput(ctx *pulumi.Context, args LookupZeroTrustDeviceSubnetOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDeviceSubnetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustDeviceSubnetResultOutput, error) {
-			args := v.(LookupZeroTrustDeviceSubnetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustDeviceSubnet:getZeroTrustDeviceSubnet", args, LookupZeroTrustDeviceSubnetResultOutput{}, options).(LookupZeroTrustDeviceSubnetResultOutput), nil
-		}).(LookupZeroTrustDeviceSubnetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustDeviceSubnet:getZeroTrustDeviceSubnet", args, LookupZeroTrustDeviceSubnetResultOutput{}, options).(LookupZeroTrustDeviceSubnetResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustDeviceSubnet.

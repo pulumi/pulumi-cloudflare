@@ -38,12 +38,8 @@ type LookupZeroTrustDeviceDeploymentGroupsListResult struct {
 }
 
 func LookupZeroTrustDeviceDeploymentGroupsListOutput(ctx *pulumi.Context, args LookupZeroTrustDeviceDeploymentGroupsListOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDeviceDeploymentGroupsListResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustDeviceDeploymentGroupsListResultOutput, error) {
-			args := v.(LookupZeroTrustDeviceDeploymentGroupsListArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustDeviceDeploymentGroupsList:getZeroTrustDeviceDeploymentGroupsList", args, LookupZeroTrustDeviceDeploymentGroupsListResultOutput{}, options).(LookupZeroTrustDeviceDeploymentGroupsListResultOutput), nil
-		}).(LookupZeroTrustDeviceDeploymentGroupsListResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustDeviceDeploymentGroupsList:getZeroTrustDeviceDeploymentGroupsList", args, LookupZeroTrustDeviceDeploymentGroupsListResultOutput{}, options).(LookupZeroTrustDeviceDeploymentGroupsListResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustDeviceDeploymentGroupsList.

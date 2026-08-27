@@ -70,12 +70,8 @@ type LookupR2BucketSippyResult struct {
 }
 
 func LookupR2BucketSippyOutput(ctx *pulumi.Context, args LookupR2BucketSippyOutputArgs, opts ...pulumi.InvokeOption) LookupR2BucketSippyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupR2BucketSippyResultOutput, error) {
-			args := v.(LookupR2BucketSippyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getR2BucketSippy:getR2BucketSippy", args, LookupR2BucketSippyResultOutput{}, options).(LookupR2BucketSippyResultOutput), nil
-		}).(LookupR2BucketSippyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getR2BucketSippy:getR2BucketSippy", args, LookupR2BucketSippyResultOutput{}, options).(LookupR2BucketSippyResultOutput)
 }
 
 // A collection of arguments for invoking getR2BucketSippy.

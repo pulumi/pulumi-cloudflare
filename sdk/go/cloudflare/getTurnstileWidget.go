@@ -114,12 +114,8 @@ type LookupTurnstileWidgetResult struct {
 }
 
 func LookupTurnstileWidgetOutput(ctx *pulumi.Context, args LookupTurnstileWidgetOutputArgs, opts ...pulumi.InvokeOption) LookupTurnstileWidgetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTurnstileWidgetResultOutput, error) {
-			args := v.(LookupTurnstileWidgetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getTurnstileWidget:getTurnstileWidget", args, LookupTurnstileWidgetResultOutput{}, options).(LookupTurnstileWidgetResultOutput), nil
-		}).(LookupTurnstileWidgetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getTurnstileWidget:getTurnstileWidget", args, LookupTurnstileWidgetResultOutput{}, options).(LookupTurnstileWidgetResultOutput)
 }
 
 // A collection of arguments for invoking getTurnstileWidget.

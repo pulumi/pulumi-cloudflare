@@ -44,12 +44,8 @@ type LookupLoadBalancersResult struct {
 }
 
 func LookupLoadBalancersOutput(ctx *pulumi.Context, args LookupLoadBalancersOutputArgs, opts ...pulumi.InvokeOption) LookupLoadBalancersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLoadBalancersResultOutput, error) {
-			args := v.(LookupLoadBalancersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getLoadBalancers:getLoadBalancers", args, LookupLoadBalancersResultOutput{}, options).(LookupLoadBalancersResultOutput), nil
-		}).(LookupLoadBalancersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getLoadBalancers:getLoadBalancers", args, LookupLoadBalancersResultOutput{}, options).(LookupLoadBalancersResultOutput)
 }
 
 // A collection of arguments for invoking getLoadBalancers.

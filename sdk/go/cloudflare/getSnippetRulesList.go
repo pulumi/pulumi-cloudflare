@@ -40,12 +40,8 @@ type LookupSnippetRulesListResult struct {
 }
 
 func LookupSnippetRulesListOutput(ctx *pulumi.Context, args LookupSnippetRulesListOutputArgs, opts ...pulumi.InvokeOption) LookupSnippetRulesListResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSnippetRulesListResultOutput, error) {
-			args := v.(LookupSnippetRulesListArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getSnippetRulesList:getSnippetRulesList", args, LookupSnippetRulesListResultOutput{}, options).(LookupSnippetRulesListResultOutput), nil
-		}).(LookupSnippetRulesListResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getSnippetRulesList:getSnippetRulesList", args, LookupSnippetRulesListResultOutput{}, options).(LookupSnippetRulesListResultOutput)
 }
 
 // A collection of arguments for invoking getSnippetRulesList.

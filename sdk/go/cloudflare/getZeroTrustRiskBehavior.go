@@ -63,12 +63,8 @@ type LookupZeroTrustRiskBehaviorResult struct {
 }
 
 func LookupZeroTrustRiskBehaviorOutput(ctx *pulumi.Context, args LookupZeroTrustRiskBehaviorOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustRiskBehaviorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustRiskBehaviorResultOutput, error) {
-			args := v.(LookupZeroTrustRiskBehaviorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustRiskBehavior:getZeroTrustRiskBehavior", args, LookupZeroTrustRiskBehaviorResultOutput{}, options).(LookupZeroTrustRiskBehaviorResultOutput), nil
-		}).(LookupZeroTrustRiskBehaviorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustRiskBehavior:getZeroTrustRiskBehavior", args, LookupZeroTrustRiskBehaviorResultOutput{}, options).(LookupZeroTrustRiskBehaviorResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustRiskBehavior.

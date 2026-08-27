@@ -67,12 +67,8 @@ type LookupOriginTlsComplianceModesResult struct {
 }
 
 func LookupOriginTlsComplianceModesOutput(ctx *pulumi.Context, args LookupOriginTlsComplianceModesOutputArgs, opts ...pulumi.InvokeOption) LookupOriginTlsComplianceModesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOriginTlsComplianceModesResultOutput, error) {
-			args := v.(LookupOriginTlsComplianceModesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getOriginTlsComplianceModes:getOriginTlsComplianceModes", args, LookupOriginTlsComplianceModesResultOutput{}, options).(LookupOriginTlsComplianceModesResultOutput), nil
-		}).(LookupOriginTlsComplianceModesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getOriginTlsComplianceModes:getOriginTlsComplianceModes", args, LookupOriginTlsComplianceModesResultOutput{}, options).(LookupOriginTlsComplianceModesResultOutput)
 }
 
 // A collection of arguments for invoking getOriginTlsComplianceModes.

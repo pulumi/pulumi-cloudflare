@@ -76,12 +76,8 @@ type LookupAiGatewayDynamicRoutingResult struct {
 }
 
 func LookupAiGatewayDynamicRoutingOutput(ctx *pulumi.Context, args LookupAiGatewayDynamicRoutingOutputArgs, opts ...pulumi.InvokeOption) LookupAiGatewayDynamicRoutingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAiGatewayDynamicRoutingResultOutput, error) {
-			args := v.(LookupAiGatewayDynamicRoutingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getAiGatewayDynamicRouting:getAiGatewayDynamicRouting", args, LookupAiGatewayDynamicRoutingResultOutput{}, options).(LookupAiGatewayDynamicRoutingResultOutput), nil
-		}).(LookupAiGatewayDynamicRoutingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getAiGatewayDynamicRouting:getAiGatewayDynamicRouting", args, LookupAiGatewayDynamicRoutingResultOutput{}, options).(LookupAiGatewayDynamicRoutingResultOutput)
 }
 
 // A collection of arguments for invoking getAiGatewayDynamicRouting.

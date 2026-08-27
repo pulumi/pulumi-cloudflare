@@ -102,12 +102,8 @@ type LookupCertificatePackResult struct {
 }
 
 func LookupCertificatePackOutput(ctx *pulumi.Context, args LookupCertificatePackOutputArgs, opts ...pulumi.InvokeOption) LookupCertificatePackResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCertificatePackResultOutput, error) {
-			args := v.(LookupCertificatePackArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getCertificatePack:getCertificatePack", args, LookupCertificatePackResultOutput{}, options).(LookupCertificatePackResultOutput), nil
-		}).(LookupCertificatePackResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getCertificatePack:getCertificatePack", args, LookupCertificatePackResultOutput{}, options).(LookupCertificatePackResultOutput)
 }
 
 // A collection of arguments for invoking getCertificatePack.

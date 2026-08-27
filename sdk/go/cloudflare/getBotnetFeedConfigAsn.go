@@ -65,12 +65,8 @@ type GetBotnetFeedConfigAsnResult struct {
 }
 
 func GetBotnetFeedConfigAsnOutput(ctx *pulumi.Context, args GetBotnetFeedConfigAsnOutputArgs, opts ...pulumi.InvokeOption) GetBotnetFeedConfigAsnResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetBotnetFeedConfigAsnResultOutput, error) {
-			args := v.(GetBotnetFeedConfigAsnArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getBotnetFeedConfigAsn:getBotnetFeedConfigAsn", args, GetBotnetFeedConfigAsnResultOutput{}, options).(GetBotnetFeedConfigAsnResultOutput), nil
-		}).(GetBotnetFeedConfigAsnResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getBotnetFeedConfigAsn:getBotnetFeedConfigAsn", args, GetBotnetFeedConfigAsnResultOutput{}, options).(GetBotnetFeedConfigAsnResultOutput)
 }
 
 // A collection of arguments for invoking getBotnetFeedConfigAsn.

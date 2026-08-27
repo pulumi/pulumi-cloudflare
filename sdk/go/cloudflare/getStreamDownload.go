@@ -69,12 +69,8 @@ type LookupStreamDownloadResult struct {
 }
 
 func LookupStreamDownloadOutput(ctx *pulumi.Context, args LookupStreamDownloadOutputArgs, opts ...pulumi.InvokeOption) LookupStreamDownloadResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupStreamDownloadResultOutput, error) {
-			args := v.(LookupStreamDownloadArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getStreamDownload:getStreamDownload", args, LookupStreamDownloadResultOutput{}, options).(LookupStreamDownloadResultOutput), nil
-		}).(LookupStreamDownloadResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getStreamDownload:getStreamDownload", args, LookupStreamDownloadResultOutput{}, options).(LookupStreamDownloadResultOutput)
 }
 
 // A collection of arguments for invoking getStreamDownload.

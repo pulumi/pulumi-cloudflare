@@ -83,12 +83,8 @@ type LookupZeroTrustRiskScoringIntegrationResult struct {
 }
 
 func LookupZeroTrustRiskScoringIntegrationOutput(ctx *pulumi.Context, args LookupZeroTrustRiskScoringIntegrationOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustRiskScoringIntegrationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustRiskScoringIntegrationResultOutput, error) {
-			args := v.(LookupZeroTrustRiskScoringIntegrationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustRiskScoringIntegration:getZeroTrustRiskScoringIntegration", args, LookupZeroTrustRiskScoringIntegrationResultOutput{}, options).(LookupZeroTrustRiskScoringIntegrationResultOutput), nil
-		}).(LookupZeroTrustRiskScoringIntegrationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustRiskScoringIntegration:getZeroTrustRiskScoringIntegration", args, LookupZeroTrustRiskScoringIntegrationResultOutput{}, options).(LookupZeroTrustRiskScoringIntegrationResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustRiskScoringIntegration.

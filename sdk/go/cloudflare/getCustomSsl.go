@@ -98,12 +98,8 @@ type LookupCustomSslResult struct {
 }
 
 func LookupCustomSslOutput(ctx *pulumi.Context, args LookupCustomSslOutputArgs, opts ...pulumi.InvokeOption) LookupCustomSslResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCustomSslResultOutput, error) {
-			args := v.(LookupCustomSslArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getCustomSsl:getCustomSsl", args, LookupCustomSslResultOutput{}, options).(LookupCustomSslResultOutput), nil
-		}).(LookupCustomSslResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getCustomSsl:getCustomSsl", args, LookupCustomSslResultOutput{}, options).(LookupCustomSslResultOutput)
 }
 
 // A collection of arguments for invoking getCustomSsl.

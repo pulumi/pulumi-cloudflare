@@ -77,12 +77,8 @@ type LookupR2BucketEventNotificationResult struct {
 }
 
 func LookupR2BucketEventNotificationOutput(ctx *pulumi.Context, args LookupR2BucketEventNotificationOutputArgs, opts ...pulumi.InvokeOption) LookupR2BucketEventNotificationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupR2BucketEventNotificationResultOutput, error) {
-			args := v.(LookupR2BucketEventNotificationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getR2BucketEventNotification:getR2BucketEventNotification", args, LookupR2BucketEventNotificationResultOutput{}, options).(LookupR2BucketEventNotificationResultOutput), nil
-		}).(LookupR2BucketEventNotificationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getR2BucketEventNotification:getR2BucketEventNotification", args, LookupR2BucketEventNotificationResultOutput{}, options).(LookupR2BucketEventNotificationResultOutput)
 }
 
 // A collection of arguments for invoking getR2BucketEventNotification.

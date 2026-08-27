@@ -82,12 +82,8 @@ type LookupZeroTrustAccessCustomPageResult struct {
 }
 
 func LookupZeroTrustAccessCustomPageOutput(ctx *pulumi.Context, args LookupZeroTrustAccessCustomPageOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustAccessCustomPageResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustAccessCustomPageResultOutput, error) {
-			args := v.(LookupZeroTrustAccessCustomPageArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustAccessCustomPage:getZeroTrustAccessCustomPage", args, LookupZeroTrustAccessCustomPageResultOutput{}, options).(LookupZeroTrustAccessCustomPageResultOutput), nil
-		}).(LookupZeroTrustAccessCustomPageResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustAccessCustomPage:getZeroTrustAccessCustomPage", args, LookupZeroTrustAccessCustomPageResultOutput{}, options).(LookupZeroTrustAccessCustomPageResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustAccessCustomPage.

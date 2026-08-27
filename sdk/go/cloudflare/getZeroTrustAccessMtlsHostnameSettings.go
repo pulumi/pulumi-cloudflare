@@ -75,12 +75,8 @@ type LookupZeroTrustAccessMtlsHostnameSettingsResult struct {
 }
 
 func LookupZeroTrustAccessMtlsHostnameSettingsOutput(ctx *pulumi.Context, args LookupZeroTrustAccessMtlsHostnameSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustAccessMtlsHostnameSettingsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustAccessMtlsHostnameSettingsResultOutput, error) {
-			args := v.(LookupZeroTrustAccessMtlsHostnameSettingsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustAccessMtlsHostnameSettings:getZeroTrustAccessMtlsHostnameSettings", args, LookupZeroTrustAccessMtlsHostnameSettingsResultOutput{}, options).(LookupZeroTrustAccessMtlsHostnameSettingsResultOutput), nil
-		}).(LookupZeroTrustAccessMtlsHostnameSettingsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustAccessMtlsHostnameSettings:getZeroTrustAccessMtlsHostnameSettings", args, LookupZeroTrustAccessMtlsHostnameSettingsResultOutput{}, options).(LookupZeroTrustAccessMtlsHostnameSettingsResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustAccessMtlsHostnameSettings.

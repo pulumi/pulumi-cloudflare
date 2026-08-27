@@ -77,12 +77,8 @@ type LookupMagicTransitSiteLansResult struct {
 }
 
 func LookupMagicTransitSiteLansOutput(ctx *pulumi.Context, args LookupMagicTransitSiteLansOutputArgs, opts ...pulumi.InvokeOption) LookupMagicTransitSiteLansResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMagicTransitSiteLansResultOutput, error) {
-			args := v.(LookupMagicTransitSiteLansArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getMagicTransitSiteLans:getMagicTransitSiteLans", args, LookupMagicTransitSiteLansResultOutput{}, options).(LookupMagicTransitSiteLansResultOutput), nil
-		}).(LookupMagicTransitSiteLansResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getMagicTransitSiteLans:getMagicTransitSiteLans", args, LookupMagicTransitSiteLansResultOutput{}, options).(LookupMagicTransitSiteLansResultOutput)
 }
 
 // A collection of arguments for invoking getMagicTransitSiteLans.

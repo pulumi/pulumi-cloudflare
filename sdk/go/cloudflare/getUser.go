@@ -83,10 +83,8 @@ type LookupUserResult struct {
 }
 
 func LookupUserOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupUserResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (LookupUserResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("cloudflare:index/getUser:getUser", nil, LookupUserResultOutput{}, options).(LookupUserResultOutput), nil
-	}).(LookupUserResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getUser:getUser", nil, LookupUserResultOutput{}, options).(LookupUserResultOutput)
 }
 
 // A collection of values returned by getUser.

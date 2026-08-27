@@ -63,12 +63,8 @@ type LookupZoneAutoOriginTlsKexResult struct {
 }
 
 func LookupZoneAutoOriginTlsKexOutput(ctx *pulumi.Context, args LookupZoneAutoOriginTlsKexOutputArgs, opts ...pulumi.InvokeOption) LookupZoneAutoOriginTlsKexResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZoneAutoOriginTlsKexResultOutput, error) {
-			args := v.(LookupZoneAutoOriginTlsKexArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZoneAutoOriginTlsKex:getZoneAutoOriginTlsKex", args, LookupZoneAutoOriginTlsKexResultOutput{}, options).(LookupZoneAutoOriginTlsKexResultOutput), nil
-		}).(LookupZoneAutoOriginTlsKexResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZoneAutoOriginTlsKex:getZoneAutoOriginTlsKex", args, LookupZoneAutoOriginTlsKexResultOutput{}, options).(LookupZoneAutoOriginTlsKexResultOutput)
 }
 
 // A collection of arguments for invoking getZoneAutoOriginTlsKex.

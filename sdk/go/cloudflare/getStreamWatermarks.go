@@ -70,12 +70,8 @@ type LookupStreamWatermarksResult struct {
 }
 
 func LookupStreamWatermarksOutput(ctx *pulumi.Context, args LookupStreamWatermarksOutputArgs, opts ...pulumi.InvokeOption) LookupStreamWatermarksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupStreamWatermarksResultOutput, error) {
-			args := v.(LookupStreamWatermarksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getStreamWatermarks:getStreamWatermarks", args, LookupStreamWatermarksResultOutput{}, options).(LookupStreamWatermarksResultOutput), nil
-		}).(LookupStreamWatermarksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getStreamWatermarks:getStreamWatermarks", args, LookupStreamWatermarksResultOutput{}, options).(LookupStreamWatermarksResultOutput)
 }
 
 // A collection of arguments for invoking getStreamWatermarks.

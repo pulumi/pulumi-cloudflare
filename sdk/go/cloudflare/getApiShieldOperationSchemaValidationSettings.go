@@ -68,12 +68,8 @@ type LookupApiShieldOperationSchemaValidationSettingsResult struct {
 }
 
 func LookupApiShieldOperationSchemaValidationSettingsOutput(ctx *pulumi.Context, args LookupApiShieldOperationSchemaValidationSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupApiShieldOperationSchemaValidationSettingsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupApiShieldOperationSchemaValidationSettingsResultOutput, error) {
-			args := v.(LookupApiShieldOperationSchemaValidationSettingsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getApiShieldOperationSchemaValidationSettings:getApiShieldOperationSchemaValidationSettings", args, LookupApiShieldOperationSchemaValidationSettingsResultOutput{}, options).(LookupApiShieldOperationSchemaValidationSettingsResultOutput), nil
-		}).(LookupApiShieldOperationSchemaValidationSettingsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getApiShieldOperationSchemaValidationSettings:getApiShieldOperationSchemaValidationSettings", args, LookupApiShieldOperationSchemaValidationSettingsResultOutput{}, options).(LookupApiShieldOperationSchemaValidationSettingsResultOutput)
 }
 
 // A collection of arguments for invoking getApiShieldOperationSchemaValidationSettings.

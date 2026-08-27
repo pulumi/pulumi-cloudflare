@@ -77,12 +77,8 @@ type LookupWorkersKvResult struct {
 }
 
 func LookupWorkersKvOutput(ctx *pulumi.Context, args LookupWorkersKvOutputArgs, opts ...pulumi.InvokeOption) LookupWorkersKvResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkersKvResultOutput, error) {
-			args := v.(LookupWorkersKvArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getWorkersKv:getWorkersKv", args, LookupWorkersKvResultOutput{}, options).(LookupWorkersKvResultOutput), nil
-		}).(LookupWorkersKvResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getWorkersKv:getWorkersKv", args, LookupWorkersKvResultOutput{}, options).(LookupWorkersKvResultOutput)
 }
 
 // A collection of arguments for invoking getWorkersKv.

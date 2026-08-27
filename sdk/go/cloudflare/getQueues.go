@@ -72,12 +72,8 @@ type LookupQueuesResult struct {
 }
 
 func LookupQueuesOutput(ctx *pulumi.Context, args LookupQueuesOutputArgs, opts ...pulumi.InvokeOption) LookupQueuesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupQueuesResultOutput, error) {
-			args := v.(LookupQueuesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getQueues:getQueues", args, LookupQueuesResultOutput{}, options).(LookupQueuesResultOutput), nil
-		}).(LookupQueuesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getQueues:getQueues", args, LookupQueuesResultOutput{}, options).(LookupQueuesResultOutput)
 }
 
 // A collection of arguments for invoking getQueues.

@@ -78,12 +78,8 @@ type LookupCustomPagesListResult struct {
 }
 
 func LookupCustomPagesListOutput(ctx *pulumi.Context, args LookupCustomPagesListOutputArgs, opts ...pulumi.InvokeOption) LookupCustomPagesListResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCustomPagesListResultOutput, error) {
-			args := v.(LookupCustomPagesListArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getCustomPagesList:getCustomPagesList", args, LookupCustomPagesListResultOutput{}, options).(LookupCustomPagesListResultOutput), nil
-		}).(LookupCustomPagesListResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getCustomPagesList:getCustomPagesList", args, LookupCustomPagesListResultOutput{}, options).(LookupCustomPagesListResultOutput)
 }
 
 // A collection of arguments for invoking getCustomPagesList.

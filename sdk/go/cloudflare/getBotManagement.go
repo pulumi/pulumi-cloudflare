@@ -109,12 +109,8 @@ type LookupBotManagementResult struct {
 }
 
 func LookupBotManagementOutput(ctx *pulumi.Context, args LookupBotManagementOutputArgs, opts ...pulumi.InvokeOption) LookupBotManagementResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBotManagementResultOutput, error) {
-			args := v.(LookupBotManagementArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getBotManagement:getBotManagement", args, LookupBotManagementResultOutput{}, options).(LookupBotManagementResultOutput), nil
-		}).(LookupBotManagementResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getBotManagement:getBotManagement", args, LookupBotManagementResultOutput{}, options).(LookupBotManagementResultOutput)
 }
 
 // A collection of arguments for invoking getBotManagement.

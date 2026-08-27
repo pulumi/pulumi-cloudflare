@@ -65,12 +65,8 @@ type LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResult struct {
 }
 
 func LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackOutput(ctx *pulumi.Context, args LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResultOutput, error) {
-			args := v.(LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustDeviceDefaultProfileLocalDomainFallback:getZeroTrustDeviceDefaultProfileLocalDomainFallback", args, LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResultOutput{}, options).(LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResultOutput), nil
-		}).(LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustDeviceDefaultProfileLocalDomainFallback:getZeroTrustDeviceDefaultProfileLocalDomainFallback", args, LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResultOutput{}, options).(LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustDeviceDefaultProfileLocalDomainFallback.

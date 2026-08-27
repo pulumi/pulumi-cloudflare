@@ -67,12 +67,8 @@ type LookupPrecursorResult struct {
 }
 
 func LookupPrecursorOutput(ctx *pulumi.Context, args LookupPrecursorOutputArgs, opts ...pulumi.InvokeOption) LookupPrecursorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPrecursorResultOutput, error) {
-			args := v.(LookupPrecursorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getPrecursor:getPrecursor", args, LookupPrecursorResultOutput{}, options).(LookupPrecursorResultOutput), nil
-		}).(LookupPrecursorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getPrecursor:getPrecursor", args, LookupPrecursorResultOutput{}, options).(LookupPrecursorResultOutput)
 }
 
 // A collection of arguments for invoking getPrecursor.

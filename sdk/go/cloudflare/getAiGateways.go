@@ -73,12 +73,8 @@ type LookupAiGatewaysResult struct {
 }
 
 func LookupAiGatewaysOutput(ctx *pulumi.Context, args LookupAiGatewaysOutputArgs, opts ...pulumi.InvokeOption) LookupAiGatewaysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAiGatewaysResultOutput, error) {
-			args := v.(LookupAiGatewaysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getAiGateways:getAiGateways", args, LookupAiGatewaysResultOutput{}, options).(LookupAiGatewaysResultOutput), nil
-		}).(LookupAiGatewaysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getAiGateways:getAiGateways", args, LookupAiGatewaysResultOutput{}, options).(LookupAiGatewaysResultOutput)
 }
 
 // A collection of arguments for invoking getAiGateways.

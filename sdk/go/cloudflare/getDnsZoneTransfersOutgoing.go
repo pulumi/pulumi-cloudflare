@@ -79,12 +79,8 @@ type LookupDnsZoneTransfersOutgoingResult struct {
 }
 
 func LookupDnsZoneTransfersOutgoingOutput(ctx *pulumi.Context, args LookupDnsZoneTransfersOutgoingOutputArgs, opts ...pulumi.InvokeOption) LookupDnsZoneTransfersOutgoingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDnsZoneTransfersOutgoingResultOutput, error) {
-			args := v.(LookupDnsZoneTransfersOutgoingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getDnsZoneTransfersOutgoing:getDnsZoneTransfersOutgoing", args, LookupDnsZoneTransfersOutgoingResultOutput{}, options).(LookupDnsZoneTransfersOutgoingResultOutput), nil
-		}).(LookupDnsZoneTransfersOutgoingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getDnsZoneTransfersOutgoing:getDnsZoneTransfersOutgoing", args, LookupDnsZoneTransfersOutgoingResultOutput{}, options).(LookupDnsZoneTransfersOutgoingResultOutput)
 }
 
 // A collection of arguments for invoking getDnsZoneTransfersOutgoing.

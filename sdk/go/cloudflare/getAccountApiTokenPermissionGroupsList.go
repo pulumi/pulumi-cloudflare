@@ -84,12 +84,8 @@ type LookupAccountApiTokenPermissionGroupsListResult struct {
 }
 
 func LookupAccountApiTokenPermissionGroupsListOutput(ctx *pulumi.Context, args LookupAccountApiTokenPermissionGroupsListOutputArgs, opts ...pulumi.InvokeOption) LookupAccountApiTokenPermissionGroupsListResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccountApiTokenPermissionGroupsListResultOutput, error) {
-			args := v.(LookupAccountApiTokenPermissionGroupsListArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getAccountApiTokenPermissionGroupsList:getAccountApiTokenPermissionGroupsList", args, LookupAccountApiTokenPermissionGroupsListResultOutput{}, options).(LookupAccountApiTokenPermissionGroupsListResultOutput), nil
-		}).(LookupAccountApiTokenPermissionGroupsListResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getAccountApiTokenPermissionGroupsList:getAccountApiTokenPermissionGroupsList", args, LookupAccountApiTokenPermissionGroupsListResultOutput{}, options).(LookupAccountApiTokenPermissionGroupsListResultOutput)
 }
 
 // A collection of arguments for invoking getAccountApiTokenPermissionGroupsList.

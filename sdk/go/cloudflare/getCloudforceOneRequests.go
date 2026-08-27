@@ -123,12 +123,8 @@ type LookupCloudforceOneRequestsResult struct {
 }
 
 func LookupCloudforceOneRequestsOutput(ctx *pulumi.Context, args LookupCloudforceOneRequestsOutputArgs, opts ...pulumi.InvokeOption) LookupCloudforceOneRequestsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCloudforceOneRequestsResultOutput, error) {
-			args := v.(LookupCloudforceOneRequestsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getCloudforceOneRequests:getCloudforceOneRequests", args, LookupCloudforceOneRequestsResultOutput{}, options).(LookupCloudforceOneRequestsResultOutput), nil
-		}).(LookupCloudforceOneRequestsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getCloudforceOneRequests:getCloudforceOneRequests", args, LookupCloudforceOneRequestsResultOutput{}, options).(LookupCloudforceOneRequestsResultOutput)
 }
 
 // A collection of arguments for invoking getCloudforceOneRequests.

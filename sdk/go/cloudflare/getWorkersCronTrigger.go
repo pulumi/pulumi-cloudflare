@@ -72,12 +72,8 @@ type LookupWorkersCronTriggerResult struct {
 }
 
 func LookupWorkersCronTriggerOutput(ctx *pulumi.Context, args LookupWorkersCronTriggerOutputArgs, opts ...pulumi.InvokeOption) LookupWorkersCronTriggerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkersCronTriggerResultOutput, error) {
-			args := v.(LookupWorkersCronTriggerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getWorkersCronTrigger:getWorkersCronTrigger", args, LookupWorkersCronTriggerResultOutput{}, options).(LookupWorkersCronTriggerResultOutput), nil
-		}).(LookupWorkersCronTriggerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getWorkersCronTrigger:getWorkersCronTrigger", args, LookupWorkersCronTriggerResultOutput{}, options).(LookupWorkersCronTriggerResultOutput)
 }
 
 // A collection of arguments for invoking getWorkersCronTrigger.

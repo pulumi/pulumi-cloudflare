@@ -71,12 +71,8 @@ type LookupWorkersForPlatformsDispatchNamespacesResult struct {
 }
 
 func LookupWorkersForPlatformsDispatchNamespacesOutput(ctx *pulumi.Context, args LookupWorkersForPlatformsDispatchNamespacesOutputArgs, opts ...pulumi.InvokeOption) LookupWorkersForPlatformsDispatchNamespacesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkersForPlatformsDispatchNamespacesResultOutput, error) {
-			args := v.(LookupWorkersForPlatformsDispatchNamespacesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getWorkersForPlatformsDispatchNamespaces:getWorkersForPlatformsDispatchNamespaces", args, LookupWorkersForPlatformsDispatchNamespacesResultOutput{}, options).(LookupWorkersForPlatformsDispatchNamespacesResultOutput), nil
-		}).(LookupWorkersForPlatformsDispatchNamespacesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getWorkersForPlatformsDispatchNamespaces:getWorkersForPlatformsDispatchNamespaces", args, LookupWorkersForPlatformsDispatchNamespacesResultOutput{}, options).(LookupWorkersForPlatformsDispatchNamespacesResultOutput)
 }
 
 // A collection of arguments for invoking getWorkersForPlatformsDispatchNamespaces.

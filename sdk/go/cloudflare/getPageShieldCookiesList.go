@@ -123,12 +123,8 @@ type LookupPageShieldCookiesListResult struct {
 }
 
 func LookupPageShieldCookiesListOutput(ctx *pulumi.Context, args LookupPageShieldCookiesListOutputArgs, opts ...pulumi.InvokeOption) LookupPageShieldCookiesListResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPageShieldCookiesListResultOutput, error) {
-			args := v.(LookupPageShieldCookiesListArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getPageShieldCookiesList:getPageShieldCookiesList", args, LookupPageShieldCookiesListResultOutput{}, options).(LookupPageShieldCookiesListResultOutput), nil
-		}).(LookupPageShieldCookiesListResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getPageShieldCookiesList:getPageShieldCookiesList", args, LookupPageShieldCookiesListResultOutput{}, options).(LookupPageShieldCookiesListResultOutput)
 }
 
 // A collection of arguments for invoking getPageShieldCookiesList.

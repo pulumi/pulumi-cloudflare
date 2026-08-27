@@ -74,12 +74,8 @@ type LookupWaitingRoomsResult struct {
 }
 
 func LookupWaitingRoomsOutput(ctx *pulumi.Context, args LookupWaitingRoomsOutputArgs, opts ...pulumi.InvokeOption) LookupWaitingRoomsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWaitingRoomsResultOutput, error) {
-			args := v.(LookupWaitingRoomsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getWaitingRooms:getWaitingRooms", args, LookupWaitingRoomsResultOutput{}, options).(LookupWaitingRoomsResultOutput), nil
-		}).(LookupWaitingRoomsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getWaitingRooms:getWaitingRooms", args, LookupWaitingRoomsResultOutput{}, options).(LookupWaitingRoomsResultOutput)
 }
 
 // A collection of arguments for invoking getWaitingRooms.

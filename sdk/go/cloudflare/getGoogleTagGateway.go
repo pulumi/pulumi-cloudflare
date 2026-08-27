@@ -77,12 +77,8 @@ type LookupGoogleTagGatewayResult struct {
 }
 
 func LookupGoogleTagGatewayOutput(ctx *pulumi.Context, args LookupGoogleTagGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupGoogleTagGatewayResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGoogleTagGatewayResultOutput, error) {
-			args := v.(LookupGoogleTagGatewayArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getGoogleTagGateway:getGoogleTagGateway", args, LookupGoogleTagGatewayResultOutput{}, options).(LookupGoogleTagGatewayResultOutput), nil
-		}).(LookupGoogleTagGatewayResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getGoogleTagGateway:getGoogleTagGateway", args, LookupGoogleTagGatewayResultOutput{}, options).(LookupGoogleTagGatewayResultOutput)
 }
 
 // A collection of arguments for invoking getGoogleTagGateway.

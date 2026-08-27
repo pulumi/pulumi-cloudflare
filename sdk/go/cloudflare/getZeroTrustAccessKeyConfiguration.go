@@ -72,12 +72,8 @@ type LookupZeroTrustAccessKeyConfigurationResult struct {
 }
 
 func LookupZeroTrustAccessKeyConfigurationOutput(ctx *pulumi.Context, args LookupZeroTrustAccessKeyConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustAccessKeyConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustAccessKeyConfigurationResultOutput, error) {
-			args := v.(LookupZeroTrustAccessKeyConfigurationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustAccessKeyConfiguration:getZeroTrustAccessKeyConfiguration", args, LookupZeroTrustAccessKeyConfigurationResultOutput{}, options).(LookupZeroTrustAccessKeyConfigurationResultOutput), nil
-		}).(LookupZeroTrustAccessKeyConfigurationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustAccessKeyConfiguration:getZeroTrustAccessKeyConfiguration", args, LookupZeroTrustAccessKeyConfigurationResultOutput{}, options).(LookupZeroTrustAccessKeyConfigurationResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustAccessKeyConfiguration.

@@ -42,12 +42,8 @@ type LookupAiSearchNamespacesResult struct {
 }
 
 func LookupAiSearchNamespacesOutput(ctx *pulumi.Context, args LookupAiSearchNamespacesOutputArgs, opts ...pulumi.InvokeOption) LookupAiSearchNamespacesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAiSearchNamespacesResultOutput, error) {
-			args := v.(LookupAiSearchNamespacesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getAiSearchNamespaces:getAiSearchNamespaces", args, LookupAiSearchNamespacesResultOutput{}, options).(LookupAiSearchNamespacesResultOutput), nil
-		}).(LookupAiSearchNamespacesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getAiSearchNamespaces:getAiSearchNamespaces", args, LookupAiSearchNamespacesResultOutput{}, options).(LookupAiSearchNamespacesResultOutput)
 }
 
 // A collection of arguments for invoking getAiSearchNamespaces.

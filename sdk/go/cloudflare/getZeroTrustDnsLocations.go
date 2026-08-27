@@ -69,12 +69,8 @@ type LookupZeroTrustDnsLocationsResult struct {
 }
 
 func LookupZeroTrustDnsLocationsOutput(ctx *pulumi.Context, args LookupZeroTrustDnsLocationsOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDnsLocationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustDnsLocationsResultOutput, error) {
-			args := v.(LookupZeroTrustDnsLocationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustDnsLocations:getZeroTrustDnsLocations", args, LookupZeroTrustDnsLocationsResultOutput{}, options).(LookupZeroTrustDnsLocationsResultOutput), nil
-		}).(LookupZeroTrustDnsLocationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustDnsLocations:getZeroTrustDnsLocations", args, LookupZeroTrustDnsLocationsResultOutput{}, options).(LookupZeroTrustDnsLocationsResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustDnsLocations.

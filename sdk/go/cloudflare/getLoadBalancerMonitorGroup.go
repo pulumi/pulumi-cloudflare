@@ -72,12 +72,8 @@ type LookupLoadBalancerMonitorGroupResult struct {
 }
 
 func LookupLoadBalancerMonitorGroupOutput(ctx *pulumi.Context, args LookupLoadBalancerMonitorGroupOutputArgs, opts ...pulumi.InvokeOption) LookupLoadBalancerMonitorGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLoadBalancerMonitorGroupResultOutput, error) {
-			args := v.(LookupLoadBalancerMonitorGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getLoadBalancerMonitorGroup:getLoadBalancerMonitorGroup", args, LookupLoadBalancerMonitorGroupResultOutput{}, options).(LookupLoadBalancerMonitorGroupResultOutput), nil
-		}).(LookupLoadBalancerMonitorGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getLoadBalancerMonitorGroup:getLoadBalancerMonitorGroup", args, LookupLoadBalancerMonitorGroupResultOutput{}, options).(LookupLoadBalancerMonitorGroupResultOutput)
 }
 
 // A collection of arguments for invoking getLoadBalancerMonitorGroup.

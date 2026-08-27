@@ -68,12 +68,8 @@ type LookupArgoTieredCachingResult struct {
 }
 
 func LookupArgoTieredCachingOutput(ctx *pulumi.Context, args LookupArgoTieredCachingOutputArgs, opts ...pulumi.InvokeOption) LookupArgoTieredCachingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupArgoTieredCachingResultOutput, error) {
-			args := v.(LookupArgoTieredCachingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getArgoTieredCaching:getArgoTieredCaching", args, LookupArgoTieredCachingResultOutput{}, options).(LookupArgoTieredCachingResultOutput), nil
-		}).(LookupArgoTieredCachingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getArgoTieredCaching:getArgoTieredCaching", args, LookupArgoTieredCachingResultOutput{}, options).(LookupArgoTieredCachingResultOutput)
 }
 
 // A collection of arguments for invoking getArgoTieredCaching.

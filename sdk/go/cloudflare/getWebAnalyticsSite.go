@@ -84,12 +84,8 @@ type LookupWebAnalyticsSiteResult struct {
 }
 
 func LookupWebAnalyticsSiteOutput(ctx *pulumi.Context, args LookupWebAnalyticsSiteOutputArgs, opts ...pulumi.InvokeOption) LookupWebAnalyticsSiteResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebAnalyticsSiteResultOutput, error) {
-			args := v.(LookupWebAnalyticsSiteArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getWebAnalyticsSite:getWebAnalyticsSite", args, LookupWebAnalyticsSiteResultOutput{}, options).(LookupWebAnalyticsSiteResultOutput), nil
-		}).(LookupWebAnalyticsSiteResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getWebAnalyticsSite:getWebAnalyticsSite", args, LookupWebAnalyticsSiteResultOutput{}, options).(LookupWebAnalyticsSiteResultOutput)
 }
 
 // A collection of arguments for invoking getWebAnalyticsSite.

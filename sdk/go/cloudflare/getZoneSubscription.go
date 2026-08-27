@@ -82,12 +82,8 @@ type LookupZoneSubscriptionResult struct {
 }
 
 func LookupZoneSubscriptionOutput(ctx *pulumi.Context, args LookupZoneSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupZoneSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZoneSubscriptionResultOutput, error) {
-			args := v.(LookupZoneSubscriptionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZoneSubscription:getZoneSubscription", args, LookupZoneSubscriptionResultOutput{}, options).(LookupZoneSubscriptionResultOutput), nil
-		}).(LookupZoneSubscriptionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZoneSubscription:getZoneSubscription", args, LookupZoneSubscriptionResultOutput{}, options).(LookupZoneSubscriptionResultOutput)
 }
 
 // A collection of arguments for invoking getZoneSubscription.

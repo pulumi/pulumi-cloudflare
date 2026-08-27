@@ -82,12 +82,8 @@ type LookupWorkersDeploymentResult struct {
 }
 
 func LookupWorkersDeploymentOutput(ctx *pulumi.Context, args LookupWorkersDeploymentOutputArgs, opts ...pulumi.InvokeOption) LookupWorkersDeploymentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkersDeploymentResultOutput, error) {
-			args := v.(LookupWorkersDeploymentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getWorkersDeployment:getWorkersDeployment", args, LookupWorkersDeploymentResultOutput{}, options).(LookupWorkersDeploymentResultOutput), nil
-		}).(LookupWorkersDeploymentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getWorkersDeployment:getWorkersDeployment", args, LookupWorkersDeploymentResultOutput{}, options).(LookupWorkersDeploymentResultOutput)
 }
 
 // A collection of arguments for invoking getWorkersDeployment.

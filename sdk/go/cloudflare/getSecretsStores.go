@@ -82,12 +82,8 @@ type LookupSecretsStoresResult struct {
 }
 
 func LookupSecretsStoresOutput(ctx *pulumi.Context, args LookupSecretsStoresOutputArgs, opts ...pulumi.InvokeOption) LookupSecretsStoresResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSecretsStoresResultOutput, error) {
-			args := v.(LookupSecretsStoresArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getSecretsStores:getSecretsStores", args, LookupSecretsStoresResultOutput{}, options).(LookupSecretsStoresResultOutput), nil
-		}).(LookupSecretsStoresResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getSecretsStores:getSecretsStores", args, LookupSecretsStoresResultOutput{}, options).(LookupSecretsStoresResultOutput)
 }
 
 // A collection of arguments for invoking getSecretsStores.

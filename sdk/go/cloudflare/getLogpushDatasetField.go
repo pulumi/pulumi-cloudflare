@@ -75,12 +75,8 @@ type GetLogpushDatasetFieldResult struct {
 }
 
 func GetLogpushDatasetFieldOutput(ctx *pulumi.Context, args GetLogpushDatasetFieldOutputArgs, opts ...pulumi.InvokeOption) GetLogpushDatasetFieldResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetLogpushDatasetFieldResultOutput, error) {
-			args := v.(GetLogpushDatasetFieldArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getLogpushDatasetField:getLogpushDatasetField", args, GetLogpushDatasetFieldResultOutput{}, options).(GetLogpushDatasetFieldResultOutput), nil
-		}).(GetLogpushDatasetFieldResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getLogpushDatasetField:getLogpushDatasetField", args, GetLogpushDatasetFieldResultOutput{}, options).(GetLogpushDatasetFieldResultOutput)
 }
 
 // A collection of arguments for invoking getLogpushDatasetField.

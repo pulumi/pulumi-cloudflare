@@ -101,12 +101,8 @@ type LookupZeroTrustNetworkHostnameRoutesResult struct {
 }
 
 func LookupZeroTrustNetworkHostnameRoutesOutput(ctx *pulumi.Context, args LookupZeroTrustNetworkHostnameRoutesOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustNetworkHostnameRoutesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustNetworkHostnameRoutesResultOutput, error) {
-			args := v.(LookupZeroTrustNetworkHostnameRoutesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustNetworkHostnameRoutes:getZeroTrustNetworkHostnameRoutes", args, LookupZeroTrustNetworkHostnameRoutesResultOutput{}, options).(LookupZeroTrustNetworkHostnameRoutesResultOutput), nil
-		}).(LookupZeroTrustNetworkHostnameRoutesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustNetworkHostnameRoutes:getZeroTrustNetworkHostnameRoutes", args, LookupZeroTrustNetworkHostnameRoutesResultOutput{}, options).(LookupZeroTrustNetworkHostnameRoutesResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustNetworkHostnameRoutes.

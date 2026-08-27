@@ -73,12 +73,8 @@ type LookupRulesetsResult struct {
 }
 
 func LookupRulesetsOutput(ctx *pulumi.Context, args LookupRulesetsOutputArgs, opts ...pulumi.InvokeOption) LookupRulesetsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRulesetsResultOutput, error) {
-			args := v.(LookupRulesetsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getRulesets:getRulesets", args, LookupRulesetsResultOutput{}, options).(LookupRulesetsResultOutput), nil
-		}).(LookupRulesetsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getRulesets:getRulesets", args, LookupRulesetsResultOutput{}, options).(LookupRulesetsResultOutput)
 }
 
 // A collection of arguments for invoking getRulesets.

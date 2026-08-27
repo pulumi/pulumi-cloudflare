@@ -72,12 +72,8 @@ type LookupTokenValidationConfigsResult struct {
 }
 
 func LookupTokenValidationConfigsOutput(ctx *pulumi.Context, args LookupTokenValidationConfigsOutputArgs, opts ...pulumi.InvokeOption) LookupTokenValidationConfigsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTokenValidationConfigsResultOutput, error) {
-			args := v.(LookupTokenValidationConfigsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getTokenValidationConfigs:getTokenValidationConfigs", args, LookupTokenValidationConfigsResultOutput{}, options).(LookupTokenValidationConfigsResultOutput), nil
-		}).(LookupTokenValidationConfigsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getTokenValidationConfigs:getTokenValidationConfigs", args, LookupTokenValidationConfigsResultOutput{}, options).(LookupTokenValidationConfigsResultOutput)
 }
 
 // A collection of arguments for invoking getTokenValidationConfigs.

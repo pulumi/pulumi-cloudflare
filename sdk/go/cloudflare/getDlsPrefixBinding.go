@@ -77,12 +77,8 @@ type LookupDlsPrefixBindingResult struct {
 }
 
 func LookupDlsPrefixBindingOutput(ctx *pulumi.Context, args LookupDlsPrefixBindingOutputArgs, opts ...pulumi.InvokeOption) LookupDlsPrefixBindingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDlsPrefixBindingResultOutput, error) {
-			args := v.(LookupDlsPrefixBindingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getDlsPrefixBinding:getDlsPrefixBinding", args, LookupDlsPrefixBindingResultOutput{}, options).(LookupDlsPrefixBindingResultOutput), nil
-		}).(LookupDlsPrefixBindingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getDlsPrefixBinding:getDlsPrefixBinding", args, LookupDlsPrefixBindingResultOutput{}, options).(LookupDlsPrefixBindingResultOutput)
 }
 
 // A collection of arguments for invoking getDlsPrefixBinding.

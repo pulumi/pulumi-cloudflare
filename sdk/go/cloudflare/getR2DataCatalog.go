@@ -83,12 +83,8 @@ type LookupR2DataCatalogResult struct {
 }
 
 func LookupR2DataCatalogOutput(ctx *pulumi.Context, args LookupR2DataCatalogOutputArgs, opts ...pulumi.InvokeOption) LookupR2DataCatalogResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupR2DataCatalogResultOutput, error) {
-			args := v.(LookupR2DataCatalogArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getR2DataCatalog:getR2DataCatalog", args, LookupR2DataCatalogResultOutput{}, options).(LookupR2DataCatalogResultOutput), nil
-		}).(LookupR2DataCatalogResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getR2DataCatalog:getR2DataCatalog", args, LookupR2DataCatalogResultOutput{}, options).(LookupR2DataCatalogResultOutput)
 }
 
 // A collection of arguments for invoking getR2DataCatalog.

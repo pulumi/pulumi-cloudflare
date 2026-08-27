@@ -70,12 +70,8 @@ type LookupZeroTrustListsResult struct {
 }
 
 func LookupZeroTrustListsOutput(ctx *pulumi.Context, args LookupZeroTrustListsOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustListsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustListsResultOutput, error) {
-			args := v.(LookupZeroTrustListsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustLists:getZeroTrustLists", args, LookupZeroTrustListsResultOutput{}, options).(LookupZeroTrustListsResultOutput), nil
-		}).(LookupZeroTrustListsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustLists:getZeroTrustLists", args, LookupZeroTrustListsResultOutput{}, options).(LookupZeroTrustListsResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustLists.

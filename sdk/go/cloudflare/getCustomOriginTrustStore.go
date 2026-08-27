@@ -88,12 +88,8 @@ type LookupCustomOriginTrustStoreResult struct {
 }
 
 func LookupCustomOriginTrustStoreOutput(ctx *pulumi.Context, args LookupCustomOriginTrustStoreOutputArgs, opts ...pulumi.InvokeOption) LookupCustomOriginTrustStoreResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCustomOriginTrustStoreResultOutput, error) {
-			args := v.(LookupCustomOriginTrustStoreArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getCustomOriginTrustStore:getCustomOriginTrustStore", args, LookupCustomOriginTrustStoreResultOutput{}, options).(LookupCustomOriginTrustStoreResultOutput), nil
-		}).(LookupCustomOriginTrustStoreResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getCustomOriginTrustStore:getCustomOriginTrustStore", args, LookupCustomOriginTrustStoreResultOutput{}, options).(LookupCustomOriginTrustStoreResultOutput)
 }
 
 // A collection of arguments for invoking getCustomOriginTrustStore.

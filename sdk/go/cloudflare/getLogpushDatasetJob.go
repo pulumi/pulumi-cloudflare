@@ -112,12 +112,8 @@ type GetLogpushDatasetJobResult struct {
 }
 
 func GetLogpushDatasetJobOutput(ctx *pulumi.Context, args GetLogpushDatasetJobOutputArgs, opts ...pulumi.InvokeOption) GetLogpushDatasetJobResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetLogpushDatasetJobResultOutput, error) {
-			args := v.(GetLogpushDatasetJobArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getLogpushDatasetJob:getLogpushDatasetJob", args, GetLogpushDatasetJobResultOutput{}, options).(GetLogpushDatasetJobResultOutput), nil
-		}).(GetLogpushDatasetJobResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getLogpushDatasetJob:getLogpushDatasetJob", args, GetLogpushDatasetJobResultOutput{}, options).(GetLogpushDatasetJobResultOutput)
 }
 
 // A collection of arguments for invoking getLogpushDatasetJob.

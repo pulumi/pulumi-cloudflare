@@ -86,12 +86,8 @@ type LookupPageShieldPolicyResult struct {
 }
 
 func LookupPageShieldPolicyOutput(ctx *pulumi.Context, args LookupPageShieldPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupPageShieldPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPageShieldPolicyResultOutput, error) {
-			args := v.(LookupPageShieldPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getPageShieldPolicy:getPageShieldPolicy", args, LookupPageShieldPolicyResultOutput{}, options).(LookupPageShieldPolicyResultOutput), nil
-		}).(LookupPageShieldPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getPageShieldPolicy:getPageShieldPolicy", args, LookupPageShieldPolicyResultOutput{}, options).(LookupPageShieldPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getPageShieldPolicy.
