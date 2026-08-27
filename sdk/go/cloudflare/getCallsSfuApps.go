@@ -70,12 +70,8 @@ type LookupCallsSfuAppsResult struct {
 }
 
 func LookupCallsSfuAppsOutput(ctx *pulumi.Context, args LookupCallsSfuAppsOutputArgs, opts ...pulumi.InvokeOption) LookupCallsSfuAppsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCallsSfuAppsResultOutput, error) {
-			args := v.(LookupCallsSfuAppsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getCallsSfuApps:getCallsSfuApps", args, LookupCallsSfuAppsResultOutput{}, options).(LookupCallsSfuAppsResultOutput), nil
-		}).(LookupCallsSfuAppsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getCallsSfuApps:getCallsSfuApps", args, LookupCallsSfuAppsResultOutput{}, options).(LookupCallsSfuAppsResultOutput)
 }
 
 // A collection of arguments for invoking getCallsSfuApps.

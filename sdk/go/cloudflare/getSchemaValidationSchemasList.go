@@ -81,12 +81,8 @@ type LookupSchemaValidationSchemasListResult struct {
 }
 
 func LookupSchemaValidationSchemasListOutput(ctx *pulumi.Context, args LookupSchemaValidationSchemasListOutputArgs, opts ...pulumi.InvokeOption) LookupSchemaValidationSchemasListResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSchemaValidationSchemasListResultOutput, error) {
-			args := v.(LookupSchemaValidationSchemasListArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getSchemaValidationSchemasList:getSchemaValidationSchemasList", args, LookupSchemaValidationSchemasListResultOutput{}, options).(LookupSchemaValidationSchemasListResultOutput), nil
-		}).(LookupSchemaValidationSchemasListResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getSchemaValidationSchemasList:getSchemaValidationSchemasList", args, LookupSchemaValidationSchemasListResultOutput{}, options).(LookupSchemaValidationSchemasListResultOutput)
 }
 
 // A collection of arguments for invoking getSchemaValidationSchemasList.

@@ -70,12 +70,8 @@ type LookupRegistrarDomainResult struct {
 }
 
 func LookupRegistrarDomainOutput(ctx *pulumi.Context, args LookupRegistrarDomainOutputArgs, opts ...pulumi.InvokeOption) LookupRegistrarDomainResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRegistrarDomainResultOutput, error) {
-			args := v.(LookupRegistrarDomainArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getRegistrarDomain:getRegistrarDomain", args, LookupRegistrarDomainResultOutput{}, options).(LookupRegistrarDomainResultOutput), nil
-		}).(LookupRegistrarDomainResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getRegistrarDomain:getRegistrarDomain", args, LookupRegistrarDomainResultOutput{}, options).(LookupRegistrarDomainResultOutput)
 }
 
 // A collection of arguments for invoking getRegistrarDomain.

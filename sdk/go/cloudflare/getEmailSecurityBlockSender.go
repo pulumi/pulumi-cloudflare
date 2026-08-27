@@ -76,12 +76,8 @@ type LookupEmailSecurityBlockSenderResult struct {
 }
 
 func LookupEmailSecurityBlockSenderOutput(ctx *pulumi.Context, args LookupEmailSecurityBlockSenderOutputArgs, opts ...pulumi.InvokeOption) LookupEmailSecurityBlockSenderResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEmailSecurityBlockSenderResultOutput, error) {
-			args := v.(LookupEmailSecurityBlockSenderArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getEmailSecurityBlockSender:getEmailSecurityBlockSender", args, LookupEmailSecurityBlockSenderResultOutput{}, options).(LookupEmailSecurityBlockSenderResultOutput), nil
-		}).(LookupEmailSecurityBlockSenderResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getEmailSecurityBlockSender:getEmailSecurityBlockSender", args, LookupEmailSecurityBlockSenderResultOutput{}, options).(LookupEmailSecurityBlockSenderResultOutput)
 }
 
 // A collection of arguments for invoking getEmailSecurityBlockSender.

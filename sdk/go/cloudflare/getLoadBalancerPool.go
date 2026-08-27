@@ -107,12 +107,8 @@ type LookupLoadBalancerPoolResult struct {
 }
 
 func LookupLoadBalancerPoolOutput(ctx *pulumi.Context, args LookupLoadBalancerPoolOutputArgs, opts ...pulumi.InvokeOption) LookupLoadBalancerPoolResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLoadBalancerPoolResultOutput, error) {
-			args := v.(LookupLoadBalancerPoolArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getLoadBalancerPool:getLoadBalancerPool", args, LookupLoadBalancerPoolResultOutput{}, options).(LookupLoadBalancerPoolResultOutput), nil
-		}).(LookupLoadBalancerPoolResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getLoadBalancerPool:getLoadBalancerPool", args, LookupLoadBalancerPoolResultOutput{}, options).(LookupLoadBalancerPoolResultOutput)
 }
 
 // A collection of arguments for invoking getLoadBalancerPool.

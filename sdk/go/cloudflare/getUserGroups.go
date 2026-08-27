@@ -92,12 +92,8 @@ type LookupUserGroupsResult struct {
 }
 
 func LookupUserGroupsOutput(ctx *pulumi.Context, args LookupUserGroupsOutputArgs, opts ...pulumi.InvokeOption) LookupUserGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupUserGroupsResultOutput, error) {
-			args := v.(LookupUserGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getUserGroups:getUserGroups", args, LookupUserGroupsResultOutput{}, options).(LookupUserGroupsResultOutput), nil
-		}).(LookupUserGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getUserGroups:getUserGroups", args, LookupUserGroupsResultOutput{}, options).(LookupUserGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getUserGroups.

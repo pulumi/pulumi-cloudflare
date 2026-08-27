@@ -78,12 +78,8 @@ type LookupWorkflowResult struct {
 }
 
 func LookupWorkflowOutput(ctx *pulumi.Context, args LookupWorkflowOutputArgs, opts ...pulumi.InvokeOption) LookupWorkflowResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkflowResultOutput, error) {
-			args := v.(LookupWorkflowArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getWorkflow:getWorkflow", args, LookupWorkflowResultOutput{}, options).(LookupWorkflowResultOutput), nil
-		}).(LookupWorkflowResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getWorkflow:getWorkflow", args, LookupWorkflowResultOutput{}, options).(LookupWorkflowResultOutput)
 }
 
 // A collection of arguments for invoking getWorkflow.

@@ -71,12 +71,8 @@ type LookupZeroTrustDeviceManagedNetworksResult struct {
 }
 
 func LookupZeroTrustDeviceManagedNetworksOutput(ctx *pulumi.Context, args LookupZeroTrustDeviceManagedNetworksOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDeviceManagedNetworksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustDeviceManagedNetworksResultOutput, error) {
-			args := v.(LookupZeroTrustDeviceManagedNetworksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustDeviceManagedNetworks:getZeroTrustDeviceManagedNetworks", args, LookupZeroTrustDeviceManagedNetworksResultOutput{}, options).(LookupZeroTrustDeviceManagedNetworksResultOutput), nil
-		}).(LookupZeroTrustDeviceManagedNetworksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustDeviceManagedNetworks:getZeroTrustDeviceManagedNetworks", args, LookupZeroTrustDeviceManagedNetworksResultOutput{}, options).(LookupZeroTrustDeviceManagedNetworksResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustDeviceManagedNetworks.

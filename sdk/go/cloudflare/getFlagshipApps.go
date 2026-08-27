@@ -69,12 +69,8 @@ type LookupFlagshipAppsResult struct {
 }
 
 func LookupFlagshipAppsOutput(ctx *pulumi.Context, args LookupFlagshipAppsOutputArgs, opts ...pulumi.InvokeOption) LookupFlagshipAppsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFlagshipAppsResultOutput, error) {
-			args := v.(LookupFlagshipAppsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getFlagshipApps:getFlagshipApps", args, LookupFlagshipAppsResultOutput{}, options).(LookupFlagshipAppsResultOutput), nil
-		}).(LookupFlagshipAppsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getFlagshipApps:getFlagshipApps", args, LookupFlagshipAppsResultOutput{}, options).(LookupFlagshipAppsResultOutput)
 }
 
 // A collection of arguments for invoking getFlagshipApps.

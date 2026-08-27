@@ -110,12 +110,8 @@ type LookupLogpushJobResult struct {
 }
 
 func LookupLogpushJobOutput(ctx *pulumi.Context, args LookupLogpushJobOutputArgs, opts ...pulumi.InvokeOption) LookupLogpushJobResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLogpushJobResultOutput, error) {
-			args := v.(LookupLogpushJobArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getLogpushJob:getLogpushJob", args, LookupLogpushJobResultOutput{}, options).(LookupLogpushJobResultOutput), nil
-		}).(LookupLogpushJobResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getLogpushJob:getLogpushJob", args, LookupLogpushJobResultOutput{}, options).(LookupLogpushJobResultOutput)
 }
 
 // A collection of arguments for invoking getLogpushJob.

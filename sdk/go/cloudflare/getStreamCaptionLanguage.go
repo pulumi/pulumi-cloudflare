@@ -81,12 +81,8 @@ type LookupStreamCaptionLanguageResult struct {
 }
 
 func LookupStreamCaptionLanguageOutput(ctx *pulumi.Context, args LookupStreamCaptionLanguageOutputArgs, opts ...pulumi.InvokeOption) LookupStreamCaptionLanguageResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupStreamCaptionLanguageResultOutput, error) {
-			args := v.(LookupStreamCaptionLanguageArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getStreamCaptionLanguage:getStreamCaptionLanguage", args, LookupStreamCaptionLanguageResultOutput{}, options).(LookupStreamCaptionLanguageResultOutput), nil
-		}).(LookupStreamCaptionLanguageResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getStreamCaptionLanguage:getStreamCaptionLanguage", args, LookupStreamCaptionLanguageResultOutput{}, options).(LookupStreamCaptionLanguageResultOutput)
 }
 
 // A collection of arguments for invoking getStreamCaptionLanguage.

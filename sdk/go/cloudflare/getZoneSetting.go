@@ -159,12 +159,8 @@ type LookupZoneSettingResult struct {
 }
 
 func LookupZoneSettingOutput(ctx *pulumi.Context, args LookupZoneSettingOutputArgs, opts ...pulumi.InvokeOption) LookupZoneSettingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZoneSettingResultOutput, error) {
-			args := v.(LookupZoneSettingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZoneSetting:getZoneSetting", args, LookupZoneSettingResultOutput{}, options).(LookupZoneSettingResultOutput), nil
-		}).(LookupZoneSettingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZoneSetting:getZoneSetting", args, LookupZoneSettingResultOutput{}, options).(LookupZoneSettingResultOutput)
 }
 
 // A collection of arguments for invoking getZoneSetting.

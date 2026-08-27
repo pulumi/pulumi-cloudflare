@@ -84,12 +84,8 @@ type LookupShareResourcesResult struct {
 }
 
 func LookupShareResourcesOutput(ctx *pulumi.Context, args LookupShareResourcesOutputArgs, opts ...pulumi.InvokeOption) LookupShareResourcesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupShareResourcesResultOutput, error) {
-			args := v.(LookupShareResourcesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getShareResources:getShareResources", args, LookupShareResourcesResultOutput{}, options).(LookupShareResourcesResultOutput), nil
-		}).(LookupShareResourcesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getShareResources:getShareResources", args, LookupShareResourcesResultOutput{}, options).(LookupShareResourcesResultOutput)
 }
 
 // A collection of arguments for invoking getShareResources.

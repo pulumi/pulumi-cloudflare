@@ -85,12 +85,8 @@ type LookupPipelineStreamResult struct {
 }
 
 func LookupPipelineStreamOutput(ctx *pulumi.Context, args LookupPipelineStreamOutputArgs, opts ...pulumi.InvokeOption) LookupPipelineStreamResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPipelineStreamResultOutput, error) {
-			args := v.(LookupPipelineStreamArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getPipelineStream:getPipelineStream", args, LookupPipelineStreamResultOutput{}, options).(LookupPipelineStreamResultOutput), nil
-		}).(LookupPipelineStreamResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getPipelineStream:getPipelineStream", args, LookupPipelineStreamResultOutput{}, options).(LookupPipelineStreamResultOutput)
 }
 
 // A collection of arguments for invoking getPipelineStream.

@@ -86,12 +86,8 @@ type LookupR2CustomDomainResult struct {
 }
 
 func LookupR2CustomDomainOutput(ctx *pulumi.Context, args LookupR2CustomDomainOutputArgs, opts ...pulumi.InvokeOption) LookupR2CustomDomainResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupR2CustomDomainResultOutput, error) {
-			args := v.(LookupR2CustomDomainArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getR2CustomDomain:getR2CustomDomain", args, LookupR2CustomDomainResultOutput{}, options).(LookupR2CustomDomainResultOutput), nil
-		}).(LookupR2CustomDomainResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getR2CustomDomain:getR2CustomDomain", args, LookupR2CustomDomainResultOutput{}, options).(LookupR2CustomDomainResultOutput)
 }
 
 // A collection of arguments for invoking getR2CustomDomain.

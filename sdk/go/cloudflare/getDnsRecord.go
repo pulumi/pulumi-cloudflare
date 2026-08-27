@@ -113,12 +113,8 @@ type LookupDnsRecordResult struct {
 }
 
 func LookupDnsRecordOutput(ctx *pulumi.Context, args LookupDnsRecordOutputArgs, opts ...pulumi.InvokeOption) LookupDnsRecordResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDnsRecordResultOutput, error) {
-			args := v.(LookupDnsRecordArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getDnsRecord:getDnsRecord", args, LookupDnsRecordResultOutput{}, options).(LookupDnsRecordResultOutput), nil
-		}).(LookupDnsRecordResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getDnsRecord:getDnsRecord", args, LookupDnsRecordResultOutput{}, options).(LookupDnsRecordResultOutput)
 }
 
 // A collection of arguments for invoking getDnsRecord.

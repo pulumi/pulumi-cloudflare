@@ -74,12 +74,8 @@ type LookupByoIpPrefixesResult struct {
 }
 
 func LookupByoIpPrefixesOutput(ctx *pulumi.Context, args LookupByoIpPrefixesOutputArgs, opts ...pulumi.InvokeOption) LookupByoIpPrefixesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupByoIpPrefixesResultOutput, error) {
-			args := v.(LookupByoIpPrefixesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getByoIpPrefixes:getByoIpPrefixes", args, LookupByoIpPrefixesResultOutput{}, options).(LookupByoIpPrefixesResultOutput), nil
-		}).(LookupByoIpPrefixesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getByoIpPrefixes:getByoIpPrefixes", args, LookupByoIpPrefixesResultOutput{}, options).(LookupByoIpPrefixesResultOutput)
 }
 
 // A collection of arguments for invoking getByoIpPrefixes.

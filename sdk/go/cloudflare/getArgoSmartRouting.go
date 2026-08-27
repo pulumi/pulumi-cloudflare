@@ -73,12 +73,8 @@ type LookupArgoSmartRoutingResult struct {
 }
 
 func LookupArgoSmartRoutingOutput(ctx *pulumi.Context, args LookupArgoSmartRoutingOutputArgs, opts ...pulumi.InvokeOption) LookupArgoSmartRoutingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupArgoSmartRoutingResultOutput, error) {
-			args := v.(LookupArgoSmartRoutingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getArgoSmartRouting:getArgoSmartRouting", args, LookupArgoSmartRoutingResultOutput{}, options).(LookupArgoSmartRoutingResultOutput), nil
-		}).(LookupArgoSmartRoutingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getArgoSmartRouting:getArgoSmartRouting", args, LookupArgoSmartRoutingResultOutput{}, options).(LookupArgoSmartRoutingResultOutput)
 }
 
 // A collection of arguments for invoking getArgoSmartRouting.

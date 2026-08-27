@@ -73,12 +73,8 @@ type LookupZeroTrustGatewayProxyEndpointResult struct {
 }
 
 func LookupZeroTrustGatewayProxyEndpointOutput(ctx *pulumi.Context, args LookupZeroTrustGatewayProxyEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustGatewayProxyEndpointResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustGatewayProxyEndpointResultOutput, error) {
-			args := v.(LookupZeroTrustGatewayProxyEndpointArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustGatewayProxyEndpoint:getZeroTrustGatewayProxyEndpoint", args, LookupZeroTrustGatewayProxyEndpointResultOutput{}, options).(LookupZeroTrustGatewayProxyEndpointResultOutput), nil
-		}).(LookupZeroTrustGatewayProxyEndpointResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustGatewayProxyEndpoint:getZeroTrustGatewayProxyEndpoint", args, LookupZeroTrustGatewayProxyEndpointResultOutput{}, options).(LookupZeroTrustGatewayProxyEndpointResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustGatewayProxyEndpoint.

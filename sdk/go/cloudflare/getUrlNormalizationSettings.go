@@ -110,12 +110,8 @@ type LookupUrlNormalizationSettingsResult struct {
 }
 
 func LookupUrlNormalizationSettingsOutput(ctx *pulumi.Context, args LookupUrlNormalizationSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupUrlNormalizationSettingsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupUrlNormalizationSettingsResultOutput, error) {
-			args := v.(LookupUrlNormalizationSettingsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getUrlNormalizationSettings:getUrlNormalizationSettings", args, LookupUrlNormalizationSettingsResultOutput{}, options).(LookupUrlNormalizationSettingsResultOutput), nil
-		}).(LookupUrlNormalizationSettingsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getUrlNormalizationSettings:getUrlNormalizationSettings", args, LookupUrlNormalizationSettingsResultOutput{}, options).(LookupUrlNormalizationSettingsResultOutput)
 }
 
 // A collection of arguments for invoking getUrlNormalizationSettings.

@@ -63,12 +63,8 @@ type LookupZeroTrustGatewayPoliciesResult struct {
 }
 
 func LookupZeroTrustGatewayPoliciesOutput(ctx *pulumi.Context, args LookupZeroTrustGatewayPoliciesOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustGatewayPoliciesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustGatewayPoliciesResultOutput, error) {
-			args := v.(LookupZeroTrustGatewayPoliciesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustGatewayPolicies:getZeroTrustGatewayPolicies", args, LookupZeroTrustGatewayPoliciesResultOutput{}, options).(LookupZeroTrustGatewayPoliciesResultOutput), nil
-		}).(LookupZeroTrustGatewayPoliciesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustGatewayPolicies:getZeroTrustGatewayPolicies", args, LookupZeroTrustGatewayPoliciesResultOutput{}, options).(LookupZeroTrustGatewayPoliciesResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustGatewayPolicies.

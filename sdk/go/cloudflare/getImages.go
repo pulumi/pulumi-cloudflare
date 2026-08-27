@@ -75,12 +75,8 @@ type LookupImagesResult struct {
 }
 
 func LookupImagesOutput(ctx *pulumi.Context, args LookupImagesOutputArgs, opts ...pulumi.InvokeOption) LookupImagesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupImagesResultOutput, error) {
-			args := v.(LookupImagesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getImages:getImages", args, LookupImagesResultOutput{}, options).(LookupImagesResultOutput), nil
-		}).(LookupImagesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getImages:getImages", args, LookupImagesResultOutput{}, options).(LookupImagesResultOutput)
 }
 
 // A collection of arguments for invoking getImages.

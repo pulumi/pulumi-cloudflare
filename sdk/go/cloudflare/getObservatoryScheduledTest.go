@@ -79,12 +79,8 @@ type LookupObservatoryScheduledTestResult struct {
 }
 
 func LookupObservatoryScheduledTestOutput(ctx *pulumi.Context, args LookupObservatoryScheduledTestOutputArgs, opts ...pulumi.InvokeOption) LookupObservatoryScheduledTestResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupObservatoryScheduledTestResultOutput, error) {
-			args := v.(LookupObservatoryScheduledTestArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getObservatoryScheduledTest:getObservatoryScheduledTest", args, LookupObservatoryScheduledTestResultOutput{}, options).(LookupObservatoryScheduledTestResultOutput), nil
-		}).(LookupObservatoryScheduledTestResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getObservatoryScheduledTest:getObservatoryScheduledTest", args, LookupObservatoryScheduledTestResultOutput{}, options).(LookupObservatoryScheduledTestResultOutput)
 }
 
 // A collection of arguments for invoking getObservatoryScheduledTest.

@@ -46,12 +46,8 @@ type LookupZeroTrustResourceLibraryCategoriesResult struct {
 }
 
 func LookupZeroTrustResourceLibraryCategoriesOutput(ctx *pulumi.Context, args LookupZeroTrustResourceLibraryCategoriesOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustResourceLibraryCategoriesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustResourceLibraryCategoriesResultOutput, error) {
-			args := v.(LookupZeroTrustResourceLibraryCategoriesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustResourceLibraryCategories:getZeroTrustResourceLibraryCategories", args, LookupZeroTrustResourceLibraryCategoriesResultOutput{}, options).(LookupZeroTrustResourceLibraryCategoriesResultOutput), nil
-		}).(LookupZeroTrustResourceLibraryCategoriesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustResourceLibraryCategories:getZeroTrustResourceLibraryCategories", args, LookupZeroTrustResourceLibraryCategoriesResultOutput{}, options).(LookupZeroTrustResourceLibraryCategoriesResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustResourceLibraryCategories.

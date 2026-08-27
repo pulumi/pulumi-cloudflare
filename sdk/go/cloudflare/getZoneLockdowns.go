@@ -115,12 +115,8 @@ type LookupZoneLockdownsResult struct {
 }
 
 func LookupZoneLockdownsOutput(ctx *pulumi.Context, args LookupZoneLockdownsOutputArgs, opts ...pulumi.InvokeOption) LookupZoneLockdownsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZoneLockdownsResultOutput, error) {
-			args := v.(LookupZoneLockdownsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZoneLockdowns:getZoneLockdowns", args, LookupZoneLockdownsResultOutput{}, options).(LookupZoneLockdownsResultOutput), nil
-		}).(LookupZoneLockdownsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZoneLockdowns:getZoneLockdowns", args, LookupZoneLockdownsResultOutput{}, options).(LookupZoneLockdownsResultOutput)
 }
 
 // A collection of arguments for invoking getZoneLockdowns.

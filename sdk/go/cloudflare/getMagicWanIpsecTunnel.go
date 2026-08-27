@@ -74,12 +74,8 @@ type LookupMagicWanIpsecTunnelResult struct {
 }
 
 func LookupMagicWanIpsecTunnelOutput(ctx *pulumi.Context, args LookupMagicWanIpsecTunnelOutputArgs, opts ...pulumi.InvokeOption) LookupMagicWanIpsecTunnelResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMagicWanIpsecTunnelResultOutput, error) {
-			args := v.(LookupMagicWanIpsecTunnelArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getMagicWanIpsecTunnel:getMagicWanIpsecTunnel", args, LookupMagicWanIpsecTunnelResultOutput{}, options).(LookupMagicWanIpsecTunnelResultOutput), nil
-		}).(LookupMagicWanIpsecTunnelResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getMagicWanIpsecTunnel:getMagicWanIpsecTunnel", args, LookupMagicWanIpsecTunnelResultOutput{}, options).(LookupMagicWanIpsecTunnelResultOutput)
 }
 
 // A collection of arguments for invoking getMagicWanIpsecTunnel.

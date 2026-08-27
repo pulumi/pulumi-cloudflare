@@ -67,12 +67,8 @@ type LookupUniversalSslSettingResult struct {
 }
 
 func LookupUniversalSslSettingOutput(ctx *pulumi.Context, args LookupUniversalSslSettingOutputArgs, opts ...pulumi.InvokeOption) LookupUniversalSslSettingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupUniversalSslSettingResultOutput, error) {
-			args := v.(LookupUniversalSslSettingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getUniversalSslSetting:getUniversalSslSetting", args, LookupUniversalSslSettingResultOutput{}, options).(LookupUniversalSslSettingResultOutput), nil
-		}).(LookupUniversalSslSettingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getUniversalSslSetting:getUniversalSslSetting", args, LookupUniversalSslSettingResultOutput{}, options).(LookupUniversalSslSettingResultOutput)
 }
 
 // A collection of arguments for invoking getUniversalSslSetting.

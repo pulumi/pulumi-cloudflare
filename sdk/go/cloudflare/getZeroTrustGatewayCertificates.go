@@ -63,12 +63,8 @@ type LookupZeroTrustGatewayCertificatesResult struct {
 }
 
 func LookupZeroTrustGatewayCertificatesOutput(ctx *pulumi.Context, args LookupZeroTrustGatewayCertificatesOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustGatewayCertificatesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustGatewayCertificatesResultOutput, error) {
-			args := v.(LookupZeroTrustGatewayCertificatesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustGatewayCertificates:getZeroTrustGatewayCertificates", args, LookupZeroTrustGatewayCertificatesResultOutput{}, options).(LookupZeroTrustGatewayCertificatesResultOutput), nil
-		}).(LookupZeroTrustGatewayCertificatesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustGatewayCertificates:getZeroTrustGatewayCertificates", args, LookupZeroTrustGatewayCertificatesResultOutput{}, options).(LookupZeroTrustGatewayCertificatesResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustGatewayCertificates.

@@ -67,12 +67,8 @@ type LookupCloudConnectorRulesResult struct {
 }
 
 func LookupCloudConnectorRulesOutput(ctx *pulumi.Context, args LookupCloudConnectorRulesOutputArgs, opts ...pulumi.InvokeOption) LookupCloudConnectorRulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCloudConnectorRulesResultOutput, error) {
-			args := v.(LookupCloudConnectorRulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getCloudConnectorRules:getCloudConnectorRules", args, LookupCloudConnectorRulesResultOutput{}, options).(LookupCloudConnectorRulesResultOutput), nil
-		}).(LookupCloudConnectorRulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getCloudConnectorRules:getCloudConnectorRules", args, LookupCloudConnectorRulesResultOutput{}, options).(LookupCloudConnectorRulesResultOutput)
 }
 
 // A collection of arguments for invoking getCloudConnectorRules.

@@ -65,12 +65,8 @@ type LookupOriginCloudRegionsResult struct {
 }
 
 func LookupOriginCloudRegionsOutput(ctx *pulumi.Context, args LookupOriginCloudRegionsOutputArgs, opts ...pulumi.InvokeOption) LookupOriginCloudRegionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOriginCloudRegionsResultOutput, error) {
-			args := v.(LookupOriginCloudRegionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getOriginCloudRegions:getOriginCloudRegions", args, LookupOriginCloudRegionsResultOutput{}, options).(LookupOriginCloudRegionsResultOutput), nil
-		}).(LookupOriginCloudRegionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getOriginCloudRegions:getOriginCloudRegions", args, LookupOriginCloudRegionsResultOutput{}, options).(LookupOriginCloudRegionsResultOutput)
 }
 
 // A collection of arguments for invoking getOriginCloudRegions.

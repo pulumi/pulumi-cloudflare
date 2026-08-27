@@ -70,12 +70,8 @@ type LookupImageVariantResult struct {
 }
 
 func LookupImageVariantOutput(ctx *pulumi.Context, args LookupImageVariantOutputArgs, opts ...pulumi.InvokeOption) LookupImageVariantResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupImageVariantResultOutput, error) {
-			args := v.(LookupImageVariantArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getImageVariant:getImageVariant", args, LookupImageVariantResultOutput{}, options).(LookupImageVariantResultOutput), nil
-		}).(LookupImageVariantResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getImageVariant:getImageVariant", args, LookupImageVariantResultOutput{}, options).(LookupImageVariantResultOutput)
 }
 
 // A collection of arguments for invoking getImageVariant.

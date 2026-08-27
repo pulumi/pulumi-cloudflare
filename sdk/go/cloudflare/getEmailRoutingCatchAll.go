@@ -83,12 +83,8 @@ type LookupEmailRoutingCatchAllResult struct {
 }
 
 func LookupEmailRoutingCatchAllOutput(ctx *pulumi.Context, args LookupEmailRoutingCatchAllOutputArgs, opts ...pulumi.InvokeOption) LookupEmailRoutingCatchAllResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEmailRoutingCatchAllResultOutput, error) {
-			args := v.(LookupEmailRoutingCatchAllArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getEmailRoutingCatchAll:getEmailRoutingCatchAll", args, LookupEmailRoutingCatchAllResultOutput{}, options).(LookupEmailRoutingCatchAllResultOutput), nil
-		}).(LookupEmailRoutingCatchAllResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getEmailRoutingCatchAll:getEmailRoutingCatchAll", args, LookupEmailRoutingCatchAllResultOutput{}, options).(LookupEmailRoutingCatchAllResultOutput)
 }
 
 // A collection of arguments for invoking getEmailRoutingCatchAll.

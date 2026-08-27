@@ -79,12 +79,8 @@ type LookupR2BucketResult struct {
 }
 
 func LookupR2BucketOutput(ctx *pulumi.Context, args LookupR2BucketOutputArgs, opts ...pulumi.InvokeOption) LookupR2BucketResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupR2BucketResultOutput, error) {
-			args := v.(LookupR2BucketArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getR2Bucket:getR2Bucket", args, LookupR2BucketResultOutput{}, options).(LookupR2BucketResultOutput), nil
-		}).(LookupR2BucketResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getR2Bucket:getR2Bucket", args, LookupR2BucketResultOutput{}, options).(LookupR2BucketResultOutput)
 }
 
 // A collection of arguments for invoking getR2Bucket.

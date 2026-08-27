@@ -77,12 +77,8 @@ type LookupCustomHostnameFallbackOriginResult struct {
 }
 
 func LookupCustomHostnameFallbackOriginOutput(ctx *pulumi.Context, args LookupCustomHostnameFallbackOriginOutputArgs, opts ...pulumi.InvokeOption) LookupCustomHostnameFallbackOriginResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCustomHostnameFallbackOriginResultOutput, error) {
-			args := v.(LookupCustomHostnameFallbackOriginArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getCustomHostnameFallbackOrigin:getCustomHostnameFallbackOrigin", args, LookupCustomHostnameFallbackOriginResultOutput{}, options).(LookupCustomHostnameFallbackOriginResultOutput), nil
-		}).(LookupCustomHostnameFallbackOriginResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getCustomHostnameFallbackOrigin:getCustomHostnameFallbackOrigin", args, LookupCustomHostnameFallbackOriginResultOutput{}, options).(LookupCustomHostnameFallbackOriginResultOutput)
 }
 
 // A collection of arguments for invoking getCustomHostnameFallbackOrigin.

@@ -73,12 +73,8 @@ type LookupNotificationPolicyWebhooksListResult struct {
 }
 
 func LookupNotificationPolicyWebhooksListOutput(ctx *pulumi.Context, args LookupNotificationPolicyWebhooksListOutputArgs, opts ...pulumi.InvokeOption) LookupNotificationPolicyWebhooksListResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNotificationPolicyWebhooksListResultOutput, error) {
-			args := v.(LookupNotificationPolicyWebhooksListArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getNotificationPolicyWebhooksList:getNotificationPolicyWebhooksList", args, LookupNotificationPolicyWebhooksListResultOutput{}, options).(LookupNotificationPolicyWebhooksListResultOutput), nil
-		}).(LookupNotificationPolicyWebhooksListResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getNotificationPolicyWebhooksList:getNotificationPolicyWebhooksList", args, LookupNotificationPolicyWebhooksListResultOutput{}, options).(LookupNotificationPolicyWebhooksListResultOutput)
 }
 
 // A collection of arguments for invoking getNotificationPolicyWebhooksList.

@@ -102,12 +102,8 @@ type LookupEmailSecurityTrustedDomainsListResult struct {
 }
 
 func LookupEmailSecurityTrustedDomainsListOutput(ctx *pulumi.Context, args LookupEmailSecurityTrustedDomainsListOutputArgs, opts ...pulumi.InvokeOption) LookupEmailSecurityTrustedDomainsListResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEmailSecurityTrustedDomainsListResultOutput, error) {
-			args := v.(LookupEmailSecurityTrustedDomainsListArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getEmailSecurityTrustedDomainsList:getEmailSecurityTrustedDomainsList", args, LookupEmailSecurityTrustedDomainsListResultOutput{}, options).(LookupEmailSecurityTrustedDomainsListResultOutput), nil
-		}).(LookupEmailSecurityTrustedDomainsListResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getEmailSecurityTrustedDomainsList:getEmailSecurityTrustedDomainsList", args, LookupEmailSecurityTrustedDomainsListResultOutput{}, options).(LookupEmailSecurityTrustedDomainsListResultOutput)
 }
 
 // A collection of arguments for invoking getEmailSecurityTrustedDomainsList.

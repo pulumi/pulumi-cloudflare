@@ -65,12 +65,8 @@ type LookupR2BucketLockResult struct {
 }
 
 func LookupR2BucketLockOutput(ctx *pulumi.Context, args LookupR2BucketLockOutputArgs, opts ...pulumi.InvokeOption) LookupR2BucketLockResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupR2BucketLockResultOutput, error) {
-			args := v.(LookupR2BucketLockArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getR2BucketLock:getR2BucketLock", args, LookupR2BucketLockResultOutput{}, options).(LookupR2BucketLockResultOutput), nil
-		}).(LookupR2BucketLockResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getR2BucketLock:getR2BucketLock", args, LookupR2BucketLockResultOutput{}, options).(LookupR2BucketLockResultOutput)
 }
 
 // A collection of arguments for invoking getR2BucketLock.

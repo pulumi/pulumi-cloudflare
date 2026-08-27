@@ -94,12 +94,8 @@ type LookupMagicNetworkMonitoringRuleResult struct {
 }
 
 func LookupMagicNetworkMonitoringRuleOutput(ctx *pulumi.Context, args LookupMagicNetworkMonitoringRuleOutputArgs, opts ...pulumi.InvokeOption) LookupMagicNetworkMonitoringRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMagicNetworkMonitoringRuleResultOutput, error) {
-			args := v.(LookupMagicNetworkMonitoringRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getMagicNetworkMonitoringRule:getMagicNetworkMonitoringRule", args, LookupMagicNetworkMonitoringRuleResultOutput{}, options).(LookupMagicNetworkMonitoringRuleResultOutput), nil
-		}).(LookupMagicNetworkMonitoringRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getMagicNetworkMonitoringRule:getMagicNetworkMonitoringRule", args, LookupMagicNetworkMonitoringRuleResultOutput{}, options).(LookupMagicNetworkMonitoringRuleResultOutput)
 }
 
 // A collection of arguments for invoking getMagicNetworkMonitoringRule.

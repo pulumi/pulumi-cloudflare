@@ -87,12 +87,8 @@ type LookupPagesDomainResult struct {
 }
 
 func LookupPagesDomainOutput(ctx *pulumi.Context, args LookupPagesDomainOutputArgs, opts ...pulumi.InvokeOption) LookupPagesDomainResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPagesDomainResultOutput, error) {
-			args := v.(LookupPagesDomainArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getPagesDomain:getPagesDomain", args, LookupPagesDomainResultOutput{}, options).(LookupPagesDomainResultOutput), nil
-		}).(LookupPagesDomainResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getPagesDomain:getPagesDomain", args, LookupPagesDomainResultOutput{}, options).(LookupPagesDomainResultOutput)
 }
 
 // A collection of arguments for invoking getPagesDomain.

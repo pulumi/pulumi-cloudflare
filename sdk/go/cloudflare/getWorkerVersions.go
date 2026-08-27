@@ -76,12 +76,8 @@ type LookupWorkerVersionsResult struct {
 }
 
 func LookupWorkerVersionsOutput(ctx *pulumi.Context, args LookupWorkerVersionsOutputArgs, opts ...pulumi.InvokeOption) LookupWorkerVersionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkerVersionsResultOutput, error) {
-			args := v.(LookupWorkerVersionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getWorkerVersions:getWorkerVersions", args, LookupWorkerVersionsResultOutput{}, options).(LookupWorkerVersionsResultOutput), nil
-		}).(LookupWorkerVersionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getWorkerVersions:getWorkerVersions", args, LookupWorkerVersionsResultOutput{}, options).(LookupWorkerVersionsResultOutput)
 }
 
 // A collection of arguments for invoking getWorkerVersions.

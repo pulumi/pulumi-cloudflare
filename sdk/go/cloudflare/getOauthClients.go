@@ -69,12 +69,8 @@ type LookupOauthClientsResult struct {
 }
 
 func LookupOauthClientsOutput(ctx *pulumi.Context, args LookupOauthClientsOutputArgs, opts ...pulumi.InvokeOption) LookupOauthClientsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOauthClientsResultOutput, error) {
-			args := v.(LookupOauthClientsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getOauthClients:getOauthClients", args, LookupOauthClientsResultOutput{}, options).(LookupOauthClientsResultOutput), nil
-		}).(LookupOauthClientsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getOauthClients:getOauthClients", args, LookupOauthClientsResultOutput{}, options).(LookupOauthClientsResultOutput)
 }
 
 // A collection of arguments for invoking getOauthClients.

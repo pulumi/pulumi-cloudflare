@@ -75,12 +75,8 @@ type LookupTieredCacheResult struct {
 }
 
 func LookupTieredCacheOutput(ctx *pulumi.Context, args LookupTieredCacheOutputArgs, opts ...pulumi.InvokeOption) LookupTieredCacheResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTieredCacheResultOutput, error) {
-			args := v.(LookupTieredCacheArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getTieredCache:getTieredCache", args, LookupTieredCacheResultOutput{}, options).(LookupTieredCacheResultOutput), nil
-		}).(LookupTieredCacheResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getTieredCache:getTieredCache", args, LookupTieredCacheResultOutput{}, options).(LookupTieredCacheResultOutput)
 }
 
 // A collection of arguments for invoking getTieredCache.

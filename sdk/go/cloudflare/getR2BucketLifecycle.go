@@ -65,12 +65,8 @@ type LookupR2BucketLifecycleResult struct {
 }
 
 func LookupR2BucketLifecycleOutput(ctx *pulumi.Context, args LookupR2BucketLifecycleOutputArgs, opts ...pulumi.InvokeOption) LookupR2BucketLifecycleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupR2BucketLifecycleResultOutput, error) {
-			args := v.(LookupR2BucketLifecycleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getR2BucketLifecycle:getR2BucketLifecycle", args, LookupR2BucketLifecycleResultOutput{}, options).(LookupR2BucketLifecycleResultOutput), nil
-		}).(LookupR2BucketLifecycleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getR2BucketLifecycle:getR2BucketLifecycle", args, LookupR2BucketLifecycleResultOutput{}, options).(LookupR2BucketLifecycleResultOutput)
 }
 
 // A collection of arguments for invoking getR2BucketLifecycle.

@@ -111,12 +111,8 @@ type LookupTokenValidationRulesListResult struct {
 }
 
 func LookupTokenValidationRulesListOutput(ctx *pulumi.Context, args LookupTokenValidationRulesListOutputArgs, opts ...pulumi.InvokeOption) LookupTokenValidationRulesListResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTokenValidationRulesListResultOutput, error) {
-			args := v.(LookupTokenValidationRulesListArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getTokenValidationRulesList:getTokenValidationRulesList", args, LookupTokenValidationRulesListResultOutput{}, options).(LookupTokenValidationRulesListResultOutput), nil
-		}).(LookupTokenValidationRulesListResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getTokenValidationRulesList:getTokenValidationRulesList", args, LookupTokenValidationRulesListResultOutput{}, options).(LookupTokenValidationRulesListResultOutput)
 }
 
 // A collection of arguments for invoking getTokenValidationRulesList.

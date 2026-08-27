@@ -70,12 +70,8 @@ type LookupCallsTurnAppsResult struct {
 }
 
 func LookupCallsTurnAppsOutput(ctx *pulumi.Context, args LookupCallsTurnAppsOutputArgs, opts ...pulumi.InvokeOption) LookupCallsTurnAppsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCallsTurnAppsResultOutput, error) {
-			args := v.(LookupCallsTurnAppsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getCallsTurnApps:getCallsTurnApps", args, LookupCallsTurnAppsResultOutput{}, options).(LookupCallsTurnAppsResultOutput), nil
-		}).(LookupCallsTurnAppsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getCallsTurnApps:getCallsTurnApps", args, LookupCallsTurnAppsResultOutput{}, options).(LookupCallsTurnAppsResultOutput)
 }
 
 // A collection of arguments for invoking getCallsTurnApps.

@@ -82,12 +82,8 @@ type LookupUserAgentBlockingRuleResult struct {
 }
 
 func LookupUserAgentBlockingRuleOutput(ctx *pulumi.Context, args LookupUserAgentBlockingRuleOutputArgs, opts ...pulumi.InvokeOption) LookupUserAgentBlockingRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupUserAgentBlockingRuleResultOutput, error) {
-			args := v.(LookupUserAgentBlockingRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getUserAgentBlockingRule:getUserAgentBlockingRule", args, LookupUserAgentBlockingRuleResultOutput{}, options).(LookupUserAgentBlockingRuleResultOutput), nil
-		}).(LookupUserAgentBlockingRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getUserAgentBlockingRule:getUserAgentBlockingRule", args, LookupUserAgentBlockingRuleResultOutput{}, options).(LookupUserAgentBlockingRuleResultOutput)
 }
 
 // A collection of arguments for invoking getUserAgentBlockingRule.

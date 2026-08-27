@@ -95,12 +95,8 @@ type LookupWorkersCustomDomainsResult struct {
 }
 
 func LookupWorkersCustomDomainsOutput(ctx *pulumi.Context, args LookupWorkersCustomDomainsOutputArgs, opts ...pulumi.InvokeOption) LookupWorkersCustomDomainsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkersCustomDomainsResultOutput, error) {
-			args := v.(LookupWorkersCustomDomainsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getWorkersCustomDomains:getWorkersCustomDomains", args, LookupWorkersCustomDomainsResultOutput{}, options).(LookupWorkersCustomDomainsResultOutput), nil
-		}).(LookupWorkersCustomDomainsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getWorkersCustomDomains:getWorkersCustomDomains", args, LookupWorkersCustomDomainsResultOutput{}, options).(LookupWorkersCustomDomainsResultOutput)
 }
 
 // A collection of arguments for invoking getWorkersCustomDomains.

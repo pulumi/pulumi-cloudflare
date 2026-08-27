@@ -75,12 +75,8 @@ type LookupD1DatabasesResult struct {
 }
 
 func LookupD1DatabasesOutput(ctx *pulumi.Context, args LookupD1DatabasesOutputArgs, opts ...pulumi.InvokeOption) LookupD1DatabasesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupD1DatabasesResultOutput, error) {
-			args := v.(LookupD1DatabasesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getD1Databases:getD1Databases", args, LookupD1DatabasesResultOutput{}, options).(LookupD1DatabasesResultOutput), nil
-		}).(LookupD1DatabasesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getD1Databases:getD1Databases", args, LookupD1DatabasesResultOutput{}, options).(LookupD1DatabasesResultOutput)
 }
 
 // A collection of arguments for invoking getD1Databases.

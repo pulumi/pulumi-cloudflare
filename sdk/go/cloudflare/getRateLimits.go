@@ -70,12 +70,8 @@ type LookupRateLimitsResult struct {
 }
 
 func LookupRateLimitsOutput(ctx *pulumi.Context, args LookupRateLimitsOutputArgs, opts ...pulumi.InvokeOption) LookupRateLimitsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRateLimitsResultOutput, error) {
-			args := v.(LookupRateLimitsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getRateLimits:getRateLimits", args, LookupRateLimitsResultOutput{}, options).(LookupRateLimitsResultOutput), nil
-		}).(LookupRateLimitsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getRateLimits:getRateLimits", args, LookupRateLimitsResultOutput{}, options).(LookupRateLimitsResultOutput)
 }
 
 // A collection of arguments for invoking getRateLimits.

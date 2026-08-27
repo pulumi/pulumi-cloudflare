@@ -77,12 +77,8 @@ type LookupPipelineSinksResult struct {
 }
 
 func LookupPipelineSinksOutput(ctx *pulumi.Context, args LookupPipelineSinksOutputArgs, opts ...pulumi.InvokeOption) LookupPipelineSinksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPipelineSinksResultOutput, error) {
-			args := v.(LookupPipelineSinksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getPipelineSinks:getPipelineSinks", args, LookupPipelineSinksResultOutput{}, options).(LookupPipelineSinksResultOutput), nil
-		}).(LookupPipelineSinksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getPipelineSinks:getPipelineSinks", args, LookupPipelineSinksResultOutput{}, options).(LookupPipelineSinksResultOutput)
 }
 
 // A collection of arguments for invoking getPipelineSinks.

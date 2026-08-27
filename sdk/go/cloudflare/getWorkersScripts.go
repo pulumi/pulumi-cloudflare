@@ -76,12 +76,8 @@ type LookupWorkersScriptsResult struct {
 }
 
 func LookupWorkersScriptsOutput(ctx *pulumi.Context, args LookupWorkersScriptsOutputArgs, opts ...pulumi.InvokeOption) LookupWorkersScriptsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkersScriptsResultOutput, error) {
-			args := v.(LookupWorkersScriptsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getWorkersScripts:getWorkersScripts", args, LookupWorkersScriptsResultOutput{}, options).(LookupWorkersScriptsResultOutput), nil
-		}).(LookupWorkersScriptsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getWorkersScripts:getWorkersScripts", args, LookupWorkersScriptsResultOutput{}, options).(LookupWorkersScriptsResultOutput)
 }
 
 // A collection of arguments for invoking getWorkersScripts.

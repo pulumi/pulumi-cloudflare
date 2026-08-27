@@ -71,12 +71,8 @@ type LookupZeroTrustDlpDataTagsResult struct {
 }
 
 func LookupZeroTrustDlpDataTagsOutput(ctx *pulumi.Context, args LookupZeroTrustDlpDataTagsOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDlpDataTagsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustDlpDataTagsResultOutput, error) {
-			args := v.(LookupZeroTrustDlpDataTagsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustDlpDataTags:getZeroTrustDlpDataTags", args, LookupZeroTrustDlpDataTagsResultOutput{}, options).(LookupZeroTrustDlpDataTagsResultOutput), nil
-		}).(LookupZeroTrustDlpDataTagsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustDlpDataTags:getZeroTrustDlpDataTags", args, LookupZeroTrustDlpDataTagsResultOutput{}, options).(LookupZeroTrustDlpDataTagsResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustDlpDataTags.

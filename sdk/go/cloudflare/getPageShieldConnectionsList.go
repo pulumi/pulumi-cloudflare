@@ -119,12 +119,8 @@ type LookupPageShieldConnectionsListResult struct {
 }
 
 func LookupPageShieldConnectionsListOutput(ctx *pulumi.Context, args LookupPageShieldConnectionsListOutputArgs, opts ...pulumi.InvokeOption) LookupPageShieldConnectionsListResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPageShieldConnectionsListResultOutput, error) {
-			args := v.(LookupPageShieldConnectionsListArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getPageShieldConnectionsList:getPageShieldConnectionsList", args, LookupPageShieldConnectionsListResultOutput{}, options).(LookupPageShieldConnectionsListResultOutput), nil
-		}).(LookupPageShieldConnectionsListResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getPageShieldConnectionsList:getPageShieldConnectionsList", args, LookupPageShieldConnectionsListResultOutput{}, options).(LookupPageShieldConnectionsListResultOutput)
 }
 
 // A collection of arguments for invoking getPageShieldConnectionsList.

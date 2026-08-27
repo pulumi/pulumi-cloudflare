@@ -74,12 +74,8 @@ type LookupMagicWanGreTunnelResult struct {
 }
 
 func LookupMagicWanGreTunnelOutput(ctx *pulumi.Context, args LookupMagicWanGreTunnelOutputArgs, opts ...pulumi.InvokeOption) LookupMagicWanGreTunnelResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMagicWanGreTunnelResultOutput, error) {
-			args := v.(LookupMagicWanGreTunnelArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getMagicWanGreTunnel:getMagicWanGreTunnel", args, LookupMagicWanGreTunnelResultOutput{}, options).(LookupMagicWanGreTunnelResultOutput), nil
-		}).(LookupMagicWanGreTunnelResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getMagicWanGreTunnel:getMagicWanGreTunnel", args, LookupMagicWanGreTunnelResultOutput{}, options).(LookupMagicWanGreTunnelResultOutput)
 }
 
 // A collection of arguments for invoking getMagicWanGreTunnel.

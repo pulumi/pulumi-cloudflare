@@ -75,12 +75,8 @@ type LookupCustomCsrsResult struct {
 }
 
 func LookupCustomCsrsOutput(ctx *pulumi.Context, args LookupCustomCsrsOutputArgs, opts ...pulumi.InvokeOption) LookupCustomCsrsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCustomCsrsResultOutput, error) {
-			args := v.(LookupCustomCsrsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getCustomCsrs:getCustomCsrs", args, LookupCustomCsrsResultOutput{}, options).(LookupCustomCsrsResultOutput), nil
-		}).(LookupCustomCsrsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getCustomCsrs:getCustomCsrs", args, LookupCustomCsrsResultOutput{}, options).(LookupCustomCsrsResultOutput)
 }
 
 // A collection of arguments for invoking getCustomCsrs.

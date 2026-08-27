@@ -96,12 +96,8 @@ type LookupZeroTrustDexTestResult struct {
 }
 
 func LookupZeroTrustDexTestOutput(ctx *pulumi.Context, args LookupZeroTrustDexTestOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDexTestResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustDexTestResultOutput, error) {
-			args := v.(LookupZeroTrustDexTestArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest", args, LookupZeroTrustDexTestResultOutput{}, options).(LookupZeroTrustDexTestResultOutput), nil
-		}).(LookupZeroTrustDexTestResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest", args, LookupZeroTrustDexTestResultOutput{}, options).(LookupZeroTrustDexTestResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustDexTest.

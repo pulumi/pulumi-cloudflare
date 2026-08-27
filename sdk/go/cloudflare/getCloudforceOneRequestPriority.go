@@ -93,12 +93,8 @@ type LookupCloudforceOneRequestPriorityResult struct {
 }
 
 func LookupCloudforceOneRequestPriorityOutput(ctx *pulumi.Context, args LookupCloudforceOneRequestPriorityOutputArgs, opts ...pulumi.InvokeOption) LookupCloudforceOneRequestPriorityResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCloudforceOneRequestPriorityResultOutput, error) {
-			args := v.(LookupCloudforceOneRequestPriorityArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getCloudforceOneRequestPriority:getCloudforceOneRequestPriority", args, LookupCloudforceOneRequestPriorityResultOutput{}, options).(LookupCloudforceOneRequestPriorityResultOutput), nil
-		}).(LookupCloudforceOneRequestPriorityResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getCloudforceOneRequestPriority:getCloudforceOneRequestPriority", args, LookupCloudforceOneRequestPriorityResultOutput{}, options).(LookupCloudforceOneRequestPriorityResultOutput)
 }
 
 // A collection of arguments for invoking getCloudforceOneRequestPriority.

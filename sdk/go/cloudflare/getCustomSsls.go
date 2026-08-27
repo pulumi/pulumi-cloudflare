@@ -85,12 +85,8 @@ type LookupCustomSslsResult struct {
 }
 
 func LookupCustomSslsOutput(ctx *pulumi.Context, args LookupCustomSslsOutputArgs, opts ...pulumi.InvokeOption) LookupCustomSslsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCustomSslsResultOutput, error) {
-			args := v.(LookupCustomSslsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getCustomSsls:getCustomSsls", args, LookupCustomSslsResultOutput{}, options).(LookupCustomSslsResultOutput), nil
-		}).(LookupCustomSslsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getCustomSsls:getCustomSsls", args, LookupCustomSslsResultOutput{}, options).(LookupCustomSslsResultOutput)
 }
 
 // A collection of arguments for invoking getCustomSsls.

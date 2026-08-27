@@ -87,12 +87,8 @@ type GetPageShieldConnectionsResult struct {
 }
 
 func GetPageShieldConnectionsOutput(ctx *pulumi.Context, args GetPageShieldConnectionsOutputArgs, opts ...pulumi.InvokeOption) GetPageShieldConnectionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPageShieldConnectionsResultOutput, error) {
-			args := v.(GetPageShieldConnectionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getPageShieldConnections:getPageShieldConnections", args, GetPageShieldConnectionsResultOutput{}, options).(GetPageShieldConnectionsResultOutput), nil
-		}).(GetPageShieldConnectionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getPageShieldConnections:getPageShieldConnections", args, GetPageShieldConnectionsResultOutput{}, options).(GetPageShieldConnectionsResultOutput)
 }
 
 // A collection of arguments for invoking getPageShieldConnections.

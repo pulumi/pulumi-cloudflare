@@ -112,12 +112,8 @@ type LookupCloudforceOneRequestMessageResult struct {
 }
 
 func LookupCloudforceOneRequestMessageOutput(ctx *pulumi.Context, args LookupCloudforceOneRequestMessageOutputArgs, opts ...pulumi.InvokeOption) LookupCloudforceOneRequestMessageResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCloudforceOneRequestMessageResultOutput, error) {
-			args := v.(LookupCloudforceOneRequestMessageArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getCloudforceOneRequestMessage:getCloudforceOneRequestMessage", args, LookupCloudforceOneRequestMessageResultOutput{}, options).(LookupCloudforceOneRequestMessageResultOutput), nil
-		}).(LookupCloudforceOneRequestMessageResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getCloudforceOneRequestMessage:getCloudforceOneRequestMessage", args, LookupCloudforceOneRequestMessageResultOutput{}, options).(LookupCloudforceOneRequestMessageResultOutput)
 }
 
 // A collection of arguments for invoking getCloudforceOneRequestMessage.

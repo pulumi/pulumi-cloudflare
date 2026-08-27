@@ -79,12 +79,8 @@ type LookupFlagshipFlagsResult struct {
 }
 
 func LookupFlagshipFlagsOutput(ctx *pulumi.Context, args LookupFlagshipFlagsOutputArgs, opts ...pulumi.InvokeOption) LookupFlagshipFlagsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFlagshipFlagsResultOutput, error) {
-			args := v.(LookupFlagshipFlagsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getFlagshipFlags:getFlagshipFlags", args, LookupFlagshipFlagsResultOutput{}, options).(LookupFlagshipFlagsResultOutput), nil
-		}).(LookupFlagshipFlagsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getFlagshipFlags:getFlagshipFlags", args, LookupFlagshipFlagsResultOutput{}, options).(LookupFlagshipFlagsResultOutput)
 }
 
 // A collection of arguments for invoking getFlagshipFlags.

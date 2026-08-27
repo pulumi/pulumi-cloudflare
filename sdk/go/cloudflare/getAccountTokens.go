@@ -81,12 +81,8 @@ type LookupAccountTokensResult struct {
 }
 
 func LookupAccountTokensOutput(ctx *pulumi.Context, args LookupAccountTokensOutputArgs, opts ...pulumi.InvokeOption) LookupAccountTokensResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccountTokensResultOutput, error) {
-			args := v.(LookupAccountTokensArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getAccountTokens:getAccountTokens", args, LookupAccountTokensResultOutput{}, options).(LookupAccountTokensResultOutput), nil
-		}).(LookupAccountTokensResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getAccountTokens:getAccountTokens", args, LookupAccountTokensResultOutput{}, options).(LookupAccountTokensResultOutput)
 }
 
 // A collection of arguments for invoking getAccountTokens.

@@ -95,12 +95,8 @@ type LookupFiltersResult struct {
 }
 
 func LookupFiltersOutput(ctx *pulumi.Context, args LookupFiltersOutputArgs, opts ...pulumi.InvokeOption) LookupFiltersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFiltersResultOutput, error) {
-			args := v.(LookupFiltersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getFilters:getFilters", args, LookupFiltersResultOutput{}, options).(LookupFiltersResultOutput), nil
-		}).(LookupFiltersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getFilters:getFilters", args, LookupFiltersResultOutput{}, options).(LookupFiltersResultOutput)
 }
 
 // A collection of arguments for invoking getFilters.

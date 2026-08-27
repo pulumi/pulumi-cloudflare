@@ -66,12 +66,8 @@ type GetDcvDelegationResult struct {
 }
 
 func GetDcvDelegationOutput(ctx *pulumi.Context, args GetDcvDelegationOutputArgs, opts ...pulumi.InvokeOption) GetDcvDelegationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDcvDelegationResultOutput, error) {
-			args := v.(GetDcvDelegationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getDcvDelegation:getDcvDelegation", args, GetDcvDelegationResultOutput{}, options).(GetDcvDelegationResultOutput), nil
-		}).(GetDcvDelegationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getDcvDelegation:getDcvDelegation", args, GetDcvDelegationResultOutput{}, options).(GetDcvDelegationResultOutput)
 }
 
 // A collection of arguments for invoking getDcvDelegation.

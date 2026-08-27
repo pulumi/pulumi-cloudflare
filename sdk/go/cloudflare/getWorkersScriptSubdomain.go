@@ -74,12 +74,8 @@ type LookupWorkersScriptSubdomainResult struct {
 }
 
 func LookupWorkersScriptSubdomainOutput(ctx *pulumi.Context, args LookupWorkersScriptSubdomainOutputArgs, opts ...pulumi.InvokeOption) LookupWorkersScriptSubdomainResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkersScriptSubdomainResultOutput, error) {
-			args := v.(LookupWorkersScriptSubdomainArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getWorkersScriptSubdomain:getWorkersScriptSubdomain", args, LookupWorkersScriptSubdomainResultOutput{}, options).(LookupWorkersScriptSubdomainResultOutput), nil
-		}).(LookupWorkersScriptSubdomainResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getWorkersScriptSubdomain:getWorkersScriptSubdomain", args, LookupWorkersScriptSubdomainResultOutput{}, options).(LookupWorkersScriptSubdomainResultOutput)
 }
 
 // A collection of arguments for invoking getWorkersScriptSubdomain.

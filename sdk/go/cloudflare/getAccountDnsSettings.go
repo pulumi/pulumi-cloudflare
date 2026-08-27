@@ -67,12 +67,8 @@ type LookupAccountDnsSettingsResult struct {
 }
 
 func LookupAccountDnsSettingsOutput(ctx *pulumi.Context, args LookupAccountDnsSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupAccountDnsSettingsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccountDnsSettingsResultOutput, error) {
-			args := v.(LookupAccountDnsSettingsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getAccountDnsSettings:getAccountDnsSettings", args, LookupAccountDnsSettingsResultOutput{}, options).(LookupAccountDnsSettingsResultOutput), nil
-		}).(LookupAccountDnsSettingsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getAccountDnsSettings:getAccountDnsSettings", args, LookupAccountDnsSettingsResultOutput{}, options).(LookupAccountDnsSettingsResultOutput)
 }
 
 // A collection of arguments for invoking getAccountDnsSettings.

@@ -92,12 +92,8 @@ type LookupEmailRoutingRuleResult struct {
 }
 
 func LookupEmailRoutingRuleOutput(ctx *pulumi.Context, args LookupEmailRoutingRuleOutputArgs, opts ...pulumi.InvokeOption) LookupEmailRoutingRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEmailRoutingRuleResultOutput, error) {
-			args := v.(LookupEmailRoutingRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getEmailRoutingRule:getEmailRoutingRule", args, LookupEmailRoutingRuleResultOutput{}, options).(LookupEmailRoutingRuleResultOutput), nil
-		}).(LookupEmailRoutingRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getEmailRoutingRule:getEmailRoutingRule", args, LookupEmailRoutingRuleResultOutput{}, options).(LookupEmailRoutingRuleResultOutput)
 }
 
 // A collection of arguments for invoking getEmailRoutingRule.

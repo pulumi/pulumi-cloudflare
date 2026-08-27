@@ -81,12 +81,8 @@ type LookupResourceGroupsResult struct {
 }
 
 func LookupResourceGroupsOutput(ctx *pulumi.Context, args LookupResourceGroupsOutputArgs, opts ...pulumi.InvokeOption) LookupResourceGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupResourceGroupsResultOutput, error) {
-			args := v.(LookupResourceGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getResourceGroups:getResourceGroups", args, LookupResourceGroupsResultOutput{}, options).(LookupResourceGroupsResultOutput), nil
-		}).(LookupResourceGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getResourceGroups:getResourceGroups", args, LookupResourceGroupsResultOutput{}, options).(LookupResourceGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getResourceGroups.

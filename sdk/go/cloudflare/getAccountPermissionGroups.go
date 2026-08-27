@@ -112,12 +112,8 @@ type LookupAccountPermissionGroupsResult struct {
 }
 
 func LookupAccountPermissionGroupsOutput(ctx *pulumi.Context, args LookupAccountPermissionGroupsOutputArgs, opts ...pulumi.InvokeOption) LookupAccountPermissionGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccountPermissionGroupsResultOutput, error) {
-			args := v.(LookupAccountPermissionGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getAccountPermissionGroups:getAccountPermissionGroups", args, LookupAccountPermissionGroupsResultOutput{}, options).(LookupAccountPermissionGroupsResultOutput), nil
-		}).(LookupAccountPermissionGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getAccountPermissionGroups:getAccountPermissionGroups", args, LookupAccountPermissionGroupsResultOutput{}, options).(LookupAccountPermissionGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getAccountPermissionGroups.

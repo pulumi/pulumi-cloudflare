@@ -81,12 +81,8 @@ type LookupApiShieldSchemasResult struct {
 }
 
 func LookupApiShieldSchemasOutput(ctx *pulumi.Context, args LookupApiShieldSchemasOutputArgs, opts ...pulumi.InvokeOption) LookupApiShieldSchemasResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupApiShieldSchemasResultOutput, error) {
-			args := v.(LookupApiShieldSchemasArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getApiShieldSchemas:getApiShieldSchemas", args, LookupApiShieldSchemasResultOutput{}, options).(LookupApiShieldSchemasResultOutput), nil
-		}).(LookupApiShieldSchemasResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getApiShieldSchemas:getApiShieldSchemas", args, LookupApiShieldSchemasResultOutput{}, options).(LookupApiShieldSchemasResultOutput)
 }
 
 // A collection of arguments for invoking getApiShieldSchemas.

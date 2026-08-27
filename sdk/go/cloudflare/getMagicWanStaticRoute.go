@@ -74,12 +74,8 @@ type LookupMagicWanStaticRouteResult struct {
 }
 
 func LookupMagicWanStaticRouteOutput(ctx *pulumi.Context, args LookupMagicWanStaticRouteOutputArgs, opts ...pulumi.InvokeOption) LookupMagicWanStaticRouteResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMagicWanStaticRouteResultOutput, error) {
-			args := v.(LookupMagicWanStaticRouteArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getMagicWanStaticRoute:getMagicWanStaticRoute", args, LookupMagicWanStaticRouteResultOutput{}, options).(LookupMagicWanStaticRouteResultOutput), nil
-		}).(LookupMagicWanStaticRouteResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getMagicWanStaticRoute:getMagicWanStaticRoute", args, LookupMagicWanStaticRouteResultOutput{}, options).(LookupMagicWanStaticRouteResultOutput)
 }
 
 // A collection of arguments for invoking getMagicWanStaticRoute.

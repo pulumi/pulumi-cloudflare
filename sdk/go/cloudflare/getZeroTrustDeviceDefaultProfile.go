@@ -99,12 +99,8 @@ type LookupZeroTrustDeviceDefaultProfileResult struct {
 }
 
 func LookupZeroTrustDeviceDefaultProfileOutput(ctx *pulumi.Context, args LookupZeroTrustDeviceDefaultProfileOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDeviceDefaultProfileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustDeviceDefaultProfileResultOutput, error) {
-			args := v.(LookupZeroTrustDeviceDefaultProfileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustDeviceDefaultProfile:getZeroTrustDeviceDefaultProfile", args, LookupZeroTrustDeviceDefaultProfileResultOutput{}, options).(LookupZeroTrustDeviceDefaultProfileResultOutput), nil
-		}).(LookupZeroTrustDeviceDefaultProfileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustDeviceDefaultProfile:getZeroTrustDeviceDefaultProfile", args, LookupZeroTrustDeviceDefaultProfileResultOutput{}, options).(LookupZeroTrustDeviceDefaultProfileResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustDeviceDefaultProfile.

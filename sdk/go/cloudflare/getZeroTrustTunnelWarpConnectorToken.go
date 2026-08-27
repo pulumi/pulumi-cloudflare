@@ -72,12 +72,8 @@ type GetZeroTrustTunnelWarpConnectorTokenResult struct {
 }
 
 func GetZeroTrustTunnelWarpConnectorTokenOutput(ctx *pulumi.Context, args GetZeroTrustTunnelWarpConnectorTokenOutputArgs, opts ...pulumi.InvokeOption) GetZeroTrustTunnelWarpConnectorTokenResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetZeroTrustTunnelWarpConnectorTokenResultOutput, error) {
-			args := v.(GetZeroTrustTunnelWarpConnectorTokenArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustTunnelWarpConnectorToken:getZeroTrustTunnelWarpConnectorToken", args, GetZeroTrustTunnelWarpConnectorTokenResultOutput{}, options).(GetZeroTrustTunnelWarpConnectorTokenResultOutput), nil
-		}).(GetZeroTrustTunnelWarpConnectorTokenResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustTunnelWarpConnectorToken:getZeroTrustTunnelWarpConnectorToken", args, GetZeroTrustTunnelWarpConnectorTokenResultOutput{}, options).(GetZeroTrustTunnelWarpConnectorTokenResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustTunnelWarpConnectorToken.

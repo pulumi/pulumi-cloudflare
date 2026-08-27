@@ -104,12 +104,8 @@ type LookupZeroTrustAccessAiControlsMcpServerResult struct {
 }
 
 func LookupZeroTrustAccessAiControlsMcpServerOutput(ctx *pulumi.Context, args LookupZeroTrustAccessAiControlsMcpServerOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustAccessAiControlsMcpServerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustAccessAiControlsMcpServerResultOutput, error) {
-			args := v.(LookupZeroTrustAccessAiControlsMcpServerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustAccessAiControlsMcpServer:getZeroTrustAccessAiControlsMcpServer", args, LookupZeroTrustAccessAiControlsMcpServerResultOutput{}, options).(LookupZeroTrustAccessAiControlsMcpServerResultOutput), nil
-		}).(LookupZeroTrustAccessAiControlsMcpServerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustAccessAiControlsMcpServer:getZeroTrustAccessAiControlsMcpServer", args, LookupZeroTrustAccessAiControlsMcpServerResultOutput{}, options).(LookupZeroTrustAccessAiControlsMcpServerResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustAccessAiControlsMcpServer.

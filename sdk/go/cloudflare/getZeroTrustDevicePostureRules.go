@@ -63,12 +63,8 @@ type LookupZeroTrustDevicePostureRulesResult struct {
 }
 
 func LookupZeroTrustDevicePostureRulesOutput(ctx *pulumi.Context, args LookupZeroTrustDevicePostureRulesOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDevicePostureRulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustDevicePostureRulesResultOutput, error) {
-			args := v.(LookupZeroTrustDevicePostureRulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustDevicePostureRules:getZeroTrustDevicePostureRules", args, LookupZeroTrustDevicePostureRulesResultOutput{}, options).(LookupZeroTrustDevicePostureRulesResultOutput), nil
-		}).(LookupZeroTrustDevicePostureRulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustDevicePostureRules:getZeroTrustDevicePostureRules", args, LookupZeroTrustDevicePostureRulesResultOutput{}, options).(LookupZeroTrustDevicePostureRulesResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustDevicePostureRules.

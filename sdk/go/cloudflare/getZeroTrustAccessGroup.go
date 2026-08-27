@@ -88,12 +88,8 @@ type LookupZeroTrustAccessGroupResult struct {
 }
 
 func LookupZeroTrustAccessGroupOutput(ctx *pulumi.Context, args LookupZeroTrustAccessGroupOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustAccessGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustAccessGroupResultOutput, error) {
-			args := v.(LookupZeroTrustAccessGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustAccessGroup:getZeroTrustAccessGroup", args, LookupZeroTrustAccessGroupResultOutput{}, options).(LookupZeroTrustAccessGroupResultOutput), nil
-		}).(LookupZeroTrustAccessGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustAccessGroup:getZeroTrustAccessGroup", args, LookupZeroTrustAccessGroupResultOutput{}, options).(LookupZeroTrustAccessGroupResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustAccessGroup.

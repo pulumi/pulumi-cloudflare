@@ -133,12 +133,8 @@ type LookupCustomHostnamesResult struct {
 }
 
 func LookupCustomHostnamesOutput(ctx *pulumi.Context, args LookupCustomHostnamesOutputArgs, opts ...pulumi.InvokeOption) LookupCustomHostnamesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCustomHostnamesResultOutput, error) {
-			args := v.(LookupCustomHostnamesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getCustomHostnames:getCustomHostnames", args, LookupCustomHostnamesResultOutput{}, options).(LookupCustomHostnamesResultOutput), nil
-		}).(LookupCustomHostnamesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getCustomHostnames:getCustomHostnames", args, LookupCustomHostnamesResultOutput{}, options).(LookupCustomHostnamesResultOutput)
 }
 
 // A collection of arguments for invoking getCustomHostnames.

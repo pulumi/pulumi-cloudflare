@@ -86,12 +86,8 @@ type LookupApiTokenResult struct {
 }
 
 func LookupApiTokenOutput(ctx *pulumi.Context, args LookupApiTokenOutputArgs, opts ...pulumi.InvokeOption) LookupApiTokenResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupApiTokenResultOutput, error) {
-			args := v.(LookupApiTokenArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getApiToken:getApiToken", args, LookupApiTokenResultOutput{}, options).(LookupApiTokenResultOutput), nil
-		}).(LookupApiTokenResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getApiToken:getApiToken", args, LookupApiTokenResultOutput{}, options).(LookupApiTokenResultOutput)
 }
 
 // A collection of arguments for invoking getApiToken.

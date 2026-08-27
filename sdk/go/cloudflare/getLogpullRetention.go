@@ -68,12 +68,8 @@ type LookupLogpullRetentionResult struct {
 }
 
 func LookupLogpullRetentionOutput(ctx *pulumi.Context, args LookupLogpullRetentionOutputArgs, opts ...pulumi.InvokeOption) LookupLogpullRetentionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLogpullRetentionResultOutput, error) {
-			args := v.(LookupLogpullRetentionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getLogpullRetention:getLogpullRetention", args, LookupLogpullRetentionResultOutput{}, options).(LookupLogpullRetentionResultOutput), nil
-		}).(LookupLogpullRetentionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getLogpullRetention:getLogpullRetention", args, LookupLogpullRetentionResultOutput{}, options).(LookupLogpullRetentionResultOutput)
 }
 
 // A collection of arguments for invoking getLogpullRetention.

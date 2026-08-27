@@ -85,12 +85,8 @@ type LookupMagicTransitConnectorResult struct {
 }
 
 func LookupMagicTransitConnectorOutput(ctx *pulumi.Context, args LookupMagicTransitConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupMagicTransitConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMagicTransitConnectorResultOutput, error) {
-			args := v.(LookupMagicTransitConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getMagicTransitConnector:getMagicTransitConnector", args, LookupMagicTransitConnectorResultOutput{}, options).(LookupMagicTransitConnectorResultOutput), nil
-		}).(LookupMagicTransitConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getMagicTransitConnector:getMagicTransitConnector", args, LookupMagicTransitConnectorResultOutput{}, options).(LookupMagicTransitConnectorResultOutput)
 }
 
 // A collection of arguments for invoking getMagicTransitConnector.

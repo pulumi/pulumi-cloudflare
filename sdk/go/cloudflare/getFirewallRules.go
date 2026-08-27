@@ -90,12 +90,8 @@ type LookupFirewallRulesResult struct {
 }
 
 func LookupFirewallRulesOutput(ctx *pulumi.Context, args LookupFirewallRulesOutputArgs, opts ...pulumi.InvokeOption) LookupFirewallRulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFirewallRulesResultOutput, error) {
-			args := v.(LookupFirewallRulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getFirewallRules:getFirewallRules", args, LookupFirewallRulesResultOutput{}, options).(LookupFirewallRulesResultOutput), nil
-		}).(LookupFirewallRulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getFirewallRules:getFirewallRules", args, LookupFirewallRulesResultOutput{}, options).(LookupFirewallRulesResultOutput)
 }
 
 // A collection of arguments for invoking getFirewallRules.

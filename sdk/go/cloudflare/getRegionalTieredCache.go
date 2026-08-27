@@ -75,12 +75,8 @@ type LookupRegionalTieredCacheResult struct {
 }
 
 func LookupRegionalTieredCacheOutput(ctx *pulumi.Context, args LookupRegionalTieredCacheOutputArgs, opts ...pulumi.InvokeOption) LookupRegionalTieredCacheResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRegionalTieredCacheResultOutput, error) {
-			args := v.(LookupRegionalTieredCacheArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getRegionalTieredCache:getRegionalTieredCache", args, LookupRegionalTieredCacheResultOutput{}, options).(LookupRegionalTieredCacheResultOutput), nil
-		}).(LookupRegionalTieredCacheResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getRegionalTieredCache:getRegionalTieredCache", args, LookupRegionalTieredCacheResultOutput{}, options).(LookupRegionalTieredCacheResultOutput)
 }
 
 // A collection of arguments for invoking getRegionalTieredCache.

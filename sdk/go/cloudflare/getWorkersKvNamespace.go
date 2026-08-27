@@ -77,12 +77,8 @@ type LookupWorkersKvNamespaceResult struct {
 }
 
 func LookupWorkersKvNamespaceOutput(ctx *pulumi.Context, args LookupWorkersKvNamespaceOutputArgs, opts ...pulumi.InvokeOption) LookupWorkersKvNamespaceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkersKvNamespaceResultOutput, error) {
-			args := v.(LookupWorkersKvNamespaceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getWorkersKvNamespace:getWorkersKvNamespace", args, LookupWorkersKvNamespaceResultOutput{}, options).(LookupWorkersKvNamespaceResultOutput), nil
-		}).(LookupWorkersKvNamespaceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getWorkersKvNamespace:getWorkersKvNamespace", args, LookupWorkersKvNamespaceResultOutput{}, options).(LookupWorkersKvNamespaceResultOutput)
 }
 
 // A collection of arguments for invoking getWorkersKvNamespace.

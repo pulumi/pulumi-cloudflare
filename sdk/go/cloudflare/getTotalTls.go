@@ -74,12 +74,8 @@ type LookupTotalTlsResult struct {
 }
 
 func LookupTotalTlsOutput(ctx *pulumi.Context, args LookupTotalTlsOutputArgs, opts ...pulumi.InvokeOption) LookupTotalTlsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTotalTlsResultOutput, error) {
-			args := v.(LookupTotalTlsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getTotalTls:getTotalTls", args, LookupTotalTlsResultOutput{}, options).(LookupTotalTlsResultOutput), nil
-		}).(LookupTotalTlsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getTotalTls:getTotalTls", args, LookupTotalTlsResultOutput{}, options).(LookupTotalTlsResultOutput)
 }
 
 // A collection of arguments for invoking getTotalTls.

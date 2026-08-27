@@ -70,12 +70,8 @@ type LookupRegionalHostnamesResult struct {
 }
 
 func LookupRegionalHostnamesOutput(ctx *pulumi.Context, args LookupRegionalHostnamesOutputArgs, opts ...pulumi.InvokeOption) LookupRegionalHostnamesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRegionalHostnamesResultOutput, error) {
-			args := v.(LookupRegionalHostnamesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getRegionalHostnames:getRegionalHostnames", args, LookupRegionalHostnamesResultOutput{}, options).(LookupRegionalHostnamesResultOutput), nil
-		}).(LookupRegionalHostnamesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getRegionalHostnames:getRegionalHostnames", args, LookupRegionalHostnamesResultOutput{}, options).(LookupRegionalHostnamesResultOutput)
 }
 
 // A collection of arguments for invoking getRegionalHostnames.

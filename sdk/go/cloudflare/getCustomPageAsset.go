@@ -80,12 +80,8 @@ type LookupCustomPageAssetResult struct {
 }
 
 func LookupCustomPageAssetOutput(ctx *pulumi.Context, args LookupCustomPageAssetOutputArgs, opts ...pulumi.InvokeOption) LookupCustomPageAssetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCustomPageAssetResultOutput, error) {
-			args := v.(LookupCustomPageAssetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getCustomPageAsset:getCustomPageAsset", args, LookupCustomPageAssetResultOutput{}, options).(LookupCustomPageAssetResultOutput), nil
-		}).(LookupCustomPageAssetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getCustomPageAsset:getCustomPageAsset", args, LookupCustomPageAssetResultOutput{}, options).(LookupCustomPageAssetResultOutput)
 }
 
 // A collection of arguments for invoking getCustomPageAsset.

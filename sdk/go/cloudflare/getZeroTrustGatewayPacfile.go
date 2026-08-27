@@ -79,12 +79,8 @@ type LookupZeroTrustGatewayPacfileResult struct {
 }
 
 func LookupZeroTrustGatewayPacfileOutput(ctx *pulumi.Context, args LookupZeroTrustGatewayPacfileOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustGatewayPacfileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustGatewayPacfileResultOutput, error) {
-			args := v.(LookupZeroTrustGatewayPacfileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustGatewayPacfile:getZeroTrustGatewayPacfile", args, LookupZeroTrustGatewayPacfileResultOutput{}, options).(LookupZeroTrustGatewayPacfileResultOutput), nil
-		}).(LookupZeroTrustGatewayPacfileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustGatewayPacfile:getZeroTrustGatewayPacfile", args, LookupZeroTrustGatewayPacfileResultOutput{}, options).(LookupZeroTrustGatewayPacfileResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustGatewayPacfile.

@@ -82,12 +82,8 @@ type LookupMtlsCertificateResult struct {
 }
 
 func LookupMtlsCertificateOutput(ctx *pulumi.Context, args LookupMtlsCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupMtlsCertificateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMtlsCertificateResultOutput, error) {
-			args := v.(LookupMtlsCertificateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getMtlsCertificate:getMtlsCertificate", args, LookupMtlsCertificateResultOutput{}, options).(LookupMtlsCertificateResultOutput), nil
-		}).(LookupMtlsCertificateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getMtlsCertificate:getMtlsCertificate", args, LookupMtlsCertificateResultOutput{}, options).(LookupMtlsCertificateResultOutput)
 }
 
 // A collection of arguments for invoking getMtlsCertificate.

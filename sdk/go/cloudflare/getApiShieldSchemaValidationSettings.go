@@ -71,12 +71,8 @@ type LookupApiShieldSchemaValidationSettingsResult struct {
 }
 
 func LookupApiShieldSchemaValidationSettingsOutput(ctx *pulumi.Context, args LookupApiShieldSchemaValidationSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupApiShieldSchemaValidationSettingsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupApiShieldSchemaValidationSettingsResultOutput, error) {
-			args := v.(LookupApiShieldSchemaValidationSettingsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getApiShieldSchemaValidationSettings:getApiShieldSchemaValidationSettings", args, LookupApiShieldSchemaValidationSettingsResultOutput{}, options).(LookupApiShieldSchemaValidationSettingsResultOutput), nil
-		}).(LookupApiShieldSchemaValidationSettingsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getApiShieldSchemaValidationSettings:getApiShieldSchemaValidationSettings", args, LookupApiShieldSchemaValidationSettingsResultOutput{}, options).(LookupApiShieldSchemaValidationSettingsResultOutput)
 }
 
 // A collection of arguments for invoking getApiShieldSchemaValidationSettings.

@@ -76,12 +76,8 @@ type LookupConnectivityDirectoryServiceResult struct {
 }
 
 func LookupConnectivityDirectoryServiceOutput(ctx *pulumi.Context, args LookupConnectivityDirectoryServiceOutputArgs, opts ...pulumi.InvokeOption) LookupConnectivityDirectoryServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConnectivityDirectoryServiceResultOutput, error) {
-			args := v.(LookupConnectivityDirectoryServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getConnectivityDirectoryService:getConnectivityDirectoryService", args, LookupConnectivityDirectoryServiceResultOutput{}, options).(LookupConnectivityDirectoryServiceResultOutput), nil
-		}).(LookupConnectivityDirectoryServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getConnectivityDirectoryService:getConnectivityDirectoryService", args, LookupConnectivityDirectoryServiceResultOutput{}, options).(LookupConnectivityDirectoryServiceResultOutput)
 }
 
 // A collection of arguments for invoking getConnectivityDirectoryService.

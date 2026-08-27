@@ -118,12 +118,8 @@ type LookupPageRuleResult struct {
 }
 
 func LookupPageRuleOutput(ctx *pulumi.Context, args LookupPageRuleOutputArgs, opts ...pulumi.InvokeOption) LookupPageRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPageRuleResultOutput, error) {
-			args := v.(LookupPageRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getPageRule:getPageRule", args, LookupPageRuleResultOutput{}, options).(LookupPageRuleResultOutput), nil
-		}).(LookupPageRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getPageRule:getPageRule", args, LookupPageRuleResultOutput{}, options).(LookupPageRuleResultOutput)
 }
 
 // A collection of arguments for invoking getPageRule.

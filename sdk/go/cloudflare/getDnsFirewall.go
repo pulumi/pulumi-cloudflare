@@ -90,12 +90,8 @@ type LookupDnsFirewallResult struct {
 }
 
 func LookupDnsFirewallOutput(ctx *pulumi.Context, args LookupDnsFirewallOutputArgs, opts ...pulumi.InvokeOption) LookupDnsFirewallResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDnsFirewallResultOutput, error) {
-			args := v.(LookupDnsFirewallArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getDnsFirewall:getDnsFirewall", args, LookupDnsFirewallResultOutput{}, options).(LookupDnsFirewallResultOutput), nil
-		}).(LookupDnsFirewallResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getDnsFirewall:getDnsFirewall", args, LookupDnsFirewallResultOutput{}, options).(LookupDnsFirewallResultOutput)
 }
 
 // A collection of arguments for invoking getDnsFirewall.

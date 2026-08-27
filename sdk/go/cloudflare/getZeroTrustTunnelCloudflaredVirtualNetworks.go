@@ -97,12 +97,8 @@ type LookupZeroTrustTunnelCloudflaredVirtualNetworksResult struct {
 }
 
 func LookupZeroTrustTunnelCloudflaredVirtualNetworksOutput(ctx *pulumi.Context, args LookupZeroTrustTunnelCloudflaredVirtualNetworksOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustTunnelCloudflaredVirtualNetworksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustTunnelCloudflaredVirtualNetworksResultOutput, error) {
-			args := v.(LookupZeroTrustTunnelCloudflaredVirtualNetworksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustTunnelCloudflaredVirtualNetworks:getZeroTrustTunnelCloudflaredVirtualNetworks", args, LookupZeroTrustTunnelCloudflaredVirtualNetworksResultOutput{}, options).(LookupZeroTrustTunnelCloudflaredVirtualNetworksResultOutput), nil
-		}).(LookupZeroTrustTunnelCloudflaredVirtualNetworksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustTunnelCloudflaredVirtualNetworks:getZeroTrustTunnelCloudflaredVirtualNetworks", args, LookupZeroTrustTunnelCloudflaredVirtualNetworksResultOutput{}, options).(LookupZeroTrustTunnelCloudflaredVirtualNetworksResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustTunnelCloudflaredVirtualNetworks.

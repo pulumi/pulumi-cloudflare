@@ -69,12 +69,8 @@ type LookupSsoConnectorsResult struct {
 }
 
 func LookupSsoConnectorsOutput(ctx *pulumi.Context, args LookupSsoConnectorsOutputArgs, opts ...pulumi.InvokeOption) LookupSsoConnectorsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSsoConnectorsResultOutput, error) {
-			args := v.(LookupSsoConnectorsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getSsoConnectors:getSsoConnectors", args, LookupSsoConnectorsResultOutput{}, options).(LookupSsoConnectorsResultOutput), nil
-		}).(LookupSsoConnectorsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getSsoConnectors:getSsoConnectors", args, LookupSsoConnectorsResultOutput{}, options).(LookupSsoConnectorsResultOutput)
 }
 
 // A collection of arguments for invoking getSsoConnectors.

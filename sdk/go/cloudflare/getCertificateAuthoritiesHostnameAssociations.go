@@ -72,12 +72,8 @@ type LookupCertificateAuthoritiesHostnameAssociationsResult struct {
 }
 
 func LookupCertificateAuthoritiesHostnameAssociationsOutput(ctx *pulumi.Context, args LookupCertificateAuthoritiesHostnameAssociationsOutputArgs, opts ...pulumi.InvokeOption) LookupCertificateAuthoritiesHostnameAssociationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCertificateAuthoritiesHostnameAssociationsResultOutput, error) {
-			args := v.(LookupCertificateAuthoritiesHostnameAssociationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getCertificateAuthoritiesHostnameAssociations:getCertificateAuthoritiesHostnameAssociations", args, LookupCertificateAuthoritiesHostnameAssociationsResultOutput{}, options).(LookupCertificateAuthoritiesHostnameAssociationsResultOutput), nil
-		}).(LookupCertificateAuthoritiesHostnameAssociationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getCertificateAuthoritiesHostnameAssociations:getCertificateAuthoritiesHostnameAssociations", args, LookupCertificateAuthoritiesHostnameAssociationsResultOutput{}, options).(LookupCertificateAuthoritiesHostnameAssociationsResultOutput)
 }
 
 // A collection of arguments for invoking getCertificateAuthoritiesHostnameAssociations.

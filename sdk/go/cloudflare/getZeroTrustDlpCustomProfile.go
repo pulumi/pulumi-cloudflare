@@ -98,12 +98,8 @@ type LookupZeroTrustDlpCustomProfileResult struct {
 }
 
 func LookupZeroTrustDlpCustomProfileOutput(ctx *pulumi.Context, args LookupZeroTrustDlpCustomProfileOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDlpCustomProfileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustDlpCustomProfileResultOutput, error) {
-			args := v.(LookupZeroTrustDlpCustomProfileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustDlpCustomProfile:getZeroTrustDlpCustomProfile", args, LookupZeroTrustDlpCustomProfileResultOutput{}, options).(LookupZeroTrustDlpCustomProfileResultOutput), nil
-		}).(LookupZeroTrustDlpCustomProfileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustDlpCustomProfile:getZeroTrustDlpCustomProfile", args, LookupZeroTrustDlpCustomProfileResultOutput{}, options).(LookupZeroTrustDlpCustomProfileResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustDlpCustomProfile.

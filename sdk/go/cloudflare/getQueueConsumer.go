@@ -57,12 +57,8 @@ type LookupQueueConsumerResult struct {
 }
 
 func LookupQueueConsumerOutput(ctx *pulumi.Context, args LookupQueueConsumerOutputArgs, opts ...pulumi.InvokeOption) LookupQueueConsumerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupQueueConsumerResultOutput, error) {
-			args := v.(LookupQueueConsumerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getQueueConsumer:getQueueConsumer", args, LookupQueueConsumerResultOutput{}, options).(LookupQueueConsumerResultOutput), nil
-		}).(LookupQueueConsumerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getQueueConsumer:getQueueConsumer", args, LookupQueueConsumerResultOutput{}, options).(LookupQueueConsumerResultOutput)
 }
 
 // A collection of arguments for invoking getQueueConsumer.

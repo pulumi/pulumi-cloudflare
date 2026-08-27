@@ -73,12 +73,8 @@ type LookupZeroTrustDevicePostureIntegrationResult struct {
 }
 
 func LookupZeroTrustDevicePostureIntegrationOutput(ctx *pulumi.Context, args LookupZeroTrustDevicePostureIntegrationOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDevicePostureIntegrationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustDevicePostureIntegrationResultOutput, error) {
-			args := v.(LookupZeroTrustDevicePostureIntegrationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustDevicePostureIntegration:getZeroTrustDevicePostureIntegration", args, LookupZeroTrustDevicePostureIntegrationResultOutput{}, options).(LookupZeroTrustDevicePostureIntegrationResultOutput), nil
-		}).(LookupZeroTrustDevicePostureIntegrationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustDevicePostureIntegration:getZeroTrustDevicePostureIntegration", args, LookupZeroTrustDevicePostureIntegrationResultOutput{}, options).(LookupZeroTrustDevicePostureIntegrationResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustDevicePostureIntegration.

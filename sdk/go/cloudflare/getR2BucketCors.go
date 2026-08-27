@@ -65,12 +65,8 @@ type LookupR2BucketCorsResult struct {
 }
 
 func LookupR2BucketCorsOutput(ctx *pulumi.Context, args LookupR2BucketCorsOutputArgs, opts ...pulumi.InvokeOption) LookupR2BucketCorsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupR2BucketCorsResultOutput, error) {
-			args := v.(LookupR2BucketCorsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getR2BucketCors:getR2BucketCors", args, LookupR2BucketCorsResultOutput{}, options).(LookupR2BucketCorsResultOutput), nil
-		}).(LookupR2BucketCorsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getR2BucketCors:getR2BucketCors", args, LookupR2BucketCorsResultOutput{}, options).(LookupR2BucketCorsResultOutput)
 }
 
 // A collection of arguments for invoking getR2BucketCors.

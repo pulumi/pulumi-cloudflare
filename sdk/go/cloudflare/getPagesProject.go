@@ -101,12 +101,8 @@ type LookupPagesProjectResult struct {
 }
 
 func LookupPagesProjectOutput(ctx *pulumi.Context, args LookupPagesProjectOutputArgs, opts ...pulumi.InvokeOption) LookupPagesProjectResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPagesProjectResultOutput, error) {
-			args := v.(LookupPagesProjectArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getPagesProject:getPagesProject", args, LookupPagesProjectResultOutput{}, options).(LookupPagesProjectResultOutput), nil
-		}).(LookupPagesProjectResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getPagesProject:getPagesProject", args, LookupPagesProjectResultOutput{}, options).(LookupPagesProjectResultOutput)
 }
 
 // A collection of arguments for invoking getPagesProject.

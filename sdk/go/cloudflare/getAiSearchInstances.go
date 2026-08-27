@@ -58,12 +58,8 @@ type LookupAiSearchInstancesResult struct {
 }
 
 func LookupAiSearchInstancesOutput(ctx *pulumi.Context, args LookupAiSearchInstancesOutputArgs, opts ...pulumi.InvokeOption) LookupAiSearchInstancesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAiSearchInstancesResultOutput, error) {
-			args := v.(LookupAiSearchInstancesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getAiSearchInstances:getAiSearchInstances", args, LookupAiSearchInstancesResultOutput{}, options).(LookupAiSearchInstancesResultOutput), nil
-		}).(LookupAiSearchInstancesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getAiSearchInstances:getAiSearchInstances", args, LookupAiSearchInstancesResultOutput{}, options).(LookupAiSearchInstancesResultOutput)
 }
 
 // A collection of arguments for invoking getAiSearchInstances.

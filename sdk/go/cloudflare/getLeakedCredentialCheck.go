@@ -68,12 +68,8 @@ type LookupLeakedCredentialCheckResult struct {
 }
 
 func LookupLeakedCredentialCheckOutput(ctx *pulumi.Context, args LookupLeakedCredentialCheckOutputArgs, opts ...pulumi.InvokeOption) LookupLeakedCredentialCheckResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLeakedCredentialCheckResultOutput, error) {
-			args := v.(LookupLeakedCredentialCheckArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getLeakedCredentialCheck:getLeakedCredentialCheck", args, LookupLeakedCredentialCheckResultOutput{}, options).(LookupLeakedCredentialCheckResultOutput), nil
-		}).(LookupLeakedCredentialCheckResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getLeakedCredentialCheck:getLeakedCredentialCheck", args, LookupLeakedCredentialCheckResultOutput{}, options).(LookupLeakedCredentialCheckResultOutput)
 }
 
 // A collection of arguments for invoking getLeakedCredentialCheck.

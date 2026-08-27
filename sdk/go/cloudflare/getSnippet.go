@@ -75,12 +75,8 @@ type LookupSnippetResult struct {
 }
 
 func LookupSnippetOutput(ctx *pulumi.Context, args LookupSnippetOutputArgs, opts ...pulumi.InvokeOption) LookupSnippetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSnippetResultOutput, error) {
-			args := v.(LookupSnippetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getSnippet:getSnippet", args, LookupSnippetResultOutput{}, options).(LookupSnippetResultOutput), nil
-		}).(LookupSnippetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getSnippet:getSnippet", args, LookupSnippetResultOutput{}, options).(LookupSnippetResultOutput)
 }
 
 // A collection of arguments for invoking getSnippet.

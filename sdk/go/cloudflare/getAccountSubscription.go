@@ -87,12 +87,8 @@ type LookupAccountSubscriptionResult struct {
 }
 
 func LookupAccountSubscriptionOutput(ctx *pulumi.Context, args LookupAccountSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupAccountSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccountSubscriptionResultOutput, error) {
-			args := v.(LookupAccountSubscriptionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getAccountSubscription:getAccountSubscription", args, LookupAccountSubscriptionResultOutput{}, options).(LookupAccountSubscriptionResultOutput), nil
-		}).(LookupAccountSubscriptionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getAccountSubscription:getAccountSubscription", args, LookupAccountSubscriptionResultOutput{}, options).(LookupAccountSubscriptionResultOutput)
 }
 
 // A collection of arguments for invoking getAccountSubscription.

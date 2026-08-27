@@ -179,12 +179,8 @@ type LookupZeroTrustAccessInfrastructureTargetsResult struct {
 }
 
 func LookupZeroTrustAccessInfrastructureTargetsOutput(ctx *pulumi.Context, args LookupZeroTrustAccessInfrastructureTargetsOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustAccessInfrastructureTargetsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustAccessInfrastructureTargetsResultOutput, error) {
-			args := v.(LookupZeroTrustAccessInfrastructureTargetsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustAccessInfrastructureTargets:getZeroTrustAccessInfrastructureTargets", args, LookupZeroTrustAccessInfrastructureTargetsResultOutput{}, options).(LookupZeroTrustAccessInfrastructureTargetsResultOutput), nil
-		}).(LookupZeroTrustAccessInfrastructureTargetsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustAccessInfrastructureTargets:getZeroTrustAccessInfrastructureTargets", args, LookupZeroTrustAccessInfrastructureTargetsResultOutput{}, options).(LookupZeroTrustAccessInfrastructureTargetsResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustAccessInfrastructureTargets.

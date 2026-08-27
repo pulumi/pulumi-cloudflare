@@ -81,12 +81,8 @@ type LookupWaitingRoomRulesResult struct {
 }
 
 func LookupWaitingRoomRulesOutput(ctx *pulumi.Context, args LookupWaitingRoomRulesOutputArgs, opts ...pulumi.InvokeOption) LookupWaitingRoomRulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWaitingRoomRulesResultOutput, error) {
-			args := v.(LookupWaitingRoomRulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getWaitingRoomRules:getWaitingRoomRules", args, LookupWaitingRoomRulesResultOutput{}, options).(LookupWaitingRoomRulesResultOutput), nil
-		}).(LookupWaitingRoomRulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getWaitingRoomRules:getWaitingRoomRules", args, LookupWaitingRoomRulesResultOutput{}, options).(LookupWaitingRoomRulesResultOutput)
 }
 
 // A collection of arguments for invoking getWaitingRoomRules.

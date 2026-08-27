@@ -70,12 +70,8 @@ type LookupListsResult struct {
 }
 
 func LookupListsOutput(ctx *pulumi.Context, args LookupListsOutputArgs, opts ...pulumi.InvokeOption) LookupListsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupListsResultOutput, error) {
-			args := v.(LookupListsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getLists:getLists", args, LookupListsResultOutput{}, options).(LookupListsResultOutput), nil
-		}).(LookupListsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getLists:getLists", args, LookupListsResultOutput{}, options).(LookupListsResultOutput)
 }
 
 // A collection of arguments for invoking getLists.

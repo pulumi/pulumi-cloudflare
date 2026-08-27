@@ -64,12 +64,8 @@ type LookupZeroTrustDeviceDefaultProfileCertificatesResult struct {
 }
 
 func LookupZeroTrustDeviceDefaultProfileCertificatesOutput(ctx *pulumi.Context, args LookupZeroTrustDeviceDefaultProfileCertificatesOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDeviceDefaultProfileCertificatesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZeroTrustDeviceDefaultProfileCertificatesResultOutput, error) {
-			args := v.(LookupZeroTrustDeviceDefaultProfileCertificatesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudflare:index/getZeroTrustDeviceDefaultProfileCertificates:getZeroTrustDeviceDefaultProfileCertificates", args, LookupZeroTrustDeviceDefaultProfileCertificatesResultOutput{}, options).(LookupZeroTrustDeviceDefaultProfileCertificatesResultOutput), nil
-		}).(LookupZeroTrustDeviceDefaultProfileCertificatesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustDeviceDefaultProfileCertificates:getZeroTrustDeviceDefaultProfileCertificates", args, LookupZeroTrustDeviceDefaultProfileCertificatesResultOutput{}, options).(LookupZeroTrustDeviceDefaultProfileCertificatesResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustDeviceDefaultProfileCertificates.
