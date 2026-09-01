@@ -500,7 +500,9 @@ func Provider() info.Provider {
 			},
 			"cloudflare_dns_record": {
 				// cloudflare_record
-				Aliases: alias("cloudflare:index/record:Record"),
+				Aliases:             alias("cloudflare:index/record:Record"),
+				PreStateUpgradeHook: dnsRecordPreStateUpgradeHook,
+				TransformFromState:  dnsRecordTransformFromState,
 			},
 			"cloudflare_zero_trust_risk_behavior": {
 				// cloudflare_risk_behavior
