@@ -556,7 +556,9 @@ func Provider() info.Provider {
 			},
 			"cloudflare_workers_script": {
 				// cloudflare_worker_script
-				Aliases: alias("cloudflare:index/workerScript:WorkerScript"),
+				Aliases:             alias("cloudflare:index/workerScript:WorkerScript"),
+				PreStateUpgradeHook: workersScriptPreStateUpgradeHook,
+				TransformFromState:  workersScriptTransformFromState,
 			},
 			"cloudflare_workers_for_platforms_dispatch_namespace": {
 				// cloudflare_workers_for_platforms_namespace
