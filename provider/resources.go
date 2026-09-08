@@ -500,7 +500,9 @@ func Provider() info.Provider {
 			},
 			"cloudflare_dns_record": {
 				// cloudflare_record
-				Aliases: alias("cloudflare:index/record:Record"),
+				Aliases:             alias("cloudflare:index/record:Record"),
+				PreStateUpgradeHook: dnsRecordPreStateUpgradeHook,
+				TransformFromState:  dnsRecordTransformFromState,
 			},
 			"cloudflare_zero_trust_risk_behavior": {
 				// cloudflare_risk_behavior
@@ -556,7 +558,9 @@ func Provider() info.Provider {
 			},
 			"cloudflare_workers_script": {
 				// cloudflare_worker_script
-				Aliases: alias("cloudflare:index/workerScript:WorkerScript"),
+				Aliases:             alias("cloudflare:index/workerScript:WorkerScript"),
+				PreStateUpgradeHook: workersScriptPreStateUpgradeHook,
+				TransformFromState:  workersScriptTransformFromState,
 			},
 			"cloudflare_workers_for_platforms_dispatch_namespace": {
 				// cloudflare_workers_for_platforms_namespace
