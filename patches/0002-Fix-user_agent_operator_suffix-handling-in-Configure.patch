@@ -1,0 +1,33 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Josh Kodroff <josh@pulumi.com>
+Date: Tue, 8 Sep 2026 15:25:57 -0400
+Subject: [PATCH] Fix user_agent_operator_suffix handling in Configure
+
+Three bugs in the same conditional:
+
+- The suffix was formatted with types.String.String(), which is
+  fmt.Sprintf("%q", ...), so the configured value went out on the wire
+  double-quoted.
+
+- The guard checked IsNull() but not IsUnknown(), so an unknown value
+  went out as the literal string "<unknown>".
+
+- An explicitly empty suffix was treated as set, appending a bare space
+  to the User-Agent instead of falling back to terraform/<version>.
+
+diff --git a/internal/provider.go b/internal/provider.go
+index cdf35e1f6943..b8d61b661c36 100644
+--- a/internal/provider.go
++++ b/internal/provider.go
+@@ -434,8 +434,9 @@ func (p *CloudflareProvider) Configure(ctx context.Context, req provider.Configu
+ 		PluginVersion:   pluginVersion,
+ 	}
+ 
+-	if !data.UserAgentOperatorSuffix.IsNull() {
+-		operatorSuffix := data.UserAgentOperatorSuffix.String()
++	if !data.UserAgentOperatorSuffix.IsNull() && !data.UserAgentOperatorSuffix.IsUnknown() &&
++		data.UserAgentOperatorSuffix.ValueString() != "" {
++		operatorSuffix := data.UserAgentOperatorSuffix.ValueString()
+ 		userAgentParams.OperatorSuffix = &operatorSuffix
+ 	} else {
+ 		userAgentParams.TerraformVersion = &req.TerraformVersion

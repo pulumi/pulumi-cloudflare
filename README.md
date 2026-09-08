@@ -53,7 +53,7 @@ The following configuration points are available:
 - `cloudflare:apiUserServiceKey` - (Optional) A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `cloudflare:apiKey`, `cloudflare:apiToken`, `cloudflare:apiUserServiceKey`.
 - `cloudflare:baseUrl` (String) Value to override the default HTTP client base URL. Alternatively, can be configured using the `CLOUDFLARE_BASE_URL` environment variable.
 - `cloudflare:email` - (Optional) A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `cloudflare:apiKey`. Conflicts with `cloudflare:apiToken`.
-- `cloudflare:userAgentOperatorSuffix` - (Optional) A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely identifying your traffic. **Setting this value will remove the Pulumi version from the HTTP User Agent string and may have unintended consequences.** Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX` environment variable.
+- `cloudflare:userAgentOperatorSuffix` - (Optional) A value appended to the HTTP User Agent sent with every API call, used to identify the tool making the request. Defaults to `pulumi/<version>`. Set it to a value of your own to identify your traffic differently, or to the empty string to remove the Pulumi identifier entirely. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX` environment variable.
 
 ## Reference
 
